@@ -4,11 +4,12 @@ import { Chart } from "@/class";
 class Technique {
   private _ap: number;
   private _area: string;
+  private _boost: string;
   private _cost: string;
   private _damagetype: string;
   private _desc: string;
   private _effect: string;
-  private _keywords: string;
+  private _keywords: Array<string>;
   private _move: string;
   private _name: string;
   private _range: string;
@@ -23,11 +24,12 @@ class Technique {
   public constructor() {
     this._ap = 4;
     this._area = "";
+    this._boost = "";
     this._cost = "";
     this._damagetype = "";
     this._desc = "";
     this._effect = "";
-    this._keywords = "";
+    this._keywords = [];
     this._move = "";
     this._name = "";
     this._range = "";
@@ -92,6 +94,12 @@ class Technique {
   public get HasArea() {
     return this.Area != "";
   }
+  public get HasBoost() {
+    return this._boost.length > 0;
+  }
+  public get BoostArray() {
+    return this.KeywordParsedArray(this._boost, "**Boost:** ");
+  }
   public get HasChart() {
     return this.Chart != null;
   }
@@ -104,8 +112,14 @@ class Technique {
   public get HasEffect() {
     return this._effect.length > 0;
   }
-  public get EffectText() {
-    return "**Effect:** " + this._effect;
+  public get EffectArray() {
+    return this.KeywordParsedArray(this._effect, "**Effect:** ");
+  }
+  public get HasKeywords() {
+    return this._keywords.length > 0;
+  }
+  public get HasMove() {
+    return this._move.length > 0;
   }
   public get MoveText() {
     return "**Movement:** " + this._move;
@@ -116,26 +130,26 @@ class Technique {
   public get HasReqs() {
     return this._reqs.length > 0;
   }
-  public get ReqText() {
-    return "**Requirement:** " + this._reqs;
+  public get ReqArray() {
+    return this.KeywordParsedArray(this._reqs, "**Requirements:** ");
   }
   public get HasSpecial() {
     return this._special.length > 0;
   }
-  public get SpecialText() {
-    return "**Special:** " + this._special;
+  public get SpecialArray() {
+    return this.KeywordParsedArray(this._special, "**Special:** ");
   }
   public get HasTarget() {
     return this._target.length > 0;
   }
-  public get TargetText() {
-    return "**Target:** " + this._target;
+  public get TargetArray() {
+    return this.KeywordParsedArray(this._target, "**Target:** ");
   }
   public get HasTrigger() {
     return this._trigger.length > 0;
   }
-  public get TriggerText() {
-    return "**Trigger:** " + this._trigger;
+  public get TriggerArray() {
+    return this.KeywordParsedArray(this._trigger, "**Trigger:** ");
   }
 
   public get SpeedHeader() {
@@ -150,6 +164,11 @@ class Technique {
     else return this._range;
   }
 
+  // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.
+  public KeywordParsedArray(input: string, header: string) {
+    return (header + input).split("_");
+  }
+
   public static Deserialize(techData: ITechData): Technique {
     const t = new Technique();
     t.setTechData(techData);
@@ -159,11 +178,12 @@ class Technique {
   public setTechData(data: ITechData): void {
     this._ap = data.ap || 4;
     this._area = data.area || "";
+    this._boost = data.boost || "";
     this._cost = data.cost || "";
     this._damagetype = data.damagetype || "";
     this._desc = data.desc || "";
     this._effect = data.effect || "";
-    this._keywords = data.keywords || "";
+    this._keywords = data.keywords || [];
     this._move = data.move || "";
     this._name = data.name || "";
     this._range = data.range || "";

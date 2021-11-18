@@ -17,7 +17,7 @@ export default Vue.extend({
   },
   computed: {
     basics: function () {
-      return this.$store.getters.byCategory("Basic Techniques")[0];
+      return this.$store.getters.byDisciplineCategory("Basic Techniques")[0];
     },
   },
 });

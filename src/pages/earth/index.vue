@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <div v-for="disc in earthDiscs">
+  <div style="padding: 1em;">
+    <div
+      class="earth--box"
+      v-for="disc in earthDiscs"
+      :style="{ 'background-color': disc.Background }"
+    >
       <div class="page--title">{{ disc.Name }}</div>
       <div class="page--description">{{ disc.Flavor }}</div>
       <div class="page--sub-title">Stances</div>
@@ -30,8 +34,16 @@ export default Vue.extend({
   },
   computed: {
     earthDiscs: function () {
-      return this.$store.getters.byCategory("Earth");
+      return this.$store.getters.byDisciplineCategory("Earth");
     },
   },
 });
 </script>
+
+<style scoped lang="scss">
+.earth--box {
+  border-radius: 1em;
+  border: $border--black-standard;
+  margin-top: 1em;
+}
+</style>

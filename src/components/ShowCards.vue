@@ -5,6 +5,7 @@
         cols="12"
         class="d-flex justify-center"
         v-for="n in inputs"
+        v-bind:key="n.Name"
         :lg="colWidth"
       >
         <div class="card--box" v-if="job == 'Stance'">
@@ -13,6 +14,9 @@
         <div class="card--box" v-if="job == 'Tech'">
           <tech-card :tech="n" :category="color_category" />
         </div>
+        <div class="card--box" v-if="job == 'Weapon'">
+          <weapon-card :weapon="n" />
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -20,8 +24,9 @@
 
 <script>
 import Vue from "vue";
-import TechCard from "./TechCard.vue";
 import StanceCard from "./StanceCard.vue";
+import TechCard from "./TechCard.vue";
+import WeaponCard from "./WeaponCard.vue";
 
 export default Vue.extend({
   name: "show-cards",
@@ -36,16 +41,17 @@ export default Vue.extend({
     },
     color_category: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   components: {
     TechCard,
     StanceCard,
+    WeaponCard,
   },
   computed: {
     colWidth: function () {
-      return 4;
+      return Math.max(12 / this.inputs.length, 4);
     },
   },
 });

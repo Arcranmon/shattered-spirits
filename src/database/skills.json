@@ -2,6 +2,7 @@
   {
     "category": "Template",
     "name": "Template",
+    "background": "$color--parchment",
     "flavor": "This shouldn't be visible (oops!)",
     "stances": [
       {
@@ -18,7 +19,7 @@
         "speed": "",
         "ap": 0,
         "desc": "",
-        "keywords": "",
+        "keywords": [],
         "type": "",
         "range": "",
         "area": "",
@@ -51,8 +52,8 @@
         "range": "Weapon",
         "ap": 1,
         "move": "Step",
-        "reqs": "Light or Versatile Weapon Wielded",
-        "effect": "Attack using your weapon's Profile. Versatile Weapons take a -1 damage penalty."
+        "reqs": "_Light_ or _Versatile_ Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. _Versatile_ Weapons take a -2 damage penalty."
       },
       {
         "name": "Strike",
@@ -63,7 +64,7 @@
         "range": "Weapon",
         "ap": 1,
         "move": "Step",
-        "reqs": "Any Weapon Wielded",
+        "reqs": "Any Weapon Wielded.",
         "effect": "Attack using your weapon's Profile."
       },
       {
@@ -75,28 +76,27 @@
         "range": "Weapon",
         "ap": 1,
         "move": "Step",
-        "reqs": "Versatile or Heavy Weapon Wielded",
-        "effect": "Attack using your weapon's Profile, dealing +1 damage bonus with a Versatile weapon, or +2 with a Heavy weapon."
+        "reqs": "_Versatile_ or _Heavy_ Weapon Wielded",
+        "effect": "Attack using your weapon's Profile, dealing +1 damage bonus with a _Versatile_ weapon or +2 with a _Heavy_ weapon."
       },
       {
         "name": "Run",
         "desc": "A simple dash, covering ground as quickly as possible.",
         "type": "Move",
-        "speed": "Special",
+        "speed": "See Movement",
         "range": "Self",
         "ap": 1,
-        "move": "Special",
-        "special": "The movement granted by Run determines its Speed, as follows:\n* Reposition: Speed 1\n* Shift: Speed 2\n* Sprint: Speed 3\n* Dash: Speed 4"
+        "move": "The movement granted by Run determines its Speed, as follows:\n* Reposition: Speed 1\n* Shift: Speed 2\n* Sprint: Speed 3\n* Dash: Speed 4"
       },
       {
         "name": "Disengage",
         "desc": "A careful reposition that never drops its guard.",
         "type": "Move",
-        "speed": "Special",
+        "speed": "See Movement",
         "range": "Self",
         "ap": 1,
-        "move": "Special",
-        "special": "The movement granted by Disengage determines its Speed, as follows:\n* Step: Speed 2\n* Reposition: Speed 3\n* Shift: Speed 4\nThis movement is Safe."
+        "move": "The movement granted by Disengage determines its Speed, as follows:\n* Step: Speed 2\n* Reposition: Speed 3\n* Shift: Speed 4",
+        "special": "This movement is _Safe_."
       },
       {
         "name": "Leap",
@@ -131,14 +131,25 @@
         "special": "The Speed of Draw is equal to 1 + the total number of Hands of Equipment drawn or stowed."
       },
       {
-        "name": "Dodge",
+        "name": "Evasive Maneuvers",
         "desc": "Light on your feet, you prepare to dodge an incoming blow.",
         "type": "Defensive",
         "speed": "2",
         "range": "Self",
         "ap": 1,
-        "move": "Step",
-        "effect": "Gain 1 Evasion Token."
+        "move": "Reposition",
+        "effect": "Gain 1 Dodge Token."
+      },
+      {
+        "name": "Dodge",
+        "desc": "You roll away, attempting to dodge an opponents strike.",
+        "type": "Defensive",
+        "keywords": ["Evade"],
+        "trigger": "You are Attacked.",
+        "cost": "1 Evade",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Force the attacker to reroll the attack. They must use the new result."
       },
       {
         "name": "Guard",
@@ -147,8 +158,55 @@
         "speed": "3",
         "range": "Self",
         "ap": 1,
-        "move": "Reposition",
+        "move": "Step",
         "effect": "Gain 1 Block Token."
+      },
+      {
+        "name": "Block",
+        "desc": "You deflect a strike with arms or armor, lessening the blow.",
+        "type": "Defensive",
+        "keywords": ["Block"],
+        "trigger": "You are Attacked.",
+        "cost": "1 Block",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Reduce the Attack Roll by 1."
+      },
+      {
+        "name": "Find Opening",
+        "desc": "You wait for an opening, preparing to strike.",
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "Self",
+        "ap": 1,
+        "move": "Step",
+        "effect": "Gain 1 Punish Token."
+      },
+      {
+        "name": "Counter",
+        "desc": "You lean into an incoming attack, affording you the chance to strike.",
+        "type": "Maneuver",
+        "keywords": ["Punish"],
+        "trigger": "You are Attacked by an adjacent enemy.",
+        "cost": "1 Punish, +1 Momentum is the Action is Speed 4 or slower.",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Increase the Attack Roll by 1. You may immediately Attack the triggering enemy with a Speed 3 or faster Maneuver.",
+        "boost": "1 Momentum. You may instead Attack with a Strike.",
+        "special": "The Movement of the Maneuver or Strike you choose becomes None."
+      },
+      {
+        "name": "Opportunity Attack",
+        "desc": "You capitalize on an opening, taking the chance to assault a foe.",
+        "type": "Maneuver",
+        "keywords": ["Punish"],
+        "trigger": "An enemy within your Reach makes Movement that is not Safe.",
+        "cost": "1 Punish +1 Momentum is the Action is Speed 3 or slower.",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Immediately Attack the triggering enemy with a Maneuver.",
+        "boost": "1 Momentum. You may instead Attack with a Strike.",
+        "special": "The Movement of the Maneuver or Strike you choose becomes None."
       },
       {
         "name": "Grab",
@@ -156,7 +214,7 @@
         "type": "Maneuver",
         "speed": "3",
         "range": "Melee",
-        "keywords": "Martial",
+        "keywords": ["Martial"],
         "ap": 1,
         "move": "Reposition",
         "requirement": "Open Hand",
@@ -196,7 +254,7 @@
         "type": "Maneuver",
         "speed": "3",
         "range": "Melee",
-        "keywords": "Martial",
+        "keywords": ["Martial"],
         "ap": 1,
         "move": "Reposition",
         "effect": "Attack using the below Profile.",
@@ -234,6 +292,7 @@
   {
     "category": "Earth",
     "name": "Land",
+    "background": "darkkhaki",
     "flavor": "Those that practice the Land Discipline make the ground beneath their feat their weapon, creating earthen barricades and laying their enemies low with mighty tremors.",
     "stances": [
       {
@@ -254,10 +313,10 @@
       {
         "name": "Roiling Stance",
         "desc": "The ground around those that have mastered the Roiling Stance is nearly a liquid, quaking and shaking constantly.",
-        "accumulate": "Gain 1 Momentum for every hostile creature beyond the first that is in your Burst in the Resolution Phase, up to a maximum of 3.",
+        "accumulate": "Gain 1 Momentum for every hostile creature beyond the first in your Burst at Resolution, up to a maximum of 3.",
         "refresh": "Grit 1",
-        "effect": "Create a Burst 2 centered around you that moves with you. Creatures treat the spaces in this Burst around you as Difficult Terrain.",
-        "special": "Whenever you would inflict Exposed on a creature within the Burst created by this effect you may pay 1 Momentum to instead inflict Prone."
+        "effect": "Create a Burst 2 centered on you that moves with you. Creatures treat the spaces in this Burst around you as Difficult Terrain.",
+        "special": "Whenever you Expose a creature within the Burst created by this effect you may pay 1 Momentum to instead inflict Prone."
       }
     ],
     "techniques": [
@@ -265,7 +324,7 @@
         "name": "Quake",
         "damagetype": "Physical",
         "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
-        "keywords": "Spirit, Earth, Groundsource",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
         "speed": "5",
         "area": "Blast 2",
@@ -276,17 +335,17 @@
           "hit": [
             "Miss",
             "Miss",
+            "Miss",
             "Graze",
             "Graze",
-            "Hit",
-            "Hit",
+            "Graze",
             "Hit",
             "Hit",
             "Hit",
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 3, 3, 4, 4, 6, 6, 8, 8, 9],
+          "damage": [0, 0, 0, 3, 4, 4, 6, 6, 8, 8, 9],
           "status": [
             "",
             "",
@@ -306,9 +365,9 @@
         "name": "Cave",
         "damagetype": "Physical",
         "desc": "A powerful technique that creates a cave below the ground, then collapses the ground downwards, sending enemies into a painful fall.",
-        "keywords": "Spirit, Earth, Groundsource",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
-        "speed": "3",
+        "speed": "4",
         "range": "8",
         "area": "Blast 2",
         "ap": 1,
@@ -349,9 +408,9 @@
         "name": "Jagged Earth",
         "damagetype": "Physical",
         "desc": "Blades of the earth appear out of nowhere, suddenly striking a foe.",
-        "keywords": "Spirit, Earth, Groundsource",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
-        "speed": "4",
+        "speed": "3",
         "range": "6",
         "ap": 1,
         "move": "Step",
@@ -371,7 +430,7 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 3, 4, 5, 5, 6, 7, 9, 10],
+          "damage": [0, 0, 0, 2, 3, 4, 5, 6, 7, 9, 10],
           "status": [
             "",
             "",
@@ -390,7 +449,7 @@
       {
         "name": "Earth Tomb",
         "damagetype": "Physical",
-        "keywords": "Spirit, Earth",
+        "keywords": ["Spirit", "Earth"],
         "desc": "By using nearby earth and stone the Earthbonded seals their foe away.",
         "type": "Strike",
         "speed": "5",
@@ -399,8 +458,7 @@
         "move": "Step",
         "target": "A SIze 1 creature adjacent to at least two Earthen Features.",
         "effect": "Attack the target with the below Profile, destroying both Earthen Features. On a Hit or Crit, the creature becomes Entombed in an Earthen Barricade. A creature may end Entombed by spending 3 Grit on their turn. If a creature negates with Skill, they must immediately Move 1 and fall Prone. An Earthen Barricade is then created in their original square. If they cannot Move, they may not Negate with Skill.",
-        "boost": " 2 Momentum. You only need one adjacent Earthen Feature.",
-        "special": "IF there are four adjacent Earthen Features adjacent: Either make this Attack with Advantage, or you may target a Size 2 creature. Destroy all Earthen Features used for this attack.",
+        "special": "If there are four adjacent Earthen Features adjacent: Either make this Attack with Advantage, or you may target a Size 2 creature. Destroy all Earthen Features used for this attack.",
         "chart": {
           "hit": [
             "Miss",
@@ -435,10 +493,11 @@
         "name": "Tremors",
         "desc": "The Earthbonded shakes the earth around them, making a sure footing impossible.",
         "type": "Maneuver",
-        "speed": "4",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "speed": "3",
         "area": "Burst 1",
         "ap": 1,
-        "move": "Reposition",
+        "move": "Step",
         "effect": "Attack all targets in the area using the below Profile.",
         "boost": "2 Momentum. Area becomes Boost 2.",
         "chart": {
@@ -474,8 +533,8 @@
         "name": "Quicksand",
         "speed": "4",
         "ap": 1,
-        "desc": "A deadly trap, liquified earth threatens to swallow the unaware whole.",
-        "keywords": "Spirit, Earth",
+        "desc": "Liquified earth threatens to swallow the unaware whole.",
+        "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "range": "8",
         "target": "An unoccupied space within range.",
@@ -488,7 +547,7 @@
         "speed": "3",
         "ap": 1,
         "desc": "Hardened spikes rise up from the earth, leaving a jagged wake that is difficult to traverse.",
-        "keywords": "Spirit, Earth",
+        "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "area": "Line 4",
         "move": "Step",
@@ -500,7 +559,7 @@
         "speed": "5",
         "ap": 1,
         "desc": "The Earthbonded creates a mighty wall, fortifying their position.",
-        "keywords": "Spirit, Earth",
+        "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "move": "Step",
         "effect": "Choose three contiguous adjacent squares. Create an Earthen Barricade in each. Any creatures in these squares are immediately moved to an adjacent square of their choice.",
@@ -511,7 +570,7 @@
         "speed": "4",
         "ap": 1,
         "desc": "The Earthbonded moves the earth of the battlefield around, choosing the shape as easily as breathing.",
-        "keywords": "Spirit, Earth",
+        "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "range": "5",
         "move": "Reposition",
@@ -522,17 +581,42 @@
         "name": "Earthen Shield",
         "speed": "Reaction",
         "desc": "The Earthbonded throws up a barricade, only using it when the right moment strikes.",
-        "keywords": "Spirit, Earth",
+        "keywords": ["Spirit", "Earth"],
         "type": "Defensive",
         "range": "3",
         "cost": "2 Momentum, 1 Block",
-        "move": "You or a creature within range is Attacked",
+        "trigger": "You or a creature within range is Attacked.",
         "effect": "Create an Earthen Barricade adjacent to the triggering creature. Block the Attack, gaining an additional 1 Armor against the triggering attack."
+      },
+      {
+        "name": "Burrow",
+        "speed": "4",
+        "ap": 1,
+        "desc": "The Earthbonded moves through the earth like a mole, safely reaching their destination.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Move",
+        "cost": "1 Momentum",
+        "range": "Self",
+        "move": "Shift",
+        "effect": "This Movement is Safe and ignores all terrain."
+      },
+      {
+        "name": "Earth Slide",
+        "speed": "3",
+        "ap": 1,
+        "desc": "The Earthbonded slides the ground beneath their feet forward, potentially leaving a wake of destruction behind.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Move",
+        "range": "Self",
+        "move": "Shift",
+        "effect": "You may create Rough Terrain in the square you begin your Move from.",
+        "boost": "A character may spend Momentum to place Rough Terrain in squares they moved through, at a rate of 1 Momentum per 3 squares of Rough Terrain."
       }
     ]
   },
   {
     "category": "Earth",
+    "background": "tan",
     "name": "Boulder",
     "flavor": "The Boulder Discipline focuses on powerful strkes with great stones, creating an avalanche of heavy, driving strikes.",
     "stances": [],

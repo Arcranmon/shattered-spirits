@@ -1,6 +1,6 @@
 <template>
   <div style="text-align: center;">
-    <custom-button to="/earth">Earth Spirits</custom-button> <br />
+    <custom-button to="/weapons">Weapons</custom-button> <br />
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import Vue from "vue";
 import CustomButton from "@/components/Button.vue";
 
 export default Vue.extend({
-  name: "spirit-menu",
+  name: "equipment-menu",
   components: {
     CustomButton,
   },

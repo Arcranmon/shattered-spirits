@@ -62,16 +62,12 @@ export default Vue.extend({
 <style scoped lang="scss">
 .stance--wrapper {
   font-family: $font--standard;
-  background-color: $color--parchment;
-  border-top-left-radius: 3em;
-  border-top-right-radius: 3em;
+  background-color: $color--grey-light;
   border: $border--black-standard;
   height: 100%;
 }
 .stance--color-header {
-  border-top-left-radius: 2.9em;
-  border-top-right-radius: 2.9em;
-  border-bottom: 5px solid black;
+  border-bottom: 5px double black;
 }
 .stance--header {
   font-size: $font-size--l;

@@ -6,10 +6,12 @@ class Discipline {
   private _category: string;
   private _name: string;
   private _flavor: string;
+  private _background: string;
   private _stances: Array<Stance>;
   private _techniques: Array<Technique>;
 
   public constructor() {
+    this._background = "white";
     this._category = "";
     this._name = "";
     this._flavor = "";
@@ -17,6 +19,9 @@ class Discipline {
     this._techniques = [];
   }
 
+  public get Background() {
+    return this._background;
+  }
   public get Category() {
     return this._category;
   }
@@ -40,6 +45,7 @@ class Discipline {
   }
 
   public setDisciplineData(data: IDisciplineData): void {
+    this._background = data.background || "white";
     this._category = data.category || "";
     this._name = data.name || "";
     this._flavor = data.flavor || "";

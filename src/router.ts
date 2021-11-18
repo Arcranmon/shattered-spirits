@@ -1,10 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import MainMenu from "@/pages/main_menu/index.vue";
-import SpiritMenu from "@/pages/spirit_menu/index.vue";
+import MainMenu from "@/pages/main-menu/index.vue";
+import SpiritMenu from "@/pages/spirit-menu/index.vue";
+import EquipmentMenu from "@/pages/equipment-menu/index.vue";
 import Earth from "@/pages/earth/index.vue";
-import BasicTechniques from "@/pages/basic_techs/index.vue";
+import Weapons from "@/pages/weapons/index.vue";
+import BasicTechniques from "@/pages/basic-techs/index.vue";
 
 Vue.use(Router);
 
@@ -39,6 +41,22 @@ const r = new Router({
       name: "spirit-menu",
       meta: {
         title: "Spirits",
+      },
+    },
+    {
+      path: "/equipment",
+      component: EquipmentMenu,
+      name: "equipment-menu",
+      meta: {
+        title: "Equipment",
+      },
+    },
+    {
+      path: "/weapons",
+      component: Weapons,
+      name: "weapons",
+      meta: {
+        title: "weapons",
       },
     },
     {
