@@ -18,9 +18,9 @@ class Chart {
   public get Hit() {
     return this._hit;
   }
-  public Status(i: number): string {
-    if (this._status[i] == "") return "-";
-    return this._status[i];
+  public Status(i: number): Array<string> {
+    if (this._status[i] == "") return ["-"];
+    return this._status[i].split(" ");
   }
 
   public get HasDamage() {

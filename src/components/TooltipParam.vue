@@ -1,9 +1,9 @@
 <template>
   <span
     ><span v-if="this.$store.getters.hasGlossaryItem(input)"
-      ><v-tooltip bottom
+      ><v-tooltip class="markdown-body" bottom
         ><template v-slot:activator="{ on, attrs }">
-          <span class="markdown-body" v-bind="attrs" v-on="on"
+          <span v-bind="attrs" v-on="on"
             ><vue-simple-markdown :source="formatInput" /></span></template
         ><span>{{ this.$store.getters.getGlossaryItem(input) }}</span>
       </v-tooltip>
@@ -52,7 +52,7 @@ export default Vue.extend({
   padding: none;
   text-align: left;
   color: black;
-  display: inline-block;
+  display: inline;
   white-space: pre-wrap !important;
   line-height: 1.25 !important;
   margin-bottom: 0;

@@ -1,5 +1,7 @@
 <template>
   <div style="padding: 1em;">
+    <h3 class="page--header">Earth Spirits</h3>
+    <vue-simple-markdown :source="earthText" />
     <div
       class="earth--box"
       v-for="disc in earthDiscs"
@@ -26,11 +28,17 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
+import EarthText from "./earth.txt";
 import { store } from "@/store";
 export default Vue.extend({
   name: "earth",
   components: {
     ShowCards,
+  },
+  data: function () {
+    return {
+      earthText: EarthText,
+    };
   },
   computed: {
     earthDiscs: function () {

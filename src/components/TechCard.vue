@@ -17,14 +17,7 @@
             <span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
         </span>
-        <b
-          ><span v-for="keyword in tech.Keywords"
-            ><tooltip :input="keyword" /><span
-              v-if="keyword != tech.Keywords[tech.Keywords.length - 1]"
-              >,
-            </span></span
-          >
-        </b>
+        <b><tooltipped-text :input="tech.Keywords" :commas="true" /> </b>
       </div>
     </div>
     <div class="tech--content">
@@ -32,38 +25,26 @@
         ><vue-simple-markdown class="tech--format" :source="tech.CostText" />
       </span>
       <span class="tech--format" v-if="tech.HasReqs">
-        <span v-for="ele in tech.ReqArray"
-          ><tooltip :input="ele" :italic="true" /></span
-        ><br
+        <tooltipped-text :input="tech.ReqArray" :itallic="true"
       /></span>
       <span class="tech--format" v-if="tech.HasTrigger">
-        <span v-for="ele in tech.TriggerArray"
-          ><tooltip :input="ele" :italic="true" /></span
-        ><br
+        <tooltipped-text :input="tech.TriggerArray" :itallic="true"
       /></span>
-      <span class="tech--format" v-if="tech.HasTarget">
-        <span v-for="ele in tech.TargetArray"
-          ><tooltip :input="ele" :italic="true" /></span
-        ><br
+      <span class="tech--format" v-if="tech.HasTarget"
+        ><tooltipped-text :input="tech.TargetArray" :itallic="true"
       /></span>
       <span v-if="tech.HasMove"
         ><vue-simple-markdown class="tech--format" :source="tech.MoveText"
       /></span>
       <span class="tech--format" v-if="tech.HasEffect">
-        <span v-for="ele in tech.EffectArray"
-          ><tooltip :input="ele" :italic="true" /></span
-        ><br
+        <tooltipped-text :input="tech.EffectArray" :itallic="true"
       /></span>
-      <span class="tech--format" v-if="tech.HasSpecial">
-        <span v-for="ele in tech.SpecialArray"
-          ><tooltip :input="ele" :italic="true" /></span
-        ><br
+      <span class="tech--format" v-if="tech.HasSpecial"
+        ><tooltipped-text :input="tech.SpecialArray" :itallic="true"
       /></span>
       <span class="tech--format" v-if="tech.HasBoost">
-        <span v-for="ele in tech.BoostArray"
-          ><tooltip :input="ele" :italic="true" /></span
-        ><br
-      /></span>
+        <tooltipped-text :input="tech.BoostArray" :itallic="true" />
+      </span>
       <div style="height: 0.5em;" />
       <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /> </span>
     </div>
@@ -76,6 +57,7 @@ import { Technique } from "@/class";
 import { store } from "@/store";
 import ChartTable from "./ChartTable.vue";
 import Tooltip from "./TooltipParam.vue";
+import TooltippedText from "./TooltipTextFromArray.vue";
 
 export default Vue.extend({
   name: "technique-card",
@@ -89,7 +71,7 @@ export default Vue.extend({
       required: false,
     },
   },
-  components: { ChartTable, Tooltip },
+  components: { ChartTable, Tooltip, TooltippedText },
 });
 </script>
 
