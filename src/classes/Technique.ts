@@ -9,6 +9,7 @@ class Technique {
   private _damagetype: string;
   private _desc: string;
   private _effect: string;
+  private _imbue: string;
   private _keywords: Array<string>;
   private _move: string;
   private _name: string;
@@ -29,6 +30,7 @@ class Technique {
     this._damagetype = "";
     this._desc = "";
     this._effect = "";
+    this._imbue = "";
     this._keywords = [];
     this._move = "";
     this._name = "";
@@ -115,6 +117,12 @@ class Technique {
   public get EffectArray() {
     return this.KeywordParsedArray(this._effect, "**Effect:** ");
   }
+  public get HasImbue() {
+    return this._imbue.length > 0;
+  }
+  public get ImbueArray() {
+    return this.KeywordParsedArray(this._imbue, "**Imbue:** ");
+  }
   public get HasKeywords() {
     return this._keywords.length > 0;
   }
@@ -183,6 +191,7 @@ class Technique {
     this._damagetype = data.damagetype || "";
     this._desc = data.desc || "";
     this._effect = data.effect || "";
+    this._imbue = data.imbue || "";
     this._keywords = data.keywords || [];
     this._move = data.move || "";
     this._name = data.name || "";

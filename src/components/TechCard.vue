@@ -17,7 +17,12 @@
             <span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
         </span>
-        <b><tooltipped-text :input="tech.Keywords" :commas="true" /> </b>
+        <b
+          ><tooltipped-text
+            v-if="tech.HasKeywords"
+            :input="tech.Keywords"
+            :commas="true"
+        /></b>
       </div>
     </div>
     <div class="tech--content">
@@ -42,6 +47,9 @@
       <span class="tech--format" v-if="tech.HasSpecial"
         ><tooltipped-text :input="tech.SpecialArray" :itallic="true"
       /></span>
+      <span class="tech--format" v-if="tech.HasImbue">
+        <tooltipped-text :input="tech.ImbueArray" :itallic="true" />
+      </span>
       <span class="tech--format" v-if="tech.HasBoost">
         <tooltipped-text :input="tech.BoostArray" :itallic="true" />
       </span>

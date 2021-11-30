@@ -2,9 +2,8 @@
   <span>
     <span v-for="(val, index) in input"
       ><tooltip :input="val" :italic="itallic" />
-      <span v-if="index != input.length - 1"
-        ><span v-if="commas">, </span></span
-      ></span
+      <span v-if="index != input.length - 1"><span v-if="commas">, </span></span
+      ><span v-else> </span></span
     ><br />
   </span>
 </template>

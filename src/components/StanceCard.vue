@@ -12,29 +12,26 @@
       </div>
     </div>
     <div class="stance--content">
-      <span v-if="stance.HasAccumulate"
-        ><vue-simple-markdown
-          class="stance--format"
-          :source="stance.AccumulateText"
-      /></span>
-      <span v-if="stance.HasRefresh"
-        ><vue-simple-markdown
-          class="stance--format"
-          :source="stance.RefreshText"
-        />
-      </span>
-      <span v-if="stance.HasEffect"
-        ><vue-simple-markdown
-          class="stance--format"
-          :source="stance.EffectText"
-        />
-      </span>
-      <span v-if="stance.HasSpecial"
-        ><vue-simple-markdown
-          class="stance--format"
-          :source="stance.SpecialText"
-        />
-      </span>
+      <tooltipped-text
+        v-if="stance.HasAccumulate"
+        :input="stance.AccumulateArray"
+        :itallic="true"
+      />
+      <tooltipped-text
+        v-if="stance.Refresh"
+        :input="stance.RefreshArray"
+        :itallic="true"
+      />
+      <tooltipped-text
+        v-if="stance.HasEffect"
+        :input="stance.EffectArray"
+        :itallic="true"
+      />
+      <tooltipped-text
+        v-if="stance.HasSpecial"
+        :input="stance.SpecialArray"
+        :itallic="true"
+      />
     </div>
   </div>
 </template>
@@ -42,6 +39,7 @@
 <script>
 import Vue from "vue";
 import { Stance } from "@/class";
+import TooltippedText from "./TooltipTextFromArray.vue";
 
 export default Vue.extend({
   name: "stance-card",
@@ -55,7 +53,7 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: {},
+  components: { TooltippedText },
 });
 </script>
 

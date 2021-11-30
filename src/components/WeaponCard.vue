@@ -9,23 +9,15 @@
           {{ weapon.DamageType }} Damage, {{ weapon.SpeedHeader
           }}{{ weapon.RangeHeader }}<br />
           {{ weapon.HandsPhrase }}{{ weapon.CategoryHeader
-          }}<span v-for="keyword in weapon.Keywords"
-            ><vue-simple-markdown class="weapon--format"
-              ><tooltip :input="keyword" /><span
-                v-if="keyword != weapon.Keywords[weapon.Keywords.length - 1]"
-                >,
-              </span></vue-simple-markdown
-            ></span
-          >
-        </div></b
-      >
+          }}<tooltipped-text :input="weapon.Keywords" :commas="true" /></div
+      ></b>
     </div>
     <div class="weapon--content">
-      <span v-if="weapon.HasSpecial"
-        ><vue-simple-markdown
-          class="weapon--format"
-          :source="weapon.SpecialHeader"
-      /></span>
+      <tooltipped-text
+        v-if="weapon.HasSpecial"
+        :input="weapon.SpecialArray"
+        :itallic="true"
+      />
       <div style="height: 0.5em;" />
       <chart-table :chart="weapon.Chart" />
     </div>
@@ -36,7 +28,7 @@
 import Vue from "vue";
 import { Weapon } from "@/class";
 import ChartTable from "./ChartTable.vue";
-import Tooltip from "./TooltipParam.vue";
+import TooltippedText from "./TooltipTextFromArray.vue";
 
 export default Vue.extend({
   name: "weapon-card",
@@ -46,7 +38,7 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { ChartTable, Tooltip },
+  components: { ChartTable, TooltippedText },
 });
 </script>
 

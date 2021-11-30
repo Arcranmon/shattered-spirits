@@ -12,6 +12,8 @@
     <show-cards :inputs="chains" job="Weapon" />
     <div class="page--title">Polearms</div>
     <show-cards :inputs="polearms" job="Weapon" />
+    <div class="page--title">Spirit Weapons</div>
+    <show-cards :inputs="spirit_weapons" job="Weapon" />
   </div>
 </template>
 
@@ -42,6 +44,9 @@ export default Vue.extend({
     },
     unarmed: function () {
       return this.$store.getters.getWeaponByCategory("Unarmed");
+    },
+    spirit_weapons: function () {
+      return this.$store.getters.getSpiritWeapons();
     },
   },
 });

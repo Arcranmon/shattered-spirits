@@ -20,7 +20,7 @@ class Chart {
   }
   public Status(i: number): Array<string> {
     if (this._status[i] == "") return ["-"];
-    return this._status[i].split(" ");
+    return this._status[i].split("_");
   }
 
   public get HasDamage() {

@@ -69,11 +69,16 @@ class Weapon {
   get HasSpecial() {
     return this._special.length > 0;
   }
-  get SpecialHeader() {
-    return "**Special: **" + this._special;
+  get SpecialArray() {
+    return this.KeywordParsedArray(this._special, "**Special:** ");
   }
   get SpeedHeader() {
     return "Speed " + this._speed;
+  }
+
+  // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.
+  public KeywordParsedArray(input: string, header: string) {
+    return (header + input).split("_");
   }
 
   public static Deserialize(weaponData: IWeaponData): Weapon {

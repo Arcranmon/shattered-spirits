@@ -6,6 +6,7 @@ declare interface ITechData {
   damagetype: string;
   desc: string;
   effect: string;
+  imbue: string;
   keywords: Array<string>;
   move: string;
   name: string;

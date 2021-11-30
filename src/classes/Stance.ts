@@ -30,26 +30,31 @@ class Stance {
   public get HasAccumulate() {
     return this._accumulate.length > 0;
   }
-  public get AccumulateText() {
-    return "**Accumulate:** " + this._accumulate;
+  public get AccumulateArray() {
+    return this.KeywordParsedArray(this._accumulate, "**Accumulate:** ");
   }
   public get HasEffect() {
     return this._effect.length > 0;
   }
-  public get EffectText() {
-    return "**Effect:** " + this._effect;
+  public get EffectArray() {
+    return this.KeywordParsedArray(this._effect, "**Effect:** ");
   }
   public get HasRefresh() {
     return this._refresh.length > 0;
   }
-  public get RefreshText() {
-    return "**Refresh:** " + this._refresh;
+  public get RefreshArray() {
+    return this.KeywordParsedArray(this._refresh, "**Refresh:** ");
   }
   public get HasSpecial() {
     return this._special.length > 0;
   }
-  public get SpecialText() {
-    return "**Special:** " + this._special;
+  public get SpecialArray() {
+    return this.KeywordParsedArray(this._special, "**Special:** ");
+  }
+
+  // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.
+  public KeywordParsedArray(input: string, header: string) {
+    return (header + input).split("_");
   }
 
   public static Deserialize(stanceData: IStanceData): Stance {

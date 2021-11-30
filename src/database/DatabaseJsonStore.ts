@@ -24,6 +24,14 @@ export class DatabaseJsonStore extends VuexModule {
     };
   }
 
+  get getSpiritWeapons(): any {
+    return () => {
+      return Items.filter((x) => x.itemtype == "Spirit Weapon").map((x) =>
+        Weapon.Deserialize(<IWeaponData>x)
+      );
+    };
+  }
+
   get hasGlossaryItem(): any {
     return (inword: string) => {
       return Glossary.some((x) => x.keyword === inword);

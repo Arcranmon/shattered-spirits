@@ -26,11 +26,7 @@
           >{{ chart.Damage(index) }}
         </v-col>
         <v-col class="chart--cols chart--cols-right" cols="6"
-          ><span
-            ><span v-for="status in chart.Status(index)">
-              <tooltip :input="status" />&nbsp;</span
-            ></span
-          >
+          ><tooltipped-text :input="chart.Status(index)" />
         </v-col>
       </v-row>
     </div>
@@ -40,7 +36,7 @@
 <script>
 import Vue from "vue";
 import { Chart } from "@/class";
-import Tooltip from "./TooltipParam.vue";
+import TooltippedText from "./TooltipTextFromArray.vue";
 
 export default Vue.extend({
   name: "chart-table",
@@ -50,7 +46,7 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { Tooltip },
+  components: { TooltippedText },
 });
 </script>
 

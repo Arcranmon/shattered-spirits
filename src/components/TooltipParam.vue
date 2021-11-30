@@ -5,8 +5,9 @@
         ><template v-slot:activator="{ on, attrs }">
           <span v-bind="attrs" v-on="on"
             ><vue-simple-markdown :source="formatInput" /></span></template
-        ><span>{{ this.$store.getters.getGlossaryItem(input) }}</span>
-      </v-tooltip>
+        ><vue-simple-markdown
+          :source="this.$store.getters.getGlossaryItem(input)"
+      /></v-tooltip>
     </span>
     <span v-else><vue-simple-markdown :source="input" /></span>
   </span>
