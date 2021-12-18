@@ -18,7 +18,7 @@
         :itallic="true"
       />
       <tooltipped-text
-        v-if="stance.Refresh"
+        v-if="stance.HasRefresh"
         :input="stance.RefreshArray"
         :itallic="true"
       />

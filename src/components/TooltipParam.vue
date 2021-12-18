@@ -18,6 +18,7 @@ import Vue from "vue";
 import { store } from "@/store";
 export default Vue.extend({
   name: "tooltip",
+  components: {},
   props: {
     input: {
       type: String,

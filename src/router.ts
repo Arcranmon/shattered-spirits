@@ -7,8 +7,12 @@ import EquipmentMenu from "@/pages/equipment-menu/index.vue";
 import Earth from "@/pages/earth/index.vue";
 import Flame from "@/pages/flame/index.vue";
 import Metal from "@/pages/metal/index.vue";
+import Water from "@/pages/water/index.vue";
+import Wind from "@/pages/wind/index.vue";
+import Wood from "@/pages/wood/index.vue";
 import Weapons from "@/pages/weapons/index.vue";
 import BasicTechniques from "@/pages/basic-techs/index.vue";
+import Rules from "@/pages/rules/index.vue";
 
 Vue.use(Router);
 
@@ -58,7 +62,7 @@ const r = new Router({
       component: Weapons,
       name: "weapons",
       meta: {
-        title: "weapons",
+        title: "Weapons",
       },
     },
     {
@@ -83,6 +87,38 @@ const r = new Router({
       name: "metal",
       meta: {
         title: "Metal",
+      },
+    },
+    {
+      path: "/water",
+      component: Water,
+      name: "water",
+      meta: {
+        title: "Water",
+      },
+    },
+    {
+      path: "/wind",
+      component: Wind,
+      name: "wind",
+      meta: {
+        title: "Wind",
+      },
+    },
+    {
+      path: "/wood",
+      component: Wood,
+      name: "wood",
+      meta: {
+        title: "Wood",
+      },
+    },
+    {
+      path: "/rules",
+      component: Rules,
+      name: "rules",
+      meta: {
+        title: "Rules",
       },
     },
   ],

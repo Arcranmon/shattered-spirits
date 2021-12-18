@@ -25,6 +25,6 @@ a {
 .nav--text {
   font-family: $font--nav;
   color: white;
-  font-size: 2em;
+  font-size: 3em;
 }
 </style>

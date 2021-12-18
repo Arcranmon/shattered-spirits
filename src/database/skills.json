@@ -115,7 +115,7 @@
         "speed": "Instinctive",
         "range": "Self",
         "ap": 1,
-        "move": "Step",
+        "move": "None",
         "effect": "Change your current Stance or Style.",
         "imbue": "2 Momentum. Form Change is a Free Action."
       },
@@ -185,10 +185,10 @@
       {
         "name": "Counter",
         "desc": "You lean into an incoming attack, affording you the chance to strike.",
-        "type": "Maneuver",
+        "type": "Strike",
         "keywords": ["Punish"],
         "trigger": "You are Attacked by an adjacent enemy.",
-        "cost": "1 Punish, +1 Momentum if the Attack is Speed 4 or slower.",
+        "cost": "1 _Punish_, +1 _Punish_ if the Attack is Speed 4 or slower.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Increase the Attack Roll by 1. You may immediately Attack the triggering enemy with a Speed 3 or faster _Maneuver_.",
@@ -198,10 +198,10 @@
       {
         "name": "Opportunity Attack",
         "desc": "You capitalize on an opening, taking the chance to assault a foe.",
-        "type": "Maneuver",
+        "type": "Strike",
         "keywords": ["Punish"],
         "trigger": "An enemy within your Reach makes Movement that is not Safe.",
-        "cost": "1 Punish +1 Momentum if the Attack is Speed 3 or slower.",
+        "cost": "1 _Punish_ +1 _Punish_ if the Attack is Speed 3 or slower.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Immediately Attack the triggering enemy with a _Maneuver_.",
@@ -325,10 +325,11 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
         "speed": "5",
-        "area": "Blast 2",
+        "area": "Burst 1",
         "ap": 1,
         "move": "Step",
         "effect": "Attack all targets in the area with the below Profile.",
+        "boost": "2 Momentum. Area becomes Burst 2.",
         "chart": {
           "hit": [
             "Miss",
@@ -539,7 +540,7 @@
         "move": "Reposition",
         "effect": "The target square becomes _Rough Terrain_. The first Size 1 creature to move into that square without spending 1 Skill is immediately swallowed up by the earth, rapidly sinking into the Quicksand. That creature is _Restrained_ until they Sacrifice an Action and spend _Skill_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_. A creature _Restrained_ by Quicksand takes 3 True Damage during the Resolution Phase.",
         "special": "A character may only have three instances of Quickand at a time, regardless of their size.",
-        "boost": "3 Momentum. You instead create the Quicksand in a Blast 2 area. Quicksand now triggers off Size 2 creatures as well. A creature must pay 1 _Skill_ for every square of the Quicksand they move through to not sink into it."
+        "boost": "2 Momentum. You instead create the Quicksand in a Blast 2 area. Quicksand now triggers off Size 2 creatures as well. A creature must pay 1 _Skill_ for every square of the Quicksand they move through to not sink into it."
       },
       {
         "name": "Spikes",
@@ -585,7 +586,7 @@
         "range": "3",
         "cost": "2 Momentum, 1 Block",
         "trigger": "You or a creature within range is Attacked.",
-        "effect": "Create an Earthen Barricade adjacent to the triggering creature. Reduce the Attack Roll by 1, gaining an additional 1 Armor against the triggering Attack."
+        "effect": "Create an Earthen Barricade adjacent to the triggering creature. Reduce the Attack Roll by 1, and grant the triggering creature 1 Armor against the triggering Attack."
       },
       {
         "name": "Burrow",
@@ -615,20 +616,89 @@
   },
   {
     "category": "Earth",
-    "background": "tan",
+    "background": " #b7950b",
     "name": "Boulder",
     "flavor": "The Boulder Discipline focuses on powerful strkes with great stones, creating an avalanche of heavy, driving strikes.",
     "stances": [
       {
         "name": "Siege Stance",
         "desc": "Flinging boulders is a combat staple of Earthbonded, but some are true masters of it, flinging boulders in precise arcs as soon as they are formed.",
-        "accumulate": "Every time you take an Action that creates a Boulder, gain 1 _Momentum_.",
+        "accumulate": "Every time you take an Action that moves or creates a Boulder, gain 1 _Momentum_.",
         "refresh": "_Grit_ 1",
-        "effect": "Once per round in the Plotting phase, you may pay 1 _Momentum_ to change the speed of an action that creates a Boulder to Set-Up and attach it to an action that targets a Boulder.",
-        "special": "When you use Boulder Throw, instead of drawing a Line 6 from the Boulder, you may instead move it to an empty space within Range 6 of it. Attack using Boulder Throw's profile in a Burst 1 around the Boulder's new location."
+        "effect": "Once per round in the Plotting phase, you may pay 1 _Momentum_ to change the speed of an action that creates a Boulder to Set-Up and Attach it to an action that targets a Boulder.",
+        "special": "When you take the Boulder Throw action, instead of drawing a Line 6 from the Boulder you may instead move it to an empty space within Range 8 of it. Attack using Boulder Throw's profile in a Burst 1 around the Boulder's new location."
+      },
+      {
+        "name": "Colossus Stance",
+        "desc": "The Colossus specializes in heavy armor made of stone, limiting mobility but providing unparalled defense.",
+        "refresh": "_Block_ 1, _Grit_ 1, 2 _Ablative Armor_",
+        "effect": "At Refresh, you may choose to become _Slowed_ for the round. If you do, while you have any _Ablative Armor_, gain Resistance to all damage originating from 4 or more sqspaces away, but you are _Slowed_.",
+        "special": "If you have an Earth Enchant active at Refresh, instead gain 3 _Ablative Armor_."
+      },
+      {
+        "name": "Rubble Stance",
+        "desc": "The Rubble Stance creates stones only to destroy them, using the rubble for enhanced mobility.",
+        "accumulate": "Gain 1 _Momentum_ every time you Destroy a Boulder.",
+        "refresh": "_Punish_ 1, _Grit_ 1",
+        "effect": "Every time you Destroy a Boulder, you may immediately Move 2 in any direction. Every time you Destroy a Boulder, you may deal 2 damage to all adjacent creatures, excluding yourself."
       }
     ],
     "techniques": [
+      {
+        "name": "Stone Strike",
+        "keywords": ["Spirit", "Earth"],
+        "ap": 1,
+        "Range": "6",
+        "type": "Strike",
+        "move": "Reposition",
+        "speed": "3",
+        "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
+        "boost": "2 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
+        "effect": "Attack with the below Profile.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Miss",
+            "Miss",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 0, 0, 7, 7, 9, 9, 11, 11],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Expose_ 1 (_Grit_ or _Skill_)",
+            "_Expose_ 1 (_Grit_ or _Skill_)",
+            "_Expose_ 1 (_Grit_ or _Skill_)",
+            "_Expose_ 1 (_Grit_ or _Skill_)",
+            "_Daze_ (_Grit_ or _Skill_)",
+            "_Daze_ (_Grit_ or _Skill_)"
+          ]
+        }
+      },
+      {
+        "name": "Create Boulder",
+        "keywords": ["Spirit", "Earth"],
+        "speed": "5",
+        "ap": 1,
+        "desc": "Dirt and stone are formed into a mighty boulder, ready to be fired.",
+        "move": "Reposition",
+        "range": "3",
+        "type": "Maneuver",
+        "target": "An unoccupied space within range, or a Size 1 Earthen Feature.",
+        "effect": "Create a Size 1 Boulder in the target space, or replace the Earthen Feature with a Boulder.",
+        "imbue": "2 _Momentum_. This is 0 AP.",
+        "boost": "2 _Momentum_. Instead create a Size 2 Boulder, or create two additional Size 1 Boulders. This only costs 1 _Momentum_ if all Boulders created are replacing Earthen Features."
+      },
       {
         "name": "Boulder Throw",
         "speed": "4",
@@ -641,7 +711,7 @@
         "move": "Reposition",
         "effect": "Draw a Line 6 from the Target, Attacking with the below Profile against all targets in the area. Move the Boulder to the end of this Line after attacking.",
         "boost": "1 _Momentum_ for each Size about 1 the Target is.",
-        "special": "For each Size about 1 the Target is, this Strike deals +1 damage on a Graze, Hit, or Crit.",
+        "special": "For each Size above 1 the target Boulder is, this Strike deals +1 damage on a Graze, Hit, or Crit.",
         "damagetype": "Physical",
         "chart": {
           "hit": [
@@ -674,7 +744,7 @@
         }
       },
       {
-        "name": "Pinball",
+        "name": "Rockslide",
         "keywords": ["Spirit", "Earth", "Punish"],
         "trigger": "A creature enters a square adjacent to a Boulder within Range.",
         "ap": 0,
@@ -683,7 +753,7 @@
         "type": "Strike",
         "move": "None",
         "speed": "Reaction",
-        "desc": "A sudden shift of the boulder, throwing an enemy off-course.",
+        "desc": "A sudden shift of a boulder, throwing an enemy off-course.",
         "effect": "Attack the triggering target with the below Profile. If you _Push_ the target, move the Boulder so it is still adjacent to the target.",
         "special": "If this _Push_ moves the target adjacent to a new Boulder, you may pay the Cost again to repeat the Attack. A Boulder may only be used to attack once per turn.",
         "chart": {
@@ -691,7 +761,7 @@
             "Miss",
             "Miss",
             "Miss",
-            "Graze",
+            "Miss",
             "Graze",
             "Graze",
             "Hit",
@@ -700,7 +770,7 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 3, 4, 4, 5, 5, 5, 6, 6],
+          "damage": [0, 0, 0, 0, 3, 3, 4, 4, 4, 5, 5],
           "status": [
             "",
             "",
@@ -717,7 +787,183 @@
         }
       },
       {
-        "name": "Explosive Crush",
+        "name": "Avalanche",
+        "keywords": ["Spirit", "Earth"],
+        "target": "All Boulders within Range.",
+        "ap": 1,
+        "range": "8",
+        "type": "Strike",
+        "move": "Step",
+        "speed": "5",
+        "desc": "The Earthbound siezes control of all nearby boulders, flinging them in a great wave.",
+        "effect": "Move all Targets 1 space in the same direction. If this would move the Target into an occupied space, Attack with the below profile. If this attack Pushes, continue moving the Target.",
+        "boost": "X _Momentum_. For every Momentum spent, move all Targets 1 additional space, deal 1 additional damage, and increase this Attack's Push by 1.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 3, 3, 4, 4, 5, 5, 6, 6],
+          "status": [
+            "",
+            "",
+            "",
+            "_Push_ 1 (_Skill_ or _Grit_)",
+            "_Push_ 1 (_Skill_ or _Grit_)",
+            "_Push_ 2 (_Skill_ or _Grit_)",
+            "_Push_ 2 (_Skill_ or _Grit_)",
+            "_Push_ 3 (_Skill_ or _Grit_)",
+            "_Push_ 3 (_Skill_ or _Grit_)",
+            "_Push_ 4 (2 _Skill_ or 2 _Grit_)",
+            "_Push_ 4 (2 _Skill_ or 2 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Stone Shield",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "ap": 2,
+        "range": "4",
+        "target": "Unoccupied adjacent spaces within Range, or two adjacent Size 1 Earthen Feature.",
+        "type": "Maneuver",
+        "move": "Reposition",
+        "speed": "3",
+        "desc": "A slab of stone becomes a barrier, defending against ranged attacks.",
+        "effect": "Create a Line 2 Boulder in unoccupied spaces within Range. At the start of each of your Turns, you may Move the Stone Shield up to 3 spaces, and rotate it up to 90 degrees. The Stone Shield can move through occupied squares, but may not end its movement there.",
+        "special": "You may end this Enchant at the end of any of your turns and immediately fire the Stone Shield forward. Immediately use the Boulder Throw Technique with the Stone Shield, ignoring the typical Range of the ability.",
+        "boost": "2 _Momentum_. Instead create a Line 3 Boulder."
+      },
+      {
+        "name": "Stone Gauntlet",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "reqs": "Open Hand",
+        "ap": 1,
+        "type": "Maneuver",
+        "move": "None",
+        "speed": "2",
+        "desc": "A fist of cobblestones forms around your hand, making unnarmed strikes hit like an avalanche.",
+        "effect": "Equip the Stone Gauntlet Spirit Weapon in your Open Hand. This Enchant ends if you have no Stone Gauntlets Equipped.",
+        "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Stone Gauntlet in each."
+      },
+      {
+        "name": "Chip Damage",
+        "keywords": ["Spirit", "Earth"],
+        "trigger": "You take Damage while having any _Ablative Armor_ created by an Earth Technique.",
+        "cost": "1 _Punish_",
+        "area": "Burst 1",
+        "type": "Strike",
+        "speed": "Reaction",
+        "desc": "You manipulate the shards of your shattered armor, striking back against your enemies.",
+        "effect": "Attack all targets in the area with the below Profile.",
+        "boost": "X _Ablative Armor_. For each _Ablative Armor_ spent, deal 2 additional damage on a Hit or Crit.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Gain +1 _Ablative Armor_.",
+            "Gain +1 _Ablative Armor_.",
+            "Gain +1 _Ablative Armor_."
+          ]
+        }
+      },
+      {
+        "name": "Avalanche Charge",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Move",
+        "cost": "1 _Momentum_",
+        "ap": 1,
+        "move": "Shift",
+        "speed": "Set-Up",
+        "desc": "You charge forward, amplifying your speed by smashing through stones.",
+        "effect": "During the Movement granted by this effect you can Move through Boulders, destroying them in the process. Gain 1 _Ablative Armor_ for every Boulder destroyed in this way. If you Attach this to an Attack, deal +1 damage on a Hit or Crit for each Boulder destroyed in this way.",
+        "special": "All Movement granted by this Technique must be in a straight line, and must pass through at least one Boulder."
+      },
+      {
+        "name": "Earthfall",
+        "damagetype": "Weapon",
+        "desc": "A quick coat of stone covers the weapon, amplifying the weight of the strike and leaving rubble near the target.",
+        "keywords": ["Spirit", "Earth", "Weapon"],
+        "cost": "1 _Momentum_",
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Step",
+        "reqs": "_Versatile_ or _Heavy_ Melee Weapon Wielded",
+        "effect": "Attack using your weapon's Profile. If you Hit or Crit, you may add _Push_ 1 (Grit) to the attack. Regardless, create a Boulder in a square Adjacent to you."
+      },
+      {
+        "name": "Stonescreen",
+        "keywords": ["Spirit", "Earth"],
+        "target": "A Size 1 Boulder in Range.",
+        "ap": 1,
+        "range": "Melee",
+        "type": "Maneuver",
+        "move": "Step",
+        "speed": "2",
+        "desc": "With a powerful strike a boulder is shattered, staggering and pushing all nearby.",
+        "effect": "Destroy the Target. Attack in a Burst 1 around the Target using the below Profile. The area is _Veiled_ for two _Phases_.",
+        "boost": "X _Momentum_. The Range is instead X*2.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "_Push_ 1 (_Grit_)",
+            "_Push_ 1 (_Grit_)",
+            "_Push_ 1 (_Grit_)",
+            "_Push_ 1 and _Expose_ 1 (_Grit_)",
+            "_Push_ 1 and _Expose_ 1 (_Grit_)",
+            "_Push_ 1 and _Expose_ 1 (_Grit_)",
+            "_Push_ 1 and _Expose_ 1 (_Grit_)",
+            "_Push_ 2 and _Expose_ 2 (_Grit_)",
+            "_Push_ 2 and _Expose_ 2 (_Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Fracture",
         "keywords": ["Spirit", "Earth"],
         "target": "A Size 1 Boulder within Range.",
         "ap": 1,
@@ -757,33 +1003,256 @@
             "_Daze_ (_Grit_)"
           ]
         }
-      },
-      {
-        "name": "Create Boulder",
-        "keywords": ["Spirit", "Earth"],
-        "speed": "5",
-        "ap": 1,
-        "desc": "Dirt and stone are formed into a mighty boulder, ready to be fired.",
-        "move": "Reposition",
-        "range": "3",
-        "type": "Maneuver",
-        "target": "An unoccupied space within range, or a Size 1 Earthen Feature.",
-        "effect": "Create a Size 1 Boulder in the target space, or replace the Earthen Featuer with a Boulder.",
-        "imbue": "2 _Momentum_. This is 0 AP.",
-        "boost": "2 _Momentum_. Create a Size 2 Boulder, or three Size 1 Boulders."
-      },
-      {
-        "name": "Stone Gauntlet",
-        "keywords": ["Spirit", "Earth", "Enchant"],
-        "reqs": "Open Hand",
-        "ap": 1,
-        "type": "Maneuver",
-        "move": "None",
-        "speed": "3",
-        "desc": "A fist of cobblestones forms around your hand, making unnarmed strikes hit like an avalanche.",
-        "effect": "Equip the Stone Gauntlet Spirit Weapon in your Open Hand. This Enchant ends if you have no Stone Gauntlets equipped.",
-        "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Stone Gauntlet in each."
       }
     ]
+  },
+  {
+    "category": "Earth",
+    "background": "#ba4a00",
+    "name": "Grounding",
+    "flavor": "The Grounding Stance allows characters to anchor themselves to the earth, becoming unmovable and immensely strong.",
+    "stances": [
+      {
+        "name": "Heavy Stance",
+        "desc": "The Earthbonded amplifies their weight massively, becoming an unmoving bastion.",
+        "accumulate": "",
+        "refresh": "",
+        "effect": "",
+        "special": ""
+      },
+      {
+        "name": "Mighty Stance",
+        "desc": "By drawing upon the earth the Earthbonded's strength becomes inhuman and a mighty driving force.",
+        "accumulate": "",
+        "refresh": "",
+        "effect": "",
+        "special": ""
+      },
+      {
+        "name": "Titan Stance",
+        "desc": "A difficult Stance to master, the Titan Stance allows an Earthbonded to make use of impossibly large weapons with ease.",
+        "accumulate": "",
+        "refresh": "",
+        "effect": "",
+        "special": ""
+      }
+    ],
+    "techniques": []
+  },
+  {
+    "category": "Earth",
+    "background": "#cb4335",
+    "name": "Stoneheart",
+    "flavor": "The Stoneheart Stance channels the essence of the earth to make one's heart like stone and impenetrable to fear.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Earth",
+    "background": "#ab9478",
+    "name": "Tremorsight",
+    "flavor": "Tremorsight allows an Earthbonded to read the vibrations of the earth, providing perfect knowledge of everything touching the ground.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Flame",
+    "background": "#e67e22",
+    "name": "Blaze",
+    "flavor": "The Blaze Stance possesses the archetypal Flamebonded techniques, centered around manipulating and conjuring flames.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Flame",
+    "background": "#d35400",
+    "name": "Burn",
+    "flavor": "The Burn Stance makes use of flames in a more immediate fashion, wreathing the Flamebonded and those nearby in all-consuming flames.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Flame",
+    "background": "#ec7063",
+    "name": "Overheat",
+    "flavor": "The Overheat Stance overclocks the natural processes of the body, providing a Flamebonded exceptional physical performance at the expense of their physical well-being.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Flame",
+    "background": "#c0392b",
+    "name": "Bloodboil",
+    "flavor": "Those that practice Bloodboil manipulate the rage in themselves and others, allowing them to paint targets across the battlefield.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Flame",
+    "background": "#f5b041",
+    "name": "Flashsight",
+    "flavor": "Flashsight allows Flamebonded to see brief flashes of the future in flames, providing a limited sense of clairvoyance.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Metal",
+    "background": "#abb2b9",
+    "name": "Irondraw",
+    "flavor": "Irondraw allows a Metalbonded to push and pull metal, providing exceptional defense and offense so long as there is a source of metal nearby.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Metal",
+    "background": "#34495e",
+    "name": "Steelforge",
+    "flavor": "Steelforging changes to properties of nearby metal, whether that be making it razor-sharp or distorting its shape for an unexpected strike.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Metal",
+    "background": "#f7f9f9",
+    "name": "[Physical]",
+    "flavor": "",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Metal",
+    "background": "#85929e",
+    "name": "Soldertear",
+    "flavor": "Metalbonded can manipulate the grief and sorrow in others with Soldertear Technique, crushing their foes with feelings of hopelessness.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Metal",
+    "background": "#f7f9f9",
+    "name": "[Sensory]",
+    "flavor": "",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Water",
+    "background": "#2471a3",
+    "name": "Tide",
+    "flavor": "The Tide Stance focusing on pushing and pulling water, crushing foes in an oncoming wave while dictating the flow of a battle.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Water",
+    "background": "#d6eaf8",
+    "name": "Tundra",
+    "flavor": "Conjuring great constructs out of ice, masters of the Tundra Stance create weapons as beautiful as they are deadly.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Water",
+    "background": "#f1948a",
+    "name": "Bloodbind",
+    "flavor": "A skilled Waterbonded can control blood like any other liquid, either to staunch bleeding and heal or turn foes into gruesome puppets.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Water",
+    "background": "#5dade2",
+    "name": "Still Waters",
+    "flavor": "Water Spirits can easily drown out intense emotions, creating a sense of calm through Still Water Techniques.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Water",
+    "background": "#a9cce3",
+    "name": "Rippleread",
+    "flavor": "Water can reach into the past, allowing a Waterbonded to see the history of objects, or force a foe to briefly experience past trauma.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wind",
+    "background": "#c39bd3",
+    "name": "Gale",
+    "flavor": "The most common Windbound discipline, masters of the Gale Stance control powerful gusts of wind and create minor tornadoes.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wind",
+    "background": "#f4d03f",
+    "name": "Storm",
+    "flavor": "Channeling the essence of a thunderstorm, the Storm Stance creates powerful bursts of lighting that ripple over the battlefield.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wind",
+    "background": "#d5dbdb",
+    "name": "Zephyr",
+    "flavor": "The Zephyr Stance carries the body slightly aloft, allowing speed and reactions that push the limits of human capability.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wind",
+    "background": "#a569bd",
+    "name": "Howl",
+    "flavor": "Howl Stance masters channel ancient, primal fear of storms and winds to shake enemies to their core, sending them fleeing from the battle.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wind",
+    "background": "#e8daef",
+    "name": "Windwhisper",
+    "flavor": "The Windwhisper Stance reads currents in the air, allowing an incredible ability to predict and react to attacks.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wood",
+    "background": "#7e5109",
+    "name": "Bark",
+    "flavor": "The Bark Stance controls wood, allowing them to push the limits of wooden weapons and shift the shape of wood at-will.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wood",
+    "background": "#196f3d",
+    "name": "Growth",
+    "flavor": "By manipulating local plantlife, Growth Techniques can turn a barren field into one choked with aggressive, hostile plantlife.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wood",
+    "background": "#f7f9f9",
+    "name": "[Physical]",
+    "flavor": "",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wood",
+    "background": "#ff9ffc",
+    "name": "Bloom",
+    "flavor": "The Bloom Stance is one of the most beloved of the Wood Disciplines, as it can spark joy and happiness in themselves and others.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Wood",
+    "background": "#f7f9f9",
+    "name": "[Sensory]",
+    "flavor": "",
+    "stances": [],
+    "techniques": []
   }
 ]
