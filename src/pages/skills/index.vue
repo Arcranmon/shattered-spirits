@@ -1,10 +1,9 @@
 <template>
   <div style="padding: 1em;">
-    <h3 class="page--header">Flame Spirits</h3>
-    <vue-simple-markdown :source="flameText" />
+    <h3 class="page--header">Skills</h3>
     <div
-      class="fire--box"
-      v-for="disc in flameDiscs"
+      class="skill--box"
+      v-for="disc in skills"
       :style="{ 'background-color': disc.Background }"
     >
       <div class="page--title">{{ disc.Name }}</div>
@@ -28,28 +27,25 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
-import FlameText from "./flame.txt";
 import { store } from "@/store";
 export default Vue.extend({
-  name: "flame",
+  name: "skill",
   components: {
     ShowCards,
   },
   data: function () {
-    return {
-      flameText: FlameText,
-    };
+    return {};
   },
   computed: {
-    flameDiscs: function () {
-      return this.$store.getters.byDisciplineCategory("Flame");
+    skills: function () {
+      return this.$store.getters.byDisciplineCategory("Skill");
     },
   },
 });
 </script>
 
 <style scoped lang="scss">
-.fire--box {
+.skill--box {
   border-radius: 1em;
   border: $border--black-standard;
   margin-top: 1em;

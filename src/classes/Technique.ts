@@ -1,3 +1,5 @@
+/** @format */
+
 import { store } from "@/store";
 import { Chart } from "@/class";
 
@@ -168,7 +170,7 @@ class Technique {
   }
   public get RangeHeader() {
     if (this.Range.includes("Weapon")) return "Weapon Range";
-    else if (this.Range.length == 1) return "Range " + this._range;
+    else if (this.Range.length <= 2) return "Range " + this._range;
     else return this._range;
   }
 

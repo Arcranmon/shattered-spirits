@@ -92,7 +92,4 @@ export default Vue.extend({
   display: inline;
   white-space: normal !important;
 }
-.Earth {
-  background-color: $color--earth;
-}
 </style>

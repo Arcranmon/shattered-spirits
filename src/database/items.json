@@ -326,7 +326,7 @@
     "damagetype": "Physical",
     "range": "Melee",
     "keywords": ["Earth", "Heavy", "Siege"],
-    "special": "After you Hit or Crit with an Attack with a Stone Gauntlet you may Destroy that Stone Gauntlet to fire the fist into the enemy, dealing an additional 3 Damage and increasing the _Push_ by 3. Alternatively, when you take a Reaction with the Block Keyword, you may Destroy the Stone Gauntlet to increase your Armor by 1 against the triggering Attack.",
+    "special": "After you Hit or Crit with an Attack with a Stone Gauntlet you may Destroy that Stone Gauntlet to fire the fist into the enemy, dealing an additional 3 Damage and adding _Push_ 3. Alternatively, when you take a Reaction with the Block Keyword, you may Destroy the Stone Gauntlet to increase your Armor by 1 against the triggering Attack.",
     "chart": {
       "hit": [
         "Miss",
@@ -347,13 +347,53 @@
         "",
         "",
         "",
-        "_Push_ 1 (_Grit_)",
-        "_Push_ 1 (_Grit_)",
-        "_Push_ 2 (_Grit_)",
-        "_Push_ 2 (_Grit_)",
-        "_Push_ 2 (_Grit_)",
-        "_Push_ 3 (2 _Grit_)",
-        "_Push_ 3 (2 _Grit_)"
+        "",
+        "",
+        "_Stagger_ (_Grit_)",
+        "_Stagger_ (_Grit_)",
+        "_Stagger_ (_Grit_)",
+        "_Stagger_ (2 _Grit_)",
+        "_Stagger_ (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Flame Blade",
+    "itemtype": "Spirit Weapon",
+    "speed": 2,
+    "category": "Blade",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Flame", "Light", "Pierce 2"],
+    "special": "You may Destroy the Flame Blade when attacking to repeat your Strike against a creature adjacent to your Target.",
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 2, 2, 2, 3, 3, 5, 5, 8, 8],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Burn_ 1 (_Skill_)",
+        "_Burn_ 1 (_Skill_)",
+        "_Burn_ 1 (_Skill_)",
+        "_Burn_ 1 (_Skill_)",
+        "_Burn_ 2 (2 _Skill_)",
+        "_Burn_ 2 (2 _Skill_)"
       ]
     }
   }

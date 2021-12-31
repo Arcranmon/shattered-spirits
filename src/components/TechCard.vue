@@ -137,7 +137,4 @@ export default Vue.extend({
 .Support {
   border-bottom: 5px solid $color--support;
 }
-.Earth {
-  background-color: $color--earth;
-}
 </style>

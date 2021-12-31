@@ -13,6 +13,7 @@ import Wood from "@/pages/wood/index.vue";
 import Weapons from "@/pages/weapons/index.vue";
 import BasicTechniques from "@/pages/basic-techs/index.vue";
 import Rules from "@/pages/rules/index.vue";
+import Skills from "@/pages/skills/index.vue";
 
 Vue.use(Router);
 
@@ -119,6 +120,14 @@ const r = new Router({
       name: "rules",
       meta: {
         title: "Rules",
+      },
+    },
+    {
+      path: "/skills",
+      component: Skills,
+      name: "skills",
+      meta: {
+        title: "Skills",
       },
     },
   ],

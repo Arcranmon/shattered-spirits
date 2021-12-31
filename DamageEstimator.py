@@ -48,7 +48,7 @@ for object in data:
                             raise Exception("This Ability does not deal damage; cannot be analyzed.")
                         hit = technique["chart"]["hit"]
                         attack = technique["chart"]["damage"]
-                        if(technique["speed"] != "Reaction"):
+                        if(len(technique["speed"]) == 1):
                             speed = int(technique["speed"])
     else:
         if(object["itemtype"] == "Weapon" or object["itemtype"] == "Spirit Weapon"):
