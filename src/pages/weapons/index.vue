@@ -1,19 +1,33 @@
 <template>
   <div style="padding: 1em;">
-    <div class="page--title">Unarmed</div>
-    <show-cards :inputs="unarmed" job="Weapon" />
-    <div class="page--title">Artillery</div>
-    <show-cards :inputs="artillery" job="Weapon" />
-    <div class="page--title">Blades</div>
-    <show-cards :inputs="blades" job="Weapon" />
-    <div class="page--title">Blunts</div>
-    <show-cards :inputs="blunts" job="Weapon" />
-    <div class="page--title">Chains</div>
-    <show-cards :inputs="chains" job="Weapon" />
-    <div class="page--title">Polearms</div>
-    <show-cards :inputs="polearms" job="Weapon" />
-    <div class="page--title">Spirit Weapons</div>
-    <show-cards :inputs="spirit_weapons" job="Weapon" />
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Unarmed</div>
+      <show-cards :inputs="unarmed" job="Weapons" />
+    </div>
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Artillery</div>
+      <show-cards :inputs="artillery" job="Weapons" />
+    </div>
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Blades</div>
+      <show-cards :inputs="blades" job="Weapons" />
+    </div>
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Blunts</div>
+      <show-cards :inputs="blunts" job="Weapons" />
+    </div>
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Chains</div>
+      <show-cards :inputs="chains" job="Weapons" />
+    </div>
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Polearms</div>
+      <show-cards :inputs="polearms" job="Weapons" />
+    </div>
+    <div class="weapon--box" style="background-color: Gainsboro;">
+      <div class="page--title">Spirit Weapons</div>
+      <show-cards :inputs="spirit_weapons" job="Weapons" />
+    </div>
   </div>
 </template>
 
@@ -51,3 +65,11 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped lang="scss">
+.weapon--box {
+  border-radius: 1em;
+  border: $border--black-standard;
+  margin-top: 1em;
+}
+</style>

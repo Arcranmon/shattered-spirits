@@ -1,30 +1,32 @@
 <template>
-  <v-expansion-panels>
-    <v-expansion-panel-header>{{ job }}</v-expansion-panel-header>
-    <v-expansion-panel-content
-      >Blahblahblah
-      <v-container fluid>
-        <v-row>
-          <v-col
-            cols="12"
-            class="d-flex justify-center"
-            v-for="n in inputs"
-            v-bind:key="n.Name"
-            :lg="colWidth"
-          >
-            <div class="card--box" v-if="job == 'Stance'">
-              <stance-card :stance="n" :category="color_category" />
-            </div>
-            <div class="card--box" v-if="job == 'Tech'">
-              <tech-card :tech="n" :category="color_category" />
-            </div>
-            <div class="card--box" v-if="job == 'Weapon'">
-              <weapon-card :weapon="n" />
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-expansion-panel-content>
+  <v-expansion-panels flat style="padding: 3px;">
+    <v-expansion-panel style="background-color: inherit;">
+      <v-expansion-panel-header class="page--sub-title expand--header">{{
+        job
+      }}</v-expansion-panel-header>
+      <v-expansion-panel-content class="expand--body">
+        <v-container fluid>
+          <v-row>
+            <v-col
+              cols="12"
+              class="d-flex justify-center"
+              v-for="n in inputs"
+              v-bind:key="n.Name"
+              :lg="colWidth"
+            >
+              <div class="card--box" v-if="job == 'Stances'">
+                <stance-card :stance="n" :category="color_category" />
+              </div>
+              <div class="card--box" v-if="job == 'Techniques'">
+                <tech-card :tech="n" :category="color_category" />
+              </div>
+              <div class="card--box" v-if="job == 'Weapons'">
+                <weapon-card :weapon="n" />
+              </div>
+            </v-col>
+          </v-row> </v-container
+      ></v-expansion-panel-content>
+    </v-expansion-panel>
   </v-expansion-panels>
 </template>
 
@@ -67,9 +69,10 @@ export default Vue.extend({
 .card--box {
   width: 100%;
 }
-
-.card--button:hover {
-  transform: scale(1.01);
-  cursor: pointer;
+.expand--header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.15) 0 0);
+}
+.expand--body {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2) 0 0);
 }
 </style>

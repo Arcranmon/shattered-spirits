@@ -8,16 +8,14 @@
     >
       <div class="page--title">{{ disc.Name }}</div>
       <div class="page--description">{{ disc.Flavor }}</div>
-      <div class="page--sub-title">Stances</div>
       <show-cards
         :inputs="disc.Stances"
-        job="Stance"
+        job="Stances"
         :color_category="disc.Category"
       />
-      <div class="page--sub-title">Techniques</div>
       <show-cards
         :inputs="disc.Techniques"
-        job="Tech"
+        job="Techniques"
         :color_category="disc.Category"
       />
     </div>

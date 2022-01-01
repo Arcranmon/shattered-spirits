@@ -1,5 +1,4 @@
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
-import "./styles/variables.scss";
 
 import Vue from "vue";
 import router from "./router";
