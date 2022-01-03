@@ -1304,7 +1304,7 @@
         "area": "Line 3",
         "range": "Melee",
         "move": "None",
-        "effect": "Create a special zone of _Blazing_ spaces within the area. This zone moves with you and, at the beginning of a Phase, you may pay 1 _Momementum_ to change the direction of the zone. If a creature moves into this zone or ends a Turn in it, you may pay 1 _Punish_ to use the _Ignite_ Action as a Reaction against them. This special zone goes away at the end of the Round.",
+        "effect": "Create a special zone of _Blazing_ spaces within the area. This zone moves with you and, at the beginning of a Phase, you may pay 1 _Momementum_ to change the direction of the zone. If a creature enters this zone or starts a Turn in it, you may pay 1 _Punish_ to use the _Ignite_ Action as a Reaction against them. This special zone goes away at the end of the Round.",
         "boost": "2 _Momentum_. Area is instead Cone 3."
       },
       {
@@ -1840,7 +1840,7 @@
         "name": "Anchored Stance",
         "desc": "You are a master of anchoring yourself and are steady in your strikes, even without a true anchor.",
         "accumulate": "Whenever you Push, Pull, or Slide an enemy with a Metal Action, gain 1 _Momentum_.",
-        "effect": "You may treat yourself as an Anchor.",
+        "effect": "You may treat yourself as an _Anchor_ for all Actions that have an increased effect if you are near an _Anchor_.",
         "refresh": "1 _Block_, 1 _Grit_"
       },
       {
@@ -1854,8 +1854,9 @@
       {
         "name": "Magnetoflier Stance",
         "desc": "Using anchors to propel yourself to and from across the battlefield, you are as elusive as you are deadly.",
-        "accumulate": "Whenever you Push or Pull yourself with an Action with the Metal keyword gain 1 _Momentum_.",
-        "refresh": "1 _Evade_, 1 _Skill_"
+        "accumulate": "Whenever you _Push_ or _Pull_ yourself with an Action with the Metal keyword gain 2 _Momentum_.",
+        "refresh": "1 _Evade_, 1 _Skill_",
+        "effect": "If you end your turn within Range 5 of an Anchor, you may either _Push_ or _Pull_ yourself 2, with the _Anchor_ as the source of the effect."
       }
     ],
     "techniques": [
@@ -1895,6 +1896,7 @@
         "desc": "Metal flies forth from you, striking with telekinetic precision.",
         "effect": "Attack with the below Profile. Place the _Metal Source_ adjacent to the Target, unless you _Embed_.",
         "boost": "1 _Momentum_. Choose a Metal Source within Range that is not Embedded. Originate the attack from the Metal Source rather than yourself.",
+        "special": "Increase the damage by 1 for each _Anchor_ within Range 3 of you.",
         "chart": {
           "hit": [
             "Miss",
@@ -1909,7 +1911,7 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 0, 7, 8, 9, 10, 13, 14],
+          "damage": [0, 0, 0, 0, 0, 7, 8, 8, 9, 11, 11],
           "status": [
             "",
             "",
@@ -1946,15 +1948,14 @@
         "move": "Step",
         "target": "_Metal Source_ on Self.",
         "desc": "You fire off metal towards a creature, seeking to restrain and wrap it around them.",
-        "effect": "If you are targetting an inanimate _Metal Source_, _Pull_ 4. Otherwise, Attack with the below Profile. If this _Pull_ causes the Target to collide with an Obstacle they take 3 damage and are knocked _Prone_ (_Skill_ negates).",
-        "special": "You may instead Target an Anchor of any Size. If you do, _Pull_ yourself 4 towards the Target.",
-        "boost": "X _Momentum_. Increase all _Pull_ effects by 1 or increase the Size of the Target by 1 for each _Momentum_ spent. Reduce the cost to _Boost_ by 1 for each Anchor within Range 3 of you.",
+        "effect": "Attack with the below Profile. Place the _Metal Source_ adjacent to the Target unless you _Embed_.",
+        "boost": "1 _Momentum_. Choose a Metal Source within Range that is not Embedded. Originate the attack from the Metal Source rather than yourself.",
         "chart": {
           "hit": [
             "Miss",
             "Miss",
-            "Graze",
-            "Graze",
+            "Miss",
+            "Miss",
             "Hit",
             "Hit",
             "Hit",
@@ -1966,17 +1967,30 @@
           "status": [
             "",
             "",
-            "_Pull_ 1 (_Grit_)",
-            "_Pull_ 1 (_Grit_)",
-            "_Pull_ 2 (_Grit_)",
-            "_Pull_ 2 (_Grit_)",
-            "_Pull_ 3 (_Grit_)",
-            "_Pull_ 3 (_Grit_)",
-            "_Pull_ 4 (2 _Grit_)",
-            "_Pull_ 4 (2 _Grit_)",
-            "_Pull_ 4 (2 _Grit_)"
+            "",
+            "",
+            "_Embed_ OR _Hobble_ 1 (_Skill_)",
+            "_Embed_ OR _Hobble_ 1 (_Skill_)",
+            "_Embed_ AND _Hobble_ 1 (_Skill_)",
+            "_Embed_ AND _Hobble_ 1 (_Skill_)",
+            "_Embed_ AND _Hobble_ 2 (2 _Skill_)",
+            "_Embed_ AND _Hobble_ 2 (2 _Skill_)",
+            "_Embed_ AND _Hobble_ 2 (2 _Skill_)"
           ]
         }
+      },
+      {
+        "name": "Storm of Steel",
+        "keywords": ["Spirit", "Metal", "Enchant"],
+        "range": "3",
+        "type": "Maneuver",
+        "speed": "2",
+        "move": "Step",
+        "target": "Size 1 or smaller _Metal Source_ within Range.",
+        "desc": "You pull metal into a rapid orbit about yourself, creating a flurry of deadly metal.",
+        "effect": "Destroy the Target. Create a Burst 1 around you that moves with you and persists until this Enchant ends. Any creature that enters this Area or starts a Turn there takes 3 damage. If they end their turn there they gain _Expose_ 1 (_Grit_ negates).",
+        "special": "You may instead originate this Action from an _Anchor_ within Range 6, treating the _Anchor_ as the origin for the Storm of Steel. If you do, Boost costs 2 less and does not require any additional _Metal Source_. You are Immune to all effects of this Storm of Steel.",
+        "boost": "2 _Momentum_. If there is a second Size 1 _Metal Source_ or a Size 2 _Metal Source_ within Range, Destroy it. Increase the Area to Burst 2."
       },
       {
         "name": "Attract",
@@ -2029,7 +2043,8 @@
         "cost": "1 _Momentum_",
         "target": "Creature with a _Metal Source_ or an _Anchor_.",
         "desc": "You bond yourself to a metal source, either tethering it close to you or keeping it forcefully away.",
-        "effect": "If the Target is a creature, choose one: Either all Movement towards you costs double and it costs 1 more to Negate all your _Push_ effects or all Movement away from you costs double and it costs 1 more to Negate all your _Pull_ effects. If the Target is an _Anchor_, you are instead Immune to all _Push_, _Pull_, and _Slide_ effects while within Range 3 of the _Anchor_. This _Enchant_ ends if the Target removes the _Metal Source_ or the _Anchor_ is destroyed."
+        "effect": "If the Target is a creature, choose one: Either all Movement towards you costs double and it costs 1 more to Negate all your _Push_ effects or all Movement away from you costs double and it costs 1 more to Negate all your _Pull_ effects. If the Target is an _Anchor_, you are instead Immune to all _Push_, _Pull_, and _Slide_ effects while within Range 3 of the _Anchor_. This _Enchant_ ends if the Target removes the _Metal Source_ or the _Anchor_ is destroyed.",
+        "boost": "2 _Momentum_. If there is an _Anchor_ within Range and you target a creature, instead create a bond between the _Anchor_ and the creature."
       },
       {
         "name": "Repel",
@@ -2073,6 +2088,89 @@
         }
       },
       {
+        "name": "Seize",
+        "keywords": ["Spirit", "Metal"],
+        "range": "5",
+        "type": "Maneuver",
+        "speed": "3",
+        "move": "Reposition",
+        "target": "A Size 1 creature with a _Metal Source_.",
+        "cost": "3 _Momentum_",
+        "desc": "You hold a creature aloft with magnetic force, leaving them defenseless.",
+        "effect": "Attack with the below Profile.",
+        "boost": "X _Momentum_. Increase The _Slide_ by 1 per _Momentum_ spent. Reduce the cost to _Boost_ by 1 for each Anchor within Range 3 of you.",
+        "special": "The duration of the _Restrain_ depends on your Attack Roll. On a Graze, _Restrain_ until the end of the current Phase. On a Hit, _Restrain_ until the end of the current Round. On a Crit, _Restrain_ until the start of this Phase next Round.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "_Slide_ 3",
+            "_Slide_ 3",
+            "_Restrain_ AND _Slide_ 3 (_Grit_)",
+            "_Restrain_ AND _Slide_ 3 (_Grit_)",
+            "_Restrain_ AND _Slide_ 3 (_Grit_)",
+            "_Restrain_ AND _Slide_ 3 (_Grit_)",
+            "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (2 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Tear Away",
+        "keywords": ["Spirit", "Metal"],
+        "range": "3",
+        "type": "Maneuver",
+        "speed": "4",
+        "move": "Shift",
+        "target": "Metal weapon or armor on a creature.",
+        "desc": "You tear away an enemy's defenses, either disarming them or removing a portion of their armor.",
+        "cost": "1 _Momentum_",
+        "effect": "Attack with the below Profile. If you _Disarm_ you may place the weapon in an unoccupied square adjacent to yourself or immediately Equip it in an open hand. If you _Shred_, create a _Metal Source_ in an unoccupied adjacent square adjacent to you for each instance of _Shred_ inflicted.",
+        "special": "The Status of this attack depends on if you target a weapon or armor. If you target a weapon, inflict _Impair_ 1 on a Graze, _Impair_ 2 on a Hit, and _Disarm_ on a _Crit_. If you target armor, inflict _Expose_ 1 on a Graze, _Expose_ 2 or _Shred_ 1 on a Hit, and _Shred_ 2 on a Crit. All Statuses are Negated by _Grit_, with a Crit requiring 2 _Grit_ to negate.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "",
+            "Weapon: _Impair_ 1 (_Grit_) / Armor: _Expose_ 1 (_Grit_)",
+            "_Push_ 2 (_Grit_)",
+            "_Push_ 2 (_Grit_)",
+            "_Push_ 3 (_Grit_)",
+            "_Push_ 3 (_Grit_)",
+            "_Push_ 4 (2 _Grit_)",
+            "_Push_ 4 (2 _Grit_)",
+            "_Push_ 4 (2 _Grit_)"
+          ]
+        }
+      },
+      {
         "name": "Magnetic Ward",
         "keywords": ["Spirit", "Metal"],
         "trigger": "You are Attacked with metal.",
@@ -2092,24 +2190,45 @@
     "flavor": "Steelforging changes to properties of nearby metal, whether that be making it razor-sharp or distorting its shape for an unexpected strike.",
     "stances": [
       {
+        "name": "Adamantite Stance",
+        "desc": "You reinforce all nearby metal, making it nigh-indestructible.",
+        "accumulate": "If you are wearing metal Armor, gain 1 _Momentum_ Refresh.",
+        "refresh": "_Block_ 1, _Grit_ 1",
+        "effect": "All Metal Obstacles within a Burst 3 gain Sturdy. In addition, Negating _Damaged_ and _Shred_ costs 1 less for yourself and all allies in a Burst 3, so long as the Weapon or Armor is made of metal."
+      },
+      {
         "name": "Steelsnake Stance",
         "desc": "The Steelnake changes the shape of their weapons on the fly, allowing strikes from impossible angles.",
         "refresh": "_Punish_ 1, _Skill_ 1",
-        "effect": "When you Miss or Graze with a Strike with a melee weapon you may reshape your weapon to attempt to strike again. Immediately reroll the Attack, using the higher of the two results. After the attack is resolved, the weapon becomes _Damaged_. Weapons _Damaged_ in this way return to normal at the end of combat.",
-        "special": "You may also _Damage_ your metal melee weapon after making your Attack Roll to add _Sure Hit_ to the attack."
+        "effect": "When you Miss or Graze with a Strike with a melee weapon you may reshape your weapon to attempt to strike again. Immediately gain 2 _Momentum_, reroll the Attack, using the higher of the two results. After the attack is resolved, the weapon becomes _Damaged_. Weapons _Damaged_ in this way return to normal at the end of combat.",
+        "special": "You may also Damage your metal melee weapon after making your Attack Roll to add _Sure Hit_ to the attack."
       }
     ],
     "techniques": [
       {
-        "name": "Forge",
+        "name": "Forged Strike",
+        "keywords": ["Spirit", "Metal", "Weapon", "Pierce 2"],
+        "ap": 1,
+        "desc": "You amplify all properties of your weapon, drawing upon the essence within for a devastating strike.",
+        "reqs": "Metal Weapon Equipped.",
+        "speed": "Weapon",
+        "cost": "1 _Momemtum_",
+        "type": "Strike",
+        "range": "Weapon",
+        "move": "Reposition",
+        "effect": "Attack using your Weapon's Profile. Increase the damage by 1 on a Hit or Crit and the cost to Negate any Status inflicted by the weapon by 1."
+      },
+      {
+        "name": "Forge Armor",
         "keywords": ["Spirit", "Metal"],
-        "requirement": "Can only be Attached to a Strike with a metal Weapon.",
-        "type": "Maneuver",
-        "speed": "Set-Up",
-        "move": "Step",
-        "desc": "The weapon is enhanced with supernatural strength and sharpness, allowing it to cut deeper than should be possible.",
-        "effect": "The Attack gains _Piercing_ 2 and extends its Critical range by 1. On a Critical, the attack reduces the target's Armor by 1 for the rest of the combat. If the target has no Armor, they instead take +2 Damage on a Critical.",
-        "special": "When used on a Damaged Weapon, instead remove the Damaged tag for the remainder of the combat. At the end of the combat, the weapon regains gains the Damaged tag."
+        "ap": 1,
+        "desc": "You take control of a nearby source of armor, shaping and forging it into armor plating on the fly.",
+        "type": "Defensive",
+        "target": "A Size 1 _Metal Source_.",
+        "speed": "3",
+        "range": "5",
+        "move": "Reposition",
+        "effect": "Destroy the Target. Choose a friendly creature within Range or yourself. Increase their Armor by 1 for the remainder of the combat, up to a maximum total Armor of 4."
       }
     ]
   },
