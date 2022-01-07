@@ -12,6 +12,7 @@
         :inputs="disc.Stances"
         job="Stances"
         :color_category="disc.Category"
+        display_text="Styles"
       />
       <show-cards
         :inputs="disc.Techniques"

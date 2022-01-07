@@ -2,7 +2,7 @@
   <div>
     <div class="page--title">{{ basics.Name }}</div>
     <div class="page--description">{{ basics.Flavor }}</div>
-    <show-cards :inputs="basics.Techniques" job="Tech" />
+    <show-cards :inputs="basics.Techniques" job="Techniques" />
   </div>
 </template>
 

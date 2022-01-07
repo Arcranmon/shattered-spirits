@@ -2,7 +2,7 @@
   <v-expansion-panels flat style="padding: 3px;">
     <v-expansion-panel style="background-color: inherit;">
       <v-expansion-panel-header class="page--sub-title expand--header">{{
-        job
+        dropName
       }}</v-expansion-panel-header>
       <v-expansion-panel-content class="expand--body">
         <v-container fluid>
@@ -51,6 +51,11 @@ export default Vue.extend({
       type: String,
       required: false,
     },
+    display_text: {
+      type: String,
+      required: false,
+      default: "None",
+    },
   },
   components: {
     TechCard,
@@ -60,6 +65,10 @@ export default Vue.extend({
   computed: {
     colWidth: function () {
       return Math.max(12 / this.inputs.length, 4);
+    },
+    dropName: function () {
+      if (this.display_text == "None") return this.job;
+      else return this.display_text;
     },
   },
 });
@@ -71,6 +80,8 @@ export default Vue.extend({
 }
 .expand--header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.15) 0 0);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 .expand--body {
   background-image: linear-gradient(rgba(255, 255, 255, 0.2) 0 0);
