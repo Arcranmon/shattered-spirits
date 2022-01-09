@@ -52,9 +52,10 @@ for object in data:
                             speed = int(technique["speed"])
     else:
         if(object["itemtype"] == "Weapon" or object["itemtype"] == "Spirit Weapon"):
-            hit = object["chart"]["hit"]
-            attack = object["chart"]["damage"]
-            speed = int(object["speed"])
+            if(object["name"] == name):
+                hit = object["chart"]["hit"]
+                attack = object["chart"]["damage"]
+                speed = int(object["speed"])
 
 
 if(attack == []):
