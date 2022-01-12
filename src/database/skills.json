@@ -2427,7 +2427,7 @@
         "refresh": "_Evade_ 1, _Grit_ 1",
         "accumulate": "Whenever a creature is _Pushed_, _Pulled_, or knocked _Prone_ on _Wet_ Terrain gain 1 _Momentum_, up to a maximum of 4 per round.",
         "effect": "Any time you Hit or Crit with a Water Attack you may make a space adjacent to the Target _Wet_.",
-        "special": "You ignore the effects of _Wet_ Terrain."
+        "special": "You may ignore the effects of _Wet_ Terrain."
       },
       {
         "name": "Flowing Stance",
@@ -2735,8 +2735,57 @@
     "background": "#d6eaf8",
     "name": "Tundra",
     "flavor": "Conjuring great constructs out of ice, masters of the Tundra Stance create weapons as beautiful as they are deadly.",
-    "stances": [],
-    "techniques": []
+    "stances": [
+      {
+        "name": "Skating Stance",
+        "desc": "The ice is your home, allowing you to slip and slide with ethereal grace.",
+        "refresh": "_Evade_ 1, _Skill_ 1",
+        "accumulate": "Whenever you start a Turn on _Icy_ Terrain, gain 1 _Momentum_.",
+        "effect": "All Movement you make on _Icy_ Terrain is _Safe_.",
+        "special": "You may ignore the effects of _Icy_ Terrain."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Icicle Strike",
+        "desc": "You harden water into jagged blades before sending them flying towards a foe.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Water"],
+        "speed": "3",
+        "range": "6",
+        "effect": "Attack with the below Profile.",
+        "boost": "2 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Miss",
+            "Miss",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 0, 0, 6, 7, 8, 10, 12, 16],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Frost_ 1 (_Skill_)",
+            "_Frost_ 1 (_Skill_)",
+            "_Frost_ 1 (_Skill_)",
+            "_Frost_ 2 (_Skill_)",
+            "_Frost_ 2 (_Skill_)",
+            "_Frost_ 2 (_Skill_)"
+          ]
+        }
+      }
+    ]
   },
   {
     "category": "Water",
@@ -2876,7 +2925,7 @@
         "desc": "Like wheat before a scythe, so are foes before your great weapon.",
         "accumulate": "Whenever you defeat an enemy with a Heavy Melee Weapon, gain 1 _Momentum_.",
         "refresh": "_Punish_ 1",
-        "effect": "When you defeat an enemy with a Heavy Melee Weapon you may pay 1 _Momentum_ to deal damage to a creature within your Weapon's reach equal to any excess damage dealt to the defeated creature (_Evade_ negates)."
+        "effect": "When you defeat an enemy with a Heavy Melee Weapon you may pay 1 _Momentum_ to deal damage to a creature within your Weapon's reach equal to any excess damage dealt to the defeated creature (_Evade_ negates). You may continue paying _Momementum_ to repeat this effect until there is no Damage remaining."
       }
     ],
     "techniques": [
