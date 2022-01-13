@@ -7,7 +7,6 @@
     "techniques": [
       {
         "name": "Quick Strike",
-        "damagetype": "Weapon",
         "desc": "A quick blow, sacrificing striking strength for speed.",
         "type": "Strike",
         "speed": "Weapon-1",
@@ -19,7 +18,6 @@
       },
       {
         "name": "Strike",
-        "damagetype": "Weapon",
         "desc": "A standard strike, balancing damage and speed.",
         "type": "Strike",
         "speed": "Weapon",
@@ -31,7 +29,6 @@
       },
       {
         "name": "Strong Strike",
-        "damagetype": "Weapon",
         "desc": "A mighty blow, sacrificing power for speed.",
         "type": "Strike",
         "speed": "Weapon+1",
@@ -48,7 +45,8 @@
         "speed": "See Movement",
         "range": "Self",
         "ap": 1,
-        "move": "The movement granted by Run determines its Speed, as follows:\n* Reposition: Speed 1\n* Shift: Speed 2\n* Sprint: Speed 3\n* Dash: Speed 4"
+        "move": "The movement granted by Run determines its Speed, as follows:\n* Reposition: Speed 1\n* Shift: Speed 2\n* Sprint: Speed 3\n* Dash: Speed 4",
+        "boost": "1 _Momentum_. You may _Leap_ for a total of two spaces in this Movement."
       },
       {
         "name": "Disengage",
@@ -58,17 +56,8 @@
         "speed": "See Movement",
         "range": "Self",
         "ap": 1,
-        "move": "The movement granted by Disengage determines its Speed, as follows:\n* Step: Speed 2\n* Reposition: Speed 3\n* Shift: Speed 4"
-      },
-      {
-        "name": "Leap",
-        "desc": "A quick hop, allowing one to avoid hazardous terrain.",
-        "type": "Move",
-        "speed": "4",
-        "range": "Self",
-        "ap": 1,
-        "move": "Reposition",
-        "special": "A characer counts as _Flying_ for this action, but Melee Attacks do not receive Disadvantage."
+        "move": "The movement granted by Disengage determines its Speed, as follows:\n* Step: Speed 2\n* Reposition: Speed 3\n* Shift: Speed 4",
+        "boost": "1 _Momentum_. You may _Leap_ for a single space in this Movement."
       },
       {
         "name": "Interact",
@@ -79,7 +68,7 @@
         "ap": 1,
         "move": "Reposition",
         "effect": "Interact is an Action that isn't covered by the other Actions in the game. Generally it involves interacting with the terrain in a distinct way, dealing with persistent combat effects, or fulfilling objectives on the battlefield. The Speed, Range, and Movement of this Action can vary depending on what is being undertaken. Your GM will determine the effects of Interact, with common examples listed in [MAKE EXAMPLES OF INTERACTS] here.",
-        "special": "You may _Improvise_ Interact for no _Momentum_. However, you may pay the full 2 _Momentum_ cost and, instead of replacing the Action, treat Interact as a 0 AP Set-Up or Follow-Up Action. When used in this way, the Movement of Interact becomes Step."
+        "special": "You may _Improvise_ Interact for no _Momentum_. However, you may pay the full 2 _Momentum_ cost and, instead of replacing the Action, treat Interact as a 0 AP Set-Up or Follow-Up Action. When used in this way, the Movement of Interact becomes None."
       },
       {
         "name": "Form Change",
@@ -90,7 +79,7 @@
         "ap": 1,
         "move": "None",
         "effect": "Change your current Stance or Style.",
-        "imbue": "2 Momentum. Form Change is a Free Action."
+        "imbue": "Any 2 of _Momentum_ or _Focus_. Form Change is a Free Action."
       },
       {
         "name": "Draw",
@@ -111,7 +100,7 @@
         "range": "Self",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Gain 1 Dodge Token."
+        "effect": "Gain 2 _Reflex_."
       },
       {
         "name": "Dodge",
@@ -119,7 +108,7 @@
         "type": "Defensive",
         "keywords": ["Evade"],
         "trigger": "You are Attacked.",
-        "cost": "1 Dodge",
+        "cost": "2 _Reflex_",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Force the attacker to reroll the attack. They must use the new result."
@@ -132,7 +121,7 @@
         "range": "Self",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Gain 1 Block Token."
+        "effect": "Gain 2 _Grit_."
       },
       {
         "name": "Deflect",
@@ -140,20 +129,20 @@
         "type": "Defensive",
         "keywords": ["Block"],
         "trigger": "You are Attacked.",
-        "cost": "1 Block",
+        "cost": "2 _Grit_.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Reduce the Attack Roll by 1."
       },
       {
-        "name": "Find Opening",
-        "desc": "You wait for an opening, preparing to strike.",
-        "type": "Maneuver",
-        "speed": "2",
+        "name": "Center",
+        "desc": "You calm your mind, focusing on the battle at hand.",
+        "type": "Defensive",
+        "speed": "3",
         "range": "Self",
         "ap": 1,
-        "move": "Step",
-        "effect": "Gain 1 Punish Token."
+        "move": "Reposition",
+        "effect": "Gain 2 _Focus_."
       },
       {
         "name": "Counter",
@@ -161,11 +150,11 @@
         "type": "Strike",
         "keywords": ["Punish"],
         "trigger": "You are Attacked by an adjacent enemy.",
-        "cost": "1 _Punish_, +1 _Punish_ if the Attack is Speed 4 or slower.",
+        "cost": "1 _Momentum_, +1 _Momentum_ if the Attack is Speed 4 or slower.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Increase the Attack Roll by 1. You may immediately Attack the triggering enemy with a Speed 3 or faster _Maneuver_.",
-        "boost": "1 Momentum. You may instead Attack with a _Strike_.",
+        "boost": "1 _Momentum_. You may instead Attack with a _Strike_.",
         "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None."
       },
       {
@@ -174,11 +163,11 @@
         "type": "Strike",
         "keywords": ["Punish"],
         "trigger": "An enemy within your Reach makes Movement that is not Safe.",
-        "cost": "1 _Punish_ +1 _Punish_ if the Attack is Speed 3 or slower.",
+        "cost": "1 _Momentum_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Immediately Attack the triggering enemy with a _Maneuver_.",
-        "boost": "1 Momentum. You may instead Attack with a _Strike_.",
+        "boost": "1 _Momentum_. You may instead Attack with a _Strike_.",
         "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None."
       },
       {
@@ -209,14 +198,14 @@
             "",
             "",
             "",
-            "_Pull_ 1 (_Skill_)",
-            "_Pull_ 1 (_Skill_)",
-            "_Pull_ 2 OR _Grapple_ (_Skill_)",
-            "_Pull_ 2 OR _Grapple_ (_Skill_)",
-            "_Pull_ 2 OR _Grapple_ (_Skill_)",
-            "_Pull_ 2 OR _Grapple_ (_Skill_)",
-            "_Pull_ 2 AND _Grapple_ (_Skill_)",
-            "_Pull_ 2 AND _Grapple_ (_Skill_)"
+            "_Pull_ 1 (_Grit_)",
+            "_Pull_ 1 (_Grit_)",
+            "_Pull_ 2 OR _Grapple_ (_Grit_)",
+            "_Pull_ 2 OR _Grapple_ (_Grit_)",
+            "_Pull_ 2 OR _Grapple_ (_Grit_)",
+            "_Pull_ 2 OR _Grapple_ (_Grit_)",
+            "_Pull_ 2 AND _Grapple_ (_Grit_)",
+            "_Pull_ 2 AND _Grapple_ (_Grit_)"
           ]
         }
       },
@@ -270,7 +259,7 @@
         "name": "Fortress Stance",
         "desc": "A powerful stance that constructs an unassailable fortress of earth and stone.",
         "accumulate": "At Refresh, gain 1 _Momentum_ for every adjacent Earthen Barricade beyond the first, to a maximum of 2.",
-        "refresh": "_Block_ 1, _Grit_ 1",
+        "refresh": "_Grit_ 3",
         "effect": "Adjacent Earthen Barriers become _Sturdy_.",
         "special": "Whenever you are adjacent to an Earthen Barricade and are Attacked, you may pay 1 _Momentum_ to destroy the Earthen Barricade, Blocking and gaining 1 Armor against the triggering Attack."
       },
@@ -278,15 +267,15 @@
         "name": "Roiling Stance",
         "desc": "The ground around those that have mastered the Roiling Stance is nearly a liquid, quaking and shaking constantly.",
         "accumulate": "Gain 1 _Momentum_ for every hostile creature beyond the first in your Burst at Resolution, up to a maximum of 3.",
-        "refresh": "Grit 1",
+        "refresh": "_Grit_ 1, _Focus_ 1",
         "effect": "Create a Burst 2 centered on you that moves with you. Creatures treat the spaces in this Burst around you as _Rough_.",
-        "special": "Whenever you _Expose_ a creature within the Burst created by this effect you may pay 1 _Momentum_ to instead inflict _Prone_."
+        "special": "Whenever you _Expose_ a creature within the Burst created by this effect you may pay 1 _Momentum_ to instead inflict _Prone_ (_Reflex_ negates)."
       },
       {
         "name": "Sculptor Stance",
         "desc": "A well-practiced Earthbonded can shape earth and stone as easily as clay, reshaping the field around them.",
         "accumulate": "Gain 1 _Momentum_ for every Action you take that creates earthen _Rough Terrain_ or _Dangerous Terrain_.",
-        "refresh": "_Skill_ 1",
+        "refresh": "_Reflex_ 2, _Focus_ 1",
         "effect": "At Refresh, you may change 2 _Rough or _Jagged_ spaces made of earthen materials into your choice of Normal, _Rough_, or _Jagged_. These spaces are chosen independently, and can be changed into different types.",
         "special": "You may ignore _Rough_ and _Jagged_ Terrain made of earthen materials while in this Stance."
       }
@@ -294,7 +283,6 @@
     "techniques": [
       {
         "name": "Collapse",
-        "damagetype": "Physical",
         "desc": "A powerful technique that creates a cave below the ground, then collapses the ground downwards, sending enemies into a painful fall.",
         "keywords": ["Spirit", "Earth", "Groundsource", "Priority"],
         "type": "Strike",
@@ -323,21 +311,20 @@
           "status": [
             "",
             "",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 and _Hobble_ 1 (_Skill_)",
-            "_Expose_ 1 and _Hobble_ 1 (_Skill_)",
-            "_Expose_ 2 and _Prone_ (2 _Skill_)",
-            "_Expose_ 2 and _Prone_ (2 _Skill_)",
-            "_Expose_ 2 and _Prone_ (2 _Skill_)",
-            "_Expose_2, _Prone_, and _Daze_ (3 _Skill_)",
-            "_Expose_2, _Prone_, and _Daze_ (3 _Skill_)"
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_), _Break_ (2 _Focus_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_), _Break_ (2 _Focus_)"
           ]
         }
       },
       {
         "name": "Jagged Earth",
-        "damagetype": "Physical",
         "desc": "Blades of the earth appear out of nowhere, suddenly striking a foe.",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
@@ -371,15 +358,14 @@
             "",
             "",
             "",
-            "_Bleed_ 1 (_Skill_)",
-            "_Bleed_ 1 (_Skill_)",
-            "_Bleed_ 1 (_Skill_)"
+            "_Bleed_ 1 (1 _Reflex_)",
+            "_Bleed_ 1 (1 _Reflex_)",
+            "_Bleed_ 1 (1 _Reflex_)"
           ]
         }
       },
       {
         "name": "Earth Tomb",
-        "damagetype": "Physical",
         "keywords": ["Spirit", "Earth"],
         "desc": "By using nearby earth and stone the Earthbonded seals their foe away.",
         "type": "Strike",
@@ -388,7 +374,7 @@
         "ap": 1,
         "move": "Step",
         "target": "A Size 1 creature adjacent to at least two _Earthen Feature_s.",
-        "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_. On a Hit or Crit, _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 3 _Grit_ on their turn. If a creature spends _Skill_, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Skill_.",
+        "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_. On a Hit or Crit, _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 3 _Grit_ on their turn. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Reflex_.",
         "special": "If there are four adjacent _Earthen Features_: Either this Attack is _Accurate_, or you may target a Size 2 creature. Destroy all _Earthen Feature_s used for this Attack.",
         "chart": {
           "hit": [
@@ -411,18 +397,17 @@
             "",
             "",
             "",
-            "_Entomb_ (_Skill_)",
-            "_Entomb_ (_Skill_)",
-            "_Entomb_ (_Skill_)",
-            "_Entomb_ (_Skill_)",
-            "_Entomb_ (2 _Skill_)",
-            "_Entomb_ (2 _Skill_)"
+            "_Entomb_ (1 _Reflex_)",
+            "_Entomb_ (1 _Reflex_)",
+            "_Entomb_ (1 _Reflex_)",
+            "_Entomb_ (1 _Reflex_)",
+            "_Entomb_ (2 _Reflex_)",
+            "_Entomb_ (2 _Reflex_)"
           ]
         }
       },
       {
         "name": "Quake",
-        "damagetype": "Physical",
         "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
@@ -454,11 +439,11 @@
             "",
             "",
             "",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Prone (_Skill_)",
-            "_Prone (_Skill_)"
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Prone (2 _Reflex_)",
+            "_Prone (2 _Reflex_)"
           ]
         }
       },
@@ -471,7 +456,7 @@
         "type": "Maneuver",
         "area": "Line 4",
         "move": "Step",
-        "effect": "The area immediately becomes _Rough_ and _Jagged_. Any character in the area must expend _Skill_ or gain _Hobble_ 1.",
+        "effect": "The area immediately becomes _Rough_ and _Jagged_. Any character in the area must spend 1 _Reflex_ or gain _Hobble_ 1.",
         "boost": "1 _Momentum_. Place another Line 4 connected to the initial area."
       },
       {
@@ -482,9 +467,9 @@
         "speed": "4",
         "area": "Burst 1",
         "ap": 1,
-        "move": "Step",
+        "move": "Reposition",
         "effect": "Attack all targets in the area using the below Profile.",
-        "boost": "2 Momentum. Area becomes Boost 2.",
+        "boost": "2 _Momentum_. Area becomes Burst 2.",
         "chart": {
           "hit": [
             "Miss",
@@ -504,13 +489,13 @@
             "",
             "",
             "",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 2 OR _Prone_ (_Skill_)",
-            "_Expose_ 2 OR _Prone_ (_Skill_)",
-            "_Expose_ 2 AND _Prone_ (_Skill_)",
-            "_Expose_ 2 AND _Prone_ (_Skill_)"
+            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
+            "_Expose_ 2, _Prone_ AND _Stagger_ (3 _Reflex_)",
+            "_Expose_ 2, _Prone_ AND _Stagger_ (3 _Reflex_)"
           ]
         }
       },
@@ -524,7 +509,7 @@
         "range": "8",
         "area": "Cone 1",
         "move": "Shift",
-        "effect": "The target Area becomes _Rough_. If a Size 1 creature moves into a space with Quicksand they must spend 1 _Skill_. If a creature spends _Skill_, they may move through Quicksand for the rest of the turn without penalty. If they do not spend _Skill_, they sink into the Quicksand and are _Restrained_ until they _Sacrifice_ an Action and spend _Skill_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without spending Skill. A creature _Restrained_ by Quicksand takes 3 True Damage at the end of the Round. A single space of Quicksand may only _Restrain_ one creature at a time.",
+        "effect": "The target Area becomes _Rough_. If a Size 1 creature moves into a space with Quicksand they must spend 1 _Reflex_. If a creature spends _Reflex_, they may move through Quicksand for the rest of the turn without penalty. If they do not spend _Skill_, they sink into the Quicksand and are _Restrained_ until they _Sacrifice_ an Action and spend _Reflex_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without spending Skill. A creature _Restrained_ by Quicksand takes 3 True Damage at the end of the Round. A single space of Quicksand may only have one creature _Restrained_ at a time.",
         "special": "A character may only have three instances of Quickand at a time, regardless of their size.",
         "boost": "2 _Momentum_. You instead create the Quicksand in a Blast 1 area. Quicksand now triggers off Size 2 creatures as well."
       },
@@ -538,8 +523,8 @@
         "target": "A Size 1 _Earthen Feature_.",
         "range": "5",
         "move": "Reposition",
-        "effect": "Draw up to a Line 5 from a Target within Range and move it to the end of the Line. Any creatures in the Line are moved to the end of the Line unless they spend Skill or 2 Grit.\n&#8226; If they spend _Skill_, they may Move 1 out of the Line. If they cannot Move out of the Line, they cannot spend _Skill_ in this way.\n&#8226; If they spend _Grit_, they are not moved and the Feature is instead placed adjacent to them.\nIf a creature Immune to being moved is in the Line, instead place the Feature adjacent to them.",
-        "boost": "2 _Momentum_. Target is: A Size 2 Earthen Feature or three Size 1 Earthen Features. If you move a Size 2 Feature, it instead costs 4 Grit to not be moved. Any creatures moved take 3 Physical Damage."
+        "effect": "Draw up to a Line 5 from a Target within Range and move it to the end of the Line. Any creatures in the Line are moved to the end of the Line unless they spend 1 _Reflex_ or 2 _Grit_.\n&#8226; If they spend _Reflex_, they may Move 1 out of the Line. If they cannot Move out of the Line, they cannot spend _Reflex_ in this way.\n&#8226; If they spend _Grit_, they are not moved and the Feature is instead placed adjacent to them.\nIf a creature Immune to being moved is in the Line, instead place the _Earthen Feature_ adjacent to them.",
+        "boost": "2 _Momentum_. Target is: A Size 2 Earthen Feature or three Size 1 Earthen Features. If you move a Size 2 Earthen Feature, it instead costs 3 _Grit_ to not be moved. Any creatures moved take 3 Damage."
       },
       {
         "name": "Earthen Bulwark",
@@ -550,8 +535,8 @@
         "type": "Maneuver",
         "area": "Arc 3",
         "move": "Reposition",
-        "effect": "Create an Earthen Barricade in all spaces within the area. Any creatures in these spaces are immediately moved to an adjacent space of their choice.",
-        "boost": "1 _Momentum_. Creatures of your choice moved by this ability gain _Expose_ 1 (_Skill_)."
+        "effect": "Create an Earthen Barricade in all spaces within the area. Any creatures in these spaces are immediately moved to an adjacent space of their choice. Gain 1 _Grit_.",
+        "boost": "1 _Momentum_. Creatures of your choice moved by this ability gain _Expose_ 1 (1 _Reflex_)."
       },
       {
         "name": "Earthen Shield",
@@ -560,7 +545,7 @@
         "keywords": ["Spirit", "Earth", "Block", "Groundsource"],
         "type": "Defensive",
         "range": "3",
-        "cost": "2 Momentum, 1 Block",
+        "cost": "1 _Momentum_, 2 _Grit_",
         "trigger": "You or a creature within range is Attacked.",
         "effect": "Create an Earthen Barricade adjacent to the triggering creature. Reduce the Attack Roll by 1, and grant the triggering creature 1 Armor against the triggering Attack."
       },
@@ -574,7 +559,7 @@
         "range": "Self",
         "move": "Shift",
         "effect": "You may make the space you being your Move from _Rough_.",
-        "boost": "A character may spend _Momentum_ to make spaces they moved through _Rough_, at a rate of 1 _Momentum_ per 3 spaces."
+        "boost": "X _Momentum_. Make spaces additional spaces you move through _Rough_, at a rate of 1 _Momentum_ per 3 spaces."
       },
       {
         "name": "Burrow",
@@ -586,7 +571,7 @@
         "cost": "1 _Momentum_",
         "range": "Self",
         "move": "Shift",
-        "effect": "This Movement ignores all terrain."
+        "effect": "This Movement ignores all Terrain and Obstacles."
       }
     ]
   },
@@ -599,23 +584,23 @@
       {
         "name": "Colossus Stance",
         "desc": "The Colossus specializes in heavy armor made of stone, limiting mobility but providing unparalled defense.",
-        "refresh": "_Block_ 1, _Grit_ 1, 2 _Ablative Armor_",
-        "effect": "At Refresh, you may choose to become _Slowed_ for the round. If you do, while you have any _Ablative Armor_, gain Resistance to all damage originating from 4 or more sqspaces away, but you are _Slowed_.",
+        "refresh": "_Grit_ 3, 2 _Ablative Armor_",
+        "effect": "At Refresh, you may choose to become _Slowed_ for the round. If you do, while you have any _Ablative Armor_, gain Resistance to all damage originating from 4 or more spaces away, but you are _Slowed_.",
         "special": "If you have an Earth Enchant active at Refresh, instead gain 3 _Ablative Armor_."
       },
       {
         "name": "Rubble Stance",
         "desc": "The Rubble Stance creates stones only to destroy them, using the rubble for enhanced mobility.",
         "accumulate": "Gain 1 _Momentum_ every time you Destroy a Boulder.",
-        "refresh": "_Punish_ 1, _Grit_ 1",
+        "refresh": "_Focus_ 1, _Grit_ 2",
         "effect": "Every time you Destroy a Boulder, you may immediately Move 1 in any direction. Every time you Destroy a Boulder, you may deal 2 damage to all adjacent creatures, excluding yourself."
       },
       {
         "name": "Siege Stance",
         "desc": "Flinging boulders is a combat staple of Earthbonded, but some are true masters of it, flinging boulders in precise arcs as soon as they are formed.",
-        "accumulate": "Every time you take an Action that moves or creates a Boulder, gain 1 _Momentum_.",
+        "accumulate": "Every time you take an Action that moves or creates a Boulder, gain 2 _Momentum_.",
         "refresh": "_Grit_ 1",
-        "effect": "Once per round in the Plotting phase, you may pay 1 _Momentum_ to change the speed of an Action that creates a Boulder to Set-Up and Attach it to an action that targets a Boulder.",
+        "effect": "Once per round in the Plotting phase, you may change the speed of an Action that creates a Boulder to Set-Up and Attach it to an action that targets a Boulder.",
         "special": "When you take the Boulder Throw Action, instead of drawing a Line 6 from the Boulder you may instead move it to an empty space within Range 8 of it. Attack using Boulder Throw's profile in a Burst 1 around the Boulder's new location."
       }
     ],
@@ -624,7 +609,7 @@
         "name": "Chip Damage",
         "keywords": ["Spirit", "Earth", "Punish"],
         "trigger": "You take Damage while having any _Ablative Armor_ created by an Earth Technique.",
-        "cost": "1 _Punish_",
+        "cost": "1 _Momentum_",
         "area": "Burst 1",
         "type": "Strike",
         "speed": "Reaction",
@@ -666,7 +651,7 @@
         "keywords": ["Spirit", "Earth", "Punish"],
         "trigger": "A creature enters a space adjacent to a Boulder within Range.",
         "ap": 0,
-        "cost": "1 _Punish_",
+        "cost": "1 _Momentum_",
         "range": "6",
         "type": "Strike",
         "move": "None",
@@ -694,11 +679,11 @@
             "",
             "",
             "",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (2 _Grit_)",
             "_Push_ 2 (2 _Grit_)"
           ]
@@ -706,7 +691,6 @@
       },
       {
         "name": "Earthfall",
-        "damagetype": "Weapon",
         "desc": "A quick coat of stone covers the weapon, amplifying the weight of the strike and leaving rubble near the target.",
         "keywords": ["Spirit", "Earth", "Weapon"],
         "cost": "1 _Momentum_",
@@ -716,7 +700,7 @@
         "ap": 1,
         "move": "Step",
         "reqs": "_Versatile_ or _Heavy_ Weapon Wielded.",
-        "effect": "Attack using your weapon's Profile. If you Hit or Crit, you may add _Push_ 1 (Grit) to the attack. Regardless, create a Boulder in a space Adjacent to you."
+        "effect": "Attack using your weapon's Profile. If you Hit or Crit, you may add _Push_ 1 (1 _Grit_) to the attack. Regardless, create a Boulder in a space Adjacent to you."
       },
       {
         "name": "Stone Strike",
@@ -750,12 +734,12 @@
             "",
             "",
             "",
-            "_Stagger_ (_Grit_ or _Skill_)",
-            "_Stagger_ (_Grit_ or _Skill_)",
-            "_Stagger_ (_Grit_ or _Skill_)",
-            "_Stagger_ (_Grit_ or _Skill_)",
-            "_Daze_ (_Grit_ or _Skill_)",
-            "_Daze_ (_Grit_ or _Skill_)"
+            "_Stagger_ (1 _Focus_ OR 1 _Grit_)",
+            "_Stagger_ (1 _Focus_ OR 1 _Grit_)",
+            "_Stagger_ (2 _Focus_ OR 2 _Grit_)",
+            "_Stagger_ (2 _Focus_ OR 2 _Grit_)",
+            "_Daze_ (2 _Focus_ OR 2 _Grit_)",
+            "_Daze_ (2 _Focus_ OR 2 _Grit_)"
           ]
         }
       },
@@ -772,7 +756,6 @@
         "effect": "Draw a Line 6 from the Target, Attacking with the below Profile against all targets in the area. Move the Boulder to the end of this Line after attacking.",
         "boost": "1 _Momentum_ for each Size about 1 the Target is.",
         "special": "For each Size above 1 the target Boulder is, this Attack deals +1 damage on a Graze, Hit, or Crit.",
-        "damagetype": "Physical",
         "chart": {
           "hit": [
             "Miss",
@@ -795,11 +778,11 @@
             "",
             "",
             "",
-            "",
-            "_Stagger_ (_Grit_)",
-            "_Stagger_ (_Grit_)",
-            "_Daze_ (_Grit_)",
-            "_Daze_ (_Grit_)"
+            "_Stagger_ (1 _Grit_)",
+            "_Stagger_ (1 _Grit_)",
+            "_Stagger_ (2 _Grit_)",
+            "_Daze_ (2 _Grit_)",
+            "_Daze_ (2 _Grit_)"
           ]
         }
       },
@@ -834,14 +817,14 @@
             "",
             "",
             "",
-            "_Push_ 1 (_Skill_ or _Grit_)",
-            "_Push_ 1 (_Skill_ or _Grit_)",
-            "_Push_ 1 (_Skill_ or _Grit_)",
-            "_Push_ 1 (_Skill_ or _Grit_)",
-            "_Push_ 1 (_Skill_ or _Grit_)",
-            "_Push_ 1 (_Skill_ or _Grit_)",
-            "_Push_ 1 (2 _Skill_ or 2 _Grit_)",
-            "_Push_ 1 (2 _Skill_ or 2 _Grit_)"
+            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
+            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
+            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
+            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
+            "_Push_ 1 (2 _Focus_ OR 2 _Grit_)",
+            "_Push_ 1 (2 _Focus_ OR 2 _Grit_)",
+            "_Push_ 1 (3 _Focus_ OR 3 _Grit_)",
+            "_Push_ 1 (3 _Focus_ OR 3 _Grit_)"
           ]
         }
       },
@@ -871,7 +854,7 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 7, 7, 8, 9, 10, 12, 14, 16],
+          "damage": [0, 0, 0, 8, 8, 10, 10, 12, 12, 14, 16],
           "status": [
             "",
             "",
@@ -879,11 +862,11 @@
             "",
             "",
             "",
-            "",
-            "",
-            "",
-            "_Daze_ (_Grit_)",
-            "_Daze_ (_Grit_)"
+            "_Daze_ (1 _Focus_)",
+            "_Daze_ (1 _Focus_)",
+            "_Daze_ (1 _Focus_)",
+            "_Daze_ (2 _Focus_)",
+            "_Daze_ (2 _Focus_)"
           ]
         }
       },
@@ -956,15 +939,15 @@
           "status": [
             "",
             "",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 and _Expose_ 1 (_Grit_)",
-            "_Push_ 1 and _Expose_ 1 (_Grit_)",
-            "_Push_ 1 and _Expose_ 1 (_Grit_)",
-            "_Push_ 1 and _Expose_ 1 (_Grit_)",
-            "_Push_ 2 and _Expose_ 2 (_Grit_)",
-            "_Push_ 2 and _Expose_ 2 (_Grit_)"
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
+            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
+            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
+            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
+            "_Push_ 2 and _Expose_ 2 (1 _Grit_)",
+            "_Push_ 2 and _Expose_ 2 (1 _Grit_)"
           ]
         }
       },
@@ -992,7 +975,7 @@
         "name": "Anchor Stance",
         "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
         "accumulate": "Whenever you do not Move when taking an Action with Movement, gain 1 Momentum.",
-        "refresh": "_Block_ 1, _Grit_ 1",
+        "refresh": "_Grit_ 3",
         "effect": "While in this Stance, it costs one less _Grit_ to negate all Push and Pull effects."
       },
       {
@@ -1015,7 +998,6 @@
     "techniques": [
       {
         "name": "Mighty Throw",
-        "damagetype": "Weapon",
         "desc": "Using their monstrous effective strength, the Earthbound flings a weapon not meant to be thrown.",
         "keywords": ["Spirit", "Earth", "Weapon"],
         "type": "Strike",
@@ -1023,7 +1005,7 @@
         "ap": 1,
         "move": "Step",
         "reqs": "Melee or Thrown Weapon Equipped",
-        "effect": "Attack using the weapon's profile, adding the Thrown tag and treating Grazes as a Miss, dealing no damage and ignoring effects. In addition, use the following changes based on the Weapon's weight:\n&#8226; Light: Range 10, add _Push_ 1 (_Grit_) on a Hit or Crit.\n&#8226; Light: Range 6, add _Push_ 2 (_Grit_) on a Hit or Crit.\n&#8226; Light: Range 4, add _Push_ 3 (_Grit_) on a Hit or Crit."
+        "effect": "Attack using the weapon's profile, adding the Thrown tag and treating Grazes as a Miss, dealing no damage and ignoring effects. In addition, use the following changes based on the Weapon's weight:\n&#8226; Light: Range 10, add _Push_ 1 (1 _Grit_) on a Hit or Crit.\n&#8226; Versatile: Range 6, add _Push_ 2 (1 _Grit_) on a Hit or Crit.\n&#8226; Heavy: Range 4, add _Push_ 3 (1 _Grit_) on a Hit or Crit."
       }
     ]
   },
@@ -1037,7 +1019,7 @@
         "name": "Bold Stance",
         "desc": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
         "refresh": "_Counter_ 1, _Will_ 1",
-        "effect": "As a Free Instinctive Action, you may issue a brave challenge. Choose up to 3 hostile targets within Range 6. These targets gain Advantage on all attacks against you this round. Gain 1 _Momentum_ for each target selected in this way.",
+        "effect": "As a Free Instinctive Action, you may issue a brave challenge. Choose up to 3 hostile creatures within Range 6. These targets gain Advantage on all attacks against you this round. Gain 1 _Momentum_ for each target selected in this way.",
         "special": "While in this stance, you are immune to _Fear_, and you immediately remove any ongoing _Fear_ effects upon entering this Stance."
       },
       {
@@ -1060,7 +1042,7 @@
     "techniques": [
       {
         "name": "Crush Fear",
-        "desc": "A quick coat of stone covers the weapon, amplifying the weight of the strike and leaving rubble near the target.",
+        "desc": "You reach into the heart of an ally, crushing their fear and filling them with resolve.",
         "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "speed": "3",
@@ -1068,8 +1050,8 @@
         "ap": 1,
         "target": "A creature within Range suffering from a _Fear_ effect.",
         "move": "Reposition",
-        "effect": "You or the Target may expend a _Will_ Token to cure a target within Range of _Fear_.",
-        "boost": "X _Momentum_. For each Momentum spent, choose another Target beyond the first. No Targets beyond the first require a _Will_ Token."
+        "effect": "You or the Target may spend _Focus_ to cure a target within Range of _Fear_.",
+        "boost": "X _Momentum_. For each Momentum spent, choose another Target beyond the first. No Targets beyond the first require a _Focus_ Token."
       },
       {
         "name": "Rouse",
@@ -1081,7 +1063,7 @@
         "ap": 1,
         "move": "Reposition",
         "effect": "Choose a creature within range. That creature may immediately Reposition, but must use all that Movement to move directly towards an enemy by the shortest possible route.",
-        "boost": "1 _Momentum_. The target gains 2 Armor while using the Movement granted by the Charge."
+        "boost": "1 _Momentum_. The target gains 2 _Armor_ while using the Movement granted by this."
       }
     ]
   },
@@ -1102,7 +1084,7 @@
       {
         "name": "Inferno Stance",
         "desc": "The most obvious use of flames, the Inferno Stance makes use of overwhelming firepower in a very literal sense.",
-        "refresh": "1 _Punish_",
+        "refresh": "2 _Focus_",
         "effect": "Making additional Strikes in a Round cost half as much, so long as they have the Flame Keyword.",
         "special": "For each subsequent Strike with the Flame Keyword you Hit or Crit a Target with in a Round, inflict _Burn_ 1."
       },
@@ -1110,7 +1092,7 @@
         "name": "Jet Stance",
         "desc": "Those that have learned the Jet Stance make use of the powerful gouts of flame to reposition themselves freely and move with blinding speed.",
         "accumulate": "Whenever you Shift or Sprint as a part of an Action, gain 1 Momentum.",
-        "refresh": "_Evade_ 1, _Skill_ 1",
+        "refresh": "1 _Focus_, 2 _Reflex_",
         "effect": "Whenever you use a Strike that deals Fire Damage, you may immediately _Safe_ Move 2 either before or after resolving the Attack.",
         "special": "When using an Action or Reaction with the Flame Keyword, you may spend 1 _Momentum_ to increase the Movement by one level."
       },
@@ -1118,7 +1100,7 @@
         "name": "Trailblazer Stance",
         "desc": "Rather than simply burning their foes, the Trailblazer leaves a wake of flames behind them, creating deadly zones of fire across the land.",
         "accumulate": "Every time an Action creates a _Blazing_ space, gain 1 _Momentum_.",
-        "refresh": "1 _Skill_",
+        "refresh": "1 _Focus_, 1 _Reflex_",
         "effect": "At Refresh, you may choose a _Blazing_ space within Range 6. Immediately make an adjacent space _Blazing_. You may pay up to 3 _Momentum_, repeating this Effect for every Momentum spent.",
         "special": "While in this Stance you ignore _Blazing_ Terrain. "
       }
@@ -1131,7 +1113,6 @@
         "range": "Melee or Range 5",
         "type": "Strike",
         "move": "Step",
-        "damagetype": "Flame",
         "speed": "1",
         "desc": "A sudden strike of flames, often leaving a foe wreathed in flames.",
         "effect": "Attack with the below Profile.",
@@ -1153,16 +1134,16 @@
           "damage": [0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
           "status": [
             "",
-            "_Burn_ 1 (_Skill_ or _Momentum_)",
-            "_Burn_ 1 (_Skill_ or _Momentum_)",
-            "_Burn_ 1 (_Skill_ or _Momentum_)",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 2 (_Skill_)",
-            "_Burn_ 2 (_Skill_)",
-            "_Burn_ 2 (_Skill_)"
+            "_Burn_ 1 (1 _Reflex_ OR 1 _Momentum_)",
+            "_Burn_ 1 (1 _Reflex_ OR 1 _Momentum_)",
+            "_Burn_ 1 (1 _Reflex_ OR 1 _Momentum_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 2 (2 _Reflex_)",
+            "_Burn_ 2 (2 _Reflex_)",
+            "_Burn_ 2 (2 _Reflex_)"
           ]
         }
       },
@@ -1174,7 +1155,6 @@
         "area": "Cone 2",
         "type": "Strike",
         "move": "Reposition",
-        "damagetype": "Flame",
         "speed": "2",
         "desc": "You let loose a mighty stream of fire, drawing upon nearby flames for additional power.",
         "effect": "Attack with the below Profile.",
@@ -1205,8 +1185,8 @@
             "",
             "",
             "",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)"
+            "_Burn_ 1 (2 _Reflex_)",
+            "_Burn_ 1 (2 _Reflex_)"
           ]
         }
       },
@@ -1217,11 +1197,10 @@
         "range": "6",
         "type": "Strike",
         "move": "Reposition",
-        "damagetype": "Flame",
         "speed": "2",
         "desc": "A wide wave of fire shoots forth, scorching those in its path.",
         "effect": "Attack with the below Profile. If there is a creature adjacent to the Target, you may repeat Attack them with this Profile.",
-        "boost": "1 _Momentum_. If this attack Crits, inflict _Expose_ 1 (Skill).",
+        "boost": "1 _Momentum_. If this attack Crits, inflict _Expose_ 1 (1 _Reflex_).",
         "chart": {
           "hit": [
             "Miss",
@@ -1246,9 +1225,9 @@
             "",
             "",
             "",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)"
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)"
           ]
         }
       },
@@ -1259,7 +1238,6 @@
         "range": "3",
         "type": "Strike",
         "move": "Reposition",
-        "damagetype": "Fire",
         "speed": "3",
         "desc": "Overwhelming waves of fire strike a foe, burning through any defenses.",
         "effect": "Attack with the below Profile.",
@@ -1285,12 +1263,12 @@
             "",
             "",
             "",
-            "_Shred_ 1 AND _Burn_ 1 (_Block_)",
-            "_Shred_ 1 AND _Burn_ 1 (_Block_)",
-            "_Shred_ 1 AND _Burn_ 1 (_Block_)",
-            "_Shred_ 1 AND _Burn_ 1 (_Block_)",
-            "_Shred_ 2 AND _Burn_ 2 (_Block_)",
-            "_Shred_ 2 AND _Burn_ 2 (_Block_)"
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 2 AND _Burn_ 2 (3 _Grit_)",
+            "_Shred_ 2 AND _Burn_ 2 (3 _Grit_)"
           ]
         }
       },
@@ -1304,7 +1282,7 @@
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile. On a Hit or Crit, inflict _Burn_ 1 and _Wound_ 1 (Skill).",
+        "effect": "Attack using your Weapon's Profile. On a Hit or Crit, inflict _Burn_ 1 and _Wound_ 1 (_Reflex_).",
         "boost": "1 _Momentum_. If the Target has any _Burn_ prior to this Attack, increase the Damage by 2 on a Graze, Hit, or Crit."
       },
       {
@@ -1318,7 +1296,7 @@
         "area": "Line 3",
         "range": "Melee",
         "move": "None",
-        "effect": "Create a special zone of _Blazing_ spaces within the area. This zone moves with you and, at the beginning of a Phase, you may pay 1 _Momementum_ to change the direction of the zone. If a creature enters this zone or starts a Turn in it, you may pay 1 _Punish_ to use the _Ignite_ Action as a Reaction against them. This special zone goes away at the end of the Round.",
+        "effect": "Create a special zone of _Blazing_ spaces within the area. This zone moves with you and, at the beginning of a Phase, you may pay 1 _Momementum_ to change the direction of the zone. If a creature enters this zone or starts a Turn in it, you may pay 1 _Momentum_ to use the _Ignite_ Action as a Reaction against them. This special zone goes away at the end of the Round.",
         "boost": "2 _Momentum_. Area is instead Cone 3."
       },
       {
@@ -1331,7 +1309,7 @@
         "area": "Cone 1",
         "range": "6",
         "move": "Reposition",
-        "effect": "The area immediately becomes _Blazing_. Any creature in the area gains _Burn_ 2 (Skill negates).",
+        "effect": "The area immediately becomes _Blazing_. Any creature in the area gains _Burn_ 2 (1 _Reflex_).",
         "boost": "1 _Momentum_. Area becomes a Blast 1."
       },
       {
@@ -1341,11 +1319,11 @@
         "desc": "A small fire flares to life, buffeting those nearby with intense heat.",
         "keywords": ["Spirit", "Flame"],
         "type": "Maneuver",
-        "target": "_Dangerous Terrain_ (Flame) within Range.",
+        "target": "_Blazing_ space within Range.",
         "range": "8",
         "move": "Shift",
-        "effect": "Immediately make two spaces adjacent to the Target _Blazing_. If there is a creature in one of these spaces, they must immediately spend 1 _Evasion_ to Move into a space without _Blazing_ or gain _Burn_ 2.",
-        "boost": "1 _Momentum_. Inflit _Impair_ 1 (Grit negates) on all creatures adjacent to the Target."
+        "effect": "Immediately make two spaces adjacent to the Target _Blazing_. If there is a creature in one of these spaces, they must immediately spend 2 _Reflex_ to Move into a space without _Blazing_ or gain _Burn_ 2.",
+        "boost": "1 _Momentum_. Inflit _Impair_ 1 (1 _Grit_) on all creatures adjacent to the Target."
       },
       {
         "name": "Fire Wall",
@@ -1358,7 +1336,7 @@
         "range": "8",
         "move": "Shift",
         "effect": "These _Blazing_ spaces may be used as Cover until the end of the Round. In addition, the effects of _Blazing_ are doubled for the target for the duration.",
-        "special": "Until the end of the round, any time an ally would move into a targeted _Blazing_ space you may pay 1 Momentum to allow them to ignore all Damage and Burn caused by the space.",
+        "special": "Until the end of the round, any time an ally would move into a targeted _Blazing_ space you may pay 1 _Momentum_ to allow them to ignore all Damage and Burn caused by the space.",
         "boost": "2 _Momentum_. Change the Target to 'Any number of contiguous _Blazing_ spaces, at least one of which is within range.'"
       },
       {
@@ -1382,7 +1360,7 @@
         "cost": "1 _Momentum_",
         "type": "Move",
         "move": "Shift",
-        "effect": "Make up to three spaces you move through _Blazing_. Inflict _Burn_ 1 (Skill) on any creature you move past or through. While using this Movement, you are Immune to the effects of _Blazing_ spaces.",
+        "effect": "Make up to three spaces you move through _Blazing_. Inflict _Burn_ 1 (1 _Reflex_) on any creature you move past or through. While using this Movement, you are Immune to the effects of _Blazing_ spaces.",
         "boost": "2 _Momentum_. Instead, make every space you move through _Blazing_."
       },
       {
@@ -1393,8 +1371,8 @@
         "keywords": ["Spirit", "Flame", "Enchant"],
         "type": "Defensive",
         "move": "Step",
-        "effect": "While this Enchant is active you are Immune to _Freeze_ and _Burn_. Whenever a Melee Attack Grazes, Hits, or Crits you the attacker takes 2 Fire Damage.",
-        "boost": "2 _Momentum_. Also inflict _Burn_ 1 when you are Grazed, Hit, or Crit.",
+        "effect": "While this Enchant is active you are Immune to _Freeze_ and _Burn_. Whenever a Melee Attack Grazes, Hits, or Crits you the attacker takes 2 Damage.",
+        "boost": "2 _Momentum_. Also inflict _Burn_ 1 (1 _Reflex_) when you are Grazed, Hit, or Crit.",
         "special": "If you are hit with an Attack with the Water keyword, you must pay 1 _Momentum_ or lose this Enchant."
       }
     ]
@@ -1409,22 +1387,22 @@
         "name": "Explosive Stance",
         "desc": "You make your explosions hit harder, forcing your opponents away from the detonation.",
         "accumulate": "Whenever you Hit or Crit with an Explosive Attack, gain 1 _Momentum_.",
-        "refresh": "1 _Punish_, 1 _Skill_",
-        "effect": "Whenever you use an Attack with the Flame keyword, you may choose to make it Explosive before making your Attack Roll. Gain a -1 penalty to the Attack Roll, but add the following:\n&#8226; If the Attack is an Area, on a Hit or Crit _Push_ the Target out of the Area by the most direct route possible (_Grit_ negates). Resolve this _Push_ seperately from any _Push_ included in the Attack.\n&#8226; If the Attack is not an Area, add _Push_ 2 (_Grit_) to all Hits or Crits.\n&#8226; Add _Prone_ (_Grit_ or _Skill_) to all Crits."
+        "refresh": "1 _Focus_, 1 _Reflex_",
+        "effect": "Whenever you use an Attack with the Flame keyword, you may choose to make it Explosive before making your Attack Roll. Gain a -1 penalty to the Attack Roll, but add the following:\n&#8226; If the Attack is an Area, on a Hit or Crit _Push_ the Target out of the Area by the most direct route possible (1 _Grit_). Resolve this _Push_ seperately from any _Push_ included in the Attack.\n&#8226; If the Attack is not an Area, add _Push_ 2 (1 _Grit_) to all Hits or Crits.\n&#8226; Add _Prone_ (2 _Grit_ OR 2 _Reflex_) to all Crits."
       },
       {
         "name": "Flare Stance",
         "desc": "Your flames burn brighter than most, blinding enemies that aren't properly prepared.",
         "accumulate": "Whenever you Blind a foe, gain 1 _Momentum_.",
-        "refresh": "1 _Punish_, 1 _Skill_",
-        "effect": "If you Crit with an Attack with the Flame keyword, you may forgo the normal Effect and reduce the damage by 2 to _Blind_ (_Grit_ negates).",
+        "refresh": "2 _Focus_, 1 _Reflex_",
+        "effect": "If you Crit with an Attack with the Flame keyword, you may forgo the normal Effect and reduce the damage by 2 to _Blind_ (2 _Focus_).",
         "special": "If an Attack would already _Blind_ on a Crit, instead increase the cost to Negate by 1."
       },
       {
-        "name": "Ruinous Flame Stance",
+        "name": "Ruin Stance",
         "desc": "By focusing your flames for a moment you amplify their power, magnifying their destructive force.",
         "accumulate": "Whenever you Hit or Crit with a Charged Attack, gain 2 _Momentum_.",
-        "refresh": "1 _Grit_",
+        "refresh": "1 _Focus_, 1 _Grit_",
         "effect": "Once per round in the Plotting Phase you may choose to charge an Attack with the Flame keyword. If you do, increase the Speed of that Attack by up to 3. Gain a bonus to your Attack Roll or a bonus to Damage on a Graze, Hit, or Crit equal to that value and add the _Siege_ and _Unblockable_ keywords. You are _Slowed_ from the Phase of your Charged Action's original Speed until your Charged Action resolves."
       }
     ],
@@ -1436,7 +1414,6 @@
         "cost": "_Punish_ 1, _Momentum_ 1",
         "range": "Self",
         "type": "Strike",
-        "damagetype": "Flame",
         "area": "Burst 1",
         "speed": "Reaction",
         "desc": "You respond to an enemies' strike with an indiscriminate explosion, hopefully creating enough space for a opening.",
@@ -1462,12 +1439,12 @@
             "",
             "",
             "",
-            "_Push_ 1 OR _Expose_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 OR _Expose_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 OR _Expose_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 OR _Expose_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 AND _Expose_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 AND _Expose_ 1 (_Grit_ or _Skill_)"
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 AND _Expose_ 1 (2 _Focus_ OR 2 _Reflex_)",
+            "_Push_ 1 AND _Expose_ 1 (2 _Focus_ OR 2 _Reflex_)"
           ]
         }
       },
@@ -1478,11 +1455,10 @@
         "range": "Melee",
         "type": "Strike",
         "move": "Reposition",
-        "damagetype": "Flame",
         "requirement": "Melee Weapon Wielded",
         "area": "Cone 1",
         "cost": "1 _Momentum_",
-        "speed": "Weapon Speed",
+        "speed": "Weapon",
         "desc": "You explosively charge your weapon, letting out a mighty blast as you make contact.",
         "effect": "Attack using your weapon's Profile. After resolving that, immediately attack in the Area, treating your initial Target as the origin and attacking directly away from yourself.",
         "chart": {
@@ -1506,12 +1482,12 @@
             "",
             "",
             "",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)"
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (2 _Grit_)"
           ]
         }
       },
@@ -1522,7 +1498,6 @@
         "range": "Melee",
         "type": "Strike",
         "move": "Shift",
-        "damagetype": "Flame",
         "area": "Line 3 or Arc 3",
         "speed": "2",
         "desc": "You fire a close-ranged explosion, buffeting nearby enemies.",
@@ -1550,12 +1525,12 @@
             "",
             "",
             "",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)"
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (2 _Grit_)"
           ]
         }
       },
@@ -1566,7 +1541,6 @@
         "range": "Melee",
         "type": "Strike",
         "move": "Shift",
-        "damagetype": "Flame",
         "speed": "2",
         "desc": "A rapid-fire burst of explosions that can punish those without defenses.",
         "effect": "Attack with the below Profile.",
@@ -1609,7 +1583,6 @@
         "range": "4",
         "type": "Strike",
         "move": "Shift",
-        "damagetype": "Flame",
         "speed": "3",
         "desc": "A focused explosion of flame and force, becoming near-impossible to evade.",
         "effect": "Attack with the below Profile.",
@@ -1639,8 +1612,8 @@
             "",
             "",
             "",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)"
+            "_Expose_ 1 (2 _Reflex_)",
+            "_Expose_ 1 (2 _Reflex_)"
           ]
         }
       },
@@ -1652,7 +1625,6 @@
         "area": "Blast 2",
         "type": "Strike",
         "move": "Reposition",
-        "damagetype": "Flame",
         "speed": "3",
         "desc": "A solitary mote of flame flies forth, before erupting into a truly horrific blast of flames.",
         "effect": "Attack with the below Profile.",
@@ -1683,8 +1655,8 @@
             "",
             "",
             "",
-            "_Burn_ 1 (_Skill_)",
-            "_Burn_ 1 (_Skill_)"
+            "_Burn_ 1 (2 _Reflex_)",
+            "_Burn_ 1 (2 _Reflex_)"
           ]
         }
       },
@@ -1732,15 +1704,15 @@
           "status": [
             "",
             "",
-            "_Expose_ 1 (_Grit_ or _Skill_)",
-            "_Expose_ 1 (_Grit_ or _Skill_)",
-            "_Expose_ 1 (_Grit_ or _Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Expose_ 1 (_Skill_)",
-            "_Stagger_ 1 AND _Expose_ 1 (2 _Skill_)",
-            "_Stagger_ 1 AND _Expose_ 1 (2 _Skill_)"
+            "_Expose_ 1 (1 _Grit_ OR 1 _Reflex_)",
+            "_Expose_ 1 (1 _Grit_ OR 1 _Reflex_)",
+            "_Expose_ 1 (1 _Grit_ OR 1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (2 _Reflex_)",
+            "_Expose_ 1 (2 _Reflex_)",
+            "_Stagger_ 1 AND _Expose_ 1 (3 _Reflex_)",
+            "_Stagger_ 1 AND _Expose_ 1 (3 _Reflex_)"
           ]
         }
       },
@@ -1773,14 +1745,14 @@
             "",
             "",
             "",
-            "_Impair_ 1 (_Grit_)",
-            "_Impair_ 1 (_Grit_)",
-            "_Impair_ 1 (_Grit_)",
-            "_Blind_ (_Grit_)",
-            "_Blind_ (_Grit_)",
-            "_Blind_ (_Grit_)",
-            "_Blind_ (2 _Grit_)",
-            "_Blind_ (2 _Grit_)"
+            "_Impair_ 1 (1 _Focus_)",
+            "_Impair_ 1 (1 _Focus_)",
+            "_Impair_ 1 (1 _Focus_)",
+            "_Blind_ (1 _Focus_)",
+            "_Blind_ (1 _Focus_)",
+            "_Blind_ (2 _Focus_)",
+            "_Blind_ (2 _Focus_)",
+            "_Blind_ (3 _Focus_)"
           ]
         }
       },
@@ -1793,7 +1765,7 @@
         "keywords": ["Spirit", "Flame", "Evade", "Safe"],
         "type": "Move",
         "move": "Reposition",
-        "effect": "Deal 2 Fire Damage and inflict _Exposed_ 1 (_Skill_ negates) to a creature you move past with this Reaction."
+        "effect": "Deal 2 Fire Damage and inflict _Exposed_ 1 (1 _Reflex_) to a creature you move past with this Reaction."
       },
       {
         "name": "Explosive Leap",
@@ -1804,7 +1776,7 @@
         "area": "Burst 1",
         "speed": "2",
         "desc": "A quick detonation launches you into the air, providing enough propulsion for a sudden move.",
-        "effect": "Deal 2 Damage (Skill negates) and _Push_ 1 within the area either at the start or end of your Movement.",
+        "effect": "Deal 2 Damage and _Push_ 1 (1 _Reflex_ negates both) within the area either at the start or end of your Movement.",
         "imbue": "1 _Momentum_. Instead, Movement is Shift, Speed is 3, and Area is Burst 2."
       },
       {
@@ -1813,9 +1785,9 @@
         "type": "Defensive",
         "target": "Yourself or an ally is Attacked by a Flame Attack.",
         "speed": "Reaction",
-        "cost": "1 _Momentum_ or _Block_",
+        "cost": "2 _Momentum_ OR 2 _Grit_",
         "desc": "You seize control of the flames around your ally, mitigating the effects of the blast.",
-        "effect": "Reduce the Attack Roll by 2.",
+        "effect": "Reduce the Attack Roll by 3.",
         "special": "If the Triggering Attack is your own you may instead treat it as if you rolled a 3 against your ally."
       }
     ]
@@ -1855,13 +1827,13 @@
         "desc": "You are a master of anchoring yourself and are steady in your strikes, even without a true anchor.",
         "accumulate": "Whenever you Push, Pull, or Slide an enemy with a Metal Action, gain 1 _Momentum_.",
         "effect": "You may treat yourself as an _Anchor_ for all Actions that have an increased effect if you are near an _Anchor_.",
-        "refresh": "1 _Block_, 1 _Grit_"
+        "refresh": "3 _Grit_"
       },
       {
         "name": "Magnetic Stance",
         "desc": "You are a bit more attached to your metal sources than most, causing them to rapidly fly back.",
         "accumulate": "Whenever you would _Embed_ a Metal Source and choose not to, gain 1 _Momentum_.",
-        "refresh": "1 _Evade_, 1 _Skill_",
+        "refresh": "1 _Focus_, 1 _Grit_, 1 _Reflex_",
         "effect": "Whenever you use an Action that uses a _Metal Source_ or Weapon, you may choose to pull the _Metal Source_ or Weapon back, either Equipping the item if you have an Open Hand or placing it in an adjacent square. If the _Metal Source_ was originally part of your Armor, you may immediately add it back to your armor.",
         "special": "You may use the Magnetic Ward Reaction as if it had Range 4 and the Trigger 'You or a creature within Range are Attacked with metal.'"
       },
@@ -1869,7 +1841,7 @@
         "name": "Magnetoflier Stance",
         "desc": "Using anchors to propel yourself to and from across the battlefield, you are as elusive as you are deadly.",
         "accumulate": "Whenever you _Push_ or _Pull_ yourself with an Action with the Metal keyword gain 2 _Momentum_.",
-        "refresh": "1 _Evade_, 1 _Skill_",
+        "refresh": "1 _Focus_, 2 _Reflex_",
         "effect": "If you end your turn within Range 5 of an Anchor, you may either _Push_ or _Pull_ yourself 2, with the _Anchor_ as the source of the effect."
       }
     ],
@@ -1895,9 +1867,9 @@
         "move": "Step",
         "requirement": "A creature that is a Metal Source.",
         "desc": "You compress metal around a creature, causing unavoidable damage.",
-        "effect": "Deal 3 damage to the Target. If the Target is a Metalbound, they may pay 1 _Block_ or _Evade_ to negate this attack.",
+        "effect": "Deal 3 damage to the Target. If the Target is a Metalbound, they may pay 2 _Grit_ or 2 _Focus_ to negate this attack.",
         "special": "For each _Metal Source_ on a Target beyond the first deal +1 damage.",
-        "boost": "1 _Momentum_. Inflict _Hobble_ 1 (_Grit_ negates) on the Target."
+        "boost": "1 _Momentum_. Inflict _Hobble_ 1 (1 _Grit_) on the Target."
       },
       {
         "name": "Shardstrike",
@@ -1934,10 +1906,10 @@
             "",
             "",
             "",
-            "_Embed_ (_Skill_)",
-            "_Embed_ (_Skill_)",
-            "_Embed_ (2 _Skill_)",
-            "_Embed_ (2 _Skill_)"
+            "_Embed_ (1 _Reflex_)",
+            "_Embed_ (1 _Reflex_)",
+            "_Embed_ (2 _Reflex_)",
+            "_Embed_ (2 _Reflex_)"
           ]
         }
       },
@@ -1983,13 +1955,13 @@
             "",
             "",
             "",
-            "_Embed_ OR _Hobble_ 1 (_Skill_)",
-            "_Embed_ OR _Hobble_ 1 (_Skill_)",
-            "_Embed_ AND _Hobble_ 1 (_Skill_)",
-            "_Embed_ AND _Hobble_ 1 (_Skill_)",
-            "_Embed_ AND _Hobble_ 2 (2 _Skill_)",
-            "_Embed_ AND _Hobble_ 2 (2 _Skill_)",
-            "_Embed_ AND _Hobble_ 2 (2 _Skill_)"
+            "_Embed_ OR _Hobble_ 1 (1 _Reflex_)",
+            "_Embed_ OR _Hobble_ 1 (1 _Reflex_)",
+            "_Embed_ AND _Hobble_ 1 (1 _Reflex_)",
+            "_Embed_ AND _Hobble_ 1 (1 _Reflex_)",
+            "_Embed_ AND _Hobble_ 2 (2 _Reflex_)",
+            "_Embed_ AND _Hobble_ 2 (2 _Reflex_)",
+            "_Embed_ AND _Hobble_ 2 (2 _Reflex_)"
           ]
         }
       },
@@ -2002,7 +1974,7 @@
         "move": "Step",
         "target": "Size 1 or smaller _Metal Source_ within Range.",
         "desc": "You pull metal into a rapid orbit about yourself, creating a flurry of deadly metal.",
-        "effect": "Destroy the Target. Create a Burst 1 around you that moves with you and persists until this Enchant ends. Any creature that enters this Area or starts a Turn there takes 3 damage. If they end their turn there they gain _Expose_ 1 (_Grit_ negates).",
+        "effect": "Destroy the Target. Create a Burst 1 around you that moves with you and persists until this Enchant ends. Any creature that enters this Area or starts a Turn there takes 3 damage. If they end their turn there they gain _Expose_ 1 (1 _Grit_).",
         "special": "You may instead originate this Action from an _Anchor_ within Range 6, treating the _Anchor_ as the origin for the Storm of Steel. If you do, Boost costs 2 less and does not require any additional _Metal Source_. You are Immune to all effects of this Storm of Steel.",
         "boost": "2 _Momentum_. If there is a second _Metal Source_ or a Size 2 _Metal Source_ within Range, Destroy it. Increase the Area to Burst 2."
       },
@@ -2015,7 +1987,7 @@
         "move": "Shift",
         "target": "A Size 1 _Metal Source_.",
         "desc": "You reach out with magnetic force, drawing metal closer to you.",
-        "effect": "If you are targetting an inanimate _Metal Source_, _Pull_ 4. Otherwise, Attack with the below Profile. If this _Pull_ causes the Target to collide with an Obstacle they take 3 damage and are knocked _Prone_ (_Skill_ negates).",
+        "effect": "If you are targetting an inanimate _Metal Source_, _Pull_ 4. Otherwise, Attack with the below Profile. If this _Pull_ causes the Target to collide with an Obstacle they take 3 damage and are knocked _Prone_ (1 _Reflex_).",
         "special": "You may instead Target an Anchor of any Size. If you do, _Pull_ yourself 4 towards the Target.",
         "boost": "X _Momentum_. Increase all _Pull_ effects by 1 or increase the Size of the Target by 1 for each _Momentum_ spent. Reduce the cost to _Boost_ by 1 for each Anchor within Range 3 of you.  In addition, you may _Pull_ X any unequipped _Metal Sources_ within Range.",
         "chart": {
@@ -2035,12 +2007,12 @@
           "status": [
             "",
             "",
-            "_Pull_ 1 (_Grit_)",
-            "_Pull_ 1 (_Grit_)",
-            "_Pull_ 2 (_Grit_)",
-            "_Pull_ 2 (_Grit_)",
-            "_Pull_ 3 (_Grit_)",
-            "_Pull_ 3 (_Grit_)",
+            "_Pull_ 1 (1 _Grit_)",
+            "_Pull_ 1 (1 _Grit_)",
+            "_Pull_ 2 (1 _Grit_)",
+            "_Pull_ 2 (1 _Grit_)",
+            "_Pull_ 3 (1 _Grit_)",
+            "_Pull_ 3 (1 _Grit_)",
             "_Pull_ 4 (2 _Grit_)",
             "_Pull_ 4 (2 _Grit_)",
             "_Pull_ 4 (2 _Grit_)"
@@ -2069,7 +2041,7 @@
         "move": "Shift",
         "target": "A Size 1 Metal Source.",
         "desc": "You lash out with magnetic force, launching the _Metal Source_ backwards.",
-        "effect": "If you are targetting an inanimate _Metal Source_, _Push_ 4. Otherwise, Attack with the below Profile. If this _Push_ causes the Target to collide with an Obstacle they take 3 damage and are knocked _Prone_ (_Skill_ negates).",
+        "effect": "If you are targetting an inanimate _Metal Source_, _Push_ 4. Otherwise, Attack with the below Profile. If this _Push_ causes the Target to collide with an Obstacle they take 3 damage and are knocked _Prone_ (1 _Reflex_).",
         "special": "You may instead Target an Anchor of any Size. If you do, _Push_ yourself 4 from the Target.",
         "boost": "X _Momentum_. Increase all _Push_ effects by 1 or increase the Size of the Target by 1. Reduce the cost to _Boost_ by 1 for each Anchor within Range 3 of you. In addition, you may _Push_ X any unequipped _Metal Sources_ within Range.",
         "chart": {
@@ -2089,12 +2061,12 @@
           "status": [
             "",
             "",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
             "_Push_ 4 (2 _Grit_)",
             "_Push_ 4 (2 _Grit_)",
             "_Push_ 4 (2 _Grit_)"
@@ -2113,7 +2085,7 @@
         "desc": "You hold a creature aloft with magnetic force, leaving them defenseless.",
         "effect": "Attack with the below Profile.",
         "boost": "X _Momentum_. Increase The _Slide_ by 1 per _Momentum_ spent. Reduce the cost to _Boost_ by 1 for each Anchor within Range 3 of you.",
-        "special": "The duration of the _Restrain_ depends on your Attack Roll. On a Graze, _Restrain_ until the end of the current Phase. On a Hit, _Restrain_ until the end of the current Round. On a Crit, _Restrain_ until the start of this Phase next Round.",
+        "special": "The duration of _Restrained_ depends on your Attack Roll. On a Graze, the Target is _Restrained_ until the end of the current Phase. On a Hit they are _Restrained_ until the end of the current Round. On a Crit, they are _Restrained_ until the start of this Phase next Round.",
         "chart": {
           "hit": [
             "Miss",
@@ -2131,15 +2103,15 @@
           "status": [
             "_Slide_ 3",
             "_Slide_ 3",
-            "_Restrain_ AND _Slide_ 3 (_Grit_)",
-            "_Restrain_ AND _Slide_ 3 (_Grit_)",
-            "_Restrain_ AND _Slide_ 3 (_Grit_)",
-            "_Restrain_ AND _Slide_ 3 (_Grit_)",
+            "_Restrain_ AND _Slide_ 3 (1 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (1 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (1 _Grit_)",
+            "_Restrain_ AND _Slide_ 3 (1 _Grit_)",
             "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
             "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
             "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
             "_Restrain_ AND _Slide_ 3 (2 _Grit_)",
-            "_Restrain_ AND _Slide_ 3 (2 _Grit_)"
+            "_Restrain_ AND _Slide_ 3 (3 _Grit_)"
           ]
         }
       },
@@ -2154,7 +2126,7 @@
         "desc": "You tear away an enemy's defenses, either disarming them or removing a portion of their armor.",
         "cost": "1 _Momentum_",
         "effect": "Attack with the below Profile. If you _Disarm_ you may place the weapon in an unoccupied square adjacent to yourself or immediately Equip it in an Open Hand. If you _Shred_, create a _Metal Source_ in an unoccupied adjacent square adjacent to you for each instance of _Shred_ inflicted.",
-        "special": "The Status of this attack depends on if you target a weapon or armor. If you target a weapon, inflict _Impair_ 1 on a Graze, _Impair_ 2 on a Hit, and _Disarm_ on a _Crit_. If you target armor, inflict _Expose_ 1 on a Graze, _Expose_ 2 or _Shred_ 1 on a Hit, and _Shred_ 2 on a Crit. All Statuses are Negated by _Grit_, with a Crit requiring 2 _Grit_ to negate.",
+        "special": "The Status of this attack depends on if you target a weapon or armor. If you target a weapon, inflict _Impair_ 1 on a Graze, _Impair_ 2 on a Hit, and _Disarm_ on a _Crit_. If you target armor, inflict _Expose_ 1 on a Graze, _Expose_ 2 OR _Shred_ 1 on a Hit, and _Expose_ 2 AND _Shred_ 2 on a Crit.",
         "chart": {
           "hit": [
             "Miss",
@@ -2173,14 +2145,14 @@
             "",
             "",
             "",
-            "Weapon: _Impair_ 1 (_Grit_) / Armor: _Expose_ 1 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 4 (2 _Grit_)",
-            "_Push_ 4 (2 _Grit_)",
-            "_Push_ 4 (2 _Grit_)"
+            "Special (1 _Grit_)",
+            "Special (1 _Grit_)",
+            "Special (1 _Grit_)",
+            "Special (1 _Grit_)",
+            "Special (1 _Grit_)",
+            "Special (2 _Grit_)",
+            "Special (2 _Grit_)",
+            "Special (2 _Grit_)"
           ]
         }
       },
@@ -2188,12 +2160,12 @@
         "name": "Magnetic Ward",
         "keywords": ["Spirit", "Metal"],
         "trigger": "You are Attacked with metal.",
-        "cost": "1 _Block_ or _Evade_",
+        "cost": "2 _Grit_ OR 2 _Reflex_",
         "type": "Defensive",
         "speed": "Reaction",
         "desc": "A metal weapon is pushed away at the last second, providing a remarkable defense.",
-        "effect": "Reroll the Attack with Disadvantage and add the Evade Keyword to this Action, or reduce the Attack Roll by 2 and add the Block Keyword to this Action.",
-        "boost": "1 _Block_ or _Evade_ (whichever was not paid in the Cost). Use both Effects."
+        "effect": "Reroll the Attack with Disadvantage and add the Evade Keyword to this Action, or reduce the Attack Roll by 3 and add the Block Keyword to this Action.",
+        "boost": "2 _Grit_ OR 2 _Reflex_ (whichever was not paid in the Cost). Use both Effects."
       }
     ]
   },
@@ -2206,21 +2178,21 @@
       {
         "name": "Metaleye Stance",
         "desc": "You see all nearby sources of metal, granting you a prenatural sense of all their locations.",
-        "refresh": "_Block_ 1, _Evade_ 1, _Skill_ 1",
+        "refresh": "_Grit_ 2, _Reflex_ 2, _Focus_ 1",
         "effect": "You ignore the Veiled condition when attacked by a Metal weapon or when Attacking a creature wearing significant amounts of metal (such as armor). Once per Round, you may reduce the Cost of an _Evade_ or _Block_ Reaction by 1 so long as the Attacker is using a metal weapon."
       },
       {
         "name": "Unbreakable Stance",
         "desc": "You reinforce all nearby metal, making it nigh-indestructible.",
         "accumulate": "If you are wearing metal Armor or have a metal Shield _Equipped_, gain 1 _Momentum_ Refresh.",
-        "refresh": "_Block_ 2, _Grit_ 1",
+        "refresh": "_Grit_ 3",
         "effect": "All Metal Obstacles within a Burst 3 gain Sturdy. In addition, Negating _Damaged_ and _Shred_ costs 1 less for yourself and all allies in a Burst 3, so long as the Weapon or Armor is made of metal."
       },
       {
         "name": "Unstoppable Stance",
         "desc": "You subtly shape and reinforce your weapons, providing impossibly sharp edges that cut through all defenses.",
         "accumulate": "If you have Metal weapons _Equipped_, gain 1 _Momentum_ at Refresh.",
-        "refresh": "_Punish_ 1, _Skill_ 1",
+        "refresh": "_Focus_ 1, _Reflex_ 1",
         "effect": "Gain a +1 Bonus to all Strikes made with a Metal weapon. On a Crit with Metal Weapons add _Unblockable_ to the attack."
       }
     ],
@@ -2236,7 +2208,7 @@
         "type": "Strike",
         "range": "Weapon",
         "effect": "You may trigger this Reaction after seeing your Attack Roll. Reroll the Attack, using the higher of the two results. After the attack is resolved, the weapon becomes _Damaged_. Weapons _Damaged_ in this way return to normal at the end of combat.",
-        "special": "You may instead _Damage_ your Weapon to add _Sure Hit_ to the attack."
+        "special": "You may also _Damage_ your Weapon to add _Sure Hit_ to the attack."
       },
       {
         "name": "Mercurial Strike",
@@ -2249,7 +2221,7 @@
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile. If the Weapon Range is Melee, give it Reach, or if is Reach increase it by 1."
+        "effect": "Attack using your Weapon's Profile. If the Weapon Range is Melee, give it Reach, or if has Reach increase it by 1."
       },
       {
         "name": "Steelforged Strike",
@@ -2275,7 +2247,7 @@
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile. If you roll less than a 7, treat the Attack Roll as a 7. On a Hit or Crit, _Shred_ 1 (2 _Skill_ negates)."
+        "effect": "Attack using your Weapon's Profile. If you roll less than a 7, treat the Attack Roll as a 7. On a Hit or Crit, _Shred_ 1 (2 _Reflex_)."
       },
       {
         "name": "Create Weapon",
@@ -2315,7 +2287,7 @@
         "range": "Self",
         "move": "Reposition",
         "cost": "2 _Momentum_",
-        "effect": "If you target a Weapon, the creature wielding it gains Advantage on their next Attack with it and gains 1 _Punish_. If you target Armor, the creature wielding it gains 1 _Block_ and increase their Armor by 1.",
+        "effect": "If you target a Weapon, the creature wielding it gains Advantage on their next Attack with it and gains 1 _Momentum_. If you target Armor, the creature wielding it gains 2 _Grit_ and increase their Armor by 1.",
         "special": "If the Weapon is _Damaged_, remove _Damaged_. If the _Armor_ has any _Shred_, remove 2.",
         "boost": "1 _Momentum_. Instead, Range is 5."
       },
@@ -2330,7 +2302,7 @@
         "range": "5",
         "move": "Reposition",
         "cost": "1 _Momentum_",
-        "effect": "If you target a Weapon, the Weapon becomes _Damaged_. If you target Armor, _Shred_ 3. When this _Enchant_ ends, the condition ends."
+        "effect": "If you target a Weapon, the Weapon becomes _Damaged_. If you target Armor, _Shred_ 3. When this _Enchant_ ends, the Condition ends."
       },
       {
         "name": "Perfect Armor",
@@ -2342,7 +2314,7 @@
         "speed": "6",
         "range": "Self",
         "move": "None",
-        "effect": "If you target Armor, you may have up to 6 Armor passively and increase your Armor by 2 while this Enchant persists. If you target a Shield, gain an additional 1 Armor whenever you use it to _Block_ and reduce all Attack Rolls against you by 1 while this Enchant persists."
+        "effect": "If you target Armor, you may have up to 6 Armor passively and increase your Armor by 2 while this Enchant persists. If you target a Shield, gain an additional 1 Armor whenever you use a _Block_ Reaction and reduce all Attack Rolls against you by 1 while this Enchant persists."
       },
       {
         "name": "Absolute Defense",
@@ -2350,7 +2322,7 @@
         "type": "Defensive",
         "keywords": ["Block"],
         "trigger": "You are Attacked.",
-        "cost": "2 _Block_, 1 _Grit_",
+        "cost": "3 _Grit_",
         "reqs": "Metal armor, weapon, or shield Equipped.",
         "speed": "Reaction",
         "range": "Self",
@@ -2362,12 +2334,12 @@
         "type": "Defensive",
         "keywords": ["Block"],
         "trigger": "You are Attacked with a Metal weapon without the Ammunition property.",
-        "cost": "1 _Block_, 1 _Punish_",
+        "cost": "2 _Block_, 1 _Momentum_",
         "reqs": "Metal armor, weapon, or shield Equipped.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Choose: The attacker reduces their Attack Roll by 1 and their Weapon becomes _Damaged_ OR they reduce their Attack Roll by 4.",
-        "special": "The Attacker may pay 1 _Skill_ to instead choose the Effect."
+        "special": "The Attacker may pay 1 _Focus_ to instead choose the Effect."
       },
       {
         "name": "Create Armor",
@@ -2379,7 +2351,7 @@
         "speed": "3",
         "range": "5",
         "move": "Step",
-        "effect": "Destroy the Target. Choose a friendly creature within Range or yourself. Increase their Armor by 1 for the remainder of the combat. If the creature  wishes, they may treat their Armor as one heavier."
+        "effect": "Destroy the Target. Choose a friendly creature within Range or yourself. Increase their Armor by 1 for the remainder of the combat. If the creature  wishes, they may treat their Armor as one level higher."
       }
     ]
   },
@@ -2416,15 +2388,15 @@
       {
         "name": "Ebbing Stance",
         "desc": "Your waves pull with a vicious undertow, dragging your foes closer to you with an unstoppable riptide.",
-        "refresh": "_Evade_ 1, _Skill_ 1",
+        "refresh": "_Reflex_ 2, _Focus_ 1",
         "accumulate": "Whenver you _Pull_ an enemy with an Action, gain 1 _Momentum_.",
-        "effect": "Whenever you Hit or Crit with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, _Skill_.",
-        "special": "The cost to Negate all your _Pull_ effects while within 3 spaces of you is increased by 1."
+        "effect": "Whenever you Hit or Crit with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
+        "special": "Reduce the Cost of Form Change by 2 if you caused any _Push_ effect last round when swapping into this Stance."
       },
       {
         "name": "Flood Stance",
         "desc": "You are a master of the tides, covering the battlefield in water as far as the eye can see.",
-        "refresh": "_Evade_ 1, _Grit_ 1",
+        "refresh": "_Grit_ 1, _Reflex_ 2",
         "accumulate": "Whenever a creature is _Pushed_, _Pulled_, or knocked _Prone_ on _Wet_ Terrain gain 1 _Momentum_, up to a maximum of 4 per round.",
         "effect": "Any time you Hit or Crit with a Water Attack you may make a space adjacent to the Target _Wet_.",
         "special": "You may ignore the effects of _Wet_ Terrain."
@@ -2432,10 +2404,10 @@
       {
         "name": "Flowing Stance",
         "desc": "Your waves hit with an impossible force, leaving no avenue for retreat but back.",
-        "refresh": "_Block_ 1, _Grit_ 1",
+        "refresh": "_Block_ 3",
         "accumulate": "Whenver you _Push_ an enemy with an Action, gain 1 _Momentum_.",
-        "effect": "Whenever you Hit or Crit with a Water Action you may add _Push_ 1 to the effect. If there is an existing _Push_ on the Attack it is Negated by the same defense, otherwise, _Grit_.",
-        "special": "The cost to Negate all your _Push_ effects while further than 5 spaces from you is increased by 1."
+        "effect": "Whenever you Hit or Crit with a Water Action you may add _Push_ 1 to the effect. If there is an existing _Push_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
+        "special": "Reduce the Cost of Form Change by 2 if you caused any _Pull_ effect last round when swapping into this Stance."
       }
     ],
     "techniques": [
@@ -2470,12 +2442,12 @@
             "",
             "",
             "",
-            "_Exposed_ 1 (_Grit_)",
-            "_Exposed_ 1 (_Grit_)",
-            "_Staggered_ (_Grit_)",
-            "_Staggered_ (_Grit_)",
-            "_Staggered_ (2 _Grit_)",
-            "_Staggered_ (2 _Grit_)"
+            "_Exposed_ 1 (1 _Grit_)",
+            "_Exposed_ 1 (1 _Grit_)",
+            "_Staggered_ (1 _Grit_)",
+            "_Staggered_ (1 _Grit_)",
+            "_Staggered_ OR _Break_ (1 _Grit_, 1 _Focus_)",
+            "_Staggered_ OR _Break_ (1 _Grit_, 1 _Focus_)"
           ]
         }
       },
@@ -2506,12 +2478,12 @@
           "damage": [0, 4, 4, 5, 5, 7, 8, 9, 10, 14, 15],
           "status": [
             "",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 4 and _Prone_ (_Grit_)",
-            "_Push_ 4 and _Prone_ (_Grit_)",
+            "_Push_ 3 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
+            "_Push_ 4 and _Prone_ (1 _Grit_)",
+            "_Push_ 4 and _Prone_ (1 _Grit_)",
             "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_)",
             "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_)",
             "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_)",
@@ -2547,13 +2519,13 @@
           "status": [
             "",
             "",
-            "_Push_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 1 (_Grit_ or _Skill_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 2 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
-            "_Push_ 3 (_Grit_)",
+            "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
+            "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
+            "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
+            "_Push_ 3 (1 _Grit_)",
             "_Push_ 4 (2 _Grit_)",
             "_Push_ 4 (2 _Grit_)"
           ]
@@ -2592,10 +2564,10 @@
             "",
             "",
             "",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
-            "_Push_ 1 (_Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
             "_Push_ 2 or _Prone_ (2 _Grit_)",
             "_Push_ 2 or _Prone_ (2 _Grit_)"
           ]
@@ -2640,13 +2612,13 @@
           "status": [
             "",
             "",
-            "_Pull_ 2 (_Grit_ or _Skill_)",
-            "_Pull_ 2 (_Grit_ or _Skill_)",
-            "_Pull_ 2 (_Grit_ or _Skill_)",
-            "_Pull_ 3 (_Skill_)",
-            "_Pull_ 3 (_Skill_)",
-            "_Pull_ 4 (_Skill_)",
-            "_Pull_ 4 (_Skill_)",
+            "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
+            "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
+            "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
+            "_Pull_ 3 (1 _Skill_)",
+            "_Pull_ 3 (1 _Skill_)",
+            "_Pull_ 4 (1 _Skill_)",
+            "_Pull_ 4 (1 _Skill_)",
             "_Pull_ 5 (2 _Skill_)",
             "_Pull_ 5 (2 _Skill_)"
           ]
@@ -2661,7 +2633,7 @@
         "move": "Reposition",
         "desc": "You seize a nearby source of water, manipulating it into a ring around you to launch attacks from unpredictable angles.",
         "target": "Two _Water Source_s.",
-        "effect": "_Destroy_ all Targets. So long as this _Enchant_ persists you may treat any space within a Burst 2 of you as the origin of any Water Attacks, treating it as a _Water Source_ if you wish. You may end this Enchant at any time to gain _Block_ equal to the number of _Water Source_s within your Aqua Ring.",
+        "effect": "_Destroy_ all Targets. So long as this _Enchant_ persists you may treat any space within a Burst 2 of you as the origin of any Water Attacks, treating it as a _Water Source_ if you wish. You may end this Enchant at any time to gain _Grit_ equal to the number of _Water Source_s within your Aqua Ring.",
         "special": "Once per round on your turn you may pay 2 _Momentum_ to _Destroy_ an additional two _Water Source_s and increase the number of _Water Source_s your Aqua Ring counts as by 1.",
         "boost": "1 _Momentum_: Target is instead four _Water Source_s, and you may treat the ring as two _Water Source_s."
       },
@@ -2675,7 +2647,7 @@
         "cost": "1 _Momemtum_",
         "desc": "You pull a source of water free, creating a watery tomb to encase a foe in.",
         "target": "A _Water Source_.",
-        "effect": "_Destroy_ all Targets. Create a Size 1 Water Sphere within Range. Any creatures in this space must immediately spend 1 _Skill_ to Move 1. Otherwise, that creature immediately becomes _Restrained_ within the Watery Sphere. While _Restrained_ in this way the creature takes 3 _True_ Damage at the end of each of their turns. A creature _Restrained_ by the Water Sphere can escape by Sacrificing an Action and expending 1 _Grit_ or _Skill_. If a creature moves into a space with a Water Sphere while there is no creature currently _Restrained_ in this space, they immediately become _Restrained_.",
+        "effect": "_Destroy_ all Targets. Create a Size 1 Water Sphere within Range. Any creatures in this space must immediately spend 1 _Reflex_ to Move 1. Otherwise, that creature immediately becomes _Restrained_ within the Watery Sphere. While _Restrained_ in this way the creature takes 3 _True_ Damage at the end of each of their turns. A creature _Restrained_ by the Water Sphere can escape by Sacrificing an Action and expending 1 _Focus_ OR _Grit_. If a creature moves into a space with a Water Sphere while there is no creature currently _Restrained_ in this space, they immediately become _Restrained_.",
         "special": "When you end this Enchant the spaces containing a Water Sphere and all adjacent spaces become _Wet_.",
         "boost": "2 or 4 _Momentum_: If you spend 2 _Momentum_, Target is instead 3 _Water Source_s and you create a Size 2 Water Sphere. If you spend 4 _Momentum_, Target is instead 8 _Water Source_s and you create a Size 3 Water Sphere."
       },
@@ -2689,7 +2661,7 @@
         "cost": "2 _Momentum_",
         "desc": "You become the center of the tides, pushing or pulling all water near you as you please.",
         "target": "All spaces with _Wet_ Terrain or _Water Sources_ within Range.",
-        "effect": "You may either _Push_ or _Pull_ all Targets. Repeat twice. Any creature in a Target space suffers the same _Push_ or _Pull_. _Skill_ negates this for the remainder of the Turn. If a creature would collide with an obstacle, they are knocked _Prone_.",
+        "effect": "You may either _Push_ or _Pull_ all Targets. Repeat twice. Any creature in a Target space suffers the same _Push_ or _Pull_. A creature may spend 1 _Reflex_ to negate this for the remainder of the Turn. If a creature would collide with an obstacle, they are knocked _Prone_.",
         "special": "A _Water Source_ that is moved out of its original space by this effect instead creates _Wet_ Terrain adjacent to the _Water Source_."
       },
       {
@@ -2714,7 +2686,7 @@
         "move": "Reposition",
         "target": "A creature.",
         "desc": "You create a thin coat of water around the target, providing a simple defense and quenching flames.",
-        "effect": "The Target gains 1 _Block_ and X Endurance. The Target is _Immune_ to _Burn_ for the remainder of the round and clears all _Burn_ they currently posses.",
+        "effect": "The Target gains 2 _Grit_ and X Endurance. The Target is _Immune_ to _Burn_ for the remainder of the round and clears all _Burn_ they currently posses.",
         "boost": "X _Momentum. For every 2 _Momentum_ spent you may _Destroy_ a _Water Source_ within Range 4 repeat this Action."
       },
       {
@@ -2723,10 +2695,10 @@
         "type": "Defensive",
         "keywords": ["Spirit", "Water", "Block"],
         "trigger": "You are Attacked.",
-        "cost": "1 _Block_, 1 _Momentum_",
+        "cost": "2 _Grit_, 1 _Momentum_",
         "speed": "Reaction",
-        "effect": "Reduce the Attack Roll by 1. If the Attack was Melee, you may _Push_ the Attacker 2 (_Grit_ negates). If the Attack was Ranged, gain Cover against it.",
-        "special": "If you are on or adjacent to _Wet_ Terrain this Reaction only costs 1 _Block_."
+        "effect": "Reduce the Attack Roll by 1. If the Attack was Melee, you may _Push_ the Attacker 2 (1 _Grit_). If the Attack was Ranged, gain Cover against it.",
+        "special": "If you are on or adjacent to _Wet_ Terrain this Reaction only costs 2 _Grit_."
       }
     ]
   },
@@ -2739,7 +2711,7 @@
       {
         "name": "Skating Stance",
         "desc": "The ice is your home, allowing you to slip and slide with ethereal grace.",
-        "refresh": "_Evade_ 1, _Skill_ 1",
+        "refresh": "_Focus_ 1, _Reflex_ 1",
         "accumulate": "Whenever you start a Turn on _Icy_ Terrain, gain 1 _Momentum_.",
         "effect": "All Movement you make on _Icy_ Terrain is _Safe_.",
         "special": "You may ignore the effects of _Icy_ Terrain."
@@ -2776,12 +2748,12 @@
             "",
             "",
             "",
-            "_Frost_ 1 (_Skill_)",
-            "_Frost_ 1 (_Skill_)",
-            "_Frost_ 1 (_Skill_)",
-            "_Frost_ 2 (_Skill_)",
-            "_Frost_ 2 (_Skill_)",
-            "_Frost_ 2 (_Skill_)"
+            "_Frost_ 1 (1 _Focus_)",
+            "_Frost_ 1 (1 _Focus_)",
+            "_Frost_ 1 (1 _Focus_)",
+            "_Frost_ 2 (2 _Focus_)",
+            "_Frost_ 2 (2 _Focus_)",
+            "_Frost_ 2 (2 _Focus_)"
           ]
         }
       }
@@ -2900,7 +2872,6 @@
     "techniques": [
       {
         "name": "Dual Strike",
-        "damagetype": "Weapon",
         "desc": "A vicious attack, striking with two weapons in quick succession.",
         "type": "Strike",
         "speed": "Slower Weapon",
@@ -2924,8 +2895,8 @@
         "name": "Executioner Style",
         "desc": "Like wheat before a scythe, so are foes before your great weapon.",
         "accumulate": "Whenever you defeat an enemy with a Heavy Melee Weapon, gain 1 _Momentum_.",
-        "refresh": "_Punish_ 1",
-        "effect": "When you defeat an enemy with a Heavy Melee Weapon you may pay 1 _Momentum_ to deal damage to a creature within your Weapon's reach equal to any excess damage dealt to the defeated creature (_Evade_ negates). You may continue paying _Momementum_ to repeat this effect until there is no Damage remaining."
+        "refresh": "1 _Momentum_",
+        "effect": "When you defeat an enemy with a Heavy Melee Weapon you may pay 1 _Momentum_ to deal damage to a creature within your Weapon's reach equal to any excess damage dealt to the defeated creature (2 _Reflex_). You may continue paying _Momementum_ to repeat this effect until there is no Damage remaining."
       }
     ],
     "techniques": [
@@ -2959,12 +2930,12 @@
             "",
             "",
             "",
-            "_Expose_ 1 (_Grit_ or _Skill_)",
-            "_Expose_ 1 (_Grit_ or _Skill_)",
-            "_Expose_ 1 (_Grit_)",
-            "_Expose_ 1 (_Grit_)",
-            "_Expose_ 2 (_Grit_)",
-            "_Expose_ 2 (_Grit_)",
+            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Grit_)",
+            "_Expose_ 2 (1 _Grit_)",
+            "_Expose_ 2 (1 _Grit_)",
             "_Expose_ 2 (2 _Grit_)",
             "_Expose_ 2 (2 _Grit_)"
           ]
@@ -2983,7 +2954,7 @@
         "desc": "A fighting style centered around the use of a shield to defend oneself and others.",
         "accumulate": "Whenever an ally uses your Block Token, gain 1 Momentum. This may only trigger once per Phase.",
         "refresh": "_Block_ 2",
-        "effect": "While you have a Shield Equipped you may choose to allow adjacent allies to spend your Block Tokens for Reactions. In addition, while you have a Shield Equipped, adjacent allies gain +1 Armor against the triggering attack whenever they take a Block Reaction."
+        "effect": "While you have a Shield Equipped you may choose to allow adjacent allies to spend your _Grit_ for Reactions. In addition, while you have a Shield Equipped, adjacent allies gain +1 Armor against the triggering attack whenever they take a Block Reaction."
       }
     ],
     "techniques": [
@@ -2996,8 +2967,8 @@
         "ap": 1,
         "move": "Step",
         "reqs": "Shield Equipped.",
-        "effect": "Gain 2 Block Tokens.",
-        "special": "For the remainder of the Round, reduce the Attack Roll by 2 rather than 1 while using the Block Reaction."
+        "effect": "Gain 4 _Grit_.",
+        "special": "For the remainder of the Round, reduce the Attack Roll by 2 rather than 1 while using the Deflect Reaction."
       },
       {
         "name": "Vigilant Defender",
@@ -3006,7 +2977,7 @@
         "keywords": ["Block"],
         "type": "Defensive",
         "reqs": "Shield Equipped.",
-        "cost": "X _Momentum_ (see Movement)",
+        "cost": "2 _Grit_, X _Momentum_ (see Movement)",
         "move": "1 _Momentum_ for Step, 2 _Momentum_ for Reposition, 3 _Momentum_ for Shift.",
         "trigger": "An ally within the Movement you paid for is Attacked.",
         "effect": "Immediately Move towards the ally by the shortest path possible, ending your move adjacent to the ally. Your ally takes only half of the damage from the triggering hit, while you take the other half."
