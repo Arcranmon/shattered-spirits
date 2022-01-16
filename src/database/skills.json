@@ -23,7 +23,7 @@
         "speed": "Weapon",
         "range": "Weapon",
         "ap": 1,
-        "move": "Step",
+        "move": "Reposition",
         "reqs": "Any Weapon Wielded.",
         "effect": "Attack using your weapon's Profile."
       },
@@ -68,7 +68,8 @@
         "ap": 1,
         "move": "Reposition",
         "effect": "Interact is an Action that isn't covered by the other Actions in the game. Generally it involves interacting with the terrain in a distinct way, dealing with persistent combat effects, or fulfilling objectives on the battlefield. The Speed, Range, and Movement of this Action can vary depending on what is being undertaken. Your GM will determine the effects of Interact, with common examples listed in [MAKE EXAMPLES OF INTERACTS] here.",
-        "special": "You may _Improvise_ Interact for no _Momentum_. However, you may pay the full 2 _Momentum_ cost and, instead of replacing the Action, treat Interact as a 0 AP Set-Up or Follow-Up Action. When used in this way, the Movement of Interact becomes None."
+        "special": "You may _Improvise_ Interact for no _Momentum_.",
+        "imbue": "2 _Momentum_. This is 0 AP and its Speed may become Set-Up or Follow-Up."
       },
       {
         "name": "Form Change",
@@ -90,7 +91,7 @@
         "ap": 1,
         "move": "Reposition",
         "effect": "Replace one or both of your Equipped equipment with a different piece of available equipment.",
-        "special": "The Speed of Draw is equal to 1 + the total number of Hands of Equipment drawn or stowed. You may _Improvise_ this action for no _Momentum_ if you are drawing into an Open Hand."
+        "special": "The Speed of Draw is equal to 1 + the total number of Hands of Equipment drawn or stowed. You may _Improvise_ this action for _Cost_ if you are drawing into an Open Hand."
       },
       {
         "name": "Evasive Maneuvers",
@@ -100,7 +101,8 @@
         "range": "Self",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Gain 2 _Reflex_."
+        "effect": "Gain 2 _Reflex_.",
+        "special": "Reduce the Cost to _Improvise_ this Action by 1."
       },
       {
         "name": "Dodge",
@@ -111,7 +113,7 @@
         "cost": "2 _Reflex_",
         "speed": "Reaction",
         "range": "Self",
-        "effect": "Force the attacker to reroll the attack. They must use the new result."
+        "effect": "Force the attacker to reroll the attack. They must use the new result. You may Safe Move 1 after this Reaction."
       },
       {
         "name": "Guard",
@@ -121,7 +123,8 @@
         "range": "Self",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Gain 2 _Grit_."
+        "effect": "Gain 2 _Grit_.",
+        "special": "Reduce the Cost to _Improvise_ this Action by 1."
       },
       {
         "name": "Deflect",
@@ -142,7 +145,21 @@
         "range": "Self",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Gain 2 _Focus_."
+        "effect": "Gain 2 _Focus_.",
+        "special": "Reduce the Cost to _Improvise_ this Action by 1."
+      },
+      {
+        "name": "Elemental Contest",
+        "desc": "You utilize your own mastery of Spirit techniques to thwart an attempt by an enemy.",
+        "type": "Defensive",
+        "keywords": [],
+        "trigger": "You are Attacked by a Spirit Action from a Discipline that you have at least one Action, Reaction, or Stance from.",
+        "cost": "1 _Focus_, 1 _Grit_ OR 1 _Reflex_",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "If you paid _Grit_ for the Cost: Add the _Block_ Keyword to this Reaction reduce the Attack Roll by 2.\nIf you paid _Reflex_ for the cost: Add the _Evade_ Keyword to this Action and reroll the Attack, using the lower of the two Attack Rolls.",
+        "boost": "1 _Grit_ OR 1 _Reflex_ (whichever was not paid in the Cost): Use both Effects.\n2 _Focus_: The Trigger is now 'A creature within Range 4 is Attacked by a Spirit Action from a Discipline that you have at least one Action, Reaction, or Stance from.'",
+        "special": "If you have at least 5 Actions, Reactions, or Stances (in any combination) from the relevant Discipline the effect is instead the following:\nIf you paid _Grit_ for the Cost: Add the _Block_ Keyword to this Reaction reduce the Attack Roll by 3.\nIf you paid _Reflex_ for the cost: Add the _Evade_ Keyword to this Action and reroll the Attack with Disadvantage, using the lower of the two Attack Rolls."
       },
       {
         "name": "Counter",
@@ -374,7 +391,7 @@
         "ap": 1,
         "move": "Step",
         "target": "A Size 1 creature adjacent to at least two _Earthen Feature_s.",
-        "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_. On a Hit or Crit, _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 3 _Grit_ on their turn. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Reflex_.",
+        "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_. On a Hit or Crit, _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 4 _Grit_ on their turn. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Reflex_.",
         "special": "If there are four adjacent _Earthen Features_: Either this Attack is _Accurate_, or you may target a Size 2 creature. Destroy all _Earthen Feature_s used for this Attack.",
         "chart": {
           "hit": [
@@ -399,10 +416,10 @@
             "",
             "_Entomb_ (1 _Reflex_)",
             "_Entomb_ (1 _Reflex_)",
-            "_Entomb_ (1 _Reflex_)",
-            "_Entomb_ (1 _Reflex_)",
             "_Entomb_ (2 _Reflex_)",
-            "_Entomb_ (2 _Reflex_)"
+            "_Entomb_ (2 _Reflex_)",
+            "_Entomb_ (3 _Reflex_)",
+            "_Entomb_ (4 _Reflex_)"
           ]
         }
       },
@@ -507,7 +524,7 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
         "range": "8",
-        "area": "Cone 1",
+        "area": "Cone 2",
         "move": "Shift",
         "effect": "The target Area becomes _Rough_. If a Size 1 creature moves into a space with Quicksand they must spend 1 _Reflex_. If a creature spends _Reflex_, they may move through Quicksand for the rest of the turn without penalty. If they do not spend _Skill_, they sink into the Quicksand and are _Restrained_ until they _Sacrifice_ an Action and spend _Reflex_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without spending Skill. A creature _Restrained_ by Quicksand takes 3 True Damage at the end of the Round. A single space of Quicksand may only have one creature _Restrained_ at a time.",
         "special": "A character may only have three instances of Quickand at a time, regardless of their size.",
@@ -1306,7 +1323,7 @@
         "desc": "A blaze is set, starting what can grow into a deadly inferno.",
         "keywords": ["Spirit", "Flame"],
         "type": "Maneuver",
-        "area": "Cone 1",
+        "area": "Cone 2",
         "range": "6",
         "move": "Reposition",
         "effect": "The area immediately becomes _Blazing_. Any creature in the area gains _Burn_ 2 (1 _Reflex_).",
@@ -1455,8 +1472,8 @@
         "range": "Melee",
         "type": "Strike",
         "move": "Reposition",
-        "requirement": "Melee Weapon Wielded",
-        "area": "Cone 1",
+        "reqs": "Melee Weapon Wielded",
+        "area": "Cone 2",
         "cost": "1 _Momentum_",
         "speed": "Weapon",
         "desc": "You explosively charge your weapon, letting out a mighty blast as you make contact.",
@@ -1668,7 +1685,7 @@
         "keywords": ["Spirit", "Flame"],
         "type": "Maneuver",
         "range": "6",
-        "area": "Cone 1",
+        "area": "Cone 2",
         "move": "Reposition",
         "effect": "The Target Area becomes Veiled until the end of the Round.",
         "boost": "2 _Momentum_. Instead, becomes Veiled until the end of the next Round.",
@@ -1865,7 +1882,7 @@
         "type": "Strike",
         "speed": "1",
         "move": "Step",
-        "requirement": "A creature that is a Metal Source.",
+        "target": "A creature that is a _Metal Source_.",
         "desc": "You compress metal around a creature, causing unavoidable damage.",
         "effect": "Deal 3 damage to the Target. If the Target is a Metalbound, they may pay 2 _Grit_ or 2 _Focus_ to negate this attack.",
         "special": "For each _Metal Source_ on a Target beyond the first deal +1 damage.",
@@ -1878,7 +1895,7 @@
         "type": "Strike",
         "speed": "3",
         "move": "Reposition",
-        "requirement": "Metal Source on Self.",
+        "reqs": "Metal Source on Self.",
         "desc": "Metal flies forth from you, striking with telekinetic precision.",
         "effect": "Attack with the below Profile. Place the _Metal Source_ adjacent to the Target, unless you _Embed_.",
         "boost": "1 _Momentum_. Choose a Metal Source within Range that is not Embedded. Originate the attack from the Metal Source rather than yourself.",
@@ -2160,12 +2177,12 @@
         "name": "Magnetic Ward",
         "keywords": ["Spirit", "Metal"],
         "trigger": "You are Attacked with metal.",
-        "cost": "2 _Grit_ OR 2 _Reflex_",
+        "cost": "1 _Focus_, 2 _Grit_ OR 2 _Reflex_",
         "type": "Defensive",
         "speed": "Reaction",
         "desc": "A metal weapon is pushed away at the last second, providing a remarkable defense.",
-        "effect": "Reroll the Attack with Disadvantage and add the Evade Keyword to this Action, or reduce the Attack Roll by 3 and add the Block Keyword to this Action.",
-        "boost": "2 _Grit_ OR 2 _Reflex_ (whichever was not paid in the Cost). Use both Effects."
+        "effect": "If you paid _Grit_ for the Cost: Add the _Block_ Keyword to this Reaction reduce the Attack Roll by 3.\nIf you paid _Reflex_ for the cost: Add the _Evade_ Keyword to this Action and reroll the Attack with Disadvantage, using the lower of the two Attack Rolls.",
+        "boost": "1 _Grit_ OR 1 _Reflex_ (whichever was not paid in the Cost): Use both Effects."
       }
     ]
   },
@@ -2391,7 +2408,7 @@
         "refresh": "_Reflex_ 2, _Focus_ 1",
         "accumulate": "Whenver you _Pull_ an enemy with an Action, gain 1 _Momentum_.",
         "effect": "Whenever you Hit or Crit with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
-        "special": "Reduce the Cost of Form Change by 2 if you caused any _Push_ effect last round when swapping into this Stance."
+        "special": "Immediately after you cause a _Push_ effect you may pay 1 _Momentum_ to change to this Stance."
       },
       {
         "name": "Flood Stance",
@@ -2407,7 +2424,7 @@
         "refresh": "_Block_ 3",
         "accumulate": "Whenver you _Push_ an enemy with an Action, gain 1 _Momentum_.",
         "effect": "Whenever you Hit or Crit with a Water Action you may add _Push_ 1 to the effect. If there is an existing _Push_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
-        "special": "Reduce the Cost of Form Change by 2 if you caused any _Pull_ effect last round when swapping into this Stance."
+        "special": "Immediately after you cause a _Pull_ effect you may pay 1 _Momentum_ to change to this Stance."
       }
     ],
     "techniques": [
@@ -2482,12 +2499,12 @@
             "_Push_ 3 (1 _Grit_)",
             "_Push_ 3 (1 _Grit_)",
             "_Push_ 3 (1 _Grit_)",
-            "_Push_ 4 and _Prone_ (1 _Grit_)",
-            "_Push_ 4 and _Prone_ (1 _Grit_)",
-            "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_)",
-            "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_)",
-            "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_)",
-            "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_)"
+            "_Push_ 4 and _Prone_ (1 _Grit_), _Soaked_ 1",
+            "_Push_ 4 and _Prone_ (1 _Grit_), _Soaked_ 1",
+            "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_), _Soaked_ 2",
+            "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_), _Soaked_ 2",
+            "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_), _Soaked_ 3",
+            "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_), _Soaked_ 3"
           ]
         }
       },
@@ -2524,10 +2541,10 @@
             "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (1 _Grit_)",
-            "_Push_ 3 (1 _Grit_)",
-            "_Push_ 3 (1 _Grit_)",
-            "_Push_ 4 (2 _Grit_)",
-            "_Push_ 4 (2 _Grit_)"
+            "_Push_ 3 (1 _Grit_), _Soaked_ 1",
+            "_Push_ 3 (1 _Grit_), _Soaked_ 1",
+            "_Push_ 4 (2 _Grit_), _Soaked_ 2",
+            "_Push_ 4 (2 _Grit_), _Soaked_ 2"
           ]
         }
       },
@@ -2568,8 +2585,8 @@
             "_Push_ 1 (1 _Grit_)",
             "_Push_ 1 (1 _Grit_)",
             "_Push_ 1 (1 _Grit_)",
-            "_Push_ 2 or _Prone_ (2 _Grit_)",
-            "_Push_ 2 or _Prone_ (2 _Grit_)"
+            "_Push_ 2 or _Prone_ (2 _Grit_), _Soaked_ 1",
+            "_Push_ 2 or _Prone_ (2 _Grit_), _Soaked_ 1"
           ]
         }
       },
@@ -2617,10 +2634,10 @@
             "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
             "_Pull_ 3 (1 _Skill_)",
             "_Pull_ 3 (1 _Skill_)",
-            "_Pull_ 4 (1 _Skill_)",
-            "_Pull_ 4 (1 _Skill_)",
-            "_Pull_ 5 (2 _Skill_)",
-            "_Pull_ 5 (2 _Skill_)"
+            "_Pull_ 4 (1 _Skill_), _Soaked_ 1",
+            "_Pull_ 4 (1 _Skill_), _Soaked_ 1",
+            "_Pull_ 5 (2 _Skill_), _Soaked_ 2",
+            "_Pull_ 5 (2 _Skill_), _Soaked_ 2"
           ]
         }
       },
@@ -2647,7 +2664,7 @@
         "cost": "1 _Momemtum_",
         "desc": "You pull a source of water free, creating a watery tomb to encase a foe in.",
         "target": "A _Water Source_.",
-        "effect": "_Destroy_ all Targets. Create a Size 1 Water Sphere within Range. Any creatures in this space must immediately spend 1 _Reflex_ to Move 1. Otherwise, that creature immediately becomes _Restrained_ within the Watery Sphere. While _Restrained_ in this way the creature takes 3 _True_ Damage at the end of each of their turns. A creature _Restrained_ by the Water Sphere can escape by Sacrificing an Action and expending 1 _Focus_ OR _Grit_. If a creature moves into a space with a Water Sphere while there is no creature currently _Restrained_ in this space, they immediately become _Restrained_.",
+        "effect": "_Destroy_ all Targets. Create a Size 1 Water Sphere within Range. Any creatures in this space must immediately spend 1 _Reflex_ to Move 1. Otherwise, that creature immediately becomes _Restrained_ within the Watery Sphere. While _Restrained_ in this way the creature takes 3 _True_ Damage at the end of each of their turns and gains _Soaked_ 2. A creature _Restrained_ by the Water Sphere can escape by Sacrificing an Action and expending 1 _Focus_ OR _Grit_. If a creature moves into a space with a Water Sphere while there is no creature currently _Restrained_ in this space, they immediately become _Restrained_.",
         "special": "When you end this Enchant the spaces containing a Water Sphere and all adjacent spaces become _Wet_.",
         "boost": "2 or 4 _Momentum_: If you spend 2 _Momentum_, Target is instead 3 _Water Source_s and you create a Size 2 Water Sphere. If you spend 4 _Momentum_, Target is instead 8 _Water Source_s and you create a Size 3 Water Sphere."
       },
@@ -2667,7 +2684,6 @@
       {
         "name": "Hydroplane",
         "keywords": ["Spirit", "Water"],
-        "range": "4",
         "type": "Move",
         "speed": "2",
         "move": "Shift",
@@ -2686,7 +2702,7 @@
         "move": "Reposition",
         "target": "A creature.",
         "desc": "You create a thin coat of water around the target, providing a simple defense and quenching flames.",
-        "effect": "The Target gains 2 _Grit_ and X Endurance. The Target is _Immune_ to _Burn_ for the remainder of the round and clears all _Burn_ they currently posses.",
+        "effect": "The Target gains 2 _Grit_, X [TEMPORARY], and up to _Soaked_ 2.",
         "boost": "X _Momentum. For every 2 _Momentum_ spent you may _Destroy_ a _Water Source_ within Range 4 repeat this Action."
       },
       {
@@ -2695,10 +2711,10 @@
         "type": "Defensive",
         "keywords": ["Spirit", "Water", "Block"],
         "trigger": "You are Attacked.",
-        "cost": "2 _Grit_, 1 _Momentum_",
+        "cost": "1 _Grit_, 1 _Focus_, 1 _Momentum_",
         "speed": "Reaction",
         "effect": "Reduce the Attack Roll by 1. If the Attack was Melee, you may _Push_ the Attacker 2 (1 _Grit_). If the Attack was Ranged, gain Cover against it.",
-        "special": "If you are on or adjacent to _Wet_ Terrain this Reaction only costs 2 _Grit_."
+        "special": "If you are on or adjacent to _Wet_ Terrain reduce the Cost of this Reaction by 1."
       }
     ]
   },
@@ -2708,6 +2724,21 @@
     "name": "Tundra",
     "flavor": "Conjuring great constructs out of ice, masters of the Tundra Stance create weapons as beautiful as they are deadly.",
     "stances": [
+      {
+        "name": "Frostbite Stance",
+        "desc": "You are an avatar of ice and cold, creating a dangerous vortex of ice around you.",
+        "refresh": "_Grit_ 1",
+        "accumulate": "The first time on your Turn you inflict _Frost_, gain 1 _Momentum_.",
+        "effect": "Create a _Burst 2_ around you. Whenever a creature ends its turn there they gain 1 _Frost_ (1 _Grit_)."
+      },
+      {
+        "name": "Frostguard Stance",
+        "desc": "While normally frost is a hindrance, you have learned to weaponize it and make it a valuable tool.",
+        "refresh": "_Focus_ 1, _Grit_ 2",
+        "accumulate": "For every 2 _Frost_ you have at Refresh, gain 1 _Momentum_.",
+        "effect": "Anytime you apply _Frost_ to an enemy you may apply an equal amount to yourself. At the end of any of your turns, if you have at least 1 _Frost_, you may pay 1 _Grit_ to remove 1 _Frost_ and gain 1 _Ablative Armor_.",
+        "special": "At the start of your turn, you may pay 1 _Momentum_ to ignore one of the effects of _Frost_ for the turn without taking any damage."
+      },
       {
         "name": "Skating Stance",
         "desc": "The ice is your home, allowing you to slip and slide with ethereal grace.",
@@ -2719,7 +2750,61 @@
     ],
     "techniques": [
       {
-        "name": "Icicle Strike",
+        "name": "Ice Spike",
+        "desc": "You take advantage of a foe's footing on the ice, creating a dangerous hazard.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Water", "Punish"],
+        "speed": "Reaction",
+        "range": "6",
+        "cost": "2 _Momentum_",
+        "trigger": "A foe moves into an _Icy_ space, moves adjacent to an _Ice Wall_, or falls _Prone_ in an _Icy_ space.",
+        "effect": "Choose an _Icy_ or _Ice Wall_ space adjacent to the creature within Range. If it is _Icy_, _Destroy_ it and replace it with _Icicle_ Terrain. If it was an _Ice Wall_, create a _Icicle_ space in an adjacent square. Attack with the below Profile against the triggering Target.",
+        "special": "If this is triggered off of a target falling _Prone_ on _Icy_ Terrain you may choose the space they are currently in. Resolve the Effect as normal, but you have Advantage on the Attack, and the creature immediately suffers the penalty of the _Icicle_ Terrain as if they had moved into it.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 7, 8],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Frost_ 1 (1 _Reflex_)",
+            "_Frost_ 1 (1 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Icy Burst",
+        "keywords": ["Spirit", "Water"],
+        "range": "6",
+        "type": "Strike",
+        "speed": "2",
+        "move": "Step",
+        "target": "A creature with _Frost_.",
+        "desc": "You harden the ice on a creature in a frozen burst, striking with jagged shards.",
+        "effect": "Deal damage to the Target equal to their current _Frost_. If the Target is a Waterbound, they may pay 2 _Reflex_ or 2 _Focus_ to negate this attack.",
+        "special": "After resolving the attack, you may replace any amount of the target's _Frost_ with _Bleed_.",
+        "boost": "2 _Momentum_. Add a Burst 1 Area to the attack centered on the Target. Deal damage equal to half that creature's _Frost_ in the Area and inflict _Frost_ 1 (1 _Reflex_)."
+      },
+      {
+        "name": "Ice Knife",
         "desc": "You harden water into jagged blades before sending them flying towards a foe.",
         "type": "Strike",
         "keywords": ["Spirit", "Water"],
@@ -2748,14 +2833,152 @@
             "",
             "",
             "",
-            "_Frost_ 1 (1 _Focus_)",
-            "_Frost_ 1 (1 _Focus_)",
-            "_Frost_ 1 (1 _Focus_)",
-            "_Frost_ 2 (2 _Focus_)",
-            "_Frost_ 2 (2 _Focus_)",
-            "_Frost_ 2 (2 _Focus_)"
+            "_Frost_ 1 (1 _Reflex_)",
+            "_Frost_ 1 (1 _Reflex_)",
+            "_Frost_ 1 (1 _Reflex_)",
+            "_Frost_ 2 (2 _Reflex_)",
+            "_Frost_ 2 (2 _Reflex_)",
+            "_Frost_ 2 (2 _Reflex_)"
           ]
         }
+      },
+      {
+        "name": "Ice Storm",
+        "desc": "A whirling storm of ice and cold forms on the battlefield, threatening all in its path.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Water"],
+        "speed": "4",
+        "range": "10",
+        "area": "Blast 1",
+        "reqs": "2 _Water Source_s in Range.",
+        "effect": "Destroy the _Water Source_s. Attack with the below Profile. After the Attack, the Area becomes _Icy_.",
+        "boost": "2 _Momentum_. This Attack now requires 5 _Water Source_s in Range, but is a Blast 2.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 5, 5, 7, 8, 10, 12, 14, 16],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "_Frost_ 1 (1 _Reflex_)",
+            "_Frost_ 1 (1 _Reflex_)",
+            "_Frost_ 2 (1 _Reflex_)",
+            "_Frost_ 2 (1 _Reflex_)",
+            "_Frost_ 2 (1 _Reflex_)",
+            "_Frost_ 3, _Prone_ (3 _Reflex_)",
+            "_Frost_ 3, _Prone_ (3 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Frost Lance",
+        "keywords": ["Spirit", "Water", "Enchant"],
+        "reqs": "Open Hand",
+        "ap": 1,
+        "type": "Maneuver",
+        "move": "None",
+        "speed": "2",
+        "desc": "A hardened lance of superhardened ice forms in your hand, creating a deadly tool.",
+        "effect": "Equip the Frost Lance Spirit Weapon in your Open Hand. This Enchant ends if you have no Frost Lance Equipped.",
+        "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Frost Lance in each."
+      },
+      {
+        "name": "Creeping Frost",
+        "keywords": ["Spirit", "Water"],
+        "range": "6",
+        "type": "Maneuver",
+        "speed": "3",
+        "move": "Reposition",
+        "target": "3 continguous spaces within range.",
+        "desc": "You use the little water in the air to freeze the ground, creating a thin sheet of ice that makes maneuvering difficult.",
+        "effect": "The Target spaces become _Icy_. Any creatures in these spaces gain _Hobbled_ 1 (1 _Reflex_).",
+        "special": "When choosing Targets, _Wet_ spaces only count as half of a space.",
+        "boost": "X _Momentum_. Increase the number of Target spaces by X.\n1 _Momentum_: You may replace as many _Icy_ spaces with _Icicle_ spaces as you wish."
+      },
+      {
+        "name": "Glacial Guard",
+        "keywords": ["Spirit", "Water"],
+        "ap": 1,
+        "type": "Maneuver",
+        "move": "None",
+        "speed": "3",
+        "desc": "You freeze your body, limiting your movement but enhancing your defense.",
+        "effect": "Gain 2 _Grit_, 1 _Ablative Armor_, and 2 _Frost_.",
+        "boost": "2 _Momentum_. You are _Stuck_. While you are _Stuck_, you may spend _Frost_ as _Grit_."
+      },
+      {
+        "name": "Flash Freeze",
+        "keywords": ["Spirit", "Water"],
+        "range": "6",
+        "type": "Maneuver",
+        "speed": "3",
+        "move": "Step",
+        "target": "A creature with _Frost_ or _Soaked_.",
+        "desc": "You attempt to freeze a creature solid, hardening the water and ice already around them.",
+        "effect": "Choose either _Frost_ or _Soaked_.\nIf you choose _Frost_ and the creature has at least 1 _Frost_, they gain 1 _Frost_ (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 3 _Frost_, they gain 2 _Frost_ (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 5 _Frost_, they are immediately _Restrained_ (2 _Grit_).\nIf you choose _Soaked_ you may convert any number of that creature's _Soaked_ to _Frost_ (2 _Reflex_).",
+        "boost": "2 _Momentum_. Resolve the _Soaked_ version of the Effect, then the _Frost_ version of the Effect."
+      },
+      {
+        "name": "Frozen Wall",
+        "keywords": ["Spirit", "Water"],
+        "range": "6",
+        "type": "Maneuver",
+        "speed": "4",
+        "move": "Reposition",
+        "target": "4 _Wet_, _Icy_, or _Water Source_ spaces.",
+        "desc": "You shape the existing water into rigid structures of ice, .",
+        "effect": "Destroy the Targets. Create a number of contiguous _Ice Wall_s within Range depending on the Destroyed Targets. For every two _Wet_ or _Icy_ spaces you may create a single _Ice Wall_ and for every _Water Source_ you may create one _Ice Wall_.",
+        "special": "If you create an _Ice Wall_ in a space where you Destroyed a Target, creatures adjacent to that space gain _Frost_ 1 (1 _Reflex_).",
+        "boost": "X _Momentum_. Increase the number of Targets by X."
+      },
+      {
+        "name": "Icy Grasp",
+        "keywords": ["Spirit", "Water"],
+        "range": "4",
+        "type": "Maneuver",
+        "speed": "4",
+        "move": "Reposition",
+        "cost": "2 _Momentum_",
+        "target": "A creature completely on _Icy_ or _Wet_ Terrain that is not _Flying_.",
+        "desc": "You freeze a target's feet to the ground, rooting them in place.",
+        "effect": "The Target becomes _Stuck_ (2 _Reflex_). They may end this _Stuck_ by Sacrificing an Action and spending 1 _Grit_.",
+        "boost": "2 _Momentum_. If the Target is _Prone_ they are instead _Restrained_ (3 _Reflex_).  They may end this _Restrained_ by Sacrificing an Action and spending 3 _Grit_."
+      },
+      {
+        "name": "Phase Change",
+        "keywords": ["Spirit", "Water"],
+        "range": "6",
+        "type": "Maneuver",
+        "speed": "5",
+        "move": "Shift",
+        "target": "4 spaces with _Icy_, _Ice Wall_, _Water Source_, or _Wet_.",
+        "desc": "You rapidly change the form of water, either hardening it to ice or returning it to a liquid form.",
+        "effect": "You may change Target _Icy_ and _Ice Wall_ spaces to _Wet_ or _Icicle_, Target _Wet_ spaces to _Icy_ or _Icicle_, and Target _Water Source_s to _Icy_ or _Icicle_. You may not target a _Water Source_ with a creature within.",
+        "boost": "2 _Momentum_. Target is instead a _Water Source_ with a creature within. That creature is immediately _Entombed_ (3 _Reflex_) in an _Ice Wall_ that replaces the _Water Source_. A creature may end _Entomb_ by spending 3 _Grit_ on their turn."
+      },
+      {
+        "name": "Skate",
+        "keywords": ["Spirit", "Water"],
+        "type": "Move",
+        "speed": "3",
+        "move": "Shift",
+        "desc": "You propel yourself forward, using a thin sheet of ice beneath your feet to propel yourself forward.",
+        "effect": "Create two _Icy_ spaces in squares you move through this turn. You may forgo creating two _Icy_ spaces to instead Destroy an _Icy_ space you move through and create an _Ice Wall_ there. You may immediately change direction after creating this _Ice Wall_, even if you are still on _Icy_ Terrain.",
+        "special": "_Wet_ and _Water Source_ spaces of your choice you move through become _Icy_.",
+        "boost": "X _Momentum. You may create an additional X _Icy_ spaces.\n2 _Momentum_: Instead, _Wet_ and _Water Source_ spaces of your choice you move through or adjacent to become _Icy_."
       }
     ]
   },
