@@ -7,9 +7,17 @@
       <b
         ><div class="weapon--keywords">
           {{ weapon.DamageType }} Damage, {{ weapon.SpeedHeader
-          }}{{ weapon.RangeHeader }}<br />
+          }}<tooltipped-text
+            :input="[weapon.RangeHeader]"
+            :commas="false"
+            :splitForKeyword="true"
+          />
           {{ weapon.HandsPhrase }}{{ weapon.CategoryHeader
-          }}<tooltipped-text :input="weapon.Keywords" :commas="true" /></div
+          }}<tooltipped-text
+            :input="weapon.Keywords"
+            :commas="true"
+            :splitForKeyword="true"
+          /></div
       ></b>
     </div>
     <div class="weapon--content">

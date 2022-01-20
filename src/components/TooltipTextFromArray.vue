@@ -1,7 +1,11 @@
 <template>
   <span>
     <span v-for="(val, index) in input"
-      ><tooltip :input="val" :italic="itallic" />
+      ><span v-if="val.includes('_') && splitForKeyword"
+        ><span v-for="valsplit in val.split('_')"
+          ><tooltip :input="valsplit" :italic="itallic" /></span
+      ></span>
+      <span v-else><tooltip :input="val" :italic="itallic" /></span>
       <span v-if="index != input.length - 1"><span v-if="commas">, </span></span
       ><span v-else> </span></span
     ><br />
@@ -21,6 +25,11 @@ export default Vue.extend({
       required: true,
     },
     itallic: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    splitForKeyword: {
       type: Boolean,
       required: false,
       default: false,

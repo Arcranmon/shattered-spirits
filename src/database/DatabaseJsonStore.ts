@@ -1,6 +1,9 @@
 import Skills from "@/database/skills.json";
 import Items from "@/database/items.json";
 import Glossary from "@/database/glossary.json";
+import Statuses from "@/database/statuses.json";
+import Conditions from "@/database/conditions.json";
+import Keywords from "@/database/keywords.json";
 import { Module, VuexModule, Action, Mutation } from "vuex-module-decorators";
 import { Discipline, Technique, Weapon } from "@/class";
 
@@ -32,15 +35,96 @@ export class DatabaseJsonStore extends VuexModule {
     };
   }
 
-  get hasGlossaryItem(): any {
+  get existsInAnyGlossary(): any {
+    return (inword: string) => {
+      return (
+        this.hasBasicGlossaryItem(inword) ||
+        this.hasStatus(inword) ||
+        this.hasCondition(inword) ||
+        this.hasKeyword(inword)
+      );
+    };
+  }
+
+  get hasBasicGlossaryItem(): any {
     return (inword: string) => {
       return Glossary.some((x) => x.keyword === inword);
     };
   }
 
+  get hasStatus(): any {
+    return (inword: string) => {
+      return Statuses.some((x) => x.keyword === inword);
+    };
+  }
+
+  get hasCondition(): any {
+    return (inword: string) => {
+      return Conditions.some((x) => x.keyword === inword);
+    };
+  }
+
+  get hasKeyword(): any {
+    return (inword: string) => {
+      return Keywords.some((x) => x.keyword === inword);
+    };
+  }
+
   get getGlossaryItem(): any {
     return (inword: string) => {
+      if (this.hasBasicGlossaryItem(inword))
+        return this.getBasicGlossaryItem(inword);
+      if (this.hasStatus(inword)) return this.getStatus(inword);
+      if (this.hasCondition(inword)) return this.getCondition(inword);
+      if (this.hasKeyword(inword)) return this.getKeyword(inword);
+    };
+  }
+
+  get getBasicGlossary(): any {
+    return () => {
+      return Glossary;
+    };
+  }
+
+  get getBasicGlossaryItem(): any {
+    return (inword: string) => {
       return Glossary.find((x) => x.keyword.trim() === inword.trim()).effect;
+    };
+  }
+
+  get getStatuses(): any {
+    return () => {
+      return Statuses;
+    };
+  }
+
+  get getStatus(): any {
+    return (inword: string) => {
+      return Statuses.find((x) => x.keyword.trim() === inword.trim()).effect;
+    };
+  }
+
+  get getConditions(): any {
+    return () => {
+      return Conditions;
+    };
+  }
+
+  get getCondition(): any {
+    return (inword: string) => {
+      return Conditions.find((x) => x.keyword.trim() === inword.trim()).effect;
+    };
+  }
+
+  get getKeywords(): any {
+    return () => {
+      return Keywords;
+    };
+  }
+
+  get getKeyword(): any {
+    return (inword: string) => {
+      return Keywords.find((x) => x.keyword.trim() === inword.trim()).effect;
     };
   }
 }

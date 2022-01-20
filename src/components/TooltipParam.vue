@@ -1,6 +1,6 @@
 <template>
   <span
-    ><span v-if="this.$store.getters.hasGlossaryItem(input)"
+    ><span v-if="this.$store.getters.existsInAnyGlossary(input)"
       ><v-tooltip class="markdown-body" bottom
         ><template v-slot:activator="{ on, attrs }">
           <span v-bind="attrs" v-on="on"

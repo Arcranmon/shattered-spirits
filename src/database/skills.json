@@ -374,10 +374,10 @@
             "",
             "",
             "",
-            "",
             "_Bleed_ 1 (1 _Reflex_)",
             "_Bleed_ 1 (1 _Reflex_)",
-            "_Bleed_ 1 (1 _Reflex_)"
+            "_Bleed_ 2 (1 _Reflex_)",
+            "_Bleed_ 2 (2 _Reflex_)"
           ]
         }
       },
@@ -728,7 +728,7 @@
         "move": "Reposition",
         "speed": "3",
         "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
-        "boost": "2 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
+        "boost": "3 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
         "effect": "Attack with the below Profile.",
         "chart": {
           "hit": [
@@ -744,7 +744,7 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 0, 7, 7, 9, 9, 11, 11],
+          "damage": [0, 0, 0, 0, 0, 7, 7, 8, 8, 10, 10],
           "status": [
             "",
             "",
@@ -1428,7 +1428,7 @@
         "name": "Short Fuse",
         "keywords": ["Spirit", "Flame"],
         "trigger": "You are hit by an Attack",
-        "cost": "_Punish_ 1, _Momentum_ 1",
+        "cost": "_Momentum_ 2",
         "range": "Self",
         "type": "Strike",
         "area": "Burst 1",
@@ -1590,6 +1590,48 @@
             "Special*",
             "Special*",
             "Special*"
+          ]
+        }
+      },
+      {
+        "name": "Explosive Touch",
+        "speed": "3",
+        "ap": 1,
+        "desc": "You reach  out an simply touch a target, letting loose a powerful, close-range explosion.",
+        "keywords": ["Spirit", "Flame", "Siege", "Avoidable"],
+        "type": "Strike",
+        "range": "Melee",
+        "target": "An Obstacle.",
+        "move": "Reposition",
+        "effect": " Attack with the below Profile. If the Target is an Obstacle, you may forgo an Attack Roll and treat your attack as if you rolled a 7. Gain 1 _Momentum_ if you Destroy an Obstacle with this.",
+        "boost": "2 _Momentum_. Instead, Target is a creature.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 7, 8, 9, 10, 12, 14, 16, 18],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 2 (1 _Reflex_)",
+            "_Expose_ 2 (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)"
           ]
         }
       },
@@ -1795,17 +1837,6 @@
         "desc": "A quick detonation launches you into the air, providing enough propulsion for a sudden move.",
         "effect": "Deal 2 Damage and _Push_ 1 (1 _Reflex_ negates both) within the area either at the start or end of your Movement.",
         "imbue": "1 _Momentum_. Instead, Movement is Shift, Speed is 3, and Area is Burst 2."
-      },
-      {
-        "name": "Shaped Charge",
-        "keywords": ["Spirit", "Flame", "Defensive"],
-        "type": "Defensive",
-        "target": "Yourself or an ally is Attacked by a Flame Attack.",
-        "speed": "Reaction",
-        "cost": "2 _Momentum_ OR 2 _Grit_",
-        "desc": "You seize control of the flames around your ally, mitigating the effects of the blast.",
-        "effect": "Reduce the Attack Roll by 3.",
-        "special": "If the Triggering Attack is your own you may instead treat it as if you rolled a 3 against your ally."
       }
     ]
   },
@@ -1880,6 +1911,7 @@
         "keywords": ["Spirit", "Metal"],
         "range": "8",
         "type": "Strike",
+        "ap": 1,
         "speed": "1",
         "move": "Step",
         "target": "A creature that is a _Metal Source_.",
@@ -1893,6 +1925,7 @@
         "keywords": ["Spirit", "Metal"],
         "range": "6",
         "type": "Strike",
+        "ap": 1,
         "speed": "3",
         "move": "Reposition",
         "reqs": "Metal Source on Self.",
@@ -1935,6 +1968,7 @@
         "keywords": ["Spirit", "Metal"],
         "range": "8",
         "type": "Maneuver",
+        "ap": 1,
         "speed": "2",
         "move": "Reposition",
         "target": "Size 1 or smaller _Metal Source_ within Range.",
@@ -1947,6 +1981,7 @@
         "keywords": ["Spirit", "Metal"],
         "range": "8",
         "type": "Maneuver",
+        "ap": 1,
         "speed": "2",
         "move": "Step",
         "target": "_Metal Source_ on Self.",
@@ -1987,6 +2022,7 @@
         "keywords": ["Spirit", "Metal", "Enchant"],
         "range": "3",
         "type": "Maneuver",
+        "ap": 1,
         "speed": "2",
         "move": "Step",
         "target": "Size 1 or smaller _Metal Source_ within Range.",
@@ -2000,6 +2036,7 @@
         "keywords": ["Spirit", "Metal"],
         "range": "8",
         "type": "Maneuver",
+        "ap": 1,
         "speed": "3",
         "move": "Shift",
         "target": "A Size 1 _Metal Source_.",
@@ -2042,6 +2079,7 @@
         "range": "5",
         "type": "Maneuver",
         "speed": "2",
+        "ap": 1,
         "move": "Step",
         "cost": "1 _Momentum_",
         "target": "Creature with a _Metal Source_ or an _Anchor_.",
@@ -2052,6 +2090,7 @@
       {
         "name": "Repel",
         "keywords": ["Spirit", "Metal"],
+        "ap": 1,
         "range": "3",
         "type": "Maneuver",
         "speed": "2",
@@ -2093,6 +2132,7 @@
       {
         "name": "Seize",
         "keywords": ["Spirit", "Metal"],
+        "ap": 1,
         "range": "5",
         "type": "Maneuver",
         "speed": "3",
@@ -2135,6 +2175,7 @@
       {
         "name": "Tear Away",
         "keywords": ["Spirit", "Metal"],
+        "ap": 1,
         "range": "3",
         "type": "Maneuver",
         "speed": "4",
@@ -2216,8 +2257,7 @@
     "techniques": [
       {
         "name": "Steelsnake Strike",
-        "keywords": ["Spirit", "Metal", "Weapon"],
-        "ap": 1,
+        "keywords": ["Spirit", "Metal", "Weapon", "Punish"],
         "desc": "You reshape your weapon on the fly, striking from an impossible angle.",
         "reqs": "Metal Weapon Equipped.",
         "trigger": "You Attack with a Metal Weapon.",
@@ -2351,7 +2391,7 @@
         "type": "Defensive",
         "keywords": ["Block"],
         "trigger": "You are Attacked with a Metal weapon without the Ammunition property.",
-        "cost": "2 _Block_, 1 _Momentum_",
+        "cost": "2 _Grit_, 1 _Momentum_",
         "reqs": "Metal armor, weapon, or shield Equipped.",
         "speed": "Reaction",
         "range": "Self",
@@ -2473,6 +2513,7 @@
         "desc": "You pull nearby water towards you, slowly creating a massive wave that comes crashing down with unstoppable force.",
         "type": "Strike",
         "keywords": ["Spirit", "Water", "Priority"],
+        "ap": 1,
         "speed": "2",
         "range": "8",
         "target": "A total of at least 4 _Water Sources_ within range.",
@@ -2511,6 +2552,7 @@
       {
         "name": "Surging Stream",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "8",
         "type": "Strike",
         "speed": "3",
@@ -2551,6 +2593,7 @@
       {
         "name": "Rushing River",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "Melee",
         "area": "Line 4",
         "type": "Strike",
@@ -2593,8 +2636,8 @@
       {
         "name": "Water Whip",
         "keywords": ["Spirit", "Water", "Enchant"],
-        "reqs": "Open Hand",
         "ap": 1,
+        "reqs": "Open Hand",
         "type": "Maneuver",
         "move": "Step",
         "speed": "2",
@@ -2605,6 +2648,7 @@
       {
         "name": "Aqua Lash",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "6",
         "type": "Maneuver",
         "speed": "3",
@@ -2644,6 +2688,7 @@
       {
         "name": "Aqua Ring",
         "keywords": ["Spirit", "Water", "Enchant"],
+        "ap": 1,
         "range": "4",
         "type": "Maneuver",
         "speed": "4",
@@ -2657,6 +2702,7 @@
       {
         "name": "Water Sphere",
         "keywords": ["Spirit", "Water", "Enchant"],
+        "ap": 1,
         "range": "6",
         "type": "Maneuver",
         "speed": "4",
@@ -2671,6 +2717,7 @@
       {
         "name": "Call the Tides",
         "keywords": ["Spirit", "Water", "Enchant"],
+        "ap": 1,
         "range": "4",
         "type": "Maneuver",
         "speed": "5",
@@ -2684,6 +2731,7 @@
       {
         "name": "Hydroplane",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "type": "Move",
         "speed": "2",
         "move": "Shift",
@@ -2697,6 +2745,7 @@
         "name": "Aquatic Armor",
         "range": "4",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "type": "Defensive",
         "speed": "3",
         "move": "Reposition",
@@ -2793,6 +2842,7 @@
       {
         "name": "Icy Burst",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "6",
         "type": "Strike",
         "speed": "2",
@@ -2808,7 +2858,9 @@
         "desc": "You harden water into jagged blades before sending them flying towards a foe.",
         "type": "Strike",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "speed": "3",
+        "move": "Reposition",
         "range": "6",
         "effect": "Attack with the below Profile.",
         "boost": "2 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
@@ -2847,6 +2899,7 @@
         "desc": "A whirling storm of ice and cold forms on the battlefield, threatening all in its path.",
         "type": "Strike",
         "keywords": ["Spirit", "Water"],
+        "ap": 2,
         "speed": "4",
         "range": "10",
         "area": "Blast 1",
@@ -2899,6 +2952,7 @@
         "name": "Creeping Frost",
         "keywords": ["Spirit", "Water"],
         "range": "6",
+        "ap": 1,
         "type": "Maneuver",
         "speed": "3",
         "move": "Reposition",
@@ -2922,6 +2976,7 @@
       {
         "name": "Flash Freeze",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "6",
         "type": "Maneuver",
         "speed": "3",
@@ -2934,6 +2989,7 @@
       {
         "name": "Frozen Wall",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "6",
         "type": "Maneuver",
         "speed": "4",
@@ -2947,6 +3003,7 @@
       {
         "name": "Icy Grasp",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "4",
         "type": "Maneuver",
         "speed": "4",
@@ -2960,6 +3017,7 @@
       {
         "name": "Phase Change",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "range": "6",
         "type": "Maneuver",
         "speed": "5",
@@ -2972,6 +3030,7 @@
       {
         "name": "Skate",
         "keywords": ["Spirit", "Water"],
+        "ap": 1,
         "type": "Move",
         "speed": "3",
         "move": "Shift",
@@ -3011,8 +3070,96 @@
     "background": "#c39bd3",
     "name": "Gale",
     "flavor": "The most common Windbound discipline, masters of the Gale Stance control powerful gusts of wind and create minor tornadoes.",
-    "stances": [],
-    "techniques": []
+    "stances": [
+      {
+        "name": "Breeze Stance",
+        "desc": "By manipulating the wind across the battlefield you grant your allies a favorable tailwind, enhancing their speed and mobility.",
+        "refresh": "_Reflex_ 3",
+        "accumulate": "Whenever you _Push_, _Pull_, or _Slide_ an ally, gain 1 _Momentum_.",
+        "effect": "Whenever you inflict _Accelerate_ on an ally you may _Slide_ them 2."
+      },
+      {
+        "name": "Razor Wind Stance",
+        "desc": "You know how to focus wind into a razor's edge, causing it to bite deeper and leave more significant wounds.",
+        "refresh": "_Focus_ 1, _Reflex_ 2",
+        "accumulate": "Whenever you use a Wind Attack, gain 1 _Momentum_.",
+        "effect": "Expand the Crit with a Wind Attack, you may inflict _Bleed_ 1 (_Grit_)."
+      },
+      {
+        "name": "Squall Stance",
+        "desc": "By unleashing powerful, concentrated blasts of air, practitioners of the Squall Stance keep their foes off-balance and unable to strike.",
+        "refresh": "_Focus_ 2, _Reflex_ 1",
+        "accumulate": "Whenever you _Stagger_ a foe, gain 1 _Momentum_.",
+        "effect": "If you _Stagger_ a foe you may pay 1 _Momentum_ to add _Prone_ (1 _Grit_) to the Attack."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Vaccuum Strike",
+        "keywords": ["Spirit", "Wind", "Weapon"],
+        "ap": 1,
+        "desc": "As you strike with your weapon you launch a focused blast of air, amplifying and extending the strike.",
+        "speed": "Weapon",
+        "cost": "2 _Momemtum_",
+        "type": "Strike",
+        "range": "Weapon",
+        "move": "Reposition",
+        "effect": "Attack using your Weapon's Profile, adding _Bleed_ 1 (1 _Reflex_) on a Hit and _Bleed_ 2 (2 _Reflex_) on a Crit. After attacking, repeat this Attack with Disadvantage in a Line 4 behind the Target."
+      },
+      {
+        "name": "Air Blast",
+        "desc": "You unleash a sudden blast of air, knocking a foe back and off-balance.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "1",
+        "range": "4",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 1, 2, 2, 3, 3, 4, 4, 5, 5],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "_Push_ 1 (1 _Grit_), _Stagger_ (1 _Momentum_)",
+            "_Push_ 1 (1 _Grit_), _Stagger_ (1 _Momentum_)",
+            "_Push_ 2 (1 _Grit_), _Stagger_ (1 _Momentum_)",
+            "_Push_ 2 (1 _Grit_), _Stagger_ (2 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Stagger_ (2 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Stagger_ (3 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Stagger_ (3 _Momentum_)"
+          ]
+        }
+      },
+      {
+        "name": "Tailwind",
+        "desc": "You put the wind at an ally's back, allowing them to act quicker than expected.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "2",
+        "range": "8",
+        "move": "Reposition",
+        "effect": "_Accelerate_ a creature within Range. The Target gains 1 _Momentum_ or 1 _Reflex_ (their choice).",
+        "boost": "1 _Momentum_. Increase the Target's next Move by 1 step."
+      }
+    ]
   },
   {
     "category": "Wind",
@@ -3105,6 +3252,25 @@
         "effect": "Immediately use the Quick Strike Action twice, using a different weapon for each Strike and declaring what weapon is being used before rolling the attack. The Damage from these Strikes is halved.",
         "imbue": "1 _Momentum_. You may use the faster of the two Equipped Weapons to determine Speed.",
         "boost": "1 _Momentum_. After rolling your first Attack, you may change which weapon it is using, so long as the target is within Range of the new weapon."
+      }
+    ]
+  },
+  {
+    "category": "Skill",
+    "background": "darkred",
+    "name": "Gladiator",
+    "flavor": "",
+    "stances": [],
+    "techniques": [
+      {
+        "name": "Butcher",
+        "desc": "You defeat a foe in a grand spectacle, striking fear into the heart of your foes.",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "speed": "Reaction",
+        "trigger": "You Defeat a creature.",
+        "range": "3",
+        "effect": "Choose a creature within Range. Inflict _Fear_ (1 _Focus_) on them."
       }
     ]
   },

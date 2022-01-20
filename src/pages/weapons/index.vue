@@ -5,8 +5,8 @@
       <show-cards :inputs="unarmed" job="Weapons" />
     </div>
     <div class="weapon--box" style="background-color: Gainsboro;">
-      <div class="page--title">Artillery</div>
-      <show-cards :inputs="artillery" job="Weapons" />
+      <div class="page--title">Ranged</div>
+      <show-cards :inputs="ranged" job="Weapons" />
     </div>
     <div class="weapon--box" style="background-color: Gainsboro;">
       <div class="page--title">Blades</div>
@@ -41,8 +41,8 @@ export default Vue.extend({
     ShowCards,
   },
   computed: {
-    artillery: function () {
-      return this.$store.getters.getWeaponByCategory("Artillery");
+    ranged: function () {
+      return this.$store.getters.getWeaponByCategory("Ranged");
     },
     blades: function () {
       return this.$store.getters.getWeaponByCategory("Blade");

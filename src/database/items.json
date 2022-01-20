@@ -8,7 +8,7 @@
     "damagetype": "Physical",
     "range": "Melee",
     "keywords": ["Versatile"],
-    "special": "Characters may always use the Slam Action, even when other weapons are _Wielded_.",
+    "special": "Characters may always use the Slam Action, even when other weapons are _Wielded_.\nIn addition, it costs no _Momentum_ to Improvise any Strike using Slam.",
     "chart": {
       "hit": [
         "Miss",
@@ -41,6 +41,84 @@
         "_Push_ 1 (1 _Grit_)",
         "_Push_ 1 (1 _Grit_)",
         "_Push_ 1 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Shortbow",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Ranged",
+    "hands": 2,
+    "damagetype": "Physical",
+    "range": "8",
+    "keywords": ["Versatile", "_Artillery_ 2", "_Ammunition_ 3"],
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 0, 6, 8, 9, 10, 12, 14],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Hobble_ 1 (1 _Grit_)",
+        "_Hobble_ 1 (2 _Grit_)",
+        "_Hobble_ 2 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Longbow",
+    "itemtype": "Weapon",
+    "speed": 4,
+    "category": "Ranged",
+    "hands": 2,
+    "damagetype": "Physical",
+    "range": "12",
+    "keywords": ["Heavy", "_Artillery_ 5", "Ordnance", "_Ammunition_ 3"],
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 0, 8, 9, 11, 12, 14, 16],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Hobble_ 1 (1 _Grit_)",
+        "_Hobble_ 1 (2 _Grit_)",
+        "_Hobble_ 2 (2 _Grit_)"
       ]
     }
   },
@@ -404,7 +482,7 @@
     "hands": 1,
     "damagetype": "Physical",
     "range": "Melee",
-    "keywords": ["Flame", "Light", "Pierce 2"],
+    "keywords": ["Flame", "Light", "_Pierce_ 2"],
     "special": "You may Destroy the Flame Blade on a Hit or Crit to repeat your Strike against a creature adjacent to your Target.",
     "chart": {
       "hit": [
@@ -443,7 +521,7 @@
     "category": "Chain",
     "hands": 1,
     "damagetype": "Physical",
-    "range": "Reach 2",
+    "range": "_Reach_ 2",
     "special": "You may Destroy the Water Whip on a Hit or Crit to increase the Damage and _Pull_ by 2 and, if you wish, replace all _Pull_ with _Push_.",
     "keywords": ["Versatile"],
     "chart": {

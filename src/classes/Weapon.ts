@@ -61,7 +61,9 @@ class Weapon {
     return this._range;
   }
   get RangeHeader() {
-    return ", " + this._range;
+    if (this.Range == "Melee") return ", _" + this._range + "_";
+    if (this.Range.length > 2) return ", " + this._range;
+    return ", _Range_ " + this._range;
   }
   get Speed() {
     return this._speed;
