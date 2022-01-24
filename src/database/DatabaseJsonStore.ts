@@ -4,6 +4,7 @@ import Glossary from "@/database/glossary.json";
 import Statuses from "@/database/statuses.json";
 import Conditions from "@/database/conditions.json";
 import Keywords from "@/database/keywords.json";
+import Terrains from "@/database/terrain.json";
 import { Module, VuexModule, Action, Mutation } from "vuex-module-decorators";
 import { Discipline, Technique, Weapon } from "@/class";
 
@@ -41,7 +42,8 @@ export class DatabaseJsonStore extends VuexModule {
         this.hasBasicGlossaryItem(inword) ||
         this.hasStatus(inword) ||
         this.hasCondition(inword) ||
-        this.hasKeyword(inword)
+        this.hasKeyword(inword) ||
+        this.hasTerrain(inword)
       );
     };
   }
@@ -70,6 +72,12 @@ export class DatabaseJsonStore extends VuexModule {
     };
   }
 
+  get hasTerrain(): any {
+    return (inword: string) => {
+      return Terrains.some((x) => x.keyword === inword);
+    };
+  }
+
   get getGlossaryItem(): any {
     return (inword: string) => {
       if (this.hasBasicGlossaryItem(inword))
@@ -77,6 +85,7 @@ export class DatabaseJsonStore extends VuexModule {
       if (this.hasStatus(inword)) return this.getStatus(inword);
       if (this.hasCondition(inword)) return this.getCondition(inword);
       if (this.hasKeyword(inword)) return this.getKeyword(inword);
+      if (this.hasTerrain(inword)) return this.getTerrain(inword);
     };
   }
 
@@ -125,6 +134,18 @@ export class DatabaseJsonStore extends VuexModule {
   get getKeyword(): any {
     return (inword: string) => {
       return Keywords.find((x) => x.keyword.trim() === inword.trim()).effect;
+    };
+  }
+
+  get getTerrains(): any {
+    return () => {
+      return Terrains;
+    };
+  }
+
+  get getTerrain(): any {
+    return (inword: string) => {
+      return Terrains.find((x) => x.keyword.trim() === inword.trim()).effect;
     };
   }
 }
