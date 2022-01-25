@@ -1,33 +1,59 @@
 <template>
-  <v-expansion-panels flat style="padding: 3px;">
-    <v-expansion-panel style="background-color: inherit;">
-      <v-expansion-panel-header class="page--sub-title expand--header">{{
-        dropName
-      }}</v-expansion-panel-header>
-      <v-expansion-panel-content class="expand--body">
-        <v-container fluid>
-          <v-row>
-            <v-col
-              cols="12"
-              class="d-flex justify-center"
-              v-for="n in inputs"
-              v-bind:key="n.Name"
-              :lg="colWidth"
-            >
-              <div class="card--box" v-if="job == 'Stances'">
-                <stance-card :stance="n" :category="color_category" />
-              </div>
-              <div class="card--box" v-if="job == 'Techniques'">
-                <tech-card :tech="n" :category="color_category" />
-              </div>
-              <div class="card--box" v-if="job == 'Weapons'">
-                <weapon-card :weapon="n" />
-              </div>
-            </v-col>
-          </v-row> </v-container
-      ></v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
+  <span>
+    <span v-if="collapse">
+      <v-expansion-panels flat style="padding: 3px;">
+        <v-expansion-panel style="background-color: inherit;">
+          <v-expansion-panel-header class="page--sub-title expand--header">{{
+            dropName
+          }}</v-expansion-panel-header>
+          <v-expansion-panel-content class="expand--body">
+            <v-container fluid>
+              <v-row>
+                <v-col
+                  cols="12"
+                  class="d-flex justify-center"
+                  v-for="n in inputs"
+                  v-bind:key="n.Name"
+                  :lg="colWidth"
+                >
+                  <div class="card--box" v-if="job == 'Stances'">
+                    <stance-card :stance="n" :category="color_category" />
+                  </div>
+                  <div class="card--box" v-if="job == 'Techniques'">
+                    <tech-card :tech="n" :category="color_category" />
+                  </div>
+                  <div class="card--box" v-if="job == 'Weapons'">
+                    <weapon-card :weapon="n" />
+                  </div>
+                </v-col>
+              </v-row> </v-container
+          ></v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </span>
+    <span v-else>
+      <v-container fluid>
+        <v-row>
+          <v-col
+            cols="12"
+            class="d-flex justify-center"
+            v-for="n in inputs"
+            v-bind:key="n.Name"
+            :lg="colWidth"
+          >
+            <div class="card--box" v-if="job == 'Stances'">
+              <stance-card :stance="n" :category="color_category" />
+            </div>
+            <div class="card--box" v-if="job == 'Techniques'">
+              <tech-card :tech="n" :category="color_category" />
+            </div>
+            <div class="card--box" v-if="job == 'Weapons'">
+              <weapon-card :weapon="n" :color="color_category" />
+            </div>
+          </v-col>
+        </v-row> </v-container
+    ></span>
+  </span>
 </template>
 
 <script>
@@ -55,6 +81,11 @@ export default Vue.extend({
       type: String,
       required: false,
       default: "None",
+    },
+    collapse: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   components: {

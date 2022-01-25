@@ -1,0 +1,354 @@
+[
+  {
+    "background": "#c39bd3",
+    "name": "Gale",
+    "flavor": "The most common Windbound discipline, masters of the Gale Stance control powerful gusts of wind and create minor tornadoes.",
+    "stances": [
+      {
+        "name": "Breeze Stance",
+        "desc": "By manipulating the wind across the battlefield you grant your allies a favorable tailwind, enhancing their speed and mobility.",
+        "refresh": "_Reflex_ 3",
+        "accumulate": "Whenever you _Push_, _Pull_, _Slide_, or allow an ally to Move, gain 1 _Momentum_.",
+        "effect": "Whenever you inflict _Accelerate_ on an ally they may Move 2."
+      },
+      {
+        "name": "Razor Wind Stance",
+        "desc": "You know how to focus wind into a razor's edge, causing it to bite deeper and leave more significant wounds.",
+        "refresh": "_Reflex_ 1",
+        "accumulate": "Whenever you create a _Windy_ space or Crit with a _Wind_ Attack gain 1 _Momentum_.",
+        "effect": "Expand the Crit range with Wind Attacks by 1. When you Crit, you may add _Bleed_ 1 (1 _Reflex_) to the Attack."
+      },
+      {
+        "name": "Squall Stance",
+        "desc": "By unleashing powerful, concentrated blasts of air, practitioners of the Squall Stance keep their foes off-balance and unable to strike.",
+        "refresh": "_Focus_ 2, _Reflex_ 1",
+        "accumulate": "Whenever you _Stagger_ a foe, gain 1 _Momentum_.",
+        "effect": "If you _Stagger_ a foe you may pay 1 _Momentum_ to add _Prone_ (1 _Grit_) to the Attack."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Biting Winds",
+        "keywords": ["Spirit", "Wind", "Punish"],
+        "desc": "You amplify the wind, creating a steep punishment for a foe who attempts to move through it.",
+        "speed": "Reaction",
+        "cost": "1 _Momemtum_",
+        "type": "Strike",
+        "range": "8",
+        "trigger": "A creature moves against the direction of a _Windy_ space.",
+        "effect": "The Triggering creature chooses: Either they suffer _Push_ 2 in the direction of the _Windy_ space OR you Attack them using the below profile. The Target may pay 1 _Grit_ to reduce the effect to _Push_ 1 or imposive Disadvantage on the attack or 2 _Grit_ to ignore this Reaction.",
+        "special": "You may repeat this Reaction as many times as it is triggered by paying the Cost again.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 1, 1, 2, 3, 4, 4, 5, 5],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Bleed_ 1 (1 _Reflex_)",
+            "_Bleed_ 1 (1 _Reflex_)",
+            "_Bleed_ 1 (1 _Reflex_)",
+            "_Bleed_ 2 (1 _Reflex_)",
+            "_Bleed_ 2 (2 _Reflex_)",
+            "_Bleed_ 3 (2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Vacuum Strike",
+        "keywords": ["Spirit", "Wind", "Weapon"],
+        "ap": 1,
+        "desc": "As you strike with your weapon you launch a focused blast of air, amplifying and extending the strike.",
+        "speed": "Weapon",
+        "cost": "2 _Momemtum_",
+        "type": "Strike",
+        "range": "Weapon",
+        "move": "Reposition",
+        "effect": "Attack using your Weapon's Profile, adding _Bleed_ 1 (1 _Reflex_) on a Hit and _Bleed_ 2 (2 _Reflex_) on a Crit. After attacking, repeat this Attack with Disadvantage in a Line 4 behind the Target."
+      },
+      {
+        "name": "Air Slash",
+        "desc": "You fling out a sharpened edge of wind, cutting just as true as any blade.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "2",
+        "range": "8",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile.",
+        "boost": "2 _Momentum_. Add _Stagger_ (1 _Momentum_) to this Attack. Reduce this Cost by 1 if you Crit.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Miss",
+            "Miss",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 0, 0, 4, 5, 5, 6, 7, 8],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Bleed_ 1 (1 _Reflex_)",
+            "_Bleed_ 1 (2 _Reflex_)",
+            "_Bleed_ 2 (2 _Reflex_)",
+            "_Bleed_ 2 (3 _Reflex_)",
+            "_Bleed_ 3 (3 _Reflex_)",
+            "_Bleed_ 3 (4 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Air Blast",
+        "desc": "You unleash a sudden blast of air, knocking a foe back and off-balance.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "1",
+        "range": "4",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile.",
+        "special": "The Target may pay 1 _Momentum_ to, rather than rolling, treat the Attack Roll as a 10.",
+        "boost": "1 _Momentum_. Repeat this Strike immediately after using it.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "_Push_ 1 (1 _Grit_), _Stagger_ (2 _Momentum_)",
+            "_Push_ 1 (1 _Grit_), _Stagger_ (2 _Momentum_)",
+            "_Push_ 2 (1 _Grit_), _Stagger_ (2 _Momentum_)",
+            "_Push_ 2 (1 _Grit_), _Stagger_ (3 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Stagger_ (3 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Stagger_ (4 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Stagger_ (4 _Momentum_)"
+          ]
+        }
+      },
+      {
+        "name": "Air Cutter",
+        "desc": "You create a blade of compressed wind in your hand, forging a razor-sharp, invisible blade.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "reqs": "Open Hand",
+        "ap": 1,
+        "move": "None",
+        "speed": "2",
+        "effect": "Equip the Air Cutter Spirit Weapon in your Open Hand. This Enchant ends if you have no Air Cutter Wielded.",
+        "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Air Cutter in each."
+      },
+      {
+        "name": "Headwind",
+        "desc": "You create a powerful gust of wind and maintain it, forcing foes to slowly advance.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "ap": 1,
+        "speed": "2",
+        "range": "Melee",
+        "area": "Line 6",
+        "cost": "1 _Momentum_ at Refresh every Round this Enchant persists.",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile. Immediately after, the Area becomes _Windy_, with the direction pointing directly away from you. While this Enchant is active the Area remains _Windy_ and moves with you. You may pay 1 _Momentum_ to change the direction at the start or end your turn. You may end this _Enchant_ as a Reaction to inflict _Stagger_ (2 _Grit_) on all foes in the area.",
+        "boost": "2 _Momentum_. Area is instead a 3x6 Line and the Cost increases to 2.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 3 (2 _Grit_), _Stagger_ (1 _Momentum_)",
+            "_Push_ 3 (2 _Grit_), _Stagger_ (1 _Momentum_)",
+            "_Push_ 3 (2 _Grit_), _Stagger_ (2 _Momentum_)",
+            "_Push_ 3 (2 _Grit_), _Stagger_ (2 _Momentum_)"
+          ]
+        }
+      },
+      {
+        "name": "Swift Breeze",
+        "desc": "You bring a breeze in from an odd angle, creating a wave across the battlefield and maneuvering a creature.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "2",
+        "range": "4",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile. You may make any spaces a creature is _Slide_d through becomes _Windy_ until the end of the Round.",
+        "special": "The Target may pay 1 _Momentum_ to, rather than rolling, treat the Attack Roll as a 10.",
+        "boost": "1 _Momentum_: Inflict either _Accelerate_ or _Stagger_ (2 _Momentum_) on the Target.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "_Slide_ 1 (Free)",
+            "_Slide_ 1 (Free)",
+            "_Slide_ 1 (Free)",
+            "_Slide_ 1 (1 _Grit_)",
+            "_Slide_ 2 (1 _Grit_)",
+            "_Slide_ 2 (2 _Grit_)",
+            "_Slide_ 3 (2 _Grit_)",
+            "_Slide_ 3 (3 _Grit_)",
+            "_Slide_ 4 (3 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Whirlwind",
+        "desc": "You twist and turn the wind about yourself, creating a vortex of wind.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "ap": 1,
+        "speed": "3",
+        "cost": "1 _Momentum_ at Refresh every Round this Enchant persists.",
+        "range": "8",
+        "area": "Blast 1",
+        "move": "Reposition",
+        "effect": "Make the Area _Windy_, with the direction of all spaces pointing either directly towards the center of the area or directly away from the center. The center space is not windy.",
+        "special": "Depending on the direction of the _Windy_ spaces, you gain one of the two following Reactions while this Enchant persists:\nInward: If a Ranged Attack enters any of the Area, you may pay 1 _Momentum_ to make it instead Target the creature in the center of the Area.\nOutward: If a Ranged Attack would pass through the Area, you may pay 2 _Momentum_ to allow the attacker to instead have the attack originate from any _Windy_ space in the Area.",
+        "boost": "1 _Momentum_. You may take this Boost at the start of any Turn. Move the Area 2 in any direction.\n1 _Momentum_. Instead of a Blast 1, Area is instead Burst 1 and Range is Self. The Area moves with you and is always centered on you."
+      },
+      {
+        "name": "Updraft",
+        "speed": "Reaction",
+        "desc": "You provide an updraft for an ally, allowing them to quickly launch themselves into the air.",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "type": "Move",
+        "range": "6",
+        "cost": "1 _Reflex_",
+        "trigger": "You or an allied creature enters a _Windy_ space.",
+        "effect": "The target creature may immediately _Flying_ Move 2.",
+        "boost": "1 _Momentum_. _Accelerate_ the Target.\n1 _Reflex_. Trigger instead becomes 'You or an allied creature starts their turn.'"
+      },
+      {
+        "name": "Tailwind",
+        "desc": "You dash forward at a rapid speed, granting a bit of the wind's speed to another.",
+        "type": "Move",
+        "keywords": ["Spirit", "Wind", "Safe"],
+        "ap": 1,
+        "speed": "1",
+        "range": "2",
+        "move": "Reposition",
+        "effect": "_Accelerate_ a creature within Range.",
+        "boost": "1 _Momentum_: Create two _Windy_ spaces adjacent to you at the end of your Movement.",
+        "imbue": "1 _Focus_: Instead, Movement is Shift, Speed is 2, and you may _Accelerate_ two creatures."
+      },
+      {
+        "name": "Whirlwind Charge",
+        "speed": "2",
+        "desc": "You sprint forward with reckless blast of air, blazing a path forward.",
+        "keywords": ["Spirit", "Wind", "Charge"],
+        "type": "Move",
+        "cost": "1 _Momentum_",
+        "move": "Sprint",
+        "effect": "The Movement granted by this Action must be in a straight line. Make all spaces of your choice you pass through _Windy_ until the end of the Round.",
+        "boost": "1 _Momentum_. You do  not have to move in a straight line.\n1 _Momentum_. _Pull_ 2 (1 _Grit_) a creature you move through or adjacent to, treating the oring as wherever you end your movement."
+      },
+      {
+        "name": "Wind Breaker",
+        "speed": "Reaction",
+        "desc": "You unleash a sudden gust, knocking a projectile out of the sky.",
+        "keywords": ["Spirit", "Wind", "Block"],
+        "type": "Defensive",
+        "range": "4",
+        "cost": "1 _Focus_, 1 _Reflex_",
+        "trigger": "You or a creature within Range is Attacked with a Ranged Attack.",
+        "effect": "Reroll the Attack and use the lower result.",
+        "boost": "2 _Momentum_. _Accelerate_ your ally.",
+        "special": "Reduce the Cost by 1 if the creature being Attacked is in a _Windy_ space."
+      }
+    ]
+  },
+  {
+    "background": "#f4d03f",
+    "name": "Storm",
+    "flavor": "Channeling the essence of a thunderstorm, the Storm Stance creates powerful bursts of lighting that ripple over the battlefield.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "background": "#d5dbdb",
+    "name": "Zephyr",
+    "flavor": "The Zephyr Stance carries the body aloft, allowing speed and reactions that push the limits of human capability and even flight.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "background": "#a569bd",
+    "name": "Howl",
+    "flavor": "Howl Stance masters channel ancient, primal fear of storms and winds to shake enemies to their core, sending them fleeing from the battle.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "background": "#e8daef",
+    "name": "Windwhisper",
+    "flavor": "The Windwhisper Stance reads currents in the air, allowing an incredible ability to predict and react to attacks.",
+    "stances": [],
+    "techniques": []
+  }
+]

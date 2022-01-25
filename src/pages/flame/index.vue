@@ -9,15 +9,11 @@
     >
       <div class="page--title">{{ disc.Name }}</div>
       <div class="page--description">{{ disc.Flavor }}</div>
-      <show-cards
-        :inputs="disc.Stances"
-        job="Stances"
-        :color_category="disc.Category"
-      />
+      <show-cards :inputs="disc.Stances" job="Stances" color_category="Flame" />
       <show-cards
         :inputs="disc.Techniques"
         job="Techniques"
-        :color_category="disc.Category"
+        color_category="Flame"
       />
     </div>
   </div>
@@ -40,7 +36,7 @@ export default Vue.extend({
   },
   computed: {
     flameDiscs: function () {
-      return this.$store.getters.byDisciplineCategory("Flame");
+      return this.$store.getters.getSpiritMasteryByType("Flame");
     },
   },
 });

@@ -27,6 +27,9 @@ class Weapon {
   get CategoryHeader() {
     return this._category + ", ";
   }
+  get Category() {
+    return this._category;
+  }
   get Chart() {
     return this._chart;
   }

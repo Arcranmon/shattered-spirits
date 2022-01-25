@@ -1,23 +1,23 @@
 declare interface ITechData {
   ap: number;
-  area: string;
-  boost: string;
+  area?: string;
+  boost?: string;
   cost: string;
-  damagetype: string;
+  damagetype?: string;
   desc: string;
   effect: string;
-  imbue: string;
+  imbue?: string;
   keywords: Array<string>;
   move: string;
   name: string;
-  range: string;
+  range?: string;
   reqs: string;
   special: string;
   speed: string;
-  target: string;
+  target?: string;
   trigger: string;
   type: string;
-  chart: IChartData;
+  chart?: IChartData;
 }
 
 declare interface IStanceData {
@@ -26,7 +26,7 @@ declare interface IStanceData {
   desc: string;
   refresh: string;
   effect: string;
-  special: string;
+  special?: string;
 }
 
 declare interface IChartData {
@@ -36,7 +36,6 @@ declare interface IChartData {
 }
 
 declare interface IDisciplineData {
-  category: string;
   name: string;
   flavor: string;
   background: string;

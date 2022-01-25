@@ -2,7 +2,7 @@
   <div>
     <div class="page--title">{{ basics.Name }}</div>
     <div class="page--description">{{ basics.Flavor }}</div>
-    <show-cards :inputs="basics.Techniques" job="Techniques" />
+    <show-cards :inputs="basics" job="Techniques" :collapse="false" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default Vue.extend({
   },
   computed: {
     basics: function () {
-      return this.$store.getters.byDisciplineCategory("Basic Techniques")[0];
+      return this.$store.getters.getBasicSkills();
     },
   },
 });

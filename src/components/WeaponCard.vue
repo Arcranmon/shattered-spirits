@@ -1,6 +1,6 @@
 <template>
   <div class="weapon--wrapper" inline>
-    <div class="weapon--color-header">
+    <div v-bind:class="weapon.Category">
       <div class="weapon--header">
         <h3 style="display: inline; font-style: normal;">{{ weapon.Name }}</h3>
       </div>
@@ -56,10 +56,6 @@ export default Vue.extend({
   background-color: $color--parchment;
   border: $border--black-standard;
   height: 100%;
-}
-.weapon--color-header {
-  border-top-left-radius: 2.9em;
-  border-top-right-radius: 2.9em;
 }
 .weapon--header {
   font-size: $font-size--l;

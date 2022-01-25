@@ -1,0 +1,769 @@
+[
+  {
+    "background": "#e67e22",
+    "name": "Blaze",
+    "flavor": "The Blaze Discipline possesses the most obvious Flamebonded techniques, centered around manipulating and conjuring flames.",
+    "stances": [
+      {
+        "name": "Inferno Stance",
+        "desc": "The most obvious use of flames, the Inferno Stance makes use of overwhelming firepower in a very literal sense.",
+        "refresh": "2 _Focus_",
+        "effect": "Making additional Strikes in a Round cost half as much, so long as they have the Flame Keyword.",
+        "special": "For each subsequent Strike with the Flame Keyword you Hit or Crit a Target with in a Round, inflict _Burn_ 1."
+      },
+      {
+        "name": "Jet Stance",
+        "desc": "Those that have learned the Jet Stance make use of the powerful gouts of flame to reposition themselves freely and move with blinding speed.",
+        "accumulate": "Whenever you Shift or Sprint as a part of an Action, gain 1 Momentum.",
+        "refresh": "1 _Focus_, 2 _Reflex_",
+        "effect": "Whenever you use a Strike that deals Fire Damage, you may immediately _Safe_ Move 2 either before or after resolving the Attack.",
+        "special": "When using an Action or Reaction with the Flame Keyword, you may spend 1 _Momentum_ to increase the Movement by one level."
+      },
+      {
+        "name": "Trailblazer Stance",
+        "desc": "Rather than simply burning their foes, the Trailblazer leaves a wake of flames behind them, creating deadly zones of fire across the land.",
+        "accumulate": "Every time an Action creates a _Blazing_ space, gain 1 _Momentum_.",
+        "refresh": "1 _Focus_, 1 _Reflex_",
+        "effect": "At Refresh, you may choose a _Blazing_ space within Range 6. Immediately make an adjacent space _Blazing_. You may pay up to 3 _Momentum_, repeating this Effect for every Momentum spent.",
+        "special": "While in this Stance you ignore _Blazing_ Terrain. "
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Ignite",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 1,
+        "range": "Melee or Range 5",
+        "type": "Strike",
+        "move": "Step",
+        "speed": "1",
+        "desc": "A sudden strike of flames, often leaving a foe wreathed in flames.",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. Destroy a _Blazing_ space within Range 3 of the Target. If you do, on a Graze, Hit, or Crit increase the _Burn_ by 2.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
+          "status": [
+            "",
+            "_Burn_ 1 (1 _Reflex_ OR 1 _Momentum_)",
+            "_Burn_ 1 (1 _Reflex_ OR 1 _Momentum_)",
+            "_Burn_ 1 (1 _Reflex_ OR 1 _Momentum_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 2 (2 _Reflex_)",
+            "_Burn_ 2 (2 _Reflex_)",
+            "_Burn_ 2 (2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Flame Jet",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 1,
+        "range": "Melee",
+        "area": "Cone 2",
+        "type": "Strike",
+        "move": "Reposition",
+        "speed": "2",
+        "desc": "You let loose a mighty stream of fire, drawing upon nearby flames for additional power.",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. Create a number of _Blazing_ spaces within the area equal to the size of the Cone.",
+        "special": "When you make this Strike, you may _Destroy_ any number of adjacent _Blazing_ spaces. If you _Destroy_ at least 2, the area becomes Cone 3. For each additional 2 spaces Destroyed, increase the Cone by 1.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Burn_ 1 (2 _Reflex_)",
+            "_Burn_ 1 (2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Flame Wave",
+        "keywords": ["Spirit", "Flame", "Sure Hit"],
+        "ap": 1,
+        "range": "6",
+        "type": "Strike",
+        "move": "Reposition",
+        "speed": "2",
+        "desc": "A wide wave of fire shoots forth, scorching those in its path.",
+        "effect": "Attack with the below Profile. If there is a creature adjacent to the Target, you may repeat Attack them with this Profile.",
+        "boost": "1 _Momentum_. If this attack Crits, inflict _Expose_ 1 (1 _Reflex_).",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 1, 2, 2, 3, 3, 5, 5, 7, 7, 7],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)",
+            "_Burn_ 1 (1 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Torch",
+        "keywords": ["Spirit", "Flame", "Unblockable"],
+        "ap": 2,
+        "range": "3",
+        "type": "Strike",
+        "move": "Reposition",
+        "speed": "3",
+        "desc": "Overwhelming waves of fire strike a foe, burning through any defenses.",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. Add _Pierce_ 3.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 4, 4, 7, 7, 9, 9, 11, 11, 14, 14],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 1 AND _Burn_ 1 (2 _Grit_)",
+            "_Shred_ 2 AND _Burn_ 2 (3 _Grit_)",
+            "_Shred_ 2 AND _Burn_ 2 (3 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Searing Strike",
+        "speed": "Weapon",
+        "ap": 1,
+        "desc": "A weapon is set ablaze or superheated, leaving a painful wound on a foe.",
+        "keywords": ["Spirit", "Flame", "Weapon"],
+        "cost": "1 _Momemtum_",
+        "type": "Strike",
+        "range": "Weapon",
+        "move": "Reposition",
+        "effect": "Attack using your Weapon's Profile. On a Hit or Crit, inflict _Burn_ 1 and _Wound_ 1 (_Reflex_).",
+        "boost": "1 _Momentum_. If the Target has any _Burn_ prior to this Attack, increase the Damage by 2 on a Graze, Hit, or Crit."
+      },
+      {
+        "name": "Flamethrower",
+        "speed": "1",
+        "ap": 1,
+        "desc": "You create a steady stream of flames from hands or mouth, blanketing the field in flames.",
+        "keywords": ["Spirit", "Flame"],
+        "cost": "2 _Momentum_",
+        "type": "Maneuver",
+        "area": "Line 3",
+        "range": "Melee",
+        "move": "None",
+        "effect": "Create a special zone of _Blazing_ spaces within the area. This zone moves with you and, at the beginning of a Phase, you may pay 1 _Momementum_ to change the direction of the zone. If a creature enters this zone or starts a Turn in it, you may pay 1 _Momentum_ to use the _Ignite_ Action as a Reaction against them. This special zone goes away at the end of the Round.",
+        "boost": "2 _Momentum_. Area is instead Cone 3."
+      },
+      {
+        "name": "Set Blaze",
+        "speed": "3",
+        "ap": 1,
+        "desc": "A blaze is set, starting what can grow into a deadly inferno.",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Maneuver",
+        "area": "Cone 2",
+        "range": "6",
+        "move": "Reposition",
+        "effect": "The area immediately becomes _Blazing_. Any creature in the area gains _Burn_ 2 (1 _Reflex_).",
+        "boost": "1 _Momentum_. Area becomes a Blast 1."
+      },
+      {
+        "name": "Fan Flames",
+        "speed": "4",
+        "ap": 1,
+        "desc": "A small fire flares to life, buffeting those nearby with intense heat.",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Maneuver",
+        "target": "_Blazing_ space within Range.",
+        "range": "8",
+        "move": "Shift",
+        "effect": "Immediately make two spaces adjacent to the Target _Blazing_. If there is a creature in one of these spaces, they must immediately spend 2 _Reflex_ to Move into a space without _Blazing_ or gain _Burn_ 2.",
+        "boost": "1 _Momentum_. Inflit _Impair_ 1 (1 _Grit_) on all creatures adjacent to the Target."
+      },
+      {
+        "name": "Fire Wall",
+        "speed": "3",
+        "ap": 1,
+        "desc": "Small flames grow in intensity, becoming mighty infernos across the field.",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Maneuver",
+        "target": "Three contiguous _Blazing_ spaces within Range.",
+        "range": "8",
+        "move": "Shift",
+        "effect": "These _Blazing_ spaces may be used as Cover until the end of the Round. In addition, the effects of _Blazing_ are doubled for the target for the duration.",
+        "special": "Until the end of the round, any time an ally would move into a targeted _Blazing_ space you may pay 1 _Momentum_ to allow them to ignore all Damage and Burn caused by the space.",
+        "boost": "2 _Momentum_. Change the Target to 'Any number of contiguous _Blazing_ spaces, at least one of which is within range.'"
+      },
+      {
+        "name": "Flame Blade",
+        "keywords": ["Spirit", "Flame", "Enchant"],
+        "reqs": "Open Hand",
+        "ap": 1,
+        "type": "Maneuver",
+        "move": "None",
+        "speed": "1",
+        "desc": "A blade of flame ignites in your hand, burning away all in your path.",
+        "effect": "Equip the Flame Blade Spirit Weapon in your Open Hand. This Enchant ends if you have no Stone Gauntlets Equipped.",
+        "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Flame Blade in each."
+      },
+      {
+        "name": "Fire Stepping",
+        "speed": "2",
+        "ap": 1,
+        "desc": "You wreathe your feet in flames, leaving a wake of wild flames.",
+        "keywords": ["Spirit", "Flame"],
+        "cost": "1 _Momentum_",
+        "type": "Move",
+        "move": "Shift",
+        "effect": "Make up to three spaces you move through _Blazing_. Inflict _Burn_ 1 (1 _Reflex_) on any creature you move past or through. While using this Movement, you are Immune to the effects of _Blazing_ spaces.",
+        "boost": "2 _Momentum_. Instead, make every space you move through _Blazing_."
+      },
+      {
+        "name": "Fire Shield",
+        "speed": "2",
+        "ap": 1,
+        "desc": "You cloak yourself in flames, violently rebuking all melee attacks.",
+        "keywords": ["Spirit", "Flame", "Enchant"],
+        "type": "Defensive",
+        "move": "Step",
+        "effect": "While this Enchant is active you are Immune to _Freeze_ and _Burn_. Whenever a Melee Attack Grazes, Hits, or Crits you the attacker takes 2 Damage.",
+        "boost": "2 _Momentum_. Also inflict _Burn_ 1 (1 _Reflex_) when you are Grazed, Hit, or Crit.",
+        "special": "If you are hit with an Attack with the Water keyword, you must pay 1 _Momentum_ or lose this Enchant."
+      }
+    ]
+  },
+  {
+    "background": "#d35400",
+    "name": "Blast",
+    "flavor": "The Blast Discipline ignores simple flames, focusing instead on powerful and sudden explosions.",
+    "stances": [
+      {
+        "name": "Explosive Stance",
+        "desc": "You make your explosions hit harder, forcing your opponents away from the detonation.",
+        "accumulate": "Whenever you Hit or Crit with an Explosive Attack, gain 1 _Momentum_.",
+        "refresh": "1 _Focus_, 1 _Reflex_",
+        "effect": "Whenever you use an Attack with the Flame keyword, you may choose to make it Explosive before making your Attack Roll. Gain a -1 penalty to the Attack Roll, but add the following:\n&#8226; If the Attack is an Area, on a Hit or Crit _Push_ the Target out of the Area by the most direct route possible (1 _Grit_). Resolve this _Push_ seperately from any _Push_ included in the Attack.\n&#8226; If the Attack is not an Area, add _Push_ 2 (1 _Grit_) to all Hits or Crits.\n&#8226; Add _Prone_ (2 _Grit_ OR 2 _Reflex_) to all Crits."
+      },
+      {
+        "name": "Flare Stance",
+        "desc": "Your flames burn brighter than most, blinding enemies that aren't properly prepared.",
+        "accumulate": "Whenever you Blind a foe, gain 1 _Momentum_.",
+        "refresh": "2 _Focus_, 1 _Reflex_",
+        "effect": "If you Crit with an Attack with the Flame keyword, you may forgo the normal Effect and reduce the damage by 2 to _Blind_ (2 _Focus_).",
+        "special": "If an Attack would already _Blind_ on a Crit, instead increase the cost to Negate by 1."
+      },
+      {
+        "name": "Ruin Stance",
+        "desc": "By focusing your flames for a moment you amplify their power, magnifying their destructive force.",
+        "accumulate": "Whenever you Hit or Crit with a Charged Attack, gain 2 _Momentum_.",
+        "refresh": "1 _Focus_, 1 _Grit_",
+        "effect": "Once per round in the Plotting Phase you may choose to charge an Attack with the Flame keyword. If you do, increase the Speed of that Attack by up to 3. Gain a bonus to your Attack Roll or a bonus to Damage on a Graze, Hit, or Crit equal to that value and add the _Siege_ and _Unblockable_ keywords. You are _Slowed_ from the Phase of your Charged Action's original Speed until your Charged Action resolves."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Short Fuse",
+        "keywords": ["Spirit", "Flame"],
+        "trigger": "You are hit by an Attack",
+        "cost": "_Momentum_ 2",
+        "range": "Self",
+        "type": "Strike",
+        "area": "Burst 1",
+        "speed": "Reaction",
+        "desc": "You respond to an enemies' strike with an indiscriminate explosion, hopefully creating enough space for a opening.",
+        "effect": "Attack with the below Profile.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 OR _Expose_ 1 (1 _Focus_ OR 1 _Reflex_)",
+            "_Push_ 1 AND _Expose_ 1 (2 _Focus_ OR 2 _Reflex_)",
+            "_Push_ 1 AND _Expose_ 1 (2 _Focus_ OR 2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Blasting Strike",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 1,
+        "range": "Melee",
+        "type": "Strike",
+        "move": "Reposition",
+        "reqs": "Melee Weapon Wielded",
+        "area": "Cone 2",
+        "cost": "1 _Momentum_",
+        "speed": "Weapon",
+        "desc": "You explosively charge your weapon, letting out a mighty blast as you make contact.",
+        "effect": "Attack using your weapon's Profile. After resolving that, immediately attack in the Area, treating your initial Target as the origin and attacking directly away from yourself.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (2 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Explosive Blast",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 1,
+        "range": "Melee",
+        "type": "Strike",
+        "move": "Shift",
+        "area": "Line 3 or Arc 3",
+        "speed": "2",
+        "desc": "You fire a close-ranged explosion, buffeting nearby enemies.",
+        "effect": "Attack with the below Profile.",
+        "boost": "2 _Momentum_. Area is instead Blast 3.",
+        "special": "You may _Flying_ Move 1 directly away from the Area, or 2 if you Boost.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 1, 1, 2, 2, 4, 4, 4, 6, 6, 6],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (2 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Volume of Fire",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 1,
+        "range": "Melee",
+        "type": "Strike",
+        "move": "Shift",
+        "speed": "2",
+        "desc": "A rapid-fire burst of explosions that can punish those without defenses.",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. If the Target does not take an Evade or Block Reaction immediately repeat this Action against the same Target.",
+        "special": "On a Crit, Boosting instead costs 0 _Momentum_.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 1, 1, 1, 2, 2, 4, 4, 5, 5],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "Special*",
+            "Special*",
+            "Special*"
+          ]
+        }
+      },
+      {
+        "name": "Explosive Touch",
+        "speed": "3",
+        "ap": 1,
+        "desc": "You reach  out an simply touch a target, letting loose a powerful, close-range explosion.",
+        "keywords": ["Spirit", "Flame", "Siege", "Avoidable"],
+        "type": "Strike",
+        "range": "Melee",
+        "target": "An Obstacle.",
+        "move": "Reposition",
+        "effect": " Attack with the below Profile. If the Target is an Obstacle, you may forgo an Attack Roll and treat your attack as if you rolled a 7. Gain 1 _Momentum_ if you Destroy an Obstacle with this.",
+        "boost": "2 _Momentum_. Instead, Target is a creature.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 7, 8, 9, 10, 12, 14, 16, 18],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 2 (1 _Reflex_)",
+            "_Expose_ 2 (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Detonation",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 1,
+        "range": "4",
+        "type": "Strike",
+        "move": "Shift",
+        "speed": "3",
+        "desc": "A focused explosion of flame and force, becoming near-impossible to evade.",
+        "effect": "Attack with the below Profile.",
+        "special": "If there are no other creatures or Terrain within Range 2 of the Target, add the _Sure Hit_ and _Unblockable_ Keywords.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 2, 3, 4, 5, 6, 6, 8, 8, 10],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Expose_ 1 (2 _Reflex_)",
+            "_Expose_ 1 (2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Fireball",
+        "keywords": ["Spirit", "Flame"],
+        "ap": 2,
+        "range": "8",
+        "area": "Blast 2",
+        "type": "Strike",
+        "move": "Reposition",
+        "speed": "3",
+        "desc": "A solitary mote of flame flies forth, before erupting into a truly horrific blast of flames.",
+        "effect": "Attack with the below Profile.",
+        "special": "You may choose to delay this Attack. Take the Action at the original time, and mark the center of the Area at a point within range. At any point this Round, you may pay 2 _Momentum_ as a Reaction to Attack, gaining a +1 bonus to Damage on a Graze, Hit, or Crit. You automatically Attack at the end of the round if you do not use this Reaction.",
+        "boost": "1 _Momentum_. Create 3 _Blazing_ spaces within the area.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 3, 3, 4, 4, 6, 6, 10, 10, 12, 12],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Burn_ 1 (2 _Reflex_)",
+            "_Burn_ 1 (2 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Smoke Bomb",
+        "speed": "2",
+        "ap": 1,
+        "desc": "An explosion choked with ash and smoke detonates, leaving an area on the battlefield choked with smoke.",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Maneuver",
+        "range": "6",
+        "area": "Cone 2",
+        "move": "Reposition",
+        "effect": "The Target Area becomes Veiled until the end of the Round.",
+        "boost": "2 _Momentum_. Instead, becomes Veiled until the end of the next Round.",
+        "special": "You may target a _Blazing_ space within Range. The Area becomes Blast 1, centered on the Target. Destroy the _Blazing_ space."
+      },
+      {
+        "name": "Volatile Mote",
+        "speed": "2",
+        "ap": 1,
+        "desc": "You focus your energy, creating an explosion on the brink of detonation as an impromptu trap.",
+        "keywords": ["Spirit", "Flame", "Enchant", "Avoidable"],
+        "type": "Maneuver",
+        "range": "8",
+        "move": "Step",
+        "effect": "Mark an unoccupied space within Range. When a creature moves into an adjacent space Attack in a Burst 1 around the Marked space, then remove the Mark.",
+        "boost": "3 _Momentum_. Reduce the Range to 4, but you may Mark two additional spaces.",
+        "special": "You may pay 1 _Momentum_ to not trigger the space when a creature moves adjacent.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 2, 2, 2, 3, 3, 3, 3, 4, 4],
+          "status": [
+            "",
+            "",
+            "_Expose_ 1 (1 _Grit_ OR 1 _Reflex_)",
+            "_Expose_ 1 (1 _Grit_ OR 1 _Reflex_)",
+            "_Expose_ 1 (1 _Grit_ OR 1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (1 _Reflex_)",
+            "_Expose_ 1 (2 _Reflex_)",
+            "_Expose_ 1 (2 _Reflex_)",
+            "_Stagger_ 1 AND _Expose_ 1 (3 _Reflex_)",
+            "_Stagger_ 1 AND _Expose_ 1 (3 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Flashbang",
+        "speed": "3",
+        "ap": 1,
+        "desc": "An extremely focused, extremely bright detonation temporarily blinds a foe.",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Maneuver",
+        "range": "6",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. Instead target a _Blazing_ space within Range. Attack in a Burst 1 around the Target, then Destroy it.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "",
+            "_Impair_ 1 (1 _Focus_)",
+            "_Impair_ 1 (1 _Focus_)",
+            "_Impair_ 1 (1 _Focus_)",
+            "_Blind_ (1 _Focus_)",
+            "_Blind_ (1 _Focus_)",
+            "_Blind_ (2 _Focus_)",
+            "_Blind_ (2 _Focus_)",
+            "_Blind_ (3 _Focus_)"
+          ]
+        }
+      },
+      {
+        "name": "Counterthrust",
+        "speed": "Reaction",
+        "desc": "A quick blast of flames allows a sudden, unpredictable change in momentum.",
+        "trigger": "A Phase begins or you are Pushed.",
+        "cost": "1 _Evade_",
+        "keywords": ["Spirit", "Flame", "Evade", "Safe"],
+        "type": "Move",
+        "move": "Reposition",
+        "effect": "Deal 2 Fire Damage and inflict _Exposed_ 1 (1 _Reflex_) to a creature you move past with this Reaction."
+      },
+      {
+        "name": "Explosive Leap",
+        "keywords": ["Spirit", "Flame", "Flying"],
+        "ap": 1,
+        "type": "Move",
+        "move": "Reposition",
+        "area": "Burst 1",
+        "speed": "2",
+        "desc": "A quick detonation launches you into the air, providing enough propulsion for a sudden move.",
+        "effect": "Deal 2 Damage and _Push_ 1 (1 _Reflex_ negates both) within the area either at the start or end of your Movement.",
+        "imbue": "1 _Momentum_. Instead, Movement is Shift, Speed is 3, and Area is Burst 2."
+      }
+    ]
+  },
+  {
+    "background": "#ec7063",
+    "name": "Overheat",
+    "flavor": "The Overheat Stance overclocks the natural processes of the body, providing a Flamebonded exceptional physical performance at the expense of their physical well-being.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "background": "#c0392b",
+    "name": "Bloodboil",
+    "flavor": "Those that practice Bloodboil manipulate the rage in themselves and others, allowing them to paint targets across the battlefield.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "background": "#f5b041",
+    "name": "Flashsight",
+    "flavor": "Flashsight allows Flamebonded to see brief flashes of the future in flames, providing a limited sense of clairvoyance.",
+    "stances": [],
+    "techniques": []
+  }
+]
