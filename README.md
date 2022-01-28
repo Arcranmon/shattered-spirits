@@ -1,4 +1,4 @@
-# Welcome to the world of Deskar, the land of Shattered Spirits!
+## Welcome to the world of Deskar, the land of Shattered Spirits!
 
 For much of its history, the spirits and people of Deskar have lived together in harmony, forging bonds and thriving with their shared strength, with great spirits of the natural world helping where smaller Bound spirits could not. This peace, however, was not to last. 25 years ago the Sundering occured when something or someone harmed the Great Spirit. While she survived, her essence was sundered into many parts, an effect that cascaded across nearly all the spirits of the world. Spirits that had pacts with local tribes flew into a rage, and disasters wracked the world as the spirits fury was unleashed.
 
@@ -16,28 +16,38 @@ Combat is tactical, with an emphasis on terrain, positioning, and resource manag
 
 Outside of combat, characters will make use of both their skills and those of their spirits in a simplified narrative system that allows a bit more creative than the hard, tactical systems of combat. How characters interact with spirits within and without will have a lasting impact on the world and can decide the fate of Deskar forever.
 
+## Inspirations
+
+If it wasn't obvious from the setting pitch, _Avatar: The Last Airbender_ and Jim Butcher's _Codex Alera_ series are significant influences on the power system. There's a healthy dose of playing way too much _Pokemon_ and _Golden Sun_ in my childhood tossed in there, and any spirit important enough to show up in the story needs to have a _Spirit Island_-esque name.
+
+Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, and _Fire Emblem_. _Gloomhaven_ inspired a lot of the Initiative system as well as my focus on making everything incredibly action-oriented. _Divinity_ helped with the terrain and status focus that I wanted, and _Fire Emblem_, particularly _Three Houses_ was a big inspiration for creating a lot of the more martial abilities within the system.
+
 ## To-Do
 
-- This system is very much a work-in-progress, but is slowly getting more and more developed!
-- Do some math and figure out how much Endurance and Health that each character should have based on how long combats should last.
+This system is very much a work-in-progress, but is slowly getting more and more developed! Here's a very rough roadmap of what I have planned.
+
+- Complete all Spirit Masteries. As of now, most have their 'bending' versions done but that's it.
+- Refine Endurance and Health system based on how long combats should last.
   - Once this math is figured out, create statblocks for the various Obstacles.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
-  - Earth almost definitely needs a balance pass simply because it was completed first and they're likely undertuned now.
+  - Earth needs a balance pass simply because it was completed first and they're likely undertuned now.
   - Add more comprehensive descriptions for how each discipline plays and what their strengths and weaknesses are.
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
+  - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.
 - Styles are very underdeveloped compared to Spirits at the moment and need to be expanded to include a wider range of fighting styles and options.
 - Balance pass over Weapons and Styles to make sure they are competitive with Spirit options.
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
 - Develop some basic NPC stat blocks for testing.
   - Make some less basic NPC stat blocks for fun.
-  - Develop BIG SPIRIT FIGHTS where simply killing them is the easy answer, but it's possible to instead heal them by greatly increasing the difficulty of the fight.
+  - Develop BIG SPIRIT FIGHTS where simply killing them is the easy answer, but it's possible to instead save them by greatly increasing the difficulty of the fight.
+- Make some good player tools. This will probably require some sort of play board so players can easily track conditions and their own Initiative.
 - Non-combat gameplay does not currently exist in any meaningful form and needs to be built once the combat system is in a good place.
 - Create a system for exploration and camping and expeditions that is resource management-lite but rewards players with combat resources.
 - Create a 'home base' sort of system that allows for a town or city to develop over time depending on whether players take a more aggressive approach against the spirits or seek healing and peace.
 
 ## Setup
 
-If you want to run this website locally, do the following:
+If you want to run this website locally (as it won't always be hosted), do the following:
 
 1. Install nodejs + npm
 2. run npm install

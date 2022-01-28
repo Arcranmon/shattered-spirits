@@ -4,15 +4,21 @@
     <vue-simple-markdown :source="combatText" />
     <div class="page--title">Status</div>
     <vue-simple-markdown :source="statusText" /><br />
-    <span v-for="status in statusEffects"
-      ><b>{{ status.keyword }}:</b> {{ status.effect }}<br
+    <span v-for="status in statuses"
+      ><vue-simple-markdown
+        :source="'**' + status.keyword + '**: ' + status.effect"
     /></span>
     <div class="page--title">Conditions</div>
     <vue-simple-markdown :source="conditionText" /><br />
-    <span v-for="condition in conditionEffects"
-      ><b>{{ condition.keyword }}:</b> {{ condition.effect }}<br
+    <span v-for="condition in conditions"
+      ><vue-simple-markdown
+        :source="'**' + condition.keyword + '**: ' + condition.effect"
     /></span>
     <div class="page--title">Elemental Conditions</div>
+    <span v-for="condition in elementalConditions"
+      ><vue-simple-markdown
+        :source="'**' + condition.keyword + '**: ' + condition.effect"
+    /></span>
     <div class="page--title">Terrain</div>
     <div class="page--title">Obstacles</div>
   </div>
@@ -35,11 +41,14 @@ export default Vue.extend({
     };
   },
   computed: {
-    statusEffects: function () {
+    statuses: function () {
       return this.$store.getters.getStatuses();
     },
-    conditionEffects: function () {
+    conditions: function () {
       return this.$store.getters.getConditions();
+    },
+    elementalConditions: function () {
+      return this.$store.getters.getElementalConditions();
     },
   },
 });
@@ -53,8 +62,6 @@ export default Vue.extend({
   text-align: left;
   color: black;
   display: inline;
-  white-space: pre-wrap !important;
-  line-height: 1.25 !important;
   margin-bottom: 0;
 }
 .markdown-body::before {

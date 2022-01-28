@@ -327,8 +327,128 @@
     "background": "#f4d03f",
     "name": "Storm",
     "flavor": "Channeling the essence of a thunderstorm, the Storm Stance creates powerful bursts of lighting that ripple over the battlefield.",
-    "stances": [],
-    "techniques": []
+    "stances": [
+      {
+        "name": "Bolt Stance",
+        "desc": "You control the storms in a direct fashion: you simply unleash it in as direct a way as possible, unleashing its devastating potential.",
+        "refresh": "2 _Reflex_, 1 _Focus_",
+        "accumulate": "Every time you Hit with a Storm Attack gain 1 _Momentum_, every time you Crit gain 2 _Momentum_.",
+        "effect": "Whenever you use a Storm Technique that inflicts _Shock_ you may pay 1 _Momentum_ to inflict no _Shock_ and instead add _Pierce_ equal to the _Shock_ that would have been inflicted."
+      },
+      {
+        "name": "Charged Stance",
+        "desc": "You hold the storm within yourself, something that carries a great amount of risk but also amplifies your power greatly.",
+        "refresh": "1 _Reflex_, 1 _Grit_",
+        "accumulate": "At Refresh, convert up to 4 _Shock_ into _Momentum_.",
+        "effect": "All _Evade_ and _Block_ Reactions have their Cost increased by 1 against your Storm Attacks with _Stall_.",
+        "special": "Whenever you Hit or Crit with an Attack you may pay 1 _Momentum_ to clear 2 _Shock_ from yourself and add _Shock_ 2 (2 _Grit_) to the Attack."
+      },
+      {
+        "name": "Stormcaller Stance",
+        "desc": "You are adept at conducting lighting in the environment itself, calling down lighting in unexpected and dangerous ways.",
+        "refresh": "1 _Reflex_, 1 _Focus_",
+        "accumulate": "",
+        "effect": "Whenever a Storm Technique allows you to create a Hazard, you may create one more."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Lightning Palm",
+        "desc": "You conjure a shocking burst in your hand, unleashing it at point blank for a powerful strike.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Wind", "_Pierce_ 1"],
+        "ap": 1,
+        "speed": "1",
+        "range": "Melee",
+        "move": "Step",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_: Add _Expose_ 1 to the Attack and increase the cost to Negate by 1.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 1, 2, 3, 3, 4, 4, 7, 8],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Shock_ 1 (1 _Grit_)",
+            "_Shock_ 1 (1 _Grit_)",
+            "_Shock_ 1 (2 _Grit_)",
+            "_Shock_ 2 (2 _Grit_)",
+            "_Shock_ 2 (3 _Grit_)",
+            "_Shock_ 3 (3 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Discharge",
+        "desc": "You let loose a barrage of energy at close range, amplifying it with any power stored within.",
+        "type": "Strike",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "3",
+        "range": "Melee",
+        "area": "Burst 1",
+        "move": "Reposition",
+        "effect": "Clear up to 4 _Shock_, then Attack with the below Profile. If you Graze, add half the cleared _Shock_ to the Damage. On a _Hit_ or _Crit_, add all cleared _Shock_ to the Damage.",
+        "special": "You may clear additional _Shock_ as a part of this Attack, but take 2 True Damage for each additional _Shock_ cleared.",
+        "boost": "3 _Momentum_: Clear 2 more _Shock_, but don't add it to the Damage or take Damage from it. If you do, Area becomes Burst 2.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 1, 2, 3, 3, 4, 4, 5, 5],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Shock_ 1 (1 _Grit_)",
+            "_Shock_ 1 (2 _Grit_)",
+            "_Shock_ 2 (2 _Grit_)",
+            "_Shock_ 2 (3 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Charge",
+        "desc": "You pull in nearby electricity, building up an electrical charge within yourself.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind"],
+        "ap": 1,
+        "speed": "2",
+        "range": "Self",
+        "move": "Reposition",
+        "effect": "Gain 2 _Shock_ and 1 _Reflex_. Gain a +1 Attack Bonus on your next Storm Attack.",
+        "boost": "1 _Grit_: Gain 2 more _Shock_."
+      }
+    ]
   },
   {
     "background": "#d5dbdb",

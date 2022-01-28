@@ -26,8 +26,8 @@
       <show-cards :inputs="chains" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: DarkSlateBlue;">
-      <div class="page--title">Polearms</div>
-      <show-cards :inputs="polearms" job="Weapons" :collapse="false" />
+      <div class="page--title">Lances</div>
+      <show-cards :inputs="lances" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: Thistle;">
       <div class="page--title">Spirit Weapons</div>
@@ -58,8 +58,8 @@ export default Vue.extend({
     chains: function () {
       return this.$store.getters.getWeaponByCategory("Chain");
     },
-    polearms: function () {
-      return this.$store.getters.getWeaponByCategory("Polearm");
+    lances: function () {
+      return this.$store.getters.getWeaponByCategory("Lance");
     },
     unarmed: function () {
       return this.$store.getters.getWeaponByCategory("Unarmed");

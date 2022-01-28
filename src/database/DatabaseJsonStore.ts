@@ -13,6 +13,7 @@ import Items from "@/database/items/weapons.json";
 import Glossary from "@/database/glossary/glossary.json";
 import Statuses from "@/database/glossary/statuses.json";
 import Conditions from "@/database/glossary/conditions.json";
+import ElementalConditions from "@/database/glossary/elemental_conditions.json";
 import Keywords from "@/database/glossary/keywords.json";
 import Terrains from "@/database/glossary/terrain.json";
 import Resources from "@/database/glossary/resources.json";
@@ -77,6 +78,7 @@ export class DatabaseJsonStore extends VuexModule {
         this.hasBasicGlossaryItem(inword) ||
         this.hasStatus(inword) ||
         this.hasCondition(inword) ||
+        this.hasElementalCondition(inword) ||
         this.hasKeyword(inword) ||
         this.hasTerrain(inword) ||
         this.hasResource(inword)
@@ -99,6 +101,12 @@ export class DatabaseJsonStore extends VuexModule {
   get hasCondition(): any {
     return (inword: string) => {
       return Conditions.some((x) => x.keyword === inword);
+    };
+  }
+
+  get hasElementalCondition(): any {
+    return (inword: string) => {
+      return ElementalConditions.some((x) => x.keyword === inword);
     };
   }
 
@@ -126,6 +134,8 @@ export class DatabaseJsonStore extends VuexModule {
         return this.getBasicGlossaryItem(inword);
       if (this.hasStatus(inword)) return this.getStatus(inword);
       if (this.hasCondition(inword)) return this.getCondition(inword);
+      if (this.hasElementalCondition(inword))
+        return this.getElementalCondition(inword);
       if (this.hasKeyword(inword)) return this.getKeyword(inword);
       if (this.hasTerrain(inword)) return this.getTerrain(inword);
       if (this.hasResource(inword)) return this.getResource(inword);
@@ -165,6 +175,19 @@ export class DatabaseJsonStore extends VuexModule {
   get getCondition(): any {
     return (inword: string) => {
       return Conditions.find((x) => x.keyword.trim() === inword.trim()).effect;
+    };
+  }
+
+  get getElementalConditions(): any {
+    return () => {
+      return ElementalConditions;
+    };
+  }
+
+  get getElementalCondition(): any {
+    return (inword: string) => {
+      return ElementalConditions.find((x) => x.keyword.trim() === inword.trim())
+        .effect;
     };
   }
 

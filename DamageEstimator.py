@@ -5,17 +5,19 @@ from termcolor import colored
 if(len(sys.argv) <= 1):
     raise Exception("Not enough inputs; requires a weapon or skill designation, as well as the name of the respective ability.")
 
-skill_or_weapon = sys.argv[1]
+file = sys.argv[1]
 name = sys.argv[2]
 bonus_damage = 0
-min_bonus = 0
+min_roll = 0
 if(len(sys.argv) >= 4):
     bonus_damage = int(sys.argv[3])
-    min_bonus = int(sys.argv[4])
+    min_roll = int(sys.argv[4])-1
 
-if(skill_or_weapon == "Skill"):
-    f = open('.\src\database\skills.json')
-elif(skill_or_weapon == "Weapon"):
+if(file == "Earth"):
+    f = open('.\src\database\spirit_masteries\earth.json')
+elif(file == "Wind"):
+    f = open('.\src\database\spirit_masteries\wind.json')
+elif(file == "Weapon"):
     f = open('.\src\database\items.json')
 
 data = json.load(f)
@@ -39,7 +41,7 @@ attack = []
 speed = 1
 
 for object in data:
-    if(skill_or_weapon == "Skill"):
+    if(file != "Weapon"):
         if("techniques" in object):
             for technique in object["techniques"]:
                 if(technique["name"] == name):
@@ -78,7 +80,7 @@ expected_damage = damage_benchmark[speed-1]
 bonus = [0]*11
 
 for i in range (0,11):
-    if(i >= min_bonus):
+    if(i >= min_roll):
         bonus[i] = bonus_damage
     straight_damage += straight[i]*(attack[i]+bonus[i])
     straight_damage_10_plus_evade += straight_evade_8_plus[i]*(attack[i]+bonus[i])
