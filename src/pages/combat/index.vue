@@ -20,6 +20,10 @@
         :source="'**' + condition.keyword + '**: ' + condition.effect"
     /></span>
     <div class="page--title">Terrain</div>
+    <span v-for="terrain in terrains"
+      ><vue-simple-markdown
+        :source="'**' + terrain.keyword + '**: ' + terrain.effect"
+    /></span>
     <div class="page--title">Obstacles</div>
   </div>
 </template>
@@ -49,6 +53,9 @@ export default Vue.extend({
     },
     elementalConditions: function () {
       return this.$store.getters.getElementalConditions();
+    },
+    terrains: function () {
+      return this.$store.getters.getTerrains();
     },
   },
 });
