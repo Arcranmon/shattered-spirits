@@ -340,8 +340,7 @@
         "desc": "You hold the storm within yourself, something that carries a great amount of risk but also amplifies your power greatly.",
         "refresh": "1 _Reflex_",
         "accumulate": "At Refresh, convert up to 3 _Shock_ into _Momentum_.",
-        "effect": "All _Evade_ and _Block_ Reactions have their Cost increased by 1 against your Storm Attacks with _Stall_.",
-        "special": "Whenever you Hit or Crit with an Attack you may pay 1 _Momentum_ to clear 2 _Shock_ from yourself and add _Shock_ 1 (2 _Grit_) to the Attack."
+        "effect": "All _Evade_ and _Block_ Reactions have their Cost increased by 1 against your Storm Attacks with _Stall_."
       },
       {
         "name": "Stormcaller Stance",
@@ -671,11 +670,11 @@
       {
         "name": "Overcharge",
         "speed": "Reaction",
-        "desc": "You .",
+        "desc": "You rely on electricity to provide your reaction speed, providing sudden evasion with a cost.",
         "keywords": ["Spirit", "Wind", "Electric", "Evade"],
         "type": "Defensive",
         "range": "Self",
-        "cost": "0 _Reflex_",
+        "cost": "1 _Reflex_",
         "effect": "Reroll the Attack and immediately _Safe_ Move 1. After resolving the Attack, gain 1 _Shock_."
       }
     ]
@@ -685,7 +684,19 @@
     "name": "Zephyr",
     "flavor": "The Zephyr Stance carries the body aloft, allowing speed and reactions that push the limits of human capability and even flight.",
     "stances": [],
-    "techniques": []
+    "techniques": [
+      {
+        "name": "Curving Shot",
+        "keywords": ["Spirit", "Wind"],
+        "trigger": "You Miss with a Ranged Attack using a Weapon.",
+        "cost": "1 _Momentum_",
+        "type": "Strike",
+        "speed": "Reaction",
+        "desc": "A sudden breeze catches your attack, redirecting it suddenly into another foe.",
+        "effect": "Immediately repeat the Attack against a different Target within Range 4 of the original Target.",
+        "boost": "1 _Momentum_. The Attack has Advantage."
+      }
+    ]
   },
   {
     "background": "#a569bd",

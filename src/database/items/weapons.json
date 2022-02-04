@@ -435,42 +435,42 @@
     }
   },
   {
-    "name": "Stone Gauntlet",
-    "itemtype": "Spirit Weapon",
+    "name": "Shield",
+    "itemtype": "Weapon",
     "speed": 3,
-    "category": "Unarmed",
+    "category": "Shield",
     "hands": 1,
     "damagetype": "Physical",
     "range": "Melee",
-    "keywords": ["Earth", "Heavy", "Siege"],
-    "special": "When you take a Block Reaction you may Destroy the Stone Gauntlet to increase your _Armor_ by 1 against the triggering Attack.",
+    "keywords": ["Versatile"],
+    "special": "While Wielding a Shield, increase your Armor by 1 for the remainder of the Turn whenever you use a Block Reaction. If the Shield is _Damaged_, you lose this benefit.",
     "chart": {
       "hit": [
         "Miss",
         "Miss",
-        "Miss",
         "Graze",
         "Graze",
-        "Graze",
+        "Hit",
+        "Hit",
         "Hit",
         "Hit",
         "Hit",
         "Crit",
         "Crit"
       ],
-      "damage": [0, 0, 0, 4, 4, 5, 7, 7, 8, 9, 9],
+      "damage": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "status": [
         "",
         "",
-        "",
-        "",
-        "",
-        "",
-        "_Stagger_ (1 _Grit_)",
-        "_Stagger_ (1 _Grit_)",
-        "_Stagger_ (1 _Grit_)",
-        "_Stagger_ (2 _Grit_)",
-        "_Stagger_ (2 _Grit_)"
+        "_Expose_ OR _Hobble_ (1 _Grit_)",
+        "_Expose_ OR _Hobble_ (1 _Grit_)",
+        "_Prone_ (1 _Grit_)",
+        "_Prone_ (1 _Grit_)",
+        "_Prone_ (2 _Grit_)",
+        "_Prone_ (2 _Grit_)",
+        "_Prone_ (3 _Grit_)",
+        "_Prone_ (3 _Grit_)",
+        "_Prone_ (4 _Grit_)"
       ]
     }
   },
@@ -515,6 +515,86 @@
     }
   },
   {
+    "name": "Ice Lance",
+    "itemtype": "Spirit Weapon",
+    "speed": 2,
+    "category": "Lance",
+    "hands": 2,
+    "damagetype": "Physical",
+    "range": "_Reach_ 1",
+    "keywords": ["Water", "Versatile", "_Thrown_ 8"],
+    "special": "After you Hit or Crit with a Melee or Ranged Attack with this Weapon, you may _Destroy_ it. If it was Melee, inflict 2 _Frost_ (2 _Grit_) on the Target. If it was ranged, inflict 1 _Frost_ (1 _Grit_) on the Target and create an _Icicle_ in a space adjacent to them.",
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 2, 3, 3, 4, 5, 6, 7, 9, 10],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Frost_ 1 (1 _Grit_)",
+        "_Frost_ 1 (1 _Grit_)",
+        "_Frost_ 1 (2 _Grit_)",
+        "_Frost_ 2 (2 _Grit_)",
+        "_Frost_ 3 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Stone Gauntlet",
+    "itemtype": "Spirit Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Earth", "Heavy", "Siege"],
+    "special": "When you take a Block Reaction you may Destroy the Stone Gauntlet to increase your _Armor_ by 1 against the triggering Attack.",
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 4, 4, 5, 7, 7, 8, 9, 9],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Stagger_ (1 _Grit_)",
+        "_Stagger_ (1 _Grit_)",
+        "_Stagger_ (1 _Grit_)",
+        "_Stagger_ (2 _Grit_)",
+        "_Stagger_ (2 _Grit_)"
+      ]
+    }
+  },
+  {
     "name": "Water Whip",
     "itemtype": "Spirit Weapon",
     "speed": 3,
@@ -551,6 +631,46 @@
         "_Pull_ 2 or _Prone_ (1 _Grit_)",
         "_Pull_ 3 and _Prone_ (2 _Grit_)",
         "_Pull_ 3 and _Prone_ (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Wind Blade",
+    "itemtype": "Spirit Weapon",
+    "speed": 2,
+    "category": "Blade",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "special": "All attacks with the Wind Blade are at Advantage. If a creature uses a _Block_ Reaction, reduce the Attack Roll by an additional 1. If this makes the Attack Miss, pay 1 _Momentum_ or _Destroy_ the _Wind Blade_.",
+    "keywords": ["Light"],
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 0, 0, 3, 6, 10, 12, 15],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Bleed_ 1 (2 _Grit_)",
+        "_Bleed_ 2 (2 _Grit_)",
+        "_Bleed_ 3 (2 _Grit_)",
+        "_Bleed_ 3 (3 _Grit_)"
       ]
     }
   }

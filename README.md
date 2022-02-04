@@ -33,6 +33,7 @@ This system is very much a work-in-progress, but is slowly getting more and more
   - Once this math is figured out, create statblocks for the various Obstacles.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
   - Earth needs a balance pass simply because it was completed first and they're likely undertuned now.
+  - Revisist Spirit Stances to try to make sure they're a bit more generally applicable, not just with their Discipline's Techniques.
   - Add more comprehensive descriptions for how each discipline plays and what their strengths and weaknesses are.
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
   - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.

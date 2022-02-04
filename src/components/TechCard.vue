@@ -6,9 +6,7 @@
       </div>
       <div class="tech--keywords" v-bind:class="tech.Type">
         <span v-if="(tech.Desc.length > 0)">{{ tech.Desc }}<br /></span>
-        <span v-if="(tech.Attack)" style="font-style: bold;">
-          <b>{{ tech.DamageType }} Damage, </b>
-        </span>
+        <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
         <span style="font-style: bold;">
           <b
             >{{ tech.SpeedHeader
@@ -27,7 +25,11 @@
     </div>
     <div class="tech--content">
       <span v-if="tech.HasCost"
-        ><vue-simple-markdown class="tech--format" :source="tech.CostText" />
+        ><tooltipped-text
+          class="tech--format"
+          :input="tech.CostArray"
+          :itallic="true"
+        />
       </span>
       <span class="tech--format" v-if="tech.HasReqs">
         <tooltipped-text :input="tech.ReqArray" :itallic="true"
@@ -39,7 +41,10 @@
         ><tooltipped-text :input="tech.TargetArray" :itallic="true"
       /></span>
       <span v-if="tech.HasMove"
-        ><vue-simple-markdown class="tech--format" :source="tech.MoveText"
+        ><tooltipped-text
+          class="tech--format"
+          :input="tech.MoveArray"
+          :itallic="true"
       /></span>
       <span class="tech--format" v-if="tech.HasEffect">
         <tooltipped-text :input="tech.EffectArray" :itallic="true"

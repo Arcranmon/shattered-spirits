@@ -25,6 +25,10 @@
         :source="'**' + terrain.keyword + '**: ' + terrain.effect"
     /></span>
     <div class="page--title">Obstacles</div>
+    <span v-for="obstacle in obstacles"
+      ><vue-simple-markdown
+        :source="'**' + obstacle.keyword + '**: ' + obstacle.effect"
+    /></span>
   </div>
 </template>
 
@@ -53,6 +57,9 @@ export default Vue.extend({
     },
     elementalConditions: function () {
       return this.$store.getters.getElementalConditions();
+    },
+    obstacles: function () {
+      return this.$store.getters.getObstacles();
     },
     terrains: function () {
       return this.$store.getters.getTerrains();

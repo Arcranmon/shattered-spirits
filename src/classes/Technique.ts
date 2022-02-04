@@ -110,8 +110,8 @@ class Technique {
   public get HasCost() {
     return this._cost.length > 0;
   }
-  public get CostText() {
-    return "**Cost:** " + this._cost;
+  public get CostArray() {
+    return this.KeywordParsedArray(this._cost, "**Cost:** ");
   }
   public get HasEffect() {
     return this._effect.length > 0;
@@ -131,8 +131,8 @@ class Technique {
   public get HasMove() {
     return this._move.length > 0;
   }
-  public get MoveText() {
-    return "**Movement:** " + this._move;
+  public get MoveArray() {
+    return this.KeywordParsedArray(this._move, "**Movement:** ");
   }
   public get HasRange() {
     return this.Range != "";

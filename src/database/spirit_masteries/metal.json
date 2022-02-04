@@ -38,7 +38,7 @@
         "speed": "Reaction",
         "desc": "A missed shot or throw is immediately pulled back for a surprise strike.",
         "effect": "Immediately repeat the Attack against the Target. If the Attack still misses, the metal returns to you.",
-        "boost": "1 _Momentum_. The attack becomes _Accurate_."
+        "boost": "1 _Momentum_. The Attack has Advantage."
       },
       {
         "name": "Crush",
@@ -81,10 +81,8 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 0, 7, 8, 8, 9, 11, 11],
+          "damage": [0, 0, 0, 0, 0, 7, 8, 9, 10, 12, 14],
           "status": [
-            "",
-            "",
             "",
             "",
             "",
@@ -93,7 +91,9 @@
             "_Embed_ (1 _Reflex_)",
             "_Embed_ (1 _Reflex_)",
             "_Embed_ (2 _Reflex_)",
-            "_Embed_ (2 _Reflex_)"
+            "_Embed_ (2 _Reflex_)",
+            "_Embed_ (3 _Reflex_)",
+            "_Embed_ (3 _Reflex_)"
           ]
         }
       },
@@ -375,19 +375,31 @@
       {
         "name": "Unbreakable Stance",
         "desc": "You reinforce all nearby metal, making it nigh-indestructible.",
-        "accumulate": "If you are wearing metal Armor or have a metal Shield Wielded, gain 1 _Momentum_ Refresh.",
-        "refresh": "_Grit_ 3",
-        "effect": "All Metal Obstacles within a Burst 3 gain Sturdy. In addition, Negating _Damaged_ and _Shred_ costs 1 less for yourself and all allies in a Burst 3, so long as the Weapon or Armor is made of metal."
+        "accumulate": "If you are wearing Metal Armor or have a Metal Shield Wielded, gain 1 _Momentum_ at Refresh.",
+        "refresh": "_Grit_ 4",
+        "effect": "All Metal Obstacles within a Burst 3 gain Sturdy. In addition, Negating _Damaged_ and _Shred_ costs 1 less for yourself and all allies in a Burst 3, so long as the Weapon or Armor is made of Metal."
       },
       {
         "name": "Unstoppable Stance",
         "desc": "You subtly shape and reinforce your weapons, providing impossibly sharp edges that cut through all defenses.",
-        "accumulate": "If you have Metal weapons Wielded, gain 1 _Momentum_ at Refresh.",
+        "accumulate": "If you have a Metal Weapon _Wielded_, gain 1 _Momentum_ at Refresh.",
         "refresh": "_Focus_ 1, _Reflex_ 1",
-        "effect": "Gain a +1 Bonus to all Strikes made with a Metal weapon. On a Crit with Metal Weapons add _Unblockable_ to the attack."
+        "effect": "Gain a +1 Bonus to all Strikes made with a Metal weapon. On a Crit with Metal Weapons add _Unblockable_ to the Attack."
       }
     ],
     "techniques": [
+      {
+        "name": "Shattering Strike",
+        "keywords": ["Spirit", "Metal", "Weapon"],
+        "ap": 1,
+        "desc": "You amplify your weapon before striking out against a foe's equipment, attempting to sunder arms and armor.",
+        "reqs": "Metal Weapon Wielded.",
+        "speed": "Weapon",
+        "type": "Strike",
+        "range": "Weapon",
+        "move": "Reposition",
+        "effect": "Attack using your Weapon's Profile, dealing half damage. After attacking, choose either the Target's Armor or a piece of Equipment they have Wielded. Inflict _Shred_ 1 (2 _Reflex_) if you choose Armor,  or _Damage_ (1 _Reflex_) if you chose Equipment. Increase the Cost to Negate by 1 on a Crit."
+      },
       {
         "name": "Steelsnake Strike",
         "keywords": ["Spirit", "Metal", "Weapon", "Punish"],
@@ -399,19 +411,6 @@
         "range": "Weapon",
         "effect": "You may trigger this Reaction after seeing your Attack Roll. Reroll the Attack, using the higher of the two results. After the attack is resolved, the weapon becomes _Damaged_. Weapons _Damaged_ in this way return to normal at the end of combat.",
         "special": "You may also _Damage_ your Weapon to add _Sure Hit_ to the attack."
-      },
-      {
-        "name": "Mercurial Strike",
-        "keywords": ["Spirit", "Metal", "Weapon"],
-        "ap": 1,
-        "desc": "You soften your weapon to the point it is near-liquid, not solidying it until the strike is nearly done.",
-        "reqs": "Metal Melee or Reach Range Weapon Wielded.",
-        "speed": "Weapon",
-        "cost": "1 _Momemtum_",
-        "type": "Strike",
-        "range": "Weapon",
-        "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile. If the Weapon Range is Melee, give it Reach, or if has Reach increase it by 1."
       },
       {
         "name": "Steelforged Strike",
@@ -445,13 +444,12 @@
         "ap": 1,
         "desc": "You create a weapon from any nearby metal, forging it into something new.",
         "type": "Maneuver",
-        "target": "A _Metal Source_ or an unequipped Weapon.",
-        "speed": "3",
-        "reqs": "Must be Attached to a Strike with the Weapon Keyword",
-        "range": "5",
+        "target": "A _Metal Source_ that is unequipped or equipped by a willing creature.",
+        "speed": "4",
+        "range": "4",
         "move": "Reposition",
-        "effect": "Destroy the Target and gain 1 _Momentum_. Create any standard Melee Weapon made of metal at a point within Range. If you place it next to a creature with an Open Hand, they may immediately Equip it.",
-        "special": "You may instead use this Action as if its speed was Set-Up. It must be Attached to a Strike with the Weapon Keyword. Resolve the Strike using the created Weapon from its current position."
+        "effect": "Destroy the Target and gain 1 _Momentum_. Create any standard Melee Weapon made of Metal, then Move it up to 2 spaces. If you place it next to a creature with an Open Hand, they may immediately Equip it.",
+        "imbue": "0 _Momentum_: You may instead use this Action as if its speed was Set-Up. It must be Attached to a Strike with the Weapon Keyword. Resolve the Strike using the created Weapon from its final position. It then falls to the ground."
       },
       {
         "name": "Portcullis",
@@ -470,7 +468,7 @@
         "name": "Forge",
         "keywords": ["Spirit", "Metal"],
         "ap": 1,
-        "desc": "You take control of a nearby source of armor, shaping and forging it into armor plating on the fly.",
+        "desc": "You take control of a nearby weapon or armor, enhancing its capabilities greatly.",
         "type": "Maneuver",
         "target": "A metal Weapon or metal Armor.",
         "speed": "5",
@@ -479,7 +477,7 @@
         "cost": "2 _Momentum_",
         "effect": "If you target a Weapon, the creature wielding it gains Advantage on their next Attack with it and gains 1 _Momentum_. If you target Armor, the creature wielding it gains 2 _Grit_ and increase their Armor by 1.",
         "special": "If the Weapon is _Damaged_, remove _Damaged_. If the _Armor_ has any _Shred_, remove 2.",
-        "boost": "1 _Momentum_. Instead, Range is 5."
+        "boost": "1 _Momentum_. Instead, Range is 4."
       },
       {
         "name": "Sap",

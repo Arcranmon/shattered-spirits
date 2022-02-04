@@ -15,6 +15,7 @@ import Statuses from "@/database/glossary/statuses.json";
 import Conditions from "@/database/glossary/conditions.json";
 import ElementalConditions from "@/database/glossary/elemental_conditions.json";
 import Keywords from "@/database/glossary/keywords.json";
+import Obstacles from "@/database/glossary/obstacles.json";
 import Terrains from "@/database/glossary/terrain.json";
 import Resources from "@/database/glossary/resources.json";
 
@@ -81,6 +82,7 @@ export class DatabaseJsonStore extends VuexModule {
         this.hasElementalCondition(inword) ||
         this.hasKeyword(inword) ||
         this.hasTerrain(inword) ||
+        this.hasObstacle(inword) ||
         this.hasResource(inword)
       );
     };
@@ -116,6 +118,12 @@ export class DatabaseJsonStore extends VuexModule {
     };
   }
 
+  get hasObstacle(): any {
+    return (inword: string) => {
+      return Obstacles.some((x) => x.keyword === inword);
+    };
+  }
+
   get hasTerrain(): any {
     return (inword: string) => {
       return Terrains.some((x) => x.keyword === inword);
@@ -138,6 +146,7 @@ export class DatabaseJsonStore extends VuexModule {
         return this.getElementalCondition(inword);
       if (this.hasKeyword(inword)) return this.getKeyword(inword);
       if (this.hasTerrain(inword)) return this.getTerrain(inword);
+      if (this.hasObstacle(inword)) return this.getObstacle(inword);
       if (this.hasResource(inword)) return this.getResource(inword);
     };
   }
@@ -212,6 +221,18 @@ export class DatabaseJsonStore extends VuexModule {
   get getTerrain(): any {
     return (inword: string) => {
       return Terrains.find((x) => x.keyword.trim() === inword.trim()).effect;
+    };
+  }
+
+  get getObstacles(): any {
+    return () => {
+      return Obstacles;
+    };
+  }
+
+  get getObstacle(): any {
+    return (inword: string) => {
+      return Obstacles.find((x) => x.keyword.trim() === inword.trim()).effect;
     };
   }
 

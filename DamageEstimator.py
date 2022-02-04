@@ -15,10 +15,14 @@ if(len(sys.argv) >= 4):
 
 if(file == "Earth"):
     f = open('.\src\database\spirit_masteries\earth.json')
+elif(file == "Metal"):
+    f = open('.\src\database\spirit_masteries\metal.json')
 elif(file == "Wind"):
     f = open('.\src\database\spirit_masteries\wind.json')
+elif(file == "Wood"):
+    f = open('.\src\database\spirit_masteries\wood.json')
 elif(file == "Weapon"):
-    f = open('.\src\database\items.json')
+    f = open('.\src\database\items\weapons.json')
 
 data = json.load(f)
 

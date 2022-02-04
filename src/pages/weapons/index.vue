@@ -29,7 +29,11 @@
       <div class="page--title">Lances</div>
       <show-cards :inputs="lances" job="Weapons" :collapse="false" />
     </div>
-    <div class="weapon--box" style="background-color: Thistle;">
+    <div class="weapon--box" style="background-color: #9d67b6;">
+      <div class="page--title">Shields</div>
+      <show-cards :inputs="shields" job="Weapons" :collapse="false" />
+    </div>
+    <div class="weapon--box" style="background-color: darkorchid;">
       <div class="page--title">Spirit Weapons</div>
       <show-cards :inputs="spirit_weapons" job="Weapons" :collapse="false" />
     </div>
@@ -63,6 +67,9 @@ export default Vue.extend({
     },
     unarmed: function () {
       return this.$store.getters.getWeaponByCategory("Unarmed");
+    },
+    shields: function () {
+      return this.$store.getters.getWeaponByCategory("Shield");
     },
     spirit_weapons: function () {
       return this.$store.getters.getSpiritWeapons();
