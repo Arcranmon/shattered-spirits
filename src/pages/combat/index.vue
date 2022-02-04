@@ -2,33 +2,38 @@
   <div style="padding: 1em;">
     <div class="page--title">Combat Rules</div>
     <vue-simple-markdown :source="combatText" />
-    <div class="page--title">Status</div>
+    <div class="page--title">Statuses</div>
     <vue-simple-markdown :source="statusText" /><br />
-    <span v-for="status in statuses"
-      ><vue-simple-markdown
+    <div v-for="status in statuses">
+      <vue-simple-markdown
         :source="'**' + status.keyword + '**: ' + status.effect"
-    /></span>
+      />
+    </div>
     <div class="page--title">Conditions</div>
     <vue-simple-markdown :source="conditionText" /><br />
-    <span v-for="condition in conditions"
-      ><vue-simple-markdown
+    <div v-for="condition in conditions">
+      <vue-simple-markdown
         :source="'**' + condition.keyword + '**: ' + condition.effect"
-    /></span>
+      />
+    </div>
     <div class="page--title">Elemental Conditions</div>
-    <span v-for="condition in elementalConditions"
-      ><vue-simple-markdown
+    <div v-for="condition in elementalConditions">
+      <vue-simple-markdown
         :source="'**' + condition.keyword + '**: ' + condition.effect"
-    /></span>
+      />
+    </div>
     <div class="page--title">Terrain</div>
-    <span v-for="terrain in terrains"
-      ><vue-simple-markdown
+    <div v-for="terrain in terrains">
+      <vue-simple-markdown
         :source="'**' + terrain.keyword + '**: ' + terrain.effect"
-    /></span>
+      />
+    </div>
     <div class="page--title">Obstacles</div>
-    <span v-for="obstacle in obstacles"
-      ><vue-simple-markdown
+    <div v-for="obstacle in obstacles">
+      <vue-simple-markdown
         :source="'**' + obstacle.keyword + '**: ' + obstacle.effect"
-    /></span>
+      />
+    </div>
   </div>
 </template>
 
