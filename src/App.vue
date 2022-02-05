@@ -9,7 +9,6 @@
 import Navbar from "@/components/Navbar";
 
 export default {
-  name: "app",
   components: { Navbar },
   watch: {
     $route(to, from) {
