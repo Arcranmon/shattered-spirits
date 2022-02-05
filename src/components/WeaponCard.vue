@@ -6,7 +6,7 @@
       </div>
       <b
         ><div class="weapon--keywords">
-          {{ weapon.DamageType }} Damage, {{ weapon.SpeedHeader
+          {{ weapon.SpeedHeader
           }}<tooltipped-text
             :input="[weapon.RangeHeader]"
             :commas="false"

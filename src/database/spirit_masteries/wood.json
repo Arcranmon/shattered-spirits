@@ -261,7 +261,7 @@
         "special": "The Attacker may pay 1 _Focus_ to instead choose the Effect."
       },
       {
-        "name": "Defensive Growth",
+        "name": "Ward Wood",
         "keywords": ["Spirit", "Wood", "Block"],
         "trigger": "You are Attacked with Wood.",
         "cost": "1 _Focus_, 2 _Grit_ OR 2 _Reflex_",
@@ -277,11 +277,74 @@
     "background": "#196f3d",
     "name": "Growth",
     "flavor": "By manipulating local plantlife, Growth techniques can turn a barren field into one choked with aggressive, hostile plantlife.",
-    "stances": [],
+    "stances": [
+      {
+        "name": "Gardener Stance",
+        "desc": "You cultivate rampant growth, spreading green with every move you make.",
+        "accumulate": "Every Turn you begin in an _Overgrown_ space, gain 1 _Momentum_.",
+        "refresh": "_Focus_ 2, _Reflex_ 1",
+        "effect": "At Refresh, choose an _Overgrown_ space within Range 4. Immediately make one space adjacent to it _Overgrown_. Repeat this effect once. You may pay up to 2 _Momentum_, repeating this Effect for every Momentum spent.",
+        "special": "You may ignore the effects of _Overgrown_ spaces while in this Stance."
+      }
+    ],
     "techniques": [
       {
+        "name": "Vine Whip",
+        "speed": "2",
+        "ap": 1,
+        "desc": "You suddenly sprout a vine, lashing it out towards a foe and pulling them closer.",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Strike",
+        "range": "5",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_. Choose an _Overgrown_ space within Range. Originate the attack from the _Overgrown_ space rather than yourself.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 2, 3, 4, 5, 5, 6, 8, 8],
+          "status": [
+            "",
+            "",
+            "",
+            "_Pull_ 1 (1 _Grit_)",
+            "_Pull_ 1 (1 _Grit_)",
+            "_Pull_ 2 (1 _Grit_)",
+            "_Pull_ 2 (2 _Grit_)",
+            "_Pull_ 2 (2 _Grit_)",
+            "_Pull_ 2 (3 _Grit_)",
+            "_Pull_ 3 (3 _Grit_)",
+            "_Pull_ 4 (3 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Animate Vine",
+        "speed": "4",
+        "ap": 1,
+        "desc": "You amplify the growth of a nearby plant, creating an aggressive vine capable of grappling foes.",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Maneuver",
+        "range": "6",
+        "target": "An _Overgrown_ space or living _Wood Source_.",
+        "move": "Reposition",
+        "effect": "Destroy the Target, then create a Animated Vine with [HEALTH STATS] in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_ or _Focus_ to have it use the Grab Action as if it had Reach 2, targetting the triggering creature.",
+        "boost": "2 _Momentum_: Remove the Enchant Keyword."
+      },
+      {
         "name": "Overgrow",
-        "speed": "3",
+        "speed": "4",
         "ap": 1,
         "desc": "Thick plants begin to grow, creating thick foliage that limits movement.",
         "keywords": ["Spirit", "Wood", "Groundsource"],
@@ -291,6 +354,16 @@
         "move": "Reposition",
         "effect": "The target Area becomes _Overgrown_. Gain 1 _Momentum_.",
         "boost": "1 _Momentum_: Area is instead Blast 1."
+      },
+      {
+        "name": "Nature's Veil",
+        "keywords": ["Spirit", "Wood", "Evade"],
+        "trigger": "A Phase Begins.",
+        "cost": "1 _Focus_, 1 _Reflex_",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "desc": "Nature clings closely to you, obscuring your movements and providing an obscuring veil.",
+        "effect": "For the rest of the Phase you are considered _Veiled_ whenever you are on _Overgrown_ Terrain."
       }
     ]
   },
