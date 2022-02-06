@@ -205,7 +205,7 @@
         "speed": "2",
         "range": "8",
         "move": "None",
-        "effect": "Turn all Targets into Warding Wood while this Encahnt persists. All Allies have Cover while adjacent to Warding Wood. Creatures of your choice treat spaces adjacent to Warding Wood as _Rough_ and, if they start their turn adjacent to it, gain _Hobbled_ 1 (1 _Reflex_).",
+        "effect": "Turn all Targets into Warding Wood while this _Enchant_ persists. All Allies have Cover while adjacent to Warding Wood. Creatures of your choice treat spaces adjacent to Warding Wood as _Rough_ and, if they start their turn adjacent to it, gain _Hobbled_ 1 (1 _Reflex_).",
         "special": "While adjacent to any Warding Wood you may spend _Focus_ as _Grit_ for all _Block_ Reactions.",
         "boost": "X _Momentum_: For every Momentum spent, increase the Targets by 1."
       },
@@ -220,7 +220,7 @@
         "range": "6",
         "move": "Reposition",
         "effect": "_Slide_ the Target up to 6 spaces. Any creature of your choice the Target moves past gains _Hobble_ 1 (1 _Reflex_), and any creature the Target moves through gains _Hobble_ 1 (2 _Reflex_).",
-        "boost": "X _Momentum_: For every Momentum paid you may repeat this Action with a different Target.\n2 _Momentum_: You may instead Target a Size 2 _Wood Source_. Instead of inflicting _Hobble_, instead inflict _Prone_."
+        "boost": "X _Momentum_: For every Momentum paid you may repeat this Action with a different Target.\n\t2 _Momentum_: You may instead Target a Size 2 _Wood Source_. Instead of inflicting _Hobble_, instead inflict _Prone_."
       },
       {
         "name": "Woodwright",
@@ -247,7 +247,7 @@
         "range": "4",
         "move": "None",
         "effect": "_Destroy_ the Targets. Immediately gain X [HEALTH NUMBERS] and 3 _Ablative Armor_. While this Enchant is active you are Size 2, add _Reach_ to all Melee Attacks, and reduce the Cost to Negate all _Push_, _Pull_, and _Slide_ Effects by 1. If you have no [SPECIAL HEALTH] at Refresh, end this Enchant.",
-        "special": "While this Enchant is active, you may _Destroy_ additional _Wood Source_s at the start of your Turn by paying 1 _Grit_. When you do, gain 1 _Ablative Armor_ and X [HEALTH NUMBERS]."
+        "special": "While this Enchant is active, you may _Destroy_ additional _Wood Source_s at the start of your Turn by paying 1 _Grit_. When you do, gain 1 _Ablative Armor_ and X [HEALTH NUMBER]."
       },
       {
         "name": "Grasping Rebuke",
@@ -261,7 +261,7 @@
         "special": "The Attacker may pay 1 _Focus_ to instead choose the Effect."
       },
       {
-        "name": "Ward Wood",
+        "name": "Wood Ward",
         "keywords": ["Spirit", "Wood", "Block"],
         "trigger": "You are Attacked with Wood.",
         "cost": "1 _Focus_, 2 _Grit_ OR 2 _Reflex_",
@@ -279,15 +279,95 @@
     "flavor": "By manipulating local plantlife, Growth techniques can turn a barren field into one choked with aggressive, hostile plantlife.",
     "stances": [
       {
+        "name": "Animator Stance",
+        "desc": "The plants under your control have an uncanny ability to move and react, creating a garden of deadly, animate plants.",
+        "accumulate": "Gain 1 _Momentum_ for every Action that originally had the Wood and Enchant Keywords that is persisting at Refresh.",
+        "refresh": "_Focus_ 2",
+        "effect": "You have have two active _Enchant_ effects so long as both have the Wood Keyword."
+      },
+      {
         "name": "Gardener Stance",
         "desc": "You cultivate rampant growth, spreading green with every move you make.",
         "accumulate": "Every Turn you begin in an _Overgrown_ space, gain 1 _Momentum_.",
         "refresh": "_Focus_ 2, _Reflex_ 1",
         "effect": "At Refresh, choose an _Overgrown_ space within Range 4. Immediately make one space adjacent to it _Overgrown_. Repeat this effect once. You may pay up to 2 _Momentum_, repeating this Effect for every Momentum spent.",
         "special": "You may ignore the effects of _Overgrown_ spaces while in this Stance."
+      },
+      {
+        "name": "Sprouting Stance",
+        "desc": "Your plants are slow to bloom, but come forth with additional fervor and strength because of it",
+        "accumulate": "Gain 1 _Momentum_ for each Phase that one of your Hazards created by this Stance triggers.",
+        "refresh": "_Focus_ 2, _Reflex_ 1",
+        "effect": "Whenever you create an _Overgrown_ space or target an _Overgrown_ space with an effect, you may instead create a Hazard in that space. At the beginning of any Phase, you may trigger any number of these Hazards to create the original effect, inflicting _Hobble_ 1 or inflicting 2 Damage (1 _Reflex_) in a Burst 1 around the Hazard."
       }
     ],
     "techniques": [
+      {
+        "name": "Seeding Strike",
+        "ap": 1,
+        "desc": "Your weapon flares to life, carrying the seeds for a host of plant life with it.",
+        "keywords": ["Spirit", "Wood", "Weapon"],
+        "speed": "Weapon+1",
+        "type": "Strike",
+        "range": "Weapon",
+        "move": "Step",
+        "effect": "Attack using your Weapon's Profile. _Embed_ a _Wood Source_ on 8+. If you do not _Embed_, create an _Overgrown_ space adjacent to the Target."
+      },
+      {
+        "name": "Flourishing Strike",
+        "ap": 1,
+        "desc": "You lash out with your weapon, encouraging nearby plants to flourish and grow, granting you an edge.",
+        "keywords": ["Spirit", "Wood", "Weapon"],
+        "speed": "Weapon",
+        "type": "Strike",
+        "cost": "1 _Momentum_",
+        "range": "Weapon",
+        "move": "Reposition",
+        "effect": "Attack using your Weapon's Profile. Choose one of the following:\n\t&#8226; If there is an _Overgrown_ space adjacent to the Target, _Destroy_ it and gain a +1 bonus to your Attack Roll.\n\t&#8226; If there is a _Wood Source_ Embedded in the Target, _Destroy_ it to deal 2 _True Damage_ and inflict _Hobble_ 1 and _Impair_ 1 (2 _Reflex_).\n\t&#8226; If there is an _Enchant_ with the _Wood_ Keyword within Range 5 of you, you may trigger its effect, reducing its Cost by 1.\n\t&#8226; Gain 1 _Focus_.",
+        "boost": "1 _Momentum_, 1 _Focus_: Choose two Effects."
+      },
+      {
+        "name": "Thorn Strike",
+        "speed": "2",
+        "ap": 1,
+        "desc": "You unleash a close-range hail of thorns on foe, leaving painful barbs throughout their hide.",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Strike",
+        "range": "Melee",
+        "area": "Cone 2",
+        "move": "Reposition",
+        "effect": "Attack with the below Profile.",
+        "boost": "1 _Momentum_: Choose an _Overgrown_ or _Wood Source_ space within Range 8. Originate the attack from there rather than yourself.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 2, 2, 3, 3, 4, 4, 6, 6],
+          "status": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "_Wound_ 1 (1 _Reflex_)",
+            "_Wound_ 1 (2 _Reflex_)",
+            "_Wound_ 1 and _Embed_ (2 _Reflex_)",
+            "_Wound_ 2 and _Embed_ (2 _Reflex_)",
+            "_Wound_ 2 and _Embed_ (3 _Reflex_)",
+            "_Wound_ 2 and _Embed_ (3 _Reflex_)"
+          ]
+        }
+      },
       {
         "name": "Vine Whip",
         "speed": "2",
@@ -298,7 +378,7 @@
         "range": "5",
         "move": "Reposition",
         "effect": "Attack with the below Profile.",
-        "boost": "1 _Momentum_. Choose an _Overgrown_ space within Range. Originate the attack from the _Overgrown_ space rather than yourself.",
+        "boost": "1 _Momentum_: Choose an _Overgrown_ space within Range. Originate the attack from the _Overgrown_ space rather than yourself.",
         "chart": {
           "hit": [
             "Miss",
@@ -330,21 +410,76 @@
         }
       },
       {
-        "name": "Animate Vine",
-        "speed": "4",
+        "name": "Bramble Wall",
+        "speed": "3",
+        "ap": 1,
+        "desc": "Dangerous vines covered in thick thorns shoot up, .",
+        "keywords": ["Spirit", "Wood", "Groundsource"],
+        "type": "Maneuver",
+        "range": "4",
+        "target": "Any three independent _Overgrown_ spaces.",
+        "move": "Step",
+        "effect": "All Target spaces become _Bramble Wall_s.",
+        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Damage and gain Bleed 1. If they cannot Move out of a Target space, they cannot pay this cost."
+      },
+      {
+        "name": "Ensnaring Vines",
+        "speed": "2",
         "ap": 1,
         "desc": "You amplify the growth of a nearby plant, creating an aggressive vine capable of grappling foes.",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit", "Wood", "Enchant"],
         "type": "Maneuver",
         "range": "6",
-        "target": "An _Overgrown_ space or living _Wood Source_.",
+        "target": "Up to 6 contiguous _Overgrown_ spaces.",
         "move": "Reposition",
-        "effect": "Destroy the Target, then create a Animated Vine with [HEALTH STATS] in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_ or _Focus_ to have it use the Grab Action as if it had Reach 2, targetting the triggering creature.",
-        "boost": "2 _Momentum_: Remove the Enchant Keyword."
+        "effect": "All _Overgrown_ spaces become Ensnaring Vines while thie Enchant persists. Treat these spaces as _Overgrown_, but also inflict _Hobbled_ 1 (2 _Reflex_) on any creature that starts or ends their Turn in an Ensnaring Vines space.",
+        "special": "Whenever a creature enters an Ensnaring Vines space, you may pay 1 _Momentum_ to inflict _Hobbled_ 1 and _Impaired_ 1 (2 _Reflex_).",
+        "boost": "X _Momentum_: For each Momentum spent, two Target spaces do not need to be _Overgrown_.\n\t2 _Momentum_: Remove the Enchant Keyword."
+      },
+      {
+        "name": "Ensnare",
+        "speed": "3",
+        "ap": 1,
+        "desc": "Vines erupt around a target, limiting their mobility and restraining them.",
+        "keywords": ["Spirit", "Wood", "Groundsource"],
+        "type": "Maneuver",
+        "range": "6",
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "effect": "Attack with the below Profile. If _Stuck_, the creature is _Stuck_ until they spend Grit equal to the Negate cost at the end of their turn. If _Restrained_, a creature is _Restrained_ until they Sacrifice an Action and spend Grit equal to the Negate cost, or deal [HEALTH NUMBERS] Damage in a single attack, targetting the vines ensnaring them.",
+        "special": "If the Target is in an _Overgrown_ space, increase the Cost to Negate by 1. If the space is also an Ensnaring Vine, this Attack has Advantage.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "_Hobble_ 1 AND _Impair_ 1 (1 _Reflex_)",
+            "_Hobble_ 1 AND _Impair_ 1 (1 _Reflex_)",
+            "_Hobble_ 1 AND _Impair_ 1 (1 _Reflex_)",
+            "_Stuck_ AND _Impair_ 1 (2 _Reflex_)",
+            "_Stuck_ AND _Impair_ 2 (2 _Reflex_)",
+            "_Restrained_ (2 _Reflex_)",
+            "_Restrained_ (3 _Reflex_)",
+            "_Restrained_ (3 _Reflex_)",
+            "_Restrained_ (4 _Reflex_)"
+          ]
+        }
       },
       {
         "name": "Overgrow",
-        "speed": "4",
+        "speed": "3",
         "ap": 1,
         "desc": "Thick plants begin to grow, creating thick foliage that limits movement.",
         "keywords": ["Spirit", "Wood", "Groundsource"],
@@ -356,6 +491,46 @@
         "boost": "1 _Momentum_: Area is instead Blast 1."
       },
       {
+        "name": "Animate Vine",
+        "speed": "4",
+        "ap": 1,
+        "desc": "You amplify the growth of a nearby plant, creating an aggressive vine capable of grappling foes.",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Maneuver",
+        "range": "6",
+        "target": "An _Overgrown_ space or living _Wood Source_.",
+        "move": "Reposition",
+        "effect": "Destroy the Target, then create an Animated Vine with [HEALTH STATS] in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_ or _Focus_ to have it use the Grab Action as if it had Reach 2, targeting the triggering creature.",
+        "boost": "2 _Momentum_: Remove the Enchant Keyword.\n\t2 _Momentum_: Your vine is covered in aggressive thorns or resembles a carnivorous plant. Increase the Cost of your Reaction by 1, but deal 3 Damage on a Graze, 4 Damage on a Hit, and 5 Damage on a Crit."
+      },
+      {
+        "name": "Nature's Blessing",
+        "speed": "4",
+        "ap": 2,
+        "desc": "You encourage growth in an area, creating fertile soil that plants readily grow in.",
+        "keywords": ["Spirit", "Wood", "Groundsource", "Enchant"],
+        "type": "Maneuver",
+        "range": "6",
+        "area": "Blast 2",
+        "move": "Step",
+        "effect": "Create a Nature's Blessing at the center of the Area with [HEALTH AND STATS]. If the Nature's Blessing is Destroyed, this _Enchant_ ends. While this Enchant Persists, Reduce the Cost of all _Wood_ Actions by 1 if they target something in this area. If the Nature's Blessing exists at the start of the Round, you may use the Overgrow, Bramble Wall, or Sprout Tree Action as a 0 AP, Speed 1 Action so long as it only targets spaces within the Area.",
+        "boost": "2 _Momentum_: If, at the end of the Round, at least half the spaces within the Area are _Overgrown_, Bramble Walls or _Tree_s you may Boost to increase the Area by 1 and [BUFF NATURE'S BLESSING]."
+      },
+      {
+        "name": "Sprout Tree",
+        "speed": "4",
+        "ap": 1,
+        "desc": "Plants grow taller and stronger, becoming small trees at a rapid rate.",
+        "keywords": ["Spirit", "Wood", "Groundsource"],
+        "type": "Maneuver",
+        "range": "4",
+        "target": "Any three independent _Overgrown_ spaces or _Tree_.",
+        "move": "Reposition",
+        "effect": "If you Target an _Overgrown_ space, turn it into a Size 1 _Tree_. If you target a _Tree_, you may increase its Source value by 1. Gain 1 _Grit_.",
+        "special": "If you Target a Size 1 _Tree_ who's Source value is 3, you may instead make it Size 2. If you Target a Size 2 Tree who's Source Value is 7, you may instead make it Size 3.",
+        "boost": "1 _Focus_: Instead of choosing three independent targets, you may instead target the same space multiple times."
+      },
+      {
         "name": "Nature's Veil",
         "keywords": ["Spirit", "Wood", "Evade"],
         "trigger": "A Phase Begins.",
@@ -363,7 +538,8 @@
         "type": "Defensive",
         "speed": "Reaction",
         "desc": "Nature clings closely to you, obscuring your movements and providing an obscuring veil.",
-        "effect": "For the rest of the Phase you are considered _Veiled_ whenever you are on _Overgrown_ Terrain."
+        "effect": "For the rest of the Phase you are considered _Veiled_ whenever you are on _Overgrown_ Terrain.",
+        "boost": "1 _Focus_: You may instead Target a creature within Range 4, granting them the Effect."
       }
     ]
   },

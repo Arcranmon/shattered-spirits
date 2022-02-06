@@ -37,6 +37,13 @@ This system is very much a work-in-progress, but is slowly getting more and more
   - Add more comprehensive descriptions for how each discipline plays and what their strengths and weaknesses are.
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
   - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.
+  - Add an additional 'bending' Discipline to each Element:
+    - Earth: ???
+    - Flame: Heat
+    - Metal: ???
+    - Water: ???
+    - Wind: Sound
+    - Wood: Poison
 - Styles are very underdeveloped compared to Spirits at the moment and need to be expanded to include a wider range of fighting styles and options.
 - Balance pass over Weapons and Styles to make sure they are competitive with Spirit options.
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
