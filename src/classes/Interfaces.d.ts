@@ -39,6 +39,7 @@ declare interface IDisciplineData {
   name: string;
   flavor: string;
   background: string;
+  role?: string; //Unoptional when all categories are updated.
   stances: IStanceData[];
   techniques: ITechData[];
 }
@@ -54,6 +55,19 @@ declare interface IWeaponData {
   range: string;
   special: string;
   speed: number;
+}
+
+declare interface IArmorData {
+  armor: number;
+  category: string;
+  dash: number;
+  endurance: number;
+  name: string;
+  reposition: number;
+  shift: number;
+  special?: string;
+  sprint: number;
+  step: number;
 }
 
 declare interface IGlossaryData {

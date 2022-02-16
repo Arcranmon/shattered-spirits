@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="page--title">{{ basics.Name }}</div>
+    <h2>{{ basics.Name }}</h2>
     <div class="page--description">{{ basics.Flavor }}</div>
     <show-cards :inputs="basics" job="Techniques" :collapse="false" />
   </div>

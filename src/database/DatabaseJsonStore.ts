@@ -8,7 +8,8 @@ import Water from "@/database/spirit_masteries/water.json";
 import Wind from "@/database/spirit_masteries/wind.json";
 import Wood from "@/database/spirit_masteries/wood.json";
 
-import Items from "@/database/items/weapons.json";
+import Weapons from "@/database/items/weapons.json";
+import Armors from "@/database/items/armor.json";
 
 import Glossary from "@/database/glossary/glossary.json";
 import Statuses from "@/database/glossary/statuses.json";
@@ -20,7 +21,7 @@ import Terrains from "@/database/glossary/terrain.json";
 import Resources from "@/database/glossary/resources.json";
 
 import { Module, VuexModule, Action, Mutation } from "vuex-module-decorators";
-import { Discipline, Technique, Weapon } from "@/class";
+import { Discipline, Technique, Armor, Weapon } from "@/class";
 
 @Module({
   name: "databaseJson",
@@ -36,9 +37,17 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getWeaponByCategory(): any {
     return (category: string) => {
-      return Items.filter(
+      return Weapons.filter(
         (x) => x.category.trim() === category.trim() && x.itemtype == "Weapon"
       ).map((x) => Weapon.Deserialize(<IWeaponData>x));
+    };
+  }
+
+  get getArmorByCategory(): any {
+    return (category: string) => {
+      return Armors.filter(
+        (x) => x.category.trim() === category.trim()
+      ).map((x) => Armor.Deserialize(<IArmorData>x));
     };
   }
 
@@ -67,7 +76,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getSpiritWeapons(): any {
     return () => {
-      return Items.filter((x) => x.itemtype == "Spirit Weapon").map((x) =>
+      return Weapons.filter((x) => x.itemtype == "Spirit Weapon").map((x) =>
         Weapon.Deserialize(<IWeaponData>x)
       );
     };

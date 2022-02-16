@@ -1,13 +1,13 @@
 <template>
   <div style="padding: 1em;">
-    <h3 class="page--header">Wind Spirits</h3>
-    <vue-simple-markdown :source="windText" />
+    <h1>Wind Spirits</h1>
+    <span v-html="windText" />
     <div
       class="wind--box"
       v-for="disc in windDiscs"
       :style="{ 'background-color': disc.Background }"
     >
-      <div class="page--title">{{ disc.Name }}</div>
+      <h2>{{ disc.Name }}</h2>
       <div class="page--description">{{ disc.Flavor }}</div>
       <show-cards :inputs="disc.Stances" job="Stances" color_category="Wind" />
       <show-cards
@@ -22,21 +22,19 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
-import WindText from "./wind.txt";
+import WindText from "@/database/text_files/spirit_descriptions/wind.txt";
 import { store } from "@/store";
 export default Vue.extend({
   name: "wind",
   components: {
     ShowCards,
   },
-  data: function () {
-    return {
-      windText: WindText,
-    };
-  },
   computed: {
     windDiscs: function () {
       return this.$store.getters.getSpiritMasteryByType("Wind");
+    },
+    windText: function () {
+      return this.$marked.parse(WindText);
     },
   },
 });

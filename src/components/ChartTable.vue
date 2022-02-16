@@ -51,33 +51,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.chart--wrapper {
-  text-align: center;
-  text-justify: center;
-}
-.chart--row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.chart--head {
-  border: $border--black-thin;
-  background-color: $color--chart-header;
-}
-.chart--head-right {
-  border-left: none;
-}
-.chart--cols {
-  border: $border--black-thin;
-  border-top: none;
-  display: flex;
-  flex-direction: column;
-  vertical-align: middle;
-  background-color: $color--off-white;
-}
-.chart--cols-right {
-  border-left: none;
-}
 .chart--format {
 }
 .Miss {

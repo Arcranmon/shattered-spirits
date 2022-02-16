@@ -1,13 +1,13 @@
 <template>
   <div style="padding: 1em;">
-    <h3 class="page--header">Metal Spirits</h3>
-    <vue-simple-markdown :source="metalText" />
+    <h1>Metal Spirits</h1>
+    <span v-html="metalText" />
     <div
       class="metal--box"
       v-for="disc in metalDiscs"
       :style="{ 'background-color': disc.Background }"
     >
-      <div class="page--title">{{ disc.Name }}</div>
+      <h2>{{ disc.Name }}</h2>
       <div class="page--description">{{ disc.Flavor }}</div>
       <show-cards :inputs="disc.Stances" job="Stances" color_category="Metal" />
       <show-cards
@@ -22,21 +22,19 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
-import MetalText from "./metal.txt";
+import MetalText from "@/database/text_files/spirit_descriptions/metal.txt";
 import { store } from "@/store";
 export default Vue.extend({
   name: "earth",
   components: {
     ShowCards,
   },
-  data: function () {
-    return {
-      metalText: MetalText,
-    };
-  },
   computed: {
     metalDiscs: function () {
       return this.$store.getters.getSpiritMasteryByType("Metal");
+    },
+    metalText: function () {
+      return this.$marked.parse(MetalText);
     },
   },
 });

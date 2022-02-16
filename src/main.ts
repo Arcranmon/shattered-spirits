@@ -6,13 +6,13 @@ import { store } from "./store";
 import App from "./App.vue";
 import "vuetify/dist/vuetify.min.css";
 import Vuetify from "vuetify";
-import VueSimpleMarkdown from "vue-simple-markdown";
-import "vue-simple-markdown/dist/vue-simple-markdown.css";
 import vuetify from "./plugins/vuetify";
+import marked from "marked";
 
 Vue.config.productionTip = false;
 Vue.use(Vuetify);
-Vue.use(VueSimpleMarkdown);
+
+Vue.prototype.$marked = marked;
 
 new Vue({
   components: { App },

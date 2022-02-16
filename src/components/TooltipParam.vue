@@ -1,16 +1,18 @@
 <template>
   <span
     ><span v-if="this.$store.getters.existsInAnyGlossary(input)"
-      ><v-tooltip class="markdown-body" bottom
+      ><v-tooltip bottom
         ><template v-slot:activator="{ on, attrs }">
-          <span v-bind="attrs" v-on="on"
-            ><vue-simple-markdown :source="formatInput" /></span></template
-        ><vue-simple-markdown
-          :source="this.$store.getters.getGlossaryItem(input)"
-      /></v-tooltip>
-    </span>
-    <span v-else><vue-simple-markdown :source="input" /></span>
-  </span>
+          <span
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(formatInput)" /></template
+        ><span
+          v-html="
+            $marked(this.$store.getters.getGlossaryItem(input))
+          " /></v-tooltip></span
+    ><span v-else v-html="$marked.parseInline(input)"
+  /></span>
 </template>
 
 <script>
@@ -47,22 +49,5 @@ export default Vue.extend({
   background-color: $color--off-white;
   border: $border--black-standard;
   width: 20%;
-}
-.markdown-body {
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  padding: none;
-  text-align: left;
-  color: black;
-  display: inline;
-  white-space: pre-wrap !important;
-  line-height: 1.25 !important;
-  margin-bottom: 0;
-}
-.markdown-body::before {
-  content: none;
-}
-.markdown-body::after {
-  content: none;
 }
 </style>

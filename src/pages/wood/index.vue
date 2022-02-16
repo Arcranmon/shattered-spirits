@@ -1,13 +1,13 @@
 <template>
   <div style="padding: 1em;">
-    <h3 class="page--header">Wood Spirits</h3>
-    <vue-simple-markdown :source="woodText" />
+    <h1>Wood Spirits</h1>
+    <span v-html="woodText" />
     <div
       class="wood--box"
       v-for="disc in woodDiscs"
       :style="{ 'background-color': disc.Background }"
     >
-      <div class="page--title">{{ disc.Name }}</div>
+      <h2>{{ disc.Name }}</h2>
       <div class="page--description">{{ disc.Flavor }}</div>
       <show-cards :inputs="disc.Stances" job="Stances" color_category="Wood" />
       <show-cards
@@ -22,21 +22,19 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
-import WoodText from "./wood.txt";
+import WoodText from "@/database/text_files/spirit_descriptions/wood.txt";
 import { store } from "@/store";
 export default Vue.extend({
   name: "wood",
   components: {
     ShowCards,
   },
-  data: function () {
-    return {
-      woodText: WoodText,
-    };
-  },
   computed: {
     woodDiscs: function () {
       return this.$store.getters.getSpiritMasteryByType("Wood");
+    },
+    woodText: function () {
+      return this.$marked.parse(WoodText);
     },
   },
 });

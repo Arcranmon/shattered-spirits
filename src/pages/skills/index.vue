@@ -1,12 +1,12 @@
 <template>
   <div style="padding: 1em;">
-    <h3 class="page--header">Skills</h3>
+    <h1>Skills</h1>
     <div
       class="skill--box"
       v-for="disc in skills"
       :style="{ 'background-color': disc.Background }"
     >
-      <div class="page--title">{{ disc.Name }}</div>
+      <h2>{{ disc.Name }}</h2>
       <div class="page--description">{{ disc.Flavor }}</div>
       <show-cards
         :inputs="disc.Stances"

@@ -6,6 +6,7 @@ class Discipline {
   private _name: string;
   private _flavor: string;
   private _background: string;
+  private _role: string;
   private _stances: Array<Stance>;
   private _techniques: Array<Technique>;
 
@@ -26,6 +27,9 @@ class Discipline {
   public get Name() {
     return this._name;
   }
+  public get Role() {
+    return this._role;
+  }
   public get Techniques() {
     return this._techniques;
   }
@@ -43,6 +47,7 @@ class Discipline {
     this._background = data.background || "white";
     this._name = data.name || "";
     this._flavor = data.flavor || "";
+    this._role = data.role || "";
     this._stances = [];
     this._techniques = [];
     if ("techniques" in data) {

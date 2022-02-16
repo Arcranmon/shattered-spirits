@@ -4,15 +4,21 @@ import Router from "vue-router";
 import MainMenu from "@/pages/main-menu/index.vue";
 import SpiritMenu from "@/pages/spirit-menu/index.vue";
 import EquipmentMenu from "@/pages/equipment-menu/index.vue";
+
+import Combat from "@/pages/combat/index.vue";
+import CharacterCreation from "@/pages/character-creation/index.vue";
+
 import Earth from "@/pages/earth/index.vue";
 import Flame from "@/pages/flame/index.vue";
 import Metal from "@/pages/metal/index.vue";
 import Water from "@/pages/water/index.vue";
 import Wind from "@/pages/wind/index.vue";
 import Wood from "@/pages/wood/index.vue";
+
+import Armor from "@/pages/armor/index.vue";
 import Weapons from "@/pages/weapons/index.vue";
+
 import BasicTechniques from "@/pages/basic-techs/index.vue";
-import Combat from "@/pages/combat/index.vue";
 import Skills from "@/pages/skills/index.vue";
 
 Vue.use(Router);
@@ -43,6 +49,14 @@ const r = new Router({
       },
     },
     {
+      path: "/character-creation",
+      component: CharacterCreation,
+      name: "character-creation",
+      meta: {
+        title: "Character Creation",
+      },
+    },
+    {
       path: "/spirits",
       component: SpiritMenu,
       name: "spirit-menu",
@@ -56,6 +70,14 @@ const r = new Router({
       name: "equipment-menu",
       meta: {
         title: "Equipment",
+      },
+    },
+    {
+      path: "/armor",
+      component: Armor,
+      name: "armor",
+      meta: {
+        title: "Armor",
       },
     },
     {

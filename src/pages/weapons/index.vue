@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 1em;">
     <div class="weapon--box" style="background-color: Chocolate;">
-      <div class="page--title">Unarmed</div>
+      <h2>Unarmed</h2>
       <show-cards
         :inputs="unarmed"
         job="Weapons"
@@ -10,31 +10,31 @@
       />
     </div>
     <div class="weapon--box" style="background-color: DarkGray;">
-      <div class="page--title">Ranged</div>
+      <h2>Ranged</h2>
       <show-cards :inputs="ranged" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: FireBrick;">
-      <div class="page--title">Blades</div>
+      <h2>Blades</h2>
       <show-cards :inputs="blades" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: darkgreen;">
-      <div class="page--title">Blunts</div>
+      <h2>Blunts</h2>
       <show-cards :inputs="blunts" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: DarkKhaki;">
-      <div class="page--title">Chains</div>
+      <h2>Chains</h2>
       <show-cards :inputs="chains" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: DarkSlateBlue;">
-      <div class="page--title">Lances</div>
+      <h2>Lances</h2>
       <show-cards :inputs="lances" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: #9d67b6;">
-      <div class="page--title">Shields</div>
+      <h2>Shields</h2>
       <show-cards :inputs="shields" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: darkorchid;">
-      <div class="page--title">Spirit Weapons</div>
+      <h2>Spirit Weapons</h2>
       <show-cards :inputs="spirit_weapons" job="Weapons" :collapse="false" />
     </div>
   </div>

@@ -3,9 +3,9 @@
     <span v-if="collapse">
       <v-expansion-panels flat style="padding: 3px;">
         <v-expansion-panel style="background-color: inherit;">
-          <v-expansion-panel-header class="page--sub-title expand--header">{{
-            dropName
-          }}</v-expansion-panel-header>
+          <v-expansion-panel-header class="expand--header"
+            ><h3>{{ dropName }}</h3></v-expansion-panel-header
+          >
           <v-expansion-panel-content class="expand--body">
             <v-container fluid>
               <v-row>
@@ -50,6 +50,9 @@
             <div class="card--box" v-if="job == 'Weapons'">
               <weapon-card :weapon="n" :color="color_category" />
             </div>
+            <div class="card--box" v-if="job == 'Armor'">
+              <armor-card :armor="n" :color="color_category" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -61,6 +64,7 @@ import Vue from "vue";
 import StanceCard from "./StanceCard.vue";
 import TechCard from "./TechCard.vue";
 import WeaponCard from "./WeaponCard.vue";
+import ArmorCard from "./ArmorCard.vue";
 
 export default Vue.extend({
   name: "show-cards",
@@ -90,6 +94,7 @@ export default Vue.extend({
   },
   components: {
     TechCard,
+    ArmorCard,
     StanceCard,
     WeaponCard,
   },

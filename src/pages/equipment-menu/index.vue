@@ -1,6 +1,11 @@
 <template>
-  <div style="text-align: center;">
-    <custom-button to="/weapons">Weapons</custom-button> <br />
+  <div>
+    <div style="text-align: center;">
+      <custom-button to="/armor">Armor</custom-button> <br />
+    </div>
+    <div style="text-align: center;">
+      <custom-button to="/weapons">Weapons</custom-button> <br />
+    </div>
   </div>
 </template>
 
