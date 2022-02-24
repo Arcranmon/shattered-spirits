@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 1em;">
-    <h1>Skills</h1>
+    <h1>Stratagem Skills</h1>
     <div
       class="skill--box"
       v-for="disc in skills"
@@ -11,13 +11,13 @@
       <show-cards
         :inputs="disc.Stances"
         job="Stances"
-        :color_category="disc.Category"
+        color_category="Skill"
         display_text="Styles"
       />
       <show-cards
         :inputs="disc.Techniques"
         job="Techniques"
-        :color_category="disc.Category"
+        color_category="Skill"
       />
     </div>
   </div>
@@ -28,7 +28,7 @@ import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
 import { store } from "@/store";
 export default Vue.extend({
-  name: "skill",
+  name: "stratagem-skills",
   components: {
     ShowCards,
   },
@@ -37,7 +37,7 @@ export default Vue.extend({
   },
   computed: {
     skills: function () {
-      return this.$store.getters.byDisciplineCategory("Skill");
+      return this.$store.getters.getStratagemSkills();
     },
   },
 });

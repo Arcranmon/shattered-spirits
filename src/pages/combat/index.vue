@@ -32,6 +32,10 @@
       <span
         v-html="$marked('**' + obstacle.keyword + '**: ' + obstacle.effect)"
       />
+      Class Roles: Striker (Close-Range Damage), Artillery (Long-Range Damage),
+      Controller (Moving Foes and Status Effects), Support (Buffing
+      Allies/Healing), Defender (Defensive actions, drawing aggro), Architect
+      (Battlefield manipulation), Skirmisher (Movement-heavy)
     </div>
   </div>
 </template>

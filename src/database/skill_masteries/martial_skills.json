@@ -1,0 +1,91 @@
+[
+  {
+    "category": "Skill",
+    "background": "darksalmon",
+    "name": "Dual Wielder",
+    "flavor": "You fight best with a weapon in either hand, allowing you to create a barrage of unavoidable strikes.",
+    "stances": [
+      {
+        "name": "Dual Weapon Style",
+        "desc": "Each of your weapons darts back and forth as if with a mind of its own, allowing you to strike with uncanny speed.",
+        "accumulate": "Whenever you strike an enemy with both of your Wielded Weapons in the same Round, gain 2 _Momentum_.",
+        "refresh": "2 _Reflex_, 1 _Focus_",
+        "effect": "Making additional Strikes in a Round costs half as much, so long as all Strikes have the Weapon Keyword and use a different Weapon, or make use of multiple Weapons for the Strike."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Dual Strike",
+        "desc": "A vicious attack, striking with two weapons in quick succession.",
+        "type": "Strike",
+        "speed": "Slower Weapon",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Separate One-Handed Weapons Wielded in either hand.",
+        "effect": "Immediately use the Quick Strike Action twice, using a different weapon for each Strike and declaring what weapon is being used before rolling the attack. The Damage from these Strikes is halved.",
+        "imbue": "1 _Momentum_. You may use the faster of the two Wielded Weapons to determine Speed.",
+        "boost": "1 _Momentum_. After rolling your first Attack, you may change which weapon it is using, so long as the target is within Range of the new weapon."
+      }
+    ]
+  },
+  {
+    "category": "Skill",
+    "background": "darkred",
+    "name": "Heavy Weapon Master",
+    "flavor": "A lesser warrior is controlled by the heavy weight of a large weapon; you have mastered it and honed it into a deadly pendulum.",
+    "stances": [
+      {
+        "name": "Executioner Style",
+        "desc": "Like wheat before a scythe, so are foes before your great weapon.",
+        "accumulate": "Whenever you defeat an enemy with a Heavy Melee Weapon, gain 2 _Momentum_.",
+        "refresh": "2 _Grit_",
+        "effect": "When you defeat an enemy with a Heavy Melee Weapon you may pay 1 _Momentum_ to deal damage to a creature within your Weapon's reach equal to any excess damage dealt to the defeated creature (2 _Reflex_). You may continue paying _Momentum_ to repeat this effect until there is no Damage remaining."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Pommel Strike",
+        "keywords": ["Weapon"],
+        "range": "Melee",
+        "ap": 1,
+        "type": "Maneuver",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
+        "speed": "2",
+        "move": "Step",
+        "desc": "You quickly attack with the base of your weapon, knocking a foe off-balance.",
+        "effect": "Attack with the below Profile.",
+        "imbue": "1 _Momentum_. Speed is instead Set-Up, and the Cost to Negate is increased by 1.",
+        "chart": {
+          "hit": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
+          "status": [
+            "",
+            "",
+            "",
+            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Grit_)",
+            "_Expose_ 2 (1 _Grit_)",
+            "_Expose_ 2 (1 _Grit_)",
+            "_Expose_ 2 (2 _Grit_)",
+            "_Expose_ 2 (2 _Grit_)"
+          ]
+        }
+      }
+    ]
+  }
+]

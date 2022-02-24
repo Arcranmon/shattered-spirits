@@ -39,19 +39,8 @@
     "speed": "See Movement",
     "range": "Self",
     "ap": 1,
-    "move": "The movement granted by Run determines its Speed, as follows:\n* Reposition: Speed 1\n* Shift: Speed 2\n* Sprint: Speed 3\n* Dash: Speed 4",
-    "boost": "1 _Momentum_. You may _Leap_ for a total of two spaces in this Movement."
-  },
-  {
-    "name": "Disengage",
-    "desc": "A careful reposition that never drops its guard.",
-    "type": "Move",
-    "keywords": ["Safe"],
-    "speed": "See Movement",
-    "range": "Self",
-    "ap": 1,
-    "move": "The movement granted by Disengage determines its Speed, as follows:\n* Step: Speed 2\n* Reposition: Speed 3\n* Shift: Speed 4",
-    "boost": "1 _Momentum_. You may _Leap_ for a single space in this Movement."
+    "move": "The movement granted by Run determines its Speed, as follows:\n\t&#8226;  <ins>Reposition:</ins> Speed 1\n\t&#8226;  <ins>Shift:</ins> Speed 2\n\t&#8226;  <ins>Sprint:</ins> Speed 3\n\t&#8226;  <ins>Dash:</ins> Speed 4",
+    "boost": "1 _Momentum_: You may _Leap_ your Step distance during this Movement. You may use this Boost multiple times.\n\t1 _Momentum_ or _Reflex_: Decrease the Movement granted by this Action by one step but add the _Safe_ Keyword."
   },
   {
     "name": "Interact",
@@ -74,7 +63,7 @@
     "ap": 1,
     "move": "None",
     "effect": "Change your current Stance or Style.",
-    "imbue": "Any 2 of _Momentum_ or _Focus_. Form Change is a Free Action."
+    "imbue": "Any 2 of _Momentum_ or _Focus_. Form Change is instead 0 AP."
   },
   {
     "name": "Draw",
@@ -88,26 +77,15 @@
     "special": "The Speed of Draw is equal to 1 + the total number of Hands of Equipment drawn or stowed. Reduce the cost to _Improvise_ this action by 2 if you are drawing into an Open Hand."
   },
   {
-    "name": "Evasive Maneuvers",
-    "desc": "Light on your feet, you prepare to dodge an incoming blow.",
-    "type": "Defensive",
-    "speed": "2",
-    "range": "Self",
-    "ap": 1,
-    "move": "Reposition",
-    "effect": "Gain 2 _Reflex_.",
-    "special": "Reduce the Cost to _Improvise_ this Action by 1."
-  },
-  {
     "name": "Prepare",
-    "desc": "You survey the battlefield, putting yourself in a prime position to strike.",
-    "type": "Defensive",
+    "desc": "You take evasive maneuvers, raise your guard, ready your mind, or look for an opening to help you win this battle.",
+    "type": "Maneuver",
     "speed": "2",
     "range": "Self",
     "ap": 1,
-    "move": "Reposition",
-    "effect": "Gain 1 _Momentum_.",
-    "special": "Reduce the Cost to _Improvise_ this Action by 2."
+    "move": "Step",
+    "effect": "Gain any 2 of _Grit_, _Focus_, _Reflex_, or _Momentum_, in any combination.",
+    "special": "Reduce the Cost to Improvise this Action by 2."
   },
   {
     "name": "Dodge",
@@ -119,17 +97,6 @@
     "speed": "Reaction",
     "range": "Self",
     "effect": "Force the attacker to reroll the attack. They must use the new result. You may Safe Move 1 after this Reaction."
-  },
-  {
-    "name": "Guard",
-    "desc": "You prepare your defenses, ready to knock away a strike.",
-    "type": "Defensive",
-    "speed": "3",
-    "range": "Self",
-    "ap": 1,
-    "move": "Reposition",
-    "effect": "Gain 2 _Grit_.",
-    "special": "Reduce the Cost to _Improvise_ this Action by 1."
   },
   {
     "name": "Deflect",
@@ -167,17 +134,6 @@
     "effect": "Immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_.",
     "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
     "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None."
-  },
-  {
-    "name": "Center",
-    "desc": "You calm your mind, focusing on the battle at hand.",
-    "type": "Defensive",
-    "speed": "3",
-    "range": "Self",
-    "ap": 1,
-    "move": "Reposition",
-    "effect": "Gain 2 _Focus_.",
-    "special": "Reduce the Cost to _Improvise_ this Action by 1."
   },
   {
     "name": "Elemental Contest",

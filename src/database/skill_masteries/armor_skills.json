@@ -1,0 +1,43 @@
+[
+  {
+    "category": "Skill",
+    "background": "grey",
+    "name": "Shield Master",
+    "flavor": "Your shield is an extension of your body, and none but the most determined attacks can make it past its defenses.",
+    "stances": [
+      {
+        "name": "Bastion Style",
+        "desc": "A fighting style centered around the use of a shield to defend oneself and others.",
+        "accumulate": "Whenever an ally uses your Block Token, gain 1 Momentum. This may only trigger once per Phase.",
+        "refresh": "_Grit_ 3",
+        "effect": "While you have a Shield Wielded you may choose to allow adjacent allies to spend your _Grit_ for Reactions. In addition, while you have a Shield Wielded, adjacent allies gain +1 Armor."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Iron Wall",
+        "desc": "Making use of a shield, you ready an unstoppable defense.",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "speed": "2",
+        "ap": 1,
+        "move": "Step",
+        "reqs": "Shield Wielded.",
+        "effect": "Gain 4 _Grit_.",
+        "special": "For the remainder of the Round, reduce the Attack Roll by 2 rather than 1 while using the Deflect Reaction."
+      },
+      {
+        "name": "Vigilant Defender",
+        "speed": "Reaction",
+        "desc": "With the defensive prowess granted by your shield, you take a blow meant for another.",
+        "keywords": ["Block"],
+        "type": "Defensive",
+        "reqs": "Shield Wielded.",
+        "cost": "2 _Grit_, X _Momentum_ (see Movement)",
+        "move": "1 _Momentum_ for Step, 2 _Momentum_ for Reposition, 3 _Momentum_ for Shift.",
+        "trigger": "An ally within the Movement you paid for is Attacked.",
+        "effect": "Immediately Move towards the ally by the shortest path possible, ending your move adjacent to the ally. Your ally takes only half of the damage from the triggering hit, while you take the other half."
+      }
+    ]
+  }
+]

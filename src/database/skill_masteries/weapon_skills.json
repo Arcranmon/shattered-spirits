@@ -1,0 +1,90 @@
+[
+  {
+    "background": "#f75b5b",
+    "name": "Blademaster",
+    "flavor": "You studied the blade.",
+    "stances": [
+      {
+        "name": "Axebreaker",
+        "desc": "You make use of the nimbleness of a blade to thwart slower weapons with ease.",
+        "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blade_ Weapon.",
+        "refresh": "_Grit_ 1, _Reflex_ 2",
+        "effect": "Reduce the Attack Roll of all Attacks with _Blunt_ Weapons that target you by 1 as long as you are Wielding a _Blade_ Weapon.",
+        "special": "You may use the Counter Reaction for no Cost when attacked with a _Blunt_ Weapon as long as you are Wielding a _Blade_ Weapon."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Lacerating Strike",
+        "desc": "You go for a quick strike that leaves a vicious wound that, while not immediately lethal, will bleed heavily.",
+        "type": "Strike",
+        "speed": "Weapon-1",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Light or Versatile Blade Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. Reduce the Damage by up to 3, and inflict _Bleed_ equal to that value (2 _Grit_ negates).",
+        "boost": "1 _Momentum_: Increase the Cost to Negate by 1, and inflict _Wound_ 1 as well."
+      }
+    ]
+  },
+  {
+    "background": "#767cda",
+    "name": "Lancer",
+    "flavor": "You studied the lance.",
+    "stances": [
+      {
+        "name": "Swordbreaker",
+        "desc": "You make use of the range of your lance to easily keep blades away.",
+        "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Lance_ Weapon.",
+        "refresh": "_Focus_ 1, _Grit_ 1, _Reflex_ 1",
+        "effect": "Reduce the Attack Roll of all Attacks with _Blade_ Weapons that target you by 1 as long as you are Wielding a _Lance_ Weapon.",
+        "special": "You may use the Counter Reaction for no Cost when attacked with a _Blade_ Weapon as long as you are Wielding a _Lance_ Weapon."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Lower Spear",
+        "desc": "You ready your weapon for an incoming charge, preparing to punish a foe's momentum.",
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "None",
+        "reqs": "Lance Weapon Wielded.",
+        "effect": "Make all spaces in a Side Burst X a Hazard, where X is your Lance Weapon's Reach. All Reactions using your Lance Weapon against a creature in these spaces cost 1 less and deal additional damage equal to half the number of spaces that creature moved this turn. All Reactions using your Lance Weapon cost 1 more against creatures not in these Hazard spaces. These Hazards are removed if you move or are no longer Wielding your Lance."
+      }
+    ]
+  },
+  {
+    "background": "#3b7a3e",
+    "name": "Warrior",
+    "flavor": "You studied the blunt.",
+    "stances": [
+      {
+        "name": "Lancebreaker",
+        "desc": "Your heavy weapon is well-suited for breaking through the feeble defenses of a spear.",
+        "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blunt_ Weapon.",
+        "refresh": "_Grit_ 2, _Reflex_ 1",
+        "effect": "Reduce the Attack Roll of all Attacks with _Lance_ Weapons that target you by 1 as long as you are Wielding a _Blunt_ Weapon.",
+        "special": "You may use the Counter Reaction for no Cost when attacked with a _Lance_ Weapon as long as you are Wielding a _Blunt_ Weapon."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Smashing Strike",
+        "desc": "A strike putting the full weight of your weapon to bear, leaving a foe slow to react.",
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "range": "Weapon",
+        "keywords": ["_Siege_"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. Increase the Cost to Negate by 1, and _Daze_ (2 _Focus_) on an 8+."
+      }
+    ]
+  }
+]

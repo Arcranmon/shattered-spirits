@@ -16,6 +16,10 @@
       <h2>Heavy Armor</h2>
       <show-cards :inputs="heavy" job="Armor" :collapse="false" />
     </div>
+    <div class="armor--box" style="background-color: #9d67b6;">
+      <h2>Shields</h2>
+      <show-cards :inputs="shields" job="Weapons" :collapse="false" />
+    </div>
   </div>
 </template>
 
@@ -40,6 +44,9 @@ export default Vue.extend({
     },
     heavy: function () {
       return this.$store.getters.getArmorByCategory("Heavy Armor");
+    },
+    shields: function () {
+      return this.$store.getters.getWeaponByCategory("Shield");
     },
   },
 });

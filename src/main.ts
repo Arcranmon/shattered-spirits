@@ -7,7 +7,7 @@ import App from "./App.vue";
 import "vuetify/dist/vuetify.min.css";
 import Vuetify from "vuetify";
 import vuetify from "./plugins/vuetify";
-import marked from "marked";
+import { marked } from "marked";
 
 Vue.config.productionTip = false;
 Vue.use(Vuetify);

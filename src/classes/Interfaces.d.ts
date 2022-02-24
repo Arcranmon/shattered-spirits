@@ -1,21 +1,21 @@
 declare interface ITechData {
-  ap: number;
+  ap?: number;
   area?: string;
   boost?: string;
-  cost: string;
+  cost?: string;
   damagetype?: string;
   desc: string;
   effect: string;
   imbue?: string;
-  keywords: Array<string>;
-  move: string;
+  keywords?: Array<string>;
+  move?: string;
   name: string;
   range?: string;
-  reqs: string;
-  special: string;
+  reqs?: string;
+  special?: string;
   speed: string;
   target?: string;
-  trigger: string;
+  trigger?: string;
   type: string;
   chart?: IChartData;
 }

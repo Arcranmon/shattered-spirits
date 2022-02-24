@@ -6,7 +6,6 @@
     <br />
     <custom-button to="/combat">Combat Rules</custom-button> <br />
     <custom-button to="/equipment">Equipment</custom-button> <br />
-    <custom-button to="/basics">Basic Techniques</custom-button> <br />
     <custom-button to="/skills">Skill Masteries</custom-button> <br />
     <custom-button to="/spirits">Spirit Masteries</custom-button> <br />
   </div>

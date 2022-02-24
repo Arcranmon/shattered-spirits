@@ -1,5 +1,8 @@
-import Skills from "@/database/skill_masteries/skills.json";
+import ArmorSkills from "@/database/skill_masteries/armor_skills.json";
 import BasicSkills from "@/database/skill_masteries/basic_skills.json";
+import MartialSkills from "@/database/skill_masteries/martial_skills.json";
+import StratagemSkills from "@/database/skill_masteries/stratagem_skills.json";
+import WeaponSkills from "@/database/skill_masteries/weapon_skills.json";
 
 import Earth from "@/database/spirit_masteries/earth.json";
 import Flame from "@/database/spirit_masteries/flame.json";
@@ -27,14 +30,6 @@ import { Discipline, Technique, Armor, Weapon } from "@/class";
   name: "databaseJson",
 })
 export class DatabaseJsonStore extends VuexModule {
-  get byDisciplineCategory(): any {
-    return (category: string) => {
-      return Skills.filter(
-        (x) => x.category.trim() === category.trim()
-      ).map((x) => Discipline.Deserialize(<IDisciplineData>x));
-    };
-  }
-
   get getWeaponByCategory(): any {
     return (category: string) => {
       return Weapons.filter(
@@ -54,6 +49,36 @@ export class DatabaseJsonStore extends VuexModule {
   get getBasicSkills(): any {
     return () => {
       return BasicSkills.map((x) => Technique.Deserialize(<ITechData>x));
+    };
+  }
+
+  get getWeaponSkills(): any {
+    return () => {
+      return WeaponSkills.map((x) =>
+        Discipline.Deserialize(<IDisciplineData>x)
+      );
+    };
+  }
+
+  get getArmorSkills(): any {
+    return () => {
+      return ArmorSkills.map((x) => Discipline.Deserialize(<IDisciplineData>x));
+    };
+  }
+
+  get getMartialSkills(): any {
+    return () => {
+      return MartialSkills.map((x) =>
+        Discipline.Deserialize(<IDisciplineData>x)
+      );
+    };
+  }
+
+  get getStratagemSkills(): any {
+    return () => {
+      return StratagemSkills.map((x) =>
+        Discipline.Deserialize(<IDisciplineData>x)
+      );
     };
   }
 

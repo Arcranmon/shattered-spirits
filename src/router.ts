@@ -2,24 +2,28 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import MainMenu from "@/pages/main-menu/index.vue";
-import SpiritMenu from "@/pages/spirit-menu/index.vue";
-import EquipmentMenu from "@/pages/equipment-menu/index.vue";
 
 import Combat from "@/pages/combat/index.vue";
 import CharacterCreation from "@/pages/character-creation/index.vue";
 
-import Earth from "@/pages/earth/index.vue";
-import Flame from "@/pages/flame/index.vue";
-import Metal from "@/pages/metal/index.vue";
-import Water from "@/pages/water/index.vue";
-import Wind from "@/pages/wind/index.vue";
-import Wood from "@/pages/wood/index.vue";
+import SpiritMenu from "@/pages/spirits/spirit-menu/index.vue";
+import Earth from "@/pages/spirits/earth/index.vue";
+import Flame from "@/pages/spirits/flame/index.vue";
+import Metal from "@/pages/spirits/metal/index.vue";
+import Water from "@/pages/spirits/water/index.vue";
+import Wind from "@/pages/spirits/wind/index.vue";
+import Wood from "@/pages/spirits/wood/index.vue";
 
-import Armor from "@/pages/armor/index.vue";
-import Weapons from "@/pages/weapons/index.vue";
+import EquipmentMenu from "@/pages/equipment/equipment-menu/index.vue";
+import Armor from "@/pages/equipment/armor/index.vue";
+import Weapons from "@/pages/equipment/weapons/index.vue";
 
-import BasicTechniques from "@/pages/basic-techs/index.vue";
-import Skills from "@/pages/skills/index.vue";
+import SkillsMenu from "@/pages/skills/skills-menu/index.vue";
+import BasicSkills from "@/pages/skills/basic-skills/index.vue";
+import ArmorSkills from "@/pages/skills/armor-skills/index.vue";
+import MartialSkills from "@/pages/skills/martial-skills/index.vue";
+import StratagemSkills from "@/pages/skills/stratagem-skills/index.vue";
+import WeaponSkills from "@/pages/skills/weapon-skills/index.vue";
 
 Vue.use(Router);
 
@@ -38,14 +42,6 @@ const r = new Router({
       name: "main-menu",
       meta: {
         title: "Shattered Spirits",
-      },
-    },
-    {
-      path: "/basics",
-      component: BasicTechniques,
-      name: "basic-techniques",
-      meta: {
-        title: "Basic Techniques",
       },
     },
     {
@@ -146,10 +142,50 @@ const r = new Router({
     },
     {
       path: "/skills",
-      component: Skills,
+      component: SkillsMenu,
       name: "skills",
       meta: {
         title: "Skills",
+      },
+    },
+    {
+      path: "/basic-skills",
+      component: BasicSkills,
+      name: "basic-skills",
+      meta: {
+        title: "Basic Skills",
+      },
+    },
+    {
+      path: "/armor-skills",
+      component: ArmorSkills,
+      name: "armor-skills",
+      meta: {
+        title: "Armor Skills",
+      },
+    },
+    {
+      path: "/martial-skills",
+      component: MartialSkills,
+      name: "martial-skills",
+      meta: {
+        title: "Martial Skills",
+      },
+    },
+    {
+      path: "/stratagem-skills",
+      component: StratagemSkills,
+      name: "stratagem-skills",
+      meta: {
+        title: "Stratagem Skills",
+      },
+    },
+    {
+      path: "/weapon-skills",
+      component: WeaponSkills,
+      name: "weapon-skills",
+      meta: {
+        title: "Weapon Skills",
       },
     },
   ],

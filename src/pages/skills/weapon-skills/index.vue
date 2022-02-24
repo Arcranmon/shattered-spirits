@@ -1,19 +1,23 @@
 <template>
   <div style="padding: 1em;">
-    <h1>Metal Spirits</h1>
-    <span v-html="metalText" />
+    <h1>Weapon Skills</h1>
     <div
-      class="metal--box"
-      v-for="disc in metalDiscs"
+      class="skill--box"
+      v-for="disc in skills"
       :style="{ 'background-color': disc.Background }"
     >
       <h2>{{ disc.Name }}</h2>
       <div class="page--description">{{ disc.Flavor }}</div>
-      <show-cards :inputs="disc.Stances" job="Stances" color_category="Metal" />
+      <show-cards
+        :inputs="disc.Stances"
+        job="Stances"
+        color_category="Skill"
+        display_text="Styles"
+      />
       <show-cards
         :inputs="disc.Techniques"
         job="Techniques"
-        color_category="Metal"
+        color_category="Skill"
       />
     </div>
   </div>
@@ -22,26 +26,25 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
-import MetalText from "@/database/text_files/spirit_descriptions/metal.txt";
 import { store } from "@/store";
 export default Vue.extend({
-  name: "earth",
+  name: "skill",
   components: {
     ShowCards,
   },
+  data: function () {
+    return {};
+  },
   computed: {
-    metalDiscs: function () {
-      return this.$store.getters.getSpiritMasteryByType("Metal");
-    },
-    metalText: function () {
-      return this.$marked.parse(MetalText);
+    skills: function () {
+      return this.$store.getters.getWeaponSkills();
     },
   },
 });
 </script>
 
 <style scoped lang="scss">
-.metal--box {
+.skill--box {
   border-radius: 1em;
   border: $border--black-standard;
   margin-top: 1em;

@@ -9,10 +9,6 @@
         :color_category="red"
       />
     </div>
-    <div class="weapon--box" style="background-color: DarkGray;">
-      <h2>Ranged</h2>
-      <show-cards :inputs="ranged" job="Weapons" :collapse="false" />
-    </div>
     <div class="weapon--box" style="background-color: FireBrick;">
       <h2>Blades</h2>
       <show-cards :inputs="blades" job="Weapons" :collapse="false" />
@@ -29,9 +25,9 @@
       <h2>Lances</h2>
       <show-cards :inputs="lances" job="Weapons" :collapse="false" />
     </div>
-    <div class="weapon--box" style="background-color: #9d67b6;">
-      <h2>Shields</h2>
-      <show-cards :inputs="shields" job="Weapons" :collapse="false" />
+    <div class="weapon--box" style="background-color: DarkGray;">
+      <h2>Ranged</h2>
+      <show-cards :inputs="ranged" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: darkorchid;">
       <h2>Spirit Weapons</h2>
@@ -67,9 +63,6 @@ export default Vue.extend({
     },
     unarmed: function () {
       return this.$store.getters.getWeaponByCategory("Unarmed");
-    },
-    shields: function () {
-      return this.$store.getters.getWeaponByCategory("Shield");
     },
     spirit_weapons: function () {
       return this.$store.getters.getSpiritWeapons();

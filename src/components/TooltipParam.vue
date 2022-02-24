@@ -4,6 +4,7 @@
       ><v-tooltip bottom
         ><template v-slot:activator="{ on, attrs }">
           <span
+            style="white-space: pre-wrap;"
             v-bind="attrs"
             v-on="on"
             v-html="$marked.parseInline(formatInput)" /></template
@@ -11,7 +12,10 @@
           v-html="
             $marked(this.$store.getters.getGlossaryItem(input))
           " /></v-tooltip></span
-    ><span v-else v-html="$marked.parseInline(input)"
+    ><span
+      style="white-space: pre-wrap;"
+      v-else
+      v-html="$marked.parseInline(input)"
   /></span>
 </template>
 

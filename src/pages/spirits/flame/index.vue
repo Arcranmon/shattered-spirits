@@ -1,19 +1,22 @@
 <template>
   <div style="padding: 1em;">
-    <h1>Wind Spirits</h1>
-    <span v-html="windText" />
+    <h1>Flame Spirits</h1>
+    <span v-html="flameText" />
     <div
-      class="wind--box"
-      v-for="disc in windDiscs"
+      class="fire--box"
+      v-for="disc in flameDiscs"
       :style="{ 'background-color': disc.Background }"
     >
       <h2>{{ disc.Name }}</h2>
+      <div class="page--description">
+        <b>{{ disc.Role }}</b>
+      </div>
       <div class="page--description">{{ disc.Flavor }}</div>
-      <show-cards :inputs="disc.Stances" job="Stances" color_category="Wind" />
+      <show-cards :inputs="disc.Stances" job="Stances" color_category="Flame" />
       <show-cards
         :inputs="disc.Techniques"
         job="Techniques"
-        color_category="Wind"
+        color_category="Flame"
       />
     </div>
   </div>
@@ -22,26 +25,26 @@
 <script>
 import Vue from "vue";
 import ShowCards from "@/components/ShowCards.vue";
-import WindText from "@/database/text_files/spirit_descriptions/wind.txt";
+import FlameText from "@/database/text_files/spirit_descriptions/flame.txt";
 import { store } from "@/store";
 export default Vue.extend({
-  name: "wind",
+  name: "flame",
   components: {
     ShowCards,
   },
   computed: {
-    windDiscs: function () {
-      return this.$store.getters.getSpiritMasteryByType("Wind");
+    flameDiscs: function () {
+      return this.$store.getters.getSpiritMasteryByType("Flame");
     },
-    windText: function () {
-      return this.$marked.parse(WindText);
+    flameText: function () {
+      return this.$marked.parse(FlameText);
     },
   },
 });
 </script>
 
 <style scoped lang="scss">
-.wind--box {
+.fire--box {
   border-radius: 1em;
   border: $border--black-standard;
   margin-top: 1em;
