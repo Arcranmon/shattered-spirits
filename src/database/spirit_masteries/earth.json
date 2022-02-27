@@ -11,7 +11,7 @@
         "accumulate": "At Refresh, gain 1 _Momentum_ for every adjacent Earthen Barricade beyond the first, to a maximum of 2.",
         "refresh": "_Grit_ 3",
         "effect": "Adjacent Earthen Barriers become _Sturdy_.",
-        "special": "Whenever you are adjacent to an Earthen Barricade and are Attacked, you may pay 1 _Grit_ as a Reaction to Destroy the Earthen Barricade. Use the Deflect Reaction at no Cost and gain 1 Armor against the triggering Attack."
+        "special": "Whenever you are adjacent to an Earthen Barricade and are Attacked, you may Destroy the Earthen Barricade. Use the Deflect Reaction at no Cost and gain 1 Armor against the triggering Attack."
       },
       {
         "name": "Roiling Stance",
@@ -19,7 +19,7 @@
         "accumulate": "Gain 1 _Momentum_ for every hostile creature beyond the first in your Burst at Refresh, up to a maximum of 3.",
         "refresh": "_Grit_ 1, _Focus_ 1",
         "effect": "Create a Burst 2 centered on you that moves with you. Creatures treat the spaces in this Burst around you as _Rough_.",
-        "special": "Whenever you _Expose_ a creature within the Burst created by this effect you may pay 1 _Momentum_ to instead inflict _Prone_ (_Reflex_ negates)."
+        "special": "Whenever you inflict _Expose_ or _Hobble_ on a creature within the Burst created by this effect you may pay 1 _Momentum_ to instead inflict _Prone_, using the original Cost to Negate."
       },
       {
         "name": "Sculptor Stance",
@@ -63,13 +63,13 @@
             "",
             "_Expose_ 1 (1 _Reflex_)",
             "_Expose_ 1 (1 _Reflex_)",
-            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
-            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_), _Break_ (2 _Focus_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_), _Break_ (2 _Focus_)"
+            "_Expose_ 1 AND _Hobble_ 1 (2 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (2 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_), _Break_ (2 _Focus_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_), _Break_ (2 _Focus_)"
           ]
         }
       },
@@ -83,7 +83,7 @@
         "ap": 1,
         "move": "Step",
         "effect": "Attack with the below Profile. Immediately after resolving the attack make a space adjacent to the target _Jagged_.",
-        "boost": "1 _Momentum_. This attack becomes _Accurate_.",
+        "boost": "1 _Momentum_. This attack becomes _Accurate_ and you may instead create an _Earthen Barricade_.",
         "chart": {
           "hit": [
             "Miss",
@@ -109,8 +109,8 @@
             "",
             "_Bleed_ 1 (1 _Reflex_)",
             "_Bleed_ 1 (1 _Reflex_)",
-            "_Bleed_ 2 (1 _Reflex_)",
-            "_Bleed_ 2 (2 _Reflex_)"
+            "_Bleed_ 1x2 (2 _Reflex_)",
+            "_Bleed_ 1x2 (2 _Reflex_)"
           ]
         }
       },
@@ -124,8 +124,9 @@
         "ap": 1,
         "move": "Step",
         "target": "A Size 1 creature adjacent to at least two _Earthen Feature_s.",
-        "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_. On a Hit or Crit, _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 4 _Grit_ on their turn. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Reflex_.",
+        "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_s. On a Hit or Crit, _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 4 _Grit_ on their turn. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Reflex_ in this way.",
         "special": "If there are four adjacent _Earthen Features_: Either this Attack is _Accurate_, or you may target a Size 2 creature. Destroy all _Earthen Feature_s used for this Attack.",
+        "boost": "1 _Grit_, 2 _Momentum_: Add _Groundsource_. You may resolve the normal Effect without any _Earthen Feature_s.",
         "chart": {
           "hit": [
             "Miss",
@@ -147,11 +148,11 @@
             "",
             "",
             "",
-            "_Entomb_ (1 _Reflex_)",
-            "_Entomb_ (1 _Reflex_)",
             "_Entomb_ (2 _Reflex_)",
             "_Entomb_ (2 _Reflex_)",
             "_Entomb_ (3 _Reflex_)",
+            "_Entomb_ (3 _Reflex_)",
+            "_Entomb_ (4 _Reflex_)",
             "_Entomb_ (4 _Reflex_)"
           ]
         }
@@ -189,11 +190,11 @@
             "",
             "",
             "",
-            "_Expose_ 1 (1 _Reflex_)",
-            "_Expose_ 1 (1 _Reflex_)",
-            "_Expose_ 1 (1 _Reflex_)",
-            "_Prone (2 _Reflex_)",
-            "_Prone (2 _Reflex_)"
+            "_Hobble_ 1 (1 _Reflex_)",
+            "_Hobble_ 1 (1 _Reflex_)",
+            "_Hobble_ 1 (1 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)"
           ]
         }
       },
@@ -206,12 +207,12 @@
         "type": "Maneuver",
         "area": "Line 4",
         "move": "Step",
-        "effect": "The area immediately becomes _Rough_ and _Jagged_. Any character in the area must spend 1 _Reflex_ or gain _Hobble_ 1.",
+        "effect": "The area immediately becomes _Rough_ and _Jagged_. Any character in the area must spend 1 _Reflex_ or gain _Hobble_ 1x2.",
         "boost": "1 _Momentum_. Place another Line 4 connected to the initial area."
       },
       {
         "name": "Tremors",
-        "desc": "The Earthbonded shakes the earth around them, making a sure footing impossible.",
+        "desc": "The earthbound shakes the earth around them, making a sure footing impossible.",
         "type": "Maneuver",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "speed": "4",
@@ -239,13 +240,13 @@
             "",
             "",
             "",
-            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
-            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
-            "_Expose_ 1 AND _Hobble_ 1 (1 _Reflex_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
-            "_Expose_ 2 AND _Prone_ (2 _Reflex_)",
-            "_Expose_ 2, _Prone_ AND _Stagger_ (3 _Reflex_)",
-            "_Expose_ 2, _Prone_ AND _Stagger_ (3 _Reflex_)"
+            "_Expose_ 1 AND _Hobble_ 1 (2 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (2 _Reflex_)",
+            "_Expose_ 1 AND _Hobble_ 1 (2 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_)",
+            "_Expose_ 2 AND _Prone_ (3 _Reflex_)",
+            "_Expose_ 2, _Prone_ (3 _Reflex_), _Break_ (1 _Focus_)",
+            "_Expose_ 2, _Prone_(3 _Reflex_), _Break_ (1 _Focus_)"
           ]
         }
       },
@@ -259,7 +260,7 @@
         "range": "8",
         "area": "Cone 2",
         "move": "Shift",
-        "effect": "The target Area becomes _Rough_. If a Size 1 creature moves into a space with Quicksand they must spend 1 _Reflex_. If a creature spends _Reflex_, they may move through Quicksand for the rest of the turn without penalty. If they do not spend _Skill_, they sink into the Quicksand and are _Restrained_ until they _Sacrifice_ an Action and spend _Reflex_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without spending Skill. A creature _Restrained_ by Quicksand takes 3 True Damage at the end of the Round. A single space of Quicksand may only have one creature _Restrained_ at a time.",
+        "effect": "The target Area becomes _Rough_. If a Size 1 creature moves into a space with Quicksand they must spend 1 _Reflex_. If a creature spends _Reflex_, they may move through Quicksand for the rest of the turn without penalty. If they do not spend _Reflex_, they sink into the Quicksand and are _Restrained_ until they _Sacrifice_ an Action and spend 2 _Grit_ or _Reflex_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without any Cost. A creature _Restrained_ by Quicksand takes 3 True Damage at the end of the Round. A single space of Quicksand may only have one creature _Restrained_ at a time.",
         "special": "A character may only have three instances of Quickand at a time, regardless of their size.",
         "boost": "2 _Momentum_. You instead create the Quicksand in a Blast 1 area. Quicksand now triggers off Size 2 creatures as well."
       },
@@ -271,7 +272,7 @@
         "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "target": "A Size 1 _Earthen Feature_.",
-        "range": "5",
+        "range": "6",
         "move": "Reposition",
         "effect": "Draw up to a Line 5 from a Target within Range and move it to the end of the Line. Any creatures in the Line are moved to the end of the Line unless they spend 1 _Reflex_ or 2 _Grit_.\n&#8226; If they spend _Reflex_, they may Move 1 out of the Line. If they cannot Move out of the Line, they cannot spend _Reflex_ in this way.\n&#8226; If they spend _Grit_, they are not moved and the Feature is instead placed adjacent to them.\nIf a creature Immune to being moved is in the Line, instead place the _Earthen Feature_ adjacent to them.",
         "boost": "2 _Momentum_. Target is: A Size 2 Earthen Feature or three Size 1 Earthen Features. If you move a Size 2 Earthen Feature, it instead costs 3 _Grit_ to not be moved. Any creatures moved take 3 Damage."
@@ -285,8 +286,7 @@
         "type": "Maneuver",
         "area": "Arc 3",
         "move": "Reposition",
-        "effect": "Create an Earthen Barricade in all spaces within the area. Any creatures in these spaces are immediately moved to an adjacent space of their choice. Gain 1 _Grit_.",
-        "boost": "1 _Momentum_. Creatures of your choice moved by this ability gain _Expose_ 1 (1 _Reflex_)."
+        "effect": "Gain 1 _Grit_. Create an Earthen Barricade in all spaces within the area. Any creatures in these spaces are immediately moved to an adjacent space of their choice. Creatures of your choice moved by this ability gain _Expose_ 1 or _Impair_ 1 (1 _Reflex_)."
       },
       {
         "name": "Earthen Shield",
@@ -297,7 +297,7 @@
         "range": "3",
         "cost": "1 _Momentum_, 2 _Grit_",
         "trigger": "You or a creature within range is Attacked.",
-        "effect": "Create an Earthen Barricade adjacent to the triggering creature. Reduce the Attack Roll by 1, and grant the triggering creature 1 Armor against the triggering Attack."
+        "effect": "Create an _Earthen Barricade_ adjacent to the triggering creature. Reduce the Attack Roll by 1, and grant the triggering creature 1 Armor against the triggering Attack."
       },
       {
         "name": "Earth Slide",
@@ -308,12 +308,12 @@
         "type": "Move",
         "range": "Self",
         "move": "Shift",
-        "effect": "You may make the space you being your Move from _Rough_.",
+        "effect": "You may make the space you begin your Move in _Rough_.",
         "boost": "X _Momentum_. Make spaces additional spaces you move through _Rough_, at a rate of 1 _Momentum_ per 3 spaces."
       },
       {
         "name": "Burrow",
-        "speed": "4",
+        "speed": "3",
         "ap": 1,
         "desc": "The Earthbonded moves through the earth like a mole, safely reaching their destination.",
         "keywords": ["Spirit", "Earth", "Safe", "Groundsource"],
@@ -321,7 +321,8 @@
         "cost": "1 _Momentum_",
         "range": "Self",
         "move": "Shift",
-        "effect": "This Movement ignores all Terrain and Obstacles."
+        "effect": "This Movement ignores all Terrain and Obstacles.",
+        "imbue": "1 _Momentum_: Instead, Speed is 4 and Movement is Sprint."
       }
     ]
   },
@@ -335,7 +336,7 @@
         "name": "Colossus Stance",
         "desc": "The Colossus specializes in heavy armor made of stone, limiting mobility but providing unparalleled defense.",
         "refresh": "_Grit_ 3, 2 _Ablative Armor_",
-        "effect": "At Refresh, you may choose to become _Slowed_ for the round. If you do, while you have any _Ablative Armor_, gain Resistance to all damage originating from 4 or more spaces away, but you are _Slowed_.",
+        "effect": "At Refresh, you may choose to gain _Hobble_ 1x3. If you do, while you have any _Ablative Armor_, gain Resistance to all damage originating from 4 or more spaces away, but you are _Slowed_.",
         "special": "If you have an Earth Enchant active at Refresh, instead gain 3 _Ablative Armor_."
       },
       {
@@ -343,14 +344,14 @@
         "desc": "The Rubble Stance creates stones only to destroy them, using the rubble for enhanced mobility.",
         "accumulate": "Gain 1 _Momentum_ every time you Destroy a Boulder.",
         "refresh": "_Focus_ 1, _Grit_ 2",
-        "effect": "Every time you Destroy a Boulder, you may immediately Move 1 in any direction. Every time you Destroy a Boulder, you may deal 2 damage to all adjacent creatures, excluding yourself."
+        "effect": "Every time you Destroy a Boulder, you may immediately Move 1 in any direction. Every time you Destroy a Boulder, you may deal 2 Damage to all adjacent creatures, excluding yourself."
       },
       {
         "name": "Siege Stance",
         "desc": "Flinging boulders is a combat staple of Earthbonded, but some are true masters of it, flinging boulders in precise arcs as soon as they are formed.",
         "accumulate": "Every time you take an Action that moves or creates a Boulder, gain 2 _Momentum_.",
         "refresh": "_Grit_ 1",
-        "effect": "Once per round in the Plotting phase, you may change the speed of an Action that creates a Boulder to Set-Up and Attach it to an action that targets a Boulder.",
+        "effect": "Once per round in the Plotting phase, you may change the speed of an Action that creates a Boulder to Set-Up and Attach it to an action that Targets a Boulder.",
         "special": "When you take the Stone Strike or Boulder Throw Action, instead of resolving it at its normal Speed, you may place a Hazard within Range 8. Stone Strike places a Cone 2 Hazard, while Boulder Throw places a Blast X, where X is the Size of the Boulder. At the end of the next Phase, resolve the Attack with Advantage in all Hazard spaces and, if using Boulder Throw, place it the Boulder used for the Action in the center of the Blast."
       }
     ],
@@ -358,7 +359,7 @@
       {
         "name": "Chip Damage",
         "keywords": ["Spirit", "Earth", "Punish"],
-        "trigger": "You take Damage while having any _Ablative Armor_ created by an Earth Technique.",
+        "trigger": "You take Damage while having any _Ablative Armor_ created by an Earth Technique or Stance.",
         "cost": "1 _Momentum_",
         "area": "Burst 1",
         "type": "Strike",
@@ -429,13 +430,13 @@
             "",
             "",
             "",
-            "_Push_ 1 (1 _Grit_)",
-            "_Push_ 1 (1 _Grit_)",
-            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_ or 1 _Reflex_)",
+            "_Push_ 1 (1 _Grit_ or 1 _Reflex_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (2 _Grit_)",
-            "_Push_ 2 (2 _Grit_)"
+            "_Push_ 2 (2 _Grit_)",
+            "_Push_ 2 (3 _Grit_)"
           ]
         }
       },
@@ -449,7 +450,7 @@
         "ap": 1,
         "move": "Step",
         "reqs": "_Versatile_ or _Heavy_ Weapon Wielded.",
-        "effect": "Attack using your weapon's Profile. If you Hit or Crit, you may add _Push_ 1 (1 _Grit_) to the attack. Regardless, create a Boulder in a space Adjacent to you."
+        "effect": "Attack using your weapon's Profile. If you Hit or Crit, you may add _Push_ 1 (1 _Grit_) to the attack. Regardless, create a Boulder in a space Adjacent to the Target."
       },
       {
         "name": "Stone Strike",
@@ -526,9 +527,9 @@
             "",
             "",
             "",
-            "",
             "_Stagger_ (1 _Grit_)",
             "_Stagger_ (1 _Grit_)",
+            "_Stagger_ (2 _Grit_)",
             "_Stagger_ (2 _Grit_)",
             "_Daze_ (2 _Grit_)",
             "_Daze_ (2 _Grit_)"
@@ -544,7 +545,7 @@
         "type": "Strike",
         "move": "Step",
         "speed": "5",
-        "desc": "The Earthbound siezes control of all nearby boulders, flinging them in a great wave.",
+        "desc": "The Earthbound seizes control of all nearby boulders, flinging them in a great wave.",
         "effect": "Move all Targets 1 space in the same direction. If this would move the Target into an occupied space, Attack with the below profile. If this attack Pushes and the Target has remaining spaces to move, continue moving the Target.",
         "boost": "X _Momentum_. For every Momentum spent, move all Targets 1 additional space, deal 1 additional damage, and increase this Attack's Push by 1.",
         "chart": {
@@ -566,14 +567,14 @@
             "",
             "",
             "",
-            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
-            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
-            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
-            "_Push_ 1 (1 _Focus_ OR 1 _Grit_)",
-            "_Push_ 1 (2 _Focus_ OR 2 _Grit_)",
-            "_Push_ 1 (2 _Focus_ OR 2 _Grit_)",
-            "_Push_ 1 (3 _Focus_ OR 3 _Grit_)",
-            "_Push_ 1 (3 _Focus_ OR 3 _Grit_)"
+            "_Push_ 1 (1 _Reflex_ OR 1 _Grit_)",
+            "_Push_ 1 (1 _Reflex_ OR 1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (1 _Grit_)",
+            "_Push_ 1 (2 _Grit_)",
+            "_Push_ 1 (2 _Grit_)",
+            "_Push_ 2 (3 _Grit_)",
+            "_Push_ 2 (3 _Grit_)"
           ]
         }
       },
@@ -588,7 +589,7 @@
         "speed": "6",
         "desc": "A boulder within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
         "effect": "Attack with the below Profile in a Burst 1 around the Target, then Destroy the Target.",
-        "boost": "2 _Momentum_. You may choose a Size 2 Boulder. Instead of Destroying the Boulder, replace it with 4 Size 1 Boulders, then move each Boulder one space diagonally away from the previous Boulder's center.",
+        "boost": "2 _Momentum_. You may choose a Size 2 Boulder. Instead of Destroying the Boulder, replace it with 4 Size 1 Boulders, then move each Boulder one space diagonally away from the previous Boulder's center. Increase the Cost to Negate by 1.",
         "chart": {
           "hit": [
             "Miss",
@@ -613,9 +614,9 @@
             "",
             "_Daze_ (1 _Focus_)",
             "_Daze_ (1 _Focus_)",
-            "_Daze_ (1 _Focus_)",
             "_Daze_ (2 _Focus_)",
-            "_Daze_ (2 _Focus_)"
+            "_Daze_ (2 _Focus_)",
+            "_Daze_ (3 _Focus_)"
           ]
         }
       },
@@ -627,7 +628,7 @@
         "type": "Maneuver",
         "move": "None",
         "speed": "2",
-        "desc": "A fist of cobblestones forms around your hand, making unnarmed strikes hit like an avalanche.",
+        "desc": "A fist of cobblestones forms around your hand, making unarmed strikes hit like an avalanche.",
         "effect": "Equip the Stone Gauntlet Spirit Weapon in your Open Hand. This Enchant ends if you have no Stone Gauntlets Equipped.",
         "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Stone Gauntlet in each."
       },
@@ -641,7 +642,7 @@
         "move": "Reposition",
         "speed": "4",
         "desc": "A slab of stone becomes a barrier, defending against ranged attacks.",
-        "effect": "Create a Line 2 Boulder in unoccupied spaces within Range. At the start of each of your Turns, you may Move the Stone Shield up to 3 spaces, and rotate it up to 90 degrees. The Stone Shield can move through occupied spaces, but may not end its movement there.",
+        "effect": "Create a Line 2 Boulder in unoccupied spaces within Range. At the start of each of your Turns, you may Move the Stone Shield up to 3 spaces, and turn it up to one space. The Stone Shield can move through occupied spaces, but may not end its movement there.",
         "special": "You may end this Enchant at the end of any of your turns and immediately fire the Stone Shield forward. Immediately use the Boulder Throw Technique with the Stone Shield, ignoring the typical Range of the ability.",
         "boost": "2 _Momentum_. Instead create a Line 3 Boulder."
       },
@@ -691,12 +692,12 @@
             "_Push_ 1 (1 _Grit_)",
             "_Push_ 1 (1 _Grit_)",
             "_Push_ 1 (1 _Grit_)",
-            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
-            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
-            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
-            "_Push_ 1 and _Expose_ 1 (1 _Grit_)",
-            "_Push_ 2 and _Expose_ 2 (1 _Grit_)",
-            "_Push_ 2 and _Expose_ 2 (1 _Grit_)"
+            "_Push_ 1, _Expose_ 1 (1 _Grit_)",
+            "_Push_ 1, _Expose_ 1 (1 _Grit_)",
+            "_Push_ 1, _Expose_ 1x2 (2 _Grit_)",
+            "_Push_ 1, _Expose_ 1x2 (2 _Grit_)",
+            "_Push_ 2, _Expose_ 2, _Expose_ 1 (3 _Grit_)",
+            "_Push_ 2, _Expose_ 2, _Expose_ 1 (3 _Grit_)"
           ]
         }
       },
@@ -724,11 +725,11 @@
         "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
         "accumulate": "Whenever you do not Move when taking an Action with Movement, gain 1 Momentum.",
         "refresh": "_Grit_ 3",
-        "effect": "While in this Stance, it costs one less _Grit_ to negate all Push and Pull effects."
+        "effect": "While in this Stance, reduce the Cost to negate all Push and Pull effects by 1."
       },
       {
         "name": "Mighty Stance",
-        "desc": "By drawing upon the earth the Earthbonded's strength becomes inhuman and a mighty driving force.",
+        "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
         "accumulate": "",
         "refresh": "",
         "effect": "",
@@ -753,7 +754,7 @@
         "ap": 1,
         "move": "Step",
         "reqs": "Melee or Thrown Weapon Equipped",
-        "effect": "Attack using the weapon's profile, adding the Thrown tag and treating Grazes as a Miss, dealing no damage and ignoring effects. In addition, use the following changes based on the Weapon's weight:\n&#8226; Light: Range 10, add _Push_ 1 (1 _Grit_) on a Hit or Crit.\n&#8226; Versatile: Range 6, add _Push_ 2 (1 _Grit_) on a Hit or Crit.\n&#8226; Heavy: Range 4, add _Push_ 3 (1 _Grit_) on a Hit or Crit."
+        "effect": ""
       }
     ]
   },
@@ -809,7 +810,7 @@
         "range": "8",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Choose a creature within range. That creature may immediately Reposition, but must use all that Movement to move directly towards an enemy by the shortest possible route.",
+        "effect": "Choose a creature within range. That creature may immediately Reposition as a Reaction, but must use all that Movement to move directly towards an enemy by the shortest possible route.",
         "boost": "1 _Momentum_. The target gains 2 _Armor_ while using the Movement granted by this."
       }
     ]

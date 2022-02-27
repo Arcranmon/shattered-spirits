@@ -105,7 +105,7 @@
             "",
             "_Hobble_ 1 (1 _Grit_), _Embed_ (1 _Reflex_)",
             "_Hobble_ 1 (1 _Grit_), _Embed_ (1 _Reflex_)",
-            "_Hobble_ 1 (2 _Grit_), _Embed_ (2 _Reflex_)",
+            "_Hobble_ 2 (2 _Grit_), _Embed_ (2 _Reflex_)",
             "_Hobble_ 2 (2 _Grit_), _Embed_ (2 _Reflex_)",
             "_Pin_ (3 _Grit_), _Embed_ (3 _Reflex_)",
             "_Pin_ (3 _Grit_), _Embed_ (3 _Reflex_)"
@@ -145,12 +145,12 @@
             "",
             "",
             "",
-            "_Bleed_ 1 AND _Hobble_ 1 (1 _Grit_)",
-            "_Bleed_ 1 AND _Hobble_ 1 (2 _Grit_)",
-            "_Bleed_ 1 AND _Hobble_ 1 (2 _Grit_)",
-            "_Bleed_ 2 AND _Hobble_ 2 (2 _Grit_)",
-            "_Bleed_ 2 AND _Hobble_ 2 (3 _Grit_)",
-            "_Bleed_ 3 AND _Hobble_ 3 (3 _Grit_)"
+            "_Bleed_ 1, _Hobble_ 1 (1 _Grit_)",
+            "_Bleed_ 1, _Hobble_ 1 (1 _Grit_)",
+            "_Bleed_ 1, _Hobble_ 1 (2 _Grit_)",
+            "_Bleed_ 1x2, _Hobble_ 1x2 (2 _Grit_)",
+            "_Bleed_ 1x2, _Hobble_ 1x2 (3 _Grit_)",
+            "_Bleed_ 2, _Bleed_ 1, _Hobble_ 2, _Hobble_ 1 (3 _Grit_)"
           ]
         }
       },
@@ -163,7 +163,7 @@
         "speed": "4",
         "move": "Reposition",
         "reqs": "Size 1 _Wood Source_.",
-        "desc": "You sieze control of a nearby source of wood, causing it to bend and sway in a deadly arc.",
+        "desc": "You seize control of a nearby source of wood, causing it to bend and sway in a deadly arc.",
         "effect": "Attack with the below Profile, originating it from the Target and with a Range equal to the Target's _Wood Source_ Value.",
         "boost": "X _Momentum_: You may target a _Wood Source_ of Size X+1, adding X to the Damage and Cost to Negate of the Attack.",
         "chart": {
@@ -189,10 +189,10 @@
             "",
             "_Push_ 1 (1 _Grit_)",
             "_Push_ 1 (1 _Grit_)",
-            "_Push_ 2 (2 _Grit_)",
-            "_Push_ 2 AND _Prone_ (2 _Grit_)",
-            "_Push_ 3 AND _Prone_ (3 _Grit_)",
-            "_Push_ 3 AND _Prone_ (3 _Grit_)"
+            "_Push_ 2, _Prone_ (2 _Grit_)",
+            "_Push_ 2, _Prone_ (2 _Grit_)",
+            "_Push_ 3, _Prone_ (3 _Grit_)",
+            "_Push_ 3, _Prone_ (3 _Grit_)"
           ]
         }
       },
@@ -214,13 +214,13 @@
         "name": "Swaying Trees",
         "keywords": ["Spirit", "Wood"],
         "ap": 1,
-        "desc": "You move a source of wood, either telekinetically or by temporarily animating it.",
+        "desc": "You move a source of wood, either with simple levitation or by temporarily animating it.",
         "type": "Maneuver",
         "target": "A _Wood Source_ of up to Size 1 that is unequipped or equipped by a willing creature.",
         "speed": "2",
         "range": "6",
         "move": "Reposition",
-        "effect": "_Slide_ the Target up to 6 spaces. Any creature of your choice the Target moves past gains _Hobble_ 1 (1 _Reflex_), and any creature the Target moves through gains _Hobble_ 1 (2 _Reflex_).",
+        "effect": "_Slide_ the Target up to 6 spaces. Any creature of your choice the Target moves past gains _Hobble_ 1 (1 _Reflex_), and any creature the Target moves through gains _Hobble_ 1 (1 _Reflex_).",
         "boost": "X _Momentum_: For every Momentum paid you may repeat this Action with a different Target.\n\t2 _Momentum_: You may instead Target a Size 2 _Wood Source_. Instead of inflicting _Hobble_, instead inflict _Prone_."
       },
       {
@@ -247,8 +247,8 @@
         "speed": "5",
         "range": "4",
         "move": "None",
-        "effect": "_Destroy_ the Targets. Immediately gain X [HEALTH NUMBERS] and 3 _Ablative Armor_. While this Enchant is active you are Size 2, add _Reach_ to all Melee Attacks, and reduce the Cost to Negate all _Push_, _Pull_, and _Slide_ Effects by 1. If you have no [SPECIAL HEALTH] at Refresh, end this Enchant.",
-        "special": "While this Enchant is active, you may _Destroy_ additional _Wood Source_s at the start of your Turn by paying 1 _Grit_. When you do, gain 1 _Ablative Armor_ and X [HEALTH NUMBER]."
+        "effect": "_Destroy_ the Targets. Immediately gain 10 Vigor and 3 _Ablative Armor_. While this Enchant is active you are Size 2, add _Reach_ to all Melee Attacks, and reduce the Cost to Negate all _Push_, _Pull_, and _Slide_ Effects by 1. If you have no Vigor at Refresh, end this Enchant.",
+        "special": "While this Enchant is active, you may _Destroy_ additional _Wood Source_s at the start of your Turn by paying 1 _Grit_. When you do, gain 1 _Ablative Armor_ and 4 Vigor."
       },
       {
         "name": "Grasping Rebuke",
@@ -258,7 +258,7 @@
         "trigger": "You _Block_ while _Wielding_ a Wooden Weapon or Shield.",
         "desc": "Your equipment reaches out to grasp as your foe strikes, tearing their weapon away from them.",
         "cost": "1 _Grit_, 1 _Focus_, 1 _Momentum_",
-        "effect": "Choose: The attacker reduces their Attack Roll by 1, are _Disarmed_ (2 _Grit_), and your Triggering piece of Equipment becomes _Damaged_ OR they reduce their Attack Roll by 4. If the foe is _Disarmed_, the _Disarmed_ item is stuck in your _Damaged_ equipment and cannot be retrived unless an Action is Sacrificed and 2 _Grit_ is paid while adjacent to you. If your Equipment ceases to be _Damaged_ the item falls in an adjacent unoccupied space.",
+        "effect": "Choose: The attacker reduces their Attack Roll by 1, are _Disarmed_ (2 _Grit_), and your Triggering piece of Equipment becomes _Damaged_ OR they reduce their Attack Roll by 4. If the foe is _Disarmed_, the _Disarmed_ item is stuck in your _Damaged_ equipment and cannot be retrieved unless an Action is Sacrificed and 2 _Grit_ is paid while adjacent to you. If your Equipment ceases to be _Damaged_ the item falls in an adjacent unoccupied space.",
         "special": "The Attacker may pay 1 _Focus_ to instead choose the Effect."
       },
       {
@@ -292,7 +292,7 @@
         "desc": "You cultivate rampant growth, spreading green with every move you make.",
         "accumulate": "Every Turn you begin in an _Overgrown_ space, gain 1 _Momentum_.",
         "refresh": "_Focus_ 2, _Reflex_ 1",
-        "effect": "At Refresh, choose an _Overgrown_ space within Range 4. Immediately make one space adjacent to it _Overgrown_. Repeat this effect once. You may pay up to 2 _Momentum_, repeating this Effect for every Momentum spent.",
+        "effect": "At Refresh, choose an _Overgrown_ space within Range 4. Immediately make one space adjacent to it _Overgrown_. Repeat this effect once. You may pay up to 2 _Momentum_, repeating this Effect for every _Momentum_ spent.",
         "special": "You may ignore the effects of _Overgrown_ spaces while in this Stance."
       },
       {
@@ -300,7 +300,7 @@
         "desc": "Your plants are slow to bloom, but come forth with additional fervor and strength because of it",
         "accumulate": "Gain 1 _Momentum_ for each Phase that one of your Hazards created by this Stance triggers.",
         "refresh": "_Focus_ 2, _Reflex_ 1",
-        "effect": "Whenever you create an _Overgrown_ space or target an _Overgrown_ space with an effect, you may instead create a Hazard in that space. At the beginning of any Phase, you may trigger any number of these Hazards to create the original effect, inflicting _Hobble_ 1 or inflicting 2 Damage (1 _Reflex_) in a Burst 1 around the Hazard."
+        "effect": "Whenever you create an _Overgrown_ space or target an _Overgrown_ space with an effect, you may instead create a Hazard in that space. At the beginning of any Phase, you may trigger any number of these Hazards to create the original effect, inflicting _Hobble_ 1 (1 _Reflex_) or inflicting 2 Damage (1 _Reflex_) in a Burst 1 around the Hazard."
       }
     ],
     "techniques": [
@@ -363,10 +363,10 @@
             "",
             "_Wound_ 1 (1 _Reflex_)",
             "_Wound_ 1 (2 _Reflex_)",
-            "_Wound_ 1 and _Embed_ (2 _Reflex_)",
-            "_Wound_ 2 and _Embed_ (2 _Reflex_)",
-            "_Wound_ 2 and _Embed_ (3 _Reflex_)",
-            "_Wound_ 2 and _Embed_ (3 _Reflex_)"
+            "_Wound_ 1x2, _Bleed_ 1 (2 _Reflex_)",
+            "_Wound_ 1x2, _Bleed_ 1 (2 _Reflex_)",
+            "_Wound_ 2, _Wound_ 1, _Bleed_ 1 (3 _Reflex_)",
+            "_Wound_ 2,  _Wound_ 1, _Bleed_ 1 (3 _Reflex_)"
           ]
         }
       },
@@ -405,7 +405,7 @@
             "_Pull_ 2 (1 _Grit_)",
             "_Pull_ 2 (2 _Grit_)",
             "_Pull_ 2 (2 _Grit_)",
-            "_Pull_ 2 (3 _Grit_)",
+            "_Pull_ 3 (3 _Grit_)",
             "_Pull_ 3 (3 _Grit_)",
             "_Pull_ 4 (3 _Grit_)"
           ]
@@ -422,7 +422,7 @@
         "target": "Any three independent _Overgrown_ spaces.",
         "move": "Step",
         "effect": "All Target spaces become _Bramble Wall_s.",
-        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Damage and gain Bleed 1. If they cannot Move out of a Target space, they cannot pay this cost."
+        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Damage and gain _Bleed_ 1. If they cannot Move out of a Target space, they cannot pay this cost."
       },
       {
         "name": "Ensnaring Vines",
@@ -434,8 +434,8 @@
         "range": "6",
         "target": "Up to 6 contiguous _Overgrown_ spaces.",
         "move": "Reposition",
-        "effect": "All _Overgrown_ spaces become Ensnaring Vines while thie Enchant persists. Treat these spaces as _Overgrown_, but also inflict _Hobbled_ 1 (2 _Reflex_) on any creature that starts or ends their Turn in an Ensnaring Vines space.",
-        "special": "Whenever a creature enters an Ensnaring Vines space, you may pay 1 _Momentum_ to inflict _Hobbled_ 1 and _Impaired_ 1 (2 _Reflex_).",
+        "effect": "All _Overgrown_ spaces become Ensnaring Vines while this Enchant persists. Treat these spaces as _Overgrown_, but also inflict _Hobble_ 1 (1 _Reflex_) on any creature that starts or ends their Turn in an Ensnaring Vines space.",
+        "special": "Whenever a creature enters an Ensnaring Vines space, you may pay 1 _Momentum_ to inflict _Hobble_ 1 and _Impaired_ 1 (2 _Reflex_).",
         "boost": "X _Momentum_: For each Momentum spent, two Target spaces do not need to be _Overgrown_.\n\t2 _Momentum_: Remove the Enchant Keyword."
       },
       {
@@ -448,7 +448,7 @@
         "range": "6",
         "move": "Reposition",
         "cost": "1 _Momentum_",
-        "effect": "Attack with the below Profile. If _Stuck_, the creature is _Stuck_ until they spend Grit equal to the Negate cost at the end of their turn. If _Restrained_, a creature is _Restrained_ until they Sacrifice an Action and spend Grit equal to the Negate cost, or deal [HEALTH NUMBERS] Damage in a single attack, targetting the vines ensnaring them.",
+        "effect": "Attack with the below Profile. If _Stuck_, the creature is _Stuck_ until they spend Grit equal to the Negate cost at the end of their turn. If _Restrained_, a creature is _Restrained_ until they Sacrifice an Action and spend Grit equal to the Negate cost, or deal 6 Damage in a single attack, targeting the vines ensnaring them. If this Crits, they must instead deal 10 Damage.",
         "special": "If the Target is in an _Overgrown_ space, increase the Cost to Negate by 1. If the space is also an Ensnaring Vine, this Attack has Advantage.",
         "chart": {
           "hit": [
@@ -467,14 +467,14 @@
           "status": [
             "",
             "",
-            "_Hobble_ 1 AND _Impair_ 1 (1 _Reflex_)",
-            "_Hobble_ 1 AND _Impair_ 1 (1 _Reflex_)",
-            "_Hobble_ 1 AND _Impair_ 1 (1 _Reflex_)",
-            "_Stuck_ AND _Impair_ 1 (2 _Reflex_)",
-            "_Stuck_ AND _Impair_ 2 (2 _Reflex_)",
-            "_Restrained_ (2 _Reflex_)",
+            "_Hobble_ 1, _Impair_ 1 (1 _Reflex_)",
+            "_Hobble_ 1, _Impair_ 1 (1 _Reflex_)",
+            "_Hobble_ 1, _Impair_ 1 (1 _Reflex_)",
+            "_Hobble_ 2, _Impair_ 2 (2 _Reflex_)",
+            "_Hobble_ 2, _Impair_ 2 (2 _Reflex_)",
             "_Restrained_ (3 _Reflex_)",
             "_Restrained_ (3 _Reflex_)",
+            "_Restrained_ (4 _Reflex_)",
             "_Restrained_ (4 _Reflex_)"
           ]
         }
@@ -502,7 +502,7 @@
         "range": "6",
         "target": "An _Overgrown_ space or living _Wood Source_.",
         "move": "Reposition",
-        "effect": "Destroy the Target, then create an Animated Vine with [HEALTH STATS] in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_ or _Focus_ to have it use the Grab Action as if it had Reach 2, targeting the triggering creature.",
+        "effect": "Destroy the Target, then create an Animated Vine with 10 Health in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_ or _Focus_ to have it use the Grab Action as if it had Reach 2, targeting the triggering creature.",
         "boost": "2 _Momentum_: Remove the Enchant Keyword.\n\t2 _Momentum_: Your vine is covered in aggressive thorns or resembles a carnivorous plant. Increase the Cost of your Reaction by 1, but deal 3 Damage on a Graze, 4 Damage on a Hit, and 5 Damage on a Crit."
       },
       {
@@ -515,8 +515,8 @@
         "range": "6",
         "area": "Blast 2",
         "move": "Step",
-        "effect": "Create a Nature's Blessing at the center of the Area with [HEALTH AND STATS]. If the Nature's Blessing is Destroyed, this _Enchant_ ends. While this Enchant Persists, Reduce the Cost of all _Wood_ Actions by 1 if they target something in this area. If the Nature's Blessing exists at the start of the Round, you may use the Overgrow, Bramble Wall, or Sprout Tree Action as a 0 AP, Speed 1 Action so long as it only targets spaces within the Area.",
-        "boost": "2 _Momentum_: If, at the end of the Round, at least half the spaces within the Area are _Overgrown_, Bramble Walls or _Tree_s you may Boost to increase the Area by 1 and [BUFF NATURE'S BLESSING]."
+        "effect": "Create a Nature's Blessing at the center of the Area with 10 Health and 1 Armor. If the Nature's Blessing is Destroyed, this _Enchant_ ends. While this Enchant Persists, Reduce the Cost of all _Wood_ Actions by 1 if they target something in this area. If the Nature's Blessing exists at the start of the Round, you may use the Overgrow, Bramble Wall, or Sprout Tree Action as a 0 AP, Speed 1 Action so long as it only targets spaces within the Area.",
+        "boost": "2 _Momentum_: If, at the end of the Round, at least half the spaces within the Area are _Overgrown_, Bramble Walls or _Tree_s you may Boost to increase the Area by 1 and increase the Nature's Blessing Health by 5 and Armor by 1."
       },
       {
         "name": "Sprout Tree",

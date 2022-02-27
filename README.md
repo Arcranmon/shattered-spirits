@@ -38,7 +38,7 @@ This system is very much a work-in-progress, but is slowly getting more and more
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
   - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.
   - Add an additional 'bending' Discipline to each Element:
-    - Earth: ???
+    - Earth: Dust
     - Flame: Heat
     - Metal: ???
     - Water: ???

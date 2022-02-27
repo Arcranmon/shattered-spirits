@@ -9,9 +9,9 @@
         "name": "Ebbing Stance",
         "desc": "Your waves pull with a vicious undertow, dragging your foes closer to you with an unstoppable riptide.",
         "refresh": "_Reflex_ 2, _Focus_ 1",
-        "accumulate": "Whenver you _Pull_ an enemy with an Action, gain 1 _Momentum_.",
+        "accumulate": "Whenever you _Pull_ an enemy with an Action, gain 1 _Momentum_.",
         "effect": "Whenever you Hit or Crit with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
-        "special": "Immediately after you cause a _Push_ effect you may pay 1 _Momentum_ to change to this Stance."
+        "special": "Immediately after you cause a _Push_ effect you may pay 1 _Momentum_ to change to this Stance as a Reaction."
       },
       {
         "name": "Flood Stance",
@@ -25,9 +25,9 @@
         "name": "Flowing Stance",
         "desc": "Your waves hit with an impossible force, leaving no avenue for retreat but back.",
         "refresh": "_Block_ 3",
-        "accumulate": "Whenver you _Push_ an enemy with an Action, gain 1 _Momentum_.",
+        "accumulate": "Whenever you _Push_ an enemy with an Action, gain 1 _Momentum_.",
         "effect": "Whenever you Hit or Crit with a Water Action you may add _Push_ 1 to the effect. If there is an existing _Push_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
-        "special": "Immediately after you cause a _Pull_ effect you may pay 1 _Momentum_ to change to this Stance."
+        "special": "Immediately after you cause a _Pull_ effect you may pay 1 _Momentum_ to change to this Stance as a Reaction."
       }
     ],
     "techniques": [
@@ -40,7 +40,7 @@
         "cost": "1 _Punish_",
         "speed": "Reaction",
         "range": "8",
-        "effect": "Attack the triggering creature with the below Profile. If this triggered off a _Push_ or _Pull_ into another creature, you may attack both, but have Disadvantage on both attacks.",
+        "effect": "Attack the triggering creature with the below Profile. If this triggered off a _Push_ or _Pull_ into another creature you may attack both creatures, but have Disadvantage on both attacks.",
         "chart": {
           "hit": [
             "Miss",
@@ -62,12 +62,12 @@
             "",
             "",
             "",
-            "_Exposed_ 1 (1 _Grit_)",
-            "_Exposed_ 1 (1 _Grit_)",
-            "_Staggered_ (1 _Grit_)",
-            "_Staggered_ (1 _Grit_)",
-            "_Staggered_ OR _Break_ (1 _Grit_, 1 _Focus_)",
-            "_Staggered_ OR _Break_ (1 _Grit_, 1 _Focus_)"
+            "_Exposed_ 1 (1 _Grit_ or _Focus_)",
+            "_Exposed_ 1 (1 _Grit_ or _Focus_)",
+            "_Staggered_ (Any 2 of _Grit_ or _Focus_)",
+            "_Staggered_ (Any 2 of _Grit_ or _Focus_)",
+            "_Staggered_ OR _Break_ (Any 3 of _Grit_ or _Focus_)",
+            "_Staggered_ OR _Break_ (Any 3 of _Grit_ or _Focus_)"
           ]
         }
       },
@@ -99,16 +99,16 @@
           "damage": [0, 4, 4, 5, 5, 7, 8, 9, 10, 14, 15],
           "status": [
             "",
-            "_Push_ 3 (1 _Grit_)",
-            "_Push_ 3 (1 _Grit_)",
-            "_Push_ 3 (1 _Grit_)",
-            "_Push_ 3 (1 _Grit_)",
-            "_Push_ 4 and _Prone_ (1 _Grit_), _Soaked_ 1",
-            "_Push_ 4 and _Prone_ (1 _Grit_), _Soaked_ 1",
-            "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_), _Soaked_ 2",
-            "_Push_ 5, _Prone_, and _Dazed_ (2 _Grit_), _Soaked_ 2",
-            "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_), _Soaked_ 3",
-            "_Push_ 6, _Prone_, and _Dazed_ (3 _Grit_), _Soaked_ 3"
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 2 (1 _Grit_)",
+            "_Push_ 3 and _Prone_ (2 _Grit_), _Soaked_ 1",
+            "_Push_ 3 and _Prone_ (2 _Grit_), _Soaked_ 1",
+            "_Push_ 4, _Prone_, and _Dazed_ (3 _Grit_), _Soaked_ 1x2",
+            "_Push_ 4, _Prone_, and _Dazed_ (3 _Grit_), _Soaked_ 1x2",
+            "_Push_ 5, _Prone_, and _Dazed_ (4 _Grit_), _Soaked_ 2, _Soaked_ 1",
+            "_Push_ 5, _Prone_, and _Dazed_ (4 _Grit_), _Soaked_ 2, _Soaked_ 1"
           ]
         }
       },
@@ -141,15 +141,15 @@
           "status": [
             "",
             "",
-            "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
-            "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
-            "_Push_ 1 (1 _Grit_ OR 1 _Skill_)",
+            "_Push_ 1 (1 _Grit_ or _Reflex_)",
+            "_Push_ 1 (1 _Grit_ or _Reflex_)",
+            "_Push_ 1 (1 _Grit_ or _Reflex_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (1 _Grit_)",
-            "_Push_ 3 (1 _Grit_), _Soaked_ 1",
-            "_Push_ 3 (1 _Grit_), _Soaked_ 1",
-            "_Push_ 4 (2 _Grit_), _Soaked_ 2",
-            "_Push_ 4 (2 _Grit_), _Soaked_ 2"
+            "_Push_ 3 (2 _Grit_), _Soaked_ 1",
+            "_Push_ 3 (2 _Grit_), _Soaked_ 1",
+            "_Push_ 4 (3 _Grit_), _Soaked_ 2",
+            "_Push_ 4 (3 _Grit_), _Soaked_ 2"
           ]
         }
       },
@@ -236,15 +236,15 @@
           "status": [
             "",
             "",
-            "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
-            "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
-            "_Pull_ 2 (1 _Grit_ OR 1 _Skill_)",
-            "_Pull_ 3 (1 _Skill_)",
-            "_Pull_ 3 (1 _Skill_)",
-            "_Pull_ 4 (1 _Skill_), _Soaked_ 1",
-            "_Pull_ 4 (1 _Skill_), _Soaked_ 1",
-            "_Pull_ 5 (2 _Skill_), _Soaked_ 2",
-            "_Pull_ 5 (2 _Skill_), _Soaked_ 2"
+            "_Pull_ 2 (1 _Grit_ or _Reflex_)",
+            "_Pull_ 2 (1 _Grit_ or _Reflex_)",
+            "_Pull_ 2 (1 _Grit_ or _Reflex_)",
+            "_Pull_ 3 (1 _Reflex_)",
+            "_Pull_ 3 (1 _Reflex_)",
+            "_Pull_ 4 (2 _Reflex_), _Soaked_ 1",
+            "_Pull_ 4 (2 _Reflex_), _Soaked_ 1",
+            "_Pull_ 5 (3 _Reflex_), _Soaked_ 2",
+            "_Pull_ 5 (3 _Reflex_), _Soaked_ 2"
           ]
         }
       },
@@ -314,7 +314,7 @@
         "move": "Reposition",
         "target": "A creature.",
         "desc": "You create a thin coat of water around the target, providing a simple defense and quenching flames.",
-        "effect": "The Target gains 2 _Grit_, X [TEMPORARY], and up to _Soaked_ 2.",
+        "effect": "The Target gains 2 _Grit_, 5 _Vigor_, and _Soaked_ 1x2.",
         "boost": "X _Momentum. For every 2 _Momentum_ spent you may _Destroy_ a _Water Source_ within Range 4 repeat this Action."
       },
       {
@@ -341,15 +341,15 @@
         "desc": "You are an avatar of ice and cold, creating a dangerous vortex of ice around you.",
         "refresh": "_Grit_ 1",
         "accumulate": "The first time on each of your Turns you inflict _Frost_, gain 1 _Momentum_.",
-        "effect": "Create a _Burst 2_ around you. Whenever a creature ends its turn there they gain 1 _Frost_ (1 _Grit_)."
+        "effect": "Create a _Burst 2_ around you. Whenever a creature ends its turn there they gain _Frost_ 1 (1 _Grit_)."
       },
       {
         "name": "Frostguard Stance",
         "desc": "While normally frost is a hindrance, you have learned to weaponize it and make it a valuable tool.",
-        "refresh": "_Focus_ 1, _Grit_ 3",
-        "accumulate": "For every 2 _Frost_ you have at Refresh, gain 1 _Momentum_.",
-        "effect": "Anytime you apply _Frost_ to an enemy you may apply an equal amount to yourself. At the end of any of your turns, if you have at least 1 _Frost_, you may pay 1 _Grit_ to remove 1 _Frost_ and gain 1 _Ablative Armor_.",
-        "special": "At the start of your turn, you may pay 1 _Momentum_ to ignore one of the effects of _Frost_ for the turn."
+        "refresh": "_Focus_ 1, _Grit_ 2",
+        "accumulate": "Gain _Momentum_ equal to your topmost _Frost_ Token..",
+        "effect": "Anytime you apply _Frost_ to an enemy you may gain the same Token. At the end of any of your turns you may remove the topmost _Frost_ Token an either gain _Grit_ equal to its value or _Ablative Armor_ equal to half its value.",
+        "special": "You may choose not to clear your _Frost_ Tokens. You may always choose the order of your _Frost_ Tokens."
       },
       {
         "name": "Skating Stance",
@@ -412,9 +412,9 @@
         "move": "Step",
         "target": "A creature with _Frost_.",
         "desc": "You harden the ice on a creature in a frozen burst, striking with jagged shards.",
-        "effect": "Deal damage to the Target equal to their current _Frost_. If the Target is a Waterbound, they may pay 2 _Reflex_ or 2 _Focus_ to negate this attack.",
-        "special": "After resolving the attack, you may replace any amount of the target's _Frost_ with _Bleed_.",
-        "boost": "2 _Momentum_. Add a Burst 1 Area to the attack centered on the Target. Deal damage equal to half that creature's _Frost_ in the Area and inflict _Frost_ 1 (1 _Reflex_)."
+        "effect": "Deal damage to the Target equal to twice their topmost _Frost_ Token. If the Target is a Waterbound, they may pay 2 _Reflex_ or 2 _Focus_ to negate this attack.",
+        "special": "After resolving the attack, you may replace any amount of the target's _Frost_ Tokens with _Bleed_ Tokens of the same value.",
+        "boost": "2 _Momentum_. Add a Burst 1 Area to the attack centered on the Target. Deal damage equal to that creature's topmost _Frost_ Token in the Area and inflict _Frost_ 1 (1 _Reflex_)."
       },
       {
         "name": "Ice Knife",
@@ -450,10 +450,10 @@
             "",
             "_Frost_ 1 (1 _Reflex_)",
             "_Frost_ 1 (1 _Reflex_)",
-            "_Frost_ 1 (1 _Reflex_)",
             "_Frost_ 2 (2 _Reflex_)",
             "_Frost_ 2 (2 _Reflex_)",
-            "_Frost_ 2 (2 _Reflex_)"
+            "_Frost_ 2, _Frost_ 1 (3 _Reflex_)",
+            "_Frost_ 2, _Frost_ 1 (3 _Reflex_)"
           ]
         }
       },
@@ -488,14 +488,14 @@
             "",
             "",
             "",
-            "",
             "_Frost_ 1 (1 _Reflex_)",
             "_Frost_ 1 (1 _Reflex_)",
-            "_Frost_ 2 (1 _Reflex_)",
-            "_Frost_ 2 (1 _Reflex_)",
-            "_Frost_ 2 (1 _Reflex_)",
-            "_Frost_ 3, _Prone_ (3 _Reflex_)",
-            "_Frost_ 3, _Prone_ (3 _Reflex_)"
+            "_Frost_ 1x2 (2 _Reflex_)",
+            "_Frost_ 1x2 (2 _Reflex_)",
+            "_Frost_ 2, _Frost_ 1 (3 _Reflex_)",
+            "_Frost_ 2, _Frost_ 1 (3 _Reflex_)",
+            "_Frost_ 3, _Frost_ 2, _Frost_ 1 (4 _Reflex_)",
+            "_Frost_ 3, _Frost_ 2, _Frost_ 1 (4 _Reflex_)"
           ]
         }
       },
@@ -507,7 +507,7 @@
         "type": "Maneuver",
         "move": "None",
         "speed": "2",
-        "desc": "A hardened lance of superhardened ice forms in your hand, creating a deadly tool.",
+        "desc": "A hardened lance of impossibly hard ice forms in your hand, creating a deadly tool.",
         "effect": "Equip the Frost Lance Spirit Weapon in your Open Hand. This Enchant ends if you have no Frost Lance Wielded.",
         "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Frost Lance in each."
       },
@@ -519,8 +519,8 @@
         "move": "None",
         "speed": "2",
         "desc": "You freeze your body, limiting your movement but enhancing your defense.",
-        "effect": "Gain 2 _Grit_, 1 _Ablative Armor_, and 2 _Frost_.",
-        "boost": "2 _Momentum_. You are _Stuck_. While you are _Stuck_, you may spend _Frost_ as _Grit_."
+        "effect": "Gain 2 _Grit_, 1 _Ablative Armor_, and your choice of _Frost_ 1 or _2_.",
+        "boost": "2 _Momentum_. You are _Stuck_ until the end of the Round. While you are _Stuck_, you may spend _Frost_ as _Grit_."
       },
       {
         "name": "Creeping Frost",
@@ -530,7 +530,7 @@
         "type": "Maneuver",
         "speed": "3",
         "move": "Reposition",
-        "target": "3 continguous spaces within range.",
+        "target": "3 contiguous spaces within range.",
         "desc": "You use the little water in the air to freeze the ground, creating a thin sheet of ice that makes maneuvering difficult.",
         "effect": "The Target spaces become _Icy_. Any creatures in these spaces gain _Hobbled_ 1 (1 _Reflex_).",
         "special": "When choosing Targets, _Wet_ spaces only count as half of a space.",
@@ -546,7 +546,7 @@
         "move": "Step",
         "target": "A creature with _Frost_ or _Soaked_.",
         "desc": "You attempt to freeze a creature solid, hardening the water and ice already around them.",
-        "effect": "Choose either _Frost_ or _Soaked_.\nIf you choose _Frost_ and the creature has at least 1 _Frost_, they gain 1 _Frost_ (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 3 _Frost_, they gain 2 _Frost_ (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 5 _Frost_, they are immediately _Restrained_ (2 _Grit_).\nIf you choose _Soaked_ you may convert any number of that creature's _Soaked_ to _Frost_ (2 _Reflex_).",
+        "effect": "Choose either _Frost_ or _Soaked_.\nIf you choose _Frost_ and the creature has at least 1 _Frost_ Token, they gain 1 _Frost_ (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 3 _Frost_, they gain _Frost_ 2 (2 _Reflex_).\nIf you choose _Frost_ and the creature has at least 5 _Frost_, they are immediately _Restrained_ (3 _Grit_).\nIf you choose _Soaked_ you may convert any number of that creature's _Soaked_ Tokens to _Frost_ Tokens of the same value (2 _Reflex_).",
         "boost": "2 _Momentum_. Resolve the _Soaked_ version of the Effect, then the _Frost_ version of the Effect."
       },
       {
@@ -571,7 +571,7 @@
         "type": "Maneuver",
         "speed": "4",
         "move": "Reposition",
-        "cost": "2 _Momentum_",
+        "cost": "1 _Momentum_",
         "target": "A creature completely on _Icy_ or _Wet_ Terrain that is not _Flying_.",
         "desc": "You freeze a target's feet to the ground, rooting them in place.",
         "effect": "The Target becomes _Stuck_ (2 _Reflex_). They may end this _Stuck_ by Sacrificing an Action and spending 1 _Grit_.",

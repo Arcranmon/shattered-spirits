@@ -1,3 +1,5 @@
+import Templates from "@/database/skill_masteries/templates.json";
+
 import ArmorSkills from "@/database/skill_masteries/armor_skills.json";
 import BasicSkills from "@/database/skill_masteries/basic_skills.json";
 import MartialSkills from "@/database/skill_masteries/martial_skills.json";
@@ -79,6 +81,12 @@ export class DatabaseJsonStore extends VuexModule {
       return StratagemSkills.map((x) =>
         Discipline.Deserialize(<IDisciplineData>x)
       );
+    };
+  }
+
+  get getTemplateDiscipline(): any {
+    return () => {
+      return Templates.map((x) => Discipline.Deserialize(<IDisciplineData>x));
     };
   }
 

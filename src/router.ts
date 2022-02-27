@@ -3,7 +3,12 @@ import Router from "vue-router";
 
 import MainMenu from "@/pages/main-menu/index.vue";
 
-import Combat from "@/pages/combat/index.vue";
+import CombatMenu from "@/pages/combat/combat-menu/index.vue";
+import CombatBasics from "@/pages/combat/combat-basics/index.vue";
+import ConditionsAndStatus from "@/pages/combat/conditions_and_status/index.vue";
+import ReadingDisciplines from "@/pages/combat/reading_disciplines/index.vue";
+import TerrainAndObstacles from "@/pages/combat/terrain_and_obstacles/index.vue";
+
 import CharacterCreation from "@/pages/character-creation/index.vue";
 
 import SpiritMenu from "@/pages/spirits/spirit-menu/index.vue";
@@ -134,10 +139,42 @@ const r = new Router({
     },
     {
       path: "/combat",
-      component: Combat,
+      component: CombatMenu,
       name: "combat",
       meta: {
         title: "Combat",
+      },
+    },
+    {
+      path: "/combat-basics",
+      component: CombatBasics,
+      name: "combat-basics",
+      meta: {
+        title: "Combat Basics",
+      },
+    },
+    {
+      path: "/conditions-and-status",
+      component: ConditionsAndStatus,
+      name: "conditions-and-status",
+      meta: {
+        title: "Conditions and Status",
+      },
+    },
+    {
+      path: "/reading-disciplines",
+      component: ReadingDisciplines,
+      name: "reading-disciplines",
+      meta: {
+        title: "Reading Disciplines",
+      },
+    },
+    {
+      path: "/terrain-and-obstacles",
+      component: TerrainAndObstacles,
+      name: "terrain-and-obstacles",
+      meta: {
+        title: "Terrain and Obstacles",
       },
     },
     {

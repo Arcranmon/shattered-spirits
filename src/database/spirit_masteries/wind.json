@@ -60,12 +60,12 @@
             "",
             "",
             "",
-            "_Bleed_ 1 (1 _Reflex_)",
-            "_Bleed_ 1 (1 _Reflex_)",
-            "_Bleed_ 1 (1 _Reflex_)",
-            "_Bleed_ 2 (1 _Reflex_)",
-            "_Bleed_ 2 (2 _Reflex_)",
-            "_Bleed_ 3 (2 _Reflex_)"
+            "_Bleed_ 1 (1 _Grit_)",
+            "_Bleed_ 1 (1 _Grit_)",
+            "_Bleed_ 1 (1 _Grit_)",
+            "_Bleed_ 1 (1 _Grit_)",
+            "_Bleed_ 2 (2 _Grit_)",
+            "_Bleed_ 2 (2 _Grit_)"
           ]
         }
       },
@@ -75,7 +75,7 @@
         "ap": 1,
         "desc": "As you strike with your weapon you launch a focused blast of air, amplifying and extending the strike.",
         "speed": "Weapon",
-        "cost": "2 _Momemtum_",
+        "cost": "2 _Momentum_",
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
@@ -114,11 +114,11 @@
             "",
             "",
             "_Bleed_ 1 (1 _Reflex_)",
-            "_Bleed_ 1 (2 _Reflex_)",
+            "_Bleed_ 1 (1 _Reflex_)",
             "_Bleed_ 2 (2 _Reflex_)",
-            "_Bleed_ 2 (3 _Reflex_)",
+            "_Bleed_ 2 (2 _Reflex_)",
             "_Bleed_ 3 (3 _Reflex_)",
-            "_Bleed_ 3 (4 _Reflex_)"
+            "_Bleed_ 3 (3 _Reflex_)"
           ]
         }
       },
@@ -129,7 +129,7 @@
         "keywords": ["Spirit", "Wind"],
         "ap": 1,
         "speed": "1",
-        "range": "4",
+        "range": "6",
         "move": "Reposition",
         "effect": "Attack with the below Profile.",
         "special": "The Target may pay 1 _Momentum_ to, rather than rolling, treat the Attack Roll as a 10.",
@@ -224,9 +224,9 @@
         "keywords": ["Spirit", "Wind"],
         "ap": 1,
         "speed": "2",
-        "range": "4",
+        "range": "6",
         "move": "Reposition",
-        "effect": "Attack with the below Profile. You may make any spaces a creature is _Slide_d through becomes _Windy_ until the end of the Round.",
+        "effect": "Attack with the below Profile. You may make any spaces a creature is _Slide_d through _Windy_ until the end of the Round.",
         "special": "The Target may pay 1 _Momentum_ to, rather than rolling, treat the Attack Roll as a 10.",
         "boost": "1 _Momentum_: Inflict either _Accelerate_ or _Stagger_ (2 _Momentum_) on the Target.",
         "chart": {
@@ -246,9 +246,9 @@
           "status": [
             "",
             "",
-            "_Slide_ 1 (Free)",
-            "_Slide_ 1 (Free)",
-            "_Slide_ 1 (Free)",
+            "_Slide_ 1",
+            "_Slide_ 1",
+            "_Slide_ 1",
             "_Slide_ 1 (1 _Grit_)",
             "_Slide_ 2 (1 _Grit_)",
             "_Slide_ 2 (2 _Grit_)",
@@ -335,14 +335,15 @@
         "desc": "You control the storms in a direct fashion: you simply unleash it in as direct a way as possible, unleashing its devastating potential.",
         "refresh": "2 _Reflex_, 1 _Focus_",
         "accumulate": "Every time you Hit with an _Electric_ Attack gain 1 _Momentum_, every time you Crit gain 2 _Momentum_.",
-        "effect": "Whenever you use a _Electric_ Technique that inflicts _Shock_ you may pay 1 _Momentum_ to inflict no _Shock_ and instead add _Pierce_ equal to the _Shock_ that would have been inflicted."
+        "effect": "Whenever you use a _Electric_ Technique that inflicts _Shock_ you may pay 1 _Momentum_ to inflict no _Shock_ and instead add _Pierce_ equal to the total value of _Shock_ that would have been inflicted."
       },
       {
         "name": "Charged Stance",
         "desc": "You hold the storm within yourself, something that carries a great amount of risk but also amplifies your power greatly.",
         "refresh": "1 _Reflex_",
-        "accumulate": "At Refresh, convert up to 3 _Shock_ into _Momentum_.",
-        "effect": "All _Evade_ and _Block_ Reactions have their Cost increased by 1 against your Storm Attacks with _Stall_."
+        "accumulate": "At Refresh, gain _Momentum_ equal to your top two _Shock_ Tokens. Clear these Tokens.",
+        "effect": "All _Evade_ and _Block_ Reactions have their Cost increased by 1 against your Storm Attacks with _Stall_.",
+        "special": "You may choose not to clear your _Shock_ Tokens. You may always choose the order of your _Shock_ Tokens."
       },
       {
         "name": "Stormcaller Stance",
@@ -359,11 +360,11 @@
         "keywords": ["Spirit", "Wind", "Electric", "Punish"],
         "desc": "Your electricity strikes like a snake, leaping from one target to another in a vicious chain.",
         "speed": "Reaction",
-        "cost": "1 _Momemtum_",
+        "cost": "1 _Momentum_",
         "type": "Strike",
         "range": "12",
         "trigger": "You inflict _Shock_, or have Hit or Crit with an _Electric_ Attack you had Advantage on.",
-        "effect": "After resolving the Triggering Attack, Attack with the below Profile against a Secondary Target within Range 4 of the Triggering Target. Deal Damage equal to the _Shock_ on the Triggering Target. If the Secondary Target Negates, they take half Damage.",
+        "effect": "After resolving the Triggering Attack, Attack with the below Profile against a Secondary Target within Range 4 of the Triggering Target. Deal Damage equal to the topmost _Shock_ Token on the Triggering Target. If the Secondary Target Negates, they take half Damage.",
         "special": "You may repeat this Reaction as many times as it is triggered by paying the Cost again.",
         "boost": "1 _Momentum_: The Trigger is instead: 'You are Attacked while having any _Shock_.'",
         "chart": {
@@ -385,13 +386,13 @@
             "",
             "",
             "",
+            "",
             "_Shock_ 1 (1 _Reflex_)",
             "_Shock_ 1 (1 _Reflex_)",
-            "_Shock_ 1 (2 _Reflex_)",
             "_Shock_ 2 (2 _Reflex_)",
-            "_Shock_ 2 (3 _Reflex_)",
+            "_Shock_ 2 (2 _Reflex_)",
             "_Shock_ 3 (3 _Reflex_)",
-            "_Shock_ 3 (4 _Reflex_)"
+            "_Shock_ 3 (3 _Reflex_)"
           ]
         }
       },
@@ -401,9 +402,9 @@
         "ap": 1,
         "desc": "You channel electricity through your weapon, attacking with incredible, blinding speed.",
         "speed": "Weapon-1",
-        "cost": "1 _Momemtum_",
+        "cost": "1 _Momentum_",
         "type": "Strike",
-        "reqs": "_Light_ or _Versatile_ Metal Weapon.",
+        "reqs": "_Light_ or _Versatile_ Weapon.",
         "range": "Weapon",
         "move": "Reposition",
         "effect": "Attack using your Weapon's Profile, adding _Shock_ 1 (1 _Grit_) on a Hit and _Shock_ 2 (2 _Grit_) on a Crit.",
@@ -443,10 +444,10 @@
             "",
             "_Shock_ 1 (1 _Grit_)",
             "_Shock_ 1 (1 _Grit_)",
-            "_Shock_ 1 (2 _Grit_)",
-            "_Shock_ 2 (2 _Grit_)",
-            "_Shock_ 2 (3 _Grit_)",
-            "_Shock_ 3 (3 _Grit_)"
+            "_Shock_ 1x2 (2 _Grit_)",
+            "_Shock_ 1x2 (2 _Grit_)",
+            "_Shock_ 2, _Shock_ 1 (3 _Grit_)",
+            "_Shock_ 2, _Shock_ 1 (3 _Grit_)"
           ]
         }
       },
@@ -460,7 +461,7 @@
         "range": "4",
         "move": "Reposition",
         "effect": "Attack with the below Profile. While this Enchant persists, at the end of the Target's Turn you may repeat this Attack as a Reaction by paying 1 _Momentum_. This Enchant ends if you and the target are ever more than Range spaces apart.",
-        "boost": "0 _Momentum_: Gain 1 _Shock_. Increase the Damage by 1 while this Enchant persists.\n\t1 _Momentum_: Gain 1 _Shock_. Increase the Shock on a Hit or Crit by 1 while this Enchant persists.",
+        "boost": "0 _Momentum_: Gain _Shock_ 1. Increase the Damage by 1 while this Enchant persists.\n\t1 _Momentum_: Gain _Shock_ 2. Increase the Shock on a Hit or Crit by 1 while this Enchant persists.",
         "chart": {
           "hit": [
             "Miss",
@@ -485,9 +486,9 @@
             "",
             "_Shock_ 1 (1 _Grit_)",
             "_Shock_ 1 (1 _Grit_)",
-            "_Shock_ 1 (2 _Grit_)",
             "_Shock_ 2 (2 _Grit_)",
-            "_Shock_ 2 (3 _Grit_)"
+            "_Shock_ 2 (2 _Grit_)",
+            "_Shock_ 3 (3 _Grit_)"
           ]
         }
       },
@@ -502,7 +503,7 @@
         "move": "Reposition",
         "area": "Blast 1",
         "effect": "Create a Blast 1 _Hazard_ within Range. At the end of Phase 4 Destroy the _Hazard_. When the _Hazard_ is Destroyed, resolve the below Attack in the _Hazard_ spaces.",
-        "boost": "X _Momentum_ (max of 2): For each Momentum paid, Destroy the _Hazard_ one Phase later. For each _Momentum_ spent, increase the Damage by 2 and the _Shock_ by 1 on a Hit or Crit.",
+        "boost": "X _Momentum_ (max of 2): For each Momentum paid, Destroy the _Hazard_ one Phase later. For each _Momentum_ spent, increase the Damage by 2 and add _Shock_ 1 on a Hit or Crit.",
         "chart": {
           "hit": [
             "Miss",
@@ -526,10 +527,10 @@
             "",
             "",
             "_Shock_ 1 (1 _Grit_)",
-            "_Shock_ 2 (2 _Grit_)",
-            "_Shock_ 2 (3 _Grit_)",
-            "_Shock_ 3 (3 _Grit_)",
-            "_Shock_ 4 (4 _Grit_)"
+            "_Shock_ 1x2 (2 _Grit_)",
+            "_Shock_ 2, _Shock_ 1 (3 _Grit_)",
+            "_Shock_ 3, _Shock_ 1 (4 _Grit_)",
+            "_Shock_ 3, _Shock_ 2 (5 _Grit_)"
           ]
         }
       },
@@ -543,9 +544,9 @@
         "range": "Melee",
         "area": "Burst 1",
         "move": "Reposition",
-        "effect": "Clear up to 4 _Shock_, then Attack with the below Profile. If you Graze, add half the cleared _Shock_ to the Damage. On a _Hit_ or _Crit_, add all cleared _Shock_ to the Damage.",
-        "special": "You may clear additional _Shock_ as a part of this Attack, but take 2 True Damage for each additional _Shock_ cleared.",
-        "boost": "3 _Momentum_: Clear 2 more _Shock_, but don't add it to the Damage or take Damage from it. If you do, Area becomes Burst 2.",
+        "effect": "Clear up to four value of _Shock_ Tokens, then Attack with the below Profile. If you Graze, add half the cleared _Shock_ value to the Damage. On a _Hit_ or _Crit_, add all cleared _Shock_ value to the Damage.",
+        "special": "You may clear additional _Shock_ Tokens as a part of this Attack, but take True Damage equal to its value for each additional _Shock_ Tokens cleared.",
+        "boost": "3 _Momentum_: Clear 2 more value of _Shock_, but don't add it to the Damage or take Damage from it. If you do, Area becomes Burst 2.",
         "chart": {
           "hit": [
             "Miss",
@@ -570,9 +571,9 @@
             "",
             "",
             "_Shock_ 1 (1 _Grit_)",
-            "_Shock_ 1 (2 _Grit_)",
+            "_Shock_ 1 (1 _Grit_)",
             "_Shock_ 2 (2 _Grit_)",
-            "_Shock_ 2 (3 _Grit_)"
+            "_Shock_ 2 (2 _Grit_)"
           ]
         }
       },
@@ -588,7 +589,7 @@
         "move": "Reposition",
         "cost": "2 _Momentum_",
         "effect": "Attack with the below Profile.",
-        "boost": "X _Momentum_: For every _Momentum_ spent increase the Line by 2. Instead of paying _Momentum_ you may instead gain _Shock_.",
+        "boost": "X _Momentum_: For every _Momentum_ spent increase the Line by 2. Instead of paying _Momentum_ you may instead gain _Shock_ 1.",
         "chart": {
           "hit": [
             "Miss",
@@ -612,9 +613,9 @@
             "",
             "_Shock_ 1 (1 _Reflex_)",
             "_Shock_ 1 (1 _Reflex_)",
-            "_Shock_ 2 (1 _Reflex_)",
             "_Shock_ 2 (2 _Reflex_)",
-            "_Shock_ 3 (2 _Reflex_)",
+            "_Shock_ 2 (2 _Reflex_)",
+            "_Shock_ 3 (3 _Reflex_)",
             "_Shock_ 3 (3 _Reflex_)"
           ]
         }
@@ -628,7 +629,7 @@
         "speed": "2",
         "range": "8",
         "move": "Step",
-        "effect": "Create 3 _Hazard_s within Range that are not adjacent to one another. If a creature enters one of these _Hazard_ spaces you may inflict 2 _Shock_ (1 _Reflex_) as a Reaction. All Hazards are removed at the end of the Round.",
+        "effect": "Create 3 _Hazard_s within Range that are not adjacent to one another. If a creature enters one of these _Hazard_ spaces you may inflict _Shock_ 2 (2 _Reflex_) as a Reaction.",
         "boost": "1 _Momentum_ (paid every time a Hazard is triggered). Deal 2 plus the current Phase Damage to the triggering creature.",
         "imbue": "1 _Momentum_. Speed is instead 1."
       },
@@ -641,8 +642,8 @@
         "speed": "2",
         "range": "Self",
         "move": "Reposition",
-        "effect": "Gain 2 _Shock_ and 1 _Reflex_. Gain a +1 Attack Bonus on your next Storm Attack.",
-        "boost": "1 _Grit_: Gain 2 more _Shock_."
+        "effect": "Gain _Shock_ 2 and 1 _Reflex_. Gain a +1 Attack Bonus on your next Storm Attack.",
+        "boost": "1 _Grit_: Gain _Shock_ 3."
       },
       {
         "name": "Shock Wave",
@@ -653,9 +654,9 @@
         "speed": "2",
         "range": "Melee",
         "move": "Reposition",
-        "effect": "Remove up to 3 _Shock_ from the foe. Deal Damage equal to the removed _Shock_, then purchase as many of the following Conditions as you wish:\n2 _Shock_: The Target gains two of: _Hobble_ 1, _Impair_ 1, _Exposed_ 1.\n3 _Shock_: The Target is _Restrained_ until the end of their next turn.\nThe Target may ignore the afflicted Condition by paying _Grit_ equal to the _Shock_ removed.",
+        "effect": "Remove up to 3 value of _Shock_ from the foe. Deal Damage equal to the removed _Shock_, then purchase as many of the following Conditions as you wish:\n1: The Target gains one of: _Hobble_ 1, _Impair_ 1, _Exposed_ 1.\n2: The Target gains one of: _Hobble_ 2, _Impair_ 2, _Exposed_ 2.\n3: The Target is _Restrained_ until the end of their next turn.\nThe Target may ignore the afflicted Condition by paying _Grit_ equal to the value removed.",
         "special": "The cost to Negate is increased by 1 if the Target is Soaked or in a Water Source.",
-        "boost": "2 _Momentum_: You may remove up to 5 _Shock_. If you pick the _Restrained_ option, add additional turns to the Condition."
+        "boost": "2 _Momentum_: You may remove up to 6 value of _Shock_. If you pick the _Restrained_ option more than once, add additional turns to the Condition."
       },
       {
         "name": "Lightning Charriot",
@@ -667,7 +668,7 @@
         "range": "Sprint Distance",
         "move": "None",
         "effect": "Create a Blast 1 _Hazard_ within Range. If a creature enters the _Hazard_, immediately _Destroy_ the _Hazard_. Otherwise, _Destroy_ the _Hazard_ at the end of Phase 3. If you are within Range of the _Hazard_ when it is Destroyed, immediately _Teleport_ Move to any space in the _Hazard_ and inflict _Shock_ 1 (1 _Reflex_) in the area.",
-        "boost": "2 _Momentum_: Instead of Inflicting 1 _Shock_, deal 4 _Damage_ and inflict _Shock_ 2 (2 _Reflex_). If a creature Negates they take half Damage."
+        "boost": "2 _Momentum_: Instead of Inflicting _Shock_ 1, deal 4 _Damage_ and inflict _Shock_ 2 (2 _Reflex_). If a creature Negates they take half Damage."
       },
       {
         "name": "Overcharge",
@@ -677,7 +678,7 @@
         "type": "Defensive",
         "range": "Self",
         "cost": "1 _Reflex_",
-        "effect": "Reroll the Attack and immediately _Safe_ Move 1. After resolving the Attack, gain 1 _Shock_."
+        "effect": "Reroll the Attack and immediately _Safe_ Move 1. After resolving the Attack, gain _Shock_ 1."
       }
     ]
   },
