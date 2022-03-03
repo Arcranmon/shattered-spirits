@@ -20,6 +20,7 @@ import Glossary from "@/database/glossary/glossary.json";
 import Statuses from "@/database/glossary/statuses.json";
 import Conditions from "@/database/glossary/conditions.json";
 import ElementalConditions from "@/database/glossary/elemental_conditions.json";
+import MentalConditions from "@/database/glossary/mental_conditions.json";
 import Keywords from "@/database/glossary/keywords.json";
 import Obstacles from "@/database/glossary/obstacles.json";
 import Terrains from "@/database/glossary/terrain.json";
@@ -122,6 +123,7 @@ export class DatabaseJsonStore extends VuexModule {
         this.hasStatus(inword) ||
         this.hasCondition(inword) ||
         this.hasElementalCondition(inword) ||
+        this.hasMentalCondition(inword) ||
         this.hasKeyword(inword) ||
         this.hasTerrain(inword) ||
         this.hasObstacle(inword) ||
@@ -151,6 +153,12 @@ export class DatabaseJsonStore extends VuexModule {
   get hasElementalCondition(): any {
     return (inword: string) => {
       return ElementalConditions.some((x) => x.keyword === inword);
+    };
+  }
+
+  get hasMentalCondition(): any {
+    return (inword: string) => {
+      return MentalConditions.some((x) => x.keyword === inword);
     };
   }
 
@@ -186,6 +194,8 @@ export class DatabaseJsonStore extends VuexModule {
       if (this.hasCondition(inword)) return this.getCondition(inword);
       if (this.hasElementalCondition(inword))
         return this.getElementalCondition(inword);
+      if (this.hasMentalCondition(inword))
+        return this.getMentalCondition(inword);
       if (this.hasKeyword(inword)) return this.getKeyword(inword);
       if (this.hasTerrain(inword)) return this.getTerrain(inword);
       if (this.hasObstacle(inword)) return this.getObstacle(inword);
@@ -238,6 +248,19 @@ export class DatabaseJsonStore extends VuexModule {
   get getElementalCondition(): any {
     return (inword: string) => {
       return ElementalConditions.find((x) => x.keyword.trim() === inword.trim())
+        .effect;
+    };
+  }
+
+  get getMentalConditions(): any {
+    return () => {
+      return MentalConditions;
+    };
+  }
+
+  get getMentalCondition(): any {
+    return (inword: string) => {
+      return MentalConditions.find((x) => x.keyword.trim() === inword.trim())
         .effect;
     };
   }

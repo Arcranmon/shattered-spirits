@@ -15,6 +15,17 @@
     ],
     "techniques": [
       {
+        "name": "Second Blade",
+        "desc": "No matter how a foe attempts to evade your strikes, you always have a second weapon to catch them.",
+        "type": "Strike",
+        "cost": "1 _Momentum_",
+        "speed": "Reaction",
+        "range": "Weapon",
+        "reqs": "Separate Light or Versatile One-Handed Weapons Wielded in either hand.",
+        "trigger": "A creature uses an Evade Reaction against a Weapon Strike.",
+        "effect": "Immediately use Quick Strike as a Reaction, using the Weapon not used for the triggering Strike."
+      },
+      {
         "name": "Dual Strike",
         "desc": "A vicious attack, striking with two weapons in quick succession.",
         "type": "Strike",
@@ -22,12 +33,28 @@
         "range": "Weapon",
         "ap": 1,
         "move": "Reposition",
-        "reqs": "Separate One-Handed Weapons Wielded in either hand.",
+        "reqs": "Separate Light or Versatile One-Handed Weapons Wielded in either hand.",
         "effect": "Immediately use the Quick Strike Action twice, using a different weapon for each Strike and declaring what weapon is being used before rolling the attack. The Damage from these Strikes is halved.",
         "imbue": "1 _Momentum_. You may use the faster of the two Wielded Weapons to determine Speed.",
         "boost": "1 _Momentum_. After rolling your first Attack, you may change which weapon it is using, so long as the target is within Range of the new weapon."
       }
     ]
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Duelist",
+    "flavor": "You always keep one hand free in combat, providing you a flexibility and fluidity that few can match.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Grappler",
+    "flavor": "So long as you have a hand free you'll have an opponent in it, dragging them about the battlefield.",
+    "stances": [],
+    "techniques": []
   },
   {
     "category": "Skill",
@@ -45,9 +72,36 @@
     ],
     "techniques": [
       {
+        "name": "Shieldbreaker",
+        "keywords": ["Weapon", "Unblockable"],
+        "range": "Weapon",
+        "ap": 1,
+        "type": "Strike",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
+        "speed": "Weapon+1",
+        "move": "Step",
+        "desc": "You bring your weapon down in a vicious blow, tearing a foe's defenses asunder.",
+        "effect": "Attack with your Weapon's Profile. Add _Pierce_ 2 to the Attack.",
+        "boost": "2 _Momentum_: If you Hit or Crit with this Attack either inflict _Shred_ 1 or _Damage_ the target's Shield. This Boost has no Cost if the Target uses a Block Reaction."
+      },
+      {
+        "name": "Cleaving Strike",
+        "keywords": ["Weapon"],
+        "range": "Weapon",
+        "ap": 1,
+        "type": "Strike",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
+        "speed": "Weapon+1",
+        "area": "Arc 3",
+        "move": "Step",
+        "cost": "1 _Momentum_",
+        "desc": "You swing your weapon in a mighty arc, potentially striking through multiple foes.",
+        "effect": "Attack with your Weapon's Profile in the Area."
+      },
+      {
         "name": "Pommel Strike",
         "keywords": ["Weapon"],
-        "range": "Melee",
+        "range": "Weapon",
         "ap": 1,
         "type": "Maneuver",
         "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
@@ -77,7 +131,7 @@
             "",
             "_Expose_ 1 (1 _Focus_ OR _Grit_)",
             "_Expose_ 1 (1 _Focus_ OR _Grit_)",
-            "_Expose_ 1 (1 _Focus_ OR _Grit_)",
+            "_Expose_ 1 (1 _Grit_)",
             "_Expose_ 1 (1 _Grit_)",
             "_Expose_ 2 (2 _Grit_)",
             "_Expose_ 2 (2 _Grit_)",
@@ -85,7 +139,35 @@
             "_Expose_ 2, _Expose_ 1 (2 _Grit_)"
           ]
         }
+      },
+      {
+        "name": "Power Through",
+        "desc": "Attempting to block your weapon is one of the greatest acts of folly imaginable.",
+        "type": "Maneuver",
+        "cost": "1 _Grit_",
+        "speed": "Reaction",
+        "range": "Weapon",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded.",
+        "trigger": "A Size 1 creature uses a _Block_ Reaction against a Weapon Strike.",
+        "effect": "The triggering creature must immediately pay 1 _Grit_ or be _Push_ed 2 and knocked _Prone_. They may pay 1 _Grit_ to Negate this, but you may immediately repeat this Reaction against them as long as you can pay the Cost.",
+        "boost": "1 _Grit_: Change the Trigger to say 'A Size 2 creature'."
       }
     ]
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Sentry",
+    "flavor": "You make use a lighter ranged weapon to punish foes you catch out of cover and provide harrying support to allies.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Sniper",
+    "flavor": "You find a safe position then rain death from above at extreme range, somehow always striking a vital point.",
+    "stances": [],
+    "techniques": []
   }
 ]

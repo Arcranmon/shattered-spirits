@@ -100,7 +100,7 @@ export default Vue.extend({
   },
   computed: {
     colWidth: function () {
-      return Math.max(12 / this.inputs.length, 4);
+      return 4;
     },
     dropName: function () {
       if (this.display_text == "None") return this.job;

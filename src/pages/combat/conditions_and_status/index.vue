@@ -12,8 +12,16 @@
         v-html="$marked('**' + condition.keyword + '**: ' + condition.effect)"
       />
     </div>
-    <h2>Elemental Conditions</h2>
+    <br />
+    <div v-html="elementalConditionText" />
     <div v-for="condition in elementalConditions">
+      <span
+        v-html="$marked('**' + condition.keyword + '**: ' + condition.effect)"
+      />
+    </div>
+    <br />
+    <div v-html="mentalConditionText" />
+    <div v-for="condition in mentalConditions">
       <span
         v-html="$marked('**' + condition.keyword + '**: ' + condition.effect)"
       />
@@ -23,8 +31,10 @@
 
 <script>
 import Vue from "vue";
-import StatusText from "@/database/text_files/combat_rules/status.txt";
-import ConditionText from "@/database/text_files/combat_rules/condition.txt";
+import StatusText from "@/database/text_files/combat_rules/statuses.txt";
+import ConditionText from "@/database/text_files/combat_rules/conditions.txt";
+import ElementalConditionText from "@/database/text_files/combat_rules/elemental_conditions.txt";
+import MentalConditionText from "@/database/text_files/combat_rules/mental_conditions.txt";
 import { store } from "@/store";
 export default Vue.extend({
   name: "combat-basics",
@@ -33,17 +43,26 @@ export default Vue.extend({
     statuses: function () {
       return this.$store.getters.getStatuses();
     },
+    statusText: function () {
+      return this.$marked.parse(StatusText);
+    },
     conditions: function () {
       return this.$store.getters.getConditions();
-    },
-    elementalConditions: function () {
-      return this.$store.getters.getElementalConditions();
     },
     conditionText: function () {
       return this.$marked.parse(ConditionText);
     },
-    statusText: function () {
-      return this.$marked.parse(StatusText);
+    elementalConditions: function () {
+      return this.$store.getters.getElementalConditions();
+    },
+    elementalConditionText: function () {
+      return this.$marked.parse(ElementalConditionText);
+    },
+    mentalConditions: function () {
+      return this.$store.getters.getMentalConditions();
+    },
+    mentalConditionText: function () {
+      return this.$marked.parse(MentalConditionText);
     },
   },
 });

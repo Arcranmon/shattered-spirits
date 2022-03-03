@@ -11,6 +11,20 @@
         "refresh": "_Grit_ 1, _Reflex_ 2",
         "effect": "Reduce the Attack Roll of all Attacks with _Blunt_ Weapons that target you by 1 as long as you are Wielding a _Blade_ Weapon.",
         "special": "You may use the Counter Reaction for no Cost when attacked with a _Blunt_ Weapon as long as you are Wielding a _Blade_ Weapon."
+      },
+      {
+        "name": "Bloodletter",
+        "desc": "You fight a war of attrition, focusing more on inflicting wounds that dealing damage.",
+        "accumulate": "Gain _Momentum_ equal to a Target's topmost _Bleed_ Token when you Hit or Crit with an Attack using a Blade.",
+        "refresh": "_Reflex_ 2, _Focus_ 1",
+        "effect": "Whenever you Hit or Crit with an Attack using a Blade Weapon, increase the Target's top Bleed Token by 1. If the _Bleed_ Token is already 3, inflict _Wound_ 1 (1 _Grit_) instead."
+      },
+      {
+        "name": "Guarded",
+        "desc": "You keep your blade on the defensive, darting in and out whenever .",
+        "accumulate": "Gain 1 _Momentum_ at Refresh if you are Wielding a _Blade_ Weapon.",
+        "refresh": "_Reflex_ 2, _Grit_ 2",
+        "effect": "Whenever you use a _Block_ or _Evade_ Reaction you may deal Damage to the triggering Creature as if you rolled a 5 with your Blade Weapon, so long as they are within your Weapon's Range."
       }
     ],
     "techniques": [
@@ -22,10 +36,35 @@
         "range": "Weapon",
         "ap": 1,
         "move": "Reposition",
-        "cost": "1 _Momentum_",
         "reqs": "Light or Versatile Blade Weapon Wielded.",
         "effect": "Attack using your weapon's Profile. Reduce the Damage by X, with a max of 3. Inflict _Bleed_ 1xX (X _Grit_ negates).",
-        "boost": "1 _Momentum_: Increase the Cost to Negate by 1, and inflict _Wound_ 1 as well."
+        "boost": "1 _Momentum_: Increase the Cost to Negate by 1, and inflict _Wounded_ 1 as well."
+      },
+      {
+        "name": "Passing Blade",
+        "desc": "You quickly strike with your blade while passing by a foe.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Step, Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Use one of the Moves provided by this Technique. Attack using your Weapon's Profile. Use the other Move.",
+        "special": "If you Hit or Crit, add _Safe_ to the second Move.",
+        "boost": "1 _Momentum_: Both Moves are Reposition."
+      },
+      {
+        "name": "Bladelock",
+        "desc": "You lock your blade with an enemy, forcing them to give you their full attention.",
+        "type": "Maneuver",
+        "speed": "Weapon-1",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Unless the Target pays any 2 of _Reflex_ or _Focus_ you enter a Blade Lock with them. Choose one of the creature's Wielded Weapons to enter a Blade Lock with, as well as a Blade Weapon you have Equipped. The first creature to either use the Weapon involved in the Blade Lock or willingly Move out of Melee Range loses the Blade Lock, and the other creature may immediately make a Strike against them at Advantage as a Reaction.",
+        "special": "If the creature is unwillingly moved, you may pay 1 _Momentum_ to make a Strike as a Reaction."
       }
     ]
   },
@@ -45,6 +84,18 @@
     ],
     "techniques": [
       {
+        "name": "Pointed Retreat",
+        "desc": "You lash out with your weapon before safely moving backwards.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Step",
+        "reqs": "Lance Weapon Wielded.",
+        "effect": "Attack with your Weapon's Profile.",
+        "special": "If all Movement is taken after you Attack, add the _Safe_ keyword."
+      },
+      {
         "name": "Lower Spear",
         "desc": "You ready your weapon for an incoming charge, preparing to punish a foe's momentum.",
         "type": "Maneuver",
@@ -58,13 +109,61 @@
     ]
   },
   {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Lasher",
+    "flavor": "You are a maser of whips and chains, causing them to strike as suddenly and unpredictably as a snake.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Martial Artist",
+    "flavor": "Your body itself is the weapon, preventing you from ever being disarmed.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Sharpshooter",
+    "flavor": "You reign down damage from afar, making use of a powerful long-ranged weapon with ease.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Thrower",
+    "flavor": "You fling weapons with uncanny, practiced skill, easily finding purchase against a foe.",
+    "stances": [],
+    "techniques": []
+  },
+  {
     "background": "#3b7a3e",
     "name": "Warrior",
     "flavor": "You studied the blunt.",
     "stances": [
       {
+        "name": "Bully",
+        "desc": "Your weapons carry more weight than most, something you can use to great effect.",
+        "accumulate": "Whenever you _Push_ a foe with your Weapon, gain 1 _Momentum_. Whenever you knock a foe _Prone_ with your Weapon, gain 2 _Momentum_.",
+        "refresh": "_Grit_ 2",
+        "effect": "Whenever you Hit with a Weapon Strike using a Blunt Weapon you may add _Push_ 1. Whenever you Crit, you may add either _Push_ 2 or knock them _Prone_.",
+        "special": "Whenever you _Push_ a creature into an Obstacle with a Blunt Weapon they take 2 True Damage."
+      },
+      {
+        "name": "Crusher",
+        "desc": "You specialize in punishing foes in armor, not only shattering their defenses but also crumpling it in a painful way.",
+        "accumulate": "Gain 1 _Momentum_ every time you inflict _Shred_.",
+        "refresh": "_Grit_ 3",
+        "effect": "Whenever you _Shred_ with a Blunt Weapon also inflict _Wounded_ 1 (1 _Grit_).",
+        "special": "When you reduce a creature's Armor to 0 you may inflict _Hobbled_ 3 (2 _Grit_)."
+      },
+      {
         "name": "Lancebreaker",
-        "desc": "Your heavy weapon is well-suited for breaking through the feeble defenses of a spear.",
+        "desc": "Your blunt weapon is well-suited for breaking through the feeble defenses of a spear.",
         "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blunt_ Weapon.",
         "refresh": "_Grit_ 2, _Reflex_ 1",
         "effect": "Reduce the Attack Roll of all Attacks with _Lance_ Weapons that target you by 1 as long as you are Wielding a _Blunt_ Weapon.",
@@ -73,17 +172,113 @@
     ],
     "techniques": [
       {
-        "name": "Smashing Strike",
-        "desc": "A strike putting the full weight of your weapon to bear, leaving a foe slow to react.",
+        "name": "Backbreaker",
+        "desc": "You slam your weapon into a prone foe, transferring all the force into their body.",
         "type": "Strike",
-        "speed": "Weapon+1",
+        "speed": "Weapon",
         "range": "Weapon",
-        "keywords": ["_Siege_"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "2 _Momentum_",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. If the Target is _Prone_ you may treat a roll of 8 or higher as a 12, add _Hobbled_ 2 to the Attack, and increase the Cost to Negate by 1."
+      },
+      {
+        "name": "Sapping Strike",
+        "desc": "Your weapon makes heavy contact, slowly draining your foe's will to fight.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
         "ap": 1,
         "move": "Reposition",
         "cost": "1 _Momentum_",
         "reqs": "Blunt Weapon Wielded.",
-        "effect": "Attack using your weapon's Profile. Increase the Cost to Negate by 1, and _Daze_ (2 _Focus_) on an 8+."
+        "effect": "Attack using your weapon's Profile. On a Hit, you may force the Target to discard 1 Defensive Token. On a Crit, they discard 2. If they do not have sufficient Defensive Tokens, deal additional damage equal to the number of tokens they do not discard.",
+        "boost": "1 _Momentum_: If you Hit or Crit, inflict _Wounded_ 1 (2 _Grit_) after the Target discards Tokens."
+      },
+      {
+        "name": "Concussive Strike",
+        "desc": "A strike putting the full weight of your weapon to bear, leaving a foe unable to respond.",
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. Increase the Cost to Negate by 1, and inflict _Dazed_ 2 (2 _Focus_) on an 8+."
+      },
+      {
+        "name": "Clear a Path",
+        "desc": "You march across the battlefield, clearing a path with your hammer.",
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Shift",
+        "cost": "3 _Momentum_",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use the Strike Action against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
+      },
+      {
+        "name": "Helm Splitter",
+        "desc": "A mighty overhand blow that thwarts armor and attempts to block.",
+        "type": "Strike",
+        "keywords": ["Unblockable", "_Pierce_ 2"],
+        "speed": "Weapon+1",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "2 _Momentum_",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile and increase the Damage by 2. If your Pierce meets or exceeds the target's Armor inflict _Shred_ 1 (2 _Grit_)."
+      },
+      {
+        "name": "Destructive Backswing",
+        "desc": "You don't waste your weapon's momentum and instead use it to press your advantage.",
+        "type": "Maneuver",
+        "speed": "Reaction",
+        "range": "Weapon",
+        "trigger": "You _Miss_ or _Graze_ with an Attack using a Blunt Weapon.",
+        "cost": "0 _Momentum_",
+        "effect": "Choose one: Move 1, repeat the Attack against an Obstacle in Range, or inflict _Vulnerable_ 1 (1 _Reflex_) on the original Target of the Attack.",
+        "boost": "1 _Momentum_: Choose two instead."
+      },
+      {
+        "name": "Mighty Swing",
+        "desc": "You smash through the terrain with your weapon, creating an opening for yourself.",
+        "type": "Maneuver",
+        "speed": "Weapon-1",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "Attack an Obstacle using your weapon's Profile. If you destroy it, deal 2 Damage and inflict _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the Obstacle. You may also Move 1 into the Obstacle's space, separate from your current Movement.",
+        "boost": "1 _Momentum_: Instead, inflict _Exposed_ 2 and increase the cost to Negate by 1.",
+        "imbue": "1 _Momentum_: Speed is instead Set-Up and the Cost to Negate is increased by 1."
+      },
+      {
+        "name": "Driving Strikes",
+        "desc": "You go for a massive strike that foes can easily avoid but could deal heavy damage.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "ap": 1,
+        "cost": "1 _Momentum_",
+        "move": "Reposition",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "Attack with your Weapon. The Target may spend 1 _Reflex_ or _Momentum_ to add _Push_ equal to half the Damage that would have been dealt to instead take no Damage or Status."
+      },
+      {
+        "name": "Bash Aside",
+        "desc": "You focus an attack on a foe's defenses, doing little damage but knocking them off-balance.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Blunt Weapon Wielded.",
+        "effect": "You may purchase a number of the following effects equal to the Speed of your Weapon and inflict them on a creature within Range. You may purchase the same effect multiple times:\n\t&#8226; 1: Inflict _Exposed_ 1 or _Vulnerable_ 2.\n\t&#8226; 2: Inflict _Staggered_, _Exposed_ 2 _Vulnerable_ 3, or _Dazed_ 1.\n\t&#8226; 3: Inflict _Exposed_ 3 or _Dazed_ 2.\n\t&#8226; 4: Inflict _Dazed_ 3.\nThe total Cost to Negate is Grit or Focus equal to your Weapon's Speed."
       }
     ]
   }

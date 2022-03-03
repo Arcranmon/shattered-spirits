@@ -23,8 +23,8 @@
         "name": "Squall Stance",
         "desc": "By unleashing powerful, concentrated blasts of air, practitioners of the Squall Stance keep their foes off-balance and unable to strike.",
         "refresh": "_Focus_ 2, _Reflex_ 1",
-        "accumulate": "Whenever you _Stagger_ a foe, gain 1 _Momentum_.",
-        "effect": "If you _Stagger_ a foe you may pay 1 _Momentum_ to add _Prone_ (1 _Grit_) to the Attack."
+        "accumulate": "Whenever you _Staggered_ a foe, gain 1 _Momentum_.",
+        "effect": "If you _Staggered_ a foe you may pay 1 _Momentum_ to add _Prone_ (1 _Grit_) to the Attack."
       }
     ],
     "techniques": [
@@ -91,7 +91,7 @@
         "range": "8",
         "move": "Reposition",
         "effect": "Attack with the below Profile.",
-        "boost": "2 _Momentum_. Add _Stagger_ (1 _Momentum_) to this Attack. Reduce this Cost by 1 if you Crit.",
+        "boost": "2 _Momentum_. Add _Staggered_ (1 _Momentum_) to this Attack. Reduce this Cost by 1 if you Crit.",
         "chart": {
           "hit": [
             "Miss",
@@ -153,13 +153,13 @@
             "",
             "",
             "",
-            "_Push_ 1 (1 _Grit_), _Stagger_ (2 _Momentum_)",
-            "_Push_ 1 (1 _Grit_), _Stagger_ (2 _Momentum_)",
-            "_Push_ 2 (1 _Grit_), _Stagger_ (2 _Momentum_)",
-            "_Push_ 2 (1 _Grit_), _Stagger_ (3 _Momentum_)",
-            "_Push_ 2 (2 _Grit_), _Stagger_ (3 _Momentum_)",
-            "_Push_ 2 (2 _Grit_), _Stagger_ (4 _Momentum_)",
-            "_Push_ 2 (2 _Grit_), _Stagger_ (4 _Momentum_)"
+            "_Push_ 1 (1 _Grit_), _Staggered_ (2 _Momentum_)",
+            "_Push_ 1 (1 _Grit_), _Staggered_ (2 _Momentum_)",
+            "_Push_ 2 (1 _Grit_), _Staggered_ (2 _Momentum_)",
+            "_Push_ 2 (1 _Grit_), _Staggered_ (3 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Staggered_ (3 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Staggered_ (4 _Momentum_)",
+            "_Push_ 2 (2 _Grit_), _Staggered_ (4 _Momentum_)"
           ]
         }
       },
@@ -186,7 +186,7 @@
         "area": "Line 6",
         "cost": "1 _Momentum_ at Refresh every Round this Enchant persists.",
         "move": "Reposition",
-        "effect": "Attack with the below Profile. Immediately after, the Area becomes _Windy_, with the direction pointing directly away from you. While this Enchant is active the Area remains _Windy_ and moves with you. You may pay 1 _Momentum_ to change the direction at the start or end your turn. You may end this _Enchant_ as a Reaction to inflict _Stagger_ (2 _Grit_) on all foes in the area.",
+        "effect": "Attack with the below Profile. Immediately after, the Area becomes _Windy_, with the direction pointing directly away from you. While this Enchant is active the Area remains _Windy_ and moves with you. You may pay 1 _Momentum_ to change the direction at the start or end your turn. You may end this _Enchant_ as a Reaction to inflict _Staggered_ (2 _Grit_) on all foes in the area.",
         "boost": "2 _Momentum_. Area is instead a 3x6 Line and the Cost increases to 2.",
         "chart": {
           "hit": [
@@ -210,10 +210,10 @@
             "_Push_ 1 (1 _Grit_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (2 _Grit_)",
-            "_Push_ 3 (2 _Grit_), _Stagger_ (1 _Momentum_)",
-            "_Push_ 3 (2 _Grit_), _Stagger_ (1 _Momentum_)",
-            "_Push_ 3 (2 _Grit_), _Stagger_ (2 _Momentum_)",
-            "_Push_ 3 (2 _Grit_), _Stagger_ (2 _Momentum_)"
+            "_Push_ 3 (2 _Grit_), _Staggered_ (1 _Momentum_)",
+            "_Push_ 3 (2 _Grit_), _Staggered_ (1 _Momentum_)",
+            "_Push_ 3 (2 _Grit_), _Staggered_ (2 _Momentum_)",
+            "_Push_ 3 (2 _Grit_), _Staggered_ (2 _Momentum_)"
           ]
         }
       },
@@ -228,7 +228,7 @@
         "move": "Reposition",
         "effect": "Attack with the below Profile. You may make any spaces a creature is _Slide_d through _Windy_ until the end of the Round.",
         "special": "The Target may pay 1 _Momentum_ to, rather than rolling, treat the Attack Roll as a 10.",
-        "boost": "1 _Momentum_: Inflict either _Accelerate_ or _Stagger_ (2 _Momentum_) on the Target.",
+        "boost": "1 _Momentum_: Inflict either _Accelerate_ or _Staggered_ (2 _Momentum_) on the Target.",
         "chart": {
           "hit": [
             "Miss",
@@ -698,6 +698,19 @@
         "desc": "A sudden breeze catches your attack, redirecting it suddenly into another foe.",
         "effect": "Immediately repeat the Attack against a different Target within Range 4 of the original Target.",
         "boost": "1 _Momentum_. The Attack has Advantage."
+      },
+      {
+        "name": "Windsweep",
+        "desc": "You attack at lightning speed, making it near-impossible to dodge or counter.",
+        "keywords": ["Spirit", "Wind", "Sure Hit", "Warding", "Weak"],
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Shift",
+        "cost": "1 _Momentum_",
+        "reqs": "_Light_ or _Versatile_ Weapon Wielded.",
+        "effect": "Attack using your Weapon's Profile."
       }
     ]
   },

@@ -9,10 +9,6 @@
       <show-cards :inputs="light" job="Armor" :collapse="false" />
     </div>
     <div class="armor--box" style="background-color: DarkGray;">
-      <h2>Medium Armor</h2>
-      <show-cards :inputs="medium" job="Armor" :collapse="false" />
-    </div>
-    <div class="armor--box" style="background-color: DarkGray;">
       <h2>Heavy Armor</h2>
       <show-cards :inputs="heavy" job="Armor" :collapse="false" />
     </div>
@@ -38,9 +34,6 @@ export default Vue.extend({
     },
     light: function () {
       return this.$store.getters.getArmorByCategory("Light Armor");
-    },
-    medium: function () {
-      return this.$store.getters.getArmorByCategory("Medium Armor");
     },
     heavy: function () {
       return this.$store.getters.getArmorByCategory("Heavy Armor");

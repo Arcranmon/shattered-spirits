@@ -1,13 +1,29 @@
 [
   {
     "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Berserker",
+    "flavor": "You find yourself in the front lines, striking with fury and little regard to your own defense.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Brawler",
+    "flavor": "Your fighting style is wild and unpredictable, using the environment itself as often as your weapons.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
     "background": "DarkGoldenRod",
     "name": "Gladiator",
     "flavor": "You practice a flashy, energetic combat style that energizes your allies and demoralizes your foes.",
     "stances": [
       {
         "name": "Spectacle Style",
-        "desc": "Like wheat before a scythe, so are foes before your great weapon.",
+        "desc": "You always defeat your foes with a flourish, encouraging allies while terrifying foes.",
         "accumulate": "Whenever you defeat a creature gain 1 _Momentum_.",
         "refresh": "1 _Momentum_, 1 _Focus_, 1 _Grit_, 1 _Reflex_",
         "effect": "You may take two Reactions on your own Turn, so long as at least one has the trigger 'You defeat a creature'."
@@ -15,15 +31,50 @@
     ],
     "techniques": [
       {
+        "name": "Stay Down!",
+        "desc": "You lash out at foe, attempting to force them to stay on the ground where they belong.",
+        "type": "Strike",
+        "keywords": ["Weapon"],
+        "cost": "1 _Momentum_",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "reqs": "Melee Weapon Wielded",
+        "effect": "Attack using your weapon's Profile. If the Target isn't Prone, this Attack has Disadvantage. Otherwise, deal an additional 2 Damage and inflict either _Grief_ 1 (1 _Focus_) or _Hobbled_ 1 (1 _Grit_)."
+      },
+      {
         "name": "Butcher",
         "desc": "You defeat a foe in a brutal fashion, striking fear into the heart of your foes.",
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "speed": "Reaction",
         "trigger": "You defeat a creature.",
-        "range": "3",
-        "effect": "Choose a creature within Range. Inflict _Fear_ (2 _Focus_) on them."
+        "range": "4",
+        "effect": "Choose a creature within Range. Inflict _Fear_ 2 (2 _Focus_) on them."
       }
     ]
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Rogue",
+    "flavor": "You mostly fight from the shadows, making the most of every opportunity provided to you.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Warlord",
+    "flavor": "You lead your companions from the front, create opportunities for them to strike and rallying them to your side.",
+    "stances": [],
+    "techniques": []
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Weapon Master",
+    "flavor": "You change weapons faster than most can blink, always keeping the one at hand to provide the greatest benefit.",
+    "stances": [],
+    "techniques": []
   }
 ]
