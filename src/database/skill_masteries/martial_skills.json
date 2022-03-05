@@ -42,11 +42,51 @@
   },
   {
     "category": "Skill",
-    "background": "DarkGrey",
+    "background": " #5473ff ",
     "name": "Duelist",
     "flavor": "You always keep one hand free in combat, providing you a flexibility and fluidity that few can match.",
     "stances": [],
-    "techniques": []
+    "techniques": [
+      {
+        "name": "Offensive Flourish",
+        "desc": "You disengage your weapon with an offensive flourish, catching nearby foes off-guard.",
+        "type": "Maneuver",
+        "speed": "Follow-Up",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Flourish"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
+        "effect": "Deal Damage to a creature within Range equal to half the damage you dealt with the Attached Strike. Gain 1 _Momentum_.",
+        "imbue": "2 _Momentum_: Instead, this is 0 AP."
+      },
+      {
+        "name": "Defensive Flourish",
+        "desc": "You disengage your weapon with a defensive flourish, easily flowing back into a defensive stance.",
+        "type": "Defensive",
+        "speed": "Follow-Up",
+        "range": "Self",
+        "keywords": ["Weapon", "Flourish"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
+        "effect": "If you Graze with the Attached Strike, gain any two of _Grit_ or _Reflex_. If you Hit, instead any three. If you Crit, instead any four.",
+        "imbue": "2 _Momentum_: Instead, this is 0 AP."
+      },
+      {
+        "name": "Mobile Flourish",
+        "desc": "You disengage your weapon with a darting flourish, disengaging and slipping away from foes.",
+        "type": "Move",
+        "speed": "Follow-Up",
+        "range": "Melee",
+        "keywords": ["Weapon", "Flourish", "Safe"],
+        "ap": 1,
+        "move": "Shift",
+        "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
+        "effect": "If you Hit or Crit with the Attached Strike, gain 1 _Reflex_.",
+        "imbue": "2 _Momentum_: Instead, this is 0 AP."
+      }
+    ]
   },
   {
     "category": "Skill",
@@ -82,7 +122,7 @@
         "move": "Step",
         "desc": "You bring your weapon down in a vicious blow, tearing a foe's defenses asunder.",
         "effect": "Attack with your Weapon's Profile. Add _Pierce_ 2 to the Attack.",
-        "boost": "2 _Momentum_: If you Hit or Crit with this Attack either inflict _Shred_ 1 or _Damage_ the target's Shield. This Boost has no Cost if the Target uses a Block Reaction."
+        "boost": "2 _Momentum_: Also resolve this Attack against the Target's Armor or Shield using the original roll. This Boost has no Cost if the Target uses a Block Reaction."
       },
       {
         "name": "Cleaving Strike",

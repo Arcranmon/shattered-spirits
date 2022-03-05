@@ -13,6 +13,7 @@
     <div class="armor--content">
       <div v-html="$marked.parseInline(armor.ArmorText)" />
       <div v-html="$marked.parseInline(armor.EnduranceText)" />
+      <div v-html="$marked.parseInline(armor.DurabilityText)" />
       <tooltipped-text
         v-if="armor.HasSpecial"
         :input="armor.SpecialArray"

@@ -24,16 +24,30 @@
         "desc": "You keep your blade on the defensive, darting in and out whenever .",
         "accumulate": "Gain 1 _Momentum_ at Refresh if you are Wielding a _Blade_ Weapon.",
         "refresh": "_Reflex_ 2, _Grit_ 2",
-        "effect": "Whenever you use a _Block_ or _Evade_ Reaction you may deal Damage to the triggering Creature as if you rolled a 5 with your Blade Weapon, so long as they are within your Weapon's Range."
+        "effect": "Whenever you use a _Block_ or _Evade_ Reaction you may pay 1 _Momentum_ to deal Damage to the triggering Creature as if you rolled a 5 with your Blade Weapon, so long as they are within your Weapon's Range."
       }
     ],
     "techniques": [
+      {
+        "name": "Warding Strike",
+        "desc": "A strike that deals less damage, but easily allows you to slip into a defensive stance.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Warding"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. Reduce the Damage by 2. Gain 1 _Grit_ or _Reflex_.",
+        "imbue": "0 _Momentum_: If the Weapon is _Light_ or _Versatile_, Speed is instead Weapon-1 and Move is Step. _Versatile_ Weapons take a -2 damage penalty."
+      },
       {
         "name": "Lacerating Strike",
         "desc": "You go for a quick strike that leaves a vicious wound that, while not immediately lethal, will bleed heavily.",
         "type": "Strike",
         "speed": "Weapon-1",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "reqs": "Light or Versatile Blade Weapon Wielded.",
@@ -41,11 +55,25 @@
         "boost": "1 _Momentum_: Increase the Cost to Negate by 1, and inflict _Wounded_ 1 as well."
       },
       {
+        "name": "Flurry of Steel",
+        "desc": "You unleash a rapid series of sword attacks in the blink of an eye.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "cost": "3 _Momentum_",
+        "ap": 2,
+        "move": "Step",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile three times against the same Target."
+      },
+      {
         "name": "Passing Blade",
         "desc": "You quickly strike with your blade while passing by a foe.",
         "type": "Strike",
         "speed": "Weapon",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Step, Reposition",
         "cost": "1 _Momentum_",
@@ -55,16 +83,66 @@
         "boost": "1 _Momentum_: Both Moves are Reposition."
       },
       {
-        "name": "Bladelock",
+        "name": "Vorpal Strike",
+        "desc": "You go for a vicious strike that is almost certainly lethal for unarmored foes.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. Treat the Target's Armor as twice its current value for this attack. If the Target has no Armor or you target a Creature Part, deal 4 additional Damage."
+      },
+      {
+        "name": "Blade Lock",
         "desc": "You lock your blade with an enemy, forcing them to give you their full attention.",
         "type": "Maneuver",
         "speed": "Weapon-1",
         "range": "Melee",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "reqs": "Blade Weapon Wielded.",
-        "effect": "Unless the Target pays any 2 of _Reflex_ or _Focus_ you enter a Blade Lock with them. Choose one of the creature's Wielded Weapons to enter a Blade Lock with, as well as a Blade Weapon you have Equipped. The first creature to either use the Weapon involved in the Blade Lock or willingly Move out of Melee Range loses the Blade Lock, and the other creature may immediately make a Strike against them at Advantage as a Reaction.",
-        "special": "If the creature is unwillingly moved, you may pay 1 _Momentum_ to make a Strike as a Reaction."
+        "effect": "Unless the Target pays any 2 of _Reflex_ or _Focus_ you enter a Blade Lock with them. Choose one of the creature's Wielded Weapons to enter a Blade Lock with, as well as a Blade Weapon you have Wielded. The first creature to either use the Weapon involved in the Blade Lock or willingly Move out of Melee Range loses the Blade Lock. The victor may immediately make a Basic Strike against them at Advantage as a Reaction. On a Hit or Crit, inflict _Impair_ 1 (1 _Grit_).",
+        "special": "If the creature is unwillingly moved, you may pay 1 _Momentum_ to make a Basic Strike as a Reaction."
+      },
+      {
+        "name": "Sunder",
+        "desc": "You lash out at a foe's weapon, attempting to render it useless.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Sundering", "_Pierce_ 2"],
+        "move": "Reposition",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile, targeting a Wielded Weapon."
+      },
+      {
+        "name": "Blinding Flourish",
+        "desc": "You draw blood and, with an elegant flourish, use it to blind a foe.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Flourish"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be attached to a Weapon Strike made while only Wielding a Blade Weapon.",
+        "effect": "If you inflict _Bleed_ with the Attached Strike you may inflict _Blind_ on a creature within Range until the end of their next turn. The Cost to Negate is (X _Reflex_), where X is equal to the total value of _Bleed_ inflicted.",
+        "imbue": "2 _Momentum_: Instead, this is 0 AP."
+      },
+      {
+        "name": "Slashing Counter",
+        "desc": "You meet a foes' blade in a dangerous counter, putting both weapons are risk.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "cost": "1 _Momentum_, 1 _Grit_ or _Reflex_",
+        "keywords": ["Weapon", "Sundering"],
+        "trigger": "You are Attacked with a Weapon.",
+        "reqs": "Blade Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile, targeting the Weapon used for the Attack. If the Target's weapon is _Damaged_, reduce their initial Attack Roll against you by 2. If you Miss, also resolve the Target's Attack against your Weapon. Otherwise, reduce the Attack Roll by 1."
       }
     ]
   },
@@ -88,6 +166,7 @@
         "desc": "You lash out with your weapon before safely moving backwards.",
         "type": "Strike",
         "speed": "Weapon",
+        "keywords": ["Weapon"],
         "range": "Weapon",
         "ap": 1,
         "move": "Step",
@@ -101,6 +180,7 @@
         "type": "Maneuver",
         "speed": "2",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "None",
         "reqs": "Lance Weapon Wielded.",
@@ -177,6 +257,7 @@
         "type": "Strike",
         "speed": "Weapon",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "cost": "2 _Momentum_",
@@ -189,6 +270,7 @@
         "type": "Strike",
         "speed": "Weapon",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "cost": "1 _Momentum_",
@@ -202,6 +284,7 @@
         "type": "Strike",
         "speed": "Weapon+1",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "cost": "1 _Momentum_",
@@ -214,24 +297,24 @@
         "type": "Strike",
         "speed": "Weapon+1",
         "range": "Melee",
-        "ap": 1,
+        "keywords": ["Weapon"],
+        "ap": 2,
         "move": "Shift",
-        "cost": "3 _Momentum_",
+        "cost": "2 _Momentum_",
         "reqs": "Blunt Weapon Wielded.",
-        "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use the Strike Action against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
+        "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use a Basic Strike against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
       },
       {
         "name": "Helm Splitter",
         "desc": "A mighty overhand blow that thwarts armor and attempts to block.",
         "type": "Strike",
-        "keywords": ["Unblockable", "_Pierce_ 2"],
+        "keywords": ["Weapon", "Armor Piercing", "Unblockable", "_Pierce_ 2"],
         "speed": "Weapon+1",
-        "range": "Weapon",
         "ap": 1,
         "move": "Reposition",
         "cost": "2 _Momentum_",
         "reqs": "Blunt Weapon Wielded.",
-        "effect": "Attack using your weapon's Profile and increase the Damage by 2. If your Pierce meets or exceeds the target's Armor inflict _Shred_ 1 (2 _Grit_)."
+        "effect": "Attack using your weapon's Profile and increase the Damage by 2."
       },
       {
         "name": "Destructive Backswing",
@@ -239,6 +322,7 @@
         "type": "Maneuver",
         "speed": "Reaction",
         "range": "Weapon",
+        "keywords": ["Weapon", "Punish"],
         "trigger": "You _Miss_ or _Graze_ with an Attack using a Blunt Weapon.",
         "cost": "0 _Momentum_",
         "effect": "Choose one: Move 1, repeat the Attack against an Obstacle in Range, or inflict _Vulnerable_ 1 (1 _Reflex_) on the original Target of the Attack.",
@@ -250,6 +334,7 @@
         "type": "Maneuver",
         "speed": "Weapon-1",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "reqs": "Blunt Weapon Wielded.",
@@ -258,27 +343,29 @@
         "imbue": "1 _Momentum_: Speed is instead Set-Up and the Cost to Negate is increased by 1."
       },
       {
-        "name": "Driving Strikes",
-        "desc": "You go for a massive strike that foes can easily avoid but could deal heavy damage.",
-        "type": "Maneuver",
-        "speed": "Weapon",
-        "range": "Weapon",
-        "ap": 1,
-        "cost": "1 _Momentum_",
-        "move": "Reposition",
-        "reqs": "Blunt Weapon Wielded.",
-        "effect": "Attack with your Weapon. The Target may spend 1 _Reflex_ or _Momentum_ to add _Push_ equal to half the Damage that would have been dealt to instead take no Damage or Status."
-      },
-      {
         "name": "Bash Aside",
         "desc": "You focus an attack on a foe's defenses, doing little damage but knocking them off-balance.",
         "type": "Maneuver",
         "speed": "Weapon",
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
         "reqs": "Blunt Weapon Wielded.",
         "effect": "You may purchase a number of the following effects equal to the Speed of your Weapon and inflict them on a creature within Range. You may purchase the same effect multiple times:\n\t&#8226; 1: Inflict _Exposed_ 1 or _Vulnerable_ 2.\n\t&#8226; 2: Inflict _Staggered_, _Exposed_ 2 _Vulnerable_ 3, or _Dazed_ 1.\n\t&#8226; 3: Inflict _Exposed_ 3 or _Dazed_ 2.\n\t&#8226; 4: Inflict _Dazed_ 3.\nThe total Cost to Negate is Grit or Focus equal to your Weapon's Speed."
+      },
+      {
+        "name": "Shattering Flourish",
+        "desc": "You tear your weapon away with brutal force, destroying armor and creating an opening.",
+        "type": "Maneuver",
+        "speed": "Follow-Up",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Armor Piercing", "Sundering"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be attached to a Weapon Strike made while only Wielding a Blunt Weapon.",
+        "effect": "Immediately make a Basic Strike against the creature's Armor using the same Weapon used for the Attached Strike. Deal no Damage to the Creature and inflict no Conditions.",
+        "special": "If the Target of the Attached Strike used a _Block_ Reaction against the Attached Strike, you may instead choose Target a piece of Equipment they have Wielded. This attack does not have Disadvantage."
       }
     ]
   }

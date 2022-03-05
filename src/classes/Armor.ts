@@ -4,6 +4,7 @@ class Armor {
   private _armor: number;
   private _category: string;
   private _dash: number;
+  private _durability: number;
   private _endurance: number;
   private _name: string;
   private _reposition: number;
@@ -28,6 +29,13 @@ class Armor {
   }
   get Dash() {
     return this._dash;
+  }
+  get Durability() {
+    if (this._durability == 0) return "NA";
+    return this._durability;
+  }
+  get DurabilityText() {
+    return "**Durability:** " + this.Durability;
   }
   get EnduranceText() {
     return "**Endurance:** " + this._endurance;
@@ -69,6 +77,7 @@ class Armor {
     this._armor = data.armor || 0;
     this._category = data.category || "";
     this._dash = data.dash || 0;
+    this._durability = data.durability || 0;
     this._endurance = data.endurance || 0;
     this._name = data.name || "";
     this._reposition = data.reposition || 0;

@@ -313,11 +313,10 @@
         "ap": 1,
         "range": "3",
         "type": "Maneuver",
-        "speed": "4",
+        "speed": "2",
         "move": "Shift",
         "target": "Metal weapon or armor on a creature.",
         "desc": "You tear away an enemy's defenses, either disarming them or removing a portion of their armor.",
-        "cost": "1 _Momentum_",
         "effect": "Attack with the below Profile. If you _Disarm_ you may place the weapon in an unoccupied square adjacent to yourself or immediately Equip it in an Open Hand. If you _Shred_, create a _Metal Source_ in an unoccupied adjacent square adjacent to you for each instance of _Shred_ inflicted.",
         "special": "The Status of this attack depends on if you target a weapon or armor. If you target a weapon, inflict _Impair_ 1 on a Graze, _Impair_ 2 on a Hit, and _Disarm_ on a _Crit_. If you target armor, inflict _Vulnerable_ 1 on a Graze, _Vulnerable_ 2 OR _Shred_ 1 on a Hit, and _Vulnerable_ 3 AND _Shred_ 2 on a Crit.",
         "chart": {
@@ -379,7 +378,7 @@
         "desc": "You reinforce all nearby metal, making it nigh-indestructible.",
         "accumulate": "If you are wearing Metal Armor or have a Metal Shield Wielded, gain 1 _Momentum_ at Refresh.",
         "refresh": "_Grit_ 4",
-        "effect": "All Metal Obstacles within a Burst 3 gain Sturdy. In addition, Negating _Damaged_ and _Shred_ costs 1 less for yourself and all allies in a Burst 3, so long as the Weapon or Armor is made of Metal."
+        "effect": "All Metal Obstacles and Equipment within a Burst 3 gain Sturdy."
       },
       {
         "name": "Unstoppable Stance",
@@ -392,7 +391,14 @@
     "techniques": [
       {
         "name": "Shattering Strike",
-        "keywords": ["Spirit", "Metal", "Weapon"],
+        "keywords": [
+          "Spirit",
+          "Metal",
+          "Weapon",
+          "Armor Piercing",
+          "Sundering",
+          "_Pierce_ 2"
+        ],
         "ap": 1,
         "desc": "You amplify your weapon before striking out against a foe's equipment, attempting to sunder arms and armor.",
         "reqs": "Metal Weapon Wielded.",
@@ -400,7 +406,7 @@
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile, reducing the Damage by 2. On a Hit or Crit, choose either the Target's Armor or a piece of Equipment they have Wielded. Inflict _Shred_ 1 (1 _Reflex_) if you choose Armor,  or _Damaged_ (1 _Reflex_) if you chose Equipment. Increase the Cost to Negate by 1 on a Crit."
+        "effect": "Attack using your Weapon's Profile."
       },
       {
         "name": "Steelsnake Strike",
@@ -438,7 +444,7 @@
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile. If you roll less than a 7, treat the Attack Roll as a 7. On a Hit or Crit, _Shred_ 1 (2 _Reflex_)."
+        "effect": "Attack using your Weapon's Profile. If you roll less than a 7, treat the Attack Roll as a 7. On a Hit or Crit, also resolve this Attack against the target's Armor, but inflict no additional Damage or Conditions."
       },
       {
         "name": "Create Weapon",
@@ -487,12 +493,12 @@
         "ap": 1,
         "desc": "You drain the integrity of a nearby weapon or armor, leaving it brittle and weak.",
         "type": "Maneuver",
-        "target": "A metal Weapon or metal Armor.",
+        "target": "Metal Weapon or Armor.",
         "speed": "5",
-        "range": "5",
+        "area": "Burst 2, which moves with you.",
         "move": "Reposition",
         "cost": "1 _Momentum_",
-        "effect": "If you target a Weapon, the Weapon becomes _Damaged_. If you target Armor, _Shred_ 3. When this _Enchant_ ends, the Condition ends."
+        "effect": "All metal of your choice within the Area treats it Durability as two lower."
       },
       {
         "name": "Perfect Armor",
@@ -525,7 +531,7 @@
         "keywords": ["Block"],
         "trigger": "You are Attacked with a Metal weapon without the Ammunition property.",
         "cost": "2 _Grit_, 1 _Momentum_",
-        "reqs": "Metal armor, weapon, or shield Wielded.",
+        "reqs": "Metal Armor, Weapon, or Shield Wielded.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Choose: The attacker reduces their Attack Roll by 1 and their Weapon becomes _Damaged_ OR they reduce their Attack Roll by 4.",

@@ -48,6 +48,7 @@ declare interface IWeaponData {
   category: string;
   chart: IChartData;
   damagetype: string;
+  durability: number;
   itemtype: string;
   hands: number;
   keywords: Array<string>;
@@ -61,6 +62,7 @@ declare interface IArmorData {
   armor: number;
   category: string;
   dash: number;
+  durability: number;
   endurance: number;
   name: string;
   reposition: number;
