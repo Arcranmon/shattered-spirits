@@ -2,23 +2,14 @@
   <div style="padding: 1em;">
     <div v-html="readingDisciplines" />
     <div class="skill--box">
-      <show-cards
-        :inputs="disc.Stances"
-        job="Stances"
-        color_category="Skill"
-        display_text="Styles"
-        :collapse="false"
-      />
+      <stance-card :stance="disc.Stances[0]" />
     </div>
+    <br />
     <div v-html="readingStancesStyles" />
     <div class="skill--box">
-      <show-cards
-        :inputs="disc.Techniques"
-        job="Techniques"
-        color_category="Skill"
-        :collapse="false"
-      />
+      <tech-card :tech="disc.Techniques[0]" />
     </div>
+    <br />
     <div v-html="readingTechniques" />
   </div>
 </template>
@@ -28,11 +19,12 @@ import Vue from "vue";
 import ReadingDisciplines from "@/database/text_files/combat_rules/reading_disciplines.txt";
 import ReadingStancesStyles from "@/database/text_files/combat_rules/reading_stances_styles.txt";
 import ReadingTechniques from "@/database/text_files/combat_rules/reading_techniques.txt";
-import ShowCards from "@/components/ShowCards.vue";
+import TechCard from "@/components/TechCard.vue";
+import StanceCard from "@/components/StanceCard.vue";
 import { store } from "@/store";
 export default Vue.extend({
   name: "combat-basics",
-  components: { ShowCards },
+  components: { TechCard, StanceCard },
   computed: {
     conditionText: function () {
       return this.$marked.parse(ConditionText);
@@ -56,7 +48,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 .skill--box {
   margin: auto;
-  width: 40%;
   align-self: center;
+  width: 40%;
 }
 </style>

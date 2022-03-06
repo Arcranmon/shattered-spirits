@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 1em;">
-    <div class="weapon--box" style="background-color: #e2a66e;">
+    <div class="weapon--box" style="background-color: #a78562;">
       <h2>Improvised</h2>
     </div>
     <div class="weapon--box" style="background-color: #e2a66e;">

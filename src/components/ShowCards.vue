@@ -122,4 +122,8 @@ export default Vue.extend({
 .expand--body {
   background-image: linear-gradient(rgba(255, 255, 255, 0.2) 0 0);
 }
+.centered {
+  margin: auto;
+  align-self: center;
+}
 </style>
