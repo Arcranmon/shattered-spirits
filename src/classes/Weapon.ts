@@ -17,7 +17,7 @@ class Weapon {
     this._chart = null;
     this._category = "";
     this._damagetype = "";
-    this._durability = "";
+    this._durability = 0;
     this._hands = 3;
     this._keywords = [];
     this._name = "";
