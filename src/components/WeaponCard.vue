@@ -16,6 +16,7 @@
           }}<tooltipped-text
             :input="weapon.Keywords"
             :commas="true"
+            :itallic="false"
             :splitForKeyword="true"
           /></div
       ></b>

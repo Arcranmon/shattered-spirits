@@ -19,6 +19,8 @@
           ><tooltipped-text
             v-if="tech.HasKeywords"
             :input="tech.Keywords"
+            :itallic="false"
+            :splitForKeyword="true"
             :commas="true"
         /></b>
       </div>
