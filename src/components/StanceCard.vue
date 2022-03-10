@@ -12,22 +12,18 @@
       </div>
     </div>
     <div class="stance--content">
-      <display-tooltip-text
-        v-if="stance.HasAccumulate"
-        :string="stance.AccumulateHeader"
-      />
-      <display-tooltip-text
-        v-if="stance.HasRefresh"
-        :string="stance.RefreshHeader"
-      />
-      <display-tooltip-text
-        v-if="stance.HasEffect"
-        :string="stance.EffectHeader"
-      />
-      <display-tooltip-text
-        v-if="stance.HasSpecial"
-        :string="stance.SpecialHeader"
-      />
+      <div v-if="stance.HasAccumulate">
+        <display-tooltip-text :string="stance.AccumulateHeader" />
+      </div>
+      <div v-if="stance.HasRefresh">
+        <display-tooltip-text :string="stance.RefreshHeader" />
+      </div>
+      <div v-if="stance.HasEffect">
+        <display-tooltip-text :string="stance.EffectHeader" />
+      </div>
+      <div v-if="stance.HasSpecial">
+        <display-tooltip-text :string="stance.SpecialHeader" />
+      </div>
     </div>
   </div>
 </template>

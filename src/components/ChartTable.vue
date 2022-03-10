@@ -53,8 +53,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.chart--format {
-}
 .Miss {
   background-color: $color--chart-miss;
 }
