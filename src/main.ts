@@ -8,9 +8,12 @@ import "vuetify/dist/vuetify.min.css";
 import Vuetify from "vuetify";
 import vuetify from "./plugins/vuetify";
 import { marked } from "marked";
+import Tooltip from "@/components/TooltipParam.vue";
 
 Vue.config.productionTip = false;
 Vue.use(Vuetify);
+
+Vue.component("Tooltip", Tooltip);
 
 Vue.prototype.$marked = marked;
 

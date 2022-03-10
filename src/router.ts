@@ -30,6 +30,8 @@ import MartialSkills from "@/pages/skills/martial-skills/index.vue";
 import StratagemSkills from "@/pages/skills/stratagem-skills/index.vue";
 import WeaponSkills from "@/pages/skills/weapon-skills/index.vue";
 
+import World from "@/pages/world/index.vue";
+
 Vue.use(Router);
 
 const r = new Router({
@@ -223,6 +225,14 @@ const r = new Router({
       name: "weapon-skills",
       meta: {
         title: "Weapon Skills",
+      },
+    },
+    {
+      path: "/world",
+      component: World,
+      name: "world",
+      meta: {
+        title: "The World",
       },
     },
   ],

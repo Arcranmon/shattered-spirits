@@ -27,7 +27,7 @@ class Weapon {
   }
 
   get CategoryHeader() {
-    return this._category + ", ";
+    return this._category;
   }
   get Category() {
     return this._category;
@@ -45,7 +45,7 @@ class Weapon {
     return this._durability;
   }
   get DurabilityHeader() {
-    if (this._durability != 0) return ", Durability " + this.Durability;
+    if (this._durability != 0) return "Durability " + this.Durability + ", ";
   }
   get HandsPhrase() {
     if (this._hands == 0) return "No Hands, ";
@@ -59,11 +59,7 @@ class Weapon {
     return this._keywords;
   }
   get KeywordsHeader() {
-    var allKeywords = "";
-    for (var keyword of this._keywords) {
-      allKeywords = allKeywords + ", " + keyword;
-    }
-    return allKeywords;
+    return this.Keywords.join(", ");
   }
   get Name() {
     return this._name;
@@ -72,9 +68,9 @@ class Weapon {
     return this._range;
   }
   get RangeHeader() {
-    if (this.Range == "Melee") return ", _" + this._range + "_";
-    if (this.Range.length > 2) return ", " + this._range;
-    return ", _Range_ " + this._range;
+    if (this.Range == "Melee") return "_" + this._range + "_, ";
+    if (this.Range.length > 2) return this._range + ", ";
+    return "_Range_ " + this._range + ", ";
   }
   get Speed() {
     return this._speed;
@@ -82,11 +78,11 @@ class Weapon {
   get HasSpecial() {
     return this._special.length > 0;
   }
-  get SpecialArray() {
-    return this.KeywordParsedArray(this._special, "**Special:** ");
+  get SpecialHeader() {
+    return "**Special:** " + this._special;
   }
   get SpeedHeader() {
-    return "Speed " + this._speed;
+    return "Speed " + this._speed + ", ";
   }
 
   // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.
@@ -104,7 +100,7 @@ class Weapon {
     this._category = data.category || "";
     this._damagetype = data.damagetype || "";
     this._durability = data.durability || 0;
-    this._hands = data.hands || 3;
+    this._hands = data.hands || 0;
     this._keywords = data.keywords || [];
     this._name = data.name || "";
     this._range = data.range || "";

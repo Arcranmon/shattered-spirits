@@ -6,19 +6,14 @@
       </div>
       <b>
         <div class="armor--keywords">
-          {{ armor.Category }}
+          {{ armor.Category }}{{ armor.DurabilityHeader }}
         </div></b
       >
     </div>
     <div class="armor--content">
       <div v-html="$marked.parseInline(armor.ArmorText)" />
       <div v-html="$marked.parseInline(armor.EnduranceText)" />
-      <div v-html="$marked.parseInline(armor.DurabilityText)" />
-      <tooltipped-text
-        v-if="armor.HasSpecial"
-        :input="armor.SpecialArray"
-        :itallic="true"
-      />
+      <display-tooltip-text v-if="armor.HasSpecial" :string="armor.Special" />
       <div class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row">
           <v-col class="chart--head" cols="4"
@@ -58,7 +53,7 @@
 <script>
 import Vue from "vue";
 import { Armor } from "@/class";
-import TooltippedText from "./TooltipTextFromArray.vue";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 export default Vue.extend({
   name: "armor-card",
@@ -68,7 +63,6 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { TooltippedText },
 });
 </script>
 

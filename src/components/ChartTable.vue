@@ -26,7 +26,10 @@
           >{{ chart.Damage(index) }}
         </v-col>
         <v-col class="chart--cols chart--cols-right" cols="6"
-          ><tooltipped-text :input="chart.Status(index)" />
+          ><display-tooltip-text
+            :string="chart.Status(index)"
+            :italic="false"
+          />
         </v-col>
       </v-row>
     </div>
@@ -36,7 +39,7 @@
 <script>
 import Vue from "vue";
 import { Chart } from "@/class";
-import TooltippedText from "./TooltipTextFromArray.vue";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 export default Vue.extend({
   name: "chart-table",
@@ -46,7 +49,6 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { TooltippedText },
 });
 </script>
 

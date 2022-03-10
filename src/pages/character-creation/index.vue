@@ -1,19 +1,25 @@
 <template>
   <div style="padding: 1em;">
     <h2>Character Creation</h2>
-    <div v-html="choosingYourSpirit" />
+    <display-tooltip-text :string="choosingYourSpirit" />
     <br />
-    <div v-html="choosingYourEquipment" />
     <br />
-    <div v-html="choosingYourStuff" />
+    <display-tooltip-text :string="choosingYourEquipment" />
     <br />
-    <div v-html="choosingYourTalents" />
     <br />
-    <div v-html="choosingYourAppearance" />
+    <display-tooltip-text :string="choosingYourStuff" />
     <br />
-    <div v-html="creatingYourBackground" />
     <br />
-    <div v-html="finalizingYourCharacter" />
+    <display-tooltip-text :string="choosingYourTalents" />
+    <br />
+    <br />
+    <display-tooltip-text :string="choosingYourAppearance" />
+    <br />
+    <br />
+    <display-tooltip-text :string="creatingYourBackground" />
+    <br />
+    <br />
+    <display-tooltip-text :string="finalizingYourCharacter" />
   </div>
 </template>
 
@@ -26,6 +32,7 @@ import ChoosingYourTalents from "@/database/text_files/character_creation/choosi
 import ChoosingYourAppearance from "@/database/text_files/character_creation/choosing_your_appearance.txt";
 import CreatingYourBackground from "@/database/text_files/character_creation/creating_your_background.txt";
 import FinalizingYourCharacter from "@/database/text_files/character_creation/finalizing_your_character.txt";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 import { store } from "@/store";
 export default Vue.extend({
@@ -33,25 +40,25 @@ export default Vue.extend({
   components: {},
   computed: {
     choosingYourSpirit() {
-      return this.$marked(ChoosingYourSpirit);
+      return ChoosingYourSpirit;
     },
     choosingYourEquipment() {
-      return this.$marked(ChoosingYourEquipment);
+      return ChoosingYourEquipment;
     },
     choosingYourStuff() {
-      return this.$marked(ChoosingYourStuff);
+      return ChoosingYourStuff;
     },
     choosingYourTalents() {
-      return this.$marked(ChoosingYourTalents);
+      return ChoosingYourTalents;
     },
     choosingYourAppearance() {
-      return this.$marked(ChoosingYourAppearance);
+      return ChoosingYourAppearance;
     },
     creatingYourBackground() {
-      return this.$marked(CreatingYourBackground);
+      return CreatingYourBackground;
     },
     finalizingYourCharacter() {
-      return this.$marked(FinalizingYourCharacter);
+      return FinalizingYourCharacter;
     },
   },
 });

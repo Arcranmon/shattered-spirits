@@ -31,11 +31,10 @@ class Armor {
     return this._dash;
   }
   get Durability() {
-    if (this._durability == 0) return "NA";
     return this._durability;
   }
-  get DurabilityText() {
-    return "**Durability:** " + this.Durability;
+  get DurabilityHeader() {
+    if (this._durability != 0) return ", Durability " + this._durability;
   }
   get EnduranceText() {
     return "**Endurance:** " + this._endurance;

@@ -1,14 +1,14 @@
 [
   {
-    "name": "Slam",
+    "name": "Fist",
     "itemtype": "Weapon",
     "speed": 2,
     "category": "Unarmed",
-    "hands": 0,
+    "hands": 1,
     "damagetype": "Physical",
     "range": "Melee",
-    "keywords": ["Versatile"],
-    "special": "Characters may always use the Slam Action, even when other weapons are _Wielded_. In addition, the Cost to Improvise any Strike using Slam is reduced by 2.",
+    "keywords": ["Versatile", "_Fluid_ 1"],
+    "special": "Characters may use the Fist Weapon so long as they have an open hand. If both hands are open they may choose to use both for this Attack and increase the Damage by 1.",
     "chart": {
       "hit": [
         "Miss",
@@ -23,7 +23,52 @@
         "Crit",
         "Crit"
       ],
-      "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
+      "damage": [0, 0, 1, 1, 2, 3, 4, 4, 5, 5, 6],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Slam",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Versatile", "_Fluid_ 2"],
+    "special": "Characters may always use the Slam Action, even when other weapons are _Wielded_.",
+    "chart": {
+      "hit": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4],
       "status": [
         "",
         "",
@@ -449,7 +494,7 @@
     "itemtype": "Weapon",
     "speed": 5,
     "category": "Blunt",
-    "hands": 1,
+    "hands": 2,
     "damagetype": "Physical",
     "durability": 10,
     "range": "Melee",
@@ -489,7 +534,7 @@
     "itemtype": "Weapon",
     "speed": 5,
     "category": "Blunt",
-    "hands": 1,
+    "hands": 2,
     "damagetype": "Physical",
     "durability": 11,
     "range": "Melee",
@@ -691,7 +736,7 @@
     "category": "Shield",
     "hands": 1,
     "damagetype": "Physical",
-    "durability": 9,
+    "durability": 8,
     "range": "Melee",
     "keywords": ["Versatile"],
     "special": "While Wielding a Shield, increase your Armor by 1 for the remainder of the Turn whenever you use a Block Reaction. If the Shield is _Damaged_, you lose this benefit.",
@@ -713,15 +758,15 @@
       "status": [
         "",
         "",
-        "Any 1 of _Exposed_ 1 or _Vulnerable_ 1 (1 _Grit_)",
-        "Any 1 of _Exposed_ 1 or _Vulnerable_ 1 (1 _Grit_)",
-        "Any 1 of _Exposed_ 1 or _Vulnerable_ 1 (1 _Grit_)",
-        "Any 1 of _Exposed_ 1 or _Vulnerable_ 1 (1 _Grit_)",
-        "Any 2 of _Exposed_ 1 or _Vulnerable_ 1 (2 _Grit_)",
-        "Any 2 of _Exposed_ 1 or _Vulnerable_ 1 (2 _Grit_)",
-        "_Prone_ (2 _Grit_)",
-        "_Prone_ (3 _Grit_)",
-        "_Prone_ (3 _Grit_)"
+        "_Vulnerable_ 1 (1 _Focus_ or _Grit_)",
+        "_Vulnerable_ 1 (1 _Focus_ or _Grit_)",
+        "_Vulnerable_ 2 (1 _Grit_)",
+        "_Vulnerable_ 2 (1 _Grit_)",
+        "_Exposed_ 1 or _Vulnerable_ 2 (2 _Grit_)",
+        "_Exposed_ 1 or _Vulnerable_ 2 (2 _Grit_)",
+        "_Exposed_ 2 or _Prone_ (2 _Grit_)",
+        "_Exposed_ 2 or _Prone_ (2 _Grit_)",
+        "_Exposed_ 2, _Prone_ (3 _Grit_)"
       ]
     }
   },

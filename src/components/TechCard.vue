@@ -16,50 +16,41 @@
           ><br />
         </span>
         <b
-          ><tooltipped-text
+          ><display-tooltip-text
             v-if="tech.HasKeywords"
-            :input="tech.Keywords"
-            :itallic="false"
-            :splitForKeyword="true"
-            :commas="true"
+            :string="tech.KeywordsHeader"
+            :italic="false"
         /></b>
       </div>
     </div>
     <div class="tech--content">
-      <span v-if="tech.HasCost"
-        ><tooltipped-text
-          class="tech--format"
-          :input="tech.CostArray"
-          :itallic="true"
-        />
-      </span>
-      <span class="tech--format" v-if="tech.HasReqs">
-        <tooltipped-text :input="tech.ReqArray" :itallic="true"
-      /></span>
-      <span class="tech--format" v-if="tech.HasTrigger">
-        <tooltipped-text :input="tech.TriggerArray" :itallic="true"
-      /></span>
-      <span class="tech--format" v-if="tech.HasTarget"
-        ><tooltipped-text :input="tech.TargetArray" :itallic="true"
-      /></span>
-      <span v-if="tech.HasMove"
-        ><tooltipped-text
-          class="tech--format"
-          :input="tech.MoveArray"
-          :itallic="true"
-      /></span>
-      <span class="tech--format" v-if="tech.HasEffect">
-        <tooltipped-text :input="tech.EffectArray" :itallic="true"
-      /></span>
-      <span class="tech--format" v-if="tech.HasSpecial"
-        ><tooltipped-text :input="tech.SpecialArray" :itallic="true"
-      /></span>
-      <span class="tech--format" v-if="tech.HasImbue">
-        <tooltipped-text :input="tech.ImbueArray" :itallic="true" />
-      </span>
-      <span class="tech--format" v-if="tech.HasBoost">
-        <tooltipped-text :input="tech.BoostArray" :itallic="true" />
-      </span>
+      <div v-if="tech.HasCost">
+        <display-tooltip-text class="tech--format" :string="tech.CostHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasReqs">
+        <display-tooltip-text :string="tech.ReqsHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasTrigger">
+        <display-tooltip-text :string="tech.TriggerHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasTarget">
+        <display-tooltip-text :string="tech.TargetHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasMove">
+        <display-tooltip-text :string="tech.MoveHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasEffect">
+        <display-tooltip-text :string="tech.EffectHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasSpecial">
+        <display-tooltip-text :string="tech.SpecialHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasImbue">
+        <display-tooltip-text :string="tech.ImbueHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasBoost">
+        <display-tooltip-text :string="tech.BoostHeader" />
+      </div>
       <div style="height: 0.5em;" />
       <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /> </span>
     </div>
@@ -72,7 +63,7 @@ import { Technique } from "@/class";
 import { store } from "@/store";
 import ChartTable from "./ChartTable.vue";
 import Tooltip from "./TooltipParam.vue";
-import TooltippedText from "./TooltipTextFromArray.vue";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 export default Vue.extend({
   name: "technique-card",
@@ -86,7 +77,7 @@ export default Vue.extend({
       required: false,
     },
   },
-  components: { ChartTable, Tooltip, TooltippedText },
+  components: { ChartTable, Tooltip },
 });
 </script>
 
@@ -125,9 +116,7 @@ export default Vue.extend({
   padding: none;
   text-align: left;
   color: black;
-  display: inline;
   white-space: normal !important;
-  line-height: 1 !important;
 }
 .Strike {
   border-bottom: 5px solid $color--strike;

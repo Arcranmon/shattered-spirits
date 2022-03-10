@@ -1,5 +1,7 @@
 <template>
   <div style="text-align: center;">
+    <custom-button to="/world">The World</custom-button>
+    <br />
     <custom-button to="/character-creation"
       >Character Creation Rules</custom-button
     >

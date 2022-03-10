@@ -1,20 +1,20 @@
 <template>
   <div style="padding: 1em;">
     <h2>Combat Rules</h2>
-    <div v-html="combatText" />
+    <display-tooltip-text :string="combatText" />
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import CombatText from "@/database/text_files/combat_rules/combat.txt";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 import { store } from "@/store";
 export default Vue.extend({
   name: "combat-basics",
-  components: {},
   computed: {
-    combatText: function () {
-      return this.$marked.parse(CombatText);
+    combatText() {
+      return CombatText;
     },
   },
 });

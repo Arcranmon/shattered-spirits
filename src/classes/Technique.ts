@@ -58,6 +58,9 @@ class Technique {
   public get Chart() {
     return this._chart;
   }
+  public get Cost() {
+    return this._cost;
+  }
   public get Desc() {
     return this._desc;
   }
@@ -88,6 +91,9 @@ class Technique {
   public get Speed() {
     return this._speed;
   }
+  public get Trigger() {
+    return this._trigger;
+  }
   public get Type() {
     return this._type;
   }
@@ -101,8 +107,8 @@ class Technique {
   public get HasBoost() {
     return this._boost.length > 0;
   }
-  public get BoostArray() {
-    return this.KeywordParsedArray(this._boost, "**Boost:** ");
+  public get BoostHeader() {
+    return "**Boost:** " + this._boost;
   }
   public get HasChart() {
     return this.Chart != null;
@@ -110,29 +116,32 @@ class Technique {
   public get HasCost() {
     return this._cost.length > 0;
   }
-  public get CostArray() {
-    return this.KeywordParsedArray(this._cost, "**Cost:** ");
+  public get CostHeader() {
+    return "**Cost:** " + this._cost;
   }
   public get HasEffect() {
     return this._effect.length > 0;
   }
-  public get EffectArray() {
-    return this.KeywordParsedArray(this._effect, "**Effect:** ");
+  public get EffectHeader() {
+    return "**Effect:** " + this._effect;
   }
   public get HasImbue() {
     return this._imbue.length > 0;
   }
-  public get ImbueArray() {
-    return this.KeywordParsedArray(this._imbue, "**Imbue:** ");
+  public get ImbueHeader() {
+    return "**Imbue:** " + this._imbue;
   }
   public get HasKeywords() {
     return this._keywords.length > 0;
   }
+  public get KeywordsHeader() {
+    return this.Keywords.join(", ");
+  }
   public get HasMove() {
     return this._move.length > 0;
   }
-  public get MoveArray() {
-    return this.KeywordParsedArray(this._move, "**Movement:** ");
+  public get MoveHeader() {
+    return "**Move:** " + this.Move;
   }
   public get HasRange() {
     return this.Range != "";
@@ -140,38 +149,37 @@ class Technique {
   public get HasReqs() {
     return this._reqs.length > 0;
   }
-  public get ReqArray() {
-    return this.KeywordParsedArray(this._reqs, "**Requirements:** ");
+  public get RangeHeader() {
+    if (this.Range.includes("Weapon")) return "Weapon Range";
+    else if (this.Range.length <= 2) return "Range " + this._range;
+    else return this._range;
+  }
+  public get ReqsHeader() {
+    return "**Requirements:** " + this._reqs;
   }
   public get HasSpecial() {
     return this._special.length > 0;
   }
-  public get SpecialArray() {
-    return this.KeywordParsedArray(this._special, "**Special:** ");
+  public get SpecialHeader() {
+    return "**Special:** " + this._special;
   }
-  public get HasTarget() {
-    return this._target.length > 0;
-  }
-  public get TargetArray() {
-    return this.KeywordParsedArray(this._target, "**Target:** ");
-  }
-  public get HasTrigger() {
-    return this._trigger.length > 0;
-  }
-  public get TriggerArray() {
-    return this.KeywordParsedArray(this._trigger, "**Trigger:** ");
-  }
-
   public get SpeedHeader() {
     if (this.Speed.includes("Weapon"))
       return "Weapon Speed" + this.Speed.substring(6);
     if (this.Speed.length == 1) return "Speed " + this.Speed;
     else return this._speed;
   }
-  public get RangeHeader() {
-    if (this.Range.includes("Weapon")) return "Weapon Range";
-    else if (this.Range.length <= 2) return "Range " + this._range;
-    else return this._range;
+  public get HasTarget() {
+    return this._target.length > 0;
+  }
+  public get TargetHeader() {
+    return "**Target:** " + this._target;
+  }
+  public get HasTrigger() {
+    return this._trigger.length > 0;
+  }
+  public get TriggerHeader() {
+    return "**Trigger:** " + this._trigger;
   }
 
   // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.

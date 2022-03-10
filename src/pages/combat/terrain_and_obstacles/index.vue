@@ -1,13 +1,14 @@
 <template>
   <div style="padding: 1em;">
     <h2>Terrain and Obstacles</h2>
-    <h2>Terrain</h2>
+    <div v-html="terrainText" />
     <div v-for="terrain in terrains">
-      <span
-        v-html="$marked('**' + terrain.keyword + '**: ' + terrain.effect)"
+      <display-tooltip-text
+        :string="'**' + terrain.keyword + '**: ' + terrain.effect"
       />
     </div>
-    <h2>Obstacles</h2>
+    <br />
+    <div v-html="obstacleText" />
     <div v-for="obstacle in obstacles">
       <span
         v-html="$marked('**' + obstacle.keyword + '**: ' + obstacle.effect)"
@@ -18,11 +19,20 @@
 
 <script>
 import Vue from "vue";
+import ObstacleText from "@/database/text_files/combat_rules/obstacles.txt";
+import TerrainText from "@/database/text_files/combat_rules/terrain.txt";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 import { store } from "@/store";
 export default Vue.extend({
   name: "combat-basics",
   components: {},
   computed: {
+    obstacleText: function () {
+      return this.$marked.parse(ObstacleText);
+    },
+    terrainText: function () {
+      return this.$marked.parse(TerrainText);
+    },
     obstacles: function () {
       return this.$store.getters.getObstacles();
     },

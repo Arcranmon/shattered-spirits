@@ -12,25 +12,21 @@
       </div>
     </div>
     <div class="stance--content">
-      <tooltipped-text
+      <display-tooltip-text
         v-if="stance.HasAccumulate"
-        :input="stance.AccumulateArray"
-        :itallic="true"
+        :string="stance.AccumulateHeader"
       />
-      <tooltipped-text
+      <display-tooltip-text
         v-if="stance.HasRefresh"
-        :input="stance.RefreshArray"
-        :itallic="true"
+        :string="stance.RefreshHeader"
       />
-      <tooltipped-text
+      <display-tooltip-text
         v-if="stance.HasEffect"
-        :input="stance.EffectArray"
-        :itallic="true"
+        :string="stance.EffectHeader"
       />
-      <tooltipped-text
+      <display-tooltip-text
         v-if="stance.HasSpecial"
-        :input="stance.SpecialArray"
-        :itallic="true"
+        :string="stance.SpecialHeader"
       />
     </div>
   </div>
@@ -39,7 +35,6 @@
 <script>
 import Vue from "vue";
 import { Stance } from "@/class";
-import TooltippedText from "./TooltipTextFromArray.vue";
 
 export default Vue.extend({
   name: "stance-card",
@@ -53,7 +48,7 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { TooltippedText },
+  components: {},
 });
 </script>
 

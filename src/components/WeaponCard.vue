@@ -7,25 +7,19 @@
       <b
         ><div class="weapon--keywords">
           {{ weapon.SpeedHeader }}{{ weapon.DurabilityHeader
-          }}<tooltipped-text
-            :input="[weapon.RangeHeader]"
-            :commas="false"
-            :splitForKeyword="true"
-          />
-          {{ weapon.HandsPhrase }}{{ weapon.CategoryHeader
-          }}<tooltipped-text
-            :input="weapon.Keywords"
-            :commas="true"
-            :itallic="false"
-            :splitForKeyword="true"
+          }}<display-tooltip-text :string="weapon.RangeHeader" />
+          {{ weapon.HandsPhrase }}{{ weapon.CategoryHeader }}
+          <br />
+          <display-tooltip-text
+            :string="weapon.KeywordsHeader"
+            :italic="false"
           /></div
       ></b>
     </div>
     <div class="weapon--content">
-      <tooltipped-text
+      <display-tooltip-text
         v-if="weapon.HasSpecial"
-        :input="weapon.SpecialArray"
-        :itallic="true"
+        :string="weapon.SpecialHeader"
       />
       <div style="height: 0.5em;" />
       <chart-table :chart="weapon.Chart" />
@@ -37,7 +31,7 @@
 import Vue from "vue";
 import { Weapon } from "@/class";
 import ChartTable from "./ChartTable.vue";
-import TooltippedText from "./TooltipTextFromArray.vue";
+import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 export default Vue.extend({
   name: "weapon-card",
@@ -47,7 +41,7 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { ChartTable, TooltippedText },
+  components: { ChartTable },
 });
 </script>
 
