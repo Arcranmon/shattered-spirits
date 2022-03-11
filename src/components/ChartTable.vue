@@ -28,7 +28,7 @@
         <v-col class="chart--cols chart--cols-right" cols="6"
           ><display-tooltip-text
             :string="chart.Status(index)"
-            :italic="false"
+            :decorate="false"
           />
         </v-col>
       </v-row>

@@ -1,17 +1,18 @@
 <template>
   <span
     ><span v-if="this.$store.getters.existsInAnyGlossary(input)"
-      ><v-tooltip bottom
+      ><v-tooltip bottom nudge-top="8"
         ><template v-slot:activator="{ on, attrs }">
           <span
             style="white-space: pre-wrap;"
+            v-bind:class="{ dotted: decorate }"
             v-bind="attrs"
             v-on="on"
-            v-html="$marked.parseInline(formatInput)" /></template
-        ><span
-          v-html="
-            $marked(this.$store.getters.getGlossaryItem(input))
-          " /></v-tooltip></span
+            v-html="$marked.parseInline(input)" /></template
+        ><span>{{
+          this.$store.getters.getGlossaryItem(input)
+        }}</span></v-tooltip
+      ></span
     ><span
       style="white-space: pre-wrap;"
       v-else
@@ -30,16 +31,10 @@ export default Vue.extend({
       type: String,
       required: true,
     },
-    italic: {
+    decorate: {
       type: Boolean,
       required: false,
       default: false,
-    },
-  },
-  computed: {
-    formatInput: function () {
-      if (this.italic) return "*" + this.input + "*";
-      return this.input;
     },
   },
 });
@@ -53,5 +48,9 @@ export default Vue.extend({
   background-color: $color--off-white;
   border: $border--black-standard;
   width: 20%;
+  opacity: 1;
+}
+.v-tooltip__content.menuable__content__active {
+  opacity: 1 !important;
 }
 </style>

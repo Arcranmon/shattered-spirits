@@ -12,7 +12,7 @@
           <br />
           <display-tooltip-text
             :string="weapon.KeywordsHeader"
-            :italic="false"
+            :decorate="false"
           /></div
       ></b>
     </div>

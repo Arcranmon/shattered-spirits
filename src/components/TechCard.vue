@@ -19,7 +19,7 @@
           ><display-tooltip-text
             v-if="tech.HasKeywords"
             :string="tech.KeywordsHeader"
-            :italic="false"
+            :decorate="false"
         /></b>
       </div>
     </div>

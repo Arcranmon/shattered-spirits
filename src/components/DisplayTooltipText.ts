@@ -6,7 +6,7 @@ Vue.component("DisplayTooltipText", {
       required: true,
       type: String,
     },
-    italic: {
+    decorate: {
       required: false,
       type: Boolean,
       default: true,
@@ -26,8 +26,8 @@ Vue.component("DisplayTooltipText", {
           split_input[index] =
             '<tooltip input="' +
             split_input[index] +
-            '" :italic="' +
-            this.italic +
+            '" :decorate="' +
+            this.decorate +
             '"></tooltip>';
         }
       }
