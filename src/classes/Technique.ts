@@ -135,7 +135,7 @@ class Technique {
     return this._keywords.length > 0;
   }
   public get KeywordsHeader() {
-    return this.Keywords.join(", ");
+    return "_" + this.Keywords.join("_, ") + "_";
   }
   public get HasMove() {
     return this._move.length > 0;

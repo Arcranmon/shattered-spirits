@@ -59,7 +59,7 @@ class Weapon {
     return this._keywords;
   }
   get KeywordsHeader() {
-    return this.Keywords.join(", ");
+    return "_" + this.Keywords.join("_, _") + "_";
   }
   get Name() {
     return this._name;
