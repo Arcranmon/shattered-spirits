@@ -93,7 +93,7 @@
         "move": "Reposition",
         "cost": "1 _Momentum_",
         "reqs": "Blade Weapon Wielded.",
-        "effect": "Attack using your weapon's Profile. Treat the Target's Armor as twice its current value for this attack. If the Target has no Armor or you target a Creature Part, deal 4 additional Damage."
+        "effect": "Attack using your weapon's Profile. Treat the Target's _Guard_ as twice its current value for this attack. If the Target has no _Guard_ or you target a Creature Part, deal 4 additional Damage."
       },
       {
         "name": "Blade Lock",
@@ -128,7 +128,7 @@
         "keywords": ["Weapon", "Flourish"],
         "ap": 1,
         "move": "Reposition",
-        "reqs": "Must be attached to a Weapon Strike made while only Wielding a Blade Weapon.",
+        "reqs": "Must be attached to a Weapon Strike made while Wielding a Blade Weapon.",
         "effect": "If you inflict _Bleed_ with the Attached Strike you may inflict _Blind_ on a creature within Range until the end of their next turn. The Cost to Negate is (X _Reflex_), where X is equal to the total value of _Bleed_ inflicted.",
         "imbue": "2 _Momentum_: Instead, this is 0 AP."
       },
@@ -159,6 +159,13 @@
         "effect": "The first time each Turn a creature enters your Reach while your Wielding a Lance Weapon you may pay 1 _Reflex_ or _Momentum_ to deal Damage to them as a Reaction as if you rolled a 4 with the Wielded Lance Weapon."
       },
       {
+        "name": "Skewer",
+        "desc": "You make mighty strikes with your lance.",
+        "accumulate": "Gain 1 _Momentum_ every time you Hit with an _Attack_ using a Lance Weapon.",
+        "refresh": "_Focus_ 2, _Reflex_ 1",
+        "effect": "Once per round, when making an _Attack_ with a Lance Weapon that has a Range of Weapon, you may take _Disadvantage_ on the Attack. If you do, instead resolve the Attack in a Line X, where X is the _Reach_ of your Weapon."
+      },
+      {
         "name": "Swordbreaker",
         "desc": "You make use of the range of your lance to easily keep blades away.",
         "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Lance_ Weapon.",
@@ -169,29 +176,118 @@
     ],
     "techniques": [
       {
-        "name": "Pointed Retreat",
-        "desc": "You lash out with your weapon before safely moving backwards.",
+        "name": "Retreating Thrust",
+        "desc": "You quickly strike with your spear, sliding away as a part of the attack.",
+        "type": "Strike",
+        "speed": "Reaction",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Punish"],
+        "reqs": "Lance Weapon Wielded.",
+        "trigger": "A creature enters a space within your Lance Weapon's _Reach_.",
+        "cost": "1 _Momentum_",
+        "effect": "Attack using your weapon's Profile. You may _Move_ 1 away from the Target after resolving the Attack."
+      },
+      {
+        "name": "Lunging Strike",
+        "desc": "You lunge with your weapon, extending your reach.",
         "type": "Strike",
         "speed": "Weapon",
-        "keywords": ["Weapon"],
         "range": "Weapon",
+        "keywords": ["Weapon"],
         "ap": 1,
-        "move": "Step",
+        "move": "Reposition",
         "reqs": "Lance Weapon Wielded.",
-        "effect": "Attack with your Weapon's Profile.",
-        "special": "If all Movement is taken after you Attack, add the _Safe_ keyword."
+        "effect": "Attack using your weapon's Profile. Increase the _Reach_ of the Weapon by 1 for this Turn.",
+        "special": "You may _Improvise_ this Action as if it had _Fluid_ 2. Gain 1 _Exposed_ if you do so."
+      },
+      {
+        "name": "Impaling Strike",
+        "desc": "You catch a foe on your spear, limiting their movement to a terrifying extent.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "2 _Momentum_",
+        "reqs": "Lance Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. If the Attack would already inflict _Hobbled_, increase the cost to _Negate_ by 1 and the Value by 1. Otherwise, except on a Miss, inflict _Hobbled_ 1 (2 _Reflex_)."
+      },
+      {
+        "name": "Rapid Thrust",
+        "desc": "You quickly attack twice with your lance, forcing a foe to focus on you.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "2 _Momentum_",
+        "reqs": "Lance Weapon Wielded.",
+        "effect": "Attack using your weapon's _Profile_ twice against the same Target. If both Attacks Hit, gain 1 _Momentum_."
+      },
+      {
+        "name": "Harrying Thrust",
+        "desc": "You quickly strike with your spear in an attempt to limit a foe's mobility, only catching them if they continue to advance.",
+        "type": "Maneuver",
+        "speed": "Reaction",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Punish"],
+        "reqs": "Lance Weapon Wielded.",
+        "trigger": "A creature enters a space within your Lance Weapon's _Reach_.",
+        "cost": "1 _Momentum_",
+        "effect": "The target gains _Hobbled_ 1 (2 _Reflex_). Instead of applying this to the creature's next Movement it is instead applied to their current Movement, even if that Movement is already affected by _Hobbled_.",
+        "special": "The target may _Negate_ the _Hobbled_ for no cost by allowing you to immediately make a _Basic Strike_ against them."
+      },
+      {
+        "name": "Butt Smack",
+        "desc": "You whip the butt of your spear around for a swift, if less damaging, attack.",
+        "type": "Maneuver",
+        "speed": "Weapon-1",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Lance Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile. Deal half Damage, and replace all _Hobbled_ with _Exposed_."
       },
       {
         "name": "Lower Spear",
         "desc": "You ready your weapon for an incoming charge, preparing to punish a foe's momentum.",
         "type": "Maneuver",
-        "speed": "2",
+        "speed": "Weapon-1",
         "range": "Weapon",
         "keywords": ["Weapon"],
         "ap": 1,
         "move": "None",
         "reqs": "Lance Weapon Wielded.",
         "effect": "Make all spaces in a Side Burst X a Hazard, where X is your Lance Weapon's Reach. All Reactions using your Lance Weapon against a creature in these spaces cost 1 less and deal additional damage equal to half the number of spaces that creature moved this turn. All Reactions using your Lance Weapon cost 1 more against creatures not in these Hazard spaces. These Hazards are removed if you move or are no longer Wielding your Lance."
+      },
+      {
+        "name": "Set Spear",
+        "desc": "You prepare yourself for an attack, situating your lance in the ideal space for a strike.",
+        "type": "Maneuver",
+        "speed": "Weapon-1",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "None",
+        "reqs": "Lance Weapon Wielded.",
+        "effect": "Until you make an Attack with your Lance Weapon this _Round_, increase your Lance Weapon's _Reach_ by 1 and gain _Advantage_ on your next Attack with it."
+      },
+      {
+        "name": "Driving Flourish",
+        "desc": "You push a foe back at spearpoint, giving you space to make use of your exceptional reach.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Flourish"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be attached to a Weapon Strike made while Wielding a Lance Weapon.",
+        "effect": "On a Graze with the Attached Strike, add _Push_ 2 (1 _Grit_) to the Attack. On a Hit, add _Push_ 3 (2 _Grit_). On a Crit, add _Push_ 4 (3 _Grit_).",
+        "special": "A foe may choose to instead take Damage equal to the _Push_ value to instead not be _Pushed_. If a creature cannot be _Push_ed, either due to an ability or an Obstacle, they must take this Damage. This Damage is added to the total damage done by the initial attack.",
+        "imbue": "2 _Momentum_: Instead, this is 0 AP."
       }
     ]
   },

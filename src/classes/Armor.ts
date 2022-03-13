@@ -22,7 +22,7 @@ class Armor {
     return this._armor;
   }
   get ArmorText() {
-    return "**Armor:** " + this._armor;
+    return "**Guard:** " + this._armor;
   }
   get Category() {
     return this._category;
