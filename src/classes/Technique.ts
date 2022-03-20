@@ -164,8 +164,6 @@ class Technique {
     return "**Special:** " + this._special;
   }
   public get SpeedHeader() {
-    if (this.Speed.includes("Weapon"))
-      return "Weapon Speed" + this.Speed.substring(6);
     if (this.Speed.length == 1) return "Speed " + this.Speed;
     else return this._speed;
   }

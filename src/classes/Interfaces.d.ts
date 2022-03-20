@@ -30,7 +30,7 @@ declare interface IStanceData {
 }
 
 declare interface IChartData {
-  hit: Array<string>;
+  roll: Array<string>;
   damage: Array<number>;
   status: Array<string>;
 }

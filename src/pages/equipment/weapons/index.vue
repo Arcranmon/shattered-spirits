@@ -2,15 +2,11 @@
   <div style="padding: 1em;">
     <div class="weapon--box" style="background-color: #a78562;">
       <h2>Improvised</h2>
+      <show-cards :inputs="improvised" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: #e2a66e;">
       <h2>Unarmed</h2>
-      <show-cards
-        :inputs="unarmed"
-        job="Weapons"
-        :collapse="false"
-        :color_category="red"
-      />
+      <show-cards :inputs="unarmed" job="Weapons" :collapse="false" />
     </div>
     <div class="weapon--box" style="background-color: #f75b5b;">
       <h2>Blades</h2>
@@ -66,6 +62,9 @@ export default Vue.extend({
     },
     unarmed: function () {
       return this.$store.getters.getWeaponByCategory("Unarmed");
+    },
+    improvised: function () {
+      return this.$store.getters.getWeaponByCategory("Improvised");
     },
     spirit_weapons: function () {
       return this.$store.getters.getSpiritWeapons();

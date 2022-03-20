@@ -1,16 +1,134 @@
 [
   {
-    "name": "Fist",
+    "name": "Small Improvised",
     "itemtype": "Weapon",
     "speed": 2,
+    "category": "Improvised",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee or Ranged (Thrown)",
+    "keywords": ["Light", "_Thrown_ 5", "_Fluid_ 1"],
+    "special": "Thrown Attacks with this Weapon are made at _Disadvantage_.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 3, 3, 4, 5, 6, 6, 7],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1 (1 _Grit_)",
+        "_Vulnerable_ 1 (1 _Grit_)",
+        "_Vulnerable_ 2 (2 _Grit_)",
+        "_Vulnerable_ 2 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Medium Improvised",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Improvised",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee or Ranged (Thrown)",
+    "keywords": ["Versatile", "_Thrown_ 3", "_Fluid_ 1"],
+    "special": "Thrown Attacks with this Weapon are made at _Disadvantage_.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 4, 5, 5, 6, 7, 8, 8],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1 (1 _Grit_)",
+        "_Vulnerable_ 1 (1 _Grit_)",
+        "_Vulnerable_ 2 (2 _Grit_)",
+        "_Vulnerable_ 2 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Large Improvised",
+    "itemtype": "Weapon",
+    "speed": 4,
+    "category": "Improvised",
+    "hands": 2,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Heavy", "_Fluid_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 5, 6, 7, 8, 9, 9, 10],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1 (1 _Grit_)",
+        "_Vulnerable_ 1 (1 _Grit_)",
+        "_Vulnerable_ 2 (2 _Grit_)",
+        "_Vulnerable_ 2 (2 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Hand",
+    "itemtype": "Weapon",
+    "speed": 3,
     "category": "Unarmed",
     "hands": 1,
     "damagetype": "Physical",
     "range": "Melee",
-    "keywords": ["Versatile", "_Fluid_ 1"],
-    "special": "Characters may use the Fist Weapon so long as they have an _Open Hand_. If both hands are open they may choose to use both for this Attack and increase the Damage by 1.",
+    "keywords": ["Versatile", "Fist", "_Fluid_ 1"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -23,7 +141,7 @@
         "Crit",
         "Crit"
       ],
-      "damage": [0, 0, 1, 1, 2, 3, 4, 4, 5, 5, 6],
+      "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
       "status": [
         "",
         "",
@@ -32,15 +150,10 @@
         "",
         "",
         "",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (2 _Grit_)"
+        "",
+        "+1 _Momentum_",
+        "+1 _Momentum_",
+        "+1 _Momentum_"
       ]
     }
   },
@@ -52,10 +165,9 @@
     "hands": 0,
     "damagetype": "Physical",
     "range": "Melee",
-    "keywords": ["Versatile", "_Fluid_ 2"],
-    "special": "Characters may always use the Slam Action, even when other weapons are _Wielded_.",
+    "keywords": ["Versatile", "Body", "_Fluid_ 2"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -68,24 +180,494 @@
         "Crit",
         "Crit"
       ],
-      "damage": [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4],
+      "damage": [0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 3],
+      "status": [
+        "",
+        "",
+        "",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 2 (2 _Grit_)",
+        "_Push_ 2 (2 _Grit_)",
+        "_Push_ 2 (2 _Grit_)",
+        "_Push_ 3 (3 _Grit_)",
+        "_Push_ 3 (3 _Grit_)",
+        "_Push_ 3 (3 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Jab",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Unarmed",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Light", "Fist", "Martial", "_Fluid_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
+      "status": [
+        "",
+        "",
+        "",
+        "+1 _Momentum_",
+        "+1 _Momentum_",
+        "_Vulnerable_ 1 (1 _Grit_ or _Focus_), +1 _Momentum_",
+        "_Vulnerable_ 1 (1 _Grit_ or _Focus_), +1 _Momentum_",
+        "_Vulnerable_ 1 (1 _Grit_ or _Focus_), +1 _Momentum_",
+        "_Vulnerable_ 1x2 (2 _Grit_ or _Focus_), +2 _Momentum_",
+        "_Vulnerable_ 1x2 (2 _Grit_ or _Focus_), +2 _Momentum_",
+        "_Vulnerable_ 1x2 (2 _Grit_ or _Focus_), +2 _Momentum_"
+      ]
+    }
+  },
+  {
+    "name": "Palm",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Unarmed",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Light", "Fist", "Martial", "_Fluid_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3],
+      "status": [
+        "",
+        "",
+        "",
+        "_Push_ 1 or _Pull_ 1 (1 _Grit_ or _Reflex_)",
+        "_Push_ 1 or _Pull_ 1 (1 _Grit_ or _Reflex_)",
+        "_Exposed_ 1, _Push_ 1 or _Pull_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Exposed_ 1, _Push_ 1 or _Pull_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Exposed_ 1, _Push_ 1 or _Pull_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Exposed_ 1x2, _Push_ 1 or _Pull_ 1 (Any 3 _Grit_ or _Reflex_), +1 _Grit_",
+        "_Exposed_ 1x2, _Push_ 1 or _Pull_ 1 (Any 3 _Grit_ or _Reflex_), +1 _Grit_",
+        "_Exposed_ 1x2, _Push_ 1 or _Pull_ 1 (Any 3 _Grit_ or _Reflex_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Knife Hand",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Unarmed",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Versatile", "Fist", "Martial", "_Fluid_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 1, 2, 2, 3, 3, 4, 4, 5],
+      "status": [
+        "",
+        "",
+        "",
+        "_Impaired_ 1 (1 _Focus_ or _Grit_)",
+        "_Impaired_ 1 (1 _Focus_ or _Grit_)",
+        "_Impaired_ 1 (Any 2 _Focus_ or _Grit_)",
+        "_Impaired_ 1 (Any 2 _Focus_ or _Grit_)",
+        "_Impaired_ 1 (Any 2 _Focus_ or _Grit_)",
+        "_Impaired_ 1x2 (Any 3 _Focus_ or _Grit_), +1 _Grit_",
+        "_Impaired_ 1x2 (Any 3 _Focus_ or _Grit_), +1 _Grit_",
+        "_Impaired_ 1x2 (Any 3 _Focus_ or _Grit_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Elbow",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Versatile", "Body", "Martial", "_Fluid_ 1"],
+    "special": "Attacks with this Weapon have _Advantage_ against any creature you are in a _Grapple_ with if you are the _Bottom_.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 1, 2, 3, 3, 4, 4, 5, 5],
+      "status": [
+        "",
+        "",
+        "",
+        "_Dazed_ 1 (1 _Grit_ or _Focus_)",
+        "_Dazed_ 1 (1 _Grit_ or _Focus_)",
+        "_Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Break_, _Dazed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Break_, _Dazed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Break_, _Dazed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Headbutt",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Heavy", "Body", "Martial", "_Fluid_ 1"],
+    "special": "If the foe _Negates_ you are inflicted with the Status instead, with the cost to _Negate_ decreased by 1.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 2, 3, 4, 4, 5, 5, 5],
       "status": [
         "",
         "",
         "",
         "",
+        "_Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Dazed_ 1x2 (Any 2 _Grit_ or _Focus_)",
+        "_Dazed_ 1x2 (Any 3 _Grit_ or _Focus_)",
+        "_Dazed_ 1x2 (Any 3 _Grit_ or _Focus_)",
+        "_Dazed_ 1x2, _Break_ (Any 4 _Grit_ or _Focus_), +1 _Grit_",
+        "_Dazed_ 1x2, _Break_ (Any 4 _Grit_ or _Focus_), +1 _Grit_",
+        "_Dazed_ 1x2, _Break_ (Any 4 _Grit_ or _Focus_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Sweep",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Light", "Kick", "Martial", "_Fluid_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 1, 1, 2, 3, 4, 4, 5, 5],
+      "status": [
         "",
         "",
         "",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (1 _Grit_)",
-        "_Push_ 1 (2 _Grit_)"
+        "_Vulnerable_ 1 (1 _Grit_ or _Reflex_)",
+        "_Vulnerable_ 1 (1 _Grit_ or _Reflex_)",
+        "_Vulnerable_ 1, _Hobbled_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Vulnerable_ 1, _Hobbled_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Vulnerable_ 1, _Hobbled_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Prone_ (Any 3 _Grit_ or _Reflex_), +1 _Reflex_",
+        "_Prone_ (Any 3 _Grit_ or _Reflex_), +1 _Reflex_",
+        "_Prone_ (Any 3 _Grit_ or _Reflex_), +1 _Reflex_"
+      ]
+    }
+  },
+  {
+    "name": "Body Slam",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Heavy", "Body", "Martial", "_Fluid_ 1"],
+    "special": "If you _Push_ with this Weapon you may _Move_ an equal amount without expending Movement.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 1, 2, 3, 3, 4, 4, 5, 5, 6],
+      "status": [
+        "",
+        "",
+        "_Push_ 1 (1 _Grit_ or _Reflex_)",
+        "_Push_ 1 (1 _Grit_ or _Reflex_)",
+        "_Push_ 1 (1 _Grit_ or _Reflex_)",
+        "_Push_ 2, _Exposed_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Push_ 2, _Exposed_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Push_ 2, _Exposed_ 1 (Any 2 _Grit_ or _Reflex_)",
+        "_Push_ 2, _Prone_ (Any 3 _Grit_ or _Reflex_), +1 _Grit_",
+        "_Push_ 2, _Prone_ (Any 3 _Grit_ or _Reflex_), +1 _Grit_",
+        "_Push_ 2, _Prone_ (Any 3 _Grit_ or _Reflex_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Front Kick",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Versatile", "Kick", "Martial", "_Fluid_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 1, 2, 3, 4, 5, 5, 6, 6],
+      "status": [
+        "",
+        "",
+        "",
+        "_Impaired_ 1 (1 _Focus_ or _Grit_)",
+        "_Impaired_ 1 (1 _Focus_ or _Grit__)",
+        "_Impaired_ 1, _Hobbled_ 1 (Any 2 _Focus_ or _Grit_)",
+        "_Impaired_ 1, _Hobbled_ 1 (Any 2 _Focus_ or _Grit_)",
+        "_Impaired_ 1, _Hobbled_ 1 (Any 2 _Focus_ or _Grit_)",
+        "_Impaired_ 1x2, _Hobbled_ 1 (Any 3 _Focus_, _Grit_ ), +1 _Reflex_",
+        "_Impaired_ 1x2, _Hobbled_ 1 (Any 3 _Focus_, _Grit_), +1 _Reflex_",
+        "_Impaired_ 1x2, _Hobbled_ 1 (Any 3 _Focus_, _Grit_), +1 _Reflex_"
+      ]
+    }
+  },
+  {
+    "name": "Haymaker",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 1,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Heavy", "Fist", "Martial", "_Fluid_ 1"],
+    "special": "If you _Miss_ with this Weapon, gain _Exposed_ 1.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 2, 2, 3, 3, 4, 4, 5, 5],
+      "status": [
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1 (1 _Grit_ or _Focus_)",
+        "_Vulnerable_ 1 (1 _Grit_ or _Focus_)",
+        "_Exposed_ 1, _Push_ 1 (2 _Grit_ or _Focus_)",
+        "_Exposed_ 1, _Push_ 1 (2 _Grit_ or _Focus_)",
+        "_Exposed_ 1, _Push_ 1 (2 _Grit_ or _Focus_)",
+        "_Exposed_ 1x2, _Push_ 2 (3 _Grit_ or _Focus_), +1 _Momentum_",
+        "_Exposed_ 1x2, _Push_ 2 (3 _Grit_ or _Focus_), +1 _Momentum_",
+        "_Exposed_ 1x2, _Push_ 2 (3 _Grit_ or _Focus_), +1 _Momentum_"
+      ]
+    }
+  },
+  {
+    "name": "Knee",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Versatile", "Kick", "Martial", "_Fluid_ 1"],
+    "special": "Attacks with this Weapon have _Advantage_ against any creature you are in a _Grapple_ with if you are the _Top_.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 2, 3, 3, 4, 4, 5, 5, 5],
+      "status": [
+        "",
+        "",
+        "",
+        "_Dazed_ 1 (1 _Grit_ or _Focus_)",
+        "_Dazed_ 1 (1 _Grit_ or _Focus_)",
+        "_Dazed_ 1, _Exposed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Dazed_ 1, _Exposed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Dazed_ 1, _Exposed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Break_, _Dazed_ 1, _Exposed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Break_, _Dazed_ 1, _Exposed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Break_, _Dazed_ 1, _Exposed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Stomp",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Heavy", "Kick", "Martial", "_Fluid_ 1"],
+    "special": "Attacks with this Weapon have _Advantage_ against _Prone_ foes. If you _Miss_ or _Graze_ with this Attack, gain _Exposed_ 1.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 2, 3, 3, 4, 4, 5, 5, 5],
+      "status": [
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1, _Dazed_ 1 (1 _Grit_ or _Focus_)",
+        "_Vulnerable_ 1, _Dazed_ 1 (1 _Grit_ or _Focus_)",
+        "_Hobbled_ 1, _Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Hobbled_ 1, _Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Hobbled_ 1, _Dazed_ 1 (Any 2 _Grit_ or _Focus_)",
+        "_Hobbled_ 1, _Exposed_ 1, _Dazed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Hobbled_ 1, _Exposed_ 1, _Dazed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Hobbled_ 1, _Exposed_ 1, _Dazed_ 1 (Any 3 _Grit_ or _Focus_), +1 _Grit_"
+      ]
+    }
+  },
+  {
+    "name": "Roundhouse Kick",
+    "itemtype": "Weapon",
+    "speed": 4,
+    "category": "Unarmed",
+    "hands": 0,
+    "damagetype": "Physical",
+    "range": "Melee",
+    "keywords": ["Heavy", "Kick", "Martial", "_Fluid_ 1"],
+    "special": "If you _Miss_ with this Weapon, gain _Exposed_ 1.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 2, 3, 4, 4, 5, 5, 6, 6],
+      "status": [
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1, _Push_ 1 (1 _Grit_ or _Focus_)",
+        "_Vulnerable_ 1, _Push_ 1 (1 _Grit_ or _Focus_)",
+        "_Exposed_ 1, _Push_ 2 (2 _Grit_ or _Focus_)",
+        "_Exposed_ 1, _Push_ 2 (2 _Grit_ or _Focus_)",
+        "_Exposed_ 1, _Push_ 2 (2 _Grit_ or _Focus_)",
+        "_Exposed_ 1x2, _Push_ 3 (3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Exposed_ 1x2, _Push_ 3 (3 _Grit_ or _Focus_), +1 _Grit_",
+        "_Exposed_ 1x2, _Push_ 3 (3 _Grit_ or _Focus_), +1 _Grit_"
       ]
     }
   },
@@ -100,7 +682,7 @@
     "range": "8",
     "keywords": ["Versatile", "_Artillery_ 2", "_Ammunition_ 3"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -122,10 +704,10 @@
         "",
         "",
         "",
-        "_Hobble_ 1 (1 _Grit_)",
-        "_Hobble_ 1 (1 _Grit_)",
-        "_Hobble_ 1x2 (2 _Grit_)",
-        "_Hobble_ 1x2 (2 _Grit_)"
+        "_Hobbled_ 1 (1 _Grit_)",
+        "_Hobbled_ 1 (1 _Grit_)",
+        "_Hobbled_ 1x2 (2 _Grit_)",
+        "_Hobbled_ 1x2 (2 _Grit_)"
       ]
     }
   },
@@ -140,7 +722,7 @@
     "range": "12",
     "keywords": ["Heavy", "_Artillery_ 5", "Ordnance", "_Ammunition_ 3"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -162,10 +744,10 @@
         "",
         "",
         "",
-        "_Hobble_ 1 (1 _Grit_)",
-        "_Hobble_ 1 (1 _Grit_)",
-        "_Hobble_ 1x2 (2 _Grit_)",
-        "_Hobble_ 1x2 (2 _Grit_)"
+        "_Hobbled_ 1 (1 _Grit_)",
+        "_Hobbled_ 1 (1 _Grit_)",
+        "_Hobbled_ 1x2 (2 _Grit_)",
+        "_Hobbled_ 1x2 (2 _Grit_)"
       ]
     }
   },
@@ -180,7 +762,7 @@
     "range": "Melee or Ranged (Thrown)",
     "keywords": ["Light", "_Thrown_ 6", "_Small_ 2"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -220,7 +802,7 @@
     "range": "Melee",
     "keywords": ["Light"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -260,7 +842,7 @@
     "range": "Melee",
     "keywords": ["Versatile"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -300,7 +882,7 @@
     "range": "Melee",
     "keywords": ["Heavy"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -340,7 +922,7 @@
     "range": "Melee",
     "keywords": ["Light", "_Thrown_ 4"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -380,7 +962,7 @@
     "range": "Melee",
     "keywords": ["Light", "_Thrown_ 4", "_Pierce_ 1"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -420,7 +1002,7 @@
     "range": "Melee",
     "keywords": ["Versatile", "Siege"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -460,7 +1042,7 @@
     "range": "Melee",
     "keywords": ["Versatile", "Siege", "_Pierce_ 2"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -500,7 +1082,7 @@
     "range": "Melee",
     "keywords": ["Heavy", "Siege"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -540,7 +1122,7 @@
     "range": "Melee",
     "keywords": ["Heavy", "Siege", "_Pierce_ 3"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -580,7 +1162,7 @@
     "range": "Melee or Ranged (Thrown)",
     "keywords": ["Light", "_Thrown_ 10"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Graze",
@@ -602,10 +1184,10 @@
         "",
         "",
         "",
-        "_Hobble_ 1 (1 _Reflex_)",
-        "_Hobble_ 1 (1 _Reflex_)",
-        "_Hobble_ 1x2 (2 _Reflex_)",
-        "_Hobble_ 1x2 (2 _Reflex_)"
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1x2 (2 _Reflex_)",
+        "_Hobbled_ 1x2 (2 _Reflex_)"
       ]
     }
   },
@@ -620,7 +1202,7 @@
     "range": "Reach 1",
     "keywords": ["Versatile"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Graze",
@@ -642,10 +1224,10 @@
         "",
         "",
         "",
-        "_Hobble_ 1 (1 _Reflex_)",
-        "_Hobble_ 1 (1 _Reflex_)",
-        "_Hobble_ 1x2 (2 _Reflex_)",
-        "_Hobble_ 1x2 (2 _Reflex_)"
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1x2 (2 _Reflex_)",
+        "_Hobbled_ 1x2 (2 _Reflex_)"
       ]
     }
   },
@@ -660,7 +1242,7 @@
     "range": "Reach 2",
     "keywords": ["Heavy"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Graze",
@@ -682,10 +1264,10 @@
         "",
         "",
         "",
-        "_Hobble_ 1 (1 _Reflex_)",
-        "_Hobble_ 1 (1 _Reflex_)",
-        "_Hobble_ 1x2 (2 _Reflex_)",
-        "_Hobble_ 1x2 (2 _Reflex_)"
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1x2 (2 _Reflex_)",
+        "_Hobbled_ 1x2 (2 _Reflex_)"
       ]
     }
   },
@@ -700,7 +1282,7 @@
     "range": "Reach 2",
     "keywords": ["Light"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -741,7 +1323,7 @@
     "keywords": ["Versatile"],
     "special": "While Wielding a Shield, increase your _Guard_ by 1 for the remainder of the Turn whenever you use a _Block_ Reaction. If the Shield is _Damaged_, you lose this benefit.",
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Graze",
@@ -781,7 +1363,7 @@
     "keywords": ["Flame", "Light", "_Pierce_ 2"],
     "special": "Anytime a Strike with this Weapon would inflict _Bleed_, instead inflict _Burn_.\nThis Weapon cannot be Destroyed by Attacks.",
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Graze",
@@ -820,9 +1402,9 @@
     "durability": 7,
     "range": "_Reach_ 1 or Ranged (Thrown)",
     "keywords": ["Water", "Versatile", "_Thrown_ 6"],
-    "special": "After you Hit or Crit with a Melee or Ranged Attack with this Weapon, you may _Destroy_ it. If it was Melee, inflict 2 _Frost_ (2 _Grit_) on the Target. If it was ranged, inflict 1 _Frost_ (1 _Grit_) on the Target and create an _Icicle_ in a space adjacent to them.",
+    "special": "After you _Hit_ or _Crit_ with a Melee or Ranged Attack with this Weapon, you may _Destroy_ it. If it was Melee, inflict 2 _Frost_ (2 _Grit_) on the Target. If it was ranged, inflict 1 _Frost_ (1 _Grit_) on the Target and create an _Icicle_ in a space adjacent to them.",
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Graze",
@@ -863,7 +1445,7 @@
     "keywords": ["Earth", "Heavy", "Siege"],
     "special": "When you take a Block Reaction you may Destroy the Stone Gauntlet to increase your _Armor_ by 1 against the triggering Attack.",
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -900,10 +1482,10 @@
     "hands": 1,
     "damagetype": "Physical",
     "range": "_Reach_ 2",
-    "special": "You may Destroy the Water Whip on a Hit or Crit to increase the Damage and _Pull_ by 2 and, if you wish, replace all _Pull_ with _Push_.\nThis Weapon cannot be Destroyed by Attacks.",
+    "special": "You may Destroy the Water Whip on a _Hit_ or _Crit_ to increase the Damage and _Pull_ by 2 and, if you wish, replace all _Pull_ with _Push_.\nThis Weapon cannot be Destroyed by Attacks.",
     "keywords": ["Versatile"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",
@@ -940,10 +1522,10 @@
     "hands": 1,
     "damagetype": "Physical",
     "range": "Melee",
-    "special": "All attacks with the Wind Blade are at Advantage. If a creature uses a _Block_ Reaction, reduce the Attack Roll by an additional 1. If this makes the Attack Miss, pay 1 _Momentum_ or _Destroy_ the _Wind Blade_.\nThis Weapon cannot be Destroyed by Attacks.",
+    "special": "All attacks with the Wind Blade are at Advantage. If a creature uses a _Block_ Reaction, reduce the Attack Roll by an additional 1. If this makes the Attack _Miss_,  pay 1 _Momentum_ or _Destroy_ the _Wind Blade_.\nThis Weapon cannot be Destroyed by Attacks.",
     "keywords": ["Light", "Weak"],
     "chart": {
-      "hit": [
+      "roll": [
         "Miss",
         "Miss",
         "Miss",

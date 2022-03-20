@@ -21,6 +21,8 @@ elif(file == "Wind"):
     f = open('.\src\database\spirit_masteries\wind.json')
 elif(file == "Wood"):
     f = open('.\src\database\spirit_masteries\wood.json')
+elif(file == "Martial"):
+    f = open('.\src\database\skill_masteries\martial_skills.json')
 elif(file == "Weapon"):
     f = open('.\src\database\items\weapons.json')
 
@@ -52,14 +54,14 @@ for object in data:
                     if("chart" in technique):
                         if(not("damage" in technique["chart"])):
                             raise Exception("This Ability does not deal damage; cannot be analyzed.")
-                        hit = technique["chart"]["hit"]
+                        hit = technique["chart"]["roll"]
                         attack = technique["chart"]["damage"]
                         if(len(technique["speed"]) == 1):
                             speed = int(technique["speed"])
     else:
         if(object["itemtype"] == "Weapon" or object["itemtype"] == "Spirit Weapon"):
             if(object["name"] == name):
-                hit = object["chart"]["hit"]
+                hit = object["chart"]["roll"]
                 attack = object["chart"]["damage"]
                 speed = int(object["speed"])
 

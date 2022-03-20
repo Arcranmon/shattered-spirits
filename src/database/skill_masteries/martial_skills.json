@@ -70,7 +70,7 @@
         "ap": 1,
         "move": "Reposition",
         "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
-        "effect": "If you Graze with the Attached Strike, gain any two of _Grit_ or _Reflex_. If you Hit, instead any three. If you Crit, instead any four.",
+        "effect": "If you _Graze_ with the Attached Strike, gain any two of _Grit_ or _Reflex_. If you _Hit_,  instead any three. If you _Crit_,  instead any four.",
         "imbue": "2 _Momentum_: Instead, this is 0 AP."
       },
       {
@@ -83,22 +83,108 @@
         "ap": 1,
         "move": "Shift",
         "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
-        "effect": "If you Hit or Crit with the Attached Strike, gain 1 _Reflex_.",
+        "effect": "If you _Hit_ or _Crit_ with the Attached Strike, gain 1 _Reflex_.",
         "imbue": "2 _Momentum_: Instead, this is 0 AP."
       }
     ]
   },
   {
     "category": "Skill",
-    "background": "DarkGrey",
+    "background": "#A47070",
     "name": "Grappler",
     "flavor": "So long as you have a hand free you'll have an opponent in it, dragging them about the battlefield.",
-    "stances": [],
-    "techniques": []
+    "stances": [
+      {
+        "name": "Crush Grip",
+        "desc": "You maintain a painful hold on foes, slowly crushing them while they're grappled.",
+        "accumulate": "Every time you defeat a creature you have _Grappled_, gain 3 _Momentum_.",
+        "refresh": "3 _Grit_",
+        "effect": "At the start of each of you _Turns_ where you are the _Top_ in a _Grapple_ you may make a Basic Strike using the Slam Weapon against a single creature that is a _Bottom_ in the same _Grapple_. On a _Hit_ or _Crit_, gain 1 _Grit_."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Grappling Strike",
+        "desc": "You follow up an unarmed strike with an attempted grab to restrain a foe.",
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Martial"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_ or _Grit_ if not using an Unarmed Weapon.",
+        "reqs": "Must have an _Open Hand_.",
+        "effect": "Attack using your weapon's _Profile_. After resolving the Attack, use the Grab Maneuver. If you _Hit_ with the initial Attack, increase the cost to _Negate_ the Grab by 1. If you _Crit_,  instead increase it by 2."
+      },
+      {
+        "name": "Suplex",
+        "desc": "You viciously flip a grappled creature for a devastating blow.",
+        "type": "Strike",
+        "speed": "4",
+        "range": "Melee",
+        "ap": 1,
+        "move": "None",
+        "reqs": "Must be _Top_ in a _Grapple_.",
+        "effect": "Immediately _Move_ the _Bottom_ in the _Grapple_ to the opposite side of yourself and Attack them with the below _Profile_. The _Bottom_ may spend 2 _Grit_ before you make the attack to _Negate_; if they do, do not Move them and they take half Damage from the Attack.",
+        "chart": {
+          "roll": [
+            "Graze",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [4, 4, 5, 5, 6, 6, 7, 7, 8, 9, 10],
+          "status": [
+            "",
+            "",
+            "_Exposed_ 1 (1 _Reflex_)",
+            "_Exposed_ 1 (1 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_ (2 _Reflex_)",
+            "_Prone_, _Break_ (3 _Reflex_)",
+            "_Prone_, _Break_ (3 _Reflex_)",
+            "_Prone_, _Break_ (3 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Lock",
+        "desc": "You secure your grip on a grappled creature, limiting their ability to fight.",
+        "type": "Maneuver",
+        "speed": "3",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be _Top_ in a _Grapple_.",
+        "effect": "Choose one of the _Bottoms_ Hands. Unless they spend 2 _Grit_ to _Negate_ this effect, they may not use that Hand for the remainder of the _Grapple_. Increase the _Cost_ of all _Reactions_ for that creature by 1 for the remainder of the _Grapple_."
+      },
+      {
+        "name": "Pin",
+        "desc": "You take a grapple to the ground, harshly limiting a foe's mobility.",
+        "type": "Maneuver",
+        "speed": "4",
+        "range": "Melee",
+        "cost": "1 _Grit_",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be _Top_ in a _Grapple_.",
+        "effect": "For as long as the creature remains _Grappled_, they are _Restrained_, and your cost to _Negate_ the creature escaping the _Grapple_ is reduced by 1. The target creature may spend 2 _Grit_ to _Negate_ this effect, but they remain _Grappled_. While this effect persists you are _Stuck_. You may end this effect at the end of any of your _Turns_.",
+        "boost": "1 _Grit_: While the creature is under this effect, you may maintain the _Grapple_ without using any Hands."
+      }
+    ]
   },
   {
     "category": "Skill",
-    "background": "darkred",
+    "background": "#990000",
     "name": "Heavy Weapon Master",
     "flavor": "A lesser warrior is controlled by the heavy weight of a large weapon; you have mastered it and honed it into a deadly pendulum.",
     "stances": [
@@ -151,7 +237,7 @@
         "effect": "Attack with the below Profile.",
         "imbue": "1 _Momentum_. Speed is instead Set-Up, and the Cost to Negate is increased by 1.",
         "chart": {
-          "hit": [
+          "roll": [
             "Miss",
             "Miss",
             "Miss",
@@ -164,7 +250,7 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
+          "damage": [0, 0, 0, 1, 1, 2, 3, 3, 4, 5, 5],
           "status": [
             "",
             "",

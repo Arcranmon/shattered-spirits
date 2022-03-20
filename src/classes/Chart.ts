@@ -1,12 +1,12 @@
 import { store } from "@/store";
 
 class Chart {
-  private _hit: Array<string>;
+  private _roll: Array<string>;
   private _damage: Array<number>;
   private _status: Array<string>;
 
   public constructor() {
-    this._hit = [];
+    this._roll = [];
     this._damage = [];
     this._status = [];
   }
@@ -15,8 +15,8 @@ class Chart {
     if (this._damage[i] == 0) return "-";
     return this._damage[i].toString();
   }
-  public get Hit() {
-    return this._hit;
+  public get Roll() {
+    return this._roll;
   }
   public Status(i: number): string {
     return this._status[i];
@@ -33,7 +33,7 @@ class Chart {
   }
 
   public setChartData(data: IChartData): void {
-    this._hit = data.hit || [];
+    this._roll = data.roll || [];
     this._damage = data.damage || [];
     this._status = data.status || [];
   }
