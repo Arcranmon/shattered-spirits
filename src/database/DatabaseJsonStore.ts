@@ -212,8 +212,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getBasicGlossaryItem(): any {
     return (inword: string) => {
       var keyword = Glossary.find((x) => x.keyword.trim() === inword.trim());
-      if (keyword.hasOwnProperty("see"))
-        return this.getBasicGlossaryItem(keyword.see);
       return keyword.effect;
     };
   }
@@ -241,7 +239,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getCondition(): any {
     return (inword: string) => {
       var keyword = Conditions.find((x) => x.keyword.trim() === inword.trim());
-      if (keyword.hasOwnProperty("see")) return this.getCondition(keyword.see);
       return keyword.effect;
     };
   }
@@ -257,8 +254,6 @@ export class DatabaseJsonStore extends VuexModule {
       var keyword = ElementalConditions.find(
         (x) => x.keyword.trim() === inword.trim()
       );
-      if (keyword.hasOwnProperty("see"))
-        return this.getElementalCondition(keyword.see);
       return keyword.effect;
     };
   }
@@ -274,8 +269,6 @@ export class DatabaseJsonStore extends VuexModule {
       var keyword = MentalConditions.find(
         (x) => x.keyword.trim() === inword.trim()
       );
-      if (keyword.hasOwnProperty("see"))
-        return this.getMentalCondition(keyword.see);
       return keyword.effect;
     };
   }
@@ -289,7 +282,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getKeyword(): any {
     return (inword: string) => {
       var keyword = Keywords.find((x) => x.keyword.trim() === inword.trim());
-      if (keyword.hasOwnProperty("see")) return this.getKeyword(keyword.see);
       return keyword.effect;
     };
   }
@@ -303,7 +295,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getTerrain(): any {
     return (inword: string) => {
       var keyword = Terrains.find((x) => x.keyword.trim() === inword.trim());
-      if (keyword.hasOwnProperty("see")) return this.getTerrain(keyword.see);
       return keyword.effect;
     };
   }
@@ -317,7 +308,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getObstacle(): any {
     return (inword: string) => {
       var keyword = Obstacles.find((x) => x.keyword.trim() === inword.trim());
-      if (keyword.hasOwnProperty("see")) return this.getObstacle(keyword.see);
       return keyword.effect;
     };
   }
@@ -331,7 +321,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getResource(): any {
     return (inword: string) => {
       var keyword = Resources.find((x) => x.keyword.trim() === inword.trim());
-      if (keyword.hasOwnProperty("see")) return this.getResource(keyword.see);
       return keyword.effect;
     };
   }
