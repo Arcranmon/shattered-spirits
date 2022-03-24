@@ -98,8 +98,22 @@
         "name": "Crush Grip",
         "desc": "You maintain a painful hold on foes, slowly crushing them while they're grappled.",
         "accumulate": "Every time you defeat a creature you have _Grappled_, gain 3 _Momentum_.",
-        "refresh": "3 _Grit_",
+        "refresh": "2 _Grit_",
         "effect": "At the start of each of you _Turns_ where you are the _Top_ in a _Grapple_ you may make a Basic Strike using the Slam Weapon against a single creature that is a _Bottom_ in the same _Grapple_. On a _Hit_ or _Crit_, gain 1 _Grit_."
+      },
+      {
+        "name": "Living Shield",
+        "desc": "You pass on a more conventional shield, instead using a creature held in your grasp to defend against attacks.",
+        "accumulate": "Gain 1 _Momentum_ every time you use a Reaction that requires you be the _Top_ in a _Grapple_.",
+        "refresh": "3 _Grit_",
+        "effect": "While you have a creature _Grappled_ increase your _Guard_ by 1 for the remainder of the Turn whenever you use a _Block_ Reaction that requires you be the _Top_ in a _Grapple_."
+      },
+      {
+        "name": "Lockdown",
+        "desc": "When you grapple a foe you give them your full attention, shrinking the battlefield for the two of you.",
+        "accumulate": "Gain 1 _Momentum_ every time you Attack a creature you are _Grappling_.",
+        "refresh": "2 _Grit_, 1 _Focus_",
+        "effect": "While you have a creature _Grappled_ you and the _Grappled_ creature have _Disadvantage_ on all Attacks against other creatures. Whenever you make an Attack against a creature you have _Grappled_ you may pay 1 _Momentum_ to have _Advantage_ on the Attack."
       }
     ],
     "techniques": [
@@ -126,6 +140,7 @@
         "move": "None",
         "reqs": "Must be _Top_ in a _Grapple_.",
         "effect": "Immediately _Move_ the _Bottom_ in the _Grapple_ to the opposite side of yourself and Attack them with the below _Profile_. The _Bottom_ may spend 2 _Grit_ before you make the attack to _Negate_; if they do, do not Move them and they take half Damage from the Attack.",
+        "special": "You  may choose to end the _Grapple_ as a part of this Attack. If you do, increase the cost to _Negate_ the Attack by 1 and increase the Damage by 1.",
         "chart": {
           "roll": [
             "Graze",
@@ -140,10 +155,10 @@
             "Crit",
             "Crit"
           ],
-          "damage": [4, 4, 5, 5, 6, 6, 7, 7, 8, 9, 10],
+          "damage": [5, 5, 5, 5, 6, 6, 6, 6, 8, 8, 8],
           "status": [
-            "",
-            "",
+            "_Exposed_ 1 (1 _Reflex_)",
+            "_Exposed_ 1 (1 _Reflex_)",
             "_Exposed_ 1 (1 _Reflex_)",
             "_Exposed_ 1 (1 _Reflex_)",
             "_Prone_ (2 _Reflex_)",
@@ -157,6 +172,18 @@
         }
       },
       {
+        "name": "Grappling Swing",
+        "desc": "You slam a creature you have grappled into another, using them as a clumsy weapon.",
+        "type": "Strike",
+        "speed": "5",
+        "range": "Melee",
+        "ap": 1,
+        "reqs": "Must be _Top_ in a _Grapple_ against a Size 1 or smaller creature.",
+        "cost": "1 _Momentum_ or _Grit_",
+        "move": "Shift",
+        "effect": "You may _Pull_ 3 (2 _Grit_) on the _Grappled_ creature. Attack using the Medium Improvised Weapon's _Profile_, resolving the Attack is if it originates from the _Grappled_ creature's space. Resolve the Attack against the _Grappled_ target as well."
+      },
+      {
         "name": "Lock",
         "desc": "You secure your grip on a grappled creature, limiting their ability to fight.",
         "type": "Maneuver",
@@ -165,7 +192,48 @@
         "ap": 1,
         "move": "Reposition",
         "reqs": "Must be _Top_ in a _Grapple_.",
-        "effect": "Choose one of the _Bottoms_ Hands. Unless they spend 2 _Grit_ to _Negate_ this effect, they may not use that Hand for the remainder of the _Grapple_. Increase the _Cost_ of all _Reactions_ for that creature by 1 for the remainder of the _Grapple_."
+        "effect": "Choose one of the _Bottoms_ Hands. Unless they spend 2 _Grit_ to _Negate_ this effect, they may not use that Hand for the remainder of the _Grapple_. Increase the _Cost_ of all _Reactions_ for that creature by 1 for the remainder of the _Grapple_.",
+        "special": "You may not use this Technique on the same _Grappled_ creature more than once unless you are using both Hands for the _Grapple_. If you are, you may use this Technique twice on the same creature."
+      },
+      {
+        "name": "Wrench",
+        "desc": "You violently twist a grappled creature's appendage, attempting to tear their weapon away.",
+        "type": "Maneuver",
+        "speed": "3",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be _Top_ in a _Grapple_.",
+        "effect": "Attack with the below _Profile_.",
+        "chart": {
+          "roll": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
+          "status": [
+            "",
+            "",
+            "",
+            "_Impaired_ 1 (1 _Reflex_ or _Grit_)",
+            "_Impaired_ 1 (1 _Reflex_ or _Grit_)",
+            "_Impaired_ 2 (Any 2 _Reflex_ or _Grit_)",
+            "_Impaired_ 2 (Any 2 _Reflex_ or _Grit_)",
+            "_Impaired_ 2 or _Disarm_ (Any 2 _Reflex_ or _Grit_)",
+            "_Impaired_ 2 or _Disarm_ (Any 2 _Reflex_ or _Grit_)",
+            "_Impaired_ 3 or _Disarm_ (Any 3 _Reflex_ or _Grit_)",
+            "_Impaired_ 3 or _Disarm_ (Any 3 _Reflex_ or _Grit_)"
+          ]
+        }
       },
       {
         "name": "Pin",
@@ -179,6 +247,43 @@
         "reqs": "Must be _Top_ in a _Grapple_.",
         "effect": "For as long as the creature remains _Grappled_, they are _Restrained_, and your cost to _Negate_ the creature escaping the _Grapple_ is reduced by 1. The target creature may spend 2 _Grit_ to _Negate_ this effect, but they remain _Grappled_. While this effect persists you are _Stuck_. You may end this effect at the end of any of your _Turns_.",
         "boost": "1 _Grit_: While the creature is under this effect, you may maintain the _Grapple_ without using any Hands."
+      },
+      {
+        "name": "Throw",
+        "desc": "You attempt to fling a grappled character away, creating as much space as possible.",
+        "type": "Maneuver",
+        "speed": "5",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be _Top_ in a _Grapple_.",
+        "effect": "End the _Grapple_. _Push_ 2 the _Grappled_ creature, then inflict _Prone_ (2 _Reflex_) and deal 4 Damage. If the creature _Negates_ they take no Damage.",
+        "special": "If you _Push_ the creature into an Obstacle, deal an additional 2 Damage.",
+        "boost": "1 _Momentum_: Instead, _Push_ 4."
+      },
+      {
+        "name": "Ablative Antagonist",
+        "desc": "You attempt to block an attack using a grappled creature, giving your foe a difficult choice.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "keywords": ["Block"],
+        "cost": "2 _Grit_",
+        "trigger": "You are Attacked with a Single-Target Attack while you are the _Top_ in a _Grapple_.",
+        "effect": "The Attacker must choose: Either resolve the Attack against both you and the _Bottom_, dealing half Damage to both and reducing the cost to _Negate_ by 1 or reduce the Attack Roll by 3.",
+        "boost": "1 _Momentum_: You choose which Effect to use instead of the Attacker."
+      },
+      {
+        "name": "Interposing Body",
+        "desc": "You reposition a grappled target, forcing them between a foe and yourself.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "keywords": ["Block"],
+        "cost": "1 _Grit_",
+        "trigger": "You start a _Phase_ as the _Top_ in a _Grapple_.",
+        "effect": "Create an Arc 3 adjacent to you, with a creature you have _Grappled_ and are the _Top_ in at the center. Any Attack that originates from or passes through these spaces takes a -1 penalty to the Attack Roll if Melee or treats you as if you have Cover if Ranged. On a _Miss_, the _Grappled_ creature takes 2 Damage. This effect persists until the end of the current _Phase_ or until you are no longer _Top_ in the _Grapple_.",
+        "boost": "X _Grit_: You may _Pull_ the _Grappled_ creature X before resolving this effect. They may spend X+1 _Grit_ to _Negate_."
       }
     ]
   },
