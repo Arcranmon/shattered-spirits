@@ -212,6 +212,8 @@ export class DatabaseJsonStore extends VuexModule {
   get getBasicGlossaryItem(): any {
     return (inword: string) => {
       var keyword = Glossary.find((x) => x.keyword.trim() === inword.trim());
+      if (keyword.hasOwnProperty("see"))
+        return this.getBasicGlossaryItem(keyword.see);
       return keyword.effect;
     };
   }

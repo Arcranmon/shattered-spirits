@@ -7,6 +7,9 @@
       :style="{ 'background-color': disc.Background }"
     >
       <h2>{{ disc.Name }}</h2>
+      <div class="page--description">
+        <b>{{ disc.Role }}</b>
+      </div>
       <div class="page--description">{{ disc.Flavor }}</div>
       <show-cards
         :inputs="disc.Stances"

@@ -723,38 +723,77 @@
       {
         "name": "Anchor Stance",
         "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
-        "accumulate": "Whenever you do not Move when taking an Action with Movement, gain 1 Momentum.",
+        "accumulate": "Whenever you do not Move when taking an Action with Movement, gain 1 _Momentum_.",
         "refresh": "_Grit_ 3",
-        "effect": "While in this Stance, reduce the Cost to negate all Push and Pull effects by 1."
+        "effect": "Reduce the Cost to negate all _Push_, _Pull_ and _Slide_ effects by 2. Reduce the _Grit_ cost to _Negate_ all other effects by 1.",
+        "special": "While in this Stance you may wield Titanic Weapons."
       },
       {
         "name": "Mighty Stance",
         "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
-        "accumulate": "",
-        "refresh": "",
-        "effect": "",
-        "special": ""
+        "accumulate": "Whenever you _Push_ a creature with an Attack, gain 1 _Momentum_.",
+        "refresh": "_Grit_ 2",
+        "effect": "Increase your Damage with all Weapon Attacks by 2. Whenever you make a Weapon Attack you may spend up to 3 _Grit_, adding twice that value in _Push_. The cost to _Negate_ is _Grit_ equal to the _Grit_ spent. Whenever you _Push_ a creature into an Obstacle with a Weapon Attack they gain _Vulnerable_ 1 (1 _Focus_).",
+        "special": "While in this Stance you may wield Titanic Weapons."
       },
       {
-        "name": "Titan Stance",
-        "desc": "A difficult Stance to master, the Titan Stance allows an Earthbonded to make use of impossibly large weapons with ease.",
-        "accumulate": "Gain 1 _Momentum_ whenever you knock an enemy _Prone_ with a Titanic Weapon.",
-        "refresh": "1 _Grit_",
-        "effect": "While in this Stance you may wield Titanic Weapons.",
-        "special": "You must pay 1 _Momentum_ at the start of each of your Turns or gain _Hobbled_ 1."
+        "name": "Ox Stance",
+        "desc": "A difficult Stance to master, the Ox Stance is the pinnacle of physical strength, at the cost of an earthbound's mobility.",
+        "refresh": "_Grit_ 4, _Momentum_ 3, _Hobbled_ 1x3",
+        "effect": "Reduce the Cost to negate all _Push_, _Pull_ and _Slide_ effects by 1. Increase your Damage with all Weapon Attacks by 1. Whenever you make a Weapon Attack you may create _Rough Terrain_ adjacent to the Target.",
+        "special": "While in this Stance you may wield Titanic Weapons."
       }
     ],
     "techniques": [
       {
-        "name": "Mighty Throw",
-        "desc": "Using their monstrous effective strength, the Earthbound flings a weapon not meant to be thrown.",
+        "name": "Mighty Fling",
+        "desc": "Using their monstrous strength, the earthbound flings an object with horrific force.",
         "keywords": ["Spirit", "Earth", "Weapon"],
         "type": "Strike",
-        "speed": "Weapon",
+        "speed": "Weapon+1",
         "ap": 1,
         "move": "Step",
-        "reqs": "Melee or Thrown Weapon Equipped",
-        "effect": ""
+        "cost": "1 _Momentum_",
+        "range": "Weapon",
+        "reqs": "Weapon Equipped or adjacent Improvised Weapon",
+        "effect": "Make an Attack with the appropriate _Profile_ as follows:\n * If using an Improvised Weapon, resolve it with the appropriate Profile.\n * If using a Weapon with the _Thrown_ property, use its Profile.\n * If using a _Light_ Weapon, resolve it with the Small Improvised Weapon _Profile_.\n * If using a _Versatile_ Weapon, resolve it with the Medium Improvised Weapon _Profile_.\n * If using a _Heavy_ Weapon, resolve it with the Large Improvised Weapon _Profile_.\n\nIf the Weapon already has the _Thrown_ tag, increase it's value by 4. Otherwise, add _Thrown_ 3."
+      },
+      {
+        "name": "Mighty Strike",
+        "desc": "A slow, powerful blow that promises to leave a heavy wound.",
+        "keywords": ["Spirit", "Earth", "Weapon"],
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "ap": 1,
+        "move": "Step",
+        "range": "Weapon",
+        "cost": "1 _Momentum_",
+        "reqs": "_Versatile_ or _Heavy_ Weapon Wielded",
+        "effect": "Attack using your weapon's Profile, dealing +2 damage bonus with a _Versatile_ Weapon or +3 with a _Heavy_ Weapon. Add _Push_ 2 (1 _Grit_) to the Attack."
+      },
+      {
+        "name": "Concussive Slam",
+        "desc": "A mighty blow that crashes into the ground, creating a shockwave around the initial attack.",
+        "keywords": ["Spirit", "Earth", "Weapon"],
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "ap": 1,
+        "move": "Step",
+        "range": "Weapon",
+        "cost": "2 _Momentum_",
+        "reqs": "_Versatile_ or _Heavy_ Weapon Wielded",
+        "effect": "Attack using your weapon's Profile. Immediately after the Attack, repeat it in a Burst 1 around the original Target. You may exempt yourself from this attack. Create _Rough Terrain_ in the area around the attack."
+      },
+      {
+        "name": "Gather Strength",
+        "desc": "You focus your strength, drawing power from the earth itself to push your body beyond its limits.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Maneuver",
+        "speed": "3",
+        "ap": 1,
+        "move": "None",
+        "reqs": "Must be in a Grounding Stance",
+        "effect": "Gain 3 _Grit_ and 2 _Momentum_."
       }
     ]
   },
