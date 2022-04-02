@@ -718,13 +718,14 @@
   {
     "background": "#ba4a00",
     "name": "Grounding",
-    "flavor": "The Grounding Stance allows characters to anchor themselves to the earth, becoming unmovable and immensely strong.",
+    "role": "Striker/Controller",
+    "flavor": "The Grounding Discipline focuses on drawing energy from the earth itself to become immensely strong and immovable. Characters that specialize in the Grounding Discipline will generate an immense amount of Grit, as well as mitigate their need to spend it through aspects of their Stances and Reactions. While slow and low in mobility, the Grounding Stance allows for some of the highest damage Weapon Attacks in the system, and can easily generate massive Push against foes.",
     "stances": [
       {
         "name": "Anchor Stance",
         "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
         "accumulate": "Whenever you do not Move when taking an Action with Movement, gain 1 _Momentum_.",
-        "refresh": "_Grit_ 3",
+        "refresh": "_Grit_ 4",
         "effect": "Reduce the Cost to negate all _Push_, _Pull_ and _Slide_ effects by 2. Reduce the _Grit_ cost to _Negate_ all other effects by 1.",
         "special": "While in this Stance you may wield Titanic Weapons."
       },
@@ -732,7 +733,7 @@
         "name": "Mighty Stance",
         "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
         "accumulate": "Whenever you _Push_ a creature with an Attack, gain 1 _Momentum_.",
-        "refresh": "_Grit_ 2",
+        "refresh": "_Grit_ 3",
         "effect": "Increase your Damage with all Weapon Attacks by 2. Whenever you make a Weapon Attack you may spend up to 3 _Grit_, adding twice that value in _Push_. The cost to _Negate_ is _Grit_ equal to the _Grit_ spent. Whenever you _Push_ a creature into an Obstacle with a Weapon Attack they gain _Vulnerable_ 1 (1 _Focus_).",
         "special": "While in this Stance you may wield Titanic Weapons."
       },
@@ -760,8 +761,14 @@
       },
       {
         "name": "Mighty Strike",
-        "desc": "A slow, powerful blow that promises to leave a heavy wound.",
-        "keywords": ["Spirit", "Earth", "Weapon"],
+        "desc": "A slow, powerful blow that promises to leave a heavy impact.",
+        "keywords": [
+          "Spirit",
+          "Earth",
+          "Weapon",
+          "_Unblockable_ 2",
+          "_Pierce_ 2"
+        ],
         "type": "Strike",
         "speed": "Weapon+1",
         "ap": 1,
@@ -785,6 +792,26 @@
         "effect": "Attack using your weapon's Profile. Immediately after the Attack, repeat it in a Burst 1 around the original Target. You may exempt yourself from this attack. Create _Rough Terrain_ in the area around the attack."
       },
       {
+        "name": "Gaia Strike",
+        "desc": "A blow using every ounce of strength within the earth itself.",
+        "keywords": [
+          "Spirit",
+          "Earth",
+          "Weapon",
+          "_Unblockable_ 4",
+          "_Pierce_ 4"
+        ],
+        "type": "Strike",
+        "speed": "Weapon+2",
+        "ap": 2,
+        "move": "Step",
+        "range": "Weapon",
+        "cost": "2 _Momentum_",
+        "reqs": "_Versatile_ or _Heavy_ Weapon Wielded",
+        "effect": "Attack using your weapon's Profile, dealing +3 damage bonus with a _Versatile_ Weapon or +5 with a _Heavy_ Weapon. After determining the total Damage, double it. Add _Push_ 8, _Prone_, (2 _Grit_) to the Attack.",
+        "boost": "4 _Momentum_: Instead, triple the total Damage."
+      },
+      {
         "name": "Gather Strength",
         "desc": "You focus your strength, drawing power from the earth itself to push your body beyond its limits.",
         "keywords": ["Spirit", "Earth"],
@@ -792,73 +819,511 @@
         "speed": "3",
         "ap": 1,
         "move": "None",
-        "reqs": "Must be in a Grounding Stance",
-        "effect": "Gain 3 _Grit_ and 2 _Momentum_."
+        "effect": "Gain 2 _Grit_ and 1 _Momentum_.",
+        "special": "If you are in a Grounding Stance gain 1 additional _Grit_ and _Momentum_."
+      },
+      {
+        "name": "Colossal Strength",
+        "desc": "You attack with your colossal strength, smashing stones and sending foes flying.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Maneuver",
+        "speed": "4",
+        "ap": 1,
+        "move": "Reposition",
+        "effect": "If you attack a Creature, attack with the below _Profile_. If you attack an _Obstacle_, instead deal 10 Damage.",
+        "special": "If you _Push_ a creature into an Obstacle double the Damage. Deal the same amount of Damage + 2 to the Obstacle.",
+        "boost": "1 _Grit_: If you Damage an Obstacle, increase the Damage dealt to it by 5. You may repeat this Boost.",
+        "chart": {
+          "roll": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "damage": [0, 0, 0, 2, 2, 3, 3, 3, 4, 4, 4],
+          "status": [
+            "",
+            "",
+            "",
+            "_Push_ 4 (2 _Grit_)",
+            "_Push_ 5 (2 _Grit_)",
+            "_Push_ 6, _Prone_ (3 _Grit_)",
+            "_Push_ 7, _Prone_ (3 _Grit_)",
+            "_Push_ 8, _Prone_ (3 _Grit_)",
+            "_Push_ 10, _Prone_ (4 _Grit_)",
+            "_Push_ 10, _Prone_ (4 _Grit_)",
+            "_Push_ 12, _Prone_ (4 _Grit_)"
+          ]
+        }
+      },
+      {
+        "name": "Mighty Throw Creature",
+        "desc": "Drawing upon the earth, you fling a grappled creature a frightening distance.",
+        "type": "Maneuver",
+        "speed": "6",
+        "range": "Melee",
+        "keywords": ["Spirit", "Earth"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Must be _Top_ in a _Grapple_.",
+        "effect": "End the _Grapple_. _Push_ 6 (4 _Grit_) the _Grappled_ creature, then inflict _Prone_ (3 _Reflex_) and deal 5 Damage. If the creature _Negates_ they take half Damage. If you _Push_ the creature into an Obstacle or Creature, deal an additional 3 Damage to the original Target and increase the Cost to _Negate_ by 1. The Creature or Obstacle they collide with takes 7 Damage and gains _Hobbled_ 1 (1 _Reflex_).",
+        "special": "When you gain this Technique, also gain the Throw Creature Technique.",
+        "boost": "1 _Momentum_: Instead, _Push_ 8. If you are in a Grounding Stance, this _Boost_ costs 0 _Momentum_.\n1 _Focus_: You may instead use this on an adjacent willing creature that you are not _Grappling_. The cost to _Negate_ for this creature is only 1 _Reflex_."
+      },
+      {
+        "name": "Bull Rush",
+        "desc": "You charge forward with unstoppable force, crashing through all in your path.",
+        "type": "Move",
+        "speed": "4",
+        "range": "Melee",
+        "keywords": ["Spirit", "Earth", "Charge"],
+        "ap": 1,
+        "move": "Shift",
+        "cost": "1 _Momentum_, 1 _Grit_",
+        "effect": "The Movement granted by this Technique must be taken in a straight line. Any Creature you move through takes 3 damage is is knocked _Prone_ (2 _Grit_ or _Reflex_). If they _Negate_ they take half Damage. You may attempt to crash through Obstacles with this Movement; make a Strong Strike using a Body Weapon against any Obstacle in your path and add the _Siege_ Keyword. Whenever you make this Attack, you may spend 1 _Grit_ to increase the Damage by 4 if you fail to destroy the Obstacle.",
+        "boost": "2 _Momentum_: Immediately repeat this Technique."
+      },
+      {
+        "name": "Mighty Leap",
+        "desc": "You gather the earth's strength in your legs before launching yourself through the air.",
+        "type": "Move",
+        "speed": "4",
+        "range": "Melee",
+        "keywords": ["Spirit", "Earth", "Leaping"],
+        "ap": 1,
+        "move": "Shift",
+        "area": "Burst 1",
+        "effect": "The Movement granted by this Technique must be taken in a straight line. At the start and end of this _Movement_, make the Area _Veiled_ and _Push_ 1 (1 _Grit_) all creatures in it.",
+        "boost": "2 _Momentum_: Instead, Movement is Sprint."
+      },
+      {
+        "name": "Break Free",
+        "desc": "You use your colossal strength to break free from any restraints.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "keywords": ["Spirit", "Earth", "Block"],
+        "trigger": "You start your turn _Entombed_, _Restrained_ or _Grappled_.",
+        "cost": "1 _Grit_",
+        "effect": "You may immediately attempt to end the effect, paying _Grit_ instead of the typical cost and treating yourself as having spent 2 additional _Grit_. If you end the Status gain 1 _Momentum_.",
+        "boost": "0 _Grit_: You may instead use this Reaction if you start your turn adjacent to an Enemy. If you do, instead inflict _Push_ 2 or _Prone_ (1 _Grit_)."
+      },
+      {
+        "name": "Mountain Crash",
+        "desc": "You become as solid as a mountain against a foe's strike.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "keywords": ["Spirit", "Earth", "Block"],
+        "trigger": "You are Attacked.",
+        "cost": "2 _Grit_",
+        "effect": "Reduce the _Attack Roll_ by 2 and inflict _Impaired_ 1 (1 _Focus_). You may spend _Grit_ in place of _Reflex_ to _Negate_ this Attack. Gain _Hobbled_ 1.",
+        "boost": "1 _Momentum_: You may use the Basic Strike Technique, treating its Move as none. You must use a _Body_ Weapon."
+      },
+      {
+        "name": "Solid Footing",
+        "desc": "You set your feet in the ground when somebody attempts to move you, magnifying your weight a hundred times over.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "keywords": ["Spirit", "Earth", "Block"],
+        "trigger": "You would be _Pushed_, _Pulled_, _Staggered_, or _Slid_.",
+        "cost": "1 _Grit_",
+        "effect": "Reduce the cost to _Negate_ the triggering Effect by 2. If you fully _Negate_ the effect, gain 1 _Momentum_.",
+        "special": "You may choose to gain _Hobbled_ 1 as a part of this Reaction. If you do, reduce the cost to _Negate_ the triggering effect by an additional 2."
       }
     ]
   },
   {
     "background": "#cb4335",
     "name": "Stoneheart",
-    "flavor": "The Stoneheart Stance channels the essence of the earth to make one's heart like stone and impenetrable to fear.",
+    "role": "Support",
+    "flavor": "The Stoneheart Discipline channels the essence of the earth to make one's heart like stone and impenetrable to fear. Stoneheart's mechanics revolve around Courage and their ability to grant it to themselves an allies. Typically, this courage is gained in response to a small victory on the battlefield, a reckless act, or bolstering the courage of one who is about to fall. Stoneheart's belong on the front lines of a battlefield and make it far easier for allies to reach their foes, granting them Momentum and other benefits all the while.",
     "stances": [
       {
         "name": "Bold Stance",
         "desc": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
-        "refresh": "_Counter_ 1, _Will_ 1",
-        "effect": "As a Free Instinctive Action, you may issue a brave challenge. Choose up to 3 hostile creatures within Range 6. These targets gain Advantage on all attacks against you this round. Gain 1 _Momentum_ for each target selected in this way.",
-        "special": "While in this stance, you are immune to _Fear_, and you immediately remove any ongoing _Fear_ effects upon entering this Stance."
+        "refresh": "_Grit_ 1, _Focus_ 2",
+        "effect": "Every round at Refresh, you may issue a brave challenge. Choose up to 3 hostile creatures within Range 6. These targets all gain _Courage_ 1x3 (1 _Focus_). While they have this _Courage_ the enemies only clear it by ending their turn adjacent to you but also have _Advantage_ on all Attacks targeting you. Gain 1 _Momentum_ every time one of these targets clears a _Courage_.",
+        "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
       },
       {
         "name": "Inspiring Stance",
-        "desc": "",
-        "accumulate": "",
-        "refresh": "",
-        "effect": "",
-        "special": ""
+        "desc": "You are a font of courage, rallying your allies with every move you make.",
+        "refresh": "_Focus_ 3",
+        "effect": "At the start of each of your _Turns_ you may grant an ally with Range 6 _Courage_ 1. Whenever an ally within this Range makes an Attack, you may remove their topmost _Courage_ Token and grant them a Bonus to their _Attack Roll_ equal to the Token's Value.",
+        "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
       },
       {
         "name": "Defiant Stance",
-        "desc": "",
-        "accumulate": "",
-        "refresh": "",
-        "effect": "",
-        "special": ""
+        "desc": "No matter the punishment you take, your courage will carry you through the battle.",
+        "accumulate": "The first time each _Phase_ you take Damage gain _Courage_ 1. If you have no Endurance, gain _Courage_ 2 instead.",
+        "refresh": "_Grit_ 2, _Focus_ 1",
+        "effect": "At the end of any of your turns you may remove the topmost _Courage_ Token and either gain _Grit_ equal to its value or _Vigor_ equal to twice its value.",
+        "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
       }
     ],
     "techniques": [
       {
-        "name": "Crush Fear",
-        "desc": "You reach into the heart of an ally, crushing their fear and filling them with resolve.",
-        "keywords": ["Spirit", "Earth"],
-        "type": "Maneuver",
-        "speed": "3",
-        "range": "8",
+        "name": "Bold Strike",
+        "desc": "A bold strike that inspires allies but leaves you open.",
+        "keywords": ["Spirit", "Earth", "Weapon"],
+        "type": "Strike",
+        "speed": "Weapon",
         "ap": 1,
-        "target": "A creature within Range suffering from a _Fear_ effect.",
         "move": "Reposition",
-        "effect": "You or the Target may spend _Focus_ to cure a target within Range of _Fear_.",
-        "boost": "X _Momentum_. For each Momentum spent, choose another Target beyond the first. No Targets beyond the first require a _Focus_ Token."
+        "range": "Weapon",
+        "effect": "Attack using your weapon's Profile. Gain _Exposed_ 1. On a _Hit_ grant a creature within Range 6 _Courage_ 1, _Vigor_ 3. On a _Crit_, grant two allies _Courage_ 1, _Vigor_ 3 or one ally _Courage_ 2, _Vigor_ 6."
       },
       {
-        "name": "Rouse",
-        "desc": "You fill an ally with courage, allowing them to charge without a care in the world.",
+        "name": "Reckless Abandon",
+        "desc": "You fill a foe with false courage, causing them to leave themselves open to a disastrous strike.",
         "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "speed": "3",
         "range": "8",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Choose a creature within range. That creature may immediately Reposition as a Reaction, but must use all that Movement to move directly towards an enemy by the shortest possible route.",
-        "boost": "1 _Momentum_. The target gains 2 _Guard_ while using the Movement granted by this."
+        "effect": "Choose a creature within range. That creature gains _Courage_ 2, _Exposed_ 2 (2 _Focus_).",
+        "boost": "2 _Momentum_: Increase the cost to _Negate_ by 1. Unless the Target Negates, that creature must immediately _Reposition_, using all Movement to move directly towards an enemy by the shortest possible route."
+      },
+      {
+        "name": "Valorous Warcry",
+        "desc": "As you defeat a foe you let out a victorious cry, lifting the spirits of your allies.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Support",
+        "speed": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "You defeat a creature.",
+        "range": "Self",
+        "area": "Burst 4",
+        "effect": "All allies in the Area gain _Courage_ 1.",
+        "special": "When you gain this Technique, also gain the Warcry Technique.",
+        "boost": "2 _Momentum_: Instead, all allies gain _Courage_ 2.\n1 _Focus_: Area is instead Burst 6."
+      },
+      {
+        "name": "Inspiring Cry",
+        "desc": "You fill an ally in a dire spot with courage to keep them in the battle.",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "type": "Support",
+        "speed": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "Any ally in range takes Damage or would gain _Fear_.",
+        "range": "8",
+        "effect": "Grant the ally _Courage_ 1 and _Vigor_ 2.",
+        "boost": "1 _Momentum_: Instead, grant _Courage_ 2 or _Courage_ 1x2."
+      },
+      {
+        "name": "Chant of Bravery",
+        "desc": "You rouse the hearts of those near you, allowing them to push far beyond their mortal limits.",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "type": "Support",
+        "cost": "1 _Momentum_, 1 _Focus_ initially, 1 _Momentum_ at Refresh every Round this Enchant persists.",
+        "speed": "2",
+        "range": "2",
+        "ap": 1,
+        "move": "None",
+        "effect": "While this _Enchant_ persists, any ally that ends their _Turn_ within Range of you gains 3 _Vigor_ or _Courage_ 1.",
+        "boost": "1 _Momentum_: Range is instead 3."
+      },
+      {
+        "name": "Hearts of Stone",
+        "desc": "You cause your allies' courage to flare, allowing them to push forward past debilitating conditions.",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "type": "Support",
+        "speed": "2",
+        "range": "8",
+        "ap": 1,
+        "move": "None",
+        "effect": "As long as this _Enchant_ persists whenever an ally within Range of you would gain _Impaired_, _Dazed_, _Hobbled_ or _Suppressed_ they may clear any Value of _Courage_ and reduce the cost to _Negate_ by the total Value cleared. Alternatively, if an ally would begin their turn _Injured_ they may clear 2 _Courage_ to act as if they were not _Injured_ for that _Turn_. This _Enchant_ ends if there are ever no enemies within Range of you.",
+        "special": "You or an ally may pay 1 _Focus_ at the end of their turn. They may clear any value of _Courage_, then count that as any Token when clearing _Impaired_, _Dazed_, _Hobbled_ or _Suppressed_."
+      },
+      {
+        "name": "Inspire Courage",
+        "desc": "You fill an ally's heart with courage.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Support",
+        "speed": "3",
+        "range": "10",
+        "ap": 1,
+        "move": "Reposition",
+        "effect": "Choose a creature within range. That creature gains _Courage_ 3 or _Courage_ 1x3.",
+        "boost": "1 _Momentum_: After granting the Target _Courage_ you may redistribute their _Courage_ Tokens in whatever way you wish, so long as the total value remains the same. For example, three _Courage_ 1 Tokens may be made a single _Courage_ 3 Token."
+      },
+      {
+        "name": "Valiant Charge",
+        "desc": "You fill an ally with reckless bravery, allowing them to charge headlong into the fray.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Support",
+        "speed": "3",
+        "range": "8",
+        "ap": 1,
+        "move": "Reposition",
+        "effect": "Choose a creature within range. That creature may immediately Reposition as a Reaction, but must move directly towards an enemy by the shortest possible route.",
+        "boost": "1 _Momentum_ or _Focus_: The target gains 2 _Guard_ while using the Movement granted by this.\n1 _Momentum_, 1 _Reflex_ (paid by the Target): Movement is instead Shift."
+      },
+      {
+        "name": "Valorous Rally",
+        "desc": "You let out a rallying cry, filling your allies' hearts with courage and the drive to fight.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Support",
+        "speed": "4",
+        "range": "Self",
+        "area": "Burst 8",
+        "ap": 2,
+        "cost": "5 _Momentum_, 2 _Focus_",
+        "move": "Reposition",
+        "effect": "All allies in the Area gain _Courage_ 2, _Vigor_ 6 and may immediately may immediately Reposition as a Reaction, but must move directly towards an enemy by the shortest possible route. If they end this Movement next to a hostile creature they may pay 1 _Momentum_ to make a single 1 AP Attack against that Creature as a part of the same Reaction without paying a _Blitz_ cost but paying all other Costs as normal.",
+        "special": "When you gain this Technique, also gain the Rally Technique.",
+        "boost": "1 _Momentum_ or _Focus_: All allies gain 2 _Guard_ for this Movement."
+      },
+      {
+        "name": "Courageous Charge",
+        "desc": "You dash forward recklessly, inspiring your allies with your display.",
+        "keywords": ["Spirit", "Earth", "Charge"],
+        "type": "Move",
+        "speed": "3",
+        "range": "6",
+        "ap": 1,
+        "move": "Shift",
+        "effect": "Enemies have _Advantage_ on all Attacks made against you during this Movement, but gain _Impaired_ 1 (1 _Focus_) if they do not take a _Punish_ Reaction when they are able to. Whenever an enemy makes a _Punish_ Attack against you either gain _Courage_ 1 or grant an ally within Range _Courage_ 1.",
+        "boost": "2 _Grit_: Gain _Guard_ 2 for this Movement."
+      },
+      {
+        "name": "Courageous Shield",
+        "desc": "You become a shining example of courage, leaping in front of an attack that would lay an ally low.",
+        "keywords": ["Spirit", "Earth", "Block"],
+        "type": "Defensive",
+        "speed": "Reaction",
+        "cost": "3 _Grit_, 1 _Focus_, 2 _Reflex_",
+        "trigger": "An ally within Range would reach 0 _Endurance_ or _Health_ due to an Attack.",
+        "range": "Reposition Movement",
+        "effect": "Move into the target's space, _Pushing_ them 1. You become the Target of the original Attack. If this was an Area attack your ally is only exempt if they are _Pushed_ out of the Area. The ally gains _Courage_ 1.",
+        "boost": "1 _Reflex_: Range is instead Shift Movement.\n1 _Focus_: The ally instead gains _Courage_ 2.\n1 _Grit_: You may _Push_ you ally an additional 1.",
+        "special": "You may pay any amount of the Cost by expending an equivalent Value of _Courage_, using any Tokens."
+      },
+      {
+        "name": "Last Stand",
+        "desc": "You fill a falling friend with courage, keeping them on their feet when they should fall.",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "type": "Defensive",
+        "speed": "Reaction",
+        "cost": "3 _Courage_*, 2 _Focus_",
+        "trigger": "You or an ally with _Courage_ within Range would reach 0 _Endurance_ but not 0 _Health_.",
+        "range": "10",
+        "effect": "While this _Enchant_ persists the triggering Creature takes no penalties from having no _Endurance_. Instead, they reduce the _Cost_ of all Techniques by 1, have _Advantage_ on all Attacks, and gain _Guard_ 2. This Enchant ends if the Target gains Endurance or does not remove a _Courage_ Token at the end of their _Turn_.",
+        "special": "The _Courage_ must be paid by the triggering Creature by removing that Value of _Courage_, using any Tokens."
       }
     ]
   },
   {
     "background": "#ab9478",
     "name": "Tremorsight",
-    "flavor": "Tremorsight allows an Earthbonded to read the vibrations of the earth, providing perfect knowledge of everything touching the ground.",
-    "stances": [],
-    "techniques": []
+    "role": "Support/Controller",
+    "flavor": "The Tremorsight Discipline allows an Earthbonded to read the vibrations of the earth, providing perfect knowledge of everything touching the ground. The Range of these techniques depends on how far their Seismic Sense is extending, which can be amplified by remaining still. Outside this radius the Earthbound has no special powers but against foes in this area they can generate a great deal of Knowledge, making it far easier to attack and defend against all these creatures. A skilled practitioner of this Discipline can even extend their senses into creatures, learning their weaknesses and leaving them open to devastating attacks.",
+    "stances": [
+      {
+        "name": "Flawfinder Stance",
+        "desc": "Your senses analyze every aspect of your foes' defenses, allowing you to easily break and bypass them with every strike.",
+        "refresh": "_Focus_ 2, _Grit_ 1",
+        "effect": "At the start of your Turn, you may spend _Knowledge_ on a creature in your Seismic Sense to learn their weak points, leaving them open to attack. Pay up to 3 _Knowledge_; the creature must immediately spend equivalent _Focus_ or _Momentum_ (in any combination) or lose that many _Defensive Tokens_ of your choice. In addition, treat all _Obstacles_ within your Seismic Sense as _Fragile_ when you attack them.",
+        "special": "While in this Stance you have Seismic Sense within 6 spaces, which allows you to ignore _Veiled_ Terrain."
+      },
+      {
+        "name": "Pulsereader Stance",
+        "desc": "You feel the subtle vibrations of the earth, feeling the true intentions of your foes and better preparing you for future assaults.",
+        "accumulate": "Gain 1 _Momentum_ any time a creature _Misses_ or _Grazes_ you with an _Attack_.",
+        "refresh": "_Focus_ 3",
+        "effect": "While in this Stance reduce the cost to _Negate_ all _Feint_ Techniques by 2. In addition, whenever you Attacked by a creature in your Seismic Sense inflict _Knowledge_ 2 (2 _Focus_) on them.",
+        "special": "While in this Stance you have Seismic Sense within 2 spaces, which allows you to ignore _Veiled_ Terrain."
+      },
+      {
+        "name": "Sonar Stance",
+        "desc": "Your senses extend out around you, providing you perfect knowledge of all foes.",
+        "refresh": "_Focus_ 1, _Reflex_ 2",
+        "effect": "Inflict 1 _Knowledge_ (1 _Focus_) on any creature that ends their _Turn_ within your Seismic Sense.",
+        "special": "While in this Stance you have Seismic Sense within 4 spaces, which allows you to ignore _Veiled_ Terrain."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Perfect Read",
+        "desc": "You use your perfect analysis of a foes' weak points and defenses to unleash a truly devastating attack.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Strike",
+        "speed": "Set-Up",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Must be Attached to a Strike.",
+        "effect": "If the Target of the Attached Strike is within your Seismic Sense, add _Unblockable_ 1, _Sure Hit_ 1, and _Pierce_ 1. On a _Hit_ or _Crit_ you may add _Break_ (2 _Focus_) to the Attack.",
+        "special": "As a part of this Attack, you may spend any amount of _Knowledge_ you have on the creature. If you do not _Miss_, add that value to the Damage dealt."
+      },
+      {
+        "name": "Exploiting Strike",
+        "desc": "You find an old wound in an enemy with your seismic sense before bringing your weapon crashing down on it.",
+        "keywords": ["Spirit", "Earth", "Weapon"],
+        "type": "Strike",
+        "speed": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "range": "Weapon",
+        "cost": "1 _Momentum_",
+        "reqs": "Target must be within your Seismic Sense + 2 and on earthen ground.",
+        "effect": "Attack using your weapon's Profile. On a _Hit_ or _Graze_, add _Hobbled_ 1, _Dazed_ 2, or _Impaired_ 2 (2 _Focus_) to the Attack. On a _Crit_, add two and increase the cost to _Negate_ by 1."
+      },
+      {
+        "name": "Locating Wave",
+        "desc": "As a foe falls their body sends out a shockwave, carrying even more information to you.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Maneuver",
+        "speed": "Reaction",
+        "trigger": "A creature is Defeated or becomes _Prone_ in Range.",
+        "range": "Seismic Sense + 2",
+        "cost": "1 _Focus_",
+        "area": "Burst 2",
+        "effect": "Gain _Knowledge_ 1 (1 _Focus_) on all creatures within the Area of the Triggering Target."
+      },
+      {
+        "name": "Hidden Flaw",
+        "desc": "As a foe slams into an obstacle you glean more knowledge, and ensure they strike the most painful point.",
+        "keywords": ["Spirit", "Earth", "Punish"],
+        "type": "Maneuver",
+        "speed": "Reaction",
+        "range": "Seismic Sense + 4",
+        "cost": "1 _Momentum_",
+        "trigger": "A creature within Range is forcibly moved into an _Obstacle_.",
+        "effect": "Inflict _Knowledge_ 2 (1 _Focus_). Additionally, the creature takes 2 Damage and gains _Dazed_ 2 or _Wounded_ 1 (Any 2 _Focus_ or _Grit_)."
+      },
+      {
+        "name": "Seismic Aim",
+        "desc": "You steady your footing, pushing your senses even further through the earth.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Maneuver",
+        "speed": "Reaction",
+        "trigger": "You make an Attack against a creature within Range.",
+        "range": "Seismic Sense + 4",
+        "cost": "1 _Momentum_, 2 _Focus_",
+        "effect": "This _Attack_ cannot have _Disadvantage_ and ignores _Cover_. Increase your _Attack Roll_ by 1 and, on a _Crit_, inflict _Dazed_ 1 (1 _Focus_).",
+        "boost": "1 _Momentum_: Make this Attack at _Advantage_."
+      },
+      {
+        "name": "Broaden Senses",
+        "desc": "You steady your footing, pushing your senses even further through the earth.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Maneuver",
+        "speed": "2",
+        "ap": 1,
+        "move": "None",
+        "range": "Self",
+        "effect": "Expand your Seismic Sense by 4 until the next time you Move. Gain 1 _Focus_. Gain a total of 2 _Knowledge_ on any combination of creatures within your Seismic Sense."
+      },
+      {
+        "name": "Tissue Scan",
+        "desc": "You focus your senses on a foe and quickly appraise an accurate state of their vitality.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "Seismic Sense + 4",
+        "ap": 1,
+        "move": "Step",
+        "effect": "The Target must spend 2 _Focus_. If they do not, gain 4 _Knowledge_ on them and learn how many of each _Defensive Token_ they have."
+      },
+      {
+        "name": "Break Footing",
+        "desc": "You analyze a foe's footing before subtly shifting the earth, knocking a foe off-balance.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Maneuver",
+        "speed": "3",
+        "ap": 1,
+        "move": "Step",
+        "cost": "3 _Momentum_",
+        "range": "Seismic Sense + 2",
+        "effect": "Attack with the below _Profile_.",
+        "chart": {
+          "roll": [
+            "Miss",
+            "Graze",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "_Hobbled_ 1 (2 _Reflex_)",
+            "_Hobbled_ 1 (2 _Reflex_)",
+            "_Hobbled_ 1 (2 _Reflex_)",
+            "_Hobbled_ 1, _Staggered_ (3 _Reflex_)",
+            "_Hobbled_ 1, _Staggered_ (3 _Reflex_)",
+            "_Prone_, _Staggered_ (3 _Reflex_)",
+            "_Prone_, _Staggered_ (3 _Reflex_)",
+            "_Prone_, _Staggered_, _Break_ (4 _Reflex_)",
+            "_Prone_, _Staggered_, _Break_ (4 _Reflex_)",
+            "_Prone_, _Staggered_, _Break_ (4 _Reflex_)"
+          ]
+        }
+      },
+      {
+        "name": "Remote Viewing",
+        "desc": "You focus your tremorsense outward, gaining insight into a distant area.",
+        "keywords": ["Spirit", "Earth", "Groundsource", "Enchant"],
+        "type": "Maneuver",
+        "speed": "3",
+        "ap": 1,
+        "move": "Step",
+        "area": "_Blast_ 1",
+        "range": "Tremoresense + 8",
+        "effect": "Inflict _Knowledge_ 1 (1 _Focus_) on all creatures within the Area. In addition, create an Area of Seismic Sense within Range that continues as long as this Enchant exists.",
+        "boost": "2 _Focus_: Remove the Enchant Keyword. The Area persists until the end of the Encounter."
+      },
+      {
+        "name": "Reveal Flaw",
+        "desc": "As you gather information you find flaws in a foe's defenses, something you quickly relay to an ally.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Support",
+        "speed": "Reaction",
+        "range": "Seismic Sense + 4",
+        "trigger": "You or an ally attacks a creature you have at least 2 _Knowledge_ on.",
+        "cost": "1 _Momentum_",
+        "effect": "Add either _Unblockable_ 2 or _Sure Hit_ 2 to the Attack.",
+        "special": "You may also trigger this whenever an ally attacks an Obstacle in your Seismic Sense; add _Siege_ to their Attack.",
+        "boost": "1 _Momentum_: Add both Effects to the Attack."
+      },
+      {
+        "name": "True Heart Scan",
+        "desc": "You focus your senses on a foe, reverberating vibrations through them to learn every aspect of their defenses.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Support",
+        "speed": "2",
+        "range": "Seismic Sense + 6",
+        "ap": 2,
+        "move": "Step",
+        "effect": "The Target must immediately spend 5 _Focus_. If they do not, inflict 8 _Knowledge_ on them and, until the end of the _Round_, whenever you or an ally makes an Attack against that creature you may spend 1 _Knowledge_ to increase the _Attack Roll_. You may spend up to 3 _Knowledge_ per Attack, for a total bonus of +3. In addition, when that creature attempts to take an _Evade_ or _Block_ Reaction you may spend _Knowledge_ equal to the _Cost_ of the _Reaction_ to cancel their _Reaction_."
+      },
+      {
+        "name": "Sense Attack",
+        "desc": "You sense an attack incoming, making a block or evade trivial for you.",
+        "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Seismic Sense + 2",
+        "trigger": "You are Attacked by a creature within Range.",
+        "special": "This Reaction does not take your normal Reaction, but may only be used once per Phase.",
+        "effect": "Inflict _Knowledge_ 2 (2 _Focus_) and reduce the _Attack Roll_ by 1."
+      }
+    ]
   }
 ]

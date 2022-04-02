@@ -129,7 +129,7 @@
         "move": "Reposition",
         "cost": "1 _Momentum_ or _Grit_ if not using an Unarmed Weapon.",
         "reqs": "Must have an _Open Hand_.",
-        "effect": "Attack using your weapon's _Profile_. After resolving the Attack, use the Grab Maneuver. If you _Hit_ with the initial Attack, increase the cost to _Negate_ the Grab by 1. If you _Crit_,  instead increase it by 2."
+        "effect": "Attack using your weapon's _Profile_. After resolving the Attack, use the Grab or Improved Grab Maneuver, if available. If you _Hit_ with the initial Attack, increase the cost to _Negate_ the Grab by 1. If you _Crit_,  instead increase it by 2."
       },
       {
         "name": "Suplex",
@@ -185,6 +185,45 @@
         "effect": "You may _Pull_ 3 (2 _Grit_) on the _Grappled_ creature. Attack using the Medium Improvised Weapon's _Profile_, resolving the Attack is if it originates from the _Grappled_ creature's space. Resolve the Attack against the _Grappled_ target as well."
       },
       {
+        "name": "Improved Grab",
+        "desc": "A grab made with flawless technique to engage in a grapple.",
+        "type": "Maneuver",
+        "speed": "3",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Open Hand",
+        "effect": "Attack using the below Profile.",
+        "chart": {
+          "roll": [
+            "Miss",
+            "Miss",
+            "Miss",
+            "Graze",
+            "Graze",
+            "Hit",
+            "Hit",
+            "Hit",
+            "Crit",
+            "Crit",
+            "Crit"
+          ],
+          "status": [
+            "",
+            "",
+            "",
+            "_Pull_ 2 or _Grapple_ (2 _Grit_)",
+            "_Pull_ 2 or _Grapple_ (2 _Grit_)",
+            "_Pull_ 2, _Grapple_ (3 _Grit_)",
+            "_Pull_ 2, _Grapple_ (3 _Grit_)",
+            "_Pull_ 2, _Grapple_ (3 _Grit_)",
+            "_Pull_ 4, _Grapple_ (4 _Grit_), +1 _Grit_",
+            "_Pull_ 4, _Grapple_ (4 _Grit_), +1 _Grit_",
+            "_Pull_ 4, _Grapple_ (4 _Grit_), +1 _Grit_"
+          ]
+        }
+      },
+      {
         "name": "Lock",
         "desc": "You secure your grip on a grappled creature, limiting their ability to fight.",
         "type": "Maneuver",
@@ -194,18 +233,7 @@
         "move": "Reposition",
         "reqs": "Must be _Top_ in a _Grapple_.",
         "effect": "Choose one of the _Bottoms_ Hands. Unless they spend 2 _Grit_ to _Negate_ this effect, they may not use that Hand for the remainder of the _Grapple_. Increase the _Cost_ of all _Reactions_ for that creature by 1 for the remainder of the _Grapple_.",
-        "special": "You may not use this Technique on the same _Grappled_ creature more than once unless you are using both Hands for the _Grapple_. If you are, you may use this Technique twice on the same creature."
-      },
-      {
-        "name": "Wrench",
-        "desc": "You violently twist a grappled creature's appendage, attempting to tear their weapon away.",
-        "type": "Maneuver",
-        "speed": "3",
-        "range": "Melee",
-        "ap": 1,
-        "move": "Reposition",
-        "reqs": "Must be _Top_ in a _Grapple_.",
-        "effect": "Attack with the below _Profile_.",
+        "special": "After using this Action you must dedicate a Hand to maintaining the Lock. If you repeat the Action using a Hand already engaged in a Lock, Attack with the below profile.",
         "chart": {
           "roll": [
             "Miss",
@@ -227,8 +255,8 @@
             "",
             "_Impaired_ 1 (1 _Reflex_ or _Grit_)",
             "_Impaired_ 1 (1 _Reflex_ or _Grit_)",
-            "_Impaired_ 2 (Any 2 _Reflex_ or _Grit_)",
-            "_Impaired_ 2 (Any 2 _Reflex_ or _Grit_)",
+            "_Impaired_ 2 or _Disarm_ (Any 2 _Reflex_ or _Grit_)",
+            "_Impaired_ 2 or _Disarm_ (Any 2 _Reflex_ or _Grit_)",
             "_Impaired_ 2 or _Disarm_ (Any 2 _Reflex_ or _Grit_)",
             "_Impaired_ 2 or _Disarm_ (Any 2 _Reflex_ or _Grit_)",
             "_Impaired_ 3 or _Disarm_ (Any 3 _Reflex_ or _Grit_)",
@@ -258,9 +286,8 @@
         "ap": 1,
         "move": "Reposition",
         "reqs": "Must be _Top_ in a _Grapple_.",
-        "effect": "End the _Grapple_. _Push_ 3 the _Grappled_ creature, then inflict _Prone_ (2 _Reflex_) and deal 4 Damage. If the creature _Negates_ they take no Damage.",
-        "special": "If you _Push_ the creature into an Obstacle or Creature, deal an additional 2 Damage to the original Target and increase the Cost to _Negate_ by 1. The Creature or Obstacle they collide with takes 4 Damage and gains _Hobbled_ 1 (1 _Reflex_).",
-        "boost": "1 _Momentum_: Instead, _Push_ 5."
+        "effect": "End the _Grapple_. _Push_ 2 (2 _Grit_) the _Grappled_ creature, then inflict _Prone_ (2 _Reflex_) and deal 4 Damage. If the creature _Negates_ they take no Damage. If you _Push_ the creature into an Obstacle or Creature, deal an additional 2 Damage to the original Target and increase the Cost to _Negate_ by 1. The Creature or Obstacle they collide with takes 4 Damage and gains _Hobbled_ 1 (1 _Reflex_).",
+        "boost": "1 _Momentum_: Instead, _Push_ 4."
       },
       {
         "name": "Ablative Antagonist",
@@ -305,7 +332,7 @@
     "techniques": [
       {
         "name": "Shieldbreaker",
-        "keywords": ["Weapon", "Unblockable"],
+        "keywords": ["Weapon", "_Unblockable_ 1"],
         "range": "Weapon",
         "ap": 1,
         "type": "Strike",
