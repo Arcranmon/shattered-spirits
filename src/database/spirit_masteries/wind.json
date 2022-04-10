@@ -3,7 +3,7 @@
     "background": "#c39bd3",
     "name": "Gale",
     "role": "Controller/Support",
-    "flavor": "The most common Windbound discipline, masters of the Gale Stance control powerful gusts of wind and create minor tornadoes. This Discipline provides a wide range of quick ways to reposition foes and Windy Terrain can provide a way to slow foes while accelerating allies. This Discipline also provides a great deal of mobility to the windbound themselves and, while it's lacking in damage, it has a great deal of options to Stagger or Accelerate creatures, controlling both positions and the initiative order.",
+    "flavor": "The most common Windbound Discipline, masters of the Gale Stance control powerful gusts of wind and create minor tornadoes. This Discipline provides a wide range of quick ways to reposition foes and Windy Terrain can provide a way to slow foes while accelerating allies. This Discipline also provides a great deal of mobility to the windbound themselves and, while it's lacking in damage, it has a great deal of options to Stagger or Accelerate creatures, controlling both positions and the initiative order.",
     "stances": [
       {
         "name": "Breeze Stance",
@@ -659,7 +659,7 @@
         "boost": "2 _Momentum_: You may remove up to 6 value of _Shock_. If you pick the _Restrained_ option more than once, add additional turns to the Condition."
       },
       {
-        "name": "Lightning Charriot",
+        "name": "Lightning Chariot",
         "desc": "You channel the power of the storm, traveling across the battlefield like a bolt of lightning.",
         "type": "Move",
         "keywords": ["Spirit", "Wind", "Electric", "Priority"],
@@ -678,6 +678,7 @@
         "type": "Defensive",
         "range": "Self",
         "cost": "1 _Reflex_",
+        "trigger": "You are _Attacked_.",
         "effect": "Reroll the Attack and immediately _Safe_ Move 1. After resolving the Attack, gain _Shock_ 1."
       }
     ]
@@ -685,46 +686,204 @@
   {
     "background": "#d5dbdb",
     "name": "Zephyr",
-    "flavor": "The Zephyr Stance carries the body aloft, allowing speed and reactions that push the limits of human capability and even flight.",
-    "stances": [],
+    "role": "Skirmisher",
+    "flavor": "The Zephyr Discipline carries the body aloft, allowing speed and reactions that push the limits of human capability. Spiritbound skilled in this Discipline are capable of moving great distances and have access to powerful Evade Reactions. With extreme mobility and attacks that are difficult to Evade, a Zephyr Discipline master can easily reach any point on the battlefield and make things difficult for a foe.",
+    "stances": [
+      {
+        "name": "Agility Stance",
+        "desc": "You move with uncanny speed, slipping past attacks while dancing across the battlefield.",
+        "refresh": "4 _Reflex_",
+        "accumulate": "Whenever you take an _Evade_ Reaction and it causes an Attack to _Graze_ or _Miss_ gain 1 _Momentum_.",
+        "effect": "Whenever you take an _Evade_ Reaction you may take a _Safe_ _Step_ Movement as a part of the same Reaction.",
+        "special": "Increase all your Movement by 1 space while in this _Stance_."
+      },
+      {
+        "name": "Lightfoot Stance",
+        "desc": "You become incredibly light, letting you bound about without a care.",
+        "refresh": "2 _Reflex_, 1 _Focus_",
+        "effect": "On your _Turn_ you may take a _Safe_ _Leaping_ _Reposition_ in addition to your normal Movement. If you are _Flying_, you may sacrifice this additional Movement to gain 1 _Momentum_.",
+        "special": "Increase all your Movement by 1 space while in this _Stance_."
+      },
+      {
+        "name": "Haste Stance",
+        "desc": "You attack with blistering speed, punishing those with slower reactions than yourself.",
+        "refresh": "3 _Reflex_, 1 _Focus_",
+        "accumulate": "Whenever you Attack a creature that has not taken a _Turn_ this _Round_, gain 1 _Momentum_.",
+        "effect": "Whenever you Attack a creature that has not taken a _Turn_ this _Round_ add _Sure Hit_ 1 and increase to _Cost_ to _Negate_ by 1.",
+        "special": "Increase all your Movement by 1 space while in this _Stance_."
+      }
+    ],
     "techniques": [
       {
-        "name": "Curving Shot",
-        "keywords": ["Spirit", "Wind"],
-        "trigger": "You _Miss_ with a Ranged Attack using a Weapon.",
-        "cost": "1 _Momentum_",
+        "name": "Agile Pursuit",
+        "desc": "You use your superior speed to keep pace with a foe before striking them.",
+        "keywords": ["Spirit", "Wind", "Punish", "Safe"],
+        "trigger": "An enemy within your Reach moves outside your Reach.",
+        "cost": "2 _Reflex_, 1 _Momentum_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
         "type": "Strike",
         "speed": "Reaction",
-        "desc": "A sudden breeze catches your attack, redirecting it suddenly into another foe.",
-        "effect": "Immediately repeat the Attack against a different Target within Range 4 of the original Target.",
-        "boost": "1 _Momentum_. The Attack has Advantage."
+        "range": "Weapon",
+        "effect": "At the end of that creature's turn, immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_. Increase the Movement of the Technique by one step, but you must use any _Movement_ granted by the chosen _Technique_ to move towards the enemy, ending this Reaction as close to them as possible. If you are adjacent to the target, make the Attack with _Advantage_.",
+        "special": "Gain the Pursuit Technique.",
+        "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+      },
+      {
+        "name": "Nimble Strikes",
+        "desc": "A blisteringly-fast strike that happens in a blink of the eye.",
+        "keywords": ["Spirit", "Wind", "Weapon", "_Sure Hit_ 2", "Weak"],
+        "type": "Strike",
+        "speed": "Weapon-2",
+        "range": "Weapon",
+        "cost": "1 _Momentum_",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "_Light_ or _Versatile_ Weapon Wielded.",
+        "effect": "Attack using your weapon's Profile twice, dealing half Damage and reducing the _Cost_ to _Negate_ by 1. _Versatile_ Weapons take a -2 damage penalty.",
+        "special": "If the Speed of this Technique would be less than 1, it becomes Speed 1 and gains _Priority_. The cost to _Negate_ is then increased by 1."
       },
       {
         "name": "Windsweep",
         "desc": "You attack at lightning speed, making it near-impossible to dodge or counter.",
-        "keywords": ["Spirit", "Wind", "Sure Hit", "Warding", "Weak"],
+        "keywords": ["Spirit", "Wind", "_Sure Hit_ 3", "_Warding_ 3"],
         "type": "Strike",
-        "speed": "Weapon",
+        "speed": "Weapon-1",
         "range": "Melee",
         "ap": 1,
         "move": "Shift",
-        "cost": "1 _Momentum_",
+        "cost": "2 _Momentum_",
         "reqs": "_Light_ or _Versatile_ Weapon Wielded.",
-        "effect": "Attack using your Weapon's Profile."
+        "effect": "Attack using your Weapon's Profile. Add _Impair_ 1 (1 _Reflex_) to a _Hit_ and _Impair_ 2 (2 _Reflex_) to a _Crit_."
+      },
+      {
+        "name": "Agile Feint",
+        "desc": "You use your extreme speed to find an opening and exploit it.",
+        "keywords": ["Feint", "Safe"],
+        "type": "Maneuver",
+        "speed": "Set-Up",
+        "ap": 1,
+        "move": "Reposition",
+        "range": "4",
+        "reqs": "Must be Attached to a Single Target Strike.",
+        "effect": "The Target of the Attached Strike must _Negate_ with 2 _Reflex_, otherwise you gain _Advantage_ on the Attached Strike.",
+        "boost": "2 _Momentum_: Movement is instead Shift. If you are able to move to the opposite side of the enemy from where you started your turn add _Sure Hit_ 1 and deal an additional 4 Damage."
+      },
+      {
+        "name": "Alight",
+        "desc": "You channel more and more energy into speed, enhancing your reflexes and accelerating your movement.",
+        "keywords": ["Spirit", "Wind", "Priority"],
+        "type": "Maneuver",
+        "speed": "1",
+        "ap": 1,
+        "move": "Reposition",
+        "effect": "Gain 1 _Reflex_ and either 1 _Momentum_ or _Accelerate_. You may choose what Technique to _Accelerate_ rather than the next to occur.",
+        "special": "If you are in a Zephyr Stance gain 1 additional _Reflex_ or _Momentum_.",
+        "imbue": "2 _Reflex_: This is instead 0 AP."
+      },
+      {
+        "name": "Uncanny Speed",
+        "speed": "Reaction",
+        "desc": "You channel the wind to give you uncanny speed, allowing you to dash forward without a care.",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "type": "Move",
+        "range": "Self",
+        "move": "Reposition",
+        "cost": "1 _Reflex_",
+        "trigger": "A _Phase_ begins.",
+        "effect": "None.",
+        "boost": "1 _Reflex_: This _Movement_ is _Safe_.\n2 _Reflex_: The Trigger is instead 'A _Turn_ begins'."
+      },
+      {
+        "name": "Remove Tether",
+        "desc": "You become light enough that the ground is no longer a limitation for you, allowing you to take to the sky.",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "type": "Move",
+        "speed": "Instinctive",
+        "range": "Self",
+        "cost": "Any 4 _Reflex_ or _Momentum_ initially, 2 _Reflex_ at each subsequent Refresh.",
+        "ap": 1,
+        "move": "You become _Flying_ as long as this _Enchant_ persists."
+      },
+      {
+        "name": "Flyby",
+        "desc": "You make use of a quick flight to launch yourself forward, easily gaining ground and retreating.",
+        "keywords": ["Spirit", "Wind", "Flying"],
+        "type": "Move",
+        "speed": "Special",
+        "range": "Self",
+        "cost": "1 _Reflex_",
+        "move": "Reposition",
+        "ap": 1,
+        "effect": "Attach this to any Technique, then resolve it as both Set-Up and Follow-Up.",
+        "special": "If you are already _Flying_, reduce the _Cost_ by 1."
+      },
+      {
+        "name": "Turbo",
+        "desc": "A horrifically fast dash that moves you across the battlefield near-instantly.",
+        "keywords": ["Spirit", "Wind", "Safe"],
+        "type": "Move",
+        "speed": "See Movement",
+        "range": "Self",
+        "cost": "1 _Reflex_ or _Momentum_",
+        "ap": 1,
+        "move": "The movement granted by Turbo determines its Speed, as follows: \n* <ins>Shift:</ins> Speed 1 \n*  <ins>Sprint:</ins> Speed 2 \n* <ins>Dash:</ins> Speed 3",
+        "boost": "1 _Momentum_ or _Reflex_: You may _Leap_ your Reposition distance during this Movement. You may use this Boost multiple times.\n\tAny 2 _Momentum_ or _Reflex_: This Movement is _Flying_."
+      },
+      {
+        "name": "Float Away",
+        "speed": "Reaction",
+        "desc": "You take to the skies as a foe attacks you, throwing off their attack.",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "type": "Defensive",
+        "trigger": "You are Attacked.",
+        "cost": "3 _Reflex_",
+        "range": "Self",
+        "effect": "Force the attacker to reroll the Attack. If the Attack was Melee, they reroll it at _Disadvantage_. They must use the new result. You are _Flying_ until the end of the current Phase.",
+        "special": "If you are already _Flying_, reduce the _Cost_ of this Reaction by 1."
+      },
+      {
+        "name": "Godspeed",
+        "speed": "Reaction",
+        "desc": "You move with incredible speed, all but forcing a foe's attack to miss.",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "type": "Defensive",
+        "trigger": "You are Attacked.",
+        "cost": "5 _Reflex_",
+        "range": "Self",
+        "effect": "Force the attacker to reroll the Attack using only a d6. They must use the new result."
+      },
+      {
+        "name": "Uncanny Dodge",
+        "desc": "You slip past a hazard, putting yourself in an advantageous position while you do so.",
+        "type": "Defensive",
+        "speed": "Reaction",
+        "range": "Self",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "trigger": "You can _Negate_ with _Reflex_ or trigger a _Hazard_.",
+        "cost": "1 _Reflex_",
+        "effect": "Reduce the cost to _Negate_ the triggering Effect by 1. If it was a _Hazard_, instead reduce the cost to _Negate_ by 2 and you may _Negate_ with _Reflex_ instead of the original Token. If you _Negate_ the effect, immediately take a Step Movement."
       }
     ]
   },
   {
     "background": "#a569bd",
     "name": "Howl",
-    "flavor": "Howl Stance masters channel ancient, primal fear of storms and winds to shake enemies to their core, sending them fleeing from the battle.",
-    "stances": [],
+    "flavor": "Howl Discipline masters channel ancient, primal fear of storms and winds to shake enemies to their core, sending them fleeing from the battle.",
+    "stances": [
+      {
+        "name": "Coward Stance",
+        "desc": "You are able to enhance your own sense of panic, granting you the ability to keep a great deal of space between you and foes.",
+        "refresh": "2 _Focus_, 2 _Reflex_",
+        "accumulate": "Whenever you clear a _Fear_ Token, gain _Momentum_ equal to half the Value of the Token.",
+        "effect": "While you have any _Fear_ Tokens add _Safe_ to all Movement.",
+        "special": "While in this Stance you may treat all _Fear_ Tokens as if their Value was one less when resolving or clearing them."
+      }
+    ],
     "techniques": []
   },
   {
     "background": "#e8daef",
-    "name": "Windwhisper",
-    "flavor": "The Windwhisper Stance reads currents in the air, allowing an incredible ability to predict and react to attacks.",
+    "name": "Breeze",
+    "flavor": "The Breeze Discipline reads currents in the air, allowing an incredible ability to predict and react to attacks.",
     "stances": [],
     "techniques": []
   }

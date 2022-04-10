@@ -5,7 +5,20 @@
     "name": "Berserker",
     "flavor": "You find yourself in the front lines, striking with fury and little regard to your own defense.",
     "stances": [],
-    "techniques": []
+    "techniques": [
+      {
+        "name": "Pursuit",
+        "desc": "You chase a foe as they attempt to flee, dedicated to keeping them within your reach.",
+        "keywords": ["Punish"],
+        "trigger": "An enemy within your Reach moves outside your Reach.",
+        "type": "Strike",
+        "cost": "1 _Reflex_, 1 _Momentum_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
+        "speed": "Reaction",
+        "range": "Weapon",
+        "effect": "At the end of that creature's turn, immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_. You must use any _Movement_ granted by the chosen _Technique_ to move towards the enemy, ending this Reaction as close to them as possible. If you are adjacent to the target, make the Attack with _Advantage_.",
+        "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+      }
+    ]
   },
   {
     "category": "Skill",
@@ -79,7 +92,29 @@
   {
     "category": "Skill",
     "background": "DarkGrey",
-    "name": "Rogue",
+    "name": "Scoundrel",
+    "flavor": "You fight dirty, relying on clever tricks and cheap shots to carry you to victory.",
+    "stances": [],
+    "techniques": [
+      {
+        "name": "Nimble Feint",
+        "desc": "You cunningly feign an attack to create an opening for yourself.",
+        "keywords": ["Feint"],
+        "type": "Maneuver",
+        "speed": "Set-Up",
+        "ap": 1,
+        "move": "Reposition",
+        "range": 4,
+        "reqs": "Must be Attached to a Single Target Strike.",
+        "effect": "The Target of the Attached Strike must _Negate_ with 2 _Focus_, otherwise you gain _Advantage_ on the Attached Strike and deal an additional 2 Damage.",
+        "boost": "1 _Momentum_: After resolving the Attached Strike, inflict _Exposed_ 1 (1 _Focus_)."
+      }
+    ]
+  },
+  {
+    "category": "Skill",
+    "background": "DarkGrey",
+    "name": "Skulker",
     "flavor": "You mostly fight from the shadows, making the most of every opportunity provided to you.",
     "stances": [],
     "techniques": []
