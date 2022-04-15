@@ -3,7 +3,6 @@ import { store } from "@/store";
 class Armor {
   private _armor: number;
   private _category: string;
-  private _dash: number;
   private _durability: number;
   private _endurance: number;
   private _name: string;
@@ -26,9 +25,6 @@ class Armor {
   }
   get Category() {
     return this._category;
-  }
-  get Dash() {
-    return this._dash;
   }
   get Durability() {
     return this._durability;
@@ -75,7 +71,6 @@ class Armor {
   public setArmorData(data: IArmorData): void {
     this._armor = data.armor || 0;
     this._category = data.category || "";
-    this._dash = data.dash || 0;
     this._durability = data.durability || 0;
     this._endurance = data.endurance || 0;
     this._name = data.name || "";

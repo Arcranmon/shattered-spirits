@@ -2,7 +2,7 @@
   {
     "background": "#c39bd3",
     "name": "Gale",
-    "role": "Controller/Support",
+    "role": "Controller/Supporter",
     "flavor": "The most common Windbound Discipline, masters of the Gale Stance control powerful gusts of wind and create minor tornadoes. This Discipline provides a wide range of quick ways to reposition foes and Windy Terrain can provide a way to slow foes while accelerating allies. This Discipline also provides a great deal of mobility to the windbound themselves and, while it's lacking in damage, it has a great deal of options to Stagger or Accelerate creatures, controlling both positions and the initiative order.",
     "stances": [
       {
@@ -313,7 +313,7 @@
         "name": "Wind Breaker",
         "speed": "Reaction",
         "desc": "You unleash a sudden gust, knocking a projectile out of the sky.",
-        "keywords": ["Spirit", "Wind", "Block"],
+        "keywords": ["Spirit", "Wind", "Evade"],
         "type": "Defensive",
         "range": "4",
         "cost": "1 _Focus_, 1 _Reflex_",
@@ -825,7 +825,7 @@
         "range": "Self",
         "cost": "1 _Reflex_ or _Momentum_",
         "ap": 1,
-        "move": "The movement granted by Turbo determines its Speed, as follows: \n* <ins>Shift:</ins> Speed 1 \n*  <ins>Sprint:</ins> Speed 2 \n* <ins>Dash:</ins> Speed 3",
+        "move": "The movement granted by Turbo determines its Speed, as follows: \n* <ins>Shift:</ins> Speed 1 \n*  <ins>Sprint:</ins> Speed 2 \n",
         "boost": "1 _Momentum_ or _Reflex_: You may _Leap_ your Reposition distance during this Movement. You may use this Boost multiple times.\n\tAny 2 _Momentum_ or _Reflex_: This Movement is _Flying_."
       },
       {
@@ -867,24 +867,361 @@
   {
     "background": "#a569bd",
     "name": "Howl",
-    "flavor": "Howl Discipline masters channel ancient, primal fear of storms and winds to shake enemies to their core, sending them fleeing from the battle.",
+    "role": "Controller/Supporter",
+    "flavor": "Howl Discipline masters channel ancient, primal fear of storms and winds to shake enemies to their core, sending them fleeing from the battle. The Howl Discipline specializes in inflicting Fear on foes, which allows them to indirectly control the positioning of creatures by discouraging them from ending their turn adjacent to foes, while also enhancing the effect of Fear. In addition, the Howl Discipline can inflict Fear on themselves and allies to allow repositioning off-turn and allow for desperate strikes.",
     "stances": [
+      {
+        "name": "Conqueror Stance",
+        "desc": "You evoke an aura of pure terror and killing intent, leaving your foes cowering and unable to act.",
+        "refresh": "2 _Focus_",
+        "accumulate": "Whenever creature with _Fear_ provokes a _Punish_ Reaction from you gain 1 _Momentum_.",
+        "effect": "You have _Advantage_ on all _Punish_ Reactions against creatures with _Fear_. Whenever you _Crit_ on one of these _Punish_ Reactions, that creature immediately ends their Movement.",
+        "special": "While in this Stance you may treat all _Fear_ Tokens as if their Value was one less when clearing them. In addition, you may clear _Fear_ Tokens at the start of your turn rather than the end."
+      },
       {
         "name": "Coward Stance",
         "desc": "You are able to enhance your own sense of panic, granting you the ability to keep a great deal of space between you and foes.",
         "refresh": "2 _Focus_, 2 _Reflex_",
         "accumulate": "Whenever you clear a _Fear_ Token, gain _Momentum_ equal to half the Value of the Token.",
         "effect": "While you have any _Fear_ Tokens add _Safe_ to all Movement.",
-        "special": "While in this Stance you may treat all _Fear_ Tokens as if their Value was one less when resolving or clearing them."
+        "special": "While in this Stance you may treat all _Fear_ Tokens as if their Value was one less when clearing them. In addition, you may clear _Fear_ Tokens at the start of your turn rather than the end."
+      },
+      {
+        "name": "Dread Stance",
+        "desc": "Any that lock gaze with you see visions of their doom, shattering their resolve.",
+        "refresh": "3 _Focus_",
+        "accumulate": "Whenever you inflict _Fear_ with a Technique gain 1 _Momentum_.",
+        "effect": "When a creature ends their _Turn_ within Range 6 of you may pay 1 _Momentum_ or 1 _Focus_ to inflict _Fear_ 1 (1 _Focus_).",
+        "special": "While in this Stance you may treat all _Fear_ Tokens as if their Value was one less when clearing them. In addition, you may clear _Fear_ Tokens at the start of your turn rather than the end."
       }
     ],
-    "techniques": []
+    "techniques": [
+      {
+        "name": "Horror Strike",
+        "desc": "A strike that draws upon primal fears, leaving foes cowering.",
+        "keywords": ["Spirit", "Wind", "Weapon"],
+        "type": "Strike",
+        "speed": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "range": "Weapon",
+        "cost": "1 _Momentum_",
+        "effect": "Attack using your weapon's Profile. On a _Hit_, inflict _Fear_ 1 (1 _Focus_). On a _Crit_, inflict _Fear_ 2 (2 _Focus_)."
+      },
+      {
+        "name": "Striking Shadows",
+        "desc": "You spark fear in a creature's heart, causing them to strike out at shadows.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Strike",
+        "speed": "3",
+        "ap": 1,
+        "move": "Reposition",
+        "range": "6",
+        "cost": "1 _Momentum_",
+        "effect": "Inflict _Fear_ 1 (3 _Focus_). If the Target does not Negate, the creature immediately makes an Attack with a Weapon they have _Wielded_ of your choice against a creature of your choice within Weapon Range. If the Weapon Speed is slower than this Technique this Attack is made at _Disadvantage_.",
+        "boost": "1 _Momentum_: The Target may _Step_ before making an attack."
+      },
+      {
+        "name": "Terrifying Butcher",
+        "desc": "You make a spectacle of defeating a foe while exuding an aura of pure terror.",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind"],
+        "cost": "2 _Momentum_, 1 _Focus_",
+        "speed": "Reaction",
+        "trigger": "You defeat a creature.",
+        "range": "4",
+        "effect": "Choose a creature within Range. Inflict _Fear_ 3 (2 _Focus_) on them. If they do not _Negate_, they must immediately take a Step Movement directly away from you.",
+        "boost": "2 _Momentum_: In addition, transfer all _Fear_ the defeated creature had to the Target. Increase the cost to _Negate_ by 2.",
+        "special": "Gain the Butcher Technique."
+      },
+      {
+        "name": "Aspect of Terror",
+        "desc": "You seize hold a target's fears, placing yourself as the chief among them.",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "8",
+        "ap": 1,
+        "move": "Step",
+        "cost": "1 _Momentum_ initial, 2 _Momentum_ at each subsequent Refresh",
+        "effect": "Choose a creature within range and inflict _Fear_ 1 (1 _Focus_). So long as this _Enchant_ persists any Movement towards you costs 1 _Focus_ per space for the Target. This _Enchant_ ends if the creature ends its turn with no _Fear_."
+      },
+      {
+        "name": "Incite Panic",
+        "desc": "You channel the essence of fear into a foe, causing them to quake in their boots.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "10",
+        "ap": 1,
+        "move": "Reposition",
+        "effect": "Choose a creature within range. Inflict _Fear_ 2 or _Fear_ 1x2 (2 _Focus_).",
+        "boost": "1 _Momentum_: After inflicting _Fear_ you may redistribute the target's _Fear_ Tokens in whatever way you wish, so long as the total value remains the same. For example, three _Fear_ 1 Tokens may be made a single _Fear_ 3 Token."
+      },
+      {
+        "name": "Mind Killer",
+        "desc": "Fear consumes a foe's mind, destroying their ego.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "6",
+        "ap": 1,
+        "target": "A creature with _Fear_.",
+        "move": "Reposition",
+        "effect": "Inflict _Staggered_ (3 _Focus_). If, on the creature's _Staggered_ Technique they do not clear a _Fear_ Token due to distance resolve that _Fear_ Token twice and inflict _True_ Damage equal to twice that Token's Value."
+      },
+      {
+        "name": "Cower!",
+        "desc": "You amplify a foe's sense of fear, causing them to break ranks and flee.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Maneuver",
+        "speed": "3",
+        "range": "10",
+        "ap": 1,
+        "target": "A creature with _Fear_.",
+        "move": "Reposition",
+        "effect": "The Target must immediately Move as far away as possible from a creature of your choice within Range. Their Movement depends on their topmost _Fear_ Token; _Step_ for _Fear_ 1, _Reposition_ for _Fear_ 2, or _Shift_ for _Fear_ 3.",
+        "boost": "2 _Momentum_: Clear the creature's topmost _Fear_ Token. Inflict _Impaired_ with the same value. The creature then falls _Prone_."
+      },
+      {
+        "name": "Frightening Howl",
+        "desc": "You unleash a terrifying howl, sending all that can hear you scrambling.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Maneuver",
+        "speed": "3",
+        "range": "Self",
+        "area": "Cone 3",
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "effect": "Inflict _Fear_ 1 (1 _Focus_) on all creatures in the Area. If creatures do not _Negate_, they  must immediately _Step_ Move directly away from you.",
+        "boost": "2 _Momentum_: Instead, inflict _Fear_ 2 (2 _Focus_)."
+      },
+      {
+        "name": "Desperation!",
+        "desc": "You reach out to an injured ally's heart, encouraging them to struggle for their life.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Support",
+        "speed": "Reaction",
+        "range": "6",
+        "trigger": "You or an ally makes an Attack.",
+        "cost": "1 _Focus_, 1 _Momentum_",
+        "effect": "Inflict _Fear_ 2 on the Target. They may make the Attack at _Advantage_.",
+        "special": "If the Triggering Target has less than a third of their Endurance reduce the Cost by 1.",
+        "boost": "Any 2 _Focus_ or _Momentum_: The Attack deals additional damage equal to the Triggering Target's topmost _Fear_ Token."
+      },
+      {
+        "name": "Coward's Aid",
+        "desc": "You enhance an ally's sense of fear and self-preservation, allowing them to flee from approaching foes.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Support",
+        "speed": "2",
+        "range": "8",
+        "ap": 1,
+        "move": "Step",
+        "target": "An ally within Range.",
+        "effect": "Inflict _Fear_ 1 on the Target. They may pay 1 _Reflex_ to immediately _Safe_ _Reposition_. They must end this Movement at least X spaces from all foes, where X is twice their _Fear_ value.",
+        "boost": "1 _Focus_: Instead, inflict _Fear_ 2. Target may instead _Shift_."
+      },
+      {
+        "name": "Avatar of Fear",
+        "desc": "You imbue a creature with the embodiment of fear, giving foes pause against approaching them.",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "type": "Support",
+        "speed": "3",
+        "range": "8",
+        "ap": 2,
+        "move": "Step",
+        "cost": "2 _Focus_ at _Refresh_.",
+        "target": "Self or an ally within Range.",
+        "effect": "While this _Enchant_ persists the Target becomes the Avatar of Fear. Foes treat themselves as half as far from the Avatar for the purpose of triggering _Fear_. Foes with _Fear_ take a Penalty equal to half their topmost _Fear_ on all Attacks against the Avatar.",
+        "boost": "1 _Momentum_: Whenever the Avatar Attacks, either you or the Avatar you may use this Boost. Gain a _Bonus_ to the _Attack_ equal to half the target's topmost _Fear_."
+      },
+      {
+        "name": "Scurry",
+        "desc": "You heighten your sense of fear and flee from an approaching foe.",
+        "keywords": ["Spirit", "Wind", "Safe"],
+        "type": "Move",
+        "speed": "Reaction",
+        "move": "Reposition",
+        "trigger": "A foe ends their _Turn_ adjacent to you.",
+        "cost": "1 _Reflex_",
+        "effect": "Gain _Fear_ 1.",
+        "boost": "1 _Focus_ or _Reflex_: Instead, Gain _Fear_ 2. Movement is Shift.\n2 _Focus_: Trigger is instead 'A foe ends their _Turn_ adjacent to an ally.' The ally instead may Move and gains the _Fear_."
+      }
+    ]
   },
   {
     "background": "#e8daef",
     "name": "Breeze",
-    "flavor": "The Breeze Discipline reads currents in the air, allowing an incredible ability to predict and react to attacks.",
-    "stances": [],
-    "techniques": []
+    "role": "Defensive/Supporter",
+    "flavor": "The Breeze Discipline reads currents in the air, allowing an incredible ability to predict and react to attacks. Masters of the Breeze Discipline are able to grant themselves an uncanny ability to Evade attacks while within an Air Field, a zone where they can feel every movement of the air itself. Within this area they can Evade better, provide support to allies, and inflict limited amounts of Knowledge and Reveal on foes.",
+    "stances": [
+      {
+        "name": "Still Air Stance",
+        "desc": "You align your senses, sacrificing your mobility to expand your senses ever further.",
+        "refresh": "2 _Focus_, 1 _Reflex_",
+        "effect": "At the start of each of your _Turns_ you may choose to gain _Hobbled_ 1. If you do, gain 1 _Momentum_ and increase the size of your Air Field by 2 until the end of the Round.",
+        "special": "While in this Stance you have an Air Field within 1 space, which reduces the _Reflex_ cost to _Negate_ or _Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
+      },
+      {
+        "name": "Reed Stance",
+        "desc": "You feel the flow of the wind and, rather than move against it, you flow with it.",
+        "refresh": "3 _Focus_",
+        "effect": "Once per _Phase_, when you are Attacked and _Evade_ you may add _Push_ 3 to the Attack and gain 1 _Momentum_.",
+        "special": "While in this Stance you have an Air Field within 2 spaces, which reduces the _Reflex_ cost to _Negate_ or _Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
+      },
+      {
+        "name": "Windseer Stance",
+        "desc": "With every movement within your field you learn more of your foes and enhance your abilities.",
+        "refresh": "1 _Focus_",
+        "effect": "The first time each _Phase_ a hostile creature enters your Air Field you may inflict _Reveal_ (1 _Focus_) on them.",
+        "special": "While in this Stance you have an Air Field within 3 spaces, which reduces the _Reflex_ cost to _Negate_ or _Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Crossing Field",
+        "desc": "You sense a creature entering your field and rapidly close the distance, lashing out with a vicious attack.",
+        "keywords": ["Spirit", "Wind", "Safe", "Punish"],
+        "type": "Strike",
+        "speed": "Reaction",
+        "move": "Step",
+        "trigger": "An enemy enters your Air Field.",
+        "cost": "1 _Reflex_, 1 _Momentum_, +1 _Momentum_ if the Attack is Speed 2 or slower.",
+        "effect": "Immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_.",
+        "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
+        "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None, but you may use the Movement of this Technique. Any Movement taken must be towards the enemy."
+      },
+      {
+        "name": "Curving Shot",
+        "keywords": ["Spirit", "Wind"],
+        "trigger": "You _Miss_ with a Ranged Attack using a Weapon.",
+        "cost": "1 _Momentum_",
+        "type": "Strike",
+        "speed": "Reaction",
+        "desc": "You guide your shot into a good wind, redirecting it into another foe.",
+        "effect": "Immediately repeat the Attack against a different Target within Range 4 of the original Target.",
+        "boost": "1 _Momentum_. The Attack has Advantage. This Boost has no _Cost_ if the secondary Target is within your Air Field.\n1 _Momentum_: Instead, the Trigger is 'An ally misses a Ranged Attack against a creature within your Air Field.'"
+      },
+      {
+        "name": "Threading Strike",
+        "desc": "Your strike follows the air currents, curving in unnatural ways to find its target.",
+        "keywords": ["Spirit", "Wind", "Weapon", "_Sure Hit_ 1"],
+        "type": "Strike",
+        "speed": "Weapon",
+        "ap": 1,
+        "move": "Reposition",
+        "range": "Weapon",
+        "reqs": "_Ranged_ or _Thrown_ Weapon Wielded",
+        "cost": "2 _Momentum_",
+        "effect": "Attack using your weapon's Profile. This Strike ignores _Cover_.",
+        "special": "If the Target is in your Air Field, gain 1 _Momentum_ and this instead has _Sure Hit_ 2."
+      },
+      {
+        "name": "Fieldsight",
+        "desc": "You focus all your senses on your air field, expanding it but dulling your senses outside the field considerably.",
+        "keywords": ["Spirit", "Wind", "Enchant"],
+        "type": "Maneuver",
+        "speed": "Instinctive",
+        "ap": 1,
+        "move": "None",
+        "effect": "While this _Enchant_ persists, increase the size of your Air Field by 2. No Attacks that pass through your Air Field may have Advantage against you. However, you treat all spaces not within your Air Field as _Veiled_."
+      },
+      {
+        "name": "Hone Senses",
+        "desc": "You focus all your senses on your air field, expanding it but dulling your senses outside the field considerably.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Maneuver",
+        "speed": "1",
+        "ap": 1,
+        "move": "None",
+        "effect": "Increase the size of your Air Field by 1 until the end of the Round. Gain 1 _Reflex_ and 1 _Focus_.",
+        "imbue": "2 _Focus_: This is 0 AP."
+      },
+      {
+        "name": "Influence Flow",
+        "desc": "You sense the air currents around you and subtly influence them.",
+        "keywords": ["Spirit", "Wind"],
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "Air Field + 4",
+        "ap": 1,
+        "move": "Step",
+        "effect": "Inflict _Reveal_ (2 _Focus_) on a creature within Range. If they do not _Negate_ and after learning their next Technique, you may inflict either _Accelerate_ or _Staggered_.",
+        "imbue": "2 _Focus_, 2 _Momentum_: Instead resolve this against all creatures of your choice within your Air Field."
+      },
+      {
+        "name": "Gathering Dance",
+        "desc": "You skirt past foes without a care in the world, sensing their air as you glide past.",
+        "keywords": ["Spirit", "Wind", "Safe"],
+        "type": "Move",
+        "speed": "2",
+        "ap": 1,
+        "move": "Shift",
+        "cost": "2 _Reflex_",
+        "effect": "You may use as many _Evade_ Reactions as you wish this _Turn_ and reduce the _Cost_ of all of them by 1. Anytime you Move past a foe, inflict _Reveal_ (1 _Focus_). If anybody attacks you and _Misses_, inflict _Impaired_ 1 as well and increase the _Cost_ to _Negate_ by 1."
+      },
+      {
+        "name": "Wind Rider",
+        "desc": "You move with a fluid grace, sensing the direction of the wind as you move through it.",
+        "keywords": ["Spirit", "Wind", "Safe"],
+        "type": "Move",
+        "speed": "2",
+        "ap": 1,
+        "move": "Shift",
+        "cost": "1 _Reflex_",
+        "effect": "For the purposes of this Movement you may treat all _Windy_ spaces as whatever direction you wish."
+      },
+      {
+        "name": "Flowing Dance",
+        "desc": "You effortlessly move as soon as you sense an attack, spinning away flawlessly.",
+        "type": "Defensive",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "trigger": "You are Attacked by a non-adjacent creature in your Air Field.",
+        "cost": "1 _Focus_",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Force the attacker to reroll the attack. They must use the new result. Inflict _Reveal_ (1 _Focus_) on the attacker, then _Safe_ Step.",
+        "special": "This Reaction does not use your Reaction for the _Turn_, but may only be used once per _Phase_."
+      },
+      {
+        "name": "Fluid Dodge",
+        "desc": "You follow the path of least resistance, slipping away from a strike you sense coming far before it lands.",
+        "type": "Defensive",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "trigger": "You are Attacked by a non-adjacent creature.",
+        "cost": "3 _Reflex_",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Force the attacker to reroll the attack at _Disadvantage_. They must use the lower of the two results. You may _Safe_ _Step_ Move after this Reaction.",
+        "special": "If the Attacker is in your Air Field, inflict _Knowledge_ 1 (1 _Focus_)."
+      },
+      {
+        "name": "Guiding Thread",
+        "desc": "As an ally is moved you feel the movement of the air and guide them into a more fortuitous path.",
+        "type": "Defensive",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "trigger": "You or an ally within Range is _Pushed_ or _Pulled_.",
+        "cost": "0 _Focus_",
+        "speed": "Reaction",
+        "range": "Air Field + 4",
+        "effect": "The Target may resolve the _Push_ or _Pull_ as if it originated from a space adjacent to the source of the effect.",
+        "boost": "1 _Focus_: They may instead resolve it as if it originated from a space within Range 2 of the source of the effect.\nX _Focus_: Instead, reduce the cost to _Negate_ the triggering Effect by the amount paid in this Boost. You may also trigger this against a _Slide_."
+      },
+      {
+        "name": "Intercept",
+        "desc": "You feel an attack incoming and, with perfect knowledge of its path, snatch it from the air.",
+        "type": "Defensive",
+        "keywords": ["Spirit", "Wind", "Evade"],
+        "trigger": "A Ranged Attack is made against you.",
+        "cost": "2 _Reflex_",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Make an Attack Roll. If it meets or exceeds the original Attack Roll, treat the original Attack Roll as a 5.",
+        "boost": "1 _Reflex_: Instead, the Trigger is 'A Ranged Attack passes through an adjacent space.' Do not make the Attack Roll at _Advantage_.\n2 _Reflex_: If you are wielding a Ranged or Thrown Weapon, the Trigger is instead 'A Ranged Attack passes through a space both within your Air Field and Weapon's Range.' Do not make the Attack Roll at _Advantage_.",
+        "special": "If the Attacker is in your Air Field, make the Attack Roll at _Advantage_."
+      }
+    ]
   }
 ]

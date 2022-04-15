@@ -35,11 +35,6 @@
             armor.Shift
           }}</v-col></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="2"><b>Dash</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{
-            armor.Dash
-          }}</v-col></v-row
-        ><v-row no-gutters class="chart--row"
           ><v-col class="chart--cols" cols="2"><b>Sprint</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{
             armor.Sprint

@@ -61,7 +61,6 @@ declare interface IWeaponData {
 declare interface IArmorData {
   armor: number;
   category: string;
-  dash: number;
   durability: number;
   endurance: number;
   name: string;

@@ -945,7 +945,7 @@
   {
     "background": "#cb4335",
     "name": "Stoneheart",
-    "role": "Support",
+    "role": "Supporter",
     "flavor": "The Stoneheart Discipline channels the essence of the earth to make one's heart like stone and impenetrable to fear. Stoneheart's mechanics revolve around Courage and their ability to grant it to themselves an allies. Typically, this courage is gained in response to a small victory on the battlefield, a reckless act, or bolstering the courage of one who is about to fall. Stoneheart's belong on the front lines of a battlefield and make it far easier for allies to reach their foes, granting them Momentum and other benefits all the while.",
     "stances": [
       {
@@ -1127,7 +1127,7 @@
   {
     "background": "#ab9478",
     "name": "Tremorsight",
-    "role": "Support/Controller",
+    "role": "Supporter/Controller",
     "flavor": "The Tremorsight Discipline allows an Earthbonded to read the vibrations of the earth, providing perfect knowledge of everything touching the ground. The Range of these techniques depends on how far their Seismic Sense is extending, which can be amplified by remaining still. Outside this radius the Earthbound has no special powers but against foes in this area they can generate a great deal of Knowledge, making it far easier to attack and defend against all these creatures. A skilled practitioner of this Discipline can even extend their senses into creatures, learning their weaknesses and leaving them open to devastating attacks.",
     "stances": [
       {
@@ -1142,14 +1142,14 @@
         "desc": "You feel the subtle vibrations of the earth, feeling the true intentions of your foes and better preparing you for future assaults.",
         "accumulate": "Gain 1 _Momentum_ any time a creature _Misses_ or _Grazes_ you with an _Attack_.",
         "refresh": "_Focus_ 3",
-        "effect": "While in this Stance reduce the cost to _Negate_ all _Feint_ Techniques by 2. At Refresh inflict _Reveal_ (1 _Focus_) on all creatures within your Seismic Sense.",
+        "effect": "While in this Stance reduce the cost to _Negate_ all _Feint_ Techniques by 2. Add _Sure Hit_ 1 to Attacks against Targets in your Seismic Sense.",
         "special": "While in this Stance you have Seismic Sense within 2 spaces, which allows you to ignore _Veiled_ Terrain."
       },
       {
         "name": "Sonar Stance",
         "desc": "Your senses extend out around you, providing you perfect knowledge of all foes.",
         "refresh": "_Focus_ 1, _Reflex_ 2",
-        "effect": "Inflict 1 _Knowledge_ (1 _Focus_) on any creature that ends their _Turn_ within your Seismic Sense.",
+        "effect": "The first time each _Phase_ a hostile creature ends their _Turn_ within your Seismic Sense inflict _Knowledge_ 1 (1 _Focus_) on them.",
         "special": "While in this Stance you have Seismic Sense within 4 spaces, which allows you to ignore _Veiled_ Terrain."
       }
     ],
@@ -1319,9 +1319,10 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Defensive",
         "speed": "Reaction",
+        "cost": "1 _Focus_",
         "range": "Seismic Sense + 2",
         "trigger": "You are Attacked by a creature within Range.",
-        "special": "This Reaction does not take your normal Reaction, but may only be used once per Phase.",
+        "special": "This Reaction does not use your Reaction for the _Turn_, but may only be used once per _Phase_.",
         "effect": "Inflict _Knowledge_ 1 (1 _Focus_) and reduce the _Attack Roll_ by 1."
       }
     ]
