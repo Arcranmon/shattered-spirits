@@ -69,9 +69,9 @@
         "name": "Quick Step",
         "desc": "Unhindered by armor you move quickly, repositioning at a rapid rate.",
         "type": "Move",
-        "speed": "1",
+        "speed": "Instinctive",
         "ap": 1,
-        "move": "Instinctive",
+        "move": "Step",
         "reqs": "No Armor Worn.",
         "effect": "Gain 2 _Reflex_.",
         "imbue": "1 _Momentum_: This is instead 0 AP."
@@ -144,15 +144,147 @@
   },
   {
     "category": "Skill",
-    "background": "DarkGrey",
+    "background": " #7398cc ",
     "name": "Juggernaut",
-    "flavor": "Encased in a heavy shell, none can hope to harm you, much less stop your advance across the battlefield.",
-    "stances": [],
-    "techniques": []
+    "role": "Defensive/Striker",
+    "flavor": "Encased in a heavy shell, none can hope to harm you, much less stop your advance across the battlefield. Juggernauts can easily achieve massive amounts of Guard, fully negate low Damage attacks that lack Pierce, and can deal heavy incidental damage with their armored form. The only true flaw of a Juggernaut is that they have no specific tools to draw fire only to enhance their own damage and survivability.",
+    "stances": [
+      {
+        "name": "Bludgeon Style",
+        "desc": "You make use of your sturdy armor to lash out at foes, using your gauntlets as artificial weapons.",
+        "accumulate": "While wearing Heavy Armor, gain 1 _Momentum_ every time you _Hit_ with an Unarmed Attack or 2 _Momentum_ on a _Crit_.",
+        "refresh": "_Grit_ 3",
+        "effect": "Deal additional Damage with all Unarmed Weapons equal to the _Guard_ provided by your Armor, but their Speed is increased by 1.",
+        "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
+      },
+      {
+        "name": "Guarded Style",
+        "desc": "You are an expert at making maximum use of your armor, deflecting more blows than most.",
+        "accumulate": "While wearing Heavy Armor, gain _Momentum_ equal to the _Guard_ provided by your Armor + 1 at Refresh.",
+        "refresh": "_Grit_ 2",
+        "effect": "While wearing Heavy Armor, treat your _Guard_ as 1 higher.",
+        "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
+      },
+      {
+        "name": "Unstoppable Style",
+        "desc": "You rely on the weight of your armor to carry you forward, making it impossible to stop your motion.",
+        "refresh": "_Grit_ 5",
+        "effect": "While wearing Heavy Armor you may clear _Hobbled_ at the beginning of your turn. In addition, whenever you take all your Movement in a straight line you may move 1 additional space.",
+        "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Armored Blow",
+        "desc": "A powerful attack that relies on your armor's protection.",
+        "type": "Strike",
+        "speed": "Weapon+1",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Melee Weapon Wielded.",
+        "cost": "1 _Grit_",
+        "effect": "Attack using your weapon's Profile. Deal additional Damage equal to the _Guard_ provided by your Armor.",
+        "special": "Increase your _Guard_ by 2 against any _Punish_ attacks triggered by this Attack."
+      },
+      {
+        "name": "Armored Rebuke",
+        "speed": "Reaction",
+        "desc": "A foe's ineffectual attack causes them to stagger back off-balance.",
+        "keywords": ["Block", "Efficient"],
+        "type": "Maneuver",
+        "reqs": "Heavy Armor Worn.",
+        "trigger": "An Attack _Misses_ or _Grazes_ you.",
+        "cost": "1 _Momentum_ or _Grit_",
+        "effect": "Inflict _Push_ 1, _Exposed_ 1 (Any 2 _Grit_ or _Focus_) on the Attacker.",
+        "special": "If your _Guard_ reduces the Damage of a Strike to 0, you may instead make a Basic Strike against the creature using an Unarmed Weapon."
+      },
+      {
+        "name": "Weighted Blow",
+        "speed": "Follow-Up",
+        "desc": "You follow up a melee strike by simply bringing your armored form to bear.",
+        "type": "Maneuver",
+        "move": "Step",
+        "ap": 1,
+        "reqs": "Heavy Armor Worn and must be Attached to a Melee Attack.",
+        "effect": "Gain 1 _Grit_. If the Attack was _Hit_, add _Push_ 1, _Impair_ 2 (2 _Grit_) to the Attack. On a _Crit_, add _Prone_ and increase the Cost to _Negate_ by 1."
+      },
+      {
+        "name": "Steady",
+        "speed": "1",
+        "desc": "You don't move quickly but the protection offered by your armor more than compensates.",
+        "keywords": ["Priority"],
+        "type": "Maneuver",
+        "ap": 0,
+        "reqs": "Heavy Armor Worn.",
+        "effect": "Gain _Staggered_ and _Grit_ 2.",
+        "boost": "2 _Grit_: Gain _Hobbled_ 1, but increase your _Guard_ by 1 until your next Turn."
+      },
+      {
+        "name": "Armored Charge",
+        "desc": "You charge forward, using your armor as a weapon to smash forward.",
+        "keywords": ["Charge"],
+        "type": "Move",
+        "speed": "See Movement",
+        "range": "Self",
+        "reqs": "Heavy Armor Worn.",
+        "cost": "1 _Momentum_ or _Grit_",
+        "ap": 1,
+        "move": "The movement granted by Free Run determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n*  <ins>Shift:</ins> Speed 3\n*  <ins>Sprint:</ins> Speed 5",
+        "effect": "The Movement granted by this Technique must be taken in a straight line. You may make a Basic Strike with a Body Weapon against all creatures you move through with this Movement.",
+        "boost": "1 _Grit_: Increase your _Guard_ by 2 for this Movement."
+      },
+      {
+        "name": "Glancing Blow",
+        "speed": "Reaction",
+        "desc": "You use your armor to knock an attack away, relying on your impenetrable shell.",
+        "keywords": ["Block"],
+        "type": "Defensive",
+        "reqs": "Heavy Armor Worn.",
+        "trigger": "You are Attacked.",
+        "cost": "3 _Grit_",
+        "effect": "Reduce the Attack Roll by 2. If the Attack Grazes, reduce the cost to _Negate_ by 1 and increase your _Guard_ by 2 against this Attack."
+      },
+      {
+        "name": "Iron Shell",
+        "speed": "Reaction",
+        "desc": "You let a blow land solidly on your armor, unconcerned about the damage.",
+        "keywords": ["Block"],
+        "type": "Defensive",
+        "reqs": "Heavy Armor Worn with _Guard_ remaining.",
+        "trigger": "You are Attacked.",
+        "cost": "4 _Grit_",
+        "effect": "Resolve the attack against your Armor rather than yourself, dealing an additional 1 Damage."
+      },
+      {
+        "name": "Lean In",
+        "speed": "Reaction",
+        "desc": "You trust entirely in your armor against an attack.",
+        "keywords": ["Block"],
+        "type": "Defensive",
+        "reqs": "Heavy Armor Worn.",
+        "trigger": "You are Attacked.",
+        "cost": "1 _Grit_",
+        "effect": "Increase your _Guard_ against the Attack by 2 and reduce the _Grit_ cost to _Negate_ by 1. Resolve the Attack against your Armor as well.",
+        "boost": "1 _Grit_: This does not use your Reaction."
+      },
+      {
+        "name": "Shrug Off",
+        "speed": "Reaction",
+        "desc": "Your heavy armor allows you to deflect conditions far easier than most.",
+        "keywords": ["Block"],
+        "type": "Defensive",
+        "reqs": "Heavy Armor Worn.",
+        "trigger": "You would gain _Bleed_ or an _Elemental Condition_.",
+        "cost": "1 _Grit_",
+        "effect": "You may pay the cost to _Negate_ the triggering Condition using _Grit_. If it already cost _Grit_, reduce the cost to _Negate_ by 2."
+      }
+    ]
   },
   {
     "category": "Skill",
-    "background": "DarkGrey",
+    "background": "#00802B",
     "name": "Skirmisher",
     "flavor": "You strike a balance between mobility and durability with a small amount of armor, granting flexibility in combat.",
     "stances": [],
@@ -165,14 +297,41 @@
     "flavor": "Your shield is an extension of your body, and none but the most determined attacks can make it past its defenses.",
     "stances": [
       {
+        "name": "Bash Style",
+        "desc": "Your shield is a vicious weapon, forcing foes to keep.",
+        "accumulate": "Once per Phase when you hit with a _Punish_ Attack using a Shield gain 1 _Momentum_.",
+        "refresh": "_Reflex_ 2, _Grit_ 2",
+        "effect": "When you hit with an Attack with your Shield, for the rest of the Round, the creature treats all _Impaired_ Tokens as if they had a value of 0 when attacking you, but a value one greater than normal when attacking other creatures."
+      },
+      {
         "name": "Bastion Style",
         "desc": "A fighting style centered around the use of a shield to defend oneself and others.",
-        "accumulate": "Whenever an ally uses your Block Token, gain 1 Momentum. This may only trigger once per Phase.",
-        "refresh": "_Grit_ 3",
+        "accumulate": "Whenever an ally uses your _Grit_, gain 1 _Momentum_. This may trigger up to 3 times.",
+        "refresh": "_Grit_ 4",
         "effect": "While you have a Shield Wielded you may choose to allow adjacent allies to spend your _Grit_ for Reactions. In addition, while you have a Shield Wielded, adjacent allies gain +1 _Guard_."
+      },
+      {
+        "name": "Fortress Style",
+        "desc": "Your shield darts to and fro, .",
+        "accumulate": "Once per Phase when you take a _Block_ Reaction gain 1 _Momentum_.",
+        "refresh": "_Reflex_ 1, _Grit_ 3",
+        "effect": "While Wielding a Shield, once per _Phase_, you may pay 1 _Grit_ to take an additional _Reaction_ so long as at least one _Reaction_ that turn is a _Block_ Reaction."
       }
     ],
     "techniques": [
+      {
+        "name": "Disruptive Bash",
+        "desc": "You quickly smash into a foe with your shield, throwing off their attack.",
+        "type": "Strike",
+        "keywords": ["Punish"],
+        "trigger": "An adjacent enemy Attacks a creature other than you.",
+        "cost": "1 _Momentum_",
+        "speed": "Reaction",
+        "reqs": "Shield Wielded.",
+        "effect": "You may immediately Attack the triggering enemy with a Basic Strike using a Shield. On a _Hit_ or _Crit_, reduce the triggering Attack Roll by 1.",
+        "boost": "1 _Momentum_. You may instead Attack with any _Strike_ but must still use a Shield.\n1 _Reflex_: Trigger is instead 'An enemy within Step Range Attacks a creature.' So long as the triggering _Strike_ has at least Step Movement, you may Step Move as a part of this Reaction, but must use that Movement to end adjacent to the triggering foe.\n1 _Grit_, 2 _Momentum_: Instead, the Trigger is 'An adjacent enemy Attacks.'",
+        "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None."
+      },
       {
         "name": "Iron Wall",
         "desc": "Making use of a shield, you ready an unstoppable defense.",
@@ -182,8 +341,7 @@
         "ap": 1,
         "move": "Step",
         "reqs": "Shield Wielded.",
-        "effect": "Gain 4 _Grit_.",
-        "special": "For the remainder of the Round, reduce the Attack Roll by 2 rather than 1 while using the Deflect Reaction."
+        "effect": "Gain 3 _Grit_. For the remainder of the Round, you gain _Cover_ against all Attacks."
       },
       {
         "name": "Vigilant Defender",

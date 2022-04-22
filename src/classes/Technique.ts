@@ -192,7 +192,7 @@ class Technique {
   }
 
   public setTechData(data: ITechData): void {
-    this._ap = data.ap || 4;
+    this._ap = data.ap != null ? data.ap : 4;
     this._area = data.area || "";
     this._boost = data.boost || "";
     this._cost = data.cost || "";
