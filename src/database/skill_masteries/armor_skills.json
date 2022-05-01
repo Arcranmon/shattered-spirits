@@ -16,7 +16,7 @@
       {
         "name": "Instinct Style",
         "desc": "You have honed your defenses to work while wearing no armor, dodging attacks by a razor-thin margin.",
-        "accumulate": "While wearing no armor whenever you are _Missed_ or _Grazed_ with an _Attack_ gain 1 _Momentum_ or _Reflex_.",
+        "accumulate": "While wearing no armor whenever you are _Missed_/_Grazed_ with an _Attack_ gain 1 _Momentum_/_Reflex_.",
         "refresh": "_Reflex_ 4, _Grit_ 2",
         "effect": "While wearing no armor, once per _Phase_, you may pay 1 _Reflex_ to take an additional _Reaction_ so long as at least one _Reaction_ that turn is an _Evade_ Reaction."
       },
@@ -34,13 +34,13 @@
         "desc": "As an attack narrowly misses you slip past a foe's guard to make a strike.",
         "type": "Strike",
         "keywords": ["Punish", "Efficient"],
-        "trigger": "An adjacent enemy _Misses_ or _Grazes_ with an Attack against you.",
+        "trigger": "An adjacent enemy _Misses_/_Grazes_ with an Attack against you.",
         "cost": "1 _Momentum_, 1 _Reflex_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
         "speed": "Reaction",
         "range": "Self",
-        "effect": "You may immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_.",
+        "effect": "You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
         "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
-        "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None."
+        "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None."
       },
       {
         "name": "Leaping Feint",
@@ -51,7 +51,7 @@
         "ap": 1,
         "move": "Step",
         "reqs": "Must be Attached to a Single Target Strike.",
-        "effect": "Gain 1 _Reflex_. After resolving this Technique's Movement, you may _Leaping_ Step. If you _Move_ directly through a creature's space, land on the opposite side, and they do not _Hit_ or _Crit_ you with a _Punish_ Attack, grant yourself _Advantage_ on the Attached Strike against that creature. You must use the Attached Strike's Movement after Attacking."
+        "effect": "Gain 1 _Reflex_. After resolving this Technique's Movement, you may _Leaping_ Step. If you _Move_ directly through a creature's space, land on the opposite side, and they do not _Hit_/_Crit_ you with a _Punish_ Attack, grant yourself _Advantage_ on the Attached Strike against that creature. You must use the Attached Strike's Movement after Attacking."
       },
       {
         "name": "Tumble",
@@ -84,12 +84,12 @@
         "speed": "See Movement",
         "range": "Self",
         "reqs": "No Armor Worn.",
-        "cost": "1 _Momentum_ or _Reflex_",
+        "cost": "1 _Momentum_/_Reflex_",
         "ap": 1,
         "move": "The movement granted by Free Run determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n*  <ins>Shift:</ins> Speed 3\n*  <ins>Sprint:</ins> Speed 5",
-        "effect": "The first time you move adjacent to a Size 1 or larger _Obstacle_ or change _Elevation_, you may immediately take a _Safe_ _Step_ _Movement_. This _Movement_ must be in a straight line directly away from the _Obstacle_ or _Elevation_ change.",
+        "effect": "The first time you move adjacent to a Size 1 or larger _Obstacle_ or change _Elevation_, you may immediately take a _Safe_ _Step_ _Movement_. This _Movement_ must be in a straight line directly away from the _Obstacle_/_Elevation_ change.",
         "special": "When _Falling_, reduce the distance by 1 for this _Movement_.",
-        "boost": "1 _Momentum_ or _Reflex_: You may trigger the Effect on another distinct _Obstacle_ or _Elevation_ change. You may use this _Boost_ as many times as you can afford, but increase the _Cost_ by 1 each time."
+        "boost": "1 _Momentum_/_Reflex_: You may trigger the Effect on another distinct _Obstacle_/_Elevation_ change. You may use this _Boost_ as many times as you can afford, but increase the _Cost_ by 1 each time."
       },
       {
         "name": "Evasion",
@@ -126,7 +126,7 @@
         "trigger": "A creature makes a _Punish_ Attack against you.",
         "cost": "1_Reflex_ if triggering off _Safe_ Movement, 2 _Reflex_ otherwise.",
         "effect": "Resolve the Attack as if it rolled a 5.",
-        "boost": "1 _Reflex_: Inflict _Exposed_ 1 (Any 2 _Focus_ or _Reflex_).\n1 _Reflex_: Instead, resolve the Attack as if it rolled a 2."
+        "boost": "1 _Reflex_: Inflict _Exposed_ 1 (Any 2 _Focus_/_Reflex_).\n1 _Reflex_: Instead, resolve the Attack as if it rolled a 2."
       },
       {
         "name": "Dodge Roll",
@@ -169,7 +169,7 @@
         "name": "Unstoppable Style",
         "desc": "You rely on the weight of your armor to carry you forward, making it impossible to stop your motion.",
         "refresh": "_Grit_ 5",
-        "effect": "While wearing Heavy Armor you may clear _Hobbled_ at the beginning of your turn. In addition, whenever you take all your Movement in a straight line you may move 1 additional space.",
+        "effect": "While wearing Heavy Armor you may clear _Hobbled_ at the beginning of your turn. In addition, you may add _Rush_ to a Technique to increase your Movement by 1 space for that Turn.",
         "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
       }
     ],
@@ -183,7 +183,7 @@
         "keywords": ["Weapon"],
         "ap": 1,
         "move": "Reposition",
-        "reqs": "Melee Weapon Wielded.",
+        "reqs": "Melee Weapon Wielded and Heavy Armor Worn.",
         "cost": "1 _Grit_",
         "effect": "Attack using your weapon's Profile. Deal additional Damage equal to the _Guard_ provided by your Armor.",
         "special": "Increase your _Guard_ by 2 against any _Punish_ attacks triggered by this Attack."
@@ -195,9 +195,9 @@
         "keywords": ["Block", "Efficient"],
         "type": "Maneuver",
         "reqs": "Heavy Armor Worn.",
-        "trigger": "An Attack _Misses_ or _Grazes_ you.",
-        "cost": "1 _Momentum_ or _Grit_",
-        "effect": "Inflict _Push_ 1, _Exposed_ 1 (Any 2 _Grit_ or _Focus_) on the Attacker.",
+        "trigger": "An Attack _Misses_/_Grazes_ you.",
+        "cost": "1 _Momentum_/_Grit_",
+        "effect": "Inflict _Push_ 1, _Exposed_ 1 (Any 2 _Grit_/_Focus_) on the Attacker.",
         "special": "If your _Guard_ reduces the Damage of a Strike to 0, you may instead make a Basic Strike against the creature using an Unarmed Weapon."
       },
       {
@@ -229,7 +229,7 @@
         "speed": "See Movement",
         "range": "Self",
         "reqs": "Heavy Armor Worn.",
-        "cost": "1 _Momentum_ or _Grit_",
+        "cost": "1 _Momentum_/_Grit_",
         "ap": 1,
         "move": "The movement granted by Free Run determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n*  <ins>Shift:</ins> Speed 3\n*  <ins>Sprint:</ins> Speed 5",
         "effect": "The Movement granted by this Technique must be taken in a straight line. You may make a Basic Strike with a Body Weapon against all creatures you move through with this Movement.",
@@ -254,7 +254,7 @@
         "type": "Defensive",
         "reqs": "Heavy Armor Worn with _Guard_ remaining.",
         "trigger": "You are Attacked.",
-        "cost": "4 _Grit_",
+        "cost": "3 _Grit_",
         "effect": "Resolve the attack against your Armor rather than yourself, dealing an additional 1 Damage."
       },
       {
@@ -266,7 +266,7 @@
         "reqs": "Heavy Armor Worn.",
         "trigger": "You are Attacked.",
         "cost": "1 _Grit_",
-        "effect": "Increase your _Guard_ against the Attack by 2 and reduce the _Grit_ cost to _Negate_ by 1. Resolve the Attack against your Armor as well.",
+        "effect": "Increase your _Guard_ against the Attack by 2 and reduce the _Grit_ cost to _Negate_ by 1. Resolve the Attack against your Armor as well, but do not take any additional Damage or Status from it.",
         "boost": "1 _Grit_: This does not use your Reaction."
       },
       {
@@ -284,17 +284,69 @@
   },
   {
     "category": "Skill",
-    "background": "#00802B",
+    "background": "#bab86c",
     "name": "Skirmisher",
     "flavor": "You strike a balance between mobility and durability with a small amount of armor, granting flexibility in combat.",
-    "stances": [],
-    "techniques": []
+    "stances": [
+      {
+        "name": "Counter Style",
+        "desc": "With your mix of mobility and armor you can more safely counter a foe's assault.",
+        "accumulate": "While Wearing Light Armor, once per Phase when you _Hit_/_Crit_ with a _Punish_ Reaction gain 1 Momentum.",
+        "refresh": "_Reflex_ 2, _Grit_ 2",
+        "effect": "While Wearing Light Armor, once per Phase, you may pay 1 _Momentum_ to take an additional Reaction so long as at least one Reaction that turn is a _Counter_ Reaction."
+      },
+      {
+        "name": "Skirmish Style",
+        "desc": "You are always moving, making yourself a difficult target to pin down.",
+        "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end a _Turn_ non-adjacent to an enemy.",
+        "refresh": "_Reflex_ 3, _Grit_ 1",
+        "effect": "Whenever you take a _Reaction_ you may Move 1 space as long as you are wearing Light Armor.",
+        "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Evade_ Reaction by 1."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Leaping Strike",
+        "desc": "You leap forward, making a mighty strike with your weapon as you land.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon", "Leaping"],
+        "ap": 1,
+        "move": "Step",
+        "reqs": "Light or No Armor Worn.",
+        "effect": "Attack using your weapon's Profile. Deal additional Damage equal to half the _Leaping_ distance covered. You may not Move after Attacking with this Technique.",
+        "special": "If you begin the _Leap_ on higher _Elevation_ than the Target of the attack instead deal additional Damage equal to the full distance covered."
+      },
+      {
+        "name": "Adaptability",
+        "desc": "You are able to adapt to any situation with your mix of mobility and strength.",
+        "type": "Maneuver",
+        "speed": "2",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Light Armor Worn.",
+        "effect": "Gain any 3 of _Grit_ and _Reflex_. Gain 1 _Momentum_."
+      },
+      {
+        "name": "Armored Roll",
+        "desc": "You evade an assault while directing it towards a better protected part of your armor.",
+        "type": "Defensive",
+        "keywords": ["Block", "Evade"],
+        "trigger": "You are Attacked.",
+        "cost": "1 _Grit_, 1 _Momentum_, 1 _Reflex_",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Force the attacker to reroll the attack. Either use the new result of the roll, or reduce the original roll by 1 and use it. Regardless of what you choose, you may _Safe_ Move 1 after this Reaction."
+      }
+    ]
   },
   {
     "category": "Skill",
     "background": "grey",
     "name": "Shield Master",
-    "flavor": "Your shield is an extension of your body, and none but the most determined attacks can make it past its defenses.",
+    "role": "Defensive/Controller",
+    "flavor": "Your shield is an extension of your body, and none but the most determined attacks can make it past its defenses. Shield Masters are able to make use of their shield to better defend themselves and others, and allies that remain close to them are greatly rewarded. They also can make additional strikes with their Shield to spread Impaired among foes, limiting their ability to attack.",
     "stances": [
       {
         "name": "Bash Style",
@@ -328,9 +380,44 @@
         "cost": "1 _Momentum_",
         "speed": "Reaction",
         "reqs": "Shield Wielded.",
-        "effect": "You may immediately Attack the triggering enemy with a Basic Strike using a Shield. On a _Hit_ or _Crit_, reduce the triggering Attack Roll by 1.",
+        "effect": "You may immediately Attack the triggering enemy with a Basic Strike using a Shield. On a _Hit_/_Crit_, reduce the triggering Attack Roll by 1.",
         "boost": "1 _Momentum_. You may instead Attack with any _Strike_ but must still use a Shield.\n1 _Reflex_: Trigger is instead 'An enemy within Step Range Attacks a creature.' So long as the triggering _Strike_ has at least Step Movement, you may Step Move as a part of this Reaction, but must use that Movement to end adjacent to the triggering foe.\n1 _Grit_, 2 _Momentum_: Instead, the Trigger is 'An adjacent enemy Attacks.'",
-        "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None."
+        "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None."
+      },
+      {
+        "name": "Shield Charge",
+        "desc": "You run forward with your shield held high, bashing through all in your path.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "cost": "1 _Momentum_",
+        "keywords": ["Weapon", "Charge", "Rush"],
+        "ap": 1,
+        "move": "Shift",
+        "reqs": "Shield Wielded.",
+        "effect": "Attack all creatures you move through with this Movement. If you _Hit_/_Crit_ increase your _Guard_ by one against any _Punish_ attacks by that creature this Turn."
+      },
+      {
+        "name": "Shield Bash",
+        "speed": "Set-Up or Follow-Up",
+        "desc": "You punctuate an attack with a quick bash of your shield to knock a foe backwards.",
+        "cost": "1 _Momentum_",
+        "type": "Maneuver",
+        "move": "Step",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "reqs": "Shield Wielded.",
+        "effect": "Attack with your Shield's Profile. Add _Push_ 1 to the attack.",
+        "boost": "1 _Momentum_: Replace all _Impaired_ inflicted by the Attack with _Exposed_."
+      },
+      {
+        "name": "Raise Guard",
+        "desc": "You interpose your shield between yourself and a foe, enhancing your guard against them.",
+        "type": "Maneuver",
+        "speed": "1",
+        "ap": 1,
+        "move": "None",
+        "reqs": "Shield Wielded.",
+        "effect": "Gain 1 _Grit_. Choose a creature. Until the end of the Round reduce the Cost of all _Block_ Reactions against that Creature by 1."
       },
       {
         "name": "Iron Wall",
@@ -341,7 +428,30 @@
         "ap": 1,
         "move": "Step",
         "reqs": "Shield Wielded.",
-        "effect": "Gain 3 _Grit_. For the remainder of the Round, you gain _Cover_ against all Attacks."
+        "effect": "Gain 3 _Grit_. For the remainder of the Round, adjacent allies gain _Cover_."
+      },
+      {
+        "name": "Sacrificial Shield",
+        "desc": "You haphazardously throw up your shield, risking it's integrity to defend you.",
+        "type": "Defensive",
+        "cost": "2 _Grit_",
+        "speed": "Reaction",
+        "trigger": "You are Attacked.",
+        "reqs": "Shield Wielded.",
+        "effect": "Resolve the Attack against your Shield. Gain _Impaired_ 1.",
+        "boost": "2 _Grit_: Increase the Damage dealt by the Attack by 2, but when resolving the Attack against your Shield you do not take any Damage or Condition from the Attack."
+      },
+      {
+        "name": "Smash Back",
+        "desc": "You smash a foe backwards as they strike, mitigating the damage of the blow.",
+        "type": "Defensive",
+        "keywords": ["Block"],
+        "trigger": "An adjacent enemy makes an Attack.",
+        "cost": "2 _Grit_",
+        "speed": "Reaction",
+        "reqs": "Shield Wielded.",
+        "effect": "The triggering creature must pay 1 _Grit_ or reduce the Damage of the triggering Attack by 2. After resolving the Attack you may use the Shove Technique on the creature.",
+        "special": "The Movement of Shove becomes None."
       },
       {
         "name": "Vigilant Defender",
@@ -354,6 +464,16 @@
         "move": "0 _Reflex_ for Step, 1 _Reflex_ for Reposition, 2 _Reflex_ for Shift.",
         "trigger": "An ally within the Movement you paid for is Attacked.",
         "effect": "Immediately Move towards the ally by the shortest path possible, ending your move adjacent to the ally. You may use any Block Reactions against the triggering attack, resolving it as if you used it but granting the Target all the effects. Additionally, the Target gains your _Guard_ against the Attack."
+      },
+      {
+        "name": "Wide Guard",
+        "desc": "You hold firm with your shield, stopping an effect from harming your allies.",
+        "type": "Defensive",
+        "cost": "3 _Grit_",
+        "speed": "Reaction",
+        "trigger": "You are hit with an Area of Effect attack.",
+        "reqs": "Shield Wielded.",
+        "effect": "Reduce the Attack Roll by 1 for yourself and all adjacent allies. If the Area was a _Line_ it does not continue past your space. If it was a _Cone_, all allies in a _Cone_ 2 behind you are unaffected."
       }
     ]
   }

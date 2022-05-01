@@ -10,7 +10,9 @@
         <span style="font-style: bold;">
           <b
             >{{ tech.SpeedHeader
-            }}<span v-if="tech.HasRange">, {{ tech.RangeHeader }}</span
+            }}<span v-if="tech.HasDamageType"
+              >, {{ tech.DamageTypeHeader }}</span
+            ><span v-if="tech.HasRange">, {{ tech.RangeHeader }}</span
             ><span v-if="tech.HasArea">, {{ tech.Area }}</span>
             <span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />

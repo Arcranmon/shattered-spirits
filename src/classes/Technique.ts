@@ -119,6 +119,12 @@ class Technique {
   public get CostHeader() {
     return "**Cost:** " + this._cost;
   }
+  public get HasDamageType() {
+    return this._damagetype.length > 0;
+  }
+  public get DamageTypeHeader() {
+    return this._damagetype + " Damage";
+  }
   public get HasEffect() {
     return this._effect.length > 0;
   }

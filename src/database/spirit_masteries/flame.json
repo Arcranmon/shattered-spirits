@@ -10,7 +10,7 @@
         "desc": "The most obvious use of flames, the Inferno Stance makes use of overwhelming firepower in a very literal sense.",
         "refresh": "2 _Focus_",
         "effect": "Reduce the _Cost_ to _Blitz_ by 2 so long as all _Strikes_ you make have the Flame Keyword.",
-        "special": "For each subsequent Strike with the Flame Keyword you _Hit_ or _Crit_ a Target with in a Round, inflict _Burn_ 1 (1 _Reflex_)."
+        "special": "For each subsequent Strike with the Flame Keyword you _Hit_/_Crit_ a Target with in a Round, inflict _Burn_ 1 (1 _Reflex_)."
       },
       {
         "name": "Jet Stance",
@@ -37,6 +37,7 @@
         "range": "Melee or Range 5",
         "type": "Strike",
         "move": "Step",
+        "damagetype": "Fire",
         "speed": "1",
         "desc": "A sudden strike of flames, often leaving a foe wreathed in flames.",
         "effect": "Attack with the below Profile.",
@@ -78,6 +79,7 @@
         "range": "Melee",
         "area": "Cone 2",
         "type": "Strike",
+        "damagetype": "Fire",
         "move": "Reposition",
         "speed": "2",
         "desc": "You let loose a mighty stream of fire, drawing upon nearby flames for additional power.",
@@ -121,6 +123,7 @@
         "range": "6",
         "type": "Strike",
         "move": "Reposition",
+        "damagetype": "Fire",
         "speed": "2",
         "desc": "A wide wave of fire shoots forth, scorching those in its path.",
         "effect": "Attack with the below Profile. You may repeat this Attack against a single creature adjacent to the original Target.",
@@ -162,6 +165,7 @@
         "range": "3",
         "type": "Strike",
         "move": "Reposition",
+        "damagetype": "Fire",
         "speed": "3",
         "desc": "Overwhelming waves of fire strike a foe, burning through any defenses.",
         "effect": "Attack with the below Profile.",
@@ -203,10 +207,11 @@
         "desc": "A weapon is set ablaze or superheated, leaving a painful wound on a foe.",
         "keywords": ["Spirit", "Flame", "Weapon"],
         "cost": "1 _Momemtum_",
+        "damagetype": "Fire",
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile. On a _Hit_ or _Crit_,  inflict _Burn_ 1 and _Wounded_ 1 (2 _Reflex_).",
+        "effect": "Attack using your Weapon's Profile. On a _Hit_/_Crit_,  inflict _Burn_ 1 and _Wounded_ 1 (2 _Reflex_).",
         "boost": "1 _Momentum_. If the Target has any _Burn_ Tokens prior to this Attack, increase the Damage by 2 on a _Graze_,  _Hit_,  or Crit."
       },
       {
@@ -294,7 +299,7 @@
         "keywords": ["Spirit", "Flame", "Enchant"],
         "type": "Defensive",
         "move": "Step",
-        "effect": "While this Enchant is active you cannot gain _Burn_ or _Frost_. Whenever a Melee Attack Grazes, Hits, or Crits you the attacker gains 1 _Burn_ (1 _Reflex_).",
+        "effect": "While this Enchant is active you cannot gain _Burn_/_Frost_. Whenever a Melee Attack Grazes, Hits, or Crits you the attacker gains 1 _Burn_ (1 _Reflex_).",
         "boost": "2 _Momentum_. Inflict an additional _Burn_ 1 (1 _Reflex_) when you are Grazed, _Hit_,  or _Crit_ for the duration of this Enchant.",
         "special": "If you are hit with an Attack with the Water keyword, you must pay 1 _Momentum_ or lose this Enchant."
       }
@@ -309,22 +314,22 @@
       {
         "name": "Explosive Stance",
         "desc": "You make your explosions hit harder, forcing your opponents away from the detonation.",
-        "accumulate": "Whenever you _Hit_ or _Crit_ with an Explosive Attack, gain 1 _Momentum_.",
+        "accumulate": "Whenever you _Hit_/_Crit_ with an Explosive Attack, gain 1 _Momentum_.",
         "refresh": "1 _Focus_, 1 _Reflex_",
-        "effect": "Whenever you use an Attack with the Flame keyword, you may choose to make it Explosive before making your Attack Roll. Gain a -1 penalty to the Attack Roll, but add the following:\n&#8226; If the Attack is an Area, on a _Hit_ or _Crit_ _Push_ the Target out of the Area by the most direct route possible (2 _Grit_). Resolve this _Push_ separately from any _Push_ included in the Attack.\n&#8226; If the Attack is not an Area, add _Push_ 2 (2 _Grit_) to all Hits or Crits.\n&#8226; Add _Prone_ (2 _Grit_ OR 2 _Reflex_) to all Crits."
+        "effect": "Whenever you use an Attack that deals Fire Damag, you may choose to make it Explosive before making your Attack Roll. Gain a -1 penalty to the Attack Roll, but add the following:\n&#8226; If the Attack is an Area, on a _Hit_/_Crit_ _Push_ the Target out of the Area by the most direct route possible (2 _Grit_). Resolve this _Push_ separately from any _Push_ included in the Attack.\n&#8226; If the Attack is not an Area, add _Push_ 2 (2 _Grit_) to all Hits or Crits.\n&#8226; Add _Prone_ (2 _Grit_ OR 2 _Reflex_) to all Crits.\n&#8226; If you wish, the attack instead deals Crush Damage. You still trigger Techniques and Stances as if the Attack dealt Fire Damage."
       },
       {
         "name": "Flare Stance",
         "desc": "Your flames burn brighter than most, blinding enemies that aren't properly prepared.",
         "accumulate": "Whenever you Blind a foe, gain 1 _Momentum_.",
         "refresh": "2 _Focus_, 1 _Reflex_",
-        "effect": "If you _Crit_ with an Attack with the Flame keyword, you may forgo the normal Effect and reduce the damage by 2 to _Blind_ (2 _Focus_).",
+        "effect": "If you _Crit_ with an Attack that deals Fire Damage, you may forgo the normal Effect and reduce the damage by 2 to _Blind_ (2 _Focus_).",
         "special": "If an Attack would already _Blind_ on a _Crit_,  instead increase the cost to Negate by 1."
       },
       {
         "name": "Ruin Stance",
         "desc": "By focusing your flames for a moment you amplify their power, magnifying their destructive force.",
-        "accumulate": "Whenever you _Hit_ or _Crit_ with a Charged Attack, gain 2 _Momentum_.",
+        "accumulate": "Whenever you _Hit_/_Crit_ with a Charged Attack, gain 2 _Momentum_.",
         "refresh": "1 _Focus_, 1 _Grit_",
         "effect": "Once per round in the Plotting Phase you may choose to charge an Attack with the Flame keyword. If you do, increase the Speed of that Attack by up to 3. Gain a bonus to your Attack Roll or a bonus to Damage on a _Graze_,  _Hit_,  or _Crit_ equal to that value and add the _Siege_ and _Unblockable_ 2 keywords. Gain _Hobbled_ 1x2 at the start of the Phase corresponding with the original Speed of the Attack."
       }
@@ -338,6 +343,7 @@
         "range": "Self",
         "type": "Strike",
         "area": "Burst 1",
+        "damagetype": "Fire",
         "speed": "Reaction",
         "desc": "You respond to an enemies' strike with an indiscriminate explosion, hopefully creating enough space for a opening.",
         "effect": "Attack with the below Profile.",
@@ -379,6 +385,7 @@
         "type": "Strike",
         "move": "Reposition",
         "reqs": "Melee Weapon Wielded",
+        "damagetype": "Fire",
         "area": "Cone 2",
         "cost": "1 _Momentum_",
         "speed": "Weapon",
@@ -422,6 +429,7 @@
         "type": "Strike",
         "move": "Shift",
         "area": "Line 3 or Arc 3",
+        "damagetype": "Fire",
         "speed": "2",
         "desc": "You fire a close-ranged explosion, buffeting nearby enemies.",
         "effect": "Attack with the below Profile.",
@@ -464,6 +472,7 @@
         "range": "Melee",
         "type": "Strike",
         "move": "Shift",
+        "damagetype": "Fire",
         "speed": "2",
         "desc": "A rapid-fire burst of explosions that can punish those without defenses.",
         "effect": "Attack with the below Profile.",
@@ -508,6 +517,7 @@
         "type": "Strike",
         "range": "Melee",
         "target": "An Obstacle.",
+        "damagetype": "Fire",
         "move": "Reposition",
         "effect": " Attack with the below Profile. If the Target is an Obstacle, you may forgo an Attack Roll and treat your attack as if you rolled a 7. Gain 1 _Momentum_ if you Destroy an Obstacle with this.",
         "boost": "2 _Momentum_. Instead, Target is a creature.",
@@ -547,6 +557,7 @@
         "ap": 1,
         "range": "4",
         "type": "Strike",
+        "damagetype": "Fire",
         "move": "Shift",
         "speed": "3",
         "desc": "A focused explosion of flame and force, becoming near-impossible to evade.",
@@ -588,6 +599,7 @@
         "ap": 2,
         "range": "8",
         "area": "Blast 2",
+        "damagetype": "Fire",
         "type": "Strike",
         "move": "Reposition",
         "speed": "3",
@@ -647,6 +659,7 @@
         "keywords": ["Spirit", "Flame", "Enchant", "Avoidable"],
         "type": "Maneuver",
         "range": "8",
+        "damagetype": "Fire",
         "move": "Step",
         "effect": "Create a Blast 1 Hazard within Range. When a creature moves into this Hazard you must use a Reaction to Attack in all Hazard spaces.",
         "boost": "3 _Momentum_. Reduce the Range to 6, but create two additional Blast 1 Hazards.",

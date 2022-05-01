@@ -48,6 +48,7 @@ declare interface IWeaponData {
   category: string;
   chart: IChartData;
   damagetype: string;
+  desc: string;
   durability: number;
   itemtype: string;
   hands: number;

@@ -5,6 +5,7 @@ class Weapon {
   private _chart: Chart;
   private _category: string;
   private _damagetype: string;
+  private _desc: string;
   private _durability: number;
   private _hands: number;
   private _keywords: Array<string>;
@@ -17,6 +18,7 @@ class Weapon {
     this._chart = null;
     this._category = "";
     this._damagetype = "";
+    this._desc = "";
     this._durability = 0;
     this._hands = 3;
     this._keywords = [];
@@ -38,8 +40,11 @@ class Weapon {
   get DamageType() {
     return this._damagetype;
   }
+  get Desc() {
+    return this._desc;
+  }
   get DamageTypeHeader() {
-    return this._damagetype + " Damage";
+    return this._damagetype + " Damage, ";
   }
   get Durability() {
     return this._durability;
@@ -99,6 +104,7 @@ class Weapon {
   public setWeaponData(data: IWeaponData): void {
     this._category = data.category || "";
     this._damagetype = data.damagetype || "";
+    this._desc = data.desc || "";
     this._durability = data.durability || 0;
     this._hands = data.hands || 0;
     this._keywords = data.keywords || [];

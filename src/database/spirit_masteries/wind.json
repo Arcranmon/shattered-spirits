@@ -35,6 +35,7 @@
         "speed": "Reaction",
         "cost": "1 _Momemtum_",
         "type": "Strike",
+        "damagetype": "Slash",
         "range": "8",
         "trigger": "A creature moves against the direction of a _Windy_ space.",
         "effect": "The Triggering creature chooses: Either they suffer _Push_ 2 in the direction of the _Windy_ space OR you Attack them using the below profile. The Target may pay 1 _Grit_ to reduce the effect to _Push_ 1 and impose Disadvantage on the attack or 2 _Grit_ to ignore this Reaction.",
@@ -79,7 +80,7 @@
         "type": "Strike",
         "range": "Weapon",
         "move": "Reposition",
-        "effect": "Attack using your Weapon's Profile, adding _Bleed_ 1 (1 _Reflex_) on a _Hit_ and _Bleed_ 2 (2 _Reflex_) on a Crit. After attacking, repeat this Attack with Disadvantage in a Line 4 behind the Target."
+        "effect": "Attack using your Weapon's Profile, adding _Bleed_ 1 (1 _Reflex_) on a _Hit_ and _Bleed_ 2 (2 _Reflex_) on a Crit. After attacking, repeat this Attack with Disadvantage in a Line 4 behind the Target. This Line Attack deals Slash Damage."
       },
       {
         "name": "Air Slash",
@@ -89,6 +90,7 @@
         "ap": 1,
         "speed": "2",
         "range": "8",
+        "damagetype": "Slash",
         "move": "Reposition",
         "effect": "Attack with the below Profile.",
         "boost": "2 _Momentum_. Add _Staggered_ (1 _Momentum_) to this Attack. Reduce this Cost by 1 if you Crit.",
@@ -228,7 +230,7 @@
         "move": "Reposition",
         "effect": "Attack with the below Profile. You may make any spaces a creature is _Slide_d through _Windy_ until the end of the Round.",
         "special": "The Target may pay 1 _Momentum_ to, rather than rolling, treat the Attack Roll as a 10.",
-        "boost": "1 _Momentum_: Inflict either _Accelerate_ or _Staggered_ (2 _Momentum_) on the Target.",
+        "boost": "1 _Momentum_: Inflict either _Accelerate_/_Staggered_ (2 _Momentum_) on the Target.",
         "chart": {
           "roll": [
             "Miss",
@@ -351,19 +353,20 @@
         "refresh": "1 _Reflex_, 1 _Focus_",
         "accumulate": "The first time in a Phase that you hit with or a foe triggers an _Electric_ _Hazard_, gain 1 _Momentum_.",
         "effect": "You may choose not to trigger your _Electric_ _Hazard_s when an ally moves through them.",
-        "special": "Once per Round, after your _Hit_ or _Crit_ with an Attack, create a Burst 1 _Hazard_ around the Target. Destroy the _Hazard_ at the end of the next Phase. If the Target Moves or a creature other than you enters the _Hazard_, inflict 1 _Shock_ (1 _Reflex_) in the Area and deal 3 Damage."
+        "special": "Once per Round, after your _Hit_/_Crit_ with an Attack, create a Burst 1 _Hazard_ around the Target. Destroy the _Hazard_ at the end of the next Phase. If the Target Moves or a creature other than you enters the _Hazard_, inflict 1 _Shock_ (1 _Reflex_) in the Area and deal 3 Damage."
       }
     ],
     "techniques": [
       {
         "name": "Chain Lightning",
-        "keywords": ["Spirit", "Wind", "Electric", "Punish"],
+        "keywords": ["Spirit", "Wind", "Punish"],
         "desc": "Your electricity strikes like a snake, leaping from one target to another in a vicious chain.",
         "speed": "Reaction",
         "cost": "1 _Momentum_",
         "type": "Strike",
+        "damagetype": "Lightning",
         "range": "12",
-        "trigger": "You inflict _Shock_, or have _Hit_ or _Crit_ with an _Electric_ Attack you had Advantage on.",
+        "trigger": "You inflict _Shock_, or have _Hit_/_Crit_ with an _Electric_ Attack you had Advantage on.",
         "effect": "After resolving the Triggering Attack, Attack with the below Profile against a Secondary Target within Range 4 of the Triggering Target. Deal Damage equal to the topmost _Shock_ Token on the Triggering Target. If the Secondary Target Negates, they take half Damage.",
         "special": "You may repeat this Reaction as many times as it is triggered by paying the Cost again.",
         "boost": "1 _Momentum_: The Trigger is instead: 'You are Attacked while having any _Shock_.'",
@@ -404,7 +407,8 @@
         "speed": "Weapon-1",
         "cost": "1 _Momentum_",
         "type": "Strike",
-        "reqs": "_Light_ or _Versatile_ Weapon.",
+        "damagetype": "Lightning",
+        "reqs": "_Light_/_Versatile_ Weapon.",
         "range": "Weapon",
         "move": "Reposition",
         "effect": "Attack using your Weapon's Profile, adding _Shock_ 1 (1 _Grit_) on a _Hit_ and _Shock_ 2 (2 _Grit_) on a Crit.",
@@ -419,6 +423,7 @@
         "speed": "1",
         "range": "Melee",
         "move": "Step",
+        "damagetype": "Lightning",
         "effect": "Attack with the below Profile.",
         "boost": "1 _Momentum_: Add _Exposed_ 1 to the Attack and increase the cost to Negate by 1.",
         "chart": {
@@ -459,9 +464,10 @@
         "ap": 1,
         "speed": "2",
         "range": "4",
+        "damagetype": "Lightning",
         "move": "Reposition",
         "effect": "Attack with the below Profile. While this Enchant persists, at the end of the Target's Turn you may repeat this Attack as a Reaction by paying 1 _Momentum_. This Enchant ends if you and the target are ever more than Range spaces apart.",
-        "boost": "0 _Momentum_: Gain _Shock_ 1. Increase the Damage by 1 while this Enchant persists.\n\t1 _Momentum_: Gain _Shock_ 2. Increase the Shock on a _Hit_ or _Crit_ by 1 while this Enchant persists.",
+        "boost": "0 _Momentum_: Gain _Shock_ 1. Increase the Damage by 1 while this Enchant persists.\n\t1 _Momentum_: Gain _Shock_ 2. Increase the Shock on a _Hit_/_Crit_ by 1 while this Enchant persists.",
         "chart": {
           "roll": [
             "Miss",
@@ -501,6 +507,7 @@
         "speed": "2",
         "range": "10",
         "move": "Reposition",
+        "damagetype": "Lightning",
         "area": "Blast 1",
         "effect": "Create a Blast 1 _Hazard_ within Range. At the end of Phase 4 Destroy the _Hazard_. When the _Hazard_ is Destroyed, resolve the below Attack in the _Hazard_ spaces.",
         "boost": "X _Momentum_ (max of 2): For each Momentum paid, Destroy the _Hazard_ one Phase later. For each _Momentum_ spent, increase the Damage by 2 and add _Shock_ 1 on a _Hit_ or Crit.",
@@ -543,8 +550,9 @@
         "speed": "3",
         "range": "Melee",
         "area": "Burst 1",
+        "damagetype": "Lightning",
         "move": "Reposition",
-        "effect": "Clear up to four value of _Shock_ Tokens, then Attack with the below Profile. If you _Graze_,  add half the cleared _Shock_ value to the Damage. On a _Hit_ or _Crit_, add all cleared _Shock_ value to the Damage.",
+        "effect": "Clear up to four value of _Shock_ Tokens, then Attack with the below Profile. If you _Graze_,  add half the cleared _Shock_ value to the Damage. On a _Hit_/_Crit_, add all cleared _Shock_ value to the Damage.",
         "special": "You may clear additional _Shock_ Tokens as a part of this Attack, but take True Damage equal to its value for each additional _Shock_ Tokens cleared.",
         "boost": "3 _Momentum_: Clear 2 more value of _Shock_, but don't add it to the Damage or take Damage from it. If you do, Area becomes Burst 2.",
         "chart": {
@@ -587,6 +595,7 @@
         "range": "Melee",
         "area": "Line 8",
         "move": "Reposition",
+        "damagetype": "Lightning",
         "cost": "2 _Momentum_",
         "effect": "Attack with the below Profile.",
         "boost": "X _Momentum_: For every _Momentum_ spent increase the Line by 2. Instead of paying _Momentum_ you may instead gain _Shock_ 1.",
@@ -630,7 +639,7 @@
         "range": "8",
         "move": "Step",
         "effect": "Create 3 _Hazard_s within Range that are not adjacent to one another. If a creature enters one of these _Hazard_ spaces you may inflict _Shock_ 2 (2 _Reflex_) as a Reaction.",
-        "boost": "1 _Momentum_ (paid every time a Hazard is triggered). Deal 2 plus the current Phase Damage to the triggering creature.",
+        "boost": "1 _Momentum_ (paid when a Hazard is triggered). Deal 2 plus the current Phase Lightning Damage to the triggering creature.",
         "imbue": "1 _Momentum_. Speed is instead 1."
       },
       {
@@ -654,7 +663,7 @@
         "speed": "2",
         "range": "Melee",
         "move": "Reposition",
-        "effect": "Remove up to 3 value of _Shock_ from the foe. Deal Damage equal to the removed _Shock_, then purchase as many of the following Conditions as you wish:\n1: The Target gains one of: _Hobbled_ 1, _Impair_ 1, _Exposed_ 1.\n2: The Target gains one of: _Hobbled_ 2, _Impair_ 2, _Exposed_ 2.\n3: The Target is _Restrained_ until the end of their next turn.\nThe Target may ignore the afflicted Condition by paying _Grit_ equal to the value removed.",
+        "effect": "Remove up to 3 value of _Shock_ from the foe. Deal Lightning Damage equal to the removed _Shock_, then purchase as many of the following Conditions as you wish:\n1: The Target gains one of: _Hobbled_ 1, _Impair_ 1, _Exposed_ 1.\n2: The Target gains one of: _Hobbled_ 2, _Impair_ 2, _Exposed_ 2.\n3: The Target is _Restrained_ until the end of their next turn.\nThe Target may ignore the afflicted Condition by paying _Grit_ equal to the value removed.",
         "special": "The cost to Negate is increased by 1 if the Target is Soaked or in a Water Source.",
         "boost": "2 _Momentum_: You may remove up to 6 value of _Shock_. If you pick the _Restrained_ option more than once, add additional turns to the Condition."
       },
@@ -668,7 +677,7 @@
         "range": "Sprint Distance",
         "move": "None",
         "effect": "Create a Blast 1 _Hazard_ within Range. If a creature enters the _Hazard_, immediately _Destroy_ the _Hazard_. Otherwise, _Destroy_ the _Hazard_ at the end of Phase 3. If you are within Range of the _Hazard_ when it is Destroyed, immediately _Teleport_ Move to any space in the _Hazard_ and inflict _Shock_ 1 (1 _Reflex_) an deal 3 Damage in the area.",
-        "boost": "2 _Momentum_: Instead of Inflicting _Shock_ 1, deal 4 _Damage_ and inflict _Shock_ 2 (2 _Reflex_). If a creature Negates they take half Damage."
+        "boost": "2 _Momentum_: Instead of Inflicting _Shock_ 1, deal 4 Lightning Damage and inflict _Shock_ 2 (2 _Reflex_). If a creature Negates they take half Damage."
       },
       {
         "name": "Overcharge",
@@ -677,9 +686,9 @@
         "keywords": ["Spirit", "Wind", "Electric", "Evade"],
         "type": "Defensive",
         "range": "Self",
-        "cost": "1 _Reflex_",
+        "cost": "0 _Reflex_",
         "trigger": "You are _Attacked_.",
-        "effect": "Reroll the Attack and immediately _Safe_ Move 1. After resolving the Attack, gain _Shock_ 1."
+        "effect": "Reroll the Attack and immediately _Safe_ Move 1. You must use the new result. After resolving the Attack, gain _Shock_ 1."
       }
     ]
   },
@@ -693,7 +702,7 @@
         "name": "Agility Stance",
         "desc": "You move with uncanny speed, slipping past attacks while dancing across the battlefield.",
         "refresh": "4 _Reflex_",
-        "accumulate": "Whenever you take an _Evade_ Reaction and it causes an Attack to _Graze_ or _Miss_ gain 1 _Momentum_.",
+        "accumulate": "Whenever you take an _Evade_ Reaction and it causes an Attack to _Graze_/_Miss_ gain 1 _Momentum_.",
         "effect": "Whenever you take an _Evade_ Reaction you may take a _Safe_ _Step_ Movement as a part of the same Reaction.",
         "special": "Increase all your Movement by 1 space while in this _Stance_."
       },
@@ -723,7 +732,7 @@
         "type": "Strike",
         "speed": "Reaction",
         "range": "Weapon",
-        "effect": "At the end of that creature's turn, immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_. Increase the Movement of the Technique by one step, but you must use any _Movement_ granted by the chosen _Technique_ to move towards the enemy, ending this Reaction as close to them as possible. If you are adjacent to the target, make the Attack with _Advantage_.",
+        "effect": "At the end of that creature's turn, immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_. Increase the Movement of the Technique by one step, but you must use any _Movement_ granted by the chosen _Technique_ to move towards the enemy, ending this Reaction as close to them as possible. If you are adjacent to the target, make the Attack with _Advantage_.",
         "special": "Gain the Pursuit Technique.",
         "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
       },
@@ -737,7 +746,7 @@
         "cost": "1 _Momentum_",
         "ap": 1,
         "move": "Reposition",
-        "reqs": "_Light_ or _Versatile_ Weapon Wielded.",
+        "reqs": "_Light_/_Versatile_ Weapon Wielded.",
         "effect": "Attack using your weapon's Profile twice, dealing half Damage and reducing the _Cost_ to _Negate_ by 1. _Versatile_ Weapons take a -2 damage penalty.",
         "special": "If the Speed of this Technique would be less than 1, it becomes Speed 1 and gains _Priority_. The cost to _Negate_ is then increased by 1."
       },
@@ -751,7 +760,7 @@
         "ap": 1,
         "move": "Shift",
         "cost": "2 _Momentum_",
-        "reqs": "_Light_ or _Versatile_ Weapon Wielded.",
+        "reqs": "_Light_/_Versatile_ Weapon Wielded.",
         "effect": "Attack using your Weapon's Profile. Add _Impair_ 1 (1 _Reflex_) to a _Hit_ and _Impair_ 2 (2 _Reflex_) to a _Crit_."
       },
       {
@@ -775,8 +784,8 @@
         "speed": "1",
         "ap": 1,
         "move": "Reposition",
-        "effect": "Gain 1 _Reflex_ and either 1 _Momentum_ or _Accelerate_. You may choose what Technique to _Accelerate_ rather than the next to occur.",
-        "special": "If you are in a Zephyr Stance gain 1 additional _Reflex_ or _Momentum_.",
+        "effect": "Gain 1 _Reflex_ and either 1 _Momentum_/_Accelerate_. You may choose what Technique to _Accelerate_ rather than the next to occur.",
+        "special": "If you are in a Zephyr Stance gain 1 additional _Reflex_/_Momentum_.",
         "imbue": "2 _Reflex_: This is instead 0 AP."
       },
       {
@@ -799,7 +808,7 @@
         "type": "Move",
         "speed": "Instinctive",
         "range": "Self",
-        "cost": "Any 4 _Reflex_ or _Momentum_ initially, 2 _Reflex_ at each subsequent Refresh.",
+        "cost": "Any 4 _Reflex_/_Momentum_ initially, 2 _Reflex_ at each subsequent Refresh.",
         "ap": 1,
         "move": "You become _Flying_ as long as this _Enchant_ persists."
       },
@@ -823,10 +832,10 @@
         "type": "Move",
         "speed": "See Movement",
         "range": "Self",
-        "cost": "1 _Reflex_ or _Momentum_",
+        "cost": "1 _Reflex_/_Momentum_",
         "ap": 1,
         "move": "The movement granted by Turbo determines its Speed, as follows: \n* <ins>Shift:</ins> Speed 1 \n*  <ins>Sprint:</ins> Speed 2 \n",
-        "boost": "1 _Momentum_ or _Reflex_: You may _Leap_ your Reposition distance during this Movement. You may use this Boost multiple times.\n\tAny 2 _Momentum_ or _Reflex_: This Movement is _Flying_."
+        "boost": "1 _Momentum_/_Reflex_: You may _Leap_ your Reposition distance during this Movement. You may use this Boost multiple times.\n\tAny 2 _Momentum_/_Reflex_: This Movement is _Flying_."
       },
       {
         "name": "Float Away",
@@ -1008,7 +1017,7 @@
         "cost": "1 _Focus_, 1 _Momentum_",
         "effect": "Inflict _Fear_ 2 on the Target. They may make the Attack at _Advantage_.",
         "special": "If the Triggering Target has less than a third of their Endurance reduce the Cost by 1.",
-        "boost": "Any 2 _Focus_ or _Momentum_: The Attack deals additional damage equal to the Triggering Target's topmost _Fear_ Token."
+        "boost": "Any 2 _Focus_/_Momentum_: The Attack deals additional damage equal to the Triggering Target's topmost _Fear_ Token."
       },
       {
         "name": "Coward's Aid",
@@ -1047,7 +1056,7 @@
         "trigger": "A foe ends their _Turn_ adjacent to you.",
         "cost": "1 _Reflex_",
         "effect": "Gain _Fear_ 1.",
-        "boost": "1 _Focus_ or _Reflex_: Instead, Gain _Fear_ 2. Movement is Shift.\n2 _Focus_: Trigger is instead 'A foe ends their _Turn_ adjacent to an ally.' The ally instead may Move and gains the _Fear_."
+        "boost": "1 _Focus_/_Reflex_: Instead, Gain _Fear_ 2. Movement is Shift.\n2 _Focus_: Trigger is instead 'A foe ends their _Turn_ adjacent to an ally.' The ally instead may Move and gains the _Fear_."
       }
     ]
   },
@@ -1062,21 +1071,21 @@
         "desc": "You align your senses, sacrificing your mobility to expand your senses ever further.",
         "refresh": "2 _Focus_, 1 _Reflex_",
         "effect": "At the start of each of your _Turns_ you may choose to gain _Hobbled_ 1. If you do, gain 1 _Momentum_ and increase the size of your Air Field by 2 until the end of the Round.",
-        "special": "While in this Stance you have an Air Field within 1 space, which reduces the _Reflex_ cost to _Negate_ or _Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
+        "special": "While in this Stance you have an Air Field within 1 space, which reduces the _Reflex_ cost to _Negate_/_Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
       },
       {
         "name": "Reed Stance",
         "desc": "You feel the flow of the wind and, rather than move against it, you flow with it.",
         "refresh": "3 _Focus_",
         "effect": "Once per _Phase_, when you are Attacked and _Evade_ you may add _Push_ 3 to the Attack and gain 1 _Momentum_.",
-        "special": "While in this Stance you have an Air Field within 2 spaces, which reduces the _Reflex_ cost to _Negate_ or _Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
+        "special": "While in this Stance you have an Air Field within 2 spaces, which reduces the _Reflex_ cost to _Negate_/_Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
       },
       {
         "name": "Windseer Stance",
         "desc": "With every movement within your field you learn more of your foes and enhance your abilities.",
         "refresh": "1 _Focus_",
         "effect": "The first time each _Phase_ a hostile creature enters your Air Field you may inflict _Reveal_ (1 _Focus_) on them.",
-        "special": "While in this Stance you have an Air Field within 3 spaces, which reduces the _Reflex_ cost to _Negate_ or _Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
+        "special": "While in this Stance you have an Air Field within 3 spaces, which reduces the _Reflex_ cost to _Negate_/_Evade_ all Attacks that pass through an Air Field space by 1. If any _Windy_ spaces are contiguous with an Air Field space, treat all contiguous _Windy_ spaces as Air Field. Attacks from an adjacent creature are never treated as if they pass through your Air Field."
       }
     ],
     "techniques": [
@@ -1089,9 +1098,9 @@
         "move": "Step",
         "trigger": "An enemy enters your Air Field.",
         "cost": "1 _Reflex_, 1 _Momentum_, +1 _Momentum_ if the Attack is Speed 2 or slower.",
-        "effect": "Immediately Attack the triggering enemy with a _Maneuver_ or _Weapon Strike_.",
+        "effect": "Immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
         "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
-        "special": "The Movement of the _Maneuver_ or _Strike_ you choose becomes None, but you may use the Movement of this Technique. Any Movement taken must be towards the enemy."
+        "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None, but you may use the Movement of this Technique. Any Movement taken must be towards the enemy."
       },
       {
         "name": "Curving Shot",
@@ -1113,7 +1122,7 @@
         "ap": 1,
         "move": "Reposition",
         "range": "Weapon",
-        "reqs": "_Ranged_ or _Thrown_ Weapon Wielded",
+        "reqs": "_Ranged_/_Thrown_ Weapon Wielded",
         "cost": "2 _Momentum_",
         "effect": "Attack using your weapon's Profile. This Strike ignores _Cover_.",
         "special": "If the Target is in your Air Field, gain 1 _Momentum_ and this instead has _Sure Hit_ 2."
@@ -1148,7 +1157,7 @@
         "range": "Air Field + 4",
         "ap": 1,
         "move": "Step",
-        "effect": "Inflict _Reveal_ (2 _Focus_) on a creature within Range. If they do not _Negate_ and after learning their next Technique, you may inflict either _Accelerate_ or _Staggered_.",
+        "effect": "Inflict _Reveal_ (2 _Focus_) on a creature within Range. If they do not _Negate_ and after learning their next Technique, you may inflict either _Accelerate_/_Staggered_.",
         "imbue": "2 _Focus_, 2 _Momentum_: Instead resolve this against all creatures of your choice within your Air Field."
       },
       {
@@ -1201,11 +1210,11 @@
         "desc": "As an ally is moved you feel the movement of the air and guide them into a more fortuitous path.",
         "type": "Defensive",
         "keywords": ["Spirit", "Wind", "Evade"],
-        "trigger": "You or an ally within Range is _Pushed_ or _Pulled_.",
+        "trigger": "You or an ally within Range is _Pushed_/_Pulled_.",
         "cost": "0 _Focus_",
         "speed": "Reaction",
         "range": "Air Field + 4",
-        "effect": "The Target may resolve the _Push_ or _Pull_ as if it originated from a space adjacent to the source of the effect.",
+        "effect": "The Target may resolve the _Push_/_Pull_ as if it originated from a space adjacent to the source of the effect.",
         "boost": "1 _Focus_: They may instead resolve it as if it originated from a space within Range 2 of the source of the effect.\nX _Focus_: Instead, reduce the cost to _Negate_ the triggering Effect by the amount paid in this Boost. You may also trigger this against a _Slide_."
       },
       {

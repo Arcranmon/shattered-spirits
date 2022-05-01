@@ -10,7 +10,7 @@
         "desc": "Your waves pull with a vicious undertow, dragging your foes closer to you with an unstoppable riptide.",
         "refresh": "_Reflex_ 2, _Focus_ 1",
         "accumulate": "Whenever you _Pull_ an enemy with an Action, gain 1 _Momentum_.",
-        "effect": "Whenever you _Hit_ or _Crit_ with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
+        "effect": "Whenever you _Hit_/_Crit_ with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
         "special": "Immediately after you cause a _Push_ effect you may pay 1 _Momentum_ to change to this Stance as a Reaction."
       },
       {
@@ -18,7 +18,7 @@
         "desc": "You are a master of the tides, covering the battlefield in water as far as the eye can see.",
         "refresh": "_Grit_ 1, _Reflex_ 2",
         "accumulate": "Whenever a creature is _Pushed_, _Pulled_, or knocked _Prone_ on _Wet_ Terrain gain 1 _Momentum_, up to a maximum of 4 per round.",
-        "effect": "Any time you _Hit_ or _Crit_ with a Water Attack you may make a space adjacent to the Target _Wet_.",
+        "effect": "Any time you _Hit_/_Crit_ with a Water Attack you may make a space adjacent to the Target _Wet_.",
         "special": "You may ignore the effects of _Wet_ Terrain."
       },
       {
@@ -26,7 +26,7 @@
         "desc": "Your waves hit with an impossible force, leaving no avenue for retreat but back.",
         "refresh": "_Block_ 3",
         "accumulate": "Whenever you _Push_ an enemy with an Action, gain 1 _Momentum_.",
-        "effect": "Whenever you _Hit_ or _Crit_ with a Water Action you may add _Push_ 1 to the effect. If there is an existing _Push_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
+        "effect": "Whenever you _Hit_/_Crit_ with a Water Action you may add _Push_ 1 to the effect. If there is an existing _Push_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
         "special": "Immediately after you cause a _Pull_ effect you may pay 1 _Momentum_ to change to this Stance as a Reaction."
       }
     ],
@@ -36,11 +36,12 @@
         "desc": "Your waves holds your opponent against an obstacle for a moment longer, crushing them against the surface.",
         "type": "Strike",
         "keywords": ["Spirit", "Water", "Punish"],
-        "trigger": "You _Push_ or _Pull_ a creature into an Obstacle or a creature with a Water Action.",
+        "trigger": "You _Push_/_Pull_ a creature into an Obstacle or a creature with a Water Action.",
         "cost": "1 _Punish_",
         "speed": "Reaction",
+        "damagetype": "Crush",
         "range": "8",
-        "effect": "Attack the triggering creature with the below Profile. If this triggered off a _Push_ or _Pull_ into another creature you may attack both creatures, but have Disadvantage on both attacks.",
+        "effect": "Attack the triggering creature with the below Profile. If this triggered off a _Push_/_Pull_ into another creature you may attack both creatures, but have Disadvantage on both attacks.",
         "chart": {
           "roll": [
             "Miss",
@@ -62,12 +63,12 @@
             "",
             "",
             "",
-            "_Exposed_ 1 (1 _Grit_ or _Focus_)",
-            "_Exposed_ 1 (1 _Grit_ or _Focus_)",
-            "_Staggered_ (Any 2 of _Grit_ or _Focus_)",
-            "_Staggered_ (Any 2 of _Grit_ or _Focus_)",
-            "_Staggered_ OR _Break_ (Any 3 of _Grit_ or _Focus_)",
-            "_Staggered_ OR _Break_ (Any 3 of _Grit_ or _Focus_)"
+            "_Exposed_ 1 (1 _Grit_/_Focus_)",
+            "_Exposed_ 1 (1 _Grit_/_Focus_)",
+            "_Staggered_ (Any 2 of _Grit_/_Focus_)",
+            "_Staggered_ (Any 2 of _Grit_/_Focus_)",
+            "_Staggered_/_Break_ (Any 3 of _Grit_/_Focus_)",
+            "_Staggered_/_Break_ (Any 3 of _Grit_/_Focus_)"
           ]
         }
       },
@@ -79,6 +80,7 @@
         "ap": 1,
         "speed": "2",
         "range": "8",
+        "damagetype": "Crush",
         "target": "A total of at least 4 _Water Sources_ within range.",
         "effect": "_Destroy_ all Targets. Draw a 3 by X Line from you, where X is the total number of the Targets Destroyed and mark is as a _Hazard_. In 3 Phases, at the start of the Phase, Attack with the below Profile in the Area, then _Destroy_ all Terrain in the Area and make it _Wet_.",
         "boost": "X _Momentum_. For every _Momentum_ spent, you may Target up to two additional 2 _Water Sources_.",
@@ -141,9 +143,9 @@
           "status": [
             "",
             "",
-            "_Push_ 1 (1 _Grit_ or _Reflex_)",
-            "_Push_ 1 (1 _Grit_ or _Reflex_)",
-            "_Push_ 1 (1 _Grit_ or _Reflex_)",
+            "_Push_ 1 (1 _Grit_/_Reflex_)",
+            "_Push_ 1 (1 _Grit_/_Reflex_)",
+            "_Push_ 1 (1 _Grit_/_Reflex_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 2 (1 _Grit_)",
             "_Push_ 3 (2 _Grit_), _Soaked_ 1",
@@ -236,9 +238,9 @@
           "status": [
             "",
             "",
-            "_Pull_ 2 (1 _Grit_ or _Reflex_)",
-            "_Pull_ 2 (1 _Grit_ or _Reflex_)",
-            "_Pull_ 2 (1 _Grit_ or _Reflex_)",
+            "_Pull_ 2 (1 _Grit_/_Reflex_)",
+            "_Pull_ 2 (1 _Grit_/_Reflex_)",
+            "_Pull_ 2 (1 _Grit_/_Reflex_)",
             "_Pull_ 3 (1 _Reflex_)",
             "_Pull_ 3 (1 _Reflex_)",
             "_Pull_ 4 (2 _Reflex_), _Soaked_ 1",
@@ -273,7 +275,7 @@
         "cost": "1 _Momemtum_",
         "desc": "You pull a source of water free, creating a watery tomb to encase a foe in.",
         "target": "A _Water Source_.",
-        "effect": "_Destroy_ all Targets. Create a Size 1 Water Sphere within Range. Any creatures in this space must immediately spend 1 _Reflex_ to Move 1. Otherwise, that creature immediately becomes _Restrained_ within the Watery Sphere. While _Restrained_ in this way the creature takes 3 _True_ Damage at the end of each of their turns and gains _Soaked_ 2. A creature _Restrained_ by the Water Sphere can escape by Sacrificing an Action and expending 1 _Focus_ OR _Grit_. If a creature moves into a space with a Water Sphere while there is no creature currently _Restrained_ in this space, they immediately become _Restrained_.",
+        "effect": "_Destroy_ all Targets. Create a Size 1 Water Sphere within Range. Any creatures in this space must immediately spend 1 _Reflex_ to Move 1. Otherwise, that creature immediately becomes _Restrained_ within the Watery Sphere. While _Restrained_ in this way the creature takes 3 _True_ Damage at the end of each of their turns and gains _Soaked_ 2. A creature _Restrained_ by the Water Sphere can escape by Sacrificing an Action and expending 1 _Focus_/_Grit_. If a creature moves into a space with a Water Sphere while there is no creature currently _Restrained_ in this space, they immediately become _Restrained_.",
         "special": "When you end this Enchant the spaces containing a Water Sphere and all adjacent spaces become _Wet_.",
         "boost": "2 or 4 _Momentum_: If you spend 2 _Momentum_, Target is instead 3 _Water Source_s and you create a Size 2 Water Sphere. If you spend 4 _Momentum_, Target is instead 8 _Water Source_s and you create a Size 3 Water Sphere."
       },
@@ -288,7 +290,7 @@
         "cost": "2 _Momentum_",
         "desc": "You become the center of the tides, pushing or pulling all water near you as you please.",
         "target": "All spaces with _Wet_ Terrain or _Water Sources_ within Range.",
-        "effect": "You may either _Push_ or _Pull_ all Targets. Repeat twice. Any creature in a Target space suffers the same _Push_ or _Pull_. A creature may spend 1 _Reflex_ to negate this for the remainder of the Turn. If a creature would collide with an obstacle, they are knocked _Prone_.",
+        "effect": "You may either _Push_/_Pull_ all Targets. Repeat twice. Any creature in a Target space suffers the same _Push_/_Pull_. A creature may spend 1 _Reflex_ to negate this for the remainder of the Turn. If a creature would collide with an obstacle, they are knocked _Prone_.",
         "special": "A _Water Source_ that is moved out of its original space by this effect instead creates _Wet_ Terrain adjacent to the _Water Source_."
       },
       {
@@ -300,7 +302,7 @@
         "move": "Shift",
         "desc": "You run along water, treating it just as stable as the ground itself.",
         "effect": "This Movement may be used to move along _Water Source_s as if they were normal terrain.",
-        "special": "All Movement from this ability on either a _Water Source_ or _Wet_ Terrain is _Safe_.",
+        "special": "All Movement from this ability on either a _Water Source_/_Wet_ Terrain is _Safe_.",
         "boost": "1 _Momentum_: Up to three times, make a space you move through _Wet_.",
         "imbue": "1 _Momentum_: You may treat all _Water Source_s as if they were normal terrain for this entire round and may safely end your turn on _Water Source_s."
       },
@@ -368,9 +370,10 @@
         "keywords": ["Spirit", "Water", "Punish"],
         "speed": "Reaction",
         "range": "6",
+        "damagetype": "Stab",
         "cost": "2 _Momentum_",
         "trigger": "A foe moves into an _Icy_ space, moves adjacent to an _Ice Wall_, or falls _Prone_ in an _Icy_ space.",
-        "effect": "Choose an _Icy_ or _Ice Wall_ space adjacent to the creature within Range. If it is _Icy_, _Destroy_ it and replace it with _Icicle_ Terrain. If it was an _Ice Wall_, create a _Icicle_ space in an adjacent square. Attack with the below Profile against the triggering Target.",
+        "effect": "Choose an _Icy_/_Ice Wall_ space adjacent to the creature within Range. If it is _Icy_, _Destroy_ it and replace it with _Icicle_ Terrain. If it was an _Ice Wall_, create a _Icicle_ space in an adjacent square. Attack with the below Profile against the triggering Target.",
         "special": "If this is triggered off of a target falling _Prone_ on _Icy_ Terrain you may choose the space they are currently in. Resolve the Effect as normal, but you have Advantage on the Attack, and the creature immediately suffers the penalty of the _Icicle_ Terrain as if they had moved into it.",
         "chart": {
           "roll": [
@@ -410,6 +413,7 @@
         "type": "Strike",
         "speed": "2",
         "move": "Step",
+        "damagetype": "Cold",
         "target": "A creature with _Frost_.",
         "desc": "You harden the ice on a creature in a frozen burst, striking with jagged shards.",
         "effect": "Deal damage to the Target equal to twice their topmost _Frost_ Token. If the Target is a Waterbound, they may pay 2 _Reflex_ or 2 _Focus_ to negate this attack.",
@@ -425,6 +429,7 @@
         "speed": "3",
         "move": "Reposition",
         "range": "6",
+        "damagetype": "Stab/Cold",
         "effect": "Attack with the below Profile.",
         "boost": "2 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
         "chart": {
@@ -466,6 +471,7 @@
         "speed": "4",
         "range": "10",
         "area": "Blast 1",
+        "damagetype": "Crush/Cold",
         "reqs": "2 _Water Source_s in Range.",
         "effect": "Destroy the _Water Source_s. Attack with the below Profile. After the Attack, the Area becomes _Icy_.",
         "boost": "2 _Momentum_. This Attack now requires 5 _Water Source_s in Range, but is a Blast 2.",
@@ -544,9 +550,9 @@
         "type": "Maneuver",
         "speed": "3",
         "move": "Step",
-        "target": "A creature with _Frost_ or _Soaked_.",
+        "target": "A creature with _Frost_/_Soaked_.",
         "desc": "You attempt to freeze a creature solid, hardening the water and ice already around them.",
-        "effect": "Choose either _Frost_ or _Soaked_.\nIf you choose _Frost_ and the creature has at least 1 _Frost_ Token, they gain 1 _Frost_ or increase one of their _Frost_ Token value by 1, to a maximum of 3. (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 3 _Frost_, they gain _Frost_ 2 or increase two of their _Frost_ Token values by 1, to a maximum of 3. (2 _Reflex_).\nIf you choose _Frost_ and the creature has at least 5 _Frost_, they are immediately _Restrained_ (3 _Grit_).\nIf you choose _Soaked_ you may convert any number of that creature's _Soaked_ Tokens to _Frost_ Tokens of the same value (2 _Reflex_).",
+        "effect": "Choose either _Frost_/_Soaked_.\nIf you choose _Frost_ and the creature has at least 1 _Frost_ Token, they gain 1 _Frost_ or increase one of their _Frost_ Token value by 1, to a maximum of 3. (1 _Reflex_).\nIf you choose _Frost_ and the creature has at least 3 _Frost_, they gain _Frost_ 2 or increase two of their _Frost_ Token values by 1, to a maximum of 3. (2 _Reflex_).\nIf you choose _Frost_ and the creature has at least 5 _Frost_, they are immediately _Restrained_ (3 _Grit_).\nIf you choose _Soaked_ you may convert any number of that creature's _Soaked_ Tokens to _Frost_ Tokens of the same value (2 _Reflex_).",
         "boost": "2 _Momentum_. Resolve the _Soaked_ version of the Effect, then the _Frost_ version of the Effect."
       },
       {
@@ -559,7 +565,7 @@
         "move": "Reposition",
         "target": "4 _Wet_, _Icy_, or _Water Source_ spaces.",
         "desc": "You shape the existing water into rigid structures of ice, .",
-        "effect": "Destroy the Targets. Create a number of contiguous _Ice Wall_s within Range depending on the Destroyed Targets. For every two _Wet_ or _Icy_ spaces you may create a single _Ice Wall_ and for every _Water Source_ you may create one _Ice Wall_.",
+        "effect": "Destroy the Targets. Create a number of contiguous _Ice Wall_s within Range depending on the Destroyed Targets. For every two _Wet_/_Icy_ spaces you may create a single _Ice Wall_ and for every _Water Source_ you may create one _Ice Wall_.",
         "special": "If you create an _Ice Wall_ in a space where you Destroyed a Target, creatures adjacent to that space gain _Frost_ 1 (1 _Reflex_).",
         "boost": "X _Momentum_. Increase the number of Targets by X."
       },
@@ -572,7 +578,7 @@
         "speed": "4",
         "move": "Reposition",
         "cost": "1 _Momentum_",
-        "target": "A creature completely on _Icy_ or _Wet_ Terrain that is not _Flying_.",
+        "target": "A creature completely on _Icy_/_Wet_ Terrain that is not _Flying_.",
         "desc": "You freeze a target's feet to the ground, rooting them in place.",
         "effect": "The Target becomes _Stuck_ (2 _Reflex_). They may end this _Stuck_ by Sacrificing an Action and spending 1 _Grit_.",
         "boost": "2 _Momentum_. If the Target is _Prone_ they are instead _Restrained_ (3 _Reflex_).  They may end this _Restrained_ by Sacrificing an Action and spending 3 _Grit_."
@@ -587,7 +593,7 @@
         "move": "Shift",
         "target": "4 spaces with _Icy_, _Ice Wall_, _Water Source_, or _Wet_.",
         "desc": "You rapidly change the form of water, either hardening it to ice or returning it to a liquid form.",
-        "effect": "You may change Target _Icy_ and _Ice Wall_ spaces to _Wet_ or _Icicle_, Target _Wet_ spaces to _Icy_ or _Icicle_, and Target _Water Source_s to _Icy_ or _Icicle_. You may not target a _Water Source_ with a creature within.",
+        "effect": "You may change Target _Icy_ and _Ice Wall_ spaces to _Wet_/_Icicle_, Target _Wet_ spaces to _Icy_/_Icicle_, and Target _Water Source_s to _Icy_/_Icicle_. You may not target a _Water Source_ with a creature within.",
         "boost": "2 _Momentum_. Target is instead a _Water Source_ with a creature within. That creature is immediately _Entombed_ (3 _Reflex_) in an _Ice Wall_ that replaces the _Water Source_. A creature may end _Entomb_ by spending 3 _Grit_ on their turn."
       },
       {

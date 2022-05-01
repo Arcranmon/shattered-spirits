@@ -4,17 +4,19 @@
       <div class="weapon--header">
         <h3 style="display: inline; font-style: normal;">{{ weapon.Name }}</h3>
       </div>
-      <b
-        ><div class="weapon--keywords">
-          {{ weapon.SpeedHeader }}{{ weapon.DurabilityHeader
+      <div class="weapon--keywords">
+        <span v-if="(weapon.Desc.length > 0)">{{ weapon.Desc }}<br /></span>
+        <b
+          >{{ weapon.SpeedHeader }}{{ weapon.DamageTypeHeader
+          }}{{ weapon.DurabilityHeader
           }}<display-tooltip-text :string="weapon.RangeHeader" />
           {{ weapon.HandsPhrase }}{{ weapon.CategoryHeader }}
           <br />
           <display-tooltip-text
             :string="weapon.KeywordsHeader"
             :decorate="false"
-          /></div
-      ></b>
+        /></b>
+      </div>
     </div>
     <div class="weapon--content">
       <display-tooltip-text

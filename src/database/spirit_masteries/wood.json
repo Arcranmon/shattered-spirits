@@ -35,6 +35,7 @@
         "keywords": ["Spirit", "Wood"],
         "trigger": "You make an Attack with a Wooden Weapon.",
         "cost": "1 _Momentum_",
+        "damagetype": "Stab",
         "type": "Strike",
         "speed": "Reaction",
         "desc": "After attacking you detonate the weapon, sending a hail of splintering thorns at nearby foes.",
@@ -77,6 +78,7 @@
         "type": "Strike",
         "ap": 1,
         "speed": "2",
+        "damagetype": "Stab",
         "move": "Reposition",
         "reqs": "_Wood Source_ on Self.",
         "desc": "You fire a devastating stake of wood at a foe, attempting to pin them in place.",
@@ -118,11 +120,12 @@
         "type": "Strike",
         "speed": "3",
         "range": "6",
+        "damagetype": "Stab",
         "desc": "You focus on a nearby piece of wood, causing it to explode in a sudden burst.",
         "target": "An unequipped _Wood Source_ of Size 1 or smaller within Range.",
         "area": "Burst 1",
         "effect": "_Destroy_ the Target and Attack with the below Profile in the Area, centering it on the Target.",
-        "special": "You may instead Target an Embedded _Wood Source_. The Attack loses the Area tag, but has Advantage and inflicts _Wounded_ 2 (2 _Grit_) on a _Hit_ or _Crit_.",
+        "special": "You may instead Target an Embedded _Wood Source_. The Attack loses the Area tag, but has Advantage and inflicts _Wounded_ 2 (2 _Grit_) on a _Hit_/_Crit_.",
         "boost": "2 _Momentum_: You may instead Target a Size 2 _Wood Source_. The Area becomes Burst 2.",
         "chart": {
           "roll": [
@@ -162,6 +165,7 @@
         "ap": 1,
         "speed": "4",
         "move": "Reposition",
+        "damagetype": "Crush",
         "reqs": "Size 1 _Wood Source_.",
         "desc": "You seize control of a nearby source of wood, causing it to bend and sway in a deadly arc.",
         "effect": "Attack with the below Profile, originating it from the Target and with a Range equal to the Target's _Wood Source_ Value.",
@@ -336,10 +340,11 @@
         "keywords": ["Spirit", "Wood"],
         "type": "Strike",
         "range": "Melee",
+        "damagetype": "Stab",
         "area": "Cone 2",
         "move": "Reposition",
         "effect": "Attack with the below Profile.",
-        "boost": "1 _Momentum_: Choose an _Overgrown_ or _Wood Source_ space within Range 8. Originate the attack from there rather than yourself.",
+        "boost": "1 _Momentum_: Choose an _Overgrown_/_Wood Source_ space within Range 8. Originate the attack from there rather than yourself.",
         "chart": {
           "roll": [
             "Miss",
@@ -379,6 +384,7 @@
         "type": "Strike",
         "range": "5",
         "move": "Reposition",
+        "damagetype": "Slash/Stab",
         "effect": "Attack with the below Profile.",
         "boost": "1 _Momentum_: Choose an _Overgrown_ space within Range. Originate the attack from the _Overgrown_ space rather than yourself.",
         "chart": {
@@ -422,7 +428,7 @@
         "target": "Any three independent _Overgrown_ spaces.",
         "move": "Step",
         "effect": "All Target spaces become _Bramble Wall_s.",
-        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Damage and gain _Bleed_ 1. If they cannot Move out of a Target space, they cannot pay this cost."
+        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Stab Damage and gain _Bleed_ 1. If they cannot Move out of a Target space, they cannot pay this cost."
       },
       {
         "name": "Ensnaring Vines",
@@ -502,7 +508,7 @@
         "range": "6",
         "target": "An _Overgrown_ space or living _Wood Source_.",
         "move": "Reposition",
-        "effect": "Destroy the Target, then create an Animated Vine with 10 Health in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_ or _Focus_ to have it use the Grab Action as if it had Reach 2, targeting the triggering creature.",
+        "effect": "Destroy the Target, then create an Animated Vine with 10 Health in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_/_Focus_ to have it use the Grab Action as if it had Reach 2, targeting the triggering creature.",
         "boost": "2 _Momentum_: Remove the Enchant Keyword.\n\t2 _Momentum_: Your vine is covered in aggressive thorns or resembles a carnivorous plant. Increase the Cost of your Reaction by 1, but deal 3 Damage on a _Graze_,  4 Damage on a _Hit_,  and 5 Damage on a Crit."
       },
       {
