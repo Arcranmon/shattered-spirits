@@ -11,7 +11,7 @@
         "desc": "You easily duck and roll about the battlefield, making full use of your unarmored body.",
         "accumulate": "While wearing no armor, whenever you  provoke a _Punish_ Attack while _Leaping_ gain 1 _Momentum_.",
         "refresh": "_Reflex_ 4",
-        "effect": "While wearing no armor all _Leaping_ Movement you make is _Safe_. Once per Turn, you may count up to a _Step_ worth of _Movement_ as _Leaping_."
+        "effect": "While wearing no armor all _Leaping_ Movement you make is _Safe_. Once per Turn, you may count up to a _Step_ worth of _Movement_ as _Leaping_ without paying any additional cost."
       },
       {
         "name": "Instinct Style",
@@ -38,6 +38,7 @@
         "cost": "1 _Momentum_, 1 _Reflex_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
         "speed": "Reaction",
         "range": "Self",
+        "reqs": "No Armor Worn.",
         "effect": "You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
         "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
         "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None."
@@ -50,7 +51,7 @@
         "speed": "Set-Up",
         "ap": 1,
         "move": "Step",
-        "reqs": "Must be Attached to a Single Target Strike.",
+        "reqs": "Must be Attached to a Single Target Strik and No Armor Worn.",
         "effect": "Gain 1 _Reflex_. After resolving this Technique's Movement, you may _Leaping_ Step. If you _Move_ directly through a creature's space, land on the opposite side, and they do not _Hit_/_Crit_ you with a _Punish_ Attack, grant yourself _Advantage_ on the Attached Strike against that creature. You must use the Attached Strike's Movement after Attacking."
       },
       {
@@ -105,16 +106,17 @@
         "boost": "1 _Reflex_: Movement is instead Shift. You fall _Prone_ at the end of this Reaction."
       },
       {
-        "name": "Kip Up",
+        "name": "Acrobatics",
         "speed": "Reaction",
-        "desc": "You quickly get to your feet, leaving no openings for your foes to exploit.",
+        "desc": "You quickly get to your feet or adjust your position, leaving no openings for your foes to exploit.",
         "keywords": ["Evade"],
         "type": "Defensive",
         "reqs": "No or Light Armor Worn.",
-        "trigger": "Your _Turn_ begins while you are _Prone_.",
+        "trigger": "Your _Turn_ begins.",
+        "move": "Step",
         "cost": "1 _Reflex_",
-        "effect": "You are no longer _Prone_.",
-        "boost": "1 _Reflex_: Trigger is instead 'A _Turn_ begins while you are _Prone_.'\nX _Reflex_: Instead, the trigger is 'Your _Turn_ begins while you  are _Hobbled_.' Instead, clear _Hobbled_ X."
+        "effect": "None.",
+        "boost": "1 _Reflex_: Trigger is instead 'A _Turn_ begins.'"
       },
       {
         "name": "Lightning Reflexes",
@@ -247,12 +249,12 @@
         "effect": "Reduce the Attack Roll by 2. If the Attack Grazes, reduce the cost to _Negate_ by 1 and increase your _Guard_ by 2 against this Attack."
       },
       {
-        "name": "Iron Shell",
+        "name": "Armored Shell",
         "speed": "Reaction",
         "desc": "You let a blow land solidly on your armor, unconcerned about the damage.",
         "keywords": ["Block"],
         "type": "Defensive",
-        "reqs": "Heavy Armor Worn with _Guard_ remaining.",
+        "reqs": "Light or Heavy Armor Worn with _Guard_ remaining.",
         "trigger": "You are Attacked.",
         "cost": "3 _Grit_",
         "effect": "Resolve the attack against your Armor rather than yourself, dealing an additional 1 Damage."
@@ -286,7 +288,8 @@
     "category": "Skill",
     "background": "#bab86c",
     "name": "Skirmisher",
-    "flavor": "You strike a balance between mobility and durability with a small amount of armor, granting flexibility in combat.",
+    "role": "Striker/Courier",
+    "flavor": "Skirmishers strike a balance between mobility and durability. While Skirmisher lacks the extreme mobility of the Freedom Discipline and the unstoppable armor of the Juggernaut, it excels at Punish Reactions. In addition, it has Techniques that allow options for both movement and enhanced defense, providing flexibility. A Skirmisher is equally adept at Evade and Block Reactions, and can use whichever fits the current situation.",
     "stances": [
       {
         "name": "Counter Style",
@@ -298,13 +301,59 @@
       {
         "name": "Skirmish Style",
         "desc": "You are always moving, making yourself a difficult target to pin down.",
-        "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end a _Turn_ non-adjacent to an enemy.",
+        "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end your _Turn_ non-adjacent to any enemy.",
         "refresh": "_Reflex_ 3, _Grit_ 1",
-        "effect": "Whenever you take a _Reaction_ you may Move 1 space as long as you are wearing Light Armor.",
+        "effect": "Whenever you take a _Reaction_ while you have _Reflex_ you may Move 1 space as long as you are wearing Light Armor.",
         "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Evade_ Reaction by 1."
+      },
+      {
+        "name": "Warding Style",
+        "desc": "You are most at home near a foe, using your mobility and armor to always press the advantage.",
+        "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end a _Turn_ adjacent to an enemy.",
+        "refresh": "_Reflex_ 3, _Grit_ 1",
+        "effect": "Whenever you take a _Reaction_ while you have _Grit_ you may reduce the Damage of an adjacent foe's Attack by 1.",
+        "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Block_ Reaction by 1."
       }
     ],
     "techniques": [
+      {
+        "name": "Press the Attack!",
+        "desc": "With a balanced defense you can focus more of your attention on offense.",
+        "type": "Strike",
+        "keywords": ["Punish"],
+        "trigger": "You make an Attack Roll.",
+        "cost": "1 _Momentum_, 1 _Grit_ or _Reflex_.",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Increase the Attack Roll by 1.",
+        "boost": "1 _Momentum_, 1 _Reflex_ or 1 _Grit_: Instead, increase the Attack Roll by 2."
+      },
+      {
+        "name": "Safe Counter",
+        "desc": "You drive an attack towards your armor while slipping through a foe's defenses.",
+        "type": "Strike",
+        "keywords": ["Punish"],
+        "trigger": "You are Attacked by an adjacent enemy while wearing Light Armor.",
+        "cost": "1 _Momentum_, 1 _Grit_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_. Increase your _Guard_ by 1 against the triggering Attack.",
+        "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
+        "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes Step if it is greater than Step."
+      },
+      {
+        "name": "Spinning Counter",
+        "desc": "You absorb an attack by a foe and whip about, striking a nearby foe.",
+        "type": "Strike",
+        "keywords": ["Punish"],
+        "trigger": "You are Attacked while wearing Light Armor.",
+        "cost": "1 _Momentum_, 1 _Reflex_, +1 _Momentum_ if the Attack is Speed 4 or slower.",
+        "speed": "Reaction",
+        "range": "Self",
+        "effect": "Increase the Attack Roll by 1. You may immediately Attack with a _Maneuver_/_Weapon Strike_ against any creature other than the Triggering Target.",
+        "boost": "1 _Momentum_. You may instead Attack with any _Strike_.",
+        "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes Step if it is greater than Step."
+      },
       {
         "name": "Leaping Strike",
         "desc": "You leap forward, making a mighty strike with your weapon as you land.",
@@ -329,12 +378,48 @@
         "effect": "Gain any 3 of _Grit_ and _Reflex_. Gain 1 _Momentum_."
       },
       {
+        "name": "Rebalance",
+        "desc": "You shift your combat style to become more balanced, .",
+        "type": "Maneuver",
+        "speed": "2",
+        "ap": 1,
+        "cost": "1 _Momentum_",
+        "move": "Reposition",
+        "reqs": "Light Armor Worn.",
+        "effect": "Trade as many _Grit_ Tokens for _Reflex_ or _Reflex_ Tokens for _Grit_ as you wish. If you end this Technique with more _Grit_ than _Reflex_ gain 1 additional _Grit_ and gain 3 Vigor. If you end this Technique with more _Reflex_ than _Grit_ gain 1 additional _Reflex_ and immediately take an additional _Safe_ Step. If you end this Technique with equal, non-zero amounts of _Grit_ and _Reflex_ gain 2 _Momentum_ and a +1 bonus on your next Attack Roll."
+      },
+      {
+        "name": "Rush",
+        "desc": "You charge forward, smashing into a foe to give yourself an edge.",
+        "type": "Move",
+        "speed": "2",
+        "reqs": "Light or Heavy Armor Worn.",
+        "range": "Self",
+        "cost": "1 _Momentum_",
+        "ap": 1,
+        "move": "Shift",
+        "effect": "Inflict _Exposed_ 1 (1 _Reflex_) on a creature you end this Technique adjacent to. If you moved at least 5 spaces in a straight line before ending your turn adjacent, instead inflict _Exposed_ 2 (2 _Reflex_).",
+        "special": "If you are wearing Heavy Armor, this is instead Speed 3."
+      },
+      {
+        "name": "Unhindered Run",
+        "desc": "You dart forward at great speed, using your mix of agility and armor to ignore the hazards of the terrain.",
+        "type": "Move",
+        "speed": "See Movement",
+        "reqs": "Light Armor Worn.",
+        "range": "Self",
+        "ap": 1,
+        "move": "The movement granted by Unhindered Run determines its Speed, as follows: \n* <ins>Step, Step:</ins> Speed 1 \n*  <ins>Reposition, Reposition:</ins> Speed 2 \n* <ins>Shift, Shift:</ins> Speed 4",
+        "boost": "1 _Momentum_/_Reflex_: One portion of this Movement ignores the effects of Terrain. You may use this _Boost_ up to twice, paying the cost seperately each time."
+      },
+      {
         "name": "Armored Roll",
         "desc": "You evade an assault while directing it towards a better protected part of your armor.",
         "type": "Defensive",
         "keywords": ["Block", "Evade"],
         "trigger": "You are Attacked.",
         "cost": "1 _Grit_, 1 _Momentum_, 1 _Reflex_",
+        "reqs": "Light Armor Worn.",
         "speed": "Reaction",
         "range": "Self",
         "effect": "Force the attacker to reroll the attack. Either use the new result of the roll, or reduce the original roll by 1 and use it. Regardless of what you choose, you may _Safe_ Move 1 after this Reaction."
