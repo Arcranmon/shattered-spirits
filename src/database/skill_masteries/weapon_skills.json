@@ -295,14 +295,6 @@
   },
   {
     "category": "Skill",
-    "background": "DarkGrey",
-    "name": "Lasher",
-    "flavor": "You are a maser of whips and chains, causing them to strike as suddenly and unpredictably as a snake.",
-    "stances": [],
-    "techniques": []
-  },
-  {
-    "category": "Skill",
     "background": "chocolate",
     "name": "Martial Artist",
     "role": "Striker/Controller",
@@ -452,8 +444,102 @@
     "background": "DarkGrey",
     "name": "Sharpshooter",
     "flavor": "You reign down damage from afar, making use of a powerful long-ranged weapon with ease.",
-    "stances": [],
-    "techniques": []
+    "stances": [
+      {
+        "name": "Close-Quarters Style",
+        "desc": "You have become adept at using your bow in close-quarters and can rapidly fire without issue.",
+        "accumulate": "Whenever you make an Attack against a creature within 5 spaces gain 1 _Momentum_ and deal an additional 1 Damage.",
+        "refresh": "_Reflex_ 2, _Focus_ 1",
+        "effect": "Decrease the _Artillery_ property of all your Ranged Weapons by 2."
+      },
+      {
+        "name": "Sniper Style",
+        "desc": "You focus your aim, finding the weak points in your foe's defenses and exploiting them for devastating damage.",
+        "accumulate": "Once per Turn, whenever you defeat a foe with an attack with a Ranged Weapon gain 2 _Momentum_. If that foe was previously undamaged, instead gain 3 _Momentum_.",
+        "refresh": "_Reflex_ 1, _Focus_ 2",
+        "effect": "Whenever you make a Strike with a Ranged Weapon, you may choose to take no Movement. If you do, increase your Attack Roll by 1 and increase the Range by 2."
+      }
+    ],
+    "techniques": [
+      {
+        "name": "Spacing Strike",
+        "desc": "You make an impromptu melee strike with your weapon to create space before following it up with a sudden shot.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Step",
+        "cost": "2 _Momentum_",
+        "reqs": "Ranged Weapon without the Thrown Property Wielded.",
+        "effect": "Make an Attack with a Light Improvised Weapon if your Ranged Weapon is _Light_, Medium Improvised Weapon if _Versatile_, or Heavy Improvised Weapon if _Heavy_. Add _Push_ 1 (1 _Grit_) to the Attack. Immediately after, make a Weapon Strike using your Ranged Weapon, but deal half Damage and reduce the Cost to _Negate_ by 1.",
+        "special": "If _Improvising_ from a Weapon Technique using a Ranged Weapon, this is instead _Fluid_ 2. Reduce the Cost of this Technique by an amount equal to the Cost of the previous Technique."
+      },
+      {
+        "name": "Pinning Shot",
+        "desc": "You pin a creature to an adjacent surface, limiting their mobility.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Ranged or Thrown Weapon Wielded.",
+        "effect": "Attack using your Weapon's Profile. If the Target is adjacent to an Obstacle, inflict _Pinned_ (2 _Reflex_).",
+        "boost": "2 _Momentum_: Instead, inflict _Pinned_ (2 _Reflex_) regardless of if the creature is adjacent to an Obstacle."
+      },
+      {
+        "name": "Overdraw",
+        "desc": "You draw your bow back farther or spin your sling faster, preparing for a far more powerful strike.",
+        "type": "Maneuver",
+        "speed": "Set-Up",
+        "ap": 1,
+        "move": "None",
+        "cost": "2 _Momentum_",
+        "reqs": "Must be Attached to a Strike with a Ranged Weapon.",
+        "effect": "The Attached Strike is not resolved until the end of the current _Phase_. Resolve it as a Line X, where X is the Weapon's Rang. Add _Pierce_ 2 to the Attack."
+      },
+      {
+        "name": "Steady Aim",
+        "desc": "You set your feet, preparing for a steadily aimed shot.",
+        "type": "Maneuver",
+        "speed": "Weapon-2",
+        "range": "20",
+        "cost": "1 _Focus_",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "None",
+        "effect": "You gain _Staggered_. If you do not Move (willingly or unwillingly) before making a Strike with a Ranged Weapon gain a +2 bonus to your Attack Roll and gain 2 _Momentum_ on a _Hit_ or _Crit_."
+      },
+      {
+        "name": "Focused Aim",
+        "desc": "You take careful aim, lining up a deadly shot if the target does not take precautions.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "20",
+        "keywords": ["Weapon-1"],
+        "cost": "1 _Focus_",
+        "ap": 1,
+        "move": "None",
+        "reqs": "Ranged Weapon Wielded.",
+        "effect": "You gain _Staggered_. Pick a creature within Range. If you do not Move before that creature ends its next _Turn_ within your Weapon Range, outside your _Artillery_ Range, and not _Prone_ or in _Cover_ you may make a Weapon Attack against them with _Advantage_."
+      },
+      {
+        "name": "Volley",
+        "desc": "You fire a high, arcing shot, gaining range and avoiding cover at the expense of a swift strike.",
+        "type": "Maneuver",
+        "speed": "Weapon",
+        "range": "Weapon + 4",
+        "keywords": ["Weapon", "Hazard", "_Unblockable_ 1", "_Sure Hit_ 1"],
+        "ap": 1,
+        "move": "Reposition",
+        "cost": "1 _Momentum_",
+        "reqs": "Ranged or Thrown Weapon Wielded.",
+        "effect": "Create a Size 1 Hazard within Range. At the end of the next Phase make an Attack against a creature within that space that ignores _Cover_ and deals 1 additional Damage.",
+        "imbue": "2 _Momentum_: Instead, create a Blast 1 Hazard or three Size 1 Hazards within Range. Resolve the Effect against all creatures within any of these Hazards, but a single creature may only be attacked once."
+      }
+    ]
   },
   {
     "category": "Skill",
@@ -461,7 +547,49 @@
     "name": "Thrower",
     "flavor": "You fling weapons with uncanny, practiced skill, easily finding purchase against a foe.",
     "stances": [],
-    "techniques": []
+    "techniques": [
+      {
+        "name": "Quick Throw",
+        "desc": "You suddenly fling a weapon, catching a foe by surprise with its abruptness.",
+        "type": "Strike",
+        "speed": "Weapon-1",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "_Light_ or _Versatile_ Thrown Weapon Wielded or Equipped.",
+        "effect": "Immediately Attack with a Thrown Weapon that you have Equipped or Wielded. You do not need an Open Hand to use this Attack. Versatile Weapons take a -2 penalty to Damage.",
+        "boost": "1 _Momentum_: Add _Sure Hit_ 1."
+      },
+      {
+        "name": "Barrage",
+        "desc": "You rapidly fling thrown weapons out, buffeting a small area.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "cost": "1 _Momentum_",
+        "move": "Reposition",
+        "reqs": "Thrown Weapon Wielded or Equipped.",
+        "effect": "Attack using your Weapon's Profile. Immediately make another Attack against a creature adjacent to the original target using the same Weapon.",
+        "boost": "2 _Momentum_: Make another Attack against a creature adjacent to either target. You may use this Boost multiple times, but may not hit a creature more than once with this Technique."
+      },
+      {
+        "name": "Bouncing Throw",
+        "desc": "You skip your throw off a nearby object, increasing its range and letting it strike at an unexpected angle.",
+        "type": "Strike",
+        "speed": "Weapon",
+        "range": "Weapon",
+        "keywords": ["Weapon"],
+        "ap": 1,
+        "cost": "1 _Momentum_",
+        "move": "Reposition",
+        "reqs": "Thrown Weapon Wielded or Equipped.",
+        "effect": "Attack using your Weapon's Profile. After resolving the Attack, if it does not _Embed_ you may move the Weapon up to its Range - 2 before it falls to the ground. If you move it back to yourself you may catch it in your hand.",
+        "special": "You may instead Target an Obstacle with this Attack, in which case you may treat the Obstacle as the origin of this Attack. Reduce the Range of the secondary Attack by 2."
+      }
+    ]
   },
   {
     "background": "#3b7a3e",

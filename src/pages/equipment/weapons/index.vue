@@ -20,10 +20,10 @@
       <span class="page--description" v-html="bluntsText" />
       <show-cards :inputs="blunts" job="Weapons" :collapse="true" />
     </div>
-    <div class="weapon--box" style="background-color: DarkKhaki;">
+    <!--- <div class="weapon--box" style="background-color: DarkKhaki;">
       <h2>Chains</h2>
       <show-cards :inputs="chains" job="Weapons" :collapse="true" />
-    </div>
+    </div> -->
     <div class="weapon--box" style="background-color: #767cda;">
       <h2>Lances</h2>
       <span class="page--description" v-html="lancesText" />

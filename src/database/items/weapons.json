@@ -8,7 +8,7 @@
     "hands": 1,
     "damagetype": "Varying",
     "range": "Melee",
-    "keywords": ["Light", "_Thrown_ 5", "_Fluid_ 1"],
+    "keywords": ["Light", "_Thrown_ 3", "_Fluid_ 1"],
     "special": "Thrown Attacks with this Weapon are made at _Disadvantage_.",
     "chart": {
       "roll": [
@@ -49,7 +49,7 @@
     "damagetype": "Varying",
     "range": "Melee",
     "desc": "A weapon that is light enough to be wielded in one hand, such as a chair or tree branch.",
-    "keywords": ["Versatile", "_Thrown_ 3", "_Fluid_ 1"],
+    "keywords": ["Versatile", "_Thrown_ 2", "_Fluid_ 1"],
     "special": "Thrown Attacks with this Weapon are made at _Disadvantage_.",
     "chart": {
       "roll": [
@@ -690,6 +690,89 @@
     }
   },
   {
+    "name": "Dart",
+    "itemtype": "Weapon",
+    "speed": 2,
+    "category": "Ranged",
+    "hands": 2,
+    "damagetype": "Stab",
+    "durability": 6,
+    "desc": "A simple weapon that allows for quick attacks and clumsy melee strikes.",
+    "range": "Melee",
+    "keywords": ["Light", "_Thrown_ 8", "_Artillery_ 1", "_Small_ 4"],
+    "special": "Melee Attacks with this Weapon have _Disadvantage_.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 0, 4, 5, 6, 8, 10, 12],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Dazed_ 1 (1 _Focus_)",
+        "_Dazed_ 1 (1 _Focus_)",
+        "_Dazed_ 1x2 (2 _Focus_)",
+        "_Dazed_ 1x2 (2 _Focus_)"
+      ]
+    }
+  },
+  {
+    "name": "Sling",
+    "itemtype": "Weapon",
+    "speed": 3,
+    "category": "Ranged",
+    "hands": 2,
+    "damagetype": "Crush",
+    "durability": 5,
+    "desc": "A simple weapon that allows for quick attacks and greater flexibility in range.",
+    "range": "8",
+    "keywords": ["Light", "_Artillery_ 1"],
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "damage": [0, 0, 0, 0, 0, 5, 7, 8, 9, 11, 12],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Dazed_ 1 (1 _Focus_)",
+        "_Dazed_ 1 (1 _Focus_)",
+        "_Dazed_ 1x2 (2 _Focus_)",
+        "_Dazed_ 1x2 (2 _Focus_)"
+      ]
+    }
+  },
+  {
     "name": "Shortbow",
     "itemtype": "Weapon",
     "speed": 3,
@@ -698,8 +781,8 @@
     "damagetype": "Stab",
     "durability": 7,
     "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilties.",
-    "range": "8",
-    "keywords": ["Versatile", "_Artillery_ 2", "_Ammunition_ 3"],
+    "range": "10",
+    "keywords": ["Versatile", "_Artillery_ 2"],
     "chart": {
       "roll": [
         "Miss",
@@ -740,7 +823,7 @@
     "durability": 8,
     "desc": "A heavy bow that has unparalleled range and power, allowing deadly strikes from extreme range.",
     "range": "12",
-    "keywords": ["Heavy", "_Artillery_ 5", "Ordnance", "_Ammunition_ 3"],
+    "keywords": ["Heavy", "_Artillery_ 4", "Ordnance"],
     "chart": {
       "roll": [
         "Miss",
@@ -781,7 +864,7 @@
     "desc": "A bladed weapon with a short blade, these weapons are incredibly fast and can easily be thrown.",
     "durability": 7,
     "range": "Melee",
-    "keywords": ["Light", "_Thrown_ 6", "_Small_ 2"],
+    "keywords": ["Light", "_Thrown_ 4", "_Small_ 2"],
     "chart": {
       "roll": [
         "Miss",
@@ -945,7 +1028,7 @@
     "desc": "A lightweight axe that weighs enought to punish a foe's defenses while allowing for swift strikes.",
     "durability": 8,
     "range": "Melee",
-    "keywords": ["Light", "_Thrown_ 4"],
+    "keywords": ["Light", "_Thrown_ 3"],
     "chart": {
       "roll": [
         "Miss",
@@ -986,7 +1069,7 @@
     "durability": 9,
     "range": "Melee",
     "desc": "A hammer with enough weight to punch through armor while still allowing it to be thrown in a pinch.",
-    "keywords": ["Light", "_Thrown_ 4", "_Pierce_ 1"],
+    "keywords": ["Light", "_Thrown_ 3", "_Pierce_ 1"],
     "chart": {
       "roll": [
         "Miss",
@@ -1191,7 +1274,7 @@
     "durability": 6,
     "range": "Melee",
     "desc": "A light spear that lacks the range of other lance weapons but can easily be flung to harry foes at a great distance.",
-    "keywords": ["Light", "_Thrown_ 10"],
+    "keywords": ["Light", "_Thrown_ 8"],
     "chart": {
       "roll": [
         "Miss",
@@ -1350,7 +1433,7 @@
     "speed": 3,
     "category": "Shield",
     "hands": 1,
-    "damagetype": "Physical",
+    "damagetype": "Crush",
     "durability": 8,
     "range": "Melee",
     "keywords": ["Versatile"],
@@ -1391,7 +1474,7 @@
     "speed": 2,
     "category": "Blade",
     "hands": 1,
-    "damagetype": "Physical",
+    "damagetype": "Fire",
     "range": "Melee",
     "keywords": ["Flame", "Light", "_Pierce_ 2"],
     "special": "Anytime a Strike with this Weapon would inflict _Bleed_, instead inflict _Burn_.\nThis Weapon cannot be Destroyed by Attacks.",
@@ -1431,9 +1514,9 @@
     "speed": 2,
     "category": "Lance",
     "hands": 2,
-    "damagetype": "Physical",
+    "damagetype": "Cold/Stab",
     "durability": 7,
-    "range": "_Reach_ 1 or Ranged (Thrown)",
+    "range": "_Reach_ 1",
     "keywords": ["Water", "Versatile", "_Thrown_ 6"],
     "special": "After you _Hit_/_Crit_ with a Melee or Ranged Attack with this Weapon, you may _Destroy_ it. If it was Melee, inflict 2 _Frost_ (2 _Grit_) on the Target. If it was ranged, inflict 1 _Frost_ (1 _Grit_) on the Target and create an _Icicle_ in a space adjacent to them.",
     "chart": {
@@ -1470,9 +1553,9 @@
     "name": "Stone Gauntlet",
     "itemtype": "Spirit Weapon",
     "speed": 3,
-    "category": "Unarmed",
+    "category": "Blunt",
     "hands": 1,
-    "damagetype": "Physical",
+    "damagetype": "Crush",
     "durability": 12,
     "range": "Melee",
     "keywords": ["Earth", "Heavy", "Siege"],
@@ -1513,7 +1596,7 @@
     "speed": 3,
     "category": "Chain",
     "hands": 1,
-    "damagetype": "Physical",
+    "damagetype": "Crush",
     "range": "_Reach_ 2",
     "special": "You may Destroy the Water Whip on a _Hit_/_Crit_ to increase the Damage and _Pull_ by 2 and, if you wish, replace all _Pull_ with _Push_.\nThis Weapon cannot be Destroyed by Attacks.",
     "keywords": ["Versatile"],
@@ -1553,7 +1636,7 @@
     "speed": 2,
     "category": "Blade",
     "hands": 1,
-    "damagetype": "Physical",
+    "damagetype": "Slash",
     "range": "Melee",
     "special": "All attacks with the Wind Blade are at Advantage. If a creature uses a _Block_ Reaction, reduce the Attack Roll by an additional 1. If this makes the Attack _Miss_,  pay 1 _Momentum_/_Destroy_ the _Wind Blade_.\nThis Weapon cannot be Destroyed by Attacks.",
     "keywords": ["Light", "Weak"],
