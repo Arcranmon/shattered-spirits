@@ -64,6 +64,7 @@ declare interface IArmorData {
   category: string;
   durability: number;
   endurance: number;
+  jump: number;
   name: string;
   reposition: number;
   shift: number;

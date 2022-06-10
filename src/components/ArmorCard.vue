@@ -13,7 +13,11 @@
     <div class="armor--content">
       <div v-html="$marked.parseInline(armor.ArmorText)" />
       <div v-html="$marked.parseInline(armor.EnduranceText)" />
-      <display-tooltip-text v-if="armor.HasSpecial" :string="armor.Special" />
+      <div v-html="$marked.parseInline(armor.JumpText)" />
+      <div
+        v-if="armor.HasSpecial"
+        v-html="$marked.parseInline(armor.SpecialHeader)"
+      />
       <div class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row">
           <v-col class="chart--head" cols="4"

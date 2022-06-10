@@ -1,9 +1,9 @@
 [
   {
-    "category": "Skill",
-    "background": "darksalmon",
     "name": "Dual Wielder",
+    "category": "Skill",
     "flavor": "You fight best with a weapon in either hand, allowing you to create a barrage of unavoidable strikes.",
+    "background": "darksalmon",
     "stances": [
       {
         "name": "Dual Weapon Style",
@@ -18,9 +18,9 @@
         "name": "Second Blade",
         "desc": "No matter how a foe attempts to evade your strikes, you always have a second weapon to catch them.",
         "type": "Strike",
-        "cost": "1 _Momentum_",
         "speed": "Reaction",
         "range": "Weapon",
+        "cost": "1 _Momentum_",
         "reqs": "Separate Light or Versatile One-Handed Weapons Wielded in either hand.",
         "trigger": "A creature uses an Evade Reaction against a Weapon Strike.",
         "effect": "Immediately use Quick Strike as a Reaction, using the Weapon not used for the triggering Strike."
@@ -35,25 +35,25 @@
         "move": "Reposition",
         "reqs": "Separate Light or Versatile One-Handed Weapons Wielded in either hand.",
         "effect": "Immediately use the Quick Strike Action twice, using a different weapon for each Strike and declaring what weapon is being used before rolling the attack. The Damage from these Strikes is halved.",
-        "imbue": "1 _Momentum_. You may use the faster of the two Wielded Weapons to determine Speed.",
-        "boost": "1 _Momentum_. After rolling your first Attack, you may change which weapon it is using, so long as the target is within Range of the new weapon."
+        "boost": "1 _Momentum_. After rolling your first Attack, you may change which weapon it is using, so long as the target is within Range of the new weapon.",
+        "imbue": "1 _Momentum_. You may use the faster of the two Wielded Weapons to determine Speed."
       }
     ]
   },
   {
-    "category": "Skill",
-    "background": " #5473ff ",
     "name": "Duelist",
+    "category": "Skill",
     "flavor": "You always keep one hand free in combat, providing you a flexibility and fluidity that few can match.",
+    "background": " #5473ff ",
     "stances": [],
     "techniques": [
       {
         "name": "Offensive Flourish",
         "desc": "You disengage your weapon with an offensive flourish, catching nearby foes off-guard.",
+        "keywords": ["Weapon", "Flourish"],
         "type": "Maneuver",
         "speed": "Follow-Up",
         "range": "Weapon",
-        "keywords": ["Weapon", "Flourish"],
         "ap": 1,
         "move": "Reposition",
         "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
@@ -63,10 +63,10 @@
       {
         "name": "Defensive Flourish",
         "desc": "You disengage your weapon with a defensive flourish, easily flowing back into a defensive stance.",
+        "keywords": ["Weapon", "Flourish"],
         "type": "Defensive",
         "speed": "Follow-Up",
         "range": "Self",
-        "keywords": ["Weapon", "Flourish"],
         "ap": 1,
         "move": "Reposition",
         "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
@@ -76,10 +76,10 @@
       {
         "name": "Mobile Flourish",
         "desc": "You disengage your weapon with a darting flourish, disengaging and slipping away from foes.",
+        "keywords": ["Weapon", "Flourish", "Safe"],
         "type": "Move",
         "speed": "Follow-Up",
         "range": "Melee",
-        "keywords": ["Weapon", "Flourish", "Safe"],
         "ap": 1,
         "move": "Shift",
         "reqs": "Must be attached to a Weapon Strike made while only Wielding a One-Handed Weapon.",
@@ -89,11 +89,11 @@
     ]
   },
   {
-    "category": "Skill",
-    "background": "#A47070",
     "name": "Grappler",
-    "role": "Controller",
+    "category": "Skill",
     "flavor": "So long as you have a hand free you'll have an opponent in it, dragging them about the battlefield. The Grappler Discipline specializes in controlling one or two targets at a time to an exceptional degree. While a creature's offense is somewhat limited while grappling, it allows for unparalleled freedom in repositioning a foe. It is trivial for a Grappler to impose Disadvantage on the attacks of their grappled foes and a variety of Techniques that limit the arms a creature can use and knock them Prone are extremely common throughout this Discipline. While it will require a large amount of Grit to maintain the Grapple, it provides some of the hardest control in the game.",
+    "background": "#A47070",
+    "role": "Controller",
     "stances": [
       {
         "name": "Crush Grip Style",
@@ -121,10 +121,10 @@
       {
         "name": "Grappling Strike",
         "desc": "You follow up an unarmed strike with an attempted grab to restrain a foe.",
+        "keywords": ["Weapon", "Martial"],
         "type": "Strike",
         "speed": "Weapon+1",
         "range": "Weapon",
-        "keywords": ["Weapon", "Martial"],
         "ap": 1,
         "move": "Reposition",
         "cost": "1 _Momentum_/_Grit_ if not using an Unarmed Weapon.",
@@ -143,6 +143,7 @@
         "effect": "Immediately _Move_ the _Bottom_ in the _Grapple_ to the opposite side of yourself and Attack them with the below _Profile_. The _Bottom_ may spend 2 _Grit_ before you make the attack to _Negate_; if they do, do not Move them and they take half Damage from the Attack.",
         "special": "You  may choose to end the _Grapple_ as a part of this Attack. If you do, increase the cost to _Negate_ the Attack by 1 and increase the Damage by 2.",
         "chart": {
+          "damage": [5, 5, 5, 5, 6, 6, 6, 6, 8, 8, 8],
           "roll": [
             "Graze",
             "Graze",
@@ -156,7 +157,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [5, 5, 5, 5, 6, 6, 6, 6, 8, 8, 8],
           "status": [
             "_Exposed_ 1 (1 _Reflex_)",
             "_Exposed_ 1 (1 _Reflex_)",
@@ -179,9 +179,9 @@
         "speed": "5",
         "range": "Melee",
         "ap": 1,
-        "reqs": "Must be _Top_ in a _Grapple_ against a Size 1 or smaller creature.",
-        "cost": "1 _Momentum_/_Grit_",
         "move": "Shift",
+        "cost": "1 _Momentum_/_Grit_",
+        "reqs": "Must be _Top_ in a _Grapple_ against a Size 1 or smaller creature.",
         "effect": "You may _Pull_ 3 (2 _Grit_) on the _Grappled_ creature. Attack using the Medium Improvised Weapon's _Profile_, resolving the Attack is if it originates from the _Grappled_ creature's space. Resolve the Attack against the _Grappled_ target as well."
       },
       {
@@ -235,6 +235,7 @@
         "effect": "Choose one of the _Bottoms_ Hands. Unless they spend 2 _Grit_ to _Negate_ this effect, they may not use that Hand for the remainder of the _Grapple_. Increase the _Cost_ of all _Reactions_ for that creature by 1 for the remainder of the _Grapple_.",
         "special": "After using this Action you must dedicate a Hand to maintaining the Lock. If you repeat the Action using a Hand already engaged in a Lock, Attack with the below profile.",
         "chart": {
+          "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
           "roll": [
             "Miss",
             "Miss",
@@ -248,7 +249,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
           "status": [
             "",
             "",
@@ -270,9 +270,9 @@
         "type": "Maneuver",
         "speed": "4",
         "range": "Melee",
-        "cost": "1 _Grit_",
         "ap": 1,
         "move": "Reposition",
+        "cost": "1 _Grit_",
         "reqs": "Must be _Top_ in a _Grapple_.",
         "effect": "For as long as the creature remains _Grappled_, they are _Restrained_, and your cost to _Negate_ the creature escaping the _Grapple_ is reduced by 1. The target creature may spend 2 _Grit_ to _Negate_ this effect, but they remain _Grappled_. While this effect persists you are _Stuck_. You may end this effect at the end of any of your _Turns_.",
         "boost": "1 _Grit_: While the creature is under this effect, you may maintain the _Grapple_ without using any Hands."
@@ -292,10 +292,10 @@
       {
         "name": "Ablative Antagonist",
         "desc": "You attempt to block an attack using a grappled creature, giving your foe a difficult choice.",
+        "keywords": ["Block"],
         "type": "Defensive",
         "speed": "Reaction",
         "range": "Self",
-        "keywords": ["Block"],
         "cost": "2 _Grit_",
         "trigger": "You are Attacked with a Single-Target Attack while you are the _Top_ in a _Grapple_.",
         "effect": "The Attacker must choose: Either resolve the Attack against both you and the _Bottom_, dealing half Damage to both and reducing the cost to _Negate_ by 1 or reduce the Attack Roll by 3.",
@@ -304,10 +304,10 @@
       {
         "name": "Interposing Body",
         "desc": "You reposition a grappled target, forcing them between a foe and yourself.",
+        "keywords": ["Block"],
         "type": "Defensive",
         "speed": "Reaction",
         "range": "Self",
-        "keywords": ["Block"],
         "cost": "1 _Grit_",
         "trigger": "You start a _Phase_ as the _Top_ in a _Grapple_.",
         "effect": "Create an Arc 3 adjacent to you, with a creature you have _Grappled_ and are the _Top_ in at the center. Any Attack that originates from or passes through these spaces takes a -1 penalty to the Attack Roll if Melee or treats you as if you have Cover if Ranged. On a _Miss_, the _Grappled_ creature takes 2 Damage. This effect persists until the end of the current _Phase_ or until you are no longer _Top_ in the _Grapple_.",
@@ -316,10 +316,10 @@
     ]
   },
   {
-    "category": "Skill",
-    "background": "#990000",
     "name": "Heavy Weapon Master",
+    "category": "Skill",
     "flavor": "A lesser warrior is controlled by the heavy weight of a large weapon; you have mastered it and honed it into a deadly pendulum.",
+    "background": "#990000",
     "stances": [
       {
         "name": "Executioner Style",
@@ -332,44 +332,45 @@
     "techniques": [
       {
         "name": "Shieldbreaker",
+        "desc": "You bring your weapon down in a vicious blow, tearing a foe's defenses asunder.",
         "keywords": ["Weapon", "_Unblockable_ 1"],
+        "type": "Strike",
+        "speed": "Weapon+1",
         "range": "Weapon",
         "ap": 1,
-        "type": "Strike",
-        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
-        "speed": "Weapon+1",
         "move": "Step",
-        "desc": "You bring your weapon down in a vicious blow, tearing a foe's defenses asunder.",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
         "effect": "Attack with your Weapon's Profile. Add _Pierce_ 2 to the Attack.",
         "boost": "2 _Momentum_: Also resolve this Attack against the Target's Armor or Shield using the original roll. This Boost has no Cost if the Target uses a Block Reaction."
       },
       {
         "name": "Cleaving Strike",
+        "desc": "You swing your weapon in a mighty arc, potentially striking through multiple foes.",
         "keywords": ["Weapon"],
-        "range": "Weapon",
-        "ap": 1,
         "type": "Strike",
-        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
         "speed": "Weapon+1",
+        "range": "Weapon",
         "area": "Arc 3",
+        "ap": 1,
         "move": "Step",
         "cost": "1 _Momentum_",
-        "desc": "You swing your weapon in a mighty arc, potentially striking through multiple foes.",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
         "effect": "Attack with your Weapon's Profile in the Area."
       },
       {
         "name": "Pommel Strike",
+        "desc": "You quickly attack with the base of your weapon, knocking a foe off-balance.",
         "keywords": ["Weapon"],
+        "type": "Maneuver",
+        "speed": "2",
         "range": "Weapon",
         "ap": 1,
-        "type": "Maneuver",
-        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
-        "speed": "2",
         "move": "Step",
-        "desc": "You quickly attack with the base of your weapon, knocking a foe off-balance.",
+        "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded",
         "effect": "Attack with the below Profile.",
         "imbue": "1 _Momentum_. Speed is instead Set-Up, and the Cost to Negate is increased by 1.",
         "chart": {
+          "damage": [0, 0, 0, 1, 1, 2, 3, 3, 4, 5, 5],
           "roll": [
             "Miss",
             "Miss",
@@ -383,7 +384,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 1, 1, 2, 3, 3, 4, 5, 5],
           "status": [
             "",
             "",
@@ -403,9 +403,9 @@
         "name": "Power Through",
         "desc": "Attempting to block your weapon is one of the greatest acts of folly imaginable.",
         "type": "Maneuver",
-        "cost": "1 _Grit_",
         "speed": "Reaction",
         "range": "Weapon",
+        "cost": "1 _Grit_",
         "reqs": "_Heavy_ One or Two-Handed Melee Weapon Wielded.",
         "trigger": "A Size 1 creature uses a _Block_ Reaction against a Weapon Strike.",
         "effect": "The triggering creature must immediately pay 1 _Grit_ or be _Push_ed 2 and knocked _Prone_. They may pay 1 _Grit_ to Negate this, but you may immediately repeat this Reaction against them as long as you can pay the Cost.",
@@ -414,18 +414,18 @@
     ]
   },
   {
-    "category": "Skill",
-    "background": "DarkGrey",
     "name": "Sentry",
+    "category": "Skill",
     "flavor": "You make use a lighter ranged weapon to punish foes you catch out of cover and provide harrying support to allies.",
+    "background": "DarkGrey",
     "stances": [],
     "techniques": []
   },
   {
-    "category": "Skill",
-    "background": "DarkGrey",
     "name": "Sniper",
+    "category": "Skill",
     "flavor": "You find a safe position then rain death from above at extreme range, somehow always striking a vital point.",
+    "background": "DarkGrey",
     "stances": [],
     "techniques": []
   }

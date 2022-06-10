@@ -1,9 +1,9 @@
 [
   {
     "name": "Land",
+    "flavor": "Those that practice the Land Discipline make the ground beneath their feat their weapon, creating earthen barricades and laying their enemies low with mighty tremors. Stances and Techniques in this Discipline manipulate the earth to create large Obstacles far more easily than any other type of spiritbound, Terrain that can slow and hinder foes that cannot be easily removed from the battlefield, and can unleash debilitating attacks that not only ignore cover, but also inflict conditions that limit enemy mobility and make them easier to strike. If you choose to utilize the Land Discipline, you will choose the shape of the battlefield, determining where enemies can move while providing allies an impenetrable defense. So long as they have solid ground beneath their feet, every battlefield is fortress for a master of the Land Discipline.",
     "background": "darkkhaki",
     "role": "Shaper/Controller",
-    "flavor": "Those that practice the Land Discipline make the ground beneath their feat their weapon, creating earthen barricades and laying their enemies low with mighty tremors. Stances and Techniques in this Discipline manipulate the earth to create large Obstacles far more easily than any other type of spiritbound, Terrain that can slow and hinder foes that cannot be easily removed from the battlefield, and can unleash debilitating attacks that not only ignore cover, but also inflict conditions that limit enemy mobility and make them easier to strike. If you choose to utilize the Land Discipline, you will choose the shape of the battlefield, determining where enemies can move while providing allies an impenetrable defense. So long as they have solid ground beneath their feet, every battlefield is fortress for a master of the Land Discipline.",
     "stances": [
       {
         "name": "Fortress Stance",
@@ -37,14 +37,15 @@
         "keywords": ["Spirit", "Earth", "Groundsource", "Priority"],
         "type": "Strike",
         "speed": "3",
+        "damagetype": "Crush",
         "range": "8",
         "area": "Blast 2",
-        "damagetype": "Crush",
         "ap": 1,
         "move": "Step",
         "effect": "All spaces in the area become _Rough_ and a _Hazard_. At the end of the Round, resolve the below Attack in the same Area.",
         "boost": "2 _Momentum_. Area becomes a Blast 3.",
         "chart": {
+          "damage": [0, 0, 4, 4, 5, 6, 7, 8, 8, 10, 10],
           "roll": [
             "Miss",
             "Miss",
@@ -58,7 +59,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 4, 4, 5, 6, 7, 8, 8, 10, 10],
           "status": [
             "",
             "",
@@ -80,13 +80,14 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
         "speed": "3",
+        "damagetype": "Stab",
         "range": "6",
         "ap": 1,
-        "damagetype": "Stab",
         "move": "Step",
         "effect": "Attack with the below Profile. Immediately after resolving the attack make a space adjacent to the target _Jagged_.",
         "boost": "1 _Momentum_. This attack becomes _Accurate_ and you may instead create an _Earthen Barricade_.",
         "chart": {
+          "damage": [0, 0, 0, 2, 3, 4, 5, 6, 7, 9, 10],
           "roll": [
             "Miss",
             "Miss",
@@ -100,7 +101,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 2, 3, 4, 5, 6, 7, 9, 10],
           "status": [
             "",
             "",
@@ -118,19 +118,19 @@
       },
       {
         "name": "Earth Tomb",
-        "keywords": ["Spirit", "Earth"],
         "desc": "By using nearby earth and stone the Earthbonded seals their foe away.",
+        "keywords": ["Spirit", "Earth"],
         "type": "Strike",
         "speed": "5",
-        "range": "8",
         "damagetype": "Crush",
+        "range": "8",
         "ap": 1,
         "move": "Step",
-        "target": "A Size 1 creature adjacent to at least two _Earthen Feature_s.",
         "effect": "Attack the target with the below Profile, destroying the _Earthen Feature_s. On a _Hit_/_Crit_,  _Entomb_ the creature in an Earthen Barricade. A creature may end _Entomb_ by spending 4 _Grit_ on their turn. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An Earthen Barricade is then created in their original space. If they cannot Move, they may not spend _Reflex_ in this way.",
         "special": "If there are four adjacent _Earthen Features_: Either this Attack is _Accurate_, or you may target a Size 2 creature. Destroy all _Earthen Feature_s used for this Attack.",
         "boost": "1 _Grit_, 2 _Momentum_: Add _Groundsource_. You may resolve the normal Effect without any _Earthen Feature_s.",
         "chart": {
+          "damage": [0, 0, 0, 5, 6, 8, 10, 10, 11, 12, 12],
           "roll": [
             "Miss",
             "Miss",
@@ -144,7 +144,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 5, 6, 8, 10, 10, 11, 12, 12],
           "status": [
             "",
             "",
@@ -158,7 +157,8 @@
             "_Entomb_ (4 _Reflex_)",
             "_Entomb_ (4 _Reflex_)"
           ]
-        }
+        },
+        "target": "A Size 1 creature adjacent to at least two _Earthen Feature_s."
       },
       {
         "name": "Quake",
@@ -166,13 +166,14 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Strike",
         "speed": "5",
-        "area": "Burst 1",
         "damagetype": "Crush",
+        "area": "Burst 1",
         "ap": 1,
         "move": "Step",
         "effect": "Attack all targets in the area with the below Profile.",
         "boost": "2 Momentum. Area becomes Burst 2.",
         "chart": {
+          "damage": [0, 0, 0, 3, 4, 4, 6, 6, 8, 8, 9],
           "roll": [
             "Miss",
             "Miss",
@@ -186,7 +187,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 3, 4, 4, 6, 6, 8, 8, 9],
           "status": [
             "",
             "",
@@ -204,12 +204,12 @@
       },
       {
         "name": "Spikes",
-        "speed": "3",
-        "ap": 1,
         "desc": "Hardened spikes rise up from the earth, leaving a jagged wake that is difficult to traverse.",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
+        "speed": "3",
         "area": "Line 4",
+        "ap": 1,
         "move": "Step",
         "effect": "The area immediately becomes _Rough_ and _Jagged_. Any character in the area must spend 1 _Reflex_ or gain _Hobbled_ 1x2.",
         "boost": "1 _Momentum_. Place another Line 4 connected to the initial area."
@@ -217,8 +217,8 @@
       {
         "name": "Tremors",
         "desc": "The earthbound shakes the earth around them, making a sure footing impossible.",
-        "type": "Maneuver",
         "keywords": ["Spirit", "Earth", "Groundsource"],
+        "type": "Maneuver",
         "speed": "4",
         "area": "Burst 1",
         "ap": 1,
@@ -256,13 +256,13 @@
       },
       {
         "name": "Quicksand",
-        "speed": "5",
-        "ap": 1,
         "desc": "Liquified earth threatens to swallow the unaware whole.",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
+        "speed": "5",
         "range": "8",
         "area": "Cone 2",
+        "ap": 1,
         "move": "Shift",
         "effect": "The target Area becomes _Rough_. If a Size 1 creature moves into a space with Quicksand they must spend 1 _Reflex_. If a creature spends _Reflex_, they may move through Quicksand for the rest of the turn without penalty. If they do not spend _Reflex_, they sink into the Quicksand and are _Restrained_ until they _Sacrifice_ an Action and spend 2 _Grit_/_Reflex_ to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without any Cost. A creature _Restrained_ by Quicksand takes 3 True Damage at the end of the Round. A single space of Quicksand may only have one creature _Restrained_ at a time.",
         "special": "A character may only have three instances of Quickand at a time, regardless of their size.",
@@ -270,34 +270,34 @@
       },
       {
         "name": "Earth Kinesis",
-        "speed": "5",
-        "ap": 1,
         "desc": "The Earthbonded moves the earth of the battlefield around, choosing the shape as easily as breathing.",
         "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
-        "target": "A Size 1 _Earthen Feature_.",
+        "speed": "5",
         "range": "6",
+        "ap": 1,
         "move": "Reposition",
         "effect": "Draw up to a Line 5 from a Target within Range and move it to the end of the Line. Any creatures in the Line are moved to the end of the Line unless they spend 1 _Reflex_ or 2 _Grit_.\n&#8226; If they spend _Reflex_, they may Move 1 out of the Line. If they cannot Move out of the Line, they cannot spend _Reflex_ in this way.\n&#8226; If they spend _Grit_, they are not moved and the Feature is instead placed adjacent to them.\nIf a creature Immune to being moved is in the Line, instead place the _Earthen Feature_ adjacent to them.",
-        "boost": "2 _Momentum_. Target is: A Size 2 Earthen Feature or three Size 1 Earthen Features. If you move a Size 2 Earthen Feature, it instead costs 3 _Grit_ to not be moved. Any creatures moved take 3 Damage."
+        "boost": "2 _Momentum_. Target is: A Size 2 Earthen Feature or three Size 1 Earthen Features. If you move a Size 2 Earthen Feature, it instead costs 3 _Grit_ to not be moved. Any creatures moved take 3 Damage.",
+        "target": "A Size 1 _Earthen Feature_."
       },
       {
         "name": "Earthen Bulwark",
-        "speed": "6",
-        "ap": 1,
         "desc": "The Earthbonded creates a mighty wall, fortifying their position.",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
+        "speed": "6",
         "area": "Arc 3",
+        "ap": 1,
         "move": "Reposition",
         "effect": "Gain 1 _Grit_. Create an Earthen Barricade in all spaces within the area. Any creatures in these spaces are immediately moved to an adjacent space of their choice. Creatures of your choice moved by this ability gain _Exposed_ 1 or _Impair_ 1 (1 _Reflex_)."
       },
       {
         "name": "Earthen Shield",
-        "speed": "Reaction",
         "desc": "The Earthbonded throws up a barricade, only using it when the right moment strikes.",
         "keywords": ["Spirit", "Earth", "Block", "Groundsource"],
         "type": "Defensive",
+        "speed": "Reaction",
         "range": "3",
         "cost": "1 _Momentum_, 2 _Grit_",
         "trigger": "You or a creature within range is Attacked.",
@@ -305,36 +305,36 @@
       },
       {
         "name": "Earth Slide",
-        "speed": "3",
-        "ap": 1,
         "desc": "The Earthbonded slides the ground beneath their feet forward, potentially leaving a wake of destruction behind.",
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Move",
+        "speed": "3",
         "range": "Self",
+        "ap": 1,
         "move": "Shift",
         "effect": "You may make the space you begin your Move in _Rough_.",
         "boost": "X _Momentum_. Make spaces additional spaces you move through _Rough_, at a rate of 1 _Momentum_ per 3 spaces."
       },
       {
         "name": "Burrow",
-        "speed": "3",
-        "ap": 1,
         "desc": "The Earthbonded moves through the earth like a mole, safely reaching their destination.",
         "keywords": ["Spirit", "Earth", "Safe", "Groundsource"],
         "type": "Move",
-        "cost": "1 _Momentum_",
+        "speed": "3",
         "range": "Self",
+        "ap": 1,
         "move": "Shift",
+        "cost": "1 _Momentum_",
         "effect": "This Movement ignores all Terrain and Obstacles.",
         "imbue": "1 _Momentum_: Instead, Speed is 4 and Movement is Sprint."
       }
     ]
   },
   {
-    "background": " #b7950b",
     "name": "Boulder",
-    "role": "Artillery/Controller",
     "flavor": "The Boulder Discipline focuses on powerful strikes with great stones, creating an avalanche of heavy, driving strikes. The creation and use of Boulders is central to this Discipline, where they can largely be used to provide temporary armor to the user, empower mighty strikes, and manipulate the position of foes. This Discipline requires a greater degree of positioning and resource management than most but, if used well, can enable powerful combos.",
+    "background": " #b7950b",
+    "role": "Artillery/Controller",
     "stances": [
       {
         "name": "Colossus Stance",
@@ -362,17 +362,18 @@
     "techniques": [
       {
         "name": "Chip Damage",
+        "desc": "You manipulate the shards of your shattered armor, striking back against your enemies.",
         "keywords": ["Spirit", "Earth", "Punish"],
-        "trigger": "You take Damage while having any _Stone Armor_ created by an Earth Technique or Stance.",
-        "cost": "1 _Momentum_",
-        "area": "Burst 1",
         "type": "Strike",
         "speed": "Reaction",
         "damagetype": "Slash",
-        "desc": "You manipulate the shards of your shattered armor, striking back against your enemies.",
+        "area": "Burst 1",
+        "cost": "1 _Momentum_",
+        "trigger": "You take Damage while having any _Stone Armor_ created by an Earth Technique or Stance.",
         "effect": "Attack all targets in the area with the below Profile.",
         "boost": "X _Stone Armor_. For each _Stone Armor_ spent, deal 2 additional damage on a _Hit_ or Crit.",
         "chart": {
+          "damage": [0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4],
           "roll": [
             "Miss",
             "Miss",
@@ -386,7 +387,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4],
           "status": [
             "",
             "",
@@ -404,19 +404,20 @@
       },
       {
         "name": "Rockslide",
-        "keywords": ["Spirit", "Earth", "Punish"],
-        "trigger": "A creature enters a space adjacent to a Boulder within Range.",
-        "ap": 0,
-        "cost": "1 _Momentum_",
-        "range": "6",
-        "type": "Strike",
-        "damagetype": "Crush",
-        "move": "None",
-        "speed": "Reaction",
         "desc": "A sudden shift of a boulder, throwing an enemy off-course.",
+        "keywords": ["Spirit", "Earth", "Punish"],
+        "type": "Strike",
+        "speed": "Reaction",
+        "damagetype": "Crush",
+        "range": "6",
+        "ap": 0,
+        "move": "None",
+        "cost": "1 _Momentum_",
+        "trigger": "A creature enters a space adjacent to a Boulder within Range.",
         "effect": "Attack the triggering target with the below Profile. If you _Push_ the target, move the Boulder so it is still adjacent to the target.",
         "special": "If this _Push_ moves the target adjacent to a new Boulder, you may pay the Cost again to repeat the Attack. A Boulder may only be used to attack once per turn.",
         "chart": {
+          "damage": [0, 0, 0, 0, 3, 3, 4, 4, 4, 5, 5],
           "roll": [
             "Miss",
             "Miss",
@@ -430,7 +431,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 3, 3, 4, 4, 4, 5, 5],
           "status": [
             "",
             "",
@@ -460,17 +460,18 @@
       },
       {
         "name": "Stone Strike",
+        "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
         "keywords": ["Spirit", "Earth"],
-        "ap": 1,
-        "range": "6",
         "type": "Strike",
-        "move": "Reposition",
         "speed": "3",
         "damagetype": "Crush",
-        "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
-        "boost": "3 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
+        "range": "6",
+        "ap": 1,
+        "move": "Reposition",
         "effect": "Attack with the below Profile.",
+        "boost": "3 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
         "chart": {
+          "damage": [0, 0, 0, 0, 0, 7, 7, 8, 8, 10, 10],
           "roll": [
             "Miss",
             "Miss",
@@ -484,7 +485,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 0, 7, 7, 8, 8, 10, 10],
           "status": [
             "",
             "",
@@ -502,19 +502,19 @@
       },
       {
         "name": "Boulder Throw",
-        "speed": "4",
-        "ap": 1,
         "desc": "A boulder is launched in a straight line, bludgeoning all in its path.",
         "keywords": ["Spirit", "Earth", "Siege"],
         "type": "Strike",
-        "range": "3",
-        "target": "A Size 1 Boulder.",
-        "move": "Reposition",
+        "speed": "4",
         "damagetype": "Crush",
+        "range": "3",
+        "ap": 1,
+        "move": "Reposition",
         "effect": "Draw a Line 6 from the Target, Attacking with the below Profile against all targets in the area. Move the Boulder to the end of this Line after attacking.",
-        "boost": "1 _Momentum_ for each Size about 1 the Target is.",
         "special": "For each Size above 1 the target Boulder is, this Attack deals +1 damage on a _Graze_,  _Hit_,  or Crit.",
+        "boost": "1 _Momentum_ for each Size about 1 the Target is.",
         "chart": {
+          "damage": [0, 0, 0, 0, 5, 5, 7, 7, 9, 10, 11],
           "roll": [
             "Miss",
             "Miss",
@@ -528,7 +528,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 5, 5, 7, 7, 9, 10, 11],
           "status": [
             "",
             "",
@@ -542,22 +541,23 @@
             "_Staggered_, _Dazed_ (2 _Grit_)",
             "_Staggered_, _Dazed_ (2 _Grit_)"
           ]
-        }
+        },
+        "target": "A Size 1 Boulder."
       },
       {
         "name": "Avalanche",
+        "desc": "The Earthbound seizes control of all nearby boulders, flinging them in a great wave.",
         "keywords": ["Spirit", "Earth"],
-        "target": "All Boulders within Range.",
-        "ap": 1,
-        "range": "8",
         "type": "Strike",
-        "move": "Step",
         "speed": "5",
         "damagetype": "Crush",
-        "desc": "The Earthbound seizes control of all nearby boulders, flinging them in a great wave.",
+        "range": "8",
+        "ap": 1,
+        "move": "Step",
         "effect": "Move all Targets 1 space in the same direction. If this would move the Target into an occupied space, Attack with the below profile. If this attack Pushes and the Target has remaining spaces to move, continue moving the Target.",
         "boost": "X _Momentum_. For every Momentum spent, move all Targets 1 additional space, deal 1 additional damage, and increase this Attack's Push by 1.",
         "chart": {
+          "damage": [0, 0, 0, 3, 3, 4, 4, 5, 5, 6, 6],
           "roll": [
             "Miss",
             "Miss",
@@ -571,7 +571,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 3, 3, 4, 4, 5, 5, 6, 6],
           "status": [
             "",
             "",
@@ -585,22 +584,23 @@
             "_Push_ 2 (3 _Grit_)",
             "_Push_ 2 (3 _Grit_)"
           ]
-        }
+        },
+        "target": "All Boulders within Range."
       },
       {
         "name": "Fracture",
-        "keywords": ["Spirit", "Earth"],
-        "target": "A Size 1 Boulder within Range.",
-        "ap": 1,
-        "range": "8",
-        "type": "Strike",
-        "move": "Reposition",
-        "damagetype": "Slash",
-        "speed": "6",
         "desc": "A boulder within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Strike",
+        "speed": "6",
+        "damagetype": "Slash",
+        "range": "8",
+        "ap": 1,
+        "move": "Reposition",
         "effect": "Attack with the below Profile in a Burst 1 around the Target, then Destroy the Target.",
         "boost": "2 _Momentum_. You may choose a Size 2 Boulder. Instead of Destroying the Boulder, replace it with 4 Size 1 Boulders, then move each Boulder one space diagonally away from the previous Boulder's center. Increase the Cost to Negate by 1.",
         "chart": {
+          "damage": [0, 0, 0, 8, 8, 10, 10, 12, 12, 14, 16],
           "roll": [
             "Miss",
             "Miss",
@@ -614,7 +614,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 8, 8, 10, 10, 12, 12, 14, 16],
           "status": [
             "",
             "",
@@ -628,58 +627,58 @@
             "_Dazed_ 2 (2 _Focus_)",
             "_Dazed_ 3(3 _Focus_)"
           ]
-        }
+        },
+        "target": "A Size 1 Boulder within Range."
       },
       {
         "name": "Stone Gauntlet",
-        "keywords": ["Spirit", "Earth", "Enchant"],
-        "reqs": "Open Hand",
-        "ap": 1,
-        "type": "Maneuver",
-        "move": "None",
-        "speed": "2",
         "desc": "A fist of cobblestones forms around your hand, making unarmed strikes hit like an avalanche.",
+        "keywords": ["Spirit", "Earth", "Enchant"],
+        "type": "Maneuver",
+        "speed": "2",
+        "ap": 1,
+        "move": "None",
+        "reqs": "Open Hand",
         "effect": "Equip the Stone Gauntlet Spirit Weapon in your Open Hand. This Enchant ends if you have no Stone Gauntlets Equipped.",
         "boost": "0 _Momentum_. If you have two Open Hands, you may equip a Stone Gauntlet in each."
       },
       {
         "name": "Stone Shield",
-        "keywords": ["Spirit", "Earth", "Enchant", "Groundsource"],
-        "ap": 2,
-        "range": "4",
-        "target": "Unoccupied adjacent spaces made of earth or stone within Range, or two adjacent Size 1 Earthen Feature.",
-        "type": "Maneuver",
-        "move": "Reposition",
-        "speed": "4",
         "desc": "A slab of stone becomes a barrier, defending against ranged attacks.",
+        "keywords": ["Spirit", "Earth", "Enchant", "Groundsource"],
+        "type": "Maneuver",
+        "speed": "4",
+        "range": "4",
+        "ap": 2,
+        "move": "Reposition",
         "effect": "Create a Line 2 Boulder in unoccupied spaces within Range. At the start of each of your Turns, you may Move the Stone Shield up to 3 spaces, and turn it up to one space. The Stone Shield can move through occupied spaces, but may not end its movement there.",
         "special": "You may end this Enchant at the end of any of your turns and immediately fire the Stone Shield forward. Immediately use the Boulder Throw Technique with the Stone Shield, ignoring the typical Range of the ability.",
-        "boost": "2 _Momentum_. Instead create a Line 3 Boulder."
+        "boost": "2 _Momentum_. Instead create a Line 3 Boulder.",
+        "target": "Unoccupied adjacent spaces made of earth or stone within Range, or two adjacent Size 1 Earthen Feature."
       },
       {
         "name": "Create Boulder",
-        "keywords": ["Spirit", "Earth"],
-        "speed": "5",
-        "ap": 1,
         "desc": "Dirt and stone are formed into a mighty boulder, ready to be fired.",
-        "move": "Reposition",
-        "range": "3",
+        "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
-        "target": "An unoccupied space made of earth or stone within range, or a Size 1 _Earthen Feature_.",
+        "speed": "5",
+        "range": "3",
+        "ap": 1,
+        "move": "Reposition",
         "effect": "Create a Size 1 Boulder in the target space, or replace the _Earthen Feature_ with a Boulder.",
+        "boost": "2 _Momentum_. Instead create a Size 2 Boulder, or create two additional Size 1 Boulders. This only costs 1 _Momentum_ if all Boulders created are replacing _Earthen Feature_s.",
         "imbue": "2 _Momentum_. This is 0 AP.",
-        "boost": "2 _Momentum_. Instead create a Size 2 Boulder, or create two additional Size 1 Boulders. This only costs 1 _Momentum_ if all Boulders created are replacing _Earthen Feature_s."
+        "target": "An unoccupied space made of earth or stone within range, or a Size 1 _Earthen Feature_."
       },
       {
         "name": "Stonescreen",
-        "keywords": ["Spirit", "Earth"],
-        "target": "A Size 1 Boulder in Range.",
-        "ap": 1,
-        "range": "Melee",
-        "type": "Maneuver",
-        "move": "Step",
-        "speed": "2",
         "desc": "With a powerful strike a boulder is shattered, staggering and pushing all nearby.",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Maneuver",
+        "speed": "2",
+        "range": "Melee",
+        "ap": 1,
+        "move": "Step",
         "effect": "Destroy the Target. Attack in a Burst 1 around the Target using the below Profile. The area is _Veiled_ for two _Phases_.",
         "boost": "1 _Momentum_. The Range is instead 5.",
         "chart": {
@@ -709,27 +708,28 @@
             "_Push_ 2, _Exposed_ 2, _Exposed_ 1 (3 _Grit_)",
             "_Push_ 2, _Exposed_ 2, _Exposed_ 1 (3 _Grit_)"
           ]
-        }
+        },
+        "target": "A Size 1 Boulder in Range."
       },
       {
         "name": "Avalanche Charge",
+        "desc": "You charge forward, amplifying your speed by smashing through stones.",
         "keywords": ["Spirit", "Earth", "Charge"],
         "type": "Move",
-        "cost": "1 _Momentum_",
+        "speed": "Set-Up",
         "ap": 1,
         "move": "Shift",
-        "speed": "Set-Up",
-        "desc": "You charge forward, amplifying your speed by smashing through stones.",
+        "cost": "1 _Momentum_",
         "effect": "During the Movement granted by this effect you can Move through Boulders, destroying them in the process. Gain 1 _Stone Armor_ for every Boulder destroyed in this way. If you Attach this to an Attack, deal +1 damage on a _Hit_/_Crit_ for each Boulder destroyed in this way.",
         "special": "All Movement granted by this Technique must be in a straight line, and must pass through at least one Boulder."
       }
     ]
   },
   {
-    "background": "#ba4a00",
     "name": "Grounding",
-    "role": "Striker/Controller",
     "flavor": "The Grounding Discipline focuses on drawing energy from the earth itself to become immensely strong and immovable. Characters that specialize in the Grounding Discipline will generate an immense amount of Grit, as well as mitigate their need to spend it through aspects of their Stances and Reactions. While slow and low in mobility, the Grounding Stance allows for some of the highest damage Weapon Attacks in the system, and can easily generate massive Push against foes.",
+    "background": "#ba4a00",
+    "role": "Striker/Controller",
     "stances": [
       {
         "name": "Anchor Stance",
@@ -762,10 +762,10 @@
         "keywords": ["Spirit", "Earth", "Weapon"],
         "type": "Strike",
         "speed": "Weapon+1",
+        "range": "Weapon",
         "ap": 1,
         "move": "Step",
         "cost": "1 _Momentum_",
-        "range": "Weapon",
         "reqs": "Weapon Equipped or adjacent Improvised Weapon",
         "effect": "Make an Attack with the appropriate _Profile_ as follows:\n * If using an Improvised Weapon, resolve it with the appropriate Profile.\n * If using a Weapon with the _Thrown_ property, use its Profile.\n * If using a _Light_ Weapon, resolve it with the Small Improvised Weapon _Profile_.\n * If using a _Versatile_ Weapon, resolve it with the Medium Improvised Weapon _Profile_.\n * If using a _Heavy_ Weapon, resolve it with the Large Improvised Weapon _Profile_.\n\nIf the Weapon already has the _Thrown_ tag, increase it's value by 2. Otherwise, add _Thrown_ 3."
       },
@@ -781,9 +781,9 @@
         ],
         "type": "Strike",
         "speed": "Weapon+1",
+        "range": "Weapon",
         "ap": 1,
         "move": "Step",
-        "range": "Weapon",
         "cost": "1 _Momentum_",
         "reqs": "_Versatile_/_Heavy_ Weapon Wielded",
         "effect": "Attack using your weapon's Profile, dealing +2 damage bonus with a _Versatile_ Weapon or +3 with a _Heavy_ Weapon. Add _Push_ 2 (1 _Grit_) to the Attack."
@@ -794,9 +794,9 @@
         "keywords": ["Spirit", "Earth", "Weapon"],
         "type": "Strike",
         "speed": "Weapon+1",
+        "range": "Weapon",
         "ap": 1,
         "move": "Step",
-        "range": "Weapon",
         "cost": "2 _Momentum_",
         "reqs": "_Versatile_/_Heavy_ Weapon Wielded",
         "effect": "Attack using your weapon's Profile. Immediately after the Attack, repeat it in a Burst 1 around the original Target. You may exempt yourself from this attack. Create _Rough Terrain_ in the area around the attack."
@@ -813,9 +813,9 @@
         ],
         "type": "Strike",
         "speed": "Weapon+2",
+        "range": "Weapon",
         "ap": 2,
         "move": "Step",
-        "range": "Weapon",
         "cost": "2 _Momentum_",
         "reqs": "_Versatile_/_Heavy_ Weapon Wielded",
         "effect": "Attack using your weapon's Profile, dealing +3 damage bonus with a _Versatile_ Weapon or +5 with a _Heavy_ Weapon. After determining the total Damage, double it. Add _Push_ 8, _Prone_, (2 _Grit_) to the Attack.",
@@ -844,6 +844,7 @@
         "special": "If you _Push_ a creature into an Obstacle double the Damage. Deal the same amount of Damage + 2 to the Obstacle.",
         "boost": "1 _Grit_: If you Damage an Obstacle, increase the Damage dealt to it by 5. You may repeat this Boost.",
         "chart": {
+          "damage": [0, 0, 0, 2, 2, 3, 3, 3, 4, 4, 4],
           "roll": [
             "Miss",
             "Miss",
@@ -857,7 +858,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 2, 2, 3, 3, 3, 4, 4, 4],
           "status": [
             "",
             "",
@@ -876,10 +876,10 @@
       {
         "name": "Mighty Throw Creature",
         "desc": "Drawing upon the earth, you fling a grappled creature a frightening distance.",
+        "keywords": ["Spirit", "Earth"],
         "type": "Maneuver",
         "speed": "6",
         "range": "Melee",
-        "keywords": ["Spirit", "Earth"],
         "ap": 1,
         "move": "Reposition",
         "cost": "1 _Momentum_",
@@ -891,10 +891,10 @@
       {
         "name": "Bull Rush",
         "desc": "You charge forward with unstoppable force, crashing through all in your path.",
+        "keywords": ["Spirit", "Earth", "Charge"],
         "type": "Move",
         "speed": "4",
         "range": "Melee",
-        "keywords": ["Spirit", "Earth", "Charge"],
         "ap": 1,
         "move": "Shift",
         "cost": "1 _Momentum_, 1 _Grit_",
@@ -904,59 +904,59 @@
       {
         "name": "Mighty Leap",
         "desc": "You gather the earth's strength in your legs before launching yourself through the air.",
+        "keywords": ["Spirit", "Earth", "Vault"],
         "type": "Move",
         "speed": "4",
         "range": "Melee",
-        "keywords": ["Spirit", "Earth", "Leaping"],
+        "area": "Burst 1",
         "ap": 1,
         "move": "Shift",
-        "area": "Burst 1",
         "effect": "The Movement granted by this Technique must be taken in a straight line. At the start and end of this _Movement_, make the Area _Veiled_ and _Push_ 1 (1 _Grit_) all creatures in it.",
         "boost": "2 _Momentum_: Instead, Movement is Sprint."
       },
       {
         "name": "Break Free",
         "desc": "You use your colossal strength to break free from any restraints.",
+        "keywords": ["Spirit", "Earth", "Block"],
         "type": "Defensive",
         "speed": "Reaction",
         "range": "Self",
-        "keywords": ["Spirit", "Earth", "Block"],
-        "trigger": "You start your turn _Entombed_, _Restrained_/_Grappled_.",
         "cost": "1 _Grit_",
+        "trigger": "You start your turn _Entombed_, _Restrained_/_Grappled_.",
         "effect": "You may immediately attempt to end the effect, paying _Grit_ instead of the typical cost and treating yourself as having spent 2 additional _Grit_. If you end the Status gain 1 _Momentum_.",
         "boost": "0 _Grit_: You may instead use this Reaction if you start your turn adjacent to an Enemy. If you do, instead inflict _Push_ 2 or _Prone_ (1 _Grit_)."
       },
       {
         "name": "Mountain Crash",
         "desc": "You become as solid as a mountain against a foe's strike.",
+        "keywords": ["Spirit", "Earth", "Block"],
         "type": "Defensive",
         "speed": "Reaction",
         "range": "Self",
-        "keywords": ["Spirit", "Earth", "Block"],
-        "trigger": "You are Attacked.",
         "cost": "2 _Grit_",
+        "trigger": "You are Attacked.",
         "effect": "Reduce the _Attack Roll_ by 2 and inflict _Impaired_ 1 (1 _Focus_). You may spend _Grit_ in place of _Reflex_ to _Negate_ this Attack. Gain _Hobbled_ 1.",
         "boost": "1 _Momentum_: You may use the Basic Strike Technique, treating its Move as none. You must use a _Body_ Weapon."
       },
       {
         "name": "Solid Footing",
         "desc": "You set your feet in the ground when somebody attempts to move you, magnifying your weight a hundred times over.",
+        "keywords": ["Spirit", "Earth", "Block"],
         "type": "Defensive",
         "speed": "Reaction",
         "range": "Self",
-        "keywords": ["Spirit", "Earth", "Block"],
-        "trigger": "You would be _Pushed_, _Pulled_, _Staggered_, or _Slid_.",
         "cost": "1 _Grit_",
+        "trigger": "You would be _Pushed_, _Pulled_, _Staggered_, or _Slid_.",
         "effect": "Reduce the cost to _Negate_ the triggering Effect by 2. If you fully _Negate_ the effect, gain 1 _Momentum_.",
         "special": "You may choose to gain _Hobbled_ 1 as a part of this Reaction. If you do, reduce the cost to _Negate_ the triggering effect by an additional 2."
       }
     ]
   },
   {
-    "background": "#cb4335",
     "name": "Stoneheart",
-    "role": "Supporter",
     "flavor": "The Stoneheart Discipline channels the essence of the earth to make one's heart like stone and impenetrable to fear. Stoneheart's mechanics revolve around Courage and their ability to grant it to themselves an allies. Typically, this courage is gained in response to a small victory on the battlefield, a reckless act, or bolstering the courage of one who is about to fall. Stoneheart's belong on the front lines of a battlefield and make it far easier for allies to reach their foes, granting them Momentum and other benefits all the while.",
+    "background": "#cb4335",
+    "role": "Supporter",
     "stances": [
       {
         "name": "Bold Stance",
@@ -988,9 +988,9 @@
         "keywords": ["Spirit", "Earth", "Weapon"],
         "type": "Strike",
         "speed": "Weapon",
+        "range": "Weapon",
         "ap": 1,
         "move": "Reposition",
-        "range": "Weapon",
         "effect": "Attack using your weapon's Profile. Gain _Exposed_ 1. On a _Hit_ grant a creature within Range 6 _Courage_ 1, _Vigor_ 3. On a _Crit_, grant two allies _Courage_ 1, _Vigor_ 3 or one ally _Courage_ 2, _Vigor_ 6."
       },
       {
@@ -1011,10 +1011,10 @@
         "keywords": ["Spirit", "Earth"],
         "type": "Support",
         "speed": "Reaction",
-        "cost": "1 _Momentum_",
-        "trigger": "You defeat a creature.",
         "range": "Self",
         "area": "Burst 4",
+        "cost": "1 _Momentum_",
+        "trigger": "You defeat a creature.",
         "effect": "All allies in the Area gain _Courage_ 1.",
         "special": "When you gain this Technique, also gain the Warcry Technique.",
         "boost": "2 _Momentum_: Instead, all allies gain _Courage_ 2.\n1 _Focus_: Area is instead Burst 6."
@@ -1025,9 +1025,9 @@
         "keywords": ["Spirit", "Earth", "Enchant"],
         "type": "Support",
         "speed": "Reaction",
+        "range": "8",
         "cost": "1 _Momentum_",
         "trigger": "Any ally in range takes Damage or would gain _Fear_.",
-        "range": "8",
         "effect": "Grant the ally _Courage_ 1 and _Vigor_ 2.",
         "boost": "1 _Momentum_: Instead, grant _Courage_ 2 or _Courage_ 1x2."
       },
@@ -1036,11 +1036,11 @@
         "desc": "You rouse the hearts of those near you, allowing them to push far beyond their mortal limits.",
         "keywords": ["Spirit", "Earth", "Enchant"],
         "type": "Support",
-        "cost": "1 _Momentum_, 1 _Focus_ initially, 1 _Momentum_ at Refresh every Round this Enchant persists.",
         "speed": "2",
         "range": "2",
         "ap": 1,
         "move": "None",
+        "cost": "1 _Momentum_, 1 _Focus_ initially, 1 _Momentum_ at Refresh every Round this Enchant persists.",
         "effect": "While this _Enchant_ persists, any ally that ends their _Turn_ within Range of you gains 3 _Vigor_/_Courage_ 1.",
         "boost": "1 _Momentum_: Range is instead 3."
       },
@@ -1089,8 +1089,8 @@
         "range": "Self",
         "area": "Burst 8",
         "ap": 2,
-        "cost": "5 _Momentum_, 2 _Focus_",
         "move": "Reposition",
+        "cost": "5 _Momentum_, 2 _Focus_",
         "effect": "All allies in the Area gain _Courage_ 2, _Vigor_ 6 and may immediately may immediately Reposition as a Reaction, but must move directly towards an enemy by the shortest possible route. If they end this Movement next to a hostile creature they may pay 1 _Momentum_ to make a single 1 AP Attack against that Creature as a part of the same Reaction without paying a _Blitz_ cost but paying all other Costs as normal.",
         "special": "When you gain this Technique, also gain the Rally Technique.",
         "boost": "1 _Momentum_/_Focus_: All allies gain 2 _Guard_ for this Movement."
@@ -1113,12 +1113,12 @@
         "keywords": ["Spirit", "Earth", "Block"],
         "type": "Defensive",
         "speed": "Reaction",
+        "range": "Reposition Movement",
         "cost": "3 _Grit_, 1 _Focus_, 2 _Reflex_",
         "trigger": "An ally within Range would reach 0 _Endurance_/_Health_ due to an Attack.",
-        "range": "Reposition Movement",
         "effect": "Move into the target's space, _Pushing_ them 1. You become the Target of the original Attack. If this was an Area attack your ally is only exempt if they are _Pushed_ out of the Area. The ally gains _Courage_ 1.",
-        "boost": "1 _Reflex_: Range is instead Shift Movement.\n1 _Focus_: The ally instead gains _Courage_ 2.\n1 _Grit_: You may _Push_ you ally an additional 1.",
-        "special": "You may pay any amount of the Cost by expending an equivalent Value of _Courage_, using any Tokens."
+        "special": "You may pay any amount of the Cost by expending an equivalent Value of _Courage_, using any Tokens.",
+        "boost": "1 _Reflex_: Range is instead Shift Movement.\n1 _Focus_: The ally instead gains _Courage_ 2.\n1 _Grit_: You may _Push_ you ally an additional 1."
       },
       {
         "name": "Last Stand",
@@ -1126,19 +1126,19 @@
         "keywords": ["Spirit", "Earth", "Enchant"],
         "type": "Defensive",
         "speed": "Reaction",
+        "range": "10",
         "cost": "3 _Courage_*, 2 _Focus_",
         "trigger": "You or an ally with _Courage_ within Range would reach 0 _Endurance_ but not 0 _Health_.",
-        "range": "10",
         "effect": "While this _Enchant_ persists the triggering Creature takes no penalties from having no _Endurance_. Instead, they reduce the _Cost_ of all Techniques by 1, have _Advantage_ on all Attacks, and gain _Guard_ 2. This Enchant ends if the Target gains Endurance or does not remove a _Courage_ Token at the end of their _Turn_.",
         "special": "The _Courage_ must be paid by the triggering Creature by removing that Value of _Courage_, using any Tokens."
       }
     ]
   },
   {
-    "background": "#ab9478",
     "name": "Tremorsight",
-    "role": "Supporter/Controller",
     "flavor": "The Tremorsight Discipline allows an Earthbonded to read the vibrations of the earth, providing perfect knowledge of everything touching the ground. The Range of these techniques depends on how far their Seismic Sense is extending, which can be amplified by remaining still. Outside this radius the Earthbound has no special powers but against foes in this area they can generate a great deal of Knowledge, making it far easier to attack and defend against all these creatures. A skilled practitioner of this Discipline can even extend their senses into creatures, learning their weaknesses and leaving them open to devastating attacks.",
+    "background": "#ab9478",
+    "role": "Supporter/Controller",
     "stances": [
       {
         "name": "Flawfinder Stance",
@@ -1182,9 +1182,9 @@
         "keywords": ["Spirit", "Earth", "Weapon"],
         "type": "Strike",
         "speed": "Weapon",
+        "range": "Weapon",
         "ap": 1,
         "move": "Reposition",
-        "range": "Weapon",
         "cost": "1 _Momentum_",
         "reqs": "Target must be within your Seismic Sense + 2 and on earthen ground.",
         "effect": "Attack using your weapon's Profile. On a _Hit_/_Graze_, add _Hobbled_ 1, _Dazed_ 2, or _Impaired_ 2 (2 _Focus_) to the Attack. On a _Crit_, add two and increase the cost to _Negate_ by 1."
@@ -1195,10 +1195,10 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
         "speed": "Reaction",
-        "trigger": "A creature is Defeated or becomes _Prone_ in Range.",
         "range": "Seismic Sense + 2",
-        "cost": "1 _Focus_",
         "area": "Burst 2",
+        "cost": "1 _Focus_",
+        "trigger": "A creature is Defeated or becomes _Prone_ in Range.",
         "effect": "Inflict _Reveal_, _Knowledge_ 1 (1 _Focus_) on all creatures within the Area, centered on the Triggering Target."
       },
       {
@@ -1218,9 +1218,9 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
         "speed": "Reaction",
-        "trigger": "You make an Attack against a creature within Range.",
         "range": "Seismic Sense + 4",
         "cost": "1 _Momentum_, 2 _Focus_",
+        "trigger": "You make an Attack against a creature within Range.",
         "effect": "This _Attack_ cannot have _Disadvantage_ and ignores _Cover_. Increase your _Attack Roll_ by 1 and, on a _Crit_, inflict _Dazed_ 1 (1 _Focus_).",
         "boost": "1 _Momentum_: Make this Attack at _Advantage_."
       },
@@ -1230,9 +1230,9 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
         "speed": "2",
+        "range": "Self",
         "ap": 1,
         "move": "None",
-        "range": "Self",
         "effect": "Expand your Seismic Sense by 4 until the next time you Move. Gain 1 _Focus_. Inflict a total of 2 _Knowledge_ on any combination of creatures within your Seismic Sense, with a _Focus_ cost to _Negate_ equal to the _Knowledge_ inflicted. Inflict _Reveal_ on the same creatures."
       },
       {
@@ -1252,10 +1252,10 @@
         "keywords": ["Spirit", "Earth", "Groundsource"],
         "type": "Maneuver",
         "speed": "3",
+        "range": "Seismic Sense + 2",
         "ap": 1,
         "move": "Step",
         "cost": "3 _Momentum_",
-        "range": "Seismic Sense + 2",
         "effect": "Attack with the below _Profile_.",
         "chart": {
           "roll": [
@@ -1292,10 +1292,10 @@
         "keywords": ["Spirit", "Earth", "Groundsource", "Enchant"],
         "type": "Maneuver",
         "speed": "3",
+        "range": "Tremoresense + 8",
+        "area": "_Blast_ 1",
         "ap": 1,
         "move": "Step",
-        "area": "_Blast_ 1",
-        "range": "Tremoresense + 8",
         "effect": "Inflict _Knowledge_ 1 (1 _Focus_) on all creatures within the Area. In addition, create an Area of Seismic Sense within Range that continues as long as this Enchant exists.",
         "boost": "2 _Focus_: Remove the Enchant Keyword. The Area persists until the end of the Encounter."
       },
@@ -1306,8 +1306,8 @@
         "type": "Support",
         "speed": "Reaction",
         "range": "Seismic Sense + 4",
-        "trigger": "You or an ally attacks a creature you have at least 2 _Knowledge_ on.",
         "cost": "1 _Momentum_",
+        "trigger": "You or an ally attacks a creature you have at least 2 _Knowledge_ on.",
         "effect": "Add either _Unblockable_ 2 or _Sure Hit_ 2 to the Attack.",
         "special": "You may also trigger this whenever an ally attacks an Obstacle in your Seismic Sense; add _Siege_ to their Attack.",
         "boost": "1 _Momentum_: Add both Effects to the Attack."
@@ -1329,8 +1329,8 @@
         "keywords": ["Spirit", "Earth", "Groundsource", "Efficient"],
         "type": "Defensive",
         "speed": "Reaction",
-        "cost": "1 _Focus_",
         "range": "Seismic Sense + 2",
+        "cost": "1 _Focus_",
         "trigger": "You are Attacked by a creature within Range.",
         "effect": "Inflict _Knowledge_ 1 (1 _Focus_) and reduce the _Attack Roll_ by 1."
       }

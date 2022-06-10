@@ -5,6 +5,7 @@ class Armor {
   private _category: string;
   private _durability: number;
   private _endurance: number;
+  private _jump: number;
   private _name: string;
   private _reposition: number;
   private _shift: number;
@@ -35,6 +36,9 @@ class Armor {
   get EnduranceText() {
     return "**Endurance:** " + this._endurance;
   }
+  get JumpText() {
+    return "**Jump:** " + this._jump;
+  }
   get Name() {
     return this._name;
   }
@@ -44,8 +48,8 @@ class Armor {
   get Shift() {
     return this._shift;
   }
-  get SpecialArray() {
-    return this.KeywordParsedArray(this._special, "**Special:** ");
+  get SpecialHeader() {
+    return "**Special:** " + this._special;
   }
   get HasSpecial() {
     return this._special != "";
@@ -73,6 +77,7 @@ class Armor {
     this._category = data.category || "";
     this._durability = data.durability || 0;
     this._endurance = data.endurance || 0;
+    this._jump = data.jump || 0;
     this._name = data.name || "";
     this._reposition = data.reposition || 0;
     this._shift = data.shift || 0;

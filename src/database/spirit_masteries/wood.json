@@ -1,9 +1,9 @@
 [
   {
-    "background": "#9e7026",
     "name": "Timber",
-    "role": "Artillery/Controller",
     "flavor": "Timber techniques control already existing wood, bending it to fit your needs or be used in devastating attacks. A wooden weapon can easily be extended or launched further, while a wooden shield or nearby tree can hinder attacking foes. This Discipline also turns nearby wood into a valuable resource, either as a weapon or as the origin of a powerful detonation of wooden shrapnel or a mighty strike. Finally, while it is difficult, a master of the Timber Discipline can move wood about the battlefield for an advantage, whether that be a tree or a simple table.",
+    "background": "#9e7026",
+    "role": "Artillery/Controller",
     "stances": [
       {
         "name": "Barkshield Stance",
@@ -32,59 +32,60 @@
     "techniques": [
       {
         "name": "Splintering Burst",
+        "desc": "After attacking you detonate the weapon, sending a hail of splintering thorns at nearby foes.",
         "keywords": ["Spirit", "Wood"],
-        "trigger": "You make an Attack with a Wooden Weapon.",
-        "cost": "1 _Momentum_ if Melee or Thrown, 2 _Momentum_ if Ranged",
-        "damagetype": "Stab",
         "type": "Strike",
         "speed": "Reaction",
-        "desc": "After attacking you detonate the weapon, sending a hail of splintering thorns at nearby foes.",
+        "damagetype": "Stab",
+        "cost": "1 _Momentum_ if Melee or Thrown, 2 _Momentum_ if Ranged",
+        "trigger": "You make an Attack with a Wooden Weapon.",
         "effect": "If you used a Melee or Thrown Weapon, _Damage_ it. Deal 2 Damage (1 _Reflex_ for no damage) in a Burst 1 around the original Target of the Attack.",
         "special": "If the Attack _Embed_s, the cost to Negate increases by 1 for the creature the Weapon is Embedded in.",
         "boost": "1 _Momentum_: Instead, deal 4 Damage (1 _Reflex_ for half damage)."
       },
       {
         "name": "Sprouting Strike",
-        "keywords": ["Spirit", "Wood", "Weapon"],
-        "ap": 1,
         "desc": "Your weapon suddenly grows, extending its reach for an unexpected strike.",
-        "reqs": "Wood Melee or Reach Range Weapon Wielded.",
-        "speed": "Weapon",
-        "cost": "1 _Momemtum_",
+        "keywords": ["Spirit", "Wood", "Weapon"],
         "type": "Strike",
+        "speed": "Weapon",
         "range": "Weapon",
+        "ap": 1,
         "move": "Reposition",
+        "cost": "1 _Momemtum_",
+        "reqs": "Wood Melee or Reach Range Weapon Wielded.",
         "effect": "Attack using your Weapon's Profile. If the Weapon Range is Melee, give it Reach, or if has Reach increase it by 1.",
         "boost": "1 _Momentum_: The Attack gains _Sure Hit_."
       },
       {
         "name": "Willow Strike",
-        "keywords": ["Spirit", "Wood", "Weapon"],
-        "ap": 1,
         "desc": "You bend your bow a bit further or launch your spear a bit harder, providing additional power and range.",
-        "reqs": "Wood Ranged or Thrown Weapon Wielded.",
-        "speed": "Weapon",
-        "cost": "1 _Momemtum_",
+        "keywords": ["Spirit", "Wood", "Weapon"],
         "type": "Strike",
+        "speed": "Weapon",
         "range": "Weapon",
+        "ap": 1,
         "move": "None",
+        "cost": "1 _Momemtum_",
+        "reqs": "Wood Ranged or Thrown Weapon Wielded.",
         "effect": "Increase the Weapon's Range by 3 and add _Pierce_ 1. Attack using your Weapon's Profile.",
         "boost": "1 _Momentum_: Add _Embed_ (_Reflex_ 2)."
       },
       {
         "name": "Stake",
+        "desc": "You fire a devastating stake of wood at a foe, attempting to pin them in place.",
         "keywords": ["Spirit", "Wood"],
-        "range": "8",
         "type": "Strike",
-        "ap": 1,
         "speed": "2",
         "damagetype": "Stab",
+        "range": "8",
+        "ap": 1,
         "move": "Reposition",
         "reqs": "_Wood Source_ on Self.",
-        "desc": "You fire a devastating stake of wood at a foe, attempting to pin them in place.",
         "effect": "Attack with the below Profile. Place the _Wood Source_ adjacent to the Target, unless you _Embed_.",
         "boost": "1 _Momentum_. Choose a  _Wood Source_ within Range that is not Embedded. Originate the attack from the _Wood Source_ rather than yourself.",
         "chart": {
+          "damage": [0, 0, 0, 0, 3, 3, 4, 5, 6, 8, 10],
           "roll": [
             "Miss",
             "Miss",
@@ -98,7 +99,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 0, 3, 3, 4, 5, 6, 8, 10],
           "status": [
             "",
             "",
@@ -116,18 +116,18 @@
       },
       {
         "name": "Splinter",
+        "desc": "You focus on a nearby piece of wood, causing it to explode in a sudden burst.",
         "keywords": ["Spirit", "Wood"],
         "type": "Strike",
         "speed": "3",
-        "range": "6",
         "damagetype": "Stab",
-        "desc": "You focus on a nearby piece of wood, causing it to explode in a sudden burst.",
-        "target": "An unequipped _Wood Source_ of Size 1 or smaller within Range.",
+        "range": "6",
         "area": "Burst 1",
         "effect": "_Destroy_ the Target and Attack with the below Profile in the Area, centering it on the Target.",
         "special": "You may instead Target an Embedded _Wood Source_. The Attack loses the Area tag, but has Advantage and inflicts _Wounded_ 2 (2 _Grit_) on a _Hit_/_Crit_.",
         "boost": "2 _Momentum_: You may instead Target a Size 2 _Wood Source_. The Area becomes Burst 2.",
         "chart": {
+          "damage": [0, 0, 0, 1, 2, 3, 3, 4, 6, 8, 10],
           "roll": [
             "Miss",
             "Miss",
@@ -141,7 +141,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 1, 2, 3, 3, 4, 6, 8, 10],
           "status": [
             "",
             "",
@@ -155,22 +154,24 @@
             "_Bleed_ 1x2, _Hobbled_ 1x2 (3 _Grit_)",
             "_Bleed_ 2, _Bleed_ 1, _Hobbled_ 2, _Hobbled_ 1 (3 _Grit_)"
           ]
-        }
+        },
+        "target": "An unequipped _Wood Source_ of Size 1 or smaller within Range."
       },
       {
         "name": "Wood Hammer",
-        "keywords": ["Spirit", "Wood"],
-        "range": "8",
-        "type": "Strike",
-        "ap": 1,
-        "speed": "4",
-        "move": "Reposition",
-        "damagetype": "Crush",
-        "reqs": "Size 1 _Wood Source_.",
         "desc": "You seize control of a nearby source of wood, causing it to bend and sway in a deadly arc.",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Strike",
+        "speed": "4",
+        "damagetype": "Crush",
+        "range": "8",
+        "ap": 1,
+        "move": "Reposition",
+        "reqs": "Size 1 _Wood Source_.",
         "effect": "Attack with the below Profile, originating it from the Target and with a Range equal to the Target's _Wood Source_ Value.",
         "boost": "X _Momentum_: You may target a _Wood Source_ of Size X+1, adding X to the Damage and Cost to Negate of the Attack.",
         "chart": {
+          "damage": [0, 0, 0, 6, 6, 7, 7, 8, 8, 10, 10],
           "roll": [
             "Miss",
             "Miss",
@@ -184,7 +185,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 6, 6, 7, 7, 8, 8, 10, 10],
           "status": [
             "",
             "",
@@ -202,87 +202,87 @@
       },
       {
         "name": "Warding Wood",
-        "keywords": ["Spirit", "Wood", "Enchant"],
-        "ap": 1,
         "desc": "You animate nearby sources of wood, causing them to defend your allies and hinder your foes.",
+        "keywords": ["Spirit", "Wood", "Enchant"],
         "type": "Maneuver",
-        "target": "Two _Wood Source_s of at least Size 1.",
         "speed": "2",
         "range": "8",
+        "ap": 1,
         "move": "None",
         "effect": "Turn all Targets into Warding Wood while this _Enchant_ persists. All Allies have Cover while adjacent to Warding Wood. Creatures of your choice treat spaces adjacent to Warding Wood as _Rough_ and, if they start their turn adjacent to it, gain _Hobbled_ 1 (1 _Reflex_).",
         "special": "While adjacent to any Warding Wood you may spend _Focus_ as _Grit_ for all _Block_ Reactions.",
-        "boost": "X _Momentum_: For every Momentum spent, increase the Targets by 1."
+        "boost": "X _Momentum_: For every Momentum spent, increase the Targets by 1.",
+        "target": "Two _Wood Source_s of at least Size 1."
       },
       {
         "name": "Swaying Trees",
-        "keywords": ["Spirit", "Wood"],
-        "ap": 1,
         "desc": "You move a source of wood, either with simple levitation or by temporarily animating it.",
+        "keywords": ["Spirit", "Wood"],
         "type": "Maneuver",
-        "target": "A _Wood Source_ of up to Size 1 that is unequipped or equipped by a willing creature.",
         "speed": "2",
         "range": "6",
+        "ap": 1,
         "move": "Reposition",
         "effect": "_Slide_ the Target up to 6 spaces. Any creature of your choice the Target moves past gains _Hobbled_ 1 (1 _Reflex_), and any creature the Target moves through gains _Hobbled_ 1 (1 _Reflex_).",
-        "boost": "X _Momentum_: For every Momentum paid you may repeat this Action with a different Target.\n\t2 _Momentum_: You may instead Target a Size 2 _Wood Source_. Instead of inflicting _Hobbled_, instead inflict _Prone_."
+        "boost": "X _Momentum_: For every Momentum paid you may repeat this Action with a different Target.\n\t2 _Momentum_: You may instead Target a Size 2 _Wood Source_. Instead of inflicting _Hobbled_, instead inflict _Prone_.",
+        "target": "A _Wood Source_ of up to Size 1 that is unequipped or equipped by a willing creature."
       },
       {
         "name": "Woodwright",
-        "keywords": ["Spirit", "Wood"],
-        "ap": 1,
         "desc": "You seize a nearby source of wood, shaping it to create arms and armaments.",
+        "keywords": ["Spirit", "Wood"],
         "type": "Maneuver",
-        "target": "A _Wood Source_ that is unequipped or equipped by a willing creature.",
         "speed": "3",
         "range": "6",
+        "ap": 1,
         "move": "Reposition",
         "effect": "Destroy the Target. Create any standard Weapon made of Wood, then Move it up to 4 spaces. If you place it next to a creature with an Open Hand, they may immediately Equip it.",
         "special": "Instead, remove _Damaged_ from the Target and grant the creature _Wielding_ it 1 _Momentum_.",
-        "imbue": "0 _Momentum_: If you create a Weapon, you may instead use this Action as if its speed was Set-Up. It must be Attached to a Strike with the Weapon Keyword. Resolve the Strike using the created Weapon from its final position. It then falls to the ground."
+        "imbue": "0 _Momentum_: If you create a Weapon, you may instead use this Action as if its speed was Set-Up. It must be Attached to a Strike with the Weapon Keyword. Resolve the Strike using the created Weapon from its final position. It then falls to the ground.",
+        "target": "A _Wood Source_ that is unequipped or equipped by a willing creature."
       },
       {
         "name": "Tree Stride",
-        "keywords": ["Spirit", "Wood", "Enchant"],
-        "ap": 1,
         "desc": "You pull nearby wood around you, creating a thick suit of armor and greatly amplifying your size.",
+        "keywords": ["Spirit", "Wood", "Enchant"],
         "type": "Maneuver",
-        "target": "Three _Wood Source_s of at least Size 1.",
         "speed": "5",
         "range": "4",
+        "ap": 1,
         "move": "None",
         "effect": "_Destroy_ the Targets. Immediately gain 10 Vigor and 3 _Wood Armor_. While this Enchant is active you are Size 2, add _Reach_ to all Melee Attacks, and reduce the Cost to Negate all _Push_, _Pull_, and _Slide_ Effects by 1. If you have no _Wood Armor_ at Refresh, end this Enchant.",
-        "special": "While this Enchant is active, you may _Destroy_ additional _Wood Source_s at the start of your Turn by paying 1 _Grit_. When you do, gain 1 _Wood Armor_ and 4 Vigor."
+        "special": "While this Enchant is active, you may _Destroy_ additional _Wood Source_s at the start of your Turn by paying 1 _Grit_. When you do, gain 1 _Wood Armor_ and 4 Vigor.",
+        "target": "Three _Wood Source_s of at least Size 1."
       },
       {
         "name": "Grasping Rebuke",
+        "desc": "Your equipment reaches out to grasp as your foe strikes, tearing their weapon away from them.",
         "keywords": ["Spirit", "Wood", "Block"],
         "type": "Defensive",
         "speed": "Reaction",
-        "trigger": "You _Block_ while _Wielding_ a Wooden Weapon or Shield.",
-        "desc": "Your equipment reaches out to grasp as your foe strikes, tearing their weapon away from them.",
         "cost": "1 _Grit_, 1 _Focus_, 1 _Momentum_",
+        "trigger": "You _Block_ while _Wielding_ a Wooden Weapon or Shield.",
         "effect": "Choose: The attacker reduces their Attack Roll by 1, are _Disarmed_ (2 _Grit_), and your Triggering piece of Equipment becomes _Damaged_ OR they reduce their Attack Roll by 4. If the foe is _Disarmed_, the _Disarmed_ item is stuck in your _Damaged_ equipment and cannot be retrieved unless an Action is Sacrificed and 2 _Grit_ is paid while adjacent to you. If your Equipment ceases to be _Damaged_ the item falls in an adjacent unoccupied space.",
         "special": "The Attacker may pay 1 _Focus_ to instead choose the Effect."
       },
       {
         "name": "Wood Ward",
+        "desc": "Wooden weapons can find no purchase on you. They curve away in an unnatural way, ensuring that they never find purchase.",
         "keywords": ["Spirit", "Wood", "Block"],
-        "trigger": "You are Attacked with Wood.",
-        "cost": "1 _Focus_, 2 _Grit_ OR 2 _Reflex_",
         "type": "Defensive",
         "speed": "Reaction",
-        "desc": "Wooden weapons can find no purchase on you. They curve away in an unnatural way, ensuring that they never find purchase.",
+        "cost": "1 _Focus_, 2 _Grit_ OR 2 _Reflex_",
+        "trigger": "You are Attacked with Wood.",
         "effect": "If you paid _Grit_ for the Cost: Add the _Block_ Keyword to this Reaction reduce the Attack Roll by 3.\nIf you paid _Reflex_ for the cost: Add the _Evade_ Keyword to this Action and reroll the Attack with Disadvantage, using the lower of the two Attack Rolls.",
         "boost": "1 _Grit_ OR 1 _Reflex_ (whichever was not paid in the Cost): Use both Effects."
       }
     ]
   },
   {
-    "background": "#196f3d",
     "name": "Growth",
-    "role": "Controller/Shaper",
     "flavor": "By manipulating local plantlife, Growth techniques can turn a barren field into one choked with aggressive, hostile plantlife. The Growth Discipline specializes in creating Overgrown spaces to limit foes' mobility, then encouraging further growth to create dangerous brambles, hostile vines, and other constructs to better control the battlefield. While it takes a moment for the Growth Discipline to ramp up, they will very quickly have near-absolute control over the entire battlefield.",
+    "background": "#196f3d",
+    "role": "Controller/Shaper",
     "stances": [
       {
         "name": "Animator Stance",
@@ -310,42 +310,43 @@
     "techniques": [
       {
         "name": "Seeding Strike",
-        "ap": 1,
         "desc": "Your weapon flares to life, carrying the seeds for a host of plant life with it.",
         "keywords": ["Spirit", "Wood", "Weapon"],
-        "speed": "Weapon+1",
         "type": "Strike",
+        "speed": "Weapon+1",
         "range": "Weapon",
+        "ap": 1,
         "move": "Step",
         "effect": "Attack using your Weapon's Profile. _Embed_ a _Wood Source_ on 8+. If you do not _Embed_, create an _Overgrown_ space adjacent to the Target."
       },
       {
         "name": "Flourishing Strike",
-        "ap": 1,
         "desc": "You lash out with your weapon, encouraging nearby plants to flourish and grow, granting you an edge.",
         "keywords": ["Spirit", "Wood", "Weapon"],
-        "speed": "Weapon",
         "type": "Strike",
-        "cost": "1 _Momentum_",
+        "speed": "Weapon",
         "range": "Weapon",
+        "ap": 1,
         "move": "Reposition",
+        "cost": "1 _Momentum_",
         "effect": "Attack using your Weapon's Profile. Choose one of the following:\n\t&#8226; If there is an _Overgrown_ space adjacent to the Target, _Destroy_ it and gain a +1 bonus to your Attack Roll.\n\t&#8226; If there is a _Wood Source_ Embedded in the Target, _Destroy_ it to deal 2 _True Damage_ and inflict _Hobbled_ 1 and _Impair_ 1 (2 _Reflex_).\n\t&#8226; If there is an _Enchant_ with the _Wood_ Keyword within Range 5 of you, you may trigger its effect, reducing its Cost by 1.\n\t&#8226; Gain 1 _Focus_.",
         "boost": "1 _Momentum_, 1 _Focus_: Choose two Effects."
       },
       {
         "name": "Thorn Strike",
-        "speed": "2",
-        "ap": 1,
         "desc": "You unleash a close-range hail of thorns on foe, leaving painful barbs throughout their hide.",
         "keywords": ["Spirit", "Wood"],
         "type": "Strike",
-        "range": "Melee",
+        "speed": "2",
         "damagetype": "Stab",
+        "range": "Melee",
         "area": "Cone 2",
+        "ap": 1,
         "move": "Reposition",
         "effect": "Attack with the below Profile.",
         "boost": "1 _Momentum_: Choose an _Overgrown_/_Wood Source_ space within Range 8. Originate the attack from there rather than yourself.",
         "chart": {
+          "damage": [0, 0, 0, 2, 2, 3, 3, 4, 4, 6, 6],
           "roll": [
             "Miss",
             "Miss",
@@ -359,7 +360,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 2, 2, 3, 3, 4, 4, 6, 6],
           "status": [
             "",
             "",
@@ -377,17 +377,18 @@
       },
       {
         "name": "Vine Whip",
-        "speed": "2",
-        "ap": 1,
         "desc": "You suddenly sprout a vine, lashing it out towards a foe and pulling them closer.",
         "keywords": ["Spirit", "Wood"],
         "type": "Strike",
-        "range": "5",
-        "move": "Reposition",
+        "speed": "2",
         "damagetype": "Slash/Stab",
+        "range": "5",
+        "ap": 1,
+        "move": "Reposition",
         "effect": "Attack with the below Profile.",
         "boost": "1 _Momentum_: Choose an _Overgrown_ space within Range. Originate the attack from the _Overgrown_ space rather than yourself.",
         "chart": {
+          "damage": [0, 0, 0, 2, 3, 4, 5, 5, 6, 8, 8],
           "roll": [
             "Miss",
             "Miss",
@@ -401,7 +402,6 @@
             "Crit",
             "Crit"
           ],
-          "damage": [0, 0, 0, 2, 3, 4, 5, 5, 6, 8, 8],
           "status": [
             "",
             "",
@@ -419,39 +419,39 @@
       },
       {
         "name": "Bramble Wall",
-        "speed": "3",
-        "ap": 1,
         "desc": "Dangerous vines covered in thick thorns shoot up, .",
         "keywords": ["Spirit", "Wood", "Groundsource"],
         "type": "Maneuver",
+        "speed": "3",
         "range": "4",
-        "target": "Any three independent _Overgrown_ spaces.",
+        "ap": 1,
         "move": "Step",
         "effect": "All Target spaces become _Bramble Wall_s.",
-        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Stab Damage and gain _Bleed_ 1. If they cannot Move out of a Target space, they cannot pay this cost."
+        "special": "If a creature is in a Target space, they must pay 1 _Reflex_ and Move 1 or take 2 Stab Damage and gain _Bleed_ 1. If they cannot Move out of a Target space, they cannot pay this cost.",
+        "target": "Any three independent _Overgrown_ spaces."
       },
       {
         "name": "Ensnaring Vines",
-        "speed": "2",
-        "ap": 1,
         "desc": "You amplify the growth of a nearby plant, creating an aggressive vine capable of grappling foes.",
         "keywords": ["Spirit", "Wood", "Enchant"],
         "type": "Maneuver",
+        "speed": "2",
         "range": "6",
-        "target": "Up to 6 contiguous _Overgrown_ spaces.",
+        "ap": 1,
         "move": "Reposition",
         "effect": "All _Overgrown_ spaces become Ensnaring Vines while this Enchant persists. Treat these spaces as _Overgrown_, but also inflict _Hobbled_ 1 (1 _Reflex_) on any creature that starts or ends their Turn in an Ensnaring Vines space.",
         "special": "Whenever a creature enters an Ensnaring Vines space, you may pay 1 _Momentum_ to inflict _Hobbled_ 1 and _Impaired_ 1 (2 _Reflex_).",
-        "boost": "X _Momentum_: For each Momentum spent, two Target spaces do not need to be _Overgrown_.\n\t2 _Momentum_: Remove the Enchant Keyword."
+        "boost": "X _Momentum_: For each Momentum spent, two Target spaces do not need to be _Overgrown_.\n\t2 _Momentum_: Remove the Enchant Keyword.",
+        "target": "Up to 6 contiguous _Overgrown_ spaces."
       },
       {
         "name": "Ensnare",
-        "speed": "3",
-        "ap": 1,
         "desc": "Vines erupt around a target, limiting their mobility and restraining them.",
         "keywords": ["Spirit", "Wood", "Groundsource"],
         "type": "Maneuver",
+        "speed": "3",
         "range": "6",
+        "ap": 1,
         "move": "Reposition",
         "cost": "1 _Momentum_",
         "effect": "Attack with the below Profile. If _Stuck_, the creature is _Stuck_ until they spend Grit equal to the Negate cost at the end of their turn. If _Restrained_, a creature is _Restrained_ until they Sacrifice an Action and spend Grit equal to the Negate cost, or deal 6 Damage in a single attack, targeting the vines ensnaring them. If this Crits, they must instead deal 10 Damage.",
@@ -487,88 +487,88 @@
       },
       {
         "name": "Overgrow",
-        "speed": "3",
-        "ap": 1,
         "desc": "Thick plants begin to grow, creating thick foliage that limits movement.",
         "keywords": ["Spirit", "Wood", "Groundsource"],
         "type": "Maneuver",
+        "speed": "3",
         "range": "6",
         "area": "Cone 2",
+        "ap": 1,
         "move": "Reposition",
         "effect": "The target Area becomes _Overgrown_. Gain 1 _Momentum_.",
         "boost": "1 _Momentum_: Area is instead Blast 1."
       },
       {
         "name": "Animate Vine",
-        "speed": "4",
-        "ap": 1,
         "desc": "You amplify the growth of a nearby plant, creating an aggressive vine capable of grappling foes.",
         "keywords": ["Spirit", "Wood"],
         "type": "Maneuver",
+        "speed": "4",
         "range": "6",
-        "target": "An _Overgrown_ space or living _Wood Source_.",
+        "ap": 1,
         "move": "Reposition",
         "effect": "Destroy the Target, then create an Animated Vine with 10 Health in the same space. As a Reaction when a creature moves within Range 3 of your Animated Vine, you may pay 1 _Momentum_/_Focus_ to have it use the Grab Action as if it had Reach 2, targeting the triggering creature.",
-        "boost": "2 _Momentum_: Remove the Enchant Keyword.\n\t2 _Momentum_: Your vine is covered in aggressive thorns or resembles a carnivorous plant. Increase the Cost of your Reaction by 1, but deal 3 Damage on a _Graze_,  4 Damage on a _Hit_,  and 5 Damage on a Crit."
+        "boost": "2 _Momentum_: Remove the Enchant Keyword.\n\t2 _Momentum_: Your vine is covered in aggressive thorns or resembles a carnivorous plant. Increase the Cost of your Reaction by 1, but deal 3 Damage on a _Graze_,  4 Damage on a _Hit_,  and 5 Damage on a Crit.",
+        "target": "An _Overgrown_ space or living _Wood Source_."
       },
       {
         "name": "Nature's Blessing",
-        "speed": "4",
-        "ap": 2,
         "desc": "You encourage growth in an area, creating fertile soil that plants readily grow in.",
         "keywords": ["Spirit", "Wood", "Groundsource", "Enchant"],
         "type": "Maneuver",
+        "speed": "4",
         "range": "6",
         "area": "Blast 2",
+        "ap": 2,
         "move": "Step",
         "effect": "Create a Nature's Blessing at the center of the Area with 10 Health and 1 _Guard_. If the Nature's Blessing is Destroyed, this _Enchant_ ends. While this Enchant Persists, Reduce the Cost of all _Wood_ Actions by 1 if they target something in this area. If the Nature's Blessing exists at the start of the Round, you may use the Overgrow, Bramble Wall, or Sprout Tree Action as a 0 AP, Speed 1 Action so long as it only targets spaces within the Area.",
         "boost": "2 _Momentum_: If, at the end of the Round, at least half the spaces within the Area are _Overgrown_, Bramble Walls or _Tree_s you may Boost to increase the Area by 1 and increase the Nature's Blessing Health by 5 and _Guard_ by 1."
       },
       {
         "name": "Sprout Tree",
-        "speed": "4",
-        "ap": 1,
         "desc": "Plants grow taller and stronger, becoming small trees at a rapid rate.",
         "keywords": ["Spirit", "Wood", "Groundsource"],
         "type": "Maneuver",
+        "speed": "4",
         "range": "4",
-        "target": "Any three independent _Overgrown_ spaces or _Tree_.",
+        "ap": 1,
         "move": "Reposition",
         "effect": "If you Target an _Overgrown_ space, turn it into a Size 1 _Tree_. If you target a _Tree_, you may increase its Source value by 1. Gain 1 _Grit_.",
         "special": "If you Target a Size 1 _Tree_ who's Source value is 3, you may instead make it Size 2. If you Target a Size 2 Tree who's Source Value is 7, you may instead make it Size 3.",
-        "boost": "1 _Focus_: Instead of choosing three independent targets, you may instead target the same space multiple times."
+        "boost": "1 _Focus_: Instead of choosing three independent targets, you may instead target the same space multiple times.",
+        "target": "Any three independent _Overgrown_ spaces or _Tree_."
       },
       {
         "name": "Nature's Veil",
+        "desc": "Nature clings closely to you, obscuring your movements and providing an obscuring veil.",
         "keywords": ["Spirit", "Wood", "Evade"],
-        "trigger": "A Phase Begins.",
-        "cost": "1 _Focus_, 1 _Reflex_",
         "type": "Defensive",
         "speed": "Reaction",
-        "desc": "Nature clings closely to you, obscuring your movements and providing an obscuring veil.",
+        "cost": "1 _Focus_, 1 _Reflex_",
+        "trigger": "A Phase Begins.",
         "effect": "For the rest of the Phase you are considered _Veiled_ whenever you are on _Overgrown_ Terrain.",
         "boost": "1 _Focus_: You may instead Target a creature within Range 4, granting them the Effect."
       }
     ]
   },
   {
-    "background": "#937148",
     "name": "Leech",
     "flavor": "Those that learn the Leech arts can pull stamina from plants and others, using it to bolster their own.",
+    "background": "#937148",
     "stances": [],
     "techniques": []
   },
   {
-    "background": "#00a020",
     "name": "Bloom",
     "flavor": "The Bloom Stance is one of the most beloved of the Wood Disciplines, as it can spark joy and happiness in themselves and others.",
+    "background": "#00a020",
     "stances": [],
     "techniques": []
   },
   {
-    "background": "#ff9ffc",
     "name": "Nurture",
     "flavor": "Woodbound are able to sense the 'aura' of creatures, allowing them to sense their emotional state and find their true intentions.",
+    "background": "#ff9ffc",
     "stances": [],
     "techniques": []
   }

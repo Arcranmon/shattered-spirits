@@ -13,6 +13,7 @@ import Water from "@/database/spirit_masteries/water.json";
 import Wind from "@/database/spirit_masteries/wind.json";
 import Wood from "@/database/spirit_masteries/wood.json";
 
+import SpiritWeapons from "@/database/items/spirit_weapons.json";
 import Weapons from "@/database/items/weapons.json";
 import Armors from "@/database/items/armor.json";
 
@@ -36,7 +37,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getWeaponByCategory(): any {
     return (category: string) => {
       return Weapons.filter(
-        (x) => x.category.trim() === category.trim() && x.itemtype == "Weapon"
+        (x) => x.category.trim() === category.trim()
       ).map((x) => Weapon.Deserialize(<IWeaponData>x));
     };
   }
@@ -110,9 +111,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getSpiritWeapons(): any {
     return () => {
-      return Weapons.filter((x) => x.itemtype == "Spirit Weapon").map((x) =>
-        Weapon.Deserialize(<IWeaponData>x)
-      );
+      return SpiritWeapons.map((x) => Weapon.Deserialize(<IWeaponData>x));
     };
   }
 
