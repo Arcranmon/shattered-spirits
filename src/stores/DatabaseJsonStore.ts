@@ -70,7 +70,7 @@ export class DatabaseJsonStore extends VuexModule {
       var armor = Armors.find((x) => x.name.trim() == inword.trim());
       if (armor == undefined) {
         armor.name = inword;
-        armor.special = "This armor could not be found!";
+        armor.category = "This armor could not be found!";
       }
       return Armor.Deserialize(<IArmorData>armor);
     };
