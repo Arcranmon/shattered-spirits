@@ -3,40 +3,44 @@ import { Technique } from "@/class";
 import { Stance } from "@/class";
 
 class Discipline {
-  private _name: string;
-  private _flavor: string;
-  private _background: string;
-  private _role: string;
-  private _stances: Array<Stance>;
-  private _techniques: Array<Technique>;
+  private name_: string;
+  private category_: string;
+  private flavor_: string;
+  private background_: string;
+  private role_: string;
+  private stances_: string[];
+  private techniques_: string[];
 
   public constructor() {
-    this._background = "white";
-    this._name = "";
-    this._flavor = "";
-    this._stances = [];
-    this._techniques = [];
+    this.background_ = "white";
+    this.name_ = "";
+    this.flavor_ = "";
+    this.stances_ = [];
+    this.techniques_ = [];
   }
 
   public get Background() {
-    return this._background;
+    return this.background_;
   }
   public get Flavor() {
-    return this._flavor;
+    return this.flavor_;
   }
   public get Name() {
-    return this._name;
+    return this.name_;
   }
   public get Role() {
-    return this._role;
+    return this.role_;
   }
   public get Techniques() {
-    return this._techniques;
+    return this.techniques_;
   }
   public get Stances() {
-    return this._stances;
+    return this.stances_;
   }
 
+  // ==========================================================
+  // SERIALIZATION
+  // ==========================================================
   public static Deserialize(discData: IDisciplineData): Discipline {
     const t = new Discipline();
     t.setDisciplineData(discData);
@@ -44,22 +48,13 @@ class Discipline {
   }
 
   public setDisciplineData(data: IDisciplineData): void {
-    this._background = data.background || "white";
-    this._name = data.name || "";
-    this._flavor = data.flavor || "";
-    this._role = data.role || "";
-    this._stances = [];
-    this._techniques = [];
-    if ("techniques" in data) {
-      this._techniques = data.techniques.map((x) =>
-        Technique.Deserialize(<ITechData>x)
-      );
-    }
-    if ("stances" in data) {
-      this._stances = data.stances.map((x) =>
-        Stance.Deserialize(<IStanceData>x)
-      );
-    }
+    this.background_ = data.background || "white";
+    this.category_ = data.category || "";
+    this.name_ = data.name || "";
+    this.flavor_ = data.flavor || "";
+    this.role_ = data.role || "";
+    this.stances_ = data.stances || [];
+    this.techniques_ = data.techniques || [];
   }
 }
 export default Discipline;

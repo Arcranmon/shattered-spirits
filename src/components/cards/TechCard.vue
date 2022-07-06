@@ -63,8 +63,8 @@
 import Vue from "vue";
 import { Technique } from "@/class";
 import { store } from "@/store";
-import ChartTable from "./ChartTable.vue";
-import Tooltip from "./TooltipParam.vue";
+import ChartTable from "@/components/ChartTable.vue";
+import Tooltip from "@/components/TooltipParam.vue";
 import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 export default Vue.extend({

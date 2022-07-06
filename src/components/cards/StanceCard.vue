@@ -41,7 +41,8 @@ export default Vue.extend({
     },
     category: {
       type: String,
-      required: true,
+      required: false,
+      default: "#ece6dc",
     },
   },
   components: {},

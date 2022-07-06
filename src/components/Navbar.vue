@@ -18,9 +18,11 @@ a {
 }
 .nav--wrapper {
   background-color: $color--nav;
-  padding: $space--xs;
-  display: flex;
   align-items: center;
+  min-height: 50px;
+  overflow: hidden;
+  width: 100%;
+  position: sticky;
 }
 .nav--text {
   font-family: $font--nav;

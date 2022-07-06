@@ -1,71 +1,76 @@
 import { store } from "@/store";
 
 class Armor {
-  private _armor: number;
-  private _category: string;
-  private _durability: number;
-  private _endurance: number;
-  private _jump: number;
-  private _name: string;
-  private _reposition: number;
-  private _shift: number;
-  private _special: string;
-  private _sprint: number;
-  private _step: number;
+  private armor_: number;
+  private category_: string;
+  private durability_: number;
+  private endurance_: number;
+  private jump_: number;
+  private name_: string;
+  private reposition_: number;
+  private shift_: number;
+  private special_: string;
+  private sprint_: number;
+  private step_: number;
 
   public constructor() {
-    this._name = "";
-    this._special = "";
+    this.name_ = "";
+    this.special_ = "";
   }
 
+  // ==========================================================
+  // GETTERS
+  // ==========================================================
   get Armor() {
-    return this._armor;
-  }
-  get ArmorText() {
-    return "**Guard:** " + this._armor;
+    return this.armor_;
   }
   get Category() {
-    return this._category;
+    return this.category_;
   }
   get Durability() {
-    return this._durability;
+    return this.durability_;
   }
-  get DurabilityHeader() {
-    if (this._durability != 0) return ", Durability " + this._durability;
-  }
-  get EnduranceText() {
-    return "**Endurance:** " + this._endurance;
-  }
-  get JumpText() {
-    return "**Jump:** " + this._jump;
+  get Jump() {
+    return this.jump_;
   }
   get Name() {
-    return this._name;
+    return this.name_;
   }
   get Reposition() {
-    return this._reposition;
+    return this.reposition_;
   }
   get Shift() {
-    return this._shift;
-  }
-  get SpecialHeader() {
-    return "**Special:** " + this._special;
+    return this.shift_;
   }
   get HasSpecial() {
-    return this._special != "";
+    return this.special_ != "";
   }
   get Sprint() {
-    return this._sprint;
+    return this.sprint_;
   }
   get Step() {
-    return this._step;
+    return this.step_;
   }
 
-  // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.
-  public KeywordParsedArray(input: string, header: string) {
-    return (header + input).split("_");
+  // ==========================================================
+  // FORMATTED GETTERS
+  // ==========================================================
+  get ArmorText() {
+    return "**Guard:** " + this.armor_;
+  }
+  get DurabilityHeader() {
+    if (this.durability_ != 0) return ", Durability " + this.durability_;
+  }
+  get EnduranceText() {
+    return "**Endurance:** " + this.endurance_;
+  }
+  get SpecialHeader() {
+    return "**Special:** " + this.special_;
   }
 
+  // ==========================================================
+  // SERIALIZATION
+  // ==========================================================
   public static Deserialize(armorData: IArmorData): Armor {
     const t = new Armor();
     t.setArmorData(armorData);
@@ -73,17 +78,17 @@ class Armor {
   }
 
   public setArmorData(data: IArmorData): void {
-    this._armor = data.armor || 0;
-    this._category = data.category || "";
-    this._durability = data.durability || 0;
-    this._endurance = data.endurance || 0;
-    this._jump = data.jump || 0;
-    this._name = data.name || "";
-    this._reposition = data.reposition || 0;
-    this._shift = data.shift || 0;
-    this._special = data.special || "";
-    this._sprint = data.sprint || 0;
-    this._step = data.step || 0;
+    this.armor_ = data.armor || 0;
+    this.category_ = data.category || "";
+    this.durability_ = data.durability || 0;
+    this.endurance_ = data.endurance || 0;
+    this.jump_ = data.jump || 0;
+    this.name_ = data.name || "";
+    this.reposition_ = data.reposition || 0;
+    this.shift_ = data.shift || 0;
+    this.special_ = data.special || "";
+    this.sprint_ = data.sprint || 0;
+    this.step_ = data.step || 0;
   }
 }
 export default Armor;

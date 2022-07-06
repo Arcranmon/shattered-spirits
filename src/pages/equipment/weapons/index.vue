@@ -43,7 +43,7 @@
 
 <script>
 import Vue from "vue";
-import ShowCards from "@/components/ShowCards.vue";
+import ShowCards from "@/components/cards/ShowCards.vue";
 import BladesText from "@/database/text_files/weapons/blades.txt";
 import BluntsText from "@/database/text_files/weapons/blunts.txt";
 import ImprovisedText from "@/database/text_files/weapons/improvised.txt";
@@ -58,46 +58,46 @@ export default Vue.extend({
   },
   computed: {
     ranged: function () {
-      return this.$store.getters.getWeaponByCategory("Ranged");
+      return this.$store.getters.getWeaponsByCategory("Ranged");
     },
     rangedText: function () {
       return this.$marked.parse(RangedText);
     },
     blades: function () {
-      return this.$store.getters.getWeaponByCategory("Blade");
+      return this.$store.getters.getWeaponsByCategory("Blade");
     },
     bladesText: function () {
       return this.$marked.parse(BladesText);
     },
     blunts: function () {
-      return this.$store.getters.getWeaponByCategory("Blunt");
+      return this.$store.getters.getWeaponsByCategory("Blunt");
     },
     bluntsText: function () {
       return this.$marked.parse(BluntsText);
     },
     chains: function () {
-      return this.$store.getters.getWeaponByCategory("Chain");
+      return this.$store.getters.getWeaponsByCategory("Chain");
     },
     lances: function () {
-      return this.$store.getters.getWeaponByCategory("Lance");
+      return this.$store.getters.getWeaponsByCategory("Lance");
     },
     lancesText: function () {
       return this.$marked.parse(LancesText);
     },
     unarmed: function () {
-      return this.$store.getters.getWeaponByCategory("Unarmed");
+      return this.$store.getters.getWeaponsByCategory("Unarmed");
     },
     unarmedText: function () {
       return this.$marked.parse(UnarmedText);
     },
     improvised: function () {
-      return this.$store.getters.getWeaponByCategory("Improvised");
+      return this.$store.getters.getWeaponsByCategory("Improvised");
     },
     improvisedText: function () {
       return this.$marked.parse(ImprovisedText);
     },
     spirit_weapons: function () {
-      return this.$store.getters.getSpiritWeapons();
+      return this.$store.getters.getWeaponsByCategory("Spirit");
     },
   },
 });

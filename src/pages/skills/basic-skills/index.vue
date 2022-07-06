@@ -1,14 +1,10 @@
 <template>
-  <div>
-    <h2>{{ basics.Name }}</h2>
-    <div class="page--description">{{ basics.Flavor }}</div>
-    <show-cards :inputs="basics" job="Techniques" :collapse="false" />
-  </div>
+  <show-cards :inputs="basics" job="Techniques" :collapse="false" />
 </template>
 
 <script>
 import Vue from "vue";
-import ShowCards from "@/components/ShowCards.vue";
+import ShowCards from "@/components/cards/ShowCards.vue";
 import { store } from "@/store";
 export default Vue.extend({
   name: "basic-techniques",
@@ -17,7 +13,8 @@ export default Vue.extend({
   },
   computed: {
     basics: function () {
-      return this.$store.getters.getBasicSkills();
+      var disc = this.$store.getters.getDiscipline("Basic");
+      return this.$store.getters.getTechniquesFromList(disc.Techniques);
     },
   },
 });

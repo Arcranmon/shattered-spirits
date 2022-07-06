@@ -2,12 +2,12 @@
   <div style="padding: 1em;">
     <div v-html="readingDisciplines" />
     <div class="skill--box">
-      <stance-card :stance="disc.Stances[0]" />
+      <stance-card :stance="$store.getters.getStance(disc.Stances[0])" />
     </div>
     <br />
     <div v-html="readingStancesStyles" />
     <div class="skill--box">
-      <tech-card :tech="disc.Techniques[0]" />
+      <tech-card :tech="$store.getters.getTechnique(disc.Techniques[0])" />
     </div>
     <br />
     <div v-html="readingTechniques" />
@@ -19,8 +19,8 @@ import Vue from "vue";
 import ReadingDisciplines from "@/database/text_files/combat_rules/reading_disciplines.txt";
 import ReadingStancesStyles from "@/database/text_files/combat_rules/reading_stances_styles.txt";
 import ReadingTechniques from "@/database/text_files/combat_rules/reading_techniques.txt";
-import TechCard from "@/components/TechCard.vue";
-import StanceCard from "@/components/StanceCard.vue";
+import TechCard from "@/components/cards/TechCard.vue";
+import StanceCard from "@/components/cards/StanceCard.vue";
 import { store } from "@/store";
 export default Vue.extend({
   name: "combat-basics",
@@ -39,7 +39,7 @@ export default Vue.extend({
       return this.$marked.parse(ReadingTechniques);
     },
     disc: function () {
-      return this.$store.getters.getTemplateDiscipline()[0];
+      return this.$store.getters.getDiscipline("Example Discipline");
     },
   },
 });

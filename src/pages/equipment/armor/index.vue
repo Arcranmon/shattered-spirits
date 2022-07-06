@@ -21,7 +21,7 @@
 
 <script>
 import Vue from "vue";
-import ShowCards from "@/components/ShowCards.vue";
+import ShowCards from "@/components/cards/ShowCards.vue";
 import { store } from "@/store";
 export default Vue.extend({
   name: "weapons",

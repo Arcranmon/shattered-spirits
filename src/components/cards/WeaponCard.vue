@@ -32,7 +32,7 @@
 <script>
 import Vue from "vue";
 import { Weapon } from "@/class";
-import ChartTable from "./ChartTable.vue";
+import ChartTable from "@/components/ChartTable.vue";
 import DisplayTooltipText from "@/components/DisplayTooltipText";
 
 export default Vue.extend({

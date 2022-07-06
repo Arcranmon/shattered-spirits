@@ -10,6 +10,7 @@ import ReadingDisciplines from "@/pages/combat/reading_disciplines/index.vue";
 import TerrainAndObstacles from "@/pages/combat/terrain_and_obstacles/index.vue";
 
 import CharacterCreation from "@/pages/character-creation/index.vue";
+import CharacterCreator from "@/pages/character-creator/index.vue";
 
 import SpiritMenu from "@/pages/spirits/spirit-menu/index.vue";
 import Earth from "@/pages/spirits/earth/index.vue";
@@ -22,6 +23,7 @@ import Wood from "@/pages/spirits/wood/index.vue";
 import EquipmentMenu from "@/pages/equipment/equipment-menu/index.vue";
 import Armor from "@/pages/equipment/armor/index.vue";
 import Weapons from "@/pages/equipment/weapons/index.vue";
+import Disciplines from "@/pages/disciplines/index.vue";
 
 import SkillsMenu from "@/pages/skills/skills-menu/index.vue";
 import BasicSkills from "@/pages/skills/basic-skills/index.vue";
@@ -29,6 +31,10 @@ import ArmorSkills from "@/pages/skills/armor-skills/index.vue";
 import MartialSkills from "@/pages/skills/martial-skills/index.vue";
 import StratagemSkills from "@/pages/skills/stratagem-skills/index.vue";
 import WeaponSkills from "@/pages/skills/weapon-skills/index.vue";
+
+import Npcs from "@/pages/npcs/index.vue";
+
+import Characters from "@/pages/character-manager/index.vue";
 
 import World from "@/pages/world/index.vue";
 
@@ -57,6 +63,14 @@ const r = new Router({
       name: "character-creation",
       meta: {
         title: "Character Creation",
+      },
+    },
+    {
+      path: "/character-creator",
+      component: CharacterCreator,
+      name: "character-creator",
+      meta: {
+        title: "Character Creator",
       },
     },
     {
@@ -233,6 +247,30 @@ const r = new Router({
       name: "world",
       meta: {
         title: "The World",
+      },
+    },
+    {
+      path: "/npcs",
+      component: Npcs,
+      name: "npcs",
+      meta: {
+        title: "NPCs",
+      },
+    },
+    {
+      path: "/characters",
+      component: Characters,
+      name: "characters",
+      meta: {
+        title: "Characters",
+      },
+    },
+    {
+      path: "/disciplines",
+      component: Disciplines,
+      name: "disciplines",
+      meta: {
+        title: "Disciplines",
       },
     },
   ],

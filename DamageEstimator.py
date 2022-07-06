@@ -13,16 +13,8 @@ if(len(sys.argv) >= 4):
     bonus_damage = int(sys.argv[3])
     min_roll = int(sys.argv[4])-1
 
-if(file == "Earth"):
-    f = open('.\src\database\spirit_masteries\earth.json')
-elif(file == "Metal"):
-    f = open('.\src\database\spirit_masteries\metal.json')
-elif(file == "Wind"):
-    f = open('.\src\database\spirit_masteries\wind.json')
-elif(file == "Wood"):
-    f = open('.\src\database\spirit_masteries\wood.json')
-elif(file == "Martial"):
-    f = open('.\src\database\skill_masteries\martial_skills.json')
+if(file == "Technique"):
+    f = open('.\src\database\\techniques.json')
 elif(file == "Weapon"):
     f = open('.\src\database\items\weapons.json')
 
@@ -46,28 +38,26 @@ hit = []
 attack = []
 speed = 1
 
-for object in data:
-    if(file != "Weapon"):
-        if("techniques" in object):
-            for technique in object["techniques"]:
-                if(technique["name"] == name):
-                    if("chart" in technique):
-                        if(not("damage" in technique["chart"])):
-                            raise Exception("This Ability does not deal damage; cannot be analyzed.")
-                        hit = technique["chart"]["roll"]
-                        attack = technique["chart"]["damage"]
-                        if(len(technique["speed"]) == 1):
-                            speed = int(technique["speed"])
-    else:
-        if(object["itemtype"] == "Weapon" or object["itemtype"] == "Spirit Weapon"):
-            if(object["name"] == name):
-                hit = object["chart"]["roll"]
-                attack = object["chart"]["damage"]
-                speed = int(object["speed"])
+if(file == "Technique"):
+    for technique in data:
+        if(technique["name"] == name):
+            if("chart" in technique):
+                if(not("damage" in technique["chart"])):
+                    raise Exception("This Ability does not deal damage; cannot be analyzed.")
+                hit = technique["chart"]["roll"]
+                attack = technique["chart"]["damage"]
+                if(len(technique["speed"]) == 1):
+                    speed = int(technique["speed"])
+else:
+    for weapon in data:
+        if(weapon["name"] == name):
+            hit = weapon["chart"]["roll"]
+            attack = weapon["chart"]["damage"]
+            speed = int(weapon["speed"])
 
 
 if(attack == []):
-    raise Exception("Technique not found.")
+    raise Exception("Technique or weapon not found.")
                     
 straight_damage = 0
 straight_damage_10_plus_evade = 0

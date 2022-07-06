@@ -1,61 +1,66 @@
 import { store } from "@/store";
+import { Refresh } from "@/class";
 
 class Stance {
-  private _accumulate: string;
-  private _desc: string;
-  private _effect: string;
-  private _refresh: string;
-  private _name: string;
-  private _special: string;
+  private accumulate_: string;
+  private desc_: string;
+  private discipline_: string;
+  private effect_: string;
+  private refresh_: Refresh;
+  private name_: string;
+  private special_: string;
 
   public constructor() {
-    this._accumulate = "";
-    this._desc = "";
-    this._effect = "";
-    this._refresh = "";
-    this._name = "";
-    this._special = "";
+    this.accumulate_ = "";
+    this.desc_ = "";
+    this.discipline_ = "";
+    this.effect_ = "";
+    this.refresh_ = null;
+    this.name_ = "";
+    this.special_ = "";
   }
 
   public get Desc() {
-    return this._desc;
+    return this.desc_;
   }
   public get Name() {
-    return this._name;
+    return this.name_;
   }
 
   // ==========================================================
   // UTILITY
   // ==========================================================
   public get HasAccumulate() {
-    return this._accumulate.length > 0;
+    return this.accumulate_.length > 0;
   }
   public get AccumulateHeader() {
-    return "**Accumulate:** " + this._accumulate;
+    return "**Accumulate:** " + this.accumulate_;
   }
   public get HasEffect() {
-    return this._effect.length > 0;
+    return this.effect_.length > 0;
   }
   public get EffectHeader() {
-    return "**Effect:** " + this._effect;
+    return "**Effect:** " + this.effect_;
   }
   public get HasRefresh() {
-    return this._refresh.length > 0;
+    return this.refresh_ != null;
   }
   public get RefreshHeader() {
-    return "**Refresh:** " + this._refresh;
+    return "**Refresh:** " + this.refresh_.FormattedText;
+  }
+  public get Refresh() {
+    return this.refresh_;
   }
   public get HasSpecial() {
-    return this._special.length > 0;
+    return this.special_.length > 0;
   }
   public get SpecialHeader() {
-    return "**Special:** " + this._special;
+    return "**Special:** " + this.special_;
   }
 
-  // In the database, all keywords in effect text and the like should be underlined, giving us an easy character to search for.
-  public KeywordParsedArray(input: string, header: string) {
-    return (header + input).split("_");
-  }
+  // ==========================================================
+  // SERIALIZATION
+  // ==========================================================
 
   public static Deserialize(stanceData: IStanceData): Stance {
     const t = new Stance();
@@ -64,12 +69,15 @@ class Stance {
   }
 
   public setStanceData(data: IStanceData): void {
-    this._accumulate = data.accumulate || "";
-    this._desc = data.desc || "";
-    this._effect = data.effect || "";
-    this._refresh = data.refresh || "";
-    this._name = data.name || "";
-    this._special = data.special || "";
+    this.accumulate_ = data.accumulate || "";
+    this.desc_ = data.desc || "";
+    this.discipline_ = data.discipline || "";
+    this.effect_ = data.effect || "";
+    this.name_ = data.name || "";
+    this.special_ = data.special || "";
+    if ("refresh" in data) {
+      this.refresh_ = Refresh.Deserialize(data.refresh);
+    }
   }
 }
 export default Stance;

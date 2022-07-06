@@ -1,47 +1,51 @@
 <template>
-  <div class="armor--wrapper" inline>
+  <div v-bind:class="useFormatting" inline>
     <div v-bind:class="armor.Category">
-      <div class="armor--header">
+      <div v-if="format" class="armor--header">
         <h3 style="display: inline; font-style: normal;">{{ armor.Name }}</h3>
       </div>
       <b>
-        <div class="armor--keywords">
+        <div v-if="format" class="armor--keywords">
           {{ armor.Category }}{{ armor.DurabilityHeader }}
         </div></b
       >
     </div>
-    <div class="armor--content">
+    <div v-bind:class="useContent">
       <div v-html="$marked.parseInline(armor.ArmorText)" />
       <div v-html="$marked.parseInline(armor.EnduranceText)" />
-      <div v-html="$marked.parseInline(armor.JumpText)" />
       <div
         v-if="armor.HasSpecial"
         v-html="$marked.parseInline(armor.SpecialHeader)"
       />
       <div class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row">
-          <v-col class="chart--head" cols="4"
+          <v-col class="chart--head" cols="6"
             ><b>Movement Chart</b></v-col
           ></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="2"><b>Step</b></v-col
+          ><v-col class="chart--cols" cols="4"><b>Step</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{
             armor.Step
           }}</v-col></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="2"><b>Reposition</b></v-col
+          ><v-col class="chart--cols" cols="4"><b>Reposition</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{
             armor.Reposition
           }}</v-col></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="2"><b>Shift</b></v-col
+          ><v-col class="chart--cols" cols="4"><b>Shift</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{
             armor.Shift
           }}</v-col></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="2"><b>Sprint</b></v-col
+          ><v-col class="chart--cols" cols="4"><b>Sprint</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{
             armor.Sprint
+          }}</v-col></v-row
+        ><v-row no-gutters class="chart--row"
+          ><v-col class="chart--cols" cols="4"><b>Jump</b></v-col
+          ><v-col class="chart--cols chart--cols-right" cols="2">{{
+            armor.Jump
           }}</v-col></v-row
         >
       </div>
@@ -60,6 +64,19 @@ export default Vue.extend({
     armor: {
       type: Armor,
       required: true,
+    },
+    format: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+  },
+  computed: {
+    useFormatting: function () {
+      if (this.format) return "armor--wrapper";
+    },
+    useContent: function () {
+      if (this.format) return "armor--content";
     },
   },
 });

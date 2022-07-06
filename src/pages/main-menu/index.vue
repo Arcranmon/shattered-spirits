@@ -10,6 +10,7 @@
     <custom-button to="/equipment">Equipment</custom-button> <br />
     <custom-button to="/skills">Skill Disciplines</custom-button> <br />
     <custom-button to="/spirits">Spirit Disciplines</custom-button> <br />
+    <custom-button to="/npcs">NPCs</custom-button> <br />
   </div>
 </template>
 
