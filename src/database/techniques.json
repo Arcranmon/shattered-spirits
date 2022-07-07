@@ -1148,8 +1148,8 @@
         "",
         "",
         "",
-        "_Push_ 1 (1 _Reflex_ OR 1 _Grit_)",
-        "_Push_ 1 (1 _Reflex_ OR 1 _Grit_)",
+        "_Push_ 1 (1 _Reflex_/_Grit_)",
+        "_Push_ 1 (1 _Reflex_/_Grit_)",
         "_Push_ 1 (1 _Grit_)",
         "_Push_ 1 (1 _Grit_)",
         "_Push_ 1 (2 _Grit_)",
@@ -1158,7 +1158,7 @@
         "_Push_ 2 (3 _Grit_)"
       ]
     },
-    "target": "All Boulders within Range."
+    "target": "Up to three Boulders within Range."
   },
   {
     "name": "Avalanche Charge",
@@ -1184,7 +1184,7 @@
     "range": "3",
     "ap": 1,
     "move": "Reposition",
-    "effect": "Draw a Line 6 from the Target, Attacking with the below Profile against all targets in the area. Move the Boulder to the end of this Line after attacking.",
+    "effect": "Draw a Line 6 from the Target, Attacking with the below Profile against all targets in the area. Move the Boulder to the end of this Line after attacking. If the final space is occupied, move it to the last free space in the Area.",
     "special": "For each Size above 1 the target Boulder is, this Attack deals +1 damage on a _Graze_,  _Hit_,  or Crit.",
     "boost": "1 _Momentum_ for each Size about 1 the Target is.\n1 _Momentum_, 1 _Grit_: You may create a _Boulder_ within Range 3 before using this Technique.",
     "chart": {
@@ -1271,9 +1271,9 @@
     "range": "3",
     "ap": 1,
     "move": "Reposition",
-    "effect": "Create a Size 1 Boulder in the target space, or replace the _Earthen Feature_ with a Boulder.",
-    "boost": "2 _Momentum_. Instead create a Size 2 Boulder, or create two additional Size 1 Boulders. This only costs 1 _Momentum_ if all Boulders created are replacing _Earthen Feature_s.",
-    "imbue": "2 _Momentum_. This is 0 AP.",
+    "effect": "Create a Boulder in the target space, or replace the _Earthen Feature_ with a _Boulder_. Gain 1 _Grit_.",
+    "boost": "2 _Grit_: Instead create a Large Boulder, or create two additional Boulders. This only costs 1 _Grit_ if all Boulders created are replacing _Earthen_ Obstacles.",
+    "imbue": "2 _Momentum_: This is 0 AP.",
     "target": "An unoccupied space made of earth or stone within range, or a Size 1 _Earthen Feature_."
   },
   {
@@ -1285,13 +1285,14 @@
     "speed": "Weapon+1",
     "range": "Melee",
     "ap": 1,
+    "cost": "1 _Grit_",
     "move": "Step",
     "reqs": "_Versatile_/_Heavy_ Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Regardless of the intial Damage Type, it now deals Crush Damage. If you _Hit_/_Crit_,  you may add _Push_ 1 (1 _Grit_) to the attack. Regardless, create a Boulder in a space Adjacent to the Target."
+    "effect": "Attack using your weapon's Profile. Regardless of the initial Damage Type, it now deals Crush Damage. If you _Hit_/_Crit_,  you may add _Push_ 1 (1 _Grit_) to the attack. Regardless, create a Boulder in a space Adjacent to the Target."
   },
   {
     "name": "Fracture",
-    "desc": "A boulder within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
+    "desc": "An obstacle within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
     "discipline": "Boulder",
     "keywords": ["Spirit", "Earth"],
     "type": "Strike",
@@ -1301,9 +1302,10 @@
     "ap": 1,
     "move": "Reposition",
     "effect": "Attack with the below Profile in a Burst 1 around the Target, then Destroy the Target.",
-    "boost": "2 _Momentum_. You may choose a Size 2 Boulder. Instead of Destroying the Boulder, replace it with 4 Size 1 Boulders, then move each Boulder one space diagonally away from the previous Boulder's center. Increase the Cost to Negate by 1.",
+    "special": "Deal an additional 2 Damage if this Technique is used with a Boulder or Large Boulder.",
+    "boost": "2 _Momentum_/_Grit_: You may choose a Size 2 _Earthen_ Obstacle. Destroying the Obstacle, replace it with 3 Boulders, then move each Boulder one space diagonally away from the previous Obstacles's center. Increase the cost to _Negate_ by 1.",
     "chart": {
-      "damage": [0, 0, 0, 8, 8, 10, 10, 12, 12, 14, 16],
+      "damage": [0, 0, 0, 6, 6, 8, 8, 10, 10, 12, 14],
       "roll": [
         "Miss",
         "Miss",
@@ -1331,7 +1333,7 @@
         "_Dazed_ 3(3 _Focus_)"
       ]
     },
-    "target": "A Size 1 Boulder within Range."
+    "target": "A Size 1 _Earthen_ Obstacle within Range."
   },
   {
     "name": "Rockslide",
@@ -1347,7 +1349,7 @@
     "cost": "1 _Momentum_",
     "trigger": "A creature enters a space adjacent to a Boulder within Range.",
     "effect": "Attack the triggering target with the below Profile. If you _Push_ the target, move the Boulder so it is still adjacent to the target.",
-    "special": "If this _Push_ moves the target adjacent to a new Boulder, you may pay the Cost again to repeat the Attack. A Boulder may only be used to attack once per turn.",
+    "special": "If this _Push_ moves the target adjacent to a new Boulder, you may pay the Cost again to repeat the Attack. A Boulder may only be used to attack once per Turn.",
     "chart": {
       "damage": [0, 0, 0, 0, 3, 3, 4, 4, 4, 5, 5],
       "roll": [
@@ -1368,8 +1370,8 @@
         "",
         "",
         "",
-        "_Push_ 1 (1 _Grit_ or 1 _Reflex_)",
-        "_Push_ 1 (1 _Grit_ or 1 _Reflex_)",
+        "_Push_ 1 (1 _Grit_/_Reflex_)",
+        "_Push_ 1 (1 _Grit_/_Reflex_)",
         "_Push_ 2 (1 _Grit_)",
         "_Push_ 2 (1 _Grit_)",
         "_Push_ 2 (2 _Grit_)",
@@ -1401,10 +1403,9 @@
     "range": "4",
     "ap": 2,
     "move": "Reposition",
-    "effect": "Create a Line 2 Boulder in unoccupied spaces within Range. At the start of each of your Turns, you may Move the Stone Shield up to 3 spaces, and turn it up to one space. The Stone Shield can move through occupied spaces, but may not end its movement there.",
-    "special": "You may end this Enchant at the end of any of your turns and immediately fire the Stone Shield forward. Immediately use the Boulder Throw Technique with the Stone Shield, ignoring the typical Range of the ability.",
-    "boost": "2 _Momentum_. Instead create a Line 3 Boulder.",
-    "target": "Unoccupied adjacent spaces made of earth or stone within Range, or two adjacent Size 1 Earthen Feature."
+    "effect": "Create an Earth Slab in unoccupied spaces within Range. At the start of each of your Turns, you may Move this Earth Slab up to 3 spaces, and turn it up to one space. The Earth Slab can move through occupied spaces, but may not end its movement there.",
+    "special": "You may end this Enchant at the end of your Turn to immediately fire the Earth Slab forward. Make an Attack with an Improvised Heavy Weapon against all creates in a Line 6 originating from the Earth Slab, then place it at the end of this Area.",
+    "target": "Unoccupied adjacent spaces made of earth or stone within Range, or two adjacent Size 1 _Earthen_ Obstacles."
   },
   {
     "name": "Stone Strike",
@@ -1414,11 +1415,11 @@
     "type": "Strike",
     "speed": "3",
     "damagetype": "Crush",
-    "range": "6",
+    "range": "Melee or Range 6",
     "ap": 1,
     "move": "Reposition",
     "effect": "Attack with the below Profile.",
-    "boost": "3 _Momentum_. Halve the Damage, but you may repeat this Strike immediately after using it.",
+    "boost": "2 _Momentum_: Halve the Damage, but you may repeat this Strike immediately after using it.",
     "chart": {
       "damage": [0, 0, 0, 0, 0, 7, 7, 8, 8, 10, 10],
       "roll": [
@@ -1451,7 +1452,7 @@
   },
   {
     "name": "Stonescreen",
-    "desc": "With a powerful strike a boulder is shattered, staggering and pushing all nearby.",
+    "desc": "With a powerful strike an earthen obstacle is shattered, staggering and pushing all nearby.",
     "discipline": "Boulder",
     "keywords": ["Spirit", "Earth"],
     "type": "Maneuver",
@@ -1489,7 +1490,7 @@
         "_Push_ 2, _Exposed_ 2, _Exposed_ 1 (3 _Grit_)"
       ]
     },
-    "target": "A Size 1 Boulder in Range."
+    "target": "A Size 1 Obstacle in Range."
   },
   {
     "name": "Improvised Strike",
@@ -3303,7 +3304,7 @@
     "effect": "Gain 1 _Grit_. If the Attack was _Hit_, add _Push_ 1, _Impair_ 2 (2 _Grit_) to the Attack. On a _Crit_, add _Prone_ and increase the Cost to _Negate_ by 1."
   },
   {
-    "name": "Butt Smack",
+    "name": "Haft Strike",
     "desc": "You whip the butt of your spear around for a swift, if less damaging, attack.",
     "discipline": "Lancer",
     "keywords": ["Weapon"],
@@ -3342,21 +3343,7 @@
     "reqs": "Lance Weapon Wielded.",
     "trigger": "A creature enters a space within your Lance Weapon's _Reach_.",
     "effect": "The target gains _Hobbled_ 1 (2 _Reflex_). Instead of applying this to the creature's next Movement it is instead applied to their current Movement, even if that Movement is already affected by _Hobbled_.",
-    "special": "The target may _Negate_ the _Hobbled_ for no cost by allowing you to immediately make a _Basic Strike_ against them."
-  },
-  {
-    "name": "Impaling Strike",
-    "desc": "You catch a foe on your spear, limiting their movement to a terrifying extent.",
-    "discipline": "Lancer",
-    "keywords": ["Weapon"],
-    "type": "Strike",
-    "speed": "Weapon",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "cost": "2 _Momentum_",
-    "reqs": "Lance Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. If the Attack would already inflict _Hobbled_, increase the cost to _Negate_ by 1 and the Value by 1. Otherwise, except on a _Miss_,  inflict _Hobbled_ 1 (2 _Reflex_)."
+    "special": "The target may _Negate_ the _Hobbled_ for no cost by allowing you to immediately make a _Basic Strike_ against them. If they do, the cost to _Negate_ any effects from the Attack are reduced by 1."
   },
   {
     "name": "Lower Spear",
@@ -3383,21 +3370,22 @@
     "move": "Reposition",
     "reqs": "Lance Weapon Wielded.",
     "effect": "Attack using your weapon's Profile. Increase the _Reach_ of the Weapon by 1 for this Turn.",
-    "special": "You may _Improvise_ this Action as if it had _Fluid_ 2. Gain 1 _Exposed_ if you do so."
+    "special": "You may _Improvise_ this Action as if it had _Fluid_ 2. Gain 1 _Exposed_ if you do so.",
+    "boost": "1 _Momentum_: Instead, increase your _Reach_ by 2."
   },
   {
-    "name": "Rapid Thrust",
-    "desc": "You quickly attack twice with your lance, forcing a foe to focus on you.",
+    "name": "Run Down",
+    "desc": "You charge forward with your lance, targeting a single foe with extreme prejudice.",
     "discipline": "Lancer",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "Charge", "Rush"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
+    "ap": 2,
+    "move": "Shift",
     "cost": "2 _Momentum_",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "Attack using your weapon's _Profile_ twice against the same Target. If both Attacks _Hit_,  gain 1 _Momentum_."
+    "effect": "You must complete your Movement before resolving the rest of this effect. Attack using your weapon's _Profile_. If you do not _Miss_, instead of resolving the Attack, you may deal Damage as if you rolled a 5 and inflict _Push_ 1 (1 _Grit_) and repeat the Attack against the same Target. If you _Push_, you may immediately Move forward the same amount."
   },
   {
     "name": "Retreating Thrust",
@@ -3407,7 +3395,7 @@
     "type": "Strike",
     "speed": "Reaction",
     "range": "Weapon",
-    "cost": "1 _Momentum_",
+    "cost": "1 _Momentum_, 1 _Reflex_",
     "reqs": "Lance Weapon Wielded.",
     "trigger": "A creature enters a space within your Lance Weapon's _Reach_.",
     "effect": "Attack using your weapon's Profile. You may _Move_ 1 away from the Target after resolving the Attack."
@@ -3416,14 +3404,27 @@
     "name": "Set Spear",
     "desc": "You prepare yourself for an attack, situating your lance in the ideal space for a strike.",
     "discipline": "Lancer",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 2"],
     "type": "Maneuver",
     "speed": "Weapon-1",
     "range": "Weapon",
     "ap": 1,
     "move": "None",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "Until you make an Attack with your Lance Weapon this _Round_, increase your Lance Weapon's _Reach_ by 1 and gain _Advantage_ on your next Attack with it."
+    "effect": "Gain 1 _Focus_. Until you make an Attack with your Lance Weapon this _Round_ or move increase your Lance Weapon's _Reach_ by 1 and gain _Advantage_ on your next Attack with it."
+  },
+  {
+    "name": "Polearm Vault",
+    "desc": "You use your polearm as a vaulting pole, launching yourself upwards",
+    "discipline": "Lancer",
+    "keywords": ["Vault", "_Fluid_ 1"],
+    "type": "Move",
+    "speed": "3",
+    "range": "Self",
+    "ap": 1,
+    "move": "Shift",
+    "effect": "Increase your _Jump_ value by an amount equal to 1 + your Weapon's _Reach_ for this Turn. Gain 1 _Momentum_.",
+    "imbue": "1 _Momentum_: This is 0 AP, but you may not take any Movement beyond the _Jump_."
   },
   {
     "name": "Burrow",
@@ -3488,7 +3489,7 @@
     "name": "Earth Kinesis",
     "desc": "The Earthbonded moves the earth of the battlefield around, choosing the shape as easily as breathing.",
     "discipline": "Land",
-    "keywords": ["Spirit", "Earth"],
+    "keywords": ["Spirit", "Earth", "_Fluid_ 1"],
     "type": "Maneuver",
     "speed": "5",
     "range": "6",
@@ -3561,7 +3562,7 @@
     "name": "Earth Shaping",
     "desc": "The Earthbonded molds the ground around them, creating obstacles or a path forward with ease.",
     "discipline": "Land",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "keywords": ["Spirit", "Earth", "Groundsource", "_Fluid_ 1"],
     "type": "Maneuver",
     "speed": "6",
     "range": "6",
