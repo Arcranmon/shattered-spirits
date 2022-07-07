@@ -1,8 +1,11 @@
 <template
   ><span>
-    <v-select
+    <v-autocomplete
+      class="dropdown"
       label="Choose a Discipline!"
       :items="disciplines"
+      item-text="name_"
+      :menu-props="{ top: false, offsetY: true }"
       hide-details
       v-model="discipline"
       outlined
@@ -13,7 +16,7 @@
       <template slot="selection" slot-scope="{ item }">
         {{ item.Name }}
       </template>
-    </v-select>
+    </v-autocomplete>
     <discipline-card
       :discipline="discipline"
       v-if="(discipline.Name !='' )"
@@ -50,5 +53,12 @@ export default Vue.extend({
 .discipline--box {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+.dropdown {
+  width: 50%;
+  margin: 2em !important;
+  margin-left: auto !important ;
+  margin-right: auto !important ;
+  background-color: $color--off-white;
 }
 </style>

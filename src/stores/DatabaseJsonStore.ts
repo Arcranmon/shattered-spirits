@@ -298,7 +298,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getStatuses(): any {
     return () => {
-      return Statuses;
+      return Statuses.filter((x) => x.see === undefined);
     };
   }
 
