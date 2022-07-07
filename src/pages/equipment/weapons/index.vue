@@ -97,7 +97,7 @@ export default Vue.extend({
       return this.$marked.parse(ImprovisedText);
     },
     spirit_weapons: function () {
-      return this.$store.getters.getWeaponsByCategory("Spirit");
+      return this.$store.getters.getWeaponsByFlag("Spirit Weapon");
     },
   },
 });

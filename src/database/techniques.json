@@ -1,6 +1,6 @@
 [
   {
-    "name": "Basic Strike",
+    "name": "Weapon Strike",
     "desc": "A standard strike, balancing damage and speed.",
     "discipline": "Basic",
     "keywords": ["Weapon"],
@@ -10,7 +10,9 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Any Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile."
+    "effect": "Attack using your weapon's Profile.",
+    "imbue": "0 _Momentum_: Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon.",
+    "strong": ""
   },
   {
     "name": "Counter",
@@ -23,7 +25,6 @@
     "cost": "1 _Momentum_, +1 _Momentum_ if the Attack is Speed 4 or slower.",
     "trigger": "You are Attacked by an adjacent enemy.",
     "effect": "Increase the Attack Roll by 1. You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
-    "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None.",
     "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
   },
   {
@@ -37,7 +38,7 @@
     "cost": "2 _Grit_",
     "trigger": "You are Attacked.",
     "effect": "Increase your _Guard_ by 1 against the Attack and reduce the _Grit_ cost to _Negate_ by 1.",
-    "boost": "2 _Grit_: Repeat the Effect. You may repeat this Boost as many times as you can afford."
+    "boost": "2 _Grit_: Repeat the Effect. You may repeat this Boost, paying the cost each time."
   },
   {
     "name": "Dodge",
@@ -50,7 +51,7 @@
     "cost": "2 _Reflex_",
     "trigger": "You are Attacked.",
     "effect": "Reduce the Attack Roll and _Reflex_ cost to _Negate_ by 1.",
-    "boost": "2 _Reflex_: Repeat the Effect. You may repeat this Boost as many times as you can afford."
+    "boost": "2 _Reflex_: Repeat the Effect. You may repeat this Boost, paying the cost each time."
   },
   {
     "name": "Draw",
@@ -283,9 +284,22 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Unless the Target pays any 2 of _Reflex_/_Focus_ you enter a Blade Lock with them. Choose one of the creature's Wielded Weapons to enter a Blade Lock with, as well as a Blade Weapon you have Wielded. The first creature to either use the Weapon involved in the Blade Lock or willingly Move out of Melee Range loses the Blade Lock. The victor may immediately make a Basic Strike against them at Advantage as a Reaction. On a _Hit_+,  inflict _Impaired_ 2 (2 _Grit_).",
-    "special": "If the creature is unwillingly moved, you may pay 1 _Momentum_ to make a Basic Strike as a Reaction, although you do not have Advantage and do not inflict _Impaired_.",
+    "effect": "Unless the Target pays any 2 of _Reflex_/_Focus_ you enter a Blade Lock with them. Choose one of the creature's Wielded Weapons to enter a Blade Lock with, as well as a Blade Weapon you have Wielded. The first creature to either use the Weapon involved in the Blade Lock or willingly Move out of Melee Range loses the Blade Lock. The victor may immediately make a Weapon Strike against them at Advantage as a Reaction. On a _Hit_+,  inflict _Impaired_ 2 (2 _Grit_).",
+    "special": "If the creature is unwillingly moved, you may pay 1 _Momentum_ to make a Weapon Strike as a Reaction, although you do not have Advantage and do not inflict _Impaired_.",
     "boost": "1 _Grit_: If you are using a Two-Handed Blade, increase the initial cost to Negate by 1."
+  },
+  {
+    "name": "Blade Parry",
+    "desc": "You expertly defend and ready a counterattack in a fluid motion, putting every aspect of your blade to use.",
+    "keywords": ["Weapon", "Block", "Efficient"],
+    "discipline": "Blademaster",
+    "type": "Defensive",
+    "speed": "Reaction",
+    "range": "Weapon",
+    "cost": "2 _Momentum_, 1 _Grit_, 1 _Reflex_",
+    "trigger": "You are Attacked.",
+    "reqs": "Blade Weapon Wielded",
+    "effect": "Reduce the Attack Roll by 2 and increase your _Guard_ by 1 against the triggering _Attack_. If this makes the Attack a _Graze_-, you have _Advantage_ on your next Attack with a Blade Weapon against the creature (2 _Focus_ Negates)."
   },
   {
     "name": "Blinding Flourish",
@@ -307,67 +321,79 @@
     "discipline": "Blademaster",
     "keywords": ["Weapon"],
     "type": "Strike",
-    "speed": "Weapon",
-    "range": "Weapon",
-    "ap": 2,
-    "move": "Step",
+    "speed": "Reaction",
     "cost": "2 _Momentum_",
+    "trigger": "You would make an Attack with a Blade at _Advantage_.",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile three times against the same Target."
+    "effect": "Make the Attack twice against the same Target. Neither Attack has _Advantage_."
+  },
+  {
+    "name": "Swords Dance",
+    "desc": "You weave your blades to an fro, creating a deadly web of steel to distract a foe as you prepare to strike.",
+    "discipline": "Blademaster",
+    "keywords": ["Weapon", "_Fluid_ 2"],
+    "type": "Maneuver",
+    "speed": "3",
+    "ap": 1,
+    "move": "Reposition",
+    "reqs": "Blade Weapon Wielded.",
+    "target": "A creature in Range.",
+    "range": "Weapon",
+    "effect": "Gain 1 _Momentum_. The Target gains _Exposed_ 1 (1 _Focus_) and takes Damage as if you rolled a 5 (1 _Reflex_ negates).",
+    "boost": "1 _Reflex_: Instead, inflict _Exposed_ 2 (2 _Focus_)."
   },
   {
     "name": "Lacerating Strike",
-    "desc": "You go for a quick strike that leaves a vicious wound that, while not immediately lethal, will bleed heavily.",
+    "desc": "You go for a strike that leaves a vicious wound that, while not immediately lethal, will bleed heavily.",
     "discipline": "Blademaster",
     "keywords": ["Weapon"],
     "type": "Strike",
-    "speed": "Weapon-1",
+    "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
     "reqs": "Light or Versatile Blade Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Reduce the Damage by X, with a max of 3. Inflict _Bleed_ 1xX (X _Grit_ negates).",
+    "effect": "Attack using your weapon's Profile and reduce the Damage by X, with a max of 3. Inflict _Bleed_ 2xX (X _Grit_ negates) on a _Hit_+.",
     "boost": "1 _Momentum_: Increase the Cost to Negate by 1, and inflict _Wounded_ 1 as well."
   },
   {
-    "name": "Passing Blade",
-    "desc": "You quickly strike with your blade while passing by a foe.",
+    "name": "Nimble Blade",
+    "desc": "You quickly strike with your blade while passing by a foe, potentially setting yourself up for a secondary strike.",
     "discipline": "Blademaster",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "Light"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
-    "move": "Step, Reposition",
+    "move": "Reposition, Step",
     "cost": "1 _Momentum_",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Use one of the Moves provided by this Technique. Attack using your Weapon's Profile. Use the other Move.",
-    "special": "If you _Hit_/_Crit_,  add _Safe_ to the second Move.",
-    "boost": "1 _Momentum_: Both Moves are Reposition."
+    "effect": "Use your Reposition Move. Attack using your Weapon's Profile. Use Step Move.",
+    "special": "On a _Hit_+, you may choose to not inflict any Status with this Attack and add _Safe_ to the second Move.",
+    "boost": "2 _Momentum_: Make an Attack after you use your Step Move.",
+    "imbue": "1 _Momentum_/_Grit_: Remove _Light_."
   },
   {
-    "name": "Slashing Counter",
+    "name": "Shattering Counter",
     "desc": "You meet a foes' blade in a dangerous counter, putting both weapons are risk.",
     "keywords": ["Weapon", "Sundering"],
-    "discipline": "Blademaster",
+    "discipline": "Weapon Master",
     "type": "Defensive",
     "speed": "Reaction",
     "range": "Self",
     "cost": "1 _Momentum_, 1 _Grit_/_Reflex_",
-    "reqs": "Blade Weapon Wielded.",
     "trigger": "You are Attacked with a Weapon.",
-    "effect": "Attack using your weapon's Profile, targeting the Weapon used for the Attack. If the Target's weapon is _Damaged_, reduce their initial Attack Roll against you by 2. If you _Miss_,  also resolve the Target's Attack against your Weapon. Otherwise, reduce the Attack Roll by 1."
+    "effect": "Attack using your weapon's Profile, targeting the Weapon used for the Attack. If the Target's weapon is _Damaged_ by this, reduce their initial Attack Roll against you by 2. If you _Miss_,  also resolve the Target's Attack against your Weapon. Otherwise, reduce the Attack Roll by 1."
   },
   {
     "name": "Sunder",
     "desc": "You lash out at a foe's weapon, attempting to render it useless.",
-    "discipline": "Blademaster",
+    "discipline": "Weapon Master",
     "keywords": ["Weapon", "Sundering", "_Pierce_ 2"],
     "type": "Maneuver",
     "speed": "Weapon",
     "range": "Weapon",
     "move": "Reposition",
-    "reqs": "Blade Weapon Wielded.",
     "effect": "Attack using your weapon's Profile, targeting a Wielded Weapon."
   },
   {
@@ -382,21 +408,21 @@
     "move": "Reposition",
     "cost": "1 _Momentum_",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Treat the Target's _Guard_ as twice its current value for this attack. If the Target has no _Guard_ or you target a Creature Part, deal 4 additional Damage."
+    "effect": "Attack using your weapon's Profile. Treat the Target's _Guard_ as twice its current value for this attack. If the Target has no _Guard_ or you target a Creature Part, deal 3 additional Damage."
   },
   {
     "name": "Warding Strike",
     "desc": "A strike that deals less damage, but easily allows you to slip into a defensive stance.",
     "discipline": "Blademaster",
-    "keywords": ["Weapon", "Warding"],
+    "keywords": ["Weapon", "_Warding_ 1"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Reduce the Damage by 2. Gain 1 _Grit_/_Reflex_.",
-    "imbue": "0 _Momentum_: If the Weapon is _Light_/_Versatile_, Speed is instead Weapon-1 and Move is Step. _Versatile_ Weapons take a -2 damage penalty."
+    "effect": "Attack using your weapon's Profile. Reduce the Damage by 2. Gain 1 _Grit_/_Reflex_, or 2 _Grit_/_Reflex_ on a _Hit_+.",
+    "imbue": "1 _Momentum_: Choose one:\n* Add _Quick_. Speed is Weapon-1 and Move is Step. _Versatile_ Weapons take a -2 Damage penalty. Gain 1 _Reflex_.\n* Add _Strong_. Speed is instead Weapon+1 and Move is Step. _Versatile_ Weapons deal +1 Damage, _Heavy_ deal +2. Gain 1 _Grit_."
   },
   {
     "name": "Blasting Strike",
@@ -2327,7 +2353,7 @@
     "cost": "2 _Grit_",
     "trigger": "You are Attacked.",
     "effect": "Reduce the _Attack Roll_ by 2 and inflict _Impaired_ 1 (1 _Focus_). You may spend _Grit_ in place of _Reflex_ to _Negate_ this Attack. Gain _Hobbled_ 1.",
-    "boost": "1 _Momentum_: You may use the Basic Strike Technique, treating its Move as none. You must use a _Body_ Weapon."
+    "boost": "1 _Momentum_: You may use the Weapon Strike Technique, treating its Move as none. You must use a _Body_ Weapon."
   },
   {
     "name": "Solid Footing",
@@ -3216,7 +3242,7 @@
     "move": "The movement granted by Free Run determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n*  <ins>Shift:</ins> Speed 3\n*  <ins>Sprint:</ins> Speed 5",
     "cost": "1 _Momentum_/_Grit_",
     "reqs": "Heavy Armor Worn.",
-    "effect": "The Movement granted by this Technique must be taken in a straight line. You may make a Basic Strike with a Body Weapon against all creatures you move through with this Movement.",
+    "effect": "The Movement granted by this Technique must be taken in a straight line. You may make a Weapon Strike with a Body Weapon against all creatures you move through with this Movement.",
     "boost": "1 _Grit_: Increase your _Guard_ by 2 for this Movement."
   },
   {
@@ -3230,7 +3256,7 @@
     "reqs": "Heavy Armor Worn.",
     "trigger": "An Attack _Misses_/_Grazes_ you.",
     "effect": "Inflict _Push_ 1, _Exposed_ 1 (Any 2 _Grit_/_Focus_) on the Attacker.",
-    "special": "If your _Guard_ reduces the Damage of a Strike to 0, you may instead make a Basic Strike against the creature using an Unarmed Weapon."
+    "special": "If your _Guard_ reduces the Damage of a Strike to 0, you may instead make a Weapon Strike against the creature using an Unarmed Weapon."
   },
   {
     "name": "Armored Shell",
@@ -3344,7 +3370,7 @@
     "reqs": "Lance Weapon Wielded.",
     "trigger": "A creature enters a space within your Lance Weapon's _Reach_.",
     "effect": "The target gains _Hobbled_ 1 (2 _Reflex_). Instead of applying this to the creature's next Movement it is instead applied to their current Movement, even if that Movement is already affected by _Hobbled_.",
-    "special": "The target may _Negate_ the _Hobbled_ for no cost by allowing you to immediately make a _Basic Strike_ against them. If they do, the cost to _Negate_ any effects from the Attack are reduced by 1."
+    "special": "The target may _Negate_ the _Hobbled_ for no cost by allowing you to immediately make a Weapon Strike against them. If they do, the cost to _Negate_ any effects from the Attack are reduced by 1."
   },
   {
     "name": "Lower Spear",
@@ -3398,7 +3424,7 @@
     "range": "Weapon",
     "move": "Reposition",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "You may not Move until after you Attack. Attack using your weapon's Profile. On a _Hit_+, add _Safe_ to this Movement.",
+    "effect": "You may not Move until after you Attack, and must end this Move further away from the Target than you started the Turn. Attack using your weapon's Profile. On a _Hit_+, add _Safe_ to this Movement.",
     "special": "When used as a part of a _Reaction_ that normally does not allow you to Move, you may pay 2 _Reflex_ to _Step_ Move."
   },
   {
@@ -4078,7 +4104,7 @@
     "cost": "1 _Momentum_",
     "reqs": "Shield Wielded.",
     "trigger": "An adjacent enemy Attacks a creature other than you.",
-    "effect": "You may immediately Attack the triggering enemy with a Basic Strike using a Shield. On a _Hit_/_Crit_, reduce the triggering Attack Roll by 1.",
+    "effect": "You may immediately Attack the triggering enemy with a Weapon Strike using a Shield. On a _Hit_/_Crit_, reduce the triggering Attack Roll by 1.",
     "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None.",
     "boost": "1 _Momentum_. You may instead Attack with any _Strike_ but must still use a Shield.\n1 _Reflex_: Trigger is instead 'An enemy within Step Range Attacks a creature.' So long as the triggering _Strike_ has at least Step Movement, you may Step Move as a part of this Reaction, but must use that Movement to end adjacent to the triggering foe.\n1 _Grit_, 2 _Momentum_: Instead, the Trigger is 'An adjacent enemy Attacks.'"
   },
@@ -6475,7 +6501,7 @@
     "move": "Shift",
     "cost": "2 _Momentum_",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use a Basic Strike against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
+    "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use a Weapon Strike against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
   },
   {
     "name": "Concussive Strike",
@@ -6558,7 +6584,7 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Must be attached to a Weapon Strike made while only Wielding a Blunt Weapon.",
-    "effect": "Immediately make a Basic Strike against the creature's Armor using the same Weapon used for the Attached Strike. Deal no Damage to the Creature and inflict no Conditions.",
+    "effect": "Immediately make a Weapon Strike against the creature's Armor using the same Weapon used for the Attached Strike. Deal no Damage to the Creature and inflict no Conditions.",
     "special": "If the Target of the Attached Strike used a _Block_ Reaction against the Attached Strike, you may instead choose Target a piece of Equipment they have Wielded. This attack does not have Disadvantage."
   },
   {

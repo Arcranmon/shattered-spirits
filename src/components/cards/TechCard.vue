@@ -50,6 +50,12 @@
       <div class="tech--format" v-if="tech.HasImbue">
         <display-tooltip-text :string="tech.ImbueHeader" />
       </div>
+      <div class="tech--format" v-if="tech.HasQuick">
+        <display-tooltip-text :string="tech.QuickHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasStrong">
+        <display-tooltip-text :string="tech.StrongHeader" />
+      </div>
       <div class="tech--format" v-if="tech.HasBoost">
         <display-tooltip-text :string="tech.BoostHeader" />
       </div>

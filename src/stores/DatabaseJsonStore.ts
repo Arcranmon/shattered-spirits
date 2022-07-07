@@ -82,8 +82,16 @@ export class DatabaseJsonStore extends VuexModule {
   get getWeaponsByCategory(): any {
     return (category: string) => {
       return Weapons.filter(
-        (x) => x.category.trim() === category.trim()
+        (x) => x.category.trim() === category.trim() && !x.flag
       ).map((x) => Weapon.Deserialize(<IWeaponData>x));
+    };
+  }
+
+  get getWeaponsByFlag(): any {
+    return (flag: string) => {
+      return Weapons.filter((x) => x.flag === flag).map((x) =>
+        Weapon.Deserialize(<IWeaponData>x)
+      );
     };
   }
 
