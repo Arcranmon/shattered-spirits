@@ -14,6 +14,7 @@ class Technique {
   private effect_: string;
   private imbue_: string;
   private keywords_: Array<string>;
+  private linked_: string;
   private move_: string;
   private name_: string;
   private range_: string;
@@ -35,6 +36,7 @@ class Technique {
     this.effect_ = "";
     this.imbue_ = "";
     this.keywords_ = [];
+    this.linked_ = "";
     this.move_ = "";
     this.name_ = "";
     this.range_ = "";
@@ -123,6 +125,9 @@ class Technique {
   public get CostHeader() {
     return "**Cost:** " + this.cost_;
   }
+  public get Discipline() {
+    return this.discipline_;
+  }
   public get HasDamageType() {
     return this.damagetype_.length > 0;
   }
@@ -146,6 +151,12 @@ class Technique {
   }
   public get KeywordsHeader() {
     return "_" + this.Keywords.join("_, _") + "_";
+  }
+  public get HasLinked() {
+    return this.linked_.length > 0;
+  }
+  public get LinkedHeader() {
+    return "**Linked:** " + this.linked_;
   }
   public get HasMove() {
     return this.move_.length > 0;
@@ -211,6 +222,7 @@ class Technique {
     this.effect_ = data.effect || "";
     this.imbue_ = data.imbue || "";
     this.keywords_ = data.keywords || [];
+    this.linked_ = data.linked || "";
     this.move_ = data.move || "";
     this.name_ = data.name || "";
     this.range_ = data.range || "";

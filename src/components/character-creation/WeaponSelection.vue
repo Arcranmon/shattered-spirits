@@ -36,22 +36,17 @@
     <v-container class="fill-height" fluid>
       <v-row
         ><v-col cols="3">
-          <v-select
+          <v-autocomplete
             label="Choose a Weapon!"
             :items="weapons"
+            :item-text="(item) => item.Name + ' (' + item.Category + ')'"
             hide-details
             v-model="weapon"
             outlined
             return-object
             @change="$emit('chose', weapon)"
           >
-            <template slot="item" slot-scope="{ item }">
-              {{ item.Name }} ({{ item.Category }})</template
-            >
-            <template slot="selection" slot-scope="{ item }">
-              {{ item.Name }} ({{ item.Category }})
-            </template>
-          </v-select></v-col
+          </v-autocomplete></v-col
         ><v-col cols="9">
           <v-btn
             color="success"

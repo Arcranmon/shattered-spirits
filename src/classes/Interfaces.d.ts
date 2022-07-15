@@ -10,6 +10,7 @@ declare interface ITechData {
   effect: string;
   imbue?: string;
   keywords?: Array<string>;
+  linked?: string;
   move?: string;
   name: string;
   range?: string;

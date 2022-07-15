@@ -34,19 +34,12 @@
         <v-select
           label="Choose a Technique!"
           :items="spiritTechniques"
+          :item-text="(item) => item.Name + ' (' + item.Discipline + ')'"
           hide-details
           v-model="spirit_technique"
           outlined
           return-object
-          @change="$emit('chose', spirit_technique)"
-        >
-          <template slot="item" slot-scope="{ item }">
-            {{ item.Name }}</template
-          >
-          <template slot="selection" slot-scope="{ item }">
-            {{ item.Name }}
-          </template>
-        </v-select></v-col
+          @change="$emit('chose', spirit_technique)" /></v-col
       ><v-col cols="9">
         <v-btn
           color="success"
@@ -77,7 +70,7 @@
         :inputs="charSkillTechniques"
         job="Stances"
         :collapse="true"
-        display_text="Selected Styles"
+        display_text="Selected Skill Techniques"
         standalone_or_contained="Standalone"
         :selectButton="true"
         @chose="removeStance"
@@ -88,19 +81,12 @@
         <v-select
           label="Choose Skill Techniques!"
           :items="skillTechniques"
+          :item-text="(item) => item.Name + ' (' + item.Discipline + ')'"
           hide-details
           v-model="skill_technique"
           outlined
           return-object
-          @change="$emit('chose', skill_technique)"
-        >
-          <template slot="item" slot-scope="{ item }">
-            {{ item.Name }}</template
-          >
-          <template slot="selection" slot-scope="{ item }">
-            {{ item.Name }}
-          </template>
-        </v-select></v-col
+          @change="$emit('chose', skill_technique)" /></v-col
       ><v-col cols="9">
         <v-btn
           color="success"

@@ -34,10 +34,6 @@
       <span class="page--description" v-html="rangedText" />
       <show-cards :inputs="ranged" job="Weapons" :collapse="true" />
     </div>
-    <div class="weapon--box" style="background-color: #f8e4fb;">
-      <h2>Spirit Weapons</h2>
-      <show-cards :inputs="spirit_weapons" job="Weapons" :collapse="true" />
-    </div>
   </div>
 </template>
 
@@ -95,9 +91,6 @@ export default Vue.extend({
     },
     improvisedText: function () {
       return this.$marked.parse(ImprovisedText);
-    },
-    spirit_weapons: function () {
-      return this.$store.getters.getWeaponsByFlag("Spirit Weapon");
     },
   },
 });

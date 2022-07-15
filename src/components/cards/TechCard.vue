@@ -59,6 +59,9 @@
       <div class="tech--format" v-if="tech.HasBoost">
         <display-tooltip-text :string="tech.BoostHeader" />
       </div>
+      <div class="tech--format" v-if="tech.HasLinked">
+        <display-tooltip-text :string="tech.LinkedHeader" />
+      </div>
       <div style="height: 0.5em;" />
       <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /> </span>
     </div>

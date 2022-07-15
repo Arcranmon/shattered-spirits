@@ -32,22 +32,15 @@
     </div>
     <v-row
       ><v-col cols="3">
-        <v-select
+        <v-autocomplete
           label="Choose a Stance!"
           :items="stances"
+          :item-text="(item) => item.Name + ' (' + item.Discipline + ')'"
           hide-details
           v-model="stance"
           outlined
           return-object
-          @change="$emit('chose', stance)"
-        >
-          <template slot="item" slot-scope="{ item }">
-            {{ item.Name }}</template
-          >
-          <template slot="selection" slot-scope="{ item }">
-            {{ item.Name }}
-          </template>
-        </v-select></v-col
+          @change="$emit('chose', stance)" /></v-col
       ><v-col cols="9">
         <v-btn
           color="success"
@@ -85,22 +78,15 @@
     </div>
     <v-row
       ><v-col cols="3">
-        <v-select
+        <v-autocomplete
           label="Choose a Style!"
           :items="styles"
+          :item-text="(item) => item.Name + ' (' + item.Discipline + ')'"
           hide-details
           v-model="style"
           outlined
           return-object
-          @change="$emit('chose', style)"
-        >
-          <template slot="item" slot-scope="{ item }">
-            {{ item.Name }}</template
-          >
-          <template slot="selection" slot-scope="{ item }">
-            {{ item.Name }}
-          </template>
-        </v-select></v-col
+          @change="$emit('chose', style)" /></v-col
       ><v-col cols="9">
         <v-btn
           color="success"

@@ -23,6 +23,10 @@ class Stance {
   public get Desc() {
     return this.desc_;
   }
+
+  public get Discipline() {
+    return this.discipline_;
+  }
   public get Name() {
     return this.name_;
   }
