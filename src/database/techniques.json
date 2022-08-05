@@ -2232,7 +2232,7 @@
     "boost": "4 _Momentum_: Instead, triple the total Damage."
   },
   {
-    "name": "Gather Strength",
+    "name": "Stand Fast",
     "discipline": "Grounding",
     "desc": "The ground around you cracks as you pull the strength of the earth inward.",
     "keywords": ["Spirit", "Earth", "_Fluid_ 2"],
@@ -2243,6 +2243,49 @@
     "effect": "Gain 2 _Grit_ and 1 _Momentum_.",
     "special": "If you are in a Grounding Stance gain 1 additional _Grit_.",
     "boost": "1 _Focus_, 1 _Grit_: Make all adjacent spaces _Rough_."
+  },
+  {
+    "name": "Gathering Strength",
+    "discipline": "Grounding",
+    "desc": "You collect the strength behind you in preparation for an overpowering, deadly strike.",
+    "keywords": [
+      "Spirit",
+      "Earth",
+      "Weapon",
+      "Priority",
+      "Rigid",
+      "Siege",
+      "_Unblockable_ 1",
+      "_Pierce_ 1"
+    ],
+    "type": "Maneuver",
+    "speed": "Weapon-1",
+    "cost": "2 _Grit_, 1 _Momentum",
+    "ap": 1,
+    "move": "Step",
+    "range": "Melee",
+    "area": "Cone 2",
+    "reqs": "Must as a _Heavy_ or _Versatile_ Unarmed Weapon.",
+    "effect": "Create a _Hazard_ within the Area. At the end of Phase Weapon+2, remove this _Hazard_ and Attack using your Weapon's Profile in the area. If you deal Crush Damage with the Attack, make the Area _Rough_ as well. Remove this _Hazard_ without attacking if you Move after creating it.",
+    "special": "If the Weapon is _Heavy_, the Area is instead Cone 3.",
+    "imbue": "1 _Momentum_: You may instead use any _Weapon_ for this _Maneuver_."
+  },
+  {
+    "name": "Worldbreaking Strength",
+    "discipline": "Grounding",
+    "desc": "Your power.",
+    "keywords": [
+      "Spirit",
+      "Earth",
+      "Upgrade",
+      "_Unblockable_ 2",
+      "Siege",
+      "Strong"
+    ],
+    "type": "Maneuver",
+    "cost": "1 _Grit_, 2 _Momentum",
+    "reqs": "Must be _Attached_ to a Weapon Strike.",
+    "effect": "Before using the _Attached_ Strike, pay any amount of _Grit_. The Target of the Attack must pay an equivalent amount of _Grit_, or else you have _Advantage_ on the Strike and, on a _Hit_+, knock the Target _Prone_ (2 _Grit_) and make the Target's space _Jagged_."
   },
   {
     "name": "Mighty Fling",
@@ -2270,8 +2313,20 @@
     "area": "Burst 1",
     "ap": 1,
     "move": "Step",
-    "effect": "Increase your _Jump_ value by 3 or double it for the _Turn_, whichever is higher. Separate from your _Move_ this _Turn_ you may make a single _Jump_. At the end of this _Jump_, make the Area _Veiled_ and _Push_ 1 (1 _Grit_) all creatures in it.",
-    "imbue": "2 _Momentum_: This is 0 AP. _Attach_ this to an Technique. Resolve this Technique Effect simultaneously with the _Attached_ Action, but the _Move_ from this Technique becomes _None_."
+    "effect": "Increase your _Jump_ value by 3 or double it for the _Turn_, whichever is higher. Separate from your _Move_ this _Turn_ you may make a single _Jump_. At the end of this _Jump_, make the Area _Veiled_, deal 2 Damage, and _Push_ 1 (1 _Grit_) all creatures in it.",
+    "imbue": "2 _Momentum_: This is 0 AP. Add the _Upgrade_ Keyword, and add the Effect from this _Technique_ to its Attached Technique."
+  },
+  {
+    "name": "Immovable Object",
+    "discipline": "Grounding",
+    "desc": "You root your stance, using your colossal strength to stop an assault in its tracks.",
+    "keywords": ["Spirit", "Earth", "Block"],
+    "type": "Defensive",
+    "speed": "Reaction",
+    "trigger": "You are _Attacked_.",
+    "effect": "Gain _Staggered_. Immediately use the Deflect Reaction, ignoring its usual _Cost_. If you would be _Pushed_, _Pulled_, or _Slid_, you are instead not.",
+    "special": "If you take no damage from the triggering Attack, gain 1 _Grit_.",
+    "boost": "1 _Grit_: Gain _Hobbled_ 1. If the attack was melee, inflict _Push_ 1, _Exposed_ 2 (2 _Grit_)."
   },
   {
     "name": "Mighty Throw",
@@ -3389,7 +3444,7 @@
     "reqs": "Lance Weapon Wielded.",
     "effect": "Attack using your weapon's Profile. Increase the _Reach_ of the Weapon by 1 for this Turn.",
     "special": "You may _Improvise_ this Action as if it had _Fluid_ 2. Gain 1 _Exposed_ if you do so.",
-    "boost": "1 _Momentum_: Instead, increase your _Reach_ by 2."
+    "imbue": "1 _Focus_/_Momentum_: Speed is instead Weapon-1, and this Strike is instead a Maneuver. Create a Line X _Hazard_, where X is Weapon Range+2. At the end of Phase Weapon Speed+1, Attack using your weapon's Profile against all creatures within the Hazard."
   },
   {
     "name": "Polearm Vault",
