@@ -39,7 +39,7 @@ export default Vue.extend({
       return this.$store.getters.getArmorByCategory("Heavy Armor");
     },
     shields: function () {
-      return this.$store.getters.getWeaponByCategory("Shield");
+      return this.$store.getters.getWeaponsByCategory("Shield");
     },
   },
 });
