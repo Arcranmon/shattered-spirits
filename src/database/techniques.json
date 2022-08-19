@@ -165,7 +165,7 @@
     "range": "Self",
     "move": "Step",
     "cost": "2 _Reflex_",
-    "trigger": "A Phase begins.",
+    "trigger": "A Phase begins while you are not _Prone_.",
     "effect": "None.",
     "boost": "1 _Momentum_/_Reflex_: Add _Safe_."
   },
@@ -1789,10 +1789,11 @@
     "speed": "Reaction",
     "move": "Step",
     "cost": "1 _Reflex_",
-    "reqs": "No or Light Armor Worn.",
-    "trigger": "Your _Turn_ begins.",
+    "reqs": "No or Light Armor Worn and you are not _Prone_.",
+    "trigger": "A _Phase_ begins.",
     "effect": "None.",
-    "boost": "1 _Reflex_: Trigger is instead 'A _Turn_ begins.'"
+    "boost": "1 _Reflex_: Trigger is instead 'A _Turn_ begins.'",
+    "imbue": "1 _Reflex_: You may use this Technique while _Prone_."
   },
   {
     "name": "Agile Counter",
@@ -1804,7 +1805,7 @@
     "range": "Self",
     "cost": "1 _Momentum_, 1 _Reflex_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
     "reqs": "No Armor Worn.",
-    "trigger": "An adjacent enemy _Misses_/_Grazes_ with an Attack against you.",
+    "trigger": "An adjacent creature _Grazes_- on an Attack against you.",
     "effect": "You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
     "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None.",
     "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
@@ -1813,13 +1814,14 @@
     "name": "Dodge Roll",
     "discipline": "Freedom",
     "desc": "You roll away from an attacker, leaving them potentially striking nothing.",
-    "keywords": ["Evade", "Safe"],
+    "keywords": ["Evade", "Charge", "Safe"],
     "type": "Defensive",
     "speed": "Reaction",
     "cost": "4 _Reflex_",
     "reqs": "No Armor Worn.",
-    "trigger": "You are Attacked.",
-    "effect": "Resolve your Movement before the foe Attacks and inflict _Impaired_ 1 (1 _Focus_). If they cannot reach you with their remaining Movement the Attacker must either choose a new Target or lose the attack.",
+    "trigger": "You would be Attacked.",
+    "effect": "Resolve your Movement before the foe Attacks. The Attacker may continue moving but, if they cannot place you within range of the Attack, the Attacker must either choose a new Target within Range or lose the Attack. Regardless, reduce the Attack Roll by 1.",
+    "boost": "2 _Reflex_: Movement is instead _Reposition_.",
     "movement": "Step"
   },
   {
@@ -1831,10 +1833,10 @@
     "speed": "Reaction",
     "cost": "3 _Reflex_",
     "reqs": "No Armor Worn.",
-    "trigger": "You are targeted by a damaging Area effect.",
-    "effect": "If the Movement from this effect takes you out of the Area, reduce the _Cost_ to _Negate_ the triggering effect by 1 and halve the damage.",
-    "boost": "1 _Reflex_: Movement is instead Shift. You fall _Prone_ at the end of this Reaction.",
-    "movement": "Reposition"
+    "trigger": "You are targeted by a damaging Area Effect.",
+    "effect": "If the Movement from this effect takes you out of the Area, reduce the _Cost_ to _Negate_ the triggering effect by 2 and halve the Damage.",
+    "boost": "1 _Reflex_: Movement is instead Reposition. You fall _Prone_ at the end of this Reaction.",
+    "movement": "Step"
   },
   {
     "name": "Free Run",
@@ -1862,7 +1864,7 @@
     "ap": 1,
     "move": "Step",
     "reqs": "Must be Attached to a Single Target Strike and No Armor Worn.",
-    "effect": "Gain 1 _Reflex_. After resolving this Technique's Movement, you may Step Move and _Jump_ for no Cost. If you _Move_ directly through a creature's space, land on the opposite side, and they do not _Hit_/_Crit_ you with a _Punish_ Attack, grant yourself _Advantage_ on the Attached Strike against that creature. You must use the Attached Strike's Movement after Attacking."
+    "effect": "Gain 1 _Reflex_. After resolving this Technique's Movement, you may _Jump_ your maximum distance for no Cost. If you _Move_ directly through a creature's space, land on the opposite side, and they do not _Hit_+ you with a _Punish_ Attack, grant yourself _Advantage_ on the Attached Strike against that creature. You must use the Attached Strike's Movement after Attacking."
   },
   {
     "name": "Lightning Reflexes",
@@ -1874,33 +1876,36 @@
     "cost": "1_Reflex_ if triggering off _Safe_ Movement, 2 _Reflex_ otherwise.",
     "reqs": "No Armor Worn.",
     "trigger": "A creature makes a _Punish_ Attack against you.",
-    "effect": "Resolve the Attack as if it rolled a 5.",
-    "boost": "1 _Reflex_: Inflict _Exposed_ 1 (Any 2 _Focus_/_Reflex_).\n1 _Reflex_: Instead, resolve the Attack as if it rolled a 2."
+    "effect": "Resolve the Attack by rolling on a single d6.",
+    "boost": "Choose any:\n* 1 _Reflex_: On a _Miss_, inflict _Exposed_ 1 (Any 2 _Focus_/_Reflex_).\n* 1 _Reflex_: Instead, resolve the Attack as if it rolled a 2."
   },
   {
     "name": "Quick Step",
     "discipline": "Freedom",
-    "desc": "Unhindered by armor you move quickly, repositioning at a rapid rate.",
+    "keywords": ["_Fluid_ 2", "Safe"],
+    "desc": "Unhindered by armor you move quickly, shifting in the blink of an eye.",
     "type": "Move",
     "speed": "Instinctive",
     "ap": 1,
     "move": "Step",
     "reqs": "No Armor Worn.",
     "effect": "Gain 2 _Reflex_.",
+    "special": "If _Improvised_, Movement is instead Reposition.",
     "imbue": "1 _Momentum_: This is instead 0 AP."
   },
   {
     "name": "Tumble",
     "discipline": "Freedom",
     "desc": "You roll away from an advancing foe, creating a slight opening.",
-    "keywords": ["Evade", "Step"],
+    "keywords": ["Evade", "Charge"],
     "type": "Move",
     "speed": "Reaction",
     "move": "Step",
     "cost": "1 _Reflex_",
     "reqs": "No Armor Worn.",
     "trigger": "A hostile creature ends their turn adjacent to you.",
-    "effect": "Inflict _Vulnerable_ 1 (1 _Reflex_) on the triggering foe."
+    "effect": "Inflict _Vulnerable_ 1 (1 _Reflex_) on the triggering foe.",
+    "boost": "1 _Momentum_/_Reflex_: Add _Safe_."
   },
   {
     "name": "Butcher",
@@ -1958,7 +1963,7 @@
     "range": "Self",
     "cost": "2 _Grit_",
     "trigger": "You are Attacked with a Single-Target Attack while you are the _Top_ in a _Grapple_.",
-    "effect": "The Attacker must choose: Either resolve the Attack against both you and the _Bottom_, dealing half Damage to both and reducing the cost to _Negate_ by 1 or reduce the Attack Roll by 3.",
+    "effect": "The Attacker must choose: Either add _Glancing_ and resolve the Attack against both you and the _Bottom_ or reduce the Attack Roll by 3.",
     "boost": "1 _Momentum_: You choose which Effect to use instead of the Attacker."
   },
   {
@@ -2108,7 +2113,7 @@
     "ap": 1,
     "move": "None",
     "reqs": "Must be _Top_ in a _Grapple_.",
-    "effect": "Immediately _Move_ the _Bottom_ in the _Grapple_ to the opposite side of yourself and Attack them with the below _Profile_. The _Bottom_ may spend 2 _Grit_ before you make the attack to _Negate_; if they do, do not Move them and they take half Damage from the Attack.",
+    "effect": "Immediately _Move_ the _Bottom_ in the _Grapple_ to the opposite side of yourself and Attack them with the below _Profile_. The _Bottom_ may spend 3 _Grit_ before you make the attack; if they do, do not Move them and add _Glancing_.",
     "special": "You  may choose to end the _Grapple_ as a part of this Attack. If you do, increase the cost to _Negate_ the Attack by 1 and increase the Damage by 2.",
     "chart": {
       "damage": [5, 5, 5, 5, 6, 6, 6, 6, 8, 8, 8],
@@ -2274,18 +2279,12 @@
     "name": "Worldbreaking Strength",
     "discipline": "Grounding",
     "desc": "Your power.",
-    "keywords": [
-      "Spirit",
-      "Earth",
-      "Upgrade",
-      "_Unblockable_ 2",
-      "Siege",
-      "Strong"
-    ],
+    "speed": "Upgrade",
+    "keywords": ["Spirit", "Earth", "_Unblockable_ 2", "Siege", "Strong"],
     "type": "Maneuver",
     "cost": "1 _Grit_, 2 _Momentum",
     "reqs": "Must be _Attached_ to a Weapon Strike.",
-    "effect": "Before using the _Attached_ Strike, pay any amount of _Grit_. The Target of the Attack must pay an equivalent amount of _Grit_, or else you have _Advantage_ on the Strike and, on a _Hit_+, deal an additional 3 Damage, knock the Target _Prone_ (2 _Grit_) and make the Target's space _Jagged_."
+    "effect": "You and the Target of the Attached Strike must _Wager_ _Grit_. If you win, you have _Advantage_ on the Strike and, on a _Hit_+, deal an additional 3 Damage, knock the Target _Prone_ (2 _Grit_). Regardless, make the Target's space _Jagged_."
   },
   {
     "name": "Mighty Fling",
@@ -2314,7 +2313,7 @@
     "ap": 1,
     "move": "Step",
     "effect": "Increase your _Jump_ value by 3 or double it for the _Turn_, whichever is higher. Separate from your _Move_ this _Turn_ you may make a single _Jump_. At the end of this _Jump_, make the Area _Veiled_, deal 2 Damage, and _Push_ 1 (1 _Grit_) all creatures in it.",
-    "imbue": "2 _Momentum_: This is 0 AP. Add the _Upgrade_ Keyword, and add the Effect from this _Technique_ to its Attached Technique."
+    "imbue": "2 _Momentum_: This is 0 AP. Speed is instead _Upgrade_, and add the Effect from this _Technique_ to its Attached Technique."
   },
   {
     "name": "Immovable Object",
@@ -3262,9 +3261,21 @@
     }
   },
   {
+    "name": "Lean In",
+    "discipline": "Juggernaut",
+    "desc": "You lean into an incoming strike, risking your armor but slamming into a foe.",
+    "keywords": ["Punish"],
+    "type": "Strike",
+    "cost": "1 _Momentum_",
+    "speed": "Reaction",
+    "reqs": "Heavy Armor Worn.",
+    "trigger": "You are Attacked by an adjacent foe.",
+    "effect": "You and the Attacker must _Wager_ _Grit_. If you win, increase your _Guard_ by 1 against the triggering Attack, and, if the Attacker was adjacent to you, you may make a Weapon Strike using a _Body_ Weapon, adding _Push_ 1 (1 _Grit_). If you lose, resolve the Attack against both you and your Armor, although you do not take any additional Damage or Effects from the Attack against your Armor."
+  },
+  {
     "name": "Armored Blow",
     "discipline": "Juggernaut",
-    "desc": "A powerful attack that relies on your armor's protection.",
+    "desc": "A powerful attack that relies on your armor's weight and protection.",
     "keywords": ["Weapon"],
     "type": "Strike",
     "speed": "Weapon+1",
@@ -3280,15 +3291,15 @@
     "name": "Armored Charge",
     "discipline": "Juggernaut",
     "desc": "You charge forward, using your armor as a weapon to smash forward.",
-    "keywords": ["Charge"],
+    "keywords": ["Charge", "Rush"],
     "type": "Move",
     "speed": "See Movement",
     "range": "Self",
     "ap": 1,
-    "move": "The movement granted by Free Run determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n*  <ins>Shift:</ins> Speed 3\n*  <ins>Sprint:</ins> Speed 5",
-    "cost": "1 _Momentum_/_Grit_",
+    "move": "The movement granted by Armored Charge determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n*  <ins>Shift:</ins> Speed 3\n*  <ins>Sprint:</ins> Speed 5",
+    "cost": "3 _Momentum_/_Grit_",
     "reqs": "Heavy Armor Worn.",
-    "effect": "The Movement granted by this Technique must be taken in a straight line. You may make a Weapon Strike with a Body Weapon against all creatures you move through with this Movement.",
+    "effect": "You may make a Weapon Strike with a Body Weapon against all creatures you move through with this Movement.",
     "boost": "1 _Grit_: Increase your _Guard_ by 2 for this Movement."
   },
   {
@@ -3300,9 +3311,9 @@
     "speed": "Reaction",
     "cost": "1 _Momentum_/_Grit_",
     "reqs": "Heavy Armor Worn.",
-    "trigger": "An Attack _Misses_/_Grazes_ you.",
-    "effect": "Inflict _Push_ 1, _Exposed_ 1 (Any 2 _Grit_/_Focus_) on the Attacker.",
-    "special": "If your _Guard_ reduces the Damage of a Strike to 0, you may instead make a Weapon Strike against the creature using an Unarmed Weapon."
+    "trigger": "An Attack _Grazes_- you or you reduce its Damage to 0.",
+    "effect": "Inflict _Push_ 1, _Exposed_ 2 (2 _Grit_/_Focus_) on the Attacker.",
+    "boost": "2 _Grit_/_Momentum_: If your _Guard_ reduces the Damage of a Strike to 0, you may instead make a Weapon Strike against the creature using an Unarmed Weapon."
   },
   {
     "name": "Armored Shell",
@@ -3313,33 +3324,20 @@
     "speed": "Reaction",
     "cost": "3 _Grit_",
     "reqs": "Light or Heavy Armor Worn with _Guard_ remaining.",
-    "trigger": "You are Attacked.",
+    "trigger": "You would be Attacked.",
     "effect": "Resolve the attack against your Armor rather than yourself, dealing an additional 2 Damage."
   },
   {
     "name": "Glancing Blow",
     "discipline": "Juggernaut",
-    "desc": "You use your armor to knock an attack away, relying on your impenetrable shell.",
+    "desc": "You shift slighty, ensuring that an attack lands on the most solid part of your armor.",
     "keywords": ["Block"],
     "type": "Defensive",
     "speed": "Reaction",
     "cost": "3 _Grit_",
     "reqs": "Heavy Armor Worn.",
     "trigger": "You are Attacked.",
-    "effect": "Reduce the Attack Roll by 2. If the Attack Grazes, reduce the cost to _Negate_ by 1 and increase your _Guard_ by 2 against this Attack."
-  },
-  {
-    "name": "Lean In",
-    "discipline": "Juggernaut",
-    "desc": "You trust entirely in your armor against an attack.",
-    "keywords": ["Block"],
-    "type": "Defensive",
-    "speed": "Reaction",
-    "cost": "1 _Grit_",
-    "reqs": "Heavy Armor Worn.",
-    "trigger": "You are Attacked.",
-    "effect": "Increase your _Guard_ against the Attack by 2 and reduce the _Grit_ cost to _Negate_ by 1. Resolve the Attack against your Armor as well, but do not take any additional Damage or Status from it.",
-    "boost": "1 _Grit_: This does not use your Reaction."
+    "effect": "Increase your _Guard_ by 2 against the Attack. If the Attack deals no _Damage_, you may _Negate_ for no cost."
   },
   {
     "name": "Shrug Off",
@@ -3402,7 +3400,7 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Deal half Damage, and replace all _Hobbled_ with _Exposed_."
+    "effect": "Attack using your weapon's Profile. Deal half Damage, and replace all _Hobbled_ with _Vulnerable_."
   },
   {
     "name": "Harrying Thrust",
@@ -3788,15 +3786,15 @@
   {
     "name": "Adaptive Strike",
     "discipline": "Martial Artist",
-    "desc": "You go in for a quick series of unarmed strikes against a foe.",
-    "keywords": ["Weapon", "Martial"],
+    "desc": "You in for an unarmed strike while collecting yourself.",
+    "keywords": ["Weapon", "Martial", "_Fluid_ 1"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
     "reqs": "Must use an Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. After resolving the Attack, use the Form Change Maneuver. "
+    "effect": "Attack using your weapon's _Profile_. After resolving the Attack, use the Form Change or Draw Maneuver. "
   },
   {
     "name": "Flawless Technique",
@@ -3821,11 +3819,12 @@
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "reqs": "Must use all Unarmed Weapon.",
-    "effect": "Make two Attacks against the same Target using any valid Weapons, at least one of which must be _Light_."
+    "reqs": "Must use Unarmed Weapons.",
+    "effect": "Make two Attacks against the same Target using any valid Weapons, at least one of which must be _Light_. If an Attack hits, gain a +1 Bonus to all subsequent Attack Rolls as a part of this Technique, up to a maximum bonus of +3.",
+    "boost": "2 _Momentum_: Make an additional Attack. You may use this Boost multiple times, but increase its _Cost_ by 1 each time."
   },
   {
-    "name": "Pressure Point",
+    "name": "Severing Strike",
     "discipline": "Martial Artist",
     "desc": "You make a precise, focused strike that interrupts a creature's bond with their spirit.",
     "keywords": ["Weapon", "Martial"],
@@ -3836,7 +3835,7 @@
     "move": "Reposition",
     "cost": "1 _Momentum_/_Focus_",
     "reqs": "Must use a _Light_/_Versatile_ Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. Inflict _Suppressed_ 1 (2 _Focus_) on a _Hit_/_Suppressed_ 2 (3 _Focus_) on a _Crit_."
+    "effect": "Attack using your weapon's _Profile_. Inflict _Suppressed_ 1 (2 _Focus_) on a _Hit_ or _Suppressed_ 2 (3 _Focus_) on a _Crit_."
   },
   {
     "name": "Reaper",
@@ -3848,16 +3847,16 @@
     "range": "Weapon",
     "ap": 2,
     "move": "Reposition",
-    "reqs": "Must use all Unarmed Weapon.",
-    "effect": "Make three Attacks using Unarmed Weapons.",
-    "special": "Anytime you Defeat an enemy you gain another Reposition Move. All Movement from this Technique is _Safe_ against any creature you Attack.",
+    "reqs": "Must use Unarmed Weapons.",
+    "effect": "Make four Attacks using Unarmed Weapons.",
+    "special": "Anytime you Defeat an enemy you gain another Reposition Move and reduce the Cost of your next Boost by 1. Creatures you Attack have _Disadvantage_ on all Attacks this _Turn_.",
     "boost": "1 _Momentum_: Make 1 more Attack with an Unarmed Weapon. You may repeat this Boost, increasing the Cost by 1 each time."
   },
   {
     "name": "Recovering Strike",
     "discipline": "Martial Artist",
     "desc": "You make use of an unarmed strike to recompose yourself and remove debilitating conditions.",
-    "keywords": ["Weapon", "Martial"],
+    "keywords": ["Weapon", "Martial", "_Fluid_ 1"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
@@ -3876,11 +3875,40 @@
     "speed": "Reaction",
     "range": "Weapon",
     "cost": "2 _Momentum_, 2 _Grit_/_Reflex_",
-    "trigger": "You are attacked by an adjacent foe while you have an _Open Hand_.",
-    "effect": "Make an Attack against the creature with an _Unarmed_ Weapon. Inflict no Status but, on a 7+, change the Target of the Attack to another creature within the Target's Range. The creature may pay the _Negate_ cost to automatically _Miss_ this redirected Attack. On a 6 or lower, resolve this Reaction as Dodge if you paid _Reflex_ or Deflect if you paid _Grit_."
+    "trigger": "You would be attacked by a Melee Attack while you have an _Open Hand_.",
+    "effect": "Make an Attack with the below Profile. You may add the _Fist_ Keyword. If you Redirect, choose another creature within Range of the creature's Triggering Attack. The Attacker must resolve the Attack against that creature. The creature may pay the _Negate_ cost to automatically roll a 2 on this redirected Attack. On a Miss, reduce the Attack Roll by 1 or gain 1 _Guard_ against the Attack.",
+    "chart": {
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Miss",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Redirect* (2 _Momentum_)",
+        "Redirect* (2 _Momentum_)",
+        "Redirect* (3 _Momentum_)",
+        "Redirect* (3 _Momentum_)",
+        "Redirect* (4 _Momentum_)",
+        "Redirect* (4 _Momentum_)"
+      ]
+    },
+    "imbue": "1 _Focus_: Instead, Trigger is 'You are attacked by a Melee Attack'. Add _Body_ or _Leg_ instead of _Fist_."
   },
   {
-    "name": "Stunning Strike",
+    "name": "Staggering Strike",
     "discipline": "Martial Artist",
     "desc": "You make a heavy, powerful strike that knocks a foe off-balance.",
     "keywords": ["Weapon", "Martial"],
@@ -3891,7 +3919,7 @@
     "move": "Reposition",
     "cost": "1 _Momentum_/_Grit_",
     "reqs": "Must use a _Versatile_/_Heavy_ Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. Inflict _Staggered_ (2 _Focus_) on a _Hit_/_Staggered_, _Staggered_ (3 _Focus_) on a _Crit_."
+    "effect": "Attack using your weapon's _Profile_. Inflict _Staggered_ (2 _Focus_) on a _Hit_ or _Staggered_, _Staggered_ (3 _Focus_) on a _Crit_."
   },
   {
     "name": "Transfer Energy",
@@ -3901,9 +3929,9 @@
     "type": "Maneuver",
     "speed": "Reaction",
     "range": "Weapon",
-    "cost": "1 _Focus_",
+    "cost": "1 _Focus_/_Momentum_",
     "trigger": "You would gain _Momentum_ or a _Defensive Token_ from an Unarmed Attack due to its _Profile_.",
-    "effect": "Replace gaining the Token with _Drain_ with the same Token and amount. The cost to _Negate_ is _Focus_ equal to the Tokens being _Drain_ed plus 1."
+    "effect": "Replace gaining the Token with _Drain_, using the same Token and amount. The cost to _Negate_ is _Focus_ equal to the Tokens being _Drain_ed plus 1."
   },
   {
     "name": "Blasting Howl",
@@ -4018,7 +4046,7 @@
     "name": "Barrage",
     "discipline": "Sharpshooter",
     "desc": "You either load additional ammunition or rapidly fire, unleashing a barrage of attacks against a creature.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "Glancing"],
     "type": "Strike",
     "speed": "Weapon-1",
     "range": "Weapon",
@@ -4026,7 +4054,7 @@
     "move": "Step",
     "cost": "2 _Momentum_",
     "reqs": "_Light_ or _Versatile_ Ranged Weapon Wielded.",
-    "effect": "Make three Attacks using your Weapon's Profile against the same Target. Each Attack deals half Damage."
+    "effect": "Make three Attacks using your Weapon's Profile against the same Target."
   },
   {
     "name": "Deadeye Shot",
@@ -4037,22 +4065,22 @@
     "speed": "Weapon+1",
     "range": "Weapon",
     "ap": 1,
-    "move": "Step",
+    "move": "None",
     "cost": "1 _Momentum_",
     "reqs": "Ranged Weapon Wielded.",
-    "effect": "Attack using your Weapon's Profile and gain a +1 bonus to the Attack Roll. If you are at a higher _Elevation_ than the Target, attack with _Advantage_. If you are at least at two higher _Elevation_, also ignore _Cover_."
+    "effect": "Attack using your Weapon's Profile and gain a +1 bonus to the Attack Roll. Ignore all _Cover_ shorter than the _Elevation_ difference between you and the _Target_."
   },
   {
     "name": "Focused Aim",
     "discipline": "Sharpshooter",
     "desc": "You take careful aim, lining up a deadly shot if the target does not take precautions.",
-    "keywords": ["Weapon-1"],
+    "keywords": ["Weapon-1", "_Fluid_ 2"],
     "type": "Maneuver",
     "speed": "Weapon",
     "range": "20",
     "ap": 1,
     "move": "None",
-    "cost": "1 _Focus_",
+    "cost": "2 _Focus_/_Momentum_",
     "reqs": "Ranged Weapon Wielded.",
     "effect": "You gain _Staggered_. Pick a creature within Range. If you do not Move before that creature ends its next _Turn_ within your Weapon Range, outside your _Artillery_ Range, and not _Prone_ or in _Cover_ you may make a Weapon Attack against them with _Advantage_."
   },
@@ -4095,14 +4123,14 @@
     "move": "Step",
     "cost": "2 _Momentum_",
     "reqs": "Ranged Weapon without the Thrown Property Wielded.",
-    "effect": "Make an Attack with a Light Improvised Weapon if your Ranged Weapon is _Light_, Medium Improvised Weapon if _Versatile_, or Heavy Improvised Weapon if _Heavy_. Add _Push_ 1 (1 _Grit_) to the Attack. Immediately after, make a Weapon Strike using your Ranged Weapon, but deal half Damage and reduce the Cost to _Negate_ by 1.",
+    "effect": "Make an Attack with a Light Improvised Weapon if your Ranged Weapon is _Light_, Medium Improvised Weapon if _Versatile_, or Heavy Improvised Weapon if _Heavy_. Add _Push_ 1 (1 _Grit_) to the Attack. Before the end of this Turn, you may make a _Glancing_ Weapon Strike using your Ranged Weapon against the same Target.",
     "special": "If _Improvising_ from a Weapon Technique using a Ranged Weapon, this is instead _Fluid_ 2. Reduce the Cost of this Technique by an amount equal to the Cost of the previous Technique."
   },
   {
     "name": "Steady Aim",
     "discipline": "Sharpshooter",
     "desc": "You set your feet, preparing for a steadily aimed shot.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 1"],
     "type": "Maneuver",
     "speed": "Weapon-2",
     "range": "20",
@@ -4116,14 +4144,14 @@
     "discipline": "Sharpshooter",
     "desc": "You fire missiles out at foes, pinning them down and limiting their mobility.",
     "keywords": ["Weapon"],
-    "type": "Strike",
+    "type": "Maneuver",
     "speed": "Weapon",
     "range": "Weapon",
     "area": "Blast 1",
     "ap": 1,
     "move": "Step",
     "reqs": "Ranged Weapon Wielded.",
-    "effect": "Create an Area-sized Hazard within Range. This Hazard persists until your next Turn or the end of the Round. All foes that Attack while in this Hazard take a -2 penalty to Attack Rolls. They may ignore this penalty by allowing you to make an Attack with your Ranged Weapon against them at _Disadvantage_."
+    "effect": "Create an Area-sized Hazard within Range. This Hazard persists until your next Turn or the end of the Round. All foes that Attack while in this Hazard take a -2 penalty to Attack Rolls. They may ignore this penalty by allowing you to make a _Glancing_ Attack with your Ranged Weapon against them."
   },
   {
     "name": "Volley",
@@ -4227,7 +4255,7 @@
     "cost": "2 _Grit_",
     "reqs": "Shield Wielded.",
     "trigger": "An adjacent enemy makes an Attack.",
-    "effect": "The triggering creature must pay 1 _Grit_ or reduce the Damage of the triggering Attack by 2. After resolving the Attack you may use the Shove Technique on the creature.",
+    "effect": "_Wager_ _Grit_ with the Attacker. If you win, reduce the Damage of the triggering Attack by your _Wager_. After resolving the Attack you may use the Shove Technique on the creature.",
     "special": "The Movement of Shove becomes None."
   },
   {
@@ -4237,11 +4265,11 @@
     "keywords": ["Block"],
     "type": "Defensive",
     "speed": "Reaction",
-    "move": "0 _Reflex_ for Step, 1 _Reflex_ for Reposition, 2 _Reflex_ for Shift.",
+    "move": "1 _Reflex_ for Step, 2 _Reflex_ for Reposition.",
     "cost": "2 _Grit_, X _Reflex_ (see Movement)",
     "reqs": "Shield Wielded.",
     "trigger": "An ally within the Movement you paid for is Attacked.",
-    "effect": "Immediately Move towards the ally by the shortest path possible, ending your move adjacent to the ally. You may use any Block Reactions against the triggering attack, resolving it as if you used it but granting the Target all the effects. Additionally, the Target gains your _Guard_ against the Attack."
+    "effect": "Immediately Move towards the ally by the shortest path possible, ending your move adjacent to the ally. You may use any Block Reactions against the triggering attack, granting the Target all the effects. Additionally, the Target gains an additional 1 _Guard_ against the Attack and reduces the _Grit_ cost to _Negate_ by 1."
   },
   {
     "name": "Wide Guard",
@@ -4252,31 +4280,21 @@
     "cost": "3 _Grit_",
     "reqs": "Shield Wielded.",
     "trigger": "You are hit with an Area of Effect attack.",
-    "effect": "Reduce the Attack Roll by 1 for yourself and all adjacent allies. If the Area was a _Line_ it does not continue past your space. If it was a _Cone_, all allies in a _Cone_ 2 behind you are unaffected."
-  },
-  {
-    "name": "Adaptability",
-    "discipline": "Skirmisher",
-    "desc": "You are able to adapt to any situation with your mix of mobility and strength.",
-    "type": "Maneuver",
-    "speed": "2",
-    "ap": 1,
-    "move": "Reposition",
-    "reqs": "Light Armor Worn.",
-    "effect": "Gain any 3 of _Grit_ and _Reflex_. Gain 1 _Momentum_."
+    "effect": "Use the _Deflect_ Reaction, granting the benefits to you and all adjacent allies and ignoring the initial _Cost_. If the Area was a _Line_ it does not continue past your space. If it was a _Cone_, all allies in a _Cone_ 2 behind you are unaffected."
   },
   {
     "name": "Armored Roll",
     "discipline": "Skirmisher",
     "desc": "You evade an assault while directing it towards a better protected part of your armor.",
-    "keywords": ["Block", "Evade"],
+    "keywords": ["Block", "Evade", "Safe"],
     "type": "Defensive",
     "speed": "Reaction",
     "range": "Self",
-    "cost": "1 _Grit_, 1 _Momentum_, 1 _Reflex_, 1 _Grit_/_Momentum_/_Reflex_",
+    "cost": "3 _Grit_/_Momentum_/_Reflex_",
     "reqs": "Light Armor Worn.",
     "trigger": "You are Attacked.",
-    "effect": "Force the attacker to reroll the Attack. Either use the new Attack Roll, or reduce the original roll by 1 and use it. Regardless of what you choose, you may _Safe_ Move 1 after this Reaction."
+    "effect": "If you paid mostly _Grit_, gain 1 _Guard_ against the Attack. If you paid mostly _Reflex_, reduce the Attack Roll by 1. Otherwise, select either option. After resolving the Attack, you may _Step_ Move.",
+    "boost": "Choose any. You may repeat these options as many times as you wish:\n* 2 _Grit_/_Momentum_: Increase your _Guard_ by 1.\n* 2 _Momentum_/_Reflex_: Reduce the Attack Roll by 1."
   },
   {
     "name": "Leaping Strike",
@@ -4288,48 +4306,61 @@
     "range": "Weapon",
     "ap": 1,
     "move": "Step",
+    "cost": "1 _Momentum_",
     "reqs": "Light or No Armor Worn.",
-    "effect": "Attack using your weapon's Profile. Deal additional Damage equal to half the _Leaping_ distance covered this Turn. You may not Move after Attacking with this Technique.",
-    "special": "If you begin the _Leap_ on higher _Elevation_ than the Target of the attack instead deal additional Damage equal to the full distance covered."
+    "effect": "Attack using your Weapon's Profile. Deal additional Damage equal to half the greatest _Leaping_ distance covered this Turn. You may not Move after Attacking with this Technique.",
+    "special": "If you begin the _Leap_ on higher _Elevation_ than the Target of the Attack instead deal additional Damage equal to the full distance covered."
   },
   {
     "name": "Press the Attack!",
     "discipline": "Skirmisher",
-    "desc": "With a balanced defense you can focus more of your attention on offense.",
-    "keywords": ["Punish"],
-    "type": "Strike",
+    "desc": "You recklessly push an attack into an advantage.",
+    "type": "Maneuver",
     "speed": "Reaction",
     "range": "Self",
-    "cost": "1 _Momentum_, 1 _Grit_ or _Reflex_.",
-    "trigger": "You make an Attack Roll.",
-    "effect": "Increase the Attack Roll by 1.",
-    "boost": "1 _Momentum_, 1 _Reflex_ or 1 _Grit_: Instead, increase the Attack Roll by 2."
-  },
-  {
-    "name": "Rebalance",
-    "discipline": "Skirmisher",
-    "desc": "You shift your combat style to become more balanced, .",
-    "type": "Maneuver",
-    "speed": "2",
-    "ap": 1,
-    "move": "Reposition",
     "cost": "1 _Momentum_",
     "reqs": "Light Armor Worn.",
-    "effect": "Trade as many _Grit_ Tokens for _Reflex_ or _Reflex_ Tokens for _Grit_ as you wish. If you end this Technique with more _Grit_ than _Reflex_ gain 1 additional _Grit_ and gain 3 Vigor. If you end this Technique with more _Reflex_ than _Grit_ gain 1 additional _Reflex_ and immediately take an additional _Safe_ Step. If you end this Technique with equal, non-zero amounts of _Grit_ and _Reflex_ gain 2 _Momentum_ and a +1 bonus on your next Attack Roll."
+    "trigger": "You make a Melee Attack.",
+    "effect": "_Wager_ Momentum with the Target of the Attack. If you win, you may reroll the Attack and gain 1 _Momentum_. Otherwise, reduce the Attack Roll by 1."
+  },
+  {
+    "name": "Patient Guard",
+    "discipline": "Skirmisher",
+    "desc": "You absorb an attack, using it to glean insight into a foe's fighting style.",
+    "keywords": ["Punish"],
+    "type": "Maneuver",
+    "speed": "Reaction",
+    "range": "Self",
+    "reqs": "Light Armor Worn.",
+    "trigger": "You are Attacked.",
+    "effect": "Increase the Attack Roll by 1. Gain 1 _Momentum_, and you may _Safe_ Move 1..",
+    "boost": "1 _Focus_: If you Attack the Attacker before the end of the Round, add _Sure Hit_ 1 or _Unblockable_ 1."
+  },
+  {
+    "name": "Adaptability",
+    "discipline": "Skirmisher",
+    "desc": "You shift your combat style to become more balanced, seemlessly flowing from mobility to defense.",
+    "type": "Maneuver",
+    "keywords": ["_Fluid_ 2"],
+    "speed": "2",
+    "ap": 1,
+    "move": "Step",
+    "reqs": "Light Armor Worn.",
+    "effect": "Gain any 2 _Grit_ and _Reflex_. After, you may exchange as many _Grit_ Tokens for _Reflex_ or _Reflex_ Tokens for _Grit_ as you wish. If you end this Technique with more _Grit_ than _Reflex_ gain 1 additional _Grit_ and 3 Vigor. If you end this Technique with more _Reflex_ than _Grit_ gain 1 additional _Reflex_ and immediately take an additional _Safe_ Step. If you end this Technique with equal, non-zero amounts of _Grit_ and _Reflex_ gain 1 _Momentum_ and a +1 Bonus on your next Attack Roll."
   },
   {
     "name": "Rush",
     "discipline": "Skirmisher",
     "desc": "You charge forward, smashing into a foe to give yourself an edge.",
     "type": "Move",
-    "speed": "2",
+    "keywords": ["_Fluid_ 1", "Charge"],
+    "speed": "3",
     "range": "Self",
     "ap": 1,
     "move": "Shift",
-    "cost": "1 _Momentum_",
     "reqs": "Light or Heavy Armor Worn.",
     "effect": "Inflict _Exposed_ 1 (1 _Reflex_) on a creature you end this Technique adjacent to. If you moved at least 5 spaces in a straight line before ending your turn adjacent, instead inflict _Exposed_ 2 (2 _Reflex_).",
-    "special": "If you are wearing Heavy Armor, this is instead Speed 3."
+    "special": "If you are wearing Heavy Armor, this is instead Speed 4."
   },
   {
     "name": "Safe Counter",
@@ -4339,11 +4370,11 @@
     "type": "Strike",
     "speed": "Reaction",
     "range": "Self",
-    "cost": "1 _Momentum_, 1 _Grit_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
+    "cost": "1 _Momentum_, 1 _Reflex_, 2 _Grit_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
     "trigger": "You are Attacked by an adjacent enemy while wearing Light Armor.",
     "effect": "You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_. Increase your _Guard_ by 1 against the triggering Attack.",
     "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes Step if it is greater than Step.",
-    "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+    "boost": "Choose any:\n* 1 _Momentum_. You may instead Attack with any _Strike_.\n* 1 _Reflex_: Add _Safe_."
   },
   {
     "name": "Spinning Counter",
@@ -4355,22 +4386,23 @@
     "range": "Self",
     "cost": "1 _Momentum_, 1 _Reflex_, +1 _Momentum_ if the Attack is Speed 4 or slower.",
     "trigger": "You are Attacked while wearing Light Armor.",
-    "effect": "Increase the Attack Roll by 1. You may immediately Attack with a _Maneuver_/_Weapon Strike_ against any creature other than the Triggering Target.",
+    "effect": "Increase the Attack Roll by 1. You may immediately Attack with a _Maneuver_/_Weapon Strike_ against any creature other than the Triggering Target. If the Triggering Attack was a _Hit_+, gain a +1 Bonus to the Attack Roll.",
     "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes Step if it is greater than Step.",
-    "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+    "boost": "Choose any:\n* 1 _Momentum_. You may instead Attack with any _Strike_.\n* 1 _Reflex_: Add _Safe_."
   },
   {
-    "name": "Unhindered Run",
+    "name": "Armored Run",
     "discipline": "Skirmisher",
-    "desc": "You dart forward at great speed, using your mix of agility and armor to ignore the hazards of the terrain.",
+    "desc": "You dart forward at great speed, using your mix of agility and armor to provide a safe advance.",
     "type": "Move",
+    "keywords": ["Charge", "Safe"],
     "speed": "See Movement",
     "range": "Self",
     "ap": 1,
-    "move": "The movement granted by Unhindered Run determines its Speed, as follows: \n* <ins>Step, Step:</ins> Speed 1 \n*  <ins>Reposition, Reposition:</ins> Speed 2 \n* <ins>Shift, Shift:</ins> Speed 4",
+    "move": "Take the listed Movement in any order. The Movement granted by Unhindered Run determines its Speed, as follows: \n* <ins>Step, Step:</ins> Speed 1 \n*  <ins>Step, Reposition:</ins> Speed 2 \n* <ins>Reposition, Reposition:</ins> Speed 3",
     "reqs": "Light Armor Worn.",
-    "effect": "None.",
-    "boost": "1 _Momentum_/_Reflex_: One portion of this Movement ignores the effects of Terrain. You may use this _Boost_ up to twice, paying the cost seperately each time."
+    "effect": "Reduce the Cost of _Punish_ Reactions by 1 this _Turn_.",
+    "special": "You may choose to take only one of the listed Movements. If you do, gain 1 _Momentum_."
   },
   {
     "name": "Air Blast",
@@ -5372,7 +5404,7 @@
     "reqs": "Thrown Weapon Wielded or Equipped.",
     "effect": "Attack using your Weapon's Profile. After resolving the Attack, if it does not _Embed_ you may move the Weapon up to its Range - 2 before it falls to the ground. If you move it back to yourself you may catch it in your hand.",
     "special": "You may instead Target an Obstacle with this Attack, in which case you may treat the Obstacle as the origin of this Attack. Reduce the Range of the secondary Attack by 2.",
-    "boost": "2 _Momentum_: You may move the Weapon regardless of whether it _Embeds_ or not. If you move it into another creature you may make an Attack using the Weapon's Profile."
+    "boost": "2 _Momentum_: You may move the Weapon regardless of whether it _Embeds_ or not. If a creature is within Range -2, you may make an Attack using the Weapon's Profile against that creature, then place the weapon in a space adjacent to the creature if it does not _Embed_."
   },
   {
     "name": "Catch",
@@ -5387,7 +5419,7 @@
     "trigger": "You are Attacked with a Thrown or Ranged Weapon.",
     "effect": "Make an opposed Attack Roll against the triggering Attack. If you meet or exceed the triggering Attack Roll, you may immediately Wield the triggering Weapon and treat the triggering Attack as a Miss. If you triggered this Technique while Wielding a Thrown Weapon, you may Equip that Thrown Weapon before you Wield the triggering Weapon. If you do not choose to Wield the Weapon, it instead falls in an adjacent space of your choice.",
     "special": "If you Trigger this after being attacked with a Ranged Weapon, instead of Wielding the Thrown Weapon, you instead Wield a Light Improvised Weapon.",
-    "boost": "2 _Momentum_: Immediately make an Attack using the Weapon you just caught."
+    "boost": "1 _Momentum_: If you succeeded on the Attack Roll and _Wield_ the weapon, you may immediately make an Attack using that Weapon."
   },
   {
     "name": "Chain Throw",
@@ -5397,12 +5429,12 @@
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
-    "ap": 1,
+    "ap": 2,
     "move": "Reposition",
     "cost": "1 _Momentum_",
-    "reqs": "Thrown Weapon Wielded or Equipped.",
+    "reqs": "Thrown Weapon Wielded.",
     "effect": "Attack using your Weapon's Profile. Immediately make another Attack against a creature adjacent to the original target using the same Weapon, using a different Thrown Weapon you have Wielded or Equipped with the same Speed or less.",
-    "boost": "2 _Momentum_: Make another Attack against a creature adjacent to either target. You may use this Boost multiple times, but may not hit a creature more than once with this Technique."
+    "boost": "1 _Momentum_: Make another Attack against a creature adjacent to either target. You may use this Boost multiple times, but may not hit a creature more than once with this Technique. Increase the Cost of this Boost by 1 each time it is used."
   },
   {
     "name": "Disabling Throw",
@@ -5414,14 +5446,14 @@
     "range": "Weapon",
     "cost": "1 _Momentum_",
     "reqs": "Thrown Weapon Wielded.",
-    "effect": "Attack using your Weapon's Profile. This Attack deals half Damage, but increase the cost to Negate by 1. In addition, if the attack does not already have _Embed_, add _Embed_ (1 _Reflex_) on a _Hit_ or _Crit_.",
+    "effect": "Attack using your Weapon's Profile. Deal half Damage, but increase the cost to Negate by 1. In addition, if the attack does not already have _Embed_, add _Embed_ (1 _Reflex_) on a _Hit_ or _Crit_, or increase its cost to _Negate_ by 1.",
     "boost": "1 _Reflex_: Instead, you may use this Technique with any Thrown Weapon you have Equipped or Wielded. You do not need an Open Hand to use this Attack."
   },
   {
     "name": "Distracting Lob",
     "discipline": "Thrower",
     "desc": "You toss a weapon high in the air. While it has little force behind it, it does draw the eyes of all foes involved.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 1"],
     "type": "Maneuver",
     "speed": "Weapon",
     "range": "Weapon",
@@ -5429,12 +5461,12 @@
     "move": "Reposition",
     "reqs": "Thrown Weapon Wielded.",
     "effect": "Create a Size 1 _Hazard_ within Range and throw a Wielded Thrown Weapon upwards. Inflict _Exposed_ 1 (2 _Focus_) on all creatures in a _Burst_ 1 around the _Hazard_. At the end of the next Phase remove the _Hazard_ and your Thrown Weapon lands harmlessly in that space.",
-    "boost": "1 _Momentum_: Instead, when you remove the _Hazard_, make an Attack with your Thrown Weapon against any creature in that space. Deal half Damage and reduce the cost to _Negate_ by 1.\n1 _Momentum_: Instead, inflict _Exposed_ 2 (3 _Focus_) on a creature within the _Hazard_."
+    "boost": "1 _Momentum_: Instead, when you remove the _Hazard_, make an Attack with your Thrown Weapon against any creature in that space. Add _Glancing_.\n1 _Momentum_: Instead, inflict _Exposed_ 2 (3 _Focus_) on a creature within the _Hazard_."
   },
   {
     "name": "Opportune Throw",
     "discipline": "Thrower",
-    "desc": "When a foe strikes one of your allies you seize the opportunity, hurling a weapon in their direction.",
+    "desc": "You fling a weapon when a foe dares strike an ally, seizing the opportunity.",
     "keywords": ["Weapon"],
     "type": "Strike",
     "speed": "Reaction",
@@ -5442,14 +5474,14 @@
     "cost": "2 _Momentum_",
     "reqs": "Thrown Weapon Wielded.",
     "trigger": "A foe within Range makes an Attack against one of your allies.",
-    "effect": "The Target chooses: Either they reduce their Attack Roll by 2 and you make a single Attack at _Disadvantage_ against them, or they resolve their Attack with no penalty and you make a single Attack against them. Your Attack must be made with a Thrown Weapon that you have Wielded.",
+    "effect": "The Target chooses: Either they reduce their Attack Roll by 2 and you make a single _Glancing_ Attack against them, or they resolve their Attack with no penalty and you make a single Attack against them. Your Attack must be made with a Thrown Weapon that you have Wielded.",
     "boost": "1 _Reflex_: Instead, you may use this Technique with any Thrown Weapon you have Equipped or Wielded. You do not need an Open Hand to use this Attack."
   },
   {
     "name": "Palm Throw",
     "discipline": "Thrower",
     "desc": "You draw and fling a weapon with frightening speed, potentially catching a foe off-guard.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 2"],
     "type": "Strike",
     "speed": "Weapon-1",
     "range": "Weapon",
@@ -5471,21 +5503,21 @@
     "cost": "1 _Momentum_",
     "reqs": "Thrown Weapon Wielded.",
     "trigger": "A _Phase_ begins.",
-    "effect": "Immediately Attack with a Thrown Weapon that you have Wielded. You do not need an Open Hand to use this Attack. This Attack deals half Damage and the cost to _Negate_ everything except _Embed_ is reduced by 1.",
-    "boost": "1 _Reflex_: Instead, you may use this Technique with any Thrown Weapon you have Equipped or Wielded. You do not need an Open Hand to use this Attack."
+    "effect": "Immediately make a _Glancing_ Attack with a Thrown Weapon that you have Wielded. You do not need an Open Hand to use this Attack.",
+    "boost": "1 _Reflex_: Instead, you may use this Technique with any Thrown Weapon you have Equipped or Wielded."
   },
   {
     "name": "Vicious Draw",
     "discipline": "Thrower",
     "desc": "You pull an embedded throwing weapon from a foe before flinging it into another.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 2"],
     "type": "Maneuver",
     "speed": "3",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "effect": "Choose an adjacent creature with a _Thrown_ Weapon _Embedded_. That creature must may 2 _Reflex_ or immediately take 3 _True_ Pierce Damage and end their _Embed_.",
-    "boost": "1 _Momentum_: Immediately make a _Thrown_ Attack with your Weapon's Profile against a different creature."
+    "effect": "Choose an adjacent creature with a _Thrown_ Weapon _Embedded_. That creature must _Negate_ with 2 _Reflex_ or immediately take 3 _True_ Pierce Damage and end their _Embed_.",
+    "boost": "2 _Momentum_: Immediately make a _Thrown_ Attack with your Weapon's Profile against a different creature."
   },
   {
     "name": "Aqua Lash",
@@ -6066,7 +6098,7 @@
     "range": "Seismic Sense + 2",
     "ap": 1,
     "move": "Step",
-    "cost": "3 _Momentum_",
+    "cost": "Any 2 _Focus_/_Momentum_",
     "effect": "Attack with the below _Profile_.",
     "chart": {
       "roll": [
@@ -6107,7 +6139,8 @@
     "range": "Self",
     "ap": 1,
     "move": "None",
-    "effect": "Expand your Seismic Sense by 4 until the next time you Move. Gain 1 _Focus_. Inflict a total of 2 _Knowledge_ on any combination of creatures within your Seismic Sense, with a _Focus_ cost to _Negate_ equal to the _Knowledge_ inflicted. Inflict _Reveal_ on the same creatures."
+    "effect": "Expand your Seismic Sense by 4 until the next time you Move. Gain 1 _Focus_. Inflict a total of 2 _Knowledge_ on any combination of creatures within your Seismic Sense, with a _Focus_ cost to _Negate_ equal to the _Knowledge_ inflicted. Inflict _Reveal_ on the same creatures.",
+    "boost": "Any 2 _Focus_/_Grit_: Inflict an additional 2 _Knowledge_."
   },
   {
     "name": "Exploiting Strike",
@@ -6119,9 +6152,9 @@
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "cost": "1 _Momentum_",
+    "cost": "1 _Focus_, 1 _Momentum_",
     "reqs": "Target must be within your Seismic Sense + 2 and on earthen ground.",
-    "effect": "Attack using your weapon's Profile. On a _Hit_/_Graze_, add _Hobbled_ 1, _Dazed_ 2, or _Impaired_ 2 (2 _Focus_) to the Attack. On a _Crit_, add two and increase the cost to _Negate_ by 1."
+    "effect": "Attack using your weapon's Profile. On a _Graze_+, add one of _Hobbled_ 1, _Dazed_ 2, or _Impaired_ 2 (2 _Focus_) to the Attack. On a _Crit_, instead add two and increase the cost to _Negate_ by 1."
   },
   {
     "name": "Hidden Flaw",
@@ -6131,7 +6164,7 @@
     "type": "Maneuver",
     "speed": "Reaction",
     "range": "Seismic Sense + 4",
-    "cost": "1 _Momentum_",
+    "cost": "Any 3 _Focus_/_Momentum_",
     "trigger": "A creature within Range is forcibly moved into an _Obstacle_.",
     "effect": "Inflict _Knowledge_ 2 (1 _Focus_). Additionally, the creature takes 2 True Damage and gains _Dazed_ 2 or _Wounded_ 1 (Any 2 _Focus_/_Grit_)."
   },
@@ -6143,23 +6176,24 @@
     "type": "Maneuver",
     "speed": "Reaction",
     "range": "Seismic Sense + 2",
-    "area": "Burst 2",
-    "cost": "1 _Focus_",
+    "area": "Burst 1",
+    "cost": "Any 3 _Focus_/_Momentum_",
     "trigger": "A creature is Defeated or becomes _Prone_ in Range.",
-    "effect": "Inflict _Reveal_, _Knowledge_ 1 (1 _Focus_) on all creatures within the Area, centered on the Triggering Target."
+    "effect": "Inflict _Knowledge_ 1 (1 _Focus_) on all creatures within the Area, centered on the Triggering Target. Inflict _Knowledge_ 1, _Reveal_ (2 _Focus_) on the Triggering Target.",
+    "boost": "Any 2 _Focus_/_Momentum_: Area is instead Burst 2."
   },
   {
     "name": "Perfect Read",
     "discipline": "Tremorsight",
     "desc": "You use your perfect analysis of a foes' weak points and defenses to unleash a truly devastating attack.",
     "keywords": ["Spirit", "Earth", "Groundsource"],
-    "type": "Strike",
+    "type": "Maneuver",
     "speed": "Set-Up",
     "ap": 1,
-    "move": "Reposition",
+    "move": "Step",
     "reqs": "Must be Attached to a Strike.",
-    "effect": "If the Target of the Attached Strike is within your Seismic Sense, add _Unblockable_ 1, _Sure Hit_ 1, and _Pierce_ 1. On a _Hit_/_Crit_ you may add _Break_ (2 _Focus_) to the Attack.",
-    "special": "As a part of this Attack, you may spend any amount of _Knowledge_ you have on the creature. If you do not _Miss_, add that value to the Damage dealt."
+    "effect": "If the Target of the Attached Strike is within your Seismic Sense, add _Unblockable_ 1 and _Sure Hit_ 2. On a _Hit_+ you may add _Break_ (2 _Focus_) to the Attack.",
+    "special": "As a part of this Attack, you may remove the creature's topmost _Knowledge_ Token. On a _Graze_+, add that value to the Damage dealt."
   },
   {
     "name": "Remote Viewing",
@@ -6195,24 +6229,25 @@
     "desc": "You steady your footing, pushing your senses even further through the earth.",
     "keywords": ["Spirit", "Earth", "Groundsource"],
     "type": "Maneuver",
-    "speed": "Reaction",
-    "range": "Seismic Sense + 4",
-    "cost": "1 _Momentum_, 2 _Focus_",
-    "trigger": "You make an Attack against a creature within Range.",
-    "effect": "This _Attack_ cannot have _Disadvantage_ and ignores _Cover_. Increase your _Attack Roll_ by 1 and, on a _Crit_, inflict _Dazed_ 1 (1 _Focus_).",
-    "boost": "1 _Momentum_: Make this Attack at _Advantage_."
+    "speed": "Upgrade",
+    "ap": 0,
+    "range": "Seismic Sense + 2",
+    "cost": "1 _Focus_/_Momentum_",
+    "reqs": "Must be _Attached_ to an Attack.",
+    "effect": "The _Attached_ _Attack_ cannot have _Disadvantage_ and ignores _Cover_. Increase your _Attack Roll_ by 1 and, on a _Crit_, inflict _Dazed_ 1 (1 _Focus_).",
+    "special": "You may pay 2 _Focus_ to Attach this Technique as a Reaction."
   },
   {
     "name": "Sense Attack",
     "discipline": "Tremorsight",
     "desc": "You sense an attack incoming, making a block or evade trivial for you.",
-    "keywords": ["Spirit", "Earth", "Groundsource", "Efficient"],
+    "keywords": ["Spirit", "Earth", "Groundsource"],
     "type": "Defensive",
     "speed": "Reaction",
-    "range": "Seismic Sense + 2",
-    "cost": "1 _Focus_",
+    "range": "Seismic Sense",
+    "cost": "2 _Focus_",
     "trigger": "You are Attacked by a creature within Range.",
-    "effect": "Inflict _Knowledge_ 1 (1 _Focus_) and reduce the _Attack Roll_ by 1."
+    "effect": "You may immediately use the Deflect or Dodge Reaction. Pay all normal Costs, but you may use _Focus_ in place of _Reflex_ or _Grit_. If this causes the Attack to deal no _Damage_ or _Miss_, inflict _Knowledge_ 1 (1 _Focus_)."
   },
   {
     "name": "Tissue Scan",
@@ -6220,11 +6255,13 @@
     "desc": "You focus your senses on a foe and quickly appraise an accurate state of their vitality.",
     "keywords": ["Spirit", "Earth", "Groundsource"],
     "type": "Maneuver",
-    "speed": "2",
+    "speed": "4",
     "range": "Seismic Sense + 4",
     "ap": 1,
+    "cost": "1 _Focus_",
     "move": "Step",
-    "effect": "The Target must spend 2 _Focus_. If they do not, inflict _Reveal_, 4 _Knowledge_ and learn how many of each _Defensive Token_ they have."
+    "effect": "Inflict _Knowledge_ 3, _Reveal_ (3 _Focus_) on the Target. If they do not _Negate_, learn how many of each _Defensive Token_ they have.",
+    "boost": "1 _Focus_: After resolving this Technique, you may convert one of the Target's _Knowledge_ Tokens of your choice into an equivalent _Exposed_ Token."
   },
   {
     "name": "True Heart Scan",
@@ -6234,9 +6271,10 @@
     "type": "Support",
     "speed": "2",
     "range": "Seismic Sense + 6",
+    "cost": "5 _Focus_",
     "ap": 2,
     "move": "Step",
-    "effect": "The Target must immediately spend 5 _Focus_. If they do not, inflict 8 _Knowledge_ on them and, until the end of the _Round_, whenever you or an ally makes an Attack against that creature you may spend 1 _Knowledge_ to increase the _Attack Roll_. You may spend up to 3 _Knowledge_ per Attack, for a total bonus of +3. In addition, when that creature attempts to take an _Evade_/_Block_ Reaction you may spend _Knowledge_ equal to the _Cost_ of the _Reaction_ to cancel their _Reaction_."
+    "effect": "Inflict _Knowledge_ 2x4 (5 _Focus_) on the Target. If they do not _Negate_, until of the _Round_ whenever you or an ally makes an Attack against that creature you may choose to convert their topmost _Knowledge_ Token into an equivalent _Vulnerable_ Token. In addition, when that creature attempts to take an _Evade_/_Block_ Reaction you may remove a total Value of _Knowledge_ equal to the _Cost_ of the _Reaction_ to cancel their _Reaction_."
   },
   {
     "name": "Creeping Frost",
@@ -6512,7 +6550,7 @@
     "name": "Backbreaker",
     "discipline": "Warrior",
     "desc": "You slam your weapon into a prone foe, transferring all the force into their body.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 1"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
@@ -6520,7 +6558,7 @@
     "move": "Reposition",
     "cost": "2 _Momentum_",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. If the Target is _Prone_ you may treat a roll of 8 or higher as a 12, add _Hobbled_ 2 to the Attack, and increase the Cost to Negate by 1."
+    "effect": "Attack using your weapon's Profile. If the Target is _Prone_ you may treat an Attack Roll of 8 or higher as a 12, add _Hobbled_ 2 to the Attack, and increase the Cost to Negate by 1."
   },
   {
     "name": "Bash Aside",
@@ -6550,20 +6588,6 @@
     "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use a Weapon Strike against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
   },
   {
-    "name": "Concussive Strike",
-    "discipline": "Warrior",
-    "desc": "A strike putting the full weight of your weapon to bear, leaving a foe unable to respond.",
-    "keywords": ["Weapon"],
-    "type": "Strike",
-    "speed": "Weapon+1",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "cost": "1 _Momentum_",
-    "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Increase the Cost to Negate by 1, and inflict _Dazed_ 2 (2 _Focus_) on an 8+."
-  },
-  {
     "name": "Destructive Backswing",
     "discipline": "Warrior",
     "desc": "You don't waste your weapon's momentum and instead use it to press your advantage.",
@@ -6572,7 +6596,7 @@
     "speed": "Reaction",
     "range": "Weapon",
     "cost": "0 _Momentum_",
-    "trigger": "You _Miss_/_Graze_ with an Attack using a Blunt Weapon.",
+    "trigger": "You _Graze_- with an Attack using a Blunt Weapon.",
     "effect": "Choose one: Move 1, repeat the Attack against an Obstacle in Range, or inflict _Vulnerable_ 1 (1 _Reflex_) on the original Target of the Attack.",
     "boost": "1 _Momentum_: Choose two instead."
   },
@@ -6587,13 +6611,13 @@
     "move": "Reposition",
     "cost": "2 _Momentum_",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile and increase the Damage by 2."
+    "effect": "Attack using your weapon's Profile. If the Target has _Guard_ prior to this Attack, inflict _Dazed_ 2 (2 _Focus_). Otherwise, deal 2 additional Damage."
   },
   {
     "name": "Mighty Swing",
     "discipline": "Warrior",
     "desc": "You smash through the terrain with your weapon, creating an opening for yourself.",
-    "keywords": ["Weapon"],
+    "keywords": ["Weapon", "_Fluid_ 2"],
     "type": "Maneuver",
     "speed": "Weapon-1",
     "range": "Weapon",
@@ -6603,6 +6627,20 @@
     "effect": "Attack an Obstacle using your weapon's Profile. If you destroy it, deal 2 Damage and inflict _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the Obstacle. You may also Move 1 into the Obstacle's space, separate from your current Movement.",
     "boost": "1 _Momentum_: Instead, inflict _Exposed_ 2 and increase the cost to Negate by 1.",
     "imbue": "1 _Momentum_: Speed is instead Set-Up and the Cost to Negate is increased by 1."
+  },
+  {
+    "name": "Smash",
+    "discipline": "Warrior",
+    "desc": "You slam your weapon down, building your strength and destroying the terrain around you.",
+    "keywords": ["Weapon", "_Fluid_ 2"],
+    "type": "Maneuver",
+    "speed": "Weapon",
+    "range": "Weapon",
+    "ap": 1,
+    "move": "Reposition",
+    "reqs": "Blunt Weapon Wielded.",
+    "effect": "Choose one:\n* Attack an _Obstacle_ within Range. If you _Destroy_ it, gain 3 _Grit_, and you may make the space _Rough_ if you wish. Otherwise, gain 1 _Grit_.\n* Choose a space within Range. Make it _Rough_ or _Jagged_, then gain 2 _Grit_.",
+    "boost": "1 _Grit_/_Momentum_:Inflict _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the _Obstacle_ or _Terrain_."
   },
   {
     "name": "Sapping Strike",
@@ -6616,8 +6654,8 @@
     "move": "Reposition",
     "cost": "1 _Momentum_",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. On a _Hit_,  you may force the Target to discard 1 Defensive Token. On a _Crit_,  they discard 2. If they do not have sufficient Defensive Tokens, deal additional damage equal to the number of tokens they do not discard.",
-    "boost": "1 _Momentum_: If you _Hit_/_Crit_,  inflict _Wounded_ 1 (2 _Grit_) after the Target discards Tokens."
+    "effect": "Attack using your weapon's Profile. On a _Hit_,  you may force the Target to discard 1 _Defensive Token_ of your choice. On a _Crit_,  they instead discard 2. If they do not have sufficient Defensive Tokens, deal additional damage equal to the number of tokens they do not discard.",
+    "boost": "1 _Momentum_: On a _Hit_+,  inflict _Wounded_ 1 (2 _Grit_) after the Target discards Tokens."
   },
   {
     "name": "Shattering Flourish",
@@ -6748,7 +6786,7 @@
     "move": "Reposition",
     "cost": "1 _Momentum_",
     "reqs": "_Light_/_Versatile_ Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile twice, dealing half Damage and reducing the _Cost_ to _Negate_ by 1. _Versatile_ Weapons take a -2 damage penalty.",
+    "effect": "Make two _Glancing_ attacks using your weapon's Profile. _Versatile_ Weapons take a -2 damage penalty.",
     "special": "If the Speed of this Technique would be less than 1, it becomes Speed 1 and gains _Priority_. The cost to _Negate_ is then increased by 1."
   },
   {

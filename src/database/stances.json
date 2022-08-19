@@ -195,18 +195,19 @@
     "refresh": {
       "reflex": 4
     },
-    "effect": "While wearing no Armor all _Leaping_ Movement you make is _Safe_. Once per Turn, you may _Jump_ for no Cost."
+    "effect": "While wearing no Armor all _Leaping_ Movement you make is _Safe_. Choose one Technique at the start of the Round. Add _Vault_ to it.",
+    "special": "If you would trigger a _Punish_ Attack while making _Leaping_ Movement and the creature chooses not to make one, you may pay 1 _Reflex_ to inflict _Exposed_ 1 (1 _Reflex_)."
   },
   {
     "name": "Instinct Style",
     "desc": "You have honed your defenses to work while wearing no armor, dodging attacks by a razor-thin margin.",
     "discipline": "Freedom",
-    "accumulate": "While wearing no Armor whenever you are _Missed_/_Grazed_ with an _Attack_ gain 1 _Momentum_/_Reflex_.",
+    "accumulate": "While wearing no Armor, when an _Attack_ is a _Graze_- against you gain 1 _Momentum_/_Reflex_.",
     "refresh": {
-      "reflex": 4,
-      "grit": 2
+      "reflex": 2,
+      "grit": 1
     },
-    "effect": "While wearing no Armor, once per _Phase_, you may pay 1 _Reflex_ to take an additional _Reaction_ so long as at least one _Reaction_ that turn is an _Evade_ Reaction."
+    "effect": "While wearing no Armor, once per _Phase_, you may pay 2 _Reflex_ to take an additional _Reaction_ so long as at least one _Reaction_ that turn is an _Evade_ Reaction."
   },
   {
     "name": "Tumbler Style",
@@ -217,7 +218,7 @@
       "reflex": 3,
       "grit": 1
     },
-    "effect": "While wearing no Armor you may _Climb_ with no _Movement_ penalty. When _Falling_, reduce the distance by 2."
+    "effect": "While wearing no Armor you may _Climb_ with no _Movement_ penalty. When _Falling_, reduce the distance by 2 for the purposes of calculating damage."
   },
   {
     "name": "Spectacle Style",
@@ -430,9 +431,9 @@
     "discipline": "Juggernaut",
     "accumulate": "While wearing Heavy Armor, gain _Momentum_ equal to the _Guard_ provided by your Armor + 1 at Refresh.",
     "refresh": {
-      "grit": 2
+      "grit": 3
     },
-    "effect": "While wearing Heavy Armor, treat your _Guard_ as 1 higher.",
+    "effect": "While wearing Heavy Armor, at the start of each _Phase_, you may 1 _Grit_ to increase your Armor's _Guard_ by 1 for that _Phase_ only.",
     "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
   },
   {
@@ -531,7 +532,7 @@
     "name": "Open Hand Style",
     "desc": "Your hands are deadly weapons, removing any advantage a foe has with each strike.",
     "discipline": "Martial Artist",
-    "accumulate": "Gain +1 _Momentum_ for each subsequent _Hit_/_Crit_ against the same Target with a _Fist_ Weapon in the same _Round_.",
+    "accumulate": "Gain 1 _Momentum_ for each subsequent _Hit_+ against the same Target with a _Fist_ Weapon in the same _Round_.",
     "refresh": {
       "reflex": 1,
       "grit": 1
@@ -603,7 +604,7 @@
       "reflex": 2,
       "focus": 2
     },
-    "effect": "Gain a +1 bonus to all Ranged Attacks made not on your Turn. At Refresh, you may pay 2 _Momentum_ to create a Blast 1 Hazard within Weapon Range. Once per Phase, you may make a single Attack at _Disadvantage_ against a creature in that Area so long as they are within your Weapon Range. You may not attack the same Creature more than once per Round."
+    "effect": "Gain a +1 bonus to all Ranged Attacks made not on your Turn. At Refresh, you may pay 2 _Momentum_ to create a Blast 1 Hazard within Weapon Range. Once per Phase, you may make a single Attack against a creature in that Area so long as they are within your Weapon Range. This Attack is _Glancing_. You may not attack the same Creature more than once per Round."
   },
   {
     "name": "Sniper Style",
@@ -614,7 +615,7 @@
       "reflex": 1,
       "focus": 2
     },
-    "effect": "At _Refresh_ you may choose to gain _Hobbled_ 1x3. If you do, gain a +1 Bonus to all Attacks with Ranged Weapons for the remainder of the _Round_."
+    "effect": "At _Refresh_ you may choose to gain _Hobbled_ 1x3. If you do, gain a +1 Bonus to all Attacks with Ranged Weapons for the remainder of the _Round_ whenever you are at a higher _Elevation_ than your Target."
   },
   {
     "name": "Bash Style",
@@ -654,17 +655,17 @@
     "name": "Counter Style",
     "desc": "With your mix of mobility and armor you can more safely counter a foe's assault.",
     "discipline": "Skirmisher",
-    "accumulate": "While Wearing Light Armor, once per Phase when you _Hit_/_Crit_ with a _Punish_ Reaction gain 1 Momentum.",
-    "refresh": "_Reflex_ 2, _Grit_ 2",
-    "effect": "While Wearing Light Armor, once per Phase, you may pay 1 _Momentum_ to take an additional Reaction so long as at least one Reaction that turn is a _Counter_ Reaction."
+    "accumulate": "While Wearing Light Armor, once per Phase when you _Hit_+ with a _Punish_ Reaction gain 1 Momentum.",
+    "refresh": { "reflex": 2, "grit": 3 },
+    "effect": "While Wearing Light Armor, once per Phase, you may pay 1 _Momentum_ to take an additional Reaction so long as at least one Reaction that turn is a _Punish_ Reaction."
   },
   {
     "name": "Skirmish Style",
     "desc": "You are always moving, making yourself a difficult target to pin down.",
     "discipline": "Skirmisher",
     "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end your _Turn_ non-adjacent to any enemy.",
-    "refresh": "_Reflex_ 3, _Grit_ 1",
-    "effect": "Whenever you take a _Reaction_ while you have _Reflex_ you may Move 1 space as long as you are wearing Light Armor.",
+    "refresh": { "reflex": 3, "grit": 1 },
+    "effect": "Whenever you take a _Reaction_ while you have _Reflex_ you may Move 1 as long as you are wearing Light Armor.",
     "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Evade_ Reaction by 1."
   },
   {
@@ -672,7 +673,7 @@
     "desc": "You are most at home near a foe, using your mobility and armor to always press the advantage.",
     "discipline": "Skirmisher",
     "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end a _Turn_ adjacent to an enemy.",
-    "refresh": "_Reflex_ 3, _Grit_ 1",
+    "refresh": { "reflex": 3, "grit": 1 },
     "effect": "Whenever you take a _Reaction_ while you have _Grit_ you may reduce the Damage of an adjacent foe's Attack by 1.",
     "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Block_ Reaction by 1."
   },
@@ -812,16 +813,16 @@
     "discipline": "Thrower",
     "accumulate": "Whenever you _Embed_ with a _Thrown_ Weapon gain 1 _Momentum_.",
     "refresh": "_Reflex_ 2, _Focus_ 1",
-    "effect": "Whenever you _Embed_ you may pay 1 _Momentum_ to inflict _Hobbled_ 1 if the foe does not _Negate_ the _Embed_. If a creature clears this _Embed_, they automatically clear the _Hobbled_.",
+    "effect": "Whenever you successfully _Embed_ you may pay 1 _Momentum_ to inflict _Hobbled_ 1. If a creature clears this _Embed_, they automatically clear the _Hobbled_.",
     "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
   },
   {
-    "name": "Called Shot Style",
-    "desc": "You aim for vital points with your thrown weapons, sacrificing accuracy for increased damage.",
+    "name": "Pinpoint Style",
+    "desc": "You aim for vital points with your thrown weapons, sacrificing reliability for lethality.",
     "discipline": "Thrower",
     "accumulate": "Whenever you _Crit_ with a _Thrown_ Weapon gain 2 _Momentum_.",
     "refresh": "_Reflex_ 1, _Focus_ 2",
-    "effect": "You take a -1 penalty to all Attack Rolls with Thrown Weapons, but treat your maximum Hit Roll as a Crit. When you _Crit_ with a Thrown Weapon, deal an additional 3 Damage and inflict either _Hobbled_ 1, _Exposed_ 1, or _Impaired_ 1 (1 _Focus_).",
+    "effect": "You take a -1 penalty to all Attack Rolls with Thrown Weapons, but treat your highest Hit Roll as a Crit. When you _Crit_ with a Thrown Weapon, deal an additional 3 Damage and inflict either _Hobbled_ 1, _Exposed_ 1, or _Impaired_ 1 (1 _Focus_).",
     "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
   },
   {
@@ -925,7 +926,7 @@
       "focus": 1,
       "reflex": 2
     },
-    "effect": "The first time each _Phase_ a hostile creature ends their _Turn_ within your Seismic Sense inflict _Knowledge_ 1 (1 _Focus_) on them.",
+    "effect": "The first time each _Phase_ a hostile creature ends their _Turn_ within your Seismic Sense inflict _Knowledge_ 1 (1 _Focus_) on them, or increase their topmost _Knowledge_ Token's value by 1.",
     "special": "While in this Stance you have Seismic Sense within 4 spaces, which allows you to ignore _Veiled_ Terrain."
   },
   {
@@ -970,7 +971,7 @@
     "refresh": {
       "grit": 2
     },
-    "effect": "Whenever you _Hit_ with a Weapon Strike using a Blunt Weapon you may add _Push_ 1. Whenever you _Crit_,  you may add either _Push_ 2 or knock them _Prone_.",
+    "effect": "Whenever you _Hit_ with a Weapon Strike using a Blunt Weapon you may add _Push_ 1. Whenever you _Crit_,  you may add _Push_ 2/_Prone_. This additional Status is Negated by the normal Cost.",
     "special": "Whenever you _Push_ a creature into an Obstacle with a Blunt Weapon they take 2 True Damage."
   },
   {
