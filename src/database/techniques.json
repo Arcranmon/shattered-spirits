@@ -2290,15 +2290,14 @@
     "name": "Mighty Fling",
     "discipline": "Grounding",
     "desc": "Using their monstrous strength, the earthbound flings an object with horrific force.",
-    "keywords": ["Spirit", "Earth", "Weapon"],
+    "keywords": ["Spirit", "Earth", "Weapon", "_Unblockable_ 2", "_Pierce_ 2"],
     "type": "Strike",
     "speed": "Weapon+1",
     "range": "Weapon",
     "ap": 1,
     "move": "Step",
-    "cost": "1 _Momentum_",
     "reqs": "Weapon Equipped or adjacent Improvised Weapon.",
-    "effect": "Make an Attack with the appropriate _Profile_ as follows:\n * If using an Improvised Weapon, resolve it with the appropriate Profile.\n * If using a Weapon with the _Thrown_ property, use its Profile.\n * If using a _Light_ Weapon, resolve it with the Small Improvised Weapon _Profile_.\n * If using a _Versatile_ Weapon, resolve it with the Medium Improvised Weapon _Profile_.\n * If using a _Heavy_ Weapon, resolve it with the Large Improvised Weapon _Profile_.\n\nIf the Weapon already has the _Thrown_ tag, increase it's value by 2. Otherwise, add _Thrown_ 3.",
+    "effect": "Make an Attack with the appropriate _Profile_ as follows:\n * If using an Improvised Weapon, resolve it with the appropriate Profile.\n * If using a Weapon with the _Thrown_ property, use its Profile.\n * If using a _Light_ Weapon, resolve it with the Small Improvised Weapon _Profile_.\n * If using a _Versatile_ Weapon, resolve it with the Medium Improvised Weapon _Profile_.\n * If using a _Heavy_ Weapon, resolve it with the Large Improvised Weapon _Profile_.\n\nIf the Weapon already has the _Thrown_ tag, increase it's value by 4. Otherwise, add _Thrown_ 3.",
     "boost": "2 _Grit_: You may treat any adjacent Size 1 _Obstacle_ as a Large Improvised Weapon. Place it adjacent to the _Target_ after attacking. This only costs 1 _Grit_ if you are in a _Grounding_ Stance."
   },
   {
@@ -3810,7 +3809,7 @@
     "effect": "Attack using your weapon's _Profile_."
   },
   {
-    "name": "Flurry of Blows",
+    "name": "Rapid Strikes",
     "discipline": "Martial Artist",
     "desc": "You go in for a quick series of unarmed strikes against a foe.",
     "keywords": ["Weapon", "Martial"],
@@ -3820,7 +3819,7 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Must use Unarmed Weapons.",
-    "effect": "Make two Attacks against the same Target using any valid Weapons, at least one of which must be _Light_. If an Attack hits, gain a +1 Bonus to all subsequent Attack Rolls as a part of this Technique, up to a maximum bonus of +3.",
+    "effect": "Make two Attacks against the same Target using any valid Weapons, at least one of which must be _Light_. If both weapons use the same body type (_Hand_, _Body_, or _Kick_) gain a +1 Bonus to the second attack. If both weapons have different categories, gain 1 _Momentum_.",
     "boost": "2 _Momentum_: Make an additional Attack. You may use this Boost multiple times, but increase its _Cost_ by 1 each time."
   },
   {
@@ -3833,12 +3832,11 @@
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "cost": "1 _Momentum_/_Focus_",
     "reqs": "Must use a _Light_/_Versatile_ Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. Inflict _Suppressed_ 1 (2 _Focus_) on a _Hit_ or _Suppressed_ 2 (3 _Focus_) on a _Crit_."
+    "effect": "Attack using your weapon's _Profile_. Inflict _Suppressed_ 1 (2 _Focus_) on a _Hit_ or _Suppressed_ 2 (3 _Focus_) on a _Crit_. Gain 1 _Focus_."
   },
   {
-    "name": "Reaper",
+    "name": "Flurry",
     "discipline": "Martial Artist",
     "desc": "You are a mass of fists and kicks, whirling across the battlefield in a frenzy.",
     "keywords": ["Weapon", "Martial"],
@@ -3846,7 +3844,7 @@
     "speed": "4",
     "range": "Weapon",
     "ap": 2,
-    "move": "Reposition",
+    "move": "Reposition, Reposition",
     "reqs": "Must use Unarmed Weapons.",
     "effect": "Make four Attacks using Unarmed Weapons.",
     "special": "Anytime you Defeat an enemy you gain another Reposition Move and reduce the Cost of your next Boost by 1. Creatures you Attack have _Disadvantage_ on all Attacks this _Turn_.",
@@ -3867,45 +3865,17 @@
     "boost": "1 _Momentum_: Instead, gain 3 _Defensive Tokens_."
   },
   {
-    "name": "Redirect",
+    "name": "Active Defense",
     "discipline": "Martial Artist",
-    "desc": "You quickly strike an attacking foe, redirecting their blow.",
-    "keywords": ["Weapon", "Martial", "Punish"],
+    "desc": "You quickly strike an attacking foe, potentially limiting their ability to strike.",
+    "keywords": ["Weapon", "Martial", "Punish", "Glancing"],
     "type": "Maneuver",
     "speed": "Reaction",
     "range": "Weapon",
-    "cost": "2 _Momentum_, 2 _Grit_/_Reflex_",
-    "trigger": "You would be attacked by a Melee Attack while you have an _Open Hand_.",
-    "effect": "Make an Attack with the below Profile. You may add the _Fist_ Keyword. If you Redirect, choose another creature within Range of the creature's Triggering Attack. The Attacker must resolve the Attack against that creature. The creature may pay the _Negate_ cost to automatically roll a 2 on this redirected Attack. On a Miss, reduce the Attack Roll by 1 or gain 1 _Guard_ against the Attack.",
-    "chart": {
-      "roll": [
-        "Miss",
-        "Miss",
-        "Miss",
-        "Miss",
-        "Miss",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit"
-      ],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "Redirect* (2 _Momentum_)",
-        "Redirect* (2 _Momentum_)",
-        "Redirect* (3 _Momentum_)",
-        "Redirect* (3 _Momentum_)",
-        "Redirect* (4 _Momentum_)",
-        "Redirect* (4 _Momentum_)"
-      ]
-    },
-    "imbue": "1 _Focus_: Instead, Trigger is 'You are attacked by a Melee Attack'. Add _Body_ or _Leg_ instead of _Fist_."
+    "cost": "1 _Momentum_, 1 _Reflex_",
+    "trigger": "You would be attacked by a Melee Attack.",
+    "effect": "Make an Attack with a _Light_ or _Versatile_ _Unarmed_ Weapon, resolving it before the Triggering Attack occurs.",
+    "boost": "Choose one:\n* 1 _Momentum_: Remove _Glancing_.\n* 1 _Reflex_: Add _Efficient_."
   },
   {
     "name": "Staggering Strike",
@@ -3917,9 +3887,8 @@
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "cost": "1 _Momentum_/_Grit_",
     "reqs": "Must use a _Versatile_/_Heavy_ Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. Inflict _Staggered_ (2 _Focus_) on a _Hit_ or _Staggered_, _Staggered_ (3 _Focus_) on a _Crit_."
+    "effect": "Attack using your weapon's _Profile_. Inflict _Staggered_ (2 _Focus_) on a _Hit_ or _Staggered_, _Staggered_ (3 _Focus_) on a _Crit_. Gain 1 _Grit_."
   },
   {
     "name": "Transfer Energy",
@@ -3929,7 +3898,7 @@
     "type": "Maneuver",
     "speed": "Reaction",
     "range": "Weapon",
-    "cost": "1 _Focus_/_Momentum_",
+    "cost": "1 _Focus_",
     "trigger": "You would gain _Momentum_ or a _Defensive Token_ from an Unarmed Attack due to its _Profile_.",
     "effect": "Replace gaining the Token with _Drain_, using the same Token and amount. The cost to _Negate_ is _Focus_ equal to the Tokens being _Drain_ed plus 1."
   },
@@ -4068,7 +4037,7 @@
     "move": "None",
     "cost": "1 _Momentum_",
     "reqs": "Ranged Weapon Wielded.",
-    "effect": "Attack using your Weapon's Profile and gain a +1 bonus to the Attack Roll. Ignore all _Cover_ shorter than the _Elevation_ difference between you and the _Target_."
+    "effect": "Attack using your Weapon's Profile, dealing an additional 2 Damage on a _Graze_+. If you're at a higher Elevation than the Target and _Crit_ you may ignore _Cover_."
   },
   {
     "name": "Focused Aim",

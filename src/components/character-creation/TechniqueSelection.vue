@@ -26,7 +26,7 @@
         standalone_or_contained="Standalone"
         :selectButton="true"
         :color_category="character.SpiritType"
-        @chose="removeStance"
+        @chose="removeSpiritTech"
       />
     </div>
     <v-row
@@ -68,12 +68,12 @@
     <div class="stance--box">
       <show-cards
         :inputs="charSkillTechniques"
-        job="Stances"
+        job="Techniques"
         :collapse="true"
         display_text="Selected Skill Techniques"
         standalone_or_contained="Standalone"
         :selectButton="true"
-        @chose="removeStance"
+        @chose="removeSkillTech"
       />
     </div>
     <v-row
@@ -175,11 +175,11 @@ export default Vue.extend({
     addSpiritTech: function (variable) {
       this.character.AddSpiritTech(variable);
     },
-    removeStance(variable) {
-      this.character.RemoveStance(variable.card, variable.index);
+    removeSkillTech(variable) {
+      this.character.RemoveSkillTech(variable.card, variable.index);
     },
-    removeStyle(variable) {
-      this.character.RemoveStyle(variable.card, variable.index);
+    removeSpiritTech(variable) {
+      this.character.RemoveSpiritTech(variable.card, variable.index);
     },
   },
   watch: {

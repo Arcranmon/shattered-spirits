@@ -37,7 +37,7 @@ class Refresh {
       );
     if (this.momentum_ != 0)
       formatted_string = this.SmartCommas(
-        this.momentum_.toString() + " _Momementum_",
+        this.momentum_.toString() + " _Momentum_",
         formatted_string
       );
     if (this.reflex_ != 0)

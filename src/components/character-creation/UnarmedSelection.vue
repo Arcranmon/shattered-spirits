@@ -1,25 +1,33 @@
 <template
   ><span>
+    <v-snackbar v-model="removeHand">
+      You may not remove your Hand Weapon; it's a default weapon that all
+      characters get!
+    </v-snackbar>
+    <v-snackbar v-model="removeSlam">
+      You may not remove your Slam Weapon; it's a default weapon that all
+      characters get!
+    </v-snackbar>
     <div class="button-seperator">
       <v-btn
         color="success"
         large
         tile
         @click="$emit('chose-weapon')"
-        :disabled="!character.HasAllWeapons"
+        :disabled="!character.HasAllUnarmed"
       >
-        <span v-if="!character.HasAllWeapons">CHOOSE YOUR WEAPONS</span>
-        <span v-else>ACCEPT WEAPONS</span>
+        <span v-if="!character.HasAllUnarmed">CHOOSE YOUR UNARMED WEAPONS</span>
+        <span v-else>ACCEPT UNARMED WEAPONS</span>
       </v-btn>
     </div>
-    You may select an additional {{ character.HandsRemaining }} hands of
-    weaponry!<br /><br />Click a selected weapon to unequip it.
+    You may select an additional {{ character.Martial }} unarmed weapons!<br /><br />Click
+    a selected weapon to unequip it. {{ character.Martial }}
     <div class="weapon--box">
       <show-cards
         :inputs="charWeapons"
         job="Weapons"
         :collapse="true"
-        display_text="Selected Weapons"
+        display_text="Selected Unarmed Weapons"
         standalone_or_contained="Standalone"
         :selectButton="true"
         @chose="removeWeapon"
@@ -47,9 +55,9 @@
             tile
             @click="addWeapon(weapon)"
             :disabled="
-              character.HasAllWeapons ||
+              character.HasAllUnarmed ||
               weapon.Name == '' ||
-              !character.CanAddWeapon(weapon)
+              !character.CanAddUnarmedWeapon()
             "
           >
             <span v-if="weapon.Name == ''">Select a weapon on the left!</span>
@@ -83,22 +91,28 @@ export default Vue.extend({
     return {
       variables,
       weapon: new Weapon(),
+      removeHand: false,
+      removeSlam: false,
     };
   },
   computed: {
     weapons: function () {
-      return this.$store.getters.getWeaponsForCharCreation();
+      return this.$store.getters.getWeaponsByCategory("Unarmed");
     },
     charWeapons() {
-      return this.$store.getters.getWeaponsFromList(this.character.Weapons);
+      return this.$store.getters.getWeaponsFromList(
+        this.character.UnarmedWeapons
+      );
     },
   },
   methods: {
     addWeapon: function (variable) {
-      this.character.AddWeapon(variable);
+      this.character.AddUnarmedWeapon(variable);
     },
     removeWeapon(variable) {
-      this.character.RemoveWeapon(variable.card, variable.index);
+      if (variable.card.Name == "Slam") this.removeSlam = true;
+      if (variable.card.Name == "Hand") this.removeHand = true;
+      this.character.RemoveUnarmedWeapon(variable.card, variable.index);
     },
   },
 });

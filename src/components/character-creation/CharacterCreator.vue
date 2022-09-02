@@ -18,9 +18,12 @@
           <center>Choose Techniques!</center>
         </v-stepper-step>
         <v-stepper-step editable step="6">
-          <center>Choose Names!</center>
+          <center>Choose Unarmed Weapons!</center>
         </v-stepper-step>
         <v-stepper-step editable step="7">
+          <center>Choose Names!</center>
+        </v-stepper-step>
+        <v-stepper-step editable step="8">
           <center>Preview!</center>
         </v-stepper-step>
       </v-stepper-header>
@@ -41,10 +44,13 @@
           ><technique-selection :character="character" @chose-techs="step++" />
         </v-stepper-content>
         <v-stepper-content step="6"
+          ><unarmed-selection :character="character" @chose-weapon="step++" />
+        </v-stepper-content>
+        <v-stepper-content step="7"
           ><name-selection
             :character="character"
             @chose-names="step++" /></v-stepper-content
-        ><v-stepper-content step="7">
+        ><v-stepper-content step="8">
           <v-btn
             color="success"
             large
@@ -73,6 +79,7 @@ import { Character } from "@/class";
 import ArmorSelection from "@/components/character-creation/ArmorSelection.vue";
 import SpiritSelection from "@/components/character-creation/SpiritSelection.vue";
 import WeaponSelection from "@/components/character-creation/WeaponSelection.vue";
+import UnarmedSelection from "@/components/character-creation/UnarmedSelection.vue";
 import StanceSelection from "@/components/character-creation/StanceSelection.vue";
 import TechniqueSelection from "@/components/character-creation/TechniqueSelection.vue";
 import NameSelection from "@/components/character-creation/NameSelection.vue";
@@ -86,6 +93,7 @@ export default Vue.extend({
     StanceSelection,
     SpiritSelection,
     TechniqueSelection,
+    UnarmedSelection,
     WeaponSelection,
   },
   data: () => ({
@@ -102,7 +110,7 @@ export default Vue.extend({
     saveCharacter() {
       const store = getModule(CharacterManagementStore, this.$store);
       store.AddCharacter(this.character);
-      this.$router.push("characters");
+      this.$router.push("character-manager");
     },
   },
 });

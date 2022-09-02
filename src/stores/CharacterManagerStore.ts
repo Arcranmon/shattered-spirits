@@ -26,22 +26,22 @@ export class CharacterManagementStore extends VuexModule {
 
   @Action
   public DeleteCharacter(index: number): void {
-    this.Characters.splice(index, 1);
-    saveCharacters(this.Characters);
+    this.AllCharacters.splice(index, 1);
+    saveCharacters(this.AllCharacters);
   }
 
-  @Action({ rawError: true })
+  @Action
   public AddCharacter(character: Character): void {
     this.AllCharacters.push(character);
     saveCharacters(this.AllCharacters);
   }
 
-  @Action
+  @Action({ rawError: true })
   public SaveCharacters(): void {
     saveCharacters(this.AllCharacters);
   }
 
-  @Action({ rawError: true })
+  @Action
   public async loadCharacter() {
     this.LoadCharacter(localStorage.getItem("characters.json"));
   }

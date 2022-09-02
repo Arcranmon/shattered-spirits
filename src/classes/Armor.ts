@@ -30,6 +30,9 @@ class Armor {
   get Durability() {
     return this.durability_;
   }
+  get Endurance() {
+    return this.endurance_;
+  }
   get Jump() {
     return this.jump_;
   }

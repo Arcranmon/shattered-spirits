@@ -34,7 +34,7 @@ import WeaponSkills from "@/pages/skills/weapon-skills/index.vue";
 
 import Npcs from "@/pages/npcs/index.vue";
 
-import Characters from "@/pages/character-manager/index.vue";
+import CharacterManager from "@/pages/character-manager/index.vue";
 
 import World from "@/pages/world/index.vue";
 
@@ -258,11 +258,11 @@ const r = new Router({
       },
     },
     {
-      path: "/characters",
-      component: Characters,
-      name: "characters",
+      path: "/character-manager",
+      component: CharacterManager,
+      name: "character-manager",
       meta: {
-        title: "Characters",
+        title: "Character Manager",
       },
     },
     {

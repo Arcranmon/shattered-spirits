@@ -119,6 +119,7 @@ declare interface ICharacterData {
   grit: number;
   current_health: number;
   main_hand: string;
+  martial: number;
   max_health: number;
   momentum: number;
   name: string;
@@ -131,5 +132,6 @@ declare interface ICharacterData {
   spirit_type: string;
   stances: string[];
   styles: string[];
+  unarmed_weapons: string[];
   weapons: string[];
 }

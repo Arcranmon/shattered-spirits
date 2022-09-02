@@ -73,7 +73,7 @@
         display_text="Selected Styles"
         standalone_or_contained="Standalone"
         :selectButton="true"
-        @chose="removeStance"
+        @chose="removeStyle"
       />
     </div>
     <v-row
