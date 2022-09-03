@@ -7,10 +7,10 @@
     "type": "Strike",
     "speed": "Reaction",
     "range": "Self",
-    "cost": "1 _Momentum_, +1 _Momentum_ if the Attack is Speed 4 or slower.",
+    "cost": "1 _Momentum_ for 1 AP, 2 _Momentum_ for 2 AP.",
     "trigger": "You are Attacked by an adjacent enemy.",
-    "effect": "Increase the Attack Roll by 1. You may immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
-    "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+    "effect": "Increase the Attack Roll by 1. Immediately Attack the triggering enemy with a single-target Technique with a Speed less than or equal to the current Phase, paying all Costs as normal.",
+    "boost": "1 _Momentum_: You may ignore the Speed of the _Technique_."
   },
   {
     "name": "Deflect",
@@ -50,18 +50,6 @@
     "move": "Reposition",
     "effect": "Replace one or both of your Wielded equipment with a different piece of available equipment.",
     "special": "The Speed of Draw is equal to 1 + the total number of Hands of Equipment drawn or stowed. This becomes _Fluid_ 2 if you are drawing into an Open Hand."
-  },
-  {
-    "name": "Form Change",
-    "discipline": "Basic",
-    "desc": "By adopting a different fighting style or spirit stance, one can keep up with an ever-changing battlefield.",
-    "type": "Maneuver",
-    "speed": "Instinctive",
-    "range": "Self",
-    "ap": 1,
-    "move": "None",
-    "effect": "Change your current Stance or Style.",
-    "imbue": "Any 2 of _Momentum_/_Focus_. Form Change is instead a Reaction with the Trigger 'A Turn begins', so long as you currently have a Stance if you're changing Stances or a Style if you're changing Styles."
   },
   {
     "name": "Grab",
@@ -124,11 +112,11 @@
     "type": "Strike",
     "speed": "Reaction",
     "range": "Self",
-    "cost": "1 _Momentum_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
+    "cost": "1 _Momentum_ for 1 AP, 2 _Momentum_ for 2 AP.",
     "trigger": "An enemy within your Reach makes Movement that would take them out of your Reach.",
-    "effect": "Immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_.",
-    "special": "The Movement of the _Maneuver_/_Strike_ you choose becomes None.",
-    "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+    "effect": "Immediately Attack the triggering enemy with a single-target _Technique_ with a Speed less than or equal to the current Phase, paying all Costs as normal.",
+    "special": "The Movement of the _Technique_ you choose becomes None.",
+    "boost": "Choose any number:\n* 1 _Momentum_: You may ignore the Speed of the _Technique_.\n* 2 _Momentum_: You may use an AoE Technique."
   },
   {
     "name": "Prepare",
@@ -140,21 +128,8 @@
     "range": "Self",
     "ap": 1,
     "move": "Step",
-    "effect": "Gain any 2 of _Grit_, _Focus_, _Reflex_, or _Momentum_, in any combination."
-  },
-  {
-    "name": "Quick Strike",
-    "discipline": "Basic",
-    "desc": "A quick blow, sacrificing striking strength for speed.",
-    "keywords": ["Weapon"],
-    "type": "Strike",
-    "speed": "Weapon-1",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "reqs": "_Light_/_Versatile_ Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. _Versatile_ Weapons deal -2 Damage.",
-    "boost": "1 _Momentum_: Add _Sure Hit_ 1."
+    "effect": "Gain any 2 of _Grit_, _Focus_, _Reflex_, or _Momentum_, in any combination.",
+    "imbue": "+1 AP: Gain an additional 2 Tokens."
   },
   {
     "name": "Reorient",
@@ -173,6 +148,7 @@
     "name": "Run",
     "discipline": "Basic",
     "desc": "A simple dash, covering ground as quickly as possible.",
+    "keywords": ["_Fluid_ 1"],
     "type": "Move",
     "speed": "See Movement",
     "range": "Self",
@@ -220,33 +196,18 @@
     }
   },
   {
-    "name": "Strong Strike",
-    "discipline": "Basic",
-    "desc": "A mighty blow, sacrificing power for speed.",
-    "keywords": ["Weapon"],
-    "type": "Strike",
-    "speed": "Weapon+1",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "reqs": "_Versatile_/_Heavy_ Weapon Wielded",
-    "effect": "Attack using your weapon's Profile, dealing +1 Damage with a _Versatile_ weapon or +2 with a _Heavy_ weapon.",
-    "boost": "1 _Momentum_: Add _Unblockable_ 1."
-  },
-  {
-    "name": "Weapon Strike",
+    "name": "Basic Strike",
     "discipline": "Basic",
     "desc": "A standard strike, balancing damage and speed.",
     "keywords": ["Weapon"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
-    "ap": 1,
+    "ap": 2,
     "move": "Reposition",
     "reqs": "Any Weapon Wielded.",
     "effect": "Attack using your weapon's Profile.",
-    "imbue": "0 _Momentum_: Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon.",
-    "strong": ""
+    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
   },
   {
     "name": "Pursuit",
@@ -3511,51 +3472,6 @@
     "imbue": "1 _Momentum_: Instead, Speed is 4 and Movement is Sprint."
   },
   {
-    "name": "Collapse",
-    "discipline": "Land",
-    "desc": "A powerful technique that creates a cave below the ground, then collapses the ground downwards, sending enemies into a painful fall.",
-    "keywords": ["Spirit", "Earth", "Groundsource", "Priority"],
-    "type": "Strike",
-    "speed": "3",
-    "damagetype": "Crush",
-    "range": "8",
-    "area": "Blast 2",
-    "ap": 2,
-    "move": "Step",
-    "effect": "All spaces in the area become _Rough_ and a _Hazard_. At the end of the Round, resolve the below Attack in the same Area and decrease the Area's Elevation by 3.",
-    "boost": "2 _Momentum_. Area becomes a Blast 3.",
-    "imbue": "1 _Grit_: Increase the Speed of this Technique by 1. You may use this Imbue multiple times but must increase its Cost by 1 each time.",
-    "chart": {
-      "damage": [0, 0, 7, 7, 8, 9, 10, 10, 10, 12, 12],
-      "roll": [
-        "Miss",
-        "Miss",
-        "Graze",
-        "Graze",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit"
-      ],
-      "status": [
-        "",
-        "",
-        "_Exposed_ 1 (1 _Reflex_)",
-        "_Exposed_ 1 (1 _Reflex_)",
-        "_Exposed_ 1 AND _Hobbled_ 1 (2 _Reflex_)",
-        "_Exposed_ 1 AND _Hobbled_ 1 (2 _Reflex_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_), _Break_ (2 _Focus_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_), _Break_ (2 _Focus_)"
-      ]
-    }
-  },
-  {
     "name": "Earth Kinesis",
     "discipline": "Land",
     "desc": "The Earthbonded moves the earth of the battlefield around, choosing the shape as easily as breathing.",
@@ -3570,31 +3486,18 @@
     "boost": "Choose any:\n* 1 _Grit_: Add _Groundsource_. You may create an _Earth Pillar_ in an unoccupied space before resolving the Effect.\n* 2 _Momentum_: Target is: A Size 2 Earthen Obstacle or three Size 1 Earthen Obstacles. If you move a Size 2 Earthen Obstacle instead inflict _Push_ 3, _Impaired_ 2 (3 _Grit_/_Reflex_)."
   },
   {
-    "name": "Earth Rise",
-    "discipline": "Land",
-    "desc": "The earthbound creates a pillar of earth, potentially launching a creature skyward.",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
-    "type": "Maneuver",
-    "speed": "4",
-    "range": "6",
-    "ap": 1,
-    "move": "Reposition",
-    "cost": "1 _Momentum_",
-    "effect": "Create an _Earth Pillar_ in a space within range. If the space is occupied by a Size 1 creature, you may _Leaping_ _Slide_ 3 the creature unless they pay 2 _Reflex_ to Negate and immediately move 1 space. If the creature cannot Move, they cannot take this Reaction. The creature gains _Impaired_ 1 and takes 3 Crush Damage if they suffer this effect.",
-    "boost": "1 _Reflex_: Instead, create the _Earth Pillar_ in your space. Do not resolve the Effect, but when you create the _Earth Pillar_ you may immediately _Jump_ at no cost and separate from your Movement. Increase your Jump value by 2 while doing this."
-  },
-  {
-    "name": "Earth Shaping",
+    "name": "Earth Shaper",
     "discipline": "Land",
     "desc": "The Earthbonded molds the ground around them, creating obstacles or a path forward with ease.",
-    "keywords": ["Spirit", "Earth", "Groundsource", "_Fluid_ 1"],
+    "keywords": ["Spirit", "Earth", "Groundsource"],
     "type": "Maneuver",
     "speed": "6",
     "range": "6",
     "ap": 1,
     "move": "Reposition",
-    "effect": "Gain 1 _Grit_. Choose one of the following:\n* Make three contiguous spaces within Range _Rough_ or _Jagged_.\n* Remove _Rough_ or _Jagged_ from three contiguous spaces within range.\n* Create _Stairs_ in a space within Range and gain 1 additional _Grit_.\n Create two _Earth Pillars_ in contiguous, adjacent spaces.",
-    "boost": "3 _Grit_: Instead of one of the above effects, create two Earth Columns in adjacent spaces."
+    "effect": "Gain 1 _Grit_. Choose one of the following:\n* Make four empty, contiguous spaces within Range _Rough_ or _Jagged_. You may select the Terrain type for each space separately.\n* Remove _Rough_ or _Jagged_ from four contiguous spaces within range.  You may select the Terrain type for each space separately.\n* Create _Stairs_ in a space within Range and gain 1 additional _Grit_.\n* Create two _Earth Pillars_ in empty, contiguous spaces.\n* Create an _Earth Column_ in an empty area.",
+    "boost": "2 _Grit_: Choose two effects. You may choose the same effect twice.",
+    "imbue": "+1 AP: Remove the requirement for empty spaces. You may resolve the following against the creature in that space:\n* If you create _Jagged_ Terrain: The creature must pay 2 _Momentum_/_Reflex_ or take 4 Pierce Damage and gain _Bleed_ 1.\n* If you create _Rough_ Terrain, Stairs, or remove Terrain: The creature must pay 2 _Momentum_/_Reflex_ or gain _Prone_.\n* If you create Earthen Pillars or Earthen Columns: The creature must pay 3 _Momentum_/_Reflex_ or gain _Leaping_ _Slide_ 2 and, if you wish, _Exposed_ 1 and take 2 Crush Damage."
   },
   {
     "name": "Earth Slide",
@@ -3611,106 +3514,6 @@
     "boost": "Choose any:\n* 2 _Momentum_: Make all spaces you move through _Rough_.\n* z1 _Momentum_, paid when you move through a creature: Inflict _Impaired_ or _Exposed_ 1 (1 _Reflex_)."
   },
   {
-    "name": "Earth Tomb",
-    "discipline": "Land",
-    "desc": "By using nearby earth and stone the Earthbonded seals their foe away.",
-    "keywords": ["Spirit", "Groundsource", "Earth"],
-    "type": "Strike",
-    "speed": "5",
-    "damagetype": "Crush",
-    "range": "8",
-    "target": "A Size 1 creature adjacent to at least two _Earthen Feature_s.",
-    "ap": 1,
-    "move": "Step",
-    "effect": "Attack the target with the below Profile, destroying the _Earthen_ Obstacles. On a _Hit_/_Crit_,  _Entomb_ the creature in an _Earth Pillar_. A creature may end this _Entomb_ by _Sacrificing_ an Action and spending 4 _Grit_ or by destroying the _Earth Pillar_. If a creature spends _Reflex_ to Negate, they must immediately Move 1 and fall _Prone_. An _Earth Pillar_ is then created in their original space. If they cannot Move, they may not spend _Reflex_ in this way.",
-    "special": "If there are 4 adjacent _Earthen_ Obstacles: Either this Attack is _Accurate_, or you may target a Size 2 creature and _Entomb_ them in an _Earth Column_. Destroy all _Earthen_ Obstacles used for this Attack.",
-    "boost": "2 _Grit_, 1 _Momentum_: Add _Groundsource_. You may resolve the normal Effect without any _Earthen_ Obstacles.",
-    "chart": {
-      "damage": [0, 0, 0, 5, 6, 8, 10, 10, 11, 12, 12],
-      "roll": [
-        "Miss",
-        "Miss",
-        "Miss",
-        "Graze",
-        "Graze",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit"
-      ],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Entomb_ (2 _Reflex_)",
-        "_Entomb_ (2 _Reflex_)",
-        "_Entomb_ (3 _Reflex_)",
-        "_Entomb_ (3 _Reflex_)",
-        "_Entomb_ (4 _Reflex_)",
-        "_Entomb_ (4 _Reflex_)"
-      ]
-    }
-  },
-  {
-    "name": "Earthen Shield",
-    "discipline": "Land",
-    "desc": "The Earthbonded throws up a barricade, only using it when the right moment strikes.",
-    "keywords": ["Spirit", "Earth", "Block", "Groundsource"],
-    "type": "Defensive",
-    "speed": "Reaction",
-    "range": "3",
-    "cost": "1 _Focus_, 3 _Grit_",
-    "trigger": "You or a creature within range is Attacked.",
-    "effect": "Grant the triggering creature _Cover_ and 1 _Guard_ against the triggering Attack. Then _Slide_ the Triggering creature 1 space and put an _Earth Pillar_ in their space."
-  },
-  {
-    "name": "Jagged Earth",
-    "discipline": "Land",
-    "desc": "Blades of the earth appear out of nowhere, suddenly striking a foe.",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
-    "type": "Strike",
-    "speed": "3",
-    "damagetype": "Stab",
-    "range": "Melee or 6",
-    "ap": 1,
-    "move": "Step",
-    "effect": "Attack with the below Profile. Immediately after resolving the attack make a space adjacent to the target _Jagged_.",
-    "boost": "2 _Momentum_: This attack becomes _Accurate_ and you may instead make a Cone 1 _Jagged_, although at least one space must be adjacent to the Target.",
-    "chart": {
-      "damage": [0, 0, 0, 2, 3, 4, 5, 6, 7, 9, 10],
-      "roll": [
-        "Miss",
-        "Miss",
-        "Miss",
-        "Graze",
-        "Graze",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit",
-        "Crit"
-      ],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Bleed_ 1 (1 _Reflex_)",
-        "_Bleed_ 1 (1 _Reflex_)",
-        "_Bleed_ 1x2 (2 _Reflex_)",
-        "_Bleed_ 1x2 (2 _Reflex_)"
-      ]
-    }
-  },
-  {
     "name": "Quake",
     "discipline": "Land",
     "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
@@ -3721,8 +3524,9 @@
     "area": "Burst 1",
     "ap": 1,
     "move": "Step",
-    "effect": "Attack all targets in the area with the below Profile.",
-    "boost": "Choose any:\n* 2 _Momentum_ Area becomes Burst 2.\n* 2 _Grit_: You may make the Area _Rough_.",
+    "effect": "Attack all targets in the area with the below Profile. Do not deal Damage.",
+    "boost": "Choose any number:\n* 1 _Focus_: Instead, Range becomes 6 and Burst becomes Blast. \n* 2 _Momentum_: Area becomes Burst 2.\n* 2 _Grit_: You may make the Area _Rough_.",
+    "imbue": "+1 AP: Deal Damage. Increase the cost to Negate by 1.",
     "chart": {
       "damage": [0, 0, 0, 1, 2, 2, 3, 3, 4, 5, 6],
       "roll": [
@@ -3754,33 +3558,51 @@
     }
   },
   {
-    "name": "Quicksand",
+    "name": "Sinkhole",
     "discipline": "Land",
     "desc": "Liquified earth threatens to swallow the unaware whole.",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "keywords": ["Spirit", "Earth", "Groundsource", "Priority", "Enchant"],
     "type": "Maneuver",
-    "speed": "5",
+    "speed": "3",
     "range": "8",
-    "target": "An unoccupied Area.",
+    "target": "An Unoccupied Area.",
+    "damage": "Crush",
     "area": "Cone 2",
     "ap": 1,
     "move": "Shift",
-    "effect": "The target Area becomes _Rough_. If more than half of a creature ever occupies spaces with Quicksand, they sink into the Quicksand and are _Restrained_ until they spend 2 _Grit_/_Reflex_ and their Movement on their Turn to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without any Cost. A single space of Quicksand may only have one creature _Restrained_ at a time.",
-    "special": "A character may only have three instances of Quickand at a time, regardless of their size.",
-    "boost": "Choose any:\n* 2 _Momentum_. You instead create the Quicksand in a Blast 1 area.\n* 2 _Grit_, 2 _Momentum_: You may Target an occupied Area with this Technique."
-  },
-  {
-    "name": "Spikes",
-    "discipline": "Land",
-    "desc": "Hardened spikes rise up from the earth, leaving a jagged wake that is difficult to traverse.",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
-    "type": "Maneuver",
-    "speed": "3",
-    "area": "Line 4 or Cone 2",
-    "ap": 1,
-    "move": "Step",
-    "effect": "The area immediately becomes _Rough_ and _Jagged_. Any character in the area must spend 1 _Reflex_/_Momentum_ or gain _Hobbled_ 1.",
-    "boost": "1 _Momentum_. Place another Line 4 or Cone 2 connected to the initial Area."
+    "effect": "The target Area becomes _Rough_ and a _Hazard_. At the end of the next _Phase_ it becomes Quicksand. If more than half of a creature ever occupies spaces with Quicksand, they sink into the Quicksand and are _Restrained_ until they spend 2 _Grit_/_Reflex_ and use a Reposition Movement to escape. An adjacent creature can also Sacrifice an Action to free a creature from _Restrained_ without any Cost. A single space of Quicksand may only have one creature _Restrained_ at a time. Obstacles in Quicksand sink 1 height every turn until they are fully submerged.",
+    "special": "If you repeat this Action while the _Enchant_ is ongoing, you may instantly add 3 empty, contiguous spaces to the Quicksand or immediately deal 4 Crush Damage to all creatures _Restrained_ in the Quicksand.",
+    "boost": "2 _Momentum_. You instead create the Quicksand in a Blast 1 area.",
+    "imbue": "+1 AP: You may target an occupied area. Attack all creatures in the Area with the below Profile upon using the Technique.",
+    "chart": {
+      "damage": [0, 0, 0, 3, 4, 4, 4, 4, 5, 6, 8],
+      "roll": [
+        "Miss",
+        "Miss",
+        "Miss",
+        "Graze",
+        "Graze",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Hit",
+        "Crit",
+        "Crit"
+      ],
+      "status": [
+        "",
+        "",
+        "",
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 1 (1 _Reflex_)",
+        "_Hobbled_ 2 (2 _Reflex_)",
+        "_Hobbled_ 2 (2 _Reflex_)",
+        "_Hobbled_ 2 (2 _Reflex_)",
+        "_Hobbled_ 2 (2 _Reflex_)",
+        "_Hobbled_ 3 (3 _Reflex_)",
+        "_Hobbled_ 3 (3 _Reflex_)"
+      ]
+    }
   },
   {
     "name": "Adaptive Strike",

@@ -29,6 +29,7 @@ declare interface IStanceData {
   accumulate?: string;
   desc: string;
   discipline: string;
+  reaction: string;
   refresh: IRefreshData;
   effect: string;
   special?: string;

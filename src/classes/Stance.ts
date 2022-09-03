@@ -8,6 +8,7 @@ class Stance {
   private effect_: string;
   private refresh_: Refresh;
   private name_: string;
+  private reaction_: string;
   private special_: string;
 
   public constructor() {
@@ -17,6 +18,7 @@ class Stance {
     this.effect_ = "";
     this.refresh_ = null;
     this.name_ = "";
+    this.reaction_ = "";
     this.special_ = "";
   }
 
@@ -61,6 +63,12 @@ class Stance {
   public get SpecialHeader() {
     return "**Special:** " + this.special_;
   }
+  public get HasReaction() {
+    return this.reaction_.length > 0;
+  }
+  public get ReactionHeader() {
+    return "**Reaction:** " + this.reaction_;
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -78,6 +86,7 @@ class Stance {
     this.discipline_ = data.discipline || "";
     this.effect_ = data.effect || "";
     this.name_ = data.name || "";
+    this.reaction_ = data.reaction || "";
     this.special_ = data.special || "";
     if ("refresh" in data) {
       this.refresh_ = Refresh.Deserialize(data.refresh);

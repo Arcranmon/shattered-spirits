@@ -24,6 +24,9 @@
       <div v-if="stance.HasSpecial">
         <display-tooltip-text :string="stance.SpecialHeader" />
       </div>
+      <div v-if="stance.HasReaction">
+        <display-tooltip-text :string="stance.ReactionHeader" />
+      </div>
     </div>
   </div>
 </template>
