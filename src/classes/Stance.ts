@@ -1,5 +1,5 @@
 import { store } from "@/store";
-import { Refresh } from "@/class";
+import { Chart, Refresh } from "@/class";
 
 class Stance {
   private accumulate_: string;
@@ -10,6 +10,7 @@ class Stance {
   private name_: string;
   private reaction_: string;
   private special_: string;
+  private chart_: Chart;
 
   public constructor() {
     this.accumulate_ = "";
@@ -32,12 +33,18 @@ class Stance {
   public get Name() {
     return this.name_;
   }
+  public get Chart() {
+    return this.chart_;
+  }
 
   // ==========================================================
   // UTILITY
   // ==========================================================
   public get HasAccumulate() {
     return this.accumulate_.length > 0;
+  }
+  public get HasChart() {
+    return this.Chart != null;
   }
   public get AccumulateHeader() {
     return "**Accumulate:** " + this.accumulate_;
@@ -90,6 +97,9 @@ class Stance {
     this.special_ = data.special || "";
     if ("refresh" in data) {
       this.refresh_ = Refresh.Deserialize(data.refresh);
+    }
+    if ("chart" in data) {
+      this.chart_ = Chart.Deserialize(data.chart);
     }
   }
 }

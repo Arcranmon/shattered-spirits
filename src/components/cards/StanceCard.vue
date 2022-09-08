@@ -27,12 +27,16 @@
       <div v-if="stance.HasReaction">
         <display-tooltip-text :string="stance.ReactionHeader" />
       </div>
+      <span v-if="(stance.HasChart)"
+        ><chart-table :chart="stance.Chart" />
+      </span>
     </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
+import ChartTable from "@/components/ChartTable.vue";
 import { Stance } from "@/class";
 
 export default Vue.extend({
@@ -48,7 +52,7 @@ export default Vue.extend({
       default: "#ece6dc",
     },
   },
-  components: {},
+  components: { ChartTable },
 });
 </script>
 

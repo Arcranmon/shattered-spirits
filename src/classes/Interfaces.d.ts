@@ -26,6 +26,7 @@ declare interface ITechData {
 declare interface IStanceData {
   name: string;
   category: string;
+  chart: IChartData;
   accumulate?: string;
   desc: string;
   discipline: string;
