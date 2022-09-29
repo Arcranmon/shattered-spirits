@@ -45,6 +45,9 @@
             v-on:click="clickMethod(n, index)"
             :lg="colWidth"
           >
+            <div class="card--box" v-if="job == 'Reactions'">
+              <reaction-card :reaction="n" :format_text="true" />
+            </div>
             <div class="card--box" v-if="job == 'Stances'">
               <stance-card :stance="n" :category="color_category" />
             </div>
@@ -67,15 +70,16 @@
 </template>
 
 <script>
-import Vue from "vue";
-import StanceCard from "./StanceCard.vue";
-import TechCard from "./TechCard.vue";
-import WeaponCard from "./WeaponCard.vue";
-import ArmorCard from "./ArmorCard.vue";
-import NpcCard from "./NpcCard.vue";
+import Vue from 'vue'
+import StanceCard from './StanceCard.vue'
+import TechCard from './TechCard.vue'
+import WeaponCard from './WeaponCard.vue'
+import ArmorCard from './ArmorCard.vue'
+import ReactionCard from './ReactionCard.vue'
+import NpcCard from './NpcCard.vue'
 
 export default Vue.extend({
-  name: "show-cards",
+  name: 'show-cards',
   props: {
     inputs: {
       type: Array,
@@ -88,17 +92,17 @@ export default Vue.extend({
     color_category: {
       type: String,
       required: false,
-      default: "#ece6dc",
+      default: '#ece6dc',
     },
     display_text: {
       type: String,
       required: false,
-      default: "None",
+      default: 'None',
     },
     standalone_or_contained: {
       type: String,
       required: false,
-      default: "Contained",
+      default: 'Contained',
     },
     collapse: {
       type: Boolean,
@@ -121,33 +125,32 @@ export default Vue.extend({
     ArmorCard,
     StanceCard,
     WeaponCard,
+    ReactionCard,
     NpcCard,
   },
   methods: {
     clickMethod(variable, index) {
-      this.$emit("chose", { card: variable, index: index });
+      this.$emit('chose', { card: variable, index: index })
     },
   },
   computed: {
     colWidth: function () {
-      return 12 / this.cols;
+      return 12 / this.cols
     },
     dropName: function () {
-      if (this.display_text == "None") return this.job;
-      else return this.display_text;
+      if (this.display_text == 'None') return this.job
+      else return this.display_text
     },
     contained_header: function () {
-      if (this.standalone_or_contained == "Contained")
-        return "expand--header-contained";
-      return "expand--header-standalone";
+      if (this.standalone_or_contained == 'Contained') return 'expand--header-contained'
+      return 'expand--header-standalone'
     },
     contained_body: function () {
-      if (this.standalone_or_contained == "Contained")
-        return "expand--body-contained";
-      return "expand--body-standalone";
+      if (this.standalone_or_contained == 'Contained') return 'expand--body-contained'
+      return 'expand--body-standalone'
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

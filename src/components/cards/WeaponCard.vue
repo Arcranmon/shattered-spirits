@@ -7,44 +7,42 @@
       <div class="weapon--keywords">
         <span v-if="(weapon.Desc.length > 0)">{{ weapon.Desc }}<br /></span>
         <b
-          >{{ weapon.SpeedHeader }}{{ weapon.DamageTypeHeader
-          }}{{ weapon.DurabilityHeader
-          }}<display-tooltip-text :string="weapon.RangeHeader" />
+          >{{ weapon.SpeedHeader }}{{ weapon.DamageTypeHeader }}{{ weapon.DurabilityHeader }}<display-tooltip-text :string="weapon.RangeHeader" />
           {{ weapon.HandsPhrase }}{{ weapon.CategoryHeader }}
           <br />
-          <display-tooltip-text
-            :string="weapon.KeywordsHeader"
-            :decorate="false"
+          <display-tooltip-text :string="weapon.KeywordsHeader" :decorate="false"
         /></b>
       </div>
     </div>
     <div class="weapon--content">
-      <display-tooltip-text
-        v-if="weapon.HasSpecial"
-        :string="weapon.SpecialHeader"
-      />
+      <display-tooltip-text v-if="weapon.HasSpecial" :string="weapon.SpecialHeader" />
       <div style="height: 0.5em;" />
       <chart-table :chart="weapon.Chart" />
+    </div>
+    <div class="weapon--content" v-if="weapon.HasReaction">
+      <display-tooltip-text string="**Reaction:** While wielding this Weapon (and it is undamaged), gain the following Reaction:" />
+      <reaction-card :reaction="$store.getters.getReaction(weapon.Reaction)" />
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import { Weapon } from "@/class";
-import ChartTable from "@/components/ChartTable.vue";
-import DisplayTooltipText from "@/components/DisplayTooltipText";
+import Vue from 'vue'
+import { Weapon } from '@/class'
+import ChartTable from '@/components/ChartTable.vue'
+import DisplayTooltipText from '@/components/DisplayTooltipText'
+import ReactionCard from './ReactionCard.vue'
 
 export default Vue.extend({
-  name: "weapon-card",
+  name: 'weapon-card',
   props: {
     weapon: {
       type: Weapon,
       required: true,
     },
   },
-  components: { ChartTable },
-});
+  components: { ChartTable, ReactionCard },
+})
 </script>
 
 <style scoped lang="scss">

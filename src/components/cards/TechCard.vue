@@ -9,20 +9,12 @@
         <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
         <span style="font-style: bold;">
           <b
-            >{{ tech.SpeedHeader
-            }}<span v-if="tech.HasDamageType"
-              >, {{ tech.DamageTypeHeader }}</span
+            >{{ tech.SpeedHeader }}<span v-if="tech.HasDamageType">, {{ tech.DamageTypeHeader }}</span
             ><span v-if="tech.HasRange">, {{ tech.RangeHeader }}</span
-            ><span v-if="tech.HasArea">, {{ tech.Area }}</span>
-            <span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
+            ><span v-if="tech.HasArea">, {{ tech.Area }}</span> <span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
         </span>
-        <b
-          ><display-tooltip-text
-            v-if="tech.HasKeywords"
-            :string="tech.KeywordsHeader"
-            :decorate="false"
-        /></b>
+        <b><display-tooltip-text v-if="tech.HasKeywords" :string="tech.KeywordsHeader" :decorate="false" /></b>
       </div>
     </div>
     <div class="tech--content">
@@ -50,34 +42,31 @@
       <div class="tech--format" v-if="tech.HasImbue">
         <display-tooltip-text :string="tech.ImbueHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasQuick">
-        <display-tooltip-text :string="tech.QuickHeader" />
-      </div>
-      <div class="tech--format" v-if="tech.HasStrong">
-        <display-tooltip-text :string="tech.StrongHeader" />
-      </div>
       <div class="tech--format" v-if="tech.HasBoost">
         <display-tooltip-text :string="tech.BoostHeader" />
       </div>
       <div class="tech--format" v-if="tech.HasLinked">
         <display-tooltip-text :string="tech.LinkedHeader" />
       </div>
-      <div style="height: 0.5em;" />
-      <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /> </span>
+      <div class="tech--format" v-if="tech.HasReaction">
+        <display-tooltip-text :string="tech.ReactionHeader" />
+        <reaction-card :reaction="$store.getters.getReaction(tech.Reaction)" />
+      </div>
+      <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /></span>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import { Technique } from "@/class";
-import { store } from "@/store";
-import ChartTable from "@/components/ChartTable.vue";
-import Tooltip from "@/components/TooltipParam.vue";
-import DisplayTooltipText from "@/components/DisplayTooltipText";
+import Vue from 'vue'
+import { Technique } from '@/class'
+import { store } from '@/store'
+import ChartTable from '@/components/ChartTable.vue'
+import ReactionCard from './ReactionCard.vue'
+import Tooltip from '@/components/TooltipParam.vue'
 
 export default Vue.extend({
-  name: "technique-card",
+  name: 'technique-card',
   props: {
     tech: {
       type: Technique,
@@ -88,8 +77,8 @@ export default Vue.extend({
       required: false,
     },
   },
-  components: { ChartTable, Tooltip },
-});
+  components: { ChartTable, ReactionCard, Tooltip },
+})
 </script>
 
 <style scoped lang="scss">
@@ -100,6 +89,7 @@ export default Vue.extend({
   border-top-right-radius: 3em;
   border: $border--black-standard;
   height: 100%;
+  padding-bottom: $space--s;
 }
 .tech--color-header {
   border-top-left-radius: 2.9em;
@@ -120,6 +110,13 @@ export default Vue.extend({
   font-size: $font-size--s;
   color: black;
   padding: $space--xs;
+  padding-bottom: 0;
+}
+.tech--reaction-content {
+  font-size: $font-size--s;
+  color: black;
+  padding-left: $space--xs;
+  padding-right: $space--xs;
 }
 .tech--format {
   font-family: $font--standard;

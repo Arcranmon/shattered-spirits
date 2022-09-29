@@ -27,20 +27,22 @@
       <div v-if="stance.HasReaction">
         <display-tooltip-text :string="stance.ReactionHeader" />
       </div>
-      <span v-if="(stance.HasChart)"
-        ><chart-table :chart="stance.Chart" />
-      </span>
+      <div v-if="stance.HasReaction">
+        <display-tooltip-text string="**Reaction:** Gain the following Reaction while in this Stance:" />
+        <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import ChartTable from "@/components/ChartTable.vue";
-import { Stance } from "@/class";
+import Vue from 'vue'
+import ChartTable from '@/components/ChartTable.vue'
+import ReactionCard from './ReactionCard.vue'
+import { Stance } from '@/class'
 
 export default Vue.extend({
-  name: "stance-card",
+  name: 'stance-card',
   props: {
     stance: {
       type: Stance,
@@ -49,11 +51,11 @@ export default Vue.extend({
     category: {
       type: String,
       required: false,
-      default: "#ece6dc",
+      default: '#ece6dc',
     },
   },
-  components: { ChartTable },
-});
+  components: { ChartTable, ReactionCard },
+})
 </script>
 
 <style scoped lang="scss">
@@ -81,6 +83,13 @@ export default Vue.extend({
   font-size: $font-size--s;
   color: black;
   padding: $space--xs;
+  padding-bottom: 0;
+}
+.stance--reaction-content {
+  font-size: $font-size--s;
+  color: black;
+  padding-left: $space--xs;
+  padding-right: $space--xs;
 }
 .stance--format {
   font-family: $font--standard;

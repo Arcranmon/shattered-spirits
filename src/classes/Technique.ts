@@ -1,204 +1,216 @@
 /** @format */
 
-import { store } from "@/store";
-import { Chart } from "@/class";
+import { store } from '@/store'
+import { Chart } from '@/class'
 
 class Technique {
-  private ap_: number;
-  private area_: string;
-  private boost_: string;
-  private cost_: string;
-  private damagetype_: string;
-  private discipline_: string;
-  private desc_: string;
-  private effect_: string;
-  private imbue_: string;
-  private keywords_: Array<string>;
-  private linked_: string;
-  private move_: string;
-  private name_: string;
-  private range_: string;
-  private reqs_: string;
-  private special_: string;
-  private speed_: string;
-  private target_: string;
-  private trigger_: string;
-  private type_: string;
-  private chart_: Chart;
+  private ap_: number
+  private area_: string
+  private boost_: string
+  private cost_: string
+  private damagetype_: string
+  private discipline_: string
+  private desc_: string
+  private effect_: string
+  private imbue_: string
+  private keywords_: Array<string>
+  private linked_: string
+  private move_: string
+  private name_: string
+  private range_: string
+  private reaction_condition_: string
+  private reaction_: string
+  private reqs_: string
+  private special_: string
+  private speed_: string
+  private target_: string
+  private trigger_: string
+  private type_: string
+  private chart_: Chart
 
   public constructor() {
-    this.ap_ = 4;
-    this.area_ = "";
-    this.boost_ = "";
-    this.cost_ = "";
-    this.damagetype_ = "";
-    this.desc_ = "";
-    this.effect_ = "";
-    this.imbue_ = "";
-    this.keywords_ = [];
-    this.linked_ = "";
-    this.move_ = "";
-    this.name_ = "";
-    this.range_ = "";
-    this.reqs_ = "";
-    this.special_ = "";
-    this.speed_ = "";
-    this.target_ = "";
-    this.trigger_ = "";
-    this.type_ = "";
-    this.chart_ = null;
+    this.ap_ = 4
+    this.area_ = ''
+    this.boost_ = ''
+    this.cost_ = ''
+    this.damagetype_ = ''
+    this.desc_ = ''
+    this.effect_ = ''
+    this.imbue_ = ''
+    this.keywords_ = []
+    this.linked_ = ''
+    this.move_ = ''
+    this.name_ = ''
+    this.range_ = ''
+    this.reaction_ = null
+    this.reqs_ = ''
+    this.special_ = ''
+    this.speed_ = ''
+    this.target_ = ''
+    this.trigger_ = ''
+    this.type_ = ''
+    this.chart_ = null
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
   public get AP() {
-    return this.ap_;
+    return this.ap_
   }
   public get Area() {
-    return this.area_;
+    return this.area_
   }
   public get Attack() {
-    return this.type_ == "Attack";
+    return this.type_ == 'Attack'
   }
   public get Chart() {
-    return this.chart_;
+    return this.chart_
   }
   public get Cost() {
-    return this.cost_;
+    return this.cost_
   }
   public get Desc() {
-    return this.desc_;
+    return this.desc_
   }
   public get DamageType() {
-    return this.damagetype_;
+    return this.damagetype_
   }
   public get Effect() {
-    return this.effect_;
+    return this.effect_
   }
   public get Keywords() {
-    return this.keywords_;
+    return this.keywords_
   }
   public get Name() {
-    return this.name_;
+    return this.name_
   }
   public get Move() {
-    return this.move_;
+    return this.move_
   }
   public get Range() {
-    return this.range_;
+    return this.range_
+  }
+  public get Reaction() {
+    return this.reaction_
   }
   public get Reqs() {
-    return this.reqs_;
+    return this.reqs_
   }
   public get Special() {
-    return this.special_;
+    return this.special_
   }
   public get Speed() {
-    return this.speed_;
+    return this.speed_
   }
   public get Trigger() {
-    return this.trigger_;
+    return this.trigger_
   }
   public get Type() {
-    return this.type_;
+    return this.type_
   }
 
   // ==========================================================
   // UTILITY
   // ==========================================================
   public get HasArea() {
-    return this.Area != "";
+    return this.Area != ''
   }
   public get HasBoost() {
-    return this.boost_.length > 0;
+    return this.boost_.length > 0
   }
   public get BoostHeader() {
-    return "**Boost:** " + this.boost_;
+    return '**Boost:** ' + this.boost_
   }
   public get HasChart() {
-    return this.Chart != null;
+    return this.Chart != null
   }
   public get HasCost() {
-    return this.cost_.length > 0;
+    return this.cost_.length > 0
   }
   public get CostHeader() {
-    return "**Cost:** " + this.cost_;
+    return '**Cost:** ' + this.cost_
   }
   public get Discipline() {
-    return this.discipline_;
+    return this.discipline_
   }
   public get HasDamageType() {
-    return this.damagetype_.length > 0;
+    return this.damagetype_.length > 0
   }
   public get DamageTypeHeader() {
-    return this.damagetype_ + " Damage";
+    return this.damagetype_ + ' Damage'
   }
   public get HasEffect() {
-    return this.effect_.length > 0;
+    return this.effect_.length > 0
   }
   public get EffectHeader() {
-    return "**Effect:** " + this.effect_;
+    return '**Effect:** ' + this.effect_
   }
   public get HasImbue() {
-    return this.imbue_.length > 0;
+    return this.imbue_.length > 0
   }
   public get ImbueHeader() {
-    return "**Imbue:** " + this.imbue_;
+    return '**Imbue:** ' + this.imbue_
   }
   public get HasKeywords() {
-    return this.keywords_.length > 0;
+    return this.keywords_.length > 0
   }
   public get KeywordsHeader() {
-    return "_" + this.Keywords.join("_, _") + "_";
+    return '_' + this.Keywords.join('_, _') + '_'
   }
   public get HasLinked() {
-    return this.linked_.length > 0;
+    return this.linked_.length > 0
   }
   public get LinkedHeader() {
-    return "**Linked:** " + this.linked_;
+    return '**Linked:** ' + this.linked_
   }
   public get HasMove() {
-    return this.move_.length > 0;
+    return this.move_.length > 0
   }
   public get MoveHeader() {
-    return "**Move:** " + this.Move;
+    return '**Move:** ' + this.Move
   }
   public get HasRange() {
-    return this.Range != "";
-  }
-  public get HasReqs() {
-    return this.reqs_.length > 0;
+    return this.Range != ''
   }
   public get RangeHeader() {
-    if (this.Range.includes("Weapon")) return "Weapon Range";
-    else if (this.Range.length <= 2) return "Range " + this.range_;
-    else return this.range_;
+    if (this.Range.includes('Weapon')) return 'Weapon Range'
+    else if (this.Range.length <= 2) return 'Range ' + this.range_
+    else return this.range_
+  }
+  public get HasReaction() {
+    return this.reaction_.length > 0
+  }
+  public get ReactionHeader() {
+    return '**Reaction:** ' + this.reaction_condition_
+  }
+  public get HasReqs() {
+    return this.reqs_.length > 0
   }
   public get ReqsHeader() {
-    return "**Requirements:** " + this.reqs_;
+    return '**Requirements:** ' + this.reqs_
   }
   public get HasSpecial() {
-    return this.special_.length > 0;
+    return this.special_.length > 0
   }
   public get SpecialHeader() {
-    return "**Special:** " + this.special_;
+    return '**Special:** ' + this.special_
   }
   public get SpeedHeader() {
-    if (this.Speed.length == 1) return "Speed " + this.Speed;
-    else return this.speed_;
+    if (this.Speed.length == 1) return 'Speed ' + this.Speed
+    else return this.speed_
   }
   public get HasTarget() {
-    return this.target_.length > 0;
+    return this.target_.length > 0
   }
   public get TargetHeader() {
-    return "**Target:** " + this.target_;
+    return '**Target:** ' + this.target_
   }
   public get HasTrigger() {
-    return this.trigger_.length > 0;
+    return this.trigger_.length > 0
   }
   public get TriggerHeader() {
-    return "**Trigger:** " + this.trigger_;
+    return '**Trigger:** ' + this.trigger_
   }
 
   // ==========================================================
@@ -206,35 +218,37 @@ class Technique {
   // ==========================================================
 
   public static Deserialize(techData: ITechData): Technique {
-    const t = new Technique();
-    t.setTechData(techData);
-    return t;
+    const t = new Technique()
+    t.setTechData(techData)
+    return t
   }
 
   public setTechData(data: ITechData): void {
-    this.ap_ = data.ap != null ? data.ap : 4;
-    this.area_ = data.area || "";
-    this.boost_ = data.boost || "";
-    this.cost_ = data.cost || "";
-    this.damagetype_ = data.damagetype || "";
-    this.discipline_ = data.discipline || "";
-    this.desc_ = data.desc || "";
-    this.effect_ = data.effect || "";
-    this.imbue_ = data.imbue || "";
-    this.keywords_ = data.keywords || [];
-    this.linked_ = data.linked || "";
-    this.move_ = data.move || "";
-    this.name_ = data.name || "";
-    this.range_ = data.range || "";
-    this.reqs_ = data.reqs || "";
-    this.special_ = data.special || "";
-    this.speed_ = data.speed || "";
-    this.trigger_ = data.trigger || "";
-    this.target_ = data.target || "";
-    this.type_ = data.type || "";
-    if ("chart" in data) {
-      this.chart_ = Chart.Deserialize(data.chart);
+    this.ap_ = data.ap != null ? data.ap : 4
+    this.area_ = data.area || ''
+    this.boost_ = data.boost || ''
+    this.cost_ = data.cost || ''
+    this.damagetype_ = data.damagetype || ''
+    this.discipline_ = data.discipline || ''
+    this.desc_ = data.desc || ''
+    this.effect_ = data.effect || ''
+    this.imbue_ = data.imbue || ''
+    this.keywords_ = data.keywords || []
+    this.linked_ = data.linked || ''
+    this.move_ = data.move || ''
+    this.name_ = data.name || ''
+    this.range_ = data.range || ''
+    this.reaction_ = data.reaction || ''
+    this.reaction_condition_ = data.reaction_condition || ''
+    this.reqs_ = data.reqs || ''
+    this.special_ = data.special || ''
+    this.speed_ = data.speed || ''
+    this.trigger_ = data.trigger || ''
+    this.target_ = data.target || ''
+    this.type_ = data.type || ''
+    if ('chart' in data) {
+      this.chart_ = Chart.Deserialize(data.chart)
     }
   }
 }
-export default Technique;
+export default Technique

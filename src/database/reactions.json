@@ -1,0 +1,292 @@
+[
+  {
+    "name": "",
+    "keywords": [],
+    "cost": "",
+    "trigger": "",
+    "effect": ""
+  },
+  {
+    "name": "Acrobatics",
+    "keywords": ["Evade"],
+    "move": "Step",
+    "cost": "1 _Reflex_",
+    "trigger": "A _Phase_ starts.",
+    "boost": "1 _Reflex_: Trigger is instead 'A _Turn_ starts.'"
+  },
+  {
+    "name": "Active Defense",
+    "keywords": ["Punish"],
+    "cost": "1 _Momentum_",
+    "trigger": "You would be attacked by a creature in Melee range",
+    "effect": "Make a 1 AP Basic Strike with an _Unarmed_ Weapon against the Triggering Target. Resolve this attack before the Triggering Attack occurs."
+  },
+  {
+    "name": "Armored Dodge",
+    "keywords": ["Block", "Evade"],
+    "cost": "2 _Grit_/_Momentum_/_Reflex_",
+    "trigger": "You are Attacked.",
+    "effect": "If you paid more _Grit_ than _Reflex_, gain 1 Guard against the Attack and reduce the _Grit_ cost to _Negate_ by 1. If you paid more _Reflex_ than _Grit_, reduce the Attack Roll by 1 and reduce the _Reflex_ cost to _Negate_ by 1. Otherwise, select either option.",
+    "boost": "Choose any:\n* 2 _Grit_/_Momentum_: Repeat the _Grit_ effect. You may repeat this Boost.\n* 2 _Momentum_/_Reflex_: Repeat the _Reflex_ effect. You may repeat this Boost."
+  },
+  {
+    "name": "Armored Shell",
+    "keywords": ["Block"],
+    "cost": "2 _Grit_",
+    "trigger": "You would be Attacked.",
+    "effect": "Increase your _Guard_ by 2 against the Triggering Attack, and reduce the _Grit_ cost to _Negate_ by 2. If this Attack would deal damage equal to or greater than your Armor's _Durability_ gain _Shred_ 1."
+  },
+  {
+    "name": "Blade Counter",
+    "keywords": ["Punish"],
+    "cost": "2 _Momentum_/_Reflex_",
+    "trigger": "You are Attacked while Wielding a Blade Weapon by a creature you raised your guard against at _Refresh_.",
+    "effect": "Reduce the Attack Roll by 2. If this makes the Attack a _Graze_- you may inflict Damage on the creature as if you rolled a 7 so long as they are within Range of your Weapon."
+  },
+  {
+    "name": "Boxer's Counter",
+    "keywords": ["Punish", "Efficient"],
+    "cost": "None",
+    "trigger": "You take a _Block_ Reaction and reduce the Damage of the Attack to less than your _Grit_.",
+    "effect": "Make a 1 AP Basic Strike with an _Unarmed_ _Fist_ Weapon against the Triggering Attacker."
+  },
+  {
+    "name": "Chip Damage",
+    "keywords": ["Punish"],
+    "cost": "1 _Grit_/_Momentum_",
+    "trigger": "You take damage while you have _Stone Armor_.",
+    "effect": "Attack in a Burst 1 with the following Profile.",
+    "chart": {
+      "damage": [0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "", "", "Gain +1 _Stone Armor_.", "Gain +1 _Stone Armor_.", "Gain +1 _Stone Armor_."]
+    }
+  },
+  {
+    "name": "Counter",
+    "keywords": ["Punish"],
+    "cost": "1 _Momentum_",
+    "trigger": "You are Attacked by an adjacent enemy.",
+    "effect": "Increase the Attack Roll by 2. Immediately Attack the triggering enemy with a 1 AP single-target Strike, paying all Costs as normal.",
+    "boost": "1 _Momentum_: Instead, use a 2 AP single-target Strike."
+  },
+  {
+    "name": "Deflect",
+    "keywords": ["Block"],
+    "cost": "2 _Grit_",
+    "trigger": "You are Attacked.",
+    "effect": "Increase your _Guard_ by 1 against the Attack and reduce the _Grit_ cost to Negate by 1.",
+    "boost": "2 _Grit_: Repeat the Effect. This Boost is repeatable."
+  },
+  {
+    "name": "Destructive Steps",
+    "keywords": ["Efficient"],
+    "cost": "1 _Grit_",
+    "trigger": "You move adjacent to an _Earthen_ Obstacle.",
+    "effect": "Deal 14 Damage to the Obstacle.",
+    "boost": "1 _Grit_: Increase the Damage by 3. This Boost is repeatable."
+  },
+  {
+    "name": "Disruptive Bash",
+    "keywords": ["Block"],
+    "cost": "1 _Grit_/_Momentum_",
+    "trigger": "An adjacent enemy attacks a creature other than you.",
+    "effect": "Make a 1 AP Weapon Strike using your Shield against the triggering enemy. On a _Hit_+, reduce the triggering Attack Roll by 1."
+  },
+  {
+    "name": "Dodge",
+    "keywords": ["Evade"],
+    "cost": "2 _Reflex_",
+    "trigger": "You are Attacked.",
+    "effect": "Reduce the Attack Roll and _Reflex_ cost to Negate by 1.",
+    "boost": "2 _Reflex_: Repeat the Effect. This Boost is repeatable."
+  },
+  {
+    "name": "Dodge Roll",
+    "keywords": ["Evade", "Safe", "Charge", "Rush"],
+    "move": "Step",
+    "cost": "3 _Reflex_",
+    "trigger": "You would be Attacked.",
+    "effect": "Resolve your Movement. The Attacker may continue moving but, if they cannot place you within range of the Attack, the Attacker must either choose a new Target within Range or lose the Attack. If you are still the target of the Attack, reduce the Attack Roll by 1.",
+    "boost": "2 _Reflex_: Move is instead Reposition."
+  },
+  {
+    "name": "Earthen Shield",
+    "keywords": ["Block"],
+    "cost": "3 _Grit_",
+    "trigger": "You or an allied creature within Range 3 is Attacked.",
+    "effect": "Grant the triggering creature _Cover_ and 1 _Guard_ against the triggering Attack. Then _Slide_ 1 the Triggering creature and put an Earth Pillar in their space."
+  },
+  {
+    "name": "Evasion",
+    "keywords": ["Evade", "Efficient"],
+    "move": "Step",
+    "cost": "3 _Reflex_",
+    "trigger": "You are Attacked by a damaging Area Effect or Hazard.",
+    "effect": "Resolve your Movement. If this Movement takes out out of the Area, treat the Attack as if it was _Glancing_ against you. Otherwise, reduce the Attack Roll by 1.",
+    "boost": "1 _Reflex_: You may instead take a _Reposition_ Move."
+  },
+  {
+    "name": "Harrying Thrust",
+    "keywords": ["Punish"],
+    "cost": "1 _Momentum_",
+    "trigger": "A creature enters your Reach.",
+    "effect": "The triggering target gains _Hobbled_ 1 (2 Reflex). Instead of applying this to the creature's next Movement it is instead applied to their current Movement, even if that Movement is already affected by _Hobbled_. The target may Negate the Hobbled for no cost by allowing you to immediately make a 2 AP Basic Strike against them with the triggering Lance Weapon, at _Disadvantage_ if the Speed of the Attack is greater than the current _Phase_."
+  },
+  {
+    "name": "Heavy Guard",
+    "keywords": ["Block"],
+    "cost": "1 _Grit_",
+    "trigger": "A _Phase_ begins.",
+    "effect": "Increase your _Guard_ by 1 for this _Phase_ only."
+  },
+  {
+    "name": "Heavy Rebuke",
+    "keywords": ["Punish", "Efficient"],
+    "cost": "1 _Momentum_/_Grit_",
+    "trigger": "A melee _Strike_ is a _Graze_- against you or deals 0 Damage.",
+    "effect": "Deal Damage to the creature equal to the _Guard_ provided by your Armor and inflict _Push_ 1, _Exposed_ 2 (2 _Grit_/_Focus_). If the creature _Negates_ they take half Damage."
+  },
+  {
+    "name": "Immovable Object",
+    "keywords": ["Block"],
+    "cost": "1 _Grit_",
+    "trigger": "You are Attacked.",
+    "effect": "Gain _Staggered_. Immediately use the Deflect Reaction, ignoring its usual _Cost_. If you would be _Pushed_, _Pulled_, or _Slid_, you are instead not."
+  },
+  {
+    "name": "Invincible",
+    "keywords": ["Punish", "Efficient"],
+    "cost": "1 _Grit_",
+    "trigger": "A creature deals 0 Damage to you with a _Strike_.",
+    "effect": "Inflict _Fear_ 1 (1 _Focus_) on the creature, and reduce your cost to _Negate_ by 1."
+  },
+  {
+    "name": "Lightning Reflexes",
+    "keywords": ["Evade"],
+    "cost": "1 _Reflex_",
+    "trigger": "A creature would make a _Punish_ Attack against you triggered by _Safe_ Movement.",
+    "effect": "Resolve the Attack by rolling only a single d6.",
+    "boost": "1 _Reflex_: Instead, Trigger is 'A creature would make a _Punish_ Attack against you.'"
+  },
+  {
+    "name": "Opportunity Attack",
+    "keywords": ["Punish"],
+    "cost": "0 _Momentum_",
+    "trigger": "An enemy starts Movement while within your _Reach_ or while in an adjacent space.",
+    "effect": "Immediately Attack the triggering enemy. If this triggers based on your _Reach_, you must make a Weapon Strike using the triggering Weapon. If this triggers based on an adjacent space, instead Attack with a single-target Technique.",
+    "boost": "1 _Momentum_: Instead, use a 2 AP Strike."
+  },
+  {
+    "name": "Patient Guard",
+    "keywords": ["Punish"],
+    "cost": "None",
+    "trigger": "You are Attacked while wearing Light Armor.",
+    "effect": "Increase the Attack Roll by 1. Gain 1 _Momentum_, and you may either _Safe_ Move 1 or add _Sure Hit_/_Unblockable_ 1 to your next Attack against the Target."
+  },
+  {
+    "name": "Perfect Counter",
+    "keywords": ["Punish"],
+    "cost": "1 _Grit_, 1 _Momentum_",
+    "trigger": "You are Attacked while wearing Light Armor.",
+    "effect": "Increase the Attack Roll by 1. Gain 1 _Guard_ against the triggering Attack. Immediately Attack the triggering enemy with a single-target Technique, paying all Costs as normal.",
+    "boost": "1 _Momentum_: Instead, use a 2 AP Strike."
+  },
+  {
+    "name": "Reorient",
+    "keywords": ["Evade"],
+    "move": "Step",
+    "cost": "2 _Reflex_",
+    "trigger": "A _Phase_ begins while you are not _Prone_.",
+    "boost": "1 _Momentum_/_Reflex_: Add _Safe_."
+  },
+  {
+    "name": "Rollout",
+    "keywords": ["Punish"],
+    "cost": "1 _Momentum_",
+    "trigger": "A creature enters a space adjacent to a Boulder within Range 6.",
+    "effect": "Deal 4 Damage to the triggering creature and _Push_ 2 (2 _Grit_/_Reflex_). If they Negate, they take no Damage. If you _Push_ the Target, move the _Boulder_ so it is still adjacent to the Target."
+  },
+  {
+    "name": "Sacrificial Shield",
+    "keywords": ["Block"],
+    "cost": "2 _Grit_",
+    "trigger": "You are Attacked by the creature targeted by Raise Guard.",
+    "effect": "Resolve the Attack against your Shield, other than yourself. Gain _Impaired_ 1."
+  },
+  {
+    "name": "Severing Jab",
+    "keywords": ["Punish", "Efficient"],
+    "cost": "None",
+    "trigger": "An adjacent creature uses a _Spirit_ Technique.",
+    "effect": "_Wager_ up to 3 _Focus_ against the Triggering creature. If you win, they take a Penalty equal to your _Wager_ on the Attack Roll. If you lose, gain _Exposed_ 1."
+  },
+  {
+    "name": "Shield Block",
+    "keywords": ["Block"],
+    "cost": "2 _Grit_",
+    "trigger": "You are attacked.",
+    "effect": "Increase your _Guard_ by 1 and gain _Cover_ against the triggering Attack.",
+    "boost": "2 _Grit_: Increase your _Guard_ by 1 more. This Boost is repeatable."
+  },
+  {
+    "name": "Shrug Off",
+    "keywords": ["Block", "Efficient"],
+    "cost": "1 _Grit_",
+    "trigger": "You would gain a Standard Condition or Elemental Condition.",
+    "effect": "You may pay the cost to _Negate_ the triggering Condition using _Grit_. If it already cost _Grit_, reduce the cost to _Negate_ by 2."
+  },
+  {
+    "name": "Skilled Sculptor",
+    "keywords": [],
+    "cost": "2 _Focus_/_Grit_",
+    "trigger": "A _Phase_ begins.",
+    "effect": "Repeat the Effect of Sculptor Stance."
+  },
+  {
+    "name": "Stone Block",
+    "keywords": ["Block"],
+    "cost": "1 _Grit_",
+    "trigger": "A creature adjacent to one of the _Boulders_ created by Stone Shield would be attacked.",
+    "effect": "Grant the creature 2 _Fleeting_ _Grit_. You may choose to Destroy one of the _Boulders_ as a part of this Reaction to immediately grant the Target _Stone Armor_ 1 and one additional _Fleeting_ _Grit_. If you Destroy both _Boulders_ created by Stone Shield with this Reaction before the _Enchant_ ends, gain 1 _Grit_."
+  },
+  {
+    "name": "Tumble",
+    "keywords": ["Evade", "Safe", "Charge"],
+    "move": "Step",
+    "cost": "1 _Reflex_",
+    "trigger": "A hostile creature ends their Turn adjacent to you.",
+    "effect": "You must end your Move further from the Triggering creature than you started it."
+  },
+  {
+    "name": "Vigilant Defender",
+    "keywords": ["Block"],
+    "cost": "1 _Grit_",
+    "trigger": "An adjacent ally is attacked.",
+    "effect": "Use any _Block_ Reaction you have against the triggering attack, granting your ally all effects. Any bonuses to the _Block_ granted by your _Stance_ or _Techniques_ you have used apply. Additionally, the Target gains an additional 1 _Guard_ and reduces the _Grit_ cost to _Negate_ by 1."
+  },
+  {
+    "name": "Whirling Counter",
+    "keywords": ["Punish", "Safe"],
+    "move": "Step",
+    "cost": "1 _Momentum_, 1 _Reflex_",
+    "trigger": "You are Attacked while wearing Light Armor.",
+    "effect": "Increase the Attack Roll by 2. Immediately Attack any creature other than the Triggering Target with a single-target Technique with a Speed less than or equal to the current Phase and at least Step Move, paying all Costs as normal. If the Triggering Attack was a _Hit_+, gain a +1 Bonus to the Attack Roll.",
+    "boost": "1 _Momentum_: Instead, use a 2 AP Strike."
+  },
+  {
+    "name": "Whirlwind Kick",
+    "keywords": ["Punish", "Efficient"],
+    "cost": "None",
+    "trigger": "You take a _Dodge_ Reaction and cause the Attack to _Miss_.",
+    "effect": "Make a 1 AP Basic Strike with an _Unarmed_ _Kick_ Weapon."
+  },
+  {
+    "name": "Wide Guard",
+    "keywords": ["Block"],
+    "cost": "3 _Grit_",
+    "trigger": "You or an adjacent ally are hit with an Area of Effect attack.",
+    "effect": "Use the _Shield Block_ Reaction for no Cost, granting the benefits to you and all adjacent allies.",
+    "boost": "1 _Grit_: If the Attack passed through or originated in the Arc created by Iron Wall, gain a benefit depending on the Area of the Triggering attack.\n*_Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is _Glancing_ against allies in the adjacent spaces that are not a part of Iron Wall's Arc."
+  }
+]

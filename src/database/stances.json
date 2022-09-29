@@ -1,42 +1,30 @@
 [
   {
-    "name": "Axebreaker Style",
-    "desc": "You make use of the nimbleness of a blade to thwart slower weapons with ease.",
+    "name": "Bloodletter Style",
     "discipline": "Blademaster",
-    "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blade_ Weapon.",
+    "desc": "Your bladed weapon is a vicious blur, striking deep as it draws blood.",
+    "accumulate": "Whenever you _Hit_+ on an Attack using a Blade Weapon against a creature with a topmost _Bleed_ Token with a value of 3, gain 1 _Momentum_. Whenever the _Effect_ of this Style would increase a creature's topmost _Bleed_ Token to a value greater than 3, gain 1 _Momentum_.",
     "refresh": {
-      "grit": 1,
       "reflex": 2
     },
-    "effect": "Reduce the Attack Roll of all Attacks with _Blunt_ Weapons that target you by 1 as long as you are Wielding a _Blade_ Weapon.",
-    "special": "You may use the Counter Reaction for no Cost when attacked with a _Blunt_ Weapon as long as you are Wielding a _Blade_ Weapon."
-  },
-  {
-    "name": "Bloodletter Style",
-    "desc": "You fight a war of attrition, focusing more on inflicting wounds that dealing damage.",
-    "discipline": "Blademaster",
-    "accumulate": "Gain _Momentum_ equal to a Target's topmost _Bleed_ Token when you _Hit_+ with an Attack using a Blade.",
-    "refresh": {
-      "reflex": 2,
-      "focus": 1
-    },
-    "effect": "Whenever you _Hit_+ with an Attack using a Blade Weapon, increase the Target's top Bleed Token by 1. If the _Bleed_ Token is already 3, inflict _Wound_ 1 (1 _Grit_) instead."
+    "effect": "Whenever you would inflict _Bleed_ with a Blade Weapon you may choose to increase the creature's topmost _Bleed_ by a total Value equal to the _Bleed_ that would be inflicted, to a maximum of 3."
   },
   {
     "name": "Guarded Edge Style",
-    "desc": "You keep your blade on the defensive, darting in and out whenever .",
     "discipline": "Blademaster",
+    "desc": "You keep your blade on the defensive, darting in and out whenever .",
     "accumulate": "Gain 1 _Momentum_ whenever you deal Damage with a Blade Weapon as a _Reaction_.",
     "refresh": {
-      "reflex": 2,
-      "grit": 2
+      "grit": 2,
+      "reflex": 2
     },
-    "effect": "At Refresh you may pay up to 3 _Momentum_ to raise your guard against foes. Choose as many enemies as you paid _Momentum_. Whenever you use a _Block_/_Evade_ Reaction against one of these creatures you may deal Damage to the triggering Creature as if you rolled a 5 with your Blade Weapon, so long as they are within your Weapon's Range."
+    "effect": "At Refresh you may pay up to 3 _Momentum_ to raise your guard against foes. Choose as many enemies as you paid _Momentum_; for the remainder of the _Round_ you may use the Blade Counter Reaction against them.",
+    "reaction": "Blade Counter"
   },
   {
     "name": "Explosive Stance",
-    "desc": "You make your explosions hit harder, forcing your opponents away from the detonation.",
     "discipline": "Blast",
+    "desc": "You make your explosions hit harder, forcing your opponents away from the detonation.",
     "accumulate": "Whenever you _Hit_/_Crit_ with an Explosive Attack, gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -46,8 +34,8 @@
   },
   {
     "name": "Flare Stance",
-    "desc": "Your flames burn brighter than most, blinding enemies that aren't properly prepared.",
     "discipline": "Blast",
+    "desc": "Your flames burn brighter than most, blinding enemies that aren't properly prepared.",
     "accumulate": "Whenever you Blind a foe, gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -58,9 +46,9 @@
   },
   {
     "name": "Ruin Stance",
+    "discipline": "Blast",
     "desc": "By focusing your flames for a moment you amplify their power, magnifying their destructive force.",
     "accumulate": "Whenever you _Hit_/_Crit_ with a Charged Attack, gain 2 _Momentum_.",
-    "discipline": "Blast",
     "refresh": {
       "focus": 1,
       "grit": 1
@@ -69,8 +57,8 @@
   },
   {
     "name": "Inferno Stance",
-    "desc": "The most obvious use of flames, the Inferno Stance makes use of overwhelming firepower in a very literal sense.",
     "discipline": "Blaze",
+    "desc": "The most obvious use of flames, the Inferno Stance makes use of overwhelming firepower in a very literal sense.",
     "refresh": {
       "focus": 2
     },
@@ -79,8 +67,8 @@
   },
   {
     "name": "Jet Stance",
-    "desc": "Those that have learned the Jet Stance make use of the powerful gouts of flame to reposition themselves freely and move with blinding speed.",
     "discipline": "Blaze",
+    "desc": "Those that have learned the Jet Stance make use of the powerful gouts of flame to reposition themselves freely and move with blinding speed.",
     "accumulate": "Whenever you Shift or Sprint as a part of an Action, gain 1 Momentum.",
     "refresh": {
       "focus": 1,
@@ -91,8 +79,8 @@
   },
   {
     "name": "Trailblazer Stance",
-    "desc": "Rather than simply burning their foes, the Trailblazer leaves a wake of flames behind them, creating deadly zones of fire across the land.",
     "discipline": "Blaze",
+    "desc": "Rather than simply burning their foes, the Trailblazer leaves a wake of flames behind them, creating deadly zones of fire across the land.",
     "accumulate": "Every time an Action creates a _Blazing_ space, gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -102,49 +90,31 @@
     "special": "While in this Stance you ignore _Blazing_ Terrain. "
   },
   {
-    "name": "Colossus Stance",
-    "desc": "The Colossus specializes in heavy armor made of stone, limiting mobility but providing unparalleled defense.",
+    "name": "Avalanche Stance",
     "discipline": "Boulder",
+    "desc": "Flinging boulders is a combat staple of Earthbonded, but some are true masters of it, forming boulders and flinging them in an elegant dance.",
+    "accumulate": "Every time you take an Action that moves or creates a Boulder, gain 1 _Momentum_.",
+    "refresh": {
+      "grit": 2
+    },
+    "effect": "Create one _Boulder_ within Range 3 at Refresh. You may pay 1 _Grit_ to instead create two _Boulders_.",
+    "reaction": "Rollout"
+  },
+  {
+    "name": "Colossus Stance",
+    "discipline": "Boulder",
+    "desc": "The Colossus specializes in heavy armor made of stone, limiting mobility but providing unparalleled defense.",
     "refresh": {
       "grit": 2
     },
     "effect": "Gain 1 _Stone Armor_ at _Refresh_. This may not increase your _Stone Armor_ above 2. While you have any _Stone Armor_, deal 1 additional _Damage_ with _Unarmed_ Strikes and reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by 1.",
     "special": "At Refresh, you may choose to gain _Hobbled_ 1x3. If you do, gain 1 additional _Stone Armor_ and, while you have any _Stone Armor_, gain Resistance to all damage originating from 4 or more spaces away until the end of the _Round_.",
-    "reaction": "Whenever you take damage while you have _Stone Armor_, you may pay 1 _Momentum_ to use the following Reaction: Attack in a Burst 1 with the following Profile.",
-    "chart": {
-      "damage": [0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4],
-      "roll": [
-        "Miss",
-        "Miss",
-        "Graze",
-        "Graze",
-        "Graze",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit",
-        "Crit"
-      ],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "Gain +1 _Stone Armor_.",
-        "Gain +1 _Stone Armor_.",
-        "Gain +1 _Stone Armor_."
-      ]
-    }
+    "reaction": "Chip Damage"
   },
   {
     "name": "Rubble Stance",
-    "desc": "The Rubble Stance creates stones only to destroy them, using the rubble for enhanced mobility.",
     "discipline": "Boulder",
+    "desc": "The Rubble Stance creates stones only to destroy them, using the rubble for enhanced mobility.",
     "accumulate": "Gain 1 _Momentum_ every time you Destroy an _Earthen_ Obstacle.",
     "refresh": {
       "focus": 1,
@@ -152,23 +122,12 @@
     },
     "effect": "Every time you Destroy an adjacent _Earthen_ Obstacle, you may immediately _Step_ Move in any direction. Every time you Destroy an _Earthen_ Obstacle, you may deal 2 Damage to all adjacent creatures, excluding yourself and may make the space _Veiled_ until the end of the _Round_.",
     "special": "Whenever you make an Attack with a _Versatile_ or _Heavy_ Weapon, you may pay 1 _Grit_ to create a _Boulder_ in a space Adjacent to the target.",
-    "reaction": "Whenever you move adjacent to an _Earthen_ Obstacle, you may pay 1 _Grit_ to take the following Reaction: Immediately deal 14 Damage to the Obstacle. You may use this Reaction any number of times in a Turn."
-  },
-  {
-    "name": "Avalanche Stance",
-    "desc": "Flinging boulders is a combat staple of Earthbonded, but some are true masters of it, forming boulders and flinging them in an elegant dance.",
-    "discipline": "Boulder",
-    "accumulate": "Every time you take an Action that moves or creates a Boulder, gain 1 _Momentum_.",
-    "refresh": {
-      "grit": 2
-    },
-    "effect": "Create one _Boulder_ within Range 3 at Refresh. You may pay 1 _Grit_ to instead create two _Boulders_.",
-    "reaction": "When a creature enters a space adjacent to a Boulder within Range 6, you may pay 1 _Momentum_ to use the following Reaction: Immediately deal 4 Damage to the triggering creature and _Push_ 2 (2 _Grit_/_Reflex_). If they Negate, they take no Damage. If you _Push_ the Target, move the _Boulder_ so it is still adjacent to the Target."
+    "reaction": "Destructive Steps"
   },
   {
     "name": "Reed Stance",
-    "desc": "You feel the flow of the wind and, rather than move against it, you flow with it.",
     "discipline": "Breeze",
+    "desc": "You feel the flow of the wind and, rather than move against it, you flow with it.",
     "refresh": {
       "focus": 3
     },
@@ -177,8 +136,8 @@
   },
   {
     "name": "Still Air Stance",
-    "desc": "You align your senses, sacrificing your mobility to expand your senses ever further.",
     "discipline": "Breeze",
+    "desc": "You align your senses, sacrificing your mobility to expand your senses ever further.",
     "refresh": {
       "focus": 2,
       "reflex": 1
@@ -188,8 +147,8 @@
   },
   {
     "name": "Windseer Stance",
-    "desc": "With every movement within your field you learn more of your foes and enhance your abilities.",
     "discipline": "Breeze",
+    "desc": "With every movement within your field you learn more of your foes and enhance your abilities.",
     "refresh": {
       "focus": 1
     },
@@ -198,19 +157,19 @@
   },
   {
     "name": "Dual Weapon Style",
-    "desc": "Each of your weapons darts back and forth as if with a mind of its own, allowing you to strike with uncanny speed.",
     "discipline": "Dual Wielder",
+    "desc": "Each of your weapons darts back and forth as if with a mind of its own, allowing you to strike with uncanny speed.",
     "accumulate": "Whenever you strike an enemy with both of your Wielded Weapons in the same Round, gain 2 _Momentum_.",
     "refresh": {
-      "reflex": 2,
-      "focus": 1
+      "focus": 1,
+      "reflex": 2
     },
     "effect": "If you are _Wielding_ a different One-Handed Weapon in either Hand, reduce the _Cost_ to _Blitz_ Weapon _Techniques_ by 2 so long as each _Strike_ is made with a separate Weapon and Hand."
   },
   {
     "name": "Sample Stance/Style",
-    "desc": "A helpful outline of how a stance or style is defined.",
     "discipline": "Example Discipline",
+    "desc": "A helpful outline of how a stance or style is defined.",
     "accumulate": "This will typically define how a Stance or Style gains Momentum.",
     "refresh": {
       "additional": "These Tokens are gained during the Refresh Phase."
@@ -220,107 +179,109 @@
   },
   {
     "name": "Acrobat Style",
-    "desc": "You easily duck and roll about the battlefield, making full use of your unarmored body.",
     "discipline": "Freedom",
-    "accumulate": "While wearing no Armor, whenever you provoke a _Punish_ Attack while _Leaping_ gain 1 _Momentum_.",
+    "desc": "You easily duck and roll about the battlefield, making full use of your unarmored body.",
+    "accumulate": "Up to once per _Turn_, gain 1 _Momentum_ when you make a _Leaping_ Move.",
     "refresh": {
       "reflex": 4
     },
-    "effect": "While wearing no Armor all _Leaping_ Movement you make is _Safe_. Choose one Technique at the start of the Round. Add _Vault_ to it.",
-    "special": "If you would trigger a _Punish_ Attack while making _Leaping_ Movement and the creature chooses not to make one, you may pay 1 _Reflex_ to inflict _Exposed_ 1 (1 _Reflex_)."
+    "effect": "While wearing no Armor all _Leaping_ Movement you make is _Safe_. Choose one Technique in the _Planning_ Phase. Add _Vault_ to it.",
+    "reaction": "Acrobatics"
   },
   {
     "name": "Instinct Style",
-    "desc": "You have honed your defenses to work while wearing no armor, dodging attacks by a razor-thin margin.",
     "discipline": "Freedom",
+    "desc": "You have honed your defenses to work while wearing no armor, dodging attacks by a razor-thin margin.",
     "accumulate": "While wearing no Armor, when an _Attack_ is a _Graze_- against you gain 1 _Momentum_/_Reflex_.",
     "refresh": {
-      "reflex": 2,
-      "grit": 1
+      "grit": 1,
+      "reflex": 2
     },
-    "effect": "While wearing no Armor, once per _Phase_, you may pay 2 _Reflex_ to take an additional _Reaction_ so long as at least one _Reaction_ that turn is an _Evade_ Reaction."
+    "effect": "While wearing no Armor, once per _Phase_, you may pay 1 _Reflex_ to add _Efficient_ to an _Evade_ Reaction. If an _Evade_ Reaction causes an attack to _Miss_, you may pay 1 _Reflex_ to inflict _Exposed_ 1 (2 _Focus_/_Reflex_).",
+    "reaction": "Lightning Reflexes"
   },
   {
     "name": "Tumbler Style",
-    "desc": "Elevated terrain is no issue to you. You can leap about the battlefield easily, ignoring such concerns.",
     "discipline": "Freedom",
+    "desc": "Elevated terrain is no issue to you. You can leap about the battlefield easily, ignoring such concerns.",
     "accumulate": "While wearing no Armor, whenever you change your Elevation by at least 2 on your Turn gain 1 _Momentum_.",
     "refresh": {
-      "reflex": 3,
-      "grit": 1
+      "grit": 1,
+      "reflex": 3
     },
-    "effect": "While wearing no Armor you may _Climb_ with no _Movement_ penalty. When _Falling_, reduce the cost to Negate fall damage by 1 and, if you don't take damage from a Fall, you may immediately Safe Move 1."
+    "effect": "While wearing no Armor, _Climbing_ only costs Movement equal to 1 + the vertical distance covered. When _Falling_, reduce the cost to Negate fall damage by 1 and, if you don't take damage from a Fall, you may immediately Safe Move 1.",
+    "reaction": "Tumble"
   },
   {
     "name": "Spectacle Style",
-    "desc": "You always defeat your foes with a flourish, encouraging allies while terrifying foes.",
     "discipline": "Gladiator",
+    "desc": "You always defeat your foes with a flourish, encouraging allies while terrifying foes.",
     "accumulate": "Whenever you defeat a creature gain 1 _Momentum_.",
     "refresh": {
-      "momentum": 1,
       "focus": 1,
       "grit": 1,
+      "momentum": 1,
       "reflex": 1
     },
     "effect": "You may take two Reactions on your own Turn, so long as at least one has the trigger 'You defeat a creature'."
   },
   {
     "name": "Crush Grip Style",
-    "desc": "You maintain a painful hold on foes, slowly crushing them while they're grappled.",
     "discipline": "Grappler",
+    "desc": "You maintain a painful hold on foes, slowly crushing them while they're grappled.",
     "accumulate": "Every time you defeat a creature you have _Grappled_, gain 3 _Momentum_.",
     "refresh": "2 _Grit_",
     "effect": "At the start of each of you _Turns_ where you are the _Top_ in a _Grapple_ you may pay 2 _Momentum_/_Grit_ to make a Weapon Strike using the Slam Weapon against a single creature that is a _Bottom_ in the same _Grapple_. On a _Hit_/_Crit_, gain 1 _Grit_."
   },
   {
     "name": "Living Shield Style",
-    "desc": "You pass on a more conventional shield, instead using a creature held in your grasp to defend against attacks.",
     "discipline": "Grappler",
+    "desc": "You pass on a more conventional shield, instead using a creature held in your grasp to defend against attacks.",
     "accumulate": "Gain 1 _Momentum_ every time you use a Reaction that requires you be the _Top_ in a _Grapple_.",
     "refresh": "3 _Grit_",
     "effect": "While you have a creature _Grappled_ increase your _Guard_ by 1 for the remainder of the Turn whenever you use a _Block_ Reaction."
   },
   {
     "name": "Lockdown Style",
-    "desc": "When you grapple a foe you give them your full attention, shrinking the battlefield for the two of you.",
     "discipline": "Grappler",
+    "desc": "When you grapple a foe you give them your full attention, shrinking the battlefield for the two of you.",
     "accumulate": "Gain 1 _Momentum_ every time you Attack a creature you are _Grappling_.",
     "refresh": "2 _Grit_, 1 _Focus_",
     "effect": "While you have a creature _Grappled_ you and the _Grappled_ creature have _Disadvantage_ on all Attacks against other creatures. Whenever you make an Attack against a creature you have _Grappled_ you may pay 1 _Momentum_ to have _Advantage_ on the Attack."
   },
   {
     "name": "Anchor Stance",
-    "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
     "discipline": "Grounding",
-    "accumulate": "Whenever you do not Move on your _Turn_ when you have Movement, gain 1 _Momentum_ and gain 1 _Guard_ until the start of your next _Turn_.",
+    "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
     "refresh": {
       "grit": 4
     },
     "effect": "Reduce the Cost to negate all _Push_, _Pull_ and _Slide_ effects by 2. Reduce the _Grit_ cost to _Negate_ all other effects by 1.",
-    "special": "While in this Stance you may wield Titanic Weapons and add _Siege_ to all Weapon Strikes."
+    "special": "While in this Stance you may wield Titanic Weapons.",
+    "reaction": "Immovable Object"
   },
   {
     "name": "Mighty Stance",
-    "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
     "discipline": "Grounding",
-    "accumulate": "Whenever you _Push_ a creature with an Attack, gain 1 _Momentum_.",
+    "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
+    "accumulate": "Whenever you _Push_ a creature with an Attack, gain 1 _Momentum_, or 2 _Momentum_ if you _Push_ them 4 of more spaces.",
     "refresh": {
       "grit": 3
     },
-    "effect": "Deal an additional 2 Damage with all Weapon Attacks and add _Push_ 1 (1 _Grit_), or 3 Damage and add _Push_ 2 (2 _Grit_) if the Weapon is _Heavy_. Whenever you _Push_ a creature into an Obstacle with a Weapon Attack they gain _Vulnerable_ 1 (1 _Focus_).",
+    "effect": "Deal an additional 2 Damage with all Weapon Attacks and add _Push_ 1 (1 _Grit_), or 3 Damage and add _Push_ 2 (1 _Grit_) if the Weapon is _Heavy_. Whenever you _Push_ a creature into an Obstacle with a Weapon Attack they gain _Vulnerable_ 1 (1 _Focus_).",
     "special": "While in this Stance you may wield Titanic Weapons and add _Siege_ to all Weapon Strikes."
   },
   {
     "name": "Ox Stance",
-    "desc": "A difficult Stance to master, the Ox Stance is the pinnacle of physical strength, at the cost of an earthbound's mobility.",
     "discipline": "Grounding",
+    "desc": "A difficult Stance to master, the Ox Stance is the pinnacle of physical strength, at the cost of an earthbound's mobility.",
     "refresh": {
+      "additional": "_Hobbled_ 1x3",
       "grit": 4,
-      "momentum": 3,
-      "additional": "_Hobbled_ 1x3"
+      "momentum": 3
     },
-    "effect": "Reduce the Cost to negate all _Push_, _Pull_ and _Slide_ effects by 1. Increase your Damage with all Weapon Attacks by 1, or 2 if the Weapon is _Heavy_. Whenever you make a Weapon Attack you may create _Rough Terrain_ adjacent to the Target.",
-    "special": "While in this Stance you may wield Titanic Weapons and add _Siege_ to all Weapon Strikes."
+    "effect": "Reduce the Cost to negate all _Push_, _Pull_ and _Slide_ effects by 1. Increase your Damage with all Weapon Attacks by 1, or 2 if the Weapon is _Heavy_.",
+    "special": "While in this Stance you may wield Titanic Weapons. At _Refresh_, you may pay 2 _Grit_ to treat yourself as Size 2 for all effects dependent on Size. If you do this, whenever you make a Weapon Attack you may create _Rough Terrain_ adjacent to the Target."
   },
   {
     "name": "Animator Stance",
@@ -334,8 +295,8 @@
   },
   {
     "name": "Gardener Stance",
-    "desc": "You cultivate rampant growth, spreading green with every move you make.",
     "discipline": "Growth",
+    "desc": "You cultivate rampant growth, spreading green with every move you make.",
     "accumulate": "Every Turn you begin in an _Overgrown_ space, gain 1 _Momentum_.",
     "refresh": {
       "focus": 2,
@@ -346,8 +307,8 @@
   },
   {
     "name": "Sprouting Stance",
-    "desc": "Your plants are slow to bloom, but come forth with additional fervor and strength because of it",
     "discipline": "Growth",
+    "desc": "Your plants are slow to bloom, but come forth with additional fervor and strength because of it",
     "accumulate": "Gain 1 _Momentum_ for each Phase that one of your Hazards created by this Stance triggers.",
     "refresh": {
       "focus": 2,
@@ -357,8 +318,8 @@
   },
   {
     "name": "Executioner Style",
-    "desc": "Like wheat before a scythe, so are foes before your great weapon.",
     "discipline": "Heavy Weapon Master",
+    "desc": "Like wheat before a scythe, so are foes before your great weapon.",
     "accumulate": "Whenever you defeat an enemy with a Heavy Melee Weapon, gain 2 _Momentum_.",
     "refresh": {
       "grit": 2
@@ -367,8 +328,8 @@
   },
   {
     "name": "Conqueror Stance",
-    "desc": "You evoke an aura of pure terror and killing intent, leaving your foes cowering and unable to act.",
     "discipline": "Howl",
+    "desc": "You evoke an aura of pure terror and killing intent, leaving your foes cowering and unable to act.",
     "accumulate": "Whenever creature with _Fear_ provokes a _Punish_ Reaction from you gain 1 _Momentum_.",
     "refresh": {
       "focus": 2
@@ -378,8 +339,8 @@
   },
   {
     "name": "Coward Stance",
-    "desc": "You are able to enhance your own sense of panic, granting you the ability to keep a great deal of space between you and foes.",
     "discipline": "Howl",
+    "desc": "You are able to enhance your own sense of panic, granting you the ability to keep a great deal of space between you and foes.",
     "accumulate": "Whenever you clear a _Fear_ Token, gain _Momentum_ equal to half the Value of the Token.",
     "refresh": {
       "focus": 2,
@@ -390,8 +351,8 @@
   },
   {
     "name": "Dread Stance",
-    "desc": "Any that lock gaze with you see visions of their doom, shattering their resolve.",
     "discipline": "Howl",
+    "desc": "Any that lock gaze with you see visions of their doom, shattering their resolve.",
     "accumulate": "Whenever you inflict _Fear_ with a Technique gain 1 _Momentum_.",
     "refresh": {
       "focus": 3
@@ -401,8 +362,8 @@
   },
   {
     "name": "Flashing Life Stance",
-    "desc": "A Wind Stance that uses a constant offense to force foes to acknowledge their own mortality.",
     "discipline": "Howl",
+    "desc": "A Wind Stance that uses a constant offense to force foes to acknowledge their own mortality.",
     "accumulate": "Whenever a creature is forced to clear _Fear_ due to being too close to you, gain 1 _Momentum_.",
     "refresh": {
       "focus": 2,
@@ -413,8 +374,8 @@
   },
   {
     "name": "Anchored Stance",
-    "desc": "You are a master of anchoring yourself and are steady in your strikes, even without a true anchor.",
     "discipline": "Irondraw",
+    "desc": "You are a master of anchoring yourself and are steady in your strikes, even without a true anchor.",
     "accumulate": "Whenever you Push, Pull, or Slide an enemy with a Metal Action, gain 1 _Momentum_.",
     "refresh": {
       "grit": 3
@@ -423,8 +384,8 @@
   },
   {
     "name": "Magnetic Stance",
-    "desc": "You are a bit more attached to your metal sources than most, causing them to rapidly fly back.",
     "discipline": "Irondraw",
+    "desc": "You are a bit more attached to your metal sources than most, causing them to rapidly fly back.",
     "accumulate": "Whenever you would _Embed_ a Metal Source and choose not to, gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -436,8 +397,8 @@
   },
   {
     "name": "Magnetoflier Stance",
-    "desc": "Using anchors to propel yourself to and from across the battlefield, you are as elusive as you are deadly.",
     "discipline": "Irondraw",
+    "desc": "Using anchors to propel yourself to and from across the battlefield, you are as elusive as you are deadly.",
     "accumulate": "Whenever you _Push_/_Pull_ yourself with an Action with the Metal keyword gain 2 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -447,86 +408,80 @@
   },
   {
     "name": "Bludgeon Style",
-    "desc": "You make use of your sturdy armor to lash out at foes, using your gauntlets as artificial weapons.",
     "discipline": "Juggernaut",
+    "desc": "You make use of your sturdy armor to lash out at foes, using your gauntlets as artificial weapons.",
     "accumulate": "While wearing Heavy Armor, gain 1 _Momentum_ every time you _Hit_ with an Unarmed Attack or 2 _Momentum_ on a _Crit_.",
     "refresh": {
-      "grit": 3
+      "grit": 3,
+      "reflex": 1
     },
     "effect": "Deal additional Damage with all Unarmed Weapons equal to the _Guard_ provided by your Armor, but their Speed is increased by 1.",
-    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
+    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all effects that move you against your will by half the _Guard_ provided by your Armor.",
+    "reaction": "Heavy Rebuke"
   },
   {
     "name": "Guarded Style",
-    "desc": "You are an expert at making maximum use of your armor, deflecting more blows than most.",
     "discipline": "Juggernaut",
+    "desc": "You are an expert at making maximum use of your armor, deflecting more blows than most.",
     "accumulate": "While wearing Heavy Armor, gain _Momentum_ equal to the _Guard_ provided by your Armor + 1 at Refresh.",
     "refresh": {
-      "grit": 3
+      "grit": 4
     },
-    "effect": "While wearing Heavy Armor, at the start of each _Phase_, you may 1 _Grit_ to increase your Armor's _Guard_ by 1 for that _Phase_ only.",
-    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
+    "effect": "Whenever an Attack is a _Graze_-, treat the _Guard_ provided by your armor as double its normal value. If an Attack does 0 Damage, reduce the cost to _Negate_ by 1.",
+    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all effects that move you against your will by half the _Guard_ provided by your Armor.",
+    "reaction": "Heavy Guard"
   },
   {
     "name": "Unstoppable Style",
-    "desc": "You rely on the weight of your armor to carry you forward, making it impossible to stop your motion.",
     "discipline": "Juggernaut",
+    "desc": "You rely on the weight of your armor to carry you forward, making it impossible to stop your motion and causing feeble conditions to glance off.",
     "refresh": {
-      "grit": 5
+      "focus": 1,
+      "grit": 3
     },
-    "effect": "While wearing Heavy Armor you may clear _Hobbled_ at the beginning of your turn. In addition, you may add _Rush_ to a Technique to increase your Movement by 1 space for that Turn.",
-    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by half the _Guard_ provided by your Armor."
+    "effect": "While wearing Heavy Armor you may clear _Hobbled_ at the beginning of your turn. In addition, you may add _Rush_ to a Technique to increase your Movement by 1 space for that Turn. You may use this Effect even if the Technique already has _Rush_.",
+    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all all effects that move you against your will by half the _Guard_ provided by your Armor.",
+    "reaction": "Shrug Off"
   },
   {
     "name": "Porcupine Style",
-    "desc": "Your lance whips around as a thorny spine, punching any who get too close.",
     "discipline": "Lancer",
-    "accumulate": "Gain 2 _Momentum_ every time _Crit_ with a Lance Weapon as a Reaction.",
+    "desc": "Your lance whips around as a thorny spine, punching any who get too close.",
+    "accumulate": "Gain 2 _Momentum_ every time you _Crit_ with a Lance Weapon as a Reaction.",
     "refresh": {
       "focus": 1,
       "reflex": 2
     },
-    "effect": "While in this Stance, add 'or an enemy enters your Reach' to the Trigger for the Opportunity Attack Reaction. When used in this way, the Opportunity Attack Reaction has its cost increased by 1 _Reflex_ and must be a Weapon Strike with a Lance Weapon."
+    "effect": "While in this Stance, add 'or an enemy enters your Reach' to the Trigger for the Opportunity Attack Reaction. When used in this way, the Opportunity Attack Reaction must be made with a Lance Weapon.",
+    "reaction": "Harrying Thrust"
   },
   {
     "name": "Skewer Style",
-    "desc": "You make mighty strikes with your lance.",
     "discipline": "Lancer",
+    "desc": "You make mighty strikes with your lance, piercing through a single foe easily.",
     "accumulate": "Gain 1 _Momentum_ every time you _Hit_ with an _Attack_ using a Lance Weapon.",
     "refresh": {
       "grit": 2,
       "reflex": 1
     },
-    "effect": "Once per round, when making an _Attack_ with a Lance Weapon that has a Range of Weapon, you may take _Disadvantage_ on the Attack. If you do, instead resolve the Attack in a Line X, where X is the _Reach_ of your Weapon."
-  },
-  {
-    "name": "Swordbreaker Style",
-    "desc": "You make use of the range of your lance to easily keep blades away.",
-    "discipline": "Lancer",
-    "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Lance_ Weapon.",
-    "refresh": {
-      "focus": 1,
-      "grit": 1,
-      "reflex": 1
-    },
-    "effect": "Reduce the Attack Roll of all Attacks with _Blade_ Weapons that target you by 1 as long as you are Wielding a _Lance_ Weapon.",
-    "special": "You may use the Counter Reaction for no Cost when attacked with a _Blade_ Weapon as long as you are Wielding a _Lance_ Weapon."
+    "effect": "Once per round, when making an _Attack_ that does not have _Disadvantage_ with a Lance Weapon that has a Range of Weapon, you may take _Disadvantage_ on the Attack. If you do, instead resolve the Attack in a Line X, where X is the _Reach_ of your Weapon.",
+    "special": "Whenever you _Crit_ with a Lance Weapon you may pay 1 _Momentum_ to inflict _Wounded_ 1 (2 _Grit_)."
   },
   {
     "name": "Barricade Stance",
-    "desc": "A powerful stance that constructs an unassailable fortress of earth and stone.",
     "discipline": "Land",
+    "desc": "A powerful stance that constructs an unassailable fortress of earth and stone.",
     "refresh": {
-      "grit": 4,
-      "focus": 2
+      "focus": 2,
+      "grit": 4
     },
     "effect": "At _Refresh_ you may place an _Earthen Pillar_ in an adjacent space. While you are adjacent to them, _Earthen_ obstacles of your choice are _Sturdy_.",
-    "reaction": "Whenever you or an allied creature within Range 3 is Attacked, you may pay 3 _Grit_ to grant the triggering creature _Cover_ and 1 _Guard_ against the triggering Attack. Then _Slide_ 1 the Triggering creature and put an Earth Pillar in their space."
+    "reaction": "Earthen Shield"
   },
   {
     "name": "Roiling Stance",
-    "desc": "The ground around those that have mastered the Roiling Stance is nearly a liquid, quaking and shaking constantly.",
     "discipline": "Land",
+    "desc": "The ground around those that have mastered the Roiling Stance is nearly a liquid, quaking and shaking constantly.",
     "accumulate": "Gain 1 _Momentum_ any time a creature gains _Exposed_, _Hobbled_, or _Prone_ while in your Burst.",
     "refresh": {
       "grit": 2,
@@ -537,58 +492,61 @@
   },
   {
     "name": "Sculptor Stance",
-    "desc": "A well-practiced Earthbonded can shape earth and stone as easily as clay, sculpting the field around them to their liking.",
     "discipline": "Land",
+    "desc": "A well-practiced Earthbonded can shape earth and stone as easily as clay, sculpting the field around them to their liking.",
     "accumulate": "Gain 1 _Momentum_ for every Action you take that creates earthen _Rough_/_Jagged_ Terrain.",
     "refresh": {
-      "reflex": 1,
-      "focus": 2
+      "focus": 2,
+      "reflex": 1
     },
     "effect": "At Refresh, you may change any 2 contiguous spaces within Range 4 made of earthen materials into your choice of Normal, _Rough_, _Stairs_, or _Jagged_. These spaces are chosen independently, and can be changed into different types.",
     "special": "You may ignore _Rough_ and _Jagged_ Terrain made of earthen materials while in this Stance.",
-    "reaction": "At the start of any Phase you may pay 2 _Focus_/_Grit_ to repeat the Effect."
+    "reaction": "Skilled Sculptor"
   },
   {
     "name": "Living Weapon Style",
-    "desc": "Your entire body is a weapon, with every part of you capable of killing with ease.",
     "discipline": "Martial Artist",
+    "desc": "Your entire body is a weapon, with every part of you capable of killing with ease.",
     "accumulate": "Gain 1 _Momentum_ for every Attack you make with a different Unarmed Weapon in a Round.",
     "refresh": {
-      "reflex": 1,
+      "focus": 1,
       "grit": 1,
-      "focus": 1
+      "reflex": 1
     },
     "effect": "Add _Fluid_ 1 to all Unarmed Weapons.",
-    "special": "When you learn this Stance, gain a single Weapon with the _Martial_ Keyword."
+    "special": "When you learn this Stance, gain two Weapons with the _Martial_ Keyword.",
+    "reaction": "Active Defense"
   },
   {
     "name": "Open Hand Style",
-    "desc": "Your hands are deadly weapons, removing any advantage a foe has with each strike.",
     "discipline": "Martial Artist",
+    "desc": "Your hands are deadly weapons, removing any advantage a foe has with each strike.",
     "accumulate": "Gain 1 _Momentum_ for each subsequent _Hit_+ against the same Target with a _Fist_ Weapon in the same _Round_.",
     "refresh": {
-      "reflex": 1,
-      "grit": 1
+      "focus": 2,
+      "grit": 2
     },
     "effect": "Gain a +1 bonus to Attacks with _Fist_ Weapons. Reduce the _Cost_ of _Block_/_Evade_ Reactions by 1 against creatures with _Impaired_, _Dazed_, or _Exposed_ while you have an _Open Hand_.",
-    "special": "When you learn this Stance, gain a single Weapon with the _Martial_ Keyword."
+    "special": "When you learn this Stance, gain two Weapons with the _Martial_ Keyword.",
+    "reaction": "Boxer's Counter"
   },
   {
     "name": "Rising Leg Style",
-    "desc": "Your legs move like a flash, taking your foes to the ground in an instance.",
     "discipline": "Martial Artist",
+    "desc": "Your legs move like a flash, taking your foes to the ground in an instance.",
     "accumulate": "Gain 1 _Momentum_ every time you knock a foe _Prone_ using a _Kick_ Weapon.",
     "refresh": {
-      "reflex": 2,
-      "grit": 1
+      "focus": 2,
+      "reflex": 2
     },
     "effect": "Gain a +1 bonus to Attacks with _Kick_ Weapons. Whenever you inflict _Hobbled_ with a _Kick_ Weapon on a creature that is already _Hobbled_ you may choose to instead inflict _Prone_.",
-    "special": "When you learn this Stance, gain a single Weapon with the _Martial_ Keyword."
+    "special": "When you learn this Stance, gain two Weapons with the _Martial_ Keyword.",
+    "reaction": "Whirlwind Kick"
   },
   {
     "name": "Gathering Storm Stance",
-    "desc": "A Wind Stance that, with every gust, builds a greater storm for your allies.",
     "discipline": "NPC",
+    "desc": "A Wind Stance that, with every gust, builds a greater storm for your allies.",
     "accumulate": "Whenever you _Push_ a creature with a Wind Technique gain 1 _Momentum_.",
     "refresh": {
       "grit": 2,
@@ -598,8 +556,8 @@
   },
   {
     "name": "Pack Hunt Style",
-    "desc": "A style used by coordinated hunters that allows them to easily take down foes while working as a team.",
     "discipline": "NPC",
+    "desc": "A style used by coordinated hunters that allows them to easily take down foes while working as a team.",
     "accumulate": "Whenever you _Hit_ or _Crit_ a foe while another creature with this Style is adjacent to them, both you and all triggering allies gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -609,9 +567,9 @@
   },
   {
     "name": "Speed Stance",
+    "discipline": "NPC",
     "desc": "A Wind Stance that goes fast.",
     "accumulate": "Whenever you move at least 5 spaces in a _Turn_, gain 1 _Momentum_.",
-    "discipline": "NPC",
     "refresh": {
       "reflex": 3
     },
@@ -619,101 +577,103 @@
   },
   {
     "name": "Close-Quarters Style",
-    "desc": "You have become adept at using your bow in close-quarters and can rapidly fire without issue.",
     "discipline": "Sharpshooter",
+    "desc": "You have become adept at using your bow in close-quarters and can rapidly fire without issue.",
     "accumulate": "Whenever you make an Attack against a creature within 5 spaces gain 1 _Momentum_ and deal an additional 1 Damage.",
     "refresh": {
-      "reflex": 2,
-      "focus": 1
+      "focus": 1,
+      "reflex": 2
     },
     "effect": "Decrease the _Artillery_ property of all your Ranged Weapons by 2."
   },
   {
     "name": "Overwatch Style",
-    "desc": "You excel at taking prepared shots at foes, slipping past their defenses when they least expect it.",
     "discipline": "Sharpshooter",
+    "desc": "You excel at taking prepared shots at foes, slipping past their defenses when they least expect it.",
     "accumulate": "Whenever you _Hit_ with a Reaction Attack using a Ranged Weapon, gain 1 _Momentum_. If you _Crit_, instead gain 2 _Momentum_.",
     "refresh": {
-      "reflex": 2,
-      "focus": 2
+      "focus": 2,
+      "reflex": 2
     },
     "effect": "Gain a +1 bonus to all Ranged Attacks made not on your Turn. At Refresh, you may pay 2 _Momentum_ to create a Blast 1 Hazard within Weapon Range. Once per Phase, you may make a single Attack against a creature in that Area so long as they are within your Weapon Range. This Attack is _Glancing_. You may not attack the same Creature more than once per Round."
   },
   {
     "name": "Sniper Style",
-    "desc": "You focus your aim, finding the weak points in your foe's defenses and exploiting them for devastating damage.",
     "discipline": "Sharpshooter",
+    "desc": "You focus your aim, finding the weak points in your foe's defenses and exploiting them for devastating damage.",
     "accumulate": "Once per Turn, whenever you defeat a foe with an attack with a Ranged Weapon gain 2 _Momentum_. If that foe was previously undamaged, instead gain 3 _Momentum_.",
     "refresh": {
-      "reflex": 1,
-      "focus": 2
+      "focus": 2,
+      "reflex": 1
     },
     "effect": "At _Refresh_ you may choose to gain _Hobbled_ 1x3. If you do, gain a +1 Bonus to all Attacks with Ranged Weapons for the remainder of the _Round_ whenever you are at a higher _Elevation_ than your Target."
   },
   {
     "name": "Bash Style",
-    "desc": "Your shield is a vicious weapon, forcing foes to keep.",
     "discipline": "Shield Master",
-    "accumulate": "Once per Phase when you hit with a _Punish_ Attack using a Shield gain 1 _Momentum_.",
+    "desc": "Your shield is a vicious weapon, one that you're easily able to weave into strikes.",
+    "accumulate": "Once per Phase, on a Hit+ with a _Punish_ Attack using a Shield gain 1 _Momentum_.",
     "refresh": {
-      "reflex": 2,
-      "grit": 2
+      "grit": 2,
+      "reflex": 1
     },
-    "effect": "When you hit with an Attack with your Shield, for the rest of the Round, the creature treats all _Impaired_ Tokens as if they were Value-1 when attacking you, but Value+1 when attacking other creatures."
+    "effect": "2 AP Weapons Attacks using your Shield are instead 1 AP.",
+    "reaction": "Disruptive Bash"
   },
   {
     "name": "Bastion Style",
+    "discipline": "Shield Master",
     "desc": "A fighting style centered around the use of a shield to defend oneself and others.",
-    "discipline": "Shield Master",
-    "accumulate": "Whenever an ally uses your _Grit_, gain 1 _Momentum_. This may trigger up to 3 times per _Round_.",
+    "accumulate": "Whenever an ally uses your _Grit_ or you use a _Block_ Reaction for an ally, gain 1 _Momentum_. This may trigger up to 3 times per _Round_.",
     "refresh": {
       "grit": 3
     },
-    "effect": "While you have a Shield Wielded you may choose to allow adjacent allies to spend your _Grit_ for Reactions. If they do, they gain _Cover_ against the triggering Attack.",
-    "special": "Adjacent allies may treat you as a Size 1 Obstacle for the purposes of _Cover_."
-  },
-  {
-    "name": "Fortress Style",
-    "desc": "Your shield darts to and fro, providing an impenetrable bunker against assault.",
-    "discipline": "Shield Master",
-    "accumulate": "Once per Phase when you take a _Block_ Reaction gain 1 _Momentum_.",
-    "refresh": {
-      "reflex": 1,
-      "grit": 3
-    },
-    "effect": "While Wielding a Shield, once per _Phase_, you may pay 1 _Grit_ to take an additional _Reaction_ so long as at least one _Reaction_ that turn is a _Block_ Reaction.",
-    "special": "Whenever you take a _Block_ Reaction, grant yourself _Cover_ against the triggering Attack."
+    "effect": "While you have a Shield Wielded you may choose to allow adjacent allies to spend your _Grit_ for Reactions.",
+    "special": "Adjacent allies may treat you as a Size 1 Obstacle for the purposes of _Cover_.",
+    "reaction": "Vigilant Defender"
   },
   {
     "name": "Counter Style",
-    "desc": "With your mix of mobility and armor you can more safely counter a foe's assault.",
     "discipline": "Skirmisher",
+    "desc": "With your mix of mobility and armor you can more safely counter a foe's assault.",
     "accumulate": "While Wearing Light Armor, once per Phase when you _Hit_+ with a _Punish_ Reaction gain 1 Momentum.",
-    "refresh": { "reflex": 2, "grit": 3 },
-    "effect": "While Wearing Light Armor, once per Phase, you may pay 1 _Momentum_ to take an additional Reaction so long as at least one Reaction that turn is a _Punish_ Reaction."
+    "refresh": {
+      "grit": 2,
+      "reflex": 2
+    },
+    "effect": "While Wearing Light Armor, once per Phase, you may pay 1 _Momentum_ to add _Efficient_ to a _Punish_ Reaction.",
+    "reaction": "Perfect Counter"
   },
   {
     "name": "Skirmish Style",
-    "desc": "You are always moving, making yourself a difficult target to pin down.",
     "discipline": "Skirmisher",
+    "desc": "You are always moving, making yourself a difficult target to pin down.",
     "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end your _Turn_ non-adjacent to any enemy.",
-    "refresh": { "reflex": 3, "grit": 1 },
+    "refresh": {
+      "grit": 1,
+      "reflex": 3
+    },
     "effect": "Whenever you take a _Reaction_ while you have _Reflex_ you may Move 1 as long as you are wearing Light Armor.",
-    "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Evade_ Reaction by 1."
+    "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Evade_ Reaction by 1.",
+    "reaction": "Whirling Counter"
   },
   {
     "name": "Warding Style",
-    "desc": "You are most at home near a foe, using your mobility and armor to always press the advantage.",
     "discipline": "Skirmisher",
+    "desc": "You are most at home near a foe, using your mobility and armor to always press the advantage.",
     "accumulate": "While wearing Light Armor gain 1 _Momentum_ whenever you end a _Turn_ adjacent to an enemy.",
-    "refresh": { "reflex": 3, "grit": 1 },
-    "effect": "Whenever you take a _Reaction_ while you have _Grit_ you may reduce the Damage of an adjacent foe's Attack by 1.",
-    "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Block_ Reaction by 1."
+    "refresh": {
+      "grit": 2,
+      "reflex": 2
+    },
+    "effect": "Whenever you take a _Reaction_ while you have _Grit_ you may reduce the Damage of an Attack by 1.",
+    "special": "Once per _Turn_, you may pay 1 _Momentum_ to reduce the Cost of any _Block_ Reaction by 1.",
+    "reaction": "Patient Guard"
   },
   {
     "name": "Breeze Stance",
-    "desc": "By manipulating the wind across the battlefield you grant your allies a favorable tailwind, enhancing their speed and mobility.",
     "discipline": "Squall",
+    "desc": "By manipulating the wind across the battlefield you grant your allies a favorable tailwind, enhancing their speed and mobility.",
     "accumulate": "Whenever you _Push_, _Pull_, _Slide_, or allow an ally to Move, gain 1 _Momentum_.",
     "refresh": {
       "reflex": 3
@@ -722,8 +682,8 @@
   },
   {
     "name": "Razor Wind Stance",
-    "desc": "You know how to focus wind into a razor's edge, causing it to bite deeper and leave more significant wounds.",
     "discipline": "Squall",
+    "desc": "You know how to focus wind into a razor's edge, causing it to bite deeper and leave more significant wounds.",
     "accumulate": "Whenever you create a _Windy_ space or _Crit_ with a _Wind_ Attack gain 1 _Momentum_.",
     "refresh": {
       "reflex": 1
@@ -732,8 +692,8 @@
   },
   {
     "name": "Squall Stance",
-    "desc": "By unleashing powerful, concentrated blasts of air, practitioners of the Squall Stance keep their foes off-balance and unable to strike.",
     "discipline": "Squall",
+    "desc": "By unleashing powerful, concentrated blasts of air, practitioners of the Squall Stance keep their foes off-balance and unable to strike.",
     "accumulate": "Whenever you _Staggered_ a foe, gain 1 _Momentum_.",
     "refresh": {
       "focus": 2,
@@ -743,19 +703,19 @@
   },
   {
     "name": "Metaleye Stance",
-    "desc": "You see all nearby sources of metal, granting you a prenatural sense of all their locations.",
     "discipline": "Steelforge",
+    "desc": "You see all nearby sources of metal, granting you a prenatural sense of all their locations.",
     "refresh": {
+      "focus": 1,
       "grit": 2,
-      "reflex": 2,
-      "focus": 1
+      "reflex": 2
     },
     "effect": "You ignore the Veiled condition when attacked by a Metal weapon or when Attacking a creature wearing significant amounts of metal (such as armor). Once per Round, you may reduce the Cost of an _Evade_/_Block_ Reaction by 1 so long as the Attacker is using a metal weapon."
   },
   {
     "name": "Unbreakable Stance",
-    "desc": "You reinforce all nearby metal, making it nigh-indestructible.",
     "discipline": "Steelforge",
+    "desc": "You reinforce all nearby metal, making it nigh-indestructible.",
     "accumulate": "If you are wearing Metal Armor or have a Metal Shield Wielded, gain 1 _Momentum_ at Refresh.",
     "refresh": {
       "grit": 4
@@ -764,8 +724,8 @@
   },
   {
     "name": "Unstoppable Stance",
-    "desc": "You subtly shape and reinforce your weapons, providing impossibly sharp edges that cut through all defenses.",
     "discipline": "Steelforge",
+    "desc": "You subtly shape and reinforce your weapons, providing impossibly sharp edges that cut through all defenses.",
     "accumulate": "If you have a Metal Weapon _Wielded_, gain 1 _Momentum_ at Refresh.",
     "refresh": {
       "focus": 1,
@@ -775,31 +735,31 @@
   },
   {
     "name": "Bold Stance",
-    "desc": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
     "discipline": "Stoneheart",
+    "desc": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
     "refresh": {
-      "grit": 1,
-      "focus": 2
+      "focus": 2,
+      "grit": 1
     },
     "effect": "Every round at Refresh, you may issue a brave challenge. Pay up to 3 _Focus_, and choose an equal number of targets within Range 6. These targets all gain _Courage_ 1x3 (1 _Focus_). For the remainder of the round, these targets only clear _Courage_ when they end their turn adjacent to you. Gain 1 _Momentum_ every time one of these targets clears a _Courage_.",
     "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
   },
   {
     "name": "Defiant Stance",
-    "desc": "No matter the punishment you take, your courage will carry you through the battle.",
     "discipline": "Stoneheart",
+    "desc": "No matter the punishment you take, your courage will carry you through the battle.",
     "accumulate": "The first time each _Phase_ you take Damage gain _Courage_ 1. If you have no Endurance after taking Damage, gain _Courage_ 3 instead.",
     "refresh": {
-      "grit": 2,
-      "focus": 1
+      "focus": 1,
+      "grit": 2
     },
     "effect": "At the end of any of your Turns you may remove the topmost _Courage_ Token and either gain _Grit_ equal to its value or _Vigor_ equal to twice its value.",
     "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
   },
   {
     "name": "Inspiring Stance",
-    "desc": "You are a font of courage, rallying your allies with every move you make.",
     "discipline": "Stoneheart",
+    "desc": "You are a font of courage, rallying your allies with every move you make.",
     "refresh": {
       "focus": 3
     },
@@ -808,19 +768,19 @@
   },
   {
     "name": "Bolt Stance",
-    "desc": "You control the storms in a direct fashion: you simply unleash it in as direct a way as possible, unleashing its devastating potential.",
     "discipline": "Storm",
+    "desc": "You control the storms in a direct fashion: you simply unleash it in as direct a way as possible, unleashing its devastating potential.",
     "accumulate": "Every time you _Hit_ with an _Electric_ Attack gain 1 _Momentum_, every time you _Crit_ gain 2 _Momentum_.",
     "refresh": {
-      "reflex": 2,
-      "focus": 1
+      "focus": 1,
+      "reflex": 2
     },
     "effect": "Whenever you use a _Electric_ Technique that inflicts _Shock_ you may pay 1 _Momentum_ to inflict no _Shock_ and instead add _Pierce_ equal to the total value of _Shock_ that would have been inflicted."
   },
   {
     "name": "Charged Stance",
-    "desc": "You hold the storm within yourself, something that carries a great amount of risk but also amplifies your power greatly.",
     "discipline": "Storm",
+    "desc": "You hold the storm within yourself, something that carries a great amount of risk but also amplifies your power greatly.",
     "accumulate": "At Refresh, gain _Momentum_ equal to your top two _Shock_ Tokens. Clear these Tokens.",
     "refresh": {
       "reflex": 1
@@ -830,20 +790,20 @@
   },
   {
     "name": "Stormcaller Stance",
-    "desc": "You are adept at conducting lighting in the environment itself, calling down lighting in unexpected and dangerous ways.",
     "discipline": "Storm",
+    "desc": "You are adept at conducting lighting in the environment itself, calling down lighting in unexpected and dangerous ways.",
     "accumulate": "The first time in a Phase that you hit with or a foe triggers an _Electric_ _Hazard_, gain 1 _Momentum_.",
     "refresh": {
-      "reflex": 1,
-      "focus": 1
+      "focus": 1,
+      "reflex": 1
     },
     "effect": "You may choose not to trigger your _Electric_ _Hazard_s when an ally moves through them.",
     "special": "Once per Round, after your _Hit_/_Crit_ with an Attack, create a Burst 1 _Hazard_ around the Target. Destroy the _Hazard_ at the end of the next Phase. If the Target Moves or a creature other than you enters the _Hazard_, inflict 1 _Shock_ (1 _Reflex_) in the Area and deal 3 Damage."
   },
   {
     "name": "Barb Style",
-    "desc": "Your thrown weapons stick with your foes, limiting their movement and ability to strike.",
     "discipline": "Thrower",
+    "desc": "Your thrown weapons stick with your foes, limiting their movement and ability to strike.",
     "accumulate": "Whenever you _Embed_ with a _Thrown_ Weapon gain 1 _Momentum_.",
     "refresh": "_Reflex_ 2, _Focus_ 1",
     "effect": "Whenever you successfully _Embed_ you may pay 1 _Momentum_ to inflict _Hobbled_ 1. If a creature clears this _Embed_, they automatically clear the _Hobbled_.",
@@ -851,29 +811,38 @@
   },
   {
     "name": "Pinpoint Style",
-    "desc": "You aim for vital points with your thrown weapons, sacrificing reliability for lethality.",
     "discipline": "Thrower",
+    "desc": "You aim for vital points with your thrown weapons, sacrificing reliability for lethality.",
     "accumulate": "Whenever you _Crit_ with a _Thrown_ Weapon gain 2 _Momentum_.",
     "refresh": "_Reflex_ 1, _Focus_ 2",
     "effect": "You take a -1 penalty to all Attack Rolls with Thrown Weapons, but treat your highest Hit Roll as a Crit. When you _Crit_ with a Thrown Weapon, deal an additional 3 Damage and inflict either _Hobbled_ 1, _Exposed_ 1, or _Impaired_ 1 (1 _Focus_).",
     "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
   },
   {
+    "name": "Rapid Style",
+    "discipline": "Thrower",
+    "desc": "Your thrown weapons fly out with incredible speed, constantly catching foes off-guard.",
+    "accumulate": "Whenever you _Hit_ or _Crit_ with a Thrown Attack on the first Turn in a Round, gain 2 _Momentum_, or 1 _Momentum_ if you used the Attack as a _Reaction_.",
+    "refresh": "_Reflex_ 3",
+    "effect": "Add _Fluid_ 1 and _Priority_ to all Attacks using a Thrown Weapon. You may pay 1 _Reflex_ to add _Sure Hit_ 1 to all Attacks using Thrown Weapons.",
+    "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
+  },
+  {
     "name": "Ebbing Stance",
-    "desc": "Your waves pull with a vicious undertow, dragging your foes closer to you with an unstoppable riptide.",
     "discipline": "Tide",
+    "desc": "Your waves pull with a vicious undertow, dragging your foes closer to you with an unstoppable riptide.",
     "accumulate": "Whenever you _Pull_ an enemy with an Action, gain 1 _Momentum_.",
     "refresh": {
-      "reflex": 2,
-      "focus": 1
+      "focus": 1,
+      "reflex": 2
     },
     "effect": "Whenever you _Hit_/_Crit_ with a Water Action you may add _Pull_ 1 to the effect. If there is an existing _Pull_ on the Attack it is Negated by the same defense, otherwise, (1 _Grit_).",
     "special": "Immediately after you cause a _Push_ effect you may pay 1 _Momentum_ to change to this Stance as a Reaction."
   },
   {
     "name": "Flood Stance",
-    "desc": "You are a master of the tides, covering the battlefield in water as far as the eye can see.",
     "discipline": "Tide",
+    "desc": "You are a master of the tides, covering the battlefield in water as far as the eye can see.",
     "accumulate": "Whenever a creature is _Pushed_, _Pulled_, or knocked _Prone_ on _Wet_ Terrain gain 1 _Momentum_, up to a maximum of 4 per round.",
     "refresh": {
       "grit": 1,
@@ -884,8 +853,8 @@
   },
   {
     "name": "Flowing Stance",
-    "desc": "Your waves hit with an impossible force, leaving no avenue for retreat but back.",
     "discipline": "Tide",
+    "desc": "Your waves hit with an impossible force, leaving no avenue for retreat but back.",
     "accumulate": "Whenever you _Push_ an enemy with an Action, gain 1 _Momentum_.",
     "refresh": {
       "grit": 3
@@ -895,20 +864,20 @@
   },
   {
     "name": "Barkshield Stance",
-    "desc": "You shatter nearby wood before pulling it closer to you, creating a thick layer of bark and heartwood around you.",
     "discipline": "Timber",
+    "desc": "You shatter nearby wood before pulling it closer to you, creating a thick layer of bark and heartwood around you.",
     "refresh": {
-      "grit": 2,
+      "additional": "1 _Wood Armor_",
       "focus": 1,
-      "additional": "1 _Wood Armor_"
+      "grit": 2
     },
     "effect": "Once per Turn, while adjacent to a _Wood Source_ you may _Destroy_ it and gain 1 _Wood Armor_.",
     "special": "The Cost to Negate anything that would _Damage_ your Wooden Weapon or Armor is reduced by 1."
   },
   {
     "name": "Hardwood Stance",
-    "desc": "You reinforce the wood of your weapon, allowing you to draw bows back further and clubs to hit harder.",
     "discipline": "Timber",
+    "desc": "You reinforce the wood of your weapon, allowing you to draw bows back further and clubs to hit harder.",
     "accumulate": "If you have a Wooden Weapon _Wielded_, gain 2 _Momentum_ at Refresh.",
     "refresh": {
       "focus": 1,
@@ -919,8 +888,8 @@
   },
   {
     "name": "Overbough Stance",
-    "desc": "Tree branches, table legs, and other plant constructs naturally defend you, providing a constant defense.",
     "discipline": "Timber",
+    "desc": "Tree branches, table legs, and other plant constructs naturally defend you, providing a constant defense.",
     "accumulate": "Every Turn you begin Adjacent to a Size 1 or larger _Wood Source_, gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -931,8 +900,8 @@
   },
   {
     "name": "Flawfinder Stance",
-    "desc": "Your senses analyze every aspect of your foes' defenses, allowing you to easily break and bypass them with every strike.",
     "discipline": "Tremorsight",
+    "desc": "Your senses analyze every aspect of your foes' defenses, allowing you to easily break and bypass them with every strike.",
     "refresh": {
       "focus": 2,
       "grit": 1
@@ -942,8 +911,8 @@
   },
   {
     "name": "Pulsereader Stance",
-    "desc": "You feel the subtle vibrations of the earth, feeling the true intentions of your foes and better preparing you for future assaults.",
     "discipline": "Tremorsight",
+    "desc": "You feel the subtle vibrations of the earth, feeling the true intentions of your foes and better preparing you for future assaults.",
     "accumulate": "Gain 1 _Momentum_ any time a creature _Misses_/_Grazes_ you with an _Attack_.",
     "refresh": {
       "focus": 3
@@ -953,8 +922,8 @@
   },
   {
     "name": "Sonar Stance",
-    "desc": "Your senses extend out around you, providing you perfect knowledge of all foes.",
     "discipline": "Tremorsight",
+    "desc": "Your senses extend out around you, providing you perfect knowledge of all foes.",
     "refresh": {
       "focus": 1,
       "reflex": 2
@@ -964,8 +933,8 @@
   },
   {
     "name": "Frostbite Stance",
-    "desc": "You are an avatar of ice and cold, creating a dangerous vortex of ice around you.",
     "discipline": "Tundra",
+    "desc": "You are an avatar of ice and cold, creating a dangerous vortex of ice around you.",
     "accumulate": "The first time on each of your Turns you inflict _Frost_, gain 1 _Momentum_.",
     "refresh": {
       "grit": 1
@@ -974,8 +943,8 @@
   },
   {
     "name": "Frostguard Stance",
-    "desc": "While normally frost is a hindrance, you have learned to weaponize it and make it a valuable tool.",
     "discipline": "Tundra",
+    "desc": "While normally frost is a hindrance, you have learned to weaponize it and make it a valuable tool.",
     "accumulate": "Gain _Momentum_ equal to your topmost _Frost_ Token..",
     "refresh": {
       "focus": 1,
@@ -986,8 +955,8 @@
   },
   {
     "name": "Skating Stance",
-    "desc": "The ice is your home, allowing you to slip and slide with ethereal grace.",
     "discipline": "Tundra",
+    "desc": "The ice is your home, allowing you to slip and slide with ethereal grace.",
     "accumulate": "Whenever you start a Turn on _Icy_ Terrain, gain 1 _Momentum_.",
     "refresh": {
       "focus": 1,
@@ -998,8 +967,8 @@
   },
   {
     "name": "Bully Style",
-    "desc": "Your weapons carry more weight than most, something you can use to great effect.",
     "discipline": "Warrior",
+    "desc": "Your weapons carry more weight than most, something you can use to great effect.",
     "accumulate": "Whenever you _Push_ a foe with your Weapon, gain 1 _Momentum_. Whenever you knock a foe _Prone_ with your Weapon, gain 2 _Momentum_.",
     "refresh": {
       "grit": 2
@@ -1009,8 +978,8 @@
   },
   {
     "name": "Crusher Style",
-    "desc": "You specialize in punishing foes in armor, not only shattering their defenses but also crumpling it in a painful way.",
     "discipline": "Warrior",
+    "desc": "You specialize in punishing foes in armor, not only shattering their defenses but also crumpling it in a painful way.",
     "accumulate": "Gain 1 _Momentum_ every time you inflict _Shred_.",
     "refresh": {
       "grit": 3
@@ -1020,8 +989,8 @@
   },
   {
     "name": "Lancebreaker Style",
-    "desc": "Your blunt weapon is well-suited for breaking through the feeble defenses of a spear.",
     "discipline": "Warrior",
+    "desc": "Your blunt weapon is well-suited for breaking through the feeble defenses of a spear.",
     "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blunt_ Weapon.",
     "refresh": {
       "grit": 2,
@@ -1032,8 +1001,8 @@
   },
   {
     "name": "Agility Stance",
-    "desc": "You move with uncanny speed, slipping past attacks while dancing across the battlefield.",
     "discipline": "Zephyr",
+    "desc": "You move with uncanny speed, slipping past attacks while dancing across the battlefield.",
     "accumulate": "Whenever you take an _Evade_ Reaction and it causes an Attack to _Graze_/_Miss_ gain 1 _Momentum_.",
     "refresh": {
       "reflex": 4
@@ -1043,34 +1012,25 @@
   },
   {
     "name": "Haste Stance",
-    "desc": "You attack with blistering speed, punishing those with slower reactions than yourself.",
     "discipline": "Zephyr",
+    "desc": "You attack with blistering speed, punishing those with slower reactions than yourself.",
     "accumulate": "Whenever you Attack a creature that has not taken a _Turn_ this _Round_, gain 1 _Momentum_.",
     "refresh": {
-      "reflex": 3,
-      "focus": 1
+      "focus": 1,
+      "reflex": 3
     },
     "effect": "Whenever you Attack a creature that has not taken a _Turn_ this _Round_ add _Sure Hit_ 1 and increase to _Cost_ to _Negate_ by 1.",
     "special": "Increase all your Movement and Jump by 1 space while in this _Stance_."
   },
   {
     "name": "Lightfoot Stance",
-    "desc": "You become incredibly light, letting you bound about without a care.",
     "discipline": "Zephyr",
+    "desc": "You become incredibly light, letting you bound about without a care.",
     "refresh": {
-      "reflex": 2,
-      "focus": 1
+      "focus": 1,
+      "reflex": 2
     },
     "effect": "On your _Turn_ you may take a _Safe_ _Reposition_ in addition to your normal Movement and reduce the Cost to _Jump_ by 1 during this Movement. If you are _Flying_, you may sacrifice this additional Movement to gain 1 _Momentum_.",
     "special": "Increase all your Movement and Jump by 1 space while in this _Stance_."
-  },
-  {
-    "name": "Rapid Style",
-    "desc": "Your thrown weapons fly out with incredible speed, constantly catching foes off-guard.",
-    "discipline": "Thrower",
-    "accumulate": "Whenever you _Hit_ or _Crit_ with a Thrown Attack on the first Turn in a Round, gain 2 _Momentum_, or 1 _Momentum_ if you used the Attack as a _Reaction_.",
-    "refresh": "_Reflex_ 3",
-    "effect": "Add _Fluid_ 1 and _Priority_ to all Attacks using a Thrown Weapon. You may pay 1 _Reflex_ to add _Sure Hit_ 1 to all Attacks using Thrown Weapons.",
-    "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
   }
 ]

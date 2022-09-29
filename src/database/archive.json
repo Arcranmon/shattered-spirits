@@ -1,5 +1,42 @@
 [
   {
+    "name": "Axebreaker Style",
+    "desc": "You make use of the nimbleness of a blade to thwart slower weapons with ease.",
+    "discipline": "Blademaster",
+    "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blade_ Weapon.",
+    "refresh": {
+      "grit": 1,
+      "reflex": 2
+    },
+    "effect": "Reduce the Attack Roll of all Attacks with _Blunt_ Weapons that target you by 1 as long as you are Wielding a _Blade_ Weapon.",
+    "special": "You may use the Counter Reaction for no Cost when attacked with a _Blunt_ Weapon as long as you are Wielding a _Blade_ Weapon."
+  },
+  {
+    "name": "Press the Attack!",
+    "discipline": "Skirmisher",
+    "desc": "You recklessly push an attack into an advantage.",
+    "type": "Maneuver",
+    "speed": "Reaction",
+    "range": "Self",
+    "cost": "1 _Momentum_",
+    "reqs": "Light Armor Worn.",
+    "trigger": "You make a Melee Attack.",
+    "effect": "_Wager_ Momentum with the Target of the Attack. If you win, you may reroll the Attack and gain 1 _Momentum_. Otherwise, reduce the Attack Roll by 1."
+  },
+  {
+    "name": "Swordbreaker Style",
+    "desc": "You make use of the range of your lance to easily keep blades away.",
+    "discipline": "Lancer",
+    "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Lance_ Weapon.",
+    "refresh": {
+      "focus": 1,
+      "grit": 1,
+      "reflex": 1
+    },
+    "effect": "Reduce the Attack Roll of all Attacks with _Blade_ Weapons that target you by 1 as long as you are Wielding a _Lance_ Weapon.",
+    "special": "You may use the Counter Reaction for no Cost when attacked with a _Blade_ Weapon as long as you are Wielding a _Lance_ Weapon."
+  },
+  {
     "name": "Earth Tomb",
     "discipline": "Land",
     "desc": "By using nearby earth and stone the Earthbonded seals their foe away.",
@@ -16,19 +53,7 @@
     "boost": "2 _Grit_, 1 _Momentum_: Add _Groundsource_. You may resolve the normal Effect without any _Earthen_ Obstacles.",
     "chart": {
       "damage": [0, 0, 0, 5, 6, 8, 10, 10, 11, 12, 12],
-      "roll": [
-        "Miss",
-        "Miss",
-        "Miss",
-        "Graze",
-        "Graze",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit"
-      ],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
@@ -61,19 +86,7 @@
     "imbue": "1 _Grit_: Increase the Speed of this Technique by 1. You may use this Imbue multiple times but must increase its Cost by 1 each time.",
     "chart": {
       "damage": [0, 0, 7, 7, 8, 9, 10, 10, 10, 12, 12],
-      "roll": [
-        "Miss",
-        "Miss",
-        "Graze",
-        "Graze",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Hit",
-        "Crit",
-        "Crit"
-      ],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
