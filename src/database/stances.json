@@ -803,31 +803,31 @@
     "special": "Once per Round, after your _Hit_/_Crit_ with an Attack, create a Burst 1 _Hazard_ around the Target. Destroy the _Hazard_ at the end of the next Phase. If the Target Moves or a creature other than you enters the _Hazard_, inflict 1 _Shock_ (1 _Reflex_) in the Area and deal 3 Damage."
   },
   {
-    "name": "Barb Style",
-    "discipline": "Thrower",
-    "desc": "Your thrown weapons stick with your foes, limiting their movement and ability to strike.",
-    "accumulate": "Whenever you _Embed_ with a _Thrown_ Weapon gain 1 _Momentum_.",
-    "refresh": "_Reflex_ 2, _Focus_ 1",
-    "effect": "Whenever you successfully _Embed_ you may pay 1 _Momentum_ to inflict _Hobbled_ 1. If a creature clears this _Embed_, they automatically clear the _Hobbled_.",
-    "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
-  },
-  {
     "name": "Pinpoint Style",
     "discipline": "Thrower",
-    "desc": "You aim for vital points with your thrown weapons, sacrificing reliability for lethality.",
+    "desc": "Your thrown weapons with pinpoint accuracy, embedding them in your foes in debilitating ways.",
+    "accumulate": "Whenever you _Embed_ with a _Thrown_ Weapon gain 1 _Momentum_.",
+    "refresh": { "reflex": 2, "focus": 1 },
+    "effect": "Whenever you _Embed_ with a Thrown Weapon, you may pay 1 _Momentum_ to make it a Debilitating Throw. If you do so, while the Target has _Embed_, they gain your choice of _Hobbled_ 1, _Impaired_ 2, or _Vulnerable_ 2 at the start of each of their turns (2 _Grit_ negates). The creature must put this Token at the top of their stack, unless the topmost value is higher.",
+    "special": "_Embed_ with all Thrown Weapons on a _Hit_, or _Embed_ on a _Crit_. Increase the cost to Negate by 1 on a _Hit_+."
+  },
+  {
+    "name": "Ricochet Style",
+    "discipline": "Thrower",
+    "desc": "Your throws bounce unnaturally, bending to find a foe.",
     "accumulate": "Whenever you _Crit_ with a _Thrown_ Weapon gain 2 _Momentum_.",
-    "refresh": "_Reflex_ 1, _Focus_ 2",
-    "effect": "You take a -1 penalty to all Attack Rolls with Thrown Weapons, but treat your highest Hit Roll as a Crit. When you _Crit_ with a Thrown Weapon, deal an additional 3 Damage and inflict either _Hobbled_ 1, _Exposed_ 1, or _Impaired_ 1 (1 _Focus_).",
-    "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
+    "refresh": { "reflex": 1, "focus": 2 },
+    "effect": "Whenever you make an Attack with a Thrown Weapon, you may either increase the Range by 2 or choose an Obstacle within Range. Attack a creature within 2 of that Obstacle, but the new trajectory may not pass through of the Obstacle. After Attacking, you may place your Weapon anywhere within 2 spaces of the Target, rather than in an adjacent space. If the Weapon ends in your space, you may immediately equip it. If you choose to do this and would have _Embeded_, inflict _Dazed_ 1 and do not _Embed_.",
+    "reaction": "Bounce Shot"
   },
   {
     "name": "Rapid Style",
     "discipline": "Thrower",
     "desc": "Your thrown weapons fly out with incredible speed, constantly catching foes off-guard.",
-    "accumulate": "Whenever you _Hit_ or _Crit_ with a Thrown Attack on the first Turn in a Round, gain 2 _Momentum_, or 1 _Momentum_ if you used the Attack as a _Reaction_.",
-    "refresh": "_Reflex_ 3",
+    "accumulate": "Whenever you _Hit_ or _Crit_ with a Thrown Attack on or before the first Turn in a Round, gain 2 _Momentum_, or 1 _Momentum_ if you used the Attack as a _Reaction_.",
+    "refresh": { "reflex": 3 },
     "effect": "Add _Fluid_ 1 and _Priority_ to all Attacks using a Thrown Weapon. You may pay 1 _Reflex_ to add _Sure Hit_ 1 to all Attacks using Thrown Weapons.",
-    "special": "_Embed_ (1 _Reflex_) with all Thrown Weapons on a _Hit_, or _Embed_ (2 _Reflex_) on a _Crit_."
+    "reaction": "Palm Throw"
   },
   {
     "name": "Ebbing Stance",
@@ -976,7 +976,7 @@
       "grit": 2
     },
     "effect": "Whenever you _Hit_ with a Weapon Strike using a Blunt Weapon you may add _Push_ 1. Whenever you _Crit_,  you may add _Push_ 2/_Prone_. This additional Status is Negated by the normal Cost.",
-    "special": "Whenever you _Push_ a creature into an Obstacle with a Blunt Weapon they take 2 True Damage."
+    "special": "Whenever you _Push_ a creature into an Obstacle or creature with a Blunt Weapon add _Dazed_ 1, deal an additional 2 Damage, and increase to Cost to Negate by 1. If you push them into another creature, the other creature gains _Dazed_ 1 (1 _Grit_) and takes 2 Damage."
   },
   {
     "name": "Crusher Style",
@@ -987,19 +987,8 @@
       "grit": 3
     },
     "effect": "Whenever you _Shred_ with a Blunt Weapon also inflict _Wounded_ 1 (1 _Grit_).",
-    "special": "When you reduce a creature's Armor to 0 you may inflict _Hobbled_ 3 (2 _Grit_)."
-  },
-  {
-    "name": "Lancebreaker Style",
-    "discipline": "Warrior",
-    "desc": "Your blunt weapon is well-suited for breaking through the feeble defenses of a spear.",
-    "accumulate": "Gain 2 _Momentum_ at Refresh if you are Wielding a _Blunt_ Weapon.",
-    "refresh": {
-      "grit": 2,
-      "reflex": 1
-    },
-    "effect": "Reduce the Attack Roll of all Attacks with _Lance_ Weapons that target you by 1 as long as you are Wielding a _Blunt_ Weapon.",
-    "special": "You may use the Counter Reaction for no Cost when attacked with a _Lance_ Weapon as long as you are Wielding a _Blunt_ Weapon."
+    "special": "When you reduce a creature's Armor to 0 you may inflict _Hobbled_ 3 (2 _Grit_).",
+    "reaction": "Destructive Backswing"
   },
   {
     "name": "Agility Stance",
