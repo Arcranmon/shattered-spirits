@@ -1419,20 +1419,6 @@
     }
   },
   {
-    "name": "Bull Rush",
-    "discipline": "Grounding",
-    "desc": "You charge forward with unstoppable force, crashing through all in your path.",
-    "keywords": ["Spirit", "Earth", "Charge", "Rush"],
-    "type": "Move",
-    "speed": "4",
-    "range": "Melee",
-    "ap": 1,
-    "move": "Shift",
-    "cost": "1 _Momentum_, 1 _Grit_",
-    "effect": " Any Creature you move through takes 3 Crush Damage is is knocked _Prone_ (2 _Grit_/_Reflex_). If they _Negate_ they take half Damage. You may attempt to crash through Obstacles with this Movement; make a Weapon Strike using a Body Weapon against any Obstacle in your path and add the _Siege_ Keyword. Whenever you make this Attack, you may spend 1 _Grit_ to increase the Damage by 4 if you fail to destroy the Obstacle.",
-    "boost": "2 _Momentum_: Immediately repeat this Technique."
-  },
-  {
     "name": "Concussive Slam",
     "discipline": "Grounding",
     "desc": "A mighty blow that crashes into the ground, creating a shockwave around the initial attack.",
@@ -4670,20 +4656,6 @@
     "boost": "2 _Momentum_: All allies gain 4 _Vigor_."
   },
   {
-    "name": "Backbreaker",
-    "discipline": "Warrior",
-    "desc": "You slam your weapon into a prone foe, transferring all the force into their body.",
-    "keywords": ["Weapon", "_Fluid_ 1"],
-    "type": "Strike",
-    "speed": "Weapon",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "cost": "2 _Momentum_",
-    "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. If the Target is _Prone_ you may treat an Attack Roll of 8 or higher as a 12, add _Hobbled_ 2 to the Attack, and increase the Cost to Negate by 1."
-  },
-  {
     "name": "Bash Aside",
     "discipline": "Warrior",
     "desc": "You focus an attack on a foe's defenses, doing little damage but knocking them off-balance.",
@@ -4694,21 +4666,7 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "You may purchase a number of the following effects equal to the Speed of your Weapon and inflict them on a creature within Range. You may purchase the same effect multiple times:\n\t&#8226; 1: Inflict _Exposed_ 1 or _Vulnerable_ 2.\n\t&#8226; 2: Inflict _Staggered_, _Exposed_ 2 _Vulnerable_ 3, or _Dazed_ 1.\n\t&#8226; 3: Inflict _Exposed_ 3 or _Dazed_ 2.\n\t&#8226; 4: Inflict _Dazed_ 3.\nThe total Cost to Negate is Grit or Focus equal to your Weapon's Speed."
-  },
-  {
-    "name": "Clear a Path",
-    "discipline": "Warrior",
-    "desc": "You march across the battlefield, clearing a path with your hammer.",
-    "keywords": ["Weapon"],
-    "type": "Strike",
-    "speed": "Weapon+1",
-    "range": "Melee",
-    "ap": 2,
-    "move": "Shift",
-    "cost": "2 _Momentum_",
-    "reqs": "Blunt Weapon Wielded.",
-    "effect": "All Movement granted by this ability must be in a straight line. Every time you move a space, you may use a Weapon Strike against a creature directly in front of you, adding _Push_ 1 (2 _Grit_). If the Strike would _Push_, instead _Push_ that creature to your left or right instead of directly away from you. If you are unable to keep moving because a creature was not Pushed, end this attack."
+    "effect": "You may purchase a number of the following effects equal to the Speed of your Weapon and inflict them on a creature within Range. You may purchase the same effect multiple times:\n\t&#8226; 1: Inflict _Exposed_ 1, _Push_ 1 or _Vulnerable_ 2.\n\t&#8226; 2: Inflict _Staggered_, _Exposed_ 2 _Vulnerable_ 3, or _Dazed_ 1.\n\t&#8226; 3: Inflict _Exposed_ 3 or _Dazed_ 2.\n\t&#8226; 4: Inflict _Dazed_ 3.\nThe total Cost to Negate is _Grit_/_Focus_ equal to your Weapon's Speed."
   },
   {
     "name": "Helm Splitter",
@@ -4716,27 +4674,13 @@
     "desc": "A mighty overhand blow that thwarts armor and attempts to block.",
     "keywords": ["Weapon", "Armor Piercing", "_Unblockable_ 2", "_Pierce_ 2"],
     "type": "Strike",
-    "speed": "Weapon+1",
-    "ap": 1,
-    "move": "Reposition",
-    "cost": "2 _Momentum_",
-    "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. If the Target has _Guard_ prior to this Attack, inflict _Dazed_ 2 (2 _Focus_). Otherwise, deal 2 additional Damage."
-  },
-  {
-    "name": "Mighty Swing",
-    "discipline": "Warrior",
-    "desc": "You smash through the terrain with your weapon, creating an opening for yourself.",
-    "keywords": ["Weapon", "_Fluid_ 2"],
-    "type": "Maneuver",
-    "speed": "Weapon-1",
-    "range": "Weapon",
+    "speed": "Weapon",
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack an Obstacle using your weapon's Profile. If you destroy it, deal 2 Damage and inflict _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the Obstacle. You may also Move 1 into the Obstacle's space, separate from your current Movement.",
-    "boost": "1 _Momentum_: Instead, inflict _Exposed_ 2 and increase the cost to Negate by 1.",
-    "imbue": "1 _Momentum_: Speed is instead Set-Up and the Cost to Negate is increased by 1."
+    "target": "A creature with Armor",
+    "effect": "Attack the creature's Armor using your weapon's Profile. If you inflict _Shred_, inflict _Dazed_ 1 (1 _Focus_) on the creature.",
+    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. Versatile Weapons deal -2 Damage.\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon.\n\nChoose one:\n* 1 _Grit_: +1 AP. Do not add _Glancing_ when you resolve the Attack against the creature."
   },
   {
     "name": "Sapping Strike",
@@ -4746,25 +4690,12 @@
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
-    "ap": 1,
+    "ap": 2,
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
     "effect": "Attack using your weapon's Profile. On a _Hit_,  you may force the Target to discard 1 _Defensive Token_ of your choice. On a _Crit_,  they instead discard 2. If they do not have sufficient Defensive Tokens, deal additional damage equal to the number of tokens they do not discard.",
-    "boost": "1 _Momentum_: On a _Hit_+,  inflict _Wounded_ 1 (2 _Grit_) after the Target discards Tokens."
-  },
-  {
-    "name": "Shattering Flourish",
-    "discipline": "Warrior",
-    "desc": "You tear your weapon away with brutal force, destroying armor and creating an opening.",
-    "keywords": ["Weapon", "Armor Piercing", "Sundering"],
-    "type": "Maneuver",
-    "speed": "Follow-Up",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "reqs": "Must be attached to a Weapon Strike made while only Wielding a Blunt Weapon.",
-    "effect": "Immediately make a Weapon Strike against the creature's Armor using the same Weapon used for the Attached Strike. Deal no Damage to the Creature and inflict no Conditions.",
-    "special": "If the Target of the Attached Strike used a _Block_ Reaction against the Attached Strike, you may instead choose Target a piece of Equipment they have Wielded. This attack does not have Disadvantage."
+    "boost": "2 _Momentum_: If the Target is Prone, increase the Attack Roll by 1, add _Hobbled_ 2, and increase the cost to _Negate_ by 1.",
+    "imbue": "Choose one:\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
   },
   {
     "name": "Smash",
@@ -4772,13 +4703,13 @@
     "desc": "You slam your weapon down, building your strength and destroying the terrain around you.",
     "keywords": ["Weapon", "_Fluid_ 2"],
     "type": "Maneuver",
-    "speed": "Weapon",
+    "speed": "Weapon-1",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "Choose one:\n* Attack an _Obstacle_ within Range. If you _Destroy_ it, gain 3 _Grit_, and you may make the space _Rough_ if you wish. Otherwise, gain 1 _Grit_.\n* Choose a space within Range. Make it _Rough_ or _Jagged_, then gain 2 _Grit_.",
-    "boost": "1 _Grit_/_Momentum_:Inflict _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the _Obstacle_ or _Terrain_."
+    "effect": "Choose one:\n* Attack an _Obstacle_ within Range. If you _Destroy_ it, gain 3 _Grit_, and you may make the space _Rough_ or _Veiled_. Otherwise, gain 1 _Grit_.\n* Choose a space within Range. Make it _Rough_ or _Jagged_, then gain 2 _Grit_.",
+    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: Inflict 2 Damage _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the _Obstacle_ or _Terrain_.\n* 1 _Grit_: Add _Siege_."
   },
   {
     "name": "Shattering Counter",
