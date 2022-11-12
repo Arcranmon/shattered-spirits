@@ -6,6 +6,7 @@ class Stance {
   private desc_: string
   private discipline_: string
   private effect_: string
+  private enhancement_: string
   private refresh_: Refresh
   private name_: string
   private reaction_: string
@@ -16,6 +17,7 @@ class Stance {
     this.desc_ = ''
     this.discipline_ = ''
     this.effect_ = ''
+    this.enhancement_ = ''
     this.refresh_ = null
     this.name_ = ''
     this.reaction_ = ''
@@ -69,6 +71,12 @@ class Stance {
   public get HasReaction() {
     return this.reaction_.length > 0
   }
+  public get HasEnhancement() {
+    return this.enhancement_.length > 0
+  }
+  public get Enhancement() {
+    return this.enhancement_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -85,6 +93,7 @@ class Stance {
     this.desc_ = data.desc || ''
     this.discipline_ = data.discipline || ''
     this.effect_ = data.effect || ''
+    this.enhancement_ = data.enhancement || ''
     this.name_ = data.name || ''
     this.reaction_ = data.reaction || ''
     this.special_ = data.special || ''

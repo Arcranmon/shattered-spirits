@@ -48,6 +48,9 @@
             <div class="card--box" v-if="job == 'Reactions'">
               <reaction-card :reaction="n" :format_text="true" />
             </div>
+            <div class="card--box" v-if="job == 'Enhancements'">
+              <enhancement-card :enhancement="n" :format_text="true" />
+            </div>
             <div class="card--box" v-if="job == 'Stances'">
               <stance-card :stance="n" :category="color_category" />
             </div>
@@ -75,6 +78,7 @@ import StanceCard from './StanceCard.vue'
 import TechCard from './TechCard.vue'
 import WeaponCard from './WeaponCard.vue'
 import ArmorCard from './ArmorCard.vue'
+import EnhancementCard from './EnhancementCard.vue'
 import ReactionCard from './ReactionCard.vue'
 import NpcCard from './NpcCard.vue'
 
@@ -122,6 +126,7 @@ export default Vue.extend({
   },
   components: {
     TechCard,
+    EnhancementCard,
     ArmorCard,
     StanceCard,
     WeaponCard,

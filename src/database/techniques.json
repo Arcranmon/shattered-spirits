@@ -1,19 +1,28 @@
 [
   {
-    "name": "Basic Strike",
+    "name": "Unarmed Strike",
     "discipline": "Basic",
-    "desc": "A standard strike, balancing damage and speed.",
-    "keywords": ["Weapon"],
+    "desc": "A strike making use of any unarmed weapon.",
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "reqs": "Unarmed Weapon Weapon Wielded.",
+    "reqs": "Unarmed Weapon Wielded.",
     "effect": "Attack using your weapon's Profile.",
-    "special": "When used as a part of another Technique, Move becomes None.",
-    "boost": "Choose any:\n1 _Momentum_: Add _Sure Hit_ 1 if the weapon is _Light_, _Unblockable_ 1 if _Heavy_, or either if _Versatile_.",
-    "imbue": "Choose one:\n* +1 AP: Instead, you may use this Technique with any Weapon or resolve this Technique twice, using an Unarmed Weapon each time.\n\nChoose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
+    "imbue": "+1 AP: Resolve this Technique twice, using an Unarmed Weapon each time."
+  },
+  {
+    "name": "Armed Strike",
+    "discipline": "Basic",
+    "desc": "A strike making use of a weapon.",
+    "type": "Strike",
+    "speed": "Weapon",
+    "range": "Weapon",
+    "ap": 2,
+    "move": "Reposition",
+    "reqs": "Weapon Wielded.",
+    "effect": "Attack using your weapon's Profile."
   },
   {
     "name": "Draw",
@@ -209,19 +218,18 @@
     "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. _Versatile_ Weapons deal -2 Damage.\n* Speed is instead Weapon+1. Add _Strong_. Do not double the creature's _Guard_."
   },
   {
-    "name": "Warding Strike",
+    "name": "Blade Ward",
     "discipline": "Blademaster",
-    "desc": "A strike that deals less damage, but easily allows you to slip into a defensive stance.",
-    "keywords": ["Weapon", "_Warding_ 1"],
-    "type": "Strike",
+    "desc": "You tilt your blade defensively, providing yourself a dangerous guard.",
+    "type": "Maneuver",
     "speed": "Weapon",
     "range": "Weapon",
-    "ap": 2,
+    "ap": 1,
     "move": "Reposition.",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Make an Attack using a _Blade_ Weapon. Reduce the Damage by 2, to a minimum of 1. Gain 1 _Grit_/_Reflex_ on a _Hit_ or 2 _Grit_/_Reflex_ on a _Crit_.",
-    "boost": "2 _Momentum_: Double the Tokens gained from the _Effect_. Add _Impaired_ 1 to a _Hit_ or _Impaired_ 2 to a _Crit_. Increase the cost to _Negate_ by 1.",
-    "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. Gain 1 _Reflex_. If the Weapon is _Light_, add _Safe_.\n* Speed is instead Weapon+1. Add _Strong_. _Gain 1 _Grit_. Instead, reduce the Damage by 1. If the Weapon is _Heavy_, instead do not reduce the Damage.\n* This Technique instead has _Warding_ 2. Gain 1 _Grit_/_Reflex_."
+    "effect": "Gain 2 _Grit_/_Reflex_. Add _Efficient_ to the next _Punish_ Reaction you take using a _Blade_.",
+    "boost": "1 _Momentum_: You have Advantage on your next _Punish_ Reaction using a Blade.",
+    "enhancement": "Warding Blade"
   },
   {
     "name": "Blasting Strike",
@@ -1155,20 +1163,23 @@
     "effect": "The first time you move adjacent to a Size 1 or larger _Obstacle_ or change _Elevation_, you may immediately take a _Safe_ _Step_ _Movement_. This _Movement_ must be in a straight line directly away from the _Obstacle_/_Elevation_ change.",
     "special": "When _Falling_, reduce the distance by 1 for this _Movement_.",
     "boost": "1 _Momentum_/_Reflex_: You may trigger the Effect on another distinct _Obstacle_/_Elevation_ change. You may use this _Boost_ as many times as you wish, but increase the _Cost_ by 1 each time.",
-    "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint."
+    "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.",
+    "enhancement": "Parkour"
   },
   {
-    "name": "Leaping Feint",
+    "name": "Vaulting Run",
     "discipline": "Freedom",
-    "desc": "You leap over a foe, landing on the opposite side to deliver a might blow.",
-    "keywords": ["Feint"],
-    "type": "Maneuver",
-    "speed": "Set-Up",
+    "desc": "You charge forward, darting and leaping as you go.",
+    "type": "Move",
+    "speed": "2",
+    "range": "Self",
     "ap": 1,
-    "move": "Step",
-    "reqs": "Must be Attached to a Single Target Strike and No Armor Worn.",
-    "effect": "Gain 1 _Reflex_. After resolving this Technique's Movement, you may _Jump_ your maximum distance for no Cost. If you _Move_ directly through a creature's space, land on the opposite side, and they do not _Hit_+ you with a _Punish_ Attack, grant yourself _Advantage_ on the Attached Strike against that creature. You must use the Attached Strike's Movement after Attacking.",
-    "imbue": "2 _Momentum_/_Reflex_: This is 0 AP."
+    "move": "Reposition",
+    "reqs": "Light or No Armor Worn.",
+    "effect": "You may _Jump_ once during your Movement. Increase your _Jump_ by 1 during this Technique.",
+    "boost": "Choose any:\n* 1 _Momentum_/_Reflex_: You may make another _Jump_ during this Technique.\n* 1 _Reflex_: Add _Safe_.",
+    "imbue": "Choose one:\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.",
+    "enhancement": "Vault"
   },
   {
     "name": "Quick Step",
@@ -2281,23 +2292,37 @@
     }
   },
   {
-    "name": "Armored Blow",
+    "name": "Heavy Shove",
     "discipline": "Juggernaut",
     "desc": "A powerful attack that relies on your armor's weight and protection.",
     "keywords": ["Weapon"],
-    "type": "Strike",
-    "speed": "Weapon+1",
-    "range": "Weapon",
+    "type": "Maneuver",
+    "speed": "4",
+    "range": "Melee",
     "ap": 1,
     "move": "Reposition",
-    "reqs": "Heavy Armor Worn and Unarmed Melee Weapon Used.",
-    "effect": "Attack using your weapon's Profile. As a part of this Attack, you may _Wager_ up to 3 _Grit_. If you win, deal additional Damage equal to the _Guard_ provided by your Armor, add _Prone_, and increase the cost to _Negate_ by 1, even on a _Miss_.",
-    "special": "Increase your _Guard_ by 2 against any _Punish_ attacks triggered by this Attack.",
-    "boost": "Choose any:\n* 1 _Momentum_: On a _Graze_- you may immediately make an Attack with an _Unarmed_ _Body_ Weapon.\n* 1 _Grit_: Increase your _Guard_ by 1 this Turn.",
-    "imbue": "Choose one:\n* Speed is instead Weapon. Add _Quick_. _Versatile_ Weapons deal -2 Damage. Inflict _Push_ 2 instead of _Prone_.\n* Speed is instead Weapon+2. Add _Strong_. Deal +1 Damage with a _Versatile_ Weapon or +2 with a _Heavy_ Weapon.Inflict _Push_ 2 as well.\n\nChoose any:\n* +1 AP: You may instead use this Technique with a Weapon."
+    "reqs": "Heavy Armor Worn.",
+    "effect": "Attack using the below Profile and increase your Armor's _Guard_ by 1 this Turn. On a _Graze_+, if the foe does not _Negate_, deal Damage equal to your Armor's _Guard_.",
+    "chart": {
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Push_ 2 (1 _Grit_/_Reflex_)",
+        "_Push_ 2 (1 _Grit_/_Reflex_)",
+        "_Push_ 2 (1 _Grit_/_Reflex_)",
+        "_Push_ 2, _Prone_ (2 _Grit_/_Reflex_)",
+        "_Push_ 2, _Prone_ (2 _Grit_/_Reflex_)",
+        "_Push_ 3, _Prone_ (3 _Grit_)",
+        "_Push_ 3, _Prone_ (3 _Grit_)",
+        "_Push_ 3, _Prone_ (4 _Grit_)",
+        "_Push_ 3, _Prone_ (4 _Grit_)"
+      ]
+    },
+    "enhancement": "Armored Blow"
   },
   {
-    "name": "Armored Charge",
+    "name": "Heavy Charge",
     "discipline": "Juggernaut",
     "desc": "You charge forward, using your armor as a weapon to smash forward.",
     "keywords": ["Charge", "Rush", "_Fluid_ 1"],
@@ -2309,7 +2334,8 @@
     "reqs": "Heavy Armor Worn.",
     "effect": "Increase the _Guard_ provided by your Armor by 1 during this Movement. Deal Damage equal to the _Guard_ provided by your Armor and inflict _Dazed_ 1 against all creatures you move through with this Movement (1 _Reflex_ negates).",
     "boost": "1 _Grit_: Increase the cost to _Negate_ for a single creature you Move through by 2. You may repeat this _Boost_, targeting a different creature each time.",
-    "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.\n\nChoose any:\n* +1 AP: Make a 1 AP Basic Strike using a _Body_ Weapon against all creatures you Move through this Turn."
+    "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.\n\nChoose any:\n* +1 AP: Make a 1 AP Basic Strike using a _Body_ Weapon against all creatures you Move through this Turn.",
+    "enhancement": "Armored Charge"
   },
   {
     "name": "Steady",

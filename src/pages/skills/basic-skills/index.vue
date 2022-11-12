@@ -1,5 +1,13 @@
 <template
   ><div>
+    <h2>Techniques</h2>
+    <show-cards :inputs="basics" job="Techniques" :collapse="false" />
+    <h2>Enhancements</h2>
+    <show-cards
+      :inputs="[$store.getters.getEnhancement('Quick Strike'), $store.getters.getEnhancement('Strong Strike'), $store.getters.getEnhancement('Leap')]"
+      job="Enhancements"
+      :collapse="false"
+    />
     <h2>Reactions</h2>
     <show-cards
       :inputs="[
@@ -12,8 +20,6 @@
       job="Reactions"
       :collapse="false"
     />
-    <h2>Techniques</h2>
-    <show-cards :inputs="basics" job="Techniques" :collapse="false" />
   </div>
 </template>
 

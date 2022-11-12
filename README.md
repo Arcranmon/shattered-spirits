@@ -26,6 +26,12 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
+IMMEDIATE
+
+- Add 'Upgrade' actions, that have an associated Cost to whatever Action they're attached to, but enhance their capabilities.
+- Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
+- Add more 'Dazed' and 'Exposed' to Unarmed attacks (and maybe reduce damage more)
+
 This system is very much a work-in-progress, but is slowly getting more and more developed! Here's a very rough roadmap of what I have planned.
 
 - Complete all Spirit Masteries. As of now, most have their 'bending' versions done but that's it.

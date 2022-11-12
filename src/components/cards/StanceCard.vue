@@ -31,6 +31,10 @@
         <display-tooltip-text string="**Reaction:** Gain the following Reaction while in this Stance:" />
         <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)" />
       </div>
+      <div v-if="stance.HasEnhancement">
+        <display-tooltip-text string="**Enhance:** Gain the following Enhance option while in this Stance:" />
+        <enhancement-card :enhancement="$store.getters.getEnhancement(stance.Enhancement)" />
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +43,7 @@
 import Vue from 'vue'
 import ChartTable from '@/components/ChartTable.vue'
 import ReactionCard from './ReactionCard.vue'
+import EnhancementCard from './EnhancementCard.vue'
 import { Stance } from '@/class'
 
 export default Vue.extend({
@@ -54,7 +59,7 @@ export default Vue.extend({
       default: '#ece6dc',
     },
   },
-  components: { ChartTable, ReactionCard },
+  components: { ChartTable, EnhancementCard, ReactionCard },
 })
 </script>
 

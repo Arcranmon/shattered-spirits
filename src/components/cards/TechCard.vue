@@ -5,7 +5,7 @@
         <h3 style="display: inline; font-style: normal;">{{ tech.Name }}</h3>
       </div>
       <div class="tech--keywords" v-bind:class="tech.Type">
-        <span v-if="(tech.Desc.length > 0)">{{ tech.Desc }}<br /></span>
+        <span v-if="(tech.Desc.length > 0)" style="font-style: italic;">{{ tech.Desc }}<br /></span>
         <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
         <span style="font-style: bold;">
           <b
@@ -48,11 +48,15 @@
       <div class="tech--format" v-if="tech.HasLinked">
         <display-tooltip-text :string="tech.LinkedHeader" />
       </div>
+      <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /></span>
       <div class="tech--format" v-if="tech.HasReaction">
         <display-tooltip-text :string="tech.ReactionHeader" />
         <reaction-card :reaction="$store.getters.getReaction(tech.Reaction)" />
       </div>
-      <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /></span>
+      <div class="tech--format" v-if="tech.HasEnhancement">
+        <display-tooltip-text :string="tech.EnhancementHeader" />
+        <enhancement-card :enhancement="$store.getters.getEnhancement(tech.Enhancement)" />
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +66,7 @@ import Vue from 'vue'
 import { Technique } from '@/class'
 import { store } from '@/store'
 import ChartTable from '@/components/ChartTable.vue'
+import EnhancementCard from './EnhancementCard.vue'
 import ReactionCard from './ReactionCard.vue'
 import Tooltip from '@/components/TooltipParam.vue'
 
@@ -77,7 +82,7 @@ export default Vue.extend({
       required: false,
     },
   },
-  components: { ChartTable, ReactionCard, Tooltip },
+  components: { ChartTable, EnhancementCard, ReactionCard, Tooltip },
 })
 </script>
 

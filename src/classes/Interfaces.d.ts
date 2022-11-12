@@ -8,6 +8,7 @@ declare interface ITechData {
   desc: string
   discipline: string
   effect: string
+  enhancement?: string
   imbue?: string
   keywords?: Array<string>
   linked?: string
@@ -25,9 +26,24 @@ declare interface ITechData {
   chart?: IChartData
 }
 
+declare interface IEnhancementData {
+  ap: number
+  boost?: string
+  cost?: string
+  desc: string
+  effect: string
+  keywords?: Array<string>
+  move?: string
+  name: string
+  reqs?: string
+  special: string
+  chart?: IChartData
+}
+
 declare interface IReactionData {
   boost?: string
   cost?: string
+  desc: string
   effect: string
   keywords?: Array<string>
   move?: string
@@ -43,6 +59,7 @@ declare interface IStanceData {
   accumulate?: string
   desc: string
   discipline: string
+  enhancement?: string
   reaction?: string
   refresh: IRefreshData
   effect: string

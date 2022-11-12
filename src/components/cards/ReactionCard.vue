@@ -2,10 +2,11 @@
   <div class="reaction--wrapper" inline>
     <div class="reaction--underline-top">
       <div class="reaction--header">
-        <h4 style="display: inline; font-style: normal;">{{ reaction.Name }}</h4>
-      </div>
-      <div class="reaction--keywords" v-bind:class="useTextFormatting">
-        <b><display-tooltip-text v-if="reaction.HasKeywords" :string="reaction.KeywordsHeader" :decorate="false" /></b>
+        <h3 style="display: inline; font-style: normal;">{{ reaction.Name }}</h3>
+        <div class="reaction--keywords" v-bind:class="useTextFormatting">
+          <span v-if="(reaction.Desc.length > 0)" style="font-style: italic;">{{ reaction.Desc }}<br /></span>
+          <b><display-tooltip-text v-if="reaction.HasKeywords" :string="reaction.KeywordsHeader" :decorate="false" /></b>
+        </div>
       </div>
     </div>
     <div class="reaction--content" v-bind:class="useTextFormatting">
@@ -67,8 +68,8 @@ export default Vue.extend({
   margin: 1em;
 }
 .reaction--header {
-  font-size: $font-size--l;
   text-align: center;
+  background-color: $color--reaction;
   color: black;
 }
 .reaction--underline-top {

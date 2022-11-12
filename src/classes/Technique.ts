@@ -10,6 +10,7 @@ class Technique {
   private cost_: string
   private damagetype_: string
   private discipline_: string
+  private enhancement_: string
   private desc_: string
   private effect_: string
   private imbue_: string
@@ -36,6 +37,7 @@ class Technique {
     this.damagetype_ = ''
     this.desc_ = ''
     this.effect_ = ''
+    this.enhancement_ = ''
     this.imbue_ = ''
     this.keywords_ = []
     this.linked_ = ''
@@ -78,6 +80,9 @@ class Technique {
   }
   public get Effect() {
     return this.effect_
+  }
+  public get Enhancement() {
+    return this.enhancement_
   }
   public get Keywords() {
     return this.keywords_
@@ -145,6 +150,12 @@ class Technique {
   }
   public get EffectHeader() {
     return '**Effect:** ' + this.effect_
+  }
+  public get EnhancementHeader() {
+    return '**Enhance:** '
+  }
+  public get HasEnhancement() {
+    return this.enhancement_.length > 0
   }
   public get HasImbue() {
     return this.imbue_.length > 0
@@ -232,6 +243,7 @@ class Technique {
     this.discipline_ = data.discipline || ''
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
+    this.enhancement_ = data.enhancement || ''
     this.imbue_ = data.imbue || ''
     this.keywords_ = data.keywords || []
     this.linked_ = data.linked || ''

@@ -15,11 +15,12 @@ import Terrains from '@/database/glossary/terrain.json'
 import Resources from '@/database/glossary/resources.json'
 
 import Reactions from '@/database/reactions.json'
+import Enhancements from '@/database/enhancements.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Discipline, Technique, Stance, Armor, Weapon, Npc, Reaction } from '@/class'
+import { Discipline, Enhancement, Technique, Stance, Armor, Weapon, Npc, Reaction } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -32,12 +33,37 @@ let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Statuses, Conditi
   name: 'databaseJson',
 })
 export class DatabaseJsonStore extends VuexModule {
+  // ==========================================================
+  // ENHANCEMENT TOOLS
+  // ==========================================================
+  get getEnhancement(): any {
+    return (inword: string) => {
+      var enhancement = Enhancements.find((x) => x.name.trim() == inword.trim())
+      if (enhancement == undefined)
+        enhancement = {
+          ap: 0,
+          desc: 'Missing!',
+          boost: 'None',
+          keywords: [],
+          name: inword,
+          cost: 'None',
+          reqs: 'None',
+          effect: 'This enhancement could not be found!',
+        }
+      return Enhancement.Deserialize(<IEnhancementData>enhancement)
+    }
+  }
+
+  // ==========================================================
+  // REACTION TOOLS
+  // ==========================================================
   get getReaction(): any {
     return (inword: string) => {
       var reaction = Reactions.find((x) => x.name.trim() == inword.trim())
       if (reaction == undefined)
         reaction = {
           name: inword,
+          desc: 'Missing!',
           cost: 'None',
           trigger: 'None',
           keywords: [],
