@@ -70,7 +70,6 @@ export default Vue.extend({
   font-family: $font--standard;
   background-color: $color--grey-lighter;
   border: $border--black-standard;
-  height: 100%;
   margin: 1em;
 }
 .enhancement--header {

@@ -193,7 +193,7 @@ class Technique {
     return this.reaction_.length > 0
   }
   public get ReactionHeader() {
-    return '**Reaction:** ' + this.reaction_condition_
+    return this.reaction_condition_
   }
   public get HasReqs() {
     return this.reqs_.length > 0

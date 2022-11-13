@@ -26,7 +26,14 @@
         <display-tooltip-text :string="reaction.BoostHeader" />
       </div>
       <div style="height: 0.5em;" />
-      <span v-if="(reaction.HasChart)"><chart-table :chart="reaction.Chart" /> </span>
+      <div class="expand--collapse-box-outlined" v-if="(reaction.HasChart)">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="reaction.Chart" /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </div>
     </div>
   </div>
 </template>
@@ -64,7 +71,6 @@ export default Vue.extend({
   font-family: $font--standard;
   background-color: $color--grey-lighter;
   border: $border--black-standard;
-  height: 100%;
   margin: 1em;
 }
 .reaction--header {

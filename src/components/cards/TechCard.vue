@@ -48,14 +48,34 @@
       <div class="tech--format" v-if="tech.HasLinked">
         <display-tooltip-text :string="tech.LinkedHeader" />
       </div>
-      <span v-if="(tech.HasChart)"><chart-table :chart="tech.Chart" /></span>
-      <div class="tech--format" v-if="tech.HasReaction">
-        <display-tooltip-text :string="tech.ReactionHeader" />
-        <reaction-card :reaction="$store.getters.getReaction(tech.Reaction)" />
+      <div class="expand--collapse-box-outlined" v-if="(tech.HasChart)">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="tech.Chart" /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </div>
-      <div class="tech--format" v-if="tech.HasEnhancement">
-        <display-tooltip-text :string="tech.EnhancementHeader" />
-        <enhancement-card :enhancement="$store.getters.getEnhancement(tech.Enhancement)" />
+      <div class="expand--collapse-box-outlined" v-if="tech.HasReaction">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-reaction">
+              <display-tooltip-text :string="tech.ReactionHeader" />
+              <reaction-card :reaction="$store.getters.getReaction(tech.Reaction)"
+            /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </div>
+      <div class="expand--collapse-box-outlined" v-if="tech.HasEnhancement">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-enhancement">
+              <enhancement-card :enhancement="$store.getters.getEnhancement(tech.Enhancement)"
+            /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </div>
     </div>
   </div>

@@ -27,9 +27,16 @@
       <div v-if="stance.HasReaction">
         <display-tooltip-text :string="stance.ReactionHeader" />
       </div>
-      <div v-if="stance.HasReaction">
-        <display-tooltip-text string="**Reaction:** Gain the following Reaction while in this Stance:" />
-        <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)" />
+      <div class="expand--collapse-box-outlined" v-if="stance.HasReaction">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-reaction">
+              <display-tooltip-text string="Gain the following Reaction while in this Stance:" />
+              <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)"
+            /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </div>
       <div v-if="stance.HasEnhancement">
         <display-tooltip-text string="**Enhance:** Gain the following Enhance option while in this Stance:" />
@@ -69,6 +76,7 @@ export default Vue.extend({
   background-color: $color--grey-light;
   border: $border--black-standard;
   height: 100%;
+  padding-bottom: $space--xs;
 }
 .stance--color-header {
   border-bottom: 5px double black;
