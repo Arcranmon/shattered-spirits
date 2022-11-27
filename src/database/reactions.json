@@ -22,7 +22,7 @@
     "desc": "Your body is a living weapon, lashing out when foes' attempt to strike.",
     "cost": "1 _Momentum_",
     "trigger": "You would be attacked by a creature in Melee range",
-    "effect": "Make a 1 AP Basic Strike with an _Unarmed_ Weapon against the Triggering Target. Resolve this attack before the Triggering Attack occurs."
+    "effect": "Make an Unarmed Strike with an _Unarmed_ Weapon against the Triggering Target. Resolve this Attack before the Triggering Attack occurs."
   },
   {
     "name": "Armored Dodge",
@@ -50,21 +50,12 @@
     "effect": "Reduce the Attack Roll by 2. If this makes the Attack a _Graze_- you may inflict Damage on the creature as if you rolled a 7 so long as they are within Range of your Weapon."
   },
   {
-    "name": "Bounce Shot",
-    "keywords": ["Punish", "Glancing", "Efficient"],
-    "desc": "You ricochet your thrown weapon off a foe, sending it spiraling into another.",
-    "cost": "1 _Momentum_",
-    "trigger": "You _Hit_+ with an Attack using a Thrown Weapon.",
-    "effect": "Repeat the Attack against a creature with Range 3 of the original Target. If the original Attack was _Glancing_, this Attack is made at _Disadvantage_.",
-    "boost": "1 _Momentum_: Remove _Glancing_, and take no penalties if the original Attack was _Glancing_."
-  },
-  {
     "name": "Boxer's Counter",
-    "keywords": ["Punish", "Efficient"],
-    "desc": "After fully blocking a blow you brutally punish a foe.",
+    "keywords": ["Punish", "Efficient", "Glancing"],
+    "desc": "You block and strike in a fluid motion, absorbing a hit.",
     "cost": "None",
-    "trigger": "You take a _Block_ Reaction and reduce the Damage of the Attack to less than your _Grit_.",
-    "effect": "Make a 1 AP Basic Strike with an _Unarmed_ _Fist_ Weapon against the Triggering Attacker."
+    "trigger": "You take a _Block_ Reaction.",
+    "effect": "Attack the Attacker using an _Unarmed_ _Fist_ Weapon if they are in Range."
   },
   {
     "name": "Bull Rush",
@@ -125,12 +116,12 @@
     "boost": "1 _Grit_: Increase the Damage by 3. This Boost is repeatable."
   },
   {
-    "name": "Disruptive Bash",
+    "name": "Punishing Bash",
     "keywords": ["Block"],
     "desc": "You lash out with your shield, defending an ally when a foe dares to strike them.",
-    "cost": "1 _Grit_/_Momentum_",
+    "cost": "2 _Grit_/_Momentum_",
     "trigger": "An adjacent enemy attacks a creature other than you.",
-    "effect": "Make a 1 AP Weapon Strike using your Shield against the triggering enemy. On a _Hit_+, reduce the triggering Attack Roll by 1."
+    "effect": "Make a 1 AP Weapon Strike using your Shield against the triggering enemy. The target creature gains 1 _Guard_ against the Attack."
   },
   {
     "name": "Dodge",
@@ -140,16 +131,6 @@
     "trigger": "You are Attacked.",
     "effect": "Reduce the Attack Roll and _Reflex_ cost to Negate by 1.",
     "boost": "2 _Reflex_: Repeat the Effect. This Boost is repeatable."
-  },
-  {
-    "name": "Dodge Roll",
-    "keywords": ["Evade", "Safe", "Charge", "Rush"],
-    "desc": "You roll away from an approaching foe, potentially taking you out of their reach.",
-    "move": "Step",
-    "cost": "3 _Reflex_",
-    "trigger": "You would be Attacked.",
-    "effect": "Resolve your Movement. The Attacker may continue moving but, if they cannot place you within range of the Attack, the Attacker must either choose a new Target within Range or lose the Attack. If you are still the target of the Attack, reduce the Attack Roll by 1.",
-    "boost": "2 _Reflex_: Move is instead Reposition."
   },
   {
     "name": "Earthen Shield",
@@ -171,7 +152,7 @@
   },
   {
     "name": "Harrying Thrust",
-    "keywords": ["Punish"],
+    "keywords": ["Punish", "Opportune"],
     "desc": "As a foe enters the reach of your spear you reinforce how foolhardy an idea that is.",
     "cost": "1 _Momentum_",
     "trigger": "A creature enters your Reach.",
@@ -210,7 +191,7 @@
     "effect": "Inflict _Fear_ 1 (1 _Focus_) on the creature, and reduce your cost to _Negate_ by 1."
   },
   {
-    "name": "Lightning reflexes",
+    "name": "Lightning Reflexes",
     "keywords": ["Evade"],
     "desc": "You flawlessly avoid a creature's attempt to punish you.",
     "cost": "1 _Reflex_",
@@ -220,7 +201,7 @@
   },
   {
     "name": "Opportunity Attack",
-    "keywords": ["Punish"],
+    "keywords": ["Punish", "Opportune"],
     "desc": "You capitalize on the opening created by a repositioning foe, moving to strike while you can.",
     "cost": "0 _Momentum_",
     "trigger": "An enemy starts Movement while within your _Reach_ or while in an adjacent space.",
@@ -242,16 +223,16 @@
     "desc": "With a flick of your wrist you fling a weapon, catching foes unaware.",
     "cost": "1 _Momentum_",
     "trigger": "A _Phase_ Begins.",
-    "effect": "Make a 2 AP Basic Strike using a Thrown Weapon you have Equipped. If that creature has not taken a Turn this Round, add _Impaired_ 1 on a _Hit_+ and increase the cost to Negate by 1.",
+    "effect": "Attack using the Profile of a Thrown Weapon you have Equipped. If that creature has not taken a Turn this Round increase the cost to Negate by 1.",
     "boost": "1 _Momentum_: Remove _Glancing_."
   },
   {
     "name": "Patient Guard",
-    "keywords": ["Punish"],
+    "keywords": ["Punish", "_Safe_ 1"],
     "desc": "You choose to not counter a blow, instead positioning yourself to take advantage of an opening.",
     "cost": "None",
     "trigger": "You are Attacked while wearing Light Armor.",
-    "effect": "Increase the Attack Roll by 1. Gain 1 _Momentum_, and you may either _Safe_ Move 1 or add _Sure Hit_/_Unblockable_ 1 to your next Attack against the Target."
+    "effect": "Increase the Attack Roll by 1. Gain 1 _Momentum_, and you may either Move 1 or add _Sure Hit_/_Unblockable_ 1 to your next Attack against the Target."
   },
   {
     "name": "Perfect Counter",
@@ -269,7 +250,7 @@
     "move": "Step",
     "cost": "2 _Reflex_",
     "trigger": "A _Phase_ begins while you are not _Prone_.",
-    "boost": "1 _Momentum_/_Reflex_: Add _Safe_."
+    "boost": "1 _Momentum_/_Reflex_: Add _Safe_ 1."
   },
   {
     "name": "Rollout",
@@ -337,15 +318,6 @@
     "effect": "Grant the creature 2 _Fleeting_ _Grit_. You may choose to Destroy one of the _Boulders_ as a part of this Reaction to immediately grant the Target _Stone Armor_ 1 and one additional _Fleeting_ _Grit_. If you Destroy both _Boulders_ created by Stone Shield with this Reaction before the _Enchant_ ends, gain 1 _Grit_."
   },
   {
-    "name": "Tumble",
-    "keywords": ["Evade", "Safe", "Charge"],
-    "desc": "You roll away from a foe, putting space between the two of you.",
-    "move": "Step",
-    "cost": "1 _Reflex_",
-    "trigger": "A hostile creature ends their Turn adjacent to you.",
-    "effect": "You must end your Move further from the Triggering creature than you started it."
-  },
-  {
     "name": "Vigilant Defender",
     "keywords": ["Block"],
     "desc": "You cover an aly with your shield, protecting them from harm.",
@@ -355,7 +327,7 @@
   },
   {
     "name": "Whirling Counter",
-    "keywords": ["Punish", "Safe"],
+    "keywords": ["Punish", "_Safe_ 2"],
     "desc": "You absorb the momentum of an attack, using it to launch you to attack another.",
     "move": "Step",
     "cost": "1 _Momentum_, 1 _Reflex_",
@@ -365,11 +337,11 @@
   },
   {
     "name": "Whirlwind Kick",
-    "keywords": ["Punish", "Efficient"],
+    "keywords": ["Punish", "Efficient", "Glancing"],
     "desc": "After fluidly dodging you bring a mighty kick to bear against a foe.",
     "cost": "None",
-    "trigger": "You take a _Dodge_ Reaction and cause the Attack to _Miss_.",
-    "effect": "Make a 1 AP Basic Strike with an _Unarmed_ _Kick_ Weapon."
+    "trigger": "You take a _Dodge_ Reaction.",
+    "effect": "Attack the Attacker using an _Unarmed_ _Kick_ Weapon if they are in Range."
   },
   {
     "name": "Wide Guard",
@@ -386,6 +358,21 @@
     "desc": "You gather your strength before launching an assault, providing the ability to easily overpower a foe.",
     "cost": "1 _Momentum_",
     "trigger": "You would make a Weapon Attack.",
-    "effect": "_Wager_ up to 3 _Grit_. If you win, you have _Advantage_ on the Strike and, on a _Hit_+, make the Target's space _Jagged_."
+    "effect": "_Wager_ up to 3 _Grit_. fIf you win, you have _Advantage_ on the Strike and, on a _Hit_+, make the Target's space _Jagged_."
+  },
+  {
+    "name": "Harry",
+    "keywords": ["Punish"],
+    "desc": "You lash out with your spear, providing an ally the chance to escape.",
+    "cost": "2 _Momentum_",
+    "trigger": "A creature within your Lance Weapon's _Reach_ uses an _Opportune_ Reaction against a creature other than you.",
+    "effect": "Use the Armed Strike Technique, using your _Lance_ Weapon. On a _Hit_, reduce the Attack Roll by 1. On a _Crit_, reduce it by 2."
+  },
+  {
+    "name": "Tremors",
+    "desc": "You focus, expanding the area of your tremors for a moment.",
+    "cost": "2 _Grit_/_Focus_/_Momentum_",
+    "trigger": "A _Phase_ begins.",
+    "effect": "The _Burst_ created by Roiling Stance is instead a _Burst_ 2 until the end of the Phase."
   }
 ]

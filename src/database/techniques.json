@@ -4,13 +4,12 @@
     "discipline": "Basic",
     "desc": "A strike making use of any unarmed weapon.",
     "type": "Strike",
-    "speed": "Weapon",
+    "speed": "Any",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
     "reqs": "Unarmed Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile.",
-    "imbue": "+1 AP: Resolve this Technique twice, using an Unarmed Weapon each time."
+    "effect": "Attack using any _Unarmed_ Weapons with a _Speed_ less than or equal to _Speed_ of this _Technique_. Any _Enhancements_ that impact the _Speed_ of a _Technique_ instead simply apply to the _Speed_ at which the Weapon may be used."
   },
   {
     "name": "Armed Strike",
@@ -172,20 +171,21 @@
     "boost": "1 _Momentum_/_Reflex_: Increase the Movement by one tier, but all _Punish_ Attacks against you this _Turn_ have _Advantage_."
   },
   {
-    "name": "Nimble Blade",
+    "name": "Sword Waltz",
     "discipline": "Blademaster",
-    "desc": "You quickly strike with your blade while passing by a foe, potentially setting yourself up for a secondary strike.",
-    "keywords": ["Weapon", "Light"],
+    "desc": "You prepare yourself, .",
+    "keywords": ["Weapon", "Priority", "Light", "Charge", "Rush", "Glancing"],
     "type": "Strike",
-    "speed": "Weapon-1",
+    "speed": "Weapon",
     "range": "Weapon",
+    "cost": "1 _Momentum_",
     "ap": 2,
-    "move": "Reposition, Step",
+    "move": "Shift",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Use your Reposition Move. Attack using your Weapon's Profile. _Versatile_ Weapons take a -2 Damage penalty. Use your Step Move, and add _Safe_ on a _Hit_+.",
-    "special": "On a _Hit_+, you may choose to not inflict any Status with this Attack. If you do, the second Move is instead _Reposition_.",
-    "boost": "2 _Momentum_: Add _Charge_, _Rush_, and _Safe_. Instead, take both Moves as a single Move. Make a _Glancing_ Attack against all creatures of your choice you move through or adjacent to.",
-    "imbue": "1 _Momentum_/_Grit_: Remove _Light_. Speed is Weapon. _Versatile_ Weapons take no Damage penalty."
+    "effect": "When you initially use this Technique, do nothing. At the end of the current _Phase_ resolve all Movement. Attack every creature that you move through or adjacent to using your Weapon's Profile.",
+    "special": "If you do not use any _Techniques_ or _Reactions_ this _Phase_ before resolving this _Technique_, deal +1 Damage and add _Safe_ 1.",
+    "boost": "Choose any:\n* 3 _Momentum_: Remove _Glancing_.\n* 2 _Momentum_: Immediately resolve the Effect.",
+    "enhancement": "Nimble Blade"
   },
   {
     "name": "Swords Dance",
@@ -199,35 +199,37 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Gain 1 _Momentum_. The Target gains _Exposed_ 1 (1 _Focus_) and takes Damage as if you rolled a 5 (1 _Reflex_ negates).",
+    "effect": "The Target gains _Exposed_ 1 (1 _Focus_) and takes Damage as if you rolled a 5 (1 _Reflex_ negates). In addition, hostile creatures treat spaces adjacent to you as _Rough_, and all _Opportune_ Reactions triggered by a creature that started its _Turn_ next to you have their _Cost_ reduced by 1.",
     "boost": "1 _Momentum_/_Reflex_: Instead, inflict _Exposed_ 2 (2 _Focus_)."
   },
   {
     "name": "Vorpal Blade",
     "discipline": "Blademaster",
-    "desc": "You go for a vicious strike, punishing unarmored foes.",
+    "desc": "You go for a vicious strike, rending a foe and leaving a vicious wound.",
     "keywords": ["Weapon"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
+    "cost": "1 _Momentum_",
     "ap": 2,
     "move": "Reposition",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Treat the Target's _Guard_ as twice its current value for this attack. If the Target has no _Guard_ or you target a Creature Part, deal 2 additional Damage.",
-    "boost": "Choose one:\n* 1 _Momentum_: Reduce the Damage you deal by X (max of 3), but add _Bleed_ Xx2 to the Attack and increase the _Cost_ to Negate by 1.\n* 1 _Momentum_: Do not deal bonus Damage. Instead, this Attack has _Advantage_.\n* 2 _Momentum_: Do not deal bonus Damage. Instead, make two Attacks against the same Target.",
-    "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. _Versatile_ Weapons deal -2 Damage.\n* Speed is instead Weapon+1. Add _Strong_. Do not double the creature's _Guard_."
+    "effect": "Attack using your Weapon's Profile, making a note of your final Attack Roll after all modifiers. At the end of the _Round_, resolve the Attack against the target using the same Roll, but add _Glancing_.",
+    "boost": "2 _Momentum_: Resolve the end of the _Round_ effect two more times.",
+    "enhancement": "Rending Slash"
   },
   {
     "name": "Blade Ward",
     "discipline": "Blademaster",
     "desc": "You tilt your blade defensively, providing yourself a dangerous guard.",
+    "keywords": ["_Fluid_ 2"],
     "type": "Maneuver",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition.",
     "reqs": "Blade Weapon Wielded.",
-    "effect": "Gain 2 _Grit_/_Reflex_. Add _Efficient_ to the next _Punish_ Reaction you take using a _Blade_.",
+    "effect": "Gain X _Grit_/_Reflex_, where X half is the Speed of this Technique + 1. Add _Efficient_ to the next _Punish_ Reaction you take using a _Blade_.",
     "boost": "1 _Momentum_: You have Advantage on your next _Punish_ Reaction using a Blade.",
     "enhancement": "Warding Blade"
   },
@@ -1153,14 +1155,13 @@
     "name": "Free Run",
     "discipline": "Freedom",
     "desc": "You charge forward, using the terrain to accelerate yourself further.",
-    "keywords": ["Safe"],
     "type": "Move",
     "speed": "1",
     "range": "Self",
     "ap": 1,
     "move": "Step",
     "reqs": "No Armor Worn.",
-    "effect": "The first time you move adjacent to a Size 1 or larger _Obstacle_ or change _Elevation_, you may immediately take a _Safe_ _Step_ _Movement_. This _Movement_ must be in a straight line directly away from the _Obstacle_/_Elevation_ change.",
+    "effect": "The first time you move adjacent to a Size 1 or larger _Obstacle_ or change _Elevation_, you may immediately take a _Step_ _Movement_, adding _Safe_ 1 for this special Movement. This _Movement_ must be in a straight line directly away from the _Obstacle_/_Elevation_ change.",
     "special": "When _Falling_, reduce the distance by 1 for this _Movement_.",
     "boost": "1 _Momentum_/_Reflex_: You may trigger the Effect on another distinct _Obstacle_/_Elevation_ change. You may use this _Boost_ as many times as you wish, but increase the _Cost_ by 1 each time.",
     "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.",
@@ -1177,7 +1178,7 @@
     "move": "Reposition",
     "reqs": "Light or No Armor Worn.",
     "effect": "You may _Jump_ once during your Movement. Increase your _Jump_ by 1 during this Technique.",
-    "boost": "Choose any:\n* 1 _Momentum_/_Reflex_: You may make another _Jump_ during this Technique.\n* 1 _Reflex_: Add _Safe_.",
+    "boost": "Choose any:\n* 1 _Momentum_/_Reflex_: You may make another _Jump_ during this Technique.\n* 1 _Reflex_: Add _Safe_ 1.",
     "imbue": "Choose one:\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.",
     "enhancement": "Vault"
   },
@@ -1185,7 +1186,7 @@
     "name": "Quick Step",
     "discipline": "Freedom",
     "desc": "Unhindered by armor you move quickly, shifting in the blink of an eye.",
-    "keywords": ["_Fluid_ 2", "Safe"],
+    "keywords": ["_Fluid_ 2", "_Safe_ 1"],
     "type": "Move",
     "speed": "Instinctive",
     "ap": 1,
@@ -2334,7 +2335,7 @@
     "reqs": "Heavy Armor Worn.",
     "effect": "Increase the _Guard_ provided by your Armor by 1 during this Movement. Deal Damage equal to the _Guard_ provided by your Armor and inflict _Dazed_ 1 against all creatures you move through with this Movement (1 _Reflex_ negates).",
     "boost": "1 _Grit_: Increase the cost to _Negate_ for a single creature you Move through by 2. You may repeat this _Boost_, targeting a different creature each time.",
-    "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.\n\nChoose any:\n* +1 AP: Make a 1 AP Basic Strike using a _Body_ Weapon against all creatures you Move through this Turn.",
+    "imbue": "Choose one:\n* Speed is instead 2, and Move is Reposition.\n* Speed is instead 3, and Move is Shift.\n* Speed is instead 5, and Move is Sprint.\n\nChoose any:\n* +1 AP: Make an Unarmed Strike using a _Body_ Weapon against all creatures you Move through this Turn.",
     "enhancement": "Armored Charge"
   },
   {
@@ -2352,25 +2353,25 @@
     "reaction_condition": "If you play this Technique in the Planning Phase, gain this Technique's Reaction until the end of the Round."
   },
   {
-    "name": "Lunging Strike",
+    "name": "Piercing Lunge",
     "discipline": "Lancer",
-    "desc": "You lunge with your weapon, extending your reach as you land a driving strike.",
-    "keywords": ["Weapon"],
+    "desc": "You prepare a heavy strike before lashing at lightning speed.",
+    "keywords": ["Priority", "Weapon", "_Pierce_ 2"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 2,
     "move": "Reposition",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. Increase the _Reach_ of the Weapon by 1 for this Turn.",
-    "special": "You may _Improvise_ this Action as if it had _Fluid_ 2. Gain 1 _Exposed_ if you do so.",
-    "boost": "Choose one:\n* 1 _Momentum_: On a _Hit_+, deal Damage as if you rolled a 5. Instead of _Status_, instead inflict _Push_ 1 (1 _Grit_) and repeat the Attack against the same Target. If you _Push_, you may immediately Move forward the same amount.\n* 1 _Momentum_: Inflict Push 2 (2 Grit).",
-    "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. _Versatile_ Weapons deal -2 Damage.\n* Speed is instead Weapon+1. Add _Strong_. Deal +1 Damage with a _Versatile_ Weapon or +2 with a _Heavy_ Weapon.\n* 1 _Focus_/_Momentum_: Add _Priority_. Speed is instead Weapon-1, and this Strike is instead 1 AP. Create a Line X _Hazard_, where X is Weapon Range+2. At the end of Phase Weapon Speed+1, Attack at _Advantage_ using your weapon's Profile against all creatures within the Hazard."
+    "effect": "Create a Line X _Hazard_, where X is Lance Weapon's _Reach_+2. After two _Phases_ have passed, Attack at _Advantage_ using your weapon's Profile against all creatures within the Hazard.",
+    "special": "If you are Moved, remove the _Hazard_ and gain 1 _Momentum_.",
+    "boost": "Choose any:\n* 2 _Momentum_: Place two more Line X's adjacent to yourself and the original Line. Attack all creatures within as per the Effect, but add _Glancing_.\n* 2 _Momentum_: Instead, Attack in a Line X with your Lance Weapon, where X is the Weapon's _Reach_+1.",
+    "enhancement": "Lunging Strike"
   },
   {
-    "name": "Retreating Jab",
+    "name": "Impaling Strike",
     "discipline": "Lancer",
-    "desc": "You strike with your spear, using the attack to slip away or provide an ally an opportunity to escape.",
+    "desc": "You attempt to run a foe through, impaling them with your strike.",
     "keywords": ["Weapon"],
     "type": "Strike",
     "speed": "Weapon",
@@ -2378,10 +2379,10 @@
     "ap": 2,
     "move": "Reposition",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "You may not Move until after you Attack, and must end this Move further away from the Target than you started the Turn. Attack using your weapon's Profile. On a _Hit_+, add _Safe_ to this Movement.",
-    "special": "When used as a part of a _Reaction_ that normally does not allow you to Move, you may pay 1 _Reflex_ to _Step_ Move. This Movement must obey the normal rules of this Technique.",
-    "boost": "Choose one:\n* 1 _Momentum_: Deal additional Damage equal to the distance between you and the Target.\n* 1 _Momentum_: Movement of this Technique is Step, but does not need to obey the rules in the effect. An ally adjacent to the Target may pay 1 _Reflex_ to take a _Safe_ Step Move, but must end this Move further away from the Target than they started the Turn.",
-    "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. _Versatile_ Weapons deal -2 Damage.\n* Speed is instead Weapon+1. Add _Strong_. Deal +1 Damage with a _Versatile_ Weapon or +2 with a _Heavy_ Weapon."
+    "effect": "Make an Attack with your Lance Weapon's Profile. On a _Hit_+, add _Embedded_ and increase the Cost to _Negate_ by 2. While _Embedded_ in this way, the creature gains _Wounded_ 1 (2 _Grit_) at the start of each of their _Turns_. The _Embed_ ends if the Target moves out of your _Reach_, but you may immediately make an Armed Strike against the creature with a +2 Bonus to the Attack Roll. Add _Glancing_ if the Movement was involuntary.",
+    "special": "While the creature is _Embedded_ you may not make attacks against any other creatures with your _Lance_ Weapon, but have _Advantage_ on all _Lance_ Attacks against the creature and may add _Push_ 1 to all Attacks. This _Push_ does not end _Embed_ unless the creature ends the _Turn_ outside your _Reach_.",
+    "boost": "2 _Grit_/_Momentum_: If the creature is adjacent to an Obstacle and you inflict _Embed_, inflict _Pinned_ as well then _Disarm_ yourself. The creature is _Pinned_ as long as they are _Embedded_ or until the Obstacle used for this Boost is Destroyed.",
+    "enhancement": "Gouging Strike"
   },
   {
     "name": "Set Spear",
@@ -2394,21 +2395,40 @@
     "ap": 1,
     "move": "None",
     "reqs": "Lance Weapon Wielded.",
-    "effect": "Gain 1 _Focus_. Until you make an Attack with your Lance Weapon this _Round_ or move increase your Lance Weapon's _Reach_ by 1.",
-    "boost": "Choose any:\n* 1 _Focus_/_Momentum_: Instead, increase your _Reach_ until you Move.\n* 1 _Momentum_: Make all spaces in a Side Burst X a Hazard, where X is your Lance Weapon's Reach. If your Reach changes, adjust the size of this Side Burst. All Reactions using your Lance Weapon against a creature in these spaces cost 1 less and deal additional damage equal to the distance the creature is from you. All Reactions using your Lance Weapon cost 1 more against creatures not in these Hazard spaces. These Hazards are removed if you move or are no longer Wielding your Lance."
+    "effect": "Gain 1 _Focus_. Until the end of the _Round_, you make an Attack with your Lance Weapon, or Move increase your Lance Weapon's _Reach_ by 1.",
+    "boost": "Choose any:\n* 1 _Focus_/_Momentum_: Instead, increase your _Reach_ until you Move or the end of the _Round_.\n* 1 _Momentum_: Make all spaces in a Side Burst X a Hazard, where X is your Lance Weapon's _Reach_. If your _Reach_ changes, adjust the size of this Side Burst. All Reactions using your Lance Weapon against a creature in these spaces cost 1 less and deal additional damage equal to the distance the creature is from you. All Reactions using your Lance Weapon cost 1 more against creatures not in these _Hazard_ spaces. These _Hazards_ are removed if you move or are no longer Wielding your Lance."
   },
   {
-    "name": "Spear Art",
+    "name": "Haft Strike",
     "discipline": "Lancer",
-    "desc": "You have learned to use haft of your spear just as well as the tip.",
-    "keywords": ["_Fluid_ 1"],
+    "desc": "You strike with the haft of your spear, making space between yourself and a foe.",
+    "keywords": ["_Fluid_ 1", "Glancing"],
     "type": "Maneuver",
-    "speed": "Weapon-1",
-    "range": "Self",
+    "speed": "2",
+    "range": "Melee",
+    "reqs": "Must be _Wielding_ a Lance Weapon.",
     "ap": 1,
-    "move": "Step",
-    "effect": "Gain 1 _Momentum_, then choose one: \n* <ins>Spear Vault</ins>: Add _Vault_, and make the Movement _Reposition_. Increase your _Jump_ value by an amount equal to 1 + your Weapon's _Reach_ for this Turn.\n* <ins>Haft Strike</ins>: Attack using your weapon's Profile. Deal half Damage, and replace all _Hobbled_ with _Vulnerable_.",
-    "imbue": "2 _Momentum_: You must choose the Effect now, but it is enhanced:\n* If you choose Spear Vault it is instead 0 AP.\n* If you choose Haft Strike, increase the _Vulnerable_ value by 1 and increase the cost to _Negate_ by 1 or add _Push_ 1 (1 _Grit_)."
+    "move": "Reposition",
+    "effect": "Gain 1 _Grit_/_Focus_. Attack using this Technique's Profile.",
+    "boost": "Choose one:\n* 1 _Focus_: This Technique benefits from your Lance Weapon's _Reach_.\n* 2 _Momentum_: This Attack becomes _Burst_ 1.",
+    "chart": {
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "damage": [0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4],
+      "status": [
+        "",
+        "",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 2, _Impaired_ 1 (2 _Grit_)",
+        "_Push_ 2, _Impaired_ 1 (2 _Grit_)",
+        "_Push_ 3, _Impaired_ 1 (2 _Grit_)",
+        "_Push_ 3, _Impaired_ 1 (2 _Grit_)",
+        "_Push_ 3, _Impaired_ 2 (3 _Grit_)",
+        "_Push_ 3, _Impaired_ 2 (3 _Grit_)"
+      ]
+    },
+    "enhancement": "Spear Vault"
   },
   {
     "name": "Earth Kinesis",
@@ -2514,7 +2534,8 @@
         "_Prone_ (3 _Reflex_)",
         "_Prone_ (3 _Reflex_)"
       ]
-    }
+    },
+    "enhancement": "Earthquake Step"
   },
   {
     "name": "Sinkhole",
@@ -2552,55 +2573,27 @@
     "damage": "Crush"
   },
   {
-    "name": "Adaptive Strike",
+    "name": "Flowing Strikes",
     "discipline": "Martial Artist",
-    "desc": "You in for an unarmed strike, trading your poise for an advantage.",
-    "keywords": ["Weapon", "Martial", "_Fluid_ 1"],
-    "type": "Maneuver",
-    "speed": "Weapon",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "reqs": "Must use an Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. After resolving the Attack, use one of the following effects, depending on the result of the Attack:\n* _Miss_: Gain 2 _Focus_.\n* _Graze_: Gain 1 _Focus_. You may exchange 2 _Focus_ for any 2 _Grit_/_Reflex_.\n* _Hit_: You may exchange 3 _Focus_ for any 3 _Grit_/_Momentum_/_Reflex_.\n* _Crit_: Gain 1 _Momentum_. You may exchange any amount of _Focus_ for an equivalent amount of _Grit_/_Momentum_/_Reflex_.",
-    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. You may not gain _Grit_ from this Technique.\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon. You may not gain _Reflex_ from this Technique."
-  },
-  {
-    "name": "Rapid Strikes",
-    "discipline": "Martial Artist",
-    "desc": "You go in for a quick series of unarmed strikes as you weave your way across the battlefield.",
+    "desc": "You go in for a quick series of strikes, putting your foes more off-balance with each blow.",
     "keywords": ["Weapon", "Martial"],
     "type": "Strike",
-    "speed": "Slower Weapon",
+    "speed": "Any",
     "range": "Weapon",
     "ap": 2,
-    "move": "Reposition, Step",
-    "reqs": "Must use Unarmed Weapons.",
-    "effect": "Make two Attacks against the same Target using any valid Weapons. If both weapons use the same type (_Hand_, _Body_, or _Kick_) gain a +1 Bonus to the second attack. If both weapons have different categories, gain 1 _Momentum_.",
-    "special": "This Technique is _Safe_ and gains _Warding_ 1 against all creatures attacked by it.",
+    "cost": "1 _Momentum_",
+    "move": "Reposition, Reposition",
+    "reqs": "Must use _Light_/_Versatile_ Unarmed Weapons.",
+    "effect": "Make two attacks using any _Unarmed_ Weapons that are valid at the current _Speed_. Any _Enhancements_ that impact the _Speed_ of a _Technique_ instead simply apply to the _Speed_ at which the Weapon may be used. As a part of this _Technique_, you may _Condense_ any Tokens inflicted by it.",
+    "special": "On a _Hit_+ add _Safe_ 1 and _Warding_ 1 against the Target only.",
     "boost": "Choose any:\n* 1 _Momentum_: Make an additional Attack. You may use this Boost multiple times, but increase its _Cost_ by 1 each time.\n* 1 _Reflex_: Take a _Step_ Move. You may use this Boost multiple times, but increase its _Cost_ by 1 each time.",
-    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile Weapon or +2 with a Heavy Weapon."
+    "enhancement": "Flurry of Blows"
   },
   {
-    "name": "Recovering Strike",
+    "name": "Enfeebling Strike",
     "discipline": "Martial Artist",
-    "desc": "You make use of an unarmed strike to recompose yourself and remove debilitating conditions.",
-    "keywords": ["Weapon", "Martial", "_Fluid_ 1", "_Warding_ 1"],
-    "type": "Maneuver",
-    "speed": "Weapon",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "reqs": "Must use an Unarmed Weapon.",
-    "effect": "Immediately before resolving this Technique, gain any 2 _Fleeting_ _Defensive Tokens_. You may immediately spend these as if it was the end of your _Turn_ to clear any kind of _Condition_. Attack using your weapon's _Profile_.",
-    "boost": "X _Momentum_ (maximum of 2): Gain an additional X _Fleeting_ _Defensive Tokens_.",
-    "imbue": "Choose one:\n* Gain 1 _Fleeting_ _Focus_.\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. Gain 1 _Fleeting_ _Reflex_.\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon. Gain 1 _Fleeting_ _Grit_."
-  },
-  {
-    "name": "Severing Strike",
-    "discipline": "Martial Artist",
-    "desc": "You make a precise, focused strike that interrupts a creature's ability to use spirit magic.",
-    "keywords": ["Weapon", "Martial"],
+    "desc": "You make a precise, focused strike that erode's a foe's offense.",
+    "keywords": ["Weapon", "Martial", "_Sure Hit_ 1"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
@@ -2608,40 +2601,57 @@
     "move": "Reposition",
     "cost": "1 _Focus_/_Momentum_",
     "reqs": "Must use a _Light_/_Versatile_ Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. Add _Suppressed_ 1 on a _Hit_ or _Suppressed_ 2 on a _Crit_. Increase the cost to _Negate_ by 1.",
-    "boost": "1 _Focus_/_Momentum_: You may choose to additionally inflict _Dazed_ 2 on a _Hit_ or _Dazed_ 3 on a _Crit_.",
-    "imbue": "Choose any:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty.\n* +1 AP: Repeat the Effect.",
-    "reaction": "Severing Jab",
-    "reaction_condition": "If you play this Technique in the Planning Phase, gain this Technique's Reaction until the end of the Round."
+    "effect": "Attack using your weapon's _Profile_. Replace all _Status_ except _Vulnerable_ with _Drain_ X, where X is the _Negate_ Cost - 1. You may _Drain_ _Momentum_ or a _Defensive Token_ used to _Negate_.",
+    "boost": "Chooe any:\n* 1 _Focus_/_Momentum_: Increase the _Drain_ value by 1.\n* 2 _Focus_/_Momentum_: Add _Break_. Increase the cost to _Negate_ by 1, but do not increase the _Drain_.",
+    "enhancement": "Severing Strike"
   },
   {
-    "name": "Staggering Strike",
+    "name": "Overwhelming Strike",
     "discipline": "Martial Artist",
-    "desc": "You make a heavy, powerful strike that knocks a foe off-balance.",
-    "keywords": ["Weapon", "Martial"],
+    "desc": "You make a heavy strike in an attempt to knock a foe off-balance.",
+    "keywords": ["Weapon", "Martial", "_Unblockable_ 1"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "cost": "1 _Grit_/_Momentum_",
+    "cost": "2 _Grit_/_Momentum_",
     "reqs": "Must use a _Versatile_/_Heavy_ Unarmed Weapon.",
-    "effect": "Attack using your weapon's _Profile_. Inflict _Staggered_ on a _Hit_ or _Staggered_, _Staggered_ on a _Crit_. Increase the cost to _Negate_ by 1.",
-    "boost": "1 _Grit_/_Momentum_: You may choose to replace a single instance of _Staggered_ with _Prone_ or _Break_. You may use this _Boost_ multiple times, choosing a different effect each time.",
-    "imbue": "Choose any:\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon.\n* +1 AP: Repeat the Effect."
+    "effect": "Attack using your weapon's _Profile_. Increase the Value of all Status inflicted by 1. If this would increase the value over its maximum, instead deal +1 Damage or add _Push_ 1.",
+    "boost": "1 _Grit_/_Momentum_: On a _Hit_+, add _Staggered_ and increase the cost to _Negate_ by 1.",
+    "enhancement": "Staggering Strike"
   },
   {
-    "name": "Transfer Energy",
+    "name": "Finishing Blow",
     "discipline": "Martial Artist",
-    "desc": "You ensure every advantage you gain is inflicted in inverse upon your foe.",
-    "keywords": ["Weapon", "Martial", "Punish"],
-    "type": "Maneuver",
+    "desc": "You target a vulnerable foe, launching a vicious attack.",
+    "keywords": ["Weapon", "Martial"],
+    "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
+    "ap": 1,
+    "cost": "2 _Grit_/_Momentum_",
     "move": "Reposition",
-    "cost": "1 _Focus_",
-    "effect": "Attack using your weapon's _Profile_. Modify the attacks as follows:\n* _Miss_: Gain 1 _Focus_.\n* _Graze_: Inflict _Drain_ (1 _Focus_), where the _Token_ _Drained_ is whatever you would normally gain on a _Crit_.\n* _Hit_: Inflict _Drain_ (2 _Focus_), where the _Token_ _Drained_ is whatever you would normally gain on a _Crit_.\n* _Crit_: Inflict _Drain_ (3 _Focus_), where the _Token_ _Drained_ is whatever you would normally gain on a _Crit_ + 1.",
-    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
+    "reqs": "Must use a _Versatile_/_Heavy_ Unarmed Weapon.",
+    "effect": "Attack using your weapon's _Profile_. Remove the creature's top two _Vulnerable_ Tokens as a part of this Attack, adding both to the Damage as normal.  Increase the cost to _Negate_ by 1.",
+    "boost": "1 _Grit_/_Momentum_: Remove another _Vulnerable_ as a part of this Attack. You may use this _Boost_ multiple times.",
+    "enhancement": "Heavy Blow"
+  },
+  {
+    "name": "Adaptive Strike",
+    "discipline": "Martial Artist",
+    "desc": "You use a strike to set up a future blow, sacrificing immediate effect.",
+    "keywords": ["Weapon", "Martial"],
+    "type": "Strike",
+    "speed": "Weapon",
+    "range": "Weapon",
+    "ap": 1,
+    "cost": "1 _Momentum_",
+    "move": "Reposition",
+    "reqs": "Must use an Unarmed Weapon.",
+    "effect": "Attack using your weapon's _Profile_. Inflict no _Status_, but gain _Tokens_ equal to what the _Negate_ cost would be. These _Tokens_ must be _Momentum_ or a _Defensive_ Token used in the _Negate_.",
+    "boost": "1 _Focus_/_Momentum_: Gain additional _Fleeting_ Tokens equal to the _Negate_ Cost, following the same rules as the Effect.",
+    "enhancement": "Combo Strike"
   },
   {
     "name": "Blasting Howl",
@@ -2743,31 +2753,34 @@
   {
     "name": "Barrage",
     "discipline": "Sharpshooter",
-    "desc": "You either load additional ammunition or rapidly fire, unleashing a hail of missiles.",
+    "desc": "You quickly unleashing a hail of missiles, blanketing an area.",
     "keywords": ["Weapon", "Glancing"],
     "type": "Strike",
     "speed": "Weapon",
     "range": "Weapon",
+    "area": "Cone 3",
+    "cost": "1 _Focus_/_Momentum_",
     "ap": 2,
     "move": "Step",
-    "reqs": "_Light_ or _Versatile_ Ranged Weapon Wielded.",
-    "effect": "Make three Attacks using your Weapon's Profile against the same Target. If all three are a _Hit_+, inflict _Wounded_ 1 (2 _Grit_).",
-    "boost": "Choose one:\n* 1 _Momentum_: Instead, make a single Attack against creatures of your choice in a Cone 3.\n* 3 _Momentum_: Instead, make a single Attack against creatures of your choice in a Cone 6.",
-    "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. _Versatile_ Weapons deal -2 Damage."
+    "reqs": "_Light_/_Versatile_ _Artillery_ Weapon Wielded.",
+    "effect": "Make an Attack with your Weapon's Profile against creatures of your choice in a Cone 3. Reduce your _Artillery_ value by 1 for this _Technique_.",
+    "boost": "Choose any:\n* 2 _Momentum_: Instead, Cone 6.\n* 2 _Momentum_: Remove _Glancing_.",
+    "imbue": "Choose one:\n* Speed is instead Weapon-1. Add _Quick_. _Versatile_ Weapons deal -2 Damage.",
+    "enhancement": "Rapid Shot"
   },
   {
     "name": "Focused Aim",
     "discipline": "Sharpshooter",
     "desc": "You take careful aim, lining up a deadly shot if the target does not take precautions.",
-    "keywords": ["Weapon-1", "_Fluid_ 2"],
+    "keywords": ["Priority", "_Fluid_ 2"],
     "type": "Maneuver",
-    "speed": "Weapon",
+    "speed": "1",
     "range": "20",
     "ap": 1,
     "move": "None",
     "reqs": "Ranged Weapon Wielded.",
-    "effect": "Gain _Staggered_. Pick a creature within Range. Your next Attack with an Artillery Weapon against that creature has _Advantage_ and gains _Sure Hit_ 2, so long as that Attack is in a different _Phase_, you do not Move before making it, and that creature is not _Prone_ or in _Cover_. On a _Crit_, gain 1 _Momentum_.",
-    "boost": "2 _Focus_/_Momentum_: Instead, make a 2 AP Basic Strike with your Weapon at the end of the Round against the designated creature, so long as you do not Move before making it and that creature is not _Prone_ or in _Cover_. The creature knows it is under this effect."
+    "effect": "Gain _Staggered_. Pick a creature within Range and inflict _Knowledge_ 1 (2 _Focus_). If they do not _Negate_, your next Attack with an Artillery Weapon against that creature has _Advantage_ and gains _Sure Hit_ 2, so long as that Attack is in a different _Phase_, you do not Move before making it, and that creature is not _Prone_ or in _Cover_. On a _Crit_, gain 1 _Momentum_.",
+    "boost": "2 _Focus_/_Momentum_: Instead of gaining a bonus on your next _Artillery_ Weapon Strike, make a Weapon Strike with an _Artillery_ Weapon at the end of the Round against the designated creature, so long as you do not Move before making it and that creature is not _Prone_ or in _Cover_. The creature knows it is under this effect."
   },
   {
     "name": "Overdraw",
@@ -2776,11 +2789,12 @@
     "type": "Strike",
     "speed": "Weapon",
     "keywords": ["Weapon", "Priority", "_Unblockable_ 1", "_Pierce_ 1"],
+    "reqs": "_Versatile_/_Heavy_ _Artillery_ Weapon Wielded.",
     "ap": 2,
     "move": "None",
-    "effect": "Do not resolve the remainder of this Effect until the end of the current _Phase_. Attack using your Weapon's Profile. If the Target is adjacent to an Obstacle, inflict _Pinned_ and increase the cost to _Negate_ by 1.",
-    "boost": "2 _Momentum_: Instead, resolve the Attack in a Line X, where X is your Weapon's Range.",
-    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. _Versatile_ Weapons take a -2 damage penalty. \n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
+    "effect": "Do not resolve the remainder of this Effect until the end of the current _Phase_. Attack using your Weapon's Profile, dealing +2 Damage. If the Target is adjacent to an Obstacle that is not providing them _Cover_ against this Attack inflict _Pinned_ and increase the cost to _Negate_ by 1.",
+    "boost": "3 _Momentum_: Instead, resolve the Attack in a Line X, where X is your Weapon's Range.",
+    "enhancement": "Long Draw"
   },
   {
     "name": "Volley",
@@ -2821,7 +2835,7 @@
     "ap": 1,
     "move": "Step",
     "reqs": "Shield Wielded.",
-    "effect": "Choose a foe. For the remainder of the _Round_, reduce the cost of all _Block_ Reactions and increase your _Guard_ by 1 for all Attacks made by that foe. In addition, you may substitute _Grit_ for _Reflex_ when negating their Attacks if you take a _Block_ Reaction.",
+    "effect": "Choose a foe. For the remainder of the _Round_, reduce the cost of all _Block_ Reactions and increase your _Guard_ by 1 against all Attacks made by that foe. In addition, you may substitute _Grit_ for _Reflex_ when negating their Attacks if you take a _Block_ Reaction.",
     "boost": "2 _Grit_/_Momentum_: This is 0 AP.",
     "reaction": "Sacrificial Shield",
     "reaction_condition": "If you play this Technique in the Planning Phase, gain this Technique's Reaction after resolving this Technique."
@@ -2831,15 +2845,14 @@
     "discipline": "Shield Master",
     "desc": "You slam your shield forward, drawing a foe's attention and limiting their ability to attack others.",
     "keywords": ["Weapon"],
-    "type": "Strike",
+    "type": "Maneuver",
     "speed": "Weapon-1",
-    "ap": 2,
+    "ap": 1,
     "move": "Step",
     "reqs": "Shield Wielded.",
-    "effect": "Attack with your Shield's Profile. Until the end of the _Round_, any _Impaired_ the creature has does not apply when the creature attacks you, but is treated as one higher (maximum of 4) when attacking other creatures.",
-    "special": "When used as _Reaction_ you may choose to apply the _Impaired_ to the Triggering Attack.",
+    "effect": "Attack with your Shield's Profile. Deal no Damage but, until the end of the _Round_, any _Impaired_ the creature has does not apply when the creature attacks you, but is treated as one higher (maximum of 4) when attacking other creatures.",
     "boost": "Choose one:\n* 1 _Grit_/_Momentum_: Instead of inflicting _Impaired_, inflict an equal value of _Exposed_. Add _Dazed_ 1 on a _Hit_, or _Dazed_ 2 on a _Crit_.\n* 1 _Grit_: After resolving this Attack, you may _Condense_ the creature's _Impaired_.",
-    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-2. _Versatile_ Weapons take a -2 damage penalty. Do not inflict _Push_ or _Prone_.\n* Add _Strong_. Speed is instead Weapon. Increase the cost to Negate by 1."
+    "enhancement": "Disruptive Bash"
   },
   {
     "name": "Shield Charge",
@@ -2851,10 +2864,10 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Shield Wielded.",
-    "effect": "Increase your _Guard_ by 3 against Attacks for this _Movement_. You may inflict _Push_ 1, _Impaired_ 1 (2 _Focus_/_Grit_) on any creature that you Move through.",
+    "effect": "Increase your _Guard_ by 3 for this _Movement_. You may inflict _Push_ 1, _Impaired_ 1 (2 _Focus_/_Grit_) on any creature that you Move through.",
     "special": "Any _Push_ caused by this Movement pushes the target to the side rather than directly away from you.",
     "boost": "1 _Grit_: Decrease the Movement of this Technique by one level, but choose an adjacent ally (at any point in your Move). They may pay 1 _Reflex_ to take the same Move, resolving it after your Movement completes. They have 3 _Guard_ against Attacks for this Movement, but must end their Movement as close to you as possible.",
-    "imbue": "Choose any:\n* Speed is instead 3, and Move is Shift.\n* +1 AP, 1 _Grit_/_Momentum_: Instead of inflicting status on creatures you Move through, instead make a 2 AP Basic Strike against them using your Shield. Add _Push_ 1 on a _Graze_+."
+    "imbue": "Choose any:\n* Speed is instead 3, and Move is Shift.\n* +1 AP, 1 _Grit_/_Momentum_: Instead of inflicting status on creatures you Move through, instead make an Armed Strike against them using your Shield. Add _Push_ 1 on a _Graze_+."
   },
   {
     "name": "Smash Back",
@@ -3736,7 +3749,7 @@
     "name": "Rapid Toss",
     "discipline": "Thrower",
     "desc": "Your hands blur as you throw weapons, blanketing an area.",
-    "keywords": ["Weapon", "Quick"],
+    "keywords": ["Weapon", "_Sure Hit_ 1", "Quick"],
     "type": "Strike",
     "speed": "Weapon-1",
     "range": "Weapon",
@@ -3744,9 +3757,9 @@
     "move": "Reposition",
     "reqs": "Thrown Weapon Equipped.",
     "effect": "Attack using your Weapon's Profile.",
-    "special": "Versatile Weapons take a -2 damage penalty.",
-    "boost": "Choose any:\n* 1 _Momentum_: Repeat the Effect, but the Target must be a creature adjacent to the original Target using a different Thrown Weapon you have Equipped. Increase the Cost of this Boost by 1 each time it is used. An individual creature may only be attacked by this Technique once per Turn.\n* 1 _Reflex_: A single Attack made as part of this Technique has _Advantage_ if the creature has not taken a _Turn_ yet. This Boost is repeatable.",
-    "imbue": "Choose one. You may select a different Imbue every time you use a new Weapon with the Boost:\n*  Speed is instead Weapon-2. _Versatile_ Weapons take a -3 damage penalty. \n* Remove _Quick_. Versatile Weapons no longer take a Damage penalty. Speed is instead Weapon. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
+    "special": "Versatile Weapons take a -1 damage penalty.",
+    "boost": "1 _Momentum_: Repeat the Effect using a different Thrown Weapon you have Equipped. The Target must be a creature adjacent to the original Target. Increase the Cost of this Boost by 1 each time it is used. An individual creature may only be attacked by this Technique once per Turn.",
+    "enhancement": "Invisible Throw"
   },
   {
     "name": "Distracting Lob",
@@ -3760,7 +3773,7 @@
     "move": "Reposition",
     "reqs": "Thrown Weapon Equipped.",
     "effect": "Create a Size 1 _Hazard_ within Range as you throw an Equipped Thrown Weapon upward. Inflict _Exposed_ 1 (2 _Focus_) on all creatures in a _Burst_ 1 around the _Hazard_. At the end of the next Phase remove the _Hazard_ and make a 2 AP _Glancing_ Basic Strike with your Weapon.",
-    "boost": "Choose one:\n* 1 _Momentum_: Remove _Glancing_ from the Attack.\n* 1 _Momentum_: Instead, inflict _Exposed_ 2 (3 _Focus_) on a creature within the _Hazard_."
+    "boost": "Choose one:\n* 1 _Momentum_: Remove _Glancing_ from the Attack.\n* 1 _Momentum_: Instead, inflict _Exposed_ 2 (3 _Focus_) on a single creature within the _Hazard_."
   },
   {
     "name": "Ready Hand",
@@ -3785,8 +3798,9 @@
     "range": "Weapon",
     "ap": 1,
     "move": "Reposition",
-    "effect": "Choose an adjacent creature with a _Thrown_ Weapon _Embedded_. That creature must _Negate_ with 2 _Reflex_. If they do not, deal Damage as if you rolled a 7 with that weapon an _Drain_ 2 _Momentum_.",
-    "imbue": "+1 AP. Immediately make a _Thrown_ Attack with your Weapon's Profile against a different creature."
+    "effect": "Choose an adjacent creature with a _Thrown_ Weapon _Embedded_. That creature must _Negate_ with 2 _Reflex_. If they do not, resolve an Attack as if you rolled a 7 with that weapon. End the _Embed_ and either _Equip_ or _Wield_ the Weapon.",
+    "boost": "2 _Momentum_: Immediately make a _Thrown_ Attack with the Weapon used for this Techniques's Profile against a different creature. Ignore all penalties due to adjacent foes.",
+    "enhancement": "Close-Quarters Throw"
   },
   {
     "name": "Aqua Lash",
@@ -4670,7 +4684,7 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "You may purchase a number of the following effects equal to the Speed of your Weapon and inflict them on a creature within Range. You may purchase the same effect multiple times:\n\t&#8226; 1: Inflict _Exposed_ 1, _Push_ 1 or _Vulnerable_ 2.\n\t&#8226; 2: Inflict _Staggered_, _Exposed_ 2 _Vulnerable_ 3, or _Dazed_ 1.\n\t&#8226; 3: Inflict _Exposed_ 3 or _Dazed_ 2.\n\t&#8226; 4: Inflict _Dazed_ 3.\nThe total Cost to Negate is _Grit_/_Focus_ equal to your Weapon's Speed."
+    "effect": "You may purchase a number of the following effects equal to the Speed of your Weapon and inflict them on a creature within Range. You may purchase the same effect multiple times:\n\t&#8226; 1: Inflict _Exposed_ 1, _Push_ 1 or _Vulnerable_ 2.\n\t&#8226; 2: Inflict _Staggered_, _Exposed_ 2 _Vulnerable_ 3, or _Dazed_ 1.\n\t&#8226; 3: Inflict _Exposed_ 3 or _Dazed_ 2.\n\t&#8226; 4: Inflict _Dazed_ 3.\nThe total Cost to Negate is _Grit_/_Focus_ equal to half your Weapon's Speed + 1."
   },
   {
     "name": "Helm Splitter",
@@ -4681,15 +4695,17 @@
     "speed": "Weapon",
     "ap": 1,
     "move": "Reposition",
+    "cost": "1 _Grit_/_Momentum_",
     "reqs": "Blunt Weapon Wielded.",
-    "target": "A creature with Armor",
-    "effect": "Attack the creature's Armor using your weapon's Profile. If you inflict _Shred_, inflict _Dazed_ 1 (1 _Focus_) on the creature.",
-    "imbue": "Choose one:\n* Add _Quick_. Speed is instead Weapon-1. Versatile Weapons deal -2 Damage.\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon.\n\nChoose one:\n* 1 _Grit_: +1 AP. Do not add _Glancing_ when you resolve the Attack against the creature."
+    "effect": "Attack the creature's Armor using your weapon's Profile. On a _Crit_, inflict an additional _Shred_. When you resolve the Attack against the creature do not add _Glancing_.",
+    "special": "If you destroy all of a Creature's _Guard_ with this Technique add _Dazed_ 2.",
+    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: Increase your Damage by 2 for the Attack against the Armor. This _Boost_ is Repeatable.\n* 2 _Grit_/_Momentum_: Instead, inflict an additional _Shred_ on a _Hit_, and inflict an additional _Shred_x2 on a _Crit_.",
+    "enhancement": "Breaking Strike"
   },
   {
-    "name": "Sapping Strike",
+    "name": "Slamming Strike",
     "discipline": "Warrior",
-    "desc": "Your weapon makes heavy contact, slowly draining your foe's will to fight and pulverizing those on the ground.",
+    "desc": "Your weapon makes heavy contact, slamming a foe into the ground with driving force.",
     "keywords": ["Weapon"],
     "type": "Strike",
     "speed": "Weapon",
@@ -4697,9 +4713,9 @@
     "ap": 2,
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
-    "effect": "Attack using your weapon's Profile. On a _Hit_,  you may force the Target to discard 1 _Defensive Token_ of your choice. On a _Crit_,  they instead discard 2. If they do not have sufficient Defensive Tokens, deal additional damage equal to the number of tokens they do not discard.",
-    "boost": "2 _Momentum_: If the Target is Prone, increase the Attack Roll by 1, add _Hobbled_ 2, and increase the cost to _Negate_ by 1.",
-    "imbue": "Choose one:\n* Add _Strong_. Speed is instead Weapon+1. Deal +1 Damage with a Versatile weapon or +2 with a Heavy weapon."
+    "effect": "Attack using your weapon's Profile. Add _Prone_ and increase the cost to _Negate_ by 1, or 2 if the _Attack_ would already inflict _Prone_. If the Target is knocked _Prone_, make a _Glancing_ Attack using the same Weapon in a _Burst_ 1 centered on the Target.",
+    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: Make the Area _Veiled_.\n* 1 _Grit_/_Momentum_: Instead, make a _Glancing_ attack in a _Blast_ 1 centered on the Target.\n* 2 _Grit_/_Momentum_: Remove _Glancing_ from the Area Attack.",
+    "enhancement": "Sapping Strike"
   },
   {
     "name": "Smash",
@@ -4713,7 +4729,7 @@
     "move": "Reposition",
     "reqs": "Blunt Weapon Wielded.",
     "effect": "Choose one:\n* Attack an _Obstacle_ within Range. If you _Destroy_ it, gain 3 _Grit_, and you may make the space _Rough_ or _Veiled_. Otherwise, gain 1 _Grit_.\n* Choose a space within Range. Make it _Rough_ or _Jagged_, then gain 2 _Grit_.",
-    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: Inflict 2 Damage _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the _Obstacle_ or _Terrain_.\n* 1 _Grit_: Add _Siege_."
+    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: Inflict 2 Damage and _Vulnerable_ 2 (1 _Reflex_) on a creature adjacent to the _Obstacle_ or _Terrain_.\n* 1 _Grit_: Add _Siege_."
   },
   {
     "name": "Shattering Counter",

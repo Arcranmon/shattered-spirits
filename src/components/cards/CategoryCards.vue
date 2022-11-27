@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Vue from "vue";
-import ShowCards from "@/components/cards/ShowCards.vue";
-import DisciplineCard from "@/components/cards/DisciplineCard";
-import { store } from "@/store";
+import Vue from 'vue'
+import ShowCards from '@/components/cards/ShowCards.vue'
+import DisciplineCard from '@/components/cards/DisciplineCard'
+import { store } from '@/store'
 export default Vue.extend({
-  name: "category-cards",
+  name: 'category-cards',
   props: {
     title: {
       type: String,
@@ -27,7 +27,7 @@ export default Vue.extend({
     text: {
       type: String,
       required: false,
-      default: "",
+      default: '',
     },
   },
   components: {
@@ -36,11 +36,11 @@ export default Vue.extend({
   },
   computed: {
     disciplines: function () {
-      return this.$store.getters.getDisciplinesByCategory(this.category);
+      return this.$store.getters.getDisciplinesByCategory(this.category)
     },
     parsedText: function () {
-      return this.$marked.parse(this.text);
+      return this.$marked.parse(this.text)
     },
   },
-});
+})
 </script>

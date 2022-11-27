@@ -26,11 +26,17 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
-IMMEDIATE
+HIGH PRIORITY
 
-- Add 'Upgrade' actions, that have an associated Cost to whatever Action they're attached to, but enhance their capabilities.
+- Add 'Enhance' actions, that have an associated Cost to whatever Action they're attached to, but enhance their capabilities.
 - Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
-- Add more 'Dazed' and 'Exposed' to Unarmed attacks (and maybe reduce damage more)
+- Change 'Safe' from Disadvantage to increased cost on 'Opportune' Reactions.
+- Update all the descriptions of Weapons/Disciplines once they're a bit more consistent.
+
+LOW PRIORITY
+
+- Add more specialized weapon strikes to more strongly set their identities.
+- Make names more fun and evocative.
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Here's a very rough roadmap of what I have planned.
 

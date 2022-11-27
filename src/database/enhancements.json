@@ -26,7 +26,7 @@
     "reqs": "Technique has Movement.",
     "cost": "1 _Momentum_/_Reflex_",
     "ap": 0,
-    "effect": "You may _Jump_ this Turn."
+    "effect": "You may make a single _Jump_ this Turn."
   },
   {
     "name": "Vault",
@@ -58,23 +58,249 @@
     "special": "Gain an additional bonus, depending on the Strike's Keywords:\n* _Quick_: Gain 1 _Reflex_. If the Weapon is _Light_, add _Safe_.\n* _Strong_: _Gain 1 _Grit_. Instead, only reduce the Damage by 1. If the Weapon is _Heavy_, instead do not reduce the Damage.\n* Other: This Technique instead has _Warding_ 2. Gain 1 _Grit_/_Reflex_."
   },
   {
+    "name": "Disruptive Bash",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "Attacks with your shield leave foes reeling, limiting their ability to respond.",
+    "reqs": "Must be Attached to a Strike using a Shield Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "effect": "Until the end of the Round, any _Impaired_ the creature has does not apply when the creature attacks you, but is treated as one higher (maximum of 4) when attacking other creatures.",
+    "boost": "1 _Grit_/_Momentum_: Increase the cost to _Negate_ by 1.",
+    "special": "If this Enhancement is used with a _Reaction_ that triggers off an Attack, you may immediately apply any _Impaired_ this attack inflicts to the Attack."
+  },
+  {
     "name": "Strong Strike",
     "keywords": ["_Fluid_ 1", "Strong"],
     "desc": "A powerful blow, sacrificing speed for power.",
-    "reqs": "Attached to a Strike.",
+    "reqs": "Technique is a Strike.",
     "cost": "None",
     "ap": 0,
     "effect": "Increase the _Speed_ of the Attached Technique by 1. Deal an additional 2 Damage if _Versatile_, or 3 if _Heavy_.",
+    "special": "If the Technique targets multiple creatures, instead deal 1/2 additional Damage with _Versatile_/_Heavy_ Weapons.",
     "boost": "1 _Grit_/_Momentum_: Add _Unblockable_ 1."
   },
   {
     "name": "Quick Strike",
     "keywords": ["_Fluid_ 1", "Quick"],
     "desc": "A nimble attack, sacrificing power for speed.",
-    "reqs": "Attached to a Strike.",
+    "reqs": "Technique is a Strike.",
     "cost": "None",
     "ap": 0,
     "effect": "Decrease the _Speed_ of the Attached Technique by 1. Deal -2 Damage if _Versatile_.",
     "boost": "1 _Momentum_/_Reflex_: Add _Sure Hit_ 1."
+  },
+  {
+    "name": "Tumble",
+    "keywords": ["_Fluid_ 1", "Repeatable"],
+    "desc": "You roll across the ground, slipping past foes.",
+    "reqs": "Technique has Movement.",
+    "cost": "1 _Momentum_/_Reflex_",
+    "ap": 0,
+    "effect": "At any point in your Movement, you may declare that you are Tumbling. For the next X spaces, where X is your _Step_ value, add _Charge_, _Rush_, and _Safe_ 2 to your Movement."
+  },
+  {
+    "name": "Nimble Blade",
+    "keywords": ["Light"],
+    "desc": "Your blade flashes out, providing you the path to retreat.",
+    "reqs": "Technique is a Strike using a Blade Weapon with Movement.",
+    "cost": "1 _Reflex_",
+    "ap": 0,
+    "effect": "On a _Hit_+ with your Blade Weapon add _Safe_ 2. This _Safe_ applies only to the Targets of the Strike.",
+    "boost": "1 _Reflex_: You may take an additional _Step_ Movement, but it must be used after making your Attack."
+  },
+  {
+    "name": "Rending Slash",
+    "desc": "A specialized blade technique that punishes unarmored foes.",
+    "reqs": "Technique is a Strike using a Blade Weapon.",
+    "cost": "1 _Momentum_",
+    "ap": 0,
+    "effect": "If the Target has no _Guard_ or you target a Creature Part, either deal 2 additional Damage or inflict _Bleed_1x3.",
+    "boost": "1 _Momentum_: On a _Hit_+, add _Wounded_ 1 and increase the _Cost_ to _Negate_ by 1."
+  },
+  {
+    "name": "Spear Vault",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "You plant your spear, using it as a pole vault to amplify your jump.",
+    "reqs": "Technique has Movement and you are Wielding a Lance Weapon.",
+    "cost": "1 _Momentum_/_Reflex_",
+    "ap": 0,
+    "effect": "Increase your _Jump_ value by 1 + your Lance Weapon's _Reach_ this Turn for the first _Jump_ you make this Turn."
+  },
+  {
+    "name": "Harrying Thrust",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "You use a spear strike to slip away from a foe, or grant an ally the same opportunity.",
+    "reqs": "Technique is a Strike using a Lance Weapon.",
+    "cost": "2 _Momentum_/_Reflex_",
+    "ap": 0,
+    "effect": "After resolving this Attack, you may take a _Step_ Movement. You must end this Movement as far from all Targets as possible. On a _Hit_+, add _Safe_ 2.",
+    "special": "You may choose to take no Movement. If you do, an ally adjacent to the Target may pay 1 _Momentum_/_Reflex_ to _Step_ Move. Add _Safe_ 2 to this Movement on a _Hit_+."
+  },
+  {
+    "name": "Gouging Strike",
+    "desc": "You make a vicious strike with a spear, wounding a foe.",
+    "reqs": "Technique is a Strike using a Lance Weapon.",
+    "cost": "1 _Focus_/_Momentum_",
+    "ap": 0,
+    "effect": "Add _Wounded_ 1 and increase the cost to _Negate_ by 1. If the creature is already _Wounded_, deal additional Damage equal to their topmost _Wounded_ Token."
+  },
+  {
+    "name": "Lunging Strike",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "You shift your grip back on your spear, extending your reach.",
+    "reqs": "Technique is a Strike using a Lance Weapon.",
+    "cost": "1 _Focus_/_Momentum_",
+    "ap": 0,
+    "effect": "Increase your _Reach_ by 1 this _Turn_. Deal additional Damage equal to half the distance between you and the Target.",
+    "special": "You may gain _Exposed_ 2 to instead increase your _Reach_ by 2."
+  },
+  {
+    "name": "Flurry of Blows",
+    "desc": "You punctuate an unarmed strike with another unarmed strike.",
+    "keywords": ["Quick"],
+    "reqs": "Technique is a Strike making a single Attack with an _Unarmed_ Weapon.",
+    "cost": "1 _Momentum_",
+    "ap": 0,
+    "effect": "Instead, make two _Glancing_ Attacks using the same _Unarmed_ Weapon. If both are a _Hit_+, inflict Status again using the higher of the two Attacks."
+  },
+  {
+    "name": "Heavy Blow",
+    "keywords": ["Strong", "_Fluid_ 1", "_Unblockable_ 1"],
+    "desc": "You strike true, focusing more on immediate damage than setting up another strike.",
+    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "Inflict no _Vulnerable_ with this Attack. Instead, deal additional Damage equal to the _Vulnerable_ that would be inflicted + 1."
+  },
+  {
+    "name": "Combo Strike",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "You take advantage of an advantageous position, preparing for the next strike.",
+    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
+    "cost": "1 _Focus_/_Momentum_",
+    "ap": 0,
+    "effect": "On a _Hit_+, gain 2 _Momentum_."
+  },
+  {
+    "name": "Severing Strike",
+    "keywords": ["Quick", "_Fluid_ 1"],
+    "desc": "You outmaneuver a foe in an attempt to break their stance.",
+    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
+    "cost": "2 _Focus_/_Momentum_",
+    "ap": 0,
+    "effect": "On a _Hit_+, add _Break_ and increase the cost to _Negate_ by 1."
+  },
+  {
+    "name": "Staggering Strike",
+    "keywords": ["Strong", "_Fluid_ 1"],
+    "desc": "A heavy blow that is almost certain to delay a foe.",
+    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
+    "cost": "2 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "On a _Hit_+, add _Staggered_, _Push_ 2, and increase the cost to Negate by 1."
+  },
+  {
+    "name": "Spacing Strike",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "You briefly utilize your ranged weapon as a melee one.",
+    "reqs": "Technique is a Strike using an _Artillery_ Weapon without _Glancing_.",
+    "cost": "1 _Reflex_/_Momentum_",
+    "ap": 0,
+    "effect": "Before resolving your _Technique_, Attack with a Light, Medium or Heavy Improvised Weapon, depending on if the Weapon is Light, Versatile or Heavy. Add Push 1, and increase the cost to Negate by 1. Resolve the actual _Technique_, but add _Glancing_."
+  },
+  {
+    "name": "Deadeye Shot",
+    "desc": "You take careful aim, threading your shot through cover.",
+    "reqs": "Technique is a Strike using an _Artillery_ Weapon.",
+    "cost": "None",
+    "ap": 0,
+    "effect": "Gain _Hobbled_ 1. If the Target is at a lower _Elevation_, deal +2 Damage and ignore _Cover_."
+  },
+  {
+    "name": "Rapid Shot",
+    "desc": "You quickly fire, sacrificing power for speed.",
+    "keywords": ["Quick"],
+    "reqs": "Technique is a Strike using an _Artillery_ Weapon.",
+    "cost": "2 _Momentum_",
+    "ap": 0,
+    "effect": "Make three Attacks using your Weapon's Profile against the same Target. If all three are a _Hit_+, inflict _Wounded_ 1 (2 _Grit_)."
+  },
+  {
+    "name": "Long Draw",
+    "desc": "You set your feet, focusing more on power than mobility.",
+    "keywords": ["Quick", "_Pierce_ 1"],
+    "reqs": "Technique is a Strike using an _Artillery_ Weapon.",
+    "cost": "1 _Momentum_",
+    "ap": 0,
+    "effect": "This Technique no longer has Movement. Deal +1 Damage."
+  },
+  {
+    "name": "Debilitating Throw",
+    "desc": "Your thrown weapons have a habit of sticking, making things difficult for foes.",
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
+    "cost": "1 _Momentum_",
+    "ap": 0,
+    "effect": "If this Strike _Embeds_, while the Target has _Embed_, they gain your choice of _Impaired_ 1 or _Exposed_ 1 at the start of each of their Turns (1 _Grit_ negates). The creature must put this Token at the top of their stack, unless the topmost value is higher."
+  },
+  {
+    "name": "Bounce Shot",
+    "desc": "You ricochet your thrown weapons off a foe, sending it spiraling into another.",
+    "cost": "None",
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
+    "effect": "Increase the Range by 3 or choose an Obstacle within Range. Attack a creature within Range 4 of that Obstacle, but the new trajectory may not pass through the Obstacle.",
+    "boost": "Choose one:\n* 2 _Momentum_: On a _Hit_+, repeat the Attack but add _Glancing_ against a creature with Range 3 of the original Target. If the original Attack was _Glancing_, this Attack is made at _Disadvantage_.\n* 3 _Momentum_: As above, but remove _Glancing_ and take no penalties if the original Attack was _Glancing_."
+  },
+  {
+    "name": "Invisible Throw",
+    "desc": "Your thrown weapons come out at blinding speed, catching slower foes fully off-guard.",
+    "keywords": ["_Sure Hit_ 2", "_Unblockable_ 1"],
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
+    "cost": "2 _Momentum_/_Reflex_",
+    "ap": 0,
+    "effect": "If the Target has not taken a _Turn_ yet this _Round_, deal an additional 2 Damage on a _Hit_+ if they do not _Negate_."
+  },
+  {
+    "name": "Close-Quarters Throw",
+    "desc": "You throws do not compromise your defenses, allowing you to easily attack in close-quarters.",
+    "keywords": ["_Fluid_ 1", "_Warding_ 1"],
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
+    "cost": "1 _Focus_/_Momentum_",
+    "ap": 0,
+    "effect": "Ignore all penalties due to adjacent foes for this Attack. On a _Miss_, you may inflict _Vulnerable_ 1 (1 _Focus_)."
+  },
+  {
+    "name": "Driving Strikes",
+    "desc": "Your blunt weapons forces foes back, keeping them off guard.",
+    "keywords": ["_Unblockable_ 1"],
+    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "Add _Push_ 1 on a _Graze_+, or _Push_ 2 on a _Hit_+. Increase to cost to _Negate_ by 1."
+  },
+  {
+    "name": "Sapping Strike",
+    "desc": "Your weapon erode's a foe's ability to defend themself with every strike.",
+    "keywords": ["_Unblockable_ 1"],
+    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "On a _Hit_, you may force the Target to discard 1 _Defensive Token_ of your choice. On a _Crit_,  they instead discard 2. If they do not have sufficient Defensive Tokens they may discard other _Defensive Tokens_ of their choice. If they have no other _Defensive Tokens_, they instead take Damage equal to twice the Tokens they did not discard."
+  },
+  {
+    "name": "Breaking Strike",
+    "desc": "You use your weapon to chip away at a foe's armor, finding an opening.",
+    "keywords": ["Armor Piercing", "_Pierce_ 1"],
+    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "If this Attack targets a creature's _Armor_, inflict _Dazed_ 1/_Exposed_ 1 (2 _Focus_) on a _Hit_+."
+  },
+  {
+    "name": "Earthquake Step",
+    "desc": "As you strike you send an earthquake to disrupt a foe's footing, limiting their ability to dodge.",
+    "keywords": ["_Sure Hit_ 1"],
+    "reqs": "Technique is a Strike.",
+    "cost": "2 _Focus_/_Momentum_",
+    "ap": 0,
+    "effect": "If the Target is within Range 4, before resolving the _Attack_, inflict _Exposed_ 2 (2 _Reflex_). If the Attack inflicts _Prone_, deal 1 additional Damage."
   }
 ]

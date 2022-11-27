@@ -38,9 +38,16 @@
           </v-expansion-panel>
         </v-expansion-panels>
       </div>
-      <div v-if="stance.HasEnhancement">
-        <display-tooltip-text string="**Enhance:** Gain the following Enhance option while in this Stance:" />
-        <enhancement-card :enhancement="$store.getters.getEnhancement(stance.Enhancement)" />
+      <div class="expand--collapse-box-outlined" v-if="stance.HasEnhancement">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-enhancement">
+              <display-tooltip-text string="Gain the following Enhance while in this Stance:" />
+              <enhancement-card :enhancement="$store.getters.getEnhancement(stance.Enhancement)"
+            /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </div>
     </div>
   </div>
