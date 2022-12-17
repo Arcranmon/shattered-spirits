@@ -37,6 +37,18 @@
     "imbue": "Choose one:\n* Speed is instead 2, but you may Wield any One-Handed Weapon.\n* Speed is instead 3, but you may Wield any One-Handed Weapon or a Shield or Wield a Two-Handed Weapon, but must have two Open Hands.\n\nChoose any:\n* +1 AP: Move becomes Reposition and you may make a _Glancing_ Attack using the Weapon you drew as a part of this Technique."
   },
   {
+    "name": "Size Up",
+    "discipline": "Basic",
+    "desc": "You carefully observe a creature, attempting to gain an insight into them.",
+    "keywords": ["_Fluid_ 2"],
+    "type": "Maneuver",
+    "speed": "2",
+    "range": "12",
+    "ap": 1,
+    "move": "Reposition",
+    "effect": "Choose a creature within Range. Inflict _Knowledge_ 2 (2 _Focus_). If they do not _Negate_, also _Scout_ them."
+  },
+  {
     "name": "Grab",
     "discipline": "Basic",
     "desc": "A quick grab, to either reposition or grapple a foe.",
@@ -2431,20 +2443,6 @@
     "enhancement": "Spear Vault"
   },
   {
-    "name": "Earth Kinesis",
-    "discipline": "Land",
-    "desc": "The Earthbonded moves the earth of the battlefield around, choosing the shape as easily as breathing.",
-    "keywords": ["Spirit", "Earth", "Groundsource", "_Fluid_ 1"],
-    "type": "Maneuver",
-    "speed": "5",
-    "range": "6",
-    "target": "A Size 1 _Earthen_ Obstacle.",
-    "ap": 1,
-    "move": "Reposition",
-    "effect": "Gain 1 _Grit_. Choose one: \n* Move the Target up to 5 spaces in any direction. If you move it into an occupied space, end the Movement but inflict _Push_ 1, _Impaired_ 1 (2 _Grit_/_Reflex_) and deal 2 _Crush_ Damage.\n* Destroy the obstacle. Gain 1 _Grit_.",
-    "boost": "Choose any:\n* 1 _Grit_: Add _Groundsource_. You may create an _Earth Pillar_ in an unoccupied space before resolving the Effect.\n* 1 _Momentum_: Target is: A Size 2 Earthen Obstacle or three Size 1 Earthen Obstacles. If you move a Size 2 Earthen Obstacle instead inflict _Push_ 3, _Impaired_ 2 (3 _Grit_/_Reflex_). If you Destroy it, instead gain 2 _Grit_."
-  },
-  {
     "name": "Earth Shaper",
     "discipline": "Land",
     "desc": "The Earthbonded molds the ground around them, creating obstacles or a path forward with ease.",
@@ -2456,7 +2454,8 @@
     "move": "Reposition",
     "effect": "Gain 1 _Grit_. Choose one of the following:\n* Make four empty, contiguous spaces within Range _Rough_ or _Jagged_. You may select the Terrain type for each space separately.\n* Remove _Rough_ or _Jagged_ from four contiguous spaces within range.  You may select the Terrain type for each space separately.\n* Create _Stairs_ in a space within Range and gain 1 additional _Grit_.\n* Create two _Earth Pillars_ in empty, contiguous spaces.\n* Create one _Earth Column_ in an empty space.",
     "boost": "2 _Grit_: Choose two effects. You may choose the same effect twice.",
-    "imbue": "+1 AP: Remove the requirement for empty spaces. You may resolve the following against the creature in that space:\n* If you create _Jagged_ Terrain: The creature must pay 2 _Momentum_/_Reflex_ or take 4 Pierce Damage and gain _Bleed_ 1.\n* If you create _Rough_ Terrain, Stairs, or remove Terrain: The creature must pay 2 _Momentum_/_Reflex_ or gain _Prone_.\n* If you create Earthen Pillars or Earthen Columns: The creature must pay 3 _Momentum_/_Reflex_ or gain _Leaping_ _Slide_ 2 and, if you wish, _Exposed_ 1 and take 2 Crush Damage."
+    "imbue": "+1 AP: Remove the requirement for empty spaces. You may resolve the following against the creature in that space:\n* If you create _Jagged_ Terrain: The creature must pay 2 _Momentum_/_Reflex_ or take 4 Pierce Damage and gain _Bleed_ 1.\n* If you create _Rough_ Terrain, Stairs, or remove Terrain: The creature must pay 2 _Momentum_/_Reflex_ or gain _Prone_.\n* If you create _Earth Pillar_s or Earthen Columns: The creature must pay 3 _Momentum_/_Reflex_ or gain _Leaping_ _Slide_ 2 and, if you wish, _Exposed_ 1 and take 2 Crush Damage.",
+    "enhancement": "Earthbend"
   },
   {
     "name": "Earthen Agility",
@@ -2468,9 +2467,10 @@
     "range": "Self",
     "ap": 1,
     "move": "None",
-    "effect": "Choose one:\n* <ins>Earth Slide:</ins> Add _Charge_. Create an Earth Platform in your space. You may then move it as well as your self 6 spaces. This does not count as forced movement and ignores _Rough_ and _Jagged_ Terrain.\n* <ins>Earth Leap:</ins> Create an Earth Pillar in your space. You may immediately make a single _Jump_, increasing your Jump distance by 2.",
+    "effect": "Choose one:\n* <ins>Earth Slide:</ins> Add _Charge_. Create an _Earth Platform_ in your space. You may then move it as well as your self 6 spaces. This does not count as forced movement and ignores _Rough_ and _Jagged_ Terrain.\n* <ins>Earth Leap:</ins> Create an Earth Pillar in your space. You may immediately make a single _Jump_, increasing your Jump distance by 2.",
     "boost": "If you chose Earth Slide:\n* 1 _Grit_/_Momentum_: Make all spaces you move through _Rough_.\n* 1 _Momentum_, paid when you move through a creature: Inflict _Impaired_ or _Exposed_ 1 (1 _Reflex_).\n\nIf you chose Earth Leap:\n* 1 _Grit_/_Momentum_: Make all spaces adjacent to where you end your _Jump_ _Rough_.",
-    "imbue": "+1 AP: Make a 2 AP Basic Strike as a part of this Technique."
+    "imbue": "+1 AP: Make a 2 AP Basic Strike as a part of this Technique.",
+    "enhancement": "Earth Leap"
   },
   {
     "name": "Jaws of the Earth",
@@ -2502,7 +2502,8 @@
         "_Hobbled_ 1, _Bleed_ 1x2 (3 _Reflex_)",
         "_Hobbled_ 1, _Bleed_ 1x2 (3 _Reflex_)"
       ]
-    }
+    },
+    "enhancement": "Spire Strike"
   },
   {
     "name": "Quake",
@@ -2576,7 +2577,7 @@
     "name": "Flowing Strikes",
     "discipline": "Martial Artist",
     "desc": "You go in for a quick series of strikes, putting your foes more off-balance with each blow.",
-    "keywords": ["Weapon", "Martial"],
+    "keywords": ["Weapon", "Martial", "Combo"],
     "type": "Strike",
     "speed": "Any",
     "range": "Weapon",
@@ -2584,7 +2585,7 @@
     "cost": "1 _Momentum_",
     "move": "Reposition, Reposition",
     "reqs": "Must use _Light_/_Versatile_ Unarmed Weapons.",
-    "effect": "Make two attacks using any _Unarmed_ Weapons that are valid at the current _Speed_. Any _Enhancements_ that impact the _Speed_ of a _Technique_ instead simply apply to the _Speed_ at which the Weapon may be used. As a part of this _Technique_, you may _Condense_ any Tokens inflicted by it.",
+    "effect": "Make two attacks using any _Unarmed_ Weapons that are valid at the current _Speed_. Any _Enhancements_ that impact the _Speed_ of a _Technique_ instead apply to the _Speed_ at which the Weapon may be used. As a part of this _Technique_, you may _Condense_ any Tokens inflicted by it.",
     "special": "On a _Hit_+ add _Safe_ 1 and _Warding_ 1 against the Target only.",
     "boost": "Choose any:\n* 1 _Momentum_: Make an additional Attack. You may use this Boost multiple times, but increase its _Cost_ by 1 each time.\n* 1 _Reflex_: Take a _Step_ Move. You may use this Boost multiple times, but increase its _Cost_ by 1 each time.",
     "enhancement": "Flurry of Blows"

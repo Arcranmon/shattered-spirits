@@ -66,6 +66,9 @@
             <div class="card--box" v-if="job == 'NPC'">
               <npc-card :npc="n" />
             </div>
+            <div class="card--box" v-if="job == 'Obstacles'">
+              <obstacle-card :obstacle="n" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -77,6 +80,7 @@ import Vue from 'vue'
 import StanceCard from './StanceCard.vue'
 import TechCard from './TechCard.vue'
 import WeaponCard from './WeaponCard.vue'
+import ObstacleCard from './ObstacleCard.vue'
 import ArmorCard from './ArmorCard.vue'
 import EnhancementCard from './EnhancementCard.vue'
 import ReactionCard from './ReactionCard.vue'
@@ -131,6 +135,7 @@ export default Vue.extend({
     StanceCard,
     WeaponCard,
     ReactionCard,
+    ObstacleCard,
     NpcCard,
   },
   methods: {

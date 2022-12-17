@@ -32,6 +32,7 @@ HIGH PRIORITY
 - Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
 - Change 'Safe' from Disadvantage to increased cost on 'Opportune' Reactions.
 - Update all the descriptions of Weapons/Disciplines once they're a bit more consistent.
+- Create a pop-up effect for terrain.
 
 LOW PRIORITY
 

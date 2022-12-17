@@ -20,7 +20,7 @@ import Enhancements from '@/database/enhancements.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Discipline, Enhancement, Technique, Stance, Armor, Weapon, Npc, Reaction } from '@/class'
+import { Discipline, Enhancement, Technique, Stance, Armor, Weapon, Npc, Obstacle, Reaction } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -271,6 +271,28 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
+  // OBSTACLE TOOLS
+  // ==========================================================
+  get isObstacle(): any {
+    return (inword: string) => {
+      return Obstacles.some((x) => x.name == inword.trim())
+    }
+  }
+
+  get getObstacle(): any {
+    return (inword: string) => {
+      var obstacle = Obstacles.find((x) => x.name.trim() === inword.trim())
+      return Obstacle.Deserialize(<IObstacleData>obstacle)
+    }
+  }
+
+  get getObstacles(): any {
+    return () => {
+      return Obstacles.map((x) => Obstacle.Deserialize(<IObstacleData>x))
+    }
+  }
+
+  // ==========================================================
   // BASIC GLOSSARY TOOLS
   // ==========================================================
   get glossaryHasItem(): any {
@@ -298,7 +320,6 @@ export class DatabaseJsonStore extends VuexModule {
         this.glossaryHasItem(MentalConditions, inword) ||
         this.glossaryHasItem(Keywords, inword) ||
         this.glossaryHasItem(Terrains, inword) ||
-        this.glossaryHasItem(Obstacles, inword) ||
         this.glossaryHasItem(Resources, inword)
       )
     }
@@ -346,12 +367,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getTerrains(): any {
     return () => {
       return Terrains
-    }
-  }
-
-  get getObstacles(): any {
-    return () => {
-      return Obstacles
     }
   }
 
