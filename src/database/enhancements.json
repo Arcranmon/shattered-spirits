@@ -297,7 +297,7 @@
   {
     "name": "Earthquake Step",
     "desc": "As you strike you send an earthquake to disrupt a foe's footing, limiting their ability to dodge.",
-    "keywords": ["_Sure Hit_ 1"],
+    "keywords": ["Earth", "_Sure Hit_ 1"],
     "reqs": "Technique is a Strike.",
     "cost": "2 _Focus_/_Momentum_",
     "ap": 0,
@@ -306,16 +306,16 @@
   {
     "name": "Earthbend",
     "desc": "You are skilled at controlling earth, flinging it about with ease.",
-    "reqs": "Must be Attached to Use Environment and must target an _Earthen_ Obstacle.",
-    "cost": "1 _Grit_",
+    "keywords": ["Earth", "Environmental"],
     "ap": 0,
-    "effect": "Range is instead 6 and, if you use the Obstacle's Interact Action, halve all Costs. If the Obstacle is Size 1 or smaller, you may Move the Obstacle up to 5 spaces in any direction instead of resolving its normal Interact Action. If you move it into a creature, inflict _Dazed_ 1, _Impaired_ 1 (2 Grit/Reflex) and deal X Crush Damage, where X is the Speed of this Technique. If the Obstacle ends its turn in a creature's space, _Push_ (2 _Grit_) the creature so the Obstacle is no longer in that space. If the creature _Negates_, instead place the Obstacle in the first space not within the creature.",
-    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: You may instead target a Size 2 Obstacle or 3 Size 1 Obstacles, resolving the effect independently for each. Increase all _Status_ and the cost to _Negate_ by 1.\n* 1 _Grit_/_Momentum_: You may Move the Obstacle and use it's Interact."
+    "effect": "You must target an _Earthen_ Obstacle. Range is instead 6 and, if you use the Obstacle's Interact Action, halve all Costs. If the Obstacle is Size 1 or smaller, you may Move the Obstacle up to 5 spaces in any direction instead of resolving its normal Interact Action. If you move it into a creature, inflict _Dazed_ 1, _Impaired_ 1 (2 Grit/Reflex) and deal X Crush Damage, where X is the Speed of this Technique. If the Obstacle ends its turn in a creature's space, _Push_ (2 _Grit_) the creature so the Obstacle is no longer in that space. If the creature _Negates_, instead place the Obstacle in the first space not within the creature.",
+    "boost": "Choose any, and use it in place of one of the Obstacle's Interacts:\n* 1 _Grit_/_Momentum_: You may instead target a Size 2 Obstacle or 3 Size 1 Obstacles, resolving the effect independently for each. Increase all _Status_ and the cost to _Negate_ by 1.\n* 1 _Grit_/_Momentum_: You may Move the Obstacle and use it's Interact."
   },
   {
     "name": "Earth Leap",
     "desc": "You are skilled at controlling earth, flinging it about with ease.",
-    "reqs": "Must be Attached to Use Environment and must target an _Earthen_ Obstacle.",
+    "keywords": ["Earth", "Groundsource"],
+    "reqs": "Technique has Movement.",
     "cost": "1 _Grit_",
     "ap": 0,
     "effect": "Create an Earth Platform in your space. Immediately make a single Jump, increasing your Jump value by 2 for this Jump.",
@@ -324,10 +324,166 @@
   {
     "name": "Spire Strike",
     "desc": "Your strike pulls the earth towards it, creating jagged spikes.",
+    "keywords": ["Earth"],
     "reqs": "Technique is a Strike.",
     "cost": "2 _Grit_/_Momentum_",
     "ap": 0,
     "effect": "Make a space adjacent to the Target _Jagged_. They gain _Hobbled_ 1 (1 _Grit_/_Reflex_).",
     "special": "If the Technique _Pushes_, you may instead place the _Jagged_ space in the space the target is _Pushed_ into. Double the effects of the _Jagged_ for this _Turn_."
+  },
+  {
+    "name": "Sling Stone",
+    "desc": "Your spirit assists you in flinging a stone with massive force.",
+    "keywords": ["Earth", "Environmental"],
+    "ap": 0,
+    "effect": "You must target a _Boulder_ or _Large Boulder_. Range is instead 6 and, if you use the Obstacle's Interact, halve all Costs.",
+    "boost": "Choose one, and use it in place of one of the Obstacle's Interact:\n* 3 _Grit_/_Momentum_: Must target a _Boulder_. Use either of the _Boulder_'s _Boost_ effects, but instead _Push_ it 6 spaces. Deal +2 Damage and increase the _Push_ it inflicts by 2.\n* 4 _Grit_/_Momentum_: As above, but instead target a _Large Boulder_."
+  },
+  {
+    "name": "Catapult",
+    "desc": "You send a boulder upward, creating a deadly explosion when it lands.",
+    "keywords": ["Earth", "Environmental"],
+    "ap": 0,
+    "effect": "You must target a _Boulder_ or _Large Boulder_. Range is instead 6 and, if you use the Obstacle's Interact, halve all Costs.",
+    "boost": "Choose one, and use it in place of one of the Obstacle's Interact:\n* 3 _Grit_/_Momentum_: Must target a _Boulder_. Remove the _Boulder_, then create a Blast 1 Hazard within Range 8. At the end of the _Round_, remove the _Hazard_, place a _Boulder_ in the center of the Area, and Attack using the below Profile.\n* 4 _Grit_/_Momentum_: As above, but instead target a _Large Boulder_ and create a _Hazard_ that is a Burst 1 around a Size 2 Obstacle, including the spaces that the Obstacle would occupy. Deal +2 Damage and increase the cost to _Negate_ by 1.\nRegardless, _Push_ any creature in the space the Obstacle is placed in so that it is not in an occupied space.",
+    "chart": {
+      "damage": [0, 0, 0, 6, 6, 8, 8, 9, 9, 12, 12],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Staggered_ (1 _Focus_/_Grit_)",
+        "_Staggered_ (1 _Focus_/_Grit_)",
+        "_Staggered_ (1 _Focus_/_Grit_)",
+        "_Staggered_ (1 _Focus_/_Grit_)",
+        "_Staggered_x2, _Dazed_ 1 (2 _Focus_/_Grit_)",
+        "_Staggered_x2, _Dazed_ 1 (2 _Focus_/_Grit_)",
+        "_Staggered_x2, _Dazed_ 2 (3 _Focus_/_Grit_)",
+        "_Staggered_x2, _Dazed_ 2 (3 _Focus_/_Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Fracture",
+    "desc": "An obstacle within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
+    "keywords": ["Earth", "Environmental"],
+    "damagetype": "Slash",
+    "ap": 0,
+    "cost": "2 _Grit_/_Momentum_",
+    "effect": "Choose a Size 1 _Earthen_ Obstacle within Range. Attack with this Technique's Profile in an Area centered on the Target, then Destroy the Target. On a _Graze_+ deal X additional Damage, where X is half the Speed of the Obstacle. You may make the Area _Veiled_ for 2 Phases.",
+    "special": "Deal an additional 1 additional Damage on a _Graze_+ if this Technique is used with a _Boulder_ or _Large Boulder_.",
+    "boost": "2 _Momentum_/_Grit_: You may choose a Size 2 _Earthen_ Obstacle. Increase the cost to _Negate_ by 1, and Area is Burst 2.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 1 (1 _Grit_)",
+        "_Push_ 2 (2 _Grit_), _Dazed_ 1 (1 _Focus_)",
+        "_Push_ 2 (2 _Grit_), _Dazed_ 1 (1 _Focus_)",
+        "_Push_ 2 (2 _Grit_), _Dazed_ 2 (2 _Focus_)",
+        "_Push_ 2 (2 _Grit_), _Dazed_ 2 (2 _Focus_)",
+        "_Push_ 3 (3 _Grit_), _Dazed_ 2 (2 _Focus_)",
+        "_Push_ 3 (3 _Grit_), _Dazed_ 2 (2 _Focus_)"
+      ]
+    }
+  },
+  {
+    "name": "Mighty Strike",
+    "desc": "You strike with unparalled strength, driving back a foe.",
+    "keywords": ["Earth"],
+    "reqs": "Technique is a Strike using a Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "On a _Graze_+, deal +1 Damage, add _Push_ 2, and increase the cost to Negate by 1.",
+    "special": "If the Weapon is _Heavy_, instead deal +2 Damage, add _Push_ 4, and increase the cost to Negate by 1."
+  },
+  {
+    "name": "Bull Rush",
+    "desc": "You bowl through foes, leaving them sprawling in your wake.",
+    "keywords": ["Earth"],
+    "cost": "1 _Grit_/_Momentum_",
+    "reqs": "Must be Attached to a Technique with Movement.",
+    "effect": "During this Technique, if you move into a creature's space, deal 2 Crush Damage and knock them _Prone_ (1 _Grit_/_Reflex_). If they _Negate_, they take half Damage. You may also attempt to move through Obstacles; when you do, make a 1 AP Basic Strike using a Body Weapon against the Obstacle. Add _Siege_. If you fail to destroy the Obstacle, end your Movement. Otherwise, continue your Movement.",
+    "boost": "1 _Grit_, taken when you fail to destroy an Obstacle: Increase the Damage by 3. This Boost is repeatable."
+  },
+  {
+    "name": "Herculean Throw",
+    "desc": "With titanic strength you redecorate with deadly intent.",
+    "keywords": ["Earth", "Environmental", "Siege"],
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "You must Target a Size 1 Obstacle. Instead of using its normal _Interact_, move the Obstacle up to 4 spaces, then Attack a creature next to the Obstacle's final location using the Heavy Improvised Weapon Profile. Add _Fragile_ to the _Obstacle_.",
+    "special": "If the Target is at a lower Elevation than the Obstacle originally was you have _Advantage_ on this Attack.",
+    "boost": "2 _Grit_/_Momentum_: Instead, Attack in a Burst 1 around the end location of the Obstacle and _Destroy_ it."
+  },
+  {
+    "name": "Concussive Smash",
+    "desc": "Your attack slams down with titanic force, sending out shockwaves.",
+    "keywords": ["Earth", "Strong"],
+    "cost": "1 _Grit_/_Momentum_",
+    "reqs": "Technique is a Strike using a Melee Weapon.",
+    "ap": 0,
+    "effect": "Repeat the Attack in a Burst 1 around the Target, exempting yourself, but add _Glancing_.",
+    "boost": "1 _Grit_: Make two spaces adjacent to the Target _Rough_."
+  },
+  {
+    "name": "Mighty Leap",
+    "desc": "You draw upon the earth's strength, massively increasing your jumping power.",
+    "keywords": ["Earth", "_Fluid_ 1"],
+    "reqs": "Technique has Movement.",
+    "cost": "1 _Grit_/_Momentum_, 1 _Momentum_/_Reflex_",
+    "ap": 0,
+    "effect": "Increase your _Jump_ value by 2 this Turn. You may make a single _Jump_ this turn, and may make the space you start your _Jump_ from _Veiled_ until the end of your next _Phase_.",
+    "boost": "1 _Grit_: Increase your _Jump_ by an additional 1."
+  },
+  {
+    "name": "Gathering Strike",
+    "desc": "You sacrifice speed to imbue a strike with every ounce of the earth's power.",
+    "keywords": ["Earth", "Priority", "_Unblockable_ 2", "_Pierce_ 2"],
+    "reqs": "Technique is a Strike using a Weapon.",
+    "ap": 0,
+    "effect": "This Technique's Movement is now _None_, and you may not Move with any of your other Techniques or use _Reactions_ this _Phase. Do not resolve this Technique until the end of the current _Phase_ but, as a part of this _Technique_, you may _Wager_ up to 3 _Grit_. If you do not lose, you have _Advantage_ on the Attack."
+  },
+  {
+    "name": "Gilgamesh Swing",
+    "desc": "You swing an obstacle about, dealing heavy damage.",
+    "keywords": ["Earth", "Environmental", "Siege"],
+    "cost": "1 _Grit_/_Momentum_",
+    "ap": 0,
+    "effect": "Target a Size 1 Obstacle with a Height of 1. Inflict _Push_ 2, _Prone_, and Damage equal to the Speed of the Obstacle (2 _Grit_/_Reflex_) in a _Burst_ 1 around you. If a Target negates with _Grit_, still inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_. If the total damage dealt by this Technique is greater than the Obstacle's Durability, Destroy it. Otherwise, inflict _Fragile_.",
+    "boost": "2 _Grit_/_Momentum_: Instead, target a Size 1 Obstacle with a Height of 2. Instead Attack in a Burst 2."
+  },
+  {
+    "name": "Bold Strike",
+    "keywords": ["_Fluid_ 1"],
+    "desc": "You make a heroic strike, sacrificing your guard to inspire.",
+    "reqs": "Attached to a Melee Strike.",
+    "cost": "1 _Focus_",
+    "ap": 0,
+    "effect": "Gain _Exposed_ 1. On a _Hit_, gain _Vigor_ 2 and gain _Courage_ 1 or grant an ally within Range 6 _Courage_ 1. On a _Crit_, instead gain _Vigor_ 4 and gain _Courage_ 2 or grant an ally within Range 6 _Courage_ 2."
+  },
+  {
+    "name": "Courageous Charge",
+    "desc": "You dash forward recklessly, inspiring your allies with your display.",
+    "keywords": ["Spirit", "Earth", "Charge", "_Fluid_ 1"],
+    "reqs": "Attached to a Technique with Movement.",
+    "cost": "2 _Focus_/_Grit_",
+    "effect": "For your turn, enemies have _Advantage_ on all _Punish_ Attacks against you that trigger based on Movement, but gain _Impaired_ 1 (1 _Focus_) if they do not take a _Punish_ Reaction against you when they are able to. Whenever an enemy makes a _Punish_ Attack against you either gain _Courage_ 1 or grant an ally within Range 4 _Courage_ 1, your choice.",
+    "boost": "2 _Grit_: Gain _Guard_ 2 for this Movement."
+  },
+  {
+    "name": "Seismic Aim",
+    "desc": "You set your feet as you strike, reading your foe's every move.",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "cost": "1 _Focus_/_Momentum_",
+    "reqs": "_Attached_ to a single-target Strike.",
+    "effect": "Ignore _Veiled_ Terrain for this Technique. If the Target is within your _Seismic Sense_, reduce any _Penalty_ by 1 and ignore _Cover_.",
+    "special": "If the Target is within your _Seismic Sense_, you may remove the target's Topmost _Knowledge_ Token. Add _Pierce_ X/_Unblockable_ X/_Sure Hit_ X, where X is the Value of the Token.",
+    "boost": "1 _Focus_/_Momentum_: Instead of reducing any _Penalty_, ignore _Disadvantage_."
   }
 ]

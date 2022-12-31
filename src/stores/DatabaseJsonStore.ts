@@ -10,9 +10,10 @@ import Conditions from '@/database/glossary/conditions.json'
 import ElementalConditions from '@/database/glossary/elemental_conditions.json'
 import MentalConditions from '@/database/glossary/mental_conditions.json'
 import Keywords from '@/database/glossary/keywords.json'
-import Obstacles from '@/database/glossary/obstacles.json'
-import Terrains from '@/database/glossary/terrain.json'
 import Resources from '@/database/glossary/resources.json'
+
+import Obstacles from '@/database/obstacles.json'
+import Terrains from '@/database/terrain.json'
 
 import Reactions from '@/database/reactions.json'
 import Enhancements from '@/database/enhancements.json'
@@ -20,14 +21,14 @@ import Enhancements from '@/database/enhancements.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Discipline, Enhancement, Technique, Stance, Armor, Weapon, Npc, Obstacle, Reaction } from '@/class'
+import { Discipline, Enhancement, Technique, Stance, Armor, Weapon, Npc, Obstacle, Terrain, Reaction } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial', 'Stratagem']
 
-let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Statuses, Conditions, ElementalConditions, MentalConditions, Keywords, Terrains, Resources]
+let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Statuses, Conditions, ElementalConditions, MentalConditions, Keywords, Resources]
 
 @Module({
   name: 'databaseJson',
@@ -116,7 +117,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getWeaponsForCharCreation(): any {
     return () => {
-      return Weapons.filter((x) => x.category.trim() !== 'Unarmed' && x.category.trim() !== 'Improvised' && x.category.trim() !== 'NPC').map((x) =>
+      return Weapons.filter((x) => x.category.trim() !== 'Unarmed' && x.category.trim() !== 'Improvised' && !x.flag).map((x) =>
         Weapon.Deserialize(<IWeaponData>x),
       )
     }
@@ -293,6 +294,28 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
+  // TERRAIN TOOLS
+  // ==========================================================
+  get isTerrain(): any {
+    return (inword: string) => {
+      return Terrains.some((x) => x.name == inword.trim())
+    }
+  }
+
+  get getTerrain(): any {
+    return (inword: string) => {
+      var obstacle = Terrains.find((x) => x.name.trim() === inword.trim())
+      return Terrain.Deserialize(<ITerrainData>obstacle)
+    }
+  }
+
+  get getTerrains(): any {
+    return () => {
+      return Terrains.map((x) => Terrain.Deserialize(<ITerrainData>x))
+    }
+  }
+
+  // ==========================================================
   // BASIC GLOSSARY TOOLS
   // ==========================================================
   get glossaryHasItem(): any {
@@ -319,7 +342,6 @@ export class DatabaseJsonStore extends VuexModule {
         this.glossaryHasItem(ElementalConditions, inword) ||
         this.glossaryHasItem(MentalConditions, inword) ||
         this.glossaryHasItem(Keywords, inword) ||
-        this.glossaryHasItem(Terrains, inword) ||
         this.glossaryHasItem(Resources, inword)
       )
     }
@@ -361,12 +383,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getKeywords(): any {
     return () => {
       return Keywords
-    }
-  }
-
-  get getTerrains(): any {
-    return () => {
-      return Terrains
     }
   }
 

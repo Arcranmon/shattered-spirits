@@ -15,8 +15,12 @@ if(len(sys.argv) >= 4):
 
 if(file == "Technique"):
     f = open('.\src\database\\techniques.json')
+elif(file == "Obstacle"):
+    f = open('.\src\database\glossary\obstacles.json')
 elif(file == "Weapon"):
     f = open('.\src\database\items\weapons.json')
+elif(file == "Enhancements"):
+    f = open('.\src\database\enhancements.json')
 
 data = json.load(f)
 
@@ -53,7 +57,8 @@ else:
         if(weapon["name"] == name):
             hit = weapon["chart"]["roll"]
             attack = weapon["chart"]["damage"]
-            speed = int(weapon["speed"])
+            if("speed" in weapon["chart"]):
+                speed = int(weapon["speed"])
 
 
 if(attack == []):

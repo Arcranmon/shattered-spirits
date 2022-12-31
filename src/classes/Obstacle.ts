@@ -8,6 +8,7 @@ class Obstacle {
   private interact_: string
   private name_: string
   private keywords_: string[]
+  private resistances_: string
   private size_: number
   private special_: string
   private speed_: number
@@ -20,6 +21,7 @@ class Obstacle {
     this.interact_ = ''
     this.name_ = ''
     this.keywords_ = []
+    this.resistances_ = ''
     this.size_ = 0
     this.special_ = ''
     this.speed_ = -1
@@ -38,6 +40,9 @@ class Obstacle {
   get Name() {
     return this.name_
   }
+  get Resistances() {
+    return this.resistances_
+  }
 
   // ==========================================================
   // UTILITY
@@ -50,6 +55,9 @@ class Obstacle {
   }
   get HasKeywords() {
     return this.keywords_.length > 0
+  }
+  get HasResistances() {
+    return this.resistances_ != ''
   }
   get HasSpecial() {
     return this.special_ != ''
@@ -69,6 +77,9 @@ class Obstacle {
   }
   public get HeightHeader() {
     return 'Height ' + this.height_
+  }
+  public get ResistancesHeader() {
+    return '**Resistances:** ' + this.resistances_
   }
   public get SizeHeader() {
     return 'Size ' + this.size_
@@ -99,6 +110,7 @@ class Obstacle {
     this.interact_ = data.interact || ''
     this.name_ = data.name || ''
     this.keywords_ = data.keywords || []
+    this.resistances_ = data.resistances || ''
     this.size_ = data.size || 0
     this.special_ = data.special || ''
     this.speed_ = data.speed || -1

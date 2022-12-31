@@ -58,15 +58,6 @@
     "effect": "Attack the Attacker using an _Unarmed_ _Fist_ Weapon if they are in Range."
   },
   {
-    "name": "Bull Rush",
-    "keywords": ["Efficient"],
-    "desc": "You bowl through foes, leaving them sprawling in your wake.",
-    "cost": "1 _Grit_/_Momentum_",
-    "trigger": "You move into a creature's space with _Charge_ Movement or would Move into a space with an Obstacle.",
-    "effect": "The effect depends on how this Reaction triggered:\n* If moving into a creature's space, deal  3 Crush Damage and knock them _Prone_ (2 _Grit_/_Reflex_). If they _Negate_, they take half Damage.\n* If triggering from an Obstacle, make a 1 AP Basic Strike using a Body Weapon against the Obstacle. Add _Siege_. If you fail to destroy the Obstacle, end your Movement.",
-    "boost": "1 _Grit_, taken when you fail to destroy an Obstacle: Increase the Damage by 3. This Boost is repeatable."
-  },
-  {
     "name": "Chip Damage",
     "keywords": ["Punish"],
     "desc": "When foes strike your armor vicious bits of shrapnel punish their efforts.",
@@ -107,13 +98,13 @@
     "boost": "1 _Grit_/_Momentum_: Resolve both Effects."
   },
   {
-    "name": "Destructive Steps",
-    "keywords": ["Efficient"],
-    "desc": "Your steps leave a wake of destruction, ruining the terrain around you.",
-    "cost": "1 _Grit_",
-    "trigger": "You move adjacent to an _Earthen_ Obstacle.",
-    "effect": "Deal 14 Damage to the Obstacle.",
-    "boost": "1 _Grit_: Increase the Damage by 3. This Boost is repeatable."
+    "name": "Dodge Roll",
+    "keywords": ["Evade", "Safe", "Charge", "Rush"],
+    "move": "Step",
+    "cost": "3 _Reflex_",
+    "trigger": "You would be Attacked.",
+    "effect": "Resolve your Movement. The Attacker may continue moving but, if they cannot place you within range of the Attack, the Attacker must either choose a new Target within Range or lose the Attack. If you are still the target of the Attack, reduce the Attack Roll by 1.",
+    "boost": "2 _Reflex_: Move is instead Reposition."
   },
   {
     "name": "Punishing Bash",
@@ -257,7 +248,7 @@
     "keywords": ["Punish"],
     "desc": "You swiftly move a boulder into a creature, slamming them backwards with force.",
     "cost": "1 _Momentum_",
-    "trigger": "A creature enters a space adjacent to a Boulder within Range 6.",
+    "trigger": "A creature enters a space adjacent to a _Boulder_ within Range 6.",
     "effect": "Deal 4 Damage to the triggering creature and _Push_ 2 (2 _Grit_/_Reflex_). If they Negate, they take no Damage. If you _Push_ the Target, move the _Boulder_ so it is still adjacent to the Target."
   },
   {
@@ -314,8 +305,8 @@
     "keywords": ["Block"],
     "desc": "Your mighty shield of floating stone intercepts an attack, making it far easier to defend against.",
     "cost": "1 _Grit_",
-    "trigger": "A creature adjacent to one of the _Boulders_ created by Stone Shield would be attacked.",
-    "effect": "Grant the creature 2 _Fleeting_ _Grit_. You may choose to Destroy one of the _Boulders_ as a part of this Reaction to immediately grant the Target _Stone Armor_ 1 and one additional _Fleeting_ _Grit_. If you Destroy both _Boulders_ created by Stone Shield with this Reaction before the _Enchant_ ends, gain 1 _Grit_."
+    "trigger": "A creature adjacent to one of the _Boulder_s created by Stone Shield would be attacked.",
+    "effect": "Grant the creature 2 _Fleeting_ _Grit_. You may choose to Destroy one of the _Boulders_ as a part of this Reaction to immediately grant the Target _Stone Armor_ 1 and one additional _Fleeting_ _Grit_."
   },
   {
     "name": "Vigilant Defender",
@@ -353,14 +344,6 @@
     "boost": "1 _Grit_: If the Attack passed through or originated in the Arc created by Iron Wall, gain a benefit depending on the Area of the Triggering attack.\n*_Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is _Glancing_ against allies in the adjacent spaces that are not a part of Iron Wall's Arc."
   },
   {
-    "name": "Worldbreaker",
-    "keywords": ["Efficient"],
-    "desc": "You gather your strength before launching an assault, providing the ability to easily overpower a foe.",
-    "cost": "1 _Momentum_",
-    "trigger": "You would make a Weapon Attack.",
-    "effect": "_Wager_ up to 3 _Grit_. fIf you win, you have _Advantage_ on the Strike and, on a _Hit_+, make the Target's space _Jagged_."
-  },
-  {
     "name": "Harry",
     "keywords": ["Punish"],
     "desc": "You lash out with your spear, providing an ally the chance to escape.",
@@ -374,5 +357,92 @@
     "cost": "2 _Grit_/_Focus_/_Momentum_",
     "trigger": "A _Phase_ begins.",
     "effect": "The _Burst_ created by Roiling Stance is instead a _Burst_ 2 until the end of the Phase."
+  },
+  {
+    "name": "Valor's Cry",
+    "keywords": ["Spirit", "Earth"],
+    "desc": "As you defeat a foe you let out a victorious cry, lifting the spirits of your allies.",
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "You _Defeat_ a foe.",
+    "effect": "Grant an allied creature within Range 6 _Courage_ 1, _Vigor_ 2.",
+    "boost": "Choose one:\n* 1 _Focus_/_Momentum_: Instead, grant _Courage_ 2, _Vigor_ 4.\n* 1 _Focus_/_Momentum_: Instead, grant all allies in a Burst 4 _Courage_ 1, _Vigor_ 2."
+  },
+  {
+    "name": "Lionheart Shield",
+    "keywords": ["Spirit", "Earth", "Block"],
+    "desc": "You become a shining example of courage, leaping in front of an attack that would harm a friend.",
+    "cost": "3 _Grit_/_Focus_",
+    "trigger": "An adjacent ally is successfully Attacked.",
+    "effect": "Move into the target's space, _Pushing_ them 1. You become the Target of the original Attack. If this was an Area attack your ally is only exempt if they are _Pushed_ out of the Area. Gain 1 _Courage_.",
+    "special": "You may pay any amount of the Cost by expending an equivalent Value of _Courage_, using any Tokens.",
+    "boost": "Choose any:\n* 1 _Reflex_: Trigger is instead 'An ally within Step distance is Attacked.'\n* 1 _Grit_: You may _Push_ you ally an additional 1. You may use this _Boost_ multiple times."
+  },
+  {
+    "name": "Heroic Stand",
+    "desc": "You fill an ally in a dire spot with courage to keep them in the battle.",
+    "keywords": ["Spirit", "Earth"],
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "An ally within Range of Hearts of Stone takes Damage or would gain _Fear_.",
+    "effect": "Grant the ally _Courage_ 1, _Vigor_ 2.",
+    "boost": "1 _Focus_/_Momentum_: Instead, grant _Courage_ 2, _Vigor_ 4."
+  },
+  {
+    "name": "Heroic Exchange",
+    "keywords": ["Spirit", "Earth", "Punish", "Efficient"],
+    "desc": "Your duel is a flurry of blows, inspiring your comrades.",
+    "cost": "1 _Momentum_",
+    "trigger": "You are Attacked by your Duel Partner.",
+    "effect": "Increase the Damage of the Attack by your topmost _Courage_ Token. Immediately Attack the triggering enemy with a 2 AP single-target Strike, paying all Costs as normal. On a _Hit_+, grant a creature within Range 6 _Courage_ 1."
+  },
+  {
+    "name": "True Grit",
+    "desc": "As long as your heart is filled with courage, you cannot fall.",
+    "keywords": ["Spirit", "Earth", "Efficient"],
+    "cost": "1 _Grit_",
+    "trigger": "You are _Attacked_ or your Turn begins.",
+    "effect": "Gain 1 _Guard_ this Turn. Remove your topmost _Courage_ Token. Gain X _Fleeting_ _Grit_, where X is the _Courage_ Token's Value.",
+    "special": "You may, instead of paying the _Grit_ cost of this Reaction, use it by decreasing the value of your topmost _Courage_ Token by 1 or removing a _Courage_ Token."
+  },
+  {
+    "name": "Expose Flaw",
+    "desc": "You use your seismic sense to reveal a flaw in a foe's defenses, opening them to attack.",
+    "keywords": ["Spirit", "Earth", "Groundsource", "Efficient"],
+    "cost": "None",
+    "trigger": "You or an ally would Attack a creature within your_Seismic Sense_ or Range 8.",
+    "effect": "Remove one of your _Knowledge_ Tokens from the Target of the Attack. The foe must Negate with 2 _Focus_, or you add either _Unblockable_ X or _Sure Hit_ X to the Attack, where X is the Value of the _Knowledge_ Token - 1.",
+    "special": "If the foe is within your _Seismic Sense_, also inflict _Exposed_ X+1."
+  },
+  {
+    "name": "Read the Pulse",
+    "desc": "Your seismic sense reveals an upcoming attack, allowing you to take action before it lands.",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "cost": "2 _Focus_",
+    "trigger": "You are Attacked by a creature within 2 spaces of your _Seismic Sense_.",
+    "effect": "You may immediately use the Deflect or Dodge Reaction. Pay all normal Costs, but you may use _Focus_ in place of _Reflex_ or _Grit_. If this causes the Attack to deal no _Damage_ or _Miss_, inflict _Knowledge_ 1 (1 _Focus_)."
+  },
+  {
+    "name": "Seismic Scouting",
+    "desc": "You almost passively acquire knowledge on foes, creating an easy path to defeat them.",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "cost": "None",
+    "trigger": "A foe ends their _Turn_ within your _Seismic Sense_.",
+    "effect": "Inflict _Knowledge_ 1 (1 _Focus_). If they do not _Negate_, you may instead increase the value of your topmost _Knowledge_ Token on the creature by 1.",
+    "boost": "1 _Focus_: Add _Efficient_."
+  },
+  {
+    "name": "Reverberations",
+    "desc": "Attacks create vibrations, ones that you use to glean more information.",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "cost": "1 _Focus_",
+    "trigger": "A foe is _Hit_+ within your _Seismic Sense_.",
+    "effect": "Inflict _Knowledge_ 1 (1 _Focus_). If the foe is knocked _Prone_  or _Defeated_ as a part of the triggering Attack, instead either inflict _Knowledge_ 1 (1 _Focus_) in a _Burst_ 1 around the Target, or _Knowledge_ 2 (2 _Focus_) on the Target."
+  },
+  {
+    "name": "Hidden Flaw",
+    "desc": "As a foe slams into an obstacle you subtly shift it, maximizing the harm.",
+    "keywords": ["Spirit", "Earth", "Punish"],
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "A creature within an Area created by Rippling View is forbily Moved into an Obstacle.",
+    "effect": "The creature takes 2 _True_ Damage and gains _Dazed_ 2/_Wounded_ 1 (2 _Focus_/_Grit_)."
   }
 ]

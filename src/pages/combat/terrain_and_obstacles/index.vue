@@ -2,8 +2,8 @@
   <div style="padding: 1em;">
     <h2>Terrain and Obstacles</h2>
     <div v-html="terrainText" />
-    <div v-for="terrain in terrains">
-      <display-tooltip-text :string="'**' + terrain.keyword + '**: ' + terrain.effect" />
+    <div>
+      <show-cards :inputs="terrains" job="Terrain" :collapse="false" />
     </div>
     <br />
     <div v-html="obstacleText" />

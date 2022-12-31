@@ -12,6 +12,12 @@
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <obstacle-card :obstacle="this.$store.getters.getObstacle(input)" :tooltip="true" /></v-tooltip></span
+    ><span v-else-if="this.$store.getters.isTerrain(input)" attach
+      ><v-tooltip bottom nudge-top="8" content-class="object"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
+        /></template>
+        <terrain-card :terrain="this.$store.getters.getTerrain(input)" :tooltip="true" /></v-tooltip></span
     ><span style="white-space: pre-wrap;" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>
@@ -20,9 +26,10 @@
 import Vue from 'vue'
 import { store } from '@/store'
 import ObstacleCard from './cards/ObstacleCard.vue'
+import TerrainCard from './cards/TerrainCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ObstacleCard },
+  components: { ObstacleCard, TerrainCard },
   props: {
     input: {
       type: String,

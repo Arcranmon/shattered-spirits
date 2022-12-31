@@ -100,6 +100,7 @@ declare interface IObstacleData {
   name: string
   keywords: Array<string>
   size: number
+  resistances: string
   special: string
   speed: number
   chart: IChartData
@@ -165,6 +166,15 @@ declare interface ITechData {
   trigger?: string
   type: string
   chart?: IChartData
+}
+
+declare interface ITerrainData {
+  desc: string
+  effect: string
+  name: string
+  keywords: Array<string>
+  negate: string
+  overrides: Array<string>
 }
 
 declare interface IWeaponData {

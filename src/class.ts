@@ -11,6 +11,7 @@ import Reaction from './classes/Reaction'
 import Refresh from './classes/Refresh'
 import Stance from './classes/Stance'
 import Technique from './classes/Technique'
+import Terrain from './classes/Terrain'
 import Weapon from './classes/Weapon'
 
-export { Armor, Character, Chart, Discipline, Enhancement, Npc, Obstacle, Reaction, Refresh, Stance, Technique, Weapon }
+export { Armor, Character, Chart, Discipline, Enhancement, Npc, Obstacle, Reaction, Refresh, Stance, Technique, Terrain, Weapon }

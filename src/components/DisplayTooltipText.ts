@@ -26,6 +26,8 @@ Vue.component('DisplayTooltipText', {
           split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
         } else if (this.$store.getters.isObstacle(split_input[index])) {
           split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
+        } else if (this.$store.getters.isTerrain(split_input[index])) {
+          split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
         }
       }
       var merged_input = split_input.join('')

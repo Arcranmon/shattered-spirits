@@ -16,6 +16,9 @@
       </div>
     </div>
     <div class="obstacle--content">
+      <div class="tech--format" v-if="obstacle.HasResistances">
+        <display-tooltip-text :string="obstacle.ResistancesHeader" />
+      </div>
       <div class="tech--format" v-if="obstacle.HasSpecial">
         <display-tooltip-text :string="obstacle.SpecialHeader" />
       </div>

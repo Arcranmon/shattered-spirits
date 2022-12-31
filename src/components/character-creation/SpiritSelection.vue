@@ -1,13 +1,7 @@
 <template
   ><span>
     <div class="button-seperator">
-      <v-btn
-        color="success"
-        large
-        tile
-        @click="$emit('chose-spirit')"
-        :disabled="!character.HasSpirit"
-      >
+      <v-btn color="success" large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
         <span v-if="!character.HasSpirit">CHOOSE A SPIRIT TYPE</span>
         <span v-else>CHOOSE {{ character.SpiritType }}</span>
       </v-btn>
@@ -15,15 +9,8 @@
     <div>
       <v-row
         ><v-col cols="2" class="element-box">
-          <v-btn
-            :color="variables.earth"
-            large
-            tile
-            :disabled="(character.SpiritType == 'Earth')"
-            @click="setSpirit('Earth')"
-            >EARTH</v-btn
-          > </v-col
-        ><v-col cols="2" class="element-box">
+          <v-btn :color="variables.earth" large tile :disabled="(character.SpiritType == 'Earth')" @click="setSpirit('Earth')">EARTH</v-btn> </v-col
+        ><!-- <v-col cols="2" class="element-box">
           <v-btn
             :color="variables.flame"
             large
@@ -68,19 +55,19 @@
             @click="setSpirit('Wood')"
             >WOOD</v-btn
           ></v-col
-        ></v-row
+        >--></v-row
       >
     </div></span
   >
 </template>
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 
-import { store } from "@/store";
-import { Character } from "@/class";
-import variables from "@/styles/variables.scss";
+import { store } from '@/store'
+import { Character } from '@/class'
+import variables from '@/styles/variables.scss'
 export default Vue.extend({
-  name: "spirit-selection",
+  name: 'spirit-selection',
   components: {},
   props: {
     character: {
@@ -91,15 +78,15 @@ export default Vue.extend({
   data: () => {
     return {
       variables,
-    };
+    }
   },
   methods: {
     setSpirit(variable) {
-      this.character.SpiritType = variable;
-      this.character.ClearSpiritInfo();
+      this.character.SpiritType = variable
+      this.character.ClearSpiritInfo()
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

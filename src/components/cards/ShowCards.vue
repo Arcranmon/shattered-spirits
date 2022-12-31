@@ -69,6 +69,9 @@
             <div class="card--box" v-if="job == 'Obstacles'">
               <obstacle-card :obstacle="n" />
             </div>
+            <div class="card--box" v-if="job == 'Terrain'">
+              <terrain-card :terrain="n" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -81,6 +84,7 @@ import StanceCard from './StanceCard.vue'
 import TechCard from './TechCard.vue'
 import WeaponCard from './WeaponCard.vue'
 import ObstacleCard from './ObstacleCard.vue'
+import TerrainCard from './TerrainCard.vue'
 import ArmorCard from './ArmorCard.vue'
 import EnhancementCard from './EnhancementCard.vue'
 import ReactionCard from './ReactionCard.vue'
@@ -137,6 +141,7 @@ export default Vue.extend({
     ReactionCard,
     ObstacleCard,
     NpcCard,
+    TerrainCard,
   },
   methods: {
     clickMethod(variable, index) {

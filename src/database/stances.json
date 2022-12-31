@@ -97,7 +97,8 @@
     "refresh": {
       "grit": 2
     },
-    "effect": "Create one _Boulder_ within Range 3 at Refresh. You may pay 1 _Grit_ to instead create two _Boulders_.",
+    "effect": "Reduce the final _Grit_ cost after all other modifiers of all _Interacts_ with _Boulders_ and _Large Boulders_ by 2.",
+    "special": "At _Refresh_ you may pay 1 _Grit_ to _Destroy_ an _Earthen_ Obstacle with 10 or less _Durability_ within Range 4 and create one _Boulder_ in its space, or 2 _Grit_ to create one from earthen ground.",
     "reaction": "Rollout"
   },
   {
@@ -107,8 +108,8 @@
     "refresh": {
       "grit": 2
     },
-    "effect": "Gain 1 _Stone Armor_ at _Refresh_. This may not increase your _Stone Armor_ above 2. While you have any _Stone Armor_, deal 1 additional _Damage_ with _Unarmed_ Strikes and reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by 1.",
-    "special": "At Refresh, you may choose to gain _Hobbled_ 1x3. If you do, gain 1 additional _Stone Armor_ and, while you have any _Stone Armor_, gain Resistance to all damage originating from 4 or more spaces away until the end of the _Round_.",
+    "effect": "Gain 1 _Stone Armor_ at _Refresh_. This may not increase your _Stone Armor_ above 3. While you have any _Stone Armor_, deal 1 additional _Damage_ with _Unarmed_ Strikes and reduce the cost to _Negate_ all _Push_, _Pull_, and _Slide_ effects by 1.",
+    "special": "At Refresh, you may choose to gain _Hobbled_ 1x3. If you do, gain 1 additional _Stone Armor_ (which may increase your _Stone Armor_ above 3) and, while you have any _Stone Armor_, gain Resistance to all damage originating from 4 or more spaces away until the end of the _Round_.",
     "reaction": "Chip Damage"
   },
   {
@@ -121,7 +122,7 @@
       "grit": 2
     },
     "effect": "Every time you Destroy an adjacent _Earthen_ Obstacle, you may immediately _Step_ Move in any direction. Every time you Destroy an _Earthen_ Obstacle, you may deal 2 Damage to all adjacent creatures, excluding yourself and may make the space _Veiled_ until the end of the _Round_.",
-    "special": "Whenever you make an Attack with a _Versatile_ or _Heavy_ Weapon, you may pay 1 _Grit_ to create a _Boulder_ in a space Adjacent to the target.",
+    "special": "Whenever you make an Attack with a _Versatile_ or _Heavy_ Weapon, you may pay 1 _Grit_ to create a _Boulder_ in a space Adjacent to the target so long as they are on _Earthen_ ground.",
     "reaction": "Destructive Steps"
   },
   {
@@ -264,13 +265,13 @@
     "name": "Mighty Stance",
     "discipline": "Grounding",
     "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
-    "accumulate": "Whenever you _Push_ a creature with an Attack, gain 1 _Momentum_, or 2 _Momentum_ if you _Push_ them 4 of more spaces.",
+    "accumulate": "Whenever you _Push_ a creature with an Attack, gain 1 _Momentum_, or 2 _Momentum_ if you _Push_ them 4 or more spaces.",
     "refresh": {
       "grit": 3
     },
-    "effect": "Deal an additional 2 Damage with all Weapon Attacks and add _Push_ 1 (1 _Grit_), or 3 Damage and add _Push_ 2 (1 _Grit_) if the Weapon is _Heavy_. Whenever you _Push_ a creature into an Obstacle with a Weapon Attack they gain _Vulnerable_ 1 (1 _Focus_).",
+    "effect": "Whenever you _Push_ a creature into an Obstacle with a Weapon Attack they gain _Vulnerable_ 1 (1 _Focus_).",
     "special": "While in this Stance you may wield Titanic Weapons and add _Siege_ to all Weapon Strikes.",
-    "reaction": "Worldbreaker"
+    "enhancement": "Mighty Strike"
   },
   {
     "name": "Ox Stance",
@@ -280,9 +281,9 @@
       "grit": 3,
       "momentum": 2
     },
-    "effect": "Add _Charge_ to all Movement and increase your _Jump_ value by 2. Deal an additional 1 Damage with all Weapon Attacks, or 2 Damage if the Weapon is _Heavy_.",
+    "effect": "Add _Charge_ to all Movement and increase your _Jump_ value by 2. Whenever you _Jump_ you may make either the space you leave or the space you land in _Veiled_ until the end of the next _Phase_.",
     "special": "While in this Stance you may wield Titanic Weapons.",
-    "reaction": "Bull Rush"
+    "enhancement": "Bull Rush"
   },
   {
     "name": "Animator Stance",
@@ -497,13 +498,13 @@
     "name": "Sculptor Stance",
     "discipline": "Land",
     "desc": "A well-practiced Earthbonded can shape earth and stone as easily as clay, sculpting the field around them to their liking.",
-    "accumulate": "Gain 1 _Momentum_ for every Action you take that creates _Earthen_ _Rough_/_Jagged_ Terrain.",
+    "accumulate": "Gain 1 _Momentum_ for every Action you take that creates _Rough_/_Jagged_ Terrain.",
     "refresh": {
       "focus": 2,
       "reflex": 1
     },
-    "effect": "At Refresh, you may change any 2 contiguous spaces within Range 4 made of _Earthen_ materials into your choice of Normal, _Rough_, _Stairs_, or _Jagged_. These spaces are chosen independently, and can be changed into different types.",
-    "special": "You may ignore _Rough_ and _Jagged_ Terrain made of earthen materials while in this Stance.",
+    "effect": "At Refresh, you may change any 2 contiguous spaces within Range 4 made of _Earthen_ materials into your choice of _Normal_, _Rough_, or _Jagged_ or, alternatively, make sides of your choice _Climable_ or _Stairs_. These spaces are chosen independently, and how they are changed may vary.",
+    "special": "You may ignore _Rough_ and _Jagged_ Terrain while in this Stance.",
     "reaction": "Skilled Sculptor"
   },
   {
@@ -746,8 +747,9 @@
       "focus": 2,
       "grit": 1
     },
-    "effect": "Every round at Refresh, you may issue a brave challenge. Pay up to 3 _Focus_, and choose an equal number of targets within Range 6. These targets all gain _Courage_ 1x3 (1 _Focus_). For the remainder of the round, these targets only clear _Courage_ when they end their turn adjacent to you. Gain 1 _Momentum_ every time one of these targets clears a _Courage_.",
-    "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
+    "effect": "Creatures gains a +1 Bonus on Attack Rolls against you but, whenever they Attack you, gain _Courage_ 1.",
+    "special": "Gain a +1 Bonus on all Attack Rolls against creatures that have Attacked an ally this _Phase_.",
+    "reaction": "Lionheart Shield"
   },
   {
     "name": "Defiant Stance",
@@ -759,17 +761,19 @@
       "grit": 2
     },
     "effect": "At the end of any of your Turns you may remove the topmost _Courage_ Token and either gain _Grit_ equal to its value or _Vigor_ equal to twice its value.",
-    "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
+    "special": "While in this Stance take no penalties for having no _Endurance_ and gain a +1 _Guard_ while you have no _Endurance_."
   },
   {
     "name": "Inspiring Stance",
     "discipline": "Stoneheart",
     "desc": "You are a font of courage, rallying your allies with every move you make.",
+    "accumulate": "Once per _Phase_, when you grant an ally _Courage_, gain 1 _Momentum_.",
     "refresh": {
       "focus": 3
     },
-    "effect": "At the start of each of your _Turns_ you may grant an ally with Range 6 _Courage_ 1. Within this Range, your allies may clear their topmost _Courage_ Token whenever they have the opportunity to _Negate_ and reduce the _Grit_ or _Focus_ cost by the Value of said Token.",
-    "special": "While in this Stance reduce the Cost to _Negate_ or remove _Fear_ by 2."
+    "effect": "Whenever you would gain _Courage_, you may pay 1 _Focus_ to grant an ally within Range 6 _Vigor_ equal to twice the _Courage_ you gained.",
+    "special": "While within 4 spaces of you, your allies may clear their topmost _Courage_ Token whenever they have the opportunity to _Negate_ and reduce the _Grit_ or _Focus_ cost by the Value of said Token.",
+    "reaction": "Valor's Cry"
   },
   {
     "name": "Bolt Stance",
@@ -911,8 +915,9 @@
       "focus": 2,
       "grit": 1
     },
-    "effect": "At the start of your Turn, you may spend _Knowledge_ on a creature in your Seismic Sense to learn their weak points, leaving them open to attack. Pay up to 3 _Knowledge_; the creature must immediately spend equivalent _Focus_/_Momentum_ (in any combination) or lose that many _Defensive Tokens_ of your choice. In addition, treat all _Obstacles_ within your Seismic Sense as _Fragile_ when you attack them.",
-    "special": "While in this Stance you have Seismic Sense within 6 spaces, which allows you to ignore _Veiled_ Terrain."
+    "effect": "Add _Pierce_ 1 to all Attacks against foes in your _Seismic Sense_ that you have _Knowledge_ on. In addition, treat all _Obstacles_ within your Seismic Sense as _Fragile_.",
+    "special": "While in this Stance you have _Seismic Sense_ with a Range of 4.",
+    "reaction": "Expose Flaw"
   },
   {
     "name": "Pulsereader Stance",
@@ -922,8 +927,9 @@
     "refresh": {
       "focus": 3
     },
-    "effect": "While in this Stance reduce the cost to _Negate_ all _Feint_ Techniques by 2. Add _Sure Hit_ 1 to Attacks against Targets in your Seismic Sense.",
-    "special": "While in this Stance you have Seismic Sense within 2 spaces, which allows you to ignore _Veiled_ Terrain."
+    "effect": "While in this Stance reduce the cost to _Negate_ all _Feint_ Techniques originating in your _Seismic Sense_ by 2. Add _Sure Hit_ 1 to Attacks against Targets in your _Seismic Sense_ that you have _Knowledge_ on.",
+    "special": "While in this Stance you have _Seismic Sense_ with a Range of 2.",
+    "reaction": "Read the Pulse"
   },
   {
     "name": "Sonar Stance",
@@ -933,8 +939,9 @@
       "focus": 1,
       "reflex": 2
     },
-    "effect": "The first time each _Phase_ a hostile creature ends their _Turn_ within your Seismic Sense inflict _Knowledge_ 1 (1 _Focus_) on them, or increase their topmost _Knowledge_ Token's value by 1.",
-    "special": "While in this Stance you have Seismic Sense within 4 spaces, which allows you to ignore _Veiled_ Terrain."
+    "effect": "Whenever you inflict _Knowledge_ on a creature in your _Seismic Sense_ you may also _Scout_ them.",
+    "special": "While in this Stance you have _Seismic Sense_ with a Range of 6.",
+    "reaction": "Seismic Scouting"
   },
   {
     "name": "Frostbite Stance",

@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Earth Platform",
+    "desc": "A lifted platform, easy to climb but large enough to provide cover.",
+    "keywords": ["Earthen"],
+    "size": 1,
+    "height": 1,
+    "durability": 7,
+    "resistances": "All Damage except Crush.",
+    "speed": 2,
+    "interact": ""
+  },
+  {
+    "name": "Earth Pillar",
+    "keywords": ["Earthen"],
+    "size": 1,
+    "height": 2,
+    "durability": 9,
+    "resistances": "All Damage except Crush.",
+    "speed": 4,
+    "interact": "Choose one:\n* 2 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create an _Earth Platform_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 4 _Grit_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also _Pinned_ until they spend 2 _Grit_.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 8, 8, 10, 10, 12, 14, 16],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Dazed_ 2 (2 _Grit_)",
+        "_Dazed_ 2 (2 _Grit_)",
+        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
+        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
+        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
+        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)",
+        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Earth Column",
+    "keywords": ["Earthen"],
+    "size": 2,
+    "height": 3,
+    "durability": 12,
+    "resistances": "This Obstacle has Resistance to all Damage except Crush.",
+    "speed": 5,
+    "interact": "Choose one:\n* 4 _Grit_: Create two adjacent parallel Line 3 Hazards on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create an _Earth Pillar_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 6 _Grit_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also _Pinned_ until they spend 3 _Grit_.",
+    "special": "Only Destroy one space of this Obstacle on a successful attack. The attacker may Destroy an additional space for every 3 Damage more than the _Durability_ they inflict.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 9, 9, 12, 12, 14, 16, 18],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Dazed_ 2 (2 _Grit_)",
+        "_Dazed_ 2 (2 _Grit_)",
+        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
+        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
+        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
+        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)",
+        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Boulder",
+    "source": "Earth",
+    "size": 1,
+    "height": 1,
+    "durability": 13,
+    "resistances": "All Damage except Crush.",
+    "speed": 3,
+    "interact": "Choose one:\n* 2 _Grit_: _Push_ 1 this Boulder. If it is moved into a creature's space, inflict _Push_ 1, _Dazed_ 1, and 4 Damage (2 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_.\n* 4 _Grit_: _Push_ 3 this Boulder.  If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 2 and 6 Damage (3 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_."
+  },
+  {
+    "name": "Large Boulder",
+    "source": "Earth",
+    "size": 2,
+    "height": 2,
+    "durability": 16,
+    "resistances": "All Damage except Crush.",
+    "speed": 5,
+    "interact": "Choose one:\n* 4 _Grit_: _Push_ 1 this Boulder. If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 2 and 6 Damage (3 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_.\n* 6 _Grit_: _Push_ 2 this Boulder.  If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 3 and 8 Damage (4 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_."
+  }
+]
