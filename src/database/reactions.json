@@ -98,6 +98,15 @@
     "boost": "1 _Grit_/_Momentum_: Resolve both Effects."
   },
   {
+    "name": "Destructive Steps",
+    "keywords": ["Efficient"],
+    "desc": "Your steps leave a wake of destruction, ruining the terrain around you.",
+    "cost": "1 _Grit_",
+    "trigger": "You move adjacent to an _Earthen_ Obstacle.",
+    "effect": "Deal 10 Damage to the Obstacle.",
+    "boost": "1 _Grit_: Increase the Damage by 3. This Boost is repeatable."
+  },
+  {
     "name": "Dodge Roll",
     "keywords": ["Evade", "Safe", "Charge", "Rush"],
     "move": "Step",
@@ -147,7 +156,8 @@
     "desc": "As a foe enters the reach of your spear you reinforce how foolhardy an idea that is.",
     "cost": "1 _Momentum_",
     "trigger": "A creature enters your Reach.",
-    "effect": "The triggering target gains _Hobbled_ 1 (2 reflex). Instead of applying this to the creature's next Movement it is instead applied to their current Movement, even if that Movement is already affected by _Hobbled_. The target may Negate the Hobbled for no cost by allowing you to immediately make a 2 AP Basic Strike against them with the triggering Lance Weapon, at _Disadvantage_ if the Speed of the Attack is greater than the current _Phase_."
+    "effect": "The triggering target gains _Hobbled_ 1 (2 _Reflex_). Instead of applying this to the creature's next Movement it is instead applied to their current Movement, even if that Movement is already affected by _Hobbled_.",
+    "special": "The target may Negate for no cost by allowing you to immediately make an Armed Strike against them with the triggering Lance Weapon, at _Disadvantage_ if the Speed of the Attack is greater than the current _Phase_."
   },
   {
     "name": "Heavy Guard",
@@ -183,10 +193,10 @@
   },
   {
     "name": "Lightning Reflexes",
-    "keywords": ["Evade"],
+    "keywords": ["Evade", "Efficient"],
     "desc": "You flawlessly avoid a creature's attempt to punish you.",
     "cost": "1 _Reflex_",
-    "trigger": "A creature would make a _Punish_ Attack against you triggered by _Safe_ Movement.",
+    "trigger": "A creature would make an _Opportune_ _Punish_ Attack against you.",
     "effect": "Resolve the Attack by rolling only a single d6.",
     "boost": "1 _Reflex_: Instead, Trigger is 'A creature would make a _Punish_ Attack against you.'"
   },
@@ -289,8 +299,8 @@
     "keywords": ["Block", "Efficient"],
     "desc": "Your heavy armor protects from many ills, including many that would limit your capacity to fight.",
     "cost": "1 _Grit_",
-    "trigger": "You would gain a Standard Condition or Elemental Condition.",
-    "effect": "You may pay the cost to _Negate_ the triggering Condition using _Grit_. If it already cost _Grit_, reduce the cost to _Negate_ by 2."
+    "trigger": "You would gain a Standard or Elemental Affliction.",
+    "effect": "You may pay the cost to _Negate_ the triggering Affliction using _Grit_. If it already cost _Grit_, reduce the cost to _Negate_ by 2."
   },
   {
     "name": "Skilled Sculptor",
@@ -344,12 +354,12 @@
     "boost": "1 _Grit_: If the Attack passed through or originated in the Arc created by Iron Wall, gain a benefit depending on the Area of the Triggering attack.\n*_Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is _Glancing_ against allies in the adjacent spaces that are not a part of Iron Wall's Arc."
   },
   {
-    "name": "Harry",
-    "keywords": ["Punish"],
-    "desc": "You lash out with your spear, providing an ally the chance to escape.",
+    "name": "Charge Killer",
+    "keywords": ["Opportune", "Punish"],
+    "desc": "As a foe enters the reach of your spear you let loose with a mighty attack.",
     "cost": "2 _Momentum_",
-    "trigger": "A creature within your Lance Weapon's _Reach_ uses an _Opportune_ Reaction against a creature other than you.",
-    "effect": "Use the Armed Strike Technique, using your _Lance_ Weapon. On a _Hit_, reduce the Attack Roll by 1. On a _Crit_, reduce it by 2."
+    "trigger": "A creature enters your Lance's _Reach_.",
+    "effect": "Use the Armed Strike Technique, using your _Lance_ Weapon. On a _Graze_+, deal additional _Damage_ equal to your _Reach_."
   },
   {
     "name": "Tremors",
@@ -434,8 +444,8 @@
     "desc": "Attacks create vibrations, ones that you use to glean more information.",
     "keywords": ["Spirit", "Earth", "Groundsource"],
     "cost": "1 _Focus_",
-    "trigger": "A foe is _Hit_+ within your _Seismic Sense_.",
-    "effect": "Inflict _Knowledge_ 1 (1 _Focus_). If the foe is knocked _Prone_  or _Defeated_ as a part of the triggering Attack, instead either inflict _Knowledge_ 1 (1 _Focus_) in a _Burst_ 1 around the Target, or _Knowledge_ 2 (2 _Focus_) on the Target."
+    "trigger": "A foe is _Hit_+ or knocked _Prone_ within your _Seismic Sense_.",
+    "effect": "Inflict _Knowledge_ 1 (1 _Focus_). If the foe is knocked _Prone_  or _Defeated_ as a part of the Trigger, instead either inflict _Knowledge_ 1 (1 _Focus_) in a _Burst_ 1 around the Target, or _Knowledge_ 2 (2 _Focus_) on the Target."
   },
   {
     "name": "Hidden Flaw",
@@ -444,5 +454,15 @@
     "cost": "1 _Focus_/_Momentum_",
     "trigger": "A creature within an Area created by Rippling View is forbily Moved into an Obstacle.",
     "effect": "The creature takes 2 _True_ Damage and gains _Dazed_ 2/_Wounded_ 1 (2 _Focus_/_Grit_)."
+  },
+  {
+    "name": "Pinpoint Location",
+    "desc": "You read a foe's movements and prepare to launch a devastating assault.",
+    "keywords": ["Spirit", "Earth", "Punish"],
+    "cost": "3 _Focus_/_Momentum_",
+    "trigger": "A creature within your _Seismic Sense_ starts their _Turn_ and you have no _Hazards_ created by this _Reaction_ and are _Blinded_.",
+    "effect": "At the end of the creature's _Turn_ create a Size 1 _Hazard_ in their space. At the start of the next _Phase_, after resolving any 'A _Phase_ starts' _Reactions_, use any 2 AP, Single-Target Technique against the creature if it is still in the _Hazard_.",
+    "special": "If an ally attacks the Target while they are within the _Hazard_, you may remove the _Hazard_ to grant them _Advantage_ on the Attack.",
+    "boost": "1 _Reflex_: You may use the _Techniques_' Movement, if any."
   }
 ]

@@ -6,8 +6,16 @@
     <br />
     <display-tooltip-text :string="choosingYourEquipment" />
     <br />
+    <display-tooltip-text :string="choosingYourArmor" />
     <br />
-    <display-tooltip-text :string="choosingYourStuff" />
+    <br />
+    <display-tooltip-text :string="choosingYourWeapons" />
+    <br />
+    <br />
+    <display-tooltip-text :string="choosingYourStyleStances" />
+    <br />
+    <br />
+    <display-tooltip-text :string="choosingYourTechniques" />
     <br />
     <br />
     <display-tooltip-text :string="choosingYourTalents" />
@@ -24,44 +32,56 @@
 </template>
 
 <script>
-import Vue from "vue";
-import ChoosingYourSpirit from "@/database/text_files/character_creation/choosing_your_spirit.txt";
-import ChoosingYourEquipment from "@/database/text_files/character_creation/choosing_your_equipment.txt";
-import ChoosingYourStuff from "@/database/text_files/character_creation/choosing_your_styles_stances_and_techniques.txt";
-import ChoosingYourTalents from "@/database/text_files/character_creation/choosing_your_talents.txt";
-import ChoosingYourAppearance from "@/database/text_files/character_creation/choosing_your_appearance.txt";
-import CreatingYourBackground from "@/database/text_files/character_creation/creating_your_background.txt";
-import FinalizingYourCharacter from "@/database/text_files/character_creation/finalizing_your_character.txt";
-import DisplayTooltipText from "@/components/DisplayTooltipText";
+import Vue from 'vue'
+import ChoosingYourSpirit from '@/database/text_files/character_creation/choosing_your_spirit.txt'
+import ChoosingYourEquipment from '@/database/text_files/character_creation/choosing_your_equipment.txt'
+import ChoosingYourArmor from '@/database/text_files/character_creation/choosing_your_armor.txt'
+import ChoosingYourWeapons from '@/database/text_files/character_creation/choosing_your_weapons.txt'
+import ChoosingYourStyleStances from '@/database/text_files/character_creation/choosing_your_styles_stances.txt'
+import ChoosingYourTechniques from '@/database/text_files/character_creation/choosing_your_techniques.txt'
+import ChoosingYourTalents from '@/database/text_files/character_creation/choosing_your_talents.txt'
+import ChoosingYourAppearance from '@/database/text_files/character_creation/choosing_your_appearance.txt'
+import CreatingYourBackground from '@/database/text_files/character_creation/creating_your_background.txt'
+import FinalizingYourCharacter from '@/database/text_files/character_creation/finalizing_your_character.txt'
+import DisplayTooltipText from '@/components/DisplayTooltipText'
 
-import { store } from "@/store";
+import { store } from '@/store'
 export default Vue.extend({
-  name: "character-creation",
+  name: 'character-creation',
   components: {},
   computed: {
     choosingYourSpirit() {
-      return ChoosingYourSpirit;
+      return ChoosingYourSpirit
     },
     choosingYourEquipment() {
-      return ChoosingYourEquipment;
+      return ChoosingYourEquipment
     },
-    choosingYourStuff() {
-      return ChoosingYourStuff;
+    choosingYourArmor() {
+      return ChoosingYourArmor
+    },
+    choosingYourWeapons() {
+      return ChoosingYourWeapons
+    },
+    choosingYourStyleStances() {
+      return ChoosingYourStyleStances
+    },
+    choosingYourTechniques() {
+      return ChoosingYourTechniques
     },
     choosingYourTalents() {
-      return ChoosingYourTalents;
+      return ChoosingYourTalents
     },
     choosingYourAppearance() {
-      return ChoosingYourAppearance;
+      return ChoosingYourAppearance
     },
     creatingYourBackground() {
-      return CreatingYourBackground;
+      return CreatingYourBackground
     },
     finalizingYourCharacter() {
-      return FinalizingYourCharacter;
+      return FinalizingYourCharacter
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

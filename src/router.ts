@@ -1,279 +1,279 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-import MainMenu from "@/pages/main-menu/index.vue";
+import MainMenu from '@/pages/main-menu/index.vue'
 
-import CombatMenu from "@/pages/combat/combat-menu/index.vue";
-import CombatBasics from "@/pages/combat/combat-basics/index.vue";
-import ConditionsAndStatus from "@/pages/combat/conditions_and_status/index.vue";
-import ReadingDisciplines from "@/pages/combat/reading_disciplines/index.vue";
-import TerrainAndObstacles from "@/pages/combat/terrain_and_obstacles/index.vue";
+import CombatMenu from '@/pages/combat/combat-menu/index.vue'
+import CombatBasics from '@/pages/combat/combat-basics/index.vue'
+import AfflictionsAndStatus from '@/pages/combat/afflictions_and_status/index.vue'
+import ReadingDisciplines from '@/pages/combat/reading_disciplines/index.vue'
+import TerrainAndObstacles from '@/pages/combat/terrain_and_obstacles/index.vue'
 
-import CharacterCreation from "@/pages/character-creation/index.vue";
-import CharacterCreator from "@/pages/character-creator/index.vue";
+import CharacterCreation from '@/pages/character-creation/index.vue'
+import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import SpiritMenu from "@/pages/spirits/spirit-menu/index.vue";
-import Earth from "@/pages/spirits/earth/index.vue";
-import Flame from "@/pages/spirits/flame/index.vue";
-import Metal from "@/pages/spirits/metal/index.vue";
-import Water from "@/pages/spirits/water/index.vue";
-import Wind from "@/pages/spirits/wind/index.vue";
-import Wood from "@/pages/spirits/wood/index.vue";
+import SpiritMenu from '@/pages/spirits/spirit-menu/index.vue'
+import Earth from '@/pages/spirits/earth/index.vue'
+import Flame from '@/pages/spirits/flame/index.vue'
+import Metal from '@/pages/spirits/metal/index.vue'
+import Water from '@/pages/spirits/water/index.vue'
+import Wind from '@/pages/spirits/wind/index.vue'
+import Wood from '@/pages/spirits/wood/index.vue'
 
-import EquipmentMenu from "@/pages/equipment/equipment-menu/index.vue";
-import Armor from "@/pages/equipment/armor/index.vue";
-import Weapons from "@/pages/equipment/weapons/index.vue";
-import Disciplines from "@/pages/disciplines/index.vue";
+import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
+import Armor from '@/pages/equipment/armor/index.vue'
+import Weapons from '@/pages/equipment/weapons/index.vue'
+import Disciplines from '@/pages/disciplines/index.vue'
 
-import SkillsMenu from "@/pages/skills/skills-menu/index.vue";
-import BasicSkills from "@/pages/skills/basic-skills/index.vue";
-import ArmorSkills from "@/pages/skills/armor-skills/index.vue";
-import MartialSkills from "@/pages/skills/martial-skills/index.vue";
-import StratagemSkills from "@/pages/skills/stratagem-skills/index.vue";
-import WeaponSkills from "@/pages/skills/weapon-skills/index.vue";
+import SkillsMenu from '@/pages/skills/skills-menu/index.vue'
+import BasicSkills from '@/pages/skills/basic-skills/index.vue'
+import ArmorSkills from '@/pages/skills/armor-skills/index.vue'
+import MartialSkills from '@/pages/skills/martial-skills/index.vue'
+import StratagemSkills from '@/pages/skills/stratagem-skills/index.vue'
+import WeaponSkills from '@/pages/skills/weapon-skills/index.vue'
 
-import Npcs from "@/pages/npcs/index.vue";
+import Npcs from '@/pages/npcs/index.vue'
 
-import CharacterManager from "@/pages/character-manager/index.vue";
+import CharacterManager from '@/pages/character-manager/index.vue'
 
-import World from "@/pages/world/index.vue";
+import World from '@/pages/world/index.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 const r = new Router({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     } else {
-      return { x: 0, y: 0 };
+      return { x: 0, y: 0 }
     }
   },
   routes: [
     {
-      path: "/",
+      path: '/',
       component: MainMenu,
-      name: "main-menu",
+      name: 'main-menu',
       meta: {
-        title: "Shattered Spirits",
+        title: 'Shattered Spirits',
       },
     },
     {
-      path: "/character-creation",
+      path: '/character-creation',
       component: CharacterCreation,
-      name: "character-creation",
+      name: 'character-creation',
       meta: {
-        title: "Character Creation",
+        title: 'Character Creation',
       },
     },
     {
-      path: "/character-creator",
+      path: '/character-creator',
       component: CharacterCreator,
-      name: "character-creator",
+      name: 'character-creator',
       meta: {
-        title: "Character Creator",
+        title: 'Character Creator',
       },
     },
     {
-      path: "/spirits",
+      path: '/spirits',
       component: SpiritMenu,
-      name: "spirit-menu",
+      name: 'spirit-menu',
       meta: {
-        title: "Spirits",
+        title: 'Spirits',
       },
     },
     {
-      path: "/equipment",
+      path: '/equipment',
       component: EquipmentMenu,
-      name: "equipment-menu",
+      name: 'equipment-menu',
       meta: {
-        title: "Equipment",
+        title: 'Equipment',
       },
     },
     {
-      path: "/armor",
+      path: '/armor',
       component: Armor,
-      name: "armor",
+      name: 'armor',
       meta: {
-        title: "Armor",
+        title: 'Armor',
       },
     },
     {
-      path: "/weapons",
+      path: '/weapons',
       component: Weapons,
-      name: "weapons",
+      name: 'weapons',
       meta: {
-        title: "Weapons",
+        title: 'Weapons',
       },
     },
     {
-      path: "/earth",
+      path: '/earth',
       component: Earth,
-      name: "earth",
+      name: 'earth',
       meta: {
-        title: "Earth",
+        title: 'Earth',
       },
     },
     {
-      path: "/flame",
+      path: '/flame',
       component: Flame,
-      name: "flame",
+      name: 'flame',
       meta: {
-        title: "Flame",
+        title: 'Flame',
       },
     },
     {
-      path: "/metal",
+      path: '/metal',
       component: Metal,
-      name: "metal",
+      name: 'metal',
       meta: {
-        title: "Metal",
+        title: 'Metal',
       },
     },
     {
-      path: "/water",
+      path: '/water',
       component: Water,
-      name: "water",
+      name: 'water',
       meta: {
-        title: "Water",
+        title: 'Water',
       },
     },
     {
-      path: "/wind",
+      path: '/wind',
       component: Wind,
-      name: "wind",
+      name: 'wind',
       meta: {
-        title: "Wind",
+        title: 'Wind',
       },
     },
     {
-      path: "/wood",
+      path: '/wood',
       component: Wood,
-      name: "wood",
+      name: 'wood',
       meta: {
-        title: "Wood",
+        title: 'Wood',
       },
     },
     {
-      path: "/combat",
+      path: '/combat',
       component: CombatMenu,
-      name: "combat",
+      name: 'combat',
       meta: {
-        title: "Combat",
+        title: 'Combat',
       },
     },
     {
-      path: "/combat-basics",
+      path: '/combat-basics',
       component: CombatBasics,
-      name: "combat-basics",
+      name: 'combat-basics',
       meta: {
-        title: "Combat Basics",
+        title: 'Combat Basics',
       },
     },
     {
-      path: "/conditions-and-status",
-      component: ConditionsAndStatus,
-      name: "conditions-and-status",
+      path: '/afflictions-and-status',
+      component: AfflictionsAndStatus,
+      name: 'afflictions-and-status',
       meta: {
-        title: "Conditions and Status",
+        title: 'Afflictions and Status',
       },
     },
     {
-      path: "/reading-disciplines",
+      path: '/reading-disciplines',
       component: ReadingDisciplines,
-      name: "reading-disciplines",
+      name: 'reading-disciplines',
       meta: {
-        title: "Reading Disciplines",
+        title: 'Reading Disciplines',
       },
     },
     {
-      path: "/terrain-and-obstacles",
+      path: '/terrain-and-obstacles',
       component: TerrainAndObstacles,
-      name: "terrain-and-obstacles",
+      name: 'terrain-and-obstacles',
       meta: {
-        title: "Terrain and Obstacles",
+        title: 'Terrain and Obstacles',
       },
     },
     {
-      path: "/skills",
+      path: '/skills',
       component: SkillsMenu,
-      name: "skills",
+      name: 'skills',
       meta: {
-        title: "Skills",
+        title: 'Skills',
       },
     },
     {
-      path: "/basic-skills",
+      path: '/basic-skills',
       component: BasicSkills,
-      name: "basic-skills",
+      name: 'basic-skills',
       meta: {
-        title: "Basic Skills",
+        title: 'Basic Skills',
       },
     },
     {
-      path: "/armor-skills",
+      path: '/armor-skills',
       component: ArmorSkills,
-      name: "armor-skills",
+      name: 'armor-skills',
       meta: {
-        title: "Armor Skills",
+        title: 'Armor Skills',
       },
     },
     {
-      path: "/martial-skills",
+      path: '/martial-skills',
       component: MartialSkills,
-      name: "martial-skills",
+      name: 'martial-skills',
       meta: {
-        title: "Martial Skills",
+        title: 'Martial Skills',
       },
     },
     {
-      path: "/stratagem-skills",
+      path: '/stratagem-skills',
       component: StratagemSkills,
-      name: "stratagem-skills",
+      name: 'stratagem-skills',
       meta: {
-        title: "Stratagem Skills",
+        title: 'Stratagem Skills',
       },
     },
     {
-      path: "/weapon-skills",
+      path: '/weapon-skills',
       component: WeaponSkills,
-      name: "weapon-skills",
+      name: 'weapon-skills',
       meta: {
-        title: "Weapon Skills",
+        title: 'Weapon Skills',
       },
     },
     {
-      path: "/world",
+      path: '/world',
       component: World,
-      name: "world",
+      name: 'world',
       meta: {
-        title: "The World",
+        title: 'The World',
       },
     },
     {
-      path: "/npcs",
+      path: '/npcs',
       component: Npcs,
-      name: "npcs",
+      name: 'npcs',
       meta: {
-        title: "NPCs",
+        title: 'NPCs',
       },
     },
     {
-      path: "/character-manager",
+      path: '/character-manager',
       component: CharacterManager,
-      name: "character-manager",
+      name: 'character-manager',
       meta: {
-        title: "Character Manager",
+        title: 'Character Manager',
       },
     },
     {
-      path: "/disciplines",
+      path: '/disciplines',
       component: Disciplines,
-      name: "disciplines",
+      name: 'disciplines',
       meta: {
-        title: "Disciplines",
+        title: 'Disciplines',
       },
     },
   ],
-});
+})
 
-export default r;
+export default r

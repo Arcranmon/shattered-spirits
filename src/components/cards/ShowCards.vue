@@ -72,6 +72,12 @@
             <div class="card--box" v-if="job == 'Terrain'">
               <terrain-card :terrain="n" />
             </div>
+            <div class="card--box" v-if="job == 'Affliction'">
+              <affliction-card :affliction="n" />
+            </div>
+            <div class="card--box" v-if="job == 'Status'">
+              <status-card :status="n" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -80,14 +86,16 @@
 
 <script>
 import Vue from 'vue'
-import StanceCard from './StanceCard.vue'
-import TechCard from './TechCard.vue'
-import WeaponCard from './WeaponCard.vue'
-import ObstacleCard from './ObstacleCard.vue'
-import TerrainCard from './TerrainCard.vue'
+import AfflictionCard from './AfflictionCard.vue'
 import ArmorCard from './ArmorCard.vue'
 import EnhancementCard from './EnhancementCard.vue'
+import ObstacleCard from './ObstacleCard.vue'
 import ReactionCard from './ReactionCard.vue'
+import StanceCard from './StanceCard.vue'
+import StatusCard from './StatusCard.vue'
+import TechCard from './TechCard.vue'
+import TerrainCard from './TerrainCard.vue'
+import WeaponCard from './WeaponCard.vue'
 import NpcCard from './NpcCard.vue'
 
 export default Vue.extend({
@@ -133,15 +141,17 @@ export default Vue.extend({
     },
   },
   components: {
-    TechCard,
-    EnhancementCard,
+    AfflictionCard,
     ArmorCard,
-    StanceCard,
-    WeaponCard,
-    ReactionCard,
-    ObstacleCard,
+    EnhancementCard,
     NpcCard,
+    ObstacleCard,
+    ReactionCard,
+    StanceCard,
+    StatusCard,
+    TechCard,
     TerrainCard,
+    WeaponCard,
   },
   methods: {
     clickMethod(variable, index) {

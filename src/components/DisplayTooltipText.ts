@@ -22,11 +22,13 @@ Vue.component('DisplayTooltipText', {
     formattedText() {
       var split_input = this.string.split('_')
       for (var index in split_input) {
-        if (this.$store.getters.existsInAnyGlossary(split_input[index])) {
-          split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
-        } else if (this.$store.getters.isObstacle(split_input[index])) {
-          split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
-        } else if (this.$store.getters.isTerrain(split_input[index])) {
+        if (
+          this.$store.getters.existsInAnyGlossary(split_input[index]) ||
+          this.$store.getters.isObstacle(split_input[index]) ||
+          this.$store.getters.isTerrain(split_input[index]) ||
+          this.$store.getters.isAffliction(split_input[index]) ||
+          this.$store.getters.isStatus(split_input[index])
+        ) {
           split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
         }
       }

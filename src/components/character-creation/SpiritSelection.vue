@@ -1,15 +1,19 @@
 <template
   ><span>
     <div class="button-seperator">
-      <v-btn color="success" large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
-        <span v-if="!character.HasSpirit">CHOOSE A SPIRIT TYPE</span>
-        <span v-else>CHOOSE {{ character.SpiritType }}</span>
-      </v-btn>
+      <div class="character-creation" v-html="creationText" />
+      <br />
+      <v-layout justify-center
+        ><v-btn color="success" large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
+          <span v-if="!character.HasSpirit">CHOOSE A SPIRIT TYPE</span>
+          <span v-else>CHOOSE {{ character.SpiritType }}</span>
+        </v-btn></v-layout
+      >
     </div>
     <div>
       <v-row
         ><v-col cols="2" class="element-box">
-          <v-btn :color="variables.earth" large tile :disabled="(character.SpiritType == 'Earth')" @click="setSpirit('Earth')">EARTH</v-btn> </v-col
+          <v-btn color="#e0c068" large tile :disabled="(character.SpiritType == 'Earth')" @click="setSpirit('Earth')">EARTH SPIRIT</v-btn> </v-col
         ><!-- <v-col cols="2" class="element-box">
           <v-btn
             :color="variables.flame"
@@ -65,7 +69,7 @@ import Vue from 'vue'
 
 import { store } from '@/store'
 import { Character } from '@/class'
-import variables from '@/styles/variables.scss'
+import SpiritSelectionText from '@/database/text_files/character_creation/choosing_your_spirit.txt'
 export default Vue.extend({
   name: 'spirit-selection',
   components: {},
@@ -76,9 +80,7 @@ export default Vue.extend({
     },
   },
   data: () => {
-    return {
-      variables,
-    }
+    return {}
   },
   methods: {
     setSpirit(variable) {
@@ -86,10 +88,18 @@ export default Vue.extend({
       this.character.ClearSpiritInfo()
     },
   },
+  computed: {
+    creationText: function () {
+      return this.$marked.parse(SpiritSelectionText)
+    },
+  },
 })
 </script>
 
 <style scoped lang="scss">
+.character-creation {
+  font-size: smaller;
+}
 .button-seperator {
   margin-bottom: 1em;
 }

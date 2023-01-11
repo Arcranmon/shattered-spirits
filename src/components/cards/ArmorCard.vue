@@ -32,8 +32,16 @@
           ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Jump }}</v-col></v-row
         >
       </div>
-      <div class="armor--format-no-text" v-if="armor.HasReaction">
-        <reaction-card :reaction="$store.getters.getReaction(armor.Reaction)" />
+      <div class="expand--collapse-box-outlined">
+        <v-expansion-panels class="condensed" flat tile>
+          <v-expansion-panel style="background-color: inherit;"
+            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-reaction">
+              <display-tooltip-text string="While wearing this Armor, gain the following Reaction:" />
+              <reaction-card :reaction="$store.getters.getReaction(armor.Reaction)"
+            /></v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </div>
     </div>
   </div>

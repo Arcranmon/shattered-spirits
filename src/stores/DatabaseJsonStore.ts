@@ -5,10 +5,9 @@ import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 
 import Glossary from '@/database/glossary/glossary.json'
+import InstantEffects from '@/database/glossary/instant_effects.json'
 import Statuses from '@/database/glossary/statuses.json'
-import Conditions from '@/database/glossary/conditions.json'
-import ElementalConditions from '@/database/glossary/elemental_conditions.json'
-import MentalConditions from '@/database/glossary/mental_conditions.json'
+import Afflictions from '@/database/glossary/afflictions.json'
 import Keywords from '@/database/glossary/keywords.json'
 import Resources from '@/database/glossary/resources.json'
 
@@ -21,14 +20,14 @@ import Enhancements from '@/database/enhancements.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Discipline, Enhancement, Technique, Stance, Armor, Weapon, Npc, Obstacle, Terrain, Reaction } from '@/class'
+import { Affliction, Armor, Discipline, Enhancement, Npc, Obstacle, Reaction, Stance, Status, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial', 'Stratagem']
 
-let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Statuses, Conditions, ElementalConditions, MentalConditions, Keywords, Resources]
+let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, InstantEffects, Keywords, Resources]
 
 @Module({
   name: 'databaseJson',
@@ -316,20 +315,71 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
+  // AFFLICTION TOOLS
+  // ==========================================================
+  get isAffliction(): any {
+    return (inword: string) => {
+      return Afflictions.some((x) => x.name == inword.trim())
+    }
+  }
+
+  get getAffliction(): any {
+    return (inword: string) => {
+      var obstacle = Afflictions.find((x) => x.name.trim() === inword.trim())
+      return Affliction.Deserialize(<IAfflictionData>obstacle)
+    }
+  }
+
+  get getAfflictions(): any {
+    return () => {
+      return Afflictions.map((x) => Affliction.Deserialize(<IAfflictionData>x))
+    }
+  }
+
+  get getAfflictionsByType(): any {
+    return (type: string) => {
+      return Afflictions.filter((x) => x.type.trim() === type.trim()).map((x) => Affliction.Deserialize(<IAfflictionData>x))
+    }
+  }
+
+  // ==========================================================
+  // STATUS TOOLS
+  // ==========================================================
+  get isStatus(): any {
+    return (inword: string) => {
+      return Statuses.some((x) => x.name == inword.trim())
+    }
+  }
+
+  get getStatus(): any {
+    return (inword: string) => {
+      var obstacle = Statuses.find((x) => x.name.trim() === inword.trim())
+      if (obstacle.hasOwnProperty('see')) obstacle = Statuses.find((x) => x.name.trim() === obstacle.see.trim())
+      return Status.Deserialize(<IStatusData>obstacle)
+    }
+  }
+
+  get getStatuses(): any {
+    return () => {
+      return Statuses.filter((x) => !x.hasOwnProperty('see')).map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  // ==========================================================
   // BASIC GLOSSARY TOOLS
   // ==========================================================
   get glossaryHasItem(): any {
     return (source: Array<IGlossaryData>, inword: string) => {
-      return source.some((x) => x.keyword === inword)
+      return source.some((x) => x.name === inword)
     }
   }
 
   get getGlossaryItemFromJson(): any {
     return (source: Array<IGlossaryData>, inword: string) => {
-      var keyword = source.find((x) => x.keyword.trim() === inword.trim())
-      if (keyword == undefined) return undefined
-      if (keyword.hasOwnProperty('see')) return this.getGlossaryItemFromJson(source, keyword.see)
-      return keyword.effect
+      var name = source.find((x) => x.name.trim() === inword.trim())
+      if (name == undefined) return undefined
+      if (name.hasOwnProperty('see')) return this.getGlossaryItemFromJson(source, name.see)
+      return name.effect
     }
   }
 
@@ -337,10 +387,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       return (
         this.glossaryHasItem(Glossary, inword) ||
-        this.glossaryHasItem(Statuses, inword) ||
-        this.glossaryHasItem(Conditions, inword) ||
-        this.glossaryHasItem(ElementalConditions, inword) ||
-        this.glossaryHasItem(MentalConditions, inword) ||
+        this.glossaryHasItem(InstantEffects, inword) ||
         this.glossaryHasItem(Keywords, inword) ||
         this.glossaryHasItem(Resources, inword)
       )
@@ -356,33 +403,15 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getStatuses(): any {
-    return () => {
-      return Statuses.filter((x) => x.see === undefined)
-    }
-  }
-
-  get getConditions(): any {
-    return () => {
-      return Conditions
-    }
-  }
-
-  get getElementalConditions(): any {
-    return () => {
-      return ElementalConditions
-    }
-  }
-
-  get getMentalConditions(): any {
-    return () => {
-      return MentalConditions
-    }
-  }
-
   get getKeywords(): any {
     return () => {
       return Keywords
+    }
+  }
+
+  get getInstantEffects(): any {
+    return () => {
+      return InstantEffects
     }
   }
 

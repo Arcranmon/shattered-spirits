@@ -1,18 +1,14 @@
 <template
   ><span>
+    <div class="character-creation" v-html="creationText" />
+    <br />
     <div class="button-seperator">
-      <v-btn
-        color="success"
-        large
-        tile
-        @click="$emit('chose-stances')"
-        :disabled="!character.HasAllStancesStyles"
+      <v-layout justify-center>
+        <v-btn color="success" large tile @click="$emit('chose-stances')" :disabled="!character.HasAllStancesStyles">
+          <span v-if="!character.HasAllStancesStyles">CHOOSE YOUR STANCES AND STYLES</span>
+          <span v-else>ACCEPT STANCES AND STYLES</span>
+        </v-btn></v-layout
       >
-        <span v-if="!character.HasAllStancesStyles"
-          >CHOOSE YOUR STANCES AND STYLES</span
-        >
-        <span v-else>ACCEPT STANCES AND STYLES</span>
-      </v-btn>
     </div>
     You may select up to an additional {{ character.StancesRemaining }} stances!
     <div :v-if="!character.HasSpirit">
@@ -41,28 +37,22 @@
           outlined
           return-object
           @change="$emit('chose', stance)" /></v-col
-      ><v-col cols="9">
-        <v-btn
-          color="success"
-          class="button-seperator"
-          large
-          tile
-          @click="addStance(stance)"
-          :disabled="
-            stance.Name == '' ||
-            !character.StancesRemaining ||
-            character.Stances.includes(stance.Name)
-          "
+      ><v-col cols="9"
+        ><v-layout justify-center>
+          <v-btn
+            color="success"
+            class="button-seperator"
+            large
+            tile
+            @click="addStance(stance)"
+            :disabled="stance.Name == '' || !character.StancesRemaining || character.Stances.includes(stance.Name)"
+          >
+            <span v-if="stance.Name == ''">Select a stance on the left!</span>
+            <span v-else>ADD {{ stance.Name }}</span>
+          </v-btn></v-layout
         >
-          <span v-if="stance.Name == ''">Select a stance on the left!</span>
-          <span v-else>ADD {{ stance.Name }}</span>
-        </v-btn>
         <div>
-          <stance-card
-            :stance="stance"
-            v-if="(stance.Name !='' )"
-            :category="character.SpiritType"
-          /></div></v-col
+          <stance-card :stance="stance" v-if="(stance.Name !='' )" :category="character.SpiritType" /></div></v-col
     ></v-row>
     You may select up to an additional {{ character.StylesRemaining }} styles!
     <div class="stance--box">
@@ -87,39 +77,34 @@
           outlined
           return-object
           @change="$emit('chose', style)" /></v-col
-      ><v-col cols="9">
-        <v-btn
-          color="success"
-          class="button-seperator"
-          large
-          tile
-          @click="addStyle(style)"
-          :disabled="
-            style.Name == '' ||
-            !character.StylesRemaining ||
-            character.Styles.includes(style.Name)
-          "
+      ><v-col cols="9"
+        ><v-layout justify-center>
+          <v-btn
+            color="success"
+            class="button-seperator"
+            large
+            tile
+            @click="addStyle(style)"
+            :disabled="style.Name == '' || !character.StylesRemaining || character.Styles.includes(style.Name)"
+          >
+            <span v-if="style.Name == ''">Select a style on the left!</span>
+            <span v-else>ADD {{ style.Name }}</span>
+          </v-btn></v-layout
         >
-          <span v-if="style.Name == ''">Select a style on the left!</span>
-          <span v-else>ADD {{ style.Name }}</span>
-        </v-btn>
         <div>
-          <stance-card
-            :stance="style"
-            v-if="(style.Name !='')"
-          /></div></v-col></v-row
+          <stance-card :stance="style" v-if="(style.Name !='')" /></div></v-col></v-row
   ></span>
 </template>
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 
-import { store } from "@/store";
-import { Character, Stance } from "@/class";
-import variables from "@/styles/variables.scss";
-import ShowCards from "@/components/cards/ShowCards.vue";
-import StanceCard from "@/components/cards/StanceCard.vue";
+import { store } from '@/store'
+import { Character, Stance } from '@/class'
+import ShowCards from '@/components/cards/ShowCards.vue'
+import StanceCard from '@/components/cards/StanceCard.vue'
+import StanceSelectionText from '@/database/text_files/character_creation/choosing_your_styles_stances.txt'
 export default Vue.extend({
-  name: "stance-selection",
+  name: 'stance-selection',
   components: { StanceCard, ShowCards },
   props: {
     character: {
@@ -129,64 +114,65 @@ export default Vue.extend({
   },
   data: () => {
     return {
-      variables,
       stance: new Stance(),
       style: new Stance(),
-    };
+    }
   },
   computed: {
     spiritDisciplines: function () {
-      return this.$store.getters.getDisciplinesByCategory(
-        this.character.SpiritType
-      );
+      return this.$store.getters.getDisciplinesByCategory(this.character.SpiritType)
     },
     stances: function () {
-      var stances = [];
+      var stances = []
       for (var disc of this.spiritDisciplines) {
-        stances = stances.concat(
-          this.$store.getters.getStancesFromList(disc.Stances)
-        );
+        stances = stances.concat(this.$store.getters.getStancesFromList(disc.Stances))
       }
-      return stances;
+      return stances
     },
     styles: function () {
-      return this.$store.getters.getAllStyles();
+      return this.$store.getters.getAllStyles()
     },
     charStances: function () {
-      return this.$store.getters.getStancesFromList(this.character.Stances);
+      return this.$store.getters.getStancesFromList(this.character.Stances)
     },
     charStyles: function () {
-      return this.$store.getters.getStancesFromList(this.character.Styles);
+      return this.$store.getters.getStancesFromList(this.character.Styles)
     },
     spirit: function () {
-      return this.character.SpiritType;
+      return this.character.SpiritType
+    },
+    creationText: function () {
+      return this.$marked.parse(StanceSelectionText)
     },
   },
   methods: {
     addStance: function (variable) {
-      this.character.AddStance(variable);
+      this.character.AddStance(variable)
     },
     addStyle: function (variable) {
-      this.character.AddStyle(variable);
+      this.character.AddStyle(variable)
     },
     removeStance(variable) {
-      this.character.RemoveStance(variable.card, variable.index);
+      this.character.RemoveStance(variable.card, variable.index)
     },
     removeStyle(variable) {
-      this.character.RemoveStyle(variable.card, variable.index);
+      this.character.RemoveStyle(variable.card, variable.index)
     },
   },
   watch: {
     spirit: function (v) {
-      this.stance = new Stance();
+      this.stance = new Stance()
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">
 .button-seperator {
   margin-bottom: 1em;
+}
+.character-creation {
+  font-size: smaller;
 }
 .stance--box {
   margin-top: 1em;

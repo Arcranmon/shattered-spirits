@@ -20,28 +20,29 @@ Outside of combat, characters will make use of both their skills and those of th
 
 ## Inspirations
 
-If it wasn't obvious from the setting pitch, _Avatar: The Last Airbender_ and Jim Butcher's _Codex Alera_ series are significant influences on the power system. There's a healthy dose of playing way too much _Pokemon_ and _Golden Sun_ in my childhood tossed in there, and any spirit important enough to show up in the story needs to have a _Spirit Island_-esque name.
+If it wasn't obvious from the setting pitch, _Avatar: The Last Airbender_ and Jim Butcher's _Codex Alera_ series are significant influences on the power system. There's a healthy dose of playing way too much _Pokemon_ and _Golden Sun_ tossed in there, and any spirit important enough to show up in the story needs to have a _Spirit Island_-esque name.
 
 Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, and _Fire Emblem_. _Gloomhaven_ inspired a lot of the Initiative system as well as my focus on making everything incredibly action-oriented. _Divinity_ helped with the terrain and status focus that I wanted, and _Fire Emblem_, particularly _Three Houses_ was a big inspiration for creating a lot of the more martial abilities within the system.
 
 ## To-Do
 
-HIGH PRIORITY
+ONGOING REFACTORS
 
-- Add 'Enhance' actions, that have an associated Cost to whatever Action they're attached to, but enhance their capabilities.
 - Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
 - Change 'Safe' from Disadvantage to increased cost on 'Opportune' Reactions.
 - Update all the descriptions of Weapons/Disciplines once they're a bit more consistent.
-- STONEHEART
-  - Add a 'Bold Challenge'-esque Taunt for Stoneheart
-  - Add 'Courageous Charge' as an Enhancement for Valiant Charge
-  - Add 'Bold Strike' as an Enhancement for Reckless Bravery
-  - Replace 'Last Stand' with a self-buff that does more the more injured a character is.
+- Update all Stances/Styles to have an Enhancement or Reaction, and most Techniques to have an Enhancement/Reaction.
+
+HIGH PRIORITY
+
+- Damage math ordering.
+- Cards and better defined status conditions (Boons for positive and Banes for negative).
 
 LOW PRIORITY
 
 - Add more specialized weapon strikes to more strongly set their identities.
 - Make names more fun and evocative.
+- Visually differentiate the different cards more.
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Here's a very rough roadmap of what I have planned.
 
@@ -50,7 +51,7 @@ This system is very much a work-in-progress, but is slowly getting more and more
   - Once this math is figured out, create statblocks for the various Obstacles.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
   - Earth needs a balance pass simply because it was completed first and they're likely undertuned now.
-  - Revisist Spirit Stances to try to make sure they're a bit more generally applicable, not just with their Discipline's Techniques.
+  - Revisit Spirit Stances to try to make sure they're a bit more generally applicable, not just with their Discipline's Techniques.
   - Add more comprehensive descriptions for how each discipline plays and what their strengths and weaknesses are.
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
   - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.

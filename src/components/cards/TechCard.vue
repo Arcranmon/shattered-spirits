@@ -11,7 +11,8 @@
           <b
             >{{ tech.SpeedHeader }}<span v-if="tech.HasDamageType">, {{ tech.DamageTypeHeader }}</span
             ><span v-if="tech.HasRange">, {{ tech.RangeHeader }}</span
-            ><span v-if="tech.HasArea">, {{ tech.Area }}</span> <span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
+            ><span v-if="tech.HasArea">, {{ tech.Area }}</span
+            ><span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
         </span>
         <b><display-tooltip-text v-if="tech.HasKeywords" :string="tech.KeywordsHeader" :decorate="false" /></b>

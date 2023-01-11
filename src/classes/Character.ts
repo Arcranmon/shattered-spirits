@@ -29,16 +29,15 @@ class Character {
   private hands_of_equipment_: number
 
   kMaximumHands = 4
-  kMaxStancesAndStyles = 5
-  kMaxStances = 3
-  kMaxTechniques = 7
+  kMaxStances = 2
+  kMaxTechniques = 6
 
   // ==========================================================
   // CONSTRUCTOR
   // ==========================================================
   public constructor() {
-    this.current_stance_ = null
-    this.current_style_ = null
+    this.current_stance_ = store.getters.getStance('No Stance')
+    this.current_style_ = store.getters.getStance('No Style')
     this.current_endurance_ = 0
     this.equipped_armor_ = null
     this.focus_ = 0
@@ -282,11 +281,14 @@ class Character {
   get HasAllStancesStyles() {
     return this.StancesRemaining == 0 && this.StylesRemaining == 0
   }
+  get HasNoEquippedStanceOrStyle() {
+    return this.current_stance_.Name == 'No Stance' || this.current_style_.Name == 'No Style'
+  }
   get StancesRemaining() {
-    return Math.min(this.kMaxStancesAndStyles - this.stances_.length - this.styles_.length, this.kMaxStances - this.stances_.length)
+    return Math.min(this.kMaxStances - this.stances_.length)
   }
   get StylesRemaining() {
-    return Math.min(this.kMaxStancesAndStyles - this.stances_.length - this.styles_.length, this.kMaxStances - this.styles_.length)
+    return Math.min(this.kMaxStances - this.styles_.length)
   }
   get HasNames() {
     return this.Name != '' && this.SpiritName != ''

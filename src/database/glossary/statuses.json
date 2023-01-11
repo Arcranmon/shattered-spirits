@@ -1,115 +1,79 @@
 [
   {
-    "keyword": "Ablative Armor",
-    "effect": "Ablative Armor provides Guard equal to its value. However, every Attack against a creature is automatically resolved against their Ablative Armor as well. Ignore the current Ablative Armor value when determining if an Attack successfully Shreds the Ablative Armor. If the Ablative Armor is specifically targeted the effect is amplified. On a failed Attack, Shred 1. On a successful Attack, Shred 2. A creature may never have more than 5 Ablative Armor at a given time."
+    "name": "Ablative Armor",
+    "desc": "Armor that, while powerful, is easily stripped away.",
+    "effect": "Ablative Armor provides Guard equal to its value. Ablative Armor stacks, but a creature may never have more than 5 Ablative Armor at a given time. Techniques and Stances that provide Ablative Armor will specify its Durability, as well as any _Weaknesses_ or _Resistances_ it has.",
+    "remove": "Every Attack against a creature is automatically resolved against their Ablative Armor as well. Only compare this to the Ablative Armor's _Durability_. An attacker may choose to attack the creature's Ablative Armor. Resolve the Attack as a normal one against the creature's Armor. Always _Shred_ 1. If the Attack does Damage greater than its _Durability_, add _Shred_ 1."
   },
   {
-    "keyword": "Accelerate",
-    "effect": "When a creature becomes Accelerated their next Action this round has its Speed decreased by 1. If the creature has no more Actions this round, they gain 1 Momentum or Reflex (their choice). If a creature's next Turn is in the current Phase, they may take their Turn immediately after yours, ignoring their normal Initiative process."
+    "name": "Blind",
+    "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
+    "effect": "A Blind creature treats all other creatures as _Veiled_.",
+    "remove": "Creatures are Blinded until they spend 2 _Grit_ at the end of their _Turn_, or the duration specified when inflicted has passed."
+  },
+  { "name": "Blinded", "see": "Blind" },
+  {
+    "name": "Broken",
+    "effect": "When a creature inflicts Broken the Target immediately loses their _Stance_/_Style_ and gains No Stance/Style (Attacker's choice). While Broken, a creature may not replace No Stance/Style with an active _Stance_/Style_.",
+    "remove": "Only Techniques that explicitly remove Broken (such as Gather) remove Broken. Otherwise, it is cleared at the end of combat."
   },
   {
-    "keyword": "Blind",
-    "effect": "A Blind creature treats all other creatures as Veiled. Blind is cleared at the Refresh Phase of the next round."
-  },
-  { "keyword": "Bottom", "see": "Grappled" },
-  {
-    "keyword": "Break",
-    "effect": "When a creature suffers Break they lose their choice of their Stance or their Style. Until they take an Action that allows them to adopt a Stance or Style they have no active Stance or Style."
+    "name": "Damaged",
+    "effect": "Damaged only applies to _Equipment_. A Damaged Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Damaged, instead inflict _Shred_ 1.",
+    "remove": "Only Techniques that explicitly remove Damaged remove Damaged. Otherwise, it can be removed outside of combat with [travel mechanic here]."
   },
   {
-    "keyword": "Damaged",
-    "effect": "A Damaged weapon takes a -2 penalty to all Attack Rolls. If a Damaged piece of Equipment is Damaged again, Destroy it."
+    "name": "Disarmed",
+    "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. While Disarmed, a may not _Wield_ an item they do not already have _Equipped_.",
+    "remove": "Only Techniques that explicitly remove Disarmed (such as Gather) remove Broken. Otherwise, it is cleared at the end of combat."
+  },
+  { "name": "Disarm", "see": "Disarmed" },
+  { "name": "Disarming", "see": "Disarm" },
+  {
+    "name": "Embed",
+    "effect": "Embed effects are always paired with an Action that utilizes a Source or a Weapon. When Embed occurs, the Source or Weapon used in the Action is attached to or impaled in the Target and moves with it. If a Source is Embedded in a creature, they may be treated as that Source.",
+    "remove": "A creature may _Sacrifice_ an Action to end Embed, or pay 2 _Grit_ at the end of a _Turn_ to end Embed, but take 4 _True_ Damage in the process."
+  },
+  { "name": "Embedded", "see": "Embed" },
+  {
+    "name": "Fragile",
+    "effect": "Fragile decreases the Durability of a piece of Equipment or Obstacle by 2.",
+    "remove": "Only Techniques that explicitly remove Fragile remove Fragile. Otherwise, it can be removed outside of combat with [travel mechanic here]."
   },
   {
-    "keyword": "Disarm",
-    "effect": "A Weapon or Item that a creature has Equipped is removed from them, typically dropping to an adjacent, unoccupied space."
-  },
-  { "keyword": "Disarming", "see": "Disarm" },
-  {
-    "keyword": "Drain",
-    "effect": "Drain will always list a type of Token. Unless the Negate cost is paid the Target loses that Token and the attacker gains that Token."
+    "name": "Flying",
+    "effect": "While Flying, a character ignores all Terrain and Obstacles that do not specifically target Flying characters. Melee Attacks have Disadvantage against Flying characters.",
+    "remove": "Flying typically only lasts as long as a Technique or Stance provides, but is also ended early if the Target is knocked _Prone_."
   },
   {
-    "keyword": "Embed",
-    "effect": "Embed effects are always paired with an Action that utilizes a Source or a Weapon. When Embed occurs, the Source or Weapon used in the Action is attached to or impaled in the Target and moves with it. A creature may Sacrifice an Action to end Embed. In addition, creatures do not have Disadvantage when attacking an Embedded Weapon."
+    "name": "Grappled",
+    "effect": "A Grappled character's effect depends on if they are Top or Bottom.\n\nThe Top character has their Movement reduced by one tier and cannot use the hand utilized for Grappling for anything other than the Shove Technique or Strikes with an Unarmed Weapon.\n\nThe Bottom character is Stuck and, when the Top character moves, the Bottom character moves along with them.\nIf the Bottom successfully inflicts Grappled on the Top, they may either choose to end the Grapple or become the Top. If the Top inflicts Grappled on the Bottom, they may immediately instead inflict _Pull_ 6.",
+    "remove": "At the end of their Turn, a Bottom character may expend Grit and Reflex to enter a Grapple Contest; if the Winner does not expend an equal amount of Grit or Momentum in any combination, the Bottom character is freed. The Bottom character is also freed if they or the Top are forcibly moved, such as by a Push or Pull. If the Top character is using both Hands for the Grapple treat their expended Grit and Momentum as 1 higher for the Grapple Contest."
   },
-  { "keyword": "Embedded", "see": "Embed" },
+  { "name": "Grapple", "see": "Grappled" },
+  { "name": "Bottom", "see": "Grappled" },
+  { "name": "Top", "see": "Grappled" },
   {
-    "keyword": "Entomb",
-    "effect": "An Entombed creature is trapped within an object. While trapped within this object the creature is Restrained until said object is destroyed. Typically, there will be other ways to end Entombed described in the triggering Attack."
-  },
-  { "keyword": "Entombed", "see": "Entomb" },
-  {
-    "keyword": "Fragile",
-    "effect": "Fragile decreases the Durability of an item by 2."
-  },
-  {
-    "keyword": "Flying",
-    "effect": "While Flying, a character ignores all Terrain and Obstacles that do not specifically target Flying characters. Melee Attacks have Disadvantage against Flying characters."
-  },
-  { "keyword": "Grapple", "see": "Grappled" },
-  {
-    "keyword": "Grappled",
-    "effect": "A Grappled character's effect depends on if they are Top or Bottom.\nThe Top character has their Movement reduced by 1 step and cannot use the hand utilized for Grappling for anything other than the Shove Maneuver or Strikes with an Unarmed Weapon.\nThe Bottom character is Stuck and, when the Top character moves, the Bottom character moves along with them. At the end of their Turn, a Bottom character may expend Grit and Reflex to enter a Grapple Contest; if the Winner does not expend an equal amount of Grit or Momentum in any combination, the Bottom character is freed. The Bottom character is also freed if they or the Top are forcibly moved, such as by a Push or Pull. If the Top character is using both Hands for the Grapple treat their expended Grit and Momentum as 1 higher for the Grapple Contest. If the Bottom successfully inflicts Grappled on the Top, they may either choose to end the Grapple or become the Top."
+    "name": "Prone",
+    "desc": "An effect caused when a foe is knocked flat on their back.",
+    "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage.",
+    "remove": "A creature may downgrade their Movement by one tier to end Prone."
   },
   {
-    "keyword": "Ice Armor",
-    "effect": "Ice Armor functions as Ablative Armor with a Durability of 6."
+    "name": "Restrained",
+    "desc": "An effect cause when a creature's ability to move is severly hampered.",
+    "effect": "A Restrained creature's ability to move is severely hampered. While Restrained, a creature cannot Move, makes all Attacks with Disadvantage, and all Attacks against them have Advantage.",
+    "remove": "How to end Restrained is typically specified in the Technique that inflicts it. If nothing is specified, a creature may _Sacrifice_ an Action and spend 2 _Reflex_ to end Restrained."
   },
   {
-    "keyword": "Pin",
-    "effect": "A Status caused when a large object pins them in place. While Pinned, a creature is Stuck and Embedded. A creature remains Pinned until they Sacrifice an Action and spend 1 Grit or, at the end of a turn, they pay 1 Grit and take 5 Tru_ Damage. An allied creature may also Sacrifice an Action and pay 2 Momentum to free a Pinned Creature."
-  },
-  { "keyword": "Pinned", "see": "Pin" },
-  {
-    "keyword": "Prone",
-    "effect": "A Prone creature cannot move until they spend a Step to stand from Prone. If they take a movement greater than a Step they may still move after standing from Prone, but downgrade the movement by one level.\nWhile Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage."
+    "name": "Stuck",
+    "desc": "A status caused when a creature is unable to move, but their ability to fight is otherwise unimpaired.",
+    "effect": "While Stuck a creature cannot take any Movement.",
+    "remove": "How to end Stuck is typically specified in the Technique that inflicts it. If nothing is specified, a creature may spend 2 _Reflex_ at the end of their _Turn_ to end Stuck."
   },
   {
-    "keyword": "Pull",
-    "type": "Condition",
-    "effect": "Move a target up to X squares directly towards you, where X is the numerical value immediately after Pull in an effect's description. If you are already adjacent, you may move the target up to X squares, as long as they end the movement directly adjacent to you."
-  },
-  { "keyword": "Pulled", "see": "Pull" },
-  {
-    "keyword": "Push",
-    "effect": "Move a target up to X squares directly away, where X is the numerical value immediately after Push in an effect's description."
-  },
-  { "keyword": "Pushed", "see": "Push" },
-  { "keyword": "Pushes", "see": "Push" },
-  {
-    "keyword": "Restrained",
-    "effect": "A Restrained creature's ability to move is severely hampered. While Restrained, a creature cannot Move, makes all Attacks with Disadvantage, and all Attacks against them have Advantage."
-  },
-  {
-    "keyword": "Shred",
-    "effect": "Reduce the creature's Guard by 1."
-  },
-  { "keyword": "Slid", "see": "Slide" },
-  {
-    "keyword": "Slide",
-    "type": "Condition",
-    "effect": "Move a target up to X squares in any direction."
-  },
-  {
-    "keyword": "Staggered",
-    "effect": "When a creature becomes Staggered their next Action this round has its Speed increased by 1. If the creature has no more Actions this round, they gain either Hobbled 1 or Dazed 2 (inflictor's choice) or gains Staggered immediately after the next Planning Phase."
-  },
-  {
-    "keyword": "Stone Armor",
-    "effect": "Stone Armor functions as Ablative Armor with a Durability of 8."
-  },
-  {
-    "keyword": "Stuck",
-    "effect": "A Status caused when a creature is unable to move, but their ability to fight is otherwise unimpaired. While Stuck a creature cannot take any Movement."
-  },
-  {
-    "keyword": "Sturdy",
-    "effect": "Sturdy increases the Durability of an item by 2."
-  },
-  { "keyword": "Top", "see": "Grappled" },
-  {
-    "keyword": "Wood Armor",
-    "effect": "Wood Armor functions as Ablative Armor with a Durability of 7."
+    "name": "Sturdy",
+    "effect": "Sturdy increases the Durability of a piece of Equipment or Obstacle by 2.",
+    "remove": "Only Techniques that explicitly remove Sturdy remove Sturdy. Otherwise, it is removed at the end of combat, or when the _Technique_/_Stance_ that caused it specifies."
   }
 ]

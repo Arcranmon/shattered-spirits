@@ -17,36 +17,30 @@
         {{ item.Name }}
       </template>
     </v-autocomplete>
-    <discipline-card
-      :discipline="discipline"
-      v-if="(discipline.Name !='' )"
-      :category="discipline.Category"
-    />
+    <discipline-card :discipline="discipline" v-if="(discipline.Name !='' )" :category="discipline.Category" />
   </span>
 </template>
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 
-import { store } from "@/store";
-import { Character, Discipline } from "@/class";
-import variables from "@/styles/variables.scss";
-import ShowCards from "@/components/cards/ShowCards.vue";
-import DisciplineCard from "@/components/cards/DisciplineCard.vue";
+import { store } from '@/store'
+import { Character, Discipline } from '@/class'
+import ShowCards from '@/components/cards/ShowCards.vue'
+import DisciplineCard from '@/components/cards/DisciplineCard.vue'
 export default Vue.extend({
-  name: "stance-selection",
+  name: 'stance-selection',
   components: { DisciplineCard, ShowCards },
   data: () => {
     return {
-      variables,
       discipline: new Discipline(),
-    };
+    }
   },
   computed: {
     disciplines: function () {
-      return this.$store.getters.getDisciplines();
+      return this.$store.getters.getDisciplines()
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

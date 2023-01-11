@@ -1,3 +1,14 @@
+declare interface IAfflictionData {
+  desc: string
+  effect: string
+  name: string
+  purge: string
+  reacts: Array<string>
+  remove: string
+  special?: string
+  type: string
+}
+
 declare interface IArmorData {
   armor: number
   category?: string
@@ -70,7 +81,7 @@ declare interface IEnhancementData {
 }
 
 declare interface IGlossaryData {
-  keyword: string
+  name: string
   effect?: string
   see?: string
 }
@@ -138,6 +149,13 @@ declare interface IStanceData {
   refresh: IRefreshData
   effect: string
   special?: string
+}
+
+declare interface IStatusData {
+  desc: string
+  effect: string
+  name: string
+  remove: string
 }
 
 declare interface ITechData {

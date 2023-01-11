@@ -1,5 +1,15 @@
 [
   {
+    "name": "No Stance",
+    "desc": "A stance making no use of your spirit's power.",
+    "effect": "None."
+  },
+  {
+    "name": "No Style",
+    "desc": "A style making no use of your martial training.",
+    "effect": "None."
+  },
+  {
     "name": "Bloodletter Style",
     "discipline": "Blademaster",
     "desc": "Your bladed weapon is a vicious blur, striking deep as it draws blood.",
@@ -182,20 +192,21 @@
     "name": "Acrobat Style",
     "discipline": "Freedom",
     "desc": "You easily duck and roll about the battlefield, making full use of your unarmored body.",
-    "accumulate": "Up to once per _Turn_, gain 1 _Momentum_ when you make a _Leaping_ Move.",
+    "accumulate": "Once on each of your _Turns_, gain 1 _Momentum_ when you make a _Leaping_ Move.",
     "refresh": {
       "reflex": 4
     },
-    "effect": "While wearing no Armor all _Leaping_ Movement you make is _Safe_. Choose one Technique in the _Planning_ Phase. Add _Vault_ to it.",
+    "effect": "While wearing no Armor all _Leaping_ Movement you make is _Safe_.",
+    "special": "Add the _Leap_ Enhancement to a single _Technique_ in the Planning Phase at no _Cost_.",
     "reaction": "Acrobatics"
   },
   {
     "name": "Instinct Style",
     "discipline": "Freedom",
     "desc": "You have honed your defenses to work while wearing no armor, dodging attacks by a razor-thin margin.",
-    "accumulate": "While wearing no Armor, when an _Attack_ is a _Graze_- against you gain 1 _Momentum_/_Reflex_.",
+    "accumulate": "Once per _Phase_, while wearing no Armor, when an _Attack_ is a _Graze_- against you gain 1 _Momentum_/_Reflex_.",
     "refresh": {
-      "grit": 1,
+      "momentum": 1,
       "reflex": 2
     },
     "effect": "While wearing no Armor, once per _Phase_, you may pay 1 _Reflex_ to add _Efficient_ to an _Evade_ Reaction. If an _Evade_ Reaction causes an attack to _Miss_, you may pay 1 _Reflex_ to inflict _Exposed_ 1 (2 _Focus_/_Reflex_).",
@@ -205,12 +216,12 @@
     "name": "Tumbler Style",
     "discipline": "Freedom",
     "desc": "Elevated terrain is no issue to you. You can leap about the battlefield easily, ignoring such concerns.",
-    "accumulate": "While wearing no Armor, whenever you change your Elevation by at least 2 on your Turn gain 1 _Momentum_.",
+    "accumulate": "While wearing no Armor, whenever your Elevation at the end of your Turn differs by at least 2 from the start of your Turn, gain 1 _Momentum_.",
     "refresh": {
-      "grit": 1,
-      "reflex": 3
+      "momentum": 2,
+      "reflex": 2
     },
-    "effect": "While wearing no Armor, _Climbing_ only costs Movement equal to 1 + the vertical distance covered. When _Falling_, reduce the cost to Negate fall damage by 1 and, if you don't take damage from a Fall, you may immediately Safe Move 1.",
+    "effect": "While wearing no Armor, _Climbing_ only costs Movement equal to 1 + the vertical distance covered. When _Falling_, reduce the cost to Negate fall damage by 1 and, if you don't take damage from a Fall, you may immediately Move 1, adding _Safe_ 2 to this Movement.",
     "enhancement": "Tumble"
   },
   {
@@ -412,13 +423,11 @@
     "name": "Bludgeon Style",
     "discipline": "Juggernaut",
     "desc": "You make use of your sturdy armor to lash out at foes, using your gauntlets as artificial weapons.",
-    "accumulate": "While wearing Heavy Armor, gain 1 _Momentum_ every time you _Hit_ with an Unarmed Attack or 2 _Momentum_ on a _Crit_.",
+    "accumulate": "While wearing Heavy Armor, gain 1 _Momentum_ every time you _Hit_+ with an Unarmed Attack.",
     "refresh": {
-      "grit": 3,
-      "reflex": 1
+      "grit": 3
     },
-    "effect": "Deal additional Damage with all Unarmed Weapons equal to the _Guard_ provided by your Armor, but their Speed is increased by 1.",
-    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all effects that move you against your will by half the _Guard_ provided by your Armor.",
+    "effect": "Deal additional Damage with all Unarmed Weapons equal to the _Guard_ provided by your Armor, but their Speed is increased by 1. On a _Crit_, add _Prone_ and increase the cost to _Negate_ by 1.",
     "reaction": "Heavy Rebuke"
   },
   {
@@ -430,7 +439,6 @@
       "grit": 4
     },
     "effect": "Whenever an Attack is a _Graze_-, treat the _Guard_ provided by your armor as double its normal value. If an Attack does 0 Damage, reduce the cost to _Negate_ by 1.",
-    "special": "While wearing Heavy Armor, Reduce the cost to _Negate_ all effects that move you against your will by half the _Guard_ provided by your Armor.",
     "reaction": "Heavy Guard"
   },
   {
@@ -467,8 +475,8 @@
       "focus": 1,
       "reflex": 2
     },
-    "effect": "Whenever you _Hit_+ with a _Lance_ Weapon the Target treats you as having _Safe_ 2 on all _Movement_ until the end of the _Turn_.",
-    "reaction": "Harry"
+    "effect": "Whenever you _Hit_+ with a _Lance_ Weapon the Target treats you and all allies as having _Safe_ 1 on all _Movement_ until the end of the _Turn_.",
+    "enhancement": "Maneuvering Thrust"
   },
   {
     "name": "Barricade Stance",

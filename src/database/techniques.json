@@ -24,17 +24,18 @@
     "effect": "Attack using your weapon's Profile."
   },
   {
-    "name": "Draw",
+    "name": "Gather",
     "discipline": "Basic",
-    "desc": "Switching weapons allows one to be prepared for any combat situation.",
+    "desc": "You take the time to reset your footing or change your armament, preparing for future assaults.",
     "keywords": ["_Fluid_ 1"],
     "type": "Maneuver",
-    "speed": "1",
+    "speed": "2",
     "range": "Self",
     "ap": 1,
-    "move": "Step",
-    "effect": "You may equip a Wielded Item, then Wield any _Light_ One-Handed Weapon in an Open Hand that you have Equipped.",
-    "imbue": "Choose one:\n* Speed is instead 2, but you may Wield any One-Handed Weapon.\n* Speed is instead 3, but you may Wield any One-Handed Weapon or a Shield or Wield a Two-Handed Weapon, but must have two Open Hands.\n\nChoose any:\n* +1 AP: Move becomes Reposition and you may make a _Glancing_ Attack using the Weapon you drew as a part of this Technique."
+    "move": "Reposition",
+    "effect": "Choose one:\n* Clear _Disarmed_. You stow any _Wielded_ Equipment, then _Wield_ any _Equipped_ or adjacent, un-_Equipped_ Equipment.\n* Clear _Broken_. You may change your _Stance_, _Style_, or both.",
+    "imbue": "2 _Focus_/_Momentum_: This is 0 AP.",
+    "boost": "2 _Focus_/_Momentum_: Resolve both Effects."
   },
   {
     "name": "Size Up",
@@ -46,7 +47,7 @@
     "range": "12",
     "ap": 1,
     "move": "Reposition",
-    "effect": "Choose a creature within Range. Inflict _Knowledge_ 2 (2 _Focus_). If they do not _Negate_, also _Scout_ them."
+    "effect": "Choose a creature within Range. Inflict _Knowledge_ 2, _Scout_  (2 _Focus_)."
   },
   {
     "name": "Grab",
@@ -2312,13 +2313,15 @@
     "desc": "You prepare yourself for an attack, situating your lance in the ideal space for a strike.",
     "keywords": ["Weapon", "_Fluid_ 2"],
     "type": "Maneuver",
-    "speed": "Weapon-1",
+    "speed": "2",
     "range": "Weapon",
     "ap": 1,
     "move": "None",
     "reqs": "Lance Weapon Wielded.",
     "effect": "Gain 1 _Focus_. Until the end of the _Round_, you make an Attack with your Lance Weapon, or Move increase your Lance Weapon's _Reach_ by 1.",
-    "boost": "Choose any:\n* 1 _Focus_/_Momentum_: Instead, increase your _Reach_ until you Move or the end of the _Round_.\n* 1 _Momentum_: Make all spaces in a Side Burst X a Hazard, where X is your Lance Weapon's _Reach_. If your _Reach_ changes, adjust the size of this Side Burst. All Reactions using your Lance Weapon against a creature in these spaces cost 1 less and deal additional damage equal to the distance the creature is from you. All Reactions using your Lance Weapon cost 1 more against creatures not in these _Hazard_ spaces. These _Hazards_ are removed if you move or are no longer Wielding your Lance."
+    "boost": "Choose any:\n* 1 _Focus_/_Momentum_: Instead, increase your _Reach_ until you Move or the end of the _Round_.\n* 1 _Momentum_: Make all spaces in a Side Burst X a Hazard, where X is your Lance Weapon's _Reach_. If your _Reach_ changes, adjust the size of this Side Burst. All Reactions using your Lance Weapon against a creature in these spaces cost 1 less. All Reactions using your Lance Weapon cost 1 more against creatures not in these _Hazard_ spaces. These _Hazards_ are removed if you move or are no longer Wielding your Lance.",
+    "reaction_condition": "While benefitting from this _Technique_, gain the following _Reaction_:",
+    "reaction": "Charge Killer"
   },
   {
     "name": "Haft Strike",
@@ -3284,7 +3287,7 @@
     "range": "8",
     "cost": "2 _Focus_",
     "target": "Yourself or a creature within Range.",
-    "effect": "While this _Enchant_ persists, the creature gains benefits based on how much Endurance they have remaining. Effects are cumlative unless stated otherwise:\n* 100%: Target gains _Courage_ 1 at the start of the _Round_.\n* 75%: Target instead gains _Courage_ 2 at the start of the _Round_.\n* 50%: Target gains a +1 Bonus to Attack Rolls while they have any _Courage_.\n* 25%: Target gains 3 _Vigor_ at the start of each Turn. v\n* 0%: Target takes no penalties for being _Winded_.  At the start of each of their _Turns_, the Target either gains _Courage_ 1 or increases the value of their topmost _Courage_ Token by 1.\n\nThis _Enchant_ ends if the Target ever has no _Courage_.",
+    "effect": "While this _Enchant_ persists, the creature gains benefits based on how much Endurance they have remaining. Effects are cumlative unless stated otherwise:\n* 100%: Target gains _Courage_ 1 at the start of the _Round_.\n* 75%: Target instead gains _Courage_ 2 at the start of the _Round_.\n* 50%: Target gains a +1 Bonus to Attack Rolls while they have any _Courage_.\n* 25%: Target gains 3 _Vigor_ at the start of each Turn.\n* 0%: Target takes no penalties for being _Winded_.  At the start of each of their _Turns_, the Target either gains _Courage_ 1 or increases the value of their topmost _Courage_ Token by 1.\n\nThis _Enchant_ ends if the Target ever has no _Courage_.",
     "reaction_condition": "While this Enchant persists, the Target of this Technique gains the below Reaction:",
     "reaction": "True Grit"
   },
@@ -4098,31 +4101,17 @@
   {
     "name": "Break Footing",
     "discipline": "Tremorsight",
-    "desc": "You analyze a foe's footing before subtly shifting the earth, knocking a foe off-balance.",
+    "desc": "You analyze a foe's footing before subtly shifting the earth, exposing the weaknesses in their stance.",
     "keywords": ["Spirit", "Earth", "Groundsource"],
     "type": "Maneuver",
     "speed": "3",
-    "range": "Seismic Sense + 2",
+    "range": "8",
     "ap": 1,
     "move": "Step",
-    "cost": "Any 2 _Focus_/_Momentum_",
-    "effect": "Attack with this Technique's _Profile_.",
-    "chart": {
-      "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "_Hobbled_ 1 (2 _Reflex_)",
-        "_Hobbled_ 1 (2 _Reflex_)",
-        "_Hobbled_ 1 (2 _Reflex_)",
-        "_Hobbled_ 1, _Staggered_ (3 _Reflex_)",
-        "_Hobbled_ 1, _Staggered_ (3 _Reflex_)",
-        "_Prone_, _Staggered_ (3 _Reflex_)",
-        "_Prone_, _Staggered_ (3 _Reflex_)",
-        "_Prone_, _Staggered_, _Break_ (4 _Reflex_)",
-        "_Prone_, _Staggered_, _Break_ (4 _Reflex_)",
-        "_Prone_, _Staggered_, _Break_ (4 _Reflex_)"
-      ]
-    }
+    "cost": "",
+    "effect": "Inflict _Hobbled_ 1 (2 _Reflex_). If the _Target_ is within your _Seismic Sense_, you may instead inflict _Prone_ (2 _Reflex_).",
+    "boost": "When you use this Technique you may remove any amount of _Knowledge_ on the Target. Gain half the _Tokens_ you would normally gain for clearing this _Knowledge_. You may then purchase additional effects based on the total _Value_ of _Knowledge_ removed. Effects may be purchased multiple times:\n* 1: Add _Vulnerable_ 2/_Staggered_.\n* 1: Inflict 1 _True_ Damage.\n* 2: Add _Break_/_Exposed_ 2/_Hobbled_ 1.\n* 2: Increase the cost to _Negate_ by 1.",
+    "enhancement": "Exploiting Strike"
   },
   {
     "name": "Amplify Pulse",
@@ -4141,20 +4130,6 @@
     "reaction": "Reverberations"
   },
   {
-    "name": "Exploiting Strike",
-    "discipline": "Tremorsight",
-    "desc": "You find an old wound in an enemy with your seismic sense before bringing your weapon crashing down on it.",
-    "keywords": ["Spirit", "Earth", "Weapon"],
-    "type": "Strike",
-    "speed": "Weapon",
-    "range": "Weapon",
-    "ap": 1,
-    "move": "Reposition",
-    "cost": "1 _Focus_, 1 _Momentum_",
-    "reqs": "Target must be within your Seismic Sense + 2 and on earthen ground.",
-    "effect": "Attack using your weapon's Profile. On a _Graze_+, add one of _Hobbled_ 1, _Dazed_ 2, or _Impaired_ 2 (2 _Focus_) to the Attack. On a _Crit_, instead add two and increase the cost to _Negate_ by 1."
-  },
-  {
     "name": "Rippling View",
     "discipline": "Tremorsight",
     "desc": "You focus your tremorsense outward, gaining insight into a distant area.",
@@ -4165,7 +4140,7 @@
     "area": "Blast 1",
     "ap": 1,
     "move": "Step",
-    "effect": "Inflict _Knowledge_ 1, _Scout_ (1 _Focus_) on all creatures of your choice within the Area. In addition, create an Area of _Seismic Sense_ within the Area that continues as long as this Enchant exists. At the start of each _Round_, _Knowledge_ 1, _Scout_ (1 _Focus_) on all creatures of your choice within the Area. If this _Enchant_ ends, remove the Area.",
+    "effect": "Inflict _Knowledge_ 1, _Scout_ (1 _Focus_) on all creatures of your choice within the Area. In addition, the Area is treated as within you _Seismic Sense_ as long as this Enchant exists. At _Refresh_, inflict _Knowledge_ 1, _Scout_ (1 _Focus_) on all creatures of your choice within the Area. If this _Enchant_ ends, remove the Area.",
     "special": "You and your allies may treat _Obstacles_ in the Area as _Fragile_ if you wish.",
     "boost": "Choose any:\n* 2 _Focus_: Remove the Enchant Keyword. The Area persists until the end of the Encounter.\n* 2 _Focus_: Instead, Area is a _Blast_ 2.",
     "reaction_condition": "While an Area persists, you gain the below Reaction:",
@@ -4182,10 +4157,25 @@
     "ap": 1,
     "move": "Step",
     "cost": "1 _Focus_",
-    "effect": "Inflict _Knowledge_ 2, _Scout_ (2 _Focus_) on the Target.",
+    "effect": "Inflict _Knowledge_ 2, _Scout_ (2 _Focus_) on the Target. If they do not _Negate_, also learn their _Stance_/_Style_ (your choice) and all Effects that it grants.",
     "special": "If the Target is within your _Seismic Sense_, inflict an additional 2 _Value_ of _Knowledge_, either as new Tokens or by increasing the Value of another Token inflicted by this Technique and increase the cost to _Negate_ by 1.",
-    "imbue": "+1 AP: Repeat the _Effect_, and the _Special_ if applicable. If they do not _Negate_, until of the _Round_ whenever you or an ally would make an Attack against that creature while it is within your _Seismic Sense_ you may choose to convert their topmost _Knowledge_ Token into an equivalent _Vulnerable_ Token, then inflict _Dazed_ X, where X is the Value of the _Knowledge_ Token-1. Both of these Tokens are applied before the Attack is resolved.",
+    "imbue": "+1 AP: Repeat the _Effect_, and the _Special_ if applicable. If they do not _Negate_, until of the _Round_ whenever you or an ally would make an Attack against that creature while it is within your _Seismic Sense_ you may choose to remove their topmost _Knowledge_ Token then infict _Vulnerable_ X, _Dazed_ X-1 (X _Focus_), where X is the Value of the _Knowledge_ Token as you reveal their weaknesses. Both of these Tokens are applied before the Attack is resolved.",
     "enhancement": "Seismic Aim"
+  },
+  {
+    "name": "Earthen Eyes",
+    "discipline": "Tremorsight",
+    "desc": "You focus your senses entirely through the earth, ignoring all auxillary inputs.",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "type": "Maneuver",
+    "speed": "1",
+    "range": "Self",
+    "ap": 1,
+    "move": "None",
+    "effect": "You are _Blinded_ until the end of the _Round_. While _Blinded_, you may not have _Disadvantage_ on Attacks against creatures within your _Seismic Sense_.",
+    "imbue": "2 _Focus_/_Momentum_: This is 0 AP.",
+    "reaction_condition": "While _Blinded_ by this _Technique_, gain the following _Reaction_:",
+    "reaction": "Pinpoint Location"
   },
   {
     "name": "Creeping Frost",
