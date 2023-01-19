@@ -19,7 +19,6 @@ class Technique {
   private move_: string
   private name_: string
   private range_: string
-  private reaction_condition_: string
   private reaction_: string
   private reqs_: string
   private special_: string
@@ -179,21 +178,18 @@ class Technique {
     return this.move_.length > 0
   }
   public get MoveHeader() {
-    return '**Move:** ' + this.Move
+    return '**Move:** _' + this.Move + '_'
   }
   public get HasRange() {
     return this.Range != ''
   }
   public get RangeHeader() {
     if (this.Range.includes('Weapon')) return 'Weapon Range'
-    else if (this.Range.length <= 2) return 'Range ' + this.range_
-    else return this.range_
+    else if (this.Range.length <= 2) return '_Range_ ' + this.range_
+    else return '_' + this.range_ + '_'
   }
   public get HasReaction() {
     return this.reaction_.length > 0
-  }
-  public get ReactionHeader() {
-    return this.reaction_condition_
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -251,7 +247,6 @@ class Technique {
     this.name_ = data.name || ''
     this.range_ = data.range || ''
     this.reaction_ = data.reaction || ''
-    this.reaction_condition_ = data.reaction_condition || ''
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || ''

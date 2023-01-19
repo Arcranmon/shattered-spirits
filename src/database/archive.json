@@ -40,7 +40,7 @@
     "name": "Earth Tomb",
     "discipline": "Land",
     "desc": "By using nearby earth and stone the Earthbonded seals their foe away.",
-    "keywords": ["Spirit", "Groundsource", "Earth"],
+    "keywords": ["Groundsource", "Earth"],
     "type": "Strike",
     "speed": "5",
     "damagetype": "Crush",
@@ -73,7 +73,7 @@
     "name": "Collapse",
     "discipline": "Land",
     "desc": "A powerful technique that creates a cave below the ground, then collapses the ground downwards, sending enemies into a painful fall.",
-    "keywords": ["Spirit", "Earth", "Groundsource", "Priority"],
+    "keywords": ["Earth", "Groundsource", "Priority"],
     "type": "Strike",
     "speed": "3",
     "damagetype": "Crush",
@@ -97,8 +97,8 @@
         "_Exposed_ 2 AND _Prone_ (3 _Reflex_)",
         "_Exposed_ 2 AND _Prone_ (3 _Reflex_)",
         "_Exposed_ 2 AND _Prone_ (3 _Reflex_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_), _Break_ (2 _Focus_)",
-        "_Exposed_ 2 AND _Prone_ (3 _Reflex_), _Break_ (2 _Focus_)"
+        "_Exposed_ 2 AND _Prone_ (3 _Reflex_), _Staggered_ (2 _Focus_)",
+        "_Exposed_ 2 AND _Prone_ (3 _Reflex_), _Staggered_ (2 _Focus_)"
       ]
     }
   },
@@ -106,19 +106,19 @@
     "name": "Burrow",
     "discipline": "Land",
     "desc": "The Earthbonded moves through the earth like a mole, safely reaching their destination.",
-    "keywords": ["Spirit", "Earth", "Safe", "Groundsource"],
+    "keywords": ["Earth", "Safe", "Groundsource"],
     "type": "Move",
     "speed": "3",
     "range": "Self",
     "ap": 1,
-    "move": "Shift",
+    "move": "Dash",
     "cost": "1 _Momentum_",
     "effect": "This Movement ignores all Terrain, Elevation, and Obstacles.",
     "imbue": "1 _Momentum_: Instead, Speed is 4 and Movement is Sprint."
   },
   {
     "name": "Dual Wielder",
-    "category": "Martial",
+    "category": "Martial Form",
     "flavor": "You fight best with a weapon in either hand, allowing you to create a barrage of unavoidable strikes.",
     "background": "darksalmon",
     "stances": ["Dual Weapon Style"],
@@ -126,7 +126,7 @@
   },
   {
     "name": "Duelist",
-    "category": "Martial",
+    "category": "Martial Form",
     "flavor": "You always keep one hand free in combat, providing you a flexibility and fluidity that few can match.",
     "background": " #5473ff ",
     "stances": [],
@@ -134,7 +134,7 @@
   },
   {
     "name": "Grappler",
-    "category": "Martial",
+    "category": "Martial Form",
     "flavor": "So long as you have a hand free you'll have an opponent in it, dragging them about the battlefield. The Grappler Discipline specializes in controlling one or two targets at a time to an exceptional degree. While a creature's offense is somewhat limited while grappling, it allows for unparalleled freedom in repositioning a foe. It is trivial for a Grappler to impose Disadvantage on the attacks of their grappled foes and a variety of Techniques that limit the arms a creature can use and knock them Prone are extremely common throughout this Discipline. While it will require a large amount of Grit to maintain the Grapple, it provides some of the hardest control in the game.",
     "background": "#A47070",
     "role": "Controller",
@@ -153,7 +153,7 @@
   },
   {
     "name": "Heavy Weapon Master",
-    "category": "Martial",
+    "category": "Martial Form",
     "flavor": "A lesser warrior is controlled by the heavy weight of a large weapon; you have mastered it and honed it into a deadly pendulum.",
     "background": "#990000",
     "stances": ["Executioner Style"],
@@ -206,5 +206,81 @@
     "background": "DarkGrey",
     "stances": [],
     "techniques": ["Sunder", "Shattering Counter", "Weapon Lock"]
+  },
+  {
+    "name": "Aggressive Advance",
+    "discipline": "Berserker",
+    "desc": "You dart forward at great speed, punishing any that interfere.",
+    "keywords": ["Charge"],
+    "type": "Move",
+    "speed": "1",
+    "range": "Self",
+    "ap": 1,
+    "move": "Step, Step",
+    "effect": "Take the Movements in any order. You may take any number of _Punish_ Reactions this _Turn_. Reduce the Cost of _Punish_ Reactions by 1 this _Turn_.",
+    "special": "You may choose to take only one of the listed Movements. If you do, gain 1 _Momentum_.",
+    "boost": "1 _Momentum_: Make a _Glancing_ 2 AP Basic Strike at the end of either step of this Movement.",
+    "imbue": "Choose one:\n* Speed is instead 2, and Move is Step, Reposition.\n* Speed is instead 3, and Move is Reposition, Reposition."
+  },
+  {
+    "name": "Pursuit",
+    "discipline": "Berserker",
+    "desc": "You chase a foe as they attempt to flee, dedicated to keeping them within your reach.",
+    "keywords": ["Punish"],
+    "type": "Strike",
+    "speed": "Reaction",
+    "range": "Weapon",
+    "cost": "1 _Reflex_, 1 _Momentum_, +1 _Momentum_ if the Attack is Speed 3 or slower.",
+    "trigger": "An enemy within your Reach moves outside your Reach.",
+    "effect": "At the end of that creature's turn, immediately Attack the triggering enemy with a _Maneuver_/_Weapon Strike_. You must use any _Movement_ granted by the chosen _Technique_ to move towards the enemy, ending this Reaction as close to them as possible. If you are adjacent to the target, make the Attack with _Advantage_.",
+    "boost": "1 _Momentum_. You may instead Attack with any _Strike_."
+  },
+  {
+    "name": "Sudden Charge",
+    "discipline": "Berserker",
+    "desc": "A reckless charge that always brings you closer to a nearby foe.",
+    "keywords": ["Charge", "_Fluid_ 1"],
+    "type": "Move",
+    "speed": "See Movement",
+    "move": "The movement granted by Charge determines its Speed, as follows: \n* <ins>Step:</ins> Speed 1 \n*  <ins>Reposition:</ins> Speed 2 \n* <ins>Dash:</ins> Speed 4",
+    "effect": "If you end your Movement next to a creature you may inflict _Vulnerable_ 1 (1 _Focus_) on them.",
+    "special": "All Movement granted by this Technique must be used to move directly towards an enemy by the shortest possible route.",
+    "boost": "1 _Momentum_/_Reflex_: Increase the Movement by one tier, but all _Punish_ Attacks against you this _Turn_ have _Advantage_."
+  },
+  {
+    "name": "Anchor",
+    "effect": "An Anchor is a sufficiently large Metal Source that is either secured or heavy enough that a Metalbound can pull themselves towards it without moving it. Typically, any Metal Source of a Size greater than the Metalbound can be used as an Anchor, but a wall-sconce that is heavily bolted into the wall may also serve as an Anchor at the GM's discretion."
+  },
+  {
+    "name": "Metal Source",
+    "effect": "A Metal Source is any amount of metal sufficient for use by a Metalbound. Any Weapon that is crafted predominately of metal counts as a Metal Source as well as any similarly-sized metal objects in the environment, but using them in conjunction with Metalbound features will typically Damage them. A Metalbound can reduce their _Armor_'s _Guard_ value by 1 to create a Metal Source when wearing _Armor_ made predominately of metal. If this reduces the _Armor_'s _Guard+ value to 0, the Metalbound is treated as Unarmored. Finally, a Metalbound is always assumed to be wearing sufficient metal for a single Source, so long as they have their gear on hand. After being used for an ability, track the location of all Metal Sources on the map."
+  },
+  {
+    "name": "Water Source",
+    "effect": "A Water Source is any space that is predominantly filled with water. What happens to a Water Source when it is Destroyed depends on the type. If it's part of an extremely large source, such as an ocean or lake it instead remains as existing water rushes in to fill the void. If it's part of a smaller source, such as a pond or spring, Destroy the target space, or, if the target space is central to the body, Destroy a space near the edge of the source of water, trying to maintain as even a shape as possible."
+  },
+  {
+    "name": "Wood Source",
+    "effect": "A Wood Source is any amount of wood sufficient for use by a Woodbound. Any Weapon that is crafted predominately of wood counts as a Wood Source as well as any similarly-sized wood objects in the environment, but using them in conjunction with Woodbound features will typically Damage them. A Woodbound can Damage a shield made of Wood to create a Wood Source. After being used for an ability, track the location of all Wood Sources on the map. In addition, large sources of wood, such as a tree, can sometimes can as multiple Wood Sources. If they do, they will designated as such by your GM. Finally, a Woodbound is always assumed to be wearing sufficient wood for a single Source, so long as they have their gear on hand. After being used for an ability, track the location of all Wood Sources on the map."
+  },
+  {
+    "name": "Icy",
+    "effect": "Icy Terrain is coated in thick ice, making it incredibly slippery. A character may only move in a straight line on Icy Terrain. If a character ends their Turn on Icy Terrain they must spend 1 Skill or fall Prone. In addition, if a creature is Pushed or Pulled onto and Icy Terrain immediately increase the Push or Pull effect by 1.\n\tWhen Icy Terrain is created in the following Terrain types, it interacts as follows:\n* <ins>Blazing:</ins>  Instead, remove the Blazing Terrain and create Veiled Terrain."
+  },
+  {
+    "name": "Overgrown",
+    "effect": "Overgrown spaces costs twice as much Movement to move through, but a creature may take 2 Damage per space to move through them normally. \n\tWhen Overgrown Terrain is created in the following Terrain types, it interacts as follows:\n* <ins>Blazing:</ins> Overgrown Terrain may not be created in this space.\n* <ins>Icicle, Icy:</ins> Remove the Icy or Icicle Terrain and replace it with Overgrown Terrain."
+  },
+  {
+    "name": "Blazing",
+    "effect": "Anytime a creature enters a Blazing space or ends a turn there they immediately take 1 True Damage and gains Burn 1. This may trigger at most once per Turn.\nWhen Blazing Terrain is created in the following Terrain types, it interacts as follows:\n* <ins>Icicle, Icy, or Wet:</ins> Instead, remove the Terrain and create a Veiled space.\n* <ins>Overgrown:</ins> Remove the Overgrown Terrain and replace it with Blazing Terrain. \n* <ins>Windy:</ins> Blazing may not be created in this space."
+  },
+  {
+    "name": "Icicle",
+    "effect": "Icicle Terrain is covered in jagged lines of ice, creating a dangerous surface. A creature that moves into Icicle Terrain or ends a turn there immediately takes 3 Damage and gains Frost 1. They may negate both effects by paying 1 Reflex. This may trigger at most once per Turn. Regardless, after a creature would take damage from Icicle Terrain it is destroyed and becomes Icy Terrain. Icicle Terrain may be treated as Icy Terrain for all Actions that target it.\n\tWhen Icicle Terrain is created in the following Terrain types, it interacts as follows:\n* <ins>Blazing:</ins> Instead, remove the Blazing Terrain and create Veiled Terrain."
+  },
+  {
+    "name": "Windy",
+    "effect": "Windy Terrain always has a direction, typically decided at the time of its creation. When entering a Windy space from the three faces aligned with its direction the Windy space only counts as half a space of movement. When entering a Windy space from the three faces against its direction it counts as two spaces of Movement. Ranged Attacks that pass through any Windy Terrain take a -1 penalty to their Attack Roll.\n\tWhen Windy Terrain is created in the following Terrain types, it interacts as follows:\n * <ins>Blazing or Veiled:</ins> Either remove the Terrain or move it one space in the direction of the Windy Terrain."
   }
 ]

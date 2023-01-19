@@ -1,15 +1,7 @@
 <template
   ><span>
-    <div class="character-creation">
-      <h3>Choosing Your Unarmed Weapons</h3>
-      <span v-html="creationText" />
-    </div>
-    <v-snackbar v-model="removeHand">
-      You may not remove your Hand Weapon; it's a default weapon that all characters get!
-    </v-snackbar>
-    <v-snackbar v-model="removeSlam">
-      You may not remove your Slam Weapon; it's a default weapon that all characters get!
-    </v-snackbar>
+    <h3>Choosing Your Unarmed Weapons</h3>
+    <display-tooltip-text :string="creationText" />
     <v-layout justify-center>
       <div class="button-seperator">
         <v-btn color="success" large tile @click="$emit('chose-weapon')" :disabled="!character.HasAllUnarmed">
@@ -18,48 +10,36 @@
         </v-btn>
       </div></v-layout
     >
-    You may select an additional {{ character.Martial }} unarmed weapons!<br /><br />Click a selected weapon to unequip it. {{ character.Martial }}
-    <div class="weapon--box">
-      <show-cards
-        :inputs="charWeapons"
-        job="Weapons"
-        :collapse="true"
-        display_text="Selected Unarmed Weapons"
-        standalone_or_contained="Standalone"
-        :selectButton="true"
-        @chose="removeWeapon"
-      />
+    <div class="centered--formatted">
+      <display-tooltip-text :string="'You may select an additional ' + character.MartialForms + ' Unarmed Weapons!'" /><br />
+      <display-tooltip-text string="Click a selected weapon to unequip it." />
     </div>
     <v-container class="fill-height" fluid>
-      <v-row
-        ><v-col cols="3">
-          <v-autocomplete
-            label="Choose a Weapon!"
-            :items="weapons"
-            :item-text="(item) => item.Name + ' (' + item.Category + ')'"
-            hide-details
-            v-model="weapon"
-            outlined
-            return-object
-            @change="$emit('chose', weapon)"
-          >
-          </v-autocomplete></v-col
-        ><v-col cols="9">
-          <v-layout justify-center>
-            <v-btn
-              color="success"
-              class="button-seperator"
-              large
-              tile
-              @click="addWeapon(weapon)"
-              :disabled="character.HasAllUnarmed || weapon.Name == '' || !character.CanAddUnarmedWeapon()"
-            >
-              <span v-if="weapon.Name == ''">Select a weapon on the left!</span>
-              <span v-else>ADD {{ weapon.Name }}</span>
-            </v-btn></v-layout
-          >
-          <div>
-            <weapon-card :weapon="weapon" v-if="(weapon.Name !='' )" /></div></v-col></v-row></v-container
+      <v-row>
+        <v-col cols="4" class="selected--box">
+          <h4>Current Weapons</h4>
+          <show-cards
+            :inputs="charWeapons"
+            job="Weapons"
+            :collapse="false"
+            :cols="1"
+            standalone_or_contained="Standalone"
+            :character_creation="true"
+            :selectButton="true"
+            @chose="removeWeapon"
+        /></v-col>
+        <v-col cols="8" class="selecting--box ma-0 pa-0">
+          <show-cards
+            :inputs="weapons"
+            job="Weapons"
+            :cols="2"
+            header_color="Unarmed"
+            display_text="Unarmed"
+            summary_text="Skilled unarmed strikes that allow making a large number of attacks, as well as inflicting a great deal of status conditions."
+            :character_creation="true"
+            standalone_or_contained="Standalone"
+            :selectButton="true"
+            @chose="addWeapon" /></v-col></v-row></v-container
   ></span>
 </template>
 <script>
@@ -92,20 +72,18 @@ export default Vue.extend({
       return this.$store.getters.getWeaponsByCategory('Unarmed')
     },
     charWeapons() {
-      return this.$store.getters.getWeaponsFromList(this.character.UnarmedWeapons)
+      return this.$store.getters.getWeaponsFromList(this.character.UnarmedWeaponsCreation)
     },
     creationText: function () {
-      return this.$marked.parse(UnarmedSelectionText)
+      return UnarmedSelectionText
     },
   },
   methods: {
     addWeapon: function (variable) {
-      this.character.AddUnarmedWeapon(variable)
+      this.character.AddUnarmedWeapon(variable.card)
     },
     removeWeapon(variable) {
-      if (variable.card.Name == 'Slam') this.removeSlam = true
-      if (variable.card.Name == 'Hand') this.removeHand = true
-      this.character.RemoveUnarmedWeapon(variable.card, variable.index)
+      this.character.RemoveUnarmedWeapon(variable.card)
     },
   },
 })
@@ -114,9 +92,6 @@ export default Vue.extend({
 <style scoped lang="scss">
 .button-seperator {
   margin-bottom: 1em;
-}
-.character-creation {
-  font-size: smaller;
 }
 .weapon--box {
   margin-top: 1em;

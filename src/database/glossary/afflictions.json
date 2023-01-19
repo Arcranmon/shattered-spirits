@@ -52,7 +52,7 @@
   },
   {
     "name": "Vulnerable",
-    "desc": "An affliction caused when a creature is vulnerable to attacks.",
+    "desc": "An affliction caused when a creature is vulnerable in a way that causes them to take more damage.",
     "effect": "Any time a creature takes damage, they take additional damage equal to the top Vulnerable Token.",
     "remove": "Whenever a Vulnerable Token is used, remove it.",
     "purge": "A value of _Focus_ removes Vulnerable equal to the _Focus_ spent.",
@@ -61,9 +61,9 @@
   {
     "name": "Wounded",
     "desc": "An affliction caused when a creature suffers a lasting wound.",
-    "special": "If a creature has any Wounded Tokens, whenever they would remove a different Condition Token they instead remove a Wound Token of greater or equal value.",
-    "effect": "When Wounded creature would gain _Endurance_/_Vigor_ from any source, reduce that _Endurance_/_Vigor_ by 2 + twice their top Wound Token's value",
-    "remove": "Whenever a Wounded Token stops a creature from gaining _Endurance_/_Vigor_, remove it if they still gained any _Endurance_/_Vigor_.",
+    "special": "If a creature has any Wounded Tokens, whenever they would remove a different _Affliction_ they instead remove their topmost Wounded Token, then take X True Damage, where X is the difference between the Wounded and blocked Token (minimum 1).",
+    "effect": "When Wounded creature would gain _Endurance_/_Vigor_ from any source, reduce that _Endurance_/_Vigor_ by 2 + twice their top Wound Token's value. Reduce the Value of the _Wounded_ Token by 1 for every 2 _Endurance_/_Vigor_ it blocks.",
+    "remove": "Whenever a Wounded Token stops a creature from gaining _Endurance_/_Vigor_ or stops them removing a different _Affliction_ remove it.",
     "purge": "Wounded Tokens may not be _Purged_.",
     "type": "standard"
   },

@@ -27,7 +27,13 @@ Vue.component('DisplayTooltipText', {
           this.$store.getters.isObstacle(split_input[index]) ||
           this.$store.getters.isTerrain(split_input[index]) ||
           this.$store.getters.isAffliction(split_input[index]) ||
-          this.$store.getters.isStatus(split_input[index])
+          this.$store.getters.isEnhancement(split_input[index]) ||
+          this.$store.getters.isStance(split_input[index]) ||
+          this.$store.getters.isStatus(split_input[index]) ||
+          this.$store.getters.isTechnique(split_input[index]) ||
+          this.$store.getters.isReaction(split_input[index]) ||
+          this.$store.getters.isArmor(split_input[index]) ||
+          this.$store.getters.isWeapon(split_input[index])
         ) {
           split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
         }

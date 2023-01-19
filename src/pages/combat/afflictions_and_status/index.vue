@@ -6,11 +6,6 @@
       <display-tooltip-text v-if="!effect.hasOwnProperty('see')" :string="'**' + effect.name + '**: ' + effect.effect" />
     </div>
     <br />
-    <div v-html="statusText" />
-    <div>
-      <show-cards :inputs="statuses" job="Status" :collapse="false" />
-    </div>
-    <br />
     <div v-html="afflictionText" />
     <div>
       <show-cards :inputs="afflictions" job="Affliction" :collapse="false" />
@@ -24,6 +19,11 @@
     <div v-html="mentalAfflictionText" />
     <div>
       <show-cards :inputs="mentalAfflictions" job="Affliction" :collapse="false" />
+    </div>
+    <br />
+    <div v-html="statusText" />
+    <div>
+      <show-cards :inputs="statuses" job="Status" :collapse="false" />
     </div>
   </div>
 </template>

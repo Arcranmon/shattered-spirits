@@ -1,381 +1,284 @@
 [
   {
+    "desc": "Your heavy weapon creates chaos with every swing.",
+    "effect": "Make the Target's space _Veiled_. On a _Graze_-, inflict _Exposed_ 1 (1 _Focus_).",
+    "name": "Aftershock",
+    "reqs": "Technique is a _Strike_ using a _Versatile_/_Heavy_ Blunt Weapon_.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Slamming Strike"
+  },
+  {
+    "desc": "You fire your arrow high, giving a foe the chance to respond but increasing your range.",
+    "effect": "Increase the Weapon's Range by 2. Instead of immediately resolving any Attack granted by the _Technique_, create a Size 1 _Hazard_ in the creature's space. Remove it at the start of the next _Phase_, after all 'A _Phase_ begins' Reactions (and similar) have resolved. Resolve the Technique when the _Hazard_ is removed.",
+    "name": "Arcing Shot",
+    "reqs": "Technique is a _Strike_ using a Projectile Weapon_.",
+    "ap": 0,
+    "keywords": ["Arcing"],
+    "cost": "1 _Focus_",
+    "from": "Volley"
+  },
+  {
+    "desc": "You put the full weight of your armor behind a heavy strike.",
+    "effect": "Gain _Fortify_ 1 until the end of the _Turn_. Before making your Attack, you may _Wager_ up to 3 _Grit_, contested by _Grit_/_Reflex_. If you win, deal additional Damage equal to your _Armor's_ _Guard_, add _Prone_, and increase the cost to _Negate_ by 1, even on a _Miss_.",
     "name": "Armored Blow",
-    "keywords": ["Flexible"],
-    "desc": "You use your armor's guard to allow you to make a heavy strike.",
-    "reqs": "Attached to a Melee Strike.",
-    "cost": "1 _Grit_",
+    "reqs": "Technique is a _Melee_ _Strike_.",
+    "special": "Modify the Effect, depending on this Attack's Keywords:\n* _Quick_: Inflict _Push_ 2 instead of _Prone_.\n* _Strong_: Add _Push_ 1, and increase the cost to Negate by 1.",
     "ap": 0,
-    "effect": "Attack using your weapon's Profile and increase your _Guard_ by 2 against any _Punish_ attacks triggered by this Attack. As a part of this Attack, you may _Wager_ up to 3 _Grit_, contested by _Grit_/_Reflex_. If you win, deal additional Damage equal to the _Guard_ provided by your Armor, add _Prone_, and increase the cost to _Negate_ by 1, even on a _Miss_.",
-    "special": "Gain an additional bonus, depending on the Strike's Keywords:\n* _Quick_: Inflict _Push_ 2 instead of _Prone_.\n* _Strong_: Add _Push_ 1, and increase the cost to Negate by 1.",
-    "boost": "Choose any:\n* 1 _Momentum_: On a _Graze_- you may immediately make an Attack with an _Unarmed_ _Body_ Weapon.\n* 1 _Grit_: Increase your _Guard_ by 1 this Turn."
+    "keywords": ["Flexible"],
+    "boost": "Choose any:\n* 1 _Momentum_: On a _Graze_- use _Martial Arts_. You must use a _Body_ Weapon.\n* 1 _Grit_: Instead, gain _Fortify_ 2.",
+    "cost": "1 _Grit_",
+    "from": "Heavy Shove"
   },
   {
-    "name": "Armored Charge",
-    "keywords": ["Flexible"],
     "desc": "You charge forward, trusting your armor to defend you.",
+    "effect": "Gain _Fortify_ 1 until the end of your _Turn_.",
+    "name": "Armored Charge",
     "reqs": "Attached to a Technique with Movement.",
+    "ap": 0,
+    "keywords": ["Charge", "Flexible"],
     "cost": "1 _Grit_",
-    "ap": 0,
-    "effect": "Add _Charge_ and increase your _Guard_ by 1 during this Movement."
+    "from": "Heavy Charge"
   },
   {
-    "name": "Leap",
-    "keywords": ["Flexible", "Repeatable"],
-    "desc": "You leap forward, hurdling over hazards and other dangers.",
-    "reqs": "Technique has Movement.",
-    "cost": "1 _Momentum_/_Reflex_",
+    "desc": "You send your blade towards a foes' arteries, seeking to cause massive hemorrhaging.",
+    "effect": "Decrease the _Damage_ by X (minimum 1, maximum 5). Increase the cost to _Negate_ by 1, and increase the total _Bleed_ inflicted by X.",
+    "name": "Arterial Slash",
+    "reqs": "Technique is a _Strike_ using a _Blade_ Weapon and you are using _Bloodletter Style_.",
     "ap": 0,
-    "effect": "You may make a single _Jump_ this Turn."
-  },
-  {
-    "name": "Vault",
     "keywords": ["Flexible"],
-    "desc": "You make a mighty leap, covering more ground than most.",
-    "reqs": "Technique has Movement and wearing Light or No Armor.",
-    "cost": "1 _Momentum_/_Reflex_",
+    "cost": "1 _Momentum_"
+  },
+  {
+    "desc": "You make a heroic strike, sacrificing your guard to inspire allies.",
+    "effect": "Gain _Exposed_ 1. On a _Hit_, gain _Vigor_ 2 and gain _Courage_ 1 or grant an ally within Range 6 _Courage_ 1. On a _Crit_, instead gain _Vigor_ 4 and gain _Courage_ 2 or grant an ally within Range 6 _Courage_ 2.",
+    "name": "Bold Strike",
+    "reqs": "Attached to a Melee Strike.",
     "ap": 0,
-    "effect": "You may _Jump_ this Turn. Increase your _Jump_ value by 1 this Turn.",
-    "boost": "1 _Momentum_: Add _Feint_ to the Attached Technique. If you _Jump_ through a creature's space this turn you have _Advantage_ on any Attack Roll against them this turn. The creature may pay 2 _Reflex_ to Negate this."
+    "cost": "1 _Focus_",
+    "from": "Reckless Bravery"
   },
   {
-    "name": "Parkour",
-    "keywords": ["Flexible"],
-    "desc": "You use terrain to accelerate yourself, moving faster all the while.",
-    "reqs": "Technique has Movement.",
-    "cost": "1 _Momentum_/_Reflex_",
-    "ap": 0,
-    "effect": "You may use the Effect of Free Run a single time during the Attached Technique and benefit from its Special effect."
-  },
-  {
-    "name": "Warding Blade",
-    "keywords": ["_Warding_ 1"],
-    "desc": "You sacrifice the power of your strike to slip into a defensive stance, preparing for the opponent's next blow.",
-    "reqs": "Must be Attached to a Strike using a Blade Weapon.",
-    "cost": "1 _Momentum_",
-    "effect": "Reduce the Damage of the Strike by 2, to a minimum of 1. Gain 1 _Grit_/_Reflex_ on a _Hit_ or 2 _Grit_/_Reflex_ on a _Crit_.",
-    "boost": "2 _Momentum_: Double the Tokens gained from the _Effect_. Add _Impaired_ 1 to a _Hit_ or _Impaired_ 2 to a _Crit_. Increase the cost to _Negate_ by 1.",
-    "special": "Gain an additional bonus, depending on the Strike's Keywords:\n* _Quick_: Gain 1 _Reflex_. If the Weapon is _Light_, add _Safe_.\n* _Strong_: _Gain 1 _Grit_. Instead, only reduce the Damage by 1. If the Weapon is _Heavy_, instead do not reduce the Damage.\n* Other: This Technique instead has _Warding_ 2. Gain 1 _Grit_/_Reflex_."
-  },
-  {
-    "name": "Disruptive Bash",
-    "desc": "Attacks with your shield leave foes reeling, limiting their ability to respond.",
-    "reqs": "Must be Attached to a Strike using a Shield Weapon.",
-    "cost": "1 _Grit_/_Momentum_",
-    "effect": "Until the end of the Round, any _Impaired_ the creature has does not apply when the creature attacks you, but is treated as one higher (maximum of 4) when attacking other creatures.",
-    "boost": "1 _Grit_/_Momentum_: Increase the cost to _Negate_ by 1.",
-    "special": "If this Enhancement is used with a _Reaction_ that triggers off an Attack, you may immediately apply any _Impaired_ this attack inflicts to the Attack."
-  },
-  {
-    "name": "Strong Strike",
-    "keywords": ["Strong"],
-    "desc": "A powerful blow, sacrificing speed for power.",
-    "reqs": "Technique is a Strike.",
-    "cost": "None",
-    "ap": 0,
-    "effect": "Increase the _Speed_ of the Attached Technique by 1. Deal an additional 2 Damage if _Versatile_, or 3 if _Heavy_.",
-    "special": "If the Technique targets multiple creatures, instead deal 1/2 additional Damage with _Versatile_/_Heavy_ Weapons.",
-    "boost": "1 _Grit_/_Momentum_: Add _Unblockable_ 1."
-  },
-  {
-    "name": "Quick Strike",
-    "keywords": ["Quick"],
-    "desc": "A nimble attack, sacrificing power for speed.",
-    "reqs": "Technique is a Strike.",
-    "cost": "None",
-    "ap": 0,
-    "effect": "Decrease the _Speed_ of the Attached Technique by 1. Deal -2 Damage if _Versatile_.",
-    "boost": "1 _Momentum_/_Reflex_: Add _Sure Hit_ 1."
-  },
-  {
-    "name": "Tumble",
-    "keywords": ["Flexible", "Repeatable"],
-    "desc": "You roll across the ground, slipping past foes.",
-    "reqs": "Technique has Movement.",
-    "cost": "1 _Momentum_/_Reflex_",
-    "ap": 0,
-    "effect": "At any point in your Movement, you may declare that you are Tumbling. For the next X spaces, where X is your _Step_ value, add _Charge_, _Rush_, and _Safe_ 2 to your Movement."
-  },
-  {
-    "name": "Nimble Blade",
-    "keywords": ["Light"],
-    "desc": "Your blade flashes out, providing you the path to retreat.",
-    "reqs": "Technique is a Strike using a Blade Weapon with Movement.",
-    "cost": "1 _Reflex_",
-    "ap": 0,
-    "effect": "On a _Hit_+ with your Blade Weapon add _Safe_ 2. This _Safe_ applies only to the Targets of the Strike.",
-    "boost": "1 _Reflex_: You may take an additional _Step_ Movement, but it must be used after making your Attack."
-  },
-  {
-    "name": "Rending Slash",
-    "desc": "A specialized blade technique that punishes unarmored foes.",
-    "reqs": "Technique is a Strike using a Blade Weapon.",
-    "cost": "1 _Momentum_",
-    "ap": 0,
-    "effect": "If the Target has no _Guard_ or you target a Creature Part, either deal 2 additional Damage or inflict _Bleed_1x3.",
-    "boost": "1 _Momentum_: On a _Hit_+, add _Wounded_ 1 and increase the _Cost_ to _Negate_ by 1."
-  },
-  {
-    "name": "Spear Vault",
-    "keywords": ["Flexible"],
-    "desc": "You plant your spear, using it as a pole vault to amplify your jump.",
-    "reqs": "Technique has Movement and you are Wielding a Lance Weapon.",
-    "cost": "1 _Momentum_/_Reflex_",
-    "ap": 0,
-    "effect": "Increase your _Jump_ value by 1 + your Lance Weapon's _Reach_ this Turn for the first _Jump_ you make this Turn."
-  },
-  {
-    "name": "Maneuvering Thrust",
-    "desc": "You use a spear strike to slip away from a foe, or grant an ally the same opportunity.",
-    "reqs": "Technique is a Strike using a Lance Weapon.",
-    "cost": "2 _Momentum_/_Reflex_",
-    "ap": 0,
-    "effect": "After resolving this Attack, you may take a _Step_ Movement. You must end this Movement as far from all Targets as possible. On a _Hit_+, add _Safe_ 1.",
-    "special": "You may choose to take no Movement. If you do, an ally adjacent to the Target may pay 1 _Momentum_/_Reflex_ to _Step_ Move. Add _Safe_ 1 to this Movement on a _Hit_+."
-  },
-  {
-    "name": "Gouging Strike",
-    "desc": "You make a vicious strike with a spear, wounding a foe.",
-    "reqs": "Technique is a Strike using a Lance Weapon.",
-    "cost": "1 _Focus_/_Momentum_",
-    "ap": 0,
-    "effect": "Add _Wounded_ 1 and increase the cost to _Negate_ by 1. If the creature is already _Wounded_, deal additional Damage equal to their topmost _Wounded_ Token."
-  },
-  {
-    "name": "Lunging Strike",
-    "keywords": ["Flexible"],
-    "desc": "You shift your grip back on your spear, extending your reach.",
-    "reqs": "Technique is a Strike using a Lance Weapon.",
-    "cost": "1 _Focus_/_Momentum_",
-    "ap": 0,
-    "effect": "Increase your _Reach_ by 1 this _Turn_. Deal additional Damage equal to half the distance between you and the Target.",
-    "special": "You may gain _Vulnerable_ 2 to instead increase your _Reach_ by 2."
-  },
-  {
-    "name": "Flurry of Blows",
-    "desc": "You punctuate an unarmed strike with another unarmed strike.",
-    "keywords": ["Quick", "Combo"],
-    "reqs": "Technique is a Strike making a single Attack with an _Unarmed_ Weapon.",
-    "cost": "1 _Momentum_",
-    "ap": 0,
-    "effect": "Instead, make two _Glancing_ Attacks using the same _Unarmed_ Weapon. If both are a _Hit_+, inflict Status again using the higher of the two Attacks."
-  },
-  {
-    "name": "Heavy Blow",
-    "keywords": ["Strong", "_Unblockable_ 1"],
-    "desc": "You strike true, focusing more on immediate damage than setting up another strike.",
-    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
-    "cost": "1 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "Inflict no _Vulnerable_ with this Attack. Instead, deal additional Damage equal to the _Vulnerable_ that would be inflicted + 1."
-  },
-  {
-    "name": "Combo Strike",
-    "keywords": ["Flexible"],
-    "desc": "You take advantage of an advantageous position, preparing for the next strike.",
-    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
-    "cost": "1 _Focus_/_Momentum_",
-    "ap": 0,
-    "effect": "On a _Hit_+, gain 2 _Momentum_."
-  },
-  {
-    "name": "Severing Strike",
-    "keywords": ["Quick"],
-    "desc": "You outmaneuver a foe in an attempt to break their stance.",
-    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
-    "cost": "2 _Focus_/_Momentum_",
-    "ap": 0,
-    "effect": "On a _Hit_+, add _Break_ and increase the cost to _Negate_ by 1."
-  },
-  {
-    "name": "Staggering Strike",
-    "keywords": ["Strong"],
-    "desc": "A heavy blow that is almost certain to delay a foe.",
-    "reqs": "Technique is a Strike using an _Unarmed_ Weapon.",
-    "cost": "2 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "On a _Hit_+, add _Staggered_, _Push_ 2, and increase the cost to Negate by 1."
-  },
-  {
-    "name": "Spacing Strike",
-    "keywords": ["Flexible"],
-    "desc": "You briefly utilize your ranged weapon as a melee one.",
-    "reqs": "Technique is a Strike using an _Artillery_ Weapon without _Glancing_.",
-    "cost": "1 _Reflex_/_Momentum_",
-    "ap": 0,
-    "effect": "Before resolving your _Technique_, Attack with a Light, Medium or Heavy Improvised Weapon, depending on if the Weapon is Light, Versatile or Heavy. Add Push 1, and increase the cost to Negate by 1. Resolve the actual _Technique_, but add _Glancing_."
-  },
-  {
-    "name": "Deadeye Shot",
-    "desc": "You take careful aim, threading your shot through cover.",
-    "reqs": "Technique is a Strike using an _Artillery_ Weapon.",
-    "cost": "None",
-    "ap": 0,
-    "effect": "Gain _Hobbled_ 1. If the Target is at a lower _Elevation_, deal +2 Damage and ignore _Cover_."
-  },
-  {
-    "name": "Rapid Shot",
-    "desc": "You quickly fire, sacrificing power for speed.",
-    "keywords": ["Quick"],
-    "reqs": "Technique is a Strike using an _Artillery_ Weapon.",
-    "cost": "2 _Momentum_",
-    "ap": 0,
-    "effect": "Make three Attacks using your Weapon's Profile against the same Target. If all three are a _Hit_+, inflict _Wounded_ 1 (2 _Grit_)."
-  },
-  {
-    "name": "Long Draw",
-    "desc": "You set your feet, focusing more on power than mobility.",
-    "keywords": ["Strong", "_Pierce_ 1"],
-    "reqs": "Technique is a Strike using an _Artillery_ Weapon.",
-    "cost": "1 _Momentum_",
-    "ap": 0,
-    "effect": "This Technique no longer has Movement. Deal +1 Damage."
-  },
-  {
-    "name": "Debilitating Throw",
-    "desc": "Your thrown weapons have a habit of sticking, making things difficult for foes.",
-    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
-    "cost": "1 _Momentum_",
-    "ap": 0,
-    "effect": "If this Strike _Embeds_, while the Target has _Embed_, they gain your choice of _Impaired_ 1 or _Exposed_ 1 at the start of each of their Turns (1 _Grit_ negates). The creature must put this Token at the top of their stack, unless the topmost value is higher."
-  },
-  {
-    "name": "Bounce Shot",
     "desc": "You ricochet your thrown weapons off a foe, sending it spiraling into another.",
-    "keywords": ["Flexible"],
-    "cost": "None",
-    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
-    "effect": "Increase the Range by 3 or choose an Obstacle within Range. Attack a creature within Range 4 of that Obstacle, but the new trajectory may not pass through the Obstacle.",
-    "boost": "Choose one:\n* 2 _Momentum_: On a _Hit_+, repeat the Attack but add _Glancing_ against a creature with Range 3 of the original Target. If the original Attack was _Glancing_, this Attack is made at _Disadvantage_.\n* 3 _Momentum_: As above, but remove _Glancing_ and take no penalties if the original Attack was _Glancing_."
+    "effect": "Increase the Range by 3 or choose an _Obstacle_ within Range. Attack a creature within Range 3 of that Obstacle, but the new trajectory may not pass through the Obstacle. Treat the Obstacle as the origin of the Attack when determining _Cover_.",
+    "name": "Bounce Shot",
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon and you are using _Ricochet Style_.",
+    "special": "For this _Turn_, _Ricochet Style_ instead allows you to place the Weapon anywhere within 5 spaces of the Target.",
+    "keywords": ["Flexible", "_Sure Hit_ 1"],
+    "boost": "Choose one. Both Boosts may be repeated:\n* 1 _Momentum_: For a single Attack, on a _Hit_+, repeat the Attack but add _Glancing_ against a creature with Range 3 of the original Target. If the original Attack was _Glancing_, this Attack is made at _Disadvantage_.\n* 2 _Momentum_: As above, but remove _Glancing_ and take no penalties if the original Attack was _Glancing_.",
+    "cost": "1 _Momentum_"
   },
   {
-    "name": "Invisible Throw",
-    "desc": "Your thrown weapons come out at blinding speed, catching slower foes fully off-guard.",
-    "keywords": ["_Sure Hit_ 2", "_Unblockable_ 1"],
-    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
-    "cost": "2 _Momentum_/_Reflex_",
+    "desc": "You bowl through foes, leaving them sprawling in your wake.",
+    "effect": "During this Technique, if you move into a creature's space, deal 2 Crush Damage and knock them _Prone_ (1 _Grit_/_Reflex_). If they _Negate_, they take half Damage. You may also attempt to move through Obstacles; when you do, use _Martial Arts_ using a Body Weapon against the Obstacle. Add _Siege_. If you fail to destroy the _Obstacle_, end your _Shift_. Otherwise, continue your _Shift_.",
+    "name": "Bull Rush",
+    "reqs": "Must be Attached to a Technique with Movement and you are using _Ox Stance_.",
+    "keywords": ["Earth", "Flexible"],
+    "boost": "1 _Grit_, taken when you fail to destroy an _Obstacle_: Increase the Damage by 3. This Boost is repeatable.",
+    "cost": "1 _Grit_/_Momentum_"
+  },
+  {
+    "desc": "You take careful aim at a foe, exploiting all information you have on them.",
+    "effect": "Increase the _Speed_ of the Technique by 1. Gain a +X Bonus to the Attack Roll, where X is half the creature's topmost _Knowledge_ Token. Remove the _Knowledge_ Token without gaining any Tokens after making this attack.",
+    "name": "Careful Aim",
+    "reqs": "Technique is a _Strike_ using a Projectile Weapon_.",
     "ap": 0,
-    "effect": "If the Target has not taken a _Turn_ yet this _Round_, deal an additional 2 Damage on a _Hit_+ if they do not _Negate_."
+    "boost": "1 _Focus_: Instead X is the creature's topmost _Knowledge_ Token.",
+    "cost": "1 _Focus_",
+    "from": "Focused Aim"
   },
   {
-    "name": "Close-Quarters Throw",
-    "desc": "You throws do not compromise your defenses, allowing you to easily attack in close-quarters.",
-    "keywords": ["Flexible", "_Warding_ 1"],
-    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
-    "cost": "1 _Focus_/_Momentum_",
-    "ap": 0,
-    "effect": "Ignore all penalties due to adjacent foes for this Attack. On a _Miss_, you may inflict _Vulnerable_ 1 (1 _Focus_)."
-  },
-  {
-    "name": "Driving Strikes",
-    "desc": "Your blunt weapons forces foes back, keeping them off guard.",
-    "keywords": ["_Unblockable_ 1"],
-    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
-    "cost": "1 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "Add _Push_ 1 on a _Graze_+, or _Push_ 2 on a _Hit_+. Increase to cost to _Negate_ by 1."
-  },
-  {
-    "name": "Sapping Strike",
-    "desc": "Your weapon erode's a foe's ability to defend themself with every strike.",
-    "keywords": ["_Unblockable_ 1"],
-    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
-    "cost": "1 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "On a _Hit_, you may force the Target to discard 1 _Defensive Token_ of your choice. On a _Crit_,  they instead discard 2. If they do not have sufficient Defensive Tokens they may discard other _Defensive Tokens_ of their choice. If they have no other _Defensive Tokens_, they instead take Damage equal to twice the Tokens they did not discard."
-  },
-  {
-    "name": "Breaking Strike",
-    "desc": "You use your weapon to chip away at a foe's armor, finding an opening.",
-    "keywords": ["Armor Piercing", "_Pierce_ 1"],
-    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
-    "cost": "1 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "If this Attack targets a creature's _Armor_, inflict _Dazed_ 1/_Exposed_ 1 (2 _Focus_) on a _Hit_+."
-  },
-  {
-    "name": "Earthquake Step",
-    "desc": "As you strike you send an earthquake to disrupt a foe's footing, limiting their ability to dodge.",
-    "keywords": ["Earth", "_Sure Hit_ 1"],
-    "reqs": "Technique is a Strike.",
-    "cost": "2 _Focus_/_Momentum_",
-    "ap": 0,
-    "effect": "If the Target is within Range 4, before resolving the _Attack_, inflict _Exposed_ 2 (2 _Reflex_). If the Attack inflicts _Prone_, deal 1 additional Damage."
-  },
-  {
-    "name": "Earthbend",
-    "desc": "You are skilled at controlling earth, flinging it about with ease.",
-    "keywords": ["Earth", "Environmental", "Flexible"],
-    "ap": 0,
-    "effect": "You must target an _Earthen_ Obstacle. Range is instead 6 and, if you use the Obstacle's Interact Action, halve all Costs. If the Obstacle is Size 1 or smaller, you may Move the Obstacle up to 5 spaces in any direction instead of resolving its normal Interact Action. If you move it into a creature, inflict _Dazed_ 1, _Impaired_ 1 (2 Grit/Reflex) and deal X Crush Damage, where X is the Speed of this Technique. If the Obstacle ends its turn in a creature's space, _Push_ (2 _Grit_) the creature so the Obstacle is no longer in that space. If the creature _Negates_, instead place the Obstacle in the first space not within the creature.",
-    "boost": "Choose any, and use it in place of one of the Obstacle's Interacts:\n* 1 _Grit_/_Momentum_: You may instead target a Size 2 Obstacle or 3 Size 1 Obstacles, resolving the effect independently for each. Increase all _Status_ and the cost to _Negate_ by 1.\n* 1 _Grit_/_Momentum_: You may Move the Obstacle and use it's Interact."
-  },
-  {
-    "name": "Earth Leap",
-    "desc": "You are skilled at controlling earth, flinging it about with ease.",
-    "keywords": ["Earth", "Flexible", "Groundsource"],
-    "reqs": "Technique has Movement.",
-    "cost": "1 _Grit_",
-    "ap": 0,
-    "effect": "Create an Earth Platform in your space. Immediately make a single Jump, increasing your Jump value by 2 for this Jump.",
-    "boost": "Choose any:\n* 1 _Grit_: Make all spaces adjacent to where you end your Jump _Rough_.\n* 1 _Grit_: Instead, create an _Earth Pillar_. Increase your Jump value by 3 instead."
-  },
-  {
-    "name": "Spire Strike",
-    "desc": "Your strike pulls the earth towards it, creating jagged spikes.",
-    "keywords": ["Earth"],
-    "reqs": "Technique is a Strike.",
-    "cost": "2 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "Make a space adjacent to the Target _Jagged_. They gain _Hobbled_ 1 (1 _Grit_/_Reflex_).",
-    "special": "If the Technique _Pushes_, you may instead place the _Jagged_ space in the space the target is _Pushed_ into. Double the effects of the _Jagged_ for this _Turn_."
-  },
-  {
-    "name": "Sling Stone",
-    "desc": "Your spirit assists you in flinging a stone with massive force.",
-    "keywords": ["Earth", "Environmental", "Flexible"],
-    "ap": 0,
-    "effect": "You must target a _Boulder_ or _Large Boulder_. Range is instead 6 and, if you use the Obstacle's Interact, halve all Costs.",
-    "boost": "Choose one, and use it in place of one of the Obstacle's Interact:\n* 3 _Grit_/_Momentum_: Must target a _Boulder_. Use either of the _Boulder_'s _Boost_ effects, but instead _Push_ it 6 spaces. Deal +2 Damage and increase the _Push_ it inflicts by 2.\n* 4 _Grit_/_Momentum_: As above, but instead target a _Large Boulder_."
-  },
-  {
-    "name": "Catapult",
     "desc": "You send a boulder upward, creating a deadly explosion when it lands.",
-    "keywords": ["Earth", "Environmental", "Flexible"],
-    "ap": 0,
     "effect": "You must target a _Boulder_ or _Large Boulder_. Range is instead 6 and, if you use the Obstacle's Interact, halve all Costs.",
-    "boost": "Choose one, and use it in place of one of the Obstacle's Interact:\n* 3 _Grit_/_Momentum_: Must target a _Boulder_. Remove the _Boulder_, then create a Blast 1 Hazard within Range 8. At the end of the _Round_, remove the _Hazard_, place a _Boulder_ in the center of the Area, and Attack using the below Profile.\n* 4 _Grit_/_Momentum_: As above, but instead target a _Large Boulder_ and create a _Hazard_ that is a Burst 1 around a Size 2 Obstacle, including the spaces that the Obstacle would occupy. Deal +2 Damage and increase the cost to _Negate_ by 1.\nRegardless, _Push_ any creature in the space the Obstacle is placed in so that it is not in an occupied space.",
+    "name": "Catapult",
+    "ap": 0,
+    "keywords": ["Earth", "Environmental", "Flexible"],
+    "boost": "Choose one, and use it in place of one of the Obstacle's Interact:\n* 3 _Grit_/_Momentum_: Must target a _Boulder_. Remove the _Boulder_, then create a Blast 1 Hazard within Range 8. At the end of the _Round_, remove the _Hazard_, place a _Boulder_ in the center of the Area, and Attack using the below Profile.\n* 4 _Grit_/_Momentum_: As above, but instead target a _Large Boulder_ and create a _Hazard_ that is a Burst 1 around a Size 2 Obstacle, including the spaces that the Obstacle would occupy. Deal +2 Damage and increase the cost to _Negate_ by 1.\n\nRegardless, _Push_ any creature in the space the Obstacle is placed in so that it is not in an occupied space.",
     "chart": {
-      "damage": [0, 0, 0, 6, 6, 8, 8, 9, 9, 12, 12],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "roll": ["Crit", "Crit", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Miss", "Miss", "Miss"],
       "status": [
         "",
         "",
         "",
-        "_Staggered_ (1 _Focus_/_Grit_)",
-        "_Staggered_ (1 _Focus_/_Grit_)",
-        "_Staggered_ (1 _Focus_/_Grit_)",
-        "_Staggered_ (1 _Focus_/_Grit_)",
-        "_Staggered_x2, _Dazed_ 1 (2 _Focus_/_Grit_)",
-        "_Staggered_x2, _Dazed_ 1 (2 _Focus_/_Grit_)",
-        "_Staggered_x2, _Dazed_ 2 (3 _Focus_/_Grit_)",
-        "_Staggered_x2, _Dazed_ 2 (3 _Focus_/_Grit_)"
-      ]
-    }
+        "_Slowed_ (1 _Focus_/_Grit_)",
+        "_Slowed_ (1 _Focus_/_Grit_)",
+        "_Slowed_ (1 _Focus_/_Grit_)",
+        "_Slowed_ (1 _Focus_/_Grit_)",
+        "_Slowed_x2, _Dazed_ 1 (2 _Focus_/_Grit_)",
+        "_Slowed_x2, _Dazed_ 1 (2 _Focus_/_Grit_)",
+        "_Slowed_x2, _Dazed_ 2 (3 _Focus_/_Grit_)",
+        "_Slowed_x2, _Dazed_ 2 (3 _Focus_/_Grit_)"
+      ],
+      "damage": [0, 0, 0, 6, 6, 8, 8, 9, 9, 12, 12]
+    },
+    "from": "Stone Strike"
   },
   {
-    "name": "Fracture",
-    "desc": "An obstacle within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
-    "keywords": ["Earth", "Environmental", "Flexible"],
-    "damagetype": "Slash",
+    "desc": "You send your blade towards a foes' arteries, seeking to cause massive hemorrhaging.",
+    "effect": "Instead, Attack in a _Burst_ 1.",
+    "name": "Circular Slash",
+    "reqs": "Technique is a Single-Target _Strike_ using a _Blade_ Weapon_.",
     "ap": 0,
-    "cost": "2 _Grit_/_Momentum_",
+    "keywords": ["Flexible", "Glancing"],
+    "boost": "2 _Momentum_: Remove _Glancing_.",
+    "cost": "1 _Momentum_",
+    "from": "Sword Dance"
+  },
+  {
+    "desc": "You throws do not compromise your defenses, allowing you to easily attack in close-quarters.",
+    "effect": "Ignore all penalties due to adjacent foes for this Attack. On a _Miss_, you may inflict _Exposed_ 1 (1 _Focus_).",
+    "name": "Close-Quarters Throw",
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
+    "ap": 0,
+    "keywords": ["Flexible", "_Warding_ 1"],
+    "cost": "1 _Focus_/_Momentum_",
+    "from": "Vicious Draw"
+  },
+  {
+    "desc": "Your attack slams down with titanic force, sending out shockwaves.",
+    "effect": "Repeat the Attack in a Burst 1 around the Target, exempting yourself, but add _Glancing_.",
+    "name": "Concussive Smash",
+    "reqs": "Technique is a Strike using a Melee Weapon.",
+    "ap": 0,
+    "keywords": ["Earth", "Strong"],
+    "boost": "1 _Grit_: Make two spaces adjacent to the Target _Rough_.",
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Worldbreaker Strike"
+  },
+  {
+    "desc": "You dash forward recklessly, inspiring your allies with your display.",
+    "effect": "For your turn, enemies have _Advantage_ on all _Opportune_ _Punish_ Attacks against you, but gain _Impaired_ 1 (1 _Focus_) if they do not take a _Punish_ Reaction against you when they are able to. Whenever an enemy makes a _Punish_ Attack against you either gain _Courage_ 1 or grant an ally within Range 4 _Courage_ 1, your choice.",
+    "name": "Courageous Charge",
+    "reqs": "Attached to a Technique with Movement.",
+    "keywords": ["Charge", "Earth", "Flexible"],
+    "boost": "2 _Grit_: Gain _Guard_ 2 for this Movement.",
+    "cost": "2 _Focus_/_Grit_",
+    "from": "Valiant Charge"
+  },
+  {
+    "desc": "You sacrifice speed to imbue a strike with every ounce of the earth's power.",
+    "effect": "This Technique's Movement is now _None_, and you may not Move with any of your other Techniques or use _Reactions_ this _Phase_. Do not resolve this Technique until the end of the current _Phase_ but, as a part of this _Technique_, you may _Wager_ up to 3 _Grit_. If you do not lose, you have _Advantage_ on the Attack.",
+    "name": "Crashing Earth",
+    "reqs": "Technique is a Strike using a Weapon.",
+    "ap": 0,
+    "keywords": ["Earth", "Priority", "_Pierce_ 2", "_Unblockable_ 2"],
+    "from": "Stone's Resilience"
+  },
+  {
+    "desc": "You take careful aim, threading your shot through cover.",
+    "effect": "Gain _Hobbled_ 1. If the Target is at a lower _Elevation_, deal +2 Damage and add _Arcing_.",
+    "name": "Deadeye Shot",
+    "reqs": "Technique is a Strike using a Projectile Weapon and you are using _Sniper Style_.",
+    "ap": 0,
+    "cost": "1 _Focus_"
+  },
+  {
+    "desc": "Your thrown weapons have a habit of sticking, making things difficult for foes.",
+    "effect": "If this Strike _Embeds_, while the Target has _Embed_, inflict your choice of _Impaired_/_Exposed_ 1 (1 _Grit_) at the start of each of their _Turns_.",
+    "name": "Debilitating Throw",
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon and you are using _Pinpoint Style_.",
+    "ap": 0,
+    "cost": "1 _Momentum_"
+  },
+  {
+    "desc": "You target a foe's weapon or equipment, attempting to remove it.",
+    "effect": "Resolve a single Attack with a _Thrown_ Weapon twice: once, adding _Glancing_, against the creature, and once, adding _Sundering_, against a piece of _Equipment_ the creature has _Equipped_. If both attacks are a _Hit_+, inflict _Exposed_/_Impaired_ 1 (1 _Focus_).",
+    "name": "Disarming Throw",
+    "reqs": "Technique is a _Strike_ using a _Thrown_ Weapon_.",
+    "special": "If the Target has no _Equipment_, instead add _Impaired_ 1 to the Attack.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Focus_/_Momentum_",
+    "from": "Distracting Lob"
+  },
+  {
+    "desc": "Attacks with your shield leave foes reeling, limiting their ability to respond.",
+    "effect": "On a _Graze_+, increase _Impaired_ inflicted by 1. You may exchange any Value of _Impaired_ you would inflict for _Dazed_ or _Vulnerable_ and instead inflict that _Affliction_. For example, you may, instead of inflicting _Impaired_ 3, inflict _Dazed_ 1, _Vulnerable_ 1, and _Impaired_ 1.",
+    "name": "Disruptive Bash",
+    "reqs": "Must be Attached to a Strike using a Shield Weapon.",
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Shield Bash"
+  },
+  {
+    "desc": "Your blunt weapons forces foes back, keeping them off guard.",
+    "effect": "Add _Push_ 1 on a _Graze_+, or _Push_ 2 on a _Hit_+. You may reduce the final _Push_ of the Attack by 4 to instead inflict _Prone_.",
+    "name": "Driving Strikes",
+    "reqs": "Technique is a Strike using a _Blunt_ Weapon and you are using _Bully Style_.",
+    "ap": 0,
+    "keywords": ["_Unblockable_ 1"],
+    "cost": "1 _Grit_/_Momentum_"
+  },
+  {
+    "desc": "You are skilled at controlling earth, flinging it about with ease.",
+    "effect": "Create an Earth Platform in your space. Immediately make a single Jump, increasing your Jump value by 2 for this Jump.",
+    "name": "Earth Leap",
+    "reqs": "Technique has Movement.",
+    "ap": 0,
+    "keywords": ["Earth", "Flexible", "Groundsource"],
+    "boost": "Choose any:\n* 1 _Grit_: Make all spaces adjacent to where you end your Jump _Rough_/_Veiled_.\n* 1 _Grit_: Instead, create an _Earth Pillar_. Increase your Jump value by 3 instead.",
+    "cost": "1 _Grit_"
+  },
+  {
+    "desc": "You are skilled at controlling earth, flinging it about with ease.",
+    "effect": "You must target an _Earthen_ Obstacle. Range is instead 6 and, if you use the Obstacle's Interact Action, halve all Costs.",
+    "name": "Earthbend",
+    "special": " Instead of using _Obstacles_ _Interact_, you may  Move the Obstacle up to 5 spaces in any direction. If you move it into a creature stop this Movement, but inflict _Dazed_ 1, _Push_ 2 (2 Grit/Reflex) and deal X Crush Damage, where X is the Speed of this Technique. The creature takes half Damage if they _Negate_.",
+    "ap": 0,
+    "keywords": ["Earth", "Environmental", "Flexible"],
+    "boost": "Choose any, and use it in place of one of the Obstacle's Interacts:\n* 1 _Grit_/_Momentum_: You may instead target a Size 2 Obstacle or 3 Size 1 Obstacles, resolving the effect independently for each.\n* 1 _Grit_/_Momentum_: You may Move the Obstacle and use its Interact."
+  },
+  {
+    "desc": "As you strike you send an earthquake to disrupt a foe's footing, limiting their ability to dodge.",
+    "effect": "Once this _Turn_, inflict _Exposed_ 2 (1 _Reflex_) on a creature within Range 4 and on _Earthen_ Terrain.",
+    "name": "Earthquake Step",
+    "ap": 0,
+    "keywords": ["Earth"],
+    "boost": "1 _Focus_/_Momentum_: Increase the cost to _Negate_ by 1. If you _Attack_ that creature this _Turn_, add _Sure Hit_ 1.",
+    "cost": "1 _Focus_/_Momentum_",
+    "from": "Quake"
+  },
+  {
+    "desc": "You find an old wound in an enemy with your seismic sense before exploiting it with a powerful attack.",
+    "effect": "On a _Hit_+ add _Impaired_ 1 to the Attack and increase the cost to _Negate_ by 1.",
+    "name": "Exploiting Strike",
+    "reqs": "Attached to a Single-Target Strike.",
+    "special": "If you _Attack_ a foe within your _Seismic Sense_ and clear a _Knowledge_ Token as a part of this Attack, deal additional Damage equal to Value of _Knowledge_ cleared.",
+    "ap": 0,
+    "keywords": ["Earth"],
+    "cost": "2 _Focus_/_Momentum_",
+    "from": "Staggered Footing"
+  },
+  {
+    "desc": "You punctuate an unarmed strike with another unarmed strike.",
+    "effect": "Replace a single non-_Glancing_ Attack with an _Unarmed_ Weapon with two _Glancing_ Attacks using the same Weapon.",
+    "name": "Flurry of Blows",
+    "reqs": "Technique allows making an Attack with an _Unarmed_ Weapon.",
+    "ap": 0,
+    "keywords": ["Combo", "Quick"],
+    "cost": "1 _Momentum_",
+    "from": "Flowing Strikes"
+  },
+  {
+    "desc": "You tear stone away as you run, hastily constructing armor.",
+    "effect": "Inflict _Fragile_ on an adjacent _Earthen_ _Obstacle_ that does not already have _Fragile_, then choose one:\n*  If you have 1 or less _Stone Armor_, gain _Stone Armor_ 1.\n* Increase the _Durability_ of your _Stone Armor_ by 1 this _Round_.",
+    "name": "Fortifying Stone",
+    "ap": 0,
+    "keywords": ["Earth", "Flexible"],
+    "boost": "1 _Grit_: You may use the first option regardless of the amount of _Stone Armor_ you have.",
+    "cost": "1 _Grit_",
+    "from": "Stonesmith"
+  },
+  {
+    "desc": "An obstacle within range detonates, sending a blast of stone shrapnel shredding through nearby enemies.",
     "effect": "Choose a Size 1 _Earthen_ Obstacle within Range. Attack with this Technique's Profile in an Area centered on the Target, then Destroy the Target. On a _Graze_+ deal X additional Damage, where X is half the Speed of the Obstacle. You may make the Area _Veiled_ for 2 Phases.",
+    "name": "Fracture",
     "special": "Deal an additional 1 additional Damage on a _Graze_+ if this Technique is used with a _Boulder_ or _Large Boulder_.",
+    "ap": 0,
+    "keywords": ["Earth", "Environmental", "Flexible"],
     "boost": "2 _Momentum_/_Grit_: You may choose a Size 2 _Earthen_ Obstacle. Increase the cost to _Negate_ by 1, and Area is Burst 2.",
     "chart": {
-      "damage": [0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "roll": ["Crit", "Crit", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Miss", "Miss"],
       "status": [
         "",
         "",
@@ -388,110 +291,408 @@
         "_Push_ 2 (2 _Grit_), _Dazed_ 2 (2 _Focus_)",
         "_Push_ 3 (3 _Grit_), _Dazed_ 2 (2 _Focus_)",
         "_Push_ 3 (3 _Grit_), _Dazed_ 2 (2 _Focus_)"
-      ]
-    }
+      ],
+      "damage": [0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3]
+    },
+    "cost": "2 _Grit_/_Momentum_",
+    "damagetype": "Slash"
   },
   {
-    "name": "Mighty Strike",
-    "desc": "You strike with unparalled strength, driving back a foe.",
-    "keywords": ["Earth"],
-    "reqs": "Technique is a Strike using a Weapon.",
-    "cost": "1 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "On a _Graze_+, deal +1 Damage, add _Push_ 2, and increase the cost to Negate by 1.",
-    "special": "If the Weapon is _Heavy_, instead deal +2 Damage, add _Push_ 4, and increase the cost to Negate by 1."
-  },
-  {
-    "name": "Bull Rush",
-    "desc": "You bowl through foes, leaving them sprawling in your wake.",
-    "keywords": ["Earth", "Flexible"],
-    "cost": "1 _Grit_/_Momentum_",
-    "reqs": "Must be Attached to a Technique with Movement.",
-    "effect": "During this Technique, if you move into a creature's space, deal 2 Crush Damage and knock them _Prone_ (1 _Grit_/_Reflex_). If they _Negate_, they take half Damage. You may also attempt to move through Obstacles; when you do, make a 1 AP Basic Strike using a Body Weapon against the Obstacle. Add _Siege_. If you fail to destroy the Obstacle, end your Movement. Otherwise, continue your Movement.",
-    "boost": "1 _Grit_, taken when you fail to destroy an Obstacle: Increase the Damage by 3. This Boost is repeatable."
-  },
-  {
-    "name": "Herculean Throw",
-    "desc": "With titanic strength you redecorate with deadly intent.",
-    "keywords": ["Earth", "Environmental", "Flexible", "Siege"],
-    "cost": "1 _Grit_/_Momentum_",
-    "ap": 0,
-    "effect": "You must Target a Size 1 Obstacle. Instead of using its normal _Interact_, move the Obstacle up to 4 spaces, then Attack a creature next to the Obstacle's final location using the Heavy Improvised Weapon Profile. Add _Fragile_ to the _Obstacle_.",
-    "special": "If the Target is at a lower Elevation than the Obstacle originally was you have _Advantage_ on this Attack.",
-    "boost": "2 _Grit_/_Momentum_: Instead, Attack in a Burst 1 around the end location of the Obstacle and _Destroy_ it."
-  },
-  {
-    "name": "Concussive Smash",
-    "desc": "Your attack slams down with titanic force, sending out shockwaves.",
-    "keywords": ["Earth", "Strong"],
-    "cost": "1 _Grit_/_Momentum_",
-    "reqs": "Technique is a Strike using a Melee Weapon.",
-    "ap": 0,
-    "effect": "Repeat the Attack in a Burst 1 around the Target, exempting yourself, but add _Glancing_.",
-    "boost": "1 _Grit_: Make two spaces adjacent to the Target _Rough_."
-  },
-  {
-    "name": "Mighty Leap",
-    "desc": "You draw upon the earth's strength, massively increasing your jumping power.",
-    "keywords": ["Earth", "Flexible"],
-    "reqs": "Technique has Movement.",
-    "cost": "1 _Grit_/_Momentum_, 1 _Momentum_/_Reflex_",
-    "ap": 0,
-    "effect": "Increase your _Jump_ value by 2 this Turn. You may make a single _Jump_ this turn, and may make the space you start your _Jump_ from _Veiled_ until the end of your next _Phase_.",
-    "boost": "1 _Grit_: Increase your _Jump_ by an additional 1."
-  },
-  {
-    "name": "Gathering Strike",
-    "desc": "You sacrifice speed to imbue a strike with every ounce of the earth's power.",
-    "keywords": ["Earth", "Priority", "_Unblockable_ 2", "_Pierce_ 2"],
-    "reqs": "Technique is a Strike using a Weapon.",
-    "ap": 0,
-    "effect": "This Technique's Movement is now _None_, and you may not Move with any of your other Techniques or use _Reactions_ this _Phase. Do not resolve this Technique until the end of the current _Phase_ but, as a part of this _Technique_, you may _Wager_ up to 3 _Grit_. If you do not lose, you have _Advantage_ on the Attack."
-  },
-  {
-    "name": "Gilgamesh Swing",
     "desc": "You swing an obstacle about, dealing heavy damage.",
+    "effect": "Target a Size 1 Obstacle with a Height of 1. Inflict _Push_ 2, _Prone_, and Damage equal to the Speed of the Obstacle (2 _Grit_/_Reflex_) in a _Burst_ 1 around you. If a Target negates with _Grit_, still inflict half Damage. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_. If the total damage dealt by this Technique (added up between all Targets) is greater than the _Obstacle's_ _Durability_, Destroy it. Otherwise, inflict _Fragile_ on it.",
+    "name": "Gilgamesh Swing",
+    "ap": 0,
     "keywords": ["Earth", "Environmental", "Flexible", "Siege"],
+    "boost": "2 _Grit_/_Momentum_: Instead, target a Size 1 Obstacle with a Height of 2. Instead Attack in a Burst 2.",
     "cost": "1 _Grit_/_Momentum_",
+    "from": "Strength of the Earth"
+  },
+  {
+    "desc": "You make a vicious strike with a spear, wounding a foe.",
+    "effect": "Add _Wounded_ 1 and increase the cost to _Negate_ by 1. If the creature is already _Wounded_, deal additional Damage equal to their topmost _Wounded_ Token.",
+    "name": "Gouging Strike",
+    "reqs": "Technique is a Strike using a Lance Weapon.",
     "ap": 0,
-    "effect": "Target a Size 1 Obstacle with a Height of 1. Inflict _Push_ 2, _Prone_, and Damage equal to the Speed of the Obstacle (2 _Grit_/_Reflex_) in a _Burst_ 1 around you. If a Target negates with _Grit_, still inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_. If the total damage dealt by this Technique is greater than the Obstacle's Durability, Destroy it. Otherwise, inflict _Fragile_.",
-    "boost": "2 _Grit_/_Momentum_: Instead, target a Size 1 Obstacle with a Height of 2. Instead Attack in a Burst 2."
+    "cost": "1 _Focus_/_Momentum_"
   },
   {
-    "name": "Bold Strike",
-    "desc": "You make a heroic strike, sacrificing your guard to inspire allies.",
-    "reqs": "Attached to a Melee Strike.",
-    "cost": "1 _Focus_",
+    "desc": "You strike true, focusing more on immediate damage than setting up another strike.",
+    "effect": "Inflict no _Vulnerable_ with _Unarmed_ Attacks. Instead, deal additional Damage equal to the _Vulnerable_ that would be inflicted + 1.",
+    "name": "Heavy Blow",
+    "reqs": "Technique allows making an Attack with an _Unarmed_ Weapon.",
     "ap": 0,
-    "effect": "Gain _Exposed_ 1. On a _Hit_, gain _Vigor_ 2 and gain _Courage_ 1 or grant an ally within Range 6 _Courage_ 1. On a _Crit_, instead gain _Vigor_ 4 and gain _Courage_ 2 or grant an ally within Range 6 _Courage_ 2."
+    "keywords": ["Strong", "_Unblockable_ 1"],
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Finishing Blow"
   },
   {
-    "name": "Courageous Charge",
-    "desc": "You dash forward recklessly, inspiring your allies with your display.",
-    "keywords": ["Spirit", "Earth", "Flexible", "Charge"],
-    "reqs": "Attached to a Technique with Movement.",
-    "cost": "2 _Focus_/_Grit_",
-    "effect": "For your turn, enemies have _Advantage_ on all _Punish_ Attacks against you that trigger based on Movement, but gain _Impaired_ 1 (1 _Focus_) if they do not take a _Punish_ Reaction against you when they are able to. Whenever an enemy makes a _Punish_ Attack against you either gain _Courage_ 1 or grant an ally within Range 4 _Courage_ 1, your choice.",
-    "boost": "2 _Grit_: Gain _Guard_ 2 for this Movement."
+    "desc": "With titanic strength you redecorate with deadly intent.",
+    "effect": "You must Target a Size 1 _Obstacle_. Instead of using its normal _Interact_, move the Obstacle up to 4 spaces, then Attack a creature next to the Obstacle's final location using the _Heavy Improvised Weapon_ Profile. Add _Fragile_ to the _Obstacle_.",
+    "name": "Herculean Throw",
+    "special": "If the Target is at a lower Elevation than the Obstacle originally was you have _Advantage_ on this Attack.",
+    "ap": 0,
+    "keywords": ["Earth", "Environmental", "Flexible", "Siege"],
+    "boost": "2 _Grit_/_Momentum_: Instead, Attack in a Burst 1 around the end location of the Obstacle and _Destroy_ it.",
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Titan's Grasp"
   },
   {
-    "name": "Seismic Aim",
+    "desc": "Your thrown weapons come out at blinding speed, catching slower foes fully off-guard.",
+    "effect": "If the Target has not taken a _Turn_ yet this _Round_, deal an additional 2 Damage on a _Hit_+.",
+    "name": "Invisible Throw",
+    "reqs": "Technique is a Strike using a _Thrown_ Weapon.",
+    "ap": 0,
+    "keywords": ["_Sure Hit_ 2", "_Unblockable_ 1"],
+    "cost": "2 _Momentum_/_Reflex_",
+    "from": "Rapid Toss"
+  },
+  {
+    "desc": "You leap forward, hurdling over hazards and other dangers.",
+    "effect": "You may make a single _Jump_ this Turn.",
+    "name": "Leap",
+    "reqs": "Technique has Movement.",
+    "ap": 0,
+    "keywords": ["Flexible", "Repeatable"],
+    "cost": "1 _Momentum_/_Reflex_"
+  },
+  {
+    "desc": "You run forward, turning earth to fluid as you dart through it.",
+    "effect": "For this _Movement_, you may ignore all effects of _Earthen_ Terrain. Additionally, you may move through _Earthen_ _Obstacles_, but treat them as _Rough_ Terrain. You may not end your turn inside an _Obstacle_.",
+    "name": "Liquid Earth",
+    "reqs": "Technique has _Movement_.",
+    "ap": 0,
+    "keywords": ["Earth", "Flexible"],
+    "boost": "1 _Focus_/_Momentum_: You may move through all _Obstacles_ on _Earthen_ Terrain, but still treat them as _Rough_. While moving on _Earthen_ Terrain, add _Safe_ 2.",
+    "cost": "1 _Focus_/_Momentum_"
+  },
+  {
+    "desc": "You set your feet, focusing more on power than mobility.",
+    "effect": "This Technique no longer has Movement. Deal +1 Damage on a _Hit_+.",
+    "name": "Long Draw",
+    "reqs": "Technique is a Strike using a Projectile Weapon.",
+    "ap": 0,
+    "keywords": ["Strong", "_Pierce_ 1"],
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Overdraw"
+  },
+  {
+    "desc": "You dash your grip back on your spear, extending your reach.",
+    "effect": "Increase your _Reach_ by 1 this _Turn_. Deal additional Damage equal to half the distance between you and the Target.",
+    "name": "Lunging Strike",
+    "reqs": "Technique is a Strike using a Lance Weapon.",
+    "special": "You may gain _Vulnerable_ 2 to instead increase your _Reach_ by 2.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Focus_/_Momentum_"
+  },
+  {
+    "desc": "You use a spear strike to slip away from a foe, or grant an ally the same opportunity.",
+    "effect": "After resolving this Attack, you may take a _Step_ Movement. You must end this Movement as far from all Targets as possible. On a _Hit_+, add _Safe_ 1.",
+    "name": "Maneuvering Thrust",
+    "reqs": "Technique is a _Strike_ using a Lance Weapon and you are using _Harrier Style_.",
+    "special": "Instead, after resolving this Attack, an ally adjacent to the Target may pay 1 _Momentum_/_Reflex_ to _Step_ Move. Add _Safe_ 1 to this Movement on a _Hit_+.",
+    "ap": 0,
+    "cost": "2 _Momentum_/_Reflex_"
+  },
+  {
+    "desc": "You draw upon the earth's strength, massively increasing your jumping power.",
+    "effect": "Increase your _Jump_ value by 2 this Turn. You may make a single _Jump_ this turn, and may make the space you start your _Jump_ from _Veiled_ until the end of the next _Phase_.",
+    "name": "Mighty Leap",
+    "reqs": "Technique has Movement.",
+    "ap": 0,
+    "keywords": ["Earth", "Flexible"],
+    "boost": "1 _Grit_: Increase your _Jump_ by an additional 1.",
+    "cost": "1 _Grit_/_Momentum_, 1 _Momentum_/_Reflex_",
+    "from": "Meteor Crash"
+  },
+  {
+    "desc": "You strike with unparalled strength, driving back a foe.",
+    "effect": "On a _Graze_+, deal +1 Damage, add _Push_ 2, and increase the cost to Negate by 1.",
+    "name": "Mighty Strike",
+    "reqs": "Technique is a Strike using a Weapon and you are using _Mighty Stance_.",
+    "special": "If the Weapon is _Heavy_, instead deal +2 Damage, add _Push_ 3, and increase the cost to Negate by 1.",
+    "ap": 0,
+    "keywords": ["Earth"],
+    "cost": "1 _Grit_/_Momentum_"
+  },
+  {
+    "desc": "You are an expert at shifting your posture from mobility to defense.",
+    "effect": "Choose one:\n* Decrease the _Speed_ of the _Technique_ by 1, but gain _Vulnerable_ 1.\n* Increase the _Speed_ of the _Technique_ by 1, but add _Warding_ 2.",
+    "name": "Mobile Armor",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Momentum_",
+    "from": "Adaptability"
+  },
+  {
+    "desc": "You run forward with your shield up, providing an ample defense.",
+    "effect": "You have _Cover_ and +1 _Guard_ this _Turn_.",
+    "name": "Mobile Bunker",
+    "reqs": "Technique has _Movement_.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Grit_",
+    "from": "Shield Charge"
+  },
+  {
+    "desc": "Your blade flashes out, providing you the path to retreat.",
+    "effect": "On a _Hit_+ with your Blade Weapon add _Safe_ 2. This _Safe_ applies only to the Targets of the Strike.",
+    "name": "Nimble Blade",
+    "reqs": "Technique is a Strike using a Blade Weapon with Movement.",
+    "special": "You may take an additional _Step_ Movement, but it must be used after making your Attack.",
+    "ap": 0,
+    "keywords": ["Light"],
+    "cost": "1 _Reflex_",
+    "from": "Sword Waltz"
+  },
+  {
+    "desc": "You use terrain to accelerate yourself, moving faster all the while.",
+    "effect": "You may use the Effect of _Free Run_ a single time this _Turn_ and benefit from its Special.",
+    "name": "Parkour",
+    "reqs": "Technique has Movement.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Momentum_/_Reflex_",
+    "from": "Free Run"
+  },
+  {
+    "desc": "Your unarmed strikes are slow and calculating, exploiting a foe's openings.",
+    "effect": "Increase the _Speed_ of the Technique by 1. For all _Unarmed_ Attacks, increase the _Cost_ to _Negate_ by 1 and add _Vulnerable_/_Impaired_ 1.",
+    "name": "Patient Arts",
+    "reqs": "Technique is a _Strike_ using an _Unarmed_ Weapon_ and you are using _Patient Palm Style_.",
+    "special": "The Keywords only apply to _Unarmed_ Attacks made as a part of this Technique.",
+    "ap": 0,
+    "keywords": ["_Unblockable_ 1"],
+    "cost": "1 _Grit_/_Momentum_"
+  },
+  {
+    "desc": "Your unarmed attacks come forth at blinding speed, striking before foes have the chance to react.",
+    "effect": "Decrease the _Speed_ of the Technique by 1.",
+    "name": "Quick Arts",
+    "reqs": "Technique is a _Strike_ using an _Unarmed_ Weapon_ and you are using _Flying Fist Style_.",
+    "special": "The Keywords only apply to _Unarmed_ Attacks made as a part of this Technique.",
+    "ap": 0,
+    "keywords": ["Priority", "_Sure Hit_ 1", "_Warding_ 1"],
+    "cost": "1 _Momentum_/_Reflex_"
+  },
+  {
+    "desc": "A nimble attack, sacrificing power for speed.",
+    "effect": "Decrease the _Speed_ of the Technique by 1. Deal -2 Damage if _Versatile_.",
+    "name": "Quick Strike",
+    "reqs": "Technique is a Strike.",
+    "ap": 0,
+    "keywords": ["Quick"],
+    "boost": "1 _Momentum_/_Reflex_: Add _Sure Hit_ 1.",
+    "cost": "None"
+  },
+  {
+    "desc": "You quickly fire, sacrificing power for speed.",
+    "effect": "Make three Attacks using your Weapon's Profile against the same Target. If all three are a _Hit_+, inflict _Wounded_ 1 (2 _Grit_).",
+    "name": "Rapid Shot",
+    "reqs": "Technique is a Strike using a Projectile Weapon.",
+    "ap": 0,
+    "keywords": ["Glancing", "Quick"],
+    "cost": "2 _Momentum_",
+    "from": "Barrage"
+  },
+  {
+    "desc": "You readjust your stance on the fly, preparing for a different assault.",
+    "effect": "Change your _Stance_/_Style_.",
+    "name": "Rebalancing Strike",
+    "reqs": "Technique allows making an Attack with an _Unarmed_ Weapon.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "boost": "1 _Focus_/_Momentum_: Instead, clear _Staggered_ then change your _Stance_/_Style_.",
+    "cost": "None",
+    "from": "Adaptive Strike"
+  },
+  {
+    "desc": "A specialized blade technique that punishes unarmored foes.",
+    "effect": "If the Target has no _Guard_ or you target a Creature Part, either deal 2 additional Damage or inflict _Bleed_1x3.",
+    "name": "Rending Slash",
+    "reqs": "Technique is a Strike using a Blade Weapon.",
+    "ap": 0,
+    "boost": "1 _Momentum_: On a _Hit_+, add _Wounded_ 1 and increase the _Cost_ to _Negate_ by 1.",
+    "cost": "1 _Momentum_"
+  },
+  {
+    "desc": "Your courage fills you with the strength to carry on.",
+    "effect": "At the end of your _Turn_, remove your topmost _Courage_ Token. Gain _Grit_ equal to its value or _Vigor_ equal to twice its value.",
+    "name": "Rouse",
+    "reqs": "You are using _Defiant Stance_.",
+    "ap": 0,
+    "keywords": ["Earth", "Flexible", "Repeatable"],
+    "cost": "None"
+  },
+  {
+    "desc": "A sample Enhancement to outline the different fields.",
+    "effect": "The primary effect of this Enhancement.",
+    "name": "Sample Enhancement",
+    "reqs": "What requirements you must fulfill to use this Enhancement.",
+    "special": "The secondary effect of this Enhancement.",
+    "ap": 0,
+    "keywords": ["Keywords Go Here"],
+    "boost": "An optional effect with an associated cost that can be paid when the Technique this Enhancement was used on is used.",
+    "cost": "What must be paid to use this Enhancement."
+  },
+  {
+    "desc": "Your weapon erode's a foe's ability to defend themself with every strike.",
+    "effect": "On a _Hit_, you may force the Target to discard 1 _Defensive Token_ of your choice. On a _Crit_,  they instead discard 2. If they do not have sufficient Defensive Tokens they may discard other _Defensive Tokens_ of their choice. If they have no other _Defensive Tokens_, they instead take Damage equal to twice the Tokens they did not discard.",
+    "name": "Sapping Strike",
+    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
+    "ap": 0,
+    "keywords": ["_Unblockable_ 1"],
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Bash Aside"
+  },
+  {
     "desc": "You set your feet as you strike, reading your foe's every move.",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
-    "cost": "1 _Focus_/_Momentum_",
-    "reqs": "_Attached_ to a single-target Strike.",
     "effect": "Ignore _Veiled_ Terrain for this Technique. If the Target is within your _Seismic Sense_, reduce any _Penalty_ by 1 and ignore _Cover_.",
-    "special": "If the Target is within your _Seismic Sense_, you may remove the target's Topmost _Knowledge_ Token. Add _Pierce_ X/_Unblockable_ X/_Sure Hit_ X, where X is the Value of the Token.",
-    "boost": "1 _Focus_/_Momentum_: Instead of reducing any _Penalty_, ignore _Disadvantage_."
+    "name": "Seismic Aim",
+    "reqs": "_Attached_ to a Single-Target Strike.",
+    "special": "If the Target is within your _Seismic Sense_, you may remove the target's Topmost _Knowledge_ Token. Add _Pierce_ X-1/_Unblockable_ X/_Sure Hit_ X, where X is the Value of the Token.",
+    "keywords": ["Earth", "Groundsource"],
+    "boost": "1 _Focus_/_Momentum_: Instead of reducing any _Penalty_, ignore _Disadvantage_.",
+    "cost": "1 _Focus_/_Momentum_",
+    "from": "Tissue Scan"
   },
   {
-    "name": "Exploiting Strike",
-    "desc": "You find an old wound in an enemy with your seismic sense before exploiting it with a powerful attack.",
-    "keywords": ["Spirit", "Earth"],
+    "desc": "You outmaneuver a foe in an attempt to break their stance.",
+    "effect": "Once this _Turn_, on a _Hit_+ with an _Unarmed_ Weapon, add _Staggered_ and increase the cost to _Negate_ by 1.",
+    "name": "Severing Strike",
+    "reqs": "Technique allows making an Attack with an _Unarmed_ Weapon.",
     "ap": 0,
+    "keywords": ["Quick"],
     "cost": "2 _Focus_/_Momentum_",
-    "reqs": "Attached to a single-target Strike.",
-    "effect": "On a _Hit_+ add _Impaired_ 1 to the Attack and increase the cost to _Negate_ by 1.",
-    "special": "If you _Attack_ a foe within your _Seismic Sense_ and clear a _Knowledge_ Token as a part of this Attack, deal additional Damage equal to Value of _Knowledge_ cleared."
+    "from": "Enfeebling Strike"
+  },
+  {
+    "desc": "You slip along the battlefield, unable to be pinned down.",
+    "effect": "You may immediately Attack the first enemy to use an _Opportune_ _Punish_ _Reaction_ against you with a 1 AP Single-Target _Strike_, paying all Costs as normal.",
+    "name": "Skirmisher's Charge",
+    "reqs": "Technique has _Movement_.",
+    "ap": 0,
+    "keywords": ["Charge", "Flexible", "_Safe_ 1"],
+    "cost": "1 _Momentum_",
+    "from": "Agile Charge"
+  },
+  {
+    "desc": "Your weapon tears through an obstacle, surprising a foe.",
+    "effect": "Once this _Turn_, before making an Attack with your Blunt Weapon, attack an _Obstacle_ adjacent to the _Target_ with your Blunt Weapon. If you _Destroy_ the _Obstacle_, gain a +1 Bonus to your _Attack Roll_. If you do not _Destroy_ it, instead take a -1 Penalty.",
+    "name": "Sledge",
+    "reqs": "Technique is a _Strike_ using a Blunt Weapon_.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "boost": "1 _Grit_/_Momentum_: Deal +2 Damage to the Obstacle. You may repeat this _Boost_.",
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Smash"
+  },
+  {
+    "desc": "Your spirit assists you in flinging a stone with massive force.",
+    "effect": "You must target a _Boulder_ or _Large Boulder_. Range is instead 6 and, if you use the Obstacle's Interact, halve all Costs.",
+    "name": "Sling Stone",
+    "ap": 0,
+    "keywords": ["Earth", "Environmental", "Flexible"],
+    "boost": "Choose one, and use it in place of one of the Obstacle's Interact:\n* 2 _Grit_/_Momentum_: Must target a _Boulder_. Use either of the _Boulder_'s Interacts at no Cost, but instead _Push_ it 6 spaces. Deal +1 Damage and increase the _Push_ it inflicts by 2.\n* 3 _Grit_/_Momentum_: As above, but instead target a _Large Boulder_.",
+    "from": "Avalanche"
+  },
+  {
+    "desc": "You briefly utilize your ranged weapon as a melee one.",
+    "effect": "Before resolving any part of your _Technique_, Attack with a Light, Medium or Heavy Improvised Weapon, depending on if the Weapon is Light, Versatile or Heavy. Add _Push_ 1, and increase the cost to Negate by 1. Resolve the actual _Technique_, but add _Glancing_.",
+    "name": "Spacing Strike",
+    "reqs": "Technique is a Strike using a Projectile Weapon and you are using _Close-Quarters Style_.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Reflex_/_Momentum_"
+  },
+  {
+    "desc": "You plant your spear, using it as a pole vault to amplify your jump.",
+    "effect": "Increase your _Jump_ value by 1 + your Lance Weapon's _Reach_ this Turn for the first _Jump_ you make this Turn.",
+    "name": "Spear Vault",
+    "reqs": "Technique has Movement and you are Wielding a Lance Weapon.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "cost": "1 _Momentum_/_Reflex_"
+  },
+  {
+    "desc": "Your pull the earth up into jagged spikes.",
+    "effect": "Make an unoccupied _Earthen_ space in Range 6 _Jagged_. Inflict _Bleed_ 1 on an adjacent creature (1 _Reflex_).",
+    "name": "Spire Strike",
+    "ap": 0,
+    "keywords": ["Earth"],
+    "boost": "1 _Grit_: Instead, inflict _Hobbled_ 1 (2 _Reflex_).",
+    "cost": "1 _Grit_/_Momentum_",
+    "from": "Jaws of the Earth"
+  },
+  {
+    "desc": "A heavy blow that is almost certain to delay a foe.",
+    "effect": "Once this _Turn_, on a _Hit_+ with an _Unarmed_ Weapon, add _Slowed_, _Push_ 2, and increase the cost to Negate by 1.",
+    "name": "Staggering Strike",
+    "reqs": "Technique allows making an Attack with an _Unarmed_ Weapon.",
+    "ap": 0,
+    "keywords": ["Strong"],
+    "cost": "2 _Grit_/_Momentum_",
+    "from": "Overwhelming Strike"
+  },
+  {
+    "desc": "You run headlong into stone, detonating it with explosive force and charge forward in the stonescreen.",
+    "effect": "Once this _Movement_ you may deal 10 _Crush_ Damage to an _Earthen_ Obstacle. If you _Destroy_ it you may immediately _Step_ Move in any direction and deal 2 _Slash_ Damage to all adjacent creatures, excluding yourself. For the remainder of your _Turn_, other creatures treat you as _Veiled_.",
+    "name": "Stone Eruption",
+    "reqs": "Technique has _Movement_ and you are using _Rubble Stance_.",
+    "ap": 0,
+    "keywords": ["Earth", "Flexible"],
+    "boost": "1 _Grit_: Deal 4 additional Damage to the Obstacle.",
+    "cost": "2 _Grit_/_Momentum_"
+  },
+  {
+    "desc": "A powerful blow, sacrificing speed for power.",
+    "effect": "Increase the _Speed_ of the Technique by 1. Deal an additional 2 Damage if _Versatile_, or 3 if _Heavy_.",
+    "name": "Strong Strike",
+    "reqs": "Technique is a Strike.",
+    "special": "If the Technique targets multiple creatures, instead deal 1/2 additional Damage with _Versatile_/_Heavy_ Weapons.",
+    "ap": 0,
+    "keywords": ["Strong"],
+    "boost": "1 _Grit_/_Momentum_: Add _Unblockable_ 1.",
+    "cost": "None"
+  },
+  {
+    "desc": "Your blow against a foe's defenses reverberates through them.",
+    "effect": "If this Attack targets a creature's _Armor_, inflict _Dazed_ 2/_Exposed_ 1 (2 _Focus_) on the creature on a _Hit_+.",
+    "name": "Sundering Strike",
+    "reqs": "Technique is a Strike using a _Blunt_ Weapon.",
+    "ap": 0,
+    "keywords": ["Armor Piercing", "_Pierce_ 1"],
+    "cost": "1 _Grit_/_Momentum_"
+  },
+  {
+    "desc": "You roll across the ground, slipping past foes.",
+    "effect": "At any point in your Movement, you may declare that you are Tumbling. For the next X spaces, where X is your _Step_ value, add _Charge_, _Rush_, and _Safe_ 2 to your Movement.",
+    "name": "Tumble",
+    "reqs": "Technique has Movement and you are using _Tumbler Style_.",
+    "ap": 0,
+    "keywords": ["Flexible", "Repeatable"],
+    "cost": "1 _Momentum_/_Reflex_",
+    "from": "Tumbler Style"
+  },
+  {
+    "desc": "You make a mighty leap, covering more ground than most.",
+    "effect": "You may _Jump_ this Turn. Increase your _Jump_ value by 1 this Turn.",
+    "name": "Vault",
+    "reqs": "Technique has Movement and wearing Light or No _Armor_.",
+    "ap": 0,
+    "keywords": ["Flexible"],
+    "boost": "1 _Momentum_: Add _Feint_ to the Attached Technique. If you _Jump_ through a creature's space this turn they must _Negate_ with 2 _Reflex_ or else you have _Advantage_ on any Attack Roll against them this turn.",
+    "cost": "1 _Momentum_/_Reflex_",
+    "from": "Vaulting Run"
+  },
+  {
+    "desc": "You sacrifice the power of your strike to slip into a defensive stance, preparing for the opponent's next blow.",
+    "effect": "Reduce the Damage of the Strike by 2, to a minimum of 1. Gain 1 _Grit_/_Reflex_ on a _Crit_.",
+    "name": "Warding Blade",
+    "reqs": "Technique is a _Strike_ using a Blade Weapon.",
+    "special": "Gain an additional bonus, depending on the Strike's Keywords:\n* _Quick_: Gain 1 _Reflex_. If the Weapon is _Light_, add _Safe_ 1.\n* _Strong_: _Gain 1 _Grit_. Instead, only reduce the Damage by 1. If the Weapon is _Heavy_, instead do not reduce the Damage.\n* Other: This Technique instead has _Warding_ 2. Gain 1 _Grit_/_Reflex_.",
+    "keywords": ["_Warding_ 1"],
+    "boost": "2 _Momentum_: Double the Tokens gained from the _Effect_. Add _Impaired_ 1 to a _Hit_ or _Impaired_ 2 to a _Crit_. Increase the cost to _Negate_ by 1.",
+    "cost": "1 _Momentum_"
   }
 ]

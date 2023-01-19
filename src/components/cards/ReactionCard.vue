@@ -13,6 +13,9 @@
       <div v-if="reaction.HasCost">
         <display-tooltip-text class="reaction--format" :string="reaction.CostHeader" />
       </div>
+      <div class="reaction--format" v-if="reaction.HasRequirements">
+        <display-tooltip-text :string="reaction.RequirementsHeader" />
+      </div>
       <div class="reaction--format" v-if="reaction.HasTrigger">
         <display-tooltip-text :string="reaction.TriggerHeader" />
       </div>
@@ -43,7 +46,6 @@ import Vue from 'vue'
 import { Reaction } from '@/class'
 import { store } from '@/store'
 import ChartTable from '@/components/ChartTable.vue'
-import Tooltip from '@/components/TooltipParam.vue'
 
 export default Vue.extend({
   name: 'reaction-card',
@@ -62,7 +64,7 @@ export default Vue.extend({
       if (this.format_text) return 'reaction--text-format'
     },
   },
-  components: { ChartTable, Tooltip },
+  components: { ChartTable },
 })
 </script>
 
@@ -71,10 +73,12 @@ export default Vue.extend({
   font-family: $font--standard;
   background-color: $color--grey-lighter;
   border: $border--black-standard;
-  margin: 1em;
+  height: 100%;
+  padding-bottom: $space--xs;
 }
 .reaction--header {
   text-align: center;
+  padding-top: $space--xs;
   background-color: $color--reaction;
   color: black;
 }

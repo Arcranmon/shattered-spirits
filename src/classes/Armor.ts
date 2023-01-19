@@ -9,7 +9,7 @@ class Armor {
   private name_: string
   private reaction_: string
   private reposition_: number
-  private shift_: number
+  private dash_: number
   private special_: string
   private sprint_: number
   private step_: number
@@ -43,8 +43,8 @@ class Armor {
   get Reposition() {
     return this.reposition_
   }
-  get Shift() {
-    return this.shift_
+  get Dash() {
+    return this.dash_
   }
   get HasSpecial() {
     return this.special_ != ''
@@ -99,7 +99,7 @@ class Armor {
     this.name_ = data.name || ''
     this.reaction_ = data.reaction || ''
     this.reposition_ = data.reposition || 0
-    this.shift_ = data.shift || 0
+    this.dash_ = data.dash || 0
     this.special_ = data.special || ''
     this.sprint_ = data.sprint || 0
     this.step_ = data.step || 0

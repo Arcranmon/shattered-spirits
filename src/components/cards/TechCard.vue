@@ -10,8 +10,8 @@
         <span style="font-style: bold;">
           <b
             >{{ tech.SpeedHeader }}<span v-if="tech.HasDamageType">, {{ tech.DamageTypeHeader }}</span
-            ><span v-if="tech.HasRange">, {{ tech.RangeHeader }}</span
-            ><span v-if="tech.HasArea">, {{ tech.Area }}</span
+            ><span v-if="tech.HasRange">, <display-tooltip-text :string="tech.RangeHeader" :decorate="false" /></span
+            ><span v-if="tech.HasArea">, <display-tooltip-text :string="tech.Area" :decorate="false" /></span
             ><span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
         </span>
@@ -50,34 +50,35 @@
         <display-tooltip-text :string="tech.LinkedHeader" />
       </div>
       <div class="expand--collapse-box-outlined" v-if="(tech.HasChart)">
-        <v-expansion-panels class="condensed" flat tile>
+        <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
           <v-expansion-panel style="background-color: inherit;"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
             <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="tech.Chart" /></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </div>
-      <div class="expand--collapse-box-outlined" v-if="tech.HasReaction">
-        <v-expansion-panels class="condensed" flat tile>
-          <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-reaction">
-              <display-tooltip-text :string="tech.ReactionHeader" />
-              <reaction-card :reaction="$store.getters.getReaction(tech.Reaction)"
-            /></v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </div>
-      <div class="expand--collapse-box-outlined" v-if="tech.HasEnhancement">
-        <v-expansion-panels class="condensed" flat tile>
-          <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-enhancement">
-              <enhancement-card :enhancement="$store.getters.getEnhancement(tech.Enhancement)"
-            /></v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </div>
+      <span v-if="!this.on_sheet">
+        <div class="expand--collapse-box-outlined" v-if="tech.HasReaction">
+          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
+            <v-expansion-panel style="background-color: inherit;"
+              ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
+              <v-expansion-panel-content class="expand--body-reaction">
+                <display-tooltip-text :string="tech.ReactionHeader" />
+                <div><reaction-card :reaction="$store.getters.getReaction(tech.Reaction)" /></div
+              ></v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </div>
+        <div class="expand--collapse-box-outlined" v-if="tech.HasEnhancement">
+          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
+            <v-expansion-panel style="background-color: inherit;"
+              ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
+              <v-expansion-panel-content class="expand--body-enhancement">
+                <div><enhancement-card :enhancement="$store.getters.getEnhancement(tech.Enhancement)" /></div
+              ></v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels></div
+      ></span>
     </div>
   </div>
 </template>
@@ -89,7 +90,6 @@ import { store } from '@/store'
 import ChartTable from '@/components/ChartTable.vue'
 import EnhancementCard from './EnhancementCard.vue'
 import ReactionCard from './ReactionCard.vue'
-import Tooltip from '@/components/TooltipParam.vue'
 
 export default Vue.extend({
   name: 'technique-card',
@@ -102,8 +102,18 @@ export default Vue.extend({
       type: String,
       required: false,
     },
+    on_sheet: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    character_creation: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
-  components: { ChartTable, EnhancementCard, ReactionCard, Tooltip },
+  components: { ChartTable, EnhancementCard, ReactionCard },
 })
 </script>
 
@@ -122,6 +132,7 @@ export default Vue.extend({
   border-top-right-radius: 2.9em;
 }
 .tech--header {
+  padding-top: $space--xs;
   font-size: $font-size--l;
   text-align: center;
   color: black;

@@ -1,8 +1,6 @@
 <template
   ><span>
-    <div class="character-creation">
-      <span v-html="creationText" />
-    </div>
+    <display-tooltip-text :string="creationText" />
     <br />
     <v-layout justify-center>
       <div class="button-seperator">
@@ -12,93 +10,67 @@
         </v-btn>
       </div></v-layout
     >
-    You may select up to an additional
-    {{ character.TechniquesRemaining }} techniques!
-    <div :v-if="!character.HasSpirit">
-      Character must have a spirit selected to choose spirit techniques!
+    <div class="centered--formatted">
+      <display-tooltip-text :string="'You may select up to an additional ' + character.TechniquesRemaining + ' Techniques!'" />
+      <div :v-if="!character.HasSpirit">
+        <display-tooltip-text string="Character must have a Spirit selected to choose Spirit Techniques!" />
+      </div>
     </div>
-    <div class="stance--box">
-      <show-cards
-        :inputs="charSpiritTechniques"
-        job="Techniques"
-        :collapse="true"
-        display_text="Selected Spirit Techniques"
-        standalone_or_contained="Standalone"
-        :selectButton="true"
-        :color_category="character.SpiritType"
-        @chose="removeSpiritTech"
-      />
-    </div>
-    <v-row
-      ><v-col cols="3">
-        <v-select
-          label="Choose a Technique!"
-          :items="spiritTechniques"
-          :item-text="(item) => item.Name + ' (' + item.Discipline + ')'"
-          hide-details
-          v-model="spirit_technique"
-          outlined
-          return-object
-          @change="$emit('chose', spirit_technique)" /></v-col
-      ><v-col cols="9">
-        <v-layout justify-center>
-          <v-btn
-            color="success"
-            class="button-seperator"
-            large
-            tile
-            @click="addSpiritTech(spirit_technique)"
-            :disabled="spirit_technique.Name == '' || character.HasAllTechniques || character.SpiritTechniques.includes(spirit_technique.Name)"
-          >
-            <span v-if="spirit_technique.Name == ''">Select a technique on the left!</span>
-            <span v-else>ADD {{ spirit_technique.Name }}</span>
-          </v-btn></v-layout
-        >
-        <div>
-          <tech-card
-            :tech="spirit_technique"
-            v-if="(spirit_technique.Name !='' || character.HasAllTechniques )"
-            :category="character.SpiritType"
-          /></div></v-col
-    ></v-row>
-    <div class="stance--box">
-      <show-cards
-        :inputs="charSkillTechniques"
-        job="Techniques"
-        :collapse="true"
-        display_text="Selected Skill Techniques"
-        standalone_or_contained="Standalone"
-        :selectButton="true"
-        @chose="removeSkillTech"
-      />
-    </div>
-    <v-row
-      ><v-col cols="3">
-        <v-select
-          label="Choose Skill Techniques!"
-          :items="skillTechniques"
-          :item-text="(item) => item.Name + ' (' + item.Discipline + ')'"
-          hide-details
-          v-model="skill_technique"
-          outlined
-          return-object
-          @change="$emit('chose', skill_technique)" /></v-col
-      ><v-col cols="9">
-        <v-layout justify-center>
-          <v-btn
-            color="success"
-            class="button-seperator"
-            large
-            tile
-            @click="addSkillTech(skill_technique)"
-            :disabled="skill_technique.Name == '' || character.HasAllTechniques || character.SkillTechniques.includes(skill_technique.Name)"
-          >
-            <span v-if="skill_technique.Name == ''">Select a technique on the left!</span>
-            <span v-else>ADD {{ skill_technique.Name }}</span>
-          </v-btn></v-layout
-        >
-        <div>
-          <tech-card :tech="skill_technique" v-if="(skill_technique.Name !='' )" /></div></v-col></v-row
+    <v-container class="fill-height" fluid>
+      <v-row>
+        <v-col cols="4" class="selected--box">
+          <h4>Current Spirit Techniques</h4>
+          <show-cards
+            :inputs="charSpiritTechniques"
+            job="Techniques"
+            :collapse="false"
+            :cols="1"
+            standalone_or_contained="Standalone"
+            :selectButton="true"
+            @chose="removeSpiritTech"
+        /></v-col>
+        <v-col cols="8" class="selecting--box ma-0 pa-0">
+          <span v-for="discipline in spiritDisciplines" :key="discipline.name">
+            <show-cards
+              :inputs="$store.getters.getTechniquesFromList(discipline.Techniques)"
+              job="Techniques"
+              :cols="2"
+              :card_color="character.SpiritType"
+              :header_color="discipline.Name"
+              :display_text="discipline.Name"
+              :summary_text="discipline.Summary"
+              standalone_or_contained="Standalone"
+              :character_creation="true"
+              :selectButton="true"
+              @chose="addSpiritTech" /></span
+        ></v-col> </v-row></v-container
+    ><v-container class="fill-height" fluid>
+      <v-row>
+        <v-col cols="4" class="selected--box">
+          <h4>Current Skill Techniques</h4>
+          <show-cards
+            :inputs="charSkillTechniques"
+            job="Techniques"
+            :collapse="false"
+            :cols="1"
+            standalone_or_contained="Standalone"
+            :selectButton="true"
+            @chose="removeSkillTech"
+        /></v-col>
+        <v-col cols="8" class="selecting--box ma-0 pa-0">
+          <span v-for="discipline in skillDisciplines" :key="discipline.name">
+            <show-cards
+              :inputs="$store.getters.getTechniquesFromList(discipline.Techniques)"
+              job="Techniques"
+              :cols="2"
+              :header_color="discipline.Name"
+              :display_text="discipline.Name"
+              :summary_text="discipline.Summary"
+              standalone_or_contained="Standalone"
+              :character_creation="true"
+              :selectButton="true"
+              @chose="addSkillTech" /></span
+        ></v-col> </v-row></v-container
   ></span>
 </template>
 <script>
@@ -129,6 +101,9 @@ export default Vue.extend({
     spiritDisciplines: function () {
       return this.$store.getters.getDisciplinesByCategory(this.character.SpiritType)
     },
+    skillDisciplines: function () {
+      return [...this.$store.getters.getDisciplinesByCategory('Weapon'), ...this.$store.getters.getDisciplinesByCategory('Armor')]
+    },
     spiritTechniques: function () {
       var techniques = []
       for (var disc of this.spiritDisciplines) {
@@ -149,21 +124,21 @@ export default Vue.extend({
       return this.character.SpiritType
     },
     creationText: function () {
-      return this.$marked.parse(TechniqueSelectionText)
+      return TechniqueSelectionText
     },
   },
   methods: {
     addSkillTech: function (variable) {
-      this.character.AddSkillTech(variable)
+      this.character.AddSkillTech(variable.card)
     },
     addSpiritTech: function (variable) {
-      this.character.AddSpiritTech(variable)
+      this.character.AddSpiritTech(variable.card)
     },
     removeSkillTech(variable) {
-      this.character.RemoveSkillTech(variable.card, variable.index)
+      this.character.RemoveSkillTech(variable.card)
     },
     removeSpiritTech(variable) {
-      this.character.RemoveSpiritTech(variable.card, variable.index)
+      this.character.RemoveSpiritTech(variable.card)
     },
   },
   watch: {
@@ -177,9 +152,6 @@ export default Vue.extend({
 <style scoped lang="scss">
 .button-seperator {
   margin-bottom: 1em;
-}
-.character-creation {
-  font-size: smaller;
 }
 .stance--box {
   margin-top: 1em;

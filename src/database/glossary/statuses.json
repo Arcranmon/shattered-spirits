@@ -3,7 +3,7 @@
     "name": "Ablative Armor",
     "desc": "Armor that, while powerful, is easily stripped away.",
     "effect": "Ablative Armor provides Guard equal to its value. Ablative Armor stacks, but a creature may never have more than 5 Ablative Armor at a given time. Techniques and Stances that provide Ablative Armor will specify its Durability, as well as any _Weaknesses_ or _Resistances_ it has.",
-    "remove": "Every Attack against a creature is automatically resolved against their Ablative Armor as well. Only compare this to the Ablative Armor's _Durability_. An attacker may choose to attack the creature's Ablative Armor. Resolve the Attack as a normal one against the creature's Armor. Always _Shred_ 1. If the Attack does Damage greater than its _Durability_, add _Shred_ 1."
+    "remove": "Every Attack against a creature is automatically resolved against their Ablative Armor as well. Only compare this to the Ablative Armor's _Durability_; ignore any _Guard_ the creature has. An attacker may choose to attack the creature's Ablative Armor. Resolve the Attack as a normal one against the creature's Armor. Always _Shred_ 1. If the Attack does Damage greater than its _Durability_, add _Shred_ 1."
   },
   {
     "name": "Blind",
@@ -11,11 +11,13 @@
     "effect": "A Blind creature treats all other creatures as _Veiled_.",
     "remove": "Creatures are Blinded until they spend 2 _Grit_ at the end of their _Turn_, or the duration specified when inflicted has passed."
   },
-  { "name": "Blinded", "see": "Blind" },
   {
-    "name": "Broken",
-    "effect": "When a creature inflicts Broken the Target immediately loses their _Stance_/_Style_ and gains No Stance/Style (Attacker's choice). While Broken, a creature may not replace No Stance/Style with an active _Stance_/Style_.",
-    "remove": "Only Techniques that explicitly remove Broken (such as Gather) remove Broken. Otherwise, it is cleared at the end of combat."
+    "name": "Blinded",
+    "see": "Blind"
+  },
+  {
+    "name": "Bottom",
+    "see": "Grappled"
   },
   {
     "name": "Damaged",
@@ -23,22 +25,26 @@
     "remove": "Only Techniques that explicitly remove Damaged remove Damaged. Otherwise, it can be removed outside of combat with [travel mechanic here]."
   },
   {
-    "name": "Disarmed",
-    "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. While Disarmed, a may not _Wield_ an item they do not already have _Equipped_.",
-    "remove": "Only Techniques that explicitly remove Disarmed (such as Gather) remove Broken. Otherwise, it is cleared at the end of combat."
+    "name": "Disarm",
+    "see": "Disarmed"
   },
-  { "name": "Disarm", "see": "Disarmed" },
-  { "name": "Disarming", "see": "Disarm" },
+  {
+    "name": "Disarmed",
+    "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. While Disarmed, a character may not _Wield_ or _Equip_ any new items.",
+    "remove": "Only Techniques that explicitly remove Disarmed (such as Gather) remove Staggered. Otherwise, it is cleared at the end of combat."
+  },
+  {
+    "name": "Disarming",
+    "see": "Disarm"
+  },
   {
     "name": "Embed",
     "effect": "Embed effects are always paired with an Action that utilizes a Source or a Weapon. When Embed occurs, the Source or Weapon used in the Action is attached to or impaled in the Target and moves with it. If a Source is Embedded in a creature, they may be treated as that Source.",
     "remove": "A creature may _Sacrifice_ an Action to end Embed, or pay 2 _Grit_ at the end of a _Turn_ to end Embed, but take 4 _True_ Damage in the process."
   },
-  { "name": "Embedded", "see": "Embed" },
   {
-    "name": "Fragile",
-    "effect": "Fragile decreases the Durability of a piece of Equipment or Obstacle by 2.",
-    "remove": "Only Techniques that explicitly remove Fragile remove Fragile. Otherwise, it can be removed outside of combat with [travel mechanic here]."
+    "name": "Embedded",
+    "see": "Embed"
   },
   {
     "name": "Flying",
@@ -46,13 +52,29 @@
     "remove": "Flying typically only lasts as long as a Technique or Stance provides, but is also ended early if the Target is knocked _Prone_."
   },
   {
+    "name": "Fortify",
+    "desc": "You carefully cultivate your defense, pushing your armor beyond its limits.",
+    "effect": "Increase the _Guard_ provided by your _Armor_ by 1.",
+    "remove": "Remove Fortify whenever you gain _Shred_. Otherwise, remove it at the end of combat."
+  },
+  {
+    "name": "Fragile",
+    "effect": "Fragile decreases the Durability of a piece of Equipment or Obstacle by 2.",
+    "remove": "Only Techniques that explicitly remove Fragile remove Fragile. Otherwise, it can be removed outside of combat with [travel mechanic here]."
+  },
+  {
+    "name": "Grapple",
+    "see": "Grappled"
+  },
+  {
+    "name": "Grapple Contest",
+    "see": "Grappled"
+  },
+  {
     "name": "Grappled",
     "effect": "A Grappled character's effect depends on if they are Top or Bottom.\n\nThe Top character has their Movement reduced by one tier and cannot use the hand utilized for Grappling for anything other than the Shove Technique or Strikes with an Unarmed Weapon.\n\nThe Bottom character is Stuck and, when the Top character moves, the Bottom character moves along with them.\nIf the Bottom successfully inflicts Grappled on the Top, they may either choose to end the Grapple or become the Top. If the Top inflicts Grappled on the Bottom, they may immediately instead inflict _Pull_ 6.",
     "remove": "At the end of their Turn, a Bottom character may expend Grit and Reflex to enter a Grapple Contest; if the Winner does not expend an equal amount of Grit or Momentum in any combination, the Bottom character is freed. The Bottom character is also freed if they or the Top are forcibly moved, such as by a Push or Pull. If the Top character is using both Hands for the Grapple treat their expended Grit and Momentum as 1 higher for the Grapple Contest."
   },
-  { "name": "Grapple", "see": "Grappled" },
-  { "name": "Bottom", "see": "Grappled" },
-  { "name": "Top", "see": "Grappled" },
   {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
@@ -66,6 +88,17 @@
     "remove": "How to end Restrained is typically specified in the Technique that inflicts it. If nothing is specified, a creature may _Sacrifice_ an Action and spend 2 _Reflex_ to end Restrained."
   },
   {
+    "name": "Shred",
+    "desc": "A status caused when a creature's armor is damaged.",
+    "effect": "If the Target has _Fortify_, reduce its value by 1. Otherwise, reduce the _Guard_ provided by their _Armor_ by 1. If the _Armor_ has no _Guard_ remaining, instead inflict _Vulnerable_ 1.",
+    "remove": "Only Techniques that explicitly remove Shred remove Shred. Otherwise, it can be removed outside of combat with [travel mechanic here]."
+  },
+  {
+    "name": "Staggered",
+    "effect": "When a creature inflicts Staggered the Target immediately loses their _Stance_/_Style_ and gains No Stance/Style (Attacker's choice). While Staggered, a creature may not change their _Stance_/Style_.",
+    "remove": "Only Techniques that explicitly remove Staggered (such as Gather) remove Staggered. Otherwise, it is cleared at the end of combat."
+  },
+  {
     "name": "Stuck",
     "desc": "A status caused when a creature is unable to move, but their ability to fight is otherwise unimpaired.",
     "effect": "While Stuck a creature cannot take any Movement.",
@@ -75,5 +108,9 @@
     "name": "Sturdy",
     "effect": "Sturdy increases the Durability of a piece of Equipment or Obstacle by 2.",
     "remove": "Only Techniques that explicitly remove Sturdy remove Sturdy. Otherwise, it is removed at the end of combat, or when the _Technique_/_Stance_ that caused it specifies."
+  },
+  {
+    "name": "Top",
+    "see": "Grappled"
   }
 ]

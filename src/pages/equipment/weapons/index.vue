@@ -1,99 +1,47 @@
 <template>
-  <div style="padding: 1em;">
-    <div class="weapon--box" style="background-color: #a78562;">
-      <h2>Improvised</h2>
-      <span class="page--description" v-html="improvisedText" />
-      <show-cards :inputs="improvised" job="Weapons" :collapse="true" />
-    </div>
-    <div class="weapon--box" style="background-color: #e2a66e;">
-      <h2>Unarmed</h2>
-      <span class="page--description" v-html="unarmedText" />
-      <show-cards :inputs="unarmed" job="Weapons" :collapse="true" />
-    </div>
-    <div class="weapon--box" style="background-color: #f75b5b;">
-      <h2>Blades</h2>
-      <span class="page--description" v-html="bladesText" />
-      <show-cards :inputs="blades" job="Weapons" :collapse="true" />
-    </div>
-    <div class="weapon--box" style="background-color: #4f8a52;">
-      <h2>Blunts</h2>
-      <span class="page--description" v-html="bluntsText" />
-      <show-cards :inputs="blunts" job="Weapons" :collapse="true" />
-    </div>
-    <!--- <div class="weapon--box" style="background-color: DarkKhaki;">
-      <h2>Chains</h2>
-      <show-cards :inputs="chains" job="Weapons" :collapse="true" />
-    </div> -->
-    <div class="weapon--box" style="background-color: #767cda;">
-      <h2>Lances</h2>
-      <span class="page--description" v-html="lancesText" />
-      <show-cards :inputs="lances" job="Weapons" :collapse="true" />
-    </div>
-    <div class="weapon--box" style="background-color: DarkGray;">
-      <h2>Ranged</h2>
-      <span class="page--description" v-html="rangedText" />
-      <show-cards :inputs="ranged" job="Weapons" :collapse="true" />
+  <div style="padding: 1em;" weapon_class in weapon_classes>
+    <div v-for="(_, weapon_class) in weapon_info">
+      <div class="weapon--box" v-bind:class="weapon_class + '-Header'">
+        <h2>{{ weapon_class }}</h2>
+        <display-tooltip-text class="page--description" :string="weapon_info[weapon_class]" />
+        <show-cards :inputs="$store.getters.getWeaponsByCategory(weapon_class)" job="Weapons" :collapse="true" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import ShowCards from "@/components/cards/ShowCards.vue";
-import BladesText from "@/database/text_files/weapons/blades.txt";
-import BluntsText from "@/database/text_files/weapons/blunts.txt";
-import ImprovisedText from "@/database/text_files/weapons/improvised.txt";
-import LancesText from "@/database/text_files/weapons/lances.txt";
-import UnarmedText from "@/database/text_files/weapons/unarmed.txt";
-import RangedText from "@/database/text_files/weapons/ranged.txt";
-import { store } from "@/store";
+import Vue from 'vue'
+import ShowCards from '@/components/cards/ShowCards.vue'
+import BladesText from '@/database/text_files/weapons/blades.txt'
+import BluntsText from '@/database/text_files/weapons/blunts.txt'
+import ImprovisedText from '@/database/text_files/weapons/improvised.txt'
+import LancesText from '@/database/text_files/weapons/lances.txt'
+import ProjectileText from '@/database/text_files/weapons/projectile.txt'
+import UnarmedText from '@/database/text_files/weapons/unarmed.txt'
+import ShieldText from '@/database/text_files/weapons/shield.txt'
+import ThrowingText from '@/database/text_files/weapons/throwing.txt'
+import { store } from '@/store'
 export default Vue.extend({
-  name: "weapons",
+  name: 'weapons',
   components: {
     ShowCards,
   },
-  computed: {
-    ranged: function () {
-      return this.$store.getters.getWeaponsByCategory("Ranged");
-    },
-    rangedText: function () {
-      return this.$marked.parse(RangedText);
-    },
-    blades: function () {
-      return this.$store.getters.getWeaponsByCategory("Blade");
-    },
-    bladesText: function () {
-      return this.$marked.parse(BladesText);
-    },
-    blunts: function () {
-      return this.$store.getters.getWeaponsByCategory("Blunt");
-    },
-    bluntsText: function () {
-      return this.$marked.parse(BluntsText);
-    },
-    chains: function () {
-      return this.$store.getters.getWeaponsByCategory("Chain");
-    },
-    lances: function () {
-      return this.$store.getters.getWeaponsByCategory("Lance");
-    },
-    lancesText: function () {
-      return this.$marked.parse(LancesText);
-    },
-    unarmed: function () {
-      return this.$store.getters.getWeaponsByCategory("Unarmed");
-    },
-    unarmedText: function () {
-      return this.$marked.parse(UnarmedText);
-    },
-    improvised: function () {
-      return this.$store.getters.getWeaponsByCategory("Improvised");
-    },
-    improvisedText: function () {
-      return this.$marked.parse(ImprovisedText);
-    },
+  data: () => {
+    return {
+      weapon_info: {
+        Improvised: ImprovisedText,
+        Unarmed: UnarmedText,
+        Blade: BladesText,
+        Blunt: BluntsText,
+        Lance: LancesText,
+        Projectile: ProjectileText,
+        Throwing: ThrowingText,
+        Shield: ShieldText,
+      },
+    }
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

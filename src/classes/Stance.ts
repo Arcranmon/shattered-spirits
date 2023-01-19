@@ -8,6 +8,7 @@ class Stance {
   private effect_: string
   private enhancement_: string
   private refresh_: Refresh
+  private reqs_: string
   private name_: string
   private reaction_: string
   private special_: string
@@ -19,6 +20,7 @@ class Stance {
     this.effect_ = ''
     this.enhancement_ = ''
     this.refresh_ = null
+    this.reqs_ = ''
     this.name_ = ''
     this.reaction_ = ''
     this.special_ = ''
@@ -68,6 +70,12 @@ class Stance {
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
+  public get HasRequirements() {
+    return this.reqs_ != ''
+  }
+  public get RequirementsHeader() {
+    return '**Requirements:** ' + this.reqs_
+  }
   public get HasReaction() {
     return this.reaction_.length > 0
   }
@@ -96,6 +104,7 @@ class Stance {
     this.enhancement_ = data.enhancement || ''
     this.name_ = data.name || ''
     this.reaction_ = data.reaction || ''
+    this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     if ('refresh' in data) {
       this.refresh_ = Refresh.Deserialize(data.refresh)

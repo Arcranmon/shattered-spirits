@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
+import Navbar from '@/components/Navbar'
 
 export default {
   components: { Navbar },
   watch: {
     $route(to, from) {
-      document.title = to.meta.title || "Shattered Spirits";
+      document.title = to.meta.title || 'Shattered Spirits'
     },
   },
-};
+}
 </script>

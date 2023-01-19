@@ -11,6 +11,7 @@
     <h2>Reactions</h2>
     <show-cards
       :inputs="[
+        $store.getters.getReaction('Retrieve'),
         $store.getters.getReaction('Reorient'),
         $store.getters.getReaction('Deflect'),
         $store.getters.getReaction('Dodge'),

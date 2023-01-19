@@ -11,6 +11,7 @@ class Reaction {
   private keywords_: Array<string>
   private name_: string
   private move_: string
+  private reqs_: string
   private trigger_: string
   private chart_: Chart
 
@@ -22,6 +23,7 @@ class Reaction {
     this.keywords_ = []
     this.name_ = ''
     this.move_ = ''
+    this.reqs_ = ''
     this.trigger_ = ''
     this.chart_ = null
   }
@@ -49,6 +51,9 @@ class Reaction {
   }
   public get Name() {
     return this.name_
+  }
+  public get Requirements() {
+    return this.reqs_
   }
   public get Trigger() {
     return this.trigger_
@@ -88,8 +93,15 @@ class Reaction {
     return this.move_.length > 0
   }
   public get MoveHeader() {
-    return '**Move:** ' + this.move_
+    return '**Move:** _' + this.move_ + '_'
   }
+  public get HasRequirements() {
+    return this.reqs_.length > 0
+  }
+  public get RequirementsHeader() {
+    return '**Requirements:** ' + this.reqs_
+  }
+
   public get HasTrigger() {
     return this.trigger_.length > 0
   }
@@ -115,6 +127,7 @@ class Reaction {
     this.keywords_ = data.keywords || []
     this.move_ = data.move || ''
     this.name_ = data.name || ''
+    this.reqs_ = data.reqs || ''
     this.trigger_ = data.trigger || ''
     if ('chart' in data) {
       this.chart_ = Chart.Deserialize(data.chart)

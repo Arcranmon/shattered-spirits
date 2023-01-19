@@ -1,9 +1,9 @@
 <template
   ><span>
     <div class="button-seperator">
-      <div class="character-creation">
+      <div>
         <h3>Choosing Your Armor</h3>
-        <span v-html="creationText" />
+        <display-tooltip-text :string="creationText" />
       </div>
       <br />
       <v-layout justify-center>
@@ -13,9 +13,9 @@
         </v-btn></v-layout
       >
     </div>
-    Click an armor to select it!
+    <display-tooltip-text string="Click an armor to select it!" />
     <div>
-      <show-cards :inputs="armors" job="Armor" :selectButton="true" @chose="setArmor" :collapse="false" /></div
+      <show-cards :inputs="armors" job="Armor" :selectButton="true" @chose="setArmor" :collapse="false" :character_creation="true" /></div
   ></span>
 </template>
 <script>
@@ -39,7 +39,7 @@ export default Vue.extend({
       return this.$store.getters.getPlayerArmors()
     },
     creationText: function () {
-      return this.$marked.parse(ArmorSelectionText)
+      return ArmorSelectionText
     },
   },
   methods: {
@@ -50,11 +50,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
-.character-creation {
-  font-size: smaller;
-}
-.button-seperator {
-  margin-bottom: 1em;
-}
-</style>
+<style scoped lang="scss"></style>

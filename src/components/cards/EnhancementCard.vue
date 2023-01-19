@@ -31,8 +31,13 @@
       <div class="enhancement--format" v-if="enhancement.HasBoost">
         <display-tooltip-text :string="enhancement.BoostHeader" />
       </div>
-      <div style="height: 0.5em;" />
-      <span v-if="(enhancement.HasChart)"><chart-table :chart="enhancement.Chart" /> </span>
+      <span v-if="(enhancement.HasChart)">
+        <div style="height: 0.5em;" />
+        <chart-table :chart="enhancement.Chart" />
+      </span>
+      <span class="enhancement--format" v-if="this.standalone && enhancement.HasFrom">
+        <display-tooltip-text :string="enhancement.FromHeader" />
+      </span>
     </div>
   </div>
 </template>
@@ -42,7 +47,6 @@ import Vue from 'vue'
 import { Enhancement } from '@/class'
 import { store } from '@/store'
 import ChartTable from '@/components/ChartTable.vue'
-import Tooltip from '@/components/TooltipParam.vue'
 
 export default Vue.extend({
   name: 'enhancement-card',
@@ -55,13 +59,17 @@ export default Vue.extend({
       type: Boolean,
       default: false,
     },
+    standalone: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     useTextFormatting: function () {
       if (this.format_text) return 'enhancement--text-format'
     },
   },
-  components: { ChartTable, Tooltip },
+  components: { ChartTable },
 })
 </script>
 
@@ -70,10 +78,13 @@ export default Vue.extend({
   font-family: $font--standard;
   background-color: $color--grey-lighter;
   border: $border--black-standard;
-  margin: 1em;
+  height: 100%;
+  padding-bottom: $space--xs;
 }
 .enhancement--header {
   background-color: $color--enhancement;
+  padding-top: $space--xs;
+  height: 100%;
   text-align: center;
   color: black;
 }

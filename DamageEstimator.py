@@ -57,7 +57,7 @@ else:
         if(weapon["name"] == name):
             hit = weapon["chart"]["roll"]
             attack = weapon["chart"]["damage"]
-            if("speed" in weapon["chart"]):
+            if("speed" in weapon):
                 speed = int(weapon["speed"])
 
 

@@ -14,6 +14,7 @@ class Weapon {
   private reaction_: string
   private special_: string
   private speed_: number
+  private encumbrance: number
 
   public constructor() {
     this.chart_ = null
@@ -28,10 +29,12 @@ class Weapon {
     this.reaction_ = ''
     this.special_ = ''
     this.speed_ = 0
+    this.encumbrance = 1
   }
 
   get CategoryHeader() {
-    return this.category_
+    if (this.Category == 'Unarmed') return this.category_
+    return this.category_ + ', '
   }
   get Category() {
     return this.category_
@@ -58,9 +61,9 @@ class Weapon {
     return this.hands_
   }
   get HandsPhrase() {
-    if (this.hands_ == 0) return 'No Hands, '
-    if (this.hands_ == 1) return 'One-Handed, '
-    else return 'Two-Handed, '
+    if (this.hands_ == 0) return '_No Hands_, '
+    if (this.hands_ == 1) return '_One-Handed_, '
+    else return '_Two-Handed_, '
   }
   get HasKeywords() {
     return this.keywords_.length > 0
@@ -100,6 +103,13 @@ class Weapon {
   get SpeedHeader() {
     return 'Speed ' + this.speed_ + ', '
   }
+  get Encumbrance() {
+    return this.encumbrance
+  }
+  get EncumbranceHeader() {
+    if (this.Category == 'Unarmed') return ''
+    return 'Encumbrance ' + this.encumbrance
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -123,6 +133,7 @@ class Weapon {
     this.reaction_ = data.reaction || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || 0
+    this.encumbrance = data.encumbrance || 0
     if ('chart' in data) {
       this.chart_ = Chart.Deserialize(data.chart)
     }

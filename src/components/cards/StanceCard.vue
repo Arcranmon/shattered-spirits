@@ -12,6 +12,9 @@
       </div>
     </div>
     <div class="stance--content">
+      <div v-if="stance.HasRequirements">
+        <display-tooltip-text :string="stance.RequirementsHeader" />
+      </div>
       <div v-if="stance.HasAccumulate">
         <display-tooltip-text :string="stance.AccumulateHeader" />
       </div>
@@ -24,31 +27,27 @@
       <div v-if="stance.HasSpecial">
         <display-tooltip-text :string="stance.SpecialHeader" />
       </div>
-      <div v-if="stance.HasReaction">
-        <display-tooltip-text :string="stance.ReactionHeader" />
-      </div>
-      <div class="expand--collapse-box-outlined" v-if="stance.HasReaction">
-        <v-expansion-panels class="condensed" flat tile>
-          <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-reaction">
-              <display-tooltip-text string="Gain the following Reaction while in this Stance:" />
-              <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)"
-            /></v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </div>
-      <div class="expand--collapse-box-outlined" v-if="stance.HasEnhancement">
-        <v-expansion-panels class="condensed" flat tile>
-          <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-enhancement">
-              <display-tooltip-text string="Gain the following Enhance while in this Stance:" />
-              <enhancement-card :enhancement="$store.getters.getEnhancement(stance.Enhancement)"
-            /></v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </div>
+      <span v-if="!this.on_sheet">
+        <div class="expand--collapse-box-outlined" v-if="stance.HasReaction">
+          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
+            <v-expansion-panel style="background-color: inherit;"
+              ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
+              <v-expansion-panel-content class="expand--body-reaction">
+                <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)"
+              /></v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </div>
+        <div class="expand--collapse-box-outlined" v-if="stance.HasEnhancement">
+          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
+            <v-expansion-panel style="background-color: inherit;"
+              ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
+              <v-expansion-panel-content class="expand--body-enhancement">
+                <enhancement-card :enhancement="$store.getters.getEnhancement(stance.Enhancement)"
+              /></v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels></div
+      ></span>
     </div>
   </div>
 </template>
@@ -72,6 +71,16 @@ export default Vue.extend({
       required: false,
       default: '#ece6dc',
     },
+    on_sheet: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    character_creation: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   components: { ChartTable, EnhancementCard, ReactionCard },
 })
@@ -89,6 +98,7 @@ export default Vue.extend({
   border-bottom: 5px double black;
 }
 .stance--header {
+  padding-top: $space--xs;
   font-size: $font-size--l;
   text-align: center;
   color: black;

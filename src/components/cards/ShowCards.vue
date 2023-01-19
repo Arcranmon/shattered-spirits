@@ -3,9 +3,10 @@
     <span v-if="collapse">
       <v-expansion-panels flat style="padding: 3px;">
         <v-expansion-panel style="background-color: inherit;">
-          <v-expansion-panel-header v-bind:class="contained_header"
-            ><h3>{{ dropName }}</h3></v-expansion-panel-header
-          >
+          <v-expansion-panel-header v-bind:class="contained_header">
+            <h3 style="display: flex;">{{ dropName }}</h3>
+            <div class="summary--text">{{ summary_text }}</div>
+          </v-expansion-panel-header>
           <v-expansion-panel-content v-bind:class="contained_body">
             <v-container fluid>
               <v-row>
@@ -19,13 +20,22 @@
                   v-on:click="clickMethod(n, index)"
                 >
                   <div class="card--box" v-if="job == 'Stances'">
-                    <stance-card :stance="n" :category="color_category" />
+                    <stance-card :stance="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Techniques'">
-                    <tech-card :tech="n" :category="color_category" />
+                    <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Weapons'">
-                    <weapon-card :weapon="n" />
+                    <weapon-card :weapon="n" :character_creation="character_creation" />
+                  </div>
+                  <div class="card--box" v-if="job == 'Armor'">
+                    <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
+                  </div>
+                  <div class="card--box" v-if="job == 'Enhancements'">
+                    <enhancement-card :enhancement="n" :format_text="true" :standalone="on_sheet" />
+                  </div>
+                  <div class="card--box" v-if="job == 'Reactions'">
+                    <reaction-card :reaction="n" :format_text="true" />
                   </div>
                 </v-col>
               </v-row> </v-container
@@ -52,16 +62,16 @@
               <enhancement-card :enhancement="n" :format_text="true" />
             </div>
             <div class="card--box" v-if="job == 'Stances'">
-              <stance-card :stance="n" :category="color_category" />
+              <stance-card :stance="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Techniques'">
-              <tech-card :tech="n" :category="color_category" />
+              <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Weapons'">
-              <weapon-card :weapon="n" :color="color_category" />
+              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Armor'">
-              <armor-card :armor="n" :color="color_category" />
+              <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'NPC'">
               <npc-card :npc="n" />
@@ -109,7 +119,12 @@ export default Vue.extend({
       type: String,
       required: true,
     },
-    color_category: {
+    card_color: {
+      type: String,
+      required: false,
+      default: '#ece6dc',
+    },
+    header_color: {
       type: String,
       required: false,
       default: '#ece6dc',
@@ -119,10 +134,20 @@ export default Vue.extend({
       required: false,
       default: 'None',
     },
+    summary_text: {
+      type: String,
+      required: false,
+      default: '',
+    },
     standalone_or_contained: {
       type: String,
       required: false,
       default: 'Contained',
+    },
+    on_sheet: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
     collapse: {
       type: Boolean,
@@ -135,6 +160,11 @@ export default Vue.extend({
       default: 3,
     },
     selectButton: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    character_creation: {
       type: Boolean,
       required: false,
       default: false,
@@ -167,12 +197,12 @@ export default Vue.extend({
       else return this.display_text
     },
     contained_header: function () {
-      if (this.standalone_or_contained == 'Contained') return 'expand--header-contained'
-      return 'expand--header-standalone'
+      if (this.standalone_or_contained == 'Contained') return 'expand--header-contained ' + this.header_color.replace(' ', '_')
+      return 'expand--header-standalone ' + this.header_color.replace(' ', '_')
     },
     contained_body: function () {
-      if (this.standalone_or_contained == 'Contained') return 'expand--body-contained'
-      return 'expand--body-standalone'
+      if (this.standalone_or_contained == 'Contained') return 'expand--body-contained ' + this.header_color.replace(' ', '_')
+      return 'expand--body-standalone ' + this.header_color.replace(' ', '_')
     },
   },
 })
@@ -199,12 +229,15 @@ export default Vue.extend({
   border: $border--black-thin;
   border-top: none;
 }
-.centered {
-  margin: auto;
-  align-self: center;
-}
 .card--button:hover {
-  transform: scale(1.01);
+  transform: scale(1.05);
   cursor: pointer;
+}
+.summary--text {
+  width: 70%;
+  font-size: large;
+  text-align: left;
+  justify-content: right;
+  display: flex;
 }
 </style>

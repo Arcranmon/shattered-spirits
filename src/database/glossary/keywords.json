@@ -4,8 +4,12 @@
     "effect": "Accurate Attacks innately have Advantage."
   },
   {
+    "name": "Arc",
+    "effect": "Pick a space within Range, then choose 3 adjacent spaces. Target all spaces within."
+  },
+  {
     "name": "Arcing",
-    "effect": "Ignore all _Cover_ unless a creature is fully underneath obstacles."
+    "effect": "Ignore all Cover granted by Obstacles unless a creature is fully underneath obstacles."
   },
   {
     "name": "Artillery",
@@ -13,7 +17,7 @@
   },
   {
     "name": "Armor Piercing",
-    "effect": "Attacks with this tag don't have Disadvantage when attacking Armor."
+    "effect": "When attacking Armor or Shields Attacks with this tag have Advantage, and the associated attack against the creature does not have Disadvantage."
   },
   {
     "name": "Attach",
@@ -25,12 +29,22 @@
     "effect": "The Cost of Evade Reactions is reduced by 1 against this Action."
   },
   {
+    "name": "Blast",
+    "effect": "Pick a space within Range. That space, and all spaces within X, where X is the Blast's value, are targeted."
+  },
+  {
     "name": "Block",
     "effect": "Block Reactions are based on absorbing a blow to mitigate the overall damage. Many Actions and abilities reference Block Reactions. Block Reactions have their Cost increased by 1 on a Crit."
   },
+  { "name": "Blocking", "see": "Block" },
+  { "name": "Blocked", "see": "Block" },
   {
     "name": "Body",
     "effect": "Weapons with the Body Keyword can be used regardless of what a character has Wielded."
+  },
+  {
+    "name": "Burst",
+    "effect": "Pick a space within Range. All spaces within X, where X is the Burst's value, spaces of the space are targeted. The targeted space is not effected."
   },
   {
     "name": "Charge",
@@ -41,12 +55,24 @@
     "effect": "A side of a space may be climable if it has obvious handholds or avenues to climb that make traversal easier. Climbing in a climable space only costs 1 + the vertical distance covered."
   },
   {
+    "name": "Colossal",
+    "effect": "Gain Hobbled 1, Exposed 1 (2 Grit) if you're Wielding it at Refresh or when you begin Wielding this weapon after combat has begun. You must pay 1 Grit when you Attack with it, or else have Disadvantage."
+  },
+  {
     "name": "Combo",
-    "effect": "A Combo Technique allows characters to easily change their attack style between Attacks in a Technique. A character may pay 1 Momentum before making an Attack; if they do, they may apply a different set of Enhancements to a single Attack. They may use the original Tokens utilized for Enhancements on this Technique and freely purchase new Enhancements without paying any Improvise Cost. For example, if a character spent 3 Momentum on Enhancements for this Technique originally, they may use up to 3 Momentum of Enhancements for an Attack without spending any resources beyond the initial 1 Momentum. Individual Enhancements may be applied to multiple Attacks in the same Combo, but must obey all other restrictions. Future Attacks in the Combo may use either set of Enhancements, chosen for each Attack."
+    "effect": "A Combo Technique allows characters to adapt between Attacks in a Technique. Creatures may apply a different set of Enhancements to each Attack, and may use Tokens used to pay for Enhancements to pay Costs for future Attacks. For example, if a character spent 3 Momentum on Enhancements when playing the Technique, they may apply up to 3 Momentum of Enhancements to an Attack without spending any resources."
+  },
+  {
+    "name": "Cone",
+    "effect": "Pick a space within Range. Draw a triangle so that each side is X long, where X is the Cone value."
   },
   {
     "name": "Condense",
     "effect": "Take the creature's total Value of a Token and divide it into the minimum number of Tokens. For example, a creature with Impaired 1x3 would have Impaired 3 after this Technique."
+  },
+  {
+    "name": "Derived",
+    "effect": "This Terrain's Source is the same as whatever the Terrain beneath it is; i.e., if it is created on Earthen Terrain, it is in turn Earthen.."
   },
   {
     "name": "Earthen",
@@ -72,12 +98,17 @@
     "name": "Evade",
     "effect": "Evade Reactions typically involve avoiding a blow or quickly moving to avoid further damage. Many Actions and abilities reference Evade Reactions."
   },
+  { "name": "Evading", "see": "Evade" },
+  {
+    "name": "Feint",
+    "effect": "A keyword simply designating that this is a Feint, which typically means that, if the opponent does not pay some resources, you'll receive some benefit on the next Attack against them."
+  },
   {
     "name": "Fleeting",
     "effect": "Tokens with the Fleeting Keyword are lost at the end of the current Turn."
   },
   {
-    "name": "Flexbile",
+    "name": "Flexible",
     "effect": "Enhancements with the Flexible tag may Attached at any point, not just when a Technique is selected."
   },
   {
@@ -98,11 +129,7 @@
   },
   {
     "name": "Groundsource",
-    "effect": "Groundsource effects ignore Cover, do not gain Disadvantage from Prone if they are Ranged, and Area Effects are not stopped by Terrain like normal. Flying creatures are immune to all Groundsource effects. Groundsource effects must be used on terrain made of earth or stone or are in close proximity to such. The wooden floor of a house on solid ground, for example, would be fine, but the deck of a ship would not."
-  },
-  {
-    "name": "Hazard",
-    "effect": "Hazards reflect an area that is going to be attacked in the near future or can be triggered as a trap. All Hazards are always cleared at the end of a Round."
+    "effect": "Groundsource effects ignore Cover, do not gain Disadvantage from Prone if they are Ranged, and Area Effects are not stopped by Obstacles like normal. In exchange, Groundsource effects must be used on Earthen Terrain. Flying creatures are immune to all Groundsource effects."
   },
   {
     "name": "Heavy",
@@ -117,12 +144,28 @@
     "effect": "Light attacks swift and are more effective on Quick Enhancements but cannot be used with Strong Enhancements."
   },
   {
+    "name": "Line",
+    "effect": "Pick a space within Range. Draw a straight line from that space in any direction. Target the first X spaces in that line, where X is the Line value."
+  },
+  {
     "name": "Leaping",
     "effect": "Any Leaping Movement ignores Terrain that does not effect Flying characters. Characters may also go up Elevation while Leaping so long as they have sufficient Leaping Movement."
   },
   {
-    "name": "Martial",
-    "effect": "Whenever you learn a Technique with the Martial Keyword you may select an Unarmed Weapon with the Martial Keyword. You always count as having this Weapon Wielded."
+    "name": "Martial Form",
+    "effect": "Whenever you learn a Technique with this Keyword you may select an Unarmed Weapon with the same Keyword."
+  },
+  {
+    "name": "Melee",
+    "effect": "This may only be used to Attack adjacent Targets."
+  },
+  {
+    "name": "Obstacle",
+    "effect": "Noteworthy terrain on the battlefield that can typically either be used as Cover or be interacted with in some way."
+  },
+  {
+    "name": "One-Handed",
+    "effect": "This Equipment only requires one hand to Wield."
   },
   {
     "name": "Ordnance",
@@ -130,7 +173,7 @@
   },
   {
     "name": "Pierce",
-    "effect": "This Attack ignores an amount of the Target's Guard equal to its Pierce value. Attacks with the Pierce tag deal additional Damage to Armor and Equipment equaL to its Pierce value."
+    "effect": "This Attack ignores an amount of the Target's Guard equal to its Pierce value."
   },
   {
     "name": "Quick",
@@ -154,23 +197,15 @@
   },
   {
     "name": "Scout",
-    "effect": "When you Scout a creature you learn either their current exact Health and how much Focus, Grit, Reflex, or Momentum (your choice) the creature has."
+    "effect": "When you Scout a creature you learn their current exact Health and how much Focus, Grit, Reflex, or Momentum (your choice) the creature has."
   },
   {
     "name": "Siege",
-    "effect": "Attacks with the Siege tag deal +2 Damage to Obstacles and have Advantage on Attacks against them."
-  },
-  {
-    "name": "Small",
-    "effect": "A Small Weapon does not take up as much space as a traditional one. When determining the weapons you are carrying, you can carry the Small value for this weapon in a single Weapons Slot."
-  },
-  {
-    "name": "Spirit",
-    "effect": "Spirit Techniques are the innate magic of a spiritbound, making use of both parties for powerful effects. Spirit Techniques do not require an Open Hand, but if a creature cannot use either Hand the Cost of a Spirit Action is increased by 1 Momentum."
+    "effect": "Attacks with Siege deal +2 Damage to Obstacles and have Advantage on Attacks against them."
   },
   {
     "name": "Sundering",
-    "effect": "Attacks with this tag don't have Disadvantage when attacking Weapons."
+    "effect": "Attacks with this tag don't have Disadvantage when attacking _Wielded_ Equipment."
   },
   {
     "name": "Strong",
@@ -186,7 +221,7 @@
   },
   {
     "name": "Repeatable",
-    "effect": "This Enchancement may be used multiple times in a Round and may be applied to the same Technique multiple times, paying the cost each time."
+    "effect": "This Enhancement may be used multiple times in a Round and may be applied to the same Technique multiple times, paying the cost each time."
   },
   {
     "name": "Reveal",
@@ -210,7 +245,11 @@
   },
   {
     "name": "Thrown",
-    "effect": "Thrown weapons are capable of being used in both melee and ranged combat. When Thrown, Grazes deal no damage and cause no effects, and are treated as a _Miss_ for all effects. After being thrown, a Thrown weapon may not be used again until retrieved. Unlike most Weapons, you may use a Thrown Weapon to attack if it is Equipped, but must have a Free Hand to do so."
+    "effect": "Thrown weapons are capable of being used in both melee and ranged combat. When Thrown, Grazes deal no damage and cause no effects, and are treated as a Miss. After being thrown, a Thrown weapon may not be used again until retrieved. Unlike most Weapons, you may use a Thrown Weapon to attack if it is Equipped, but must have a Free Hand and not be Disarmed to do so. After throwing a Wielded Thrown Weapon, you may immediately Wield a different Thrown Weapon with the same number of required Hands."
+  },
+  {
+    "name": "Two-Handed",
+    "effect": "This Equipment requires both hands to Wield."
   },
   {
     "name": "Unblockable",
@@ -219,6 +258,10 @@
   {
     "name": "Versatile",
     "effect": "Versatile Weapons are built for balanced combat, and can be used for both Quick and Strong Techniques, albeit not as well as Light or Heavy Weapons."
+  },
+  {
+    "name": "Watery",
+    "effect": "Watery Terrain or Obstacles are coated in enough water to be relevant to a Waterbound. Deep water is an obvious example, but even a large puddle can be relevant."
   },
   {
     "name": "Warding",
@@ -231,5 +274,9 @@
   {
     "name": "Weak",
     "effect": "The Cost of Block Reactions is reduced by 1 against this Technique."
+  },
+  {
+    "name": "Wide Line",
+    "effect": "Pick a space within Range. Draw a straight line from that space in any direction. Target the first X spaces in that line, where X is the first numerical value. Additionally, make an additional X lines, where X is the second numerical value. These lines must be parallel and adjacent to another line created by this effect."
   }
 ]

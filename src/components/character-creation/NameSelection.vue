@@ -1,6 +1,7 @@
 <template>
   <div class="name--wrapper">
-    <span style="font-size: smaller;"><h3>Choose a Name for You and Your Spirit!</h3></span><br />
+    <h3>Choose a Name for You and Your Spirit!</h3>
+    <br />
     <v-btn color="success" large tile @click="$emit('chose-names')" :disabled="(character.Name == '' || character.SpiritName == '')"
       ><span v-if="(character.Name == '')">CHOOSE A NAME FOR YOUR CHARACTER AND SPIRIT</span> <span v-else>CHOOSE {{ duoName }}</span></v-btn
     >

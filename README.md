@@ -29,14 +29,8 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 ONGOING REFACTORS
 
 - Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
-- Change 'Safe' from Disadvantage to increased cost on 'Opportune' Reactions.
 - Update all the descriptions of Weapons/Disciplines once they're a bit more consistent.
 - Update all Stances/Styles to have an Enhancement or Reaction, and most Techniques to have an Enhancement/Reaction.
-
-HIGH PRIORITY
-
-- Damage math ordering.
-- Cards and better defined status conditions (Boons for positive and Banes for negative).
 
 LOW PRIORITY
 
@@ -46,9 +40,8 @@ LOW PRIORITY
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Here's a very rough roadmap of what I have planned.
 
-- Complete all Spirit Masteries. As of now, most have their 'bending' versions done but that's it.
+- Complete all Spirit Masteries.
 - Refine Endurance and Health system based on how long combats should last.
-  - Once this math is figured out, create statblocks for the various Obstacles.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
   - Earth needs a balance pass simply because it was completed first and they're likely undertuned now.
   - Revisit Spirit Stances to try to make sure they're a bit more generally applicable, not just with their Discipline's Techniques.

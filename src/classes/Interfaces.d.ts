@@ -18,7 +18,7 @@ declare interface IArmorData {
   name?: string
   reaction?: string
   reposition: number
-  shift: number
+  dash: number
   special?: string
   sprint: number
   step: number
@@ -33,13 +33,15 @@ declare interface ICharacterData {
   grit: number
   current_health: number
   main_hand: string
-  martial: number
+  martial_forms: number
   max_health: number
   momentum: number
   name: string
   off_hand: string
   player_character: Boolean
   reflex: number
+  enhancements: string[]
+  reactions: string[]
   skill_techniques: string[]
   spirit_name: string
   spirit_techniques: string[]
@@ -48,6 +50,7 @@ declare interface ICharacterData {
   styles: string[]
   unarmed_weapons: string[]
   weapons: string[]
+  weapon_weight: number
 }
 
 declare interface IChartData {
@@ -63,6 +66,7 @@ declare interface IDisciplineData {
   background: string
   role?: string //Unoptional when all categories are updated.
   stances: string[]
+  summary: string
   techniques: string[]
 }
 
@@ -72,6 +76,7 @@ declare interface IEnhancementData {
   cost?: string
   desc: string
   effect: string
+  from: string
   keywords?: Array<string>
   move?: string
   name: string
@@ -125,6 +130,7 @@ declare interface IReactionData {
   keywords?: Array<string>
   move?: string
   name: string
+  reqs?: string
   trigger?: string
   chart?: IChartData
 }
@@ -146,6 +152,7 @@ declare interface IStanceData {
   discipline: string
   enhancement?: string
   reaction?: string
+  reqs?: string
   refresh: IRefreshData
   effect: string
   special?: string
@@ -175,7 +182,6 @@ declare interface ITechData {
   move?: string
   name: string
   reaction?: string
-  reaction_condition?: string
   range?: string
   reqs?: string
   special?: string
@@ -209,4 +215,5 @@ declare interface IWeaponData {
   reaction?: string
   special?: string
   speed: number
+  encumbrance: number
 }

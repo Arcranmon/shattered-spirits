@@ -40,9 +40,6 @@
 <script>
 import Vue from 'vue'
 import ChartTable from '@/components/ChartTable.vue'
-import ReactionCard from './ReactionCard.vue'
-import EnhancementCard from './EnhancementCard.vue'
-import Tooltip from '@/components/TooltipParam.vue'
 import { Obstacle } from '@/class'
 
 export default Vue.extend({
@@ -63,7 +60,7 @@ export default Vue.extend({
       else return 'obstacle--wrapper'
     },
   },
-  components: { ChartTable, EnhancementCard, ReactionCard, Tooltip },
+  components: { ChartTable },
 })
 </script>
 

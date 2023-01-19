@@ -6,7 +6,8 @@ import MainMenu from '@/pages/main-menu/index.vue'
 import CombatMenu from '@/pages/combat/combat-menu/index.vue'
 import CombatBasics from '@/pages/combat/combat-basics/index.vue'
 import AfflictionsAndStatus from '@/pages/combat/afflictions_and_status/index.vue'
-import ReadingDisciplines from '@/pages/combat/reading_disciplines/index.vue'
+import EquipmentInCombat from '@/pages/combat/equipment_in_combat/index.vue'
+import ReadingAbilities from '@/pages/combat/reading_abilities/index.vue'
 import TerrainAndObstacles from '@/pages/combat/terrain_and_obstacles/index.vue'
 
 import CharacterCreation from '@/pages/character-creation/index.vue'
@@ -178,11 +179,19 @@ const r = new Router({
       },
     },
     {
-      path: '/reading-disciplines',
-      component: ReadingDisciplines,
-      name: 'reading-disciplines',
+      path: '/equipment-in-combat',
+      component: EquipmentInCombat,
+      name: 'equipment-in-combat',
       meta: {
-        title: 'Reading Disciplines',
+        title: 'Equipment in Combat',
+      },
+    },
+    {
+      path: '/reading-abilities',
+      component: ReadingAbilities,
+      name: 'reading-abilities',
+      meta: {
+        title: 'Reading Abilities',
       },
     },
     {

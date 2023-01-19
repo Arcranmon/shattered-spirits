@@ -1,7 +1,7 @@
 <template
   ><span>
     <div class="button-seperator">
-      <div class="character-creation" v-html="creationText" />
+      <display-tooltip-text :string="creationText" />
       <br />
       <v-layout justify-center
         ><v-btn color="success" large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
@@ -90,7 +90,7 @@ export default Vue.extend({
   },
   computed: {
     creationText: function () {
-      return this.$marked.parse(SpiritSelectionText)
+      return SpiritSelectionText
     },
   },
 })

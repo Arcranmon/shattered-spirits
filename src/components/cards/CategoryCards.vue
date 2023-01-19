@@ -1,7 +1,6 @@
 <template>
   <div style="padding: 1em;">
-    <h1 v-if="title != ''">{{ title }}</h1>
-    <span v-html="parsedText" />
+    <display-tooltip-text class="page--header" :string="parsedText" />
     <div v-for="disc in disciplines">
       <discipline-card :discipline="disc" :category="category" />
     </div>
@@ -39,8 +38,16 @@ export default Vue.extend({
       return this.$store.getters.getDisciplinesByCategory(this.category)
     },
     parsedText: function () {
-      return this.$marked.parse(this.text)
+      return this.text
     },
   },
 })
 </script>
+
+<style scoped lang="scss">
+.weapon--box {
+  border-radius: 1em;
+  border: $border--black-standard;
+  margin-top: 1em;
+}
+</style>

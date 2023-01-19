@@ -1,76 +1,53 @@
 <template>
   <v-row justify="center">
     <v-col cols="2" class="sidebar">
-      <div
-        v-for="(character, index) in characters"
-        :key="index"
-        class="button--spacing"
-      >
+      <div v-for="(character, index) in characters" :key="index" class="button--spacing">
         <v-tooltip right>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               class="button--template"
-              @click="
-                (selectedCharacter = character),
-                  (characterSelected = true),
-                  (selectedIndex = index)
-              "
+              @click=";(selectedCharacter = character), (characterSelected = true), (selectedIndex = index)"
               v-bind="attrs"
               v-on="on"
               ><span>{{ character.Name }}</span></v-btn
             >
           </template>
-          {{ character.Name }} and {{ character.SpiritName }} the
-          {{ character.SpiritType }} Spirit
+          {{ character.Name }} and {{ character.SpiritName }} the {{ character.SpiritType }} Spirit
         </v-tooltip>
       </div> </v-col
     ><v-col cols="10">
       <span v-if="characterSelected" class="topbar">
         <v-dialog v-model="deleteDialog" hide-overlay>
           <template v-slot:activator="{}">
-            <v-btn
-              @click="deleteDialog = true"
-              class="button--template button--topbar"
-            >
-              Delete {{ selectedCharacter.Name }}
-            </v-btn>
+            <v-btn @click="deleteDialog = true" class="button--template button--topbar"> Delete {{ selectedCharacter.Name }} </v-btn>
           </template>
           <v-card>
             <v-card-title>Are You Sure?</v-card-title>
             <v-card-text>
-              Are you sure you want to delete this character? This cannot be
-              undone! <br /><br />
+              Are you sure you want to delete this character? This cannot be undone! <br /><br />
               <v-flex>
                 <div class="text-xs-center">
-                  <v-btn
-                    color="button--template"
-                    @click="deleteCharacter(), (characterSelected = false)"
-                  >
-                    Delete {{ selectedCharacter.Name }}
-                  </v-btn>
+                  <v-btn color="button--template" @click="deleteCharacter(), (characterSelected = false)"> Delete {{ selectedCharacter.Name }} </v-btn>
                 </div>
               </v-flex>
             </v-card-text>
           </v-card>
         </v-dialog>
       </span>
-      <show-character
-        v-if="characterSelected"
-        :character="(selectedCharacter)"
-        @changed="saveCharacter"
+      <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter"
     /></v-col>
   </v-row>
 </template>
 
 <script>
-import Vue from "vue";
-import { getModule } from "vuex-module-decorators";
-import { CharacterManagementStore } from "@/store";
-import { Character } from "@/class";
-import ShowCharacter from "@/components/ShowCharacter.vue";
+import Vue from 'vue'
+import { getModule } from 'vuex-module-decorators'
+import { CharacterManagementStore } from '@/store'
+import { Character } from '@/class'
+import ShowCharacter from '@/components/ShowCharacter.vue'
 
 export default Vue.extend({
-  name: "character-box",
+  name: 'character-box',
   components: { ShowCharacter },
   props: {
     characters: {
@@ -84,19 +61,20 @@ export default Vue.extend({
       characterSelected: false,
       selectedIndex: 0,
       deleteDialog: false,
-    };
+    }
   },
   methods: {
     deleteCharacter() {
-      const store = getModule(CharacterManagementStore, this.$store);
-      store.DeleteCharacter(this.selectedIndex);
+      const store = getModule(CharacterManagementStore, this.$store)
+      store.DeleteCharacter(this.selectedIndex)
+      this.deleteDialog = false
     },
     saveCharacter() {
-      const store = getModule(CharacterManagementStore, this.$store);
-      store.SaveCharacters();
+      const store = getModule(CharacterManagementStore, this.$store)
+      store.SaveCharacters()
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

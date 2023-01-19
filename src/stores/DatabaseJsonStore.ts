@@ -25,7 +25,7 @@ import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
 
-let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial', 'Stratagem']
+let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
 let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, InstantEffects, Keywords, Resources]
 
@@ -54,6 +54,23 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getEnhancementsFromList(): any {
+    return (enhancement_list: Array<any>) => {
+      if (enhancement_list == undefined) return []
+      let enhancements: Array<Enhancement> = []
+      for (var enhancement of enhancement_list) {
+        enhancements.push(this.getEnhancement(enhancement))
+      }
+      return enhancements
+    }
+  }
+
+  get isEnhancement(): any {
+    return (inword: string) => {
+      return Enhancements.some((x) => x.name == inword.trim())
+    }
+  }
+
   // ==========================================================
   // REACTION TOOLS
   // ==========================================================
@@ -70,6 +87,23 @@ export class DatabaseJsonStore extends VuexModule {
           effect: 'This reaction could not be found!',
         }
       return Reaction.Deserialize(<IReactionData>reaction)
+    }
+  }
+
+  get getReactionsFromList(): any {
+    return (reaction_list: Array<any>) => {
+      if (reaction_list == undefined) return []
+      let reactions: Array<Reaction> = []
+      for (var reaction of reaction_list) {
+        reactions.push(this.getReaction(reaction))
+      }
+      return reactions
+    }
+  }
+
+  get isReaction(): any {
+    return (inword: string) => {
+      return Reactions.some((x) => x.name == inword.trim())
     }
   }
 
@@ -96,6 +130,12 @@ export class DatabaseJsonStore extends VuexModule {
         armor.category = 'This armor could not be found!'
       }
       return Armor.Deserialize(<IArmorData>armor)
+    }
+  }
+
+  get isArmor(): any {
+    return (inword: string) => {
+      return Armors.some((x) => x.name == inword.trim())
     }
   }
 
@@ -141,6 +181,12 @@ export class DatabaseJsonStore extends VuexModule {
         weapons.push(this.getWeapon(weapon))
       }
       return weapons
+    }
+  }
+
+  get isWeapon(): any {
+    return (inword: string) => {
+      return Weapons.some((x) => x.name == inword.trim())
     }
   }
 
@@ -190,6 +236,12 @@ export class DatabaseJsonStore extends VuexModule {
         }
       }
       return styles
+    }
+  }
+
+  get isStance(): any {
+    return (inword: string) => {
+      return Stances.some((x) => x.name == inword.trim())
     }
   }
 
@@ -245,6 +297,12 @@ export class DatabaseJsonStore extends VuexModule {
         }
       }
       return techs
+    }
+  }
+
+  get isTechnique(): any {
+    return (inword: string) => {
+      return Techniques.some((x) => x.name == inword.trim())
     }
   }
 

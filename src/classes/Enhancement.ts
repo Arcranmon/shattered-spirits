@@ -6,9 +6,10 @@ import { Chart } from '@/class'
 class Enhancement {
   private ap_: number
   private boost_: string
-  private desc_: string
   private cost_: string
+  private desc_: string
   private effect_: string
+  private from_: string
   private keywords_: Array<string>
   private move_: string
   private name_: string
@@ -21,6 +22,7 @@ class Enhancement {
     this.boost_ = ''
     this.cost_ = ''
     this.desc_ = ''
+    this.from_ = ''
     this.effect_ = ''
     this.keywords_ = []
     this.name_ = ''
@@ -88,6 +90,12 @@ class Enhancement {
   public get EffectHeader() {
     return '**Effect:** ' + this.effect_
   }
+  public get HasFrom() {
+    return this.from_.length > 0
+  }
+  public get FromHeader() {
+    return '**From:** _' + this.from_ + '_'
+  }
   public get HasKeywords() {
     return this.keywords_.length > 0
   }
@@ -129,6 +137,7 @@ class Enhancement {
     this.cost_ = data.cost || ''
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
+    this.from_ = data.from || ''
     this.keywords_ = data.keywords || []
     this.move_ = data.move || ''
     this.name_ = data.name || ''

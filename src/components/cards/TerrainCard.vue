@@ -23,10 +23,6 @@
 
 <script>
 import Vue from 'vue'
-import ChartTable from '@/components/ChartTable.vue'
-import ReactionCard from './ReactionCard.vue'
-import EnhancementCard from './EnhancementCard.vue'
-import Tooltip from '@/components/TooltipParam.vue'
 import { Terrain } from '@/class'
 
 export default Vue.extend({
@@ -47,7 +43,7 @@ export default Vue.extend({
       else return 'terrain--wrapper'
     },
   },
-  components: { ChartTable, EnhancementCard, ReactionCard, Tooltip },
+  components: {},
 })
 </script>
 
@@ -59,10 +55,6 @@ export default Vue.extend({
   height: 100%;
   padding-bottom: $space--xs;
   padding-top: $space--xs;
-}
-.terrain--wrapper-tooltip {
-  font-family: $font--standard;
-  height: 100%;
 }
 .terrain--color-header {
   border-bottom: 5px double black;
