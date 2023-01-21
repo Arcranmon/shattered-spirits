@@ -1,7 +1,5 @@
 <template>
-  <div class="btn" @click="$router.push(to)">
-    <slot />
-  </div>
+  <router-link class="btn" :to="to" :custom="true"><slot /> </router-link>
 </template>
 
 <script>
@@ -12,7 +10,7 @@ export default {
       default: null,
     },
   },
-};
+}
 </script>
 
 <style scoped lang="scss">

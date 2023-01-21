@@ -24,6 +24,9 @@ class Discipline {
   public get Background() {
     return this.background_
   }
+  public get Category() {
+    return this.category_
+  }
   public get Flavor() {
     return this.flavor_
   }

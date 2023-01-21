@@ -5,7 +5,13 @@
       <b>{{ discipline.Role }}</b>
     </div>
     <display-tooltip-text class="page--description" :string="discipline.Flavor" />
-    <show-cards :inputs="$store.getters.getStancesFromList(discipline.Stances)" job="Stances" :card_color="category" :header_color="discipline.Name" />
+    <show-cards
+      :inputs="$store.getters.getStancesFromList(discipline.Stances)"
+      job="Stances"
+      :display_text="stance_or_style"
+      :card_color="category"
+      :header_color="discipline.Name"
+    />
     <show-cards :inputs="$store.getters.getTechniquesFromList(discipline.Techniques)" job="Techniques" :card_color="category" :header_color="discipline.Name" />
   </div>
 </template>
@@ -29,6 +35,12 @@ export default Vue.extend({
   },
   components: {
     ShowCards,
+  },
+  computed: {
+    stance_or_style: function () {
+      if (this.discipline.Category in ['Earth', 'Wind', 'Flame', 'Wood', 'Metal', 'Water']) return 'Stances'
+      return 'Styles'
+    },
   },
 })
 </script>
