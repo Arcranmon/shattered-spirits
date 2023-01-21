@@ -94,6 +94,7 @@ declare interface IGlossaryData {
 declare interface INpcData {
   ap: number
   armor: string // Name of armor for lookup.
+  endurance: number
   desc: string
   name: string
   npc_type: string
@@ -102,6 +103,8 @@ declare interface INpcData {
   role: string
   size: string
   spirit_type: string
+  enhancements: Array<string>
+  reactions: Array<string>
   stances: Array<string>
   styles: Array<string>
   techniques: Array<string>
