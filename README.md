@@ -31,6 +31,12 @@ ONGOING REFACTORS
 - Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
 - Update all the descriptions of Weapons/Disciplines once they're a bit more consistent.
 - Update all Stances/Styles to have an Enhancement or Reaction, and most Techniques to have an Enhancement/Reaction.
+- Convert current 'select Techniques/Stances' to instead 'select X levels of Disciplines', with each Discipline giving the following at different tiers:
+  - Each tier can give more, this is just the bare minimum
+  - Tier 1: Technique + Enhance/Reaction
+  - Tier 2: Stance/Style + Enhance/Reaction
+  - Tier 3: Big expensive Technique + Enhance/Reaction (save this for later)
+  - At creation characters will have 4 Tier II Disciplines and 2 Tier I Disciplines.
 
 LOW PRIORITY
 
