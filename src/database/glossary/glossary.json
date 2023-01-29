@@ -24,7 +24,7 @@
   { "name": "Roll", "see": "Attack Roll" },
   {
     "name": "Climbing",
-    "effect": "When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to 1 + twice the Elevation change. For example, it would cost a creature 3 spaces of Movement to Climb up a 1 Height Obstacle."
+    "effect": "When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to 1 + twice the Elevation change. For example, it would cost a creature 3 spaces of Movement to Climb up a 1 Height Obstacle. If a creature ends their turn while _Climbing_, creatures have _Advantage_ on Attacks against them."
   },
   { "name": "Climb", "see": "Climbing" },
   {
@@ -33,7 +33,7 @@
   },
   {
     "name": "Cover",
-    "effect": "If an Obstacle is between the Attacker and the Target of an Attack the Target has Cover. Attacks against a creature in Cover are Glancing if Ranged, or take a -1 Penalty to the Attack Roll if Melee. If a Ranged Attack against a creature in Cover would already be Glancing, it instead Misses."
+    "effect": "If an Obstacle is between the Attacker and the Target of an Attack and the Target is adjacent to it the Target has Cover. Attacks against a creature in Cover are Glancing if Ranged, or take a -1 Penalty to the Attack Roll if Melee. If a Ranged Attack against a creature in Cover would already be Glancing, it instead Misses."
   },
   {
     "name": "Crit",
@@ -73,6 +73,10 @@
     "effect": "If a creature moves from one Elevation to another they must pay Reflex equal to one less than the total Elevation change or else take Crush Damage equal to twice the Elevation Change. If a creature would take at least 6 Damage in this way they also fall Prone."
   },
   { "name": "Fall", "see": "Falling" },
+  {
+    "name": "Full Cover",
+    "effect": "As Cover (Attacks against a creature in Cover are Glancing if Ranged, or take a -1 Penalty to the Attack Roll if Melee. If a Ranged Attack against a creature in Cover would already be Glancing, it instead Misses.), but is not negated by common means of getting around Cover, such as Arcing."
+  },
   {
     "name": "Graze",
     "effect": "A glancing Attack, represented by a yellow cell in the Attack's 'Roll' column in its Profile."
@@ -186,6 +190,10 @@
     "effect": "A creature with Seismic Sense ignores Veiled for all creatures on Earthen spaces."
   },
   {
+    "name": "Soft Cover",
+    "effect": "If an Attack passes through an _Obstacle_ or _Veiled_ Terrain (but the target is not in a _Veiled_ Terrain), the Attack takes a -1 Penalty. If you are at a higher Elevation than the _Veiled_ Terrain or the Obstacle's Height, ignore this penalty."
+  },
+  {
     "name": "Speed",
     "effect": "What Phase a Technique resolves in. This will be either Instinctive, a value from 1-6, Set-Up, Follow-Up, or, Reaction, indicating that the Technique does not happen in a set Phase and instead can be used whenever its Trigger is fulfilled."
   },
@@ -220,7 +228,7 @@
   },
   {
     "name": "Swim",
-    "effect": "While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature has _Cover_, _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them."
+    "effect": "While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature has _Cover_, _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them. Any _Jump_ a character makes while Swimming treats their Jump value as halved."
   },
   { "name": "Swimming", "see": "Swim" },
   {

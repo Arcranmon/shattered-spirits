@@ -25,12 +25,20 @@
     "name": "Running Water",
     "desc": "Terrain that represents a river or similarly fast-moving body of water.",
     "keywords": ["Watery"],
-    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 2 in the direction of the Running Water on all creatures in it.",
+    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 2 in the direction of the Running Water on all creatures in it. When a creature enters _Running Water_ or ends their _Turn_ in it, inflict _Wet_ 3.",
+    "negate": "1 _Grit_ negates the _Push_ effect."
+  },
+  {
+    "name": "Waterfall",
+    "desc": "An elevation change in running water that is dangerous to pass through.",
+    "keywords": ["Watery"],
+    "effect": "Waterfalls have all the same effects as _Running Water_. In addition, characters may not _Swim_ through these spaces and, when a character enters this space, they immediately take 4 _Crush_ Damage and gain _Dazed_ 1 (1 _Grit_).",
     "negate": "1 _Grit_ negates the _Push_ effect."
   },
   {
     "name": "Veiled",
-    "effect": "Veiled Terrain is filled with dust, smoke, mist, or some other obscuring agent. All Attacks against a creature in a Veiled Space have Disadvantage, and all Attacks by creature in a Veiled Space have Disadvantage. If the creature in the Veiled Space has some means to ignore Veiled Terrain, they instead have Advantage.\n\tWhen Veiled Terrain is created in the following Terrain types, it interacts as follows:\n* <ins>Windy:</ins> Veiled may not be created in this space."
+    "effect": "Veiled Terrain is filled with dust, smoke, mist, or some other obscuring agent. All Attacks against a creature in a Veiled Space have Disadvantage, and all Attacks by creature in a Veiled Space have Disadvantage. If the creature in the Veiled Space has some means to ignore Veiled Terrain, they instead have Advantage. If a creature is not in a Veiled space but the Attack would pass through a Veiled space, it instead takes a -1 Penalty.",
+    "interacts": ["<ins>Windy:</ins> Veiled may not be created in this space."]
   },
   {
     "name": "Wet",

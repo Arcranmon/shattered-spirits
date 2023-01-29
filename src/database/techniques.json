@@ -2568,7 +2568,7 @@
     "type": "Strike",
     "speed": "Weapon Speed",
     "range": "Weapon",
-    "ap": 1,
+    "ap": 2,
     "move": "Reposition",
     "reqs": "Must be used against a foe you have _Grappled_.",
     "effect": "Attack using your weapon's Profile. Inflict _Bleed_ 1 (1 _Grit_)."
@@ -2658,7 +2658,7 @@
     "ap": 1,
     "move": "Reposition",
     "reqs": "Ranged Weapon Wielded.",
-    "effect": "Create a Blast 1 Hazard or 3 Size 1 Hazards within Range. At the end of the next _Phase_ make an Attack against all creatures in the _Hazard_, then remove it.",
+    "effect": "Create a Blast 1 Hazard or 3 Size 1 Hazards within Range. At the end of the next _Phase_ make an Attack against all creatures in the _Hazard_, completely ignoring all _Cover_, then remove it.",
     "boost": "Choose one:\n* 1 _Momentum_: Instead create 3 Blast 1 Hazards, but resolve this Technique at the end of the _Round_ instead.\n* 2 _Momentum_: Remove _Glancing_.",
     "enhancement": "Arcing Shot"
   },
@@ -4598,5 +4598,51 @@
     "cost": "2 _Momentum_",
     "reqs": "_Light_/_Versatile_ Weapon Wielded.",
     "effect": "Attack using your Weapon's Profile. Add _Impair_ 1 (1 _Reflex_) to a _Hit_ and _Impair_ 2 (2 _Reflex_) to a _Crit_."
+  },
+  {
+    "name": "Storm Bolt",
+    "discipline": "NPC",
+    "desc": "You conjure a shocking burst in your hand, unleashing it at point blank range for a powerful strike.",
+    "keywords": ["Electric", "Light", "_Pierce_ 1"],
+    "type": "Strike",
+    "speed": "2",
+    "damagetype": "Lightning",
+    "range": "6",
+    "ap": 2,
+    "move": "Step",
+    "effect": "Attack with this Technique's Profile.",
+    "boost": "1 _Momentum_: Add _Exposed_ 1 to the Attack and increase the cost to Negate by 1.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 0, 3, 3, 4, 4, 6, 6],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Shock_ 1 (1 _Grit_)",
+        "_Shock_ 1 (1 _Grit_)",
+        "_Shock_ 1x2 (2 _Grit_)",
+        "_Shock_ 1x2 (2 _Grit_)",
+        "_Shock_ 2, _Shock_ 1 (3 _Grit_)",
+        "_Shock_ 2, _Shock_ 1 (3 _Grit_)"
+      ]
+    }
+  },
+  {
+    "name": "Sky Leap",
+    "discipline": "NPC",
+    "desc": "Jump into sky, become lighting.",
+    "keywords": ["Electric"],
+    "type": "Strike",
+    "speed": "2",
+    "damagetype": "Lightning",
+    "range": "Self",
+    "ap": 1,
+    "area": "Blast 1",
+    "move": "Step",
+    "effect": "Use this Technique's Move, then become _Flying_. Then, create a _Blast_ 1 Hazard within your _Step_ distance. At the end of the next _Phase_ if you are still _Flying_, _Teleport_ to the center of this _Blast_ and inflict _Shock_ 1 (1 _Grit_) on all other creatures in the area. If a creature is in the centermost space, instead inflict _Shock_ 1, _Push_ 1 (2 _Grit_).",
+    "boost": "1 _Reflex_: Instead, use your _Reposition_ distance."
   }
 ]

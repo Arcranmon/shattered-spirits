@@ -70,12 +70,13 @@
   {
     "name": "Shock",
     "desc": "An elemental affliction caused by being jolted with electricity, limiting reaction speed.",
-    "effect": "When a creature uses a Move Technique or Reactions the creature must pay _Momentum_ equal to their topmost Shock Token or else lose the Technique/Reaction. A creature may ignore this Cost by taking _True_ Damage equal to twice ther topmost Shock Token.",
+    "effect": "A Shocked creature increases the Cost of all Reactions by half the value of their topmost Shock Token.",
     "reacts": [
-      "<ins>Soaked:</ins> If a creature has any Soaked Tokens and would gain a Shock Token, remove their topmost Soaked Token and deal True Damage equal to twice that Soaked Token."
+      "<ins>Soaked:</ins> If a creature has any Soaked Tokens and would gain a Shock Token, remove their topmost Soaked Token and deal True Damage equal to twice that Soaked Token. They still gain the Shock Token."
     ],
-    "special": "All Actions with a Speed equal to or lower than double the creature's topmost Shock Token gain _Stall_.",
-    "remove": "When a creature spends _Momentum_ to ignore a Shock Token or takes _True_ Damage, remove their topmost Shock Token.",
+    "special": "Add _Stall_ to all _Techniques_ that have a _Speed_ less than twice the value of the creature's topmost Shock Token. If the Technique has _Priority_, instead decrease its Movement by 1 tier.",
+    "remove": "Whenever a creature uses a Reaction or ends their _Turn_, remove their topmost Shock Token. The creature takes _True_ Damage equal to the value removed.",
+    "purge": "A value of _Grit_/_Momentum_ removes Shock equal to the _Grit_/_Momentum_ spent. The creature takes _True_ Damage equal to the value removed.",
     "type": "elemental"
   },
   {
@@ -87,7 +88,7 @@
       "<ins>Soaked:</ins>  If a creature has any Soaked Tokens and would gain a Burn Token, they instead remove their topmost Soaked Token."
     ],
     "purge": "A value of _Reflex_ removes Burn equal to one less than the _Reflex_ spent. A creature may choose to end their turn Prone to treat the _Reflex_ spent as twice as much.",
-    "type": "elemental"
+    "type": "hide"
   },
   {
     "name": "Frost",
@@ -100,7 +101,7 @@
     ],
     "remove": "A creature removes their topmost Frost Token at the end of each of their turns.",
     "purge": "A value of _Grit_ removes Frost equal to one less than the _Grit_ spent.",
-    "type": "elemental"
+    "type": "hide"
   },
   {
     "name": "Soaked",
@@ -124,7 +125,7 @@
   {
     "name": "Fear",
     "desc": "A mental affliction caused when a creature's spirit is rattled.",
-    "effect": "A creature with Fear must end their Turn a number of spaces away from all foes equal to twice their topmost Fear Token Value. If they do not, they lose 1 _Momentum_ and gain an _Impair_ Token of a value equal to the Fear Token. If the creature does not have sufficient _Momentum_, they instead gain _Hobbled_ 1.",
+    "effect": "A creature with Fear must end their _Turn_ a number of spaces away from all hostile creatures equal to twice their topmost Fear Token Value. If they do not, they lose 1 _Focus_/_Momentum_ and gain an _Impair_ Token of a value equal to the Fear Token. If the creature does not have sufficient _Focus_/_Momentum_, they instead gain _Hobbled_ 1.",
     "remove": "A creature removes their topmost Fear Token at the end of each of their turns.",
     "reacts": ["<ins>Courage:</ins> If a creature has any Courage Tokens and would gain a Fear Token, they instead remove their topmost Courage Token."],
     "purge": "A value of _Focus_ removes Fear equal to one less than the _Focus_ spent.",
@@ -136,6 +137,6 @@
     "effect": "A creature with Rage may not move away from the last creature to inflict Rage on them. Additionally, they must target said creature with all Attacks or else lose Momentum equal to their topmost Rage Token. If they do not have sufficient Momentum, they instead gain an _Exposed_ Token of value equal to the Momentum they lack.",
     "remove": "After a creature resolves the Effect or successfully Hits or Crits the target of their Rage, clear their topmost Rage Token.",
     "purge": "A value of _Focus_ removes Rage equal to one less than the _Focus_ spent.",
-    "type": "mental"
+    "type": "hide"
   }
 ]
