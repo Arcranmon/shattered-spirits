@@ -31,13 +31,13 @@
           ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Jump }}</v-col></v-row
         >
       </div>
-      <div class="expand--collapse-box-outlined" v-if="!this.on_sheet">
+      <div class="expand--collapse-box-outlined" v-if="armor.HasManeuver">
         <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
           <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-reaction">
-              <display-tooltip-text string="While wearing this Armor, gain the following Reaction:" />
-              <div><reaction-card :reaction="$store.getters.getReaction(armor.Reaction)" /></div
+            ><v-expansion-panel-header class="expand--header-maneuver">Maneuver</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-maneuver">
+              <display-tooltip-text string="While wearing this Armor, gain the following Maneuver:" />
+              <div><maneuver-card :maneuver="$store.getters.getManeuver(armor.Maneuver)" /></div
             ></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -50,11 +50,11 @@
 import Vue from 'vue'
 import { Armor } from '@/class'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
-import ReactionCard from './ReactionCard.vue'
+import ManeuverCard from './ManeuverCard.vue'
 
 export default Vue.extend({
   name: 'armor-card',
-  components: { ReactionCard },
+  components: { ManeuverCard },
   props: {
     armor: {
       type: Armor,

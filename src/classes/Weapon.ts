@@ -8,9 +8,11 @@ class Weapon {
   private desc_: string
   private durability_: number
   private hands_: number
+  private hardness_: number
   private keywords_: Array<string>
   private name_: string
   private range_: string
+  private range_value_: number
   private reaction_: string
   private special_: string
   private speed_: number
@@ -21,11 +23,12 @@ class Weapon {
     this.category_ = ''
     this.damagetype_ = ''
     this.desc_ = ''
-    this.durability_ = 0
+    this.hardness_ = 0
     this.hands_ = 3
     this.keywords_ = []
     this.name_ = ''
     this.range_ = ''
+    this.range_value_ = 0
     this.reaction_ = ''
     this.special_ = ''
     this.speed_ = 0
@@ -51,19 +54,28 @@ class Weapon {
   get DamageTypeHeader() {
     return this.damagetype_ + ' Damage, '
   }
+  get HasDurability() {
+    return this.durability_ != 0
+  }
   get Durability() {
     return this.durability_
   }
   get DurabilityHeader() {
-    if (this.durability_ != 0) return 'Durability ' + this.Durability + ', '
+    if (this.durability_ != 0) return 'Durability ' + this.durability_ + ', '
+  }
+  get Hardness() {
+    return this.hardness_
+  }
+  get HardnessHeader() {
+    if (this.hardness_ != 0) return 'Hardness ' + this.Hardness + ', '
   }
   get Hands() {
     return this.hands_
   }
   get HandsPhrase() {
-    if (this.hands_ == 0) return '_No Hands_, '
-    if (this.hands_ == 1) return '_One-Handed_, '
-    else return '_Two-Handed_, '
+    if (this.hands_ == 0) return ' _No Hands_, '
+    if (this.hands_ == 1) return ' _One-Handed_, '
+    else return ' _Two-Handed_, '
   }
   get HasKeywords() {
     return this.keywords_.length > 0
@@ -87,9 +99,8 @@ class Weapon {
     return this.reaction_
   }
   get RangeHeader() {
-    if (this.Range == 'Melee') return '_' + this.range_ + '_, '
-    if (this.Range.length > 2) return this.range_ + ', '
-    return '_Range_ ' + this.range_ + ', '
+    if (this.Range == 'Melee') return '_Reach_ ' + this.range_value_ + ', '
+    return '_Range_ ' + this.range_value_ + ', '
   }
   get Speed() {
     return this.speed_
@@ -108,6 +119,7 @@ class Weapon {
   }
   get EncumbranceHeader() {
     if (this.Category == 'Unarmed') return ''
+    if (this.Encumbrance == 0) return ''
     return 'Encumbrance ' + this.encumbrance
   }
 
@@ -126,10 +138,12 @@ class Weapon {
     this.damagetype_ = data.damagetype || ''
     this.desc_ = data.desc || ''
     this.durability_ = data.durability || 0
+    this.hardness_ = data.hardness || 0
     this.hands_ = data.hands || 0
     this.keywords_ = data.keywords || []
     this.name_ = data.name || ''
     this.range_ = data.range || ''
+    this.range_value_ = data.range_value || 0
     this.reaction_ = data.reaction || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || 0

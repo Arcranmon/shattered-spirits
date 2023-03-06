@@ -1,14 +1,5 @@
 [
   {
-    "name": "Bleed",
-    "desc": "An affliction caused by any wound that bleeds profusely.",
-    "effect": "At the start of a creature's turn they take True Damage equal to the top Bleed Token.",
-    "special": "Whenever a creature would gain _Endurance_/_Vigor_, reduce it by 1 + their top Bleed Token's value, then immediately remove that Bleed Token.",
-    "remove": "Whenever a creature takes Damage from or has _Endurance_/_Vigor_ blocked by a _Bleed_ Token, remove it.",
-    "purge": "A value of _Grit_ removes Bleed equal to one less than the _Grit_ spent.",
-    "type": "standard"
-  },
-  {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow.",
     "effect": "A Dazed creature increases the Cost of all Reactions by the value of their topmost Dazed Token. This increased Cost (but only the increased cost) may be paid with Focus.",
@@ -37,17 +28,17 @@
     "name": "Impaired",
     "desc": "An affliction caused when a creature's ability to attack is limited.",
     "effect": "A creature gains an Attack Penalty equal to their topmost Impaired Token's value.",
-    "remove": "A creature clears the topmost Impaired after maing an Attack Roll.",
+    "remove": "A creature clears the topmost Impaired after making an Attack Roll.",
     "purge": "A value of _Focus_ removes Impaired equal to one less than the _Focus_ spent.",
     "type": "standard"
   },
   {
-    "name": "Knowledge",
-    "desc": "An affliction caused when one creature gains insight into another.",
-    "effect": "Whenever the creature that inflicted the Knowledge attacks the creature they may gain _Focus_, _Grit_, _Momentum_, or _Reflex_ in any combination equal to the creature's topmost Knowledge Token.",
-    "special": "When using a Reaction or Negating an effect, the creature that inflicted the Knowledge may reduce the Cost by the creature's topmost Knowledge Token's Value.",
-    "remove": "After gaining Tokens or reducing the cost of a Reaction, remove the creature's topmost Knowledge Token.",
-    "purge": "A value of _Focus_ removes Knowledge equal to the _Focus_ spent.",
+    "name": "Insight",
+    "desc": "An affliction caused when one creature gains knowledge on another.",
+    "effect": "Whenever the creature that inflicted the Insight attacks the creature they may gain _Focus_, _Grit_, _Momentum_, or _Reflex_ in any combination equal to the creature's topmost Insight Token.",
+    "special": "When using a Reaction or Negating an effect, the creature that inflicted the Insight may reduce the Cost by the creature's topmost Insight Token's Value.",
+    "remove": "After gaining Tokens or reducing the cost of a Reaction, remove the creature's topmost Insight Token.",
+    "purge": "A value of _Focus_ removes Insight equal to the _Focus_ spent.",
     "type": "standard"
   },
   {
@@ -60,11 +51,11 @@
   },
   {
     "name": "Wounded",
-    "desc": "An affliction caused when a creature suffers a lasting wound.",
-    "special": "If a creature has any Wounded Tokens, whenever they would remove a different _Affliction_ they instead remove their topmost Wounded Token, then take X True Damage, where X is the difference between the Wounded and blocked Token (minimum 1).",
-    "effect": "When Wounded creature would gain _Endurance_/_Vigor_ from any source, reduce that _Endurance_/_Vigor_ by 2 + twice their top Wound Token's value. Reduce the Value of the _Wounded_ Token by 1 for every 2 _Endurance_/_Vigor_ it blocks.",
-    "remove": "Whenever a Wounded Token stops a creature from gaining _Endurance_/_Vigor_ or stops them removing a different _Affliction_ remove it.",
-    "purge": "Wounded Tokens may not be _Purged_.",
+    "desc": "An affliction caused by any wound that can cause ongoing damage.",
+    "effect": "At the start of a creature's Turn, they take True Damage equal to the top Wounded Token.",
+    "special": "Whenever a creature would gain _Endurance_/_Vigor_, reduce it by 1 + their top Wounded Token's value, then immediately remove that Wounded Token.",
+    "remove": "Whenever a creature takes Damage from or has _Endurance_/_Vigor_ blocked by a Wounded Token, remove it.",
+    "purge": "A value of _Grit_ removes Wounded equal to one less than the _Grit_ spent.",
     "type": "standard"
   },
   {
@@ -125,8 +116,8 @@
   {
     "name": "Fear",
     "desc": "A mental affliction caused when a creature's spirit is rattled.",
-    "effect": "A creature with Fear must end their _Turn_ a number of spaces away from all hostile creatures equal to twice their topmost Fear Token Value. If they do not, they lose 1 _Focus_/_Momentum_ and gain an _Impair_ Token of a value equal to the Fear Token. If the creature does not have sufficient _Focus_/_Momentum_, they instead gain _Hobbled_ 1.",
-    "remove": "A creature removes their topmost Fear Token at the end of each of their turns.",
+    "effect": "The most recent creature to inflict Fear is the source of that  creature's Fear. A creature with Fear must end their _Turn_ a number of spaces away from the source of their Fear equal to their topmost Fear Token Value. If they do not, they lose 2 _Focus_/_Momentum_ and gain an _Impair_ Token of a value equal to the Fear Token. If the creature does not have sufficient _Focus_/_Momentum_, they instead gain _Hobbled_ 1.",
+    "remove": "A creature removes their topmost Fear Token at the end of each of their _Turns_.",
     "reacts": ["<ins>Courage:</ins> If a creature has any Courage Tokens and would gain a Fear Token, they instead remove their topmost Courage Token."],
     "purge": "A value of _Focus_ removes Fear equal to one less than the _Focus_ spent.",
     "type": "mental"

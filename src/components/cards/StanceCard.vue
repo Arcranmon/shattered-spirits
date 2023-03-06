@@ -2,7 +2,7 @@
   <div class="stance--wrapper" inline>
     <div class="stance--color-header" v-bind:class="category">
       <div class="stance--header">
-        <h3 style="display: inline; font-style: normal;">{{ stance.Name }}</h3>
+        <h4 style="display: inline; font-style: normal;">{{ stance.Name }}</h4>
       </div>
       <div class="stance--keywords">
         <span v-if="(stance.Desc.length > 0)"
@@ -27,27 +27,6 @@
       <div v-if="stance.HasSpecial">
         <display-tooltip-text :string="stance.SpecialHeader" />
       </div>
-      <span v-if="!this.on_sheet">
-        <div class="expand--collapse-box-outlined" v-if="stance.HasReaction">
-          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-            <v-expansion-panel style="background-color: inherit;"
-              ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
-              <v-expansion-panel-content class="expand--body-reaction">
-                <reaction-card :reaction="$store.getters.getReaction(stance.Reaction)"
-              /></v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </div>
-        <div class="expand--collapse-box-outlined" v-if="stance.HasEnhancement">
-          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-            <v-expansion-panel style="background-color: inherit;"
-              ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
-              <v-expansion-panel-content class="expand--body-enhancement">
-                <enhancement-card :enhancement="$store.getters.getEnhancement(stance.Enhancement)"
-              /></v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels></div
-      ></span>
     </div>
   </div>
 </template>
@@ -55,8 +34,7 @@
 <script>
 import Vue from 'vue'
 import ChartTable from '@/components/ChartTable.vue'
-import ReactionCard from './ReactionCard.vue'
-import EnhancementCard from './EnhancementCard.vue'
+import ManeuverCard from './ManeuverCard.vue'
 import { Stance } from '@/class'
 
 export default Vue.extend({
@@ -82,7 +60,7 @@ export default Vue.extend({
       default: false,
     },
   },
-  components: { ChartTable, EnhancementCard, ReactionCard },
+  components: { ChartTable, ManeuverCard },
 })
 </script>
 
@@ -99,7 +77,7 @@ export default Vue.extend({
 }
 .stance--header {
   padding-top: $space--xs;
-  font-size: $font-size--l;
+  background-color: $color--chart-header;
   text-align: center;
   color: black;
 }
@@ -107,6 +85,7 @@ export default Vue.extend({
   text-align: center;
   font-size: $font-size--s;
   color: black;
+  background-color: $color--chart-header;
   padding-bottom: $space--xs;
 }
 .stance--content {

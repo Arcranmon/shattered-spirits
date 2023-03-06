@@ -1,21 +1,21 @@
 <template>
-  <category-cards category="Wind" :text="windText" title="Wind Spirits" />
+  <discipline-cards category="Wind" :text="windText" title="Wind Spirits" />
 </template>
 
 <script>
-import Vue from "vue";
-import CategoryCards from "@/components/cards/CategoryCards.vue";
-import WindText from "@/database/text_files/spirit_descriptions/wind.txt";
-import { store } from "@/store";
+import Vue from 'vue'
+import DisciplineCards from '@/components/cards/DisciplineCards.vue'
+import WindText from '@/database/text_files/spirit_descriptions/wind.txt'
+import { store } from '@/store'
 export default Vue.extend({
-  name: "wind",
+  name: 'wind',
   components: {
-    CategoryCards,
+    DisciplineCards,
   },
   computed: {
     windText: function () {
-      return this.$marked.parse(WindText);
+      return this.$marked.parse(WindText)
     },
   },
-});
+})
 </script>

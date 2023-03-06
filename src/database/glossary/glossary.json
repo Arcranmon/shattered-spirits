@@ -21,7 +21,10 @@
     "name": "Attack Roll",
     "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's Profile to determine the effect."
   },
-  { "name": "Roll", "see": "Attack Roll" },
+  {
+    "name": "Bonus",
+    "effect": "When a creature has a Bonus they add that value to Attack Rolls."
+  },
   {
     "name": "Climbing",
     "effect": "When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to 1 + twice the Elevation change. For example, it would cost a creature 3 spaces of Movement to Climb up a 1 Height Obstacle. If a creature ends their turn while _Climbing_, creatures have _Advantage_ on Attacks against them."
@@ -32,8 +35,8 @@
     "effect": "An up-front cost of a Technique that must be paid in the Plotting Phase if it's an Action, or when used if it's a Reaction. If this Cost is not paid, the Technique may not be used."
   },
   {
-    "name": "Cover",
-    "effect": "If an Obstacle is between the Attacker and the Target of an Attack and the Target is adjacent to it the Target has Cover. Attacks against a creature in Cover are Glancing if Ranged, or take a -1 Penalty to the Attack Roll if Melee. If a Ranged Attack against a creature in Cover would already be Glancing, it instead Misses."
+    "name": "Covered",
+    "effect": "Attacks against a Covered creature gain Glancing and take a -2 Penalty."
   },
   {
     "name": "Crit",
@@ -56,10 +59,19 @@
     "effect": "The current Height of the Terrain or Obstacle that a character is standing on."
   },
   {
-    "name": "Enhancement",
-    "effect": "Many Stances and Techniques provide access to Enhancements, which are special abilities that can be attached to Techniques to improve them in some way. When a Technique is played, any eligible Enhancements may be attached to it by paying their Cost, and all Keywords and Effects of the Enhancement are added to the Technique."
+    "name": "Forced Movement",
+    "effect": "Push, Pull, Throw, and Slide effects."
   },
-  { "name": "Enhancements", "see": "Enhancement" },
+  { "name": "Forcibly Moved", "see": "Forced Movement" },
+  {
+    "name": "Maneuver",
+    "effect": "Many Disciplines provide access to Maneuvers, which are special abilities that can be used on or off a character's turn for a variety of effects, depending on the type of Maneuver it is."
+  },
+  { "name": "Maneuvers", "see": "Maneuver" },
+  {
+    "name": "Penalty",
+    "effect": "When a creature has a Penalty they subtract that value from the Attack Roll."
+  },
   {
     "name": "Equipment",
     "effect": "Any item that a character might carry into battle, such as a weapon, potion, or shield."
@@ -74,8 +86,12 @@
   },
   { "name": "Fall", "see": "Falling" },
   {
-    "name": "Full Cover",
-    "effect": "As Cover (Attacks against a creature in Cover are Glancing if Ranged, or take a -1 Penalty to the Attack Roll if Melee. If a Ranged Attack against a creature in Cover would already be Glancing, it instead Misses.), but is not negated by common means of getting around Cover, such as Arcing."
+    "name": "Forceful",
+    "effect": "Forceful can be applied to any kind of Forced Movement. If a creature is mobed into an Obstacle by Forceful Movement they take Damage equal to 1 + any Forced Movement that was not applied due to colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1."
+  },
+  {
+    "name": "Gift",
+    "effect": "When you Gift a Token you lose up to the listed amount of that Token, then grant an ally the amount you lost."
   },
   {
     "name": "Graze",
@@ -89,13 +105,17 @@
   },
   { "name": "Hazards", "see": "Hazard" },
   {
+    "name": "Heavily Obstructed",
+    "effect": "A state that occurs when view or the path to a creature barely exists. Attacks against a Heavily Obstructed creature take a -2 Penalty."
+  },
+  {
     "name": "Hit",
     "effect": "A solid connection with an Attack, represented by a green cell in the Attack's 'Roll' column in its Profile."
   },
   { "name": "Improvised", "see": "Improvise" },
   {
     "name": "Improvise",
-    "effect": "If a character finds they no longer wish to use a Technique selected in the Plotting Phase, they may choose to Improvise a Technique and pay 2 Momentum to replace it with a different Technique on their Turn. This new Technique must have the same AP cost and a Speed that is less than or equal to the replaced Technique. Enhancements may also be Improvised, but cost only 1 Momentum. Some Technique and Enhancements are easier to Improvise, as denoted by the Fluid tag."
+    "effect": "If a character finds they no longer wish to use a Technique selected in the Plotting Phase, they may choose to Improvise a Technique and pay 2 Momentum to replace it with a different Technique on their Turn. This new Technique must have the same AP cost and a Speed that is less than or equal to the replaced Technique. Maneuvers may also be Improvised, but cost only 1 Momentum. Some Technique and Maneuvers are easier to Improvise, as denoted by the Fluid tag."
   },
   {
     "name": "Imbue",
@@ -106,12 +126,24 @@
     "effect": "A special way to make use of an Obstacle that is defined in its statblock, typically used with the Use Environment Technique."
   },
   {
+    "name": "Lightly Obstructed",
+    "effect": "A state that occurs when view or the path to a creature are barely blocked. Attacks against a Lightly Obstructed creature take a -1 Penalty."
+  },
+  {
     "name": "Jump",
     "effect": "When a character Jumps, they may count Movement up to their Jump Value (defined on their Armor) as Leaping Movement. This Movement must be taken in a straight line, and this Movement may not be broken up in any way."
   },
   {
+    "name": "Jump Value",
+    "effect": "A value defined on a character's Armor specifying how far they may move in a single Jump."
+  },
+  {
     "name": "Maneuver",
     "effect": "A technique that tends to deal little to no damage. They often inflict status conditions on foes, empower allies, or influence the battlefield."
+  },
+  {
+    "name": "Total Height",
+    "effect": "The Elevation of an Obstacle or Creature plus its Height. Most creatures have a Height of 1."
   },
   {
     "name": "Miss",
@@ -129,8 +161,16 @@
   },
   { "name": "Negates", "see": "Negate" },
   {
+    "name": "Obstructed",
+    "effect": "A state occurs when a creature cannot be clearly seen and there is no clear path to them. A creature may be Lightly or Heavily Obscured, which causes a -1/-2 Penalty on Attacks against them."
+  },
+  {
     "name": "Open Hand",
     "effect": "An Open Hand is any Hand a character has that does not have any other Weapons or Equipment Wielded."
+  },
+  {
+    "name": "Occupied",
+    "effect": "While something is Occupied it may not be used for anything other than the listed effects. It still counts as Wielded for the purpose of Stances and the like, but may not be used for Maneuvers or Techniques."
   },
   {
     "name": "Purge",
@@ -150,10 +190,6 @@
     "effect": "All Attacks have a Profile, a chart showing the results of an Attack on a roll of 2-12. When you make an Attack, roll 2d6 and consult the Profile for the result."
   },
   {
-    "name": "Punish",
-    "effect": "Punish Reactions take advantage of a brief opportunity in battle to make a sudden strike. Many Actions and abilities reference Punish Reactions. If a Punish Reaction allows you to use a different Technique its Move becomes None unless specified otherwise. Additionally, if a Punish Reaction allows you to use a Strike, take a Penalty equal to the Speed of the Attack - the current Phase (i.e. using a Speed 6 Technique in Phase 1 would take a -5 Penalty to the Attack Roll)."
-  },
-  {
     "name": "Refresh",
     "effect": "The very start of a round where characters can change their Wielded Equipment, Stance/Style, and resolve various effects related to their Stances."
   },
@@ -163,8 +199,13 @@
   },
   {
     "name": "Resistance",
-    "effect": "If a creature has Resistance to a type of Damage increase their Guard by 4 against it."
+    "effect": "If a creature has Resistance to a type of Damage increase their Guard by 3 against it."
   },
+  {
+    "name": "Roll",
+    "effect": "When a character Rolls, their next Movement up to the listed value gain Safe 2, Blitz (can move through spaces occupied by foes), and Rush (movement must be taken in a straight line)."
+  },
+  { "name": "Rolling", "see": "Roll" },
   {
     "name": "Round",
     "effect": "A Round is a full cycle in combat, where all Phases are completed. Many Techniques and Stances have effects that trigger at the end of a round."
@@ -188,10 +229,6 @@
   {
     "name": "Seismic Sense",
     "effect": "A creature with Seismic Sense ignores Veiled for all creatures on Earthen spaces."
-  },
-  {
-    "name": "Soft Cover",
-    "effect": "If an Attack passes through an _Obstacle_ or _Veiled_ Terrain (but the target is not in a _Veiled_ Terrain), the Attack takes a -1 Penalty. If you are at a higher Elevation than the _Veiled_ Terrain or the Obstacle's Height, ignore this penalty."
   },
   {
     "name": "Speed",
@@ -220,7 +257,7 @@
   },
   {
     "name": "Stone Armor",
-    "effect": "Stone Armor is Ablative Armor with a Durability of 9 and Resistance to Slash/Stab Damage."
+    "effect": "Stone Armor is Overarmor with Guard 1, Durability 9, and Resistance to Slash/Stab Damage. Stone Armor has a weakness to Crush Damage. While a creature has Stone Armor, reduce their Jump Value by 1, to a minimum of 0."
   },
   {
     "name": "Style",
@@ -228,7 +265,7 @@
   },
   {
     "name": "Swim",
-    "effect": "While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature has _Cover_, _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them. Any _Jump_ a character makes while Swimming treats their Jump value as halved."
+    "effect": "While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature is _Heavily Obstructed_, has _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them. Any _Jump_ a character makes while Swimming treats their Jump value as halved."
   },
   { "name": "Swimming", "see": "Swim" },
   {

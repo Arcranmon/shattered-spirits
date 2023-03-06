@@ -108,7 +108,7 @@ export default Vue.extend({
       return [...this.$store.getters.getDisciplinesByCategory('Weapon'), ...this.$store.getters.getDisciplinesByCategory('Armor')]
     },
     styles: function () {
-      return this.$store.getters.getAllStyles()
+      return this.$store.getters.getAllMartialStances()
     },
     charStances: function () {
       return this.$store.getters.getStancesFromList(this.character.StancesCreation)

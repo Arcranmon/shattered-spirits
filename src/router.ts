@@ -5,10 +5,10 @@ import MainMenu from '@/pages/main-menu/index.vue'
 
 import CombatMenu from '@/pages/combat/combat-menu/index.vue'
 import CombatBasics from '@/pages/combat/combat-basics/index.vue'
-import AfflictionsAndStatus from '@/pages/combat/afflictions_and_status/index.vue'
-import EquipmentInCombat from '@/pages/combat/equipment_in_combat/index.vue'
-import ReadingAbilities from '@/pages/combat/reading_abilities/index.vue'
-import TerrainAndObstacles from '@/pages/combat/terrain_and_obstacles/index.vue'
+import AfflictionsAndStatus from '@/pages/combat/afflictions-and-status/index.vue'
+import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
+import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
+import TerrainAndObstacles from '@/pages/combat/terrain-and-obstacles/index.vue'
 
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
@@ -24,14 +24,15 @@ import Wood from '@/pages/spirits/wood/index.vue'
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
+import Shields from '@/pages/equipment/shields/index.vue'
+import UnarmedWeapons from '@/pages/equipment/unarmed-weapons/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
-import SkillsMenu from '@/pages/skills/skills-menu/index.vue'
-import BasicSkills from '@/pages/skills/basic-skills/index.vue'
-import ArmorSkills from '@/pages/skills/armor-skills/index.vue'
-import MartialSkills from '@/pages/skills/martial-skills/index.vue'
-import StratagemSkills from '@/pages/skills/stratagem-skills/index.vue'
-import WeaponSkills from '@/pages/skills/weapon-skills/index.vue'
+import MartialMenu from '@/pages/martials/martial-menu/index.vue'
+import BasicSkills from '@/pages/martials/basic-skills/index.vue'
+import ArmorDisciplines from '@/pages/martials/armor-disciplines/index.vue'
+import WeaponDisciplines from '@/pages/martials/weapon-disciplines/index.vue'
+import UnarmedDisciplines from '@/pages/martials/unarmed-disciplines/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -104,6 +105,22 @@ const r = new Router({
       name: 'weapons',
       meta: {
         title: 'Weapons',
+      },
+    },
+    {
+      path: '/shields',
+      component: Shields,
+      name: 'shields',
+      meta: {
+        title: 'Shields',
+      },
+    },
+    {
+      path: '/unarmed-weapons',
+      component: UnarmedWeapons,
+      name: 'unarmed-weapons',
+      meta: {
+        title: 'Unarmed Weapons',
       },
     },
     {
@@ -203,11 +220,11 @@ const r = new Router({
       },
     },
     {
-      path: '/skills',
-      component: SkillsMenu,
-      name: 'skills',
+      path: '/martials',
+      component: MartialMenu,
+      name: 'martials',
       meta: {
-        title: 'Skills',
+        title: 'Martial Disciplines',
       },
     },
     {
@@ -219,35 +236,27 @@ const r = new Router({
       },
     },
     {
-      path: '/armor-skills',
-      component: ArmorSkills,
-      name: 'armor-skills',
+      path: '/armor-disciplines',
+      component: ArmorDisciplines,
+      name: 'armor-disciplines',
       meta: {
-        title: 'Armor Skills',
+        title: 'Armor Disciplines',
       },
     },
     {
-      path: '/martial-skills',
-      component: MartialSkills,
-      name: 'martial-skills',
+      path: '/unarmed-disciplines',
+      component: UnarmedDisciplines,
+      name: 'unarmed-disciplines',
       meta: {
-        title: 'Martial Skills',
+        title: 'Unarmed Disciplines',
       },
     },
     {
-      path: '/stratagem-skills',
-      component: StratagemSkills,
-      name: 'stratagem-skills',
+      path: '/weapon-disciplines',
+      component: WeaponDisciplines,
+      name: 'weapon-disciplines',
       meta: {
-        title: 'Stratagem Skills',
-      },
-    },
-    {
-      path: '/weapon-skills',
-      component: WeaponSkills,
-      name: 'weapon-skills',
-      meta: {
-        title: 'Weapon Skills',
+        title: 'Weapon Disciplines',
       },
     },
     {

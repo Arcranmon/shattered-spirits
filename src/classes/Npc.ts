@@ -8,15 +8,15 @@ class Npc {
   private endurance_: number
   private name_: string
   private npc_type_: string
-  private optional_stances_: Array<string>
+  private optional_spirit_stances_: Array<string>
   private optional_techniques_: Array<string>
   private role_: string
   private size_: string
   private spirit_type_: string
-  private enhancements_: Array<string>
+  private maneuvers_: Array<string>
   private reactions_: Array<string>
-  private stances_: Array<string>
-  private styles_: Array<string>
+  private spirit_stances_: Array<string>
+  private martial_stances_: Array<string>
   private techniques_: Array<string>
   private weapons_: Array<string>
 
@@ -41,8 +41,8 @@ class Npc {
   public get NpcType() {
     return this.npc_type_
   }
-  public get OptionalStances() {
-    return this.optional_stances_
+  public get OptionalSpiritStances() {
+    return this.optional_spirit_stances_
   }
   public get OptionalTechniques() {
     return this.optional_techniques_
@@ -53,17 +53,17 @@ class Npc {
   public get SpiritType() {
     return this.spirit_type_
   }
-  public get Enhancements() {
-    return this.enhancements_
+  public get Maneuvers() {
+    return this.maneuvers_
   }
   public get Reactions() {
     return this.reactions_
   }
-  public get Stances() {
-    return this.stances_
+  public get SpiritStances() {
+    return this.spirit_stances_
   }
-  public get Styles() {
-    return this.styles_
+  public get MartialStances() {
+    return this.martial_stances_
   }
   public get Techniques() {
     return this.techniques_
@@ -101,15 +101,15 @@ class Npc {
     this.endurance_ = data.endurance || 0
     this.name_ = data.name || ''
     this.npc_type_ = data.npc_type || ''
-    this.optional_stances_ = data.optional_stances || []
+    this.optional_spirit_stances_ = data.optional_stances || []
     this.optional_techniques_ = data.optional_techniques || []
     this.role_ = data.role || ''
     this.size_ = data.size || ''
     this.spirit_type_ = data.spirit_type || ''
-    this.enhancements_ = data.enhancements || []
+    this.maneuvers_ = data.maneuvers || []
     this.reactions_ = data.reactions || []
-    this.stances_ = data.stances || []
-    this.styles_ = data.styles || []
+    this.spirit_stances_ = data.spirit_stances || []
+    this.martial_stances_ = data.martial_stances || []
     this.techniques_ = data.techniques || []
     this.weapons_ = data.weapons || []
   }

@@ -10,6 +10,7 @@
     </div>
     <div class="status--content">
       <display-tooltip-text :string="status.EffectHeader" />
+      <display-tooltip-text v-if="status.HasSpecial" :string="status.SpecialHeader" />
       <display-tooltip-text :string="status.RemoveHeader" />
     </div>
   </div>

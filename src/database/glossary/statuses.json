@@ -1,9 +1,9 @@
 [
   {
-    "name": "Ablative Armor",
-    "desc": "Armor that, while powerful, is easily stripped away.",
-    "effect": "Ablative Armor provides Guard equal to its value. Ablative Armor stacks, but a creature may never have more than 5 Ablative Armor at a given time. Techniques and Stances that provide Ablative Armor will specify its Durability, as well as any _Weaknesses_ or _Resistances_ it has.",
-    "remove": "Every Attack against a creature is automatically resolved against their Ablative Armor as well. Only compare this to the Ablative Armor's _Durability_; ignore any _Guard_ the creature has. An attacker may choose to attack the creature's Ablative Armor. Resolve the Attack as a normal one against the creature's Armor. Always _Shred_ 1. If the Attack does Damage greater than its _Durability_, add _Shred_ 1."
+    "name": "Overarmor",
+    "desc": "Armor that, while powerful, is temporary easily stripped away.",
+    "effect": "Overarmor will always specify a _Durability_, a _Guard_ value, as well as any _Resistances_. While a creature has Overarmor, increase their _Guard_ by the listed value, and they gain the _Resistances_ of their Overarmor. ",
+    "remove": "Whenever a character takes Damage, their Overarmor loses _Durability_ equal to half the Damage taken. If targeted by its Weakness, it takes an additional 2 Damage, even if the character took no Damage."
   },
   {
     "name": "Blind",
@@ -52,12 +52,6 @@
     "remove": "Flying typically only lasts as long as a Technique or Stance provides, but is also ended early if the Target is knocked _Prone_."
   },
   {
-    "name": "Fortify",
-    "desc": "You carefully cultivate your defense, pushing your armor beyond its limits.",
-    "effect": "Increase the _Guard_ provided by your _Armor_ by 1.",
-    "remove": "Remove Fortify whenever you gain _Shred_. Otherwise, remove it at the end of combat."
-  },
-  {
     "name": "Fragile",
     "effect": "Fragile decreases the Durability of a piece of Equipment or Obstacle by 2.",
     "remove": "Only Techniques that explicitly remove Fragile remove Fragile. Otherwise, it can be removed outside of combat with [travel mechanic here]."
@@ -76,6 +70,13 @@
     "remove": "At the end of their Turn, a Bottom character may expend Grit and Reflex to enter a Grapple Contest; if the Winner does not expend an equal amount of Grit or Momentum in any combination, the Bottom character is freed. The Bottom character is also freed if they or the Top are forcibly moved, such as by a Push or Pull. If the Top character is using both Hands for the Grapple treat their expended Grit and Momentum as 1 higher for the Grapple Contest."
   },
   {
+    "name": "Marked",
+    "desc": "An effect caused when a creature is drawing all of a foe's attention.",
+    "effect": "While Marked a creature treats their _Impaired_ Tokens as one higher (maximum 4) when attacking all creatures other than the one that Marked them. When attacking the creature that Marked them, they treat their _Impaired_ Tokens as one less (minimum 0).",
+    "special": "If a creature that is already Marked is Marked again, simply treat the creature that inflicted the new Mark as the creature that Marked them. The Mark remains for whichever effect has the longer duration.",
+    "remove": "Marked typically has a set duration. Additionally, a creature may end Marked by spending 2 _Momentum_ on a _Hit_+ on the creature that _Marked_ them."
+  },
+  {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
     "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage.",
@@ -88,14 +89,8 @@
     "remove": "How to end Restrained is typically specified in the Technique that inflicts it. If nothing is specified, a creature may _Sacrifice_ an Action and spend 2 _Reflex_ to end Restrained."
   },
   {
-    "name": "Shred",
-    "desc": "A status caused when a creature's armor is damaged.",
-    "effect": "If the Target has _Fortify_, reduce its value by 1. Otherwise, reduce the _Guard_ provided by their _Armor_ by 1. If the _Armor_ has no _Guard_ remaining, instead inflict _Vulnerable_ 1.",
-    "remove": "Only Techniques that explicitly remove Shred remove Shred. Otherwise, it can be removed outside of combat with [travel mechanic here]."
-  },
-  {
     "name": "Staggered",
-    "effect": "When a creature inflicts Staggered the Target immediately loses their _Stance_/_Style_ and gains No Stance/Style (Attacker's choice). While Staggered, a creature may not change their _Stance_/Style_.",
+    "effect": "When a creature inflicts Staggered the Target immediately loses one of their _Stances_ and replaces it with No Stance. While Staggered, a creature may not change their _Stance_.",
     "remove": "Only Techniques that explicitly remove Staggered (such as Gather) remove Staggered. Otherwise, it is cleared at the end of combat."
   },
   {

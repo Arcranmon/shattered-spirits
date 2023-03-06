@@ -1,21 +1,21 @@
 <template>
-  <category-cards category="Metal" :text="metalText" title="Metal Spirits" />
+  <discipline-cards category="Metal" :text="metalText" title="Metal Spirits" />
 </template>
 
 <script>
-import Vue from "vue";
-import CategoryCards from "@/components/cards/CategoryCards.vue";
-import MetalText from "@/database/text_files/spirit_descriptions/metal.txt";
-import { store } from "@/store";
+import Vue from 'vue'
+import DisciplineCards from '@/components/cards/DisciplineCards.vue'
+import MetalText from '@/database/text_files/spirit_descriptions/metal.txt'
+import { store } from '@/store'
 export default Vue.extend({
-  name: "earth",
+  name: 'earth',
   components: {
-    CategoryCards,
+    DisciplineCards,
   },
   computed: {
     metalText: function () {
-      return this.$marked.parse(MetalText);
+      return this.$marked.parse(MetalText)
     },
   },
-});
+})
 </script>

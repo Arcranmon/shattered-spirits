@@ -5,9 +5,9 @@
     <br />
     <custom-button to="/reading-abilities">Reading Abilities</custom-button>
     <br />
-    <custom-button to="/afflictions-and-status">Afflictions and Status</custom-button>
+    <custom-button to="/spirit-mechanics">Spirit Mechanics</custom-button>
     <br />
-    <custom-button to="/terrain-and-obstacles">Terrain and Obstacles</custom-button>
+    <custom-button to="/afflictions-and-status">Afflictions and Status</custom-button>
     <br />
   </div>
 </template>

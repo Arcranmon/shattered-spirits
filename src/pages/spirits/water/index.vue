@@ -1,21 +1,21 @@
 <template>
-  <category-cards category="Water" :text="waterText" title="Water Spirits" />
+  <discipline-cards category="Water" :text="waterText" title="Water Spirits" />
 </template>
 
 <script>
-import Vue from "vue";
-import CategoryCards from "@/components/cards/CategoryCards.vue";
-import WaterText from "@/database/text_files/spirit_descriptions/water.txt";
-import { store } from "@/store";
+import Vue from 'vue'
+import DisciplineCards from '@/components/cards/DisciplineCards.vue'
+import WaterText from '@/database/text_files/spirit_descriptions/water.txt'
+import { store } from '@/store'
 export default Vue.extend({
-  name: "water",
+  name: 'water',
   components: {
-    CategoryCards,
+    DisciplineCards,
   },
   computed: {
     waterText: function () {
-      return this.$marked.parse(WaterText);
+      return this.$marked.parse(WaterText)
     },
   },
-});
+})
 </script>

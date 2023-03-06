@@ -3,17 +3,17 @@
     <div class="armor--box" style="background-color: DarkGray;">
       <h2>No Armor</h2>
       <display-tooltip-text class="page--description" :string="noArmorText" />
-      <show-cards :inputs="no" job="Armor" :collapse="true" />
+      <show-cards :inputs="no" job="Armor" :collapse="false" />
     </div>
     <div class="armor--box" style="background-color: DarkGray;">
       <h2>Light Armor</h2>
       <display-tooltip-text class="page--description" :string="lightArmorText" />
-      <show-cards :inputs="light" job="Armor" :collapse="true" />
+      <show-cards :inputs="light" job="Armor" :collapse="false" />
     </div>
     <div class="armor--box" style="background-color: DarkGray;">
       <h2>Heavy Armor</h2>
       <display-tooltip-text class="page--description" :string="heavyArmorText" />
-      <show-cards :inputs="heavy" job="Armor" :collapse="true" />
+      <show-cards :inputs="heavy" job="Armor" :collapse="false" />
     </div>
   </div>
 </template>
@@ -55,8 +55,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .armor--box {
-  border-radius: 1em;
   border: $border--black-standard;
-  margin-top: 1em;
+  margin-top: -2px;
 }
 </style>

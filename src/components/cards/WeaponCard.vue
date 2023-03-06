@@ -7,9 +7,9 @@
       <div class="weapon--keywords">
         <span v-if="(weapon.Desc.length > 0)">{{ weapon.Desc }}<br /></span>
         <b
-          >{{ weapon.SpeedHeader }}{{ weapon.DamageTypeHeader }}{{ weapon.DurabilityHeader
-          }}<display-tooltip-text :string="weapon.RangeHeader" :decorate="false" /> <display-tooltip-text :string="weapon.HandsPhrase" :decorate="false" />
-          {{ weapon.CategoryHeader }}{{ weapon.EncumbranceHeader }}
+          >{{ weapon.SpeedHeader }}{{ weapon.DamageTypeHeader }}<span v-if="weapon.HasDurability">{{ weapon.DurabilityHeader }}</span
+          >{{ weapon.HardnessHeader }}<display-tooltip-text :string="weapon.RangeHeader" :decorate="false" /><span>&nbsp;</span>
+          <display-tooltip-text :string="weapon.HandsPhrase" :decorate="false" /> {{ weapon.CategoryHeader }}{{ weapon.EncumbranceHeader }}
           <br />
           <display-tooltip-text :string="weapon.KeywordsHeader" :decorate="false"
         /></b>
@@ -27,7 +27,7 @@
             ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
             <v-expansion-panel-content class="expand--body-reaction"
               ><display-tooltip-text string="While wielding this Weapon (and it is undamaged), gain the following Reaction:" />
-              <div><reaction-card :reaction="$store.getters.getReaction(weapon.Reaction)" /></div
+              <div><maneuver-card :maneuver="$store.getters.getManeuver(weapon.Reaction)" /></div
             ></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -40,7 +40,7 @@
 import Vue from 'vue'
 import { Weapon } from '@/class'
 import ChartTable from '@/components/ChartTable.vue'
-import ReactionCard from './ReactionCard.vue'
+import ManeuverCard from './ManeuverCard.vue'
 
 export default Vue.extend({
   name: 'weapon-card',
@@ -55,7 +55,7 @@ export default Vue.extend({
       default: true,
     },
   },
-  components: { ChartTable, ReactionCard },
+  components: { ChartTable, ManeuverCard },
 })
 </script>
 

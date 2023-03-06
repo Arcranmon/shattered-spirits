@@ -4,7 +4,7 @@
       <div class="weapon--box" v-bind:class="weapon_class + '-Header'">
         <h2>{{ weapon_class }}</h2>
         <display-tooltip-text class="page--description" :string="weapon_info[weapon_class]" />
-        <show-cards :inputs="$store.getters.getWeaponsByCategory(weapon_class)" job="Weapons" :collapse="true" />
+        <show-cards :inputs="$store.getters.getWeaponsByCategory(weapon_class)" job="Weapons" :collapse="false" />
       </div>
     </div>
   </div>
@@ -13,13 +13,11 @@
 <script>
 import Vue from 'vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
-import BladesText from '@/database/text_files/weapons/blades.txt'
-import BluntsText from '@/database/text_files/weapons/blunts.txt'
+import BladedText from '@/database/text_files/weapons/bladed.txt'
+import HaftedText from '@/database/text_files/weapons/hafted.txt'
 import ImprovisedText from '@/database/text_files/weapons/improvised.txt'
-import LancesText from '@/database/text_files/weapons/lances.txt'
+import PoleText from '@/database/text_files/weapons/pole.txt'
 import ProjectileText from '@/database/text_files/weapons/projectile.txt'
-import UnarmedText from '@/database/text_files/weapons/unarmed.txt'
-import ShieldText from '@/database/text_files/weapons/shield.txt'
 import ThrowingText from '@/database/text_files/weapons/throwing.txt'
 import { store } from '@/store'
 export default Vue.extend({
@@ -31,13 +29,11 @@ export default Vue.extend({
     return {
       weapon_info: {
         Improvised: ImprovisedText,
-        Unarmed: UnarmedText,
-        Blade: BladesText,
-        Blunt: BluntsText,
-        Lance: LancesText,
+        Bladed: BladedText,
+        Hafted: HaftedText,
+        Pole: PoleText,
         Projectile: ProjectileText,
         Throwing: ThrowingText,
-        Shield: ShieldText,
       },
     }
   },
@@ -46,8 +42,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .weapon--box {
-  border-radius: 1em;
   border: $border--black-standard;
-  margin-top: 1em;
+  margin-top: -2px;
 }
 </style>

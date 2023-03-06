@@ -30,12 +30,12 @@
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <status-card :status="this.$store.getters.getStatus(input)" /></v-tooltip></span
-    ><span v-else-if="this.$store.getters.isEnhancement(input)" attach
+    ><span v-else-if="this.$store.getters.isManeuver(input)" attach
       ><v-tooltip bottom nudge-top="8" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <enhancement-card :enhancement="this.$store.getters.getEnhancement(input)" :format_text="true" /></v-tooltip></span
+        <maneuver-card :maneuver="this.$store.getters.getManeuver(input)" :format_text="true" /></v-tooltip></span
     ><span v-else-if="this.$store.getters.isStance(input)" attach
       ><v-tooltip bottom nudge-top="8" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
@@ -48,12 +48,12 @@
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <tech-card :tech="this.$store.getters.getTechnique(input)" :format_text="true" /></v-tooltip></span
-    ><span v-else-if="this.$store.getters.isReaction(input)" attach
+    ><span v-else-if="this.$store.getters.isManeuver(input)" attach
       ><v-tooltip bottom nudge-top="8" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <reaction-card :reaction="this.$store.getters.getReaction(input)" :format_text="true" /></v-tooltip></span
+        <maneuver-card :maneuver="this.$store.getters.getManeuver(input)" :format_text="true" /></v-tooltip></span
     ><span v-else-if="this.$store.getters.isArmor(input)" attach
       ><v-tooltip bottom nudge-top="8" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
@@ -75,9 +75,8 @@ import Vue from 'vue'
 import { store } from '@/store'
 import AfflictionCard from './cards/AfflictionCard.vue'
 import ArmorCard from './cards/ArmorCard.vue'
-import EnhancementCard from './cards/EnhancementCard.vue'
+import ManeuverCard from './cards/ManeuverCard.vue'
 import ObstacleCard from './cards/ObstacleCard.vue'
-import ReactionCard from './cards/ReactionCard.vue'
 import StanceCard from './cards/StanceCard.vue'
 import StatusCard from './cards/StatusCard.vue'
 import TechCard from './cards/TechCard.vue'
@@ -85,7 +84,7 @@ import TerrainCard from './cards/TerrainCard.vue'
 import WeaponCard from './cards/WeaponCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { AfflictionCard, ArmorCard, EnhancementCard, ObstacleCard, ReactionCard, StanceCard, StatusCard, TechCard, TerrainCard, WeaponCard },
+  components: { AfflictionCard, ArmorCard, ManeuverCard, ObstacleCard, StanceCard, StatusCard, TechCard, TerrainCard, WeaponCard },
   props: {
     input: {
       type: String,

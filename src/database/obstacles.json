@@ -5,7 +5,7 @@
     "keywords": ["Wooden"],
     "size": 1,
     "height": 1,
-    "durability": 6,
+    "hardness": 6,
     "special": "This Obstacle does not provide _Cover_. Creatures may move through this Obstacle, treating it as _Rough_ Terrain. Creatures outside this Obstacle's space treat it as _Veiled_.",
     "resistances": "All Damage except Slash and Burn.",
     "speed": 1,
@@ -16,9 +16,8 @@
     "keywords": ["Wooden"],
     "size": 1,
     "height": 1,
-    "durability": 7,
-    "resistances": "All Damage except Slash and Bur.",
-    "speed": 2,
+    "hardness": 7,
+    "resistances": "All Damage except Slash and Burn.",
     "special": "Only Destroy one space of this Obstacle on a successful attack. For every 3 additional Damage the Attacker may destroy a single adjacent Log. This Obstacle always counts as Size 1, with a Height equal to the number of connected Logs.",
     "interact": "Choose one:\n* X _Grit_: _Push_ 1 this Log and all connected Logs. If it is moved into a creature's space, inflict _Push_ 1, _Vulnerable_ 1, and 2 Damage (2 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Log and inflict half Damage. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_. X is equal to the number of connected Logs."
   },
@@ -28,11 +27,11 @@
     "keywords": ["Wooden"],
     "size": 1,
     "height": 2,
-    "durability": 7,
+    "hardness": 7,
     "resistances": "All Damage except Slash and Burn.",
-    "special": "All sides of this Obstacle are _Climable_. Creatures may end their turn partially up this Obstacle if they _Climb_ it without any penalties. While in this Obstacles' space, creatures are considered to always have _Soft Cover_.",
+    "special": "All sides of this Obstacle are _Climable_. Creatures may end their turn partially up this Obstacle if they _Climb_ it without any penalties. While in this Obstacles' space, creatures are considered to always be _Lightly Obstructed_.",
     "speed": 3,
-    "interact": "Choose one:\n* 2 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create a _Log_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 4 _Grit_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also _Restrained_ until they spend 1 _Grit_ and one tier of Movement.",
+    "interact": "Choose one:\n* 2 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create a _Log_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 7 - X (minimum 3) _Grit_, where X is the current _Phase_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also _Restrained_ until they spend 1 _Grit_ and one tier of Movement.",
     "chart": {
       "damage": [0, 0, 0, 0, 3, 5, 6, 8, 10, 11, 13],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -52,25 +51,33 @@
     }
   },
   {
-    "name": "Earth Platform",
-    "desc": "A lifted platform, easy to climb but large enough to provide cover.",
+    "name": "Earth Block",
+    "desc": "A small earthen protrusion, sufficient to provide cover but easy to climb.",
     "keywords": ["Earthen"],
     "size": 1,
     "height": 1,
-    "durability": 8,
+    "hardness": 8,
     "resistances": "All Damage except Crush.",
-    "speed": 2,
     "interact": ""
+  },
+  {
+    "name": "Spire",
+    "desc": "A spike made of earth and stone, protruding from the ground.",
+    "keywords": ["Earthen"],
+    "size": 1,
+    "height": 1,
+    "hardness": 7,
+    "resistances": "All Damage except Crush.",
+    "special": "One side of this Obstacle is a Spike. If a creature is moved into the Spike side by _Forced Movement_, they immediately take 2 + X Stab Damage, where X is the amount of remaining _Forced Movement_ and gain _Wounded_ 1."
   },
   {
     "name": "Earth Pillar",
     "keywords": ["Earthen"],
     "size": 1,
     "height": 2,
-    "durability": 10,
+    "hardness": 10,
     "resistances": "All Damage except Crush.",
-    "speed": 4,
-    "interact": "Choose one:\n* 3 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create an _Earth Platform_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 5 _Grit_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also  _Restrained_ until they spend 2 _Grit_ and one tier of Movement.",
+    "interact": "Choose one:\n* 3 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then make them _Rough_. Any creature in the Obstacle's space when it is removed immediately falls.\n* 9 - X (minimum 4) _Grit_, where X is the current _Phase_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also  _Restrained_ until they spend 2 _Grit_ and one tier of Movement.",
     "chart": {
       "damage": [0, 0, 0, 0, 8, 8, 10, 10, 12, 14, 16],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -94,11 +101,10 @@
     "keywords": ["Wooden"],
     "size": 1,
     "height": 3,
-    "durability": 9,
+    "hardness": 9,
     "resistances": "All Damage except Slash and Burn.",
-    "speed": 5,
-    "interact": "Choose one:\n* 4 _Grit_: Create a Line 3 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create a _Log_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 6 _Grit_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also  _Restrained_ until they spend 2 _Grit_ and one tier of Movement.",
-    "special": "On a successful attack resolve the 4 _Grit_ Interact, but instead create a _Line_ 2. The original spaces are _Rough_. Additionally, all sides of this Obstacle are _Climable_. Creatures may end their turn partially up this Obstacle if they _Climb_ it without any penalties. While in this Obstacles' space, creatures are considered to always have _Soft Cover_.",
+    "interact": "Choose one:\n* 4 _Grit_: Create a Line 3 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create a _Log_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 10 - X (minimum 5) _Grit_, where X is the current _Phase_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also  _Restrained_ until they spend 2 _Grit_ and one tier of Movement.",
+    "special": "On a successful attack resolve the 4 _Grit_ Interact, but instead create a _Line_ 2. The original spaces are _Rough_. Additionally, all sides of this Obstacle are _Climable_. Creatures may end their turn partially up this Obstacle if they _Climb_ it without any penalties. While in this Obstacles' space, creatures are considered to always be _Lightly Obstructed_.",
     "chart": {
       "damage": [0, 0, 0, 0, 7, 8, 10, 10, 12, 14, 16],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -118,51 +124,13 @@
     }
   },
   {
-    "name": "Earth Column",
-    "keywords": ["Earthen"],
-    "size": 2,
-    "height": 3,
-    "durability": 12,
-    "resistances": "All Damage except Crush.",
-    "speed": 5,
-    "interact": "Choose one:\n* 5 _Grit_: Create two adjacent parallel Line 3 Hazards on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create an _Earth Pillar_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 7 _Grit_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also _Restrained_ until they spend 3 _Grit_ and one tier ove Movement.",
-    "special": "Only Destroy one space of this Obstacle on a successful attack. The attacker may Destroy an additional space for every 3 Damage more than the _Durability_ they inflict.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 9, 9, 12, 12, 14, 16, 18],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Dazed_ 2 (2 _Grit_)",
-        "_Dazed_ 2 (2 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)",
-        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)"
-      ]
-    }
-  },
-  {
     "name": "Boulder",
     "source": "Earth",
     "size": 1,
     "height": 1,
-    "durability": 13,
+    "hardness": 13,
     "resistances": "All Damage except Crush.",
     "speed": 3,
     "interact": "Choose one:\n* 2 _Grit_: _Push_ 1 this Boulder. If it is moved into a creature's space, inflict _Push_ 1, _Dazed_ 1, and 4 Damage (2 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_.\n* 4 _Grit_: _Push_ 3 this Boulder.  If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 2 and 6 Damage (3 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_."
-  },
-  {
-    "name": "Large Boulder",
-    "source": "Earth",
-    "size": 2,
-    "height": 2,
-    "durability": 16,
-    "resistances": "All Damage except Crush.",
-    "speed": 5,
-    "interact": "Choose one:\n* 4 _Grit_: _Push_ 1 this Boulder. If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 2 and 6 Damage (3 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_.\n* 6 _Grit_: _Push_ 2 this Boulder.  If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 3 and 8 Damage (4 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_."
   }
 ]

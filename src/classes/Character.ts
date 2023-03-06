@@ -2,8 +2,8 @@ import { store } from '@/store'
 import { Armor, Stance, Weapon, Technique } from '@/class'
 
 class Character {
-  private current_stance_: Stance
-  private current_style_: Stance
+  private current_spirit_stance_: Stance
+  private current_martial_stance_: Stance
   private current_endurance_: number
   private equipped_armor_: Armor
   private focus_: number
@@ -17,32 +17,32 @@ class Character {
   private off_hand_: Weapon
   private player_character_: Boolean
   private reflex_: number
-  private enhancements_: Array<string>
+  private maneuvers_: Array<string>
   private reactions_: Array<string>
   private skill_techniques_: Array<string>
   private spirit_name_: string
   private spirit_type_: string
   private spirit_techniques_: Array<string>
-  private stances_: Array<string>
-  private styles_: Array<string>
+  private spirit_stances_: Array<string>
+  private martial_stances_: Array<string>
   private unarmed_weapons_: Array<string>
   private weapons_: Array<string>
 
   private weapon_weight_: number
 
-  kDefaultEnhancements = ['Quick Strike', 'Strong Strike', 'Leap']
+  kDefaultManeuvers = ['Quick Strike', 'Strong Strike', 'Leap']
   kDefaultReactions = ['Retrieve', 'Reorient', 'Deflect', 'Dodge', 'Opportunity Attack', 'Counter']
 
   kMaxWeaponWeight = 8
-  kMaxStances = 3
+  kMaxSpiritStances = 3
   kMaxTechniques = 6
 
   // ==========================================================
   // CONSTRUCTOR
   // ==========================================================
   public constructor() {
-    this.current_stance_ = store.getters.getStance('No Stance')
-    this.current_style_ = store.getters.getStance('No Style')
+    this.current_spirit_stance_ = store.getters.getSpiritStance('No SpiritStance')
+    this.current_martial_stance_ = store.getters.getSpiritStance('No MartialStance')
     this.current_endurance_ = 0
     this.equipped_armor_ = null
     this.focus_ = 0
@@ -57,14 +57,14 @@ class Character {
     this.off_hand_ = null
     this.player_character_ = true
     this.reflex_ = 0
-    this.enhancements_ = this.kDefaultEnhancements
+    this.maneuvers_ = this.kDefaultManeuvers
     this.reactions_ = this.kDefaultReactions
     this.skill_techniques_ = []
     this.spirit_name_ = ''
     this.spirit_techniques_ = []
     this.spirit_type_ = ''
-    this.stances_ = ['No Stance']
-    this.styles_ = ['No Style']
+    this.spirit_stances_ = ['No SpiritStance']
+    this.martial_stances_ = ['No MartialStance']
     this.weapons_ = []
     this.unarmed_weapons_ = ['Hand', 'Slam']
   }
@@ -84,11 +84,11 @@ class Character {
   set CurrentEndurance(endurance: number) {
     this.current_endurance_ = endurance
   }
-  get CurrentStance() {
-    return this.current_stance_
+  get CurrentSpiritStance() {
+    return this.current_spirit_stance_
   }
-  get CurrentStyle() {
-    return this.current_style_
+  get CurrentMartialStance() {
+    return this.current_martial_stance_
   }
   get EquippedArmor() {
     return this.equipped_armor_
@@ -131,24 +131,24 @@ class Character {
   }
   get RefreshText() {
     var refresh = ''
-    if (this.current_stance_.Refresh.Momentum != 0 || this.current_style_.Refresh.Momentum != 0)
-      refresh = this.SmartCommas(this.current_stance_.Refresh.Momentum + this.current_style_.Refresh.Momentum + ' Momentum', refresh)
-    if (this.current_stance_.Refresh.Focus != 0 || this.current_style_.Refresh.Focus != 0)
-      refresh = this.SmartCommas(this.current_stance_.Refresh.Focus + this.current_style_.Refresh.Focus + ' Focus', refresh)
-    if (this.current_stance_.Refresh.Grit != 0 || this.current_style_.Refresh.Grit != 0)
-      refresh = this.SmartCommas(this.current_stance_.Refresh.Grit + this.current_style_.Refresh.Grit + ' Grit', refresh)
-    if (this.current_stance_.Refresh.reflex != 0 || this.current_style_.Refresh.reflex != 0)
-      refresh = this.SmartCommas(this.current_stance_.Refresh.reflex + this.current_style_.Refresh.reflex + ' reflex', refresh)
-    if (this.current_stance_.Refresh.Additional != '') refresh = this.SmartCommas(this.current_stance_.Refresh.Additional, refresh)
-    if (this.current_style_.Refresh.Additional != '') refresh = this.SmartCommas(this.current_style_.Refresh.Additional, refresh)
+    if (this.current_spirit_stance_.Refresh.Momentum != 0 || this.current_martial_stance_.Refresh.Momentum != 0)
+      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Momentum + this.current_martial_stance_.Refresh.Momentum + ' Momentum', refresh)
+    if (this.current_spirit_stance_.Refresh.Focus != 0 || this.current_martial_stance_.Refresh.Focus != 0)
+      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Focus + this.current_martial_stance_.Refresh.Focus + ' Focus', refresh)
+    if (this.current_spirit_stance_.Refresh.Grit != 0 || this.current_martial_stance_.Refresh.Grit != 0)
+      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Grit + this.current_martial_stance_.Refresh.Grit + ' Grit', refresh)
+    if (this.current_spirit_stance_.Refresh.reflex != 0 || this.current_martial_stance_.Refresh.reflex != 0)
+      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.reflex + this.current_martial_stance_.Refresh.reflex + ' reflex', refresh)
+    if (this.current_spirit_stance_.Refresh.Additional != '') refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Additional, refresh)
+    if (this.current_martial_stance_.Refresh.Additional != '') refresh = this.SmartCommas(this.current_martial_stance_.Refresh.Additional, refresh)
 
     return refresh
   }
   public ApplyRefresh() {
-    this.momentum_ += this.current_stance_.Refresh.Momentum + this.current_style_.Refresh.Momentum
-    this.grit_ += this.current_stance_.Refresh.Grit + this.current_style_.Refresh.Grit
-    this.focus_ += this.current_stance_.Refresh.Focus + this.current_style_.Refresh.Focus
-    this.reflex_ += this.current_stance_.Refresh.reflex + this.current_style_.Refresh.reflex
+    this.momentum_ += this.current_spirit_stance_.Refresh.Momentum + this.current_martial_stance_.Refresh.Momentum
+    this.grit_ += this.current_spirit_stance_.Refresh.Grit + this.current_martial_stance_.Refresh.Grit
+    this.focus_ += this.current_spirit_stance_.Refresh.Focus + this.current_martial_stance_.Refresh.Focus
+    this.reflex_ += this.current_spirit_stance_.Refresh.reflex + this.current_martial_stance_.Refresh.reflex
   }
   public ResetDefault() {
     this.momentum_ = 0
@@ -158,8 +158,8 @@ class Character {
     this.current_health_ = this.max_health_
     this.current_endurance_ = this.EquippedArmor.Endurance
   }
-  get Enhancements() {
-    return this.enhancements_
+  get Maneuvers() {
+    return this.maneuvers_
   }
   get Reactions() {
     return this.reactions_
@@ -176,19 +176,19 @@ class Character {
   get SpiritTechniques() {
     return this.spirit_techniques_
   }
-  get Stances() {
-    return this.stances_
+  get SpiritStances() {
+    return this.spirit_stances_
   }
-  get StancesCreation() {
-    if (this.stances_.length == 1) return []
-    return this.stances_.slice(1)
+  get SpiritStancesCreation() {
+    if (this.spirit_stances_.length == 1) return []
+    return this.spirit_stances_.slice(1)
   }
-  get Styles() {
-    return this.styles_
+  get MartialStances() {
+    return this.martial_stances_
   }
-  get StylesCreation() {
-    if (this.styles_.length == 1) return []
-    return this.styles_.slice(1)
+  get MartialStancesCreation() {
+    if (this.martial_stances_.length == 1) return []
+    return this.martial_stances_.slice(1)
   }
   get UnarmedWeapons() {
     return this.unarmed_weapons_
@@ -204,16 +204,16 @@ class Character {
   // ==========================================================
   // SETTERS
   // ==========================================================
-  set CurrentStance(stance: Stance) {
-    this.current_stance_ = stance
+  set CurrentSpiritStance(spirit_stance: Stance) {
+    this.current_spirit_stance_ = spirit_stance
   }
-  set CurrentStyle(stance: Stance) {
-    this.current_style_ = stance
+  set CurrentMartialStance(martial_stance: Stance) {
+    this.current_martial_stance_ = martial_stance
   }
   set EquippedArmor(armor: Armor) {
-    if (this.equipped_armor_ != null && this.equipped_armor_.HasReaction) this.RemoveReaction(this.equipped_armor_.Reaction)
+    if (this.equipped_armor_ != null && this.equipped_armor_.HasManeuver) this.RemoveReaction(this.equipped_armor_.Maneuver)
     this.equipped_armor_ = armor
-    if (armor.HasReaction) this.AddReaction(armor.Reaction)
+    if (armor.HasManeuver) this.AddReaction(armor.Maneuver)
   }
   set Name(name: string) {
     this.name_ = name
@@ -236,13 +236,13 @@ class Character {
       this.reactions_.splice(index, 1)
     }
   }
-  public AddEnhancement(enhancement: string) {
-    if (!this.enhancements_.includes(enhancement)) this.enhancements_.push(enhancement)
+  public AddManeuver(maneuver: string) {
+    if (!this.maneuvers_.includes(maneuver)) this.maneuvers_.push(maneuver)
   }
-  public RemoveEnhancement(enhancement: string) {
-    var index = this.enhancements_.indexOf(enhancement, 0)
+  public RemoveManeuver(maneuver: string) {
+    var index = this.maneuvers_.indexOf(maneuver, 0)
     if (index > -1) {
-      this.enhancements_.splice(index, 1)
+      this.maneuvers_.splice(index, 1)
     }
   }
   public AddWeapon(weapon: Weapon) {
@@ -269,56 +269,44 @@ class Character {
       if (index > -1) this.unarmed_weapons_.splice(index, 1)
     }
   }
-  public AddStance(stance: Stance) {
-    if (this.stances_.length == this.kMaxStances) return
-    if (this.stances_.includes(stance.Name)) return
-    this.stances_.push(stance.Name)
-    if (stance.SpecialHeader.includes('Martial Form')) this.martial_forms_ += 2
-    if (stance.HasEnhancement) this.AddEnhancement(stance.Enhancement)
-    if (stance.HasReaction) this.AddReaction(stance.Reaction)
+  public AddSpiritStance(spirit_stance: Stance) {
+    if (this.spirit_stances_.length == this.kMaxSpiritStances) return
+    if (this.spirit_stances_.includes(spirit_stance.Name)) return
+    this.spirit_stances_.push(spirit_stance.Name)
+    if (spirit_stance.SpecialHeader.includes('Martial Form')) this.martial_forms_ += 2
   }
-  public AddStyle(stance: Stance) {
-    if (this.styles_.length == this.kMaxStances) return
-    if (this.styles_.includes(stance.Name)) return
-    this.styles_.push(stance.Name)
-    if (stance.SpecialHeader.includes('Martial Form')) this.martial_forms_ += 2
-    if (stance.HasEnhancement) this.AddEnhancement(stance.Enhancement)
-    if (stance.HasReaction) this.AddReaction(stance.Reaction)
+  public AddMartialStance(martial_stance: Stance) {
+    if (this.martial_stances_.length == this.kMaxSpiritStances) return
+    if (this.martial_stances_.includes(martial_stance.Name)) return
+    this.martial_stances_.push(martial_stance.Name)
+    if (martial_stance.SpecialHeader.includes('Martial Form')) this.martial_forms_ += 2
   }
   public AddSkillTech(tech: Technique) {
     if (this.HasAllTechniques) return
     if (this.skill_techniques_.includes(tech.Name)) return
     this.skill_techniques_.push(tech.Name)
     if (tech.Keywords.includes('Martial Form')) this.martial_forms_++
-    if (tech.HasEnhancement) this.AddEnhancement(tech.Enhancement)
-    if (tech.HasReaction) this.AddReaction(tech.Reaction)
   }
   public AddSpiritTech(tech: Technique) {
     if (this.HasAllTechniques) return
     if (this.spirit_techniques_.includes(tech.Name)) return
     this.spirit_techniques_.push(tech.Name)
     if (tech.Keywords.includes('Martial Form')) this.martial_forms_++
-    if (tech.HasEnhancement) this.AddEnhancement(tech.Enhancement)
-    if (tech.HasReaction) this.AddReaction(tech.Reaction)
   }
-  public RemoveStance(stance: Stance) {
-    if (stance.Name != 'No Stance') {
-      var index = this.stances_.indexOf(stance.Name, 0)
+  public RemoveSpiritStance(spirit_stance: Stance) {
+    if (spirit_stance.Name != 'No SpiritStance') {
+      var index = this.spirit_stances_.indexOf(spirit_stance.Name, 0)
       if (index > -1) {
-        this.stances_.splice(index, 1)
-        if (stance.HasEnhancement) this.RemoveEnhancement(stance.Enhancement)
-        if (stance.HasReaction) this.RemoveReaction(stance.Reaction)
+        this.spirit_stances_.splice(index, 1)
       }
     }
   }
-  public RemoveStyle(stance: Stance) {
-    if (stance.Name != 'No Style') {
-      var index = this.styles_.indexOf(stance.Name, 0)
+  public RemoveMartialStance(martial_stance: Stance) {
+    if (martial_stance.Name != 'No Martial Stance') {
+      var index = this.martial_stances_.indexOf(martial_stance.Name, 0)
       if (index > -1) {
-        this.styles_.splice(index, 1)
-        if (stance.SpecialHeader.includes('Martial Form')) this.martial_forms_--
-        if (stance.HasEnhancement) this.RemoveEnhancement(stance.Enhancement)
-        if (stance.HasReaction) this.RemoveReaction(stance.Reaction)
+        this.martial_stances_.splice(index, 1)
+        if (martial_stance.SpecialHeader.includes('Martial Form')) this.martial_forms_--
       }
     }
   }
@@ -327,8 +315,6 @@ class Character {
     if (index > -1) {
       this.skill_techniques_.splice(index, 1)
       if (tech.Keywords.includes('Martial Form')) this.martial_forms_--
-      if (tech.HasEnhancement) this.RemoveEnhancement(tech.Enhancement)
-      if (tech.HasReaction) this.RemoveReaction(tech.Reaction)
     }
   }
   public RemoveSpiritTech(tech: Technique) {
@@ -336,13 +322,11 @@ class Character {
     if (index > -1) {
       this.spirit_techniques_.splice(index, 1)
       if (tech.Keywords.includes('Martial Form')) this.martial_forms_--
-      if (tech.HasEnhancement) this.RemoveEnhancement(tech.Enhancement)
-      if (tech.HasReaction) this.RemoveReaction(tech.Reaction)
     }
   }
   public ClearSpiritInfo() {
     this.spirit_techniques_ = []
-    this.stances_ = ['No Stance']
+    this.spirit_stances_ = ['No Stance']
   }
 
   // ==========================================================
@@ -361,7 +345,7 @@ class Character {
     return this.unarmed_weapons_.length - 2 <= this.martial_forms_
   }
   get Complete() {
-    return this.HasSpirit && this.HasEquippedArmor && this.HasAllWeapons && this.HasAllStancesStyles && this.HasAllTechniques && this.HasNames
+    return this.HasSpirit && this.HasEquippedArmor && this.HasAllWeapons && this.HasAllSpiritStancesMartialStances && this.HasAllTechniques && this.HasNames
   }
   get HasAllWeapons() {
     return this.weapon_weight_ == this.kMaxWeaponWeight
@@ -372,17 +356,17 @@ class Character {
   get WeaponWeightRemaining() {
     return this.kMaxWeaponWeight - this.weapon_weight_
   }
-  get HasAllStancesStyles() {
-    return this.StancesRemaining == 0 && this.StylesRemaining == 0
+  get HasAllSpiritStancesMartialStances() {
+    return this.SpiritStancesRemaining == 0 && this.MartialStancesRemaining == 0
   }
-  get HasNoEquippedStanceOrStyle() {
-    return this.current_stance_.Name == 'No Stance' || this.current_style_.Name == 'No Style'
+  get AnyStanceUnequipped() {
+    return this.current_spirit_stance_.Name == 'No Stance' || this.current_martial_stance_.Name == 'No Stance'
   }
-  get StancesRemaining() {
-    return Math.min(this.kMaxStances - this.stances_.length)
+  get SpiritStancesRemaining() {
+    return Math.min(this.kMaxSpiritStances - this.spirit_stances_.length)
   }
-  get StylesRemaining() {
-    return Math.min(this.kMaxStances - this.styles_.length)
+  get MartialStancesRemaining() {
+    return Math.min(this.kMaxSpiritStances - this.martial_stances_.length)
   }
   get HasNames() {
     return this.Name != '' && this.SpiritName != ''
@@ -408,8 +392,8 @@ class Character {
   public static Serialize(character: Character): ICharacterData {
     return {
       //Character Save Data
-      current_stance: character.current_stance_ ? character.current_stance_.Name : '',
-      current_style: character.current_style_ ? character.current_style_.Name : '',
+      current_spirit_stance: character.current_spirit_stance_ ? character.current_spirit_stance_.Name : '',
+      current_martial_stance: character.current_martial_stance_ ? character.current_martial_stance_.Name : '',
       current_endurance: character.current_endurance_,
       equipped_armor: character.equipped_armor_ ? character.equipped_armor_.Name : '',
       focus: character.focus_,
@@ -423,14 +407,14 @@ class Character {
       off_hand: character.off_hand_ ? character.off_hand_.Name : '',
       player_character: character.player_character_,
       reflex: character.reflex_,
-      enhancements: character.enhancements_,
+      maneuvers: character.maneuvers_,
       reactions: character.reactions_,
       skill_techniques: character.skill_techniques_,
       spirit_name: character.spirit_name_,
       spirit_techniques: character.spirit_techniques_,
       spirit_type: character.spirit_type_,
-      stances: character.stances_,
-      styles: character.styles_,
+      spirit_stances: character.spirit_stances_,
+      martial_stances: character.martial_stances_,
       unarmed_weapons: character.unarmed_weapons_,
       weapons: character.weapons_,
       weapon_weight: character.weapon_weight_,
@@ -444,8 +428,8 @@ class Character {
   }
 
   private setCharacterData(data: ICharacterData): void {
-    if ('current_stance' in data) this.current_stance_ = store.getters.getStance(data.current_stance)
-    if ('current_style' in data) this.current_style_ = store.getters.getStance(data.current_style)
+    if ('current_spirit_stance' in data) this.current_spirit_stance_ = store.getters.getSpiritStance(data.current_spirit_stance)
+    if ('current_martial_stance' in data) this.current_martial_stance_ = store.getters.getSpiritStance(data.current_martial_stance)
     this.current_endurance_ = data.current_endurance
     if ('equipped_armor' in data) this.equipped_armor_ = store.getters.getArmor(data.equipped_armor)
     this.focus_ = data.focus || 0
@@ -459,14 +443,14 @@ class Character {
     if ('off_hand' in data && data.off_hand != '') this.equipped_armor_ = store.getters.getWeapon(data.off_hand)
     this.player_character_ = data.player_character || true
     this.reflex_ = data.reflex || 0
-    this.enhancements_ = data.enhancements || []
+    this.maneuvers_ = data.maneuvers || []
     this.reactions_ = data.reactions || []
     this.skill_techniques_ = data.skill_techniques || []
     this.spirit_name_ = data.spirit_name || ''
     this.spirit_techniques_ = data.spirit_techniques || []
     this.spirit_type_ = data.spirit_type || ''
-    this.stances_ = data.stances || []
-    this.styles_ = data.styles || []
+    this.spirit_stances_ = data.spirit_stances || []
+    this.martial_stances_ = data.martial_stances || []
     this.unarmed_weapons_ = data.unarmed_weapons || []
     this.weapons_ = data.weapons || []
     this.weapon_weight_ = data.weapon_weight || 0

@@ -66,11 +66,11 @@ export default Vue.extend({
   data: () => {
     return {
       weapon: new Weapon(),
-      weapon_classes: ['Blade', 'Lance', 'Blunt', 'Projectile', 'Throwing', 'Shield'],
+      weapon_classes: ['Bladed', 'Pole', 'Hafted', 'Projectile', 'Throwing', 'Shield'],
       weapon_summaries: {
-        Blade: 'Weapons such as swords that focus on a balanced approach to combat.',
-        Lance: 'Weapons such as spears that focus on attacking at range and consistent damage.',
-        Blunt: 'Weapons such as axes and hammers that focus on high damage and destruction.',
+        Bladed: 'Weapons such as swords that focus on a balanced approach to combat.',
+        Pole: 'Weapons such as spears that focus on attacking at range and consistent damage.',
+        Hafted: 'Weapons such as axes and hammers that focus on high damage and destruction.',
         Projectile: 'Weapons such as bows that emphasize extreme range in exchange for melee capability.',
         Throwing: 'Weapons such as darts that emphasize moderate range and extreme speed.',
         Shield: 'A piece of armor wielded as a weapon, providing superior defense.',

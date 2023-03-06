@@ -4,25 +4,19 @@ import { Refresh } from '@/class'
 class Stance {
   private accumulate_: string
   private desc_: string
-  private discipline_: string
   private effect_: string
-  private enhancement_: string
   private refresh_: Refresh
   private reqs_: string
   private name_: string
-  private reaction_: string
   private special_: string
 
   public constructor() {
     this.accumulate_ = ''
     this.desc_ = ''
-    this.discipline_ = ''
     this.effect_ = ''
-    this.enhancement_ = ''
     this.refresh_ = null
     this.reqs_ = ''
     this.name_ = ''
-    this.reaction_ = ''
     this.special_ = ''
   }
 
@@ -30,14 +24,8 @@ class Stance {
     return this.desc_
   }
 
-  public get Discipline() {
-    return this.discipline_
-  }
   public get Name() {
     return this.name_
-  }
-  public get Reaction() {
-    return this.reaction_
   }
 
   // ==========================================================
@@ -76,15 +64,6 @@ class Stance {
   public get RequirementsHeader() {
     return '**Requirements:** ' + this.reqs_
   }
-  public get HasReaction() {
-    return this.reaction_.length > 0
-  }
-  public get HasEnhancement() {
-    return this.enhancement_.length > 0
-  }
-  public get Enhancement() {
-    return this.enhancement_
-  }
 
   // ==========================================================
   // SERIALIZATION
@@ -99,17 +78,13 @@ class Stance {
   public setStanceData(data: IStanceData): void {
     this.accumulate_ = data.accumulate || ''
     this.desc_ = data.desc || ''
-    this.discipline_ = data.discipline || ''
     this.effect_ = data.effect || ''
-    this.enhancement_ = data.enhancement || ''
     this.name_ = data.name || ''
-    this.reaction_ = data.reaction || ''
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     if ('refresh' in data) {
       this.refresh_ = Refresh.Deserialize(data.refresh)
     }
-    this.reaction_ = data.reaction || ''
   }
 }
 export default Stance

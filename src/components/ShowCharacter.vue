@@ -57,9 +57,9 @@
             <v-btn @click="character.ResetDefault(), $emit('changed')" class="grey lighten-4 mx-2">Set Default</v-btn></v-row
           ></v-col
         ><v-col cols="6"><armor-card :armor="character.EquippedArmor" :on_sheet="true" /> </v-col
-        ><v-col v-if="character.HasNoEquippedStanceOrStyle" cols="12" style="text-align: center;">Click a Stance or Style below to enter it!</v-col
-        ><v-col cols="6"> <stance-card :stance="character.CurrentStance" :on_sheet="true" /></v-col
-        ><v-col cols="6"> <stance-card :stance="character.CurrentStyle" :on_sheet="true" /></v-col
+        ><v-col v-if="character.AnyStanceUnequipped" cols="12" style="text-align: center;">Click a Stance or Style below to enter it!</v-col
+        ><v-col cols="6"> <stance-card :stance="character.CurrentSpiritStance" :on_sheet="true" /></v-col
+        ><v-col cols="6"> <stance-card :stance="character.CurrentMartialStance" :on_sheet="true" /></v-col
         ><v-col cols="12">
           <show-cards job="Weapons" :inputs="$store.getters.getWeaponsFromList(character.Weapons)" standalone_or_contained="Standalone" :cols="2" /></v-col
         ><v-col cols="12">
@@ -89,29 +89,29 @@
             :cols="2" /></v-col
         ><v-col cols="12">
           <show-cards
-            job="Stances"
-            :inputs="$store.getters.getStancesFromList(character.Stances)"
+            job="Spirit Stances"
+            :inputs="$store.getters.getStancesFromList(character.SpiritStances)"
             standalone_or_contained="Standalone"
             :selectButton="true"
             :on_sheet="true"
-            @chose="changeStance"
+            @chose="changeSpiritStance"
             :cols="2" /></v-col
         ><v-col cols="12">
           <show-cards
             job="Stances"
-            display_text="Styles"
-            :inputs="$store.getters.getStancesFromList(character.Styles)"
+            display_text="Martial Stances"
+            :inputs="$store.getters.getStancesFromList(character.MartialStances)"
             standalone_or_contained="Standalone"
             :selectButton="true"
             :on_sheet="true"
-            @chose="changeStyle"
+            @chose="changeMartialStance"
             :cols="2"
           /> </v-col
         ><v-col cols="12">
           <show-cards
-            job="Enhancements"
-            display_text="Enhancements"
-            :inputs="$store.getters.getEnhancementsFromList(character.Enhancements)"
+            job="Maneuvers"
+            display_text="Maneuvers"
+            :inputs="$store.getters.getManeuversFromList(character.Maneuvers)"
             standalone_or_contained="Standalone"
             :on_sheet="true"
             :cols="2"
@@ -120,7 +120,7 @@
           <show-cards
             job="Reactions"
             display_text="Reactions"
-            :inputs="$store.getters.getReactionsFromList(character.Reactions)"
+            :inputs="$store.getters.getManeuversFromList(character.Reactions)"
             standalone_or_contained="Standalone"
             :on_sheet="true"
             :cols="2"
@@ -146,12 +146,12 @@ export default Vue.extend({
     },
   },
   methods: {
-    changeStance: function (variable) {
-      this.character.CurrentStance = variable.card
+    changeSpiritStance: function (variable) {
+      this.character.CurrentSpiritStance = variable.card
       this.$emit('changed')
     },
-    changeStyle: function (variable) {
-      this.character.CurrentStyle = variable.card
+    changeMartialStance: function (variable) {
+      this.character.CurrentMartialStance = variable.card
       this.$emit('changed')
     },
   },

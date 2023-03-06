@@ -5,13 +5,18 @@
     <custom-button to="/character-creation">Character Creation Rules</custom-button>
     <br />
     <custom-button to="/combat">Combat Rules</custom-button> <br />
+    <custom-button to="/terrain-and-obstacles">Terrain and Obstacles</custom-button>
+    <br />
     <custom-button to="/equipment">Equipment</custom-button> <br />
-    <custom-button to="/skills">Skill Disciplines</custom-button> <br />
+    <custom-button to="/basic-skills">Basic Skills</custom-button> <br />
+    <custom-button to="/martials">Martial Disciplines</custom-button> <br />
     <custom-button to="/spirits">Spirit Disciplines</custom-button> <br />
+    <!--
     <custom-button to="/character-creator">Character Creator (WIP)</custom-button>
     <br />
     <custom-button to="/character-manager">Characters (WIP)</custom-button>
     <br />
+    -->
   </div>
 </template>
 

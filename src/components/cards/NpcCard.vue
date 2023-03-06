@@ -15,19 +15,13 @@
       <div v-html="$marked.parseInline(npc.SizeText)" />
       <div v-html="$marked.parseInline(npc.EnduranceText)" />
       <armor-card :armor="npc.Armor" :format="false" :on_sheet="true" />
-      <show-cards :inputs="stances" job="Stances" :collapse="true" />
-      <show-cards :inputs="styles" job="Stances" :collapse="true" display_text="Styles" />
+      <show-cards :inputs="stances" job="Stances" :collapse="true" display_text="Spirit Stances" />
+      <show-cards :inputs="styles" job="Stances" :collapse="true" display_text="Martial Stances" />
       <show-cards :inputs="weapons" job="Weapons" :collapse="true" />
       <show-cards :inputs="techniques" job="Techniques" :collapse="true" />
-      <show-cards :inputs="enhancements" job="Enhancements" :collapse="true" />
+      <show-cards :inputs="maneuvers" job="Maneuvers" :collapse="true" />
       <show-cards :inputs="reactions" job="Reactions" :collapse="true" />
-      <show-cards
-        v-if="(npc.OptionalStances.length > 0)"
-        :inputs="optional_stances"
-        job="Stances"
-        :collapse="true"
-        display_text="Optional Stances and Styles"
-      />
+      <show-cards v-if="(npc.OptionalStances.length > 0)" :inputs="optional_stances" job="Stances" :collapse="true" display_text="Optional Stances" />
       <show-cards
         v-if="(npc.OptionalTechniques.length > 0)"
         :inputs="optional_techniques"
@@ -61,17 +55,17 @@ export default Vue.extend({
     weapons: function () {
       return this.$store.getters.getWeaponsFromList(this.npc.Weapons)
     },
-    enhancements: function () {
-      return this.$store.getters.getEnhancementsFromList(this.npc.Enhancements)
+    maneuvers: function () {
+      return this.$store.getters.getManeuversFromList(this.npc.Maneuvers)
     },
     reactions: function () {
-      return this.$store.getters.getReactionsFromList(this.npc.Reactions)
+      return this.$store.getters.getManeuversFromList(this.npc.Reactions)
     },
     stances: function () {
-      return this.$store.getters.getStancesFromList(this.npc.Stances)
+      return this.$store.getters.getStancesFromList(this.npc.SpiritStances)
     },
     styles: function () {
-      return this.$store.getters.getStancesFromList(this.npc.Styles)
+      return this.$store.getters.getStancesFromList(this.npc.MartialStances)
     },
     techniques: function () {
       return this.$store.getters.getTechniquesFromList(this.npc.Techniques)

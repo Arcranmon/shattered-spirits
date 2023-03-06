@@ -7,10 +7,7 @@
       <div class="obstacle--keywords">
         <span v-if="(obstacle.Desc.length > 0)" style="font-style: italic;">{{ obstacle.Desc }}<br /></span>
         <span style="font-style: bold;">
-          <b
-            >{{ obstacle.SizeHeader }}, {{ obstacle.HeightHeader }}, {{ obstacle.DurabilityHeader
-            }}<span v-if="obstacle.HasSpeed">, {{ obstacle.SpeedHeader }}<br /></span
-          ></b>
+          <b>{{ obstacle.SizeHeader }}, {{ obstacle.HeightHeader }}, {{ obstacle.HardnessHeader }}<br /></b>
         </span>
         <b><display-tooltip-text v-if="obstacle.HasKeywords" :string="obstacle.KeywordsHeader" :decorate="false" /></b>
       </div>
