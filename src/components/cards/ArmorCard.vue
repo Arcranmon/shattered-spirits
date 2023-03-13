@@ -90,7 +90,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 .armor--wrapper {
   font-family: $font--standard;
-  background-color: $color--parchment;
+  background-color: $color--grey-light;
   border: $border--black-standard;
   height: 100%;
 }

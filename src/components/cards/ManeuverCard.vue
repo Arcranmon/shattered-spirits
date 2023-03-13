@@ -18,6 +18,9 @@
       <div v-if="maneuver.HasReqs">
         <display-tooltip-text class="maneuver--format" :string="maneuver.ReqsHeader" />
       </div>
+      <div v-if="maneuver.HasWeapon">
+        <display-tooltip-text class="maneuver--format" :string="maneuver.WeaponHeader" />
+      </div>
       <div v-if="maneuver.HasRange">
         <display-tooltip-text class="maneuver--format" :string="maneuver.RangeHeader" />
       </div>

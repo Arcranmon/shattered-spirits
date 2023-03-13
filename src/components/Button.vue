@@ -21,9 +21,9 @@ a {
 .btn {
   display: inline-block;
   margin: 0.5em 0;
-  background: $color--off-white;
+  background: $color--light-parchment;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 0.2em;
   color: black !important;
   font-family: $font--fancy;
   font-size: 1em;
@@ -36,9 +36,9 @@ a {
   cursor: pointer;
   transition: 0.3s;
   padding: 5px;
-  min-width: 20%;
-  width: auto;
   height: auto;
+  width: auto;
+  min-width: 20vw;
 }
 .btn:hover {
   background: #ece6dc;

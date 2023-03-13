@@ -39,7 +39,7 @@ Vue.component('DisplayTooltipText', {
         }
       }
       var merged_input = split_input.join('')
-      return "<span style='display: inline-block;'>" + this.$marked.parse(merged_input) + '</span>'
+      return '<span >' + this.$marked.parse(merged_input) + '</span>'
     },
   },
 })

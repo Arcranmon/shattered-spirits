@@ -1,5 +1,13 @@
 [
   {
+    "name": "Arcing Shot",
+    "desc": "You fire your projectile high, giving a foe the chance to respond but increasing your range.",
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "Ranged Projectile _Weapon Attack_.",
+    "effect": "Increase the Weapon's Range by 2. Instead of immediately resolving the Attack, create a Size 1 _Hazard_ in the creature's space so long as you have an _Arcing_ path to the Target. At the start of the next _Phase_, after all 'A _Phase_ begins' Reactions (and similar) have resolved, resolve the _Weapon Attack_ [_Arcing_, _Incoming_], then remove the _Hazard_.",
+    "type": "Gambit"
+  },
+  {
     "name": "Armored Blow",
     "desc": "You launch an assault, using your armor to push through limitations.",
     "cost": "1 _Grit_/_Momentum_",
@@ -21,9 +29,9 @@
     "desc": "You feint one way before attacking another, providing yourself an advantage.",
     "keywords": ["Edge", "Feint"],
     "cost": "1 _Momentum_",
-    "trigger": "You make a Single-Target _Melee_ Attack.",
+    "reqs": "Single-Target _Melee_ Attack.",
     "effect": "The Target must pay 1 _Focus_. If they do not, gain a +1 Bonus to the Attack Roll.",
-    "boost": "1 _Momentum_: Instead, foe must pay 2 _Focus_. If they do not negate, additionally add _Sure Hit_/_Unblockable_ 1 to the Attack.",
+    "boost": "1 _Momentum_: Instead, foe must pay 2 _Focus_. If they do not _Negate_, additionally add [_Sure Hit_/_Unblockable_ 1] to the Attack.",
     "type": "Gambit"
   },
   {
@@ -31,7 +39,7 @@
     "desc": "You sacrifice your defense and capitalize on an opportunity to attack.",
     "cost": "1 _Momentum_",
     "trigger": "You are Attacked by an adjacent enemy.",
-    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Attack, paying all Costs as normal.",
+    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal.",
     "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
     "type": "Counter"
   },
@@ -41,7 +49,7 @@
     "reqs": "Light Armor Worn.",
     "cost": "1 _Momentum_",
     "trigger": "You _Hit_+ with a Single-Target Attack.",
-    "effect": "The target must immediately spend 2 _Focus_. If they do not, gain a +1 Bonus on your next Attack Roll against them as a part of a _Counter_ or _Punish_ Maneuver. If they do, you instead gain _Vulnerable_ 1.",
+    "effect": "The target must immediately spend 2 _Focus_. If they do not, gain a +1 Bonus on your next Attack Roll against them as a part of a _Counter_/_Punish_ Maneuver. If they do, you instead gain _Vulnerable_ 1.",
     "type": "Flourish"
   },
   {
@@ -49,19 +57,19 @@
     "desc": "You are skilled at controlling earth, flinging it about with ease.",
     "keywords": ["Earth", "Repeatable"],
     "cost": "1 _Grit_/_Focus_ (increase the Cost by 1 for each successive use in a _Turn_)",
-    "effect": "At any point this _Turn_, make two adjacent, unoccupied spaces _Rough_ or remove an _Earthen_ Terrain effect from them. You may instead add _Climable_ to the sides adjacent to you of two _Earthen_ spaces or _Obstacles_.",
+    "effect": "At any point this _Turn_, make two adjacent, unoccupied _Earthen_ spaces _Rough_ or remove an _Earthen_ Terrain effect from them. You may instead add _Climable_ to the sides adjacent to you of two _Earthen_ spaces or _Obstacles_.",
     "boost": "Choose any:\n* 1 _Grit_/_Focus_: Instead, make _Stairs_ on as many sides as you wish of an adjacent _Earthen_ space.\n* 1 _Grit_/_Focus_: You may target occupied spaces. Inflict _Exposed_ 1, _Slide_ 1 (1 _Reflex_), or _Vulnerable_ 1 if they _Negate_.",
     "type": "Stunt"
   },
   {
-    "name": "Bladed Parry",
+    "name": "Blade Parry",
     "desc": "Your sword cuts apart an incoming strike, potentially opening an avenue to attack.",
     "keywords": ["Parry"],
     "cost": "2 _Momentum_/_Reflex_",
-    "reqs": "Bladed Weapon _Wielded_.",
+    "weapon": "Bladed",
     "trigger": "You are Attacked.",
-    "effect": "Make an Attack Roll, treating the Speed of your Bladed Weapon as the Speed of the Attack. If you roll greater than the incoming Attack, reduce the Attack Roll by 2 and gain 1 _Guard_ if your _Bladed_ Weapon is _Heavy_.",
-    "special": "1 _Momentum_: Resolve the Attack Roll as a _Glancing_ Attack with your Bladed Weapon if the enemy is within _Reach_.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than the incoming Attack, reduce the Attack Roll by 2. Gain 1 _Guard_ if your _Bladed_ Weapon is _Heavy_.",
+    "special": "1 _Momentum_: If the enemy is within _Reach_ and you exceed their Attack Roll, resolve the _Weapon Attack_ as _Glancing_ against the Attacker.",
     "type": "Counter"
   },
   {
@@ -77,19 +85,18 @@
   {
     "name": "Blurring Throw",
     "desc": "Your thrown weapons come out at blinding speed, catching slower foes fully off-guard.",
-    "keywords": ["Weapon", "_Sure Hit_ 1"],
     "cost": "2 _Momentum_/_Reflex_",
-    "reqs": "You Attack with a _Thrown_ Weapon.",
-    "effect": "If the Target has not taken a _Turn_ yet this _Round_, deal an additional 2 Damage on a _Hit_+ and add _Sure Hit_ 1, _Unblockable_ 1.",
+    "reqs": "Single-Target Ranged _Thrown_ _Weapon Attack_.",
+    "effect": "Add [_Sure Hit_ 1]. If the Target has not taken a _Turn_ yet this _Round_, deal +2 Damage on a _Hit_+ and instead add [_Sure Hit_ 2].",
     "type": "Gambit"
   },
   {
     "name": "Skipping Throw",
     "desc": "You ricochet your thrown weapons off the ground or an obstacle, finding a new avenue for attack.",
-    "keywords": ["Flexible", "_Sure Hit_ 1"],
     "cost": "1 _Momentum_",
-    "reqs": "You Attack with a _Thrown_ Weapon.",
-    "effect": "Increase the Range by 3 or choose an _Obstacle_ within Range that would not be _Covered_. Attack a creature within Range 3 of that Obstacle, but the new trajectory may not pass through the Obstacle. Treat the Obstacle as the origin of the Attack for the Attack Line.",
+    "reqs": "Ranged _Thrown_ _Weapon Attack_.",
+    "weapon": "_Thrown_ (same as used for the original _Weapon Attack_)",
+    "effect": "Add [_Sure Hit_ 1] to the original Attack. Increase the Range by 3 or choose an _Obstacle_ within Range that would not be _Covered_. Make a Ranged _Thrown_ _Weapon Attack_ [_Glancing_] against a creature within Range 3 of that Obstacle. Treat the Obstacle as the origin of the Attack for the _Attack Line_, but the new _Attack Line_ may not pass through the Obstacle used for this effect. ",
     "type": "Stunt"
   },
   {
@@ -97,9 +104,8 @@
     "desc": "You leap through the air, attacking a foe from above.",
     "keywords": ["Edge", "Feint"],
     "cost": "2 _Momentum_/_Reflex_",
-    "reqs": "Wearing No _Armor_.",
-    "trigger": "You make a Single-Target Attack and you have _Movement_ remaining.",
-    "effect": "As a part of this Attack, make a _Jump_, adding _Safe_ 1. If this _Jump_ moves through the Target's space, the Target must immediately pay 2 _Focus_/_Reflex_. If they do not, gain a +1 Bonus to your Attack Roll.",
+    "reqs": "Wearing No _Armor_, Single-Target Attack.",
+    "effect": "Before making an Attack, make a _Jump_, adding [_Safe_ 1]. If this _Jump_ moves through the Target's space, the Target must immediately pay 2 _Focus_/_Reflex_. If they do not, gain a +1 _Bonus_ to your Attack Roll.",
     "type": "Gambit"
   },
   {
@@ -126,18 +132,18 @@
     "keywords": ["Parry"],
     "cost": "2 _Momentum_/_Reflex_",
     "reqs": "_Open Hand_.",
-    "trigger": "You are Attacked by a _Thrown_ Weapon.",
-    "effect": "Make an Attack Roll. If you roll greater than or equal to the incoming Attack, reduce the _Attack Roll_ by 2. Regardless, if the Attack would _Embed_ do not, and immediately _Wield_ the Weapon in your _Open Hand_.",
-    "special": "Choose any:\n* 1 _Momentum_/_Reflex_: \n* 2 _Momentum_ (only usable if you rolled greater than the incoming Attack): Immediately make an Attack with the Weapon against a Target within Range. If you used the previous _Boost_, treat it as a _Small Improvised_ Weapon.",
+    "trigger": "You are Attacked by a Ranged _Thrown_ _Weapon Attack_.",
+    "effect": "Make an _Attack Roll_. If you roll greater than or equal to the incoming _Weapon Attack_, reduce the _Attack Roll_ by 2. Regardless, if the _Weapon Attack_ would _Embed_ do not, and immediately _Wield_ the Weapon in your _Open Hand_.",
+    "special": "Choose any:\n* 1 _Momentum_/_Reflex_: Trigger is instead 'You are Attacked by a Ranged Attack'. To use this, the Attack must make use of some sort of physical projectile. \n* 2 _Momentum_ (only usable if you rolled greater than the incoming Attack): Immediately make an Attack with the Weapon against a Target within Range. If you used the previous _Boost_, treat it as a _Small Improvised_ Weapon.",
     "type": "Counter"
   },
   {
     "name": "Charge Killer",
     "desc": "You strike viciously as a foe enters your reach, daring them to continue forward.",
     "cost": "2 _Momentum_",
-    "reqs": "Pole Weapon _Wielded_.",
-    "trigger": "A creature enters your Pole Weapon's _Reach_.",
-    "effect": "Attack using a _Wielded_ Pole Weapon. Do not immediately deal Damage; instead, after the creature ends their Movement, deal Damage, +1 Damage for each space the creature moved within your _Reach_ after the Attack.",
+    "weapon": "Pole",
+    "trigger": "A creature enters your Weapon's _Reach_.",
+    "effect": "Make a _Weapon Attack_. Do not immediately deal Damage; instead, after the creature ends their Movement, deal Damage, +1 Damage for each space the creature moved within your _Reach_ after the Attack.",
     "type": "Punish"
   },
   {
@@ -155,8 +161,7 @@
     "name": "Circular Slash",
     "desc": "You whirl your blade around, attacking in a circle all around you.",
     "cost": "1 _Momentum_",
-    "reqs": "Bladed Weapon _Wielded_.",
-    "trigger": "You make a Single-Target Attack with a Bladed Weapon.",
+    "reqs": "Single-Target Melee Bladed _Weapon Attack_.",
     "effect": "Instead, _Glancing_ Attack in a _Burst_ 1.",
     "boost": "2 _Momentum_: Remove _Glancing_.",
     "type": "Gambit"
@@ -169,16 +174,15 @@
     "trigger": "You are Attacked",
     "move": "Step",
     "effect": "You must end your _Shift_ closer to Triggering Target than you started it.",
-    "boost": "1 _Momentum_/_Reflex_: Make a 1 AP _Strike_ against the triggering foe, or a 2 AP _Strike_, adding _Glancing_.",
+    "boost": "1 _Momentum_/_Reflex_: Make a 1 AP Single-Target  _Strike_ against the triggering foe, or a 2 AP Single-Target _Strike_, adding [_Glancing_].",
     "type": "Counter"
   },
   {
     "name": "Close-Quarters Throw",
     "desc": "You throws do not compromise your defenses, allowing you to easily attack in close-quarters.",
-    "keywords": ["Flexible", "_Warding_ 1"],
     "cost": "1 _Focus_/_Momentum_",
-    "reqs": "You Attack  with a _Thrown_ Weapon.",
-    "effect": "Ignore all penalties due to adjacent foes for this Attack. On a _Miss_, you may inflict _Exposed_ 1 (1 _Focus_).",
+    "reqs": "Ranged _Thrown_ _Weapon Attack_.",
+    "effect": "Add [_Warding_ 1]. Ignore all penalties due to adjacent foes for this Attack. On a _Miss_, you may inflict _Exposed_ 1 (1 _Focus_).",
     "type": "Gambit"
   },
   {
@@ -189,35 +193,43 @@
     "range": "6",
     "cost": "1 _Grit_ (increase the Cost by 1 for each successive use in a _Turn_)",
     "target": "A Size 1 _Earthen_ Obstacle within Range with 12 or less _Durability_.",
-    "effect": "Replace the _Earthen_ Obstacle with a Boulder.",
+    "effect": "Replace the Obstacle with a _Boulder_.",
     "boost": "1 _Grit_: Instead, Target is an unoccupied _Earthen_ space. Create a _Boulder_ in that space."
   },
   {
     "name": "Covering Spear",
     "desc": "You quickly lash out with your spear, interrupting .",
-    "keywords": ["Weapon"],
     "type": "Punish",
     "cost": "2 _Momentum_",
-    "reqs": "Pole Weapon _Wielded_.",
-    "trigger": "An enemy within your Pole Weapon's _Reach_ Attacks a creature other than you.",
-    "effect": "Make a _Glancing_ Attack using your _Pole_ Weapon against the creature. Impose a _Penalty_ on the Attack Roll based on your Attack: -1 for a _Graze_, -2 for a _Hit_, -3 for a _Crit_."
+    "weapon": "Pole",
+    "trigger": "An enemy within your Weapon's _Reach_ Attacks a creature other than you.",
+    "effect": "Make a _Weapon Attack_ [_Glancing_] against the creature. Impose a _Penalty_ on the Attack Roll based on your Attack: -1 for a _Hit_ or -2 for a _Crit_. The foe may _Negate_ (2 _Focus_) to ignore this _Penalty_."
   },
   {
     "name": "Cutting Edge",
     "desc": "You make a quick slash with your weapon, chipping away at a foe.",
-    "cost": "1 _Momentum_ if _Light_, 2 _Momentum_ otherwise.",
-    "reqs": "Bladed Weapon _Wielded_.",
-    "trigger": "You are Attacked.",
-    "effect": "Make an Attack Roll, treating the Speed of your Bladed Weapon as the Speed of the Attack. On a _Graze_+, inflict _Wounded_ X (2 _Reflex_), where X is half the _Speed_ of your Bladed Weapon. On a _Crit_, additionally inflict _Wounded_ 1 and increase the cost to Negate by 1.",
+    "cost": "1 _Momentum_",
+    "weapon": "Bladed",
+    "trigger": "You are Attacked by a creature within your Weapon's _Reach_.",
+    "effect": "Make a Melee _Weapon Attack_ but deal no Damage. On a _Graze_+, add _Wounded_ 1 and increase the cost to _Negate_ by 1.",
     "type": "Counter"
+  },
+  {
+    "name": "Deadeye Shot",
+    "desc": "You take careful aim, exploiting the high ground to take a calculated shot.",
+    "keywords": ["Edge"],
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "Single-Target Ranged Projectile _Weapon Attack_.",
+    "effect": "Gain _Hobbled_ 1. If the Target is at a lower _Elevation_ and all _Obstacles_ in the _Attack Line_ have a lower _Total Height_ than you, gain a +1 _Bonus_ and add [_Arcing_].",
+    "type": "Gambit"
   },
   {
     "name": "Defensive Slash",
     "desc": "Your blade doesn't bite quite as deep, but ensures your future survival.",
     "cost": "1 _Momentum_",
     "keywords": ["_Warding_ 1"],
-    "trigger": "You Attack with a _Bladed_ Weapon.",
-    "effect": "Reduce the Damage of this Attack by 2. If you still deal Damage, gain 1 _Grit_/_Reflex_, or 2 on a _Crit_.",
+    "trigger": "Melee Bladed _Weapon Attack_.",
+    "effect": "Reduce the Damage of the Attack by 2. If you still deal Damage, gain 1 _Grit_/_Reflex_, or 2 on a _Crit_.",
     "special": "If you deal Damage, gain additional bonuses depending on the original Attack's keywords:\n* _Light_: Gain 1 _Reflex_.\n* _Versatile_: Gain 1 _Grit_/_Reflex_.\n* _Heavy_: Gain 1 _Grit_.",
     "type": "Gambit"
   },
@@ -234,18 +246,19 @@
   {
     "name": "Demolition",
     "desc": "With the aid of your hafted weapon 'interacting' with the environment is much simpler.",
-    "reqs": "Must use a _Wielded_ Hafted Weapon with a _Speed_ less than or equal to the current _Phase_.",
+    "weapon": "Hafted with a _Speed_ less than or equal to the current _Phase_.",
     "cost": "1 _Momentum_",
-    "effect": "Use the _Interact_ Action of an _Obstacle_ within your Hafted Weapon's _Reach_. Reduce the _Grit_ cost by X, where X is half the _Speed_ of you _Hafted_ Weapon.",
+    "effect": "Use the _Interact_ Action of an _Obstacle_ within your Weapon's _Reach_. Reduce the _Grit_ cost by X, where X is half the _Speed_ of you Weapon.",
     "type": "Stunt"
   },
   {
     "name": "Destructive Flourish",
     "desc": "You smash through a nearby obstacle as you rip your weapon away.",
     "cost": "1 _Grit_/_Momentum_",
-    "trigger": "You complete an Attack with a Hafted Weapon.",
-    "effect": "Make an Attack against an _Obstacle_ within _Reach_ of your Hafted Weapon, dealing +2 Damage.",
-    "special": "1 _Grit_/_Momentum_: Instead of dealing +1 Damage, add _Siege_.",
+    "trigger": "You complete a Melee Hafted _Weapon Attack_.",
+    "weapon": "Hafted (same as used for the Attack)",
+    "effect": "Make a _Weapon Attack_ against an _Obstacle_ within _Reach_, dealing +1 Damage.",
+    "special": "1 _Grit_/_Momentum_: Instead of dealing +1 Damage, add [_Siege_].",
     "type": "Flourish"
   },
   {
@@ -261,28 +274,27 @@
   {
     "name": "Dueling Shield",
     "desc": "Your shield comes up in a swift counter, potentially knocking a foe's weapon away.",
-    "keywords": ["Parry", "Aegis"],
+    "keywords": ["Parry"],
     "cost": "2 _Grit_/_Momentum_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
-    "trigger": "You are Attacked by a creature within your Shield's _Reach_.",
-    "effect": "Make an Attack Roll, treating the Speed of your Shield as the Speed of the Attack. If you roll greater than or equal to the incoming Attack, gain 1 + Shield _Speed_ / 2 _Guard_ and inflict _Exposed_ 1, _Push_ 1, _Impaired_ 1/_Disarmed_ (2 _Focus_/_Grit_). You must _Disarm_ a _Weapon_ used as a part of this _Attack_. If you roll lower, only gain 1 _Guard_, inflict _Vulnerable_ 1 (1 _Focus_/_Grit_), and your _Shield_ loses _Durability_ equal to half the Damage you take.",
+    "weapon": "_Shield_ with _Durability_.",
+    "trigger": "You are Attacked by a creature within your Weapon's _Reach_.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than or equal to the incoming Attack, gain 1 + Shield _Speed_ / 2 _Guard_ and inflict _Push_ 1, _Impaired_ 1/_Disarmed_ (2 _Focus_/_Grit_). You must _Disarm_ a _Weapon_ used as a part of this _Attack_. If you roll lower, only gain 1 _Guard_, inflict _Vulnerable_ 1 (1 _Focus_/_Grit_), and your _Shield_ loses _Durability_ equal to half the Damage you take.",
     "special": "If the Target is under the effects of _Raise Guard_, gain a +1 Bonus to your Attack Roll.",
     "type": "Counter"
   },
   {
     "name": "Drive Deeper",
-    "keywords": ["Edge"],
     "desc": "You target an embedded weapon, driving it deeper with your throw.",
     "cost": "1 _Focus_/_Momentum_",
-    "reqs": "You Attack a creature with _Embed_ using a _Thrown_ Weapon_.",
-    "effect": "If you _Embed_, deal 4 _True_ Damage.",
+    "reqs": "Single-Target Ranged _Thrown_ _Weapon Attack_.",
+    "effect": "If you _Embed_ with the _Weapon Attack_ and the creature already has _Embed_, deal 4 _True_ Damage.",
     "type": "Gambit"
   },
   {
     "name": "Driving Force",
     "desc": "Just as you can strike from many angles, so to can you launch a foe.",
     "cost": "1 _Momentum_",
-    "trigger": "You Attack with a Hafted Weapon.",
+    "reqs": "Melee Hafted _Weapon Attack_.",
     "effect": "Add _Push_ 1 (Always) on a _Graze_+. Any _Push_ you inflict with this Attack may instead be _Angled Push_.",
     "type": "Gambit"
   },
@@ -295,7 +307,7 @@
     "trigger": "A creature within Range is Attacked.",
     "effect": "Create an _Earth Block_ adjacent to the Target and within Range. Resolve the Attack as if that Obstacle was there from the start. If the Attack would do more damage than the Obstacle's _Durability_, immediately destroy it and replace it with _Rough_ Terrain.",
     "special": "If the Attack came from a creature adjacent to the Target (and the Target is willing) inflict _Push_ 1 on the Target, moving them directly from the Attacker, then resolve the Effect. Resolve the Attack as if they were still adjacent to the foe, just with the benefits of the _Obstacle_ being present.",
-    "boost": "Choose one:\n* 1 _Grit_: Instead, create an _Earth Pillar_.\n* 2 _Momentum_: If the Attacker is within Range 6 of the _Earth Block_ you launch the barricade at them. Remove the _Earth Block_ then Attack the Attacker with a _Heavy Improvised Weapon_, ignoring all Ranged penalties, then place a space of _Rough Terrain_ adjacent to the Attacker in the direction the Attack came from.",
+    "boost": "Choose one:\n* 1 _Grit_: Instead, create an _Earth Pillar_.\n* 2 _Momentum_: If the Attacker is within Range 6 of the _Earth Block_ you launch the barricade at them. Remove the _Earth Block_ then make a _Weapon Attack_ against the triggering Attacker with a _Heavy Improvised Weapon_, ignoring all Ranged penalties, then place a space of _Rough Terrain_ adjacent to the Attacker in the direction the Attack came from.",
     "type": "Defend"
   },
   {
@@ -304,8 +316,8 @@
     "keywords": ["Earth", "Edge"],
     "cost": "1 _Focus_/_Momentum_",
     "range": "6",
-    "trigger": "You make a Single-Target Attack against a creature on _Earthen_ Terrain and within Range.",
-    "effect": "The Target must pay 1 _Reflex_. If they do not, gain a +1 Bonus to the Attack Roll and add _Sure Hit_ 1.",
+    "reqs": "Single-Target Attack against a creature on _Earthen_ Terrain and within Range.",
+    "effect": "The Target must pay 1 _Reflex_. If they do not, gain a +1 _Bonus_ to the _Attack Roll_ and add [_Sure Hit_ 1].",
     "boost": "2 _Focus_/_Momentum_: Increase the cost to _Negate_ by 1. If the creature does not _Negate_ they gain _Prone_ before you make your Attack.",
     "type": "Gambit"
   },
@@ -322,7 +334,7 @@
     "name": "Forceful Flourish",
     "desc": "You whip your hafted weapon around, driving foes backward.",
     "cost": "1 _Grit_/_Momentum_",
-    "trigger": "You complete an Attack with a Hafted Weapon.",
+    "trigger": "You complete a Melee Hafted _Weapon Attack_.",
     "effect": "Inflict _Push_ 1, 2 Damage (1 _Grit_/_Reflex_) in a _Burst_ 1. If a foe Negates with _Grit_, they are not _Pushed_ but still take Damage. If they Negate with _Reflex_ they take no Damage, but are still _Pushed_.",
     "type": "Flourish"
   },
@@ -333,7 +345,7 @@
     "reqs": "Light Armor Worn.",
     "cost": "4 _Grit_/_Momentum_",
     "trigger": "You are Attacked.",
-    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Attack, paying all Costs as normal. On a _Graze_ gain 1 _Guard_ against the triggering Attack. On a _Hit_+, gain 2 _Guard_. On a _Crit_, gain 3 _Guard_.",
+    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal. On a _Graze_ gain 1 _Guard_ against the triggering Attack. On a _Hit_+, gain 2 _Guard_. On a _Crit_, gain 3 _Guard_.",
     "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
     "type": "Counter"
   },
@@ -341,7 +353,7 @@
     "name": "Harrying Spear",
     "desc": "You focus your spear's strikes less on limiting a foe's movement and more on creating openings.",
     "cost": "None",
-    "trigger": "You Attack with a _Pole_ Weapon.",
+    "reqs": "Melee Pole _Weapon Attack_.",
     "effect": "Inflict no _Hobbled_. Instead, inflict an equal value of _Impaired_.",
     "boost": "1 _Focus_/_Momentum_: Increase the cost to _Negate_ by 1. Instead, inflict _Impaired_ equal to 1 greater than the _Hobbled_, or _Impaired_ 1 on a _Graze_.",
     "type": "Gambit"
@@ -351,7 +363,7 @@
     "desc": "You charge forward, trusting your armor to defend you as you plow through foes.",
     "cost": "1 _Grit_",
     "reqs": "Heavy Armor Worn.",
-    "effect": "Add _Blitz_ and _Rush_ to your Movement and you may move 1 additional space this _Turn_. Gain 1 _Guard_ against all _Punishes_ this _Turn_.",
+    "effect": "Increase your first _Shift_ distance by 1 space and add [_Blitz, _Rush_]. Gain 1 _Guard_ against all _Punishes_ this _Turn_.",
     "type": "Stunt"
   },
   {
@@ -360,7 +372,7 @@
     "reqs": "Heavy Armor Worn.",
     "cost": "1 _Grit_/_Momentum_",
     "trigger": "You complete a Single-Target Attack against an adjacent foe.",
-    "effect": "Inflict _Push_ 1, _Dazed_ 1 (2 _Grit_) on the foe.",
+    "effect": "Inflict _Push_ 1, _Dazed_ 1 (2 _Grit_) on the foe. If you _Push_ the foe, you may _Shift_ 1 into their space.",
     "type": "Flourish"
   },
   {
@@ -369,8 +381,17 @@
     "cost": "2 _Momentum_/_Grit_",
     "reqs": "Heavy Armor Worn that has _Durability_ remaining.",
     "trigger": "You are Attacked.",
-    "effect": "Immediately use _Heavy Slam_ against the Attacker, applying the _Guard_ granted from it to the triggering Attack. If you _Push_ or knock the creature _Prone_, deal no Damage to your _Armor_. Otherwise, it loses _Durability_ equal to half the Damage you took.",
+    "effect": "Immediately use _Heavy Slam_ against the Attacker, applying the _Guard_ granted from it to the triggering Attack. If you _Push_ or knock the creature _Prone_, deal no Damage to your _Armor_. Otherwise, it loses _Durability_ equal to half the Damage you take.",
     "type": "Counter"
+  },
+  {
+    "name": "Hunter's Eye",
+    "desc": "You take careful aim at a foe, exploiting all information you have on them.",
+    "cost": "1 _Focus_",
+    "reqs": "Technique makes a Ranged Projectile _Weapon Attack_.",
+    "effect": "Increase the _Speed_ of the Technique by 1. Gain a +X Bonus to the first Ranged Projectile _Weapon Attack_, where X is half the creature's topmost _Insight_ Token. Remove the _Insight_ Token without gaining any Tokens after making this attack.",
+    "boost": "2 _Focus_: Instead, X is the creature's topmost _Insight_ Token.",
+    "type": "Stratagem"
   },
   {
     "name": "Impenetrable",
@@ -384,7 +405,7 @@
     "name": "Invincible",
     "desc": "An ineffective attack crushes the spirit of an attacking foe.",
     "cost": "1 _Grit_",
-    "trigger": "A creature deals 1 Damage or less to you with a _Strike_.",
+    "trigger": "A creature deals 2 Damage or less to you with a _Strike_.",
     "effect": "Inflict _Fear_ 1 (2 _Focus_) on the creature, and reduce your cost to _Negate_ by 1.",
     "type": "Punish"
   },
@@ -393,8 +414,8 @@
     "desc": "You feint a throw at one foe before suddenly catching it and flinging it at another foe.",
     "keywords": ["Edge", "Feint"],
     "cost": "2 _Momentum_",
-    "trigger": "You make a _Thrown_ Weapon Attack.",
-    "effect": "Choose a creature other than the Target within Range. They gain _Exposed_ 1 (1 _Focus_). The Target must pay 2 _Focus_. If they do not, gain a +1 Bonus to the Attack Roll.",
+    "reqs": "Single-Target Ranged _Thrown_ Weapon Attack.",
+    "effect": "Choose a creature other than the Target within Range. They gain _Exposed_ 1 (1 _Focus_). The Target must pay 2 _Focus_. If they do not, gain a +1 Bonus to the _Attack Roll_.",
     "type": "Gambit"
   },
   {
@@ -409,8 +430,9 @@
     "name": "Lunging Strike",
     "desc": "You slide your grip back on your spear, extending your reach.",
     "cost": "1 _Focus_/_Momentum_",
-    "trigger": "You Attack with a Pole Weapon.",
-    "effect": "Increase your _Reach_ by 1 this _Turn_. Deal additional Damage equal to half the distance between you and the Target.",
+    "weapon": "Pole",
+    "reqs": "Melee Pole _Weapon Attack_.",
+    "effect": "Increase your Weapon's _Reach_ by 1 this _Turn_. Deal additional Damage equal to half the distance between you and the Target.",
     "special": "You may gain _Vulnerable_ 2 to instead increase your _Reach_ by 2.",
     "type": "Gambit"
   },
@@ -445,11 +467,11 @@
   },
   {
     "name": "Interposing Shield",
-    "desc": "You pluck an attack from the air, causing it to harmlessly hit your shield.",
-    "keywords": ["Block", "Aegis"],
+    "desc": "You pluck an attack from the air, causing it to strike your shield.",
+    "keywords": ["Block"],
     "cost": "2 _Grit_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
-    "trigger": "A Ranged Attack passes through a space within your Shields _Reach_.",
+    "weapon": "_Shield_ with _Durability_.",
+    "trigger": "A Ranged Attack passes through a space within your Weapon's _Reach_.",
     "effect": "You become the target of the Attack. Immediately use _Shield Block_ at no cost against this Attack.",
     "type": "Defend"
   },
@@ -459,7 +481,7 @@
     "keywords": ["Earth"],
     "cost": "1 _Focus_/_Momentum_",
     "effect": "This _Turn_ you may ignore all effects of _Earthen_ Terrain. Additionally, you may move through _Earthen_ _Obstacles_, but treat them as _Rough_ Terrain. You may not end your turn inside an _Obstacle_. Finally, all _Earthen_ _Obstacles_ and _Terrain_ are _Climable_ for you.",
-    "boost": "1 _Focus_/_Momentum_: You may move through all _Obstacles_ on _Earthen_ Terrain, but still treat them as _Rough_. While moving on _Earthen_ Terrain, add _Safe_ 2.",
+    "boost": "1 _Focus_/_Momentum_: You may move through all _Obstacles_ on _Earthen_ Terrain, but still treat them as _Rough_. While moving on _Earthen_ Terrain, add [_Safe_ 2].",
     "type": "Stunt"
   },
   {
@@ -468,8 +490,8 @@
     "keywords": ["Earth"],
     "cost": "2 _Grit_/_Focus_/_Momentum_",
     "trigger": "A _Phase_ begins.",
-    "effect": "Create a Quake in a _Burst_ 1 around you until the end of the _Phase_ that moves with you. Creatures treat _Earthen_ spaces in the Quake as _Rough_, and all Attacks targeting a creature on _Earthen_ spaces in the Quake gain _Sure Hit_ 1.",
-    "boost": "2 _Grit_/_Focus_/_Momentum_: If you are in _Quaking Earth Stance_, instead increase the size of the Quake to a _Burst_ 2 until the end of the _Phase_.",
+    "effect": "Create a Quake in a _Burst_ 1 around you until the end of the _Phase_ that moves with you. Creatures treat _Earthen_ spaces in the Quake as _Rough_, and all Attacks targeting a creature on _Earthen_ spaces in the Quake gain [_Sure Hit_ 1].",
+    "boost": "2 _Grit_/_Focus_/_Momentum_: If you are in _Quaking Earth Stance_, increase the size of the Quake to a _Burst_ 2 until the end of the _Phase_.",
     "type": "Reaction"
   },
   {
@@ -486,8 +508,8 @@
     "desc": "You capitalize on the opening created by a repositioning foe, moving to strike while you can.",
     "cost": "0 _Momentum_",
     "trigger": "An enemy starts a _Shift_ while within your _Reach_.",
-    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Melee Attack. You must use a Technique with a _Reach_ capable of attacking the Target.",
-    "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
+    "effect": "Attack the triggering enemy with a 1 AP Single-Target _Strike_. You must use a Technique with a _Reach_ capable of attacking the Target.",
+    "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target _Strike_.",
     "type": "Punish"
   },
   {
@@ -495,36 +517,35 @@
     "desc": "You defend yourself with a narrow margin, learning more of your foe as you do so.",
     "cost": "2 _Momentum_",
     "trigger": "You are Attacked.",
-    "effect": "Use the _Deflect_ or _Dodge_ _Defend_ with a reduced Cost of 1. Inflict _Knowledge_ 1 (2 _Focus_/_Momentum_) on the foe. If you take no Damage, instead inflict _Knowledge_ 2 (3 _Focus_/_Momentum_).",
+    "effect": "Use the _Deflect_/_Dodge_ _Defend_ with a reduced Cost of 1. Inflict _Knowledge_ 1 (2 _Focus_/_Momentum_) on the foe. If you take no Damage, instead inflict _Knowledge_ 2 (3 _Focus_/_Momentum_).",
     "type": "Defend"
   },
   {
     "name": "Palm Throw",
     "desc": "With a flick of your wrist you fling a weapon, catching foes unaware.",
-    "keywords": ["_Sure Hit_ 1"],
     "trigger": "A _Phase_ Begins.",
     "cost": "1 _Momentum_",
-    "reqs": "_Thrown_ Weapon _Wielded_ or _Open Hand_ and _Thrown_ Weapon _Equipped_.",
-    "effect": "Make a _Glancing_ Attack using a _Thrown_ Weapon.",
-    "boost": "2 _Momentum_: Remove _Glancing_.",
+    "weapon": "_Thrown_",
+    "effect": "Make a Ranged _Thrown_ _Weapon Attack_ [_Glancing_, _Sure Hit_ 1].",
+    "boost": "2 _Momentum_: Remove [_Glancing_].",
     "type": "Reaction"
   },
   {
     "name": "Passing Flourish",
     "desc": "You dart forward after striking with your blade, allowing your momentum to carry you forward.",
     "cost": "1 _Reflex_/_Momentum_",
-    "trigger": "You make a Single-Target Attack with a Bladed Weapon and have Movement remaining.",
-    "effect": "Add _Blitz_, _Rush_, and _Safe_ 1 to the remainder of your Movement. You must continue moving in the direction you were going when you made the Attack.",
+    "trigger": "You make a Single-Target Melee Bladed _Weapon Attack_ and have Movement remaining.",
+    "effect": "Add [_Blitz_, _Rush_, _Safe_ 1] to the remainder of your Movement. You must continue your _Shift_ in the direction you were going when you made the Attack.",
     "boost": "1 _Reflex_: Increase your remaining _Movement_ by 2.",
     "type": "Flourish"
   },
   {
     "name": "Piercing Point",
     "desc": "Your spear is a driving force, carrying through all in its path.",
-    "cost": "1 _Momentum_",
-    "trigger": "You make a Single-Target Pole Weapon Attack.",
-    "effect": "Also resolve the Attack as _Glancing_ against all creatures between you and the Target.",
-    "boost": "1 _Momentum_: Instead, Attack in a Line X, where X is your _Reach_. This Line must include the original Target. Attack all creatures in the _Area_, treating it as _Glancing_ against all creatures except the original Target.",
+    "cost": "2 _Momentum_",
+    "reqs": "Single-Target Melee Pole _Weapon Attack_.",
+    "effect": "Also resolve the _Weapon Attack_ as [_Glancing_] against all creatures of your choice in the _Attack Line_.",
+    "special": "If you are in _Stabbing Quill Stance_ you may remove [_Glancing_] against a single Target.",
     "type": "Gambit"
   },
   {
@@ -533,7 +554,7 @@
     "keywords": ["Block"],
     "cost": "2 _Grit_",
     "trigger": "You take Damage while you have _Stone Armor_.",
-    "effect": "Gain _Slowed_. Increase your _Guard_ by 2 against the Attack, reduce the _Grit_ cost to _Negate_ by 2, and reduce any _Forced Movement_ by 2. Treat your _Stone Armor_'s _Durability_ as 1 less until the end of the _Round_.",
+    "effect": "Gain _Slowed_. Increase your _Guard_ by 2 against the Attack, reduce the _Grit_ cost to _Negate_ by 2, and reduce any _Forced Movement_ by 2. Your _Stone Armor_ takes the full Damage you do instead of half.",
     "type": "Defend"
   },
   {
@@ -541,19 +562,19 @@
     "desc": "You take your attack *through* a nearby obstacle before slamming it into a foe.",
     "cost": "1 _Grit_/_Momentum_",
     "keywords": ["Edge"],
-    "trigger": "You make a Single-Target Attack with a Hafted Weapon.",
-    "effect": "Resolve the Attack Roll against an _Obstacle_ adjacent to the Target and within your _Reach_ first. If you _Destroy_ the _Obstacle_ the target must Negate with 2 _Reflex_ or else you gain a +2 Bonus on the Attack.",
-    "boost": "1 _Grit_: Add _Siege_ to the attack against the _Obstacle_.",
+    "reqs": "Single-Target Melee Hafted _Weapon Attack_.",
+    "weapon": "Hafted (same as used for the Attack)",
+    "effect": "Make a _Weapon Attack_ against an _Obstacle_ adjacent to the Target and within your _Reach_ first. If you _Destroy_ the _Obstacle_ the Target must Negate with 2 _Reflex_ or else you gain a +2 Bonus on the _Weapon Attack_ against the Target.",
+    "boost": "1 _Grit_: Add [_Siege_] to the attack against the _Obstacle_.",
     "type": "Gambit"
   },
   {
     "name": "Punishing Bash",
     "desc": "You lash out with your shield, forcing a foe to keep their attention on you.",
     "cost": "2 _Grit_/_Momentum_",
-    "keywords": ["Aegis"],
-    "reqs": "Shield _Wielded_.",
-    "trigger": "A creature within your Shield's _Reach_ attacks a creature other than you.",
-    "effect": "Use _Shield Bash_ on the _Marked_ creature. You may reduce the _Impaired_ inflicted by 1 to apply it to the triggering Attack.",
+    "weapon": "Shield",
+    "trigger": "A creature within your Weapon's _Reach_ attacks a creature other than you.",
+    "effect": "Use _Shield Bash_ on the Triggering creature. Apply any _Status_ from this Attack before resolving the triggering Attack.",
     "special": "If the creature is _Marked_ by you gain a +1 Bonus to the Attack Roll.",
     "type": "Punish"
   },
@@ -572,7 +593,7 @@
     "reqs": "Technique is _Light_ or _Versatile_.",
     "effect": "Decrease the _Speed_ of the Technique by 1.",
     "special": "_Versatile_ Techniques take a -1 penalty to all Attack Rolls made as a part of this Technique. If this Technique makes no Attacks, instead reduce the cost to _Negate_ by 1.",
-    "boost": "Choose any:\n* 1 _Momentum_/_Reflex_: Ignore the penalty for _Versatile_ Techniques. _\n* 1 _Momentum_/_Reflex_: Add _Sure Hit_ 1.",
+    "boost": "Choose any:\n* 1 _Momentum_/_Reflex_: Ignore the penalty for _Versatile_ Techniques. _\n* 1 _Momentum_/_Reflex_: Add [_Sure Hit_ 1].",
     "type": "Stratagem"
   },
   {
@@ -585,11 +606,21 @@
     "type": "Punish"
   },
   {
+    "name": "Safe Shot",
+    "desc": "You are an expert at firing your weapon in close range and can always find the perfect angle.",
+    "keywords": ["Edge"],
+    "cost": "1 _Momentum_",
+    "reqs": "Ranged Projectile _Weapon Attack_.",
+    "effect": "All creatures adjacent to you must pay 1 _Focus_/_Reflex_. If they do not, you may ignore them when determining any penalties to your _Weapon Attack_ due to adjacent creatures.",
+    "boost": "Choose any:\n* 1 _Momentum_: Increase the cost to _Negate_ by 1. \n* 1 _Momentum_:  Add [_Warding_ 2] to the Attack, and reduce your _Artillery_ value by 1.",
+    "type": "Gambit"
+  },
+  {
     "name": "Sacrificial Shield",
     "desc": "You haphazardously throw up your shield, risking your shield to defend.",
-    "keywords": ["Block", "Aegis"],
+    "keywords": ["Block"],
     "cost": "2 _Grit_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
+    "weapon": "_Shield_ with _Durability_.",
     "trigger": "You take Damage.",
     "effect": "Gain 3 _Guard_ against the triggering Damage. Your _Shield_ loses _Durability_ equal to the Damage you take. If this _Damages_ your _Shield_, gain _Impaired_ 1.",
     "type": "Defend"
@@ -598,17 +629,18 @@
     "name": "Sentry's Throw",
     "desc": "You swiftly fling a weapon at a creature who takes a hostile action within range.",
     "cost": "2 _Momentum_, 1 _Charge_",
-    "reqs": "_Thrown_ Weapon _Wielded_ or _Open Hand_ and _Thrown_ Weapon _Equipped_.",
-    "trigger": "A creature within Range of a _Thrown_ Weapon you have _Equipped_ would Attack an ally.",
-    "effect": "The Target chooses: Either they reduce their Attack Roll by 2 and you make a single _Glancing_ Attack against them, or they resolve their Attack with no penalty and you make a single Attack against them. This Attack must use the _Thrown_ Weapon who's Range Triggered this Reaction.",
+    "weapon": "_Thrown_",
+    "range": "Weapon Range",
+    "trigger": "A creature within Range Attacks an ally.",
+    "effect": "The Target chooses: Either they reduce their _Attack Roll_ by 2 and you make a single Ranged _Weapon Attack_ [_Glancing_] against them, or they resolve their Attack with no penalty and you make a single Ranged _Weapon Attack_ against them.",
     "type": "Punish"
   },
   {
     "name": "Shield Block",
     "desc": "You block with your shield, providing an unparalled defense.",
-    "keywords": ["Block", "Aegis"],
+    "keywords": ["Block"],
     "cost": "2 _Grit_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
+    "weapon": "_Shield_ with _Durability_.",
     "trigger": "You are Attacked.",
     "effect": "Increase your _Guard_ by 1, reduce the _Grit_ cost to Negate by 1, and reduce the Attack Roll by 1 if _Melee_ or 2 if _Ranged_. Your _Shield_ loses _Durability_ equal to half the Damage you take.",
     "boost": "2 _Grit_: Increase your _Guard_ by 1 more. This Boost is repeatable.",
@@ -617,29 +649,40 @@
   {
     "name": "Shield Parry",
     "desc": "You aggressively block an incoming strike, knocking it aside with a vicious shield strike.",
-    "keywords": ["Parry", "Aegis"],
+    "keywords": ["Parry"],
     "cost": "2 _Grit_/_Momentum_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
+    "weapon": "_Shield_ with _Durability_.",
     "trigger": "You are Attacked.",
-    "effect": "Make an Attack Roll, treating the Speed of your Shield as the Speed of the Attack. If you roll greater than or equal to the incoming Attack, gain 1 + Shield _Speed_ / 2 _Guard_. If you roll lower, only gain 1 _Guard_ and your _Shield_ loses _Durability_ equal to half the Damage you take.",
-    "special": "1 _Momentum_: Resolve the Attack Roll as a _Glancing_ Attack using your Shield.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than or equal to the incoming Attack, gain 1 + Shield _Speed_ / 2 _Guard_. If you roll lower, only gain 1 _Guard_ and your _Shield_ loses _Durability_ equal to half the Damage you take.",
+    "special": "1 _Momentum_: Resolve the _Weapon Attack_ as [_Glancing_].",
     "type": "Counter"
   },
   {
     "name": "Shrug Off",
     "desc": "Rather than dodging, you rely on your heavy armor to stop all ills.",
     "cost": "1 _Grit_",
+    "reqs": "Heavy Armor Worn that has _Durability_ remaining.",
     "trigger": "You would gain a Standard or Elemental _Affliction_.",
-    "effect": "You may pay the cost to _Negate_ the triggering _Affliction_ using _Grit_. If it already cost _Grit_, reduce the cost to _Negate_ by 2.",
+    "effect": "Reduce the _Durability_ of your _Armor_ by the Value of the Token, but _Negate_ it.",
     "type": "Reaction"
+  },
+  {
+    "name": "Snap Shot",
+    "desc": "You are capable of using your bow at a moment's notice, firing at the slightest opening.",
+    "cost": "2 _Momentum_",
+    "weapon": "Projectile",
+    "trigger": "An enemy starts a Shift while within 3 spaces of you.",
+    "effect": "Make a Ranged _Weapon Attack_ against the triggering creature.",
+    "boost": "1 _Momentum_: Treat your _Artillery_ value as 1 lower. You may repeat this _Boost_.",
+    "type": "Punish"
   },
   {
     "name": "Striking Quill",
     "desc": "As a foe enters the reach of your spear you reinforce how foolhardy an idea that is.",
     "cost": "1 _Momentum_/_Reflex_",
-    "reqs": "Pole Weapon _Wielded_.",
-    "trigger": "A creature enters your Pole Weapon's _Reach_.",
-    "effect": "The creature must either lose 2 spaces of Movement, or allow you to make a Pole Weapon Attack against them.",
+    "weapon": "Pole",
+    "trigger": "A creature enters your Weapon's _Reach_.",
+    "effect": "The creature must either lose 2 spaces of Movement, or allow you to make a Melee _Weapon Attack_ against them.",
     "type": "Punish"
   },
   {
@@ -660,7 +703,6 @@
     "move": "Step",
     "trigger": "A _Hazard_ you are in would trigger while you are not _Prone_.",
     "effect": "_Shift_ before resolving the _Hazard_. This Movement is _Rolling_.",
-    "special": "[Something for Rolling Mite Stance].",
     "boost": "1 _Reflex_: Trigger is instead 'You are Targeted by an _Area_ Effect.' _Shift_ before resolving the Effect. This Movement is _Rolling_. Still resolve the Triggering Attack but, if you are no longer in the _Area_, add _Glancing_.",
     "type": "Defend"
   },
@@ -668,8 +710,8 @@
     "name": "Rending Slash",
     "desc": "A specialized blade technique that tears through unarmored flesh.",
     "cost": "1 _Momentum_",
-    "trigger": "You Attack with a _Bladed_ Weapon.",
-    "effect": "If the Target has no _Guard_ or you target a _Creature Part_, either deal 3 additional Damage or inflict _Wounded_ 1x3.",
+    "reqs": "Melee Bladed _Weapon Attack_.",
+    "effect": "If the Target has no _Guard_ either deal +3 Damage or inflict _Wounded_ 1x3.",
     "type": "Gambit"
   },
   {
@@ -678,7 +720,7 @@
     "move": "Step",
     "cost": "2 _Reflex_",
     "trigger": "A _Phase_ begins while you are not _Prone_.",
-    "boost": "1 _Momentum_/_Reflex_: Add _Safe_ 1.",
+    "boost": "1 _Momentum_/_Reflex_: Add [_Safe_ 1].",
     "type": "Reaction"
   },
   {
@@ -687,7 +729,6 @@
     "keywords": ["Repeatable"],
     "cost": "1 _Momentum_/_Reflex_",
     "effect": "_Equip_ or _Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_. Before _Wielding_ an item, you may choose to stop _Wielding_ _Equipment_ of your choice, placing them unattended in your current or adjacent spaces.",
-    "special": "You may use this _Maneuver_ as many times as you want in a _Turn_.",
     "type": "Stunt"
   },
   {
@@ -711,17 +752,9 @@
     "name": "Sapping Flourish",
     "desc": "You rip your weapon away massive force, tearing away a foe's defenses as well.",
     "cost": "1 _Momentum_",
-    "trigger": "You _Hit_+ with a Hafted Weapon.",
-    "effect": "You may force the Target to discard 1 Defensive Token of your choice. On a Crit,  they instead discard 2. If they do not have sufficient Defensive Tokens they may discard other Defensive Tokens of their choice. If they have no other Defensive Tokens, they instead take Damage equal to twice the Tokens they did not discard.",
+    "trigger": "You _Hit_+ with a Melee Hafted _Weapon Attack_.",
+    "effect": "You may force the Target to discard 1 _Defensive Token_ of your choice. On a Crit, they instead discard 2. If they do not have sufficient _Defensive Tokens_ of that Type, you may choose a different. If they have no _Defensive Tokens_, they instead discard _Momentum_. If they have no _Momentum_, they instead take Damage equal to twice the Tokens they did not discard.",
     "type": "Flourish"
-  },
-  {
-    "name": "Scent of Blood",
-    "desc": "Your blade veers towards a creature's wound, exploiting it instantly.",
-    "cost": "1 _Momentum_",
-    "trigger": "You Attack with a _Bladed_ Weapon.",
-    "effect": "The target may Negate with 2 _Reflex_. If they do not, treat their topmost _Wounded_ as an _Vulnerable_ of twice its value (maximum 6).",
-    "type": "Gambit"
   },
   {
     "name": "Siege Stone",
@@ -731,7 +764,7 @@
     "range": "4",
     "target": "A _Boulder_ within Range.",
     "effect": "You may use one of the _Boulder_'s _Interacts_ at a 2 _Grit_ discount. You may _Push_ the _Boulder_ an additional 3 spaces when used in this way. If you do not use an _Interact_, you may move the _Boulder_ 3 spaces.",
-    "boost": "2 _Grit_: Instead, remove the _Boulder_ from the map and create a _Blast_ 1 1 _Hazard_ within 6 spaces of it. At the end of the next _Phase_ remove that _Hazard_ and place the _Boulder_ in the center of it. Deal Damage and inflict Status on all creatures in the _Area_ as if you used the 4 _Grit_ _Interact_.",
+    "boost": "2 _Grit_: Instead, remove the _Boulder_ from the map and create a _Blast_ 1 _Hazard_ within 6 spaces of it. At the end of the next _Phase_ remove that _Hazard_ and place the _Boulder_ in the center of it. Deal Damage and inflict Status on all creatures in the _Area_ as if you used the 4 _Grit_ _Interact_.",
     "type": "Stunt"
   },
   {
@@ -739,7 +772,7 @@
     "desc": "You violently whip your blade away, spraying viscera as you do so.",
     "cost": "1 _Momentum_",
     "range": "2",
-    "trigger": "You inflict _Wounded_ with a _Bladed_ Weapon.",
+    "trigger": "You inflict _Wounded_ with a Melee Bladed _Weapon_ Attack.",
     "effect": "Inflict _Impaired_/_Exposed_ 2 (2 _Reflex_) on a creature within Range other than the original Target.",
     "boost": "1 _Momentum_: Instead, inflict _Blinded_ (2 _Reflex_) until the end of their next _Turn_.",
     "type": "Flourish"
@@ -748,8 +781,8 @@
     "name": "Sundering Strike",
     "desc": "You tear your weapon through a foe, chipping away at their armor.",
     "cost": "1 _Grit_/_Momentum_",
-    "trigger": "You make a Hafted Weapon Attack against a Creature.",
-    "effect": "Resolve the Attack as _Glancing_ against the creature's _Armor_.",
+    "reqs": "Hafted _Weapon Attack_ against a Creature.",
+    "effect": "Resolve the Attack as [_Glancing_] against the creature's _Armor_.",
     "type": "Gambit"
   },
   {
@@ -757,8 +790,8 @@
     "desc": "You rip stones from the earth, coating your weapon for additional effect.",
     "keywords": ["Earth"],
     "cost": "1 _Grit_/_Momentum_",
-    "trigger": "You make a Weapon Attack.",
-    "effect": "Add _Unblockable_ 1. This Attack may instead deal _Crush_ Damage and deals an additional 2 Damage on a _Graze_+.",
+    "weapon": "Any",
+    "effect": "Add [_Unblockable_ 1]. This Attack may instead deal _Crush_ Damage and deals an additional 2 Damage on a _Graze_+.",
     "boost": "1 _Grit_/_Momentum_: Increase the cost to _Negate_ by 1. On a _Graze_+, add _Dazed_ 1, _Slowed_.",
     "type": "Gambit"
   },
@@ -769,7 +802,7 @@
     "reqs": "Technique is _Versatile_ or _Heavy_.",
     "effect": "Increase the _Speed_ of the Technique by 1.",
     "special": "_Heavy_ Techniques gain a +1 bonus to all Attack Rolls made as a part of this Technique. If this Technique makes no Attacks, instead increase the cost to Negate by 1.",
-    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: _Versatile_ Techniques also benefit from the Special.\n* 1 _Grit_/_Momentum_: Add _Unblockable_ 1.",
+    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: _Versatile_ Techniques also benefit from the Special.\n* 1 _Grit_/_Momentum_: Add [_Unblockable_ 1].",
     "type": "Stratagem"
   },
   {
@@ -794,18 +827,27 @@
     "name": "Swift Slashes",
     "desc": "Your blade is a flash, striking twice in an instant.",
     "cost": "1 _Momentum_",
-    "trigger": "You Attack with a Bladed Weapon.",
-    "effect": "Instead, make two _Glancing_ Attacks, applying all _Gambits_ used to each.",
+    "reqs": "Melee Bladed _Weapon Attack_.",
+    "effect": "Instead, make two _Weapon Attack_ [_Glancing_], applying all _Gambits_ used to each.",
     "type": "Gambit"
   },
   {
     "name": "Swift Sting",
     "desc": "You counter with lightning speed, striking fast but with a bit less force.",
     "cost": "1 _Momentum_/_Reflex_",
-    "reqs": "Light Armor Worn and Technique is _Light_ and being used as a part of a _Counter_/_Punish_.",
+    "reqs": "Light Armor Worn, Technique is _Light_ and being used as a part of a _Counter_/_Punish_.",
     "effect": "Decrease the _Speed_ of the Technique by 1, but deal 1 less Damage.",
     "boost": "Choose one:\n* 1 _Momentum_/_Reflex_: You may use this Technique with _Versatile_ _Techniques_.\n* 2 _Momentum_/_Reflex_: You may use this Technique with _Heavy_ _Techniques_.",
     "type": "Stratagem"
+  },
+  {
+    "name": "Swift Volley",
+    "desc": "You quickly fire off a single shot with the intent to force a foe to move.",
+    "cost": "2 _Focus_/_Momentum_",
+    "weapon": "Projectile",
+    "trigger": "A hostile creature's _Turn_ begins that you have an _Arcing_ path to.",
+    "effect": "Create a Size 1 _Hazard_ in the triggering creature's space. At the end of the creature's _Turn_ make a Ranged_Weapon Attack_ [_Arcing_, _Glancing_, _Incoming_] against all creatures in the _Hazard_, then remove the _Hazard_.",
+    "type": "Reaction"
   },
   {
     "name": "Tumble",
@@ -817,7 +859,7 @@
   {
     "name": "Unstoppable Momentum",
     "reqs": "Heavy Armor Worn.",
-    "trigger": "You end a _Shift_ with _Rush_ next to a creature.",
+    "trigger": "You end a _Shift_ [_Rush_] next to a creature.",
     "cost": "1 _Grit_/_Momentum_",
     "effect": "Inflict _Push_ 2, _Dazed_ 1 (2 _Grit_/_Reflex_) on the creature.",
     "type": "Stunt"
@@ -835,7 +877,7 @@
     "cost": "1 _Momentum_",
     "reqs": "Light Armor Worn.",
     "trigger": "You are Attacked by an adjacent enemy.",
-    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Attack, paying all Costs as normal. On a _Graze_+ inflict _Impaired_ 1, _Marked_ (2 _Focus_). The creature is _Marked_ until the end of their next _Turn_. If the creature _Negates_, you gain _Exposed_ 1.",
+    "effect": "Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal. On a _Graze_+ inflict _Impaired_ 1, _Marked_ (2 _Focus_). The creature is _Marked_ until the end of their next _Turn_. If the creature _Negates_, you gain _Exposed_ 1.",
     "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
     "type": "Counter"
   },
@@ -844,16 +886,16 @@
     "desc": "You viciously draw an embedded weapon from a foe, wounding them in the process.",
     "type": "Stunt",
     "cost": "3 _Momentum_",
-    "effect": "Choose an adjacent creature in Range with a _Thrown_ Weapon _Embedded_. That creature must _Negate_ with 2 _Reflex_. If they do not, resolve an Attack as if you rolled a 7 with that Weapon. End the _Embed_ and either _Equip_ or _Wield_ (if you have an _Open Hand_) the Weapon."
+    "effect": "Choose an adjacent creature in Range with a _Thrown_ Weapon _Embedded_. That creature must _Negate_ with 2 _Reflex_. If they do not, resolve a _Weapon Attack_ with that Weapon as if you rolled a 7. End the _Embed_ and either _Equip_ or _Wield_ (if you have an _Open Hand_) the Weapon."
   },
   {
     "name": "Vigilant Defender",
     "desc": "You cover an aly with your shield, protecting them from harm.",
-    "keywords": ["Block", "Aegis"],
+    "keywords": ["Block"],
     "cost": "1 _Grit_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
-    "trigger": "An ally within your Shield's _Reach_ is attacked.",
-    "effect": "Use an _Aegis_ Maneuver, paying all _Costs_ as normal but granting your ally all effects. Any bonuses to the Maneuver granted by your _Stance_ or _Techniques_ you have used apply.",
+    "weapon": "_Shield_ with _Durability_.",
+    "trigger": "An ally within your Weapon's _Reach_ is attacked.",
+    "effect": "Use an Maneuver with 'Weapon: Shield', paying all _Costs_ as normal but granting your ally all effects. Any bonuses to the Maneuver granted by your _Stance_ or _Techniques_ you have used apply.",
     "type": "Defend"
   },
   {
@@ -869,8 +911,8 @@
     "name": "Warding Flourish",
     "desc": "You finish an attack by adjusting your blade into a defensive posture.",
     "cost": "1 _Grit_/_Momentum_/_Reflex_",
-    "trigger": "You complete an Attack with a Bladed Weapon.",
-    "effect": "Gain a +1 on your next Attack Roll as a part of a _Parry_ using a Bladed Weapon against a Target of the triggering Attack before the end of the _Round_.",
+    "trigger": "You complete a Melee Bladed _Weapon Attack_.",
+    "effect": "Gain a +1 on your next Bladed _Weapon Attack_ [_Parrying_] against a Target of the triggering _Weapon Attack_ before the end of the _Round_.",
     "type": "Flourish"
   },
   {
@@ -879,20 +921,20 @@
     "cost": "2 _Momentum_/_Reflex_",
     "trigger": "You are Attacked.",
     "reqs": "Light Armor Worn.",
-    "move": "_Step_ (_Safe_ 1)",
-    "effect": "Use your _Movement_. Attack a creature other than the triggering enemy with a 1 AP Single-Target Melee _Strike_, paying all Costs as normal.",
-    "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Melee _Strike_.",
+    "move": "_Step_ [_Safe_ 1]",
+    "effect": "_Shift_ before resolving the rest of this Effect. Attack a creature other than the triggering enemy with a 1 AP Single-Target _Strike_, paying all Costs as normal.",
+    "boost": "Choose any:\n* 1 _Reflex_: Reduce the Attack Roll by 1.\n* 2 _Momentum_: Instead, use a 2 AP Single-Target _Strike_.",
     "type": "Counter"
   },
   {
     "name": "Wide Guard",
     "desc": "Your shield protects all nearby, warding against all harm.",
-    "keywords": ["Block", "Aegis"],
+    "keywords": ["Block"],
     "cost": "3 _Grit_",
-    "reqs": "_Undamaged_ Shield _Wielded_.",
+    "weapon": "_Shield_ with _Durability_.",
     "trigger": "You or an adjacent ally are hit with an _Area_ Attack.",
-    "effect": "Use the _Shield Block_ Reaction for no Cost, granting the benefits to you and all adjacent allies. Instead of your Shield taking Damage from each Attack, it instead takes the highest Damage it would take.",
-    "boost": "1 _Grit_: Gain a benefit depending on the Area of the Triggering attack.\n* _Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is _Glancing_ against allies in the adjacent spaces opposite the direction of the Attack.",
+    "effect": "Use the _Shield Block_ Reaction for no Cost, granting the benefits to you and all adjacent allies. Instead of your Shield taking Damage from each Attack, it instead takes the highest Damage dealt.",
+    "boost": "1 _Grit_: Gain a benefit depending on the Area of the Triggering attack.\n* _Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is [_Glancing_] against allies in the adjacent spaces opposite the origin of the Attack.",
     "type": "Defend"
   }
 ]

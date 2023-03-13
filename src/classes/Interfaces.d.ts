@@ -60,7 +60,8 @@ declare interface IDisciplineData {
   name: string
   category: string
   flavor: string
-  role?: string //Unoptional when all categories are updated.
+  primary_role: string
+  secondary_role: string
   summary: string
   tier_1: IDisciplineTierData
   tier_2: IDisciplineTierData
@@ -121,6 +122,7 @@ declare interface IManeuverData {
   chart?: IChartData
   trigger: string
   type: string
+  weapon?: string
 }
 
 declare interface IRefreshData {
@@ -182,6 +184,7 @@ declare interface ITechData {
   target?: string
   type: string
   chart?: IChartData
+  weapon?: string
 }
 
 declare interface ITerrainData {

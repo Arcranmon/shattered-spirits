@@ -4,7 +4,8 @@ class Discipline {
   private name_: string
   private category_: string
   private flavor_: string
-  private role_: String
+  private primary_role_: String
+  private secondary_role_: String
   private summary_: string
   private tier_1_: IDisciplineTierData
   private tier_2_: IDisciplineTierData
@@ -29,14 +30,22 @@ class Discipline {
   public get Name() {
     return this.name_
   }
-  public get Role() {
-    return this.role_
+  public get RoleHeader() {
+    if (this.secondary_role_ != '') return this.primary_role_ + '/' + this.secondary_role_
+    return this.primary_role_
   }
   public get Summary() {
     return this.summary_
   }
+  public get TypeHeader() {
+    return this.type_ + ' Discipline'
+  }
   public get Type() {
     return this.type_
+  }
+  public get Icon() {
+    if (this.Type == 'Error') return ''
+    return require('@/assets/' + this.Type + '.svg')
   }
 
   // ==========================================================
@@ -104,7 +113,8 @@ class Discipline {
     this.category_ = data.category || ''
     this.name_ = data.name || ''
     this.flavor_ = data.flavor || ''
-    this.role_ = data.role || ''
+    this.primary_role_ = data.primary_role || ''
+    this.secondary_role_ = data.secondary_role || ''
     this.summary_ = data.summary || ''
     this.tier_1_ = data.tier_1 || null
     this.tier_2_ = data.tier_2 || null

@@ -96,6 +96,12 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getFilteredArmors(): any {
+    return (categories: Array<string>) => {
+      return Armors.filter((x) => categories.includes(x.category.trim())).map((x) => Armor.Deserialize(<IArmorData>x))
+    }
+  }
+
   get isArmor(): any {
     return (inword: string) => {
       return Armors.some((x) => x.name == inword.trim())
@@ -158,6 +164,18 @@ export class DatabaseJsonStore extends VuexModule {
   get isWeapon(): any {
     return (inword: string) => {
       return Weapons.some((x) => x.name == inword.trim())
+    }
+  }
+
+  get getFilteredWeapons(): any {
+    return (categories: Array<string>, speed: any, keyword: string) => {
+      return Weapons.filter(
+        (x) =>
+          (categories.includes(x.category.trim()) || (categories.includes('Throwing') && x.keywords.some((y) => y.includes('Thrown')))) &&
+          (speed == 'Any' || speed == x.speed) &&
+          (keyword == 'Any' || x.keywords.some((y) => y.includes(keyword))) &&
+          x.flag != 'NPC',
+      ).map((x) => Weapon.Deserialize(<IWeaponData>x))
     }
   }
 
@@ -283,6 +301,18 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var discipline = Disciplines.find((x) => x.name.trim() === inword.trim())
       return Discipline.Deserialize(<IDisciplineData>discipline)
+    }
+  }
+
+  get getFilteredDisciplines(): any {
+    return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
+      return Disciplines.filter(
+        (x) =>
+          categories.includes(x.category.trim()) &&
+          types.includes(x.type.trim()) &&
+          (primary_role === 'Any' || primary_role == x.primary_role.trim()) &&
+          (secondary_role === 'Any' || secondary_role == x.primary_role.trim()),
+      ).map((x) => Discipline.Deserialize(<IDisciplineData>x))
     }
   }
 

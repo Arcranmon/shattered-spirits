@@ -1,32 +1,55 @@
 <template>
-  <div class="nav--wrapper">
-    <router-link to="/"
-      ><span class="nav--text">Shattered Spirits</span></router-link
-    >
+  <div>
+    <div class="nav--wrapper">
+      <router-link to="/"><span class="nav--text">Shattered Spirits</span></router-link>
+      <about class="about d-none d-lg-block" />
+    </div>
   </div>
 </template>
 
 <script>
+import About from './About'
 export default {
-  name: "navbar",
-};
+  name: 'navbar',
+  data() {
+    return {
+      popupActive: false,
+    }
+  },
+  components: {
+    About,
+  },
+}
 </script>
-
 <style scoped lang="scss">
 a {
   text-decoration: none !important;
 }
 .nav--wrapper {
-  background-color: $color--nav;
+  background-color: $color--parchment;
+  border-bottom: thick double black;
   align-items: center;
   min-height: 50px;
   overflow: hidden;
-  width: 100%;
-  position: sticky;
+  display: flex;
+  align-items: center;
 }
 .nav--text {
-  font-family: $font--nav;
-  color: white;
-  font-size: 3em;
+  font-family: $font--fancy;
+  color: black;
+  font-size: 4em;
+  -webkit-text-stroke-width: 1px;
+}
+.nav--text-mobile {
+  font-family: $font--fancy;
+  color: black;
+  font-size: 4em;
+  -webkit-text-stroke-width: 1px;
+}
+.about {
+  font-family: $font--fancy;
+  margin-left: auto;
+  margin-right: 1em;
+  color: black;
 }
 </style>

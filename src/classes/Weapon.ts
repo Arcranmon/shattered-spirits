@@ -122,6 +122,11 @@ class Weapon {
     if (this.Encumbrance == 0) return ''
     return 'Encumbrance ' + this.encumbrance
   }
+  public get Icon() {
+    if (this.Category == 'Error') return ''
+    if (this.Category == 'Unarmed') return require('@/assets/Unarmed.svg')
+    return require('@/assets/' + this.Category + ' Weapon.svg')
+  }
 
   // ==========================================================
   // SERIALIZATION

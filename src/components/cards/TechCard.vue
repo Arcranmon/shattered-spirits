@@ -27,6 +27,9 @@
       <div class="tech--format" v-if="tech.HasReqs">
         <display-tooltip-text :string="tech.ReqsHeader" />
       </div>
+      <div class="tech--format" v-if="tech.HasWeapon">
+        <display-tooltip-text :string="tech.WeaponHeader" />
+      </div>
       <div class="tech--format" v-if="tech.HasTrigger">
         <display-tooltip-text :string="tech.TriggerHeader" />
       </div>
@@ -99,7 +102,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 .tech--wrapper {
   font-family: $font--standard;
-  background-color: $color--parchment;
+  background-color: $color--grey-light;
   border: $border--black-standard;
   height: 100%;
   padding-bottom: $space--s;

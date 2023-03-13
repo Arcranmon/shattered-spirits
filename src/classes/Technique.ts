@@ -21,6 +21,7 @@ class Technique {
   private speed_: string
   private target_: string
   private type_: string
+  private weapon_: string
   private chart_: Chart
 
   public constructor() {
@@ -41,6 +42,7 @@ class Technique {
     this.speed_ = ''
     this.target_ = ''
     this.type_ = ''
+    this.weapon_ = ''
     this.chart_ = null
   }
 
@@ -158,7 +160,7 @@ class Technique {
     return this.Range != ''
   }
   public get RangeHeader() {
-    if (this.Range.includes('Weapon')) return 'Weapon Range'
+    if (this.Range.includes('Weapon')) return this.Range + ' Range'
     else if (this.Range.length <= 2) return '_Range_ ' + this.range_
     else return '_' + this.range_ + '_'
   }
@@ -183,6 +185,12 @@ class Technique {
   }
   public get TargetHeader() {
     return '**Target:** ' + this.target_
+  }
+  public get HasWeapon() {
+    return this.weapon_.length > 0
+  }
+  public get WeaponHeader() {
+    return '**Weapon:** ' + this.weapon_
   }
 
   // ==========================================================
@@ -213,6 +221,7 @@ class Technique {
     this.speed_ = data.speed || ''
     this.target_ = data.target || ''
     this.type_ = data.type || ''
+    this.weapon_ = data.weapon || ''
     if ('chart' in data) {
       this.chart_ = Chart.Deserialize(data.chart)
     }

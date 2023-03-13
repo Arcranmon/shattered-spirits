@@ -61,6 +61,10 @@ class Armor {
   get Step() {
     return this.step_
   }
+  public get Icon() {
+    if (this.Category == 'Error') return ''
+    return require('@/assets/' + this.Category + '.svg')
+  }
 
   // ==========================================================
   // FORMATTED GETTERS

@@ -15,6 +15,7 @@ class Maneuver {
   private reqs_: string
   private special_: string
   private trigger_: string
+  private weapon_: string
   private type_: string
   private chart_: Chart
 
@@ -30,6 +31,7 @@ class Maneuver {
     this.special_ = ''
     this.trigger_ = ''
     this.type_ = ''
+    this.weapon_ = ''
     this.chart_ = null
   }
 
@@ -124,6 +126,12 @@ class Maneuver {
   public get TriggerHeader() {
     return '**Trigger:** ' + this.trigger_
   }
+  public get HasWeapon() {
+    return this.weapon_.length > 0
+  }
+  public get WeaponHeader() {
+    return '**Weapon:** ' + this.weapon_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -148,6 +156,7 @@ class Maneuver {
     this.special_ = data.special || ''
     this.trigger_ = data.trigger || ''
     this.type_ = data.type || 'Maneuver'
+    this.weapon_ = data.weapon || ''
     if ('chart' in data) {
       this.chart_ = Chart.Deserialize(data.chart)
     }

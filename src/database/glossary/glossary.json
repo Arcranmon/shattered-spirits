@@ -85,9 +85,10 @@
     "effect": "If a creature moves from one Elevation to another they must pay Reflex equal to one less than the total Elevation change or else take Crush Damage equal to twice the Elevation Change. If a creature would take at least 6 Damage in this way they also fall Prone."
   },
   { "name": "Fall", "see": "Falling" },
+  { "name": "Falls", "see": "Falling" },
   {
     "name": "Forceful",
-    "effect": "Forceful can be applied to any kind of Forced Movement. If a creature is mobed into an Obstacle by Forceful Movement they take Damage equal to 1 + any Forced Movement that was not applied due to colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1."
+    "effect": "Forceful can be applied to any kind of Forced Movement. If a creature is moved into an Obstacle by Forceful Movement they take Damage equal to 1 + any Forced Movement that was not applied due to colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1. If an effect gains Forceful, all Forced Movement of the same type gains Forceful."
   },
   {
     "name": "Gift",
@@ -124,6 +125,10 @@
   {
     "name": "Interact",
     "effect": "A special way to make use of an Obstacle that is defined in its statblock, typically used with the Use Environment Technique."
+  },
+  {
+    "name": "Launching",
+    "effect": "Launching can be applied to any kind of Forced Movement. The Forced Movement is considered Leaping for all effects and, at the end of the Movement, the creature Falls X+1 spaces, where X is half the Launching distance, plus any applicable Elevation change. If an effect gains Launching, all Forced Movement of the same type gains Launching."
   },
   {
     "name": "Lightly Obstructed",
@@ -174,7 +179,7 @@
   },
   {
     "name": "Purge",
-    "effect": "A period, typically at the end of a creature's Turn, when they may spend Tokens to remove Afflictions."
+    "effect": "A value listed for all Afflictions that specifies how many Tokens are needed to remove that Affliction."
   },
   {
     "name": "Phase",
@@ -285,6 +290,10 @@
   {
     "name": "Unarmed",
     "effect": "A special category of Weapon that is an attack made using the character's body. Unarmed Weapons may not be Disarmed, and are always treated as Wielded."
+  },
+  {
+    "name": "Martial Arts",
+    "effect": "When a Technique has Martial Arts listed for the Weapon the character does not have to decide the Weapon used when playing it. Instead, when making the _Weapon Attack_, they may use any _Unarmed Weapon_ of a _Speed_ equal to or greater than the unmodified _Speed_ of this _Technique_, or the current Phase if directly used through a Maneuver. (i.e., if the Technique is _Speed_ 4 and you applied the _Strengthen_ Stratagem which makes the Technique _Speed_ 5, you could only use _Unarmed Weapons_ of _Speed_ 4 or faster). Sometimes Martial Arts will specify a more narrow condition in parentheses; in that case, all Unarmed Weapons used must fulfill that requirement"
   },
   {
     "name": "Wager",

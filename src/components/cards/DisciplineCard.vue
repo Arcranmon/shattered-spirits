@@ -1,12 +1,14 @@
 <template
-  ><div class="discipline--box" v-bind:class="discipline.Type.replace(' ', '_')">
+  ><div class="discipline--box">
     <h2>{{ discipline.Name }}</h2>
     <div class="page--description">
-      <b>{{ discipline.Role }}</b
+      <b>{{ discipline.TypeHeader }}</b
+      ><br />
+      <b>{{ discipline.RoleHeader }}</b
       ><br />
       <display-tooltip-text style="font-style: italic;" class="page--description" :string="discipline.Flavor" />
     </div>
-    <v-expansion-panels flat accordion multiple>
+    <v-expansion-panels flat accordion multiple v-model="panel">
       <v-expansion-panel class="discipline--tier-box">
         <v-expansion-panel-header class="expand--header">
           <h4 style="display: flex;">Tier I</h4>
@@ -96,6 +98,11 @@ export default Vue.extend({
   components: {
     ShowCards,
   },
+  data() {
+    return {
+      panel: [0, 1],
+    }
+  },
   computed: {
     stance_or_style: function () {
       if (this.discipline.Type in ['Earth', 'Wind', 'Flame', 'Wood', 'Metal', 'Water']) return 'Spirit Stance'
@@ -106,10 +113,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.discipline--box {
-  border: $border--black-standard;
-  margin-top: -2px;
-}
 .special--box {
   border: $border--black-standard;
   width: 95%;

@@ -13,13 +13,7 @@ import TerrainAndObstacles from '@/pages/combat/terrain-and-obstacles/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import SpiritMenu from '@/pages/spirits/spirit-menu/index.vue'
-import Earth from '@/pages/spirits/earth/index.vue'
-import Flame from '@/pages/spirits/flame/index.vue'
-import Metal from '@/pages/spirits/metal/index.vue'
-import Water from '@/pages/spirits/water/index.vue'
-import Wind from '@/pages/spirits/wind/index.vue'
-import Wood from '@/pages/spirits/wood/index.vue'
+import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
@@ -28,11 +22,8 @@ import Shields from '@/pages/equipment/shields/index.vue'
 import UnarmedWeapons from '@/pages/equipment/unarmed-weapons/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
-import MartialMenu from '@/pages/martials/martial-menu/index.vue'
-import BasicSkills from '@/pages/martials/basic-skills/index.vue'
-import ArmorDisciplines from '@/pages/martials/armor-disciplines/index.vue'
-import WeaponDisciplines from '@/pages/martials/weapon-disciplines/index.vue'
-import UnarmedDisciplines from '@/pages/martials/unarmed-disciplines/index.vue'
+import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
+import BasicSkills from '@/pages/basic-skills/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -76,11 +67,11 @@ const r = new Router({
       },
     },
     {
-      path: '/spirits',
-      component: SpiritMenu,
-      name: 'spirit-menu',
+      path: '/spirit-disciplines',
+      component: SpiritDisciplines,
+      name: 'spirit-disciplines',
       meta: {
-        title: 'Spirits',
+        title: 'Spirit Disciplines',
       },
     },
     {
@@ -121,54 +112,6 @@ const r = new Router({
       name: 'unarmed-weapons',
       meta: {
         title: 'Unarmed Weapons',
-      },
-    },
-    {
-      path: '/earth',
-      component: Earth,
-      name: 'earth',
-      meta: {
-        title: 'Earth',
-      },
-    },
-    {
-      path: '/flame',
-      component: Flame,
-      name: 'flame',
-      meta: {
-        title: 'Flame',
-      },
-    },
-    {
-      path: '/metal',
-      component: Metal,
-      name: 'metal',
-      meta: {
-        title: 'Metal',
-      },
-    },
-    {
-      path: '/water',
-      component: Water,
-      name: 'water',
-      meta: {
-        title: 'Water',
-      },
-    },
-    {
-      path: '/wind',
-      component: Wind,
-      name: 'wind',
-      meta: {
-        title: 'Wind',
-      },
-    },
-    {
-      path: '/wood',
-      component: Wood,
-      name: 'wood',
-      meta: {
-        title: 'Wood',
       },
     },
     {
@@ -220,9 +163,9 @@ const r = new Router({
       },
     },
     {
-      path: '/martials',
-      component: MartialMenu,
-      name: 'martials',
+      path: '/martial-disciplines',
+      component: MartialDisciplines,
+      name: 'martial-disciplines',
       meta: {
         title: 'Martial Disciplines',
       },
@@ -233,30 +176,6 @@ const r = new Router({
       name: 'basic-skills',
       meta: {
         title: 'Basic Skills',
-      },
-    },
-    {
-      path: '/armor-disciplines',
-      component: ArmorDisciplines,
-      name: 'armor-disciplines',
-      meta: {
-        title: 'Armor Disciplines',
-      },
-    },
-    {
-      path: '/unarmed-disciplines',
-      component: UnarmedDisciplines,
-      name: 'unarmed-disciplines',
-      meta: {
-        title: 'Unarmed Disciplines',
-      },
-    },
-    {
-      path: '/weapon-disciplines',
-      component: WeaponDisciplines,
-      name: 'weapon-disciplines',
-      meta: {
-        title: 'Weapon Disciplines',
       },
     },
     {
