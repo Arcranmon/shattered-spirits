@@ -11,8 +11,7 @@
         <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
         <span style="font-style: bold;">
           <b
-            >{{ tech.SpeedHeader }}<span v-if="tech.HasDamageType">, {{ tech.DamageTypeHeader }}</span
-            ><span v-if="tech.HasRange">, <display-tooltip-text :string="tech.RangeHeader" :decorate="false" /></span
+            >{{ tech.SpeedHeader }}<span v-if="tech.HasRange">, <display-tooltip-text :string="tech.RangeHeader" :decorate="false" /></span
             ><span v-if="tech.HasArea">, <display-tooltip-text :string="tech.Area" :decorate="false" /></span
             ><span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
@@ -58,7 +57,9 @@
         <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
           <v-expansion-panel style="background-color: inherit;"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="tech.Chart" /></v-expansion-panel-content>
+            <v-expansion-panel-content class="expand--body-chart"
+              ><display-tooltip-text :string="tech.DamageTypeHeader" /><chart-table :chart="tech.Chart"
+            /></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </div>
@@ -109,7 +110,6 @@ export default Vue.extend({
 }
 .tech--header {
   padding-top: $space--xs;
-  font-size: $font-size--l;
   text-align: center;
   color: black;
   overflow: hidden;

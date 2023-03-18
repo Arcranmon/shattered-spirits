@@ -6,16 +6,11 @@
     "remove": "Creature are Airborne until the end of the current _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this _Restrained_ by either of the first two means they _Fall_, at the end of the _Forced Movement_ if applicable."
   },
   {
-    "name": "Overarmor",
-    "desc": "Armor that, while powerful, is temporary easily stripped away.",
-    "effect": "Overarmor will always specify a _Durability_, a _Guard_ value, as well as any _Resistances_. While a creature has Overarmor, increase their _Guard_ by the listed value, and they gain the _Resistances_ of their Overarmor. ",
-    "remove": "Whenever a character takes Damage, their Overarmor loses _Durability_ equal to half the Damage taken. If targeted by its Weakness, it takes an additional 2 Damage, even if the character took no Damage."
-  },
-  {
     "name": "Blind",
     "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
     "effect": "A Blind creature treats all other creatures as _Veiled_.",
-    "remove": "Creatures are Blinded until they spend 2 _Grit_ at the end of their _Turn_, or the duration specified when inflicted has passed."
+    "remove": "Creatures are Blinded until the duration specified when inflicted has passed or they _Recover_.",
+    "recover": "3 _Grit_ removes _Blinded_."
   },
   {
     "name": "Blinded",
@@ -44,9 +39,15 @@
     "see": "Disarm"
   },
   {
+    "name": "Downed",
+    "effect": "A creature becomes Downed when they lose all Health. While Downed, a creature has only 1 AP, their Movement is halved, and they may only use a single Stance. A creature may mark a Wound against Stamina at Refresh to gain one additional AP for the Round.",
+    "remove": "Downed may not be removed during combat."
+  },
+  {
     "name": "Embed",
     "effect": "Embed effects are always paired with an Action that utilizes a Source or a Weapon. When Embed occurs, the Source or Weapon used in the Action is attached to or impaled in the Target and moves with it. If a Source is Embedded in a creature, they may be treated as that Source.",
-    "remove": "A creature may _Sacrifice_ an Action to end Embed, or pay 2 _Grit_ at the end of a _Turn_ to end Embed, but take 4 _True_ Damage in the process."
+    "remove": "A creature may _Sacrifice_ an Action and take 1 _True_ Damage to end Embed.",
+    "recover": "2 _Grit_ ends _Embed_, but the creature takes 4 _True_ Damage in the process."
   },
   {
     "name": "Embedded",
@@ -72,21 +73,30 @@
   },
   {
     "name": "Grappled",
-    "effect": "A Grappled character's effect depends on if they are Top or Bottom.\n\nThe Top character has their Movement reduced by one tier and cannot use the hand utilized for Grappling for anything other than the Shove Technique or Strikes with an Unarmed Weapon.\n\nThe Bottom character is Stuck and, when the Top character moves, the Bottom character moves along with them.\nIf the Bottom successfully inflicts Grappled on the Top, they may either choose to end the Grapple or become the Top. If the Top inflicts Grappled on the Bottom, they may immediately instead inflict _Pull_ 6.",
-    "remove": "At the end of their Turn, a Bottom character may expend Grit and Reflex to enter a Grapple Contest; if the Winner does not expend an equal amount of Grit or Momentum in any combination, the Bottom character is freed. The Bottom character is also freed if they or the Top are forcibly moved, such as by a Push or Pull. If the Top character is using both Hands for the Grapple treat their expended Grit and Momentum as 1 higher for the Grapple Contest."
+    "effect": "A Grappled character's effect depends on if they are Top or Bottom.\n\n* The Top character has their Movement reduced by one level if the Bottom is their Size or larger and cannot use the Hand utilized for Grappling for anything other than Unarmed Weapon Attacks against the Bottom.\n\n* The Bottom character is _Stuck_ and, when the Top character moves, the Bottom character is moved with them.\n* If the Top inflicts Grappled on the Bottom, they may immediately instead inflict _Pull_ 6.\n* The Top may Negate _Forced Movement_ effects for the Bottom.",
+    "special": "By default, a creature may only Grapple a creature one Size larger than them. If they inflict Grappled on a creature larger than that, they instead inflict _Riding_ (TBD).",
+    "remove": "The Bottom character is freed if they or the Top suffer _Forced Movement_. Additionally, if the Bottom successfully inflicts Grappled on the Top, they may either choose to end the Grapple or become the Top.",
+    "recover": "(While Bottom) X _Grit_/_Reflex_ starts a Grapple Contest, which forces the Top to spend X-Y _Grit_/_Momentum_, where Y is the Size difference between the Top and Bottom, or else the Grapple ends. If the Top character is using both Hands for the Grapple treat their expended _Grit_/_Momentum_ as 1 higher."
   },
   {
     "name": "Marked",
     "desc": "An effect caused when a creature is drawing all of a foe's attention.",
-    "effect": "While Marked a creature treats their _Impaired_ Tokens as one higher (maximum 4) when attacking all creatures other than the one that Marked them. When attacking the creature that Marked them, they treat their _Impaired_ Tokens as one less (minimum 0).",
+    "effect": "While Marked a creature treats their _Impaired_ Tokens as one higher (maximum 4) when attacking all creatures other than the one that Marked them. When attacking the creature that Marked them, they treat their _Impaired_ Tokens as one less (minimum 0). If the creature has no _Impaired_, they still take a -1 _Penalty_ on all Attacks against creatures other than the one that Marked them as if they had an _Impaired_ 0 Token.",
     "special": "If a creature that is already Marked is Marked again, simply treat the creature that inflicted the new Mark as the creature that Marked them. The Mark remains for whichever effect has the longer duration.",
-    "remove": "Marked typically has a set duration. Additionally, a creature may end Marked by spending 2 _Momentum_ on a _Hit_+ on the creature that _Marked_ them."
+    "remove": "Marked typically has a set duration, and is removed after that duration. In addition, if the creature that Marked a creature ends their _Turn_ more than 4 spaces from them, remove Marked.",
+    "recover": "2 _Momentum_ in a _Turn_ that the creature _Hit_+ the creature that _Marked_ them removes _Marked_."
+  },
+  {
+    "name": "Overarmor",
+    "desc": "Armor that, while powerful, is temporary easily stripped away.",
+    "effect": "Overarmor will always specify a _Durability_, a _Guard_ value, as well as any _Resistances_. While a creature has Overarmor, increase their _Guard_ by the listed value, and they gain the _Resistances_ of their Overarmor. ",
+    "remove": "Whenever a character takes Damage, their Overarmor loses _Durability_ equal to half the Damage taken. If targeted by its Weakness, it takes an additional 2 Damage, even if the character took no Damage."
   },
   {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
     "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage.",
-    "remove": "A creature may downgrade their Movement by one tier to end Prone."
+    "remove": "A creature may downgrade their Movement by one level to end Prone."
   },
   {
     "name": "Restrained",
@@ -103,7 +113,7 @@
     "name": "Stuck",
     "desc": "A status caused when a creature is unable to move, but their ability to fight is otherwise unimpaired.",
     "effect": "While Stuck a creature cannot take any Movement.",
-    "remove": "How to end Stuck is typically specified in the Technique that inflicts it. If nothing is specified, a creature may spend 2 _Reflex_ at the end of their _Turn_ to end Stuck."
+    "remove": "How to end Stuck is specified in the Technique that inflicts it."
   },
   {
     "name": "Sturdy",

@@ -12,6 +12,7 @@
       <display-tooltip-text :string="status.EffectHeader" />
       <display-tooltip-text v-if="status.HasSpecial" :string="status.SpecialHeader" />
       <display-tooltip-text :string="status.RemoveHeader" />
+      <display-tooltip-text v-if="status.HasRecovery" :string="status.RecoveryHeader" />
     </div>
   </div>
 </template>

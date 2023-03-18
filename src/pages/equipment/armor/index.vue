@@ -14,7 +14,7 @@
           </div>
         </v-btn-toggle></v-col
       >
-      <v-col> <armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 20em;" /></v-col>
+      <v-col> <armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em;" /></v-col>
     </v-row>
   </div>
 </template>

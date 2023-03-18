@@ -105,6 +105,7 @@ export default Vue.extend({
   border-bottom: 5px solid black;
 }
 .maneuver--keywords {
+  font-size: $font-size--s;
   text-align: center;
   color: black;
   padding-bottom: $space--xs;

@@ -51,6 +51,10 @@ class Discipline {
   // ==========================================================
   // TIER GETTERS
   // ==========================================================
+
+  public get TotalTier1Items() {
+    return this.tier_1_.techniques.length + this.tier_1_.maneuvers.length
+  }
   public get HasTier1Techniques() {
     return this.tier_1_.techniques != undefined
   }
@@ -62,12 +66,6 @@ class Discipline {
   }
   public get Tier1Maneuvers() {
     return store.getters.getManeuversFromList(this.tier_1_.maneuvers)
-  }
-  public get HasTier1Reactions() {
-    return this.tier_1_.reactions != undefined
-  }
-  public get Tier1Reactions() {
-    return store.getters.getManeuversFromList(this.tier_1_.reactions)
   }
   public get HasTier1Special() {
     return this.tier_1_.special != undefined
@@ -93,13 +91,6 @@ class Discipline {
   public get Tier2Maneuvers() {
     return store.getters.getManeuversFromList(this.tier_2_.maneuvers)
   }
-  public get HasTier2Reactions() {
-    return this.tier_2_.reactions != undefined
-  }
-  public get Tier2Reactions() {
-    return store.getters.getManeuversFromList(this.tier_2_.reactions)
-  }
-
   // ==========================================================
   // SERIALIZATION
   // ==========================================================

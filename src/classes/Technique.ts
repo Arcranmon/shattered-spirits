@@ -123,7 +123,7 @@ class Technique {
     return this.damagetype_.length > 0
   }
   public get DamageTypeHeader() {
-    return this.damagetype_ + ' Damage'
+    return '**Damage Type:** ' + this.damagetype_
   }
   public get HasEffect() {
     return this.effect_.length > 0

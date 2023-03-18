@@ -51,7 +51,6 @@ declare interface IChartData {
 interface IDisciplineTierData {
   techniques?: string[]
   stances?: string[]
-  reactions?: string[]
   maneuvers?: string[]
   special?: string
 }
@@ -151,12 +150,12 @@ declare interface IStatusData {
   desc: string
   effect: string
   name: string
+  recover: string
   remove: string
   special?: string
 }
 
 declare interface IAfflictionData extends IStatusData {
-  purge: string
   reacts: Array<string>
   type: string
 }

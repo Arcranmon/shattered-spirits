@@ -12,7 +12,7 @@
         $store.getters.getManeuver('Retrieve'),
         $store.getters.getManeuver('Tumble'),
         $store.getters.getManeuver('Use Environment'),
-        $store.getters.getManeuver('Purge Afflictions'),
+        $store.getters.getManeuver('Recovery'),
         $store.getters.getManeuver('Reorient'),
         $store.getters.getManeuver('Armored Shell'),
         $store.getters.getManeuver('Shield Block'),

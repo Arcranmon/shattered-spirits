@@ -4,14 +4,14 @@
     "desc": "An affliction caused when a creature's mind is muddled ad slow.",
     "effect": "A Dazed creature increases the Cost of all _Defend_, _Punish_, and _Counter_ Maneuvers by the value of their topmost Dazed Token. This increased Cost (but only the increased cost) may be paid with _Focus_.",
     "remove": "A creature clears their topmost Dazed Token at the end of each of their Turns.",
-    "purge": "A value of _Focus_ removes Dazed equal to one less than the _Focus_ spent.",
+    "recover": "X+1 _Focus_ removes X value of Dazed.",
     "type": "standard"
   },
   {
     "name": "Exposed",
     "desc": "An affliction caused when a creature cannot maintain their guard.",
     "effect": "All Attacks against a creature gain an Attack Bonus equal to the top Exposed Token's value.",
-    "purge": "A value of _Focus_ removes Exposed equal to one less than the _Focus_ spent.",
+    "recover": "X+1 _Focus_ removes X value of Exposed.",
     "remove": "A creature clears their topmost Exposed Token after being Attacked.",
     "type": "standard"
   },
@@ -21,7 +21,7 @@
     "effect": "A creature's Moves are downgraded by an emount equal to their topmost Hobbled Token (i.e. Hobbled 1 would reduce a Reposition to a Step).",
     "special": "While a creature has any Hobbled, they cannot take any Movement that does not have a Movement Size listed. ",
     "remove": " A creature clears their topmost Hobbled at the end of each of their turns.",
-    "purge": "A value of _Grit_ removes Hobbled equal to half the _Grit_ spent.",
+    "recover": "X _Grit_ (minimum 2) removes X/2 value of Hobbled.",
     "type": "standard"
   },
   {
@@ -29,7 +29,7 @@
     "desc": "An affliction caused when a creature's ability to attack is limited.",
     "effect": "A creature gains an Attack Penalty equal to their topmost Impaired Token's value.",
     "remove": "A creature clears the topmost Impaired after making an Attack Roll.",
-    "purge": "A value of _Focus_ removes Impaired equal to one less than the _Focus_ spent.",
+    "recover": "X+1 _Focus_ removes X value of Impaired.",
     "type": "standard"
   },
   {
@@ -38,7 +38,7 @@
     "effect": "Whenever the creature that inflicted the Insight attacks the creature they may gain _Focus_, _Grit_, _Momentum_, or _Reflex_ in any combination equal to the creature's topmost Insight Token.",
     "special": "When using a _Defend_/_Counter_ _Maneuver_ or Negating an effect, the creature that inflicted the Insight may reduce the Cost by the creature's topmost Insight Token's Value.",
     "remove": "After gaining Tokens or reducing the cost of a Reaction, remove the creature's topmost Insight Token.",
-    "purge": "A value of _Focus_ removes Insight equal to the _Focus_ spent.",
+    "recover": "X _Focus_ removes X value of Insight.",
     "type": "standard"
   },
   {
@@ -46,7 +46,7 @@
     "desc": "An affliction caused when a creature is vulnerable in a way that causes them to take more damage.",
     "effect": "Any time a creature takes damage, they take additional damage equal to the top Vulnerable Token.",
     "remove": "Whenever a Vulnerable Token is used, remove it.",
-    "purge": "A value of _Focus_ removes Vulnerable equal to the _Focus_ spent.",
+    "recover": "X _Focus_ removes X value of Vulnerable.",
     "type": "standard"
   },
   {
@@ -55,7 +55,7 @@
     "effect": "At the start of a creature's Turn, they take True Damage equal to the top Wounded Token.",
     "special": "Whenever a creature would gain _Endurance_/_Vigor_, reduce it by 1 + their top Wounded Token's value, then immediately remove that Wounded Token.",
     "remove": "Whenever a creature takes Damage from or has _Endurance_/_Vigor_ blocked by a Wounded Token, remove it.",
-    "purge": "A value of _Grit_ removes Wounded equal to one less than the _Grit_ spent.",
+    "recover": "X+1 _Grit_ removes X value of Wounded.",
     "type": "standard"
   },
   {
@@ -67,7 +67,7 @@
     ],
     "special": "Add _Stall_ to all _Techniques_ that have a _Speed_ less than twice the value of the creature's topmost Shock Token. If the Technique has _Priority_, instead decrease its Movement by 1 tier.",
     "remove": "Whenever a creature uses a Reaction or ends their _Turn_, remove their topmost Shock Token. The creature takes _True_ Damage equal to the value removed.",
-    "purge": "A value of _Grit_/_Momentum_ removes Shock equal to the _Grit_/_Momentum_ spent. The creature takes _True_ Damage equal to the value removed.",
+    "recover": "X+1 _Grit_/_Momentum_ removes X value of Shock. The creature takes _True_ Damage equal to the value removed.",
     "type": "elemental"
   },
   {
@@ -78,7 +78,7 @@
       "<ins>Frost:</ins> If a creature has any Frost Tokens and would gain a Burn Token, they instead remove their topmost Frost Token.",
       "<ins>Soaked:</ins>  If a creature has any Soaked Tokens and would gain a Burn Token, they instead remove their topmost Soaked Token."
     ],
-    "purge": "A value of _Reflex_ removes Burn equal to one less than the _Reflex_ spent. A creature may choose to end their turn Prone to treat the _Reflex_ spent as twice as much.",
+    "recover": "A value of _Reflex_ removes Burn equal to one less than the _Reflex_ spent. A creature may choose to end their turn Prone to treat the _Reflex_ spent as twice as much.",
     "type": "hide"
   },
   {
@@ -91,7 +91,7 @@
       "<ins>Soaked:</ins> If a creature has any Soaked Tokens and would gain a Frost Token, remove their topmost Soaked Token. The creature gains an additional Frost Token equal to the value of that Soaked Token. This new Frost Token does not create additional Frost Tokens."
     ],
     "remove": "A creature removes their topmost Frost Token at the end of each of their turns.",
-    "purge": "A value of _Grit_ removes Frost equal to one less than the _Grit_ spent.",
+    "recover": "A value of _Grit_ removes Frost equal to one less than the _Grit_ spent.",
     "type": "hide"
   },
   {
@@ -102,6 +102,7 @@
       "<ins>Burn:</ins>  If a creature has any Burn Tokens and would gain a Soaked Token, they instead remove their topmost Burn Token.",
       "<ins>Frost:</ins>  If a creature has any Frost Tokens and would gain a Soaked Token, they instead gain a Frost Token with a value equal to the Soaked Token they would have."
     ],
+    "recover": "Soaked may not be Recovered from.",
     "type": "elemental"
   },
   {
@@ -109,7 +110,7 @@
     "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
     "effect": "A creature gains _Momentum_/_Grit_ equal to their topmost Courage Token if they end their turn adjacent to a hostile creature.",
     "remove": "Whenever a creature ends their turn adjacent to a hostile creature, remove their topmost Courage Token.",
-    "purge": "A value of _Focus_ removes Courage equal to one less than the _Focus_ spent.",
+    "recover": "X+1 _Focus_ removes X value of Courage.",
     "reacts": ["<ins>Fear:</ins> If a creature has any Fear Tokens and would gain a Courage Token, they instead remove their topmost Fear Token."],
     "type": "mental"
   },
@@ -119,7 +120,7 @@
     "effect": "The most recent creature to inflict Fear is the source of that  creature's Fear. A creature with Fear must end their _Turn_ a number of spaces away from the source of their Fear equal to their topmost Fear Token Value. If they do not, they lose 2 _Focus_/_Momentum_ and gain an _Impair_ Token of a value equal to the Fear Token. If the creature does not have sufficient _Focus_/_Momentum_, they instead gain _Hobbled_ 1.",
     "remove": "A creature removes their topmost Fear Token at the end of each of their _Turns_.",
     "reacts": ["<ins>Courage:</ins> If a creature has any Courage Tokens and would gain a Fear Token, they instead remove their topmost Courage Token."],
-    "purge": "A value of _Focus_ removes Fear equal to one less than the _Focus_ spent.",
+    "recover": "X+1 _Focus_ removes X value of Fear.",
     "type": "mental"
   },
   {
@@ -127,7 +128,7 @@
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
     "effect": "A creature with Rage may not move away from the last creature to inflict Rage on them. Additionally, they must target said creature with all Attacks or else lose Momentum equal to their topmost Rage Token. If they do not have sufficient Momentum, they instead gain an _Exposed_ Token of value equal to the Momentum they lack.",
     "remove": "After a creature resolves the Effect or successfully Hits or Crits the target of their Rage, clear their topmost Rage Token.",
-    "purge": "A value of _Focus_ removes Rage equal to one less than the _Focus_ spent.",
+    "recover": "A value of _Focus_ removes Rage equal to one less than the _Focus_ spent.",
     "type": "hide"
   }
 ]

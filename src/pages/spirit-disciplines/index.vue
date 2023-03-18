@@ -1,10 +1,10 @@
 <template>
   <div>
     <h2>Spirit Disciplines</h2>
-    <v-row align="center" style="margin-left: 0.5em;">
-      <v-col cols="2"
+    <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
+      <v-col cols="3"
         ><v-select v-model="selectedCategories" :items="disciplineCategories" attach label="Discipline Categories" multiple filled outlined></v-select> </v-col
-      ><v-col cols="2"
+      ><v-col cols="3"
         ><v-select v-model="selectedTypes" :items="disciplineTypes.slice()" attach label="Discipline Types" multiple filled outlined>
           <template v-slot:prepend-item>
             <v-list-item ripple @mousedown.prevent @click="toggle"
@@ -25,8 +25,8 @@
             <span v-if="index === 1" class="black--text text-caption"> (+{{ selectedTypes.length - 1 }} others) </span>
           </template></v-select
         > </v-col
-      ><v-col cols="2"><v-select v-model="primaryRole" :items="disciplineRoles" attach label="Primary Role" filled outlined></v-select> </v-col
-      ><v-col cols="2"><v-select v-model="secondaryRole" :items="disciplineRoles" attach label="Secondary Role" filled outlined></v-select> </v-col
+      ><v-col cols="3"><v-select v-model="primaryRole" :items="disciplineRoles" attach label="Primary Role" filled outlined></v-select> </v-col
+      ><v-col cols="3"><v-select v-model="secondaryRole" :items="disciplineRoles" attach label="Secondary Role" filled outlined></v-select> </v-col
     ></v-row>
     <v-row class="page">
       <v-col cols="auto" class="sidebar">

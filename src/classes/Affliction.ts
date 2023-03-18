@@ -6,7 +6,7 @@ class Affliction {
   private effect_: string
   private special_: string
   private name_: string
-  private purge_: string
+  private recover_: string
   private reacts_: string[]
   private remove_: string
 
@@ -14,7 +14,7 @@ class Affliction {
     this.desc_ = ''
     this.effect_ = ''
     this.name_ = ''
-    this.purge_ = ''
+    this.recover_ = ''
     this.reacts_ = []
     this.remove_ = ''
     this.special_ = ''
@@ -33,8 +33,8 @@ class Affliction {
   // ==========================================================
   // UTILITY
   // ==========================================================
-  get HasPurge() {
-    return this.purge_ != ''
+  get HasRecovery() {
+    return this.recover_ != ''
   }
   get HasReacts() {
     return this.reacts_.length > 0
@@ -59,8 +59,8 @@ class Affliction {
     }
     return interact_header
   }
-  public get PurgeHeader() {
-    return '**Purge:** ' + this.purge_
+  public get RecoveryHeader() {
+    return '**Recovery:** ' + this.recover_
   }
   public get RemoveHeader() {
     return '**Remove:** ' + this.remove_
@@ -82,7 +82,7 @@ class Affliction {
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
     this.name_ = data.name || ''
-    this.purge_ = data.purge || ''
+    this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
     this.remove_ = data.remove || ''
     this.special_ = data.special || ''

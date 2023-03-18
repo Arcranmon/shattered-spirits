@@ -19,58 +19,22 @@
             <br />
             <display-tooltip-text :string="discipline.Tier1Special" />
           </div>
-          <show-cards
-            v-if="discipline.HasTier1Techniques"
-            job="Techniques"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier1Techniques" /><show-cards
-            v-if="discipline.HasTier1Maneuvers"
-            job="Maneuvers"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier1Maneuvers" /><show-cards
-            v-if="discipline.HasTier1Reactions"
-            job="Reactions"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier1Reactions"
-        /></v-expansion-panel-content>
+          <v-row style="margin-top: 0.5em;"
+            ><v-col cols="4" v-for="tech in discipline.Tier1Techniques" :key="tech"><tech-card :tech="tech" /></v-col
+            ><v-col cols="4" v-for="man in discipline.Tier1Maneuvers" :key="man"><maneuver-card :maneuver="man" :format_text="true" /></v-col
+          ></v-row>
+        </v-expansion-panel-content>
       </v-expansion-panel>
       <v-expansion-panel class="discipline--tier-box" style="margin-left: -2px; margin-right: -2px;">
         <v-expansion-panel-header class="expand--header">
           <h4 style="display: flex;">Tier II</h4>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="expand--body"
-          ><show-cards
-            v-if="discipline.HasTier2Stances"
-            job="Stances"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier2Stances" /><show-cards
-            v-if="discipline.HasTier2Techniques"
-            job="Techniques"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier2Techniques" /><show-cards
-            v-if="discipline.HasTier2Maneuvers"
-            job="Maneuvers"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier2Maneuvers" /><show-cards
-            v-if="discipline.HasTier2Reactions"
-            job="Reactions"
-            standalone_or_contained="standalone"
-            :collapse="false"
-            :cols="1"
-            :inputs="discipline.Tier2Reactions"
-        /></v-expansion-panel-content>
+          ><v-row style="margin-top: 0.5em;"
+            ><v-col cols="4" v-for="stance in discipline.Tier2Stances" :key="stance"><stance-card :stance="stance" /></v-col>
+            <v-col cols="4" v-for="tech in discipline.Tier2Techniques" :key="tech"><tech-card :tech="tech" /></v-col
+            ><v-col cols="4" v-for="man in discipline.Tier2Maneuvers" :key="man"><maneuver-card :maneuver="man" :format_text="true" /></v-col></v-row
+        ></v-expansion-panel-content>
       </v-expansion-panel>
       <v-expansion-panel class="discipline--tier-box">
         <v-expansion-panel-header class="expand--header">
@@ -84,7 +48,9 @@
 
 <script>
 import Vue from 'vue'
-import ShowCards from '@/components/cards/ShowCards.vue'
+import ManeuverCard from '@/components/cards/ManeuverCard.vue'
+import TechCard from '@/components/cards/TechCard.vue'
+import StanceCard from '@/components/cards/StanceCard.vue'
 import { Discipline } from '@/class'
 import { store } from '@/store'
 export default Vue.extend({
@@ -96,7 +62,9 @@ export default Vue.extend({
     },
   },
   components: {
-    ShowCards,
+    ManeuverCard,
+    TechCard,
+    StanceCard,
   },
   data() {
     return {
@@ -135,6 +103,6 @@ export default Vue.extend({
   background-color: inherit !important;
 }
 .v-expansion-panel {
-  max-width: 33%;
+  max-width: 100%;
 }
 </style>

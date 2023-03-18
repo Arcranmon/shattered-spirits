@@ -37,13 +37,13 @@ a {
 .nav--text {
   font-family: $font--fancy;
   color: black;
-  font-size: 4em;
+  font-size: 3em;
   -webkit-text-stroke-width: 1px;
 }
 .nav--text-mobile {
   font-family: $font--fancy;
   color: black;
-  font-size: 4em;
+  font-size: 3em;
   -webkit-text-stroke-width: 1px;
 }
 .about {

@@ -52,7 +52,7 @@ class Weapon {
     return this.desc_
   }
   get DamageTypeHeader() {
-    return this.damagetype_ + ' Damage, '
+    return '**Damage Type:** ' + this.damagetype_
   }
   get HasDurability() {
     return this.durability_ != 0

@@ -19,8 +19,8 @@
       <div class="affliction--format" v-if="affliction.HasRemove">
         <display-tooltip-text :string="affliction.RemoveHeader" />
       </div>
-      <div class="affliction--format" v-if="affliction.HasPurge">
-        <display-tooltip-text :string="affliction.PurgeHeader" />
+      <div class="affliction--format" v-if="affliction.HasRecovery">
+        <display-tooltip-text :string="affliction.RecoveryHeader" />
       </div>
     </div>
   </div>

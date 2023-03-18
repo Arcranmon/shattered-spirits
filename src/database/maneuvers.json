@@ -11,7 +11,7 @@
     "name": "Armored Blow",
     "desc": "You launch an assault, using your armor to push through limitations.",
     "cost": "1 _Grit_/_Momentum_",
-    "effect": "Gain +2 _Guard_ against all _Counters_ used against this _Technique_. Before making this Attack, you may use _Purge Afflictions_, but may only remove a single _Impaired_ _Token_.",
+    "effect": "Gain +2 _Guard_ against all _Counters_ used against this _Technique_. Before making this Attack, you may use _Recover_, but may only remove a single _Impaired_ _Token_.",
     "type": "Gambit"
   },
   {
@@ -331,6 +331,14 @@
     "type": "Reaction"
   },
   {
+    "name": "Flurry of Blows",
+    "desc": "You sacrifice power for speed, striking with blinding speed.",
+    "cost": "1 _Momentum_",
+    "trigger": "You make an Unarmed _Weapon Attack_.",
+    "effect": "Instead, make two Unarmed _Weapon Attacks_ [_Combo_, _Glancing_] using the same Weapon.",
+    "type": "Gambit"
+  },
+  {
     "name": "Forceful Flourish",
     "desc": "You whip your hafted weapon around, driving foes backward.",
     "cost": "1 _Grit_/_Momentum_",
@@ -425,6 +433,14 @@
     "cost": "1 _Momentum_/_Reflex_",
     "effect": "Immediately make a _Jump_.",
     "type": "Stunt"
+  },
+  {
+    "name": "Honed Body",
+    "desc": "You are an adaptable combatant, able to adjust your strikes to deal other types of damage.",
+    "cost": "1 _Momentum_",
+    "trigger": "You make an Unarmed _Weapon Attack_.",
+    "effect": "Add [_Pierce_ 1]. You may deal one of _Crush_/_Slash_/_Stab_ Damage with this Attack.",
+    "type": "Gambit"
   },
   {
     "name": "Lunging Strike",
@@ -540,6 +556,25 @@
     "type": "Flourish"
   },
   {
+    "name": "Patient Arts",
+    "desc": "Your unarmed strikes are slow and calculating, revealing a foe's openings.",
+    "cost": "1 _Grit_/_Momentum_",
+    "reqs": "Technique allows you to make an Attack with a _Martial Arts_ Weapon.",
+    "effect": "_Versatile_/_Heavy_ _Martial Arts_ Weapons treat their _Speed_ as 1 higher. _Versatile_/_Heavy_ _Martial Arts_ _Weapon Attacks_ add _Vulnerable_ 1 on a _Graze_+ (even if the Attack is [_Parrying_]) and increase the cost to _Negate_ by 1. Add [_Unblockable_ 1] to _Heavy_ _Martial Arts_ _Weapon Attacks_.",
+    "type": "Stratagem"
+  },
+  {
+    "name": "Patient Guard",
+    "desc": "You attempt to intercept a foe's assault, creating a slight opening in the process.",
+    "keywords": ["Parry"],
+    "cost": "2 _Grit_/_Momentum_/_Reflex_",
+    "weapon": "_Martial Arts_ (_Fist_)",
+    "trigger": "You are Attacked by a target within your Weapon's _Reach_.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than the incoming Attack, reduce the Attack Roll by 1 and inflict _Exposed_ 1 (Always), or _Exposed_ 2 (Always) if you exceed their _Attack Roll_ by 3+.",
+    "boost": "1 _Momentum_: Resolve the Attack against the Target.",
+    "type": "Counter"
+  },
+  {
     "name": "Piercing Point",
     "desc": "Your spear is a driving force, carrying through all in its path.",
     "cost": "2 _Momentum_",
@@ -579,12 +614,20 @@
     "type": "Punish"
   },
   {
-    "name": "Purge Afflictions",
+    "name": "Recover",
     "desc": "You use your grit, reflex, and focus to push through hindrances.",
     "cost": "None",
     "trigger": "Your _Turn_ ends.",
-    "effect": "Expend any amount of _Grit_, _Reflex_, and _Focus_, then remove Afflictions of your choice according to their _Purge_. Tokens used for one _Purge_ may not be used for another.",
+    "effect": "Expend any amount of _Grit_, _Reflex_, and _Focus_, then remove Afflictions/Statuses of your choice according to their listed Recovery rules.",
     "type": "Reaction"
+  },
+  {
+    "name": "Quick Arts",
+    "desc": "Your unarmed attacks come forth at blinding speed, striking before foes have the chance to react.",
+    "cost": "1 _Momentum_/_Reflex_",
+    "reqs": "Technique allows you to make an Attack with a _Martial Arts_ Weapon.",
+    "effect": "_Light_/_Versatile_ _Martial Arts_ Weapons treat their _Speed_ as 1 lower. Add [_Sure Hit_ 1] to _Light_ _Martial Arts_ _Weapon Attacks_.",
+    "type": "Stratagem"
   },
   {
     "name": "Quicken",
@@ -828,7 +871,7 @@
     "desc": "Your blade is a flash, striking twice in an instant.",
     "cost": "1 _Momentum_",
     "reqs": "Melee Bladed _Weapon Attack_.",
-    "effect": "Instead, make two _Weapon Attack_ [_Glancing_], applying all _Gambits_ used to each.",
+    "effect": "Instead, make two _Weapon Attack_ [_Combo_, _Glancing_].",
     "type": "Gambit"
   },
   {
@@ -897,6 +940,14 @@
     "trigger": "An ally within your Weapon's _Reach_ is attacked.",
     "effect": "Use an Maneuver with 'Weapon: Shield', paying all _Costs_ as normal but granting your ally all effects. Any bonuses to the Maneuver granted by your _Stance_ or _Techniques_ you have used apply.",
     "type": "Defend"
+  },
+  {
+    "name": "Vicious Rend",
+    "desc": "You attack savagely, rapidly striking your foe with savage efficiency and leaving them reeling.",
+    "cost": "1 _Momentum_",
+    "trigger": "You make an Unarmed _Weapon Attack_.",
+    "effect": "On a _Graze_+, deal +1 Damage. On a _Hit_+, after resolving the Attack, you may convert up to two of the creature's _Exposed_ to _Wounded_.",
+    "type": "Gambit"
   },
   {
     "name": "Waiting Hunter",

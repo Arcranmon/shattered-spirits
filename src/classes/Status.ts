@@ -6,6 +6,7 @@ class Status {
   private effect_: string
   private special_: string
   private name_: string
+  private recover_: string
   private remove_: string
 
   public constructor() {
@@ -29,6 +30,9 @@ class Status {
   // ==========================================================
   // UTILITY
   // ==========================================================
+  get HasRecovery() {
+    return this.recover_ != ''
+  }
   public get HasSpecial() {
     return this.special_ != ''
   }
@@ -45,6 +49,9 @@ class Status {
   public get RemoveHeader() {
     return '**Remove:** ' + this.remove_
   }
+  public get RecoveryHeader() {
+    return '**Recovery:** ' + this.recover_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -60,6 +67,7 @@ class Status {
     this.effect_ = data.effect || ''
     this.name_ = data.name || ''
     this.special_ = data.special || ''
+    this.recover_ = data.recover || ''
     this.remove_ = data.remove || ''
   }
 }

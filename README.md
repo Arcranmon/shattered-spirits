@@ -26,6 +26,13 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
+BEFORE V0.1 (Earth)
+
+- Finish all Earth/Martial Disciplines.
+- Make everything except Character Creation show up well on mobile.
+- Correct the 'reading X' sections, and update the character creation page.
+- Remake character creator
+
 MISSING TECHNIQUES
 These are Techniques/Maneuvers that existed in previous content but are missing in the current Discipline refactor:
 
