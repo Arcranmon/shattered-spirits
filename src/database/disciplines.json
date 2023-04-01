@@ -66,13 +66,13 @@
     "tier_3": {}
   },
   {
-    "name": "Way of the Marbled Leg",
+    "name": "Way of the Marble Leg",
     "category": "Earth",
     "type": "Grounding",
     "flavor": "You focus your strength into your legs, making each step a destructive force.",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": [], "techniques": [], "maneuvers": [] },
+    "primary_role": "Courier/Controller",
+    "tier_1": { "techniques": ["Crushing Charge"], "maneuvers": ["Crash Through", "Destructive Wake"] },
+    "tier_2": { "stances": ["Marble Leg Stance"], "techniques": ["Meteor Crash"], "maneuvers": ["Mighty Leap"] },
     "tier_3": {}
   },
   {
@@ -80,9 +80,9 @@
     "category": "Earth",
     "type": "Grounding",
     "flavor": "You amplify your weight a dozen times over, making you an immovable object.",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": [], "techniques": [], "maneuvers": [] },
+    "primary_role": "Survivor/Defender",
+    "tier_1": { "techniques": ["Stone's Resilience"], "maneuvers": ["Immovable Object", "Heavy Guard"] },
+    "tier_2": { "stances": ["Rooted Bedrock Stance"], "techniques": ["Crushing Weight"], "maneuvers": ["Crashing Earth", "Titan's Grasp"] },
     "tier_3": {}
   },
   {
@@ -90,39 +90,47 @@
     "category": "Earth",
     "type": "Grounding",
     "flavor": "Your strength is as the earth, and nearly impossible to match.",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": [], "techniques": [], "maneuvers": [] },
+    "primary_role": "Striker",
+    "tier_1": { "techniques": ["Strength of the Earth"], "maneuvers": ["Mighty Flourish", "Herculean Throw"] },
+    "tier_2": {
+      "stances": ["Shattering Granite Stance"],
+      "techniques": ["Worldbreaker Strike"],
+      "maneuvers": ["Overpower"]
+    },
     "tier_3": {}
   },
   {
     "name": "Way of the Carnelian Heart",
     "category": "Earth",
     "type": "Stoneheart",
-    "flavor": "",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": [], "techniques": [], "maneuvers": [] },
+    "flavor": "You are a beacon of bravery, inspiring your nearby allies.",
+    "primary_role": "Supporter",
+    "tier_1": { "techniques": ["True Courage"], "maneuvers": ["Fortify Heart", "Valiant Charge"] },
+    "tier_2": { "stances": ["Carnelian Heart Stance"], "techniques": ["Rallying Cry"], "maneuvers": ["Heroic Strike"] },
     "tier_3": {}
   },
   {
-    "name": "Way of the Bloodstone's Honor",
+    "name": "Way of the Reckless Bloodstone",
     "category": "Earth",
     "type": "Stoneheart",
     "flavor": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": [], "techniques": [], "maneuvers": [] },
+    "primary_role": "Defender/Supporter",
+    "tier_1": { "techniques": ["Reckless Challenge"], "maneuvers": ["Courageous Charge", "Victory Cry"] },
+    "tier_2": {
+      "stances": ["Reckless Bloodstone Stance"],
+      "techniques": ["Hero's Duel"],
+      "maneuvers": ["Heroic Exchange", "Lionheart Shield"]
+    },
     "tier_3": {}
   },
   {
-    "name": "Way of the Ruby's Defiance",
+    "name": "Way of the Defiant Ruby",
     "category": "Earth",
     "type": "Stoneheart",
     "flavor": "No matter the punishment you take, your courage will carry you through the battle.",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": [], "techniques": [], "maneuvers": [] },
+    "primary_role": "Gives Courage in increasing amounts for more damage/gives Vigor",
+    "tier_1": { "techniques": ["Second Wind"], "maneuvers": ["Grim Defiance", "Heroic Stand"] },
+    "tier_2": { "stances": ["Defiant Ruby Stance"], "techniques": ["Last Stance"], "maneuvers": ["True Grit"] },
     "tier_3": {}
   },
   {
@@ -228,7 +236,7 @@
     "flavor": "Blows glance off your armored hide, allowing you to bludgeon those that dare assault you.",
     "primary_role": "Survivor",
     "secondary_role": "Striker",
-    "tier_1": { "techniques": ["Heavy Slam"], "maneuvers": ["Armored Blow", "Heavy Flourish"], "special": "Gain 1 _Body_ _Unarmed_ Weapon." },
+    "tier_1": { "techniques": ["Heavy Slam"], "maneuvers": ["Armored Blow", "Heavy Flourish"], "special": "Gain 1 _Unarmed_ Weapon." },
     "tier_2": { "stances": ["Brutal Stag Stance"], "techniques": ["Heavy Thrash"], "maneuvers": ["Heavy Rebuke"] },
     "tier_3": {}
   },
@@ -293,8 +301,8 @@
     "type": "Unarmed",
     "flavor": "Every part of your body is a weapon, one that you weave together into a deadly dance.",
     "primary_role": "Striker",
-    "tier_1": { "techniques": ["Finishing Blow"], "maneuvers": ["Vicious Rend"] },
-    "tier_2": { "stances": ["Living Weapon Stance"], "techniques": ["Killing Path"], "maneuvers": ["Honed Body"] },
+    "tier_1": { "techniques": ["Finishing Blow"], "maneuvers": ["Vicious Rend"], "special": "Gain 1 _Unarmed_ Weapon." },
+    "tier_2": { "stances": ["Living Weapon Stance"], "techniques": ["Killing Path"], "maneuvers": ["Honed Body"], "special": "Gain 1 _Unarmed_ Weapon." },
     "tier_3": {}
   },
   {
@@ -303,8 +311,13 @@
     "type": "Unarmed",
     "flavor": "Your attacks are quick and vicious, catching foes unprepared with their speed and volume.",
     "primary_role": "Controller/Striker",
-    "tier_1": { "techniques": ["Rain of Blows"], "maneuvers": ["Quick Arts"] },
-    "tier_2": { "stances": ["Sudden Flurry Stance"], "techniques": ["Flowing Strikes"], "maneuvers": ["Flurry of Blows"] },
+    "tier_1": { "techniques": ["Rain of Blows"], "maneuvers": ["Quick Arts"], "special": "Gain 1 _Unarmed_ Weapon." },
+    "tier_2": {
+      "stances": ["Sudden Flurry Stance"],
+      "techniques": ["Flowing Strikes"],
+      "maneuvers": ["Flurry of Blows"],
+      "special": "Gain 1 _Unarmed_ Weapon."
+    },
     "tier_3": {}
   },
   {
@@ -312,39 +325,14 @@
     "category": "Unarmed",
     "type": "Unarmed",
     "flavor": "You allow your foes to undo themselves, carefully gauging their strikes and countering expertly.",
-    "primary_role": "Survivor/Striker",
-    "tier_1": { "techniques": ["Waiting Counter"], "maneuvers": ["Patient Arts", "Patient Guard"] },
-    "tier_2": { "stances": ["Waiting Storm Stance"], "techniques": ["Active Defense"], "maneuvers": ["Redirect Force"] },
-    "tier_3": {}
-  },
-  {
-    "name": "Way of the Solid Fist",
-    "category": "Unarmed",
-    "type": "Unarmed",
-    "flavor": "Your fists are like living stone, protecting you from ills even as they batter a foe.",
-    "primary_role": "",
-    "tier_1": { "techniques": ["Strong Right"], "maneuvers": ["Stunning Fist (Severing  Strike)"] },
-    "tier_2": { "stances": ["Solid Fist Stance"], "techniques": ["Crushing Left"], "maneuvers": ["Guard Up"] },
-    "tier_3": {}
-  },
-  {
-    "name": "Way of the Rising Leg",
-    "category": "Unarmed",
-    "type": "Unarmed",
-    "flavor": "You have adopted a martial arts style focused on kicks, granting you frightful agility.",
-    "primary_role": "",
-    "tier_1": { "techniques": ["Rising Leg"], "maneuvers": ["Sweeping Flourish"] },
-    "tier_2": { "stances": ["Rising Leg Stance"], "techniques": ["Falling Axe"], "maneuvers": ["Whirlwind Kick"] },
-    "tier_3": {}
-  },
-  {
-    "name": "Way of the Unbreakable Grip",
-    "category": "Unarmed",
-    "type": "Unarmed",
-    "flavor": "Once you grasp a foe they can make no escape, trapped as they are within your arms.",
-    "primary_role": "",
-    "tier_1": { "techniques": [], "maneuvers": [] },
-    "tier_2": { "stances": ["Unbreakable Grip Stance"], "techniques": [], "maneuvers": [] },
+    "primary_role": "Defender/Striker",
+    "tier_1": { "techniques": ["Leading Strike"], "maneuvers": ["Patient Arts", "Patient Guard"], "special": "Gain 1 _Unarmed_ Weapon." },
+    "tier_2": {
+      "stances": ["Waiting Storm Stance"],
+      "techniques": ["Active Defense"],
+      "maneuvers": ["Redirecting Flourish", "Redirect Force"],
+      "special": "Gain 1 _Unarmed_ Weapon."
+    },
     "tier_3": {}
   },
   {
@@ -352,9 +340,9 @@
     "category": "Unarmed",
     "type": "Unarmed",
     "flavor": "You turn your martial mastery inwards, ensuring that foes rarely get a chance to disrupt you.",
-    "primary_role": "",
-    "tier_1": { "techniques": ["Building Form (Adaptive Strike)"], "maneuvers": ["Poising Flourish"] },
-    "tier_2": { "stances": ["Perfected Poise Stance"], "techniques": ["Outmaneuver (Enfeebling Strike)"], "maneuvers": ["Root Breaker"] },
+    "primary_role": "Survivor/Striker",
+    "tier_1": { "techniques": ["Building Form"], "maneuvers": ["Poising Flourish"], "special": "Gain 1 _Unarmed_ Weapon." },
+    "tier_2": { "stances": ["Perfected Poise Stance"], "techniques": ["Outmaneuver"], "maneuvers": ["Root Breaker"], "special": "Gain 1 _Unarmed_ Weapon." },
     "tier_3": {}
   },
   {

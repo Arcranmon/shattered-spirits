@@ -14,7 +14,7 @@
           <h4 style="display: flex;">Tier I</h4>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="expand--body"
-          ><div v-if="discipline.HasTier1Special" class="special--box">
+          ><div style="margin-top: 0.5em;" v-if="discipline.HasTier1Special" class="special--box">
             <h4 style="display: inline; font-style: normal;">Special</h4>
             <br />
             <display-tooltip-text :string="discipline.Tier1Special" />
@@ -30,7 +30,12 @@
           <h4 style="display: flex;">Tier II</h4>
         </v-expansion-panel-header>
         <v-expansion-panel-content class="expand--body"
-          ><v-row style="margin-top: 0.5em;"
+          ><div style="margin-top: 0.5em;" v-if="discipline.HasTier2Special" class="special--box">
+            <h4 style="display: inline; font-style: normal;">Special</h4>
+            <br />
+            <display-tooltip-text :string="discipline.Tier1Special" />
+          </div>
+          <v-row style="margin-top: 0.5em;"
             ><v-col cols="4" v-for="stance in discipline.Tier2Stances" :key="stance"><stance-card :stance="stance" /></v-col>
             <v-col cols="4" v-for="tech in discipline.Tier2Techniques" :key="tech"><tech-card :tech="tech" /></v-col
             ><v-col cols="4" v-for="man in discipline.Tier2Maneuvers" :key="man"><maneuver-card :maneuver="man" :format_text="true" /></v-col></v-row
@@ -84,7 +89,7 @@ export default Vue.extend({
 .special--box {
   border: $border--black-standard;
   width: 95%;
-  background-color: $color--parchment;
+  background-color: $color--light-parchment;
   font-size: $font-size--s;
   text-align: center;
   margin: 0 auto;

@@ -91,6 +91,9 @@ class Discipline {
   public get Tier2Maneuvers() {
     return store.getters.getManeuversFromList(this.tier_2_.maneuvers)
   }
+  public get HasTier2Special() {
+    return this.tier_2_.special != undefined
+  }
   // ==========================================================
   // SERIALIZATION
   // ==========================================================

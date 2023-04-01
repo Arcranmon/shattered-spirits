@@ -30,7 +30,7 @@
   },
   {
     "name": "Block",
-    "effect": "Block Maneuvers are based on absorbing a blow to mitigate the overall damage. Many Actions and abilities reference Block Maneuvers."
+    "effect": "Blocks are a Resist with this keyword and are typically based on absorbing a blow to mitigate the overall damage. Many Actions and abilities reference Block Maneuvers."
   },
   { "name": "Blocking", "see": "Block" },
   { "name": "Blocked", "see": "Block" },
@@ -56,7 +56,11 @@
   },
   {
     "name": "Combo",
-    "effect": "When an Attack is listed as a Combo, treat it and all other Combo Attacks made this Turn as a single Attack for the purpose of all Gambits, except ones with the Edge keyword."
+    "effect": "When an Attack is listed as a Combo, treat it and all other Combo Attacks made this Turn as a single Attack for the purpose of all Gambits, except ones with the Edge keyword. If a special Effect would trigger based on the Attack, use the higher of the Combo Attacks to resolve it."
+  },
+  {
+    "name": "Counter",
+    "effect": "Counters are a Resist with this keyword based on throwing aside defense to attack. Many Actions and abilities reference Counter Resists."
   },
   {
     "name": "Cone",
@@ -67,13 +71,8 @@
     "effect": "Take the creature's total Value of a Token and divide it into the minimum number of Tokens. For example, a creature with Impaired 1x3 would have Impaired 3 after this Technique."
   },
   {
-    "name": "Counter",
-    "effect": "A Maneuver typically used in response to an Attack that allows a character to strike back against a foe. Each Turn, a character may use either a Defend Maneuver or a Counter Maneuver."
-  },
-  { "name": "Counters", "see": "Counter" },
-  {
-    "name": "Defend",
-    "effect": "A Maneuver typically used in response to an Attack that allows a character to mitigate harm in some way. Each Turn, a character may use either a Defend Maneuver or a Counter Maneuver."
+    "name": "Resist",
+    "effect": "A Maneuver typically used in response to an Attack that allows a character to strike back against a foe, mitigate damage, or dodge. Each Turn, a character may use a single Resist Maneuver."
   },
   { "name": "Defends", "see": "Defend" },
   {
@@ -101,12 +100,8 @@
     "effect": "Enchant effects are an effect that persists for multiple Turns or Rounds. A creature may only have one Enchant ability in effect at a time."
   },
   {
-    "name": "Environmental",
-    "effect": "This Maneuver must be Attached to the Use Environment Technique. Only a single Maneuver with this Tag may be Attached at a time."
-  },
-  {
     "name": "Evade",
-    "effect": "Evade Maneuvers typically involve avoiding a blow or quickly moving to avoid further damage. Many Actions and abilities reference Evade Maneuvers."
+    "effect": "Evades are a Resist with this keyword that typically involve avoiding a blow or quickly moving to avoid further damage. Many Actions and abilities reference Evade Resists."
   },
   { "name": "Evading", "see": "Evade" },
   {
@@ -181,7 +176,7 @@
   },
   {
     "name": "Parry",
-    "effect": "Parry Maneuvers are based on intercepting an attack with an attack of your own. Many Techniques and abilities reference Parry Maneuvers."
+    "effect": "Parries are a Resist with this keyword that typically require a Parrying Attack and are based on intercepting an attack with an attack of your own. Many Techniques and abilities reference Parry Resists."
   },
   {
     "name": "Pierce",
@@ -198,7 +193,7 @@
   },
   {
     "name": "Parrying",
-    "effect": "A Parrying Attack does no Damage and inflicts no Status unless otherwise specified."
+    "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified. If a Parrying Attack rolls greater than or equal to the Attack that triggered it, it is considered a success."
   },
   {
     "name": "Priority",
@@ -210,7 +205,7 @@
   },
   {
     "name": "Safe",
-    "effect": "All Punishes triggered by Movement this Turn cost an additional X, where X is this Technique's Safe value."
+    "effect": "All Punishes triggered by this Movement take a -X Penalty, where X is the Safe value."
   },
   {
     "name": "Scout",
@@ -240,7 +235,7 @@
   },
   {
     "name": "Sure Hit",
-    "effect": "The Cost of Evade Reactions is increased by its Sure Hit value against this Technique."
+    "effect": "The Cost and Cost of all Boosts for Evade Maneuvers are increased by this Attack's Sure Hit Value."
   },
   {
     "name": "Stall",
@@ -289,7 +284,7 @@
   },
   {
     "name": "Unblockable",
-    "effect": "The Cost of Block and Parry Maneuvers is increased by its Unblockable value against this Technique."
+    "effect": "The Cost and Cost of all Boosts for Block and Parry Maneuvers are increased by this Attack's Unblockable Value."
   },
   {
     "name": "Upkeep",
@@ -309,7 +304,7 @@
   },
   {
     "name": "Warding",
-    "effect": "The Cost of Counters is increased by its Warding value against this Technique."
+    "effect": "Counter/Punish Maneuvers take a -X Penalty against this Attack, where X is its Warding value."
   },
   {
     "name": "Weapon Attack",

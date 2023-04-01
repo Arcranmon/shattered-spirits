@@ -1,5 +1,13 @@
 [
   {
+    "name": "Aid",
+    "desc": "You aid a nearby ally, helping them to overcome struggles.",
+    "cost": "See Effect",
+    "effect": "Choose one of the below, then pay the associated cost:\n* 1 _Grit_/_Momentum_: Decrease your _Shift_ by one level this _Turn_. You may not choose this option if you have already moved beyond that distance. Remove _Prone_ from an adjacent ally.\n* X _Focus_/_Momentum_ (minimum 2): Choose an adjacent ally. They may immediately use the _Recover_ _Maneuver_, ignoring its normal cost, gaining X-2 _Fleeting_ Tokens of their choice this _Turn_.\n* 1 __Momentum_/_Reflex_: Swap spaces with an adjacent ally, adding [_Safe_ 1] to this Movement.",
+    "boost": "1 _Focus_/_Momentum_: You may choose two Effects, but must pay both costs.",
+    "type": "Stunt"
+  },
+  {
     "name": "Arcing Shot",
     "desc": "You fire your projectile high, giving a foe the chance to respond but increasing your range.",
     "cost": "1 _Focus_/_Momentum_",
@@ -17,12 +25,12 @@
   {
     "name": "Armored Shell",
     "desc": "You trust fully in armor, risking damage to better block an attack.",
-    "type": "Defend",
+    "type": "Resist",
     "keywords": ["Block"],
-    "cost": "1 _Grit_",
+    "cost": "0 _Grit_",
     "reqs": "Must be wearing Light or Heavy Armor that has _Durability_ remaining.",
     "trigger": "You are Attacked.",
-    "effect": "Increase your _Guard_ by 1 against the Triggering Attack, and reduce the _Grit_ cost to _Negate_ by 1. Your _Armor_ loses _Durability_ equal to half the Damage you take."
+    "effect": "Increase your _Guard_ by 1 against the Triggering Attack, and reduce the _Grit_ cost to _Negate_ by 1. Your _Armor_ loses _Durability_ equal to half the Damage you take, minimum one."
   },
   {
     "name": "Basic Feint",
@@ -35,13 +43,22 @@
     "type": "Gambit"
   },
   {
+    "name": "Basic Flourish",
+    "desc": "You feint one way before attacking another, providing yourself an advantage.",
+    "cost": "1 _Momentum_",
+    "reqs": "You complete a Single-Target Attack against a foe that is still adjacent to you.",
+    "effect": "Inflict _Push_ 1, _Vulnerable_ 1 (1 _Grit_/_Reflex_).",
+    "type": "Flourish"
+  },
+  {
     "name": "Basic Counter",
+    "keywords": ["Counter"],
     "desc": "You sacrifice your defense and capitalize on an opportunity to attack.",
     "cost": "1 _Momentum_",
     "trigger": "You are Attacked by an adjacent enemy.",
-    "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal.",
+    "effect": "You may not _Negate_ the triggering Attack. Immediately Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal.",
     "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Baiting Flourish",
@@ -68,14 +85,14 @@
     "cost": "2 _Momentum_/_Reflex_",
     "weapon": "Bladed",
     "trigger": "You are Attacked.",
-    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than the incoming Attack, reduce the Attack Roll by 2. Gain 1 _Guard_ if your _Bladed_ Weapon is _Heavy_.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you succeed, reduce the Attack Roll by 2. Gain 1 _Guard_ if your _Bladed_ Weapon is _Heavy_.",
     "special": "1 _Momentum_: If the enemy is within _Reach_ and you exceed their Attack Roll, resolve the _Weapon Attack_ as _Glancing_ against the Attacker.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Bloodthirsty Soil",
     "desc": "You create jagged spines in an instant, just in time to catch an incoming foe.",
-    "trigger": "A creature is _Forcibly Moved_ into Range.",
+    "trigger": "A creature is _Forcibly Moved_ in or into Range.",
     "range": "4",
     "cost": "2 _Grit_/_Momentum_",
     "effect": "Make an _Earthen_ space the creature is passing through with this _Forced Movement_ _Jagged_.",
@@ -89,15 +106,6 @@
     "reqs": "Single-Target Ranged _Thrown_ _Weapon Attack_.",
     "effect": "Add [_Sure Hit_ 1]. If the Target has not taken a _Turn_ yet this _Round_, deal +2 Damage on a _Hit_+ and instead add [_Sure Hit_ 2].",
     "type": "Gambit"
-  },
-  {
-    "name": "Skipping Throw",
-    "desc": "You ricochet your thrown weapons off the ground or an obstacle, finding a new avenue for attack.",
-    "cost": "1 _Momentum_",
-    "reqs": "Ranged _Thrown_ _Weapon Attack_.",
-    "weapon": "_Thrown_ (same as used for the original _Weapon Attack_)",
-    "effect": "Add [_Sure Hit_ 1] to the original Attack. Increase the Range by 3 or choose an _Obstacle_ within Range that would not be _Covered_. Make a Ranged _Thrown_ _Weapon Attack_ [_Glancing_] against a creature within Range 3 of that Obstacle. Treat the Obstacle as the origin of the Attack for the _Attack Line_, but the new _Attack Line_ may not pass through the Obstacle used for this effect. ",
-    "type": "Stunt"
   },
   {
     "name": "Bounding Feint",
@@ -135,7 +143,7 @@
     "trigger": "You are Attacked by a Ranged _Thrown_ _Weapon Attack_.",
     "effect": "Make an _Attack Roll_. If you roll greater than or equal to the incoming _Weapon Attack_, reduce the _Attack Roll_ by 2. Regardless, if the _Weapon Attack_ would _Embed_ do not, and immediately _Wield_ the Weapon in your _Open Hand_.",
     "special": "Choose any:\n* 1 _Momentum_/_Reflex_: Trigger is instead 'You are Attacked by a Ranged Attack'. To use this, the Attack must make use of some sort of physical projectile. \n* 2 _Momentum_ (only usable if you rolled greater than the incoming Attack): Immediately make an Attack with the Weapon against a Target within Range. If you used the previous _Boost_, treat it as a _Small Improvised_ Weapon.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Charge Killer",
@@ -154,8 +162,8 @@
     "range": "4",
     "trigger": "You are Attacked by an enemy within Range while you have _Stone Armor_.",
     "effect": "The Attacker must immediately pay 2 _Reflex_ or take 4 Damage and gain _Wounded_ 1.",
-    "special": "If your _Stone Armor_ is destroyed, you may use this _Reaction_ for 1 _Grit_/_Momentum_ and without using your _Defend_/_Counter_ for the _Turn_.",
-    "type": "Counter"
+    "special": "If your _Stone Armor_ is destroyed, you may use this _Reaction_ for 1 _Grit_/_Momentum_ and without using your _Resist_ for the _Turn_.",
+    "type": "Resist"
   },
   {
     "name": "Circular Slash",
@@ -169,13 +177,14 @@
   {
     "name": "Closing Counter",
     "desc": "You close the distance with a foe, pushing every closer.",
+    "keywords": ["Counter"],
     "reqs": "Light Armor Worn.",
     "cost": "2 _Momentum_/_Reflex_",
     "trigger": "You are Attacked",
     "move": "Step",
     "effect": "You must end your _Shift_ closer to Triggering Target than you started it.",
-    "boost": "1 _Momentum_/_Reflex_: Make a 1 AP Single-Target  _Strike_ against the triggering foe, or a 2 AP Single-Target _Strike_, adding [_Glancing_].",
-    "type": "Counter"
+    "boost": "1 _Momentum_/_Reflex_: Make a 1 AP Single-Target _Strike_ against the triggering foe, or a 2 AP Single-Target _Strike_, adding [_Glancing_].",
+    "type": "Resist"
   },
   {
     "name": "Close-Quarters Throw",
@@ -197,13 +206,50 @@
     "boost": "1 _Grit_: Instead, Target is an unoccupied _Earthen_ space. Create a _Boulder_ in that space."
   },
   {
+    "name": "Courageous Charge",
+    "desc": "You use an allies' courageous charge to lift the spirits of your companions.",
+    "type": "Reaction",
+    "cost": "2 _Focus_/_Momentum_",
+    "range": "6",
+    "trigger": "You or an ally within Range is targeted by a _Punish_ _Manuever_ that triggered off of Movement.",
+    "effect": "Grant the Target _Vigor_ 2. Grant the Target or another ally within Range _Courage_ 2."
+  },
+  {
     "name": "Covering Spear",
-    "desc": "You quickly lash out with your spear, interrupting .",
+    "desc": "You quickly lash out with your spear, interrupting a foe's assault.",
     "type": "Punish",
     "cost": "2 _Momentum_",
     "weapon": "Pole",
     "trigger": "An enemy within your Weapon's _Reach_ Attacks a creature other than you.",
     "effect": "Make a _Weapon Attack_ [_Glancing_] against the creature. Impose a _Penalty_ on the Attack Roll based on your Attack: -1 for a _Hit_ or -2 for a _Crit_. The foe may _Negate_ (2 _Focus_) to ignore this _Penalty_."
+  },
+  {
+    "name": "Crash Through",
+    "desc": "You ram through an obstacle, using brute strength to carry you through.",
+    "keywords": ["Earth"],
+    "type": "Reaction",
+    "cost": "1 _Grit_/_Momentum_",
+    "trigger": "You would Move into an _Obstacle_ with [_Rush_] Movement.",
+    "effect": "Immediately deal (Current _Phase_) + 4 _Damage_ to the _Obstacle_. If you do not destroy the Obstacle with this _Maneuver_, end your Movement.",
+    "boost": "1 _Grit_/_Momentum_ (when you fail to destroy the Obstacle): Deal an additional 3 Damage. You may repeat this _Boost_."
+  },
+  {
+    "name": "Crashing Earth",
+    "desc": "You sacrifice speed to imbue a strike with every ounce of the earth's power.",
+    "keywords": ["Earth"],
+    "reqs": "Technique is a Strike that makes a _Weapon Attack_.",
+    "cost": "2 _Grit_",
+    "effect": "Add _Stall_.  This Technique's Movement is now _None_. At the start of the _Phase_ you must declare that you are using this _Maneuver_. If you do not Move this _Phase_, you have _Advantage_ on the Attack. Regardless, add [_Pierce_ 2, _Unblockable_ 2] to a _Weapon Attack_ made as a part of this Technique.",
+    "type": "Stratagem"
+  },
+  {
+    "name": "Create Opening",
+    "desc": "You launch a quick assault, diverting a foe's attention so an ally can strike.",
+    "type": "Punish",
+    "cost": "1 _Momentum_",
+    "trigger": "An adjacent foe is Attacked.",
+    "effect": "The foe must pay 1 _Focus_. If they do not, the triggering Attack gains a +1 Bonus.",
+    "boost": "1 _Momentum_: Instead, Trigger is 'A foe within your _Reach_ is Attacked.'"
   },
   {
     "name": "Cutting Edge",
@@ -212,7 +258,7 @@
     "weapon": "Bladed",
     "trigger": "You are Attacked by a creature within your Weapon's _Reach_.",
     "effect": "Make a Melee _Weapon Attack_ but deal no Damage. On a _Graze_+, add _Wounded_ 1 and increase the cost to _Negate_ by 1.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Deadeye Shot",
@@ -237,11 +283,11 @@
     "name": "Deflect",
     "desc": "You block an attack, either with a weapon or your armor.",
     "keywords": ["Block"],
-    "cost": "2 _Grit_",
+    "cost": "1 _Grit_",
     "trigger": "You take Damage.",
-    "effect": "Increase your _Guard_ by 1 against the triggering Damage and reduce the _Grit_ cost to _Negate_ by 1.",
-    "boost": "2 _Grit_: Repeat the Effect. This Boost is repeatable.",
-    "type": "Defend"
+    "effect": "Increase your _Guard_ by 1 against the triggering Damage.",
+    "boost": "1 _Grit_: Repeat the Effect. This Boost is repeatable.",
+    "type": "Resist"
   },
   {
     "name": "Demolition",
@@ -257,19 +303,28 @@
     "cost": "1 _Grit_/_Momentum_",
     "trigger": "You complete a Melee Hafted _Weapon Attack_.",
     "weapon": "Hafted (same as used for the Attack)",
-    "effect": "Make a _Weapon Attack_ against an _Obstacle_ within _Reach_, dealing +1 Damage.",
+    "effect": "Make a _Weapon Attack_ against an _Obstacle_ within _Reach_, dealing +1 Damage. If you _Destroy_ it you may make the space _Veiled_.",
     "special": "1 _Grit_/_Momentum_: Instead of dealing +1 Damage, add [_Siege_].",
     "type": "Flourish"
   },
   {
+    "name": "Destructive Wake",
+    "desc": "You gather strength in your legs, shattering the ground behind you before you charge forth.",
+    "keywords": ["Earth"],
+    "type": "Reaction",
+    "cost": "1 _Grit_/_Momentum_",
+    "trigger": "Your _Turn_ begins and you have a valid _Shift_.",
+    "effect": "Add [_Blitz_] to all Movement this _Turn_. Before beginning your Movement, create a _Cone_ 2 _Area_ of _Rough_ Terrain opposite the direction of your Movement."
+  },
+  {
     "name": "Dodge",
     "desc": "You evade a blow, shifting away as the strike comes in.",
-    "type": "Defend",
+    "type": "Resist",
     "keywords": ["Evade"],
     "cost": "2 _Reflex_",
     "trigger": "You are Attacked.",
-    "effect": "Reduce the Attack Roll by 1.",
-    "boost": "2 _Reflex_: Repeat the Effect."
+    "effect": "Reduce the Attack Roll by 1. After fully resolving the effect, you may _Shift_ 1 [_Safe_ 2].",
+    "boost": "2 _Reflex_: Repeat the Effect. You may do this twice."
   },
   {
     "name": "Dueling Shield",
@@ -278,9 +333,9 @@
     "cost": "2 _Grit_/_Momentum_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You are Attacked by a creature within your Weapon's _Reach_.",
-    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than or equal to the incoming Attack, gain 1 + Shield _Speed_ / 2 _Guard_ and inflict _Push_ 1, _Impaired_ 1/_Disarmed_ (2 _Focus_/_Grit_). You must _Disarm_ a _Weapon_ used as a part of this _Attack_. If you roll lower, only gain 1 _Guard_, inflict _Vulnerable_ 1 (1 _Focus_/_Grit_), and your _Shield_ loses _Durability_ equal to half the Damage you take.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you succeed, gain 1 + (Shield _Speed_ / 2) _Guard_ and inflict _Push_ 1, _Impaired_ 1/_Disarmed_ (2 _Focus_/_Grit_). You must _Disarm_ a _Weapon_ used as a part of this _Attack_. If you roll lower, only gain 1 _Guard_, inflict _Vulnerable_ 1 (1 _Focus_/_Grit_), and your _Shield_ loses _Durability_ equal to half the Damage you take.",
     "special": "If the Target is under the effects of _Raise Guard_, gain a +1 Bonus to your Attack Roll.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Drive Deeper",
@@ -305,10 +360,19 @@
     "cost": "3 _Grit_, 1 _Charge_",
     "range": "3",
     "trigger": "A creature within Range is Attacked.",
-    "effect": "Create an _Earth Block_ adjacent to the Target and within Range. Resolve the Attack as if that Obstacle was there from the start. If the Attack would do more damage than the Obstacle's _Durability_, immediately destroy it and replace it with _Rough_ Terrain.",
-    "special": "If the Attack came from a creature adjacent to the Target (and the Target is willing) inflict _Push_ 1 on the Target, moving them directly from the Attacker, then resolve the Effect. Resolve the Attack as if they were still adjacent to the foe, just with the benefits of the _Obstacle_ being present.",
+    "effect": "Create an _Earth Block_ adjacent to the Target and within Range. Resolve the Attack as if that Obstacle was there from the start. If the Attack would do more damage than the Obstacle's _Durability_, immediately destroy it and replace it with _Rough_ Terrain. If the Attack came from a creature adjacent to the Target (and the Target is willing) inflict _Push_ 1 on the Target, moving them directly from the Attacker, then resolve the Effect. Resolve the Attack as if they were still adjacent to the foe, just with the benefits of the _Obstacle_ being present.",
+    "special": "At the end of the _Round_ lose all _Charges_ of this _Technique_ and gain an equal amount of _Grit_. If you would gain at least 2 _Grit_ in this way you may gain 2 less to create an _Earth Block_ in an adjacent space.",
     "boost": "Choose one:\n* 1 _Grit_: Instead, create an _Earth Pillar_.\n* 2 _Momentum_: If the Attacker is within Range 6 of the _Earth Block_ you launch the barricade at them. Remove the _Earth Block_ then make a _Weapon Attack_ against the triggering Attacker with a _Heavy Improvised Weapon_, ignoring all Ranged penalties, then place a space of _Rough Terrain_ adjacent to the Attacker in the direction the Attack came from.",
-    "type": "Defend"
+    "type": "Resist"
+  },
+  {
+    "name": "Engage",
+    "desc": "You obstruct a foe's movement, making it difficult for them to advance.",
+    "type": "Punish",
+    "cost": "1 _Grit_/_Momentum_",
+    "trigger": "A creature of your Size or smaller moves adjacent to you with Movement without [_Charge_] or [_Leap_].",
+    "effect": "The creature must pay 2 _Momentum_/_Reflex_. If they do not, their Movement immediately ends.",
+    "boost": "1 _Grit_/_Momentum_: Instead, Trigger is 'A creature one Size larger or smaller'."
   },
   {
     "name": "Faltering Ground",
@@ -351,11 +415,19 @@
     "desc": "You attack and defend simultaneously, striking out a foe.",
     "keywords": ["Block"],
     "reqs": "Light Armor Worn.",
-    "cost": "4 _Grit_/_Momentum_",
+    "cost": "3 _Grit_/_Momentum_",
     "trigger": "You are Attacked.",
     "effect": "Immediately Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal. On a _Graze_ gain 1 _Guard_ against the triggering Attack. On a _Hit_+, gain 2 _Guard_. On a _Crit_, gain 3 _Guard_.",
     "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
-    "type": "Counter"
+    "type": "Resist"
+  },
+  {
+    "name": "Guidance",
+    "desc": "You call out a command, granting an ally insight into a foe.",
+    "trigger": "A _Turn_ begins.",
+    "cost": "1 _Focus_/_Momentum_",
+    "effect": "Choose a creature you have _Insight_ on. For this _Turn_, allies of your choice may use your _Insight_ as if it were their own.",
+    "type": "Reaction"
   },
   {
     "name": "Harrying Spear",
@@ -390,7 +462,34 @@
     "reqs": "Heavy Armor Worn that has _Durability_ remaining.",
     "trigger": "You are Attacked.",
     "effect": "Immediately use _Heavy Slam_ against the Attacker, applying the _Guard_ granted from it to the triggering Attack. If you _Push_ or knock the creature _Prone_, deal no Damage to your _Armor_. Otherwise, it loses _Durability_ equal to half the Damage you take.",
-    "type": "Counter"
+    "type": "Resist"
+  },
+  {
+    "name": "Heavy Guard",
+    "desc": "You raise your guard temporarily, preparing for an assault.",
+    "keywords": ["Earth", "Block"],
+    "cost": "1 _Grit_",
+    "trigger": "You are Attacked.",
+    "effect": "Gain _Hobbled_ 1. Increase your _Guard_ by 2 against the triggering Attack and reduce the _Grit_ cost to _Negate_ by 1. If you are _Forcibly Moved_, reduce the distance by 2.",
+    "type": "Resist"
+  },
+  {
+    "name": "Heroic Exchange",
+    "desc": "You rapidly exchange blows with a foe, inspiring all with your duel.",
+    "keywords": ["Earth"],
+    "type": "Stunt",
+    "cost": "1 _Momentum_, 1 _Charge_",
+    "effect": "An adjacent _Marked_ Target must immediately use a 2 AP Single-Target Strike against you, paying no costs. After fully resolving the Attack, make a 2 AP Single-Target Strike against them. If you deal more Damage than your foe, grant an ally within Range 6 _Courage_ 2.",
+    "special": "At the end of the _Round_ lose all _Charges_ of this _Technique_, then lose an equivalent Value of _Courage_."
+  },
+  {
+    "name": "Heroic Strike",
+    "desc": "You reward an ally's courage with a surge of strength.",
+    "cost": "1 _Focus_/_Momentum_",
+    "range": "6",
+    "trigger": "An ally within Range would clear a _Courage_ Token.",
+    "effect": "The Target gains no Tokens from clearing their _Courage_. Instead, resolve the below effect, depending on Value being cleared:\n* 1 _Courage_: The Target may make a 1 AP Single-Target Strike, dealing +1 Damage.\n* 2 _Courage_: The Target may make a 2 AP Single-Target _Strike_, but must add [_Glancing_] but dealing +2 Damage.\n* 3 _Courage_: The Target may make a 2 AP Single-Target _Strike_, dealing +3 Damage.\n\nThe Target may not _Shift_ as a part of this Strike. The Target may choose to treat their Token as a lower value; in that case, they gain Tokens from the remaining Value. (If the Target has _Courage_ 3, they may resolve the _Courage_ 1 effect then gain Tokens as if they cleared _Courage_ 2, for example).",
+    "type": "Reaction"
   },
   {
     "name": "Hunter's Eye",
@@ -443,6 +542,26 @@
     "type": "Gambit"
   },
   {
+    "name": "Immovable Object",
+    "desc": "You draw upon the strength of the earth, rendering you immovable for an instant.",
+    "keywords": ["Earth"],
+    "cost": "1 _Grit_",
+    "trigger": "A creature is _Forcibly Moved_ into you.",
+    "effect": "Treat yourself as an _Obstacle_ instead of a creature when resolving this effect. Inflict _Dazed_ 1 (2 _Focus_) on the creature.",
+    "type": "Punish"
+  },
+  {
+    "name": "Lionheart Shield",
+    "desc": "You become a shining example of courage, leaping in front of an attack that would harm a friend.",
+    "keywords": ["Earth", "Block"],
+    "type": "Resist",
+    "cost": "2 _Grit_/_Focus_",
+    "trigger": "An adjacent ally is Attacked by a creature _Marked_ by you.",
+    "effect": "Move into the target's space, _Pushing_ them 1. You become the Target of the original Attack. If this was an Area attack resolve the Attack as [_Glancing_] against your ally if they are _Pushed_ out of the Area. If you are not _Defeated_ after this Attack gain _Courage_ 1, then grant your ally _Courage_ 1.",
+    "special": "You may pay any amount of the Cost or Boost by removing an equivalent Value of _Courage_, using any Tokens.",
+    "boost": "Choose any:\n* 1 _Reflex_: Trigger is instead 'An ally within _Step_ distance is Attacked.'\n* 1 _Grit_: You may _Push_ your ally an additional 2."
+  },
+  {
     "name": "Lunging Strike",
     "desc": "You slide your grip back on your spear, extending your reach.",
     "cost": "1 _Focus_/_Momentum_",
@@ -460,7 +579,18 @@
     "trigger": "You are targeted with a _Punish_ Maneuver.",
     "effect": "Reduce the Attack Roll by 1 as well as the _Reflex_ cost to _Negate_.",
     "boost": "1 _Reflex_: Repeat the effect. You may repeat this _Boost_ up to 3 times, for a total of -4 to the Attack Roll.",
-    "type": "Defend"
+    "type": "Resist"
+  },
+  {
+    "name": "Fortify Heart",
+    "desc": "You seize an ally's heart, warding it from harm.",
+    "keywords": ["Earth"],
+    "cost": "1 _Focus_",
+    "range": "6",
+    "trigger": "An ally within Range gains _Fear_.",
+    "effect": "Reduce the _Fear_ value by 1, starting with the smallest Token.",
+    "boost": "1 _Focus_: Repeat the effect. You may repeat this _Boost_ as many times as you wish.",
+    "type": "Reaction"
   },
   {
     "name": "Grasshopper's Leap",
@@ -471,15 +601,25 @@
     "type": "Stunt"
   },
   {
+    "name": "Herculean Throw",
+    "desc": "With titanic strength you redecorate with deadly intent.",
+    "keywords": ["Earth"],
+    "cost": "2 _Grit_/_Momentum_",
+    "effect": "You must Target a Size 1 _Obstacle_. Move the Obstacle up to 4 spaces, then make a _Weapon Attack_ with a _Heavy Improvised Weapon_ against a creature next to the Obstacle's final location. Draw the _Attack Line_ from your location to the target. Inflict _Fragile_ on the _Obstacle_. If you deal _Damage_ greater than the _Obstacle's_ _Durability_, destroy it.",
+    "special": "If the Target is at a lower _Elevation_ than you you have _Advantage_ on this Attack.",
+    "boost": "2 _Grit_/_Momentum_: Instead, Attack in a Burst 1 around the end location of the Obstacle and _Destroy_ it.",
+    "type": "Stunt"
+  },
+  {
     "name": "Impenetrable Stone",
     "desc": "Your barricades are unbreakable, defending all those nearby.",
     "range": "6",
-    "cost": "2 _Grit_",
+    "cost": "1 _Grit_",
     "keywords": ["Earth"],
     "trigger": "You or an ally within Range is Attacked and is _Covered_/_Obstructed_ by an _Earthen_ _Obstacle_.",
     "effect": "The target gains 2 _Guard_ against the triggering Attack.",
     "boost": "1 _Grit_: Trigger is instead 'An Attack passes a Size 1 _Earthen_ Obstacle in Range.' Move the _Earthen_ Obstacle 1 space, then resolve the Effect. This _Obstacle_ may not move into a space that is occupied.",
-    "type": "Defend"
+    "type": "Resist"
   },
   {
     "name": "Interposing Shield",
@@ -489,7 +629,7 @@
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "A Ranged Attack passes through a space within your Weapon's _Reach_.",
     "effect": "You become the target of the Attack. Immediately use _Shield Block_ at no cost against this Attack.",
-    "type": "Defend"
+    "type": "Resist"
   },
   {
     "name": "Liquid Earth",
@@ -511,6 +651,16 @@
     "type": "Reaction"
   },
   {
+    "name": "Mighty Leap",
+    "desc": "You draw upon the earth's strength, using it to launch yourself into the sky.",
+    "keywords": ["Earth"],
+    "type": "Stunt",
+    "cost": "1 _Grit_/_Momentum_",
+    "reqs": "You have a _Shift_ this _Turn_.",
+    "effect": "Increase your _Jump_ value by 2 for your next _Jump_ this Turn. You may make the space you start your _Jump_ from _Veiled_ until the end of the next _Phase_.",
+    "boost": "1 _Grit_: Increase your _Jump_ by an additional 1. You may repeat this _Boost_."
+  },
+  {
     "name": "Mobile Fortress",
     "desc": "You focus your attention on your barricade, sending it sliding about the battlefield.",
     "keywords": ["Earth", "Repeatable"],
@@ -529,12 +679,30 @@
     "type": "Punish"
   },
   {
+    "name": "Overpower",
+    "desc": "Your weapon is heavy, crashing through the feeble defenses of a foe.",
+    "keywords": ["Earth", "Edge"],
+    "cost": "2 _Momentum_/_Grit_",
+    "trigger": "An enemy starts a _Shift_ while within your _Reach_.",
+    "effect": "The Target must pay 2 _Reflex_ or 3 _Grit_. If they do not, gain a +1 Bonus to the Attack Roll and add _Prone_ on a _Hit_+.",
+    "type": "Gambit"
+  },
+  {
+    "name": "Mighty Flourish",
+    "desc": "Your attacks carry a heavy weight, punishing those that dare to block.",
+    "keywords": ["Earth"],
+    "type": "Flourish",
+    "cost": "1 _Grit_/_Momentum_",
+    "trigger": "You complete a _Weapon Attack_ and the opponent used a _Block_ _Maneuver_.",
+    "effect": "Deal 2 Damage, then inflict _Dazed_ 1, _Push_ 3 (1 _Focus_)."
+  },
+  {
     "name": "Measured Guard",
     "desc": "You defend yourself with a narrow margin, learning more of your foe as you do so.",
     "cost": "2 _Momentum_",
     "trigger": "You are Attacked.",
     "effect": "Use the _Deflect_/_Dodge_ _Defend_ with a reduced Cost of 1. Inflict _Knowledge_ 1 (2 _Focus_/_Momentum_) on the foe. If you take no Damage, instead inflict _Knowledge_ 2 (3 _Focus_/_Momentum_).",
-    "type": "Defend"
+    "type": "Resist"
   },
   {
     "name": "Palm Throw",
@@ -570,9 +738,9 @@
     "cost": "2 _Grit_/_Momentum_/_Reflex_",
     "weapon": "_Martial Arts_ (_Fist_)",
     "trigger": "You are Attacked by a target within your Weapon's _Reach_.",
-    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than the incoming Attack, reduce the Attack Roll by 1 and inflict _Exposed_ 1 (Always), or _Exposed_ 2 (Always) if you exceed their _Attack Roll_ by 3+.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you succeed, reduce the Attack Roll by 1 and inflict _Exposed_ 1 (Always), or _Exposed_ 2 (Always) if you exceed their _Attack Roll_ by 3+.",
     "boost": "1 _Momentum_: Resolve the Attack against the Target.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Piercing Point",
@@ -590,7 +758,16 @@
     "cost": "2 _Grit_",
     "trigger": "You take Damage while you have _Stone Armor_.",
     "effect": "Gain _Slowed_. Increase your _Guard_ by 2 against the Attack, reduce the _Grit_ cost to _Negate_ by 2, and reduce any _Forced Movement_ by 2. Your _Stone Armor_ takes the full Damage you do instead of half.",
-    "type": "Defend"
+    "type": "Resist"
+  },
+  {
+    "name": "Poising Flourish",
+    "desc": "You shift your stance as you finish an attack, opening new possibilities.",
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "You _Hit_+ with a Unarmed _Weapon Attack_.",
+    "effect": "You may change one of your _Stances_.",
+    "boost": "2 _Focus_/_Momentum_: Clear _Staggered_ before changing a _Stance_.",
+    "type": "Flourish"
   },
   {
     "name": "Power Through",
@@ -622,6 +799,15 @@
     "type": "Reaction"
   },
   {
+    "name": "Root Breaker",
+    "desc": "You focus your attack on a foe's stance, attempting to disrupt it with your strike.",
+    "cost": "2 _Focus_/_Momentum_",
+    "weapon": "Unarmed _Weapon Attack_.",
+    "effect": "After resolving the Attack, inflict _Staggered_ (X _Focus_/_Momentum_), where X is 1/2/3 on a _Graze_/_Hit_/_Crit_. If the original Attack was [_Glancing_], reduce this Cost by 1.",
+    "boost": "2 _Focus_/_Momentum_: Increase the cost to _Negate_ by 1 and add _Prone_.",
+    "type": "Gambit"
+  },
+  {
     "name": "Quick Arts",
     "desc": "Your unarmed attacks come forth at blinding speed, striking before foes have the chance to react.",
     "cost": "1 _Momentum_/_Reflex_",
@@ -649,6 +835,26 @@
     "type": "Punish"
   },
   {
+    "name": "Redirect Force",
+    "desc": "You guide a foe's attack away from you, minimizing its impact.",
+    "cost": "2 _Grit_/_Reflex_, 1 _Charge_",
+    "keywords": ["Parry"],
+    "weapon": "_Martial Arts_",
+    "trigger": "You are Attacked by a Single-Target Attack.",
+    "effect": "Make a Weapon Attack [_Parrying_]. On a success, gain 2 _Guard_ and reduce the _Grit_/_Reflex_ cost to _Negate_ by 1. If you exceed the Attack Roll by 3+, instead gain 3 _Guard_ and reduce the _Grit_/_Reflex_ cost to _Negate_ by 2",
+    "boost": "1 _Momentum_: If you succeed, resolve the triggering Attack as [_Glancing_] against a creature adjacent to you.",
+    "type": "Resist"
+  },
+  {
+    "name": "Redirecting Flourish",
+    "desc": "You hook a foe with your attack, drawing them where you want and attracting their attention.",
+    "cost": "2 _Momentum_",
+    "trigger": "You _Hit_+ with an Unarmed _Weapon Attack_.",
+    "effect": "Add _Pull_ 1, _Marked_ and increase the cost to _Negate_ by 1.",
+    "boost": "1 _Reflex_: You may _Shift_ 1 [_Safe_ 1] before resolving the Status inflicted by this Attack.",
+    "type": "Flourish"
+  },
+  {
     "name": "Safe Shot",
     "desc": "You are an expert at firing your weapon in close range and can always find the perfect angle.",
     "keywords": ["Edge"],
@@ -662,11 +868,11 @@
     "name": "Sacrificial Shield",
     "desc": "You haphazardously throw up your shield, risking your shield to defend.",
     "keywords": ["Block"],
-    "cost": "2 _Grit_",
+    "cost": "1 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You take Damage.",
-    "effect": "Gain 3 _Guard_ against the triggering Damage. Your _Shield_ loses _Durability_ equal to the Damage you take. If this _Damages_ your _Shield_, gain _Impaired_ 1.",
-    "type": "Defend"
+    "effect": "Gain 3 _Guard_ against the triggering Damage. Your _Shield_ loses _Durability_ equal to the Damage you take, minimum 2. If this _Damages_ your _Shield_, gain _Impaired_ 1.",
+    "type": "Resist"
   },
   {
     "name": "Sentry's Throw",
@@ -676,6 +882,7 @@
     "range": "Weapon Range",
     "trigger": "A creature within Range Attacks an ally.",
     "effect": "The Target chooses: Either they reduce their _Attack Roll_ by 2 and you make a single Ranged _Weapon Attack_ [_Glancing_] against them, or they resolve their Attack with no penalty and you make a single Ranged _Weapon Attack_ against them.",
+    "special": "At the end of the _Round_ lose all _Charges_ of this _Technique_ and gain an equal amount of _Momentum_.",
     "type": "Punish"
   },
   {
@@ -685,9 +892,9 @@
     "cost": "2 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You are Attacked.",
-    "effect": "Increase your _Guard_ by 1, reduce the _Grit_ cost to Negate by 1, and reduce the Attack Roll by 1 if _Melee_ or 2 if _Ranged_. Your _Shield_ loses _Durability_ equal to half the Damage you take.",
+    "effect": "Increase your _Guard_ by 1, reduce the _Grit_ cost to Negate by 1, and reduce the Attack Roll by 1 if _Melee_ or 2 if _Ranged_. Your _Shield_ loses _Durability_ equal to half the Damage you take, minimum 1.",
     "boost": "2 _Grit_: Increase your _Guard_ by 1 more. This Boost is repeatable.",
-    "type": "Defend"
+    "type": "Resist"
   },
   {
     "name": "Shield Parry",
@@ -696,9 +903,9 @@
     "cost": "2 _Grit_/_Momentum_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You are Attacked.",
-    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you roll greater than or equal to the incoming Attack, gain 1 + Shield _Speed_ / 2 _Guard_. If you roll lower, only gain 1 _Guard_ and your _Shield_ loses _Durability_ equal to half the Damage you take.",
+    "effect": "Make a _Weapon Attack_ [_Parrying_]. If you succeed, gain 1 + Shield _Speed_ / 2 _Guard_. If you roll lower, only gain 1 _Guard_ and your _Shield_ loses _Durability_ equal to half the Damage you take.",
     "special": "1 _Momentum_: Resolve the _Weapon Attack_ as [_Glancing_].",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Shrug Off",
@@ -747,7 +954,7 @@
     "trigger": "A _Hazard_ you are in would trigger while you are not _Prone_.",
     "effect": "_Shift_ before resolving the _Hazard_. This Movement is _Rolling_.",
     "boost": "1 _Reflex_: Trigger is instead 'You are Targeted by an _Area_ Effect.' _Shift_ before resolving the Effect. This Movement is _Rolling_. Still resolve the Triggering Attack but, if you are no longer in the _Area_, add _Glancing_.",
-    "type": "Defend"
+    "type": "Resist"
   },
   {
     "name": "Rending Slash",
@@ -808,6 +1015,15 @@
     "target": "A _Boulder_ within Range.",
     "effect": "You may use one of the _Boulder_'s _Interacts_ at a 2 _Grit_ discount. You may _Push_ the _Boulder_ an additional 3 spaces when used in this way. If you do not use an _Interact_, you may move the _Boulder_ 3 spaces.",
     "boost": "2 _Grit_: Instead, remove the _Boulder_ from the map and create a _Blast_ 1 _Hazard_ within 6 spaces of it. At the end of the next _Phase_ remove that _Hazard_ and place the _Boulder_ in the center of it. Deal Damage and inflict Status on all creatures in the _Area_ as if you used the 4 _Grit_ _Interact_.",
+    "type": "Stunt"
+  },
+  {
+    "name": "Skipping Throw",
+    "desc": "You ricochet your thrown weapons off the ground or an obstacle, finding a new avenue for attack.",
+    "cost": "1 _Momentum_",
+    "reqs": "Ranged _Thrown_ _Weapon Attack_.",
+    "weapon": "_Thrown_ (same as used for the original _Weapon Attack_)",
+    "effect": "Add [_Sure Hit_ 1] to the original Attack. Increase the Range by 3 or choose an _Obstacle_ within Range that would not be _Covered_. Make a Ranged _Thrown_ _Weapon Attack_ [_Glancing_] against a creature within Range 3 of that Obstacle. Treat the Obstacle as the origin of the Attack for the _Attack Line_, but the new _Attack Line_ may not pass through the Obstacle used for this effect. ",
     "type": "Stunt"
   },
   {
@@ -893,6 +1109,15 @@
     "type": "Reaction"
   },
   {
+    "name": "Titan's Grasp",
+    "desc": "You use your amplified strength to grasp a foe in a crushing grip.",
+    "keywords": ["Earth"],
+    "type": "Gambit",
+    "weapon": "_Martial Arts_",
+    "cost": "1 _Grit_",
+    "effect": "If you would _Grapple_, increase the cost to _Negate_ by 1. If you successfully inflict _Grappled_, deal 2 _True_ Damage."
+  },
+  {
     "name": "Tumble",
     "type": "Stunt",
     "cost": "1 _Reflex_",
@@ -915,14 +1140,25 @@
     "type": "Stunt"
   },
   {
+    "name": "Valiant Charge",
+    "desc": "You urge an ally to charge, allowing them to close in on a foe.",
+    "keywords": ["Earth"],
+    "cost": "2 _Focus_",
+    "range": "6",
+    "trigger": "A _Phase_ begins.",
+    "effect": "Choose an ally with _Courage_ within _Range_. They may immediately _Reposition_ _Shift_, but must end this _Shift_ closer to foes than they started it. If they end this _Shift_ next to a foe, they may remove a _Courage_ as if it was the end of their _Turn_.",
+    "type": "Reaction"
+  },
+  {
     "name": "Vicious Counter",
     "desc": "You lash out brutally, punishing a foe and drawing their attention.",
+    "keywords": ["Counter"],
     "cost": "1 _Momentum_",
     "reqs": "Light Armor Worn.",
     "trigger": "You are Attacked by an adjacent enemy.",
-    "effect": "Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal. On a _Graze_+ inflict _Impaired_ 1, _Marked_ (2 _Focus_). The creature is _Marked_ until the end of their next _Turn_. If the creature _Negates_, you gain _Exposed_ 1.",
+    "effect": "You may not Negate the triggering Attack. Attack the triggering enemy with a 1 AP Single-Target Strike, paying all Costs as normal. On a _Graze_+ inflict _Impaired_ 1, _Marked_ (2 _Focus_). The creature is _Marked_ until the end of their next _Turn_. If the creature _Negates_, you gain _Exposed_ 1.",
     "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target Strike.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Vicious Draw",
@@ -939,15 +1175,24 @@
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "An ally within your Weapon's _Reach_ is attacked.",
     "effect": "Use an Maneuver with 'Weapon: Shield', paying all _Costs_ as normal but granting your ally all effects. Any bonuses to the Maneuver granted by your _Stance_ or _Techniques_ you have used apply.",
-    "type": "Defend"
+    "type": "Resist"
   },
   {
     "name": "Vicious Rend",
     "desc": "You attack savagely, rapidly striking your foe with savage efficiency and leaving them reeling.",
     "cost": "1 _Momentum_",
     "trigger": "You make an Unarmed _Weapon Attack_.",
-    "effect": "On a _Graze_+, deal +1 Damage. On a _Hit_+, after resolving the Attack, you may convert up to two of the creature's _Exposed_ to _Wounded_.",
+    "effect": "On a _Graze_+, deal +1 Damage. On a _Hit_+, after resolving the Attack, you may convert up to two of the creature's _Vulnerable_ to _Wounded_.",
     "type": "Gambit"
+  },
+  {
+    "name": "Victory Cry",
+    "desc": "You rouse your allies' spirits as a foe falls before your might.",
+    "cost": "1 _Focus_/_Momentum_",
+    "range": "6",
+    "trigger": "An enemy within Range is _Defeated_.",
+    "effect": "Gain _Courage_ 1, then grant _Courage_ 2 to yourself or an ally within Range.",
+    "type": "Reaction"
   },
   {
     "name": "Waiting Hunter",
@@ -956,7 +1201,7 @@
     "trigger": "You are Attacked.",
     "reqs": "Light Armor Worn.",
     "effect": "Inflict _Insight_ 1 (1 _Focus_) on a _Graze_-, _Insight_ 2 (2 _Focus_) on a _Hit_, or _Insight_ 3 (3 _Focus_) on a _Crit_.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Warding Flourish",
@@ -971,11 +1216,12 @@
     "desc": "You spin away from an attack, using the momentum to propel you into another attack.",
     "cost": "2 _Momentum_/_Reflex_",
     "trigger": "You are Attacked.",
+    "keywords": ["Counter"],
     "reqs": "Light Armor Worn.",
     "move": "_Step_ [_Safe_ 1]",
-    "effect": "_Shift_ before resolving the rest of this Effect. Attack a creature other than the triggering enemy with a 1 AP Single-Target _Strike_, paying all Costs as normal.",
+    "effect": " You may not Negate the triggering Attack. _Shift_ before resolving the rest of this Effect. Attack a creature other than the triggering enemy with a 1 AP Single-Target _Strike_, paying all Costs as normal.",
     "boost": "Choose any:\n* 1 _Reflex_: Reduce the Attack Roll by 1.\n* 2 _Momentum_: Instead, use a 2 AP Single-Target _Strike_.",
-    "type": "Counter"
+    "type": "Resist"
   },
   {
     "name": "Wide Guard",
@@ -986,6 +1232,6 @@
     "trigger": "You or an adjacent ally are hit with an _Area_ Attack.",
     "effect": "Use the _Shield Block_ Reaction for no Cost, granting the benefits to you and all adjacent allies. Instead of your Shield taking Damage from each Attack, it instead takes the highest Damage dealt.",
     "boost": "1 _Grit_: Gain a benefit depending on the Area of the Triggering attack.\n* _Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is [_Glancing_] against allies in the adjacent spaces opposite the origin of the Attack.",
-    "type": "Defend"
+    "type": "Resist"
   }
 ]

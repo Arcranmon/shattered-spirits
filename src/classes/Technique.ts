@@ -178,7 +178,7 @@ class Technique {
   }
   public get SpeedHeader() {
     if (this.Speed.length == 1) return 'Speed ' + this.Speed
-    else return this.speed_
+    else return this.speed_ + ' Speed'
   }
   public get HasTarget() {
     return this.target_.length > 0

@@ -28,6 +28,7 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 BEFORE V0.1 (Earth)
 
+- Make Resists cheaper/more interesting.
 - Finish all Earth/Martial Disciplines.
 - Make everything except Character Creation show up well on mobile.
 - Correct the 'reading X' sections, and update the character creation page.
@@ -42,9 +43,11 @@ These are Techniques/Maneuvers that existed in previous content but are missing 
 - Jaws of the Earth (Tier III Piercing Shard)
 - Haft Strike/Spear Vault (new Staff specialty?)
 - Impaling Strike (Tier III spear tech)
+- Gilgamesh Swing (Tier III Shattering Granite)
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
+- Potential Resist refactor?
 - Complete all Spirit Masteries.
 - Refine Endurance and Health system based on how long combats should last.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.

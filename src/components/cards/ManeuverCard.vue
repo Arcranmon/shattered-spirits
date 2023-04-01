@@ -136,11 +136,8 @@ export default Vue.extend({
 .Flourish {
   background-color: #7c6939;
 }
-.Defend {
-  background-color: #77af83;
-}
-.Counter {
-  background-color: #e44646;
+.Resist {
+  background-color: #c97a39;
 }
 .Punish {
   background-color: #7574a7;

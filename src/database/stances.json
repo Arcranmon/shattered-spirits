@@ -44,6 +44,17 @@
     "effect": "On a _Graze_+ with an _Unarmed_ Weapon add _Push_ 1 and deal +1 Damage. On a _Crit_ with an _Unarmed_ Weapon, add _Prone_ and increase the cost to _Negate_ by 1."
   },
   {
+    "name": "Carnelian Heart Stance",
+    "desc": "You are a font of courage, rallying your allies with every move you make.",
+    "accumulate": "Once per _Round_, when you grant an ally _Courage_ on your _Turn_, gain _Focus_/_Momentum_ equal to the largest _Token_ you grant.",
+    "refresh": {
+      "focus": 3,
+      "grit": 1
+    },
+    "effect": "At _Refresh_ you may grant all allies within Range 6 _Courage_ 1, _Vigor_ 2.",
+    "special": "While within 6 spaces of you, your allies may clear any _Courage_ Token whenever they have the opportunity to _Negate_ and reduce the _Grit_/_Focus_ cost by the Value of said Token."
+  },
+  {
     "name": "Catalpa Guard Stance",
     "desc": "Your shield seems to always find itself into the optimal spot, warding you at all times and driving foes back.",
     "accumulate": "Once per _Round_, gain 2 _Grit_/_Momentum_ when you _Hit_+ the target of your _Raise Guard_ with a Shield _Weapon Attack_.",
@@ -146,7 +157,7 @@
   {
     "name": "Defiant Antlion Stance",
     "desc": "With your mix of mobility and armor you aggressively counter all assaults.",
-    "accumulate": "Once per _Round_, gain 3 _Momentum_ when you _Counter_ a creature you have _Marked_.",
+    "accumulate": "Once per _Round_, gain 3 _Momentum_ when you use a _Counter_ against a creature you have _Marked_.",
     "refresh": {
       "grit": 3,
       "reflex": 1
@@ -250,6 +261,27 @@
     "effect": "Deal +1 Damage with all _Unarmed_ _Weapon Attacks_ on a _Graze_+."
   },
   {
+    "name": "Marble Leg Stance",
+    "desc": "By exercising fine control you only use selectively pull yourself into the earth, allowing you to amplify your strength while retaining mobility.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you knock a creature _Prone_ on your _Turn_ without using a _Strike_.",
+    "refresh": {
+      "grit": 3,
+      "momentum": 2
+    },
+    "effect": "Add [_Charge_] to all Movement and increase your _Jump_ value by 1. Whenever you _Jump_ you may make either the space you leave or the space you land in _Veiled_ until the end of the next _Phase_."
+  },
+  {
+    "name": "Perfected Poise Stance",
+    "desc": "Your technique is perfect, with no movement wasted on any strike.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you inflict _Staggered_/_Slowed_ with an Unarmed _Weapon Attack_.",
+    "refresh": {
+      "reflex": 2,
+      "focus": 2
+    },
+    "effect": "Whenever you make an Unarmed _Weapon Attack_ you may _Shift_ 1 [_Safe_ 1]. Add [_Warding_ 1] to all _Unarmed_ _Weapon Attacks_.",
+    "special": "Your _Impaired_ Tokens never impact your _Unarmed_ _Weapon Attacks_."
+  },
+  {
     "name": "Piercing Shard Stance",
     "desc": "Stone can cut and pierce as well as metal in the right hands, an art that you have practiced well.",
     "accumulate": "Once per _Round_, gain 2 _Momentum_ when a creature takes Damage from a _Spire_/_Jagged_ Terrain or a creature in a _Jagged_ space takes Damage on your _Turn_.",
@@ -269,6 +301,17 @@
       "grit": 2
     },
     "effect": "You may use _Localized Tremor_ each _Phase_ at no _Cost_."
+  },
+  {
+    "name": "Reckless Bloodstone Stance",
+    "desc": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
+    "accumulate": "Once per _Round_, gain 2 _Focus_/_Momentum_ when you are attacked by a _Marked_ foe.",
+    "refresh": {
+      "focus": 2,
+      "grit": 2
+    },
+    "effect": "Whenever a _Marked_ foe attacks you, gain _Vigor_ 2. In addition, immediately gain _Courage_ 1 or grant it to an ally within _Range_ 6.",
+    "special": "Gain 1 _Charge_ of _Heroic Exchange_."
   },
   {
     "name": "Rending Hawk Stance",
@@ -293,6 +336,16 @@
     "special": "While using this _Stance_, gain 1 _Charge_ of _Earthen Aegis_."
   },
   {
+    "name": "Rooted Bedrock Stance",
+    "desc": "By pulling oneself down into the earth, earth spirits can magnify their perceived weight many times over and become an unmovable bastion.",
+    "accumulate": "Once per _Round_, gain 2 _Grit_/_Momentum_ at the end of a _Phase_ where you took a _Turn_ if you did not Move at all that _Phase_.",
+    "refresh": {
+      "grit": 4
+    },
+    "effect": "While in this Stance you may not use any _Evade_ Resists, but gain +1 _Guard_ every time you use a _Block_ _Resist_.",
+    "special": "Treat yourself as one Size larger for all effects. Reduce all _Forced Movement_ effects targeting you by 2."
+  },
+  {
     "name": "Sanguine Fang Stance",
     "desc": "Your weapon is a vicious blur, striking deep as it draws blood.",
     "accumulate": "Once per _Round_, gain 2 _Momentum_ when you increase a _Wounded_ Token to 3.",
@@ -302,6 +355,15 @@
     },
     "reqs": "Bladed Weapon _Wielded_.",
     "effect": "Whenever you would inflict _Wounded_ with a Bladed _Weapon Attack_ you may choose to increase the creature's existing _Wounded_ Tokens by a total Value equal to the _Wounded_ that would be inflicted, distributed as you wish."
+  },
+  {
+    "name": "Shattering Granite Stance",
+    "desc": "By drawing upon the earth the earthbound's strength becomes inhuman and a mighty driving force.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you deal at least 4 Damage with a _Forceful Push_ or _Herculean Throw_/_Gilgamesh Swing_.",
+    "refresh": {
+      "grit": 4
+    },
+    "effect": "Add _Push_ 2 to all _Weapon Attacks_, or make the _Push_ it inflicts _Forceful_."
   },
   {
     "name": "Shielded Devil Stance",
@@ -391,6 +453,7 @@
       "reflex": 2,
       "focus": 2
     },
-    "effect": "Gain a +1 _Bonus_ to all _Attack Rolls_ with _Martial Arts_ _Weapon Attacks_ against creatures that have Attacked you this _Round_."
+    "effect": "Gain a +1 _Bonus_ to all _Attack Rolls_ with _Martial Arts_ _Weapon Attacks_ against creatures that have Attacked you this _Round_.",
+    "special": "Gain 1 _Charge_ of _Redirect Force_."
   }
 ]

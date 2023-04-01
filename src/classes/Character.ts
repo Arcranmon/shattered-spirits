@@ -31,7 +31,7 @@ class Character {
   private weapon_weight_: number
 
   kDefaultManeuvers = ['Quick Strike', 'Strong Strike', 'Leap']
-  kDefaultReactions = ['Retrieve', 'Reorient', 'Deflect', 'Dodge', 'Opportunity Attack', 'Counter']
+  kDefaultReactions = ['Retrieve', 'Reorient', 'Deflect', 'Dodge', 'Opportunity Attack', 'Basi cCounter']
 
   kMaxWeaponWeight = 8
   kMaxSpiritStances = 3
