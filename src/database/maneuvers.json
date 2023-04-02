@@ -131,7 +131,7 @@
     "desc": "You move carefully, ensuring that you leave no openings.",
     "reqs": "No Armor Worn.",
     "cost": "2 _Reflex_",
-    "effect": "All Attack Rolls against you this _Turn_ take a -1 Penalty. Once this _Turn_, inflict _Insight_ 1 (1 _Focus_) on a creature you move out of adjacency with.",
+    "effect": "All Attack Rolls against you this _Turn_ take a -1 Penalty. Once this _Turn_, inflict _Insight_ 1 on a creature you move out of adjacency with.",
     "type": "Stunt"
   },
   {
@@ -366,6 +366,15 @@
     "type": "Resist"
   },
   {
+    "name": "Earthen Truth",
+    "desc": "You extend your senses, attempting to find where the pulse of the earth is strongest.",
+    "trigger": "A creature ends their _Turn_ in your _Seismic Sense_.",
+    "cost": "2 _Focus_",
+    "effect": "The target must choose their Techniques publicly next _Round_.",
+    "special": "You may pay this _Cost_ by removing an equivalent amount of _Insight_ on the creature.",
+    "type": "Reaction"
+  },
+  {
     "name": "Engage",
     "desc": "You obstruct a foe's movement, making it difficult for them to advance.",
     "type": "Punish",
@@ -373,6 +382,16 @@
     "trigger": "A creature of your Size or smaller moves adjacent to you with Movement without [_Charge_] or [_Leap_].",
     "effect": "The creature must pay 2 _Momentum_/_Reflex_. If they do not, their Movement immediately ends.",
     "boost": "1 _Grit_/_Momentum_: Instead, Trigger is 'A creature one Size larger or smaller'."
+  },
+  {
+    "name": "Expose Flaw",
+    "desc": "You use your seismic sense to reveal a flaw in a foe's defenses, opening them to attack.",
+    "keywords": ["Earth"],
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "An ally Attacks a creature within your _Seismic Sense_.",
+    "effect": "Add _Pierce_ 1 to the Attack.",
+    "special": "You may allow your ally treat your topmost _Insight_ Token on the Target as their own. If you do, add [_Unblockable_ X], where X is the value of the _Insight_ Token.",
+    "type": "Punish"
   },
   {
     "name": "Faltering Ground",
@@ -384,6 +403,24 @@
     "effect": "The Target must pay 1 _Reflex_. If they do not, gain a +1 _Bonus_ to the _Attack Roll_ and add [_Sure Hit_ 1].",
     "boost": "2 _Focus_/_Momentum_: Increase the cost to _Negate_ by 1. If the creature does not _Negate_ they gain _Prone_ before you make your Attack.",
     "type": "Gambit"
+  },
+  {
+    "name": "Fatal Flaw",
+    "desc": "You expose a foe's weakness, allowing an ally to unleash a devastating assault.",
+    "keywords": ["Earth"],
+    "cost": "2 _Focus_/_Momentum_",
+    "range": "6",
+    "trigger": "An ally Attacks a creature within your _Seismic Sense_ that you have _Insight_ on.",
+    "effect": "You may allow your ally treat your topmost _Insight_ Token on the Target as their own. If you do, after resolving the Attack inflict _Wounded_ X, where X is the value of the _Insight_ Token.",
+    "type": "Punish"
+  },
+  {
+    "name": "Find the Pulse",
+    "desc": "You extend your senses, attempting to find where the pulse of the earth is strongest.",
+    "trigger": "_Refresh_ ends.",
+    "cost": "2 _Focus_",
+    "effect": "Roll 2d6, then assign one to direction and one to distance. Mark the space that distance and direction from you. The space must be _Earthen_; if that is impossible with the given rolls, this _Maneuver_ fails. If you end your _Turn_ in that space this round, immediately gain _Seismic Sense_ in a _Blast_ 4, centered on that space.",
+    "type": "Reaction"
   },
   {
     "name": "Floating Feet",
@@ -601,6 +638,17 @@
     "type": "Stunt"
   },
   {
+    "name": "Grim Defiance",
+    "desc": "You harden your resolve, weathering an attack and encouraging your allies.",
+    "cost": "2 _Grit_/Focus_",
+    "keywords": ["Earth"],
+    "trigger": "You take Damage.",
+    "range": "6",
+    "effect": "Choose one:\n* Gain 1 _Guard_ against the triggering Attack and grant an ally within Range _Courage_ 1.\n* Grant an ally within Range _Vigor_ 2, _Courage_ 2.\n\nIf you have no _Endurance_, resolve both effects.",
+    "special": "You may pay the Cost of this _Maneuver_ by removing the appropriate value of _Courage_.",
+    "type": "Resist"
+  },
+  {
     "name": "Herculean Throw",
     "desc": "With titanic strength you redecorate with deadly intent.",
     "keywords": ["Earth"],
@@ -609,6 +657,17 @@
     "special": "If the Target is at a lower _Elevation_ than you you have _Advantage_ on this Attack.",
     "boost": "2 _Grit_/_Momentum_: Instead, Attack in a Burst 1 around the end location of the Obstacle and _Destroy_ it.",
     "type": "Stunt"
+  },
+  {
+    "name": "Heroic Stand",
+    "desc": "You fill an ally in a dire spot with courage to keep them in the battle.",
+    "keywords": ["Earth"],
+    "cost": "1 _Focus_/_Momentum_",
+    "range": "4",
+    "trigger": "An ally within Range takes Damage.",
+    "effect": "The ally may remove any value of _Courage_ to spend as _Grit_/_Focus_ against the triggering Attack, either as a _Resist_ or to _Negate_. Grant the ally _Courage_ 1 after the Attack resolves.",
+    "boost": "1 _Focus_/_Momentum_: Instead, grant _Courage_ 2, _Vigor_ 2 after the Attack.",
+    "type": "Reaction"
   },
   {
     "name": "Impenetrable Stone",
@@ -632,7 +691,7 @@
     "type": "Resist"
   },
   {
-    "name": "Liquid Earth",
+    "name": "Grim Diquid Earth",
     "desc": "You run forward, turning earth to fluid as you dart through it.",
     "keywords": ["Earth"],
     "cost": "1 _Focus_/_Momentum_",
@@ -781,6 +840,16 @@
     "type": "Gambit"
   },
   {
+    "name": "Predictive Waves",
+    "desc": "You read a foe's movements, preparing a deadly counter.",
+    "keywords": ["Earth"],
+    "cost": "1 _Focus_/_Momentum_",
+    "trigger": "A creature starts their _Turn_ within your _Seismic Sense_ or enters it.",
+    "effect": "Immediately create a _Cone_ 3 _Area_, with the start of the _Cone_ in the Target's space. If they end their turn in an _Earthen_ space in the _Area_, inflict _Insight_ 1, _Exposed_ 1.",
+    "boost": "Choose any:\n* 1 _Focus_/_Momentum_ (paid when the Target provokes a _Punish_ Maneuver): The _Punish_ Maneuver gains a +1 _Bonus_ on the first _Attack Roll_ made as a part of the _Punish_.\n* 2 _Focus_: Instead, _Area_ is _Blast_ 3. Center it on the Target.",
+    "type": "Punish"
+  },
+  {
     "name": "Punishing Bash",
     "desc": "You lash out with your shield, forcing a foe to keep their attention on you.",
     "cost": "2 _Grit_/_Momentum_",
@@ -791,12 +860,29 @@
     "type": "Punish"
   },
   {
+    "name": "Read the Pulse",
+    "desc": "You feel the subtle shifts of a foe, learning their intent.",
+    "trigger": "You create _Seismic Sense_ in an occupied space.",
+    "cost": "1 _Focus_",
+    "effect": "Gain _Insight_ 1 on the creature in that space. The GM must tell you the _Phase_ of that creature's next _Technique_.",
+    "type": "Reaction"
+  },
+  {
     "name": "Recover",
     "desc": "You use your grit, reflex, and focus to push through hindrances.",
     "cost": "None",
     "trigger": "Your _Turn_ ends.",
     "effect": "Expend any amount of _Grit_, _Reflex_, and _Focus_, then remove Afflictions/Statuses of your choice according to their listed Recovery rules.",
     "type": "Reaction"
+  },
+  {
+    "name": "Reverberations",
+    "desc": "Attacks create vibrations, ones that you use to glean more information.",
+    "keywords": ["Earth"],
+    "type": "Punish",
+    "cost": "1 _Focus_",
+    "trigger": "A foe is _Hit_+ or knocked _Prone_ within your _Seismic Sense_.",
+    "effect": "Inflict _Insight_ 1 on the creature. If the foe is knocked _Prone_ or _Defeated_ as a part of the Trigger, instead either inflict _Insight_ 1 in a _Burst_ 1 around the Target, or _Insight_ 2 on the Target."
   },
   {
     "name": "Root Breaker",
@@ -875,6 +961,14 @@
     "type": "Resist"
   },
   {
+    "name": "Seismic Scouting",
+    "desc": "You almost passively acquire knowledge on foes, creating an easy path to defeat them.",
+    "keywords": ["Earth", "Repeatable"],
+    "cost": "1 _Focus_",
+    "effect": "_Scout_ a creature in your _Seismic Sense_. If they have 0 of any _Token_, inflict _Vulnerable_ 1.",
+    "type": "Stunt"
+  },
+  {
     "name": "Sentry's Throw",
     "desc": "You swiftly fling a weapon at a creature who takes a hostile action within range.",
     "cost": "2 _Momentum_, 1 _Charge_",
@@ -884,6 +978,16 @@
     "effect": "The Target chooses: Either they reduce their _Attack Roll_ by 2 and you make a single Ranged _Weapon Attack_ [_Glancing_] against them, or they resolve their Attack with no penalty and you make a single Ranged _Weapon Attack_ against them.",
     "special": "At the end of the _Round_ lose all _Charges_ of this _Technique_ and gain an equal amount of _Momentum_.",
     "type": "Punish"
+  },
+  {
+    "name": "Seismic Aim",
+    "desc": "You use the earth's senses to aim an assault, seeking the holes in a foe's defenses.",
+    "cost": "2 _Focus_/_Momentum_",
+    "keywords": ["Earth", "Edge"],
+    "reqs": "You are on _Earthen_ Terrain and this is a Single-Target Attack against a creature on _Earthen_ Terrain.",
+    "effect": "Treat the foe as in your _Seismic Sense_ this _Turn_.",
+    "special": "If the foe is already within your _Seismic Sense_ instead gain a +1 _Bonus_.",
+    "type": "Gambit"
   },
   {
     "name": "Shield Block",
@@ -945,6 +1049,17 @@
     "boost": "1 _Momentum_/_Reflex_: Trigger is instead 'A _Turn_ begins'.",
     "type": "Reaction"
   },
+  {
+    "name": "True Grit",
+    "desc": "You push an ally beyond their limits, filling their heart with images of true heroism.",
+    "cost": "4 _Grit_/Focus_",
+    "keywords": ["Earth"],
+    "trigger": "You or an ally within Range loses all _Endurance_ but still has _Health_ remaining.",
+    "range": "6",
+    "effect": "Remove all of the Target's _Courage_. They immediately gain _Endurance_ equal to that value + 3. Then, grant them _Courage_ 1. This _Maneuver_ may only target a creature once per combat.",
+    "type": "Reaction"
+  },
+
   {
     "name": "Tumbling Evade",
     "desc": "You duck out of the way of an incoming blast, avoiding with uncanny ease.",
@@ -1200,7 +1315,7 @@
     "cost": "1 _Focus_/_Momentum_",
     "trigger": "You are Attacked.",
     "reqs": "Light Armor Worn.",
-    "effect": "Inflict _Insight_ 1 (1 _Focus_) on a _Graze_-, _Insight_ 2 (2 _Focus_) on a _Hit_, or _Insight_ 3 (3 _Focus_) on a _Crit_.",
+    "effect": "Inflict _Insight_ 1 on a _Graze_-, _Insight_ 2 on a _Hit_, or _Insight_ 3 on a _Crit_.",
     "type": "Resist"
   },
   {
