@@ -1,91 +1,66 @@
 <template>
-  <div style="padding: 1em;">
+  <div>
     <h2>Afflictions and Status</h2>
-    <div v-html="instantEffectText" />
-    <div v-for="effect in instantEffects">
-      <display-tooltip-text v-if="!effect.hasOwnProperty('see')" :string="'**' + effect.name + '**: ' + effect.effect" />
-    </div>
-    <br />
-    <div v-html="afflictionText" />
-    <div>
-      <show-cards :inputs="afflictions" job="Affliction" :collapse="false" />
-    </div>
-    <br />
-    <div v-html="elementalAfflictionText" />
-    <div>
-      <show-cards :inputs="elementalAfflictions" job="Affliction" :collapse="false" />
-    </div>
-    <br />
-    <div v-html="mentalAfflictionText" />
-    <div>
-      <show-cards :inputs="mentalAfflictions" job="Affliction" :collapse="false" />
-    </div>
-    <br />
-    <div v-html="statusText" />
-    <div>
-      <show-cards :inputs="statuses" job="Status" :collapse="false" />
-    </div>
-    <div v-html="spiritStatusText" />
-    <div>
-      <show-cards :inputs="statuses" job="Spirit Status" :collapse="false" />
-    </div>
+    <span v-if="isMobile">
+      <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
+        <v-col cols="12"
+          ><v-select v-model="selectedStatuses" :items="statusCategories" attach label="Status Categories" multiple filled outlined></v-select> </v-col></v-row
+      ><br /><v-select
+        v-model="selectedStatus"
+        :items="statuses"
+        item-text="Name"
+        return-object
+        attach
+        label="Selected Status"
+        filled
+        outlined
+        style="margin-left: 0.5em; margin-right: 0.5em;"
+      ></v-select
+    ><status-card v-if="selectedStatus != null" :status="selectedStatus" style="width: 40em; margin-left: auto; margin-right: auto;" /></v-col> </v-row
+    ></span>
+    <span v-else>
+      <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
+        <v-col cols="6"
+          ><v-select v-model="selectedStatuses" :items="statusCategories" attach label="Status Categories" multiple filled outlined></v-select> </v-col
+      ></v-row>
+      <v-row class="page">
+        <v-col cols="auto" class="sidebar">
+          <v-btn-toggle borderless overflow-auto
+            ><div v-for="status in statuses" style="width: 100%;" v-bind:key="status">
+              <v-btn @click="selectedStatus = status" class="button--style" depressed tile block>
+                {{ status.Name }}
+              </v-btn>
+            </div>
+          </v-btn-toggle></v-col
+        >
+        <v-col> <status-card v-if="selectedStatus != null" :status="selectedStatus" style="width: 40em;" /></v-col> </v-row
+    ></span>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import InstantEffectText from '@/database/text_files/combat_rules/instant_effects.txt'
-import StatusText from '@/database/text_files/combat_rules/statuses.txt'
-import AfflictionText from '@/database/text_files/combat_rules/afflictions.txt'
-import ShowCards from '@/components/cards/ShowCards.vue'
-import ElementalAfflictionText from '@/database/text_files/combat_rules/elemental_afflictions.txt'
-import MentalAfflictionText from '@/database/text_files/combat_rules/mental_afflictions.txt'
+import StatusCard from '@/components/cards/StatusCard.vue'
 import { store } from '@/store'
 export default Vue.extend({
   name: 'afflictions-and-status',
-  components: { ShowCards },
+  components: { StatusCard },
+  data() {
+    return {
+      statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction'],
+      selectedStatuses: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction'],
+      selectedStatus: null,
+    }
+  },
   computed: {
     statuses: function () {
-      return this.$store.getters.getStatuses()
-    },
-    statusText: function () {
-      return this.$marked.parse(StatusText)
-    },
-    instantEffects: function () {
-      return this.$store.getters.getInstantEffects()
-    },
-    instantEffectText: function () {
-      return this.$marked.parse(InstantEffectText)
-    },
-    afflictions: function () {
-      return this.$store.getters.getAfflictionsByType('standard')
-    },
-    afflictionText: function () {
-      return this.$marked.parse(AfflictionText)
-    },
-    elementalAfflictions: function () {
-      return this.$store.getters.getAfflictionsByType('elemental')
-    },
-    elementalAfflictionText: function () {
-      return this.$marked.parse(ElementalAfflictionText)
-    },
-    mentalAfflictions: function () {
-      return this.$store.getters.getAfflictionsByType('mental')
-    },
-    mentalAfflictionText: function () {
-      return this.$marked.parse(MentalAfflictionText)
+      return this.$store.getters.getFilteredStatuses(this.selectedStatuses).sort((a, b) => (a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0))
     },
   },
 })
 </script>
 
 <style scoped lang="scss">
-.skill--box {
-  border-radius: 1em;
-  border: $border--black-standard;
-  margin: auto;
-  margin-top: 1em;
-  width: 40%;
-  align-self: center;
+.a {
 }
 </style>

@@ -29,11 +29,11 @@
             >
           </v-row>
           <v-row no-gutters>
-            <v-col cols="3"><b>Focus:</b></v-col
-            ><v-col cols="2"> {{ character.Focus }}</v-col>
+            <v-col cols="3"><b>Poise:</b></v-col
+            ><v-col cols="2"> {{ character.Poise }}</v-col>
             <v-col cols="3"
-              ><v-btn inline x-small @click=";(character.Focus += 1), $emit('changed')" color="green">+</v-btn>
-              <v-btn inline x-small @click=";(character.Focus -= 1), $emit('changed')" color="red">-</v-btn></v-col
+              ><v-btn inline x-small @click=";(character.Poise += 1), $emit('changed')" color="green">+</v-btn>
+              <v-btn inline x-small @click=";(character.Poise -= 1), $emit('changed')" color="red">-</v-btn></v-col
             >
           </v-row>
           <v-row no-gutters>

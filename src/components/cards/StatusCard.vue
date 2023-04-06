@@ -5,14 +5,24 @@
         <h3 style="display: inline; font-style: normal;">{{ status.Name }}</h3>
       </div>
       <div class="status--keywords">
+        {{ status.Type }}
         <span v-if="(status.Desc.length > 0)" style="font-style: italic;">{{ status.Desc }}<br /></span>
       </div>
     </div>
     <div class="status--content">
       <display-tooltip-text :string="status.EffectHeader" />
-      <display-tooltip-text v-if="status.HasSpecial" :string="status.SpecialHeader" />
-      <display-tooltip-text :string="status.RemoveHeader" />
-      <display-tooltip-text v-if="status.HasRecovery" :string="status.RecoveryHeader" />
+      <div class="status--format" v-if="status.HasSpecial">
+        <display-tooltip-text :string="status.SpecialHeader" />
+      </div>
+      <div class="status--format" v-if="status.HasReacts">
+        <display-tooltip-text :string="status.ReactsHeader" />
+      </div>
+      <div class="status--format" v-if="status.HasRemove">
+        <display-tooltip-text :string="status.RemoveHeader" />
+      </div>
+      <div class="status--format" v-if="status.HasRecovery">
+        <display-tooltip-text :string="status.RecoveryHeader" />
+      </div>
     </div>
   </div>
 </template>

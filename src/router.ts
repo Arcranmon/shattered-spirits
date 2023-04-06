@@ -8,7 +8,9 @@ import CombatBasics from '@/pages/combat/combat-basics/index.vue'
 import AfflictionsAndStatus from '@/pages/combat/afflictions-and-status/index.vue'
 import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
 import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
-import TerrainAndObstacles from '@/pages/combat/terrain-and-obstacles/index.vue'
+
+import Terrain from '@/pages/combat/terrain/index.vue'
+import Obstacles from '@/pages/combat/obstacles/index.vue'
 
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
@@ -155,11 +157,19 @@ const r = new Router({
       },
     },
     {
-      path: '/terrain-and-obstacles',
-      component: TerrainAndObstacles,
-      name: 'terrain-and-obstacles',
+      path: '/terrain',
+      component: Terrain,
+      name: 'terrain',
       meta: {
-        title: 'Terrain and Obstacles',
+        title: 'Terrain',
+      },
+    },
+    {
+      path: '/obstacles',
+      component: Obstacles,
+      name: 'obstacles',
+      meta: {
+        title: 'Obstacles',
       },
     },
     {

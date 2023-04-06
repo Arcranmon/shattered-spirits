@@ -34,11 +34,21 @@ export default {
   background: $color--background !important;
 }
 .earth-circle {
-  width: 40%;
+  height: 30em;
   border-radius: 50%;
   float: left;
   display: block;
   border: thick solid $color--earth;
   margin-right: 2em;
+}
+.earth-circle-mobile {
+  height: 30em;
+  border-radius: 50%;
+  display: block;
+  border: thick solid $color--earth;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 </style>

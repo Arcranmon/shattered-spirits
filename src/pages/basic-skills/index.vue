@@ -3,11 +3,11 @@
     <h2>Basic Techniques</h2>
     <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" />
     <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Unarmed Strike', 'Armed Strike', 'Run'])" job="Techniques" :collapse="false" />
-    <show-cards class="centered-single" :inputs="this.$store.getters.getTechniquesFromList(['Prepare'])" job="Techniques" :collapse="false" :cols="1" />
+    <show-cards v-bind:class="use_single" :inputs="this.$store.getters.getTechniquesFromList(['Prepare'])" job="Techniques" :collapse="false" :cols="1" />
     <h2>Basic Stratagems</h2>
     <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stratagem')" />
     <show-cards
-      class="centered-duo"
+      v-bind:class="use_duo"
       :inputs="[$store.getters.getManeuver('Quicken'), $store.getters.getManeuver('Strengthen')]"
       job="Maneuvers"
       :collapse="false"
@@ -20,7 +20,7 @@
       job="Maneuvers"
       :collapse="false"
     /><show-cards
-      class="centered-duo"
+      v-bind:class="use_duo"
       :inputs="[$store.getters.getManeuver('Tumble'), this.$store.getters.getManeuver('Use Environment')]"
       job="Maneuvers"
       :collapse="false"
@@ -33,7 +33,7 @@
       job="Maneuvers"
       :collapse="false"
     /><show-cards
-      class="centered-duo"
+      v-bind:class="use_duo"
       :inputs="[$store.getters.getManeuver('Dodge'), this.$store.getters.getManeuver('Shield Block')]"
       job="Maneuvers"
       :collapse="false"
@@ -46,26 +46,22 @@
       job="Maneuvers"
       :collapse="false"
     />
-    <v-row>
-      <v-col :cols="6">
-        <h2>Basic Gambits</h2>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
-          :inputs="[$store.getters.getManeuver('Basic Feint')]"
-          job="Maneuvers"
-          :collapse="false"
-          :cols="1"
-          class="gambit-flourish"
-      /></v-col>
-      <v-col :cols="6">
-        <h2>Basic Flourishes</h2>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Flourish')" /><show-cards
-          :inputs="[$store.getters.getManeuver('Basic Flourish')]"
-          job="Maneuvers"
-          :collapse="false"
-          :cols="1"
-          class="gambit-flourish"
-      /></v-col>
-    </v-row>
+    <h2>Basic Gambits</h2>
+    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
+      :inputs="[$store.getters.getManeuver('Basic Feint'), $store.getters.getManeuver('Basic Sunder')]"
+      job="Maneuvers"
+      :collapse="false"
+      :cols="2"
+      v-bind:class="use_duo"
+    />
+    <h2>Basic Flourishes</h2>
+    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Flourish')" /><show-cards
+      :inputs="[$store.getters.getManeuver('Basic Flourish'), $store.getters.getManeuver('Disarming Flourish')]"
+      job="Maneuvers"
+      :collapse="false"
+      :cols="2"
+      v-bind:class="use_duo"
+    />
     <h2>Basic Punishes</h2>
     <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Punish')" /><show-cards
       :inputs="[$store.getters.getManeuver('Create Opening'), $store.getters.getManeuver('Engage'), $store.getters.getManeuver('Opportunity Attack')]"
@@ -84,6 +80,26 @@ export default Vue.extend({
   components: {
     ShowCards,
   },
+  computed: {
+    use_duo() {
+      if (this.isMobile) {
+        return ''
+      }
+      return 'centered-duo'
+    },
+    use_single() {
+      if (this.isMobile) {
+        return ''
+      }
+      return 'centered-single'
+    },
+    num_cols() {
+      if (this.isMobile) {
+        return 12
+      }
+      return 6
+    },
+  },
 })
 </script>
 
@@ -98,11 +114,6 @@ export default Vue.extend({
   width: 33.33%;
 }
 .centered-duo {
-  justify-content: center;
-  margin: auto;
-  width: 66.66%;
-}
-.gambit-flourish {
   justify-content: center;
   margin: auto;
   width: 66.66%;

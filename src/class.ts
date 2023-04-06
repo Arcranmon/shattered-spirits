@@ -1,6 +1,5 @@
 // Store all classes
 
-import Affliction from './classes/Affliction'
 import Armor from './classes/Armor'
 import Character from './classes/Character'
 import Chart from './classes/Chart'
@@ -15,4 +14,4 @@ import Technique from './classes/Technique'
 import Terrain from './classes/Terrain'
 import Weapon from './classes/Weapon'
 
-export { Affliction, Armor, Character, Chart, Discipline, Maneuver, Npc, Obstacle, Refresh, Stance, Status, Technique, Terrain, Weapon }
+export { Armor, Character, Chart, Discipline, Maneuver, Npc, Obstacle, Refresh, Stance, Status, Technique, Terrain, Weapon }

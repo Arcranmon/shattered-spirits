@@ -2,14 +2,10 @@ declare interface IArmorData {
   armor: number
   category?: string
   durability?: number
-  endurance: number
   jump: number
   name?: string
-  maneuver?: string
   reposition: number
   dash: number
-  special?: string
-  sprint: number
   step: number
 }
 
@@ -18,6 +14,7 @@ declare interface ICharacterData {
   current_martial_stance: string
   current_endurance: number
   equipped_armor: string
+  disciplines: Map<string, number>
   focus: number
   grit: number
   current_health: number
@@ -29,14 +26,8 @@ declare interface ICharacterData {
   off_hand: string
   player_character: Boolean
   reflex: number
-  maneuvers: string[]
-  reactions: string[]
-  skill_techniques: string[]
   spirit_name: string
-  spirit_techniques: string[]
   spirit_type: string
-  spirit_stances: string[]
-  martial_stances: string[]
   unarmed_weapons: string[]
   weapons: string[]
   weapon_weight: number
@@ -53,6 +44,7 @@ interface IDisciplineTierData {
   stances?: string[]
   maneuvers?: string[]
   special?: string
+  unarmed: number
 }
 
 declare interface IDisciplineData {
@@ -152,12 +144,10 @@ declare interface IStatusData {
   name: string
   recover: string
   remove: string
+  see?: string
   special?: string
-}
-
-declare interface IAfflictionData extends IStatusData {
-  reacts: Array<string>
-  type: string
+  reacts?: Array<string>
+  type?: string
 }
 
 declare interface ITechData {
@@ -211,5 +201,5 @@ declare interface IWeaponData {
   reaction?: string
   special?: string
   speed: number
-  encumbrance: number
+  weight: number
 }

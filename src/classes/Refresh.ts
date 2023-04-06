@@ -13,7 +13,7 @@ class Refresh {
   get Additional() {
     return this.additional_
   }
-  get Focus() {
+  get Poise() {
     return this.focus_
   }
   get Grit() {
@@ -28,7 +28,7 @@ class Refresh {
 
   public get FormattedText() {
     var formatted_string = ''
-    if (this.focus_ != 0) formatted_string = this.focus_.toString() + ' _Focus_'
+    if (this.focus_ != 0) formatted_string = this.focus_.toString() + ' _Poise_'
     if (this.grit_ != 0) formatted_string = this.SmartCommas(this.grit_.toString() + ' _Grit_', formatted_string)
     if (this.momentum_ != 0) formatted_string = this.SmartCommas(this.momentum_.toString() + ' _Momentum_', formatted_string)
     if (this.reflex_ != 0) formatted_string = this.SmartCommas(this.reflex_.toString() + ' _Reflex_', formatted_string)

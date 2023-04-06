@@ -76,9 +76,6 @@
             <div class="card--box" v-if="job == 'Terrain'">
               <terrain-card :terrain="n" />
             </div>
-            <div class="card--box" v-if="job == 'Affliction'">
-              <affliction-card :affliction="n" />
-            </div>
             <div class="card--box" v-if="job == 'Status'">
               <status-card :status="n" />
             </div>
@@ -90,7 +87,6 @@
 
 <script>
 import Vue from 'vue'
-import AfflictionCard from './AfflictionCard.vue'
 import ArmorCard from './ArmorCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
 import ObstacleCard from './ObstacleCard.vue'
@@ -164,7 +160,6 @@ export default Vue.extend({
     },
   },
   components: {
-    AfflictionCard,
     ArmorCard,
     ManeuverCard,
     NpcCard,

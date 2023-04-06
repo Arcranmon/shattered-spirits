@@ -17,6 +17,27 @@ Vue.component('Tooltip', Tooltip)
 
 Vue.prototype.$marked = marked
 Vue.prototype.$jenna = require('@/assets/art/Jenna.png')
+Vue.prototype.$general = require('@/assets/General.svg')
+Vue.prototype.$strike = require('@/assets/Strike.svg')
+Vue.prototype.$move = require('@/assets/Move.svg')
+Vue.prototype.$support = require('@/assets/Support.svg')
+Vue.prototype.$defensive = require('@/assets/Defensive.svg')
+
+Vue.mixin({
+  computed: {
+    isMobile: function () {
+      return screen.width <= 760
+    },
+  },
+  methods: {
+    mobileOrNormal(class_name) {
+      if (screen.width <= 760) {
+        return class_name + '-mobile'
+      }
+      return class_name
+    },
+  },
+})
 
 new Vue({
   components: { App },

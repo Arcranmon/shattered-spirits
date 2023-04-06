@@ -46,13 +46,13 @@
   {
     "name": "Carnelian Heart Stance",
     "desc": "You are a font of courage, rallying your allies with every move you make.",
-    "accumulate": "Once per _Round_, when you grant an ally _Courage_ on your _Turn_, gain _Focus_/_Momentum_ equal to the largest _Token_ you grant.",
+    "accumulate": "Once per _Round_, when you grant an ally _Courage_ on your _Turn_, gain _Poise_/_Momentum_ equal to the largest _Token_ you grant.",
     "refresh": {
       "focus": 3,
       "grit": 1
     },
     "effect": "At _Refresh_ you may grant all allies within Range 6 _Courage_ 1, _Vigor_ 2.",
-    "special": "While within 6 spaces of you, your allies may clear any _Courage_ Token whenever they have the opportunity to _Negate_ and reduce the _Grit_/_Focus_ cost by the Value of said Token."
+    "special": "While within 6 spaces of you, your allies may clear any _Courage_ Token whenever they have the opportunity to _Negate_ and reduce the _Grit_/_Poise_ cost by the Value of said Token."
   },
   {
     "name": "Catalpa Guard Stance",
@@ -101,9 +101,10 @@
   {
     "name": "Crushing Paw Stance",
     "desc": "You specialize in punishing foes in armor, not only shattering their defenses but also crumpling it in a painful way.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you Attack a creature's _Armor_ or reduce _Armor_'s _Durability_ to 0.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you make a Melee Hafted _Weapon Attack_ [_Sundering_].",
     "refresh": {
-      "grit": 3
+      "grit": 3,
+      "focus": 1
     },
     "reqs": "Hafted Weapon _Wielded_.",
     "effect": "Whenever you reduce _Armor_'s _Guard_ with a Melee Hafted _Weapon Attack_ also inflict _Wounded_ 2 (2 _Grit_) on the creature."
@@ -198,7 +199,7 @@
     },
     "reqs": "Projectile Weapon _Wielded_.",
     "effect": "Gain a +1 Bonus to all Attack to all Ranged Projectile _Weapon Attacks_ [_Incoming_].",
-    "special": "Once per _Round_, when you create a _Hazard_ that requires a Projectile Weapon, you may inflict _Dazed_ 1 (1 _Focus_) on a creature within said _Hazard_ as the incoming missiles distract them."
+    "special": "Once per _Round_, when you create a _Hazard_ that requires a Projectile Weapon, you may inflict _Dazed_ 1 (1 _Poise_) on a creature within said _Hazard_ as the incoming missiles distract them."
   },
   {
     "name": "Driving Paw Stance",
@@ -225,7 +226,7 @@
   {
     "name": "Flaw Finder Stance",
     "desc": "Your senses analyze every aspect of your foes' defenses, allowing you to easily break and bypass them with every strike.",
-    "accumulate": "Once per _Round_, gain 2 _Focus_/_Momentum_ when an enemy under the effects of _Expose Flaw_ is _Hit_+ by you or an ally.",
+    "accumulate": "Once per _Round_, gain 2 _Poise_/_Momentum_ when an enemy under the effects of _Expose Flaw_ is _Hit_+ by you or an ally.",
     "refresh": {
       "focus": 4
     },
@@ -327,7 +328,7 @@
   {
     "name": "Pulse Reader Stance",
     "desc": "You feel the subtle vibrations of the earth, feeling the true intentions of your foes and better preparing you for future assaults.",
-    "accumulate": "Once per _Round_, gain 2 _Focus_/_Momentum_ when you enter the space marked by _Find the Pulse_.",
+    "accumulate": "Once per _Round_, gain 2 _Poise_/_Momentum_ when you enter the space marked by _Find the Pulse_.",
     "refresh": {
       "focus": 3,
       "grit": 1
@@ -348,7 +349,7 @@
   {
     "name": "Reckless Bloodstone Stance",
     "desc": "You channel the spirits of earth and stone, filling you with a dangerous, reckless bravery.",
-    "accumulate": "Once per _Round_, gain 2 _Focus_/_Momentum_ when you are attacked by a _Marked_ foe.",
+    "accumulate": "Once per _Round_, gain 2 _Poise_/_Momentum_ when you are attacked by a _Marked_ foe.",
     "refresh": {
       "focus": 2,
       "grit": 2
@@ -398,6 +399,17 @@
     },
     "reqs": "Bladed Weapon _Wielded_.",
     "effect": "Whenever you would inflict _Wounded_ with a Bladed _Weapon Attack_ you may choose to increase the creature's existing _Wounded_ Tokens by a total Value equal to the _Wounded_ that would be inflicted, distributed as you wish."
+  },
+  {
+    "name": "Example Stance",
+    "desc": "A helpful outline of how a Stance is defined.",
+    "accumulate": "This will typically define how a Stance gains Momentum, usually as a once per _Round_ objective.",
+    "refresh": {
+      "additional": "These Tokens are gained during the Refresh Phase."
+    },
+    "reqs": "Conditions you must follow to use this Stance.",
+    "effect": "A primary, typically passive benefit provided by the Stance.",
+    "special": "A secondary, more specific, benefit provided by the Stance."
   },
   {
     "name": "Shattering Granite Stance",
@@ -484,7 +496,7 @@
       "focus": 2
     },
     "reqs": "Light _Armor_ Worn.",
-    "effect": "Whenever an Attack is a _Graze_- against you, inflict _Insight_ 1 (1 _Focus_) on the attacker.",
+    "effect": "Whenever an Attack is a _Graze_- against you, inflict _Insight_ 1 (1 _Poise_) on the attacker.",
     "special": "After a creature Attacks you, gain a +1 Bonus to all Attack Rolls as a part of a _Counter_ or _Punish_ against them until the end of the Round. This Bonus does not stack."
   },
   {

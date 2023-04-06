@@ -7,9 +7,11 @@
       <div class="weapon--keywords">
         <span v-if="(weapon.Desc.length > 0)">{{ weapon.Desc }}<br /></span>
         <b
-          >{{ weapon.SpeedHeader }}<span v-if="weapon.HasDurability">{{ weapon.DurabilityHeader }}</span
-          >{{ weapon.HardnessHeader }}<display-tooltip-text :string="weapon.RangeHeader" :decorate="false" /><span>&nbsp;</span>
-          <display-tooltip-text :string="weapon.HandsPhrase" :decorate="false" /> {{ weapon.CategoryHeader }}{{ weapon.EncumbranceHeader }}
+          >{{ weapon.SpeedHeader }}<display-tooltip-text :string="weapon.RangeHeader" :decorate="false" /><span>&nbsp;</span>
+          <display-tooltip-text :string="weapon.HandsPhrase" :decorate="false" />
+          <br />
+          {{ weapon.CategoryHeader }}{{ weapon.WeightHeader }}<span v-if="weapon.HasDurability">{{ weapon.DurabilityHeader }}</span
+          >{{ weapon.HardnessHeader }}
           <br />
           <display-tooltip-text :string="weapon.KeywordsHeader" :decorate="false"
         /></b>

@@ -3,7 +3,7 @@
     <h3>Choosing Your Unarmed Weapons</h3>
     <display-tooltip-text :string="creationText" />
     <v-layout justify-center>
-      <div class="button-seperator">
+      <div class="button-separator">
         <v-btn color="success" large tile @click="$emit('chose-weapon')" :disabled="!character.HasAllUnarmed">
           <span v-if="!character.HasAllUnarmed">CHOOSE YOUR UNARMED WEAPONS</span>
           <span v-else>ACCEPT UNARMED WEAPONS</span>
@@ -90,7 +90,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.button-seperator {
+.button-separator {
   margin-bottom: 1em;
 }
 .weapon--box {

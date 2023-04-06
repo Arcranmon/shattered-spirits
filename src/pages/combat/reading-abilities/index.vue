@@ -2,27 +2,23 @@
   <div style="padding: 1em;">
     <display-tooltip-text :string="readingDisciplines" />
     <div class="skill--box">
-      <stance-card :stance="$store.getters.getStance(disc.Stances[0])" />
+      <stance-card :stance="$store.getters.getStance('Example Stance')" />
     </div>
     <br />
     <display-tooltip-text :string="readingStances" />
+    <br />
     <div class="skill--box">
-      <tech-card :tech="$store.getters.getTechnique(disc.Techniques[0])" />
+      <tech-card :tech="$store.getters.getTechnique('Example Technique')" />
     </div>
     <br />
     <display-tooltip-text :string="readingTechniques" />
     <div class="skill--box">
-      <chart-table :chart="$store.getters.getTechnique(disc.Techniques[0]).Chart" />
+      <chart-table :chart="$store.getters.getTechnique('Example Technique').Chart" style="font-size: smaller;" />
     </div>
     <br />
     <display-tooltip-text :string="readingAttackProfiles" />
     <div class="skill--box">
-      <maneuver-card :maneuver="$store.getters.getManeuver('Sample Reaction')" />
-    </div>
-    <br />
-    <display-tooltip-text :string="readingReactions" />
-    <div class="skill--box">
-      <maneuver-card :maneuver="$store.getters.getManeuver('Sample Maneuver')" />
+      <maneuver-card :maneuver="$store.getters.getManeuver('Example Maneuver')" style="font-size: smaller;" />
     </div>
     <br />
     <display-tooltip-text :string="readingManeuvers" />
@@ -34,7 +30,6 @@ import Vue from 'vue'
 import ReadingAttackProfiles from '@/database/text_files/combat_rules/reading_attack_profiles.txt'
 import ReadingDisciplines from '@/database/text_files/combat_rules/reading_disciplines.txt'
 import ReadingManeuvers from '@/database/text_files/combat_rules/reading_maneuvers.txt'
-import ReadingReactions from '@/database/text_files/combat_rules/reading_reactions.txt'
 import ReadingStances from '@/database/text_files/combat_rules/reading_stances.txt'
 import ReadingTechniques from '@/database/text_files/combat_rules/reading_techniques.txt'
 import ChartTable from '@/components/ChartTable.vue'

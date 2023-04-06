@@ -77,11 +77,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.circle {
-  width: 40%;
-  border-radius: 50%;
-  float: left;
-  border: thick solid $color--earth;
-  margin-right: 1em;
+.a {
 }
 </style>

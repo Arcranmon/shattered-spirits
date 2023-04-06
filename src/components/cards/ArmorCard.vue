@@ -24,23 +24,9 @@
           ><v-col class="chart--cols" cols="4"><b>Dash</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Dash }}</v-col></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="4"><b>Sprint</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Sprint }}</v-col></v-row
-        ><v-row no-gutters class="chart--row"
           ><v-col class="chart--cols" cols="4"><b>Jump</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Jump }}</v-col></v-row
         >
-      </div>
-      <div class="expand--collapse-box-outlined" v-if="armor.HasManeuver">
-        <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-          <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-maneuver">Maneuver</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-maneuver">
-              <display-tooltip-text string="While wearing this Armor, gain the following Maneuver:" />
-              <div><maneuver-card :maneuver="$store.getters.getManeuver(armor.Maneuver)" /></div
-            ></v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
       </div>
     </div>
   </div>

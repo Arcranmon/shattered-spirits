@@ -28,10 +28,6 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 BEFORE V0.1 (Earth)
 
-- Make Resists cheaper/more interesting.
-- Finish all Earth/Martial Disciplines.
-- Make everything except Character Creation show up well on mobile.
-- Correct the 'reading X' sections, and update the character creation page.
 - Remake character creator
 
 MISSING TECHNIQUES
@@ -47,13 +43,16 @@ These are Techniques/Maneuvers that existed in previous content but are missing 
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
+- Add consumable items and support for them.
+- Add more combat support for the fiction of it being you and your companion spirit.
+  - Have a manifest maneuver to physically conjure your spirit for a turn.
+- Support-based non-spirit classes.
+- More weapon types and supporting Disciplines.
 - Potential Resist refactor?
+- Potential shift from armor-based movement to weight profiles.
 - Complete all Spirit Masteries.
 - Refine Endurance and Health system based on how long combats should last.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
-  - Earth needs a balance pass simply because it was completed first and they're likely undertuned now.
-  - Revisit Spirit Stances to try to make sure they're a bit more generally applicable, not just with their Discipline's Techniques.
-  - Add more comprehensive descriptions for how each discipline plays and what their strengths and weaknesses are.
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
   - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.
   - Add an additional 'bending' Discipline to each Element:
@@ -70,7 +69,7 @@ This system is very much a work-in-progress, but is slowly getting more and more
   - Develop BIG SPIRIT FIGHTS where simply killing them is the easy answer, but it's possible to instead save them by greatly increasing the difficulty of the fight.
 - Make some good player tools. This will probably require some sort of play board so players can easily track conditions and their own Initiative.
 - Non-combat gameplay does not currently exist in any meaningful form and needs to be built once the combat system is in a good place.
-  - Combat abilities are governed by Disciplines
+- Combat abilities are governed by Disciplines
   - Travel abilities are governed by Jobs
   - Narrative abilities are governed by Talents and Knacks
 - Create a system for exploration and camping and expeditions that is resource management-lite but rewards players with combat resources.
@@ -86,4 +85,9 @@ If you want to run this website locally (as it won't always be hosted), do the f
 
 ## Credits
 
-Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, and Support, Land, Stone, Tremorsight, icons made by lorc. Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, Grounding icon made by delapouite. Unarmed icon made by skoll. Shield icon made by sbed. Thrown Weapon icon made by Faithtoken. Available on https://game-icons.net.
+Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, and Tremorsight icons made by lorc.
+Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.
+Unarmed icon made by skoll.
+Shield icon made by sbed.
+Thrown Weapon icon made by Faithtoken.
+Available on https://game-icons.net.

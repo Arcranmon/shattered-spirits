@@ -7,7 +7,6 @@ import Stances from '@/database/stances.json'
 import Glossary from '@/database/glossary/glossary.json'
 import InstantEffects from '@/database/glossary/instant_effects.json'
 import Statuses from '@/database/glossary/statuses.json'
-import Afflictions from '@/database/glossary/afflictions.json'
 import Keywords from '@/database/glossary/keywords.json'
 import Resources from '@/database/glossary/resources.json'
 
@@ -19,7 +18,7 @@ import Maneuvers from '@/database/maneuvers.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Affliction, Armor, Discipline, Maneuver, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
+import { Armor, Discipline, Maneuver, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -316,6 +315,14 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getCharCreationDisciplines(): any {
+    return (categories_and_types: Array<string>) => {
+      return Disciplines.filter((x) => categories_and_types.includes(x.category.trim()) || categories_and_types.includes(x.type.trim())).map((x) =>
+        Discipline.Deserialize(<IDisciplineData>x),
+      )
+    }
+  }
+
   get getDisciplines(): any {
     return () => {
       return Disciplines.map((x) => Discipline.Deserialize(<IDisciplineData>x))
@@ -369,34 +376,6 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // AFFLICTION TOOLS
   // ==========================================================
-  get isAffliction(): any {
-    return (inword: string) => {
-      return Afflictions.some((x) => x.name == inword.trim())
-    }
-  }
-
-  get getAffliction(): any {
-    return (inword: string) => {
-      var obstacle = Afflictions.find((x) => x.name.trim() === inword.trim())
-      return Affliction.Deserialize(<IAfflictionData>obstacle)
-    }
-  }
-
-  get getAfflictions(): any {
-    return () => {
-      return Afflictions.map((x) => Affliction.Deserialize(<IAfflictionData>x))
-    }
-  }
-
-  get getAfflictionsByType(): any {
-    return (type: string) => {
-      return Afflictions.filter((x) => x.type.trim() === type.trim()).map((x) => Affliction.Deserialize(<IAfflictionData>x))
-    }
-  }
-
-  // ==========================================================
-  // STATUS TOOLS
-  // ==========================================================
   get isStatus(): any {
     return (inword: string) => {
       return Statuses.some((x) => x.name == inword.trim())
@@ -405,15 +384,32 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getStatus(): any {
     return (inword: string) => {
-      var obstacle = Statuses.find((x) => x.name.trim() === inword.trim())
-      if (obstacle.hasOwnProperty('see')) obstacle = Statuses.find((x) => x.name.trim() === obstacle.see.trim())
-      return Status.Deserialize(<IStatusData>obstacle)
+      var status = Statuses.find((x) => x.name.trim() === inword.trim())
+      return Status.Deserialize(<IStatusData>status)
     }
   }
 
   get getStatuses(): any {
     return () => {
+      return Statuses.map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  get getFullStatuses(): any {
+    return () => {
       return Statuses.filter((x) => !x.hasOwnProperty('see')).map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  get getStatusesByType(): any {
+    return (type: string) => {
+      return Statuses.filter((x) => x.type.trim() === type.trim()).map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  get getFilteredStatuses(): any {
+    return (types: Array<string>) => {
+      return Statuses.filter((x) => !x.hasOwnProperty('see') && types.includes(x.type.trim())).map((x) => Status.Deserialize(<IStatusData>x))
     }
   }
 

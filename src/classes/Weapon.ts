@@ -16,7 +16,7 @@ class Weapon {
   private reaction_: string
   private special_: string
   private speed_: number
-  private encumbrance: number
+  private weight: number
 
   public constructor() {
     this.chart_ = null
@@ -32,11 +32,11 @@ class Weapon {
     this.reaction_ = ''
     this.special_ = ''
     this.speed_ = 0
-    this.encumbrance = 1
+    this.weight = 1
   }
 
   get CategoryHeader() {
-    if (this.Category == 'Unarmed') return this.category_
+    if (this.Category == 'Unarmed' || this.Category == 'Improvised') return this.category_
     return this.category_ + ', '
   }
   get Category() {
@@ -61,13 +61,13 @@ class Weapon {
     return this.durability_
   }
   get DurabilityHeader() {
-    if (this.durability_ != 0) return 'Durability ' + this.durability_ + ', '
+    if (this.durability_ != 0) return 'Durability ' + this.durability_
   }
   get Hardness() {
     return this.hardness_
   }
   get HardnessHeader() {
-    if (this.hardness_ != 0) return 'Hardness ' + this.Hardness + ', '
+    if (this.hardness_ != 0) return 'Hardness ' + this.Hardness
   }
   get Hands() {
     return this.hands_
@@ -114,13 +114,13 @@ class Weapon {
   get SpeedHeader() {
     return 'Speed ' + this.speed_ + ', '
   }
-  get Encumbrance() {
-    return this.encumbrance
+  get Weight() {
+    return this.weight
   }
-  get EncumbranceHeader() {
+  get WeightHeader() {
     if (this.Category == 'Unarmed') return ''
-    if (this.Encumbrance == 0) return ''
-    return 'Encumbrance ' + this.encumbrance
+    if (this.Weight == 0) return ''
+    return 'Weight ' + this.weight + ', '
   }
   public get Icon() {
     if (this.Category == 'Error') return ''
@@ -152,7 +152,7 @@ class Weapon {
     this.reaction_ = data.reaction || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || 0
-    this.encumbrance = data.encumbrance || 0
+    this.weight = data.weight || 0
     if ('chart' in data) {
       this.chart_ = Chart.Deserialize(data.chart)
     }

@@ -1,21 +1,53 @@
 <template>
   <div>
     <h2>Armors</h2>
-    <v-row align="center" style="margin-left: 0.5em;">
-      <v-col cols="2"><v-select v-model="selectedArmors" :items="armorCategories" attach label="Armor Categories" multiple filled outlined></v-select> </v-col
-    ></v-row>
-    <v-row class="page">
-      <v-col cols="auto" class="sidebar">
-        <v-btn-toggle borderless overflow-auto
-          ><div v-for="armor in armors" style="width: 100%;" v-bind:key="armor.Name">
-            <v-btn @click="selectedArmor = armor" class="button--style" depressed tile block>
-              <img class="image--size" :src="armor.Icon" />{{ armor.Name }}
-            </v-btn>
-          </div>
-        </v-btn-toggle></v-col
-      >
-      <v-col> <armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em;" /></v-col>
-    </v-row>
+    <span v-if="isMobile">
+      <v-expansion-panels style="padding: 3px;">
+        <v-expansion-panel style="background-color: inherit;">
+          <v-expansion-panel-header>Filters</v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
+              <v-col cols="12"
+                ><v-select
+                  v-model="selectedArmors"
+                  :items="armorCategories"
+                  attach
+                  label="Armor Categories"
+                  multiple
+                  filled
+                  outlined
+                ></v-select> </v-col></v-row
+          ></v-expansion-panel-content>
+        </v-expansion-panel> </v-expansion-panels
+      ><br /><v-select
+        v-model="selectedArmor"
+        :items="armors"
+        item-text="Name"
+        return-object
+        attach
+        label="Selected Armor"
+        filled
+        outlined
+        style="margin-left: 0.5em; margin-right: 0.5em;"
+      ></v-select
+      ><armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em; margin-left: auto; margin-right: auto;"
+    /></span>
+    <span v-else>
+      <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
+        <v-col cols="6"><v-select v-model="selectedArmors" :items="armorCategories" attach label="Armor Categories" multiple filled outlined></v-select> </v-col
+      ></v-row>
+      <v-row class="page">
+        <v-col cols="auto" class="sidebar">
+          <v-btn-toggle borderless overflow-auto
+            ><div v-for="armor in armors" style="width: 100%;" v-bind:key="armor.Name">
+              <v-btn @click="selectedArmor = armor" class="button--style" depressed tile block>
+                <img class="image--icon-size" :src="armor.Icon" />{{ armor.Name }}
+              </v-btn>
+            </div>
+          </v-btn-toggle></v-col
+        >
+        <v-col> <armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em;" /></v-col> </v-row
+    ></span>
   </div>
 </template>
 
@@ -46,34 +78,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.page {
-  margin: 0px;
-}
-.sidebar {
-  background: $color--light-parchment;
-  padding: 0px;
-  border-top: 0.5em double black;
-  border-right: 0.5em double black;
-  border-bottom: 0.5em double black;
-  align-content: center;
-  justify-content: center;
-  height: 70vh;
-  overflow-y: auto;
-}
-.v-btn-toggle {
-  flex-direction: column;
-}
-.v-btn {
-  white-space: normal;
-  flex: auto;
-  align-content: center;
-  justify-content: left;
-}
-.button--style {
-  background: $color--light-parchment !important;
-  word-wrap: break-word;
-}
-.image--size {
-  height: 2em;
+.a {
 }
 </style>

@@ -98,14 +98,10 @@ class Armor {
     this.armor_ = data.armor || 0
     this.category_ = data.category || ''
     this.durability_ = data.durability || 0
-    this.endurance_ = data.endurance || 0
     this.jump_ = data.jump || 0
     this.name_ = data.name || ''
-    this.maneuver_ = data.maneuver || ''
     this.reposition_ = data.reposition || 0
     this.dash_ = data.dash || 0
-    this.special_ = data.special || ''
-    this.sprint_ = data.sprint || 0
     this.step_ = data.step || 0
   }
 }

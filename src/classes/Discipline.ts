@@ -73,6 +73,9 @@ class Discipline {
   public get Tier1Special() {
     return this.tier_1_.special
   }
+  public get Tier1Unarmed() {
+    return this.tier_1_.unarmed
+  }
   public get HasTier2Stances() {
     return this.tier_2_.stances != undefined
   }
@@ -93,6 +96,9 @@ class Discipline {
   }
   public get HasTier2Special() {
     return this.tier_2_.special != undefined
+  }
+  public get Tier2Unarmed() {
+    return this.tier_2_.unarmed
   }
   // ==========================================================
   // SERIALIZATION

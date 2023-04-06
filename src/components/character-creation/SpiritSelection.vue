@@ -1,8 +1,10 @@
 <template
   ><span>
-    <div class="button-seperator">
+    <div class="button-separator">
       <display-tooltip-text :string="creationText" />
       <br />
+      <br />
+      NOTE: At the moment, only Earth Spirits are available!
       <v-layout justify-center
         ><v-btn color="success" large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
           <span v-if="!character.HasSpirit">CHOOSE A SPIRIT TYPE</span>
@@ -12,8 +14,10 @@
     </div>
     <div>
       <v-row
-        ><v-col cols="2" class="element-box">
-          <v-btn color="#e0c068" large tile :disabled="(character.SpiritType == 'Earth')" @click="setSpirit('Earth')">EARTH SPIRIT</v-btn> </v-col
+        ><v-col cols="12" class="element-box">
+          <v-btn class="earth-button" large tile :disabled="(character.SpiritType == 'Earth')" @click="setSpirit('Earth')"
+            ><img class="image--icon-size" :src="earthSymbol" />EARTH SPIRIT<img class="image--icon-size" :src="earthSymbol"
+          /></v-btn> </v-col
         ><!-- <v-col cols="2" class="element-box">
           <v-btn
             :color="variables.flame"
@@ -92,6 +96,9 @@ export default Vue.extend({
     creationText: function () {
       return SpiritSelectionText
     },
+    earthSymbol: function () {
+      return require('@/assets/Land.svg')
+    },
   },
 })
 </script>
@@ -100,10 +107,14 @@ export default Vue.extend({
 .character-creation {
   font-size: smaller;
 }
-.button-seperator {
+.button-separator {
   margin-bottom: 1em;
 }
 .element-box {
   text-align: center;
+}
+.earth-button {
+  background-color: #e0c068 !important;
+  font-family: $font--standard;
 }
 </style>
