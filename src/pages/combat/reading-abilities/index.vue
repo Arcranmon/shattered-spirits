@@ -1,23 +1,23 @@
 <template>
   <div style="padding: 1em;">
     <display-tooltip-text :string="readingDisciplines" />
-    <div class="skill--box">
+    <div v-bind:class="skillBox">
       <stance-card :stance="$store.getters.getStance('Example Stance')" />
     </div>
     <br />
     <display-tooltip-text :string="readingStances" />
     <br />
-    <div class="skill--box">
+    <div v-bind:class="skillBox">
       <tech-card :tech="$store.getters.getTechnique('Example Technique')" />
     </div>
     <br />
     <display-tooltip-text :string="readingTechniques" />
-    <div class="skill--box">
+    <div v-bind:class="skillBox">
       <chart-table :chart="$store.getters.getTechnique('Example Technique').Chart" style="font-size: smaller;" />
     </div>
     <br />
     <display-tooltip-text :string="readingAttackProfiles" />
-    <div class="skill--box">
+    <div v-bind:class="skillBox">
       <maneuver-card :maneuver="$store.getters.getManeuver('Example Maneuver')" style="font-size: smaller;" />
     </div>
     <br />
@@ -65,6 +65,10 @@ export default Vue.extend({
     disc: function () {
       return this.$store.getters.getDiscipline('Example Discipline')
     },
+    skillBox: function () {
+      if (this.isMobile) return 'skill--box-mobile'
+      return 'skill--box'
+    },
   },
 })
 </script>
@@ -74,5 +78,9 @@ export default Vue.extend({
   margin: auto;
   align-self: center;
   width: 40%;
+}
+.skill--box-mobile {
+  margin: auto;
+  align-self: center;
 }
 </style>

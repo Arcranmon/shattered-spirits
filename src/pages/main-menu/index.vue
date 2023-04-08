@@ -11,10 +11,8 @@
     <custom-button to="/spirit-disciplines">Spirit Disciplines</custom-button> <br />
     <custom-button to="/character-creator">Character Creator (WIP)</custom-button>
     <br />
-    <!--
     <custom-button to="/character-manager">Characters (WIP)</custom-button>
     <br />
-    -->
   </div>
 </template>
 

@@ -4,17 +4,25 @@ import { Armor, Discipline, Stance, Weapon, Technique } from '@/class'
 var kExpectedDisciplineRanks = 8
 var kSpiritDisciplineCategories = ['Earth']
 
+var kBasicTechniques = ['Unarmed Strike', 'Armed Strike', 'Run', 'Prepare']
+var kBasicStratagems = ['Quicken', 'Strengthen']
+var kBasicStunts = ['Aid', 'Leap', 'Retrieve', 'Tumble', 'Use Environment']
+var kBasicResists = ['Armored Shell', 'Basic Counter', 'Deflect', 'Dodge', 'Shield Block']
+var kBasicReactions = ['Guidance', 'Recover', 'Reorient']
+var kBasicGambits = ['Basic Feint', 'Basic Sunder']
+var kBasicFlourishes = ['Basic Flourish', 'Disarming Flourish']
+var kBasicPunishes = ['Create Opening', 'Engage', 'Opportunity Attack']
+
 class Character {
   private current_spirit_stance_: Stance
   private current_martial_stance_: Stance
   private current_endurance_: number
   private equipped_armor_: Armor
-  private disciplines_: Map<string, number>
+  private disciplines_: Array<ICharDisciplineData>
   private focus_: number
   private grit_: number
   private current_health_: number
   private main_hand_: Weapon
-  private martial_forms_: number
   private max_health_: number
   private momentum_: number
   private name_: string
@@ -39,14 +47,13 @@ class Character {
     this.current_spirit_stance_ = store.getters.getStance('No Stance')
     this.current_martial_stance_ = store.getters.getStance('No Stance')
     this.current_endurance_ = 0
-    this.disciplines_ = new Map<string, number>()
+    this.disciplines_ = []
     this.equipped_armor_ = null
     this.focus_ = 0
     this.grit_ = 0
     this.weapon_weight_ = 0
     this.current_health_ = 0
     this.main_hand_ = null
-    this.martial_forms_ = 0
     this.max_health_ = 0
     this.momentum_ = 0
     this.name_ = ''
@@ -56,7 +63,7 @@ class Character {
     this.spirit_name_ = ''
     this.spirit_type_ = ''
     this.weapons_ = []
-    this.unarmed_weapons_ = ['Hand', 'Slam']
+    this.unarmed_weapons_ = ['Body Slam', 'Grab', 'Untrained Fist']
   }
 
   // ==========================================================
@@ -104,9 +111,6 @@ class Character {
   set Grit(input: number) {
     this.grit_ = input
   }
-  get MartialForms() {
-    return this.martial_forms_
-  }
   get Momentum() {
     return this.momentum_
   }
@@ -137,31 +141,92 @@ class Character {
 
     return refresh
   }
-  public ApplyRefresh() {
-    this.momentum_ += this.current_spirit_stance_.Refresh.Momentum + this.current_martial_stance_.Refresh.Momentum
-    this.grit_ += this.current_spirit_stance_.Refresh.Grit + this.current_martial_stance_.Refresh.Grit
-    this.focus_ += this.current_spirit_stance_.Refresh.Poise + this.current_martial_stance_.Refresh.Poise
-    this.reflex_ += this.current_spirit_stance_.Refresh.reflex + this.current_martial_stance_.Refresh.reflex
-  }
-  public ResetDefault() {
-    this.momentum_ = 0
-    this.grit_ = 0
-    this.focus_ = 0
-    this.reflex_ = 0
-    this.current_health_ = this.max_health_
-  }
   get SpiritName() {
     return this.spirit_name_
   }
   get SpiritType() {
     return this.spirit_type_
   }
+  get SpiritStances() {
+    var spirit_stances = []
+    for (var disc of this.disciplines_) {
+      if (disc.tier > 1) {
+        var discipline = store.getters.getDiscipline(disc.name)
+        if (kSpiritDisciplineCategories.includes(discipline.Category)) spirit_stances = spirit_stances.concat(discipline.Tier2Stances)
+      }
+    }
+    spirit_stances.sort((a, b) => a.Name.localeCompare(b.Name))
+    return spirit_stances
+  }
+  get MartialStances() {
+    var martial_stances = []
+    for (var disc of this.disciplines_) {
+      if (disc.tier > 1) {
+        var discipline = store.getters.getDiscipline(disc.name)
+        if (!kSpiritDisciplineCategories.includes(discipline.Category)) martial_stances = martial_stances.concat(discipline.Tier2Stances)
+      }
+    }
+    martial_stances.sort((a, b) => a.Name.localeCompare(b.Name))
+    return martial_stances
+  }
   get UnarmedWeapons() {
     return this.unarmed_weapons_
   }
   get UnarmedWeaponsCreation() {
-    if (this.unarmed_weapons_.length == 2) return []
-    return this.unarmed_weapons_.slice(2)
+    if (this.unarmed_weapons_.length == 3) return []
+    return this.unarmed_weapons_.slice(3)
+  }
+  get MaxUnarmedCount() {
+    var weaponCount = 3
+    for (var disc of this.disciplines_) {
+      var fullDisc = store.getters.getDiscipline(disc.name)
+      if (disc.tier >= 1) if (fullDisc.Tier1Unarmed) weaponCount += fullDisc.Tier1Unarmed
+      if (disc.tier >= 2) if (fullDisc.Tier2Unarmed) weaponCount += fullDisc.Tier2Unarmed
+    }
+    return weaponCount
+  }
+  get RemainingUnarmed() {
+    return this.MaxUnarmedCount - this.unarmed_weapons_.length
+  }
+  get Techniques() {
+    var techniques = store.getters.getTechniquesFromList(kBasicTechniques)
+    for (var disc of this.disciplines_) {
+      var discipline = store.getters.getDiscipline(disc.name)
+      techniques = techniques.concat(discipline.Tier1Techniques)
+      if (disc.tier > 1) techniques = techniques.concat(discipline.Tier2Techniques)
+    }
+    techniques.sort((a, b) => {
+      if (a.Speed > b.Speed) {
+        return 1
+      } else if (a.Speed < b.Speed) {
+        return -1
+      } else {
+        if (a.Name > b.Name) {
+          return 1
+        } else if (a.Name < b.Name) {
+          return -1
+        } else {
+          return 0
+        }
+      }
+    })
+    return techniques
+  }
+  public ManeuversOfType(type: string) {
+    if (type == 'Stunt') var maneuvers = store.getters.getManeuversFromList(kBasicStunts)
+    if (type == 'Stratagem') var maneuvers = store.getters.getManeuversFromList(kBasicStratagems)
+    if (type == 'Resist') var maneuvers = store.getters.getManeuversFromList(kBasicResists)
+    if (type == 'Flourish') var maneuvers = store.getters.getManeuversFromList(kBasicFlourishes)
+    if (type == 'Punish') var maneuvers = store.getters.getManeuversFromList(kBasicPunishes)
+    if (type == 'Gambit') var maneuvers = store.getters.getManeuversFromList(kBasicGambits)
+    if (type == 'Reaction') var maneuvers = store.getters.getManeuversFromList(kBasicReactions)
+    for (var disc of this.disciplines_) {
+      var discipline = store.getters.getDiscipline(disc.name)
+      for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
+      if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
+    }
+    maneuvers.sort((a, b) => a.Name.localeCompare(b.Name))
+    return maneuvers
   }
   get Weapons() {
     return this.weapons_
@@ -214,13 +279,33 @@ class Character {
     }
   }
   public AddDiscipline(discipline: Discipline) {
-    console.log(discipline.Name)
-    this.disciplines_[discipline.Name] = this.disciplines_[discipline.Name] ? this.disciplines_[discipline.Name] + 1 : 1
-    console.log(this.disciplines_[discipline.Name])
+    var idx = this.disciplines_.findIndex((e) => e.name == discipline.Name)
+    if (idx == -1) {
+      var new_discipline: ICharDisciplineData = { name: discipline.Name, tier: 1 }
+      this.disciplines_.push(new_discipline)
+    } else {
+      this.disciplines_[idx].tier += 1
+    }
   }
-  public RemoveDiscipline(discipline: Discipline) {
-    this.disciplines_[discipline.Name] = this.disciplines_[discipline.Name] - 1
-    if (this.disciplines_[discipline.Name] <= 0) this.disciplines_.delete(discipline.Name)
+  public RemoveDiscipline(discipline: string) {
+    var idx = this.disciplines_.findIndex((e) => e.name == discipline)
+    if (idx > -1) {
+      this.disciplines_[idx].tier -= 1
+      if (this.disciplines_[idx].tier <= 0) this.disciplines_.splice(idx)
+    }
+  }
+  public ApplyRefresh() {
+    this.momentum_ += this.current_spirit_stance_.Refresh.Momentum + this.current_martial_stance_.Refresh.Momentum
+    this.grit_ += this.current_spirit_stance_.Refresh.Grit + this.current_martial_stance_.Refresh.Grit
+    this.focus_ += this.current_spirit_stance_.Refresh.Poise + this.current_martial_stance_.Refresh.Poise
+    this.reflex_ += this.current_spirit_stance_.Refresh.reflex + this.current_martial_stance_.Refresh.reflex
+  }
+  public ResetDefault() {
+    this.momentum_ = 0
+    this.grit_ = 0
+    this.focus_ = 0
+    this.reflex_ = 0
+    this.current_health_ = this.max_health_
   }
 
   // ==========================================================
@@ -235,9 +320,6 @@ class Character {
   public CanAddWeapon(weapon: Weapon) {
     return this.weapon_weight_ + weapon.Hands <= this.kMaxWeaponWeight
   }
-  public CanAddUnarmedWeapon() {
-    return this.unarmed_weapons_.length - 2 <= this.martial_forms_
-  }
   get Complete() {
     return this.HasSpirit && this.HasEquippedArmor && this.HasAllWeapons && this.HasNames
   }
@@ -245,7 +327,7 @@ class Character {
     return this.weapon_weight_ == this.kMaxWeaponWeight
   }
   get HasAllUnarmed() {
-    return this.unarmed_weapons_.length == this.martial_forms_ + 2
+    return this.RemainingUnarmed == 0
   }
   get WeaponWeightRemaining() {
     return this.kMaxWeaponWeight - this.weapon_weight_
@@ -260,19 +342,29 @@ class Character {
     var total_ranks = 0
     var has_rank_2_spirit = false
     var has_rank_2_martial = false
-    this.disciplines_.forEach((value: number, key: string) => {
-      total_ranks += value
-      var discipline = store.getters.getDiscipline(key)
-      if (value >= 2) {
-        if (discipline.Category in kSpiritDisciplineCategories) has_rank_2_spirit == true
-        else has_rank_2_martial == true
+    for (var disc of this.disciplines_) {
+      total_ranks += disc.tier
+      var discipline = store.getters.getDiscipline(disc.name)
+      if (disc.tier >= 2) {
+        if (kSpiritDisciplineCategories.includes(discipline.Category)) has_rank_2_spirit = true
+        else has_rank_2_martial = true
       }
-    })
-    return [kExpectedDisciplineRanks - total_ranks, has_rank_2_spirit, has_rank_2_martial]
+    }
+    return [
+      kExpectedDisciplineRanks - total_ranks,
+      has_rank_2_spirit,
+      has_rank_2_martial,
+      kExpectedDisciplineRanks - total_ranks == 0 && has_rank_2_spirit && has_rank_2_martial,
+    ]
   }
   get RecommendedDisciplines() {
-    var recs = [this.spirit_type_]
+    var recs = [this.spirit_type_, 'Unarmed']
     if (this.equipped_armor_ != null) recs.push(this.equipped_armor_.Category)
+    for (var weapon of this.weapons_) {
+      var full_weapon = store.getters.getWeapon(weapon)
+      if (!recs.includes(full_weapon.Category + ' Weapon')) recs.push(full_weapon.Category + ' Weapon')
+      if (full_weapon.Keywords.some((y) => y.includes('Thrown')) && !recs.includes('Throwing Weapons')) recs.push('Throwing Weapon')
+    }
 
     return recs
   }
@@ -300,7 +392,6 @@ class Character {
       grit: character.grit_,
       current_health: character.current_health_,
       main_hand: character.main_hand_ ? character.main_hand_.Name : '',
-      martial_forms: character.martial_forms_,
       max_health: character.max_health_,
       momentum: character.momentum_,
       name: character.name_,
@@ -330,7 +421,6 @@ class Character {
     this.grit_ = data.grit || 0
     this.current_health_ = data.current_health || 15
     if ('main_hand' in data && data.main_hand != '') this.equipped_armor_ = store.getters.getWeapon(data.main_hand)
-    this.martial_forms_ = data.martial_forms || 0
     this.max_health_ = data.max_health || 15
     this.momentum_ = data.momentum || 0
     this.name_ = data.name || ''
@@ -340,7 +430,7 @@ class Character {
     this.spirit_name_ = data.spirit_name || ''
     this.spirit_type_ = data.spirit_type || ''
     this.unarmed_weapons_ = data.unarmed_weapons || []
-    this.disciplines_ = data.disciplines || new Map<string, number>()
+    this.disciplines_ = data.disciplines || []
     this.weapons_ = data.weapons || []
     this.weapon_weight_ = data.weapon_weight || 0
   }

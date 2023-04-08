@@ -2,7 +2,8 @@
 
 For as long as any can remember, humanity and spirits have been as one. They have thrived for generations, forging bonds and conquering obstacles with their shared strength. While the world is harsh, full of terrible beasts and primal spirits that rampage across the lands, humanity has been able to carve out small existences, surviving in the liminal spaces between the realms of greater spirits.
 &nbsp;
-<img :src="$jenna" class="earth-circle" style="float: right!important; margin-left: 2em" />
+<img v-if="isMobile" :src="$jenna" v-bind:class="mobileOrNormal('earth-circle')" />
+<img v-else :src="$jenna" class="earth-circle" style="float: right!important; margin-left: 2em" />
 In recent years, something has changed. Great Spirits, long dormant within their mountains and seas, are stirring once more. Great lights are seen in the night and plumes of smoke in the day, emanating from the ruins of the Old World. Terrible beasts grow ever more bold, roaming closer and closer to the towns and villages. Most concerning, children who complete their Binding awake screaming, but awake with no idea of the cause of their terror.
 &nbsp;
 You are a Spiritbound of rare skill. Ever since you were young you have had an elemental spirit bound to you, granting you magical capabilities. Due to this, you have been entrusted with more and more responsibilities within your village and have even been sent on journeys outside the village's defenses, a task reserved for only for a chosen few.

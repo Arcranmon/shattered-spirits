@@ -28,14 +28,14 @@
         <v-stepper-content step="1"><spirit-selection :character="character" @chose-spirit="step++" /> </v-stepper-content>
         <v-stepper-content step="2"><armor-selection :character="character" @chose-armor="step++" /> </v-stepper-content>
         <v-stepper-content step="3"><weapon-selection :character="character" @chose-weapon="step++" /> </v-stepper-content>
-        <v-stepper-content step="4"><discipline-selection :character="character" @chose-weapon="step++" /> </v-stepper-content>
+        <v-stepper-content step="4"><discipline-selection :character="character" @chose-discipline="step++" /> </v-stepper-content>
         <v-stepper-content step="5"><unarmed-selection :character="character" @chose-weapon="step++" /> </v-stepper-content>
         <v-stepper-content step="6"><name-selection :character="character" @chose-names="step++" /></v-stepper-content
         ><v-stepper-content step="7">
           <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
             <span v-if="!character.Complete">You must finish making your character!</span>
             <span v-else>SAVE {{ character.Name }} AND {{ character.SpiritName }}</span></v-btn
-          >
+          ><show-character v-if="character.Complete" :character="character" />
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -53,6 +53,7 @@ import DisciplineSelection from '@/components/character-creation/DisciplineSelec
 import WeaponSelection from '@/components/character-creation/WeaponSelection.vue'
 import UnarmedSelection from '@/components/character-creation/UnarmedSelection.vue'
 import NameSelection from '@/components/character-creation/NameSelection.vue'
+import ShowCharacter from '@/components/ShowCharacter.vue'
 export default Vue.extend({
   name: 'character-creator',
   components: {
@@ -62,6 +63,7 @@ export default Vue.extend({
     SpiritSelection,
     UnarmedSelection,
     WeaponSelection,
+    ShowCharacter,
   },
   data: () => ({
     step: 1,

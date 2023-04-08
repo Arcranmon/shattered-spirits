@@ -5,8 +5,8 @@
     <br />
     <v-layout justify-center
       ><div class="button-separator">
-        <v-btn color="success" large tile @click="$emit('chose-discipline')" :disabled="!character.HasAllWeapons">
-          <span v-if="!character.HasAllDisciplines">CHOOSE YOUR DISCIPLINES</span>
+        <v-btn color="success" large tile @click="$emit('chose-discipline')" :disabled="!character.HasAllDisciplines[3]">
+          <span v-if="!character.HasAllDisciplines[3]">CHOOSE YOUR DISCIPLINES</span>
           <span v-else>ACCEPT DISCIPLINES</span>
         </v-btn>
       </div></v-layout
@@ -15,16 +15,19 @@
       <display-tooltip-text :string="'You may select an additional ' + character.HasAllDisciplines[0] + ' Tiers of Disciplines!'" /><br />
       <display-tooltip-text v-if="!character.HasAllDisciplines[1]" :string="'You are missing a Tier 2 Spirit Discipline!'" /><br />
       <display-tooltip-text v-if="!character.HasAllDisciplines[2]" :string="'You are missing a Tier 2 Martial Discipline!'" /><br />
-      <display-tooltip-text string="Click a Discipline on the right to select it, or a selected Discipline to remove it." /><br /><br />
+      <display-tooltip-text string="Click a Discipline on the right to select it, or a selected Discipline to remove it." /><br />
+      <display-tooltip-text
+        string="By default, only Disciplines you have the appropriate gear for are shown; flip the toggle below to instead display all."
+      /><br />
     </div>
-    <v-switch label="Show All Disciplines" v-model="use_recommended"></v-switch>
+    <v-layout justify-center> <v-switch label="Show All Disciplines" v-model="show_all"></v-switch></v-layout>
     <v-container class="fill-height" fluid>
       <v-row>
         <v-col cols="4" class="selected--box">
           <h4>Current Disciplines</h4>
-          <v-row v-for="(discipline, count) in character.Disciplines" :key="renderTime" no-gutters>
-            <v-col md="0" sm="8"> {{ discipline }} x{{ count }}</v-col
-            ><v-col> <v-btn inline x-small @click="removeDiscipline(discipline), $emit('changed')" color="red">-</v-btn> </v-col></v-row
+          <v-row v-for="disc in characterDisciplines" :key="disc.name" no-gutters>
+            <v-col md="0" sm="8"> {{ disc.name }} <span v-for="n in disc.tier" :key="n">I</span></v-col
+            ><v-col> <v-btn inline x-small @click="removeDiscipline(disc.name), $emit('changed')" color="red">-</v-btn> </v-col></v-row
           ></v-col
         >
         <v-col cols="8" class="selecting--box ma-0 pa-0">
@@ -38,8 +41,14 @@
               item-text="Name"
               return-object
               style="margin-left: 0.5em; margin-right: 0.5em;"
-            ></v-select
-            ><discipline-card v-if="discipline.Name != ''" :discipline="discipline" :add_button="true" @chose="addDiscipline" /></div></v-col></v-row
+              ><template v-slot:item="{ item }"> <img class="image--icon-size" :src="item.Icon" />{{ item.Name }} </template></v-select
+            ><discipline-card
+              v-if="discipline.Name != ''"
+              :discipline="discipline"
+              :add_button="true"
+              :tiers="disciplineTier"
+              @chose="addDiscipline"
+            /></div></v-col></v-row
     ></v-container>
   </span>
 </template>
@@ -64,14 +73,25 @@ export default Vue.extend({
     return {
       discipline: new Discipline(),
       renderTime: 0,
-      use_recommended: true,
+      show_all: false,
     }
   },
   computed: {
     creationText: function () {
       return DisciplineSelectionText
     },
+    disciplineTier: function () {
+      if (this.discipline.Name == '') return 0
+      var idx = this.character.Disciplines.findIndex((x) => x.name == this.discipline.Name)
+      if (idx > -1) return this.character.Disciplines[idx].tier
+      return 0
+    },
+    characterDisciplines: function () {
+      this.renderTime
+      return Array.from(this.character.Disciplines)
+    },
     recommendedDisciplines() {
+      if (this.show_all) return this.$store.getters.getDisciplines()
       return this.$store.getters.getCharCreationDisciplines(this.character.RecommendedDisciplines)
     },
   },

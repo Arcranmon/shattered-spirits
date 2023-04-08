@@ -9,17 +9,21 @@ declare interface IArmorData {
   step: number
 }
 
+declare interface ICharDisciplineData {
+  name: string
+  tier: number
+}
+
 declare interface ICharacterData {
   current_spirit_stance: string
   current_martial_stance: string
   current_endurance: number
   equipped_armor: string
-  disciplines: Map<string, number>
+  disciplines: ICharDisciplineData[]
   focus: number
   grit: number
   current_health: number
   main_hand: string
-  martial_forms: number
   max_health: number
   momentum: number
   name: string

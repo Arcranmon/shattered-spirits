@@ -89,7 +89,7 @@ export default Vue.extend({
   methods: {
     setSpirit(variable) {
       this.character.SpiritType = variable
-      this.character.ClearSpiritInfo()
+      //this.character.ClearSpiritInfo()
     },
   },
   computed: {

@@ -74,7 +74,8 @@ class Discipline {
     return this.tier_1_.special
   }
   public get Tier1Unarmed() {
-    return this.tier_1_.unarmed
+    if (!Number.isNaN(this.tier_1_.unarmed)) return this.tier_1_.unarmed
+    return 0
   }
   public get HasTier2Stances() {
     return this.tier_2_.stances != undefined
@@ -97,8 +98,12 @@ class Discipline {
   public get HasTier2Special() {
     return this.tier_2_.special != undefined
   }
+  public get Tier2Special() {
+    return this.tier_2_.special
+  }
   public get Tier2Unarmed() {
-    return this.tier_2_.unarmed
+    if (!Number.isNaN(this.tier_2_.unarmed)) return this.tier_2_.unarmed
+    return 0
   }
   // ==========================================================
   // SERIALIZATION

@@ -9,7 +9,9 @@
       <display-tooltip-text style="font-style: italic;" class="page--description" :string="discipline.Flavor" />
     </div>
     <div class="header">
-      <h4 style="display: flex;">Tier I <v-btn v-if="add_button" class="tier-button" v-on:click="clickMethod(discipline, 1)">Unlock Tier I</v-btn></h4>
+      <h4 style="display: flex;">
+        Tier I <v-btn v-if="add_button" :disabled="tiers != 0" class="tier-button" v-on:click="clickMethod(discipline, 1)">Unlock Tier I</v-btn>
+      </h4>
     </div>
     <div class="body">
       <div style="margin-top: 0.5em;" v-if="discipline.HasTier1Special" class="special--box">
@@ -23,13 +25,15 @@
       ></v-row>
     </div>
     <div class="header">
-      <h4 style="display: flex;">Tier II</h4>
+      <h4 style="display: flex;">
+        Tier II <v-btn v-if="add_button" :disabled="tiers != 1" class="tier-button" v-on:click="clickMethod(discipline, 2)">Unlock Tier II</v-btn>
+      </h4>
     </div>
     <div class="body">
       <div style="margin-top: 0.5em;" v-if="discipline.HasTier2Special" class="special--box">
         <h4 style="display: inline; font-style: normal;">Special</h4>
         <br />
-        <display-tooltip-text :string="discipline.Tier1Special" />
+        <display-tooltip-text :string="discipline.Tier2Special" />
       </div>
       <v-row
         ><v-col :cols="num_cols" v-for="stance in discipline.Tier2Stances" :key="stance.Name"><stance-card :stance="stance" /></v-col>
@@ -101,11 +105,12 @@ export default Vue.extend({
 <style scoped lang="scss">
 .special--box {
   border: $border--black-standard;
-  width: 95%;
+  width: 100%;
   background-color: $color--light-parchment;
   font-size: $font-size--s;
   text-align: center;
-  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 .header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.15) 0 0);
