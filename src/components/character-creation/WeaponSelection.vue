@@ -5,7 +5,7 @@
     <br />
     <br />
     <v-layout justify-center
-      ><div class="button-seperator">
+      ><div class="button-separator">
         <v-btn color="success" large tile @click="$emit('chose-weapon')" :disabled="!character.HasAllWeapons">
           <span v-if="!character.HasAllWeapons">CHOOSE YOUR WEAPONS</span>
           <span v-else>ACCEPT WEAPONS</span>
@@ -13,37 +13,35 @@
       </div></v-layout
     >
     <div class="centered--formatted">
-      <display-tooltip-text :string="'You may select an additional ' + character.WeaponWeightRemaining + ' Encumbrance of weaponry!'" /><br />
-      <display-tooltip-text string="Click a weapon on the right to select it, or a selected weapon to unequip it." /><br /><br />
+      <display-tooltip-text :string="'You may select an additional ' + character.WeaponWeightRemaining + ' Weight of weaponry!'" /><br />
+      <display-tooltip-text string="Click a weapon on the right to select it." /><br /><br />
     </div>
     <v-container class="fill-height" fluid>
       <v-row>
         <v-col cols="4" class="selected--box">
           <h4>Current Weapons</h4>
-          <show-cards
-            :inputs="charWeapons"
-            job="Weapons"
-            :collapse="false"
-            :cols="1"
-            standalone_or_contained="Standalone"
-            :character_creation="true"
-            :selectButton="true"
-            @chose="removeWeapon"
-        /></v-col>
+          <v-row v-for="(count, weapon) in charWeapons" :key="weapon" no-gutters>
+            <v-col md="0" sm="8"> {{ weapon }} x{{ count }}</v-col
+            ><v-col> <v-btn inline x-small @click="removeWeapon(weapon), $emit('changed')" color="red">-</v-btn> </v-col></v-row
+          ></v-col
+        >
         <v-col cols="8" class="selecting--box ma-0 pa-0">
-          <span v-for="weapon_class in weapon_classes" :key="weapon_class">
-            <show-cards
-              :inputs="$store.getters.getWeaponsByCategory(weapon_class)"
-              job="Weapons"
-              :cols="2"
-              :card_color="weapon_class"
-              :header_color="weapon_class"
-              :display_text="weapon_class"
-              :summary_text="weapon_summaries[weapon_class]"
-              :character_creation="true"
-              standalone_or_contained="Standalone"
-              :selectButton="true"
-              @chose="addWeapon" /></span></v-col></v-row></v-container
+          <div style="margin-top: 1em;" class="centered-buttons">
+            <span v-for="weapon_class in weapon_classes">
+              <v-btn tile v-bind:class="weapon_class" :disabled="(weapon_category == weapon_class)" @click="weapon_category = weapon_class">{{
+                weapon_class
+              }}</v-btn></span
+            >
+          </div>
+          <show-cards
+            :inputs="$store.getters.getWeaponsByCategory(weapon_category)"
+            job="Weapons"
+            :cols="2"
+            :character_creation="true"
+            :collapse="false"
+            standalone_or_contained="Standalone"
+            :selectButton="true"
+            @chose="addWeapon" /></v-col></v-row></v-container
   ></span>
 </template>
 <script>
@@ -66,11 +64,12 @@ export default Vue.extend({
   data: () => {
     return {
       weapon: new Weapon(),
-      weapon_classes: ['Blade', 'Lance', 'Blunt', 'Projectile', 'Throwing', 'Shield'],
+      weapon_category: '',
+      weapon_classes: ['Bladed', 'Pole', 'Hafted', 'Projectile', 'Throwing', 'Shield'],
       weapon_summaries: {
-        Blade: 'Weapons such as swords that focus on a balanced approach to combat.',
-        Lance: 'Weapons such as spears that focus on attacking at range and consistent damage.',
-        Blunt: 'Weapons such as axes and hammers that focus on high damage and destruction.',
+        Bladed: 'Weapons such as swords that focus on a balanced approach to combat.',
+        Pole: 'Weapons such as spears that focus on attacking at range and consistent damage.',
+        Hafted: 'Weapons such as axes and hammers that focus on high damage and destruction.',
         Projectile: 'Weapons such as bows that emphasize extreme range in exchange for melee capability.',
         Throwing: 'Weapons such as darts that emphasize moderate range and extreme speed.',
         Shield: 'A piece of armor wielded as a weapon, providing superior defense.',
@@ -82,7 +81,13 @@ export default Vue.extend({
       return this.$store.getters.getWeaponsForCharCreation()
     },
     charWeapons() {
-      return this.$store.getters.getWeaponsFromList(this.character.Weapons)
+      var char_weapons = this.$store.getters.getWeaponsFromList(this.character.Weapons)
+      var counts = {}
+      for (const weapon of char_weapons) {
+        counts[weapon.Name] = counts[weapon.Name] ? counts[weapon.Name] + 1 : 1
+        if (weapon.Keywords.includes('Small')) counts[weapon.Name] = counts[weapon.Name] + 1
+      }
+      return counts
     },
     creationText: function () {
       return WeaponSelectionText
@@ -93,18 +98,26 @@ export default Vue.extend({
       this.character.AddWeapon(variable.card)
     },
     removeWeapon(variable) {
-      this.character.RemoveWeapon(variable.card)
+      this.character.RemoveWeapon(variable)
     },
   },
 })
 </script>
 
 <style scoped lang="scss">
-.button-seperator {
+.button-separator {
   margin-bottom: 1em;
 }
 .weapon--box {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+.centered-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
 }
 </style>

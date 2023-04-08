@@ -3,7 +3,7 @@
     <display-tooltip-text :string="creationText" />
     <br />
     <v-layout justify-center>
-      <div class="button-seperator">
+      <div class="button-separator">
         <v-btn color="success" large tile @click="$emit('chose-techs')" :disabled="!character.HasAllTechniques">
           <span v-if="!character.HasAllTechniques">CHOOSE YOUR TECHNIQUES</span>
           <span v-else>ACCEPT TECHNIQUES</span>
@@ -150,7 +150,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.button-seperator {
+.button-separator {
   margin-bottom: 1em;
 }
 .stance--box {

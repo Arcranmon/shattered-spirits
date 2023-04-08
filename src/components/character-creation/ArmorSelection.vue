@@ -1,6 +1,6 @@
 <template
   ><span>
-    <div class="button-seperator">
+    <div class="button-separator">
       <div>
         <h3>Choosing Your Armor</h3>
         <display-tooltip-text :string="creationText" />
@@ -50,4 +50,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.a {
+}
+</style>

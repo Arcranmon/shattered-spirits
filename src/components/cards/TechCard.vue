@@ -1,16 +1,17 @@
 <template>
   <div class="tech--wrapper" inline>
-    <div class="tech--color-header" v-bind:class="category">
+    <div v-bind:class="tech.Type">
       <div class="tech--header">
-        <h3 style="display: inline; font-style: normal;">{{ tech.Name }}</h3>
+        <img class="image--header-left" :src="tech.Image" />
+        <img class="image--header-right" :src="tech.Image" />
+        <h4 style="display: inline; font-style: normal;">{{ tech.Name }}</h4>
       </div>
       <div class="tech--keywords" v-bind:class="tech.Type">
         <span v-if="(tech.Desc.length > 0)" style="font-style: italic;">{{ tech.Desc }}<br /></span>
         <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
         <span style="font-style: bold;">
           <b
-            >{{ tech.SpeedHeader }}<span v-if="tech.HasDamageType">, {{ tech.DamageTypeHeader }}</span
-            ><span v-if="tech.HasRange">, <display-tooltip-text :string="tech.RangeHeader" :decorate="false" /></span
+            >{{ tech.SpeedHeader }}<span v-if="tech.HasRange">, <display-tooltip-text :string="tech.RangeHeader" :decorate="false" /></span
             ><span v-if="tech.HasArea">, <display-tooltip-text :string="tech.Area" :decorate="false" /></span
             ><span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
           ><br />
@@ -24,6 +25,9 @@
       </div>
       <div class="tech--format" v-if="tech.HasReqs">
         <display-tooltip-text :string="tech.ReqsHeader" />
+      </div>
+      <div class="tech--format" v-if="tech.HasWeapon">
+        <display-tooltip-text :string="tech.WeaponHeader" />
       </div>
       <div class="tech--format" v-if="tech.HasTrigger">
         <display-tooltip-text :string="tech.TriggerHeader" />
@@ -53,32 +57,12 @@
         <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
           <v-expansion-panel style="background-color: inherit;"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="tech.Chart" /></v-expansion-panel-content>
+            <v-expansion-panel-content class="expand--body-chart"
+              ><display-tooltip-text :string="tech.DamageTypeHeader" /><chart-table :chart="tech.Chart"
+            /></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </div>
-      <span v-if="!this.on_sheet">
-        <div class="expand--collapse-box-outlined" v-if="tech.HasReaction">
-          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-            <v-expansion-panel style="background-color: inherit;"
-              ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
-              <v-expansion-panel-content class="expand--body-reaction">
-                <display-tooltip-text :string="tech.ReactionHeader" />
-                <div><reaction-card :reaction="$store.getters.getReaction(tech.Reaction)" /></div
-              ></v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </div>
-        <div class="expand--collapse-box-outlined" v-if="tech.HasEnhancement">
-          <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-            <v-expansion-panel style="background-color: inherit;"
-              ><v-expansion-panel-header class="expand--header-enhancement">Enhance</v-expansion-panel-header>
-              <v-expansion-panel-content class="expand--body-enhancement">
-                <div><enhancement-card :enhancement="$store.getters.getEnhancement(tech.Enhancement)" /></div
-              ></v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels></div
-      ></span>
     </div>
   </div>
 </template>
@@ -88,8 +72,7 @@ import Vue from 'vue'
 import { Technique } from '@/class'
 import { store } from '@/store'
 import ChartTable from '@/components/ChartTable.vue'
-import EnhancementCard from './EnhancementCard.vue'
-import ReactionCard from './ReactionCard.vue'
+import ManeuverCard from './ManeuverCard.vue'
 
 export default Vue.extend({
   name: 'technique-card',
@@ -113,35 +96,41 @@ export default Vue.extend({
       default: false,
     },
   },
-  components: { ChartTable, EnhancementCard, ReactionCard },
+  components: { ChartTable, ManeuverCard },
 })
 </script>
 
 <style scoped lang="scss">
 .tech--wrapper {
   font-family: $font--standard;
-  background-color: $color--parchment;
-  border-top-left-radius: 3em;
-  border-top-right-radius: 3em;
+  background-color: $color--grey-light;
   border: $border--black-standard;
   height: 100%;
   padding-bottom: $space--s;
 }
-.tech--color-header {
-  border-top-left-radius: 2.9em;
-  border-top-right-radius: 2.9em;
-}
 .tech--header {
   padding-top: $space--xs;
-  font-size: $font-size--l;
   text-align: center;
   color: black;
+  overflow: hidden;
+}
+.image--header-left {
+  height: 2em;
+  float: left;
+  padding-left: 0.5em;
+}
+.image--header-right {
+  height: 2em;
+  float: right;
+  transform: scaleX(-1);
+  padding-left: 0.5em;
 }
 .tech--keywords {
   text-align: center;
   font-size: $font-size--s;
   color: black;
   padding-bottom: $space--xs;
+  border-bottom: 5px solid black;
 }
 .tech--content {
   font-size: $font-size--s;
@@ -164,18 +153,18 @@ export default Vue.extend({
   white-space: normal !important;
 }
 .Strike {
-  border-bottom: 5px solid $color--strike;
+  background: $color--strike !important;
 }
-.Maneuver {
-  border-bottom: 5px solid $color--maneuver;
+.General {
+  background: $color--general;
 }
 .Move {
-  border-bottom: 5px solid $color--move;
+  background: $color--move;
 }
 .Defensive {
-  border-bottom: 5px solid $color--defensive;
+  background: $color--defensive;
 }
 .Support {
-  border-bottom: 5px solid $color--support;
+  background: $color--support;
 }
 </style>

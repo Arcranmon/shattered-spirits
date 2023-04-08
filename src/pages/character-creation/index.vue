@@ -1,7 +1,7 @@
 <template>
-  <div style="padding: 1em;">
+  <div style="padding: 1em; width: 100%;">
     <h2>Character Creation</h2>
-    <display-tooltip-text :string="choosingYourSpirit" />
+    <display-tooltip-text :string="choosingYourSpirit" class="text" />
     <br />
     <br />
     <display-tooltip-text :string="choosingYourEquipment" />
@@ -12,10 +12,7 @@
     <display-tooltip-text :string="choosingYourWeapons" />
     <br />
     <br />
-    <display-tooltip-text :string="choosingYourStyleStances" />
-    <br />
-    <br />
-    <display-tooltip-text :string="choosingYourTechniques" />
+    <display-tooltip-text :string="choosingYourDisciplines" />
     <br />
     <br />
     <display-tooltip-text :string="choosingYourTalents" />
@@ -37,13 +34,11 @@ import ChoosingYourSpirit from '@/database/text_files/character_creation/choosin
 import ChoosingYourEquipment from '@/database/text_files/character_creation/choosing_your_equipment.txt'
 import ChoosingYourArmor from '@/database/text_files/character_creation/choosing_your_armor.txt'
 import ChoosingYourWeapons from '@/database/text_files/character_creation/choosing_your_weapons.txt'
-import ChoosingYourStyleStances from '@/database/text_files/character_creation/choosing_your_styles_stances.txt'
-import ChoosingYourTechniques from '@/database/text_files/character_creation/choosing_your_techniques.txt'
+import ChoosingYourDisciplines from '@/database/text_files/character_creation/choosing_your_disciplines.txt'
 import ChoosingYourTalents from '@/database/text_files/character_creation/choosing_your_talents.txt'
 import ChoosingYourAppearance from '@/database/text_files/character_creation/choosing_your_appearance.txt'
 import CreatingYourBackground from '@/database/text_files/character_creation/creating_your_background.txt'
 import FinalizingYourCharacter from '@/database/text_files/character_creation/finalizing_your_character.txt'
-import DisplayTooltipText from '@/components/DisplayTooltipText'
 
 import { store } from '@/store'
 export default Vue.extend({
@@ -62,11 +57,8 @@ export default Vue.extend({
     choosingYourWeapons() {
       return ChoosingYourWeapons
     },
-    choosingYourStyleStances() {
-      return ChoosingYourStyleStances
-    },
-    choosingYourTechniques() {
-      return ChoosingYourTechniques
+    choosingYourDisciplines() {
+      return ChoosingYourDisciplines
     },
     choosingYourTalents() {
       return ChoosingYourTalents
@@ -85,6 +77,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-a {
+.a {
 }
 </style>

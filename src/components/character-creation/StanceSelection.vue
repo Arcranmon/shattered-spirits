@@ -2,7 +2,7 @@
   ><span>
     <display-tooltip-text :string="creationText" />
     <br />
-    <div class="button-seperator">
+    <div class="button-separator">
       <v-layout justify-center>
         <v-btn color="success" large tile @click="$emit('chose-stances')" :disabled="!character.HasAllStancesStyles">
           <span v-if="!character.HasAllStancesStyles">CHOOSE YOUR STANCES AND STYLES</span>
@@ -108,7 +108,7 @@ export default Vue.extend({
       return [...this.$store.getters.getDisciplinesByCategory('Weapon'), ...this.$store.getters.getDisciplinesByCategory('Armor')]
     },
     styles: function () {
-      return this.$store.getters.getAllStyles()
+      return this.$store.getters.getAllMartialStances()
     },
     charStances: function () {
       return this.$store.getters.getStancesFromList(this.character.StancesCreation)
@@ -146,7 +146,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.button-seperator {
+.button-separator {
   margin-bottom: 1em;
 }
 .character-creation {

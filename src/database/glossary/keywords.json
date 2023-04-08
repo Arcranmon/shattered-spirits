@@ -9,19 +9,15 @@
   },
   {
     "name": "Arcing",
-    "effect": "Treat all creatures that would have Cover from this Attack as only having _Soft Cover_."
+    "effect": "Arcing Attacks treat _Covered_ as _Heavily Obstructed_ instead and _Heavily Obstructed_ as _Lightly Obstructed_, so long as a path exists over Obstacles that can reach the Target."
   },
   {
     "name": "Artillery",
     "effect": "Attacks with the Artillery Keyword have Disadvantage on all attacks against creature X spaces or less away, where X is their Artillery value."
   },
   {
-    "name": "Armor Piercing",
-    "effect": "When attacking Armor or Shields Attacks with this tag have Advantage, and the associated attack against the creature does not have Disadvantage."
-  },
-  {
     "name": "Attach",
-    "effect": "Enhancements are Attached to Techniques. While Attached, any Keywords that the Enhancement has are granted to the Technique, and additional Effects are resolved,  as outlined on the Enhancement. To Attach an Enhancement to a Technique, that Technique must fulfill all the Enhancement's Requirements."
+    "effect": "Maneuvers are Attached to Techniques. While Attached, any Keywords that the Maneuver has are granted to the Technique, and additional Effects are resolved,  as outlined on the Maneuver. To Attach an Maneuver to a Technique, that Technique must fulfill all the Maneuver's Requirements."
   },
   { "name": "Attached", "see": "Attach" },
   {
@@ -34,7 +30,7 @@
   },
   {
     "name": "Block",
-    "effect": "Block Reactions are based on absorbing a blow to mitigate the overall damage. Many Actions and abilities reference Block Reactions. Block Reactions have their Cost increased by 1 on a Crit."
+    "effect": "Blocks are a Resist with this keyword and are typically based on absorbing a blow to mitigate the overall damage. Many Actions and abilities reference Block Maneuvers."
   },
   { "name": "Blocking", "see": "Block" },
   { "name": "Blocked", "see": "Block" },
@@ -47,8 +43,8 @@
     "effect": "Pick a space within Range. All spaces within X, where X is the Burst's value, spaces of the space are targeted. The targeted space is not effected."
   },
   {
-    "name": "Charge",
-    "effect": "Movement with the Charge keyword can move through squares occupied by hostile creatures, but may not end their movement their."
+    "name": "Blitz",
+    "effect": "Movement with the Blitz keyword can move through squares occupied by hostile creatures, but may not end their movement their."
   },
   {
     "name": "Climable",
@@ -56,11 +52,15 @@
   },
   {
     "name": "Colossal",
-    "effect": "Gain Hobbled 1, Exposed 1 (2 Grit) if you're Wielding it at Refresh or when you begin Wielding this weapon after combat has begun. You must pay 1 Grit when you Attack with it, or else have Disadvantage."
+    "effect": "You must pay 1 Grit when you Attack with this Weapon or else have Disadvantage."
   },
   {
     "name": "Combo",
-    "effect": "A Combo Technique allows characters to adapt between Attacks in a Technique. Creatures may apply a different set of Enhancements to each Attack, and may use Tokens used to pay for Enhancements to pay Costs for future Attacks. For example, if a character spent 3 Momentum on Enhancements when playing the Technique, they may apply up to 3 Momentum of Enhancements to an Attack without spending any resources."
+    "effect": "When an Attack is listed as a Combo, treat it and all other Combo Attacks made this Turn as a single Attack for the purpose of all Gambits, except ones with the Edge keyword. If a special Effect would trigger based on the Attack, use the higher of the Combo Attacks to resolve it."
+  },
+  {
+    "name": "Counter",
+    "effect": "Counters are a Resist with this keyword based on throwing aside defense to attack. Many Actions and abilities reference Counter Resists."
   },
   {
     "name": "Cone",
@@ -71,8 +71,17 @@
     "effect": "Take the creature's total Value of a Token and divide it into the minimum number of Tokens. For example, a creature with Impaired 1x3 would have Impaired 3 after this Technique."
   },
   {
+    "name": "Resist",
+    "effect": "A Maneuver typically used in response to an Attack that allows a character to strike back against a foe, mitigate damage, or dodge. Each Turn, a character may use a single Resist Maneuver."
+  },
+  { "name": "Defends", "see": "Defend" },
+  {
     "name": "Derived",
-    "effect": "This Terrain's Source is the same as whatever the Terrain beneath it is; i.e., if it is created on Earthen Terrain, it is in turn Earthen.."
+    "effect": "This Terrain's Source is the same as whatever the Terrain beneath it is; i.e., if it is created on Earthen Terrain, it is in turn Earthen."
+  },
+  {
+    "name": "Earth",
+    "effect": "Techniques with this keyword rely on an Earth spirit as well as a strong connection with the ground. If a character is not on or immediately above (such as standing on the wooden floor of a house) Earthen Terrain (such as while Jumping), increase the cost of this Technique by 1. If the character is Flying, increase it by 2. If there is no Earthen Terrain or Obstacles with 5 spaces (such as when on the deck of a ship) this Technique may not be used."
   },
   {
     "name": "Earthen",
@@ -91,49 +100,47 @@
     "effect": "Enchant effects are an effect that persists for multiple Turns or Rounds. A creature may only have one Enchant ability in effect at a time."
   },
   {
-    "name": "Environmental",
-    "effect": "This Enhancement must be Attached to the Use Environment Technique. Only a single Enhancement with this Tag may be Attached at a time."
-  },
-  {
     "name": "Evade",
-    "effect": "Evade Reactions typically involve avoiding a blow or quickly moving to avoid further damage. Many Actions and abilities reference Evade Reactions."
+    "effect": "Evades are a Resist with this keyword that typically involve avoiding a blow or quickly moving to avoid further damage. Many Actions and abilities reference Evade Resists."
   },
   { "name": "Evading", "see": "Evade" },
   {
     "name": "Feint",
-    "effect": "A keyword simply designating that this is a Feint, which typically means that, if the opponent does not pay some resources, you'll receive some benefit on the next Attack against them."
+    "effect": "A special type of Gambit that typically means that, if the opponent does not pay some resources, you'll receive some benefit on the next Attack against them."
   },
   {
     "name": "Fleeting",
     "effect": "Tokens with the Fleeting Keyword are lost at the end of the current Turn."
   },
   {
-    "name": "Flexible",
-    "effect": "Enhancements with the Flexible tag may Attached at any point, not just when a Technique is selected."
-  },
-  {
     "name": "Flourish",
-    "effect": "Techniques with the Flourish Keyword can Improvise any other Technique with the Flourish Keyword at no Cost."
+    "effect": "A Flourish is a Maneuver that is typically used after a character hits with an Attack. A character may use one _Flourish_ per _Turn_."
   },
+  { "name": "Flourishes", "see": "Flourish" },
   {
     "name": "Fluid",
-    "effect": "Reduce the Cost to Improvise this Action or an Action using this Weapon by its Fluid Value. This only reduces the Cost to Improvise, not the overall Cost of the Action or Enhancement."
+    "effect": "Reduce the Cost to Improvise this Action or an Action using this Weapon by its Fluid Value. This only reduces the Cost to Improvise, not the overall Cost of the Action or Maneuver."
   },
   {
     "name": "Fist",
     "effect": "Weapons with the Fist Keyword require an Open Hand to use."
   },
   {
+    "name": "Gambit",
+    "effect": "Gambits are various small ways characters can attempt to gain an advantage in combat. A character may use any number of Gambits per Turn, but only one Edge may be applied to a single Attack."
+  },
+  { "name": "Gambits", "see": "Gambit" },
+  {
     "name": "Glancing",
-    "effect": "This Effect deals half Damage and has its cost to Negate reduced by 1. If an Attack already has Glancing and gains it from another source, the Attack is made at Disadvantage."
+    "effect": "This Effect deals half Damage and has its cost to Negate halved or reduced by 1, whichever results in a lower cost. If an Attack already has Glancing and gains it from another source the attack instead fails."
   },
   {
     "name": "Groundsource",
-    "effect": "Groundsource effects ignore Cover, do not gain Disadvantage from Prone if they are Ranged, and Area Effects are not stopped by Obstacles like normal. In exchange, Groundsource effects must be used on Earthen Terrain. Flying creatures are immune to all Groundsource effects."
+    "effect": "Groundsource Attacks are always treated as Melee, Area Effects are not stopped by Obstacles like normal, and Groundsource attacks ignore Covered. In exchange, both the user and Target of Groundsource Techniques must be used on Earthen Terrain. Flying creatures are immune to all Groundsource effects."
   },
   {
     "name": "Heavy",
-    "effect": "Heavy attacks are powerful and deal additional damage with a Strong Enhancements but cannot be used with Quick Enhancements."
+    "effect": "Heavy Techniques and Weapons are powerful and have access to many Maneuvers that allow delaying Speed to increase efficacy."
   },
   {
     "name": "Kick",
@@ -141,7 +148,7 @@
   },
   {
     "name": "Light",
-    "effect": "Light attacks swift and are more effective on Quick Enhancements but cannot be used with Strong Enhancements."
+    "effect": "Light Techniques and Weapons are swift and specialize in acting quicker than other foes."
   },
   {
     "name": "Line",
@@ -152,12 +159,8 @@
     "effect": "Any Leaping Movement ignores Terrain that does not effect Flying characters. Characters may also go up Elevation while Leaping so long as they have sufficient Leaping Movement."
   },
   {
-    "name": "Martial Form",
-    "effect": "Whenever you learn a Technique with this Keyword you may select an Unarmed Weapon with the same Keyword."
-  },
-  {
     "name": "Melee",
-    "effect": "This may only be used to Attack adjacent Targets."
+    "effect": "This may only be used to Attack Targets within your Reach."
   },
   {
     "name": "Obstacle",
@@ -172,16 +175,25 @@
     "effect": "Any Attack with this Weapon must be made before any Movement is made as a part of this Action."
   },
   {
+    "name": "Parry",
+    "effect": "Parries are a Resist with this keyword that typically require a Parrying Attack and are based on intercepting an attack with an attack of your own. Many Techniques and abilities reference Parry Resists."
+  },
+  {
     "name": "Pierce",
     "effect": "This Attack ignores an amount of the Target's Guard equal to its Pierce value."
   },
   {
+    "name": "Punish",
+    "effect": "A Maneuver used in response to an opposing character fulfilling some trigger. A character may use a single Punish Maneuver each Turn."
+  },
+  { "name": "Punishes", "see": "Punish" },
+  {
     "name": "Quick",
-    "effect": "This Enhancement may not be used with Heavy Techniques."
+    "effect": "This Maneuver may not be used with Heavy Techniques."
   },
   {
-    "name": "Opportune",
-    "effect": "A Reaction that typically triggers off of a different creature's movement."
+    "name": "Parrying",
+    "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified. If a Parrying Attack rolls greater than or equal to the Attack that triggered it, it is considered a success."
   },
   {
     "name": "Priority",
@@ -189,44 +201,67 @@
   },
   {
     "name": "Reach",
-    "effect": "Attacks with the Reach keyword are treated as Melee for the purposes of all effects, but can be used at a range equal to their Reach value."
+    "effect": "Reach is how far away a Melee Attack can be used to attack a creature. Most Melee Attacks have Reach 1 but some, such as Pole Weapons, have a greater Reach."
   },
   {
     "name": "Safe",
-    "effect": "All Reactions with the Opportunity tag cost an additional X, where X is this Technique's Safe value."
+    "effect": "All Punishes triggered by this Movement take a -X Penalty, where X is the Safe value."
+  },
+  {
+    "name": "Small",
+    "effect": "This piece of Equipment is particularly small. If you select this piece of Equipment you gain 2 without increasing the Weight."
   },
   {
     "name": "Scout",
-    "effect": "When you Scout a creature you learn their current exact Health and how much Focus, Grit, Reflex, or Momentum (your choice) the creature has."
+    "effect": "When you Scout a creature you learn their current exact Health and how much Poise, Grit, Reflex, and Momentum the creature has."
   },
   {
     "name": "Siege",
     "effect": "Attacks with Siege deal +2 Damage to Obstacles and have Advantage on Attacks against them."
   },
   {
+    "name": "Stratagem",
+    "effect": "Stratagems are ways to enhance a Technique that must be used when the Technique is played, whether that be at Refresh, while Improvising, or as a part of another Maneuver. Stratagems often change the Speed or AP cost of a Technique."
+  },
+  { "name": "Stratagems", "see": "Stratagem" },
+  {
+    "name": "Stunt",
+    "effect": "Stunts are quick, simple Maneuvers such as jumping or picking up an item that characters may use on their Turn. Characters may use as many Stunts as they can pay for, but may not repeat a Stunt unless it has the Repeatable keyword."
+  },
+  { "name": "Stunts", "see": "Stunt" },
+  {
     "name": "Sundering",
     "effect": "Attacks with this tag don't have Disadvantage when attacking _Wielded_ Equipment."
   },
   {
     "name": "Strong",
-    "effect": "This Enhancement may not be used with Light Techniques."
+    "effect": "This Maneuver may not be used with Light Techniques."
   },
   {
     "name": "Sure Hit",
-    "effect": "The Cost of Evade Reactions is increased by its Sure Hit value against this Technique."
+    "effect": "The Cost and Cost of all Boosts for Evade Maneuvers are increased by this Attack's Sure Hit Value."
   },
   {
     "name": "Stall",
     "effect": "A Stall Action is always resolved at the end of its Phase. It ignores normal turn order and does not count for the alternating turns within a Round."
   },
   {
+    "name": "Edge",
+    "effect": "A special type of Gambit that may only be applied to a single Attack once."
+  },
+  {
     "name": "Repeatable",
-    "effect": "This Enhancement may be used multiple times in a Round and may be applied to the same Technique multiple times, paying the cost each time."
+    "effect": "This Stunt may be used multiple times in a Turn, paying the cost each time."
   },
   {
     "name": "Reveal",
-    "effect": "When a creature is inflicted with Reveal their next Technique and what Phase it is occurring in is revealed. If a creature has no more Techniques this round, they instead have Knowledge 1 inflicted."
+    "effect": "When a creature is inflicted with Reveal their next Technique and what Phase it is occurring in is revealed. If a creature has no more Techniques this round, they instead have Insight 1 inflicted."
   },
+  {
+    "name": "Reaction",
+    "effect": "A Maneuver that may be freely used when its Trigger occurs. Characters may use as many Reactions as they wish on a given Turn, but may not repeat a Reaction unless otherwise specified."
+  },
+  { "name": "Reactions", "see": "Reaction" },
   {
     "name": "Rigid",
     "effect": "This Technique may not be Improvised."
@@ -234,6 +269,10 @@
   {
     "name": "Rush",
     "effect": "When taking your Movement with a Technique that has the Rush Keyword you must move in a straight line."
+  },
+  {
+    "name": "Sundering",
+    "effect": "A keyword that identifies a Maneuver or Technique that tends to destroy armor and other equipment."
   },
   {
     "name": "Stairs",
@@ -253,11 +292,19 @@
   },
   {
     "name": "Unblockable",
-    "effect": "The Cost of Block Reactions is increased by its Unblockable value against this Technique."
+    "effect": "The Cost and Cost of all Boosts for Block and Parry Maneuvers are increased by this Attack's Unblockable Value."
+  },
+  {
+    "name": "Upkeep",
+    "effect": "Techniques with Upkeep must pay the listed cost at Refresh or else end the effect."
   },
   {
     "name": "Versatile",
-    "effect": "Versatile Weapons are built for balanced combat, and can be used for both Quick and Strong Techniques, albeit not as well as Light or Heavy Weapons."
+    "effect": "Versatile Techniques and Weapons are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized Light or Heavy Techniques."
+  },
+  {
+    "name": "Incoming",
+    "effect": "An Incoming Attack is created by launching a projectile into the air, preparing an explosion, or any other effect that creates a Hazard. When drawing the Attack Line, draw it from the space where you created the Hazard, not the space you are in when you make the Attack."
   },
   {
     "name": "Watery",
@@ -265,12 +312,13 @@
   },
   {
     "name": "Warding",
-    "effect": "The Cost of Punish Reactions is increased by its Warding value against this Technique."
+    "effect": "Counter/Punish Maneuvers take a -X Penalty against this Attack, where X is its Warding value."
   },
   {
-    "name": "Weapon",
-    "effect": "This Technique must be utilized with a Weapon, and inherits all Keywords of said Weapon."
+    "name": "Weapon Attack",
+    "effect": "When a Technique/Maneuver allows you to make a Weapon Attack, reference the 'Weapon' field of said Technique/Maneuver. Make an Attack using a Wielded Weapon that matches the criteria listed and modifying it as listed by the Technique."
   },
+  { "name": "Weapon Attacks", "see": "Weapon Attack" },
   {
     "name": "Weak",
     "effect": "The Cost of Block Reactions is reduced by 1 against this Technique."

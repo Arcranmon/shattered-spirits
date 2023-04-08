@@ -26,32 +26,33 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
-ONGOING REFACTORS
+BEFORE V0.1 (Earth)
 
-- Add 'Heavy', 'Light', and 'Versatile' to all Strikes.
-- Update all the descriptions of Weapons/Disciplines once they're a bit more consistent.
-- Update all Stances/Styles to have an Enhancement or Reaction, and most Techniques to have an Enhancement/Reaction.
-- Convert current 'select Techniques/Stances' to instead 'select X levels of Disciplines', with each Discipline giving the following at different tiers:
-  - Each tier can give more, this is just the bare minimum
-  - Tier 1: Technique + Enhance/Reaction
-  - Tier 2: Stance/Style + Technique + Enhance/Reaction
-  - Tier 3: Big expensive Technique + Enhance/Reaction (save this for later)
-  - At creation characters will have 4 Tier II Disciplines and 2 Tier I Disciplines.
+- Remake character creator
 
-LOW PRIORITY
+MISSING TECHNIQUES
+These are Techniques/Maneuvers that existed in previous content but are missing in the current Discipline refactor:
 
-- Add more specialized weapon strikes to more strongly set their identities.
-- Make names more fun and evocative.
-- Visually differentiate the different cards more.
+- Earthen Agility (new Discipline for moving using Earth?)
+- Sinkhole (will be the Tier III Clay Shaper)
+- Avalanche Charge (doesn't fit new Boulder Discipline identity, add somewhere later)
+- Jaws of the Earth (Tier III Piercing Shard)
+- Haft Strike/Spear Vault (new Staff specialty?)
+- Impaling Strike (Tier III spear tech)
+- Gilgamesh Swing (Tier III Shattering Granite)
 
-This system is very much a work-in-progress, but is slowly getting more and more developed! Here's a very rough roadmap of what I have planned.
+This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
+- Add consumable items and support for them.
+- Add more combat support for the fiction of it being you and your companion spirit.
+  - Have a manifest maneuver to physically conjure your spirit for a turn.
+- Support-based non-spirit classes.
+- More weapon types and supporting Disciplines.
+- Potential Resist refactor?
+- Potential shift from armor-based movement to weight profiles.
 - Complete all Spirit Masteries.
 - Refine Endurance and Health system based on how long combats should last.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
-  - Earth needs a balance pass simply because it was completed first and they're likely undertuned now.
-  - Revisit Spirit Stances to try to make sure they're a bit more generally applicable, not just with their Discipline's Techniques.
-  - Add more comprehensive descriptions for how each discipline plays and what their strengths and weaknesses are.
   - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
   - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.
   - Add an additional 'bending' Discipline to each Element:
@@ -61,14 +62,16 @@ This system is very much a work-in-progress, but is slowly getting more and more
     - Water: ???
     - Wind: Sound
     - Wood: Poison
-- Styles are very underdeveloped compared to Spirits at the moment and need to be expanded to include a wider range of fighting styles and options.
-- Balance pass over Weapons and Styles to make sure they are competitive with Spirit options.
+- Balance pass over Weapons and Stances to make sure they are competitive with Spirit options.
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
 - Develop some basic NPC stat blocks for testing.
   - Make some less basic NPC stat blocks for fun.
   - Develop BIG SPIRIT FIGHTS where simply killing them is the easy answer, but it's possible to instead save them by greatly increasing the difficulty of the fight.
 - Make some good player tools. This will probably require some sort of play board so players can easily track conditions and their own Initiative.
 - Non-combat gameplay does not currently exist in any meaningful form and needs to be built once the combat system is in a good place.
+- Combat abilities are governed by Disciplines
+  - Travel abilities are governed by Jobs
+  - Narrative abilities are governed by Talents and Knacks
 - Create a system for exploration and camping and expeditions that is resource management-lite but rewards players with combat resources.
 - Create a 'home base' sort of system that allows for a town or city to develop over time depending on whether players take a more aggressive approach against the spirits or seek healing and peace.
 
@@ -79,3 +82,21 @@ If you want to run this website locally (as it won't always be hosted), do the f
 1. Install nodejs + npm
 2. run npm install
 3. run npm start
+
+## Credits
+
+Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt
+
+Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, and Tremorsight icons made by lorc.
+
+Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.
+
+Unarmed icon made by skoll.
+
+Shield icon made by sbed.
+
+Thrown Weapon icon made by Faithtoken.
+
+Available on https://game-icons.net.
+
+And a big thank you to the playtesters thus far: Aori, everythingElse, Kuji, MesiDoomstalker, and Mystic Witch! Without your feedback and testing none of this would be possible!

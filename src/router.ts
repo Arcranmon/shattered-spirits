@@ -5,33 +5,27 @@ import MainMenu from '@/pages/main-menu/index.vue'
 
 import CombatMenu from '@/pages/combat/combat-menu/index.vue'
 import CombatBasics from '@/pages/combat/combat-basics/index.vue'
-import AfflictionsAndStatus from '@/pages/combat/afflictions_and_status/index.vue'
-import EquipmentInCombat from '@/pages/combat/equipment_in_combat/index.vue'
-import ReadingAbilities from '@/pages/combat/reading_abilities/index.vue'
-import TerrainAndObstacles from '@/pages/combat/terrain_and_obstacles/index.vue'
+import AfflictionsAndStatus from '@/pages/combat/afflictions-and-status/index.vue'
+import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
+import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
+
+import Terrain from '@/pages/combat/terrain/index.vue'
+import Obstacles from '@/pages/combat/obstacles/index.vue'
 
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import SpiritMenu from '@/pages/spirits/spirit-menu/index.vue'
-import Earth from '@/pages/spirits/earth/index.vue'
-import Flame from '@/pages/spirits/flame/index.vue'
-import Metal from '@/pages/spirits/metal/index.vue'
-import Water from '@/pages/spirits/water/index.vue'
-import Wind from '@/pages/spirits/wind/index.vue'
-import Wood from '@/pages/spirits/wood/index.vue'
+import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
+import Shields from '@/pages/equipment/shields/index.vue'
+import UnarmedWeapons from '@/pages/equipment/unarmed-weapons/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
-import SkillsMenu from '@/pages/skills/skills-menu/index.vue'
-import BasicSkills from '@/pages/skills/basic-skills/index.vue'
-import ArmorSkills from '@/pages/skills/armor-skills/index.vue'
-import MartialSkills from '@/pages/skills/martial-skills/index.vue'
-import StratagemSkills from '@/pages/skills/stratagem-skills/index.vue'
-import WeaponSkills from '@/pages/skills/weapon-skills/index.vue'
+import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
+import BasicSkills from '@/pages/basic-skills/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -75,11 +69,11 @@ const r = new Router({
       },
     },
     {
-      path: '/spirits',
-      component: SpiritMenu,
-      name: 'spirit-menu',
+      path: '/spirit-disciplines',
+      component: SpiritDisciplines,
+      name: 'spirit-disciplines',
       meta: {
-        title: 'Spirits',
+        title: 'Spirit Disciplines',
       },
     },
     {
@@ -107,51 +101,19 @@ const r = new Router({
       },
     },
     {
-      path: '/earth',
-      component: Earth,
-      name: 'earth',
+      path: '/shields',
+      component: Shields,
+      name: 'shields',
       meta: {
-        title: 'Earth',
+        title: 'Shields',
       },
     },
     {
-      path: '/flame',
-      component: Flame,
-      name: 'flame',
+      path: '/unarmed-weapons',
+      component: UnarmedWeapons,
+      name: 'unarmed-weapons',
       meta: {
-        title: 'Flame',
-      },
-    },
-    {
-      path: '/metal',
-      component: Metal,
-      name: 'metal',
-      meta: {
-        title: 'Metal',
-      },
-    },
-    {
-      path: '/water',
-      component: Water,
-      name: 'water',
-      meta: {
-        title: 'Water',
-      },
-    },
-    {
-      path: '/wind',
-      component: Wind,
-      name: 'wind',
-      meta: {
-        title: 'Wind',
-      },
-    },
-    {
-      path: '/wood',
-      component: Wood,
-      name: 'wood',
-      meta: {
-        title: 'Wood',
+        title: 'Unarmed Weapons',
       },
     },
     {
@@ -195,19 +157,27 @@ const r = new Router({
       },
     },
     {
-      path: '/terrain-and-obstacles',
-      component: TerrainAndObstacles,
-      name: 'terrain-and-obstacles',
+      path: '/terrain',
+      component: Terrain,
+      name: 'terrain',
       meta: {
-        title: 'Terrain and Obstacles',
+        title: 'Terrain',
       },
     },
     {
-      path: '/skills',
-      component: SkillsMenu,
-      name: 'skills',
+      path: '/obstacles',
+      component: Obstacles,
+      name: 'obstacles',
       meta: {
-        title: 'Skills',
+        title: 'Obstacles',
+      },
+    },
+    {
+      path: '/martial-disciplines',
+      component: MartialDisciplines,
+      name: 'martial-disciplines',
+      meta: {
+        title: 'Martial Disciplines',
       },
     },
     {
@@ -216,38 +186,6 @@ const r = new Router({
       name: 'basic-skills',
       meta: {
         title: 'Basic Skills',
-      },
-    },
-    {
-      path: '/armor-skills',
-      component: ArmorSkills,
-      name: 'armor-skills',
-      meta: {
-        title: 'Armor Skills',
-      },
-    },
-    {
-      path: '/martial-skills',
-      component: MartialSkills,
-      name: 'martial-skills',
-      meta: {
-        title: 'Martial Skills',
-      },
-    },
-    {
-      path: '/stratagem-skills',
-      component: StratagemSkills,
-      name: 'stratagem-skills',
-      meta: {
-        title: 'Stratagem Skills',
-      },
-    },
-    {
-      path: '/weapon-skills',
-      component: WeaponSkills,
-      name: 'weapon-skills',
-      meta: {
-        title: 'Weapon Skills',
       },
     },
     {

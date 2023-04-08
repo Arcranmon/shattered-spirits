@@ -1,22 +1,19 @@
 <template>
   <div>
-    <div style="text-align: center;">
-      <custom-button to="/armor">Armor</custom-button> <br />
-    </div>
-    <div style="text-align: center;">
-      <custom-button to="/weapons">Weapons</custom-button> <br />
-    </div>
+    <div style="text-align: center;"><custom-button to="/armor">Armor</custom-button> <br /></div>
+    <div style="text-align: center;"><custom-button to="/weapons">Weapons and Shields</custom-button> <br /></div>
+    <div style="text-align: center;"><custom-button to="/unarmed-weapons">Unarmed Weapons</custom-button> <br /></div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import CustomButton from "@/components/Button.vue";
+import Vue from 'vue'
+import CustomButton from '@/components/Button.vue'
 
 export default Vue.extend({
-  name: "equipment-menu",
+  name: 'equipment-menu',
   components: {
     CustomButton,
   },
-});
+})
 </script>

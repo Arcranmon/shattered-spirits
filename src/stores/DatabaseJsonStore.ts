@@ -7,20 +7,18 @@ import Stances from '@/database/stances.json'
 import Glossary from '@/database/glossary/glossary.json'
 import InstantEffects from '@/database/glossary/instant_effects.json'
 import Statuses from '@/database/glossary/statuses.json'
-import Afflictions from '@/database/glossary/afflictions.json'
 import Keywords from '@/database/glossary/keywords.json'
 import Resources from '@/database/glossary/resources.json'
 
 import Obstacles from '@/database/obstacles.json'
 import Terrains from '@/database/terrain.json'
 
-import Reactions from '@/database/reactions.json'
-import Enhancements from '@/database/enhancements.json'
+import Maneuvers from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Affliction, Armor, Discipline, Enhancement, Npc, Obstacle, Reaction, Stance, Status, Technique, Terrain, Weapon } from '@/class'
+import { Armor, Discipline, Maneuver, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -34,76 +32,40 @@ let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, InstantEffects, K
 })
 export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
-  // ENHANCEMENT TOOLS
+  // MANEUVER TOOLS
   // ==========================================================
-  get getEnhancement(): any {
+  get getManeuver(): any {
     return (inword: string) => {
-      var enhancement = Enhancements.find((x) => x.name.trim() == inword.trim())
-      if (enhancement == undefined)
-        enhancement = {
-          ap: 0,
+      var maneuver = Maneuvers.find((x) => x.name.trim() == inword.trim())
+      if (maneuver == undefined)
+        maneuver = {
           desc: 'Missing!',
           boost: 'None',
-          keywords: [],
           name: inword,
           cost: 'None',
           reqs: 'None',
-          effect: 'This enhancement could not be found!',
+          type: 'None',
+          special: 'None',
+          effect: 'This maneuver could not be found!',
         }
-      return Enhancement.Deserialize(<IEnhancementData>enhancement)
+      return Maneuver.Deserialize(<IManeuverData>maneuver)
     }
   }
 
-  get getEnhancementsFromList(): any {
-    return (enhancement_list: Array<any>) => {
-      if (enhancement_list == undefined) return []
-      let enhancements: Array<Enhancement> = []
-      for (var enhancement of enhancement_list) {
-        enhancements.push(this.getEnhancement(enhancement))
+  get getManeuversFromList(): any {
+    return (maneuver_list: Array<any>) => {
+      if (maneuver_list == undefined) return []
+      let maneuvers: Array<Maneuver> = []
+      for (var maneuver of maneuver_list) {
+        maneuvers.push(this.getManeuver(maneuver))
       }
-      return enhancements
+      return maneuvers
     }
   }
 
-  get isEnhancement(): any {
+  get isManeuver(): any {
     return (inword: string) => {
-      return Enhancements.some((x) => x.name == inword.trim())
-    }
-  }
-
-  // ==========================================================
-  // REACTION TOOLS
-  // ==========================================================
-  get getReaction(): any {
-    return (inword: string) => {
-      var reaction = Reactions.find((x) => x.name.trim() == inword.trim())
-      if (reaction == undefined)
-        reaction = {
-          name: inword,
-          desc: 'Missing!',
-          cost: 'None',
-          trigger: 'None',
-          keywords: [],
-          effect: 'This reaction could not be found!',
-        }
-      return Reaction.Deserialize(<IReactionData>reaction)
-    }
-  }
-
-  get getReactionsFromList(): any {
-    return (reaction_list: Array<any>) => {
-      if (reaction_list == undefined) return []
-      let reactions: Array<Reaction> = []
-      for (var reaction of reaction_list) {
-        reactions.push(this.getReaction(reaction))
-      }
-      return reactions
-    }
-  }
-
-  get isReaction(): any {
-    return (inword: string) => {
-      return Reactions.some((x) => x.name == inword.trim())
+      return Maneuvers.some((x) => x.name == inword.trim())
     }
   }
 
@@ -133,6 +95,12 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getFilteredArmors(): any {
+    return (categories: Array<string>) => {
+      return Armors.filter((x) => categories.includes(x.category.trim())).map((x) => Armor.Deserialize(<IArmorData>x))
+    }
+  }
+
   get isArmor(): any {
     return (inword: string) => {
       return Armors.some((x) => x.name == inword.trim())
@@ -151,6 +119,14 @@ export class DatabaseJsonStore extends VuexModule {
   get getWeaponsByFlag(): any {
     return (flag: string) => {
       return Weapons.filter((x) => x.flag === flag).map((x) => Weapon.Deserialize(<IWeaponData>x))
+    }
+  }
+
+  get getWeaponByKeywordAndCategory(): any {
+    return (keyword: string, category: string) => {
+      return Weapons.filter((x) => x.category.trim() === category.trim() && x.keywords.includes(keyword) && !x.flag).map((x) =>
+        Weapon.Deserialize(<IWeaponData>x),
+      )
     }
   }
 
@@ -190,6 +166,18 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getFilteredWeapons(): any {
+    return (categories: Array<string>, speed: any, keyword: string) => {
+      return Weapons.filter(
+        (x) =>
+          (categories.includes(x.category.trim()) || (categories.includes('Throwing') && x.keywords.some((y) => y.includes('Thrown')))) &&
+          (speed == 'Any' || speed == x.speed) &&
+          (keyword == 'Any' || x.keywords.some((y) => y.includes(keyword))) &&
+          x.flag != 'NPC',
+      ).map((x) => Weapon.Deserialize(<IWeaponData>x))
+    }
+  }
+
   // ==========================================================
   // STANCE TOOLS
   // ==========================================================
@@ -200,7 +188,6 @@ export class DatabaseJsonStore extends VuexModule {
         stance = {
           name: inword,
           desc: 'Error',
-          discipline: 'Error',
           effect: 'This stance could not be found!',
           accumulate: 'Error',
           refresh: { focus: 0, grit: 0 },
@@ -221,21 +208,15 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getStancesByDiscipline(): any {
-    return (discipline: string) => {
-      return Stances.filter((x) => x.discipline.trim() === discipline.trim()).map((x) => Stance.Deserialize(<IStanceData>x))
-    }
-  }
-
-  get getAllStyles(): any {
+  get getAllMartialStances(): any {
     return () => {
-      var styles = []
+      var stances = []
       for (var category of skillTypes) {
         for (var disc of this.getDisciplinesByCategory(category)) {
-          styles = styles.concat(this.getStancesFromList(disc.Stances))
+          stances = stances.concat(this.getStancesFromList(disc.Stances))
         }
       }
-      return styles
+      return stances
     }
   }
 
@@ -253,17 +234,17 @@ export class DatabaseJsonStore extends VuexModule {
       var technique = Techniques.find((x) => x.name.trim() === inword.trim())
       if (technique == undefined) {
         technique = {
+          ap: 0,
           name: inword,
           desc: 'Error',
-          discipline: 'Error',
           keywords: [],
           type: 'Error',
           speed: 'Error',
           range: 'Error',
           move: 'Error',
-          cost: 'Error',
+          imbue: 'Error',
+          special: 'None',
           effect: 'This technique could not be found!',
-          trigger: 'Error',
           boost: 'Error',
         }
       }
@@ -279,12 +260,6 @@ export class DatabaseJsonStore extends VuexModule {
         techs.push(this.getTechnique(skill))
       }
       return techs
-    }
-  }
-
-  get getTechniquesByDiscipline(): any {
-    return (discipline: string) => {
-      return Techniques.filter((x) => x.discipline.trim() === discipline.trim()).map((x) => Technique.Deserialize(<ITechData>x))
     }
   }
 
@@ -315,10 +290,36 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getDisciplinesByType(): any {
+    return (type: string) => {
+      return Disciplines.filter((x) => x.type.trim() === type.trim()).map((x) => Discipline.Deserialize(<IDisciplineData>x))
+    }
+  }
+
   get getDiscipline(): any {
     return (inword: string) => {
       var discipline = Disciplines.find((x) => x.name.trim() === inword.trim())
       return Discipline.Deserialize(<IDisciplineData>discipline)
+    }
+  }
+
+  get getFilteredDisciplines(): any {
+    return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
+      return Disciplines.filter(
+        (x) =>
+          categories.includes(x.category.trim()) &&
+          types.includes(x.type.trim()) &&
+          (primary_role === 'Any' || primary_role == x.primary_role.trim()) &&
+          (secondary_role === 'Any' || secondary_role == x.primary_role.trim()),
+      ).map((x) => Discipline.Deserialize(<IDisciplineData>x))
+    }
+  }
+
+  get getCharCreationDisciplines(): any {
+    return (categories_and_types: Array<string>) => {
+      return Disciplines.filter((x) => categories_and_types.includes(x.category.trim()) || categories_and_types.includes(x.type.trim())).map((x) =>
+        Discipline.Deserialize(<IDisciplineData>x),
+      )
     }
   }
 
@@ -375,34 +376,6 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // AFFLICTION TOOLS
   // ==========================================================
-  get isAffliction(): any {
-    return (inword: string) => {
-      return Afflictions.some((x) => x.name == inword.trim())
-    }
-  }
-
-  get getAffliction(): any {
-    return (inword: string) => {
-      var obstacle = Afflictions.find((x) => x.name.trim() === inword.trim())
-      return Affliction.Deserialize(<IAfflictionData>obstacle)
-    }
-  }
-
-  get getAfflictions(): any {
-    return () => {
-      return Afflictions.map((x) => Affliction.Deserialize(<IAfflictionData>x))
-    }
-  }
-
-  get getAfflictionsByType(): any {
-    return (type: string) => {
-      return Afflictions.filter((x) => x.type.trim() === type.trim()).map((x) => Affliction.Deserialize(<IAfflictionData>x))
-    }
-  }
-
-  // ==========================================================
-  // STATUS TOOLS
-  // ==========================================================
   get isStatus(): any {
     return (inword: string) => {
       return Statuses.some((x) => x.name == inword.trim())
@@ -411,15 +384,32 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getStatus(): any {
     return (inword: string) => {
-      var obstacle = Statuses.find((x) => x.name.trim() === inword.trim())
-      if (obstacle.hasOwnProperty('see')) obstacle = Statuses.find((x) => x.name.trim() === obstacle.see.trim())
-      return Status.Deserialize(<IStatusData>obstacle)
+      var status = Statuses.find((x) => x.name.trim() === inword.trim())
+      return Status.Deserialize(<IStatusData>status)
     }
   }
 
   get getStatuses(): any {
     return () => {
+      return Statuses.map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  get getFullStatuses(): any {
+    return () => {
       return Statuses.filter((x) => !x.hasOwnProperty('see')).map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  get getStatusesByType(): any {
+    return (type: string) => {
+      return Statuses.filter((x) => x.type.trim() === type.trim()).map((x) => Status.Deserialize(<IStatusData>x))
+    }
+  }
+
+  get getFilteredStatuses(): any {
+    return (types: Array<string>) => {
+      return Statuses.filter((x) => !x.hasOwnProperty('see') && types.includes(x.type.trim())).map((x) => Status.Deserialize(<IStatusData>x))
     }
   }
 

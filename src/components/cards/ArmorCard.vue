@@ -24,23 +24,9 @@
           ><v-col class="chart--cols" cols="4"><b>Dash</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Dash }}</v-col></v-row
         ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="4"><b>Sprint</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Sprint }}</v-col></v-row
-        ><v-row no-gutters class="chart--row"
           ><v-col class="chart--cols" cols="4"><b>Jump</b></v-col
           ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Jump }}</v-col></v-row
         >
-      </div>
-      <div class="expand--collapse-box-outlined" v-if="!this.on_sheet">
-        <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-          <v-expansion-panel style="background-color: inherit;"
-            ><v-expansion-panel-header class="expand--header-reaction">Reaction</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-reaction">
-              <display-tooltip-text string="While wearing this Armor, gain the following Reaction:" />
-              <div><reaction-card :reaction="$store.getters.getReaction(armor.Reaction)" /></div
-            ></v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
       </div>
     </div>
   </div>
@@ -50,11 +36,11 @@
 import Vue from 'vue'
 import { Armor } from '@/class'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
-import ReactionCard from './ReactionCard.vue'
+import ManeuverCard from './ManeuverCard.vue'
 
 export default Vue.extend({
   name: 'armor-card',
-  components: { ReactionCard },
+  components: { ManeuverCard },
   props: {
     armor: {
       type: Armor,
@@ -90,7 +76,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 .armor--wrapper {
   font-family: $font--standard;
-  background-color: $color--parchment;
+  background-color: $color--grey-light;
   border: $border--black-standard;
   height: 100%;
 }

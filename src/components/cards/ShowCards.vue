@@ -31,11 +31,8 @@
                   <div class="card--box" v-if="job == 'Armor'">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="job == 'Enhancements'">
-                    <enhancement-card :enhancement="n" :format_text="true" :standalone="on_sheet" />
-                  </div>
-                  <div class="card--box" v-if="job == 'Reactions'">
-                    <reaction-card :reaction="n" :format_text="true" />
+                  <div class="card--box" v-if="job == 'Maneuvers'">
+                    <maneuver-card :maneuver="n" :format_text="true" :standalone="on_sheet" />
                   </div>
                 </v-col>
               </v-row> </v-container
@@ -55,11 +52,8 @@
             v-on:click="clickMethod(n, index)"
             :lg="colWidth"
           >
-            <div class="card--box" v-if="job == 'Reactions'">
-              <reaction-card :reaction="n" :format_text="true" />
-            </div>
-            <div class="card--box" v-if="job == 'Enhancements'">
-              <enhancement-card :enhancement="n" :format_text="true" />
+            <div class="card--box" v-if="job == 'Maneuvers'">
+              <maneuver-card :maneuver="n" :format_text="true" />
             </div>
             <div class="card--box" v-if="job == 'Stances'">
               <stance-card :stance="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
@@ -82,9 +76,6 @@
             <div class="card--box" v-if="job == 'Terrain'">
               <terrain-card :terrain="n" />
             </div>
-            <div class="card--box" v-if="job == 'Affliction'">
-              <affliction-card :affliction="n" />
-            </div>
             <div class="card--box" v-if="job == 'Status'">
               <status-card :status="n" />
             </div>
@@ -96,11 +87,9 @@
 
 <script>
 import Vue from 'vue'
-import AfflictionCard from './AfflictionCard.vue'
 import ArmorCard from './ArmorCard.vue'
-import EnhancementCard from './EnhancementCard.vue'
+import ManeuverCard from './ManeuverCard.vue'
 import ObstacleCard from './ObstacleCard.vue'
-import ReactionCard from './ReactionCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
@@ -171,12 +160,10 @@ export default Vue.extend({
     },
   },
   components: {
-    AfflictionCard,
     ArmorCard,
-    EnhancementCard,
+    ManeuverCard,
     NpcCard,
     ObstacleCard,
-    ReactionCard,
     StanceCard,
     StatusCard,
     TechCard,

@@ -19,8 +19,8 @@ elif(file == "Obstacle"):
     f = open('.\src\database\obstacles.json')
 elif(file == "Weapon"):
     f = open('.\src\database\items\weapons.json')
-elif(file == "Enhancements"):
-    f = open('.\src\database\enhancements.json')
+elif(file == "Maneuvers"):
+    f = open('.\src\database\maneuvers.json')
 
 data = json.load(f)
 

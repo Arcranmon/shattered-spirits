@@ -155,8 +155,9 @@ export default Vue.extend({
   width: 100%;
 }
 .sidebar {
-  background: $color--parchment;
+  background: $color--light-parchment;
   padding: $space--m;
   border-right: 5px double black;
+  margin-top: 3em;
 }
 </style>

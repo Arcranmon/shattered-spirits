@@ -7,7 +7,7 @@ class Armor {
   private endurance_: number
   private jump_: number
   private name_: string
-  private reaction_: string
+  private maneuver_: string
   private reposition_: number
   private dash_: number
   private special_: string
@@ -49,17 +49,21 @@ class Armor {
   get HasSpecial() {
     return this.special_ != ''
   }
-  get Reaction() {
-    return this.reaction_
+  get Maneuver() {
+    return this.maneuver_
   }
-  get HasReaction() {
-    return this.reaction_ != ''
+  get HasManeuver() {
+    return this.maneuver_ != ''
   }
   get Sprint() {
     return this.sprint_
   }
   get Step() {
     return this.step_
+  }
+  public get Icon() {
+    if (this.Category == 'Error') return ''
+    return require('@/assets/' + this.Category + '.svg')
   }
 
   // ==========================================================
@@ -77,8 +81,8 @@ class Armor {
   get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
-  get ReactionHeader() {
-    return '**Reaction:** ' + this.reaction_
+  get ManeuverHeader() {
+    return '**Maneuver:** ' + this.maneuver_
   }
 
   // ==========================================================
@@ -94,14 +98,10 @@ class Armor {
     this.armor_ = data.armor || 0
     this.category_ = data.category || ''
     this.durability_ = data.durability || 0
-    this.endurance_ = data.endurance || 0
     this.jump_ = data.jump || 0
     this.name_ = data.name || ''
-    this.reaction_ = data.reaction || ''
     this.reposition_ = data.reposition || 0
     this.dash_ = data.dash || 0
-    this.special_ = data.special || ''
-    this.sprint_ = data.sprint || 0
     this.step_ = data.step || 0
   }
 }

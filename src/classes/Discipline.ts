@@ -1,29 +1,26 @@
 import { store } from '@/store'
-import { Technique } from '@/class'
-import { Stance } from '@/class'
 
 class Discipline {
   private name_: string
   private category_: string
   private flavor_: string
-  private background_: string
-  private role_: string
-  private stances_: string[]
+  private primary_role_: String
+  private secondary_role_: String
   private summary_: string
-  private techniques_: string[]
+  private tier_1_: IDisciplineTierData
+  private tier_2_: IDisciplineTierData
+  private tier_3_: IDisciplineTierData
+  private type_: string
 
   public constructor() {
-    this.background_ = 'white'
     this.name_ = ''
     this.flavor_ = ''
-    this.stances_ = []
     this.summary_ = ''
-    this.techniques_ = []
+    this.tier_1_ = null
+    this.tier_2_ = null
+    this.tier_3_ = null
   }
 
-  public get Background() {
-    return this.background_
-  }
   public get Category() {
     return this.category_
   }
@@ -33,19 +30,81 @@ class Discipline {
   public get Name() {
     return this.name_
   }
-  public get Role() {
-    return this.role_
-  }
-  public get Techniques() {
-    return this.techniques_
-  }
-  public get Stances() {
-    return this.stances_
+  public get RoleHeader() {
+    if (this.secondary_role_ != '') return this.primary_role_ + '/' + this.secondary_role_
+    return this.primary_role_
   }
   public get Summary() {
     return this.summary_
   }
+  public get TypeHeader() {
+    return this.type_ + ' Discipline'
+  }
+  public get Type() {
+    return this.type_
+  }
+  public get Icon() {
+    if (this.Type == 'Error') return ''
+    return require('@/assets/' + this.Type + '.svg')
+  }
 
+  // ==========================================================
+  // TIER GETTERS
+  // ==========================================================
+
+  public get TotalTier1Items() {
+    return this.tier_1_.techniques.length + this.tier_1_.maneuvers.length
+  }
+  public get HasTier1Techniques() {
+    return this.tier_1_.techniques != undefined
+  }
+  public get Tier1Techniques() {
+    return store.getters.getTechniquesFromList(this.tier_1_.techniques)
+  }
+  public get HasTier1Maneuvers() {
+    return this.tier_1_.maneuvers != undefined
+  }
+  public get Tier1Maneuvers() {
+    return store.getters.getManeuversFromList(this.tier_1_.maneuvers)
+  }
+  public get HasTier1Special() {
+    return this.tier_1_.special != undefined
+  }
+  public get Tier1Special() {
+    return this.tier_1_.special
+  }
+  public get Tier1Unarmed() {
+    if (!Number.isNaN(this.tier_1_.unarmed)) return this.tier_1_.unarmed
+    return 0
+  }
+  public get HasTier2Stances() {
+    return this.tier_2_.stances != undefined
+  }
+  public get Tier2Stances() {
+    return store.getters.getStancesFromList(this.tier_2_.stances)
+  }
+  public get HasTier2Techniques() {
+    return this.tier_2_.techniques != undefined
+  }
+  public get Tier2Techniques() {
+    return store.getters.getTechniquesFromList(this.tier_2_.techniques)
+  }
+  public get HasTier2Maneuvers() {
+    return this.tier_2_.maneuvers != undefined
+  }
+  public get Tier2Maneuvers() {
+    return store.getters.getManeuversFromList(this.tier_2_.maneuvers)
+  }
+  public get HasTier2Special() {
+    return this.tier_2_.special != undefined
+  }
+  public get Tier2Special() {
+    return this.tier_2_.special
+  }
+  public get Tier2Unarmed() {
+    if (!Number.isNaN(this.tier_2_.unarmed)) return this.tier_2_.unarmed
+    return 0
+  }
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -56,14 +115,16 @@ class Discipline {
   }
 
   public setDisciplineData(data: IDisciplineData): void {
-    this.background_ = data.background || 'white'
     this.category_ = data.category || ''
     this.name_ = data.name || ''
     this.flavor_ = data.flavor || ''
-    this.role_ = data.role || ''
-    this.stances_ = data.stances || []
+    this.primary_role_ = data.primary_role || ''
+    this.secondary_role_ = data.secondary_role || ''
     this.summary_ = data.summary || ''
-    this.techniques_ = data.techniques || []
+    this.tier_1_ = data.tier_1 || null
+    this.tier_2_ = data.tier_2 || null
+    this.tier_3_ = data.tier_3 || null
+    this.type_ = data.type || ''
   }
 }
 export default Discipline

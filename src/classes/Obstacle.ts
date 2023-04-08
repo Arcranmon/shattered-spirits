@@ -3,7 +3,7 @@ import { Chart } from '@/class'
 
 class Obstacle {
   private desc_: string
-  private durability_: number
+  private hardness_: number
   private height_: number
   private interact_: string
   private name_: string
@@ -11,12 +11,11 @@ class Obstacle {
   private resistances_: string
   private size_: number
   private special_: string
-  private speed_: number
   private chart_: Chart
 
   public constructor() {
     this.desc_ = ''
-    this.durability_ = 0
+    this.hardness_ = 0
     this.height_ = 0
     this.interact_ = ''
     this.name_ = ''
@@ -24,7 +23,6 @@ class Obstacle {
     this.resistances_ = ''
     this.size_ = 0
     this.special_ = ''
-    this.speed_ = -1
     this.chart_ = null
   }
 
@@ -62,15 +60,12 @@ class Obstacle {
   get HasSpecial() {
     return this.special_ != ''
   }
-  get HasSpeed() {
-    return this.speed_ != -1
-  }
 
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  public get DurabilityHeader() {
-    return 'Durability ' + this.durability_
+  public get HardnessHeader() {
+    return 'Hardness ' + this.hardness_
   }
   public get InteractHeader() {
     return '**Interact:** ' + this.interact_
@@ -87,9 +82,6 @@ class Obstacle {
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
-  public get SpeedHeader() {
-    return 'Speed ' + this.speed_
-  }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'
   }
@@ -105,7 +97,7 @@ class Obstacle {
 
   public setObstacleData(data: IObstacleData): void {
     this.desc_ = data.desc || ''
-    this.durability_ = data.durability || 0
+    this.hardness_ = data.hardness || 0
     this.height_ = data.height || 0
     this.interact_ = data.interact || ''
     this.name_ = data.name || ''
@@ -113,7 +105,6 @@ class Obstacle {
     this.resistances_ = data.resistances || ''
     this.size_ = data.size || 0
     this.special_ = data.special || ''
-    this.speed_ = data.speed || -1
     if ('chart' in data) {
       this.chart_ = Chart.Deserialize(data.chart)
     }
