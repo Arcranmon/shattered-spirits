@@ -97,6 +97,6 @@ Shield icon made by sbed.
 
 Thrown Weapon icon made by Faithtoken.
 
-And a big thank you to the playtesters thus far: Aori, everythingElse, Kuji, MesiDoomstalker, and Mystic Witch! Without your feedback and testing none of this would be possible!
-
 Available on https://game-icons.net.
+
+And a big thank you to the playtesters thus far: Aori, everythingElse, Kuji, MesiDoomstalker, and Mystic Witch! Without your feedback and testing none of this would be possible!
