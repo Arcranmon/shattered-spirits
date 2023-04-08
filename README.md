@@ -85,11 +85,18 @@ If you want to run this website locally (as it won't always be hosted), do the f
 
 ## Credits
 
-Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt<br />
+Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt
+
 Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, and Tremorsight icons made by lorc.
+
 Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.
+
 Unarmed icon made by skoll.
+
 Shield icon made by sbed.
+
 Thrown Weapon icon made by Faithtoken.
+
 And a big thank you to the playtesters thus far: Aori, everythingElse, Kuji, MesiDoomstalker, and Mystic Witch! Without your feedback and testing none of this would be possible!
+
 Available on https://game-icons.net.
