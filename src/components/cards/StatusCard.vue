@@ -5,8 +5,8 @@
         <h3 style="display: inline; font-style: normal;">{{ status.Name }}</h3>
       </div>
       <div class="status--keywords">
-        {{ status.Type }}
-        <span v-if="(status.Desc.length > 0)" style="font-style: italic;">{{ status.Desc }}<br /></span>
+        <b>{{ status.Type }}</b>
+        <div v-if="(status.Desc.length > 0)" style="font-style: italic;">{{ status.Desc }}</div>
       </div>
     </div>
     <div class="status--content">

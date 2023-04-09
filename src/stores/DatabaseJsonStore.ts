@@ -5,7 +5,6 @@ import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 
 import Glossary from '@/database/glossary/glossary.json'
-import InstantEffects from '@/database/glossary/instant_effects.json'
 import Statuses from '@/database/glossary/statuses.json'
 import Keywords from '@/database/glossary/keywords.json'
 import Resources from '@/database/glossary/resources.json'
@@ -25,7 +24,7 @@ let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'W
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
-let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, InstantEffects, Keywords, Resources]
+let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Keywords, Resources]
 
 @Module({
   name: 'databaseJson',
@@ -433,12 +432,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get existsInAnyGlossary(): any {
     return (inword: string) => {
-      return (
-        this.glossaryHasItem(Glossary, inword) ||
-        this.glossaryHasItem(InstantEffects, inword) ||
-        this.glossaryHasItem(Keywords, inword) ||
-        this.glossaryHasItem(Resources, inword)
-      )
+      return this.glossaryHasItem(Glossary, inword) || this.glossaryHasItem(Keywords, inword) || this.glossaryHasItem(Resources, inword)
     }
   }
 
@@ -454,12 +448,6 @@ export class DatabaseJsonStore extends VuexModule {
   get getKeywords(): any {
     return () => {
       return Keywords
-    }
-  }
-
-  get getInstantEffects(): any {
-    return () => {
-      return InstantEffects
     }
   }
 

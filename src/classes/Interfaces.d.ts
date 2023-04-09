@@ -18,13 +18,14 @@ declare interface ICharacterData {
   current_spirit_stance: string
   current_martial_stance: string
   current_endurance: number
+  current_health: number
   equipped_armor: string
   disciplines: ICharDisciplineData[]
   focus: number
   grit: number
-  current_health: number
   main_hand: string
   max_health: number
+  max_endurance: number
   momentum: number
   name: string
   off_hand: string

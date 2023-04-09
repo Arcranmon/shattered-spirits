@@ -3,13 +3,13 @@
     "name": "Airborne",
     "desc": "A creature knocked into the air and unable to defend themselves.",
     "effect": "Attacks against an Airborne creature have _Advantage_ and gain [_Sure Hit_ 2]. Additionally, while Airborne, their _Elevation_ is increased by 1, but they do not gain any bonuses from this.",
-    "remove": "Creature are Airborne until the end of the current _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this _Restrained_ by either of the first two means they _Fall_, at the end of the _Forced Movement_ if applicable.",
+    "remove": "Creature are Airborne until the end of the current _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_.",
     "type": "Status Effect"
   },
   {
     "name": "Blind",
     "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
-    "effect": "A Blind creature treats all other creatures as _Veiled_.",
+    "effect": "A Blind creature treats all other creatures as _Obscured_.",
     "remove": "Creatures are Blinded until the duration specified when inflicted has passed or they _Recover_.",
     "recover": "3 _Grit_ removes _Blinded_.",
     "type": "Status Effect"
@@ -97,6 +97,12 @@
     "type": "Status Effect"
   },
   {
+    "name": "Obscured",
+    "desc": "A creature that is hidden in some way and difficult to see.",
+    "effect": "All Attacks against an Obscured creature have _Disadvantage_, and all Attacks by an Obscured creature have _Disadvantage_. If the Obscured creature has some means to ignore Obscured, they instead have _Advantage_.",
+    "type": "Status Effect"
+  },
+  {
     "name": "Overarmor",
     "desc": "Armor that, while powerful, is temporary easily stripped away.",
     "effect": "Overarmor will always specify a _Durability_, a _Guard_ value, as well as any _Resistances_. While a creature has Overarmor, increase their _Guard_ by the listed value, and they gain the _Resistances_ of their Overarmor. ",
@@ -143,9 +149,9 @@
   {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow.",
-    "effect": "A Dazed creature increases the Cost of all _Resist_ Maneuvers by the value of their topmost Dazed Token. This increased Cost (but only the increased cost) may be paid with _Poise_.",
-    "remove": "A creature clears their topmost Dazed Token at the end of each of their Turns, or after using a _Resist_.",
-    "recover": "_Dazed_ may not be removed with _Recover_.",
+    "effect": "A Dazed creature increases the Cost of all _Maneuvers_ by the value of their topmost Dazed Token. This increased Cost (but only the increased cost) may be paid with _Poise_.",
+    "remove": "A creature clears their topmost Dazed Token at the end of each of their Turns, or after using a _Maneuver_.",
+    "recover": "Dazed may not be removed with _Recover_.",
     "type": "Affliction"
   },
   {
@@ -274,5 +280,57 @@
     "recover": "A value of _Poise_ removes Rage equal to one less than the _Poise_ spent.",
     "type": "Mental Affliction",
     "see": "hide"
+  },
+  {
+    "name": "Accelerate",
+    "desc": "Your speed is increased, allowing you to act quicker.",
+    "effect": "When a creature becomes Accelerated their next Technique this Round has its Speed decreased by 1. If the creature has no more Techniques this round, they gain 1 _Momentum_/_Reflex_ (their choice). If a creature's next Turn is in the current Phase, they may take their Turn immediately after gaining Accelerate, ignoring the normal Initiative process.",
+    "type": "Instant Effect"
+  },
+  {
+    "name": "Drain",
+    "desc": "You leech a creature's ability to defend themselves, defending yourself as you do so .",
+    "effect": "Drain will list a type of Token. Unless the Negate cost is paid, the Target loses the Drain Value of Token. The Attacker then gains as many Tokens as the Target lost.",
+    "type": "Instant Effect"
+  },
+  {
+    "name": "Pull",
+    "desc": "You drag a foe closer to you or, if they are too close, around you.",
+    "effect": "Move a Target up to X squares directly towards you, where X is the numerical value immediately after Pull in an effect's description. If you are already adjacent, you may move the Target up to X squares, but all spaces you move the Target into must be adjacent to you.",
+    "type": "Instant Effect"
+  },
+  { "name": "Pulled", "see": "Pull" },
+  {
+    "name": "Angled Push",
+    "desc": "You push a foe away, carefully choosing their trajectory.",
+    "effect": "As _Push_ but, rather than moving the creature directly away from you, move them away and to the right or left (your choice) of you.",
+    "type": "Instant Effect"
+  },
+  {
+    "name": "Push",
+    "desc": "You launch a creature away from you, creating space.",
+    "effect": "Move a target up to X squares directly away from you, where X is the numerical value immediately after Push in an Effect's description.",
+    "type": "Instant Effect"
+  },
+  { "name": "Pushed", "see": "Push" },
+  { "name": "Pushes", "see": "Push" },
+  {
+    "name": "Slide",
+    "desc": "You move a foe as you wish across the battlefield.",
+    "effect": "Move a target up to X squares in any direction, where X is the numerical value immediately after Slide in an Effect's description.",
+    "type": "Instant Effect"
+  },
+  { "name": "Slid", "see": "Slide" },
+  {
+    "name": "Slowed",
+    "desc": "You weigh down a foe, limiting their ability to react.",
+    "effect": "When a creature becomes Slowed their next Technique this Round has its Speed increased by 1. If the creature has no more Actions this round, they gain _Impaired_/_Dazed_ 1 (Attacker or Spirit Master's choice).",
+    "type": "Instant Effect"
+  },
+  {
+    "name": "Throw",
+    "desc": "You reposition a creature before pushing them in a vicious line.",
+    "effect": "First, Pull up to 6. Then, Push X the target, where X is the numerical value immediately after Throw in an effect's description. The creature is considered Leaping for this Push.",
+    "type": "Instant Effect"
   }
 ]

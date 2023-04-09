@@ -3,24 +3,27 @@
     <div v-if="character.Name != ''" class="character-cell">
       <h2>{{ character.Name }} and {{ character.SpiritName }} the {{ character.SpiritType }} Spirit</h2>
       <v-row style="margin: 1em;">
-        <v-col cols="6">
+        <v-col :cols="columnNumbers">
           <v-row no-gutters>
+            <v-col cols="2" />
             <v-col cols="3"><b>Endurance:</b></v-col>
-            <v-col cols="2">{{ character.CurrentEndurance }} / {{ character.EquippedArmor.Endurance }}</v-col>
+            <v-col cols="2">{{ character.CurrentEndurance }} / {{ character.MaxEndurance }}</v-col>
             <v-col cols="3"
               ><v-btn inline x-small @click=";(character.CurrentEndurance += 1), $emit('changed')" color="green">+</v-btn>
               <v-btn inline x-small @click=";(character.CurrentEndurance -= 1), $emit('changed')" color="red">-</v-btn></v-col
             >
           </v-row>
           <v-row no-gutters>
+            <v-col cols="2" />
             <v-col cols="3"><b>Health:</b></v-col>
-            <v-col cols="2"> {{ character.CurrentHealth }} / {{ character.Health }}</v-col>
+            <v-col cols="2"> {{ character.CurrentHealth }} / {{ character.MaxHealth }}</v-col>
             <v-col cols="3"
               ><v-btn inline x-small @click=";(character.CurrentHealth += 1), $emit('changed')" color="green">+</v-btn>
               <v-btn inline x-small @click=";(character.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn></v-col
             >
           </v-row>
           <v-row no-gutters>
+            <v-col cols="2" />
             <v-col cols="3"><b>Grit:</b></v-col
             ><v-col cols="2"> {{ character.Grit }}</v-col>
             <v-col cols="3"
@@ -29,6 +32,7 @@
             >
           </v-row>
           <v-row no-gutters>
+            <v-col cols="2" />
             <v-col cols="3"><b>Poise:</b></v-col
             ><v-col cols="2"> {{ character.Poise }}</v-col>
             <v-col cols="3"
@@ -37,6 +41,7 @@
             >
           </v-row>
           <v-row no-gutters>
+            <v-col cols="2" />
             <v-col cols="3"><b>Momentum:</b></v-col
             ><v-col cols="2"> {{ character.Momentum }}</v-col>
             <v-col cols="3"
@@ -45,6 +50,7 @@
             >
           </v-row>
           <v-row no-gutters>
+            <v-col cols="2" />
             <v-col cols="3"><b>Reflex:</b></v-col
             ><v-col cols="2"> {{ character.reflex }}</v-col>
             <v-col cols="3"
@@ -56,12 +62,12 @@
             <v-btn @click="character.ApplyRefresh(), $emit('changed')" class="grey lighten-4 mx-2">Apply Refresh</v-btn>
             <v-btn @click="character.ResetDefault(), $emit('changed')" class="grey lighten-4 mx-2">Set Default</v-btn></v-row
           ></v-col
-        ><v-col cols="6"><armor-card :armor="character.EquippedArmor" :on_sheet="true" /> </v-col
+        ><v-col :cols="columnNumbers"><armor-card :armor="character.EquippedArmor" :on_sheet="true" /> </v-col
         ><v-col v-if="character.AnyStanceUnequipped" cols="12" style="text-align: center;">Click a Stance or Style below to enter it!</v-col
-        ><v-col cols="6" style="margin-bottom: 1em;">
+        ><v-col :cols="columnNumbers" style="margin-bottom: 1em;">
           <h4>Spirit Stance</h4>
           <stance-card :stance="character.CurrentSpiritStance" :on_sheet="true" /></v-col
-        ><v-col cols="6" style="margin-bottom: 1em;">
+        ><v-col :cols="columnNumbers" style="margin-bottom: 1em;">
           <h4>Martial Stance</h4>
           <stance-card :stance="character.CurrentMartialStance" :on_sheet="true" /></v-col
       ></v-row>
@@ -267,6 +273,10 @@ export default Vue.extend({
       if (this.windowWidth <= 760) return 1
       if (this.windowWidth <= 1500) return 2
       return 3
+    },
+    columnNumbers() {
+      if (this.isMobile) return 12
+      return 6
     },
   },
   mounted() {

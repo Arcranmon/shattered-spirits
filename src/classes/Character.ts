@@ -4,6 +4,9 @@ import { Armor, Discipline, Stance, Weapon, Technique } from '@/class'
 var kExpectedDisciplineRanks = 8
 var kSpiritDisciplineCategories = ['Earth']
 
+var kBaseHealth = 10
+var kBaseEndurance = 25
+
 var kBasicTechniques = ['Unarmed Strike', 'Armed Strike', 'Run', 'Prepare']
 var kBasicStratagems = ['Quicken', 'Strengthen']
 var kBasicStunts = ['Aid', 'Leap', 'Retrieve', 'Tumble', 'Use Environment']
@@ -23,6 +26,7 @@ class Character {
   private grit_: number
   private current_health_: number
   private main_hand_: Weapon
+  private max_endurance_: number
   private max_health_: number
   private momentum_: number
   private name_: string
@@ -46,7 +50,8 @@ class Character {
   public constructor() {
     this.current_spirit_stance_ = store.getters.getStance('No Stance')
     this.current_martial_stance_ = store.getters.getStance('No Stance')
-    this.current_endurance_ = 0
+    this.current_endurance_ = kBaseHealth
+    this.current_health_ = kBaseEndurance
     this.disciplines_ = []
     this.equipped_armor_ = null
     this.focus_ = 0
@@ -54,7 +59,8 @@ class Character {
     this.weapon_weight_ = 0
     this.current_health_ = 0
     this.main_hand_ = null
-    this.max_health_ = 0
+    this.max_endurance_ = kBaseEndurance
+    this.max_health_ = kBaseHealth
     this.momentum_ = 0
     this.name_ = ''
     this.off_hand_ = null
@@ -96,9 +102,6 @@ class Character {
   get WeaponWeight() {
     return this.weapon_weight_
   }
-  get Health() {
-    return this.max_health_
-  }
   get Poise() {
     return this.focus_
   }
@@ -110,6 +113,12 @@ class Character {
   }
   set Grit(input: number) {
     this.grit_ = input
+  }
+  get MaxHealth() {
+    return this.max_health_
+  }
+  get MaxEndurance() {
+    return this.max_endurance_
   }
   get Momentum() {
     return this.momentum_
@@ -392,6 +401,7 @@ class Character {
       grit: character.grit_,
       current_health: character.current_health_,
       main_hand: character.main_hand_ ? character.main_hand_.Name : '',
+      max_endurance: character.max_endurance_,
       max_health: character.max_health_,
       momentum: character.momentum_,
       name: character.name_,
@@ -415,13 +425,14 @@ class Character {
   private setCharacterData(data: ICharacterData): void {
     if ('current_spirit_stance' in data) this.current_spirit_stance_ = store.getters.getStance(data.current_spirit_stance)
     if ('current_martial_stance' in data) this.current_martial_stance_ = store.getters.getStance(data.current_martial_stance)
-    this.current_endurance_ = data.current_endurance
+    this.current_endurance_ = data.current_endurance || kBaseEndurance
     if ('equipped_armor' in data) this.equipped_armor_ = store.getters.getArmor(data.equipped_armor)
     this.focus_ = data.focus || 0
     this.grit_ = data.grit || 0
-    this.current_health_ = data.current_health || 15
+    this.current_health_ = data.current_health || kBaseHealth
     if ('main_hand' in data && data.main_hand != '') this.equipped_armor_ = store.getters.getWeapon(data.main_hand)
-    this.max_health_ = data.max_health || 15
+    this.max_endurance_ = data.max_endurance || kBaseEndurance
+    this.max_health_ = data.max_health || kBaseHealth
     this.momentum_ = data.momentum || 0
     this.name_ = data.name || ''
     if ('off_hand' in data && data.off_hand != '') this.equipped_armor_ = store.getters.getWeapon(data.off_hand)

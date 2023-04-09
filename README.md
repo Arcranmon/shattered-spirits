@@ -26,10 +26,6 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
-BEFORE V0.1 (Earth)
-
-- Remake character creator
-
 MISSING TECHNIQUES
 These are Techniques/Maneuvers that existed in previous content but are missing in the current Discipline refactor:
 

@@ -16,8 +16,8 @@
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
       ></v-select
-    ><status-card v-if="selectedStatus != null" :status="selectedStatus" style="width: 40em; margin-left: auto; margin-right: auto;" /></v-col> </v-row
-    ></span>
+      ><status-card v-if="selectedStatus != null" :status="selectedStatus" style="width: 40em; margin-left: auto; margin-right: auto;"
+    /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
         <v-col cols="6"
@@ -47,8 +47,8 @@ export default Vue.extend({
   components: { StatusCard },
   data() {
     return {
-      statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction'],
-      selectedStatuses: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction'],
+      statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
+      selectedStatuses: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
       selectedStatus: null,
     }
   },
