@@ -11,6 +11,11 @@ Vue.component('DisplayTooltipText', {
       type: Boolean,
       default: true,
     },
+    level: {
+      required: false,
+      type: Number,
+      default: 0,
+    },
   },
   render(h) {
     const render = {
@@ -34,7 +39,7 @@ Vue.component('DisplayTooltipText', {
           this.$store.getters.isArmor(split_input[index]) ||
           this.$store.getters.isWeapon(split_input[index])
         ) {
-          split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
+          split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '" :level="' + (this.level + 1) + '"></tooltip>'
         }
       }
       var merged_input = split_input.join('')

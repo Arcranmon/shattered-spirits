@@ -1,65 +1,58 @@
 <template>
   <span
     ><span v-if="this.$store.getters.existsInAnyGlossary(input)"
-      ><v-tooltip bottom nudge-top="8"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
-        ><span>{{ this.$store.getters.getGlossaryItem(input).replace(/_/g, '') }}</span></v-tooltip
-      ></span
+        ><display-tooltip-text :string="this.$store.getters.getGlossaryItem(input)" :level="level + 1" /></v-menu></span
     ><span v-else-if="this.$store.getters.isObstacle(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <obstacle-card :obstacle="this.$store.getters.getObstacle(input)" :tooltip="true" /></v-tooltip></span
+        <obstacle-card :obstacle="this.$store.getters.getObstacle(input)" :tooltip="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isTerrain(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <terrain-card :terrain="this.$store.getters.getTerrain(input)" :tooltip="true" /></v-tooltip></span
+        <terrain-card :terrain="this.$store.getters.getTerrain(input)" :tooltip="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isStatus(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <status-card :status="this.$store.getters.getStatus(input)" /></v-tooltip></span
+        <status-card :status="this.$store.getters.getStatus(input)" /></v-menu></span
     ><span v-else-if="this.$store.getters.isManeuver(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <maneuver-card :maneuver="this.$store.getters.getManeuver(input)" :format_text="true" /></v-tooltip></span
+        <maneuver-card :maneuver="this.$store.getters.getManeuver(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isStance(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <stance-card :stance="this.$store.getters.getStance(input)" :format_text="true" /></v-tooltip></span
+        <stance-card :stance="this.$store.getters.getStance(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isTechnique(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <tech-card :tech="this.$store.getters.getTechnique(input)" :format_text="true" /></v-tooltip></span
-    ><span v-else-if="this.$store.getters.isManeuver(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <maneuver-card :maneuver="this.$store.getters.getManeuver(input)" :format_text="true" /></v-tooltip></span
+        <tech-card :tech="this.$store.getters.getTechnique(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isArmor(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <armor-card :armor="this.$store.getters.getArmor(input)" :format_text="true" /></v-tooltip></span
+        <armor-card :armor="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isWeapon(input)" attach
-      ><v-tooltip bottom nudge-top="8" content-class="object"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <weapon-card :weapon="this.$store.getters.getArmor(input)" :format_text="true" /></v-tooltip></span
+        <weapon-card :weapon="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
     ><span style="white-space: pre-wrap;" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>
@@ -88,18 +81,24 @@ export default Vue.extend({
       required: false,
       default: false,
     },
+    level: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
   },
 })
 </script>
 
 <style scoped lang="scss">
-.v-tooltip__content {
+.v-menu__content {
   color: black;
   font-family: $font--standard;
   font-size: $font-size--s;
   background-color: $color--off-white;
   border: $border--black-standard;
   width: 40%;
+  padding: 0.1em;
 }
 .object {
   padding: 0px;
