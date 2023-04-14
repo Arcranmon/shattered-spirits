@@ -4,8 +4,7 @@
     <div class="page--description">
       <b>{{ discipline.TypeHeader }}</b
       ><br />
-      <b>{{ discipline.RoleHeader }}</b
-      ><br />
+      <b><display-tooltip-text :string="discipline.RoleHeader.replace('/', '_/_')" /></b><br />
       <display-tooltip-text style="font-style: italic;" class="page--description" :string="discipline.Flavor" />
     </div>
     <div class="header">

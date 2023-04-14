@@ -5,6 +5,7 @@ import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 
 import Glossary from '@/database/glossary/glossary.json'
+import Traits from '@/database/traits.json'
 import Statuses from '@/database/glossary/statuses.json'
 import Keywords from '@/database/glossary/keywords.json'
 import Resources from '@/database/glossary/resources.json'
@@ -473,6 +474,14 @@ export class DatabaseJsonStore extends VuexModule {
   get getSpiritBeasts(): any {
     return () => {
       return NPCs.filter((x) => x.npc_type.trim() === 'Spirit Beast').map((x) => Npc.Deserialize(<INpcData>x))
+    }
+  }
+
+  get getTrait(): any {
+    return (inword: string) => {
+      for (var json of allGlossaryItems) {
+        return Traits.find((x) => x.name == inword).effect
+      }
     }
   }
 }
