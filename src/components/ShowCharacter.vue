@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 15px; margin: 1em;">
+  <div style="padding: 15px; margin: 1em;" class="background--color">
     <div v-if="character.Name != ''" class="character-cell">
       <h2>{{ character.Name }} and {{ character.SpiritName }} the {{ character.SpiritType }} Spirit</h2>
       <v-row style="margin: 1em;">

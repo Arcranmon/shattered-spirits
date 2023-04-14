@@ -37,15 +37,28 @@ These are Techniques/Maneuvers that existed in previous content but are missing 
 - Impaling Strike (Tier III spear tech)
 - Gilgamesh Swing (Tier III Shattering Granite)
 
-This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
+NEXT VERSION:
 
-- Add consumable items and support for them.
+- Try the Dodge/Block/Focus refactor for Resists
+  - Can ALWAYS spend Dodge/Block/Focus against attacks/negate Afflictions.
+  - Add the Defensive property for gear that freely gives Block on Resists (like Shields!).
+  - In general, must use a Resist to be able to generate these, but some Stances/Techniques will provide them passively.
+  - Specialized Resists will allow alternate ways to spend these resources.
+  - Make Unblockable/Sure Hit a flat keyword (double cost to buy Block/Dodge effects).
+
+VERSION AFTER:
+
+- Change from Armor-based Movement to Weight-based Movement.
+  - Generalize the Armor Disciplines to be usable by (almost) anyone (just set prereqs to stop people from picking an obviously poor fit).
 - Add more combat support for the fiction of it being you and your companion spirit.
   - Have a manifest maneuver to physically conjure your spirit for a turn.
-- Support-based non-spirit classes.
+- Support-based non-spirit Disciplines.
+- (Stretch) Add Talismans, Equipment that enhances Spirit play but cost Encumbrance.
+
+This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
+
+- Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
 - More weapon types and supporting Disciplines.
-- Potential Resist refactor?
-- Potential shift from armor-based movement to weight profiles.
 - Complete all Spirit Masteries.
 - Refine Endurance and Health system based on how long combats should last.
 - Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
@@ -58,8 +71,6 @@ This system is very much a work-in-progress, but is slowly getting more and more
     - Water: ???
     - Wind: Sound
     - Wood: Poison
-- Balance pass over Weapons and Stances to make sure they are competitive with Spirit options.
-- Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
 - Develop some basic NPC stat blocks for testing.
   - Make some less basic NPC stat blocks for fun.
   - Develop BIG SPIRIT FIGHTS where simply killing them is the easy answer, but it's possible to instead save them by greatly increasing the difficulty of the fight.

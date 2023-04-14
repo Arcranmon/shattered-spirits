@@ -9,7 +9,7 @@
       label="Select a Character"
       filled
       outlined
-      style="margin: 0.5em;" /><v-row justify="center">
+      style="margin: 0.5em;" /><v-row justify="center" style="display: flex; flex-direction: column;">
       <v-col cols="12">
         <span class="topbar">
           <span v-if="characterSelected" class="hidden--topbar">
@@ -29,7 +29,9 @@
                 </v-card-text>
               </v-card>
             </v-dialog>
-            <v-btn @click="exportCharacter" class="button--template button--topbar"> Export {{ selectedCharacter.Name }} </v-btn>
+            <v-btn @click="exportCharacter" class="button--template button--topbar">
+              <span>Export {{ selectedCharacter.Name }}</span>
+            </v-btn>
           </span>
           <v-dialog v-model="characterImportDialog" hide-overlay>
             <template v-slot:activator="{}">
@@ -48,24 +50,42 @@
       /></v-col> </v-row
   ></span>
   <span v-else>
-    <v-row justify="center">
+    <v-row justify="center" class="background--color">
       <v-col cols="2" class="sidebar">
         <div v-for="(character, index) in characters" :key="index" class="button--spacing">
           <v-tooltip right>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)" v-bind="attrs" v-on="on"
-                ><span>{{ character.Name }}</span></v-btn
+              <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)" v-bind="attrs" v-on="on"
+                ><span style="margin: 2px;">{{ character.Name }}</span></v-btn
               >
             </template>
             {{ character.Name }} and {{ character.SpiritName }} the {{ character.SpiritType }} Spirit
           </v-tooltip>
         </div> </v-col
       ><v-col cols="10">
-        <span class="topbar">
-          <span v-if="characterSelected" class="hidden--topbar">
+        <v-row class="topbar"
+          ><v-col cols="4" class="d-flex" style="flex-direction: column;">
+            <v-dialog v-model="characterImportDialog" hide-overlay>
+              <template v-slot:activator="{}">
+                <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
+              </template>
+              <v-card>
+                <v-card-title>Import Character From File</v-card-title>
+                <v-card-text>
+                  <v-file-input truncate-length="15" accept=".json" v-model="importFile"></v-file-input>
+                  <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
+                    <span style="margin: 2px;">Import Character</span>
+                  </v-btn>
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+          </v-col>
+          <v-col cols="4" v-if="characterSelected">
             <v-dialog v-model="deleteDialog" hide-overlay>
               <template v-slot:activator="{}">
-                <v-btn @click="deleteDialog = true" class="button--template button--topbar"> Delete {{ selectedCharacter.Name }} </v-btn>
+                <v-btn @click="deleteDialog = true" class="button--template button--topbar">
+                  <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
+                </v-btn>
               </template>
               <v-card>
                 <v-card-title>Are You Sure?</v-card-title>
@@ -73,27 +93,21 @@
                   Are you sure you want to delete this character? This cannot be undone! <br /><br />
                   <v-flex>
                     <div class="text-xs-center">
-                      <v-btn color="button--template" @click="deleteCharacter()"> Delete {{ selectedCharacter.Name }} </v-btn>
+                      <v-btn color="button--template" @click="deleteCharacter()">
+                        <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
+                      </v-btn>
                     </div>
                   </v-flex>
                 </v-card-text>
               </v-card>
             </v-dialog>
-            <v-btn @click="exportCharacter" class="button--template button--topbar"> Export {{ selectedCharacter.Name }} </v-btn>
-          </span>
-          <v-dialog v-model="characterImportDialog" hide-overlay>
-            <template v-slot:activator="{}">
-              <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> Import Character </v-btn>
-            </template>
-            <v-card>
-              <v-card-title>Import Character From File</v-card-title>
-              <v-card-text>
-                <v-file-input truncate-length="15" accept=".json" v-model="importFile"></v-file-input>
-                <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)"> Import Character </v-btn>
-              </v-card-text>
-            </v-card>
-          </v-dialog>
-        </span>
+          </v-col>
+          <v-col cols="4" v-if="characterSelected">
+            <v-btn @click="exportCharacter" class="button--template button--topbar">
+              <span class="btn-content">Export {{ selectedCharacter.Name }}</span>
+            </v-btn>
+          </v-col>
+        </v-row>
         <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter"
       /></v-col> </v-row
   ></span>
@@ -181,6 +195,8 @@ export default Vue.extend({
   transition: 0.3s;
   height: 100%;
   width: 100%;
+  white-space: normal;
+  display: inline-block;
 }
 .button--topbar {
   width: 33%;
@@ -191,23 +207,33 @@ export default Vue.extend({
 }
 .topbar {
   padding: $space--s;
-  padding-top: 0;
-  padding-bottom: 0;
-  display: flex;
+  padding-top: 0.5em;
+  display: inline-flex;
   align-items: center;
-  justify-content: right;
-  height: 3em;
   margin-left: 1em;
   margin-right: 1em;
   width: 95%;
-}
-.hidden--topbar {
-  width: 100%;
 }
 .sidebar {
   background: $color--light-parchment;
   padding: $space--m;
   border-right: 5px double black;
   margin-top: 3em;
+}
+.btn-content {
+  margin: 2px;
+  height: 2.5em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.v-btn__content {
+  white-space: normal;
+  word-wrap: break-word;
+  display: inline-flex;
+}
+.v-btn {
+  height: 100% !important;
+  width: 100%;
 }
 </style>

@@ -30,9 +30,6 @@ export default {
 .mobile--font {
   font-size: calc(1px + 2vw);
 }
-.background--color {
-  background: $color--background !important;
-}
 .earth-circle {
   height: 30em;
   border-radius: 50%;
