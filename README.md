@@ -106,4 +106,4 @@ Thrown Weapon icon made by Faithtoken.
 
 Available on https://game-icons.net.
 
-And a big thank you to the playtesters thus far: Aori, everythingElse, Kuji, MesiDoomstalker, and Mystic Witch! Without your feedback and testing none of this would be possible!
+And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
