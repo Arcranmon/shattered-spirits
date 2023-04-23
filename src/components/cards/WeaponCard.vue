@@ -18,8 +18,9 @@
       </div>
     </div>
     <div class="weapon--content">
-      <display-tooltip-text v-if="weapon.HasSpecial" :string="weapon.SpecialHeader" />
-      <div style="height: 0.5em;" />
+      <display-tooltip-text v-if="weapon.HasChargedArea" :string="weapon.ChargedAreaHeader" /><br v-if="weapon.HasChargedArea" />
+      <display-tooltip-text v-if="weapon.HasParry" :string="weapon.ParryHeader" /><br v-if="weapon.HasParry" />
+      <display-tooltip-text v-if="weapon.HasSpecial" :string="weapon.SpecialHeader" /><br v-if="weapon.HasSpecial" />
       <display-tooltip-text :string="weapon.DamageTypeHeader" />
       <chart-table :chart="weapon.Chart" />
     </div>

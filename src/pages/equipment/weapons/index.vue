@@ -82,7 +82,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <weapon-card v-if="selectedWeapon != null" :weapon="selectedWeapon" style="width: 40em;" /></v-col> </v-row
+        <v-col> <weapon-card v-if="selectedWeapon != null" :weapon="selectedWeapon" style="width: 40em;" :key="selectedWeapon.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -101,7 +101,7 @@ export default Vue.extend({
   data() {
     return {
       weaponCategories: ['Improvised', 'Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
-      selectedWeapons: ['Improvised', 'Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
+      selectedWeapons: ['Bladed'], // ['Improvised', 'Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
       weaponSpeeds: ['Any', 1, 2, 3, 4, 5, 6],
       selectedSpeed: 'Any',
       weaponKeywords: ['Any', 'Light', 'Versatile', 'Heavy', 'Colossal', 'Pierce'],

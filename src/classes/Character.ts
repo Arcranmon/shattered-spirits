@@ -135,21 +135,6 @@ class Character {
   set reflex(input: number) {
     this.reflex_ = input
   }
-  get RefreshText() {
-    var refresh = ''
-    if (this.current_spirit_stance_.Refresh.Momentum != 0 || this.current_martial_stance_.Refresh.Momentum != 0)
-      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Momentum + this.current_martial_stance_.Refresh.Momentum + ' Momentum', refresh)
-    if (this.current_spirit_stance_.Refresh.Poise != 0 || this.current_martial_stance_.Refresh.Poise != 0)
-      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Poise + this.current_martial_stance_.Refresh.Poise + ' Poise', refresh)
-    if (this.current_spirit_stance_.Refresh.Grit != 0 || this.current_martial_stance_.Refresh.Grit != 0)
-      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Grit + this.current_martial_stance_.Refresh.Grit + ' Grit', refresh)
-    if (this.current_spirit_stance_.Refresh.reflex != 0 || this.current_martial_stance_.Refresh.reflex != 0)
-      refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.reflex + this.current_martial_stance_.Refresh.reflex + ' reflex', refresh)
-    if (this.current_spirit_stance_.Refresh.Additional != '') refresh = this.SmartCommas(this.current_spirit_stance_.Refresh.Additional, refresh)
-    if (this.current_martial_stance_.Refresh.Additional != '') refresh = this.SmartCommas(this.current_martial_stance_.Refresh.Additional, refresh)
-
-    return refresh
-  }
   get SpiritName() {
     return this.spirit_name_
   }
@@ -302,12 +287,6 @@ class Character {
       this.disciplines_[idx].tier -= 1
       if (this.disciplines_[idx].tier <= 0) this.disciplines_.splice(idx)
     }
-  }
-  public ApplyRefresh() {
-    this.momentum_ += this.current_spirit_stance_.Refresh.Momentum + this.current_martial_stance_.Refresh.Momentum
-    this.grit_ += this.current_spirit_stance_.Refresh.Grit + this.current_martial_stance_.Refresh.Grit
-    this.focus_ += this.current_spirit_stance_.Refresh.Poise + this.current_martial_stance_.Refresh.Poise
-    this.reflex_ += this.current_spirit_stance_.Refresh.reflex + this.current_martial_stance_.Refresh.reflex
   }
   public ResetDefault() {
     this.momentum_ = 0

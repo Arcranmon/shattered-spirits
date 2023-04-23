@@ -154,7 +154,7 @@ class Technique {
     return this.move_.length > 0
   }
   public get MoveHeader() {
-    return '**Move:** _' + this.Move + '_'
+    return '**_Move_:** _' + this.Move + '_'
   }
   public get HasRange() {
     return this.Range != ''

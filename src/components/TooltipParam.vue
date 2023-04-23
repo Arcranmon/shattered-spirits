@@ -97,7 +97,7 @@ export default Vue.extend({
   font-size: $font-size--s;
   background-color: $color--off-white;
   border: $border--black-standard;
-  width: 40%;
+  max-width: 40%;
   padding: 0.1em;
 }
 .object {

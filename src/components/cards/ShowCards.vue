@@ -79,6 +79,9 @@
             <div class="card--box" v-if="job == 'Status'">
               <status-card :status="n" />
             </div>
+            <div class="card--box" v-if="job == 'Movement'">
+              <movement-card :movement="n" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -89,6 +92,7 @@
 import Vue from 'vue'
 import ArmorCard from './ArmorCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
+import MovementCard from './MovementCard.vue'
 import ObstacleCard from './ObstacleCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
@@ -162,6 +166,7 @@ export default Vue.extend({
   components: {
     ArmorCard,
     ManeuverCard,
+    MovementCard,
     NpcCard,
     ObstacleCard,
     StanceCard,

@@ -1349,42 +1349,51 @@
     "effect": "Gain 1 _Grit_. If you are on _Earthen_ Terrain or adjacent to an _Earthen_ Obstacle, also gain _Stone Armor_."
   },
   {
-    "name": "Double Strike",
-    "desc": "A vicious back-to-back strike using dual-wielded weapons.",
+    "name": "Swift Strike",
+    "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
     "type": "Strike",
-    "speed": "Slower Weapon",
-    "weapon": "_Light_",
-    "ap": 2,
+    "speed": "Any",
     "move": "Reposition",
-    "effect": "Make a _Weapon Attack_ [_Glancing_, _Combo_] with two _Wielded_ Weapons."
+    "effect": "Choose one:\n* Add [_Safe_ 1] to your _Movement_. Make a _Light_ _Major Attack_.\n* [_Flurry_ 2] with _Light_ _Major Attacks_, adding [_Glancing_].",
+    "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ later.",
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Light_/_Versatile_ _Major Attacks_.\n* 1 _Momentum_: Instead, [_Flurry_ 3] with _Light_ _Major Attacks_, adding [_Glancing_].\n* 2 _Momentum_: Do not add [_Glancing_]."
   },
   {
-    "name": "Tornado Leap",
-    "desc": "You let out a powerful blast of air before leaping skyward.",
-    "type": "Move",
-    "speed": "3",
-    "ap": 1,
-    "move": "None",
-    "effect": "_Push_ 1 (1 _Grit_) in a _Burst_ 1. You may then _Jump_, ignoring the normal Movement cost and increasing the distance by 2."
-  },
-  {
-    "name": "Shriek",
-    "desc": "You let out a high pitched shriek, frightening a foe.",
-    "type": "General",
-    "speed": "3",
-    "ap": 1,
-    "range": "6",
-    "move": "Reposition",
-    "effect": "Choose a creature within Range. Inflict _Fear_ 1, _Exposed_ 1 (1 _Poise_). Increase the cost to Negate by 1 if they are adjacent to one of your allies."
-  },
-  {
-    "name": "Crushing Tail",
-    "desc": "You prepare for a mighty swing, covering a large area.",
+    "name": "Basic Strike",
+    "desc": "You move forward with a weapon, striking a nearby foe.",
     "type": "Strike",
-    "speed": "Weapon",
-    "ap": 2,
-    "range": "Self",
+    "speed": "Any",
     "move": "Step",
-    "effect": "Create an _Arc_ 2 _Hazard_. At the end of the next _Phase_, remove the _Hazard_ and Attack all creatures within the _Area_."
+    "effect": "Choose one:\n* Make a _Melee_ _Major Attack_. Inflict _Marked_ on the _Target_.\n* Move is instead _Reposition_. Make a _Major Attack_.\n* Move is instead None. Gain 1 _Momentum_. Make a _Major Attack_.",
+    "boost": "1 _Momentum_: Additionally, make a _Minor Attack_."
+  },
+  {
+    "name": "Strong Strike",
+    "desc": "You unleash a powerful attack against a foe.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1].\n* Immediately after _Refresh_, declare that you are using this _Technique_, the _Major Attack_ you are using, and the size of your _Charged Area_. When you resolve this _Technique_, make the _Major Attack_ in that _Area_.",
+    "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ earlier.",
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 1 _Momentum_: Resolve your _Movement_. Instead of immediately making a _Major Attack_, instead create a _Hazard_ equal to the _Area_ you would Attack, or a single space if Single-Target. End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the Attack against all creatures in the _Area_, adding [_Unblockable_] and _Vulnerable_ 2. You may choose to not make this _Attack_ and instead gain 2 _Momentum_ when removing the _Hazard_."
+  },
+  {
+    "name": "Rushing Strike",
+    "desc": "You recklessly charge, covering ground before striking.",
+    "keywords": ["_Fluid_ 2"],
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Reposition_ or _Dash_ [_Rush_]",
+    "effect": "Choose one:\n* Make a _Major Attack_ [_Glancing_] with any _Wielded_ _Weapon_.\n* Make a _Minor Attack_. If you use a _Body_ _Weapon_, add _Push_ 2 or increase the _Block_ cost to negate by 1 on a _Graze_+."
+  },
+  {
+    "name": "Combo Strike",
+    "keywords": ["_Fluid_ 2"],
+    "desc": "You unleash a series of more flexible attacks.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Reposition",
+    "effect": "Make two _Minor Attacks_.",
+    "boost": "1 _Momentum_: Make one additional _Minor Attack_."
   }
 ]

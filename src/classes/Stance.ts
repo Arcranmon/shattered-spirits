@@ -1,11 +1,11 @@
 import { store } from '@/store'
-import { Refresh } from '@/class'
+import { Defense } from '@/class'
 
 class Stance {
   private accumulate_: string
   private desc_: string
   private effect_: string
-  private refresh_: Refresh
+  private refresh_: Defense
   private reqs_: string
   private name_: string
   private special_: string
@@ -83,7 +83,7 @@ class Stance {
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     if ('refresh' in data) {
-      this.refresh_ = Refresh.Deserialize(data.refresh)
+      this.refresh_ = Defense.Deserialize(data.refresh)
     }
   }
 }

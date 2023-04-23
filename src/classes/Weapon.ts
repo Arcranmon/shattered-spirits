@@ -10,10 +10,12 @@ class Weapon {
   private hands_: number
   private hardness_: number
   private keywords_: Array<string>
+  private parry_: string
   private name_: string
   private range_: string
   private range_value_: number
   private reaction_: string
+  private charged_area_: string
   private special_: string
   private speed_: number
   private weight: number
@@ -26,10 +28,12 @@ class Weapon {
     this.hardness_ = 0
     this.hands_ = 3
     this.keywords_ = []
+    this.parry_ = ''
     this.name_ = ''
     this.range_ = ''
     this.range_value_ = 0
     this.reaction_ = ''
+    this.charged_area_ = ''
     this.special_ = ''
     this.speed_ = 0
     this.weight = 1
@@ -73,9 +77,9 @@ class Weapon {
     return this.hands_
   }
   get HandsPhrase() {
-    if (this.hands_ == 0) return ' _No Hands_, '
-    if (this.hands_ == 1) return ' _One-Handed_, '
-    else return ' _Two-Handed_, '
+    if (this.hands_ == 0) return ' _No Hands_'
+    if (this.hands_ == 1) return ' _One-Handed_'
+    else return ' _Two-Handed_'
   }
   get HasKeywords() {
     return this.keywords_.length > 0
@@ -104,6 +108,18 @@ class Weapon {
   }
   get Speed() {
     return this.speed_
+  }
+  get HasChargedArea() {
+    return this.charged_area_.length > 0
+  }
+  get ChargedAreaHeader() {
+    return '**Charged Area:** ' + this.charged_area_
+  }
+  get HasParry() {
+    return this.parry_.length > 0
+  }
+  get ParryHeader() {
+    return '**Parry:** ' + this.parry_
   }
   get HasSpecial() {
     return this.special_.length > 0
@@ -147,9 +163,11 @@ class Weapon {
     this.hands_ = data.hands || 0
     this.keywords_ = data.keywords || []
     this.name_ = data.name || ''
+    this.parry_ = data.parry || ''
     this.range_ = data.range || ''
     this.range_value_ = data.range_value || 0
     this.reaction_ = data.reaction || ''
+    this.charged_area_ = data.charged_area || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || 0
     this.weight = data.weight || 0

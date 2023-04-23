@@ -1,12 +1,10 @@
 declare interface IArmorData {
-  armor: number
+  weight: number
   category?: string
   durability?: number
-  jump: number
+  guard: number
   name?: string
-  reposition: number
-  dash: number
-  step: number
+  special: string
 }
 
 declare interface ICharDisciplineData {
@@ -42,6 +40,12 @@ declare interface IChartData {
   roll: Array<string>
   damage?: Array<number>
   status: Array<string>
+}
+declare interface IDefenseData {
+  additional?: string
+  poise?: number
+  block?: number
+  dodge?: number
 }
 
 interface IDisciplineTierData {
@@ -122,12 +126,14 @@ declare interface IManeuverData {
   weapon?: string
 }
 
-declare interface IRefreshData {
-  additional?: string
-  focus?: number
-  grit?: number
-  momentum?: number
-  reflex?: number
+declare interface IMovementData {
+  name: string
+  encumbrance: number
+  step: number
+  reposition: number
+  dash: number
+  jump: number
+  traits: string[]
 }
 
 declare interface IStanceData {
@@ -139,7 +145,7 @@ declare interface IStanceData {
   maneuver?: string
   reaction?: string
   reqs?: string
-  refresh: IRefreshData
+  defense: IDefenseData
   effect: string
   special?: string
 }
@@ -202,9 +208,11 @@ declare interface IWeaponData {
   hardness?: number
   keywords: Array<string>
   name: string
+  parry: string
   range: string
   range_value: number
   reaction?: string
+  charged_area: string
   special?: string
   speed: number
   weight: number

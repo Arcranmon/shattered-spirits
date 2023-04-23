@@ -35,20 +35,28 @@
   {
     "name": "Basic Feint",
     "desc": "You feint one way before attacking another, providing yourself an advantage.",
-    "keywords": ["Edge", "Feint"],
+    "keywords": ["Feint"],
     "cost": "1 _Momentum_",
     "reqs": "Single-Target _Melee_ Attack.",
-    "effect": "The Target must pay 1 _Poise_. If they do not, gain a +1 Bonus to the Attack Roll.",
-    "boost": "1 _Momentum_: Instead, foe must pay 2 _Poise_. If they do not _Negate_, additionally add [_Sure Hit_/_Unblockable_ 1] to the Attack.",
+    "effect": "Before resolving the Attack, inflict _Exposed_ 1.",
     "type": "Gambit"
   },
   {
     "name": "Basic Flourish",
-    "desc": "You shove a foe back as you disengage, creating space.",
+    "desc": "You disengage from an attack artfully, creating an opening for an ally.",
+    "keywords": ["Flourish"],
     "cost": "1 _Momentum_",
-    "reqs": "You complete a Single-Target Attack against a foe that is still adjacent to you.",
-    "effect": "Inflict _Push_ 1, _Vulnerable_ 1 (1 _Grit_/_Reflex_).",
-    "type": "Flourish"
+    "reqs": "You complete a Single-Target Attack against a foe.",
+    "effect": "Inflict _Vulnerable_ 2.",
+    "type": "Gambit"
+  },
+  {
+    "name": "Basic Sunder",
+    "desc": "You focus an attack on breaking a foe's armor.",
+    "cost": "1 _Momentum_",
+    "reqs": "You make a Single-Target Attack against a foe.",
+    "effect": "If the final Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_, inflict _Shred_ 1.",
+    "type": "Gambit"
   },
   {
     "name": "Basic Counter",
@@ -245,11 +253,10 @@
   {
     "name": "Create Opening",
     "desc": "You launch a quick assault, diverting a foe's attention so an ally can strike.",
-    "type": "Punish",
+    "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "An adjacent foe is Attacked.",
-    "effect": "The foe must pay 1 _Poise_. If they do not, the triggering Attack gains a +1 Bonus.",
-    "boost": "1 _Momentum_: Instead, Trigger is 'A foe within your _Reach_ is Attacked.'"
+    "trigger": "A foe within your _Reach_ is Attacked.",
+    "effect": "Before resolving the Attack, inflict _Exposed_ 1."
   },
   {
     "name": "Cutting Edge",
@@ -387,10 +394,10 @@
   {
     "name": "Engage",
     "desc": "You obstruct a foe's movement, making it difficult for them to advance.",
-    "type": "Punish",
-    "cost": "1 _Grit_/_Momentum_",
-    "trigger": "A creature of your Size or smaller moves adjacent to you with Movement without [_Charge_] or [_Leap_].",
-    "effect": "The creature must pay 2 _Momentum_/_Reflex_. If they do not, their Movement immediately ends.",
+    "type": "Reaction",
+    "cost": "1 _Momentum_",
+    "trigger": "A creature of your Size or smaller moves adjacent to you with Movement without [_Rush_] or [_Leaping_].",
+    "effect": "The creature must pay 2 _Momentum_. If they do not, their Movement immediately ends and you may inflict _Marked_.",
     "boost": "1 _Grit_/_Momentum_: Instead, Trigger is 'A creature one Size larger or smaller'."
   },
   {
@@ -589,8 +596,8 @@
     "name": "Leap",
     "desc": "You leap forward, hurdling over hazards and other dangers.",
     "keywords": ["Repeatable"],
-    "cost": "1 _Momentum_/_Reflex_",
-    "effect": "Immediately make a _Jump_.",
+    "cost": "1 _Momentum_",
+    "effect": "The next X spaces you Move, where X is up to your Jump Value, is [_Leaping_] Movement. This Movement must be taken in a straight line, and this Movement may not be broken up in any way.",
     "type": "Stunt"
   },
   {
@@ -754,11 +761,22 @@
   {
     "name": "Opportunity Attack",
     "desc": "You capitalize on the opening created by a repositioning foe, moving to strike while you can.",
-    "cost": "0 _Momentum_",
+    "keywords": ["Punish"],
+    "cost": "None",
     "trigger": "An enemy starts a _Shift_ while within your _Reach_.",
-    "effect": "Attack the triggering enemy with a 1 AP Single-Target _Strike_. You must use a Technique with a _Reach_ capable of attacking the Target.",
-    "boost": "2 _Momentum_: Instead, use a 2 AP Single-Target _Strike_.",
-    "type": "Punish"
+    "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target. On a _Hit_+, the creature immediately loses 2 spaces of Movement.",
+    "boost": "1 _Momentum_: Instead, use a Single-Target _Major Attack_.",
+    "type": "Reaction"
+  },
+  {
+    "name": "Active Defense",
+    "desc": "You defend yourself with a weapon, mitigating an incoming blow.",
+    "keywords": ["Defensive"],
+    "cost": "1 _Momentum_",
+    "trigger": "You are Attacked, take Damage, or gain Status.",
+    "effect": "Gain the _Parry_ benefits of a _Wielded_ _Weapon_ against the triggering _Attack_.",
+    "boost": "1 _Momentum_: Gain the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_.",
+    "type": "Reaction"
   },
   {
     "name": "Overpower",
@@ -873,6 +891,14 @@
     "type": "Punish"
   },
   {
+    "name": "Prepare",
+    "cost": "1 AP",
+    "move": "None",
+    "effect": "Gain 2 _Momentum_.",
+    "special": "You may use this Action more than once per _Round_.",
+    "type": "Action"
+  },
+  {
     "name": "Punishing Bash",
     "desc": "You lash out with your shield, forcing a foe to keep their attention on you.",
     "cost": "2 _Grit_/_Momentum_",
@@ -893,10 +919,12 @@
   {
     "name": "Recover",
     "desc": "You use your grit, reflex, and focus to push through hindrances.",
-    "cost": "None",
-    "trigger": "Your _Turn_ ends.",
-    "effect": "Expend any amount of _Grit_, _Reflex_, and _Poise_, then remove Afflictions/Statuses of your choice according to their listed Recovery rules.",
-    "type": "Reaction"
+    "cost": "1 _AP_",
+    "move": "None",
+    "effect": "Refresh your _Defenses_. You may then expend _Block_, _Dodge_, and _Focus_ to remove _Afflictions_ you currently have, spending the same amount to remove them that you would spend to negate.",
+    "special": "You may use this Action more than once per _Round_.",
+    "boost": "1 _Momentum_: Remove _Broken_ or _Disarmed_.",
+    "type": "Action"
   },
   {
     "name": "Reverberations",
@@ -1044,6 +1072,14 @@
     "type": "Reaction"
   },
   {
+    "name": "Skirmish",
+    "cost": "1 AP",
+    "move": "None",
+    "effect": "Make a _Minor Attack_.",
+    "boost": "1 _Momentum_: Move is instead _Step_.",
+    "type": "Action"
+  },
+  {
     "name": "Snap Shot",
     "desc": "You are capable of using your bow at a moment's notice, firing at the slightest opening.",
     "cost": "2 _Momentum_",
@@ -1105,18 +1141,21 @@
   {
     "name": "Reorient",
     "desc": "You swiftly move, adjusting your footing before taking a more serious action.",
-    "move": "Step",
-    "cost": "2 _Reflex_",
-    "trigger": "A _Phase_ begins while you are not _Prone_.",
-    "boost": "1 _Momentum_/_Reflex_: Add [_Safe_ 1].",
-    "type": "Reaction"
+    "move": "Reposition",
+    "cost": "1 AP",
+    "special": "You may use this Action more than once per _Round_.",
+    "boost": "2 _Momentum_: Movement is instead _Dash_.",
+    "type": "Action"
   },
   {
     "name": "Retrieve",
-    "desc": "You grab an unattended item.",
+    "desc": "You grab an unattended item or change your equipment.",
     "keywords": ["Repeatable"],
-    "cost": "1 _Momentum_/_Reflex_",
-    "effect": "_Equip_ or _Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_. Before _Wielding_ an item, you may choose to stop _Wielding_ _Equipment_ of your choice, placing them unattended in your current or adjacent spaces.",
+    "cost": "1 _Momentum_",
+    "reqs": "You are not _Disarmed_.",
+    "effect": "Choose one:\n* _Equip_/_Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_.\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ (if you have the appropriate _Open Hands_) an _Equipped_ piece of _Equipment_.",
+    "special": "Before _Wielding_ an item, you may choose to stop _Wielding_ _Equipment_ of your choice, placing them unattended in your current or adjacent spaces.",
+    "boost": "1 _AP_: Gain 1 _Momentum_. You may resolve two of the above effects.",
     "type": "Stunt"
   },
   {
@@ -1173,14 +1212,6 @@
     "effect": "Inflict _Impaired_/_Exposed_ 2 (2 _Reflex_) on a creature within Range other than the original Target.",
     "boost": "1 _Momentum_: Instead, inflict _Blinded_ (2 _Reflex_) until the end of their next _Turn_.",
     "type": "Flourish"
-  },
-  {
-    "name": "Basic Sunder",
-    "desc": "You focus your attack on a foe's armor instead of them.",
-    "cost": "0 _Grit_/_Momentum_",
-    "trigger": "_Attack_ that does not already have [_Sundering_].",
-    "effect": "Add [_Glancing_, _Sundering_]. The Target's _Armor_ or a piece of their Equipment loses _Durability_ equal to twice the final Damage dealt.",
-    "type": "Gambit"
   },
   {
     "name": "Sundering Strike",
@@ -1266,9 +1297,14 @@
   {
     "name": "Tumble",
     "type": "Stunt",
-    "cost": "1 _Reflex_",
-    "reqs": "Must have Light or Medium Load.",
+    "cost": "1 _Momentum_",
     "effect": "_Roll_ up to your _Step_ distance."
+  },
+  {
+    "name": "Rapid Strike",
+    "cost": "1 _Momentum_",
+    "effect": "Make a _Minor Attack_.",
+    "type": "Stunt"
   },
   {
     "name": "Unstoppable Momentum",
@@ -1379,5 +1415,30 @@
     "effect": "Use the _Shield Block_ Reaction for no Cost, granting the benefits to you and all adjacent allies. Instead of your Shield taking Damage from each Attack, it instead takes the highest Damage dealt.",
     "boost": "1 _Grit_: Gain a benefit depending on the Area of the Triggering attack.\n* _Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is [_Glancing_] against allies in the adjacent spaces opposite the origin of the Attack.",
     "type": "Resist"
+  },
+  {
+    "name": "Weapon Attack",
+    "desc": "You strike with a weapon.",
+    "effect": "Make an Attack using a _Wielded_ Weapon. This Attack inherits all Keywords from the Weapon.",
+    "type": "Major Attack"
+  },
+  {
+    "name": "Unarmed Attack",
+    "desc": "You strike with your body.",
+    "effect": "Make an Attack using an _Unarmed_ Weapon. This Attack inherits all Keywords from the Weapon.",
+    "type": "Minor Attack"
+  },
+  {
+    "name": "Swift Attack",
+    "desc": "You use the speed of a weapon to make an additional strike.",
+    "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
+    "type": "Minor Attack"
+  },
+  {
+    "name": "Disengage",
+    "desc": "You focus your efforts on moving away from hostile foes.",
+    "cost": "1 AP",
+    "effect": "Add [_Safe_ 3] to all _Movement_ this _Turn_.",
+    "type": "Stunt"
   }
 ]

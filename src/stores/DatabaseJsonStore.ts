@@ -13,19 +13,20 @@ import Resources from '@/database/glossary/resources.json'
 import Obstacles from '@/database/obstacles.json'
 import Terrains from '@/database/terrain.json'
 
+import Movements from '@/database/movement.json'
 import Maneuvers from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Armor, Discipline, Maneuver, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
+import { Armor, Discipline, Maneuver, Movement, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
-let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Keywords, Resources]
+let allGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Keywords, Traits, Resources]
 
 @Module({
   name: 'databaseJson',
@@ -282,6 +283,28 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
+  // MOVEMENT TOOLS
+  // ==========================================================
+  get getMovement(): any {
+    return (inword: string) => {
+      var move = Movements.find((x) => x.name.trim() === inword.trim())
+      return Movement.Deserialize(<IMovementData>move)
+    }
+  }
+
+  get getMovementsFromList(): any {
+    return (move_list: Array<string>) => {
+      if (move_list == undefined) return []
+      let moves: Array<Movement> = []
+      for (var move of move_list) {
+        var temp = this.getMovement(move)
+        if (temp != undefined) moves.push(temp)
+      }
+      return moves
+    }
+  }
+
+  // ==========================================================
   // DISCIPLINE TOOLS
   // ==========================================================
   get getDisciplinesByCategory(): any {
@@ -433,7 +456,12 @@ export class DatabaseJsonStore extends VuexModule {
 
   get existsInAnyGlossary(): any {
     return (inword: string) => {
-      return this.glossaryHasItem(Glossary, inword) || this.glossaryHasItem(Keywords, inword) || this.glossaryHasItem(Resources, inword)
+      return (
+        this.glossaryHasItem(Glossary, inword) ||
+        this.glossaryHasItem(Keywords, inword) ||
+        this.glossaryHasItem(Traits, inword) ||
+        this.glossaryHasItem(Resources, inword)
+      )
     }
   }
 

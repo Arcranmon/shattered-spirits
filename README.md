@@ -26,6 +26,39 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
+BIG POST-PLAYTEST REWORK
+
+- OBJECTIVE: Make a satisfying weapon-based gameplay loop that works well.
+
+  - STEP 1: Refactor defenses to be simpler and more satisfying.
+
+  - Make Hazard attacks (telegraphs) have a more reasonable counterplay.
+    - Either make indicating them come earlier OR make off-turn movement more accessible.
+  - Simply too many options; with the number of Maneuvers and the like there's just too much to juggle.
+    - Condense Gambits/Flourishes into one pool and just keyword them as they are very similar in use.
+  - Need to make it more clear that tangible progress is being made/make it easier to track Conditions on a foe.
+    - Better indicate what defenses a creature has.
+  - General streamlining throughout. Potentially move away from Grit, Reflex, and Poise as resources and fold them into Stances in a more passive way.
+    - Make Grit/Reflex/Poise a pool that refreshes each Turn that is ONLY used to defend against attacks and make Momentum the only Token used to pay for Techniques/Boosts?
+  - Make offensive Spirit options more appealing; people seemed fairly focused on weapon attacks.
+
+THINGS TO CLEAN
+
+- Remove all Stratagems
+
+Minor Changes:
+
+- Tune-down Colossal weapons due to swinginess.
+- Add keyword for "Can't change Speed/Improvise" to relevant Techniques.
+- Make it more obvious when Conditions are AND vs. OR for effects.
+- Various wording fixes.
+- Nerf Shield Parry hard.
+- Buff Earthen Aegis hard.
+- Heroic Duel has some awkward wording throughout (maybe change just for playspeed reasons)
+- Clarify 'are own ally' type effects.
+- Might need an actual interface for tracking Conditions and the like.
+- Clean up Charge->Rush
+
 MISSING TECHNIQUES
 These are Techniques/Maneuvers that existed in previous content but are missing in the current Discipline refactor:
 

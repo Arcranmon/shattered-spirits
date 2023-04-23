@@ -3,7 +3,7 @@
     <v-row no-gutters class="chart--row">
       <v-col class="chart--head" cols="2"><b>Roll</b></v-col>
       <v-col class="chart--head chart--head-right" v-if="(chart.HasDamage)" cols="2"><b>Damage</b></v-col
-      ><v-col class="chart--head chart--head-right" cols="8"><b>Status</b></v-col>
+      ><v-col class="chart--head chart--head-right" cols="8"><b>Effect</b></v-col>
     </v-row>
     <div v-for="(item, index) in chart.Roll">
       <v-row align="stretch" no-gutters class="chart--row">

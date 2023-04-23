@@ -1,11 +1,16 @@
 [
   {
+    "name": "Action",
+    "effect": "Actions are a type of _Maneuver_ that allow a character to take a _Turn_. Actions may be used whenever it is your  party's time to act in combat. A character may only use an Action once per _Round_ unless otherwise specified."
+  },
+  { "name": "Actions", "see": "Action" },
+  {
     "name": "Advantage",
     "effect": "When you make an Attack with Advantage, roll 3d6 and use the two highest for your result."
   },
   {
     "name": "AP",
-    "effect": "AP, or Action Points, are what are used to power the various _Techniques_ that creatures have. Typically, a player character has 3 AP that they can divide up between various _Techniques_ in a _Round_."
+    "effect": "AP, or Action Points, are what are used to power the various _Maneuvers_ and _Techniques_ that creatures have. Player characters have 2 AP that they may use each _Round_."
   },
   {
     "name": "Armor",
@@ -18,9 +23,13 @@
   },
   {
     "name": "Attack",
-    "effect": "An Attack is any _Technique_ that makes use of Profile and requires you to roll 2d6 to determine the effect."
+    "effect": "An Attack is a type of _Manuever_ that allows a creature to target enemies. Attacks are never used on their own; other _Maneuvers_ and _Techniques_ will tell you when to use an Attack. Attacks are split into Major and Minor Attacks; Major Attacks are highly effective and deal high Damage, while Minor Attacks tend to be more focused on status effects and deal much less damage."
   },
-  { "see": "Attacks", "name": "Attack" },
+  { "see": "Attack", "name": "Attacks" },
+  { "see": "Attack", "name": "Major Attack" },
+  { "see": "Attack", "name": "Minor Attack" },
+  { "see": "Attack", "name": "Major Attacks" },
+  { "see": "Attack", "name": "Minor Attacks" },
   {
     "name": "Attack Roll",
     "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's _Profile_ to determine the effect."
@@ -29,6 +38,10 @@
   {
     "name": "Bonus",
     "effect": "When a creature has a Bonus they add that value to _Attack Rolls_."
+  },
+  {
+    "name": "Charging",
+    "effect": "While _Charging_ you may not willingly _Move_. Any _Hands_ that will be used as a part of the Attack are _Occupied_, as are any pieces of _Equipment_ involved in the _Attack_."
   },
   {
     "name": "Climbing",
@@ -51,6 +64,7 @@
     "name": "Crit",
     "effect": "A particularly effective Attack, represented by a purple cell in the Attack's 'Roll' column in its _Profile_."
   },
+  { "name": "Critical Hit", "see": "Crit" },
   {
     "name": "Courier",
     "effect": "Courier Disciplines tend to have high movement among their abilities, as well as movement options that make it far easier to navigate terrain and enemy positions."
@@ -111,6 +125,11 @@
     "name": "Forceful",
     "effect": "Forceful can be applied to any kind of _Forced Movement_. If a creature is moved into an _Obstacle_ by Forceful Movement they take Damage equal to 1 + any _Forced Movement_ remaining after colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1 (2 _Poise_). If a creature is moved into another creature with _Forced Movement_ you may choose to resolve the effect against both of them, but deal half Damage. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. "
   },
+  {
+    "name": "Gambit",
+    "effect": "Gambits are _Manuevers_ that allow characters to enhance an Attack. A character may use any number of Gambits on a single _Attack_, but only one with the _Feint_ tag and one with the _Flourish_ tag."
+  },
+  { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Gift",
     "effect": "When you Gift a _Token_ you lose up to the listed amount of that _Token_, then grant an ally the amount you lost."
@@ -221,12 +240,17 @@
     "effect": "All Attacks have a Profile, a chart showing the results of an Attack on a roll of 2-12. When you make an Attack, roll 2d6 and consult the Profile for the result."
   },
   {
+    "name": "Reaction",
+    "effect": "A _Maneuver_ that may be freely used when its Trigger occurs. Characters may use as many Reactions as they wish on a given _Turn_, but may only use a given Reaction once per _Turn_ unless otherwise specified."
+  },
+  { "name": "Reactions", "see": "Reaction" },
+  {
     "name": "Refresh",
     "effect": "The very start of a round where characters can change their _Wielded_ Equipment, _Stances_, and resolve various effects."
   },
   {
     "name": "Reposition",
-    "effect": "The second smallest standard _Movement_, and the one most typically granted by _Techniques_. Consult your _Armor_ for how far you _Move_ with a Reposition."
+    "effect": "The standard _Movement_ distance. Consult your _Armor_ for how far you _Move_ with a Reposition."
   },
   {
     "name": "Resistance",
@@ -248,7 +272,7 @@
   },
   {
     "name": "Self",
-    "effect": "This either only targets you or, if it has an Area, is centered on your space."
+    "effect": "This either only targets you or, if it has an Area, is centered on or originates from your space."
   },
   {
     "name": "Shaper",
@@ -284,6 +308,11 @@
   },
   { "name": "Stances", "see": "Stance" },
   {
+    "name": "Stunt",
+    "effect": "Stunts are quick, simple abilities such as jumping or picking up an item that characters may use on their _Turn_. Characters may use as many Stunts as they wish on their _Turn_, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword."
+  },
+  { "name": "Stunts", "see": "Stunt" },
+  {
     "name": "Standard",
     "effect": "Standard is the most common class of NPC. Standard enemies may never have more than 6 of a given _Token_ but may use a Martial and Spirit Stance."
   },
@@ -318,7 +347,7 @@
   { "name": "Swimming", "see": "Swim" },
   {
     "name": "Technique",
-    "effect": "Techniques are how creatures interact in combat. These are what allow creatures to attack, influence the environment, and gain the resources to dodge and block attacks."
+    "effect": "Techniques are how creatures interact in combat. These are what allow creatures to attack, influence the environment, and gain the resources to dodge and block attacks. A Technique must be selected while _Plotting_, at which point it is assigned a _Phase_. A creature may not use that Technique until that _Phase_."
   },
   { "name": "Techniques", "see": "Technique" },
   {

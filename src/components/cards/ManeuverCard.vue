@@ -1,7 +1,7 @@
 <template>
   <div class="maneuver--wrapper" inline>
     <div class="maneuver--underline-top">
-      <div class="maneuver--header" v-bind:class="maneuver.Type">
+      <div class="maneuver--header" v-bind:class="maneuver.Type.replace(' ', '_')">
         <h4 style="display: inline;">{{ maneuver.Name }}</h4>
         <br />
         <div class="maneuver--keywords" v-bind:class="useTextFormatting">
@@ -127,22 +127,19 @@ export default Vue.extend({
 .Stunt {
   background-color: $color--maneuver;
 }
-.Stratagem {
+.Action {
   background-color: #7ac3ff;
 }
 .Reaction {
-  background-color: #fae5af;
-}
-.Flourish {
-  background-color: #7c6939;
-}
-.Resist {
-  background-color: #c97a39;
-}
-.Punish {
   background-color: #7574a7;
 }
 .Gambit {
   background-color: #a776a0;
+}
+.Minor_Attack {
+  background-color: #db5656;
+}
+.Major_Attack {
+  background-color: #db5656;
 }
 </style>
