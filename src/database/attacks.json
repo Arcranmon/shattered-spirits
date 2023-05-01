@@ -1,0 +1,106 @@
+[
+  {
+    "name": "Weapon Attack",
+    "desc": "You strike with a weapon.",
+    "effect": "Make an Attack using a _Wielded_ Weapon. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "class": "Major Attack"
+  },
+  {
+    "name": "Quickened Attack",
+    "desc": "You find it easy to slip in additional strike with a swift weapon.",
+    "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
+    "class": "Minor Attack",
+    "speed": -1,
+    "type": "Light"
+  },
+  {
+    "name": "Punch",
+    "type": "Versatile",
+    "desc": "An untrained yet still effective strike.",
+    "keywords": ["Fist", "Martial Arts"],
+    "speed": 2,
+    "damagetype": "Crush",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 3],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Dazed_ 1, _Vulnerable_ 1",
+        "_Dazed_ 1, _Vulnerable_ 1",
+        "_Dazed_ 1, _Vulnerable_ 2",
+        "_Dazed_ 1, _Vulnerable_ 2"
+      ]
+    },
+    "range_value": 1,
+    "class": "Minor Attack"
+  },
+  {
+    "name": "Grapple",
+    "type": "Versatile",
+    "desc": "You attempt to grab a foe, doing limited damage but limiting their mobility.",
+    "keywords": ["Fist", "Martial Arts"],
+    "speed": 3,
+    "damagetype": "Crush",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Pull_ 1, _Vulnerable_ 1",
+        "_Pull_ 1, _Vulnerable_ 1",
+        "_Pull_ 2/_Grabbed_ [1 _Dodge_], _Vulnerable_ 2",
+        "_Pull_ 2/_Grabbed_ [1 _Dodge_], _Vulnerable_ 2",
+        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 2",
+        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 2",
+        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 2",
+        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 3",
+        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 3"
+      ]
+    },
+    "range_value": 1,
+    "class": "Minor Attack"
+  },
+  {
+    "name": "Slam",
+    "desc": "An untrained strike making use of the body itself to body-slam a foe.",
+    "type": "Versatile",
+    "keywords": ["Body", "Martial Arts"],
+    "speed": 4,
+    "damagetype": "Crush",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Block_], _Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Block_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [3 _Block_], _Vulnerable_ 2",
+        "_Push_ 2/_Prone_ [3 _Block_], _Vulnerable_ 2"
+      ]
+    },
+    "range_value": 1,
+    "class": "Minor Attack"
+  },
+  {
+    "name": "Swipe",
+    "desc": "A swift attack using a natural weapon.",
+    "effect": "Make an _Attack_ using a _Natural_ _Melee_ Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "class": "Minor Attack"
+  }
+]

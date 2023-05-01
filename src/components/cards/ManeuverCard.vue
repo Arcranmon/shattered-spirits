@@ -136,10 +136,4 @@ export default Vue.extend({
 .Gambit {
   background-color: #a776a0;
 }
-.Minor_Attack {
-  background-color: #db5656;
-}
-.Major_Attack {
-  background-color: #db5656;
-}
 </style>

@@ -3,7 +3,7 @@ import math
 from termcolor import colored
 import argparse
 
-def estimate_damage(type, name, glancing):
+def estimate_damage(type, name, glancing, treat_vulnerable_as_damage, treat_wounded_as_damage):
     if(type == "Technique"):
         f = open('.\src\database\\techniques.json')
     elif(type == "Obstacle"):
@@ -12,6 +12,8 @@ def estimate_damage(type, name, glancing):
         f = open('.\src\database\items\weapons.json')
     elif(type == "Maneuvers"):
         f = open('.\src\database\maneuvers.json')
+    elif(type == "Attack"):
+        f = open('.\src\database\\attacks.json')
 
     data = json.load(f)
 
@@ -21,7 +23,8 @@ def estimate_damage(type, name, glancing):
     disadvantage = [0.0740740740741, 0.125, 0.157407407407, 0.166666666667, 0.157407407407, 0.125, 0.087962962963, 0.0555555555556, 0.0324074074074, 0.0138888888889, 0.00462962962963]
 
     hit = []
-    attack = []
+    damage_chart = []
+    status_chart = []
     speed = 1
     lvh = 'none'
 
@@ -32,24 +35,19 @@ def estimate_damage(type, name, glancing):
                     if(not("damage" in technique["chart"])):
                         raise Exception("This Ability does not deal damage; cannot be analyzed.")
                     hit = technique["chart"]["roll"]
-                    attack = technique["chart"]["damage"]
+                    damage_chart = technique["chart"]["damage"]
                     if(len(technique["speed"]) == 1):
                         speed = int(technique["speed"])
     else:
         for weapon in data:
             if(weapon["name"] == name):
                 hit = weapon["chart"]["roll"]
-                attack = weapon["chart"]["damage"]
-                if("Light" in weapon["keywords"]):
-                    lvh = "Light"
-                if("Versatile" in weapon["keywords"]):
-                    lvh = "Versatile"
-                if("Heavy" in weapon["keywords"]):
-                    lvh = "Heavy"
+                damage_chart = weapon["chart"]["damage"]
+                status_chart = weapon["chart"]["status"]
                 if("speed" in weapon):
                     speed = int(weapon["speed"])
 
-    if(attack == []):
+    if(damage_chart == []):
         raise Exception("Technique or weapon not found.")
                         
     straight_damage = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -69,8 +67,23 @@ def estimate_damage(type, name, glancing):
             if index < 0:
                 continue
 
-            damage = (attack[index])
+            damage = (damage_chart[index])
             if(glancing): damage = math.ceil(damage/2.0)
+
+            if(treat_vulnerable_as_damage or treat_wounded_as_damage):
+                next_string_is_damage_status = False
+                for sub_status in status_chart[i].split():
+                    if next_string_is_damage_status:
+                        sub_status = sub_status.replace(',', '')
+                        if 'x' in sub_status:
+                            damage += int(sub_status[0]) * int(sub_status[2])
+                        else:
+                            damage += int(sub_status)
+                        next_string_is_damage_status = False
+                    if sub_status == '_Vulnerable_' and treat_vulnerable_as_damage:
+                        next_string_is_damage_status = True
+                    if sub_status == '_Wounded_' and treat_wounded_as_damage:
+                        next_string_is_damage_status = True
 
             straight_damage[j] += straight[i]*damage
             advantage_damage[j] += advantage[i]*damage
@@ -87,5 +100,7 @@ if __name__ == "__main__":
     parser.add_argument("--type", help="What type of ability this is.", type=str)
     parser.add_argument("--name", help="Name of the ability.", type=str)
     parser.add_argument("--glancing", help="Whether or not to apply Glancing.", action='store_true')
+    parser.add_argument("--treat_vulnerable_as_damage", help="If specified will add Vulnerable additively to the Damage.", action='store_true')
+    parser.add_argument("--treat_wounded_as_damage", help="If specified will add Wounded additively to the Damage.", action='store_true')
     args = parser.parse_args()
-    estimate_damage(args.type, args.name, args.glancing)
+    estimate_damage(args.type, args.name, args.glancing, args.treat_vulnerable_as_damage, args.treat_wounded_as_damage)

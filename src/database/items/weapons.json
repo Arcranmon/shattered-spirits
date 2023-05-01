@@ -1,15 +1,16 @@
 [
   {
-    "name": "Dagger",
+    "name": "Iron Dagger",
     "category": "Bladed",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Light", "_Thrown_ 4", "_Brawling_ 1", "Small"],
+    "keywords": ["_Thrown_ 4", "Quickdraw", "_Brawling_ 1", "Small"],
+    "material": "Metal",
     "speed": 2,
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits if the triggering _Attack_ is _Light_:\n* You may spend _Block_ to purchase a _Dodge_ effect, treating it as a _Block_ effect for all other keywords. You may purchase up to 1 _Dodge_ worth of effects in this way.\n* You may spend up to 1 _Defense_ to reduce the _Value_ of _Vulnerable_ inflicted by 1 per _Defense_ spent, starting with the smallest Token.",
     "range": "Melee",
     "chart": {
-      "damage": [0, 0, 3, 3, 4, 4, 5, 5, 6, 6, 6],
+      "damage": [0, 0, 2, 2, 3, 3, 4, 4, 5, 5, 5],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
       "status": [
         "",
@@ -28,19 +29,21 @@
     "weight": 1,
     "hands": 1,
     "hardness": 7,
-    "range_value": 1
+    "range_value": 1,
+    "type": "Light"
   },
   {
-    "name": "Shortsword",
+    "name": "Iron Shortsword",
     "category": "Bladed",
     "desc": "A light blade that offers a balance between power and speed.",
-    "keywords": ["Light"],
+    "type": "Light",
+    "material": "Metal",
     "speed": 3,
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Gain 1 _Fleeting_ _Block_.\n* You may spend _Block_ to purchase a _Dodge_ effect, treating it as a _Block_ effect for all other keywords. You may purchase up to 1 _Dodge_ worth of effects in this way.\n* You may spend up to 1 _Defense_ to reduce the _Value_ of _Vulnerable_ inflicted by 1 per _Defense_, starting with the smallest Token.",
     "range": "Melee",
     "chart": {
-      "damage": [0, 0, 4, 4, 5, 5, 6, 6, 7, 8, 8],
+      "damage": [0, 0, 3, 3, 4, 4, 5, 5, 6, 7, 7],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -62,16 +65,18 @@
     "range_value": 1
   },
   {
-    "name": "Longsword",
+    "name": "Iron Longsword",
     "category": "Bladed",
     "desc": "A sword that can easily be used in one or both hands and is favored by many.",
-    "keywords": ["Versatile", "Hand-and-a-Half"],
+    "keywords": ["Hand-and-a-Half"],
+    "material": "Metal",
     "speed": 4,
     "damagetype": "Slash/Stab",
+    "charged_effect": "Deal +1 Damage on a _Graze_+.",
     "parry": "Gain the following benefits:\n* Gain 1 _Fleeting_ _Block_.\n* You may spend _Block_ to purchase a _Dodge_ effect, treating it as a _Block_ effect for all other keywords. You may purchase up to 1 _Dodge_ worth of effects in this way, or 2 _Dodge_ if _Wielding_ this Weapon in both Hands.\n* You may spend up to 2 _Defense_ to reduce the _Value_ of _Vulnerable_ inflicted by 1 per _Defense_, starting with the smallest Token.",
     "range": "Melee",
     "chart": {
-      "damage": [0, 0, 5, 5, 6, 6, 7, 7, 8, 9, 9],
+      "damage": [0, 0, 4, 4, 5, 5, 6, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -90,20 +95,22 @@
     "weight": 2,
     "hands": 1,
     "hardness": 9,
-    "range_value": 1
+    "range_value": 1,
+    "type": "Versatile"
   },
   {
-    "name": "Greatsword",
+    "name": "Iron Greatsword",
     "category": "Bladed",
     "desc": "A massive blade meant to be wielded in both hands, this weapon can cleave through most defenses.",
-    "keywords": ["Heavy", "_Overpowering_ 1"],
+    "keywords": ["_Overpowering_ 1"],
+    "material": "Metal",
     "speed": 5,
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits:\n* Gain 2 _Fleeting_ _Block_.\n* You may spend _Block_ to purchase a _Dodge_ effect, treating it as a _Block_ effect for all other keywords. You may purchase up to 1 _Dodge_ worth of effects in this way.\n* You may spend up to 2 _Defense_ to reduce the _Value_ of _Vulnerable_ inflicted by 1 per _Defense_, starting with the smallest Token.",
-    "charged_area": "_Cone_ 2/_Arc_ 1 (_Self_ Range)",
+    "charged_effect": "Instead, make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "range": "Melee",
     "chart": {
-      "damage": [0, 0, 6, 6, 7, 8, 9, 9, 10, 11, 12],
+      "damage": [0, 0, 5, 5, 6, 7, 8, 8, 9, 10, 11],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -122,7 +129,8 @@
     "weight": 4,
     "hands": 2,
     "hardness": 10,
-    "range_value": 2
+    "range_value": 2,
+    "type": "Heavy"
   },
   {
     "name": "Colossal Blade",
@@ -132,7 +140,7 @@
     "speed": 5,
     "damagetype": "Slash/Stab",
     "parry": "Gain 2 _Block_.",
-    "charged_area": "_Cone_ 2/_Arc_ 1 (_Self_ Range)",
+    "charged_effect": "_Cone_ 2/_Arc_ 1 (_Self_ Range)",
     "range": "Melee",
     "chart": {
       "damage": [0, 0, 7, 7, 8, 9, 10, 11, 12, 13, 14],
@@ -1218,94 +1226,6 @@
     "range_value": 1
   },
   {
-    "name": "Grab",
-    "category": "Unarmed",
-    "desc": "You attempt to grab a foe, doing limited damage but limiting their mobility.",
-    "keywords": ["Fist", "Versatile"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you have two _Open Hands_ gain a +1 Bonus on this Attack Roll.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Pull_ 1, _Vulnerable_ 2",
-        "_Pull_ 1, _Vulnerable_ 2",
-        "_Pull_ 2/_Grabbed_ [1 _Dodge_], _Vulnerable_ 2, _Vulnerable_ 1",
-        "_Pull_ 2/_Grabbed_ [1 _Dodge_], _Vulnerable_ 2, _Vulnerable_ 1",
-        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 2, _Vulnerable_ 1",
-        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 2, _Vulnerable_ 1",
-        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 3, _Vulnerable_ 2",
-        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 3, _Vulnerable_ 2",
-        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 3, _Vulnerable_ 2"
-      ]
-    },
-    "flag": "basic_unarmed",
-    "hands": 1,
-    "range_value": 1
-  },
-  {
-    "name": "Slam",
-    "category": "Unarmed",
-    "desc": "An untrained strike making use of the body itself to body-slam a foe.",
-    "keywords": ["Body", "Versatile"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 1, 1, 2, 2, 2, 2, 3, 3, 3],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Push_ 1, _Vulnerable_ 1",
-        "_Push_ 1, _Vulnerable_ 1",
-        "_Push_ 1/_Prone_ [1 _Block_], _Vulnerable_ 1",
-        "_Push_ 1/_Prone_ [1 _Block_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [3 _Block_], _Vulnerable_ 2",
-        "_Push_ 2/_Prone_ [3 _Block_], _Vulnerable_ 2",
-        "_Push_ 2/_Prone_ [3 _Block_], _Vulnerable_ 2"
-      ]
-    },
-    "flag": "basic_unarmed",
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Punch",
-    "category": "Unarmed",
-    "desc": "An untrained yet still effective strike.",
-    "keywords": ["Fist", "Versatile"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 3],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Dazed_ 1, _Vulnerable_ 1",
-        "_Dazed_ 1, _Vulnerable_ 1",
-        "_Dazed_ 2, _Vulnerable_ 1",
-        "_Dazed_ 2, _Vulnerable_ 1",
-        "_Dazed_ 2, _Vulnerable_ 1",
-        "_Dazed_ 2, _Vulnerable_ 1",
-        "_Dazed_ 2, _Vulnerable_ 2",
-        "_Dazed_ 2, _Vulnerable_ 2",
-        "_Dazed_ 2, _Vulnerable_ 2"
-      ]
-    },
-    "flag": "basic_unarmed",
-    "hands": 1,
-    "range_value": 1
-  },
-  {
     "name": "Tornado Kick",
     "category": "Unarmed2",
     "desc": "A kick making full use of the body that throws foes backwards and deals heavy damage.",
@@ -1362,5 +1282,122 @@
     },
     "flag": "NPC",
     "hands": 0
+  },
+  {
+    "name": "Small Mandibles",
+    "desc": "The crushing jaws of a large insect.",
+    "category": "Natural",
+    "class": "Major Attack",
+    "type": "Light",
+    "speed": 3,
+    "damagetype": "Crush",
+    "special": "Gain a +1 _Bonus_ against _Grabbed_ Targets.",
+    "parry": "Gain the following benefits if the trigging Attack was Light/Versatile:\n* Gain 1 _Fleeting_ _Block_.",
+    "range": "Melee",
+    "range_value": 1,
+    "chart": {
+      "damage": [0, 0, 0, 2, 3, 5, 6, 7, 8, 9, 9],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Pull_ 1",
+        "_Pull_ 1",
+        "_Pull_ 1, _Vulnerable_ 1",
+        "_Pull_ 1, _Vulnerable_ 1",
+        "_Pull_ 1, _Vulnerable_ 1",
+        "_Pull_ 1, _Vulnerable_ 1",
+        "_Pull_ 2, _Vulnerable_ 1",
+        "_Pull_ 2, _Vulnerable_ 1"
+      ]
+    },
+    "flag": "NPC"
+  },
+  {
+    "name": "Small Needles",
+    "desc": "Dangerous needles fired from the abdomen of an insectoid.",
+    "category": "Natural",
+    "class": "Major Attack",
+    "type": "Light",
+    "speed": 2,
+    "damagetype": "Pierce",
+    "parry": "None",
+    "range": "Range",
+    "range_value": 6,
+    "chart": {
+      "damage": [0, 0, 0, 0, 4, 4, 4, 5, 5, 6, 6],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1"
+      ]
+    }
+  },
+  {
+    "name": "Medium Needles",
+    "desc": "Dangerous needles fired from the abdomen of an insectoid.",
+    "category": "Natural",
+    "class": "Major Attack",
+    "type": "Versatile",
+    "speed": 4,
+    "damagetype": "Pierce",
+    "parry": "None",
+    "range": "Range",
+    "range_value": 8,
+    "chart": {
+      "damage": [0, 0, 0, 0, 6, 7, 8, 8, 8, 9, 9],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 2, _Impaired_ 2",
+        "_Wounded_ 2, _Impaired_ 2"
+      ]
+    }
+  },
+  {
+    "name": "Medium Forearm",
+    "category": "Natural",
+    "desc": "The barbed leg of a soldier ant.",
+    "speed": 4,
+    "damagetype": "Slash/Stab",
+    "parry": "Gain the following benefits:\n* Gain 2 _Fleeting_ _Block_.\n* You may spend _Block_ to purchase a _Dodge_ effect, treating it as a _Block_ effect for all other keywords. You may purchase up to 1 _Dodge_ worth of effects in this way.\n* You may spend up to 2 _Defense_ to reduce the _Value_ of _Vulnerable_ inflicted by 1 per _Defense_, starting with the smallest Token.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 3, 4, 5, 6, 7, 8, 9, 10, 10],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Pull_ 1",
+        "_Pull_ 1",
+        "_Pull_ 1",
+        "_Pull_ 1, _Grabbed_ [1 _Dodge_]",
+        "_Pull_ 1, _Grabbed_ [1 _Dodge_]",
+        "_Pull_ 2, _Grabbed_ [2 _Dodge_]",
+        "_Pull_ 2, _Grabbed_ [2 _Dodge_]"
+      ]
+    },
+    "range_value": 2,
+    "type": "Versatile"
   }
 ]

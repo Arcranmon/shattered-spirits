@@ -3,9 +3,11 @@
     <v-container fluid>
       <v-row no-gutters class="chart--row">
         <v-col class="chart--head" cols="12"
-          ><b>{{ movement.Name }} Movement Chart</b></v-col
+          ><b
+            ><span v-if="!npc">{{ movement.Name }}</span> Movement Chart</b
+          ></v-col
         ></v-row
-      ><v-row align="stretch" no-gutters class="chart--row"
+      ><v-row align="stretch" no-gutters class="chart--row" v-if="!npc"
         ><v-col class="chart--cols" cols="6"><b>Maximum Weight</b></v-col
         ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Encumbrance }}</v-col></v-row
       >
@@ -21,7 +23,7 @@
       ><v-row align="stretch" no-gutters class="chart--row"
         ><v-col class="chart--cols" cols="6"><b>Jump</b></v-col
         ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Jump }}</v-col></v-row
-      ><v-row align="stretch" no-gutters class="chart--row"
+      ><v-row align="stretch" no-gutters class="chart--row" v-if="!npc"
         ><v-col class="chart--cols" cols="6"><b>Traits</b></v-col
         ><v-col class="chart--cols chart--cols-right" cols="6"><display-tooltip-text :string="movement.TraitsList" /></v-col></v-row
     ></v-container>
@@ -38,6 +40,10 @@ export default Vue.extend({
     movement: {
       type: Movement,
       required: true,
+    },
+    npc: {
+      type: Boolean,
+      default: false,
     },
   },
 })

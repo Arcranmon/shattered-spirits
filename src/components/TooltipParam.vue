@@ -47,12 +47,18 @@
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <armor-card :armor="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
+    ><span v-else-if="this.$store.getters.isAttack(input)" attach
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
+        /></template>
+        <attack-card :attack="this.$store.getters.getAttack(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isWeapon(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <weapon-card :weapon="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
+        <attack-card :atack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
     ><span style="white-space: pre-wrap;" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>
@@ -67,10 +73,10 @@ import StanceCard from './cards/StanceCard.vue'
 import StatusCard from './cards/StatusCard.vue'
 import TechCard from './cards/TechCard.vue'
 import TerrainCard from './cards/TerrainCard.vue'
-import WeaponCard from './cards/WeaponCard.vue'
+import AttackCard from './cards/AttackCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ArmorCard, ManeuverCard, ObstacleCard, StanceCard, StatusCard, TechCard, TerrainCard, WeaponCard },
+  components: { ArmorCard, ManeuverCard, ObstacleCard, StanceCard, StatusCard, TechCard, TerrainCard, AttackCard },
   props: {
     input: {
       type: String,

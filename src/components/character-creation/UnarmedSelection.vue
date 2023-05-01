@@ -43,13 +43,13 @@ import Vue from 'vue'
 
 import { store } from '@/store'
 import { Character, Weapon } from '@/class'
-import WeaponCard from '@/components/cards/WeaponCard.vue'
+import AttackCard from '@/components/cards/AttackCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import UnarmedSelectionText from '@/database/text_files/character_creation/choosing_your_unarmed_weapons.txt'
 
 export default Vue.extend({
   name: 'weapon-selection',
-  components: { WeaponCard, ShowCards },
+  components: { AttackCard, ShowCards },
   props: {
     character: {
       type: Character,

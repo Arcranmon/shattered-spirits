@@ -7,6 +7,23 @@ declare interface IArmorData {
   special: string
 }
 
+declare interface IAttackData {
+  category?: string
+  chart: IChartData
+  class: string
+  damagetype: string
+  desc?: string
+  effect: string
+  keywords: Array<string>
+  name: string
+  range: string
+  range_value: number
+  charged_effect?: string
+  special?: string
+  speed: number
+  type: string
+}
+
 declare interface ICharDisciplineData {
   name: string
   tier: number
@@ -76,21 +93,24 @@ declare interface IGlossaryData {
 }
 
 declare interface INpcData {
+  actions: Array<string>
   ap: number
-  armor: string // Name of armor for lookup.
+  attacks: Array<string>
   class: string
   desc: string
+  durability?: number
   endurance: number
-  maneuvers: Array<string>
-  martial_stances: Array<string>
+  gambits?: Array<string>
+  guard?: number
+  movement: string
   name: string
   npc_type: string
-  optional_stances?: Array<string>
-  optional_techniques?: Array<string>
+  reactions: Array<string>
   role: string
   size: string
-  spirit_stances: Array<string>
+  stances?: Array<string>
   spirit_type: string
+  stunts: Array<string>
   traits?: Array<string>
   techniques: Array<string>
   weapons: Array<string>
@@ -197,23 +217,12 @@ declare interface ITerrainData {
   overrides: Array<string>
 }
 
-declare interface IWeaponData {
-  category: string
-  chart: IChartData
-  damagetype: string
-  desc?: string
+declare interface IWeaponData extends IAttackData {
   durability?: number
   itemtype?: string
   hands: number
   hardness?: number
-  keywords: Array<string>
-  name: string
+  material: string
   parry: string
-  range: string
-  range_value: number
-  reaction?: string
-  charged_area: string
-  special?: string
-  speed: number
   weight: number
 }

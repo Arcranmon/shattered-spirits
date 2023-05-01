@@ -1353,10 +1353,10 @@
     "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
     "type": "Strike",
     "speed": "Any",
-    "move": "Reposition",
-    "effect": "Choose one:\n* Add [_Safe_ 1] to your _Movement_. Make a _Light_ _Major Attack_.\n* [_Flurry_ 2] with _Light_ _Major Attacks_, adding [_Glancing_].",
+    "move": "Reposition_ [_Safe_ 1]",
+    "effect": "Choose one:\n* Make a _Light_ _Major Attack_.\n* [_Flurry_ 2] with _Light_ _Minor Attacks_.",
     "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ later.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Light_/_Versatile_ _Major Attacks_.\n* 1 _Momentum_: Instead, [_Flurry_ 3] with _Light_ _Major Attacks_, adding [_Glancing_].\n* 2 _Momentum_: Do not add [_Glancing_]."
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Light_/_Versatile_ _Attacks_.\n* 1 _Momentum_: Instead, [_Flurry_ 2] with _Light_ _Major Attacks_ or [_Flurry_ 3] with _Light_ _Minor Attacks_."
   },
   {
     "name": "Basic Strike",
@@ -1364,7 +1364,7 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Choose one:\n* Make a _Melee_ _Major Attack_. Inflict _Marked_ on the _Target_.\n* Move is instead _Reposition_. Make a _Major Attack_.\n* Move is instead None. Gain 1 _Momentum_. Make a _Major Attack_.",
+    "effect": "Choose one:\n* Make a _Melee_ _Major Attack_. Inflict _Marked_ on the _Target_.\n* Move is instead _Reposition_. Make a _Major Attack_.\n* Move is instead None. Make a _Major Attack_, then gain 1 _Momentum_ at the end of your _Turn_.",
     "boost": "1 _Momentum_: Additionally, make a _Minor Attack_."
   },
   {
@@ -1373,9 +1373,9 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1].\n* Immediately after _Refresh_, declare that you are using this _Technique_, the _Major Attack_ you are using, and the size of your _Charged Area_. When you resolve this _Technique_, make the _Major Attack_ in that _Area_.",
+    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and _Prone_ [2 _Block_/_Dodge_] on a _Hit_+.\n* Resolve your _Movement_. Instead of immediately making a _Heavy_ _Major Attack_, instead create a _Hazard_ equal to the _Area_ your _Charged Effect_ would Target (a single space within your _Reach_ if no Area is listed). End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the Attack against all creatures in the _Area_. You may choose to not make this _Attack_ and instead gain 2 _Momentum_ when removing the _Hazard_.",
     "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ earlier.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 1 _Momentum_: Resolve your _Movement_. Instead of immediately making a _Major Attack_, instead create a _Hazard_ equal to the _Area_ you would Attack, or a single space if Single-Target. End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the Attack against all creatures in the _Area_, adding [_Unblockable_] and _Vulnerable_ 2. You may choose to not make this _Attack_ and instead gain 2 _Momentum_ when removing the _Hazard_."
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 1 _Momentum_: If you are _Charging_, add [_Unblockable_]. Remove the _Charging_ and _Hazard_ one _Phase_ later."
   },
   {
     "name": "Rushing Strike",
@@ -1384,7 +1384,7 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Reposition_ or _Dash_ [_Rush_]",
-    "effect": "Choose one:\n* Make a _Major Attack_ [_Glancing_] with any _Wielded_ _Weapon_.\n* Make a _Minor Attack_. If you use a _Body_ _Weapon_, add _Push_ 2 or increase the _Block_ cost to negate by 1 on a _Graze_+."
+    "effect": "Choose one:\n* Make a _Major Attack_ [_Glancing_] with any _Wielded_ _Weapon_.\n* Make a _Minor Attack_. If you use a _Body_ _Attack_ and move at least 5 spaces prior to Attacking you may Attack at _Advantage_."
   },
   {
     "name": "Combo Strike",
@@ -1395,5 +1395,21 @@
     "move": "Reposition",
     "effect": "Make two _Minor Attacks_.",
     "boost": "1 _Momentum_: Make one additional _Minor Attack_."
+  },
+  {
+    "name": "Hostile Strike",
+    "desc": "A standard attack by an NPC.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Reposition",
+    "effect": "Choose one:\n* Make a _Major Attack_.\n* Make two _Minor Attacks_."
+  },
+  {
+    "name": "Drawing Strike",
+    "desc": "A standard attack by an NPC.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Make a _Major Attack_, adding _Marked_."
   }
 ]

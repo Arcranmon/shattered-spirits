@@ -762,9 +762,9 @@
     "name": "Opportunity Attack",
     "desc": "You capitalize on the opening created by a repositioning foe, moving to strike while you can.",
     "keywords": ["Punish"],
-    "cost": "None",
-    "trigger": "An enemy starts a _Shift_ while within your _Reach_.",
-    "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target. On a _Hit_+, the creature immediately loses 2 spaces of Movement.",
+    "cost": "1 _Momentum_",
+    "trigger": "An enemy starts a _Shift_ while within your _Reach_ or creates an _Opening_.",
+    "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target.",
     "boost": "1 _Momentum_: Instead, use a Single-Target _Major Attack_.",
     "type": "Reaction"
   },
@@ -892,9 +892,10 @@
   },
   {
     "name": "Prepare",
+    "desc": "You catch your breath, collecting yourself and preparing for battle.",
     "cost": "1 AP",
     "move": "None",
-    "effect": "Gain 2 _Momentum_.",
+    "effect": "Gain 1 _Momentum_.",
     "special": "You may use this Action more than once per _Round_.",
     "type": "Action"
   },
@@ -921,9 +922,9 @@
     "desc": "You use your grit, reflex, and focus to push through hindrances.",
     "cost": "1 _AP_",
     "move": "None",
-    "effect": "Refresh your _Defenses_. You may then expend _Block_, _Dodge_, and _Focus_ to remove _Afflictions_ you currently have, spending the same amount to remove them that you would spend to negate.",
+    "effect": "_Refresh_ your _Defenses_. Choose one:\n* You may expend _Focus_ to remove _Afflictions_ you currently have, spending the same amount to remove them that you would spend to negate.\n* You may attempt to escape a _Grab_ without paying the initial _Momentum_ cost.",
     "special": "You may use this Action more than once per _Round_.",
-    "boost": "1 _Momentum_: Remove _Broken_ or _Disarmed_.",
+    "boost": "1 _Momentum_: Remove _Broken_ or _Staggered_.",
     "type": "Action"
   },
   {
@@ -1073,6 +1074,7 @@
   },
   {
     "name": "Skirmish",
+    "desc": "You unexpectedly make a minor attack.",
     "cost": "1 AP",
     "move": "None",
     "effect": "Make a _Minor Attack_.",
@@ -1148,14 +1150,13 @@
     "type": "Action"
   },
   {
-    "name": "Retrieve",
+    "name": "Draw/Stow",
     "desc": "You grab an unattended item or change your equipment.",
     "keywords": ["Repeatable"],
     "cost": "1 _Momentum_",
-    "reqs": "You are not _Disarmed_.",
-    "effect": "Choose one:\n* _Equip_/_Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_.\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ (if you have the appropriate _Open Hands_) an _Equipped_ piece of _Equipment_.",
+    "effect": "Choose one:\n* Create an _Opening_. _Equip_/_Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_.\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ (if you have the appropriate _Open Hands_) an _Equipped_ piece of _Equipment_.",
     "special": "Before _Wielding_ an item, you may choose to stop _Wielding_ _Equipment_ of your choice, placing them unattended in your current or adjacent spaces.",
-    "boost": "1 _AP_: Gain 1 _Momentum_. You may resolve two of the above effects.",
+    "boost": "Choose any:\n*1 _AP_: Gain 1 _Momentum_. You may resolve two of the above effects.\n* 1 _Momentum_: Do not create an _Opening_.",
     "type": "Stunt"
   },
   {
@@ -1301,7 +1302,7 @@
     "effect": "_Roll_ up to your _Step_ distance."
   },
   {
-    "name": "Rapid Strike",
+    "name": "Improvised Combo",
     "cost": "1 _Momentum_",
     "effect": "Make a _Minor Attack_.",
     "type": "Stunt"
@@ -1417,28 +1418,54 @@
     "type": "Resist"
   },
   {
-    "name": "Weapon Attack",
-    "desc": "You strike with a weapon.",
-    "effect": "Make an Attack using a _Wielded_ Weapon. This Attack inherits all Keywords from the Weapon.",
-    "type": "Major Attack"
-  },
-  {
-    "name": "Unarmed Attack",
-    "desc": "You strike with your body.",
-    "effect": "Make an Attack using an _Unarmed_ Weapon. This Attack inherits all Keywords from the Weapon.",
-    "type": "Minor Attack"
-  },
-  {
-    "name": "Swift Attack",
-    "desc": "You use the speed of a weapon to make an additional strike.",
-    "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
-    "type": "Minor Attack"
-  },
-  {
     "name": "Disengage",
     "desc": "You focus your efforts on moving away from hostile foes.",
     "cost": "1 AP",
     "effect": "Add [_Safe_ 3] to all _Movement_ this _Turn_.",
     "type": "Stunt"
+  },
+  {
+    "name": "Needle Spray",
+    "desc": "A short-range spray of deadly needles.",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "speed": "Any",
+    "move": "Step",
+    "reqs": "Attack with _Small Needles_.",
+    "effect": "Instead attack in a _Cone_ 3."
+  },
+  {
+    "name": "Pinning Shot",
+    "desc": "A powerful needle shot that can pin a foe in place.",
+    "type": "Gambit",
+    "speed": "Any",
+    "move": "Step",
+    "cost": "1 _Momentum_",
+    "reqs": "Attack with _Medium Needles_.",
+    "effect": "Add _Hobbled_ 1 on a _Graze_+."
+  },
+  {
+    "name": "Overwatch",
+    "desc": "A prepared shot that is taken at the opportune moment.",
+    "type": "Action",
+    "cost": "1 AP",
+    "move": "None",
+    "effect": "Choose a creature within _Range_ of one of your _Ranged_ Weapons. If that creature moves more than 1 space before the end of the _Round_ you may make a _Weapon Attack_ against them using this _Weapon_ with a +1 _Bonus_. Your _Ranged_ Weapon is _Occupied_ while this effect persists. You may end this effect for no cost at any time."
+  },
+  {
+    "name": "Lock Down",
+    "desc": "A prepared shot that is taken at the opportune moment.",
+    "type": "Gambit",
+    "keywords": ["Flourish"],
+    "cost": "1 _Momentum_",
+    "trigger": "You successfully _Grab_ with an _Attack_.",
+    "effect": "Add _Impaired_ 1 and gain a +1 _Bonus_ to the next opposed _Grab_ roll this _Round_."
+  },
+  {
+    "name": "Spread Claws",
+    "desc": "An insectoid spreads its mighty claws, controlling an area.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "effect": "For the remainder of the _Phase_ any Movement within your _Reach_ triggers _Opportunity Attack_. Treat your Attacks as 1 faster when used for _Opportunity Attack_."
   }
 ]

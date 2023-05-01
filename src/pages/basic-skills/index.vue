@@ -13,19 +13,26 @@
     <h2>Basic Attacks</h2>
     <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
     <show-cards
-      :inputs="[$store.getters.getManeuver('Weapon Attack'), $store.getters.getManeuver('Unarmed Attack'), this.$store.getters.getManeuver('Swift Attack')]"
-      job="Maneuvers"
+      :inputs="[$store.getters.getAttack('Weapon Attack'), this.$store.getters.getAttack('Quickened Attack'), this.$store.getters.getAttack('Punch')]"
+      job="Attacks"
       :collapse="false"
+    />
+    <show-cards
+      :inputs="[$store.getters.getAttack('Grapple'), this.$store.getters.getAttack('Slam')]"
+      job="Attacks"
+      :collapse="false"
+      :cols="2"
+      v-bind:class="use_duo"
     />
     <h2>Basic Stunts</h2>
     <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
     <show-cards
-      :inputs="[$store.getters.getManeuver('Leap'), $store.getters.getManeuver('Retrieve'), $store.getters.getManeuver('Tumble')]"
+      :inputs="[$store.getters.getManeuver('Leap'), $store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Tumble')]"
       job="Maneuvers"
       :collapse="false"
     />
     <show-cards
-      :inputs="[this.$store.getters.getManeuver('Rapid Strike'), $store.getters.getManeuver('Disengage'), $store.getters.getManeuver('Use Environment')]"
+      :inputs="[this.$store.getters.getManeuver('Improvised Combo'), $store.getters.getManeuver('Disengage'), $store.getters.getManeuver('Use Environment')]"
       job="Maneuvers"
       :collapse="false"
       :cols="3"

@@ -4,7 +4,7 @@
       <div class="weapon--box" v-bind:class="weapon_class + '-Header'">
         <h2>{{ weapon_class }}</h2>
         <display-tooltip-text class="page--description" :string="weapon_info[weapon_class]" />
-        <show-cards :inputs="$store.getters.getWeaponsByCategory(weapon_class)" job="Weapons" :collapse="false" />
+        <show-cards :inputs="$store.getters.getWeaponsByCategory(weapon_class)" job="Attacks" :collapse="false" />
       </div>
     </div>
   </div>

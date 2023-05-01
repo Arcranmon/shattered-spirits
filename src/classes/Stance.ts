@@ -5,7 +5,7 @@ class Stance {
   private accumulate_: string
   private desc_: string
   private effect_: string
-  private refresh_: Defense
+  private defense_: Defense
   private reqs_: string
   private name_: string
   private special_: string
@@ -14,7 +14,7 @@ class Stance {
     this.accumulate_ = ''
     this.desc_ = ''
     this.effect_ = ''
-    this.refresh_ = null
+    this.defense_ = null
     this.reqs_ = ''
     this.name_ = ''
     this.special_ = ''
@@ -43,14 +43,14 @@ class Stance {
   public get EffectHeader() {
     return '**Effect:** ' + this.effect_
   }
-  public get HasRefresh() {
-    return this.refresh_ != null
+  public get HasDefense() {
+    return this.defense_ != null
   }
-  public get RefreshHeader() {
-    return '**Refresh:** ' + this.refresh_.FormattedText
+  public get DefenseHeader() {
+    return '**Defense:** ' + this.defense_.FormattedText
   }
-  public get Refresh() {
-    return this.refresh_
+  public get Defense() {
+    return this.defense_
   }
   public get HasSpecial() {
     return this.special_.length > 0
@@ -82,8 +82,8 @@ class Stance {
     this.name_ = data.name || ''
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
-    if ('refresh' in data) {
-      this.refresh_ = Defense.Deserialize(data.refresh)
+    if ('defense' in data) {
+      this.defense_ = Defense.Deserialize(data.defense)
     }
   }
 }

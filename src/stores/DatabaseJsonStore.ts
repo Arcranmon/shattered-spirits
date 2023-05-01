@@ -13,13 +13,15 @@ import Resources from '@/database/glossary/resources.json'
 import Obstacles from '@/database/obstacles.json'
 import Terrains from '@/database/terrain.json'
 
+import Attacks from '@/database/attacks.json'
+
 import Movements from '@/database/movement.json'
 import Maneuvers from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Armor, Discipline, Maneuver, Movement, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
+import { Armor, Attack, Discipline, Maneuver, Movement, Npc, Obstacle, Stance, Status, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -176,6 +178,36 @@ export class DatabaseJsonStore extends VuexModule {
           (keyword == 'Any' || x.keywords.some((y) => y.includes(keyword))) &&
           x.flag != 'NPC',
       ).map((x) => Weapon.Deserialize(<IWeaponData>x))
+    }
+  }
+
+  // ==========================================================
+  // ATTACK TOOLS
+  // ==========================================================
+  get getAttacksFromList(): any {
+    return (attack_list: Array<any>) => {
+      if (attack_list == undefined) return []
+      let attacs: Array<Attack> = []
+      for (var attack of attack_list) {
+        attacs.push(this.getAttack(attack))
+      }
+      return attacs
+    }
+  }
+
+  get getAttack(): any {
+    return (inword: string) => {
+      var attack = Attacks.find((x) => x.name.trim() === inword.trim())
+      if (attack == undefined) {
+        attack.name = inword
+      }
+      return Attack.Deserialize(<IAttackData>attack)
+    }
+  }
+
+  get isAttack(): any {
+    return (inword: string) => {
+      return Attacks.some((x) => x.name == inword.trim())
     }
   }
 
@@ -408,6 +440,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getStatus(): any {
     return (inword: string) => {
       var status = Statuses.find((x) => x.name.trim() === inword.trim())
+      if (status.hasOwnProperty('see')) return this.getStatus(status.see)
       return Status.Deserialize(<IStatusData>status)
     }
   }
@@ -499,9 +532,9 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // NPC GETTERS
   // ==========================================================
-  get getSpiritBeasts(): any {
+  get getNpcs(): any {
     return () => {
-      return NPCs.filter((x) => x.npc_type.trim() === 'Spirit Beast').map((x) => Npc.Deserialize(<INpcData>x))
+      return NPCs.map((x) => Npc.Deserialize(<INpcData>x))
     }
   }
 
@@ -510,6 +543,7 @@ export class DatabaseJsonStore extends VuexModule {
       for (var json of allGlossaryItems) {
         return Traits.find((x) => x.name == inword).effect
       }
+      return 'Trait not found!'
     }
   }
 }

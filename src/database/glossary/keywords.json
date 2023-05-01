@@ -23,7 +23,7 @@
   { "name": "Blocked", "see": "Block" },
   {
     "name": "Body",
-    "effect": "Weapons with the Body Keyword can be used regardless of what a character has _Wielded_."
+    "effect": "Attacks with the _Body_ keyword gain a +1 _Bonus_ if used after moving at least 2 spaces with [_Rush_] Movement."
   },
   {
     "name": "Burst",
@@ -35,7 +35,7 @@
   },
   {
     "name": "Brawling",
-    "effect": "When _Attacking_ a _Grabbed_ creature add _Pierce_ X, where X is the listed Brawling value."
+    "effect": "When making a _Melee_ _Attack_ against a _Grabbed_ creature add _Pierce_ X, where X is the listed Brawling value."
   },
   {
     "name": "Climable",
@@ -110,15 +110,15 @@
   },
   {
     "name": "Flurry",
-    "effect": "Make the listed number of Attacks. Do not inflict Status until all Attacks are complete, and only one Attack in the Flurry may inflict Status, but you may choose which Attack to use. Apply all _Gambits_ of your choice without the _Feint_/_Flourish_ keyword to all Attacks in the Flurry. You may use different Attacks for each Attack in the Flurry so long as all follow the same rules (i.e. a [_Flurry_ 2] with _Light_ _Major Attacks_ could make any two _Major Attacks_."
+    "effect": "Make the listed number of Attacks. Do not inflict Status until all Attacks are complete, and only one Attack in the Flurry may inflict Status, but you may choose which Attack to use. Do not apply Status until all Attacks are complete. Apply all _Gambits_ of your choice without the _Feint_/_Flourish_ keyword to all Attacks in the Flurry. You may use different Attacks for each Attack in the Flurry so long as all follow the same rules (i.e. a [_Flurry_ 2] with _Light_ _Major Attacks_ could make any two _Major Attacks_."
   },
   {
     "name": "Fist",
-    "effect": "Weapons with the Fist Keyword require an _Open Hand_ to use."
+    "effect": "Attacks with the Fist Keyword require an _Open Hand_ to use."
   },
   {
     "name": "Glancing",
-    "effect": "This effect deals half _Damage_."
+    "effect": "This effect deals half _Damage_ and, if it inflicts _Status_, reduce the cost to negate by 1 and halve the value of all _Affliction_."
   },
   {
     "name": "Groundsource",
@@ -130,7 +130,7 @@
   },
   {
     "name": "Heavy",
-    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Block_. Heavy Attacks take double the normal _Speed Penalty_."
+    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Block_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
   },
   {
     "name": "Kick",
@@ -138,7 +138,7 @@
   },
   {
     "name": "Light",
-    "effect": "Light Attacks are swift and specialize in targeting foes with high _Dodge_ defense."
+    "effect": "Light Attacks are swift and specialize in targeting foes with high _Dodge_ defense. They typically have a low _Speed_, and may be used in conjunction with the _Quickened Attack_ ability to use a _Major Attack_ as a _Minor Attack_ late in the _Round_."
   },
   {
     "name": "Line",
@@ -186,6 +186,10 @@
     "effect": "This _Maneuver_ may not be used with _Heavy_ _Techniques_."
   },
   {
+    "name": "Quickdraw",
+    "effect": "If this _Weapon_ is _Equipped_ you may _Wield_ it as a part of an _Attack_ using it. You must have the appropriate _Open Hands_ to do so."
+  },
+  {
     "name": "Parrying",
     "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified."
   },
@@ -198,8 +202,12 @@
     "effect": "Reach is how far away a Melee Attack can be used to attack a creature. Most Melee Attacks have Reach 1 but some, such as Pole Weapons, have a greater Reach."
   },
   {
+    "name": "Recharge",
+    "effect": "While _Planning_, roll a d6. If you roll within the listed Range you may use this _Technique_ this _Round_."
+  },
+  {
     "name": "Safe",
-    "effect": "All _Attacks_ made as a part of a _Punish_ triggered by this Movement take a -X _Penalty_, where X is the Safe value."
+    "effect": "All _Attacks_ triggered by this Movement take a -X _Penalty_, where X is the Safe value."
   },
   {
     "name": "Small",
@@ -260,7 +268,7 @@
   },
   {
     "name": "Thrown",
-    "effect": "Thrown Weapons are capable of being used in both Melee and Ranged combat. When Thrown, _Grazes_ are treated as a _Miss_ and deal no damage and cause no effects. After being thrown, a Thrown weapon is placed in a space of your choice adjacent to the Target and may not be used again until retrieved. Unlike most Weapons, you may use a Thrown _Weapon_ to attack if it is _Equipped_, but must have an _Open Hand_ and not be _Disarmed_ to do so. After throwing a _Wielded_ Thrown Weapon, you may immediately _Wield_ a different Thrown Weapon with the same number of required Hands."
+    "effect": "Thrown Weapons are capable of being used in both Melee and Ranged combat. When Thrown, it is instead a Range X Attack, where X is the listed Thrown value. When attacking in this way, _Grazes_ are treated as a _Miss_, deal no damage, and cause no effects. After being thrown, a Thrown weapon is placed in a space of your choice adjacent to the Target and may not be used again until retrieved."
   },
   {
     "name": "Two-Handed",
@@ -269,6 +277,10 @@
   {
     "name": "Unavoidable",
     "effect": "All effects that allow you to spend _Dodge_ cost twice as much. For example, a creature would need to expend 2 _Dodge_ to not be afflicted with _Wounded_ 1."
+  },
+  {
+    "name": "Martial Art",
+    "effect": "Whenever an Attack with the Martial Art keyword would inflict _Vulnerable_ they may choose not to and instead increase the target's existing _Vulnerable_ by an amount equivalent to the amount that would have been inflicted, in any combination. For example, if a creature would inflict _Vulnerable_ 2 on a creature that already has _Vulnerable_ 1, _Vulnerable_ 1, they may choose to not inflict that _Vulnerable_ and instead cause the creature to have _Vulnerable_ 3, _Vulnerable_ 1 or _Vulnerable_ 2, _Vulnerable_ 2."
   },
   {
     "name": "Unblockable",
@@ -280,7 +292,7 @@
   },
   {
     "name": "Versatile",
-    "effect": "Versatile _Techniques_ and Weapons are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized Light or Heavy Techniques."
+    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
   },
   {
     "name": "Incoming",

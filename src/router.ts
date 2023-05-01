@@ -21,7 +21,7 @@ import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
 import Shields from '@/pages/equipment/shields/index.vue'
-import UnarmedWeapons from '@/pages/equipment/unarmed-weapons/index.vue'
+import MartialArts from '@/pages/equipment/martial-arts/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
 import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
@@ -109,11 +109,11 @@ const r = new Router({
       },
     },
     {
-      path: '/unarmed-weapons',
-      component: UnarmedWeapons,
-      name: 'unarmed-weapons',
+      path: '/martial-arts',
+      component: MartialArts,
+      name: 'martial-arts',
       meta: {
-        title: 'Unarmed Weapons',
+        title: 'Martial Arts',
       },
     },
     {

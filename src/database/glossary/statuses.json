@@ -34,8 +34,7 @@
   },
   {
     "name": "Disarmed",
-    "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. While Disarmed, a character may not _Wield_ or _Equip_ any new items.",
-    "remove": "Only Techniques that explicitly remove Disarmed (such as Gather) remove Staggered. Otherwise, it is cleared at the end of combat.",
+    "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. The attacker may then place it in any space adjacent to the Target.",
     "type": "Hide"
   },
   {
@@ -75,7 +74,7 @@
     "name": "Grabbed",
     "effect": "While a creature is Grabbed they suffer the following effects:\n* The Grabbed creature becomes _Stuck_.\n* When the creature grabbing them _Moves_, so does the Grabbed creature.\n* The creature grabbing them may expend 1 spaces of _Movement_ to inflict _Pull_ 1 on the Grabbed creature.\n* The creature grabbing may expend _Block_ to negate _Forced Movement_ effects for the Grabbed creature.",
     "special": "By default, a creature may only Grab a creature one Size larger than them. If they inflict Grabbed on a creature larger than that, they instead inflict _Riding_. If a creature inflicts Grab on a creature they are already Grabbing they may instead inflict _Pull_ 3.",
-    "remove": "The grabbing creature may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency. Additionally, at the start of their _Turn_, a _Grabbed_ creature may pay 1 _Momentum_, then expend up to 3 _Dodge_/Block_. The creature grabbing them must expend the same amount (with a +1 bonus if they are using both _Hands_ for the Grab) or the Grab ends. If multiple creatures are Grabbing a target they both may contribute to this.",
+    "remove": "The grabbing creature may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_. The Grabbed creature and the grabber both roll 2d6. Either creature may expend 1 _Momentum_ for _Advantage_ on this _Roll_. If the Grabbed creature rolls higher than the grabber, the Grab ends. The larger creature in the Grab gets a +1 _Bonus_ to the roll, and the grabber gets a +1 _Bonus_ if they are using both _Hands_ for the Grab.",
     "type": "Status Effect"
   },
   {
@@ -85,9 +84,9 @@
   {
     "name": "Marked",
     "desc": "An effect caused when a creature is drawing all of a foe's attention.",
-    "effect": "While Marked:\n* A creature takes a -1 _Penalty_ on all Attacks that do not include the creature that _Marked_ them.\n* A _Marked_ creature treats their _Impaired_ Tokens as 1 less against the creature that _Marked_ them.\n* The creature that _Marked_ them has a +1 _Bonus_ on _Punish_ Maneuvers against them.",
-    "special": "If a creature that is already Marked is Marked again, instead inflict _Impaired_ 1.",
-    "remove": "Marked is removed at the end of a _Turn_ where a creature successfully makes an Attack against the creature that Marked them, or if the creature that Marked them willingly moves away from them.",
+    "effect": "While Marked:\n* A creature takes a -1 _Penalty_ on all Attacks that do not include the creature that _Marked_ them.\n* A _Marked_ creature treats their _Impaired_ Tokens as 1 less against the creature that _Marked_ them.\n* The creature that _Marked_ them treats the _Cost_ of _Punish_ _Reactions_ as 1 lower against their _Marked_ Target.",
+    "special": "If a creature that is already Marked is Marked again, either override the Mark or inflict _Impaired_ 1.",
+    "remove": "Marked is removed if the creature that Marked them willingly moves away from them.",
     "type": "Status Effect"
   },
   {
@@ -137,6 +136,13 @@
     "type": "Hide"
   },
   {
+    "name": "Shred",
+    "desc": "A status inflicted when a creature's armor is damaged, creating openings.",
+    "effect": "Reduce the _Guard_ provided by the creature's _Armor_ by 1.",
+    "remove": "Only abilities that explicitly remove Shred remove Shred. Otherwise, it is removed with [out of combat mechanic].",
+    "type": "Instant Effect"
+  },
+  {
     "name": "Top",
     "see": "Grappled"
   },
@@ -149,8 +155,7 @@
   {
     "name": "Exposed",
     "desc": "An affliction caused when a creature cannot maintain their guard.",
-    "effect": "All Attacks against a creature gain an Attack Bonus equal to the top Exposed Token's value.",
-    "remove": "A creature clears their topmost Exposed Token after being Attacked.",
+    "effect": "When a creature Attacks a Target with Exposed they may choose to remove the Target's topmost Exposed token and gain a _Bonus_ equal to the token's value.",
     "type": "Affliction"
   },
   {
@@ -165,9 +170,8 @@
   {
     "name": "Impaired",
     "desc": "An affliction caused when a creature's ability to attack is limited.",
-    "effect": "A creature gains an Attack Penalty equal to their topmost Impaired Token's value.",
-    "remove": "A creature clears the topmost Impaired after making an Attack Roll.",
-    "recover": "X+1 _Poise_ removes X value of Impaired.",
+    "effect": "A creature gains a _Penalty_ equal to their topmost Impaired Token's value.",
+    "remove": "A creature clears the topmost Impaired after making an _Attack Roll_.",
     "type": "Hide"
   },
   {
@@ -182,8 +186,7 @@
   {
     "name": "Vulnerable",
     "desc": "An affliction caused when a creature is vulnerable in a way that causes them to take more damage.",
-    "effect": "Any time a creature takes Damage they take additional damage equal to their top Vulnerable Token.",
-    "remove": "Whenever a Vulnerable Token is used, remove it.",
+    "effect": "When a creature Attacks a Target with Vulnerable they may choose to remove the Target's topmost Vulnerable Token and deal additional Damage equal to it, even on a _Miss_.",
     "type": "Affliction"
   },
   {

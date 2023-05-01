@@ -25,8 +25,8 @@
                   <div class="card--box" v-if="job == 'Techniques'">
                     <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="job == 'Weapons'">
-                    <weapon-card :weapon="n" :character_creation="character_creation" />
+                  <div class="card--box" v-if="job == 'Attacks'">
+                    <attack-card :attack="n" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Armor'">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
@@ -61,8 +61,8 @@
             <div class="card--box" v-if="job == 'Techniques'">
               <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Weapons'">
-              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" />
+            <div class="card--box" v-if="job == 'Attacks'">
+              <attack-card :attack="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Armor'">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
@@ -98,7 +98,7 @@ import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
-import WeaponCard from './WeaponCard.vue'
+import AttackCard from './AttackCard.vue'
 import NpcCard from './NpcCard.vue'
 
 export default Vue.extend({
@@ -173,7 +173,7 @@ export default Vue.extend({
     StatusCard,
     TechCard,
     TerrainCard,
-    WeaponCard,
+    AttackCard,
   },
   methods: {
     clickMethod(variable, index) {

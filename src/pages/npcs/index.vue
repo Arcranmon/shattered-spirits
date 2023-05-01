@@ -1,9 +1,8 @@
 <template>
   <div class="page">
-    <h2>NPCs</h2>
-    <v-row>
+    <v-row class="background--color" style="margin-top: 1em;">
       <v-col cols="2" class="sidebar">
-        <div v-for="npc in spirit_beasts" :key="npc.Name">
+        <div v-for="npc in npcs" :key="npc.Name">
           <v-btn class="button--style" @click="selectedNpc = npc" depressed tile block
             ><span>{{ npc.Name }}</span></v-btn
           >
@@ -28,8 +27,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    spirit_beasts: function () {
-      return this.$store.getters.getSpiritBeasts()
+    npcs: function () {
+      return this.$store.getters.getNpcs()
     },
   },
 })

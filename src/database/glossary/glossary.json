@@ -10,7 +10,7 @@
   },
   {
     "name": "AP",
-    "effect": "AP, or Action Points, are what are used to power the various _Maneuvers_ and _Techniques_ that creatures have. Player characters have 2 AP that they may use each _Round_."
+    "effect": "AP, or Action Points, are spent to use powerful _Actions_, _Stunts_, and other abilities. Player characters have 2 AP that they may use each _Round_. Unspent AP is lost at the end of the _Round_."
   },
   {
     "name": "Armor",
@@ -42,6 +42,10 @@
   {
     "name": "Charging",
     "effect": "While _Charging_ you may not willingly _Move_. Any _Hands_ that will be used as a part of the Attack are _Occupied_, as are any pieces of _Equipment_ involved in the _Attack_."
+  },
+  {
+    "name": "Charged Effect",
+    "effect": "Many _Versatile_/_Heavy_ _Attacks_ have a Charged Effect . In exchange for delaying the resolution of the effect these _Attacks_ may gain additional power or effects. See _Strong Strike_ for a common example of how this process works. If an _Attack_ has multiple Charged Effects you must choose one."
   },
   {
     "name": "Climbing",
@@ -184,7 +188,7 @@
   },
   {
     "name": "Minion",
-    "effect": "Minion is the weakest class of NPC, and tend to be less capable. Minions may never have more than 4 of a given _Token_ and may only use a single _Stance_, which must have Minion in the name. In addition Minions may not use Boosts on their _Resist_ Manuevers."
+    "effect": "Minion is the weakest class of NPC, and tend to be less capable. Minions have no _Defenses_, have no _AP_, and do not benefit from _Stances_. Additionally, _Minions_ may only gain _Momentum_ through their _Unpredictable Momentum_ trait, and may never have more than 1 _Momentum_."
   },
   {
     "name": "Maneuver",
@@ -219,6 +223,10 @@
     "effect": "An Open Hand is any Hand a character has that does not have any other Weapons or Equipment _Wielded_."
   },
   {
+    "name": "Opening",
+    "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ such as _Opportunity Attack_ allow a creature to make an _Attack_ when an Opening is created."
+  },
+  {
     "name": "Occupied",
     "effect": "While something is Occupied it may not be used for anything other than the listed effects. It still counts as _Wielded_ for the purpose of _Stances_ and the like, but may not be used for _Maneuvers_ or _Techniques_."
   },
@@ -246,7 +254,7 @@
   { "name": "Reactions", "see": "Reaction" },
   {
     "name": "Refresh",
-    "effect": "The very start of a round where characters can change their _Wielded_ Equipment, _Stances_, and resolve various effects."
+    "effect": "Whenever a creature Refreshes they set their _Defenses_ to the values indicated by their _Stances_."
   },
   {
     "name": "Reposition",
@@ -292,8 +300,13 @@
   },
   {
     "name": "Speed",
-    "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-6 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
+    "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-8 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
   },
+  {
+    "name": "Speed Penalty",
+    "effect": "When making an _Attack_ it takes a _Penalty_ equal to the difference between its _Speed_ and the current _Phase_ if the _Speed_ is greater than the _Phase_. For example, a _Speed_ 4 _Attack_ used in _Phase_ 2 would take a -2 _Penalty_. _Heavy_ _Attacks_ suffer double the _Penalty_."
+  },
+  { "name": "Speed Penalties", "see": "Speed Penalty" },
   {
     "name": "Soft Cover",
     "effect": "Creatures may move through this _Obstacle_ and treat it as _Rough_ Terrain. When determining _Covered_/_Obstructed_, this _Obstacle_ never provides _Covered_. Instead, a creature in this space is _Heavily Obstructed_."
