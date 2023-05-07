@@ -24,9 +24,13 @@
   },
   {
     "name": "Damaged",
-    "effect": "Damaged only applies to _Equipment_. A Damaged Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Damaged, instead inflict _Shred_ 1.",
+    "effect": "Damaged only applies to _Equipment_. A Damaged Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Damaged, instead inflict _Shred_ 1. If a Damaged Weapon is Damaged again it is instead broken and may not be used until repaired.",
     "remove": "Only Techniques that explicitly remove Damaged remove Damaged. Otherwise, it can be removed outside of combat with [travel mechanic here].",
-    "type": "Hide"
+    "type": "Status Effect"
+  },
+  {
+    "name": "Damage",
+    "see": "Damaged"
   },
   {
     "name": "Disarm",
@@ -72,7 +76,7 @@
   },
   {
     "name": "Grabbed",
-    "effect": "While a creature is Grabbed they suffer the following effects:\n* The Grabbed creature becomes _Stuck_.\n* When the creature grabbing them _Moves_, so does the Grabbed creature.\n* The creature grabbing them may expend 1 spaces of _Movement_ to inflict _Pull_ 1 on the Grabbed creature.\n* The creature grabbing may expend _Block_ to negate _Forced Movement_ effects for the Grabbed creature.",
+    "effect": "While a creature is Grabbed they suffer the following effects:\n* The Grabbed creature becomes _Stuck_.\n* When the creature grabbing them _Moves_, so does the Grabbed creature.\n* The creature grabbing them may expend 1 spaces of _Movement_ to inflict _Pull_ 1 on the Grabbed creature.\n* The creature grabbing may expend _Grit_ to negate _Forced Movement_ effects for the Grabbed creature.",
     "special": "By default, a creature may only Grab a creature one Size larger than them. If they inflict Grabbed on a creature larger than that, they instead inflict _Riding_. If a creature inflicts Grab on a creature they are already Grabbing they may instead inflict _Pull_ 3.",
     "remove": "The grabbing creature may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_. The Grabbed creature and the grabber both roll 2d6. Either creature may expend 1 _Momentum_ for _Advantage_ on this _Roll_. If the Grabbed creature rolls higher than the grabber, the Grab ends. The larger creature in the Grab gets a +1 _Bonus_ to the roll, and the grabber gets a +1 _Bonus_ if they are using both _Hands_ for the Grab.",
     "type": "Status Effect"
@@ -84,9 +88,9 @@
   {
     "name": "Marked",
     "desc": "An effect caused when a creature is drawing all of a foe's attention.",
-    "effect": "While Marked:\n* A creature takes a -1 _Penalty_ on all Attacks that do not include the creature that _Marked_ them.\n* A _Marked_ creature treats their _Impaired_ Tokens as 1 less against the creature that _Marked_ them.\n* The creature that _Marked_ them treats the _Cost_ of _Punish_ _Reactions_ as 1 lower against their _Marked_ Target.",
+    "effect": "While Marked:\n* A creature takes a -1 _Penalty_ on all Attacks that do not include the creature that _Marked_ them.\n* A _Marked_ creature treats their _Impaired_ Tokens as 1 less against the creature that _Marked_ them.\n* The creature that _Marked_ them reduces the _Cost_ of _Punish_ _Reactions_ as 1 lower against their _Marked_ Target.",
     "special": "If a creature that is already Marked is Marked again, either override the Mark or inflict _Impaired_ 1.",
-    "remove": "Marked is removed if the creature that Marked them willingly moves away from them.",
+    "remove": "Marked is removed if the creature that Marked them willingly moves away from them or that creature is _Defeated_.",
     "type": "Status Effect"
   },
   {
@@ -106,7 +110,7 @@
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
     "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage.",
-    "remove": "A creature may downgrade their Movement by one level to end Prone.",
+    "remove": "A creature may downgrade their Movement by one level to end Prone. This creates an _Opening_ if the Movement is not [_Safe_].",
     "type": "Hide"
   },
   {
@@ -149,7 +153,7 @@
   {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
-    "effect": "When a creature inflicts Dazed they choose _Block_, _Dodge_, or _Focus_. The Target loses X of that _Defense_, where X is the value of Dazed.",
+    "effect": "The Target loses a total of X _Defenses_ in any combination (your choice), where X is the value of Dazed. You may instead place a Dazed token on them; the next time they would _Refresh_, apply all Dazed tokens as the first effect. All Dazed is removed after _Refreshing_.",
     "type": "Instant"
   },
   {

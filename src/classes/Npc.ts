@@ -45,6 +45,9 @@ class Npc {
   public get Endurance() {
     return this.endurance_
   }
+  public get HasGambits() {
+    return this.gambits_.length > 0
+  }
   public get Gambits() {
     return this.gambits_
   }

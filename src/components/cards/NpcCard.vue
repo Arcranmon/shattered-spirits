@@ -19,10 +19,11 @@
           <div v-html="$marked.parseInline(npc.EnduranceText)" />
           <div v-html="$marked.parseInline(npc.ArmorText)" />
           <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
-          <span v-for="trait in npc.Traits" :key="trait">
+          <div v-for="trait in npc.Traits" :key="trait">
             <display-tooltip-text
               :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))"
-              :decorate="false" /></span></v-col
+              :decorate="false"
+            /></div></v-col
         ><v-col cols="6"> <movement-card :movement="npc.Movement" :npc="true" /></v-col
       ></v-row>
       <v-row no-gutters></v-row><br />
@@ -47,7 +48,7 @@
         <v-tab>
           <h3>Reactions</h3>
         </v-tab>
-        <v-tab>
+        <v-tab v-if="npc.HasGambits">
           <h3>Gambits</h3>
         </v-tab></v-tabs
       ><v-tabs-items v-model="tab" class="character-tab-content">
@@ -57,7 +58,7 @@
         ><v-tab-item v-if="npc.Class != 'Minion'"> <show-cards :inputs="actions" job="Maneuvers" :collapse="false" /></v-tab-item
         ><v-tab-item> <show-cards :inputs="stunts" job="Maneuvers" :collapse="false" /></v-tab-item
         ><v-tab-item> <show-cards :inputs="reactions" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="gambits" job="Maneuvers" :collapse="false" /></v-tab-item
+        ><v-tab-item v-if="npc.HasGambits"> <show-cards :inputs="gambits" job="Maneuvers" :collapse="false" /></v-tab-item
       ></v-tabs-items>
     </v-card>
   </div>

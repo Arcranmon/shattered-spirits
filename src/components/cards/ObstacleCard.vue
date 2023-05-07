@@ -22,6 +22,9 @@
       <div class="tech--format" v-if="obstacle.HasInteract">
         <display-tooltip-text :string="obstacle.InteractHeader" />
       </div>
+      <div class="tech--format" v-if="obstacle.HasDamageType">
+        <display-tooltip-text :string="obstacle.DamageType" />
+      </div>
       <div class="expand--collapse-box-outlined" v-if="(obstacle.HasChart)">
         <v-expansion-panels class="condensed" flat tile>
           <v-expansion-panel style="background-color: inherit;"

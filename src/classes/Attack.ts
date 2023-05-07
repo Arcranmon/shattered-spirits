@@ -138,7 +138,7 @@ class Attack {
     this.special_ = data.special || ''
     this.speed_ = data.speed || 0
     this.type_ = data.type || ''
-    if ('chart' in data) {
+    if ('chart' in data && data.chart != null) {
       this.chart_ = Chart.Deserialize(data.chart)
     }
   }

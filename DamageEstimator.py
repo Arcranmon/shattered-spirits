@@ -3,7 +3,38 @@ import math
 from termcolor import colored
 import argparse
 
-def estimate_damage(type, name, glancing, treat_vulnerable_as_damage, treat_wounded_as_damage):
+STATUS_HALFX = ["Push", "Pull"]
+STATUS_1X = ["Vulnerable", "Wounded"]
+STATUS_1_HALFX = ["Exposed", "Impaired", "Dazed", "Grabbed", "Prone"]
+STATUS_2X = ["Hobbled"]
+
+def get_status_damage(status_string):
+    split_status = status_string.split()
+    if(len(split_status) == 0): return 0
+    status = split_status[0]
+    secondary = split_status[1]
+    status = status.replace('_', '')
+    secondary = secondary.replace('[', '')
+
+    damage_multiplier = 0
+    if status in STATUS_HALFX:
+        damage_multiplier = 0.5
+    if status in STATUS_1X:
+        damage_multiplier = 1
+    if status in STATUS_1_HALFX:
+        damage_multiplier = 1.5
+    if status in STATUS_2X:
+        damage_multiplier = 2
+        
+    if damage_multiplier != 0:
+        if 'x' in secondary:
+            return damage_multiplier * int(secondary[0]) * int(secondary[2])
+        else:
+            return damage_multiplier * int(secondary)
+    return damage_multiplier
+
+
+def estimate_damage(type, name, glancing, treat_status_as_damage):
     if(type == "Technique"):
         f = open('.\src\database\\techniques.json')
     elif(type == "Obstacle"):
@@ -27,6 +58,9 @@ def estimate_damage(type, name, glancing, treat_vulnerable_as_damage, treat_woun
     status_chart = []
     speed = 1
     lvh = 'none'
+    minor = False
+    
+    expected_damage = [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
 
     if(type == "Technique"):
         for technique in data:
@@ -46,6 +80,8 @@ def estimate_damage(type, name, glancing, treat_vulnerable_as_damage, treat_woun
                 status_chart = weapon["chart"]["status"]
                 if("speed" in weapon):
                     speed = int(weapon["speed"])
+                if("class" in weapon):
+                    minor = weapon["class"] == 'Minor Attack'
 
     if(damage_chart == []):
         raise Exception("Technique or weapon not found.")
@@ -70,27 +106,23 @@ def estimate_damage(type, name, glancing, treat_vulnerable_as_damage, treat_woun
             damage = (damage_chart[index])
             if(glancing): damage = math.ceil(damage/2.0)
 
-            if(treat_vulnerable_as_damage or treat_wounded_as_damage):
-                next_string_is_damage_status = False
-                for sub_status in status_chart[i].split():
-                    if next_string_is_damage_status:
-                        sub_status = sub_status.replace(',', '')
-                        if 'x' in sub_status:
-                            damage += int(sub_status[0]) * int(sub_status[2])
-                        else:
-                            damage += int(sub_status)
-                        next_string_is_damage_status = False
-                    if sub_status == '_Vulnerable_' and treat_vulnerable_as_damage:
-                        next_string_is_damage_status = True
-                    if sub_status == '_Wounded_' and treat_wounded_as_damage:
-                        next_string_is_damage_status = True
+            if(treat_status_as_damage):
+                for status in status_chart[index].split(','):
+                    if '/' in status:
+                        options = status.split('/')
+                        damage += max([get_status_damage(x) for x in options])
+                    else:
+                        damage += get_status_damage(status)
 
             straight_damage[j] += straight[i]*damage
             advantage_damage[j] += advantage[i]*damage
             disadvantage_damage[j] += disadvantage[i]*damage
 
+    if minor:
+        expected_damage = [x / 2 for x in expected_damage]
+
     print(colored("Speed:                  1      2      3      4      5      6      7      8", 'white'))
-    print(colored("Expected Damage:        3.0    4.0    5.0    6.0    7.0    8.0    9.0    10.0", 'blue'))
+    print(colored("Expected Damage:        " +  '  '.join(["{:.3f}".format(damage) for damage in expected_damage]), 'blue'))
     print(colored("Straight Attack:        " +  '  '.join(["{:.3f}".format(damage) for damage in straight_damage]), 'white'))
     print(colored("Advantage Attack:       " +  '  '.join(["{:.3f}".format(damage) for damage in advantage_damage]), 'green'))
     print(colored("Disadvantage Attack:    " +  '  '.join(["{:.3f}".format(damage) for damage in disadvantage_damage]), 'red'))
@@ -100,7 +132,6 @@ if __name__ == "__main__":
     parser.add_argument("--type", help="What type of ability this is.", type=str)
     parser.add_argument("--name", help="Name of the ability.", type=str)
     parser.add_argument("--glancing", help="Whether or not to apply Glancing.", action='store_true')
-    parser.add_argument("--treat_vulnerable_as_damage", help="If specified will add Vulnerable additively to the Damage.", action='store_true')
-    parser.add_argument("--treat_wounded_as_damage", help="If specified will add Wounded additively to the Damage.", action='store_true')
+    parser.add_argument("--treat_status_as_damage", help="If specified will add statuses additively to the Damage.", action='store_true')
     args = parser.parse_args()
-    estimate_damage(args.type, args.name, args.glancing, args.treat_vulnerable_as_damage, args.treat_wounded_as_damage)
+    estimate_damage(args.type, args.name, args.glancing, args.treat_status_as_damage)

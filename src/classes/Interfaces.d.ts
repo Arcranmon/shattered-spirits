@@ -117,6 +117,7 @@ declare interface INpcData {
 }
 
 declare interface IObstacleData {
+  damage_type: string
   desc: string
   hardness: number
   height: number
@@ -183,7 +184,6 @@ declare interface IStatusData {
 }
 
 declare interface ITechData {
-  ap?: number
   area?: string
   boost?: string
   category: string

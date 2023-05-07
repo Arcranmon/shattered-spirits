@@ -16,7 +16,7 @@ class Weapon extends Attack {
     return this.durability_
   }
   get DurabilityHeader() {
-    if (this.durability_ != 0) return 'Durability ' + this.durability_
+    if (this.durability_ != 0) return '**Durability:** ' + this.durability_
   }
   get Hardness() {
     return this.hardness_

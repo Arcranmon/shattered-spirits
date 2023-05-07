@@ -4,7 +4,6 @@ import { store } from '@/store'
 import { Chart } from '@/class'
 
 class Technique {
-  private ap_: number
   private area_: string
   private boost_: string
   private cost_: string
@@ -25,7 +24,6 @@ class Technique {
   private chart_: Chart
 
   public constructor() {
-    this.ap_ = 4
     this.area_ = ''
     this.boost_ = ''
     this.cost_ = ''
@@ -49,9 +47,6 @@ class Technique {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get AP() {
-    return this.ap_
-  }
   public get Area() {
     return this.area_
   }
@@ -204,7 +199,6 @@ class Technique {
   }
 
   public setTechData(data: ITechData): void {
-    this.ap_ = data.ap != null ? data.ap : 4
     this.area_ = data.area || ''
     this.boost_ = data.boost || ''
     this.cost_ = data.cost || ''

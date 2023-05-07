@@ -3,6 +3,7 @@ import { Chart } from '@/class'
 
 class Obstacle {
   private desc_: string
+  private damage_type_: string
   private hardness_: number
   private height_: number
   private interact_: string
@@ -48,6 +49,9 @@ class Obstacle {
   get HasChart() {
     return this.chart_ != null
   }
+  get HasDamageType() {
+    return this.damage_type_ != ''
+  }
   get HasInteract() {
     return this.interact_ != ''
   }
@@ -64,7 +68,11 @@ class Obstacle {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
+  public get DamageType() {
+    return '**Damage Type:** ' + this.damage_type_
+  }
   public get HardnessHeader() {
+    if (this.hardness_ == 0) return 'See Special for Hardness'
     return 'Hardness ' + this.hardness_
   }
   public get InteractHeader() {
@@ -96,6 +104,7 @@ class Obstacle {
   }
 
   public setObstacleData(data: IObstacleData): void {
+    this.damage_type_ = data.damage_type || ''
     this.desc_ = data.desc || ''
     this.hardness_ = data.hardness || 0
     this.height_ = data.height || 0

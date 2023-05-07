@@ -100,8 +100,8 @@ export default Vue.extend({
   components: { AttackCard },
   data() {
     return {
-      weaponCategories: ['Improvised', 'Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
-      selectedWeapons: ['Bladed'], // ['Improvised', 'Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
+      weaponCategories: ['Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
+      selectedWeapons: ['Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
       weaponSpeeds: ['Any', 1, 2, 3, 4, 5, 6],
       selectedSpeed: 'Any',
       weaponKeywords: ['Any', 'Light', 'Versatile', 'Heavy', 'Colossal', 'Pierce'],

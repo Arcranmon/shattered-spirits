@@ -25,6 +25,7 @@
       <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
       <div v-if="attack.HasEffect"><display-tooltip-text :string="attack.EffectHeader" /></div>
       <div v-if="attack.HasChargedEffect"><display-tooltip-text :string="attack.ChargedEffectHeader" /></div>
+      <div v-if="attack.HasDurability"><display-tooltip-text :string="attack.DurabilityHeader" /></div>
       <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />

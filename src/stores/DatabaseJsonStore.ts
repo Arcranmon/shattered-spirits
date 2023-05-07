@@ -46,9 +46,7 @@ export class DatabaseJsonStore extends VuexModule {
           boost: 'None',
           name: inword,
           cost: 'None',
-          reqs: 'None',
           type: 'None',
-          special: 'None',
           effect: 'This maneuver could not be found!',
         }
       return Maneuver.Deserialize(<IManeuverData>maneuver)
@@ -145,8 +143,18 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var weapon = Weapons.find((x) => x.name.trim() === inword.trim())
       if (weapon == undefined) {
-        weapon.name = inword
-        weapon.special = 'This weapon could not be found!'
+        weapon = {
+          desc: 'Missing!',
+          category: 'None',
+          damagetype: 'None',
+          range: 'None',
+          range_value: 0,
+          parry: 'None',
+          chart: null,
+          speed: 0,
+          name: inword,
+          type: 'None',
+        }
       }
       return Weapon.Deserialize(<IWeaponData>weapon)
     }
@@ -173,7 +181,8 @@ export class DatabaseJsonStore extends VuexModule {
     return (categories: Array<string>, speed: any, keyword: string) => {
       return Weapons.filter(
         (x) =>
-          (categories.includes(x.category.trim()) || (categories.includes('Throwing') && x.keywords.some((y) => y.includes('Thrown')))) &&
+          (categories.includes(x.category.trim()) ||
+            (categories.includes('Throwing') && x.hasOwnProperty('keywords') && x.keywords.some((y) => y.includes('Thrown')))) &&
           (speed == 'Any' || speed == x.speed) &&
           (keyword == 'Any' || x.keywords.some((y) => y.includes(keyword))) &&
           x.flag != 'NPC',
@@ -187,11 +196,11 @@ export class DatabaseJsonStore extends VuexModule {
   get getAttacksFromList(): any {
     return (attack_list: Array<any>) => {
       if (attack_list == undefined) return []
-      let attacs: Array<Attack> = []
+      let attacks: Array<Attack> = []
       for (var attack of attack_list) {
-        attacs.push(this.getAttack(attack))
+        attacks.push(this.getAttack(attack))
       }
-      return attacs
+      return attacks
     }
   }
 
@@ -199,7 +208,14 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var attack = Attacks.find((x) => x.name.trim() === inword.trim())
       if (attack == undefined) {
-        attack.name = inword
+        attack = {
+          desc: 'Missing!',
+          class: 'Neither',
+          speed: 0,
+          name: inword,
+          type: 'None',
+          effect: 'This attack could not be found!',
+        }
       }
       return Attack.Deserialize(<IAttackData>attack)
     }
@@ -267,16 +283,12 @@ export class DatabaseJsonStore extends VuexModule {
       var technique = Techniques.find((x) => x.name.trim() === inword.trim())
       if (technique == undefined) {
         technique = {
-          ap: 0,
           name: inword,
           desc: 'Error',
           keywords: [],
           type: 'Error',
           speed: 'Error',
-          range: 'Error',
           move: 'Error',
-          imbue: 'Error',
-          special: 'None',
           effect: 'This technique could not be found!',
           boost: 'Error',
         }
@@ -540,9 +552,8 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getTrait(): any {
     return (inword: string) => {
-      for (var json of allGlossaryItems) {
-        return Traits.find((x) => x.name == inword).effect
-      }
+      var trait = Traits.find((x) => x.name == inword)
+      if (trait) return trait.effect
       return 'Trait not found!'
     }
   }
