@@ -39,7 +39,7 @@
         <v-tab v-if="npc.HasWeapons">
           <h3>Weapons</h3>
         </v-tab>
-        <v-tab v-if="npc.Class != 'Minion'">
+        <v-tab>
           <h3>Actions</h3>
         </v-tab>
         <v-tab>
@@ -55,7 +55,7 @@
         <v-tab-item> <show-cards :inputs="techniques" job="Techniques" :collapse="false" /></v-tab-item
         ><v-tab-item> <show-cards :inputs="attacks" job="Attacks" :collapse="false" /></v-tab-item
         ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="weapons" job="Attacks" :collapse="false" /></v-tab-item
-        ><v-tab-item v-if="npc.Class != 'Minion'"> <show-cards :inputs="actions" job="Maneuvers" :collapse="false" /></v-tab-item
+        ><v-tab-item> <show-cards :inputs="actions" job="Maneuvers" :collapse="false" /></v-tab-item
         ><v-tab-item> <show-cards :inputs="stunts" job="Maneuvers" :collapse="false" /></v-tab-item
         ><v-tab-item> <show-cards :inputs="reactions" job="Maneuvers" :collapse="false" /></v-tab-item
         ><v-tab-item v-if="npc.HasGambits"> <show-cards :inputs="gambits" job="Maneuvers" :collapse="false" /></v-tab-item

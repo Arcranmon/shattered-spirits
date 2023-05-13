@@ -5,8 +5,7 @@ import argparse
 
 STATUS_HALFX = ["Push", "Pull"]
 STATUS_1X = ["Vulnerable", "Wounded"]
-STATUS_1_HALFX = ["Exposed", "Impaired", "Dazed", "Grabbed", "Prone"]
-STATUS_2X = ["Hobbled"]
+STATUS_1_HALFX = ["Exposed", "Impaired", "Dazed", "Grabbed", "Prone", "Hobbled"]
 
 def get_status_damage(status_string):
     split_status = status_string.split()
@@ -23,8 +22,6 @@ def get_status_damage(status_string):
         damage_multiplier = 1
     if status in STATUS_1_HALFX:
         damage_multiplier = 1.5
-    if status in STATUS_2X:
-        damage_multiplier = 2
         
     if damage_multiplier != 0:
         if 'x' in secondary:

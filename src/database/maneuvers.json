@@ -21,18 +21,20 @@
   },
   {
     "name": "Basic Flourish",
-    "desc": "You disengage from an attack artfully, creating an opening for an ally.",
+    "desc": "You disengage from an attack artfully, attempting to knock a foe's weapons far away.",
     "keywords": ["Flourish"],
     "cost": "1 _Momentum_",
     "reqs": "You complete a Single-Target _Melee_ Attack against a foe.",
-    "effect": "Inflict _Vulnerable_ 2.",
+    "effect": "Inflict _Impaired_ 1/_Disarmed_ [1 _Defense_].",
+    "boost": "1 _Momentum_: Instead, inflict _Impaired_ 2/_Disarmed_ [2 _Defense_].",
     "type": "Gambit"
   },
   {
     "name": "Basic Sunder",
     "desc": "You focus an attack on breaking a foe's armor or guard.",
-    "reqs": "You make a Single-Target _Melee_ Attack against a foe.",
-    "effect": "Choose one before making your _Attack Roll_. Regardless of the option you choose, resolve the _Attack_ as [_Glancing_] against the original Target, but not for determining the following effects:\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_, inflict _Shred_ 1.\n* Choose a piece of the creature's _Wielded_ _Equipment_. The Target may not use the _Parry_ effect of that Equipment against this _Attack_. If the Damage dealt with this _Attack_ is greater than or equal to half the _Durability_ of a piece of the creature's _Equipment_ inflict _Disarmed_ [1 _Defense_]/_Impaired_ 1. If the Damage dealt is greater than or equal its _Durability_, you may instead inflict _Disarmed_ [2 _Defense_]/_Impaired_ 2 or _Damage_ the _Equipment_.",
+    "reqs": "You make a Single-Target _Melee_ _Versatile_/_Heavy_ Attack against a foe.",
+    "cost": "1 _Momentum_",
+    "effect": "Choose one before making your _Attack Roll_:\n* Add [_Overwhelming_ 1].\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_, inflict _Shred_ 1.\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of a _Shield_ _Wielded_ by the creature, _Damage_ it.",
     "type": "Gambit"
   },
   {
@@ -97,7 +99,7 @@
     "name": "Opportunity Attack",
     "desc": "You capitalize on the opening created by a repositioning foe, moving to strike while you can.",
     "keywords": ["Punish"],
-    "cost": "1 _Momentum_",
+    "cost": "0 _Momentum_",
     "trigger": "An enemy within your _Reach_ creates an _Opening_.",
     "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target.",
     "boost": "1 _Momentum_: Instead, use a Single-Target _Major Attack_.",
@@ -119,7 +121,7 @@
     "move": "None",
     "effect": "_Refresh_ your _Defenses_. Choose one:\n* You may expend _Poise_ to remove _Afflictions_ you currently have, spending the same amount to remove them that you would spend to negate.\n* You may attempt to escape a _Grab_ without paying the initial _Momentum_ cost.",
     "special": "You may use this Action more than once per _Round_.",
-    "boost": "1 _Momentum_: Instead of one of the above options, remove _Broken_ or _Staggered_.",
+    "boost": "1 _Momentum_: Instead of one of the above options, remove _Hobbled_ or _Staggered_.",
     "type": "Action"
   },
   {
@@ -136,7 +138,7 @@
     "desc": "You adopt a defensive stance, warding yourself against harm.",
     "type": "Action",
     "cost": "1 _AP_",
-    "effect": "Create an _Arc_ with a _Range_ of _Self_ and choose a _Wielded_ piece of un-_Damaged_ _Equipment_. Gain the _Parry_ effect of this piece of _Equipment_ against all _Attacks_ that originates in or pass through one of those spaces. At the end of each of your _Turns_ you may move this _Arc_. This effect persists until the end of the _Round_, you make an _Attack_, or the relevant Equipment is _Disarmed_ or _Damaged_.",
+    "effect": "You become _Guarding_. Create an _Arc_ with a _Range_ of _Self_. Gain 1 _Guard_ against all effects that originate from or pass through one of those spaces. At the end of each of your _Turns_ you may move this _Arc_. As a part of this _Action_ you may also choose an undamaged, _Wielded_ piece of _Equipmet_. It becomes _Occupied_ so long as you are _Guarding_, but you gain its _Parry_ benefit against all effects that pass through or originate in the _Arc_. End _Guarding_ if you are _Disarmed_ of _Equipment_ used for this _Action_.",
     "boost": "1 _Momentum_: You may choose a piece of _Damaged_ _Equipment_."
   },
   {
@@ -164,16 +166,6 @@
     "type": "Stunt"
   },
   {
-    "name": "Needle Spray",
-    "desc": "A short-range spray of deadly needles.",
-    "type": "Gambit",
-    "cost": "1 _Momentum_",
-    "speed": "Any",
-    "move": "Step",
-    "reqs": "Attack with _Small Needles_.",
-    "effect": "Instead attack in a _Cone_ 3."
-  },
-  {
     "name": "Pinning Shot",
     "desc": "A powerful needle shot that can pin a foe in place.",
     "type": "Gambit",
@@ -181,7 +173,7 @@
     "move": "Step",
     "cost": "1 _Momentum_",
     "reqs": "Attack with _Medium Needles_.",
-    "effect": "Add _Hobbled_ 1 on a _Graze_+."
+    "effect": "Add _Hobbled_ [1 _Grit_/_Reflex_] on a _Graze_+."
   },
   {
     "name": "Overwatch",
