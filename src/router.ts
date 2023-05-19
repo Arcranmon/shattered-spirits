@@ -26,6 +26,7 @@ import Disciplines from '@/pages/disciplines/index.vue'
 
 import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import BasicSkills from '@/pages/basic-skills/index.vue'
+import BasicSpiritSkills from '@/pages/basic-spirit-skills/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -178,6 +179,14 @@ const r = new Router({
       name: 'martial-disciplines',
       meta: {
         title: 'Martial Disciplines',
+      },
+    },
+    {
+      path: '/basic-spirit-skills',
+      component: BasicSpiritSkills,
+      name: 'basic-spirit-skills',
+      meta: {
+        title: 'Basic Spirit Skills',
       },
     },
     {

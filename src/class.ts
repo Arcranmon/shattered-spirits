@@ -1,12 +1,12 @@
 // Store all classes
 
+import Maneuver from './classes/Maneuvers'
 import Armor from './classes/Armor'
 import Attack from './classes/Attack'
 import Character from './classes/Character'
 import Chart from './classes/Chart'
 import Discipline from './classes/Discipline'
 import Movement from './classes/Movement'
-import Maneuver from './classes/Maneuvers'
 import Npc from './classes/Npc'
 import Obstacle from './classes/Obstacle'
 import Defense from './classes/Defense'

@@ -71,17 +71,19 @@
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Reaction')" />
         <show-cards
-          :inputs="[$store.getters.getManeuver('Create Opening'), $store.getters.getManeuver('Engage'), $store.getters.getManeuver('Opportunity Attack')]"
+          :inputs="[
+            this.$store.getters.getManeuver('Create Opening'),
+            this.$store.getters.getManeuver('Engage'),
+            this.$store.getters.getManeuver('Opportunity Attack'),
+          ]"
           job="Maneuvers"
-          :collapse="false"
-        /><show-cards
+          :collapse="false" /><show-cards
           :inputs="[$store.getters.getManeuver('Active Defense'), $store.getters.getManeuver('Dodge')]"
           job="Maneuvers"
           :collapse="false"
           v-bind:class="use_duo"
           :cols="2"
-        />
-      </v-tab-item>
+      /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
           :inputs="[$store.getters.getManeuver('Basic Feint'), $store.getters.getManeuver('Basic Flourish'), $store.getters.getManeuver('Basic Sunder')]"

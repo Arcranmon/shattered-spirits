@@ -42,10 +42,6 @@
       <div class="maneuver--format" v-if="maneuver.HasBoost">
         <display-tooltip-text :string="maneuver.BoostHeader" />
       </div>
-      <span v-if="(maneuver.HasChart)">
-        <div style="height: 0.5em;" />
-        <chart-table :chart="maneuver.Chart" />
-      </span>
       <span class="maneuver--format" v-if="this.standalone && maneuver.HasFrom">
         <display-tooltip-text :string="maneuver.FromHeader" />
       </span>

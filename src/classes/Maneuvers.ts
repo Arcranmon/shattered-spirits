@@ -1,23 +1,22 @@
 /** @format */
 
 import { store } from '@/store'
-import { Chart } from '@/class'
 
 class Maneuver {
-  private boost_: string
-  private cost_: string
-  private desc_: string
-  private effect_: string
-  private keywords_: Array<string>
-  private move_: string
-  private name_: string
-  private range_: string
-  private reqs_: string
-  private special_: string
-  private trigger_: string
-  private weapon_: string
-  private type_: string
-  private chart_: Chart
+  protected boost_: string
+  protected cost_: string
+  protected desc_: string
+  protected effect_: string
+  protected keywords_: Array<string>
+  protected move_: string
+  protected name_: string
+  protected range_: string
+  protected range_value_: number
+  protected reqs_: string
+  protected special_: string
+  protected trigger_: string
+  protected weapon_: string
+  protected type_: string
 
   public constructor() {
     this.boost_ = ''
@@ -32,15 +31,11 @@ class Maneuver {
     this.trigger_ = ''
     this.type_ = ''
     this.weapon_ = ''
-    this.chart_ = null
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Chart() {
-    return this.chart_
-  }
   public get Cost() {
     return this.cost_
   }
@@ -75,9 +70,6 @@ class Maneuver {
   public get BoostHeader() {
     return '**Boost:** ' + this.boost_
   }
-  public get HasChart() {
-    return this.Chart != null
-  }
   public get HasCost() {
     return this.cost_.length > 0
   }
@@ -102,11 +94,15 @@ class Maneuver {
   public get MoveHeader() {
     return '**Move:** ' + this.move_
   }
-  public get HasRange() {
+  get HasRange() {
     return this.range_.length > 0
   }
-  public get RangeHeader() {
-    return '**Range:** ' + this.range_
+  get Range() {
+    return this.range_
+  }
+  get RangeHeader() {
+    if (this.Range == 'Melee') return '**Range:** _Melee_, _Reach_ ' + this.range_value_
+    return '**Range**: ' + this.range_value_
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -152,14 +148,12 @@ class Maneuver {
     this.move_ = data.move || ''
     this.name_ = data.name || ''
     this.range_ = data.range || ''
+    this.range_value_ = data.range_value || 0
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     this.trigger_ = data.trigger || ''
     this.type_ = data.type || 'Maneuver'
     this.weapon_ = data.weapon || ''
-    if ('chart' in data) {
-      this.chart_ = Chart.Deserialize(data.chart)
-    }
   }
 }
 export default Maneuver

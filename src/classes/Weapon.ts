@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Attack, Chart } from '@/class'
+import { Attack } from '@/class'
 
 class Weapon extends Attack {
   private durability_: number

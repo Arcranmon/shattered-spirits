@@ -20,6 +20,8 @@
       </div>
     </div>
     <div class="attack--content">
+      <div v-if="attack.HasReqs"><display-tooltip-text :string="attack.ReqsHeader" /></div>
+      <div v-if="attack.HasCost"><display-tooltip-text :string="attack.CostHeader" /></div>
       <div v-if="attack.HasRange"><display-tooltip-text :string="attack.RangeHeader" /></div>
       <div v-if="attack.HasDamageType"><display-tooltip-text :string="attack.DamageTypeHeader" /></div>
       <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
@@ -68,7 +70,6 @@ export default Vue.extend({
   height: 100%;
 }
 .attack--header {
-  font-size: $font-size--l;
   text-align: center;
   color: black;
 }

@@ -47,7 +47,7 @@
   },
   {
     "name": "Downed",
-    "effect": "A creature becomes Downed when they lose all Health. While Downed, a creature has only 1 AP, their Movement is halved, and they may only use a single Stance.",
+    "effect": "A creature becomes Downed when they lose all Health. If the creature is a player character, while _Downed_ their _Spirit_ is automatically _Summoned_ at the start of each Round so long as it has any _Health_.",
     "remove": "Downed may not be removed during combat.",
     "type": "Hide"
   },
@@ -315,6 +315,12 @@
   { "name": "Pushed", "see": "Push" },
   { "name": "Pushes", "see": "Push" },
   {
+    "name": "Sealed",
+    "desc": "A condition caused when your connection to your spirit is severed.",
+    "effect": "While Sealed _Techniques_ and _Maneuvers_ with the _Spirit_ keyword may not be utilized.",
+    "type": "Status"
+  },
+  {
     "name": "Slide",
     "desc": "You move a foe as you wish across the battlefield.",
     "effect": "Move a target up to X squares in any direction, where X is the numerical value immediately after Slide in an Effect's description.",
@@ -326,6 +332,12 @@
     "desc": "You weigh down a foe, limiting their ability to react.",
     "effect": "When a creature becomes Slowed their next Technique this Round has its Speed increased by 1. If the creature has no more Actions this round, they gain _Impaired_/_Dazed_ 1 (Attacker or Spirit Master's choice).",
     "type": "Instant Effect2"
+  },
+  {
+    "name": "Suppressed",
+    "desc": "A condition caused when your connection to your spirit is limited.",
+    "effect": "While Suppressed all _Techniques_ and _Maneuvers_ with the _Spirit_ keyword cost an additional 1 _Momentum_ to use.",
+    "type": "Status"
   },
   {
     "name": "Throw",

@@ -15,6 +15,8 @@ import Terrains from '@/database/terrain.json'
 
 import Attacks from '@/database/attacks.json'
 
+import SpiritTypes from '@/database/spirit_types.json'
+
 import Movements from '@/database/movement.json'
 import Maneuvers from '@/database/maneuvers.json'
 
@@ -47,6 +49,7 @@ export class DatabaseJsonStore extends VuexModule {
           name: inword,
           cost: 'None',
           type: 'None',
+          special: 'None',
           effect: 'This maneuver could not be found!',
         }
       return Maneuver.Deserialize(<IManeuverData>maneuver)
@@ -113,20 +116,20 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getWeaponsByCategory(): any {
     return (category: string) => {
-      return Weapons.filter((x) => x.category.trim() === category.trim() && !x.flag).map((x) => Weapon.Deserialize(<IWeaponData>x))
+      return Weapons.filter((x) => x.category.trim() === category.trim() && !x.flag).map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     }
   }
 
   get getWeaponsByFlag(): any {
     return (flag: string) => {
-      return Weapons.filter((x) => x.flag === flag).map((x) => Weapon.Deserialize(<IWeaponData>x))
+      return Weapons.filter((x) => x.flag === flag).map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     }
   }
 
   get getWeaponByKeywordAndCategory(): any {
     return (keyword: string, category: string) => {
       return Weapons.filter((x) => x.category.trim() === category.trim() && x.keywords.includes(keyword) && !x.flag).map((x) =>
-        Weapon.Deserialize(<IWeaponData>x),
+        Weapon.Deserialize(<IWeaponData>(<unknown>x)),
       )
     }
   }
@@ -134,7 +137,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getWeaponsForCharCreation(): any {
     return () => {
       return Weapons.filter((x) => x.category.trim() !== 'Unarmed' && x.category.trim() !== 'Improvised' && !x.flag).map((x) =>
-        Weapon.Deserialize(<IWeaponData>x),
+        Weapon.Deserialize(<IWeaponData>(<unknown>x)),
       )
     }
   }
@@ -156,7 +159,7 @@ export class DatabaseJsonStore extends VuexModule {
           type: 'None',
         }
       }
-      return Weapon.Deserialize(<IWeaponData>weapon)
+      return Weapon.Deserialize(<IWeaponData>(<unknown>weapon))
     }
   }
 
@@ -186,7 +189,7 @@ export class DatabaseJsonStore extends VuexModule {
           (speed == 'Any' || speed == x.speed) &&
           (keyword == 'Any' || x.keywords.some((y) => y.includes(keyword))) &&
           x.flag != 'NPC',
-      ).map((x) => Weapon.Deserialize(<IWeaponData>x))
+      ).map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     }
   }
 
@@ -547,6 +550,15 @@ export class DatabaseJsonStore extends VuexModule {
   get getNpcs(): any {
     return () => {
       return NPCs.map((x) => Npc.Deserialize(<INpcData>x))
+    }
+  }
+
+  // ==========================================================
+  // SPIRIT TYPE GETTERS
+  // ==========================================================
+  get getSpiritType(): any {
+    return (inword: string) => {
+      return SpiritTypes.find((x) => x.name.trim() === inword.trim())
     }
   }
 

@@ -7,21 +7,13 @@ declare interface IArmorData {
   special: string
 }
 
-declare interface IAttackData {
+declare interface IAttackData extends IManeuverData {
   category?: string
   chart: IChartData
   class: string
   damagetype: string
-  desc?: string
-  effect: string
-  keywords: Array<string>
-  name: string
-  range: string
-  range_value: number
   charged_effect?: string
-  special?: string
   speed: number
-  type: string
 }
 
 declare interface ICharDisciplineData {
@@ -139,10 +131,11 @@ declare interface IManeuverData {
   move?: string
   name: string
   range?: string
+  range_value: number
   reqs?: string
   special: string
   chart?: IChartData
-  trigger: string
+  trigger?: string
   type: string
   weapon?: string
 }
