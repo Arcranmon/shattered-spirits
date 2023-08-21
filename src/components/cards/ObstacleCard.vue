@@ -22,6 +22,12 @@
       <div class="tech--format" v-if="obstacle.HasInteract">
         <display-tooltip-text :string="obstacle.InteractHeader" />
       </div>
+      <div class="tech--format" v-if="obstacle.HasForcedMovement">
+        <display-tooltip-text :string="obstacle.ForcedMovementHeader" />
+      </div>
+      <div class="tech--format" v-if="obstacle.HasDestroy">
+        <display-tooltip-text :string="obstacle.DestroyHeader" />
+      </div>
       <div class="tech--format" v-if="obstacle.HasDamageType">
         <display-tooltip-text :string="obstacle.DamageType" />
       </div>

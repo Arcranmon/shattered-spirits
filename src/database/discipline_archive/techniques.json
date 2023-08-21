@@ -353,35 +353,6 @@
     "imbue": "2 _Poise_/_Momentum_: This is instead 0 AP. This Imbue may only be used while _Plotting_."
   },
   {
-    "name": "Earthquake Step",
-    "desc": "You bring a leg crashing down, causing a shockwave to emanate forth.",
-    "keywords": ["Earth", "Versatile"],
-    "type": "Strike",
-    "speed": "3",
-    "area": "_Line_ 3 or _Cone_ 2",
-    "ap": 1,
-    "move": "Reposition",
-    "effect": "Attack [_Groundsource_] all Targets in the Area with this Technique's Profile. _Push_ in the direction that most directly takes the Target out of the Area.",
-    "boost": "Choose any number:\n* 1 _Grit_: The Area becomes _Rough_.\n* 1 _Grit_: If you would inflict _Dazed_ 2, instead inflict _Staggered_.\n* 2 _Grit_: Replace all _Push_ with _Prone_.",
-    "special": "Any _Prone_ creatures take 4 Crush Damage on a _Hit_+. If they _Negate_, instead deal 2 Crush Damage.",
-    "chart": {
-      "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "_Dazed_ 1, _Push_ 1 (1 _Reflex_)",
-        "_Dazed_ 1, _Push_ 1 (1 _Reflex_)",
-        "_Dazed_ 1, _Push_ 1 (1 _Reflex_)",
-        "_Dazed_ 1, _Push_ 1 (2 _Reflex_)",
-        "_Dazed_ 1, _Push_ 1 (2 _Reflex_)",
-        "_Dazed_ 2, _Push_ 1 (2 _Reflex_)",
-        "_Dazed_ 2, _Push_ 1 (2 _Reflex_)",
-        "_Dazed_ 2, _Push_ 1 (2 _Reflex_)",
-        "_Dazed_ 2, _Push_ 1 (3 _Reflex_)",
-        "_Dazed_ 2, _Push_ 1 (3 _Reflex_)"
-      ]
-    }
-  },
-  {
     "name": "Echoing Wave",
     "desc": "You send a pulse of your senses out, learning even more when the wave returns.",
     "keywords": ["Earth"],
@@ -931,37 +902,6 @@
     "boost": "Choose any:\n* 2 _Poise_: Remove the Enchant Keyword. The Area persists until you Move."
   },
   {
-    "name": "Roiling Earth",
-    "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
-    "keywords": ["Earth", "Versatile"],
-    "type": "Strike",
-    "speed": "4",
-    "damagetype": "Crush",
-    "area": "_Burst_ 1",
-    "ap": 1,
-    "move": "Step",
-    "effect": "Attack [_Groundsource_] all Targets in the Area with this Technique's Profile. Do not deal Damage.",
-    "boost": "Choose any number:\n* 1 _Poise_: Instead, Range becomes 6 and _Burst_ becomes _Blast_.\n* 1 _Grit_: Make up to 2 spaces in the Area _Rough_. You may repeat this _Boost_.\n* 2 _Grit_/_Momentum_: Area becomes _Burst_ 2.\n* 2 _Grit_/_Momentum_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again (maintaining all _Boosts_ except this) and remove the _Hazard_.",
-    "imbue": "+1 AP: Deal Damage. Increase the cost to Negate by 1.",
-    "chart": {
-      "damage": [0, 2, 2, 2, 3, 4, 4, 5, 5, 6, 6],
-      "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "_Exposed_ 1 (1 _Reflex_)",
-        "_Exposed_ 1 (1 _Reflex_)",
-        "_Exposed_ 1 (1 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1 (2 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1 (2 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1 (2 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1/_Prone_ (2 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1/_Prone_ (2 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1, _Prone_ (3 _Reflex_)",
-        "_Exposed_ 2/_Hobbled_ 1, _Prone_ (3 _Reflex_)"
-      ]
-    }
-  },
-  {
     "name": "Run",
     "desc": "A simple dash, covering ground as quickly as possible.",
     "keywords": ["_Fluid_ 1"],
@@ -1169,36 +1109,6 @@
     "effect": "Choose an _Earthen_ Obstacle within Range. Inflict _Fragile_, then grant _Stone Armor_ (which is _Overarmor_), _Vigor_ 3, _Hobbled_ 1 (1 _Reflex_) to a creature adjacent to the Obstacle.",
     "boost": "Choose any:\n* 1 _Grit_: Do not inflict _Fragile_ on an Obstacle. Instead, simply grant _Stone Armor_, _Vigor_ 3, _Hobbled_ 1 (1 _Reflex_) to a creature in an _Earthen_ space within range.\n* X _Grit_/_Momentum_ (maximum 3): Remove up to X value of _Burn_/_Frost_/_Shock_ from the Target.",
     "imbue": "2 _Grit_: This is 0 AP. This _Imbue_ must be selected at _Refresh_."
-  },
-  {
-    "name": "Stone Strike",
-    "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
-    "keywords": ["Earth", "Versatile"],
-    "type": "Strike",
-    "speed": "3",
-    "damagetype": "Crush",
-    "range": "Range 6",
-    "ap": 2,
-    "move": "Step",
-    "effect": "Attack [_Artillery_ 1] with this Technique's Profile.",
-    "boost": "Choose any:\n* 1 _Grit_/_Momentum_: Instead originate this Attack from an _Earthen_ _Obstacle_ within _Range_. This secondary Attack is _Range_ 3.\n* 2 _Grit_/_Momentum_: Instead originate this Attack from an _Earthen_ space within _Range_. This secondary Attack is _Range_ 3.\n\nChoose one:\n* 1 _Grit_/_Momentum_: Add [_Glancing_], but instead make two Attacks.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 3, 4, 6, 7, 9, 11, 12],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Dazed_ 1 (1 _Poise_/_Grit_)",
-        "_Dazed_ 1 (1 _Poise_/_Grit_)",
-        "_Dazed_ 1/_Slowed_ (2 _Poise_/_Grit_)",
-        "_Dazed_ 1/_Slowed_ (2 _Poise_/_Grit_)",
-        "_Slowed_, _Dazed_ 2 (3 _Poise_/_Grit_)",
-        "_Slowed_, _Dazed_ 2 (3 _Poise_/_Grit_)",
-        "_Slowed_, _Dazed_ 2 (3 _Poise_/_Grit_)"
-      ]
-    }
   },
   {
     "name": "Stone Citadel",

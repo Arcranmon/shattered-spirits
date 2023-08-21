@@ -3,6 +3,7 @@
 import { store } from '@/store'
 
 class Maneuver {
+  protected area_: string
   protected boost_: string
   protected cost_: string
   protected desc_: string
@@ -13,6 +14,7 @@ class Maneuver {
   protected range_: string
   protected range_value_: number
   protected reqs_: string
+  protected manifest_: string
   protected special_: string
   protected trigger_: string
   protected weapon_: string
@@ -64,6 +66,12 @@ class Maneuver {
   // ==========================================================
   // UTILITY
   // ==========================================================
+  public get HasArea() {
+    return this.area_.length > 0
+  }
+  public get AreaHeader() {
+    return '**Area:** ' + this.area_
+  }
   public get HasBoost() {
     return this.boost_.length > 0
   }
@@ -88,6 +96,12 @@ class Maneuver {
   public get KeywordsHeader() {
     return '_' + this.Keywords.join('_, _') + '_'
   }
+  public get HasManifest() {
+    return this.manifest_.length > 0
+  }
+  public get ManifestHeader() {
+    return '**Manifest:** ' + this.manifest_
+  }
   public get HasMove() {
     return this.move_.length > 0
   }
@@ -102,6 +116,7 @@ class Maneuver {
   }
   get RangeHeader() {
     if (this.Range == 'Melee') return '**Range:** _Melee_, _Reach_ ' + this.range_value_
+    if (this.Range == 'Self') return '**Range:** _Self_'
     return '**Range**: ' + this.range_value_
   }
   public get HasReqs() {
@@ -140,11 +155,13 @@ class Maneuver {
   }
 
   public setManeuverData(data: IManeuverData): void {
+    this.area_ = data.area || ''
     this.boost_ = data.boost || ''
     this.cost_ = data.cost || ''
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
     this.keywords_ = data.keywords || []
+    this.manifest_ = data.manifest || ''
     this.move_ = data.move || ''
     this.name_ = data.name || ''
     this.range_ = data.range || ''

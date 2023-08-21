@@ -23,6 +23,7 @@
       <div v-if="attack.HasReqs"><display-tooltip-text :string="attack.ReqsHeader" /></div>
       <div v-if="attack.HasCost"><display-tooltip-text :string="attack.CostHeader" /></div>
       <div v-if="attack.HasRange"><display-tooltip-text :string="attack.RangeHeader" /></div>
+      <div v-if="attack.HasArea"><display-tooltip-text :string="attack.AreaHeader" /></div>
       <div v-if="attack.HasDamageType"><display-tooltip-text :string="attack.DamageTypeHeader" /></div>
       <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
       <div v-if="attack.HasEffect"><display-tooltip-text :string="attack.EffectHeader" /></div>
@@ -30,6 +31,7 @@
       <div v-if="attack.HasDurability"><display-tooltip-text :string="attack.DurabilityHeader" /></div>
       <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
+      <div v-if="attack.HasBoost"><display-tooltip-text :string="attack.BoostHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
     </div>
   </div>

@@ -12,6 +12,10 @@
     "effect": "Arcing Attacks treat _Covered_ as _Heavily Obstructed_ instead and _Heavily Obstructed_ as _Lightly Obstructed_, so long as a path exists over _Obstacles_ that can reach the Target."
   },
   {
+    "name": "Avoidable",
+    "effect": "Characters may reduce Avoidable Damage by 2 for every 1 _Reflex_ spent."
+  },
+  {
     "name": "Minimum Range",
     "effect": "Ranged and Thrown Attacks with the Minimum Range Keyword have _Disadvantage_ on all Attacks against creature X spaces or less away, where X is their Minimum Range value. Minimum Range never applies to Melee attacks."
   },
@@ -46,10 +50,6 @@
     "effect": "You must pay 1 _Grit_ when you Attack with this Weapon or else have _Disadvantage_."
   },
   {
-    "name": "Combo",
-    "effect": "Make the listed number of Attacks. Any _Gambits_ you use without the _Feint_/_Flourish_ keyword apply to all Attacks in the Combo."
-  },
-  {
     "name": "Counter",
     "effect": "Counters are a _Resist_ with this keyword based on throwing aside defense to attack. Many Actions and abilities reference Counter _Resists_."
   },
@@ -62,8 +62,8 @@
     "effect": "Take the creature's total Value of a _Token_ and divide it into the minimum number of _Tokens_. For example, a creature with _Impaired_ 1x3 would have _Impaired_ 3 after Condensing."
   },
   {
-    "name": "Defensive",
-    "effect": "Only a single _Reaction_ with the Defensive keyword may be used against a triggering instance."
+    "name": "Efficient",
+    "effect": "This _Reaction_ does not count when checking the 'only one _Reaction_ may be used against a specific trigger' restriction."
   },
   {
     "name": "Resist",
@@ -76,11 +76,15 @@
   },
   {
     "name": "Earth",
-    "effect": "Techniques with this keyword rely on an Earth spirit as well as a strong connection with the ground. If a character is not on or immediately above (such as standing on the wooden floor of a house) _Earthen_ Terrain (such as while Jumping), increase the cost of this Technique by 1. If the character is _Flying_, increase it by 2. If there is no _Earthen_ Terrain or _Obstacles_ with 5 spaces (such as when on the deck of a ship) this Technique may not be used."
+    "effect": "Earth is one of the most common elements, but is heavily dependant on managing Sources for their Attacks. A _Minor Source_ is required for essentially every Earth Spirit ability, while access to a _Major Source_ will often provide additional bonuses. An Earthbonded will have access to _Minor Sources_ in most battles, but may have to create _Major Sources_ through the use of _Maneuvers_ and _Techniques_. Earth abilities are _Suppressed_ when the user is not within 2 spaces of a _Source_, and _Sealed_ when there is no _Source_ within 5 spaces or the user is _Flying_."
   },
   {
     "name": "Earthen",
-    "effect": "Earthen _Terrain_ or _Obstacles_ are prominent above-ground features created primarily from earth or stone. Boulders and Earth Pillars are obvious examples, but any stone structure can qualify as Earthen."
+    "effect": "Earthen _Terrain_ or _Obstacles_ are prominent above-ground features created primarily from earth or stone. _Boulders_ and _Earth Pillars_ are obvious examples, but any stone structure can qualify as Earthen. In general, every space on the battlefield is Earthen unless specified otherwise."
+  },
+  {
+    "name": "Watery",
+    "effect": "Watery _Terrain_ or _Obstacles_ are predominately formed out of water. Watery _Obstacles_ tend to be fleeting and are often only created by abilities, but Watery _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watery _Terrain_ and _Obstacles_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
   },
   {
     "name": "Electric",
@@ -110,7 +114,7 @@
   },
   {
     "name": "Flurry",
-    "effect": "Make the listed number of Attacks. Any _Gambits_ you use without the _Feint_/_Flourish_ keyword apply to all Attacks in the Flurry.  Do not inflict Status until all Attacks are complete, and only one Attack in the Flurry may inflict Status, but you may choose which Attack to use. Do not apply Status until all Attacks are complete. You may use different Attacks for each Attack in the Flurry so long as all follow the same rules (i.e. a [_Flurry_ 2] with _Light_ _Major Attacks_ could make any two _Major Attacks_."
+    "effect": "Make the listed number of Attacks. Do not inflict Status until all Attacks are complete, and only one Attack in the Flurry may inflict Status, but you may choose which Attack to use. Do not apply Status until all Attacks are complete. You may use different Attacks for each Attack in the Flurry so long as all follow the same rules (i.e. a [_Flurry_ 2] with _Light_ _Major Attacks_ could make any two _Major Attacks_."
   },
   {
     "name": "Fist",
@@ -118,7 +122,11 @@
   },
   {
     "name": "Glancing",
-    "effect": "This effect deals half _Damage_ and, if it inflicts _Status_, reduce the cost to negate by 1 and halve the value of all _Afflictions_."
+    "effect": "This effect deals half _Damage_ and, if it inflicts _Status_, reduce the cost to negate by 1 and reduce the value of all inflicted status by 1."
+  },
+  {
+    "name": "Grasping",
+    "effect": "While _Grabbed_ is inflicted with this _Weapon_ it may only be used to attack the _Grabbed_ target."
   },
   {
     "name": "Groundsource",
@@ -154,7 +162,7 @@
   },
   {
     "name": "Manifest",
-    "effect": "A special keyword that designates an ability that makes use of your spirit in a more concrete way. Only one ability with the Manifest keyword may be used per _Round_."
+    "effect": "A special keyword that designates an ability that makes use of your spirit in a more concrete way. Only one ability with the Manifest keyword may be used per _Round_. When using the Manifest option for a Maneuver it does not count as using that Manuever for the purposes of using it multiple times in a Round."
   },
   {
     "name": "Melee",
@@ -174,15 +182,11 @@
   },
   {
     "name": "Overwhelming",
-    "effect": "If the Target of the Attack uses a _Block_ _Reaction_ you may inflict your choice of _Push_ 2X, _Vulnerable_ X, where X is the listed Overwhelming value. If they are _Guarding_ you may choose one of the previous options or add _Break_ [X _Momentum_] on a _Hit_+."
+    "effect": "If the Target of the Attack uses a _Block_ _Reaction_ you may inflict your choice of _Push_ 2X, _Vulnerable_ X, where X is the listed Overwhelming value. If they are _Guarding_ you may choose one of the previous options or add _Break_ [X _Momentum_/_Poise_] on a _Hit_+."
   },
   {
     "name": "Ordnance",
     "effect": "Any Attack with this Weapon must be made before any _Movement_ is made this _Turn_."
-  },
-  {
-    "name": "Warding",
-    "effect": "This _Weapon_ has a +1 _Bonus_ on [_Parrying_] Attacks."
   },
   {
     "name": "Pierce",
@@ -193,10 +197,6 @@
     "effect": "A _Punish_ is a special type of _Reaction_ that triggers based off of an opponent's _Movement_. A common example of this is the _Opportunity Attack_ _Reaction_."
   },
   { "name": "Punishes", "see": "Punish" },
-  {
-    "name": "Quick",
-    "effect": "This _Maneuver_ may not be used with _Heavy_ _Techniques_."
-  },
   {
     "name": "Quickdraw",
     "effect": "This Weapon is easy to draw and costs no _Momentum_ to Draw/Stow."
@@ -236,15 +236,6 @@
   {
     "name": "Siege",
     "effect": "Attacks with Siege deal +2 Damage to _Obstacles_ and have _Advantage_ on Attacks against them."
-  },
-  {
-    "name": "Stratagem",
-    "effect": "Stratagems are ways to enhance a _Technique_ that must be used when the Technique is played, whether that be during _Plotting_, while _Improvising_, or as a part of another _Maneuver_. Stratagems often change the _Speed_ or _AP_ cost of a Technique."
-  },
-  { "name": "Stratagems", "see": "Stratagem" },
-  {
-    "name": "Strong",
-    "effect": "This _Maneuver_ may not be used with _Light_ _Techniques_."
   },
   {
     "name": "Stall",

@@ -82,6 +82,11 @@
     "effect": "When you make an Attack with Disadvantage, roll 3d6 and use the two lowest for your result."
   },
   {
+    "name": "Draw",
+    "effect": "Drawing is the main way that Waterbonded interact with _Sources_. All Draw effects will be listed as Draw X, where X is a numeric value. In these cases, reduce the combined value of any number of _Sources_ within the listed Draw range by X, destroying any _Sources_ that have their value reduced to 0."
+  },
+  { "name": "Drawn", "see": "Draw" },
+  {
     "name": "Durability",
     "effect": "How sturdy inanimate objects are. If an _Obstacle_ or _Equipment takes Damage in a single hit equal to or greater than their Durability plus their current _Guard_ (if any) they are Damaged."
   },
@@ -127,7 +132,7 @@
   { "name": "Falls", "see": "Falling" },
   {
     "name": "Forceful",
-    "effect": "Forceful can be applied to any kind of _Forced Movement_. If a creature is moved into an _Obstacle_ by Forceful Movement they take Damage equal to 1 + any _Forced Movement_ remaining after colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1 (2 _Poise_). If a creature is moved into another creature with _Forced Movement_ you may choose to resolve the effect against both of them, but deal half Damage. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. "
+    "effect": "Forceful can be applied to any kind of _Forced Movement_. If a target is moved into an _Obstacle_ by Forceful Movement they take [_Avoidable_] Damage equal to 1 + any _Forced Movement_ remaining after colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1. If a target is moved into a creature with _Forced Movement_ you may choose to resolve the effect against both of them, but deal half Damage. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. "
   },
   {
     "name": "Gambit",
@@ -188,7 +193,7 @@
   },
   {
     "name": "Minion",
-    "effect": "Minion is the weakest class of NPC, and tend to be less capable. Minions have no _Defenses_, do not gain _Momentum_, and do not benefit from _Stances_. Minions only ever have 1 _AP_, but they may spend it as _Momentum_."
+    "effect": "Minion is the weakest class of NPC, and tend to be less capable. Minions have no _Defenses_, do not gain _Momentum_, and do not benefit from _Stances_. Minions only ever have 1 _AP_, but they may exchange it for 2 _Momentum_ at any time."
   },
   {
     "name": "Maneuver",
@@ -201,11 +206,11 @@
   },
   {
     "name": "Major Source",
-    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material."
+    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.\n* **Water:** Watery Terrain or _Obstacles_ with a value greater than 1."
   },
   {
     "name": "Minor Source",
-    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this."
+    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Water:** Watery Terrain or _Obstacles_ with a value of 1."
   },
   { "name": "Major Sources", "see": "Major Source" },
   { "name": "Minor Sources", "see": "Minor Source" },
@@ -213,6 +218,7 @@
     "name": "Source",
     "effect": "A locus of elemental energy such as stone, water, or flame. Sources are divided into _Major Sources_ and _Minor Sources_, and have a different representation for every element."
   },
+  { "name": "Sources", "see": "Source" },
   {
     "name": "Miss",
     "effect": "A failed attack, represented by a red cell in the Attack's 'Roll' column in its _Profile_."
@@ -274,10 +280,6 @@
     "name": "Reposition",
     "effect": "The standard _Movement_ distance. Consult your _Armor_ for how far you _Move_ with a Reposition."
   },
-  {
-    "name": "Resistance",
-    "effect": "If a creature has Resistance to a type of Damage increase their _Guard_ by 3 against it."
-  },
   { "name": "Rolling", "see": "Roll" },
   {
     "name": "Round",
@@ -319,7 +321,7 @@
   { "name": "Speed Penalties", "see": "Speed Penalty" },
   {
     "name": "Soft Cover",
-    "effect": "Creatures may move through this _Obstacle_ and treat it as _Rough_ Terrain. When determining _Covered_/_Obstructed_, this _Obstacle_ never provides _Covered_. Instead, a creature in this space is _Heavily Obstructed_."
+    "effect": "Creatures may move through this _Obstacle_, but it costs twice as much to move through. When determining _Covered_/_Obstructed_, this _Obstacle_ never provides _Covered_ and instead provides _Heavily Obstructed_. A creature in this space is always _Heavily Obstructed_."
   },
   {
     "name": "Spirit Master",
@@ -327,7 +329,7 @@
   },
   {
     "name": "Summon",
-    "effect": "When a Spirit is Summoned they take physical form until the end of the current _Round_. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player, and are always treated as a _Major Source_. While Summoned, they may use a single _Technique_ and have 1 _AP_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by their partner. See their statistics for attacks, movement, and other such effects. A Spirit has its own _Defenses_, but shares _Momentum_ with their partner."
+    "effect": "When a Spirit is Summoned they take physical form for the duration of the effect that Summoned them. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player. See their statistics for attacks, movement, and other such effects. When _Manifested_, a spirit gains 2 _Defenses_ of the types listed based on its type but shares _Momentum_ with their partner."
   },
   { "name": "Summoned", "see": "Summon" },
   {

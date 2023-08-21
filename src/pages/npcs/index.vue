@@ -8,7 +8,7 @@
           >
         </div>
       </v-col>
-      <v-col cols="10"> <npc-card v-if="selectedNpc != null" :npc="selectedNpc" :key="selectedNpc.name" /></v-col
+      <v-col cols="10"> <npc-card v-if="selectedNpc != null" :npc="selectedNpc" :key="selectedNpc.Name" /></v-col
     ></v-row>
   </div>
 </template>

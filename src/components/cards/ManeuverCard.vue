@@ -21,6 +21,7 @@
       <div v-if="maneuver.HasWeapon">
         <display-tooltip-text class="maneuver--format" :string="maneuver.WeaponHeader" />
       </div>
+      <div v-if="maneuver.HasArea"><display-tooltip-text class="maneuver--format" :string="maneuver.AreaHeader" /></div>
       <div v-if="maneuver.HasRange">
         <display-tooltip-text class="maneuver--format" :string="maneuver.RangeHeader" />
       </div>
@@ -38,6 +39,9 @@
       </div>
       <div class="maneuver--format" v-if="maneuver.HasSpecial">
         <display-tooltip-text :string="maneuver.SpecialHeader" />
+      </div>
+      <div class="maneuver--format" v-if="maneuver.HasManifest">
+        <display-tooltip-text :string="maneuver.ManifestHeader" />
       </div>
       <div class="maneuver--format" v-if="maneuver.HasBoost">
         <display-tooltip-text :string="maneuver.BoostHeader" />

@@ -29,8 +29,7 @@
                   </template></v-select
                 > </v-col
               ><v-col cols="12"><v-select v-model="selectedSpeed" :items="weaponSpeeds" attach label="Weapon Speed" filled outlined></v-select></v-col
-              ><v-col cols="12"
-                ><v-select v-model="selectedKeyword" :items="weaponKeywords" attach label="Weapon Keywords" filled outlined></v-select></v-col></v-row
+              ><v-col cols="12"><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled outlined></v-select></v-col></v-row
           ></v-expansion-panel-content>
         </v-expansion-panel> </v-expansion-panels
       ><br /><v-select
@@ -70,7 +69,7 @@
             </template></v-select
           > </v-col
         ><v-col cols="2"><v-select v-model="selectedSpeed" :items="weaponSpeeds" attach label="Weapon Speed" filled outlined></v-select></v-col
-        ><v-col cols="2"><v-select v-model="selectedKeyword" :items="weaponKeywords" attach label="Weapon Keywords" filled outlined></v-select></v-col
+        ><v-col cols="2"><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled outlined></v-select></v-col
       ></v-row>
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
@@ -102,16 +101,16 @@ export default Vue.extend({
     return {
       weaponCategories: ['Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
       selectedWeapons: ['Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield'],
-      weaponSpeeds: ['Any', 1, 2, 3, 4, 5, 6],
+      weaponSpeeds: ['Any', 1, 2, 3, 4, 5, 6, 7, 8],
       selectedSpeed: 'Any',
-      weaponKeywords: ['Any', 'Light', 'Versatile', 'Heavy', 'Colossal', 'Pierce'],
-      selectedKeyword: 'Any',
+      weaponTypes: ['Any', 'Light', 'Versatile', 'Heavy'],
+      selectedType: 'Any',
       selectedWeapon: null,
     }
   },
   computed: {
     weapons: function () {
-      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, this.selectedSpeed, this.selectedKeyword)
+      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, this.selectedSpeed, this.selectedType)
     },
     hasAllWeapons() {
       return this.selectedWeapons.length === this.weaponCategories.length

@@ -20,13 +20,13 @@ import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
-import Shields from '@/pages/equipment/shields/index.vue'
+import CombatGear from '@/pages/equipment/combat-gear/index.vue'
 import MartialArts from '@/pages/equipment/martial-arts/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
 import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import BasicSkills from '@/pages/basic-skills/index.vue'
-import BasicSpiritSkills from '@/pages/basic-spirit-skills/index.vue'
+import BasicSpiritAbilities from '@/pages/basic-spirit-abilities/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -102,11 +102,11 @@ const r = new Router({
       },
     },
     {
-      path: '/shields',
-      component: Shields,
-      name: 'shields',
+      path: '/combat-gear',
+      component: CombatGear,
+      name: 'combat-gear',
       meta: {
-        title: 'Shields',
+        title: 'Combat Gear',
       },
     },
     {
@@ -182,11 +182,11 @@ const r = new Router({
       },
     },
     {
-      path: '/basic-spirit-skills',
-      component: BasicSpiritSkills,
-      name: 'basic-spirit-skills',
+      path: '/basic-spirit-abilities',
+      component: BasicSpiritAbilities,
+      name: 'basic-spirit-abilities',
       meta: {
-        title: 'Basic Spirit Skills',
+        title: 'Basic Spirit Abilities',
       },
     },
     {

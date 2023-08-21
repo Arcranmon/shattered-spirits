@@ -95,14 +95,14 @@
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
-            ><div v-for="discipline in disciplines" style="width: 100%;" v-bind:key="discipline">
+            ><div v-for="discipline in disciplines" style="width: 100%;" v-bind:key="discipline.Name">
               <v-btn @click="selectedDiscipline = discipline" class="button--style" depressed tile block>
                 <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" /></v-col> </v-row
+        <v-col> <discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" :key="selectedDiscipline.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -120,10 +120,10 @@ export default Vue.extend({
   components: { DisciplineCard },
   data() {
     return {
-      disciplineCategories: ['Earth'],
-      selectedCategories: ['Earth'],
-      disciplineTypes: ['Land', 'Stone', 'Grounding', 'Stoneheart', 'Tremorsight'],
-      selectedTypes: ['Land', 'Stone', 'Grounding', 'Stoneheart', 'Tremorsight'],
+      disciplineCategories: ['Earth', 'Water'],
+      selectedCategories: ['Earth', 'Water'],
+      disciplineTypes: ['Land', 'Stone', 'Grounding', 'Stoneheart', 'Tremorsight', 'Tide'],
+      selectedTypes: ['Stone', 'Tide'],
       disciplineRoles: ['Any', 'Artillery', 'Controller', 'Courier', 'Defender', 'Shaper', 'Striker', 'Supporter', 'Survivor'],
       primaryRole: 'Any',
       secondaryRole: 'Any',

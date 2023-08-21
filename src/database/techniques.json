@@ -5,18 +5,31 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Reposition",
-    "effect": "Choose one:\n* Make a _Light_ _Major Attack_.\n* [_Flurry_ 2] with _Light_ _Minor Attacks_.",
-    "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ later.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Light_/_Versatile_ _Attacks_.\n* 1 _Momentum_: Instead, [_Flurry_ 2] with _Light_ _Major Attacks_."
+    "effect": "Choose one:\n* Make 1 _Light_/_Versatile_ _Major Attack_ and 1 _Light_/_Versatile_ _Minor Attack_ in any order.\n* Make 3 _Light_/_Versatile_ _Minor Attacks_.",
+    "special": "Determine _Speed Penalties_ for _Light_ Attacks as if this _Technique_ was played one _Phase_ later.",
+    "boost": "\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
   },
   {
     "name": "Basic Strike",
     "desc": "You move forward with a weapon, striking a nearby foe.",
+    "keywords": ["Fluid"],
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Choose one:\n* Make a _Melee_ _Major Attack_. Inflict _Marked_ on the _Target_.\n* Make a _Major Attack_, adding _Vulnerable_ 1 on a _Hit_+.\n* Move is instead None. Make a _Major Attack_, then gain 1 _Momentum_ at the end of your _Turn_.",
-    "boost": "1 _Momentum_: Additionally, make a _Minor Attack_."
+    "effect": "Choose one:\n* Make 1 _Major Attack_ and 1 _Minor Attack_.\n* Make 3 _Minor Attacks_.",
+    "special": "You may use any _Gambit_ with a 1 _Momentum_ discount this _Turn_.",
+    "boost": "2 _Momentum_: Make one less _Light_/_Versatile_ _Minor Attack_ and one more _Light_/_Versatile_ _Major Attack_."
+  },
+  {
+    "name": "Ocean's Veil",
+    "desc": "You pull forth water to create a great wall, warding your allies from assault.",
+    "keywords": ["Spirit", "Water", "Enchant", "Fluid"],
+    "type": "Defensive",
+    "range": "Ranged",
+    "range_value": "6",
+    "speed": "Any",
+    "move": "Reposition",
+    "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. These _Water Veil_s are _Destroyed_ when the _Enchant_ ends. "
   },
   {
     "name": "Strong Strike",
@@ -24,52 +37,85 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and, on a _Hit_+, _Push_ 2/_Vulnerable_ 1.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
+    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and dealing additional Damage equal to half the _Phase_ on a _Graze_+.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
     "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ earlier.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 1 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1]. Remove the _Charging_ and _Hazard_ one _Phase_ later.\n* 1 _Momentum_: On a _Hit_+, add _Prone_ [2 _Block_]."
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 2 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1] and deal +1 Damage on a _Graze_+. Remove the _Charging_ and _Hazard_ one _Phase_ later."
   },
   {
-    "name": "Rushing Strike",
-    "desc": "You recklessly charge, covering ground before striking.",
+    "name": "Roiling Earth",
+    "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "type": "General",
+    "speed": "5",
+    "range": "Self",
+    "area": "_Burst_ 2",
+    "move": "Step",
+    "effect": "Attack all Targets in the Area with this Technique's Profile. Any _Prone_ creatures in the _Area_ take 2 Crush Damage [_Avoidable_] on a _Hit_+.",
+    "boost": "Choose any number:\n* 1 _Momentum_: Make 3 spaces in the _Area_ _Rough_. You may repeat this _Boost_.\n* 1 _AP_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again and remove the _Hazard_.",
+    "chart": {
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Exposed_ 1, _Prone_ [1 _Reflex_]",
+        "_Exposed_ 1, _Prone_ [1 _Reflex_]",
+        "_Exposed_ 1, _Prone_ [1 _Reflex_]",
+        "_Exposed_ 2, _Prone_ [2 _Reflex_]",
+        "_Exposed_ 2, _Prone_ [2 _Reflex_]",
+        "_Exposed_ 2, _Prone_ [2 _Reflex_]",
+        "_Exposed_ 3, _Prone_ [2 _Reflex_]",
+        "_Exposed_ 3, _Prone_ [2 _Reflex_]"
+      ]
+    }
+  },
+  {
+    "name": "Stone Edge",
+    "desc": "You tear forth a slab of earth, flinging it with horrific force.",
+    "keywords": ["Spirit", "Earth"],
+    "type": "Strike",
+    "speed": "4 [_Priority_]",
+    "range": "Ranged",
+    "range_value": 4,
+    "move": "Step",
+    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 1 _Guard_ and may not be moved by another creature. At the end of each _Phase_, including the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the initial _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
+    "boost": "2 _Momentum_: Instead, create a _Boulder_ as a part of this _Technique_. There must be at least one _Earthen_ space within _Range_ to use this _Boost_.",
+    "damagetype": "Crush [_Avoidable_, _Siege_]",
+    "chart": {
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "damage": [0, 0, 3, 3, 4, 5, 5, 6, 6, 7, 7],
+      "status": [
+        "",
+        "",
+        "_Angled Push_ 1",
+        "_Angled Push_ 1",
+        "_Angled Push_ 1, _Dazed_ 1",
+        "_Angled Push_ 1, _Dazed_ 1",
+        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Momentum_]",
+        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Momentum_]",
+        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Momentum_]",
+        "_Angled Push_ 2, _Dazed_ 1, _Break_ [2 _Momentum_]",
+        "_Angled Push_ 2, _Dazed_ 1, _Break_ [2 _Momentum_]"
+      ]
+    }
+  },
+  { "name": "NPC TECHNIQUES" },
+  {
+    "name": "Hostile Strike",
+    "desc": "A basic NPC strike.",
     "keywords": ["Fluid"],
     "type": "Strike",
     "speed": "Any",
-    "move": "Reposition_ or _Dash_ [_Rush_]",
-    "effect": "Choose one:\n* Make a _Major Attack_ [_Glancing_].\n* Make a _Minor Attack_. If you use a _Body_ _Attack_ and move at least 5 spaces prior to Attacking you may Attack at _Advantage_."
+    "move": "Step",
+    "effect": "Choose one:\n* Make 1 _Major Attack_.\n* Make 2 _Minor Attacks_."
   },
   {
-    "name": "Combo Strike",
-    "keywords": ["Fluid"],
-    "desc": "You unleash a series of more flexible attacks.",
+    "name": "Agile Strike",
+    "desc": "A standard attack by an NPC.",
     "type": "Strike",
     "speed": "Any",
     "move": "Reposition",
-    "effect": "[_Combo_ 2] with _Minor Attacks_.",
-    "boost": "1 _Momentum_: Instead, [_Combo_ 3] with _Minor Attacks_."
-  },
-  {
-    "name": "Hostile Strike",
-    "desc": "A standard attack by an NPC.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Step",
-    "effect": "Choose one:\n* Make a _Major Attack_.\n* Make two _Minor Attacks_."
-  },
-  {
-    "name": "Charge",
-    "desc": "A standard attack by an NPC.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Reposition [_Rush_]",
     "effect": "Make a _Major Attack_."
-  },
-  {
-    "name": "Drawing Strike",
-    "desc": "A standard attack by an NPC.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Step",
-    "effect": "Make a _Major Attack_, adding _Marked_."
   },
   {
     "name": "Fumigate",
@@ -77,6 +123,6 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Create a _Burst_ 1 or _Cone_ 3 _Hazard_, then begin _Charging_. At the end of the next _Phase_ remove the _Hazard_ and attack all creatures in the _Area_ twice with _Toxic Spray_, ignoring its normal range. Those spaces become _Toxic Gas_ until the end of the _Round_."
+    "effect": "Create a _Burst_ 1 or _Cone_ 3 _Hazard_, then begin _Charging_. At the end of the next _Phase_ remove the _Hazard_ and attack all creatures in the _Area_ three times with _Toxic Spray_, ignoring its normal range. Those spaces become _Toxic Gas_ until the end of the _Round_."
   }
 ]

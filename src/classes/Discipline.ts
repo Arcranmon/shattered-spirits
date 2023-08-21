@@ -55,6 +55,18 @@ class Discipline {
   public get TotalTier1Items() {
     return this.tier_1_.techniques.length + this.tier_1_.maneuvers.length
   }
+  public get HasTier1Attacks() {
+    return this.tier_1_.attacks != undefined
+  }
+  public get Tier1Attacks() {
+    return store.getters.getAttacksFromList(this.tier_1_.attacks)
+  }
+  public get HasTier1SpiritAbilities() {
+    return this.tier_1_.spirit_abilities != undefined
+  }
+  public get Tier1SpiritAbilities() {
+    return store.getters.getManeuversFromList(this.tier_1_.spirit_abilities)
+  }
   public get HasTier1Techniques() {
     return this.tier_1_.techniques != undefined
   }
@@ -73,15 +85,23 @@ class Discipline {
   public get Tier1Special() {
     return this.tier_1_.special
   }
-  public get Tier1Unarmed() {
-    if (!Number.isNaN(this.tier_1_.unarmed)) return this.tier_1_.unarmed
-    return 0
-  }
   public get HasTier2Stances() {
     return this.tier_2_.stances != undefined
   }
   public get Tier2Stances() {
     return store.getters.getStancesFromList(this.tier_2_.stances)
+  }
+  public get HasTier2Attacks() {
+    return this.tier_2_.attacks != undefined
+  }
+  public get Tier2Attacks() {
+    return store.getters.getAttacksFromList(this.tier_2_.attacks)
+  }
+  public get HasTier2SpiritAbilities() {
+    return this.tier_2_.spirit_abilities != undefined
+  }
+  public get Tier2SpiritAbilities() {
+    return store.getters.getManeuversFromList(this.tier_2_.spirit_abilities)
   }
   public get HasTier2Techniques() {
     return this.tier_2_.techniques != undefined
@@ -100,10 +120,6 @@ class Discipline {
   }
   public get Tier2Special() {
     return this.tier_2_.special
-  }
-  public get Tier2Unarmed() {
-    if (!Number.isNaN(this.tier_2_.unarmed)) return this.tier_2_.unarmed
-    return 0
   }
   // ==========================================================
   // SERIALIZATION

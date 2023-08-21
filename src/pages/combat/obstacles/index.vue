@@ -20,7 +20,7 @@
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
             ><div v-for="obstacle in obstacles" style="width: 100%;" v-bind:key="obstacle.Name">
-              <div v-if="obstacle.Name == 'Earth Pillar' || obstacle.Name == 'Earth Block'">
+              <div>
                 <v-btn @click="selectedObstacle = obstacle" class="button--style" depressed tile block>
                   {{ obstacle.Name }}
                 </v-btn>

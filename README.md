@@ -28,19 +28,20 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 BIG POST-PLAYTEST REWORK
 
+- SPIRIT ATTACKS
+
+  - Add a note for Disciplines that any Attacks you gain are ALSO learned by your Spirit
+
+- New Discipline Structure:
+
+  - Tier 1: Technique, any two Manuevers; rarely grant Major Attacks. For Spirits, one must be a Manifest.
+  - Tier 2: Stance, any two Manuevers. Usually grant a Major Attack. For Spirits, one must be a Manifest.
+
 - OBJECTIVE: Make a satisfying weapon-based gameplay loop that works well.
 
-  - STEP 1: Refactor defenses to be simpler and more satisfying.
+- Add Equipment (mostly just Water Flasks)
 
-  - Make Hazard attacks (telegraphs) have a more reasonable counterplay.
-    - Either make indicating them come earlier OR make off-turn movement more accessible.
-  - Simply too many options; with the number of Maneuvers and the like there's just too much to juggle.
-    - Condense Gambits/Flourishes into one pool and just keyword them as they are very similar in use.
-  - Need to make it more clear that tangible progress is being made/make it easier to track Conditions on a foe.
-    - Better indicate what defenses a creature has.
-  - General streamlining throughout. Potentially move away from Grit, Reflex, and Poise as resources and fold them into Stances in a more passive way.
-    - Make Grit/Reflex/Poise a pool that refreshes each Turn that is ONLY used to defend against attacks and make Momentum the only Token used to pay for Techniques/Boosts?
-  - Make offensive Spirit options more appealing; people seemed fairly focused on weapon attacks.
+- Change most 'Interacts' to 'On Attack'
 
 THINGS TO CLEAN
 
@@ -127,11 +128,11 @@ If you want to run this website locally (as it won't always be hosted), do the f
 
 Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt
 
-Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, and Tremorsight icons made by lorc.
+Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, Tremorsight, and Tide icons made by lorc.
 
 Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.
 
-Unarmed icon made by skoll.
+Unarmed and Natural Weapon icons made by skoll.
 
 Shield icon made by sbed.
 

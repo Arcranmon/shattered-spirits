@@ -4,10 +4,10 @@ from termcolor import colored
 import argparse
 
 STATUS_HALFX = ["Push", "Pull"]
-STATUS_1X = ["Vulnerable", "Wounded"]
+STATUS_1X = ["Vulnerable", "Wounded", "Slowed"]
 STATUS_1_HALFX = ["Exposed", "Impaired", "Dazed", "Grabbed", "Prone", "Hobbled"]
 
-def get_status_damage(status_string):
+def get_status_damage(status_string, glancing):
     split_status = status_string.split()
     if(len(split_status) == 0): return 0
     status = split_status[0]
@@ -23,11 +23,14 @@ def get_status_damage(status_string):
     if status in STATUS_1_HALFX:
         damage_multiplier = 1.5
         
+    glancing_mod = 0
+    if(glancing): glancing_mod = -1
+
     if damage_multiplier != 0:
         if 'x' in secondary:
-            return damage_multiplier * int(secondary[0]) * int(secondary[2])
+            return damage_multiplier * (int(secondary[0]) + glancing_mod) * int(secondary[2])
         else:
-            return damage_multiplier * int(secondary)
+            return damage_multiplier * (int(secondary)  + glancing_mod)
     return damage_multiplier
 
 
@@ -64,16 +67,23 @@ def estimate_damage(type, name, glancing, treat_status_as_damage):
             if(technique["name"] == name):
                 if("chart" in technique):
                     if(not("damage" in technique["chart"])):
-                        raise Exception("This Ability does not deal damage; cannot be analyzed.")
+                        damage_chart = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                    else:                        
+                        damage_chart = technique["chart"]["damage"]
                     hit = technique["chart"]["roll"]
-                    damage_chart = technique["chart"]["damage"]
+                    status_chart = technique["chart"]["status"]
                     if(len(technique["speed"]) == 1):
                         speed = int(technique["speed"])
+                    else:
+                        speed = int(technique["speed"][0])
     else:
         for weapon in data:
             if(weapon["name"] == name):
                 hit = weapon["chart"]["roll"]
-                damage_chart = weapon["chart"]["damage"]
+                if(not("damage" in weapon["chart"])):
+                    damage_chart = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                else:
+                    damage_chart = weapon["chart"]["damage"]
                 status_chart = weapon["chart"]["status"]
                 if("speed" in weapon):
                     speed = int(weapon["speed"])
@@ -107,9 +117,9 @@ def estimate_damage(type, name, glancing, treat_status_as_damage):
                 for status in status_chart[index].split(','):
                     if '/' in status:
                         options = status.split('/')
-                        damage += max([get_status_damage(x) for x in options])
+                        damage += max([get_status_damage(x, glancing) for x in options])
                     else:
-                        damage += get_status_damage(status)
+                        damage += get_status_damage(status, glancing)
 
             straight_damage[j] += straight[i]*damage
             advantage_damage[j] += advantage[i]*damage

@@ -8,7 +8,7 @@
   {
     "name": "Charged Attack",
     "desc": "You gather yourself before unleashing a devastating attack.",
-    "effect": "Choose a _Major Attack_ with a _Charged Effect_. Instead of immediately making the _Attack_, instead create a _Hazard_ equal to the _Area_ the _Charged Effect_ would Target (a single space within _Range_ if no Area is listed). End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the _Attack_ against all creatures in the _Area_. You may choose to not make this _Attack_ and instead gain 1 _Momentum_ when removing the _Hazard_.",
+    "effect": "Choose a _Major Attack_ with a _Charged Effect_. Instead of immediately making the _Attack_, instead create a _Hazard_ equal to the _Area_ the _Charged Effect_ would Target (a single space within _Range_ if no Area is listed). End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the _Attack_ against all creatures in the _Area_. You may choose to not make this _Attack_ and instead gain 2 _Momentum_ when removing the _Hazard_.",
     "special": "You may only use this _Attack_ when a _Technique_ specifically says to use it.",
     "class": "Major Attack"
   },
@@ -64,13 +64,41 @@
         "",
         "_Pull_ 1",
         "_Pull_ 1",
-        "_Pull_ 2/_Grabbed_ [1 _Dodge_]",
-        "_Pull_ 2/_Grabbed_ [1 _Dodge_]",
-        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 1",
-        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 1",
-        "_Pull_ 3/_Grabbed_ [2 _Dodge_], _Vulnerable_ 1",
-        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 2",
-        "_Pull_ 4/_Grabbed_ [3 _Dodge_], _Vulnerable_ 2"
+        "_Pull_ 2/_Grabbed_ [1 _Reflex_]",
+        "_Pull_ 2/_Grabbed_ [1 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_], _Vulnerable_ 1",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_], _Vulnerable_ 1",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_], _Vulnerable_ 1",
+        "_Pull_ 4/_Grabbed_ [3 _Reflex_], _Vulnerable_ 2",
+        "_Pull_ 4/_Grabbed_ [3 _Reflex_], _Vulnerable_ 2"
+      ]
+    },
+    "range_value": 1,
+    "class": "Minor Attack"
+  },
+  {
+    "name": "Swift Slam",
+    "desc": "A quick strike making use of the body itself to body-slam a foe.",
+    "type": "Light",
+    "keywords": ["Body", "Martial Arts"],
+    "speed": 2,
+    "damagetype": "Crush",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Grit_], _Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Grit_], _Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Grit_], _Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 2",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 2"
       ]
     },
     "range_value": 1,
@@ -93,21 +121,51 @@
         "",
         "_Push_ 1, _Vulnerable_ 1",
         "_Push_ 1, _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Block_], _Vulnerable_ 1",
-        "_Push_ 3/_Prone_ [3 _Block_], _Vulnerable_ 2",
-        "_Push_ 3/_Prone_ [3 _Block_], _Vulnerable_ 2"
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 3/_Prone_ [3 _Grit_], _Vulnerable_ 2",
+        "_Push_ 3/_Prone_ [3 _Grit_], _Vulnerable_ 2"
       ]
     },
+    "boost": "1 _Momentum_: Add [_Forceful_].",
+    "range_value": 1,
+    "class": "Minor Attack"
+  },
+  {
+    "name": "Heavy Slam",
+    "desc": "An untrained strike making use of a heavy form to body-slam a foe.",
+    "type": "Heavy",
+    "keywords": ["Body", "Martial Arts"],
+    "speed": 6,
+    "damagetype": "Crush",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Push_ 2, _Vulnerable_ 1",
+        "_Push_ 2, _Vulnerable_ 1",
+        "_Push_ 3/_Prone_ [2 _Grit_], _Vulnerable_ 2",
+        "_Push_ 3/_Prone_ [2 _Grit_], _Vulnerable_ 2",
+        "_Push_ 3/_Prone_ [2 _Grit_], _Vulnerable_ 2",
+        "_Push_ 3/_Prone_ [2 _Grit_], _Vulnerable_ 2",
+        "_Push_ 4/_Prone_ [3 _Grit_], _Vulnerable_ 3",
+        "_Push_ 4/_Prone_ [3 _Grit_], _Vulnerable_ 3"
+      ]
+    },
+    "boost": "1 _Momentum_: Add [_Forceful_].",
     "range_value": 1,
     "class": "Minor Attack"
   },
   {
     "name": "Swipe",
     "desc": "A swift attack using a natural weapon.",
-    "effect": "Make an _Attack_ using a _Natural_ _Melee_ Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "effect": "Make an _Attack_ using a _Natural_  Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
     "class": "Minor Attack"
   },
   {
@@ -141,23 +199,122 @@
     "effect": "Use a _Melee_ _Major Attack_. Add [_Blitz_, _Safe_] to your remaining Movement against that creature this _Turn_."
   },
   {
-    "name": "Minor Spirit Strike",
-    "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
-    "keywords": ["Spirit"],
-    "class": "Minor Attack",
+    "name": "Cutting Veil",
+    "desc": "You viciously rip water upward, disorienting a creature with a sudden veil of cutting water.",
+    "type": "Versatile",
+    "keywords": ["Spirit", "Water"],
+    "speed": 3,
+    "damagetype": "Slash",
     "range": "Ranged",
-    "range_value": "4 for Earth Spirits.",
-    "reqs": "Spirit is not _Summoned_.",
-    "effect": "Choose a _Minor Source_ within Range. Immediately use one of your spirit's _Minor Attacks_, originating from that space. If you choose a _Major Source_ within Range you have _Advantage_ on the Attack."
+    "range_value": 6,
+    "special": "This _Attack_ may only target _Soaked_ enemies or those in a _Watery_ space. After completing the _Attack_, remove _Soaked_ or reduce the value of the space by 1, whichever is applicable. If they are in a _Water Veil_, do not reduce the value, ignore any _Obstructed_ provided by the _Water Veil_, and the _Attack_ has _Advantage_.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 2, 2, 2, 3, 3, 4, 4],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
+    },
+    "class": "Minor Attack"
   },
   {
-    "name": "Major Spirit Strike",
-    "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
-    "keywords": ["Spirit"],
-    "class": "Major Attack",
+    "name": "Earthquake Step",
+    "desc": "You bring a leg crashing down, causing a shockwave to emanate forth and disrupt foe's footing.",
+    "class": "Minor Attack",
+    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "type": "Versatile",
+    "speed": "4",
+    "area": "_Line_ 3 or _Cone_ 2",
+    "range": "Self",
+    "ap": 1,
+    "boost": "Choose any number:\n* 1 _Momentum_: The Area becomes _Rough_.",
+    "special": "Any _Prone_ creatures in the _Area_ take 2 Crush Damage [_Avoidable_] on a _Hit_+.",
+    "chart": {
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1",
+        "_Vulnerable_ 1, _Slowed_ [1 _Reflex_]",
+        "_Vulnerable_ 1, _Slowed_ [1 _Reflex_]",
+        "_Vulnerable_ 1, _Slowed_ [1 _Reflex_]",
+        "_Vulnerable_ 1, _Slowed_ [1 _Reflex_]",
+        "_Vulnerable_ 1, _Slowed_ [1 _Reflex_]",
+        "_Vulnerable_ 1, _Slowed_ [2 _Reflex_]",
+        "_Vulnerable_ 1, _Slowed_ [2 _Reflex_]"
+      ]
+    }
+  },
+  {
+    "name": "Chip Shot",
+    "desc": "You fire a small shards of stone, pelting foes and limiting their reactions.",
+    "keywords": ["Earth"],
+    "class": "Minor Attack",
+    "type": "Versatile",
+    "speed": "4",
+    "damagetype": "Pierce",
     "range": "Ranged",
-    "range_value": "4 for Earth Spirits.",
-    "reqs": "Spirit is not _Summoned_.",
-    "effect": "Choose a _Minor Source_ within Range. Immediately use one of your spirit's _Major Attacks_, originating from that space. If you choose a _Major Source_ within Range you have _Advantage_ on the Attack."
+    "range_value": "6, _Minimum Range_ 1",
+    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 3. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
+    "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Chip Shot _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 3, 3, 4, 5, 5, 6, 6],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "", "", "", "_Exposed_ 1", "_Exposed_ 1"]
+    }
+  },
+  {
+    "name": "Stone Strike",
+    "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
+    "keywords": ["Earth"],
+    "class": "Major Attack",
+    "type": "Versatile",
+    "speed": "5",
+    "damagetype": "Crush",
+    "range": "Ranged",
+    "range_value": "6, _Minimum Range_ 1",
+    "charged_effect": "Instead, this Attack _Line_ 6. Add [_Pierce_] 1.",
+    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 4. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
+    "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Stone Strike _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 5, 6, 6, 7, 7, 9, 9],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Dazed_ 1, _Push_ 1",
+        "_Dazed_ 1, _Push_ 1",
+        "_Dazed_ 1, _Push_ 1, _Slowed_ [1 _Grit_]",
+        "_Dazed_ 1, _Push_ 1, _Slowed_ [1 _Grit_]",
+        "_Dazed_ 1, _Push_ 1, _Slowed_ [1 _Grit_]",
+        "_Dazed_ 1, _Push_ 1, _Slowed_ [2 _Grit_]",
+        "_Dazed_ 1, _Push_ 1, _Slowed_ [2 _Grit_]"
+      ]
+    }
+  },
+  { "name": "NPC ATTACKS" },
+  {
+    "name": "Passing Strike",
+    "desc": "A highly mobile attack that does not break your stride.",
+    "cost": "1 _Momentum_",
+    "class": "Major Attack",
+    "effect": "Use a _Melee_ _Major Attack_. Add [_Blitz_, _Safe_] to your remaining Movement against that creature this _Turn_."
+  },
+  {
+    "name": "Toxic Spray",
+    "desc": "A short-ranged spray of toxic chemicals.",
+    "type": "Versatile",
+    "keywords": ["Avoidable"],
+    "speed": 4,
+    "damagetype": "Poison",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
+    },
+    "range_value": 1,
+    "class": "Minor Attack"
   }
 ]

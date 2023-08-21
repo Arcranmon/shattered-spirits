@@ -18,6 +18,7 @@
           <div v-html="$marked.parseInline(npc.SizeText)" />
           <div v-html="$marked.parseInline(npc.EnduranceText)" />
           <div v-html="$marked.parseInline(npc.ArmorText)" />
+          <div v-html="$marked.parseInline(npc.SpecialText)" />
           <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
           <div v-for="trait in npc.Traits" :key="trait">
             <display-tooltip-text

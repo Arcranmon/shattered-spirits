@@ -49,7 +49,7 @@
         <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter"
       /></v-col> </v-row
   ></span>
-  <span v-else>
+  <div v-else style="margin-top: 1em;">
     <v-row justify="center" class="background--color">
       <v-col cols="2" class="sidebar">
         <div v-for="(character, index) in characters" :key="index" class="button--spacing">
@@ -108,9 +108,10 @@
             </v-btn>
           </v-col>
         </v-row>
-        <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter"
-      /></v-col> </v-row
-  ></span>
+        <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter" :key="selectedCharacter.Name"
+      /></v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>

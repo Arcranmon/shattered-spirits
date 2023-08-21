@@ -2,8 +2,8 @@
   {
     "name": "Airborne",
     "desc": "A creature knocked into the air and unable to defend themselves.",
-    "effect": "Attacks against an Airborne creature have _Advantage_ and gain [_Sure Hit_ 2]. Additionally, while Airborne, their _Elevation_ is increased by 1, but they do not gain any bonuses from this.",
-    "remove": "Creature are Airborne until the end of the current _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_.",
+    "effect": "Attacks against an Airborne creature have _Advantage_. Additionally, while Airborne, their _Elevation_ is increased by 1, but they do not gain any bonuses from this.",
+    "remove": "Creature are Airborne until the end of the next _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_.",
     "type": "Hide"
   },
   {
@@ -77,8 +77,8 @@
   {
     "name": "Grabbed",
     "effect": "While a creature is Grabbed they suffer the following effects:\n* The Grabbed creature becomes _Stuck_.\n* When the creature grabbing them _Moves_, so does the Grabbed creature.\n* The creature grabbing them may expend 1 spaces of _Movement_ to inflict _Pull_ 1 on the Grabbed creature.\n* The creature grabbing may expend _Grit_ to negate _Forced Movement_ effects for the Grabbed creature.",
-    "special": "By default, a creature may only Grab a creature one Size larger than them. If they inflict Grabbed on a creature larger than that, they instead inflict _Riding_. If a creature inflicts Grab on a creature they are already Grabbing they may instead inflict _Pull_ 3.",
-    "remove": "The grabbing creature may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_. The Grabbed creature and the grabber both roll 2d6. Either creature may expend 1 _Momentum_ for _Advantage_ on this _Roll_. If the Grabbed creature rolls higher than the grabber, the Grab ends. The larger creature in the Grab gets a +1 _Bonus_ to the roll, and the grabber gets a +1 _Bonus_ if they are using both _Hands_ for the Grab.",
+    "special": "Creatures that inflict _Grabbed_ on a creature more than twice their size instead halve their Movement rather than inflicting _Stuck_. If the creature is more than triple their size, the Grabbed creature has no penalty to their Movement, but the creature grabbing them moves with them. If a creature inflicts Grab on a creature they are already Grabbing they may instead inflict _Pull_ 3 or _Prone_ with the same cost to negate as the Grab, but using _Grit_.",
+    "remove": "The grabbing creature may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_. The Grabbed creature and the grabber both roll 2d6. Either creature may expend 2 _Momentum_ for _Advantage_ on this _Roll_. If the Grabbed creature rolls higher than the grabber, the Grab ends. The larger creature in the Grab gets a +1 _Bonus_ to the roll, and the grabber gets a +1 _Bonus_ if they are using both _Hands_ (or multiple _Grasping_ Weapons) for the Grab.",
     "type": "Status Effect"
   },
   {
@@ -147,10 +147,6 @@
     "type": "Instant Effect"
   },
   {
-    "name": "Top",
-    "see": "Grappled"
-  },
-  {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
     "effect": "The Target loses a total of X _Defenses_ in any combination (your choice), where X is the value of Dazed. You may instead place a Dazed token on them; the next time they would _Refresh_, apply all Dazed tokens as the first effect. All Dazed is removed after _Refreshing_.",
@@ -179,11 +175,9 @@
   {
     "name": "Insight",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "Once per Turn, when the creature that inflicted the Insight attacks the creature they may gain _Poise_, _Grit_, _Momentum_, or _Reflex_ in any combination equal to the creature's topmost Insight Token.",
-    "special": "When using a _Resist_ _Maneuver_ or Negating an effect, the creature that inflicted the Insight may reduce the Cost by the creature's topmost Insight Token's Value.",
-    "remove": "After gaining Tokens or reducing the cost of a Reaction, remove the creature's topmost Insight Token.",
-    "recover": "X _Poise_ removes X value of Insight.",
-    "type": "Hide"
+    "effect": "When you inflict Insight on a creature learn their exact current Health as well as their current and maximum _Defenses_.",
+    "remove": "Insight remains until an enemy removes the Insight for one of the following effects:\n* Gain a +1 _Bonus_ on an _Attack Roll_ against the creature.\n* Reduce the cost of a _Reaction_ triggered by the creature by 1.\n* Gain a _Fleeting_ _Defense_ against an attack by the creature.",
+    "type": "Status Effect"
   },
   {
     "name": "Vulnerable",
@@ -240,22 +234,17 @@
   {
     "name": "Soaked",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": " Soaked has no impact on its own, but some Abilities and Conditions reference it and it interacts with many other Elemental Conditions.",
-    "reacts": [
-      "<ins>Burn:</ins>  If a creature has any Burn Tokens and would gain a Soaked Token, they instead remove their topmost Burn Token.",
-      "<ins>Frost:</ins>  If a creature has any Frost Tokens and would gain a Soaked Token, they instead gain a Frost Token with a value equal to the Soaked Token they would have."
-    ],
-    "recover": "Soaked may not be Recovered from.",
+    "effect": "While Soaked a creature has _Resistance_ to _Fire_ Damage and is _Vulnerable_ to _Lightning_ Damage.",
+    "remove": "Soaked is removed when a creature takes _Fire_ or _Lightning_ Damage.",
     "type": "Hide"
   },
   {
     "name": "Courage",
     "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
-    "effect": "A creature gains _Momentum_/_Grit_ equal to their topmost Courage Token if they end their turn adjacent to a hostile creature.",
-    "remove": "Whenever a creature ends their turn adjacent to a hostile creature, remove their topmost Courage Token.",
-    "recover": "X+1 _Poise_ removes X value of Courage.",
-    "reacts": ["<ins>Fear:</ins> If a creature has any Fear Tokens and would gain a Courage Token, they instead remove their topmost Fear Token."],
-    "type": "Hide"
+    "effect": "Whenever a creature with _Courage_ ends their _Turn_ adjacent to a hostile creature they gain 2 _Vigor_.",
+    "remove": "A creature may remove _Courage_ for one of the following effects:\n* Use _Reposition_ for no cost. You must end this _Maneuver_ as close to a hostile creature as possible, and it may not gain [_Safe_] in any way.\n* After ending your _Turn_ adjacent to a hostile creature, gain 1 _Momentum_.\n* At any time, gain 2 _Fleeting_ _Grit_/_Poise_.",
+    "reacts": ["<ins>Fear:</ins> If a creature has Fear and would gain Courage, they instead remove Fear."],
+    "type": "Mental Affliction"
   },
   {
     "name": "Fear",
@@ -323,15 +312,15 @@
   {
     "name": "Slide",
     "desc": "You move a foe as you wish across the battlefield.",
-    "effect": "Move a target up to X squares in any direction, where X is the numerical value immediately after Slide in an Effect's description.",
-    "type": "Instant Effect2"
+    "effect": "Move a target up to X squares in a straight line in any direction, where X is the numerical value immediately after Slide in an Effect's description.",
+    "type": "Instant Effect"
   },
   { "name": "Slid", "see": "Slide" },
   {
     "name": "Slowed",
     "desc": "You weigh down a foe, limiting their ability to react.",
     "effect": "When a creature becomes Slowed their next Technique this Round has its Speed increased by 1. If the creature has no more Actions this round, they gain _Impaired_/_Dazed_ 1 (Attacker or Spirit Master's choice).",
-    "type": "Instant Effect2"
+    "type": "Instant Effect"
   },
   {
     "name": "Suppressed",

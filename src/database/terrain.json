@@ -13,6 +13,12 @@
     "effect": "None."
   },
   {
+    "name": "Defensive",
+    "desc": "A piece of terrain that, while not providing cover, provides some form of defense.",
+    "keywords": ["Derived"],
+    "effect": "Creatures have +1 _Guard_ while in a Defensive space. A creature may only benefit from a single Defensive space at a time."
+  },
+  {
     "name": "Rough",
     "desc": "Ground full of unsure footing and low obstacles that makes traveling through it difficult.",
     "keywords": ["Derived"],
@@ -20,11 +26,28 @@
     "overrides": ["Icicle", "Icy"]
   },
   {
+    "name": "Rushing Water",
+    "desc": "Terrain that represents a rapids or similarly fast-moving body of water.",
+    "keywords": ["_Watery_ (Infinite)"],
+    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters _Running Water_ or ends their _Turn_ in it, inflict _Soaked_."
+  },
+  {
     "name": "Running Water",
-    "desc": "Terrain that represents a river or similarly fast-moving body of water.",
-    "keywords": ["Watery"],
-    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 2 in the direction of the Running Water on all creatures in it. When a creature enters _Running Water_ or ends their _Turn_ in it, inflict _Wet_ 3.",
-    "negate": "1 _Grit_ negates the _Push_ effect."
+    "desc": "Terrain that represents a slow-moving body of water.",
+    "keywords": ["_Watery_ (Infinite)"],
+    "effect": "Characters must _Swim_ through this Terrain and gain _Soaked_ when they enter this space."
+  },
+  {
+    "name": "Shallow Water",
+    "desc": "Terrain that represents water that is deep enough that a creature must wade through it, but not deep enough to swim.",
+    "keywords": ["_Watery_ 2"],
+    "effect": "Movement through this _Terrain_ costs twice as much. If a creature becomes _Prone_ in this space they gain _Soaked_. If _Destroyed_, this space becomes _Wet_."
+  },
+  {
+    "name": "Deep Water",
+    "desc": "Terrain that represents still water that a creature must swim in.",
+    "keywords": ["_Watery_ 3"],
+    "effect": "Characters must _Swim_ through this Terrain and gain _Soaked_ when they enter this space. When _Destroyed_, this space becomes _Shallow Water_."
   },
   {
     "name": "Waterfall",
@@ -41,12 +64,12 @@
   {
     "name": "Wet",
     "desc": "Terrain with standing water that limits a stable footing.",
-    "keywords": ["Watery"],
-    "effect": "Increase the cost to _Negate_ _Push_, _Pull_, _Slide_, and _Prone_ by 1 while on Wet Terrain."
+    "keywords": ["Watery 1"],
+    "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* Increase the cost to negate all _Forced Movement_ effects by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.\n* A creature that starts their _Turn_ in this space loses a single space of Movement."
   },
   {
     "name": "Toxic Gas",
     "desc": "Stinky gas that does damage.",
-    "effect": "Creatures that end their _Turn_ in a space with this _Terrain_ gain _Impaired_ 1 and take 2 _True_ Damage. Additionally, treat this space as _Veiled_."
+    "effect": "Creatures that end their _Turn_ in a space with this _Terrain_ gain _Impaired_ 1 and take 2 _Poison_ Damage. Additionally, treat this space as _Veiled_."
   }
 ]

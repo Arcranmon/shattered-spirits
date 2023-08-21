@@ -46,8 +46,11 @@ class Armor {
   get DurabilityHeader() {
     if (this.durability_ != 0) return ', Durability ' + this.durability_
   }
+  get ArmorHeader() {
+    return '**Armor:** ' + this.guard_ + ' Guard, ' + this.durability_ + ' Durability'
+  }
   get WeightHeader() {
-    if (this.durability_ != 0) return ', Weight ' + this.weight_
+    if (this.durability_ != 0) return '**Weight:** ' + this.weight_
   }
   get HasSpecial() {
     return this.special_ != ''

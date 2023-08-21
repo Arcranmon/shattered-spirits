@@ -18,8 +18,8 @@
       <div v-if="stance.HasAccumulate">
         <display-tooltip-text :string="stance.AccumulateHeader" />
       </div>
-      <div v-if="stance.HasRefresh">
-        <display-tooltip-text :string="stance.RefreshHeader" />
+      <div v-if="stance.HasDefense">
+        <display-tooltip-text :string="stance.DefenseHeader" />
       </div>
       <div v-if="stance.HasEffect">
         <display-tooltip-text :string="stance.EffectHeader" />

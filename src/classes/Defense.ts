@@ -2,8 +2,8 @@ import { store } from '@/store'
 
 class Defense {
   private poise_: number
-  private block_: number
-  private dodge_: number
+  private grit_: number
+  private reflex_: number
 
   // ==========================================================
   // FORMATTED GETTERS
@@ -11,18 +11,18 @@ class Defense {
   get Poise() {
     return this.poise_
   }
-  get Block() {
-    return this.block_
+  get Grit() {
+    return this.grit_
   }
-  get Dodge() {
-    return this.dodge_
+  get Reflex() {
+    return this.reflex_
   }
 
   public get FormattedText() {
     var formatted_string = ''
-    if (this.block_ != 0) formatted_string = this.block_.toString() + ' _Block_'
+    if (this.grit_ != 0) formatted_string = this.grit_.toString() + ' _Grit_'
     if (this.poise_ != 0) formatted_string = this.SmartCommas(this.poise_.toString() + ' _Poise_', formatted_string)
-    if (this.dodge_ != 0) formatted_string = this.SmartCommas(this.dodge_.toString() + ' _Dodge_', formatted_string)
+    if (this.reflex_ != 0) formatted_string = this.SmartCommas(this.reflex_.toString() + ' _Reflex_', formatted_string)
     return formatted_string
   }
 
@@ -45,8 +45,8 @@ class Defense {
 
   public setRefreshData(data: IDefenseData): void {
     this.poise_ = data.poise || 0
-    this.block_ = data.block || 0
-    this.dodge_ = data.dodge || 0
+    this.grit_ = data.grit || 0
+    this.reflex_ = data.reflex || 0
   }
 }
 export default Defense

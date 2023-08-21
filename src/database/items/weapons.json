@@ -72,7 +72,7 @@
     "material": "Metal",
     "speed": 4,
     "damagetype": "Slash/Stab",
-    "charged_effect": "Deal +1 Damage on a _Graze_+.",
+    "charged_effect": "On a _Graze_+ deal +2 _Damage_ and inflict _Wounded_ 1.",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it. Iif this weapon is _Wielded_ in both hands, gain both effects.",
     "range": "Melee",
     "chart": {
@@ -107,7 +107,7 @@
     "speed": 5,
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
-    "charged_effect": "Deal +1 _Damage_ on a _Graze_+. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "charged_effect": "One a _Graze_+, inflict +3 Damage and inflict _Wounded_ 2. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "range": "Melee",
     "chart": {
       "damage": [0, 0, 5, 5, 6, 7, 8, 8, 9, 10, 11],
@@ -131,38 +131,6 @@
     "durability": 10,
     "range_value": 2,
     "type": "Heavy"
-  },
-  {
-    "name": "Colossal Blade",
-    "category": "Bladed2",
-    "desc": "A massive blade meant to be wielded in both hands, this weapon can cleave through most defenses.",
-    "keywords": ["Heavy", "_Overwhelming_ 1"],
-    "speed": 5,
-    "damagetype": "Slash/Stab",
-    "parry": "Gain 2 _Grit_.",
-    "charged_effect": "_Cone_ 2/_Arc_ 1 (_Self_ Range)",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 7, 7, 8, 9, 10, 11, 12, 13, 14],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Wounded_ 1, _Exposed_ 1",
-        "_Wounded_ 1, _Exposed_ 1",
-        "_Wounded_ 1, _Exposed_ 1",
-        "_Wounded_ 1x2, _Exposed_ 1",
-        "_Wounded_ 1x2, _Exposed_ 1",
-        "_Wounded_ 2, _Wounded_ 1, _Exposed_ 1",
-        "_Wounded_ 2, _Wounded_ 1, _Exposed_ 1"
-      ]
-    },
-    "weight": 4,
-    "hands": 2,
-    "durability": 10,
-    "range_value": 2
   },
   {
     "name": "Iron Handaxe",
@@ -205,7 +173,7 @@
     "keywords": ["Siege", "_Overwhelming_ 1", "Hand-and-a-Half"],
     "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
     "material": "Metal, Wood",
-    "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
+    "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
     "speed": 5,
     "damagetype": "Slash",
     "range": "Melee",
@@ -241,7 +209,7 @@
     "damagetype": "Slash",
     "material": "Metal, Wood",
     "range": "Melee",
-    "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
     "chart": {
       "damage": [0, 0, 0, 5, 6, 7, 8, 10, 11, 13, 13],
@@ -271,7 +239,7 @@
     "type": "Versatile",
     "desc": "A simple weapon with a heavy, weighted head.",
     "keywords": ["_Pierce_ 1"],
-    "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 1].",
+    "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1].",
     "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
     "material": "Metal, Wood",
     "speed": 4,
@@ -294,7 +262,7 @@
     "desc": "A heavy weapon that disregards all but the heaviest of armors.",
     "keywords": ["Siege", "_Pierce_ 1", "Hand-and-a-Half"],
     "speed": 6,
-    "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
+    "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
     "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
     "material": "Metal, Wood",
     "damagetype": "Crush",
@@ -317,7 +285,7 @@
     "keywords": ["Siege", "_Pierce_ 2"],
     "speed": 7,
     "damagetype": "Crush",
-    "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "charged_effect": "Deal +4 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
     "material": "Metal, Wood",
     "range": "Melee",
@@ -332,70 +300,10 @@
     "range_value": 2
   },
   {
-    "name": "Colossal Hammer",
-    "category": "Hafted2",
-    "desc": "A hammer with a head nearly the size of a man, barely able to be lifted by most.",
-    "keywords": ["Colossal", "Heavy", "Siege", "_Pierce_ 4"],
-    "speed": 6,
-    "damagetype": "Slash",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 0, 3, 4, 7, 10, 13, 16, 18, 20],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Push_ 1, _Exposed_ 1 (2 _Grit_)",
-        "_Push_ 1, _Exposed_ 1 (2 _Grit_)",
-        "_Push_ 1, _Exposed_ 1 (2 _Grit_)",
-        "_Push_ 2, _Exposed_ 1x2 (3 _Grit_)",
-        "_Push_ 2, _Exposed_ 2, _Exposed_ 1 (3 _Grit_)"
-      ]
-    },
-    "weight": 6,
-    "hands": 2,
-    "durability": 13,
-    "range_value": 2
-  },
-  {
-    "name": "Colossal Axe",
-    "category": "Hafted2",
-    "desc": "A massive, oversized axe that could fell a tree in a single swing.",
-    "keywords": ["Colossal", "Heavy", "Siege"],
-    "speed": 6,
-    "damagetype": "Slash",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 0, 5, 7, 9, 10, 12, 14, 16, 18],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Exposed_ 2 (2 _Grit_)",
-        "_Exposed_ 2 (2 _Grit_)",
-        "_Exposed_ 2 (2 _Grit_)",
-        "_Exposed_ 2x2 (3 _Grit_)",
-        "_Exposed_ 2x2 (3 _Grit_)"
-      ]
-    },
-    "weight": 6,
-    "hands": 2,
-    "durability": 12,
-    "range_value": 2
-  },
-  {
     "name": "Small Improvised",
     "category": "Improvised",
     "desc": "A small weapon that could easily be fit in a hand, such as a stone or bottle.",
-    "keywords": ["Light", "_hrown_ 3"],
+    "keywords": ["Light", "_Thrown_ 3", "Quickdraw"],
     "speed": 2,
     "damagetype": "Varying",
     "range": "Melee",
@@ -423,7 +331,7 @@
     "name": "Medium Improvised",
     "category": "Improvised",
     "desc": "An object that is light enough to be wielded in one hand, such as a chair or tree branch.",
-    "keywords": ["Versatile", "_hrown_ 2"],
+    "keywords": ["Versatile", "_Thrown_ 2"],
     "speed": 3,
     "damagetype": "Varying",
     "range": "Melee",
@@ -487,7 +395,7 @@
     "material": "Metal, Wood",
     "damagetype": "Stab",
     "range": "Melee",
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
+    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
     "chart": {
       "damage": [0, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -518,10 +426,10 @@
     "keywords": ["Versatile", "Hand-and-a-Half"],
     "speed": 3,
     "damagetype": "Stab",
-    "charged_effect": "Instead, make this _Attack_ in a _Self_-Range _Line_ 2.",
+    "charged_effect": "On a _Graze_+, deal +1 Damage. Make this _Attack_ in a _Self_-Range _Line_ 2.",
     "range": "Melee",
     "material": "Metal, Wood",
-    "parry": "Gain the following benefits:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* If this _Weapon_ is _Wielded_ in both hands, gain 1 _Guard_ against the Attack.",
+    "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* If this _Weapon_ is _Wielded_ in both hands, gain 1 _Guard_ against the Attack.",
     "chart": {
       "damage": [0, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -551,10 +459,10 @@
     "desc": "A powerful weapon with unparalleled reach and the weight to deal heavy damage to foes.",
     "speed": 4,
     "damagetype": "Stab",
-    "charged_effect": "Instead, make this _Attack_ in a _Self_-Range _Line_ 3 and add [_Pierce_ 1].",
+    "charged_effect": "On a _Graze_+, deal +2 Damage. Make this _Attack_ in a _Self_-Range _Line_ 3 and add [_Pierce_ 1].",
     "range": "Melee",
     "material": "Metal, Wood",
-    "parry": "Gain the following benefits:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* Gain 1 _Guard_ against the Attack.",
+    "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* Gain 1 _Guard_ against the Attack.",
     "chart": {
       "damage": [0, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -578,36 +486,6 @@
     "range_value": 3
   },
   {
-    "name": "Colossal Spear",
-    "category": "Pole2",
-    "desc": "A near-comically long spear that can strike at great distances.",
-    "keywords": ["Colossal", "Heavy"],
-    "speed": 5,
-    "damagetype": "Stab",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 6, 7, 7, 8, 8, 8, 9, 9, 10, 10],
-      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Hobbled_ [1 _Grit_/_Reflex_] (2 _Reflex_)",
-        "_Hobbled_ [1 _Grit_/_Reflex_] (2 _Reflex_)",
-        "_Hobbled_ [1 _Grit_/_Reflex_] (2 _Reflex_)",
-        "_Hobbled_ [2 _Grit_/_Reflex_] (3 _Reflex_)",
-        "_Hobbled_ [2 _Grit_/_Reflex_] (3 _Reflex_)"
-      ]
-    },
-    "weight": 6,
-    "hands": 2,
-    "durability": 10,
-    "range_value": 4
-  },
-  {
     "name": "Recurve Bow",
     "category": "Projectile",
     "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilities.",
@@ -619,21 +497,9 @@
     "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
     "range": "Range",
     "chart": {
-      "damage": [0, 0, 0, 0, 4, 5, 5, 6, 7, 9, 9],
+      "damage": [0, 0, 0, 0, 4, 5, 6, 6, 7, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [2 _Grit_/_Reflex_]",
-        "_Hobbled_ [2 _Grit_/_Reflex_]"
-      ]
+      "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
     "weight": 2,
     "hands": 2,
@@ -675,23 +541,11 @@
     "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
     "range": "Range",
     "chart": {
-      "damage": [0, 0, 0, 0, 7, 8, 8, 9, 10, 11, 11],
+      "damage": [0, 0, 0, 0, 7, 8, 9, 9, 10, 11, 11],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [2 _Grit_/_Reflex_]",
-        "_Hobbled_ [2 _Grit_/_Reflex_]"
-      ]
+      "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
-    "weight": 5,
+    "weight": 4,
     "hands": 2,
     "durability": 8,
     "range_value": 12
@@ -711,54 +565,12 @@
     "chart": {
       "damage": [0, 0, 0, 0, 10, 11, 11, 12, 13, 14, 14],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [1 _Grit_/_Reflex_]",
-        "_Hobbled_ [2 _Grit_/_Reflex_]",
-        "_Hobbled_ [2 _Grit_/_Reflex_]"
-      ]
+      "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
     "weight": 5,
     "hands": 2,
     "durability": 9,
     "range_value": 12
-  },
-  {
-    "name": "Colossal Bow",
-    "category": "Projectile2",
-    "desc": "A heavy bow that has unparalleled range and power, allowing deadly strikes from extreme range.",
-    "keywords": ["Colossal", "Heavy", "Ordnance", "_Artillery_ 5"],
-    "speed": 5,
-    "damagetype": "Stab",
-    "range": "Range",
-    "chart": {
-      "damage": [0, 0, 0, 0, 9, 10, 11, 12, 13, 14, 15],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_)",
-        "_Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_)",
-        "_Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_)",
-        "_Hobbled_ [2 _Grit_/_Reflex_] (3 _Grit_)",
-        "_Hobbled_ [2 _Grit_/_Reflex_] (3 _Grit_)"
-      ]
-    },
-    "weight": 6,
-    "hands": 2,
-    "durability": 8,
-    "range_value": 14
   },
   {
     "name": "Iron Buckler",
@@ -914,454 +726,83 @@
     "range_value": 1
   },
   {
-    "name": "Small Fangs",
+    "name": "Small Jaws",
     "category": "Natural",
-    "desc": "A fanged bite for creatures such as wolves and predatory cats.",
-    "keywords": ["Light"],
-    "speed": 2,
-    "damagetype": "Pierce",
-    "range": "Melee",
-    "special": "This Weapon has _Advantage_ on Attacks against creatures you have _Grappled_ and gain _Pierce_ 1. However, while you are _Grappling_ a creature, this Weapon may only be used against that creature.",
-    "chart": {
-      "damage": [0, 0, 0, 2, 2, 3, 4, 6, 7, 9, 11],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Grapple_ (1 _Grit_/_Reflex_)",
-        "_Grapple_ (1 _Grit_/_Reflex_)",
-        "_Grapple_ (2 _Grit_/_Reflex_)",
-        "_Grapple_ (2 _Grit_/_Reflex_)",
-        "_Pull_ 1 (1 _Grit_/_Reflex_)",
-        "_Pull_ 1 (1 _Grit_/_Reflex_)"
-      ]
-    },
-    "flag": "NPC",
-    "hands": 0
-  },
-  {
-    "name": "Calf Slicer",
-    "category": "Unarmed2",
-    "desc": "A swift kick that knocks the legs out from under a foe, impairing their movement.",
-    "keywords": ["Kick", "Light"],
-    "speed": 2,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "You do not have _Disadvantage_ on _Attacks_ with this Weapon while _Prone_.",
-    "chart": {
-      "damage": [0, 0, 0, 1, 1, 1, 2, 3, 3, 4, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Exposed_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1, _Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1, _Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1, _Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1, _Hobbled_ [1 _Grit_/_Reflex_] (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1/_Prone_ (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1/_Prone_ (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1/_Prone_ (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Bell Ringer",
-    "category": "Unarmed2",
-    "desc": "A risky strike that smashes a head into another, leaving one of the participants dazed and unable to respond.",
-    "keywords": ["Body", "Heavy"],
-    "speed": 2,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If the foe _Negates_ you are inflicted with the Status instead, with the cost to _Negate_ decreased by 1. In addition, you do not have _Disadvantage_ on _Attacks_ with this Weapon while _Restrained_.",
-    "chart": {
-      "damage": [0, 0, 0, 2, 2, 2, 3, 3, 4, 4, 4],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1x2 (2 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1x2 (3 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1x2 (3 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1x2, (4 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1x2, (4 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1x2, (4 _Grit_/_Poise_), _Vulnerable_ 2 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Crushing Elbow",
-    "category": "Unarmed2",
-    "desc": "A brutal attack with an elbow, rattling a foe while breaking grapples.",
-    "keywords": ["Body", "Versatile"],
-    "speed": 2,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "Attacks with this Weapon have _Advantage_ against any creature you are in a _Grapple_ with if you are the _Bottom_. While the _Bottom_, on a _Hit_+, you may treat your expended _Grit_/_Momentum_ as 1 higher for the _Grapple Contest_ this _Turn_.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 1, 2, 2, 3, 3, 4, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Dazed_ 1 (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Dazed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Dazed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Knifehand Strike",
-    "category": "Unarmed2",
-    "desc": "A strike with the edge of a hand, inflicting more serious damage while limiting a foe's offense.",
-    "keywords": ["Fist", "Versatile"],
-    "speed": 2,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you inflict _Impaired_, you may instead choose to add that value to an existing _Impaired_ Token the creature has.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Impaired_ 1 (1 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 1 (1 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 1x2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 1x2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 1x2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 1x2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 2, _Impaired_ 1 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Impaired_ 2, _Impaired_ 1 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Impaired_ 2, _Impaired_ 1 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)"
-      ]
-    },
-    "hands": 1,
-    "range_value": 1
-  },
-  {
-    "name": "Forceful Palm",
-    "category": "Unarmed2",
-    "desc": "A strike with an open hand that knocks foes off-balance.",
-    "keywords": ["Fist", "Light"],
-    "speed": 2,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you inflict _Vulnerable_, you may instead choose to add that value to an existing _Vulnerable_ Token the creature has.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Exposed_ 1, _Push_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1, _Push_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1, _Push_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1, _Push_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1x2, _Push_ 1 (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1x2, _Push_ 1 (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1x2, _Push_ 1 (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Vulnerable_ 1, _Push_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Vulnerable_ 1, _Push_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)"
-      ]
-    },
-    "hands": 1,
-    "range_value": 1
-  },
-  {
-    "name": "Snakebite Fist",
-    "category": "Unarmed2",
-    "desc": "A jab that moves with the speed of a striking snake.",
-    "keywords": ["Fist", "Light"],
-    "speed": 2,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you inflict _Dazed_, you may instead choose to add that value to an existing _Dazed_ Token the creature has.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 3],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Dazed_ 1 (1 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (1 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (2 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 2 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 2 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 2 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)"
-      ]
-    },
-    "hands": 1,
-    "range_value": 1
-  },
-  {
-    "name": "Medium Fangs",
-    "category": "Natural",
-    "desc": "A fanged bite for creatures such as wolves and predatory cats.",
-    "keywords": ["Natural"],
-    "speed": 3,
-    "damagetype": "Pierce",
-    "range": "Melee",
-    "special": "This Weapon has _Advantage_ on Attacks against creatures you have _Grappled_ and gains _Pierce_ 1.",
-    "chart": {
-      "damage": [0, 0, 0, 3, 3, 4, 5, 7, 8, 10, 12],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "_Grapple_ (2 _Grit_/_Reflex_)",
-        "_Grapple_ (2 _Grit_/_Reflex_)",
-        "_Grapple_ (3 _Grit_/_Reflex_)",
-        "_Grapple_ (3 _Grit_/_Reflex_)",
-        "_Pull_ 2 (1 _Grit_/_Reflex_)",
-        "_Pull_ 2 (1 _Grit_/_Reflex_)"
-      ]
-    },
-    "flag": "NPC",
-    "hands": 0
-  },
-  {
-    "name": "Falling Axe Kick",
-    "category": "Unarmed2",
-    "desc": "A powerful, but risky kick relying on the heel that is particularly effective against creatures on the ground.",
-    "keywords": ["Heavy", "Kick"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "Attacks with this Weapon have a +1 Bonus against _Prone_ foes. If you _Miss_/_Graze_ with this Attack, gain _Exposed_ 1.",
-    "chart": {
-      "damage": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Exposed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Exposed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Exposed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Vulnerable_ 1, (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Vulnerable_ 1, (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Rising Knee",
-    "category": "Unarmed2",
-    "desc": "A strike with the knee that deals devastating damage to any creature you have grappled and can easily break a creature's guard.",
-    "keywords": ["Kick", "Versatile"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "Attacks with this Weapon have _Advantage_ against any creature you are in a _Grapple_ with if you are the _Top_. In addition, on a _Hit_+, add _Dazed_ 2.",
-    "chart": {
-      "damage": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Exposed_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 1 (2 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Exposed_ 2 (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 2 (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Exposed_ 2 (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Vulnerable_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Vulnerable_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Stone-Shattering Fist",
-    "category": "Unarmed2",
-    "desc": "A massive swing that deals massive damage and knocks a foe off-balance.",
-    "keywords": ["Fist", "Heavy"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you _Miss_ with this Weapon, gain _Exposed_ 1.",
-    "chart": {
-      "damage": [0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Dazed_ 1 (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 1 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Dazed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Dazed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Dazed_ 2 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)"
-      ]
-    },
-    "hands": 1,
-    "range_value": 1
-  },
-  {
-    "name": "Thunderclap Kick",
-    "category": "Unarmed2",
-    "desc": "A quick kick that surprises a foe, limiting their offense and movement.",
-    "keywords": ["Kick", "Versatile"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "You may reduce the Value of an _Impaired_ Token inflicted by this _Attack_ by 2. If you do, add _Hobbled_ [1 _Grit_/_Reflex_].",
-    "chart": {
-      "damage": [0, 0, 0, 1, 1, 2, 3, 4, 4, 5, 5],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Impaired_ 1 (1 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 1 (1 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 2 (2 _Poise_/_Grit_), _Vulnerable_ 1 (Always)",
-        "_Impaired_ 3 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Impaired_ 3 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)",
-        "_Impaired_ 3 (3 _Poise_/_Grit_), _Vulnerable_ 2 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Thousand-Pound Crash",
-    "category": "Unarmed2",
-    "desc": "A powerful slam with the body, knocking foes about like ragdolls.",
-    "keywords": ["Body", "Heavy"],
-    "speed": 3,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you _Push_ with this Weapon you may _Move_ an equal amount without expending Movement without provoking _Punishes_ from your Target. Increase your _Guard_ by 1 during this _Movement_.",
-    "chart": {
-      "damage": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Push_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Push_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Push_ 1 (1 _Grit_/_Reflex_), _Vulnerable_ 1 (Always)",
-        "_Push_ 2 (2 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Push_ 2 (2 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Push_ 2 (2 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Push_ 3, _Prone_ (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Push_ 3, _Prone_ (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)",
-        "_Push_ 3, _Prone_ (3 _Grit_/_Reflex_), _Vulnerable_ 2 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Tornado Kick",
-    "category": "Unarmed2",
-    "desc": "A kick making full use of the body that throws foes backwards and deals heavy damage.",
-    "keywords": ["Heavy", "Kick"],
-    "speed": 4,
-    "damagetype": "Crush",
-    "range": "Melee",
-    "special": "If you _Push_ a creature into an _Obstacle_ increase the cost to _Negate_ by 1 and inflict an additional _Vulnerable_ of the same value (Always). If you _Miss_ with this Weapon, gain _Exposed_ 1.",
-    "chart": {
-      "damage": [0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 5],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Push_ 1 (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Push_ 1 (1 _Grit_/_Poise_), _Vulnerable_ 1 (Always)",
-        "_Push_ 2 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Push_ 2 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Push_ 2 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Push_ 2 (2 _Grit_/_Poise_), _Vulnerable_ 2 (Always)",
-        "_Push_ 3 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Push_ 3 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)",
-        "_Push_ 3 (3 _Grit_/_Poise_), _Vulnerable_ 3 (Always)"
-      ]
-    },
-    "hands": 0,
-    "range_value": 1
-  },
-  {
-    "name": "Large Fangs",
-    "category": "Natural",
-    "desc": "A fanged bite for creatures such as wolves and predatory cats.",
-    "keywords": ["Heavy"],
-    "speed": 4,
-    "damagetype": "Pierce",
-    "range": "Melee",
-    "special": "This Weapon has _Advantage_ on Attacks against creatures you have _Grappled_ and gain _Pierce_ 1.",
-    "chart": {
-      "damage": [0, 0, 0, 4, 4, 5, 6, 8, 10, 12, 14],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "_Grapple_ (2 _Grit_/_Reflex_)",
-        "_Grapple_ (2 _Grit_/_Reflex_)",
-        "_Grapple_ (3 _Grit_/_Reflex_)",
-        "_Grapple_ (3 _Grit_/_Reflex_)",
-        "_Pull_ 1 (1 _Grit_/_Reflex_)",
-        "_Pull_ 1 (1 _Grit_/_Reflex_)",
-        "_Pull_ 2 (1 _Grit_/_Reflex_)",
-        "_Pull_ 2 (1 _Grit_/_Reflex_)"
-      ]
-    },
-    "flag": "NPC",
-    "hands": 0
-  },
-  {
-    "name": "Small Mandibles",
-    "desc": "The crushing jaws of a large insect.",
-    "category": "Natural",
-    "class": "Major Attack",
+    "desc": "A natural weapon for light fangs, mandibles, or pincers.",
     "type": "Light",
+    "keywords": ["Grasping"],
     "speed": 3,
-    "damagetype": "Crush",
-    "special": "Gain a +1 _Bonus_ against _Grabbed_ Targets.",
-    "parry": "Gain the following benefits if the trigging Attack was Light/Versatile:\n* Gain 1 _Guard_.",
+    "damagetype": "Stab/Crush",
+    "parry": "If the triggering _Attack_ is _Light_/_Versatile_, opponent chooses: Either they gain _Pull_ 1, _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
     "range": "Melee",
     "range_value": 1,
+    "special": "Gain a +1 _Bonus_ on _Attack Rolls_ and add [_Pierce_ 1] against creatures _Grabbed_ by this _Weapon_.",
     "chart": {
-      "damage": [0, 0, 0, 2, 3, 5, 6, 7, 8, 9, 9],
+      "damage": [0, 0, 0, 3, 4, 5, 5, 6, 7, 8, 8],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Pull_ 1",
+        "_Pull_ 1",
+        "_Pull_ 2/_Grabbed_ [1 _Reflex_]",
+        "_Pull_ 2/_Grabbed_ [1 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_]"
+      ]
+    },
+    "hands": 0
+  },
+  {
+    "name": "Medium Jaws",
+    "category": "Natural",
+    "desc": "A natural weapon for average fangs, mandibles, or pincers.",
+    "type": "Versatile",
+    "keywords": ["Grasping"],
+    "speed": 5,
+    "damagetype": "Stab/Crush",
+    "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Pierce_ 1].",
+    "parry": "Opponent chooses: Either they gain _Pull_ 1, _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
+    "range": "Melee",
+    "range_value": 1,
+    "special": "Gain a +1 _Bonus_ on _Attack Rolls_ and add [_Pierce_ 1] against creatures _Grabbed_ by this _Weapon_. If a creature is already _Grabbed_ by this Weapon and you would inflict _Grabbed_ again, instead inflict _Prone_.",
+    "chart": {
+      "damage": [0, 0, 0, 5, 6, 6, 7, 8, 8, 9, 9],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Pull_ 2/_Grabbed_ [1 _Reflex_]",
+        "_Pull_ 2/_Grabbed_ [1 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [2 _Reflex_]",
+        "_Pull_ 4/_Grabbed_ [3 _Reflex_]",
+        "_Pull_ 4/_Grabbed_ [3 _Reflex_]"
+      ]
+    },
+    "hands": 0
+  },
+  {
+    "name": "Large Jaws",
+    "category": "Natural",
+    "desc": "A natural weapon for heavy fangs, mandibles, or pincers.",
+    "type": "Heavy",
+    "keywords": ["Grasping"],
+    "speed": 7,
+    "damagetype": "Stab/Crush",
+    "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 2, _Pierce_ 1].",
+    "parry": "Opponent chooses: Either they gain _Pull_ 1, _Vulnerable_ 2 or you reduce the _Attack Roll_ by 1.",
+    "range": "Melee",
+    "range_value": 1,
+    "special": "Gain a +1 _Bonus_ on _Attack Rolls_ and add [_Pierce_ 2] against creatures _Grabbed_ by this _Weapon_. If a creature is already _Grabbed_ by this Weapon and you would inflict _Grabbed_ again, instead inflict _Prone_.",
+    "chart": {
+      "damage": [0, 0, 0, 7, 8, 9, 9, 10, 11, 12, 12],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -1369,20 +810,410 @@
         "",
         "_Pull_ 1",
         "_Pull_ 1",
-        "_Pull_ 1, _Vulnerable_ 1",
-        "_Pull_ 1, _Vulnerable_ 1",
-        "_Pull_ 1, _Vulnerable_ 1",
-        "_Pull_ 1, _Vulnerable_ 1",
-        "_Pull_ 2, _Vulnerable_ 1",
-        "_Pull_ 2, _Vulnerable_ 1"
+        "_Pull_ 2/_Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2/_Grabbed_ [2 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [3 _Reflex_]",
+        "_Pull_ 3/_Grabbed_ [3 _Reflex_]",
+        "_Pull_ 4/_Grabbed_ [4 _Reflex_]",
+        "_Pull_ 4/_Grabbed_ [4 _Reflex_]"
       ]
     },
-    "flag": "NPC"
+    "hands": 0
+  },
+  {
+    "name": "Small Stinger",
+    "category": "Natural",
+    "desc": "A small natural weapon suitable for stingers, barbs, and needles.",
+    "speed": 2,
+    "damagetype": "Stab",
+    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Wounded_ 2 or you reduce the _Attack Roll_ by 1.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 1, 2, 2, 3, 3, 3, 4, 4],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 2, _Impaired_ 1",
+        "_Wounded_ 2, _Impaired_ 1"
+      ]
+    },
+    "range_value": 1,
+    "type": "Light"
+  },
+  {
+    "name": "Medium Stinger",
+    "category": "Natural",
+    "desc": "A natural weapon suitable for stingers, barbs, and needles.",
+    "speed": 4,
+    "damagetype": "Stab",
+    "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2.",
+    "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Wounded_ 2 or you reduce the _Attack Roll_ by 1.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 2, 2, 3, 3, 4, 5, 5, 6, 7, 7],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 2, _Impaired_ 2",
+        "_Wounded_ 2, _Impaired_ 2"
+      ]
+    },
+    "range_value": 2,
+    "type": "Versatile"
+  },
+  {
+    "name": "Large Stinger",
+    "category": "Natural",
+    "desc": "A heavy natural weapon suitable for stingers, barbs, and needles.",
+    "speed": 6,
+    "keywords": ["_Pierce_ 1"],
+    "damagetype": "Stab",
+    "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2 and add _Wounded_ 1 on a _Graze_+.",
+    "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Wounded_ 3 or you reduce the _Attack Roll_ by 1.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 3, 3, 4, 5, 6, 6, 6, 7, 8, 8],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 1, _Impaired_ 1",
+        "_Wounded_ 2, _Impaired_ 2",
+        "_Wounded_ 2, _Impaired_ 2",
+        "_Wounded_ 3, _Impaired_ 3",
+        "_Wounded_ 3, _Impaired_ 3"
+      ]
+    },
+    "range_value": 2,
+    "type": "Heavy"
+  },
+  {
+    "name": "Small Claws",
+    "category": "Natural",
+    "desc": "A small natural weapon suitable for claws, talons, and other shredding attacks.",
+    "speed": 2,
+    "damagetype": "Slash",
+    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1 or gain 1 Guard against it.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 2, 2, 3, 4, 4, 5, 5, 6, 6],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Wounded_ 1", "_Wounded_ 1", "_Wounded_ 1", "_Wounded_ 2", "_Wounded_ 2"]
+    },
+    "range_value": 1,
+    "type": "Light"
+  },
+  {
+    "name": "Medium Claws",
+    "category": "Natural",
+    "desc": "A natural weapon suitable for claws, talons, and other shredding attacks.",
+    "speed": 4,
+    "damagetype": "Slash",
+    "charged_effect": "Deal +1 Damage on a _Graze_+.",
+    "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 or gain 1 Guard against it.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 4, 4, 5, 6, 6, 7, 8, 9, 9],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Wounded_ 1", "_Wounded_ 1", "_Wounded_ 1", "_Wounded_ 2", "_Wounded_ 2"]
+    },
+    "range_value": 1,
+    "type": "Versatile"
+  },
+  {
+    "name": "Large Claws",
+    "category": "Natural",
+    "desc": "A heavy natural weapon suitable for claws, talons, and other shredding attacks.",
+    "speed": 6,
+    "damagetype": "Slash",
+    "charged_effect": "Deal +1 _Damage_ on a _Graze_+. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 5, 6, 7, 7, 8, 9, 10, 11, 11],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "_Wounded_ 1", "_Wounded_ 1", "_Wounded_ 2", "_Wounded_ 2", "_Wounded_ 3", "_Wounded_ 3"]
+    },
+    "range_value": 1,
+    "type": "Heavy"
+  },
+  {
+    "name": "Small Coil",
+    "category": "Natural",
+    "keywords": ["Grasping"],
+    "desc": "A small natural weapon suitable for tentacles, coiling tails, and serpentine bodies.",
+    "speed": 3,
+    "damagetype": "Crush",
+    "special": "Gain a +1 _Bonus_ on _Attack Rolls_ against creatures _Grabbed_ by this Weapon and increase any _Vulnerable_ inflicted by 1.",
+    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Pull_ 1",
+        "_Pull_ 1",
+        "_Pull_ 1, _Vulnerable_ 1, _Grabbed_ [1 _Reflex_]",
+        "_Pull_ 1, _Vulnerable_ 1, _Grabbed_ [1 _Reflex_]",
+        "_Pull_ 1, _Vulnerable_ 1, _Grabbed_ [1 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 2, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 2, _Grabbed_ [2 _Reflex_]"
+      ]
+    },
+    "range_value": 1,
+    "type": "Light"
+  },
+  {
+    "name": "Medium Coil",
+    "category": "Natural",
+    "keywords": ["Grasping"],
+    "desc": "A natural weapon suitable for tentacles, coiling tails, and serpentine bodies.",
+    "speed": 5,
+    "damagetype": "Crush",
+    "special": "Gain a +1 _Bonus_ on _Attack Rolls_ against creatures _Grabbed_ by this Weapon and increase any _Vulnerable_ inflicted by 1.",
+    "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 2, 2, 3, 3, 4, 4, 4, 5, 5],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Pull_ 1",
+        "_Pull_ 1",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 3, _Vulnerable_ 2, _Grabbed_ [3 _Reflex_]",
+        "_Pull_ 3, _Vulnerable_ 2, _Grabbed_ [3 _Reflex_]"
+      ]
+    },
+    "range_value": 2,
+    "type": "Versatile"
+  },
+  {
+    "name": "Large Coil",
+    "category": "Natural",
+    "keywords": ["Grasping"],
+    "desc": "A heavy natural weapon suitable for tentacles, coiling tails, and serpentine bodies.",
+    "speed": 7,
+    "damagetype": "Crush",
+    "special": "Gain a +1 _Bonus_ on _Attack Rolls_ against creatures _Grabbed_ by this Weapon and increase any _Vulnerable_ inflicted by 1.",
+    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 3, 3, 4, 4, 5, 5, 5, 6, 6],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Pull_ 1, _Vulnerable_ 1, _Grabbed_ [1 _Reflex_]",
+        "_Pull_ 1, _Vulnerable_ 1, _Grabbed_ [1 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 1, _Grabbed_ [2 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 2, _Grabbed_ [3 _Reflex_]",
+        "_Pull_ 2, _Vulnerable_ 2, _Grabbed_ [3 _Reflex_]",
+        "_Pull_ 3, _Vulnerable_ 3, _Grabbed_ [3 _Reflex_]",
+        "_Pull_ 3, _Vulnerable_ 3, _Grabbed_ [3 _Reflex_]"
+      ]
+    },
+    "range_value": 2,
+    "type": "Heavy"
+  },
+  {
+    "name": "Small Smasher",
+    "category": "Natural",
+    "desc": "A small natural weapon suitable for crushing paws, heavy arms, and tails.",
+    "speed": 3,
+    "damagetype": "Crush",
+    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 3, 3, 4, 5, 6, 7, 8, 8],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Push_ 1",
+        "_Push_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1/_Prone_ [1 _Grit_]",
+        "_Push_ 1, _Vulnerable_ 1/_Prone_ [1 _Grit_]"
+      ]
+    },
+    "range_value": 1,
+    "type": "Light"
+  },
+  {
+    "name": "Medium Smasher",
+    "category": "Natural",
+    "desc": "A natural weapon suitable for crushing paws, heavy arms, and tails.",
+    "speed": 5,
+    "damagetype": "Crush",
+    "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.",
+    "charged_effect": "Deal +1 Damage on a Graze+ and add [_Overwhelming_ 1, _Pierce_ 1].  Additionally, this Weapon becomes _Reach_ 2.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 4, 4, 6, 7, 8, 9, 10, 10],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 2, _Vulnerable_ 1/_Prone_ [1 _Grit_]",
+        "_Push_ 2, _Vulnerable_ 1/_Prone_ [1 _Grit_]",
+        "_Push_ 2, _Vulnerable_ 2/_Prone_ [2 _Grit_]",
+        "_Push_ 2, _Vulnerable_ 2/_Prone_ [2 _Grit_]"
+      ]
+    },
+    "range_value": 1,
+    "type": "Versatile"
+  },
+  {
+    "name": "Large Smasher",
+    "category": "Natural",
+    "desc": "A heavy natural weapon suitable for crushing paws, heavy arms, and tails.",
+    "speed": 7,
+    "damagetype": "Crush",
+    "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.",
+    "charged_effect": "Deal +1 Damage on a Graze+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this Attack in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 0, 5, 5, 7, 8, 9, 10, 12, 12],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 1, _Vulnerable_ 1",
+        "_Push_ 2, _Vulnerable_ 2",
+        "_Push_ 2, _Vulnerable_ 2",
+        "_Push_ 3, _Vulnerable_ 2/_Prone_ [2 _Grit_]",
+        "_Push_ 3, _Vulnerable_ 2/_Prone_ [2 _Grit_]",
+        "_Push_ 3, _Vulnerable_ 3/_Prone_ [3 _Grit_]",
+        "_Push_ 3, _Vulnerable_ 3/_Prone_ [3 _Grit_]"
+      ]
+    },
+    "range_value": 2,
+    "type": "Heavy"
+  },
+  {
+    "name": "Small Horn",
+    "category": "Natural",
+    "desc": "A small natural weapon suitable for horns, antlers, and similar growths.",
+    "speed": 3,
+    "damagetype": "Stab",
+    "special": "If used after moving at least 3 spaces with [_Rush_] Movement add _Push_ 1.",
+    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.\n* Reduce the Value of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 3, 3, 3, 4, 5, 6, 7, 8, 8],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
+    },
+    "range_value": 1,
+    "type": "Light"
+  },
+  {
+    "name": "Medium Horn",
+    "category": "Natural",
+    "desc": "A natural weapon suitable for horns, antlers, and similar growths.",
+    "speed": 5,
+    "damagetype": "Stab",
+    "special": "If used after moving at least 3 spaces with [_Rush_] Movement add _Push_ 1.",
+    "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.\n* Reduce the Value of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "charged_effect": "Deal +1 Damage on a Graze+. On a _Hit_+, add _Angled Push_ 2.",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 4, 4, 5, 6, 7, 8, 9, 10, 10],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Push_ 1",
+        "_Push_ 1",
+        "_Push_ 1, _Impaired_ 1",
+        "_Push_ 1, _Impaired_ 1",
+        "_Push_ 1, _Impaired_ 1",
+        "_Push_ 2, _Impaired_ 2",
+        "_Push_ 2, _Impaired_ 2"
+      ]
+    },
+    "range_value": 1,
+    "type": "Versatile"
+  },
+  {
+    "name": "Large Horn",
+    "category": "Natural",
+    "desc": "A heavy natural weapon suitable for horns, antlers, and similar growths.",
+    "speed": 7,
+    "damagetype": "Stab",
+    "special": "If used after moving at least 3 spaces with [_Rush_] Movement add _Push_ 2.",
+    "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.\n* Reduce the Value of _Vulnerable_ inflicted by 2, starting with the smallest Token.",
+    "charged_effect": "Deal +1 Damage on a Graze+ and add [_Overwhelming_ 1]. On a _Hit_+, add _Angled Push_ 4/_Airborne_ [2 _Grit_].",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 6, 6, 7, 8, 9, 10, 10, 12, 12],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Push_ 1",
+        "_Push_ 1",
+        "_Push_ 2, _Impaired_ 1",
+        "_Push_ 2, _Impaired_ 1",
+        "_Push_ 2, _Impaired_ 1",
+        "_Push_ 3, _Impaired_ 2",
+        "_Push_ 3, _Impaired_ 2"
+      ]
+    },
+    "range_value": 2,
+    "type": "Heavy"
   },
   {
     "name": "Small Needles",
     "desc": "Dangerous needles fired from the abdomen of an insectoid.",
-    "category": "Natural",
+    "category": "NPC",
     "class": "Major Attack",
     "type": "Light",
     "speed": 2,
@@ -1411,7 +1242,7 @@
   {
     "name": "Medium Needles",
     "desc": "Dangerous needles fired from the abdomen of an insectoid.",
-    "category": "Natural",
+    "category": "NPC",
     "class": "Major Attack",
     "type": "Versatile",
     "speed": 4,
@@ -1436,49 +1267,5 @@
         "_Wounded_ 2, _Impaired_ 2"
       ]
     }
-  },
-  {
-    "name": "Small Stinger",
-    "category": "Natural",
-    "desc": "The barbed stinger of a soldier ant.",
-    "speed": 3,
-    "damagetype": "Stab",
-    "parry": "Gain the following benefits if the trigging Attack was Light/Versatile:\n* Gain 1 _Guard_.",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 2, 3, 3, 4, 4, 5, 6, 8, 8],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
-    },
-    "range_value": 2,
-    "type": "Versatile"
-  },
-  {
-    "name": "Medium Forearm",
-    "category": "Natural",
-    "desc": "The barbed leg of a soldier ant.",
-    "speed": 5,
-    "damagetype": "Slash/Stab",
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
-    "range": "Melee",
-    "chart": {
-      "damage": [0, 0, 4, 5, 6, 7, 8, 9, 10, 11, 11],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Pull_ 1",
-        "_Pull_ 1",
-        "_Pull_ 1",
-        "_Pull_ 1, _Grabbed_ [1 _Reflex_]",
-        "_Pull_ 1, _Grabbed_ [1 _Reflex_]",
-        "_Pull_ 2, _Grabbed_ [2 _Reflex_]",
-        "_Pull_ 2, _Grabbed_ [2 _Reflex_]"
-      ]
-    },
-    "range_value": 2,
-    "type": "Versatile"
   }
 ]

@@ -15,6 +15,7 @@ class Technique {
   private move_: string
   private name_: string
   private range_: string
+  private range_value_: string
   private reqs_: string
   private special_: string
   private speed_: string
@@ -99,6 +100,9 @@ class Technique {
   public get HasArea() {
     return this.Area != ''
   }
+  public get AreaHeader() {
+    return '**Area:** ' + this.Area
+  }
   public get HasBoost() {
     return this.boost_.length > 0
   }
@@ -154,10 +158,10 @@ class Technique {
   public get HasRange() {
     return this.Range != ''
   }
-  public get RangeHeader() {
-    if (this.Range.includes('Weapon')) return this.Range + ' Range'
-    else if (this.Range.length <= 2) return '_Range_ ' + this.range_
-    else return '_' + this.range_ + '_'
+  get RangeHeader() {
+    if (this.Range == 'Melee') return '**Range:** _Melee_, _Reach_ ' + this.range_value_
+    if (this.Range == 'Self') return '**Range:** _Self_'
+    return '**Range**: ' + this.range_value_
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -172,8 +176,8 @@ class Technique {
     return '**Special:** ' + this.special_
   }
   public get SpeedHeader() {
-    if (this.Speed.length == 1) return 'Speed ' + this.Speed
-    else return this.speed_ + ' Speed'
+    if (/^\d+$/.test(this.speed_[0])) return '**Speed ' + this.Speed + '**'
+    return '**' + this.Speed + ' Speed**'
   }
   public get HasTarget() {
     return this.target_.length > 0
@@ -210,6 +214,7 @@ class Technique {
     this.move_ = data.move || ''
     this.name_ = data.name || ''
     this.range_ = data.range || ''
+    this.range_value_ = data.range_value || ''
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || ''

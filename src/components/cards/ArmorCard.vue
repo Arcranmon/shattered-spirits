@@ -2,14 +2,15 @@
   <div v-bind:class="useFormatting" inline>
     <div v-bind:class="armor.Category">
       <div v-if="format" class="armor--header">
-        <h3 style="display: inline; font-style: normal;">{{ armor.Name }}</h3>
+        <h4 style="display: inline; font-style: normal;">{{ armor.Name }}</h4>
       </div>
       <b>
-        <div v-if="format" class="armor--keywords">{{ armor.Category }}{{ armor.WeightHeader }}{{ armor.DurabilityHeader }}</div></b
+        <div v-if="format" class="armor--keywords">{{ armor.Category }}</div></b
       >
     </div>
     <div v-bind:class="useContent">
-      <display-tooltip-text :string="armor.GuardHeader" />
+      <display-tooltip-text :string="armor.ArmorHeader" /><br />
+      <display-tooltip-text :string="armor.WeightHeader" /><br />
       <display-tooltip-text v-if="armor.HasSpecial" :string="armor.SpecialHeader" />
     </div>
   </div>

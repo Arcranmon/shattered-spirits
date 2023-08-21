@@ -21,6 +21,7 @@ class Npc {
   private reactions_: Array<string>
   private traits_: Array<string>
   private stances_: Array<string>
+  private special_: string
   private techniques_: Array<string>
   private weapons_: Array<string>
 
@@ -72,6 +73,9 @@ class Npc {
   }
   public get Stunts() {
     return this.stunts_
+  }
+  public get SpecialText() {
+    return '**Special:** ' + this.special_
   }
   public get Traits() {
     return this.traits_
@@ -131,6 +135,7 @@ class Npc {
     this.reactions_ = data.reactions || []
     this.role_ = data.role || ''
     this.size_ = data.size || ''
+    this.special_ = data.special || ''
     this.spirit_type_ = data.spirit_type || ''
     this.stunts_ = data.stunts || []
     this.traits_ = data.traits || []
