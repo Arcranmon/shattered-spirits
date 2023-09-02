@@ -1,22 +1,75 @@
 [
   {
-    "name": "Crashing Stone Stance",
-    "desc": "You are a true master of boulder-based combat, flinging them with brutal efficiency.",
-    "accumulate": "Once per _Round_, gain 4 _Momentum_ when you deal Damage with an _Earthen_ Obstacle (such as by using its _Interact_ or _Shifting Stone_).",
+    "name": "Charging Ram Stance",
+    "desc": "You are a creature in constant, deadly motion, slamming into foes time and time again.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you hit with a [_Body_] Attack during a [_Blitz_] Move.",
     "defense": {
       "grit": 2
     },
-    "effect": "You may use _Shifting Stone_ as many times as you wish in a _Round_. Additionally, whenever you move a Size 1 _Earthen_ _Obstacle_ (either as a part of an ability or by using its _Interact_) you may choose to turn the _Obstacle_ into a _Boulder_ prior to resolving any other effects. Add [_Siege_] to all _Attacks_ made using a _Boulder_ and deal +1 _Damage_ with them on a _Graze_+."
+    "effect": "Once per _Turn_, when you _Push_ during a [_Blitz_] Move you may immediately move an equal number of spaces towards the target of the _Push_, taking the shortest possible path. This movement is [_Rush_, _Blitz_] and does not count against your _Movement_.",
+    "special": "You have +1 _Guard_ while you are in the middle of [_Blitz_] Movement. Whenever you move through a _Prone_ creature's space with [_Blitz_] Movement or knock a creature _Prone_ while in their space due to [_Blitz_] Movement, inflict _Vulnerable_ 1."
+  },
+  {
+    "name": "Crashing Stone Stance",
+    "desc": "You are a true master of boulder-based combat, flinging them with brutal efficiency.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you deal Damage with an _Earthen_ Obstacle (such as with _Shifting Stone_).",
+    "defense": {
+      "grit": 2
+    },
+    "effect": "You may use _Shifting Stone_ as many times as you wish in a _Round_. Additionally, whenever you move a Size 1 _Earthen_ _Obstacle_ (either as a part of an ability or by using its _Interact_) you may choose to turn the _Obstacle_ into a _Boulder_ prior to resolving any other effects."
+  },
+  {
+    "name": "Cunning Fox Stance",
+    "desc": "You fight with guile and trickery, pushing every possible advantage to better strike down your foes.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you have _Advantage_ on a  _Light_/_Versatile_ _Attack_ or make a  _Light_/_Versatile__Attack_ against an _Enraged_ or _Exposed_ foe.",
+    "defense": {
+      "poise": 1,
+      "reflex": 1
+    },
+    "effect": "After making a _Light_/_Versatile_ _Attack_ against a creature you may convert up to 3 of their _Exposed_/_Enraged_ to _Reeling_.",
+    "special": "Deal +1 _Damage_ against creatures with _Enraged_/_Exposed_ when making _Light_/_Versatile_ Attacks.."
   },
   {
     "name": "Dripping Veil Stance",
     "desc": "The water is a constant shield for you, warding you from all harm.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when an _Attack_ against you or an ally is _Obstructed_ by a _Water Veil_, you successfully use _Shielding Wave_ on an ally, or an ally is able to treat _Watery_ _Terrain_ as _Defensive_ due to an ability you used.",
+    "accumulate": "Once per _Round_, gain 1 _Momentum_ when an _Attack_ against you or an ally is _Obstructed_ by a _Water Veil_, you successfully use _Shielding Wave_ on an ally, or an ally is attacked on _Watery_ Terrain that they treat as _Fortified_ due to one of your abilities.",
     "defense": {
       "poise": 2,
       "grit": 1
     },
-    "effect": "You may ignore the effects of _Watery_ _Terrain_ and treat all _Watery_ _Terrain_ as _Defensive_.",
-    "special": "During _Respite_ you may _Draw_ 1 within Range 4, then create a _Water Veil_ in a different, unoccupied space within _Range_ 4. This _Water Veil_ remains until the end of the _Round_, at which point it is _Destroyed_."
+    "effect": "You may ignore _Watery_ _Terrain_ effects of your choice and treat all _Watery_ _Terrain_ as _Fortified_.",
+    "special": "Once per Round you may use _Shielding Wave_ for no cost, do not gain _Reeling_ from using it, and may freely use the Boost."
+  },
+  {
+    "name": "Roaring Lion Stance",
+    "desc": "You are a bomastic and inspiring warrior, leading your allies as you fight.",
+    "accumulate": "Once per _Round_ gain 1 _Momentum_ when you inflict _Marked_ or _Enraged_ on a foe.",
+    "defense": {
+      "poise": 1,
+      "grit": 2
+    },
+    "effect": "Gain _Vigor_ equal to 1 + the number of creatures you have _Marked_ at _Respite_.",
+    "special": "Whenever a _Marked_ creature attacks you, you may gain _Courageous_ 1 or grant _Courageous_ 1 to an ally within Range 3."
+  },
+  {
+    "name": "Stalwart Bastion Stance",
+    "desc": "You are an unwavering guard, defending your allies against all slights.",
+    "accumulate": "Once per _Round_, gain 1 _Momentum_ when you grant an ally _Vigor_ or use a _Reaction_ with a _Reeling_ cost on their behalf.",
+    "defense": {
+      "poise": 2,
+      "grit": 2
+    },
+    "effect": "Reduce your _Reeling_ value by 1 at _Refresh_.",
+    "special": "Once per Round when an adjacent ally is Attacked you may immediately swap spaces with them. You become the target of the Attack. If the Attack had an _Area_ and your ally is no longer in it they are no longer a target; otherwise, add [_Glancing_]. Inflict _Marked_ on the Attacker."
+  },
+  {
+    "name": "Watching Owl Stance",
+    "desc": "You keep a keen eye on the battlefield, providing opportunies and openings to all allies.",
+    "accumulate": "Once per _Round_ when you remove _Insight_ from a creature, gain 1 _Momentum_.",
+    "defense": {
+      "poise": 2
+    },
+    "effect": "You may remove 2 _Insight_ per _Turn_ rather than one. Whenever you remove the last _Insight_ on a creature, inflict _Vulnerable_ 1.",
+    "special": "At _Respite_, choose yourself or an ally within Range 4. The target may immediately Move 1. Any creature with _Insight_ treats this Movement as [_Safe_].."
   }
 ]

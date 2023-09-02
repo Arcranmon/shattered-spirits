@@ -10,7 +10,7 @@ var kBasicTechniques = ['Swift Strike', 'Basic Strike', 'Strong Strike']
 var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Punch', 'Grapple', 'Slam']
 var kBasicActions = ['Skirmish', 'Swift Manifestation', 'Reorient', 'Raise Guard', 'Recover', 'Prepare']
 var kBasicStunts = ['Disengage', 'Draw/Stow', 'Improvised Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
-var kBasicReactions = ['Create Opening', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge', 'Spiritual Interdiction', 'Spirit Summon']
+var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge', 'Spiritual Interdiction', 'Spirit Summon']
 var kBasicGambits = ['Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Marking Strike']
 
 class Character {

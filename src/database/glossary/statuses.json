@@ -9,42 +9,25 @@
   {
     "name": "Blind",
     "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
-    "effect": "A Blind creature treats all other creatures as _Obscured_.",
-    "remove": "Creatures are Blinded until the duration specified when inflicted has passed or they _Recover_.",
-    "recover": "3 _Grit_ removes _Blinded_.",
+    "effect": "A Blind creature treats all non-adjacent creatures as _Obscured_.",
+    "remove": "Creatures are Blinded until the duration specified when inflicted has passed or, when _Recovering_, they expend 3 _Grit_.",
     "type": "Hide"
   },
-  {
-    "name": "Blinded",
-    "see": "Blind"
-  },
-  {
-    "name": "Bottom",
-    "see": "Grappled"
-  },
+  { "name": "Blinded", "see": "Blind" },
   {
     "name": "Damaged",
     "effect": "Damaged only applies to _Equipment_. A Damaged Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Damaged, instead inflict _Shred_ 1. If a Damaged Weapon is Damaged again it is instead broken and may not be used until repaired.",
     "remove": "Only Techniques that explicitly remove Damaged remove Damaged. Otherwise, it can be removed outside of combat with [travel mechanic here].",
     "type": "Status Effect"
   },
-  {
-    "name": "Damage",
-    "see": "Damaged"
-  },
-  {
-    "name": "Disarm",
-    "see": "Disarmed"
-  },
+  { "name": "Damage", "see": "Damaged" },
   {
     "name": "Disarmed",
     "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. The attacker may then place it in any space adjacent to the Target.",
     "type": "Hide"
   },
-  {
-    "name": "Disarming",
-    "see": "Disarm"
-  },
+  { "name": "Disarm", "see": "Disarmed" },
+  { "name": "Disarming", "see": "Disarm" },
   {
     "name": "Downed",
     "effect": "A creature becomes Downed when they lose all Health. If the creature is a player character, while _Downed_ their _Spirit_ is automatically _Summoned_ at the start of each Round so long as it has any _Health_.",
@@ -58,10 +41,7 @@
     "recover": "2 _Grit_ ends _Embed_, but the creature takes 4 _True_ Damage in the process.",
     "type": "Hide"
   },
-  {
-    "name": "Embedded",
-    "see": "Embed"
-  },
+  { "name": "Embedded", "see": "Embed" },
   {
     "name": "Flying",
     "effect": "While Flying, a character ignores all Terrain and Obstacles that do not specifically target Flying characters. Melee Attacks have Disadvantage against Flying characters.",
@@ -81,14 +61,11 @@
     "remove": "The grabbing creature may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_. The Grabbed creature and the grabber both roll 2d6. Either creature may expend 2 _Momentum_ for _Advantage_ on this _Roll_. If the Grabbed creature rolls higher than the grabber, the Grab ends. The larger creature in the Grab gets a +1 _Bonus_ to the roll, and the grabber gets a +1 _Bonus_ if they are using both _Hands_ (or multiple _Grasping_ Weapons) for the Grab.",
     "type": "Status Effect"
   },
-  {
-    "name": "Grab",
-    "see": "Grabbed"
-  },
+  { "name": "Grab", "see": "Grabbed" },
   {
     "name": "Marked",
     "desc": "An effect caused when a creature is drawing all of a foe's attention.",
-    "effect": "While Marked:\n* A creature takes a -1 _Penalty_ on all Attacks that do not include the creature that _Marked_ them.\n* A _Marked_ creature treats their _Impaired_ Tokens as 1 less against the creature that _Marked_ them.\n* The creature that _Marked_ them reduces the _Cost_ of _Punish_ _Reactions_ as 1 lower against their _Marked_ Target.",
+    "effect": "While Marked:\n* A creature takes a -1 _Penalty_ on all Attacks that do not include the creature that _Marked_ them.\n* The creature that _Marked_ them reduces the _Cost_ of _Punish_ _Reactions_ as 1 lower against their _Marked_ Target.",
     "special": "If a creature that is already Marked is Marked again, either override the Mark or inflict _Impaired_ 1.",
     "remove": "Marked is removed if the creature that Marked them willingly moves away from them or that creature is _Defeated_.",
     "type": "Status Effect"
@@ -96,7 +73,7 @@
   {
     "name": "Obscured",
     "desc": "A creature that is hidden in some way and difficult to see.",
-    "effect": "All Attacks against an Obscured creature have _Disadvantage_, and all Attacks by an Obscured creature have _Disadvantage_. If the Obscured creature has some means to ignore Obscured, they instead have _Advantage_.",
+    "effect": "All Attacks against an Obscured creature have _Disadvantage_.",
     "type": "Hide"
   },
   {
@@ -154,43 +131,58 @@
   },
   {
     "name": "Exposed",
-    "desc": "An affliction caused when a creature cannot maintain their guard.",
-    "effect": "When a creature Attacks a Target with Exposed they may choose to remove the Target's topmost Exposed token and gain a _Bonus_ equal to the token's value.",
+    "desc": "An affliction caused when an opening in a creature's defenses has been forced.",
+    "effect": "When a creature Attacks a Target with Exposed they may choose to reduce the target's Exposed value by 1 to gain a +1 _Bonus_ on the _Attack Roll_.",
+    "negate": "A creature may expend 1 _Poise_ to negate 1 Exposed.",
+    "remove": "When a creature _Recovers_ they may expend _Poise_ to reduce Exposed by an equivalent amount.",
     "type": "Affliction"
   },
   {
     "name": "Hobbled",
     "desc": "An affliction caused when a creature's movement is impaired somehow.",
-    "effect": "A creature's Moves are downgraded by one tier (i.e. Hobbled would reduce a Reposition to a Step).",
-    "special": "While a creature has any Hobbled, they cannot take any Movement that does not have a Movement Size listed. ",
+    "effect": "A creature's Moves are downgraded by one tier (i.e. Hobbled would reduce a Reposition to a Step) while they have any Hobbled.",
+    "remove": "Hobbled is reduced by 1 at the end of any _Turn_ where it reduced a creature's Movement (i.e. their Move was not 'None' that _Turn_). Hobbled is always considered last when determining if it reduced a creature's movement. Additionally, when a creature _Recovers_ they may expend any combination of _Grit_/_Reflex_ to reduce Hobbled by half that amount, rounding down.",
+    "negate": "A creature may expend 2 _Grit_/_Reflex_ to negate 1 _Hobbled_.",
     "type": "Status Effect"
   },
   {
     "name": "Impaired",
     "desc": "An affliction caused when a creature's ability to attack is limited.",
     "effect": "A creature gains a _Penalty_ equal to their topmost Impaired Token's value.",
-    "remove": "A creature clears the topmost Impaired after making an _Attack Roll_.",
+    "remove": "A creature reduces their Impaired value by 1 after making an _Attack Roll_. Additionally, when a creature _Recovers_ they may expend _Poise_ to reduce Impaired by an equivalent amount.",
+    "negate": "A creature may expend 1 _Poise_ to negate 1 Impaired.",
     "type": "Hide"
   },
   {
     "name": "Insight",
     "desc": "An affliction caused when one creature gains knowledge on another.",
     "effect": "When you inflict Insight on a creature learn their exact current Health as well as their current and maximum _Defenses_.",
-    "remove": "Insight remains until an enemy removes the Insight for one of the following effects:\n* Gain a +1 _Bonus_ on an _Attack Roll_ against the creature.\n* Reduce the cost of a _Reaction_ triggered by the creature by 1.\n* Gain a _Fleeting_ _Defense_ against an attack by the creature.",
+    "remove": "Once per turn, a creature may reduce a hostile creature's Insight by 1 to gain one of the following effects:\n* Reduce the cost of a Manuever or Boost by 1.\n* After being Attacked or suffering an effect, gain 1 _Fleeting_ _Defense_.",
     "type": "Status Effect"
+  },
+  {
+    "name": "Reeling",
+    "desc": "An affliction caused when a creature cannot maintain their guard.",
+    "effect": "On its own Reeling has no effect, but many Manuevers will have their cost increased by the character's Reeling value, as designated by [Reeling] in their cost.",
+    "remove": "Characters automatically reduce their Reeling value by 1 at _Respite_. Besides that, only effects that explicitly remove Reeling may remove it.",
+    "negate": "A creature may expend 2 _Poise_ to negate 1 _Reeling_.",
+    "type": "Affliction"
   },
   {
     "name": "Vulnerable",
     "desc": "An affliction caused when a creature is vulnerable in a way that causes them to take more damage.",
-    "effect": "When a creature Attacks a Target with Vulnerable they may choose to remove the Target's topmost Vulnerable Token and deal additional Damage equal to it, even on a _Miss_.",
+    "effect": "When a creature Attacks a Target with Vulnerable they may choose to reduce the target's Vulnerable value by up to 2 and deal additional Damage equal to that value.",
+    "negate": "Vulnerable may not be Negated.",
+    "remove": "When a creature _Recovers_ they may expend _Poise_ to reduce Vulnerable by twice that amount.",
     "type": "Affliction"
   },
   {
-    "name": "Wounded",
+    "name": "Bleed",
     "desc": "An affliction caused by any wound that can cause ongoing damage.",
-    "effect": "At the start of a creature's _Turn_ they take _True Damage_ equal to their top Wounded Token.",
-    "special": "Whenever a creature would gain _Endurance_/_Vigor_, reduce it by 1 + their top Wounded Token's value, then immediately remove that Wounded Token.",
-    "remove": "Whenever a creature takes Damage from or has _Endurance_/_Vigor_ blocked by a Wounded Token, remove it.",
+    "effect": "While a creature has Bleed they take 2 _True_ Damage at the start of each of their turns, then reduces their Bleed value by 1.",
+    "special": "Whenever a creature would gain _Endurance_/_Vigor_ and has _Bleed_ reduce the _Endurance_/_Vigor_ gained by 1, then reduce their Bleed value by 1.",
+    "negate": "A creature may expend 1 _Grit_ to negate 1 Bleed.",
+    "remove": "Bleed is only removed through triggering and by effects that explicitly remove it.",
     "type": "Affliction"
   },
   {
@@ -239,11 +231,10 @@
     "type": "Hide"
   },
   {
-    "name": "Courage",
+    "name": "Courageous",
     "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
-    "effect": "Whenever a creature with _Courage_ ends their _Turn_ adjacent to a hostile creature they gain 2 _Vigor_.",
-    "remove": "A creature may remove _Courage_ for one of the following effects:\n* Use _Reposition_ for no cost. You must end this _Maneuver_ as close to a hostile creature as possible, and it may not gain [_Safe_] in any way.\n* After ending your _Turn_ adjacent to a hostile creature, gain 1 _Momentum_.\n* At any time, gain 2 _Fleeting_ _Grit_/_Poise_.",
-    "reacts": ["<ins>Fear:</ins> If a creature has Fear and would gain Courage, they instead remove Fear."],
+    "effect": "Whenever a creature with _Courage_ ends their _Turn_ adjacent to a hostile creature they reduce their Courage by 1 and gain 1 _Momentum_ or 2 _Vigor_.",
+    "reacts": ["<ins>Fear:</ins> If a creature has Fear and would gain Courage, they instead remove an equivalent amount of Fear."],
     "type": "Mental Affliction"
   },
   {
@@ -256,13 +247,14 @@
     "type": "Hide"
   },
   {
-    "name": "Rage",
+    "name": "Enraged",
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
-    "effect": "A creature with Rage may not move away from the last creature to inflict Rage on them. Additionally, they must target said creature with all Attacks or else lose Momentum equal to their topmost Rage Token. If they do not have sufficient Momentum, they instead gain an _Exposed_ Token of value equal to the Momentum they lack.",
-    "remove": "After a creature resolves the Effect or successfully Hits or Crits the target of their Rage, clear their topmost Rage Token.",
-    "recover": "A value of _Poise_ removes Rage equal to one less than the _Poise_ spent.",
-    "type": "Hide",
-    "see": "hide"
+    "effect": "The most recent creature to inflict Enraged is the target of that creature's rage. A creature with Enraged deals +1 Damage on all attacks against the target of their rage. Additionally, a creature with Enraged takes a -1 Penalty on all Attacks that do not include the target of their rage and, after making an Attack that does not include them, reduces their Enraged by 1 and gains _Exposed_ 1.",
+    "remove": "After a creature Attacks the target of their rage, reduce their Enraged by 1. Aditionally, when a creature _Recovers_ they may expend _Poise_ to reduce Enraged by an equivalent amount.",
+    "negate": "A creature may expend 1 _Poise_ to negate 1 Exposed.",
+    "reacts": ["<ins>Joyful:</ins> If a creature has any Joyful and would gain Enraged they first reduce their Joyful before gaining any Enraged."],
+    "special": "If a creature is _Marked_ the marker is always the target of their rage.",
+    "type": "Hide"
   },
   {
     "name": "Accelerate",

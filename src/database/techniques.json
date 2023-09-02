@@ -21,15 +21,46 @@
     "boost": "2 _Momentum_: Make one less _Light_/_Versatile_ _Minor Attack_ and one more _Light_/_Versatile_ _Major Attack_."
   },
   {
+    "name": "Lion's Roar",
+    "desc": "You loudly charge forth into battle, making your intentions clear.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Gain _Vigor_ 2. Make a _Major Attack_. Immediately after resolving the Attack grant _Courageous_ 1 allies of your choice in a _Burst_ 2, or _Courageous_ 2 on a _Crit_ or if you defeat the foe.",
+    "special": "After resolving your Attack, an ally that received _Courageous_ may immediately make either:\n* Make a _Minor Attack_ against an enemy marked by you.\n* Make a _Step_ Movement towards you."
+  },
+  {
     "name": "Ocean's Veil",
     "desc": "You pull forth water to create a great wall, warding your allies from assault.",
     "keywords": ["Spirit", "Water", "Enchant", "Fluid"],
-    "type": "Defensive",
+    "type": "Defend",
     "range": "Ranged",
     "range_value": "6",
     "speed": "Any",
     "move": "Reposition",
     "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. These _Water Veil_s are _Destroyed_ when the _Enchant_ ends. "
+  },
+  {
+    "name": "Overwatch",
+    "desc": "You take a position with a pristine view, preparing to lay down supporting fire for allies.",
+    "type": "Support",
+    "speed": "Any",
+    "move": "Step",
+    "range": "Self",
+    "area": "_Cone_ 12",
+    "effect": "Resolve your Move, inflict _Insight_ 1 on all creatures of your choice in the _Area_, then draw a _Hazard_ there. Until you leave this space or the end of the _Round_, you may trigger _Opportunity Attack_ whenever a creature within this _Hazard_ creates an _Opening_.",
+    "special": "You may reduce the Area to Cone to 9, 6, or 3; if you do, you may inflict an additional 1/2/4 _Insight_, distributed among creatures in the _Area_ as you wish."
+  },
+  {
+    "name": "Patient Strike",
+    "desc": "You carefully line up an attack, waiting for the opportune moment to release it.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "None",
+    "range": "Ranged",
+    "range_value": 20,
+    "effect": "Choose a creature within Range and inflict _Insight_ 1 on them, then choose a _Major Attack_ and becoming _Charging_. If it's a _Weapon Attack_ that _Weapon_ becomes _Occupied_._At the end of each _Phase_, inflict _Insight_ 1 on that creature. At the end of any _Turn_ or _Phase_ you may make choose to stop _Charging_ and unleash the _Attack_ on the target creature. Make this attack at _Advantage_ if you _Charged_ for at least 4 _Phases_.",
+    "special": "When you make this _Attack_ you remove up to X _Insight_ from the creature to deal +X Damage on a _Hit_+, where X is the number of _Phases_ you were _Charging_."
   },
   {
     "name": "Strong Strike",
@@ -70,6 +101,23 @@
     }
   },
   {
+    "name": "Safe Haven",
+    "desc": "You adopt a defensive stance and prepare to offer you guard to your allies.",
+    "type": "Defend",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "You and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_. At the end of this _Turn_ gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Attacks against your allies that pass through your space are always at least _Heavily Obstructed_.\n* You may allow adjacent allies to use your _Defenses_ when they are Attacked.\n* Each _Turn_ you may gain a single _Fleeting_ _Defense_ of your choice that may only be used to _Negate_."
+  },
+  {
+    "name": "Skulk",
+    "desc": "You conceal yourself before sliding across the battlefield, .",
+    "type": "Move",
+    "speed": "Any",
+    "move": "Step [_Safe_], Reposition",
+    "effect": "Gain 1 _Momentum_. Starting from the end of this _Turn_ all creatures that would treat you as _Obstructed_ or _Covered_ see you as _Obscured_. This effect remains until you leave the space you ended this _Turn_ in, deal _Damage_, or inflict _Status_.",
+    "special": "If you use _Ambush_ this _Round_ you may either make a _Light_/_Versatile_ _Major Attack_ instead of a _Minor Attack_ or make an additional _Light_/_Versatile_ _Minor Attack_."
+  },
+  {
     "name": "Stone Edge",
     "desc": "You tear forth a slab of earth, flinging it with horrific force.",
     "keywords": ["Spirit", "Earth"],
@@ -98,6 +146,15 @@
         "_Angled Push_ 2, _Dazed_ 1, _Break_ [2 _Momentum_]"
       ]
     }
+  },
+  {
+    "name": "Trampling Charge",
+    "desc": "You run forward, slamming through all foes in your path.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Dash [_Blitz_, _Rush_]",
+    "effect": "Choose one:\n* You have +1 _Guard_ this _Turn_. Resolve your _Movement_. When you end your _Movement_, make a single _Melee_ _Major Attack_. If the target of the Attack is in-line with your _Movement_, either inflict _Forceful Push_ X or inflict X additional Damage, where X is half the number of spaces you Moved before resolving the effect.\n* Do not resolve your _Movement_ yet. Create a _Hazard_ in an adjacent space, become _Charging_, then end your _Turn_. At the end of the next _Phase_ remove _Charging_ and resolve the first effect, but you must move through the space marked by the _Hazard_, removing the _Hazard_ when you do so. You have _Advantage_ on all [_Body_] Attacks and may choose both options for your _Major Attack_ at the end of the _Movement_. If you are moved by any means before removing _Charging_, move the _Hazard_ with you.",
+    "special": "You may use _Overrun_ at no cost when resolving the effect."
   },
   { "name": "NPC TECHNIQUES" },
   {

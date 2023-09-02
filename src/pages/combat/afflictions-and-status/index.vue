@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h2>Afflictions and Status</h2>
     <span v-if="isMobile">
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
@@ -23,7 +23,7 @@
         <v-col cols="6"
           ><v-select v-model="selectedStatuses" :items="statusCategories" attach label="Status Categories" multiple filled outlined></v-select> </v-col
       ></v-row>
-      <v-row class="page">
+      <v-row class="background--color">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
             ><div v-for="status in statuses" style="width: 100%;" v-bind:key="status">
@@ -33,7 +33,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <status-card v-if="selectedStatus != null" :status="selectedStatus" style="width: 40em;" /></v-col> </v-row
+        <v-col> <status-card v-if="selectedStatus != null" :status="selectedStatus" style="width: 40em;" :key="selectedStatus.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>

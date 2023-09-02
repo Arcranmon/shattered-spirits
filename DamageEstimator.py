@@ -3,9 +3,21 @@ import math
 from termcolor import colored
 import argparse
 
-STATUS_HALFX = ["Push", "Pull"]
-STATUS_1X = ["Vulnerable", "Wounded", "Slowed"]
-STATUS_1_HALFX = ["Exposed", "Impaired", "Dazed", "Grabbed", "Prone", "Hobbled"]
+status_multipliers = {
+    "Pull": 0.5,
+    "Push": 0.5,
+    "Dazed": 0.75,
+    "Grabbed": 0.75,
+    "Reeling": 0.75,
+    "Vulnerable": 0.75,
+    "Slowed": 0.75,
+    "Bleed": 1.0,
+    "Exposed": 1.0,
+    "Impaired": 1.0,
+    "Prone": 1.25,
+    "Hobbled": 1.25,
+    "Reeling": 1.25
+}
 
 def get_status_damage(status_string, glancing):
     split_status = status_string.split()
@@ -15,14 +27,8 @@ def get_status_damage(status_string, glancing):
     status = status.replace('_', '')
     secondary = secondary.replace('[', '')
 
-    damage_multiplier = 0
-    if status in STATUS_HALFX:
-        damage_multiplier = 0.5
-    if status in STATUS_1X:
-        damage_multiplier = 1
-    if status in STATUS_1_HALFX:
-        damage_multiplier = 1.5
-        
+    damage_multiplier = status_multipliers[status]
+
     glancing_mod = 0
     if(glancing): glancing_mod = -1
 
@@ -31,6 +37,8 @@ def get_status_damage(status_string, glancing):
             return damage_multiplier * (int(secondary[0]) + glancing_mod) * int(secondary[2])
         else:
             return damage_multiplier * (int(secondary)  + glancing_mod)
+    else:
+        print(status + " has no damage multiplier!")
     return damage_multiplier
 
 

@@ -14,6 +14,9 @@
       <div class="status--format" v-if="status.HasSpecial">
         <display-tooltip-text :string="status.SpecialHeader" />
       </div>
+      <div class="status--format" v-if="status.HasNegate">
+        <display-tooltip-text :string="status.NegateHeader" />
+      </div>
       <div class="status--format" v-if="status.HasReacts">
         <display-tooltip-text :string="status.ReactsHeader" />
       </div>

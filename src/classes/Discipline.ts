@@ -44,7 +44,7 @@ class Discipline {
     return this.type_
   }
   public get Icon() {
-    if (this.Type == 'Error') return ''
+    if (this.Type == 'Style' || this.Type == 'Undefined') return ''
     return require('@/assets/' + this.Type + '.svg')
   }
 
@@ -140,7 +140,7 @@ class Discipline {
     this.tier_1_ = data.tier_1 || null
     this.tier_2_ = data.tier_2 || null
     this.tier_3_ = data.tier_3 || null
-    this.type_ = data.type || ''
+    this.type_ = data.type || 'Undefined'
   }
 }
 export default Discipline

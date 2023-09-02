@@ -154,7 +154,7 @@ export default Vue.extend({
   },
   computed: {
     disciplines: function () {
-      return this.$store.getters.getFilteredDisciplines(this.selectedCategories, this.selectedTypes, this.primaryRole, this.secondaryRole)
+      return this.$store.getters.getFilteredDisciplines(['Martial'], ['Style'], this.primaryRole, this.secondaryRole)
     },
     hasAllTypes() {
       return this.selectedTypes.length === this.disciplineTypes.length

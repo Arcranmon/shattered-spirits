@@ -2,6 +2,7 @@ import Weapons from '@/database/items/weapons.json'
 import Armors from '@/database/items/armor.json'
 import Gears from '@/database/items/gear.json'
 import Disciplines from '@/database/disciplines.json'
+import Masteries from '@/database/masteries.json'
 import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 
@@ -392,6 +393,12 @@ export class DatabaseJsonStore extends VuexModule {
   get getDisciplines(): any {
     return () => {
       return Disciplines.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
+    }
+  }
+
+  get getMasteries(): any {
+    return () => {
+      return Masteries.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
     }
   }
 

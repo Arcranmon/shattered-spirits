@@ -31,6 +31,7 @@ BIG POST-PLAYTEST REWORK
 - SPIRIT ATTACKS
 
   - Add a note for Disciplines that any Attacks you gain are ALSO learned by your Spirit
+  - Check balance for ALL attacks and the Techniquespoti
 
 - New Discipline Structure:
 
@@ -42,52 +43,6 @@ BIG POST-PLAYTEST REWORK
 - Add Equipment (mostly just Water Flasks)
 
 - Change most 'Interacts' to 'On Attack'
-
-THINGS TO CLEAN
-
-- Remove all Stratagems
-
-Minor Changes:
-
-- Tune-down Colossal weapons due to swinginess.
-- Add keyword for "Can't change Speed/Improvise" to relevant Techniques.
-- Make it more obvious when Conditions are AND vs. OR for effects.
-- Various wording fixes.
-- Nerf Shield Parry hard.
-- Buff Earthen Aegis hard.
-- Heroic Duel has some awkward wording throughout (maybe change just for playspeed reasons)
-- Clarify 'are own ally' type effects.
-- Might need an actual interface for tracking Conditions and the like.
-- Clean up Charge->Rush
-
-MISSING TECHNIQUES
-These are Techniques/Maneuvers that existed in previous content but are missing in the current Discipline refactor:
-
-- Earthen Agility (new Discipline for moving using Earth?)
-- Sinkhole (will be the Tier III Clay Shaper)
-- Avalanche Charge (doesn't fit new Boulder Discipline identity, add somewhere later)
-- Jaws of the Earth (Tier III Piercing Shard)
-- Haft Strike/Spear Vault (new Staff specialty?)
-- Impaling Strike (Tier III spear tech)
-- Gilgamesh Swing (Tier III Shattering Granite)
-
-NEXT VERSION:
-
-- Try the Dodge/Block/Focus refactor for Resists
-  - Can ALWAYS spend Dodge/Block/Focus against attacks/negate Afflictions.
-  - Add the Defensive property for gear that freely gives Block on Resists (like Shields!).
-  - In general, must use a Resist to be able to generate these, but some Stances/Techniques will provide them passively.
-  - Specialized Resists will allow alternate ways to spend these resources.
-  - Make Unblockable/Sure Hit a flat keyword (double cost to buy Block/Dodge effects).
-
-VERSION AFTER:
-
-- Change from Armor-based Movement to Weight-based Movement.
-  - Generalize the Armor Disciplines to be usable by (almost) anyone (just set prereqs to stop people from picking an obviously poor fit).
-- Add more combat support for the fiction of it being you and your companion spirit.
-  - Have a manifest maneuver to physically conjure your spirit for a turn.
-- Support-based non-spirit Disciplines.
-- (Stretch) Add Talismans, Equipment that enhances Spirit play but cost Encumbrance.
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 

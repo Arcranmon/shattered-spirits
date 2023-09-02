@@ -21,12 +21,12 @@
     "type": "Light"
   },
   {
-    "name": "Punch",
+    "name": "Unarmed Strike",
     "type": "Versatile",
     "desc": "An untrained yet still effective strike.",
-    "keywords": ["Fist", "Martial Arts"],
     "speed": 2,
     "damagetype": "Crush",
+    "special": "Add one of [_Fist_], [_Body_], or [_Kick_] to this Attack.",
     "range": "Melee",
     "chart": {
       "damage": [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
@@ -52,7 +52,7 @@
     "name": "Grapple",
     "type": "Versatile",
     "desc": "You attempt to grab a foe, doing limited damage but limiting their mobility.",
-    "keywords": ["Fist", "Martial Arts"],
+    "keywords": ["Fist"],
     "speed": 3,
     "damagetype": "Crush",
     "range": "Melee",
@@ -77,10 +77,39 @@
     "class": "Minor Attack"
   },
   {
+    "name": "Ram",
+    "desc": "A forceful attack that powers through enemies using the weight of ones' body.",
+    "type": "Versatile",
+    "keywords": ["Body"],
+    "speed": 6,
+    "damagetype": "Crush",
+    "range": "Melee",
+    "chart": {
+      "damage": [0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Push_ 1/_Prone_ [1 _Grit_], _Vulnerable_ 1",
+        "_Push_ 1/_Prone_ [1 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 2/_Prone_ [2 _Grit_], _Vulnerable_ 1",
+        "_Push_ 3/_Prone_ [3 _Grit_], _Vulnerable_ 2",
+        "_Push_ 3/_Prone_ [3 _Grit_], _Vulnerable_ 2"
+      ]
+    },
+    "special": "Decrease the _Speed_ of this _Technique_ by 3 and add _Forceful_ to all _Push_ if it is used while you are making [_Blitz_] Movement.",
+    "range_value": 1,
+    "class": "Minor Attack"
+  },
+  {
     "name": "Swift Slam",
     "desc": "A quick strike making use of the body itself to body-slam a foe.",
     "type": "Light",
-    "keywords": ["Body", "Martial Arts"],
+    "keywords": ["Body"],
     "speed": 2,
     "damagetype": "Crush",
     "range": "Melee",
@@ -108,7 +137,7 @@
     "name": "Slam",
     "desc": "An untrained strike making use of the body itself to body-slam a foe.",
     "type": "Versatile",
-    "keywords": ["Body", "Martial Arts"],
+    "keywords": ["Body"],
     "speed": 4,
     "damagetype": "Crush",
     "range": "Melee",
@@ -137,7 +166,7 @@
     "name": "Heavy Slam",
     "desc": "An untrained strike making use of a heavy form to body-slam a foe.",
     "type": "Heavy",
-    "keywords": ["Body", "Martial Arts"],
+    "keywords": ["Body"],
     "speed": 6,
     "damagetype": "Crush",
     "range": "Melee",
@@ -207,10 +236,10 @@
     "damagetype": "Slash",
     "range": "Ranged",
     "range_value": 6,
-    "special": "This _Attack_ may only target _Soaked_ enemies or those in a _Watery_ space. After completing the _Attack_, remove _Soaked_ or reduce the value of the space by 1, whichever is applicable. If they are in a _Water Veil_, do not reduce the value, ignore any _Obstructed_ provided by the _Water Veil_, and the _Attack_ has _Advantage_.",
+    "special": "This _Attack_ may only target _Soaked_ enemies or those in a _Watery_ space, but enemies may not be _Heavily Obstructed_/_Covered_ against this Attack. After completing the _Attack_, remove _Soaked_ or reduce the value of the space by 1, whichever is applicable. If they are in a _Water Veil_, do not reduce the value, ignore any _Obstructed_ provided by the _Water Veil_, and the _Attack_ has _Advantage_.",
     "chart": {
-      "damage": [0, 0, 0, 0, 2, 2, 2, 3, 3, 4, 4],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "damage": [0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
     "class": "Minor Attack"
@@ -272,7 +301,7 @@
     "damagetype": "Crush",
     "range": "Ranged",
     "range_value": "6, _Minimum Range_ 1",
-    "charged_effect": "Instead, this Attack _Line_ 6. Add [_Pierce_] 1.",
+    "charged_effect": "Instead, this Attack is _Line_ 6. Add [_Pierce_] 1.",
     "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 4. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Stone Strike _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
     "chart": {

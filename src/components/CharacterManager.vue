@@ -59,7 +59,7 @@
                 ><span style="margin: 2px;">{{ character.Name }}</span></v-btn
               >
             </template>
-            {{ character.Name }} and {{ character.SpiritName }} the {{ character.SpiritType }} Spirit
+            {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.SpiritType.Name }} Spirit
           </v-tooltip>
         </div> </v-col
       ><v-col cols="10">

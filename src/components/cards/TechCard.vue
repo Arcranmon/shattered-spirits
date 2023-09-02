@@ -159,8 +159,8 @@ export default Vue.extend({
 .Move {
   background: $color--move;
 }
-.Defensive {
-  background: $color--defensive;
+.Defend {
+  background: $color--defend;
 }
 .Support {
   background: $color--support;

@@ -6,6 +6,7 @@ class Status {
   private effect_: string
   private special_: string
   private name_: string
+  private negate_: string
   private recover_: string
   private reacts_: string[]
   private remove_: string
@@ -38,6 +39,9 @@ class Status {
   // ==========================================================
   // UTILITY
   // ==========================================================
+  get HasNegate() {
+    return this.negate_ != ''
+  }
   get HasRecovery() {
     return this.recover_ != ''
   }
@@ -56,6 +60,9 @@ class Status {
   // ==========================================================
   public get EffectHeader() {
     return '**Effect:** ' + this.effect_
+  }
+  public get NegateHeader() {
+    return '**Negate:** ' + this.negate_
   }
   public get ReactsHeader() {
     var interact_header = '**Reacts:** ' + this.name_ + ' reacts with other Afflictions as follows:'
@@ -91,6 +98,7 @@ class Status {
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
     this.name_ = data.name || ''
+    this.negate_ = data.negate || ''
     this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
     this.remove_ = data.remove || ''

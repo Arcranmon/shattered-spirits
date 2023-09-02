@@ -214,6 +214,7 @@ declare interface IStatusData {
   desc: string
   effect: string
   name: string
+  negate: string
   recover: string
   remove: string
   see?: string

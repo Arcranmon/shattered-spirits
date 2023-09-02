@@ -4,7 +4,7 @@ import { SpiritForm, SpiritType } from '@/class'
 var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Swipe']
 var kBasicActions = ['Skirmish', 'Reorient', 'Raise Guard', 'Recover']
 var kBasicStunts = ['Disengage', 'Draw/Stow', 'Improvised Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
-var kBasicReactions = ['Create Opening', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge']
+var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge']
 var kBasicGambits = ['Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Marking Strike']
 
 class Spirit {
