@@ -3,7 +3,7 @@ import { store } from '@/store'
 class Discipline {
   private name_: string
   private category_: string
-  private flavor_: string
+  private desc_: string
   private primary_role_: String
   private secondary_role_: String
   private summary_: string
@@ -14,7 +14,7 @@ class Discipline {
 
   public constructor() {
     this.name_ = ''
-    this.flavor_ = ''
+    this.desc_ = ''
     this.summary_ = ''
     this.tier_1_ = null
     this.tier_2_ = null
@@ -25,7 +25,7 @@ class Discipline {
     return this.category_
   }
   public get Flavor() {
-    return this.flavor_
+    return this.desc_
   }
   public get Name() {
     return this.name_
@@ -44,6 +44,7 @@ class Discipline {
     return this.type_
   }
   public get Icon() {
+    if (this.Type == 'Style') return require('@/assets/' + this.primary_role_ + '.svg')
     if (this.Type == 'Style' || this.Type == 'Undefined') return ''
     return require('@/assets/' + this.Type + '.svg')
   }
@@ -133,7 +134,7 @@ class Discipline {
   public setDisciplineData(data: IDisciplineData): void {
     this.category_ = data.category || ''
     this.name_ = data.name || ''
-    this.flavor_ = data.flavor || ''
+    this.desc_ = data.desc || ''
     this.primary_role_ = data.primary_role || ''
     this.secondary_role_ = data.secondary_role || ''
     this.summary_ = data.summary || ''

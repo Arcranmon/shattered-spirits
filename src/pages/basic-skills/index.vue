@@ -26,14 +26,12 @@
             this.$store.getters.getAttack('Quickened Attack'),
           ]"
           job="Attacks"
-          :collapse="false"
-        />
+          :collapse="false" />
         <show-cards
           :inputs="[this.$store.getters.getAttack('Unarmed Strike'), $store.getters.getAttack('Grapple'), this.$store.getters.getAttack('Slam')]"
           job="Attacks"
           :collapse="false"
-        />
-      </v-tab-item>
+      /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" />
         <show-cards
@@ -48,9 +46,15 @@
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
-        <show-cards :inputs="[$store.getters.getManeuver('Aim')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
         <show-cards
-          :inputs="[$store.getters.getManeuver('Disengage'), $store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Improvised Combo')]"
+          :inputs="[$store.getters.getManeuver('Aim'), $store.getters.getManeuver('Disengage')]"
+          job="Maneuvers"
+          :collapse="false"
+          v-bind:class="use_duo"
+          :cols="2"
+        />
+        <show-cards
+          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Improvised Combo'), $store.getters.getManeuver('Interact')]"
           job="Maneuvers"
           :collapse="false"
         />

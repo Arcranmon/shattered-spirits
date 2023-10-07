@@ -3,12 +3,12 @@
     "name": "Iron Dagger",
     "category": "Bladed",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["_Thrown_ 4", "Quickdraw", "_Brawling_ 1", "Small"],
+    "keywords": ["Quickdraw", "_Brawling_ 1", "Small"],
     "material": "Metal",
     "speed": 2,
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits if the triggering _Attack_ is _Light_:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1, "special": "/ _Thrown_ 4, _Minimum Range_ 1" },
     "chart": {
       "damage": [0, 0, 2, 2, 3, 3, 4, 4, 5, 5, 5],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
@@ -17,7 +17,6 @@
     "weight": 1,
     "hands": 1,
     "durability": 7,
-    "range_value": 1,
     "type": "Light"
   },
   {
@@ -29,7 +28,7 @@
     "speed": 3,
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 3, 3, 4, 4, 5, 5, 6, 7, 7],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -37,8 +36,7 @@
     },
     "weight": 1,
     "hands": 1,
-    "durability": 8,
-    "range_value": 1
+    "durability": 8
   },
   {
     "name": "Iron Longsword",
@@ -50,7 +48,7 @@
     "damagetype": "Slash/Stab",
     "charged_effect": "On a _Graze_+ deal +2 _Damage_ and inflict _Bleed_ 1.",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it. Iif this weapon is _Wielded_ in both hands, gain both effects.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 4, 4, 5, 5, 6, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -59,7 +57,6 @@
     "weight": 2,
     "hands": 1,
     "durability": 9,
-    "range_value": 1,
     "type": "Versatile"
   },
   {
@@ -72,7 +69,7 @@
     "damagetype": "Slash/Stab",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
     "charged_effect": "One a _Graze_+, inflict +3 Damage and inflict _Bleed_ 2. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 0, 5, 5, 6, 7, 8, 8, 9, 10, 11],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -93,7 +90,6 @@
     "weight": 4,
     "hands": 2,
     "durability": 10,
-    "range_value": 2,
     "type": "Heavy"
   },
   {
@@ -101,12 +97,11 @@
     "category": "Hafted",
     "type": "Light",
     "desc": "A lightweight axe that weighs enough to punish a foe's defenses while allowing for swift strikes.",
-    "keywords": ["_Thrown_ 3"],
     "material": "Metal, Wood",
     "speed": 3,
     "damagetype": "Slash",
     "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Gain 1 _Guard_ against the Attack.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1, "special": "/ _Thrown_ 3, _Minimum Range_ 1" },
     "chart": {
       "damage": [0, 0, 0, 3, 3, 4, 5, 7, 8, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -126,8 +121,7 @@
     },
     "weight": 2,
     "hands": 1,
-    "durability": 8,
-    "range_value": 1
+    "durability": 8
   },
   {
     "name": "Iron Battleaxe",
@@ -140,7 +134,7 @@
     "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
     "speed": 5,
     "damagetype": "Slash",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 4, 5, 6, 7, 9, 10, 12, 12],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -160,8 +154,7 @@
     },
     "weight": 3,
     "hands": 1,
-    "durability": 9,
-    "range_value": 1
+    "durability": 9
   },
   {
     "name": "Iron Greataxe",
@@ -172,7 +165,7 @@
     "speed": 6,
     "damagetype": "Slash",
     "material": "Metal, Wood",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
     "chart": {
@@ -194,8 +187,7 @@
     },
     "weight": 4,
     "hands": 2,
-    "durability": 10,
-    "range_value": 1
+    "durability": 10
   },
   {
     "name": "Iron Mace",
@@ -208,7 +200,7 @@
     "material": "Metal, Wood",
     "speed": 4,
     "damagetype": "Crush",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 3, 4, 5, 6, 8, 9, 11, 11],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -216,8 +208,7 @@
     },
     "weight": 2,
     "hands": 1,
-    "durability": 9,
-    "range_value": 1
+    "durability": 9
   },
   {
     "name": "Iron Warhammer",
@@ -230,7 +221,7 @@
     "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
     "material": "Metal, Wood",
     "damagetype": "Crush",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 5, 6, 7, 9, 10, 12, 13, 13],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -250,8 +241,7 @@
     },
     "weight": 3,
     "hands": 1,
-    "durability": 10,
-    "range_value": 1
+    "durability": 10
   },
   {
     "name": "Iron Maul",
@@ -264,7 +254,7 @@
     "charged_effect": "Deal +4 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
     "material": "Metal, Wood",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 0, 0, 6, 7, 9, 11, 12, 14, 15, 15],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -284,17 +274,17 @@
     },
     "weight": 4,
     "hands": 2,
-    "durability": 11,
-    "range_value": 2
+    "durability": 11
   },
   {
     "name": "Small Improvised",
     "category": "Improvised",
     "desc": "A small weapon that could easily be fit in a hand, such as a stone or bottle.",
-    "keywords": ["Light", "_Thrown_ 3", "Quickdraw"],
+    "keywords": ["Quickdraw"],
     "speed": 2,
     "damagetype": "Varying",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1, "special": "/ _Thrown_ 3, _Minimum Range_ 1" },
+    "type": "Light",
     "chart": {
       "damage": [0, 0, 0, 3, 3, 3, 4, 5, 6, 6, 7],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -312,17 +302,16 @@
         "_Vulnerable_ 3 (3 _Grit_)"
       ]
     },
-    "hands": 1,
-    "range_value": 1
+    "hands": 1
   },
   {
     "name": "Medium Improvised",
     "category": "Improvised",
     "desc": "An object that is light enough to be wielded in one hand, such as a chair or tree branch.",
-    "keywords": ["Versatile", "_Thrown_ 2"],
     "speed": 3,
     "damagetype": "Varying",
-    "range": "Melee",
+    "type": "Versatile",
+    "range": { "category": "Melee", "value": 1, "special": "/ _Thrown_ 2, _Minimum Range_ 1" },
     "chart": {
       "damage": [0, 0, 0, 4, 4, 5, 5, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -341,17 +330,16 @@
       ]
     },
     "weight": 0,
-    "hands": 1,
-    "range_value": 1
+    "hands": 1
   },
   {
     "name": "Large Improvised",
     "category": "Improvised",
     "desc": "A weapon large enough to require two hands, such as a table or heavy stone.",
-    "keywords": ["Heavy"],
     "speed": 4,
     "damagetype": "Varying",
-    "range": "Melee",
+    "type": "Heavy",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 5, 5, 6, 7, 8, 9, 9, 10],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -370,19 +358,17 @@
       ]
     },
     "weight": 0,
-    "hands": 2,
-    "range_value": 1
+    "hands": 2
   },
   {
     "name": "Iron Javelin",
     "category": "Pole",
     "desc": "A light spear that lacks the range of other lance weapons but can easily be flung to harry foes.",
-    "keywords": ["_Thrown_ 6"],
     "speed": 2,
     "type": "Light",
     "material": "Metal, Wood",
     "damagetype": "Stab",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1, "special": "/ _Thrown_ 6, _Minimum Range_ 1" },
     "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
     "chart": {
       "damage": [0, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4],
@@ -403,8 +389,7 @@
     },
     "weight": 1,
     "hands": 1,
-    "durability": 6,
-    "range_value": 1
+    "durability": 6
   },
   {
     "name": "Iron Spear",
@@ -415,7 +400,7 @@
     "speed": 3,
     "damagetype": "Stab",
     "charged_effect": "On a _Graze_+, deal +1 Damage. Make this _Attack_ in a _Self_-Range _Line_ 2.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "material": "Metal, Wood",
     "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* If this _Weapon_ is _Wielded_ in both hands, gain 1 _Guard_ against the Attack.",
     "chart": {
@@ -437,8 +422,7 @@
     },
     "weight": 2,
     "hands": 1,
-    "durability": 7,
-    "range_value": 2
+    "durability": 7
   },
   {
     "name": "Iron Pike",
@@ -448,7 +432,7 @@
     "speed": 4,
     "damagetype": "Stab",
     "charged_effect": "On a _Graze_+, deal +2 Damage. Make this _Attack_ in a _Self_-Range _Line_ 3 and add [_Pierce_ 1].",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 3 },
     "material": "Metal, Wood",
     "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* Gain 1 _Guard_ against the Attack.",
     "chart": {
@@ -470,20 +454,18 @@
     },
     "weight": 4,
     "hands": 2,
-    "durability": 8,
-    "range_value": 3
+    "durability": 8
   },
   {
     "name": "Recurve Bow",
     "category": "Projectile",
     "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilities.",
     "type": "Light",
-    "keywords": ["_Minimum Range_ 1"],
     "speed": 3,
     "damagetype": "Stab",
     "material": "Wood (Weapon), Wood/Metal (Projectile)",
     "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
-    "range": "Range",
+    "range": { "category": "Ranged", "value": 8, "special": "_Minimum Range_ 1" },
     "chart": {
       "damage": [0, 0, 0, 0, 4, 5, 6, 6, 7, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -491,21 +473,19 @@
     },
     "weight": 2,
     "hands": 2,
-    "durability": 6,
-    "range_value": 10
+    "durability": 6
   },
   {
     "name": "Sling",
     "category": "Projectile",
     "desc": "A simple weapon with a windup that pierces through many defenses.",
-    "keywords": ["_Minimum Range_ 2"],
     "speed": 4,
     "type": "Versatile",
     "charged_effect": "Add [_Pierce_ 1] and deal +1 Damage on a _Hit_+.",
     "damagetype": "Crush",
     "material": "Leather (Weapon), Stone (Projectile)",
     "parry": "None.",
-    "range": "Range",
+    "range": { "category": "Ranged", "value": 8, "special": "_Minimum Range_ 2" },
     "chart": {
       "damage": [0, 0, 0, 0, 6, 7, 7, 8, 8, 10, 10],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -513,21 +493,20 @@
     },
     "weight": 1,
     "hands": 1,
-    "durability": 5,
-    "range_value": 8
+    "durability": 5
   },
   {
     "name": "Shortbow",
     "category": "Projectile",
     "desc": "A bow that is equally in place hunting game and on the battlefield.",
     "type": "Versatile",
-    "keywords": ["Ordnance", "_Minimum Range_ 3"],
+    "keywords": ["Ordnance"],
     "charged_effect": "Add [_Arcing_] and deal +2 Damage on a _Hit_+.",
     "speed": 5,
     "damagetype": "Stab",
     "material": "Wood (Weapon), Wood/Metal (Projectile)",
     "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
-    "range": "Range",
+    "range": { "category": "Ranged", "value": 10, "special": "_Minimum Range_ 3" },
     "chart": {
       "damage": [0, 0, 0, 0, 7, 8, 9, 9, 10, 11, 11],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -535,21 +514,20 @@
     },
     "weight": 4,
     "hands": 2,
-    "durability": 8,
-    "range_value": 12
+    "durability": 8
   },
   {
     "name": "Longbow",
     "category": "Projectile",
     "desc": "A heavy bow that has unparalleled range and power, allowing deadly strikes from extreme range.",
     "type": "Heavy",
-    "keywords": ["Ordnance", "_Pierce_ 1", "_Minimum Range_ 4"],
+    "keywords": ["Ordnance", "_Pierce_ 1"],
     "charged_effect": "Add [_Arcing_, _Pierce_ 1] and deal +3 Damage on a _Hit_+.",
     "speed": 7,
     "damagetype": "Stab",
     "material": "Wood (Weapon), Wood/Metal (Projectile)",
     "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
-    "range": "Range",
+    "range": { "category": "Ranged", "value": 12, "special": "_Minimum Range_ 4" },
     "chart": {
       "damage": [0, 0, 0, 0, 10, 11, 11, 12, 13, 14, 14],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -557,8 +535,7 @@
     },
     "weight": 5,
     "hands": 2,
-    "durability": 9,
-    "range_value": 12
+    "durability": 9
   },
   {
     "name": "Iron Buckler",
@@ -572,7 +549,7 @@
     "damagetype": "Crush",
     "special": "Reduce the cost to negate _Disarmed_ for this _Weapon_ by",
     "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Lightly Obstructed_.\n* Reduce the Value of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 0, 1, 1, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -591,8 +568,7 @@
       ]
     },
     "weight": 2,
-    "hands": 1,
-    "range_value": 1
+    "hands": 1
   },
   {
     "name": "Round Shield",
@@ -604,7 +580,7 @@
     "damagetype": "Crush",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Heavily Obstructed_.\n* Reduce the Value of _Vulnerable_ inflicted by 2, starting with the smallest Token.",
     "material": "Wood",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -623,8 +599,7 @@
       ]
     },
     "weight": 3,
-    "hands": 1,
-    "range_value": 1
+    "hands": 1
   },
   {
     "name": "Heater Shield",
@@ -636,7 +611,7 @@
     "keywords": ["Secure"],
     "damagetype": "Crush",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 2 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Heavily Obstructed_.\n* Reduce the Value of _Vulnerable_ inflicted by 2, starting with the smallest Token.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 1, 1, 1, 2, 3, 3, 4, 4, 5, 5],
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -655,8 +630,7 @@
       ]
     },
     "weight": 4,
-    "hands": 1,
-    "range_value": 1
+    "hands": 1
   },
   {
     "name": "Pavise Shield",
@@ -669,7 +643,7 @@
     "damagetype": "Crush",
     "special": "You may, as a 1 AP _Action_, stop _Wielding_ this _Weapon_ and plant it in the ground. Create the _Planted Shield_ _Obstacle_ in that space and immediately use its _Interact_. You may _Retrieve_ this _Weapon_ as normal, removing the _Obstacle_ in the process.",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 2 and gain 2 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as _Covered_.\n* Reduce the Value of _Vulnerable_ inflicted by 3, starting with the smallest Token.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 2, 2, 3, 3, 3, 4, 5, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -688,21 +662,20 @@
       ]
     },
     "weight": 6,
-    "hands": 1,
-    "range_value": 1
+    "hands": 1
   },
   {
     "name": "Dart",
     "category": "Throwing",
     "desc": "A simple weapon that allows for quick attacks and clumsy melee strikes.",
     "type": "Light",
-    "keywords": ["_Minimum Range_ 1", "_Thrown_ 6", "Small", "Quickdraw"],
+    "keywords": ["Small", "Quickdraw"],
     "speed": 2,
     "damagetype": "Stab",
     "parry": "None",
     "material": "Wood",
-    "range": "Melee",
-    "special": "Melee Attacks with this Weapon gain _Glancing_.",
+    "range": { "category": "Melee", "value": 1, "special": "/ _Thrown_ 6, _Minimum Range_ 1" },
+    "special": "Melee Attacks with this Weapon gain [_Glancing_].",
     "chart": {
       "damage": [0, 0, 3, 3, 4, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -710,8 +683,7 @@
     },
     "weight": 1,
     "hands": 1,
-    "durability": 6,
-    "range_value": 1
+    "durability": 6
   },
   {
     "name": "Small Jaws",
@@ -722,8 +694,7 @@
     "speed": 3,
     "damagetype": "Stab/Crush",
     "parry": "If the triggering _Attack_ is _Light_/_Versatile_, opponent chooses: Either they gain _Pull_ 1, _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
-    "range": "Melee",
-    "range_value": 1,
+    "range": { "category": "Melee", "value": 1 },
     "special": "Gain a +1 _Bonus_ on _Attack Rolls_ and add [_Pierce_ 1] against creatures _Grabbed_ by this _Weapon_.",
     "chart": {
       "damage": [0, 0, 0, 3, 4, 5, 5, 6, 7, 8, 8],
@@ -754,8 +725,7 @@
     "damagetype": "Stab/Crush",
     "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Pierce_ 1].",
     "parry": "Opponent chooses: Either they gain _Pull_ 1, _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
-    "range": "Melee",
-    "range_value": 1,
+    "range": { "category": "Melee", "value": 1 },
     "special": "Gain a +1 _Bonus_ on _Attack Rolls_ and add [_Pierce_ 1] against creatures _Grabbed_ by this _Weapon_. If a creature is already _Grabbed_ by this Weapon and you would inflict _Grabbed_ again, instead inflict _Prone_.",
     "chart": {
       "damage": [0, 0, 0, 5, 6, 6, 7, 8, 8, 9, 9],
@@ -786,8 +756,7 @@
     "damagetype": "Stab/Crush",
     "charged_effect": "Deal +1 Damage on a _Graze_+ and add [_Overwhelming_ 2, _Pierce_ 1].",
     "parry": "Opponent chooses: Either they gain _Pull_ 1, _Vulnerable_ 2 or you reduce the _Attack Roll_ by 1.",
-    "range": "Melee",
-    "range_value": 1,
+    "range": { "category": "Melee", "value": 1 },
     "special": "Gain a +1 _Bonus_ on _Attack Rolls_ and add [_Pierce_ 2] against creatures _Grabbed_ by this _Weapon_. If a creature is already _Grabbed_ by this Weapon and you would inflict _Grabbed_ again, instead inflict _Prone_.",
     "chart": {
       "damage": [0, 0, 0, 7, 8, 9, 9, 10, 11, 12, 12],
@@ -815,7 +784,7 @@
     "speed": 2,
     "damagetype": "Stab",
     "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleed_ 2 or you reduce the _Attack Roll_ by 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 1, 2, 2, 3, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -833,7 +802,6 @@
         "_Bleed_ 2, _Impaired_ 1"
       ]
     },
-    "range_value": 1,
     "type": "Light"
   },
   {
@@ -844,7 +812,7 @@
     "damagetype": "Stab",
     "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2.",
     "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleed_ 2 or you reduce the _Attack Roll_ by 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 2, 2, 3, 3, 4, 5, 5, 6, 7, 7],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -862,7 +830,6 @@
         "_Bleed_ 2, _Impaired_ 2"
       ]
     },
-    "range_value": 2,
     "type": "Versatile"
   },
   {
@@ -874,7 +841,7 @@
     "damagetype": "Stab",
     "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2 and add _Bleed_ 1 on a _Graze_+.",
     "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleed_ 3 or you reduce the _Attack Roll_ by 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 3, 3, 4, 5, 6, 6, 6, 7, 8, 8],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -892,7 +859,6 @@
         "_Bleed_ 3, _Impaired_ 3"
       ]
     },
-    "range_value": 2,
     "type": "Heavy"
   },
   {
@@ -902,13 +868,12 @@
     "speed": 2,
     "damagetype": "Slash",
     "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1 or gain 1 Guard against it.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 2, 2, 3, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2"]
     },
-    "range_value": 1,
     "type": "Light"
   },
   {
@@ -919,13 +884,12 @@
     "damagetype": "Slash",
     "charged_effect": "Deal +1 Damage on a _Graze_+.",
     "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 or gain 1 Guard against it.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 4, 4, 5, 6, 6, 7, 8, 9, 9],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2"]
     },
-    "range_value": 1,
     "type": "Versatile"
   },
   {
@@ -936,13 +900,12 @@
     "damagetype": "Slash",
     "charged_effect": "Deal +1 _Damage_ on a _Graze_+. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 5, 6, 7, 7, 8, 9, 10, 11, 11],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2", "_Bleed_ 3", "_Bleed_ 3"]
     },
-    "range_value": 1,
     "type": "Heavy"
   },
   {
@@ -954,7 +917,7 @@
     "damagetype": "Crush",
     "special": "Gain a +1 _Bonus_ on _Attack Rolls_ against creatures _Grabbed_ by this Weapon and increase any _Vulnerable_ inflicted by 1.",
     "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -972,7 +935,6 @@
         "_Pull_ 2, _Vulnerable_ 2, _Grabbed_ [2 _Reflex_]"
       ]
     },
-    "range_value": 1,
     "type": "Light"
   },
   {
@@ -984,7 +946,7 @@
     "damagetype": "Crush",
     "special": "Gain a +1 _Bonus_ on _Attack Rolls_ against creatures _Grabbed_ by this Weapon and increase any _Vulnerable_ inflicted by 1.",
     "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 0, 2, 2, 3, 3, 4, 4, 4, 5, 5],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1002,7 +964,6 @@
         "_Pull_ 3, _Vulnerable_ 2, _Grabbed_ [3 _Reflex_]"
       ]
     },
-    "range_value": 2,
     "type": "Versatile"
   },
   {
@@ -1014,7 +975,7 @@
     "damagetype": "Crush",
     "special": "Gain a +1 _Bonus_ on _Attack Rolls_ against creatures _Grabbed_ by this Weapon and increase any _Vulnerable_ inflicted by 1.",
     "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 0, 3, 3, 4, 4, 5, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1032,7 +993,6 @@
         "_Pull_ 3, _Vulnerable_ 3, _Grabbed_ [3 _Reflex_]"
       ]
     },
-    "range_value": 2,
     "type": "Heavy"
   },
   {
@@ -1042,7 +1002,7 @@
     "speed": 3,
     "damagetype": "Crush",
     "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 3, 3, 4, 5, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1060,7 +1020,6 @@
         "_Push_ 1, _Vulnerable_ 1/_Prone_ [1 _Grit_]"
       ]
     },
-    "range_value": 1,
     "type": "Light"
   },
   {
@@ -1071,7 +1030,7 @@
     "damagetype": "Crush",
     "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.",
     "charged_effect": "Deal +1 Damage on a Graze+ and add [_Overwhelming_ 1, _Pierce_ 1].  Additionally, this Weapon becomes _Reach_ 2.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 0, 4, 4, 6, 7, 8, 9, 10, 10],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1089,7 +1048,6 @@
         "_Push_ 2, _Vulnerable_ 2/_Prone_ [2 _Grit_]"
       ]
     },
-    "range_value": 1,
     "type": "Versatile"
   },
   {
@@ -1100,7 +1058,7 @@
     "damagetype": "Crush",
     "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.",
     "charged_effect": "Deal +1 Damage on a Graze+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this Attack in a _Self_-Range _Cone_ 2/_Arc_ 1.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 0, 0, 5, 5, 7, 8, 9, 10, 12, 12],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1118,7 +1076,6 @@
         "_Push_ 3, _Vulnerable_ 3/_Prone_ [3 _Grit_]"
       ]
     },
-    "range_value": 2,
     "type": "Heavy"
   },
   {
@@ -1129,13 +1086,12 @@
     "damagetype": "Stab",
     "special": "If used after moving at least 3 spaces with [_Rush_] Movement add _Push_ 1.",
     "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.\n* Reduce the Value of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 3, 3, 3, 4, 5, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
-    "range_value": 1,
     "type": "Light"
   },
   {
@@ -1147,7 +1103,7 @@
     "special": "If used after moving at least 3 spaces with [_Rush_] Movement add _Push_ 1.",
     "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.\n* Reduce the Value of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
     "charged_effect": "Deal +1 Damage on a Graze+. On a _Hit_+, add _Angled Push_ 2.",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 1 },
     "chart": {
       "damage": [0, 0, 4, 4, 5, 6, 7, 8, 9, 10, 10],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1165,7 +1121,6 @@
         "_Push_ 2, _Impaired_ 2"
       ]
     },
-    "range_value": 1,
     "type": "Versatile"
   },
   {
@@ -1177,7 +1132,7 @@
     "special": "If used after moving at least 3 spaces with [_Rush_] Movement add _Push_ 2.",
     "parry": "Gain the following benefits:\n* Reduce the Attack Roll by 1 and gain 1 _Guard_.\n* Reduce the Value of _Vulnerable_ inflicted by 2, starting with the smallest Token.",
     "charged_effect": "Deal +1 Damage on a Graze+ and add [_Overwhelming_ 1]. On a _Hit_+, add _Angled Push_ 4/_Airborne_ [2 _Grit_].",
-    "range": "Melee",
+    "range": { "category": "Melee", "value": 2 },
     "chart": {
       "damage": [0, 0, 6, 6, 7, 8, 9, 10, 10, 12, 12],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1195,7 +1150,6 @@
         "_Push_ 3, _Impaired_ 2"
       ]
     },
-    "range_value": 2,
     "type": "Heavy"
   },
   {
@@ -1207,8 +1161,7 @@
     "speed": 2,
     "damagetype": "Pierce",
     "parry": "None",
-    "range": "Range",
-    "range_value": 6,
+    "range": { "category": "Ranged", "value": 6 },
     "chart": {
       "damage": [0, 0, 0, 0, 4, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -1224,8 +1177,7 @@
     "speed": 4,
     "damagetype": "Pierce",
     "parry": "None",
-    "range": "Range",
-    "range_value": 8,
+    "range": { "category": "Ranged", "value": 8 },
     "chart": {
       "damage": [0, 0, 0, 0, 6, 7, 8, 8, 8, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],

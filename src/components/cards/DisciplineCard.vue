@@ -5,7 +5,7 @@
       <b>{{ discipline.TypeHeader }}</b
       ><br />
       <b><display-tooltip-text :string="discipline.RoleHeader.replace('/', '_/_')" /></b><br />
-      <display-tooltip-text style="font-style: italic;" class="page--description" :string="discipline.Flavor" />
+      <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.Flavor" />
     </div>
     <div class="header">
       <h4 style="display: flex;">

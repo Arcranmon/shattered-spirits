@@ -66,7 +66,7 @@ interface IDisciplineTierData {
 declare interface IDisciplineData {
   name: string
   category: string
-  flavor: string
+  desc: string
   primary_role: string
   secondary_role: string
   summary: string
@@ -125,8 +125,7 @@ declare interface IManeuverData {
   manifest?: string
   move?: string
   name: string
-  range?: string
-  range_value: number
+  range?: IRangeData
   reqs?: string
   special: string
   chart?: IChartData
@@ -159,6 +158,12 @@ declare interface IObstacleData {
   resistances: string
   special: string
   chart: IChartData
+}
+
+declare interface IRangeData {
+  category: string
+  value: number
+  special: string
 }
 
 declare interface ISpiritData {
@@ -238,8 +243,7 @@ declare interface ITechData {
   move?: string
   name: string
   reaction?: string
-  range?: string
-  range_value?: string
+  range?: IRangeData
   reqs?: string
   special?: string
   speed: string

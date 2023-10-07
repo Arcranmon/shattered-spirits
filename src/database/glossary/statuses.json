@@ -233,7 +233,7 @@
   {
     "name": "Courageous",
     "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
-    "effect": "Whenever a creature with _Courage_ ends their _Turn_ adjacent to a hostile creature they reduce their Courage by 1 and gain 1 _Momentum_ or 2 _Vigor_.",
+    "effect": "Whenever a creature with Courageous ends their _Turn_ adjacent to a hostile creature they reduce their Courageous by 1 and gain 1 _Momentum_ or 2 _Vigor_.",
     "reacts": ["<ins>Fear:</ins> If a creature has Fear and would gain Courage, they instead remove an equivalent amount of Fear."],
     "type": "Mental Affliction"
   },
@@ -250,16 +250,32 @@
     "name": "Enraged",
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
     "effect": "The most recent creature to inflict Enraged is the target of that creature's rage. A creature with Enraged deals +1 Damage on all attacks against the target of their rage. Additionally, a creature with Enraged takes a -1 Penalty on all Attacks that do not include the target of their rage and, after making an Attack that does not include them, reduces their Enraged by 1 and gains _Exposed_ 1.",
-    "remove": "After a creature Attacks the target of their rage, reduce their Enraged by 1. Aditionally, when a creature _Recovers_ they may expend _Poise_ to reduce Enraged by an equivalent amount.",
+    "remove": "After a creature Attacks the target of their rage, reduce their Enraged by 1. Additionally, when a creature _Recovers_ they may expend _Poise_ to reduce Enraged by an equivalent amount.",
     "negate": "A creature may expend 1 _Poise_ to negate 1 Exposed.",
     "reacts": ["<ins>Joyful:</ins> If a creature has any Joyful and would gain Enraged they first reduce their Joyful before gaining any Enraged."],
     "special": "If a creature is _Marked_ the marker is always the target of their rage.",
     "type": "Hide"
   },
   {
+    "name": "Joyful",
+    "desc": "A mental affliction caused when a creature's heart is full of joy. ",
+    "effect": "Whenever a creature with Joyful ends their _Turn_ adjacent to an allied creature they reduce their Joyful by 1 and gain 1 _Momentum_ or may immediately Move 1.",
+    "reacts": ["<ins>Anguished:</ins> If a creature has Anguished and would gain Joyful, they instead remove an equivalent amount of Anguished."],
+    "type": "Mental Affliction"
+  },
+  {
+    "name": "Anguished",
+    "desc": "A mental affliction caused when a creature's heart is full of grief. ",
+    "effect": "Whenever a creature with Anguished ends their _Turn_ adjacent to an allied creature they reduce their Anguished by 1, lose 2 _Momentum_, and gain _Slowed_.",
+    "remove": "When a creature _Recovers_ they may expend _Poise_ to reduce Anguished by an equivalent amount so long as they are not adjacent to any allies.",
+    "negate": "A creature may expend 1 _Poise_ to negate 1 Anguished.",
+    "reacts": ["<ins>Joyful:</ins> If a creature has Joyful and would gain Anguished, they instead remove an equivalent amount of Joyful."],
+    "type": "Mental Affliction"
+  },
+  {
     "name": "Accelerate",
     "desc": "Your speed is increased, allowing you to act quicker.",
-    "effect": "When a creature becomes Accelerated their next Technique this Round has its Speed decreased by 1. If the creature has no more Techniques this round, they gain 1 _Momentum_/_Reflex_ (their choice). If a creature's next Turn is in the current Phase, they may take their Turn immediately after gaining Accelerate, ignoring the normal Initiative process.",
+    "effect": "When a creature becomes Accelerated their next Technique this Round has its Speed decreased by 1. If the creature has no more Techniques this round, they gain 2 _Momentum_. If a creature's next Technique is in the current Phase, they may take their Turn immediately after gaining Accelerate, ignoring the normal Initiative process.",
     "type": "Hide"
   },
   {
@@ -311,7 +327,7 @@
   {
     "name": "Slowed",
     "desc": "You weigh down a foe, limiting their ability to react.",
-    "effect": "When a creature becomes Slowed their next Technique this Round has its Speed increased by 1. If the creature has no more Actions this round, they gain _Impaired_/_Dazed_ 1 (Attacker or Spirit Master's choice).",
+    "effect": "When a creature becomes Slowed their next Technique this Round has its Speed increased by 1. If the creature has no more Techniques this round, they gain _Impaired_ 2/_Reeling_ 1 (Attacker or Spirit Master's choice).",
     "type": "Instant Effect"
   },
   {

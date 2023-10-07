@@ -11,8 +11,7 @@ class Maneuver {
   protected keywords_: Array<string>
   protected move_: string
   protected name_: string
-  protected range_: string
-  protected range_value_: number
+  protected range_: IRangeData
   protected reqs_: string
   protected manifest_: string
   protected special_: string
@@ -109,15 +108,22 @@ class Maneuver {
     return '**Move:** ' + this.move_
   }
   get HasRange() {
-    return this.range_.length > 0
+    return this.range_ != null
   }
   get Range() {
-    return this.range_
+    return this.range_.category
   }
   get RangeHeader() {
-    if (this.Range == 'Melee') return '**Range:** _Melee_, _Reach_ ' + this.range_value_
-    if (this.Range == 'Self') return '**Range:** _Self_'
-    return '**Range**: ' + this.range_value_
+    var range_string
+    if (this.Range == 'Melee') range_string = '**Range:** _Melee_, _Reach_ ' + this.range_.value
+    else if (this.Range == 'Self') range_string = '**Range:** _Self_'
+    else range_string = '**Range**: ' + this.range_.value
+    if (this.range_.special != undefined) {
+      if (this.range_.value != 0 && this.range_.special[0] != '/') range_string += ','
+      if (this.range_.value != 0) range_string += ' '
+      range_string += this.range_.special
+    }
+    return range_string
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -164,13 +170,12 @@ class Maneuver {
     this.manifest_ = data.manifest || ''
     this.move_ = data.move || ''
     this.name_ = data.name || ''
-    this.range_ = data.range || ''
-    this.range_value_ = data.range_value || 0
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     this.trigger_ = data.trigger || ''
     this.type_ = data.type || 'Maneuver'
     this.weapon_ = data.weapon || ''
+    if ('range' in data) this.range_ = data.range
   }
 }
 export default Maneuver

@@ -1,13 +1,11 @@
 [
   {
-    "name": "Swift Strike",
-    "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
+    "name": "Agile Strike",
+    "desc": "A standard attack by an NPC.",
     "type": "Strike",
     "speed": "Any",
     "move": "Reposition",
-    "effect": "Choose one:\n* Make 1 _Light_/_Versatile_ _Major Attack_ and 1 _Light_/_Versatile_ _Minor Attack_ in any order.\n* Make 3 _Light_/_Versatile_ _Minor Attacks_.",
-    "special": "Determine _Speed Penalties_ for _Light_ Attacks as if this _Technique_ was played one _Phase_ later.",
-    "boost": "\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
+    "effect": "Make a _Major Attack_."
   },
   {
     "name": "Basic Strike",
@@ -21,22 +19,79 @@
     "boost": "2 _Momentum_: Make one less _Light_/_Versatile_ _Minor Attack_ and one more _Light_/_Versatile_ _Major Attack_."
   },
   {
+    "name": "Butterfly Road",
+    "desc": "You move with fluid grace, slipping past foes in an elegant dance.",
+    "keywords": ["Fluid"],
+    "type": "Move",
+    "speed": "Any",
+    "move": "Step , Step, Step",
+    "effect": "Attacks against you take a -1 _Penalty_ this _Turn_. At the end of your first _Move_ inflict _Vulnerable_ 1 in a _Burst_ 1. At the end of the second, inflict _Exposed_ 1 in a _Burst_ 1. At the end of the third, inflict _Reeling_ 1 in a _Burst_ 1. You must move at least one space during each Move this turn.",
+    "special": "Any creature that uses a Reaction on you triggered by you creating an _Opening_ due to starting Movement gains _Impaired_ 1."
+  },
+  {
+    "name": "Call the Pack",
+    "desc": "You command your allies with practiced precision, coordinating a synchronized strike.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Make a _Minor Attack_, then choose two allies. They gain a _Free Turn_ that they may use to _Step_ towards the target of your Attack and make a _Minor Attack_ against the same creature as you. If all three Attacks _Graze_+, inflict _Reeling_ 1, or _Reeling_ 2 on a _Hit_+.",
+    "boost": "2 _Momentum_: Instead, your ally makes a _Major Attack_ on the _Free Turn_. Your ally may contribute to this _Boost_. You may repeat this _Boost_.",
+    "special": ""
+  },
+  {
+    "name": "Eyes of Greed",
+    "desc": "You carefully scan the battlefield, finding opportunities for allies wherever you look.",
+    "type": "Support",
+    "speed": "Any",
+    "move": "Step",
+    "range": { "category": "Ranged", "value": 8 },
+    "keywords": ["Priority"],
+    "effect": "Roll 1d6 5 times, then place 5 _Opportune Weapons_, based on the individual dice rolls and following rules:\n* You may place these anywhere within _Range_, but may not place them adjacent to yourself or allies or within 3 spaces of another _Improvised Weapons_ placed by this effect.\n* On a 1-3, the _Opportune Weapon_ is a _Small Improvised_ Weapon, made of the same material as the _Terrain_ or an adjacent _Obstacle_. It deals your choice of _Crush_, _Slash_, or _Stab_ damage.\n* On a 4-5, you may make the _Opportune Weapon_ a _Medium Improvised Weapon_.\n* On a 6, you may always choose for the material to be _Wood_, _Metal_, or _Natural_.",
+    "special": "Only you and your allies may use these _Opportune Weapons_."
+  },
+  {
+    "name": "Fumigate",
+    "desc": "A massive blast of chemical gas.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Create a _Burst_ 1 or _Cone_ 3 _Hazard_, then begin _Charging_. At the end of the next _Phase_ remove the _Hazard_ and attack all creatures in the _Area_ three times with _Toxic Spray_, ignoring its normal range. Those spaces become _Toxic Gas_ until the end of the _Round_."
+  },
+  {
+    "name": "Guide the Flock",
+    "desc": "You find a path forward for your allies, providing them a great deal of mobility.",
+    "type": "Support",
+    "speed": "Any",
+    "range": { "category": "Ranged", "value": 6 },
+    "move": "Reposition",
+    "effect": "Gain 1 _Momentum_. All allies within Range gain a _Free Turn_ where they may _Reposition_. Enemies adjacent to you treat all allied Movement on these _Free Turns_ as [_Safe_].",
+    "special": "As a part of this Technique, designate a _Blast_ 1 within _Range_. Any ally that ends their _Free Turn_ in this Area gains 1 _Momentum_."
+  },
+  {
+    "name": "Hostile Strike",
+    "desc": "A basic NPC strike.",
+    "keywords": ["Fluid"],
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Choose one:\n* Make 1 _Major Attack_.\n* Make 2 _Minor Attacks_."
+  },
+  {
     "name": "Lion's Roar",
     "desc": "You loudly charge forth into battle, making your intentions clear.",
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
     "effect": "Gain _Vigor_ 2. Make a _Major Attack_. Immediately after resolving the Attack grant _Courageous_ 1 allies of your choice in a _Burst_ 2, or _Courageous_ 2 on a _Crit_ or if you defeat the foe.",
-    "special": "After resolving your Attack, an ally that received _Courageous_ may immediately make either:\n* Make a _Minor Attack_ against an enemy marked by you.\n* Make a _Step_ Movement towards you."
+    "special": "An ally that received _Courageous_ gains a _Free Turn_ where they may do one of the following:\n* Make a _Minor Attack_ against an enemy _Marked_ by you.\n* _Step_ towards you."
   },
   {
     "name": "Ocean's Veil",
     "desc": "You pull forth water to create a great wall, warding your allies from assault.",
     "keywords": ["Spirit", "Water", "Enchant", "Fluid"],
     "type": "Defend",
-    "range": "Ranged",
-    "range_value": "6",
     "speed": "Any",
+    "range": { "category": "Ranged", "value": 6 },
     "move": "Reposition",
     "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. These _Water Veil_s are _Destroyed_ when the _Enchant_ ends. "
   },
@@ -45,9 +100,9 @@
     "desc": "You take a position with a pristine view, preparing to lay down supporting fire for allies.",
     "type": "Support",
     "speed": "Any",
-    "move": "Step",
-    "range": "Self",
+    "range": { "category": "Self" },
     "area": "_Cone_ 12",
+    "move": "Step",
     "effect": "Resolve your Move, inflict _Insight_ 1 on all creatures of your choice in the _Area_, then draw a _Hazard_ there. Until you leave this space or the end of the _Round_, you may trigger _Opportunity Attack_ whenever a creature within this _Hazard_ creates an _Opening_.",
     "special": "You may reduce the Area to Cone to 9, 6, or 3; if you do, you may inflict an additional 1/2/4 _Insight_, distributed among creatures in the _Area_ as you wish."
   },
@@ -56,21 +111,20 @@
     "desc": "You carefully line up an attack, waiting for the opportune moment to release it.",
     "type": "Strike",
     "speed": "Any",
+    "range": { "category": "Ranged", "value": 20 },
     "move": "None",
-    "range": "Ranged",
-    "range_value": 20,
-    "effect": "Choose a creature within Range and inflict _Insight_ 1 on them, then choose a _Major Attack_ and becoming _Charging_. If it's a _Weapon Attack_ that _Weapon_ becomes _Occupied_._At the end of each _Phase_, inflict _Insight_ 1 on that creature. At the end of any _Turn_ or _Phase_ you may make choose to stop _Charging_ and unleash the _Attack_ on the target creature. Make this attack at _Advantage_ if you _Charged_ for at least 4 _Phases_.",
-    "special": "When you make this _Attack_ you remove up to X _Insight_ from the creature to deal +X Damage on a _Hit_+, where X is the number of _Phases_ you were _Charging_."
+    "effect": "Choose a creature within Range and inflict _Insight_ 1 on them, then choose a _Major Attack_ and becoming _Charging_. If it's a _Weapon Attack_ that _Weapon_ becomes _Occupied_. At the end of any _Turn_ or _Phase_ you may make choose to stop _Charging_ and unleash the _Attack_ on the target creature. _At the end of each _Phase_ you do not make this Attack, not including the _Phase_ where you began the effect, inflict _Insight_ 1 on that creature.",
+    "special": "When you resolve this _Attack_, do not roll 2d6. Instead, roll 1d6+X, where X is the number of _Phases_ you have been _Charging_, up to a maximum of 6. If you have _Advantage_/_Disadvantage_ on this Attack, roll 2d6+X and resolve with the higher/lower dice, as appropriate."
   },
   {
-    "name": "Strong Strike",
-    "desc": "You unleash a powerful attack against a foe.",
+    "name": "Raging Stampede",
+    "desc": "You let out a mighty bellow before you unleash a series of devastating attacks.",
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and dealing additional Damage equal to half the _Phase_ on a _Graze_+.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
-    "special": "Determine _Speed Penalties_ as if this _Technique_ was played one _Phase_ earlier.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 2 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1] and deal +1 Damage on a _Graze_+. Remove the _Charging_ and _Hazard_ one _Phase_ later."
+    "effect": "Resolve your Move, then make a _Charged Attack_, adding [_Glancing_]. After resolving the _Charged Attack_, immediately make another _Charged Attack_, adding [_Glancing_].",
+    "special": "You must use a _Heavy_ _Major Attack_ for this.",
+    "boost": "Choose any:\n* 1 _Momentum_: You may instead use a _Versatile_ _Major Attack_. You must pay this _Boost_ for each _Charged Attack_.\n* 2 _Momentum_: Immediately after resolving the second _Charged Attack_, make another _Charged Attack_, adding [_Glancing_].\n* 2 _Momentum_/1 _AP_ (paid after making a _Charged Attack_): Take a _Free Turn_ where you may _Step_ before making your next _Charged Attack_."
   },
   {
     "name": "Roiling Earth",
@@ -78,7 +132,7 @@
     "keywords": ["Spirit", "Earth", "Groundsource"],
     "type": "General",
     "speed": "5",
-    "range": "Self",
+    "range": { "category": "Self" },
     "area": "_Burst_ 2",
     "move": "Step",
     "effect": "Attack all Targets in the Area with this Technique's Profile. Any _Prone_ creatures in the _Area_ take 2 Crush Damage [_Avoidable_] on a _Hit_+.",
@@ -118,20 +172,29 @@
     "special": "If you use _Ambush_ this _Round_ you may either make a _Light_/_Versatile_ _Major Attack_ instead of a _Minor Attack_ or make an additional _Light_/_Versatile_ _Minor Attack_."
   },
   {
+    "name": "Song of Victory",
+    "desc": "You encourage your allies, helping them to find the strength to push forward.",
+    "type": "Support",
+    "speed": "Any",
+    "range": { "category": "Ranged", "value": 12 },
+    "move": "Step",
+    "effect": "Grant yourself _Joyful_/_Courageous_ 1, then distribute _Joyful_/_Courageous_ 6, split among allies of your choice within Range. Any creature may reduce the _Joyful_/_Courageous_ by 2 to immediately gain a _Free Turn_. On this _Turn_ they may _Step_ if they reduced _Joyful_ or make a _Minor Attack_ if they reduced _Courageous_. Any ally that you give _Joyful_/_Courageous_ to (even if they use it for something else) gains 2 _Vigor_.",
+    "boost": "1 _Momentum_: You may distribute an additional 1 _Joyful_/_Courageous_. You may repeat this _Boost_ up to 4 times."
+  },
+  {
     "name": "Stone Edge",
     "desc": "You tear forth a slab of earth, flinging it with horrific force.",
     "keywords": ["Spirit", "Earth"],
     "type": "Strike",
     "speed": "4 [_Priority_]",
-    "range": "Ranged",
-    "range_value": 4,
-    "move": "Step",
-    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 1 _Guard_ and may not be moved by another creature. At the end of each _Phase_, including the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the initial _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
-    "boost": "2 _Momentum_: Instead, create a _Boulder_ as a part of this _Technique_. There must be at least one _Earthen_ space within _Range_ to use this _Boost_.",
     "damagetype": "Crush [_Avoidable_, _Siege_]",
+    "range": { "category": "Ranged", "value": 4 },
+    "move": "Step",
+    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 1 _Guard_ and may not be moved by another creature. At the end of each _Phase_, including the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
+    "boost": "2 _Momentum_: Instead, create a _Boulder_ as a part of this _Technique_. There must be at least one _Earthen_ space within _Range_ to use this _Boost_.",
     "chart": {
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "damage": [0, 0, 3, 3, 4, 5, 5, 6, 6, 7, 7],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
@@ -148,38 +211,32 @@
     }
   },
   {
+    "name": "Strong Strike",
+    "desc": "You unleash a powerful attack against a foe.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Step",
+    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and dealing additional Damage equal to half the _Phase_ on a _Graze_+.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
+    "special": "Determine _Speed Penalties_ for all _Attacks_ made as a part of this _Technique_ as if it was one _Phase_ earlier.",
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 2 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1] and deal +1 Damage on a _Graze_+. Remove the _Charging_ and _Hazard_ one _Phase_ later."
+  },
+  {
+    "name": "Swift Strike",
+    "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "Reposition",
+    "effect": "Choose one:\n* Make 1 _Light_/_Versatile_ _Major Attack_ and 1 _Light_/_Versatile_ _Minor Attack_ in any order.\n* Make 3 _Light_/_Versatile_ _Minor Attacks_.",
+    "special": "Determine _Speed Penalties_ for _Light_ Attacks as if this _Technique_ was played one _Phase_ later.",
+    "boost": "\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
+  },
+  {
     "name": "Trampling Charge",
     "desc": "You run forward, slamming through all foes in your path.",
     "type": "Strike",
     "speed": "Any",
-    "move": "Dash [_Blitz_, _Rush_]",
+    "move": "Dash [_Breach_, _Rush_]",
     "effect": "Choose one:\n* You have +1 _Guard_ this _Turn_. Resolve your _Movement_. When you end your _Movement_, make a single _Melee_ _Major Attack_. If the target of the Attack is in-line with your _Movement_, either inflict _Forceful Push_ X or inflict X additional Damage, where X is half the number of spaces you Moved before resolving the effect.\n* Do not resolve your _Movement_ yet. Create a _Hazard_ in an adjacent space, become _Charging_, then end your _Turn_. At the end of the next _Phase_ remove _Charging_ and resolve the first effect, but you must move through the space marked by the _Hazard_, removing the _Hazard_ when you do so. You have _Advantage_ on all [_Body_] Attacks and may choose both options for your _Major Attack_ at the end of the _Movement_. If you are moved by any means before removing _Charging_, move the _Hazard_ with you.",
     "special": "You may use _Overrun_ at no cost when resolving the effect."
-  },
-  { "name": "NPC TECHNIQUES" },
-  {
-    "name": "Hostile Strike",
-    "desc": "A basic NPC strike.",
-    "keywords": ["Fluid"],
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Step",
-    "effect": "Choose one:\n* Make 1 _Major Attack_.\n* Make 2 _Minor Attacks_."
-  },
-  {
-    "name": "Agile Strike",
-    "desc": "A standard attack by an NPC.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Reposition",
-    "effect": "Make a _Major Attack_."
-  },
-  {
-    "name": "Fumigate",
-    "desc": "A massive blast of chemical gas.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Step",
-    "effect": "Create a _Burst_ 1 or _Cone_ 3 _Hazard_, then begin _Charging_. At the end of the next _Phase_ remove the _Hazard_ and attack all creatures in the _Area_ three times with _Toxic Spray_, ignoring its normal range. Those spaces become _Toxic Gas_ until the end of the _Round_."
   }
 ]

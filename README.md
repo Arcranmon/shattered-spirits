@@ -35,8 +35,8 @@ BIG POST-PLAYTEST REWORK
 
 - New Discipline Structure:
 
-  - Tier 1: Technique, any two Manuevers; rarely grant Major Attacks. For Spirits, one must be a Manifest.
-  - Tier 2: Stance, any two Manuevers. Usually grant a Major Attack. For Spirits, one must be a Manifest.
+  - Tier 1: Technique, any two Manuevers (both consistently good); rarely grant Major Attacks. For Spirits, one must be a Manifest.
+  - Tier 2: Stance, any two Manuevers (one consistent, one expensive). Usually grant a Major Attack. For Spirits, one must be a Manifest.
 
 - OBJECTIVE: Make a satisfying weapon-based gameplay loop that works well.
 
@@ -96,3 +96,6 @@ Thrown Weapon icon made by Faithtoken.
 Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
+
+Shaper, Striker, Supporter, Artillery - Delapouite
+Controller, Courier, Defender - Lorc

@@ -22,6 +22,10 @@ Vue.component('DisplayTooltipText', {
     formattedText() {
       var split_input = this.string.split('_')
       for (var index in split_input) {
+        var partitioned = split_input[index].split('/')
+        if (partitioned.length == 4) {
+          split_input[index] = '<tooltip input="' + split_input[index] + '" :partitioned="true" :decorate="' + this.decorate + '"></tooltip>'
+        }
         if (
           this.$store.getters.existsInAnyGlossary(split_input[index]) ||
           this.$store.getters.isObstacle(split_input[index]) ||

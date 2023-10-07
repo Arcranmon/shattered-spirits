@@ -2,12 +2,12 @@
   {
     "name": "Charging Ram Stance",
     "desc": "You are a creature in constant, deadly motion, slamming into foes time and time again.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you hit with a [_Body_] Attack during a [_Blitz_] Move.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you hit with a [_Body_] Attack during a [_Breach_] Move.",
     "defense": {
       "grit": 2
     },
-    "effect": "Once per _Turn_, when you _Push_ during a [_Blitz_] Move you may immediately move an equal number of spaces towards the target of the _Push_, taking the shortest possible path. This movement is [_Rush_, _Blitz_] and does not count against your _Movement_.",
-    "special": "You have +1 _Guard_ while you are in the middle of [_Blitz_] Movement. Whenever you move through a _Prone_ creature's space with [_Blitz_] Movement or knock a creature _Prone_ while in their space due to [_Blitz_] Movement, inflict _Vulnerable_ 1."
+    "effect": "Once per _Turn_, when you _Push_ during a [_Breach_] Move you may immediately move an equal number of spaces towards the target of the _Push_, taking the shortest possible path. This movement is [_Rush_, _Breach_] and does not count against your _Movement_.",
+    "special": "You have +1 _Guard_ while you are in the middle of [_Breach_] Movement. Whenever you move through a _Prone_ creature's space with [_Breach_] Movement or knock a creature _Prone_ while in their space due to [_Breach_] Movement, inflict _Vulnerable_ 1."
   },
   {
     "name": "Crashing Stone Stance",
@@ -41,8 +41,61 @@
     "special": "Once per Round you may use _Shielding Wave_ for no cost, do not gain _Reeling_ from using it, and may freely use the Boost."
   },
   {
+    "name": "Guiding Shepard Stance",
+    "desc": "You guide friends and foes alike across the battlefield, herding their movements.",
+    "accumulate": "Once per _Round_, gain 3 _Momentum_ when you inflict _Forced Movement_ on an ally.",
+    "defense": {
+      "poise": 1,
+      "reflex": 1
+    },
+    "effect": "Whenever you inflict _Forced Movement_ on an ally or grant a _Free Turn_ where they _Move_ you may gift them 1 _Momentum_.",
+    "special": "At _Respite_ one adjacent ally may Move 1. Additionally, _Sheparding Strike_ has no cost when targeting an ally."
+  },
+  {
+    "name": "Floating Butterfly Stance",
+    "desc": "You are constantly in motion, shifting across the battlefield with unparalleled grace.",
+    "accumulate": "Once per _Round_, gain 1 _Momentum_ when you move at least 6 spaces in a _Turn_.",
+    "defense": {
+      "reflex": 3
+    },
+    "effect": "You may _Step_ [_Safe_, _Breach_] at _Respite_.",
+    "special": "Whenever you would [_Safe_] Move you may remove [_Safe_] to _Refresh_ your _Reflex_."
+  },
+  {
+    "name": "Furious Bison Stance",
+    "desc": "You dominate the battlefield with wide, sweeping strikes, moving forward with constant rage.",
+    "accumulate": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to gain an equivalent amount of _Momentum_.",
+    "defense": {
+      "grit": 1,
+      "poise": 1
+    },
+    "effect": "Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain 2 _Vigor_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_.",
+    "special": "You have +1 _Guard_ while _Enraged_ and _Charging_."
+  },
+  {
+    "name": "Pack Leader Stance",
+    "desc": "You are a cunning commander, creating openings for allies and helping them exploit them.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when your ally _Hits_+ with an _Attack_ on a _Free Turn_ you granted them.",
+    "defense": {
+      "poise": 1,
+      "reflex": 1
+    },
+    "effect": "While in this _Stance_, reduce the cost of _Flank_ and _Pack Punishment_ by 1. Whenever you successfully use one of these _Manuevers_, inflict _Vulnerable_ 1 before resolving the attack.",
+    "special": "Allies may remove an additional _Vulnerable_ whenever attacking a creature that is adjacent to you or that you have used _Flank_ and _Pack Punishment_ on this _Turn_."
+  },
+  {
+    "name": "Patient Hunter Stance",
+    "desc": "You focus your attention on a singular creature, finding the perfect opening to take them down.",
+    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you _Defeat_ or _Crit_ on a foe with _Insight_.",
+    "defense": {
+      "poise": 1
+    },
+    "effect": "On the start of any of your _Turns_ you may choose to gain _Hobbled_ 1. If you do, you may immediately inflict _Insight_ 1 on a creature within Range 12.",
+    "special": "Whenever you make a _Ranged_ Attack against a creature with _Insight_, you may remove 1 _Insight_ to immediately inflict _Exposed_ 1. Resolve this effect before making the _Attack Roll_."
+  },
+  {
     "name": "Roaring Lion Stance",
-    "desc": "You are a bomastic and inspiring warrior, leading your allies as you fight.",
+    "desc": "You are a bombastic and inspiring warrior, leading your allies as you fight.",
     "accumulate": "Once per _Round_ gain 1 _Momentum_ when you inflict _Marked_ or _Enraged_ on a foe.",
     "defense": {
       "poise": 1,
@@ -50,6 +103,16 @@
     },
     "effect": "Gain _Vigor_ equal to 1 + the number of creatures you have _Marked_ at _Respite_.",
     "special": "Whenever a _Marked_ creature attacks you, you may gain _Courageous_ 1 or grant _Courageous_ 1 to an ally within Range 3."
+  },
+  {
+    "name": "Rousing Songbird Stance",
+    "desc": "You are a font of positivity, inspiring allies forward to fight ever harder.",
+    "accumulate": "Once per _Round_ gain 2 _Momentum_ when you grant _Courageous_/_Joyful_.",
+    "defense": {
+      "poise": 2
+    },
+    "effect": "Allies treat you as adjacent for the purposes of _Joyful_ when they are within Range 3 of you. Allies within this Range may remove 2 _Joyful_ rather than 1 when they end their _Turn_ within this area, gaining the effects of both.",
+    "special": "Allies within _Range_ 3 of you may remove 1 _Courageous_/_Joyful_ at any time to gain 1 _Fleeting_ _Poise_. They may only use this ability once per Turn."
   },
   {
     "name": "Stalwart Bastion Stance",
@@ -64,7 +127,7 @@
   },
   {
     "name": "Watching Owl Stance",
-    "desc": "You keep a keen eye on the battlefield, providing opportunies and openings to all allies.",
+    "desc": "You keep a keen eye on the battlefield, providing opportunities and openings to all allies.",
     "accumulate": "Once per _Round_ when you remove _Insight_ from a creature, gain 1 _Momentum_.",
     "defense": {
       "poise": 2

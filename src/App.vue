@@ -30,6 +30,18 @@ export default {
 .mobile--font {
   font-size: calc(1px + 2vw);
 }
+.text--miss {
+  color: $color--chart-miss;
+}
+.text--graze {
+  color: $color--chart-graze;
+}
+.text--hit {
+  color: $color--chart-hit;
+}
+.text--crit {
+  color: $color--chart-crit;
+}
 .earth-circle {
   height: 30em;
   border-radius: 50%;

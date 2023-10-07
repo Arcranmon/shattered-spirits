@@ -2,163 +2,152 @@
   {
     "name": "Active Defense",
     "desc": "You defend yourself with a weapon, mitigating an incoming blow.",
-    "keywords": ["Block"],
+    "keywords": ["Block", "Defensive"],
+    "type": "Reaction",
     "cost": "1 + [_Reeling_] _Momentum_",
     "trigger": "You are Attacked, take Damage, or gain Status.",
     "effect": "Gain 1 _Fleeting_ _Defense_ of your choice. You may choose to gain the _Parry_ effect of a _Wielded_, undamaged piece of _Equipment_. After resolving this, gain _Reeling_ 1.",
     "special": "If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Damaged_.",
-    "boost": "Choose any:\n* 2 _Momentum_: Gain the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Gain the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_.",
-    "type": "Reaction"
+    "boost": "Choose any:\n* 2 _Momentum_: Gain the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Gain the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
   },
   {
     "name": "Aggressive Orders",
-    "desc": "You command a nearby ally with a mighty roar, urging them to strike.",
-    "cost": "1 _AP_",
-    "range": 6,
-    "effect": "Choose an ally within Range. They may immediately make a _Minor Attack_ and take a _Step_ _Move_, but must Target a creature within Range 3 of you.",
-    "special": "Your ally may reduce their _Courageous_ by 1 for a +1 _Bonus_.",
-    "boost": "2 _Momentum_: Instead, make a _Major Attack_ or a _Reposition_ _Move_. This cost may be paid by you, the Target, or split between the two of you.",
-    "type": "Action"
+    "desc": "You urge a nearby all on, allowing them a strike.",
+    "type": "Action",
+    "range_value": 6,
+    "range": "Ranged",
+    "cost": "1 _AP_, 1 _Momentum_",
+    "effect": "Choose an ally within Range. Grant them a _Free Turn_ where they may make a _Minor Attack_ and _Step_, but must Target a creature within Range 3 of you.",
+    "boost": "2 _Momentum_: Instead, your ally may either make a _Major Attack_ instead of a _Minor Attack_ or a _Reposition_ _Move_ instead of _Step_. This cost may be paid by you, the Target, or split between the two of you."
   },
   {
     "name": "Aim",
     "desc": "You sacrifice mobility to take the chance to aim, preparing the perfect strike.",
-    "reqs": "Have not used _Movement_ this _Turn_ and have _Movement_ this _Turn_.",
+    "type": "Stunt",
     "cost": "1 _Momentum_",
-    "effect": "Gain a +1 _Bonus_ to the first _Attack Roll_ you make before moving this _Turn_. Decrease your _Movement_ this _Turn_ by one tier.",
-    "type": "Stunt"
+    "reqs": "Have not used _Movement_ this _Turn_ and have _Movement_ this _Turn_.",
+    "effect": "Gain a +1 _Bonus_ to the first _Attack Roll_ you make before moving this _Turn_. Decrease your _Movement_ this _Turn_ by one tier."
   },
   {
     "name": "Ambush",
-    "desc": "You move forward rapidly out of the shroud of shadows, launching a vicious assualt against an unsuspecting foe.",
-    "cost": "1 _AP_",
+    "desc": "You move forward rapidly out of the shroud of shadows, launching a vicious assault against an unsuspecting foe.",
+    "type": "Action",
     "move": "Reposition",
+    "cost": "1 _AP_",
     "effect": "Any creatures that see you as _Obscured_ at the start of your _Turn_ see you as _Obscured_ for the remainder of this _Turn_. Make a single _Light_/_Versatile_ _Minor Attack_ against a creature that sees you as _Obscured_.",
-    "boost": "1 _Momentum_: You have _Advantage_ on an _Attack_ you make this _Turn_. You may repeat this _Boost_ as many times as you wish.",
-    "type": "Action"
+    "boost": "1 _Momentum_: You have _Advantage_ on an _Attack_ you make this _Turn_. You may repeat this _Boost_ as many times as you wish."
   },
   {
     "name": "Basic Feint",
     "desc": "You feint one way before attacking another, providing yourself an advantage.",
     "keywords": ["Feint"],
+    "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "Single-Target _Melee_ Attack.",
-    "effect": "Before making the Attack, inflict _Reeling_ 1, _Exposed_ 1.",
-    "type": "Gambit"
+    "effect": "Before making the Attack, inflict _Reeling_ 1, _Exposed_ 1."
   },
   {
     "name": "Basic Flourish",
     "desc": "You disengage from an attack artfully, attempting to knock a foe's weapons far away.",
     "keywords": ["Flourish"],
+    "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "You complete a Single-Target _Melee_ Attack against a foe.",
-    "effect": "Inflict _Impaired_ 2/_Disarmed_ [2 _Defense_].",
-    "type": "Gambit"
+    "effect": "Inflict _Impaired_ 2/_Disarmed_ [2 _Defense_]."
   },
   {
     "name": "Basic Sunder",
     "desc": "You focus an attack on breaking a foe's armor or guard.",
-    "reqs": "You make a Single-Target _Melee_ _Versatile_/_Heavy_ Attack against a foe.",
+    "type": "Gambit",
     "cost": "1 _Momentum_",
+    "reqs": "You make a Single-Target _Melee_ _Versatile_/_Heavy_ Attack against a foe.",
     "effect": "Add [_Overwhelming_ 1].",
-    "boost": "1 _Momentum_: In addition, choose one before making your _Attack Roll_:\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_, inflict _Shred_ 1.\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of a _Shield_ _Wielded_ by the creature, _Damage_ it.",
-    "type": "Gambit"
+    "boost": "1 _Momentum_: In addition, choose one before making your _Attack Roll_:\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_, inflict _Shred_ 1.\n* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of a _Shield_ _Wielded_ by the creature, _Damage_ it."
   },
   {
     "name": "Bastion's Fury",
-    "desc": "You unleash a mighty strike against a foe that .",
+    "desc": "You unleash a mighty strike against a foe that dared to ignore you.",
+    "type": "Gambit",
     "cost": "1 _Momentum_",
-    "reqs": "You make an Attack against a creature that Attacked one of your allies this _Round_.",
+    "reqs": "Target must be a creature that Attacked one of your allies this _Round_.",
     "effect": "Gain a +1 _Bonus_ on the Attack and, on a _Graze_+, add _Marked_.",
-    "special": "If the Attack is _Area_, apply the effect only on those that attacked an ally.",
-    "type": "Gambit"
+    "special": "If the Attack is _Area_, apply the effect only on those that attacked an ally."
   },
   {
-    "name": "Cheap Shot",
+    "name": "Building Fury",
+    "desc": "You snarl through a foe's assault, preparing to unleash violent vengeance.",
+    "type": "Reaction",
+    "cost": "None",
+    "trigger": "You are Attacked, take Damage or gain Status.",
+    "reqs": "Must be _Charging_.",
+    "effect": "Gain 1 _Fleeting_ _Poise_/_Grit_ and add _Enraged_ 1 to the triggering effect. When you resolve the _Charged_ effect, you may treat all creatures in the area as the target of your rage. After fully resolving the triggering effect, gain _Vigor_ 2."
+  },
+  {
+    "name": "Cunning Strike",
     "desc": "You exploit an opening in a foe's defenses to drive your attack deep.",
-    "cost": "2 _Momentum_",
+    "type": "Gambit",
+    "cost": "3 _Momentum_",
     "reqs": "You make a Single-Target _Light_/_Versatile_ Attack against an _Exposed_ target and at least one of the following is true:\n* Have _Advantage_ on the _Attack_.\n* Have an ally who is adjacent to the Target.",
-    "effect": "If you remove _Exposed_ for a _Bonus_, gain a +2 _Bonus_ instead of +1. After resolving the Attack, inflict your choice of _Hobbled_/_Reeling_ 1.",
-    "type": "Gambit"
+    "effect": "If you remove _Exposed_ for a _Bonus_, gain a +2 _Bonus_ instead of +1. After resolving the Attack, inflict your choice of _Hobbled_/_Reeling_ 1."
+  },
+  {
+    "name": "Chemical Warfare",
+    "desc": "A blast of toxic gasses.",
+    "type": "Action",
+    "move": "None",
+    "cost": "1 _AP_",
+    "effect": "Create a _Cone_ 2 of _Toxic Gas_ within Range 6. This gas is removed at the end of the _Round_."
+  },
+  {
+    "name": "Corral",
+    "desc": "You make your way forward, reorienting creatures as you go.",
+    "type": "Action",
+    "move": "Reposition",
+    "cost": "1 _AP_, 1 _Momentum_",
+    "effect": "Three times during this Move you may inflict _Push_/_Pull_ 1. You may _Pull_ at _Range_ 2 if you target a creature that you just left adjacency with.",
+    "boost": "1 _Momentum_: Inflict an additional _Push_/_Pull_ 1. You may repeat this _Boost_."
   },
   {
     "name": "Deadeye",
     "desc": "You use the high ground to your advantage, unleashing an unavoidable strike.",
+    "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "You make a Single-Target _Ranged_ Attack against a foe at a lower _Elevation_.",
-    "effect": "Gain a +1 _Bonus_ on this _Attack_ and add [_Arcing_]. You may treat your _Total Height_ as 1 higher when determining _Obstruction_.",
-    "type": "Gambit"
-  },
-  {
-    "name": "Enhanced Strike",
-    "desc": "You place additional power into an attack, converting momentum to damage.",
-    "cost": "1 _Momentum_",
-    "reqs": "You _Graze_+ with an Attack.",
-    "effect": "Deal +1 Damage.",
-    "boost": "1 _Momentum_: Instead, deal +2 Damage.",
-    "type": "Gambit"
-  },
-  {
-    "name": "Gap in the Armor!",
-    "desc": "You call out a hole in an opponent's defenses, allowing an ally to strike true.",
-    "cost": "1 _Momentum_",
-    "trigger": "An ally attacks a foe with _Insight_.",
-    "range": "Ranged",
-    "range_value": 12,
-    "effect": "Before resolving the Attack remove up to 3 _Insight_ from the Target. Add [_Pierce_ X] to the Attack, where X is the _Insight_ removed.",
-    "special": "On a _Hit_+ on the triggering _Attack_, add _Dazed_ 1.",
-    "type": "Reaction"
-  },
-  {
-    "name": "Sniper's Perch",
-    "desc": "You find yourself an ideal position, allowing you to better find your targets.",
-    "cost": "1 _AP_",
-    "reqs": "Must be adjacent to an _Obstacle_ of at least Size 1 or be in a _Fortified_/_Obscured_ space.",
-    "effect": "Gain 1 _Momentum_, or 2 _Momentum_ if you have not moved since you last used this _Action_ and _Hobbled_ 1. Until you leave your current space, increase the range of your _Ranged_ Attacks by 2. Additionally, you may treat this space as _Fortified_ or, if it is already _Fortified_, it is always at least _Lightly Obscured_.",
-    "type": "Action"
-  },
-  {
-    "name": "Slip",
-    "desc": "You move with practiced ease, sliding across the battlefield with ease.",
-    "cost": "1 AP",
-    "move": "Step [_Safe_]",
-    "effect": "Once during this _Move_ you may inflict _Exposed_ 1 on a creature that sees you as _Obscured_.",
-    "special": "This Movement does not break the _Obscured_ provided by other Cunning Fox abilities.",
-    "type": "Action"
-  },
-  {
-    "name": "Flank",
-    "desc": "You launch a quick assault, diverting a foe's attention so an ally can strike.",
-    "type": "Reaction",
-    "cost": "1 _Momentum_",
-    "trigger": "A foe within your _Reach_ is Attacked.",
-    "effect": "The targetted foe must pay 1 _Poise_ or else the triggering Attack gains a +1 _Bonus_."
+    "effect": "Gain a +1 _Bonus_ on this _Attack_ and add [_Arcing_]. You may treat your _Total Height_ as 1 higher when determining _Obstruction_."
   },
   {
     "name": "Disengage",
     "desc": "You focus your efforts on moving away from hostile foes.",
+    "type": "Stunt",
     "cost": "1 AP",
-    "effect": "Add [_Safe_] to all _Movement_ this _Turn_.",
-    "type": "Stunt"
+    "effect": "Add [_Safe_] to all _Movement_ this _Turn_."
+  },
+  {
+    "name": "Distracting Step",
+    "desc": "You step through a foe, barely skirting their defenses and leaving them reeling.",
+    "type": "Action",
+    "move": "Step [_Safe_, _Breach_]",
+    "cost": "1 AP",
+    "effect": "Inflict _Reeling_ 1 on any creature who's space you move through this _Turn_."
   },
   {
     "name": "Dodge",
     "desc": "You slip away from an incoming attack, avoiding the brunt of the blow.",
-    "keywords": ["Evade"],
+    "keywords": ["Defensive", "Evade"],
+    "type": "Reaction",
     "cost": "1 _AP_",
     "trigger": "You are Attacked.",
-    "effect": "_Move_ up to your _Step_ distance and use the _Tumble_ _Manuever_ at no cost. If you do not _Move_ at least one space, this _Maneuver_ instantly fails. If the Attack was Single-Target, add [_Glancing_]. If it was _Area_ and you are no longer in the _Area_, add [_Glancing_]. After resolving all other effects gain _Prone_, _Reeling_ 1.",
-    "type": "Reaction"
+    "effect": "_Step_ and use the _Tumble_ _Manuever_ at no cost. If you do not _Move_ at least one space, this _Maneuver_ instantly fails. If the Attack was Single-Target, add [_Glancing_]. If it was _Area_ and you are no longer in the _Area_, add [_Glancing_]. After resolving all other effects gain _Prone_, _Reeling_ 1."
   },
   {
     "name": "Draw/Stow",
     "desc": "You grab an unattended item or change your equipment.",
     "keywords": ["Repeatable"],
+    "type": "Stunt",
     "cost": "1 _Momentum_, or 0 _Momentum_ if the Equipment has the _Quickdraw_ property.",
     "effect": "Choose one:\n* Create an _Opening_. _Equip_/_Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_.\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ (if you have the appropriate _Open Hands_) an _Equipped_ piece of _Equipment_.",
     "special": "Before _Wielding_ an item, you may choose to stop _Wielding_ _Equipment_ of your choice, placing them unattended in your current or adjacent spaces.",
-    "boost": "1 _Momentum_: Do not create an _Opening_.",
-    "type": "Stunt"
+    "boost": "1 _Momentum_: Do not create an _Opening_."
   },
   {
     "name": "Engage",
@@ -170,165 +159,272 @@
     "boost": "1 _Momentum_: Instead, Trigger is 'A creature your Size + 1 or smaller'."
   },
   {
+    "name": "Enhanced Strike",
+    "desc": "You place additional power into an attack, converting momentum to damage.",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "reqs": "You _Graze_+ with an Attack.",
+    "effect": "Deal +1 Damage.",
+    "boost": "1 _Momentum_: Instead, deal +2 Damage."
+  },
+  {
+    "name": "Flank",
+    "desc": "You launch a quick assault, diverting a foe's attention so an ally can strike.",
+    "type": "Reaction",
+    "cost": "1 _Momentum_",
+    "trigger": "An adjacent foe is Attacked.",
+    "effect": "The targeted foe must pay 1 _Poise_ or else the triggering Attack gains a +1 _Bonus_."
+  },
+  {
+    "name": "Flitter",
+    "desc": "You began to swiftly move about, making yourself a hard target.",
+    "type": "Reaction",
+    "cost": "1 _AP_",
+    "trigger": "A _Phase_ begins.",
+    "effect": "All Attacks against you this _Phase_ take a -1 _Penalty_. Once this _Phase_ you may take a _Free Turn_ to _Step_ [_Safe_]."
+  },
+  {
+    "name": "Floating Escape",
+    "desc": "You slip just out of a foe's reach as they strike, defending yourself.",
+    "type": "Reaction",
+    "cost": "[_Reeling_] _Momentum_",
+    "trigger": "You are Attacked, take Damage or gain Status.",
+    "effect": "Either gain 1 _Fleeting_ _Reflex_ and reduce the _Attack Roll_ by 1 or gain 2 _Fleeting_ _Reflex_. You may _Step_ [_Safe_] as a part of this _Reaction_, but gain _Hobbled_ 1 if you do so. Gain _Reeling_ 1.",
+    "special": "If the trigger came about due to an _Opening_ add [_Glancing_]."
+  },
+  {
+    "name": "Free Run",
+    "desc": "You use an obstacle to accelerate yourself, moving further still.",
+    "type": "Reaction",
+    "cost": "3 _Momentum_",
+    "trigger": "You move adjacent to an Obstacle of Size 1 or greater.",
+    "effect": "You may Move 1 [_Safe_, _Leaping_] then _Step_ [_Safe_, _Breach_]."
+  },
+  {
+    "name": "Gap in the Armor!",
+    "desc": "You call out a hole in an opponent's defenses, allowing an ally to strike true.",
+    "type": "Reaction",
+    "range": "Ranged",
+    "cost": "1 _Momentum_",
+    "trigger": "An ally attacks a foe with _Insight_.",
+    "effect": "Before resolving the Attack remove up to 3 _Insight_ from the Target. Add _Dazed_ _0/0/1/2_ and [_Pierce_ X] to the Attack, where X is the _Insight_ removed.",
+    "range_value": 12
+  },
+  {
+    "name": "Guiding Hand",
+    "desc": "You gently push an ally out of harm's way, guiding them to a safer locale.",
+    "type": "Stunt",
+    "range": "Melee",
+    "cost": "1 _Momentum_",
+    "effect": "Choose an adjacent ally and inflict _Slide_ 2.",
+    "boost": "You may instead make a _Minor Attack_ against an ally. Do not deal Damage and only inflict status of your choice. You must inflict any _Forced Movement_ caused by the attack.",
+    "range_value": 1
+  },
+  {
     "name": "Improvised Combo",
     "desc": "An impromptu strike, often used to set up an incoming blow.",
+    "type": "Stunt",
     "cost": "2 _Momentum_",
-    "effect": "Make a _Minor Attack_.",
-    "type": "Stunt"
+    "effect": "Make a _Minor Attack_."
+  },
+  {
+    "name": "Inspire",
+    "desc": "You call out to an ally, filling them with the drive to push on.",
+    "type": "Reaction",
+    "range": "Ranged",
+    "cost": "2 _Momentum_",
+    "trigger": "A _Phase_ begins.",
+    "effect": "Choose any ally within Range. Grant them _Vigor_ 2 and 2 _Fleeting_ _Poise_. They may immediately _Recover_, but may only spend the _Poise_ granted by this ability.",
+    "range_value": 12
   },
   {
     "name": "Intercept",
     "desc": "You strike an attack aside, stopping it before it reaches an ally.",
-    "keywords": ["Block"],
+    "keywords": ["Block", "Defensive"],
+    "type": "Reaction",
     "cost": "1 + [_Reeling_] _Momentum_",
     "trigger": "An adjacent ally is Attacked, takes Damage, or gain Status.",
     "effect": "Your ally gains 1 _Fleeting_ _Defense_ of your choice. You may then grant them the _Parry_ effect of a _Wielded_, undamaged piece of _Equipment_. After resolving this, gain _Reeling_ 1.",
     "special": "If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Damaged_.",
-    "boost": "Choose any:\n* 2 _Momentum_: Grant the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Grant the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_.",
-    "type": "Reaction"
+    "boost": "Choose any:\n* 2 _Momentum_: Grant the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Grant the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
   },
   {
-    "name": "Mark Prey",
-    "desc": "You focus your attention on a single creature, ignoring all other potential targets.",
-    "cost": "1 _AP_",
-    "range": "Ranged",
-    "range_value": 20,
-    "effect": "Choose a creature within Range and inflict _Insight_ 2 on them. Until that creature is _Defeated_ or you use this _Action_ again deal +2 _Damage_ to that creature and add [_Pierce_ 1] if they have _Insight_, but you have _Disadvantage_ on all Attacks against other creatures.",
-    "type": "Action"
+    "name": "Interact",
+    "desc": "You engage with the battlefield, whether that be finding a new weapon or removing a trap.",
+    "keywords": ["Block", "Defensive"],
+    "type": "Stunt",
+    "cost": "Special",
+    "effect": "Resolve the Interact Effect of an Obstacle or Effect in an adjacent space, paying the cost listed for the effect."
   },
   {
-    "name": "Marking Strike",
-    "desc": "You get in close with a foe, forcing their attention towards you.",
-    "reqs": "You make a Single-Target _Melee_ Attack against a foe.",
-    "cost": "1 _Momentum_",
-    "effect": "Always add _Marked_ to the Attack and, on a _Crit_, add _Impaired_ 1.",
-    "type": "Gambit"
-  },
-  {
-    "name": "Warcry",
-    "desc": "You let out an inspiring cry, filling your allies with the soul of battle.",
-    "cost": "1 _Momentum_",
-    "range": "Ranged",
-    "range_value": 6,
-    "effect": "Choose an ally within Range and grant them _Vigor_ 2, _Enraged_ 1. You may choose the target of the creature's rage, but they must be within Range 3 of you.",
-    "special": "If you _Defeated_ an enemy this _Turn_, instead grant _Vigor_ 3, _Enraged_ 2.",
-    "boost": "1 _Momemtum_: Your ally may _Step_ move towards the target of their rage.",
-    "type": "Stunt"
+    "name": "Kill Shot",
+    "desc": "You take a calculated shot, focusing on efficacy over accuracy.",
+    "type": "Gambit",
+    "cost": "4 _Momentum_",
+    "trigger": "You make a Ranged Attack against a creature with _Insight_.",
+    "effect": "Make the _Attack_ with _Advantage_. As a part of this Attack you may remove up to 5 _Insight_, dealing +1 Damage per _Insight_ removed in this way. If the _Attack_ was a _Crit_, instead deal +2 Damage per _Insight_ removed.",
+    "special": "If you already have _Advantage_, this instead costs only 1 _Momentum_"
   },
   {
     "name": "Leap",
     "desc": "You leap forward, hurdling over hazards and other dangers.",
     "keywords": ["Repeatable"],
+    "type": "Stunt",
     "cost": "1 _Momentum_",
-    "effect": "The next X spaces you Move, where X is up to your Jump Value, is [_Leaping_] Movement. This Movement must be taken in a straight line, and this Movement may not be broken up in any way.",
-    "type": "Stunt"
+    "effect": "The next X spaces you Move, where X is up to your Jump Value, is [_Leaping_] Movement. This Movement must be taken in a straight line, and this Movement may not be broken up in any way."
   },
   {
-    "name": "Mark the Path",
-    "desc": "You trailblaze forward, finding a safe path for allies as you do so.",
-    "move": "Reposition",
+    "name": "Localized Tremor",
+    "desc": "You set your stance, causing the earth around you to quake violently.",
+    "keywords": ["Earth", "Spirit"],
+    "type": "Action",
+    "range": "Self",
+    "area": "_Burst_ 1",
     "cost": "1 _AP_",
-    "effect": "Once during your Move, you may choose an adjacent space and mark it. Until the end of the _Round_, allies may ignore the _Terrain_ in that space when moving through it and the first ally to enter a marked space gains 2 _Momentum_. Remove the mark if the _Terrain_ in the space changes.",
-    "boost": "1 _Momentum_: Mark an additional space. You may repeat this option.",
-    "type": "Action"
+    "effect": "Until you leave your current space, _Earthen_ spaces in the _Area_ are considered _Rough_. Additionally, any creature that end their _Turn_ in one of these spaces or enters one of these spaces gains _Exposed_ 1 (maximum once per _Turn_).",
+    "boost": "2 _Momentum_: Instead, _Area_ is _Burst_ 2.",
+    "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. Choose an unoccupied _Earthen_ space within _Range_. _Summon_ your spirit to that space, then resolve the _Effect_, treating your spirit as the user. While _Summoned_ in this way your spirit may not willingly move. Your spirit remains _Summoned_ until they leave that space, you spend 1 _Momentum_ as an _Action_ to end the _Summon_, or the _Round_ ends."
+  },
+  {
+    "name": "Lock Down",
+    "desc": "A prepared shot that is taken at the opportune moment.",
+    "keywords": ["Flourish"],
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "trigger": "You successfully _Grab_ with an _Attack_.",
+    "effect": "Add _Impaired_ 2 and gain a +1 _Bonus_ to the next opposed _Grab_ roll this _Round_."
+  },
+  {
+    "name": "Marching Tune",
+    "desc": "You urge an ally forward, allowing them to more swiftly respond.",
+    "type": "Action",
+    "range": "Ranged",
+    "cost": "1 _AP_",
+    "effect": "Choose any ally within Range. Grant them _Joyful_ 1, _Accelerate_.",
+    "range_value": 12
+  },
+  {
+    "name": "Mark Prey",
+    "desc": "You focus your attention on a single creature, ignoring all other potential targets.",
+    "type": "Action",
+    "range": "Ranged",
+    "cost": "1 _AP_",
+    "effect": "Choose a creature within Range and inflict _Insight_ 2 on them. Until that creature is _Defeated_ or you use this _Action_ again deal +2 _Damage_ to that creature and add [_Pierce_ 1] if they have _Insight_, but you have _Disadvantage_ on all Attacks against other creatures.",
+    "range_value": 20
   },
   {
     "name": "Mark Target",
     "desc": "You focus your attention on a single target, setting them up for a deadly blow.",
-    "cost": "1 _AP",
+    "type": "Action",
     "range": "Ranged",
-    "range_value": 12,
+    "cost": "1 _AP",
     "effect": "Choose a foe within Range. Inflict _Insight_ 2, _Reeling_ 1. If you do not see them as _Obstructed_/_Obscured_ from your current position, inflict an additional _Insight_ 1. After resolving this effect, you may convert any amount of _Insight_ on the target into _Exposed_.",
-    "type": "Action"
+    "range_value": 12
+  },
+  {
+    "name": "Mark the Path",
+    "desc": "You trailblaze forward, finding a safe path for allies as you do so.",
+    "type": "Action",
+    "move": "Reposition",
+    "cost": "1 _AP_",
+    "effect": "Once during your Move, you may choose an adjacent space and place a _Blessing_ in it. While the _Blessing_ persists, allies may ignore the _Terrain_ in that space when moving through it. Any ally that enters the _Blessing_ gains 2 _Momentum_. Remove the _Blessing_ if the _Terrain_ in the space changes.",
+    "boost": "1 _Momentum_: Place an additional _Blessing_. You may repeat this option, increasing the cost by 1 each time."
+  },
+  {
+    "name": "Marking Strike",
+    "desc": "You get in close with a foe, forcing their attention towards you.",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "reqs": "You make a Single-Target _Melee_ Attack against a foe.",
+    "effect": "Add _Marked_, _Impaired_ _0/0/0/1_."
   },
   {
     "name": "Opportunity Attack",
     "desc": "You capitalize on the opening created by a repositioning foe, moving to strike while you can.",
     "keywords": ["Punish"],
+    "type": "Reaction",
     "cost": "0 _Momentum_",
     "trigger": "An enemy within your _Reach_ creates an _Opening_.",
     "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target.",
-    "boost": "2 _Momentum_: Instead, use a Single-Target _Major Attack_.",
-    "type": "Reaction"
+    "boost": "2 _Momentum_: Instead, use a Single-Target _Major Attack_."
   },
   {
     "name": "Overrun",
     "desc": "You run bodily through a foe, powering through them without breaking stride.",
+    "type": "Reaction",
     "cost": "2 _Momentum_",
-    "trigger": "You enter a creature's space with [_Blitz_] Movement.",
-    "effect": "Make a _Minor Attack_ with the [_Body_] keyword against the triggering creature. If the Attack would inflict _Push_, you may instead inflict _Angled Push_. On a _Hit_+, add _Vulnerable_ 1 and that creature takes a -1 _Penalty_ on Attacks against you this _Turn_.",
-    "special": "You may only trigger this _Reaction_ against a given creature once per _Turn_.",
-    "type": "Reaction"
+    "trigger": "You enter a creature's space with [_Breach_] Movement.",
+    "effect": "Make a _Minor Attack_ with the [_Body_] keyword against the triggering creature. If the Attack would inflict _Push_, you may instead inflict _Angled Push_. Add _Vulnerable_ _0/0/1/2_ and on a _Hit_+ that creature takes a -1 _Penalty_ on Attacks against you this _Turn_.",
+    "special": "You may only trigger this _Reaction_ against a given creature once per _Turn_."
+  },
+  {
+    "name": "Pack Punishment",
+    "desc": "You punish a foe as they attempt to defend themselves.",
+    "type": "Reaction",
+    "cost": "3 _Momentum_",
+    "trigger": "A foe within Range 3 uses a _Defensive_ _Reaction_.",
+    "effect": "Make a _Minor Attack_ against the Target, resolving it instantly. Add _Vulnerable_ _1/1/2/3_."
+  },
+  {
+    "name": "Powerful Flourish",
+    "desc": "You collect yourself with excessive force, staggering nearby foes.",
+    "keywords": ["Flourish"],
+    "type": "Gambit",
+    "cost": "2 _Momentum_",
+    "trigger": "You complete the final _Attack_ in a _Charged_ effect.",
+    "effect": "Inflict _Reeling_ 1, _Exposed_ 1 in a _Burst_ 1.",
+    "boost": "1 _Momentum_: Instead, inflict it on all Targets of the triggering attack."
   },
   {
     "name": "Prepare",
     "desc": "You catch your breath, collecting yourself and preparing for battle.",
-    "cost": "1 AP",
+    "type": "Action",
     "move": "None",
+    "cost": "1 AP",
     "effect": "Gain 2 _Momentum_.",
-    "special": "You may use this Action more than once per _Round_.",
-    "type": "Action"
+    "special": "You may use this Action more than once per _Round_."
   },
   {
     "name": "Prideful Boast",
     "desc": "You let out a challenge, drawing the attention of nearby foes.",
-    "cost": "1 _AP_",
-    "move": "None",
+    "type": "Action",
     "range": "Self",
     "area": "_Burst_ 2",
-    "effect": "Inflict _Marked_, _Enraged_ 1 on foes in the _Area_, then gain _Vigor_ 4.",
-    "type": "Action"
-  },
-  {
-    "name": "Provoke",
-    "desc": "You draw the ire of a nearby foe with insults or guile, forcing them to focus on you.",
-    "cost": "1 _Momentum_",
-    "range_value": 4,
-    "range": "Ranged",
-    "effect": "Inflict your choice of _Exposed_/_Enraged_ 1 on the creature.",
-    "special": "You may use this _Stunt_ more than once per _Turn_, but each successive use against the same creature costs 1 more.",
-    "type": "Stunt"
+    "move": "None",
+    "cost": "1 _AP_",
+    "effect": "Inflict _Marked_, _Enraged_ 1 on foes in the _Area_, then gain _Vigor_ 4."
   },
   {
     "name": "Prideful Clash",
     "desc": "When a nearby foe insults your pride by attacking another you can't help but retaliate.",
-    "cost": "1 _Momentum_",
+    "type": "Reaction",
     "range": "Ranged",
-    "range_value": 4,
+    "cost": "1 _Momentum_",
     "trigger": "A foe within Range attacks an ally.",
     "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. On a _Graze_+, grant the triggering ally _Courageous_ 1.",
     "special": "You have _Advantage_ on this _Attack_ if you have _Marked_ the Target or you are the target of their rage.",
     "boost": "2 _Momentum_: Instead, make a _Major Attack_.",
-    "type": "Reaction"
+    "range_value": 4
+  },
+  {
+    "name": "Provoke",
+    "desc": "You draw the ire of a nearby foe with insults or guile, forcing them to focus on you.",
+    "type": "Stunt",
+    "range": "Ranged",
+    "cost": "1 _Momentum_",
+    "effect": "Inflict your choice of _Exposed_/_Enraged_ 1 on the creature.",
+    "special": "You may use this _Stunt_ more than once per _Turn_, but each successive use against the same creature costs 1 more.",
+    "range_value": 4
   },
   {
     "name": "Push Off",
     "desc": "You put your head down and charge, slamming into a nearby foe.",
+    "type": "Stunt",
     "cost": "1 _Momentum_",
-    "reqs": "Must have Moved at least 1 space with [_Blitz_] Movement.",
-    "boost": "Inflict _Angled Push_ 2 on an adjacent target. Add _Forceful_ if you have moved at least 3 spaces with [_Blitz_] Movement.",
+    "reqs": "Must have Moved at least 1 space with [_Breach_] Movement.",
     "effect": "1 _Momentum_: If this _Movement_ has [_Rush_], after inflicting the _Push_ you may change the direction of your Movement and immediately move 2 spaces in that direction.",
-    "special": "You may use this _Stunt_ more than once per _Turn_, but reset the number of spaces you have moved with [_Blitz_] Movement after each use when determing the Requirement and Effect.",
-    "type": "Stunt"
-  },
-  {
-    "name": "Rally",
-    "desc": "You take a moment to collect yourself, centering yourself.",
-    "cost": "1 _AP_",
-    "move": "None",
-    "effect": "_Refresh_ and choose one:\n* You or an adjacent ally _Recovers_.\n* You may attempt to escape a _Grab_ without paying the initial _Momentum_ cost.\n* Reduce _Reeling_ by 1 on yourself, your spirit, or an adjacent ally.\n* Remove _Prone_ from an adjacent ally.\n\nYou may resolve these effects in any order.",
-    "boost": "Choose any:\n* 1 _Momentum_: Add the below options to the choices above:\n  * Move is instead _Step_.\n* 1 _Momentum_: Gain 1 _Fleeting_ _Defense_ of your choice. You may repeat this Boost.",
-    "special": "You may use this Action more than once per _Round_.",
-    "type": "Action"
-  },
-  {
-    "name": "Reorient",
-    "desc": "You swiftly move, adjusting your footing before taking a more serious action.",
-    "move": "Reposition",
-    "cost": "1 AP",
-    "special": "You may use this Action more than once per _Round_.",
-    "boost": "2 _Momentum_: Movement is instead _Dash_.",
-    "type": "Action"
+    "special": "You may use this _Stunt_ more than once per _Turn_, but reset the number of spaces you have moved with [_Breach_] Movement after each use when determining the Requirement and Effect.",
+    "boost": "Inflict _Angled Push_ 2 on an adjacent target. Add _Forceful_ if you have moved at least 3 spaces with [_Breach_] Movement."
   },
   {
     "name": "Raise Guard",
@@ -340,96 +436,163 @@
     "boost": "2 _Momentum_: You may choose a piece of _Damaged_ _Equipment_."
   },
   {
-    "name": "Scouting",
-    "desc": "You cast a watchful eye towards a foe, finding holes in their defenses.",
-    "cost": "1 _Momentum_",
-    "range": "Ranged",
-    "range_value": 12,
-    "effect": "Choose a creature within Range. Inflict _Insight_ 1 on them, or _Insight_ 2 if you do not see them as _Obstructed_/_Obscured_ from your current position.",
-    "type": "Stunt"
+    "name": "Rally",
+    "desc": "You take a moment to collect yourself, centering yourself.",
+    "type": "Action",
+    "move": "None",
+    "cost": "1 _AP_",
+    "effect": "_Refresh_ and choose one:\n* You or an adjacent ally _Recovers_.\n* You may attempt to escape a _Grab_ without paying the initial _Momentum_ cost.\n* Reduce _Reeling_ by 1 on yourself, your spirit, or an adjacent ally.\n* Remove _Prone_ from an adjacent ally.\n\nYou may resolve these effects in any order.",
+    "special": "You may use this Action more than once per _Round_.",
+    "boost": "Choose any:\n* 1 _Momentum_: Add the below options to the choices above:\n  * Move is instead _Step_.\n* 1 _Momentum_: Gain 1 _Fleeting_ _Defense_ of your choice. You may repeat this Boost."
   },
   {
-    "name": "Localized Tremor",
-    "desc": "You set your stance, causing the earth around you to quake violently.",
-    "keywords": ["Spirit", "Earth"],
+    "name": "Rending Assault",
+    "desc": "You make an attack more focused on disrupting a foe's defenses than physically harming them.",
+    "type": "Gambit",
+    "cost": "2 _Momentum_",
+    "reqs": "Attack deals Damage.",
+    "effect": "Choose a single Target of this Attack. This _Attack_ deals half Damage. Until the end of the _Round_, allies may remove an additional _Vulnerable_ when attacking this creature.",
+    "special": "\n* If this is a _Minor Attack_, add _Vulnerable_ _0/1/2/3_, _Reeling_ _0/0/1/1_.\n* If this is a _Major Attack_, add _Vulnerable_ _1/2/3/5_, _Reeling_ _0/1/2/3_."
+  },
+  {
+    "name": "Reorient",
+    "desc": "You swiftly move, adjusting your footing before taking a more serious action.",
     "type": "Action",
-    "cost": "1 _AP_",
-    "area": "_Burst_ 1",
-    "range": "Self",
-    "effect": "Until you leave your current space, _Earthen_ spaces in the _Area_ are considered _Rough_. Additionally, any creature that end their _Turn_ in one of these spaces or enters one of these spaces gains _Exposed_ 1 (maximum once per _Turn_).",
-    "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. Choose an unoccupied _Earthen_ space within _Range_. _Summon_ your spirit to that space, then resolve the _Effect_, treating your spirit as the user. While _Summoned_ in this way your spirit may not willingly move. Your spirit remains _Summoned_ until they leave that space, you spend 1 _Momentum_ as an _Action_ to end the _Summon_, or the _Round_ ends.",
-    "boost": "2 _Momentum_: Instead, _Area_ is _Burst_ 2."
+    "move": "Reposition",
+    "cost": "1 AP",
+    "special": "You may use this Action more than once per _Round_."
   },
   {
     "name": "Run Down",
     "desc": "You put your head down and charge, slamming into a nearby foe.",
+    "type": "Action",
+    "move": "Reposition [_Rush_, _Breach_]",
     "cost": "1 AP",
-    "move": "Reposition [_Rush_, _Blitz_]",
     "effect": "At the end of this _Movement_ make a [_Body_] _Minor Attack_.",
-    "boost": "1 _Momentum_: You have +1 _Guard_ for this _Movement_.",
-    "type": "Action"
+    "boost": "1 _Momentum_: You have +1 _Guard_ for this _Movement_."
   },
   {
     "name": "Safe Harbor",
     "desc": "You calm the spirits of nearby water, creating a safe realm for your allies.",
     "keywords": ["Spirit", "Water"],
     "type": "Action",
-    "cost": "1 _AP_",
     "range": "Self",
     "area": "_Burst_ 1",
+    "cost": "1 _AP_",
     "effect": "Until the end of the _Round_ you and your allies may choose to ignore the effects of _Watery_ _Terrain_ in the _Area_ (but must still _Swim_ if applicable) and may move through _Water Veil_ spaces without expending additional Movement. Additionally, _Watery_ _Terrain_ within the _Area_ is considered _Fortified_ _Terrain_ for you and your allies.",
     "special": "When you use this _Action_ you may _Draw_ 2 within Range 4, then immediately create X _Wet_ spaces within Range, where X is the number of spaces _Drawn_.",
     "boost": "2 _Momentum_: Instead, _Area_ is _Burst_ 2. Instead _Draw_ 3.",
     "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's _Reposition_ distance. Choose an unoccupied _Watery_ space within Range. _Summon_ your spirit to that space, then resolve the Effect, treating your spirit as the user. Your spirit remains _Summoned_ until you spend 1 _Momentum_ as an _Action_ to end the _Summon_ or the _Round_ ends."
   },
   {
+    "name": "Scathing Words",
+    "desc": "You unleash a string of insults, disrupting and disorienting a foe.",
+    "type": "Stunt",
+    "range": "Ranged",
+    "move": "None",
+    "cost": "2 _Momentum_",
+    "effect": "Choose a foe within Range. Inflict _Anguished_/_Enraged_ 1, _Reeling_ 1. If one of their allies was defeated this _Phase_, instead inflict _Anguished_/_Enraged_ 2, _Reeling_ 1.",
+    "range_value": 6
+  },
+  {
+    "name": "Scouting",
+    "desc": "You cast a watchful eye towards a foe, finding holes in their defenses.",
+    "type": "Stunt",
+    "range": "Ranged",
+    "cost": "1 _Momentum_",
+    "effect": "Choose a creature within Range. Inflict _Insight_ 1 on them, or _Insight_ 2 if you do not see them as _Obstructed_/_Obscured_ from your current position."
+  },
+  {
+    "name": "Set Feet",
+    "desc": "You steady yourself as you continue to charge a heavy strike.",
+    "type": "Reaction",
+    "cost": "1 _Momentum_",
+    "trigger": "A _Phase_ ends while you are _Charging_.",
+    "effect": "You gain 1 _Guard_ until the end of the next _Phase_. Additionally, you may _Refresh_ _Grit_/_Poise_ or gain _Vigor_ 2. Finally, if you would normally be required to remove _Charging_ and resolve the effect, you may choose to remain _Charging_ until the end of the next _Phase_."
+  },
+  {
+    "name": "Shepard's Opening",
+    "desc": "You distract a foe with  your strike, providing an ally the opportunity to slip away.",
+    "type": "Gambit",
+    "cost": "2 _Momentum_",
+    "effect": "Choose an ally adjacent to an enemy targeted by this Attack. Grant them a _Free Turn_ where they may _Step_ [_Safe_].",
+    "boost": "2 _Momentum_: Choose an additional ally adjacent to an enemy targeted by this Attack. a _Free Turn_ where they may _Step_ [_Safe_]. You may use this effect as many times as you wish, but may only grant an ally a single _Free Turn_."
+  },
+  {
+    "name": "Sheparding Strike",
+    "desc": "You make a strike with the intent of repositioning a foe, creating space for allies.",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "effect": "If the effect already has _Forced Movement_, increase it by 1 and add _Angled_, or increase it by 2 if it is already _Angled_. If this effect does not have _Forced Movement_, add _Angled_ _Push_ 1. You may instead add _Angled_ _Pull_ 1 if it is a melee attack."
+  },
+  {
     "name": "Shielding Wave",
     "desc": "You pull forth water, creating a temporary shield against an attack.",
-    "keywords": ["Spirit", "Water", "Efficient"],
+    "keywords": ["Defensive", "Efficient", "Spirit", "Water"],
     "type": "Reaction",
-    "cost": "1 + [_Reeling_] _Momentum_",
     "range": "Ranged",
-    "range_value": "3",
+    "cost": "1 + [_Reeling_] _Momentum_",
     "trigger": "You or any ally within _Range_ are Attacked, take Damage, or gain Status.",
     "effect": "_Draw_ 1 within _Range_. If you cannot, this _Manuever_ fails. Grant the target of the Attack a _Fleeting_ _Defense_ of their choice, 1 _Guard_ against the triggering _Attack_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ to _Fire_ Damage for this Attack. After resolving this, gain _Reeling_ 1.",
+    "boost": "2 _Momentum_: Create a _Water Veil_ in a space adjacent to the Target after resolving the Effect. _Destroy_ this _Water Veil_ at the end of the _Round_.",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance. Resolve the above effects. After determining total Damage but before applying _Guard_, split the Damage in half. Your spirit takes half, and the original target takes the other half. Your spirit also gains _Reeling_ 1 after resolving this.",
-    "boost": "2 _Momentum_: Create a _Water Veil_ in a space adjacent to the Target after resolving the Effect. _Destroy_ this _Water Veil_ at the end of the _Round_."
+    "range_value": "3"
   },
   {
     "name": "Shifting Stone",
     "desc": "You propel a heavy stone forward, potentially crushing a foe.",
-    "keywords": ["Spirit", "Earth"],
-    "cost": "1 _AP_",
+    "keywords": ["Earth", "Spirit"],
+    "type": "Action",
     "range": "Ranged",
-    "range_value": 4,
     "target": "A _Size_ 1 or smaller _Earthen_ _Obstacle_ within Range.",
+    "cost": "1 _AP_",
     "effect": "_Forceful_ _Slide_ 4 the _Obstacle_.",
     "boost": "1 _Momentum_: Increase the _Slide_ by 2. You may use this option up to 3 times.",
     "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to _Obstacle_ in a space of your choice.",
-    "type": "Action"
+    "range_value": 4
   },
   {
     "name": "Skirmish",
     "desc": "You make a sudden attack, seamlessly integrating it with your maneuvering.",
-    "cost": "1 AP",
+    "type": "Action",
     "move": "None",
+    "cost": "1 AP",
     "effect": "Make a _Minor Attack_.",
-    "boost": "\n* 2 _Momentum_: Move is instead _Step_.\n* 2 _Momentum_: Choose one:\n\t* Make an additional _Minor Attack_.\n\t* Instead, make a _Major Attack_.",
-    "type": "Action"
+    "boost": "\n* 2 _Momentum_: Move is instead _Step_.\n* 2 _Momentum_: Choose one:\n\t* Make an additional _Minor Attack_.\n\t* Instead, make a _Major Attack_."
   },
   {
-    "name": "Sprint",
-    "desc": "You charge forward, limiting your mobility for sheer speed.",
-    "type": "Stunt",
-    "reqs": "Are not _Hobbled_ and have not used _Movement_ this _Turn_.",
-    "cost": "1 _Momentum_",
-    "effect": "Increase the level of your first Movement without [_Rush_] this _Turn_ once (making a _Step_ a _Reposition_, for example), but add [_Rush_]. If the Movement is already _Dash_, instead add [_Rush_, _Blitz_].",
-    "boost": "1 _Momentum_: Add [_Blitz_]."
+    "name": "Slip",
+    "desc": "You move with practiced ease, sliding across the battlefield with ease.",
+    "type": "Action",
+    "move": "Step [_Safe_]",
+    "cost": "1 AP",
+    "effect": "Once during this _Move_ you may inflict _Exposed_ 1 on a creature that sees you as _Obscured_.",
+    "special": "This Movement does not break the _Obscured_ provided by other Cunning Fox abilities."
+  },
+  {
+    "name": "Sniper's Perch",
+    "desc": "You find yourself an ideal position, allowing you to better find your targets.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "reqs": "Must be adjacent to an _Obstacle_ of at least Size 1 or be in a _Fortified_/_Obscured_ space.",
+    "effect": "Gain 1 _Momentum_, or 2 _Momentum_ if you have not moved since you last used this _Action_ and _Hobbled_ 1. Until you leave your current space, increase the range of your _Ranged_ Attacks by 2. Additionally, you may treat this space as _Fortified_ or, if it is already _Fortified_, it is always at least _Lightly Obscured_."
+  },
+  {
+    "name": "Spirit Summon",
+    "desc": "Your spirit takes physical form, fighting alongside you.",
+    "keywords": ["Manifest", "Spirit"],
+    "type": "Reaction",
+    "range": "Ranged",
+    "cost": "6 _Momentum_",
+    "trigger": "_Respite_ begins.",
+    "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you.",
+    "special": "If your _Spirit_ was _Summoned_ at the end of the last _Round_, you may instead have it remain in its current space, regardless of _Sources_.",
+    "range_value": "Spirit _Reposition_ distance."
   },
   {
     "name": "Spiritual Interdiction",
     "desc": "Your spirit leaps to defend you, taking the brunt of a blow.",
-    "keywords": ["Spirit", "Manifest"],
+    "keywords": ["Defensive", "Manifest", "Spirit"],
     "type": "Reaction",
     "cost": "[_Reeling_] _Momentum_ (use your spirit's value, not your own)",
     "trigger": "You are Attacked, take Damage, or gain Status while adjacent to a _Major Source_.",
@@ -437,60 +600,121 @@
     "boost": "1 _Momentum_: Instead, you may use this while adjacent to a _Minor Source_."
   },
   {
-    "name": "Spirit Summon",
-    "desc": "Your spirit takes physical form, fighting alongside you.",
-    "keywords": ["Spirit", "Manifest"],
+    "name": "Spread Claws",
+    "tag": "NPC",
+    "desc": "An insectoid spreads its mighty claws, controlling an area.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "effect": "For the remainder of the _Phase_ any Movement within your _Reach_ triggers _Opportunity Attack_. Treat your Attacks as 1 faster when used for _Opportunity Attack_."
+  },
+  {
+    "name": "Sprint",
+    "desc": "You charge forward, limiting your mobility for sheer speed.",
+    "type": "Stunt",
+    "cost": "1 _Momentum_",
+    "reqs": "Making a Move without [_Rush_].",
+    "effect": "Increase the rank of your current Movement (making a _Step_ a _Reposition_, for example), but add [_Rush_]. If the Movement is already _Dash_, instead add [_Rush_, _Breach_].",
+    "boost": "1 _Momentum_: Add [_Breach_]."
+  },
+  {
+    "name": "Step In",
+    "desc": "You violently advance as you prepare an assault, lashing out at a foe to keep them near.",
     "type": "Reaction",
-    "cost": "6 _Momentum_",
-    "trigger": "_Respite_ begins.",
+    "cost": "2 _Momentum_",
+    "trigger": "You become _Charging_.",
+    "effect": "Before you become _Charging_, make a _Minor Attack_. On a _Hit_+, add your choice of _Hobbled_ 1/_Pull_ 2."
+  },
+  {
+    "name": "Strength of the Pride",
+    "desc": "You inspire an ally, rallying their defenses while drawing the ire of their attacker.",
+    "type": "Reaction",
+    "cost": "3 _Momentum_",
     "range": "Ranged",
-    "range_value": "Spirit _Reposition_ distance.",
-    "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you.",
-    "special": "If your _Spirit_ was _Summoned_ at the end of the last _Round_, you may instead have it remain in its current space, regardless of _Sources_."
+    "range_value": 6,
+    "trigger": "An ally within Range takes Damage or gains a Status.",
+    "effect": "Your ally treats their _Reeling_ as half its current value this _Turn_. If they use a _Defensive_ _Reaction_ against the triggering effect they gain _Courage_ 1, and you may inflict _Marked_ on their attacker."
   },
   {
     "name": "Swift Manifestation",
     "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
-    "keywords": ["Spirit", "Manifest"],
+    "keywords": ["Manifest", "Spirit"],
     "type": "Action",
-    "cost": "None",
     "range": "Ranged",
-    "range_value": "Spirit _Reposition_ distance.",
+    "cost": "None",
     "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_ , originating from that space. If you choose a _Major Source_, gain a +1 _Bonus_ on the _Attack Roll_. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the target space.",
-    "boost": "2 _Momentum_: Instead, use one of your spirit's _Major Attacks_."
+    "boost": "2 _Momentum_: Instead, use one of your spirit's _Major Attacks_.",
+    "range_value": "Spirit _Reposition_ distance."
+  },
+  {
+    "name": "Swift Search",
+    "desc": "You quickly scan the battlefield, finding an opportunity as quickly as possible.",
+    "type": "Stunt",
+    "cost": "0 _Momentum_ (see Special)",
+    "range": { "category": "Ranged", "value": 6 },
+    "effect": "Place an _Opportune Weapon_ within Range. You may not place it adjacent to yourself or an ally. This _Opportune Weapon_ is a _Small Improvised_/_Medium Improvised_ and is made of the same Material as the Terrain or an adjacent Obstacle (you choose).",
+    "special": "Increase the cost of this Stunt by 1 each time you use it. Reduce the cost by 1 at _Respite_."
+  },
+  {
+    "name": "Synchronized Strike",
+    "desc": "You expertly time an attack with an ally, connecting in rapid succession.",
+    "type": "Gambit",
+    "cost": "3 _Momentum_",
+    "effect": "Choose an ally within Range 4. Your ally may immediately make a _Minor Attack_ against the same creature as you. Resolve these _Attacks_ in either order. After resolving both _Attacks_ inflict _Vulnerable_ X, where X is equal to 4 - the difference between your _Attack Rolls_ (minimum 1).",
+    "boost": "1 _Momentum_: Instead, choose any ally, ignoring range."
   },
   {
     "name": "To Me!",
-    "desc": "You call an ally toward you, providing them a safe path foward.",
+    "desc": "You call an ally toward you, providing them a safe path forward.",
     "type": "Action",
     "cost": "1 _AP_",
-    "effect": "Choose an ally that is within their _Step_ distance from you. That ally may immediately take a [_Safe_] _Step, but must move towards you by the shortest posible route. You and your ally then both gain _Courageous_ 1."
+    "effect": "Choose an ally that is within their _Step_ distance from you. Grant them a _Free Turn_ where they may _Step_ towards you by the shortest possible distance. You and your ally then both gain _Courageous_ 1."
   },
   {
     "name": "Tumble",
     "desc": "You roll forward, moving swiftly and avoiding incoming strikes.",
     "type": "Stunt",
-    "reqs": "Have a _Medium Load_ or less.",
     "cost": "2 _Momentum_",
-    "effect": "The next X spaces you Move, where X is up to your _Step_ distance gain [_Safe_, _Blitz_, _Rush_]. This Movement may not be broken up in any way."
+    "reqs": "Have a _Medium Load_ or less.",
+    "effect": "The next X spaces you Move, where X is up to your _Step_ distance gain [_Safe_, _Breach_, _Rush_]. This Movement may not be broken up in any way."
+  },
+  {
+    "name": "Victory Cry",
+    "desc": "You let out a triumphant yell, spurring your allies onward.",
+    "type": "Reaction",
+    "range": "Self",
+    "area": "_Burst_ 3",
+    "cost": "2 _Momentum_",
+    "trigger": "Any ally defeats a foe.",
+    "effect": "Allies in the _Area_ gain _Courageous_ 1 and may immediately Move 1. Until the end of the _Round_, whenever they make an Attack they may remove _Courageous_ 1 to deal +2 Damage with an Attack."
   },
   {
     "name": "Waiting Stone",
     "desc": "You pull a stone loose, preparing it to fire a moment's notice.",
-    "keywords": ["Spirit", "Earth"],
+    "keywords": ["Earth", "Spirit"],
     "type": "Gambit",
-    "reqs": "_Attack_ is _Chip Shot_ or _Stone Strike_.",
-    "cost": "None",
     "range": "Ranged",
-    "range_value": "4",
-    "effect": "Choose an _Earthen_ _Obstacle_ or _Jagged_ space within _Range_. At any point after this _Phase_ as a _Reaction_ you may use the triggering Attack, maintaining all original keywords and originating it from the _Obstacle_ or space. When used in this way, ignore the _Minimum Range_ of these attacks. If the _Obstacle_ or _Terrain_ is removed prior to using this _Reaction_ the effect is lost."
+    "cost": "None",
+    "reqs": "_Attack_ is _Chip Shot_ or _Stone Strike_.",
+    "effect": "Choose an _Earthen_ _Obstacle_ or _Jagged_ space within _Range_. At any point after this _Phase_ as a _Reaction_ you may use the triggering Attack, maintaining all original keywords and originating it from the _Obstacle_ or space. When used in this way, ignore the _Minimum Range_ of these attacks. If the _Obstacle_ or _Terrain_ is removed prior to using this _Reaction_ the effect is lost.",
+    "range_value": "4"
+  },
+  {
+    "name": "Warcry",
+    "desc": "You let out an inspiring cry, filling your allies with the soul of battle.",
+    "type": "Stunt",
+    "range": "Ranged",
+    "cost": "1 _Momentum_",
+    "effect": "Choose an ally within Range and grant them _Vigor_ 2, _Enraged_ 1. You may choose the target of the creature's rage, but they must be within Range 3 of you.",
+    "special": "If you _Defeated_ an enemy this _Turn_, instead grant _Vigor_ 3, _Enraged_ 2.",
+    "boost": "1 _Momentum_: Grant your ally a _Free Turn_ where they may _Step_ towards the target of their rage.",
+    "range_value": 6
   },
   {
     "name": "Warding Step",
     "desc": "You step forward, pulling an ally from danger as you do so.",
     "type": "Action",
-    "cost": "1 _AP_",
     "move": "Step",
+    "cost": "1 _AP_",
     "effect": "Once during this _Turn_ you may swap spaces with an ally. When you do so, they gain 3 _Vigor_ and may then immediately _Refresh_ or _Recover_.",
     "boost": "2 _Momentum_: Your ally may _Refresh_ and _Recover_ ."
   },
@@ -501,40 +725,7 @@
     "type": "Reaction",
     "cost": "1 _Momentum_",
     "trigger": "You or an ally within Range 4 would gain _Soaked_.",
-    "effect": "Your ally may resolve any effects of their choice that would trigger from gaining _Soaked_. After, they do not gain _Soaked_, but instead 2 _Vigor_.",
-    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's Reposition distance. Resolve the above effects, granting your _Spirit_ 2 _Vigor_ as well."
-  },
-  {
-    "name": "Wing Shot",
-    "desc": "You never truly miss; you simply corral a foe for your allies and line up a superior strike.",
-    "type": "Reaction",
-    "cost": "1 _Momentum_",
-    "trigger": "You _Miss_ with a Ranged Attack.",
-    "effect": "Choose one:\n* Inflict _Insight_ 2.\n* Inflict _Slide_ 2.\n* Deal 2 Damage."
-  },
-  { "name": "NPC MANUEVERS" },
-  {
-    "name": "Chemical Warfare",
-    "desc": "A blast of toxic gasses.",
-    "type": "Action",
-    "move": "None",
-    "cost": "1 _AP_",
-    "effect": "Create a _Cone_ 2 of _Toxic Gas_ within Range 6. This gas is removed at the end of the _Round_."
-  },
-  {
-    "name": "Lock Down",
-    "desc": "A prepared shot that is taken at the opportune moment.",
-    "type": "Gambit",
-    "keywords": ["Flourish"],
-    "cost": "1 _Momentum_",
-    "trigger": "You successfully _Grab_ with an _Attack_.",
-    "effect": "Add _Impaired_ 2 and gain a +1 _Bonus_ to the next opposed _Grab_ roll this _Round_."
-  },
-  {
-    "name": "Spread Claws",
-    "desc": "An insectoid spreads its mighty claws, controlling an area.",
-    "type": "Action",
-    "cost": "1 _AP_",
-    "effect": "For the remainder of the _Phase_ any Movement within your _Reach_ triggers _Opportunity Attack_. Treat your Attacks as 1 faster when used for _Opportunity Attack_."
+    "effect": "Your ally may resolve any effects of their choice that would trigger from gaining _Soaked_. After, they do not gain _Soaked_, but instead 3 _Vigor_ and regain 1 _Defense_ of their choice.",
+    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's Reposition distance. Resolve the above effects, granting your _Spirit_ 3 _Vigor_ as well."
   }
 ]
