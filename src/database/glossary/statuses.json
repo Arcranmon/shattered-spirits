@@ -9,7 +9,7 @@
   {
     "name": "Blind",
     "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
-    "effect": "A Blind creature treats all non-adjacent creatures as _Obscured_. Additionally, abilities used by the creature have a maximum Range of 3.",
+    "effect": "A Blind creature sees all creatures within Range 3 as _Lightly Obscured_ and all creatures beyond that range as _Heavily Obscured_.",
     "remove": "Creatures are Blinded until the duration specified when inflicted has passed or, when _Recovering_, they expend 2 _Grit_.",
     "type": "Hide"
   },
@@ -49,12 +49,6 @@
     "type": "Hide"
   },
   {
-    "name": "Fragile",
-    "effect": "Fragile decreases the Durability of a piece of Equipment or Obstacle by 2.",
-    "remove": "Only Techniques that explicitly remove Fragile remove Fragile. Otherwise, it can be removed outside of combat with [travel mechanic here].",
-    "type": "Hide"
-  },
-  {
     "name": "Grabbed",
     "effect": "While a creature is Grabbed they suffer the following effects:\n* The Grabbed creature becomes _Stuck_.\n* When the creature grabbing them _Moves_, so does the Grabbed creature.\n* The creature grabbing them may expend 1 spaces of _Movement_ to inflict _Pull_ 1 on the Grabbed creature.\n* The creature grabbing may expend _Grit_ to negate _Forced Movement_ effects for the Grabbed creature.",
     "special": "Creatures that inflict _Grabbed_ on a creature more than twice their size instead halve their Movement rather than inflicting _Stuck_. If the creature is more than triple their size, the Grabbed creature has no penalty to their Movement, but the creature grabbing them moves with them. If a creature inflicts Grab on a creature they are already Grabbing they may instead inflict _Pull_ 3 or _Prone_ with the same cost to negate as the Grab, but using _Grit_.",
@@ -73,7 +67,7 @@
   {
     "name": "Obscured",
     "desc": "A creature that is hidden in some way and difficult to see.",
-    "effect": "All Attacks against an Obscured creature have _Disadvantage_.",
+    "effect": "An _Obscured_ creature is always _Lightly Obstructed_ and _Lightly Obscured_ unless a _Secondary Sense_ is being used.",
     "type": "Hide"
   },
   {
@@ -341,5 +335,11 @@
     "desc": "You reposition a creature before pushing them in a vicious line.",
     "effect": "First, Pull up to 6. Then, Push X the target, where X is the numerical value immediately after Throw in an effect's description. The creature is considered Leaping for this Push.",
     "type": "Instant Effect2"
+  },
+  {
+    "name": "Veiled",
+    "desc": "A condition caused when a creature is difficult to see, limiting the ability to strike them.",
+    "effect": "All creatures that see a Veiled creature as _Lightly Obscured_ have _Disadvantage_ on all Attacks against them.",
+    "type": "Status"
   }
 ]

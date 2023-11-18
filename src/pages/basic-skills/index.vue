@@ -34,6 +34,7 @@
       /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" />
+        <show-cards :inputs="[$store.getters.getManeuver('Hide')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
         <show-cards
           :inputs="[this.$store.getters.getManeuver('Skirmish'), $store.getters.getManeuver('Swift Manifestation'), $store.getters.getManeuver('Reorient')]"
           job="Maneuvers"

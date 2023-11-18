@@ -31,7 +31,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <discipline-card v-if="selectedMastery != null" :mastery="selectedMastery" /></v-col> </v-row
+        <v-col> <discipline-card v-if="selectedMastery != null" :discipline="selectedMastery" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default Vue.extend({
   name: 'masteries',
   components: { DisciplineCard },
   data() {
-    return {}
+    return { selectedMastery: null }
   },
   computed: {
     masteries: function () {

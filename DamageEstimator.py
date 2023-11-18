@@ -62,6 +62,8 @@ def estimate_damage(type, name, glancing, treat_status_as_damage):
     disadvantage = [0.0740740740741, 0.125, 0.157407407407, 0.166666666667, 0.157407407407, 0.125, 0.087962962963, 0.0555555555556, 0.0324074074074, 0.0138888888889, 0.00462962962963]
 
     hit = []
+    attack_range = "NA"
+    cost = 0
     damage_chart = []
     status_chart = []
     speed = 1
@@ -97,6 +99,10 @@ def estimate_damage(type, name, glancing, treat_status_as_damage):
                     speed = int(weapon["speed"])
                 if("class" in weapon):
                     minor = weapon["class"] == 'Minor Attack'
+                if("cost" in weapon):
+                    cost = int(weapon["cost"][0])
+                if("range" in weapon):
+                    attack_range = weapon["range"]["category"]
 
     if(damage_chart == []):
         raise Exception("Technique or weapon not found.")
@@ -105,7 +111,7 @@ def estimate_damage(type, name, glancing, treat_status_as_damage):
     advantage_damage = [0, 0, 0, 0, 0, 0, 0, 0]
     disadvantage_damage = [0, 0, 0, 0, 0, 0, 0, 0]
 
-    for i in range (10,0,-1):
+    for i in range(10,0,-1):
         for j in range(0,8):
             speed_dif = j-speed+1 # +1 because zero indexed
             if lvh == 'Heavy':
@@ -133,8 +139,14 @@ def estimate_damage(type, name, glancing, treat_status_as_damage):
             advantage_damage[j] += advantage[i]*damage
             disadvantage_damage[j] += disadvantage[i]*damage
 
+    if attack_range == "Ranged":
+        expected_damage = [x * 0.75 for x in expected_damage]
+
     if minor:
         expected_damage = [x / 2 for x in expected_damage]
+        expected_damage = [x + cost / 2 * x for x in expected_damage]
+    else:
+        expected_damage = [x + cost / 4 * x for x in expected_damage]
 
     print(colored("Speed:                  1      2      3      4      5      6      7      8", 'white'))
     print(colored("Expected Damage:        " +  '  '.join(["{:.3f}".format(damage) for damage in expected_damage]), 'blue'))

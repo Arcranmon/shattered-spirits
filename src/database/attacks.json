@@ -13,25 +13,27 @@
     "type": "Versatile",
     "speed": "4",
     "damagetype": "Pierce",
+    "cost": "2 _Momentum_",
     "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 1" },
     "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 3. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Chip Shot _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
     "chart": {
-      "damage": [0, 0, 0, 0, 3, 3, 4, 5, 5, 6, 6],
+      "damage": [0, 0, 0, 0, 4, 4, 5, 5, 6, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "", "_Exposed_ 1", "_Exposed_ 1"]
+      "status": ["", "", "", "", "", "", "_Exposed_ 1", "_Exposed_ 1", "_Exposed_ 1", "_Exposed_ 2", "_Exposed_ 2"]
     },
     "class": "Minor Attack"
   },
   {
     "name": "Cutting Veil",
     "desc": "You viciously rip water upward, disorienting a creature with a sudden veil of cutting water.",
-    "keywords": ["Spirit", "Water"],
+    "keywords": ["Spirit", "Water", "Remote"],
     "type": "Versatile",
     "speed": 3,
+    "cost": "1 _Momentum_",
     "damagetype": "Slash",
     "range": { "category": "Ranged", "value": 6 },
-    "special": "This _Attack_ may only target _Soaked_ enemies or those in a _Watery_ space, but enemies may not be _Heavily Obstructed_/_Covered_ against this Attack. After completing the _Attack_, remove _Soaked_ or reduce the value of the space by 1, whichever is applicable. If they are in a _Water Veil_, do not reduce the value, ignore any _Obstructed_ provided by the _Water Veil_, and the _Attack_ has _Advantage_.",
+    "special": "This _Attack_ may only target _Soaked_ enemies or those in a _Watery_ space. After completing the _Attack_, remove _Soaked_ or reduce the value of the space by 1, whichever is applicable. If they are in a _Water Veil_, do not reduce the value of the Veil and the _Attack_ has _Advantage_.",
     "chart": {
       "damage": [0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -210,17 +212,18 @@
   },
   {
     "name": "Stone Strike",
-    "desc": "You fling a fist-sized stone at great speed, knocking enemies off-balance.",
+    "desc": "You fling a stone at great speed, knocking enemies off-balance.",
     "keywords": ["Earth"],
     "type": "Versatile",
     "speed": "5",
+    "cost": "3 _Momentum_",
     "damagetype": "Crush",
     "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 1" },
     "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 4. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Stone Strike _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
     "charged_effect": "Instead, this Attack is _Line_ 6. Add [_Pierce_] 1.",
     "chart": {
-      "damage": [0, 0, 0, 0, 5, 6, 6, 7, 7, 9, 9],
+      "damage": [0, 0, 0, 0, 7, 8, 9, 11, 12, 13, 13],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -229,11 +232,11 @@
         "",
         "_Dazed_ 1, _Push_ 1",
         "_Dazed_ 1, _Push_ 1",
-        "_Dazed_ 1, _Push_ 1, _Slowed_ [1 _Grit_]",
-        "_Dazed_ 1, _Push_ 1, _Slowed_ [1 _Grit_]",
-        "_Dazed_ 1, _Push_ 1, _Slowed_ [1 _Grit_]",
-        "_Dazed_ 1, _Push_ 1, _Slowed_ [2 _Grit_]",
-        "_Dazed_ 1, _Push_ 1, _Slowed_ [2 _Grit_]"
+        "_Dazed_ 2, _Push_ 1, _Slowed_ [1 _Grit_]",
+        "_Dazed_ 2, _Push_ 1, _Slowed_ [1 _Grit_]",
+        "_Dazed_ 2, _Push_ 1, _Slowed_ [1 _Grit_]",
+        "_Dazed_ 3, _Push_ 1, _Slowed_ [2 _Grit_]",
+        "_Dazed_ 3, _Push_ 1, _Slowed_ [2 _Grit_]"
       ]
     },
     "class": "Major Attack"
