@@ -20,7 +20,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="4" v-for="item in ['Land', 'Stone', 'Grounding', 'Valor', 'Tremorsight']" :key="item">
+          ><v-col :cols="4" v-for="item in ['Land', 'Stone']" :key="item">
             <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
         ></v-row>
         <h4>Earth Spirit Forms</h4>

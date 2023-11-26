@@ -84,6 +84,15 @@
     "effect": "Gain 1 _Fleeting_ _Poise_/_Grit_ and add _Enraged_ 1 to the triggering effect. When you resolve the _Charged_ effect, you may treat all creatures in the area as the target of your rage. After fully resolving the triggering effect, gain _Vigor_ 2."
   },
   {
+    "name": "Buzzing Flourish",
+    "desc": "You use the cover of an attack to fly forward, avoiding retaliation.",
+    "type": "Gambit",
+    "keywords": ["Flourish"],
+    "cost": "2 _Momentum_",
+    "trigger": "You _Hit_+ with an Attack against an adjacent foe.",
+    "effect": "Immediately _Step_. If it is _Phase_ 3 or earlier, add [_Safe_]."
+  },
+  {
     "name": "Cunning Strike",
     "desc": "You exploit an opening in a foe's defenses to drive your attack deep.",
     "type": "Gambit",
@@ -98,6 +107,14 @@
     "move": "None",
     "cost": "1 _AP_",
     "effect": "Create a _Cone_ 2 of _Toxic Gas_ within Range 6. This gas is removed at the end of the _Round_."
+  },
+  {
+    "name": "Coiled Guard",
+    "desc": "You make yourself a miniscule target as you prepare for an assault.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "effect": "Until the end of the next _Phase_, gain _Veiled_. Creatures in a _Hazard_ you created always treat you as _Lightly Obscured_, even to _Secondary Senses_.",
+    "special": "You may use this _Action_ while _Charging_."
   },
   {
     "name": "Corral",
@@ -135,6 +152,13 @@
     "boost": "1 _Momentum_: After resolving this attack, create an _Opportune Weapon_ in a space adjacent to the target. This weapon has all the same traits as the original, but decreases in size by one. A _Large Improvised_ Weapon would become a _Medium Improvised_ Weapon, for example. You may only use this _Boost_ if the original _Opportune Weapon_ was an _Improvised Weapon_."
   },
   {
+    "name": "Darting Posture",
+    "desc": "You adopt a mobile posture, creating a state of constant movement.",
+    "type": "Action",
+    "cost": "1 AP",
+    "effect": "Becoming _Guarding_. While _Guarding_ in this way you are not _Hobbled_, you may Move 1 [_Safe_] at the end of each _Phase_, you gain 1 _Fleeting_ _Reflex_ each _Turn_, and creatures that end their _Turn_ next to you gain _Vulnerable_ 1."
+  },
+  {
     "name": "Disengage",
     "desc": "You focus your efforts on moving away from hostile foes.",
     "type": "Stunt",
@@ -169,6 +193,15 @@
     "boost": "1 _Momentum_: Do not create an _Opening_."
   },
   {
+    "name": "Dual Fangs",
+    "desc": "You prepare a vicious strike with multiple avenues, leaving multiple options open.",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Single-Target _Melee_ Attack.",
+    "effect": "Instead of immediately resolving the attack, become _Charging_ and create two _Hazards_ within _Reach_. At the end of this _Phase_, resolve the Attack against any Targets in these _Hazards_. If there is a target in both spaces, add [_Glancing_]. If there is only a Target in one space, inflict _Exposed_ 1 before resolving the Attack.",
+    "special": "Increase the _Reach_ of this Attack by 1."
+  },
+  {
     "name": "Duelist's Defense",
     "desc": "You focus your defenses on a singular target, providing an impenetrable defense.",
     "type": "Action",
@@ -191,8 +224,8 @@
     "type": "Gambit",
     "cost": "1 _Momentum_",
     "reqs": "You _Graze_+ with an Attack.",
-    "effect": "Deal +1 Damage.",
-    "boost": "1 _Momentum_: Instead, deal +2 Damage."
+    "effect": "Deal +1 _Bonus Damage_.",
+    "boost": "1 _Momentum_: Instead, deal +2 _Bonus Damage_."
   },
   {
     "name": "Flank",
@@ -294,7 +327,7 @@
     "type": "Gambit",
     "cost": "4 _Momentum_",
     "trigger": "You make a Ranged Attack against a creature with _Insight_.",
-    "effect": "Make the _Attack_ with _Advantage_. As a part of this Attack you may remove up to 5 _Insight_, dealing +1 Damage per _Insight_ removed in this way. If the _Attack_ was a _Crit_, instead deal +2 Damage per _Insight_ removed.",
+    "effect": "Make the _Attack_ with _Advantage_. As a part of this Attack you may remove up to 5 _Insight_, dealing +1 Damage to that creature per _Insight_ removed in this way. If the _Attack_ was a _Crit_, instead deal +2 Damage per _Insight_ removed.",
     "special": "If you already have _Advantage_, this instead costs only 1 _Momentum_"
   },
   {
@@ -382,6 +415,13 @@
     "cost": "1 _Momentum_",
     "reqs": "You make a Single-Target _Melee_ Attack against a foe.",
     "effect": "Add _Marked_, _Impaired_ _0/0/0/1_."
+  },
+  {
+    "name": "Outmaneuver",
+    "desc": "You use your speed to force an opening against a foe.",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "effect": "If this Target has not taken a _Turn_ this _Round_, gain a +1 _Bonus_ and you may remove an additional _Vulnerable_."
   },
   {
     "name": "Opportunity Attack",
@@ -524,8 +564,8 @@
     "cost": "1 _AP_",
     "effect": "Until the end of the _Round_ you and your allies may choose to ignore the effects of _Watery_ _Terrain_ in the _Area_ (but must still _Swim_ if applicable) and may move through _Water Veil_ spaces without expending additional Movement. Additionally, _Watery_ _Terrain_ within the _Area_ is considered _Fortified_ _Terrain_ for you and your allies.",
     "special": "When you use this _Action_ you may _Draw_ 2 within Range 4, then immediately create X _Wet_ spaces within Range, where X is the number of spaces _Drawn_.",
-    "boost": "2 _Momentum_: Instead, _Area_ is _Burst_ 2. Instead _Draw_ 3.",
-    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's _Reposition_ distance. Choose an unoccupied _Watery_ space within Range. _Summon_ your spirit to that space, then resolve the Effect, treating your spirit as the user. Your spirit remains _Summoned_ until you spend 1 _Momentum_ as an _Action_ to end the _Summon_ or the _Round_ ends."
+    "boost": "2 _Momentum_: Instead, _Area_ is _Burst_ 2. Instead, _Draw_ 3.",
+    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's _Reposition_ distance. Choose an unoccupied _Watery_ space within Range. _Summon_ your spirit to that space, then resolve the Effect, treating your spirit as the user and applying the Boost at no cost. Your spirit remains _Summoned_ until you spend 1 _Momentum_ as an _Action_ to end the _Summon_ or the _Round_ ends."
   },
   {
     "name": "Scathing Words",
@@ -545,10 +585,19 @@
     "effect": "Choose a creature within Range. Inflict _Insight_ 1 on them, or _Insight_ 2 if you do not see them as _Obscured_ from your current position."
   },
   {
+    "name": "Serpent's Lunge",
+    "desc": "You wind up before an attack, granting you additional reach with it.",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Must be a Single-Target _Melee_ Attack.",
+    "effect": "Instead of immediately resolving the attack, become _Charging_. Resolve this Attack at the end of the current _Phase_. Increase the _Reach_ by 1, and add _Reeling_ 1 on a _Graze_+. Treat this Attack as if it was _Charged_ for all other effects.",
+    "special": "If you would make multiple eligible Attacks during the triggering _Turn_, you may apply this _Gambit_ to any number of them before becoming _Charging_ for 1 _Momentum_. Make all Attacks in any order when you remove _Charging_."
+  },
+  {
     "name": "Set Feet",
     "desc": "You steady yourself as you continue to charge a heavy strike.",
     "type": "Reaction",
-    "cost": "1 _Momentum_",
+    "cost": "1 _AP_/2 _Momentum_",
     "trigger": "A _Phase_ ends while you are _Charging_.",
     "effect": "You gain 1 _Guard_ until the end of the next _Phase_. Additionally, you may _Refresh_ _Grit_/_Poise_ or gain _Vigor_ 2. Finally, if you would normally be required to remove _Charging_ and resolve the effect, you may choose to remain _Charging_ until the end of the next _Phase_."
   },
@@ -577,7 +626,7 @@
     "trigger": "You or any ally within _Range_ are Attacked, take Damage, or gain Status.",
     "effect": "_Draw_ 1 within _Range_. If you cannot, this _Manuever_ fails. Grant the target of the Attack a _Fleeting_ _Defense_ of their choice, 1 _Guard_ against the triggering _Attack_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ to _Fire_ Damage for this Attack. After resolving this, gain _Reeling_ 1.",
     "boost": "2 _Momentum_: Create a _Water Veil_ in a space adjacent to the Target after resolving the Effect. _Destroy_ this _Water Veil_ at the end of the _Round_.",
-    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance. Resolve the above effects. After determining total Damage but before applying _Guard_, split the Damage in half. Your spirit takes half, and the original target takes the other half. Your spirit also gains _Reeling_ 1 after resolving this."
+    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead 1 + your Spirit's [_Reeling_] _Momentum_. Resolve the above effects and add [_Glancing_]. Resolve the Attack against your Spirit as well. Your Spirit gains _Reeling_ rather than you when used in this way."
   },
   {
     "name": "Shifting Stone",
@@ -589,7 +638,7 @@
     "cost": "1 _AP_",
     "effect": "_Forceful_ _Slide_ 4 the _Obstacle_.",
     "boost": "1 _Momentum_: Increase the _Slide_ by 2. You may use this option up to 3 times.",
-    "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to _Obstacle_ in a space of your choice."
+    "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to the _Obstacle_ in a space of your choice. You may use the _Boost_ up to twice at no Cost."
   },
   {
     "name": "Skirmish",
@@ -635,7 +684,7 @@
     "range": { "category": "Ranged", "value": "Spirit _Reposition_ distance." },
     "cost": "6 _Momentum_",
     "trigger": "_Respite_ begins.",
-    "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you.",
+    "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you. Whenever your Spirit uses an ability with the _Spirit_ keyword, reduce its Cost by 1, and your _Spirit_ may use the [_Manifest_] variant of all abilities.",
     "special": "If your _Spirit_ was _Summoned_ at the end of the last _Round_, you may instead have it remain in its current space, regardless of _Sources_."
   },
   {
@@ -674,6 +723,15 @@
     "effect": "Before you become _Charging_, make a _Minor Attack_. On a _Hit_+, add your choice of _Hobbled_ 1/_Pull_ 2."
   },
   {
+    "name": "Stinging Approach",
+    "desc": "You quickly close the gap, making a strike before foes can retaliate.",
+    "type": "Action",
+    "cost": "1 AP_, 1 _Momentum_",
+    "reqs": "Must be _Phase_ 3 or earlier.",
+    "move": "Step",
+    "effect": "After completing your _Move_, make a _Minor Attack_."
+  },
+  {
     "name": "Strength of the Pride",
     "desc": "You inspire an ally, rallying their defenses while drawing the ire of their attacker.",
     "type": "Reaction",
@@ -689,7 +747,7 @@
     "type": "Action",
     "range": { "category": "Ranged", "value": "Spirit _Reposition_ distance." },
     "cost": "None",
-    "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_ , originating from that space. If you choose a _Major Source_, gain a +1 _Bonus_ on the _Attack Roll_. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the target space.",
+    "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_ , originating from that space, and reducing the Cost by 1. If you choose a _Major Source_, gain a +1 _Bonus_ on the _Attack Roll_ and instead reduce the Cost by 2. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the Target space, or an adjacent one.",
     "boost": "2 _Momentum_: Instead, use one of your spirit's _Major Attacks_."
   },
   {
@@ -732,7 +790,7 @@
     "area": "_Burst_ 3",
     "cost": "2 _Momentum_",
     "trigger": "Any ally defeats a foe.",
-    "effect": "Allies in the _Area_ gain _Courageous_ 1 and may immediately Move 1. Until the end of the _Round_, whenever they make an Attack they may remove _Courageous_ 1 to deal +2 Damage with an Attack."
+    "effect": "Allies in the _Area_ gain _Courageous_ 1 and may immediately Move 1. Until the end of the _Round_, whenever they make an Attack they may remove _Courageous_ 1 to deal +2 _Bonus Damage_ with an Attack."
   },
   {
     "name": "Waiting Stone",
@@ -764,13 +822,21 @@
     "boost": "2 _Momentum_: Your ally may _Refresh_ and _Recover_ ."
   },
   {
-    "name": "Waveguard",
+    "name": "Cleansing Wave",
     "desc": "You solidify the water that would encase a foe into a protective barrier.",
     "keywords": ["Spirit", "Water"],
     "type": "Reaction",
-    "cost": "1 _Momentum_",
-    "trigger": "You or an ally within Range 4 would gain _Soaked_.",
-    "effect": "Your ally may resolve any effects of their choice that would trigger from gaining _Soaked_. After, they do not gain _Soaked_, but instead 3 _Endurance_ and regain 1 _Defense_ of their choice.",
-    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's Reposition distance. Resolve the above effects, granting your _Spirit_ 3 _Vigor_ as well."
+    "cost": "2 _Momentum_",
+    "trigger": "You or an ally within Range 4 would gain _Soaked_ or ends their _Turn_ in a _Watery_ space.",
+    "effect": "Your ally may resolve any effects of their choice that would trigger from gaining _Soaked_. After, they do not gain _Soaked_, but instead 4 _Vigor_, and regain 1 _Defense_ of their choice. While your ally has this _Vigor_, they have _Resistance_ to _Flame_ Damage.",
+    "special": "If you used this ability based on an ally ending their _Turn_ in a _Watery_ space, reduce its value by 1.",
+    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's Reposition distance. Resolve the above effects for both your _Spirit_ and the Target, and instead grant _Vigor_ 6."
+  },
+  {
+    "name": "Wind Tight",
+    "desc": "You focus your attention on nearby enemies, punishing any bad behavior.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "effect": "Become _Guarding_. While _Guarding_ in this way, gain 1 _Fleeting_ _Poise_ each _Turn_. You may only make Attacks as a part of _Punish_ _Reactions_, but gain a +2 _Bonus_ to all such Attacks and reduce their cost by 1. You lose this effect if you _Move_."
   }
 ]

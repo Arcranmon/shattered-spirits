@@ -24,8 +24,8 @@
     "keywords": ["Fluid"],
     "type": "Move",
     "speed": "Any",
-    "move": "Step , Step, Step",
-    "effect": "Attacks against you take a -1 _Penalty_ this _Turn_. At the end of your first _Move_ inflict _Vulnerable_ 1 in a _Burst_ 1. At the end of the second, inflict _Exposed_ 1 in a _Burst_ 1. At the end of the third, inflict _Reeling_ 1 in a _Burst_ 1. You must move at least one space during each Move this turn.",
+    "move": "Step, Step, Step",
+    "effect": "Gain 1 _Momentum_. Attacks against you take a -2 _Penalty_ this _Turn_. At the end of your first _Move_ inflict _Vulnerable_ 1 in a _Burst_ 1. At the end of the second, inflict _Exposed_ 1 in a _Burst_ 1. At the end of the third, inflict _Reeling_ 1 in a _Burst_ 1. You must move at least one space during each Move this turn.",
     "special": "Any creature that uses a Reaction on you triggered by you creating an _Opening_ due to starting Movement gains _Impaired_ 1."
   },
   {
@@ -37,6 +37,15 @@
     "effect": "Make a _Minor Attack_, then choose two allies. They gain a _Free Turn_ that they may use to _Step_ towards the target of your Attack and make a _Minor Attack_ against the same creature as you. If all three Attacks _Graze_+, inflict _Reeling_ 1, or _Reeling_ 2 on a _Hit_+.",
     "boost": "2 _Momentum_: Instead, your ally makes a _Major Attack_ on the _Free Turn_. Your ally may contribute to this _Boost_. You may repeat this _Boost_.",
     "special": ""
+  },
+  {
+    "name": "Coiling Strike",
+    "desc": "You become a tightly-wound spring, ready to lunge out at the first foe foolish enough to enter your range.",
+    "type": "Strike",
+    "speed": "Any",
+    "move": "None",
+    "effect": "Choose a _Melee_ _Major Attack_. Create a _Burst_ X _Hazard_ and become _Charging_, where X is your _Step_ distance + the _Reach_ of the Attack. Whenever you end a _Phase_ while _Charging_ (excluding the initial _Phase_ where this Technique was used), increase the size of the _Hazard_ by 1, up to your _Reposition_ distance. Whenever a creature ends their _Turn_ in the _Hazard_ or enters it you may immediately end _Charging_. You may _Reposition_ towards them, then make a _Major Attack_ against them with _Advantage_. When calculating _Speed Penalties_, add the number of _Phases_ you were charging to the current _Phase_.",
+    "boost": "1 _AP_, 2 _Momentum_: After removing the _Hazard_ and making this Attack, repeat the _Effect_."
   },
   {
     "name": "Eyes of Greed",
@@ -137,28 +146,28 @@
   {
     "name": "Roiling Earth",
     "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
-    "keywords": ["Spirit", "Earth", "Groundsource"],
+    "keywords": ["Spirit", "Earth"],
     "type": "General",
     "speed": "5",
     "range": { "category": "Self" },
     "area": "_Burst_ 2",
     "move": "Step",
-    "effect": "Attack all Targets in the Area with this Technique's Profile. Any _Prone_ creatures in the _Area_ take 2 Crush Damage [_Avoidable_] on a _Hit_+.",
+    "effect": "Attack [_Avoidable_, _Groundsource_] all Targets in the Area with this Technique's Profile. Any _Prone_ creatures in the _Area_ take 2 Crush Damage [_Avoidable_] on a _Hit_+.",
     "boost": "Choose any number:\n* 1 _Momentum_: Make 3 spaces in the _Area_ _Rough_. You may repeat this _Boost_.\n* 1 _AP_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again and remove the _Hazard_.",
     "chart": {
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Exposed_ 1, _Prone_ [1 _Reflex_]",
-        "_Exposed_ 1, _Prone_ [1 _Reflex_]",
-        "_Exposed_ 1, _Prone_ [1 _Reflex_]",
-        "_Exposed_ 2, _Prone_ [2 _Reflex_]",
-        "_Exposed_ 2, _Prone_ [2 _Reflex_]",
-        "_Exposed_ 2, _Prone_ [2 _Reflex_]",
-        "_Exposed_ 3, _Prone_ [2 _Reflex_]",
-        "_Exposed_ 3, _Prone_ [2 _Reflex_]"
+        "_Reeling_ 1, _Exposed_ 1",
+        "_Reeling_ 1, _Exposed_ 1",
+        "_Reeling_ 1, _Exposed_ 1, _Prone_ [1 _Reflex_]",
+        "_Reeling_ 1, _Exposed_ 1, _Prone_ [1 _Reflex_]",
+        "_Reeling_ 2, _Exposed_ 1, _Prone_ [1 _Reflex_]",
+        "_Reeling_ 2, _Exposed_ 2, _Prone_ [2 _Reflex_]",
+        "_Reeling_ 2, _Exposed_ 2, _Prone_ [2 _Reflex_]",
+        "_Reeling_ 2, _Exposed_ 2, _Prone_ [2 _Reflex_]",
+        "_Reeling_ 3, _Exposed_ 3, _Prone_ [2 _Reflex_]",
+        "_Reeling_ 3, _Exposed_ 3, _Prone_ [2 _Reflex_]"
       ]
     }
   },
@@ -188,6 +197,16 @@
     "move": "Step",
     "effect": "Grant yourself _Joyful_/_Courageous_ 1, then distribute _Joyful_/_Courageous_ 6, split among allies of your choice within Range. Any creature may reduce the _Joyful_/_Courageous_ by 2 to immediately gain a _Free Turn_. On this _Turn_ they may _Step_ if they reduced _Joyful_ or make a _Minor Attack_ if they reduced _Courageous_. Any ally that you give _Joyful_/_Courageous_ to (even if they use it for something else) gains 2 _Vigor_.",
     "boost": "1 _Momentum_: You may distribute an additional 1 _Joyful_/_Courageous_. You may repeat this _Boost_ up to 4 times."
+  },
+  {
+    "name": "Dance of a Thousand Stings",
+    "desc": "You dart across the battlefield, unleashing a serious of swift strikes.",
+    "type": "Strike",
+    "speed": "1-3",
+    "keywords": ["Rigid"],
+    "move": "Step, Step, Step",
+    "effect": "After each Movement, make a _Minor Attack_. Any Attacks you make this _Turn_ cause the Target to treat your remaining Movement this _Turn_ as [_Safe_] on a _Hit_+. If you move at least 2 spaces before making an Attack, deal +1 _Bonus Damage_ and add _Vulnerable_ 1.",
+    "special": "If each Attack this _Turn_ targets unique Targets, gain 1 _Momentum_."
   },
   {
     "name": "Stone Edge",
@@ -224,9 +243,9 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
-    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and dealing additional Damage equal to half the _Phase_ on a _Graze_+.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
+    "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and dealing additional _Bonus Damage_ equal to half the _Phase_ on a _Graze_+.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
     "special": "Determine _Speed Penalties_ for all _Attacks_ made as a part of this _Technique_ as if it was one _Phase_ earlier.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 2 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1] and deal +1 Damage on a _Graze_+. Remove the _Charging_ and _Hazard_ one _Phase_ later."
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 2 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1] and deal +1 _Bonus Damage_ on a _Graze_+. Remove the _Charging_ and _Hazard_ one _Phase_ later."
   },
   {
     "name": "Swift Strike",
@@ -244,7 +263,7 @@
     "type": "Strike",
     "speed": "Any",
     "move": "Dash [_Breach_, _Rush_]",
-    "effect": "Choose one:\n* You have +1 _Guard_ this _Turn_. Resolve your _Movement_. When you end your _Movement_, make a single _Melee_ _Major Attack_. If the target of the Attack is in-line with your _Movement_, either inflict _Forceful Push_ X or inflict X additional Damage, where X is half the number of spaces you Moved before resolving the effect.\n* Do not resolve your _Movement_ yet. Create a _Hazard_ in an adjacent space, become _Charging_, then end your _Turn_. At the end of the next _Phase_ remove _Charging_ and resolve the first effect, but you must move through the space marked by the _Hazard_, removing the _Hazard_ when you do so. You have _Advantage_ on all [_Body_] Attacks and may choose both options for your _Major Attack_ at the end of the _Movement_. If you are moved by any means before removing _Charging_, move the _Hazard_ with you.",
+    "effect": "Choose one:\n* You have +1 _Guard_ this _Turn_. Resolve your _Movement_. When you end your _Movement_, make a single _Melee_ _Major Attack_. If the target of the Attack is in-line with your _Movement_, either inflict _Forceful Push_ X or inflict X additional _Bonus Damage_, where X is half the number of spaces you Moved before resolving the effect.\n* Do not resolve your _Movement_ yet. Create a _Hazard_ in an adjacent space, become _Charging_, then end your _Turn_. At the end of the next _Phase_ remove _Charging_ and resolve the first effect, but you must move through the space marked by the _Hazard_, removing the _Hazard_ when you do so. You have _Advantage_ on all [_Body_] Attacks and may choose both options for your _Major Attack_ at the end of the _Movement_. If you are moved by any means before removing _Charging_, move the _Hazard_ with you.",
     "special": "You may use _Overrun_ at no cost when resolving the effect."
   }
 ]
