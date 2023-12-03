@@ -1,7 +1,7 @@
 <template>
   <div class="maneuver--wrapper" inline>
     <div class="maneuver--underline-top">
-      <div class="maneuver--header" v-bind:class="maneuver.Type">
+      <div class="maneuver--header" v-bind:class="maneuver.Type.replace(' ', '_')">
         <h4 style="display: inline;">{{ maneuver.Name }}</h4>
         <br />
         <div class="maneuver--keywords" v-bind:class="useTextFormatting">
@@ -21,6 +21,7 @@
       <div v-if="maneuver.HasWeapon">
         <display-tooltip-text class="maneuver--format" :string="maneuver.WeaponHeader" />
       </div>
+      <div v-if="maneuver.HasArea"><display-tooltip-text class="maneuver--format" :string="maneuver.AreaHeader" /></div>
       <div v-if="maneuver.HasRange">
         <display-tooltip-text class="maneuver--format" :string="maneuver.RangeHeader" />
       </div>
@@ -39,13 +40,12 @@
       <div class="maneuver--format" v-if="maneuver.HasSpecial">
         <display-tooltip-text :string="maneuver.SpecialHeader" />
       </div>
+      <div class="maneuver--format" v-if="maneuver.HasManifest">
+        <display-tooltip-text :string="maneuver.ManifestHeader" />
+      </div>
       <div class="maneuver--format" v-if="maneuver.HasBoost">
         <display-tooltip-text :string="maneuver.BoostHeader" />
       </div>
-      <span v-if="(maneuver.HasChart)">
-        <div style="height: 0.5em;" />
-        <chart-table :chart="maneuver.Chart" />
-      </span>
       <span class="maneuver--format" v-if="this.standalone && maneuver.HasFrom">
         <display-tooltip-text :string="maneuver.FromHeader" />
       </span>
@@ -105,7 +105,7 @@ export default Vue.extend({
   border-bottom: 5px solid black;
 }
 .maneuver--keywords {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   text-align: center;
   color: black;
   padding-bottom: $space--xs;
@@ -115,7 +115,7 @@ export default Vue.extend({
   padding: $space--xs;
 }
 .maneuver--text-format {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
 }
 .maneuver--format {
   font-family: $font--standard;
@@ -127,19 +127,10 @@ export default Vue.extend({
 .Stunt {
   background-color: $color--maneuver;
 }
-.Stratagem {
+.Action {
   background-color: #7ac3ff;
 }
 .Reaction {
-  background-color: #fae5af;
-}
-.Flourish {
-  background-color: #7c6939;
-}
-.Resist {
-  background-color: #c97a39;
-}
-.Punish {
   background-color: #7574a7;
 }
 .Gambit {

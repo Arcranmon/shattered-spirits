@@ -1,5 +1,9 @@
 [
   {
+    "name": "Aggressive",
+    "effect": "You must end Aggressive Movement closer to an enemy than you started it."
+  },
+  {
     "name": "Arc",
     "effect": "Pick a space within Range, then choose 3 contiguous spaces adjacent to the target space. Target all spaces within. Draw the _Attack Line_ from the target space. If Range is Self, your space is the Target space."
   },
@@ -8,30 +12,34 @@
     "effect": "Arcing Attacks treat _Covered_ as _Heavily Obstructed_ instead and _Heavily Obstructed_ as _Lightly Obstructed_, so long as a path exists over _Obstacles_ that can reach the Target."
   },
   {
-    "name": "Artillery",
-    "effect": "Attacks with the Artillery Keyword have _Disadvantage_ on all Attacks against creature X spaces or less away, where X is their Artillery value."
+    "name": "Avoidable",
+    "effect": "Characters may reduce Avoidable Damage by 2 for every 1 _Reflex_ spent. Additionally, any Status inflicted by this may be Negated with _Reflex_ instead of its typical token."
+  },
+  {
+    "name": "Minimum Range",
+    "effect": "Ranged and Thrown Attacks with the Minimum Range Keyword have _Disadvantage_ on all Attacks against creature X spaces or less away, where X is their Minimum Range value. Minimum Range never applies to Melee attacks."
   },
   {
     "name": "Blast",
     "effect": "Pick a space within Range. That space, and all spaces within X, where X is the Blast's value, are targeted. Draw the Attack Line from the target space."
   },
-  {
-    "name": "Block",
-    "effect": "Blocks are a _Resist_ with this keyword and are typically based on absorbing a blow to mitigate the overall damage. Many Actions and abilities reference Block _Maneuvers_."
-  },
   { "name": "Blocking", "see": "Block" },
   { "name": "Blocked", "see": "Block" },
   {
     "name": "Body",
-    "effect": "Weapons with the Body Keyword can be used regardless of what a character has _Wielded_."
+    "effect": "Attacks with the _Body_ keyword gain a +1 _Bonus_ if used after moving at least 2 spaces with [_Rush_] Movement."
   },
   {
     "name": "Burst",
     "effect": "Pick a space within Range. All spaces within X, where X is the Burst's value, spaces of the space are targeted. The targeted space is not effected. Draw the Attack Line from the target space."
   },
   {
-    "name": "Blitz",
-    "effect": "Movement with the Blitz keyword can move through squares occupied by hostile creatures, but may not end their movement there."
+    "name": "Breach",
+    "effect": "Movement with the Breach keyword can move through squares occupied by hostile creatures, but may not end their movement there. If you inflict _Push_ or _Pull_ while inside a creature's space due to Breach, determine the direction of the effect based on the space you entered from."
+  },
+  {
+    "name": "Brawling",
+    "effect": "When making a _Melee_ _Attack_ against a _Grabbed_ creature add _Pierce_ X, where X is the listed Brawling value."
   },
   {
     "name": "Climable",
@@ -40,10 +48,6 @@
   {
     "name": "Colossal",
     "effect": "You must pay 1 _Grit_ when you Attack with this Weapon or else have _Disadvantage_."
-  },
-  {
-    "name": "Combo",
-    "effect": "When an Attack is listed as a Combo, treat it and all other Combo Attacks made this _Turn_ as a single Attack for the purpose of all _Gambits_, except ones with the _Edge_ keyword. If a special Effect would trigger based on the Attack, use the highest of the Combo Attacks to resolve it."
   },
   {
     "name": "Counter",
@@ -58,6 +62,10 @@
     "effect": "Take the creature's total Value of a _Token_ and divide it into the minimum number of _Tokens_. For example, a creature with _Impaired_ 1x3 would have _Impaired_ 3 after Condensing."
   },
   {
+    "name": "Efficient",
+    "effect": "This _Reaction_ does not count when checking the 'only one _Reaction_ may be used against a specific trigger' restriction."
+  },
+  {
     "name": "Resist",
     "effect": "A _Maneuver_ typically used in response to an Attack that allows a character to strike back against a foe, mitigate damage, or dodge. Each _Turn_, a character may use a single Resist _Maneuver_."
   },
@@ -68,11 +76,15 @@
   },
   {
     "name": "Earth",
-    "effect": "Techniques with this keyword rely on an Earth spirit as well as a strong connection with the ground. If a character is not on or immediately above (such as standing on the wooden floor of a house) _Earthen_ Terrain (such as while Jumping), increase the cost of this Technique by 1. If the character is _Flying_, increase it by 2. If there is no _Earthen_ Terrain or _Obstacles_ with 5 spaces (such as when on the deck of a ship) this Technique may not be used."
+    "effect": "Earth is one of the most common elements, but is heavily dependant on managing Sources for their Attacks. A _Minor Source_ is required for essentially every Earth Spirit ability, while access to a _Major Source_ will often provide additional bonuses. An Earthbonded will have access to _Minor Sources_ in most battles, but may have to create _Major Sources_ through the use of _Maneuvers_ and _Techniques_. Earth abilities are _Suppressed_ when the user is not within 2 spaces of a _Source_, and _Sealed_ when there is no _Source_ within 5 spaces or the user is _Flying_."
   },
   {
     "name": "Earthen",
-    "effect": "Earthen _Terrain_ or _Obstacles_ are prominent above-ground features created primarily from earth or stone. Boulders and Earth Pillars are obvious examples, but any stone structure can qualify as Earthen."
+    "effect": "Earthen _Terrain_ or _Obstacles_ are prominent above-ground features created primarily from earth or stone. _Boulders_ and _Earth Pillars_ are obvious examples, but any stone structure can qualify as Earthen. In general, every space on the battlefield is Earthen unless specified otherwise."
+  },
+  {
+    "name": "Watery",
+    "effect": "Watery _Terrain_ or _Obstacles_ are predominately formed out of water. Watery _Obstacles_ tend to be fleeting and are often only created by abilities, but Watery _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watery _Terrain_ and _Obstacles_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
   },
   {
     "name": "Electric",
@@ -82,48 +94,59 @@
     "name": "Enchant",
     "effect": "Enchant effects are an effect that persists for multiple _Turns_ or _Rounds_. A creature may only have one Enchant ability in effect at a time."
   },
-  {
-    "name": "Evade",
-    "effect": "Evades are a _Resist_ with this keyword that typically involve avoiding a blow or quickly moving to avoid further damage. Many Actions and abilities reference Evade _Maneuvers_."
-  },
   { "name": "Evading", "see": "Evade" },
   {
     "name": "Feint",
-    "effect": "A special type of _Gambit_ that typically means that, if the opponent does not pay some resources, you'll receive some benefit on the next Attack against them."
+    "effect": "A special type of _Gambit_ that allows you to inflict status or otherwise hinder a foe before attacking."
   },
   {
     "name": "Fleeting",
-    "effect": "_Tokens_ with the Fleeting Keyword are lost at the end of the current _Turn_."
+    "effect": "Defenses with Fleeting are lost at the end of the current _Turn_."
   },
   {
     "name": "Flourish",
-    "effect": "A Flourish is a _Maneuver_ that is typically used after a character hits with an Attack. A character may use one Flourish per _Turn_."
+    "effect": "A Flourish is a _Maneuver_ that is typically used after a character hits with an Attack and applies an additional effect."
   },
   { "name": "Flourishes", "see": "Flourish" },
   {
     "name": "Fluid",
-    "effect": "Reduce the Cost to _Improvise_ this _Technique_ or a _Technique_ using this Weapon by its Fluid Value. This only reduces the Cost to _Improvise_, not the overall Cost of the _Technique_."
+    "effect": "This _Technique_ may be _Improvised_ for no cost."
+  },
+  {
+    "name": "Flurry",
+    "effect": "Make the listed number of Attacks. Do not inflict Status until all Attacks are complete, and only one Attack in the Flurry may inflict Status, but you may choose which Attack to use. Do not apply Status until all Attacks are complete. You may use different Attacks for each Attack in the Flurry so long as all follow the same rules (i.e. a [_Flurry_ 2] with _Light_ _Major Attacks_ could make any two _Major Attacks_."
   },
   {
     "name": "Fist",
-    "effect": "Weapons with the Fist Keyword require an _Open Hand_ to use."
+    "effect": "Attacks with the Fist Keyword require an _Open Hand_ to use."
   },
   {
-    "name": "Gambit",
-    "effect": "Gambits are various small ways characters can attempt to gain an advantage in combat. A character may use any number of Gambits per _Turn_, but only one with the _Edge_ keyword may be applied to a single Attack."
+    "name": "Fragile",
+    "effect": "After making an Attack with this Weapon, Destroy it."
   },
-  { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Glancing",
-    "effect": "This Effect deals half Damage and has its cost to Negate halved or reduced by 1, whichever results in a lower cost. If an Attack already has Glancing and gains it from another source the attack instead fails."
+    "effect": "This effect deals half _Damage_ and, while Negating, any Defenses spent count as twice as many."
+  },
+  {
+    "name": "Grasping",
+    "effect": "While _Grabbed_ is inflicted with this _Weapon_ it may only be used to attack the _Grabbed_ target."
   },
   {
     "name": "Groundsource",
-    "effect": "Groundsource Attacks are always treated as Melee and Area Effects are not stopped by Obstacles like normal. Additionally, Groundsource Attacks ignore _Covered_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
+    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range, and ignore _Covered_, _Obstruction_, and _Obscurement_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
+  },
+  {
+    "name": "Guarding",
+    "effect": "While Guarding a creature is focusing on their defense. While Guarding a creature takes a -1 _Penalty_ to all _Attacks_ and is _Hobbled_. Guarding lasts until the end of the _Round_, the creature gains _Break_, or the Guarding creature willingly ends the effect, which may be done at any time. Abilities that grant Guarding also typically have additonal conditions that can end the effect. If a creature that is already Guarding becomes Guarding, they lose any benefits or effects granted by the initial ability."
+  },
+  {
+    "name": "Hand-and-a-Half",
+    "effect": "This _One-Handed_ Weapon may be _Wielded_ with two hands. When you do so, decrease its _Speed_ by 1."
   },
   {
     "name": "Heavy",
-    "effect": "Heavy Techniques and Weapons are powerful and have access to many _Maneuvers_ that allow delaying _Speed_ to increase efficacy."
+    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Block_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
   },
   {
     "name": "Kick",
@@ -131,7 +154,7 @@
   },
   {
     "name": "Light",
-    "effect": "Light Techniques and Weapons are swift and specialize in acting quicker than other foes."
+    "effect": "Light Attacks are swift and specialize in targeting foes with high _Dodge_ defense. They typically have a low _Speed_, and may be used in conjunction with the _Quickened Attack_ ability to use a _Major Attack_ as a _Minor Attack_ late in the _Round_."
   },
   {
     "name": "Line",
@@ -139,7 +162,11 @@
   },
   {
     "name": "Leaping",
-    "effect": "Any Leaping Movement ignores Terrain that does not effect _Flying_ characters. Characters may also go up _Elevation_ while Leaping so long as they have sufficient Leaping Movement."
+    "effect": "Any Leaping Movement ignores Terrain that does not effect _Flying_ characters. Characters may also go up _Elevation_ equal to the Leaping distance without paying any additional Movement cost."
+  },
+  {
+    "name": "Manifest",
+    "effect": "A special keyword that designates an ability that makes use of your spirit in a more concrete way. Only one ability with the Manifest keyword may be used per _Round_. When using the Manifest option for a Maneuver it does not count as using that Manuever for the purposes of using it multiple times in a Round."
   },
   {
     "name": "Melee",
@@ -150,16 +177,25 @@
     "effect": "Noteworthy terrain on the battlefield that can typically either be used as _Cover_ or be interacted with in some way."
   },
   {
+    "name": "Obstruction",
+    "effect": "This Obstacle may not be climbed and does not block Movement. Instead, it is treated as _Rough Terrain_ but can still provide _Covered_/_Obstructed_."
+  },
+  {
     "name": "One-Handed",
     "effect": "This Equipment only requires one hand to _Wield_."
   },
   {
-    "name": "Ordnance",
-    "effect": "Any Attack with this Weapon must be made before any _Movement_ is made this _Turn_."
+    "name": "Opportune",
+    "effect": "On the _Turn_ that you _Wield_ a Weapon with this keyword, you may make a _Major Attack_ with it as a _Minor Attack_. This ability may only be used once per combat per Weapon."
+  },
+  { "name": "Opportune Weapons", "see": "Opportune Weapon" },
+  {
+    "name": "Overwhelming",
+    "effect": "If the Target of the Attack benefits from a _Block_ _Reaction_ inflict your choice of _Push_ 2X/_Vulnerable_ X, where X is the listed Overwhelming value. If they are _Guarding_ you may choose one of the previous options or add _Break_ [X _Momentum_/_Poise_] on a _Hit_+."
   },
   {
-    "name": "Parry",
-    "effect": "Parries are a _Resist_ with this keyword that typically require a Parrying Attack and are based on intercepting an attack with an attack of your own. Many Techniques and abilities reference Parry _Maneuvers_."
+    "name": "Ordnance",
+    "effect": "Any Attack with this Weapon must be made before any _Movement_ is made this _Turn_."
   },
   {
     "name": "Pierce",
@@ -167,16 +203,16 @@
   },
   {
     "name": "Punish",
-    "effect": "A _Maneuver_ used in response to an opposing character fulfilling some trigger. A character may use a single Punish _Maneuver_ each _Turn_."
+    "effect": "A _Punish_ is a special type of _Reaction_ that triggers based off of an opponent's _Movement_. A common example of this is the _Opportunity Attack_ _Reaction_."
   },
   { "name": "Punishes", "see": "Punish" },
   {
-    "name": "Quick",
-    "effect": "This _Maneuver_ may not be used with _Heavy_ _Techniques_."
+    "name": "Quickdraw",
+    "effect": "This Weapon is easy to draw and costs no _Momentum_ to Draw/Stow. Additionally, you may always treat this weapon as _Wielded_ so long as you have an _Open Hand_. After using it for an Attack, you must _Wield_ it if possible."
   },
   {
     "name": "Parrying",
-    "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified. If a Parrying Attack rolls greater than or equal to the Attack that triggered it, it is considered a success."
+    "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified."
   },
   {
     "name": "Priority",
@@ -187,8 +223,16 @@
     "effect": "Reach is how far away a Melee Attack can be used to attack a creature. Most Melee Attacks have Reach 1 but some, such as Pole Weapons, have a greater Reach."
   },
   {
+    "name": "Recharge",
+    "effect": "While _Planning_, roll a d6. If you roll within the listed Range you may use this _Technique_ this _Round_."
+  },
+  {
     "name": "Safe",
-    "effect": "All _Punishes_ triggered by this Movement take a -X _Penalty_, where X is the Safe value."
+    "effect": "Movement with the Safe keyword does not create an _Opening_. Any _Attack_ made in response to this _Movement_ has _Disadvantage_."
+  },
+  {
+    "name": "Secure",
+    "effect": "Reduce the cost to negate _Disarmed_ by 1 for this _Equipment_."
   },
   {
     "name": "Small",
@@ -203,30 +247,16 @@
     "effect": "Attacks with Siege deal +2 Damage to _Obstacles_ and have _Advantage_ on Attacks against them."
   },
   {
-    "name": "Stratagem",
-    "effect": "Stratagems are ways to enhance a _Technique_ that must be used when the Technique is played, whether that be during _Plotting_, while _Improvising_, or as a part of another _Maneuver_. Stratagems often change the _Speed_ or _AP_ cost of a Technique."
-  },
-  { "name": "Stratagems", "see": "Stratagem" },
-  {
-    "name": "Stunt",
-    "effect": "Stunts are quick, simple _Maneuvers_ such as jumping or picking up an item that characters may use on their _Turn_. Characters may use as many Stunts as they can pay for, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword."
-  },
-  { "name": "Stunts", "see": "Stunt" },
-  {
-    "name": "Strong",
-    "effect": "This _Maneuver_ may not be used with _Light_ _Techniques_."
-  },
-  {
-    "name": "Sure Hit",
-    "effect": "The Cost of _Evade_ _Maneuvers_ are increased by this Attack's Sure Hit Value."
-  },
-  {
     "name": "Stall",
     "effect": "A Stall _Technique_ is always resolved at the end of its _Phase_. It ignores normal turn order and does not count for the alternating turns within a _Phase_."
   },
   {
     "name": "Edge",
     "effect": "A special type of _Gambit_ which only one may be applied to a single Attack."
+  },
+  {
+    "name": "Remote",
+    "effect": "This _Attack_ ignores _Obstructed_, _Cover_, and _Lightly Obscured_."
   },
   {
     "name": "Repeatable",
@@ -237,17 +267,12 @@
     "effect": "When a creature is inflicted with Reveal their next _Technique_ and what _Phase_ it is occurring in is revealed. If a creature has no more _Techniques_ this _Round_, they instead have _Insight_ 1 inflicted."
   },
   {
-    "name": "Reaction",
-    "effect": "A _Maneuver_ that may be freely used when its Trigger occurs. Characters may use as many Reactions as they wish on a given _Turn_, but may only use a given Reaction once per _Turn_ unless otherwise specified."
-  },
-  { "name": "Reactions", "see": "Reaction" },
-  {
     "name": "Rigid",
-    "effect": "This _Technique_ may not be _Improvised_."
+    "effect": "This _Technique_ must be played at its listed Speed."
   },
   {
     "name": "Rush",
-    "effect": "Rush _Movement_ must be taken in a straight line."
+    "effect": "Rush _Movement_ must be taken in a straight line and may not _Climb_."
   },
   {
     "name": "Sundering",
@@ -263,15 +288,19 @@
   },
   {
     "name": "Thrown",
-    "effect": "Thrown Weapons are capable of being used in both Melee and Ranged combat. When Thrown, _Grazes_ deal no damage and cause no effects and are treated as a Miss. After being thrown, a Thrown weapon may not be used again until retrieved. Unlike most Weapons, you may use a Thrown _Weapon_ to attack if it is _Equipped_, but must have an _Open Hand_ and not be _Disarmed_ to do so. After throwing a _Wielded_ Thrown Weapon, you may immediately _Wield_ a different Thrown Weapon with the same number of required Hands."
+    "effect": "Thrown Weapons are capable of being used in both Melee and Ranged combat. When Thrown, it is instead a Range X Attack, where X is the listed Thrown value. When attacking in this way, _Grazes_ are treated as a _Miss_, deal no damage, and cause no effects. After being thrown, a Thrown weapon is placed in a space of your choice adjacent to the Target and may not be used again until retrieved."
   },
   {
     "name": "Two-Handed",
     "effect": "This Equipment requires both Hands to Wield."
   },
   {
+    "name": "Martial Arts",
+    "effect": "Whenever an Attack with the Martial Art keyword would inflict _Vulnerable_ they may choose not to and instead increase the target's existing _Vulnerable_ by an amount equivalent to the amount that would have been inflicted, in any combination. For example, if a creature would inflict _Vulnerable_ 2 on a creature that already has _Vulnerable_ 1, _Vulnerable_ 1, they may choose to not inflict that _Vulnerable_ and instead cause the creature to have _Vulnerable_ 3, _Vulnerable_ 1 or _Vulnerable_ 2, _Vulnerable_ 2."
+  },
+  {
     "name": "Unblockable",
-    "effect": "The Cost for _Block_ and _Parry_ _Maneuvers_ are increased by this Attack's Unblockable Value."
+    "effect": "All _Reactions_ with the _Block_ keyword cost an additional _Momentum_ against this _Technique."
   },
   {
     "name": "Upkeep",
@@ -279,19 +308,11 @@
   },
   {
     "name": "Versatile",
-    "effect": "Versatile _Techniques_ and Weapons are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized Light or Heavy Techniques."
+    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
   },
   {
     "name": "Incoming",
     "effect": "An Incoming Attack is created by launching a projectile into the air, preparing an explosion, or any other effect that creates a _Hazard_. When drawing the _Attack Line_, draw it from the space where you created the _Hazard_, not the space you are in when you make the Attack."
-  },
-  {
-    "name": "Warding",
-    "effect": "_Counter_/_Punish_ _Maneuvers_ take a -X _Penalty_ against this Attack, where X is its Warding value."
-  },
-  {
-    "name": "Weapon Attack",
-    "effect": "When a _Technique_/_Maneuver_ allows you to make a Weapon Attack, reference the 'Weapon' field of said _Technique_/_Maneuver_. Make an Attack using a _Wielded_ Weapon that matches the criteria listed and modifying it as listed by the _Technique_."
   },
   { "name": "Weapon Attacks", "see": "Weapon Attack" },
   {

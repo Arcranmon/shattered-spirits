@@ -9,13 +9,7 @@
       <div class="tech--keywords" v-bind:class="tech.Type">
         <span v-if="(tech.Desc.length > 0)" style="font-style: italic;">{{ tech.Desc }}<br /></span>
         <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
-        <span style="font-style: bold;">
-          <b
-            >{{ tech.SpeedHeader }}<span v-if="tech.HasRange">, <display-tooltip-text :string="tech.RangeHeader" :decorate="false" /></span
-            ><span v-if="tech.HasArea">, <display-tooltip-text :string="tech.Area" :decorate="false" /></span
-            ><span v-if="tech.AP != 4">, {{ tech.AP }} AP </span></b
-          ><br />
-        </span>
+        <span style="font-style: bold;"> <display-tooltip-text :string="tech.SpeedHeader" /><br /> </span>
         <b><display-tooltip-text v-if="tech.HasKeywords" :string="tech.KeywordsHeader" :decorate="false" /></b>
       </div>
     </div>
@@ -25,6 +19,10 @@
       </div>
       <div class="tech--format" v-if="tech.HasReqs">
         <display-tooltip-text :string="tech.ReqsHeader" />
+      </div>
+      <div v-if="tech.HasArea"><display-tooltip-text :string="tech.AreaHeader" /></div>
+      <div v-if="tech.HasRange">
+        <display-tooltip-text :string="tech.RangeHeader" />
       </div>
       <div class="tech--format" v-if="tech.HasWeapon">
         <display-tooltip-text :string="tech.WeaponHeader" />
@@ -58,7 +56,7 @@
           <v-expansion-panel style="background-color: inherit;"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
             <v-expansion-panel-content class="expand--body-chart"
-              ><display-tooltip-text :string="tech.DamageTypeHeader" /><chart-table :chart="tech.Chart"
+              ><display-tooltip-text v-if="tech.HasDamageType" :string="tech.DamageTypeHeader" /><chart-table :chart="tech.Chart"
             /></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -127,19 +125,19 @@ export default Vue.extend({
 }
 .tech--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-bottom: $space--xs;
   border-bottom: 5px solid black;
 }
 .tech--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .tech--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;
@@ -161,8 +159,8 @@ export default Vue.extend({
 .Move {
   background: $color--move;
 }
-.Defensive {
-  background: $color--defensive;
+.Defend {
+  background: $color--defend;
 }
 .Support {
   background: $color--support;

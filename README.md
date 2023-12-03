@@ -26,34 +26,23 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 ## To-Do
 
-MISSING TECHNIQUES
-These are Techniques/Maneuvers that existed in previous content but are missing in the current Discipline refactor:
+BIG POST-PLAYTEST REWORK
 
-- Earthen Agility (new Discipline for moving using Earth?)
-- Sinkhole (will be the Tier III Clay Shaper)
-- Avalanche Charge (doesn't fit new Boulder Discipline identity, add somewhere later)
-- Jaws of the Earth (Tier III Piercing Shard)
-- Haft Strike/Spear Vault (new Staff specialty?)
-- Impaling Strike (Tier III spear tech)
-- Gilgamesh Swing (Tier III Shattering Granite)
+- SPIRIT ATTACKS
 
-NEXT VERSION:
+  - Add a note for Disciplines that any Attacks you gain are ALSO learned by your Spirit
+  - Check balance for ALL attacks and the Techniquespoti
 
-- Try the Dodge/Block/Focus refactor for Resists
-  - Can ALWAYS spend Dodge/Block/Focus against attacks/negate Afflictions.
-  - Add the Defensive property for gear that freely gives Block on Resists (like Shields!).
-  - In general, must use a Resist to be able to generate these, but some Stances/Techniques will provide them passively.
-  - Specialized Resists will allow alternate ways to spend these resources.
-  - Make Unblockable/Sure Hit a flat keyword (double cost to buy Block/Dodge effects).
+- New Discipline Structure:
 
-VERSION AFTER:
+  - Tier 1: Technique, any two Manuevers (both consistently good); rarely grant Major Attacks. For Spirits, one must be a Manifest.
+  - Tier 2: Stance, any two Manuevers (one consistent, one expensive). Usually grant a Major Attack. For Spirits, one must be a Manifest.
 
-- Change from Armor-based Movement to Weight-based Movement.
-  - Generalize the Armor Disciplines to be usable by (almost) anyone (just set prereqs to stop people from picking an obviously poor fit).
-- Add more combat support for the fiction of it being you and your companion spirit.
-  - Have a manifest maneuver to physically conjure your spirit for a turn.
-- Support-based non-spirit Disciplines.
-- (Stretch) Add Talismans, Equipment that enhances Spirit play but cost Encumbrance.
+- OBJECTIVE: Make a satisfying weapon-based gameplay loop that works well.
+
+- Add Equipment (mostly just Water Flasks)
+
+- Change most 'Interacts' to 'On Attack'
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
@@ -94,11 +83,11 @@ If you want to run this website locally (as it won't always be hosted), do the f
 
 Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt
 
-Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, and Tremorsight icons made by lorc.
+Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, Tremorsight, and Tide icons made by lorc.
 
 Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.
 
-Unarmed icon made by skoll.
+Unarmed and Natural Weapon icons made by skoll.
 
 Shield icon made by sbed.
 
@@ -107,3 +96,6 @@ Thrown Weapon icon made by Faithtoken.
 Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
+
+Shaper, Striker, Supporter, Artillery - Delapouite
+Controller, Courier, Defender - Lorc

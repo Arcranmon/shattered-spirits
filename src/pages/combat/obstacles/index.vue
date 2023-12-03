@@ -20,13 +20,15 @@
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
             ><div v-for="obstacle in obstacles" style="width: 100%;" v-bind:key="obstacle.Name">
-              <v-btn @click="selectedObstacle = obstacle" class="button--style" depressed tile block>
-                {{ obstacle.Name }}
-              </v-btn>
+              <div>
+                <v-btn @click="selectedObstacle = obstacle" class="button--style" depressed tile block>
+                  {{ obstacle.Name }}
+                </v-btn>
+              </div>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <obstacle-card v-if="selectedObstacle != null" :obstacle="selectedObstacle" style="width: 40em;" /></v-col> </v-row
+        <v-col> <obstacle-card v-if="selectedObstacle != null" :obstacle="selectedObstacle" style="width: 40em;" :key="selectedObstacle.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>

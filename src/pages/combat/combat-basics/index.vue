@@ -1,23 +1,23 @@
 <template>
   <div style="padding: 1em;">
-    <h2>Combat Rules</h2>
+    <h2>Combat Basics</h2>
     <display-tooltip-text :string="combatText" />
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import CombatText from "@/database/text_files/combat_rules/combat.txt";
-import DisplayTooltipText from "@/components/DisplayTooltipText";
-import { store } from "@/store";
+import Vue from 'vue'
+import CombatText from '@/database/text_files/combat_rules/combat.txt'
+import DisplayTooltipText from '@/components/DisplayTooltipText'
+import { store } from '@/store'
 export default Vue.extend({
-  name: "combat-basics",
+  name: 'combat-basics',
   computed: {
     combatText() {
-      return CombatText;
+      return CombatText
     },
   },
-});
+})
 </script>
 
 <style scoped lang="scss">

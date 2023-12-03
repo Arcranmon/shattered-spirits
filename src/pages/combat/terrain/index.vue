@@ -26,7 +26,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <terrain-card v-if="selectedTerrain != null" :terrain="selectedTerrain" style="width: 40em;" /></v-col> </v-row
+        <v-col> <terrain-card v-if="selectedTerrain != null" :terrain="selectedTerrain" style="width: 40em;" :key="selectedTerrain.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>

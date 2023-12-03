@@ -40,23 +40,19 @@
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
             ><div v-for="armor in armors" style="width: 100%;" v-bind:key="armor.Name">
-              <v-btn @click="selectedArmor = armor" class="button--style" depressed tile block>
+              <v-btn @click="selectArmor(armor)" class="button--style" depressed tile block>
                 <img class="image--icon-size" :src="armor.Icon" />{{ armor.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em;" /></v-col> </v-row
+        <v-col> <armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em;" :key="selectedArmor.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { getModule } from 'vuex-module-decorators'
-import { CharacterManagementStore } from '@/store'
-import { Character } from '@/class'
-import { Armor } from '@/class'
 import ArmorCard from '@/components/cards/ArmorCard'
 
 export default Vue.extend({
@@ -72,6 +68,11 @@ export default Vue.extend({
   computed: {
     armors: function () {
       return this.$store.getters.getFilteredArmors(this.selectedArmors)
+    },
+  },
+  methods: {
+    selectArmor(armor) {
+      this.selectedArmor = armor
     },
   },
 })

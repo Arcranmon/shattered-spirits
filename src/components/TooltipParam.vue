@@ -1,6 +1,13 @@
 <template>
   <span
-    ><span v-if="this.$store.getters.existsInAnyGlossary(input)"
+    ><span v-if="this.partitioned"
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
+        ><display-tooltip-text
+          string="When reading this effect, add the first value on a _Miss_, the second a _Graze_, the third on a _Hit_ and the final on a _Crit_."
+          :level="level + 1" /></v-menu></span
+    ><span v-else-if="this.$store.getters.existsInAnyGlossary(input)"
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
@@ -47,12 +54,18 @@
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <armor-card :armor="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
+    ><span v-else-if="this.$store.getters.isAttack(input)" attach
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
+        /></template>
+        <attack-card :attack="this.$store.getters.getAttack(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isWeapon(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <weapon-card :weapon="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
+        <attack-card :atack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
     ><span style="white-space: pre-wrap;" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>
@@ -67,10 +80,10 @@ import StanceCard from './cards/StanceCard.vue'
 import StatusCard from './cards/StatusCard.vue'
 import TechCard from './cards/TechCard.vue'
 import TerrainCard from './cards/TerrainCard.vue'
-import WeaponCard from './cards/WeaponCard.vue'
+import AttackCard from './cards/AttackCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ArmorCard, ManeuverCard, ObstacleCard, StanceCard, StatusCard, TechCard, TerrainCard, WeaponCard },
+  components: { ArmorCard, ManeuverCard, ObstacleCard, StanceCard, StatusCard, TechCard, TerrainCard, AttackCard },
   props: {
     input: {
       type: String,
@@ -86,6 +99,11 @@ export default Vue.extend({
       required: false,
       default: 0,
     },
+    partitioned: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 })
 </script>
@@ -94,10 +112,10 @@ export default Vue.extend({
 .v-menu__content {
   color: black;
   font-family: $font--standard;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   background-color: $color--off-white;
   border: $border--black-standard;
-  width: 40%;
+  max-width: 40%;
   padding: 0.1em;
 }
 .object {

@@ -14,6 +14,9 @@
       <div class="status--format" v-if="status.HasSpecial">
         <display-tooltip-text :string="status.SpecialHeader" />
       </div>
+      <div class="status--format" v-if="status.HasNegate">
+        <display-tooltip-text :string="status.NegateHeader" />
+      </div>
       <div class="status--format" v-if="status.HasReacts">
         <display-tooltip-text :string="status.ReactsHeader" />
       </div>
@@ -75,18 +78,18 @@ export default Vue.extend({
 }
 .status--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-bottom: $space--xs;
 }
 .status--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .status--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;
@@ -97,7 +100,6 @@ export default Vue.extend({
   padding: none;
   text-align: left;
   color: black;
-  display: inline;
   white-space: normal !important;
 }
 </style>

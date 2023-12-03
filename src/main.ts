@@ -21,7 +21,7 @@ Vue.prototype.$general = require('@/assets/General.svg')
 Vue.prototype.$strike = require('@/assets/Strike.svg')
 Vue.prototype.$move = require('@/assets/Move.svg')
 Vue.prototype.$support = require('@/assets/Support.svg')
-Vue.prototype.$defensive = require('@/assets/Defensive.svg')
+Vue.prototype.$defend = require('@/assets/Defend.svg')
 
 Vue.mixin({
   computed: {

@@ -2,32 +2,16 @@
   <div v-bind:class="useFormatting" inline>
     <div v-bind:class="armor.Category">
       <div v-if="format" class="armor--header">
-        <h3 style="display: inline; font-style: normal;">{{ armor.Name }}</h3>
+        <h4 style="display: inline; font-style: normal;">{{ armor.Name }}</h4>
       </div>
       <b>
-        <div v-if="format" class="armor--keywords">{{ armor.Category }}{{ armor.DurabilityHeader }}</div></b
+        <div v-if="format" class="armor--keywords">{{ armor.Category }}</div></b
       >
     </div>
     <div v-bind:class="useContent">
-      <div v-html="$marked.parseInline(armor.ArmorText)" />
+      <display-tooltip-text :string="armor.ArmorHeader" /><br />
+      <display-tooltip-text :string="armor.WeightHeader" /><br />
       <display-tooltip-text v-if="armor.HasSpecial" :string="armor.SpecialHeader" />
-      <div class="chart--wrapper" inline>
-        <v-row no-gutters class="chart--row">
-          <v-col class="chart--head" cols="6"><b>Movement Chart</b></v-col></v-row
-        ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="4"><b>Step</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Step }}</v-col></v-row
-        ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="4"><b>Reposition</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Reposition }}</v-col></v-row
-        ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="4"><b>Dash</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Dash }}</v-col></v-row
-        ><v-row no-gutters class="chart--row"
-          ><v-col class="chart--cols" cols="4"><b>Jump</b></v-col
-          ><v-col class="chart--cols chart--cols-right" cols="2">{{ armor.Jump }}</v-col></v-row
-        >
-      </div>
     </div>
   </div>
 </template>
@@ -36,11 +20,9 @@
 import Vue from 'vue'
 import { Armor } from '@/class'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
-import ManeuverCard from './ManeuverCard.vue'
 
 export default Vue.extend({
   name: 'armor-card',
-  components: { ManeuverCard },
   props: {
     armor: {
       type: Armor,
@@ -88,19 +70,19 @@ export default Vue.extend({
 }
 .armor--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   border-bottom: 5px black solid;
   padding-bottom: $space--xs;
 }
 .armor--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
 }
 .armor--format {
   font-family: $font--standard;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   padding: none;
   text-align: left;
   color: black;

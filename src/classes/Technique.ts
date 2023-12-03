@@ -4,7 +4,6 @@ import { store } from '@/store'
 import { Chart } from '@/class'
 
 class Technique {
-  private ap_: number
   private area_: string
   private boost_: string
   private cost_: string
@@ -15,7 +14,7 @@ class Technique {
   private keywords_: Array<string>
   private move_: string
   private name_: string
-  private range_: string
+  private range_: IRangeData
   private reqs_: string
   private special_: string
   private speed_: string
@@ -25,7 +24,6 @@ class Technique {
   private chart_: Chart
 
   public constructor() {
-    this.ap_ = 4
     this.area_ = ''
     this.boost_ = ''
     this.cost_ = ''
@@ -36,7 +34,7 @@ class Technique {
     this.keywords_ = []
     this.move_ = ''
     this.name_ = ''
-    this.range_ = ''
+    this.range_ = null
     this.reqs_ = ''
     this.special_ = ''
     this.speed_ = ''
@@ -49,9 +47,6 @@ class Technique {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get AP() {
-    return this.ap_
-  }
   public get Area() {
     return this.area_
   }
@@ -83,7 +78,7 @@ class Technique {
     return this.move_
   }
   public get Range() {
-    return this.range_
+    return this.range_.category
   }
   public get Reqs() {
     return this.reqs_
@@ -103,6 +98,9 @@ class Technique {
   // ==========================================================
   public get HasArea() {
     return this.Area != ''
+  }
+  public get AreaHeader() {
+    return '**Area:** ' + this.Area
   }
   public get HasBoost() {
     return this.boost_.length > 0
@@ -154,15 +152,22 @@ class Technique {
     return this.move_.length > 0
   }
   public get MoveHeader() {
-    return '**Move:** _' + this.Move + '_'
+    return '**_Move_:** _' + this.Move + '_'
   }
   public get HasRange() {
-    return this.Range != ''
+    return this.range_ != null
   }
-  public get RangeHeader() {
-    if (this.Range.includes('Weapon')) return this.Range + ' Range'
-    else if (this.Range.length <= 2) return '_Range_ ' + this.range_
-    else return '_' + this.range_ + '_'
+  get RangeHeader() {
+    var range_string
+    if (this.Range == 'Melee') range_string = '**Range:** _Melee_, _Reach_ ' + this.range_.value
+    else if (this.Range == 'Self') range_string = '**Range:** _Self_'
+    else range_string = '**Range**: ' + this.range_.value
+    if (this.range_.special != undefined) {
+      if (this.range_.value != 0 && this.range_.special[0] != '/') range_string += ','
+      if (this.range_.value != 0) range_string += ' '
+      range_string += this.range_.special
+    }
+    return range_string
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -177,8 +182,8 @@ class Technique {
     return '**Special:** ' + this.special_
   }
   public get SpeedHeader() {
-    if (this.Speed.length == 1) return 'Speed ' + this.Speed
-    else return this.speed_ + ' Speed'
+    if (/^\d+$/.test(this.speed_[0])) return '**Speed ' + this.Speed + '**'
+    return '**' + this.Speed + ' Speed**'
   }
   public get HasTarget() {
     return this.target_.length > 0
@@ -204,7 +209,6 @@ class Technique {
   }
 
   public setTechData(data: ITechData): void {
-    this.ap_ = data.ap != null ? data.ap : 4
     this.area_ = data.area || ''
     this.boost_ = data.boost || ''
     this.cost_ = data.cost || ''
@@ -215,16 +219,14 @@ class Technique {
     this.keywords_ = data.keywords || []
     this.move_ = data.move || ''
     this.name_ = data.name || ''
-    this.range_ = data.range || ''
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
     this.speed_ = data.speed || ''
     this.target_ = data.target || ''
     this.type_ = data.type || ''
     this.weapon_ = data.weapon || ''
-    if ('chart' in data) {
-      this.chart_ = Chart.Deserialize(data.chart)
-    }
+    if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
+    if ('range' in data) this.range_ = data.range
   }
 }
 export default Technique

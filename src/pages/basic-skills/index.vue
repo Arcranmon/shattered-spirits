@@ -1,73 +1,103 @@
 <template
   ><div class="background">
-    <h2>Basic Techniques</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" />
-    <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Unarmed Strike', 'Armed Strike', 'Run'])" job="Techniques" :collapse="false" />
-    <show-cards v-bind:class="use_single" :inputs="this.$store.getters.getTechniquesFromList(['Prepare'])" job="Techniques" :collapse="false" :cols="1" />
-    <h2>Basic Stratagems</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stratagem')" />
-    <show-cards
-      v-bind:class="use_duo"
-      :inputs="[$store.getters.getManeuver('Quicken'), $store.getters.getManeuver('Strengthen')]"
-      job="Maneuvers"
-      :collapse="false"
-      :cols="2"
-    />
-    <h2>Basic Stunts</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
-    <show-cards
-      :inputs="[$store.getters.getManeuver('Aid'), $store.getters.getManeuver('Leap'), $store.getters.getManeuver('Retrieve')]"
-      job="Maneuvers"
-      :collapse="false"
-    /><show-cards
-      v-bind:class="use_duo"
-      :inputs="[$store.getters.getManeuver('Tumble'), this.$store.getters.getManeuver('Use Environment')]"
-      job="Maneuvers"
-      :collapse="false"
-      :cols="2"
-    />
-    <h2>Basic Resists</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Resist')" />
-    <show-cards
-      :inputs="[$store.getters.getManeuver('Armored Shell'), $store.getters.getManeuver('Basic Counter'), $store.getters.getManeuver('Deflect')]"
-      job="Maneuvers"
-      :collapse="false"
-    /><show-cards
-      v-bind:class="use_duo"
-      :inputs="[$store.getters.getManeuver('Dodge'), this.$store.getters.getManeuver('Shield Block')]"
-      job="Maneuvers"
-      :collapse="false"
-      :cols="2"
-    />
-    <h2>Basic Reactions</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Reaction')" />
-    <show-cards
-      :inputs="[$store.getters.getManeuver('Guidance'), $store.getters.getManeuver('Recover'), $store.getters.getManeuver('Reorient')]"
-      job="Maneuvers"
-      :collapse="false"
-    />
-    <h2>Basic Gambits</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
-      :inputs="[$store.getters.getManeuver('Basic Feint'), $store.getters.getManeuver('Basic Sunder')]"
-      job="Maneuvers"
-      :collapse="false"
-      :cols="2"
-      v-bind:class="use_duo"
-    />
-    <h2>Basic Flourishes</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Flourish')" /><show-cards
-      :inputs="[$store.getters.getManeuver('Basic Flourish'), $store.getters.getManeuver('Disarming Flourish')]"
-      job="Maneuvers"
-      :collapse="false"
-      :cols="2"
-      v-bind:class="use_duo"
-    />
-    <h2>Basic Punishes</h2>
-    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Punish')" /><show-cards
-      :inputs="[$store.getters.getManeuver('Create Opening'), $store.getters.getManeuver('Engage'), $store.getters.getManeuver('Opportunity Attack')]"
-      job="Maneuvers"
-      :collapse="false"
-    />
+    <h2>Basic Skills</h2>
+    <div style="text-align: center; width: 100%;">
+      <p>The below tabs contain all the Techniques, Attacks, Actions, Stunts, Reactions, and Gambits that all characters have access to by default.</p>
+      <br />
+    </div>
+    <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered
+      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Attacks</h4> </v-tab><v-tab> <h4>Actions</h4> </v-tab><v-tab> <h4>Stunts</h4> </v-tab
+      ><v-tab> <h4>Reactions</h4> </v-tab
+      ><v-tab>
+        <h4>Gambits</h4>
+      </v-tab></v-tabs
+    >
+    <v-tabs-items v-model="tab" class="character-tab-content">
+      <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" />
+        <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Swift Strike', 'Basic Strike', 'Strong Strike'])" job="Techniques" :collapse="false" />
+      </v-tab-item>
+      <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
+        <show-cards
+          :inputs="[
+            $store.getters.getAttack('Weapon Attack'),
+            this.$store.getters.getAttack('Charged Attack'),
+            this.$store.getters.getAttack('Quickened Attack'),
+          ]"
+          job="Attacks"
+          :collapse="false" />
+        <show-cards
+          :inputs="[this.$store.getters.getAttack('Unarmed Strike'), $store.getters.getAttack('Grapple'), this.$store.getters.getAttack('Slam')]"
+          job="Attacks"
+          :collapse="false"
+      /></v-tab-item>
+      <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" />
+        <show-cards :inputs="[$store.getters.getManeuver('Hide')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
+        <show-cards
+          :inputs="[this.$store.getters.getManeuver('Skirmish'), $store.getters.getManeuver('Swift Manifestation'), $store.getters.getManeuver('Reorient')]"
+          job="Maneuvers"
+          :collapse="false"
+        /><show-cards
+          :inputs="[this.$store.getters.getManeuver('Raise Guard'), $store.getters.getManeuver('Rally'), this.$store.getters.getManeuver('Prepare')]"
+          job="Maneuvers"
+          :collapse="false"
+        />
+      </v-tab-item>
+      <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
+        <show-cards
+          :inputs="[$store.getters.getManeuver('Aim'), $store.getters.getManeuver('Disengage')]"
+          job="Maneuvers"
+          :collapse="false"
+          v-bind:class="use_duo"
+          :cols="2"
+        />
+        <show-cards
+          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Improvised Combo'), $store.getters.getManeuver('Interact')]"
+          job="Maneuvers"
+          :collapse="false"
+        />
+        <show-cards
+          :inputs="[this.$store.getters.getManeuver('Leap'), this.$store.getters.getManeuver('Sprint'), $store.getters.getManeuver('Tumble')]"
+          job="Maneuvers"
+          :collapse="false"
+        />
+      </v-tab-item>
+      <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Reaction')" />
+        <show-cards
+          :inputs="[this.$store.getters.getManeuver('Flank'), this.$store.getters.getManeuver('Engage'), this.$store.getters.getManeuver('Opportunity Attack')]"
+          job="Maneuvers"
+          :collapse="false" />
+        <show-cards
+          :inputs="[
+            $store.getters.getManeuver('Active Defense'),
+            $store.getters.getManeuver('Dodge'),
+            this.$store.getters.getManeuver('Spiritual Interdiction'),
+          ]"
+          job="Maneuvers"
+          :collapse="false" /><show-cards
+          :inputs="[$store.getters.getManeuver('Spirit Summon')]"
+          job="Maneuvers"
+          :collapse="false"
+          v-bind:class="use_single"
+          :cols="1"
+      /></v-tab-item>
+      <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
+          :inputs="[$store.getters.getManeuver('Basic Feint'), $store.getters.getManeuver('Basic Flourish'), $store.getters.getManeuver('Basic Sunder')]"
+          job="Maneuvers"
+          :collapse="false"
+        /><show-cards
+          :inputs="[$store.getters.getManeuver('Enhanced Strike'), $store.getters.getManeuver('Marking Strike')]"
+          job="Maneuvers"
+          :collapse="false"
+          v-bind:class="use_duo"
+          :cols="2"
+        /> </v-tab-item
+    ></v-tabs-items>
   </div>
 </template>
 
@@ -77,6 +107,9 @@ import ShowCards from '@/components/cards/ShowCards.vue'
 import { store } from '@/store'
 export default Vue.extend({
   name: 'basic-techniques',
+  data() {
+    return { tab: null }
+  },
   components: {
     ShowCards,
   },
@@ -123,5 +156,15 @@ export default Vue.extend({
   height: 100%;
   margin: 0;
   padding: 0;
+}
+.character-tabs {
+  font-family: $font--fancy;
+  font-size: larger;
+  border-top: $border--black-standard;
+  border-radius: 0px;
+}
+.character-tab-content {
+  margin-top: 1em;
+  background-color: $color--background !important;
 }
 </style>

@@ -15,17 +15,19 @@ import Obstacles from '@/pages/combat/obstacles/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
+import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
+import Masteries from '@/pages/masteries/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
-import Shields from '@/pages/equipment/shields/index.vue'
-import UnarmedWeapons from '@/pages/equipment/unarmed-weapons/index.vue'
+import CombatGear from '@/pages/equipment/combat-gear/index.vue'
+import MartialArts from '@/pages/equipment/martial-arts/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
-import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import BasicSkills from '@/pages/basic-skills/index.vue'
+import BasicSpiritAbilities from '@/pages/basic-spirit-abilities/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -101,19 +103,19 @@ const r = new Router({
       },
     },
     {
-      path: '/shields',
-      component: Shields,
-      name: 'shields',
+      path: '/combat-gear',
+      component: CombatGear,
+      name: 'combat-gear',
       meta: {
-        title: 'Shields',
+        title: 'Combat Gear',
       },
     },
     {
-      path: '/unarmed-weapons',
-      component: UnarmedWeapons,
-      name: 'unarmed-weapons',
+      path: '/martial-arts',
+      component: MartialArts,
+      name: 'martial-arts',
       meta: {
-        title: 'Unarmed Weapons',
+        title: 'Martial Arts',
       },
     },
     {
@@ -178,6 +180,22 @@ const r = new Router({
       name: 'martial-disciplines',
       meta: {
         title: 'Martial Disciplines',
+      },
+    },
+    {
+      path: '/masteries',
+      component: Masteries,
+      name: 'masteries',
+      meta: {
+        title: 'Masteries',
+      },
+    },
+    {
+      path: '/basic-spirit-abilities',
+      component: BasicSpiritAbilities,
+      name: 'basic-spirit-abilities',
+      meta: {
+        title: 'Basic Spirit Abilities',
       },
     },
     {

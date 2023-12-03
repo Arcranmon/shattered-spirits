@@ -25,8 +25,8 @@
                   <div class="card--box" v-if="job == 'Techniques'">
                     <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="job == 'Weapons'">
-                    <weapon-card :weapon="n" :character_creation="character_creation" />
+                  <div class="card--box" v-if="job == 'Attacks'">
+                    <attack-card :attack="n" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Armor'">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
@@ -61,14 +61,17 @@
             <div class="card--box" v-if="job == 'Techniques'">
               <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Weapons'">
-              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" />
+            <div class="card--box" v-if="job == 'Attacks'">
+              <attack-card :attack="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Armor'">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'NPC'">
               <npc-card :npc="n" />
+            </div>
+            <div class="card--box" v-if="job == 'Gear'">
+              <gear-card :gear="n" />
             </div>
             <div class="card--box" v-if="job == 'Obstacles'">
               <obstacle-card :obstacle="n" />
@@ -79,6 +82,9 @@
             <div class="card--box" v-if="job == 'Status'">
               <status-card :status="n" />
             </div>
+            <div class="card--box" v-if="job == 'Movement'">
+              <movement-card :movement="n" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -88,13 +94,15 @@
 <script>
 import Vue from 'vue'
 import ArmorCard from './ArmorCard.vue'
+import GearCard from './GearCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
+import MovementCard from './MovementCard.vue'
 import ObstacleCard from './ObstacleCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
-import WeaponCard from './WeaponCard.vue'
+import AttackCard from './AttackCard.vue'
 import NpcCard from './NpcCard.vue'
 
 export default Vue.extend({
@@ -161,14 +169,16 @@ export default Vue.extend({
   },
   components: {
     ArmorCard,
+    GearCard,
     ManeuverCard,
+    MovementCard,
     NpcCard,
     ObstacleCard,
     StanceCard,
     StatusCard,
     TechCard,
     TerrainCard,
-    WeaponCard,
+    AttackCard,
   },
   methods: {
     clickMethod(variable, index) {

@@ -22,6 +22,15 @@
       <div class="tech--format" v-if="obstacle.HasInteract">
         <display-tooltip-text :string="obstacle.InteractHeader" />
       </div>
+      <div class="tech--format" v-if="obstacle.HasForcedMovement">
+        <display-tooltip-text :string="obstacle.ForcedMovementHeader" />
+      </div>
+      <div class="tech--format" v-if="obstacle.HasDestroy">
+        <display-tooltip-text :string="obstacle.DestroyHeader" />
+      </div>
+      <div class="tech--format" v-if="obstacle.HasDamageType">
+        <display-tooltip-text :string="obstacle.DamageType" />
+      </div>
       <div class="expand--collapse-box-outlined" v-if="(obstacle.HasChart)">
         <v-expansion-panels class="condensed" flat tile>
           <v-expansion-panel style="background-color: inherit;"
@@ -83,18 +92,18 @@ export default Vue.extend({
 }
 .obstacle--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-bottom: $space--xs;
 }
 .obstacle--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .obstacle--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;

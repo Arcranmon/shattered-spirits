@@ -23,7 +23,7 @@
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
       ></v-select
-      ><weapon-card v-if="selectedWeapon != null" :weapon="selectedWeapon" style="width: 40em; margin-left: auto; margin-right: auto;"
+      ><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em; margin-left: auto; margin-right: auto;"
     /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em;">
@@ -40,7 +40,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <weapon-card v-if="selectedWeapon != null" :weapon="selectedWeapon" style="width: 40em;" /></v-col> </v-row
+        <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em;" :key="selectedWeapon.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -51,11 +51,11 @@ import { getModule } from 'vuex-module-decorators'
 import { CharacterManagementStore } from '@/store'
 import { Character } from '@/class'
 import { Weapon } from '@/class'
-import WeaponCard from '@/components/cards/WeaponCard'
+import AttackCard from '@/components/cards/AttackCard'
 
 export default Vue.extend({
   name: 'unarmed-weapons',
-  components: { WeaponCard },
+  components: { AttackCard },
   data() {
     return {
       selectedWeapons: ['Unarmed'],

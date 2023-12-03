@@ -1,65 +1,36 @@
 import { store } from '@/store'
+import { Defense } from '@/class'
 
 class Armor {
-  private armor_: number
   private category_: string
+  private guard_: number
   private durability_: number
-  private endurance_: number
-  private jump_: number
   private name_: string
-  private maneuver_: string
-  private reposition_: number
-  private dash_: number
   private special_: string
-  private sprint_: number
-  private step_: number
+  private weight_: number
 
   public constructor() {
     this.name_ = ''
-    this.special_ = ''
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-  get Armor() {
-    return this.armor_
-  }
+
   get Category() {
     return this.category_
+  }
+  get Defenses() {
+    return this.guard_
   }
   get Durability() {
     return this.durability_
   }
-  get Endurance() {
-    return this.endurance_
-  }
-  get Jump() {
-    return this.jump_
-  }
   get Name() {
     return this.name_
   }
-  get Reposition() {
-    return this.reposition_
-  }
-  get Dash() {
-    return this.dash_
-  }
-  get HasSpecial() {
-    return this.special_ != ''
-  }
-  get Maneuver() {
-    return this.maneuver_
-  }
-  get HasManeuver() {
-    return this.maneuver_ != ''
-  }
-  get Sprint() {
-    return this.sprint_
-  }
-  get Step() {
-    return this.step_
+  get Weight() {
+    return this.weight_
   }
   public get Icon() {
     if (this.Category == 'Error') return ''
@@ -69,20 +40,23 @@ class Armor {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  get ArmorText() {
-    return '**Guard:** ' + this.armor_
+  get GuardHeader() {
+    return '**Guard:** ' + this.guard_
   }
   get DurabilityHeader() {
     if (this.durability_ != 0) return ', Durability ' + this.durability_
   }
-  get EnduranceText() {
-    return '**Endurance:** ' + this.endurance_
+  get ArmorHeader() {
+    return '**Armor:** ' + this.guard_ + ' Guard, ' + this.durability_ + ' Durability'
+  }
+  get WeightHeader() {
+    if (this.durability_ != 0) return '**Weight:** ' + this.weight_
+  }
+  get HasSpecial() {
+    return this.special_ != ''
   }
   get SpecialHeader() {
     return '**Special:** ' + this.special_
-  }
-  get ManeuverHeader() {
-    return '**Maneuver:** ' + this.maneuver_
   }
 
   // ==========================================================
@@ -95,14 +69,12 @@ class Armor {
   }
 
   public setArmorData(data: IArmorData): void {
-    this.armor_ = data.armor || 0
+    this.guard_ = data.guard || 0
     this.category_ = data.category || ''
     this.durability_ = data.durability || 0
-    this.jump_ = data.jump || 0
     this.name_ = data.name || ''
-    this.reposition_ = data.reposition || 0
-    this.dash_ = data.dash || 0
-    this.step_ = data.step || 0
+    this.special_ = data.special || ''
+    this.weight_ = data.weight || 0
   }
 }
 export default Armor

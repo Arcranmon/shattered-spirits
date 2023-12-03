@@ -1,11 +1,16 @@
 [
   {
+    "name": "Action",
+    "effect": "Actions are a type of _Maneuver_ that allow a character to take a _Turn_. Actions may be used whenever it is your party's time to act in combat. A character may only use a given Action once per _Round_ unless otherwise specified, and may take only a single Action in a given _Phase_."
+  },
+  { "name": "Actions", "see": "Action" },
+  {
     "name": "Advantage",
     "effect": "When you make an Attack with Advantage, roll 3d6 and use the two highest for your result."
   },
   {
     "name": "AP",
-    "effect": "AP, or Action Points, are what are used to power the various _Techniques_ that creatures have. Typically, a player character has 3 AP that they can divide up between various _Techniques_ in a _Round_."
+    "effect": "AP, or Action Points, are spent to use powerful _Actions_, _Stunts_, and other abilities. Player characters have 2 AP that they may use each _Round_. Unspent AP is lost at the end of the _Round_."
   },
   {
     "name": "Armor",
@@ -18,9 +23,13 @@
   },
   {
     "name": "Attack",
-    "effect": "An Attack is any _Technique_ that makes use of Profile and requires you to roll 2d6 to determine the effect."
+    "effect": "An Attack is a type of _Manuever_ that allows a creature to target enemies. Attacks are never used on their own; other _Maneuvers_ and _Techniques_ will tell you when to use an Attack. Attacks are split into Major and Minor Attacks; Major Attacks are highly effective and deal high Damage, while Minor Attacks tend to be more focused on status effects and deal much less damage."
   },
-  { "see": "Attacks", "name": "Attack" },
+  { "see": "Attack", "name": "Attacks" },
+  { "see": "Attack", "name": "Major Attack" },
+  { "see": "Attack", "name": "Minor Attack" },
+  { "see": "Attack", "name": "Major Attacks" },
+  { "see": "Attack", "name": "Minor Attacks" },
   {
     "name": "Attack Roll",
     "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's _Profile_ to determine the effect."
@@ -29,6 +38,18 @@
   {
     "name": "Bonus",
     "effect": "When a creature has a Bonus they add that value to _Attack Rolls_."
+  },
+  {
+    "name": "Bonus Damage",
+    "effect": "When an Attack gains Bonus Damage, distribute the Bonus Damage between targets however you wish. For a Single-Target Attack this is effectively a flat damage increase, but for an Area Attack any Bonus Damage must be split between all eligible Targets."
+  },
+  {
+    "name": "Charging",
+    "effect": "While _Charging_ you may not willingly _Move_, use _Techniques_, or use _Actions_."
+  },
+  {
+    "name": "Charged Effect",
+    "effect": "Many _Versatile_/_Heavy_ _Attacks_ have a Charged Effect . In exchange for delaying the resolution of the effect these _Attacks_ may gain additional power or effects. See _Strong Strike_ for a common example of how this process works. If an _Attack_ has multiple Charged Effects you must choose one."
   },
   {
     "name": "Climbing",
@@ -51,6 +72,7 @@
     "name": "Crit",
     "effect": "A particularly effective Attack, represented by a purple cell in the Attack's 'Roll' column in its _Profile_."
   },
+  { "name": "Critical Hit", "see": "Crit" },
   {
     "name": "Courier",
     "effect": "Courier Disciplines tend to have high movement among their abilities, as well as movement options that make it far easier to navigate terrain and enemy positions."
@@ -63,6 +85,11 @@
     "name": "Disadvantage",
     "effect": "When you make an Attack with Disadvantage, roll 3d6 and use the two lowest for your result."
   },
+  {
+    "name": "Draw",
+    "effect": "Drawing is the main way that Waterbonded interact with _Sources_. All Draw effects will be listed as Draw X, where X is a numeric value. In these cases, reduce the combined value of any number of _Sources_ within the listed Draw range by X, destroying any _Sources_ that have their value reduced to 0."
+  },
+  { "name": "Drawn", "see": "Draw" },
   {
     "name": "Durability",
     "effect": "How sturdy inanimate objects are. If an _Obstacle_ or _Equipment takes Damage in a single hit equal to or greater than their Durability plus their current _Guard_ (if any) they are Damaged."
@@ -77,7 +104,7 @@
   },
   {
     "name": "Elite",
-    "effect": "Elite enemies are extremely powerful and can handle several characters at the same time. Elite enemies may never have more than 10 of a given _Token_, may use a Martial and Spirit Stance, and gain 2 _Defensive Tokens_ of their Elite type at _Refresh_."
+    "effect": "Elite enemies are extremely powerful and can handle several characters at the same time. Elite enemies may never have more than 10 of a given _Token_, may use a Martial and Spirit Stance, and gain 2 _Defenses_ of their Elite type at _Refresh_."
   },
   {
     "name": "Forced Movement",
@@ -108,9 +135,18 @@
   { "name": "Fall", "see": "Falling" },
   { "name": "Falls", "see": "Falling" },
   {
-    "name": "Forceful",
-    "effect": "Forceful can be applied to any kind of _Forced Movement_. If a creature is moved into an _Obstacle_ by Forceful Movement they take Damage equal to 1 + any _Forced Movement_ remaining after colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1 (2 _Poise_). If a creature is moved into another creature with _Forced Movement_ you may choose to resolve the effect against both of them, but deal half Damage. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. "
+    "name": "Free Turn",
+    "effect": "When a creature gains a Free Turn they may immediately take a Turn after the current Turn resolves, ignoring the normal Initiative process. What they may do on this Turn is outlined in the ability, but they may also activate Stunts and use any other abilities that simply require a Turn."
   },
+  {
+    "name": "Forceful",
+    "effect": "Forceful can be applied to any kind of _Forced Movement_. If a target is moved into an _Obstacle_ by Forceful Movement they take [_Avoidable_] Damage equal to 1 + any _Forced Movement_ remaining after colliding with the object. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1. If a target is moved into a creature with _Forced Movement_ you may choose to resolve the effect against both of them, but deal half Damage. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. "
+  },
+  {
+    "name": "Gambit",
+    "effect": "Gambits are _Manuevers_ that allow characters to enhance an Attack. A character may use any number of Gambits on a single _Attack_, but only one with the _Feint_ tag and one with the _Flourish_ tag."
+  },
+  { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Gift",
     "effect": "When you Gift a _Token_ you lose up to the listed amount of that _Token_, then grant an ally the amount you lost."
@@ -165,7 +201,7 @@
   },
   {
     "name": "Minion",
-    "effect": "Minion is the weakest class of NPC, and tend to be less capable. Minions may never have more than 4 of a given _Token_ and may only use a single _Stance_, which must have Minion in the name. In addition Minions may not use Boosts on their _Resist_ Manuevers."
+    "effect": "Minion is the weakest class of NPC, and tend to be less capable. Minions have no _Defenses_, do not gain _Momentum_, and do not benefit from _Stances_. Minions only ever have 1 _AP_, but they may exchange it for 2 _Momentum_ at any time."
   },
   {
     "name": "Maneuver",
@@ -176,6 +212,21 @@
     "name": "Total Height",
     "effect": "The _Elevation_ of an _Obstacle_ or Creature plus its Height. Most creatures have a Height of 1."
   },
+  {
+    "name": "Major Source",
+    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.\n* **Water:** Watery Terrain or _Obstacles_ with a value greater than 1."
+  },
+  {
+    "name": "Minor Source",
+    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Water:** Watery Terrain or _Obstacles_ with a value of 1."
+  },
+  { "name": "Major Sources", "see": "Major Source" },
+  { "name": "Minor Sources", "see": "Minor Source" },
+  {
+    "name": "Source",
+    "effect": "A locus of elemental energy such as stone, water, or flame. Sources are divided into _Major Sources_ and _Minor Sources_, and have a different representation for every element."
+  },
+  { "name": "Sources", "see": "Source" },
   {
     "name": "Miss",
     "effect": "A failed attack, represented by a red cell in the Attack's 'Roll' column in its _Profile_."
@@ -188,7 +239,7 @@
   { "name": "Movement", "see": "Move" },
   {
     "name": "Negate",
-    "effect": "Some Attacks or _Techniques_ give creatures the chance to Negate by spending _Defensive Tokens_. This is either outlined in the Effect of a _Technique_, or listed in parentheses next to a Status in an Attack's _Profile_."
+    "effect": "Some Attacks or _Techniques_ give creatures the chance to Negate by spending _Defenses_. This is either outlined in the Effect of a _Technique_, or listed in parentheses next to a Status in an Attack's _Profile_."
   },
   { "name": "Negates", "see": "Negate" },
   {
@@ -200,13 +251,19 @@
     "effect": "An Open Hand is any Hand a character has that does not have any other Weapons or Equipment _Wielded_."
   },
   {
+    "name": "Opening",
+    "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ such as _Opportunity Attack_ allow a creature to make an _Attack_ when an Opening is created. Starting a _Move_ always creates an Opening."
+  },
+  {
     "name": "Occupied",
     "effect": "While something is Occupied it may not be used for anything other than the listed effects. It still counts as _Wielded_ for the purpose of _Stances_ and the like, but may not be used for _Maneuvers_ or _Techniques_."
   },
   {
-    "name": "Recovery",
-    "effect": "A value listed for all Afflictions that specifies how many _Tokens_ are needed to remove that _Affliction_ with the _Recover_ _Maneuver_."
+    "name": "Recover",
+    "effect": "When a creature Recovers they may expend _Defenses_ to remove various status conditions, as outlined by the status effect or affliction."
   },
+  { "name": "Recovers", "see": "Recover" },
+  { "name": "Recovering", "see": "Recover" },
   {
     "name": "Phase",
     "effect": "A Phase is a part of a _Round_ that exists to designate the speed at which different _Techniques_ happen. Phases 1-6 resolve in order, with _Techniques_ resolving with the Phase corresponding to their _Speed_."
@@ -221,20 +278,17 @@
     "effect": "All Attacks have a Profile, a chart showing the results of an Attack on a roll of 2-12. When you make an Attack, roll 2d6 and consult the Profile for the result."
   },
   {
+    "name": "Reaction",
+    "effect": "A _Maneuver_ that may be freely used when its Trigger occurs. Characters may use as many Reactions as they wish on a given _Turn_, but may only use a given Reaction once per _Turn_ unless otherwise specified."
+  },
+  { "name": "Reactions", "see": "Reaction" },
+  {
     "name": "Refresh",
-    "effect": "The very start of a round where characters can change their _Wielded_ Equipment, _Stances_, and resolve various effects."
+    "effect": "Whenever a creature Refreshes they set their _Defenses_ to the values indicated by their _Stances_."
   },
   {
     "name": "Reposition",
-    "effect": "The second smallest standard _Movement_, and the one most typically granted by _Techniques_. Consult your _Armor_ for how far you _Move_ with a Reposition."
-  },
-  {
-    "name": "Resistance",
-    "effect": "If a creature has Resistance to a type of Damage increase their _Guard_ by 3 against it."
-  },
-  {
-    "name": "Roll",
-    "effect": "When a character Rolls, their next _Movement_ up to the listed value gain [_Safe_ 2, _Blitz_, _Rush_]."
+    "effect": "When you Reposition you may move the value listed for your Reposition Movement, as dictated by your Movement Chart."
   },
   { "name": "Rolling", "see": "Roll" },
   {
@@ -244,11 +298,11 @@
   { "see": "Round", "name": "Rounds" },
   {
     "name": "Dash",
-    "effect": "The largest standard _Movement_ that covers a large distance. Consult your _Armor_ for how far you _Move_ with a Dash."
+    "effect": "When you Dash you may move the value listed for your Dash Movement, as dictated by your Movement Chart."
   },
   {
     "name": "Self",
-    "effect": "This either only targets you or, if it has an Area, is centered on your space."
+    "effect": "This either only targets you or, if it has an Area, is centered on or originates from your space."
   },
   {
     "name": "Shaper",
@@ -268,28 +322,43 @@
   },
   {
     "name": "Speed",
-    "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-6 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
+    "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-8 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
   },
   {
+    "name": "Speed Penalty",
+    "effect": "When making an _Attack_ it takes a _Penalty_ equal to the difference between its _Speed_ and the current _Phase_ if the _Speed_ is greater than the _Phase_. For example, a _Speed_ 4 _Attack_ used in _Phase_ 2 would take a -2 _Penalty_. _Heavy_ _Attacks_ suffer double the _Penalty_."
+  },
+  { "name": "Speed Penalties", "see": "Speed Penalty" },
+  {
     "name": "Soft Cover",
-    "effect": "Creatures may move through this _Obstacle_ and treat it as _Rough_ Terrain. When determining _Covered_/_Obstructed_, this _Obstacle_ never provides _Covered_. Instead, a creature in this space is _Heavily Obstructed_."
+    "effect": "Creatures may move through this _Obstacle_, but it costs twice as much to move through. When determining _Covered_/_Obstructed_, this _Obstacle_ never provides _Covered_ and instead provides _Heavily Obstructed_. A creature in this space is always _Heavily Obstructed_."
   },
   {
     "name": "Spirit Master",
     "effect": "The player in charge of running the game. While they do not have a predefined character, they control the world and all characters not under a different player's control."
   },
   {
+    "name": "Summon",
+    "effect": "When a Spirit is Summoned they take physical form for the duration of the effect that Summoned them. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player. See their statistics for attacks, movement, and other such effects. When _Manifested_, a spirit gains 2 _Defenses_ of the types listed based on its type but shares _Momentum_ with their partner."
+  },
+  { "name": "Summoned", "see": "Summon" },
+  {
     "name": "Stance",
     "effect": "A creature's Stance represents their bearing and how they are passively using their spirit's powers to improve their capabilities."
   },
   { "name": "Stances", "see": "Stance" },
+  {
+    "name": "Stunt",
+    "effect": "Stunts are quick, simple abilities such as jumping or picking up an item that characters may use on their _Turn_. Characters may use as many Stunts as they wish on their _Turn_, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword."
+  },
+  { "name": "Stunts", "see": "Stunt" },
   {
     "name": "Standard",
     "effect": "Standard is the most common class of NPC. Standard enemies may never have more than 6 of a given _Token_ but may use a Martial and Spirit Stance."
   },
   {
     "name": "Step",
-    "effect": "The smallest standard _Movement_, typically only a few spaces. Consult your _Armor_ for how far you _Move_ with a Step."
+    "effect": "When you Step you may move the value listed for your Step Movement, as dictated by your Movement Chart."
   },
   {
     "name": "Strike",
@@ -305,7 +374,7 @@
   },
   {
     "name": "Supporter",
-    "effect": "Supporter Disciplines are often able to provide allies with Defensive Tokens or Momentum, as well as repositioning them, removing harmful effects, or otherwise assisting allies."
+    "effect": "Supporter Disciplines are often able to provide allies with Defenses or Momentum, as well as repositioning them, removing harmful effects, or otherwise assisting allies."
   },
   {
     "name": "Survivor",
@@ -318,7 +387,7 @@
   { "name": "Swimming", "see": "Swim" },
   {
     "name": "Technique",
-    "effect": "Techniques are how creatures interact in combat. These are what allow creatures to attack, influence the environment, and gain the resources to dodge and block attacks."
+    "effect": "Techniques are how creatures interact in combat. These are what allow creatures to attack, influence the environment, and gain the resources to dodge and block attacks. A Technique must be selected while _Plotting_, at which point it is assigned a _Phase_. A creature may not use that Technique until that _Phase_."
   },
   { "name": "Techniques", "see": "Technique" },
   {
@@ -333,10 +402,6 @@
   {
     "name": "Unarmed",
     "effect": "A special category of _Weapon_ that is an attack made using the character's body. Unarmed Weapons may not be _Disarmed_, and are always treated as _Wielded_."
-  },
-  {
-    "name": "Martial Arts",
-    "effect": "When a Technique has Martial Arts listed for the Weapon the character does not have to decide the Weapon used when playing it. Instead, when making the _Weapon Attack_, they may use any _Unarmed Weapon_ of a _Speed_ equal to or greater than the unmodified _Speed_ of this _Technique_, or the current Phase if directly used through a _Maneuver_. (i.e., if the Technique is _Speed_ 4 and you applied the _Strengthen_ Stratagem which makes the Technique _Speed_ 5, you could only use _Unarmed Weapons_ of _Speed_ 4 or faster). Sometimes Martial Arts will specify a more narrow condition in parentheses; in that case, all Unarmed Weapons used must fulfill that requirement"
   },
   {
     "name": "Wager",

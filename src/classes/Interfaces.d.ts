@@ -1,12 +1,19 @@
 declare interface IArmorData {
-  armor: number
+  weight: number
   category?: string
   durability?: number
-  jump: number
+  guard: number
   name?: string
-  reposition: number
-  dash: number
-  step: number
+  special: string
+}
+
+declare interface IAttackData extends IManeuverData {
+  category?: string
+  chart: IChartData
+  class: string
+  damagetype: string
+  charged_effect?: string
+  speed: number
 }
 
 declare interface ICharDisciplineData {
@@ -20,22 +27,19 @@ declare interface ICharacterData {
   current_endurance: number
   current_health: number
   equipped_armor: string
+  gear: string[]
   disciplines: ICharDisciplineData[]
-  focus: number
+  poise: number
   grit: number
-  main_hand: string
   max_health: number
   max_endurance: number
   momentum: number
   name: string
-  off_hand: string
   player_character: Boolean
   reflex: number
-  spirit_name: string
-  spirit_type: string
-  unarmed_weapons: string[]
+  spirit: ISpiritData
   weapons: string[]
-  weapon_weight: number
+  vigor: number
 }
 
 declare interface IChartData {
@@ -43,19 +47,26 @@ declare interface IChartData {
   damage?: Array<number>
   status: Array<string>
 }
+declare interface IDefenseData {
+  additional?: string
+  poise?: number
+  grit?: number
+  reflex?: number
+}
 
 interface IDisciplineTierData {
   techniques?: string[]
+  attacks?: string[]
+  spirit_abilities?: string[]
   stances?: string[]
   maneuvers?: string[]
   special?: string
-  unarmed: number
 }
 
 declare interface IDisciplineData {
   name: string
   category: string
-  flavor: string
+  desc: string
   primary_role: string
   secondary_role: string
   summary: string
@@ -65,6 +76,14 @@ declare interface IDisciplineData {
   type: string
 }
 
+declare interface IGearData {
+  desc: string
+  weight: number
+  effect: string
+  name?: string
+  special: string
+}
+
 declare interface IGlossaryData {
   name: string
   effect?: string
@@ -72,28 +91,64 @@ declare interface IGlossaryData {
 }
 
 declare interface INpcData {
+  actions: Array<string>
   ap: number
-  armor: string // Name of armor for lookup.
+  attacks: Array<string>
   class: string
   desc: string
+  durability?: number
   endurance: number
-  maneuvers: Array<string>
-  martial_stances: Array<string>
+  gambits?: Array<string>
+  guard?: number
+  movement: string
   name: string
   npc_type: string
-  optional_stances?: Array<string>
-  optional_techniques?: Array<string>
+  reactions: Array<string>
   role: string
   size: string
-  spirit_stances: Array<string>
+  special: string
+  stances?: Array<string>
   spirit_type: string
+  stunts: Array<string>
   traits?: Array<string>
   techniques: Array<string>
   weapons: Array<string>
 }
 
-declare interface IObstacleData {
+declare interface IManeuverData {
+  area?: string
+  boost?: string
+  cost?: string
   desc: string
+  effect: string
+  keywords?: Array<string>
+  manifest?: string
+  move?: string
+  name: string
+  range?: IRangeData
+  reqs?: string
+  special: string
+  chart?: IChartData
+  trigger?: string
+  type: string
+  weapon?: string
+}
+
+declare interface IMovementData {
+  name: string
+  encumbrance: number
+  step: number
+  reposition: number
+  dash: number
+  jump: number
+  traits: string[]
+}
+
+declare interface IObstacleData {
+  damage_type: string
+  destroy: string
+  desc: string
+  forced_movement: string
   hardness: number
   height: number
   interact: string
@@ -105,29 +160,45 @@ declare interface IObstacleData {
   chart: IChartData
 }
 
-declare interface IManeuverData {
-  boost?: string
-  cost?: string
-  desc: string
-  effect: string
-  keywords?: Array<string>
-  move?: string
-  name: string
-  range?: string
-  reqs?: string
+declare interface IRangeData {
+  category: string
+  value: number
   special: string
-  chart?: IChartData
-  trigger: string
-  type: string
-  weapon?: string
 }
 
-declare interface IRefreshData {
-  additional?: string
-  focus?: number
-  grit?: number
-  momentum?: number
-  reflex?: number
+declare interface ISpiritData {
+  name: string
+  spirit_form: string
+  spirit_type: string
+  weapons: Array<string>
+  poise: number
+  grit: number
+  reflex: number
+  vigor: number
+  current_health: number
+}
+
+declare interface ISpiritFormData {
+  name: string
+  desc: string
+  size: string
+  health: number
+  weapons: string
+  bonus_attack: string
+  guard: number
+  durability: number
+  movement: string
+  traits: string[]
+}
+
+declare interface ISpiritTypeData {
+  name: string
+  desc: string
+  defense: IDefenseData
+  effect: string
+  summon_effect: string
+  manifest_effect: string
+  traits: string[]
 }
 
 declare interface IStanceData {
@@ -139,7 +210,7 @@ declare interface IStanceData {
   maneuver?: string
   reaction?: string
   reqs?: string
-  refresh: IRefreshData
+  defense: IDefenseData
   effect: string
   special?: string
 }
@@ -148,6 +219,7 @@ declare interface IStatusData {
   desc: string
   effect: string
   name: string
+  negate: string
   recover: string
   remove: string
   see?: string
@@ -157,7 +229,6 @@ declare interface IStatusData {
 }
 
 declare interface ITechData {
-  ap?: number
   area?: string
   boost?: string
   category: string
@@ -172,7 +243,7 @@ declare interface ITechData {
   move?: string
   name: string
   reaction?: string
-  range?: string
+  range?: IRangeData
   reqs?: string
   special?: string
   speed: string
@@ -191,21 +262,20 @@ declare interface ITerrainData {
   overrides: Array<string>
 }
 
-declare interface IWeaponData {
-  category: string
-  chart: IChartData
-  damagetype: string
-  desc?: string
+declare interface ITraitData {
+  desc: string
+  effect: string
+  name: string
+  reqs: string
+  cost: number
+}
+
+declare interface IWeaponData extends IAttackData {
   durability?: number
   itemtype?: string
   hands: number
   hardness?: number
-  keywords: Array<string>
-  name: string
-  range: string
-  range_value: number
-  reaction?: string
-  special?: string
-  speed: number
+  material: string
+  parry: string
   weight: number
 }

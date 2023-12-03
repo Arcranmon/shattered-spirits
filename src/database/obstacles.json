@@ -6,47 +6,35 @@
     "size": 1,
     "height": 1,
     "hardness": 5,
+    "forced_movement": "This Obstacle only suffers _Forced Movement_ from effects with [_Wood_].",
     "resistances": "All Damage except Slash and Burn.",
+    "destroy": "If _Destroyed_ by Fire Damage, this space becomes _Blazing_.",
     "speed": 1
   },
   {
-    "name": "Log",
-    "keywords": ["Wooden"],
+    "name": "Water Veil",
+    "desc": "A suspended veil of water that provides considerable defense against assault.",
+    "keywords": ["_Watery_ 1", "Soft Cover"],
     "size": 1,
     "height": 1,
-    "hardness": 7,
-    "resistances": "All Damage except Slash and Burn.",
-    "special": "Only Destroy one space of this Obstacle on a successful attack. For every 3 additional Damage the Attacker may destroy a single adjacent Log. This Obstacle always counts as Size 1, with a Height equal to the number of connected Logs.",
-    "interact": "Choose one:\n* X _Grit_: _Push_ 1 this Log and all connected Logs. If it is moved into a creature's space, inflict _Push_ 1, _Vulnerable_ 1, and 2 Damage (2 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Log and inflict half Damage. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_. X is equal to the number of connected Logs."
+    "hardness": 10,
+    "forced_movement": "This Obstacle only suffers _Forced Movement_ from effects with [_Water_].",
+    "resistances": "All Damage.",
+    "special": "Any creature that enters this _Obstacle's_ space or ends their _Turn_ in it gains _Soaked_. Creatures always have _Resistance_ to _Fire_ _Attacks_ that pass through this _Obstacle_.",
+    "destroy": "If _Destroyed_ by anything other than a _Draw_ effect this space becomes _Wet_, or _Veiled_ if the destroying attack dealt _Fire_/_Lighting_ Damage."
   },
   {
-    "name": "Small Tree",
-    "desc": "A tree not much taller than a person.",
-    "keywords": ["Wooden"],
+    "name": "Planted Shield",
+    "desc": "A shield planted firmly in the ground to provide cover.",
+    "keywords": ["Obstruction"],
     "size": 1,
-    "height": 2,
-    "hardness": 7,
-    "resistances": "All Damage except Slash and Burn.",
-    "special": "All sides of this Obstacle are _Climable_. Creatures may end their _Turn_ partially up this Obstacle if they _Climb_ it without any penalties. While in this Obstacles' space, creatures are considered to always be _Lightly Obstructed_.",
-    "speed": 3,
-    "interact": "Choose one:\n* 2 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create a _Log_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 7 - X (minimum 3) _Grit_, where X is the current _Phase_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also _Restrained_ until they spend 1 _Grit_ and one tier of Movement.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 3, 5, 6, 8, 10, 11, 13],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Dazed_ 2 (2 _Grit_)",
-        "_Dazed_ 2 (2 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)",
-        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)"
-      ]
-    }
+    "height": 1,
+    "hardness": 0,
+    "resistances": "Same as original shield.",
+    "forced_movement": "If a creature is in this obstacle's space they may use their _Defenses_ to Negate. Otherwise, resolve _Forced Movement_ as normal.",
+    "special": "Hardness is the same as the original shield. If it takes Damage equal to half of its Hardness or greater the Obstacle is removed and the shield is placed undamaged in the space.",
+    "interact": "You must be in the same space as the shield to use this _Interact_. Choose 3 sides of the current space. You are _Covered_ against any Attack that passes through one of these spaces while the _Obstacle_ is here. This ends when you move out of this space or _Attack_.",
+    "destroy": "If _Destroyed_ the original shield is placed _Damaged_ in this space."
   },
   {
     "name": "Earth Block",
@@ -55,18 +43,9 @@
     "size": 1,
     "height": 1,
     "hardness": 8,
+    "forced_movement": "This Obstacle only suffers _Forced Movement_ from effects with [_Earth_] and reduces all _Forced Movement_ by 1.",
     "resistances": "All Damage except Crush.",
-    "interact": ""
-  },
-  {
-    "name": "Spire",
-    "desc": "A spike made of earth and stone, protruding from the ground.",
-    "keywords": ["Earthen"],
-    "size": 1,
-    "height": 1,
-    "hardness": 7,
-    "resistances": "All Damage except Crush.",
-    "special": "One side of this Obstacle is a Spike. If a creature is moved into the Spike side by _Forced Movement_, they immediately take 2 + X Stab Damage, where X is the amount of remaining _Forced Movement_ and gain _Wounded_ 1. A creature may Negate with _Reflex_ to reduce the Damage by 2 for every _Reflex_ spent."
+    "destroy": "When _Destroyed_, make this space _Veiled_ and _Rough_. Inflict  _Dazed_ 1, _Push_ 1, 4 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
   },
   {
     "name": "Earth Pillar",
@@ -75,61 +54,28 @@
     "height": 2,
     "hardness": 10,
     "resistances": "All Damage except Crush.",
-    "interact": "Choose one:\n* 3 _Grit_: Create a Line 2 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then make them _Rough_. Any creature in the Obstacle's space when it is removed immediately falls.\n* 9 - X (minimum 4) _Grit_, where X is the current _Phase_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also  _Restrained_ until they spend 2 _Grit_ and one tier of Movement.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 8, 8, 10, 10, 12, 14, 16],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Dazed_ 2 (2 _Grit_)",
-        "_Dazed_ 2 (2 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)",
-        "_Dazed_ 3, _Exposed_ 2/_Prone_ (4 _Grit_)"
-      ]
-    }
-  },
-  {
-    "name": "Large Tree",
-    "keywords": ["Wooden"],
-    "size": 1,
-    "height": 3,
-    "hardness": 9,
-    "resistances": "All Damage except Slash and Burn.",
-    "interact": "Choose one:\n* 4 _Grit_: Create a Line 3 Hazard on the opposite side of this Obstacle. At the end of the Round, remove this Obstacle, resolve the below attack in those spaces, then create a _Log_ in each space. Any creature in the Obstacle's space when it is removed immediately falls.\n* 10 - X (minimum 5) _Grit_, where X is the current _Phase_: As above, but resolve the Attack immediately.\n Regardless, on any Attack that does not inflict _Prone_, _Push_ the creature to the nearest unoccupied space. If this _Interact_ knocks a Medium or smaller creature _Prone_, they are also  _Restrained_ until they spend 2 _Grit_ and one tier of Movement.",
-    "special": "On a successful attack resolve the 4 _Grit_ Interact, but instead create a _Line_ 2. The original spaces are _Rough_. Additionally, all sides of this Obstacle are _Climable_. Creatures may end their turn partially up this Obstacle if they _Climb_ it without any penalties. While in this Obstacles' space, creatures are considered to always be _Lightly Obstructed_.",
-    "chart": {
-      "damage": [0, 0, 0, 0, 7, 8, 10, 10, 12, 14, 16],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Dazed_ 1 (2 _Grit_)",
-        "_Dazed_ 1 (2 _Grit_)",
-        "_Dazed_ 1, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 1, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 1, _Exposed_ 2/_Prone_ (3 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (4 _Grit_)",
-        "_Dazed_ 2, _Exposed_ 2/_Prone_ (4 _Grit_)"
-      ]
-    }
+    "forced_movement": "If this Obstacle suffers 8 _Forced Movement_, resolve the _Destroy_ effect in the direction of the Movement. Abilities with the _Earth_ keyword need only inflict 4 _Forced Movement_. Beyond this effect, this Obstacle may not be moved by _Forced Movement_ unless it has [_Earth_], and said _Forced Movement_ is reduced by 4. An [_Earth_] _Forced Movement_ may choose to split the _Forced Movement_ between moving the obstacle and triggering the Destroy effect, but must resolve all _Forced Movement_ first.",
+    "destroy": "When _Destroyed_, choose one:\n* Create a _Line_ 2 _Hazard_ on the opposite side of this Obstacle. At the end of the _Round_, remove this Obstacle and inflict _Dazed_ 1, _Prone_ [2 _Grit_/_Dodge_] on all creatures in the _Hazard_ spaces, then make those spaces _Rough_. Any creature in the Obstacle's space when it is removed immediately _Falls_.\n* As above, but pay 2 _Momentum_ to resolve the effect immediately.\n\nRegardless, if you do not inflict _Prone_, _Push_ the creature to the nearest unoccupied space."
   },
   {
     "name": "Boulder",
-    "source": "Earth",
+    "keywords": ["Earthen"],
     "size": 1,
     "height": 1,
-    "hardness": 13,
+    "hardness": 11,
     "resistances": "All Damage except Crush.",
-    "speed": 3,
-    "interact": "Choose one:\n* 2 _Grit_: _Push_ 1 this Boulder. If it is moved into a creature's space, inflict _Push_ 1, _Dazed_ 1, and 4 Damage (2 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder and inflict half Damge. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_.\n* 4 _Grit_: _Push_ 3 this Boulder.  If it is moved into a creature's space, inflict _Push_ 3, _Dazed_ 2 and 6 Damage (3 _Grit_/_Reflex_). If the creature negates with _Grit_, do not _Push_ the Boulder any further and inflict half Damage. If they _Negate_ with _Reflex_ they take no Damage, but are still _Pushed_.",
-    "special": "If a Boulder is moved into an Obstacle's space stop the Movement, but deal double Damage."
+    "forced_movement": "Reduce all _Forced Movement_ with [_Earth_] by 2; otherwise, reduce it by 4. Resolve this _Forced Movement_ as if it was _Forceful_. If the _Forced Movement_ is already _Forceful_, deal full damage instead of half to anything this Obstacle is moved into and add _Dazed_ 1. If the _Boulder_ moved to a lower _Elevation_, increase the _Damage_ by 2.",
+    "destroy": "When _Destroyed_, make this space _Veiled_ and _Rough_. Inflict  _Dazed_ 1, _Push_ 1, 4 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
+  },
+  {
+    "name": "Earth Spire",
+    "keywords": ["Earthen"],
+    "size": 1,
+    "height": 1,
+    "hardness": 9,
+    "resistances": "All Damage except Crush.",
+    "forced_movement": "If this Obstacle suffers 8 _Forced Movement_, resolve the _Destroy_ effect in the direction of the Movement. Abilities with the _Earth_ keyword need only inflict 4 _Forced Movement_. Beyond this effect, this Obstacle may not be moved by _Forced Movement_ unless it has [_Earth_], and said _Forced Movement_ is reduced by 4. An [_Earth_] _Forced Movement_ may choose to split the _Forced Movement_ between moving the obstacle and triggering the Destroy effect, but must resolve all _Forced Movement_ first. A creature may sacrifice one space of Movement to rotate this Obstacle.",
+    "destroy": "When _Destroyed_, place a _Large Improvised_ Weapon in this space. It is made of _Stone_ and has the _Fragile_ and _Opportune_ keywords.",
+    "special": "When this _Obstacle_ is created, choose one face. If a creature would collide with this _Obstacle_ on said face due to _Forced Movement_, deal additional Stab Damage equal to any _Forced Movement_ remaining and inflict _Bleed_ equal to half that. Treat this space as _Jagged_ for creatures that can occupy it."
   }
 ]
