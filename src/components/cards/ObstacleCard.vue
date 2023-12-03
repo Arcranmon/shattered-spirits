@@ -92,18 +92,18 @@ export default Vue.extend({
 }
 .obstacle--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-bottom: $space--xs;
 }
 .obstacle--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .obstacle--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;

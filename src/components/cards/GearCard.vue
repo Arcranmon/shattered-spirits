@@ -74,19 +74,19 @@ export default Vue.extend({
 }
 .gear--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   border-bottom: 5px black solid;
   padding-bottom: $space--xs;
 }
 .gear--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
 }
 .gear--format {
   font-family: $font--standard;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   padding: none;
   text-align: left;
   color: black;

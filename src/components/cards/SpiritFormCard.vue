@@ -43,7 +43,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .spirit-box--wrapper {
-  font-size: small;
   font-family: $font--standard;
   background-color: $color--grey-lighter;
   border: $border--black-standard;
@@ -67,7 +66,7 @@ export default Vue.extend({
   padding: $space--xs;
 }
 .spirit-box--text-format {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
 }
 .spirit-box--format {
   font-family: $font--standard;

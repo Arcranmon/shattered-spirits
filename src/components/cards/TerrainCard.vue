@@ -65,18 +65,18 @@ export default Vue.extend({
 }
 .terrain--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-bottom: $space--xs;
 }
 .terrain--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .terrain--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;

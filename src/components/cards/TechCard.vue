@@ -125,19 +125,19 @@ export default Vue.extend({
 }
 .tech--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-bottom: $space--xs;
   border-bottom: 5px solid black;
 }
 .tech--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .tech--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;

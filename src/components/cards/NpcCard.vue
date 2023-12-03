@@ -134,13 +134,13 @@ export default Vue.extend({
 }
 .npc--header {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   font-family: $font--standard;
   color: black;
   padding-bottom: $space--xs;
 }
 .npc--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   font-family: $font--standard !important;

@@ -11,6 +11,16 @@
     "boost": "Choose any:\n* 2 _Momentum_: Gain the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Gain the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
   },
   {
+    "name": "Aftershock",
+    "desc": "You amplify the impact of a foe hitting the ground, creating a resonant quake.",
+    "type": "Reaction",
+    "cost": "2 _Momentum_",
+    "range": { "category": "Ranged", "value": 6 },
+    "trigger": "A foe in temporary _Earthen_ _Rough Terrain_ created by a _Quaking Earth_ ability is knocked _Prone_.",
+    "effect": "Choose one:\n* Inflict _Vulnerable_ 1 in a _Burst_ 1 around the Target.\n* Remove up to 3 _Vulnerable_ from the _Target_, dealing 2 Damage for each.",
+    "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's _Reposition_ distance. Resolve both effects, then inflict _Reeling_ 1 [_Avoidable_] in a _Burst_ 1."
+  },
+  {
     "name": "Aggressive Orders",
     "desc": "You urge a nearby all on, allowing them a strike.",
     "type": "Action",
@@ -322,6 +332,16 @@
     "effect": "Resolve the Interact Effect of an Obstacle or Effect in an adjacent space, paying the cost listed for the effect."
   },
   {
+    "name": "Jagged Earth",
+    "desc": "You churn the spikes beneath a foe, forcing them to choose how to defend.",
+    "type": "Reaction",
+    "range": { "category": "Ranged", "value": 3 },
+    "cost": "1 _Momentum_",
+    "trigger": "A creature on an _Earthen_ _Jagged_ space is Attacked.",
+    "effect": "The Target chooses: Either they immediately suffer the end of turn effect of _Jagged_, or their Attacker gains a +1 _Bonus_.",
+    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Instead, inflict _Reeling_ 1, _Vulnerable_ 2, grant your ally a +1 _Bonus_, and resolve the end of turn effect of _Jagged_."
+  },
+  {
     "name": "Kill Shot",
     "desc": "You take a calculated shot, focusing on efficacy over accuracy.",
     "type": "Gambit",
@@ -520,7 +540,7 @@
   },
   {
     "name": "Rally",
-    "desc": "You take a moment to collect yourself, centering yourself.",
+    "desc": "You take a moment to collect yourself and restore your ability to fight.",
     "type": "Action",
     "move": "None",
     "cost": "1 _AP_",
@@ -544,6 +564,15 @@
     "move": "Reposition",
     "cost": "1 AP",
     "special": "You may use this Action more than once per _Round_."
+  },
+  {
+    "name": "Resonant Quake",
+    "desc": "You cause your quake to resonante with nearby obstacles, potentially shattering them.",
+    "type": "Gambit",
+    "cost": "2 _Momentum_",
+    "reqs": "Must be _Groundsource_.",
+    "effect": "Deal Damage to all _Obstacles_ hit by this Attack equal to 2 + the current _Phase_.",
+    "boost": "1 _Momentum_: Deal +2 Damage. You may repeat this _Boost_."
   },
   {
     "name": "Run Down",
@@ -677,6 +706,15 @@
     "special": "For each full _Round_ you have had the creature _Marked_, increase the Cost by 1, but also increase all Status inflicted and the cost to Negate by 1. For example, if this creature was _Marked_ for 2 _Rounds_, you would instead inflict _Push_ 3, _Break_ [3 _Momentum_/_Poise_], _Exposed_ 3, _Reeling_ 3."
   },
   {
+    "name": "Spikes",
+    "desc": "You form jagged lines of earth, making the way forward impassable.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "range": { "category": "Ranged", "value": 6 },
+    "effect": "Choose one:\n* Choose a _Jagged_ space within range. Replace it with an _Earth Spire_.\n* Make 3 contiguous _Earthen_ spaces within Range _Jagged_.",
+    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Instead, pick a point within _Range_ and, in a _Burst_ 1, make all _Jagged_ spaces _Earth Spire_s and all _Earthen_ spaces _Jagged_."
+  },
+  {
     "name": "Spirit Summon",
     "desc": "Your spirit takes physical form, fighting alongside you.",
     "keywords": ["Manifest", "Spirit"],
@@ -684,7 +722,7 @@
     "range": { "category": "Ranged", "value": "Spirit _Reposition_ distance." },
     "cost": "6 _Momentum_",
     "trigger": "_Respite_ begins.",
-    "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you. Whenever your Spirit uses an ability with the _Spirit_ keyword, reduce its Cost by 1, and your _Spirit_ may use the [_Manifest_] variant of all abilities.",
+    "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you.",
     "special": "If your _Spirit_ was _Summoned_ at the end of the last _Round_, you may instead have it remain in its current space, regardless of _Sources_."
   },
   {
@@ -747,7 +785,7 @@
     "type": "Action",
     "range": { "category": "Ranged", "value": "Spirit _Reposition_ distance." },
     "cost": "None",
-    "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_ , originating from that space, and reducing the Cost by 1. If you choose a _Major Source_, gain a +1 _Bonus_ on the _Attack Roll_ and instead reduce the Cost by 2. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the Target space, or an adjacent one.",
+    "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_, originating from that space. If you choose a _Major Source_, reduce the Cost by 1. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the Target space, or an adjacent one.",
     "boost": "2 _Momentum_: Instead, use one of your spirit's _Major Attacks_."
   },
   {

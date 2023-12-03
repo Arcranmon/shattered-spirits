@@ -70,19 +70,19 @@ export default Vue.extend({
 }
 .armor--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   border-bottom: 5px black solid;
   padding-bottom: $space--xs;
 }
 .armor--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
 }
 .armor--format {
   font-family: $font--standard;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   padding: none;
   text-align: left;
   color: black;

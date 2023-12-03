@@ -112,7 +112,7 @@ export default Vue.extend({
 .v-menu__content {
   color: black;
   font-family: $font--standard;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   background-color: $color--off-white;
   border: $border--black-standard;
   max-width: 40%;

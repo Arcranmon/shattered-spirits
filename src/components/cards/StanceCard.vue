@@ -83,19 +83,19 @@ export default Vue.extend({
 }
 .stance--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   background-color: $color--chart-header;
   padding-bottom: $space--xs;
 }
 .stance--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
   padding-bottom: 0;
 }
 .stance--reaction-content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding-left: $space--xs;
   padding-right: $space--xs;

@@ -11,14 +11,14 @@
     "desc": "You fire a small shards of stone, pelting foes and limiting their reactions.",
     "keywords": ["Earth"],
     "type": "Versatile",
-    "speed": "4",
+    "speed": "5",
     "damagetype": "Pierce",
     "cost": "2 _Momentum_",
-    "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 1" },
-    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 3. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
+    "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 2" },
+    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 4. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Chip Shot _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
     "chart": {
-      "damage": [0, 0, 0, 0, 4, 4, 5, 5, 6, 8, 8],
+      "damage": [0, 0, 0, 0, 5, 5, 6, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Exposed_ 1", "_Exposed_ 1", "_Exposed_ 1", "_Exposed_ 2", "_Exposed_ 2"]
     },
@@ -38,6 +38,23 @@
       "damage": [0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
+    },
+    "class": "Minor Attack"
+  },
+  {
+    "name": "Earthen Needles",
+    "desc": "You swiftly form and fire an array of needles, barraging a foe with them.",
+    "keywords": ["Spirit", "Earth"],
+    "type": "Versatile",
+    "speed": 4,
+    "cost": "2 _Momentum_",
+    "damagetype": "Slash",
+    "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 2" },
+    "special": "You may instead choose an _Earthen_ _Jagged_ space within Range. If you do, the Cost is instead 1. Remove the _Jagged_ space and originate the Attack from there, with a _Range_ of 4 and removing _Minimum Range_.",
+    "chart": {
+      "damage": [0, 0, 0, 0, 4, 4, 5, 6, 6, 7, 7],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
     "class": "Minor Attack"
   },
@@ -212,19 +229,50 @@
     "class": "Minor Attack"
   },
   {
-    "name": "Stone Strike",
-    "desc": "You fling a stone at great speed, knocking enemies off-balance.",
-    "keywords": ["Earth"],
+    "name": "Spire Strike",
+    "desc": "You pull the earth upwards into a jagged spike, surprising a foe.",
+    "keywords": ["Earth", "Avoidable"],
     "type": "Versatile",
     "speed": "5",
+    "cost": "4 _Momentum_",
+    "damagetype": "Stab",
+    "range": { "category": "Ranged", "value": 5 },
+    "effect": "Choose a foe within _Range_. Immediately make an unoccupied _Earthen_ space adjacent to them _Jagged_, then resolve this Attack as a _Melee_ Attack originating from that space. If the space was already _Jagged_, instead make it an _Earth Spire_, add [_Pierce_ 1] to the Attack, add _Restrained_ [1_Reflex_] to a 6-7, and increase the cost to Negate _Restrained_ by 1 on an 8+.",
+    "special": "If this Attack inflicts _Restrained_, the effect automatically ends if the _Jagged_ space or _Earth Spire_ is removed. Otherwise, the creature may spend 2 _Grit_ and resolve the effect of ending their Turn in a _Jagged_ space to end the effect.",
+    "boost": "2 _Momentum_: You may instead make an occupied _Earthen_ space _Jagged_. If this would result in it becoming a _Earth Spire_, resolve the _Jagged_ effect against the creature in that space, then _Slide_ 1 that creature if they may not longer occupy this space. They may not Negate.",
+    "chart": {
+      "damage": [0, 0, 4, 5, 7, 8, 9, 10, 11, 13, 13],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Bleed_ 1",
+        "_Bleed_ 1",
+        "_Bleed_ 2, _Hobbled_ 1",
+        "_Bleed_ 2, _Hobbled_ 1",
+        "_Bleed_ 2, _Hobbled_ 1, _Restrained_ [1 _Reflex_]",
+        "_Bleed_ 2, _Hobbled_ 1, _Restrained_ [1 _Reflex_]",
+        "_Bleed_ 2, _Hobbled_ 1, _Restrained_ [1 _Reflex_]",
+        "_Bleed_ 3, _Hobbled_ 2, _Restrained_ [2 _Reflex_]",
+        "_Bleed_ 3, _Hobbled_ 2, _Restrained_ [2 _Reflex_]"
+      ]
+    },
+    "class": "Major Attack"
+  },
+  {
+    "name": "Stone Strike",
+    "desc": "You fling a stone at great speed, knocking enemies off-balance.",
+    "keywords": ["Earth", "_Pierce_ 1"],
+    "type": "Heavy",
+    "speed": "6",
     "cost": "3 _Momentum_",
     "damagetype": "Crush",
-    "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 1" },
-    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 4. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
+    "range": { "category": "Ranged", "value": 6, "special": "_Minimum Range_ 2" },
+    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 5. Originate the Attack from that space instead of your own and ignore its _Minimum Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack. If used as a part of a [_Combo_] or [_Flurry_], all additional Stone Strike _Attacks_ automatically gain this _Boost_ as long as you use the same Obstacle.",
-    "charged_effect": "Instead, this Attack is _Line_ 6. Add [_Pierce_] 1.",
+    "charged_effect": "Instead, this Attack is _Line_ 6.",
     "chart": {
-      "damage": [0, 0, 0, 0, 7, 8, 9, 11, 12, 13, 13],
+      "damage": [0, 0, 0, 0, 9, 11, 13, 14, 14, 15, 15],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",

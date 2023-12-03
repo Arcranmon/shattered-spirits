@@ -14,8 +14,9 @@ status_multipliers = {
     "Bleed": 1.0,
     "Exposed": 1.0,
     "Impaired": 1.0,
+    "Restrained": 1.0,
     "Prone": 1.25,
-    "Hobbled": 1.25,
+    "Hobbled": 1.5,
     "Reeling": 1.25
 }
 

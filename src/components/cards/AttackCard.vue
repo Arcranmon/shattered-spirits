@@ -77,13 +77,13 @@ export default Vue.extend({
 }
 .attack--keywords {
   text-align: center;
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   border-bottom: 5px black solid;
   padding-bottom: $space--xs;
 }
 .attack--content {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   color: black;
   padding: $space--xs;
 }

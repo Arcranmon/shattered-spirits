@@ -105,7 +105,7 @@ export default Vue.extend({
   border-bottom: 5px solid black;
 }
 .maneuver--keywords {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
   text-align: center;
   color: black;
   padding-bottom: $space--xs;
@@ -115,7 +115,7 @@ export default Vue.extend({
   padding: $space--xs;
 }
 .maneuver--text-format {
-  font-size: $font-size--s;
+  font-size: $font-size--m;
 }
 .maneuver--format {
   font-family: $font--standard;
