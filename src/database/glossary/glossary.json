@@ -57,6 +57,11 @@
   },
   { "name": "Climb", "see": "Climbing" },
   {
+    "name": "Collision",
+    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve the following:\n* If it is an Obstacle, inflict _Vulnerable_ X on the target, where X is half the lower of the remaining _Forced Movement_ or the Obstacle's _Durability_. Reduce the remaining _Forced Movement_ by the Object's _Durability_. If there is still _Forced Movement_ remaining, _Destroy_ the Obstacle, inflict _Dazed_ 1 on the creature, and continue the Movement.\n* If it's a creature, inflict _Vulnerable_ X on both targets, where X is a quarter of the remaining _Forced Movement_. Reduce the remaining _Forced Movement_ by 4 times the secondary creature's Size, then split the remaining _Forced Movement_ between both Targets. If the secondary creature Negates the _Forced Movement_, Negate it for both Targets.\n\nIf the original Target is an Obstacle, instead inflict Damage on it rather than _Vulnerable_."
+  },
+  { "name": "Collide", "see": "Collision" },
+  {
     "name": "Controller",
     "effect": "Controller Disciplines specialize in applying status afflictions to foes and moving them about the battlefield, limiting their effectiveness and making foes easier targets for allies."
   },
@@ -108,7 +113,7 @@
   },
   {
     "name": "Forced Movement",
-    "effect": "_Push_, _Pull_, _Throw_, and _Slide_ effects. Whenever a creature suffering Forced Movement is moved into an Obstacle or creature, resolve the following:\n* If it is an Obstacle, inflict _Vulnerable_ X on the creature, where X is half the lower of the remaining _Forced Movement_ or the Obstacle's _Durability_. Reduce the remaining Forced Movement by the Object's _Durability_. If there is still Forced Movement remaining, _Destroy_ the Obstacle, inflict _Dazed_ 1 on the creature, and continue the Movement.\n* If it's a creature, inflict _Vulnerable_ X on both targets, where X is a quarter of the remaining Forced Movement. Reduce the remaining Forced Movement by 4 times the secondary creature's Size, then split the remaining Forced Movement between both Targets. If the secondary creature Negates the Forced Movement, Negate it for both Targets."
+    "effect": "Any effect that moves a creature unwillingly, such _Push_, _Pull_, _Throw_, and _Slide_ effects. This Movement does not trigger _Punish_ _Reactions_ but does trigger _Collision_ effects."
   },
   { "name": "Forcibly Moved", "see": "Forced Movement" },
   {
