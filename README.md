@@ -40,9 +40,9 @@ BIG POST-PLAYTEST REWORK
 
 - OBJECTIVE: Make a satisfying weapon-based gameplay loop that works well.
 
-- Add Equipment (mostly just Water Flasks)
+* Add Equipment (mostly just Water Flasks)
 
-- Change most 'Interacts' to 'On Attack'
+* Change most 'Interacts' to 'On Attack'
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
