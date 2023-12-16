@@ -11,7 +11,6 @@ declare interface IAttackData extends IManeuverData {
   category?: string
   chart: IChartData
   class: string
-  damagetype: string
   charged_effect?: string
   speed: number
 }
@@ -46,6 +45,8 @@ declare interface IChartData {
   roll: Array<string>
   damage?: Array<number>
   status: Array<string>
+  damage_type: string
+  keywords: Array<string>
 }
 declare interface IDefenseData {
   additional?: string
@@ -115,21 +116,32 @@ declare interface INpcData {
   weapons: Array<string>
 }
 
-declare interface IManeuverData {
+declare interface IAbilityData {
   area?: string
   boost?: string
   cost?: string
   desc: string
   effect: string
   keywords?: Array<string>
-  manifest?: string
   move?: string
   name: string
-  range?: IRangeData
+  range?: Array<IRangeData>
   reqs?: string
-  special: string
+  special?: string
   chart?: IChartData
+}
+
+declare interface IManeuverData extends IAbilityData {
+  manifest?: string
   trigger?: string
+  type: string
+  weapon?: string
+}
+
+declare interface ITechData extends IAbilityData {
+  category: string
+  speed: string
+  target?: string
   type: string
   weapon?: string
 }
@@ -228,31 +240,6 @@ declare interface IStatusData {
   type?: string
 }
 
-declare interface ITechData {
-  area?: string
-  boost?: string
-  category: string
-  cost?: string
-  damagetype?: string
-  desc: string
-  effect: string
-  maneuver?: string
-  imbue?: string
-  keywords?: Array<string>
-  linked?: string
-  move?: string
-  name: string
-  reaction?: string
-  range?: IRangeData
-  reqs?: string
-  special?: string
-  speed: string
-  target?: string
-  type: string
-  chart?: IChartData
-  weapon?: string
-}
-
 declare interface ITerrainData {
   desc: string
   effect: string
@@ -260,6 +247,7 @@ declare interface ITerrainData {
   keywords: Array<string>
   negate: string
   overrides: Array<string>
+  remove: string
 }
 
 declare interface ITraitData {
@@ -273,6 +261,7 @@ declare interface ITraitData {
 declare interface IWeaponData extends IAttackData {
   durability?: number
   itemtype?: string
+  keywords: Array<string>
   hands: number
   hardness?: number
   material: string

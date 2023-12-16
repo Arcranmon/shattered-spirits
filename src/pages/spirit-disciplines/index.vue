@@ -122,8 +122,8 @@ export default Vue.extend({
     return {
       disciplineCategories: ['Earth', 'Water'],
       selectedCategories: ['Earth', 'Water'],
-      disciplineTypes: ['Land', 'Stone', 'Grounding', 'Stoneheart', 'Tremorsight', 'Tide'],
-      selectedTypes: ['Land', 'Stone', 'Tide'],
+      disciplineTypes: ['Land', 'Stone', 'Grounding', 'Stoneheart', 'Tremorsight', 'Tide', 'Frost'],
+      selectedTypes: ['Land', 'Stone', 'Tide', 'Frost'],
       disciplineRoles: ['Any', 'Artillery', 'Controller', 'Courier', 'Defender', 'Shaper', 'Striker', 'Supporter', 'Survivor'],
       primaryRole: 'Any',
       secondaryRole: 'Any',

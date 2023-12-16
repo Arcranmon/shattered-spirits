@@ -7,15 +7,15 @@
     "cost": "1 + [_Reeling_] _Momentum_",
     "trigger": "You are Attacked, take Damage, or gain Status.",
     "effect": "Gain 1 _Fleeting_ _Defense_ of your choice. You may choose to gain the _Parry_ effect of a _Wielded_, undamaged piece of _Equipment_. After resolving this, gain _Reeling_ 1.",
-    "special": "If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Damaged_.",
-    "boost": "Choose any:\n* 2 _Momentum_: Gain the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Gain the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
+    "special": "If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Sundered_.",
+    "boost": "Choose any:\n* 2 _Momentum_: Gain the _Parry_ effect of a _Sundered_ Weapon.\n* 2 _Momentum_: Gain the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
   },
   {
     "name": "Aftershock",
     "desc": "You amplify the impact of a foe hitting the ground, creating a resonant quake.",
     "type": "Reaction",
     "cost": "2 _Momentum_",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "trigger": "A foe in temporary _Earthen_ _Rough Terrain_ created by a _Quaking Earth_ ability is knocked _Prone_.",
     "effect": "Choose one:\n* Inflict _Vulnerable_ 1 in a _Burst_ 1 around the Target.\n* Remove up to 3 _Vulnerable_ from the _Target_, dealing 2 Damage for each.",
     "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's _Reposition_ distance. Resolve both effects, then inflict _Reeling_ 1 [_Avoidable_] in a _Burst_ 1."
@@ -24,7 +24,7 @@
     "name": "Aggressive Orders",
     "desc": "You urge a nearby all on, allowing them a strike.",
     "type": "Action",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "cost": "1 _AP_, 1 _Momentum_",
     "effect": "Choose an ally within Range. Grant them a _Free Turn_ where they may make a _Minor Attack_ and _Step_, but must Target a creature within Range 3 of you.",
     "boost": "2 _Momentum_: Instead, your ally may either make a _Major Attack_ instead of a _Minor Attack_ or a _Reposition_ _Move_ instead of _Step_. This cost may be paid by you, the Target, or split between the two of you."
@@ -284,7 +284,7 @@
     "name": "Gap in the Armor!",
     "desc": "You call out a hole in an opponent's defenses, allowing an ally to strike true.",
     "type": "Reaction",
-    "range": { "category": "Ranged", "value": 12 },
+    "range": [{ "category": "Ranged", "value": 12 }],
     "cost": "1 _Momentum_",
     "trigger": "An ally attacks a foe with _Insight_.",
     "effect": "Before resolving the Attack remove up to 3 _Insight_ from the Target. Add _Dazed_ _0/0/1/2_ and [_Pierce_ X] to the Attack, where X is the _Insight_ removed."
@@ -293,7 +293,7 @@
     "name": "Guiding Hand",
     "desc": "You gently push an ally out of harm's way, guiding them to a safer locale.",
     "type": "Stunt",
-    "range": { "category": "Melee", "value": 1 },
+    "range": [{ "category": "Melee", "value": 1 }],
     "cost": "1 _Momentum_",
     "effect": "Choose an adjacent ally and inflict _Slide_ 2.",
     "boost": "You may instead make a _Minor Attack_ against an ally. Do not deal Damage and only inflict status of your choice. You must inflict any _Forced Movement_ caused by the attack."
@@ -317,7 +317,7 @@
     "name": "Inspire",
     "desc": "You call out to an ally, filling them with the drive to push on.",
     "type": "Reaction",
-    "range": { "category": "Ranged", "value": 12 },
+    "range": [{ "category": "Ranged", "value": 12 }],
     "cost": "2 _Momentum_",
     "trigger": "A _Phase_ begins.",
     "effect": "Choose any ally within Range. Grant them _Vigor_ 2 and 2 _Fleeting_ _Poise_. They may immediately _Recover_, but may only spend the _Poise_ granted by this ability."
@@ -330,8 +330,8 @@
     "cost": "1 + [_Reeling_] _Momentum_",
     "trigger": "An adjacent ally is Attacked, takes Damage, or gain Status.",
     "effect": "Your ally gains 1 _Fleeting_ _Defense_ of your choice. You may then grant them the _Parry_ effect of a _Wielded_, undamaged piece of _Equipment_. After resolving this, gain _Reeling_ 1.",
-    "special": "If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Damaged_.",
-    "boost": "Choose any:\n* 2 _Momentum_: Grant the _Parry_ effect of a _Damaged_ Weapon.\n* 2 _Momentum_: Grant the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
+    "special": "If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Sundered_.",
+    "boost": "Choose any:\n* 2 _Momentum_: Grant the _Parry_ effect of a _Sundered_ Weapon.\n* 2 _Momentum_: Grant the _Parry_ benefits of two _Wielded_ _Weapons_ against the triggering _Attack_."
   },
   {
     "name": "Interact",
@@ -345,7 +345,7 @@
     "name": "Jagged Earth",
     "desc": "You churn the spikes beneath a foe, forcing them to choose how to defend.",
     "type": "Reaction",
-    "range": { "category": "Ranged", "value": 3 },
+    "range": [{ "category": "Ranged", "value": 3 }],
     "cost": "1 _Momentum_",
     "trigger": "A creature on an _Earthen_ _Jagged_ space is Attacked.",
     "effect": "The Target chooses: Either they immediately suffer the end of turn effect of _Jagged_, or their Attacker gains a +1 _Bonus_.",
@@ -399,7 +399,7 @@
     "desc": "You set your stance, causing the earth around you to quake violently.",
     "keywords": ["Earth", "Spirit"],
     "type": "Action",
-    "range": { "category": "Self" },
+    "range": [{ "category": "Self" }],
     "area": "_Burst_ 1",
     "cost": "1 _AP_",
     "effect": "Until you leave your current space, _Earthen_ spaces in the _Area_ are considered _Rough_. Additionally, any creature that end their _Turn_ in one of these spaces or enters one of these spaces gains _Exposed_ 1 (maximum once per _Turn_).",
@@ -419,7 +419,7 @@
     "name": "Marching Tune",
     "desc": "You urge an ally forward, allowing them to more swiftly respond.",
     "type": "Action",
-    "range": { "category": "Ranged", "value": 12 },
+    "range": [{ "category": "Ranged", "value": 12 }],
     "cost": "1 _AP_",
     "effect": "Choose any ally within Range. Grant them _Joyful_ 1, _Accelerate_."
   },
@@ -427,7 +427,7 @@
     "name": "Mark Prey",
     "desc": "You focus your attention on a single creature, ignoring all other potential targets.",
     "type": "Action",
-    "range": { "category": "Ranged", "value": 20 },
+    "range": [{ "category": "Ranged", "value": 20 }],
     "cost": "1 _AP_",
     "effect": "Choose a creature within Range and inflict _Insight_ 2 on them. Until that creature is _Defeated_ or you use this _Action_ again deal +2 _Damage_ to that creature and add [_Pierce_ 1] if they have _Insight_, but you have _Disadvantage_ on all Attacks against other creatures."
   },
@@ -435,7 +435,7 @@
     "name": "Mark Target",
     "desc": "You focus your attention on a single target, setting them up for a deadly blow.",
     "type": "Action",
-    "range": { "category": "Ranged", "value": 12 },
+    "range": [{ "category": "Ranged", "value": 12 }],
     "cost": "1 _AP",
     "effect": "Choose a foe within Range. Inflict _Insight_ 2, _Reeling_ 1. If you do not see them as _Obstructed_/_Obscured_ from your current position, inflict an additional _Insight_ 1. After resolving this effect, you may convert any amount of _Insight_ on the target into _Exposed_."
   },
@@ -523,7 +523,7 @@
     "name": "Prideful Boast",
     "desc": "You let out a challenge, drawing the attention of nearby foes.",
     "type": "Action",
-    "range": { "category": "Self" },
+    "range": [{ "category": "Self" }],
     "area": "_Burst_ 2",
     "move": "None",
     "cost": "1 _AP_",
@@ -533,7 +533,7 @@
     "name": "Prideful Clash",
     "desc": "When a nearby foe insults your pride by attacking another you can't help but retaliate.",
     "type": "Reaction",
-    "range": { "category": "Ranged", "value": 4 },
+    "range": [{ "category": "Ranged", "value": 4 }],
     "cost": "1 _Momentum_",
     "trigger": "A foe within Range attacks an ally.",
     "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. On a _Graze_+, grant the triggering ally _Courageous_ 1.",
@@ -544,7 +544,7 @@
     "name": "Provoke",
     "desc": "You draw the ire of a nearby foe with insults or guile, forcing them to focus on you.",
     "type": "Stunt",
-    "range": { "category": "Ranged", "value": 4 },
+    "range": [{ "category": "Ranged", "value": 4 }],
     "cost": "1 _Momentum_",
     "effect": "Inflict your choice of _Exposed_/_Enraged_ 1 on the creature.",
     "special": "You may use this _Stunt_ more than once per _Turn_, but each successive use against the same creature costs 1 more."
@@ -566,7 +566,7 @@
     "cost": "1 _AP_",
     "effect": "You become _Guarding_. Create an _Arc_ with a _Range_ of _Self_. Gain 1 _Guard_ against all effects that originate from or pass through one of those spaces. At the end of each of your _Turns_ you may move this _Arc_.",
     "special": "As a part of this _Action_ you may also choose an undamaged, _Wielded_ piece of _Equipment_. It becomes _Occupied_ so long as you are _Guarding_, but you gain its _Parry_ benefit against all effects that pass through or originate in the _Arc_. End _Guarding_ if you are _Disarmed_ of _Equipment_ used for this _Action_.",
-    "boost": "2 _Momentum_: You may choose a piece of _Damaged_ _Equipment_."
+    "boost": "2 _Momentum_: You may choose a piece of _Sundered_ _Equipment_."
   },
   {
     "name": "Rally",
@@ -629,7 +629,7 @@
     "desc": "You calm the spirits of nearby water, creating a safe realm for your allies.",
     "keywords": ["Spirit", "Water"],
     "type": "Action",
-    "range": { "category": "Self" },
+    "range": [{ "category": "Self" }],
     "area": "_Burst_ 1",
     "cost": "1 _AP_",
     "effect": "Until the end of the _Round_ you and your allies may choose to ignore the effects of _Watery_ _Terrain_ in the _Area_ (but must still _Swim_ if applicable) and may move through _Water Veil_ spaces without expending additional Movement. Additionally, _Watery_ _Terrain_ within the _Area_ is considered _Fortified_ _Terrain_ for you and your allies.",
@@ -641,7 +641,7 @@
     "name": "Scathing Words",
     "desc": "You unleash a string of insults, disrupting and disorienting a foe.",
     "type": "Stunt",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "move": "None",
     "cost": "2 _Momentum_",
     "effect": "Choose a foe within Range. Inflict _Anguished_/_Enraged_ 1, _Reeling_ 1. If one of their allies was defeated this _Phase_, instead inflict _Anguished_/_Enraged_ 2, _Reeling_ 1."
@@ -650,7 +650,7 @@
     "name": "Scouting",
     "desc": "You cast a watchful eye towards a foe, finding holes in their defenses.",
     "type": "Stunt",
-    "range": { "category": "Ranged", "value": 20 },
+    "range": [{ "category": "Ranged", "value": 20 }],
     "cost": "1 _Momentum_",
     "effect": "Choose a creature within Range. Inflict _Insight_ 1 on them, or _Insight_ 2 if you do not see them as _Obscured_ from your current position."
   },
@@ -691,7 +691,7 @@
     "desc": "You pull forth water, creating a temporary shield against an attack.",
     "keywords": ["Defensive", "Efficient", "Spirit", "Water"],
     "type": "Reaction",
-    "range": { "category": "Ranged", "value": 3 },
+    "range": [{ "category": "Ranged", "value": 3 }],
     "cost": "1 + [_Reeling_] _Momentum_",
     "trigger": "You or any ally within _Range_ are Attacked, take Damage, or gain Status.",
     "effect": "_Draw_ 1 within _Range_. If you cannot, this _Manuever_ fails. Grant the target of the Attack a _Fleeting_ _Defense_ of their choice, 1 _Guard_ against the triggering _Attack_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ to _Fire_ Damage for this Attack. After resolving this, gain _Reeling_ 1.",
@@ -703,7 +703,7 @@
     "desc": "You propel a heavy stone forward, potentially crushing a foe.",
     "keywords": ["Earth", "Spirit"],
     "type": "Action",
-    "range": { "category": "Ranged", "value": 4 },
+    "range": [{ "category": "Ranged", "value": 4 }],
     "target": "A _Size_ 1 or smaller _Earthen_ _Obstacle_ within Range.",
     "cost": "1 _AP_",
     "effect": "_Forceful_ _Slide_ 4 the _Obstacle_.",
@@ -751,7 +751,7 @@
     "desc": "You form jagged lines of earth, making the way forward impassable.",
     "type": "Action",
     "cost": "1 _AP_",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "effect": "Choose one:\n* Choose a _Jagged_ space within range. Replace it with an _Earth Spire_.\n* Make 3 contiguous _Earthen_ spaces within Range _Jagged_.",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Instead, pick a point within _Range_ and, in a _Burst_ 1, make all _Jagged_ spaces _Earth Spire_s and all _Earthen_ spaces _Jagged_."
   },
@@ -760,7 +760,7 @@
     "desc": "Your spirit takes physical form, fighting alongside you.",
     "keywords": ["Manifest", "Spirit"],
     "type": "Reaction",
-    "range": { "category": "Ranged", "value": "Spirit _Reposition_ distance." },
+    "range": [{ "category": "Ranged", "value": "Spirit _Reposition_ distance." }],
     "cost": "6 _Momentum_",
     "trigger": "_Respite_ begins.",
     "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you.",
@@ -815,18 +815,29 @@
     "desc": "You inspire an ally, rallying their defenses while drawing the ire of their attacker.",
     "type": "Reaction",
     "cost": "3 _Momentum_",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "trigger": "An ally within Range takes Damage or gains a Status.",
     "effect": "Your ally treats their _Reeling_ as half its current value this _Turn_. If they use a _Defensive_ _Reaction_ against the triggering effect they gain _Courage_ 1, and you may inflict _Marked_ on their attacker."
+  },
+  {
+    "name": "Surging Flourish",
+    "desc": "You build up a powerful surge of water as you attack, unleashing it in a powerful blast.",
+    "keywords": ["Flourish"],
+    "type": "Gambit",
+    "cost": "2 _Momentum_",
+    "reqs": "You complete an Attack against a foe within Range 6.",
+    "effect": "Immediately _Draw_ 1 within Range. Inflict _Push_ 2, _Reeling_ 1 on the original Target.",
+    "boost": "1 _Momentum_: Increase the _Push_ by 2. You may use this _Boost_ twice.",
+    "special": "You may instead _Draw_ 2; if you do, add _Soaked_ 1."
   },
   {
     "name": "Swift Manifestation",
     "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
     "keywords": ["Manifest", "Spirit"],
     "type": "Action",
-    "range": { "category": "Ranged", "value": "Spirit _Reposition_ distance." },
+    "range": [{ "category": "Ranged", "value": "Spirit _Reposition_ distance." }],
     "cost": "None",
-    "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_, originating from that space. If you choose a _Major Source_, reduce the Cost by 1. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the Target space, or an adjacent one.",
+    "effect": "Choose an unoccupied _Minor Source_ within Range or an unoccupied space adjacent to a _Major Source_. Immediately use one of your spirit's _Minor Attacks_, originating from that space. If you choose a _Major Source_, gain a +1 _Bonus_. After resolving the Attack you may choose to have your _Spirit_ remain _Summoned_ in the Target space or an adjacent one.",
     "boost": "2 _Momentum_: Instead, use one of your spirit's _Major Attacks_."
   },
   {
@@ -834,7 +845,7 @@
     "desc": "You quickly scan the battlefield, finding an opportunity as quickly as possible.",
     "type": "Stunt",
     "cost": "0 _Momentum_ (see Special)",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "effect": "Place a _Weapon_ within Range. You may not place it adjacent to yourself or an ally. This _Weapon_ is a _Small Improvised_/_Medium Improvised_, is made of the same Material as the Terrain or an adjacent Obstacle (you choose), and has the _Fragile_ and _Opportune_ keywords. Only you and your allies may use this Weapon.",
     "special": "Increase the cost of this Stunt by 1 each time you use it. Reduce the cost by 1 at _Respite_."
   },
@@ -845,6 +856,16 @@
     "cost": "3 _Momentum_",
     "effect": "Choose an ally within Range 4. Your ally may immediately make a _Minor Attack_ against the same creature as you. Resolve these _Attacks_ in either order. After resolving both _Attacks_ inflict _Vulnerable_ X, where X is equal to 4 - the difference between your _Attack Rolls_ (minimum 1).",
     "boost": "1 _Momentum_: Instead, choose any ally, ignoring range."
+  },
+  {
+    "name": "Tidal Current",
+    "desc": "You push and pull the water near you, spreading it across the field.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "range": [{ "category": "Ranged", "value": 4 }],
+    "effect": "Gain 1 _Momentum_, then _Draw_ 4 within _Range_. After, place _Wet_ spaces adjacent to the spaces you _Drew_ from, as if you inflicted _Push_/_Pull_ 1 on the original space. You must apply _Push_/_Pull_ for all spaces. If you _Drew_ multiple times from the same _Source_ place _Wet_ spaces in a _Line_ equal to the number of times you _Drew_ from it.",
+    "boost": "Choose any:\n* 1 _Momentum_: _Draw_ 2 more. You may repeat this _Boost_.\n* 1 _Momentum_: Increase the _Push_/_Pull_ by 1. You may repeat this _Boost_, but may only use it 3 times.",
+    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Choose a space within Range that is/is adjacent to a _Minor Source_. Resolve the Effect from that space and freely apply 1 _Momentum_ worth of _Boost_."
   },
   {
     "name": "To Me!",
@@ -865,7 +886,7 @@
     "name": "Victory Cry",
     "desc": "You let out a triumphant yell, spurring your allies onward.",
     "type": "Reaction",
-    "range": { "category": "Self" },
+    "range": [{ "category": "Self" }],
     "area": "_Burst_ 3",
     "cost": "2 _Momentum_",
     "trigger": "Any ally defeats a foe.",
@@ -876,16 +897,16 @@
     "desc": "You pull a stone loose, preparing it to fire a moment's notice.",
     "keywords": ["Earth", "Spirit"],
     "type": "Gambit",
-    "range": { "category": "Ranged", "value": 4 },
+    "range": [{ "category": "Ranged", "value": 4 }],
     "cost": "None",
     "reqs": "_Attack_ is _Chip Shot_ or _Stone Strike_.",
-    "effect": "Choose an _Earthen_ _Obstacle_ or _Jagged_ space within _Range_. At any point after this _Phase_ as a _Reaction_ you may use the triggering Attack, maintaining all original keywords and originating it from the _Obstacle_ or space. When used in this way, ignore the _Minimum Range_ of these attacks. If the _Obstacle_ or _Terrain_ is removed prior to using this _Reaction_ the effect is lost."
+    "effect": "Do not make the Attack now. Instead, choose an _Earthen_ _Obstacle_ or _Jagged_ space within _Range_. At any point after this _Phase_ as a _Reaction_ you may use the triggering Attack, maintaining all original keywords and originating it from the _Obstacle_ or space. When used in this way, ignore the _Close Range_ of these attacks. If the _Obstacle_ or _Terrain_ is removed prior to using this _Reaction_ the effect is lost."
   },
   {
     "name": "Warcry",
     "desc": "You let out an inspiring cry, filling your allies with the soul of battle.",
     "type": "Stunt",
-    "range": { "category": "Ranged", "value": 6 },
+    "range": [{ "category": "Ranged", "value": 6 }],
     "cost": "1 _Momentum_",
     "effect": "Choose an ally within Range and grant them _Vigor_ 2, _Enraged_ 1. You may choose the target of the creature's rage, but they must be within Range 3 of you.",
     "special": "If you _Defeated_ an enemy this _Turn_, instead grant _Vigor_ 3, _Enraged_ 2.",
@@ -907,8 +928,8 @@
     "type": "Reaction",
     "cost": "2 _Momentum_",
     "trigger": "You or an ally within Range 4 would gain _Soaked_ or ends their _Turn_ in a _Watery_ space.",
-    "effect": "Your ally may resolve any effects of their choice that would trigger from gaining _Soaked_. After, they do not gain _Soaked_, but instead 4 _Vigor_, and regain 1 _Defense_ of their choice. While your ally has this _Vigor_, they have _Resistance_ to _Flame_ Damage.",
-    "special": "If you used this ability based on an ally ending their _Turn_ in a _Watery_ space, reduce its value by 1.",
+    "effect": "Your ally may resolve any effects of their choice that would trigger from gaining _Soaked_. After, they do not gain any _Soaked_, but instead 3 _Vigor_ + the _Soaked_ value (1 if used based on a _Watery_ space), and regain 1 _Defense_ of their choice. While your ally has this _Vigor_, they have _Resistance_ to _Flame_ Damage.",
+    "special": "If you used this ability based on an ally ending their _Turn_ in a _Watery_ space, reduce the space's value by 1.",
     "manifest": "Add [_Manifest_]. The Cost is now none and Range is instead your spirit's Reposition distance. Resolve the above effects for both your _Spirit_ and the Target, and instead grant _Vigor_ 6."
   },
   {

@@ -15,12 +15,11 @@
   },
   { "name": "Blinded", "see": "Blind" },
   {
-    "name": "Damaged",
-    "effect": "Damaged only applies to _Equipment_. A Damaged Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Damaged, instead inflict _Shred_ 1. If a Damaged Weapon is Damaged again it is instead broken and may not be used until repaired.",
-    "remove": "Only Techniques that explicitly remove Damaged remove Damaged. Otherwise, it can be removed outside of combat with [travel mechanic here].",
+    "name": "Sundered",
+    "effect": "Sundered only applies to _Equipment_. A Sundered Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Sundered, instead inflict _Shred_ 1. If a Sundered Weapon is Sundered again it is instead broken and may not be used until repaired.",
+    "remove": "Only Techniques that explicitly remove Sundered remove Sundered. Otherwise, it can be removed outside of combat with [travel mechanic here].",
     "type": "Status Effect"
   },
-  { "name": "Damage", "see": "Damaged" },
   {
     "name": "Disarmed",
     "effect": "When a creature inflicts Disarmed the Target immediately loses a piece of Equipment they have _Wielded_ or _Equipped_. The attacker may then place it in any space adjacent to the Target.",
@@ -200,29 +199,31 @@
       "<ins>Soaked:</ins>  If a creature has any Soaked Tokens and would gain a Burn Token, they instead remove their topmost Soaked Token."
     ],
     "recover": "A value of _Reflex_ removes Burn equal to one less than the _Reflex_ spent. A creature may choose to end their turn Prone to treat the _Reflex_ spent as twice as much.",
-    "type": "Hide",
-    "see": "Hide"
+    "type": "Hide"
   },
   {
     "name": "Frost",
     "desc": "An elemental affliction caused by freezing temperatures that limits mobility.",
-    "effect": "A creature takes _True_ Damage for every space they move in a Turn, up to double their topmost Frost Token.",
-    "special": "The Cost of all Evade Reactions is increased by a creature's topmost Frost Token.",
-    "reacts": [
-      "<ins>Burn:</ins> If a creature has any Burn Tokens and would gain a Frost Token, they instead remove their topmost Burn Token.",
-      "<ins>Soaked:</ins> If a creature has any Soaked Tokens and would gain a Frost Token, remove their topmost Soaked Token. The creature gains an additional Frost Token equal to the value of that Soaked Token. This new Frost Token does not create additional Frost Tokens."
-    ],
-    "remove": "A creature removes their topmost Frost Token at the end of each of their turns.",
-    "recover": "A value of _Grit_ removes Frost equal to one less than the _Grit_ spent.",
-    "type": "Hide",
-    "see": "Hide"
+    "effect": "While a creature has Frost they take 2 _Cold_ Damage if they Move on their Turn, then reduce their Frost value by 1. Additionally, Attackers may treat Frost as _Exposed_ if they wish.",
+    "special": "While a creature has any Frost, they have _Resistance_ 3 (_Fire_) and _Vulnerability_ 2 (_Cold_). Do not apply this _Vulnerability_ to any Damage dealt due to Frost.",
+    "reacts": ["<ins>Burn:</ins> If a Frosted creature would gain _Burn_, instead reduce their Frost value by an equivalent amount."],
+    "negate": "A creature may expend 1 _Grit_ to negate 1 Frost.",
+    "remove": "Reduce a creature's Frost value by 1 whenever they take _Fire_ Damage. Aside from that, Frost is only removed through triggering and by effects that explicitly remove it.",
+    "type": "Elemental Affliction"
   },
   {
     "name": "Soaked",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "While Soaked a creature has _Resistance_ to _Fire_ Damage and is _Vulnerable_ to _Lightning_ Damage.",
-    "remove": "Soaked is removed when a creature takes _Fire_ or _Lightning_ Damage.",
-    "type": "Hide"
+    "effect": "Whenever a Soaked creature takes _Fire_, _Lightning_, or _Cold_ Damage, reduce their Soaked by 1 and resolve the following additional effects:\n* _Cold_: Inflict _Frost_ 1.  Do not trigger any additional Soaked effects from this Status.",
+    "reacts": [
+      "<ins>Burn:</ins> If a Soaked creature would gain _Burn_, instead reduce their _Soaked_ value by an equivalent amount.",
+      "<ins>Frost:</ins> If a Soaked creature would gain _Frost_, reduce their _Soaked_ value by an equivalent amount, then deal that much _Cold_ Damage. Do not trigger any additional Soaked effects from this Damage.",
+      "<ins>Shock:</ins> If a Soaked creature would gain _Shock_, reduce their _Soaked_ value by an equivalent amount, then deal that much _Lightning_ Damage. Do not trigger any additional Soaked effects from this Damage."
+    ],
+    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Shock_), _Resilience_ (_Burn_), _Susceptibility_ (_Frost_, _Shock_). Do not apply this _Vulnerability_ to any Damage dealt due to Soaked.",
+    "negate": "Soaked may not be Negated.",
+    "remove": "A creature reduces their Soaked by 1 at the end of each of their Turns where they did not gain Soaked. Additionally, _Water_ abilities may _Draw_ from Soaked creatures, removing _Soaked_ 1 to _Draw_ 1.",
+    "type": "Elemental Affliction"
   },
   {
     "name": "Courageous",

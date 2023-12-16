@@ -55,8 +55,9 @@
         <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
           <v-expansion-panel style="background-color: inherit;"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-chart"
-              ><display-tooltip-text v-if="tech.HasDamageType" :string="tech.DamageTypeHeader" /><chart-table :chart="tech.Chart"
+            <v-expansion-panel-content class="expand--body-chart">
+              <display-tooltip-text v-if="tech.Chart.HasDamageType" :string="tech.Chart.DetailsHeader" />
+              <chart-table :chart="tech.Chart"
             /></v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>

@@ -15,9 +15,6 @@ class Weapon extends Attack {
   get Durability() {
     return this.durability_
   }
-  get DurabilityHeader() {
-    if (this.durability_ != 0) return '**Durability:** ' + this.durability_
-  }
   get Hardness() {
     return this.hardness_
   }
@@ -29,9 +26,9 @@ class Weapon extends Attack {
   }
   get HandsPhrase() {
     if (this.category_ == 'Natural') return ''
-    if (this.hands_ == 0) return '_No Hands_, '
-    if (this.hands_ == 1) return '_One-Handed_, '
-    else return '_Two-Handed_, '
+    if (this.hands_ == 0) return '_No Handed_ '
+    if (this.hands_ == 1) return '_One-Handed_ '
+    else return '_Two-Handed_ '
   }
   get HasParry() {
     return this.parry_.length > 0
@@ -43,10 +40,17 @@ class Weapon extends Attack {
     return this.material_ != ''
   }
   get MaterialHeader() {
-    return '**Material:** ' + this.material_
+    return '**Material:** ' + this.material_ + ', _Durability_ ' + this.durability_
   }
   get Weight() {
     return this.weight_
+  }
+  get TraitsHeader() {
+    var traits_string = '**Traits:** ' + this.HandsPhrase + this.CategoryHeader + this.WeightHeader
+    if (this.HasKeywords) {
+      traits_string += ' [' + this.KeywordsHeader + ']'
+    }
+    return traits_string
   }
   get WeightHeader() {
     if (this.Category == 'Unarmed') return ''
@@ -57,6 +61,12 @@ class Weapon extends Attack {
     if (this.Category == 'Error') return ''
     if (this.Category == 'Unarmed') return require('@/assets/Unarmed.svg')
     return require('@/assets/' + this.Category + ' Weapon.svg')
+  }
+  public get HasKeywords() {
+    return this.keywords_.length > 0
+  }
+  public get KeywordsHeader() {
+    return '_' + this.keywords_.join('_, _') + '_'
   }
 
   // ==========================================================

@@ -58,7 +58,8 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="4" v-for="item in ['Tide']" :key="item"> <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
+          ><v-col :cols="4" v-for="item in ['Tide', 'Frost']" :key="item">
+            <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
         ></v-row>
         <h4>Water Spirit Forms</h4>
         <display-tooltip-text

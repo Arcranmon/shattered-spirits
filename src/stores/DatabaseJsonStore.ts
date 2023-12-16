@@ -143,17 +143,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var weapon = Weapons.find((x) => x.name.trim() === inword.trim())
       if (weapon == undefined) {
-        weapon = {
-          desc: 'Missing!',
-          category: 'None',
-          damagetype: 'None',
-          parry: 'None',
-          range: null,
-          chart: null,
-          speed: 0,
-          name: inword,
-          type: 'None',
-        }
+        return new Weapon()
       }
       return Weapon.Deserialize(<IWeaponData>(<unknown>weapon))
     }

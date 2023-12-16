@@ -98,4 +98,4 @@ Available on https://game-icons.net.
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
 Shaper, Striker, Supporter, Artillery - Delapouite
-Controller, Courier, Defender - Lorc
+Controller, Courier, Defender, Frost, Blast, Burn, Gale, Storm - Lorc
