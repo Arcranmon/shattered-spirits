@@ -1,23 +1,22 @@
 import { store } from '@/store'
-import { Defense } from '@/class'
 
 class Stance {
-  private accumulate_: string
+  private respite_: string
   private desc_: string
   private effect_: string
-  private defense_: Defense
-  private reqs_: string
   private name_: string
   private special_: string
+  private stamina_: number
+  private traits_: Array<string>
 
   public constructor() {
-    this.accumulate_ = ''
+    this.respite_ = ''
     this.desc_ = ''
     this.effect_ = ''
-    this.defense_ = null
-    this.reqs_ = ''
+    this.stamina_ = 0
     this.name_ = ''
     this.special_ = ''
+    this.traits_ = []
   }
 
   public get Desc() {
@@ -31,11 +30,9 @@ class Stance {
   // ==========================================================
   // UTILITY
   // ==========================================================
-  public get HasAccumulate() {
-    return this.accumulate_.length > 0
-  }
-  public get AccumulateHeader() {
-    return '**Accumulate:** ' + this.accumulate_
+  public get RespiteHeader() {
+    if (this.respite_.length > 0) return '**Respite:** ' + this.respite_
+    return ''
   }
   public get HasEffect() {
     return this.effect_.length > 0
@@ -43,14 +40,8 @@ class Stance {
   public get EffectHeader() {
     return '**Effect:** ' + this.effect_
   }
-  public get HasDefense() {
-    return this.defense_ != null
-  }
-  public get DefenseHeader() {
-    return '**Defense:** ' + this.defense_.FormattedText
-  }
-  public get Defense() {
-    return this.defense_
+  public get StaminaHeader() {
+    return '**Stamina:** ' + this.stamina_
   }
   public get HasSpecial() {
     return this.special_.length > 0
@@ -58,11 +49,11 @@ class Stance {
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
-  public get HasRequirements() {
-    return this.reqs_ != ''
+  public get HasTraits() {
+    return this.traits_.length > 0
   }
-  public get RequirementsHeader() {
-    return '**Requirements:** ' + this.reqs_
+  public get TraitsHeader() {
+    return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_'
   }
 
   // ==========================================================
@@ -76,15 +67,13 @@ class Stance {
   }
 
   public setStanceData(data: IStanceData): void {
-    this.accumulate_ = data.accumulate || ''
+    this.respite_ = data.respite || ''
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
     this.name_ = data.name || ''
-    this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
-    if ('defense' in data) {
-      this.defense_ = Defense.Deserialize(data.defense)
-    }
+    this.stamina_ = data.stamina || 0
+    this.traits_ = data.traits || []
   }
 }
 export default Stance

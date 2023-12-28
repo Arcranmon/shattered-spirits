@@ -56,7 +56,8 @@
           <v-expansion-panel style="background-color: inherit;"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
             <v-expansion-panel-content class="expand--body-chart">
-              <display-tooltip-text v-if="tech.Chart.HasDamageType" :string="tech.Chart.DetailsHeader" />
+              <div v-if="tech.Chart.HasDamageType"><display-tooltip-text :string="tech.Chart.DetailsHeader" /></div>
+              <div v-if="tech.Chart.HasOnMiss"><display-tooltip-text :string="tech.Chart.OnMissHeader" /></div>
               <chart-table :chart="tech.Chart"
             /></v-expansion-panel-content>
           </v-expansion-panel>

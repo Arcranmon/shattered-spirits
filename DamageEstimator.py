@@ -14,27 +14,35 @@ status_multipliers = {
     "Vulnerable": 0.75,
     "Slowed": 0.75,
     "Bleed": 1.0,
+    "Frost": 1.0,
     "Exposed": 1.0,
     "Impaired": 1.0,
-    "Restrained": 1.0,
-    "Prone": 1.25,
-    "Hobbled": 1.5,
+    "Restrained": 1.75,
+    "Prone": 1.5,
+    "Hobbled": 1.25,
     "Reeling": 1.25,
     "Break": 1.25,
+    "Blinded": 2,
 }
 
 keyword_multipliers = {
-    "Avoidable": -0.5,
-    "Groundsource": 0,
+    "Avoidable": -1.0,
+    "Cold": 0.0,
+    "Groundsource": 0.5,
     "Brawling": 0.25,
     "Overwhelming": 0.25,
     "Pierce": 0.5,
     "Remote": 1.0,
-    "Siege": 0
+    "Siege": 0,
+    "Fist": 0,
+    "Body": 0,
+    "Kick": 0,
+    "Fist/Body/Kick": 0
 }
 
 attack_range_multiplier = {
     "Melee": 1,
+    "Long Melee": 0.95,
     "Short": 0.9,
     "Medium": 0.8,
     "Long": 0.7
@@ -91,18 +99,18 @@ def find_attack(database, name):
     raise Exception("Attack not found.")
 
 
-def estimate_all_damage(database):
+def estimate_all_damage(database, threshold):
     data = get_data(database)
     invalid_attacks = {}
 
     for el in data:
         if("chart" in el):
-            oob, diff = estimate_damage(el, False, False)
-            if(oob):
+            diff = estimate_damage(el, False, False)
+            if(abs(diff) > threshold):
                 invalid_attacks[el["name"]] = diff
 
     for key in invalid_attacks:
-        print("    " + key + ": " + str(invalid_attacks[key]))
+        print("    " + key + ": " + str(-invalid_attacks[key]))
 
 
 def estimate_damage(attack, glancing, print_stats):
@@ -117,19 +125,18 @@ def estimate_damage(attack, glancing, print_stats):
     damage_chart = []
     status_chart = []
     speed = 1
-    bonus_damage = 0
+    bonus_damage =  [0]*11
     expected_targets = 1
     lvh = 'none'
     attack_class = MINOR_ATTACK
     override_range = ""
+    diff_speed = 0
     
     expected_damage = [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
-    momentum_value = 1.5
-
                 
     if("chart" in attack):
         if(not("damage" in attack["chart"])):
-            damage_chart = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            damage_chart = [0]*11
         else:                        
             damage_chart = attack["chart"]["damage"]
         status_chart = attack["chart"]["status"]
@@ -143,7 +150,9 @@ def estimate_damage(attack, glancing, print_stats):
         speed = int(attack["speed"][0])
     if("class" in attack):
         attack_class = (attack["class"] == 'Major Attack')+1
-    elif("weight" in attack): # Means that this is a weapon.
+    elif(attack.get("category", "") == "Shield"):
+        attack_class = MINOR_ATTACK
+    elif("hands" in attack): # Means that this is a weapon.
         attack_class = MAJOR_ATTACK
     else:
         attack_class = TECHNIQUE
@@ -155,8 +164,11 @@ def estimate_damage(attack, glancing, print_stats):
     if("analysis_notes" in attack):
         cost = cost + attack["analysis_notes"].get("fudge", 0)
         expected_targets = attack["analysis_notes"].get("expected_targets", 1)
-        bonus_damage = attack["analysis_notes"].get("bonus_damage", 0)
+        bonus_damage = attack["analysis_notes"].get("bonus_damage", [0]*11)
         override_range = attack["analysis_notes"].get("range", "")
+        diff_speed = attack["analysis_notes"].get("speed", 0)
+    
+    momentum_value = ((diff_speed if diff_speed != 0 else speed) + 2)/4
         
     if("hands" in attack and attack["hands"] == 2):
         cost += 1
@@ -165,12 +177,6 @@ def estimate_damage(attack, glancing, print_stats):
         expected_damage = [x / 2 for x in expected_damage]
     elif attack_class == TECHNIQUE:
         expected_damage = [x * 1.5 for x in expected_damage]
-
-    # Adjust for cost.
-    expected_damage = [x + (cost * momentum_value) for i, x in enumerate(expected_damage)]
-    
-    # Adjust for expected targets.
-    expected_damage = [x / expected_targets for x in expected_damage]
 
     speed_string = "Speed:                  1      2      3      4      5      6      7      8"
     speed_string = speed_string.replace("   " + str(speed) + "   ", "***"+ str(speed) + "***")
@@ -184,7 +190,7 @@ def estimate_damage(attack, glancing, print_stats):
     diff = 0
 
     keyword_bonus = 0
-    for keyword in attack["chart"].get("keywords", []):        
+    for keyword in attack["chart"].get("keywords", []):       
         keyword = keyword.replace('_', '')
         split_keywords = keyword.split(' ')
         if len(split_keywords) > 1:
@@ -196,23 +202,25 @@ def estimate_damage(attack, glancing, print_stats):
     if override_range == "":
         ranges = attack["range"]
     else:
-        ranges = [override_range]
+        ranges = override_range
 
     for range_index, attack_range in enumerate(ranges):    
-        straight_damage = [0, 0, 0, 0, 0, 0, 0, 0]
-        advantage_damage = [0, 0, 0, 0, 0, 0, 0, 0]
-        disadvantage_damage = [0, 0, 0, 0, 0, 0, 0, 0]
+        straight_damage = [0]*8
+        advantage_damage = [0]*8
+        disadvantage_damage = [0]*8
 
         thrown = "Thrown" in attack_range.get("special", "")
         range_category = "Melee"
 
         if attack_range["category"] == "Self":
             range_category = "Melee"
-        elif attack_range["value"] > 1 and attack_range["value"] <= 4:
+        elif attack_range["value"] > 1 and attack_range["value"] <= 2:
+            range_category = "Long Melee"
+        elif attack_range["value"] > 2 and attack_range["value"] <= 4:
             range_category = "Short"
         elif attack_range["value"] > 4 and attack_range["value"] < 8:
             range_category = "Medium"
-        elif attack_range["value"] > 8:
+        elif attack_range["value"] >= 8:
             range_category = "Long"
 
         range_modifier = 0
@@ -221,9 +229,15 @@ def estimate_damage(attack, glancing, print_stats):
 
         range_expected_damage = [x * (attack_range_multiplier[range_category]+range_modifier) for x in expected_damage]
 
+        # Adjust for cost.
+        range_expected_damage = [x + (cost * momentum_value) for x in range_expected_damage]
+        
+        # Adjust for expected targets.
+        range_expected_damage = [x / expected_targets for x in range_expected_damage]
+
         # Calculate the damage for each speed.
         for i in range(10,0,-1):
-            for j in range(0,8):
+            for j in range(8):
                 if(thrown and roll_chart[i] == "Graze"): 
                     continue
                 speed_dif = j-speed+1 # +1 because zero indexed
@@ -252,8 +266,8 @@ def estimate_damage(attack, glancing, print_stats):
                         status_damage = get_status_damage(status, glancing)
                         damage += status_damage
 
+                damage += bonus_damage[index]
                 if(roll_chart[index] != "Miss"): 
-                    damage += bonus_damage
                     damage += keyword_bonus
 
                 straight_damage[j] += straight[i]*damage
@@ -267,21 +281,28 @@ def estimate_damage(attack, glancing, print_stats):
             print(colored("Straight Attack:        " +  '  '.join(["{:.3f}".format(damage) for damage in straight_damage]), 'white'))
             print(colored("Advantage Attack:       " +  '  '.join(["{:.3f}".format(damage) for damage in advantage_damage]), 'green'))
             print(colored("Disadvantage Attack:    " +  '  '.join(["{:.3f}".format(damage) for damage in disadvantage_damage]), 'red'))
-        diff = max(abs(range_expected_damage[speed-1]-straight_damage[speed-1]), diff)
+        if diff_speed == 0:
+            diff = max(range_expected_damage[speed-1]-straight_damage[speed-1], diff, key=abs)
+        else:
+            diff_speed_expected_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
+            diff = max(diff_speed_expected_damage-straight_damage[speed-1], diff, key=abs)
+        if(print_stats):
+            print("\033[1mExpected Damage Difference: " + "{:.3f}".format(-diff) + "\033[0m") 
 
-    return diff > 0.1, diff
+    return diff
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--analyze_all", help="Analyze everything of that type.", action='store_true')
+    parser.add_argument("--threshold", help="How large of a gap between expected and actual damage to flag.", type=float, default=0.1)
     parser.add_argument("--type", help="What type of ability this is.", type=str)
     parser.add_argument("--name", help="Name of the ability.", type=str)
     parser.add_argument("--glancing", help="Whether or not to apply Glancing.", action='store_true')
     args = parser.parse_args()
 
     if(args.analyze_all):
-        estimate_all_damage(args.type)
+        estimate_all_damage(args.type, args.threshold)
     else:        
         attack = find_attack(args.type, args.name)
         estimate_damage(attack, args.glancing, True)

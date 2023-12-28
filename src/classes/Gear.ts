@@ -1,5 +1,4 @@
 import { store } from '@/store'
-import { Defense } from '@/class'
 
 class Gear {
   private name_: string

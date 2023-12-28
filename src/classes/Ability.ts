@@ -18,7 +18,7 @@ class Ability {
   protected special_: string
   protected chart_: Chart
 
-  public constructor() {
+  public constructor(name) {
     this.area_ = ''
     this.boost_ = ''
     this.cost_ = ''
@@ -26,7 +26,7 @@ class Ability {
     this.effect_ = ''
     this.keywords_ = []
     this.move_ = ''
-    this.name_ = ''
+    this.name_ = name
     this.range_ = null
     this.reqs_ = ''
     this.special_ = ''
@@ -77,7 +77,7 @@ class Ability {
     return this.Area != ''
   }
   public get AreaHeader() {
-    return '**Area:** ' + this.Area
+    if (this.Area && this.Area != '') return '**Area:** ' + this.Area
   }
   public get HasBoost() {
     return this.boost_.length > 0
@@ -107,7 +107,7 @@ class Ability {
     return this.keywords_.length > 0
   }
   public get KeywordsHeader() {
-    return '_' + this.Keywords.join('_, _') + '_'
+    return '[_' + this.Keywords.join('_, _') + '_]'
   }
   public get HasMove() {
     return this.move_.length > 0
@@ -116,7 +116,7 @@ class Ability {
     return '**_Move_:** _' + this.Move + '_'
   }
   public get HasRange() {
-    return this.range_.length > 0
+    return this.range_ && this.range_.length > 0
   }
   get RangeHeader() {
     var range_string = '**Range:** '
@@ -148,9 +148,9 @@ class Ability {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(techData: IAbilityData): Ability {
-    const t = new Ability()
-    t.setAbilityData(techData)
+  public static Deserialize(abilityData: IAbilityData): Ability {
+    const t = new Ability(abilityData.name)
+    t.setAbilityData(abilityData)
     return t
   }
 

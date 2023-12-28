@@ -9,8 +9,8 @@ class Maneuver extends Ability {
   protected weapon_: string
   protected type_: string
 
-  public constructor() {
-    super()
+  public constructor(name) {
+    super(name)
     this.trigger_ = ''
     this.type_ = ''
     this.weapon_ = ''
@@ -27,7 +27,7 @@ class Maneuver extends Ability {
   // UTILITY
   // ==========================================================
   public get HasManifest() {
-    return this.manifest_.length > 0
+    return this.manifest_ && this.manifest_.length > 0
   }
   public get ManifestHeader() {
     return '**Manifest:** ' + this.manifest_
@@ -49,10 +49,10 @@ class Maneuver extends Ability {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(techData: IManeuverData): Maneuver {
-    const t = new Maneuver()
-    t.setManeuverData(techData)
-    return t
+  public static Deserialize(manData: IManeuverData): Maneuver {
+    const m = new Maneuver(manData.name)
+    m.setManeuverData(manData)
+    return m
   }
 
   public setManeuverData(data: IManeuverData): void {

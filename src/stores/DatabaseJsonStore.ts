@@ -45,16 +45,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getManeuver(): any {
     return (inword: string) => {
       var maneuver = Maneuvers.find((x) => x.name.trim() == inword.trim())
-      if (maneuver == undefined)
-        maneuver = {
-          desc: 'Missing!',
-          boost: 'None',
-          name: inword,
-          cost: 'None',
-          type: 'None',
-          special: 'None',
-          effect: 'This maneuver could not be found!',
-        }
+      if (maneuver == undefined) return new Maneuver(inword)
       return Maneuver.Deserialize(<IManeuverData>maneuver)
     }
   }
@@ -94,10 +85,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getArmor(): any {
     return (inword: string) => {
       var armor = Armors.find((x) => x.name.trim() == inword.trim())
-      if (armor == undefined) {
-        armor.name = inword
-        armor.category = 'This armor could not be found!'
-      }
+      if (armor == undefined) return new Armor()
       return Armor.Deserialize(<IArmorData>armor)
     }
   }
@@ -143,7 +131,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var weapon = Weapons.find((x) => x.name.trim() === inword.trim())
       if (weapon == undefined) {
-        return new Weapon()
+        return new Weapon(name)
       }
       return Weapon.Deserialize(<IWeaponData>(<unknown>weapon))
     }
@@ -196,14 +184,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var attack = Attacks.find((x) => x.name.trim() === inword.trim())
       if (attack == undefined) {
-        attack = {
-          desc: 'Missing!',
-          class: 'Neither',
-          speed: 0,
-          name: inword,
-          type: 'None',
-          effect: 'This attack could not be found!',
-        }
+        return new Attack(inword)
       }
       return Attack.Deserialize(<IAttackData>attack)
     }
@@ -221,14 +202,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getStance(): any {
     return (inword: string) => {
       var stance = Stances.find((x) => x.name.trim() === inword.trim())
-      if (stance == undefined)
-        stance = {
-          name: inword,
-          desc: 'Error',
-          effect: 'This stance could not be found!',
-          accumulate: 'Error',
-          defense: { grit: 0 },
-        }
+      if (stance == undefined) return new Stance()
       return Stance.Deserialize(<IStanceData>(<unknown>stance))
     }
   }
@@ -270,17 +244,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var technique = Techniques.find((x) => x.name.trim() === inword.trim())
       if (technique == undefined) {
-        technique = {
-          name: inword,
-          desc: 'Error',
-          special: 'Error',
-          keywords: [],
-          type: 'Error',
-          speed: 'Error',
-          move: 'Error',
-          effect: 'This technique could not be found!',
-          boost: 'Error',
-        }
+        return new Technique(inword)
       }
       return Technique.Deserialize(<ITechData>(<unknown>technique))
     }
@@ -404,13 +368,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var gear = Gears.find((x) => x.name.trim() === inword.trim())
       if (gear == undefined) {
-        gear = {
-          name: inword,
-          desc: 'What',
-          weight: 0,
-          effect: 'Item cannot be found!',
-          special: 'Not special!',
-        }
+        return new Gear()
       }
       return Gear.Deserialize(<IGearData>(<unknown>gear))
     }

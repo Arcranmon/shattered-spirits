@@ -47,30 +47,7 @@
                   <v-btn inline x-small @click=";(character.Momentum -= 1), $emit('changed')" color="red">-</v-btn></v-col
                 >
               </v-row>
-              <v-row no-gutters>
-                <v-col cols="2" />
-                <v-col cols="3"><display-tooltip-text string="**_Grit_:**" /></v-col><v-col cols="2"> {{ character.Grit }}</v-col>
-                <v-col cols="3"
-                  ><v-btn inline x-small @click=";(character.Grit += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Grit -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
-              </v-row>
-              <v-row no-gutters>
-                <v-col cols="2" />
-                <v-col cols="3"><display-tooltip-text string="**_Poise_:**" /></v-col><v-col cols="2"> {{ character.Poise }}</v-col>
-                <v-col cols="3"
-                  ><v-btn inline x-small @click=";(character.Poise += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Poise -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
-              </v-row>
-              <v-row no-gutters>
-                <v-col cols="2" />
-                <v-col cols="3"><display-tooltip-text string="**_Reflex_:**" /></v-col><v-col cols="2"> {{ character.Reflex }}</v-col>
-                <v-col cols="3"
-                  ><v-btn inline x-small @click=";(character.Reflex += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Reflex -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
-              </v-row>
+              <!-- TODO: Add Stamina button here -->
               <v-row justify="center">
                 <v-btn @click="character.ApplyRefresh(), $emit('changed')" class="grey lighten-4 mx-2">Apply Refresh</v-btn>
                 <v-btn @click="character.ResetDefault(), $emit('changed')" class="grey lighten-4 mx-2">Set Default</v-btn></v-row
@@ -196,30 +173,7 @@
                 <v-btn inline x-small @click=";(character.Spirit.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn></v-col
               >
             </v-row>
-            <v-row no-gutters>
-              <v-col cols="2" />
-              <v-col cols="3"><display-tooltip-text string="**_Grit_:**" /></v-col><v-col cols="2"> {{ character.Spirit.Grit }}</v-col>
-              <v-col cols="3"
-                ><v-btn inline x-small @click=";(character.Spirit.Grit += 1), $emit('changed')" color="green">+</v-btn>
-                <v-btn inline x-small @click=";(character.Spirit.Grit -= 1), $emit('changed')" color="red">-</v-btn></v-col
-              >
-            </v-row>
-            <v-row no-gutters>
-              <v-col cols="2" />
-              <v-col cols="3"><display-tooltip-text string="**_Poise_:**" /></v-col><v-col cols="2"> {{ character.Spirit.Poise }}</v-col>
-              <v-col cols="3"
-                ><v-btn inline x-small @click=";(character.Spirit.Poise += 1), $emit('changed')" color="green">+</v-btn>
-                <v-btn inline x-small @click=";(character.Spirit.Poise -= 1), $emit('changed')" color="red">-</v-btn></v-col
-              >
-            </v-row>
-            <v-row no-gutters>
-              <v-col cols="2" />
-              <v-col cols="3"><display-tooltip-text string="**_Reflex_:**" /></v-col><v-col cols="2"> {{ character.Spirit.Reflex }}</v-col>
-              <v-col cols="3"
-                ><v-btn inline x-small @click=";(character.Spirit.Reflex += 1), $emit('changed')" color="green">+</v-btn>
-                <v-btn inline x-small @click=";(character.Spirit.Reflex -= 1), $emit('changed')" color="red">-</v-btn></v-col
-              >
-            </v-row>
+            <!--- TODO: Add Stamina here --->
             <v-row justify="center">
               <v-btn @click="character.Spirit.ApplyRefresh(), $emit('changed')" class="grey lighten-4 mx-2">Apply Refresh</v-btn>
               <v-btn @click="character.Spirit.ResetDefault(), $emit('changed')" class="grey lighten-4 mx-2">Set Default</v-btn></v-row

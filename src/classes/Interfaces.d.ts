@@ -47,12 +47,7 @@ declare interface IChartData {
   status: Array<string>
   damage_type: string
   keywords: Array<string>
-}
-declare interface IDefenseData {
-  additional?: string
-  poise?: number
-  grit?: number
-  reflex?: number
+  on_miss: string
 }
 
 interface IDisciplineTierData {
@@ -206,7 +201,6 @@ declare interface ISpiritFormData {
 declare interface ISpiritTypeData {
   name: string
   desc: string
-  defense: IDefenseData
   effect: string
   summon_effect: string
   manifest_effect: string
@@ -217,14 +211,15 @@ declare interface IStanceData {
   name: string
   category: string
   chart: IChartData
-  accumulate?: string
+  respite?: string
   desc: string
   maneuver?: string
   reaction?: string
   reqs?: string
-  defense: IDefenseData
   effect: string
   special?: string
+  stamina?: number
+  traits: string[]
 }
 
 declare interface IStatusData {

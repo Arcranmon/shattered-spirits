@@ -118,20 +118,8 @@ class Character {
     }
     return weight
   }
-  get Poise() {
-    return this.poise_
-  }
-  set Poise(input: number) {
-    this.poise_ = input
-  }
   get Gear() {
     return this.gear_
-  }
-  get Grit() {
-    return this.grit_
-  }
-  set Grit(input: number) {
-    this.grit_ = input
   }
   get MaxHealth() {
     return this.max_health_
@@ -147,12 +135,6 @@ class Character {
   }
   get Name() {
     return this.name_
-  }
-  get Reflex() {
-    return this.reflex_
-  }
-  set Reflex(input: number) {
-    this.reflex_ = input
   }
   get Spirit() {
     return this.spirit_
@@ -324,17 +306,10 @@ class Character {
       if (this.disciplines_[idx].tier <= 0) this.disciplines_.splice(idx)
     }
   }
-  public ApplyRefresh() {
-    this.grit_ = this.current_spirit_stance_.Defense.Grit
-    this.poise_ = this.current_spirit_stance_.Defense.Poise
-    this.reflex_ = this.current_spirit_stance_.Defense.Reflex
-  }
+  public ApplyRefresh() {}
   public ResetDefault() {
     this.momentum_ = 0
     this.vigor_ = 0
-    this.grit_ = this.current_spirit_stance_.Defense.Grit
-    this.poise_ = this.current_spirit_stance_.Defense.Poise
-    this.reflex_ = this.current_spirit_stance_.Defense.Reflex
     this.current_health_ = this.max_health_
     this.current_endurance_ = this.max_endurance_
   }

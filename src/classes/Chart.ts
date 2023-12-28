@@ -6,12 +6,14 @@ class Chart {
   private damage_type_: string
   private keywords_: Array<string>
   private status_: Array<string>
+  private on_miss_: string
 
   public constructor() {
     this.roll_ = []
     this.damage_ = []
     this.status_ = []
     this.keywords_ = []
+    this.on_miss_ = ''
   }
 
   public Damage(i: number): string {
@@ -43,9 +45,14 @@ class Chart {
   public Status(i: number): string {
     return this.status_[i]
   }
-
-  public get HasDamage() {
+  get HasDamage() {
     return this.damage_.length > 0
+  }
+  get HasOnMiss() {
+    return this.on_miss_ != ''
+  }
+  public get OnMissHeader() {
+    return '**_On Miss_:** ' + this.on_miss_
   }
 
   // ==========================================================
@@ -63,6 +70,7 @@ class Chart {
     this.status_ = data.status || []
     this.keywords_ = data.keywords || []
     this.damage_type_ = data.damage_type || ''
+    this.on_miss_ = data.on_miss || ''
   }
 }
 export default Chart

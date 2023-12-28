@@ -11,7 +11,6 @@
       <div v-if="type.HasManifestEffect"><display-tooltip-text :string="type.ManifestEffectHeader" /></div>
       <div v-if="type.HasSummonEffect"><display-tooltip-text :string="type.SummonEffectHeader" /></div>
       <div v-if="type.HasTraits"><display-tooltip-text :string="type.TraitsText" /></div>
-      <div v-if="type.DefenseHeader"><display-tooltip-text :string="type.DefenseHeader" /></div>
     </div>
   </div>
 </template>

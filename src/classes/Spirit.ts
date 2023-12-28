@@ -70,34 +70,9 @@ class Spirit {
   set CurrentHealth(health: number) {
     this.current_health_ = health
   }
-  get Poise() {
-    return this.poise_
-  }
-  set Poise(input: number) {
-    this.poise_ = input
-  }
-  get Grit() {
-    return this.grit_
-  }
-  set Grit(input: number) {
-    this.grit_ = input
-  }
-  get Reflex() {
-    return this.reflex_
-  }
-  set Reflex(input: number) {
-    this.reflex_ = input
-  }
-  public ApplyRefresh() {
-    this.grit_ = this.spirit_type_.Defense.Grit
-    this.poise_ = this.spirit_type_.Defense.Poise
-    this.reflex_ = this.spirit_type_.Defense.Reflex
-  }
+  public ApplyRefresh() {}
   public ResetDefault() {
     this.vigor_ = 0
-    this.grit_ = this.spirit_type_.Defense.Grit
-    this.poise_ = this.spirit_type_.Defense.Poise
-    this.reflex_ = this.spirit_type_.Defense.Reflex
     this.current_health_ = this.spirit_form_.Health
   }
 

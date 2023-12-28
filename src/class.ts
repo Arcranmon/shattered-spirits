@@ -11,7 +11,6 @@ import Gear from './classes/Gear'
 import Movement from './classes/Movement'
 import Npc from './classes/Npc'
 import Obstacle from './classes/Obstacle'
-import Defense from './classes/Defense'
 import Spirit from './classes/Spirit'
 import SpiritForm from './classes/SpiritForm'
 import SpiritType from './classes/SpiritType'
@@ -33,7 +32,6 @@ export {
   Movement,
   Npc,
   Obstacle,
-  Defense,
   Spirit,
   SpiritForm,
   SpiritType,

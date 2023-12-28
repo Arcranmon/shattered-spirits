@@ -9,8 +9,8 @@ class Attack extends Maneuver {
   protected speed_: number
   protected type_: string
 
-  public constructor() {
-    super()
+  public constructor(name) {
+    super(name)
     this.chart_ = new Chart()
   }
 
@@ -37,17 +37,24 @@ class Attack extends Maneuver {
     return this.speed_
   }
   get HasChargedEffect() {
-    return this.charged_effect_.length > 0
+    return this.charged_effect_ && this.charged_effect_.length > 0
   }
   get ChargedEffectHeader() {
     return '**Charged Effect:** ' + this.charged_effect_
   }
   get SpeedHeader() {
-    if (this.speed_ == -1) return 'See Effect For Speed, '
-    return 'Speed ' + this.speed_ + ', '
+    if (this.speed_ < 1) return ''
+    return 'Speed ' + this.speed_
   }
   get TypeHeader() {
-    return '_' + this.type_ + '_'
+    if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'
+    return ''
+  }
+  get Header() {
+    var header = this.SpeedHeader
+    header += ' ' + this.TypeHeader
+    header += ' ' + this.class_
+    return header
   }
 
   // ==========================================================
@@ -55,7 +62,7 @@ class Attack extends Maneuver {
   // ==========================================================
 
   public static Deserialize(attackData: IAttackData): Attack {
-    const t = new Attack()
+    const t = new Attack(attackData.name)
     t.setAttackData(attackData)
     return t
   }

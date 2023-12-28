@@ -2,219 +2,181 @@
   {
     "name": "Charging Ram Stance",
     "desc": "You are a creature in constant, deadly motion, slamming into foes time and time again.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you _Hit_+ with a [_Body_] Attack during a [_Breach_] Move.",
-    "defense": {
-      "grit": 2
-    },
-    "effect": "Once per _Turn_, when you _Push_ during a [_Breach_] Move you may immediately move an equal number of spaces towards the target of the _Push_, taking the shortest possible path. This movement is [_Rush_, _Breach_] and does not count against your _Movement_.",
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
+    "traits": ["_Resilient_ 1 (_Hobbled_)"],
+    "effect": "Once per _Turn_, when you _Push_ during a [_Breach_] Move you may immediately move a number of spaces towards the target of the _Push_ equal to the final _Push_ after any _Negating_, taking the shortest possible path. This movement is [_Rush_, _Breach_] and does not count against your _Movement_.",
     "special": "You have +1 _Guard_ while you are making [_Breach_] Movement. Whenever you move through a _Prone_ creature's space with [_Breach_] Movement or knock a creature _Prone_ while in their space due to [_Breach_] Movement, inflict _Vulnerable_ 1."
   },
   {
     "name": "Coiled Serpent Stance",
     "desc": "You are constantly wound as tight as a spring, waiting to viciously lunge out at a moment's notice.",
-    "accumulate": "Once per _Round_, gain 1 _Momentum_ when you _Hit_+ with a _Charged_ Attack.",
-    "defense": {
-      "reflex": 1,
-      "poise": 1
-    },
-    "effect": "Whenever you make a _Charged_ Attack, you may remove 2 _Exposed_ rather than 1, gaining the benefits of both.",
-    "special": "Whenever you are _Charging_ you may pay 1 _Momentum_ to remove _Charging_ at the end of a creature's _Turn_ rather than the end of the _Phase_, so long as all other conditions to removing _Charging_ are met."
+    "respite": "Gain 1 _Momentum_.",
+    "stamina": 2,
+    "special": "Whenever you become _Charging_, gain _Poise_.",
+    "effect": "Whenever you are _Charging_ you may pay 1 _Momentum_ to remove _Charging_ at the end of a creature's _Turn_ rather than the end of the _Phase_, so long as you could remove this _Charging_ at the end of the current _Phase_."
   },
   {
     "name": "Crashing Stone Stance",
     "desc": "You are a true master of boulder-based combat, flinging them with brutal efficiency.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you deal Damage with an _Earthen_ Obstacle (such as with _Shifting Stone_).",
-    "defense": {
-      "grit": 2
-    },
-    "effect": "You may use _Shifting Stone_ as many times as you wish in a _Round_. Additionally, whenever you move a Size 1 _Earthen_ _Obstacle_ (either as a part of an ability or by using its _Interact_) you may choose to turn the _Obstacle_ into a _Boulder_ prior to resolving any other effects."
+    "respite": "Gain 2 _Momentum_ or gain 1 _Momentum_ and change a Size 1 _Earthen_ _Obstacle_ within Range 5 into a _Boulder_.",
+    "stamina": 1,
+    "effect": "Add [_Repeatable_] to _Shifting Stone_. Whenever you would be required to reduce _Forced Movement_ with an _Earth_ ability due to an _Obstacle's_ property, reduce it by 2 less."
+  },
+  {
+    "name": "Creeping Frost Stance",
+    "desc": "You freeze the terrain and foes alike, creating a frigid wasteland around you.",
+    "respite": "Gain 2 _Momentum_. If you are on a _Frozen_ space, inflict _Frost_ 1 on a creature within Range 4.",
+    "traits": ["_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
+    "stamina": 1,
+    "effect": "Attacks against creatures with _Frost_ within Range 4 of you gain [_Pierce_ 1]."
   },
   {
     "name": "Cunning Fox Stance",
     "desc": "You fight with guile and trickery, pushing every possible advantage to better strike down your foes.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you have _Advantage_ on a  _Light_/_Versatile_ _Attack_ or make a  _Light_/_Versatile__Attack_ against an _Enraged_ or _Exposed_ foe.",
-    "defense": {
-      "poise": 1,
-      "reflex": 1
-    },
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
     "effect": "After making a _Light_/_Versatile_ _Attack_ against a creature you may convert up to 3 of their _Exposed_/_Enraged_ to _Reeling_ if you had _Advantage_.",
     "special": "Deal +1 _Damage_ against creatures with _Enraged_/_Exposed_ when making _Light_/_Versatile_ Attacks."
   },
   {
     "name": "Dripping Veil Stance",
     "desc": "The water is a constant shield for you, warding you from all harm.",
-    "accumulate": "Once per _Round_, gain 1 _Momentum_ when an _Attack_ against you or an ally is _Obstructed_ by a _Water Veil_, you successfully use _Shielding Wave_ on an ally, or an ally is attacked on _Watery_ Terrain that they treat as _Fortified_ due to one of your abilities.",
-    "defense": {
-      "poise": 2,
-      "grit": 1
-    },
-    "effect": "You may ignore _Watery_ _Terrain_ effects of your choice and treat all _Watery_ _Terrain_ as _Fortified_.",
+    "respite": "Gain 1 _Momentum_. Reduce your _Reeling_ by 1 if you are in a _Watery_ space.",
+    "stamina": 2,
+    "traits": ["Aquatic"],
+    "effect": "You may treat all _Watery_ _Terrain_ as _Fortified_.",
     "special": "Once per Round you may use _Shielding Wave_ for no cost, do not gain _Reeling_ from using it, and may freely use the Boost."
   },
   {
     "name": "Guiding Shepard Stance",
     "desc": "You guide friends and foes alike across the battlefield, herding their movements.",
-    "accumulate": "Once per _Round_, gain 3 _Momentum_ when you inflict _Forced Movement_ on an ally.",
-    "defense": {
-      "poise": 1,
-      "reflex": 1
-    },
-    "effect": "Whenever you inflict _Forced Movement_ on an ally or grant a _Free Turn_ where they _Move_ you may gift them 1 _Momentum_.",
-    "special": "At _Respite_ one adjacent ally may Move 1. Additionally, _Sheparding Strike_ has no cost when targeting an ally."
+    "respite": "Gain 3 _Momentum_. On adjacent ally may Move 1.",
+    "stamina": 1,
+    "effect": "Whenever you inflict _Forced Movement_ on an ally or grant a _Free Turn_ where they _Move_ you may _Gift_ them 1 _Momentum_.",
+    "special": "_Sheparding Strike_ has no cost when targeting an ally."
   },
   {
     "name": "Greedy Rodent Stance",
     "desc": "You are an armory of the impromptu, finding weapons in the least likely of places.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when an ally uses an _Improvised Weapon_ that you placed.",
-    "defense": {
-      "reflex": 1,
-      "poise": 1
-    },
-    "effect": "At _Respite_ you may place a single _Weapon_ as if you rolled a 6 on _Eyes of Greed_.",
-    "special": "You do not need the requisite _Open Hands_ to _Wield_ an _Improvised Weapon_, but must make an Attack with it by the end of the current _Turn_ when _Wielded_ in this way."
+    "respite": "Gain 2 _Momentum_ and place a single _Weapon_ as if you rolled a 6 on _Eyes of Greed_.",
+    "stamina": 1,
+    "effect": "You do not need the requisite _Open Hands_ to _Wield_ an _Improvised Weapon_, but must make an Attack with it by the end of the current _Turn_ when _Wielded_ in this way.",
+    "special": "Never gain an _Opening_ when using _Draw/Stow_."
   },
   {
     "name": "Floating Butterfly Stance",
     "desc": "You are constantly in motion, shifting across the battlefield with unparalleled grace.",
-    "accumulate": "Once per _Round_, gain 1 _Momentum_ when you move at least 6 spaces in a _Turn_.",
-    "defense": {
-      "reflex": 3
-    },
-    "effect": "You may _Step_ [_Safe_, _Breach_] at _Respite_.",
-    "special": "Whenever you would [_Safe_] Move you may remove [_Safe_] to _Refresh_ your _Reflex_."
+    "respite": "Gain 1 _Momentum_, then _Step_ [_Safe_, _Breach_].",
+    "stamina": 1,
+    "effect": "Whenever you would [_Safe_] Move you may remove [_Safe_] to gain 1 _Stamina_."
   },
   {
     "name": "Furious Bison Stance",
     "desc": "You dominate the battlefield with wide, sweeping strikes, moving forward with constant rage.",
-    "accumulate": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to gain an equivalent amount of _Momentum_.",
-    "defense": {
-      "grit": 1,
-      "poise": 1
-    },
-    "effect": "Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain 2 _Vigor_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_.",
-    "special": "You have +1 _Guard_ while _Enraged_ and _Charging_."
+    "respite": "Gain 1 _Momentum_.",
+    "stamina": 1,
+    "effect": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to add an equivalent amount of _Bonus_ Damage. Regardless, gain +1 _Guard_ while _Enraged_ and _Charging_.",
+    "special": " Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain _Grit_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_."
   },
   {
     "name": "Pack Leader Stance",
     "desc": "You are a cunning commander, creating openings for allies and helping them exploit them.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when your ally _Hits_+ with an _Attack_ on a _Free Turn_ you granted them.",
-    "defense": {
-      "poise": 1,
-      "reflex": 1
-    },
+    "respite": "Gain 2 _Momentum_, and an ally within Range 3 gains 1 _Momentum.",
+    "stamina": 1,
     "effect": "While in this _Stance_, reduce the cost of _Flank_ and _Pack Punishment_ by 1. Whenever you successfully use one of these _Manuevers_, inflict _Vulnerable_ 1 before resolving the attack.",
-    "special": "Allies may remove an additional _Vulnerable_ whenever attacking a creature that is adjacent to you or that you have used _Flank_ and _Pack Punishment_ on this _Turn_."
+    "special": "Allies may remove an additional _Vulnerable_ whenever attacking a creature that is adjacent to you or that you have used _Flank_ or _Pack Punishment_ on this _Turn_."
   },
   {
     "name": "Proud Osprey Stance",
     "desc": "You excel in a one on one battle, keeping your foe locked against you at every turn.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you damage a creature _Marked_ by you when neither you nor the Target are adjacent to any other creatures.",
-    "defense": {
-      "poise": 2
-    },
+    "respite": "Gain 2 _Momentum_, or 3 _Momentum_ if you are only adjacent to a _Marked_ Target.",
+    "stamina": 1,
     "effect": "Deal +1/2 Damage with _Minor_/_Major_ Attacks against creatures you have _Marked_ when no other creatures are adjacent to either of you.",
     "special": "You may only have a single creature _Marked_ at any given time; if you would inflict _Marked_ when you already have a creature _Marked_ you must either remove _Marked_ from the original creature or inflict nothing. Treat your _Reeling_ as half its value when triggering _Reactions_ against your _Marked_ target."
   },
   {
     "name": "Patient Hunter Stance",
     "desc": "You focus your attention on a singular creature, finding the perfect opening to take them down.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you _Defeat_ or _Crit_ on a foe with _Insight_.",
-    "defense": {
-      "poise": 1
-    },
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
     "effect": "On the start of any of your _Turns_ you may choose to gain _Hobbled_ 1. If you do, you may immediately inflict _Insight_ 1 on a creature within Range 12.",
-    "special": "Whenever you make a _Ranged_ Attack against a creature with _Insight_, you may remove 1 _Insight_ to immediately inflict _Exposed_ 1. Resolve this effect before making the _Attack Roll_."
+    "special": "Whenever you make a _Ranged_ Attack against a creature with _Insight_, you may remove 1 _Insight_ to gain a +1 _Bonus_."
   },
   {
     "name": "Quaking Earth Stance",
     "desc": "Your every step shakes the earth, keeping your foes off-balance.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when you inflict _Prone_ on a creature in the Area of _Localized Tremor_ or with a _Groundsource_ Attack.",
-    "defense": {
-      "grit": 1,
-      "poise": 1
-    },
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
     "effect": "You may use Localized Tremor as a _Reaction_ that triggers when a _Phase_ begins, rather than an _Action_. When you do so, it instead has a Cost of 0 _Momentum_ and the effect ends at the end of the current _Phase_. Increase the cost of each subsequent use in this way by 1, and reduce it by 1 (minimum 0) at _Respite_.",
     "special": "Your _Groundsource_ Attacks gain a +1 _Bonus_ against Targets on _Earthen_ _Rough_ Terrain."
   },
   {
     "name": "Rising Spire Stance",
     "desc": "You make the battlefield a perilous, dangerously sharp field.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ when a creature within Range 3 takes Damage while on a _Jagged_ space.",
-    "defense": {
-      "poise": 2,
-      "grit": 1
-    },
-    "effect": "At _Refresh_ you may make two unoccupied spaces within Range 3 _Jagged_.",
-    "special": "All creatures within Range 3 of you take an additional 1 Damage from all sources while they are on a _Jagged_ space."
+    "respite": "Gain 2 _Momentum_. Make two unoccupied spaces within Range 3 _Jagged_.",
+    "stamina": 1,
+    "effect": "All creatures within Range 3 of you take an additional 1 Damage from all sources while they are on a _Jagged_ space."
   },
   {
     "name": "Roaring Lion Stance",
     "desc": "You are a bombastic and inspiring warrior, leading your allies as you fight.",
-    "accumulate": "Once per _Round_ gain 1 _Momentum_ when you inflict _Marked_ or _Enraged_ on a foe.",
-    "defense": {
-      "poise": 1,
-      "grit": 2
-    },
-    "effect": "Gain _Vigor_ equal to 1 + the number of creatures you have _Marked_ at _Respite_.",
-    "special": "Whenever a _Marked_ creature attacks you, you may gain _Courageous_ 1 or grant _Courageous_ 1 to an ally within Range 3."
+    "respite": "Gain 1 _Momentum_. Gain _Vigor_ equal to 1+the number of creatures you have _Marked_.",
+    "stamina": 2,
+    "effect": "Whenever a _Marked_ creature attacks you, you may gain _Courageous_ 1 or grant _Courageous_ 1 to an ally within Range 3."
   },
   {
     "name": "Rousing Songbird Stance",
     "desc": "You are a font of positivity, inspiring allies forward to fight ever harder.",
-    "accumulate": "Once per _Round_ gain 2 _Momentum_ when you grant _Courageous_/_Joyful_.",
-    "defense": {
-      "poise": 2
-    },
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
     "effect": "Allies treat you as adjacent for the purposes of _Joyful_ when they are within Range 3 of you. Allies within this Range may remove 2 _Joyful_ rather than 1 when they end their _Turn_ within this area, gaining the effects of both.",
-    "special": "Allies within _Range_ 3 of you may remove 1 _Courageous_/_Joyful_ at any time to gain 1 _Fleeting_ _Poise_. They may only use this ability once per Turn."
+    "special": "Allies within _Range_ 3 of you may remove 1 _Courageous_/_Joyful_ at any time to gain 1 _Fleeting_ _Stamina_. They may only use this ability once per Turn."
   },
   {
     "name": "Stalwart Bastion Stance",
     "desc": "You are an unwavering guard, defending your allies against all slights.",
-    "accumulate": "Once per _Round_, gain 1 _Momentum_ when you grant an ally _Vigor_ or use a _Reaction_ with a _Reeling_ cost on their behalf.",
-    "defense": {
-      "poise": 2,
-      "grit": 2
-    },
-    "effect": "Reduce your _Reeling_ value by 1 at _Refresh_.",
-    "special": "Once per Round when an adjacent ally is Attacked you may immediately swap spaces with them. You become the target of the Attack. If the Attack had an _Area_ and your ally is no longer in it they are no longer a target; otherwise, add [_Glancing_]. Inflict _Marked_ on the Attacker."
+    "respite": "Gain 1 _Momentum_. Reduce your _Reeling_ by 1.",
+    "stamina": 3,
+    "effect": "Once per Round when an adjacent ally is Attacked you may immediately swap spaces with them. You become the target of the Attack. If the Attack had an _Area_ and your ally is no longer in it they are no longer a target; otherwise, add [_Glancing_]. Inflict _Marked_ on the Attacker."
   },
   {
     "name": "Stone Lock Stance",
     "desc": "You specialize in fighting within an earthen shell, shrugging off blows as you attack.",
-    "accumulate": "Once per _Round_, gain 1 _Momentum_ if you have 4 or more _Guard_ against a single Attack and have Stone Armor or used a Stone Lock ability against said Attack.",
-    "defense": {
-      "grit": 3
-    },
+    "respite": "Gain 1 _Momentum_.",
+    "stamina": 2,
     "effect": "If you end a _Phase_ with no _Vigor_ gain 1 _Vigor_, or 2 if you have Stone Armor.",
     "special": "While in this _Stance_ and you have _Stone Armor_, treat your Height as one greater when determining _Obstruction_/_Obscured_ for allies."
   },
   {
     "name": "Stinging Wasp Stance",
     "desc": "You are exceptional at making swift attacks and sliding away before foes can retaliate.",
-    "accumulate": "Up to three times per _Round_, gain 1 _Momentum_ when you Attack a unique foe that hasn't taken a _Turn_ this _Round_.",
-    "defense": {
-      "reflex": 2
-    },
-    "effect": "Whenever you start a [_Safe_] Move, you may inflict _Vulnerable_ 1 on an adjacent Target."
+    "respite": "Gain 1 _Momentum_.",
+    "stamina": 1,
+    "effect": "Whenever you start a [_Safe_] Move, you may inflict _Vulnerable_ 1 on an adjacent Target.",
+    "special": "Up to three times per _Round_, gain 1 _Momentum_ when you Attack a unique foe that hasn't taken a _Turn_ this _Round_."
   },
   {
     "name": "Flowing Sea Stance",
     "desc": "You pull water in and out, pushing and pulling foes like ships on the sea.",
-    "accumulate": "Once per _Round_, gain 2 _Momentum_ if you inflict _Push_ and _Pull_ with Tide abilities in the same _Round_.",
-    "defense": {
-      "poise": 2
-    },
-    "effect": "While in this Stance gain a Tide Dice, which is a d6. After you would _Push_/_Pull_ with a Tide ability, increment the dice by 1. The next time you do the opposite with a Tide ability, increment the dice, repeating up to a maximum value of 6. The next Tide ability that does the opposite _Push_/_Pull_ of the first gains the following bonus:\n* If _Pull_, reduce the value of the dice by X to add _Vulnerable_ X.\n* If _Push_, reduce the value of the dice by 2 to add _Forceful_, or by 3 if it's an Area.\n\nYou may choose whether or not to count any _Push_/_Pull_ effects caused by a [_Manifest_] ability."
+    "respite": "Gain 2 _Momentum_.",
+    "traits": ["Aquatic"],
+    "stamina": 1,
+    "effect": "While in this Stance gain a Tide Dice, which is a d6. After you would _Push_/_Pull_ with a Tide ability, increment the dice by 1. The next time you do the opposite _Push_/_Pull_ with a Tide ability, either increment the dice (to a maximum value of 6) or gain one of the following bonus:\n* If the triggering effect is a _Pull_, reduce the value of the dice by 1 to add _Vulnerable_ 2.\n* If the triggering effect is a _Push_, reduce the value of the dice by 1 (2 if it is an _Area_ Attack) to add _Forceful_.\n* If it was _Push_ or _Pull_, you may reduce the value of the dice by  to remove 3 additional _Vulnerable_ as a part of the _Attack_."
   },
   {
     "name": "Watching Owl Stance",
     "desc": "You keep a keen eye on the battlefield, providing opportunities and openings to all allies.",
-    "accumulate": "Once per _Round_ when you remove _Insight_ from a creature, gain 1 _Momentum_.",
-    "defense": {
-      "poise": 2
-    },
-    "effect": "You may remove 2 _Insight_ per _Turn_ rather than one. Whenever you remove the last _Insight_ on a creature, inflict _Vulnerable_ 1.",
-    "special": "At _Respite_, choose yourself or an ally within Range 4. The target may immediately Move 1. Any creature with _Insight_ treats this Movement as [_Safe_].."
+    "respite": "Gain 1 _Momentum_. Either yourself or an ally within Range 4 may Move 1. Any creature with _Insight_ treats this Movement as [_Safe_].",
+    "stamina": 1,
+    "effect": "You may remove 2 _Insight_ per _Turn_ rather than one. Whenever you remove the last _Insight_ on a creature, inflict _Vulnerable_ 1."
+  },
+  {
+    "name": "Infinite Skate Stance",
+    "desc": "You glide across the battlefield with frantic ease, using the ice to propel and protect.",
+    "respite": "Gain 2 _Momentum_.",
+    "traits": ["_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
+    "stamina": 1,
+    "effect": "While making [_Rush_] Movement you may always move into _Icy_ spaces, ignoring the normal limitations of [_Rush_]. You must maintain the same straight line for all [_Rush_] Movement that is not on an _Icy_ space."
   }
 ]

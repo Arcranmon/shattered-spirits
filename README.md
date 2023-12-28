@@ -28,24 +28,10 @@ Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, an
 
 BIG POST-PLAYTEST REWORK
 
-- SPIRIT ATTACKS
-
-  - Add a note for Disciplines that any Attacks you gain are ALSO learned by your Spirit
-  - Check balance for ALL attacks and the Techniquespoti
-
-- New Discipline Structure:
-
-  - Tier 1: Technique, any two Manuevers (both consistently good); rarely grant Major Attacks. For Spirits, one must be a Manifest.
-  - Tier 2: Stance, any two Manuevers (one consistent, one expensive). Usually grant a Major Attack. For Spirits, one must be a Manifest.
-
-- OBJECTIVE: Make a satisfying weapon-based gameplay loop that works well.
-
-* Add Equipment (mostly just Water Flasks)
-
-* Change most 'Interacts' to 'On Attack'
-
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
+- Keyword cleanup for Obscured/Obstructed.
+- Potentially add 'Free Movement'
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
 - More weapon types and supporting Disciplines.
 - Complete all Spirit Masteries.

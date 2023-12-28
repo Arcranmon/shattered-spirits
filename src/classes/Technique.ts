@@ -9,8 +9,8 @@ class Technique extends Ability {
   private type_: string
   private weapon_: string
 
-  public constructor() {
-    super()
+  public constructor(name) {
+    super(name)
     this.speed_ = ''
     this.target_ = ''
     this.type_ = ''
@@ -52,7 +52,7 @@ class Technique extends Ability {
   // ==========================================================
 
   public static Deserialize(techData: ITechData): Technique {
-    const t = new Technique()
+    const t = new Technique(techData.name)
     t.setTechData(techData)
     return t
   }

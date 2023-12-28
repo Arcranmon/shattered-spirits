@@ -1,5 +1,4 @@
 import { store } from '@/store'
-import { Defense } from '@/class'
 
 class SpiritType {
   private name_: string
@@ -8,7 +7,6 @@ class SpiritType {
   private summon_effect_: string
   private manifest_effect_: string
   private traits_: string[]
-  private defense_: Defense
 
   // ==========================================================
   // GETTERS
@@ -44,12 +42,6 @@ class SpiritType {
   public get ManifestEffectHeader() {
     return '**Manifest Effect:** ' + this.manifest_effect_
   }
-  public get DefenseHeader() {
-    return '**Defense:** ' + this.defense_.FormattedText
-  }
-  public get Defense() {
-    return this.defense_
-  }
   public get HasTraits() {
     return this.traits_.length > 0
   }
@@ -76,9 +68,6 @@ class SpiritType {
     this.summon_effect_ = data.summon_effect || ''
     this.manifest_effect_ = data.manifest_effect || ''
     this.traits_ = data.traits || []
-    if ('defense' in data) {
-      this.defense_ = Defense.Deserialize(data.defense)
-    }
   }
 }
 export default SpiritType
