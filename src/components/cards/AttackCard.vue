@@ -9,30 +9,26 @@
           ><span v-if="(attack.Desc.length > 0)">{{ attack.Desc }}<br /></span
         ></i>
         <b>
-          <div v-if="!isWeapon"><display-tooltip-text :string="attack.Class" :decorate="false" /></div>
-          <div v-if="attack.HasSpeed">{{ attack.SpeedHeader }}<display-tooltip-text :string="attack.TypeHeader" :decorate="false" /></div>
-          <span></span>
-          <div v-if="isWeapon">
-            <display-tooltip-text :string="attack.HandsPhrase" :decorate="false" />&nbsp{{ attack.CategoryHeader }}{{ attack.WeightHeader }}
-          </div>
-          <display-tooltip-text v-if="attack.HasKeywords" :string="attack.KeywordsHeader" :decorate="false"
+          <display-tooltip-text :string="attack.Header" :decorate="false" /><br />
+          <display-tooltip-text v-if="!isWeapon && attack.HasKeywords" :string="attack.KeywordsHeader" :decorate="false"
         /></b>
       </div>
     </div>
     <div class="attack--content">
+      <div v-if="isWeapon"><display-tooltip-text :string="attack.TraitsHeader" /></div>
+      <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
       <div v-if="attack.HasReqs"><display-tooltip-text :string="attack.ReqsHeader" /></div>
       <div v-if="attack.HasCost"><display-tooltip-text :string="attack.CostHeader" /></div>
       <div v-if="attack.HasRange"><display-tooltip-text :string="attack.RangeHeader" /></div>
       <div v-if="attack.HasArea"><display-tooltip-text :string="attack.AreaHeader" /></div>
-      <div v-if="attack.HasDamageType"><display-tooltip-text :string="attack.DamageTypeHeader" /></div>
-      <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
       <div v-if="attack.HasEffect"><display-tooltip-text :string="attack.EffectHeader" /></div>
-      <div v-if="attack.HasChargedEffect"><display-tooltip-text :string="attack.ChargedEffectHeader" /></div>
-      <div v-if="attack.HasDurability"><display-tooltip-text :string="attack.DurabilityHeader" /></div>
-      <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <div v-if="attack.HasBoost"><display-tooltip-text :string="attack.BoostHeader" /></div>
+      <div v-if="attack.Chart.HasDamageType"><display-tooltip-text :string="attack.Chart.DetailsHeader" /></div>
+      <div v-if="attack.Chart.HasOnMiss"><display-tooltip-text :string="attack.Chart.OnMissHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
+      <div v-if="attack.HasChargedEffect"><display-tooltip-text :string="attack.ChargedEffectHeader" /></div>
+      <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
     </div>
   </div>
 </template>

@@ -12,6 +12,17 @@
     "speed": 1
   },
   {
+    "name": "Ice Panel",
+    "desc": "A thin sheet of ice.",
+    "keywords": ["_Icy_ 1"],
+    "size": 1,
+    "height": 1,
+    "hardness": 5,
+    "forced_movement": "[_Water_] _Forced Movement_ may move this _Obstacle, but reduces the value by 1. _Forced Movement_ used in this way may not be used to _Destroy_ the _Obstacle_.",
+    "resistances": "_Resistance_ 4 [_Cold_]",
+    "destroy": "Inflict _Frost_ 1 on a creature of your choice adjacent to the _Obstacle_."
+  },
+  {
     "name": "Water Veil",
     "desc": "A suspended veil of water that provides considerable defense against assault.",
     "keywords": ["_Watery_ 1", "Soft Cover"],
@@ -19,9 +30,9 @@
     "height": 1,
     "hardness": 10,
     "forced_movement": "[_Water_] _Forced Movement_ may move this _Obstacle.",
-    "resistances": "All Damage.",
-    "special": "Any creature that enters this _Obstacle's_ space or ends their _Turn_ in it gains _Soaked_. Creatures always have _Resistance_ to _Fire_ _Attacks_ that pass through this _Obstacle_.",
-    "destroy": "If _Destroyed_ by anything other than a _Draw_ effect this space becomes _Wet_, or _Veiled_ if the destroying attack dealt _Fire_/_Lighting_ Damage."
+    "resistances": "_Weakness_ 2 (_Cold_, _Lighting_), _Resistance_ 2 (All Others)",
+    "special": "Any creature that enters this _Obstacle's_ space or ends their _Turn_ in it gains _Soaked_ 1. Creatures always have _Resistance_ 1 to _Fire_ _Attacks_ that pass through this _Obstacle_.",
+    "destroy": "\n* If _Destroyed_ by a _Draw_ effect, nothing occurs.\n* If _Destroyed_ by _Fire_/_Lighting_ Damage this space becomes _Veiled_.\n* If the space this _Obstacle_ is in becomes _Frozen_ or _Destroyed_ by _Cold_ Damage, replace it with an _Ice Panel_.\n* If _Destroyed_ by any other means, the space becomes _Wet_."
   },
   {
     "name": "Planted Shield",
@@ -33,7 +44,7 @@
     "resistances": "Same as original shield.",
     "special": "Hardness is the same as the original shield. If it takes Damage equal to half of its Hardness or greater the Obstacle is removed and the shield is placed undamaged in the space. If a creature is in this obstacle's space they may use their own _Reactions_ and _Negate_ if the shield is Attacked as if they were being attacked.",
     "interact": "You must be in the same space as the shield to use this _Interact_. Choose 3 sides of the current space. You are _Covered_ against any Attack that passes through one of these spaces while the _Obstacle_ is here. This ends when you move out of this space or _Attack_.",
-    "destroy": "If _Destroyed_ the original shield is placed _Damaged_ in this space."
+    "destroy": "The original shield is placed _Sundered_ in this space."
   },
   {
     "name": "Earth Block",
@@ -44,7 +55,7 @@
     "hardness": 8,
     "forced_movement": "[_Earth_] _Forced Movement_ may move this _Obstacle, but reduces the value by 1. _Forced Movement_ used in this way may not be used to _Destroy_ the _Obstacle_.",
     "resistances": "All Damage except Crush.",
-    "destroy": "When _Destroyed_, make this space _Veiled_ and _Rough_. Inflict  _Dazed_ 1, _Push_ 1, 4 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
+    "destroy": "Make this space _Veiled_ and _Rough_. Inflict  _Dazed_ 1, _Push_ 1, 4 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
   },
   {
     "name": "Earth Pillar",
@@ -54,7 +65,7 @@
     "hardness": 10,
     "resistances": "All Damage except Crush.",
     "forced_movement": "[_Earth_] _Forced Movement_ may move this _Obstacle, but reduces the value by 3. _Forced Movement_ used in this way may not be used to _Destroy_ the _Obstacle_.",
-    "destroy": "When _Destroyed_, choose one:\n* Create a _Line_ 2 _Hazard_ on the opposite side of this Obstacle. At the end of the _Round_, remove this Obstacle and inflict _Dazed_ 1, _Prone_ [2 _Grit_/_Dodge_] on all creatures in the _Hazard_ spaces, then make those spaces _Rough_. Any creature in the Obstacle's space when it is removed immediately _Falls_.\n* As above, but pay 2 _Momentum_ to resolve the effect immediately.\n\nRegardless, if you do not inflict _Prone_, _Push_ the creature to the nearest unoccupied space."
+    "destroy": "Choose one:\n* Create a _Line_ 2 _Hazard_ on the opposite side of this Obstacle. At the end of the _Round_, remove this Obstacle and inflict _Dazed_ 1, _Prone_ [2 _Stamina_] on all creatures in the _Hazard_ spaces, then make those spaces _Rough_. Any creature in the Obstacle's space when it is removed immediately _Falls_.\n* As above, but pay 2 _Momentum_ to resolve the effect immediately.\n\nRegardless, if you do not inflict _Prone_, _Push_ the creature to the nearest unoccupied space."
   },
   {
     "name": "Boulder",
@@ -63,8 +74,8 @@
     "height": 1,
     "hardness": 11,
     "resistances": "All Damage except Crush.",
-    "forced_movement": "_Forced Movement_ may move this _Obstacle, but reduces the value by 3, or 1 if it is [_Earth_]. This _Forced Movement_ is always _Forceful_. If the _Forced Movement_ is already _Forceful_, instead deal Damage equal to twice the _Vulnerable_ inflicted and add _Dazed_ 1. If the _Boulder_ moved to a lower _Elevation_, treat it as if it was moved 2 more spaces for the purpose of collision effects.",
-    "destroy": "When _Destroyed_, make this space _Veiled_ and _Rough_. Inflict  _Dazed_ 1, _Push_ 1, 2 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
+    "forced_movement": "_Forced Movement_ may move this _Obstacle, but reduces the value by 3, or 1 if it is [_Earth_]. This _Forced Movement_ is always _Forceful_. If the _Forced Movement_ is already _Forceful_, treat it as if it was moved an additional 2 spaces for the purpose of _Collision_ effects. If the _Boulder_ moved to a lower _Elevation_, treat it as if it was moved an additional 2 spaces for the purpose of _Collision_ effects.",
+    "destroy": "Make this space _Veiled_ and _Rough_. Inflict  _Dazed_ 1, _Push_ 1, 2 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
   },
   {
     "name": "Earth Spire",
@@ -74,7 +85,7 @@
     "hardness": 9,
     "resistances": "All Damage except Crush.",
     "forced_movement": "[_Earth_] _Forced Movement_ may move this _Obstacle, but reduces the value by 2. _Forced Movement_ used in this way may not be used to _Destroy_ the _Obstacle_. A space of _Forced Movement_ may be used to rotate this _Obstacle_.",
-    "destroy": "When _Destroyed_, place a _Large Improvised_ Weapon in this space. It is made of _Stone_ and has the _Fragile_ and _Opportune_ keywords.",
+    "destroy": "Place a _Large Improvised_ Weapon in this space. It is made of _Stone_ and has the _Fragile_ and _Opportune_ keywords.",
     "special": "When this _Obstacle_ is created, choose one face. If a creature _Collides_ with this _Obstacle_, deal the lesser of 4 or any remaining _Forced Movement_ [_Avoidable_] Stab Damage inflict _Bleed_ equal to half that. Treat this space as _Jagged_ for larger creatures that can occupy it."
   }
 ]

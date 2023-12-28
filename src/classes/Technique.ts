@@ -1,91 +1,25 @@
 /** @format */
 
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Ability, Chart } from '@/class'
 
-class Technique {
-  private area_: string
-  private boost_: string
-  private cost_: string
-  private damagetype_: string
-  private desc_: string
-  private effect_: string
-  private imbue_: string
-  private keywords_: Array<string>
-  private move_: string
-  private name_: string
-  private range_: IRangeData
-  private reqs_: string
-  private special_: string
+class Technique extends Ability {
   private speed_: string
   private target_: string
   private type_: string
   private weapon_: string
-  private chart_: Chart
 
-  public constructor() {
-    this.area_ = ''
-    this.boost_ = ''
-    this.cost_ = ''
-    this.damagetype_ = ''
-    this.desc_ = ''
-    this.effect_ = ''
-    this.imbue_ = ''
-    this.keywords_ = []
-    this.move_ = ''
-    this.name_ = ''
-    this.range_ = null
-    this.reqs_ = ''
-    this.special_ = ''
+  public constructor(name) {
+    super(name)
     this.speed_ = ''
     this.target_ = ''
     this.type_ = ''
     this.weapon_ = ''
-    this.chart_ = null
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Area() {
-    return this.area_
-  }
-  public get Attack() {
-    return this.type_ == 'Attack'
-  }
-  public get Chart() {
-    return this.chart_
-  }
-  public get Cost() {
-    return this.cost_
-  }
-  public get Desc() {
-    return this.desc_
-  }
-  public get DamageType() {
-    return this.damagetype_
-  }
-  public get Effect() {
-    return this.effect_
-  }
-  public get Keywords() {
-    return this.keywords_
-  }
-  public get Name() {
-    return this.name_
-  }
-  public get Move() {
-    return this.move_
-  }
-  public get Range() {
-    return this.range_.category
-  }
-  public get Reqs() {
-    return this.reqs_
-  }
-  public get Special() {
-    return this.special_
-  }
   public get Speed() {
     return this.speed_
   }
@@ -96,91 +30,6 @@ class Technique {
   // ==========================================================
   // UTILITY
   // ==========================================================
-  public get HasArea() {
-    return this.Area != ''
-  }
-  public get AreaHeader() {
-    return '**Area:** ' + this.Area
-  }
-  public get HasBoost() {
-    return this.boost_.length > 0
-  }
-  public get BoostHeader() {
-    return '**Boost:** ' + this.boost_
-  }
-  public get HasChart() {
-    return this.Chart != null
-  }
-  public get HasCost() {
-    return this.cost_.length > 0
-  }
-  public get CostHeader() {
-    return '**Cost:** ' + this.cost_
-  }
-  public get HasDamageType() {
-    return this.damagetype_.length > 0
-  }
-  public get DamageTypeHeader() {
-    return '**Damage Type:** ' + this.damagetype_
-  }
-  public get HasEffect() {
-    return this.effect_.length > 0
-  }
-  public get EffectHeader() {
-    return '**Effect:** ' + this.effect_
-  }
-  public get ManeuverHeader() {
-    return '**Enhance:** '
-  }
-  public get Image() {
-    if (this.Type == 'Error') return require('@/assets/General.svg')
-    return require('@/assets/' + this.Type + '.svg')
-  }
-  public get HasImbue() {
-    return this.imbue_.length > 0
-  }
-  public get ImbueHeader() {
-    return '**Imbue:** ' + this.imbue_
-  }
-  public get HasKeywords() {
-    return this.keywords_.length > 0
-  }
-  public get KeywordsHeader() {
-    return '_' + this.Keywords.join('_, _') + '_'
-  }
-  public get HasMove() {
-    return this.move_.length > 0
-  }
-  public get MoveHeader() {
-    return '**_Move_:** _' + this.Move + '_'
-  }
-  public get HasRange() {
-    return this.range_ != null
-  }
-  get RangeHeader() {
-    var range_string
-    if (this.Range == 'Melee') range_string = '**Range:** _Melee_, _Reach_ ' + this.range_.value
-    else if (this.Range == 'Self') range_string = '**Range:** _Self_'
-    else range_string = '**Range**: ' + this.range_.value
-    if (this.range_.special != undefined) {
-      if (this.range_.value != 0 && this.range_.special[0] != '/') range_string += ','
-      if (this.range_.value != 0) range_string += ' '
-      range_string += this.range_.special
-    }
-    return range_string
-  }
-  public get HasReqs() {
-    return this.reqs_.length > 0
-  }
-  public get ReqsHeader() {
-    return '**Requirements:** ' + this.reqs_
-  }
-  public get HasSpecial() {
-    return this.special_.length > 0
-  }
-  public get SpecialHeader() {
-    return '**Special:** ' + this.special_
-  }
   public get SpeedHeader() {
     if (/^\d+$/.test(this.speed_[0])) return '**Speed ' + this.Speed + '**'
     return '**' + this.Speed + ' Speed**'
@@ -203,30 +52,17 @@ class Technique {
   // ==========================================================
 
   public static Deserialize(techData: ITechData): Technique {
-    const t = new Technique()
+    const t = new Technique(techData.name)
     t.setTechData(techData)
     return t
   }
 
   public setTechData(data: ITechData): void {
-    this.area_ = data.area || ''
-    this.boost_ = data.boost || ''
-    this.cost_ = data.cost || ''
-    this.damagetype_ = data.damagetype || ''
-    this.desc_ = data.desc || ''
-    this.effect_ = data.effect || ''
-    this.imbue_ = data.imbue || ''
-    this.keywords_ = data.keywords || []
-    this.move_ = data.move || ''
-    this.name_ = data.name || ''
-    this.reqs_ = data.reqs || ''
-    this.special_ = data.special || ''
+    this.setAbilityData(data)
     this.speed_ = data.speed || ''
     this.target_ = data.target || ''
     this.type_ = data.type || ''
     this.weapon_ = data.weapon || ''
-    if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
-    if ('range' in data) this.range_ = data.range
   }
 }
 export default Technique

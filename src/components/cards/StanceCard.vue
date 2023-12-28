@@ -15,11 +15,10 @@
       <div v-if="stance.HasRequirements">
         <display-tooltip-text :string="stance.RequirementsHeader" />
       </div>
-      <div v-if="stance.HasAccumulate">
-        <display-tooltip-text :string="stance.AccumulateHeader" />
-      </div>
-      <div v-if="stance.HasDefense">
-        <display-tooltip-text :string="stance.DefenseHeader" />
+      <display-tooltip-text :string="stance.RespiteHeader" /><br />
+      <display-tooltip-text :string="stance.StaminaHeader" />
+      <div v-if="stance.HasTraits">
+        <display-tooltip-text :string="stance.TraitsHeader" />
       </div>
       <div v-if="stance.HasEffect">
         <display-tooltip-text :string="stance.EffectHeader" />

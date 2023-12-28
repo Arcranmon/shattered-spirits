@@ -17,6 +17,9 @@
       <div class="tech--format" v-if="terrain.HasOverrides">
         <display-tooltip-text :string="terrain.OverridesHeader" />
       </div>
+      <div class="tech--format" v-if="terrain.HasRemove">
+        <display-tooltip-text :string="terrain.RemoveHeader" />
+      </div>
     </div>
   </div>
 </template>

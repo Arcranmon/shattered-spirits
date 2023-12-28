@@ -18,7 +18,7 @@ A _Round_ is divided into the following phases:
     * Stop _Wielding_ _Equipment_ of your choice, placing them unattended in their current or adjacent spaces, then _Wield_ any _Equipped_ or adjacent, un-_Equipped_ Equipment. If you choose an un-_Equipped_ piece of equipment, create an _Opening_.
     * Stop _Wielding_ a _One-Handed_ piece of Equipment but keep it _Equipped_, then _Wield_ a piece of _Equipped_ Equipment.
     * Pay 1 _Momentum_ and stop _Wielding_ all _Equipment_ of your choice but keep it _Equipped_, then _Wield_ up to two _Equipped_ or adjacent, un-_Equipped_ pieces of Equipment. If you choose an un-_Equipped_ piece of equipment, create an _Opening_.
-* You and your spirit _Refresh_ all _Defenses_, reset your _AP_, and decrease your _Reeling_ (if any) by 1.
+* You and your spirit set your _Stamina_ to its maximum value, reset your _AP_, and decrease your _Reeling_ (if any) by 1.
 * You gain 2 _Momentum_.
 * Resolve any  other effects that occur during _Respite_.
 &nbsp; 
@@ -69,6 +69,8 @@ Throughout Shattered Spirits you will see Techniques that have a _Profile_, or a
 4. Apply _Vulnerable_.
 5. Apply _Guard_.
 
+**Resolving Attacks:** When resolving the effects of an Attack, deal all Damage prior to resolving any Status. This is simply for mechanical interactions; the Target should be aware of the Damage and Status that would be inflicted prior to using Reactions.
+
 &nbsp;
 
 **Extreme Rolls:** There are a variety of Reactions and other effects that can influence Attack Rolls, such as the Deflect Basic Skill, which reduces an _Attack Roll_ by 1. Whenever these are applied, resolve them using the modified _Attack Roll_. If an _Attack Roll_ ever ends up above a 12 or below a 2, special circumstances occur:
@@ -95,18 +97,13 @@ Throughout Shattered Spirits you will see Techniques that have a _Profile_, or a
 * <ins>Wide Line</ins>: Pick a space within Range. Draw a straight line from that space in any direction. Target the first X spaces in that line, where X is the first numerical value. Additionally, make an additional X identical lines, where X is the second numerical value. These lines must be parallel and adjacent to another line created by this effect. If Range is Self all lines must start in an adjacent space and may not pass through your space. Draw the _Attack Line_ from the starting space of each line.
 
 ### Defending
-After being attacked, taking Damage, or gaining Status a creature may expend any amount of _Grit_, _Reflex_, or _Poise_ they have for the following effects:
-* <ins>Any:</ins> Negate an afflicted Status with the listed cost (for example, you may spend 2 _Grit_ to Negate _Grappled_ (2 _Grit_)).
-* <ins>1 _Grit_:</ins> If you take Damage with the [_Poison_] tag, reduce the Damage by 2. A creature may choose this option multiple times.
-* <ins>1 _Grit_:</ins> Reduce a _Forced Movement_ effect by 1. A creature may choose this option multiple times.
-* <ins>1 _Reflex_:</ins> If you take Damage with the [_Avoidable_] tag, reduce the Damage by 2. A creature may choose this option multiple times.
-* <ins>1 _Reflex_:</ins> Reduce the _Value_ of _Bleed_ inflicted by 1, starting with the smallest Token.
-* <ins>1 _Poise_:</ins>  If you take Damage with the [_Mental_] tag, reduce the Damage by 2. A creature may choose this option multiple times.
-* <ins>1 _Poise_:</ins> Reduce the _Value_ of _Impaired_ or _Exposed_ inflicted by 1, starting with the smallest Token.
+After being attacked, taking Damage, or gaining Status a creature may expend any amount of _Stamina_ they have for the following effects:
+* <ins>Any:</ins> Negate an afflicted Status with the listed cost (for example, you may spend 2 _Stamina_ to Negate _Grappled_ (2 _Stamina_)).
+* <ins>1 _Stamina_:</ins> If you take Damage with the _Avoidable_, _Endurable_, or _Mental_ tag, reduce the Damage by 2. A creature may choose this option multiple times.
 
 &nbsp;
 
-A character must spend _Defenses_ immediately after the triggering Attack/Damage/Status; if, for example, a creature is hit by 3 Attacks in the same Turn, they must resolve all potential _Reactions_ and the spending of _Defenses_ against the first Attack before the second is made.
+A character must spend _Stamina_ immediately after the triggering Attack/Damage/Status; if, for example, a creature is hit by 3 Attacks in the same Turn, they must resolve all potential _Reactions_ and the spending of _Stamina_ against the first Attack before the second is made.
 
 ### Movement
 In battle a character's mobility is defined by their Movement. How far a character may move is defined by their _Load_ and the move distance listed in the ability they're using. A character may freely break up their Movement but, for the purpose of effects, moving again after resolving an effect counts as beginning a move. For example, if a character can move 6 spaces this Turn and moves 4 spaces, makes an Attack, then tries to move 2 more spaces, the second Movement would potentially provoke an _Opportunity Attack_ from foes.
@@ -117,7 +114,7 @@ Beyond the simple number of spaces a character is able to move and the effects o
 - <ins>Jumping</ins>: When a character Jumps, they may count Movement up to their Jump value as _Leaping_ Movement. This Movement must be taken in a straight line, and this Movement may not be broken up.
 - <ins>Swimming</ins>: While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature is _Heavily Obstructed_, _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them.
 - <ins>Climbing</ins>: When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to 1 + twice the Elevation change. For example, it would cost a creature 3 spaces of Movement to Climb up a 1 Height Obstacle.  If a creature ends their turn while _Climbing_, creatures have _Advantage_ on Attacks against them.
-- <ins>Falling</ins>: If a creature moves from one Elevation to another they must pay _Reflex_ equal to one less than the total Elevation change or else take Crush Damage equal to twice the Elevation Change. If a creature would take at least 6 Damage in this way they also fall _Prone_.
+- <ins>Falling</ins>: If a creature moves from one Elevation to another they must pay _Stamina_ equal to one less than the total Elevation change or else take Crush Damage equal to twice the Elevation Change. If a creature would take at least 6 Damage in this way they also fall _Prone_.
 
 &nbsp;
 ### Health and Healing
@@ -137,8 +134,8 @@ When determining Obstruction, characters should draw a line from the center of t
 &nbsp;
 ### Vision
 When determining Vision, characters should draw a line from the center of their space to the center of the target's space:
-* <ins>_Lightly Obscured</ins>: If this line clips an Obstacle of a _Total Height_ greater than yours and the target's or some _Terrain_ effects, they are _Lightly Obscured_. This has no impact on its  own, but works in conjunction with some effects such as _Veiled_.
-* <ins>_Heavily Obstructed_</ins>:  If this line fully passes through an Obstacle of a _Total Height_ greater than yours and the target's, they are _Heavily Obscured_. A creature that is _Heavily Obscured_ may not be targeted.
+* <ins>_Lightly Obscured_</ins>: If this line clips an Obstacle of a _Total Height_ greater than yours and the target's or some _Terrain_ effects, they are _Lightly Obscured_. This has no impact on its  own, but works in conjunction with some effects such as _Veiled_.
+* <ins>_Heavily Obscured_</ins>:  If this line fully passes through an Obstacle of a _Total Height_ greater than yours and the target's, they are _Heavily Obscured_. A creature that is _Heavily Obscured_ may not be targeted.
 * <ins>Secondary Senses</ins>: Secondary Senses allow characters to perceive enemies in ways other than sight. When using a _Secondary Sense_, ignore the normal rules for determining Obscured and follow the rules of the _Secondary Sense_.
 
 &nbsp;
@@ -156,7 +153,7 @@ When determining Vision, characters should draw a line from the center of their 
 * If the Target _Negated_ or was Immune to any afflicted __Status_.
 * The Target's _Guard_.
 * Once _Plotting_ is complete, what _Phase_ all creatures are acting in.
-* How many _Defenses_ of each type that creature has remaining.
+* How much _Stamina_ that creature has remaining.
 &nbsp;
 
 **Hidden Information:** Players should not know the following information unless a _Technique_ reveals it and, additionally, the Spirit Master should not know the following information about player characters unless a _Technique_ reveals it:
@@ -166,4 +163,4 @@ When determining Vision, characters should draw a line from the center of their 
 ### Manifest Abilities
 Every _Round_ a character may use a single ability with the _Manifest_ keyword. These are powerful abilities that summon their spirit onto the battlefield. Characters may always use the basic _Swift Manifestation_ ability, but many abilities provided by Spirit Disciplines have a _Manifest_ option, which typically allows it to be used at no _AP_ cost and may provide additional benefits.
 &nbsp;
-If characters accumulate a great deal of _Momentum_ they can use the _Spirit Summon_ maneuver to bring forth their spirit in a physical form, allowing it to participate in the battle as an active combatant this round.
+If characters respite a great deal of _Momentum_ they can use the _Spirit Summon_ maneuver to bring forth their spirit in a physical form, allowing it to participate in the battle as an active combatant this round.

@@ -8,7 +8,7 @@ class Terrain {
   private negate_: string
   private keywords_: string[]
   private reacts_: string
-  private removed_: string
+  private remove_: string
   private overrides_: string[]
 
   public constructor() {
@@ -41,6 +41,9 @@ class Terrain {
   get HasOverrides() {
     return this.overrides_.length > 0
   }
+  get HasRemove() {
+    return this.remove_.length > 0
+  }
 
   // ==========================================================
   // FORMATTED GETTERS
@@ -56,6 +59,9 @@ class Terrain {
   }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'
+  }
+  public get RemoveHeader() {
+    return '**Remove:** ' + this.remove_
   }
 
   // ==========================================================
@@ -73,6 +79,7 @@ class Terrain {
     this.name_ = data.name || ''
     this.negate_ = data.negate || ''
     this.overrides_ = data.overrides || []
+    this.remove_ = data.remove || ''
     this.keywords_ = data.keywords || []
   }
 }

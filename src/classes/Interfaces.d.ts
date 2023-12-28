@@ -11,7 +11,6 @@ declare interface IAttackData extends IManeuverData {
   category?: string
   chart: IChartData
   class: string
-  damagetype: string
   charged_effect?: string
   speed: number
 }
@@ -46,12 +45,9 @@ declare interface IChartData {
   roll: Array<string>
   damage?: Array<number>
   status: Array<string>
-}
-declare interface IDefenseData {
-  additional?: string
-  poise?: number
-  grit?: number
-  reflex?: number
+  damage_type: string
+  keywords: Array<string>
+  on_miss: string
 }
 
 interface IDisciplineTierData {
@@ -115,21 +111,32 @@ declare interface INpcData {
   weapons: Array<string>
 }
 
-declare interface IManeuverData {
+declare interface IAbilityData {
   area?: string
   boost?: string
   cost?: string
   desc: string
   effect: string
   keywords?: Array<string>
-  manifest?: string
   move?: string
   name: string
-  range?: IRangeData
+  range?: Array<IRangeData>
   reqs?: string
-  special: string
+  special?: string
   chart?: IChartData
+}
+
+declare interface IManeuverData extends IAbilityData {
+  manifest?: string
   trigger?: string
+  type: string
+  weapon?: string
+}
+
+declare interface ITechData extends IAbilityData {
+  category: string
+  speed: string
+  target?: string
   type: string
   weapon?: string
 }
@@ -194,7 +201,6 @@ declare interface ISpiritFormData {
 declare interface ISpiritTypeData {
   name: string
   desc: string
-  defense: IDefenseData
   effect: string
   summon_effect: string
   manifest_effect: string
@@ -205,14 +211,15 @@ declare interface IStanceData {
   name: string
   category: string
   chart: IChartData
-  accumulate?: string
+  respite?: string
   desc: string
   maneuver?: string
   reaction?: string
   reqs?: string
-  defense: IDefenseData
   effect: string
   special?: string
+  stamina?: number
+  traits: string[]
 }
 
 declare interface IStatusData {
@@ -228,31 +235,6 @@ declare interface IStatusData {
   type?: string
 }
 
-declare interface ITechData {
-  area?: string
-  boost?: string
-  category: string
-  cost?: string
-  damagetype?: string
-  desc: string
-  effect: string
-  maneuver?: string
-  imbue?: string
-  keywords?: Array<string>
-  linked?: string
-  move?: string
-  name: string
-  reaction?: string
-  range?: IRangeData
-  reqs?: string
-  special?: string
-  speed: string
-  target?: string
-  type: string
-  chart?: IChartData
-  weapon?: string
-}
-
 declare interface ITerrainData {
   desc: string
   effect: string
@@ -260,6 +242,7 @@ declare interface ITerrainData {
   keywords: Array<string>
   negate: string
   overrides: Array<string>
+  remove: string
 }
 
 declare interface ITraitData {
@@ -273,6 +256,7 @@ declare interface ITraitData {
 declare interface IWeaponData extends IAttackData {
   durability?: number
   itemtype?: string
+  keywords: Array<string>
   hands: number
   hardness?: number
   material: string

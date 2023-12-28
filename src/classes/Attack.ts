@@ -5,10 +5,14 @@ class Attack extends Maneuver {
   protected chart_: Chart
   protected category_: string
   protected class_: string
-  protected damagetype_: string
   protected charged_effect_: string
   protected speed_: number
   protected type_: string
+
+  public constructor(name) {
+    super(name)
+    this.chart_ = new Chart()
+  }
 
   get CategoryHeader() {
     if (this.Category == 'Natural' || this.Category == 'Improvised') return this.category_ + ' Weapon'
@@ -18,7 +22,7 @@ class Attack extends Maneuver {
     return this.category_
   }
   get HasChart() {
-    return this.chart_ != null
+    return this.chart_.Roll.length > 0
   }
   get Chart() {
     return this.chart_
@@ -26,33 +30,31 @@ class Attack extends Maneuver {
   get Class() {
     return '_' + this.class_ + '_'
   }
-  get DamageType() {
-    return this.damagetype_
-  }
-  get HasDamageType() {
-    return this.damagetype_ != ''
-  }
   get HasSpeed() {
     return this.speed_ != 0
-  }
-  get DamageTypeHeader() {
-    return '**Damage Type:** ' + this.damagetype_
   }
   get Speed() {
     return this.speed_
   }
   get HasChargedEffect() {
-    return this.charged_effect_.length > 0
+    return this.charged_effect_ && this.charged_effect_.length > 0
   }
   get ChargedEffectHeader() {
     return '**Charged Effect:** ' + this.charged_effect_
   }
   get SpeedHeader() {
-    if (this.speed_ == -1) return 'See Effect For Speed, '
-    return 'Speed ' + this.speed_ + ', '
+    if (this.speed_ < 1) return ''
+    return 'Speed ' + this.speed_
   }
   get TypeHeader() {
-    return '_' + this.type_ + '_'
+    if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'
+    return ''
+  }
+  get Header() {
+    var header = this.SpeedHeader
+    header += ' ' + this.TypeHeader
+    header += ' ' + this.class_
+    return header
   }
 
   // ==========================================================
@@ -60,7 +62,7 @@ class Attack extends Maneuver {
   // ==========================================================
 
   public static Deserialize(attackData: IAttackData): Attack {
-    const t = new Attack()
+    const t = new Attack(attackData.name)
     t.setAttackData(attackData)
     return t
   }
@@ -69,7 +71,6 @@ class Attack extends Maneuver {
     this.setManeuverData(data)
     this.category_ = data.category || 'Attack'
     this.class_ = data.class || ''
-    this.damagetype_ = data.damagetype || ''
     this.charged_effect_ = data.charged_effect || ''
     this.speed_ = data.speed || 0
     if ('chart' in data && data.chart != null) {

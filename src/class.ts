@@ -1,6 +1,7 @@
 // Store all classes
 
 import Maneuver from './classes/Maneuvers'
+import Ability from './classes/Ability'
 import Armor from './classes/Armor'
 import Attack from './classes/Attack'
 import Character from './classes/Character'
@@ -10,7 +11,6 @@ import Gear from './classes/Gear'
 import Movement from './classes/Movement'
 import Npc from './classes/Npc'
 import Obstacle from './classes/Obstacle'
-import Defense from './classes/Defense'
 import Spirit from './classes/Spirit'
 import SpiritForm from './classes/SpiritForm'
 import SpiritType from './classes/SpiritType'
@@ -21,6 +21,7 @@ import Terrain from './classes/Terrain'
 import Weapon from './classes/Weapon'
 
 export {
+  Ability,
   Armor,
   Attack,
   Character,
@@ -31,7 +32,6 @@ export {
   Movement,
   Npc,
   Obstacle,
-  Defense,
   Spirit,
   SpiritForm,
   SpiritType,

@@ -13,11 +13,11 @@
   },
   {
     "name": "Avoidable",
-    "effect": "Characters may reduce Avoidable Damage by 2 for every 1 _Reflex_ spent. Additionally, any Status inflicted by this may be Negated with _Reflex_ instead of its typical token."
+    "effect": "Characters may expend _Stamina_ to reduce Avoidable Damage by 1 for every 1 _Stamina_ spent."
   },
   {
-    "name": "Minimum Range",
-    "effect": "Ranged and Thrown Attacks with the Minimum Range Keyword have _Disadvantage_ on all Attacks against creature X spaces or less away, where X is their Minimum Range value. Minimum Range never applies to Melee attacks."
+    "name": "Close Range",
+    "effect": "Ranged Attacks within the Close Range of an Attack have _Disadvantage_."
   },
   {
     "name": "Blast",
@@ -44,10 +44,6 @@
   {
     "name": "Climable",
     "effect": "A side of a space may be Climable if it has obvious handholds or avenues to climb that make traversal easier. Climbing in a Climable space only costs 1 + the vertical distance covered."
-  },
-  {
-    "name": "Colossal",
-    "effect": "You must pay 1 _Grit_ when you Attack with this Weapon or else have _Disadvantage_."
   },
   {
     "name": "Counter",
@@ -94,6 +90,10 @@
     "name": "Enchant",
     "effect": "Enchant effects are an effect that persists for multiple _Turns_ or _Rounds_. A creature may only have one Enchant ability in effect at a time."
   },
+  {
+    "name": "Endurable",
+    "effect": "Characters may expend _Stamina_ to reduce Endurable Damage by 1 for every 1 _Stamina_ spent."
+  },
   { "name": "Evading", "see": "Evade" },
   {
     "name": "Feint",
@@ -101,7 +101,7 @@
   },
   {
     "name": "Fleeting",
-    "effect": "Defenses with Fleeting are lost at the end of the current _Turn_."
+    "effect": "Fleeting bonuses are are lost at the end of the current _Turn_."
   },
   {
     "name": "Flourish",
@@ -126,7 +126,7 @@
   },
   {
     "name": "Glancing",
-    "effect": "This effect deals half _Damage_ and, while Negating, any Defenses spent count as twice as many."
+    "effect": "This effect deals half _Damage_ and, while Negating, any _Stamina_ spent count as twice as much."
   },
   {
     "name": "Grasping",
@@ -149,8 +149,12 @@
     "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Block_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
   },
   {
+    "name": "Icy",
+    "effect": "Icy spaces follow the same mechanics as Watery spaces, but a creature must expend 1 _Momentum_ to _Draw_ from them."
+  },
+  {
     "name": "Kick",
-    "effect": "Weapons with the Kick Keyword can be used regardless of what a character has _Wielded_ but have _Disadvantage_ if a character is _Stuck_ and take a _Penalty_ to _Attack Rolls_ equal to the character's topmost _Hobbled_."
+    "effect": "Weapons with the Kick Keyword can be used regardless of what a character has _Wielded_ but have _Disadvantage_ if a character is _Stuck_ and a -1 _Penalty_ if _Hobbled_."
   },
   {
     "name": "Light",
@@ -173,6 +177,10 @@
     "effect": "This may only be used to Attack Targets within your _Reach_."
   },
   {
+    "name": "Mental",
+    "effect": "Mental Damage ignores all _Guard_. Characters may expend _Stamina_ to reduce Mental Damage by 2 for every 1 _Stamina_ spent."
+  },
+  {
     "name": "Obstacle",
     "effect": "Noteworthy terrain on the battlefield that can typically either be used as _Cover_ or be interacted with in some way."
   },
@@ -191,7 +199,7 @@
   { "name": "Opportune Weapons", "see": "Opportune Weapon" },
   {
     "name": "Overwhelming",
-    "effect": "If the Target of the Attack benefits from a _Block_ _Reaction_ inflict your choice of _Push_ 2X/_Vulnerable_ X, where X is the listed Overwhelming value. If they are _Guarding_ you may choose one of the previous options or add _Break_ [X _Momentum_/_Poise_] on a _Hit_+."
+    "effect": "If the Target of the Attack benefits from a _Block_ _Reaction_ inflict your choice of _Push_ 2X/_Vulnerable_ X, where X is the listed Overwhelming value. If they are _Guarding_ you may choose one of the previous options or add _Break_ [X _Momentum_/_Stamina_] on a _Hit_+."
   },
   {
     "name": "Ordnance",
@@ -240,7 +248,7 @@
   },
   {
     "name": "Scout",
-    "effect": "When you Scout a creature you learn their current exact _Health_ and how much _Poise_, _Grit_, _Reflex_, and _Momentum_ the creature has."
+    "effect": "When you Scout a creature you learn their current _Health_, _Stamina_, and _Momentum_."
   },
   {
     "name": "Siege",
@@ -288,15 +296,15 @@
   },
   {
     "name": "Thrown",
-    "effect": "Thrown Weapons are capable of being used in both Melee and Ranged combat. When Thrown, it is instead a Range X Attack, where X is the listed Thrown value. When attacking in this way, _Grazes_ are treated as a _Miss_, deal no damage, and cause no effects. After being thrown, a Thrown weapon is placed in a space of your choice adjacent to the Target and may not be used again until retrieved."
+    "effect": "Attacks with the Thrown keyword treat _Grazes_as a _Miss_, dealing no damage, and causing no effects. After being thrown, a Thrown weapon is placed in a space of your choice adjacent to the Target and may not be used again until retrieved."
   },
   {
     "name": "Two-Handed",
     "effect": "This Equipment requires both Hands to Wield."
   },
   {
-    "name": "Martial Arts",
-    "effect": "Whenever an Attack with the Martial Art keyword would inflict _Vulnerable_ they may choose not to and instead increase the target's existing _Vulnerable_ by an amount equivalent to the amount that would have been inflicted, in any combination. For example, if a creature would inflict _Vulnerable_ 2 on a creature that already has _Vulnerable_ 1, _Vulnerable_ 1, they may choose to not inflict that _Vulnerable_ and instead cause the creature to have _Vulnerable_ 3, _Vulnerable_ 1 or _Vulnerable_ 2, _Vulnerable_ 2."
+    "name": "Martial",
+    "effect": "An ability that is primarily physical in nature, such as one made using martial arts or with a weapon. These abilities cannot be _Suppressed_ like a _Spirit_ ability, and this keyword is often referenced for other abilities."
   },
   {
     "name": "Unblockable",
