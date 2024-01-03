@@ -21,6 +21,7 @@
   {
     "name": "Freezing Fog",
     "keywords": ["_Soft Cover_ 3"],
+    "desc": "Dense, frigid fog that causes frost to form with prolonged exposure.",
     "effect": "The first time a creature enters a _Freezing Fog_ space on a _Turn_ or ends their _Turn_ in it they gain _Frost_ 1.",
     "interacts": ["<ins>Windy:</ins> Freezing Fog may not be created in this space."]
   },
@@ -28,8 +29,11 @@
     "name": "Frozen",
     "desc": "Terrain that has been covered with slick, slippery ice.",
     "keywords": ["_Icy_ 1"],
-    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* The cost to Negate any _Forced Movement_ in this space is increased by 1. This increase may always be paid with _Stamina_.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement.\n\nAdditionally, a creature entering a Frozen space must expend 1 _Stamina_ or else treat it as _Rough_.",
-    "remove": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_, replace Frozen with _Wet_, or the original _Watery_ space."
+    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement.\n\nAdditionally, a creature entering a Frozen space must expend 1 _Stamina_ or else treat it as _Rough_.",
+    "interacts": [
+      "<ins>Watery</ins>: When making any _Watery_ space _Frozen_, do not replace the original space if it has a value of 1 or greater. Instead, treat the _Frozen_ space as if it is on top of the original _Watery_ space, and if _Destroyed_ replace that space."
+    ],
+    "remove": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
   },
   {
     "name": "Rough",
@@ -41,13 +45,13 @@
   {
     "name": "Rushing Water",
     "desc": "Terrain that represents a rapids or similarly fast-moving body of water.",
-    "keywords": ["_Watery_ (Infinite)"],
+    "keywords": ["_Watery_ ∞"],
     "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
   },
   {
     "name": "Running Water",
     "desc": "Terrain that represents a slow-moving body of water.",
-    "keywords": ["_Watery_ (Infinite)"],
+    "keywords": ["_Watery_ ∞"],
     "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
   },
   {
@@ -70,7 +74,7 @@
   },
   {
     "name": "Wet",
-    "desc": "Terrain with standing water that limits a stable footing.",
+    "desc": "Terrain drenched in water that limits a stable footing.",
     "keywords": ["_Watery_ 1"],
     "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.",
     "interacts": ["<ins>Wet:</ins> If a Wet space would become Wet, instead place a Wet space in an adjacent space."]

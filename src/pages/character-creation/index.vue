@@ -12,6 +12,9 @@
     <display-tooltip-text :string="choosingYourWeapons" />
     <br />
     <br />
+    <display-tooltip-text :string="choosingYourArts" />
+    <br />
+    <br />
     <display-tooltip-text :string="choosingYourDisciplines" />
     <br />
     <br />
@@ -34,6 +37,7 @@ import ChoosingYourSpirit from '@/database/text_files/character_creation/choosin
 import ChoosingYourEquipment from '@/database/text_files/character_creation/choosing_your_equipment.txt'
 import ChoosingYourArmor from '@/database/text_files/character_creation/choosing_your_armor.txt'
 import ChoosingYourWeapons from '@/database/text_files/character_creation/choosing_your_weapons.txt'
+import ChoosingYourArts from '@/database/text_files/character_creation/choosing_your_arts.txt'
 import ChoosingYourDisciplines from '@/database/text_files/character_creation/choosing_your_disciplines.txt'
 import ChoosingYourTalents from '@/database/text_files/character_creation/choosing_your_talents.txt'
 import ChoosingYourAppearance from '@/database/text_files/character_creation/choosing_your_appearance.txt'
@@ -56,6 +60,9 @@ export default Vue.extend({
     },
     choosingYourWeapons() {
       return ChoosingYourWeapons
+    },
+    choosingYourArts() {
+      return ChoosingYourArts
     },
     choosingYourDisciplines() {
       return ChoosingYourDisciplines

@@ -44,6 +44,9 @@ class Maneuver extends Ability {
   public get WeaponHeader() {
     return '**Weapon:** ' + this.weapon_
   }
+  public get TypeHeader() {
+    return '_' + this.class_ + '_ _' + this.type_ + '_'
+  }
 
   // ==========================================================
   // SERIALIZATION

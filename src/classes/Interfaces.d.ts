@@ -10,7 +10,7 @@ declare interface IArmorData {
 declare interface IAttackData extends IManeuverData {
   category?: string
   chart: IChartData
-  class: string
+  rank: string
   charged_effect?: string
   speed: number
 }
@@ -23,20 +23,16 @@ declare interface ICharDisciplineData {
 declare interface ICharacterData {
   current_spirit_stance: string
   current_martial_stance: string
-  current_endurance: number
   current_health: number
   equipped_armor: string
   gear: string[]
   disciplines: ICharDisciplineData[]
-  poise: number
-  grit: number
   max_health: number
-  max_endurance: number
   momentum: number
   name: string
   player_character: Boolean
-  reflex: number
   spirit: ISpiritData
+  stamina: number
   weapons: string[]
   vigor: number
 }
@@ -48,6 +44,7 @@ declare interface IChartData {
   damage_type: string
   keywords: Array<string>
   on_miss: string
+  material: string
 }
 
 interface IDisciplineTierData {
@@ -93,7 +90,7 @@ declare interface INpcData {
   class: string
   desc: string
   durability?: number
-  endurance: number
+  health: number
   gambits?: Array<string>
   guard?: number
   movement: string
@@ -116,6 +113,7 @@ declare interface IAbilityData {
   boost?: string
   cost?: string
   desc: string
+  class: string
   effect: string
   keywords?: Array<string>
   move?: string
@@ -123,7 +121,9 @@ declare interface IAbilityData {
   range?: Array<IRangeData>
   reqs?: string
   special?: string
+  target?: string
   chart?: IChartData
+  material?: string
 }
 
 declare interface IManeuverData extends IAbilityData {
@@ -136,7 +136,6 @@ declare interface IManeuverData extends IAbilityData {
 declare interface ITechData extends IAbilityData {
   category: string
   speed: string
-  target?: string
   type: string
   weapon?: string
 }
@@ -162,7 +161,7 @@ declare interface IObstacleData {
   name: string
   keywords: Array<string>
   size: number
-  resistances: string
+  traits: string
   special: string
   chart: IChartData
 }
@@ -178,9 +177,7 @@ declare interface ISpiritData {
   spirit_form: string
   spirit_type: string
   weapons: Array<string>
-  poise: number
-  grit: number
-  reflex: number
+  stamina: number
   vigor: number
   current_health: number
 }

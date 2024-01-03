@@ -28,13 +28,13 @@ class Terrain {
   get Name() {
     return this.name_
   }
+  public get Keywords() {
+    return this.keywords_
+  }
 
   // ==========================================================
   // UTILITY
   // ==========================================================
-  get HasKeywords() {
-    return this.keywords_.length > 0
-  }
   get HasNegate() {
     return this.negate_ != ''
   }
@@ -49,16 +49,14 @@ class Terrain {
   // FORMATTED GETTERS
   // ==========================================================
   public get EffectHeader() {
-    return '**Effect:** ' + this.effect_
+    if (this.effect_ && this.effect_.length > 0) return '**Effect:** ' + this.effect_
+    return ''
   }
   public get NegateHeader() {
     return '**Negate:** ' + this.negate_
   }
   public get OverridesHeader() {
     return '**Overrides:** _' + this.overrides_.join('_, _') + '_'
-  }
-  public get KeywordsHeader() {
-    return '_' + this.keywords_.join('_, _') + '_'
   }
   public get RemoveHeader() {
     return '**Remove:** ' + this.remove_

@@ -1,15 +1,8 @@
 [
   {
-    "name": "Agile Strike",
-    "desc": "A standard attack by an NPC.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Reposition",
-    "effect": "Make a _Major Attack_."
-  },
-  {
     "name": "Basic Strike",
     "desc": "You move forward with a weapon, striking a nearby foe.",
+    "class": "Basic",
     "keywords": ["Fluid"],
     "type": "Strike",
     "speed": "Any",
@@ -21,6 +14,7 @@
   {
     "name": "Butterfly Road",
     "desc": "You move with fluid grace, slipping past foes in an elegant dance.",
+    "class": "Basic",
     "keywords": ["Fluid"],
     "type": "Move",
     "speed": "Any",
@@ -31,6 +25,7 @@
   {
     "name": "Call the Pack",
     "desc": "You command your allies with practiced precision, coordinating a synchronized strike.",
+    "class": "Basic",
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
@@ -41,6 +36,7 @@
   {
     "name": "Coiling Strike",
     "desc": "You become a tightly-wound spring, ready to lunge out at the first foe foolish enough to enter your range.",
+    "class": "Basic",
     "type": "Strike",
     "speed": "Any",
     "move": "None",
@@ -50,7 +46,7 @@
   {
     "name": "Deep Freeze",
     "desc": "You rapidly drop the temperature around a foe, attempting to freeze them solid.",
-    "keywords": ["_Spirit_ (_Water_)"],
+    "class": "Tundra",
     "type": "Strike",
     "speed": "4",
     "move": "Step",
@@ -61,7 +57,7 @@
   {
     "name": "Downhill Rush",
     "desc": "You glide forward on a sheet of ice, accelerating across the battlefield.",
-    "keywords": ["_Spirit_ (_Water_)"],
+    "class": "Tundra",
     "type": "Move",
     "speed": "Any",
     "move": "Dash [_Rush_]",
@@ -73,17 +69,17 @@
     "name": "Eager Spires",
     "desc": "You seize the earth within an area, causing vicious jagged bursts of sharp stone to erupt unpredictably.",
     "type": "Strike",
-    "speed": "3",
-    "keywords": ["_Spirit_ (_Earth_)", "Rigid"],
+    "class": "Land",
+    "speed": "3 [_Rigid_]",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Step",
-    "effect": "Create a _Blast_ 1 _Hazard_ within Range. At the end of each _Phase_ (excluding this one), choose an _Eartheaan_ space within the _Hazard_. Apply the _Jagged_ effect to the creature in that space, then make the space _Jagged_. If the space was already _Jagged_, instead apply the effect twice.",
+    "effect": "Create a _Blast_ 1 _Hazard_ within Range. At the end of each _Phase_ (excluding this one), choose an _Earthen_ space within the _Hazard_. Apply the _Jagged_ effect to the creature in that space, then make the space _Jagged_. If the space was already _Jagged_, instead apply the effect twice.",
     "boost": "2 _Momentum_: Instead, create a _Blast_ 2 _Hazard_. When you create the _Hazard_, immediately trigger the end of _Phase_ effect twice. You must choose two different spaces."
   },
   {
     "name": "Ebb and Flow",
     "desc": "You send water whipping back and forth, creating a tide that pulls foes in and out.",
-    "keywords": ["_Spirit_ (_Water_)"],
+    "class": "Tide",
     "type": "Strike",
     "speed": "Any",
     "move": "Step",
@@ -94,6 +90,7 @@
   {
     "name": "Eyes of Greed",
     "desc": "You carefully scan the battlefield, finding opportunities for allies wherever you look.",
+    "class": "Basic",
     "type": "Support",
     "speed": "Any",
     "move": "Step",
@@ -103,15 +100,8 @@
     "special": "All Weapons placed by this have the _Opportune_ and _Fragile_ keywords. Only you and your allies may use these Weapons."
   },
   {
-    "name": "Fumigate",
-    "desc": "A massive blast of chemical gas.",
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Step",
-    "effect": "Create a _Burst_ 1 or _Cone_ 3 _Hazard_, then begin _Charging_. At the end of the next _Phase_ remove the _Hazard_ and attack all creatures in the _Area_ three times with _Toxic Spray_, ignoring its normal range. Those spaces become _Toxic Gas_ until the end of the _Round_."
-  },
-  {
     "name": "Guide the Flock",
+    "class": "Basic",
     "desc": "You find a path forward for your allies, providing them a great deal of mobility.",
     "type": "Support",
     "speed": "Any",
@@ -121,16 +111,8 @@
     "special": "As a part of this Technique, designate a _Blast_ 1 within _Range_. Any ally that ends their _Free Turn_ in this Area gains 1 _Momentum_."
   },
   {
-    "name": "Hostile Strike",
-    "desc": "A basic NPC strike.",
-    "keywords": ["Fluid"],
-    "type": "Strike",
-    "speed": "Any",
-    "move": "Step",
-    "effect": "Choose one:\n* Make 1 _Major Attack_.\n* Make 2 _Minor Attacks_."
-  },
-  {
     "name": "Isolating Manuever",
+    "class": "Basic",
     "desc": "You engage a foe in single combat, limiting their ability to engage your allies.",
     "type": "Strike",
     "speed": "Any",
@@ -139,6 +121,7 @@
   },
   {
     "name": "Lion's Roar",
+    "class": "Basic",
     "desc": "You loudly charge forth into battle, making your intentions clear.",
     "type": "Strike",
     "speed": "Any",
@@ -148,8 +131,9 @@
   },
   {
     "name": "Ocean's Veil",
+    "class": "Tide",
     "desc": "You pull forth water to create a great wall, warding your allies from assault.",
-    "keywords": ["_Spirit_ (_Water_)", "Enchant", "Fluid"],
+    "keywords": ["Enchant", "Fluid"],
     "type": "Defend",
     "speed": "Any",
     "range": [{ "category": "Ranged", "value": 6 }],
@@ -158,6 +142,7 @@
   },
   {
     "name": "Overwatch",
+    "class": "Basic",
     "desc": "You take a position with a pristine view, preparing to lay down supporting fire for allies.",
     "type": "Support",
     "speed": "Any",
@@ -169,6 +154,7 @@
   },
   {
     "name": "Patient Strike",
+    "class": "Basic",
     "desc": "You carefully line up an attack, waiting for the opportune moment to release it.",
     "type": "Strike",
     "speed": "Any",
@@ -179,6 +165,7 @@
   },
   {
     "name": "Raging Stampede",
+    "class": "Basic",
     "desc": "You let out a mighty bellow before you unleash a series of devastating attacks.",
     "type": "Strike",
     "speed": "Any",
@@ -189,8 +176,8 @@
   },
   {
     "name": "Roiling Earth",
+    "class": "Land",
     "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
-    "keywords": ["_Spirit_ (_Earth_)"],
     "type": "General",
     "speed": "5",
     "range": [{ "category": "Self" }],
@@ -227,14 +214,16 @@
   },
   {
     "name": "Safe Haven",
+    "class": "Basic",
     "desc": "You adopt a defensive stance and prepare to offer you guard to your allies.",
     "type": "Defend",
     "speed": "Any",
     "move": "Step",
-    "effect": "You and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_. At the end of this _Turn_ gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Attacks against your allies that pass through your space are always at least _Heavily Obstructed_.\n* You may allow adjacent allies to use your _Stamina_ when they are Attacked.\n* Each _Turn_ you may gain 1 _Fleeting_ _Stamina_ that may only be used to _Negate_."
+    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Attacks against your allies that pass through your space are always at least _Heavily Obstructed_.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Fleeting_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_."
   },
   {
     "name": "Skulk",
+    "class": "Basic",
     "desc": "You conceal yourself before sliding across the battlefield, .",
     "type": "Move",
     "speed": "Any",
@@ -244,6 +233,7 @@
   },
   {
     "name": "Song of Victory",
+    "class": "Basic",
     "desc": "You encourage your allies, helping them to find the strength to push forward.",
     "type": "Support",
     "speed": "Any",
@@ -254,10 +244,10 @@
   },
   {
     "name": "Dance of a Thousand Stings",
+    "class": "Basic",
     "desc": "You dart across the battlefield, unleashing a serious of swift strikes.",
     "type": "Strike",
-    "speed": "1-3",
-    "keywords": ["Rigid"],
+    "speed": "1-3 [_Rigid_]",
     "move": "Step, Step, Step",
     "effect": "After each Movement, make a _Minor Attack_. Any Attacks you make this _Turn_ cause the Target to treat your remaining Movement this _Turn_ as [_Safe_] on a _Hit_+. If you move at least 2 spaces before making an Attack, deal +1 _Bonus Damage_ and add _Vulnerable_ 1.",
     "special": "If each Attack this _Turn_ targets unique Targets, gain 1 _Momentum_."
@@ -265,7 +255,7 @@
   {
     "name": "Stone Edge",
     "desc": "You tear forth a slab of earth, flinging it with horrific force.",
-    "keywords": ["_Spirit_ (_Earth_)"],
+    "class": "Mountain",
     "type": "Strike",
     "speed": "4 [_Priority_]",
     "range": [{ "category": "Ranged", "value": 4 }],
@@ -275,6 +265,7 @@
     "chart": {
       "damage_type": "Crush",
       "keywords": ["Avoidable", "Siege"],
+      "material": "Stone",
       "on_miss": "+3 _Momentum_",
       "damage": [0, 0, 5, 5, 6, 6, 6, 7, 7, 8, 8],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -300,8 +291,8 @@
   },
   {
     "name": "Stone Lord",
+    "class": "Mountain",
     "desc": "You forge a suit of stone around yourself, becoming an unstoppable behemoth.",
-    "keywords": ["_Spirit_ (_Earth_)"],
     "type": "Defend",
     "speed": "Any",
     "move": "Step",
@@ -311,6 +302,7 @@
   },
   {
     "name": "Strong Strike",
+    "class": "Basic",
     "desc": "You unleash a powerful attack against a foe.",
     "type": "Strike",
     "speed": "Any",
@@ -321,6 +313,7 @@
   },
   {
     "name": "Swift Strike",
+    "class": "Basic",
     "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
     "type": "Strike",
     "speed": "Any",
@@ -331,6 +324,7 @@
   },
   {
     "name": "Trampling Charge",
+    "class": "Basic",
     "desc": "You run forward, slamming through all foes in your path.",
     "type": "Strike",
     "speed": "Any",

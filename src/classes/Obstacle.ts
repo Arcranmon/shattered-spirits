@@ -10,7 +10,7 @@ class Obstacle {
   private interact_: string
   private name_: string
   private keywords_: string[]
-  private resistances_: string
+  private traits_: string
   private forced_movement_: string
   private size_: number
   private special_: string
@@ -23,7 +23,7 @@ class Obstacle {
     this.interact_ = ''
     this.name_ = ''
     this.keywords_ = []
-    this.resistances_ = ''
+    this.traits_ = ''
     this.forced_movement_ = ''
     this.size_ = 0
     this.special_ = ''
@@ -42,8 +42,11 @@ class Obstacle {
   get Name() {
     return this.name_
   }
-  get Resistances() {
-    return this.resistances_
+  get Traits() {
+    return this.traits_
+  }
+  public get Keywords() {
+    return this.keywords_
   }
 
   // ==========================================================
@@ -61,11 +64,8 @@ class Obstacle {
   get HasInteract() {
     return this.interact_ != ''
   }
-  get HasKeywords() {
-    return this.keywords_.length > 0
-  }
-  get HasResistances() {
-    return this.resistances_ != ''
+  get HasTraits() {
+    return this.traits_ != ''
   }
   get HasForcedMovement() {
     return this.forced_movement_ != ''
@@ -93,8 +93,8 @@ class Obstacle {
   public get HeightHeader() {
     return 'Height ' + this.height_
   }
-  public get ResistancesHeader() {
-    return '**Resistances:** ' + this.resistances_
+  public get TraitsHeader() {
+    return '**Traits:** ' + this.traits_
   }
   public get ForcedMovementHeader() {
     return '**Forced Movement:** ' + this.forced_movement_
@@ -104,9 +104,6 @@ class Obstacle {
   }
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
-  }
-  public get KeywordsHeader() {
-    return '_' + this.keywords_.join('_, _') + '_'
   }
 
   // ==========================================================
@@ -127,7 +124,7 @@ class Obstacle {
     this.interact_ = data.interact || ''
     this.name_ = data.name || ''
     this.keywords_ = data.keywords || []
-    this.resistances_ = data.resistances || ''
+    this.traits_ = data.traits || ''
     this.forced_movement_ = data.forced_movement || ''
     this.size_ = data.size || 0
     this.special_ = data.special || ''

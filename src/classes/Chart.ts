@@ -7,6 +7,7 @@ class Chart {
   private keywords_: Array<string>
   private status_: Array<string>
   private on_miss_: string
+  private material_: string
 
   public constructor() {
     this.roll_ = []
@@ -14,6 +15,8 @@ class Chart {
     this.status_ = []
     this.keywords_ = []
     this.on_miss_ = ''
+    this.damage_type_ = ''
+    this.material_ = ''
   }
 
   public Damage(i: number): string {
@@ -54,6 +57,12 @@ class Chart {
   public get OnMissHeader() {
     return '**_On Miss_:** ' + this.on_miss_
   }
+  public get HasMaterial() {
+    return this.material_.length > 0
+  }
+  public get MaterialHeader() {
+    return '**Material:** ' + this.material_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -71,6 +80,7 @@ class Chart {
     this.keywords_ = data.keywords || []
     this.damage_type_ = data.damage_type || ''
     this.on_miss_ = data.on_miss || ''
+    this.material_ = data.material || ''
   }
 }
 export default Chart

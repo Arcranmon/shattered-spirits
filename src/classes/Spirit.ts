@@ -10,9 +10,7 @@ var kBasicGambits = ['Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Marking S
 class Spirit {
   // Combat Qualities
   private vigor_: number
-  private poise_: number
-  private grit_: number
-  private reflex_: number
+  private stamina_: number
   private current_health_: number
 
   private name_: string
@@ -87,9 +85,7 @@ class Spirit {
       spirit_type: spirit.spirit_type_.Name,
       weapons: spirit.weapons_,
       current_health: spirit.current_health_,
-      poise: spirit.poise_,
-      grit: spirit.grit_,
-      reflex: spirit.reflex_,
+      stamina: spirit.stamina_,
       vigor: spirit.vigor_,
     }
   }
@@ -106,9 +102,7 @@ class Spirit {
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
     this.current_health_ = data.current_health || 0
-    this.poise_ = data.poise || 0
-    this.grit_ = data.grit || 0
-    this.reflex_ = data.reflex || 0
+    this.stamina_ = data.stamina || 0
     this.vigor_ = data.vigor || 0
   }
 }

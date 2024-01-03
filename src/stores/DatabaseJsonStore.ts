@@ -2,7 +2,7 @@ import Weapons from '@/database/items/weapons.json'
 import Armors from '@/database/items/armor.json'
 import Gears from '@/database/items/gear.json'
 import Disciplines from '@/database/disciplines.json'
-import Masteries from '@/database/masteries.json'
+import Arts from '@/database/arts.json'
 import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 
@@ -349,12 +349,17 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getMasteries(): any {
+  get getArts(): any {
     return () => {
-      return Masteries.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
+      return Arts.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
     }
   }
 
+  get getFilteredArts(): any {
+    return (types: Array<string>) => {
+      return Arts.filter((x) => types.includes(x.type.trim())).map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
+    }
+  }
   // ==========================================================
   // OBSTACLE TOOLS
   // ==========================================================

@@ -4,7 +4,7 @@ import { Chart, Maneuver } from '@/class'
 class Attack extends Maneuver {
   protected chart_: Chart
   protected category_: string
-  protected class_: string
+  protected rank_: string
   protected charged_effect_: string
   protected speed_: number
   protected type_: string
@@ -12,6 +12,9 @@ class Attack extends Maneuver {
   public constructor(name) {
     super(name)
     this.chart_ = new Chart()
+    this.type_ = ''
+    this.rank_ = ''
+    this.speed_ = 0
   }
 
   get CategoryHeader() {
@@ -27,11 +30,17 @@ class Attack extends Maneuver {
   get Chart() {
     return this.chart_
   }
-  get Class() {
-    return '_' + this.class_ + '_'
+  get Rank() {
+    return '_' + this.rank_ + '_'
   }
   get HasSpeed() {
     return this.speed_ != 0
+  }
+  get HasType() {
+    return this.type_ != ''
+  }
+  get HasSpeedOrType() {
+    return this.HasSpeed || this.HasType
   }
   get Speed() {
     return this.speed_
@@ -43,18 +52,19 @@ class Attack extends Maneuver {
     return '**Charged Effect:** ' + this.charged_effect_
   }
   get SpeedHeader() {
-    if (this.speed_ < 1) return ''
-    return 'Speed ' + this.speed_
+    var header = ''
+    if (this.speed_ >= 1) header = 'Speed ' + this.speed_
+    if (header.length > 0 && this.HasType) header += ', '
+    header += this.TypeHeader
+
+    return header
   }
   get TypeHeader() {
     if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'
     return ''
   }
-  get Header() {
-    var header = this.SpeedHeader
-    header += ' ' + this.TypeHeader
-    header += ' ' + this.class_
-    return header
+  get ClassHeader() {
+    return '_' + this.class_ + '_ _' + this.rank_
   }
 
   // ==========================================================
@@ -70,9 +80,10 @@ class Attack extends Maneuver {
   public setAttackData(data: IAttackData): void {
     this.setManeuverData(data)
     this.category_ = data.category || 'Attack'
-    this.class_ = data.class || ''
+    this.rank_ = data.rank || ''
     this.charged_effect_ = data.charged_effect || ''
     this.speed_ = data.speed || 0
+    this.type_ = data.type || ''
     if ('chart' in data && data.chart != null) {
       this.chart_ = Chart.Deserialize(data.chart)
     }

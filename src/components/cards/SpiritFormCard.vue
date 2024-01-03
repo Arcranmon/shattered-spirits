@@ -1,12 +1,11 @@
 <template>
-  <div class="spirit-box--wrapper" inline>
-    <div class="spirit-box--underline-top">
-      <div class="spirit-box--header" v-bind:class="header_color">
+  <div class="card--wrapper" inline>
+    <div class="card--underline-top">
+      <div class="card--header" v-bind:class="header_color">
         <h4 style="display: inline;">{{ form.Name }}</h4>
-        <div style="font-style: italic;">{{ form.Desc }}</div>
       </div>
     </div>
-    <div class="spirit-box--content spirit-box--format">
+    <div class="card--content card--format">
       <display-tooltip-text :string="form.SizeHeader" /><br />
       <display-tooltip-text :string="form.HealthHeader" /><br />
       <display-tooltip-text :string="form.WeaponsHeader" /><br />
@@ -17,6 +16,7 @@
         :npc="true"
       />
     </div>
+    <div class="desc--box" v-if="(form.Desc.length > 0)" style="font-style: italic;">{{ form.Desc }}<br /></div>
   </div>
 </template>
 
@@ -42,37 +42,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.spirit-box--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-lighter;
-  border: $border--black-standard;
-  height: 100%;
-  padding-bottom: $space--xs;
-}
-.spirit-box--type {
-  font-family: $font--fancy !important;
-}
-.spirit-box--header {
-  padding-top: $space--xs;
-  height: 100%;
-  text-align: center;
-  color: black;
-}
-.spirit-box--underline-top {
-  border-bottom: 5px solid black;
-}
-.spirit-box--content {
-  color: black;
-  padding: $space--xs;
-}
-.spirit-box--text-format {
-  font-size: $font-size--m;
-}
-.spirit-box--format {
-  font-family: $font--standard;
-  padding: none;
-  text-align: left;
-  color: black;
-  white-space: normal !important;
+.a {
 }
 </style>

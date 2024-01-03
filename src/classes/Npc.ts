@@ -8,7 +8,7 @@ class Npc {
   private class_: string
   private desc_: string
   private durability_: number
-  private endurance_: number
+  private health_: number
   private gambits_: Array<string>
   private guard_: number
   private name_: string
@@ -43,8 +43,8 @@ class Npc {
   public get Desc() {
     return this.desc_
   }
-  public get Endurance() {
-    return this.endurance_
+  public get Health() {
+    return this.health_
   }
   public get HasGambits() {
     return this.gambits_.length > 0
@@ -99,8 +99,8 @@ class Npc {
   public get ApText() {
     return '**AP:** ' + this.ap_
   }
-  public get EnduranceText() {
-    return '**Endurance:** ' + this.endurance_
+  public get HealthText() {
+    return '**Health:** ' + this.health_
   }
   public get ArmorText() {
     if (this.guard_ == 0) return '**Armor:** None'
@@ -126,7 +126,7 @@ class Npc {
     this.class_ = data.class || ''
     this.desc_ = data.desc || ''
     this.durability_ = data.durability || 0
-    this.endurance_ = data.endurance || 0
+    this.health_ = data.health || 0
     this.gambits_ = data.gambits || []
     this.guard_ = data.guard || 0
     this.movement_ = data.movement || ''

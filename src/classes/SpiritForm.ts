@@ -47,7 +47,7 @@ class SpiritForm {
     return '**Weapons:** ' + this.weapons_
   }
   public get BonusAttackHeader() {
-    return '**Bonus Attack:** ' + this.bonus_attack_
+    return '**Bonus Attack:** _' + this.bonus_attack_ + '_'
   }
   public get BonusAttack() {
     return this.bonus_attack_
@@ -59,7 +59,7 @@ class SpiritForm {
     return this.traits_
   }
   public get TraitsHeader() {
-    return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_z'
+    return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_'
   }
 
   // ==========================================================

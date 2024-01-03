@@ -8,6 +8,7 @@ class Ability {
   protected area_: string
   protected boost_: string
   protected cost_: string
+  protected class_: string
   protected desc_: string
   protected effect_: string
   protected keywords_: Array<string>
@@ -16,6 +17,7 @@ class Ability {
   protected range_: Array<IRangeData>
   protected reqs_: string
   protected special_: string
+  protected target_: string
   protected chart_: Chart
 
   public constructor(name) {
@@ -30,6 +32,7 @@ class Ability {
     this.range_ = null
     this.reqs_ = ''
     this.special_ = ''
+    this.target_ = ''
     this.chart_ = null
   }
 
@@ -77,13 +80,13 @@ class Ability {
     return this.Area != ''
   }
   public get AreaHeader() {
-    if (this.Area && this.Area != '') return '**Area:** ' + this.Area
+    return '**_Area_:** ' + this.Area
   }
   public get HasBoost() {
     return this.boost_.length > 0
   }
   public get BoostHeader() {
-    return '**Boost:** ' + this.boost_
+    return '**_Boost_:** ' + this.boost_
   }
   public get HasChart() {
     return this.Chart != null
@@ -92,22 +95,19 @@ class Ability {
     return this.cost_.length > 0
   }
   public get CostHeader() {
-    return '**Cost:** ' + this.cost_
+    return '**_Cost_:** ' + this.cost_
   }
   public get HasEffect() {
     return this.effect_.length > 0
   }
   public get EffectHeader() {
-    return '**Effect:** ' + this.effect_
+    return '**_Effect_:** ' + this.effect_
   }
   public get ManeuverHeader() {
     return '**Enhance:** '
   }
   public get HasKeywords() {
     return this.keywords_.length > 0
-  }
-  public get KeywordsHeader() {
-    return '[_' + this.Keywords.join('_, _') + '_]'
   }
   public get HasMove() {
     return this.move_.length > 0
@@ -143,6 +143,12 @@ class Ability {
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
+  public get HasTarget() {
+    return this.target_.length > 0
+  }
+  public get TargetHeader() {
+    return '**Target:** ' + this.target_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -159,12 +165,14 @@ class Ability {
     this.boost_ = data.boost || ''
     this.cost_ = data.cost || ''
     this.desc_ = data.desc || ''
+    this.class_ = data.class || ''
     this.effect_ = data.effect || ''
     this.keywords_ = data.keywords || []
     this.move_ = data.move || ''
     this.name_ = data.name || ''
     this.reqs_ = data.reqs || ''
     this.special_ = data.special || ''
+    this.target_ = data.target || ''
     if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
     this.range_ = data.range || []
   }

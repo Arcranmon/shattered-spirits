@@ -13,7 +13,7 @@
   },
   {
     "name": "Avoidable",
-    "effect": "Characters may expend _Stamina_ to reduce Avoidable Damage by 1 for every 1 _Stamina_ spent."
+    "effect": "Characters may expend _Stamina_ to reduce Avoidable Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_."
   },
   {
     "name": "Close Range",
@@ -65,7 +65,10 @@
     "name": "Resist",
     "effect": "A _Maneuver_ typically used in response to an Attack that allows a character to strike back against a foe, mitigate damage, or dodge. Each _Turn_, a character may use a single Resist _Maneuver_."
   },
-  { "name": "Defends", "see": "Defend" },
+  {
+    "name": "Defensive",
+    "effect": "This ability is used to mitigate the results of a hostile action. Only a single Defensive Reaction may be used against a specific trigger."
+  },
   {
     "name": "Derived",
     "effect": "This _Terrain_'s _Source_ is the same as whatever the _Terrain_ beneath it is; i.e., if it is created on _Earthen_ Terrain, it is in turn _Earthen_."
@@ -92,7 +95,7 @@
   },
   {
     "name": "Endurable",
-    "effect": "Characters may expend _Stamina_ to reduce Endurable Damage by 1 for every 1 _Stamina_ spent."
+    "effect": "Characters may expend _Stamina_ to reduce Endurable Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_."
   },
   { "name": "Evading", "see": "Evade" },
   {
@@ -121,8 +124,20 @@
     "effect": "Attacks with the Fist Keyword require an _Open Hand_ to use."
   },
   {
+    "name": "Forceful",
+    "effect": "Forceful can be applied to any kind of _Forced Movement_. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. When determining Damage to an _Obstacle_ from a _Collision_, deal Damage equal to the _Forced Movement_ remaining, not half. Creatures involved in a _Collision_ take Damage equal to any _Vulnerable_ they gain and gain _Dazed_ 1."
+  },
+  {
     "name": "Fragile",
     "effect": "After making an Attack with this Weapon, Destroy it."
+  },
+  {
+    "name": "Tundra",
+    "effect": "Tundra abilities are a subset of _Water_ _Spirit_ abilities that primarily focus on manipulating ice and cold."
+  },
+  {
+    "name": "Basic",
+    "effect": "A Basic ability is not innately _Martial_ or _Spirit_; it cannot be _Suppressed_, but abilities used as a part of this ability (such as Attacks) may."
   },
   {
     "name": "Glancing",
@@ -146,19 +161,23 @@
   },
   {
     "name": "Heavy",
-    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Block_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
+    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Guard_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
   },
   {
     "name": "Icy",
-    "effect": "Icy spaces follow the same mechanics as Watery spaces, but a creature must expend 1 _Momentum_ to _Draw_ from them."
+    "effect": "Icy spaces follow the same mechanics as Watery spaces, but may only be _Drawn_ from if the creature has _Snowdraw_."
   },
   {
     "name": "Kick",
     "effect": "Weapons with the Kick Keyword can be used regardless of what a character has _Wielded_ but have _Disadvantage_ if a character is _Stuck_ and a -1 _Penalty_ if _Hobbled_."
   },
   {
+    "name": "Land",
+    "effect": "Land abilities are a subset of _Earth_ _Spirit_ abilities that primarily focus on sculpting earth and creating quakes."
+  },
+  {
     "name": "Light",
-    "effect": "Light Attacks are swift and specialize in targeting foes with high _Dodge_ defense. They typically have a low _Speed_, and may be used in conjunction with the _Quickened Attack_ ability to use a _Major Attack_ as a _Minor Attack_ late in the _Round_."
+    "effect": "Light Attacks are swift but tend to lack power. They typically have a low _Speed_, and may be used in conjunction with the _Quickened Attack_ ability to use a _Major Attack_ as a _Minor Attack_ late in the _Round_."
   },
   {
     "name": "Line",
@@ -178,7 +197,7 @@
   },
   {
     "name": "Mental",
-    "effect": "Mental Damage ignores all _Guard_. Characters may expend _Stamina_ to reduce Mental Damage by 2 for every 1 _Stamina_ spent."
+    "effect": "Characters may expend _Stamina_ to reduce Mental Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_."
   },
   {
     "name": "Obstacle",
@@ -219,8 +238,8 @@
     "effect": "This Weapon is easy to draw and costs no _Momentum_ to Draw/Stow. Additionally, you may always treat this weapon as _Wielded_ so long as you have an _Open Hand_. After using it for an Attack, you must _Wield_ it if possible."
   },
   {
-    "name": "Parrying",
-    "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified."
+    "name": "Parry",
+    "effect": "When a creature Parries they gain the Parry Effect of a _Wielded_, un-_Sundered_ piece of Equipment against the triggering effect. A creature may pay 2 _Momentum_ to Parry with _Sundered_ Equipment. If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Sundered_."
   },
   {
     "name": "Priority",
@@ -259,12 +278,20 @@
     "effect": "A Stall _Technique_ is always resolved at the end of its _Phase_. It ignores normal turn order and does not count for the alternating turns within a _Phase_."
   },
   {
+    "name": "Mountain",
+    "effect": "Mountain abilities are a subset of _Earth_ _Spirit_ abilities that primarily focus on solidifying and firing solid earth."
+  },
+  {
+    "name": "Tide",
+    "effect": "Tide abilities are a subset of _Water_ _Spirit_ abilities that primarily focus on manipulating liquid water."
+  },
+  {
     "name": "Edge",
     "effect": "A special type of _Gambit_ which only one may be applied to a single Attack."
   },
   {
     "name": "Remote",
-    "effect": "This _Attack_ ignores _Obstructed_, _Cover_, and _Lightly Obscured_."
+    "effect": "This _Attack_ ignores _Obstructed_, _Cover_, and _Lightly Obscured_ and is treated as if it is _Melee_ for all effects."
   },
   {
     "name": "Repeatable",
@@ -281,6 +308,10 @@
   {
     "name": "Rush",
     "effect": "Rush _Movement_ must be taken in a straight line and may not _Climb_."
+  },
+  {
+    "name": "Spirit",
+    "effect": "A Spirit ability makes use of the innate magic of your Spirit. These abilities can be Suppressed, and often require specialized terrain features or equipment to be fully utilized. If an ability is simply listed as a Spirit ability, use the subcategory that your spirit aligns with, such as _Mountain_ or _Land_ for an _Earth_ Spirit."
   },
   {
     "name": "Sundering",
@@ -316,7 +347,7 @@
   },
   {
     "name": "Versatile",
-    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
+    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Attacks, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
   },
   {
     "name": "Incoming",

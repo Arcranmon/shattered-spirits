@@ -5,14 +5,7 @@
     <custom-button to="/character-creation">Character Creation Rules</custom-button>
     <br />
     <custom-button to="/combat">Combat Rules</custom-button> <br />
-    <custom-button to="/equipment">Equipment</custom-button> <br />
-    <custom-button to="/basic-skills">Basic Skills</custom-button> <br />
-    <!----
-     <custom-button to="/masteries">Masteries</custom-button> <br />
-    --->
-    <custom-button to="/martial-disciplines">Martial Disciplines</custom-button> <br />
-    <custom-button to="/basic-spirit-abilities">Basic Spirit Abilities</custom-button> <br />
-    <custom-button to="/spirit-disciplines">Spirit Disciplines</custom-button> <br />
+    <custom-button to="/character-options">Character Options</custom-button> <br />
     <!----
 
     <custom-button to="/character-creator">Character Creator (WIP)</custom-button>
@@ -34,3 +27,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style scoped lang="scss">
+.blade {
+  float: left;
+  background-color: lightgrey;
+  clip-path: polygon(82% 0, 100% 51%, 82% 100%, 0 100%, 0 0);
+}
+</style>

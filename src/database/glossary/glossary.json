@@ -53,17 +53,17 @@
   },
   {
     "name": "Climbing",
-    "effect": "When moving to a higher elevation that forces a character to climb, the total _Movement_ expended is equal to 1 + twice the _Elevation_ change. For example, it would cost a creature 3 spaces of _Movement_ to _Climb_ up a 1 Height _Obstacle_. If a creature ends their turn while _Climbing_, creatures have _Advantage_ on _Attacks_ against them."
+    "effect": "When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to twice the Elevation change. For example, it would cost a creature 2 spaces of Movement to Climb up a 1 Height Obstacle. While _Climbing_ a creature has _Disadvantage_ on all Attacks and Attacks against them have _Advantage_."
   },
   { "name": "Climb", "see": "Climbing" },
   {
     "name": "Collision",
-    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve the following:\n* If it is an Obstacle, inflict _Vulnerable_ X on the target, where X is half the lower of the remaining _Forced Movement_ or the Obstacle's _Durability_. Reduce the remaining _Forced Movement_ by the Object's _Durability_. If there is still _Forced Movement_ remaining, _Destroy_ the Obstacle, inflict _Dazed_ 1 on the creature, and continue the Movement.\n* If it's a creature, inflict _Vulnerable_ X on both targets, where X is a quarter of the remaining _Forced Movement_. Reduce the remaining _Forced Movement_ by 4 times the secondary creature's Size, then split the remaining _Forced Movement_ between both Targets. If the secondary creature Negates the _Forced Movement_, Negate it for both Targets.\n\nIf the original Target is an Obstacle, instead inflict Damage on it rather than _Vulnerable_."
+    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve it as follows:\n* **Obstacle Colliding with Obstacle**: Deal Damage to both _Obstacles_ equal to the half the _Forced Movement_ remaining. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_.\n* **Obstacle Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Obstacle_. After resolving this _Push_, the creature gains _Vulnerable_ equal to half the spaces they moved. Continue moving the _Obstacle_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Vulnerable_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Vulnerable_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Obstacle**: Deal Damage to the _Obstacle_ equal to the half the _Forced Movement_ remaining and inflict _Vulnerable_ on the creature equal to the same amount. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Obstacle_ was _Destroyed_, reduce the _Forced Movement_ by the Obstacle's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
   },
   { "name": "Collide", "see": "Collision" },
   {
     "name": "Cold",
-    "effect": "A damage type caused by freezing temperatures and frigid climate. Cold Damage ignores all _Guard_ not provided by _Resistance_ and is always _Endurable_."
+    "effect": "A damage type caused by freezing temperatures and frigid climate. Cold Damage ignores all _Guard_ not provided by _Resistance_ and is always _Endurable_. If a character is _Downed_ by Cold Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Frost_ 1\n 3-4: _Frost_ 2\n5-6: _Frost_ 3"
   },
   {
     "name": "Controller",
@@ -71,7 +71,7 @@
   },
   {
     "name": "Cost",
-    "effect": "An up-front cost of a _Technique_ that must be paid in the _Plotting_ Phase if it's a _Technique_, or when used if it's a _Maneuver_. If this Cost is not paid, the _Technique_/_Maneuver_ may not be used."
+    "effect": "An up-front cost of an ability that must be paid at _Respite_ if it's a _Technique_, or when used for all other abilities."
   },
   {
     "name": "Covered",
@@ -84,11 +84,15 @@
   { "name": "Critical Hit", "see": "Crit" },
   {
     "name": "Crush",
-    "effect": "Damage caused by blunt force trauma, such as from a hammer or a flung stone."
+    "effect": "Damage caused by blunt force trauma, such as from a hammer or a flung stone. If a character is _Downed_ by Crush Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Exposed_ 1\n 3-4: _Exposed_ 2\n5-6: _Exposed_ 2, _Reeling_ 1"
   },
   {
     "name": "Courier",
     "effect": "Courier Disciplines tend to have high movement among their abilities, as well as movement options that make it far easier to navigate terrain and enemy positions."
+  },
+  {
+    "name": "Downed",
+    "effect": "A creature becomes Downed when their Health reaches 0. For most NPCs, this means they are immediately _Defeated_. Player characters and more powerful NPCs instead roll for _Wounds_, which is done by rolling a number of d6s based on the number of times they have been _Downed_ prior to this.\n* **First Down:** Roll 2d6 and use the lowest.\n* **Future Downs:** Roll Xd6 and take the highest result, where X is the number of times prior to this they have been _Downed_.\n\nA creature clears the number of times they have been Downed when they rest in a _Haven_."
   },
   {
     "name": "Defender",
@@ -100,7 +104,7 @@
   },
   {
     "name": "Draw",
-    "effect": "Drawing is the main way that Waterbonded interact with _Sources_. All Draw effects will be listed as Draw X, where X is a numeric value. In these cases, reduce the combined value of any number of _Sources_ within the listed Draw range by X, destroying any _Sources_ that have their value reduced to 0. Waterbound may Draw from _Watery_ _Sources_ at no cost, or pay 1 _Momentum_ to Draw from _Icy_ spaces that _Turn_."
+    "effect": "Drawing is the main way that Waterbonded interact with _Sources_. All Draw effects will be listed as Draw X, where X is a numeric value. In these cases, reduce the combined value of any number of _Sources_ within the listed Draw range by X, destroying any _Sources_ that have their value reduced to 0. Waterbound may Draw from _Watery_ _Sources_."
   },
   { "name": "Drew", "see": "Draw" },
   { "name": "Drawn", "see": "Draw" },
@@ -111,6 +115,10 @@
   {
     "name": "Earthbonded",
     "effect": "A character that is bonded to an Earth Spirit."
+  },
+  {
+    "name": "Effect",
+    "effect": "The primary result of using an ability. Typically, this is where the bulk of what a _Technique_ or other ability does."
   },
   {
     "name": "Elevation",
@@ -144,17 +152,13 @@
   },
   {
     "name": "Falling",
-    "effect": "If a creature moves from one _Elevation_ to another they must pay _Stamina_ equal to one less than the total _Elevation_ change or else take Crush Damage equal to twice the _Elevation_ change. If a creature would take at least 6 Damage in this way they also gain _Prone_."
+    "effect": " If a creature moves from one Elevation to a lower _Elevation_ take Crush Damage equal to twice the Elevation Change. If a creature takes at least 6 Damage in this way they also fall _Prone_. A creature may reduce this Damage by 2 for every _Stamina_ spent."
   },
   { "name": "Fall", "see": "Falling" },
   { "name": "Falls", "see": "Falling" },
   {
     "name": "Free Turn",
     "effect": "When a creature gains a Free Turn they may immediately take a Turn after the current Turn resolves, ignoring the normal Initiative process. What they may do on this Turn is outlined in the ability, but they may also activate Stunts and use any other abilities that simply require a Turn."
-  },
-  {
-    "name": "Forceful",
-    "effect": "Forceful can be applied to any kind of _Forced Movement_. Whenever a _Collision_ occurs from said _Forced Movement_, deal [_Avoidable_] Damage equal to 1 + any _Vulnerable_ inflicted due to the _Collision_. Additionally, if they take at least 4 Damage, they gain _Dazed_ 1. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. "
   },
   {
     "name": "Gambit",
@@ -296,6 +300,10 @@
     "effect": "The beginning of a _Round_ immediately after _Refresh_ where all creatures involved in combat select their _Techniques_ for the _Round_."
   },
   {
+    "name": "Puppet",
+    "effect": "A Puppet is a piece of _Equipment_ that treated as if it was _Wielded_, but is controlled by spiritual magic and requires no _Hands_. While a Puppet, the creature may use it to make Attacks and may use its _Parry_ effect if it is adjacent to the beneficiary. The Puppet does not count as a creature, but any effects that trigger based off _Reach_ (such as _Opportunity Attack_) may be triggered from the Puppet's' position. Additionally, on each of their _Turns_, a creature may move the Puppet up to 5 spaces if _Light_ or an _Accessory_, 4 if _Versatile_, or 3 if _Heavy_ or _Armor_. If the Equipment is _Thrown_, move it to the final location and continue the _Puppet_. Finally, replace [_Martial_] with [_Spirit_] for any abilities using this _Equipment_, where the _Spirit_ type is the same as the ability that created the Puppet. While a Puppet this Equipment may be attacked as if it was an _Obstacle_. If _Damaged_, end this effect. When the effect ends, the _Equipment_ becomes unattended in the space it currently occupies."
+  },
+  {
     "name": "Profile",
     "effect": "All Attacks have a Profile, a chart showing the results of an Attack on a roll of 2-12. When you make an Attack, roll 2d6 and consult the Profile for the result."
   },
@@ -344,7 +352,7 @@
   },
   {
     "name": "Slash",
-    "effect": "Damage caused by lacerations, such as those caused by an axe or cutting blade."
+    "effect": "Damage caused by lacerations, such as those caused by an axe or cutting blade. If a character is _Downed_ by Slash Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleed_ 1\n 3-4: _Bleed_ 2\n5-6: _Bleed_ 3"
   },
   {
     "name": "Speed",
@@ -370,7 +378,7 @@
   { "name": "Summoned", "see": "Summon" },
   {
     "name": "Stab",
-    "effect": "Damage that represents piercing wounds, such as those caused by an arrow or a knife."
+    "effect": "Damage that represents piercing wounds, such as those caused by an arrow or a knife. If a character is _Downed_ by Stab Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleed_ 1\n 3-4: _Bleed_ 1, _Impaired_ 1\n5-6: _Bleed_ 1, _Impaired_ 2"
   },
   {
     "name": "Stance",
@@ -397,10 +405,6 @@
   {
     "name": "Striker",
     "effect": "Striker Disciplines specialize in close-range combat, and often prioritize melee attacks over all else. Striker Disciplines are typically capable of the greatest damage in the system."
-  },
-  {
-    "name": "Stone Armor",
-    "effect": "Stone Armor is _Overarmor_ with _Guard_ 1, _Durability_ 9, and _Resistance_ to Slash/Stab Damage. Stone Armor has a weakness to Crush Damage. While a creature has Stone Armor, reduce their _Jump_ Value by 1, to a minimum of 0."
   },
   {
     "name": "Supporter",
@@ -441,6 +445,6 @@
   { "name": "Wielding", "see": "Wielded" },
   {
     "name": "Winded",
-    "effect": "A character becomes Winded when they have no _Endurance_. While Winded, a character adds [_Glancing_] to all effects. If a character gains _Endurance_ they are no longer Winded."
+    "effect": "A character becomes Winded when they have no _Health_. While Winded, a character adds [_Glancing_] to all effects. If a character gains _Health_ they are no longer Winded."
   }
 ]

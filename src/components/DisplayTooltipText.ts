@@ -11,6 +11,11 @@ Vue.component('DisplayTooltipText', {
       type: Boolean,
       default: true,
     },
+    inline: {
+      required: false,
+      type: Boolean,
+      default: true,
+    },
   },
   render(h) {
     const render = {
@@ -43,7 +48,8 @@ Vue.component('DisplayTooltipText', {
         }
       }
       var merged_input = split_input.join('')
-      return "<span style='display: inline-block;'>" + this.$marked.parse(merged_input) + '</span>'
+      if (this.inline) return "<span style='display: inline-block;'>" + this.$marked.parse(merged_input) + '</span>'
+      else return "<div style='display: inline-block;'>" + this.$marked.parse(merged_input) + '</div>'
     },
   },
 })

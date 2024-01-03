@@ -1,6 +1,6 @@
 <template
   ><div class="background">
-    <h2>Basic Spirit Abilities</h2>
+    <h2>Spirit Abilities</h2>
     <p style="text-align: center; width: 100%;">
       You can do a great deal to specialize your spirit, from choosing its physical form to deciding what type of magic it is most aligned with. The below tabs
       show the different spirit options available at character creation, as well as an additional tab showing natural weapons such as claws and fangs that
@@ -20,7 +20,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="4" v-for="item in ['Land', 'Stone']" :key="item">
+          ><v-col :cols="4" v-for="item in ['Land', 'Mountain']" :key="item">
             <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
         ></v-row>
         <h4>Earth Spirit Forms</h4>
@@ -124,7 +124,7 @@ import MovementCard from '@/components/cards/MovementCard.vue'
 import AttackCard from '@/components/cards/AttackCard'
 import { store } from '@/store'
 export default Vue.extend({
-  name: 'basic-spirit-abilities',
+  name: 'spirit-abilities',
   data() {
     return {
       tab: null,

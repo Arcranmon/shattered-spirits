@@ -23,17 +23,8 @@
               </v-row>
               <v-row no-gutters>
                 <v-col cols="2" />
-                <v-col cols="3"><display-tooltip-text string="**_Endurance_:**" /></v-col>
-                <v-col cols="2">{{ character.CurrentEndurance }} / {{ character.MaxEndurance }}</v-col>
-                <v-col cols="3"
-                  ><v-btn inline x-small @click=";(character.CurrentEndurance += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.CurrentEndurance -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
-              </v-row>
-              <v-row no-gutters>
-                <v-col cols="2" />
                 <v-col cols="3"><display-tooltip-text string="**_Health_:**" /></v-col>
-                <v-col cols="2"> {{ character.CurrentHealth }} / {{ character.MaxHealth }}</v-col>
+                <v-col cols="2">{{ character.CurrentHealth }} / {{ character.MaxHealth }}</v-col>
                 <v-col cols="3"
                   ><v-btn inline x-small @click=";(character.CurrentHealth += 1), $emit('changed')" color="green">+</v-btn>
                   <v-btn inline x-small @click=";(character.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn></v-col

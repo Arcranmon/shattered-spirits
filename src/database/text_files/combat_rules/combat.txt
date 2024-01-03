@@ -20,9 +20,14 @@ A _Round_ is divided into the following phases:
     * Pay 1 _Momentum_ and stop _Wielding_ all _Equipment_ of your choice but keep it _Equipped_, then _Wield_ up to two _Equipped_ or adjacent, un-_Equipped_ pieces of Equipment. If you choose an un-_Equipped_ piece of equipment, create an _Opening_.
 * You and your spirit set your _Stamina_ to its maximum value, reset your _AP_, and decrease your _Reeling_ (if any) by 1.
 * You gain 2 _Momentum_.
+* Resolve the effects of Wounds and other persistent afflictions the character has:
+    * Gain 1 _Vulnerable_ for every 2 _Hunger_/_Thirst_.
+    * Gain 1 _Exposed_ for every 2 _Fatigue_.
+    * For every _Wound_ that defines a Status, gain the outlined Status.
 * Resolve any  other effects that occur during _Respite_.
+
 &nbsp; 
-Once Refresh is complete, both the _Spirit Master_ and the Players will all determine what _Technique_ they are making use of in the round. Players may select a single _Technique_ to use each _Round_. Players will choose the _Technique_ they wish to use in the Round, then decide which _Speed_ they wish to use it at. _Techniques_ may be played at any _Speed_ greater than or equal to their listed value. When playing a _Technique_ consult the _Speed_ of any _Attacks_ you hope to make as a part of it; that may impact the _Speed_ you wish to play it at! (See _Speed Penalty_) 
+Once Respite is complete, both the _Spirit Master_ and the Players will all determine what _Technique_ they are making use of in the round. Players may select a single _Technique_ to use each _Round_. Players will choose the _Technique_ they wish to use in the Round, then decide which _Speed_ they wish to use it at. _Techniques_ may be played at any _Speed_ greater than or equal to their listed value. When playing a _Technique_ consult the _Speed_ of any _Attacks_ you hope to make as a part of it; that may impact the _Speed_ you wish to play it at! (See _Speed Penalty_) 
 
 &nbsp; 
 
@@ -56,7 +61,7 @@ Additionally, on **all** _Turns_ (including their own), creatures may do the fol
 &nbsp;
 
 ### Making Attacks
-Throughout Shattered Spirits you will see Techniques that have a _Profile_, or a chart outlining damage and effects for values from 2-12. These are referred to as Attacks, and they are typically used to damage or impair hostile creatures. To make an Attack, you must first make an _Attack Roll_. Roll 2d6 and reference the _Profile_ in the Attack, using the Damage and Status in that row to resolve the Attack. For example, if a creature were to use the Stone Strike Technique from the Boulder Discipline and rolled an 8, they would deal 7 Damage (seen in the Damage column) and inflict _Slowed_ (seen in the Status column) on the foe. 
+Throughout Shattered Spirits you will see Techniques that have a _Profile_, or a chart outlining damage and effects for values from 2-12. These are referred to as Attacks, and they are typically used to damage or impair hostile creatures. To make an Attack, you must first make an _Attack Roll_. Roll 2d6 and reference the _Profile_ in the Attack, using the Damage and Status in that row to resolve the Attack. For example, if a creature were to use the Stone Strike Technique from the Mountain Discipline and rolled an 8, they would deal 7 Damage (seen in the Damage column) and inflict _Slowed_ (seen in the Status column) on the foe. 
 
 &nbsp;
 **Advantage and Disadvantage:** Sometimes Attacks will have _Advantage_ or _Disadvantage_. An Attack with either rolls 3d6 instead of the normal 2d6. If the Attack has _Advantage_ it uses the highest two rolls to resolve the Attack, while _Disadvantage_ uses the lowest two rolls.
@@ -113,18 +118,23 @@ Beyond the simple number of spaces a character is able to move and the effects o
 &nbsp;
 - <ins>Jumping</ins>: When a character Jumps, they may count Movement up to their Jump value as _Leaping_ Movement. This Movement must be taken in a straight line, and this Movement may not be broken up.
 - <ins>Swimming</ins>: While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature is _Heavily Obstructed_, _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them.
-- <ins>Climbing</ins>: When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to 1 + twice the Elevation change. For example, it would cost a creature 3 spaces of Movement to Climb up a 1 Height Obstacle.  If a creature ends their turn while _Climbing_, creatures have _Advantage_ on Attacks against them.
-- <ins>Falling</ins>: If a creature moves from one Elevation to another they must pay _Stamina_ equal to one less than the total Elevation change or else take Crush Damage equal to twice the Elevation Change. If a creature would take at least 6 Damage in this way they also fall _Prone_.
+- <ins>Climbing</ins>: When moving to a higher elevation that forces a character to climb, the total Movement expended is equal to twice the Elevation change. For example, it would cost a creature 2 spaces of Movement to Climb up a 1 Height Obstacle. While _Climbing_ a creature has _Disadvantage_ on all Attacks and Attacks against them have _Advantage_.
+- <ins>Falling</ins>: If a creature moves from one Elevation to a lower _Elevation_ take Crush Damage equal to twice the Elevation Change. If a creature takes at least 6 Damage in this way they also fall _Prone_. A creature may reduce this Damage by 2 for every _Stamina_ spent.
 
 &nbsp;
-### Health and Healing
-* <ins>Endurance</ins> represents a character's ability to defend themselves. While a character has _Endurance_ they are taking little damage; they are narrowly avoiding attacks, shrugging off blows, or otherwise taking superficial damage. If a character ever has no _Endurance_ they become _Winded_, severly limiting their offensive potential. Characters typically start combat encounters with full _Endurance_.
-* <ins>Health</ins> is a character's ability to take physical damage. When a character is losing _Health_ they are becoming injured and taking serious hits that will leave a mark. If a character has no _Health_ they become _Downed_ and immediately lose one _Condition_.
-* <ins>Vigor</ins> represents a character's fighting spirit and sudden surges of energy in battle, and is typically only gained in combat. Vigor is always lost before _Endurance_ or _Health_. _Vigor_ does not stack; if a character would gain _Vigor_ while they already have it they must choose whether to keep their current amount of _Vigor_ or replace it with the value they would gain.
+### Health and Wounds
+* <ins>Health</ins> represents a character's ability to defend themselves. While a character has _Health_ they are taking little damage; they are narrowly avoiding attacks, shrugging off blows, or otherwise taking superficial damage. When a character loses all their _Health_ they roll for _Wounds_, then increment their _Downed_ tracker. Characters typically start combat encounters with full _Health_.
+* <ins>Vigor</ins> represents a character's fighting spirit and sudden surges of energy in battle, and is typically only gained in combat. Vigor is always lost before _Health_ or _Health_. _Vigor_ does not stack; if a character would gain _Vigor_ while they already have it they must choose whether to keep their current amount of _Vigor_ or replace it with the value they would gain.
+* <ins>Wounds</ins> occur when a character is _Downed_. If a character has open lines in their Strain Meter, place the _Wounds_ there. Otherwise, replace a non-_Wound_ line with the _Wound_. If the _Wound_ has a count greater than one, split it across multiple lines. For example, _Bleed_ 3 would be three individual lines, each of _Bleed_ 1.
+* <ins>Downed</ins> occurs when a creature's _Health_ reaches 0. For most NPCs, this means they are immediately _Defeated_. Player characters and more powerful NPCs instead roll for _Wounds_, which is done by rolling a number of d6s based on the number of times they have been _Downed_ prior to this.
+    * **First Down:** Roll 2d6 and use the lowest.
+    * **Future Downs:** Roll Xd6 and take the highest result, where X is the number of times prior to this you have been _Downed_.
+    * A character clears the number of times they have been Downed when they rest in a _Haven_.
+* <ins>Death</ins>: It is extremely rare for a character to be killed in combat in Shattered Spirits. Characters only die when their entire Strain Meter is full of _Wounds_.
 
 &nbsp;
 ### Cover and Obstructions
-When determining Obstruction, characters should draw a line from the center of their space to the center of the target's space, referred to as the Attack Line:
+When determining Obstruction, characters should draw a line from the center of the Attack's origin space to the center of the target's space, referred to as the Attack Line:
 * <ins>_Lightly Obstructed_</ins>: If the Attack Line passes through an Obstacle with a _Total Height_ equal to or greater than yours and the Target's and comes out an adjacent side, the Target is _Lightly Obstructed_.
 * <ins>_Heavily Obstructed_</ins>:  If the Attack Line passes through an Obstacle with a _Total Height_ equal to or greater than yours and the Target's and comes out of non-adjacent sides of said Obstacle, the Target is _Heavily Obstructed_.
 * <ins>_Covered_</ins>: If a creature is adjacent to an Obstacle with a _Total Height_ less than or equal to their own and the Attack Line passes through said Obstacle and comes out of non-adjacent sides of it, the Target is _Covered_.
@@ -133,7 +143,7 @@ When determining Obstruction, characters should draw a line from the center of t
 
 &nbsp;
 ### Vision
-When determining Vision, characters should draw a line from the center of their space to the center of the target's space:
+When determining Vision, characters should draw a line from the center of the Attacker's space to the center of the target's space:
 * <ins>_Lightly Obscured_</ins>: If this line clips an Obstacle of a _Total Height_ greater than yours and the target's or some _Terrain_ effects, they are _Lightly Obscured_. This has no impact on its  own, but works in conjunction with some effects such as _Veiled_.
 * <ins>_Heavily Obscured_</ins>:  If this line fully passes through an Obstacle of a _Total Height_ greater than yours and the target's, they are _Heavily Obscured_. A creature that is _Heavily Obscured_ may not be targeted.
 * <ins>Secondary Senses</ins>: Secondary Senses allow characters to perceive enemies in ways other than sight. When using a _Secondary Sense_, ignore the normal rules for determining Obscured and follow the rules of the _Secondary Sense_.

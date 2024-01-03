@@ -26,7 +26,7 @@ status_multipliers = {
 }
 
 keyword_multipliers = {
-    "Avoidable": -1.0,
+    "Avoidable": -0.5,
     "Cold": 0.0,
     "Groundsource": 0.5,
     "Brawling": 0.25,

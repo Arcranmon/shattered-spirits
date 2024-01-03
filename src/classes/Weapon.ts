@@ -62,9 +62,6 @@ class Weapon extends Attack {
     if (this.Category == 'Unarmed') return require('@/assets/Unarmed.svg')
     return require('@/assets/' + this.Category + ' Weapon.svg')
   }
-  public get HasKeywords() {
-    return this.keywords_.length > 0
-  }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'
   }

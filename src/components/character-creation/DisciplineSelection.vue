@@ -14,7 +14,7 @@
     <div class="centered--formatted">
       <display-tooltip-text :string="'You may select an additional ' + character.HasAllDisciplines[0] + ' Tiers of Disciplines!'" /><br />
       <display-tooltip-text v-if="!character.HasAllDisciplines[1]" :string="'You are missing a Tier 2 Spirit Discipline!'" /><br />
-      <display-tooltip-text v-if="!character.HasAllDisciplines[2]" :string="'You are missing a Tier 2 Martial Discipline!'" /><br />
+      <display-tooltip-text v-if="!character.HasAllDisciplines[2]" :string="'You are missing a Tier 2 Style Discipline!'" /><br />
       <display-tooltip-text string="Click a Discipline on the right to select it, or a selected Discipline to remove it." /><br />
       <display-tooltip-text
         string="By default, only Disciplines you have the appropriate gear for are shown; flip the toggle below to instead display all."

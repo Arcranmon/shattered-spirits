@@ -1,15 +1,16 @@
 [
   {
     "name": "Charged Attack",
+    "class": "Basic",
     "desc": "You gather yourself before unleashing a devastating attack.",
     "effect": "Choose a _Major Attack_ with a _Charged Effect_. Instead of immediately making the _Attack_, instead create a _Hazard_ equal to the _Area_ the _Charged Effect_ would Target (a single space within _Range_ if no Area is listed). End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the _Attack_ against all creatures in the _Area_. You may choose to not make this _Attack_ and instead gain 1 _Momentum_ and resolve the _On Miss_ effect when removing the _Hazard_.",
     "special": "You may only use this _Attack_ when a _Technique_ specifically says to use it.",
-    "class": "Major Attack"
+    "rank": "Major Attack"
   },
   {
     "name": "Chip Shot",
+    "class": "Mountain",
     "desc": "You fire a small shards of stone, pelting foes and limiting their reactions.",
-    "keywords": ["_Spirit_ (_Earth_)"],
     "type": "Versatile",
     "speed": "5",
     "cost": "2 _Momentum_",
@@ -19,6 +20,7 @@
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
+      "material": "Stone",
       "damage": [0, 0, 0, 0, 5, 6, 6, 7, 7, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -35,15 +37,15 @@
         "_Exposed_ 2, _Reeling_ 1"
       ]
     },
-    "class": "Minor Attack",
+    "rank": "Minor Attack",
     "analysis_notes": {
       "speed": 4.5
     }
   },
   {
     "name": "Bonechill",
-    "desc": "You fire a small shards of stone, pelting foes and limiting their reactions.",
-    "keywords": ["_Spirit_ (_Water_)"],
+    "class": "Tundra",
+    "desc": "You freeze the air around a foe, rapidly dropping the temperature.",
     "type": "Versatile",
     "speed": "4",
     "cost": "2 _Momentum_",
@@ -56,13 +58,13 @@
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "_Frost_ 1", "_Frost_ 1", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 3", "_Frost_ 3", "_Frost_ 4", "_Frost_ 4"]
     },
-    "class": "Minor Attack",
+    "rank": "Minor Attack",
     "analysis_notes": { "fudge": -0.5 }
   },
   {
     "name": "Cutting Veil",
+    "class": "Tide",
     "desc": "You attack a foe with sudden walls of water, disorienting and obstructing them.",
-    "keywords": ["_Spirit_ (_Water_)"],
     "type": "Versatile",
     "speed": 3,
     "cost": "1 _Momentum_",
@@ -89,43 +91,51 @@
         "_Impaired_ 2, _Blinded_ [2 _Stamina_]"
       ]
     },
-    "class": "Minor Attack",
+    "rank": "Minor Attack",
     "analysis_notes": { "fudge": 0.75, "notes": "Make this a bit more efficient because of targeting considerations." }
   },
   {
     "name": "Earthen Needles",
-    "desc": "You swiftly form and fire an array of needles, barraging a foe with them.",
-    "keywords": ["_Spirit_ (_Earth_)"],
+    "class": "Land",
+    "desc": "You swiftly form needles from the earth, extending them to pierce a foe.",
     "type": "Versatile",
     "speed": 4,
     "cost": "2 _Momentum_",
-    "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
-    "special": "You may instead choose an _Earthen_ _Jagged_ space within Range. If you do, the Cost is instead 1. Remove the _Jagged_ space and originate the Attack from there, with a _Range_ of 4 and removing _Close Range_.",
+    "range": [{ "category": "Ranged", "value": 5 }],
+    "effect": "Make an unoccupied _Earthen_ space within Range _Jagged_, then resolve the Attack against a creature adjacent to that space.",
+    "special": "You may instead choose an unoccupied _Earthen_ _Jagged_ space within Range. If you do, the Cost is instead 1 and you do not create a _Jagged_ space.",
+    "boost": "1 _Momentum_: You may target an occupied space. If you do, gain a +1 _Bonus_.",
     "chart": {
       "damage_type": "Stab",
-      "damage": [0, 0, 0, 0, 5, 5, 5, 6, 6, 7, 7],
+      "material": "Stone",
+      "damage": [0, 0, 2, 2, 2, 2, 3, 3, 3, 4, 4],
+      "keywords": ["Remote", "Avoidable"],
       "on_miss": "+2 _Momentum_",
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
-        "",
-        "",
         "_Bleed_ 1",
         "_Bleed_ 1",
         "_Bleed_ 1",
-        "_Impaired_ 1, _Bleed_ 2",
-        "_Impaired_ 1, _Bleed_ 2",
-        "_Impaired_ 2, _Bleed_ 2",
-        "_Impaired_ 2, _Bleed_ 2"
+        "_Bleed_ 1",
+        "_Bleed_ 1",
+        "_Bleed_ 1",
+        "_Hobbled_ 1, _Bleed_ 1",
+        "_Hobbled_ 1, _Bleed_ 1",
+        "_Hobbled_ 1, _Bleed_ 1"
       ]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack",
+    "analysis_notes": {
+      "fudge": -1,
+      "notes": "Makes a Jagged space."
+    }
   },
   {
     "name": "Earthquake Step",
+    "class": "Land",
     "desc": "You bring a leg crashing down, causing a shockwave to emanate forth and disrupt foe's footing.",
-    "keywords": ["_Spirit_ (_Earth_)"],
     "type": "Versatile",
     "speed": "4",
     "cost": "1 _Momentum_",
@@ -145,14 +155,14 @@
         "_Vulnerable_ 1, _Reeling_ 1",
         "_Vulnerable_ 1, _Reeling_ 1, _Slowed_ [1 _Stamina_]",
         "_Vulnerable_ 1, _Reeling_ 1, _Slowed_ [1 _Stamina_]",
-        "_Vulnerable_ 1, _Reeling_ 2, _Slowed_ [1 _Stamina_]",
-        "_Vulnerable_ 2, _Reeling_ 2, _Slowed_ [1 _Stamina_]",
-        "_Vulnerable_ 2, _Reeling_ 2, _Slowed_ [1 _Stamina_]",
+        "_Vulnerable_ 1, _Reeling_ 1, _Slowed_ [1 _Stamina_]",
+        "_Vulnerable_ 2, _Reeling_ 1, _Slowed_ [1 _Stamina_]",
+        "_Vulnerable_ 2, _Reeling_ 1, _Slowed_ [1 _Stamina_]",
         "_Vulnerable_ 3, _Reeling_ 2, _Slowed_ [2 _Stamina_]",
         "_Vulnerable_ 3, _Reeling_ 2, _Slowed_ [2 _Stamina_]"
       ]
     },
-    "class": "Minor Attack",
+    "rank": "Minor Attack",
     "analysis_notes": {
       "expected_targets": 1.5,
       "bonus_damage": [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25],
@@ -161,29 +171,30 @@
   },
   {
     "name": "Frost Spray",
+    "class": "Tundra",
     "desc": "A short-range spray of slashing frost directed at foes, typically launched by dragging your foot.",
-    "keywords": ["_Spirit_ (_Water_)"],
     "type": "Light",
     "speed": 3,
     "cost": "2 _Momentum_",
     "range": [{ "category": "Self" }],
     "area": "_Cone_ 2",
-    "special": "If you are in a _Frozen_ space you may remove the _Frozen_ space to reduce the Cost by 1.",
+    "effect": "If you are in a _Frozen_ space you may remove the _Frozen_ space to reduce the Cost by 1.",
     "chart": {
       "damage_type": "_Slash_",
+      "material": "Ice",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2"]
     },
-    "class": "Minor Attack",
+    "rank": "Minor Attack",
     "analysis_notes": { "expected_targets": 1.5 }
   },
   {
     "name": "Grapple",
+    "class": "Martial",
     "desc": "You attempt to grab a foe, doing limited damage but limiting their mobility.",
     "type": "Versatile",
-    "keywords": ["Martial"],
     "speed": 3,
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
@@ -206,51 +217,41 @@
         "_Pull_ 4/_Grabbed_ [3 _Stamina_], _Vulnerable_ 2"
       ]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
-    "name": "Heavy Slam",
-    "desc": "An untrained strike making use of a heavy form to body-slam a foe.",
-    "type": "Heavy",
-    "speed": 6,
-    "keywords": ["Martial"],
-    "range": [{ "category": "Melee", "value": 1 }],
-    "boost": "1 _Momentum_: Add [_Forceful_].",
+    "name": "Icicle Shot",
+    "class": "Tundra",
+    "desc": "You form a series of icicles before rapidly firing them.",
+    "type": "Versatile",
+    "speed": 4,
+    "cost": "1 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "effect": "You must _Draw_ 1 as a part of this Attack.",
     "chart": {
-      "keywords": ["Body"],
-      "on_miss": "+1 _Momentum_",
-      "damage_type": "Crush",
-      "damage": [0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "_Push_ 2, _Vulnerable_ 1",
-        "_Push_ 2, _Vulnerable_ 1",
-        "_Push_ 3/_Prone_ [2 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 3/_Prone_ [2 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 3/_Prone_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Push_ 3/_Prone_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Push_ 4/_Prone_ [3 _Stamina_], _Vulnerable_ 2",
-        "_Push_ 4/_Prone_ [3 _Stamina_], _Vulnerable_ 2"
-      ]
+      "damage_type": "_Stab_",
+      "material": "Ice",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 0, 0, 0, 3, 4, 4, 5, 5, 6, 6],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 2", "_Frost_ 2"]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
     "name": "Quickened Attack",
+    "class": "Basic",
     "desc": "You find it easy to slip in additional strike with a swift weapon.",
     "type": "Light",
     "speed": -1,
     "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
     "special": "Halve any _Momentum_ gained from _On Miss_ effects.",
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
     "name": "Ram",
+    "class": "Martial",
     "desc": "A forceful attack that powers through enemies using the weight of ones' body.",
-    "keywords": ["Martial"],
     "type": "Versatile",
     "speed": 6,
     "range": [{ "category": "Melee", "value": 1 }],
@@ -278,12 +279,12 @@
     "analysis_notes": {
       "speed": 4
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
     "name": "Riptide",
     "desc": "You pull water towards you forcefully, dragging others with it.",
-    "keywords": ["_Spirit_ (_Water_)"],
+    "class": "Tide",
     "type": "Versatile",
     "speed": "4",
     "cost": "2 _Momentum_",
@@ -298,9 +299,10 @@
       "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "_Pull_ 2", "_Pull_ 2", "_Pull_ 3", "_Pull_ 3", "_Pull_ 3", "_Pull_ 4", "_Pull_ 4", "_Pull_ 5", "_Pull_ 5"]
     },
-    "class": "Major Attack",
+    "rank": "Major Attack",
     "analysis_notes": {
       "expected_targets": 2,
+      "material": "Water",
       "on_miss": "+3 _Momentum_",
       "notes": "Damage calculated as if this was hitting two targets with no doubling up and assuming you swap some Pull for Vuln (halving the diff between Pull/Vuln for all Pull over 2).",
       "bonus_damage": [0, 0, 0, 0, 0.125, 0.125, 0.125, 0.25, 0.25, 0.375, 0.375],
@@ -310,17 +312,18 @@
   {
     "name": "Roiling Tide",
     "desc": "A surge of water that can push or pull, depending on one's intent.",
-    "keywords": ["_Spirit_ (_Water_)"],
+    "class": "Tide",
     "type": "Versatile",
-    "speed": 3,
+    "speed": 4,
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
     "effect": "You must _Draw_ 1 as a part of this Attack.",
-    "boost": "1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
+    "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 2, 2, 2, 2, 2, 3, 3, 4, 4],
+      "material": "Water",
+      "damage": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -336,14 +339,45 @@
         "_Push_ 4/_Pull_ 4"
       ]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
+  },
+  {
+    "name": "Rumble",
+    "desc": "You quake the earth beneath a foe, sending them off-balance.",
+    "type": "Versatile",
+    "cost": "1 _Momentum_",
+    "speed": 4,
+    "class": "Land",
+    "effect": "Make the Target's space _Rough_. If it is already _Rough_, add _Vulnerable_ 1 on a _Graze_+.",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "chart": {
+      "keywords": ["Avoidable", "Groundsource"],
+      "damage_type": "Crush",
+      "on_miss": "+2 _Momentum_",
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Exposed_ 1",
+        "_Exposed_ 1",
+        "_Exposed_ 1, _Reeling_ 1",
+        "_Exposed_ 1, _Reeling_ 1",
+        "_Exposed_ 1, _Reeling_ 1",
+        "_Exposed_ 1, _Reeling_ 1",
+        "_Exposed_ 2, _Reeling_ 1",
+        "_Exposed_ 2, _Reeling_ 1",
+        "_Exposed_ 2, _Reeling_ 2",
+        "_Exposed_ 2, _Reeling_ 2"
+      ]
+    },
+    "rank": "Minor Attack",
+    "analysis_notes": { "fudge": -1 }
   },
   {
     "name": "Slam",
     "desc": "An untrained strike making use of the body itself to body-slam a foe.",
     "type": "Versatile",
     "speed": 4,
-    "keywords": ["Martial"],
+    "class": "Martial",
     "range": [{ "category": "Melee", "value": 1 }],
     "boost": "1 _Momentum_: Add [_Forceful_].",
     "chart": {
@@ -366,12 +400,12 @@
         "_Push_ 3/_Prone_ [3 _Stamina_], _Vulnerable_ 2"
       ]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
     "name": "Spire Strike",
     "desc": "You pull the earth upwards into a jagged spike, surprising a foe.",
-    "keywords": ["Earth"],
+    "class": "Land",
     "type": "Versatile",
     "speed": "5",
     "cost": "4 _Momentum_",
@@ -383,8 +417,9 @@
     "chart": {
       "damage_type": "Stab",
       "on_miss": "+4 _Momentum_",
+      "material": "Stone",
       "keywords": ["Avoidable"],
-      "damage": [0, 0, 7, 7, 9, 9, 10, 11, 12, 13, 13],
+      "damage": [0, 0, 6, 7, 8, 9, 10, 11, 11, 13, 13],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -394,13 +429,13 @@
         "_Bleed_ 2, _Hobbled_ 1",
         "_Bleed_ 2, _Hobbled_ 1",
         "_Bleed_ 2, _Hobbled_ 1",
-        "_Bleed_ 3, _Hobbled_ 2, _Restrained_ [1 _Stamina_]",
-        "_Bleed_ 3, _Hobbled_ 2, _Restrained_ [1 _Stamina_]",
+        "_Bleed_ 2, _Hobbled_ 2, _Restrained_ [1 _Stamina_]",
+        "_Bleed_ 2, _Hobbled_ 2, _Restrained_ [1 _Stamina_]",
         "_Bleed_ 3, _Hobbled_ 2, _Restrained_ [2 _Stamina_]",
         "_Bleed_ 3, _Hobbled_ 2, _Restrained_ [2 _Stamina_]"
       ]
     },
-    "class": "Major Attack",
+    "rank": "Major Attack",
     "analysis_notes": {
       "bonus_damage": [0, 0, 0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
       "notes": "Damage Bonus is based on Restrained/Pierce."
@@ -409,7 +444,7 @@
   {
     "name": "Stone Strike",
     "desc": "You fling a stone at great speed, knocking enemies off-balance.",
-    "keywords": ["_Spirit_ (_Earth_)"],
+    "class": "Mountain",
     "type": "Heavy",
     "speed": "6",
     "cost": "3 _Momentum_",
@@ -420,6 +455,7 @@
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+4 _Momentum_",
+      "material": "Stone",
       "keywords": ["_Pierce_ 1", "_Overwhelming_ 2"],
       "damage": [0, 0, 0, 0, 12, 13, 13, 14, 14, 15, 15],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -440,7 +476,40 @@
     "analysis_notes": {
       "speed": 5.5
     },
-    "class": "Major Attack"
+    "rank": "Major Attack"
+  },
+  {
+    "name": "Surging Stream",
+    "desc": "A concentrated stream of water, drenching and unbalancing.",
+    "class": "Tide",
+    "type": "Versatile",
+    "speed": 3,
+    "cost": "1 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
+    "effect": "You must _Draw_ 1 as a part of this Attack.",
+    "special": "You may _Draw_ an additional 1; if you do, add _Soaked_ 1 on a _Hit_+.",
+    "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
+    "chart": {
+      "damage_type": "Crush",
+      "on_miss": "+2 _Momentum_",
+      "material": "Water",
+      "damage": [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Soaked_ 1, _Vulnerable_ 1",
+        "_Soaked_ 1, _Vulnerable_ 1",
+        "_Soaked_ 1, _Vulnerable_ 1",
+        "_Soaked_ 1, _Vulnerable_ 1",
+        "_Soaked_ 1, _Vulnerable_ 1",
+        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
+        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
+        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
+        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
+        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1"
+      ]
+    },
+    "rank": "Minor Attack"
   },
   {
     "name": "Surprise Strike",
@@ -448,12 +517,12 @@
     "reqs": "Must be made with an _Opportune Weapon_.",
     "cost": "1 _Momentum_",
     "effect": "Make an _Attack_ using an _Opportune  Weapon_ that was _Wielded_ this _Turn_. Treat its _Speed_ as 1 lower, and add _Vulnerable_ 1, _Slowed_ (2 _Stamina_).",
-    "class": "Major Attack"
+    "rank": "Major Attack"
   },
   {
     "name": "Swift Slam",
     "desc": "A quick strike making use of the body itself to body-slam a foe.",
-    "keywords": ["Martial"],
+    "class": "Martial",
     "type": "Light",
     "speed": 2,
     "range": [{ "category": "Melee", "value": 1 }],
@@ -477,34 +546,20 @@
         "_Push_ 2/_Prone_ [2 _Stamina_], _Vulnerable_ 2"
       ]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
     "name": "Swipe",
+    "class": "Martial",
     "desc": "A swift attack using a natural weapon.",
-    "effect": "Make an _Attack_ using a _Natural_  Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
-    "class": "Minor Attack"
-  },
-  {
-    "name": "Toxic Spray",
-    "desc": "A short-ranged spray of toxic chemicals.",
-    "keywords": ["Avoidable"],
-    "type": "Versatile",
-    "speed": 4,
-    "damage_type": "Poison",
-    "range": [{ "category": "Melee", "value": 1 }],
-    "chart": {
-      "damage": [0, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3],
-      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
-    },
-    "class": "Minor Attack"
+    "effect": "Make a _Major Attack_ using a _Natural_  Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "rank": "Minor Attack"
   },
   {
     "name": "Unarmed Strike",
+    "class": "Martial",
     "desc": "An untrained yet still effective strike.",
     "type": "Versatile",
-    "keywords": ["Martial"],
     "speed": 2,
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
@@ -527,13 +582,14 @@
         "_Dazed_ 1, _Vulnerable_ 1"
       ]
     },
-    "class": "Minor Attack"
+    "rank": "Minor Attack"
   },
   {
     "name": "Weapon Attack",
-    "keywords": ["Martial"],
+    "class": "Martial",
+    "discipline": "Basic",
     "desc": "You strike with a weapon.",
-    "effect": "Make an Attack using a _Wielded_ Weapon. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
-    "class": "Major Attack"
+    "effect": "Make an Attack using a _Wielded_ Weapon. Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "rank": "Major Attack"
   }
 ]

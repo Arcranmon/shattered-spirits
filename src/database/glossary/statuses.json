@@ -49,12 +49,6 @@
   { "name": "Disarm", "see": "Disarmed" },
   { "name": "Disarming", "see": "Disarm" },
   {
-    "name": "Downed",
-    "effect": "A creature becomes Downed when they lose all Health. If the creature is a player character, while _Downed_ their _Spirit_ is automatically _Summoned_ at the start of each Round so long as it has any _Health_.",
-    "remove": "Downed may not be removed during combat.",
-    "type": "Hide"
-  },
-  {
     "name": "Embed",
     "effect": "Embed effects are always paired with an Action that utilizes a Source or a Weapon. When Embed occurs, the Source or Weapon used in the Action is attached to or impaled in the Target and moves with it. If a Source is Embedded in a creature, they may be treated as that Source.",
     "remove": "A creature may _Sacrifice_ an Action and take 1 _True_ Damage to end Embed.",
@@ -134,7 +128,8 @@
   {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
-    "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. You may instead place a Dazed token on them; the next time they would _Refresh_, apply all Dazed tokens as the first effect. All Dazed is removed after _Refreshing_.",
+    "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. You may instead place a Dazed token on them; the next time they would _Refresh_, they regain X less _Stamina_, where X is their _Dazed_ value. All Dazed is removed after _Refreshing_.",
+    "special": "Dazed is applied before a creature may Negate any other effects.",
     "type": "Instant"
   },
   {
@@ -186,11 +181,20 @@
   },
   {
     "name": "Bleed",
-    "desc": "An affliction caused by any wound that can cause ongoing damage.",
+    "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
     "effect": "While a creature has Bleed they take 2 _True_ Damage at the start of each of their turns, then reduces their Bleed value by 1.",
-    "special": "Whenever a creature would gain _Endurance_/_Vigor_ and has _Bleed_ reduce the _Endurance_/_Vigor_ gained by 1, then reduce their Bleed value by 1.",
+    "special": "A creature may not gain _Health_/_Vigor_ while they have Bleed. Instead, any _Health_/_Vigor_ granted removes Bleed at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
     "negate": "A creature may expend 1 _Stamina_ to negate 1 Bleed.",
     "remove": "Bleed is only removed through triggering and by effects that explicitly remove it.",
+    "type": "Affliction"
+  },
+  {
+    "name": "Burn",
+    "desc": "An affliction caused by harsh elemental damage that makes one more susceptible to it.",
+    "effect": "While a creature has Burn they gain _Weakness_ 1 (_Cold_, _Fire_, _Lightning_). The creature takes 1 _True_ Damage at the start of each of their turns, then reduces their Burn value by 1.",
+    "special": "A creature may not gain _Health_/_Vigor_ while they have Burn. Instead, any _Health_/_Vigor_ granted removes Burn at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Burn.",
+    "remove": "Burn is only removed through triggering and by effects that explicitly remove it.",
     "type": "Affliction"
   },
   {
@@ -206,14 +210,14 @@
     "type": "Hide"
   },
   {
-    "name": "Burn",
+    "name": "Alight",
     "desc": "An elemental affliction caused by being set aflame.",
-    "effect": "Any time a creature takes an Action or Reaction they take True Damage equal to their topmost Burn Token.",
+    "effect": "Any time a creature takes an Action or Reaction they take True Damage equal to their topmost Alight Token.",
     "reacts": [
-      "<ins>Frost:</ins> If a creature has any Frost Tokens and would gain a Burn Token, they instead remove their topmost Frost Token.",
-      "<ins>Soaked:</ins>  If a creature has any Soaked Tokens and would gain a Burn Token, they instead remove their topmost Soaked Token."
+      "<ins>Frost:</ins> If a creature has any Frost Tokens and would gain a Alight Token, they instead remove their topmost Frost Token.",
+      "<ins>Soaked:</ins>  If a creature has any Soaked Tokens and would gain a Alight Token, they instead remove their topmost Soaked Token."
     ],
-    "recover": "A value of _Stamina_ removes Burn equal to the _Stamina_ spent. A creature may choose to end their turn _Prone_ to treat the _Stamina_ spent as twice as much.",
+    "recover": "A value of _Stamina_ removes Alight equal to the _Stamina_ spent. A creature may choose to end their turn _Prone_ to treat the _Stamina_ spent as twice as much.",
     "type": "Hide"
   },
   {
@@ -221,7 +225,7 @@
     "desc": "An elemental affliction caused by freezing temperatures that limits mobility.",
     "effect": "While a creature has Frost they take 2 _Cold_ Damage if they Move on their Turn, then reduce their Frost value by 1. Additionally, Attackers may treat Frost as _Exposed_ if they wish.",
     "special": "While a creature has any Frost, they have _Resistance_ 3 (_Fire_) and _Vulnerability_ 2 (_Cold_). Do not apply this _Vulnerability_ to any Damage dealt due to Frost.",
-    "reacts": ["<ins>Burn:</ins> If a Frosted creature would gain _Burn_, instead reduce their Frost value by an equivalent amount."],
+    "reacts": ["<ins>Alight:</ins> If a Frosted creature would gain _Alight_, instead reduce their Frost value by an equivalent amount."],
     "negate": "A creature may expend 1 _Stamina_ to negate 1 Frost.",
     "remove": "Reduce a creature's Frost value by 1 whenever they take _Fire_ Damage. Aside from that, Frost is only removed by effects that explicitly remove it.",
     "type": "Elemental Affliction"
@@ -229,13 +233,13 @@
   {
     "name": "Soaked",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "Whenever a Soaked creature takes _Fire_, _Lightning_, or _Cold_ Damage, reduce their Soaked by 1 and resolve the following additional effects:\n* _Cold_: Inflict _Frost_ 1.  Do not trigger any additional Soaked effects from this Status.",
+    "effect": "Whenever a Soaked creature takes _Cold_, _Fire_, or _Shock_ Damage, reduce their Soaked by 1. If it was _Cold_, inflict _Frost_ 1. Do not trigger any additional Soaked effects from this Status.",
     "reacts": [
-      "<ins>Burn:</ins> If a Soaked creature would gain _Burn_, instead reduce their _Soaked_ value by an equivalent amount.",
-      "<ins>Frost:</ins> If a Soaked creature would gain _Frost_, reduce their _Soaked_ value by an equivalent amount, then deal that much _Cold_ Damage. Do not trigger any additional Soaked effects from this Damage.",
-      "<ins>Shock:</ins> If a Soaked creature would gain _Shock_, reduce their _Soaked_ value by an equivalent amount, then deal that much _Lightning_ Damage. Do not trigger any additional Soaked effects from this Damage."
+      "<ins>Alight:</ins> If a Soaked creature would gain _Alight_, instead reduce their _Soaked_ value by an equivalent amount.",
+      "<ins>Frost:</ins> If a Soaked creature would gain _Frost_, reduce their _Soaked_ value by an equivalent amount, then they take that much _Cold_ Damage. Do not trigger any additional Soaked effects from this Damage.",
+      "<ins>Shock:</ins> If a Soaked creature would gain _Shock_, reduce their _Soaked_ value by an equivalent amount, then they take that much _Lightning_ Damage. Do not trigger any additional Soaked effects from this Damage."
     ],
-    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Shock_), _Resilient_ 1 (_Burn_), _Susceptible_ (_Frost_, _Shock_). Do not apply this _Weakness_ to any Damage dealt due to Soaked.",
+    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Shock_), _Resilient_ 1 (_Alight_), _Susceptible_ (_Frost_, _Shock_). Do not apply this _Weakness_ to any Damage dealt due to Soaked.",
     "negate": "Soaked may not be Negated.",
     "remove": "A creature reduces their Soaked by 1 at the end of each of their Turns where they did not gain Soaked. Additionally, _Water_ abilities may _Draw_ from Soaked creatures, removing _Soaked_ 1 to _Draw_ 1.",
     "type": "Elemental Affliction"
@@ -330,7 +334,7 @@
   {
     "name": "Slide",
     "desc": "You move a foe as you wish across the battlefield.",
-    "effect": "Move a target up to X squares in a straight line in any direction, where X is the numerical value immediately after Slide in an Effect's description.",
+    "effect": "Move a target up to X spaces in a straight line in any direction, where X is the numerical value immediately after Slide in an Effect's description. This is _Forced Movement_.",
     "type": "Instant Effect"
   },
   { "name": "Slid", "see": "Slide" },
