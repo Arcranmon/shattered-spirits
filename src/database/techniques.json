@@ -50,7 +50,7 @@
     "type": "Strike",
     "speed": "4",
     "move": "Step",
-    "effect": "Choose a Size 1 or smaller creature within Range. Make their space and all adjacent _Watery_ spaces _Frozen_. Deal 2 _Cold_ Damage to the target and inflict _Frost_ 2, _Hobbled_ 1. You may purchase up to X value of additional effects, where X is the number of spaces adjacent to the target that are _Frozen_. You may purchase all options multiple times:\n* 1: Deal +1 _Cold_ Damage.\n* 1: Increase the _Frost_ inflicted by 1.\n* 2: Increase the _Hobbled_ inflicted by 1.\n* 3: Add _Restrained_ [2 _Stamina_]. If you purchase this option again, increase the cost to Negate by 2.",
+    "effect": "Choose a Size 1 or smaller creature within Range. Make their space and all adjacent _Water_ spaces _Frozen_. Deal 2 _Cold_ Damage to the target and inflict _Frost_ 2, _Hobbled_ 1. You may purchase up to X value of additional effects, where X is the number of spaces adjacent to the target that are _Frozen_. You may purchase all options multiple times:\n* 1: Deal +1 _Cold_ Damage.\n* 1: Increase the _Frost_ inflicted by 1.\n* 2: Increase the _Hobbled_ inflicted by 1.\n* 3: Add _Restrained_ [2 _Stamina_]. If you purchase this option again, increase the cost to Negate by 2.",
     "special": "If this Attack inflicts _Restrained_, the effect automatically ends if there are no _Frozen_ spaces adjacent to the Target. Otherwise, while _Recovering_, the creature may spend 2 _Stamina_ and take 2 _Cold_ Damage to end the effect.",
     "boost": "Choose one:\n* 2 _Momentum_: You may target a Size 2 creature.\n* 5 _Momentum_: You may target a Size 3 creature."
   },
@@ -61,8 +61,8 @@
     "type": "Move",
     "speed": "Any",
     "move": "Dash [_Rush_]",
-    "effect": "Gain 8 Skate Points, which may be spent for various effects this Turn:\n* You may spend 1 Skate Point to make an adjacent space _Frozen_, or 0 Skate Points if the space is _Watery_. You may use this option up to 10 times.\n* You may spend 2 Skate Points as _Momentum_ when using _Flying Snow_.\n* At the end of a Move, you may choose one of the following options:\n\t* Spend X (maximum 3) Skate Point to inflict _Frost_ X and deal X _Cold_ Damage to an adjacent creature.\n\t* You may spend 4 Skate Points to inflict _Frost_ 1 and deal 2 _Cold_ Damage in a _Cone_ 2.\n\t* You may spend 8 Skate Points to inflict _Frost_ 1 and deal 3 _Cold_ Damage in a _Cone_ 3.\n\nLose any unspent Skate Points at the end of the _Turn_.",
-    "special": "All Movement this _Turn_ on a _Frozen_ space is [_Safe_]. Additionaly, gain [_Frostwalk_] this _Turn_ or, if you already have [_Frostwalk_], gain 2 more Skate Points.",
+    "effect": "Gain 8 Skate Points, which may be spent for various effects this Turn:\n* You may spend 1 Skate Point to _Draw_ 1 within Range 3 and make an adjacent space _Frozen_, or 0 Skate Points if the target space is a _Watersource_. You may use this option up to 10 times.\n* You may spend 2 Skate Points as _Momentum_ when using _Flying Snow_.\n* At the end of a Move, you may choose one of the following options:\n\t* Spend X (maximum 3) Skate Point to inflict _Frost_ X and deal X _Cold_ Damage to an adjacent creature.\n\t* You may spend 4 Skate Points to inflict _Frost_ 1 and deal 2 _Cold_ Damage in a _Cone_ 2.\n\t* You may spend 8 Skate Points to inflict _Frost_ 1 and deal 3 _Cold_ Damage in a _Cone_ 3.\n\nLose any unspent Skate Points at the end of the _Turn_.",
+    "special": "All Movement this _Turn_ on a _Frozen_ space is [_Safe_]. Additionally, gain [_Frostwalk_] this _Turn_ or, if you already have [_Frostwalk_], gain 2 more Skate Points.",
     "boost": "X _Momentum_ (max 5): Gain an additional X Skate Points.\nChoose one:\n* 1 _Momentum_: Remove [_Rush_].\n* 2 _Momentum_: Instead, Move is _Reposition_ [_Rush_], _Reposition_ [_Rush_]."
   },
   {
@@ -133,12 +133,13 @@
     "name": "Ocean's Veil",
     "class": "Tide",
     "desc": "You pull forth water to create a great wall, warding your allies from assault.",
-    "keywords": ["Enchant", "Fluid"],
+    "keywords": ["Fluid"],
     "type": "Defend",
     "speed": "Any",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Reposition",
-    "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. These _Water Veil_s are _Destroyed_ when the _Enchant_ ends. "
+    "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique.",
+    "special": "You may add [_Enchant_]; if you do, remove [_Fleeting_] from these _Water Veil_s. "
   },
   {
     "name": "Overwatch",
@@ -219,7 +220,7 @@
     "type": "Defend",
     "speed": "Any",
     "move": "Step",
-    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Attacks against your allies that pass through your space are always at least _Heavily Obstructed_.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Fleeting_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_."
+    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Attacks against your allies that pass through your space are always at least _Heavily Obstructed_.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_."
   },
   {
     "name": "Skulk",

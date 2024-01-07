@@ -3,15 +3,16 @@
     <div class="card--color-header">
       <div class="card--underline-top card--header">
         <h3 style="display: inline; font-style: normal;">{{ obstacle.Name }}</h3>
-        <div class="card--keywords">
-          <span>
-            <b>{{ obstacle.SizeHeader }}, {{ obstacle.HeightHeader }}, {{ obstacle.HardnessHeader }}<br /></b>
-          </span>
-          <b
+        <b>
+          <div class="card--keywords">
+            <div>
+              <display-tooltip-text :string="obstacle.ElementHeader" :decorate="false" />
+            </div>
+            <span> {{ obstacle.SizeHeader }}, {{ obstacle.HeightHeader }}, {{ obstacle.HardnessHeader }}<br /> </span
             ><span v-for="(keyword, index) in obstacle.Keywords" :key="index" class="keyword--box">
-              <display-tooltip-text :string="keyword" :decorate="false" /></span
-          ></b>
-        </div>
+              <display-tooltip-text :string="keyword" :decorate="false"
+            /></span></div
+        ></b>
       </div>
     </div>
     <div class="card--content">

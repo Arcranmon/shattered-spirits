@@ -154,6 +154,7 @@ declare interface IObstacleData {
   damage_type: string
   destroy: string
   desc: string
+  element: string
   forced_movement: string
   hardness: number
   height: number
@@ -236,9 +237,10 @@ declare interface ITerrainData {
   desc: string
   effect: string
   name: string
+  element: string
+  layer: string
   keywords: Array<string>
   negate: string
-  overrides: Array<string>
   remove: string
 }
 

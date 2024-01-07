@@ -4,6 +4,8 @@ from termcolor import colored
 import argparse
 
 status_multipliers = {
+    "Alight": 1.0,
+    "Burn": 1.0,
     "Soaked": 0.2,
     "Pull": 0.5,
     "Angled Push": 0.5,
@@ -64,7 +66,9 @@ def get_status_damage(status_string, glancing):
     if(glancing): damage_multiplier = damage_multiplier / 2
 
     if damage_multiplier != 0:
-        if 'x' in secondary:
+        if status == 'Alight':
+            return math.sqrt(sum(range(1,int(secondary)+1)))+int(secondary)/2
+        elif 'x' in secondary:
             return damage_multiplier * int(secondary[0]) * int(secondary[2])
         else:
             return damage_multiplier * int(secondary) 

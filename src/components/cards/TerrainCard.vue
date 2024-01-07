@@ -3,6 +3,9 @@
     <div class="card--color-header">
       <div class="card--underline-top card--header">
         <h3 style="display: inline; font-style: normal;">{{ terrain.Name }}</h3>
+        <div>
+          <b><display-tooltip-text :string="terrain.TerrainDetails" :decorate="false" /></b>
+        </div>
         <div class="card--keywords">
           <b
             ><span v-for="(keyword, index) in terrain.Keywords" :key="index" class="keyword--box">
@@ -12,14 +15,16 @@
       </div>
     </div>
     <div class="card--content">
-      <display-tooltip-text :string="terrain.EffectHeader" />
-      <div class="tech--format" v-if="terrain.HasNegate">
+      <div class="card--format">
+        <display-tooltip-text :string="terrain.EffectHeader" />
+      </div>
+      <div class="card--format" v-if="terrain.HasNegate">
         <display-tooltip-text :string="terrain.NegateHeader" />
       </div>
-      <div class="tech--format" v-if="terrain.HasOverrides">
+      <div class="card--format" v-if="terrain.HasOverrides">
         <display-tooltip-text :string="terrain.OverridesHeader" />
       </div>
-      <div class="tech--format" v-if="terrain.HasRemove">
+      <div class="card--format" v-if="terrain.HasRemove">
         <display-tooltip-text :string="terrain.RemoveHeader" />
       </div>
     </div>

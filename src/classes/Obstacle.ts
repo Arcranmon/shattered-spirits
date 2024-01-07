@@ -5,6 +5,7 @@ class Obstacle {
   private desc_: string
   private destroy_: string
   private damage_type_: string
+  private element_: string
   private hardness_: number
   private height_: number
   private interact_: string
@@ -18,6 +19,7 @@ class Obstacle {
 
   public constructor() {
     this.desc_ = ''
+    this.element_ = ''
     this.hardness_ = 0
     this.height_ = 0
     this.interact_ = ''
@@ -83,6 +85,9 @@ class Obstacle {
   public get DestroyHeader() {
     return '**Destroy:** ' + this.destroy_
   }
+  public get ElementHeader() {
+    return '_' + this.element_ + '_ Obstacle'
+  }
   public get HardnessHeader() {
     if (this.hardness_ == 0) return 'See Special for Hardness'
     return 'Hardness ' + this.hardness_
@@ -119,6 +124,7 @@ class Obstacle {
     this.damage_type_ = data.damage_type || ''
     this.desc_ = data.desc || ''
     this.destroy_ = data.destroy || ''
+    this.element_ = data.element || ''
     this.hardness_ = data.hardness || 0
     this.height_ = data.height || 0
     this.interact_ = data.interact || ''

@@ -49,7 +49,7 @@
     "type": "Versatile",
     "speed": "4",
     "cost": "2 _Momentum_",
-    "range": [{ "category": "Melee", "value": 3 }],
+    "range": [{ "category": "Ranged", "value": 3 }],
     "special": "After resolving the Attack you may remove any amount of _Frost_ on the Target to inflict _Endurable_ _Reeling_ X/_Slowed_ [X _Stamina_] in any combination, where X is the value of _Frost_ being replaced.",
     "chart": {
       "damage_type": "Cold",
@@ -69,7 +69,7 @@
     "speed": 3,
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
-    "effect": "This _Attack_ may only target _Soaked_ enemies or those in a _Watery_ space. After completing the _Attack_, reduce _Soaked_ or the value of the space by 1, whichever is applicable. If they are in a _Water Veil_, do not reduce the value of the Veil and the _Attack_ has _Advantage_.",
+    "effect": "_Draw_ 1, either from the Target or their space. If they are in a _Water Veil_ you do not _Draw_ and the _Attack_ has _Advantage_.",
     "special": "As a part of this Attack, you may convert up 1 of the Target's _Vulnerable_ to _Bleed_.",
     "chart": {
       "damage_type": "Slash",
@@ -168,6 +168,40 @@
       "bonus_damage": [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25],
       "notes": "Very small area, so unlikely to catch 2 creatures often."
     }
+  },
+  {
+    "name": "Ember",
+    "class": "Blaze",
+    "desc": "You form and fire a small blast of flame, catching a foe off-guard.",
+    "type": "Versatile",
+    "speed": "3",
+    "cost": "1 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2", "_Alight_ 2", "_Alight_ 3, _Burn_ 1", "_Alight_ 3, _Burn_ 1"]
+    },
+    "rank": "Minor Attack"
+  },
+  {
+    "name": "Firecracker",
+    "class": "Blast",
+    "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
+    "type": "Light",
+    "speed": "2",
+    "cost": "1 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 3 }],
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 0, 0, 2, 2, 3, 3, 3, 4, 5, 5],
+      "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1, _Burn_ 1", "_Dazed_ 1, _Burn_ 1"]
+    },
+    "rank": "Minor Attack"
   },
   {
     "name": "Frost Spray",

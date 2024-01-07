@@ -1,87 +1,107 @@
 [
   {
-    "name": "Jagged",
-    "desc": "Sharp spires of earth and stone make traveling through this space painful.",
-    "keywords": ["Derived"],
-    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage and gain _Bleed_ 1 [_Avoidable_]. If they end a _Jump_ in this space, they instead take 3 Stab Damage and gain _Bleed_ 2 [_Avoidable_]. An individual space may only effect a creature once per _Turn_.",
-    "overrides": ["Icicle", "Icy"]
-  },
-  {
-    "name": "Normal",
-    "desc": "An unremarkable space with no notable features to speak of.",
-    "keywords": [],
-    "effect": "None."
-  },
-  {
-    "name": "Fortified",
-    "desc": "A piece of terrain that, while not providing cover, provides some form of defense.",
-    "keywords": ["Derived"],
-    "effect": "Creatures have +1 _Guard_ while in a Fortified space. A creature may only benefit from a single Fortified space at a time."
-  },
-  {
-    "name": "Freezing Fog",
-    "keywords": ["_Soft Cover_ 3"],
-    "desc": "Dense, frigid fog that causes frost to form with prolonged exposure.",
-    "effect": "The first time a creature enters a _Freezing Fog_ space on a _Turn_ or ends their _Turn_ in it they gain _Frost_ 1.",
-    "interacts": ["<ins>Windy:</ins> Freezing Fog may not be created in this space."]
-  },
-  {
-    "name": "Frozen",
-    "desc": "Terrain that has been covered with slick, slippery ice.",
-    "keywords": ["_Icy_ 1"],
-    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement.\n\nAdditionally, a creature entering a Frozen space must expend 1 _Stamina_ or else treat it as _Rough_.",
-    "interacts": [
-      "<ins>Watery</ins>: When making any _Watery_ space _Frozen_, do not replace the original space if it has a value of 1 or greater. Instead, treat the _Frozen_ space as if it is on top of the original _Watery_ space, and if _Destroyed_ replace that space."
-    ],
-    "remove": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
-  },
-  {
-    "name": "Rough",
-    "desc": "Ground full of unsure footing and low obstacles that makes traveling through it difficult.",
-    "keywords": ["Derived"],
-    "effect": "Rough spaces costs twice as much Movement to move through.",
-    "overrides": ["Icicle", "Icy"]
-  },
-  {
-    "name": "Rushing Water",
-    "desc": "Terrain that represents a rapids or similarly fast-moving body of water.",
-    "keywords": ["_Watery_ ∞"],
-    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
-  },
-  {
-    "name": "Running Water",
-    "desc": "Terrain that represents a slow-moving body of water.",
-    "keywords": ["_Watery_ ∞"],
-    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
-  },
-  {
-    "name": "Shallow Water",
-    "desc": "Terrain that represents water that is deep enough that a creature must wade through it, but not deep enough to swim.",
-    "keywords": ["_Watery_ 2"],
-    "effect": "Movement through this _Terrain_ costs twice as much. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 1. If a creature becomes _Prone_ in this space they gain _Soaked_ 1. Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount. If _Destroyed_, this space becomes _Wet_."
+    "name": "Blazing",
+    "desc": "An active flame that will scorch any that draw too near.",
+    "keywords": ["Fleeting"],
+    "layer": "Surface",
+    "element": "Fire",
+    "effect": "The first time a creature enters a Blazing space on a Turn or ends their Turn in it they take 2 _Fire_ Damage. If they are in the space at the end of the _Round_ they gain _Alight_ 1. If a creature occupies multiple Blazing spaces do not resolve this more than their Size times.",
+    "interacts": ["<ins>_Watersource_</ins>: The space does not become Blazing. Instead, reduce the space's value by 1 and make it _Veiled_."]
   },
   {
     "name": "Deep Water",
     "desc": "Terrain that represents still water that a creature must swim in.",
-    "keywords": ["_Watery_ 3"],
-    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2.  Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount. When _Destroyed_, this space becomes _Shallow Water_."
+    "layer": "Base",
+    "element": "Water",
+    "keywords": ["_Watersource_ 3"],
+    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2.  Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount. When _Destroyed_, this space becomes _Shallow Water_ at 1 _Elevation_ lower than it was originally."
+  },
+  {
+    "name": "Fortified",
+    "desc": "A piece of terrain that, while not providing cover, provides some form of defense.",
+    "layer": "Overlay",
+    "element": "Derived",
+    "effect": "Creatures have +1 _Guard_ while in a Fortified space. A creature may only benefit from a single Fortified space at a time."
+  },
+  {
+    "name": "Frigid Air",
+    "layer": "Haze",
+    "element": "Elementless",
+    "keywords": ["_Soft Cover_ 3", "Fleeting"],
+    "desc": "Air chilled to painful, frost-inducing cold.",
+    "effect": "The first time a creature enters a Frigid Air space on a _Turn_ or ends their _Turn_ in it they take 1 _Cold_ Damage. If they end the _Round_ in this space, they gain _Frost_ 1. If a creature occupies multiple Frigid Air spaces do not resolve this more than their Size times.",
+    "interacts": ["<ins>Windy:</ins> Frigid Air may not be created in this space."]
+  },
+  {
+    "name": "Frozen",
+    "desc": "Terrain that has been covered with slick, slippery ice.",
+    "layer": "Surface",
+    "element": "Water",
+    "keywords": ["Ice", "_Watersource_ 1"],
+    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement.\n\nAdditionally, a creature entering a Frozen space must expend 1 _Stamina_ or else treat it as _Rough_.",
+    "remove": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
+  },
+  {
+    "name": "Jagged",
+    "desc": "Sharp spires of earth and stone make traveling through this space painful.",
+    "layer": "Overlay",
+    "element": "Earthen",
+    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage and gain _Bleed_ 1 [_Avoidable_]. If they end a _Jump_ in this space, they instead take 3 Stab Damage and gain _Bleed_ 2 [_Avoidable_]. An individual space may only effect a creature once per _Turn_."
+  },
+  {
+    "name": "Rough",
+    "desc": "Ground full of unsure footing and low obstacles that makes traveling through it difficult.",
+    "layer": "Base",
+    "element": "Earthen",
+    "effect": "It costs an additional space of Movement to move through this space."
+  },
+  {
+    "name": "Running Water",
+    "desc": "Terrain that represents a slow-moving body of water.",
+    "layer": "Base",
+    "element": "Water",
+    "keywords": ["_Watersource_ ∞"],
+    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
+  },
+  {
+    "name": "Rushing Water",
+    "desc": "Terrain that represents a rapids or similarly fast-moving body of water.",
+    "layer": "Base",
+    "element": "Water",
+    "keywords": ["_Watersource_ ∞"],
+    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
+  },
+  {
+    "name": "Shallow Water",
+    "desc": "Terrain that represents water that is deep enough that a creature must wade through it, but not deep enough to swim.",
+    "layer": "Base",
+    "element": "Water",
+    "keywords": ["_Watersource_ 2"],
+    "effect": "Movement through this _Terrain_ costs twice as much. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 1. If a creature becomes _Prone_ in this space they gain _Soaked_ 1. Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount. If _Destroyed_, this space becomes _Wet_."
+  },
+  {
+    "name": "Solid Ground",
+    "desc": "An unremarkable space with no notable features to speak of.",
+    "layer": "Base",
+    "element": "Earthen",
+    "keywords": [],
+    "effect": "None."
   },
   {
     "name": "Veiled",
-    "keywords": ["_Soft Cover_ 3"],
+    "layer": "Haze",
+    "element": "Elementless",
+    "keywords": ["_Soft Cover_ 3", "Fleeting"],
     "desc": "Terrain filled with dust, smoke, mist, or some other obscuring agent.",
     "interacts": ["<ins>Windy:</ins> Veiled may not be created in this space."]
   },
   {
     "name": "Wet",
     "desc": "Terrain drenched in water that limits a stable footing.",
-    "keywords": ["_Watery_ 1"],
+    "layer": "Surface",
+    "element": "Water",
+    "keywords": ["_Watersource_ 1"],
     "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.",
     "interacts": ["<ins>Wet:</ins> If a Wet space would become Wet, instead place a Wet space in an adjacent space."]
-  },
-  {
-    "name": "Toxic Gas",
-    "desc": "Stinky gas that does damage.",
-    "effect": "Creatures that end their _Turn_ in a space with this _Terrain_ gain _Impaired_ 1 and take 2 _Poison_ Damage. Additionally, treat this space as _Veiled_."
   }
 ]

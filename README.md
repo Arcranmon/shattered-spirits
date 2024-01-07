@@ -30,6 +30,7 @@ BIG POST-PLAYTEST REWORK
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
+- Make things cleaner and more class-like.
 - Cooler buttons.
 - Potentially add 'Free Movement'
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Arts for them.

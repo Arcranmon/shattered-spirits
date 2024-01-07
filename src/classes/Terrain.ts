@@ -4,7 +4,9 @@ import { Chart } from '@/class'
 class Terrain {
   private desc_: string
   private effect_: string
+  private element_: string
   private name_: string
+  private layer_: string // Base, Overlay, Surface, Haze
   private negate_: string
   private keywords_: string[]
   private reacts_: string
@@ -13,9 +15,12 @@ class Terrain {
 
   public constructor() {
     this.desc_ = ''
+    this.element_ = ''
+    this.layer_ = ''
     this.effect_ = ''
     this.name_ = ''
     this.keywords_ = []
+    this.overrides_ = []
     this.negate_ = ''
   }
 
@@ -55,6 +60,9 @@ class Terrain {
   public get NegateHeader() {
     return '**Negate:** ' + this.negate_
   }
+  public get TerrainDetails() {
+    return '_' + this.element_ + '_  Terrain (_' + this.layer_ + '_)'
+  }
   public get OverridesHeader() {
     return '**Overrides:** _' + this.overrides_.join('_, _') + '_'
   }
@@ -75,8 +83,9 @@ class Terrain {
     this.desc_ = data.desc || ''
     this.effect_ = data.effect || ''
     this.name_ = data.name || ''
+    this.element_ = data.element || ''
+    this.layer_ = data.layer || ''
     this.negate_ = data.negate || ''
-    this.overrides_ = data.overrides || []
     this.remove_ = data.remove || ''
     this.keywords_ = data.keywords || []
   }
