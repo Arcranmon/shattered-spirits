@@ -1,5 +1,6 @@
 // Store all classes
 
+import Base from './classes/Base'
 import Maneuver from './classes/Maneuvers'
 import Ability from './classes/Ability'
 import Armor from './classes/Armor'
@@ -24,6 +25,7 @@ export {
   Ability,
   Armor,
   Attack,
+  Base,
   Character,
   Chart,
   Discipline,

@@ -2,25 +2,21 @@
 // Parent class for techniques/manuevers.
 
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Base, Chart } from '@/class'
 
-class Ability {
+class Ability extends Base {
   protected area_: string
   protected boost_: string
   protected cost_: string
   protected class_: string
-  protected desc_: string
-  protected effect_: string
-  protected keywords_: Array<string>
   protected move_: string
-  protected name_: string
   protected range_: Array<IRangeData>
   protected reqs_: string
-  protected special_: string
   protected target_: string
   protected chart_: Chart
 
   public constructor(name) {
+    super(name)
     this.area_ = ''
     this.boost_ = ''
     this.cost_ = ''
@@ -48,18 +44,6 @@ class Ability {
   public get Cost() {
     return this.cost_
   }
-  public get Desc() {
-    return this.desc_
-  }
-  public get Effect() {
-    return this.effect_
-  }
-  public get Keywords() {
-    return this.keywords_
-  }
-  public get Name() {
-    return this.name_
-  }
   public get Move() {
     return this.move_
   }
@@ -68,9 +52,6 @@ class Ability {
   }
   public get Reqs() {
     return this.reqs_
-  }
-  public get Special() {
-    return this.special_
   }
 
   // ==========================================================
@@ -96,18 +77,6 @@ class Ability {
   }
   public get CostHeader() {
     return '**_Cost_:** ' + this.cost_
-  }
-  public get HasEffect() {
-    return this.effect_.length > 0
-  }
-  public get EffectHeader() {
-    return '**_Effect_:** ' + this.effect_
-  }
-  public get ManeuverHeader() {
-    return '**Enhance:** '
-  }
-  public get HasKeywords() {
-    return this.keywords_.length > 0
   }
   public get HasMove() {
     return this.move_.length > 0
@@ -137,12 +106,6 @@ class Ability {
   public get ReqsHeader() {
     return '**Requirements:** ' + this.reqs_
   }
-  public get HasSpecial() {
-    return this.special_.length > 0
-  }
-  public get SpecialHeader() {
-    return '**Special:** ' + this.special_
-  }
   public get HasTarget() {
     return this.target_.length > 0
   }
@@ -154,24 +117,20 @@ class Ability {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(abilityData: IAbilityData): Ability {
-    const t = new Ability(abilityData.name)
-    t.setAbilityData(abilityData)
+  public static Deserialize(data: IAbilityData): Ability {
+    const t = new Ability(data.name)
+    t.setAbilityData(data)
     return t
   }
 
   public setAbilityData(data: IAbilityData): void {
+    this.setBaseData(data)
     this.area_ = data.area || ''
     this.boost_ = data.boost || ''
     this.cost_ = data.cost || ''
-    this.desc_ = data.desc || ''
     this.class_ = data.class || ''
-    this.effect_ = data.effect || ''
-    this.keywords_ = data.keywords || []
     this.move_ = data.move || ''
-    this.name_ = data.name || ''
     this.reqs_ = data.reqs || ''
-    this.special_ = data.special || ''
     this.target_ = data.target || ''
     if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
     this.range_ = data.range || []

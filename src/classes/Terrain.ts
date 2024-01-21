@@ -1,40 +1,28 @@
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Base } from '@/class'
 
-class Terrain {
-  private desc_: string
-  private effect_: string
+class Terrain extends Base {
   private element_: string
-  private name_: string
-  private layer_: string // Base, Overlay, Surface, Haze
+  private layer_: string // Base, Field, Surface, Weather
   private negate_: string
-  private keywords_: string[]
-  private reacts_: string
-  private remove_: string
-  private overrides_: string[]
+  private interactions_: Array<string>
+  private destroy_: string
 
-  public constructor() {
-    this.desc_ = ''
+  public constructor(name) {
+    super(name)
     this.element_ = ''
     this.layer_ = ''
-    this.effect_ = ''
-    this.name_ = ''
-    this.keywords_ = []
-    this.overrides_ = []
+    this.interactions_ = []
+    this.destroy_ = ''
     this.negate_ = ''
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-  get Desc() {
-    return this.desc_
-  }
-  get Name() {
-    return this.name_
-  }
-  public get Keywords() {
-    return this.keywords_
+  public get Icon() {
+    if (!this.element_ || this.element_ == 'Derived' || this.element_ == 'Elementless') return require('@/assets/terrain/BasicTerrain.svg')
+    return require('@/assets/terrain/' + this.element_ + '.svg')
   }
 
   // ==========================================================
@@ -43,19 +31,21 @@ class Terrain {
   get HasNegate() {
     return this.negate_ != ''
   }
-  get HasOverrides() {
-    return this.overrides_.length > 0
+  get HasInteractions() {
+    return this.interactions_.length > 0
   }
-  get HasRemove() {
-    return this.remove_.length > 0
+  get HasDestroy() {
+    return this.destroy_ != ''
   }
 
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  public get EffectHeader() {
-    if (this.effect_ && this.effect_.length > 0) return '**Effect:** ' + this.effect_
-    return ''
+  public get DestroyHeader() {
+    return '**Destroy:** ' + this.destroy_
+  }
+  public get InteractionsHeader() {
+    return '**Interactions:** \n* _' + this.interactions_.join('_\n* _') + '_'
   }
   public get NegateHeader() {
     return '**Negate:** ' + this.negate_
@@ -63,31 +53,23 @@ class Terrain {
   public get TerrainDetails() {
     return '_' + this.element_ + '_  Terrain (_' + this.layer_ + '_)'
   }
-  public get OverridesHeader() {
-    return '**Overrides:** _' + this.overrides_.join('_, _') + '_'
-  }
-  public get RemoveHeader() {
-    return '**Remove:** ' + this.remove_
-  }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(disciplineData: ITerrainData): Terrain {
-    const t = new Terrain()
-    t.setTerrainData(disciplineData)
+  public static Deserialize(data: ITerrainData): Terrain {
+    const t = new Terrain(data.name)
+    t.setTerrainData(data)
     return t
   }
 
   public setTerrainData(data: ITerrainData): void {
-    this.desc_ = data.desc || ''
-    this.effect_ = data.effect || ''
-    this.name_ = data.name || ''
+    this.setBaseData(data)
     this.element_ = data.element || ''
     this.layer_ = data.layer || ''
     this.negate_ = data.negate || ''
-    this.remove_ = data.remove || ''
-    this.keywords_ = data.keywords || []
+    this.destroy_ = data.destroy || ''
+    this.interactions_ = data.interactions || []
   }
 }
 export default Terrain

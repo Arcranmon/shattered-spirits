@@ -1,10 +1,16 @@
-declare interface IArmorData {
+declare interface IBaseData {
+  name: string
+  desc: string
+  effect: string
+  keywords?: Array<string>
+  special?: string
+}
+
+declare interface IArmorData extends IBaseData {
   weight: number
   category?: string
   durability?: number
   guard: number
-  name?: string
-  special: string
 }
 
 declare interface IAttackData extends IManeuverData {
@@ -69,12 +75,8 @@ declare interface IDisciplineData {
   type: string
 }
 
-declare interface IGearData {
-  desc: string
+declare interface IGearData extends IBaseData {
   weight: number
-  effect: string
-  name?: string
-  special: string
 }
 
 declare interface IGlossaryData {
@@ -108,19 +110,14 @@ declare interface INpcData {
   weapons: Array<string>
 }
 
-declare interface IAbilityData {
+declare interface IAbilityData extends IBaseData {
   area?: string
   boost?: string
   cost?: string
-  desc: string
   class: string
-  effect: string
-  keywords?: Array<string>
   move?: string
-  name: string
   range?: Array<IRangeData>
   reqs?: string
-  special?: string
   target?: string
   chart?: IChartData
   material?: string
@@ -150,23 +147,6 @@ declare interface IMovementData {
   traits: string[]
 }
 
-declare interface IObstacleData {
-  damage_type: string
-  destroy: string
-  desc: string
-  element: string
-  forced_movement: string
-  hardness: number
-  height: number
-  interact: string
-  name: string
-  keywords: Array<string>
-  size: number
-  traits: string
-  special: string
-  chart: IChartData
-}
-
 declare interface IRangeData {
   category: string
   value: number
@@ -183,9 +163,7 @@ declare interface ISpiritData {
   current_health: number
 }
 
-declare interface ISpiritFormData {
-  name: string
-  desc: string
+declare interface ISpiritFormData extends IBaseData {
   size: string
   health: number
   weapons: string
@@ -196,58 +174,52 @@ declare interface ISpiritFormData {
   traits: string[]
 }
 
-declare interface ISpiritTypeData {
-  name: string
-  desc: string
-  effect: string
+declare interface ISpiritTypeData extends IBaseData {
   summon_effect: string
   manifest_effect: string
   traits: string[]
 }
 
-declare interface IStanceData {
-  name: string
+declare interface IStanceData extends IBaseData {
   category: string
-  chart: IChartData
+  class: string
   respite?: string
-  desc: string
   maneuver?: string
-  reaction?: string
-  reqs?: string
-  effect: string
-  special?: string
   stamina?: number
   traits: string[]
 }
 
-declare interface IStatusData {
-  desc: string
-  effect: string
-  name: string
+declare interface IStatusData extends IBaseData {
   negate: string
   recover: string
   remove: string
   see?: string
-  special?: string
   reacts?: Array<string>
   type?: string
 }
 
-declare interface ITerrainData {
-  desc: string
-  effect: string
-  name: string
+declare interface ITerrainData extends IBaseData {
   element: string
   layer: string
-  keywords: Array<string>
   negate: string
-  remove: string
+  destroy: string
+  interactions: string[]
 }
 
-declare interface ITraitData {
-  desc: string
-  effect: string
-  name: string
+declare interface IObstacleData extends IBaseData {
+  damage_type: string
+  destroy: string
+  element: string
+  forced_movement: string
+  hardness: number
+  height: number
+  interact: string
+  size: number
+  traits: string
+  chart: IChartData
+}
+
+declare interface ITraitData extends IBaseData {
   reqs: string
   cost: number
 }

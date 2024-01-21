@@ -9,7 +9,7 @@
   },
   {
     "name": "Arcing",
-    "effect": "Arcing Attacks treat _Covered_ as _Heavily Obstructed_ instead and _Heavily Obstructed_ as _Lightly Obstructed_, so long as a path exists over _Obstacles_ that can reach the Target."
+    "effect": "Arcing is a special keyword, used when an attack is able to fly high through the sky before hitting its target. Arcing Attacks treat all _Cover_ as one level less, so long as a path exists over _Obstacles_ that can reach the Target."
   },
   {
     "name": "Avoidable",
@@ -22,6 +22,10 @@
   {
     "name": "Blast",
     "effect": "Pick a space within Range. That space, and all spaces within X, where X is the Blast's value, are targeted. Draw the Attack Line from the target space."
+  },
+  {
+    "name": "Blaze",
+    "effect": "Blaze abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on stoking and spreading flames."
   },
   { "name": "Blocking", "see": "Block" },
   { "name": "Blocked", "see": "Block" },
@@ -51,15 +55,27 @@
   },
   {
     "name": "Cone",
-    "effect": "Pick a space within Range. Draw a triangle so that each side is X spaces long, where X is the Cone value, using the target space as one of the corners. If Range is Self the Cone's origin must be an adjacent space and the Cone may not pass through your space."
+    "effect": "Pick a space within Range. Draw a triangle so that each side is X spaces long, where X is the Cone value, using the target space as one of the corners. If Range is Self the Cone's origin must be an adjacent space and the Cone may not pass through your space. Otherwise, the Origin is the center of the area."
   },
   {
     "name": "Condense",
     "effect": "Take the creature's total Value of a _Token_ and divide it into the minimum number of _Tokens_. For example, a creature with _Impaired_ 1x3 would have _Impaired_ 3 after Condensing."
   },
   {
+    "name": "Earthbend",
+    "effect": "_Forced Movement_ of this type may move _Earthen_ _Obstacles_ under some conditions."
+  },
+  {
     "name": "Efficient",
     "effect": "This _Reaction_ does not count when checking the 'only one _Reaction_ may be used against a specific trigger' restriction."
+  },
+  {
+    "name": "Explosion",
+    "effect": "Explosion abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on sudden and violent bursts of flame."
+  },
+  {
+    "name": "Flammable",
+    "effect": "This space becomes _Blazing_ if it takes any _Fire_ Damage or gains _Alight_. If a Flammable space becomes _Blazing_ from an effect other than _Fire_ Damage or _Alight_, place another _Blazing_ space in an adjacent space. Spaces placed due to Flammable due not trigger this effect. The Flammable Terrain or Obstacle is destroyed when the space becomes _Blazing_."
   },
   {
     "name": "Resist",
@@ -103,12 +119,16 @@
     "effect": "A special type of _Gambit_ that allows you to inflict status or otherwise hinder a foe before attacking."
   },
   {
+    "name": "Flame",
+    "effect": "Flame is an element that is able to easily conjure and creature their own _Sources_. Flame abilities are _Suppressed_ when the user is _Soaked_ and _Sealed_ when the user is _Swimming_."
+  },
+  {
     "name": "Temporary",
     "effect": "Temporary bonuses are are lost at the end of the current _Turn_."
   },
   {
     "name": "Fleeting",
-    "effect": "Fleeting Terrain and Obstacles are removed at the end of the current _Round_."
+    "effect": "Fleeting Terrain and Obstacles are _Destroyed_ at the end of the current _Round_."
   },
   {
     "name": "Flourish",
@@ -153,7 +173,7 @@
   },
   {
     "name": "Groundsource",
-    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range, and ignore _Covered_, _Obstruction_, and _Obscurement_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
+    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range, and ignore _Cover_ and _Obscurement_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
   },
   {
     "name": "Guarding",
@@ -208,10 +228,6 @@
     "effect": "Noteworthy terrain on the battlefield that can typically either be used as _Cover_ or be interacted with in some way."
   },
   {
-    "name": "Obstruction",
-    "effect": "This Obstacle may not be climbed and does not block Movement. Instead, it is treated as _Rough Terrain_ but can still provide _Covered_/_Obstructed_."
-  },
-  {
     "name": "One-Handed",
     "effect": "This Equipment only requires one hand to _Wield_."
   },
@@ -258,6 +274,10 @@
     "effect": "While _Planning_, roll a d6. If you roll within the listed Range you may use this _Technique_ this _Round_."
   },
   {
+    "name": "Rough",
+    "effect": "Terrain with this keyword costs an additional space of Movement to enter."
+  },
+  {
     "name": "Safe",
     "effect": "Movement with the Safe keyword does not create an _Opening_. Any _Attack_ made in response to this _Movement_ has _Disadvantage_."
   },
@@ -295,7 +315,7 @@
   },
   {
     "name": "Remote",
-    "effect": "This _Attack_ ignores _Obstructed_, _Cover_, and _Lightly Obscured_ and is treated as if it is _Melee_ for all effects."
+    "effect": "This _Attack_ ignores _Cover_ and _Lightly Obscured_ and is treated as if it is _Melee_ for all effects."
   },
   {
     "name": "Repeatable",
@@ -307,7 +327,7 @@
   },
   {
     "name": "Rigid",
-    "effect": "This _Technique_ must be played at its listed Speed."
+    "effect": "This _Ability_ must be used at its listed Speed."
   },
   {
     "name": "Rush",
@@ -356,6 +376,10 @@
   {
     "name": "Incoming",
     "effect": "An Incoming Attack is created by launching a projectile into the air, preparing an explosion, or any other effect that creates a _Hazard_. When drawing the _Attack Line_, draw it from the space where you created the _Hazard_, not the space you are in when you make the Attack."
+  },
+  {
+    "name": "Water",
+    "effect": "Water is an element that relies heavily on its sources, but can easily move them about the battlefield. Water abilities are _Suppressed_ when the user is _Alight_. Water Abilities are _Sealed_ if there is no _Source_ within 10 spaces."
   },
   { "name": "Weapon Attacks", "see": "Weapon Attack" },
   {

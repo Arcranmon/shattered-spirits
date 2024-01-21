@@ -18,14 +18,17 @@
       <div class="card--format">
         <display-tooltip-text :string="terrain.EffectHeader" />
       </div>
+      <div class="card--format" v-if="terrain.HasSpecial">
+        <display-tooltip-text :string="terrain.SpecialHeader" />
+      </div>
       <div class="card--format" v-if="terrain.HasNegate">
         <display-tooltip-text :string="terrain.NegateHeader" />
       </div>
-      <div class="card--format" v-if="terrain.HasOverrides">
-        <display-tooltip-text :string="terrain.OverridesHeader" />
+      <div class="card--format" v-if="terrain.HasDestroy">
+        <display-tooltip-text :string="terrain.DestroyHeader" />
       </div>
-      <div class="card--format" v-if="terrain.HasRemove">
-        <display-tooltip-text :string="terrain.RemoveHeader" />
+      <div class="card--format" v-if="terrain.HasInteractions">
+        <display-tooltip-text :string="terrain.InteractionsHeader" />
       </div>
     </div>
     <div class="desc--box" v-if="(terrain.Desc.length > 0)" style="font-style: italic;">{{ terrain.Desc }}<br /></div>

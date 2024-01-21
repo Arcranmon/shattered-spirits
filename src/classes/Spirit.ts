@@ -90,9 +90,9 @@ class Spirit {
     }
   }
 
-  public static Deserialize(spiritData: ISpiritData): Spirit {
+  public static Deserialize(data: ISpiritData): Spirit {
     const c = new Spirit()
-    c.setSpiritData(spiritData)
+    c.setSpiritData(data)
     return c
   }
 

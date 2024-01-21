@@ -1,34 +1,27 @@
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Base, Chart } from '@/class'
 
-class Obstacle {
-  private desc_: string
+class Obstacle extends Base {
   private destroy_: string
   private damage_type_: string
   private element_: string
   private hardness_: number
   private height_: number
   private interact_: string
-  private name_: string
-  private keywords_: string[]
   private traits_: string
   private forced_movement_: string
   private size_: number
-  private special_: string
   private chart_: Chart
 
-  public constructor() {
-    this.desc_ = ''
+  public constructor(name) {
+    super(name)
     this.element_ = ''
     this.hardness_ = 0
     this.height_ = 0
     this.interact_ = ''
-    this.name_ = ''
-    this.keywords_ = []
     this.traits_ = ''
     this.forced_movement_ = ''
     this.size_ = 0
-    this.special_ = ''
     this.chart_ = null
   }
 
@@ -38,17 +31,13 @@ class Obstacle {
   public get Chart() {
     return this.chart_
   }
-  get Desc() {
-    return this.desc_
-  }
-  get Name() {
-    return this.name_
-  }
   get Traits() {
     return this.traits_
   }
-  public get Keywords() {
-    return this.keywords_
+  public get Icon() {
+    if (!this.element_ || this.element_ == 'Derived' || this.element_ == 'Elementless' || this.element_ == 'Special')
+      return require('@/assets/terrain/BasicTerrain.svg')
+    return require('@/assets/terrain/' + this.element_ + '.svg')
   }
 
   // ==========================================================
@@ -71,9 +60,6 @@ class Obstacle {
   }
   get HasForcedMovement() {
     return this.forced_movement_ != ''
-  }
-  get HasSpecial() {
-    return this.special_ != ''
   }
 
   // ==========================================================
@@ -107,20 +93,17 @@ class Obstacle {
   public get SizeHeader() {
     return 'Size ' + this.size_
   }
-  public get SpecialHeader() {
-    return '**Special:** ' + this.special_
-  }
-
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(disciplineData: IObstacleData): Obstacle {
-    const t = new Obstacle()
-    t.setObstacleData(disciplineData)
+  public static Deserialize(obstacleData: IObstacleData): Obstacle {
+    const t = new Obstacle(obstacleData.name)
+    t.setObstacleData(obstacleData)
     return t
   }
 
   public setObstacleData(data: IObstacleData): void {
+    this.setBaseData(data)
     this.damage_type_ = data.damage_type || ''
     this.desc_ = data.desc || ''
     this.destroy_ = data.destroy || ''

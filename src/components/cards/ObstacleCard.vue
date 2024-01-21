@@ -19,6 +19,9 @@
       <div class="tech--format" v-if="obstacle.HasTraits">
         <display-tooltip-text :string="obstacle.TraitsHeader" />
       </div>
+      <div class="tech--format" v-if="obstacle.HasEffect">
+        <display-tooltip-text :string="obstacle.EffectHeader" />
+      </div>
       <div class="tech--format" v-if="obstacle.HasSpecial">
         <display-tooltip-text :string="obstacle.SpecialHeader" />
       </div>

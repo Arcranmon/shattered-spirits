@@ -1,14 +1,14 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="card--color-header" v-bind:class="category">
+    <div class="stance--color-header" v-bind:class="category">
       <div class="card--underline-top card--header">
         <h4 style="display: inline; font-style: normal;">{{ stance.Name }}</h4>
+        <div>
+          <b><display-tooltip-text :string="stance.ClassHeader" :decorate="false" /></b>
+        </div>
       </div>
     </div>
     <div class="card--content">
-      <div v-if="stance.HasRequirements">
-        <display-tooltip-text :string="stance.RequirementsHeader" />
-      </div>
       <display-tooltip-text :string="stance.RespiteHeader" /><br />
       <display-tooltip-text :string="stance.StaminaHeader" />
       <div v-if="stance.HasTraits">
@@ -59,6 +59,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.a {
+.stance--color-header {
+  background-color: $color--grey-dark;
 }
 </style>

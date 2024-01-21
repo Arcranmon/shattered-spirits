@@ -78,6 +78,11 @@
     "effect": "Attacks against a Covered creature gain _Glancing_ and take a -2 _Penalty_."
   },
   {
+    "name": "Cover",
+    "effect": "A state when the path to a creature is obstructed. A creature may have _Light Cover_, _Heavy Cover_, or _Full Cover_."
+  },
+  { "name": "Covered", "see": "Cover" },
+  {
     "name": "Crit",
     "effect": "A particularly effective Attack, represented by a purple cell in the Attack's 'Roll' column in its _Profile_."
   },
@@ -185,8 +190,8 @@
   },
   { "name": "Hazards", "see": "Hazard" },
   {
-    "name": "Heavily Obstructed",
-    "effect": "A state that occurs when the path to a creature barely exists. Attacks against a Heavily Obstructed creature take a -2 _Penalty_."
+    "name": "Heavy Cover",
+    "effect": "A state that occurs when the path to a creature barely exists. Attacks against a creature with Heavy Cover take a -2 _Penalty_."
   },
   {
     "name": "Hit",
@@ -210,8 +215,8 @@
     "effect": "Launching can be applied to any kind of _Forced Movement_. The _Forced Movement_ is considered _Leaping_ for all effects and, at the end of the _Movement_, the creature _Falls_ X+1 spaces, where X is half the Launching distance, plus any applicable _Elevation_ change. If an effect gains Launching, all _Forced Movement_ of the same type gains Launching."
   },
   {
-    "name": "Lightly Obstructed",
-    "effect": "A state that occurs when the path to a creature is barely blocked. Attacks against a Lightly Obstructed creature take a -1 _Penalty_."
+    "name": "Light Cover",
+    "effect": "A state that occurs when the path to a creature is barely blocked. Attacks against a creature with Light Cover take a -1 _Penalty_."
   },
   {
     "name": "Jump",
@@ -236,11 +241,11 @@
   },
   {
     "name": "Major Source",
-    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1."
+    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1."
   },
   {
     "name": "Minor Source",
-    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_."
+    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_."
   },
   { "name": "Major Sources", "see": "Major Source" },
   { "name": "Minor Sources", "see": "Minor Source" },
@@ -267,10 +272,6 @@
   {
     "name": "Obscured",
     "effect": "A state when a creature is difficult to see. A creature may be Lightly or Heavily Obscured. Lightly Obscured has no effect on its own, but a Heavily Obscured creature may not be targetted."
-  },
-  {
-    "name": "Obstructed",
-    "effect": "A state when the path to a creature is obstructed. A creature may be Lightly or Heavily Obstructed, which causes a -1/-2 _Penalty_ on Attacks against them."
   },
   {
     "name": "Open Hand",
@@ -348,7 +349,7 @@
   },
   {
     "name": "Secondary Sense",
-    "effect": "Secondary Senses allow characters to perceive enemies in ways other than sight.  Secondary Sense allows a character to ignore_Veiled_ under specific conditions. In addition, if a creature has Secondary Sense on a Target and the Attack is _Arcing_ they ignore _Obstructed_ and treat _Covered_ as _Lightly Obstructed_. If it is _Winding_ they may ignore _Covered_/_Obstructed_"
+    "effect": "Secondary Senses allow characters to perceive enemies in ways other than sight.  Secondary Sense allows a character to ignore_Veiled_ under specific conditions. In addition, if a creature has Secondary Sense on a Target and the Attack is _Arcing_ they reduce any _Cover_ by an additional level."
   },
   {
     "name": "Seismic Sense",
@@ -369,7 +370,7 @@
   { "name": "Speed Penalties", "see": "Speed Penalty" },
   {
     "name": "Soft Cover",
-    "effect": "If this is _Terrain_, treat it as an Obstacle of the listed height when determining _Obstruction_/_Obscurement_. Regardless of it is _Terrain_ or _Obstacle_, this may not cause more than _Lightly Obscured_/_Lightly Obstructed_."
+    "effect": "If this is _Terrain_, treat it as an Obstacle of the listed height when determining _Obscuredment_ and _Cover_. Regardless of it is _Terrain_ or _Obstacle_, this may not cause more than _Lightly Obscured_/_Light Cover_."
   },
   {
     "name": "Spirit Master",
@@ -420,7 +421,7 @@
   },
   {
     "name": "Swim",
-    "effect": "While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature is _Heavily Obstructed_, has _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them. Any _Jump_ a character makes while Swimming treats their _Jump_ value as halved."
+    "effect": "While moving through water that a character cannot stand in each space costs twice as much to enter. In addition, while Swimming, a creature has _Heavy Cover_, has _Disadvantage_ on all Attacks, and creatures have _Advantage_ on Attacks against them. Any _Jump_ a character makes while Swimming treats their _Jump_ value as halved."
   },
   { "name": "Swimming", "see": "Swim" },
   {

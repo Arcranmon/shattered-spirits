@@ -70,10 +70,11 @@
     "desc": "You seize the earth within an area, causing vicious jagged bursts of sharp stone to erupt unpredictably.",
     "type": "Strike",
     "class": "Land",
-    "speed": "3 [_Rigid_]",
+    "speed": "1-3 [_Rigid_]",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Step",
     "effect": "Create a _Blast_ 1 _Hazard_ within Range. At the end of each _Phase_ (excluding this one), choose an _Earthen_ space within the _Hazard_. Apply the _Jagged_ effect to the creature in that space, then make the space _Jagged_. If the space was already _Jagged_, instead apply the effect twice.",
+    "special": "You may not trigger the effect at the end of a _Phase_ more than 5 times.",
     "boost": "2 _Momentum_: Instead, create a _Blast_ 2 _Hazard_. When you create the _Hazard_, immediately trigger the end of _Phase_ effect twice. You must choose two different spaces."
   },
   {
@@ -98,6 +99,52 @@
     "keywords": ["Priority"],
     "effect": "Roll 1d6 5 times, then place 5 Weapons, based on the individual dice rolls and following rules:\n* You may place these anywhere within _Range_, but may not place them adjacent to yourself or allies or within 3 spaces of another _Improvised Weapons_ placed by this effect.\n* On a 1-3, the Weapon is a _Small Improvised_ Weapon, made of the same material as the _Terrain_ or an adjacent _Obstacle_. It deals your choice of _Crush_, _Slash_, or _Stab_ damage.\n* On a 4+, you may place a _Medium Improvised Weapon_.\n* On a 6, you may choose _Wood_, _Metal_, or _Natural_ for the material.",
     "special": "All Weapons placed by this have the _Opportune_ and _Fragile_ keywords. Only you and your allies may use these Weapons."
+  },
+  {
+    "name": "Artillery Flame",
+    "class": "Explosion",
+    "desc": "A long-range detonation of flame that destroys all before it.",
+    "type": "Strike",
+    "speed": "5",
+    "move": "Step",
+    "range": [{ "category": "Ranged", "value": 10, "special": "_Ordnance_" }],
+    "area": "_Blast_ 1",
+    "cost": "4 _Momentum_",
+    "effect": "Attack with the below Profile.",
+    "boost": "4 _Momentum_: Instead, _Area_ is _Blast_ 2.",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+5 _Momentum_",
+      "damage": [1, 1, 2, 2, 3, 3, 3, 3, 3, 4, 4],
+      "roll": ["Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "_Alight_ 1",
+        "_Alight_ 1",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 3",
+        "_Alight_ 3",
+        "_Alight_ 3",
+        "_Alight_ 4",
+        "_Alight_ 4"
+      ]
+    },
+    "analysis_notes": {
+      "expected_targets": 2.5
+    }
+  },
+  {
+    "name": "Flash Fire",
+    "desc": "You create a field of flames, making it impossible for foes to move.",
+    "type": "General",
+    "class": "Blaze",
+    "speed": "1-4 [_Rigid_]",
+    "range": [{ "category": "Ranged", "value": 8 }],
+    "move": "Step",
+    "effect": "Create 4 _Blazing_ spaces within Range. At the end of the next 3 _Phases_, you may choose 2 _Blazing_ spaces within _Range_ and within 4 spaces of each other. Connect those spaces with a _Line_ of _Blazing_ spaces.",
+    "boost": "1 _Momentum_: You may use this _Boost_ whenever you place a _Blazing_ space with this _Technique_. Inflict _Alight_ 1 on the creature in this space."
   },
   {
     "name": "Guide the Flock",
@@ -185,7 +232,7 @@
     "area": "_Burst_ 2",
     "move": "Step",
     "effect": "Attack all Targets in the Area with this Technique's Profile. If you would inflict _Prone_ on a _Prone_ creature, instead deal +2 Damage.",
-    "boost": "Choose any number:\n* 1 _Momentum_: Make 3 spaces in the _Area_ _Rough_. You may repeat this _Boost_.\n* 1 _AP_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again and remove the _Hazard_. While the _Hazard_ persists, treat all _Earthen_ Terrain as _Rough_.",
+    "boost": "Choose any number:\n* 1 _Momentum_: Make 3 spaces in the _Area_ _Uneven Earth_. You may repeat this _Boost_.\n* 1 _AP_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again and remove the _Hazard_. While the _Hazard_ persists, treat all _Earthen_ Terrain as _Uneven Earth_.",
     "chart": {
       "damage_type": "Crush",
       "keywords": ["Avoidable", "Groundsource"],
@@ -220,7 +267,30 @@
     "type": "Defend",
     "speed": "Any",
     "move": "Step",
-    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Attacks against your allies that pass through your space are always at least _Heavily Obstructed_.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_."
+    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Your allies always have at least _Heavy Cover_ against Attacks that pass through your space.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Vigor_."
+  },
+  {
+    "name": "Scouring Flames",
+    "class": "Explosion",
+    "desc": "A sudden, violent, and all-consuming flame that devours all in its path.",
+    "type": "Strike",
+    "speed": "4",
+    "move": "Step",
+    "area": "_Cone_ 3",
+    "effect": "Attack with the below Profile. After resolving the Attack, inflict _Alight_ 1 on a creature in the _Area_ or create a _Blazing_ space four times.",
+    "boost": "Choose any:\n* 2 _Momentum_: Area is instead _Cone_ 4.\n* 5 _Momentum_: Area is instead _Cone_ 5.\n* 1 _Momentum_: Resolve the after Attack effect another time. You may use this _Boost_ up to 3 times.",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+3 _Momentum_",
+      "damage": [1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4],
+      "roll": ["Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2"]
+    },
+    "analysis_notes": {
+      "range": [{ "category": "Melee", "value": 1 }],
+      "expected_targets": 2.5,
+      "fudge": -1
+    }
   },
   {
     "name": "Skulk",
@@ -298,7 +368,7 @@
     "speed": "Any",
     "move": "Step",
     "reqs": "Size 1 _Earthen_ Obstacle adjacent to you.",
-    "effect": "_Destroy_ the Obstacle and gain Stone Armor. While you have Stone Armor, gain the following effects:\n* Gain a special Armor with no weight that grants _Guard_ 2 and has a _Durability_ of 9. You benefit from this Armor and any other Armor you are currently wearing.\n* Treat yourself as one Size larger for all Effects.\n* Gain _Resilient_ 2 (_Forced Movement_)\n* Allies may treat you as an Obstacle with a _Height_ of 1 when determining _Obstruction_/_Obscured_.\n* You become an _Earth_ Source.\n* Whenever you gain _Vigor_ from an Stone Lock ability it stacks with existing _Vigor_ rather than replacing it.\n* Whenever you Move, you Move one less space than you normally would.\n\nIf you lose the _Guard_ provided by the Stone Armor, end this effect.",
+    "effect": "_Destroy_ the Obstacle and gain Stone Armor. While you have Stone Armor, gain the following effects:\n* Gain a special Armor with no weight that grants _Guard_ 2 and has a _Durability_ of 9. You benefit from this Armor and any other Armor you are currently wearing.\n* Treat yourself as one Size larger for all Effects.\n* Gain _Resilient_ 2 (_Forced Movement_)\n* Allies may treat you as an Obstacle with a _Height_ of 1 when determining _Cover_/_Obscured_.\n* You become an _Earth_ Source.\n* Whenever you gain _Vigor_ from an Stone Lock ability it stacks with existing _Vigor_ rather than replacing it.\n* Whenever you Move, you Move one less space than you normally would.\n\nIf you lose the _Guard_ provided by the Stone Armor, end this effect.",
     "special": "If you repeat this _Technique_ while you have Stone Armor, gain the following effects while you have Stone Armor:\n* You become _Size_ 2, and when applicable are a _Height_ 2 Obstacle.\n* Reset the _Guard_ provided by your Stone Armor and increase it to 3.\n* Gain _Grit_ and 5 _Vigor_."
   },
   {
@@ -322,6 +392,40 @@
     "effect": "Choose one:\n* Make 1 _Light_/_Versatile_ _Major Attack_ and 1 _Light_/_Versatile_ _Minor Attack_ in any order.\n* Make 3 _Light_/_Versatile_ _Minor Attacks_.",
     "special": "Determine _Speed Penalties_ for _Light_ Attacks as if this _Technique_ was played one _Phase_ later.",
     "boost": "\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
+  },
+  {
+    "name": "Torching Flare",
+    "class": "Blaze",
+    "desc": "You cultivate a flame, focusing the heat into a single point more and more as time passes.",
+    "type": "Strike",
+    "speed": "3",
+    "move": "Step",
+    "effect": "Create the 1st _Hazard_, then become _Charging_. At the end of the next _Phase_ stop _Charging_ and either resolve the below Attack or create the next _Hazard_, as outlined below.\n* **1st Hazard**: Create an _Side Burst_ 3 _Hazard_.\n* **2nd Hazard**: Create a _Cone_ 3 _Hazard_. When you resolve the Attack, deal +1 Damage and add _Alight_ 1.\n* **3rd Hazard**: Create a _Line_ 6 _Hazard_. When you resolve the Attack, deal +2 Damage, add _Alight_ 2, and [_Pierce_ 1].\n* **4th Hazard**: Create a _Line_ 3 _Hazard_. When you resolve the Attack, deal +5 Damage, add _Alight_ 3, _Burn_ 1, and [_Pierce_ 2].\n* **5th Hazard**: Create a single space _Hazard_ in an adjacent space. When you resolve the Attack, deal +8 Damage, add _Alight_ 4, _Burn_ 2, and [_Pierce_ 3].",
+    "special": "When you create your _Hazard_, choose an adjacent space. All future _Hazards_ created by this _Technique_ must include this space. If you are moved, use the equivalent adjacent space.",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+3 _Momentum_",
+      "damage": [0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3],
+      "roll": ["Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "_Alight_ 1",
+        "_Alight_ 1",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 3",
+        "_Alight_ 3"
+      ]
+    },
+    "analysis_notes": {
+      "range": [{ "category": "Melee", "value": 1 }],
+      "expected_targets": 3,
+      "fudge": 4
+    }
   },
   {
     "name": "Trampling Charge",

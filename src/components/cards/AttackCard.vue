@@ -18,6 +18,7 @@
       <div v-if="isWeapon"><display-tooltip-text :string="attack.TraitsHeader" /></div>
       <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
       <div v-if="attack.HasReqs"><display-tooltip-text :string="attack.ReqsHeader" /></div>
+      <div v-if="attack.HasTarget"><display-tooltip-text :string="attack.TargetHeader" /></div>
       <div v-if="attack.HasCost"><display-tooltip-text :string="attack.CostHeader" /></div>
       <div v-if="attack.HasRange"><display-tooltip-text :string="attack.RangeHeader" /></div>
       <div v-if="attack.HasArea"><display-tooltip-text :string="attack.AreaHeader" /></div>

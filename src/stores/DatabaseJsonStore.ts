@@ -85,7 +85,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getArmor(): any {
     return (inword: string) => {
       var armor = Armors.find((x) => x.name.trim() == inword.trim())
-      if (armor == undefined) return new Armor()
+      if (armor == undefined) return new Armor(inword)
       return Armor.Deserialize(<IArmorData>armor)
     }
   }
@@ -202,7 +202,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getStance(): any {
     return (inword: string) => {
       var stance = Stances.find((x) => x.name.trim() === inword.trim())
-      if (stance == undefined) return new Stance()
+      if (stance == undefined) return new Stance(inword)
       return Stance.Deserialize(<IStanceData>(<unknown>stance))
     }
   }
@@ -373,7 +373,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var gear = Gears.find((x) => x.name.trim() === inword.trim())
       if (gear == undefined) {
-        return new Gear()
+        return new Gear(inword)
       }
       return Gear.Deserialize(<IGearData>(<unknown>gear))
     }

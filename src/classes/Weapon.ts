@@ -70,9 +70,9 @@ class Weapon extends Attack {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(weaponData: IWeaponData): Weapon {
-    const t = new Weapon(weaponData.name)
-    t.setWeaponData(weaponData)
+  public static Deserialize(data: IWeaponData): Weapon {
+    const t = new Weapon(data.name)
+    t.setWeaponData(data)
     return t
   }
 

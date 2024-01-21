@@ -357,9 +357,9 @@ class Character {
     }
   }
 
-  public static Deserialize(characterData: ICharacterData): Character {
+  public static Deserialize(data: ICharacterData): Character {
     const c = new Character()
-    c.setCharacterData(characterData)
+    c.setCharacterData(data)
     return c
   }
 

@@ -29,7 +29,7 @@ class Technique extends Ability {
     return '_' + this.class_ + '_ _Technique_'
   }
   public get Image() {
-    if (this.Type == 'Error') return require('@/assets/General.svg')
+    if (!this.Type || this.Type == 'Error') return require('@/assets/General.svg')
     return require('@/assets/' + this.Type + '.svg')
   }
 
@@ -45,9 +45,9 @@ class Technique extends Ability {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(techData: ITechData): Technique {
-    const t = new Technique(techData.name)
-    t.setTechData(techData)
+  public static Deserialize(data: ITechData): Technique {
+    const t = new Technique(data.name)
+    t.setTechData(data)
     return t
   }
 

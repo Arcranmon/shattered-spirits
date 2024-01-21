@@ -1,6 +1,7 @@
 [
   {
     "name": "Charging Ram Stance",
+    "class": "Martial",
     "desc": "You are a creature in constant, deadly motion, slamming into foes time and time again.",
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
@@ -10,6 +11,7 @@
   },
   {
     "name": "Coiled Serpent Stance",
+    "class": "Martial",
     "desc": "You are constantly wound as tight as a spring, waiting to viciously lunge out at a moment's notice.",
     "respite": "Gain 1 _Momentum_.",
     "stamina": 2,
@@ -18,6 +20,7 @@
   },
   {
     "name": "Crashing Stone Stance",
+    "class": "Mountain",
     "desc": "You are a true master of boulder-based combat, flinging them with brutal efficiency.",
     "respite": "Gain 2 _Momentum_ and use _Compress Earth_ at no cost.",
     "stamina": 1,
@@ -25,6 +28,7 @@
   },
   {
     "name": "Creeping Frost Stance",
+    "class": "Tundra",
     "desc": "You freeze the terrain and foes alike, creating a frigid wasteland around you.",
     "respite": "Gain 2 _Momentum_. If you are on a _Frozen_ space, inflict _Frost_ 1 on a creature within Range 4.",
     "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
@@ -33,6 +37,7 @@
   },
   {
     "name": "Cunning Fox Stance",
+    "class": "Martial",
     "desc": "You fight with guile and trickery, pushing every possible advantage to better strike down your foes.",
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
@@ -40,7 +45,18 @@
     "special": "Deal +1 _Damage_ against creatures with _Enraged_/_Exposed_ when making _Light_/_Versatile_ Attacks."
   },
   {
+    "name": "Destructive Blast Stance",
+    "class": "Explosion",
+    "desc": "Your flame attacks are more a wave of concussive force than true explosion, devastating foes.",
+    "traits": ["_Resistance_ 2 (_Fire_)"],
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
+    "effect": "The _Explosive Flames_ Gambit has no cost for you.",
+    "special": "Whenever you make an Attack that deals _Fire_ Damage if you use _Explosive Flames_ you may pay 1 _Momentum_ to instead deal _Crush_ Damage."
+  },
+  {
     "name": "Dripping Veil Stance",
+    "class": "Tide",
     "desc": "The water is a constant shield for you, warding you from all harm.",
     "respite": "Gain 1 _Momentum_. Reduce your _Reeling_ by 1 if you are in a _Water_ space.",
     "stamina": 2,
@@ -49,7 +65,44 @@
     "special": "Once per Round you may use _Shielding Wave_ for no cost, do not gain _Reeling_ from using it, and may freely use the Boost."
   },
   {
+    "name": "Erupting Flame Stance",
+    "class": "Explosion",
+    "desc": "You are a master of sudden, violent blasts of flame, building to large and larger blasts.",
+    "traits": ["_Resilient_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
+    "effect": "Gain an Eruption Dice. Every time you make an _Area_ Attack that deals _Fire_ Damage either increase its value by 1 or reset it to 1. If you reset its value, you may add an additional X spaces to the _Area_, where X is the die's value prior to the reset. These additional spaces must be contiguous with the original _Area_."
+  },
+  {
+    "name": "Floating Butterfly Stance",
+    "class": "Martial",
+    "desc": "You are constantly in motion, shifting across the battlefield with unparalleled grace.",
+    "respite": "Gain 1 _Momentum_, then _Step_ [_Safe_, _Breach_].",
+    "stamina": 1,
+    "effect": "Whenever you would [_Safe_] Move you may remove [_Safe_] to gain 1 _Stamina_."
+  },
+  {
+    "name": "Focusing Torch Stance",
+    "class": "Blaze",
+    "desc": "Your flames burn brighter and hotter, searing through defenses.",
+    "traits": ["_Flamewalk_", "_Resilient_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
+    "respite": "Gain 2 _Momentum_.",
+    "stamina": 1,
+    "effect": "Your Attacks that deal _Fire_ Damage gain [_Pierce_ 1] if you have _Alight_. While _Charging_, you may choose to gain _Alight_ 1 at the end of each _Phase_.",
+    "special": "During _Phases_ you were _Charging_, you instead have _Resistance_ 3 (_Fire_)."
+  },
+  {
+    "name": "Furious Bison Stance",
+    "class": "Martial",
+    "desc": "You dominate the battlefield with wide, sweeping strikes, moving forward with constant rage.",
+    "respite": "Gain 1 _Momentum_.",
+    "stamina": 1,
+    "effect": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to add an equivalent amount of _Bonus_ Damage. Regardless, gain +1 _Guard_ while _Enraged_ and _Charging_.",
+    "special": " Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain _Grit_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_."
+  },
+  {
     "name": "Guiding Shepard Stance",
+    "class": "Martial",
     "desc": "You guide friends and foes alike across the battlefield, herding their movements.",
     "respite": "Gain 3 _Momentum_. On adjacent ally may Move 1.",
     "stamina": 1,
@@ -58,6 +111,7 @@
   },
   {
     "name": "Greedy Rodent Stance",
+    "class": "Martial",
     "desc": "You are an armory of the impromptu, finding weapons in the least likely of places.",
     "respite": "Gain 2 _Momentum_ and place a single _Weapon_ as if you rolled a 6 on _Eyes of Greed_.",
     "stamina": 1,
@@ -65,22 +119,17 @@
     "special": "Never gain an _Opening_ when using _Draw/Stow_."
   },
   {
-    "name": "Floating Butterfly Stance",
-    "desc": "You are constantly in motion, shifting across the battlefield with unparalleled grace.",
-    "respite": "Gain 1 _Momentum_, then _Step_ [_Safe_, _Breach_].",
+    "name": "Infinite Skate Stance",
+    "class": "Tundra",
+    "desc": "You glide across the battlefield with frantic ease, using the ice to propel and protect.",
+    "respite": "Gain 2 _Momentum_.",
+    "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
     "stamina": 1,
-    "effect": "Whenever you would [_Safe_] Move you may remove [_Safe_] to gain 1 _Stamina_."
-  },
-  {
-    "name": "Furious Bison Stance",
-    "desc": "You dominate the battlefield with wide, sweeping strikes, moving forward with constant rage.",
-    "respite": "Gain 1 _Momentum_.",
-    "stamina": 1,
-    "effect": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to add an equivalent amount of _Bonus_ Damage. Regardless, gain +1 _Guard_ while _Enraged_ and _Charging_.",
-    "special": " Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain _Grit_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_."
+    "effect": "While making [_Rush_] Movement you may always move into _Ice_ spaces, ignoring the normal limitations of [_Rush_]. You must maintain the same straight line for all [_Rush_] Movement that is not on an _Ice_ space."
   },
   {
     "name": "Pack Leader Stance",
+    "class": "Martial",
     "desc": "You are a cunning commander, creating openings for allies and helping them exploit them.",
     "respite": "Gain 2 _Momentum_, and an ally within Range 3 gains 1 _Momentum.",
     "stamina": 1,
@@ -89,6 +138,7 @@
   },
   {
     "name": "Proud Osprey Stance",
+    "class": "Martial",
     "desc": "You excel in a one on one battle, keeping your foe locked against you at every turn.",
     "respite": "Gain 2 _Momentum_, or 3 _Momentum_ if you are only adjacent to a _Marked_ Target.",
     "stamina": 1,
@@ -97,6 +147,7 @@
   },
   {
     "name": "Patient Hunter Stance",
+    "class": "Martial",
     "desc": "You focus your attention on a singular creature, finding the perfect opening to take them down.",
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
@@ -105,14 +156,16 @@
   },
   {
     "name": "Quaking Earth Stance",
+    "class": "Land",
     "desc": "Your every step shakes the earth, keeping your foes off-balance.",
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
     "effect": "You may use Localized Tremor as a _Reaction_ that triggers when a _Phase_ begins, rather than an _Action_. When you do so, it instead has a Cost of 0 _Momentum_ and the effect ends at the end of the current _Phase_. Increase the cost of each subsequent use in this way by 1, and reduce it by 1 (minimum 0) at _Respite_.",
-    "special": "Your _Groundsource_ Attacks gain a +1 _Bonus_ against Targets on _Earthen_ _Rough_ Terrain."
+    "special": "Your _Groundsource_ Attacks gain a +1 _Bonus_ against Targets on _Uneven Earth_."
   },
   {
     "name": "Rising Spire Stance",
+    "class": "Land",
     "desc": "You make the battlefield a perilous, dangerously sharp field.",
     "respite": "Gain 2 _Momentum_. Make two unoccupied spaces within Range 3 _Jagged_.",
     "stamina": 1,
@@ -120,6 +173,7 @@
   },
   {
     "name": "Roaring Lion Stance",
+    "class": "Martial",
     "desc": "You are a bombastic and inspiring warrior, leading your allies as you fight.",
     "respite": "Gain 1 _Momentum_. Gain _Vigor_ equal to 1+the number of creatures you have _Marked_.",
     "stamina": 2,
@@ -127,6 +181,7 @@
   },
   {
     "name": "Rousing Songbird Stance",
+    "class": "Martial",
     "desc": "You are a font of positivity, inspiring allies forward to fight ever harder.",
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
@@ -134,7 +189,17 @@
     "special": "Allies within _Range_ 3 of you may remove 1 _Courageous_/_Joyful_ at any time to gain 1 _Temporary_ _Stamina_. They may only use this ability once per Turn."
   },
   {
+    "name": "Spreading Cinders Stance",
+    "class": "Blaze",
+    "desc": "You bring flames and ruin, scorching the battlefield with every step.",
+    "respite": "Gain 2 _Momentum_ and make your space _Blazing_.",
+    "traits": ["_Flamewalk_", "_Resilient_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
+    "stamina": 1,
+    "effect": "_Blazing_ and _Roaring_ spaces within Range 3 of you do not have _Fleeting_."
+  },
+  {
     "name": "Stalwart Bastion Stance",
+    "class": "Martial",
     "desc": "You are an unwavering guard, defending your allies against all slights.",
     "respite": "Gain 1 _Momentum_. Reduce your _Reeling_ by 1.",
     "stamina": 3,
@@ -142,14 +207,16 @@
   },
   {
     "name": "Stone Lock Stance",
+    "class": "Mountain",
     "desc": "You specialize in fighting within an earthen shell, shrugging off blows as you attack.",
     "respite": "Gain 1 _Momentum_.",
     "stamina": 2,
     "effect": "If you end a _Phase_ with no _Vigor_ gain 1 _Vigor_, or 2 if you have Stone Armor.",
-    "special": "While in this _Stance_ and you have _Stone Armor_, treat your Height as one greater when determining _Obstruction_/_Obscured_ for allies."
+    "special": "While in this _Stance_ and you have _Stone Armor_, treat your Height as one greater when determining _Cover_/_Obscured_ for allies."
   },
   {
     "name": "Stinging Wasp Stance",
+    "class": "Martial",
     "desc": "You are exceptional at making swift attacks and sliding away before foes can retaliate.",
     "respite": "Gain 1 _Momentum_.",
     "stamina": 1,
@@ -158,6 +225,7 @@
   },
   {
     "name": "Flowing Sea Stance",
+    "class": "Tide",
     "desc": "You pull water in and out, pushing and pulling foes like ships on the sea.",
     "respite": "Gain 2 _Momentum_.",
     "traits": ["Aquatic"],
@@ -166,17 +234,10 @@
   },
   {
     "name": "Watching Owl Stance",
+    "class": "Martial",
     "desc": "You keep a keen eye on the battlefield, providing opportunities and openings to all allies.",
     "respite": "Gain 1 _Momentum_. Either yourself or an ally within Range 4 may Move 1. Any creature with _Insight_ treats this Movement as [_Safe_].",
     "stamina": 1,
     "effect": "You may remove 2 _Insight_ per _Turn_ rather than one. Whenever you remove the last _Insight_ on a creature, inflict _Vulnerable_ 1."
-  },
-  {
-    "name": "Infinite Skate Stance",
-    "desc": "You glide across the battlefield with frantic ease, using the ice to propel and protect.",
-    "respite": "Gain 2 _Momentum_.",
-    "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
-    "stamina": 1,
-    "effect": "While making [_Rush_] Movement you may always move into _Ice_ spaces, ignoring the normal limitations of [_Rush_]. You must maintain the same straight line for all [_Rush_] Movement that is not on an _Ice_ space."
   }
 ]

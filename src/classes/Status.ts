@@ -1,37 +1,24 @@
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Base } from '@/class'
 
-class Status {
-  private desc_: string
-  private effect_: string
-  private special_: string
-  private name_: string
+class Status extends Base {
   private negate_: string
   private recover_: string
   private reacts_: string[]
   private remove_: string
   private type_: string
 
-  public constructor() {
-    this.desc_ = ''
-    this.effect_ = ''
-    this.name_ = ''
+  public constructor(name) {
+    super(name)
     this.recover_ = ''
     this.reacts_ = []
     this.remove_ = ''
-    this.special_ = ''
     this.type_ = ''
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-  get Desc() {
-    return this.desc_
-  }
-  get Name() {
-    return this.name_
-  }
   get Type() {
     return this.type_
   }
@@ -51,16 +38,10 @@ class Status {
   get HasRemove() {
     return this.remove_ != ''
   }
-  get HasSpecial() {
-    return this.special_ != ''
-  }
 
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  public get EffectHeader() {
-    return '**Effect:** ' + this.effect_
-  }
   public get NegateHeader() {
     return '**Negate:** ' + this.negate_
   }
@@ -77,9 +58,6 @@ class Status {
   public get RemoveHeader() {
     return '**Remove:** ' + this.remove_
   }
-  public get SpecialHeader() {
-    return '**Special:** ' + this.special_
-  }
   public get Icon() {
     if (this.Name == 'Error') return ''
     return require('@/assets/' + this.Name + '.svg')
@@ -88,21 +66,18 @@ class Status {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(statusData: IStatusData): Status {
-    const a = new Status()
-    a.setStatusData(statusData)
+  public static Deserialize(data: IStatusData): Status {
+    const a = new Status(data.name)
+    a.setStatusData(data)
     return a
   }
 
   public setStatusData(data: IStatusData): void {
-    this.desc_ = data.desc || ''
-    this.effect_ = data.effect || ''
-    this.name_ = data.name || ''
+    this.setBaseData(data)
     this.negate_ = data.negate || ''
     this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
     this.remove_ = data.remove || ''
-    this.special_ = data.special || ''
     this.type_ = data.type || ''
   }
 }

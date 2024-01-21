@@ -72,8 +72,8 @@ export default Vue.extend({
   components: { DisciplineCard },
   data() {
     return {
-      artTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Blast'],
-      selectedTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Blast'],
+      artTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Explosion'],
+      selectedTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Explosion'],
       selectedArt: null,
     }
   },

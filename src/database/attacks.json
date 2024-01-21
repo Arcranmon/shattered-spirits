@@ -142,7 +142,7 @@
     "range": [{ "category": "Self" }],
     "area": "_Line_ 3 or _Cone_ 2",
     "special": "Any _Prone_ creatures in the _Area_ take +1 Damage on a _Graze_+.",
-    "boost": "Choose any number:\n* 1 _Momentum_: The Area becomes _Rough_.",
+    "boost": "Choose any number:\n* 1 _Momentum_: The Area becomes _Uneven Earth_.",
     "chart": {
       "keywords": ["Groundsource", "Avoidable"],
       "damage_type": "Crush",
@@ -187,8 +187,20 @@
     "rank": "Minor Attack"
   },
   {
+    "name": "Erupting Flame",
+    "class": "Explosion",
+    "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
+    "type": "Light",
+    "speed": "3+ [_Rigid_]",
+    "cost": "1 _Momentum_",
+    "target": "A _Blazing_ space.",
+    "effect": "Remove the _Blazing_ space, then deal 1 _Fire_ Damage and inflict _Alight_ 1 in a _Blast_ 1 centered on that space.",
+    "range": [{ "category": "Ranged", "value": 5 }],
+    "rank": "Minor Attack"
+  },
+  {
     "name": "Firecracker",
-    "class": "Blast",
+    "class": "Explosion",
     "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
     "type": "Light",
     "speed": "2",
@@ -202,6 +214,131 @@
       "status": ["", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1, _Burn_ 1", "_Dazed_ 1, _Burn_ 1"]
     },
     "rank": "Minor Attack"
+  },
+  {
+    "name": "Fireball",
+    "desc": "A blast of concentrated flame, destroying all before it in a flash.",
+    "class": "Explosion",
+    "type": "Versatile",
+    "speed": "5",
+    "cost": "2 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 8 }],
+    "area": "_Blast_ 1",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+3 _Momentum_",
+      "damage": [0, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2", "_Alight_ 2", "_Alight_ 3", "_Alight_ 3"]
+    },
+    "rank": "Major Attack",
+    "charged_effect": "Add _Alight_ 1 on a _Graze_+.",
+    "analysis_notes": { "expected_targets": 2.5 }
+  },
+  {
+    "name": "Fire Spin",
+    "class": "Blaze",
+    "desc": "You viciously rip flames around a foe, trapping them in a vortex of searing flame.",
+    "type": "Versatile",
+    "speed": "3",
+    "cost": "3 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 4 }],
+    "target": "A creature adjacent to a _Blazing_ space.",
+    "effect": "Originate the Attack from a _Blazing_ space adjacent to the Target, treating it as _Melee_.",
+    "boost": "3 _Momentum_: As a part of this Attack, remove all _Blazing_ spaces adjacent to the Target. If remove at least 3, add [_Enchant_]. The creature does not reduce their _Alight_ from the end of _Phase_ effect while this _Enchant_ persists.",
+    "special": "If all spaces adjacent to the Target are _Blazing_ this Attack has _Advantage_.",
+    "charged_effect": "Mark the space the Attack will originate from with a _Hazard_. Add _Alight_ 1, _Burn_ _0/0/1/2_.",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+3 _Momentum_",
+      "damage": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4],
+      "roll": ["Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "_Alight_ 1",
+        "_Alight_ 1",
+        "_Alight_ 1",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 3",
+        "_Alight_ 3",
+        "_Alight_ 4",
+        "_Alight_ 4",
+        "_Alight_ 5",
+        "_Alight_ 5"
+      ]
+    },
+    "rank": "Major Attack"
+  },
+  {
+    "name": "Flame Jet",
+    "desc": "A short-range explosion of flames to send foes staggering back.",
+    "class": "Explosion",
+    "type": "Light",
+    "speed": "3",
+    "cost": "2 _Momentum_",
+    "range": [{ "category": "Self" }],
+    "area": "_Line_ 3 or _Cone_ 2",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 1, 1, 2, 2, 3, 3, 3, 4, 5, 5],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2"]
+    },
+    "rank": "Minor Attack",
+    "analysis_notes": { "expected_targets": 1.5 }
+  },
+  {
+    "name": "Flamethrower",
+    "desc": "A powerful jet of flames that erupts into a debilitating jet of flames.",
+    "class": "Explosion",
+    "type": "Versatile",
+    "speed": "4",
+    "cost": "4 _Momentum_",
+    "range": [{ "category": "Self" }],
+    "special": "Place a _Cone_ 3 anywhere in the _Area_. It's origin must be in the _Area_, and the _Cone_ must point in the same direction as the _Line_.",
+    "boost": "2 _Momentum_: Instead, use a _Cone_ 4 for the special effect.",
+    "area": "_Line_ 5",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+4 _Momentum_",
+      "damage": [0, 2, 2, 3, 4, 4, 5, 5, 6, 7, 7],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2", "_Alight_ 2", "_Alight_ 3", "_Alight_ 3"]
+    },
+    "rank": "Major Attack",
+    "analysis_notes": { "expected_targets": 2 },
+    "charged_effect": "You must mark the _Cone_ spaces created by the Special when you mark the _Hazard_. Add _Alight_ 1 and deal +2 _Fire_ _Bonus Damage_."
+  },
+  {
+    "name": "Flashbang",
+    "class": "Explosion",
+    "desc": "You make a small explosion intended to blind and disorient rather than harm.",
+    "type": "Light",
+    "speed": "2",
+    "cost": "1 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 4 }],
+    "area": "_Cone_ 1",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+2 _Momentum_",
+      "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "_Dazed_ 1",
+        "_Dazed_ 1",
+        "_Dazed_ 1",
+        "_Dazed_ 1",
+        "_Dazed_ 1, _Blinded_ [1 _Stamina_]",
+        "_Dazed_ 1, _Blinded_ [1 _Stamina_]",
+        "_Dazed_ 1, _Blinded_ [2 _Stamina_]",
+        "_Dazed_ 1, _Blinded_ [2 _Stamina_]"
+      ]
+    },
+    "rank": "Minor Attack",
+    "analysis_notes": { "expected_targets": 2 }
   },
   {
     "name": "Frost Spray",
@@ -382,7 +519,7 @@
     "cost": "1 _Momentum_",
     "speed": 4,
     "class": "Land",
-    "effect": "Make the Target's space _Rough_. If it is already _Rough_, add _Vulnerable_ 1 on a _Graze_+.",
+    "effect": "Make the Target's space _Uneven Earth_. If it is already _Uneven Earth_, add _Vulnerable_ 1 on a _Graze_+.",
     "range": [{ "category": "Ranged", "value": 6 }],
     "chart": {
       "keywords": ["Avoidable", "Groundsource"],
@@ -405,6 +542,38 @@
     },
     "rank": "Minor Attack",
     "analysis_notes": { "fudge": -1 }
+  },
+  {
+    "name": "Scorch",
+    "desc": "You create a deadly line of flame, laying waste to all before you.",
+    "class": "Blaze",
+    "type": "Heavy",
+    "speed": "6",
+    "cost": "2 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 3, "special": "_Ordnance_" }],
+    "effect": "If, after resolving this Attack, the Damage dealt with this Attack plus the target's _Alight_ is greater than or equal to the Durability of the creature's Armor, inflict _Shred_ 1.",
+    "charged_effect": "Instead, this Attack is _Self_-Range _Line_ 4. Add [_Pierce_ 1].",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+3 _Momentum_",
+      "keywords": ["_Pierce_ 1"],
+      "damage": [0, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 3",
+        "_Alight_ 3",
+        "_Alight_ 4, _Burn_ 1",
+        "_Alight_ 4, _Burn_ 1",
+        "_Alight_ 5, _Burn_ 1",
+        "_Alight_ 5, _Burn_ 1",
+        "_Alight_ 6, _Burn_ 2",
+        "_Alight_ 6, _Burn_ 2"
+      ]
+    },
+    "rank": "Major Attack"
   },
   {
     "name": "Slam",
@@ -554,35 +723,6 @@
     "rank": "Major Attack"
   },
   {
-    "name": "Swift Slam",
-    "desc": "A quick strike making use of the body itself to body-slam a foe.",
-    "class": "Martial",
-    "type": "Light",
-    "speed": 2,
-    "range": [{ "category": "Melee", "value": 1 }],
-    "chart": {
-      "damage_type": "Crush",
-      "keywords": ["Body"],
-      "on_miss": "+1 _Momentum_",
-      "damage": [0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Push_ 1, _Vulnerable_ 1",
-        "_Push_ 1/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 1/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 1/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Push_ 2/_Prone_ [2 _Stamina_], _Vulnerable_ 2"
-      ]
-    },
-    "rank": "Minor Attack"
-  },
-  {
     "name": "Swipe",
     "class": "Martial",
     "desc": "A swift attack using a natural weapon.",
@@ -625,5 +765,19 @@
     "desc": "You strike with a weapon.",
     "effect": "Make an Attack using a _Wielded_ Weapon. Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Versatile_, or _Heavy_.",
     "rank": "Major Attack"
+  },
+  {
+    "name": "Will-o-Wisp",
+    "desc": "You split an active flame, using it to sear a foe with spreading flames.",
+    "type": "Light",
+    "cost": "1 _Momentum_",
+    "speed": "2+ [_Rigid_]",
+    "class": "Blaze",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "target": "A _Blazing_ space.",
+    "effect": "Inflict _Alight_ 2 on a creature within Range 2 of the space.",
+    "boost": "2 _Momentum_: Remove the _Blazing_ space. Instead, inflict _Alight_ 2 on two creatures within Range 2 of the space, or _Alight_ 4 on one creature.",
+    "rank": "Minor Attack",
+    "analysis_notes": { "bonus_damage": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5] }
   }
 ]

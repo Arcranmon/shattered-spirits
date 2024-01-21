@@ -113,9 +113,9 @@ class Npc {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(discData: INpcData): Npc {
+  public static Deserialize(data: INpcData): Npc {
     const t = new Npc()
-    t.setNpcData(discData)
+    t.setNpcData(data)
     return t
   }
 

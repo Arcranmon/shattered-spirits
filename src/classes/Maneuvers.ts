@@ -52,9 +52,9 @@ class Maneuver extends Ability {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(manData: IManeuverData): Maneuver {
-    const m = new Maneuver(manData.name)
-    m.setManeuverData(manData)
+  public static Deserialize(data: IManeuverData): Maneuver {
+    const m = new Maneuver(data.name)
+    m.setManeuverData(data)
     return m
   }
 

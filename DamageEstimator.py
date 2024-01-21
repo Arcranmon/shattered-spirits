@@ -125,9 +125,9 @@ def estimate_damage(attack, glancing, print_stats):
 
     # Useful analysis parameters.
     cost = 0
-    roll_chart = []
-    damage_chart = []
-    status_chart = []
+    roll_chart = ["Hit"]*11
+    damage_chart = [0]*11
+    status_chart = ['']*11
     speed = 1
     bonus_damage =  [0]*11
     expected_targets = 1
@@ -145,15 +145,13 @@ def estimate_damage(attack, glancing, print_stats):
             damage_chart = attack["chart"]["damage"]
         status_chart = attack["chart"]["status"]
         roll_chart = attack["chart"]["roll"]
-    else:
-        raise Exception("Attack has no chart!")
                     
     if(type(attack["speed"]) is int or len(attack["speed"]) == 1):
         speed = int(attack["speed"])
     else:
         speed = int(attack["speed"][0])
-    if("class" in attack):
-        attack_class = (attack["class"] == 'Major Attack')+1
+    if("rank" in attack):
+        attack_class = (attack["rank"] == 'Major Attack')+1
     elif(attack.get("category", "") == "Shield"):
         attack_class = MINOR_ATTACK
     elif("hands" in attack): # Means that this is a weapon.
@@ -194,13 +192,15 @@ def estimate_damage(attack, glancing, print_stats):
     diff = 0
 
     keyword_bonus = 0
-    for keyword in attack["chart"].get("keywords", []):       
-        keyword = keyword.replace('_', '')
-        split_keywords = keyword.split(' ')
-        if len(split_keywords) > 1:
-            keyword_bonus += keyword_multipliers[split_keywords[0]] * int(split_keywords[1])
-        else:
-            keyword_bonus += keyword_multipliers[split_keywords[0]]
+
+    if("chart" in attack):
+        for keyword in attack["chart"].get("keywords", []):       
+            keyword = keyword.replace('_', '')
+            split_keywords = keyword.split(' ')
+            if len(split_keywords) > 1:
+                keyword_bonus += keyword_multipliers[split_keywords[0]] * int(split_keywords[1])
+            else:
+                keyword_bonus += keyword_multipliers[split_keywords[0]]
 
     ranges = []
     if override_range == "":
@@ -240,19 +240,19 @@ def estimate_damage(attack, glancing, print_stats):
         range_expected_damage = [x / expected_targets for x in range_expected_damage]
 
         # Calculate the damage for each speed.
-        for i in range(10,0,-1):
-            for j in range(8):
-                if(thrown and roll_chart[i] == "Graze"): 
+        for roll_index in range(10,-1,-1):
+            for speed_index in range(8):
+                if(thrown and roll_chart[roll_index] == "Graze"): 
                     continue
-                speed_dif = j-speed+1 # +1 because zero indexed
+                speed_dif = speed_index-speed+1 # +1 because zero indexed
 
                 # Heavy takes double the speed penalty.
                 if lvh == 'Heavy':
                     speed_dif = speed_dif*2
-                index = i
+                index = roll_index
 
                 if speed_dif < 0:
-                    index = i + speed_dif
+                    index = roll_index + speed_dif
 
                 # Attacking too early with some weapons will make some rolls automatically miss.
                 if index < 0:
@@ -274,9 +274,9 @@ def estimate_damage(attack, glancing, print_stats):
                 if(roll_chart[index] != "Miss"): 
                     damage += keyword_bonus
 
-                straight_damage[j] += straight[i]*damage
-                advantage_damage[j] += advantage[i]*damage
-                disadvantage_damage[j] += disadvantage[i]*damage
+                straight_damage[speed_index] += straight[index]*damage
+                advantage_damage[speed_index] += advantage[index]*damage
+                disadvantage_damage[speed_index] += disadvantage[index]*damage
 
         if(print_stats):
             print(colored(range_strings[range_index], 'white'))

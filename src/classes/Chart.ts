@@ -67,9 +67,9 @@ class Chart {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(techData: IChartData): Chart {
+  public static Deserialize(data: IChartData): Chart {
     const t = new Chart()
-    t.setChartData(techData)
+    t.setChartData(data)
     return t
   }
 

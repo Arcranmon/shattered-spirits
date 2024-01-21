@@ -51,13 +51,9 @@ class Attack extends Maneuver {
   get ChargedEffectHeader() {
     return '**Charged Effect:** ' + this.charged_effect_
   }
-  get SpeedHeader() {
-    var header = ''
-    if (this.speed_ >= 1) header = 'Speed ' + this.speed_
-    if (header.length > 0 && this.HasType) header += ', '
-    header += this.TypeHeader
-
-    return header
+  public get SpeedHeader() {
+    if (/^\d+$/.test(this.speed_[0])) return '**Speed ' + this.Speed + '**'
+    return '**' + this.Speed + ' Speed**'
   }
   get TypeHeader() {
     if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'
@@ -71,9 +67,9 @@ class Attack extends Maneuver {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(attackData: IAttackData): Attack {
-    const t = new Attack(attackData.name)
-    t.setAttackData(attackData)
+  public static Deserialize(data: IAttackData): Attack {
+    const t = new Attack(data.name)
+    t.setAttackData(data)
     return t
   }
 
