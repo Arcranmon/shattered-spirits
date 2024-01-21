@@ -1,20 +1,26 @@
 <template>
-  <div class="obstacle--wrapper" inline>
-    <div class="obstacle--color-header">
-      <div class="obstacle--header">
+  <div class="card--wrapper" inline>
+    <div class="card--color-header">
+      <div class="card--underline-top card--header">
         <h3 style="display: inline; font-style: normal;">{{ obstacle.Name }}</h3>
-      </div>
-      <div class="obstacle--keywords">
-        <span v-if="(obstacle.Desc.length > 0)" style="font-style: italic;">{{ obstacle.Desc }}<br /></span>
-        <span style="font-style: bold;">
-          <b>{{ obstacle.SizeHeader }}, {{ obstacle.HeightHeader }}, {{ obstacle.HardnessHeader }}<br /></b>
-        </span>
-        <b><display-tooltip-text v-if="obstacle.HasKeywords" :string="obstacle.KeywordsHeader" :decorate="false" /></b>
+        <b>
+          <div class="card--keywords">
+            <div>
+              <display-tooltip-text :string="obstacle.ElementHeader" :decorate="false" />
+            </div>
+            <span> {{ obstacle.SizeHeader }}, {{ obstacle.HeightHeader }}, {{ obstacle.HardnessHeader }}<br /> </span
+            ><span v-for="(keyword, index) in obstacle.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword" :decorate="false"
+            /></span></div
+        ></b>
       </div>
     </div>
-    <div class="obstacle--content">
-      <div class="tech--format" v-if="obstacle.HasResistances">
-        <display-tooltip-text :string="obstacle.ResistancesHeader" />
+    <div class="card--content">
+      <div class="tech--format" v-if="obstacle.HasTraits">
+        <display-tooltip-text :string="obstacle.TraitsHeader" />
+      </div>
+      <div class="tech--format" v-if="obstacle.HasEffect">
+        <display-tooltip-text :string="obstacle.EffectHeader" />
       </div>
       <div class="tech--format" v-if="obstacle.HasSpecial">
         <display-tooltip-text :string="obstacle.SpecialHeader" />
@@ -40,6 +46,7 @@
         </v-expansion-panels>
       </div>
     </div>
+    <div class="desc--box" v-if="(obstacle.Desc.length > 0)" style="font-style: italic;">{{ obstacle.Desc }}<br /></div>
   </div>
 </template>
 
@@ -62,8 +69,8 @@ export default Vue.extend({
   },
   computed: {
     isTooltip: function () {
-      if (this.tooltip) return 'obstacle--wrapper-tooltip'
-      else return 'obstacle--wrapper'
+      if (this.tooltip) return 'card--wrapper-tooltip'
+      else return 'card--wrapper'
     },
   },
   components: { ChartTable },
@@ -71,50 +78,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.obstacle--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-light;
-  border: $border--black-standard;
-  height: 100%;
-  padding-bottom: $space--xs;
-  padding-top: $space--xs;
-}
-.obstacle--wrapper-tooltip {
-  font-family: $font--standard;
-  height: 100%;
-}
-.obstacle--color-header {
-  border-bottom: 5px double black;
-}
-.obstacle--header {
-  text-align: center;
-  color: black;
-}
-.obstacle--keywords {
-  text-align: center;
-  font-size: $font-size--m;
-  color: black;
-  padding-bottom: $space--xs;
-}
-.obstacle--content {
-  font-size: $font-size--m;
-  color: black;
-  padding: $space--xs;
-  padding-bottom: 0;
-}
-.obstacle--reaction-content {
-  font-size: $font-size--m;
-  color: black;
-  padding-left: $space--xs;
-  padding-right: $space--xs;
-}
-.obstacle--format {
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  padding: none;
-  text-align: left;
-  color: black;
-  display: inline;
-  white-space: normal !important;
+.a {
 }
 </style>

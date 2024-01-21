@@ -1,26 +1,16 @@
 import { store } from '@/store'
+import { Base } from '@/class'
 
-class Gear {
-  private name_: string
-  private desc_: string
-  private effect_: string
-  private special_: string
+class Gear extends Base {
   private weight_: number
 
-  public constructor() {
-    this.name_ = ''
+  public constructor(name) {
+    super(name)
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-
-  get Name() {
-    return this.name_
-  }
-  get Desc() {
-    return this.desc_
-  }
   get Weight() {
     return this.weight_
   }
@@ -31,30 +21,18 @@ class Gear {
   get WeightHeader() {
     if (this.weight_ != 0) return 'Weight ' + this.weight_
   }
-  get HasSpecial() {
-    return this.special_ != ''
-  }
-  get SpecialHeader() {
-    return '**Special:** ' + this.special_
-  }
-  get EffectHeader() {
-    return '**Effect:** ' + this.effect_
-  }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(armorData: IGearData): Gear {
-    const t = new Gear()
-    t.setGearData(armorData)
+  public static Deserialize(data: IGearData): Gear {
+    const t = new Gear(data.name)
+    t.setGearData(data)
     return t
   }
 
   public setGearData(data: IGearData): void {
-    this.name_ = data.name || ''
-    this.desc_ = data.desc || ''
-    this.effect_ = data.effect || ''
-    this.special_ = data.special || ''
+    this.setBaseData(data)
     this.weight_ = data.weight || 0
   }
 }

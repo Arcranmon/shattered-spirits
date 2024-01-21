@@ -62,9 +62,6 @@ class Weapon extends Attack {
     if (this.Category == 'Unarmed') return require('@/assets/Unarmed.svg')
     return require('@/assets/' + this.Category + ' Weapon.svg')
   }
-  public get HasKeywords() {
-    return this.keywords_.length > 0
-  }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'
   }
@@ -73,9 +70,9 @@ class Weapon extends Attack {
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(weaponData: IWeaponData): Weapon {
-    const t = new Weapon(weaponData.name)
-    t.setWeaponData(weaponData)
+  public static Deserialize(data: IWeaponData): Weapon {
+    const t = new Weapon(data.name)
+    t.setWeaponData(data)
     return t
   }
 

@@ -1,32 +1,18 @@
 import { store } from '@/store'
+import { Base } from '@/class'
 
-class SpiritType {
-  private name_: string
-  private desc_: string
-  private effect_: string
+class SpiritType extends Base {
   private summon_effect_: string
   private manifest_effect_: string
   private traits_: string[]
 
-  // ==========================================================
-  // GETTERS
-  // ==========================================================
-  public get Desc() {
-    return this.desc_
-  }
-  public get Name() {
-    return this.name_
+  public constructor(name) {
+    super(name)
   }
 
   // ==========================================================
   // UTILITY
   // ==========================================================
-  public get HasEffect() {
-    return this.effect_ != ''
-  }
-  public get EffectHeader() {
-    return '**Effect:** ' + this.effect_
-  }
   public get HasSummonEffect() {
     return this.summon_effect_ != ''
   }
@@ -55,16 +41,14 @@ class SpiritType {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(characterData: ISpiritTypeData): SpiritType {
-    const c = new SpiritType()
-    c.setSpiritTypeData(characterData)
+  public static Deserialize(data: ISpiritTypeData): SpiritType {
+    const c = new SpiritType(data.name)
+    c.setSpiritTypeData(data)
     return c
   }
 
   private setSpiritTypeData(data: ISpiritTypeData): void {
-    this.name_ = data.name || ''
-    this.desc_ = data.desc || ''
-    this.effect_ = data.effect || ''
+    this.setBaseData(data)
     this.summon_effect_ = data.summon_effect || ''
     this.manifest_effect_ = data.manifest_effect || ''
     this.traits_ = data.traits || []

@@ -1,8 +1,7 @@
 import { store } from '@/store'
+import { Base } from '@/class'
 
-class SpiritForm {
-  private name_: string
-  private desc_: string
+class SpiritForm extends Base {
   private size_: string
   private health_: number
   private weapons_: string
@@ -12,17 +11,15 @@ class SpiritForm {
   private movement_: string
   private traits_: string[]
 
+  public constructor(name) {
+    super(name)
+  }
+
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Desc() {
-    return this.desc_
-  }
   public get Movement() {
     return this.movement_
-  }
-  public get Name() {
-    return this.name_
   }
 
   // ==========================================================
@@ -47,7 +44,7 @@ class SpiritForm {
     return '**Weapons:** ' + this.weapons_
   }
   public get BonusAttackHeader() {
-    return '**Bonus Attack:** ' + this.bonus_attack_
+    return '**Bonus Attack:** _' + this.bonus_attack_ + '_'
   }
   public get BonusAttack() {
     return this.bonus_attack_
@@ -59,21 +56,20 @@ class SpiritForm {
     return this.traits_
   }
   public get TraitsHeader() {
-    return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_z'
+    return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_'
   }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(characterData: ISpiritFormData): SpiritForm {
-    const c = new SpiritForm()
-    c.setSpiritFormData(characterData)
+  public static Deserialize(data: ISpiritFormData): SpiritForm {
+    const c = new SpiritForm(data.name)
+    c.setSpiritFormData(data)
     return c
   }
 
   private setSpiritFormData(data: ISpiritFormData): void {
-    this.name_ = data.name || ''
-    this.desc_ = data.desc || ''
+    this.setBaseData(data)
     this.size_ = data.size || ''
     this.health_ = data.health || 0
     this.weapons_ = data.weapons || ''

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Martial Disciplines</h2>
+    <h2>Style Disciplines</h2>
     <span v-if="isMobile">
       <v-expansion-panels style="padding: 3px;">
         <v-expansion-panel style="background-color: inherit;">
@@ -116,7 +116,7 @@ import { Discipline } from '@/class'
 import DisciplineCard from '@/components/cards/DisciplineCard'
 
 export default Vue.extend({
-  name: 'martial-disciplines',
+  name: 'style-disciplines',
   components: { DisciplineCard },
   data() {
     return {

@@ -1,55 +1,58 @@
 <template>
-  <div class="maneuver--wrapper" inline>
-    <div class="maneuver--underline-top">
-      <div class="maneuver--header" v-bind:class="maneuver.Type.replace(' ', '_')">
+  <div class="card--wrapper" inline>
+    <div class="card--underline-top">
+      <div class="card--header" v-bind:class="maneuver.Type.replace(' ', '_')">
         <h4 style="display: inline;">{{ maneuver.Name }}</h4>
         <br />
-        <div class="maneuver--keywords" v-bind:class="useTextFormatting">
-          <span v-if="(maneuver.Desc.length > 0)" style="font-style: italic;">{{ maneuver.Desc }}<br /></span>
-          <b><display-tooltip-text class="maneuver--type" :string="maneuver.Type" :decorate="false" /></b><br />
-          <b><display-tooltip-text v-if="maneuver.HasKeywords" :string="maneuver.KeywordsHeader" :decorate="false" /></b>
+        <div class="card--keywords" v-bind:class="useTextFormatting">
+          <b><display-tooltip-text class="card--type" :string="maneuver.TypeHeader" :decorate="false" /></b><br />
+          <b>
+            <span v-for="(keyword, index) in maneuver.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword" :decorate="false" /></span
+          ></b>
         </div>
       </div>
     </div>
-    <div class="maneuver--content" v-bind:class="useTextFormatting">
-      <div class="maneuver--format" v-if="maneuver.HasAp">
+    <div class="card--content" v-bind:class="useTextFormatting">
+      <div class="card--format" v-if="maneuver.HasAp">
         <display-tooltip-text :string="maneuver.ApHeader" />
       </div>
-      <div v-if="maneuver.HasReqs">
-        <display-tooltip-text class="maneuver--format" :string="maneuver.ReqsHeader" />
+      <div class="card--format" v-if="maneuver.HasReqs">
+        <display-tooltip-text :string="maneuver.ReqsHeader" />
       </div>
-      <div v-if="maneuver.HasWeapon">
-        <display-tooltip-text class="maneuver--format" :string="maneuver.WeaponHeader" />
+      <div class="card--format" v-if="maneuver.HasWeapon">
+        <display-tooltip-text :string="maneuver.WeaponHeader" />
       </div>
-      <div v-if="maneuver.HasArea"><display-tooltip-text class="maneuver--format" :string="maneuver.AreaHeader" /></div>
-      <div v-if="maneuver.HasRange">
-        <display-tooltip-text class="maneuver--format" :string="maneuver.RangeHeader" />
+      <div class="card--format" v-if="maneuver.HasArea"><display-tooltip-text :string="maneuver.AreaHeader" /></div>
+      <div class="card--format" v-if="maneuver.HasRange">
+        <display-tooltip-text :string="maneuver.RangeHeader" />
       </div>
-      <div v-if="maneuver.HasTrigger">
-        <display-tooltip-text class="maneuver--format" :string="maneuver.TriggerHeader" />
+      <div class="card--format" v-if="maneuver.HasTrigger">
+        <display-tooltip-text :string="maneuver.TriggerHeader" />
       </div>
-      <div v-if="maneuver.HasCost">
-        <display-tooltip-text class="maneuver--format" :string="maneuver.CostHeader" />
+      <div class="card--format" v-if="maneuver.HasTarget">
+        <display-tooltip-text :string="maneuver.TargetHeader" />
       </div>
-      <div class="maneuver--format" v-if="maneuver.HasMove">
+      <div class="card--format" v-if="maneuver.HasCost">
+        <display-tooltip-text :string="maneuver.CostHeader" />
+      </div>
+      <div class="card--format" v-if="maneuver.HasMove">
         <display-tooltip-text :string="maneuver.MoveHeader" />
       </div>
-      <div class="maneuver--format" v-if="maneuver.HasEffect">
+      <div class="card--format" v-if="maneuver.HasEffect">
         <display-tooltip-text :string="maneuver.EffectHeader" />
       </div>
-      <div class="maneuver--format" v-if="maneuver.HasSpecial">
+      <div class="card--format" v-if="maneuver.HasSpecial">
         <display-tooltip-text :string="maneuver.SpecialHeader" />
       </div>
-      <div class="maneuver--format" v-if="maneuver.HasManifest">
-        <display-tooltip-text :string="maneuver.ManifestHeader" />
-      </div>
-      <div class="maneuver--format" v-if="maneuver.HasBoost">
+      <div class="card--format" v-if="maneuver.HasBoost">
         <display-tooltip-text :string="maneuver.BoostHeader" />
       </div>
-      <span class="maneuver--format" v-if="this.standalone && maneuver.HasFrom">
-        <display-tooltip-text :string="maneuver.FromHeader" />
-      </span>
+      <div class="card--format" v-if="maneuver.HasManifest">
+        <display-tooltip-text :string="maneuver.ManifestHeader" />
+      </div>
     </div>
+    <div class="desc--box" v-if="(maneuver.Desc.length > 0)" style="font-style: italic;">{{ maneuver.Desc }}<br /></div>
   </div>
 </template>
 
@@ -77,7 +80,7 @@ export default Vue.extend({
   },
   computed: {
     useTextFormatting: function () {
-      if (this.format_text) return 'maneuver--text-format'
+      if (this.format_text) return 'card--text-format'
     },
   },
   components: { ChartTable },
@@ -85,45 +88,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.maneuver--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-lighter;
-  border: $border--black-standard;
-  height: 100%;
-  padding-bottom: $space--xs;
-}
-.maneuver--type {
-  font-family: $font--fancy !important;
-}
-.maneuver--header {
-  padding-top: $space--xs;
-  height: 100%;
-  text-align: center;
-  color: black;
-}
-.maneuver--underline-top {
-  border-bottom: 5px solid black;
-}
-.maneuver--keywords {
-  font-size: $font-size--m;
-  text-align: center;
-  color: black;
-  padding-bottom: $space--xs;
-}
-.maneuver--content {
-  color: black;
-  padding: $space--xs;
-}
-.maneuver--text-format {
-  font-size: $font-size--m;
-}
-.maneuver--format {
-  font-family: $font--standard;
-  padding: none;
-  text-align: left;
-  color: black;
-  white-space: normal !important;
-}
 .Stunt {
   background-color: $color--maneuver;
 }

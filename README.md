@@ -30,15 +30,16 @@ BIG POST-PLAYTEST REWORK
 
 This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
 
-- Keyword cleanup for Obscured/Obstructed.
+- Make things cleaner and more class-like.
+- Cooler buttons.
 - Potentially add 'Free Movement'
-- Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Masteries for them.
+- Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Arts for them.
 - More weapon types and supporting Disciplines.
-- Complete all Spirit Masteries.
-- Refine Endurance and Health system based on how long combats should last.
-- Expand and refine all Spirit Masteries to make sure that each spirit type feels different, as well as the individual disciplines.
-  - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Masteries.
-  - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Mastery as their Spirit will always be manifested by default.
+- Complete all Spirit Arts.
+- Refine Health and Health system based on how long combats should last.
+- Expand and refine all Spirit Arts to make sure that each spirit type feels different, as well as the individual disciplines.
+  - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Arts.
+  - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Art as their Spirit will always be manifested by default.
   - Add an additional 'bending' Discipline to each Element:
     - Earth: Dust
     - Flame: Heat
@@ -67,9 +68,11 @@ If you want to run this website locally (as it won't always be hosted), do the f
 
 ## Credits
 
+Some text and mechanics are from Schema and Infected by Levi Kornelsen; used with permission.
+
 Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt
 
-Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, Tremorsight, and Tide icons made by lorc.
+Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Mountain, Tremorsight, and Tide icons made by lorc.
 
 Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.
 
@@ -83,5 +86,5 @@ Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
-Shaper, Striker, Supporter, Artillery - Delapouite
-Controller, Courier, Defender, Frost, Blast, Burn, Gale, Storm - Lorc
+Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain - Delapouite
+Controller, Courier, Defender, Frost, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain - Lorc

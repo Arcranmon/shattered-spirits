@@ -1,20 +1,14 @@
 <template>
-  <div class="stance--wrapper" inline>
+  <div class="card--wrapper" inline>
     <div class="stance--color-header" v-bind:class="category">
-      <div class="stance--header">
+      <div class="card--underline-top card--header">
         <h4 style="display: inline; font-style: normal;">{{ stance.Name }}</h4>
-      </div>
-      <div class="stance--keywords">
-        <span v-if="(stance.Desc.length > 0)"
-          ><i>{{ stance.Desc }}</i
-          ><br
-        /></span>
+        <div>
+          <b><display-tooltip-text :string="stance.ClassHeader" :decorate="false" /></b>
+        </div>
       </div>
     </div>
-    <div class="stance--content">
-      <div v-if="stance.HasRequirements">
-        <display-tooltip-text :string="stance.RequirementsHeader" />
-      </div>
+    <div class="card--content">
       <display-tooltip-text :string="stance.RespiteHeader" /><br />
       <display-tooltip-text :string="stance.StaminaHeader" />
       <div v-if="stance.HasTraits">
@@ -27,6 +21,7 @@
         <display-tooltip-text :string="stance.SpecialHeader" />
       </div>
     </div>
+    <div class="desc--box" v-if="(stance.Desc.length > 0)" style="font-style: italic;">{{ stance.Desc }}<br /></div>
   </div>
 </template>
 
@@ -64,48 +59,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.stance--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-light;
-  border: $border--black-standard;
-  height: 100%;
-  padding-bottom: $space--xs;
-}
 .stance--color-header {
-  border-bottom: 5px double black;
-}
-.stance--header {
-  padding-top: $space--xs;
-  background-color: $color--chart-header;
-  text-align: center;
-  color: black;
-}
-.stance--keywords {
-  text-align: center;
-  font-size: $font-size--m;
-  color: black;
-  background-color: $color--chart-header;
-  padding-bottom: $space--xs;
-}
-.stance--content {
-  font-size: $font-size--m;
-  color: black;
-  padding: $space--xs;
-  padding-bottom: 0;
-}
-.stance--reaction-content {
-  font-size: $font-size--m;
-  color: black;
-  padding-left: $space--xs;
-  padding-right: $space--xs;
-}
-.stance--format {
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  padding: none;
-  text-align: left;
-  color: black;
-  display: inline;
-  white-space: normal !important;
+  background-color: $color--grey-dark;
 }
 </style>

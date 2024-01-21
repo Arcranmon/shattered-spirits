@@ -21,7 +21,7 @@
           <v-btn-toggle borderless overflow-auto
             ><div v-for="terrain in terrains" style="width: 100%;" v-bind:key="terrain.Name">
               <v-btn @click="selectedTerrain = terrain" class="button--style" depressed tile block>
-                {{ terrain.Name }}
+                <img class="image--icon-size" :src="terrain.Icon" /> {{ terrain.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col

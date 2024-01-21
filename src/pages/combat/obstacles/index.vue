@@ -22,7 +22,7 @@
             ><div v-for="obstacle in obstacles" style="width: 100%;" v-bind:key="obstacle.Name">
               <div>
                 <v-btn @click="selectedObstacle = obstacle" class="button--style" depressed tile block>
-                  {{ obstacle.Name }}
+                  <img class="image--icon-size" :src="obstacle.Icon" /> {{ obstacle.Name }}
                 </v-btn>
               </div>
             </div>

@@ -9,11 +9,11 @@
   },
   {
     "name": "Arcing",
-    "effect": "Arcing Attacks treat _Covered_ as _Heavily Obstructed_ instead and _Heavily Obstructed_ as _Lightly Obstructed_, so long as a path exists over _Obstacles_ that can reach the Target."
+    "effect": "Arcing is a special keyword, used when an attack is able to fly high through the sky before hitting its target. Arcing Attacks treat all _Cover_ as one level less, so long as a path exists over _Obstacles_ that can reach the Target."
   },
   {
     "name": "Avoidable",
-    "effect": "Characters may expend _Stamina_ to reduce Avoidable Damage by 1 for every 1 _Stamina_ spent."
+    "effect": "Characters may expend _Stamina_ to reduce Avoidable Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_."
   },
   {
     "name": "Close Range",
@@ -22,6 +22,10 @@
   {
     "name": "Blast",
     "effect": "Pick a space within Range. That space, and all spaces within X, where X is the Blast's value, are targeted. Draw the Attack Line from the target space."
+  },
+  {
+    "name": "Blaze",
+    "effect": "Blaze abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on stoking and spreading flames."
   },
   { "name": "Blocking", "see": "Block" },
   { "name": "Blocked", "see": "Block" },
@@ -51,21 +55,36 @@
   },
   {
     "name": "Cone",
-    "effect": "Pick a space within Range. Draw a triangle so that each side is X spaces long, where X is the Cone value, using the target space as one of the corners. If Range is Self the Cone's origin must be an adjacent space and the Cone may not pass through your space."
+    "effect": "Pick a space within Range. Draw a triangle so that each side is X spaces long, where X is the Cone value, using the target space as one of the corners. If Range is Self the Cone's origin must be an adjacent space and the Cone may not pass through your space. Otherwise, the Origin is the center of the area."
   },
   {
     "name": "Condense",
     "effect": "Take the creature's total Value of a _Token_ and divide it into the minimum number of _Tokens_. For example, a creature with _Impaired_ 1x3 would have _Impaired_ 3 after Condensing."
   },
   {
+    "name": "Earthbend",
+    "effect": "_Forced Movement_ of this type may move _Earthen_ _Obstacles_ under some conditions."
+  },
+  {
     "name": "Efficient",
     "effect": "This _Reaction_ does not count when checking the 'only one _Reaction_ may be used against a specific trigger' restriction."
+  },
+  {
+    "name": "Explosion",
+    "effect": "Explosion abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on sudden and violent bursts of flame."
+  },
+  {
+    "name": "Flammable",
+    "effect": "This space becomes _Blazing_ if it takes any _Fire_ Damage or gains _Alight_. If a Flammable space becomes _Blazing_ from an effect other than _Fire_ Damage or _Alight_, place another _Blazing_ space in an adjacent space. Spaces placed due to Flammable due not trigger this effect. The Flammable Terrain or Obstacle is destroyed when the space becomes _Blazing_."
   },
   {
     "name": "Resist",
     "effect": "A _Maneuver_ typically used in response to an Attack that allows a character to strike back against a foe, mitigate damage, or dodge. Each _Turn_, a character may use a single Resist _Maneuver_."
   },
-  { "name": "Defends", "see": "Defend" },
+  {
+    "name": "Defensive",
+    "effect": "This ability is used to mitigate the results of a hostile action. Only a single Defensive Reaction may be used against a specific trigger."
+  },
   {
     "name": "Derived",
     "effect": "This _Terrain_'s _Source_ is the same as whatever the _Terrain_ beneath it is; i.e., if it is created on _Earthen_ Terrain, it is in turn _Earthen_."
@@ -79,8 +98,8 @@
     "effect": "Earthen _Terrain_ or _Obstacles_ are prominent above-ground features created primarily from earth or stone. _Boulders_ and _Earth Pillars_ are obvious examples, but any stone structure can qualify as Earthen. In general, every space on the battlefield is Earthen unless specified otherwise."
   },
   {
-    "name": "Watery",
-    "effect": "Watery _Terrain_ or _Obstacles_ are predominately formed out of water. Watery _Obstacles_ tend to be fleeting and are often only created by abilities, but Watery _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watery _Terrain_ and _Obstacles_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
+    "name": "Watersource",
+    "effect": "Watersource _Terrain_ or _Obstacles_ are predominately formed out of water. Watersource _Obstacles_ tend to be Temporary and are often only created by abilities, but Watersource _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watersource _Terrain_ and _Obstacles_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
   },
   {
     "name": "Electric",
@@ -92,7 +111,7 @@
   },
   {
     "name": "Endurable",
-    "effect": "Characters may expend _Stamina_ to reduce Endurable Damage by 1 for every 1 _Stamina_ spent."
+    "effect": "Characters may expend _Stamina_ to reduce Endurable Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_."
   },
   { "name": "Evading", "see": "Evade" },
   {
@@ -100,8 +119,16 @@
     "effect": "A special type of _Gambit_ that allows you to inflict status or otherwise hinder a foe before attacking."
   },
   {
+    "name": "Flame",
+    "effect": "Flame is an element that is able to easily conjure and creature their own _Sources_. Flame abilities are _Suppressed_ when the user is _Soaked_ and _Sealed_ when the user is _Swimming_."
+  },
+  {
+    "name": "Temporary",
+    "effect": "Temporary bonuses are are lost at the end of the current _Turn_."
+  },
+  {
     "name": "Fleeting",
-    "effect": "Fleeting bonuses are are lost at the end of the current _Turn_."
+    "effect": "Fleeting Terrain and Obstacles are _Destroyed_ at the end of the current _Round_."
   },
   {
     "name": "Flourish",
@@ -121,8 +148,20 @@
     "effect": "Attacks with the Fist Keyword require an _Open Hand_ to use."
   },
   {
+    "name": "Forceful",
+    "effect": "Forceful can be applied to any kind of _Forced Movement_. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. When determining Damage to an _Obstacle_ from a _Collision_, deal Damage equal to the _Forced Movement_ remaining, not half. Creatures involved in a _Collision_ take Damage equal to any _Vulnerable_ they gain and gain _Dazed_ 1."
+  },
+  {
     "name": "Fragile",
     "effect": "After making an Attack with this Weapon, Destroy it."
+  },
+  {
+    "name": "Tundra",
+    "effect": "Tundra abilities are a subset of _Water_ _Spirit_ abilities that primarily focus on manipulating ice and cold."
+  },
+  {
+    "name": "Basic",
+    "effect": "A Basic ability is not innately _Martial_ or _Spirit_; it cannot be _Suppressed_, but abilities used as a part of this ability (such as Attacks) may."
   },
   {
     "name": "Glancing",
@@ -134,7 +173,7 @@
   },
   {
     "name": "Groundsource",
-    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range, and ignore _Covered_, _Obstruction_, and _Obscurement_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
+    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range, and ignore _Cover_ and _Obscurement_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
   },
   {
     "name": "Guarding",
@@ -146,19 +185,23 @@
   },
   {
     "name": "Heavy",
-    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Block_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
+    "effect": "Heavy Attacks are powerful but unwieldy and tend to punish enemies that rely on _Guard_. They tend to be slow, but high Damage and typically have innate _Pierce_ or _Overwhelming_. Additionally, Heavy Attacks have potent _Charged Effects_ that allow them to deal extreme Damage or target an area, but take double the normal _Speed Penalty_."
   },
   {
-    "name": "Icy",
-    "effect": "Icy spaces follow the same mechanics as Watery spaces, but a creature must expend 1 _Momentum_ to _Draw_ from them."
+    "name": "Ice",
+    "effect": "Ice Terrain and Obstacles may only be _Drawn_ from if the creature has _Snowdraw_."
   },
   {
     "name": "Kick",
     "effect": "Weapons with the Kick Keyword can be used regardless of what a character has _Wielded_ but have _Disadvantage_ if a character is _Stuck_ and a -1 _Penalty_ if _Hobbled_."
   },
   {
+    "name": "Land",
+    "effect": "Land abilities are a subset of _Earth_ _Spirit_ abilities that primarily focus on sculpting earth and creating quakes."
+  },
+  {
     "name": "Light",
-    "effect": "Light Attacks are swift and specialize in targeting foes with high _Dodge_ defense. They typically have a low _Speed_, and may be used in conjunction with the _Quickened Attack_ ability to use a _Major Attack_ as a _Minor Attack_ late in the _Round_."
+    "effect": "Light Attacks are swift but tend to lack power. They typically have a low _Speed_, and may be used in conjunction with the _Quickened Attack_ ability to use a _Major Attack_ as a _Minor Attack_ late in the _Round_."
   },
   {
     "name": "Line",
@@ -178,15 +221,11 @@
   },
   {
     "name": "Mental",
-    "effect": "Mental Damage ignores all _Guard_. Characters may expend _Stamina_ to reduce Mental Damage by 2 for every 1 _Stamina_ spent."
+    "effect": "Characters may expend _Stamina_ to reduce Mental Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_."
   },
   {
     "name": "Obstacle",
     "effect": "Noteworthy terrain on the battlefield that can typically either be used as _Cover_ or be interacted with in some way."
-  },
-  {
-    "name": "Obstruction",
-    "effect": "This Obstacle may not be climbed and does not block Movement. Instead, it is treated as _Rough Terrain_ but can still provide _Covered_/_Obstructed_."
   },
   {
     "name": "One-Handed",
@@ -219,8 +258,8 @@
     "effect": "This Weapon is easy to draw and costs no _Momentum_ to Draw/Stow. Additionally, you may always treat this weapon as _Wielded_ so long as you have an _Open Hand_. After using it for an Attack, you must _Wield_ it if possible."
   },
   {
-    "name": "Parrying",
-    "effect": "A Parrying Attack has no Target, does no Damage and inflicts no Status unless otherwise specified."
+    "name": "Parry",
+    "effect": "When a creature Parries they gain the Parry Effect of a _Wielded_, un-_Sundered_ piece of Equipment against the triggering effect. A creature may pay 2 _Momentum_ to Parry with _Sundered_ Equipment. If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Sundered_."
   },
   {
     "name": "Priority",
@@ -233,6 +272,10 @@
   {
     "name": "Recharge",
     "effect": "While _Planning_, roll a d6. If you roll within the listed Range you may use this _Technique_ this _Round_."
+  },
+  {
+    "name": "Rough",
+    "effect": "Terrain with this keyword costs an additional space of Movement to enter."
   },
   {
     "name": "Safe",
@@ -259,12 +302,20 @@
     "effect": "A Stall _Technique_ is always resolved at the end of its _Phase_. It ignores normal turn order and does not count for the alternating turns within a _Phase_."
   },
   {
+    "name": "Mountain",
+    "effect": "Mountain abilities are a subset of _Earth_ _Spirit_ abilities that primarily focus on solidifying and firing solid earth."
+  },
+  {
+    "name": "Tide",
+    "effect": "Tide abilities are a subset of _Water_ _Spirit_ abilities that primarily focus on manipulating liquid water."
+  },
+  {
     "name": "Edge",
     "effect": "A special type of _Gambit_ which only one may be applied to a single Attack."
   },
   {
     "name": "Remote",
-    "effect": "This _Attack_ ignores _Obstructed_, _Cover_, and _Lightly Obscured_."
+    "effect": "This _Attack_ ignores _Cover_ and _Lightly Obscured_ and is treated as if it is _Melee_ for all effects."
   },
   {
     "name": "Repeatable",
@@ -276,11 +327,15 @@
   },
   {
     "name": "Rigid",
-    "effect": "This _Technique_ must be played at its listed Speed."
+    "effect": "This _Ability_ must be used at its listed Speed."
   },
   {
     "name": "Rush",
     "effect": "Rush _Movement_ must be taken in a straight line and may not _Climb_."
+  },
+  {
+    "name": "Spirit",
+    "effect": "A Spirit ability makes use of the innate magic of your Spirit. These abilities can be Suppressed, and often require specialized terrain features or equipment to be fully utilized. If an ability is simply listed as a Spirit ability, use the subcategory that your spirit aligns with, such as _Mountain_ or _Land_ for an _Earth_ Spirit."
   },
   {
     "name": "Sundering",
@@ -316,11 +371,15 @@
   },
   {
     "name": "Versatile",
-    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Maneuvers, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
+    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Attacks, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
   },
   {
     "name": "Incoming",
     "effect": "An Incoming Attack is created by launching a projectile into the air, preparing an explosion, or any other effect that creates a _Hazard_. When drawing the _Attack Line_, draw it from the space where you created the _Hazard_, not the space you are in when you make the Attack."
+  },
+  {
+    "name": "Water",
+    "effect": "Water is an element that relies heavily on its sources, but can easily move them about the battlefield. Water abilities are _Suppressed_ when the user is _Alight_. Water Abilities are _Sealed_ if there is no _Source_ within 10 spaces."
   },
   { "name": "Weapon Attacks", "see": "Weapon Attack" },
   {

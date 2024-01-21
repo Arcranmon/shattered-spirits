@@ -1,26 +1,37 @@
 <template>
-  <div class="terrain--wrapper" inline>
-    <div class="terrain--color-header">
-      <div class="terrain--header">
+  <div class="card--wrapper" inline>
+    <div class="card--color-header">
+      <div class="card--underline-top card--header">
         <h3 style="display: inline; font-style: normal;">{{ terrain.Name }}</h3>
-      </div>
-      <div class="terrain--keywords">
-        <span v-if="(terrain.Desc.length > 0)" style="font-style: italic;">{{ terrain.Desc }}<br /></span>
-        <b><display-tooltip-text v-if="terrain.HasKeywords" :string="terrain.KeywordsHeader" :decorate="false" /></b>
+        <div>
+          <b><display-tooltip-text :string="terrain.TerrainDetails" :decorate="false" /></b>
+        </div>
+        <div class="card--keywords">
+          <b
+            ><span v-for="(keyword, index) in terrain.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword" :decorate="false" /></span
+          ></b>
+        </div>
       </div>
     </div>
-    <div class="terrain--content">
-      <display-tooltip-text :string="terrain.EffectHeader" />
-      <div class="tech--format" v-if="terrain.HasNegate">
+    <div class="card--content">
+      <div class="card--format">
+        <display-tooltip-text :string="terrain.EffectHeader" />
+      </div>
+      <div class="card--format" v-if="terrain.HasSpecial">
+        <display-tooltip-text :string="terrain.SpecialHeader" />
+      </div>
+      <div class="card--format" v-if="terrain.HasNegate">
         <display-tooltip-text :string="terrain.NegateHeader" />
       </div>
-      <div class="tech--format" v-if="terrain.HasOverrides">
-        <display-tooltip-text :string="terrain.OverridesHeader" />
+      <div class="card--format" v-if="terrain.HasDestroy">
+        <display-tooltip-text :string="terrain.DestroyHeader" />
       </div>
-      <div class="tech--format" v-if="terrain.HasRemove">
-        <display-tooltip-text :string="terrain.RemoveHeader" />
+      <div class="card--format" v-if="terrain.HasInteractions">
+        <display-tooltip-text :string="terrain.InteractionsHeader" />
       </div>
     </div>
+    <div class="desc--box" v-if="(terrain.Desc.length > 0)" style="font-style: italic;">{{ terrain.Desc }}<br /></div>
   </div>
 </template>
 
@@ -42,8 +53,8 @@ export default Vue.extend({
   },
   computed: {
     isTooltip: function () {
-      if (this.tooltip) return 'terrain--wrapper-tooltip'
-      else return 'terrain--wrapper'
+      if (this.tooltip) return 'card--wrapper-tooltip'
+      else return 'card--wrapper'
     },
   },
   components: {},
@@ -51,46 +62,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.terrain--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-light;
-  border: $border--black-standard;
-  height: 100%;
-  padding-bottom: $space--xs;
-  padding-top: $space--xs;
-}
-.terrain--color-header {
-  border-bottom: 5px double black;
-}
-.terrain--header {
-  text-align: center;
-  color: black;
-}
-.terrain--keywords {
-  text-align: center;
-  font-size: $font-size--m;
-  color: black;
-  padding-bottom: $space--xs;
-}
-.terrain--content {
-  font-size: $font-size--m;
-  color: black;
-  padding: $space--xs;
-  padding-bottom: 0;
-}
-.terrain--reaction-content {
-  font-size: $font-size--m;
-  color: black;
-  padding-left: $space--xs;
-  padding-right: $space--xs;
-}
-.terrain--format {
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  padding: none;
-  text-align: left;
-  color: black;
-  display: inline;
-  white-space: normal !important;
+.a {
 }
 </style>

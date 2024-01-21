@@ -1,12 +1,12 @@
 <template>
   <div v-bind:class="useFormatting" inline>
     <div v-bind:class="armor.Category">
-      <div v-if="format" class="armor--header">
+      <div v-if="format" class="card--header card--underline-top">
         <h4 style="display: inline; font-style: normal;">{{ armor.Name }}</h4>
+        <b>
+          <div v-if="format" class="card--keywords">{{ armor.Category }}</div></b
+        >
       </div>
-      <b>
-        <div v-if="format" class="armor--keywords">{{ armor.Category }}</div></b
-      >
     </div>
     <div v-bind:class="useContent">
       <display-tooltip-text :string="armor.ArmorHeader" /><br />
@@ -46,53 +46,16 @@ export default Vue.extend({
   },
   computed: {
     useFormatting: function () {
-      if (this.format) return 'armor--wrapper'
+      if (this.format) return 'card--wrapper'
     },
     useContent: function () {
-      if (this.format) return 'armor--content'
+      if (this.format) return 'card--content'
     },
   },
 })
 </script>
 
 <style scoped lang="scss">
-.armor--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-light;
-  border: $border--black-standard;
-  height: 100%;
-}
-.armor--header {
-  font-size: $font-size--l;
-  text-align: center;
-  color: black;
-  padding-top: $space--xs;
-}
-.armor--keywords {
-  text-align: center;
-  font-size: $font-size--m;
-  color: black;
-  border-bottom: 5px black solid;
-  padding-bottom: $space--xs;
-}
-.armor--content {
-  font-size: $font-size--m;
-  color: black;
-  padding: $space--xs;
-}
-.armor--format {
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  padding: none;
-  text-align: left;
-  color: black;
-  white-space: normal !important;
-}
-.armor--format-no-text {
-  padding: none;
-  text-align: left;
-  color: black;
-  display: inline;
-  white-space: normal !important;
+.a {
 }
 </style>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import MainMenu from '@/pages/main-menu/index.vue'
+import CharacterOptions from '@/pages/character-options/index.vue'
 
 import CombatMenu from '@/pages/combat/combat-menu/index.vue'
 import CombatBasics from '@/pages/combat/combat-basics/index.vue'
@@ -15,9 +16,9 @@ import Obstacles from '@/pages/combat/obstacles/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
+import StyleDisciplines from '@/pages/style-disciplines/index.vue'
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
-import Masteries from '@/pages/masteries/index.vue'
+import Arts from '@/pages/arts/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
@@ -27,7 +28,7 @@ import MartialArts from '@/pages/equipment/martial-arts/index.vue'
 import Disciplines from '@/pages/disciplines/index.vue'
 
 import BasicSkills from '@/pages/basic-skills/index.vue'
-import BasicSpiritAbilities from '@/pages/basic-spirit-abilities/index.vue'
+import SpiritAbilities from '@/pages/spirit-abilities/index.vue'
 
 import Npcs from '@/pages/npcs/index.vue'
 
@@ -52,6 +53,14 @@ const r = new Router({
       name: 'main-menu',
       meta: {
         title: 'Shattered Spirits',
+      },
+    },
+    {
+      path: '/character-options',
+      component: CharacterOptions,
+      name: 'character-options',
+      meta: {
+        title: 'Character Options',
       },
     },
     {
@@ -175,27 +184,27 @@ const r = new Router({
       },
     },
     {
-      path: '/martial-disciplines',
-      component: MartialDisciplines,
-      name: 'martial-disciplines',
+      path: '/style-disciplines',
+      component: StyleDisciplines,
+      name: 'style-disciplines',
       meta: {
-        title: 'Martial Disciplines',
+        title: 'Style Disciplines',
       },
     },
     {
-      path: '/masteries',
-      component: Masteries,
-      name: 'masteries',
+      path: '/arts',
+      component: Arts,
+      name: 'arts',
       meta: {
-        title: 'Masteries',
+        title: 'Arts',
       },
     },
     {
-      path: '/basic-spirit-abilities',
-      component: BasicSpiritAbilities,
-      name: 'basic-spirit-abilities',
+      path: '/spirit-abilities',
+      component: SpiritAbilities,
+      name: 'spirit-abilities',
       meta: {
-        title: 'Basic Spirit Abilities',
+        title: 'Spirit Abilities',
       },
     },
     {

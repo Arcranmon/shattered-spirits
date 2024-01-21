@@ -5,7 +5,6 @@ import { Ability, Chart } from '@/class'
 
 class Technique extends Ability {
   private speed_: string
-  private target_: string
   private type_: string
   private weapon_: string
 
@@ -26,6 +25,13 @@ class Technique extends Ability {
   public get Type() {
     return this.type_
   }
+  public get ClassHeader() {
+    return '_' + this.class_ + '_ _Technique_'
+  }
+  public get Image() {
+    if (!this.Type || this.Type == 'Error') return require('@/assets/General.svg')
+    return require('@/assets/' + this.Type + '.svg')
+  }
 
   // ==========================================================
   // UTILITY
@@ -34,33 +40,20 @@ class Technique extends Ability {
     if (/^\d+$/.test(this.speed_[0])) return '**Speed ' + this.Speed + '**'
     return '**' + this.Speed + ' Speed**'
   }
-  public get HasTarget() {
-    return this.target_.length > 0
-  }
-  public get TargetHeader() {
-    return '**Target:** ' + this.target_
-  }
-  public get HasWeapon() {
-    return this.weapon_.length > 0
-  }
-  public get WeaponHeader() {
-    return '**Weapon:** ' + this.weapon_
-  }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(techData: ITechData): Technique {
-    const t = new Technique(techData.name)
-    t.setTechData(techData)
+  public static Deserialize(data: ITechData): Technique {
+    const t = new Technique(data.name)
+    t.setTechData(data)
     return t
   }
 
   public setTechData(data: ITechData): void {
     this.setAbilityData(data)
     this.speed_ = data.speed || ''
-    this.target_ = data.target || ''
     this.type_ = data.type || ''
     this.weapon_ = data.weapon || ''
   }

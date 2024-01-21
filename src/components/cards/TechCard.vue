@@ -1,54 +1,59 @@
 <template>
-  <div class="tech--wrapper" inline>
+  <div class="card--wrapper">
     <div v-bind:class="tech.Type">
-      <div class="tech--header">
+      <div class="card--underline-top card--header">
         <img class="image--header-left" :src="tech.Image" />
         <img class="image--header-right" :src="tech.Image" />
         <h4 style="display: inline; font-style: normal;">{{ tech.Name }}</h4>
-      </div>
-      <div class="tech--keywords" v-bind:class="tech.Type">
-        <span v-if="(tech.Desc.length > 0)" style="font-style: italic;">{{ tech.Desc }}<br /></span>
-        <span v-if="(tech.Attack)" style="font-style: bold;"> </span>
-        <span style="font-style: bold;"> <display-tooltip-text :string="tech.SpeedHeader" /><br /> </span>
-        <b><display-tooltip-text v-if="tech.HasKeywords" :string="tech.KeywordsHeader" :decorate="false" /></b>
+        <div class="card--keywords" v-bind:class="tech.Type">
+          <span v-if="(tech.Attack)"> </span>
+          <div>
+            <b><display-tooltip-text :string="tech.ClassHeader" :decorate="false" /></b>
+          </div>
+          <span> <display-tooltip-text :string="tech.SpeedHeader" /><br /> </span>
+          <b
+            ><span v-for="(keyword, index) in tech.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword" :decorate="false" /></span
+          ></b>
+        </div>
       </div>
     </div>
-    <div class="tech--content">
+    <div class="card--content">
       <div v-if="tech.HasCost">
-        <display-tooltip-text class="tech--format" :string="tech.CostHeader" />
+        <display-tooltip-text class="card--format" :string="tech.CostHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasReqs">
+      <div class="card--format" v-if="tech.HasReqs">
         <display-tooltip-text :string="tech.ReqsHeader" />
       </div>
       <div v-if="tech.HasArea"><display-tooltip-text :string="tech.AreaHeader" /></div>
       <div v-if="tech.HasRange">
         <display-tooltip-text :string="tech.RangeHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasWeapon">
+      <div class="card--format" v-if="tech.HasWeapon">
         <display-tooltip-text :string="tech.WeaponHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasTrigger">
+      <div class="card--format" v-if="tech.HasTrigger">
         <display-tooltip-text :string="tech.TriggerHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasTarget">
+      <div class="card--format" v-if="tech.HasTarget">
         <display-tooltip-text :string="tech.TargetHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasMove">
+      <div class="card--format" v-if="tech.HasMove">
         <display-tooltip-text :string="tech.MoveHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasEffect">
+      <div class="card--format" v-if="tech.HasEffect">
         <display-tooltip-text :string="tech.EffectHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasSpecial">
+      <div class="card--format" v-if="tech.HasSpecial">
         <display-tooltip-text :string="tech.SpecialHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasImbue">
+      <div class="card--format" v-if="tech.HasImbue">
         <display-tooltip-text :string="tech.ImbueHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasBoost">
+      <div class="card--format" v-if="tech.HasBoost">
         <display-tooltip-text :string="tech.BoostHeader" />
       </div>
-      <div class="tech--format" v-if="tech.HasLinked">
+      <div class="card--format" v-if="tech.HasLinked">
         <display-tooltip-text :string="tech.LinkedHeader" />
       </div>
       <div class="expand--collapse-box-outlined" v-if="(tech.HasChart)">
@@ -57,6 +62,7 @@
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
             <v-expansion-panel-content class="expand--body-chart">
               <div v-if="tech.Chart.HasDamageType"><display-tooltip-text :string="tech.Chart.DetailsHeader" /></div>
+              <div v-if="tech.Chart.HasMaterial"><display-tooltip-text :string="tech.Chart.MaterialHeader" /></div>
               <div v-if="tech.Chart.HasOnMiss"><display-tooltip-text :string="tech.Chart.OnMissHeader" /></div>
               <chart-table :chart="tech.Chart"
             /></v-expansion-panel-content>
@@ -64,6 +70,7 @@
         </v-expansion-panels>
       </div>
     </div>
+    <div class="desc--box" v-if="(tech.Desc.length > 0)" style="font-style: italic;">{{ tech.Desc }}<br /></div>
   </div>
 </template>
 
@@ -101,19 +108,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.tech--wrapper {
-  font-family: $font--standard;
-  background-color: $color--grey-light;
-  border: $border--black-standard;
-  height: 100%;
-  padding-bottom: $space--s;
-}
-.tech--header {
-  padding-top: $space--xs;
-  text-align: center;
-  color: black;
-  overflow: hidden;
-}
 .image--header-left {
   height: 2em;
   float: left;
@@ -124,33 +118,6 @@ export default Vue.extend({
   float: right;
   transform: scaleX(-1);
   padding-left: 0.5em;
-}
-.tech--keywords {
-  text-align: center;
-  font-size: $font-size--m;
-  color: black;
-  padding-bottom: $space--xs;
-  border-bottom: 5px solid black;
-}
-.tech--content {
-  font-size: $font-size--m;
-  color: black;
-  padding: $space--xs;
-  padding-bottom: 0;
-}
-.tech--reaction-content {
-  font-size: $font-size--m;
-  color: black;
-  padding-left: $space--xs;
-  padding-right: $space--xs;
-}
-.tech--format {
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  padding: none;
-  text-align: left;
-  color: black;
-  white-space: normal !important;
 }
 .Strike {
   background: $color--strike !important;

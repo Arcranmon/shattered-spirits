@@ -1,32 +1,27 @@
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Base, Chart } from '@/class'
 
-class Obstacle {
-  private desc_: string
+class Obstacle extends Base {
   private destroy_: string
   private damage_type_: string
+  private element_: string
   private hardness_: number
   private height_: number
   private interact_: string
-  private name_: string
-  private keywords_: string[]
-  private resistances_: string
+  private traits_: string
   private forced_movement_: string
   private size_: number
-  private special_: string
   private chart_: Chart
 
-  public constructor() {
-    this.desc_ = ''
+  public constructor(name) {
+    super(name)
+    this.element_ = ''
     this.hardness_ = 0
     this.height_ = 0
     this.interact_ = ''
-    this.name_ = ''
-    this.keywords_ = []
-    this.resistances_ = ''
+    this.traits_ = ''
     this.forced_movement_ = ''
     this.size_ = 0
-    this.special_ = ''
     this.chart_ = null
   }
 
@@ -36,14 +31,13 @@ class Obstacle {
   public get Chart() {
     return this.chart_
   }
-  get Desc() {
-    return this.desc_
+  get Traits() {
+    return this.traits_
   }
-  get Name() {
-    return this.name_
-  }
-  get Resistances() {
-    return this.resistances_
+  public get Icon() {
+    if (!this.element_ || this.element_ == 'Derived' || this.element_ == 'Elementless' || this.element_ == 'Special')
+      return require('@/assets/terrain/BasicTerrain.svg')
+    return require('@/assets/terrain/' + this.element_ + '.svg')
   }
 
   // ==========================================================
@@ -61,17 +55,11 @@ class Obstacle {
   get HasInteract() {
     return this.interact_ != ''
   }
-  get HasKeywords() {
-    return this.keywords_.length > 0
-  }
-  get HasResistances() {
-    return this.resistances_ != ''
+  get HasTraits() {
+    return this.traits_ != ''
   }
   get HasForcedMovement() {
     return this.forced_movement_ != ''
-  }
-  get HasSpecial() {
-    return this.special_ != ''
   }
 
   // ==========================================================
@@ -83,6 +71,9 @@ class Obstacle {
   public get DestroyHeader() {
     return '**Destroy:** ' + this.destroy_
   }
+  public get ElementHeader() {
+    return '_' + this.element_ + '_ Obstacle'
+  }
   public get HardnessHeader() {
     if (this.hardness_ == 0) return 'See Special for Hardness'
     return 'Hardness ' + this.hardness_
@@ -93,8 +84,8 @@ class Obstacle {
   public get HeightHeader() {
     return 'Height ' + this.height_
   }
-  public get ResistancesHeader() {
-    return '**Resistances:** ' + this.resistances_
+  public get TraitsHeader() {
+    return '**Traits:** ' + this.traits_
   }
   public get ForcedMovementHeader() {
     return '**Forced Movement:** ' + this.forced_movement_
@@ -102,32 +93,27 @@ class Obstacle {
   public get SizeHeader() {
     return 'Size ' + this.size_
   }
-  public get SpecialHeader() {
-    return '**Special:** ' + this.special_
-  }
-  public get KeywordsHeader() {
-    return '_' + this.keywords_.join('_, _') + '_'
-  }
-
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(disciplineData: IObstacleData): Obstacle {
-    const t = new Obstacle()
-    t.setObstacleData(disciplineData)
+  public static Deserialize(obstacleData: IObstacleData): Obstacle {
+    const t = new Obstacle(obstacleData.name)
+    t.setObstacleData(obstacleData)
     return t
   }
 
   public setObstacleData(data: IObstacleData): void {
+    this.setBaseData(data)
     this.damage_type_ = data.damage_type || ''
     this.desc_ = data.desc || ''
     this.destroy_ = data.destroy || ''
+    this.element_ = data.element || ''
     this.hardness_ = data.hardness || 0
     this.height_ = data.height || 0
     this.interact_ = data.interact || ''
     this.name_ = data.name || ''
     this.keywords_ = data.keywords || []
-    this.resistances_ = data.resistances || ''
+    this.traits_ = data.traits || ''
     this.forced_movement_ = data.forced_movement || ''
     this.size_ = data.size || 0
     this.special_ = data.special || ''

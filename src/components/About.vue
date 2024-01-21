@@ -12,8 +12,8 @@
         <v-card-text>
           Welcome to the world of Deskar, the land of Shattered Spirits!<br />
           Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt<br />
-          Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Stone, and Tremorsight icons made by
-          lorc.<br />
+          Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Mountain, and Tremorsight icons made
+          by lorc.<br />
           Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.<br />
           Unarmed icon made by skoll.<br />
           Shield icon made by sbed.<br />

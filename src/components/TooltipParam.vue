@@ -65,7 +65,7 @@
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap;" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <attack-card :atack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
+        <attack-card :attack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
     ><span style="white-space: pre-wrap;" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>

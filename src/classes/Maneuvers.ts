@@ -44,14 +44,17 @@ class Maneuver extends Ability {
   public get WeaponHeader() {
     return '**Weapon:** ' + this.weapon_
   }
+  public get TypeHeader() {
+    return '_' + this.class_ + '_ _' + this.type_ + '_'
+  }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
 
-  public static Deserialize(manData: IManeuverData): Maneuver {
-    const m = new Maneuver(manData.name)
-    m.setManeuverData(manData)
+  public static Deserialize(data: IManeuverData): Maneuver {
+    const m = new Maneuver(data.name)
+    m.setManeuverData(data)
     return m
   }
 

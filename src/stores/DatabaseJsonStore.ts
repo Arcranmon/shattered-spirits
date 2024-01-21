@@ -2,7 +2,7 @@ import Weapons from '@/database/items/weapons.json'
 import Armors from '@/database/items/armor.json'
 import Gears from '@/database/items/gear.json'
 import Disciplines from '@/database/disciplines.json'
-import Masteries from '@/database/masteries.json'
+import Arts from '@/database/arts.json'
 import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 
@@ -85,7 +85,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getArmor(): any {
     return (inword: string) => {
       var armor = Armors.find((x) => x.name.trim() == inword.trim())
-      if (armor == undefined) return new Armor()
+      if (armor == undefined) return new Armor(inword)
       return Armor.Deserialize(<IArmorData>armor)
     }
   }
@@ -202,7 +202,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getStance(): any {
     return (inword: string) => {
       var stance = Stances.find((x) => x.name.trim() === inword.trim())
-      if (stance == undefined) return new Stance()
+      if (stance == undefined) return new Stance(inword)
       return Stance.Deserialize(<IStanceData>(<unknown>stance))
     }
   }
@@ -349,12 +349,17 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getMasteries(): any {
+  get getArts(): any {
     return () => {
-      return Masteries.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
+      return Arts.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
     }
   }
 
+  get getFilteredArts(): any {
+    return (types: Array<string>) => {
+      return Arts.filter((x) => types.includes(x.type.trim())).map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
+    }
+  }
   // ==========================================================
   // OBSTACLE TOOLS
   // ==========================================================
@@ -368,7 +373,7 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var gear = Gears.find((x) => x.name.trim() === inword.trim())
       if (gear == undefined) {
-        return new Gear()
+        return new Gear(inword)
       }
       return Gear.Deserialize(<IGearData>(<unknown>gear))
     }

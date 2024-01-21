@@ -125,9 +125,9 @@ class Discipline {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(discData: IDisciplineData): Discipline {
+  public static Deserialize(data: IDisciplineData): Discipline {
     const t = new Discipline()
-    t.setDisciplineData(discData)
+    t.setDisciplineData(data)
     return t
   }
 

@@ -1,6 +1,6 @@
 <template
   ><div class="background">
-    <h2>Basic Spirit Abilities</h2>
+    <h2>Spirit Abilities</h2>
     <p style="text-align: center; width: 100%;">
       You can do a great deal to specialize your spirit, from choosing its physical form to deciding what type of magic it is most aligned with. The below tabs
       show the different spirit options available at character creation, as well as an additional tab showing natural weapons such as claws and fangs that
@@ -20,7 +20,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="4" v-for="item in ['Land', 'Stone']" :key="item">
+          ><v-col :cols="4" v-for="item in ['Land', 'Mountain']" :key="item">
             <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
         ></v-row>
         <h4>Earth Spirit Forms</h4>
@@ -33,21 +33,23 @@
         ></v-row>
       </v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="earthText" /><br /><br />
+        <display-tooltip-text style="margin: 1em;" :string="flameText" /><br /><br />
         <h4>Flame Spirit Types</h4>
         <display-tooltip-text
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="4" v-for="item in []" :key="item"> <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
+          ><v-col :cols="4" v-for="item in ['Blaze', 'Explosion']" :key="item">
+            <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
         ></v-row>
         <h4>Flame Spirit Forms</h4>
         <display-tooltip-text
           class="description-text"
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
         /><v-row style="padding: 1em;">
-          <v-col :cols="4" v-for="item in []" :key="item"> <spirit-form-card :form="$store.getters.getSpiritForm(item)" header_color="Flame" /></v-col
+          <v-col :cols="4" v-for="item in ['Swift Flame Spirit', 'Balanced Flame Spirit', 'Heavy Flame Spirit']" :key="item">
+            <spirit-form-card :form="$store.getters.getSpiritForm(item)" header_color="Flame" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
@@ -116,6 +118,7 @@ import Vue from 'vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import EarthText from '@/database/text_files/spirit_mechanics/earth.txt'
 import WaterText from '@/database/text_files/spirit_mechanics/water.txt'
+import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritFormCard from '@/components/cards/SpiritFormCard.vue'
@@ -124,7 +127,7 @@ import MovementCard from '@/components/cards/MovementCard.vue'
 import AttackCard from '@/components/cards/AttackCard'
 import { store } from '@/store'
 export default Vue.extend({
-  name: 'basic-spirit-abilities',
+  name: 'spirit-abilities',
   data() {
     return {
       tab: null,
@@ -148,6 +151,9 @@ export default Vue.extend({
     },
     waterText() {
       return WaterText
+    },
+    flameText() {
+      return FlameText
     },
     spiritWeaponText() {
       return SpiritWeaponText

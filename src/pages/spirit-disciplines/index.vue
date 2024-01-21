@@ -120,10 +120,10 @@ export default Vue.extend({
   components: { DisciplineCard },
   data() {
     return {
-      disciplineCategories: ['Earth', 'Water'],
-      selectedCategories: ['Earth', 'Water'],
-      disciplineTypes: ['Land', 'Stone', 'Grounding', 'Stoneheart', 'Tremorsight', 'Tide', 'Frost'],
-      selectedTypes: ['Land', 'Stone', 'Tide', 'Frost'],
+      disciplineCategories: ['Earth', 'Water', 'Flame'],
+      selectedCategories: ['Earth', 'Water', 'Flame'],
+      disciplineTypes: ['Land', 'Mountain', 'Grounding', 'Mountainheart', 'Tremorsight', 'Tide', 'Tundra', 'Blaze', 'Explosion'],
+      selectedTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Explosion'],
       disciplineRoles: ['Any', 'Artillery', 'Controller', 'Courier', 'Defender', 'Shaper', 'Striker', 'Supporter', 'Survivor'],
       primaryRole: 'Any',
       secondaryRole: 'Any',
@@ -149,7 +149,7 @@ export default Vue.extend({
   methods: {
     toggle() {
       this.$nextTick(() => {
-        if (this.likesAllFruit) {
+        if (this.hasAllTypes) {
           this.selectedTypes = []
         } else {
           this.selectedTypes = this.disciplineTypes.slice()

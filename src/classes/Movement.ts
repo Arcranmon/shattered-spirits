@@ -43,9 +43,9 @@ class Movement {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(moveData: IMovementData): Movement {
+  public static Deserialize(data: IMovementData): Movement {
     const t = new Movement()
-    t.setMovementData(moveData)
+    t.setMovementData(data)
     return t
   }
 
