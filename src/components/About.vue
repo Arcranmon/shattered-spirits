@@ -8,20 +8,17 @@
       </template>
 
       <v-card>
-        <v-card-title>About</v-card-title>
-        <v-card-text>
-          Welcome to the world of Deskar, the land of Shattered Spirits!<br />
-          Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt<br />
-          Hafted Weapon, Projectile Weapon, Pole Weapon, Improvised Weapon, General, Move, Strike, Unarmed, Support, Land, Mountain, and Tremorsight icons made
-          by lorc.<br />
-          Light Armor, Unarmored, Heavy Armor, Sword, Stoneheart, and Grounding icons made by delapouite.<br />
-          Unarmed icon made by skoll.<br />
-          Shield icon made by sbed.<br />
-          Thrown Weapon icon made by Faithtoken.<br />
-          Available on https://game-icons.net.<br /><br />
-          And a big thank you to the playtesters thus far: Aori, everythingElse, Kuji, MesiDoomstalker, and Mystic Witch! Without your feedback and testing none
-          of this would be possible!<br />
+        <v-card-text class="card--wrapper" style="font-size: larger; padding: 1em;">
+          Welcome to the world of Deskar, the land of Shattered Spirits!<br />&nbsp;<br />
+          This system is currently a huge WIP and is in the middle of a large revamp of character options. If you don't know where to start, take a glance at
+          the Character Creation rules, look at the Character Options, and whenever you're confused about something click on the underlined text to bring up a
+          tooltip! Look forward to a cleaner site, the return of interactive character sheets and the character creator, and continually more options as things
+          progress! <br />&nbsp;<br />
+
+          Character art is by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt<br />&nbsp;<br />
+          All icons are from https://game-icons.net. See the Readme on the GitHub for artist attributions. <br />&nbsp;<br />
           <a href="https://github.com/Arcranmon/shattered-spirits">Click here for more information and the source!</a>
+          You can also report any typos or confusing mechanics you find there!
         </v-card-text>
       </v-card>
     </v-dialog>

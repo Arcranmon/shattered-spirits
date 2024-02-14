@@ -9,7 +9,7 @@
   },
   {
     "name": "Arcing",
-    "effect": "Arcing is a special keyword, used when an attack is able to fly high through the sky before hitting its target. Arcing Attacks treat all _Cover_ as one level less, so long as a path exists over _Obstacles_ that can reach the Target."
+    "effect": "Arcing is a special keyword, used when an attack is able to fly high through the sky before hitting its target. Arcing Attacks treat _Full Cover_ as _High Cover_ and _Hight Cover_ as _Low Cover_ so long as a path exists over _Obstacles_ that can reach the Target."
   },
   {
     "name": "Avoidable",
@@ -62,6 +62,10 @@
     "effect": "Take the creature's total Value of a _Token_ and divide it into the minimum number of _Tokens_. For example, a creature with _Impaired_ 1x3 would have _Impaired_ 3 after Condensing."
   },
   {
+    "name": "Conductive",
+    "effect": "When a creature in a Conductive space is attacked by an attack that deals _Lighting_ Damage the Attack is resolved as an _Area_ Attack targeting all contiguous Conductive spaces. When choosing this effect, inflict Status only on the original Target or Targets and only distribute the _Lighting_ damage. If the original Attack was an _Area_, split the damage between the original _Area_ creatures before dividing it among the Conductive Area. If there are no other Targets in the _Area_, instead gain a +1 _Bonus_."
+  },
+  {
     "name": "Earthbend",
     "effect": "_Forced Movement_ of this type may move _Earthen_ _Obstacles_ under some conditions."
   },
@@ -100,10 +104,6 @@
   {
     "name": "Watersource",
     "effect": "Watersource _Terrain_ or _Obstacles_ are predominately formed out of water. Watersource _Obstacles_ tend to be Temporary and are often only created by abilities, but Watersource _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watersource _Terrain_ and _Obstacles_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
-  },
-  {
-    "name": "Electric",
-    "effect": "Actions with the Electric Keyword excel at hitting conductive targets. Electric Attacks have Advantage against any Creature that has a Metal Source or is Soaked. In addition, Electric Techniques that target a creature in a Water Source may ignore their typical area. If the Technique was previously Single Target, halve the damage but it instead becomes a Blast 1 if Range or Burst 1 if melee. If the Technique had an Area, increase the size of the Area by 1. Regardless, the Technique has Advantage."
   },
   {
     "name": "Enchant",
@@ -275,7 +275,7 @@
   },
   {
     "name": "Rough",
-    "effect": "Terrain with this keyword costs an additional space of Movement to enter."
+    "effect": "Terrain with this keyword costs an additional space of Movement to enter. If a creature is larger than Size 1, only apply this effect if at least half the spaces they are entering are Rough."
   },
   {
     "name": "Safe",
@@ -300,6 +300,10 @@
   {
     "name": "Stall",
     "effect": "A Stall _Technique_ is always resolved at the end of its _Phase_. It ignores normal turn order and does not count for the alternating turns within a _Phase_."
+  },
+  {
+    "name": "Martial",
+    "effect": "An ability that is primarily physical in nature, such as one made using martial arts or with a weapon. These abilities cannot be _Suppressed_ like a _Spirit_ ability, and this keyword is often referenced for other abilities."
   },
   {
     "name": "Mountain",
@@ -334,6 +338,10 @@
     "effect": "Rush _Movement_ must be taken in a straight line and may not _Climb_."
   },
   {
+    "name": "Soft Cover",
+    "effect": "If this is _Terrain_, treat it as an Obstacle of the listed height when determining _Obscured_ and _Cover_. Regardless of if it is _Terrain_ or _Obstacle_, this may not cause more than _Lightly Obscured_/_Light Cover_."
+  },
+  {
     "name": "Spirit",
     "effect": "A Spirit ability makes use of the innate magic of your Spirit. These abilities can be Suppressed, and often require specialized terrain features or equipment to be fully utilized. If an ability is simply listed as a Spirit ability, use the subcategory that your spirit aligns with, such as _Mountain_ or _Land_ for an _Earth_ Spirit."
   },
@@ -356,10 +364,6 @@
   {
     "name": "Two-Handed",
     "effect": "This Equipment requires both Hands to Wield."
-  },
-  {
-    "name": "Martial",
-    "effect": "An ability that is primarily physical in nature, such as one made using martial arts or with a weapon. These abilities cannot be _Suppressed_ like a _Spirit_ ability, and this keyword is often referenced for other abilities."
   },
   {
     "name": "Unblockable",

@@ -1,6 +1,8 @@
 <template>
   <div class="card--wrapper" inline>
     <div class="card--color-header">
+      <img class="image--header-left" :src="status.Icon" />
+      <img class="image--header-right" :src="status.Icon" />
       <div class="card--underline-top card--header">
         <h3 style="display: inline; font-style: normal;">{{ status.Name }}</h3>
         <div class="card--keywords">

@@ -41,6 +41,9 @@ class Terrain extends Base {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
+  public get ColorHeader() {
+    return this.element_ + '-Terrain'
+  }
   public get DestroyHeader() {
     return '**Destroy:** ' + this.destroy_
   }

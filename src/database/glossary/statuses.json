@@ -90,7 +90,7 @@
     "desc": "An effect caused when a foe is knocked flat on their back.",
     "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage.",
     "remove": "A creature may downgrade their Movement by one level to end Prone. This creates an _Opening_ if the Movement is not [_Safe_].",
-    "type": "Hide"
+    "type": "Status Effect"
   },
   {
     "name": "Restrained",
@@ -130,7 +130,7 @@
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
     "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. If a creature has no _Stamina_, instead apply _Vulnerable_.",
     "special": "Dazed is applied before a creature may Negate any other effects.",
-    "type": "Instant"
+    "type": "Instant Effect"
   },
   {
     "name": "Exposed",
@@ -160,8 +160,8 @@
     "name": "Insight",
     "desc": "An affliction caused when one creature gains knowledge on another.",
     "effect": "When you inflict Insight on a creature learn their exact current Health as well as their current and maximum _Stamina_.",
-    "remove": "Once per _Turn_, a creature may reduce a hostile creature's Insight by 1 to gain one of the following effects:\n* Reduce the Cost of an Ability or Boost targetting only that creature by 1.\n* After being Attacked or suffering an effect, gain 1 _Temporary_ _Stamina_ that may only be used to Negate.",
-    "type": "Status Effect"
+    "remove": "Once per _Turn_, a creature may reduce a hostile creature's Insight by 1 to gain one of the following effects:\n* Reduce the Cost of an Ability or Boost targeting only that creature by 1.\n* After being Attacked or suffering an effect, gain 1 _Temporary_ _Stamina_ that may only be used to Negate.",
+    "type": "Affliction"
   },
   {
     "name": "Reeling",
@@ -174,7 +174,7 @@
   {
     "name": "Vulnerable",
     "desc": "An affliction caused when a creature is vulnerable in a way that causes them to take more damage.",
-    "effect": "When a creature Attacks a Target with Vulnerable they may choose to reduce the target's Vulnerable value by 1 and deal additional Damage equal to that value.",
+    "effect": "When a creature Attacks a Target with Vulnerable they may choose to reduce the target's Vulnerable value by 1 and deal +1 Damage. Creatures may instead choose to reduce the target's Vulnerable by 1 and inflict a different condition, as outlined by the Damage Type of the Attack.",
     "negate": "Vulnerable may not be Negated.",
     "remove": "When a creature _Recovers_ they may expend _Stamina_ to reduce Vulnerable by twice that amount.",
     "type": "Affliction"
@@ -182,7 +182,7 @@
   {
     "name": "Bleed",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleed they take 2 _True_ Damage at the start of each _Phase_, then reduces their Bleed value by 1.",
+    "effect": "While a creature has Bleed they take _True_ Damage at the start of each _Phase_ equal to 1 + their _Bleed_, then reduces their Bleed value by 1.",
     "special": "A creature may not gain _Health_/_Vigor_ while they have Bleed. Instead, any _Health_/_Vigor_ granted removes Bleed at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
     "negate": "A creature may expend 1 _Stamina_ to negate 1 Bleed.",
     "remove": "Bleed is only removed through triggering and by effects that explicitly remove it.",
@@ -200,14 +200,11 @@
   {
     "name": "Shock",
     "desc": "An elemental affliction caused by being jolted with electricity, limiting reaction speed.",
-    "effect": "A Shocked creature increases the Cost of all Reactions by half the value of their topmost Shock Token.",
-    "reacts": [
-      "<ins>Soaked:</ins> If a creature has any Soaked Tokens and would gain a Shock Token, remove their topmost Soaked Token and deal True Damage equal to twice that Soaked Token. They still gain the Shock Token."
-    ],
-    "special": "Add _Stall_ to all _Techniques_ that have a _Speed_ less than twice the value of the creature's topmost Shock Token. If the Technique has _Priority_, instead decrease its Movement by 1 tier.",
-    "remove": "Whenever a creature uses a Reaction or ends their _Turn_, remove their topmost Shock Token. The creature takes _True_ Damage equal to the value removed.",
-    "recover": "X _Stamina_ removes X value of Shock. The creature takes _True_ Damage equal to the value removed.",
-    "type": "Hide"
+    "effect": "While a creature has Shock they take Damage equal to their Shock if they use a _Defensive_ Reaction on a Turn, then reduce their Shock value by 1.",
+    "special": "Add _Stall_ to all _Techniques_ that have a _Speed_ less than the creature's Shock. If the Technique has _Priority_, instead decrease its Movement by 1 tier.",
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Shock.",
+    "recover": "A value of _Stamina_ removes Shock equal to the _Stamina_ spent.",
+    "type": "Elemental Affliction"
   },
   {
     "name": "Alight",
@@ -224,7 +221,7 @@
   {
     "name": "Frost",
     "desc": "An elemental affliction caused by freezing temperatures that limits mobility.",
-    "effect": "While a creature has Frost they take 2 _Cold_ Damage if they Move on their Turn, then reduce their Frost value by 1. Additionally, Attackers may treat Frost as _Exposed_ if they wish.",
+    "effect": "While a creature has Frost they take Damage equal to their Frost if they Move on their Turn, then reduce their Frost value by 1. Additionally, Attackers may treat Frost as _Exposed_ if they wish.",
     "special": "While a creature has any Frost, they have _Resistance_ 3 (_Fire_) and _Vulnerability_ 2 (_Cold_). Do not apply this _Vulnerability_ to any Damage dealt due to Frost.",
     "reacts": ["<ins>Alight:</ins> If a Frosted creature would gain _Alight_, instead reduce their Frost value by an equivalent amount."],
     "negate": "A creature may expend 1 _Stamina_ to negate 1 Frost.",
@@ -240,7 +237,7 @@
       "<ins>Frost:</ins> If a Soaked creature would gain _Frost_, reduce their Soaked value by an equivalent amount, then they take that much _Cold_ Damage. Do not trigger any additional Soaked effects from this Damage.",
       "<ins>Shock:</ins> If a Soaked creature would gain _Shock_, reduce their Soaked value by an equivalent amount, then they take that much _Lightning_ Damage. Do not trigger any additional Soaked effects from this Damage."
     ],
-    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Shock_), _Resilient_ 1 (_Alight_), _Susceptible_ (_Frost_, _Shock_). Do not apply this _Weakness_ to any Damage dealt due to Soaked.",
+    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Lightning_, _Shock_), _Resilient_ 1 (_Alight_), _Susceptible_ (_Frost_, _Shock_). Do not apply this _Weakness_ to any Damage dealt due to Soaked.",
     "negate": "Soaked may not be Negated.",
     "remove": "A creature reduces their Soaked by 1 at the end of each of their Turns where they did not gain Soaked. Additionally, _Water_ abilities may _Draw_ from Soaked creatures, removing _Soaked_ 1 to _Draw_ 1.",
     "type": "Elemental Affliction"
@@ -264,12 +261,12 @@
   {
     "name": "Enraged",
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
-    "effect": "The most recent creature to inflict Enraged is the target of that creature's rage. A creature with Enraged deals +1 Damage on all attacks against the target of their rage. Additionally, a creature with Enraged takes a -1 Penalty on all Attacks that do not include the target of their rage and, after making an Attack that does not include them, reduces their Enraged by 1 and gains _Exposed_ 1.",
+    "effect": "The most recent creature to inflict Enraged on this creature is the target of that creature's rage. A creature with Enraged deals +1 Damage on all attacks against the target of their rage. Additionally, a creature with Enraged takes a -1 Penalty on all Attacks that do not include the target of their rage and, after making an Attack that does not include them, reduces their Enraged by 1 and gains _Exposed_ 1.",
     "remove": "After a creature Attacks the target of their rage, reduce their Enraged by 1. Additionally, when a creature _Recovers_ they may expend _Stamina_ to reduce Enraged by an equivalent amount.",
     "negate": "A creature may expend 1 _Stamina_ to negate 1 Exposed.",
     "reacts": ["<ins>Joyful:</ins> If a creature has any Joyful and would gain Enraged they first reduce their Joyful before gaining any Enraged."],
     "special": "If a creature is _Marked_ the marker is always the target of their rage.",
-    "type": "Hide"
+    "type": "Mental Affliction"
   },
   {
     "name": "Joyful",
@@ -290,8 +287,8 @@
   {
     "name": "Accelerate",
     "desc": "Your speed is increased, allowing you to act quicker.",
-    "effect": "When a creature becomes Accelerated their next Technique this Round has its Speed decreased by 1. If the creature has no more Techniques this round, they gain 2 _Momentum_. If a creature's next Technique is in the current Phase, they may take their Turn immediately after gaining Accelerate, ignoring the normal Initiative process.",
-    "type": "Hide"
+    "effect": "When a creature becomes Accelerated they either gain 1 _Momentum_ or move their next Technique this _Round_ one _Phase_ earlier, resolving it as if it was played in the original _Phase_. If a creature's next Technique is in the current Phase, they may take their Turn immediately after gaining Accelerate, ignoring the normal Initiative process.",
+    "type": "Instant Effect2"
   },
   {
     "name": "Drain",
@@ -330,7 +327,7 @@
     "name": "Sealed",
     "desc": "A condition caused when your connection to your spirit is severed.",
     "effect": "While Sealed _Techniques_ and _Maneuvers_ with the _Spirit_ keyword may not be utilized.",
-    "type": "Status"
+    "type": "Status Effect"
   },
   {
     "name": "Slide",
@@ -342,14 +339,14 @@
   {
     "name": "Slowed",
     "desc": "You weigh down a foe, limiting their ability to react.",
-    "effect": "When a creature becomes Slowed their next Technique this Round has its Speed increased by 1. If the creature has no more Techniques this round, they gain _Impaired_ 1/_Reeling_ 1 (Attacker's choice).",
+    "effect": "When a creature becomes Slowed their next Technique this Round is moved one _Phase_ later, resolving it as if it was played in the original _Phase_. If the creature has no more Techniques this round, they gain _Impaired_ 1/_Reeling_ 1 (Attacker's choice).",
     "type": "Instant Effect"
   },
   {
     "name": "Suppressed",
     "desc": "A condition caused when your connection to your spirit is limited.",
     "effect": "While Suppressed all _Techniques_ and _Maneuvers_ with the _Spirit_ keyword cost an additional 1 _Momentum_ to use.",
-    "type": "Status"
+    "type": "Status Effect"
   },
   {
     "name": "Throw",
@@ -361,6 +358,6 @@
     "name": "Veiled",
     "desc": "A condition caused when a creature is difficult to see, limiting the ability to strike them.",
     "effect": "All creatures that see a Veiled creature as _Lightly Obscured_ have _Disadvantage_ on all Attacks against them.",
-    "type": "Status"
+    "type": "Status Effect"
   }
 ]

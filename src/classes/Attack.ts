@@ -6,7 +6,7 @@ class Attack extends Maneuver {
   protected category_: string
   protected rank_: string
   protected charged_effect_: string
-  protected speed_: number
+  protected speed_: string
   protected type_: string
 
   public constructor(name) {
@@ -14,7 +14,7 @@ class Attack extends Maneuver {
     this.chart_ = new Chart()
     this.type_ = ''
     this.rank_ = ''
-    this.speed_ = 0
+    this.speed_ = ''
   }
 
   get CategoryHeader() {
@@ -34,7 +34,7 @@ class Attack extends Maneuver {
     return '_' + this.rank_ + '_'
   }
   get HasSpeed() {
-    return this.speed_ != 0
+    return this.speed_.length > 0 && this.speed_ != 'undefined'
   }
   get HasType() {
     return this.type_ != ''
@@ -52,8 +52,7 @@ class Attack extends Maneuver {
     return '**Charged Effect:** ' + this.charged_effect_
   }
   public get SpeedHeader() {
-    if (/^\d+$/.test(this.speed_[0])) return '**Speed ' + this.Speed + '**'
-    return '**' + this.Speed + ' Speed**'
+    return '**Speed ' + this.Speed + '**'
   }
   get TypeHeader() {
     if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'
@@ -78,7 +77,7 @@ class Attack extends Maneuver {
     this.category_ = data.category || 'Attack'
     this.rank_ = data.rank || ''
     this.charged_effect_ = data.charged_effect || ''
-    this.speed_ = data.speed || 0
+    this.speed_ = String(data.speed) || ''
     this.type_ = data.type || ''
     if ('chart' in data && data.chart != null) {
       this.chart_ = Chart.Deserialize(data.chart)

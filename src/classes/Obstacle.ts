@@ -31,6 +31,9 @@ class Obstacle extends Base {
   public get Chart() {
     return this.chart_
   }
+  public get ColorHeader() {
+    return this.element_ + '-Terrain'
+  }
   get Traits() {
     return this.traits_
   }
