@@ -97,7 +97,7 @@ export default Vue.extend({
       return SpiritSelectionText
     },
     earthSymbol: function () {
-      return require('@/assets/Land.svg')
+      return require('@/assets/disciplines/Land.svg')
     },
   },
 })

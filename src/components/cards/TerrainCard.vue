@@ -1,7 +1,9 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="card--color-header">
+    <div v-bind:class="terrain.ColorHeader">
       <div class="card--underline-top card--header">
+        <img class="image--header-left" :src="terrain.Icon" />
+        <img class="image--header-right" :src="terrain.Icon" />
         <h3 style="display: inline; font-style: normal;">{{ terrain.Name }}</h3>
         <div>
           <b><display-tooltip-text :string="terrain.TerrainDetails" :decorate="false" /></b>

@@ -1,5 +1,18 @@
 [
   {
+    "name": "Amplify Gust",
+    "desc": "You seize fierce winds, slamming them into a creature.",
+    "type": "Light",
+    "cost": "1 _Momentum_",
+    "speed": "1",
+    "class": "Gale",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "target": "A _Gusting_ space.",
+    "effect": "Inflict _Push_ 3/_Vulnerable_ 2 on a creature in, or adjacent to and in-line with the direction of a _Gusting_.",
+    "rank": "Minor Attack",
+    "analysis_notes": { "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5] }
+  },
+  {
     "name": "Charged Attack",
     "class": "Basic",
     "desc": "You gather yourself before unleashing a devastating attack.",
@@ -341,6 +354,38 @@
     "analysis_notes": { "expected_targets": 2 }
   },
   {
+    "name": "Focused Gale",
+    "class": "Gale",
+    "desc": "A tunnel of powerful air, striking out at a distant foe.",
+    "type": "Light",
+    "speed": "2",
+    "cost": "1 _Momentum_",
+    "effect": "Ignore _Gusting_ spaces when determining _Cover_.",
+    "special": "When removing _Vulnerable_, you may inflict an equivalent amount of _Push_ instead of increasing Damage.",
+    "boost": "1 _Momentum_: Add [_Forceful_].",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "chart": {
+      "damage_type": "Crush",
+      "on_miss": "+2 _Momentum_",
+      "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Push_ 1, _Vulnerable_ 2",
+        "_Push_ 1, _Vulnerable_ 2",
+        "_Push_ 2, _Vulnerable_ 2",
+        "_Push_ 2, _Vulnerable_ 2",
+        "_Push_ 2, _Vulnerable_ 2",
+        "_Push_ 3, _Vulnerable_ 2",
+        "_Push_ 3, _Vulnerable_ 2",
+        "_Push_ 3, _Vulnerable_ 3",
+        "_Push_ 3, _Vulnerable_ 3"
+      ]
+    },
+    "rank": "Minor Attack",
+    "analysis_notes": { "fudge": -0.25 }
+  },
+  {
     "name": "Frost Spray",
     "class": "Tundra",
     "desc": "A short-range spray of slashing frost directed at foes, typically launched by dragging your foot.",
@@ -414,7 +459,6 @@
     "class": "Basic",
     "desc": "You find it easy to slip in additional strike with a swift weapon.",
     "type": "Light",
-    "speed": -1,
     "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
     "special": "Halve any _Momentum_ gained from _On Miss_ effects.",
     "rank": "Minor Attack"

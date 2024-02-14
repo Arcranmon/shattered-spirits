@@ -16,9 +16,18 @@
     "desc": "Terrain that represents still water that a creature must swim in.",
     "layer": "Base",
     "element": "Water",
-    "keywords": ["_Watersource_ 3"],
+    "keywords": ["Conductive", "_Watersource_ 3"],
     "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2.  Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount.",
     "destroy": "Replace this space with _Shallow Water_ at 1 _Elevation_ lower than it was originally."
+  },
+  {
+    "name": "Electrified",
+    "layer": "Field",
+    "element": "Electric",
+    "keywords": ["Conductive", "Fleeting"],
+    "desc": "A space super-charged with electricity.",
+    "effect": "Any creature that ends the _Round_ in this space gains _Shock_ 1. If a creature occupies multiple Shock spaces do not resolve this more than their Size times.",
+    "special": "When dealing _Lighting_ Damage to a creature in this space the Attacker may choose to remove this Terrain and immediately resolve the end of _Round_ effect."
   },
   {
     "name": "Fortified",
@@ -45,6 +54,16 @@
     "destroy": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
   },
   {
+    "name": "Gusting",
+    "desc": "A powerful gust that lasts only a short while.",
+    "layer": "Weather",
+    "element": "Windy",
+    "keywords": ["Fleeting"],
+    "effect": "Gusting Terrain has a direction. Movement against this Terrain's direction costs an additional space, or 2 additional spaces if the creature is _Flying_. Additionally, Ranged Attacks that pass through this space that do not match this space's direction take a -1 _Penalty_.",
+    "special": "Creatures greater than Size 1 only suffer the Movement penalty if at least half the spaces they are entering are Gusting.",
+    "interactions": ["Gusting Destroys any other _Weather_ Terrain effects in this space when it is created."]
+  },
+  {
     "name": "Jagged",
     "desc": "Sharp spires of earth and stone make traveling through this space painful.",
     "layer": "Field",
@@ -69,14 +88,15 @@
     "desc": "Ground full of unsure footing and low obstacles that makes traveling through it difficult.",
     "keywords": ["Rough"],
     "layer": "Base",
-    "element": "Earthen"
+    "element": "Earthen",
+    "effect": "None."
   },
   {
     "name": "Running Water",
     "desc": "Terrain that represents a slow-moving body of water.",
     "layer": "Base",
     "element": "Water",
-    "keywords": ["_Watersource_ ∞"],
+    "keywords": ["Conductive", "_Watersource_ ∞"],
     "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
   },
   {
@@ -84,7 +104,7 @@
     "desc": "Terrain that represents a rapids or similarly fast-moving body of water.",
     "layer": "Base",
     "element": "Water",
-    "keywords": ["_Watersource_ ∞"],
+    "keywords": ["Conductive", "_Watersource_ ∞"],
     "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
   },
   {
@@ -92,7 +112,7 @@
     "desc": "Terrain that represents water that is deep enough that a creature must wade through it, but not deep enough to swim.",
     "layer": "Base",
     "element": "Water",
-    "keywords": ["_Watersource_ 2"],
+    "keywords": ["Conductive", "_Watersource_ 2"],
     "effect": "Movement through this _Terrain_ costs twice as much. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 1. If a creature becomes _Prone_ in this space they gain _Soaked_ 1. Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount. If _Destroyed_, this space becomes _Wet_."
   },
   {
@@ -116,7 +136,7 @@
     "desc": "Terrain drenched in water that limits a stable footing.",
     "layer": "Surface",
     "element": "Water",
-    "keywords": ["_Watersource_ 1"],
+    "keywords": ["Conductive", "_Watersource_ 1"],
     "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.",
     "interactions": [
       "If a _Watersource_ space would become Wet, instead place a Wet space in an adjacent space or increase its value by 1 if it is below its maximum value."

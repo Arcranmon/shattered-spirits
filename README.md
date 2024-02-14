@@ -22,41 +22,7 @@ Outside of combat, characters will make use of both their skills and those of th
 
 If it wasn't obvious from the setting pitch, _Avatar: The Last Airbender_ and Jim Butcher's _Codex Alera_ series are significant influences on the power system. There's a healthy dose of playing way too much _Pokemon_ and _Golden Sun_ tossed in there, and any spirit important enough to show up in the story needs to have a _Spirit Island_-esque name.
 
-Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, and _Fire Emblem_. _Gloomhaven_ inspired a lot of the Initiative system as well as my focus on making everything incredibly action-oriented. _Divinity_ helped with the terrain and status focus that I wanted, and _Fire Emblem_, particularly _Three Houses_ was a big inspiration for creating a lot of the more martial abilities within the system.
-
-## To-Do
-
-BIG POST-PLAYTEST REWORK
-
-This system is very much a work-in-progress, but is slowly getting more and more developed! Future work:
-
-- Make things cleaner and more class-like.
-- Cooler buttons.
-- Potentially add 'Free Movement'
-- Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Arts for them.
-- More weapon types and supporting Disciplines.
-- Complete all Spirit Arts.
-- Refine Health and Health system based on how long combats should last.
-- Expand and refine all Spirit Arts to make sure that each spirit type feels different, as well as the individual disciplines.
-  - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Arts.
-  - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Art as their Spirit will always be manifested by default.
-  - Add an additional 'bending' Discipline to each Element:
-    - Earth: Dust
-    - Flame: Heat
-    - Metal: ???
-    - Water: ???
-    - Wind: Sound
-    - Wood: Poison
-- Develop some basic NPC stat blocks for testing.
-  - Make some less basic NPC stat blocks for fun.
-  - Develop BIG SPIRIT FIGHTS where simply killing them is the easy answer, but it's possible to instead save them by greatly increasing the difficulty of the fight.
-- Make some good player tools. This will probably require some sort of play board so players can easily track conditions and their own Initiative.
-- Non-combat gameplay does not currently exist in any meaningful form and needs to be built once the combat system is in a good place.
-- Combat abilities are governed by Disciplines
-  - Travel abilities are governed by Jobs
-  - Narrative abilities are governed by Talents and Knacks
-- Create a system for exploration and camping and expeditions that is resource management-lite but rewards players with combat resources.
-- Create a 'home base' sort of system that allows for a town or city to develop over time depending on whether players take a more aggressive approach against the spirits or seek healing and peace.
+Mechanically, the biggest influences are _Gloomhaven_, the _Divinity_ series, and _Fire Emblem_. _Gloomhaven_ inspired a lot of the Initiative system as well as my focus on making everything incredibly action-oriented. _Divinity_ (and now Baldur's Gate 3) helped with the terrain and status focus that I wanted, and _Fire Emblem_, particularly _Three Houses_ was a big inspiration for creating a lot of the more martial abilities within the system.
 
 ## Setup
 
@@ -86,5 +52,10 @@ Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
-Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain - Delapouite
-Controller, Courier, Defender, Frost, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain - Lorc
+Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frost, Hobbled, Agility, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged - Delapouite
+
+Controller, Courier, Defender, Frost, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleed, Vulnerable, Burn, Exposed, Grabbed, Grit, Shred, Veiled, Insight, Joyful, Shock, Soaked, Suppressed - Lorc
+
+Blind, Dazed, Break - Skoll
+
+Poise, Prone, Sealed, Electric Terrain - sbed

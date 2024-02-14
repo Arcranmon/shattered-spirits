@@ -13,7 +13,7 @@
       <display-tooltip-text v-if="form.HasTraits" :string="form.TraitsHeader" /><br v-if="form.HasTraits" />
       <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" /><movement-card
         :movement="$store.getters.getMovement(form.Movement)"
-        :npc="true"
+        :on_sheet="true"
       />
     </div>
     <div class="desc--box" v-if="(form.Desc.length > 0)" style="font-style: italic;">{{ form.Desc }}<br /></div>

@@ -194,7 +194,7 @@
     "range": { "category": "Ranged", "value": 6 },
     "effect": "Choose one:\n* Remove 3 _Blazing_ spaces.\n* Remove _Alight_/_Frost_ 2 from an ally within Range. This ally may immediately _Recover_. For this _Recover_ the ally may only spend _Stamina_ on _Alight_/_Frost_, but treats all _Stamina_ spent as worth twice as much.",
     "boost": "1 _Momentum_: Resolve an additional Effect. You may choose the same effect multiple times.",
-    "manifest": "Add [_Manifest_]. Use the Boost twice freely and grant your Spirit 4 _Vigor_."
+    "manifest": "Add [_Manifest_]. Use the Boost twice freely and grant your Spirit 4 _Endurance_."
   },
   {
     "name": "Corral",
@@ -236,7 +236,7 @@
     "effect": "_Draw_ up to 2 within Range, then inflict a total value of _Soaked_ on yourself or allies within Range equal to the _Draw_. For example, if you _Draw_ 2, you could inflict _Soaked_ 1 on two targets or _Soaked_ 2 on one Target.",
     "special": "Any ally that receives _Soaked_ that has _Status_ that _Soaked_ removes may immediately _Recover_. For this _Recover_ the ally may only spend _Stamina_ on those _Statuses_, but treats all _Stamina_ spent as worth twice as much if _Stamina_ can normally be used to remove that Status while Recovering. If the Status cannot normally be removed with _Stamina_, it can instead be removed for 1 _Stamina_.",
     "boost": "1 _Momentum_: _Draw_ 2 more. You may repeat this _Boost_.",
-    "manifest": "Add [_Manifest_]. Use the _Boost_ twice freely and grant your _Spirit_ 4 _Vigor_."
+    "manifest": "Add [_Manifest_]. Use the _Boost_ twice freely and grant your _Spirit_ 4 _Endurance_."
   },
   {
     "name": "Duelist's Invitation",
@@ -481,7 +481,7 @@
     "range": { "category": "Melee", "value": 1 },
     "effect": "Pick an _Earthen_ _Obstacle_ within Range. Inflict 10 _Damage_. If this _Destroys_ the _Obstacle_, you may deal 2 _Stab_ _Damage_ [_Avoidable_] in a _Burst_ 1 around it. You are exempt from this Damage.",
     "boost": "Choose any:\n* 1 _Momentum_: This is instead _Range_ 4.\n* 1 _Momentum_: Increase the Damage dealt by 2.",
-    "manifest": "Add [_Manifest_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. If the _Obstacle_ is _Destroyed_, grant your spirit 5 _Vigor_. You may choose to _Summon_ your spirit to a space the _Obstacle_ occupied."
+    "manifest": "Add [_Manifest_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. If the _Obstacle_ is _Destroyed_, grant your spirit 5 _Endurance_. You may choose to _Summon_ your spirit to a space the _Obstacle_ occupied."
   },
   {
     "name": "Free Run",
@@ -560,6 +560,18 @@
     "effect": "Immediately inflict _Slide_ 3 on the Target. This _Slide_ must be in the direction of their current Movement, and immediately ends if they are _Slid_ into a non-_Frozen_ space.",
     "boost": "2 _Momentum_: Add _Prone_ [1 _Stamina_] or increase the _Slide_ by 2.",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, Cost is instead None, and you may freely apply the _Boost_. Resolve the Effect but, instead of ending the _Slide_ if they move into a non-_Frozen_ space, instead _Draw_ 1 and make the space they were moved into _Frozen_."
+  },
+  {
+    "name": "Galeguard",
+    "class": "Gale",
+    "desc": "You use your mastery of wind and gale magic to defend yourself.",
+    "type": "Reaction",
+    "keywords": ["Defensive", "Efficient"],
+    "cost": "[_Reeling_/2] _Momentum_",
+    "trigger": "You would take Damage or gain Status from _Windy_ _Terrain_, a _Wind_ Material Attack, or a _Gale_ ability.",
+    "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect. This _Turn_ you may Negate 2 _Vulnerable_ with 1 _Stamina_ and may gain _Resilient_ 1 (_Forced Movement_).",
+    "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_, and increase the _Resilient_ by 1. You may use this _Boost_ up to twice.",
+    "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
     "name": "Heat Wave",
@@ -649,7 +661,7 @@
     "range": [{ "category": "Ranged", "value": 12 }],
     "cost": "2 _Momentum_",
     "trigger": "A _Phase_ begins.",
-    "effect": "Choose any ally within Range. Grant them _Vigor_ 2 and 2 _Temporary_ _Stamina_. They may immediately _Recover_, but may only spend the _Stamina_ granted by this ability."
+    "effect": "Choose any ally within Range. Grant them _Endurance_ 2 and 2 _Temporary_ _Stamina_. They may immediately _Recover_, but may only spend the _Stamina_ granted by this ability."
   },
   {
     "name": "Intercept",
@@ -877,7 +889,7 @@
     "area": "_Burst_ 2",
     "move": "None",
     "cost": "1 _AP_",
-    "effect": "Inflict _Marked_, _Enraged_ 1 on foes in the _Area_, then gain _Vigor_ 4."
+    "effect": "Inflict _Marked_, _Enraged_ 1 on foes in the _Area_, then gain _Endurance_ 4."
   },
   {
     "name": "Prideful Clash",
@@ -1044,7 +1056,7 @@
     "type": "Reaction",
     "cost": "1 _AP_/2 _Momentum_",
     "trigger": "A _Phase_ ends while you are _Charging_.",
-    "effect": "You gain 1 _Guard_ until the end of the next _Phase_. Additionally, you may gain 1 _Stamina_ or _Vigor_ 2. Finally, if you would normally be required to remove _Charging_ and resolve the effect, you may choose to remain _Charging_ until the end of the next _Phase_."
+    "effect": "You gain 1 _Guard_ until the end of the next _Phase_. Additionally, you may gain 1 _Stamina_ or _Endurance_ 2. Finally, if you would normally be required to remove _Charging_ and resolve the effect, you may choose to remain _Charging_ until the end of the next _Phase_."
   },
   {
     "name": "Shepard's Opening",
@@ -1360,8 +1372,8 @@
     "type": "Stunt",
     "range": [{ "category": "Ranged", "value": 6 }],
     "cost": "1 _Momentum_",
-    "effect": "Choose an ally within Range and grant them _Vigor_ 2, _Enraged_ 1. You may choose the target of the creature's rage, but they must be within Range 3 of you.",
-    "special": "If you _Defeated_ an enemy this _Turn_, instead grant _Vigor_ 3, _Enraged_ 2.",
+    "effect": "Choose an ally within Range and grant them _Endurance_ 2, _Enraged_ 1. You may choose the target of the creature's rage, but they must be within Range 3 of you.",
+    "special": "If you _Defeated_ an enemy this _Turn_, instead grant _Endurance_ 3, _Enraged_ 2.",
     "boost": "1 _Momentum_: Grant your ally a _Free Turn_ where they may _Step_ towards the target of their rage."
   },
   {
@@ -1371,7 +1383,7 @@
     "type": "Action",
     "move": "Step",
     "cost": "1 _AP_",
-    "effect": "Once during this _Turn_ you may swap spaces with an ally. When you do so, they gain 3 _Vigor_ and may then immediately _Refresh_ or _Recover_.",
+    "effect": "Once during this _Turn_ you may swap spaces with an ally. When you do so, they gain 3 _Endurance_ and may then immediately _Refresh_ or _Recover_.",
     "boost": "2 _Momentum_: Your ally may _Refresh_ and _Recover_ ."
   },
   {
@@ -1392,7 +1404,7 @@
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
-    "trigger": "You would take Damage or gain Status from _Water_ _Terrain_, _Water_ Material Attack, or _Tide_ ability.",
+    "trigger": "You would take Damage or gain Status from _Water_ _Terrain_, a _Water_ Material Attack, or a _Tide_ ability.",
     "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect. This _Turn_ you may Negate _Soaked_ with 1 _Stamina_ and may gain _Resilient_ 1 (_Soaked_).",
     "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_, and increase the _Resilient_ by 1. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
@@ -1405,6 +1417,27 @@
     "trigger": "A _Phase_ ends while you are _Charging_ an effect that deals _Fire_ Damage.",
     "effect": "Gain _Alight_ 2. You may not _Negate_ this. Deal 2 _Fire_ Damage in a _Burst_ 1.",
     "manifest": "Add [_Manifest_]. Do not gain _Alight_, and resolve both Effects."
+  },
+  {
+    "name": "Windshaper",
+    "class": "Gale",
+    "desc": "You seize the wind, changing its direction and dictating its flow.",
+    "type": "Stunt",
+    "cost": "1 _Momentum_",
+    "range": { "category": "Ranged", "value": 6 },
+    "effect": "Choose a _Gusting_ space within Range. You may change the direction of it and any contiguous _Gusting_ spaces so long as their directions remain continuous.",
+    "boost": "1 _Momentum_: As a part of this _Manuever_, you may move 2 target _Gusting_ spaces a 1 space. You may choose the same _Gusting_ space twice, but all spaces must remain contiguous. You may use this _Boost_ up to 3 times."
+  },
+  {
+    "name": "Windstorm",
+    "class": "Gale",
+    "desc": "You create a sudden gale, disrupting the battlefield with a mighty gust.",
+    "type": "Stunt",
+    "cost": "1 _Momentum_",
+    "range": { "category": "Ranged", "value": 6 },
+    "effect": "Place 3 _Gusting_ spaces within Range. All _Gusting_ spaces placed in this way must be contiguous, and the direction of all spaces placed in this way must be continuous.",
+    "boost": "1 _Momentum_: Place an additional 3 _Gusting_ spaces. You may use this _Boost_ up to 3 times, and may choose to place these additional _Gusting_ spaces as a different contiguous group.",
+    "manifest": "Add [_Manifest_]. The Cost is instead None. Choose a space within your spirit's _Reposition_ distance and resolve all effects from that space, applying the _Boost_ twice.  You may choose to _Summon_ your spirit to any space that becomes _Gusting_."
   },
   {
     "name": "Wind Tight",

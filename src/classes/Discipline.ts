@@ -44,9 +44,9 @@ class Discipline {
     return this.type_
   }
   public get Icon() {
-    if (this.Type == 'Style') return require('@/assets/' + this.primary_role_ + '.svg')
+    if (this.Type == 'Style') return require('@/assets/disciplines/' + this.primary_role_ + '.svg')
     if (this.Type == 'Style' || this.Type == 'Undefined') return ''
-    return require('@/assets/' + this.Type + '.svg')
+    return require('@/assets/disciplines/' + this.Type + '.svg')
   }
 
   // ==========================================================

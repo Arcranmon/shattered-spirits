@@ -5,7 +5,7 @@
         <h4 style="display: inline; font-style: normal;">{{ attack.Name }}</h4>
         <div class="card--keywords">
           <b>
-            <div><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
+            <div v-if="!isWeapon"><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
             <div v-if="attack.HasSpeedOrType"><display-tooltip-text :string="attack.SpeedHeader" :decorate="false" /></div>
             <span v-if="!isWeapon">
               <span v-for="(keyword, index) in attack.Keywords" :key="index" class="keyword--box">

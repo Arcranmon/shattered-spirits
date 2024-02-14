@@ -18,7 +18,7 @@ declare interface IAttackData extends IManeuverData {
   chart: IChartData
   rank: string
   charged_effect?: string
-  speed: number
+  speed: string
 }
 
 declare interface ICharDisciplineData {

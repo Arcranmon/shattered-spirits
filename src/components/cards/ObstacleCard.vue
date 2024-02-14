@@ -1,7 +1,9 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="card--color-header">
+    <div v-bind:class="obstacle.ColorHeader">
       <div class="card--underline-top card--header">
+        <img class="image--header-left" :src="obstacle.Icon" />
+        <img class="image--header-right" :src="obstacle.Icon" />
         <h3 style="display: inline; font-style: normal;">{{ obstacle.Name }}</h3>
         <b>
           <div class="card--keywords">

@@ -108,17 +108,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.image--header-left {
-  height: 2em;
-  float: left;
-  padding-left: 0.5em;
-}
-.image--header-right {
-  height: 2em;
-  float: right;
-  transform: scaleX(-1);
-  padding-left: 0.5em;
-}
 .Strike {
   background: $color--strike !important;
 }

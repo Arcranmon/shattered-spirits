@@ -28,7 +28,7 @@
           <v-btn-toggle borderless overflow-auto
             ><div v-for="status in statuses" style="width: 100%;" v-bind:key="status">
               <v-btn @click="selectedStatus = status" class="button--style" depressed tile block>
-                {{ status.Name }}
+                <img class="image--icon-size" :src="status.Icon" />{{ status.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
