@@ -9,6 +9,7 @@
     "range": [{ "category": "Ranged", "value": 6 }],
     "target": "A _Gusting_ space.",
     "effect": "Inflict _Push_ 3/_Vulnerable_ 2 on a creature in, or adjacent to and in-line with the direction of a _Gusting_.",
+    "boost": "1 _Momentum_: Remove the _Gusting_ space. Inflict both effects.",
     "rank": "Minor Attack",
     "analysis_notes": { "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5] }
   },
@@ -63,13 +64,13 @@
     "speed": "4",
     "cost": "2 _Momentum_",
     "range": [{ "category": "Ranged", "value": 3 }],
-    "special": "After resolving the Attack you may remove any amount of _Frost_ on the Target to inflict _Endurable_ _Reeling_ X/_Slowed_ [X _Stamina_] in any combination, where X is the value of _Frost_ being replaced.",
+    "special": "After resolving the Attack you may remove any amount of _Frigid_ on the Target to inflict _Endurable_ _Reeling_ X/_Slowed_ [X _Stamina_] in any combination, where X is the value of _Frigid_ being replaced.",
     "chart": {
       "damage_type": "Cold",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "_Frost_ 1", "_Frost_ 1", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 3", "_Frost_ 3", "_Frost_ 4", "_Frost_ 4"]
+      "status": ["", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 3", "_Frigid_ 3", "_Frigid_ 4", "_Frigid_ 4"]
     },
     "rank": "Minor Attack",
     "analysis_notes": { "fudge": -0.5 }
@@ -195,7 +196,19 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2", "_Alight_ 2", "_Alight_ 3, _Burn_ 1", "_Alight_ 3, _Burn_ 1"]
+      "status": [
+        "",
+        "",
+        "",
+        "_Alight_ 1",
+        "_Alight_ 1",
+        "_Alight_ 1",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 2",
+        "_Alight_ 3, _Burned_ 1",
+        "_Alight_ 3, _Burned_ 1"
+      ]
     },
     "rank": "Minor Attack"
   },
@@ -224,7 +237,7 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 2, 2, 3, 3, 3, 4, 5, 5],
       "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1, _Burn_ 1", "_Dazed_ 1, _Burn_ 1"]
+      "status": ["", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1, _Burned_ 1", "_Dazed_ 1, _Burned_ 1"]
     },
     "rank": "Minor Attack"
   },
@@ -260,7 +273,7 @@
     "effect": "Originate the Attack from a _Blazing_ space adjacent to the Target, treating it as _Melee_.",
     "boost": "3 _Momentum_: As a part of this Attack, remove all _Blazing_ spaces adjacent to the Target. If remove at least 3, add [_Enchant_]. The creature does not reduce their _Alight_ from the end of _Phase_ effect while this _Enchant_ persists.",
     "special": "If all spaces adjacent to the Target are _Blazing_ this Attack has _Advantage_.",
-    "charged_effect": "Mark the space the Attack will originate from with a _Hazard_. Add _Alight_ 1, _Burn_ _0/0/1/2_.",
+    "charged_effect": "Mark the space the Attack will originate from with a _Hazard_. Add _Alight_ 1, _Burned_ _0/0/1/2_.",
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+3 _Momentum_",
@@ -360,7 +373,7 @@
     "type": "Light",
     "speed": "2",
     "cost": "1 _Momentum_",
-    "effect": "Ignore _Gusting_ spaces when determining _Cover_.",
+    "effect": "Ignore all _Penalties_ due to _Windy_ spaces when making this Attack.",
     "special": "When removing _Vulnerable_, you may inflict an equivalent amount of _Push_ instead of increasing Damage.",
     "boost": "1 _Momentum_: Add [_Forceful_].",
     "range": [{ "category": "Ranged", "value": 6 }],
@@ -401,7 +414,7 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2", "_Frost_ 2"]
+      "status": ["", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2"]
     },
     "rank": "Minor Attack",
     "analysis_notes": { "expected_targets": 1.5 }
@@ -450,7 +463,24 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 3, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 1", "_Frost_ 2", "_Frost_ 2"]
+      "status": ["", "", "", "", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 2", "_Frigid_ 2"]
+    },
+    "rank": "Minor Attack"
+  },
+  {
+    "name": "Jolt",
+    "class": "Storm",
+    "desc": "You conduct an instantaneous bolt of lighting, striking a nearby foe.",
+    "type": "Versatile",
+    "speed": "2",
+    "cost": "2 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 4 }],
+    "chart": {
+      "damage_type": "Lightning",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5],
+      "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 2", "_Shocked_ 2"]
     },
     "rank": "Minor Attack"
   },
@@ -460,7 +490,7 @@
     "desc": "You find it easy to slip in additional strike with a swift weapon.",
     "type": "Light",
     "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
-    "special": "Halve any _Momentum_ gained from _On Miss_ effects.",
+    "special": "_Momentum_ gained from _On Miss_ effects is decreased by 1.",
     "rank": "Minor Attack"
   },
   {
@@ -609,12 +639,12 @@
         "_Alight_ 2",
         "_Alight_ 3",
         "_Alight_ 3",
-        "_Alight_ 4, _Burn_ 1",
-        "_Alight_ 4, _Burn_ 1",
-        "_Alight_ 5, _Burn_ 1",
-        "_Alight_ 5, _Burn_ 1",
-        "_Alight_ 6, _Burn_ 2",
-        "_Alight_ 6, _Burn_ 2"
+        "_Alight_ 4, _Burned_ 1",
+        "_Alight_ 4, _Burned_ 1",
+        "_Alight_ 5, _Burned_ 1",
+        "_Alight_ 5, _Burned_ 1",
+        "_Alight_ 6, _Burned_ 2",
+        "_Alight_ 6, _Burned_ 2"
       ]
     },
     "rank": "Major Attack"
@@ -771,6 +801,37 @@
     "class": "Martial",
     "desc": "A swift attack using a natural weapon.",
     "effect": "Make a _Major Attack_ using a _Natural_  Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "rank": "Minor Attack"
+  },
+  {
+    "name": "Swirling Vortex",
+    "class": "Gale",
+    "desc": "You assail a foe with a swirling vortex of wind, disorienting and distracting them.",
+    "type": "Versatile",
+    "speed": 2,
+    "cost": "2 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "effect": "If the Target is in a _Windy_ space you may choose to inflict _Reeling_ when removing _Vulnerable_ instead of the usual effect. Remove the _Windy_ Terrain after resolving the Attack if you use this effect.",
+    "special": "Ignore all _Penalties_ due to _Windy_ spaces when making this Attack.",
+    "chart": {
+      "damage_type": "Crush",
+      "keywords": ["Remote"],
+      "on_miss": "+2 _Momentum_",
+      "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "_Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Dazed_ 1, _Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Dazed_ 1, _Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Dazed_ 1, _Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Dazed_ 1, _Exposed_ 1, _Slowed_ [1 _Stamina_]",
+        "_Dazed_ 1, _Exposed_ 2, _Slowed_ [2 _Stamina_]",
+        "_Dazed_ 1, _Exposed_ 2, _Slowed_ [2 _Stamina_]"
+      ]
+    },
     "rank": "Minor Attack"
   },
   {

@@ -21,13 +21,24 @@
     "destroy": "Replace this space with _Shallow Water_ at 1 _Elevation_ lower than it was originally."
   },
   {
+    "name": "Downdraft",
+    "desc": "A powerful blast of downward wind.",
+    "layer": "Weather",
+    "element": "Windy",
+    "keywords": ["Fleeting"],
+    "effect": "Creatures in this space treat their _Jump_ value as 2 lower and, if they _Fall_ into this space, treat it as if they fell 2 more.",
+    "special": "Creatures greater than Size 1 only suffer this penalty if at least half the spaces they are occupying are Downdraft.",
+    "interactions": [
+      "Downdraft Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
+    ]
+  },
+  {
     "name": "Electrified",
     "layer": "Field",
     "element": "Electric",
-    "keywords": ["Conductive", "Fleeting"],
+    "keywords": ["Fleeting"],
     "desc": "A space super-charged with electricity.",
-    "effect": "Any creature that ends the _Round_ in this space gains _Shock_ 1. If a creature occupies multiple Shock spaces do not resolve this more than their Size times.",
-    "special": "When dealing _Lighting_ Damage to a creature in this space the Attacker may choose to remove this Terrain and immediately resolve the end of _Round_ effect."
+    "effect": "The first time a creature enters an Electrified space on a Turn or ends their Turn in it they take 1 _Lightning_ Damage. If they are in the space at the end of the _Round_ they gain _Shocked_ 1. If a creature occupies multiple Electrified spaces do not resolve this more than their Size times."
   },
   {
     "name": "Fortified",
@@ -42,7 +53,7 @@
     "element": "Elementless",
     "keywords": ["_Soft Cover_ 3", "Fleeting"],
     "desc": "Air chilled to painful, frost-inducing cold.",
-    "effect": "The first time a creature enters a Frigid Air space on a _Turn_ or ends their _Turn_ in it they take 1 _Cold_ Damage. If they end the _Round_ in this space, they gain _Frost_ 1. If a creature occupies multiple Frigid Air spaces do not resolve this more than their Size times."
+    "effect": "The first time a creature enters a Frigid Air space on a _Turn_ or ends their _Turn_ in it they take 1 _Cold_ Damage. If they end the _Round_ in this space, they gain _Frigid_ 1. If a creature occupies multiple Frigid Air spaces do not resolve this more than their Size times."
   },
   {
     "name": "Frozen",
@@ -61,14 +72,16 @@
     "keywords": ["Fleeting"],
     "effect": "Gusting Terrain has a direction. Movement against this Terrain's direction costs an additional space, or 2 additional spaces if the creature is _Flying_. Additionally, Ranged Attacks that pass through this space that do not match this space's direction take a -1 _Penalty_.",
     "special": "Creatures greater than Size 1 only suffer the Movement penalty if at least half the spaces they are entering are Gusting.",
-    "interactions": ["Gusting Destroys any other _Weather_ Terrain effects in this space when it is created."]
+    "interactions": [
+      "Gusting Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
+    ]
   },
   {
     "name": "Jagged",
     "desc": "Sharp spires of earth and stone make traveling through this space painful.",
     "layer": "Field",
     "element": "Earthen",
-    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage and gain _Bleed_ 1 [_Avoidable_]. If they end a _Jump_ in this space, they instead take 3 Stab Damage and gain _Bleed_ 2 [_Avoidable_]. An individual space may only effect a creature once per _Turn_."
+    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage and gain _Bleeding_ 1 [_Avoidable_]. If they end a _Jump_ in this space, they instead take 3 Stab Damage and gain _Bleeding_ 2 [_Avoidable_]. An individual space may only effect a creature once per _Turn_."
   },
   {
     "name": "Roaring",
@@ -124,6 +137,39 @@
     "effect": "None."
   },
   {
+    "name": "Tall Grass",
+    "desc": "Small plants that, while they are not enough to obstruct movement, can provide some meager defense.",
+    "element": "Wooden",
+    "layer": "Field",
+    "keywords": ["_Soft Cover_ 1", "Flammable"],
+    "effect": "None.",
+    "destroy": "_Destroy_ this Terrain if it takes at least 3 _Slash_ Damage."
+  },
+  {
+    "name": "Twister",
+    "desc": "A vortex of wind that glides across the battlefield.",
+    "element": "Windy",
+    "layer": "Weather",
+    "keywords": ["_Soft Cover_ 5", "Rough", "Fleeting"],
+    "effect": "When this Terrain enters a creatures space or a creature enters this space they gain _Vulnerable_ 1.",
+    "special": "This _Terrain_ affects _Flying_ creatures.",
+    "interactions": [
+      "Twister Destroys any other _Weather_ Terrain effects in this space when it is created, and may not be Destroyed by other Weather effects. _Veiled_ spaces may never be created in this space."
+    ]
+  },
+  {
+    "name": "Updraft",
+    "desc": "A powerful blast of upward wind.",
+    "layer": "Weather",
+    "element": "Windy",
+    "keywords": ["Fleeting"],
+    "effect": "Creatures in this space treat their _Jump_ value as 2 higher and, if they _Fall_ into this space, treat it as if they fell 2 less.",
+    "special": "Creatures greater than Size 1 only gain this bonus if at least half the spaces they are occupying are Updraft.",
+    "interactions": [
+      "Updraft Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
+    ]
+  },
+  {
     "name": "Veiled",
     "layer": "Weather",
     "element": "Elementless",
@@ -137,7 +183,7 @@
     "layer": "Surface",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ 1"],
-    "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.",
+    "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* Creatures in this space gain _Susceptible_ (_Forced Movement_, _Prone_).",
     "interactions": [
       "If a _Watersource_ space would become Wet, instead place a Wet space in an adjacent space or increase its value by 1 if it is below its maximum value."
     ]

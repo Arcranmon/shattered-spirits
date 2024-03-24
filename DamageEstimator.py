@@ -5,17 +5,16 @@ import argparse
 
 status_multipliers = {
     "Alight": 1.0,
-    "Burn": 1.0,
+    "Burned": 1.0,
     "Soaked": 0.2,
     "Pull": 0.5,
     "Angled Push": 0.5,
     "Push": 0.5,
     "Dazed": 0.75,
     "Grabbed": 0.75,
-    "Reeling": 0.75,
     "Vulnerable": 0.75,
-    "Slowed": 0.75,
-    "Bleed": 1.0,
+    "Slowed": 1.25,
+    "Bleeding": 1.0,
     "Frost": 1.0,
     "Exposed": 1.0,
     "Impaired": 1.0,
@@ -25,6 +24,7 @@ status_multipliers = {
     "Reeling": 1.25,
     "Break": 1.25,
     "Blinded": 2,
+    "Shocked": 1.0,
 }
 
 keyword_multipliers = {

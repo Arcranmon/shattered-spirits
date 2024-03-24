@@ -52,10 +52,10 @@ Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
-Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frost, Hobbled, Agility, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged - Delapouite
+Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frost, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne - Delapouite
 
-Controller, Courier, Defender, Frost, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleed, Vulnerable, Burn, Exposed, Grabbed, Grit, Shred, Veiled, Insight, Joyful, Shock, Soaked, Suppressed - Lorc
+Controller, Courier, Defender, Frost, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleeding, Vulnerable, Burned, Exposed, Grabbed, Tough, Shred, Stealthy, Studied, Joyful, Shocked, Soaked, Suppressed - Lorc
 
-Blind, Dazed, Break - Skoll
+Blinded, Dazed, Break - Skoll
 
-Poise, Prone, Sealed, Electric Terrain - sbed
+Poised, Prone, Sealed, Electric Terrain - sbed

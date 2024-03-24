@@ -25,7 +25,7 @@ class Ability extends Base {
     this.keywords_ = []
     this.move_ = ''
     this.name_ = name
-    this.range_ = null
+    this.range_ = []
     this.reqs_ = ''
     this.special_ = ''
     this.target_ = ''
@@ -85,7 +85,7 @@ class Ability extends Base {
     return '**_Move_:** _' + this.Move + '_'
   }
   public get HasRange() {
-    return this.range_ && this.range_.length > 0
+    return this.range_.length > 0
   }
   get RangeHeader() {
     var range_string = '**Range:** '

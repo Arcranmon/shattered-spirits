@@ -5,7 +5,7 @@
     "desc": "You are a creature in constant, deadly motion, slamming into foes time and time again.",
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
-    "traits": ["_Resilient_ 1 (_Hobbled_)"],
+    "traits": ["_Resilience_ 1 (_Hobbled_)"],
     "effect": "Once per _Turn_, when you _Push_ during a [_Breach_] Move you may immediately move a number of spaces towards the target of the _Push_ equal to the final _Push_ after any _Negating_, taking the shortest possible path. This movement is [_Rush_, _Breach_] and does not count against your _Movement_.",
     "special": "You have +1 _Guard_ while you are making [_Breach_] Movement. Whenever you move through a _Prone_ creature's space with [_Breach_] Movement or knock a creature _Prone_ while in their space due to [_Breach_] Movement, inflict _Vulnerable_ 1."
   },
@@ -15,7 +15,7 @@
     "desc": "You are constantly wound as tight as a spring, waiting to viciously lunge out at a moment's notice.",
     "respite": "Gain 1 _Momentum_.",
     "stamina": 2,
-    "special": "Whenever you become _Charging_, gain _Poise_.",
+    "special": "Whenever you become _Charging_, gain _Poised_.",
     "effect": "Whenever you are _Charging_ you may pay 1 _Momentum_ to remove _Charging_ at the end of a creature's _Turn_ rather than the end of the _Phase_, so long as you could remove this _Charging_ at the end of the current _Phase_."
   },
   {
@@ -30,10 +30,10 @@
     "name": "Creeping Frost Stance",
     "class": "Tundra",
     "desc": "You freeze the terrain and foes alike, creating a frigid wasteland around you.",
-    "respite": "Gain 2 _Momentum_. If you are on a _Frozen_ space, inflict _Frost_ 1 on a creature within Range 4.",
-    "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
+    "respite": "Gain 2 _Momentum_. If you are on a _Frozen_ space, inflict _Frigid_ 1 on a creature within Range 4.",
+    "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilience_ 1 (_Frigid_)", "_Resistance_ 1 (_Cold_)"],
     "stamina": 1,
-    "effect": "Attacks against creatures with _Frost_ within Range 4 of you gain [_Pierce_ 1]."
+    "effect": "Attacks against creatures with _Frigid_ within Range 4 of you gain [_Pierce_ 1]."
   },
   {
     "name": "Cunning Fox Stance",
@@ -65,10 +65,19 @@
     "special": "Once per Round you may use _Shielding Wave_ for no cost, do not gain _Reeling_ from using it, and may freely use the Boost."
   },
   {
+    "name": "Endless Twister Stance",
+    "class": "Gale",
+    "desc": "Your are a master of pushing and pulling the wind, creating vicious vortices wherever you go.",
+    "respite": "Gain 2 _Momentum_ and make up to 2 spaces adjacent to you _Gusting_.",
+    "stamina": 1,
+    "traits": ["Windwalk"],
+    "effect": "_Gusting_ spaces adjacent to you may be treated as pointing in the direction of your choice and ignore _Fleeting_. Additionally, you treat _Windy_ spaces as if they are _Fortified_."
+  },
+  {
     "name": "Erupting Flame Stance",
     "class": "Explosion",
     "desc": "You are a master of sudden, violent blasts of flame, building to large and larger blasts.",
-    "traits": ["_Resilient_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
+    "traits": ["_Resilience_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
     "effect": "Gain an Eruption Dice. Every time you make an _Area_ Attack that deals _Fire_ Damage either increase its value by 1 or reset it to 1. If you reset its value, you may add an additional X spaces to the _Area_, where X is the die's value prior to the reset. These additional spaces must be contiguous with the original _Area_."
@@ -85,7 +94,7 @@
     "name": "Focusing Torch Stance",
     "class": "Blaze",
     "desc": "Your flames burn brighter and hotter, searing through defenses.",
-    "traits": ["_Flamewalk_", "_Resilient_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
+    "traits": ["_Flamewalk_", "_Resilience_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
     "respite": "Gain 2 _Momentum_.",
     "stamina": 1,
     "effect": "Your Attacks that deal _Fire_ Damage gain [_Pierce_ 1] if you have _Alight_. While _Charging_, you may choose to gain _Alight_ 1 at the end of each _Phase_.",
@@ -98,13 +107,13 @@
     "respite": "Gain 1 _Momentum_.",
     "stamina": 1,
     "effect": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to add an equivalent amount of _Bonus_ Damage. Regardless, gain +1 _Guard_ while _Enraged_ and _Charging_.",
-    "special": " Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain _Grit_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_."
+    "special": " Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain _Tough_. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_."
   },
   {
     "name": "Guiding Shepard Stance",
     "class": "Martial",
     "desc": "You guide friends and foes alike across the battlefield, herding their movements.",
-    "respite": "Gain 3 _Momentum_. On adjacent ally may Move 1.",
+    "respite": "Gain 3 _Momentum_. One adjacent ally may Move 1.",
     "stamina": 1,
     "effect": "Whenever you inflict _Forced Movement_ on an ally or grant a _Free Turn_ where they _Move_ you may _Gift_ them 1 _Momentum_.",
     "special": "_Sheparding Strike_ has no cost when targeting an ally."
@@ -123,9 +132,19 @@
     "class": "Tundra",
     "desc": "You glide across the battlefield with frantic ease, using the ice to propel and protect.",
     "respite": "Gain 2 _Momentum_.",
-    "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilient_ 1 (_Frost_)", "_Resistance_ 1 (_Cold_)"],
+    "traits": ["_Snowdraw_", "_Frostwalk_", "_Resilience_ 1 (Frigid)", "_Resistance_ 1 (_Cold_)"],
     "stamina": 1,
     "effect": "While making [_Rush_] Movement you may always move into _Ice_ spaces, ignoring the normal limitations of [_Rush_]. You must maintain the same straight line for all [_Rush_] Movement that is not on an _Ice_ space."
+  },
+  {
+    "name": "Lifting Wind Stance",
+    "class": "Gale",
+    "desc": "Your wind elevates and accelerates allies, molding the battlefield for their success.",
+    "respite": "Gain 2 _Momentum_ and place an _Updraft_ within Range 4.",
+    "stamina": 1,
+    "traits": ["Windwalk"],
+    "effect": "When an ally directly benefits from _Windy_ Terrain you placed or you target them with a non-Damaging _Gale_ ability you may _Gift_ them 1 _Momentum_.",
+    "special": "_Updraft_ spaces within Range 4 of you ignore _Fleeting_."
   },
   {
     "name": "Pack Leader Stance",
@@ -149,10 +168,9 @@
     "name": "Patient Hunter Stance",
     "class": "Martial",
     "desc": "You focus your attention on a singular creature, finding the perfect opening to take them down.",
-    "respite": "Gain 2 _Momentum_.",
+    "respite": "Gain 1 _Momentum_ and inflict _Studied_ 1 twice within Range 12. You may gain _Hobbled_ 2 to instead inflict _Studied_ 1 four times.",
     "stamina": 1,
-    "effect": "On the start of any of your _Turns_ you may choose to gain _Hobbled_ 1. If you do, you may immediately inflict _Insight_ 1 on a creature within Range 12.",
-    "special": "Whenever you make a _Ranged_ Attack against a creature with _Insight_, you may remove 1 _Insight_ to gain a +1 _Bonus_."
+    "effect": "Whenever you make a _Ranged_ Attack against a creature with _Studied_, you may remove 1 _Studied_ to gain a +1 _Bonus_."
   },
   {
     "name": "Quaking Earth Stance",
@@ -193,7 +211,7 @@
     "class": "Blaze",
     "desc": "You bring flames and ruin, scorching the battlefield with every step.",
     "respite": "Gain 2 _Momentum_ and make your space _Blazing_.",
-    "traits": ["_Flamewalk_", "_Resilient_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
+    "traits": ["_Flamewalk_", "_Resilience_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
     "stamina": 1,
     "effect": "_Blazing_ and _Roaring_ spaces within Range 3 of you do not have _Fleeting_."
   },
@@ -236,8 +254,8 @@
     "name": "Watching Owl Stance",
     "class": "Martial",
     "desc": "You keep a keen eye on the battlefield, providing opportunities and openings to all allies.",
-    "respite": "Gain 1 _Momentum_. Either yourself or an ally within Range 4 may Move 1. Any creature with _Insight_ treats this Movement as [_Safe_].",
+    "respite": "Gain 1 _Momentum_. Either yourself or an ally within Range 4 may Move 1. Any creature with _Studied_ treats this Movement as [_Safe_].",
     "stamina": 1,
-    "effect": "You may remove 2 _Insight_ per _Turn_ rather than one. Whenever you remove the last _Insight_ on a creature, inflict _Vulnerable_ 1."
+    "effect": "You may remove 2 _Studied_ per _Turn_ rather than one. Whenever you remove the last _Studied_ on a creature, inflict _Vulnerable_ 1."
   }
 ]

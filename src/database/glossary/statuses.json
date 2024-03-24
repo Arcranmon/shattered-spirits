@@ -2,39 +2,40 @@
   {
     "name": "Airborne",
     "desc": "A creature knocked into the air and unable to defend themselves.",
-    "effect": "Attacks against an Airborne creature have _Advantage_. Additionally, while Airborne, their _Elevation_ is increased by 1, but they do not gain any bonuses from this.",
-    "remove": "Creature are Airborne until the end of the next _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_.",
-    "type": "Hide"
+    "effect": "Wile Airborne a creature increases their Elevation by 1 and is _Restrained_. Additionally, while Airborne, they gain _Susceptible_ (_Forced Movement_).",
+    "remove": "Creature are Airborne until the end of the next _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_. Do not remove _Airborne_ until the creature's _Forced Movement_ is complete.",
+    "special": "_Flying_ creatures may not become _Airborne_.",
+    "type": "Status Effect"
   },
   {
-    "name": "Poise",
+    "name": "Poised",
     "desc": "A creature that is perfectly in control of their position and faculties.",
-    "effect": "A creature with Poise may expend it at any time for one of the following benefits:\n* A creature may expend Poise to treat all _Stamina_ spent in response to a _Mental_ effect or to Negate _Impaired_, _Exposed_, _Reeling_, or _Mental Afflictions_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Impaired_, _Exposed_, _Vulnerable_, _Reeling_, or _Mental Afflictions_.\n* Gain 1 _Momentum_.",
-    "special": "If a creature with Poise would gain Poise, they instead regain 1 _Stamina_.",
+    "effect": "A creature with Poised may expend it at any time for one of the following benefits:\n* A creature may expend Poised to treat all _Stamina_ spent in response to a _Mental_ effect or to Negate _Impaired_, _Exposed_, _Reeling_, or _Mental Afflictions_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Impaired_, _Exposed_, _Vulnerable_, _Reeling_, or _Mental Afflictions_.\n* Gain 1 _Momentum_.",
+    "special": "If a creature with Poised would gain Poised, they instead regain 1 _Stamina_.",
     "type": "Status Effect"
   },
   {
-    "name": "Agility",
+    "name": "Agile",
     "desc": "A creature of strong footing and stronger constitution.",
-    "effect": "A creature with Agility may expend it at any time for one of the following benefits:\n* A creature may expend Agility to treat all _Stamina_ spent in response to an _Avoidable_ effect or to Negate _Alight_, _Hobbled_ or _Restrained_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Alight_, _Hobbled_ or _Restrained_.\n* Increase a Move by 2 spaces.",
-    "special": "If a creature with Agility would gain Agility, they instead regain 1 _Stamina_.",
+    "effect": "A creature with Agile may expend it at any time for one of the following benefits:\n* A creature may expend Agile to treat all _Stamina_ spent in response to an _Avoidable_ effect or to Negate _Alight_, _Hobbled_ or _Restrained_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Alight_, _Hobbled_ or _Restrained_.\n* Increase a Move by 2 spaces.",
+    "special": "If a creature with Agile would gain Agile, they instead regain 1 _Stamina_.",
     "type": "Status Effect"
   },
   {
-    "name": "Grit",
+    "name": "Tough",
     "desc": "A creature of strong footing and stronger constitution.",
-    "effect": "A creature with Grit may expend it at any time for one of the following benefits:\n* A creature may expend Grit to treat all _Stamina_ spent in response to an _Endurable_ effect or to Negate _Forced Movement_, _Hobbled_, _Restrained_, _Blind_, or _Bleed_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Hobbled_, _Restrained_, _Blind_, or _Bleed_.\n* Gain 4 _Vigor_.",
-    "special": "If a creature with Grit would gain Grit, they instead regain 1 _Stamina_.",
+    "effect": "A creature with Tough may expend it at any time for one of the following benefits:\n* A creature may expend Tough to treat all _Stamina_ spent in response to an _Endurable_ effect or to Negate _Forced Movement_, _Hobbled_, _Restrained_, _Blinded_, or _Bleeding_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Hobbled_, _Restrained_, _Blinded_, or _Bleeding_.\n* Gain 4 _Vigor_.",
+    "special": "If a creature with Tough would gain Tough, they instead regain 1 _Stamina_.",
     "type": "Status Effect"
   },
   {
-    "name": "Blind",
+    "name": "Blinded",
     "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
-    "effect": "A Blind creature sees all creatures within Range 3 as _Lightly Obscured_ and all creatures beyond that range as _Heavily Obscured_.",
-    "remove": "Creatures are Blinded until the end of the next _Phase_ or, when _Recovering_, they expend 2 _Stamina_.",
+    "effect": "A Blinded creature sees all creatures within Range 3 as _Lightly Obscured_ and all creatures beyond that range as _Heavily Obscured_.",
+    "remove": "Creatures are Blindeded until the end of the next _Phase_ or, when _Recovering_, they expend 2 _Stamina_.",
     "type": "Status Effect"
   },
-  { "name": "Blinded", "see": "Blind" },
+  { "name": "Blindeded", "see": "Blinded" },
   {
     "name": "Sundered",
     "effect": "Sundered only applies to _Equipment_. A Sundered Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Sundered, instead inflict _Shred_ 1. If a Sundered Weapon is Sundered again it is instead broken and may not be used until repaired.",
@@ -94,10 +95,10 @@
   },
   {
     "name": "Restrained",
-    "desc": "An effect cause when a creature's ability to move is severly hampered.",
+    "desc": "An effect cause when a creature's ability to move is severely hampered.",
     "effect": "A Restrained creature's ability to move is severely hampered. While Restrained, a creature cannot Move, makes all Attacks with Disadvantage, and all Attacks against them have Advantage.",
-    "remove": "How to end Restrained is typically specified in the Technique that inflicts it. If nothing is specified, a creature may and spend 2 _Stamina_ while _Recovering_ to end Restrained.",
-    "type": "Hide"
+    "remove": "How to end Restrained is typically specified in the Technique that inflicts it. If nothing is specified, a creature may spend 2 _Stamina_ while _Recovering_ to end Restrained.",
+    "type": "Status Effect"
   },
   {
     "name": "Staggered",
@@ -157,10 +158,10 @@
     "type": "Affliction"
   },
   {
-    "name": "Insight",
+    "name": "Studied",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "When you inflict Insight on a creature learn their exact current Health as well as their current and maximum _Stamina_.",
-    "remove": "Once per _Turn_, a creature may reduce a hostile creature's Insight by 1 to gain one of the following effects:\n* Reduce the Cost of an Ability or Boost targeting only that creature by 1.\n* After being Attacked or suffering an effect, gain 1 _Temporary_ _Stamina_ that may only be used to Negate.",
+    "effect": "When you inflict Studied on a creature learn their exact current Health as well as their current and maximum _Stamina_.",
+    "remove": "Once per _Turn_, a creature may reduce a hostile creature's Studied by 1 to gain one of the following effects:\n* Reduce the Cost of an Ability or Boost targeting only that creature by 1.\n* After being Attacked or suffering an effect, gain 1 _Temporary_ _Stamina_ that may only be used to Negate.",
     "type": "Affliction"
   },
   {
@@ -180,30 +181,30 @@
     "type": "Affliction"
   },
   {
-    "name": "Bleed",
+    "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleed they take _True_ Damage at the start of each _Phase_ equal to 1 + their _Bleed_, then reduces their Bleed value by 1.",
-    "special": "A creature may not gain _Health_/_Vigor_ while they have Bleed. Instead, any _Health_/_Vigor_ granted removes Bleed at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
-    "negate": "A creature may expend 1 _Stamina_ to negate 1 Bleed.",
-    "remove": "Bleed is only removed through triggering and by effects that explicitly remove it.",
+    "effect": "While a creature has Bleeding they take _True_ Damage at the start of each _Phase_ equal to 1 + their _Bleeding_, then reduces their Bleeding value by 1.",
+    "special": "A creature may not gain _Health_/_Vigor_ while they have Bleeding. Instead, any _Health_/_Vigor_ granted removes Bleeding at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Bleeding.",
+    "remove": "Bleeding is only removed through triggering and by effects that explicitly remove it.",
     "type": "Affliction"
   },
   {
-    "name": "Burn",
+    "name": "Burned",
     "desc": "An affliction caused by harsh elemental damage that makes one more susceptible to it.",
-    "effect": "While a creature has Burn they gain _Weakness_ 3 (_Cold_, _Fire_, _Lightning_). Whenever they take Damage from one of those sources, reduce their Burn value by 1.",
-    "special": "A creature may not gain _Health_/_Vigor_ while they have Burn. Instead, any _Health_/_Vigor_ granted removes Burn at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
-    "negate": "A creature may expend 1 _Stamina_ to negate 1 Burn.",
-    "remove": "Burn is only removed through triggering and by effects that explicitly remove it.",
+    "effect": "While a creature has Burned they gain _Weakness_ 3 (_Cold_, _Fire_, _Lightning_). Whenever they take Damage from one of those sources, reduce their Burned value by 1.",
+    "special": "A creature may not gain _Health_/_Vigor_ while they have Burned. Instead, any _Health_/_Vigor_ granted removes Burned at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Burned.",
+    "remove": "Burned is only removed through triggering and by effects that explicitly remove it.",
     "type": "Affliction"
   },
   {
-    "name": "Shock",
+    "name": "Shocked",
     "desc": "An elemental affliction caused by being jolted with electricity, limiting reaction speed.",
-    "effect": "While a creature has Shock they take Damage equal to their Shock if they use a _Defensive_ Reaction on a Turn, then reduce their Shock value by 1.",
-    "special": "Add _Stall_ to all _Techniques_ that have a _Speed_ less than the creature's Shock. If the Technique has _Priority_, instead decrease its Movement by 1 tier.",
-    "negate": "A creature may expend 1 _Stamina_ to negate 1 Shock.",
-    "recover": "A value of _Stamina_ removes Shock equal to the _Stamina_ spent.",
+    "effect": "While a creature has Shocked they take Damage equal to their Shocked if they use a _Defensive_ Reaction on a Turn, then reduce their Shocked value by 1.",
+    "special": "Add _Stall_ to all abilities used in a _Phase_ less than or equal to the creature's Shocked. If the ability has _Priority_, instead remove _Priority_.",
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Shocked.",
+    "recover": "A value of _Stamina_ removes Shocked equal to the _Stamina_ spent.",
     "type": "Elemental Affliction"
   },
   {
@@ -212,32 +213,32 @@
     "effect": "At the end of each _Phase_ a creature takes _Fire_ Damage equal to the amount of Alight they have, then reduce their Alight value by 1. This Damage may not not be reduced by _Guard_ that is not provided by _Resistance_.",
     "special": "While a creature has any Alight they have _Resistance_ 3 (_Cold_).",
     "reacts": [
-      "<ins>Frost:</ins> If an Alight creature would gain _Frost_, instead reduce their Alight value by an equivalent amount.",
+      "<ins>Frigid:</ins> If an Alight creature would gain Frigid_, instead reduce their Alight value by an equivalent amount.",
       "<ins>Soaked:</ins>  If an Alight creature would gain _Soaked_, instead reduce their Alight value by an equivalent amount."
     ],
     "recover": "A value of _Stamina_ removes Alight equal to the _Stamina_ spent. A creature may choose to end their turn _Prone_ to treat the _Stamina_ spent as twice as much.",
     "type": "Elemental Affliction"
   },
   {
-    "name": "Frost",
+    "name": "Frigid",
     "desc": "An elemental affliction caused by freezing temperatures that limits mobility.",
-    "effect": "While a creature has Frost they take Damage equal to their Frost if they Move on their Turn, then reduce their Frost value by 1. Additionally, Attackers may treat Frost as _Exposed_ if they wish.",
-    "special": "While a creature has any Frost, they have _Resistance_ 3 (_Fire_) and _Vulnerability_ 2 (_Cold_). Do not apply this _Vulnerability_ to any Damage dealt due to Frost.",
-    "reacts": ["<ins>Alight:</ins> If a Frosted creature would gain _Alight_, instead reduce their Frost value by an equivalent amount."],
-    "negate": "A creature may expend 1 _Stamina_ to negate 1 Frost.",
-    "remove": "Reduce a creature's Frost value by 1 whenever they take _Fire_ Damage. Aside from that, Frost is only removed by effects that explicitly remove it.",
+    "effect": "While a creature has Frigid they take Damage equal to their Frigid if they Move on their Turn, then reduce their Frigid value by 1. Additionally, Attackers may treat Frigid as _Exposed_ if they wish.",
+    "special": "While a creature has any Frigid, they have _Resistance_ 3 (_Fire_) and _Vulnerability_ 2 (_Cold_). Do not apply this _Vulnerability_ to any Damage dealt due to Frigid.",
+    "reacts": ["<ins>Alight:</ins> If a Frigid creature would gain _Alight_, instead reduce their Frigid value by an equivalent amount."],
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Frigid.",
+    "remove": "Reduce a creature's Frigid value by 1 whenever they take _Fire_ Damage. Aside from that, Frigid is only removed by effects that explicitly remove it.",
     "type": "Elemental Affliction"
   },
   {
     "name": "Soaked",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "Whenever a Soaked creature takes _Cold_, _Fire_, or _Shock_ Damage, reduce their Soaked by 1. If it was _Cold_, inflict _Frost_ 1. Do not trigger any additional Soaked effects from this Status.",
+    "effect": "Whenever a Soaked creature takes _Cold_, _Fire_, or _Shocked_ Damage, reduce their Soaked by 1. If it was _Cold_, inflict _Frigid_ 1. Do not trigger any additional Soaked effects from this Status.",
     "reacts": [
       "<ins>Alight:</ins> If a Soaked creature would gain _Alight_, instead reduce their Soaked value by an equivalent amount.",
-      "<ins>Frost:</ins> If a Soaked creature would gain _Frost_, reduce their Soaked value by an equivalent amount, then they take that much _Cold_ Damage. Do not trigger any additional Soaked effects from this Damage.",
-      "<ins>Shock:</ins> If a Soaked creature would gain _Shock_, reduce their Soaked value by an equivalent amount, then they take that much _Lightning_ Damage. Do not trigger any additional Soaked effects from this Damage."
+      "<ins>Frigid:</ins> If a Soaked creature would gain Frigidt_, reduce their Soaked value by an equivalent amount, then they take that much _Cold_ Damage. Do not trigger any additional Soaked effects from this Damage.",
+      "<ins>Shocked:</ins> If a Soaked creature would gain _Shocked_, reduce their Soaked value by an equivalent amount, then they take that much _Lightning_ Damage. Do not trigger any additional Soaked effects from this Damage."
     ],
-    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Lightning_, _Shock_), _Resilient_ 1 (_Alight_), _Susceptible_ (_Frost_, _Shock_). Do not apply this _Weakness_ to any Damage dealt due to Soaked.",
+    "special": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Lightning_, _Shocked_), _Resilience_ 1 (_Alight_), _Susceptible_ (_Frigid_, _Shocked_). Do not apply this _Weakness_ to any Damage dealt due to Soaked.",
     "negate": "Soaked may not be Negated.",
     "remove": "A creature reduces their Soaked by 1 at the end of each of their Turns where they did not gain Soaked. Additionally, _Water_ abilities may _Draw_ from Soaked creatures, removing _Soaked_ 1 to _Draw_ 1.",
     "type": "Elemental Affliction"
@@ -285,10 +286,16 @@
     "type": "Mental Affliction"
   },
   {
-    "name": "Accelerate",
+    "name": "Accelerated",
     "desc": "Your speed is increased, allowing you to act quicker.",
-    "effect": "When a creature becomes Accelerated they either gain 1 _Momentum_ or move their next Technique this _Round_ one _Phase_ earlier, resolving it as if it was played in the original _Phase_. If a creature's next Technique is in the current Phase, they may take their Turn immediately after gaining Accelerate, ignoring the normal Initiative process.",
-    "type": "Instant Effect2"
+    "effect": "While Accelerated a creature treats the current _Phase_ as one later than the actual _Phase_ for all effects, including resolving their _Technique_ for the _Round_. For example, if a creature plays a Technique for _Phase_ 5 they would resolve it in _Phase_ 4.",
+    "special": "In Phase 1, instead add _Priority_ to all _Techniques_.",
+    "remove": "Accelerated is cleared at the start of _Respite_.",
+    "reacts": [
+      "<ins>Accelerated:</ins> If a creature has Accelerated and would gain Accelerated, they instead gain 1 _Momentum_.",
+      "<ins>Slowed:</ins> If a creature has Accelerated and would gain Slowed, they instead remove Accelerated."
+    ],
+    "type": "Status Effect"
   },
   {
     "name": "Drain",
@@ -304,15 +311,9 @@
   },
   { "name": "Pulled", "see": "Pull" },
   {
-    "name": "Angled Push",
-    "desc": "You push a foe away, carefully choosing their trajectory.",
-    "effect": "As _Push_ but, rather than moving the creature directly away from you, move them away and to the right or left (your choice) of you.",
-    "type": "Instant Effect2"
-  },
-  {
     "name": "Break",
-    "desc": "You break through a foe's defenses, leaving them open to attack.",
-    "effect": "If the foe is _Guarding_, end that effect.",
+    "desc": "You break through a foe's defenses, shattering their guard and disrupting attacks.",
+    "effect": "If the foe is _Guarding_ or _Charging_, end that effect.",
     "type": "Instant Effect"
   },
   {
@@ -339,8 +340,14 @@
   {
     "name": "Slowed",
     "desc": "You weigh down a foe, limiting their ability to react.",
-    "effect": "When a creature becomes Slowed their next Technique this Round is moved one _Phase_ later, resolving it as if it was played in the original _Phase_. If the creature has no more Techniques this round, they gain _Impaired_ 1/_Reeling_ 1 (Attacker's choice).",
-    "type": "Instant Effect"
+    "effect": "While Slowed a creature treats the current _Phase_ as one earlier than the actual _Phase_ for all effects, including resolving their _Technique_ for the _Round_. For example, if a creature plays a Technique for _Phase_ 5 they would resolve it in _Phase_ 6.",
+    "special": "In Phase 1, instead add _Stall_ to all _Techniques_.",
+    "remove": "Slowed is cleared at the start of _Respite_.",
+    "reacts": [
+      "<ins>Accelerated:</ins> If a creature has Slowed and would gain Accelerated, they instead remove Slowed.",
+      "<ins>Slowed:</ins> If a creature has Slowed and would gain Slowed, they instead gain _Dazed_ 1."
+    ],
+    "type": "Status Effect"
   },
   {
     "name": "Suppressed",
@@ -355,9 +362,9 @@
     "type": "Instant Effect2"
   },
   {
-    "name": "Veiled",
+    "name": "Stealthy",
     "desc": "A condition caused when a creature is difficult to see, limiting the ability to strike them.",
-    "effect": "All creatures that see a Veiled creature as _Lightly Obscured_ have _Disadvantage_ on all Attacks against them.",
+    "effect": "All creatures that see a Stealthy creature as _Lightly Obscured_ have _Disadvantage_ on all Attacks against them.",
     "type": "Status Effect"
   }
 ]
