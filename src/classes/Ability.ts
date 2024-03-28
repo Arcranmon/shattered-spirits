@@ -92,7 +92,8 @@ class Ability extends Base {
     for (var range_ele of this.range_) {
       if (range_ele.category == 'Melee') range_string += '_Melee_, _Reach_ ' + range_ele.value
       else if (range_ele.category == 'Self') range_string += '_Self_'
-      else range_string += 'Ranged ' + range_ele.value
+      else if (range_ele.category == 'Ranged') range_string += 'Ranged ' + range_ele.value
+      else range_string += range_ele.category
       if (range_ele.special != undefined) {
         range_string += ' (' + range_ele.special + ')'
       }

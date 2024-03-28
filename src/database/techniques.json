@@ -44,6 +44,16 @@
     "boost": "1 _AP_, 2 _Momentum_: After removing the _Hazard_ and making this Attack, repeat the _Effect_."
   },
   {
+    "name": "Dance of a Thousand Stings",
+    "class": "Basic",
+    "desc": "You dart across the battlefield, unleashing a serious of swift strikes.",
+    "type": "Strike",
+    "speed": "1-3",
+    "move": "Step, Step, Step",
+    "effect": "After each Movement, make a _Minor Attack_. Any Attacks you make this _Turn_ cause the Target to treat your remaining Movement this _Turn_ as [_Safe_] on a _Hit_+. If you move at least 2 spaces before making an Attack, deal +1 _Bonus Damage_ and add _Vulnerable_ 1.",
+    "special": "If each Attack this _Turn_ targets unique Targets, gain 1 _Momentum_."
+  },
+  {
     "name": "Deep Freeze",
     "desc": "You rapidly drop the temperature around a foe, attempting to freeze them solid.",
     "class": "Tundra",
@@ -97,8 +107,9 @@
     "move": "Step",
     "range": [{ "category": "Ranged", "value": 8 }],
     "keywords": ["Priority"],
-    "effect": "Roll 1d6 5 times, then place 5 Weapons, based on the individual dice rolls and following rules:\n* You may place these anywhere within _Range_, but may not place them adjacent to yourself or allies or within 3 spaces of another _Improvised Weapons_ placed by this effect.\n* On a 1-3, the Weapon is a _Small Improvised_ Weapon, made of the same material as the _Terrain_ or an adjacent _Obstacle_. It deals your choice of _Crush_, _Slash_, or _Stab_ damage.\n* On a 4+, you may place a _Medium Improvised Weapon_.\n* On a 6, you may choose _Wood_, _Metal_, or _Natural_ for the material.",
-    "special": "All Weapons placed by this have the _Opportune_ and _Fragile_ keywords. Only you and your allies may use these Weapons."
+    "effect": "Roll 1d6 5 times, then place 5 Weapons, based on the individual dice rolls and following rules:\n* You may place these anywhere within _Range_, but may not place them adjacent to yourself or allies or within 3 spaces of another _Improvised Weapons_ placed by this effect.\n* On a 1-3, the Weapon is a _Small Improvised_ Weapon, made of the same material as the _Terrain_ or an adjacent _Obstacle_. It deals your choice of _Crush_, _Slash_, or _Stab_ damage.\n* On a 4+, you may place a _Medium Improvised_ Weapon.\n* On a 6, you may choose _Wood_, _Metal_, or _Natural_ for the material.",
+    "special": "All Weapons placed by this have the _Opportune_ and _Fragile_ keywords. Only you and your allies may use these Weapons.",
+    "boost": "1 _Momentum_: Reroll a single die. You may repeat this _Boost_."
   },
   {
     "name": "Artillery Flame",
@@ -242,10 +253,10 @@
         "",
         "_Reeling_ 1, _Exposed_ 1",
         "_Reeling_ 1, _Exposed_ 1",
+        "_Reeling_ 1, _Exposed_ 1",
         "_Reeling_ 1, _Exposed_ 1, _Prone_ [1 _Stamina_]",
-        "_Reeling_ 1, _Exposed_ 1, _Prone_ [1 _Stamina_]",
-        "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
-        "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
+        "_Reeling_ 2, _Exposed_ 1, _Prone_ [1 _Stamina_]",
+        "_Reeling_ 2, _Exposed_ 1, _Prone_ [1 _Stamina_]",
         "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
         "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
         "_Reeling_ 3, _Exposed_ 2, _Prone_ [3 _Stamina_]",
@@ -255,9 +266,45 @@
     "analysis_notes": {
       "range": [{ "category": "Melee", "value": 1 }],
       "expected_targets": 2,
-      "fudge": 0.1,
       "bonus_damage": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
       "notes": "Small fudge in case of Prone creatures."
+    }
+  },
+  {
+    "name": "Ruinous Bolt",
+    "desc": "You unleash a blinding bolt of lighting, searing across the landscape.",
+    "class": "Storm",
+    "type": "Strike",
+    "speed": "5-8",
+    "range": [{ "category": "Self" }],
+    "area": "_Line_ 8",
+    "move": "Step",
+    "effect": "Create a _Hazard_ in the _Area_ and become _Charging_. At the end of the next _Phase_ remove the _Hazard_ and resolve the below Attack against all _Targets_.",
+    "boost": "Choose one:\n* 2 _Momentum_: Instead, resolve the Attack instantly without _Charging_.\n* 4 _Momentum_: Instead, _Area_ is _Wide Line_ 8x3.",
+    "chart": {
+      "damage_type": "Lightning",
+      "on_miss": "+3 _Momentum_",
+      "damage": [11, 11, 11, 12, 12, 12, 12, 13, 13, 14, 14],
+      "roll": ["Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "_Shocked_ 2",
+        "_Shocked_ 2",
+        "_Shocked_ 2",
+        "_Shocked_ 2",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 4",
+        "_Shocked_ 4"
+      ]
+    },
+    "analysis_notes": {
+      "range": [{ "category": "Melee", "value": 1 }],
+      "expected_targets": 1,
+      "speed": 6,
+      "fudge": 1.5
     }
   },
   {
@@ -277,12 +324,12 @@
     "speed": "4-8",
     "move": "Step",
     "area": "_Cone_ 3",
-    "effect": "Attack with the below Profile. After resolving the Attack, inflict _Alight_ 1 on a creature in the _Area_ or create a _Blazing_ space four times.",
+    "effect": "Attack with the below Profile. After resolving the Attack, inflict _Alight_ 1 on a creature in the _Area_ or create a _Blazing_ space. Repeat this secondary effect four times.",
     "boost": "Choose any:\n* 2 _Momentum_: Area is instead _Cone_ 4.\n* 5 _Momentum_: Area is instead _Cone_ 5.\n* 1 _Momentum_: Resolve the after Attack effect another time. You may use this _Boost_ up to 3 times.",
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+3 _Momentum_",
-      "damage": [1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4],
+      "damage": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4],
       "roll": ["Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2"]
     },
@@ -310,18 +357,8 @@
     "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 12 }],
     "move": "Step",
-    "effect": "Grant yourself _Joyful_/_Courageous_ 1, then distribute _Joyful_/_Courageous_ 6, split among allies of your choice within Range.\n&nbsp;\nAny creature may reduce the _Joyful_/_Courageous_ they receive by 2 once for the following effects:\n* If the Target reduces _Joyful_ by 2 they gain a _Free Turn_ with _Step_ _Movement_.\n* If the Target reduces _Courageous_ by 2 they gain a _Free Turn_ where they may make a _Minor Attack_.\n\n&nbsp;\nAny ally that you give _Joyful_/_Courageous_ to (even if they use it for the special effect) gains 2 _Vigor_.",
-    "boost": "1 _Momentum_: You may distribute an additional 1 _Joyful_/_Courageous_. You may use this _Boost_ up to 4 times."
-  },
-  {
-    "name": "Dance of a Thousand Stings",
-    "class": "Basic",
-    "desc": "You dart across the battlefield, unleashing a serious of swift strikes.",
-    "type": "Strike",
-    "speed": "1-3",
-    "move": "Step, Step, Step",
-    "effect": "After each Movement, make a _Minor Attack_. Any Attacks you make this _Turn_ cause the Target to treat your remaining Movement this _Turn_ as [_Safe_] on a _Hit_+. If you move at least 2 spaces before making an Attack, deal +1 _Bonus Damage_ and add _Vulnerable_ 1.",
-    "special": "If each Attack this _Turn_ targets unique Targets, gain 1 _Momentum_."
+    "effect": "Grant yourself _Courageous_/_Joyful_ 1 then gain 6 Song Points. You may spend 1 Song Point to grant an ally within Range _Courageous_/_Joyful_ 1. You may use this option any number of times. Additionally, you may purchase the following options, but no more than once per Target:\n* 2 Song Points: The target gains a _Free Turn_ with _Step_ _Movement_.\n* 2 Song Points: The target gains a _Free Turn_ where they may make a _Minor Attack_.\n\n&nbsp;\nAny ally that you target with any effect gains 2 _Vigor_. Lose any unspent Song Points at the end of the _Turn_.",
+    "boost": "1 _Momentum_: Gain an additional Song Point. You may use this _Boost_ up to 4 times."
   },
   {
     "name": "Stone Edge",
@@ -331,7 +368,7 @@
     "speed": "4-8",
     "range": [{ "category": "Ranged", "value": 4 }],
     "move": "Step",
-    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 1 _Guard_ and may not be moved by another creature. At the end of each _Phase_, excluding the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
+    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 2 _Guard_ and may not be moved by another creature. At the end of each _Phase_, excluding the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_. This _Line_ must be placed in such a way that, if you drew a _Cone_ directly from yourself, the _Line_ lies fully within it.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
     "boost": "2 _Momentum_: Instead, create a _Boulder_ as a part of this _Technique_. There must be at least one _Earthen_ space within _Range_ to use this _Boost_.",
     "chart": {
       "damage_type": "Crush",
@@ -357,7 +394,8 @@
     "analysis_notes": {
       "range": [{ "category": "Melee", "value": 1 }],
       "expected_targets": 2,
-      "fudge": 4
+      "fudge": 3,
+      "speed": 5
     }
   },
   {
@@ -398,7 +436,7 @@
     "class": "Blaze",
     "desc": "You cultivate a flame, focusing the heat into a single point more and more as time passes.",
     "type": "Strike",
-    "speed": "3-8",
+    "speed": "3-7",
     "move": "Step",
     "effect": "Create the 1st _Hazard_, then become _Charging_. At the end of the next _Phase_ stop _Charging_ and either resolve the below Attack or create the next _Hazard_, as outlined below.\n* **1st Hazard**: Create an _Side Burst_ 3 _Hazard_.\n* **2nd Hazard**: Create a _Cone_ 3 _Hazard_. When you resolve the Attack, deal +1 Damage and add _Alight_ 1.\n* **3rd Hazard**: Create a _Line_ 6 _Hazard_. When you resolve the Attack, deal +2 Damage, add _Alight_ 2, and [_Pierce_ 1].\n* **4th Hazard**: Create a _Line_ 3 _Hazard_. When you resolve the Attack, deal +5 Damage, add _Alight_ 3, _Burned_ 1, and [_Pierce_ 2].\n* **5th Hazard**: Create a single space _Hazard_ in an adjacent space. When you resolve the Attack, deal +8 Damage, add _Alight_ 4, _Burned_ 2, and [_Pierce_ 3].",
     "special": "When you create your _Hazard_, choose an adjacent space. All future _Hazards_ created by this _Technique_ must include this space. If you are moved, use the equivalent adjacent space.",
@@ -428,6 +466,19 @@
     }
   },
   {
+    "name": "Thunderstorm",
+    "class": "Storm",
+    "desc": "You form a volatile cloud crackling with lighting, using it to cause devastation from afar.",
+    "type": "General",
+    "keywords": ["Enchant"],
+    "speed": "1-8",
+    "move": "Step",
+    "range": { "category": "Ranged", "value": 8 },
+    "effect": "Create a _Blast_ 1 _Hazard_ within Range. At the end of the next _Phase_ create a Thundercloud in the Area. While the _Enchant_ persists you may originate any _Storm_ Attack from the Thundercloud instead of yourself so long as you are within Range 12 of it. When you do so, add the following effects:\n* Attacks may only Target creatures in the Thundercloud, but add [_Remote_].\n* If the Attack had an _Area_, resolve it in an equivalent number of spaces within the Thundercloud (maximum 7).\n* Any _Hazard_ created by an Attack originating from the Thunderstorm moves with it.\n* You may choose to end this _Enchant_ as a part of making an Attack from it. If you do, gain _Advantage_ on the Attack.\n\nAny creatures in the Thundercloud at the end of the _Round_ take 2 _Lighting_ Damage and gain _Shocked_ 1.",
+    "special": "At the end of each _Phase_ you may move the Thundercloud 1 space in any direction.",
+    "boost": "1 _Momentum_ (paid at the end of any _Phase_): Deal 1 _Lighting_ Damage to a creature within the Thundercloud. If they are _Shocked_, add [_Pierce_ 1]."
+  },
+  {
     "name": "Trampling Charge",
     "class": "Basic",
     "desc": "You run forward, slamming through all foes in your path.",
@@ -435,7 +486,7 @@
     "speed": "1-8",
     "move": "Dash [_Breach_, _Rush_]",
     "effect": "Choose one:\n* You have +1 _Guard_ this _Turn_. Resolve your _Movement_. When you end your _Movement_, make a single _Melee_ _Major Attack_. If the target of the Attack is in-line with your _Movement_, either inflict _Forceful Push_ X or inflict X additional _Bonus Damage_, where X is half the number of spaces you Moved before resolving the effect.\n* Do not resolve your _Movement_ yet. Create a _Hazard_ in an adjacent space, become _Charging_, then end your _Turn_. At the end of the next _Phase_ remove _Charging_ and resolve the first effect, but you must move through the space marked by the _Hazard_, removing the _Hazard_ when you do so. You have _Advantage_ on all [_Body_] Attacks and may choose both options for your _Major Attack_ at the end of the _Movement_. If you are moved by any means before removing _Charging_, move the _Hazard_ with you.",
-    "special": "You may use _Overrun_ at no cost when resolving the effect."
+    "special": "_Overrun_ costs only 1 _Momentum_ when resolving the effect."
   },
   {
     "name": "Whirling Wind",

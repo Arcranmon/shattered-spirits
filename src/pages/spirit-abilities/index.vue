@@ -73,7 +73,7 @@
         ></v-row>
       </v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="earthText" /><br /><br />
+        <display-tooltip-text style="margin: 1em;" :string="windText" /><br /><br />
         <h4>Wind Spirit Types</h4>
         <display-tooltip-text
           class="description-text"
@@ -120,6 +120,7 @@ import Vue from 'vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import EarthText from '@/database/text_files/spirit_mechanics/earth.txt'
 import WaterText from '@/database/text_files/spirit_mechanics/water.txt'
+import WindText from '@/database/text_files/spirit_mechanics/wind.txt'
 import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
@@ -153,6 +154,9 @@ export default Vue.extend({
     },
     waterText() {
       return WaterText
+    },
+    windText() {
+      return WindText
     },
     flameText() {
       return FlameText

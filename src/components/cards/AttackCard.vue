@@ -16,7 +16,7 @@
     </div>
     <div class="card--content">
       <div v-if="isWeapon"><display-tooltip-text :string="attack.TraitsHeader" /></div>
-      <div v-if="attack.HasMaterial"><display-tooltip-text :string="attack.MaterialHeader" /></div>
+      <div v-if="attack.HasMaterial && isWeapon"><display-tooltip-text :string="attack.MaterialHeader" /></div>
       <div v-if="attack.HasReqs"><display-tooltip-text :string="attack.ReqsHeader" /></div>
       <div v-if="attack.HasTarget"><display-tooltip-text :string="attack.TargetHeader" /></div>
       <div v-if="attack.HasCost"><display-tooltip-text :string="attack.CostHeader" /></div>
@@ -26,7 +26,7 @@
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <div v-if="attack.HasBoost"><display-tooltip-text :string="attack.BoostHeader" /></div>
       <div v-if="attack.Chart.HasDamageType"><display-tooltip-text :string="attack.Chart.DetailsHeader" /></div>
-      <div v-if="attack.Chart.HasMaterial"><display-tooltip-text :string="attack.Chart.MaterialHeader" /></div>
+      <div v-if="attack.Chart.HasMaterial && !isWeapon"><display-tooltip-text :string="attack.Chart.MaterialHeader" /></div>
       <div v-if="attack.Chart.HasOnMiss"><display-tooltip-text :string="attack.Chart.OnMissHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
       <div v-if="attack.HasChargedEffect"><display-tooltip-text :string="attack.ChargedEffectHeader" /></div>

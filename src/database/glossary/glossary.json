@@ -65,6 +65,7 @@
     "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve it as follows:\n* **Obstacle Colliding with Obstacle**: Deal Damage to both _Obstacles_ equal to the half the _Forced Movement_ remaining. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_.\n* **Obstacle Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Obstacle_. After resolving this _Push_, the creature gains _Vulnerable_ equal to half the spaces they moved. Continue moving the _Obstacle_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Vulnerable_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Vulnerable_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Obstacle**: Deal Damage to the _Obstacle_ equal to the half the _Forced Movement_ remaining and inflict _Vulnerable_ on the creature equal to the same amount. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Obstacle_ was _Destroyed_, reduce the _Forced Movement_ by the Obstacle's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
   },
   { "name": "Collide", "see": "Collision" },
+  { "name": "Collides", "see": "Collision" },
   {
     "name": "Cold",
     "effect": "A damage type caused by freezing temperatures and frigid climate.\n&nbsp;\nCold Damage is always _Endurable_. \n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Frigid_ instead of increasing Damage if you deal Cold Damage.\n&nbsp;\nIf a character is _Downed_ by Cold Damage, inflict the following _Wounds_ based on the roll:\n 1-2: Frigidt_ 1\n 3-4:Frigidst_ 2\n5-6Frigidost_ 3"
@@ -161,6 +162,7 @@
     "name": "Equipped",
     "effect": "Any Equipment that a character has on their person."
   },
+  { "name": "Equip", "see": "Equipped" },
   {
     "name": "Falling",
     "effect": " If a creature moves from one Elevation to a lower _Elevation_ take Crush Damage equal to twice the Elevation Change. If a creature takes at least 6 Damage in this way they also fall _Prone_. A creature may reduce this Damage by 2 for every _Stamina_ spent."
@@ -240,11 +242,11 @@
   },
   {
     "name": "Major Source",
-    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1."
+    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1.\n* **Wind:** Any _Windy_ or _Electric_ Terrain."
   },
   {
     "name": "Minor Source",
-    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_."
+    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_.\n* **Wind:** Any space that is not a Major Earth Source."
   },
   { "name": "Major Sources", "see": "Major Source" },
   { "name": "Minor Sources", "see": "Minor Source" },
@@ -343,10 +345,6 @@
   {
     "name": "Shaper",
     "effect": "Shaper Disciplines heavily manipulate Terrain and Obstacles, either by creating them or removing them and can easily change the layout of the battlefield."
-  },
-  {
-    "name": "Shift",
-    "effect": "The act of using _Movement_ to move about the battlefield. Characters typically have one Shift per _Turn_, as described by the 'Move' field in a _Technique_. If multiple distances are listed (such as '_Step_, _Step') a character takes that many Shifts, each of that distance. Characters may freely interrupt a Shift to Attack or use any part of the Technique's Effect, unless specified otherwise."
   },
   {
     "name": "Secondary Sense",

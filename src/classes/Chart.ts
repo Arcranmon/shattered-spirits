@@ -30,9 +30,9 @@ class Chart {
     return this.damage_type_ != ''
   }
   get DetailsHeader() {
-    if (this.damage_type_ === undefined) return
     var damage_type = '_' + this.damage_type_ + '_'
     damage_type = '**Attack Details:** ' + damage_type.replace('/', '_/_') + ' Damage'
+    if (this.damage_type_ == 'Varying') damage_type += ' Type'
     if (this.HasKeywords) return damage_type + ' ' + this.KeywordsHeader
     return damage_type
   }
@@ -59,6 +59,9 @@ class Chart {
   }
   public get HasMaterial() {
     return this.material_.length > 0
+  }
+  public get Material() {
+    return this.material_
   }
   public get MaterialHeader() {
     return '**Material:** ' + this.material_
