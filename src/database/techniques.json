@@ -60,8 +60,8 @@
     "type": "Strike",
     "speed": "4-8",
     "move": "Step",
-    "effect": "Choose a Size 1 or smaller creature within Range. Make their space and all adjacent _Water_ spaces _Frozen_. Deal 2 _Cold_ Damage to the target and inflict _Frigid_ 2, _Hobbled_ 1. You may purchase up to X value of additional effects, where X is the number of spaces adjacent to the target that are _Frozen_. You may purchase all options multiple times:\n* 1: Deal +1 _Cold_ Damage.\n* 1: Increase the Frigidt_ inflicted by 1.\n* 2: Increase the _Hobbled_ inflicted by 1.\n* 3: Add _Restrained_ [2 _Stamina_]. If you purchase this option again, increase the cost to Negate by 2.",
-    "special": "If this Attack inflicts _Restrained_, the effect automatically ends if there are no _Frozen_ spaces adjacent to the Target. Otherwise, while _Recovering_, the creature may spend 2 _Stamina_ and take 2 _Cold_ Damage to end the effect.",
+    "effect": "Choose a Size 1 or smaller creature within Range. Make their space and all adjacent _Water_ spaces _Frozen_. Deal 2 _Cold_ Damage to the target and inflict _Frigid_ 2, _Hobbled_ 1. You may purchase up to X value of additional effects, where X is the number of spaces adjacent to the target that are _Frozen_. You may purchase all options multiple times:\n* 1: Deal +1 _Cold_ Damage.\n* 1: Increase the Frigid_ inflicted by 1.\n* 2: Increase the _Hobbled_ inflicted by 1.\n* 3: Add _Restrained_ [2 _Stamina_]. If you purchase this option again, increase the cost to Negate by 2.",
+    "special": "If this effect inflicts _Restrained_, the effect automatically ends if there are no _Frozen_ spaces adjacent to the Target. Otherwise, while _Recovering_, the creature may spend 2 _Stamina_ and take 2 _Cold_ Damage to end the effect.",
     "boost": "Choose one:\n* 2 _Momentum_: You may target a Size 2 creature.\n* 5 _Momentum_: You may target a Size 3 creature."
   },
   {
@@ -175,7 +175,7 @@
     "type": "Strike",
     "speed": "1-8",
     "move": "Step",
-    "effect": "Make a _Melee_ _Major Attack_, adding _Marked_ and _Slide_ 3. Immediately after inflicting the _Slide_, you must Move 3 but must end this Movement adjacent to the original Target. If neither you nor the target have a creature adjacent to you, you become _Marked_ by the target. While you are both _Marked_:\n* Neither of you may remove or change the target of your _Marked_ by any means, or inflict _Marked_ on other creatures.\n* You may not willingly move away from your Target.\n* You and the Target have _Disadvantage_ on all attacks not against a _Marked_ target.\n\nThis effect ends when you or the target is _Defeated_ or they _Recover_ while not adjacent to you and expend 4 _Stamina_. If this effect ends, immediately remove both _Marked_."
+    "effect": "Make a _Melee_ _Major Attack_, adding _Marked_ and _Slide_ 3. Immediately after inflicting the _Slide_, you must Move 3 in the same direction. If neither you nor the target have a creature adjacent to you and you are adjacent to the Target, you become _Marked_ by the target. While you are _Marked_ by one another:\n* Neither of you may inflict _Marked_ on other creatures and immediately end all other _Marked_ effects.\n* You and the Target have _Disadvantage_ on all attacks against other creatures.\n\nThis effect ends when you or the target is _Defeated_ or they _Recover_ while not adjacent to you and expend 4 _Stamina_. If this effect ends, immediately remove both _Marked_."
   },
   {
     "name": "Lion's Roar",
@@ -184,8 +184,8 @@
     "type": "Strike",
     "speed": "1-8",
     "move": "Step",
-    "effect": "Gain _Endurance_ 2. Make a _Major Attack_. Immediately after resolving the Attack grant _Courageous_ 1 allies of your choice in a _Burst_ 2, or _Courageous_ 2 on a _Crit_ or if you defeat the foe.",
-    "special": "An ally that received _Courageous_ gains a _Free Turn_ where they may do one of the following:\n* Make a _Minor Attack_ against an enemy _Marked_ by you.\n* _Step_ towards you."
+    "effect": "Gain 4 _Health_ and make a _Major Attack_. Immediately after resolving the Attack grant _Courageous_ 1 allies of your choice in a _Burst_ 2, or _Courageous_ 2 if you _Crit_ or _Defeated_ a foe.",
+    "special": "Any ally that received _Courageous_ gains a _Free Turn_ where they may Move 1 towards you."
   },
   {
     "name": "Ocean's Veil",
@@ -196,7 +196,7 @@
     "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Reposition",
-    "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique.",
+    "effect": "Gain 2 _Momentum_, then _Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique.",
     "special": "You may add [_Enchant_]; if you do, remove [_Fleeting_] from these _Water Veil_s. "
   },
   {
@@ -208,7 +208,7 @@
     "range": [{ "category": "Self" }],
     "area": "_Cone_ 12",
     "move": "Step",
-    "effect": "Resolve your Move, inflict _Studied_ 1 on all creatures of your choice in the _Area_, then draw a _Hazard_ there. Until you leave this space or the end of the _Round_, you may trigger _Opportunity Attack_ whenever a creature within this _Hazard_ creates an _Opening_, regardless of _Reach_. _Opportunity Attack_s triggered in this way use _Ranged_ Attacks.",
+    "effect": "Resolve your Move, inflict _Studied_ 1 on all creatures of your choice in the _Area_, then draw a _Hazard_ there. Until you leave this space or the end of the _Round_, you may trigger _Opportunity Attack_ whenever a creature within this _Hazard_ creates an _Opening_, regardless of _Reach_. _Opportunity Attack_s triggered in this way may use _Ranged_ Attacks.",
     "special": "You may reduce the Area to Cone to 9, 6, or 3; if you do, you may inflict an additional 1/2/4 _Studied_, distributed among creatures in the _Area_ as you wish."
   },
   {
@@ -314,7 +314,7 @@
     "type": "Defend",
     "speed": "1-8",
     "move": "Step",
-    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Your allies always have at least _Heavy Cover_ against Attacks that pass through your space.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Endurance_."
+    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Your allies always have at least _Heavy Cover_ against Attacks that pass through your space.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Health_."
   },
   {
     "name": "Scouring Flames",
@@ -368,7 +368,7 @@
     "speed": "4-8",
     "range": [{ "category": "Ranged", "value": 4 }],
     "move": "Step",
-    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 2 _Guard_ and may not be moved by another creature. At the end of each _Phase_, excluding the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_. This _Line_ must be placed in such a way that, if you drew a _Cone_ directly from yourself, the _Line_ lies fully within it.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
+    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 2 _Guard_ and may not be moved by another creature. At the end of each _Phase_, excluding the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_. This _Line_ must be placed in such a way that it would lie fully in a valid path for an _Angled_ _Push_ on the _Obstacle_.",
     "boost": "2 _Momentum_: Instead, create a _Boulder_ as a part of this _Technique_. There must be at least one _Earthen_ space within _Range_ to use this _Boost_.",
     "chart": {
       "damage_type": "Crush",
@@ -496,7 +496,7 @@
     "keywords": ["Enchant", "_Upkeep_ 2"],
     "speed": "1-8",
     "move": "Step",
-    "range": [{ "category": "Ranged", "range": 8 }],
+    "range": [{ "category": "Ranged", "value": 8 }],
     "area": "_Blast_ 1",
     "effect": "Mark the _Area_ as a _Hazard_. At the end of the next _Phase_ remove the _Hazard_ and create a Whirlwind, where the centermost space is an _Updraft_ and all other spaces are _Gusting_ with the direction of all _Gusting_ spaces forming a complete circle. These spaces may not be removed by any means while the _Enchant_ persists.\n&nbsp;\nAny creature in a space that is a part of this Whirlwind gains _Restrained_ [6 _Stamina_]; if they _Negate_, they may not be _Restrained_ by the Whirlwind until the end of the next _Phase_. Any _Resilience_ (_Forced Movement_) applies for _Negating_ this effect. Creatures are _Airborne_ while _Restrained_ in this way, and this _Restrained_ is only removed if the creature is no longer within the Whirlwind's _Area_. Creatures greater than Size 1 only gain this if at least half of their occupied spaces are within the _Area_. While _Restrained_ in any space within the Whirlwind that creature moves with the Whirlwind.\n&nbsp;\nAt the start of each subsequent _Phase_ draw up to a _Line_ 2 _Hazard_ from the centermost space of the Whirlwind. At the end of that _Phase_ move the Whirlwind along this line and remove the _Hazard_. Any creatures that the Whirlwind passes through gain _Restrained_, following the same rules as when the Whirlwind was originally created. If the given space is occupied, place them in the nearest unoccupied space within the Whirlwind; if the Whirlwind has no unoccupied spaces, they instead are moved to the nearest non-Whirlwind space and gain _Vulnerable_ 1. Finally, inflict _Slide_ 1 on all creatures in a _Gusting_ space that is a part of the Whirlwind in the direction of the _Gusting_ space. This may not be _Negated_, and all _Slides_ are resolved simultaneously. If a _Collision_ occurs, inflict _Vulnerable_ 1 instead of the usual _Collision_ rules.\n&nbsp;\nCreatures within the Whirlwind may expend 6-X _Stamina_ at the end of any _Phase_ to remove _Restrained_, where X is the number of _Phases_ the creature has been in the Whirlwind. Immediately before a creature within the Whirlwind loses _Restrained_ inflict _Slide_ X+1 on them in the direction of the _Gusting_ space they are occupying and, when determining any _Fall_, treat the creature as if they fell an additional X/2 spaces. If they are in the centermost space, inflict _Slide_ in the direction of your choice.",
     "boost": "2 _Momentum_ (paid at the end of any _Phase_): A creature of your choice within the Whirlwind automatically _Negates_ and resolves the normal _Slide_ effect. You may choose to add [_Forceful_] or treat the creature as if they _Fell_ 3 spaces less.",
