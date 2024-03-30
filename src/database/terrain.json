@@ -61,7 +61,8 @@
     "layer": "Surface",
     "element": "Ice",
     "keywords": ["_Watersource_ 1", "Rough"],
-    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* The cost to Negate any _Forced Movement_ in this space is increased by 1.\n* Increase the cost to negate all _Prone_ effects inflicted on them by 1.\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement. A creature may expend 1 _Stamina_ to negate this penalty.",
+    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* Creatures in this space gain _Susceptible_ (_Forced Movement_, _Prone_).\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement. A creature may expend 1 _Stamina_ to negate this penalty.",
+    "special": "Ignore _Water_ Base _Terrain_ while a space is Frozen.",
     "destroy": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
   },
   {
@@ -70,7 +71,7 @@
     "layer": "Weather",
     "element": "Windy",
     "keywords": ["Fleeting"],
-    "effect": "Gusting Terrain has a direction. Movement against this Terrain's direction costs an additional space, or 2 additional spaces if the creature is _Flying_. Additionally, Ranged Attacks that pass through this space that do not match this space's direction take a -1 _Penalty_.",
+    "effect": "Gusting Terrain has a direction. Movement against this Terrain's direction costs an additional space, or 2 additional spaces if the creature is _Flying_/_Leaping_. Additionally, Ranged Attacks that pass through this space that do not match this space's direction take a -1 _Penalty_.",
     "special": "Creatures greater than Size 1 only suffer the Movement penalty if at least half the spaces they are entering are Gusting.",
     "interactions": [
       "Gusting Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."

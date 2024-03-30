@@ -8,7 +8,7 @@
     "class": "Gale",
     "range": [{ "category": "Ranged", "value": 6 }],
     "target": "A _Gusting_ space.",
-    "effect": "Inflict _Push_ 3/_Vulnerable_ 2 on a creature in, or adjacent to and in-line with the direction of a _Gusting_.",
+    "effect": "Inflict _Slide_ 3/_Vulnerable_ 2 on a creature in, or adjacent to and in-line with the direction of a _Gusting_ space. The _Slide_ must match the direction of the _Gusting_ space.",
     "boost": "1 _Momentum_: Remove the _Gusting_ space. Inflict both effects.",
     "rank": "Minor Attack",
     "analysis_notes": { "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5] }
@@ -284,7 +284,7 @@
     "range": [{ "category": "Ranged", "value": 4 }],
     "target": "A creature adjacent to a _Blazing_ space.",
     "effect": "Originate the Attack from a _Blazing_ space adjacent to the Target, treating it as _Melee_.",
-    "boost": "3 _Momentum_: As a part of this Attack, remove all _Blazing_ spaces adjacent to the Target. If remove at least 3, add [_Enchant_]. The creature does not reduce their _Alight_ from the end of _Phase_ effect while this _Enchant_ persists.",
+    "boost": "3 _Momentum_: As a part of this Attack, remove all _Blazing_ spaces adjacent to the Target. If you remove at least 3, add [_Enchant_]. The creature does not reduce their _Alight_ from the end of _Phase_ effect while this _Enchant_ persists. The _Enchant_ automatically ends if the Target has no _Alight_.",
     "special": "If all spaces adjacent to the Target are _Blazing_ this Attack has _Advantage_.",
     "charged_effect": "Mark the space the Attack will originate from with a _Hazard_. Add _Alight_ 1, _Burned_ _0/0/1/2_.",
     "chart": {
@@ -581,7 +581,7 @@
     "effect": "_Draw_ up to 3 within _Range_. Resolve the below attack against a single creature between you and each _Drawn_ _Source_, including creatures in those _Sources_. You may _Draw_ multiple times from the same _Source_; if you do, add _Pull_ 1 and deal +1 Damage on the _Attack_ rather than attacking a different creature. You may also do this if the creature is between you and multiple _Drawn_ _Sources_. After resolving the _Attack_, create _Wet_ spaces adjacent to you equal to the amount you _Drew_.",
     "special": "After your foe _Negates_ you may replace any amount of inflicted _Pull_ with _Vulnerable_.",
     "charged_effect": "When _Charged_, mark the _Sources_ you are _Drawing_ from as a _Hazard_. Add _Prone_ [2 _Stamina_] on a 7+.",
-    "boost": "Choose any:\n* 1 _Momentum_: Do not deal Damage to one Target, but automatically roll an 8. You may choose this _Boost_ multiple times.\n* 2 _Momentum_: _Draw_ one more. You may repeat this Boost up to 3 times.",
+    "boost": "Choose any:\n* 1 _Momentum_: Do not deal Damage to one Target, but automatically roll an 8. You may use this _Boost_ any number of times.\n* 2 _Momentum_: _Draw_ one more. You may use this Boost up to 4 times.",
     "chart": {
       "damage_type": "Crush",
       "damage": [0, 0, 2, 2, 3, 3, 4, 4, 4, 5, 5],
@@ -870,9 +870,9 @@
   {
     "name": "Surprise Strike",
     "desc": "An unexpected attack using an unlikely weapon.",
-    "reqs": "Must be made with an _Opportune Weapon_.",
+    "reqs": "Must be made with an _Opportune_ Weapon.",
     "cost": "1 _Momentum_",
-    "effect": "Make an _Attack_ using an _Opportune  Weapon_ that was _Wielded_ this _Turn_. Treat its _Speed_ as 1 lower, and add _Vulnerable_ 1, _Slowed_ (2 _Stamina_).",
+    "effect": "Make an _Attack_ using an _Opportune_  Weapon that was _Wielded_ this _Turn_. Treat its _Speed_ as 1 lower, and add _Vulnerable_ 1, _Slowed_ (2 _Stamina_).",
     "rank": "Major Attack"
   },
   {
