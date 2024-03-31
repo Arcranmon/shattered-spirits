@@ -36,7 +36,7 @@
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" />
         <show-cards :inputs="[$store.getters.getManeuver('Hide')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
         <show-cards
-          :inputs="[this.$store.getters.getManeuver('Skirmish'), $store.getters.getManeuver('Swift Manifestation'), $store.getters.getManeuver('Reorient')]"
+          :inputs="[this.$store.getters.getManeuver('Skirmish'), $store.getters.getManeuver('Swift Manifestation'), $store.getters.getManeuver('Shift')]"
           job="Maneuvers"
           :collapse="false"
         /><show-cards
@@ -49,7 +49,7 @@
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
         <show-cards :inputs="[$store.getters.getManeuver('Disengage')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
         <show-cards
-          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Improvised Combo'), $store.getters.getManeuver('Interact')]"
+          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Improvised Combo'), $store.getters.getManeuver('Use Environment')]"
           job="Maneuvers"
           :collapse="false"
         />

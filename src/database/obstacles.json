@@ -7,7 +7,7 @@
     "height": 1,
     "hardness": 11,
     "traits": "_Resistance_ 2 [All but _Crush_]",
-    "forced_movement": "_Forced Movement_ may move this _Obstacle, but reduces the value by 3, or 1 if it is [_Earth_]. This _Forced Movement_ is always _Forceful_. If the _Forced Movement_ is already _Forceful_, deal +1 Damage. If the _Boulder_ moved to a lower _Elevation_, deal +1 Damage.",
+    "forced_movement": "_Forced Movement_ may move this _Obstacle, but reduces the value by 3, or 1 if it is [_Earthbend_]. Forced Movement used in this way may not be used to Destroy the Obstacle. This _Forced Movement_ is always _Forceful_. If the _Forced Movement_ is already _Forceful_, deal +1 Damage. If the _Boulder_ moved to a lower _Elevation_, deal +1 Damage.",
     "destroy": "Make this space _Veiled_ and _Uneven Earth_. Inflict  _Dazed_ 1, _Push_ 1, 2 Crush Damage [_Avoidable_] on a creature of your choice adjacent to the _Obstacle_."
   },
   {
@@ -42,20 +42,7 @@
     "traits": "_Resistance_ 2 [All but _Crush_]",
     "forced_movement": "[_Earthbend_] _Forced Movement_ may move this _Obstacle, but reduces the value by 2. _Forced Movement_ used in this way may not be used to _Destroy_ the _Obstacle_. A space of _Forced Movement_ may be used to rotate this _Obstacle_.",
     "destroy": "Place a _Large Improvised_ Weapon in this space. It is made of Stone and has the _Fragile_ and _Opportune_ keywords.",
-    "special": "When this _Obstacle_ is created, choose one face. If a creature _Collides_ with this _Obstacle_ on that face, deal Stab Damage and inflict _Bleed_ equal to the _Vulnerable_ inflicted. Treat this space as _Jagged_ for larger creatures that can occupy it."
-  },
-  {
-    "name": "Foliage",
-    "desc": "Small plants that, while they are not enough to obstruct movement, can provide some meager defense.",
-    "element": "Wooden",
-    "keywords": ["Soft Cover"],
-    "size": 1,
-    "height": 1,
-    "hardness": 5,
-    "forced_movement": "[_Wood_] _Forced Movement_ may move this _Obstacle.",
-    "traits": "_Weakness_ 1 [_Slash_/_Fire_], _Resistance_ 1 [_Crush_]",
-    "destroy": "If _Destroyed_ by Fire Damage, this space becomes _Blazing_.",
-    "speed": 1
+    "special": "When this _Obstacle_ is created, choose one face. If a creature _Collides_ with this _Obstacle_ on that face, deal Stab Damage and inflict _Bleeding_ equal to the _Vulnerable_ inflicted. Treat this space as _Jagged_ for larger creatures that can occupy it."
   },
   {
     "name": "Ice Panel",
@@ -66,7 +53,7 @@
     "height": 1,
     "hardness": 3,
     "traits": "_Weakness_ 4 [_Fire_], _Resistance_ 4 [_Cold_]",
-    "destroy": "Inflict _Frost_ 1 on a creature of your choice adjacent to the _Obstacle_. If _Destroyed_ by a _Collision_, the Colliding creature is always the Target."
+    "destroy": "Inflict _Frigid_ 1 on a creature of your choice adjacent to the _Obstacle_. If _Destroyed_ by a _Collision_, the Colliding creature is always the Target. Do not resolve this if Destroyed by a _Draw_ effect."
   },
   {
     "name": "Ice Pillar",
@@ -77,7 +64,7 @@
     "height": 2,
     "hardness": 8,
     "traits": "_Weakness_ 4 [_Fire_], _Resistance_ 4 [_Cold_]",
-    "destroy": "Choose one:\n* Create a _Line_ 2 _Hazard_ on the opposite side of this Obstacle. At the end of the _Round_, remove this Obstacle and inflict _Frost_ 1, _Prone_ [1 _Stamina_] on all creatures in the _Hazard_ spaces, then make those _Frigid Air_ until the end of the next _Phase_. Any creature in the Obstacle's space when it is removed immediately _Falls_.\n* As above, but pay 2 _Momentum_ to resolve the effect immediately."
+    "destroy": "Choose one:\n* Create a _Line_ 2 _Hazard_ on the opposite side of this Obstacle. At the end of the _Round_, remove this Obstacle and inflict _Frigid_ 1, _Prone_ [1 _Stamina_] on all creatures in the _Hazard_ spaces, then make those _Frigid Air_ until the end of the next _Phase_. Any creature in the Obstacle's space when it is removed immediately _Falls_.\n* As above, but pay 2 _Momentum_ to resolve the effect immediately. Do not resolve this if Destroyed by a _Draw_ effect."
   },
   {
     "name": "Ice Wall",
@@ -88,7 +75,7 @@
     "height": 1,
     "hardness": 6,
     "traits": "_Weakness_ 4 [_Fire_], _Resistance_ 4 [_Cold_]",
-    "destroy": "Inflict _Frost_ 1 on a creature of your choice adjacent to the _Obstacle_. If _Destroyed_ by a _Collision_, the Colliding creature is always the Target."
+    "destroy": "Inflict _Frigid_ 1 on a creature of your choice adjacent to the _Obstacle_. If _Destroyed_ by a _Collision_, the Colliding creature is always the Target. Do not resolve this if Destroyed by a _Draw_ effect."
   },
   {
     "name": "Planted Shield",
@@ -100,7 +87,7 @@
     "traits": "Same as original shield.",
     "effect": "Hardness and Element are the same as the original shield. If it takes Damage equal to half of its Hardness or greater the Obstacle is removed and the shield is placed undamaged in the space. If a creature is in this obstacle's space they may use their own _Reactions_ and _Negate_ if the shield is Attacked as if they were being attacked.",
     "special": "This Obstacle does not block Movement.",
-    "interact": "You must be in the same space as the shield to use this _Interact_. Choose 3 sides of the current space. You are _Covered_ against any Attack that passes through one of these spaces while the _Obstacle_ is here. This ends when you move out of this space or _Attack_.",
+    "interact": "1 _AP_: You must be in the same space as the shield to use this. Use _Raise Guard_ with the planted shield; if you leave this space, immediately lose _Guarding_. You may not change the orientation of the _Arc_.",
     "destroy": "The original shield is placed _Sundered_ in this space."
   },
   {

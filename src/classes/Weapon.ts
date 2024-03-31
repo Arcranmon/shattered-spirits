@@ -37,10 +37,11 @@ class Weapon extends Attack {
     return '**Parry:** ' + this.parry_
   }
   get HasMaterial() {
-    return this.material_ != ''
+    return this.chart_.HasMaterial
   }
   get MaterialHeader() {
-    return '**Material:** ' + this.material_ + ', _Durability_ ' + this.durability_
+    if (this.chart_.Material == 'Varying') return '**Material:** ' + this.chart_.Material + ' Material/Durability'
+    return '**Material:** ' + this.chart_.Material + ', _Durability_ ' + this.durability_
   }
   get Weight() {
     return this.weight_

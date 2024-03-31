@@ -5,10 +5,10 @@
     "class": "Basic",
     "keywords": ["Fluid"],
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
     "effect": "Choose one:\n* Make 1 _Major Attack_ and 1 _Minor Attack_.\n* Make 3 _Minor Attacks_.",
-    "special": "You may use any _Gambit_ with a 1 _Momentum_ discount this _Turn_.",
+    "special": "Gain 1 _Temporary_ _Momentum_ that may only be used for _Gambits_.",
     "boost": "2 _Momentum_: Make one less _Light_/_Versatile_ _Minor Attack_ and one more _Light_/_Versatile_ _Major Attack_."
   },
   {
@@ -17,7 +17,7 @@
     "class": "Basic",
     "keywords": ["Fluid"],
     "type": "Move",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step, Step, Step",
     "effect": "Gain 1 _Momentum_. Attacks against you take a -2 _Penalty_ this _Turn_. At the end of your first _Move_ inflict _Vulnerable_ 1 in a _Burst_ 1. At the end of the second, inflict _Exposed_ 1 in a _Burst_ 1. At the end of the third, inflict _Reeling_ 1 in a _Burst_ 1. You must move at least one space during each Move this turn.",
     "special": "Any creature that uses a Reaction on you triggered by you creating an _Opening_ due to starting Movement gains _Impaired_ 1."
@@ -27,10 +27,10 @@
     "desc": "You command your allies with practiced precision, coordinating a synchronized strike.",
     "class": "Basic",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
     "effect": "Make a _Minor Attack_, then choose two allies. They gain a _Free Turn_ that they may use to _Step_ towards the target of your Attack and make a _Minor Attack_ against the same creature as you. If all three Attacks _Graze_+, inflict _Reeling_ 1, or _Reeling_ 2 on a _Hit_+.",
-    "boost": "2 _Momentum_: Instead, your ally makes a _Major Attack_ on the _Free Turn_. Your ally may contribute to this _Boost_. You may repeat this _Boost_.",
+    "boost": "2 _Momentum_: Instead, your ally makes a _Major Attack_ on the _Free Turn_. Your ally may contribute to this _Boost_. You may use this _Boost_ any number of times.",
     "special": ""
   },
   {
@@ -38,20 +38,30 @@
     "desc": "You become a tightly-wound spring, ready to lunge out at the first foe foolish enough to enter your range.",
     "class": "Basic",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "None",
     "effect": "Choose a _Melee_ _Major Attack_. Create a _Burst_ X _Hazard_ and become _Charging_, where X is your _Step_ distance + the _Reach_ of the Attack. Whenever you end a _Phase_ while _Charging_ (excluding the initial _Phase_ where this Technique was used), increase the size of the _Hazard_ by 1, up to your _Reposition_ distance. Whenever a creature ends their _Turn_ in the _Hazard_ or enters it you may immediately end _Charging_. You may _Reposition_ towards them, then make a _Major Attack_ against them with _Advantage_. When calculating _Speed Penalties_, add the number of _Phases_ you were charging to the current _Phase_.",
     "boost": "1 _AP_, 2 _Momentum_: After removing the _Hazard_ and making this Attack, repeat the _Effect_."
+  },
+  {
+    "name": "Dance of a Thousand Stings",
+    "class": "Basic",
+    "desc": "You dart across the battlefield, unleashing a serious of swift strikes.",
+    "type": "Strike",
+    "speed": "1-3",
+    "move": "Step, Step, Step",
+    "effect": "After each Movement, make a _Minor Attack_. Any Attacks you make this _Turn_ cause the Target to treat your remaining Movement this _Turn_ as [_Safe_] on a _Hit_+. If you move at least 2 spaces before making an Attack, deal +1 _Bonus Damage_ and add _Vulnerable_ 1.",
+    "special": "If each Attack this _Turn_ targets unique Targets, gain 1 _Momentum_."
   },
   {
     "name": "Deep Freeze",
     "desc": "You rapidly drop the temperature around a foe, attempting to freeze them solid.",
     "class": "Tundra",
     "type": "Strike",
-    "speed": "4",
+    "speed": "4-8",
     "move": "Step",
-    "effect": "Choose a Size 1 or smaller creature within Range. Make their space and all adjacent _Water_ spaces _Frozen_. Deal 2 _Cold_ Damage to the target and inflict _Frost_ 2, _Hobbled_ 1. You may purchase up to X value of additional effects, where X is the number of spaces adjacent to the target that are _Frozen_. You may purchase all options multiple times:\n* 1: Deal +1 _Cold_ Damage.\n* 1: Increase the _Frost_ inflicted by 1.\n* 2: Increase the _Hobbled_ inflicted by 1.\n* 3: Add _Restrained_ [2 _Stamina_]. If you purchase this option again, increase the cost to Negate by 2.",
-    "special": "If this Attack inflicts _Restrained_, the effect automatically ends if there are no _Frozen_ spaces adjacent to the Target. Otherwise, while _Recovering_, the creature may spend 2 _Stamina_ and take 2 _Cold_ Damage to end the effect.",
+    "effect": "Choose a Size 1 or smaller creature within Range. Make their space and all adjacent _Water_ spaces _Frozen_. Deal 2 _Cold_ Damage to the target and inflict _Frigid_ 2, _Hobbled_ 1. You may purchase up to X value of additional effects, where X is the number of spaces adjacent to the target that are _Frozen_. You may purchase all options multiple times:\n* 1: Deal +1 _Cold_ Damage.\n* 1: Increase the Frigid_ inflicted by 1.\n* 2: Increase the _Hobbled_ inflicted by 1.\n* 3: Add _Restrained_ [2 _Stamina_]. If you purchase this option again, increase the cost to Negate by 2.",
+    "special": "If this effect inflicts _Restrained_, the effect automatically ends if there are no _Frozen_ spaces adjacent to the Target. Otherwise, while _Recovering_, the creature may spend 2 _Stamina_ and take 2 _Cold_ Damage to end the effect.",
     "boost": "Choose one:\n* 2 _Momentum_: You may target a Size 2 creature.\n* 5 _Momentum_: You may target a Size 3 creature."
   },
   {
@@ -59,9 +69,9 @@
     "desc": "You glide forward on a sheet of ice, accelerating across the battlefield.",
     "class": "Tundra",
     "type": "Move",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Dash [_Rush_]",
-    "effect": "Gain 8 Skate Points, which may be spent for various effects this Turn:\n* You may spend 1 Skate Point to _Draw_ 1 within Range 3 and make an adjacent space _Frozen_, or 0 Skate Points if the target space is a _Watersource_. You may use this option up to 10 times.\n* You may spend 2 Skate Points as _Momentum_ when using _Flying Snow_.\n* At the end of a Move, you may choose one of the following options:\n\t* Spend X (maximum 3) Skate Point to inflict _Frost_ X and deal X _Cold_ Damage to an adjacent creature.\n\t* You may spend 4 Skate Points to inflict _Frost_ 1 and deal 2 _Cold_ Damage in a _Cone_ 2.\n\t* You may spend 8 Skate Points to inflict _Frost_ 1 and deal 3 _Cold_ Damage in a _Cone_ 3.\n\nLose any unspent Skate Points at the end of the _Turn_.",
+    "effect": "Gain 8 Skate Points, which may be spent for various effects this Turn:\n* You may spend 1 Skate Point to _Draw_ 1 within Range 3 and make an adjacent space _Frozen_.\n* You may spend 0 Skate Points to _Draw_ 1 from a _Watersource_ as your enter it to make it _Frozen_. Do not resolve any effects from entering the _Watersource_ space. You may use this option as many times as you wish.\n* You may spend 2 Skate Points as _Momentum_ when using _Flying Snow_. You may use this option as many times as you wish.\n* Spend X (maximum 3) Skate Point to inflict _Frigid_ X and deal X _Cold_ Damage to an adjacent creature.\n* At the end of a Move, you may choose one of the following options:\n\t* You may spend 4 Skate Points to inflict _Frigid_ 1 and deal 2 _Cold_ Damage in a _Cone_ 2.\n\t* You may spend 8 Skate Points to inflict _Frigid_ 1 and deal 3 _Cold_ Damage in a _Cone_ 3.\n\nLose any unspent Skate Points at the end of the _Turn_.",
     "special": "All Movement this _Turn_ on a _Frozen_ space is [_Safe_]. Additionally, gain [_Frostwalk_] this _Turn_ or, if you already have [_Frostwalk_], gain 2 more Skate Points.",
     "boost": "X _Momentum_ (max 5): Gain an additional X Skate Points.\nChoose one:\n* 1 _Momentum_: Remove [_Rush_].\n* 2 _Momentum_: Instead, Move is _Reposition_ [_Rush_], _Reposition_ [_Rush_]."
   },
@@ -70,7 +80,7 @@
     "desc": "You seize the earth within an area, causing vicious jagged bursts of sharp stone to erupt unpredictably.",
     "type": "Strike",
     "class": "Land",
-    "speed": "1-3 [_Rigid_]",
+    "speed": "1-3",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Step",
     "effect": "Create a _Blast_ 1 _Hazard_ within Range. At the end of each _Phase_ (excluding this one), choose an _Earthen_ space within the _Hazard_. Apply the _Jagged_ effect to the creature in that space, then make the space _Jagged_. If the space was already _Jagged_, instead apply the effect twice.",
@@ -82,9 +92,9 @@
     "desc": "You send water whipping back and forth, creating a tide that pulls foes in and out.",
     "class": "Tide",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
-    "effect": "_Draw_ 4, then use _Roiling Tide_ three times at no Cost and without the need to _Draw_, with the following rules.\n* <u>First Attack:</u> Resolve this Attack as normal. If you use the _Boost_, choose any _Source_ you initially _Drew_ from.\n* <u>Second Attack:</u> This Attack must inflict the opposite of _Push_/_Pull_ that the previous Attack did and may not target the previous Target. Apply the _Boost_ effect at no Cost, but it must originate from the previous Target's space, as if you _Drew_ from it.\n* <u>Final Attack</u>: This Attack follows all the rules of the second Attack. Additionally, it is instead a _Cone_ 2 Area. The _Area_ becomes _Wet_ after resolving this Attack.",
+    "effect": "_Draw_ 4, then use _Roiling Tide_ three times at no Cost and without the need to _Draw_, with the following rules.\n* <u>First Attack:</u> Resolve this Attack as normal. If you use _Roiling Tide_'s _Boost_, choose any _Source_ you initially _Drew_ from.\n* <u>Second Attack:</u> This Attack must inflict the opposite of _Push_/_Pull_ that the previous Attack did and may not target the previous Target. Apply _Roiling Tide_'s _Boost_ at no Cost, but it must originate from the previous Target's space, as if you _Drew_ from it.\n* <u>Final Attack</u>: This Attack follows all the rules of the second Attack. Additionally, it is instead a _Cone_ 2 Area. The _Area_ becomes _Wet_ after resolving this Attack.",
     "special": "No Target may be more than 8 spaces from you during this Technique.",
     "boost": "4 _Momentum_: Instead, _Draw_ 7. Prior to making the Final Attack, make another Attack following the same rules as the second. The Final Attack instead has a _Cone_ 3 Area. For every 2 _Phases_ after Phase 3 this Technique is played, reduce the Cost of this _Boost_ by 1."
   },
@@ -93,19 +103,20 @@
     "desc": "You carefully scan the battlefield, finding opportunities for allies wherever you look.",
     "class": "Basic",
     "type": "Support",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
     "range": [{ "category": "Ranged", "value": 8 }],
     "keywords": ["Priority"],
-    "effect": "Roll 1d6 5 times, then place 5 Weapons, based on the individual dice rolls and following rules:\n* You may place these anywhere within _Range_, but may not place them adjacent to yourself or allies or within 3 spaces of another _Improvised Weapons_ placed by this effect.\n* On a 1-3, the Weapon is a _Small Improvised_ Weapon, made of the same material as the _Terrain_ or an adjacent _Obstacle_. It deals your choice of _Crush_, _Slash_, or _Stab_ damage.\n* On a 4+, you may place a _Medium Improvised Weapon_.\n* On a 6, you may choose _Wood_, _Metal_, or _Natural_ for the material.",
-    "special": "All Weapons placed by this have the _Opportune_ and _Fragile_ keywords. Only you and your allies may use these Weapons."
+    "effect": "Place 4 Weapons within Range, following the below constraints:\n* You may place these anywhere within _Range_, but may not place them adjacent to yourself or allies or within 3 spaces of another _Improvised Weapons_ placed by this effect.\n* The Weapon is a _Small Improvised_/_Medium Improvised_ Weapon, made of the same material as the _Base_ _Terrain_ or an adjacent _Obstacle_. It deals your choice of _Crush_, _Slash_, or _Stab_ damage.",
+    "special": "All Weapons placed by this have [_Fragile_, _Opportune_] and, upon being _Wielded_, grant the wielder 1 _Temporary_ _Momentum_. Only you and your allies may use these Weapons.",
+    "boost": "1 _Momentum_: You may choose _Natural_, _Wood_, or _Metal_ as the Material of placed weapons, ignoring the Terrain."
   },
   {
     "name": "Artillery Flame",
     "class": "Explosion",
     "desc": "A long-range detonation of flame that destroys all before it.",
     "type": "Strike",
-    "speed": "5",
+    "speed": "5-8",
     "move": "Step",
     "range": [{ "category": "Ranged", "value": 10, "special": "_Ordnance_" }],
     "area": "_Blast_ 1",
@@ -140,10 +151,10 @@
     "desc": "You create a field of flames, making it impossible for foes to move.",
     "type": "General",
     "class": "Blaze",
-    "speed": "1-4 [_Rigid_]",
+    "speed": "1-4",
     "range": [{ "category": "Ranged", "value": 8 }],
     "move": "Step",
-    "effect": "Create 4 _Blazing_ spaces within Range. At the end of the next 3 _Phases_, you may choose 2 _Blazing_ spaces within _Range_ and within 4 spaces of each other. Connect those spaces with a _Line_ of _Blazing_ spaces.",
+    "effect": "Create 4 _Blazing_ spaces within Range. At the end of the next 3 _Phases_, you may choose 2 _Blazing_ spaces within _Range_ and within 4 spaces of each other. Connect those spaces with a _Line_ of _Blazing_ spaces and immediately resolve the _Blazing_ effect as if the creature ended their _Turn_ there.",
     "boost": "1 _Momentum_: You may use this _Boost_ whenever you place a _Blazing_ space with this _Technique_. Inflict _Alight_ 1 on the creature in this space."
   },
   {
@@ -151,7 +162,7 @@
     "class": "Basic",
     "desc": "You find a path forward for your allies, providing them a great deal of mobility.",
     "type": "Support",
-    "speed": "1",
+    "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Reposition",
     "effect": "Gain 1 _Momentum_. All allies within Range gain a _Free Turn_ where they may _Reposition_. Enemies adjacent to you treat all allied Movement on these _Free Turns_ as [_Safe_].",
@@ -162,19 +173,19 @@
     "class": "Basic",
     "desc": "You engage a foe in single combat, limiting their ability to engage your allies.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
-    "effect": "Make a _Melee_ _Major Attack_, adding _Marked_ and _Slide_ 3. Immediately after inflicting the _Slide_, you must Move 3 but must end this Movement adjacent to the original Target. If neither you nor the target have a creature adjacent to you, you become _Marked_ by the target. While you are both _Marked_:\n* Neither of you may remove or change the target of your _Marked_ by any means, or inflict _Marked_ on other creatures.\n* You may not willingly move away from your Target.\n* You and the Target have _Disadvantage_ on all attacks not against a _Marked_ target.\n\nThis effect ends when you or the target is _Defeated_ or they _Recover_ while not adjacent to you and expend 4 _Stamina_. If this effect ends, immediately remove both _Marked_."
+    "effect": "Make a _Melee_ _Major Attack_, adding _Marked_ and _Slide_ 3. Immediately after inflicting the _Slide_, you must Move 3 in the same direction. If neither you nor the target have a creature adjacent to you and you are adjacent to the Target, you become _Marked_ by the target. While you are _Marked_ by one another:\n* Neither of you may inflict _Marked_ on other creatures and immediately end all other _Marked_ effects.\n* You and the Target have _Disadvantage_ on all attacks against other creatures.\n\nThis effect ends when you or the target is _Defeated_ or they _Recover_ while not adjacent to you and expend 4 _Stamina_. If this effect ends, immediately remove both _Marked_."
   },
   {
     "name": "Lion's Roar",
     "class": "Basic",
     "desc": "You loudly charge forth into battle, making your intentions clear.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
-    "effect": "Gain _Endurance_ 2. Make a _Major Attack_. Immediately after resolving the Attack grant _Courageous_ 1 allies of your choice in a _Burst_ 2, or _Courageous_ 2 on a _Crit_ or if you defeat the foe.",
-    "special": "An ally that received _Courageous_ gains a _Free Turn_ where they may do one of the following:\n* Make a _Minor Attack_ against an enemy _Marked_ by you.\n* _Step_ towards you."
+    "effect": "Gain 4 _Health_ and make a _Major Attack_. Immediately after resolving the Attack grant _Courageous_ 1 allies of your choice in a _Burst_ 2, or _Courageous_ 2 if you _Crit_ or _Defeated_ a foe.",
+    "special": "Any ally that received _Courageous_ gains a _Free Turn_ where they may Move 1 towards you."
   },
   {
     "name": "Ocean's Veil",
@@ -182,10 +193,10 @@
     "desc": "You pull forth water to create a great wall, warding your allies from assault.",
     "keywords": ["Fluid"],
     "type": "Defend",
-    "speed": "1",
+    "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Reposition",
-    "effect": "_Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique.",
+    "effect": "Gain 2 _Momentum_, then _Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique.",
     "special": "You may add [_Enchant_]; if you do, remove [_Fleeting_] from these _Water Veil_s. "
   },
   {
@@ -193,22 +204,22 @@
     "class": "Basic",
     "desc": "You take a position with a pristine view, preparing to lay down supporting fire for allies.",
     "type": "Support",
-    "speed": "1",
+    "speed": "1-8",
     "range": [{ "category": "Self" }],
     "area": "_Cone_ 12",
     "move": "Step",
-    "effect": "Resolve your Move, inflict _Insight_ 1 on all creatures of your choice in the _Area_, then draw a _Hazard_ there. Until you leave this space or the end of the _Round_, you may trigger _Opportunity Attack_ whenever a creature within this _Hazard_ creates an _Opening_, regardless of _Reach_. _Opportunity Attack_s triggered in this way use _Ranged_ Attacks.",
-    "special": "You may reduce the Area to Cone to 9, 6, or 3; if you do, you may inflict an additional 1/2/4 _Insight_, distributed among creatures in the _Area_ as you wish."
+    "effect": "Resolve your Move, inflict _Studied_ 1 on all creatures of your choice in the _Area_, then draw a _Hazard_ there. Until you leave this space or the end of the _Round_, you may trigger _Opportunity Attack_ whenever a creature within this _Hazard_ creates an _Opening_, regardless of _Reach_. _Opportunity Attack_s triggered in this way may use _Ranged_ Attacks.",
+    "special": "You may reduce the Area to Cone to 9, 6, or 3; if you do, you may inflict an additional 1/2/4 _Studied_, distributed among creatures in the _Area_ as you wish."
   },
   {
     "name": "Patient Strike",
     "class": "Basic",
     "desc": "You carefully line up an attack, waiting for the opportune moment to release it.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 20 }],
     "move": "None",
-    "effect": "Choose a creature within Range and inflict _Insight_ 1 on them, then choose a _Major Attack_ and becoming _Charging_. If it's a _Weapon Attack_, that _Weapon_ becomes _Occupied_. At the end of any _Turn_ or _Phase_ you may make choose to stop _Charging_ and unleash the _Attack_ on the target creature. _At the end of each _Phase_ you do not make this Attack (not including the _Phase_ where you began the effect) inflict _Insight_ 1 on that creature.",
+    "effect": "Choose a creature within Range and inflict _Studied_ 1 on them, then choose a _Major Attack_ and becoming _Charging_. If it's a _Weapon Attack_, that _Weapon_ becomes _Occupied_. At the end of any _Turn_ or _Phase_ you may make choose to stop _Charging_ and unleash the _Attack_ on the target creature. _At the end of each _Phase_ you do not make this Attack (not including the _Phase_ where you began the effect) inflict _Studied_ 1 on that creature.",
     "special": "When you resolve this _Attack_, replace one dice roll with X, where X is the number of _Phases_ you have been _Charging_ (maximum 6)."
   },
   {
@@ -216,7 +227,7 @@
     "class": "Basic",
     "desc": "You let out a mighty bellow before you unleash a series of devastating attacks.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
     "effect": "Resolve your Move, then make a _Charged Attack_, adding [_Glancing_]. After resolving the _Charged Attack_, immediately make another _Charged Attack_, adding [_Glancing_].",
     "special": "You must use a _Heavy_ _Major Attack_ for this.",
@@ -227,25 +238,25 @@
     "class": "Land",
     "desc": "A minor earthquake, firing earth upward and testing the footing of all involved.",
     "type": "General",
-    "speed": "5",
+    "speed": "5-8",
     "range": [{ "category": "Self" }],
     "area": "_Burst_ 2",
     "move": "Step",
-    "effect": "Attack all Targets in the Area with this Technique's Profile. If you would inflict _Prone_ on a _Prone_ creature, instead deal +2 Damage.",
-    "boost": "Choose any number:\n* 1 _Momentum_: Make 3 spaces in the _Area_ _Uneven Earth_. You may repeat this _Boost_.\n* 1 _AP_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again and remove the _Hazard_. While the _Hazard_ persists, treat all _Earthen_ Terrain as _Uneven Earth_.",
+    "effect": "Attack all Targets in the Area with this Technique's Profile. Any _Prone_ creatures in the _Area_ take +3 Damage. _Earthen_ Terrain in the _Area_ is _Uneven Earth_ until the end of the next _Phase_.",
+    "boost": "1 _AP_: After resolving this Attack, create a _Hazard_ in the Area. At the end of the _Round_, resolve this Attack once again and remove the _Hazard_. While the _Hazard_ persists, treat all _Earthen_ Terrain in the _Area_ as _Uneven Earth_.",
     "chart": {
       "damage_type": "Crush",
       "keywords": ["Avoidable", "Groundsource"],
       "on_miss": "+3 _Momentum_",
-      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "roll": ["Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
-        "",
+        "_Reeling_ 1, _Exposed_ 1",
+        "_Reeling_ 1, _Exposed_ 1",
         "_Reeling_ 1, _Exposed_ 1",
         "_Reeling_ 1, _Exposed_ 1",
         "_Reeling_ 1, _Exposed_ 1, _Prone_ [1 _Stamina_]",
-        "_Reeling_ 1, _Exposed_ 1, _Prone_ [1 _Stamina_]",
-        "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
-        "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
+        "_Reeling_ 2, _Exposed_ 1, _Prone_ [1 _Stamina_]",
+        "_Reeling_ 2, _Exposed_ 1, _Prone_ [1 _Stamina_]",
         "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
         "_Reeling_ 2, _Exposed_ 1, _Prone_ [2 _Stamina_]",
         "_Reeling_ 3, _Exposed_ 2, _Prone_ [3 _Stamina_]",
@@ -255,9 +266,45 @@
     "analysis_notes": {
       "range": [{ "category": "Melee", "value": 1 }],
       "expected_targets": 2,
-      "fudge": 0.1,
       "bonus_damage": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5],
       "notes": "Small fudge in case of Prone creatures."
+    }
+  },
+  {
+    "name": "Ruinous Bolt",
+    "desc": "You unleash a blinding bolt of lighting, searing across the landscape.",
+    "class": "Storm",
+    "type": "Strike",
+    "speed": "5-8",
+    "range": [{ "category": "Self" }],
+    "area": "_Line_ 8",
+    "move": "Step",
+    "effect": "Create a _Hazard_ in the _Area_ and become _Charging_. At the end of the next _Phase_ remove the _Hazard_ and resolve the below Attack against all _Targets_.",
+    "boost": "Choose one:\n* 2 _Momentum_: Instead, resolve the Attack instantly without _Charging_.\n* 4 _Momentum_: Instead, _Area_ is _Wide Line_ 8x3.",
+    "chart": {
+      "damage_type": "Lightning",
+      "on_miss": "+3 _Momentum_",
+      "damage": [11, 11, 11, 12, 12, 12, 12, 13, 13, 14, 14],
+      "roll": ["Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "_Shocked_ 2",
+        "_Shocked_ 2",
+        "_Shocked_ 2",
+        "_Shocked_ 2",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 3",
+        "_Shocked_ 4",
+        "_Shocked_ 4"
+      ]
+    },
+    "analysis_notes": {
+      "range": [{ "category": "Melee", "value": 1 }],
+      "expected_targets": 1,
+      "speed": 6,
+      "fudge": 1.5
     }
   },
   {
@@ -265,24 +312,25 @@
     "class": "Basic",
     "desc": "You adopt a defensive stance and prepare to offer you guard to your allies.",
     "type": "Defend",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
-    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* Your allies always have at least _Heavy Cover_ against Attacks that pass through your space.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Endurance_."
+    "effect": "Gain the following benefits until the end of the _Round_:\n* Whenever you use a _Reaction_ on an ally treat your _Reeling_ value as half its current value.\n* You may allow adjacent allies to use your _Stamina_.\n* Each _Turn_ you gain 1 _Temporary_ _Stamina_.\n* Once before the end of the _Round_ as a _Reaction_ you and an adjacent ally may _Recover_, reduce _Reeling_ by 1, and gain 3 _Health_.",
+    "special": "If an Attack targeting an ally passes through a space adjacent to you may pay 1 _Momentum_. If you do, the ally may use your _Stamina_ against the triggering Attack and you may use the _Intercept_ Reaction (paying its cost as normal) as if your ally was adjacent."
   },
   {
     "name": "Scouring Flames",
     "class": "Explosion",
     "desc": "A sudden, violent, and all-consuming flame that devours all in its path.",
     "type": "Strike",
-    "speed": "4",
+    "speed": "4-8",
     "move": "Step",
     "area": "_Cone_ 3",
-    "effect": "Attack with the below Profile. After resolving the Attack, inflict _Alight_ 1 on a creature in the _Area_ or create a _Blazing_ space four times.",
+    "effect": "Attack with the below Profile. After resolving the Attack, inflict _Alight_ 1 on a creature in the _Area_ or create a _Blazing_ space. Repeat this secondary effect four times.",
     "boost": "Choose any:\n* 2 _Momentum_: Area is instead _Cone_ 4.\n* 5 _Momentum_: Area is instead _Cone_ 5.\n* 1 _Momentum_: Resolve the after Attack effect another time. You may use this _Boost_ up to 3 times.",
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+3 _Momentum_",
-      "damage": [1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4],
+      "damage": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4],
       "roll": ["Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Alight_ 1", "_Alight_ 1", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2"]
     },
@@ -297,9 +345,9 @@
     "class": "Basic",
     "desc": "You conceal yourself before sliding across the battlefield, .",
     "type": "Move",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step [_Safe_], Reposition",
-    "effect": "Gain 1 _Momentum_. You become _Veiled_. This effect remains until you leave the space you ended this _Turn_ in, deal _Damage_, or inflict _Status_.",
+    "effect": "Gain 1 _Momentum_. You become _Stealthy_. This effect remains until you leave the space you ended this _Turn_ in, deal _Damage_, or inflict _Status_.",
     "special": "If you use _Ambush_ this _Round_ you may either make a _Light_/_Versatile_ _Major Attack_ instead of a _Minor Attack_ or make an additional _Light_/_Versatile_ _Minor Attack_."
   },
   {
@@ -307,31 +355,21 @@
     "class": "Basic",
     "desc": "You encourage your allies, helping them to find the strength to push forward.",
     "type": "Support",
-    "speed": "1",
+    "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 12 }],
     "move": "Step",
-    "effect": "Grant yourself _Joyful_/_Courageous_ 1, then distribute _Joyful_/_Courageous_ 6, split among allies of your choice within Range. Any creature may reduce the _Joyful_/_Courageous_ by 2 to immediately gain a _Free Turn_. On this _Turn_ they may _Step_ if they reduced _Joyful_ or make a _Minor Attack_ if they reduced _Courageous_. Any ally that you give _Joyful_/_Courageous_ to (even if they use it for something else) gains 2 _Vigor_.",
-    "boost": "1 _Momentum_: You may distribute an additional 1 _Joyful_/_Courageous_. You may repeat this _Boost_ up to 4 times."
-  },
-  {
-    "name": "Dance of a Thousand Stings",
-    "class": "Basic",
-    "desc": "You dart across the battlefield, unleashing a serious of swift strikes.",
-    "type": "Strike",
-    "speed": "1-3 [_Rigid_]",
-    "move": "Step, Step, Step",
-    "effect": "After each Movement, make a _Minor Attack_. Any Attacks you make this _Turn_ cause the Target to treat your remaining Movement this _Turn_ as [_Safe_] on a _Hit_+. If you move at least 2 spaces before making an Attack, deal +1 _Bonus Damage_ and add _Vulnerable_ 1.",
-    "special": "If each Attack this _Turn_ targets unique Targets, gain 1 _Momentum_."
+    "effect": "Grant yourself _Courageous_/_Joyful_ 1 then gain 6 Song Points. You may spend 1 Song Point to grant an ally within Range _Courageous_/_Joyful_ 1. You may use this option any number of times. Additionally, you may purchase the following options, but no more than once per Target:\n* 2 Song Points: The target gains a _Free Turn_ with _Step_ _Movement_.\n* 2 Song Points: The target gains a _Free Turn_ where they may make a _Minor Attack_.\n\n&nbsp;\nAny ally that you target with any effect gains 2 _Vigor_. Lose any unspent Song Points at the end of the _Turn_.",
+    "boost": "1 _Momentum_: Gain an additional Song Point. You may use this _Boost_ up to 4 times."
   },
   {
     "name": "Stone Edge",
     "desc": "You tear forth a slab of earth, flinging it with horrific force.",
     "class": "Mountain",
     "type": "Strike",
-    "speed": "4 [_Priority_]",
+    "speed": "4-8",
     "range": [{ "category": "Ranged", "value": 4 }],
     "move": "Step",
-    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 1 _Guard_ and may not be moved by another creature. At the end of each _Phase_, including the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_.\n&nbsp;\nIf the _Obstacle_ is destroyed, end this effect.",
+    "effect": "Choose a Size 1 _Earthen_ _Obstacle_ within Range. Move it to an adjacent, unoccupied space, then become _Charging_. While _Charging_, the _Obstacle_ gains 2 _Guard_ and may not be moved by another creature. At the end of each _Phase_, excluding the current one, you may either fire the _Obstacle_ or continue _Charging_.\n&nbsp;\nIf you continue _Charging_, you may _Pull_ 1 the _Obstacle_.\n&nbsp;\nIf you fire the _Obstacle_, attack with the below profile in a _Line_ 4+X, where X is the number of _Phases_ you've been _Charging_, not including the _Phase_ where you began the effect. Place the _Obstacle_ at the end of the _Area_, or the nearest unoccupied space, prioritizing those in the _Area_. This _Line_ must be placed in such a way that it would lie fully in a valid path for an _Angled_ _Push_ on the _Obstacle_.",
     "boost": "2 _Momentum_: Instead, create a _Boulder_ as a part of this _Technique_. There must be at least one _Earthen_ space within _Range_ to use this _Boost_.",
     "chart": {
       "damage_type": "Crush",
@@ -343,21 +381,22 @@
       "status": [
         "",
         "",
-        "_Angled Push_ 1, _Break_ [1 _Momentum_]",
-        "_Angled Push_ 1, _Break_ [1 _Momentum_]",
-        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Momentum_]",
-        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Momentum_]",
-        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Momentum_]",
-        "_Angled Push_ 1, _Dazed_ 2, _Break_ [2 _Momentum_]",
-        "_Angled Push_ 1, _Dazed_ 2, _Break_ [2 _Momentum_]",
-        "_Angled Push_ 2, _Dazed_ 2, _Break_ [2 _Momentum_]",
-        "_Angled Push_ 2, _Dazed_ 2, _Break_ [2 _Momentum_]"
+        "_Angled Push_ 1, _Break_ [1 _Stamina_]",
+        "_Angled Push_ 1, _Break_ [1 _Stamina_]",
+        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Stamina_]",
+        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Stamina_]",
+        "_Angled Push_ 1, _Dazed_ 1, _Break_ [1 _Stamina_]",
+        "_Angled Push_ 1, _Dazed_ 2, _Break_ [2 _Stamina_]",
+        "_Angled Push_ 1, _Dazed_ 2, _Break_ [2 _Stamina_]",
+        "_Angled Push_ 2, _Dazed_ 2, _Break_ [2 _Stamina_]",
+        "_Angled Push_ 2, _Dazed_ 2, _Break_ [2 _Stamina_]"
       ]
     },
     "analysis_notes": {
       "range": [{ "category": "Melee", "value": 1 }],
       "expected_targets": 2,
-      "fudge": 4
+      "fudge": 3,
+      "speed": 5
     }
   },
   {
@@ -365,43 +404,44 @@
     "class": "Mountain",
     "desc": "You forge a suit of stone around yourself, becoming an unstoppable behemoth.",
     "type": "Defend",
-    "speed": "1",
-    "move": "Step",
+    "keywords": ["Enchant"],
+    "speed": "1-8",
+    "move": "None",
     "reqs": "Size 1 _Earthen_ Obstacle adjacent to you.",
-    "effect": "_Destroy_ the Obstacle and gain Stone Armor. While you have Stone Armor, gain the following effects:\n* Gain a special Armor with no weight that grants _Guard_ 2 and has a _Durability_ of 9. You benefit from this Armor and any other Armor you are currently wearing.\n* Treat yourself as one Size larger for all Effects.\n* Gain _Resilient_ 2 (_Forced Movement_)\n* Allies may treat you as an Obstacle with a _Height_ of 1 when determining _Cover_/_Obscured_.\n* You become an _Earth_ Source.\n* Whenever you gain _Vigor_ from an Stone Lock ability it stacks with existing _Vigor_ rather than replacing it.\n* Whenever you Move, you Move one less space than you normally would.\n\nIf you lose the _Guard_ provided by the Stone Armor, end this effect.",
-    "special": "If you repeat this _Technique_ while you have Stone Armor, gain the following effects while you have Stone Armor:\n* You become _Size_ 2, and when applicable are a _Height_ 2 Obstacle.\n* Reset the _Guard_ provided by your Stone Armor and increase it to 3.\n* Gain _Grit_ and 5 _Vigor_."
+    "effect": "_Destroy_ the Obstacle and gain Stone Armor. While this _Enchant_ persists, gain the following effects:\n* Gain a special Armor with no weight that grants _Resistance_ 2 [All but _Crush_] and has a _Durability_ of 9. You benefit from this Armor and any other Armor you are currently wearing.\n* Treat yourself as one Size larger for all Effects.\n* Gain _Resilience_ 2 (_Forced Movement_)\n* Allies may treat you as an Obstacle with a _Height_ of 1 when determining _Cover_/_Obscured_.\n* You become an _Earth_ Source.\n* Whenever you Move add [_Rush_] and you Move 1 less spaces than you normally would.\n\nIf you lose the _Guard_ provided by the Stone Armor, end this _Enchant_.",
+    "special": "If you repeat this _Technique_ while you have Stone Armor, gain the following effects while you have Stone Armor:\n* You become _Size_ 2, and when applicable are a _Height_ 2 Obstacle.\n* Reset the _Guard_ provided by your Stone Armor and increase it to 3.\n* Gain _Tough_ and 5 _Vigor_."
   },
   {
     "name": "Strong Strike",
     "class": "Basic",
     "desc": "You unleash a powerful attack against a foe.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
     "effect": "Choose one:\n* Make a _Heavy_ _Major Attack_, adding [_Pierce_ 1] and dealing additional _Bonus Damage_ equal to half the _Phase_ on a _Graze_+.\n* Resolve your _Movement_, then make a _Charged Attack_. You must use a _Heavy_ _Major Attack_ for this.",
     "special": "Determine _Speed Penalties_ for all _Attacks_ made as a part of this _Technique_ as if it was one _Phase_ earlier.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, you may make a _Versatile_/_Heavy_ _Major Attack_.\n* 2 _Momentum_: If you are _Charging_, add [_Unblockable_, _Overwhelming_ 1] and deal +1 _Bonus Damage_ on a _Graze_+. Remove the _Charging_ and _Hazard_ one _Phase_ later."
+    "boost": "Choose any:\n* 1 _Momentum_: You may make a _Versatile_ _Major Attack_ rather than a _Heavy_.\n* 2 _Momentum_: If you select the _Charged Attack_ option add [_Unblockable_, _Overwhelming_ 1] and deal +1 _Bonus Damage_ on a _Graze_+. Remove the _Charging_ and _Hazard_ from said _Charged Attack_ 1 _Phase_ later."
   },
   {
     "name": "Swift Strike",
     "class": "Basic",
     "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Reposition",
     "effect": "Choose one:\n* Make 1 _Light_/_Versatile_ _Major Attack_ and 1 _Light_/_Versatile_ _Minor Attack_ in any order.\n* Make 3 _Light_/_Versatile_ _Minor Attacks_.",
     "special": "Determine _Speed Penalties_ for _Light_ Attacks as if this _Technique_ was played one _Phase_ later.",
-    "boost": "\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
   },
   {
     "name": "Torching Flare",
     "class": "Blaze",
     "desc": "You cultivate a flame, focusing the heat into a single point more and more as time passes.",
     "type": "Strike",
-    "speed": "3",
+    "speed": "3-7",
     "move": "Step",
-    "effect": "Create the 1st _Hazard_, then become _Charging_. At the end of the next _Phase_ stop _Charging_ and either resolve the below Attack or create the next _Hazard_, as outlined below.\n* **1st Hazard**: Create an _Side Burst_ 3 _Hazard_.\n* **2nd Hazard**: Create a _Cone_ 3 _Hazard_. When you resolve the Attack, deal +1 Damage and add _Alight_ 1.\n* **3rd Hazard**: Create a _Line_ 6 _Hazard_. When you resolve the Attack, deal +2 Damage, add _Alight_ 2, and [_Pierce_ 1].\n* **4th Hazard**: Create a _Line_ 3 _Hazard_. When you resolve the Attack, deal +5 Damage, add _Alight_ 3, _Burn_ 1, and [_Pierce_ 2].\n* **5th Hazard**: Create a single space _Hazard_ in an adjacent space. When you resolve the Attack, deal +8 Damage, add _Alight_ 4, _Burn_ 2, and [_Pierce_ 3].",
-    "special": "When you create your _Hazard_, choose an adjacent space. All future _Hazards_ created by this _Technique_ must include this space. If you are moved, use the equivalent adjacent space.",
+    "effect": "Create the 1st _Hazard_, then become _Charging_. At the end of the next _Phase_ remove the _Hazard_ and stop _Charging_ and either resolve the below Attack or create the next _Hazard_, as outlined below.\n* **1st Hazard**: Create an _Arc_ 3 _Hazard_.\n* **2nd Hazard**: Create a _Cone_ 3 _Hazard_. When you resolve the Attack, deal +1 Damage and add _Alight_ 1.\n* **3rd Hazard**: Create a _Line_ 6 _Hazard_. When you resolve the Attack, deal +2 Damage, add _Alight_ 2, and [_Pierce_ 1].\n* **4th Hazard**: Create a _Line_ 3 _Hazard_. When you resolve the Attack, deal +5 Damage, add _Alight_ 3, _Burned_ 1, and [_Pierce_ 2].\n* **5th Hazard**: Create a single space _Hazard_ in an adjacent space. When you resolve the Attack, deal +8 Damage, add _Alight_ 4, _Burned_ 2, and [_Pierce_ 3].",
+    "special": "When you create your _Hazard_, choose an adjacent space. All future _Hazards_ created by this _Technique_ must be centered on this space. If you are moved, use the equivalent adjacent space.",
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+3 _Momentum_",
@@ -428,25 +468,52 @@
     }
   },
   {
+    "name": "Thunderstorm",
+    "class": "Storm",
+    "desc": "You form a volatile cloud crackling with lighting, using it to cause devastation from afar.",
+    "type": "General",
+    "keywords": ["Enchant", "_Upkeep_ 1"],
+    "speed": "1-8",
+    "move": "Step",
+    "range": { "category": "Ranged", "value": 8 },
+    "effect": "Create a _Blast_ 1 _Hazard_ within Range. At the end of the next _Phase_ create a Thundercloud in the Area. While the _Enchant_ persists you may originate any _Storm_ Attack from the Thundercloud instead of yourself so long as you are within Range 12 of it. When you do so, add the following effects:\n* Attacks may only Target creatures in the Thundercloud, but add [_Remote_].\n* If the Attack had an _Area_, resolve it in an equivalent number of contiguous spaces within the Thundercloud (maximum 7).\n* Any _Hazard_ created by an Attack originating from the Thunderstorm moves with it.\n* You may choose to end this _Enchant_ as a part of making an Attack from it. If you do, gain _Advantage_ on the Attack.\n\nAny creatures in the Thundercloud at the end of the _Round_ take 2 _Lighting_ Damage and gain _Shocked_ 1.",
+    "special": "At the end of each _Phase_ you may move the Thundercloud 1 space in any direction.",
+    "boost": "1 _Momentum_ (paid at the end of any _Phase_): Deal 2 _Lightning_ Damage within the _Area_ of the Thundercloud. Add [_Pierce_ 1] against _Shocked_ targets."
+  },
+  {
     "name": "Trampling Charge",
     "class": "Basic",
     "desc": "You run forward, slamming through all foes in your path.",
     "type": "Strike",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Dash [_Breach_, _Rush_]",
     "effect": "Choose one:\n* You have +1 _Guard_ this _Turn_. Resolve your _Movement_. When you end your _Movement_, make a single _Melee_ _Major Attack_. If the target of the Attack is in-line with your _Movement_, either inflict _Forceful Push_ X or inflict X additional _Bonus Damage_, where X is half the number of spaces you Moved before resolving the effect.\n* Do not resolve your _Movement_ yet. Create a _Hazard_ in an adjacent space, become _Charging_, then end your _Turn_. At the end of the next _Phase_ remove _Charging_ and resolve the first effect, but you must move through the space marked by the _Hazard_, removing the _Hazard_ when you do so. You have _Advantage_ on all [_Body_] Attacks and may choose both options for your _Major Attack_ at the end of the _Movement_. If you are moved by any means before removing _Charging_, move the _Hazard_ with you.",
-    "special": "You may use _Overrun_ at no cost when resolving the effect."
+    "special": "_Overrun_ costs only 1 _Momentum_ when resolving the effect."
+  },
+  {
+    "name": "Whirling Wind",
+    "class": "Gale",
+    "desc": "You create a vortex of wind, catching all in its path and sending it spiraling across the battlefield.",
+    "type": "General",
+    "keywords": ["Enchant", "_Upkeep_ 2"],
+    "speed": "1-8",
+    "move": "Step",
+    "range": [{ "category": "Ranged", "value": 8 }],
+    "area": "_Blast_ 1",
+    "effect": "Mark the _Area_ as a _Hazard_. At the end of the next _Phase_ remove the _Hazard_ and create a Whirlwind, where the centermost space is an _Updraft_ and all other spaces are _Gusting_ with the direction of all _Gusting_ spaces forming a complete circle. These spaces may not be removed by any means while the _Enchant_ persists.\n&nbsp;\nAny creature in a space that is a part of this Whirlwind gains _Restrained_ [6 _Stamina_]; if they _Negate_, they may not be _Restrained_ by the Whirlwind until the end of the next _Phase_. Any _Resilience_ (_Forced Movement_) applies for _Negating_ this effect. Creatures are _Airborne_ while _Restrained_ in this way, and this _Restrained_ is only removed if the creature is no longer within the Whirlwind's _Area_. Creatures greater than Size 1 only gain this if at least half of their occupied spaces are within the _Area_. While _Restrained_ in any space within the Whirlwind that creature moves with the Whirlwind.\n&nbsp;\nAt the start of each subsequent _Phase_ draw up to a _Line_ 2 _Hazard_ from the centermost space of the Whirlwind. At the end of that _Phase_ move the Whirlwind along this line and remove the _Hazard_. Any creatures that the Whirlwind passes through gain _Restrained_, following the same rules as when the Whirlwind was originally created. If the given space is occupied, place them in the nearest unoccupied space within the Whirlwind; if the Whirlwind has no unoccupied spaces, they instead are moved to the nearest non-Whirlwind space and gain _Vulnerable_ 1. Finally, inflict _Slide_ 1 on all creatures in a _Gusting_ space that is a part of the Whirlwind in the direction of the _Gusting_ space. This may not be _Negated_, and all _Slides_ are resolved simultaneously. If a _Collision_ occurs, inflict _Vulnerable_ 1 instead of the usual _Collision_ rules.\n&nbsp;\nCreatures within the Whirlwind may expend 6-X _Stamina_ at the end of any _Phase_ to remove _Restrained_, where X is the number of _Phases_ the creature has been in the Whirlwind. Immediately before a creature within the Whirlwind loses _Restrained_ inflict _Slide_ X+1 on them in the direction of the _Gusting_ space they are occupying and, when determining any _Fall_, treat the creature as if they fell an additional X/2 spaces. If they are in the centermost space, inflict _Slide_ in the direction of your choice.",
+    "boost": "2 _Momentum_ (paid at the end of any _Phase_): A creature of your choice within the Whirlwind automatically _Negates_ and resolves the normal _Slide_ effect. You may choose to add [_Forceful_] or treat the creature as if they _Fell_ 3 spaces less.",
+    "special": "If you already have an active Whirlwind, instead use _Swirling Vortex_ on all creatures within it."
   },
   {
     "name": "Wind Tunnel",
     "class": "Gale",
     "desc": "You create a continuous tunnel of wind, accelerating your allies while carving the battlefield in half.",
     "type": "Support",
-    "speed": "1",
+    "speed": "1-8",
     "move": "Step",
-    "range": { "category": "Self" },
+    "range": [{ "category": "Self" }],
     "area": "_Wide Line_ 6x3",
-    "effect": "Make all spaces in the _Area_ _Gusting_. The direction of _Gusting_ spaces in each Line must be continuous and match the other Lines. While these _Gusting_ spaces persist allies may treat all Movement through these spaces and in the same direction as the _Gusting_ spaces as costing half the normal amount of Movement. When tracking this Movement, do not round the value until the character is done moving.",
+    "effect": "Make all spaces in the _Area_ _Gusting_. The direction of _Gusting_ spaces in each Line must be continuous and match the other Lines. While these _Gusting_ spaces persist an ally that enters the area or starts their _Turn_ in it may move to the end, treating this Movement as [_Safe_] and expending only half the normal _Movement_. They may only benefit from this once on a given _Turn_.",
     "special": "You may add [_Enchant_]. If you do, remove _Fleeting_ from these _Gusting_ spaces, and instead remove them when the _Enchant_ ends.",
     "boost": "2 _Momentum_: Increase the length of the _Area_ by 2. You may use this _Boost_ up to twice."
   }

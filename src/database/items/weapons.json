@@ -3,9 +3,9 @@
     "name": "Iron Dagger",
     "category": "Bladed",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Quickdraw", "Small"],
+    "keywords": ["Quickdraw"],
     "speed": 2,
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
+    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "range": [
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 4, "special": "_Thrown_, _Close Range_ 1" }
@@ -17,7 +17,7 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 2, 2, 3, 3, 3, 3, 5, 5, 5],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2", "_Bleed_ 2"]
+      "status": ["", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2", "_Bleeding_ 2"]
     },
     "weight": 1,
     "hands": 1,
@@ -29,18 +29,18 @@
     "category": "Bladed",
     "desc": "A light blade that offers a balance between power and speed.",
     "type": "Light",
-    "material": "Metal",
     "speed": 3,
-    "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
+    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_/_Versatile_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Slash/Stab",
+      "material": "Metal",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 3, 3, 4, 4, 5, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2", "_Bleed_ 3", "_Bleed_ 3"]
+      "status": ["", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2", "_Bleeding_ 3", "_Bleeding_ 3"]
     },
-    "weight": 1,
+    "weight": 2,
     "hands": 1,
     "durability": 8
   },
@@ -49,17 +49,17 @@
     "category": "Bladed",
     "desc": "A sword that can easily be used in one or both hands and is favored by many.",
     "keywords": ["Hand-and-a-Half"],
-    "material": "Metal",
     "speed": 4,
-    "charged_effect": "On a _Graze_+ deal +2 _Damage_ and inflict _Bleed_ 1.",
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it. If this weapon is _Wielded_ in both hands, gain both effects.",
+    "charged_effect": "On a _Graze_+ deal +2 _Damage_ and inflict _Bleeding_ 1.",
+    "parry": "Gain the following benefits:\n* Gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Slash/Stab",
       "on_miss": "+2 _Momentum_",
+      "material": "Metal",
       "damage": [0, 0, 4, 4, 5, 5, 6, 6, 6, 7, 7],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2", "_Bleed_ 3", "_Bleed_ 3"]
+      "status": ["", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2", "_Bleeding_ 3", "_Bleeding_ 3"]
     },
     "weight": 2,
     "hands": 1,
@@ -70,13 +70,13 @@
     "name": "Iron Greatsword",
     "category": "Bladed",
     "desc": "A massive blade meant to be wielded in both hands, this weapon can cleave through most defenses.",
-    "material": "Metal",
     "speed": 5,
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
-    "charged_effect": "One a _Graze_+, inflict +3 Damage and inflict _Bleed_ 2. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
+    "charged_effect": "One a _Graze_+, inflict +3 Damage and inflict _Bleeding_ 2. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "range": [{ "category": "Melee", "value": 2 }],
     "chart": {
       "damage_type": "Slash/Stab",
+      "material": "Metal",
       "keywords": ["_Overwhelming_ 1"],
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 6, 6, 7, 7, 8, 8, 8, 9, 9],
@@ -86,13 +86,13 @@
         "",
         "",
         "",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 1",
-        "_Bleed_ 3, _Exposed_ 1",
-        "_Bleed_ 3, _Exposed_ 1"
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 1",
+        "_Bleeding_ 3, _Exposed_ 1",
+        "_Bleeding_ 3, _Exposed_ 1"
       ]
     },
     "weight": 4,
@@ -108,9 +108,8 @@
     "category": "Hafted",
     "type": "Light",
     "desc": "A lightweight axe that weighs enough to punish a foe's defenses while allowing for swift strikes.",
-    "material": "Metal, Wood",
     "speed": 3,
-    "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Gain 1 _Guard_ against the Attack.",
+    "parry": "Gain _Resistance_ 1 [_Forced Movement_] and, if the trigging _Attack_ was _Light_/_Versatile_, gain 1 _Instant Guard_.",
     "range": [
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 3, "special": "_Thrown_, _Close Range_ 1" }
@@ -118,6 +117,7 @@
     "chart": {
       "damage_type": "Slash",
       "on_miss": "+2 _Momentum_",
+      "material": "Metal, Wood",
       "damage": [0, 0, 0, 2, 2, 4, 5, 5, 5, 7, 7],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -126,15 +126,15 @@
         "",
         "",
         "",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 1",
-        "_Bleed_ 3, _Exposed_ 2",
-        "_Bleed_ 3, _Exposed_ 2"
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 1",
+        "_Bleeding_ 3, _Exposed_ 2",
+        "_Bleeding_ 3, _Exposed_ 2"
       ]
     },
-    "weight": 2,
+    "weight": 1,
     "hands": 1,
     "durability": 8
   },
@@ -144,14 +144,14 @@
     "type": "Versatile",
     "desc": "A powerful melee tool that cleaves through a foe's attempts to grit.",
     "keywords": ["Hand-and-a-Half"],
-    "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
-    "material": "Metal, Wood",
-    "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
+    "parry": "Gain _Resistance_ 1 [_Forced Movement_] and 1 _Instant Guard_.",
+    "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
     "speed": 5,
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Slash",
       "keywords": ["Siege", "_Overwhelming_ 1"],
+      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 4, 4, 6, 7, 8, 8, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -161,15 +161,15 @@
         "",
         "",
         "",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 1",
-        "_Bleed_ 3, _Exposed_ 2",
-        "_Bleed_ 3, _Exposed_ 2"
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 1",
+        "_Bleeding_ 3, _Exposed_ 2",
+        "_Bleeding_ 3, _Exposed_ 2"
       ]
     },
-    "weight": 3,
+    "weight": 2,
     "hands": 1,
     "durability": 9
   },
@@ -179,13 +179,13 @@
     "type": ["Heavy"],
     "desc": "A mighty axe wielded in two hands that crushes through all defenses and drives foes into the dirt.",
     "speed": 6,
-    "material": "Metal, Wood",
     "range": [{ "category": "Melee", "value": 2 }],
-    "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
-    "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
+    "charged_effect": "Deal +5 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
+    "parry": "Gain _Resistance_ 2 [_Forced Movement_] and 2 _Instant Guard_.",
     "chart": {
       "damage_type": "Slash",
       "keywords": ["Siege", "_Overwhelming_ 2"],
+      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 7, 8, 9, 9, 10, 11, 12, 12],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -195,12 +195,12 @@
         "",
         "",
         "",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 1, _Exposed_ 1",
-        "_Bleed_ 2, _Exposed_ 2",
-        "_Bleed_ 2, _Exposed_ 2",
-        "_Bleed_ 3, _Exposed_ 3",
-        "_Bleed_ 3, _Exposed_ 3"
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 1, _Exposed_ 1",
+        "_Bleeding_ 2, _Exposed_ 2",
+        "_Bleeding_ 2, _Exposed_ 2",
+        "_Bleeding_ 3, _Exposed_ 3",
+        "_Bleeding_ 3, _Exposed_ 3"
       ]
     },
     "weight": 4,
@@ -215,15 +215,15 @@
     "category": "Hafted",
     "type": "Versatile",
     "desc": "A simple weapon with a heavy, weighted head.",
-    "keywords": ["_Pierce_ 1"],
     "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1].",
-    "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
-    "material": "Metal, Wood",
+    "parry": "Gain 1 _Instant Guard_ and reduce any _Vulnerable_ inflicted by 1.",
     "speed": 4,
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
+      "keywords": ["_Pierce_ 1"],
+      "material": "Metal, Wood",
       "damage": [0, 0, 0, 4, 5, 6, 6, 7, 8, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "_Reeling_ 1", "_Reeling_ 1", "_Reeling_ 1", "_Reeling_ 1", "_Reeling_ 2", "_Reeling_ 2"]
@@ -240,13 +240,14 @@
     "keywords": ["Hand-and-a-Half"],
     "speed": 6,
     "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
-    "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
-    "material": "Metal, Wood",
+    "parry": "Gain 1 _Instant Guard_ and reduce any _Vulnerable_ inflicted by 1.",
     "damage_type": "Crush",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
+      "damage_type": "Crush",
       "keywords": ["Siege", "_Pierce_ 1"],
       "on_miss": "+2 _Momentum_",
+      "material": "Metal, Wood",
       "damage": [0, 0, 0, 5, 6, 7, 8, 9, 10, 11, 11],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -263,7 +264,7 @@
         "_Push_ 2, _Reeling_ 2"
       ]
     },
-    "weight": 3,
+    "weight": 2,
     "hands": 1,
     "durability": 10
   },
@@ -274,11 +275,11 @@
     "desc": "A weapon of sheer mass that pushes through armor and defenses alike to punish foes.",
     "speed": 7,
     "charged_effect": "Deal +4 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
-    "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
-    "material": "Metal, Wood",
+    "parry": "Gain 2 _Instant Guard_ and reduce any _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Melee", "value": 2 }],
     "chart": {
       "damage_type": "Crush",
+      "material": "Metal, Wood",
       "keywords": ["Siege", "_Pierce_ 2"],
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 8, 8, 10, 11, 12, 13, 14, 14],
@@ -317,6 +318,7 @@
     "type": "Light",
     "chart": {
       "damage_type": "Varying",
+      "material": "Varying",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 1, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -334,6 +336,7 @@
         "_Vulnerable_ 3"
       ]
     },
+    "parry": "If the triggering Attack is _Light_ gain 1 _Instant Guard_.",
     "hands": 1,
     "analysis_notes": {
       "fudge": -1.5
@@ -351,6 +354,7 @@
     ],
     "chart": {
       "damage_type": "Varying",
+      "material": "Varying",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 3, 3, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -368,6 +372,7 @@
         "_Vulnerable_ 3"
       ]
     },
+    "parry": "Gain 1 _Instant Guard_.",
     "weight": 0,
     "hands": 1,
     "analysis_notes": {
@@ -383,6 +388,7 @@
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Varying",
+      "material": "Varying",
       "keywords": ["_Overwhelming_ 1"],
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 5, 5, 7, 8, 8, 9, 10, 10],
@@ -401,6 +407,7 @@
         "_Vulnerable_ 4"
       ]
     },
+    "parry": "Gain 2 _Instant Guard_.",
     "weight": 0,
     "hands": 2,
     "analysis_notes": {
@@ -413,14 +420,14 @@
     "desc": "A light spear that lacks the range of other lance weapons but can easily be flung to harry foes.",
     "speed": 2,
     "type": "Light",
-    "material": "Metal, Wood",
     "range": [
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 6, "special": "_Thrown_,  _Close Range_ 2" }
     ],
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
+    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_/_Versatile_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 5.",
     "chart": {
       "damage_type": "Stab",
+      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 3, 3, 3, 3, 3, 4, 4, 4, 5, 5],
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -439,11 +446,11 @@
     "speed": 3,
     "charged_effect": "On a _Graze_+, deal +1 Damage. Make this _Attack_ in a _Self_-Range _Line_ 2.",
     "range": [{ "category": "Melee", "value": 2 }],
-    "material": "Metal, Wood",
-    "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* If this _Weapon_ is _Wielded_ in both hands, gain 1 _Guard_ against the Attack.",
+    "parry": "Gain the following benefits:\n* Gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 5.",
     "chart": {
       "damage_type": "Stab",
       "on_miss": "+2 _Momentum_",
+      "material": "Metal, Wood",
       "damage": [0, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1, _Hobbled_ 1", "_Impaired_ 1, _Hobbled_ 1"]
@@ -459,11 +466,11 @@
     "desc": "A powerful weapon with unparalleled reach and the weight to deal heavy damage to foes.",
     "speed": 4,
     "charged_effect": "On a _Graze_+, deal +2 Damage. Make this _Attack_ in a _Self_-Range _Line_ 3 and add [_Pierce_ 1].",
-    "range": [{ "category": "Melee", "value": 3 }],
-    "material": "Metal, Wood",
-    "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* Gain 1 _Guard_ against the Attack.",
+    "range": [{ "category": "Melee", "value": 3, "special": "_Close Range_ 1" }],
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 5.",
     "chart": {
       "damage_type": "Stab",
+      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 4, 4, 6, 6, 6, 6, 7, 7, 8, 8],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -495,11 +502,11 @@
     "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilities.",
     "type": "Light",
     "speed": 3,
-    "material": "Wood (Weapon), Wood/Metal (Projectile)",
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 1" }],
     "chart": {
       "damage_type": "Stab",
+      "material": "Wood (Weapon), Wood/Metal (Projectile)",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 5, 5, 6, 7, 7, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -516,11 +523,11 @@
     "speed": 4,
     "type": "Versatile",
     "charged_effect": "Add [_Pierce_ 1] and deal +1 Damage on a _Hit_+.",
-    "material": "Stone (Projectile)",
     "parry": "None.",
     "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 2" }],
     "chart": {
       "damage_type": "Crush",
+      "material": "Stone (Projectile)",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 4, 4, 5, 6, 7, 8, 8],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -537,11 +544,11 @@
     "type": "Versatile",
     "charged_effect": "Add [_Arcing_] and deal +2 Damage on a _Hit_+.",
     "speed": 5,
-    "material": "Wood (Weapon), Wood/Metal (Projectile)",
-    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Ranged", "value": 10, "special": "_Ordnance_, _Close Range_ 3" }],
     "chart": {
       "damage_type": "Stab",
+      "material": "Wood (Weapon), Wood/Metal (Projectile)",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 8, 8, 9, 10, 10, 11, 11],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -558,12 +565,12 @@
     "type": "Heavy",
     "charged_effect": "Add [_Arcing_, _Pierce_ 1] and deal +3 Damage on a _Hit_+.",
     "speed": 7,
-    "material": "Wood (Weapon), Wood/Metal (Projectile)",
-    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Ranged", "value": 12, "special": "_Ordnance_, _Close Range_ 4" }],
     "chart": {
       "keywords": ["_Pierce_ 1"],
       "damage_type": "Stab",
+      "material": "Wood (Weapon), Wood/Metal (Projectile)",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 10, 11, 12, 12, 12, 13, 13],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -579,13 +586,13 @@
     "category": "Shield",
     "durability": 9,
     "type": "Light",
-    "material": "Metal",
     "keywords": ["Secure"],
     "speed": 3,
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as having at least _Light Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Gain 1 _Instant Guard_.\n* Treat yourself as having at least _Light Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
+      "material": "Metal",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 0, 1, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -616,11 +623,11 @@
     "type": "Versatile",
     "keywords": ["Secure"],
     "speed": 5,
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Heavy Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 2, starting with the smallest Token.",
-    "material": "Wood",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* Treat yourself as having at least _Light Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 2.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
+      "material": "Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 1, 1, 1, 2, 2, 3, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -650,12 +657,12 @@
     "durability": 12,
     "type": "Versatile",
     "speed": 6,
-    "material": "Metal, Wood",
     "keywords": ["Secure"],
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 2 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Heavy Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 2, starting with the smallest Token.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* Treat yourself as having at least _Heavy Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 2.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
+      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -686,14 +693,14 @@
     "type": "Heavy",
     "speed": 7,
     "keywords": ["Secure"],
-    "material": "Metal",
-    "special": "You may, as a 1 AP _Action_, stop _Wielding_ this _Weapon_ and plant it in the ground. Create the _Planted Shield_ _Obstacle_ in that space and immediately use its _Interact_. You may _Retrieve_ this _Weapon_ as normal, removing the _Obstacle_ in the process.",
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 2 and gain 2 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as _Covered_.\n* Reduce the Value of _Vulnerable_ inflicted by 3, starting with the smallest Token.",
+    "special": "You may, as a 1 AP _Action_, stop _Wielding_ this _Weapon_ and plant it in the ground. Create the _Planted Shield_ _Obstacle_ in that space and immediately use its _Interact_ at no cost. You may _Retrieve_ this _Weapon_ as normal, removing the _Obstacle_ in the process.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* Treat yourself as having at least _Full Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 3.",
     "range": [{ "category": "Melee", "value": 1 }],
 
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
+      "material": "Metal",
       "damage": [0, 0, 0, 3, 3, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -721,10 +728,9 @@
     "category": "Throwing",
     "desc": "A simple weapon that allows for quick attacks and clumsy melee strikes.",
     "type": "Light",
-    "keywords": ["Small", "Quickdraw"],
+    "keywords": ["_Arsenal_ 3", "Quickdraw"],
     "speed": 2,
     "parry": "None",
-    "material": "Wood",
     "range": [
       { "category": "Melee", "value": 1, "special": "_Glancing_" },
       { "category": "Ranged", "value": 6, "special": "_Thrown_, _Close Range_ 1" }
@@ -732,6 +738,7 @@
     "chart": {
       "damage_type": "Stab",
       "on_miss": "+2 _Momentum_",
+      "material": "Wood",
       "damage": [0, 0, 2, 2, 3, 3, 4, 4, 4, 5, 5],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
@@ -846,7 +853,7 @@
     "category": "Natural",
     "desc": "A small natural weapon suitable for stingers, barbs, and needles.",
     "speed": 2,
-    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleed_ 2 or you reduce the _Attack Roll_ by 1.",
+    "parry": "Gain the following benefits if the trigging Attack was _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleeding_ 2 or you reduce the _Attack Roll_ by 1.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Stab",
@@ -855,16 +862,16 @@
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 2, _Impaired_ 1",
-        "_Bleed_ 2, _Impaired_ 1"
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 2, _Impaired_ 1",
+        "_Bleeding_ 2, _Impaired_ 1"
       ]
     },
     "type": "Light",
@@ -876,7 +883,7 @@
     "desc": "A natural weapon suitable for stingers, barbs, and needles.",
     "speed": 4,
     "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2.",
-    "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleed_ 2 or you reduce the _Attack Roll_ by 1.",
+    "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleeding_ 2 or you reduce the _Attack Roll_ by 1.",
     "range": [{ "category": "Melee", "value": 2 }],
     "chart": {
       "damage_type": "Stab",
@@ -885,16 +892,16 @@
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 2, _Impaired_ 2",
-        "_Bleed_ 2, _Impaired_ 2"
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 2, _Impaired_ 2",
+        "_Bleeding_ 2, _Impaired_ 2"
       ]
     },
     "type": "Versatile",
@@ -905,8 +912,8 @@
     "category": "Natural",
     "desc": "A heavy natural weapon suitable for stingers, barbs, and needles.",
     "speed": 6,
-    "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2 and add _Bleed_ 1 on a _Graze_+.",
-    "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleed_ 3 or you reduce the _Attack Roll_ by 1.",
+    "charged_effect": "Instead, make this Attack in a _Self_-Range _Line_ 2 and add _Bleeding_ 1 on a _Graze_+.",
+    "parry": "Gain the following benefits if the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Bleeding_ 3 or you reduce the _Attack Roll_ by 1.",
     "range": [{ "category": "Melee", "value": 2 }],
     "chart": {
       "keywords": ["_Pierce_ 1"],
@@ -916,16 +923,16 @@
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 1",
-        "_Bleed_ 1, _Impaired_ 2",
-        "_Bleed_ 1, _Impaired_ 2",
-        "_Bleed_ 2, _Impaired_ 3",
-        "_Bleed_ 2, _Impaired_ 3"
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 1",
+        "_Bleeding_ 1, _Impaired_ 2",
+        "_Bleeding_ 1, _Impaired_ 2",
+        "_Bleeding_ 2, _Impaired_ 3",
+        "_Bleeding_ 2, _Impaired_ 3"
       ]
     },
     "type": "Heavy",
@@ -946,7 +953,7 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 2, 2, 3, 4, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2"]
+      "status": ["", "", "", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2"]
     },
     "type": "Light",
     "hands": 0
@@ -964,7 +971,7 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 4, 4, 5, 6, 6, 7, 8, 9, 9],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2"]
+      "status": ["", "", "", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2"]
     },
     "type": "Versatile",
     "hands": 0
@@ -982,7 +989,7 @@
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 5, 6, 7, 7, 8, 9, 10, 11, 11],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "_Bleed_ 1", "_Bleed_ 1", "_Bleed_ 2", "_Bleed_ 2", "_Bleed_ 3", "_Bleed_ 3"]
+      "status": ["", "", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2", "_Bleeding_ 3", "_Bleeding_ 3"]
     },
     "type": "Heavy",
     "hands": 0
@@ -1161,7 +1168,7 @@
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 5, 6, 7, 9, 10, 10, 12, 12],
+      "damage": [0, 0, 0, 5, 6, 7, 9, 9, 10, 12, 12],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",

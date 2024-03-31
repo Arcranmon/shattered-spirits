@@ -9,6 +9,10 @@
     "effect": "When you make an Attack with Advantage, roll 3d6 and use the two highest for your result."
   },
   {
+    "name": "Angled",
+    "effect": "As normal _Push_/_Pull_ but, rather than moving the creature directly away/towards you, move them away/towards and to the right or left (your choice) of you."
+  },
+  {
     "name": "AP",
     "effect": "AP, or Action Points, are spent to use powerful _Actions_, _Stunts_, and other abilities. Player characters have 2 AP that they may use each _Round_. Unspent AP is lost at the end of the _Round_."
   },
@@ -61,9 +65,10 @@
     "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve it as follows:\n* **Obstacle Colliding with Obstacle**: Deal Damage to both _Obstacles_ equal to the half the _Forced Movement_ remaining. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_.\n* **Obstacle Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Obstacle_. After resolving this _Push_, the creature gains _Vulnerable_ equal to half the spaces they moved. Continue moving the _Obstacle_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Vulnerable_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Vulnerable_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Obstacle**: Deal Damage to the _Obstacle_ equal to the half the _Forced Movement_ remaining and inflict _Vulnerable_ on the creature equal to the same amount. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Obstacle_ was _Destroyed_, reduce the _Forced Movement_ by the Obstacle's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
   },
   { "name": "Collide", "see": "Collision" },
+  { "name": "Collides", "see": "Collision" },
   {
     "name": "Cold",
-    "effect": "A damage type caused by freezing temperatures and frigid climate.\n&nbsp;\nCold Damage is always _Endurable_. \n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Frost_ instead of increasing Damage if you deal Cold Damage.\n&nbsp;\nIf a character is _Downed_ by Cold Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Frost_ 1\n 3-4: _Frost_ 2\n5-6: _Frost_ 3"
+    "effect": "A damage type caused by freezing temperatures and frigid climate.\n&nbsp;\nCold Damage is always _Endurable_. \n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Frigid_ instead of increasing Damage if you deal Cold Damage.\n&nbsp;\nIf a character is _Downed_ by Cold Damage, inflict the following _Wounds_ based on the roll:\n 1-2: Frigidt_ 1\n 3-4:Frigidst_ 2\n5-6Frigidost_ 3"
   },
   {
     "name": "Controller",
@@ -74,14 +79,12 @@
     "effect": "An up-front cost of an ability that must be paid at _Respite_ if it's a _Technique_, or when used for all other abilities."
   },
   {
-    "name": "Covered",
-    "effect": "Attacks against a Covered creature gain _Glancing_ and take a -2 _Penalty_."
-  },
-  {
     "name": "Cover",
-    "effect": "A state when the path to a creature is obstructed. A creature may have _Light Cover_, _Heavy Cover_, or _Full Cover_."
+    "effect": "Creatures may, depending on positioning, have a varying degree of cover. To determine Cover, characters should draw a line from the center of the Attack's origin space (typically the attacker's space) to the center of the target's space, referred to as the Attack Line:\n* <ins>Light Cover</ins>: If the Attack Line passes through an Obstacle with a _Total Height_ equal to or greater than yours and the Target's and comes out an adjacent side, the Target has Light Cover. Attacks against a creature with Light Cover take a -1 _Penalty_.\n* <ins>Heavy Cover</ins>:  If the Attack Line passes through an Obstacle with a _Total Height_ equal to or greater than yours and the Target's and comes out of non-adjacent sides of said Obstacle, the Target has Heavy Cover. Attacks against a creature with Heavy Cover take a -2 _Penalty_.\n* <ins>Full Cover</ins>: If a creature is adjacent to an Obstacle with a _Total Height_ less than or equal to their own and the Attack Line passes through said Obstacle and comes out of non-adjacent sides of it, the Target has Full Cover. Attacks against a creature with Full Cover take a -2 _Penalty_ and gain _Glancing_."
   },
-  { "name": "Covered", "see": "Cover" },
+  { "name": "Light Cover", "see": "Cover" },
+  { "name": "Heavy Cover", "see": "Cover" },
+  { "name": "Full Cover", "see": "Cover" },
   {
     "name": "Crit",
     "effect": "A particularly effective Attack, represented by a purple cell in the Attack's 'Roll' column in its _Profile_."
@@ -135,7 +138,7 @@
   },
   {
     "name": "Fire",
-    "effect": "A damage type caused by searing heat and scorching flames.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Alight_ instead of increasing Damage if you deal Fire Damage.\n&nbsp;\nIf a character is _Downed_ by Fire Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Burn_ 1\n 3-4: _Burn_ 2\n5-6: _Burn_ 3"
+    "effect": "A damage type caused by searing heat and scorching flames.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Alight_ instead of increasing Damage if you deal Fire Damage.\n&nbsp;\nIf a character is _Downed_ by Fire Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Burned_ 1\n 3-4: _Burned_ 2\n5-6: _Burned_ 3"
   },
   {
     "name": "Forced Movement",
@@ -159,15 +162,17 @@
     "name": "Equipped",
     "effect": "Any Equipment that a character has on their person."
   },
+  { "name": "Equip", "see": "Equipped" },
   {
     "name": "Falling",
     "effect": " If a creature moves from one Elevation to a lower _Elevation_ take Crush Damage equal to twice the Elevation Change. If a creature takes at least 6 Damage in this way they also fall _Prone_. A creature may reduce this Damage by 2 for every _Stamina_ spent."
   },
   { "name": "Fall", "see": "Falling" },
   { "name": "Falls", "see": "Falling" },
+  { "name": "Fell", "see": "Falling" },
   {
     "name": "Free Turn",
-    "effect": "When a creature gains a Free Turn they may immediately take a Turn after the current Turn resolves, ignoring the normal Initiative process. What they may do on this Turn is outlined in the ability, but they may also activate Stunts and use any other abilities that simply require a Turn."
+    "effect": "When a creature gains a Free Turn they may immediately take a Turn, interrupting the current _Turn_ and ignoring the normal Initiative process. What they may do on this Turn is outlined in the ability, but any other ability that may normally be used on a _Turn_ (such as _Stunts_) may also be used."
   },
   {
     "name": "Gambit",
@@ -190,17 +195,13 @@
   },
   { "name": "Hazards", "see": "Hazard" },
   {
-    "name": "Heavy Cover",
-    "effect": "A state that occurs when the path to a creature barely exists. Attacks against a creature with Heavy Cover take a -2 _Penalty_."
-  },
-  {
     "name": "Hit",
     "effect": "A solid connection with an Attack, represented by a green cell in the Attack's 'Roll' column in its _Profile_."
   },
   { "name": "Improvised", "see": "Improvise" },
   {
     "name": "Improvise",
-    "effect": "If a character finds they no longer wish to use a _Technique_ selected in the _Plotting_ Phase, they may choose to Improvise a _Technique_ by paying 2 _Momentum_ to replace it with a different _Technique_ on their Turn. This new _Technique_ must have the same _AP_ cost and a _Speed_ that is less than or equal to the replaced _Technique_. Some _Techniques_ are easier to Improvise, as denoted by the _Fluid_ keyword."
+    "effect": "If a character finds they no longer wish to use a _Technique_ selected in the _Plotting_ Phase, they may choose to Improvise a _Technique_ by paying 2 _Momentum_ to replace it with a different _Technique_ on their Turn. This new _Technique_ must be playable in the given _Phase_. Some _Techniques_ are easier to Improvise, as denoted by the _Fluid_ keyword."
   },
   {
     "name": "Imbue",
@@ -215,12 +216,8 @@
     "effect": "Launching can be applied to any kind of _Forced Movement_. The _Forced Movement_ is considered _Leaping_ for all effects and, at the end of the _Movement_, the creature _Falls_ X+1 spaces, where X is half the Launching distance, plus any applicable _Elevation_ change. If an effect gains Launching, all _Forced Movement_ of the same type gains Launching."
   },
   {
-    "name": "Light Cover",
-    "effect": "A state that occurs when the path to a creature is barely blocked. Attacks against a creature with Light Cover take a -1 _Penalty_."
-  },
-  {
     "name": "Lightning",
-    "effect": "A damage type caused by jolts of lightning and electricity.\n&nbsp;\nLightning Damage is always _Endurable_. Any _Area_ Attack that deals Lightning Damage split it evenly between all targets rather than deal the same amount of Damage to all creatures.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Shock_ instead of increasing Damage if you deal Lightning Damage.\n&nbsp;\nIf a character is _Downed_ by Lightning Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Shock_ 1\n 3-4: _Shock_ 2\n5-6: _Shock_ 3"
+    "effect": "A damage type caused by jolts of lightning and electricity.\n&nbsp;\nLightning Damage is always _Endurable_. Any _Area_ Attack that deals Lightning Damage splits Damage and Status evenly between all targets rather than deal the listed amount of Damage/Status to all creatures.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Shocked_ instead of increasing Damage if you deal Lightning Damage.\n&nbsp;\nIf a character is _Downed_ by Lightning Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Shocked_ 1\n 3-4: _Shocked_ 2\n5-6: _Shocked_ 3"
   },
   {
     "name": "Jump",
@@ -245,11 +242,11 @@
   },
   {
     "name": "Major Source",
-    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1."
+    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1.\n* **Wind:** Any _Windy_ or _Electric_ Terrain."
   },
   {
     "name": "Minor Source",
-    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_."
+    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_.\n* **Wind:** Any space that is not a Major Earth Source."
   },
   { "name": "Major Sources", "see": "Major Source" },
   { "name": "Minor Sources", "see": "Minor Source" },
@@ -275,8 +272,10 @@
   { "name": "Negates", "see": "Negate" },
   {
     "name": "Obscured",
-    "effect": "A state when a creature is difficult to see. A creature may be Lightly or Heavily Obscured. Lightly Obscured has no effect on its own, but a Heavily Obscured creature may not be targetted."
+    "effect": "A state when a creature is difficult to see. A creature may be Lightly or Heavily Obscured. To determine Obscured status, draw a line from the center of the Attacker's space to the center of the target's space.\n* <ins>Lightly Obscured</ins>: If this line clips an Obstacle of a _Total Height_ greater than yours and the target's or some _Terrain_ effects, they are Lightly Obscured. This has no impact on its  own, but works in conjunction with some effects such as _Stealthy_.\n* <ins>Heavily Obscured</ins>:  If this line fully passes through an Obstacle of a _Total Height_ greater than yours and the target's, they are Heavily Obscured. A creature that is Heavily Obscured may not be targeted.\n* <ins>Secondary Senses</ins>: Secondary Senses allow characters to perceive enemies in ways other than sight. When using a _Secondary Sense_, ignore the normal rules for determining Obscured and follow the rules of the _Secondary Sense_."
   },
+  { "name": "Lightly Obscured", "see": "Obscured" },
+  { "name": "Heavily Obscured", "see": "Obscured" },
   {
     "name": "Open Hand",
     "effect": "An Open Hand is any Hand a character has that does not have any other Weapons or Equipment _Wielded_."
@@ -348,12 +347,8 @@
     "effect": "Shaper Disciplines heavily manipulate Terrain and Obstacles, either by creating them or removing them and can easily change the layout of the battlefield."
   },
   {
-    "name": "Shift",
-    "effect": "The act of using _Movement_ to move about the battlefield. Characters typically have one Shift per _Turn_, as described by the 'Move' field in a _Technique_. If multiple distances are listed (such as '_Step_, _Step') a character takes that many Shifts, each of that distance. Characters may freely interrupt a Shift to Attack or use any part of the Technique's Effect, unless specified otherwise."
-  },
-  {
     "name": "Secondary Sense",
-    "effect": "Secondary Senses allow characters to perceive enemies in ways other than sight.  Secondary Sense allows a character to ignore_Veiled_ under specific conditions. In addition, if a creature has Secondary Sense on a Target and the Attack is _Arcing_ they reduce any _Cover_ by an additional level."
+    "effect": "Secondary Senses allow characters to perceive enemies in ways other than sight.  Secondary Sense allows a character to ignore_Stealthy_ under specific conditions. In addition, if a creature has Secondary Sense on a Target and the Attack is _Arcing_ they reduce any _Cover_ by an additional level."
   },
   {
     "name": "Seismic Sense",
@@ -361,7 +356,7 @@
   },
   {
     "name": "Slash",
-    "effect": "Damage caused by lacerations, such as those caused by an axe or cutting blade.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Bleed_ instead of increasing Damage if you deal Slash Damage.\n&nbsp;\nIf a character is _Downed_ by Slash Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleed_ 1\n 3-4: _Bleed_ 2\n5-6: _Bleed_ 3"
+    "effect": "Damage caused by lacerations, such as those caused by an axe or cutting blade.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Bleeding_ instead of increasing Damage if you deal Slash Damage.\n&nbsp;\nIf a character is _Downed_ by Slash Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleeding_ 1\n 3-4: _Bleeding_ 2\n5-6: _Bleeding_ 3"
   },
   {
     "name": "Speed",
@@ -383,7 +378,7 @@
   { "name": "Summoned", "see": "Summon" },
   {
     "name": "Stab",
-    "effect": "Damage that represents piercing wounds, such as those caused by an arrow or a knife.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Impaired_ instead of increasing Damage if you deal Stab Damage.\n&nbsp;\nIf a character is _Downed_ by Stab Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleed_ 1\n 3-4: _Bleed_ 1, _Impaired_ 1\n5-6: _Bleed_ 1, _Impaired_ 2"
+    "effect": "Damage that represents piercing wounds, such as those caused by an arrow or a knife.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Impaired_ instead of increasing Damage if you deal Stab Damage.\n&nbsp;\nIf a character is _Downed_ by Stab Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleeding_ 1\n 3-4: _Bleeding_ 1, _Impaired_ 1\n5-6: _Bleeding_ 1, _Impaired_ 2"
   },
   {
     "name": "Stance",
