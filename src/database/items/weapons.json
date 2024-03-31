@@ -5,7 +5,7 @@
     "desc": "A small blade capable of sudden assaults and being thrown.",
     "keywords": ["Quickdraw"],
     "speed": 2,
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
+    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "range": [
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 4, "special": "_Thrown_, _Close Range_ 1" }
@@ -30,7 +30,7 @@
     "desc": "A light blade that offers a balance between power and speed.",
     "type": "Light",
     "speed": 3,
-    "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it.",
+    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_/_Versatile_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Slash/Stab",
@@ -51,7 +51,7 @@
     "keywords": ["Hand-and-a-Half"],
     "speed": 4,
     "charged_effect": "On a _Graze_+ deal +2 _Damage_ and inflict _Bleeding_ 1.",
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 or gain 1 _Guard_ against it. If this weapon is _Wielded_ in both hands, gain both effects.",
+    "parry": "Gain the following benefits:\n* Gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Slash/Stab",
@@ -71,7 +71,7 @@
     "category": "Bladed",
     "desc": "A massive blade meant to be wielded in both hands, this weapon can cleave through most defenses.",
     "speed": 5,
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
     "charged_effect": "One a _Graze_+, inflict +3 Damage and inflict _Bleeding_ 2. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
     "range": [{ "category": "Melee", "value": 2 }],
     "chart": {
@@ -109,7 +109,7 @@
     "type": "Light",
     "desc": "A lightweight axe that weighs enough to punish a foe's defenses while allowing for swift strikes.",
     "speed": 3,
-    "parry": "Gain the following benefits if the trigging _Attack_ was _Light_/_Versatile_:\n* Gain 1 _Guard_ against the Attack.",
+    "parry": "Gain _Resistance_ 1 [_Forced Movement_] and, if the trigging _Attack_ was _Light_/_Versatile_, gain 1 _Instant Guard_.",
     "range": [
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 3, "special": "_Thrown_, _Close Range_ 1" }
@@ -134,7 +134,7 @@
         "_Bleeding_ 3, _Exposed_ 2"
       ]
     },
-    "weight": 2,
+    "weight": 1,
     "hands": 1,
     "durability": 8
   },
@@ -144,7 +144,7 @@
     "type": "Versatile",
     "desc": "A powerful melee tool that cleaves through a foe's attempts to grit.",
     "keywords": ["Hand-and-a-Half"],
-    "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
+    "parry": "Gain _Resistance_ 1 [_Forced Movement_] and 1 _Instant Guard_.",
     "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
     "speed": 5,
     "range": [{ "category": "Melee", "value": 1 }],
@@ -169,7 +169,7 @@
         "_Bleeding_ 3, _Exposed_ 2"
       ]
     },
-    "weight": 3,
+    "weight": 2,
     "hands": 1,
     "durability": 9
   },
@@ -181,7 +181,7 @@
     "speed": 6,
     "range": [{ "category": "Melee", "value": 2 }],
     "charged_effect": "Deal +5 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
-    "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
+    "parry": "Gain _Resistance_ 2 [_Forced Movement_] and 2 _Instant Guard_.",
     "chart": {
       "damage_type": "Slash",
       "keywords": ["Siege", "_Overwhelming_ 2"],
@@ -216,7 +216,7 @@
     "type": "Versatile",
     "desc": "A simple weapon with a heavy, weighted head.",
     "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1].",
-    "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
+    "parry": "Gain 1 _Instant Guard_ and reduce any _Vulnerable_ inflicted by 1.",
     "speed": 4,
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
@@ -240,7 +240,7 @@
     "keywords": ["Hand-and-a-Half"],
     "speed": 6,
     "charged_effect": "Deal +3 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Additionally, this Weapon becomes _Reach_ 2.",
-    "parry": "Gain 1 _Guard_ against the triggering _Attack_.",
+    "parry": "Gain 1 _Instant Guard_ and reduce any _Vulnerable_ inflicted by 1.",
     "damage_type": "Crush",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
@@ -264,7 +264,7 @@
         "_Push_ 2, _Reeling_ 2"
       ]
     },
-    "weight": 3,
+    "weight": 2,
     "hands": 1,
     "durability": 10
   },
@@ -275,7 +275,7 @@
     "desc": "A weapon of sheer mass that pushes through armor and defenses alike to punish foes.",
     "speed": 7,
     "charged_effect": "Deal +4 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1]. Make this _Attack_ in a _Self_-Range _Cone_ 2/_Arc_ 1.",
-    "parry": "Gain 2 _Guard_ against the triggering _Attack_.",
+    "parry": "Gain 2 _Instant Guard_ and reduce any _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Melee", "value": 2 }],
     "chart": {
       "damage_type": "Crush",
@@ -336,6 +336,7 @@
         "_Vulnerable_ 3"
       ]
     },
+    "parry": "If the triggering Attack is _Light_ gain 1 _Instant Guard_.",
     "hands": 1,
     "analysis_notes": {
       "fudge": -1.5
@@ -371,6 +372,7 @@
         "_Vulnerable_ 3"
       ]
     },
+    "parry": "Gain 1 _Instant Guard_.",
     "weight": 0,
     "hands": 1,
     "analysis_notes": {
@@ -405,6 +407,7 @@
         "_Vulnerable_ 4"
       ]
     },
+    "parry": "Gain 2 _Instant Guard_.",
     "weight": 0,
     "hands": 2,
     "analysis_notes": {
@@ -421,7 +424,7 @@
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 6, "special": "_Thrown_,  _Close Range_ 2" }
     ],
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_ and the attacker is within _Reach_:\n* Opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.",
+    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_/_Versatile_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 5.",
     "chart": {
       "damage_type": "Stab",
       "material": "Metal, Wood",
@@ -443,7 +446,7 @@
     "speed": 3,
     "charged_effect": "On a _Graze_+, deal +1 Damage. Make this _Attack_ in a _Self_-Range _Line_ 2.",
     "range": [{ "category": "Melee", "value": 2 }],
-    "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* If this _Weapon_ is _Wielded_ in both hands, gain 1 _Guard_ against the Attack.",
+    "parry": "Gain the following benefits:\n* Gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 5.",
     "chart": {
       "damage_type": "Stab",
       "on_miss": "+2 _Momentum_",
@@ -464,7 +467,7 @@
     "speed": 4,
     "charged_effect": "On a _Graze_+, deal +2 Damage. Make this _Attack_ in a _Self_-Range _Line_ 3 and add [_Pierce_ 1].",
     "range": [{ "category": "Melee", "value": 3, "special": "_Close Range_ 1" }],
-    "parry": "Gain the following benefits:\n* If the attacker is within _Reach_, opponent chooses: Either they gain _Vulnerable_ 1 or you reduce the _Attack Roll_ by 1.\n* Gain 1 _Guard_ against the Attack.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 5.",
     "chart": {
       "damage_type": "Stab",
       "material": "Metal, Wood",
@@ -499,7 +502,7 @@
     "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilities.",
     "type": "Light",
     "speed": 3,
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 1" }],
     "chart": {
       "damage_type": "Stab",
@@ -541,7 +544,7 @@
     "type": "Versatile",
     "charged_effect": "Add [_Arcing_] and deal +2 Damage on a _Hit_+.",
     "speed": 5,
-    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Ranged", "value": 10, "special": "_Ordnance_, _Close Range_ 3" }],
     "chart": {
       "damage_type": "Stab",
@@ -562,7 +565,7 @@
     "type": "Heavy",
     "charged_effect": "Add [_Arcing_, _Pierce_ 1] and deal +3 Damage on a _Hit_+.",
     "speed": 7,
-    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1, starting with the smallest Token.",
+    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Ranged", "value": 12, "special": "_Ordnance_, _Close Range_ 4" }],
     "chart": {
       "keywords": ["_Pierce_ 1"],
@@ -585,7 +588,7 @@
     "type": "Light",
     "keywords": ["Secure"],
     "speed": 3,
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as having at least _Light Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 1.",
+    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Gain 1 _Instant Guard_.\n* Treat yourself as having at least _Light Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 1.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
@@ -620,7 +623,7 @@
     "type": "Versatile",
     "keywords": ["Secure"],
     "speed": 5,
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 1 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Heavy Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 2.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* Treat yourself as having at least _Light Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 2.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
@@ -655,7 +658,7 @@
     "type": "Versatile",
     "speed": 6,
     "keywords": ["Secure"],
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 2 and gain 1 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as at least _Heavy Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 2.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* Treat yourself as having at least _Heavy Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 2.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
@@ -691,7 +694,7 @@
     "speed": 7,
     "keywords": ["Secure"],
     "special": "You may, as a 1 AP _Action_, stop _Wielding_ this _Weapon_ and plant it in the ground. Create the _Planted Shield_ _Obstacle_ in that space and immediately use its _Interact_ at no cost. You may _Retrieve_ this _Weapon_ as normal, removing the _Obstacle_ in the process.",
-    "parry": "Gain the following benefits:\n* Reduce the _Attack Roll_ by 2 and gain 2 _Guard_ against it.\n* If the _Attack_ is _Ranged_, treat yourself as having _Full Cover_.\n* Reduce the Value of _Vulnerable_ inflicted by 3.",
+    "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* Treat yourself as having at least _Full Cover_ against this Attack, ignoring all keywords.\n* Reduce any _Vulnerable_ inflicted by 3.",
     "range": [{ "category": "Melee", "value": 1 }],
 
     "chart": {
