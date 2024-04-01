@@ -17,8 +17,7 @@
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
       ></v-select
-      ><art-card v-if="selectedArt != null" :art="selectedArt"
-    /></span>
+      ><discipline-card v-if="selectedArt != null" :discipline="selectedArt" /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
         <v-col cols="3"
