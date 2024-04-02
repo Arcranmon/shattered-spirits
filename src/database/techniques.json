@@ -1,15 +1,15 @@
 [
   {
-    "name": "Basic Strike",
-    "desc": "You move forward with a weapon, striking a nearby foe.",
+    "name": "Combination Strike",
+    "desc": "You strike out with a one-two punch, flexibly adapting your assault to the field.",
     "class": "Basic",
     "keywords": ["Fluid"],
     "type": "Strike",
     "speed": "1-8",
     "move": "Step",
-    "effect": "Choose one:\n* Make 1 _Major Attack_ and 1 _Minor Attack_.\n* Make 3 _Minor Attacks_.",
-    "special": "Gain 1 _Temporary_ _Momentum_ that may only be used for _Gambits_.",
-    "boost": "2 _Momentum_: Make one less _Light_/_Versatile_ _Minor Attack_ and one more _Light_/_Versatile_ _Major Attack_."
+    "effect": "Make 1 _Major Attack_ and 1 _Minor Attack_.",
+    "special": "Gain 1 _Temporary_ _Momentum_ that may only be used for _Attacks_ and _Gambits_.",
+    "boost": "2 _Momentum_: Replace a _Minor Attack_ with a _Major Attack_."
   },
   {
     "name": "Butterfly Road",
@@ -24,7 +24,7 @@
   },
   {
     "name": "Call the Pack",
-    "desc": "You command your allies with practiced precision, coordinating a synchronized strike.",
+    "desc": "You command your allies with practiced precision, coordinating a Synchronized Assault.",
     "class": "Basic",
     "type": "Strike",
     "speed": "1-8",
@@ -34,7 +34,7 @@
     "special": ""
   },
   {
-    "name": "Coiling Strike",
+    "name": "Flashing Fangs",
     "desc": "You become a tightly-wound spring, ready to lunge out at the first foe foolish enough to enter your range.",
     "class": "Basic",
     "type": "Strike",
@@ -118,7 +118,7 @@
     "type": "Strike",
     "speed": "5-8",
     "move": "Step",
-    "range": [{ "category": "Ranged", "value": 10, "special": "_Ordnance_" }],
+    "range": [{ "category": "Ranged", "value": 10 }],
     "area": "_Blast_ 1",
     "cost": "4 _Momentum_",
     "effect": "Attack with the below Profile.",
@@ -126,6 +126,7 @@
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+5 _Momentum_",
+      "keywords": ["Ordnance"],
       "damage": [1, 1, 2, 2, 3, 3, 3, 3, 3, 4, 4],
       "roll": ["Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -196,7 +197,7 @@
     "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Reposition",
-    "effect": "Gain 2 _Momentum_, then _Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique.",
+    "effect": "Gain 2 _Momentum_, then _Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. While these _Water Veil_s persist treat your _Reeling_ as 2 lower and you do not need to _Draw_ when using _Shielding Wave_ if the Attack passes through them. You may not use the _Boost_ if you use this option.",
     "special": "You may add [_Enchant_]; if you do, remove [_Fleeting_] from these _Water Veil_s. "
   },
   {
@@ -212,7 +213,7 @@
     "special": "You may reduce the Area to Cone to 9, 6, or 3; if you do, you may inflict an additional 1/2/4 _Studied_, distributed among creatures in the _Area_ as you wish."
   },
   {
-    "name": "Patient Strike",
+    "name": "Hunter's Shot",
     "class": "Basic",
     "desc": "You carefully line up an attack, waiting for the opportune moment to release it.",
     "type": "Strike",
@@ -343,11 +344,11 @@
   {
     "name": "Skulk",
     "class": "Basic",
-    "desc": "You conceal yourself before sliding across the battlefield, .",
+    "desc": "You conceal yourself before sliding across the battlefield, avoiding the notice of foes.",
     "type": "Move",
     "speed": "1-8",
     "move": "Step [_Safe_], Reposition",
-    "effect": "Gain 1 _Momentum_. You become _Stealthy_. This effect remains until you leave the space you ended this _Turn_ in, deal _Damage_, or inflict _Status_.",
+    "effect": "Gain 2 _Momentum_ and _Stealthy_. You are treated as if you are in a _Veiled_ space this _Turn_ and may not remove _Stealthy_ by any means.",
     "special": "If you use _Ambush_ this _Round_ you may either make a _Light_/_Versatile_ _Major Attack_ instead of a _Minor Attack_ or make an additional _Light_/_Versatile_ _Minor Attack_."
   },
   {
@@ -358,7 +359,7 @@
     "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 12 }],
     "move": "Step",
-    "effect": "Grant yourself _Courageous_/_Joyful_ 1 then gain 6 Song Points. You may spend 1 Song Point to grant an ally within Range _Courageous_/_Joyful_ 1. You may use this option any number of times. Additionally, you may purchase the following options, but no more than once per Target:\n* 2 Song Points: The target gains a _Free Turn_ with _Step_ _Movement_.\n* 2 Song Points: The target gains a _Free Turn_ where they may make a _Minor Attack_.\n\n&nbsp;\nAny ally that you target with any effect gains 2 _Vigor_. Lose any unspent Song Points at the end of the _Turn_.",
+    "effect": "Grant yourself _Courageous_/_Joyful_ 1 then gain 5 Song Points. You may spend 1 Song Point to grant an ally within Range _Courageous_/_Joyful_ 1. You may use this option any number of times. Additionally, you may purchase the following options, but no more than once per Target:\n* 1 Song Points: The target gains a _Free Turn_ with _Step_ _Movement_.\n* 2 Song Points: The target gains a _Free Turn_ where they may make a _Minor Attack_.\n\n&nbsp;\nAny ally that you target with any effect gains 2 _Vigor_. Lose any unspent Song Points at the end of the _Turn_.",
     "boost": "1 _Momentum_: Gain an additional Song Point. You may use this _Boost_ up to 4 times."
   },
   {
@@ -412,9 +413,9 @@
     "special": "If you repeat this _Technique_ while you have Stone Armor, gain the following effects while you have Stone Armor:\n* You become _Size_ 2, and when applicable are a _Height_ 2 Obstacle.\n* Reset the _Guard_ provided by your Stone Armor and increase it to 3.\n* Gain _Tough_ and 5 _Vigor_."
   },
   {
-    "name": "Strong Strike",
+    "name": "Smash",
     "class": "Basic",
-    "desc": "You unleash a powerful attack against a foe.",
+    "desc": "You sacrifice speed for absolute power, unleashing a singular devastating strike.",
     "type": "Strike",
     "speed": "1-8",
     "move": "Step",
@@ -423,15 +424,15 @@
     "boost": "Choose any:\n* 1 _Momentum_: You may make a _Versatile_ _Major Attack_ rather than a _Heavy_.\n* 2 _Momentum_: If you select the _Charged Attack_ option add [_Unblockable_, _Overwhelming_ 1] and deal +1 _Bonus Damage_ on a _Graze_+. Remove the _Charging_ and _Hazard_ from said _Charged Attack_ 1 _Phase_ later."
   },
   {
-    "name": "Swift Strike",
+    "name": "Skirmish",
     "class": "Basic",
-    "desc": "You agilely attack with light weapons, rapidly covering ground and making a series of strikes.",
+    "desc": "You move quickly, unleashing a flurry of light attacks as your stride across the field.",
     "type": "Strike",
     "speed": "1-8",
     "move": "Reposition",
-    "effect": "Choose one:\n* Make 1 _Light_/_Versatile_ _Major Attack_ and 1 _Light_/_Versatile_ _Minor Attack_ in any order.\n* Make 3 _Light_/_Versatile_ _Minor Attacks_.",
+    "effect": "Make 3 _Light_/_Versatile_ _Minor Attacks_.",
     "special": "Determine _Speed Penalties_ for _Light_ Attacks as if this _Technique_ was played one _Phase_ later.",
-    "boost": "Choose any:\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Make one additional _Light_/_Versatile_ _Minor Attack_."
+    "boost": "Choose any:\n* 1 _Momentum_: Instead, determine _Speed Penalties_ for _Light_/_Versatile_ Attacks as if this _Technique_ was played one _Phase_ later.\n* 2 _Momentum_: Choose one: \n\t* Make one additional _Light_/_Versatile_ _Minor Attack_.\n\t* Replace a _Minor Attack_ with a _Major Attack_."
   },
   {
     "name": "Torching Flare",

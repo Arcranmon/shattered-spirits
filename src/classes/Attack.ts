@@ -51,8 +51,13 @@ class Attack extends Maneuver {
   get ChargedEffectHeader() {
     return '**Charged Effect:** ' + this.charged_effect_
   }
-  public get SpeedHeader() {
-    return '**Speed ' + this.Speed + '**'
+  get SpeedHeader() {
+    var header = ''
+    if (this.HasSpeed) header = 'Speed ' + this.speed_
+    if (header.length > 0 && this.HasType) header += ', '
+    header += this.TypeHeader
+
+    return header
   }
   get TypeHeader() {
     if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'

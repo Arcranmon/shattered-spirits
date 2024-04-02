@@ -48,7 +48,7 @@
     "move": "Reposition",
     "cost": "1 _AP_",
     "reqs": "Must be _Stealthy_.",
-    "effect": "Any creatures that see you as _Obscured_ at the start of your _Turn_ see you as _Obscured_ for the remainder of this _Turn_. Make a single _Light_/_Versatile_ _Minor Attack_ against a creature that sees you as _Obscured_.",
+    "effect": "Any creatures that see you as _Obscured_ at the start of your _Turn_ see you as _Obscured_ for the remainder of this _Turn_. Make a single _Light_/_Versatile_ _Minor Attack_. All Targets must see you as _Obscured_.",
     "special": "Do not remove _Stealthy_ until the end of this _Turn_ if it would normally be removed.",
     "boost": "1 _Momentum_: You have _Advantage_ on an _Attack_ you make this _Turn_.  You may use this _Boost_ any number of times."
   },
@@ -58,7 +58,7 @@
     "desc": "You bend and curve your electricity as it crashes into a foe, splintering it across the battlefield.",
     "type": "Gambit",
     "cost": "1 _Momentum_",
-    "reqs": "Attack deals _Lighting_ Damage.",
+    "reqs": "Attack deals _Lightning_ Damage.",
     "effect": "Choose another Target within Range 3 of a creature targeted by the Attack. When determining the _Lightning_ Damage treat that Target as a part of this Attack's _Area_.",
     "boost": "Choose any:\n* 1 _Momentum_: Instead, choose another Target within Range 6.\n* 1 _Momentum_. Repeat the Effect. You must target a new creature.",
     "manifest": "Add [_Manifest_]. The Cost is instead None. You may freely use the _Boost_ twice, and, when choosing new Targets, you may choose ones targeted by the Attack or added as a target by this _Gambit_."
@@ -71,17 +71,17 @@
     "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "Single-Target _Melee_ Attack.",
-    "effect": "Before making the Attack, inflict _Reeling_ 1, _Exposed_ 1."
+    "effect": "The Target of the Attack must immediately expend 2 _Stamina_ (_Mental_). If they do not, gain _Advantage_ on this _Attack_."
   },
   {
     "name": "Basic Flourish",
     "class": "Basic",
-    "desc": "You disengage from an attack artfully, attempting to knock a foe's weapons far away.",
+    "desc": "You disengage from an attack artfully, knocking a foe backwards and off-balance.",
     "keywords": ["Flourish"],
     "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "You complete a Single-Target _Melee_ Attack.",
-    "effect": "Inflict _Impaired_ 2/_Disarmed_ [2 _Stamina_]."
+    "effect": "Inflict _Reeling_ 1, _Vulnerable_ 1, _Push_ 1."
   },
   {
     "name": "Basic Sunder",
@@ -90,8 +90,8 @@
     "type": "Gambit",
     "cost": "1 _Momentum_",
     "reqs": "Single-Target _Melee_ _Versatile_/_Heavy_ Attack.",
-    "effect": "Add [_Overwhelming_ 1].",
-    "boost": "Choose any:\n* 1 _Momentum_: In addition, choose one before making your _Attack Roll_:\n\t* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_, inflict _Shred_ 1.\n\t* If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of a _Shield_ _Wielded_ by the creature, _Damage_ it."
+    "effect": "Add [_Overwhelming_ 2].",
+    "boost": "1 _Momentum_: If the Damage dealt with this _Attack_ is greater than or equal to the _Durability_ of the creature's _Armor_ or a _Wielded_ _Shield_, inflict _Sundered_."
   },
   {
     "name": "Bastion's Fury",
@@ -154,7 +154,7 @@
     "desc": "You use the cover of an attack to fly forward, avoiding retaliation.",
     "type": "Gambit",
     "keywords": ["Flourish"],
-    "cost": "2 _Momentum_",
+    "cost": "1 _Momentum_",
     "reqs": "You _Hit_+ with an Attack against an adjacent foe.",
     "effect": "Immediately _Step_. If it is _Phase_ 3 or earlier, add [_Safe_]."
   },
@@ -180,13 +180,13 @@
     "manifest": "Add [_Manifest_]. The Cost is instead None and Range is instead your spirit's Reposition distance. Grant your _Spirit_ the same amount of _Vigor_."
   },
   {
-    "name": "Cunning Strike",
+    "name": "Cunning Blow",
     "class": "Basic",
     "desc": "You exploit an opening in a foe's defenses to drive your attack deep.",
     "type": "Gambit",
-    "cost": "3 _Momentum_",
+    "cost": "2 _Momentum_",
     "reqs": "You make a Single-Target _Light_/_Versatile_ Attack against an _Exposed_ target and at least one of the following is true:\n* Have _Advantage_ on the _Attack_.\n* Have an ally who is adjacent to the Target.",
-    "effect": "If you remove _Exposed_ for a _Bonus_, gain a +2 _Bonus_ instead of +1. After resolving the Attack, inflict your choice of _Hobbled_/_Reeling_ 1."
+    "effect": "If you remove _Exposed_ for a _Bonus_, gain a +2 _Bonus_ instead of +1 and deal +2 _Damage_. After resolving the Attack, inflict your choice of _Hobbled_/_Reeling_ 1."
   },
   {
     "name": "Chip Damage",
@@ -227,9 +227,9 @@
     "type": "Action",
     "cost": "1 _AP_",
     "range": [{ "category": "Ranged", "value": 1 }],
-    "effect": "Gain 1 _Momentum_ and turn a Size 1 _Earthen_ _Obstacle_ within Range into a _Boulder_, or make a _Boulder_ in an _Earthen_ space within Range.",
+    "effect": "Choose one:\n* Gain 1 _Momentum_ then turn a Size 1 _Earthen_ _Obstacle_ within Range into a _Boulder_.\n* Make a _Boulder_ in an _Earthen_ space within Range.",
     "boost": "1 _Momentum_: Range is instead 4",
-    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Gain 1 additional _Momentum_."
+    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Gain 1 _Momentum_."
   },
   {
     "name": "Controlled Burn",
@@ -433,19 +433,19 @@
     "desc": "You obstruct a foe's movement, making it difficult for them to advance.",
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "A creature of your Size or smaller moves adjacent to you with Movement without [_Rush_] or [_Leaping_].",
+    "trigger": "A creature of your Size or smaller moves adjacent to you with Movement without [_Rush_], [_Safe_] or [_Leaping_].",
     "effect": "The creature must pay 2 _Momentum_. If they do not, their Movement immediately ends and you may inflict _Marked_.",
     "boost": "1 _Momentum_: Instead, Trigger is 'A creature your Size + 1 or smaller'."
   },
   {
-    "name": "Enhanced Strike",
+    "name": "Critical Hit",
     "class": "Basic",
-    "desc": "You place additional power into an attack, converting momentum to damage.",
+    "desc": "You exploit a vulnerability to the limit, inflicting grave damage on a foe.",
     "type": "Gambit",
     "cost": "1 _Momentum_",
-    "reqs": "You _Graze_+ with an Attack.",
-    "effect": "Deal +1 _Bonus Damage_.",
-    "boost": "1 _Momentum_: Instead, deal +2 _Bonus Damage_."
+    "reqs": "You remove _Vulnerable_ on a Target.",
+    "effect": "Deal +1 _Damage_ and you may remove an additional _Vulnerable_ on the Target.",
+    "boost": "1 _Momentum_: Instead, deal +3 _Damage_ and you may remove a total of an additional 2 _Vulnerable_ on the Target."
   },
   {
     "name": "Explosive Flames",
@@ -503,11 +503,11 @@
   {
     "name": "Flashing Charge",
     "class": "Storm",
-    "desc": "Your lighting burns white-hot, searing the eyes of foes it collides with.",
+    "desc": "Your lightning burns white-hot, searing the eyes of foes it collides with.",
     "type": "Reaction",
     "trigger": "A _Phase_ begins.",
     "cost": "1 _AP_",
-    "effect": "Become _Charging_ until the end of the _Phase_. While _Charging_ any foes that Attack you take 1 _Lighting_ Damage. After removing _Charging_ your next _Storm_ Attack inflicts _Blinded_ [2 _Stamina_] in a _Blast_ 1 centered on any Target of the Attack.",
+    "effect": "Become _Charging_ until the end of the _Phase_. While _Charging_ any foes that Attack you take 1 _Lightning_ Damage. After removing _Charging_ your next _Storm_ Attack inflicts _Blinded_ [2 _Stamina_] in a _Blast_ 1 centered on any Target of the Attack.",
     "manifest": "Add [_Manifest_]. Cost is instead None. _Summon_ your spirit to an unoccupied space adjacent to a _Minor Source_ within their _Reposition_ distance. They immediately use the Effect and gain all benefits. Upon removing _Charging_ naturally, your Spirit may immediately use a _Storm_ _Minor Attack_.",
     "boost": "2 _Momentum_ (when using the _Manifest_ option): Instead, your Spirit may make a _Storm_ _Major Attack_."
   },
@@ -539,7 +539,8 @@
     "reqs": "Must be in a _Frozen_ space.",
     "move": "_Step_ [_Leaping_, _Safe_]",
     "effect": "_Draw_ 1, then resolve the Move. This may interrupt a different Move and, if used as a part of a [_Rush_] Move, you may change the direction of the [_Rush_] after resolving this Move.",
-    "boost": "Choose any:\n* 1 _Momentum_: For this Move, your _Step_ is 3 instead of its typical value.\n* 1 _Momentum_: You may use this Stunt without a _Frozen_ space, but instead _Draw_ 3."
+    "special": "You may use this Stunt without a _Frozen_ space, but instead _Draw_ 3.",
+    "boost": "1 _Momentum_: For this Move, your _Step_ is 3 instead of its typical value."
   },
   {
     "name": "Fracture",
@@ -557,7 +558,8 @@
     "class": "Basic",
     "desc": "You use an obstacle to accelerate yourself, moving further still.",
     "type": "Reaction",
-    "cost": "3 _Momentum_",
+    "cost": "2 _Momentum_",
+    "keywords": ["Repeatable"],
     "trigger": "You move adjacent to an Obstacle of Size 1 or greater.",
     "effect": "You may Move 1 [_Safe_, _Leaping_] then _Step_ [_Safe_, _Breach_]."
   },
@@ -713,7 +715,7 @@
     "type": "Action",
     "cost": "1 _AP_",
     "reqs": "Must be adjacent to an _Obstacle_ of at least your size or be in a _Veiled_ space.",
-    "effect": "You become _Stealthy_. This lasts until you Move, target another creature with any effect, or you no longer fulfill the requirements to use this Manuever."
+    "effect": "You become _Stealthy_."
   },
   {
     "name": "Icy Sheet",
@@ -727,7 +729,7 @@
     "manifest": "Add [_Manifest_]. Choose a _Minor Source_ within your spirit's _Reposition_ distance for this ability to originate from. Resolve the effect from that space and freely apply the _Boost_ 3 times. You must make the chosen space _Frozen_ as a part of the Effect. You may choose to _Summon_ your spirit to the origin space."
   },
   {
-    "name": "Improvised Combo",
+    "name": "Combo",
     "class": "Basic",
     "desc": "An impromptu strike, often used to set up an incoming blow.",
     "type": "Stunt",
@@ -893,7 +895,7 @@
     "effect": "Place a _Blessing_ in every space you move through. While the _Blessing_ persists, you and allies may ignore the _Terrain_ in that space when moving through it. Remove the _Blessing_ if the _Terrain_ in the space changes. _Blessings_ placed by this effect persist until the end of the next _Phase_."
   },
   {
-    "name": "Marking Strike",
+    "name": "Mark",
     "class": "Basic",
     "desc": "You get in close with a foe, forcing their attention towards you.",
     "type": "Gambit",
@@ -927,8 +929,8 @@
     "type": "Reaction",
     "cost": "0 _Momentum_",
     "trigger": "An enemy within your _Reach_ creates an _Opening_.",
-    "effect": "Make a Single-Target _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target.",
-    "boost": "2 _Momentum_: Instead, use a Single-Target _Major Attack_."
+    "effect": "Make a Single-Target _Melee_ _Minor Attack_ against the triggering creature. You must use a _Minor Attack_ with a _Reach_ capable of attacking the Target.",
+    "boost": "2 _Momentum_: Instead, use a Single-Target _Melee_ _Major Attack_."
   },
   {
     "name": "Overcharge",
@@ -937,7 +939,7 @@
     "type": "Reaction",
     "trigger": "A _Phase_ begins.",
     "cost": "1 _AP_",
-    "effect": "Become _Charging_ until the end of the _Phase_. While _Charging_, gain _Resistance_ 1 (_Lighting_) and _Resilience_ 1 (_Shocked_). In the _Phase_ after removing _Charging_, gain the following benefits:\n* All _Lightning_ Damage you do gains _Pierce_ 1.\n* All _Storm_ _Attacks_ treat their _Speed_ as 1 lower.\n* Gain 2 _Momentum_ that may only be spent as a part of _Storm_ _Attacks_/_Boosts_  and is lost at the end of the _Phase_.\n\nYou only gain this benefit if you lose _Charging_ at the end of _Phase_, not if you lose it due to _Break_ or other similar effects.",
+    "effect": "Become _Charging_ until the end of the _Phase_. While _Charging_, gain _Resistance_ 1 (_Lightning_) and _Resilience_ 1 (_Shocked_). In the _Phase_ after removing _Charging_, gain the following benefits:\n* All _Lightning_ Damage you do gains _Pierce_ 1.\n* All _Storm_ _Attacks_ treat their _Speed_ as 1 lower.\n* Gain 2 _Momentum_ that may only be spent as a part of _Storm_ _Attacks_/_Boosts_  and is lost at the end of the _Phase_.\n\nYou only gain this benefit if you lose _Charging_ at the end of _Phase_, not if you lose it due to _Break_ or other similar effects.",
     "manifest": "Add [_Manifest_]. Cost is instead None. _Summon_ your spirit to an unoccupied space adjacent to a _Minor Source_ within their _Reposition_ distance. They immediately use the Effect and gain all benefits. Upon removing _Charging_ naturally, your Spirit may immediately use a _Storm_ _Minor Attack_.",
     "boost": "2 _Momentum_ (when using the _Manifest_ option): Instead, your Spirit may make a _Storm_ _Major Attack_."
   },
@@ -1021,7 +1023,7 @@
     "keywords": ["Repeatable"],
     "range": [{ "category": "Ranged", "value": 4 }],
     "cost": "1 _Momentum_",
-    "effect": "Inflict your choice of _Exposed_/_Enraged_ 1 on the creature.",
+    "effect": "Inflict _Vulnerable_ 1, _Exposed_/_Enraged_ 1 on a creature within Range.",
     "special": "Each successive use against the same creature in the same _Turn_ costs 1 more _Momentum_."
   },
   {
@@ -1162,12 +1164,12 @@
     "class": "Basic",
     "desc": "You distract a foe with  your strike, providing an ally the opportunity to slip away.",
     "type": "Gambit",
-    "cost": "2 _Momentum_",
+    "cost": "1 _Momentum_",
     "effect": "Choose an ally adjacent to an enemy targeted by this Attack. Grant them a _Free Turn_ where they may _Step_ [_Safe_].",
-    "boost": "2 _Momentum_: Choose an additional ally adjacent to an enemy targeted by this Attack and grant them a _Free Turn_ where they may _Step_ [_Safe_]. You may use this effect as many times as you wish, but may only target a given ally once."
+    "boost": "1 _Momentum_: Choose an additional ally adjacent to an enemy targeted by this Attack and grant them a _Free Turn_ where they may _Step_ [_Safe_]. You may use this effect as many times as you wish, but may only target a given ally once."
   },
   {
-    "name": "Sheparding Strike",
+    "name": "Sheparding Blow",
     "class": "Basic",
     "desc": "You make a strike with the intent of repositioning a foe, creating space for allies.",
     "type": "Gambit",
@@ -1209,22 +1211,22 @@
     "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to the _Obstacle_ in a space of your choice. You may use 2 _Momentum_ of _Boost_ for no Cost."
   },
   {
-    "name": "Skirmish",
+    "name": "Fight",
     "class": "Basic",
     "desc": "You make a sudden attack, seamlessly integrating it with your maneuvering.",
     "type": "Action",
     "cost": "1 AP",
     "effect": "Make a _Minor Attack_.",
-    "boost": "Choose one:\n* 2 _Momentum_: Move is instead _Step_.\n* 2 _Momentum_: Make an additional _Minor Attack_.\n* 2 _Momentum_: Instead, make a _Major Attack_."
+    "boost": "Choose one:\n* 1 _Momentum_: Move is instead _Step_.\n* 2 _Momentum_: Make an additional _Minor Attack_.\n* 2 _Momentum_: Instead, make a _Major Attack_."
   },
   {
     "name": "Slip",
     "class": "Basic",
-    "desc": "You move with practiced ease, sliding across the battlefield with ease.",
+    "desc": "You move with practiced ease, sliding across the battlefield.",
     "type": "Action",
     "move": "Step [_Safe_]",
     "cost": "1 AP",
-    "effect": "Once during this _Move_ you may inflict _Exposed_ 1 on a creature within Range 2 that sees you as _Obscured_.",
+    "effect": "Inflict _Exposed_ 1 on a creature you move adjacent to this _Turn_. At the end of this Movement if all enemies see you as _Obscured_, gain _Stealthy_.",
     "special": "Do not remove _Stealthy_ until the end of this _Turn_ if it would normally be removed."
   },
   {
@@ -1276,7 +1278,7 @@
     "desc": "Your spirit takes physical form, fighting alongside you.",
     "keywords": ["Manifest"],
     "type": "Reaction",
-    "range": [{ "category": "Ranged", "value": "Spirit _Reposition_ distance." }],
+    "range": [{ "category": "Spirit _Reposition_ distance." }],
     "cost": "6 _Momentum_",
     "trigger": "_Respite_ begins.",
     "effect": "Choose a _Major Source_ within Range. _Summon_ your spirit until the end of the _Round_ to a space adjacent to the _Major Source_. They may use a single _Technique_ and have 1 _AP_ this _Round_. They may use any Basic _Techniques_ or _Maneuvers_, or any _Techniques_ or _Maneuvers_ with the _Spirit_ keyword known by you.",
@@ -1312,7 +1314,7 @@
     "desc": "You charge forward, limiting your mobility for sheer speed.",
     "type": "Stunt",
     "cost": "1 _Momentum_",
-    "reqs": "Making a Move without [_Rush_].",
+    "reqs": "About to make a Move without [_Rush_].",
     "effect": "Increase the tier of your current Movement (making a _Step_ a _Reposition_, for example), but add [_Rush_]. If the Movement is already _Dash_, instead add [_Rush_, _Breach_].",
     "boost": "1 _Momentum_: Add [_Breach_]."
   },
@@ -1423,7 +1425,7 @@
     "special": "Increase the cost of this Stunt by 1 each time you use it. Reduce the cost by 1 at _Respite_."
   },
   {
-    "name": "Synchronized Strike",
+    "name": "Synchronized Assault",
     "class": "Basic",
     "desc": "You expertly time an attack with an ally, connecting in rapid succession.",
     "type": "Gambit",
@@ -1447,12 +1449,12 @@
   {
     "name": "Thunderous Tempo",
     "class": "Storm",
-    "desc": "Call down a rolling storm of lighting, striking one space after another.",
+    "desc": "Call down a rolling storm of lightning, striking one space after another.",
     "type": "Action",
     "cost": "1 _AP_",
     "range": { "category": "Self" },
     "area": "_Line_ 4",
-    "effect": "Create a _Hazard_ in the _Area_. At the end of each _Phase_, starting with the space closest to you when the _Hazard_ was created, deal 2 _Lightning_ Damage and inflict _Shocked_ 1, then remove that _Hazard_ space. If this hit a creature, remove all other _Hazards_ and end the effect. Otherwise, continue the effect, dealing an additional 2 _Lighting_ Damage for each successive _Phase_, and adding an additional 1 _Shocked_ for every other successive _Phase_ (i.e., when removing a _Hazard_ for the 3rd time with this effect, deal 6 _Lightning_ Damage and inflict _Shocked_ 2.).",
+    "effect": "Create a _Hazard_ in the _Area_. At the end of each _Phase_, starting with the space closest to you when the _Hazard_ was created, deal 2 _Lightning_ Damage and inflict _Shocked_ 1, then remove that _Hazard_ space. If this hit a creature, remove all other _Hazards_ and end the effect. Otherwise, continue the effect, dealing an additional 2 _Lightning_ Damage for each successive _Phase_, and adding an additional 1 _Shocked_ for every other successive _Phase_ (i.e., when removing a _Hazard_ for the 3rd time with this effect, deal 6 _Lightning_ Damage and inflict _Shocked_ 2.).",
     "boost": "2 _Momentum_: Instead, _Area_ is _Line_ 6.",
     "manifest": "Add [_Manifest_]. The Cost is instead None, and Range is instead your spirit's Reposition distance. Create the _Hazard_ from any space within _Range_. You may choose to _Summon_ your spirit to the origin space."
   },

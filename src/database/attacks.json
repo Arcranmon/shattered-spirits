@@ -80,12 +80,12 @@
     "class": "Storm",
     "desc": "You pull on the charge between two foes, forming a bolt between them.",
     "type": "Versatile",
-    "speed": "4",
+    "speed": "4+ [_Rigid_]",
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
     "target": "Two _Shocked_ targets within Range and within Range 4 of one another.",
-    "effect": "Decrease both target's _Shocked_ by 1. Both Targets immediately take 3 _Lightning_ Damage.",
-    "boost": "2 _Momentum_: Additionally, draw a _Line_ between both Targets. All creatures in the _Area_ take 3 _Lighting_ Damage as well.",
+    "effect": "Deal 4 Damage to the Targets, treating them as both in the _Area_ of this Attack.",
+    "boost": "2 _Momentum_: Draw a _Line_ connecting and including the Targets and make that the new _Area_. Increase the Damage by 3.",
     "rank": "Minor Attack"
   },
   {
@@ -128,10 +128,11 @@
     "type": "Versatile",
     "speed": 4,
     "cost": "2 _Momentum_",
-    "range": [{ "category": "Ranged", "value": 5 }],
-    "effect": "Make an unoccupied _Earthen_ space within Range _Jagged_, then resolve the Attack against a creature adjacent to that space.",
-    "special": "You may instead choose an unoccupied _Earthen_ _Jagged_ space within Range. If you do, the Cost is instead 1 and you do not create a _Jagged_ space.",
-    "boost": "1 _Momentum_: You may target an occupied space. If you do, gain a +1 _Bonus_.",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "target": "A creature adjacent to an _Earthen_ space.",
+    "effect": "Make an unoccupied _Earthen_ space adjacent to the Target _Jagged_, then resolve the Attack against the Target.",
+    "special": "If there is a _Jagged_ space adjacent to the Target already you may choose to not make a _Jagged_ space. If you do, the Cost is instead 1.",
+    "boost": "1 _Momentum_: Instead, make the Target's space _Jagged_ if it is _Earthen_. If you do, gain a +1 _Bonus_.",
     "chart": {
       "damage_type": "Stab",
       "material": "Stone",
@@ -439,6 +440,8 @@
     "desc": "You attempt to grab a foe, doing limited damage but limiting their mobility.",
     "type": "Versatile",
     "speed": 3,
+    "effect": "Gain 1 _Momentum_.",
+    "special": "Gain a +1 _Bonus_ if you use both Hands for this Attack.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
@@ -449,18 +452,19 @@
       "status": [
         "",
         "",
-        "_Pull_ 1, _Vulnerable_ 1",
-        "_Pull_ 1, _Vulnerable_ 1",
-        "_Pull_ 2/_Grabbed_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Pull_ 2/_Grabbed_ [1 _Stamina_], _Vulnerable_ 1",
+        "_Pull_ 2/_Grabbed_ [1 _Stamina_], _Vulnerable_ 2",
+        "_Pull_ 2/_Grabbed_ [1 _Stamina_], _Vulnerable_ 2",
         "_Pull_ 3/_Grabbed_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Pull_ 3/_Grabbed_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Pull_ 3/_Grabbed_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Pull_ 4/_Grabbed_ [3 _Stamina_], _Vulnerable_ 2",
-        "_Pull_ 4/_Grabbed_ [3 _Stamina_], _Vulnerable_ 2"
+        "_Pull_ 3/_Grabbed_ [2 _Stamina_], _Vulnerable_ 3",
+        "_Pull_ 3/_Grabbed_ [2 _Stamina_], _Vulnerable_ 3",
+        "_Pull_ 4/_Grabbed_ [3 _Stamina_], _Vulnerable_ 3",
+        "_Pull_ 4/_Grabbed_ [3 _Stamina_], _Vulnerable_ 3",
+        "_Pull_ 5/_Grabbed_ [4 _Stamina_], _Vulnerable_ 4",
+        "_Pull_ 5/_Grabbed_ [4 _Stamina_], _Vulnerable_ 4"
       ]
     },
-    "rank": "Minor Attack"
+    "rank": "Major Attack",
+    "analysis_notes": { "fudge": -1 }
   },
   {
     "name": "Icicle Shot",
@@ -484,7 +488,7 @@
   {
     "name": "Jolt",
     "class": "Storm",
-    "desc": "You conduct an instantaneous bolt of lighting, striking a nearby foe.",
+    "desc": "You conduct an instantaneous bolt of lightning, striking a nearby foe.",
     "type": "Light",
     "speed": "2",
     "cost": "2 _Momentum_",
@@ -501,7 +505,7 @@
   {
     "name": "Lightning Lance",
     "class": "Storm",
-    "desc": "You conduct an instantaneous bolt of lighting, striking a nearby foe.",
+    "desc": "You conduct an instantaneous bolt of lightning, striking a nearby foe.",
     "type": "Versatile",
     "speed": "4",
     "cost": "2 _Momentum_",
@@ -668,13 +672,13 @@
     "type": "Heavy",
     "speed": "6",
     "cost": "2 _Momentum_",
-    "range": [{ "category": "Ranged", "value": 3, "special": "_Ordnance_" }],
+    "range": [{ "category": "Ranged", "value": 3 }],
     "effect": "If, after resolving this Attack, the Damage dealt with this Attack plus the target's _Alight_ is greater than or equal to the Durability of the creature's Armor, inflict _Shred_ 1.",
     "charged_effect": "Instead, this Attack is _Self_-Range _Line_ 4. Add [_Pierce_ 1].",
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+3 _Momentum_",
-      "keywords": ["_Pierce_ 1"],
+      "keywords": ["_Pierce_ 1", "Ordnance"],
       "damage": [0, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -724,7 +728,7 @@
     "rank": "Minor Attack"
   },
   {
-    "name": "Spire Strike",
+    "name": "Earthen Fang",
     "desc": "You pull the earth upwards into a jagged spike, surprising a foe.",
     "class": "Land",
     "type": "Versatile",
@@ -763,13 +767,13 @@
     }
   },
   {
-    "name": "Stone Strike",
+    "name": "Earthen Artillery",
     "desc": "You fling a stone at great speed, knocking enemies off-balance.",
     "class": "Mountain",
     "type": "Heavy",
     "speed": "6",
     "cost": "3 _Momentum_",
-    "range": [{ "category": "Ranged", "value": 6, "special": "_Ordnance_, _Close Range_ 2" }],
+    "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 2" }],
     "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 5. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack.",
     "charged_effect": "Instead, this Attack is _Self_-Range _Line_ 6, or a _Line_ 6 originating from the relevant Obstacle, if applicable.",
@@ -777,7 +781,7 @@
       "damage_type": "Crush",
       "on_miss": "+3 _Momentum_",
       "material": "Stone",
-      "keywords": ["_Pierce_ 1", "_Overwhelming_ 2"],
+      "keywords": ["_Pierce_ 1", "_Overwhelming_ 2", "Ordnance"],
       "damage": [0, 0, 0, 0, 11, 12, 13, 14, 14, 15, 15],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
@@ -800,8 +804,8 @@
     "rank": "Major Attack"
   },
   {
-    "name": "Storm Strike",
-    "desc": "You reach towards the sky, conducting a powerful bolt of lighting towards yourself.",
+    "name": "Thunderbolt",
+    "desc": "You reach towards the sky, conducting a powerful bolt of lightning towards yourself.",
     "class": "Storm",
     "type": "Heavy",
     "speed": "5",
@@ -810,7 +814,7 @@
     "area": "_Burst_ 1",
     "effect": "Create a _Cone_ 1 _Hazard_ within _Range_. At the end of any _Phase_ after this one you may remove the _Hazard_ to resolve the below Attack in the _Area_.",
     "special": "If you have not removed the _Hazard_ at the end of the _Round_ resolve the On-Miss effect then remove the _Hazard_.",
-    "charged_effect": "Create no _Hazard_ while _Charging_. Instead, after _Charging_, create a _Blast_ 1 _Hazard_ within _Range_ and deal +2 _Lighting_ Damage.",
+    "charged_effect": "Create no _Hazard_ while _Charging_. Instead, after _Charging_, create a _Blast_ 1 _Hazard_ within _Range_ and deal +2 _Lightning_ Damage.",
     "boost": "1 _Momentum_: While there is a _Hazard_ the _Area_ is _Electrified_.",
     "chart": {
       "damage_type": "Lightning",
@@ -868,7 +872,7 @@
     "rank": "Minor Attack"
   },
   {
-    "name": "Surprise Strike",
+    "name": "Surprise!",
     "desc": "An unexpected attack using an unlikely weapon.",
     "reqs": "Must be made with an _Opportune_ Weapon.",
     "cost": "1 _Momentum_",
@@ -914,7 +918,7 @@
     "rank": "Minor Attack"
   },
   {
-    "name": "Unarmed Strike",
+    "name": "Unarmed Attack",
     "class": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
     "type": "Versatile",
@@ -959,10 +963,10 @@
     "cost": "1 _Momentum_",
     "speed": "2+ [_Rigid_]",
     "class": "Blaze",
-    "range": [{ "category": "Ranged", "value": 6 }],
-    "target": "A _Blazing_ space.",
-    "effect": "Inflict _Alight_ 2 on a creature within Range 2 of the space.",
-    "boost": "2 _Momentum_: Remove the _Blazing_ space. Instead, inflict _Alight_ 2 on two creatures within Range 2 of the space, or _Alight_ 4 on one creature.",
+    "range": [{ "category": "Ranged", "value": 8 }],
+    "target": "A creature with a _Blazing_ space within Range 2 of them.",
+    "effect": "Inflict _Alight_ 2 and deal 1 _Fire_ Damage to the Target.",
+    "boost": "2 _Momentum_: Remove the _Blazing_ space. Resolve this Attack twice. You must use the same _Blazing_ space for both Attacks, but may choose separate Targets.",
     "rank": "Minor Attack",
     "analysis_notes": { "bonus_damage": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5] }
   }

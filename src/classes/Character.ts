@@ -5,12 +5,12 @@ var kSpiritDisciplineCategories = ['Earth']
 
 var kBaseHealth = 25
 
-var kBasicTechniques = ['Swift Strike', 'Basic Strike', 'Strong Strike']
-var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Punch', 'Grapple', 'Slam']
-var kBasicActions = ['Skirmish', 'Swift Manifestation', 'Shift', 'Raise Guard', 'Recover', 'Prepare']
-var kBasicStunts = ['Disengage', 'Draw/Stow', 'Improvised Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
+var kBasicTechniques = ['Skirmish', 'Combination Strike', 'Smash']
+var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Unarmed Attack', 'Grapple']
+var kBasicActions = ['Hide', 'Fight', 'Swift Manifestation', 'Shift', 'Raise Guard', 'Rally', 'Prepare']
+var kBasicStunts = ['Disengage', 'Draw/Stow', 'Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
 var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge', 'Spiritual Interdiction', 'Spirit Summon']
-var kBasicGambits = ['Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Marking Strike']
+var kBasicGambits = ['Aim', 'Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Critical Hit', 'Mark']
 
 class Character {
   // Combat Qualities
@@ -24,6 +24,7 @@ class Character {
   private current_martial_stance_: Stance
   private equipped_armor_: Armor
   private disciplines_: Array<ICharDisciplineData>
+  private arts_: Array<ICharDisciplineData>
   private momentum_: number
   private name_: string
   private player_character_: Boolean
@@ -51,6 +52,7 @@ class Character {
     this.current_spirit_stance_ = store.getters.getStance('No Stance')
     this.current_martial_stance_ = store.getters.getStance('No Stance')
     this.current_health_ = kBaseHealth
+    this.arts_ = []
     this.disciplines_ = []
     this.equipped_armor_ = null
     this.stamina_ = 0
@@ -179,6 +181,7 @@ class Character {
     })
     return techniques
   }
+
   get Attacks() {
     var attacks = store.getters.getAttacksFromList(kBasicAttacks)
     for (var disc of this.disciplines_) {
@@ -189,12 +192,15 @@ class Character {
     attacks.sort((a, b) => a.Name.localeCompare(b.Name))
     return attacks
   }
+
   get MinorAttacks() {
     return this.Attacks.filter((x) => x.Class == '_Minor Attack_')
   }
+
   get MajorAttacks() {
     return this.Attacks.filter((x) => x.Class == '_Major Attack_')
   }
+
   get SpiritAttacks() {
     var attacks = this.Spirit.Attacks
     for (var disc of this.disciplines_) {
@@ -205,12 +211,15 @@ class Character {
     attacks.sort((a, b) => a.Name.localeCompare(b.Name))
     return attacks
   }
+
   get SpiritMinorAttacks() {
     return this.SpiritAttacks.filter((x) => x.Class == '_Minor Attack_')
   }
+
   get SpiritMajorAttacks() {
     return this.SpiritAttacks.filter((x) => x.Class == '_Major Attack_')
   }
+
   public ManeuversOfType(type: string) {
     if (type == 'Action') var maneuvers = store.getters.getManeuversFromList(kBasicActions)
     if (type == 'Stunt') var maneuvers = store.getters.getManeuversFromList(kBasicStunts)
@@ -224,6 +233,7 @@ class Character {
     maneuvers.sort((a, b) => a.Name.localeCompare(b.Name))
     return maneuvers
   }
+
   public SpiritManeuversOfType(type: string) {
     // TODO: Split this between actual and spirit disciplines.
     if (type == 'Action') var maneuvers = this.Spirit.Actions

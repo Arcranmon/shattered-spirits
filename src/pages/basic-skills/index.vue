@@ -15,7 +15,7 @@
     <v-tabs-items v-model="tab" class="character-tab-content">
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" />
-        <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Swift Strike', 'Basic Strike', 'Strong Strike'])" job="Techniques" :collapse="false" />
+        <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Skirmish', 'Combination Strike', 'Smash'])" job="Techniques" :collapse="false" />
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
@@ -28,15 +28,17 @@
           job="Attacks"
           :collapse="false" />
         <show-cards
-          :inputs="[this.$store.getters.getAttack('Unarmed Strike'), $store.getters.getAttack('Grapple'), this.$store.getters.getAttack('Slam')]"
+          :inputs="[this.$store.getters.getAttack('Unarmed Attack'), $store.getters.getAttack('Grapple')]"
           job="Attacks"
           :collapse="false"
+          v-bind:class="use_duo"
+          :cols="2"
       /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" />
         <show-cards :inputs="[$store.getters.getManeuver('Hide')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
         <show-cards
-          :inputs="[this.$store.getters.getManeuver('Skirmish'), $store.getters.getManeuver('Swift Manifestation'), $store.getters.getManeuver('Shift')]"
+          :inputs="[this.$store.getters.getManeuver('Fight'), $store.getters.getManeuver('Swift Manifestation'), $store.getters.getManeuver('Shift')]"
           job="Maneuvers"
           :collapse="false"
         /><show-cards
@@ -49,7 +51,7 @@
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
         <show-cards :inputs="[$store.getters.getManeuver('Disengage')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
         <show-cards
-          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Improvised Combo'), $store.getters.getManeuver('Use Environment')]"
+          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Combo'), $store.getters.getManeuver('Use Environment')]"
           job="Maneuvers"
           :collapse="false"
         />
@@ -85,7 +87,7 @@
           job="Maneuvers"
           :collapse="false"
         /><show-cards
-          :inputs="[$store.getters.getManeuver('Basic Sunder'), $store.getters.getManeuver('Enhanced Strike'), $store.getters.getManeuver('Marking Strike')]"
+          :inputs="[$store.getters.getManeuver('Basic Sunder'), $store.getters.getManeuver('Critical Hit'), $store.getters.getManeuver('Mark')]"
           job="Maneuvers"
           :collapse="false"
           :cols="3"

@@ -6,7 +6,7 @@
       <br />
       NOTE: At the moment, only Earth Spirits are available!
       <v-layout justify-center
-        ><v-btn color="success" large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
+        ><v-btn large tile @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
           <span v-if="!character.HasSpirit">CHOOSE A SPIRIT TYPE</span>
           <span v-else>CHOOSE {{ character.SpiritType }}</span>
         </v-btn></v-layout
@@ -14,59 +14,24 @@
     </div>
     <div>
       <v-row
-        ><v-col cols="12" class="element-box">
+        ><v-col cols="3" class="element-box">
           <v-btn class="earth-button" large tile :disabled="(character.SpiritType == 'Earth')" @click="setSpirit('Earth')"
             ><img class="image--icon-size" :src="earthSymbol" />EARTH SPIRIT<img class="image--icon-size" :src="earthSymbol"
           /></v-btn> </v-col
-        ><!-- <v-col cols="2" class="element-box">
-          <v-btn
-            :color="variables.flame"
-            large
-            tile
-            :disabled="(character.SpiritType == 'Flame')"
-            @click="setSpirit('Flame')"
-            >Flame</v-btn
-          > </v-col
-        ><v-col cols="2" class="element-box">
-          <v-btn
-            :color="variables.metal"
-            large
-            tile
-            :disabled="(character.SpiritType == 'Metal')"
-            @click="setSpirit('Metal')"
-            >METAL</v-btn
-          > </v-col
-        ><v-col cols="2" class="element-box">
-          <v-btn
-            :color="variables.water"
-            large
-            tile
-            :disabled="(character.SpiritType == 'Water')"
-            @click="setSpirit('Water')"
-            >WATER</v-btn
-          > </v-col
-        ><v-col cols="2" class="element-box">
-          <v-btn
-            :color="variables.wind"
-            large
-            tile
-            :disabled="(character.SpiritType == 'Wind')"
-            @click="setSpirit('Wind')"
-            >WIND</v-btn
-          > </v-col
-        ><v-col cols="2" class="element-box">
-          <v-btn
-            :color="variables.wood"
-            large
-            tile
-            :disabled="(character.SpiritType == 'Wood')"
-            @click="setSpirit('Wood')"
-            >WOOD</v-btn
-          ></v-col
-        >--></v-row
-      >
-    </div></span
-  >
+        ><v-col cols="3" class="element-box">
+          <v-btn class="flame-button" large tile :disabled="(character.SpiritType == 'Flame')" @click="setSpirit('Flame')"
+            ><img class="image--icon-size" :src="flameSymbol" />FLAME SPIRIT<img class="image--icon-size" :src="flameSymbol"
+          /></v-btn> </v-col
+        ><v-col cols="3" class="element-box">
+          <v-btn class="water-button" large tile :disabled="(character.SpiritType == 'Water')" @click="setSpirit('Water')"
+            ><img class="image--icon-size" :src="waterSymbol" />WATER SPIRIT<img class="image--icon-size" :src="waterSymbol"
+          /></v-btn> </v-col
+        ><v-col cols="3" class="element-box">
+          <v-btn class="wind-button" large tile :disabled="(character.SpiritType == 'Wind')" @click="setSpirit('Wind')"
+            ><img class="image--icon-size" :src="windSymbol" />WIND SPIRIT<img class="image--icon-size" :src="windSymbol"
+          /></v-btn> </v-col
+      ></v-row></div
+  ></span>
 </template>
 <script>
 import Vue from 'vue'
@@ -99,6 +64,15 @@ export default Vue.extend({
     earthSymbol: function () {
       return require('@/assets/disciplines/Land.svg')
     },
+    flameSymbol: function () {
+      return require('@/assets/disciplines/Blaze.svg')
+    },
+    waterSymbol: function () {
+      return require('@/assets/disciplines/Tide.svg')
+    },
+    windSymbol: function () {
+      return require('@/assets/disciplines/Gale.svg')
+    },
   },
 })
 </script>
@@ -115,6 +89,14 @@ export default Vue.extend({
 }
 .earth-button {
   background-color: #e0c068 !important;
-  font-family: $font--standard;
+}
+.flame-button {
+  background-color: $color--flame !important;
+}
+.water-button {
+  background-color: $color--water !important;
+}
+.wind-button {
+  background-color: $color--wind !important;
 }
 </style>
