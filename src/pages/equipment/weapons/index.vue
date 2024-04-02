@@ -42,9 +42,9 @@
         filled
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
-      ></v-select
-      ><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em; margin-left: auto; margin-right: auto;"
-    /></span>
+      ></v-select>
+      <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em;" /></div
+    ></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em;">
         <v-col cols="2"

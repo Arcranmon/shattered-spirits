@@ -54,7 +54,7 @@
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
       ></v-select
-      ><discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline"
+      ><discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" :key="selectedDiscipline.Name"
     /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">

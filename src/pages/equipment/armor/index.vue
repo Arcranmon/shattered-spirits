@@ -30,7 +30,7 @@
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
       ></v-select
-      ><armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="width: 40em; margin-left: auto; margin-right: auto;"
+      ><armor-card v-if="selectedArmor != null" :armor="selectedArmor" style="margin-left: 2em; margin-right: 2em;"
     /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
