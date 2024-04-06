@@ -42,7 +42,7 @@
           job="Maneuvers"
           :collapse="false"
         /><show-cards
-          :inputs="[this.$store.getters.getManeuver('Raise Guard'), $store.getters.getManeuver('Rally'), this.$store.getters.getManeuver('Prepare')]"
+          :inputs="[this.$store.getters.getManeuver('Raise Guard'), $store.getters.getManeuver('Rally'), this.$store.getters.getManeuver('Focus')]"
           job="Maneuvers"
           :collapse="false"
         />

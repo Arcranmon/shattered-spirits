@@ -102,7 +102,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" /></v-col> </v-row
+        <v-col> <discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" :key="selectedDiscipline.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>

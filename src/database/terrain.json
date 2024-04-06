@@ -17,7 +17,7 @@
     "layer": "Base",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ 3"],
-    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2.  Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount.",
+    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 3.  Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount.",
     "destroy": "Replace this space with _Shallow Water_ at 1 _Elevation_ lower than it was originally."
   },
   {
@@ -31,6 +31,14 @@
     "interactions": [
       "Downdraft Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
     ]
+  },
+  {
+    "name": "Dry Ground",
+    "desc": "Dry, cracked soil eagerly awaiting moisture.",
+    "layer": "Base",
+    "element": "Earthen",
+    "effect": "None.",
+    "interactions": ["If this space would become _Wet_ instead make this space _Mud_."]
   },
   {
     "name": "Electrified",
@@ -63,7 +71,18 @@
     "keywords": ["_Watersource_ 1", "Rough"],
     "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* Creatures in this space gain _Susceptible_ (_Forced Movement_, _Prone_).\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement. A creature may expend 1 _Stamina_ to negate this penalty.",
     "special": "Ignore _Water_ Base _Terrain_ while a space is Frozen.",
-    "destroy": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
+    "destroy": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_. If _Destroyed_ by anything other than a _Draw_ effect, replace it with _Frost_."
+  },
+  {
+    "name": "Frosted",
+    "desc": "Terrain covered in ice that is too thin or disjoint to obstruct foes.",
+    "layer": "Surface",
+    "element": "Ice",
+    "keywords": ["_Watersource_ 1"],
+    "interactions": [
+      "If a _Watersource_ space would become Frosted, instead place a Frosted space in an adjacent space or increase its value by 1 if it is below its maximum value."
+    ],
+    "destroy": "If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
   },
   {
     "name": "Gusting",
@@ -82,7 +101,16 @@
     "desc": "Sharp spires of earth and stone make traveling through this space painful.",
     "layer": "Field",
     "element": "Earthen",
-    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage and gain _Bleeding_ 1 [_Avoidable_]. If they end a _Jump_ in this space, they instead take 3 Stab Damage and gain _Bleeding_ 2 [_Avoidable_]. An individual space may only effect a creature once per _Turn_."
+    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage. If they end a _Leaping_/_Flying_ effect in this space, they instead take 4 Stab Damage."
+  },
+  {
+    "name": "Mud",
+    "desc": "Dry soil that has absorbed a great deal of mud.",
+    "layer": "Base",
+    "element": "Earthen",
+    "keywords": ["Rough", "_Watersource_ 1"],
+    "effect": "A creature that starts their Turn on a Mud space loses 1 space of Movement. A creature may expend 1 Stamina to negate this penalty.",
+    "destroy": "If _Destroyed_, replace this with _Dry Ground_."
   },
   {
     "name": "Roaring",
@@ -111,7 +139,7 @@
     "layer": "Base",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ ∞"],
-    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
+    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 3."
   },
   {
     "name": "Rushing Water",
@@ -119,7 +147,7 @@
     "layer": "Base",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ ∞"],
-    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 2."
+    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 3."
   },
   {
     "name": "Shallow Water",

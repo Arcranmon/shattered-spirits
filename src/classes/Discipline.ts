@@ -4,9 +4,10 @@ class Discipline {
   private name_: string
   private category_: string
   private desc_: string
+  private mechanics_desc_: string
+  private tags_: string[]
   private primary_role_: String
   private secondary_role_: String
-  private summary_: string
   private tier_1_: IDisciplineTierData
   private tier_2_: IDisciplineTierData
   private tier_3_: IDisciplineTierData
@@ -15,7 +16,6 @@ class Discipline {
   public constructor() {
     this.name_ = ''
     this.desc_ = ''
-    this.summary_ = ''
     this.tier_1_ = null
     this.tier_2_ = null
     this.tier_3_ = null
@@ -27,15 +27,18 @@ class Discipline {
   public get Flavor() {
     return this.desc_
   }
+  public get Mechanics() {
+    return this.mechanics_desc_
+  }
+  public get TagsHeader() {
+    return '**Primary Mechanics**: [_' + this.tags_.join('_, _') + '_]'
+  }
   public get Name() {
     return this.name_
   }
   public get RoleHeader() {
     if (this.secondary_role_ != '') return this.primary_role_ + '/' + this.secondary_role_
     return this.primary_role_
-  }
-  public get Summary() {
-    return this.summary_
   }
   public get TypeHeader() {
     return this.type_ + ' Discipline'
@@ -135,9 +138,10 @@ class Discipline {
     this.category_ = data.category || ''
     this.name_ = data.name || ''
     this.desc_ = data.desc || ''
+    this.mechanics_desc_ = data.mechanics_desc || ''
+    this.tags_ = data.tags || []
     this.primary_role_ = data.primary_role || ''
     this.secondary_role_ = data.secondary_role || ''
-    this.summary_ = data.summary || ''
     this.tier_1_ = data.tier_1 || null
     this.tier_2_ = data.tier_2 || null
     this.tier_3_ = data.tier_3 || null

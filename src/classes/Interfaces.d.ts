@@ -66,9 +66,10 @@ declare interface IDisciplineData {
   name: string
   category: string
   desc: string
+  mechanics_desc: string
+  tags: string[]
   primary_role: string
   secondary_role: string
-  summary: string
   tier_1: IDisciplineTierData
   tier_2: IDisciplineTierData
   tier_3: IDisciplineTierData

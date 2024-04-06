@@ -96,7 +96,8 @@
     "speed": 3,
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
-    "effect": "_Draw_ 1, either from the Target or their space. If they are in a _Water Veil_ you do not _Draw_ and the _Attack_ has _Advantage_.",
+    "reqs": "The Target must be in a _Water_ space or _Soaked_.",
+    "effect": "If the Target is in a _Water Veil_ the _Attack_ has _Advantage_.",
     "special": "As a part of this Attack, you may convert up 1 of the Target's _Vulnerable_ to _Bleeding_. This does not count as removing _Vulnerable_.",
     "chart": {
       "damage_type": "Slash",
@@ -422,7 +423,7 @@
     "cost": "2 _Momentum_",
     "range": [{ "category": "Self" }],
     "area": "_Cone_ 2",
-    "effect": "If you are in a _Frozen_ space you may remove the _Frozen_ space to reduce the Cost by 1.",
+    "effect": "If you are in a _Frozen_ space or adjacent to one you may _Destroy_ the _Frozen_ space to reduce the Cost by 1. If you use an adjacent space, the _Area_ must include it.",
     "chart": {
       "damage_type": "_Slash_",
       "material": "Ice",
@@ -441,7 +442,6 @@
     "type": "Versatile",
     "speed": 3,
     "effect": "Gain 1 _Momentum_.",
-    "special": "Gain a +1 _Bonus_ if you use both Hands for this Attack.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
       "damage_type": "Crush",
@@ -464,7 +464,23 @@
       ]
     },
     "rank": "Major Attack",
-    "analysis_notes": { "fudge": -1 }
+    "analysis_notes": { "fudge": -0.92, "notes": "Gives 1 Momentum, ignores the misses" }
+  },
+  {
+    "name": "Gripping Frost",
+    "class": "Tundra",
+    "desc": "You form ice into manacles, reaching out from the ground to snare a foe.",
+    "type": "Versatile",
+    "rank": "Major Attack",
+    "cost": "1 _Momentum_",
+    "speed": "5+ [_Rigid_]",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "target": "A Size 1- creature on a _Frozen_ space within _Range_.",
+    "effect": "Immediately deal 3 _Cold_ Damage and inflict _Frigid_ 3, _Hobbled_ 2 on the Target.",
+    "special": "You may choose to remove the _Frozen_ space as a part of this _Manuever_. If you do, instead deal 4 _Cold_ Damage and inflict _Frigid_ 3, _Restrained_ [3 _Stamina_]. This _Restrained_ ends after the Target takes any Damage.",
+    "boost": "1 _Momentum_: You may target a Size 2 creature. The majority of their occupied spaces must be _Frozen_.",
+    "charged_effect": "Instead, resolve this 3 contiguous _Frozen_ spaces within Range.",
+    "analysis_notes": { "bonus_damage": [8.75, 8.75, 8.75, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25] }
   },
   {
     "name": "Icicle Shot",
@@ -475,6 +491,7 @@
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
     "effect": "You must _Draw_ 1 as a part of this Attack.",
+    "special": "Make the target's space _Frosted_.",
     "chart": {
       "damage_type": "_Stab_",
       "material": "Ice",
@@ -614,22 +631,22 @@
     "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
     "chart": {
       "damage_type": "Crush",
-      "on_miss": "+2 _Momentum_",
+      "on_miss": "+2 _Momentum_ and make a space adjacent to the target _Wet_.",
       "material": "Water",
       "damage": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
-        "_Push_ 1/_Pull_ 1",
-        "_Push_ 1/_Pull_ 1",
-        "_Push_ 2/_Pull_ 2",
-        "_Push_ 2/_Pull_ 2",
-        "_Push_ 3/_Pull_ 3",
-        "_Push_ 3/_Pull_ 3",
-        "_Push_ 3/_Pull_ 3",
-        "_Push_ 4/_Pull_ 4",
-        "_Push_ 4/_Pull_ 4"
+        "_Soaked_ 1, _Push_ 1/_Pull_ 1",
+        "_Soaked_ 1, _Push_ 1/_Pull_ 1",
+        "_Soaked_ 1, _Push_ 2/_Pull_ 2",
+        "_Soaked_ 1, _Push_ 2/_Pull_ 2",
+        "_Soaked_ 1, _Push_ 3/_Pull_ 3",
+        "_Soaked_ 1, _Push_ 3/_Pull_ 3",
+        "_Soaked_ 1, _Push_ 3/_Pull_ 3",
+        "_Soaked_ 1, _Push_ 4/_Pull_ 4",
+        "_Soaked_ 1, _Push_ 4/_Pull_ 4"
       ]
     },
     "rank": "Minor Attack"
@@ -811,8 +828,8 @@
     "speed": "5",
     "cost": "2 _Momentum_",
     "range": [{ "category": "Ranged", "value": 8 }],
-    "area": "_Burst_ 1",
-    "effect": "Create a _Cone_ 1 _Hazard_ within _Range_. At the end of any _Phase_ after this one you may remove the _Hazard_ to resolve the below Attack in the _Area_.",
+    "area": "_Cone_ 1",
+    "effect": "Create an _Area_ _Hazard_ within _Range_. At the end of any _Phase_ after this one you may remove the _Hazard_ to resolve the below Attack in the _Area_.",
     "special": "If you have not removed the _Hazard_ at the end of the _Round_ resolve the On-Miss effect then remove the _Hazard_.",
     "charged_effect": "Create no _Hazard_ while _Charging_. Instead, after _Charging_, create a _Blast_ 1 _Hazard_ within _Range_ and deal +2 _Lightning_ Damage.",
     "boost": "1 _Momentum_: While there is a _Hazard_ the _Area_ is _Electrified_.",
@@ -851,7 +868,7 @@
     "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
     "chart": {
       "damage_type": "Crush",
-      "on_miss": "+2 _Momentum_",
+      "on_miss": "+2 _Momentum_ and make X spaces adjacent to the target _Wet_, where X is the number of spaces you _Drew_.",
       "material": "Water",
       "damage": [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -922,31 +939,31 @@
     "class": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
     "type": "Versatile",
-    "speed": 4,
+    "speed": 3,
     "range": [{ "category": "Melee", "value": 1 }],
     "effect": "Gain 1 _Momentum_.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+0 _Momentum_",
       "keywords": ["_Fist_/_Body_/_Kick"],
-      "damage": [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "damage": [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
+        "",
         "_Vulnerable_ 1",
         "_Vulnerable_ 1",
         "_Vulnerable_ 1",
         "_Vulnerable_ 1",
         "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Dazed_ 1, _Vulnerable_ 1",
-        "_Dazed_ 1, _Vulnerable_ 1"
+        "_Vulnerable_ 2",
+        "_Dazed_ 1, _Vulnerable_ 2",
+        "_Dazed_ 1, _Vulnerable_ 2"
       ]
     },
     "rank": "Minor Attack",
-    "analysis_notes": { "fudge": -1 }
+    "analysis_notes": { "fudge": -0.84, "notes": "Gives 1 Momentum, ignores the misses" }
   },
   {
     "name": "Weapon Attack",

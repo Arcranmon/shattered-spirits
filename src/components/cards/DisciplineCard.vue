@@ -2,10 +2,11 @@
   ><div class="discipline--box">
     <h2>{{ discipline.Name }}</h2>
     <div class="page--description">
-      <b>{{ discipline.TypeHeader }}</b
+      <b><display-tooltip-text :string="discipline.RoleHeader.replace('/', '_/_')" /> {{ discipline.TypeHeader }}</b
       ><br />
-      <b><display-tooltip-text :string="discipline.RoleHeader.replace('/', '_/_')" /></b><br />
-      <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.Flavor" />
+      <i><display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.Flavor" /></i><br />
+      <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.Mechanics" /><br />
+      <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.TagsHeader" /><br />
     </div>
     <div class="header">
       <h4 style="display: flex;">

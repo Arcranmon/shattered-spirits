@@ -9,6 +9,7 @@
       <div v-if="type.HasEffect"><display-tooltip-text :string="type.EffectHeader" /></div>
       <div v-if="type.HasManifestEffect"><display-tooltip-text :string="type.ManifestEffectHeader" /></div>
       <div v-if="type.HasSummonEffect"><display-tooltip-text :string="type.SummonEffectHeader" /></div>
+      <div v-if="type.HasSpecial"><display-tooltip-text :string="type.SpecialHeader" /></div>
       <div v-if="type.HasTraits"><display-tooltip-text :string="type.TraitsText" /></div>
     </div>
     <div class="desc--box" v-if="(type.Desc.length > 0)" style="font-style: italic;">{{ type.Desc }}<br /></div>

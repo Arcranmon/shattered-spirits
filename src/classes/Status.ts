@@ -46,7 +46,7 @@ class Status extends Base {
     return '**Negate:** ' + this.negate_
   }
   public get ReactsHeader() {
-    var interact_header = '**Reacts:** ' + this.name_ + ' reacts with other Afflictions as follows:'
+    var interact_header = '**Reacts:** ' + this.name_ + ' reacts with other effects as follows:'
     for (var react of this.reacts_) {
       interact_header += '\n* ' + react
     }

@@ -60,7 +60,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="num_cols" v-for="item in ['Tide', 'Frost']" :key="item">
+          ><v-col :cols="num_cols" v-for="item in ['Tide', 'Tundra']" :key="item">
             <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
         ></v-row>
         <h4>Water Spirit Forms</h4>
@@ -234,7 +234,7 @@ export default Vue.extend({
       if (this.isMobile) {
         return 12
       }
-      return 6
+      return 4
     },
   },
 })

@@ -7,7 +7,7 @@ var kBaseHealth = 25
 
 var kBasicTechniques = ['Skirmish', 'Combination Strike', 'Smash']
 var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Unarmed Attack', 'Grapple']
-var kBasicActions = ['Hide', 'Fight', 'Swift Manifestation', 'Shift', 'Raise Guard', 'Rally', 'Prepare']
+var kBasicActions = ['Hide', 'Fight', 'Swift Manifestation', 'Shift', 'Raise Guard', 'Rally', 'Focus']
 var kBasicStunts = ['Disengage', 'Draw/Stow', 'Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
 var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge', 'Spiritual Interdiction', 'Spirit Summon']
 var kBasicGambits = ['Aim', 'Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Critical Hit', 'Mark']

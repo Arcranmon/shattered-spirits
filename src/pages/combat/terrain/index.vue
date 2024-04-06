@@ -12,9 +12,9 @@
         filled
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em;"
-      ></v-select
-      ><terrain-card v-if="selectedTerrain != null" :terrain="selectedTerrain" style="width: 40em; margin-left: auto; margin-right: auto;"
-    /></span>
+      ></v-select>
+      <div><terrain-card v-if="selectedTerrain != null" :terrain="selectedTerrain" style="width: 40em; margin-left: auto; margin-right: auto;" /></div
+    ></span>
     <span v-else>
       <v-row class="page">
         <v-col cols="auto" class="sidebar">

@@ -22,7 +22,6 @@ class Ability extends Base {
     this.cost_ = ''
     this.desc_ = ''
     this.effect_ = ''
-    this.keywords_ = []
     this.move_ = ''
     this.name_ = name
     this.range_ = []
