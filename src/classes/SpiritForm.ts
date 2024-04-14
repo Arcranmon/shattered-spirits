@@ -11,8 +11,21 @@ class SpiritForm extends Base {
   private movement_: string
   private traits_: string[]
 
+  private light_limit_: number
+  private versatile_limit_: number
+  private heavy_limit_: number
+  private light_versatile_limit_: number
+  private versatile_heavy_limit_: number
+  private any_limit_: number
+
   public constructor(name) {
     super(name)
+    this.light_limit_ = 0
+    this.versatile_limit_ = 0
+    this.heavy_limit_ = 0
+    this.light_versatile_limit_ = 0
+    this.versatile_heavy_limit_ = 0
+    this.any_limit_ = 0
   }
 
   // ==========================================================
@@ -40,6 +53,9 @@ class SpiritForm extends Base {
   public get Health() {
     return this.health_
   }
+  public get Weapons() {
+    return this.weapons_
+  }
   public get WeaponsHeader() {
     return '**Weapons:** ' + this.weapons_
   }
@@ -57,6 +73,34 @@ class SpiritForm extends Base {
   }
   public get TraitsHeader() {
     return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_'
+  }
+
+  public get WeaponLimits() {
+    return this.any_limit_ + this.light_limit_ + this.versatile_limit_ + this.heavy_limit_ + this.light_versatile_limit_ + this.versatile_heavy_limit_
+  }
+
+  public get AnyLimit() {
+    return this.any_limit_
+  }
+
+  public get LightLimit() {
+    return this.light_limit_
+  }
+
+  public get VersatileLimit() {
+    return this.versatile_limit_
+  }
+
+  public get HeavyLimit() {
+    return this.heavy_limit_
+  }
+
+  public get LightVersatileLimit() {
+    return this.light_versatile_limit_
+  }
+
+  public get VersatileHeavyLimit() {
+    return this.versatile_heavy_limit_
   }
 
   // ==========================================================
@@ -78,6 +122,17 @@ class SpiritForm extends Base {
     this.durability_ = data.durability || 0
     this.movement_ = data.movement || ''
     this.traits_ = data.traits || []
+
+    var required_weapons = this.Weapons.replaceAll('_', '').split(', ')
+    for (var weapon_reqs of required_weapons) {
+      var count_class = weapon_reqs.split(' ')
+      if (count_class[1] == 'Light') this.light_limit_ += Number(count_class[0])
+      else if (count_class[1] == 'Versatile') this.versatile_limit_ += Number(count_class[0])
+      else if (count_class[1] == 'Heavy') this.heavy_limit_ += Number(count_class[0])
+      else if (count_class[1] == 'Light/Versatile') this.light_versatile_limit_ += Number(count_class[0])
+      else if (count_class[1] == 'Versatile/Heavy') this.versatile_heavy_limit_ += Number(count_class[0])
+      else if (count_class[1] == 'Any') this.any_limit_ += Number(count_class[0])
+    }
   }
 }
 export default SpiritForm

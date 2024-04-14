@@ -24,8 +24,6 @@ import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
 import CombatGear from '@/pages/equipment/combat-gear/index.vue'
-import MartialArts from '@/pages/equipment/martial-arts/index.vue'
-import Disciplines from '@/pages/disciplines/index.vue'
 
 import BasicSkills from '@/pages/basic-skills/index.vue'
 import SpiritAbilities from '@/pages/spirit-abilities/index.vue'
@@ -117,14 +115,6 @@ const r = new Router({
       name: 'combat-gear',
       meta: {
         title: 'Combat Gear',
-      },
-    },
-    {
-      path: '/martial-arts',
-      component: MartialArts,
-      name: 'martial-arts',
-      meta: {
-        title: 'Martial Arts',
       },
     },
     {
@@ -237,14 +227,6 @@ const r = new Router({
       name: 'character-manager',
       meta: {
         title: 'Character Manager',
-      },
-    },
-    {
-      path: '/disciplines',
-      component: Disciplines,
-      name: 'disciplines',
-      meta: {
-        title: 'Disciplines',
       },
     },
   ],

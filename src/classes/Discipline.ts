@@ -16,6 +16,7 @@ class Discipline {
   public constructor() {
     this.name_ = ''
     this.desc_ = ''
+    this.tags_ = []
     this.tier_1_ = null
     this.tier_2_ = null
     this.tier_3_ = null

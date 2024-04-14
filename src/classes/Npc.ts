@@ -136,7 +136,7 @@ class Npc {
     this.role_ = data.role || ''
     this.size_ = data.size || ''
     this.special_ = data.special || ''
-    this.spirit_type_ = data.spirit_type || ''
+    this.spirit_type_ = data.subtype || ''
     this.stunts_ = data.stunts || []
     this.traits_ = data.traits || []
     this.stances_ = data.stances || []

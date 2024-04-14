@@ -17,7 +17,7 @@ import Terrains from '@/database/terrain.json'
 
 import Attacks from '@/database/attacks.json'
 
-import SpiritTypes from '@/database/spirit_types.json'
+import Subtypes from '@/database/subtypes.json'
 import SpiritForms from '@/database/spirit_forms.json'
 
 import Movements from '@/database/movement.json'
@@ -26,7 +26,7 @@ import Maneuvers from '@/database/maneuvers.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Armor, Attack, Discipline, Gear, Maneuver, Movement, Npc, Obstacle, SpiritForm, SpiritType, Stance, Status, Technique, Terrain, Weapon } from '@/class'
+import { Armor, Attack, Discipline, Gear, Maneuver, Movement, Npc, Obstacle, SpiritForm, Subtype, Stance, Status, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -121,7 +121,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getWeaponsForCharCreation(): any {
     return () => {
-      return Weapons.filter((x) => x.category.trim() !== 'Unarmed' && x.category.trim() !== 'Improvised').map((x) =>
+      return Weapons.filter((x) => x.category.trim() !== 'Natural' && x.category.trim() !== 'Improvised').map((x) =>
         Weapon.Deserialize(<IWeaponData>(<unknown>x)),
       )
     }
@@ -349,6 +349,13 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getArt(): any {
+    return (inword: string) => {
+      var discipline = Arts.find((x) => x.name.trim() === inword.trim())
+      return Discipline.Deserialize(<IDisciplineData>(<unknown>discipline))
+    }
+  }
+
   get getArts(): any {
     return () => {
       return Arts.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x)))
@@ -547,10 +554,16 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // SPIRIT TYPE GETTERS
   // ==========================================================
-  get getSpiritType(): any {
+  get getSubtype(): any {
     return (inword: string) => {
-      var type = SpiritTypes.find((x) => x.name.trim() === inword.trim())
-      return SpiritType.Deserialize(<ISpiritTypeData>type)
+      var type = Subtypes.find((x) => x.name.trim() === inword.trim())
+      return Subtype.Deserialize(<ISubtypeData>type)
+    }
+  }
+
+  get getSpiritTypesByElement(): any {
+    return (inword: string) => {
+      return Subtypes.filter((x) => x.element.trim() === inword.trim()).map((x) => Subtype.Deserialize(<ISubtypeData>x))
     }
   }
 

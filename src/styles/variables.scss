@@ -215,6 +215,14 @@ $space--xxs: 0.25em;
   margin: 1em;
 }
 
+.image--left {
+  float: left;
+}
+.image--right {
+  float: right;
+  transform: scaleX(-1);
+}
+
 .dropdown--light {
   background: lightcyan;
   width: 100%;
@@ -310,6 +318,19 @@ $space--xxs: 0.25em;
   height: 70vh;
   overflow-y: auto;
 }
+.sidebar--enclosed {
+  @extend .sidebar;
+  border-left: 0.5em double black;
+  margin-left: 1em;
+}
+
+.selected--item {
+  border: 0.5em double black;
+  background: $color--light-parchment !important;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
 .background--color {
   background: $color--background !important;
 }

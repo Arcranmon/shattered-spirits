@@ -26,7 +26,11 @@ Vue.prototype.$defend = require('@/assets/Defend.svg')
 Vue.mixin({
   computed: {
     isMobile: function () {
-      return screen.width <= 760
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
     },
   },
   methods: {

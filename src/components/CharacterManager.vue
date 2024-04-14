@@ -59,7 +59,7 @@
                 ><span style="margin: 2px;">{{ character.Name }}</span></v-btn
               >
             </template>
-            {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.SpiritType.Name }} Spirit
+            {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit
           </v-tooltip>
         </div> </v-col
       ><v-col cols="10">
@@ -165,6 +165,9 @@ export default Vue.extend({
       document.body.removeChild(element)
     },
     importCharacter() {
+      if (!this.importFile) {
+        this.data = 'No File Chosen'
+      }
       var reader = new FileReader()
       const store = getModule(CharacterManagementStore, this.$store)
       reader.onload = (e) => {

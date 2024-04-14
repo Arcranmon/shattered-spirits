@@ -14,7 +14,7 @@ import Npc from './classes/Npc'
 import Obstacle from './classes/Obstacle'
 import Spirit from './classes/Spirit'
 import SpiritForm from './classes/SpiritForm'
-import SpiritType from './classes/SpiritType'
+import Subtype from './classes/Subtype'
 import Stance from './classes/Stance'
 import Status from './classes/Status'
 import Technique from './classes/Technique'
@@ -36,7 +36,7 @@ export {
   Obstacle,
   Spirit,
   SpiritForm,
-  SpiritType,
+  Subtype,
   Stance,
   Status,
   Technique,

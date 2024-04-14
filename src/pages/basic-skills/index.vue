@@ -121,12 +121,6 @@ export default Vue.extend({
       }
       return 'centered-single'
     },
-    num_cols() {
-      if (this.isMobile) {
-        return 12
-      }
-      return 6
-    },
   },
 })
 </script>

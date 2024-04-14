@@ -20,8 +20,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="num_cols" v-for="item in ['Land', 'Mountain']" :key="item">
-            <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
+          ><v-col :cols="num_cols" v-for="item in ['Land', 'Mountain']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Earth Spirit Forms</h4>
         <display-tooltip-text
@@ -29,7 +28,7 @@
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
         /><v-row style="padding: 1em;">
           <v-col :cols="num_cols" v-for="item in ['Swift Earth Spirit', 'Balanced Earth Spirit', 'Heavy Earth Spirit']" :key="item">
-            <spirit-form-card :form="$store.getters.getSpiritForm(item)" header_color="Earth" /></v-col
+            <spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
@@ -40,8 +39,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="num_cols" v-for="item in ['Blaze', 'Explosion']" :key="item">
-            <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
+          ><v-col :cols="num_cols" v-for="item in ['Blaze', 'Explosion']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Flame Spirit Forms</h4>
         <display-tooltip-text
@@ -49,7 +47,7 @@
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
         /><v-row style="padding: 1em;">
           <v-col :cols="num_cols" v-for="item in ['Swift Flame Spirit', 'Balanced Flame Spirit', 'Heavy Flame Spirit']" :key="item">
-            <spirit-form-card :form="$store.getters.getSpiritForm(item)" header_color="Flame" /></v-col
+            <spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
@@ -60,8 +58,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="num_cols" v-for="item in ['Tide', 'Tundra']" :key="item">
-            <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
+          ><v-col :cols="num_cols" v-for="item in ['Tide', 'Tundra']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Water Spirit Forms</h4>
         <display-tooltip-text
@@ -69,7 +66,7 @@
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
         /><v-row style="padding: 1em;">
           <v-col :cols="num_cols" v-for="item in ['Swift Water Spirit', 'Balanced Water Spirit', 'Heavy Water Spirit']" :key="item"
-            ><spirit-form-card :form="$store.getters.getSpiritForm(item)" header_color="Water" /></v-col
+            ><spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
@@ -80,8 +77,7 @@
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
         <v-row style="padding: 1em;"
-          ><v-col :cols="num_cols" v-for="item in ['Gale', 'Storm']" :key="item">
-            <spirit-type-card :type="$store.getters.getSpiritType(item)" :header_color="item" /></v-col
+          ><v-col :cols="num_cols" v-for="item in ['Gale', 'Storm']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Wind Spirit Forms</h4>
         <display-tooltip-text
@@ -89,7 +85,7 @@
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
         /><v-row style="padding: 1em;">
           <v-col :cols="num_cols" v-for="item in ['Swift Wind Spirit', 'Balanced Wind Spirit', 'Heavy Wind Spirit']" :key="item">
-            <spirit-form-card :form="$store.getters.getSpiritForm(item)" header_color="Wind" /></v-col
+            <spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item> <display-tooltip-text style="margin: 1em;" :string="combatTraitText" /><br /><br /></v-tab-item>
@@ -173,7 +169,7 @@ import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritFormCard from '@/components/cards/SpiritFormCard.vue'
-import SpiritTypeCard from '@/components/cards/SpiritTypeCard.vue'
+import SubtypeCard from '@/components/cards/SubtypeCard.vue'
 import MovementCard from '@/components/cards/MovementCard.vue'
 import AttackCard from '@/components/cards/AttackCard'
 import { store } from '@/store'
@@ -194,7 +190,7 @@ export default Vue.extend({
     AttackCard,
     MovementCard,
     SpiritFormCard,
-    SpiritTypeCard,
+    SubtypeCard,
   },
   computed: {
     earthText() {

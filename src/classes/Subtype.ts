@@ -1,7 +1,8 @@
 import { store } from '@/store'
 import { Base } from '@/class'
 
-class SpiritType extends Base {
+class Subtype extends Base {
+  private element_: string
   private summon_effect_: string
   private manifest_effect_: string
   private traits_: string[]
@@ -41,17 +42,18 @@ class SpiritType extends Base {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(data: ISpiritTypeData): SpiritType {
-    const c = new SpiritType(data.name)
-    c.setSpiritTypeData(data)
+  public static Deserialize(data: ISubtypeData): Subtype {
+    const c = new Subtype(data.name)
+    c.setSubtypeData(data)
     return c
   }
 
-  private setSpiritTypeData(data: ISpiritTypeData): void {
+  private setSubtypeData(data: ISubtypeData): void {
     this.setBaseData(data)
+    this.element_ = data.element || ''
     this.summon_effect_ = data.summon_effect || ''
     this.manifest_effect_ = data.manifest_effect || ''
     this.traits_ = data.traits || []
   }
 }
-export default SpiritType
+export default Subtype

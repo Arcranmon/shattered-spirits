@@ -40,12 +40,13 @@ class Armor extends Base {
   }
   get DurabilityHeader() {
     if (this.durability_ != 0) return ', Durability ' + this.durability_
+    return ''
   }
   get ArmorHeader() {
-    return '**Armor:** ' + this.guard_ + ' Guard, ' + this.durability_ + ' Durability'
+    return '**Armor:** ' + this.guard_ + ' Guard' + this.DurabilityHeader
   }
   get WeightHeader() {
-    if (this.durability_ != 0) return '**Weight:** ' + this.weight_
+    return '**Weight:** ' + this.weight_
   }
 
   // ==========================================================

@@ -33,6 +33,7 @@ declare interface ICharacterData {
   equipped_armor: string
   gear: string[]
   disciplines: ICharDisciplineData[]
+  arts: ICharDisciplineData[]
   max_health: number
   momentum: number
   name: string
@@ -104,7 +105,7 @@ declare interface INpcData {
   size: string
   special: string
   stances?: Array<string>
-  spirit_type: string
+  subtype: string
   stunts: Array<string>
   traits?: Array<string>
   techniques: Array<string>
@@ -157,7 +158,7 @@ declare interface IRangeData {
 declare interface ISpiritData {
   name: string
   spirit_form: string
-  spirit_type: string
+  subtype: string
   weapons: Array<string>
   stamina: number
   vigor: number
@@ -175,7 +176,8 @@ declare interface ISpiritFormData extends IBaseData {
   traits: string[]
 }
 
-declare interface ISpiritTypeData extends IBaseData {
+declare interface ISubtypeData extends IBaseData {
+  element: string
   summon_effect: string
   manifest_effect: string
   traits: string[]

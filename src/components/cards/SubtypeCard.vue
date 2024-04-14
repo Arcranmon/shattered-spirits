@@ -1,7 +1,7 @@
 <template>
   <div class="card--wrapper" inline>
     <div class="card--underline-top">
-      <div class="card--header" v-bind:class="header_color">
+      <div class="card--header" v-bind:class="type.Name">
         <h4 style="display: inline;">{{ type.Name }}</h4>
       </div>
     </div>
@@ -26,10 +26,6 @@ export default Vue.extend({
   props: {
     type: {
       type: SpiritType,
-      required: true,
-    },
-    header_color: {
-      type: String,
       required: true,
     },
   },

@@ -24,6 +24,11 @@ class Stance extends Base {
     if (this.respite_.length > 0) return '**Respite:** ' + this.respite_
     return ''
   }
+
+  public get Stamina() {
+    return this.stamina_
+  }
+
   public get StaminaHeader() {
     return '**Stamina:** ' + this.stamina_
   }
