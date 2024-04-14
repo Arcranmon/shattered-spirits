@@ -29,6 +29,8 @@ class Spirit {
     this.subtype_ = undefined
     this.form_ = undefined
     this.weapons_ = []
+    this.name_ = ''
+    this.stamina_ = 0
   }
 
   // ==========================================================

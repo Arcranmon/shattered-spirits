@@ -47,13 +47,12 @@ class Character {
   public constructor() {
     this.current_spirit_stance_ = store.getters.getStance('No Stance')
     this.current_martial_stance_ = store.getters.getStance('No Stance')
-    this.current_health_ = kBaseHealth
     this.arts_ = []
     this.disciplines_ = []
     this.EquippedArmor = store.getters.getArmor('Basic Clothes')
     this.stamina_ = 0
     this.spirit_ = new Spirit()
-    this.current_health_ = 0
+    this.current_health_ = kBaseHealth
     this.max_health_ = kBaseHealth
     this.momentum_ = 0
     this.name_ = ''

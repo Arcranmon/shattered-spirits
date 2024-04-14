@@ -40,7 +40,7 @@
             <v-card>
               <v-card-title>Import Character From File</v-card-title>
               <v-card-text>
-                <v-file-input truncate-length="15" accept=".json" v-model="importFile"></v-file-input>
+                <v-file-input accept=".json" v-model="importFile"></v-file-input>
                 <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)"> Import Character </v-btn>
               </v-card-text>
             </v-card>
@@ -72,7 +72,7 @@
               <v-card>
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
-                  <v-file-input truncate-length="15" accept=".json" v-model="importFile"></v-file-input>
+                  <v-file-input accept=".json" v-model="importFile" />
                   <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
                     <span style="margin: 2px;">Import Character</span>
                   </v-btn>
@@ -132,7 +132,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      importFile: null,
+      importFile: [],
+      uploadedChar: null,
       selectedCharacter: null,
       characterImportDialog: false,
       selectedIndex: 0,
@@ -146,10 +147,12 @@ export default Vue.extend({
       this.selectedCharacter = null
       this.deleteDialog = false
     },
+
     saveCharacter() {
       const store = getModule(CharacterManagementStore, this.$store)
       store.SaveCharacters()
     },
+
     exportCharacter() {
       // credit: https://www.bitdegree.org/learn/javascript-download
       let text = JSON.stringify(Character.Serialize(this.selectedCharacter))
@@ -164,14 +167,16 @@ export default Vue.extend({
       element.click()
       document.body.removeChild(element)
     },
+
     importCharacter() {
-      if (!this.importFile) {
-        this.data = 'No File Chosen'
+      if (this.importFile === null || this.importFile === undefined || this.importFile.length === 0) {
+        alert('Please select a file to create a character from!')
+        return
       }
       var reader = new FileReader()
       const store = getModule(CharacterManagementStore, this.$store)
       reader.onload = (e) => {
-        var fileData = JSON.parse(e.target.result)
+        let fileData = JSON.parse(e.target.result)
         var char = Character.Deserialize(fileData)
         store.AddCharacter(char)
       }

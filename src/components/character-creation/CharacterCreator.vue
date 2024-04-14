@@ -32,9 +32,11 @@
         <v-stepper-content step="5"><equipment-selection :character="character" @chose-equipment="step++" /> </v-stepper-content>
         <v-stepper-content step="6"><name-selection :character="character" @chose-names="step++" /></v-stepper-content
         ><v-stepper-content step="7">
-          <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
-            <span v-if="!character.Complete">You must finish making your character!</span>
-            <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span></v-btn
+          <v-layout style="margin-top: 1em; width: 100%;" justify-center>
+            <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
+              <span v-if="!character.Complete">You must finish making your character!</span>
+              <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span></v-btn
+            ></v-layout
           ><show-character v-if="character.Complete" :character="character" />
         </v-stepper-content>
       </v-stepper-items>

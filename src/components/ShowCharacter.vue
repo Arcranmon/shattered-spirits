@@ -178,15 +178,15 @@
                 ><v-btn inline x-small @click=";(character.Spirit.CurrentHealth += 1), $emit('changed')" color="green">+</v-btn>
                 <v-btn inline x-small @click=";(character.Spirit.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn></v-col
               >
-              <v-row no-gutters>
-                <v-col cols="2" />
-                <v-col cols="3"><display-tooltip-text string="**_Stamina_:**" /></v-col>
-                <v-col cols="2">{{ character.Spirit.Stamina }} / {{ character.Spirit.MaxStamina }}</v-col>
-                <v-col cols="3"
-                  ><v-btn inline x-small @click=";(character.Spirit.Stamina += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Spirit.Stamina -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
-              </v-row>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="2" />
+              <v-col cols="3"><display-tooltip-text string="**_Stamina_:**" /></v-col>
+              <v-col cols="2">{{ character.Spirit.Stamina }} / {{ character.Spirit.MaxStamina }}</v-col>
+              <v-col cols="3"
+                ><v-btn inline x-small @click=";(character.Spirit.Stamina += 1), $emit('changed')" color="green">+</v-btn>
+                <v-btn inline x-small @click=";(character.Spirit.Stamina -= 1), $emit('changed')" color="red">-</v-btn></v-col
+              >
             </v-row>
             <v-row justify="center">
               <!-- TODO: Add Statuses? 
