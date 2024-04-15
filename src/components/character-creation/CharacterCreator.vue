@@ -1,46 +1,44 @@
 <template>
   <v-container fluid>
-    <v-stepper v-model="step" class="no-transition" alt-labels>
-      <v-stepper-header class="builder--header">
-        <v-stepper-step editable step="1">
-          <center>Spirit Type</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="2">
-          <center>Spirit Subtype</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="3">
-          <center>Spirit Customization</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="4">
-          <center>Disciplines</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="5">
-          <center>Gear</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="6">
-          <center>Name</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="7">
-          <center>Preview</center>
-        </v-stepper-step>
-      </v-stepper-header>
-      <v-stepper-items class="builder--body">
-        <v-stepper-content step="1"><spirit-selection :character="character" @chose-spirit="step++" /> </v-stepper-content>
-        <v-stepper-content step="2"><subtype-selection :character="character" @chose-subtype="step++" /> </v-stepper-content>
-        <v-stepper-content step="3"><spirit-customization :character="character" @customized="step++" /> </v-stepper-content>
-        <v-stepper-content step="4"><discipline-selection :character="character" @chose-discipline="step++" /></v-stepper-content>
-        <v-stepper-content step="5"><equipment-selection :character="character" @chose-equipment="step++" /> </v-stepper-content>
-        <v-stepper-content step="6"><name-selection :character="character" @chose-names="step++" /></v-stepper-content
-        ><v-stepper-content step="7">
-          <v-layout style="margin-top: 1em; width: 100%;" justify-center>
-            <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
-              <span v-if="!character.Complete">You must finish making your character!</span>
-              <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span></v-btn
-            ></v-layout
-          ><show-character v-if="character.Complete" :character="character" />
-        </v-stepper-content>
-      </v-stepper-items>
-    </v-stepper>
+    <v-tabs fixed-tabs v-model="stepper" height="4em" color="black">
+      <v-tab>
+        <h4>Spirit Type</h4>
+      </v-tab>
+      <v-tab>
+        <h4>Spirit Subtype</h4>
+      </v-tab>
+      <v-tab>
+        <h4>Spirit Customization</h4>
+      </v-tab>
+      <v-tab>
+        <h4>Disciplines</h4>
+      </v-tab>
+      <v-tab>
+        <h4>Equipment</h4>
+      </v-tab>
+      <v-tab>
+        <h4>Name</h4>
+      </v-tab>
+      <v-tab>
+        <h4>Preview</h4>
+      </v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="stepper">
+      <v-tab-item :eager="true" class="builder--body"><spirit-selection :character="character" @chose-spirit="stepper++" /> </v-tab-item>
+      <v-tab-item :eager="true" class="builder--body"><subtype-selection :character="character" @chose-subtype="stepper++" /> </v-tab-item>
+      <v-tab-item :eager="true" class="builder--body"><spirit-customization :character="character" @customized="stepper++" /> </v-tab-item>
+      <v-tab-item :eager="true" class="builder--body"><discipline-selection :character="character" @chose-discipline="stepper++" /></v-tab-item>
+      <v-tab-item :eager="true" class="builder--body"><equipment-selection :character="character" @chose-equipment="stepper++" /> </v-tab-item>
+      <v-tab-item :eager="true" class="builder--body"><name-selection :character="character" @chose-names="stepper++" /></v-tab-item
+      ><v-tab-item :eager="true" class="builder--body">
+        <v-layout style="margin-top: 1em; width: 100%;" justify-center>
+          <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
+            <span v-if="!character.Complete">You must finish making your character!</span>
+            <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span></v-btn
+          ></v-layout
+        ><show-character v-if="character.Complete" :character="character" />
+      </v-tab-item>
+    </v-tabs-items>
   </v-container>
 </template>
 
@@ -68,7 +66,7 @@ export default Vue.extend({
     ShowCharacter,
   },
   data: () => ({
-    step: 1,
+    stepper: 0,
     character: {},
   }),
   created() {

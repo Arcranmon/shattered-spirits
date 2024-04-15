@@ -27,49 +27,43 @@
         </div>
       </v-layout>
     </v-row>
-    <v-stepper alt-labels class="no-transition">
-      <v-stepper-header class="builder--header">
-        <v-stepper-step editable step="1">
-          <center>Spirit Discipline</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="2">
-          <center>Style Discipline</center>
-        </v-stepper-step></v-stepper-header
-      >
-      <v-stepper-items class="builder--body">
-        <v-stepper-content step="1"
-          ><div>
-            <v-row> </v-row>
-            <v-row v-if="character.Spirit.HasSubtype">
-              <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em;">
-                <v-btn-toggle borderless overflow-auto
-                  ><div v-for="discipline in spirit_disciplines" style="width: 100%;" v-bind:key="discipline.Name">
-                    <v-btn @click="spiritDiscipline = discipline" class="button--style" depressed tile block>
-                      <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
-                    </v-btn>
-                  </div>
-                </v-btn-toggle></v-col
-              >
-              <v-col>
-                <v-layout style="margin-top: 1em; width: 100%;" justify-center
-                  ><v-btn
-                    large
-                    tile
-                    color="success"
-                    @click="addDiscipline(spiritDiscipline)"
-                    :disabled="spiritDiscipline == null || !character.CanAddDiscipline(spiritDiscipline)"
-                  >
-                    <span v-if="spiritDiscipline == null">CHOOSE A SPIRIT DISCIPLINE</span>
-                    <span v-else-if="!character.CanAddDiscipline(spiritDiscipline)">CANNOT ADD {{ spiritDiscipline.Name }} WEAPON</span>
-                    <span v-else>CHOOSE {{ spiritDiscipline.Name }}</span>
-                  </v-btn></v-layout
-                ><discipline-card v-if="spiritDiscipline != null" :discipline="spiritDiscipline" :key="spiritDiscipline.Name"
-              /></v-col> </v-row
-            ><v-row v-else>
-              <v-col cols="auto"><display-tooltip-text string="To select a Spirit Discipline you must first select your spirit's type and subtype!" /></v-col
-            ></v-row></div
-        ></v-stepper-content>
-        <v-stepper-content step="2">
+    <div class="keyword--box">
+      <v-tabs fixed-tabs v-model="disciplineTab" color="black">
+        <v-tab> <h3>Spirit Discipline</h3></v-tab>
+        <v-tab> <h3>Style Discipline</h3></v-tab>
+      </v-tabs>
+      <v-tabs-items v-model="disciplineTab">
+        <v-tab-item :eager="true" class="builder--body">
+          <v-row v-if="character.Spirit.HasSubtype">
+            <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em;">
+              <v-btn-toggle borderless overflow-auto
+                ><div v-for="discipline in spirit_disciplines" style="width: 100%;" v-bind:key="discipline.Name">
+                  <v-btn @click="spiritDiscipline = discipline" class="button--style" depressed tile block>
+                    <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
+                  </v-btn>
+                </div>
+              </v-btn-toggle></v-col
+            >
+            <v-col>
+              <v-layout style="margin-top: 1em; width: 100%;" justify-center
+                ><v-btn
+                  large
+                  tile
+                  color="success"
+                  @click="addDiscipline(spiritDiscipline)"
+                  :disabled="spiritDiscipline == null || !character.CanAddDiscipline(spiritDiscipline)"
+                >
+                  <span v-if="spiritDiscipline == null">CHOOSE A SPIRIT DISCIPLINE</span>
+                  <span v-else-if="!character.CanAddDiscipline(spiritDiscipline)">CANNOT ADD {{ spiritDiscipline.Name }} WEAPON</span>
+                  <span v-else>CHOOSE {{ spiritDiscipline.Name }}</span>
+                </v-btn></v-layout
+              ><discipline-card v-if="spiritDiscipline != null" :discipline="spiritDiscipline" :key="spiritDiscipline.Name"
+            /></v-col> </v-row
+          ><v-row v-else>
+            <v-col cols="auto"><display-tooltip-text string="To select a Spirit Discipline you must first select your spirit's type and subtype!" /></v-col
+          ></v-row>
+        </v-tab-item>
+        <v-tab-item :eager="true" class="builder--body">
           <v-row>
             <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em;">
               <v-btn-toggle borderless overflow-auto
@@ -95,10 +89,11 @@
                 </v-btn></v-layout
               >
               <discipline-card v-if="styleDiscipline != null" :discipline="styleDiscipline" :key="styleDiscipline.Name"
-            /></v-col> </v-row
-        ></v-stepper-content>
-      </v-stepper-items>
-    </v-stepper>
+            /></v-col>
+          </v-row>
+        </v-tab-item>
+      </v-tabs-items>
+    </div>
   </span>
 </template>
 
@@ -118,13 +113,12 @@ export default Vue.extend({
       required: true,
     },
   },
-  data: () => {
-    return {
-      step: 1,
-      styleDiscipline: null,
-      spiritDiscipline: null,
-    }
-  },
+  data: () => ({
+    step: 1,
+    disciplineTab: '1',
+    styleDiscipline: null,
+    spiritDiscipline: null,
+  }),
   computed: {
     spirit_disciplines: function () {
       return this.$store.getters.getFilteredDisciplines([this.character.Element], [this.character.Spirit.Subtype.Name], 'Any', 'Any')
@@ -170,9 +164,6 @@ export default Vue.extend({
   justify-content: center;
   align-content: center;
   margin: auto;
-}
-.builder--header {
-  background: $color--parchment;
 }
 .builder--body {
   background: $color--background;

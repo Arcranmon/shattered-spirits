@@ -9,13 +9,32 @@
       label="Select a Character"
       filled
       outlined
-      style="margin: 0.5em;" /><v-row justify="center" style="display: flex; flex-direction: column;">
+      style="margin: 0.5em;" />
+    <v-row justify="center" style="display: flex; flex-direction: column;">
       <v-col cols="12">
-        <span class="topbar">
-          <span v-if="characterSelected" class="hidden--topbar">
+        <v-row class="topbar"
+          ><v-col cols="4" class="d-flex" style="flex-direction: column;">
+            <v-dialog v-model="characterImportDialog" hide-overlay>
+              <template v-slot:activator="{}">
+                <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
+              </template>
+              <v-card>
+                <v-card-title>Import Character From File</v-card-title>
+                <v-card-text>
+                  <v-file-input accept=".json" v-model="importFile" />
+                  <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
+                    <span style="margin: 2px;">Import Character</span>
+                  </v-btn>
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+          </v-col>
+          <v-col cols="4" v-if="characterSelected">
             <v-dialog v-model="deleteDialog" hide-overlay>
               <template v-slot:activator="{}">
-                <v-btn @click="deleteDialog = true" class="button--template button--topbar"> Delete {{ selectedCharacter.Name }} </v-btn>
+                <v-btn @click="deleteDialog = true" class="button--template button--topbar">
+                  <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
+                </v-btn>
               </template>
               <v-card>
                 <v-card-title>Are You Sure?</v-card-title>
@@ -23,29 +42,21 @@
                   Are you sure you want to delete this character? This cannot be undone! <br /><br />
                   <v-flex>
                     <div class="text-xs-center">
-                      <v-btn color="button--template" @click="deleteCharacter()"> Delete {{ selectedCharacter.Name }} </v-btn>
+                      <v-btn color="button--template" @click="deleteCharacter()">
+                        <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
+                      </v-btn>
                     </div>
                   </v-flex>
                 </v-card-text>
               </v-card>
             </v-dialog>
+          </v-col>
+          <v-col cols="4" v-if="characterSelected">
             <v-btn @click="exportCharacter" class="button--template button--topbar">
-              <span>Export {{ selectedCharacter.Name }}</span>
+              <span class="btn-content">Export {{ selectedCharacter.Name }}</span>
             </v-btn>
-          </span>
-          <v-dialog v-model="characterImportDialog" hide-overlay>
-            <template v-slot:activator="{}">
-              <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> Import Character </v-btn>
-            </template>
-            <v-card>
-              <v-card-title>Import Character From File</v-card-title>
-              <v-card-text>
-                <v-file-input accept=".json" v-model="importFile"></v-file-input>
-                <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)"> Import Character </v-btn>
-              </v-card-text>
-            </v-card>
-          </v-dialog>
-        </span>
+          </v-col>
+        </v-row>
         <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter"
       /></v-col> </v-row
   ></span>

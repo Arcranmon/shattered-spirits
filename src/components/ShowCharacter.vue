@@ -13,56 +13,96 @@
           <v-row style="margin: 1em;">
             <v-col :cols="columnNumbers">
               <v-row no-gutters>
+                <v-col cols="8"><h4>Combat Statistics</h4></v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="2" /><v-col cols="3"><display-tooltip-text string="**_Guard_:**" /></v-col
+                ><v-col cols="3">{{ character.EquippedArmor.Guard }}</v-col></v-row
+              >
+              <v-row no-gutters>
                 <v-col cols="2" />
                 <v-col cols="3"><display-tooltip-text string="**_Vigor_:**" /></v-col>
                 <v-col cols="2">{{ character.Vigor }}</v-col>
                 <v-col cols="3"
+                  ><v-btn inline x-small @click=";(character.Vigor -= 1), $emit('changed')" color="red">-</v-btn
                   ><v-btn inline x-small @click=";(character.Vigor += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Vigor -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
+                </v-col>
               </v-row>
               <v-row no-gutters>
                 <v-col cols="2" />
                 <v-col cols="3"><display-tooltip-text string="**_Health_:**" /></v-col>
                 <v-col cols="2">{{ character.CurrentHealth }} / {{ character.MaxHealth }}</v-col>
                 <v-col cols="3"
+                  ><v-btn inline x-small @click=";(character.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn
                   ><v-btn inline x-small @click=";(character.CurrentHealth += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
+                </v-col>
               </v-row>
               <v-row no-gutters>
                 <v-col cols="2" />
                 <v-col cols="3"><display-tooltip-text string="**_Stamina_:**" /></v-col>
                 <v-col cols="2">{{ character.Stamina }} / {{ character.MaxStamina }}</v-col>
                 <v-col cols="3"
+                  ><v-btn inline x-small @click=";(character.Stamina -= 1), $emit('changed')" color="red">-</v-btn
                   ><v-btn inline x-small @click=";(character.Stamina += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Stamina -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
+                </v-col>
               </v-row>
               <v-row no-gutters>
                 <v-col cols="2" />
                 <v-col cols="3"><display-tooltip-text string="**_Momentum_:**" /></v-col><v-col cols="2"> {{ character.Momentum }}</v-col>
                 <v-col cols="3"
+                  ><v-btn inline x-small @click=";(character.Momentum -= 1), $emit('changed')" color="red">-</v-btn
                   ><v-btn inline x-small @click=";(character.Momentum += 1), $emit('changed')" color="green">+</v-btn>
-                  <v-btn inline x-small @click=";(character.Momentum -= 1), $emit('changed')" color="red">-</v-btn></v-col
-                >
+                </v-col>
               </v-row>
-              <v-row justify="center">
-                <!-- TODO: Add Statuses? 
-                <v-btn @click="character.ApplyRefresh(), $emit('changed')" class="grey lighten-4 mx-2">Apply Refresh</v-btn>
-                <v-btn @click="character.ResetDefault(), $emit('changed')" class="grey lighten-4 mx-2">Set Default</v-btn>  >--></v-row
+              <v-row no-gutters>
+                <v-col cols="2" /><v-col cols="3"><display-tooltip-text string="**_AP_:**" /></v-col
+                ><v-col cols="2"> {{ character.AP }} / {{ character.MaxAP }}</v-col>
+                <v-col cols="3"
+                  ><v-btn inline x-small @click=";(character.AP -= 1), $emit('changed')" color="red">-</v-btn
+                  ><v-btn inline x-small @click=";(character.AP += 1), $emit('changed')" color="green">+</v-btn>
+                </v-col></v-row
+              >
+              <v-row no-gutters>
+                <v-col cols="2" /><v-col cols="3"><display-tooltip-text string="**_Manifest_ Available:**" /></v-col><v-col cols="2"></v-col
+                ><v-col cols="3"
+                  ><v-btn inline x-small @click="character.ToggleManifest(), $emit('changed')" :color="character.UsedManifest ? 'red' : 'green'">{{
+                    character.UsedManifest ? 'X' : '✔'
+                  }}</v-btn></v-col
+                ></v-row
+              >
+              <v-row no-gutters>
+                <v-col cols="8"><movement-card :movement="character.MoveChart" :on_sheet="true" style /></v-col>
+              </v-row> </v-col
+            ><v-col :cols="columnNumbers">
+              <v-row no-gutters>
+                <v-col cols="1"></v-col>
+                <v-col cols="6"><h4>Status Effects</h4></v-col>
+                <v-col cols="2"><status-window @status-selected="character.AddStatus($event), $emit('changed')" /></v-col>
+              </v-row>
+              <v-row no-gutters v-for="status_effect in character.StatusEffects">
+                <v-col cols="2" />
+                <v-col cols="3"
+                  ><img style="height: 1em; padding-right: 1em;" :src="require('@/assets/statuses/' + status_effect.status + '.svg')" />
+                  <display-tooltip-text :string="'**_' + status_effect.status + '_:**'" /></v-col
+                ><v-col cols="2">
+                  <span v-if="status_effect.stack < 777">{{ status_effect.stack }}</span></v-col
+                >
+                <v-col cols="3"
+                  ><v-btn inline x-small @click="character.RemoveStatus(status_effect.status), $emit('changed')" color="red">-</v-btn
+                  ><v-btn v-if="status_effect.stack < 777" inline x-small @click="character.AddStatus(status_effect.status), $emit('changed')" color="green"
+                    >+</v-btn
+                  >
+                </v-col></v-row
               ></v-col
             >
-            <v-col :cols="columnNumbers">
-              <display-tooltip-text :string="character.EquippedArmor.ArmorHeader" /><movement-card :movement="character.MoveChart" :on_sheet="true" /> </v-col
-            ><v-col :cols="12" style="margin-bottom: 1em;">
-              <h4>Stances</h4>
+            <v-col :cols="12" style="margin-bottom: 1em;">
+              <h3 style="text-align: center;">Stances</h3>
               <v-row
-                ><v-col :cols="6"> <stance-card :stance="character.CurrentSpiritStance" :on_sheet="true" style="width: 90%; margin: auto;" /></v-col
-                ><v-col :cols="6">
+                ><v-col :cols="columnNumbers"> <stance-card :stance="character.CurrentSpiritStance" :on_sheet="true" style="width: 90%; margin: auto;" /></v-col
+                ><v-col :cols="columnNumbers">
                   <stance-card :stance="character.CurrentMartialStance" :on_sheet="true" style="width: 90%; margin: auto;" /></v-col></v-row></v-col
           ></v-row>
-          <h4>Equipment</h4>
+          <h3 style="text-align: center;">Equipment</h3>
           <v-card>
             <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
               <v-tab>
@@ -72,7 +112,7 @@
                 <h3>Armor</h3>
               </v-tab>
               <v-tab>
-                <h3>Gear</h3>
+                <h3>Accessories</h3>
               </v-tab>
               <v-tab>
                 <h3>Consumables</h3>
@@ -98,7 +138,7 @@
               </v-tab-item>
             </v-tabs-items>
           </v-card>
-          <h4>Abilities</h4>
+          <h3 style="text-align: center;">Abilities</h3>
           <v-card>
             <v-tabs v-model="ability_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
               <v-tab><h3>Techniques</h3></v-tab><v-tab><h3>Actions</h3></v-tab> <v-tab><h3>Attacks</h3></v-tab><v-tab><h3>Stunts</h3></v-tab
@@ -162,43 +202,68 @@
         <v-row style="margin: 1em;">
           <v-col :cols="columnNumbers">
             <v-row no-gutters>
+              <v-col cols="8"><h4>Combat Statistics</h4></v-col></v-row
+            >
+            <v-row no-gutters>
+              <v-col cols="2" /><v-col cols="3"><display-tooltip-text string="**_Guard_:**" /></v-col
+              ><v-col cols="3">{{ character.Spirit.Form.Guard }}</v-col></v-row
+            >
+            <v-row no-gutters>
               <v-col cols="2" />
               <v-col cols="3"><display-tooltip-text string="**_Vigor_:**" /></v-col>
               <v-col cols="2">{{ character.Spirit.Vigor }}</v-col>
               <v-col cols="3"
+                ><v-btn inline x-small @click=";(character.Spirit.Vigor -= 1), $emit('changed')" color="red">-</v-btn
                 ><v-btn inline x-small @click=";(character.Spirit.Vigor += 1), $emit('changed')" color="green">+</v-btn>
-                <v-btn inline x-small @click=";(character.Spirit.Vigor -= 1), $emit('changed')" color="red">-</v-btn></v-col
-              >
+              </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="2" />
               <v-col cols="3"><display-tooltip-text string="**_Health_:**" /></v-col>
               <v-col cols="2"> {{ character.Spirit.CurrentHealth }} / {{ character.Spirit.Form.Health }}</v-col>
               <v-col cols="3"
+                ><v-btn inline x-small @click=";(character.Spirit.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn
                 ><v-btn inline x-small @click=";(character.Spirit.CurrentHealth += 1), $emit('changed')" color="green">+</v-btn>
-                <v-btn inline x-small @click=";(character.Spirit.CurrentHealth -= 1), $emit('changed')" color="red">-</v-btn></v-col
-              >
+              </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="2" />
               <v-col cols="3"><display-tooltip-text string="**_Stamina_:**" /></v-col>
               <v-col cols="2">{{ character.Spirit.Stamina }} / {{ character.Spirit.MaxStamina }}</v-col>
-              <v-col cols="3"
+              <v-col cols="3">
+                <v-btn inline x-small @click=";(character.Spirit.Stamina -= 1), $emit('changed')" color="red">-</v-btn
                 ><v-btn inline x-small @click=";(character.Spirit.Stamina += 1), $emit('changed')" color="green">+</v-btn>
-                <v-btn inline x-small @click=";(character.Spirit.Stamina -= 1), $emit('changed')" color="red">-</v-btn></v-col
-              >
+              </v-col>
             </v-row>
-            <v-row justify="center">
-              <!-- TODO: Add Statuses? 
-              <v-btn @click="character.Spirit.ApplyRefresh(), $emit('changed')" class="grey lighten-4 mx-2">Apply Refresh</v-btn>
-              <v-btn @click="character.Spirit.ResetDefault(), $emit('changed')" class="grey lighten-4 mx-2">Set Default</v-btn>--></v-row
-            ></v-col
+            <v-row no-gutters>
+              <v-col cols="8"><movement-card :movement="$store.getters.getMovement(character.Spirit.Form.Movement)" :on_sheet="true" /></v-col>
+            </v-row> </v-col
           ><v-col :cols="columnNumbers">
-            <display-tooltip-text :string="character.Spirit.Form.ArmorHeader" /><movement-card
-              :movement="$store.getters.getMovement(character.Spirit.Form.Movement)"
-              :on_sheet="true"
-            /> </v-col
-        ></v-row>
+            <v-row no-gutters>
+              <v-col cols="1"></v-col>
+              <v-col cols="6"><h4>Status Effects</h4></v-col>
+              <v-col cols="2"><status-window @status-selected="character.Spirit.AddStatus($event), $emit('changed')" /></v-col>
+            </v-row>
+            <v-row no-gutters v-for="status_effect in character.Spirit.StatusEffects">
+              <v-col cols="2" />
+              <v-col cols="3"><display-tooltip-text :string="'**_' + status_effect.status + '_:**'" /></v-col
+              ><v-col cols="2">
+                <span v-if="status_effect.stack < 777">{{ status_effect.stack }}</span></v-col
+              >
+              <v-col cols="3"
+                ><v-btn inline x-small @click="character.Spirit.RemoveStatus(status_effect.status), $emit('changed')" color="red">-</v-btn
+                ><v-btn
+                  v-if="status_effect.stack < 777"
+                  inline
+                  x-small
+                  @click="character.Spirit.AddStatus(status_effect.status), $emit('changed')"
+                  color="green"
+                  >+</v-btn
+                >
+              </v-col></v-row
+            ></v-col
+          ></v-row
+        >
         <h4>Traits and Weapons</h4>
         <v-card>
           <v-tabs v-model="spirit_trait_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
@@ -323,10 +388,11 @@ import Vue from 'vue'
 import { Character } from '@/class'
 import MovementCard from '@/components/cards/MovementCard.vue'
 import StanceCard from '@/components/cards/StanceCard.vue'
+import StatusWindow from '@/components/StatusWindow.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 export default Vue.extend({
   name: 'display-character',
-  components: { MovementCard, ShowCards, StanceCard },
+  components: { MovementCard, ShowCards, StanceCard, StatusWindow },
   props: {
     character: {
       type: Character,

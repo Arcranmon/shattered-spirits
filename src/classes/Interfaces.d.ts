@@ -27,6 +27,7 @@ declare interface ICharDisciplineData {
 }
 
 declare interface ICharacterData {
+  ap: number
   current_spirit_stance: string
   current_martial_stance: string
   current_health: number
@@ -34,12 +35,14 @@ declare interface ICharacterData {
   gear: string[]
   disciplines: ICharDisciplineData[]
   arts: ICharDisciplineData[]
+  statuses: IStatusEffect[]
   max_health: number
   momentum: number
   name: string
   player_character: Boolean
   spirit: ISpiritData
   stamina: number
+  used_manifest: boolean
   weapons: string[]
   vigor: number
 }
@@ -161,6 +164,7 @@ declare interface ISpiritData {
   subtype: string
   weapons: Array<string>
   stamina: number
+  statuses: IStatusEffect[]
   vigor: number
   current_health: number
 }
@@ -190,6 +194,11 @@ declare interface IStanceData extends IBaseData {
   maneuver?: string
   stamina?: number
   traits: string[]
+}
+
+declare interface IStatusEffect {
+  status: string
+  stack: number
 }
 
 declare interface IStatusData extends IBaseData {

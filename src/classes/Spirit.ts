@@ -11,6 +11,7 @@ class Spirit {
   private vigor_: number
   private stamina_: number
   private current_health_: number
+  private statuses_: Array<IStatusEffect>
 
   private name_: string
   private form_: SpiritForm
@@ -53,6 +54,34 @@ class Spirit {
 
   get MaxStamina() {
     return 2
+  }
+
+  public AddStatus(status: string) {
+    var idx = this.statuses_.findIndex((e) => e.status == status)
+    if (idx == -1) {
+      this.statuses_.push({ status: status, stack: 1 })
+      idx = this.statuses_.length - 1
+    } else this.statuses_[idx].stack += 1
+
+    var status_info = store.getters.getStatus(status)
+
+    if (status_info.Type == 'Status Effect') this.statuses_[idx].stack = 777
+
+    this.statuses_.sort((a, b) => a.status.localeCompare(b.status))
+  }
+
+  public RemoveStatus(status: string) {
+    var idx = this.statuses_.findIndex((e) => e.status == status)
+    if (idx == -1) return
+    else if (this.statuses_[idx].stack == 777) this.statuses_.splice(idx, 1)
+    else {
+      this.statuses_[idx].stack -= 1
+      if (this.statuses_[idx].stack == 0) this.statuses_.splice(idx, 1)
+    }
+  }
+
+  public get StatusEffects() {
+    return this.statuses_
   }
 
   get Form() {
@@ -215,6 +244,7 @@ class Spirit {
       weapons: spirit.weapons_,
       current_health: spirit.current_health_,
       stamina: spirit.stamina_,
+      statuses: spirit.statuses_,
       vigor: spirit.vigor_,
     }
   }
@@ -232,6 +262,7 @@ class Spirit {
     this.weapons_ = data.weapons || []
     this.current_health_ = data.current_health || 0
     this.stamina_ = data.stamina || 0
+    this.statuses_ = data.statuses || []
     this.vigor_ = data.vigor || 0
   }
 }

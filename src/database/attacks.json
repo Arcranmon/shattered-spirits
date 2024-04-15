@@ -232,12 +232,17 @@
     "class": "Explosion",
     "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
     "type": "Light",
-    "speed": "3+ [_Rigid_]",
+    "speed": "4+ [_Rigid_]",
     "cost": "1 _Momentum_",
-    "target": "A _Blazing_ space.",
-    "effect": "Remove the _Blazing_ space, then deal 1 _Fire_ Damage and inflict _Alight_ 1 in a _Blast_ 1 centered on that space.",
+    "area": "_Cone_ 1",
+    "effect": "Deal 1 _Fire_ Damage and inflict _Alight_ 1 in the _Area_.",
+    "special": "You may instead choose a _Blazing_ space within Range. If you do, _Area_ is instead a _Blast_ 1, centered on the _Blazing_ space. After resolving the Attack, remove the _Blazing_ space.",
     "range": [{ "category": "Ranged", "value": 5 }],
-    "rank": "Minor Attack"
+    "rank": "Minor Attack",
+    "analysis_notes": {
+      "expected_targets": 1.5,
+      "bonus_damage": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5]
+    }
   },
   {
     "name": "Firecracker",
@@ -895,6 +900,17 @@
     "cost": "1 _Momentum_",
     "effect": "Make an _Attack_ using an _Opportune_  Weapon that was _Wielded_ this _Turn_. Treat its _Speed_ as 1 lower, and add _Vulnerable_ 1, _Slowed_ (2 _Stamina_).",
     "rank": "Major Attack"
+  },
+  {
+    "name": "Swift Manifestation",
+    "class": "Spirit",
+    "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
+    "keywords": ["Manifest"],
+    "rank": "Minor Attack",
+    "range": [{ "category": "Spirit _Reposition_ distance." }],
+    "cost": "None",
+    "effect": "Choose one:\n* A space adjacent to you (you must not be _Suppressed_).\n* An unoccupied _Minor Source_ within Range.\n* An unoccupied space in/adjacent to a _Major Source_ within Range.\n\nImmediately use one of your spirit's _Major Attacks_, originating from that space. After resolving the Attack you may _Summon_ you _Spirit_ in the Target space.",
+    "special": "Either gain a +1 _Bonus_ on this Attack or reduce the cost of the Attack by 1."
   },
   {
     "name": "Swipe",

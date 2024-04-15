@@ -1,7 +1,9 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="card--underline-top Attack">
+    <div class="card--underline-top" v-bind:class="color">
       <div class="card--header">
+        <img v-if="isWeapon" class="image--header-left" :src="attack.Icon" />
+        <img v-if="isWeapon" class="image--header-right" :src="attack.Icon" />
         <h4 style="display: inline; font-style: normal;">{{ attack.Name }}</h4>
         <div class="card--keywords">
           <b>
@@ -58,13 +60,24 @@ export default Vue.extend({
     isWeapon: function () {
       return this.attack.hasOwnProperty('parry_')
     },
+    color: function () {
+      if (this.isWeapon) return 'Weapon'
+      if (this.attack.Rank == '_Minor Attack_') return 'MinorAttack'
+      if (this.attack.Rank == '_Major Attack_') return 'MajorAttack'
+    },
   },
   components: { ChartTable },
 })
 </script>
 
 <style scoped lang="scss">
-.Attack {
+.MinorAttack {
+  background-color: rgb(226, 119, 43);
+}
+.MajorAttack {
   background-color: #db5656;
+}
+.Weapon {
+  background-color: #685e5e;
 }
 </style>

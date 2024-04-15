@@ -6,8 +6,8 @@ var kSpiritDisciplineCategories = ['Earth']
 var kBaseHealth = 25
 
 var kBasicTechniques = ['Skirmish', 'Combination Strike', 'Smash']
-var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Unarmed Attack', 'Grapple']
-var kBasicActions = ['Hide', 'Fight', 'Swift Manifestation', 'Shift', 'Raise Guard', 'Rally', 'Focus']
+var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Swift Manifestation', 'Unarmed Attack', 'Grapple']
+var kBasicActions = ['Hide', 'Fight', 'Shift', 'Raise Guard', 'Rally', 'Focus']
 var kBasicStunts = ['Disengage', 'Draw/Stow', 'Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
 var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge', 'Spiritual Interdiction', 'Spirit Summon']
 var kBasicGambits = ['Aim', 'Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Critical Hit', 'Mark']
@@ -18,6 +18,9 @@ class Character {
   private max_health_: number
   private vigor_: number
   private stamina_: number
+  private used_manifest_: boolean
+  private ap_: number
+  private statuses_: Array<IStatusEffect>
 
   // Level Up Qualities
   private current_spirit_stance_: Stance
@@ -51,6 +54,8 @@ class Character {
     this.disciplines_ = []
     this.EquippedArmor = store.getters.getArmor('Basic Clothes')
     this.stamina_ = 0
+    this.ap_ = 2
+    this.used_manifest_ = false
     this.spirit_ = new Spirit()
     this.current_health_ = kBaseHealth
     this.max_health_ = kBaseHealth
@@ -59,14 +64,66 @@ class Character {
     this.player_character_ = true
     this.element_ = ''
     this.weapons_ = []
+    this.statuses_ = []
   }
 
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================
+
+  get AP() {
+    return this.ap_
+  }
+
+  set AP(ap: number) {
+    if (ap > this.MaxAP) return
+    this.ap_ = ap
+  }
+
+  public AddStatus(status: string) {
+    var idx = this.statuses_.findIndex((e) => e.status == status)
+    if (idx == -1) {
+      this.statuses_.push({ status: status, stack: 1 })
+      idx = this.statuses_.length - 1
+    } else this.statuses_[idx].stack += 1
+
+    var status_info = store.getters.getStatus(status)
+
+    if (status_info.Type == 'Status Effect') this.statuses_[idx].stack = 777
+
+    this.statuses_.sort((a, b) => a.status.localeCompare(b.status))
+  }
+
+  public RemoveStatus(status: string) {
+    var idx = this.statuses_.findIndex((e) => e.status == status)
+    if (idx == -1) return
+    else if (this.statuses_[idx].stack == 777) this.statuses_.splice(idx, 1)
+    else {
+      this.statuses_[idx].stack -= 1
+      if (this.statuses_[idx].stack == 0) this.statuses_.splice(idx, 1)
+    }
+  }
+
+  public get StatusEffects() {
+    return this.statuses_
+  }
+
+  get MaxAP() {
+    return 2
+  }
+
+  get UsedManifest() {
+    return this.used_manifest_
+  }
+
+  public ToggleManifest() {
+    this.used_manifest_ = !this.used_manifest_
+  }
+
   get Vigor() {
     return this.vigor_
   }
+
   set Vigor(vigor: number) {
     this.vigor_ = vigor
   }
@@ -76,6 +133,7 @@ class Character {
   }
 
   set Stamina(stamina: number) {
+    if (stamina > this.MaxStamina) return
     this.stamina_ = stamina
   }
 
@@ -463,6 +521,7 @@ class Character {
   public static Serialize(character: Character): ICharacterData {
     return {
       //Character Save Data
+      ap: character.ap_,
       current_spirit_stance: character.current_spirit_stance_ ? character.current_spirit_stance_.Name : '',
       current_martial_stance: character.current_martial_stance_ ? character.current_martial_stance_.Name : '',
       arts: character.arts_,
@@ -476,6 +535,8 @@ class Character {
       name: character.name_,
       player_character: character.player_character_,
       spirit: Spirit.Serialize(character.spirit_),
+      statuses: character.statuses_,
+      used_manifest: character.used_manifest_,
       weapons: character.weapons_,
       vigor: character.vigor_,
     }
@@ -498,9 +559,11 @@ class Character {
     this.name_ = data.name || ''
     this.player_character_ = data.player_character || true
     this.stamina_ = data.stamina || 0
+    this.statuses_ = data.statuses || []
     this.spirit_ = Spirit.Deserialize(data.spirit)
     this.arts_ = data.arts || []
     this.disciplines_ = data.disciplines || []
+    this.used_manifest_ = data.used_manifest || false
     this.weapons_ = data.weapons || []
     this.vigor_ = data.vigor || 0
   }

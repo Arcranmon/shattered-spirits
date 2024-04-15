@@ -18,7 +18,7 @@ class Armor extends Base {
   get Category() {
     return this.category_
   }
-  get Defenses() {
+  get Guard() {
     return this.guard_
   }
   get Durability() {

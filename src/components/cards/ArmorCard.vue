@@ -1,6 +1,6 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="card--color-header">
+    <div class="Armor">
       <div class="card--header card--underline-top">
         <h4 style="display: inline; font-style: normal;">{{ armor.Name }}</h4>
         <b>

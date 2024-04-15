@@ -18,17 +18,13 @@
         <v-col :cols="8"><movement-card :movement="character.MoveChart" /></v-col
       ></v-row>
     </div>
-    <v-stepper alt-labels class="no-transition">
-      <v-stepper-header class="builder--header">
-        <v-stepper-step editable step="1">
-          <center>Armor Selection</center>
-        </v-stepper-step>
-        <v-stepper-step editable step="2">
-          <center>Weapon Selection</center>
-        </v-stepper-step></v-stepper-header
-      >
-      <v-stepper-items class="builder--body">
-        <v-stepper-content step="1">
+    <div class="keyword--box">
+      <v-tabs fixed-tabs v-model="equipmentTab" color="black">
+        <v-tab> <h3>Armor</h3></v-tab>
+        <v-tab> <h3>Weapons</h3></v-tab>
+      </v-tabs>
+      <v-tabs-items v-model="equipmentTab">
+        <v-tab-item :eager="true" class="builder--body" eager>
           <div class="button-separator">
             <div>
               <h3>Choosing Your Armor</h3>
@@ -53,8 +49,8 @@
                   >
                   <armor-card :armor="armor" /></div></v-col
             ></v-row></div
-        ></v-stepper-content>
-        <v-stepper-content step="2">
+        ></v-tab-item>
+        <v-tab-item :eager="true" class="builder--body" eager>
           <div>
             <h3>Choosing Your Weapons</h3>
             <display-tooltip-text :string="weaponText" />
@@ -98,8 +94,8 @@
               <v-row style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%;" justify="center">
                 <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%;" :key="selectedWeapon.Name" /></v-row
             ></v-col> </v-row
-        ></v-stepper-content>
-      </v-stepper-items> </v-stepper
+        ></v-tab-item>
+      </v-tabs-items></div
   ></span>
 </template>
 <script>
@@ -125,6 +121,7 @@ export default Vue.extend({
   },
   data: () => {
     return {
+      equipmentTab: '1',
       selectedWeapon: null,
     }
   },

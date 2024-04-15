@@ -60,6 +60,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .stance--color-header {
-  background-color: $color--grey-dark;
+  background-color: thistle;
 }
 </style>
