@@ -1,18 +1,12 @@
 import { store } from '@/store'
-import { SpiritForm, Subtype } from '@/class'
+import { Combatant, SpiritForm, Subtype } from '@/class'
 
 var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack']
 var kBasicActions = ['Hide', 'Fight', 'Shift', 'Raise Guard', 'Rally', 'Focus']
 var kBasicStunts = ['Disengage', 'Draw/Stow', 'Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
 var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge']
 var kBasicGambits = ['Aim', 'Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Critical Hit', 'Mark']
-class Spirit {
-  // Combat Qualities
-  private vigor_: number
-  private stamina_: number
-  private current_health_: number
-  private statuses_: Array<IStatusEffect>
-
+class Spirit extends Combatant {
   private name_: string
   private form_: SpiritForm
   private subtype_: Subtype
@@ -23,6 +17,7 @@ class Spirit {
   private versatile_weapons_: number
 
   public constructor() {
+    super()
     this.light_weapons_ = 0
     this.heavy_weapons_ = 0
     this.versatile_weapons_ = 0
@@ -31,7 +26,34 @@ class Spirit {
     this.form_ = undefined
     this.weapons_ = []
     this.name_ = ''
-    this.stamina_ = 0
+  }
+
+  // ==========================================================
+  // COMBATANT OVERRIDES
+  // ==========================================================
+  override get MaxStamina() {
+    return 2
+  }
+
+  override get Guard() {
+    return this.Form.Guard
+  }
+
+  override get Size() {
+    return this.Form.Size
+  }
+
+  override get MoveChart() {
+    return store.getters.getMovement(this.Form.Movement)
+  }
+
+  override get Traits() {
+    var traits = [...this.form_.Traits, ...this.subtype_.Traits]
+    return traits
+  }
+
+  override get Weapons() {
+    return store.getters.getWeaponsFromList(this.weapons_)
   }
 
   // ==========================================================
@@ -44,60 +66,28 @@ class Spirit {
     this.name_ = name
   }
 
-  get Stamina() {
-    return this.stamina_
-  }
-
-  set Stamina(stamina: number) {
-    this.stamina_ = stamina
-  }
-
-  get MaxStamina() {
-    return 2
-  }
-
-  public AddStatus(status: string) {
-    var idx = this.statuses_.findIndex((e) => e.status == status)
-    if (idx == -1) {
-      this.statuses_.push({ status: status, stack: 1 })
-      idx = this.statuses_.length - 1
-    } else this.statuses_[idx].stack += 1
-
-    var status_info = store.getters.getStatus(status)
-
-    if (status_info.Type == 'Status Effect') this.statuses_[idx].stack = 777
-
-    this.statuses_.sort((a, b) => a.status.localeCompare(b.status))
-  }
-
-  public RemoveStatus(status: string) {
-    var idx = this.statuses_.findIndex((e) => e.status == status)
-    if (idx == -1) return
-    else if (this.statuses_[idx].stack == 777) this.statuses_.splice(idx, 1)
-    else {
-      this.statuses_[idx].stack -= 1
-      if (this.statuses_[idx].stack == 0) this.statuses_.splice(idx, 1)
-    }
-  }
-
-  public get StatusEffects() {
-    return this.statuses_
+  override get MaxHealth() {
+    return this.Form.Health
   }
 
   get Form() {
     return this.form_
   }
+
   set Form(form) {
     this.ClearWeapons()
     this.form_ = form
-    this.current_health_ = this.Form.Health
+    this.Health = this.Form.Health
   }
+
   get HasSubtype() {
     return this.subtype_
   }
+
   get Subtype() {
     return this.subtype_
   }
+
   set Subtype(input) {
     this.subtype_ = input
   }
@@ -116,10 +106,6 @@ class Spirit {
     if (weapon_stats.Type == 'Versatile') this.versatile_weapons_--
     if (weapon_stats.Type == 'Heavy') this.heavy_weapons_--
     this.weapons_.splice(idx, 1)
-  }
-
-  get Weapons() {
-    return this.weapons_
   }
 
   get PrettyWeaponOptions() {
@@ -145,28 +131,6 @@ class Spirit {
   }
   get Gambits() {
     return store.getters.getManeuversFromList(kBasicGambits)
-  }
-  get AllTraits() {
-    var traits = [...this.form_.Traits, ...this.subtype_.Traits]
-    return traits
-  }
-  get Vigor() {
-    return this.vigor_
-  }
-  set Vigor(vigor: number) {
-    this.vigor_ = vigor
-  }
-  get CurrentHealth() {
-    return this.current_health_
-  }
-  set CurrentHealth(health: number) {
-    this.current_health_ = health
-  }
-  public ApplyRefresh() {}
-
-  public ResetDefault() {
-    this.vigor_ = 0
-    this.current_health_ = this.form_.Health
   }
 
   // ==========================================================
@@ -237,15 +201,11 @@ class Spirit {
   // ==========================================================
   public static Serialize(spirit: Spirit): ISpiritData {
     return {
-      //Character Save Data
+      ...super.Serialize(spirit),
       name: spirit.name_,
       spirit_form: spirit.form_.Name,
       subtype: spirit.subtype_.Name,
       weapons: spirit.weapons_,
-      current_health: spirit.current_health_,
-      stamina: spirit.stamina_,
-      statuses: spirit.statuses_,
-      vigor: spirit.vigor_,
     }
   }
 
@@ -260,10 +220,7 @@ class Spirit {
     this.subtype_ = store.getters.getSubtype(data.subtype)
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
-    this.current_health_ = data.current_health || 0
-    this.stamina_ = data.stamina || 0
-    this.statuses_ = data.statuses || []
-    this.vigor_ = data.vigor || 0
+    this.setCombatantData(data)
   }
 }
 export default Spirit

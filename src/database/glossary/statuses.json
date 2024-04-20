@@ -166,6 +166,15 @@
     "type": "Status Effect"
   },
   {
+    "name": "Poisoned",
+    "desc": "An affliction caused by toxins ravaging you from the inside out.",
+    "effect": "While a creature has Poisoned they take _True_ Damage at the end of each _Phase_ equal to  their Poisoned, then reduces their Poisoned value by 1. Additionally, while Poisoned, a creature takes a -1 _Penalty_ on all Attacks.",
+    "special": "A creature may not gain _Health_/_Vigor_ while they have Poisoned. Instead, any _Health_/_Vigor_ granted removes Poisoned at a 1 to 1 rate. If multiple effects block gaining _Vigor_/_Health_ the creature may remove them in any order.",
+    "negate": "A creature may expend 1 _Stamina_ to negate 1 Poisoned.",
+    "remove": "Poisoned is only removed by effects that explicitly remove it.",
+    "type": "Affliction"
+  },
+  {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
     "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage unless the Attacker is at a higher _Elevation_.",
@@ -246,7 +255,7 @@
   {
     "name": "Soaked",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Lightning_), _Resilience_ 1 (_Alight_), _Susceptible_ (_Frigid_, _Shocked_).",
+    "effect": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Lightning_), _Warded_ 1 (_Alight_), _Susceptible_ (_Frigid_, _Shocked_).",
     "reacts": [
       "<ins>_Alight_:</ins> If a Soaked creature would gain _Alight_, instead reduce their Soaked value by an equivalent amount.",
       "<ins>_Cold_:</ins> If a Soaked creature takes _Cold_ Damage reduce their Soaked value by 1 and inflict _Frigid_ 1.",
@@ -270,8 +279,8 @@
   {
     "name": "Studied",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "When you inflict Studied on a creature learn their exact current Health as well as their current and maximum _Stamina_.",
-    "remove": "Once per _Turn_, a creature may reduce a hostile creature's Studied by 1 to gain one of the following effects:\n* Reduce the Cost of an Ability or Boost targeting only that creature by 1.\n* After being Attacked or suffering an effect, gain 1 _Temporary_ _Stamina_ that may only be used to Negate.",
+    "effect": "When you inflict Studied on a creature learn their exact current Health, their current and maximum _Stamina_, and any _Resistances_/_Weaknesses_/_Wards_/_Susceptibilities_.",
+    "remove": "Once per _Turn_, a creature may reduce a hostile creature's Studied by X to gain one of the following effects:\n* Reduce the Cost of an effect targeting only that creature by X.\n* After being Attacked or suffering an effect, gain X _Temporary_ _Stamina_ that may only be used to Negate or reduce the Cost of a _Defensive_ _Reaction_ by X.",
     "type": "Affliction"
   },
   {
@@ -289,7 +298,7 @@
   {
     "name": "Tough",
     "desc": "A creature of strong footing and stronger constitution.",
-    "effect": "A creature with Tough may expend it at any time for one of the following benefits:\n* A creature may expend Tough to treat all _Stamina_ spent in response to an _Endurable_ effect or to Negate _Forced Movement_, _Hobbled_, _Restrained_, _Blinded_, or _Bleeding_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Hobbled_, _Restrained_, _Blinded_, or _Bleeding_.\n* Gain 4 _Vigor_.",
+    "effect": "A creature with Tough may expend it at any time for one of the following benefits:\n* A creature may expend Tough to treat all _Stamina_ spent in response to an _Endurable_ effect or to Negate _Forced Movement_, _Hobbled_, _Restrained_, _Blinded_, _Bleeding_, or _Poisoned_ as twice that value.\n* Gain 2 _Temporary_ _Stamina_ and immediately _Recover_, but the creature may only remove _Hobbled_, _Restrained_, or _Blinded_.\n* Gain 4 _Vigor_.",
     "special": "If a creature with Tough would gain Tough, they instead regain 1 _Stamina_.",
     "type": "Status Effect"
   },

@@ -1,6 +1,6 @@
 import Weapons from '@/database/items/weapons.json'
 import Armors from '@/database/items/armor.json'
-import Gears from '@/database/items/gear.json'
+import Accessories from '@/database/items/accessories.json'
 import Disciplines from '@/database/disciplines.json'
 import Arts from '@/database/arts.json'
 import Techniques from '@/database/techniques.json'
@@ -26,7 +26,23 @@ import Maneuvers from '@/database/maneuvers.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Armor, Attack, Discipline, Gear, Maneuver, Movement, Npc, Obstacle, SpiritForm, Subtype, Stance, Status, Technique, Terrain, Weapon } from '@/class'
+import {
+  Armor,
+  Attack,
+  Discipline,
+  Accessory,
+  Maneuver,
+  Movement,
+  Npc,
+  Obstacle,
+  SpiritForm,
+  Subtype,
+  Stance,
+  Status,
+  Technique,
+  Terrain,
+  Weapon,
+} from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -370,30 +386,30 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // OBSTACLE TOOLS
   // ==========================================================
-  get getGears(): any {
+  get getAccessories(): any {
     return () => {
-      return Gears.map((x) => Gear.Deserialize(<IGearData>(<unknown>x)))
+      return Accessories.map((x) => Accessory.Deserialize(<IAccessoryData>(<unknown>x)))
     }
   }
 
-  get getGear(): any {
+  get getAccessory(): any {
     return (inword: string) => {
-      var gear = Gears.find((x) => x.name.trim() === inword.trim())
-      if (gear == undefined) {
-        return new Gear(inword)
+      var accessory = Accessories.find((x) => x.name.trim() === inword.trim())
+      if (accessory == undefined) {
+        return new Accessory(inword)
       }
-      return Gear.Deserialize(<IGearData>(<unknown>gear))
+      return Accessory.Deserialize(<IAccessoryData>(<unknown>accessory))
     }
   }
 
-  get getGearFromList(): any {
-    return (gear_list: Array<any>) => {
-      if (gear_list == undefined) return []
-      let gears: Array<Gear> = []
-      for (var gear of gear_list) {
-        gears.push(this.getGear(gear))
+  get getAccessoryFromList(): any {
+    return (accessory_list: Array<any>) => {
+      if (accessory_list == undefined) return []
+      let Accessories: Array<Accessory> = []
+      for (var accessory of accessory_list) {
+        Accessories.push(this.getAccessory(accessory))
       }
-      return gears
+      return Accessories
     }
   }
 
@@ -547,7 +563,14 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getNpcs(): any {
     return () => {
-      return NPCs.map((x) => Npc.Deserialize(<INpcData>x))
+      return NPCs.map((x) => Npc.CreateFromBaseData(<INpcData>x))
+    }
+  }
+
+  get getNpc(): any {
+    return (inword: string) => {
+      var npc = NPCs.find((x) => x.name.trim() === inword.trim())
+      return Npc.CreateFromBaseData(<INpcData>npc)
     }
   }
 

@@ -1,147 +1,185 @@
 import { store } from '@/store'
 import Movement from './Movement'
+import Combatant from './Combatant'
 
-class Npc {
-  private actions_: Array<string>
-  private ap_: number
-  private attacks_: Array<string>
-  private class_: string
-  private desc_: string
-  private durability_: number
-  private health_: number
-  private gambits_: Array<string>
-  private guard_: number
-  private name_: string
-  private npc_type_: string
-  private role_: string
-  private size_: string
-  private spirit_type_: string
-  private stunts_: Array<string>
-  private movement_: string
-  private reactions_: Array<string>
-  private traits_: Array<string>
-  private stances_: Array<string>
-  private special_: string
-  private techniques_: Array<string>
-  private weapons_: Array<string>
+class Npc extends Combatant {
+  private npc_data_: INpcData
+  private tag_: number
+
+  // ==========================================================
+  // CONSTRUCTOR
+  // ==========================================================
+  public constructor() {
+    super()
+    this.tag_ = 0
+  }
+
+  // ==========================================================
+  // COMBATANT OVERRIDES
+  // ==========================================================
+  override get MomentumGain() {
+    return this.npc_data_.momentum_gain
+  }
+
+  override get MoveChart() {
+    return store.getters.getMovement(this.npc_data_.movement)
+  }
+
+  override get Guard() {
+    return this.npc_data_.guard
+  }
+
+  override get MaxAP() {
+    return this.npc_data_.ap
+  }
+
+  override get MaxHealth() {
+    return this.npc_data_.health
+  }
+
+  override get MaxStamina() {
+    return this.npc_data_.max_stamina
+  }
+
+  override get Size() {
+    return this.npc_data_.size
+  }
+
+  override get Traits() {
+    return this.npc_data_.traits
+  }
+
+  override get Weapons() {
+    return store.getters.getWeaponsFromList(this.npc_data_.weapons)
+  }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
   public get Actions() {
-    return this.actions_
+    return store.getters.getManeuversFromList(this.npc_data_.actions)
   }
-  public get Ap() {
-    return this.ap_
-  }
+
   public get Attacks() {
-    return this.attacks_
+    return store.getters.getAttacksFromList(this.npc_data_.attacks)
+  }
+
+  public get MinorAttacks() {
+    return this.Attacks.filter((x) => x.Rank == '_Minor Attack_')
+  }
+  public get MajorAttacks() {
+    return this.Attacks.filter((x) => x.Rank == '_Major Attack_')
   }
   public get Class() {
-    return this.class_
+    return this.npc_data_.class
   }
   public get Desc() {
-    return this.desc_
+    return this.npc_data_.desc
   }
-  public get Health() {
-    return this.health_
-  }
+
   public get HasGambits() {
-    return this.gambits_.length > 0
+    if (this.npc_data_.gambits === undefined) return false
+    return this.npc_data_.gambits.length > 0
   }
+
   public get Gambits() {
-    return this.gambits_
+    return store.getters.getManeuversFromList(this.npc_data_.gambits)
   }
-  public get Movement() {
-    return store.getters.getMovement(this.movement_)
+
+  public get MomentumGainText() {
+    return '**_Momentum_ Gain:** ' + this.npc_data_.momentum_gain
   }
   public get Name() {
-    return this.name_
+    return this.npc_data_.name
   }
   public get NpcType() {
-    return this.npc_type_
+    return this.npc_data_.npc_type
   }
   public get Reactions() {
-    return this.reactions_
+    return store.getters.getManeuversFromList(this.npc_data_.reactions)
   }
   public get Role() {
-    return this.role_
+    return this.npc_data_.role
   }
   public get SpiritType() {
-    if (this.spirit_type_ == 'None') return ''
-    return this.spirit_type_
+    if (this.npc_data_.subtype == 'None') return ''
+    return this.npc_data_.subtype
   }
+
   public get Stunts() {
-    return this.stunts_
+    return store.getters.getManeuversFromList(this.npc_data_.stunts)
   }
+
   public get SpecialText() {
-    return '**Special:** ' + this.special_
+    return this.npc_data_.special
   }
-  public get Traits() {
-    return this.traits_
+
+  public get Tag() {
+    return this.tag_
   }
+
+  public set Tag(tag) {
+    this.tag_ = tag
+  }
+
   public get Stances() {
-    return this.stances_
+    return this.npc_data_.stances
   }
+
   public get Techniques() {
-    return this.techniques_
+    return store.getters.getTechniquesFromList(this.npc_data_.techniques)
   }
+
   public get HasWeapons() {
-    return this.weapons_.length > 0
-  }
-  public get Weapons() {
-    return this.weapons_
+    return this.npc_data_.weapons.length > 0
   }
 
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
   public get ApText() {
-    return '**AP:** ' + this.ap_
+    return '**AP:** ' + this.npc_data_.ap
   }
   public get HealthText() {
-    return '**Health:** ' + this.health_
+    return '**Health:** ' + this.npc_data_.health
   }
   public get ArmorText() {
-    if (this.guard_ == 0) return '**Armor:** None'
-    return '**Armor:** ' + this.guard_ + ' Guard, ' + this.durability_ + ' Durability'
+    if (this.npc_data_.guard == 0) return '**Armor:** None'
+    return '**Armor:** ' + this.npc_data_.guard + ' Guard, ' + this.npc_data_.durability + ' Durability'
   }
   public get SizeText() {
-    return '**Size:** ' + this.size_
+    return '**Size:** ' + this.npc_data_.size
+  }
+  public get MaxStaminaText() {
+    return '**Max Stamina:** ' + this.npc_data_.max_stamina
   }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(data: INpcData): Npc {
+  public static Serialize(npc: Npc): INpcCombatData {
+    return {
+      ...super.Serialize(npc),
+      npc_data: npc.npc_data_.name,
+      tag: npc.tag_,
+    }
+  }
+
+  public static CreateFromBaseData(data: INpcData): Npc {
     const t = new Npc()
+    t.npc_data_ = data
+    return t
+  }
+
+  public static Deserialize(data: INpcCombatData): Npc {
+    const t = store.getters.getNpc(data.npc_data)
     t.setNpcData(data)
     return t
   }
 
-  public setNpcData(data: INpcData): void {
-    this.actions_ = data.actions || []
-    this.ap_ = data.ap || 0
-    this.attacks_ = data.attacks || []
-    this.class_ = data.class || ''
-    this.desc_ = data.desc || ''
-    this.durability_ = data.durability || 0
-    this.health_ = data.health || 0
-    this.gambits_ = data.gambits || []
-    this.guard_ = data.guard || 0
-    this.movement_ = data.movement || ''
-    this.name_ = data.name || ''
-    this.npc_type_ = data.npc_type || ''
-    this.reactions_ = data.reactions || []
-    this.role_ = data.role || ''
-    this.size_ = data.size || ''
-    this.special_ = data.special || ''
-    this.spirit_type_ = data.subtype || ''
-    this.stunts_ = data.stunts || []
-    this.traits_ = data.traits || []
-    this.stances_ = data.stances || []
-    this.techniques_ = data.techniques || []
-    this.weapons_ = data.weapons || []
+  public setNpcData(data: INpcCombatData): void {
+    this.setCombatantData(data)
+    this.tag_ = data.tag
   }
 }
 export default Npc

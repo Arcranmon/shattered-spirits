@@ -26,24 +26,27 @@ declare interface ICharDisciplineData {
   tier: number
 }
 
-declare interface ICharacterData {
-  ap: number
+declare interface ICharacterData extends ICombatantData {
   current_spirit_stance: string
   current_martial_stance: string
-  current_health: number
   equipped_armor: string
-  gear: string[]
+  element: string
+  accessories: string[]
   disciplines: ICharDisciplineData[]
   arts: ICharDisciplineData[]
-  statuses: IStatusEffect[]
-  max_health: number
-  momentum: number
   name: string
   player_character: Boolean
   spirit: ISpiritData
-  stamina: number
   used_manifest: boolean
   weapons: string[]
+}
+
+declare interface ICombatantData {
+  health: number
+  stamina: number
+  ap: number
+  momentum: number
+  statuses: IStatusEffect[]
   vigor: number
 }
 
@@ -80,7 +83,7 @@ declare interface IDisciplineData {
   type: string
 }
 
-declare interface IGearData extends IBaseData {
+declare interface IAccessoryData extends IBaseData {
   weight: number
 }
 
@@ -88,6 +91,11 @@ declare interface IGlossaryData {
   name: string
   effect?: string
   see?: string
+}
+
+declare interface INpcCombatData extends ICombatantData {
+  npc_data: string
+  tag: number
 }
 
 declare interface INpcData {
@@ -100,6 +108,7 @@ declare interface INpcData {
   health: number
   gambits?: Array<string>
   guard?: number
+  momentum_gain: number
   movement: string
   name: string
   npc_type: string
@@ -107,6 +116,7 @@ declare interface INpcData {
   role: string
   size: string
   special: string
+  max_stamina: number
   stances?: Array<string>
   subtype: string
   stunts: Array<string>
@@ -158,15 +168,17 @@ declare interface IRangeData {
   special: string
 }
 
-declare interface ISpiritData {
+declare interface IRespiteData {
+  momentum_gain: number
+  conditional_momentum: string
+  special: string
+}
+
+declare interface ISpiritData extends ICombatantData {
   name: string
   spirit_form: string
   subtype: string
   weapons: Array<string>
-  stamina: number
-  statuses: IStatusEffect[]
-  vigor: number
-  current_health: number
 }
 
 declare interface ISpiritFormData extends IBaseData {
@@ -190,7 +202,7 @@ declare interface ISubtypeData extends IBaseData {
 declare interface IStanceData extends IBaseData {
   category: string
   class: string
-  respite?: string
+  respite?: IRespiteData
   maneuver?: string
   stamina?: number
   traits: string[]

@@ -47,6 +47,9 @@ class SpiritForm extends Base {
   public get ArmorHeader() {
     return '**Armor:** ' + this.guard_ + ' Guard, ' + this.durability_ + ' Durability'
   }
+  public get Size() {
+    return this.size_
+  }
   public get SizeHeader() {
     return '**Size:** ' + this.size_
   }

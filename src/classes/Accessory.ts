@@ -1,7 +1,7 @@
 import { store } from '@/store'
 import { Base } from '@/class'
 
-class Gear extends Base {
+class Accessory extends Base {
   private weight_: number
 
   public constructor(name) {
@@ -25,15 +25,15 @@ class Gear extends Base {
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
-  public static Deserialize(data: IGearData): Gear {
-    const t = new Gear(data.name)
-    t.setGearData(data)
+  public static Deserialize(data: IAccessoryData): Accessory {
+    const t = new Accessory(data.name)
+    t.setAccessoryData(data)
     return t
   }
 
-  public setGearData(data: IGearData): void {
+  public setAccessoryData(data: IAccessoryData): void {
     this.setBaseData(data)
     this.weight_ = data.weight || 0
   }
 }
-export default Gear
+export default Accessory

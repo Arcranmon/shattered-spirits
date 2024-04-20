@@ -7,9 +7,28 @@
     "element": "Flame",
     "effect": "The first time a creature enters a Blazing space on a Turn or ends their Turn in it they take 2 _Fire_ Damage. If they are in the space at the end of the _Round_ they gain _Alight_ 1. If a creature occupies multiple Blazing spaces do not resolve this more than their Size times.",
     "interactions": [
+      "If a _Gusting_ space is placed here, create another Blazing space in the direction of the _Gusting_ space.",
       "If a _Watersource_ is placed in this space, reduce its value by 1 and make the space _Veiled_.",
       "If placed in a _Watersource_ space, reduce the _Watersource_'s value by 1 and make the space _Veiled_."
     ]
+  },
+  {
+    "name": "Brambles",
+    "desc": "Sharp, painful thorns that make movement through them difficult.",
+    "keywords": ["Flammable", "Rough", "_Soft Cover_ 1"],
+    "layer": "Field",
+    "element": "Wooden",
+    "effect": "Anytime a creature enters a Brambles space they immediately take 1 Stab Damage. If they end a _Leaping_/_Flying_ effect in this space, they instead take 3 Stab Damage.",
+    "destroy": "_Destroy_ this Terrain if it takes at least 3 _Slash_ Damage."
+  },
+  {
+    "name": "Brush",
+    "desc": "Tall plants that limit both sight and mobility.",
+    "keywords": ["Flammable", "Rough", "_Soft Cover_ 1"],
+    "layer": "Field",
+    "effect": "None.",
+    "element": "Wooden",
+    "destroy": "_Destroy_ this Terrain if it takes at least 3 _Slash_ Damage."
   },
   {
     "name": "Deep Water",
@@ -93,6 +112,7 @@
     "effect": "Gusting Terrain has a direction. Movement against this Terrain's direction costs an additional space, or 2 additional spaces if the creature is _Flying_/_Leaping_. Additionally, Ranged Attacks that pass through this space that do not match this space's direction take a -1 _Penalty_.",
     "special": "Creatures greater than Size 1 only suffer the Movement penalty if at least half the spaces they are entering are Gusting.",
     "interactions": [
+      "If a _Blazing_ space is placed here, create another _Blazing_ space in the direction of this space.",
       "Gusting Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
     ]
   },

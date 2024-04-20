@@ -167,7 +167,7 @@
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
     "trigger": "A _Ranged_ Attack goes through a _Gusting_ or _Twister_ space within Range.",
-    "effect": "Choose one:\n* If the Attack is made by you or an ally and goes through a _Gusting_ space, add [_Winding_]. The _Winding_ path must follow the direction of _Gusting_ spaces; upon leaving a _Gusting_ space draw a new Attack Line, the first space of which must match the direction of the _Gusting_ space.\n* If the Attack is made by you or an ally and goes through a _Twister_ space, draw a new _Attack Line_ using the remaining Range in any direction.",
+    "effect": "Choose one:\n* If the Attack is made by you or an ally and goes through a _Gusting_ space, add [_Winding_]. The _Winding_ path must follow the direction of _Gusting_ spaces; upon leaving a _Gusting_ space draw a new Attack Line using the remaining Range, the first space of which must match the direction of the _Gusting_ space.\n* If the Attack is made by you or an ally and goes through a _Twister_ space, draw a new _Attack Line_ using the remaining Range in any direction.",
     "boost": "[_Reeling_/2] _Momentum_: If the Attack is made by a hostile creature, impose _Disadvantage_. Gain _Reeling_ 1."
   },
   {
@@ -360,7 +360,7 @@
     "keywords": ["Repeatable"],
     "type": "Stunt",
     "cost": "1 _Momentum_, or 0 _Momentum_ if the Equipment has the _Quickdraw_ property.",
-    "effect": "Choose one:\n* Create an _Opening_. _Equip_/_Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_.\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ (if you have the appropriate _Open Hands_) an _Equipped_ piece of _Equipment_.",
+    "effect": "Choose one:\n* Create an _Opening_. _Equip_/_Wield_ (if you have the appropriate _Open Hands_) a single unattended, adjacent piece of _Equipment_, or place that piece of Equipment in a different adjacent space.\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ (if you have the appropriate _Open Hands_) an _Equipped_ piece of _Equipment_.",
     "special": "Before _Wielding_ an item, you may choose to stop _Wielding_ _Equipment_ of your choice, placing them unattended in your current or adjacent spaces.",
     "boost": "1 _Momentum_: Do not create an _Opening_."
   },
@@ -486,8 +486,8 @@
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
     "trigger": "You take _Fire_ Damage, gain _Alight_, or would take Damage or gain Status from _Fire_ _Terrain_/_Obstacle_, a Fire _Weapon_, or a _Blaze_ ability.",
-    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Resilience_ 1 (_Alight_) and _Resistance_ 1 (_Fire_) this _Turn_.",
-    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Resilience_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
+    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Alight_) and _Resistance_ 1 (_Fire_) this _Turn_.",
+    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
@@ -585,8 +585,8 @@
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
     "trigger": "You take _Cold_ Damage, gain _Frigid_, or would take Damage or gain Status from _Ice_ _Terrain_/_Obstacle_, an Ice _Weapon_, or a _Tundra_ ability.",
-    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Resilience_ 1 (_Frigid_) and _Resistance_ 1 (_Cold_) this _Turn_.",
-    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Resilience_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
+    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Frigid_) and _Resistance_ 1 (_Cold_) this _Turn_.",
+    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
@@ -653,8 +653,8 @@
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
     "trigger": "You would take Damage or gain Status from _Windy_ _Terrain_, a _Wind_ Material Attack, or a _Gale_ ability.",
-    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. This _Turn_ you may Negate 2 _Vulnerable_ with 1 _Stamina_ and may gain _Resilience_ 1 (_Forced Movement_).",
-    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Resilience_ by 1. You may use this _Boost_ up to twice.",
+    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. This _Turn_ you may Negate 2 _Vulnerable_ with 1 _Stamina_ and may gain _Warded_ 1 (_Forced Movement_).",
+    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ by 1. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
@@ -784,7 +784,7 @@
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
     "trigger": "You would take Damage or gain Status from _Earthen_ _Terrain_, an _Earthen Obstacle_, or a _Land_ ability.",
-    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Resilience_ 1 (_Prone_) this _Turn_.",
+    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Prone_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
@@ -940,7 +940,7 @@
     "type": "Reaction",
     "trigger": "A _Phase_ begins.",
     "cost": "1 _AP_",
-    "effect": "Become _Charging_ until the end of the _Phase_. While _Charging_, gain _Resistance_ 1 (_Lightning_) and _Resilience_ 1 (_Shocked_). In the _Phase_ after removing _Charging_, gain the following benefits:\n* All _Lightning_ Damage you do gains _Pierce_ 1.\n* All _Storm_ _Attacks_ treat their _Speed_ as 1 lower.\n* Gain 2 _Momentum_ that may only be spent as a part of _Storm_ _Attacks_/_Boosts_  and is lost at the end of the _Phase_.\n\nYou only gain this benefit if you lose _Charging_ at the end of _Phase_, not if you lose it due to _Break_ or other similar effects.",
+    "effect": "Become _Charging_ until the end of the _Phase_. While _Charging_, gain _Resistance_ 1 (_Lightning_) and _Warded_ 1 (_Shocked_). In the _Phase_ after removing _Charging_, gain the following benefits:\n* All _Lightning_ Damage you do gains _Pierce_ 1.\n* All _Storm_ _Attacks_ treat their _Speed_ as 1 lower.\n* Gain 2 _Momentum_ that may only be spent as a part of _Storm_ _Attacks_/_Boosts_  and is lost at the end of the _Phase_.\n\nYou only gain this benefit if you lose _Charging_ at the end of _Phase_, not if you lose it due to _Break_ or other similar effects.",
     "manifest": "Add [_Manifest_]. Cost is instead None. _Summon_ your spirit to an unoccupied space adjacent to a _Minor Source_ within their _Reposition_ distance. They immediately use the Effect and gain all benefits. Upon removing _Charging_ naturally, your Spirit may immediately use a _Storm_ _Minor Attack_.",
     "boost": "2 _Momentum_ (when using the _Manifest_ option): Instead, your Spirit may make a _Storm_ _Major Attack_."
   },
@@ -1378,8 +1378,8 @@
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
     "trigger": "You take _Lightning _ Damage, gain _Shocked_, or would take Damage or gain Status from _Electric_ _Terrain_/_Obstacle_, an Electric _Weapon_, or a _Storm_ ability.",
-    "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect. Gain _Resilience_ 1 (_Shocked_) and _Resistance_ 1 (_Lightning_) this _Turn_.",
-    "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_, and increase the _Resilience_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
+    "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect. Gain _Warded_ 1 (_Shocked_) and _Resistance_ 1 (_Lightning_) this _Turn_.",
+    "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
@@ -1538,9 +1538,9 @@
     "keywords": ["Defensive", "Efficient"],
     "cost": "[_Reeling_/2] _Momentum_",
     "trigger": "You would take Damage or gain Status from _Water_ _Terrain_, a _Water_ Material Attack, or a _Tide_ ability.",
-    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. This _Turn_ you may Negate _Soaked_ with 1 _Stamina_ and may gain _Resilience_ 1 (_Soaked_).",
+    "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. This _Turn_ you may Negate _Soaked_ with 1 _Stamina_ and may gain _Warded_ 1 (_Soaked_).",
     "special": "For every _Soaked_ you _Negate_ place a _Wet_ space adjacent to you.",
-    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Resilience_ by 1. You may use this _Boost_ up to twice.",
+    "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ by 1. You may use this _Boost_ up to twice.",
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
@@ -1580,5 +1580,34 @@
     "type": "Action",
     "cost": "1 _AP_",
     "effect": "Become _Guarding_. While _Guarding_ in this way, gain 1 _Temporary_ _Stamina_ each _Turn_ and ignore the normal _Penalty_ to Attacks. You may only make Attacks as a part of _Punish_ _Reactions_, but gain a +1 _Bonus_ to all such Attacks and reduce their cost by 1. You lose this effect if you _Move_."
+  },
+  {
+    "name": "Overgrow",
+    "class": "Growth",
+    "desc": "You cause overgrowth to take over the landscape.",
+    "type": "Stunt",
+    "cost": "1 _Momentum_",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "effect": "Place 3 _Brush_ spaces within Range. All _Brush_ spaces placed by this Manuever must be contiguous.",
+    "boost": "1 _Momentum_: Create an additional 2 _Brush_ spaces. You may use this Boost up to 3 times."
+  },
+  {
+    "name": "Contact Poison",
+    "class": "Basic",
+    "desc": "You coat your weapon with poison at the moment of impact, singing a foe.",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "reqs": "_Melee_ Attack and _Graze_+.",
+    "effect": "Deal +2 _Poison_ _Bonus Damage_ and add _Poisoned_ 1.",
+    "boost": "1 _Momentum_: Inflict an additional _Poisoned_ 1."
+  },
+  {
+    "name": "Bramble Seeds",
+    "class": "Growth",
+    "desc": "You plant seeds that erupt violently into brambles.",
+    "type": "Action",
+    "cost": "1 _AP_",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "effect": "Mark 3 contiguous spaces within Range as a _Hazard_. At the end of the next _Phase_ remove the _Hazard_ and make the spaces _Brambles_. Any creatures in these spaces immediately suffer the _Bramble_ effect and gain _Hobbled_ [1 _Stamina_]."
   }
 ]

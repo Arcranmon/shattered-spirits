@@ -23,7 +23,7 @@ import Arts from '@/pages/arts/index.vue'
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
-import CombatGear from '@/pages/equipment/combat-gear/index.vue'
+import Accessories from '@/pages/equipment/accessories/index.vue'
 
 import BasicSkills from '@/pages/basic-skills/index.vue'
 import SpiritAbilities from '@/pages/spirit-abilities/index.vue'
@@ -31,6 +31,7 @@ import SpiritAbilities from '@/pages/spirit-abilities/index.vue'
 import Npcs from '@/pages/npcs/index.vue'
 
 import CharacterManager from '@/pages/character-manager/index.vue'
+import NpcManager from '@/pages/npc-manager/index.vue'
 
 import World from '@/pages/world/index.vue'
 
@@ -110,11 +111,11 @@ const r = new Router({
       },
     },
     {
-      path: '/combat-gear',
-      component: CombatGear,
-      name: 'combat-gear',
+      path: '/accessories',
+      component: Accessories,
+      name: 'accessories',
       meta: {
-        title: 'Combat Gear',
+        title: 'Accessories',
       },
     },
     {
@@ -227,6 +228,14 @@ const r = new Router({
       name: 'character-manager',
       meta: {
         title: 'Character Manager',
+      },
+    },
+    {
+      path: '/npc-manager',
+      component: NpcManager,
+      name: 'npc-manager',
+      meta: {
+        title: 'NPC Manager',
       },
     },
   ],

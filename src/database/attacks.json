@@ -1002,5 +1002,45 @@
     "boost": "2 _Momentum_: Remove the _Blazing_ space. Resolve this Attack twice. You must use the same _Blazing_ space for both Attacks, but may choose separate Targets.",
     "rank": "Minor Attack",
     "analysis_notes": { "bonus_damage": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5] }
+  },
+  {
+    "name": "Reel",
+    "class": "Martial",
+    "discipline": "Basic",
+    "desc": "A simple attack that pulls a creature in towards you",
+    "effect": "Inflict _Pull_ 4 on a _Grabbed_ creature. If they end this adjacent to you, inflict _Vulnerable_ 1.",
+    "rank": "Minor Attack"
+  },
+  {
+    "name": "Explosive Seeds",
+    "desc": "A spray of seeds that explodes into spiny shrapnel.",
+    "class": "Basic",
+    "type": "Versatile",
+    "speed": "6",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "area": "_Cone_ 1",
+    "chart": {
+      "damage_type": "Stab",
+      "material": "Wood",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 2, 2, 3, 3, 4, 4, 4, 4, 5, 5],
+      "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Impaired_ 1",
+        "_Impaired_ 1",
+        "_Impaired_ 1, _Dazed_ 1",
+        "_Impaired_ 1, _Dazed_ 1",
+        "_Impaired_ 2, _Dazed_ 1",
+        "_Impaired_ 2, _Dazed_ 1"
+      ]
+    },
+    "charged_effect": "_Area_ is instead a _Blast_ 1.",
+    "rank": "Major Attack",
+    "analysis_notes": { "expected_targets": 1.5 }
   }
 ]

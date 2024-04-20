@@ -3,13 +3,13 @@ import { Base } from '@/class'
 
 class Stance extends Base {
   private class_: string
-  private respite_: string
+  private respite_: IRespiteData
   private stamina_: number
   private traits_: Array<string>
 
   public constructor(name) {
     super(name)
-    this.respite_ = ''
+    this.respite_ = null
     this.stamina_ = 0
     this.traits_ = []
   }
@@ -21,8 +21,11 @@ class Stance extends Base {
     return '_' + this.class_ + '_ _Stance_'
   }
   public get RespiteHeader() {
-    if (this.respite_.length > 0) return '**Respite:** ' + this.respite_
-    return ''
+    var respite_string = '**Respite:** At _Respite_, do the following:'
+    if (this.respite_.momentum_gain) respite_string += '\n* Gain ' + this.respite_.momentum_gain + ' _Momentum_.'
+    if (this.respite_.conditional_momentum) respite_string += '\n* Gain ' + this.respite_.conditional_momentum
+    if (this.respite_.special) respite_string += '\n* ' + this.respite_.special
+    return respite_string
   }
 
   public get Stamina() {
@@ -39,6 +42,11 @@ class Stance extends Base {
     return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_'
   }
 
+  public get MomentumGain() {
+    if (this.respite_.momentum_gain) return this.respite_.momentum_gain
+    return 0
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -52,7 +60,7 @@ class Stance extends Base {
   public setStanceData(data: IStanceData): void {
     this.setBaseData(data)
     this.class_ = data.class || ''
-    this.respite_ = data.respite || ''
+    this.respite_ = data.respite || null
     this.stamina_ = data.stamina || 0
     this.traits_ = data.traits || []
   }

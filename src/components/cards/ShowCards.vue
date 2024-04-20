@@ -1,10 +1,10 @@
 <template>
   <div>
     <span v-if="collapse">
-      <v-expansion-panels flat style="padding: 3px;">
-        <v-expansion-panel style="background-color: inherit;">
+      <v-expansion-panels flat style="padding: 3px">
+        <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header v-bind:class="contained_header">
-            <h3 style="display: flex;">{{ dropName }}</h3>
+            <h3 style="display: flex">{{ dropName }}</h3>
             <div class="summary--text">{{ summary_text }}</div>
           </v-expansion-panel-header>
           <v-expansion-panel-content v-bind:class="contained_body">
@@ -67,11 +67,8 @@
             <div class="card--box" v-if="job == 'Armor'">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'NPC'">
-              <npc-card :npc="n" />
-            </div>
-            <div class="card--box" v-if="job == 'Gear'">
-              <gear-card :gear="n" />
+            <div class="card--box" v-if="job == 'Accessory'">
+              <accessory-card :accessory="n" />
             </div>
             <div class="card--box" v-if="job == 'Obstacles'">
               <obstacle-card :obstacle="n" />
@@ -94,7 +91,7 @@
 <script>
 import Vue from 'vue'
 import ArmorCard from './ArmorCard.vue'
-import GearCard from './GearCard.vue'
+import AccessoryCard from './AccessoryCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
 import MovementCard from './MovementCard.vue'
 import ObstacleCard from './ObstacleCard.vue'
@@ -103,7 +100,6 @@ import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import AttackCard from './AttackCard.vue'
-import NpcCard from './NpcCard.vue'
 
 export default Vue.extend({
   name: 'show-cards',
@@ -169,10 +165,9 @@ export default Vue.extend({
   },
   components: {
     ArmorCard,
-    GearCard,
+    AccessoryCard,
     ManeuverCard,
     MovementCard,
-    NpcCard,
     ObstacleCard,
     StanceCard,
     StatusCard,

@@ -9,11 +9,11 @@
       label="Select a Character"
       filled
       outlined
-      style="margin: 0.5em;" />
-    <v-row justify="center" style="display: flex; flex-direction: column;">
+      style="margin: 0.5em" />
+    <v-row justify="center" style="display: flex; flex-direction: column">
       <v-col cols="12">
         <v-row class="topbar"
-          ><v-col cols="4" class="d-flex" style="flex-direction: column;">
+          ><v-col cols="4" class="d-flex" style="flex-direction: column">
             <v-dialog v-model="characterImportDialog" hide-overlay>
               <template v-slot:activator="{}">
                 <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
@@ -23,7 +23,7 @@
                 <v-card-text>
                   <v-file-input accept=".json" v-model="importFile" />
                   <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
-                    <span style="margin: 2px;">Import Character</span>
+                    <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
               </v-card>
@@ -57,25 +57,20 @@
             </v-btn>
           </v-col>
         </v-row>
-        <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter"
+        <show-character v-if="characterSelected" :character="selectedCharacter" @changed="saveCharacter"
       /></v-col> </v-row
   ></span>
-  <div v-else style="margin-top: 1em;">
+  <div v-else style="margin-top: 1em">
     <v-row justify="center" class="background--color">
       <v-col cols="2" class="sidebar">
         <div v-for="(character, index) in characters" :key="index" class="button--spacing">
-          <v-tooltip right>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)" v-bind="attrs" v-on="on"
-                ><span style="margin: 2px;">{{ character.Name }}</span></v-btn
-              >
-            </template>
-            {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit
-          </v-tooltip>
+          <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)"
+            ><span style="margin: 2px"> {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit</span></v-btn
+          >
         </div> </v-col
       ><v-col cols="10">
         <v-row class="topbar"
-          ><v-col cols="4" class="d-flex" style="flex-direction: column;">
+          ><v-col cols="4" class="d-flex" style="flex-direction: column">
             <v-dialog v-model="characterImportDialog" hide-overlay>
               <template v-slot:activator="{}">
                 <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
@@ -85,7 +80,7 @@
                 <v-card-text>
                   <v-file-input accept=".json" v-model="importFile" />
                   <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
-                    <span style="margin: 2px;">Import Character</span>
+                    <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
               </v-card>
@@ -119,7 +114,7 @@
             </v-btn>
           </v-col>
         </v-row>
-        <show-character v-if="characterSelected" :character="(selectedCharacter)" @changed="saveCharacter" :key="selectedCharacter.Name"
+        <show-character v-if="characterSelected" :character="selectedCharacter" @changed="saveCharacter" :key="selectedCharacter.Name"
       /></v-col>
     </v-row>
   </div>

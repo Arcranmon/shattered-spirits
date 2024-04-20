@@ -14,11 +14,11 @@ class Trait extends Base {
   // ==========================================================
   public static Deserialize(data: ITraitData): Trait {
     const c = new Trait(data.name)
-    c.setSpiritTypeData(data)
+    c.setTraitData(data)
     return c
   }
 
-  private setSpiritTypeData(data: ITraitData): void {
+  private setTraitData(data: ITraitData): void {
     this.setBaseData(data)
     this.reqs_ = data.reqs || ''
     this.cost_ = data.cost || 0
