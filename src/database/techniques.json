@@ -538,7 +538,7 @@
   },
   {
     "name": "Mine Seeds",
-    "class": "Basic",
+    "class": "Growth",
     "desc": "Seeds are planted across the battlefield, creating deadly obstructions for foes.",
     "range": [{ "category": "Ranged", "value": 6 }],
     "type": "General",
@@ -549,7 +549,7 @@
   },
   {
     "name": "Cultivating Seeds",
-    "class": "Basic",
+    "class": "Growth",
     "desc": "Seeds are planted across the battlefield, creating deadly obstructions for foes.",
     "range": [{ "category": "Ranged", "value": 6 }],
     "type": "General",
@@ -557,5 +557,36 @@
     "move": "Step",
     "effect": "Create 2 Cultivating Seeds within Range. These have 1 _Guard_, the same _Resistances_ as the _Seeder_, and 5 Health. At the end of the _Round_, replace these Cultivating Seeds with a _Wood Blight_.",
     "special": "The user of this _Technique_ may pay 2 _Momentum_ to _Destroy_ a Mine Seed, starting at the end of [_Phase_ placed]+2."
+  },
+  {
+    "name": "Flood",
+    "class": "Tide",
+    "desc": "You raise a might wave before sending it crashing forward into foes.",
+    "range": [{ "category": "Self" }],
+    "type": "Defend",
+    "speed": "3",
+    "move": "Step",
+    "effect": "_Draw_ X (maximum of 7). Create a _Water Veil_ space in  an adjacent spaces with a _Value_ of X, then create a _Line_ X _Hazard_. At the end of every _Phase_, including this one, move the _Water Veil_ along the _Hazard_, placing a _Wet_ space if possible. If the _Water Veil_ enters a creatures space, inflict 6 _Crush_ Damage, _Push_ 2, _Vulnerable_ 2, and _Soaked_ 1. Whenever you place a _Wet_ space or inflict _Soaked_, reduce the value of the _Water Veil_ by 1.",
+    "special": "Use the Effect up to 3 times. You must _Draw_ the same amount for each use, and _Water Veils_ placed in this way must be adjacent, as must their _Hazards_."
+  },
+  {
+    "name": "Wail of the Weeping Tree",
+    "class": "Growth",
+    "desc": "The tree seizes upon the anguish of those around it, drawing them closer.",
+    "range": [{ "category": "Self" }],
+    "type": "General",
+    "speed": "1-8",
+    "move": "None",
+    "effect": "Inflict _Anguished_ 1 on all creatures of your choice. After, all creatures with _Anguished_ (including allies) must immediately take a _Free Turn_ to _Step_ Move towards you."
+  },
+  {
+    "name": "Depths of Despair",
+    "class": "Growth",
+    "desc": "The tree seeks to shatter a creature's psyche, forcing them to feel its grief. (Do not use until last Health Bar).",
+    "range": [{ "category": "Ranged", "value": 8 }],
+    "type": "General",
+    "speed": "3-8",
+    "move": "None",
+    "effect": "Inflict _Anguished_ 4, _Vulnerable_ 2 and deal 6 Damage [_Mental_] to a creature of your choice. If they have _Anguished_ after this effect, they immediately gain _Prone_ and _Blinded_."
   }
 ]

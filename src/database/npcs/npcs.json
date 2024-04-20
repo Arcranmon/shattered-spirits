@@ -81,9 +81,9 @@
     "special": "\n* When this creature is defeated its space becomes _Brush_.\n* This creature treats all _Wooden_ spaces as _Fortified_.",
     "traits": [
       "_Weakness_ 2 [_Cold_, _Fire_, _Slash_]",
-      "_Susceptible_ [_Frigid_, _Alight_]",
+      "_Susceptible_ 1 [_Frigid_, _Alight_]",
       "_Resistance_ 2 [_Stab_, _Crush_, _Lightning_]",
-      "_Warded_  [_Shocked_]",
+      "_Warded_ 1 [_Shocked_]",
       "Woodwalk"
     ],
     "ap": 2,
@@ -96,7 +96,7 @@
   },
   {
     "name": "Corrupted Bog Blight",
-    "desc": "A water spirit full of mud and silt, corrupted by some unknown force.",
+    "desc": "A water spirit full of mud and silt, corrupted by some unknown force. It has no real defined form, appearing as a risen mas of water.",
     "role": "Controller",
     "subtype": "None",
     "class": "Standard",
@@ -107,15 +107,48 @@
     "size": "2",
     "max_stamina": 3,
     "movement": "Heavy Water",
-    "npc_type": "Wood Spirit",
-    "special": "\n* When this creature is defeated its spaces become _Shallow Water_.\n* Whenever a creature _Draws_ from a _Source_ contiguous with this creature they tak 2 _Poison_ _Damage_. They may only take this Damage once per _Draw_.\n* All _Water_ Attacks this creature makes deal +2 _Poison_ Damage.",
-    "traits": ["_Resistance_ 2 [_Crush_, _Fire_, _Poison_]", "_Warded_ 2 [_Alight_]", "Aquatic"],
+    "npc_type": "Water Spirit",
+    "special": "\n* At _Respite_ this creature may _Draw_ 1 from an adjacent space to gain 3 _Health_.\n* When this creature is defeated its spaces become _Shallow Water_.\n* Whenever a creature _Draws_ from a _Source_ contiguous with this creature they take 2 _Poison_ _Damage_. They may only take this Damage once per _Draw_.\n* All _Water_ Attacks this creature makes deal +2 _Poison_ Damage.",
+
+    "traits": ["_Resistance_ 4 [_Fire_]", "_Resistance_ 2 [_Crush_, _Poison_]", "_Warded_ 2 [_Alight_]", "_Susceptible_ 1 [_Frigid_, _Shocked_]", "Aquatic"],
     "ap": 2,
-    "weapons": ["Medium Smasher"],
-    "techniques": [],
-    "attacks": ["Weapon Attack", "Charged Attack", "Quickened Attack", "Swipe", "Explosive Seeds"],
-    "actions": ["Shift", "Fight", "Focus"],
+    "weapons": ["Large Smasher"],
+    "techniques": ["Combination Strike", "Smash", "Flood"],
+    "attacks": ["Weapon Attack", "Charged Attack", "Quickened Attack", "Swipe", "Roiling Tide", "Riptide"],
+    "actions": ["Shift", "Fight", "Focus", "Rally"],
     "stunts": ["Combo", "Sprint", "Disengage"],
-    "reactions": ["Opportunity Attack", "Engage", "Flank", "Active Defense"]
+    "reactions": ["Opportunity Attack", "Engage", "Flank", "Active Defense"],
+    "gambits": ["Basic Sunder", "Mark"]
+  },
+  {
+    "name": "Weeping Tree",
+    "desc": "A tree of life that has been corrupted. It appears like a weeping willow, with the draped branches acting as legs, and a torso that is a cross between a crocodile and gorilla extending down like the trunk. Thick sap lines seem to constantly pour from its eyes, and its body is covered in a putrescent purple rot that shifts and slides about like a living mass.",
+    "role": "Controller",
+    "subtype": "None",
+    "class": "Boss",
+    "health": 25,
+    "guard": 1,
+    "durability": 8,
+    "momentum_gain": 4,
+    "size": "2",
+    "max_stamina": 6,
+    "movement": "Heavy Load",
+    "npc_type": "Wood Spirit",
+    "special": "\n* This creature has an unlimited number of _Small Coils_.\n* This creature has 3 Health Bars. Whenever it loses a Health Bar it immediately uses _Weep_ at no cost, its maximum _Stamina_ is decreased by 2, but it immediately gains 1 more _AP_.\n* When _Defeated_ with no Health Bars remaining, roll a d6. If the roll is equal to or lower than the remaining number of Copper Nails, this creature dies.",
+    "traits": [
+      "_Weakness_ 2 [_Cold_, _Fire_, _Slash_]",
+      "_Susceptible_ 1 [_Frigid_, _Alight_]",
+      "_Resistance_ 2 [_Stab_, _Crush_, _Lightning_]",
+      "_Warded_ 1 [_Shocked_]",
+      "Woodwalk"
+    ],
+    "ap": 2,
+    "weapons": ["Small Coil", "Medium Smasher", "Large Jaws"],
+    "techniques": ["Skirmish", "Combination Strike", "Smash", "Wail of the Weeping Tree", "Depths of Despair"],
+    "attacks": ["Weapon Attack", "Charged Attack", "Quickened Attack", "Swipe", "Vine Whip"],
+    "actions": ["Shift", "Fight", "Focus", "Rally", "Raise Guard", "Weep", "Sprouting Vines"],
+    "stunts": ["Combo", "Sprint", "Disengage"],
+    "reactions": ["Opportunity Attack", "Engage", "Flank", "Active Defense", "Set Roots"],
+    "gambits": ["Critical Hit"]
   }
 ]

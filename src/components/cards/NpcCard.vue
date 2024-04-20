@@ -1,10 +1,10 @@
 <template>
-  <div class="npc--box" style="background-color: DarkGray;">
+  <div class="npc--box" style="background-color: DarkGray">
     <h3>
       <center>{{ npc.Name }}</center>
     </h3>
     <div class="npc--header">
-      <div v-if="(npc.Desc.length > 0)">
+      <div v-if="npc.Desc.length > 0">
         <i>{{ npc.Desc }}</i
         ><br /><b>{{ npc.SpiritType }} {{ npc.NpcType }}</b
         ><br /><b>{{ npc.Role }}</b
@@ -18,14 +18,14 @@
           <div v-html="$marked.parseInline(npc.SizeText)" />
           <div v-html="$marked.parseInline(npc.HealthText)" />
           <div v-html="$marked.parseInline(npc.ArmorText)" />
-          <div v-html="$marked.parseInline(npc.SpecialText)" />
+          <display-tooltip-text :string="'**Special:** ' + npc.SpecialText" />
           <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
           <div v-for="trait in npc.Traits" :key="trait">
             <display-tooltip-text
               :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))"
               :decorate="false"
             /></div></v-col
-        ><v-col cols="6"> <movement-card :movement="npc.Movement" :npc="true" /></v-col
+        ><v-col cols="6"> <movement-card :movement="npc.MoveChart" :npc="true" /></v-col
       ></v-row>
       <v-row no-gutters></v-row><br />
     </div>
@@ -53,13 +53,13 @@
           <h3>Gambits</h3>
         </v-tab></v-tabs
       ><v-tabs-items v-model="tab" class="character-tab-content">
-        <v-tab-item> <show-cards :inputs="techniques" job="Techniques" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="attacks" job="Attacks" :collapse="false" /></v-tab-item
-        ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="weapons" job="Attacks" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="actions" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="stunts" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="reactions" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item v-if="npc.HasGambits"> <show-cards :inputs="gambits" job="Maneuvers" :collapse="false" /></v-tab-item
+        <v-tab-item> <show-cards :inputs="npc.Techniques" job="Techniques" :collapse="false" /></v-tab-item
+        ><v-tab-item> <show-cards :inputs="npc.Attacks" job="Attacks" :collapse="false" /></v-tab-item
+        ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" /></v-tab-item
+        ><v-tab-item> <show-cards :inputs="npc.Actions" job="Maneuvers" :collapse="false" /></v-tab-item
+        ><v-tab-item> <show-cards :inputs="npc.Stunts" job="Maneuvers" :collapse="false" /></v-tab-item
+        ><v-tab-item> <show-cards :inputs="npc.Reactions" job="Maneuvers" :collapse="false" /></v-tab-item
+        ><v-tab-item v-if="npc.HasGambits"> <show-cards :inputs="npc.Gambits" job="Maneuvers" :collapse="false" /></v-tab-item
       ></v-tabs-items>
     </v-card>
   </div>
@@ -84,35 +84,6 @@ export default Vue.extend({
     npc: {
       type: Npc,
       required: true,
-    },
-  },
-  computed: {
-    actions: function () {
-      return this.$store.getters.getManeuversFromList(this.npc.Actions)
-    },
-    attacks: function () {
-      return this.$store.getters.getAttacksFromList(this.npc.Attacks)
-    },
-    gambits: function () {
-      return this.$store.getters.getManeuversFromList(this.npc.Gambits)
-    },
-    weapons: function () {
-      return this.$store.getters.getWeaponsFromList(this.npc.Weapons)
-    },
-    reactions: function () {
-      return this.$store.getters.getManeuversFromList(this.npc.Reactions)
-    },
-    spirit_stances: function () {
-      return this.$store.getters.getStancesFromList(this.npc.SpiritStances)
-    },
-    martial_stances: function () {
-      return this.$store.getters.getStancesFromList(this.npc.MartialStances)
-    },
-    stunts: function () {
-      return this.$store.getters.getManeuversFromList(this.npc.Stunts)
-    },
-    techniques: function () {
-      return this.$store.getters.getTechniquesFromList(this.npc.Techniques)
     },
   },
   methods: {
