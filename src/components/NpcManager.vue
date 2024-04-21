@@ -70,6 +70,7 @@ export default Vue.extend({
     addNpc() {
       const store = getModule(NpcManagementStore, this.$store)
       this.npcToAdd.Tag = store.GetNextTag(this.npcToAdd.Name)
+      this.npcToAdd.ResetDefault()
       store.AddNpc(this.npcToAdd)
       store.SaveNpcs()
       this.addNpcDialog = false
