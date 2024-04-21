@@ -1,17 +1,17 @@
 <template>
-  <div style="padding: 1em;">
-    <h2>Combat Basics</h2>
+  <div style="padding: 1em">
+    <h2>Combat Primer</h2>
     <display-tooltip-text :string="combatText" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import CombatText from '@/database/text_files/combat_rules/combat.txt'
+import CombatText from '@/database/text_files/combat_rules/combat_primer.txt'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
 import { store } from '@/store'
 export default Vue.extend({
-  name: 'combat-basics',
+  name: 'combat-primer',
   computed: {
     combatText() {
       return CombatText

@@ -5,7 +5,8 @@ import MainMenu from '@/pages/main-menu/index.vue'
 import CharacterOptions from '@/pages/character-options/index.vue'
 
 import CombatMenu from '@/pages/combat/combat-menu/index.vue'
-import CombatBasics from '@/pages/combat/combat-basics/index.vue'
+import CombatRules from '@/pages/combat/combat-rules/index.vue'
+import CombatPrimer from '@/pages/combat/combat-primer/index.vue'
 import AfflictionsAndStatus from '@/pages/combat/afflictions-and-status/index.vue'
 import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
 import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
@@ -127,11 +128,19 @@ const r = new Router({
       },
     },
     {
-      path: '/combat-basics',
-      component: CombatBasics,
-      name: 'combat-basics',
+      path: '/combat-rules',
+      component: CombatRules,
+      name: 'combat-rules',
       meta: {
-        title: 'Combat Basics',
+        title: 'Combat',
+      },
+    },
+    {
+      path: '/combat-primer',
+      component: CombatPrimer,
+      name: 'combat-primer',
+      meta: {
+        title: 'Combat Primer',
       },
     },
     {
