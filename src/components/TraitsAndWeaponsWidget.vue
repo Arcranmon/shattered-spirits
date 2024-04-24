@@ -18,9 +18,9 @@
           <v-row v-if="isSpirit"><display-tooltip-text v-if="creature.Subtype.HasEffect" :string="creature.Subtype.EffectHeader" /></v-row>
           <v-row v-if="isSpirit"><display-tooltip-text v-if="creature.Subtype.HasManifestEffect" :string="creature.Subtype.ManifestEffectHeader" /></v-row>
           <v-row v-if="isSpirit"><display-tooltip-text v-if="creature.Subtype.HasSummonEffect" :string="creature.Spirit.Subtype.SummonEffectHeader" /></v-row>
-          <div v-for="trait in creature.Traits" :key="trait">
+          <v-row v-for="trait in creature.Traits" :key="trait">
             <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))" :decorate="false" />
-          </div> </v-tab-item
+          </v-row> </v-tab-item
         ><v-tab-item v-if="isNpc"
           ><v-row><display-tooltip-text :string="creature.ArmorText" /></v-row><v-row><display-tooltip-text :string="creature.SpecialText" /></v-row
         ></v-tab-item>

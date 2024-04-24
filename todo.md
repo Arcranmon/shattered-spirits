@@ -1,14 +1,31 @@
 ## To-Do
 
+POTENTIAL REFACTORS
+
+- Add a Glossary that includes most terms
+- Streamline statuses
+  - More potent, but no stacks
+  - Add a 'Stun' bar as well that can be used by players as juice
+    - Essentially replaces Vulnerable/Reeling
+    - Gambits will typically clear Stun to inflict additional effects
+- Basic Stances
+  - Balanced Stance everybody gets
+  - In skill trees add Basic Striker/Controller/etc. Stances
+  - Basic Land/Tide/Blaze etc. Stances
+- Up the Guard bonuses from Armor?
+  - Piecemeal armor? Shirt/Chest/Greaves/Hands/Feet/Head?
+  - Probably a dumb idea...
+- Move to a Skill Tree system (maybe)
+
+LONG TERM
+
 - Cooler buttons.
 - Potentially add 'Free Movement' (a limited pool of movement characters can use to move further)
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Arts for them.
 - Arts to support Weapons/Unarmed, and more weapon types.
-- Complete all Spirit Arts.
+  - Make Charging Ram an Art
 - Refine Health and Health system based on how long combats should last.
-- Expand and refine all Spirit Arts to make sure that each spirit type feels different, as well as the individual disciplines.
-  - Once the rest of the system is in a good place, consider adding Light, Dark, and Beast Spirit Arts.
-  - Figure out how manifesting a spirit/super moves should work; this will likely come with the Beast Spirit Art as their Spirit will always be manifested by default.
+  - Once the rest of the system is in a good place, consider adding Day, Night, and Beast Spirit Arts.
   - Add an additional 'bending' Discipline to each Element:
     - Earth: Dust
     - Flame: Smoke/Ash

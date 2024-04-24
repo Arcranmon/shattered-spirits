@@ -7,10 +7,6 @@
         ><v-col style="min-width: 6em" />
       </v-row>
       <v-row no-gutters>
-        <v-col><display-tooltip-text string="**_Size_:**" /></v-col><v-col>{{ creature.Size }}</v-col
-        ><v-col style="min-width: 6em" />
-      </v-row>
-      <v-row no-gutters>
         <v-col><display-tooltip-text string="**_Vigor_:**" /></v-col><v-col>{{ creature.Vigor }}</v-col
         ><v-col style="min-width: 6em"
           ><v-btn inline x-small @click=";(creature.Vigor -= 1), $emit('changed')" color="red">-</v-btn
@@ -59,6 +55,18 @@
           ><v-btn inline @click="creature.ApplyRespite(), $emit('changed')">Apply Respite</v-btn></v-col
         ><v-col class="d-flex justify-center align-center"><v-btn inline @click="creature.ResetDefault(), $emit('changed')">Reset Default</v-btn></v-col></v-row
       >
+      <h4 style="margin-top: 1em">Other Statistics</h4>
+      <v-row no-gutters>
+        <v-col><display-tooltip-text string="**_Size_:**" /></v-col><v-col>{{ creature.Size }}</v-col
+        ><v-col style="min-width: 6em" />
+      </v-row>
+      <v-row no-gutters>
+        <v-col><display-tooltip-text string="**_Height_:**" /></v-col><v-col>1</v-col><v-col style="min-width: 6em" />
+      </v-row>
+      <v-row no-gutters>
+        <v-col><display-tooltip-text string="**_Weight_:**" /></v-col><v-col>{{ creature.Weight }}</v-col
+        ><v-col style="min-width: 6em" />
+      </v-row>
     </div>
   </div>
 </template>
