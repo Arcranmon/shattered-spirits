@@ -16,6 +16,16 @@ POTENTIAL REFACTORS
   - Piecemeal armor? Shirt/Chest/Greaves/Hands/Feet/Head?
   - Probably a dumb idea...
 - Move to a Skill Tree system (maybe)
+  - Probably just Basic Arts for different Archetypes
+  - Instead of Arts/Disciplines Major/Minor Disciplines?
+- Stance passives may need to be more impactful to enable stance dancing
+- Basic stuff to moved out:
+  - Hide, Raise Guard, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Sunder, Basic Flourish, Basic Feint
+  - Examples:
+    - Way of the Skulker gets Hide and Skulker Stance
+    - Way of the Scoundrel gets Feint and Scoundrel Stance
+    - Way of the Fortress gets Raise Guard and Fortress Stance
+  - Most Gambits go to Art stuff
 
 LONG TERM
 

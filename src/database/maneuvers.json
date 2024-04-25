@@ -38,7 +38,8 @@
     "type": "Gambit",
     "cost": "1 _Momentum_",
     "reqs": "Have not used _Movement_ this _Turn_ and have _Movement_ this _Turn_.",
-    "effect": "Gain a +1 _Bonus_ on your _Attack Roll_. Decrease your _Movement_ this _Turn_ by one tier."
+    "effect": "Gain a +1 _Bonus_ on your _Attack Roll_. Decrease your _Movement_ this _Turn_ by one tier.",
+    "special": "This Gambit must be used before rolling. If used as a part of a _Charged_ effect, use it on the _Turn_ where you originally become _Charging_."
   },
   {
     "name": "Ambush",
@@ -160,15 +161,16 @@
     "effect": "Immediately _Step_. If it is _Phase_ 4 or earlier, add [_Safe_]."
   },
   {
-    "name": "Catching Wind",
+    "name": "Curving Wind",
     "class": "Gale",
     "desc": "You seize an object in midair, sending it careening along a new path.",
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "range": [{ "category": "Ranged", "value": 6 }],
-    "trigger": "A _Ranged_ Attack goes through a _Gusting_ or _Twister_ space within Range.",
-    "effect": "Choose one:\n* If the Attack is made by you or an ally and goes through a _Gusting_ space, add [_Winding_]. The _Winding_ path must follow the direction of _Gusting_ spaces; upon leaving a _Gusting_ space draw a new Attack Line using the remaining Range, the first space of which must match the direction of the _Gusting_ space.\n* If the Attack is made by you or an ally and goes through a _Twister_ space, draw a new _Attack Line_ using the remaining Range in any direction.",
-    "boost": "[_Reeling_/2] _Momentum_: If the Attack is made by a hostile creature, impose _Disadvantage_. Gain _Reeling_ 1."
+    "range": [{ "category": "Self" }],
+    "area": "_Burst_ 8",
+    "trigger": "A creature makes a _Ranged_ Attack.",
+    "effect": "Choose one:\n* The Attack takes a -1 _Penalty_ if it passes through any _Windy_ spaces in the _Area_.\n* The Attack ignores any penalties due to _Windy_ spaces in the _Area_. When drawing an _Attack Line_, the Target may draw it to a _Gusting_ space in the _Area_ then add [_Winding_]. The _Winding_ path must follow the direction of _Gusting_ spaces; upon leaving a _Gusting_ space or leaving the _Area_ draw a new Attack Line using the remaining Range, the first space of which must match the direction of the _Gusting_ space.\n* The Attack ignores any penalties due to _Windy_ spaces in the _Area_. When drawing the _Attack Line_ the attacker may draw it to a _Twister_ within the _Area_, then draw a new _Attack Line_ using the remaining Range in any direction.\n\nIf used on a _Charged Attack_ or any attack that draws an _Attack Line_ prior to actually making the Attack do not draw a new _Attack Line_; instead, resolve the above effects based on the original _Attack Line_.",
+    "special": "If used on an ally's attack, you may determine _Obscurement_ for this Attack from your space or the attacker's."
   },
   {
     "name": "Cleansing Wave",
