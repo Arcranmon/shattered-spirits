@@ -2,6 +2,9 @@
 
 POTENTIAL REFACTORS
 
+- Buff Dripping Veil/Bastion
+- Generalize Earth terrain effects
+- Rename Ice terrain so Frozen can be a status
 - Add a Glossary that includes most terms
 - Streamline statuses
   - More potent, but no stacks

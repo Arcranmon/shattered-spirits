@@ -5,10 +5,9 @@
     "desc": "You defend yourself, mitigating an incoming blow.",
     "keywords": ["Block", "Defensive"],
     "type": "Reaction",
-    "cost": "1+[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You are Attacked, take Damage, or gain Status.",
-    "effect": "Choose one:\n* Gain 1 _Temporary_ _Stamina_ and 1 _Instant Guard_.\n* _Parry_.\n\nAfter resolving the triggering effect, gain _Reeling_ 1.",
-    "boost": "[_Reeling_/2] _Momentum_ (rounded down): Gain both effects."
+    "effect": "Choose one:\n* Gain 1 _Temporary_ _Stamina_.\n* _Parry_."
   },
   {
     "name": "Aftershock",
@@ -110,7 +109,7 @@
     "desc": "You use your mastery of the explosives and fire magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You take _Fire_ Damage or would take Damage or gain Status from an _Explosion_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Resistance_ 2 (_Fire_) this _Turn_ and reduce any _Dazed_ inflicted by 1.",
     "special": "If this was an _Area_ effect, apply the _Boost_ once at no Cost.",
@@ -383,7 +382,7 @@
     "type": "Action",
     "cost": "1 _AP_",
     "target": "A creature _Marked_ by you.",
-    "effect": "Become _Guarding_. While _Guarding_:\n* All Attacks by the Target take a -1 _Penalty_ against you.\n* Gain 1 _Guard_ against all Attacks made by the Target. \n* Treat your _Reeling_ as half its current value when using _Reactions_ against the Target.\n* Treat your _Reeling_ as 2 higher for all other creatures.",
+    "effect": "Become _Guarding_. While _Guarding_:\n* All Attacks by the Target take a -1 _Penalty_ against you.\n* Gain 1 _Guard_ against all Attacks made by the Target. \n* Reduce the cost of _Defensive_ _Reactions_ against the Target by 1.\n* Increase the cost of _Defensive_ _Reactions_ against all others by 1",
     "special": "If you have a creature adjacent to you other than the Target, you do not benefit from the Efect, but remain _Guarding_. Lose this _Guarding_ if you deal Damage to or inflict Status on a creature other than the Target."
   },
   {
@@ -486,7 +485,7 @@
     "desc": "You use your mastery of the flame and fire magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You take _Fire_ Damage, gain _Alight_, or would take Damage or gain Status from _Fire_ _Terrain_/_Obstacle_, a Fire _Weapon_, or a _Blaze_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Alight_) and _Resistance_ 1 (_Fire_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
@@ -529,10 +528,10 @@
     "desc": "You slip just out of a foe's reach as they strike, defending yourself.",
     "type": "Reaction",
     "keywords": ["Defensive"],
-    "cost": "[_Reeling_] _Momentum_",
+    "cost": "2 _Momentum_",
     "trigger": "You are Attacked, take Damage or gain Status.",
-    "effect": "Either gain 1 _Temporary_ _Stamina_ and reduce the _Attack Roll_ by 1 or gain 2 _Temporary_ _Stamina_. You may _Step_ [_Safe_] as a part of this _Reaction_, but gain _Hobbled_ 1 if you do so. Gain _Reeling_ 1.",
-    "special": "If the triggering Attack came about due to an _Opening_ add [_Glancing_]."
+    "effect": "Either gain 1 _Temporary_ _Stamina_ and reduce the _Attack Roll_ by 1 or gain 2 _Temporary_ _Stamina_. You may _Step_ [_Safe_] as a part of this _Reaction_, but gain _Hobbled_ 1 if you do so.",
+    "special": "If the triggering Attack was made in response to Movement or an _Opening_ created by Movement, add [_Glancing_]."
   },
   {
     "name": "Flying Snow",
@@ -574,10 +573,10 @@
     "type": "Stunt",
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
-    "effect": "Choose one:\n* Choose two contiguous _Watersource_ spaces within Range. _Draw_ 1 from each of them, then make them _Frozen_.\n* Make three contiguous _Frozen_ spaces _Wet_ or _Frost_.\n* _Draw_ 1, then place a _Frozen_ space within _Range_.",
+    "effect": "Choose one:\n* Choose two contiguous _Watersource_ spaces within Range. _Draw_ 1 from each of them, then make them _Frozen_.\n* Make three contiguous _Frozen_ spaces _Wet_ or _Frosted_.\n* _Draw_ 1, then place a _Frozen_ space within _Range_.",
     "special": "Gain _Snowdraw_ this _Turn_. If you already have _Snowdraw_, you may use the _Boost_ once at no cost.",
     "boost": "1 _Momentum_: Choose an additional option from the Effect. You may choose the same option multiple times. You may use this _Boost_ any number of times.",
-    "manifest": "Add [_Manifest_]. The Cost is instead None. Choose a space within your spirit's _Reposition_ distance and resolve all effects from that space. Your spirit gains _Snowdraw_ and may _Draw_ 4 within Range, then place 4 contiguous _Frozen_ spaces that include the Target space. You may not _Boost_ when using this option. You may choose to _Summon_ your spirit to any space in this Area."
+    "manifest": "Add [_Manifest_]. The Cost is instead None. Choose a space within your spirit's _Reposition_ distance and resolve all effects from that space. Resolve the Effect twice from that space, or three times if your spirit has _Snowdraw_. You may choose to Summon your spirit to the centermost space of this Area."
   },
   {
     "name": "Frostguard",
@@ -585,7 +584,7 @@
     "desc": "You use your mastery of the ice and aquatic magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You take _Cold_ Damage, gain _Frigid_, or would take Damage or gain Status from _Ice_ _Terrain_/_Obstacle_, an Ice _Weapon_, or a _Tundra_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Frigid_) and _Resistance_ 1 (_Cold_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
@@ -653,7 +652,7 @@
     "desc": "You use your mastery of wind and gale magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You would take Damage or gain Status from _Windy_ _Terrain_, a _Wind_ Material Attack, or a _Gale_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. This _Turn_ you may Negate 2 _Vulnerable_ with 1 _Stamina_ and may gain _Warded_ 1 (_Forced Movement_).",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ by 1. You may use this _Boost_ up to twice.",
@@ -744,10 +743,10 @@
     "desc": "You strike an attack aside, stopping it before it reaches an ally.",
     "keywords": ["Block", "Defensive"],
     "type": "Reaction",
-    "cost": "1+[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "An adjacent ally is Attacked, takes Damage, or gain Status.",
-    "effect": "Your ally gains 1 _Temporary_ _Stamina_ and 1 _Instant Guard_. After resolving this, gain _Reeling_ 1.",
-    "boost": "[_Reeling_/2_] _Momentum_ (rounded down): Additionally, _Parry_ for your ally, providing them all benefits. Determine whether the Attacker is within _Reach_ based on your location."
+    "effect": "Your ally gains 1 _Temporary_ _Stamina_ and 1 _Instant Guard_.",
+    "boost": "1 _Momentum_: Additionally, _Parry_ for your ally, providing them all benefits. Determine whether the Attacker is within _Reach_ based on your location."
   },
   {
     "name": "Use Environment",
@@ -784,7 +783,7 @@
     "desc": "You use your mastery of the land and earthen magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You would take Damage or gain Status from _Earthen_ _Terrain_, an _Earthen Obstacle_, or a _Land_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Prone_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_. You may use this _Boost_ up to twice.",
@@ -973,10 +972,10 @@
     "desc": "You solidify the plates of your armor, sacrificing mobility to become unstoppable.",
     "keywords": ["Block", "Defensive"],
     "type": "Reaction",
-    "cost": "[_Reeling_] _Momentum_",
+    "cost": "2 _Momentum_",
     "trigger": "You are Attacked, take Damage or gain Status.",
-    "effect": "Gain 2 _Instant Guard_ and 1 _Temporary_ _Stamina_, then gain _Reeling_ 1. You may not use an _Action_ or _Technique_ this _Phase_.",
-    "special": "Cost is ([_Reeling_/2]) _Momentum_ if you have Stone Armor."
+    "effect": "Gain 3 _Instant Guard_ and 1 _Temporary_ _Stamina_. You may not use an _Action_ or _Technique_ this _Phase_.",
+    "special": "Cost is 1 _Momentum_ if you have Stone Armor."
   },
   {
     "name": "Relentless Assault",
@@ -1040,7 +1039,7 @@
     "area": "_Arc_ 1",
     "effect": "You become _Guarding_ and mark the _Area_. Gain 1 _Guard_ against all effects that originate from or pass through one of those spaces. This _Area_ moves with you and, at the end of each of your _Turns_ you may rotate this _Area_.",
     "special": "As a part of this _Action_ you may also choose an un-_Sundered_, _Wielded_ piece of _Equipment_. It becomes _Occupied_ so long as you are _Guarding_, but you automatically use that _Equipment_ to _Parry_ all effects that pass through or originate in the _Area_. End _Guarding_ if you are _Disarmed_ of the _Equipment_ used for this _Action_.",
-    "boost": "2 _Momentum_: You may choose a piece of _Sundered_ _Equipment_."
+    "boost": "1 _Momentum_: You may choose a piece of _Sundered_ _Equipment_."
   },
   {
     "name": "Rally",
@@ -1049,7 +1048,7 @@
     "keywords": ["Repeatable"],
     "type": "Action",
     "cost": "1 _AP_",
-    "effect": "_Refresh_ and choose one:\n* You or an adjacent ally _Recovers_.\n* You may attempt to escape a _Grab_ without paying the initial _Momentum_ cost.\n* Reduce _Reeling_ by 1 on yourself, your spirit, or an adjacent ally.\n* Remove _Prone_ from an adjacent ally.\n\nYou may resolve these effects in any order, including interrupting a _Recover_ with a _Refresh_ or similar.",
+    "effect": "_Refresh_ and choose one:\n* You or an adjacent ally _Recovers_.\n* You may attempt to escape a _Grab_ without paying the initial _Momentum_ cost.\n* Reduce _Reeling_ by 2 on yourself, your spirit, or an adjacent ally.\n* Remove _Prone_ from an adjacent ally.\n\nYou may resolve these effects in any order, including interrupting a _Recover_ with a _Refresh_ or similar.",
     "boost": "Choose any:\n* 1 _Momentum_: Add the below options to the choices above:\n  * Move is instead _Step_.\n* 1 _Momentum_: Gain 1 _Temporary_ _Stamina_. You may use this _Boost_ any number of times."
   },
   {
@@ -1174,11 +1173,11 @@
     "keywords": ["Defensive", "Efficient"],
     "type": "Reaction",
     "range": [{ "category": "Ranged", "value": 3 }],
-    "cost": "[_Reeling_] _Momentum_",
+    "cost": "2 _Momentum_",
     "trigger": "You or any ally within _Range_ are Attacked, take Damage, or gain Status.",
-    "effect": "_Draw_ 1 within _Range_. If you cannot, this _Manuever_ fails. Grant the target of the Attack 1 _Temporary_ _Stamina_, 1 _Instant Guard_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ 2 [_Fire_] until the end of the _Turn_. After resolving this, create a _Wet_ space adjacent to the Target and gain _Reeling_ 1.",
+    "effect": "_Draw_ 1 within _Range_. If you cannot, this _Manuever_ fails. Grant the target of the Attack 1 _Temporary_ _Stamina_, 1 _Instant Guard_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ 2 [_Fire_] until the end of the _Turn_. After resolving this, create a _Wet_ space adjacent to the Target.",
     "boost": "1 _Momentum_: Instead of a _Wet_ space, create a _Water Veil_ in a space adjacent to the Target after resolving the Effect.",
-    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead 1 + your Spirit's [_Reeling_] _Momentum_. Resolve the above effects and add [_Glancing_]. Resolve the Attack against your Spirit as well. Your Spirit gains _Reeling_ rather than you when used in this way."
+    "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead 1 _Momentum_. Resolve the above effects and add [_Glancing_]. Resolve the Attack against your Spirit as well."
   },
   {
     "name": "Shift",
@@ -1281,10 +1280,9 @@
     "desc": "Your spirit leaps to defend you, taking the brunt of a blow.",
     "keywords": ["Defensive", "Manifest"],
     "type": "Reaction",
-    "cost": "[_Reeling_] _Momentum_ (use your spirit's value, not your own)",
-    "trigger": "You are Attacked, take Damage, or gain Status while adjacent to a _Major Source_.",
-    "effect": "You may use up to 1 _Stamina_ from your spirit. After determining total Damage but before applying your _Guard_, split the Damage in half. Your spirit takes half, and you take the other half. After resolving this, you and your spirit gain _Reeling_ 1.",
-    "boost": "1 _Momentum_: Instead, you may use this while adjacent to a _Minor Source_."
+    "cost": "None",
+    "trigger": "You are Attacked, take Damage, or gain Status while adjacent to a _Source_.",
+    "effect": "You may use your spirit's _Stamina_ to _Negate_. After determining total Damage but before applying your _Guard_, split the Damage in half. Your spirit takes half, and you take the other half."
   },
   {
     "name": "Spitting Cinders",
@@ -1345,7 +1343,7 @@
     "desc": "You use your mastery of stone and earthen magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You would take Damage or gain Status from an _Earthen_ _Obstacle_, _Stone_ Material Attack, or _Mountain_ ability.",
     "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect.",
     "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_. You may use this _Boost_ up to twice.",
@@ -1359,7 +1357,7 @@
     "cost": "2 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6 }],
     "trigger": "An ally within Range takes Damage or gains a Status.",
-    "effect": "Your ally treats their _Reeling_ as half its current value this _Turn_. If they use a _Defensive_ _Reaction_ against the triggering effect they gain _Courageous_ 1, and you may inflict _Marked_ on their attacker."
+    "effect": "Your ally gains 1 _Temporary_ _Momentum_ they may use for a _Defensive_ _Reaction_. If your ally uses a _Defensive_ _Reaction_ against the triggering effect they gain _Courageous_ 1, and you may inflict _Marked_ on their attacker."
   },
   {
     "name": "Surging Flourish",
@@ -1378,7 +1376,7 @@
     "desc": "You use your mastery of the lightning magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You take _Lightning _ Damage, gain _Shocked_, or would take Damage or gain Status from _Electric_ _Terrain_/_Obstacle_, an Electric _Weapon_, or a _Storm_ ability.",
     "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect. Gain _Warded_ 1 (_Shocked_) and _Resistance_ 1 (_Lightning_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
@@ -1538,7 +1536,7 @@
     "desc": "You use your mastery of water and aquatic magic to defend yourself.",
     "type": "Reaction",
     "keywords": ["Defensive", "Efficient"],
-    "cost": "[_Reeling_/2] _Momentum_",
+    "cost": "1 _Momentum_",
     "trigger": "You would take Damage or gain Status from _Water_ _Terrain_, a _Water_ Material Attack, or a _Tide_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. This _Turn_ you may Negate _Soaked_ with 1 _Stamina_ and may gain _Warded_ 1 (_Soaked_).",
     "special": "For every _Soaked_ you _Negate_ place a _Wet_ space adjacent to you.",

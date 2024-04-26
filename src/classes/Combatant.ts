@@ -65,7 +65,6 @@ class Combatant {
     this.ap_ = this.MaxAP
     this.stamina_ = this.MaxStamina
     this.momentum_ += this.MomentumGain
-    this.RemoveStatus('Reeling')
   }
 
   public ResetDefault() {
