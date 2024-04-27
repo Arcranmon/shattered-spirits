@@ -1,5 +1,30 @@
 ## To-Do
 
+### Refactors
+
+- Change Statuses to flat tokens so that things go faster there
+- Refactor Stamina/statuses to have some sort of roll
+  - Keep Stamina, but let it be added as a bonus to rolls
+- Rework Actions to use a basic action, with Stunts expanding it
+- Potentially make Stances more impactful
+- Shrink Phases
+- Make Manifests more obvious/easier to use
+- Rework Gambits to use the Stun bar
+
+### Plan
+
+1. Stamina Refactor
+
+- Stances get a roll bonus
+
+2. Status Refactor
+
+- Stun
+
+3. Phase Shrinkage
+4. Gambits
+5. Action rework
+
 POTENTIAL REFACTORS
 
 - Buff Dripping Veil/Bastion

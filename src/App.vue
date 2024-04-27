@@ -12,7 +12,7 @@ export default {
   components: { Navbar },
   watch: {
     $route(to, from) {
-      document.title = to.meta.title || 'Shattered Spirits'
+      document.title = to.title || 'Blahblahblah'
     },
   },
   computed: {

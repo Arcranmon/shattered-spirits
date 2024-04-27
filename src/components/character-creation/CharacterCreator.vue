@@ -29,9 +29,10 @@
       <v-tab-item :eager="true" class="builder--body"><spirit-customization :character="character" @customized="stepper++" /> </v-tab-item>
       <v-tab-item :eager="true" class="builder--body"><discipline-selection :character="character" @chose-discipline="stepper++" /></v-tab-item>
       <v-tab-item :eager="true" class="builder--body"><equipment-selection :character="character" @chose-equipment="stepper++" /> </v-tab-item>
-      <v-tab-item :eager="true" class="builder--body"><name-selection :character="character" @chose-names="stepper++" /></v-tab-item
+      <v-tab-item :eager="true" class="builder--body"
+        ><name-selection :character="character" @chose-names="stepper++, this.character.ResetDefault" /></v-tab-item
       ><v-tab-item :eager="true" class="builder--body">
-        <v-layout style="margin-top: 1em; width: 100%;" justify-center>
+        <v-layout style="margin-top: 1em; width: 100%" justify-center>
           <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
             <span v-if="!character.Complete">You must finish making your character!</span>
             <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span></v-btn

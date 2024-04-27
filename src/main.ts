@@ -23,6 +23,14 @@ Vue.prototype.$move = require('@/assets/Move.svg')
 Vue.prototype.$support = require('@/assets/Support.svg')
 Vue.prototype.$defend = require('@/assets/Defend.svg')
 
+router.afterEach((to, from) => {
+  // Use next tick to handle router history correctly
+  // see: https://github.com/vuejs/vue-router/issues/914#issuecomment-384477609
+  Vue.nextTick(() => {
+    document.title = to.meta.title || 'Shattered Spirits'
+  })
+})
+
 Vue.mixin({
   computed: {
     isMobile: function () {
