@@ -17,9 +17,10 @@ import Obstacles from '@/pages/combat/obstacles/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import StyleDisciplines from '@/pages/style-disciplines/index.vue'
+import MajorDisciplines from '@/pages/major-disciplines/index.vue'
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
-import Arts from '@/pages/arts/index.vue'
+import MinorDisciplines from '@/pages/minor-disciplines/index.vue'
+import Talents from '@/pages/talents/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
@@ -185,19 +186,19 @@ const r = new Router({
       },
     },
     {
-      path: '/style-disciplines',
-      component: StyleDisciplines,
-      name: 'style-disciplines',
+      path: '/major-disciplines',
+      component: MajorDisciplines,
+      name: 'major-disciplines',
       meta: {
-        title: 'Style Disciplines',
+        title: 'Major Disciplines',
       },
     },
     {
-      path: '/arts',
-      component: Arts,
-      name: 'arts',
+      path: '/minor-disciplines',
+      component: MinorDisciplines,
+      name: 'minor-disciplines',
       meta: {
-        title: 'Arts',
+        title: 'Minor Disciplines',
       },
     },
     {
@@ -214,6 +215,14 @@ const r = new Router({
       name: 'basic-skills',
       meta: {
         title: 'Basic Skills',
+      },
+    },
+    {
+      path: '/talents',
+      component: Talents,
+      name: 'talents',
+      meta: {
+        title: 'Talents',
       },
     },
     {

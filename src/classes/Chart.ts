@@ -3,6 +3,7 @@ import { store } from '@/store'
 class Chart {
   private roll_: Array<string>
   private damage_: Array<number>
+  private stun_: Array<number>
   private damage_type_: string
   private keywords_: Array<string>
   private status_: Array<string>
@@ -22,6 +23,10 @@ class Chart {
   public Damage(i: number): string {
     if (this.roll_[i] == 'Miss') return '-'
     return this.damage_[i].toString()
+  }
+  public Stun(i: number): string {
+    if (this.roll_[i] == 'Miss') return '-'
+    return this.stun_[i].toString()
   }
   get DamageType() {
     return this.damage_type_
@@ -51,6 +56,9 @@ class Chart {
   get HasDamage() {
     return this.damage_.length > 0
   }
+  get HasStun() {
+    return this.stun_.length > 0
+  }
   get HasOnMiss() {
     return this.on_miss_ != ''
   }
@@ -78,6 +86,7 @@ class Chart {
 
   public setChartData(data: IChartData): void {
     this.roll_ = data.roll || []
+    this.stun_ = data.stun || []
     this.damage_ = data.damage || []
     this.status_ = data.status || []
     this.keywords_ = data.keywords || []

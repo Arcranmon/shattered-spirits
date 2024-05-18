@@ -1,5 +1,6 @@
 declare interface IBaseData {
   name: string
+  table?: Array<string>
   desc: string
   effect: string
   keywords?: Array<string>
@@ -33,7 +34,7 @@ declare interface ICharacterData extends ICombatantData {
   element: string
   accessories: string[]
   disciplines: ICharDisciplineData[]
-  arts: ICharDisciplineData[]
+  minor_disciplines: ICharDisciplineData[]
   name: string
   player_character: Boolean
   spirit: ISpiritData
@@ -53,11 +54,19 @@ declare interface ICombatantData {
 declare interface IChartData {
   roll: Array<string>
   damage?: Array<number>
+  stun?: Array<number>
   status: Array<string>
   damage_type: string
   keywords: Array<string>
   on_miss: string
   material: string
+}
+
+declare interface IDefenseData {
+  stamina: number
+  reflex: number
+  grit: number
+  focus: number
 }
 
 interface IDisciplineTierData {
@@ -71,6 +80,7 @@ interface IDisciplineTierData {
 
 declare interface IDisciplineData {
   name: string
+  prereqs?: string[]
   category: string
   desc: string
   mechanics_desc: string
@@ -200,11 +210,9 @@ declare interface ISubtypeData extends IBaseData {
 }
 
 declare interface IStanceData extends IBaseData {
-  category: string
   class: string
   respite?: IRespiteData
-  maneuver?: string
-  stamina?: number
+  defenses?: IDefenseData
   traits: string[]
 }
 
@@ -217,9 +225,25 @@ declare interface IStatusData extends IBaseData {
   negate: string
   recover: string
   remove: string
+  repeat: string
   see?: string
   reacts?: Array<string>
   type?: string
+}
+
+declare interface ITalentData {
+  name: string
+  icon: string
+  desc: string
+  rank_0: ITalentRankData
+  rank_1: ITalentRankData
+}
+
+declare interface ITalentRankData {
+  dice?: string
+  feats?: string
+  push?: string
+  other?: string
 }
 
 declare interface ITerrainData extends IBaseData {

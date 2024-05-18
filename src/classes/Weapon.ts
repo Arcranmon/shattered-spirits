@@ -60,8 +60,7 @@ class Weapon extends Attack {
   }
   public get Icon() {
     if (this.Category == 'Error') return ''
-    if (this.Category == 'Unarmed') return require('@/assets/Unarmed.svg')
-    return require('@/assets/' + this.Category + ' Weapon.svg')
+    return require('@/assets/weapons/' + this.Category + '.svg')
   }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'

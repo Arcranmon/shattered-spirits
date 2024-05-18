@@ -1,11 +1,10 @@
 [
   {
     "name": "Iron Dagger",
-    "category": "Bladed",
+    "category": "Blade",
     "desc": "A small blade capable of sudden assaults and being thrown.",
     "keywords": ["Quickdraw"],
-    "speed": 2,
-    "parry": "Gain the following benefits:\n* If the triggering _Attack_ is _Light_, gain 1 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
+    "speed": 1,
     "range": [
       { "category": "Melee", "value": 1 },
       { "category": "Ranged", "value": 4, "special": "_Thrown_, _Close Range_ 1" }
@@ -15,18 +14,40 @@
       "damage_type": "_Slash_/_Stab_",
       "keywords": ["_Brawling_ 1"],
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 2, 2, 3, 3, 3, 3, 5, 5, 5],
+      "damage": [0, 0, 3, 3, 4, 4, 5, 5, 6, 6, 6],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 1", "_Bleeding_ 2", "_Bleeding_ 2", "_Bleeding_ 2"]
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Bleeding_ [3 _Guard_/_Reflex_]",
+        "_Bleeding_ [3 _Guard_/_Reflex_]",
+        "_Bleeding_ [4 _Guard_/_Reflex_]",
+        "_Bleeding_ [4 _Guard_/_Reflex_]",
+        "_Bleeding_ [5 _Guard_/_Reflex_]",
+        "_Bleeding_ [5 _Guard_/_Reflex_]",
+        "_Bleeding_ [5 _Guard_/_Reflex_]"
+      ]
     },
     "weight": 1,
     "hands": 1,
     "durability": 7,
-    "type": "Light"
+    "type": "Light",
+    "parry": "Roll a d6, then resolve the effect using the below table.",
+    "table": [
+      "Gain +1 _Reflex_.",
+      "Gain 1 _Instant Guard_ if the triggering Attack is _Light_ and +1 _Reflex_.",
+      "Gain 1 _Instant Guard_ if the triggering Attack is _Light_ and +1 _Reflex_.",
+      "Gain 1 _Instant Guard_ if the triggering Attack is _Light_ and +2 _Reflex_.",
+      "Gain 1 _Instant Guard_ and +2 _Reflex_.",
+      "Gain 2 _Instant Guard_ and +2 _Reflex_. Gain 1 _Stamina_."
+    ],
+    "analysis_notes": { "fudge": -0.25, "notes": "Expanded crit range" }
   },
   {
     "name": "Iron Shortsword",
-    "category": "Bladed",
+    "category": "Blade",
     "desc": "A light blade that offers a balance between power and speed.",
     "type": "Light",
     "speed": 3,
@@ -46,7 +67,7 @@
   },
   {
     "name": "Iron Longsword",
-    "category": "Bladed",
+    "category": "Blade",
     "desc": "A sword that can easily be used in one or both hands and is favored by many.",
     "keywords": ["Hand-and-a-Half"],
     "speed": 4,
@@ -68,7 +89,7 @@
   },
   {
     "name": "Iron Greatsword",
-    "category": "Bladed",
+    "category": "Blade",
     "desc": "A massive blade meant to be wielded in both hands, this weapon can cleave through most defenses.",
     "speed": 5,
     "parry": "Gain the following benefits:\n* Gain 2 _Instant Guard_.\n* If the Attacker is within _Reach_ they must choose; either the Attack takes a -1 _Penalty_ or after resolving the triggering Attack make a _Weapon Attack_ against them with this _Weapon_. You automatically roll a 6.",
@@ -105,7 +126,7 @@
   },
   {
     "name": "Iron Handaxe",
-    "category": "Hafted",
+    "category": "Axe",
     "type": "Light",
     "desc": "A lightweight axe that weighs enough to punish a foe's defenses while allowing for swift strikes.",
     "speed": 3,
@@ -140,7 +161,7 @@
   },
   {
     "name": "Iron Battleaxe",
-    "category": "Hafted",
+    "category": "Axe",
     "type": "Versatile",
     "desc": "A powerful melee tool that cleaves through a foe's attempts to grit.",
     "keywords": ["Hand-and-a-Half"],
@@ -175,7 +196,7 @@
   },
   {
     "name": "Iron Greataxe",
-    "category": "Hafted",
+    "category": "Axe",
     "type": ["Heavy"],
     "desc": "A mighty axe wielded in two hands that crushes through all defenses and drives foes into the dirt.",
     "speed": 6,
@@ -212,7 +233,7 @@
   },
   {
     "name": "Iron Mace",
-    "category": "Hafted",
+    "category": "Blunt",
     "type": "Versatile",
     "desc": "A simple weapon with a heavy, weighted head.",
     "charged_effect": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1].",
@@ -234,7 +255,7 @@
   },
   {
     "name": "Iron Warhammer",
-    "category": "Hafted",
+    "category": "Blunt",
     "type": "Versatile",
     "desc": "A heavy weapon that disregards all but the heaviest of armors.",
     "keywords": ["Hand-and-a-Half"],
@@ -270,7 +291,7 @@
   },
   {
     "name": "Iron Maul",
-    "category": "Hafted",
+    "category": "Blunt",
     "type": "Heavy",
     "desc": "A weapon of sheer mass that pushes through armor and defenses alike to punish foes.",
     "speed": 7,
@@ -505,7 +526,7 @@
   },
   {
     "name": "Recurve Bow",
-    "category": "Projectile",
+    "category": "Bow",
     "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilities.",
     "type": "Light",
     "speed": 3,
@@ -524,29 +545,8 @@
     "durability": 6
   },
   {
-    "name": "Sling",
-    "category": "Projectile",
-    "desc": "A simple weapon with a windup that pierces through many defenses.",
-    "speed": 4,
-    "type": "Versatile",
-    "charged_effect": "Add [_Pierce_ 1] and deal +1 Damage on a _Hit_+.",
-    "parry": "None.",
-    "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 2" }],
-    "chart": {
-      "damage_type": "Crush",
-      "material": "Stone (Projectile)",
-      "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 0, 4, 4, 5, 6, 7, 8, 8],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 2", "_Dazed_ 2"]
-    },
-    "weight": 1,
-    "hands": 1,
-    "durability": 5
-  },
-  {
     "name": "Shortbow",
-    "category": "Projectile",
+    "category": "Bow",
     "desc": "A bow that is equally in place hunting game and on the battlefield.",
     "type": "Versatile",
     "charged_effect": "Add [_Arcing_] and deal +2 Damage on a _Hit_+.",
@@ -567,7 +567,7 @@
   },
   {
     "name": "Longbow",
-    "category": "Projectile",
+    "category": "Bow",
     "desc": "A heavy bow that has unparalleled range and power, allowing deadly strikes from extreme range.",
     "type": "Heavy",
     "charged_effect": "Add [_Arcing_, _Pierce_ 1] and deal +3 Damage on a _Hit_+.",
@@ -586,6 +586,51 @@
     "weight": 5,
     "hands": 2,
     "durability": 9
+  },
+  {
+    "name": "Sling",
+    "category": "Sling",
+    "desc": "A simple weapon with a windup that pierces through many defenses.",
+    "speed": 2,
+    "type": "Versatile",
+    "charged_effect": "Add [_Pierce_ 2] and deal +2 Damage on a _Hit_+.",
+    "special": "You may choose to make a _Melee_ Attack with this. If you do, use the stats of a _Small Improvised_ Weapon.",
+    "parry": "None.",
+    "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 2" }],
+    "chart": {
+      "damage_type": "Crush",
+      "material": "Stone (Projectile)",
+      "on_miss": "+2 _Momentum_",
+      "stun": [0, 0, 0, 0, 2, 2, 2, 3, 3, 4, 4],
+      "damage": [0, 0, 0, 0, 4, 4, 5, 6, 7, 8, 8],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 2", "_Dazed_ 2"]
+    },
+    "weight": 1,
+    "hands": 1,
+    "durability": 5
+  },
+  {
+    "name": "Heavy Sling",
+    "category": "Sling",
+    "desc": "A simple weapon with a windup that pierces through many defenses.",
+    "speed": 2,
+    "type": "Versatile",
+    "charged_effect": "Add [_Pierce_ 2] and deal +2 Damage on a _Hit_+.",
+    "special": "You may choose to make a _Melee_ Attack with this. If you do, use the stats of a _Small Improvised_ Weapon.",
+    "parry": "None.",
+    "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 2" }],
+    "chart": {
+      "damage_type": "Crush",
+      "material": "Stone (Projectile)",
+      "on_miss": "+2 _Momentum_",
+      "damage": [0, 0, 0, 0, 4, 4, 5, 6, 7, 8, 8],
+      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 2", "_Dazed_ 2"]
+    },
+    "weight": 1,
+    "hands": 1,
+    "durability": 5
   },
   {
     "name": "Iron Buckler",

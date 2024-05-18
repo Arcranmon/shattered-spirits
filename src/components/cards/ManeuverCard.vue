@@ -2,10 +2,12 @@
   <div class="card--wrapper" inline>
     <div class="card--underline-top">
       <div class="card--header" v-bind:class="maneuver.Type.replace(' ', '_')">
-        <h4 style="display: inline;">{{ maneuver.Name }}</h4>
+        <h4 style="display: inline">{{ maneuver.Name }}</h4>
         <br />
         <div class="card--keywords" v-bind:class="useTextFormatting">
-          <b><display-tooltip-text class="card--type" :string="maneuver.TypeHeader" :decorate="false" /></b><br />
+          <div v-if="maneuver.Type != 'Action'">
+            <b><display-tooltip-text class="card--type" :string="maneuver.TypeHeader" :decorate="false" /></b>
+          </div>
           <b>
             <span v-for="(keyword, index) in maneuver.Keywords" :key="index" class="keyword--box">
               <display-tooltip-text :string="keyword" :decorate="false" /></span
@@ -51,8 +53,11 @@
       <div class="card--format" v-if="maneuver.HasManifest">
         <display-tooltip-text :string="maneuver.ManifestHeader" />
       </div>
+      <div class="card--format" v-if="maneuver.HasTable">
+        <basic-table :chart="maneuver.Table" />
+      </div>
     </div>
-    <div class="desc--box" v-if="(maneuver.Desc.length > 0)" style="font-style: italic;">{{ maneuver.Desc }}<br /></div>
+    <div class="desc--box" v-if="maneuver.Desc.length > 0" style="font-style: italic">{{ maneuver.Desc }}<br /></div>
   </div>
 </template>
 
@@ -60,6 +65,7 @@
 import Vue from 'vue'
 import { Maneuver } from '@/class'
 import { store } from '@/store'
+import BasicTable from '@/components/BasicTable.vue'
 import ChartTable from '@/components/ChartTable.vue'
 
 export default Vue.extend({
@@ -83,7 +89,7 @@ export default Vue.extend({
       if (this.format_text) return 'card--text-format'
     },
   },
-  components: { ChartTable },
+  components: { BasicTable, ChartTable },
 })
 </script>
 

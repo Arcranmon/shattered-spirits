@@ -2,14 +2,34 @@
 
 ### Refactors
 
-- Change Statuses to flat tokens so that things go faster there
-- Refactor Stamina/statuses to have some sort of roll
-  - Keep Stamina, but let it be added as a bonus to rolls
-- Rework Actions to use a basic action, with Stunts expanding it
+- Subtype Art grants a Minor Attack and applicable Terrain effect
+- Major Disciplines at Rank 1 grant:
+  - A Technique
+  - Major Attack (if Spirit)
 - Potentially make Stances more impactful
 - Shrink Phases
-- Make Manifests more obvious/easier to use
-- Rework Gambits to use the Stun bar
+- More Arts
+  - ARTILLERY
+    - Way of the Magus for Foci (stretch goal)
+  - DEFENDER
+    - Way of the Warden gets Engaged
+  - STRIKER
+    - Way of the Great Weapon
+  - SURVIVOR
+    - Way of the Fortress gets Raise Guard and X
+  - CONTROLLER
+    - Way of the Conqueror gets Anguished
+    - Way of the Gladiator gets Taunted/Enraged
+    - Way of the Scoundrel gets Feint and a Blind
+  - SUPPORTER
+    - Way of the Warlord gets Courage
+    - Way of the Minstrel gets Joyful engine
+    - Way of the Sage gets Calm
+    - Way of the Tactician gets Flank and SOMETHING
+  - WEAPON
+    - Fist, and Grapple Arts
+    - 1-2x for each Weapon Category
+    - Way of the Brawler - Environmental Attacks
 
 ### Plan
 
@@ -50,9 +70,6 @@ POTENTIAL REFACTORS
 - Basic stuff to moved out:
   - Hide, Raise Guard, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Sunder, Basic Flourish, Basic Feint
   - Examples:
-    - Way of the Skulker gets Hide and Skulker Stance
-    - Way of the Scoundrel gets Feint and Scoundrel Stance
-    - Way of the Fortress gets Raise Guard and Fortress Stance
   - Most Gambits go to Art stuff
 
 LONG TERM

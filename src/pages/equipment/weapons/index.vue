@@ -2,11 +2,11 @@
   <div>
     <h2>Weapons and Shields</h2>
     <span v-if="isMobile">
-      <v-expansion-panels style="padding: 3px;">
-        <v-expansion-panel style="background-color: inherit;">
+      <v-expansion-panels style="padding: 3px">
+        <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header>Filters</v-expansion-panel-header>
           <v-expansion-panel-content>
-            <v-row align="center" style="margin-left: 0.5em;">
+            <v-row align="center" style="margin-left: 0.5em">
               <v-col cols="12"
                 ><v-select v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple filled outlined
                   ><template v-slot:prepend-item>
@@ -17,9 +17,7 @@
                         </v-icon>
                       </v-list-item-action>
                       <v-list-item-content>
-                        <v-list-item-title>
-                          Select All
-                        </v-list-item-title>
+                        <v-list-item-title> Select All </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
                     <v-divider class="mt-2"></v-divider> </template
@@ -41,12 +39,12 @@
         label="Selected Weapon"
         filled
         outlined
-        style="margin-left: 0.5em; margin-right: 0.5em;"
+        style="margin-left: 0.5em; margin-right: 0.5em"
       ></v-select>
-      <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em;" /></div
+      <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em" /></div
     ></span>
     <span v-else>
-      <v-row align="center" style="margin-left: 0.5em;">
+      <v-row align="center" style="margin-left: 0.5em">
         <v-col cols="2"
           ><v-select v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple filled outlined
             ><template v-slot:prepend-item>
@@ -57,9 +55,7 @@
                   </v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>
-                    Select All
-                  </v-list-item-title>
+                  <v-list-item-title> Select All </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
               <v-divider class="mt-2"></v-divider> </template
@@ -74,14 +70,14 @@
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
-            ><div v-for="weapon in weapons" style="width: 100%;" v-bind:key="weapon.Name">
+            ><div v-for="weapon in weapons" style="width: 100%" v-bind:key="weapon.Name">
               <v-btn @click="selectedWeapon = weapon" class="button--style" depressed tile block>
                 <img class="image--icon-size" :src="weapon.Icon" />{{ weapon.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em;" :key="selectedWeapon.Name" /></v-col> </v-row
+        <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -99,8 +95,8 @@ export default Vue.extend({
   components: { AttackCard },
   data() {
     return {
-      weaponCategories: ['Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield', 'Improvised'],
-      selectedWeapons: ['Bladed', 'Pole', 'Hafted', 'Throwing', 'Projectile', 'Shield', 'Improvised'],
+      weaponCategories: ['Bladed', 'Pole', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Sling', 'Shield', 'Improvised'],
+      selectedWeapons: ['Bladed', 'Pole', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Sling', 'Shield', 'Improvised'],
       weaponSpeeds: ['Any', 1, 2, 3, 4, 5, 6, 7, 8],
       selectedSpeed: 'Any',
       weaponTypes: ['Any', 'Light', 'Versatile', 'Heavy'],
@@ -119,8 +115,8 @@ export default Vue.extend({
       return this.selectedWeapons.length > 0 && !this.weaponCategories
     },
     icon() {
-      if (this.hasAllTypes) return 'mdi-close-box'
-      if (this.hasSomeType) return 'mdi-minus-box'
+      if (this.hasAllWeapons) return 'mdi-close-box'
+      if (this.hasSomeWeapons) return 'mdi-minus-box'
       return 'mdi-checkbox-blank-outline'
     },
   },

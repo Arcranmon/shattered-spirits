@@ -4,28 +4,22 @@ from termcolor import colored
 import argparse
 
 status_multipliers = {
-    "Alight": 1.0,
-    "Burned": 1.0,
-    "Soaked": 0.2,
-    "Pull": 0.5,
-    "Angled Push": 0.5,
-    "Push": 0.5,
-    "Dazed": 0.75,
-    "Grabbed": 0.75,
-    "Vulnerable": 0.75,
-    "Slowed": 1.25,
-    "Bleeding": 1.0,
-    "Frigid": 1.0,
-    "Exposed": 1.0,
-    "Impaired": 1.0,
-    "Restrained": 1.75,
-    "Prone": 1.5,
-    "Hobbled": 1.25,
-    "Reeling": 1.25,
-    "Break": 1.25,
-    "Blinded": 2,
-    "Shocked": 1.0,
+    "Airborne": 4,
+    "Alight": 4,
+    "Bleeding": 4,
+    "Burned": 3,
+    "Dazed": 1,
+    "Exposed": 2,
+    "Frightened": 3,
+    "Frozen": 3,
+    "Push": 0.75,
+    "Prone": 3,
+    "Reeling": 2,
+    "Shocked": 3,
+    "Soaked": 1
 }
+
+instant_statuses = [   "Dazed", "Push", "Pull", "Slide"]
 
 keyword_multipliers = {
     "Avoidable": -0.5,
@@ -55,26 +49,32 @@ MAJOR_ATTACK = 2
 TECHNIQUE = 3
 
 def get_status_damage(status_string, glancing):
-    split_status = status_string.split('_')
-    if(len(split_status) == 1): return 0
-    status = split_status[1]
-    secondary = split_status[2]
-    secondary = secondary.replace('[', '')
+    # Split individual statuses out
+    statuses = status_string.split(', ')
 
-    damage_multiplier = status_multipliers[status]
-
-    if(glancing): damage_multiplier = damage_multiplier / 2
-
-    if damage_multiplier != 0:
-        if status == 'Alight':
-            return math.sqrt(sum(range(1,int(secondary)+1)))+int(secondary)/2
-        elif 'x' in secondary:
-            return damage_multiplier * int(secondary[0]) * int(secondary[2])
+    estimated_damage = 0
+    no_save_damage = 0
+    for status in statuses:
+        # Scale the estimated damage based on the DC
+        if '[' in status:
+            status = status.replace('_', '')
+            final_statuses = status.split('[')
+            estimated_damage += status_multipliers[final_statuses[0].strip()]
+            multiplier = (int(final_statuses[1][0])-1)/6
+            estimated_damage = estimated_damage * multiplier
+        # Otherwise, add the effect to the damage
         else:
-            return damage_multiplier * int(secondary) 
-    else:
-        print(status + " has no damage multiplier!")
-    return damage_multiplier
+            split_status = status.split('_')
+            if len(split_status) == 1: continue
+            if split_status[1] in instant_statuses:
+                if glancing:
+                    no_save_damage += int(split_status[2]) * status_multipliers[split_status[1]]/2
+                else:
+                    no_save_damage += int(split_status[2]) * status_multipliers[split_status[1]]
+            else:
+                estimated_damage += status_multipliers[split_status[1]]
+
+    return estimated_damage + no_save_damage
 
 def get_data(database):
     # Open the appropriate database.
@@ -127,6 +127,7 @@ def estimate_damage(attack, glancing, print_stats):
     cost = 0
     roll_chart = ["Hit"]*11
     damage_chart = [0]*11
+    stun_chart = [0]*11
     status_chart = ['']*11
     speed = 1
     bonus_damage =  [0]*11
@@ -136,13 +137,17 @@ def estimate_damage(attack, glancing, print_stats):
     override_range = ""
     diff_speed = 0
     
-    expected_damage = [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]
+    expected_damage = [6.0, 8.0, 10.0, 12.0]
                 
     if("chart" in attack):
         if(not("damage" in attack["chart"])):
             damage_chart = [0]*11
         else:                        
             damage_chart = attack["chart"]["damage"]
+        if(not("stun" in attack["chart"])):
+            stun_chart = [0]*11
+        else:                        
+            stun_chart = attack["chart"]["stun"]
         status_chart = attack["chart"]["status"]
         roll_chart = attack["chart"]["roll"]
                     
@@ -170,8 +175,8 @@ def estimate_damage(attack, glancing, print_stats):
         override_range = attack["analysis_notes"].get("range", "")
         diff_speed = attack["analysis_notes"].get("speed", 0)
     
-    # Momentum is worth (Speed+2)/4
-    momentum_value = ((diff_speed if diff_speed != 0 else speed) + 2)/4
+    # Momentum is 'worth' 2 Damage
+    momentum_value = 2
         
     if("hands" in attack and attack["hands"] == 2):
         cost += 1
@@ -181,7 +186,7 @@ def estimate_damage(attack, glancing, print_stats):
     elif attack_class == TECHNIQUE:
         expected_damage = [x * 1.5 for x in expected_damage]
 
-    speed_string = "Speed:                  1      2      3      4      5      6      7      8"
+    speed_string = "Speed:                  1      2      3      4"
     if diff_speed == 0:
         speed_string = speed_string.replace("   " + str(speed) + "   ", "***"+ str(speed) + "***")
     else:
@@ -217,9 +222,9 @@ def estimate_damage(attack, glancing, print_stats):
         ranges = override_range
 
     for range_index, attack_range in enumerate(ranges):    
-        straight_damage = [0]*8
-        advantage_damage = [0]*8
-        disadvantage_damage = [0]*8
+        straight_damage = [0]*4
+        advantage_damage = [0]*4
+        disadvantage_damage = [0]*4
 
         thrown = "Thrown" in attack_range.get("special", "")
         range_category = "Melee"
@@ -249,7 +254,7 @@ def estimate_damage(attack, glancing, print_stats):
 
         # Calculate the damage for each speed.
         for roll_index in range(10,-1,-1):
-            for speed_index in range(8):
+            for speed_index in range(4):
                 if(thrown and roll_chart[roll_index] == "Graze"): 
                     continue
                 speed_dif = speed_index-speed+1 # +1 because zero indexed
@@ -267,16 +272,10 @@ def estimate_damage(attack, glancing, print_stats):
                     continue
 
                 damage = (damage_chart[index])
+                damage += stun_chart[index] * 0.75
                 if(glancing): damage = math.ceil(damage/2.0)
 
-                for status in status_chart[index].split(','):
-                    if '/' in status:
-                        options = status.split('/')
-                        status_damage = max([get_status_damage(x, glancing) for x in options])
-                        damage += status_damage
-                    else:
-                        status_damage = get_status_damage(status, glancing)
-                        damage += status_damage
+                damage += get_status_damage(status_chart[index], glancing)
 
                 damage += bonus_damage[index]
                 if(roll_chart[index] != "Miss"): 

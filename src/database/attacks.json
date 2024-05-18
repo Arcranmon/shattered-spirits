@@ -14,46 +14,55 @@
     "analysis_notes": { "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5] }
   },
   {
+    "name": "Deadeye",
+    "desc": "You take careful aim, preparing to unleash a pinpoint strike on a foe.",
+    "reqs": "May not be used if you have moved this _Turn_.",
+    "effect": "Choose a Single-Target Ranged Attack and a creature within Range of said Ranged Attack. Immediately become _Charging_. At the end of the next _Phase_ remove _Charging_ and make the selected Attack against the Target at _Advantage_ and ignoring _Light Cover_. If the Target is out of Range this fails. Lose _Charging_ if you leave your current space. If you lose _Charging_ by any means other than the end of the _Phase_ do not make the Attack, but you may resolve the _On Miss_ effect of said Attack.",
+    "boost": "No Cost: You may remove 4 _Stun_ from the Target to instead make the Attack against them at the end of this _Phase_.",
+    "rank": "Special Attack"
+  },
+  {
     "name": "Charged Attack",
-    "class": "Basic",
     "desc": "You gather yourself before unleashing a devastating attack.",
-    "effect": "Choose a _Major Attack_ with a _Charged Effect_. Instead of immediately making the _Attack_, instead create a _Hazard_ equal to the _Area_ the _Charged Effect_ would Target (a single space within _Range_ if no Area is listed). End your _Turn_, then become _Charging_. At the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the _Attack_ against all creatures in the _Area_. You may choose to not make this _Attack_ and instead gain 1 _Momentum_ and resolve the _On Miss_ effect when removing the _Hazard_.",
-    "special": "Determine _Speed Penalty_ based on when the Attack is actually used, not when it began _Charging_.",
+    "effect": "Choose a _Major Attack_ with a _Charged Effect_. Instead of immediately making the _Attack_, instead create a _Hazard_ equal to the _Area_ the _Charged Effect_ would Target (a single space within _Range_ if no Area is listed). End your _Turn_, then become _Charging_.\n&nbsp;\nAt the end of the next _Phase_ remove _Charging_ and the _Hazard_, then resolve the _Attack_ against all creatures in the _Area_. You may choose to not make this _Attack_ and instead gain 1 _Momentum_ and resolve the _On Miss_ effect when removing the _Hazard_.",
+    "special": "Refer to the _Attack_ for all details about the specific Attack, such as its _Speed_ and whether it is _Versatile_ or _Heavy_. This Attack inherits the Class (_Martial_, _Spirit_, etc.) of the Attack it is used for.",
     "rank": "Major Attack"
   },
   {
     "name": "Chip Shot",
     "class": "Mountain",
     "desc": "You fire a small shards of stone, pelting foes and limiting their reactions.",
+    "keywords": ["Spirit"],
     "type": "Versatile",
-    "speed": "5",
-    "cost": "2 _Momentum_",
+    "speed": "4",
+    "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 2" }],
-    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 4. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
+    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space, this _Attack_ is instead _Speed_ 3. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
     "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 3 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
       "material": "Stone",
-      "damage": [0, 0, 0, 0, 5, 6, 6, 7, 7, 8, 8],
+      "stun": [0, 0, 0, 0, 2, 2, 3, 3, 4, 5, 5],
+      "damage": [0, 0, 0, 0, 5, 6, 6, 7, 8, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
         "",
         "",
-        "_Exposed_ 1",
-        "_Exposed_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 2, _Reeling_ 1",
-        "_Exposed_ 2, _Reeling_ 1"
+        "_Exposed_ [3 _Grit_]",
+        "_Exposed_ [3 _Grit_]",
+        "_Exposed_, _Reeling_ [4 _Grit_]",
+        "_Exposed_, _Reeling_ [4 _Grit_]",
+        "_Exposed_, _Reeling_ [4 _Grit_]",
+        "_Exposed_, _Reeling_ [5 _Grit_]",
+        "_Exposed_, _Reeling_ [5 _Grit_]"
       ]
     },
     "rank": "Minor Attack",
     "analysis_notes": {
-      "speed": 4.5
+      "speed": 3.5
     }
   },
   {
@@ -64,13 +73,13 @@
     "speed": "4",
     "cost": "2 _Momentum_",
     "range": [{ "category": "Ranged", "value": 3 }],
-    "special": "After resolving the Attack you may remove any amount of _Frigid_ on the Target to inflict _Endurable_ _Reeling_ X/_Slowed_ [X _Stamina_] in any combination, where X is the value of _Frigid_ being replaced.",
+    "special": "After resolving the Attack you may remove any amount of _Frozen_ on the Target to inflict _Endurable_ _Reeling_ X/_Slowed_ [X _Stamina_] in any combination, where X is the value of _Frozen_ being replaced.",
     "chart": {
       "damage_type": "Cold",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 3", "_Frigid_ 3", "_Frigid_ 4", "_Frigid_ 4"]
+      "status": ["", "_Frozen_ 1", "_Frozen_ 1", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 3", "_Frozen_ 3", "_Frozen_ 4", "_Frozen_ 4"]
     },
     "rank": "Minor Attack",
     "analysis_notes": { "fudge": -0.5 }
@@ -200,36 +209,37 @@
   },
   {
     "name": "Ember",
+    "keywords": ["Spirit"],
     "class": "Blaze",
     "desc": "You form and fire a handful of flame, singing and searing foes.",
     "type": "Versatile",
-    "speed": "3",
+    "speed": "2",
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3],
+      "damage": [0, 0, 0, 3, 3, 4, 4, 5, 6, 6, 6],
       "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
         "",
-        "_Alight_ 1",
-        "_Alight_ 1",
-        "_Alight_ 1",
-        "_Alight_ 2",
-        "_Alight_ 2",
-        "_Alight_ 2",
-        "_Alight_ 3, _Burned_ 1",
-        "_Alight_ 3, _Burned_ 1"
+        "_Alight_ [4 _Reflex_]",
+        "_Alight_ [4 _Reflex_]",
+        "_Alight_ [4 _Reflex_]",
+        "_Alight_ [4 _Reflex_]",
+        "_Alight_ [5 _Reflex_]",
+        "_Alight_ [5 _Reflex_]",
+        "_Alight_, _Burned_ [6 _Reflex_]",
+        "_Alight_, _Burned_ [6 _Reflex_]"
       ]
     },
     "rank": "Minor Attack"
   },
   {
     "name": "Flaming Detonation",
-    "class": "Explosion",
+    "class": "Detonation",
     "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
     "type": "Light",
     "speed": "4+ [_Rigid_]",
@@ -246,7 +256,8 @@
   },
   {
     "name": "Firecracker",
-    "class": "Explosion",
+    "keywords": ["Spirit"],
+    "class": "Detonation",
     "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
     "type": "Light",
     "speed": "2",
@@ -255,16 +266,17 @@
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 2, 2, 3, 3, 3, 4, 5, 5],
-      "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1, _Burned_ 1", "_Dazed_ 1, _Burned_ 1"]
+      "damage": [0, 0, 3, 3, 4, 4, 5, 5, 5, 6, 6],
+      "stun": [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4],
+      "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1, _Burned_ [4 _Reflex_]", "_Dazed_ 1, _Burned_ [4 _Reflex_]"]
     },
     "rank": "Minor Attack"
   },
   {
     "name": "Fireball",
     "desc": "A blast of concentrated flame, destroying all before it in a flash.",
-    "class": "Explosion",
+    "class": "Detonation",
     "type": "Versatile",
     "speed": "5",
     "cost": "2 _Momentum_",
@@ -319,7 +331,7 @@
   {
     "name": "Flame Jet",
     "desc": "A short-range explosion of flames to send foes staggering back.",
-    "class": "Explosion",
+    "class": "Detonation",
     "type": "Light",
     "speed": "3",
     "cost": "2 _Momentum_",
@@ -338,7 +350,7 @@
   {
     "name": "Flamethrower",
     "desc": "A powerful jet of flames that erupts into a debilitating jet of flames.",
-    "class": "Explosion",
+    "class": "Detonation",
     "type": "Versatile",
     "speed": "4",
     "cost": "4 _Momentum_",
@@ -359,7 +371,7 @@
   },
   {
     "name": "Flashbang",
-    "class": "Explosion",
+    "class": "Detonation",
     "desc": "You make a small explosion intended to blind and disorient rather than harm.",
     "type": "Light",
     "speed": "2",
@@ -391,29 +403,30 @@
     "name": "Focused Gale",
     "class": "Gale",
     "desc": "A tunnel of powerful air, striking out at a distant foe.",
+    "keywords": ["Spirit"],
     "type": "Light",
-    "speed": "2",
+    "speed": "1",
     "cost": "1 _Momentum_",
     "effect": "Ignore all _Penalties_ due to _Windy_ spaces when making this Attack.",
-    "special": "When removing _Vulnerable_, you may inflict an equivalent amount of _Push_ instead of increasing Damage.",
-    "boost": "1 _Momentum_: Add [_Forceful_].",
+    "boost": "Choose any:\n* 1 _Momentum_: Add [_Forceful_].\n* X _Stun_ (max 3): Increase the _Push_ by 1.",
     "range": [{ "category": "Ranged", "value": 6 }],
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
       "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "stun": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "status": [
         "",
         "",
-        "_Push_ 1, _Vulnerable_ 2",
-        "_Push_ 1, _Vulnerable_ 2",
-        "_Push_ 2, _Vulnerable_ 2",
-        "_Push_ 2, _Vulnerable_ 2",
-        "_Push_ 2, _Vulnerable_ 2",
-        "_Push_ 3, _Vulnerable_ 2",
-        "_Push_ 3, _Vulnerable_ 2",
-        "_Push_ 3, _Vulnerable_ 3",
-        "_Push_ 3, _Vulnerable_ 3"
+        "_Push_ 1",
+        "_Push_ 1",
+        "_Push_ 2",
+        "_Push_ 2",
+        "_Push_ 2",
+        "_Push_ 3, _Exposed_ [4 _Grit_]",
+        "_Push_ 3, _Exposed_ [4 _Grit_]",
+        "_Push_ 3, _Exposed_ [5 _Grit_]",
+        "_Push_ 3, _Exposed_ [5 _Grit_]"
       ]
     },
     "rank": "Minor Attack",
@@ -428,14 +441,14 @@
     "cost": "2 _Momentum_",
     "range": [{ "category": "Self" }],
     "area": "_Cone_ 2",
-    "effect": "If you are in a _Frozen_ space or adjacent to one you may _Destroy_ the _Frozen_ space to reduce the Cost by 1. If you use an adjacent space, the _Area_ must include it.",
+    "effect": "If you are in a _Icy_ space or adjacent to one you may _Destroy_ the __Icy_ space to reduce the Cost by 1. If you use an adjacent space, the _Area_ must include it.",
     "chart": {
       "damage_type": "_Slash_",
       "material": "Ice",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2", "_Frigid_ 2"]
+      "status": ["", "_Frozen_ 1", "_Frozen_ 1", "_Frozen_ 1", "_Frozen_ 1", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 2", "_Frozen_ 2"]
     },
     "rank": "Minor Attack",
     "analysis_notes": { "expected_targets": 1.5 }
@@ -480,11 +493,11 @@
     "cost": "1 _Momentum_",
     "speed": "5+ [_Rigid_]",
     "range": [{ "category": "Ranged", "value": 6 }],
-    "target": "A Size 1- creature on a _Frozen_ space within _Range_.",
-    "effect": "Immediately deal 3 _Cold_ Damage and inflict _Frigid_ 3, _Hobbled_ 2 on the Target.",
-    "special": "You may choose to remove the _Frozen_ space as a part of this _Manuever_. If you do, instead deal 4 _Cold_ Damage and inflict _Frigid_ 3, _Restrained_ [3 _Stamina_]. This _Restrained_ ends after the Target takes any Damage.",
-    "boost": "1 _Momentum_: You may target a Size 2 creature. The majority of their occupied spaces must be _Frozen_.",
-    "charged_effect": "Instead, resolve this 3 contiguous _Frozen_ spaces within Range.",
+    "target": "A Size 1- creature on an _Icy_ space within _Range_.",
+    "effect": "Immediately deal 3 _Cold_ Damage and inflict _Frozen_ 3, _Hobbled_ 2 on the Target.",
+    "special": "You may choose to remove the _Icy_ space as a part of this _Manuever_. If you do, instead deal 4 _Cold_ Damage and inflict _Frozen_ 3, _Restrained_ [3 _Stamina_]. This _Restrained_ ends after the Target takes any Damage.",
+    "boost": "1 _Momentum_: You may target a Size 2 creature. The majority of their occupied spaces must be _Icy_.",
+    "charged_effect": "Instead, resolve this in 3 contiguous _Icy_ spaces within Range.",
     "analysis_notes": { "bonus_damage": [8.75, 8.75, 8.75, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25] }
   },
   {
@@ -492,19 +505,47 @@
     "class": "Tundra",
     "desc": "You form a series of icicles before rapidly firing them.",
     "type": "Versatile",
-    "speed": 4,
+    "speed": 3,
     "cost": "1 _Momentum_",
-    "range": [{ "category": "Ranged", "value": 6 }],
-    "effect": "You must _Draw_ 1 as a part of this Attack.",
-    "special": "Make the target's space _Frosted_.",
+    "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
+    "effect": "You must _Draw_ 1 within Range as a part of this Attack. If you don't inflict _Frozen_, make the target's space _Rimed_.",
+    "special": "If you _Draw_ from an adjacent _Ice_ _Source_, this _Attack_ is instead _Speed_ 2. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
+    "boost": "1 _Momentum_: The Special instead applies if you _Draw_ from an _Ice_ _Source_ within Range 3 or, if you choose an adjacent _Source_, you gain a +1 _Bonus_ to the Attack.",
     "chart": {
       "damage_type": "_Stab_",
       "material": "Ice",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 0, 3, 4, 4, 5, 5, 6, 6],
+      "damage": [0, 0, 0, 0, 6, 7, 7, 8, 8, 9, 9],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 1", "_Frigid_ 2", "_Frigid_ 2"]
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Frozen_ [2 _Grit_]",
+        "_Frozen_ [3 _Grit_]",
+        "_Frozen_ [3 _Grit_]",
+        "_Frozen_ [4 _Grit_]",
+        "_Frozen_ [4 _Grit_]",
+        "_Frozen_ [5 _Grit_]",
+        "_Frozen_ [5 _Grit_]"
+      ]
     },
+    "rank": "Minor Attack",
+    "analysis_notes": {
+      "speed": 2.5
+    }
+  },
+  {
+    "name": "Intimidate",
+    "class": "General",
+    "keywords": ["Mobile"],
+    "desc": "You snarl at foe, placing the fear of death in them.",
+    "type": "Versatile",
+    "speed": "2",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "effect": "Inflict _Frightened_ [5 _Focus_] and 2 _Stun_ on the Target.",
+    "boost": "4 _Stun_: Increase the _Negate_ DC by 2.",
     "rank": "Minor Attack"
   },
   {
@@ -512,15 +553,27 @@
     "class": "Storm",
     "desc": "You conduct an instantaneous bolt of lightning, striking a nearby foe.",
     "type": "Light",
-    "speed": "2",
+    "speed": "1",
     "cost": "2 _Momentum_",
     "range": [{ "category": "Ranged", "value": 4 }],
     "chart": {
       "damage_type": "Lightning",
       "on_miss": "+2 _Momentum_",
-      "damage": [2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5],
+      "damage": [2, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6],
       "roll": ["Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 1", "_Shocked_ 2", "_Shocked_ 2"]
+      "status": [
+        "_Shocked_ [2 _Grit_]",
+        "_Shocked_ [2 _Grit_]",
+        "_Shocked_ [2 _Grit_]",
+        "_Shocked_ [3 _Grit_]",
+        "_Shocked_ [3 _Grit_]",
+        "_Shocked_ [4 _Grit_]",
+        "_Shocked_ [4 _Grit_]",
+        "_Shocked_ [5 _Grit_]",
+        "_Shocked_ [5 _Grit_]",
+        "_Shocked_ [6 _Grit_]",
+        "_Shocked_ [6 _Grit_]"
+      ]
     },
     "rank": "Minor Attack"
   },
@@ -555,44 +608,68 @@
     "rank": "Major Attack"
   },
   {
+    "name": "Mobile Attack",
+    "desc": "You make an attack without breaking stride, covering ground quickly.",
+    "cost": "1 _Momentum_",
+    "reqs": "Move is not None.",
+    "effect": "Use any _Attack_. Add [_Mobile_] to it.",
+    "special": "Cost is instead None if this Move is [_Safe_].",
+    "rank": "Special Attack"
+  },
+  {
     "name": "Quickened Attack",
-    "class": "Basic",
     "desc": "You find it easy to slip in additional strike with a swift weapon.",
+    "speed": "4",
     "type": "Light",
-    "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 3 or less. The _Speed_ of this Attack is adjusted as follows:\n* _Speed_ 1: _Speed_ 4\n* _Speed_ 2: _Speed_ 6\n* _Speed_ 3: _Speed_ 8",
-    "special": "_Momentum_ gained from _On Miss_ effects is decreased by 1.",
+    "effect": "Use a _Light_ _Major Attack_ with a _Speed_ of 1. Reduce any _Momentum_ gained from _On Miss_ by 1.",
+    "boost": "1 _Momentum_: Instead, use a _Versatile_ _Major Attack_ with a _Speed_ of 1 or a _Light_ _Major Attack_ with a _Speed_ of 2.",
+    "special": "This Attack inherits the Class (_Martial_, _Spirit_, etc.) of the Attack it is used for.",
     "rank": "Minor Attack"
+  },
+  {
+    "name": "Flurry",
+    "desc": "You attack with two weapons, unleashing a series of strikes.",
+    "reqs": "Weapon _Wielded_ in either _Hand_.",
+    "effect": "Make two _Minor Attacks_, each of which must use one of your _Wielded_ Weapons. You must make at least one Attack with each of these Weapons.",
+    "special": "For this _Turn_ you may add [_Glancing_] and halve the _Momentum_ cost and any _Momentum_ gained from _On Miss_ (rounded down) to make a _Major Attack_ using one of your _Wielded_ Weapons a _Minor Attack_.",
+    "boost": "2 _Momentum_: Make an additional _Minor Attack_ with a _Wielded_ Weapon.",
+    "rank": "Major Attack"
   },
   {
     "name": "Ram",
     "class": "Martial",
     "desc": "A forceful attack that powers through enemies using the weight of ones' body.",
     "type": "Versatile",
-    "speed": 6,
+    "speed": 3,
     "range": [{ "category": "Melee", "value": 1 }],
-    "special": "Decrease the _Speed_ of this _Technique_ by 3 or add _Forceful_ to all _Push_ if it is used while you are making [_Breach_] Movement.",
+    "effect": "Gain 1 _Momentum_.",
+    "special": "Decrease the _Speed_ of this _Technique_ by 1 or increase the Negate target by 1.",
+    "boost": "Choose any\n* X _Stun_ (max 2): On a _Graze_+, add _Push_ X.\n* X _Stun_ (maximum 4): Deal X _Crush_ Damage.",
     "chart": {
       "damage_type": "Crush",
       "keywords": ["Body"],
-      "on_miss": "+1 _Momentum_",
-      "damage": [0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3],
+      "on_miss": "+0 _Momentum_",
+      "stun": [0, 0, 1, 1, 2, 2, 2, 2, 2, 3, 3],
+      "damage": [0, 0, 0, 0, 0, 0, 1, 2, 2, 3, 3],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
-        "_Push_ 1, _Vulnerable_ 1",
-        "_Push_ 1, _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 2/_Prone_ [1 _Stamina_], _Vulnerable_ 1",
-        "_Push_ 3/_Prone_ [2 _Stamina_], _Vulnerable_ 2",
-        "_Push_ 3/_Prone_ [2 _Stamina_], _Vulnerable_ 2"
+        "",
+        "",
+        "_Prone_ [2 _Grit_]",
+        "_Prone_ [2 _Grit_]",
+        "_Prone_ [2 _Grit_]",
+        "_Prone_ [3 _Grit_]",
+        "_Prone_ [3 _Grit_]",
+        "_Prone_ [4 _Grit_]",
+        "_Prone_ [4 _Grit_]"
       ]
     },
     "analysis_notes": {
-      "speed": 4
+      "speed": 2.5,
+      "fudge": -0.91666666666,
+      "notes": ".91666 for Momentum"
     },
     "rank": "Minor Attack"
   },
@@ -661,27 +738,29 @@
     "desc": "You quake the earth beneath a foe, sending them off-balance.",
     "type": "Versatile",
     "cost": "1 _Momentum_",
-    "speed": 4,
+    "keywords": ["Spirit"],
+    "speed": 2,
     "class": "Land",
-    "effect": "Make the Target's space _Uneven Earth_. If it is already _Uneven Earth_, add _Vulnerable_ 1 on a _Graze_+.",
+    "effect": "Make the Target's space _Uneven Earth_. If it is already _Uneven Earth_, add _Stun_ 2 on a _Graze_+.",
     "range": [{ "category": "Ranged", "value": 6 }],
     "chart": {
       "keywords": ["Avoidable", "Groundsource"],
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
+      "stun": [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Exposed_ 1",
-        "_Exposed_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 1, _Reeling_ 1",
-        "_Exposed_ 2, _Reeling_ 1",
-        "_Exposed_ 2, _Reeling_ 1",
-        "_Exposed_ 2, _Reeling_ 2",
-        "_Exposed_ 2, _Reeling_ 2"
+        "_Exposed_ [3 _Reflex_]",
+        "_Exposed_ [3 _Reflex_]",
+        "_Exposed_, _Reeling_ [4 _Reflex_]",
+        "_Exposed_, _Reeling_ [4 _Reflex_]",
+        "_Exposed_, _Reeling_ [4 _Reflex_]",
+        "_Exposed_, _Reeling_ [4 _Reflex_]",
+        "_Exposed_, _Reeling_ [5 _Reflex_]",
+        "_Exposed_, _Reeling_ [5 _Reflex_]",
+        "_Exposed_, _Reeling_ [6 _Reflex_]",
+        "_Exposed_, _Reeling_ [6 _Reflex_]"
       ]
     },
     "rank": "Minor Attack",
@@ -865,30 +944,31 @@
     "desc": "A concentrated stream of water, drenching and unbalancing.",
     "class": "Tide",
     "type": "Versatile",
-    "speed": 3,
+    "speed": 2,
     "cost": "1 _Momentum_",
     "range": [{ "category": "Ranged", "value": 6, "special": "_Close Range_ 1" }],
-    "effect": "You must _Draw_ 1 as a part of this Attack.",
-    "special": "You may _Draw_ an additional 1; if you do, add _Soaked_ 1 on a _Hit_+.",
-    "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
+    "effect": "You must _Draw_ 1 within Range as a part of this Attack.",
+    "special": "You may choose to make the target's space or a space adjacent to them _Wet_ instead of inflicting _Soaked_.",
+    "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_, but the Target must be within Range of you. Remove _Close Range_ when used in this way.",
     "chart": {
       "damage_type": "Crush",
-      "on_miss": "+2 _Momentum_ and make X spaces adjacent to the target _Wet_, where X is the number of spaces you _Drew_.",
+      "on_miss": "+2 _Momentum_ and make a space adjacent to the target _Wet_.",
       "material": "Water",
+      "stun": [0, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "damage": [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Soaked_ 1, _Vulnerable_ 1",
-        "_Soaked_ 1, _Vulnerable_ 1",
-        "_Soaked_ 1, _Vulnerable_ 1",
-        "_Soaked_ 1, _Vulnerable_ 1",
-        "_Soaked_ 1, _Vulnerable_ 1",
-        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
-        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
-        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
-        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1",
-        "_Soaked_ 1, _Vulnerable_ 2, _Exposed_ 1"
+        "_Soaked_",
+        "_Soaked_",
+        "_Soaked_",
+        "_Soaked_",
+        "_Soaked_",
+        "_Exposed_ [3 _Grit_], _Soaked_",
+        "_Exposed_ [3 _Grit_], _Soaked_",
+        "_Exposed_ [3 _Grit_], _Soaked_",
+        "_Exposed_ [4 _Grit_], _Soaked_",
+        "_Exposed_ [4 _Grit_], _Soaked_"
       ]
     },
     "rank": "Minor Attack"
@@ -905,7 +985,6 @@
     "name": "Swift Manifestation",
     "class": "Spirit",
     "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
-    "keywords": ["Manifest"],
     "rank": "Minor Attack",
     "range": [{ "category": "Spirit _Reposition_ distance." }],
     "cost": "None",
@@ -951,31 +1030,65 @@
     "rank": "Minor Attack"
   },
   {
+    "name": "Thrust",
+    "class": "Martial",
+    "discipline": "Pole",
+    "desc": "A swift thrust with a pole weapon, lacking power but making up for it in speed.",
+    "effect": "Make an Attack using a _Wielded_ Pole Weapon. Resolve this Attack using only a single d6.",
+    "special": "Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "rank": "Minor Attack"
+  },
+  {
     "name": "Unarmed Attack",
     "class": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
-    "type": "Versatile",
-    "speed": 3,
+    "type": "Light",
+    "speed": 1,
     "range": [{ "category": "Melee", "value": 1 }],
     "effect": "Gain 1 _Momentum_.",
+    "boost": "X _Stun_ (maximum 2): Deal X _Crush_ Damage.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+0 _Momentum_",
       "keywords": ["_Fist_/_Body_/_Kick"],
+      "stun": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1"]
+    },
+    "rank": "Minor Attack",
+    "analysis_notes": {
+      "fudge": -0.84,
+      "notes": "Gives 1 Momentum, ignores the misses."
+    }
+  },
+  {
+    "name": "Rising Leg",
+    "class": "Martial",
+    "desc": "A strong kick that knocks foes off-balance.",
+    "type": "Versatile",
+    "speed": 2,
+    "range": [{ "category": "Melee", "value": 1 }],
+    "effect": "Gain 1 _Momentum_.",
+    "boost": "Choose any:\n* 1 _Stun_: Increase the _Negate_ cost by 2.\n* X _Stun_ (maximum  2): Add _Push_ X.\n* X _Stun_ (maximum 3): Deal X _Crush_ Damage.",
+    "chart": {
+      "damage_type": "Crush",
+      "on_miss": "+0 _Momentum_",
+      "keywords": ["_Kick"],
+      "stun": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
       "damage": [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
         "",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 1",
-        "_Vulnerable_ 2",
-        "_Dazed_ 1, _Vulnerable_ 2",
-        "_Dazed_ 1, _Vulnerable_ 2"
+        "",
+        "",
+        "_Exposed_ [1 _Grit_/_Focus_]",
+        "_Exposed_ [1 _Grit_/_Focus_]",
+        "_Push_ 1, _Exposed_ [2 _Grit_/_Focus_]",
+        "_Push_ 1, _Exposed_ [2 _Grit_/_Focus_]",
+        "_Push_ 1, _Exposed_ [3 _Grit_/_Focus_]",
+        "_Push_ 1, _Exposed_ [3 _Grit_/_Focus_]"
       ]
     },
     "rank": "Minor Attack",
@@ -986,22 +1099,34 @@
     "class": "Martial",
     "discipline": "Basic",
     "desc": "A basic, but nonetheless effect, strike with a weapon.",
-    "effect": "Make an Attack using a _Wielded_ Weapon. Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "effect": "Make an Attack using a _Wielded_ Weapon.",
+    "special": "Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Versatile_, or _Heavy_.",
     "rank": "Major Attack"
+  },
+  {
+    "name": "Environmental Attack",
+    "class": "Martial",
+    "discipline": "Basic",
+    "desc": "An attack making use of the environment.",
+    "effect": "Make an Attack using an _Environmental Weapon_ that you _Wielded_ this _Turn_.",
+    "special": "Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Versatile_, or _Heavy_.",
+    "rank": "Minor Attack"
   },
   {
     "name": "Will-o-Wisp",
     "desc": "You split an active flame, using it to sear a foe with spreading flames.",
     "type": "Light",
-    "cost": "1 _Momentum_",
-    "speed": "2+ [_Rigid_]",
+    "speed": "1",
     "class": "Blaze",
-    "range": [{ "category": "Ranged", "value": 8 }],
-    "target": "A creature with a _Blazing_ space within Range 2 of them.",
-    "effect": "Inflict _Alight_ 2 and deal 1 _Fire_ Damage to the Target.",
-    "boost": "2 _Momentum_: Remove the _Blazing_ space. Resolve this Attack twice. You must use the same _Blazing_ space for both Attacks, but may choose separate Targets.",
+    "range": [{ "category": "Ranged", "value": 6 }],
+    "effect": "Remove a _Blazing_ space within Range 2 of the Target, then deal 2 _Fire_ Damage and inflict _Alight_ [3 _Reflex_] on the Target.",
+    "boost": "1 _Momentum_: Remove up to  3 _Stun_ from the Target. Increase the _Negate_ value by 1 for each _Stun_ removed.",
     "rank": "Minor Attack",
-    "analysis_notes": { "bonus_damage": [2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5] }
+    "analysis_notes": {
+      "bonus_damage": [3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33],
+      "fudge": 0.6333,
+      "notes": "Blazing space worth 1/3 Momentum, targeting restriction is 0.3."
+    }
   },
   {
     "name": "Reel",

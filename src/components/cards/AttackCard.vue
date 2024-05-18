@@ -4,7 +4,7 @@
       <div class="card--header">
         <img v-if="isWeapon" class="image--header-left" :src="attack.Icon" />
         <img v-if="isWeapon" class="image--header-right" :src="attack.Icon" />
-        <h4 style="display: inline; font-style: normal;">{{ attack.Name }}</h4>
+        <h4 style="display: inline; font-style: normal">{{ attack.Name }}</h4>
         <div class="card--keywords">
           <b>
             <div v-if="!isWeapon"><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
@@ -33,14 +33,18 @@
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
       <div v-if="attack.HasChargedEffect"><display-tooltip-text :string="attack.ChargedEffectHeader" /></div>
       <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
+      <div class="card--format" v-if="attack.HasTable">
+        <basic-table :chart="attack.Table" />
+      </div>
     </div>
-    <div class="desc--box" v-if="(attack.Desc.length > 0)" style="font-style: italic;">{{ attack.Desc }}<br /></div>
+    <div class="desc--box" v-if="attack.Desc.length > 0" style="font-style: italic">{{ attack.Desc }}<br /></div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import { Attack, Weapon } from '@/class'
+import BasicTable from '@/components/BasicTable.vue'
 import ChartTable from '@/components/ChartTable.vue'
 
 export default Vue.extend({
@@ -62,11 +66,12 @@ export default Vue.extend({
     },
     color: function () {
       if (this.isWeapon) return 'Weapon'
+      if (this.attack.Rank == '_Special Attack_') return 'SpecialAttack'
       if (this.attack.Rank == '_Minor Attack_') return 'MinorAttack'
       if (this.attack.Rank == '_Major Attack_') return 'MajorAttack'
     },
   },
-  components: { ChartTable },
+  components: { BasicTable, ChartTable },
 })
 </script>
 
@@ -75,7 +80,10 @@ export default Vue.extend({
   background-color: rgb(226, 119, 43);
 }
 .MajorAttack {
-  background-color: #db5656;
+  background-color: #cf3c3c;
+}
+.SpecialAttack {
+  background: linear-gradient(to right, rgb(226, 119, 43) 10%, #cf3c3c);
 }
 .Weapon {
   background-color: #685e5e;

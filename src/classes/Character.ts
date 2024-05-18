@@ -21,7 +21,7 @@ class Character extends Combatant {
   private current_martial_stance_: Stance
   private equipped_armor_: Armor
   private disciplines_: Array<ICharDisciplineData>
-  private arts_: Array<ICharDisciplineData>
+  private minor_disciplines_: Array<ICharDisciplineData>
   private name_: string
   private player_character_: Boolean
   private element_: string
@@ -30,7 +30,7 @@ class Character extends Combatant {
 
   private spirit_: Spirit
 
-  kMoveCharts = [
+  kMoveChminor_disciplines = [
     store.getters.getMovement('Unencumbered'),
     store.getters.getMovement('Light Load'),
     store.getters.getMovement('Medium Load'),
@@ -44,7 +44,7 @@ class Character extends Combatant {
     super()
     this.current_spirit_stance_ = store.getters.getStance('No Stance')
     this.current_martial_stance_ = store.getters.getStance('No Stance')
-    this.arts_ = []
+    this.minor_disciplines_ = []
     this.disciplines_ = []
     this.EquippedArmor = store.getters.getArmor('Basic Clothes')
     this.used_manifest_ = false
@@ -75,7 +75,7 @@ class Character extends Combatant {
   }
 
   override get MoveChart() {
-    for (var movement of this.kMoveCharts) {
+    for (var movement of this.kMoveChminor_disciplines) {
       if (this.Weight <= movement.Encumbrance) return movement
     }
   }
@@ -94,7 +94,7 @@ class Character extends Combatant {
       for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
       if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
     }
-    for (var art of this.arts_) {
+    for (var art of this.minor_disciplines_) {
       var art_info = store.getters.getArt(art.name)
       for (var maneuver of art_info.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
       if (art.tier > 1) for (var maneuver of art_info.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
@@ -235,7 +235,7 @@ class Character extends Combatant {
       attacks = attacks.concat(discipline.Tier1Attacks)
       if (disc.tier > 1) attacks = attacks.concat(discipline.Tier2Attacks)
     }
-    for (var art of this.arts_) {
+    for (var art of this.minor_disciplines_) {
       var art_info = store.getters.getArt(art.name)
       attacks = attacks.concat(art_info.Tier1Attacks)
       if (art.tier > 1) attacks = attacks.concat(art_info.Tier2Attacks)
@@ -282,7 +282,7 @@ class Character extends Combatant {
       for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
       if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
     }
-    for (var art of this.arts_) {
+    for (var art of this.minor_disciplines_) {
       var art_info = store.getters.getArt(art.name)
       if (discipline.Type == 'Style') continue
       for (var maneuver of art_info.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
@@ -329,12 +329,12 @@ class Character extends Combatant {
   }
 
   public AddArt(art: Discipline) {
-    var idx = this.arts_.findIndex((e) => e.name == art.Name)
+    var idx = this.minor_disciplines_.findIndex((e) => e.name == art.Name)
     if (idx == -1) {
       var new_discipline: ICharDisciplineData = { name: art.Name, tier: 1 }
-      this.arts_.push(new_discipline)
+      this.minor_disciplines_.push(new_discipline)
     } else {
-      this.arts_[idx].tier += 1
+      this.minor_disciplines_[idx].tier += 1
     }
   }
 
@@ -373,7 +373,7 @@ class Character extends Combatant {
   }
 
   public ClearSpiritAbilities() {
-    this.arts_ = this.arts_.filter((art) => store.getters.getArt(art.name).Type == 'Style')
+    this.minor_disciplines_ = this.minor_disciplines_.filter((art) => store.getters.getArt(art.name).Type == 'Style')
     this.disciplines_ = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type == 'Style')
   }
 
@@ -463,7 +463,7 @@ class Character extends Combatant {
       ...super.Serialize(character),
       current_spirit_stance: character.current_spirit_stance_ ? character.current_spirit_stance_.Name : '',
       current_martial_stance: character.current_martial_stance_ ? character.current_martial_stance_.Name : '',
-      arts: character.arts_,
+      minor_disciplines: character.minor_disciplines_,
       disciplines: character.disciplines_,
       equipped_armor: character.equipped_armor_ ? character.equipped_armor_.Name : '',
       element: character.element_,
@@ -490,7 +490,7 @@ class Character extends Combatant {
     this.element_ = data.element || ''
     this.name_ = data.name || ''
     this.player_character_ = data.player_character || true
-    this.arts_ = data.arts || []
+    this.minor_disciplines_ = data.minor_disciplines || []
     this.disciplines_ = data.disciplines || []
     this.used_manifest_ = data.used_manifest || false
     this.weapons_ = data.weapons || []

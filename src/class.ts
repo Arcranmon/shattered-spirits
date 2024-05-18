@@ -17,6 +17,7 @@ import Npc from './classes/Npc'
 import Obstacle from './classes/Obstacle'
 import Stance from './classes/Stance'
 import Status from './classes/Status'
+import Talent from './classes/Talent'
 import Technique from './classes/Technique'
 import Terrain from './classes/Terrain'
 import Weapon from './classes/Weapon'
@@ -40,6 +41,7 @@ export {
   Subtype,
   Stance,
   Status,
+  Talent,
   Technique,
   Terrain,
   Weapon,

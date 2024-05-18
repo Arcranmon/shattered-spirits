@@ -35,7 +35,7 @@
       </v-card>
     </v-dialog>
     <div style="max-width: 20em; margin-left: auto; margin-right: auto; margin-top: 1em">
-      <v-row no-gutters v-for="status_effect in creature.StatusEffects">
+      <v-row no-gutters v-for="status_effect in creature.StatusEffects" :key="status_effect.status">
         <v-col
           ><img style="height: 1em; padding-right: 1em" :src="require('@/assets/statuses/' + status_effect.status + '.svg')" />
           <display-tooltip-text :string="'**_' + status_effect.status + '_:**'" /></v-col

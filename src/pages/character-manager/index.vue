@@ -12,7 +12,7 @@ export default Vue.extend({
   computed: {
     characters() {
       const store = getModule(CharacterManagementStore, this.$store)
-      store.loadCharacter()
+      store.loadCharacters()
       return store.AllCharacters
     },
   },

@@ -2,7 +2,7 @@
   <div class="card--wrapper" inline>
     <div class="stance--color-header" v-bind:class="category">
       <div class="card--underline-top card--header">
-        <h4 style="display: inline; font-style: normal;">{{ stance.Name }}</h4>
+        <h4 style="display: inline; font-style: normal">{{ stance.Name }}</h4>
         <div>
           <b><display-tooltip-text :string="stance.ClassHeader" :decorate="false" /></b>
         </div>
@@ -10,7 +10,7 @@
     </div>
     <div class="card--content">
       <display-tooltip-text :string="stance.RespiteHeader" /><br />
-      <display-tooltip-text :string="stance.StaminaHeader" />
+      <display-tooltip-text :string="stance.DefenseHeader" />
       <div v-if="stance.HasTraits">
         <display-tooltip-text :string="stance.TraitsHeader" />
       </div>
@@ -21,7 +21,7 @@
         <display-tooltip-text :string="stance.SpecialHeader" />
       </div>
     </div>
-    <div class="desc--box" v-if="(stance.Desc.length > 0)" style="font-style: italic;">{{ stance.Desc }}<br /></div>
+    <div class="desc--box" v-if="stance.Desc.length > 0" style="font-style: italic">{{ stance.Desc }}<br /></div>
   </div>
 </template>
 

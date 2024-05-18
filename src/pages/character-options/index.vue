@@ -1,11 +1,11 @@
 <template>
-  <div style="text-align: center;">
+  <div style="text-align: center">
     <custom-button to="/equipment">Equipment</custom-button> <br />
+    <custom-button to="/talents">Talents</custom-button> <br />
     <custom-button to="/basic-skills">Basic Skills</custom-button> <br />
     <custom-button to="/spirit-abilities">Spirit Abilities</custom-button> <br />
-    <custom-button to="/arts">Arts</custom-button> <br />
-    <custom-button to="/style-disciplines">Style Disciplines</custom-button> <br />
-    <custom-button to="/spirit-disciplines">Spirit Disciplines</custom-button> <br />
+    <custom-button to="/minor-disciplines">Minor Disciplines</custom-button> <br />
+    <custom-button to="/major-disciplines">Major Disciplines</custom-button> <br />
   </div>
 </template>
 

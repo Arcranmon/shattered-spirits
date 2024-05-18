@@ -2,12 +2,13 @@ import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loade
 
 import Vue from 'vue'
 import router from './router'
-import { store } from './store'
+import { CharacterManagementStore, DatabaseJsonStore, store } from './store'
 import App from './App.vue'
 import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
 import vuetify from './plugins/vuetify'
 import { marked } from 'marked'
+import { getModule } from 'vuex-module-decorators'
 import Tooltip from '@/components/TooltipParam.vue'
 
 Vue.config.productionTip = false
@@ -56,5 +57,9 @@ new Vue({
   router,
   store,
   vuetify,
+  async created() {
+    await getModule(CharacterManagementStore, store).loadCharacters()
+    await getModule(DatabaseJsonStore, store).loadDatabase()
+  },
   render: (h) => h(App),
 }).$mount('#app')

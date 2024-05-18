@@ -2,6 +2,7 @@ import { store } from '@/store'
 
 class Discipline {
   private name_: string
+  private prereqs_: String[]
   private category_: string
   private desc_: string
   private mechanics_desc_: string
@@ -28,6 +29,9 @@ class Discipline {
   public get Flavor() {
     return this.desc_
   }
+  public get IsMajor() {
+    return this.tier_2_ != null
+  }
   public get Mechanics() {
     return this.mechanics_desc_
   }
@@ -37,19 +41,37 @@ class Discipline {
   public get Name() {
     return this.name_
   }
-  public get RoleHeader() {
-    if (this.secondary_role_ != '') return this.primary_role_ + '/' + this.secondary_role_
+  public get PrimaryRole() {
     return this.primary_role_
   }
+  public get SecondaryRole() {
+    return this.secondary_role_
+  }
+  public get RoleHeader() {
+    if (this.secondary_role_ != '') return '_' + this.primary_role_ + '_/_' + this.secondary_role_ + '_'
+    return this.primary_role_
+  }
+  public get DescriptiveHeader() {
+    if (this.primary_role_ == this.type_) {
+      return this.RoleHeader + '_ Discipline'
+    } else {
+      return this.RoleHeader + ' ' + this.TypeHeader
+    }
+  }
   public get TypeHeader() {
-    return this.type_ + ' Discipline'
+    return '_' + this.type_ + '_ Discipline'
   }
   public get Type() {
     return this.type_
   }
+  public get PrereqsHeader() {
+    if (this.prereqs_.length == 0) return '**Prerequisites:** None.'
+    return '**Prerequisites:** _' + this.prereqs_.join('_, _') + '_'
+  }
   public get Icon() {
-    if (this.Type == 'Style') return require('@/assets/disciplines/' + this.primary_role_ + '.svg')
-    if (this.Type == 'Style' || this.Type == 'Undefined') return ''
+    if (this.Type == 'Undefined') return ''
+    if (this.Category == 'Weapon') return require('@/assets/weapons/' + this.Type + '.svg')
+    if (this.Type == 'General' || this.Type == 'Style') return require('@/assets/disciplines/' + this.primary_role_ + '.svg')
     return require('@/assets/disciplines/' + this.Type + '.svg')
   }
 
@@ -140,6 +162,7 @@ class Discipline {
     this.name_ = data.name || ''
     this.desc_ = data.desc || ''
     this.mechanics_desc_ = data.mechanics_desc || ''
+    this.prereqs_ = data.prereqs || []
     this.tags_ = data.tags || []
     this.primary_role_ = data.primary_role || ''
     this.secondary_role_ = data.secondary_role || ''

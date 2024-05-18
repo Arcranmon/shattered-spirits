@@ -17,7 +17,7 @@ export class CharacterManagementStore extends VuexModule {
   }
 
   @Mutation
-  private LoadCharacter(characterData: string): void {
+  private LoadCharacters(characterData: string): void {
     var tempData = JSON.parse(characterData)
     this.Characters = tempData.map((x) => Character.Deserialize(x))
   }
@@ -40,8 +40,8 @@ export class CharacterManagementStore extends VuexModule {
   }
 
   @Action
-  public async loadCharacter() {
+  public async loadCharacters() {
     var characters = localStorage.getItem('characters.json')
-    if (characters) this.LoadCharacter(characters)
+    if (characters) this.LoadCharacters(characters)
   }
 }

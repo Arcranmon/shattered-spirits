@@ -1,7 +1,7 @@
-<template
-  ><div class="background">
+<template>
+  <div class="background">
     <h2>Spirit Abilities</h2>
-    <p style="text-align: center; width: 100%;">
+    <p style="text-align: center; width: 100%">
       You can do a great deal to specialize your spirit, from choosing its physical form to deciding what type of magic it is most aligned with. The below tabs
       show the different spirit options available at character creation, as well as an additional tab showing natural weapons such as claws and fangs that
       spirits may choose from.
@@ -13,91 +13,91 @@
     >
     <v-tabs-items v-model="tab" class="spirit-tab-content">
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="earthText" /><br /><br />
+        <display-tooltip-text style="margin: 1em" :string="earthText" /><br /><br />
         <h4>Earth Spirit Types</h4>
         <display-tooltip-text
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <v-row style="padding: 1em;"
+        <v-row style="padding: 1em"
           ><v-col :cols="num_cols" v-for="item in ['Land', 'Mountain']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Earth Spirit Forms</h4>
         <display-tooltip-text
           class="description-text"
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
-        /><v-row style="padding: 1em;">
+        /><v-row style="padding: 1em">
           <v-col :cols="num_cols" v-for="item in ['Swift Earth Spirit', 'Balanced Earth Spirit', 'Heavy Earth Spirit']" :key="item">
             <spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="flameText" /><br /><br />
+        <display-tooltip-text style="margin: 1em" :string="flameText" /><br /><br />
         <h4>Flame Spirit Types</h4>
         <display-tooltip-text
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <v-row style="padding: 1em;"
-          ><v-col :cols="num_cols" v-for="item in ['Blaze', 'Explosion']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
+        <v-row style="padding: 1em"
+          ><v-col :cols="num_cols" v-for="item in ['Blaze', 'Detonation']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Flame Spirit Forms</h4>
         <display-tooltip-text
           class="description-text"
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
-        /><v-row style="padding: 1em;">
+        /><v-row style="padding: 1em">
           <v-col :cols="num_cols" v-for="item in ['Swift Flame Spirit', 'Balanced Flame Spirit', 'Heavy Flame Spirit']" :key="item">
             <spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="waterText" /><br /><br />
+        <display-tooltip-text style="margin: 1em" :string="waterText" /><br /><br />
         <h4>Water Spirit Types</h4>
         <display-tooltip-text
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <v-row style="padding: 1em;"
+        <v-row style="padding: 1em"
           ><v-col :cols="num_cols" v-for="item in ['Tide', 'Tundra']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Water Spirit Forms</h4>
         <display-tooltip-text
           class="description-text"
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
-        /><v-row style="padding: 1em;">
+        /><v-row style="padding: 1em">
           <v-col :cols="num_cols" v-for="item in ['Swift Water Spirit', 'Balanced Water Spirit', 'Heavy Water Spirit']" :key="item"
             ><spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="windText" /><br /><br />
+        <display-tooltip-text style="margin: 1em" :string="windText" /><br /><br />
         <h4>Wind Spirit Types</h4>
         <display-tooltip-text
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <v-row style="padding: 1em;"
+        <v-row style="padding: 1em"
           ><v-col :cols="num_cols" v-for="item in ['Gale', 'Storm']" :key="item"> <subtype-card :type="$store.getters.getSubtype(item)" /></v-col
         ></v-row>
         <h4>Wind Spirit Forms</h4>
         <display-tooltip-text
           class="description-text"
           string="Choose one of the below, which represents the physical form your spirit takes when summoned:"
-        /><v-row style="padding: 1em;">
+        /><v-row style="padding: 1em">
           <v-col :cols="num_cols" v-for="item in ['Swift Wind Spirit', 'Balanced Wind Spirit', 'Heavy Wind Spirit']" :key="item">
             <spirit-form-card :form="$store.getters.getSpiritForm(item)" /></v-col
         ></v-row>
       </v-tab-item>
-      <v-tab-item> <display-tooltip-text style="margin: 1em;" :string="combatTraitText" /><br /><br /></v-tab-item>
+      <v-tab-item> <display-tooltip-text style="margin: 1em" :string="combatTraitText" /><br /><br /></v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em;" :string="spiritWeaponText" /><br /><br />
+        <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />
 
         <span v-if="isMobile">
-          <v-expansion-panels style="padding: 3px;">
-            <v-expansion-panel style="background-color: inherit;">
+          <v-expansion-panels style="padding: 3px">
+            <v-expansion-panel style="background-color: inherit">
               <v-expansion-panel-header>Filters</v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-row align="center" style="margin-left: 0.5em;">
+                <v-row align="center" style="margin-left: 0.5em">
                   <v-col cols="12"
                     ><v-select v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple filled outlined
                       ><template v-slot:prepend-item>
@@ -108,9 +108,7 @@
                             </v-icon>
                           </v-list-item-action>
                           <v-list-item-content>
-                            <v-list-item-title>
-                              Select All
-                            </v-list-item-title>
+                            <v-list-item-title> Select All </v-list-item-title>
                           </v-list-item-content>
                         </v-list-item>
                         <v-divider class="mt-2"></v-divider> </template
@@ -132,28 +130,26 @@
             label="Selected Weapon"
             filled
             outlined
-            style="margin-left: 0.5em; margin-right: 0.5em;"
+            style="margin-left: 0.5em; margin-right: 0.5em"
           ></v-select>
-          <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em;" /></div
+          <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em" /></div
         ></span>
         <span v-else>
-          <v-row align="center" style="margin-left: 0.5em; margin-top: 1em;">
+          <v-row align="center" style="margin-left: 0.5em; margin-top: 1em">
             <v-col cols="2"><v-select v-model="selectedSpeed" :items="weaponSpeeds" attach label="Weapon Speed" filled outlined></v-select></v-col
             ><v-col cols="2"><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled outlined></v-select></v-col
           ></v-row>
-          <v-row class="page" style="margin-bottom: 1em;">
+          <v-row class="page" style="margin-bottom: 1em">
             <v-col cols="auto" class="sidebar">
               <v-btn-toggle borderless overflow-auto
-                ><div v-for="weapon in weapons" style="width: 100%;" v-bind:key="weapon.Name">
+                ><div v-for="weapon in weapons" style="width: 100%" v-bind:key="weapon.Name">
                   <v-btn @click="selectedWeapon = weapon" class="button--style" depressed tile block>
                     <img class="image--icon-size" :src="weapon.Icon" />{{ weapon.Name }}
                   </v-btn>
                 </div>
               </v-btn-toggle></v-col
             >
-            <v-col>
-              <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em;" :key="selectedWeapon.Name"
-            /></v-col> </v-row></span
+            <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row></span
       ></v-tab-item>
     </v-tabs-items>
   </div>

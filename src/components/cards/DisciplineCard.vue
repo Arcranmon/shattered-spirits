@@ -1,20 +1,26 @@
-<template
-  ><div class="discipline--box">
+<template>
+  <div class="discipline--box">
     <h2>{{ discipline.Name }}</h2>
     <div class="page--description">
-      <i><display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.Flavor" /></i><br />
-      <b><display-tooltip-text :string="discipline.RoleHeader.replace('/', '_/_')" /> {{ discipline.TypeHeader }}</b
-      ><br /><display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.TagsHeader" /><br />
-      <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="discipline.Mechanics" /><br />
+      <div>
+        <display-tooltip-text style="margin-left: 1em; margin-right: 1em" class="page--description" :string="discipline.PrereqsHeader" />
+      </div>
+      <i><display-tooltip-text style="margin-left: 1em; margin-right: 1em" class="page--description" :string="discipline.Flavor" /></i><br />
+      <b><display-tooltip-text :string="discipline.DescriptiveHeader" /> </b><br /><display-tooltip-text
+        style="margin-left: 1em; margin-right: 1em"
+        class="page--description"
+        :string="discipline.TagsHeader"
+      /><br />
+      <display-tooltip-text style="margin-left: 1em; margin-right: 1em" class="page--description" :string="discipline.Mechanics" /><br />
     </div>
     <div class="header">
-      <h4 style="display: flex;">
+      <h4 style="display: flex" v-if="discipline.IsMajor">
         Tier I <v-btn v-if="add_button" :disabled="tiers != 0" class="tier-button" v-on:click="clickMethod(discipline, 1)">Unlock Tier I</v-btn>
       </h4>
     </div>
     <div class="body">
-      <div style="margin-top: 0.5em;" v-if="discipline.HasTier1Special" class="special--box">
-        <h4 style="display: inline; font-style: normal;">Special</h4>
+      <div style="margin-top: 0.5em" v-if="discipline.HasTier1Special" class="special--box">
+        <h4 style="display: inline; font-style: normal">Special</h4>
         <br />
         <display-tooltip-text :string="discipline.Tier1Special" />
       </div>
@@ -24,14 +30,14 @@
         ><v-col :cols="num_cols" v-for="man in discipline.Tier1Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
       ></v-row>
     </div>
-    <div class="header">
-      <h4 style="display: flex;">
+    <div class="header" v-if="discipline.IsMajor">
+      <h4 style="display: flex">
         Tier II <v-btn v-if="add_button" :disabled="tiers != 1" class="tier-button" v-on:click="clickMethod(discipline, 2)">Unlock Tier II</v-btn>
       </h4>
     </div>
-    <div class="body">
-      <div style="margin-top: 0.5em;" v-if="discipline.HasTier2Special" class="special--box">
-        <h4 style="display: inline; font-style: normal;">Special</h4>
+    <div class="body" v-if="discipline.IsMajor">
+      <div style="margin-top: 0.5em" v-if="discipline.HasTier2Special" class="special--box">
+        <h4 style="display: inline; font-style: normal">Special</h4>
         <br />
         <display-tooltip-text :string="discipline.Tier2Special" />
       </div>
@@ -42,10 +48,10 @@
         ><v-col :cols="num_cols" v-for="man in discipline.Tier2Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
       ></v-row>
     </div>
-    <div class="header">
-      <h4 style="display: flex;">Tier III</h4>
+    <div class="header" v-if="discipline.IsMajor">
+      <h4 style="display: flex">Tier III</h4>
     </div>
-    <div class="body"></div>
+    <div class="body" v-if="discipline.IsMajor"></div>
     <br />
   </div>
 </template>

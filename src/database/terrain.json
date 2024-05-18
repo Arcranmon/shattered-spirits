@@ -5,10 +5,10 @@
     "keywords": ["Fleeting"],
     "layer": "Surface",
     "element": "Flame",
-    "effect": "The first time a creature enters a Blazing space on a Turn or ends their Turn in it they take 2 _Fire_ Damage. If they are in the space at the end of the _Round_ they gain _Alight_ 1. If a creature occupies multiple Blazing spaces do not resolve this more than their Size times.",
+    "effect": "The first time a creature enters a Blazing space on a Turn or ends a _Phase_ in it they take 2 _Fire_ Damage. If they are in the space at the end of the _Round_ they gain _Alight_ [3 _Reflex_]. If a creature occupies multiple Blazing spaces do not resolve this more than their Size times.",
     "interactions": [
       "If a _Gusting_ space is placed here, create another Blazing space in the direction of the _Gusting_ space.",
-      "If a _Watersource_ is placed in this space, reduce its value by 1 and make the space _Veiled_.",
+      "If a _Watersource_ is placed in this space, reduce the _Watersource_'s value by 1 and make the space _Veiled_.",
       "If placed in a _Watersource_ space, reduce the _Watersource_'s value by 1 and make the space _Veiled_."
     ]
   },
@@ -80,26 +80,26 @@
     "element": "Elementless",
     "keywords": ["_Soft Cover_ 3", "Fleeting"],
     "desc": "Air chilled to painful, frost-inducing cold.",
-    "effect": "The first time a creature enters a Frigid Air space on a _Turn_ or ends their _Turn_ in it they take 1 _Cold_ Damage. If they end the _Round_ in this space, they gain _Frigid_ 1. If a creature occupies multiple Frigid Air spaces do not resolve this more than their Size times."
+    "effect": "The first time a creature enters a Frigid Air space on a _Turn_ or ends their _Turn_ in it they take 1 _Cold_ Damage. If they end the _Round_ in this space, they gain _Frozen_ 1. If a creature occupies multiple Frigid Air spaces do not resolve this more than their Size times."
   },
   {
-    "name": "Frozen",
+    "name": "Icy",
     "desc": "Terrain that has been covered with slick, slippery ice.",
     "layer": "Surface",
     "element": "Ice",
     "keywords": ["_Watersource_ 1", "Rough"],
-    "effect": "While on Frozen _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 1.\n* Creatures in this space gain _Susceptible_ (_Forced Movement_, _Prone_).\n* A creature that starts their _Turn_ on a Frozen space loses 1 space of Movement. A creature may expend 1 _Stamina_ to negate this penalty.",
-    "special": "Ignore _Water_ Base _Terrain_ while a space is Frozen.",
+    "effect": "While on Icy _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 2.\n* Creatures in this space gain _Susceptible_ (_Prone_).\n* A creature that starts their _Turn_ on a Icy space loses 1 space of Movement. A creature may expend 1 _Stamina_ to negate this penalty.",
+    "special": "Ignore _Water_ Base _Terrain_ while a space is Icy.",
     "destroy": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_. If _Destroyed_ by anything other than a _Draw_ effect, replace it with _Frost_."
   },
   {
-    "name": "Frosted",
+    "name": "Rimed",
     "desc": "Terrain covered in ice that is too thin or disjoint to obstruct foes.",
     "layer": "Surface",
     "element": "Ice",
     "keywords": ["_Watersource_ 1"],
     "interactions": [
-      "If a _Watersource_ space would become Frosted, instead place a Frosted space in an adjacent space or increase its value by 1 if it is below its maximum value."
+      "If a _Watersource_ space would become Rimed, instead place a Rimed space in an adjacent space or increase its value by 1 if it is below its maximum value."
     ],
     "destroy": "If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
   },
@@ -232,7 +232,7 @@
     "layer": "Surface",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ 1"],
-    "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* Creatures in this space gain _Susceptible_ (_Forced Movement_, _Prone_).",
+    "effect": "While on Wet _Terrain_ a creature suffers the following effects:\n* Creatures in this space gain _Susceptible_ (_Prone_).\n* Increase any _Forced Movement_ inflicted on this creature by 1.",
     "interactions": [
       "If a _Watersource_ space would become Wet, instead place a Wet space in an adjacent space or increase its value by 1 if it is below its maximum value."
     ]

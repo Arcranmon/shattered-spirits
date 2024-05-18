@@ -2,11 +2,11 @@
   <div>
     <h2>Spirit Disciplines</h2>
     <span v-if="isMobile">
-      <v-expansion-panels style="padding: 3px;">
-        <v-expansion-panel style="background-color: inherit;">
+      <v-expansion-panels style="padding: 3px">
+        <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header>Filters </v-expansion-panel-header>
           <v-expansion-panel-content
-            ><v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;" dense>
+            ><v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em" dense>
               <v-col cols="12"
                 ><v-select
                   v-model="selectedCategories"
@@ -27,9 +27,7 @@
                         </v-icon>
                       </v-list-item-action>
                       <v-list-item-content>
-                        <v-list-item-title>
-                          Select All
-                        </v-list-item-title>
+                        <v-list-item-title> Select All </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
                     <v-divider class="mt-2"></v-divider> </template
@@ -52,12 +50,12 @@
         label="Selected Discipline"
         filled
         outlined
-        style="margin-left: 1em; margin-right: 1em;"
+        style="margin-left: 1em; margin-right: 1em"
       ></v-select
       ><discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" :key="selectedDiscipline.Name"
     /></span>
     <span v-else>
-      <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em;">
+      <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em">
         <v-col cols="3"
           ><v-select
             v-model="selectedCategories"
@@ -78,9 +76,7 @@
                   </v-icon>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>
-                    Select All
-                  </v-list-item-title>
+                  <v-list-item-title> Select All </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
               <v-divider class="mt-2"></v-divider> </template
@@ -95,7 +91,7 @@
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
-            ><div v-for="discipline in disciplines" style="width: 100%;" v-bind:key="discipline.Name">
+            ><div v-for="discipline in disciplines" style="width: 100%" v-bind:key="discipline.Name">
               <v-btn @click="selectedDiscipline = discipline" class="button--style" depressed tile block>
                 <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
               </v-btn>
@@ -122,8 +118,8 @@ export default Vue.extend({
     return {
       disciplineCategories: ['Earth', 'Flame', 'Water', 'Wind'],
       selectedCategories: ['Earth', 'Flame', 'Water', 'Wind'],
-      disciplineTypes: ['Land', 'Mountain', 'Grounding', 'Mountainheart', 'Tremorsight', 'Tide', 'Tundra', 'Blaze', 'Explosion', 'Gale', 'Storm'],
-      selectedTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Explosion', 'Gale', 'Storm'],
+      disciplineTypes: ['Land', 'Mountain', 'Grounding', 'Mountainheart', 'Tremorsight', 'Tide', 'Tundra', 'Blaze', 'Detonation', 'Gale', 'Storm'],
+      selectedTypes: ['Land', 'Mountain', 'Tide', 'Tundra', 'Blaze', 'Detonation', 'Gale', 'Storm'],
       disciplineRoles: ['Any', 'Artillery', 'Controller', 'Courier', 'Defender', 'Shaper', 'Striker', 'Supporter', 'Survivor'],
       primaryRole: 'Any',
       secondaryRole: 'Any',
@@ -132,7 +128,7 @@ export default Vue.extend({
   },
   computed: {
     disciplines: function () {
-      return this.$store.getters.getFilteredDisciplines(this.selectedCategories, this.selectedTypes, this.primaryRole, this.secondaryRole)
+      return this.$store.getters.getFilteredMajorDisciplines(this.selectedCategories, this.selectedTypes, this.primaryRole, this.secondaryRole)
     },
     hasAllTypes() {
       return this.selectedTypes.length === this.disciplineTypes.length

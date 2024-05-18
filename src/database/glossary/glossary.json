@@ -1,12 +1,7 @@
 [
   {
-    "name": "Action",
-    "effect": "Actions are a type of _Maneuver_ that allow a character to take a _Turn_. Actions may be used whenever it is your party's time to act in combat. A character may only use a given Action once per _Round_ unless otherwise specified, and may take only a single Action in a given _Phase_."
-  },
-  { "name": "Actions", "see": "Action" },
-  {
     "name": "Advantage",
-    "effect": "When you make an Attack with Advantage, roll 3d6 and use the two highest for your result."
+    "effect": "When you make an Attack with Advantage, roll 3d6 and use two of your choice as the result. When you roll to Negate with Advantage, roll 2d6 and take the higher."
   },
   {
     "name": "Angled",
@@ -14,7 +9,7 @@
   },
   {
     "name": "AP",
-    "effect": "AP, or Action Points, are spent to use powerful _Actions_, _Stunts_, and other abilities. Player characters have 2 AP that they may use each _Round_. Unspent AP is lost at the end of the _Round_."
+    "effect": "AP, or Action Points, are spent to take an _Action_. Player characters have 2 AP that they may use each _Round_. Unspent AP is lost at the end of the _Round_."
   },
   {
     "name": "Armor",
@@ -27,11 +22,12 @@
   },
   {
     "name": "Attack",
-    "effect": "An Attack is a type of _Manuever_ that allows a creature to target enemies. Attacks are never used on their own; other _Maneuvers_ and _Techniques_ will tell you when to use an Attack. Attacks are split into Major and Minor Attacks; Major Attacks are highly effective and deal high Damage, while Minor Attacks tend to be more focused on status effects and deal much less damage."
+    "effect": "An Attack is a type of _Manuever_ that allows a creature to target enemies. Attacks are never used on their own; other _Maneuvers_ and _Techniques_ will tell you when to use an Attack. Attacks are split into Major, Minor, and Flexible Attacks.\n* Major Attacks are highly effective and deal high Damage, but are more difficult to make.\n* Minor Attacks are easy to make and can be used at a variety of times, but tend to be less effective.\n* Special Attacks allow you to use a different Attack, and act as a Major or Minor Attack depending on what you select."
   },
   { "see": "Attack", "name": "Attacks" },
   { "see": "Attack", "name": "Major Attack" },
   { "see": "Attack", "name": "Minor Attack" },
+  { "see": "Attack", "name": "Special Attack" },
   { "see": "Attack", "name": "Major Attacks" },
   { "see": "Attack", "name": "Minor Attacks" },
   {
@@ -48,8 +44,12 @@
     "effect": "When an Attack gains Bonus Damage, distribute the Bonus Damage between targets however you wish. For a Single-Target Attack this is effectively a flat damage increase, but for an Area Attack any Bonus Damage must be split between all eligible Targets."
   },
   {
+    "name": "Bonus Stun",
+    "effect": "When an Attack gains Bonus Stun, distribute the Bonus Stun between targets however you wish. For a Single-Target Attack this is effectively a flat damage increase, but for an Area Attack any Bonus Stun must be split between all eligible Targets."
+  },
+  {
     "name": "Charging",
-    "effect": "While _Charging_ you may not willingly _Move_, use _Techniques_, or use _Actions_."
+    "effect": "While _Charging_ you may not willingly _Move_ or make _Attacks_."
   },
   {
     "name": "Charged Effect",
@@ -62,14 +62,10 @@
   { "name": "Climb", "see": "Climbing" },
   {
     "name": "Collision",
-    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve it as follows:\n* **Obstacle Colliding with Obstacle**: Deal Damage to both _Obstacles_ equal to the half the _Forced Movement_ remaining. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_.\n* **Obstacle Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Obstacle_. After resolving this _Push_, the creature gains _Vulnerable_ equal to half the spaces they moved. Continue moving the _Obstacle_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Vulnerable_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Vulnerable_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Obstacle**: Deal Damage to the _Obstacle_ equal to the half the _Forced Movement_ remaining and inflict _Vulnerable_ on the creature equal to the same amount. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Obstacle_ was _Destroyed_, reduce the _Forced Movement_ by the Obstacle's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
+    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve it as follows:\n* **Obstacle Colliding with Obstacle**: Deal Damage to both _Obstacles_ equal to the half the _Forced Movement_ remaining. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_.\n* **Obstacle Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Obstacle_. After resolving this _Push_, the creature gains _Stun_ equal to half the spaces they moved. Continue moving the _Obstacle_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Stun_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Stun_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Obstacle**: Deal Damage to the _Obstacle_ equal to the half the _Forced Movement_ remaining and inflict _Stun_ on the creature equal to the same amount. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Obstacle_ was _Destroyed_, reduce the _Forced Movement_ by the Obstacle's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
   },
   { "name": "Collide", "see": "Collision" },
   { "name": "Collides", "see": "Collision" },
-  {
-    "name": "Cold",
-    "effect": "A damage type caused by freezing temperatures and frigid climate.\n&nbsp;\nCold Damage is always _Endurable_. \n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Frigid_ instead of increasing Damage if you deal Cold Damage.\n&nbsp;\nIf a character is _Downed_ by Cold Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Frigid_ 1\n 3-4: _Frigid_ 2\n5-6 _Frigid_ 3"
-  },
   {
     "name": "Controller",
     "effect": "Controller Disciplines specialize in applying status afflictions to foes and moving them about the battlefield, limiting their effectiveness and making foes easier targets for allies."
@@ -86,13 +82,8 @@
   { "name": "Heavy Cover", "see": "Cover" },
   { "name": "Full Cover", "see": "Cover" },
   {
-    "name": "Crit",
+    "name": "Critical Hit",
     "effect": "A particularly effective Attack, represented by a purple cell in the Attack's 'Roll' column in its _Profile_."
-  },
-  { "name": "Critical Hit", "see": "Crit" },
-  {
-    "name": "Crush",
-    "effect": "Damage caused by blunt force trauma, such as from a hammer or a flung stone.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Dazed_ instead of increasing Damage if you deal Crush Damage.\n&nbsp;\nIf a character is _Downed_ by Crush Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Exposed_ 1\n 3-4: _Exposed_ 2\n5-6: _Exposed_ 2, _Reeling_ 1"
   },
   {
     "name": "Courier",
@@ -108,7 +99,7 @@
   },
   {
     "name": "Disadvantage",
-    "effect": "When you make an Attack with Disadvantage, roll 3d6 and use the two lowest for your result."
+    "effect": "When you make an Attack with Disadvantage, roll 3d6 and use the two lowest for your result. When you roll to Negate with Disadvantage, roll 2d6 and take the lower."
   },
   {
     "name": "Draw",
@@ -137,12 +128,8 @@
     "effect": "Elite enemies are extremely powerful and can handle several characters at the same time. Elite enemies may never have more than 10 of a given _Token_, may use a Martial and Spirit Stance, and increase their maximum _Stamina_ by 2."
   },
   {
-    "name": "Fire",
-    "effect": "A damage type caused by searing heat and scorching flames.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Alight_ instead of increasing Damage if you deal Fire Damage.\n&nbsp;\nIf a character is _Downed_ by Fire Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Burned_ 1\n 3-4: _Burned_ 2\n5-6: _Burned_ 3"
-  },
-  {
     "name": "Forced Movement",
-    "effect": "Any effect that moves a creature unwillingly, such _Push_, _Pull_, _Throw_, and _Slide_ effects. This Movement does not trigger _Punish_ _Reactions_ but does trigger _Collision_ effects. When Negating _Forced Movement_, if any _Terrain_ effect would impact the cost of Negating it only applies to that space, and the _Forced Movement_ may be Negated at any point. For example, if a creature in an _Frozen_ space suffered _Push_ 3, the doubled cost would only apply to the _Push_ in the first space. They would, in effect, suffer _Push_ 1 with the conditions of the _Frozen_ space, leave that space, and may then Negate the remaining _Push_ 2 at the normal price."
+    "effect": "Any effect that moves a creature unwillingly, such _Push_, _Pull_, _Throw_, and _Slide_ effects. This Movement does not trigger _Punish_ _Reactions_ but does trigger _Collision_ effects. When Negating _Forced Movement_, if any _Terrain_ effect would impact the cost of Negating it only applies to that space, and the _Forced Movement_ may be Negated at any point. For example, if a creature in an _Icy_ space suffered _Push_ 3, the doubled cost would only apply to the _Push_ in the first space. They would, in effect, suffer _Push_ 1 with the conditions of the _Icy_ space, leave that space, and may then Negate the remaining _Push_ 2 at the normal price."
   },
   { "name": "Forcibly Moved", "see": "Forced Movement" },
   {
@@ -171,12 +158,16 @@
   { "name": "Falls", "see": "Falling" },
   { "name": "Fell", "see": "Falling" },
   {
+    "name": "Focus",
+    "effect": "A defense that represents a character's mental fortitude and willpower. Add a character's Focus to any _Negate_ checks where it is listed."
+  },
+  {
     "name": "Free Turn",
     "effect": "When a creature gains a Free Turn they may immediately take a Turn, interrupting the current _Turn_ and ignoring the normal Initiative process. What they may do on this Turn is outlined in the ability, but any other ability that may normally be used on a _Turn_ (such as _Stunts_) may also be used."
   },
   {
     "name": "Gambit",
-    "effect": "Gambits are _Manuevers_ that allow characters to enhance an Attack. A character may use any number of Gambits on a single _Attack_, but only one with the _Feint_ tag and one with the _Flourish_ tag."
+    "effect": "Gambits are _Manuevers_ that allow characters to enhance an Attack. Whenever a character rolls doubles or gets a _Critical Hit_ they may apply a Gambit to the Attack. If they rolled doubles and got a _Critical Hit_, they may either apply two different Gambits or roll twice and take the higher value for a single Gambit. If a Gambit is triggered by an _Area_ Attack resolve the effects against a single Target per Gambit unless specified otherwise."
   },
   { "name": "Gambits", "see": "Gambit" },
   {
@@ -189,6 +180,10 @@
   },
   { "name": "Grazes", "see": "Graze" },
   { "name": "Grazes", "see": "Graze" },
+  {
+    "name": "Grit",
+    "effect": "A defense that represents a character's physical prowess and sturdiness. Add a character's Grit to any _Negate_ checks where it is listed."
+  },
   {
     "name": "Hazard",
     "effect": "Hazards reflect an area that is going to be attacked in the near future or can be triggered as a trap. All Hazards are always cleared at the end of a _Round_."
@@ -213,11 +208,7 @@
   },
   {
     "name": "Launching",
-    "effect": "Launching can be applied to any kind of _Forced Movement_. The _Forced Movement_ is considered _Leaping_ for all effects and, at the end of the _Movement_, the creature _Falls_ X+1 spaces, where X is half the Launching distance, plus any applicable _Elevation_ change. If an effect gains Launching, all _Forced Movement_ of the same type gains Launching."
-  },
-  {
-    "name": "Lightning",
-    "effect": "A damage type caused by jolts of lightning and electricity.\n&nbsp;\nLightning Damage is always _Endurable_. Any _Area_ Attack that deals Lightning Damage splits Damage and Status evenly between all targets rather than deal the listed amount of Damage/Status to all creatures.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Shocked_ instead of increasing Damage if you deal Lightning Damage.\n&nbsp;\nIf a character is _Downed_ by Lightning Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Shocked_ 1\n 3-4: _Shocked_ 2\n5-6: _Shocked_ 3"
+    "effect": "Launching can be applied to any kind of _Forced Movement_. The _Forced Movement_ is considered _Flying_ and, at the end of the _Movement_, the creature _Falls_ X spaces, where X is half the Launching distance (plus any applicable _Elevation_ change). If an effect gains Launching all _Forced Movement_ of the same type gains Launching."
   },
   {
     "name": "Jump",
@@ -264,10 +255,10 @@
     "name": "Move",
     "effect": "The distance or number of spaces a character can move. This will typically be either _Step_, _Reposition_, or _Dash_. These values are defined by your _Armor_. Some _Techniques_ or _Maneuvers_ may simply state a number; in those cases, you move that many spaces."
   },
-  { "name": "Movement", "see": "Move" },
+  { "name": "Movement", "effect": "A keyword designating this _Stunt_ as enabling additional movement." },
   {
     "name": "Negate",
-    "effect": "Some Attacks or _Techniques_ give creatures the chance to Negate by spending _Stamina_. This is either outlined in the Effect of a _Technique_, or listed in parentheses next to a Status in an Attack's _Profile_."
+    "effect": "Some Status afflictions will list a _Negate_ value; when a character is subjected to such an effect, they roll a d6. If they meet or exceed the listed value, they do not gain the status. Additionally, next to the target number either _Grit_, _Reflex_, _Focus_, or sometimes _Guard_ will be listed; a character adds any relevant bonuses to that specific check from their _Stances_ and other effects."
   },
   { "name": "Negates", "see": "Negate" },
   {
@@ -294,7 +285,7 @@
   },
   {
     "name": "Recover",
-    "effect": "When a creature Recovers they may expend _Stamina_ to remove various status conditions, as outlined by the status effect or affliction."
+    "effect": "When a creature Recovers they may either:\n* Remove one of their Statuses, as outlined by its Recover text.\n* Reduce their _Stun_ by 4."
   },
   { "name": "Recovers", "see": "Recover" },
   { "name": "Recovering", "see": "Recover" },
@@ -306,10 +297,6 @@
   {
     "name": "Plotting",
     "effect": "The beginning of a _Round_ immediately after _Refresh_ where all creatures involved in combat select their _Techniques_ for the _Round_."
-  },
-  {
-    "name": "Poison",
-    "effect": "A damage type caused by toxins and lethal venom.\n&nbsp;\nPoison Damage is always _Endurable_. \n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Poisoned_ instead of increasing Damage if you deal Poison Damage.\n&nbsp;\nIf a character is _Downed_ by Poison Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Poisoned_ 1\n 3-4: _Poisoned_ 2\n5-6: _Poisoned_ 3"
   },
   {
     "name": "Puppet",
@@ -324,6 +311,10 @@
     "effect": "A _Maneuver_ that may be freely used when its Trigger occurs. Characters may use as many Reactions as they wish on a given _Turn_, but may only use a given Reaction once per _Turn_ unless otherwise specified."
   },
   { "name": "Reactions", "see": "Reaction" },
+  {
+    "name": "Reflex",
+    "effect": "A defense that represents a character's agility and reaction speed. Add a character's Reflex to any _Negate_ checks where it is listed."
+  },
   {
     "name": "Refresh",
     "effect": "Whenever a creature Refreshes they set their _Stamina_ to their maximum value, as defined by their Stances."
@@ -359,10 +350,6 @@
     "effect": "A creature with Seismic Sense ignores _Obscured_ for all creatures on _Earthen_ spaces and always treats themselves as having _Secondary Sense_ on creatures in those spaces."
   },
   {
-    "name": "Slash",
-    "effect": "Damage caused by lacerations, such as those caused by an axe or cutting blade.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Bleeding_ instead of increasing Damage if you deal Slash Damage.\n&nbsp;\nIf a character is _Downed_ by Slash Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleeding_ 1\n 3-4: _Bleeding_ 2\n5-6: _Bleeding_ 3"
-  },
-  {
     "name": "Speed",
     "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-8 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
   },
@@ -377,13 +364,9 @@
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form for the duration of the effect that Summoned them. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player. See their statistics for attacks, movement, and other such effects. By default, a spirit has no AP and may not use Techniques; the ability that Summoned them will grant those, if applicable. A spirit remains Summoned until the end of the Round. Alternatively, the summoner may end the Summon as a 1 _Momentum_ _Reaction_ triggered at the end of any _Phase_."
+    "effect": "When a spirit is Summoned they take physical form for the duration of the effect that Summoned them. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player. See their statistics for attacks, movement, and other such effects.\n\nWhile Summoned:\n* Whenever a character would make an Attack their Spirit may instead make an equivalent Attack.\n* Whenever a character uses a _Spirit_ Manuever they may instead have their _Spirit_ use it.\n* _Reactions_ may be triggered by and originate from your _Spirit_'s space.\n* Whenever a character would Move, _Recover_, or _Refresh_ they may instead choose for their Spirit to resolve the effect.\n\nA spirit remains Summoned until the end of the Round. Alternatively, the summoner may end the Summon as a 1 _Momentum_ _Reaction_ triggered at the end of any _Phase_."
   },
   { "name": "Summoned", "see": "Summon" },
-  {
-    "name": "Stab",
-    "effect": "Damage that represents piercing wounds, such as those caused by an arrow or a knife.\n&nbsp;\nWhen removing _Vulnerable_, you may inflict an equivalent amount of _Impaired_ instead of increasing Damage if you deal Stab Damage.\n&nbsp;\nIf a character is _Downed_ by Stab Damage, inflict the following _Wounds_ based on the roll:\n 1-2: _Bleeding_ 1\n 3-4: _Bleeding_ 1, _Impaired_ 1\n5-6: _Bleeding_ 1, _Impaired_ 2"
-  },
   {
     "name": "Stance",
     "effect": "A creature's Stance represents their bearing and how they are passively using their spirit's powers to improve their capabilities."
@@ -391,7 +374,7 @@
   { "name": "Stances", "see": "Stance" },
   {
     "name": "Stunt",
-    "effect": "Stunts are quick, simple abilities such as jumping or picking up an item that characters may use on their _Turn_. Characters may use as many Stunts as they wish on their _Turn_, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword."
+    "effect": "Stuntsare quick, simple abilities such as jumping or picking up an item that characters may use on their _Turn_. Characters may use as many Stuntsas they wish on their _Turn_, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword."
   },
   { "name": "Stunts", "see": "Stunt" },
   {
@@ -409,6 +392,10 @@
   {
     "name": "Striker",
     "effect": "Striker Disciplines specialize in close-range combat, and often prioritize melee attacks over all else. Striker Disciplines are typically capable of the greatest damage in the system."
+  },
+  {
+    "name": "Stun",
+    "effect": "Stun is a special status that creatures accumulate. Many Attacks and Gambits allow attackers to remove Stun on a target for additional effects."
   },
   {
     "name": "Supporter",
@@ -430,7 +417,7 @@
   { "name": "Techniques", "see": "Technique" },
   {
     "name": "Turn",
-    "effect": "An individual creature's time to act in combat. Typically, a Turn involves a creature using a _Technique_."
+    "effect": "An individual creature's time to act in combat. Typically, a Turn involves a creature using a _Technique_ or _Action_."
   },
   { "name": "Turns", "see": "Turn" },
   {

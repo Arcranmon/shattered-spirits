@@ -5,6 +5,7 @@ class Status extends Base {
   private negate_: string
   private recover_: string
   private reacts_: string[]
+  private repeat_: string
   private remove_: string
   private type_: string
 
@@ -13,6 +14,7 @@ class Status extends Base {
     this.recover_ = ''
     this.reacts_ = []
     this.remove_ = ''
+    this.repeat_ = ''
     this.type_ = ''
   }
 
@@ -38,6 +40,9 @@ class Status extends Base {
   get HasRemove() {
     return this.remove_ != ''
   }
+  get HasRepeat() {
+    return this.repeat_ != ''
+  }
 
   // ==========================================================
   // FORMATTED GETTERS
@@ -58,6 +63,9 @@ class Status extends Base {
   public get RemoveHeader() {
     return '**Remove:** ' + this.remove_
   }
+  public get RepeatHeader() {
+    return '**Repeated Application:** ' + this.repeat_
+  }
   public get Icon() {
     if (this.Name == 'Error') return ''
     return require('@/assets/statuses/' + this.Name + '.svg')
@@ -77,6 +85,7 @@ class Status extends Base {
     this.negate_ = data.negate || ''
     this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
+    this.repeat_ = data.repeat || ''
     this.remove_ = data.remove || ''
     this.type_ = data.type || ''
   }
