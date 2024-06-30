@@ -25,7 +25,8 @@
         <display-tooltip-text :string="discipline.Tier1Special" />
       </div>
       <v-row
-        ><v-col :cols="num_cols" v-for="tech in discipline.Tier1Techniques" :key="tech.Name"><tech-card :tech="tech" /></v-col
+        ><v-col :cols="num_cols" v-for="stance in discipline.Tier1Stances" :key="stance.Name"><stance-card :stance="stance" /></v-col>
+        <v-col :cols="num_cols" v-for="tech in discipline.Tier1Techniques" :key="tech.Name"><tech-card :tech="tech" /></v-col
         ><v-col :cols="num_cols" v-for="attack in discipline.Tier1Attacks" :key="attack.Name"><attack-card :attack="attack" /></v-col
         ><v-col :cols="num_cols" v-for="man in discipline.Tier1Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
       ></v-row>

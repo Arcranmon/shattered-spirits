@@ -52,7 +52,7 @@ Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
-Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frigid, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne, Survivor, Sling - Delapouite
+Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frigid, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne, Survivor, Sling, Calm - Delapouite
 
 Controller, Courier, Defender, Tundra, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleeding, Vulnerable, Burned, Exposed, Grabbed, Tough, Shred, Stealthy, Studied, Joyful, Shocked, Soaked, Suppressed, Frightened - Lorc
 

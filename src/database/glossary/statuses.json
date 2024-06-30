@@ -62,7 +62,7 @@
   {
     "name": "Blinded",
     "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
-    "effect": "A Blinded creature sees all creatures within Range 3 as _Lightly Obscured_ and all creatures beyond that range as _Heavily Obscured_.",
+    "effect": "A Blinded creature sees all creatures within Range 3 as _Lightly Obscured_ and all creatures beyond that range as _Heavily Obscured_. Additionally, Attacks against a Blinded creature gain a +1 _Bonus_.",
     "recover": "When a creature _Recovers_ they may remove Blinded.",
     "repeat": "If a Blinded creature would gain Blinded they instead extend the Blinded duration by 1 _Phase_.",
     "remove": "Creatures are Blinded until the end of the next _Phase_.",
@@ -85,9 +85,17 @@
     "type": "Affliction"
   },
   {
+    "name": "Calm",
+    "desc": "A mental affliction caused when a creature's mind is clear and avoiding violence. ",
+    "effect": "A creature with Calm deals -2 Damage on all Attacks and reduces the Negate DC of their Attacks by 1, but has +2 _Guard_. If a creature does not make an Attack on their _Turn_ while Calm they may lose Calm to gain 2 _Momentum_.",
+    "repeat": "If a Calm creature would gain Calm they gain 1 _Momentum_ and 1 _Stun_.",
+    "reacts": ["<ins>_Enraged_:</ins> If a creature is _Enraged_ and would gain Calm, they instead remove _Enraged_."],
+    "type": "Mental Affliction"
+  },
+  {
     "name": "Courageous",
     "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
-    "effect": "While Courageous a creature gains a +1 _Bonus_ to Negate all effects. While adjacent to a hostile creature a creature may remove Courageous for 2 _Momentum_ or 5 _Vigor_.",
+    "effect": "While Courageous a creature gains 1 _Stamina_ at the end of each of their Turns. While adjacent to a hostile creature a creature may remove Courageous for 2 _Momentum_ or to _Recover_.",
     "repeat": "If a Courageous creature would gain Courageous they instead gain 1 _Momentum_.",
     "reacts": ["<ins>_Frightened_:</ins> If a creature is _Frightened_ and would gain Courageous, they instead remove _Frightened_."],
     "type": "Mental Affliction"
@@ -102,7 +110,7 @@
   {
     "name": "Engaged",
     "desc": "An effect caused when a creature is locked in close combat with another.",
-    "effect": "While Engaged a creature may only move into spaces that are adjacent to the creature they are Engaged with. Additionally, this creature takes a -1 _Penalty_ on all Attacks not targeting the creature they are Engaged with.",
+    "effect": "While Engaged a creature may only move into spaces that are adjacent to all creatures they are Engaged with. Additionally, this creature takes a -X _Penalty_ on all Attacks not targeting a creature they are Engaged with, where X is the total number of creatures they are _Engaged_ with.",
     "remove": "Engaged is removed if a creature breaks adjacency with the creature they're Engaged with. Additionally, a creature may downgrade their Move by one tier and create an _Opening_ to remove Engaged.",
     "recover": "When a creature _Recovers_ they may remove Engaged.",
     "type": "Status Effect"
@@ -110,7 +118,7 @@
   {
     "name": "Enraged",
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
-    "effect": "A creature with Enraged deals +2 _Bonus Damage_ on all Attacks, but takes an additional 1 Damage from all Attacks. If a creature does not make an Attack on their _Turn_ while Enraged they lose 1 _Momentum_.",
+    "effect": "A creature with Enraged deals +2 _Bonus Damage_ on all Attacks, but takes an additional 1 Damage from all Attacks. If a creature does not deal Damage with an Attack on their _Turn_ while Enraged they lose 1 _Momentum_.",
     "repeat": "If an Enraged creature would gain Enraged they instead gain _Stun_ equal to the amount they failed the _Negate_ by.",
     "recover": "When a creature _Recovers_ they may remove Enraged if they have dealt damage to a creature with an Attack this _Round_.",
     "type": "Mental Affliction"
@@ -138,7 +146,7 @@
     "name": "Grabbed",
     "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* Both creatures become _Engaged_ with one another, and this _Engaged_ may not be removed while the grab persists.\n* The Grabber may expend X spaces of _Movement_ to inflict _Push_/_Pull_ X on the Grabbed creature. Any _Forced Movement_ inflicted in this way is treated as a single effect. The Grabber may Move while inflicting this _Push_/_Pull_ without ending the _Grab_ as long as they end any movement still adjacent to the Grabbed creature.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature's Movement is impacted as follows:\n\t* If the Grabbed creature is the same size or smaller than the Grabber, they may not Move.\n\t* If the Grabbed creature is larger than the Grabber, reduce all their Movement by one tier and the Grabber moves with them.\n\t* If the creature is more than triple the size of the Grabber the Grabbed creature has no penalty to their Movement, but the creature grabbing them moves with them.",
     "repeat": "If a creature inflicts Grabbed on a creature they are already Grabbing they may instead inflict _Pull_ 3 or _Prone_ with the same cost to negate as the Grabbed.",
-    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency or leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Stamina_. The Grabbed creature and the grabber both roll 2d6 and add their _Grit_ and _Size_ (rounded down). If the Grabbed creature rolls higher than the grabber, the Grab ends. The Grabber gets a +1 _Bonus_ if they are using both _Hands_ (or multiple _Grasping_ Weapons) for the Grab.",
+    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency or leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Stamina_ to initiate a Grab Check. The grabber rolls 2d6 and adds their _Grit_ and _Size_ (rounded down), while the Grabbed creature rolls 2d6 and adds their _Grit_/_Reflex_ and _Size_ (rounded down). If the Grabbed creature rolls higher than the grabber, the Grab ends. The Grabber gets a +1 _Bonus_ if they are using both _Hands_ (or multiple _Grasping_ Weapons) for the Grab.",
     "type": "Status Effect"
   },
   { "name": "Grab", "see": "Grabbed" },
@@ -159,7 +167,7 @@
   {
     "name": "Joyful",
     "desc": "A mental affliction caused when a creature's heart is full of joy. ",
-    "effect": "While Joyful a creature may Move 1 on each of their Turns. While adjacent to an allied creature a creature may remove Joyful for 2 _Momentum_ or to _Step_ Move.",
+    "effect": "While Joyful a creature gains a +1 _Bonus_ to _Negate_. While adjacent to an allied creature a creature may remove Joyful for 2 _Momentum_ or to _Step_ Move.",
     "repeat": "If a Joyful creature would gain Joyful they instead gain 1 _Momentum_.",
     "reacts": ["<ins>_Anguished_:</ins> If a creature is _Anguished_ and would gain Joyful, they instead remove _Anguished_."],
     "type": "Mental Affliction"

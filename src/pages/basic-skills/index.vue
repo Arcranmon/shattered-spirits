@@ -14,11 +14,9 @@
     <v-tabs-items v-model="tab" class="character-tab-content">
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" /><show-cards
-          :inputs="this.$store.getters.getTechniquesFromList(['Shift', 'Rally'])"
+          :inputs="this.$store.getters.getTechniquesFromList(['Shift', 'Rally', 'Prepare'])"
           job="Techniques"
           :collapse="false"
-          v-bind:class="use_duo"
-          :cols="2"
         />
         <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Skirmish', 'Combination Strike', 'Smash'])" job="Techniques" :collapse="false" />
       </v-tab-item>
@@ -26,7 +24,7 @@
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
         <show-cards
           :inputs="[
-            $store.getters.getAttack('Quickened Attack'),
+            this.$store.getters.getAttack('Quickened Attack'),
             this.$store.getters.getAttack('Unarmed Attack'),
             this.$store.getters.getAttack('Environmental Attack'),
           ]"

@@ -69,8 +69,12 @@ class Discipline {
     return '**Prerequisites:** _' + this.prereqs_.join('_, _') + '_'
   }
   public get Icon() {
+    console.log(this.Name)
     if (this.Type == 'Undefined') return ''
-    if (this.Category == 'Weapon') return require('@/assets/weapons/' + this.Type + '.svg')
+    if (this.Category == 'Martial') {
+      if (this.Type == 'Striker' || this.Type == 'Artillery') return require('@/assets/disciplines/' + this.Type + '.svg')
+      return require('@/assets/weapons/' + this.Type + '.svg')
+    }
     if (this.Type == 'General' || this.Type == 'Style') return require('@/assets/disciplines/' + this.primary_role_ + '.svg')
     return require('@/assets/disciplines/' + this.Type + '.svg')
   }
@@ -111,6 +115,9 @@ class Discipline {
   }
   public get Tier1Special() {
     return this.tier_1_.special
+  }
+  public get Tier1Stances() {
+    return store.getters.getStancesFromList(this.tier_1_.stances)
   }
   public get HasTier2Stances() {
     return this.tier_2_.stances != undefined

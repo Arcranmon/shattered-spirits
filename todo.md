@@ -11,25 +11,9 @@
 - More Arts
   - ARTILLERY
     - Way of the Magus for Foci (stretch goal)
-  - DEFENDER
-    - Way of the Warden gets Engaged
-  - STRIKER
-    - Way of the Great Weapon
-  - SURVIVOR
-    - Way of the Fortress gets Raise Guard and X
-  - CONTROLLER
-    - Way of the Conqueror gets Anguished
-    - Way of the Gladiator gets Taunted/Enraged
-    - Way of the Scoundrel gets Feint and a Blind
-  - SUPPORTER
-    - Way of the Warlord gets Courage
-    - Way of the Minstrel gets Joyful engine
-    - Way of the Sage gets Calm
-    - Way of the Tactician gets Flank and SOMETHING
   - WEAPON
-    - Fist, and Grapple Arts
+    - Fist Arts
     - 1-2x for each Weapon Category
-    - Way of the Brawler - Environmental Attacks
 
 ### Plan
 

@@ -1,8 +1,8 @@
 import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import Accessories from '@/database/items/accessories.json'
-import MajorDisciplinesJson from '@/database/major_disciplines.json'
-import MinorDisciplinesJson from '@/database/minor_disciplines.json'
+import DisciplinesJson from '@/database/disciplines.json'
+import MasteriesJson from '@/database/masteries.json'
 import Techniques from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 import Talents from '@/database/talents.json'
@@ -67,16 +67,16 @@ export class DatabaseJsonStore extends VuexModule {
   private LoadDatabase(): void {
     this.Armors = ArmorsJson.map((x) => Armor.Deserialize(<IArmorData>(<unknown>x)))
     this.Maneuvers = ManeuversJson.map((x) => Maneuver.Deserialize(<IManeuverData>(<unknown>x)))
-    this.MinorDisciplines = MinorDisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
-    this.MajorDisciplines = MajorDisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
+    this.Masteries = MasteriesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
+    this.Disciplines = DisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
   private Armors: Armor[] = []
   private Weapons: Weapon[] = []
-  private MinorDisciplines: Discipline[] = []
-  private MajorDisciplines: Discipline[] = []
+  private Masteries: Discipline[] = []
+  private Disciplines: Discipline[] = []
 
   // ==========================================================
   // MANEUVER TOOLS
@@ -258,7 +258,7 @@ export class DatabaseJsonStore extends VuexModule {
     return () => {
       var stances = []
       for (var category of skillTypes) {
-        for (var disc of this.getMajorDisciplinesByCategory(category)) {
+        for (var disc of this.getDisciplinesByCategory(category)) {
           stances = stances.concat(this.getStancesFromList(disc.Stances))
         }
       }
@@ -300,7 +300,7 @@ export class DatabaseJsonStore extends VuexModule {
     return () => {
       var techs = []
       for (var category of skillTypes) {
-        for (var disc of this.getMajorDisciplinesByCategory(category)) {
+        for (var disc of this.getDisciplinesByCategory(category)) {
           techs = techs.concat(this.getTechniquesFromList(disc.Techniques))
         }
       }
@@ -339,28 +339,28 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // DISCIPLINE TOOLS
   // ==========================================================
-  get getMajorDisciplinesByCategory(): any {
+  get getDisciplinesByCategory(): any {
     return (category: string) => {
-      return this.MajorDisciplines.filter((x) => x.Category.trim() === category.trim()).map((x) => x)
+      return this.Disciplines.filter((x) => x.Category.trim() === category.trim()).map((x) => x)
     }
   }
 
-  get getMajorDisciplinesByType(): any {
+  get getDisciplinesByType(): any {
     return (type: string) => {
-      return this.MajorDisciplines.filter((x) => x.Type.trim() === type.trim()).map((x) => x)
+      return this.Disciplines.filter((x) => x.Type.trim() === type.trim()).map((x) => x)
     }
   }
 
   get getDiscipline(): any {
     return (inword: string) => {
-      var discipline = this.MajorDisciplines.find((x) => x.Name.trim() === inword.trim())
+      var discipline = this.Disciplines.find((x) => x.Name.trim() === inword.trim())
       return discipline
     }
   }
 
-  get getFilteredMajorDisciplines(): any {
+  get getFilteredDisciplines(): any {
     return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
-      return this.MajorDisciplines.filter(
+      return this.Disciplines.filter(
         (x) =>
           categories.includes(x.Category.trim()) &&
           types.includes(x.Type.trim()) &&
@@ -370,37 +370,37 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getCharCreationMajorDisciplines(): any {
+  get getCharCreationDisciplines(): any {
     return (categories_and_types: Array<string>) => {
-      return this.MajorDisciplines.filter((x) => categories_and_types.includes(x.Category.trim()) || categories_and_types.includes(x.Type.trim()))
+      return this.Disciplines.filter((x) => categories_and_types.includes(x.Category.trim()) || categories_and_types.includes(x.Type.trim()))
     }
   }
 
-  get getMajorDisciplines(): any {
+  get getDisciplines(): any {
     return () => {
-      return this.MajorDisciplines
+      return this.Disciplines
     }
   }
 
-  get getMinorDiscipline(): any {
+  get getMastery(): any {
     return (inword: string) => {
-      var discipline = this.MinorDisciplines.find((x) => x.Name.trim() === inword.trim())
+      var discipline = this.Masteries.find((x) => x.Name.trim() === inword.trim())
       return discipline
     }
   }
 
-  get getMinorDisciplines(): any {
+  get getMasteries(): any {
     return () => {
-      return this.MinorDisciplines
+      return this.Masteries
     }
   }
 
-  get getFilteredMinorDisciplines(): any {
+  get getFilteredMasteries(): any {
     return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
-      return this.MinorDisciplines.filter(
+      return this.Masteries.filter(
         (x) =>
-          categories.includes(x.Category.trim()) &&
-          types.includes(x.Type.trim()) &&
+          (categories.length == 0 || categories.includes(x.Category.trim())) &&
+          (types.length == 0 || types.includes(x.Type.trim())) &&
           (primary_role === 'Any' || primary_role == x.PrimaryRole.trim()) &&
           (secondary_role === 'Any' || secondary_role == x.SecondaryRole.trim()),
       )

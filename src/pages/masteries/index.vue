@@ -24,14 +24,9 @@
         <v-col cols="3"
           ><v-select v-model="selectedCategories" :items="disciplineCategories" attach label="Discipline Categories" multiple filled outlined
             ><template v-slot:prepend-item>
-              <v-list-item ripple @mousedown.prevent @click="toggle('selectedCategories', disciplineCategories)"
-                ><v-list-item-action>
-                  <v-icon :color="selectedTypes.length > 0 ? 'indigo darken-4' : ''">
-                    {{ icon(selectedCategories, disciplineCategories) }}
-                  </v-icon>
-                </v-list-item-action>
+              <v-list-item ripple @mousedown.prevent @click="selectedCategories = []">
                 <v-list-item-content>
-                  <v-list-item-title> Select All </v-list-item-title>
+                  <v-list-item-title> Clear Selections </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
               <v-divider class="mt-2"></v-divider> </template
@@ -41,16 +36,11 @@
             </template></v-select
           > </v-col
         ><v-col cols="3"
-          ><v-select v-model="selectedTypes" :items="disciplineTypes.slice()" attach label="Discipline Types" multiple filled outlined>
+          ><v-select v-model="selectedTypes" :items="selectableTypes" attach label="Discipline Types" multiple filled outlined>
             <template v-slot:prepend-item>
-              <v-list-item ripple @mousedown.prevent @click="toggle('selectedTypes', disciplineTypes)"
-                ><v-list-item-action>
-                  <v-icon :color="selectedTypes.length > 0 ? 'indigo darken-4' : ''">
-                    {{ icon(selectedTypes, disciplineTypes) }}
-                  </v-icon>
-                </v-list-item-action>
+              <v-list-item ripple @mousedown.prevent @click="selectedTypes = []">
                 <v-list-item-content>
-                  <v-list-item-title> Select All </v-list-item-title>
+                  <v-list-item-title> Clear Selections </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
               <v-divider class="mt-2"></v-divider> </template
@@ -90,73 +80,30 @@ export default Vue.extend({
   components: { DisciplineCard },
   data() {
     return {
-      disciplineCategories: ['General', 'Martial', 'Weapon', 'Flame', 'Earth', 'Water', 'Wind'],
-      selectedCategories: ['General', 'Martial', 'Weapon', 'Flame', 'Earth', 'Water', 'Wind'],
-      disciplineTypes: [
-        'Land',
-        'Mountain',
-        'Tide',
-        'Tundra',
-        'Blaze',
-        'Detonation',
-        'Gale',
-        'Storm',
-        'Unarmed',
-        'Artillery',
-        'Controller',
-        'Courier',
-        'Striker',
-        'Survivor',
-        'Defender',
-        'Pole',
-      ],
-      selectedTypes: [
-        'Land',
-        'Mountain',
-        'Tide',
-        'Tundra',
-        'Blaze',
-        'Detonation',
-        'Gale',
-        'Storm',
-        'Unarmed',
-        'Artillery',
-        'Controller',
-        'Courier',
-        'Striker',
-        'Survivor',
-        'Defender',
-        'Pole',
-      ],
+      disciplineCategories: ['General', 'Martial', 'Flame', 'Earth', 'Water', 'Wind'],
+      selectedCategories: [],
+      disciplineTypes: {
+        Earth: ['Land', 'Mountain'],
+        Water: ['Tide', 'Tundra'],
+        Flame: ['Blaze', 'Detonation'],
+        Wind: ['Gale', 'Storm'],
+        Martial: ['Unarmed', 'Pole'],
+        General: ['Artillery', 'Controller', 'Courier', 'Striker', 'Supporter', 'Survivor', 'Defender'],
+      },
+      selectedTypes: [],
       selectedMinorDiscipline: null,
     }
   },
   computed: {
     minorDisciplines: function () {
-      return this.$store.getters.getFilteredMinorDisciplines(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
+      return this.$store.getters.getFilteredMasteries(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
     },
-  },
-  methods: {
-    toggle: function (selected, all) {
-      this.$nextTick(() => {
-        if (this.hasAll(this[selected], all)) {
-          this[selected] = []
-          this.selectedMinorDiscipline = null
-        } else {
-          this[selected] = all.slice()
-        }
-      })
-    },
-    hasAll: function (selected, all) {
-      return selected.length === all.length
-    },
-    hasSome: function (selected, all) {
-      return selected.length > 0 && !all
-    },
-    icon: function (selected, all) {
-      if (this.hasAll(selected, all)) return 'mdi-close-box'
-      if (this.hasSome(selected, all)) return 'mdi-minus-box'
-      return 'mdi-checkbox-blank-outline'
+    selectableTypes: function () {
+      var selectable_types = []
+      for (var cat of this.selectedCategories) {
+        selectable_types.push(...this.disciplineTypes[cat])
+      }
+      return selectable_types
     },
   },
 })

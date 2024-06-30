@@ -7,26 +7,32 @@ status_multipliers = {
     "Airborne": 4,
     "Alight": 4,
     "Bleeding": 4,
+    "Blinded": 6,
     "Burned": 3,
     "Dazed": 1,
     "Exposed": 2,
     "Frightened": 3,
     "Frozen": 3,
+    "Grabbed": 3,
+    "Hobbled": 3,
+    "Impaired": 2,
     "Push": 0.75,
     "Prone": 3,
     "Reeling": 2,
     "Shocked": 3,
-    "Soaked": 1
+    "Soaked": 1,
+    "Taunted": 2,
 }
 
 instant_statuses = [   "Dazed", "Push", "Pull", "Slide"]
 
-keyword_multipliers = {
+keyword_modifiers = {
     "Avoidable": -0.5,
     "Cold": 0.0,
     "Groundsource": 0.5,
     "Brawling": 0.25,
     "Overwhelming": 0.25,
+    "Social": 0.5,
     "Pierce": 0.5,
     "Remote": 1.0,
     "Siege": 0,
@@ -68,9 +74,9 @@ def get_status_damage(status_string, glancing):
             if len(split_status) == 1: continue
             if split_status[1] in instant_statuses:
                 if glancing:
-                    no_save_damage += int(split_status[2]) * status_multipliers[split_status[1]]/2
+                    no_save_damage += int(split_status[2].strip()) * status_multipliers[split_status[1].strip()]/2
                 else:
-                    no_save_damage += int(split_status[2]) * status_multipliers[split_status[1]]
+                    no_save_damage += int(split_status[2].strip()) * status_multipliers[split_status[1].strip()]
             else:
                 estimated_damage += status_multipliers[split_status[1]]
 
@@ -211,9 +217,9 @@ def estimate_damage(attack, glancing, print_stats):
             keyword = keyword.replace('_', '')
             split_keywords = keyword.split(' ')
             if len(split_keywords) > 1:
-                keyword_bonus += keyword_multipliers[split_keywords[0]] * int(split_keywords[1])
+                keyword_bonus += keyword_modifiers[split_keywords[0]] * int(split_keywords[1])
             else:
-                keyword_bonus += keyword_multipliers[split_keywords[0]]
+                keyword_bonus += keyword_modifiers[split_keywords[0]]
 
     ranges = []
     if override_range == "":
@@ -279,7 +285,7 @@ def estimate_damage(attack, glancing, print_stats):
 
                 damage += bonus_damage[index]
                 if(roll_chart[index] != "Miss"): 
-                    damage += keyword_bonus
+                    damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
 
                 straight_damage[speed_index] += straight[index]*damage
                 advantage_damage[speed_index] += advantage[index]*damage
