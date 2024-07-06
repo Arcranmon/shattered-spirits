@@ -120,7 +120,7 @@ class Discipline {
     return store.getters.getStancesFromList(this.tier_1_.stances)
   }
   public get HasTier2Stances() {
-    return this.tier_2_.stances != undefined
+    return this.tier_2_ && this.tier_2_.stances != undefined
   }
   public get Tier2Stances() {
     return store.getters.getStancesFromList(this.tier_2_.stances)

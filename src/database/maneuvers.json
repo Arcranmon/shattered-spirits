@@ -917,6 +917,15 @@
     "manifest": "Add [_Manifest_]. Instead, remove _Alight_ 2X and inflict an additional 2X _Alight_. Additionally, deal X _Fire_ Damage in a _Burst_ 2, centered either on yourself or a space within your spirit's _Reposition_ Distance. You may _Summon_ your spirit to this space."
   },
   {
+    "name": "Heckle",
+    "class": "Basic",
+    "desc": "You punctuate a foe's failure with a taunt, pushing them more and more off-balance.",
+    "type": "Reaction",
+    "trigger": "A foe is _Defeated_ or _Misses_ all targets with an Attack.",
+    "cost": "2 _Momentum_",
+    "effect": "You may immediately use a [_Social_] Attack. If the Target is adjacent to the _Defeated_ foe or was the creature that _Missed_ all targets they have _Disadvantage_ to _Negate_."
+  },
+  {
     "name": "Hide",
     "class": "General",
     "desc": "You conceal yourself, limiting enemies' ability to strike you.",
@@ -948,6 +957,15 @@
     "type": "Stunt",
     "cost": "0 _Momentum_",
     "effect": "Choose an _Opportune_ Weapon you are _Wielding_. Remove it and replace it with a Size 1 _Hazard_. The first time a creature moves into this space remove the _Hazard_ and make an Attack against the creature with the Weapon you removed. This Attack has _Advantage_ and ignores _Speed Penalty_."
+  },
+  {
+    "name": "Impact",
+    "class": "General",
+    "desc": "You put all your momentum into an attack, sending a nearby foe reeling.",
+    "type": "Gambit",
+    "reqs": "_Melee_ Attack, and must have moved at least 3 spaces this _Turn_.",
+    "effect": "Remove [_Mobile_] from this Attack and lose all remaining Move. Deal +X _Bonus_ Damage and add either _Push_ X or _Reeling_ [X _Grit_], where X is 1 + the amount of Movement sacrificed.",
+    "special": "You may pay 2 _Momentum_ to use this _Gambit_ if you used [_Rush_] Movement prior to this Attack and did not otherwise qualify for a _Gambit_."
   },
   {
     "name": "Inspire",
@@ -1071,14 +1089,14 @@
       }
     ],
     "effect": "Roll a d6, then resolve using the below table:",
-    "special": "On a 4+ you may choose to reduce the _Negate_ value by 2 and the _Stun_ by 3 to instead target two adjacent creatures within Range. On a 6, you may reduce the _Stun_ by 5 and _Negate_ value by 4 to instead target all targets within Range.",
+    "special": "On a 4+ you may choose to reduce the _Negate_ value by 2 and the _Stun_ by 1 to instead target two adjacent creatures within Range. On a 6, you may reduce the _Stun_ by 2 and _Negate_ value by 4 to instead target all targets within Range.",
     "table": [
       "Inflict _Stun_ 1, _Prone_ [3 _Grit_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 2, _Prone_ [4 _Grit_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 3, _Prone_ [5 _Grit_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 4, _Prone_ [6 _Grit_/_Reflex_] on a Target within Range",
-      "Inflict _Stun_ 5, _Prone_ [7 _Grit_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 6, _Prone_ [8 _Grit_/_Reflex_] on a Target within Range."
+      "Inflict _Stun_ 1, _Prone_ [4 _Grit_/_Reflex_] on a Target within Range.",
+      "Inflict _Stun_ 2, _Prone_ [5 _Grit_/_Reflex_] on a Target within Range.",
+      "Inflict _Stun_ 2, _Prone_ [6 _Grit_/_Reflex_] on a Target within Range",
+      "Inflict _Stun_ 3, _Prone_ [7 _Grit_/_Reflex_] on a Target within Range.",
+      "Inflict _Stun_ 3, _Prone_ [8 _Grit_/_Reflex_] on a Target within Range."
     ]
   },
   {
@@ -1087,7 +1105,8 @@
     "desc": "You exploit a stun to the limit, inflicting grave damage on a foe.",
     "type": "Gambit",
     "reqs": "_Hit_+.",
-    "effect": "Roll a d6, reduce the target's _Stun_ by that value, then deal X _Bonus Damage_, where X is 2*(1 + the _Stun_ the Target lost) and inflict the _Status_ associated with the Damage Type of the Attack with a _Negate_ DC of Y, where Y is [1 + the _Stun_ the Target lost]."
+    "effect": "Roll a d6, then deal X _Bonus Damage_, where X is the die roll, then inflict the _Status_ associated with the Damage Type of the Attack with a _Negate_ DC of Y, where Y is 1 + the die roll.",
+    "special": "You have _Advantage_ on this roll if the target is _Staggered_."
   },
   {
     "name": "Lifting Gale",
@@ -1104,6 +1123,20 @@
     "effect": "Place an _Updraft_ within range.",
     "boost": "1 _Momentum_: Place an additional _Updraft_ adjacent to another _Updraft_ placed this _Turn_. You may use this _Boost_ up to 2 times.",
     "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. Instead, create _Updraft_ spaces in a _Blast_ 1 within Range. You may choose to _Summon_ your Spirit to the centermost space of the _Blast_."
+  },
+  {
+    "name": "Living Shield",
+    "class": "Basic",
+    "desc": "You pivot a grappled creature, using them to block all incoming assaults.",
+    "type": "Stunt",
+    "reqs": "Must have a creature _Grabbed_ and adjacent to you.",
+    "cost": "1 _Stamina_",
+    "range": {
+      "category": "Self"
+    },
+    "area": "_Arc_ 1",
+    "effect": "You become _Guarding_ and mark the _Area_, which must be centered on a _Grabbed_ creature. You have _Light Cover_ against all Attacks that pass through that area. Additionally, whenever you are Attacked and this Cover applies reduce any Damage you take by 2 and _Stun_ you take by 1, instead inflicting them on the _Grabbed_ creature. While _Guarding_ in this way you do not have _Disadvantage_ to attack the _Grabbed_ creature.",
+    "special": "End _Guarding_ if the _Grab_ ends."
   },
   {
     "name": "Localized Tremor",
@@ -1300,7 +1333,7 @@
     "type": "Stunt",
     "reqs": "Move this Turn is not None.",
     "cost": "1 _Momentum_",
-    "effect": "Add [_Breach_] to your current move. Inflict +1 _Stun_ on a _Graze_+ with any _Body_ Attack during this Move.",
+    "effect": "Add [_Breach_] to your current move. Inflict +1 _Damage_ on a _Graze_+ with any _Body_ Attack during this Move.",
     "special": "You may choose to also add [_Rush_]. If you do, gain 1 _Guard_ during this Move.",
     "boost": "2 _Momentum_: Make a [_Body_] _Minor Attack_."
   },
@@ -1320,9 +1353,8 @@
     "desc": "Your lance bites deep, temporarily pinning a foe for an ally's strike.",
     "type": "Gambit",
     "reqs": "_Hit_+ with an Attack using a _Pole_ Weapon.",
-    "effect": "The _Pole_ Weapon used for this Attack becomes _Occupied_. Inflict _Restrained_ [X _Grit_/_Reflex_] on the Target, where X is (2 + 1d6). This creature is _Restrained_ until the end of the current _Phase_, an ally hits them with an _Attack_, or the creature allows you to make an Attack using the _Occupied_ _Pole_ Weapon at _Advantage_ as a no-cost _Reaction_.",
-    "special": "While _Restrained_ the next Attack against this creature gains [_Pierce_ 2].",
-    "boost": "X _Stun_ (maximum 4): Increase the _Negate_ cost by X."
+    "effect": "The _Pole_ Weapon used for this Attack becomes _Occupied_. Inflict _Restrained_ [X _Grit_/_Reflex_] on the Target, where X is (2 + 1d6). This creature is _Restrained_ until the end of the current _Phase_, an ally hits them with an _Attack_, or the creature allows you to make a _Major Attack_ using the _Occupied_ _Pole_ Weapon at _Advantage_ as a no-cost _Reaction_.",
+    "special": "While _Restrained_ the next Attack against this creature gains [_Pierce_ 2]."
   },
   {
     "name": "Plate Lock",
@@ -1395,7 +1427,7 @@
     "class": "General",
     "desc": "You adopt a defensive stance, warding yourself against harm.",
     "type": "Stunt",
-    "cost": "1 _Momentum_",
+    "cost": "1 _Stamina_",
     "range": {
       "category": "Self"
     },
@@ -1407,9 +1439,9 @@
     "class": "Martial",
     "desc": "You tilt your blade, defending yourself while preparing to attack.",
     "type": "Stunt",
-    "cost": "1 _Momentum_ if _Light_ Blade, 2 _Momentum_ if _Versatile_ Blade, [_Effort_] if _Heavy_ Blade.",
+    "cost": "[_Effort_]",
     "reqs": "Must be _Wielding_ a Blade Weapon.",
-    "effect": "You become _Guarding_ and a _Wielded_ _Blade_ Weapon becomes _Occupied_. The next time you are _Grazed_+ with a damaging Attack remove _Guarding_ and immediately make an Attack with your Weapon, targeting that creature if they are within _Reach_. You may reduce the Damage dealt by this Attack by any amount to gain an equivalent amount of _Instant Guard_ against the triggering Attack."
+    "effect": "You become _Guarding_ and a _Wielded_ _Blade_ Weapon becomes _Occupied_. The next time you are _Grazed_+ with a damaging Attack remove _Guarding_ and immediately make an Attack with your Weapon, targeting that creature if they are within _Reach_ and ignoring _Speed Penalties_. You may reduce the Damage dealt by this Attack by any amount to gain an equivalent amount of _Instant Guard_ against the triggering Attack."
   },
   {
     "name": "Rattle",
@@ -1499,14 +1531,14 @@
       }
     ],
     "effect": "Roll a d6, then resolve using the below table:",
-    "special": "On a 4+ you may choose to reduce the _Negate_ value by 2 and the _Stun_ by 3 to instead target two adjacent creatures within Range. On a 6, you may reduce the _Stun_ by 5 and _Negate_ value by 4 to instead target all targets within Range.",
+    "special": "On a 4+ you may choose to reduce the _Negate_ value by 2 and the _Stun_ by 1 to instead target two adjacent creatures within Range. On a 6, you may reduce the _Stun_ by 2 and _Negate_ value by 4 to instead target all targets within Range.",
     "table": [
       "Inflict _Stun_ 1, _Blinded_ [3 _Focus_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 2, _Blinded_ [4 _Focus_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 3, _Blinded_ [5 _Focus_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 4, _Blinded_ [6 _Focus_/_Reflex_] on a Target within Range",
-      "Inflict _Stun_ 5, _Blinded_ [7 _Focus_/_Reflex_] on a Target within Range.",
-      "Inflict _Stun_ 6, _Blinded_ [8 _Focus_/_Reflex_] on a Target within Range."
+      "Inflict _Stun_ 1, _Blinded_ [4 _Focus_/_Reflex_] on a Target within Range.",
+      "Inflict _Stun_ 2, _Blinded_ [5 _Focus_/_Reflex_] on a Target within Range.",
+      "Inflict _Stun_ 2, _Blinded_ [6 _Focus_/_Reflex_] on a Target within Range",
+      "Inflict _Stun_ 3, _Blinded_ [7 _Focus_/_Reflex_] on a Target within Range.",
+      "Inflict _Stun_ 3, _Blinded_ [8 _Focus_/_Reflex_] on a Target within Range."
     ]
   },
   {
@@ -1617,14 +1649,6 @@
     "effect": "_Slide_ 4 [_Earthbend_] the _Obstacle_.",
     "boost": "Choose any:\n* 1 _Momentum_: Increase the _Slide_ by 2. You may use this option up to 3 times.\n* 1 _Momentum_: Add [_Forceful_].",
     "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to the _Obstacle_ in a space of your choice. You may use 2 _Momentum_ of _Boost_ for no Cost."
-  },
-  {
-    "name": "Skirmisher's Step",
-    "class": "General",
-    "desc": "You use an attack to disengage, escaping from a foe.",
-    "type": "Gambit",
-    "reqs": "_Melee_ Attack.",
-    "effect": "After fully resolving this Attack you may _Step_ [_Safe_]."
   },
   {
     "name": "Sling Stone",
@@ -1756,6 +1780,15 @@
     "cost": "1 _Momentum_",
     "reqs": "Move this _Turn_ is not None.",
     "effect": "Increase the tier of your current Move (making a _Step_ a _Reposition_, for example) and add [_Rush_]. This _Stunt_ must be used before any of the current Move has been used and has no effect if the Move is already _Dash_."
+  },
+  {
+    "name": "Spring Away",
+    "class": "General",
+    "desc": "You use an attack to disengage, escaping from a foe.",
+    "type": "Gambit",
+    "reqs": "_Melee_ Attack.",
+    "effect": "After fully resolving this Attack you may _Step_ [_Safe_].",
+    "boost": "1 _Momentum_: Add [_Leaping_]."
   },
   {
     "name": "Sprouting Vines",
@@ -2024,7 +2057,8 @@
     "desc": "You roll forward, moving swiftly and avoiding incoming strikes.",
     "type": "Stunt",
     "cost": "1 _Momentum_",
-    "effect": "The next X spaces you Move, where X is up to your _Step_ distance gain [_Safe_, _Breach_, _Rush_]. You take double Damage from and have _Disadvantage_ to _Negate_ any non-Weather _Terrain_ you pass through."
+    "effect": "The next X spaces you Move, where X is up to your _Step_ distance gain [_Safe_, _Breach_, _Rush_]. You take double Damage from and have _Disadvantage_ to _Negate_ any non-Weather _Terrain_ you pass through.",
+    "boost": "1 _Momentum_: You may use this _Stunt_ as a part of an Attack to add [_Mobile_] to it. Resolve this Manuever immediately after the Attack, and end your Movement after completing this Manuever."
   },
   {
     "name": "Tundra Strike",

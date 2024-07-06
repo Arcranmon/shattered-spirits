@@ -278,7 +278,7 @@ def estimate_damage(attack, glancing, print_stats):
                     continue
 
                 damage = (damage_chart[index])
-                damage += stun_chart[index] * 0.75
+                damage += stun_chart[index] * 1.5
                 if(glancing): damage = math.ceil(damage/2.0)
 
                 damage += get_status_damage(status_chart[index], glancing)

@@ -101,7 +101,6 @@ export default Vue.extend({
     },
     num_cols: function () {
       if (this.isMobile) return 12
-      if (this.discipline.Tier1Techniques.length == 0) return 6
       return 4
     },
   },

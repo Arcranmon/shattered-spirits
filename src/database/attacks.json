@@ -29,13 +29,6 @@
     "rank": "Special Attack"
   },
   {
-    "name": "Rending Cut",
-    "desc": "You capitalize on a foe's lack of armor, leaving them reeling and bleeding.",
-    "effect": "Make an Attack using a _Wielded_ Blade Weapon. Treat the target's passive _Guard_ as double its normal value but, if they have no passive _Guard_, deal +2 Damage and increase the cost to _Negate_ any Status by 1.",
-    "boost": "1 _Momentum_ / 2 _Stun_: If the Target is _Bleeding_ add 2 _True_ Damage.",
-    "rank": "Major Attack"
-  },
-  {
     "name": "Bonechill",
     "class": "Tundra",
     "desc": "You freeze the air around a foe, rapidly dropping the temperature.",
@@ -62,7 +55,7 @@
     }
   },
   {
-    "name": "Challenge Ego",
+    "name": "Taunt",
     "class": "General",
     "keywords": ["Mobile", "Social"],
     "desc": "You insult the ego of a foe, drawing their attention in an intense way.",
@@ -146,6 +139,13 @@
     "effect": "Deal 4 Damage to the Targets, treating them as both in the _Area_ of this Attack.",
     "boost": "2 _Momentum_: Draw a _Line_ connecting and including the Targets and make that the new _Area_. Increase the Damage by 3.",
     "rank": "Minor Attack"
+  },
+  {
+    "name": "Cross Slash",
+    "desc": "You make two swift slashes against a foe, cutting through their defenses.",
+    "cost": "3 _Momentum_",
+    "effect": "Make two _Major Attacks_ using a _Blade_ Weapon against the same target. If both attacks _Hit_+, gain 1 _Momentum_.",
+    "rank": "Major Attack"
   },
   {
     "name": "Cutting Veil",
@@ -726,9 +726,9 @@
     "rank": "Major Attack"
   },
   {
-    "name": "Focused Gale",
+    "name": "Air Blast",
     "class": "Gale",
-    "desc": "A tunnel of powerful air, striking out at a distant foe.",
+    "desc": "A pocket of powerful air, striking out at a distant foe.",
     "keywords": ["Spirit"],
     "type": "Light",
     "speed": "1",
@@ -916,10 +916,10 @@
     }
   },
   {
-    "name": "Intimidate",
+    "name": "Cruel Words",
     "class": "General",
     "keywords": ["Mobile", "Social"],
-    "desc": "You snarl at foe, placing the fear of death in them.",
+    "desc": "You verbally assault a foe, attempting to push them off-balance.",
     "type": "Versatile",
     "speed": "2+ [_Rigid_]",
     "range": [
@@ -928,8 +928,7 @@
         "value": 6
       }
     ],
-    "effect": "Inflict _Frightened_ [6 _Focus_] and 2 _Stun_ on the Target.",
-    "boost": "2 _Stun_: Increase the _Negate_ DC by 2.",
+    "effect": "Inflict your choice of _Anguished_, _Enraged_, or _Frightened_ [6 _Focus_] and 1 _Stun_ on the Target.",
     "rank": "Minor Attack"
   },
   {
@@ -1023,6 +1022,47 @@
     "rank": "Special Attack"
   },
   {
+    "name": "Open Palm",
+    "class": "Martial",
+    "desc": "A strike with an open palm to disorient and unbalance a foe.",
+    "type": "Versatile",
+    "speed": 3,
+    "range": [
+      {
+        "category": "Melee",
+        "value": 1
+      }
+    ],
+    "effect": "Gain 1 _Momentum_.",
+    "boost": "Choose any:\n* 1 _Momentum_ (_Hit_+): Increase the _Negate_ cost by 3.\n* 1 _Momentum_: Add _Dazed_ 1.",
+    "chart": {
+      "damage_type": "Crush",
+      "on_miss": "+0 _Momentum_",
+      "keywords": ["Fist"],
+      "stun": [0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3],
+      "damage": [0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2],
+      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "_Impaired_ [2 _Grit_/_Focus_]",
+        "_Impaired_ [2 _Grit_/_Focus_]",
+        "_Impaired_ [3 _Grit_/_Focus_]",
+        "_Impaired_ [3 _Grit_/_Focus_]",
+        "_Impaired_ [3 _Grit_/_Focus_]",
+        "_Impaired_ [4 _Grit_/_Focus_]",
+        "_Impaired_ [4 _Grit_/_Focus_]"
+      ]
+    },
+    "rank": "Minor Attack",
+    "analysis_notes": {
+      "fudge": -0.91,
+      "notes": "Gives 1 Momentum, ignores the misses"
+    }
+  },
+  {
     "name": "Pommel Strike",
     "class": "Martial",
     "desc": "You strike with the haft of your weapon, knocking your foe off-balance and gaining momentum for your next strike.",
@@ -1082,6 +1122,7 @@
     "class": "Martial",
     "desc": "A forceful attack that powers through enemies using the weight of ones' body.",
     "type": "Versatile",
+    "keywords": ["Mobile"],
     "speed": 3,
     "range": [
       {
@@ -1090,27 +1131,27 @@
       }
     ],
     "effect": "Gain 1 _Momentum_.",
-    "special": "Decrease the _Speed_ of this _Technique_ by 1 or increase the Negate target by 1.",
-    "boost": "Choose any\n* X _Stun_ (max 2): On a _Graze_+, add _Push_ X.\n* X _Stun_ (maximum 4): Deal X _Crush_ Damage.",
+    "special": "Decrease the _Speed_ of this _Technique_ by 1 or increase the Negate target by 2 if used against a creature you are sharing a space with during [_Breach_] Movement.",
+    "boost": "Choose any\n* 1 _Momentum_ (_Graze_+): Add _Push_ 2.\n* 1 _Momentum_ (_Hit_+): Add 2 _Crush_ Damage.",
     "chart": {
       "damage_type": "Crush",
       "keywords": ["Body"],
       "on_miss": "+0 _Momentum_",
-      "stun": [0, 0, 1, 1, 2, 2, 2, 2, 2, 3, 3],
-      "damage": [0, 0, 0, 0, 0, 0, 1, 2, 2, 3, 3],
+      "stun": [0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+      "damage": [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
         "",
         "",
-        "_Prone_ [2 _Grit_]",
-        "_Prone_ [2 _Grit_]",
-        "_Prone_ [2 _Grit_]",
-        "_Prone_ [3 _Grit_]",
-        "_Prone_ [3 _Grit_]",
-        "_Prone_ [4 _Grit_]",
-        "_Prone_ [4 _Grit_]"
+        "_Prone_ [2 _Grit_/_Reflex_]",
+        "_Prone_ [2 _Grit_/_Reflex_]",
+        "_Prone_ [2 _Grit_/_Reflex_]",
+        "_Prone_ [3 _Grit_/_Reflex_]",
+        "_Prone_ [3 _Grit_/_Reflex_]",
+        "_Prone_ [4 _Grit_/_Reflex_]",
+        "_Prone_ [4 _Grit_/_Reflex_]"
       ]
     },
     "analysis_notes": {
@@ -1162,7 +1203,7 @@
     }
   },
   {
-    "name": "Rising Leg",
+    "name": "Crescent Kick",
     "class": "Martial",
     "desc": "A strong kick that knocks foes off-balance.",
     "type": "Versatile",
@@ -1174,13 +1215,13 @@
       }
     ],
     "effect": "Gain 1 _Momentum_.",
-    "boost": "Choose any:\n* 1 _Stun_: Increase the _Negate_ cost by 2.\n* X _Stun_ (maximum  2): Add _Push_ X.\n* X _Stun_ (maximum 3): Deal X _Crush_ Damage.",
+    "boost": "Choose any:\n* 1 _Momentum_ (_Hit_+): Increase the _Negate_ cost by 3.\n* 1 _Momentum_: Add _Push_ 2.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+0 _Momentum_",
       "keywords": ["_Kick"],
-      "stun": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
-      "damage": [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2],
+      "stun": [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2],
+      "damage": [0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -1188,12 +1229,12 @@
         "",
         "",
         "",
-        "_Exposed_ [1 _Grit_/_Focus_]",
-        "_Exposed_ [1 _Grit_/_Focus_]",
-        "_Push_ 1, _Exposed_ [2 _Grit_/_Focus_]",
-        "_Push_ 1, _Exposed_ [2 _Grit_/_Focus_]",
-        "_Push_ 1, _Exposed_ [3 _Grit_/_Focus_]",
-        "_Push_ 1, _Exposed_ [3 _Grit_/_Focus_]"
+        "_Exposed_ [2 _Grit_/_Focus_]",
+        "_Exposed_ [2 _Grit_/_Focus_]",
+        "_Exposed_ [3 _Grit_/_Focus_]",
+        "_Exposed_ [3 _Grit_/_Focus_]",
+        "_Push_ 1, _Exposed_ [4 _Grit_/_Focus_]",
+        "_Push_ 1, _Exposed_ [4 _Grit_/_Focus_]"
       ]
     },
     "rank": "Minor Attack",
@@ -1519,20 +1560,37 @@
       }
     ],
     "effect": "Gain 1 _Momentum_.",
-    "boost": "X _Stun_ (maximum 2): Deal X _Crush_ Damage.",
+    "special": "Against a _Staggered_ target deal twice the _Stun_ that would be inflicted as _Damage_.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+0 _Momentum_",
       "keywords": ["_Fist_/_Body_/_Kick"],
-      "stun": [0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4],
+      "stun": [0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1"]
+      "status": ["", "", "", "", "", "", "", "", "", "", ""]
     },
     "rank": "Minor Attack",
     "analysis_notes": {
       "fudge": -0.84,
       "notes": "Gives 1 Momentum, ignores the misses."
     }
+  },
+  {
+    "name": "Unsettle",
+    "class": "General",
+    "keywords": ["Mobile", "Social"],
+    "desc": "You pick at psychological weaknesses in a foe, breaking down their combat capabilities even more.",
+    "type": "Versatile",
+    "speed": "2+ [_Rigid_]",
+    "range": [
+      {
+        "category": "Ranged",
+        "value": 6
+      }
+    ],
+    "effect": "Inflict _Exposed_ or _Impaired_ [4 _Focus_] on the Target. For every _Emotional Affliction_ they are suffering, increase the _Negate_ DC by 1 and add _Stun_ 1. The target takes half as much _Stun_ if they successfully _Negate_.",
+    "special": "You may choose to remove one of the target's _Emotional Afflictions_ as a part of this Attack. If you do you may instead inflict both of _Exposed_ and _Impaired_. You still count this _Emotional Affliction_ when determining the _Negate_ DC and _Stun_.",
+    "rank": "Minor Attack"
   },
   {
     "name": "Vine Whip",
@@ -1587,14 +1645,14 @@
     "type": "Versatile",
     "speed": 3,
     "target": "A _Grabbed_ creature.",
-    "effect": "Gain 1 _Momentum_, then initiate a _Grab Check_, resolving this Attack according to the result:\n* **Defender Higher**: Inflict _Stun_ 1. Do not end the _Grab_.\n* **Tie**: Inflict _Stun_ 2.\n* **Attacker Wins:** Inflict _Stun_ 2, _Exposed_ [4 _Grit_/_Reflex_].\n* **Attacker Wins By 3+:** Inflict _Stun_ 3, _Exposed_, _Prone_ [5 _Grit_/_Reflex_].\n* **Attacker Wins By 5+**: Inflict _Stun_ 3, _Exposed_, _Prone_ [6 _Grit_/_Reflex_].\n* **Attacker Wins By 7+**: Inflict _Stun_ 3, _Exposed_, _Prone_ [7 _Grit_/_Reflex_], then the defender creates an _Opening_.",
+    "effect": "Gain 1 _Momentum_, then initiate a _Grab Check_, resolving this Attack according to the result:\n* **Defender Higher**: Inflict _Dazed_ 1. Do not end the _Grab_.\n* **Tie**: Inflict _Dazed_ 1, _Stun_ 1.\n* **Attacker Wins:** Inflict _Dazed_ 1, _Stun_ 1, _Exposed_ [4 _Grit_/_Reflex_].\n* **Attacker Wins By 3+:** Inflict _Dazed_ 1, _Stun_ 2, _Exposed_, _Prone_ [5 _Grit_/_Reflex_].\n* **Attacker Wins By 5+**: Inflict _Dazed_ 1, _Stun_ 2, _Exposed_, _Prone_ [6 _Grit_/_Reflex_].\n* **Attacker Wins By 7+**: Inflict _Dazed_ 1, _Stun_ 2, _Exposed_, _Prone_ [7 _Grit_/_Reflex_], then the defender creates an _Opening_.",
     "range": [
       {
         "category": "Melee",
         "value": 1
       }
     ],
-    "boost": "Choose any:\n* 3 _Stun_: You have _Advantage_ on your _Grab Check_.\n* X _Stun_ (X equals the difference between the _Grab Checks_): Deal +X _Crush_ Damage.",
+    "boost": "Choose any:\n* 1 _Momentum_: You have _Advantage_ on your _Grab Check_.\n* 1 _Momentum_(Must win check): Deal +2 _Crush_ Damage.",
     "rank": "Minor Attack",
     "analysis_notes": { "fudge": -1 }
   }

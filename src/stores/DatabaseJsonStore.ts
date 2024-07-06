@@ -362,10 +362,10 @@ export class DatabaseJsonStore extends VuexModule {
     return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
       return this.Disciplines.filter(
         (x) =>
-          categories.includes(x.Category.trim()) &&
-          types.includes(x.Type.trim()) &&
+          (categories.length == 0 || categories.includes(x.Category.trim())) &&
+          (types.length == 0 || types.includes(x.Type.trim())) &&
           (primary_role === 'Any' || primary_role == x.PrimaryRole.trim()) &&
-          (secondary_role === 'Any' || secondary_role == x.PrimaryRole.trim()),
+          (secondary_role === 'Any' || secondary_role == x.SecondaryRole.trim()),
       )
     }
   }
