@@ -4,9 +4,9 @@
       <div class="card--underline-top card--header">
         <img class="image--header-left" :src="tech.Image" />
         <img class="image--header-right" :src="tech.Image" />
-        <h4 style="display: inline; font-style: normal;">{{ tech.Name }}</h4>
+        <h4 style="display: inline; font-style: normal">{{ tech.Name }}</h4>
         <div class="card--keywords" v-bind:class="tech.Type">
-          <span v-if="(tech.Attack)"> </span>
+          <span v-if="tech.Attack"> </span>
           <div>
             <b><display-tooltip-text :string="tech.ClassHeader" :decorate="false" /></b>
           </div>
@@ -56,9 +56,9 @@
       <div class="card--format" v-if="tech.HasLinked">
         <display-tooltip-text :string="tech.LinkedHeader" />
       </div>
-      <div class="expand--collapse-box-outlined" v-if="(tech.HasChart)">
+      <div class="expand--collapse-box-outlined" v-if="tech.HasChart">
         <v-expansion-panels class="condensed" flat tile :mandatory="this.character_creation ? true : false">
-          <v-expansion-panel style="background-color: inherit;"
+          <v-expansion-panel style="background-color: inherit"
             ><v-expansion-panel-header class="expand--header-chart">Attack Profile</v-expansion-panel-header>
             <v-expansion-panel-content class="expand--body-chart">
               <div v-if="tech.Chart.HasDamageType"><display-tooltip-text :string="tech.Chart.DetailsHeader" /></div>
@@ -70,7 +70,7 @@
         </v-expansion-panels>
       </div>
     </div>
-    <div class="desc--box" v-if="(tech.Desc.length > 0)" style="font-style: italic;">{{ tech.Desc }}<br /></div>
+    <div class="desc--box" v-if="tech.Desc.length > 0" style="font-style: italic">{{ tech.Desc }}<br /></div>
   </div>
 </template>
 

@@ -2,6 +2,7 @@ import json
 import math
 from termcolor import colored
 import argparse
+import OrphanFinder
 
 status_multipliers = {
     "Airborne": 4,
@@ -13,7 +14,7 @@ status_multipliers = {
     "Exposed": 2,
     "Frightened": 3,
     "Frozen": 3,
-    "Grabbed": 3,
+    "Grabbed": 4,
     "Hobbled": 3,
     "Impaired": 2,
     "Push": 0.75,
@@ -21,6 +22,8 @@ status_multipliers = {
     "Reeling": 2,
     "Shocked": 3,
     "Soaked": 1,
+    "Sundered": 3,
+    "Studied": 5,
     "Taunted": 2,
 }
 
@@ -50,9 +53,8 @@ attack_range_multiplier = {
     "Long": 0.7
 }
 
-MINOR_ATTACK = 1
-MAJOR_ATTACK = 2
-TECHNIQUE = 3
+ATTACK = 1
+TECHNIQUE = 2
 
 def get_status_damage(status_string, glancing):
     # Split individual statuses out
@@ -113,11 +115,19 @@ def estimate_all_damage(database, threshold):
     data = get_data(database)
     invalid_attacks = {}
 
+    orphan_attacks = OrphanFinder.find_orphans(database + 's')
+
     for el in data:
-        if("chart" in el):
-            diff = estimate_damage(el, False, False)
-            if(abs(diff) > threshold):
-                invalid_attacks[el["name"]] = diff
+        if el["name"] not in orphan_attacks:
+            if "chart" in el:
+                diff = estimate_damage(el, False, False)
+                if(abs(diff) > threshold):
+                    invalid_attacks[el["name"]] = diff
+            elif "analysis_notes" in el:
+                if "status" in el["analysis_notes"]:
+                    diff = estimate_damage(el, False, False)
+                    if(abs(diff) > threshold):
+                        invalid_attacks[el["name"]] = diff
 
     for key in invalid_attacks:
         print("    " + key + ": " + str(-invalid_attacks[key]))
@@ -139,11 +149,12 @@ def estimate_damage(attack, glancing, print_stats):
     bonus_damage =  [0]*11
     expected_targets = 1
     lvh = 'none'
-    attack_class = MINOR_ATTACK
+    attack_class = ATTACK
     override_range = ""
     diff_speed = 0
+    status_damage = 0
     
-    expected_damage = [6.0, 8.0, 10.0, 12.0]
+    expected_damage = [4.0, 5.0, 6.0, 7.0]
                 
     if("chart" in attack):
         if(not("damage" in attack["chart"])):
@@ -161,17 +172,9 @@ def estimate_damage(attack, glancing, print_stats):
         speed = int(attack["speed"])
     else:
         speed = int(attack["speed"][0])
-    if("rank" in attack):
-        attack_class = (attack["rank"] == 'Major Attack')+1
-    elif(attack.get("category", "") == "Shield"):
-        attack_class = MINOR_ATTACK
-    elif("hands" in attack): # Means that this is a weapon.
-        attack_class = MAJOR_ATTACK
-    else:
-        attack_class = TECHNIQUE
-    if("cost" in attack):
+    if "cost" in attack:
         cost = int(attack["cost"][0])
-    if("type" in attack): 
+    if "type" in attack: 
         lvh = attack["type"]
 
     if("analysis_notes" in attack):
@@ -180,19 +183,22 @@ def estimate_damage(attack, glancing, print_stats):
         bonus_damage = attack["analysis_notes"].get("bonus_damage", [0]*11)
         override_range = attack["analysis_notes"].get("range", "")
         diff_speed = attack["analysis_notes"].get("speed", 0)
+        status_damage = get_status_damage(attack["analysis_notes"].get("status", ""), False)
     
     # Momentum is 'worth' 2 Damage
-    momentum_value = 2
+    momentum_value = 1
         
     if("hands" in attack and attack["hands"] == 2):
         cost += 1
 
-    if attack_class == MINOR_ATTACK:
-        expected_damage = [x / 2 for x in expected_damage]
+    if lvh == "Light":        
+        expected_damage = [x * 0.5 for x in expected_damage]
+    if lvh == "Heavy":        
+        expected_damage = [x * 1.5 for x in expected_damage]
     elif attack_class == TECHNIQUE:
         expected_damage = [x * 1.5 for x in expected_damage]
 
-    speed_string = "Speed:                  1      2      3      4"
+    speed_string = "Speed:                  1      2      3      4   "
     if diff_speed == 0:
         speed_string = speed_string.replace("   " + str(speed) + "   ", "***"+ str(speed) + "***")
     else:
@@ -278,10 +284,11 @@ def estimate_damage(attack, glancing, print_stats):
                     continue
 
                 damage = (damage_chart[index])
-                damage += stun_chart[index] * 1.5
+                damage += stun_chart[index]
                 if(glancing): damage = math.ceil(damage/2.0)
 
                 damage += get_status_damage(status_chart[index], glancing)
+                damage += status_damage
 
                 damage += bonus_damage[index]
                 if(roll_chart[index] != "Miss"): 

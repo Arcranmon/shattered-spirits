@@ -1,8 +1,35 @@
 [
   {
+    "name": "Way of the Axe",
+    "desc": "",
+    "mechanics_desc": "",
+    "tags": [],
+    "type": "Axe",
+    "primary_role": "Striker",
+    "category": "Martial",
+    "tier_1": {
+      "attacks": ["Wild Chop", "Hack"],
+      "maneuvers": ["Weighted Edge"]
+    }
+  },
+  {
+    "name": "Way of the Breaker",
+    "desc": "",
+    "mechanics_desc": "",
+    "tags": [],
+    "type": "Shaper",
+    "primary_role": "Shaper",
+    "secondary_role": "Striker",
+    "category": "Martial",
+    "tier_1": {
+      "attacks": ["Armorsmasher", "Demolition"],
+      "maneuvers": ["Smashing Flourish"]
+    }
+  },
+  {
     "name": "Way of the Blaze",
     "desc": "Your magic is roiling flame, spreading to foes and fields alike and creating a blazing conflagration.",
-    "mechanics_desc": "Blaze abilities center largely around inflicting _Alight_ on foes and creating _Blazing_ spaces on the battlefield. This provides them a powerful way to inflict damage-over-time on foes and encourage enemies to _Recover_, as well as creating short-duration damaging terrain that they can use to manipulate the battlefield.",
+    "mechanics_desc": "This Discipline provides the basic abilities require to make use of various _Blaze_ Discipline abilities. In general, _Blaze_ abilities revolve around _Fire_ Damage and the _Alight_ condition, as well as _Blazing_ Terrain.",
     "prereqs": ["Blaze Arts"],
     "tags": ["Alight", "Blazing", "_Fire_ Damage"],
     "type": "Blaze",
@@ -10,13 +37,8 @@
     "secondary_role": "Shaper",
     "category": "Flame",
     "tier_1": {
-      "attacks": ["Ember"],
-      "maneuvers": ["Firestarter", "Blazing Strike"]
-    },
-    "tier_2": {
-      "attacks": ["Flamethrower"],
-      "maneuvers": ["Flame Ward"],
-      "stances": ["Blaze Stance"]
+      "attacks": ["Flame Burst"],
+      "maneuvers": ["Stoke Flames", "Blazing Strike"]
     }
   },
   {
@@ -29,13 +51,8 @@
     "category": "Flame",
     "primary_role": "Striker",
     "tier_1": {
-      "attacks": ["Firecracker"],
-      "maneuvers": ["Explosive Flames", "Detonation Strike"]
-    },
-    "tier_2": {
-      "attacks": ["Fireball"],
-      "stances": ["Detonation Stance"],
-      "maneuvers": ["Backblast"]
+      "attacks": ["Cluster"],
+      "maneuvers": ["Controlled Blast", "Detonation Strike"]
     }
   },
   {
@@ -50,12 +67,7 @@
     "category": "Wind",
     "tier_1": {
       "attacks": ["Air Blast"],
-      "maneuvers": ["Windstorm", "Gale Strike"]
-    },
-    "tier_2": {
-      "attacks": ["Focused Gale"],
-      "stances": ["Gale Stance"],
-      "maneuvers": ["Wind Shield"]
+      "maneuvers": ["Building Squall", "Gale Strike"]
     }
   },
   {
@@ -70,13 +82,7 @@
     "tags": ["_Earthen_ Terrain/Obstacles", "Groundsource", "Reeling"],
     "tier_1": {
       "attacks": ["Rumble"],
-      "maneuvers": ["Earth Shaper", "Land Strike"],
-      "stances": ["Land Stance"]
-    },
-    "tier_2": {
-      "attacks": ["Quake"],
-      "stances": ["Land Stance"],
-      "maneuvers": ["Earthen Barricade"]
+      "maneuvers": ["Sculpt", "Land Strike"]
     }
   },
   {
@@ -90,12 +96,7 @@
     "tags": ["Collision", "_Earthbend_", "_Stone_ Material"],
     "tier_1": {
       "attacks": ["Chip Shot"],
-      "maneuvers": ["Earthen Implement", "Mountain Strike"]
-    },
-    "tier_2": {
-      "stances": ["Mountain Stance"],
-      "attacks": ["Boulder Shot"],
-      "maneuvers": ["Stoneguard"]
+      "maneuvers": ["Stonebend", "Mountain Strike"]
     }
   },
   {
@@ -110,11 +111,6 @@
     "tier_1": {
       "attacks": ["Jolt"],
       "maneuvers": ["Electrify", "Storm Strike"]
-    },
-    "tier_2": {
-      "attacks": ["Lighting Lance"],
-      "stances": ["Storm Stance"],
-      "maneuvers": ["Overcharge"]
     }
   },
   {
@@ -130,11 +126,6 @@
     "tier_1": {
       "attacks": ["Surging Stream"],
       "maneuvers": ["Waterdraw", "Tide Strike"]
-    },
-    "tier_2": {
-      "stances": ["Tide Stance"],
-      "attacks": ["Rushing River"],
-      "maneuvers": ["Water Wall"]
     }
   },
   {
@@ -150,11 +141,284 @@
     "tier_1": {
       "attacks": ["Icicle Shot"],
       "maneuvers": ["Frostbend", "Tundra Strike"]
-    },
-    "tier_2": {
-      "stances": ["Tundra Stance"],
-      "attacks": ["Glacial Crash"],
-      "maneuvers": ["Frost Wall"]
+    }
+  },
+  {
+    "name": "Way of the Acrobat",
+    "category": "General",
+    "desc": "You flip and twist across the field, vaulting over hazards and rolling through foes.",
+    "mechanics_desc": "This Mastery focuses on mobility. _Leaping_ Movement allows you to easily avoid Terrain and go up escalation while _Tumble_ allows you to easily disengage from foes and move through their spaces. It broadly expands a characters movement options, making it far easier to cover ground on the battlefield.",
+    "tags": ["Leaping", "Mobility", "Safe"],
+    "primary_role": "Courier",
+    "type": "Courier",
+    "tier_1": {
+      "maneuvers": ["Spring Away", "Tumble", "Vault"]
+    }
+  },
+  {
+    "name": "Way of the Blade",
+    "category": "Martial",
+    "desc": "",
+    "mechanics_desc": ".",
+    "tags": ["Blade Weapons", "Guard"],
+    "primary_role": "Striker",
+    "secondary_role": "Survivor",
+    "type": "Blade",
+    "tier_1": {
+      "attacks": ["Rending Slash"],
+      "maneuvers": ["Raise Blade", "Sanguine Flourish"]
+    }
+  },
+  {
+    "name": "Way of the Brawler",
+    "category": "Martial",
+    "desc": "You excel at up-close combat, grabbing a foe and systematically locking down their movement.",
+    "mechanics_desc": "",
+    "tags": [""],
+    "primary_role": "Controller",
+    "secondary_role": "Striker",
+    "type": "Unarmed",
+    "tier_1": {
+      "attacks": ["Wrench", "Grapple"],
+      "maneuvers": ["Living Shield"]
+    }
+  },
+  {
+    "name": "Way of the Charger",
+    "category": "Martial",
+    "desc": "You are a warrior who puts their head down and rushes headfirst into problems, smashing through everyone and everything in your way.",
+    "mechanics_desc": "This Discipline focuses on aggressive mobility, providing the ability to move through occupied spaces while making Attacks against the occupants.",
+    "tags": ["_Body_ Attacks", "Breach", "Rush"],
+    "primary_role": "Striker",
+    "secondary_role": "Courier",
+    "type": "Unarmed",
+    "tier_1": {
+      "attacks": ["Ram"],
+      "maneuvers": ["Overrun", "Impact"]
+    }
+  },
+  {
+    "name": "Way of the Commander",
+    "category": "General",
+    "desc": "You are a commanding presence on the battlefield, inspiring your allies to fight harder and push through all afflictions.",
+    "mechanics_desc": ".",
+    "tags": ["Courageous", "Team Support"],
+    "primary_role": "Supporter",
+    "type": "Supporter",
+    "tier_1": {
+      "maneuvers": ["Inspire", "Commander's Orders", "Commander's Mark"]
+    }
+  },
+  {
+    "name": "Way of the Great Weapon",
+    "category": "Martial",
+    "desc": "You specialize in heavy weapons and can use them flexibly, striking with every part of the weapon and using its weight to strike out at multiple foes.",
+    "mechanics_desc": "This Discipline is a mastery of heavy weapons, .",
+    "tags": [],
+    "primary_role": "Striker",
+    "type": "Striker",
+    "tier_1": {
+      "attacks": ["Pommel Strike", "Power Attack"],
+      "maneuvers": ["Cleave"]
+    }
+  },
+  {
+    "name": "Way of the Fortress",
+    "category": "General",
+    "desc": "You are a defensive presence on the battlefield, defending allies from attacks and removing them from harm's way.",
+    "mechanics_desc": "This Discipline focuses on defending nearby allies, both by using _Intercept_ to protect them and _Swap_ to keep them out of harm's way. Additionally, _Raise Guard_ allows you to set up a fortified position, more easily defending allies and keeping yourself alive.",
+    "tags": ["Team Defense"],
+    "primary_role": "Defender",
+    "secondary_role": "Survivor",
+    "type": "Defender",
+    "tier_1": {
+      "maneuvers": ["Raise Guard", "Intercept", "Swap"]
+    }
+  },
+  {
+    "name": "Way of the Partisan",
+    "category": "General",
+    "desc": "",
+    "mechanics_desc": ".",
+    "tags": ["Joyful", "Team Support"],
+    "primary_role": "Supporter",
+    "type": "Supporter",
+    "tier_1": {
+      "maneuvers": ["Encourage", "Marching Orders", "Rousing Cry"]
+    }
+  },
+  {
+    "name": "Way of the Lance",
+    "category": "Martial",
+    "desc": "",
+    "mechanics_desc": "",
+    "tags": ["Lance Weapons"],
+    "primary_role": "Striker",
+    "secondary_role": "Controller",
+    "type": "Lance",
+    "tier_1": {
+      "attacks": ["Thrust"],
+      "maneuvers": ["Lower Spear", "Piercing Strike"]
+    }
+  },
+  {
+    "name": "Way of the Scoundrel",
+    "category": "General",
+    "desc": "You excel at dirty combat, keeping foes off-balance and using every advantage at your disposal.",
+    "mechanics_desc": "This Discipline focuses on harassing enemies and using abilities to make enemies easier to assault.",
+    "tags": ["Blinded", "Status Effect Punishing"],
+    "primary_role": "Controller",
+    "secondary_role": "Striker",
+    "type": "Controller",
+    "tier_1": {
+      "attacks": ["Backstab", "Dirty Trick"],
+      "maneuvers": ["Cheap Shot"]
+    }
+  },
+  {
+    "name": "Way of the Conqueror",
+    "category": "General",
+    "desc": "Your words and deeds on the battlefield unsettle foes, distracting them and granting your allies openings.",
+    "mechanics_desc": "",
+    "tags": ["Anguished"],
+    "primary_role": "Controller",
+    "type": "Controller",
+    "tier_1": {
+      "attacks": ["Demoralize", "Unsettle"],
+      "maneuvers": ["Impending Demise"]
+    }
+  },
+  {
+    "name": "Way of the Instigator",
+    "category": "General",
+    "desc": "You are an infuriating foe, taunting and belittling foes to draw their attention.",
+    "mechanics_desc": "",
+    "tags": ["Enraged", "Taunted"],
+    "primary_role": "Controller",
+    "secondary_role": "Supporter",
+    "type": "Controller",
+    "tier_1": {
+      "attacks": ["Infuriate", "Taunt"],
+      "maneuvers": ["Taskmaster Orders"]
+    }
+  },
+  {
+    "name": "Way of the Butcher",
+    "category": "General",
+    "desc": "",
+    "mechanics_desc": "",
+    "tags": ["Frightened"],
+    "primary_role": "Controller",
+    "type": "Controller",
+    "tier_1": {
+      "attacks": ["Intimidate"],
+      "maneuvers": ["Crush Morale", "Vicious Display"]
+    }
+  },
+  {
+    "name": "Way of the Sage",
+    "category": "General",
+    "desc": "You are a calming presence on the battlefield, keeping your allies from overextending or being blinded by circumstance.",
+    "mechanics_desc": ".",
+    "tags": ["Calm", "Team Support"],
+    "primary_role": "Supporter",
+    "type": "Supporter",
+    "tier_1": {
+      "maneuvers": ["Soothe", "Deep Breathing", "Sage Advice"]
+    }
+  },
+  {
+    "name": "Way of the Scout",
+    "category": "General",
+    "desc": "",
+    "mechanics_desc": ".",
+    "tags": [],
+    "primary_role": "Supporter",
+    "secondary_role": "Courier",
+    "type": "Supporter",
+    "tier_1": {
+      "attacks": ["Assess"],
+      "maneuvers": ["Trailblaze", "Missing Scale"]
+    }
+  },
+  {
+    "name": "Way of the Skulker",
+    "category": "General",
+    "desc": "You slide through the shadows, avoiding notice on the battlefield.",
+    "mechanics_desc": "This Discipline revolves around the _Stealthy_ condition, which provides exceptional defenses if you can maintain the proper positioning.",
+    "tags": ["Stealthy", "Mobility"],
+    "primary_role": "Courier",
+    "secondary_role": "Survivor",
+    "type": "Courier",
+    "tier_1": {
+      "attacks": ["Ambush"],
+      "maneuvers": ["Hide", "Prowl"]
+    }
+  },
+  {
+    "name": "Way of the Sniper",
+    "category": "General",
+    "desc": "You are most at home at extreme ranges, landing devastating shots from a distance.",
+    "mechanics_desc": "This Discipline enables any character that wishes to use Ranged attacks. By delaying the result of an Attack these characters can overcome many of the typical problems with Ranged attacks and deal heavy single-target damage.",
+    "tags": ["Ranged Attacks", "Single-Target Damage"],
+    "primary_role": "Artillery",
+    "type": "Artillery",
+    "tier_1": {
+      "attacks": ["Deadeye"],
+      "maneuvers": ["Mark Prey", "Perch"]
+    }
+  },
+  {
+    "name": "Way of the Tactician",
+    "category": "General",
+    "desc": "You are adept at adapting to any situation, providing allies advantages with every strike.",
+    "mechanics_desc": ".",
+    "tags": ["Team Support"],
+    "primary_role": "Supporter",
+    "secondary_role": "Striker",
+    "type": "Supporter",
+    "tier_1": {
+      "attacks": ["Team Attack"],
+      "maneuvers": ["Flank", "Tactical Strike"]
+    }
+  },
+  {
+    "name": "Way of the Twin Weapons",
+    "category": "Martial",
+    "desc": "You fight best with a weapon in either hand, making a constant series of strikes.",
+    "mechanics_desc": "This Discipline allows you to effectively turn _Major Attacks_ into _Minor Attacks_ while dual-wielding, allowing you to easily swap between _Major Attacks_ that deal heavy damage and lighter attacks to defeat smaller foes.",
+    "tags": ["Glancing", "Multiple Attacks"],
+    "primary_role": "Striker",
+    "type": "Striker",
+    "tier_1": {
+      "attacks": ["Flurry"],
+      "maneuvers": ["Offhand Strike", "Second Blade"]
+    }
+  },
+  {
+    "name": "Way of the Martial Artist",
+    "category": "Martial",
+    "desc": "You are an expert at unarmed combat, unleashing a series of specialized strikes to disorient foes.",
+    "mechanics_desc": "",
+    "tags": ["Prone", "Kick"],
+    "primary_role": "Striker",
+    "type": "Unarmed",
+    "tier_1": {
+      "attacks": ["Open Palm", "Crescent Kick"],
+      "maneuvers": ["Leg Sweep"]
+    }
+  },
+  {
+    "name": "Way of the Warden",
+    "category": "General",
+    "desc": "You are a living obstruction, stopping the movement of foes and defending those behind you.",
+    "mechanics_desc": "This Discipline centers on the _Engaged_ condition",
+    "tags": ["Engaged", "Team Defense"],
+    "primary_role": "Defender",
+    "type": "Defender",
+    "tier_1": {
+      "attacks": ["Engage", "Issue Challenge"],
+      "maneuvers": ["Lock Down"]
     }
   }
 ]

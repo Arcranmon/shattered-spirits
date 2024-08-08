@@ -38,7 +38,7 @@ class Obstacle extends Base {
     return this.traits_
   }
   public get Icon() {
-    if (!this.element_ || this.element_ == 'Derived' || this.element_ == 'Elementless' || this.element_ == 'Special')
+    if (!this.element_ || this.element_ == 'Mutable' || this.element_ == 'Elementless' || this.element_ == 'Special')
       return require('@/assets/terrain/BasicTerrain.svg')
     return require('@/assets/terrain/' + this.element_ + '.svg')
   }

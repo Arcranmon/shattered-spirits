@@ -8,10 +8,6 @@
     "effect": "As normal _Push_/_Pull_ but, rather than moving the creature directly away/towards you, move them away/towards and to the right or left (your choice) of you."
   },
   {
-    "name": "AP",
-    "effect": "AP, or Action Points, are spent to take an _Action_. Player characters have 2 AP that they may use each _Round_. Unspent AP is lost at the end of the _Round_."
-  },
-  {
     "name": "Armor",
     "effect": "Whatever clothing, protective plating, or other garments a character is wearing is referred to as their Armor. A character's Armor determines their _Movement_, their _Guard_, and may have other passive effects."
   },
@@ -22,12 +18,15 @@
   },
   {
     "name": "Attack",
-    "effect": "An Attack is a type of _Manuever_ that allows a creature to target enemies. Attacks are never used on their own; other _Maneuvers_ and _Techniques_ will tell you when to use an Attack. Attacks are split into Major, Minor, and Flexible Attacks.\n* Major Attacks are highly effective and deal high Damage, but are more difficult to make.\n* Minor Attacks are easy to make and can be used at a variety of times, but tend to be less effective.\n* Special Attacks allow you to use a different Attack, and act as a Major or Minor Attack depending on what you select."
+    "effect": "An Attack is a type of _Manuever_ that allows a creature to target enemies. Attacks are never used on their own; other _Maneuvers_ and _Techniques_ will tell you when to use an Attack."
   },
   { "see": "Attack", "name": "Attacks" },
   { "see": "Attack", "name": "Major Attack" },
   { "see": "Attack", "name": "Minor Attack" },
-  { "see": "Attack", "name": "Special Attack" },
+  {
+    "name": "Augment",
+    "effect": "A Special Attack typically allows you to use a different Attack with added benefits or drawbacks. Refer to the Attack being used for all details not listed on the Special Attack, such as its Speed and whether it is _Light_, _Balanced_ or _Heavy_. This Attack inherits the Class (Martial, Spirit, etc.) of the Attack it uses."
+  },
   { "see": "Attack", "name": "Major Attacks" },
   { "see": "Attack", "name": "Minor Attacks" },
   {
@@ -52,9 +51,10 @@
     "effect": "While _Charging_ you may not willingly _Move_ or make _Attacks_."
   },
   {
-    "name": "Charged Effect",
-    "effect": "Many _Versatile_/_Heavy_ _Attacks_ have a Charged Effect . In exchange for delaying the resolution of the effect these _Attacks_ may gain additional power or effects. See _Strong Strike_ for a common example of how this process works. If an _Attack_ has multiple Charged Effects you must choose one."
+    "name": "Charged Attack",
+    "effect": "Many Attacks can instead be used as a Charged Attack. Instead of immediately making the _Attack_ instead become _Charging_ then resolve the Set-Up of the _Charged Profile_.\n&nbsp;\nAt the end of the next _Phase_ remove _Charging_ then either:\n* Resolve the _Resolution_ of the _Charged Effect_.\n* Gain 1 _Momentum_ and resolve the _On Miss_ effect.\n* Pay 1 _Momentum_ to instead use the basic version of said _Attack_.\n\nRegardless, remove all _Hazards_ and other effects created by the Set-Up effect unless specified otherwise."
   },
+  { "name": "Charged Profile", "see": "Charged Attack" },
   {
     "name": "Climbing",
     "effect": "When moving to a higher or lower elevation the total Movement expended is equal to twice the Elevation change. For example, it would cost a creature 2 spaces of Movement to Climb up a 1 Height Obstacle. While _Climbing_ a creature has _Disadvantage_ on all Attacks and Attacks against them have _Advantage_."
@@ -109,7 +109,7 @@
   { "name": "Drawn", "see": "Draw" },
   {
     "name": "Durability",
-    "effect": "How sturdy inanimate objects are. If an _Obstacle_ or _Equipment takes Damage in a single hit equal to or greater than their Durability plus their current _Guard_ (if any) they are Sundered."
+    "effect": "How sturdy equipment is. Whenever a piece of _Equipment_ is _Sundered_ it loses 1 _Durability_. Weapons and similar gear become _Damaged_ if they lose all Durability; Armor reduces the _Guard_ it provides by 1 for every Durability it loses."
   },
   {
     "name": "Earthbonded",
@@ -255,7 +255,10 @@
     "name": "Move",
     "effect": "The distance or number of spaces a character can move. This will typically be either _Step_, _Reposition_, or _Dash_. These values are defined by your _Armor_. Some _Techniques_ or _Maneuvers_ may simply state a number; in those cases, you move that many spaces."
   },
-  { "name": "Movement", "effect": "A keyword designating this _Stunt_ as enabling additional movement." },
+  {
+    "name": "Movement",
+    "effect": "A keyword designating this _Stunt_ as enabling additional movement or changing how movement functions."
+  },
   {
     "name": "Negate",
     "effect": "Some Status afflictions will list a _Negate_ value; when a character is subjected to such an effect, they roll a d6. If they meet or exceed the listed value, they do not gain the status. Additionally, next to the target number either _Grit_, _Reflex_, _Focus_, or sometimes _Guard_ will be listed; a character adds any relevant bonuses to that specific check from their _Stances_ and other effects."
@@ -353,10 +356,6 @@
     "name": "Speed",
     "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-8 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
   },
-  {
-    "name": "Speed Penalty",
-    "effect": "When making an _Attack_ it takes a _Penalty_ equal to the difference between its _Speed_ and the current _Phase_ if the _Speed_ is greater than the _Phase_. For example, a _Speed_ 4 _Attack_ used in _Phase_ 2 would take a -2 _Penalty_. _Heavy_ _Attacks_ suffer double the usual _Penalty_."
-  },
   { "name": "Speed Penalties", "see": "Speed Penalty" },
   {
     "name": "Spirit Master",
@@ -374,7 +373,7 @@
   { "name": "Stances", "see": "Stance" },
   {
     "name": "Stunt",
-    "effect": "Stuntsare quick, simple abilities such as jumping or picking up an item that characters may use on their _Turn_. Characters may use as many Stuntsas they wish on their _Turn_, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword."
+    "effect": "Stunts are abilities a character can use with little effort such as jumping, picking up an item, or minor elemental effects. Characters may use as many Stunts as they wish, but may only use a given Stunt once per _Turn_ unless it has the _Repeatable_ keyword and may only use Stunts when they meet the usage requirements."
   },
   { "name": "Stunts", "see": "Stunt" },
   {

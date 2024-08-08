@@ -1,23 +1,23 @@
 <template>
   <div>
-    <h2>Masteries</h2>
+    <h2>Martial Disciplines</h2>
     <span v-if="isMobile">
       <v-expansion-panels style="padding: 3px">
         <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header>Filters </v-expansion-panel-header>
         </v-expansion-panel> </v-expansion-panels
       ><br /><v-select
-        v-model="selectedMastery"
-        :items="masteries"
+        v-model="selectedDiscipline"
+        :items="disciplines"
         item-text="Name"
         return-object
         attach
-        label="Selected mastery"
+        label="Selected discipline"
         filled
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em"
       ></v-select
-      ><discipline-card v-if="selectedMastery != null" :discipline="selectedMastery"
+      ><discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline"
     /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em">
@@ -54,14 +54,14 @@
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
-            ><div v-for="mastery in masteries" style="width: 100%" v-bind:key="mastery.Name">
-              <v-btn @click="selectedMastery = mastery" class="button--style" depressed tile block>
-                <img class="image--icon-size" :src="mastery.Icon" />{{ mastery.Name }}
+            ><div v-for="discipline in disciplines" style="width: 100%" v-bind:key="discipline.Name">
+              <v-btn @click="selectedDiscipline = discipline" class="button--style" depressed tile block>
+                <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <discipline-card v-if="selectedMastery != null" :discipline="selectedMastery" :key="selectedMastery.Name" /></v-col> </v-row
+        <v-col> <discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" :key="selectedDiscipline.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -74,27 +74,23 @@ import { Character } from '@/class'
 import DisciplineCard from '@/components/cards/DisciplineCard'
 
 export default Vue.extend({
-  name: 'minor-discipline',
+  name: 'discipline',
   components: { DisciplineCard },
   data() {
     return {
-      disciplineCategories: ['General', 'Martial', 'Flame', 'Earth', 'Water', 'Wind'],
+      disciplineCategories: ['General', 'Martial'],
       selectedCategories: [],
       disciplineTypes: {
-        Earth: ['Land', 'Mountain'],
-        Water: ['Tide', 'Tundra'],
-        Flame: ['Blaze', 'Detonation'],
-        Wind: ['Gale', 'Storm'],
-        Martial: ['Unarmed', 'Pole'],
+        Martial: ['Unarmed', 'Lance'],
         General: ['Artillery', 'Controller', 'Courier', 'Striker', 'Supporter', 'Survivor', 'Defender'],
       },
       selectedTypes: [],
-      selectedMastery: null,
+      selectedDiscipline: null,
     }
   },
   computed: {
-    masteries: function () {
-      return this.$store.getters.getFilteredMasteries(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
+    disciplines: function () {
+      return this.$store.getters.getFilteredMartialDisciplines(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
     },
     selectableTypes: function () {
       var selectable_types = []

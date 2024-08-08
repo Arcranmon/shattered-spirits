@@ -21,7 +21,7 @@ class Terrain extends Base {
   // GETTERS
   // ==========================================================
   public get Icon() {
-    if (!this.element_ || this.element_ == 'Derived' || this.element_ == 'Elementless') return require('@/assets/terrain/BasicTerrain.svg')
+    if (!this.element_ || this.element_ == 'Mutable' || this.element_ == 'Elementless') return require('@/assets/terrain/BasicTerrain.svg')
     return require('@/assets/terrain/' + this.element_ + '.svg')
   }
 

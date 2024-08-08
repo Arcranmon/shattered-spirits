@@ -2,6 +2,9 @@
 
 ### Refactors
 
+- Just split into Spirit/Martial Disciplines again
+  - Make Rank 2/3 more niche and specific
+  - Rank 1 just has some generally useful tools
 - Subtype Art grants a Minor Attack and applicable Terrain effect
 - Major Disciplines at Rank 1 grant:
   - A Technique

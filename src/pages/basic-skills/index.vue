@@ -6,7 +6,8 @@
       <br />
     </div>
     <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered
-      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Attacks</h4> </v-tab><v-tab> <h4>Stunts</h4> </v-tab><v-tab> <h4>Reactions</h4> </v-tab
+      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Attacks</h4> </v-tab><v-tab> <h4>Stunts</h4> </v-tab
+      ><v-tab> <h4>Reactions</h4> </v-tab
       ><v-tab>
         <h4>Gambits</h4>
       </v-tab></v-tabs
@@ -21,16 +22,18 @@
         <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Skirmish', 'Combination Strike', 'Smash'])" job="Techniques" :collapse="false" />
       </v-tab-item>
       <v-tab-item>
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stance')" /><show-cards
+          :inputs="this.$store.getters.getStancesFromList(['Balanced Stance', 'Summoner\'s Stance'])"
+          job="Stances"
+          :collapse="false"
+          v-bind:class="use_duo"
+          :cols="2"
+        />
+      </v-tab-item>
+      <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
         <show-cards
-          :inputs="[
-            this.$store.getters.getAttack('Quickened Attack'),
-            this.$store.getters.getAttack('Unarmed Attack'),
-            this.$store.getters.getAttack('Environmental Attack'),
-          ]"
-          job="Attacks"
-          :collapse="false" /><show-cards
-          :inputs="[$store.getters.getAttack('Weapon Attack'), this.$store.getters.getAttack('Charged Attack')]"
+          :inputs="[this.$store.getters.getAttack('Unarmed Attack'), $store.getters.getAttack('Weapon Attack')]"
           job="Attacks"
           :collapse="false"
           v-bind:class="use_duo"
@@ -59,11 +62,9 @@
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
-          :inputs="[$store.getters.getManeuver('Lethal Strike'), $store.getters.getManeuver('Gather Momentum')]"
+          :inputs="[$store.getters.getManeuver('Lethal Strike'), $store.getters.getManeuver('Gather Momentum'), $store.getters.getManeuver('Press')]"
           job="Maneuvers"
-          :collapse="false"
-          v-bind:class="use_duo"
-          :cols="2" /></v-tab-item
+          :collapse="false" /></v-tab-item
     ></v-tabs-items>
   </div>
 </template>
@@ -75,7 +76,7 @@ import { store } from '@/store'
 export default Vue.extend({
   name: 'basic-techniques',
   data() {
-    return { tab: null }
+    return { tab: 0 }
   },
   components: {
     ShowCards,
@@ -92,6 +93,12 @@ export default Vue.extend({
         return ''
       }
       return 'centered-single'
+    },
+    use_trio() {
+      if (this.isMobile) {
+        return ''
+      }
+      return ''
     },
   },
 })

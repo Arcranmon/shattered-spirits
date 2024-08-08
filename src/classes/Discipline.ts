@@ -72,7 +72,7 @@ class Discipline {
     console.log(this.Name)
     if (this.Type == 'Undefined') return ''
     if (this.Category == 'Martial') {
-      if (this.Type == 'Striker' || this.Type == 'Artillery') return require('@/assets/disciplines/' + this.Type + '.svg')
+      if (this.Type == 'Striker' || this.Type == 'Artillery' || this.Type == 'Shaper') return require('@/assets/disciplines/' + this.Type + '.svg')
       return require('@/assets/weapons/' + this.Type + '.svg')
     }
     if (this.Type == 'General' || this.Type == 'Style') return require('@/assets/disciplines/' + this.primary_role_ + '.svg')

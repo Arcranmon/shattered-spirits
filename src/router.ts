@@ -17,9 +17,8 @@ import Obstacles from '@/pages/combat/obstacles/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import Disciplines from '@/pages/disciplines/index.vue'
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
-import Masteries from '@/pages/masteries/index.vue'
+import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import Talents from '@/pages/talents/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
@@ -79,14 +78,6 @@ const r = new Router({
       name: 'character-creator',
       meta: {
         title: 'Character Creator',
-      },
-    },
-    {
-      path: '/spirit-disciplines',
-      component: SpiritDisciplines,
-      name: 'spirit-disciplines',
-      meta: {
-        title: 'Spirit Disciplines',
       },
     },
     {
@@ -186,19 +177,19 @@ const r = new Router({
       },
     },
     {
-      path: '/disciplines',
-      component: Disciplines,
-      name: 'disciplines',
+      path: '/spirit-disciplines',
+      component: SpiritDisciplines,
+      name: 'spirit-disciplines',
       meta: {
-        title: 'Disciplines',
+        title: 'Spirit Disciplines',
       },
     },
     {
-      path: '/masteries',
-      component: Masteries,
-      name: 'masteries',
+      path: '/martial-disciplines',
+      component: MartialDisciplines,
+      name: 'martial-disciplines',
       meta: {
-        title: 'Masteries',
+        title: 'Martial Disciplines',
       },
     },
     {

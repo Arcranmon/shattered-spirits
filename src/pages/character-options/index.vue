@@ -4,8 +4,8 @@
     <custom-button to="/talents">Talents</custom-button> <br />
     <custom-button to="/basic-skills">Basic Skills</custom-button> <br />
     <custom-button to="/spirit-abilities">Spirit Abilities</custom-button> <br />
-    <custom-button to="/masteries">Masteries</custom-button> <br />
-    <custom-button to="/disciplines">Disciplines</custom-button> <br />
+    <custom-button to="/martial-disciplines">Martial Disciplines</custom-button> <br />
+    <custom-button to="/spirit-disciplines">Spirit Disciplines</custom-button> <br />
   </div>
 </template>
 

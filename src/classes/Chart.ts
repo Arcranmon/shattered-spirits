@@ -17,7 +17,6 @@ class Chart {
     this.keywords_ = []
     this.on_miss_ = ''
     this.damage_type_ = ''
-    this.material_ = ''
   }
 
   public Damage(i: number): string {
@@ -36,7 +35,9 @@ class Chart {
   }
   get DetailsHeader() {
     var damage_type = '_' + this.damage_type_ + '_'
-    damage_type = '**Attack Details:** ' + damage_type.replace('/', '_/_') + ' Damage'
+    damage_type = '**Attack Details:** ' + damage_type.replace('/', '_/_')
+    if (this.HasMaterial) damage_type += ' (' + this.MaterialHeader + ')'
+    damage_type += ' Damage'
     if (this.damage_type_ == 'Varying') damage_type += ' Type'
     if (this.HasKeywords) return damage_type + ' ' + this.KeywordsHeader
     return damage_type
@@ -72,7 +73,7 @@ class Chart {
     return this.material_
   }
   public get MaterialHeader() {
-    return '**Material:** ' + this.material_
+    return '_' + this.material_.replace('/', '_/_').replace(', ', '_, _') + '_'
   }
 
   // ==========================================================

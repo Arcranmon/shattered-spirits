@@ -18,13 +18,18 @@ declare interface IAttackData extends IManeuverData {
   category?: string
   chart: IChartData
   rank: string
-  charged_effect?: string
+  charged_profile?: IChargedEffect
   speed: string
 }
 
 declare interface ICharDisciplineData {
   name: string
   tier: number
+}
+
+declare interface IChargedEffect {
+  set_up: string
+  resolution: string
 }
 
 declare interface ICharacterData extends ICombatantData {

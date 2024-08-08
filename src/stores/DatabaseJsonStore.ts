@@ -2,8 +2,7 @@ import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import Accessories from '@/database/items/accessories.json'
 import DisciplinesJson from '@/database/disciplines.json'
-import MasteriesJson from '@/database/masteries.json'
-import Techniques from '@/database/techniques.json'
+import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 import Talents from '@/database/talents.json'
 
@@ -67,9 +66,9 @@ export class DatabaseJsonStore extends VuexModule {
   private LoadDatabase(): void {
     this.Armors = ArmorsJson.map((x) => Armor.Deserialize(<IArmorData>(<unknown>x)))
     this.Maneuvers = ManeuversJson.map((x) => Maneuver.Deserialize(<IManeuverData>(<unknown>x)))
-    this.Masteries = MasteriesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Disciplines = DisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
+    this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -77,6 +76,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Weapons: Weapon[] = []
   private Masteries: Discipline[] = []
   private Disciplines: Discipline[] = []
+  private Techniques: Technique[] = []
 
   // ==========================================================
   // MANEUVER TOOLS
@@ -277,11 +277,11 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getTechnique(): any {
     return (inword: string) => {
-      var technique = Techniques.find((x) => x.name.trim() === inword.trim())
+      var technique = this.Techniques.find((x) => x.Name.trim() === inword.trim())
       if (technique == undefined) {
         return new Technique(inword)
       }
-      return Technique.Deserialize(<ITechData>(<unknown>technique))
+      return technique
     }
   }
 
@@ -310,7 +310,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get isTechnique(): any {
     return (inword: string) => {
-      return Techniques.some((x) => x.name == inword.trim())
+      return this.Techniques.some((x) => x.Name.trim() == inword.trim())
     }
   }
 
@@ -358,10 +358,27 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getFilteredDisciplines(): any {
+  get getFilteredMartialDisciplines(): any {
     return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
       return this.Disciplines.filter(
         (x) =>
+          x.Category != 'Flame' &&
+          x.Category != 'Earth' &&
+          x.Category != 'Water' &&
+          x.Category != 'Wind' &&
+          (categories.length == 0 || categories.includes(x.Category.trim())) &&
+          (types.length == 0 || types.includes(x.Type.trim())) &&
+          (primary_role === 'Any' || primary_role == x.PrimaryRole.trim()) &&
+          (secondary_role === 'Any' || secondary_role == x.SecondaryRole.trim()),
+      )
+    }
+  }
+
+  get getFilteredSpiritDisciplines(): any {
+    return (categories: Array<string>, types: Array<string>, primary_role: string, secondary_role: string) => {
+      return this.Disciplines.filter(
+        (x) =>
+          (x.Category == 'Flame' || x.Category == 'Earth' || x.Category == 'Water' || x.Category == 'Wind') &&
           (categories.length == 0 || categories.includes(x.Category.trim())) &&
           (types.length == 0 || types.includes(x.Type.trim())) &&
           (primary_role === 'Any' || primary_role == x.PrimaryRole.trim()) &&

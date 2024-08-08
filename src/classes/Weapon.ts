@@ -15,11 +15,8 @@ class Weapon extends Attack {
   get Durability() {
     return this.durability_
   }
-  get Hardness() {
-    return this.hardness_
-  }
-  get HardnessHeader() {
-    if (this.hardness_ != 0) return 'Hardness ' + this.Hardness
+  get ClassHeader() {
+    return this.HandsPhrase + this.CategoryHeader
   }
   get Hands() {
     return this.hands_
@@ -36,18 +33,14 @@ class Weapon extends Attack {
   get ParryHeader() {
     return '**Parry:** ' + this.parry_
   }
-  get HasMaterial() {
-    return this.chart_.HasMaterial
-  }
-  get MaterialHeader() {
-    if (this.chart_.Material == 'Varying') return '**Material:** ' + this.chart_.Material + ' Material/Durability'
-    return '**Material:** ' + this.chart_.Material + ', _Durability_ ' + this.durability_
-  }
   get Weight() {
     return this.weight_
   }
   get TraitsHeader() {
-    var traits_string = '**Traits:** ' + this.HandsPhrase + this.CategoryHeader + this.WeightHeader
+    var traits_string = '**Traits:** ' + this.WeightHeader
+    if (this.HasDurability) {
+      traits_string += ', _Durability_ ' + this.durability_
+    }
     if (this.HasKeywords) {
       traits_string += ' [' + this.KeywordsHeader + ']'
     }

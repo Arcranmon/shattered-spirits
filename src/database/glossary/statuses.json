@@ -2,7 +2,7 @@
   {
     "name": "Accelerated",
     "desc": "Your speed is increased, allowing you to act quicker.",
-    "effect": "While Accelerated a creature treats the current _Phase_ as one later than the actual _Phase_ for all effects, including resolving their _Technique_ for the _Round_. For example, if a creature played a Technique for _Phase_ 5 they would resolve it in _Phase_ 4.",
+    "effect": "While Accelerated a creature may treat the current _Phase_ as one later than the actual _Phase_ for all effects, including resolving their _Technique_ for the _Round_. For example, if a creature played a Technique for _Phase_ 4 they may instead resolve it in _Phase_ 3.",
     "special": "In Phase 1, instead add _Priority_ to all _Techniques_.",
     "remove": "Accelerated is cleared at the start of _Respite_.",
     "reacts": [
@@ -32,7 +32,7 @@
     "name": "Alight",
     "desc": "An elemental affliction caused by being set aflame.",
     "effect": "At the end of each _Phase_ an Alight creature takes 2 _Fire_ Damage. This Damage may not not be reduced by _Guard_ that is not provided by _Resistance_.",
-    "special": "While a creature has Alight they have _Resistance_ 3 (_Cold_).",
+    "special": "While a creature has Alight they have _Minor Resistance_ (_Cold_).",
     "repeat": "If an Alight creature would gain Alight they instead take 3 _Fire_ Damage.",
     "reacts": [
       "<ins>_Frozen_:</ins> If an Alight creature would gain _Frozen_ they instead remove Alight.",
@@ -184,7 +184,7 @@
   {
     "name": "Poised",
     "desc": "A creature that is perfectly in control of their position and faculties.",
-    "effect": "While Poised, a creature rolls twice and takes the higher value when rolling to Negate any _Focus_ effect. Additionally, a creature may remove Poised for one of the following effects:\n* Immediately _Recover_.\n* Gain 2 _Momentum_.\n* Take no Damage from a [_Mental_] effect.",
+    "effect": "While Poised, a creature rolls at _Advantage_ to Negate any _Focus_ effect. Additionally, a creature may remove Poised for one of the following effects:\n* Immediately _Recover_.\n* Gain 2 _Momentum_.\n* Take no Damage from a [_Mental_] effect.",
     "special": "If a creature with Poised would gain Poised, they instead regain 1 _Stamina_.",
     "remove": "If a creature fails to _Negate_ a _Focus_ effect they lose Poised.",
     "type": "Status Effect"
@@ -312,13 +312,13 @@
   {
     "name": "Studied",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "When you inflict Studied on a creature learn their exact current Health, their current and maximum _Stamina_, and any _Resistances_/_Weaknesses_/_Wards_/_Susceptibilities_. After, inflict _Stun_ 1 on the Target then place a _Momentum_ on the target which may be used by allies for any effect only targeting that creature.",
+    "effect": "When you inflict Studied on a creature learn their exact current Health, their current and maximum _Stamina_, and any _Resistances_/_Weaknesses_/_Wards_/_Susceptibilities_. A creature may remove _Studied_ from a Target to reroll one dice rolled in response to that creature, such as from an _Attack Roll_ or any roll made as a part of a [_Defensive_] _Reaction_.",
+    "recover": "When a creature _Recovers_ they may remove _Studied_.",
     "type": "Affliction"
   },
   {
     "name": "Sundered",
-    "effect": "Sundered only applies to _Equipment_. A Sundered Weapon takes a -2 penalty to all Attack Rolls. If _Armor_ is Sundered, instead inflict _Shred_ 1. If a Sundered Weapon is Sundered again it is instead broken and may not be used until repaired.",
-    "remove": "Only Techniques that explicitly remove Sundered remove Sundered. Otherwise, it can be removed outside of combat with [travel mechanic here].",
+    "effect": "When a creature gains _Sundered_ one piece of their _Equipment_ gains _Damaged_. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Stun_ 2.",
     "type": "Status Effect"
   },
   {
