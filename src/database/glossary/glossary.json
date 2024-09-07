@@ -48,11 +48,11 @@
   },
   {
     "name": "Charging",
-    "effect": "While _Charging_ you may not willingly _Move_ or make _Attacks_."
+    "effect": "While _Charging_ you may not willingly _Move_ or make _Attacks_, and may not take an _Action_."
   },
   {
     "name": "Charged Attack",
-    "effect": "Many Attacks can instead be used as a Charged Attack. Instead of immediately making the _Attack_ instead become _Charging_ then resolve the Set-Up of the _Charged Profile_.\n&nbsp;\nAt the end of the next _Phase_ remove _Charging_ then either:\n* Resolve the _Resolution_ of the _Charged Effect_.\n* Gain 1 _Momentum_ and resolve the _On Miss_ effect.\n* Pay 1 _Momentum_ to instead use the basic version of said _Attack_.\n\nRegardless, remove all _Hazards_ and other effects created by the Set-Up effect unless specified otherwise."
+    "effect": "Many Attacks can instead be used as a Charged Attack. Instead of immediately making the _Attack_ instead become _Charging_ then resolve the Set-Up of the _Charged Profile_.\n&nbsp;\nAt the end of the next _Phase_ remove _Charging_ then either:\n* Resolve the _Resolution_ of the _Charged Effect_.\n* Gain 1 _Momentum_ and resolve the _On Miss_ effect.\n* Pay 1 _Momentum_ to instead use the basic version of said _Attack_.\n\nRegardless, remove any effects created by the Set-Up effect unless specified otherwise. You may begin Charging a Charged Attack at any point, but may not use the Attack until its listed _Speed_."
   },
   { "name": "Charged Profile", "see": "Charged Attack" },
   {
@@ -76,11 +76,8 @@
   },
   {
     "name": "Cover",
-    "effect": "Creatures may, depending on positioning, have a varying degree of cover. To determine Cover, characters should draw a line from the center of the Attack's origin space (typically the attacker's space) to the center of the target's space, referred to as the Attack Line:\n* <ins>Light Cover</ins>: If the Attack Line passes through an Obstacle with a _Total Height_ equal to or greater than yours and the Target's and comes out an adjacent side, the Target has Light Cover. Attacks against a creature with Light Cover take a -1 _Penalty_.\n* <ins>Heavy Cover</ins>:  If the Attack Line passes through an Obstacle with a _Total Height_ equal to or greater than yours and the Target's and comes out of non-adjacent sides of said Obstacle, the Target has Heavy Cover. Attacks against a creature with Heavy Cover take a -2 _Penalty_.\n* <ins>Full Cover</ins>: If a creature is adjacent to an Obstacle with a _Total Height_ greater than or equal to their own and the Attack Line passes through said Obstacle and comes out of a non-adjacent side of it, the Target has Full Cover. Attacks against a creature with Full Cover take a -2 _Penalty_ and gain _Glancing_."
+    "effect": "When in Cover ranged attacks have difficulty attacking this creature. A creature in Cover gains _Resistance_ I against all _Short_ Range Attacks, _Resistance_ II against all _Medium_ Range, and _Resistance_ III against _Long_ Range."
   },
-  { "name": "Light Cover", "see": "Cover" },
-  { "name": "Heavy Cover", "see": "Cover" },
-  { "name": "Full Cover", "see": "Cover" },
   {
     "name": "Critical Hit",
     "effect": "A particularly effective Attack, represented by a purple cell in the Attack's 'Roll' column in its _Profile_."
@@ -103,13 +100,13 @@
   },
   {
     "name": "Draw",
-    "effect": "Drawing is the main way that Waterbonded interact with _Sources_. All Draw effects will be listed as Draw X, where X is a numeric value. In these cases, reduce the combined value of any number of _Sources_ within the listed Draw range by X, destroying any _Sources_ that have their value reduced to 0. Waterbound may Draw from _Watersource_ _Sources_."
+    "effect": "Many Water abilities require that a character Draw. These effects will be listed as Draw X, which means that there must be a Water _Source_ with a value of at least X within _Short_ Range. Reduce that _Sources_ value by X, _Destroying_ it if it is reduced to 0. A creature may spend 2 _Momentum_ to instead Draw at _Medium_ Range."
   },
   { "name": "Drew", "see": "Draw" },
   { "name": "Drawn", "see": "Draw" },
   {
     "name": "Durability",
-    "effect": "How sturdy equipment is. Whenever a piece of _Equipment_ is _Sundered_ it loses 1 _Durability_. Weapons and similar gear become _Damaged_ if they lose all Durability; Armor reduces the _Guard_ it provides by 1 for every Durability it loses."
+    "effect": "How sturdy equipment is. Whenever a piece of _Equipment_ is _Sundered_ it loses 1 _Durability_. Weapons and gear become _Damaged_ if they lose all Durability."
   },
   {
     "name": "Earthbonded",
@@ -185,6 +182,10 @@
     "effect": "A defense that represents a character's physical prowess and sturdiness. Add a character's Grit to any _Negate_ checks where it is listed."
   },
   {
+    "name": "Flying",
+    "effect": "While Flying a creature ignores all non-Weather Terrain and may not be targeted with _Melee_ Attacks. While Flying a creature may not benefit from any _Features_."
+  },
+  {
     "name": "Hazard",
     "effect": "Hazards reflect an area that is going to be attacked in the near future or can be triggered as a trap. All Hazards are always cleared at the end of a _Round_."
   },
@@ -247,13 +248,21 @@
   },
   { "name": "Sources", "see": "Source" },
   {
+    "name": "Manifest",
+    "effect": "Resolve your spirit's Manifest Effect within its _Manifest Range_, then place them at the _Position_ the effect was resolved at. Your _Spirit_ remains _Summoned_ until you _Recall_ them."
+  },
+  {
+    "name": "Recall",
+    "effect": "If your _Spirit_ is within its _Manifest Range_ you may immediately return it."
+  },
+  {
     "name": "Miss",
     "effect": "A failed attack, represented by a red cell in the Attack's 'Roll' column in its _Profile_."
   },
   { "name": "Misses", "see": "Miss" },
   {
     "name": "Move",
-    "effect": "The distance or number of spaces a character can move. This will typically be either _Step_, _Reposition_, or _Dash_. These values are defined by your _Armor_. Some _Techniques_ or _Maneuvers_ may simply state a number; in those cases, you move that many spaces."
+    "effect": "How much Movement a character may spend this turn. This will be formatted as X/Y, where X is the additional Movement granted by the given ability, while Y is the maximum that may be used this _Turn_."
   },
   {
     "name": "Movement",
@@ -266,10 +275,8 @@
   { "name": "Negates", "see": "Negate" },
   {
     "name": "Obscured",
-    "effect": "A state when a creature is difficult to see. A creature may be Lightly or Heavily Obscured. To determine Obscured status, draw a line from the center of the Attacker's space to the center of the target's space.\n* <ins>Lightly Obscured</ins>: If this line clips an Obstacle of a _Total Height_ greater than yours and the target's or some _Terrain_ effects, they are Lightly Obscured. This has no impact on its  own, but works in conjunction with some effects such as _Stealthy_.\n* <ins>Heavily Obscured</ins>:  If this line fully passes through an Obstacle of a _Total Height_ greater than yours and the target's, they are Heavily Obscured. A creature that is Heavily Obscured may not be targeted.\n* <ins>Secondary Senses</ins>: Secondary Senses allow characters to perceive enemies in ways other than sight. When using a _Secondary Sense_, ignore the normal rules for determining Obscured and follow the rules of the _Secondary Sense_."
+    "effect": "A state when a creature is difficult to see. When a creature is _Obscured_, all attacks against said creature have _Disadvantage_."
   },
-  { "name": "Lightly Obscured", "see": "Obscured" },
-  { "name": "Heavily Obscured", "see": "Obscured" },
   {
     "name": "Open Hand",
     "effect": "An Open Hand is any Hand a character has that does not have any other Weapons or Equipment _Wielded_."
@@ -303,8 +310,9 @@
   },
   {
     "name": "Puppet",
-    "effect": "A Puppet is a piece of _Equipment_ that treated as if it was _Wielded_, but is controlled by spiritual magic and requires no _Hands_. While a Puppet, the creature may use it to make Attacks and may use its _Parry_ effect if it is adjacent to the beneficiary. The Puppet does not count as a creature, but any effects that trigger based off _Reach_ (such as _Opportunity Attack_) may be triggered from the Puppet's' position. Additionally, on each of their _Turns_, a creature may move the Puppet up to 5 spaces if _Light_ or an _Accessory_, 4 if _Versatile_, or 3 if _Heavy_ or _Armor_. If the Equipment is _Thrown_, move it to the final location and continue the _Puppet_. Finally, replace [_Martial_] with [_Spirit_] for any abilities using this _Equipment_, where the _Spirit_ type is the same as the ability that created the Puppet. While a Puppet this Equipment may be attacked as if it was an _Obstacle_. If _Damaged_, end this effect. When the effect ends, the _Equipment_ becomes unattended in the space it currently occupies."
+    "effect": "A Puppet is a piece of _Equipment_ that treated as if it was _Wielded_, but is controlled by spiritual magic and requires no _Hands_. The Equipment is always in the same _Arena_ as the puppeteering creature.\n&nbsp;\nWhile a _Puppet_:\n* A _Weapon_ with a _Melee_ Range Attack replaces it with _Reach_.\n* A _Weapon_ with a _Ranged_ Attack removes _Thrown_ and always ignores Range-based _Penalties_ due to creatures at your _Position_.\n* A creature may freely end their own Puppet to _Equip_ or _Wield_ the _Equipment_.\n* A creature may always use the _Parry_ effect of said Equipment.\n* The puppeting creature may allow any other creature to freely _Equip_/_Wield_ the Equipment if they are in the same _Arena_."
   },
+  { "name": "Puppeted", "see": "Puppet" },
   {
     "name": "Profile",
     "effect": "All Attacks have a Profile, a chart showing the results of an Attack on a roll of 2-12. When you make an Attack, roll 2d6 and consult the Profile for the result."
@@ -414,6 +422,10 @@
     "effect": "Techniques are how creatures interact in combat. These are what allow creatures to attack, influence the environment, and gain the resources to dodge and block attacks. A Technique must be selected while _Plotting_, at which point it is assigned a _Phase_. A creature may not use that Technique until that _Phase_."
   },
   { "name": "Techniques", "see": "Technique" },
+  {
+    "name": "Tidal Motion",
+    "effect": "The first time in a combat that a creature inflicts Tidal Motion they may choose between _Push_ and _Pull_. After, and for the rest of the combat, said creature must alternate between inflicting _Push_ and _Pull_ whenever they inflict _Tidal Motion_."
+  },
   {
     "name": "Turn",
     "effect": "An individual creature's time to act in combat. Typically, a Turn involves a creature using a _Technique_ or _Action_."

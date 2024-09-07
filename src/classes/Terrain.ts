@@ -7,6 +7,8 @@ class Terrain extends Base {
   private negate_: string
   private interactions_: Array<string>
   private destroy_: string
+  private position_effect_: string
+  private path_effect_: string
 
   public constructor(name) {
     super(name)
@@ -53,6 +55,12 @@ class Terrain extends Base {
   public get NegateHeader() {
     return '**Negate:** ' + this.negate_
   }
+  public get PositionEffectHeader() {
+    return '**Position Effect:** ' + this.position_effect_
+  }
+  public get PathEffectHeader() {
+    return '**Path Effect:** ' + this.path_effect_
+  }
   public get TerrainDetails() {
     return '_' + this.element_ + '_  Terrain (_' + this.layer_ + '_)'
   }
@@ -68,6 +76,8 @@ class Terrain extends Base {
 
   public setTerrainData(data: ITerrainData): void {
     this.setBaseData(data)
+    this.position_effect_ = data.position_effect || ''
+    this.path_effect_ = data.path_effect || ''
     this.element_ = data.element || ''
     this.layer_ = data.layer || ''
     this.negate_ = data.negate || ''

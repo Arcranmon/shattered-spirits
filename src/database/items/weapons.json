@@ -1,29 +1,54 @@
 [
   {
+    "name": "Blaze Rod",
+    "category": "Rod",
+    "desc": "A staff specialized in creating and controlling crackling flames.",
+    "type": "Balanced",
+    "keywords": ["Flame", "Arcane Battery"],
+    "effect": "Gain 1 _Arcana_ on a _Hit_, or 2 on a _Crit_.",
+    "charged_profile": {
+      "set_up": "Choose a Target within _Range_ and gain 2 _Arcana_. While _Charging_ gain the _Parry_ effect of this weapon.",
+      "resolution": "Resolve this Attack against the _Target_, adding _Alight_ [5 _Reflex_] on a _Hit_ or _Alight_ [6 _Reflex_] on a _Crit_."
+    },
+    "speed": 2,
+    "parry": "Gain _Resistance_ I (_Fire_, _Ice_).",
+    "range": "Short/Medium",
+    "chart": {
+      "damage_type": "Fire",
+      "on_miss": "+2 _Arcana_",
+      "damage": [0, 0, 3, 3, 4, 4, 4, 5, 5, 6, 6],
+      "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": ["", "", "", "", "", "", "", "", "", "", ""]
+    },
+    "weight": 4,
+    "hands": 2,
+    "durability": 1,
+    "analysis_notes": { "fudge": -1.1 }
+  },
+  {
     "name": "Iron Dagger",
     "category": "Blade",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Quickdraw"],
+    "keywords": ["Quickdraw", "Metal", "_Brawling_ 1"],
     "speed": 1,
-    "range": [
-      { "category": "Melee", "value": 1 },
-      { "category": "Ranged", "value": 4, "special": "_Thrown_, _Close Range_ 1" }
-    ],
+    "range": "Melee/Short_ (_Thrown_)",
     "chart": {
-      "material": "Metal",
       "damage_type": "_Slash_/_Stab_",
-      "keywords": ["_Brawling_ 1"],
       "on_miss": "+1 _Momentum_",
       "damage": [0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [4 _Guard_/_Reflex_]", "_Bleeding_ [4 _Guard_/_Reflex_]", "_Bleeding_ [4 _Guard_/_Reflex_]"]
+      "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [4 _Reflex_]", "_Bleeding_ [4 _Reflex_]", "_Bleeding_ [4 _Reflex_]"]
     },
     "weight": 1,
     "hands": 1,
     "durability": 1,
     "type": "Light",
     "parry": "Gain +1 _Reflex_.",
-    "analysis_notes": { "fudge": -0.1667, "notes": "Expanded crit range" }
+    "analysis_notes": {
+      "fudge": -0.222,
+      "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
+      "range": "Melee"
+    }
   },
   {
     "name": "Iron Shortsword",
@@ -38,7 +63,7 @@
       "set_up": "Choose a Target, making note of any remaining Movement you have. While _Charging_ gain the _Parry_ effect of this weapon.",
       "resolution": "Move [_Rush_] up to half the Movement you had remaining, then Attack the Target. On a _Graze_+ deal +2 _Damage_."
     },
-    "range": [{ "category": "Melee", "value": 1 }],
+    "range": {},
     "chart": {
       "damage_type": "Slash/Stab",
       "material": "Metal",
@@ -144,22 +169,20 @@
     "category": "Axe",
     "type": "Balanced",
     "desc": "A powerful melee tool that cleaves through a foe's attempts to defend.",
-    "keywords": ["Hand-and-a-Half"],
-    "parry": "Gain _Sturdy_ 1.",
+    "keywords": ["Metal", "Hand-and-a-Half", "_Pierce_ 1"],
+    "parry": "Gain _Sturdy_.",
     "charged_profile": {
-      "set_up": "Increase this Weapon's _Reach_ by 1 for this effect, then choose a Target within Range. While _Charging_ gain the _Parry_ effect of this weapon.",
-      "resolution": "Resolve this Attack against the Target, adding [_Overwhelming_]. Deal +4 Damage on a _Graze_+. On a _Hit_+, add _Sundered_ [5 _Grit_/_Reflex_]. On a _Crit_, increase the cost to _Negate_ by 1."
+      "set_up": "Choose a Target within _Range_. While _Charging_ gain the _Parry_ effect of this weapon.",
+      "resolution": "Resolve this Attack against the Target, adding [_Overwhelming_]. Deal +4 Damage on a _Graze_+. On a _Hit_+, add _Sundered_ [5 _Grit_/_Reflex_]. On a _Crit_, add _Sundered_ and increase the cost to _Negate_ by 1."
     },
     "speed": 3,
-    "range": [{ "category": "Melee", "value": 1 }],
+    "range": "Melee",
     "chart": {
       "damage_type": "Slash",
-      "keywords": ["Siege", "_Pierce_ 1"],
-      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
       "damage": [0, 0, 0, 4, 5, 6, 7, 8, 9, 11, 11],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "", "_Bleeding_, _Exposed_ [6 _Grit_/_Reflex_]", "_Bleeding_, _Exposed_ [6 _Grit_/_Reflex_]"]
+      "status": ["", "", "", "", "", "", "", "", "", "_Bleeding_, _Exposed_ [6 _Reflex_]", "_Bleeding_, _Exposed_ [6 _Reflex_]"]
     },
     "weight": 2,
     "hands": 1,
@@ -250,6 +273,44 @@
     "weight": 2,
     "hands": 1,
     "durability": 10
+  },
+  {
+    "name": "Stone Maul",
+    "category": "Blunt",
+    "type": "Heavy",
+    "desc": "A heavy stone at the end of a haft useful for causing massive damage.",
+    "speed": 4,
+    "charged_profile": {
+      "set_up": "Choose a _Target_ within _Range_. While _Charging_ gain the _Parry_ effect of this weapon.",
+      "resolution": "Resolve this Attack against the _Target_. Add [_Overwhelming_]. On a _Hit_+, add _Exposed_, _Sundered_. On a _Crit_, increase the cost to _Negate_ by 1."
+    },
+    "parry": "Gain _Sturdy_ and 1 _Block_.",
+    "range": "Melee",
+    "keywords": ["Earth", "Siege", "_Pierce_ 1"],
+    "chart": {
+      "damage_type": "Crush",
+      "on_miss": "+3 _Momentum_",
+      "stun": [0, 0, 0, 3, 3, 3, 4, 4, 4, 5, 5],
+      "damage": [0, 0, 0, 6, 7, 8, 8, 9, 10, 11, 11],
+      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "_Push_, _Reeling_ [_5 _Grit_]",
+        "_Push_, _Reeling_ [_5 _Grit_]",
+        "_Push_, _Reeling_ [_6 _Grit_]",
+        "_Push_, _Reeling_ [_6 _Grit_]",
+        "_Push_, _Reeling_ [_7 _Grit_]",
+        "_Push_, _Reeling_ [_7 _Grit_]"
+      ]
+    },
+    "weight": 4,
+    "hands": 2,
+    "durability": 2,
+    "analysis_notes": { "fudge": 0.25, "notes": "Lower Durability." }
   },
   {
     "name": "Iron Maul",
@@ -580,22 +641,29 @@
     "desc": "A simple weapon with a windup that pierces through many defenses.",
     "speed": 2,
     "type": "Balanced",
-    "charged_profile": "Add [_Pierce_ 2] and deal +2 Damage on a _Hit_+.",
-    "special": "You may choose to make a _Melee_ Attack with this. If you do, use the stats of a _Small Improvised_ Weapon.",
+    "keywords": ["Earth", "Fragile"],
+    "charged_profile": {
+      "set_up": "This Attacks' Range becomes _Medium_/_Long_. Choose a Target with _Range_.",
+      "resolution": "Resolve this Attack against the _Target_. Add [_Pierce_ 1] and deal +3 Damage."
+    },
+    "effect": "Gain 1 _Momentum_.",
+    "special": "Only the ammunition used for this Attack is _Earth_; the weapon itself is _Organic_.",
+    "boost": "1 _Momentum_: This is instead a _Light_ Attack. Do not resolve the Effect.",
     "parry": "None.",
-    "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 2" }],
+    "range": "Short/Medium",
     "chart": {
       "damage_type": "Crush",
       "material": "Stone (Projectile)",
       "on_miss": "+2 _Momentum_",
-      "stun": [0, 0, 0, 0, 2, 2, 2, 3, 3, 4, 4],
-      "damage": [0, 0, 0, 0, 4, 4, 5, 6, 7, 8, 8],
+      "stun": [0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
+      "damage": [0, 0, 0, 0, 2, 2, 3, 3, 3, 4, 4],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 2", "_Dazed_ 2"]
+      "status": ["", "", "", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1"]
     },
     "weight": 1,
     "hands": 1,
-    "durability": 5
+    "durability": 1,
+    "analysis_notes": { "fudge": -1.0 }
   },
   {
     "name": "Heavy Sling",
@@ -644,32 +712,20 @@
   {
     "name": "Round Shield",
     "category": "Shield",
-    "durability": 9,
-    "type": "Balanced",
-    "keywords": ["Secure"],
+    "durability": 3,
+    "type": "Light",
     "speed": 2,
-    "parry": "Gain 2 _Instant Guard_, +1 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 2. If the Attack was Ranged, instead gain 4 _Instant Guard_, +2 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 4.",
-    "range": [{ "category": "Melee", "value": 1 }],
+    "parry": "Gain 2 _Block_, +1 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 2. If the Attack was not Melee, instead gain 4 _Instant Guard_, +2 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 4.",
+    "range": {},
+    "value": 1,
     "chart": {
       "damage_type": "Crush",
       "material": "Wood",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 3],
-      "stun": [0, 0, 2, 2, 3, 3, 3, 3, 3, 4, 4],
+      "damage": [0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2],
+      "stun": [0, 0, 1, 1, 2, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1, _Impaired_ [3 _Grit_]",
-        "_Push_ 1, _Impaired_ [3 _Grit_]",
-        "_Push_ 2, _Impaired_ [4 _Grit_]",
-        "_Push_ 2, _Impaired_ [4 _Grit_]"
-      ]
+      "status": ["", "", "", "", "", "", "", "_Push_ [4 _Grit_]", "_Push_ [4 _Grit_]", "_Push_ [5 _Grit_]", "_Push_ [5 _Grit_]"]
     },
     "weight": 3,
     "hands": 1
@@ -677,31 +733,30 @@
   {
     "name": "Heater Shield",
     "category": "Shield",
-    "durability": 12,
+    "durability": 2,
     "type": "Balanced",
-    "speed": 3,
-    "keywords": ["Secure"],
-    "parry": "Gain 3 _Instant Guard_, +2 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 3. If the Attack was Ranged, instead gain 5 _Instant Guard_, +3 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 5.",
-    "range": [{ "category": "Melee", "value": 1 }],
+    "speed": 2,
+    "keywords": ["Metal", "Wood", "Secure"],
+    "parry": "Gain _Resistance_ I against the triggering Attack. If the Attack was Ranged, instead gain _Resistance_ II.",
+    "range": "Melee",
     "chart": {
       "damage_type": "Crush",
-      "material": "Metal, Wood",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 4],
+      "damage": [0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2],
       "stun": [0, 0, 2, 2, 3, 3, 3, 3, 3, 4, 4],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1, _Impaired_ [4 _Grit_]",
-        "_Push_ 1, _Impaired_ [4 _Grit_]",
-        "_Push_ 2, _Impaired_ [5 _Grit_]",
-        "_Push_ 2, _Impaired_ [5 _Grit_]"
+        "_Push_, _Impaired_ [2 _Grit_]",
+        "_Push_, _Impaired_ [2 _Grit_]",
+        "_Push_, _Impaired_ [3 _Grit_]",
+        "_Push_, _Impaired_ [3 _Grit_]",
+        "_Push_, _Impaired_ [3 _Grit_]",
+        "_Push_, _Impaired_ [4 _Grit_]",
+        "_Push_, _Impaired_ [4 _Grit_]",
+        "_Push_, _Impaired_ [5 _Grit_]",
+        "_Push_, _Impaired_ [5 _Grit_]"
       ]
     },
     "weight": 4,

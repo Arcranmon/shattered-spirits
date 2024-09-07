@@ -5,7 +5,7 @@
         <h4 style="display: inline">{{ maneuver.Name }}</h4>
         <br />
         <div class="card--keywords" v-bind:class="useTextFormatting">
-          <div v-if="maneuver.Type != 'Action'">
+          <div>
             <b><display-tooltip-text class="card--type" :string="maneuver.TypeHeader" :decorate="false" /></b>
           </div>
           <b>

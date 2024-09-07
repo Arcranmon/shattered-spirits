@@ -9,9 +9,8 @@
           <b>
             <div><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
             <div v-if="attack.HasSpeedOrType"><display-tooltip-text :string="attack.SpeedHeader" :decorate="false" /></div>
-            <span v-if="!isWeapon">
-              <span v-for="(keyword, index) in attack.Keywords" :key="index" class="keyword--box">
-                <display-tooltip-text :string="keyword" :decorate="false" /></span></span
+            <span v-for="(keyword, index) in attack.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword" :decorate="false" /></span
           ></b>
         </div>
       </div>
@@ -27,7 +26,6 @@
       <div v-if="attack.HasEffect"><display-tooltip-text :string="attack.EffectHeader" /></div>
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <div v-if="attack.HasBoost"><display-tooltip-text :string="attack.BoostHeader" /></div>
-      <div v-if="attack.Chart.HasDamageType"><display-tooltip-text :string="attack.Chart.DetailsHeader" /></div>
       <div v-if="attack.Chart.HasOnMiss"><display-tooltip-text :string="attack.Chart.OnMissHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
       <div v-if="attack.HasChargedEffect">

@@ -17,23 +17,30 @@ status_multipliers = {
     "Grabbed": 4,
     "Hobbled": 3,
     "Impaired": 2,
-    "Push": 0.75,
     "Prone": 3,
     "Reeling": 2,
     "Shocked": 3,
     "Soaked": 1,
     "Sundered": 3,
-    "Studied": 5,
+    "Studied": 4,
     "Taunted": 2,
+    "Push": 2,
+    "Pull": 2,
+    "Tidal Motion": 1.75
 }
 
-instant_statuses = [   "Dazed", "Push", "Pull", "Slide"]
+instant_statuses = [   "Dazed",   "Slide"]
 
 keyword_modifiers = {
-    "Avoidable": -0.5,
+    "Avoidable": -2,
+    "Draw": -0.25,
     "Cold": 0.0,
+    "Earth": 0.0,
+    "Fragile": 0.0,
+    "Quickdraw": 0.0,
     "Groundsource": 0.5,
-    "Brawling": 0.25,
+    "Brawling": 0.15, # Pretty niche
+    "Metal": 0.0,
     "Overwhelming": 0.25,
     "Social": 0.5,
     "Pierce": 0.5,
@@ -42,13 +49,18 @@ keyword_modifiers = {
     "Fist": 0,
     "Body": 0,
     "Kick": 0,
-    "Fist/Body/Kick": 0
+    "Fist/Body/Kick": 0,
+    "Water": 0.0,
+    "Wind": 0.0,
+    "Wood": 0.0,
+    "Secure": 0.0,
+    "Spirit": 0.0
 }
 
 attack_range_multiplier = {
     "Melee": 1,
-    "Long Melee": 0.95,
     "Short": 0.9,
+    "Reach": 0.85,
     "Medium": 0.8,
     "Long": 0.7
 }
@@ -185,8 +197,8 @@ def estimate_damage(attack, glancing, print_stats):
         diff_speed = attack["analysis_notes"].get("speed", 0)
         status_damage = get_status_damage(attack["analysis_notes"].get("status", ""), False)
     
-    # Momentum is 'worth' 2 Damage
-    momentum_value = 1
+    # Momentum is 'worth' this much
+    momentum_value = 1.5
         
     if("hands" in attack and attack["hands"] == 2):
         cost += 1
@@ -206,14 +218,6 @@ def estimate_damage(attack, glancing, print_stats):
         if math.floor(diff_speed) != math.ceil(diff_speed):
             speed_string = speed_string.replace("   " + str(math.ceil(diff_speed)) + "   ", "***"+ str(math.ceil(diff_speed)) + "***")
             
-
-
-    range_strings = [
-        "============================   PRIMARY RANGE   ===========================",
-        "===========================   SECONDARY RANGE   ==========================",
-        "===========================   TERTIARY RANGE   ==========================="
-    ]
-
     diff = 0
 
     keyword_bonus = 0
@@ -226,92 +230,77 @@ def estimate_damage(attack, glancing, print_stats):
                 keyword_bonus += keyword_modifiers[split_keywords[0]] * int(split_keywords[1])
             else:
                 keyword_bonus += keyword_modifiers[split_keywords[0]]
+        for keyword in attack.get("keywords", []):       
+            keyword = keyword.replace('_', '')
+            split_keywords = keyword.split(' ')
+            if not split_keywords[0] in keyword_modifiers:
+                print("WARNING: Keyword " + split_keywords[0] + " does not have a listed cost.")
+                continue
+            if len(split_keywords) > 1:
+                keyword_bonus += keyword_modifiers.get(split_keywords[0], 0) * int(split_keywords[1])
+            else:
+                keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
 
-    ranges = []
-    if override_range == "":
-        ranges = attack["range"]
-    else:
-        ranges = override_range
+    attack_range = attack["range"].replace('_', '').split('/')[-1]
+    if override_range != "":
+        attack_range = override_range
+    thrown = False 
 
-    for range_index, attack_range in enumerate(ranges):    
-        straight_damage = [0]*4
-        advantage_damage = [0]*4
-        disadvantage_damage = [0]*4
+    # Parse and range keywords associated with this.
+    if "Thrown" in attack_range:
+        thrown = True
+    if "(" in attack_range:
+        attack_range = attack_range.split("(")[0].replace(' ', '')
+    straight_damage = [0]*4
+    advantage_damage = [0]*4
+    disadvantage_damage = [0]*4
 
-        thrown = "Thrown" in attack_range.get("special", "")
-        range_category = "Melee"
 
-        if attack_range["category"] == "Self":
-            range_category = "Melee"
-        elif attack_range["value"] > 1 and attack_range["value"] <= 2:
-            range_category = "Long Melee"
-        elif attack_range["value"] > 2 and attack_range["value"] <= 4:
-            range_category = "Short"
-        elif attack_range["value"] > 4 and attack_range["value"] < 8:
-            range_category = "Medium"
-        elif attack_range["value"] >= 8:
-            range_category = "Long"
+    range_modifier = 0
+    #if "Ordnance" in attack_range.get("special", ""):
+    #    range_modifier += 0.05
 
-        range_modifier = 0
-        if "Ordnance" in attack_range.get("special", ""):
-            range_modifier += 0.05
+    # Adjust for cost.
+    range_expected_damage = [x + (cost * momentum_value) for x in expected_damage]
 
-        range_expected_damage = [x * (attack_range_multiplier[range_category]+range_modifier) for x in expected_damage]
-
-        # Adjust for cost.
-        range_expected_damage = [x + (cost * momentum_value) for x in range_expected_damage]
+    range_expected_damage = [x * (attack_range_multiplier[attack_range]+range_modifier) for x in range_expected_damage]
         
-        # Adjust for expected targets.
-        range_expected_damage = [x / expected_targets for x in range_expected_damage]
+    # Adjust for expected targets.
+    range_expected_damage = [x / expected_targets for x in range_expected_damage]
 
-        # Calculate the damage for each speed.
-        for roll_index in range(10,-1,-1):
-            for speed_index in range(4):
-                if(thrown and roll_chart[roll_index] == "Graze"): 
-                    continue
-                speed_dif = speed_index-speed+1 # +1 because zero indexed
-
-                # Heavy takes double the speed penalty.
-                if lvh == 'Heavy':
-                    speed_dif = speed_dif*2
-                index = roll_index
-
-                if speed_dif < 0:
-                    index = roll_index + speed_dif
-
-                # Attacking too early with some weapons will make some rolls automatically miss.
-                if index < 0:
-                    continue
-
-                damage = (damage_chart[index])
-                damage += stun_chart[index]
-                if(glancing): damage = math.ceil(damage/2.0)
-
-                damage += get_status_damage(status_chart[index], glancing)
-                damage += status_damage
-
-                damage += bonus_damage[index]
-                if(roll_chart[index] != "Miss"): 
-                    damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
-
-                straight_damage[speed_index] += straight[index]*damage
-                advantage_damage[speed_index] += advantage[index]*damage
-                disadvantage_damage[speed_index] += disadvantage[index]*damage
-
-        if(print_stats):
-            print(colored(range_strings[range_index], 'white'))
-            print(colored(speed_string, 'white'))
-            print(colored("Expected Damage:        " +  '  '.join(["{:.3f}".format(damage) for damage in range_expected_damage]), 'blue'))
-            print(colored("Straight Attack:        " +  '  '.join(["{:.3f}".format(damage) for damage in straight_damage]), 'white'))
-            print(colored("Advantage Attack:       " +  '  '.join(["{:.3f}".format(damage) for damage in advantage_damage]), 'green'))
-            print(colored("Disadvantage Attack:    " +  '  '.join(["{:.3f}".format(damage) for damage in disadvantage_damage]), 'red'))
-        if diff_speed == 0:
-            diff = max(range_expected_damage[speed-1]-straight_damage[speed-1], diff, key=abs)
-        else:
-            diff_speed_expected_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
-            diff = max(diff_speed_expected_damage-straight_damage[speed-1], diff, key=abs)
-        if(print_stats):
-            print("\033[1mExpected Damage Difference: " + "{:.3f}".format(-diff) + "\033[0m") 
+    # Calculate the damage for each speed.
+    for roll_index in range(10,-1,-1):
+        for speed_index in range(4):
+            if(thrown and roll_chart[roll_index] == "Graze"): 
+                continue
+            index = roll_index
+            # Attacking too early with some weapons will make some rolls automatically miss.
+            if index < 0:
+                continue
+            damage = (damage_chart[index])
+            damage += stun_chart[index]
+            if(glancing): damage = math.ceil(damage/2.0)
+            damage += get_status_damage(status_chart[index], glancing)
+            damage += status_damage
+            damage += bonus_damage[index]
+            if(roll_chart[index] != "Miss"): 
+                damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
+            straight_damage[speed_index] += straight[index]*damage
+            advantage_damage[speed_index] += advantage[index]*damage
+            disadvantage_damage[speed_index] += disadvantage[index]*damage
+    if(print_stats):
+        print(colored(speed_string, 'white'))
+        print(colored("Expected Damage:        " +  '  '.join(["{:.3f}".format(damage) for damage in range_expected_damage]), 'blue'))
+        print(colored("Straight Attack:        " +  '  '.join(["{:.3f}".format(damage) for damage in straight_damage]), 'white'))
+        print(colored("Advantage Attack:       " +  '  '.join(["{:.3f}".format(damage) for damage in advantage_damage]), 'green'))
+        print(colored("Disadvantage Attack:    " +  '  '.join(["{:.3f}".format(damage) for damage in disadvantage_damage]), 'red'))
+    if diff_speed == 0:
+        diff = max(range_expected_damage[speed-1]-straight_damage[speed-1], diff, key=abs)
+    else:
+        diff_speed_expected_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
+        diff = max(diff_speed_expected_damage-straight_damage[speed-1], diff, key=abs)
+    if(print_stats):
+        print("\033[1mExpected Damage Difference: " + "{:.3f}".format(-diff) + "\033[0m") 
 
     return diff
 

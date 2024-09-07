@@ -9,9 +9,12 @@ declare interface IBaseData {
 
 declare interface IArmorData extends IBaseData {
   weight: number
+  durability: number
   category?: string
-  durability?: number
   guard: number
+  parry: string
+  soak: number
+  traits: string[]
 }
 
 declare interface IAttackData extends IManeuverData {
@@ -145,8 +148,8 @@ declare interface IAbilityData extends IBaseData {
   boost?: string
   cost?: string
   class: string
-  move?: string
-  range?: Array<IRangeData>
+  move?: number
+  range?: string
   reqs?: string
   target?: string
   chart?: IChartData
@@ -170,10 +173,9 @@ declare interface ITechData extends IAbilityData {
 declare interface IMovementData {
   name: string
   encumbrance: number
-  step: number
-  reposition: number
-  dash: number
+  movement: number
   jump: number
+  manifest_range: string
   traits: string[]
 }
 
@@ -198,11 +200,11 @@ declare interface ISpiritData extends ICombatantData {
 
 declare interface ISpiritFormData extends IBaseData {
   size: string
+  defenses?: IDefenseData
   health: number
   weapons: string
   bonus_attack: string
   guard: number
-  durability: number
   movement: string
   traits: string[]
 }
@@ -211,6 +213,7 @@ declare interface ISubtypeData extends IBaseData {
   element: string
   summon_effect: string
   manifest_effect: string
+  defenses: IDefenseData
   traits: string[]
 }
 
@@ -252,6 +255,8 @@ declare interface ITalentRankData {
 }
 
 declare interface ITerrainData extends IBaseData {
+  position_effect: string
+  path_effect: string
   element: string
   layer: string
   negate: string

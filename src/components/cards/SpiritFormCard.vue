@@ -2,21 +2,17 @@
   <div class="card--wrapper" inline>
     <div class="card--underline-top">
       <div class="card--header" v-bind:class="getColor(form)">
-        <h4 style="display: inline;">{{ form.Name }}</h4>
+        <h4 style="display: inline">{{ form.Name }}</h4>
       </div>
     </div>
     <div class="card--content card--format">
-      <display-tooltip-text :string="form.SizeHeader" /><br />
       <display-tooltip-text :string="form.HealthHeader" /><br />
+      <div v-if="form.HasDefenses"><display-tooltip-text :string="form.DefensesHeader" /></div>
       <display-tooltip-text :string="form.WeaponsHeader" /><br />
-      <display-tooltip-text :string="form.BonusAttackHeader" /><br />
       <display-tooltip-text v-if="form.HasTraits" :string="form.TraitsHeader" /><br v-if="form.HasTraits" />
-      <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" /><movement-card
-        :movement="$store.getters.getMovement(form.Movement)"
-        :on_sheet="true"
-      />
+      <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" /><movement-card :movement="$store.getters.getMovement(form.Movement)" />
     </div>
-    <div class="desc--box" v-if="(form.Desc.length > 0)" style="font-style: italic;">{{ form.Desc }}<br /></div>
+    <div class="desc--box" v-if="form.Desc.length > 0" style="font-style: italic">{{ form.Desc }}<br /></div>
   </div>
 </template>
 

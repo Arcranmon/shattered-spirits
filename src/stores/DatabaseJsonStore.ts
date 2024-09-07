@@ -18,10 +18,10 @@ import Terrains from '@/database/terrain.json'
 
 import Attacks from '@/database/attacks.json'
 
-import Subtypes from '@/database/subtypes.json'
+import SubtypeJson from '@/database/subtypes.json'
 import SpiritForms from '@/database/spirit_forms.json'
 
-import Movements from '@/database/movement.json'
+import MovementJson from '@/database/movement.json'
 import ManeuversJson from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
@@ -69,6 +69,8 @@ export class DatabaseJsonStore extends VuexModule {
     this.Disciplines = DisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
+    this.Subtypes = SubtypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
+    this.Movements = MovementJson.map((x) => Movement.Deserialize(<IMovementData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -77,6 +79,8 @@ export class DatabaseJsonStore extends VuexModule {
   private Masteries: Discipline[] = []
   private Disciplines: Discipline[] = []
   private Techniques: Technique[] = []
+  private Subtypes: Subtype[] = []
+  private Movements: Movement[] = []
 
   // ==========================================================
   // MANEUVER TOOLS
@@ -196,7 +200,8 @@ export class DatabaseJsonStore extends VuexModule {
           (categories.includes(x.Category.trim()) ||
             (categories.includes('Throwing') && x.hasOwnProperty('keywords') && x.Keywords.some((y) => y.includes('Thrown')))) &&
           (speed == 'Any' || speed == x.Speed) &&
-          (type == 'Any' || x.Type == type),
+          (type == 'Any' || x.Type == type) &&
+          typeof x.Range == 'string',
       )
     }
   }
@@ -319,8 +324,7 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getMovement(): any {
     return (inword: string) => {
-      var move = Movements.find((x) => x.name.trim() === inword.trim())
-      return Movement.Deserialize(<IMovementData>move)
+      return this.Movements.find((x) => x.Name === inword.trim())
     }
   }
 
@@ -638,14 +642,14 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getSubtype(): any {
     return (inword: string) => {
-      var type = Subtypes.find((x) => x.name.trim() === inword.trim())
-      return Subtype.Deserialize(<ISubtypeData>type)
+      var type = this.Subtypes.find((x) => x.Name === inword.trim())
+      return type
     }
   }
 
   get getSpiritTypesByElement(): any {
     return (inword: string) => {
-      return Subtypes.filter((x) => x.element.trim() === inword.trim()).map((x) => Subtype.Deserialize(<ISubtypeData>x))
+      return this.Subtypes.filter((x) => x.Element === inword.trim())
     }
   }
 
@@ -655,7 +659,7 @@ export class DatabaseJsonStore extends VuexModule {
   get getSpiritForm(): any {
     return (inword: string) => {
       var form = SpiritForms.find((x) => x.name.trim() === inword.trim())
-      return SpiritForm.Deserialize(<ISpiritFormData>form)
+      return SpiritForm.Deserialize(<ISpiritFormData>(<unknown>form))
     }
   }
 

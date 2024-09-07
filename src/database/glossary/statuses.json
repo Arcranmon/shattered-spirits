@@ -22,7 +22,7 @@
   {
     "name": "Airborne",
     "desc": "A creature knocked into the air and unable to defend themselves.",
-    "effect": "While Airborne a creature increases their Elevation by 1 and is _Restrained_. Additionally, while Airborne, they gain _Susceptible_ (_Forced Movement_).",
+    "effect": "An Airborne creature immediately loses their _Position_ and is _Restrained_. Additionally, while Airborne, they gain _Susceptible_ (_Forced Movement_).",
     "repeat": "If an Airborne creature would gain Airborne they instead extend the Airborne duration by a _Phase_.",
     "remove": "Creatures are Airborne until the end of the next _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_. Do not remove _Airborne_ until the creature's _Forced Movement_ is complete.",
     "special": "_Flying_ creatures may not become _Airborne_.",
@@ -31,8 +31,8 @@
   {
     "name": "Alight",
     "desc": "An elemental affliction caused by being set aflame.",
-    "effect": "At the end of each _Phase_ an Alight creature takes 2 _Fire_ Damage. This Damage may not not be reduced by _Guard_ that is not provided by _Resistance_.",
-    "special": "While a creature has Alight they have _Minor Resistance_ (_Cold_).",
+    "effect": "At the end of each _Phase_ an Alight creature takes 2 _Fire_ Damage. This Damage ignores _Guard_.",
+    "special": "While a creature has Alight they have _Resistance_ I (_Cold_).",
     "repeat": "If an Alight creature would gain Alight they instead take 3 _Fire_ Damage.",
     "reacts": [
       "<ins>_Frozen_:</ins> If an Alight creature would gain _Frozen_ they instead remove Alight.",
@@ -110,11 +110,13 @@
   {
     "name": "Engaged",
     "desc": "An effect caused when a creature is locked in close combat with another.",
-    "effect": "While Engaged a creature may only move into spaces that are adjacent to all creatures they are Engaged with. Additionally, this creature takes a -X _Penalty_ on all Attacks not targeting a creature they are Engaged with, where X is the total number of creatures they are _Engaged_ with.",
-    "remove": "Engaged is removed if a creature breaks adjacency with the creature they're Engaged with. Additionally, a creature may downgrade their Move by one tier and create an _Opening_ to remove Engaged.",
-    "recover": "When a creature _Recovers_ they may remove Engaged.",
+    "effect": "While Engaged a creature may not leave their current _Position_. Additionally, this creature takes a -X _Penalty_ on all Attacks when not targeting a creature they are Engaged with, where X is the total number of creatures they are _Engaged_ with.",
+    "remove": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_, but creates an _Opening_.",
+    "recover": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_.",
     "type": "Status Effect"
   },
+  { "name": "Engagement", "see": "Engaged" },
+  { "name": "Engagements", "see": "Engaged" },
   {
     "name": "Enraged",
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
@@ -166,6 +168,12 @@
     "type": "Affliction"
   },
   {
+    "name": "Immobile",
+    "desc": "",
+    "effect": "While Immobile a creature may not spend _Movement_ except to remove a _Status Effect_ causing this condition.",
+    "type": "Status Effect"
+  },
+  {
     "name": "Joyful",
     "desc": "A mental affliction caused when a creature's heart is full of joy. ",
     "effect": "While Joyful a creature gains a +1 _Bonus_ to _Negate_. While adjacent to an allied creature a creature may remove Joyful for 2 _Momentum_ or to _Step_ Move.",
@@ -201,26 +209,26 @@
   {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
-    "effect": "A Prone creature cannot move. While Prone, melee attacks against the target gain Advantage, but ranged attacks have Disadvantage unless the Attacker is at a higher _Elevation_.",
-    "remove": "A creature may downgrade their Movement by one level to end Prone. This creates an _Opening_ if the Movement is not [_Safe_].",
-    "recover": "When a creature _Recovers_ they may remove _Prone_.",
+    "effect": "A Prone creature is _Immobile_. While Prone, Melee attacks against the target gain Advantage, but Medium and Long Range attacks have Disadvantage.",
+    "remove": "A creature may expend one Movement to end Prone. This creates an _Opening_.",
+    "recover": "When a creature _Recovers_ they may expend one Movement to remove _Prone_ without creating an _Opening_.",
     "type": "Status Effect"
   },
   {
     "name": "Pull",
     "desc": "You drag a foe closer to you or, if they are too close, around you.",
-    "effect": "Move a Target up to X squares directly towards the origin of the effect, where X is the numerical value immediately after Pull in an effect's description. If they are already adjacent, instead move the Target up to X squares, but all spaces you move the Target into must be adjacent to the origin. This is _Forced Movement_.",
-    "negate": "A creature may spend an amount of _Stamina_ to reduce a Pull by the same amount.",
+    "effect": "You may remove the Target from their _Position_. If you do, you may choose to place them in your _Engagement_ if you are in their _Arena_.",
     "type": "Instant Effect"
   },
   { "name": "Pulled", "see": "Pull" },
   {
     "name": "Push",
-    "desc": "You launch a creature away from you, creating space.",
-    "effect": "Move a target up to X squares directly away from the origin of the effect, where X is the numerical value immediately after Push in an Effect's description. This is _Forced Movement_.",
-    "negate": "A creature may spend an amount of _Stamina_ to reduce a Push by the same amount.",
-    "type": "Instant Effect"
+    "desc": "You launch a creature away from you, creating space and sending them to a new arena.",
+    "effect": "You may remove the Target from their current _Position_. If you do, you may choose to place them in any _Position_ you are not in within your _Arena_.",
+    "special": "If this is Forceful Push, instead you may choose to place them in an _Arena_ they are adjacent to and you are not in. Inflict _Stun_ equal to any additional _Movement_ cost to enter said _Arena_.",
+    "type": "Status Effect"
   },
+  { "name": "Forceful Push", "see": "Push" },
   { "name": "Pushed", "see": "Push" },
   { "name": "Pushes", "see": "Push" },
   {
@@ -263,14 +271,6 @@
     "type": "Instant Effect"
   },
   {
-    "name": "Slide",
-    "desc": "You move a foe as you wish across the battlefield.",
-    "effect": "Move a target up to X spaces in a straight line in any direction, where X is the numerical value immediately after Slide in an Effect's description. This is _Forced Movement_.",
-    "negate": "A creature may spend an amount of _Stamina_ to reduce a Slide by the same amount.",
-    "type": "Instant Effect"
-  },
-  { "name": "Slid", "see": "Slide" },
-  {
     "name": "Slowed",
     "desc": "You weigh down a foe, limiting their ability to react.",
     "effect": "While Slowed a creature treats the current _Phase_ as one earlier than the actual _Phase_ for all effects, including resolving their _Technique_ for the _Round_. For example, if a creature plays a Technique for _Phase_ 5 they would resolve it in _Phase_ 6.",
@@ -283,16 +283,12 @@
   {
     "name": "Soaked",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "While a creature has any Soaked, they have _Resistance_ 3 (_Fire_), _Weakness_ 2 (_Cold_, _Lightning_), _Warded_ (_Alight_), _Susceptible_ (_Frozen_, _Shocked_).",
+    "effect": "While a creature has any Soaked, they have _Resistance_ (_Fire_) and _Weakness_ (_Cold_, _Lightning_).",
     "reacts": [
       "<ins>_Alight_:</ins> If a Soaked creature would gain _Alight_, instead remove Soaked.",
-      "<ins>_Cold_:</ins> If a Soaked creature takes _Cold_ Damage inflict _Frozen_, with a _Negate_ DC equal to half the Damage dealt, then remove Soaked.",
-      "<ins>_Fire_:</ins> If a Soaked creature takes _Fire_ Damage remove Soaked.",
       "<ins>_Frozen_:</ins> If a Soaked creature gains _Frozen_ remove Soaked, then deal _Cold_ Damage equal to half the _Negate_ DC.",
       "<ins>_Shocked_:</ins> If a Soaked creature gains _Shocked_ they take _Lighting_ Damage equal to half the _Negate_ DC."
     ],
-    "special": "When a _Soaked_ creature is _Defeated_ make a space they occupy _Wet_.",
-    "remove": "_Water_ abilities may _Draw_ from Soaked creatures, removing _Soaked_ to _Draw_ 1.",
     "type": "Elemental Affliction"
   },
   {
@@ -305,8 +301,8 @@
   {
     "name": "Stunned",
     "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "A Stunned creature:\n* May not gain any _Stun_.\n* May not _Recover_ to remove any other Status.\n* Has _Disadvantage_ to _Negate_ all effects.\n* Adds [_Glancing_] to all their damaging effects.\n* May not spend _Stamina_ or _Momentum_.\n* Attacks against the creature have _Advantage_.\n* The creature reduces all Movement by 1 tier.",
-    "recover": "When a creature _Recovers_ they may remove Frightened if they are not adjacent to a hostile creature.",
+    "effect": "While _Stunned_ a creature may not gain _Stun_, expend _Momentum_ or _Stamina_, and immediately loses _Guarding_ or _Charging_. The Stunned creature immediately loses their next _Action_ or, if they were using a _Technique_, they must replace it with _Improvise_. Refund any cost associated with the _Technique_.",
+    "remove": "Remove _Stunned_ at the end of the next _Phase_ it was inflicted.",
     "type": "Affliction"
   },
   {

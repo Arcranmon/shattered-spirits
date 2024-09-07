@@ -41,9 +41,6 @@ class Weapon extends Attack {
     if (this.HasDurability) {
       traits_string += ', _Durability_ ' + this.durability_
     }
-    if (this.HasKeywords) {
-      traits_string += ' [' + this.KeywordsHeader + ']'
-    }
     return traits_string
   }
   get WeightHeader() {

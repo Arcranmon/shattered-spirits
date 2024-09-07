@@ -37,12 +37,7 @@
     "speed": "2",
     "class": "General",
     "target": "A creature that is not _Obscured_.",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 12
-      }
-    ],
+    "range": "Any",
     "effect": "Inflict _Studied_ [5 _Focus_] on the Target."
   },
   {
@@ -83,7 +78,7 @@
   {
     "name": "Issue Challenge",
     "class": "General",
-    "keywords": ["Mobile", "Social"],
+    "keywords": ["Social"],
     "desc": "You insult the ego of a foe, drawing their attention in an intense way.",
     "type": "Light",
     "speed": "2",
@@ -108,25 +103,17 @@
     "name": "Chip Shot",
     "class": "Mountain",
     "desc": "You fire a fist-size stone at great speed, crushing defenses with each shot.",
-    "keywords": ["Spirit"],
+    "keywords": ["Spirit", "Stone", "Crush", "_Pierce_ 1"],
     "type": "Balanced",
     "speed": "3",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6,
-        "special": "_Close Range_ 2"
-      }
-    ],
-    "special": "If you are adjacent to an _Earthen_ _Obstacle_ or _Jagged_ space this _Attack_ is instead _Speed_ 2. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
-    "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Obstacle_ within Range 2 or, if you choose an adjacent _Obstacle_, you gain a +1 _Bonus_ to the Attack.",
+    "cost": "1 _Momentum_",
+    "range": "Short/Medium",
+    "special": "If there is an _Earthen_ _Feature_ at your _Position_ this _Attack_ is instead _Speed_ 2 and adds [_Remote_].",
+    "boost": "1 _Momentum_: Resolve the Special if there is any _Earthen_ _Feature_ within your _Arena_. Draw Range from one of said _Positions_ and add _Melee_ as a Range option.",
     "chart": {
-      "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
-      "material": "Stone",
-      "keywords": ["_Pierce_ 1"],
       "stun": [0, 0, 0, 0, 1, 1, 2, 2, 2, 3, 3],
-      "damage": [0, 0, 0, 0, 2, 2, 3, 4, 5, 6, 6],
+      "damage": [0, 0, 0, 0, 4, 5, 5, 6, 6, 7, 7],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -143,8 +130,8 @@
       ]
     },
     "charged_profile": {
-      "set_up": "Choose a Target within Range. If you are going to use the Special/Boost you must decide that now, and mark where the Attack will originate from. While _Charging_, gain 1 _Block_ and +1 _Grit_.",
-      "resolution": "Resolve this Attack against the Target. Add [_Pierce_ 2], _Break_, and deal +2 _Bonus_ _Stun_ and _Bonus_ _Damage_."
+      "set_up": "Choose a Target within Range and, if using the Special/Boost, mark the appropriate _Feature_. While _Charging_, gain 1 _Block_ and +1 _Grit_.",
+      "resolution": "Resolve this Attack against the Target. Add [_Pierce_ 1] and deal +2 _Bonus_ _Stun_ and _Bonus_ _Damage_. If the _Feature_ used for this Attack was _Destroyed_, the attack automatically fails."
     },
     "analysis_notes": {
       "speed": 2.5
@@ -429,56 +416,46 @@
   },
   {
     "name": "Flame Burst",
-    "keywords": ["Spirit"],
+    "keywords": ["Spirit", "Fire"],
     "class": "Blaze",
     "desc": "You form and fire a handful of flame, singing and searing foes.",
     "type": "Balanced",
+    "cost": "1 _Momentum_",
     "speed": "2",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6,
-        "special": "_Close Range_ 1"
-      }
-    ],
+    "range": "Short/Medium",
     "chart": {
-      "damage_type": "Fire",
       "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 2, 2, 2, 2, 3, 3, 4, 4],
+      "damage": [0, 0, 0, 4, 4, 4, 5, 5, 6, 7, 7],
       "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "",
         "",
+        "_Alight_ [2 _Reflex_]",
+        "_Alight_ [2 _Reflex_]",
         "_Alight_ [3 _Reflex_]",
         "_Alight_ [3 _Reflex_]",
         "_Alight_ [4 _Reflex_]",
         "_Alight_ [4 _Reflex_]",
         "_Alight_ [5 _Reflex_]",
-        "_Alight_ [5 _Reflex_]",
-        "_Alight_, _Burned_ [6 _Reflex_]",
-        "_Alight_, _Burned_ [6 _Reflex_]"
+        "_Alight_ [5 _Reflex_]"
       ]
     },
     "charged_profile": {
-      "set_up": "Create a _Cone_ 2 _Hazard_ within Range. While _Charging_, gain _Minor Resistance_ (_Cold_, _Fire_, _Ice_).",
-      "resolution": "Resolve this Attack in the _Hazard_."
+      "set_up": "Choose a Target within Range. While _Charging_, gain _Resistance_ I (_Cold_, _Fire_, _Ice_).",
+      "resolution": "Resolve this Attack against the Target and as [_Glancing_] against another creature at their _Position_."
     }
   },
   {
-    "name": "Engage",
+    "name": "Obstruct",
     "class": "General",
     "desc": "You move to obstruct a foe, limiting their mobility and forcing them to engage you.",
     "type": "Light",
     "speed": "1",
-    "range": [
-      {
-        "category": "Melee",
-        "value": 1
-      }
-    ],
-    "effect": "The Target must _Negate_ [6 _Grit_/_Reflex_]. If it is the Target's _Turn_, reduce their _Movement_ by one rank. Otherwise, inflict _Engaged_.",
-    "special": "If this Attack would inflict _Engaged_ you may choose to also become _Engaged_ with the Target; if you do, they have _Disadvantage_ to _Negate_."
+    "range": "Melee",
+    "effect": "The Target must _Negate_ [6 _Grit_/_Reflex_]. If it is the Target's _Turn_, they lose 1 _Movement_. Otherwise, inflict _Engaged_.",
+    "boost": "1 _Momentum_: Increase the _Negate_ DC by 2.",
+    "special": "If this Attack would inflict _Engaged_ you may choose to also become _Engaged_ with the Target; if you do, they have _Disadvantage_ to _Negate_. This always applies if you are already _Engaged_ with the Target."
   },
   {
     "name": "Explosive Seeds",
@@ -742,42 +719,38 @@
     "name": "Air Blast",
     "class": "Gale",
     "desc": "A pocket of powerful air, striking out at a distant foe.",
-    "keywords": ["Spirit"],
+    "keywords": ["Spirit", "Wind", "Crush"],
+    "cost": "1 _Momentum_",
     "type": "Balanced",
     "speed": "1",
-    "effect": "Ignore all _Penalties_ due to _Windy_ spaces when making this Attack.",
-    "boost": "Choose any:\n* 1 _Momentum_: Add [_Forceful_].",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6
-      }
-    ],
+    "effect": "Ignore all _Penalties_ due to _Windy_ _Terrain_ when making this Attack.",
+    "boost": "Choose any:\n* 2 _Momentum_: Replace _Push_ with _Forceful Push_.",
+    "range": "Melee/Short",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
       "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "stun": [0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3],
+      "stun": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
       "status": [
         "",
         "",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 1",
-        "_Push_ 2",
-        "_Push_ 2",
-        "_Push_ 2, _Exposed_ [4 _Grit_]",
-        "_Push_ 2, _Exposed_ [4 _Grit_]",
-        "_Push_ 2, _Exposed_ [5 _Grit_]",
-        "_Push_ 2, _Exposed_ [5 _Grit_]"
+        "_Push_ [4 _Grit_]",
+        "_Push_ [4 _Grit_]",
+        "_Push_ [5 _Grit_]",
+        "_Push_ [5 _Grit_]",
+        "_Push_ [5 _Grit_]",
+        "_Push_, _Exposed_ [6 _Grit_]",
+        "_Push_, _Exposed_ [6 _Grit_]",
+        "_Push_, _Exposed_ [7 _Grit_]",
+        "_Push_, _Exposed_ [7 _Grit_]"
       ]
     },
     "analysis_notes": {
       "fudge": -0.25
     },
     "charged_profile": {
-      "set_up": "Create a _Self_ Range _Line_ 6 _Hazard_. While _Charging_ treat your space as _Windy_ and always pointing in the direction most beneficial to you.",
-      "resolution": "Resolve this Attack in the _Hazard_. You choose to instead inurryict _Angled_ _Push_."
+      "set_up": "While _Charging_, your _Position_ becomes _Gusting_.",
+      "resolution": "Resolve this Attack against all creatures at your _Position_ and increase the cost to _Negate_ by 1."
     }
   },
   {
@@ -903,19 +876,12 @@
   {
     "name": "Icicle Shot",
     "class": "Tundra",
-    "desc": "You form a series of icicles before rapidly firing them.",
+    "desc": "You form a series of icicles before rapidly firing them at a nearby fow.",
     "type": "Balanced",
     "speed": 2,
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6,
-        "special": "_Close Range_ 1"
-      }
-    ],
-    "effect": "You must _Draw_ 1 within Range as a part of this Attack. If you don't inflict _Frozen_, make the target's space _Rimed_.",
-    "special": "If you _Draw_ from an adjacent _Ice_ _Source_, this _Attack_ is instead _Speed_ 1. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
-    "boost": "1 _Momentum_: The Special instead applies if you _Draw_ from an _Ice_ _Source_ within Range 3 or, if you choose an adjacent _Source_, you gain a +1 _Bonus_ to the Attack.",
+    "range": "Short",
+    "effect": "You must _Draw_as a part of this Attack.",
+    "special": "If you _Draw_ from an _Ice_ _Source_ in your _Arena_, this _Attack_ is instead _Speed_ 1. Ignore any penalties due to _Engagement_ when making this Attack.",
     "chart": {
       "damage_type": "_Stab_",
       "material": "Ice",
@@ -925,7 +891,7 @@
       "status": ["", "", "", "", "", "", "", "", "", "_Frozen_ [5 _Grit_]", "_Frozen_ [5 _Grit_]"]
     },
     "charged_profile": {
-      "set_up": "Choose a Target within Range. If you are going to use the Special/Boost you must decide that now, and mark where the Attack will originate from. While _Charging_, gain _Minor Resistance_ (_Cold_, _Fire_, _Ice_).",
+      "set_up": "Choose a Target within Range. While _Charging_, gain _Minor Resistance_ (_Cold_, _Fire_, _Ice_).",
       "resolution": "Resolve this Attack against the Target. Add [_Pierce_ 1], deal +3 Damage, and increase the cost to _Negate_ by 1."
     },
     "analysis_notes": {
@@ -1101,39 +1067,30 @@
     "desc": "You strike with the haft of your weapon, knocking your foe off-balance without compromising your stance.",
     "type": "Light",
     "speed": 2,
-    "range": [
-      {
-        "category": "Melee",
-        "value": 1
-      }
-    ],
-    "reqs": "Must be _Wielding_ a Two-Handed _Melee_ Weapon.",
-    "special": "You may use this Attack while _Charging_ an Attack with the prerequisite Weapon.",
+    "range": "Melee",
+    "reqs": "Must be _Wielding_ a _Heavy_ _Melee_ Weapon.",
+    "special": "After a _Hit_+ with this Attack the next _Heavy_ Attack against the same Target with said _Weapon_ gains a +1 _Bonus_.",
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+1 _Momentum_",
       "stun": [0, 0, 1, 1, 1, 1, 1, 2, 2, 3, 3],
-      "damage": [0, 0, 0, 0, 1, 1, 1, 2, 2, 3, 3],
+      "damage": [0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1"]
-    }
+      "status": ["", "", "", "", "", "", "", "", "", "", ""]
+    },
+    "analysis_notes": { "fudge": -0.8 }
   },
   {
     "name": "Power Attack",
     "class": "Martial",
     "desc": "You make a mighty swing, forgoing the windup for your heavy attack.",
     "keywords": ["Derived"],
-    "range": [
-      {
-        "category": "Melee",
-        "value": 1
-      }
-    ],
+    "range": "Melee",
     "cost": "3 _Momentum_, or 0 _Momentum_ if using the _Charged Profile_.",
     "reqs": "Must be _Wielding_ a Two-Handed _Melee_ Weapon.",
-    "effect": "Make an Attack using a Two-Handed _Melee_ Weapon. Resolve the Attack as [_Glancing_] against all Targets in a _Burst_ 1 around the Target. If not using the _Charged Profile_, increase the _Momentum_ gained _On-Miss_ by 2.",
+    "effect": "Make an Attack using a Two-Handed _Melee_ Weapon. Resolve the Attack as [_Glancing_] against all other Targets at your _Position_. If not using the _Charged Profile_, increase the _Momentum_ gained _On-Miss_ by 2.",
     "charged_profile": {
-      "set_up": "Choose a Target within Range. While _Charging_ the Weapon used for this Attack is _Occupied_ and you gain the _Parry_ effect of said Weapon.",
+      "set_up": "Choose a Target within Range. While _Charging_, the Weapon used for this Attack is _Occupied_ and you gain the _Parry_ effect of said Weapon.",
       "resolution": "Resolve the Effect against the Target."
     }
   },
@@ -1320,21 +1277,14 @@
     "name": "Rumble",
     "desc": "You quake the earth beneath a foe, sending them off-balance.",
     "type": "Balanced",
-    "keywords": ["Spirit"],
+    "keywords": ["Spirit", "Avoidable", "Groundsource"],
     "speed": 2,
     "class": "Land",
-    "effect": "Make the Target's space _Uneven Earth_. If it is already _Uneven Earth_, add _Stun_ 2 on a _Graze_+.",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6
-      }
-    ],
+    "range": "Melee_/_Short",
     "chart": {
-      "keywords": ["Avoidable", "Groundsource"],
       "damage_type": "Crush",
       "on_miss": "+2 _Momentum_",
-      "stun": [0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2],
+      "stun": [0, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
@@ -1351,8 +1301,8 @@
       ]
     },
     "charged_profile": {
-      "set_up": "Create a _Cone_ 2 _Hazard_ within Range. While _Charging_, gain _Sturdy_ 1 and +1 _Grit_.",
-      "resolution": "Resolve this Attack in the _Hazard_."
+      "set_up": "Choose an _Engagement_. While _Charging_, gain _Sturdy_ 1 and +1 _Grit_.",
+      "resolution": "Resolve this Attack against all targets in the _Engagement_."
     },
     "analysis_notes": {
       "fudge": -0.5,
@@ -1436,41 +1386,33 @@
     "desc": "A concentrated stream of water, drenching and unbalancing.",
     "class": "Tide",
     "type": "Balanced",
+    "keywords": ["Spirit", "Water", "Crush"],
     "speed": 2,
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6,
-        "special": "_Close Range_ 1"
-      }
-    ],
-    "effect": "You must _Draw_ 1 within Range as a part of this Attack.",
-    "special": "You may choose to make the target's space or a space adjacent to them _Wet_ instead of inflicting _Soaked_.",
-    "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_, but the Target must be within Range of you. Remove _Close Range_ when used in this way.",
+    "cost": "1 _Momentum_",
+    "range": "Short/Medium",
+    "special": "If these is a _Water_ _Source_ at your current _Position_ you may instead use this at _Melee_ Range.",
     "chart": {
-      "damage_type": "Crush",
-      "on_miss": "+2 _Momentum_ and make a space adjacent to the target _Wet_.",
-      "material": "Water",
-      "stun": [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
-      "damage": [0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3],
+      "on_miss": "+2 _Momentum_.",
+      "stun": [0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4],
+      "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "_Soaked_",
         "_Soaked_",
-        "_Soaked_",
-        "_Soaked_",
-        "_Impaired_ [3 _Grit_], _Soaked_",
-        "_Impaired_ [3 _Grit_], _Soaked_",
-        "_Impaired_ [4 _Grit_], _Soaked_",
-        "_Impaired_ [4 _Grit_], _Soaked_",
-        "_Impaired_ [5 _Grit_], _Soaked_",
-        "_Impaired_ [5 _Grit_], _Soaked_"
+        "_Tidal Motion_ [4 _Grit_], _Soaked_",
+        "_Tidal Motion_ [4 _Grit_], _Soaked_",
+        "_Tidal Motion_ [5 _Grit_], _Soaked_",
+        "_Tidal Motion_ [5 _Grit_], _Soaked_",
+        "_Tidal Motion_ [6 _Grit_], _Soaked_",
+        "_Tidal Motion_ [6 _Grit_], _Soaked_",
+        "_Tidal Motion_ [7 _Grit_], _Soaked_",
+        "_Tidal Motion_ [7 _Grit_], _Soaked_"
       ]
     },
     "charged_profile": {
-      "set_up": "Choose a Target within Range. If you are going to use the Boost you must decide that now, and mark where the Attack will originate from. While _Charging_ gain _Minor Resistance_ (_Fire_, _Water_).",
-      "resolution": "Resolve this Attack against the Target. Add _Push_ 3, increase the cost to _Negate_ by 1, and increase the _Stun_ by 1."
+      "set_up": "Choose a Target within Range and, if using the Special, mark the appropriate _Source_. While _Charging_ gain _Resistance_ I (_Fire_, _Water_).",
+      "resolution": "Resolve this Attack against the Target. Increase the cost to _Negate_ by 1, and increase the _Stun_ by 1. If the _Source_ used for this Attack was _Destroyed_, the attack automatically fails."
     }
   },
   {
@@ -1587,24 +1529,18 @@
     "rank": "Major Attack"
   },
   {
-    "name": "Unarmed Attack",
+    "name": "Brawl",
     "class": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
     "type": "Light",
+    "keywords": ["_Fist_/_Body_/_Kick", "Crush", "Natural"],
     "speed": 1,
-    "range": [
-      {
-        "category": "Melee",
-        "value": 1
-      }
-    ],
+    "range": "Melee",
     "effect": "Gain 1 _Momentum_.",
+    "boost": "1 _Momentum_ (_Hit_+): Add _Prone_/_Push_ [4 _Grit_].",
     "special": "Against a _Stunned_ target deal twice the _Stun_ that would be inflicted as _Damage_.",
     "chart": {
-      "damage_type": "Crush",
-      "material": "Natural",
       "on_miss": "+0 _Momentum_",
-      "keywords": ["_Fist_/_Body_/_Kick"],
       "stun": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2],
       "damage": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],

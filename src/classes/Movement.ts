@@ -3,10 +3,9 @@ import { store } from '@/store'
 class Movement {
   private name_: string
   private encumbrance_: number
-  private step_: number
-  private reposition_: number
-  private dash_: number
+  private movement_: number
   private jump_: number
+  private manifest_range_: string
   private traits_: string[]
 
   // ==========================================================
@@ -15,17 +14,20 @@ class Movement {
   get Name() {
     return this.name_
   }
+  get HasEncumbrance() {
+    return this.encumbrance_ != -1
+  }
   get Encumbrance() {
     return this.encumbrance_
   }
-  get Step() {
-    return this.step_
+  get ManifestRange() {
+    return this.manifest_range_
   }
-  get Reposition() {
-    return this.reposition_
+  get HasManifestRange() {
+    return this.manifest_range_ != ''
   }
-  get Dash() {
-    return this.dash_
+  get Movement() {
+    return this.movement_
   }
   get Jump() {
     return this.jump_
@@ -51,10 +53,9 @@ class Movement {
 
   public setMovementData(data: IMovementData): void {
     this.name_ = data.name || ''
-    this.encumbrance_ = data.encumbrance || 0
-    this.step_ = data.step || 0
-    this.reposition_ = data.reposition || 0
-    this.dash_ = data.dash || 0
+    this.manifest_range_ = data.manifest_range || ''
+    this.movement_ = data.movement || 0
+    this.encumbrance_ = data.encumbrance || -1
     this.jump_ = data.jump || 0
     this.traits_ = data.traits || []
   }

@@ -7,20 +7,17 @@
             ><span v-if="!on_sheet">{{ movement.Name }}</span> Movement Chart</b
           ></v-col
         ></v-row
-      ><v-row align="stretch" no-gutters class="chart--row" v-if="!on_sheet"
+      ><v-row align="stretch" no-gutters class="chart--row" v-if="!on_sheet && movement.HasEncumbrance"
         ><v-col class="chart--cols" cols="6"><b>Maximum Weight</b></v-col
         ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Encumbrance }}</v-col></v-row
-      >
+      ><v-row align="stretch" no-gutters class="chart--row" v-if="!on_sheet"
+        ><v-col class="chart--cols" cols="6"><b>Movement</b></v-col
+        ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Movement }}</v-col></v-row
+      ><v-row align="stretch" no-gutters class="chart--row" v-if="movement.HasManifestRange"
+        ><v-col class="chart--cols" cols="6"><b>Manifest Range</b></v-col
+        ><v-col class="chart--cols chart--cols-right" cols="6"><display-tooltip-text :string="movement.ManifestRange" /></v-col
+      ></v-row>
       <v-row align="stretch" no-gutters class="chart--row"
-        ><v-col class="chart--cols" cols="6"><b>Step</b></v-col
-        ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Step }}</v-col></v-row
-      ><v-row align="stretch" no-gutters class="chart--row"
-        ><v-col class="chart--cols" cols="6"><b>Reposition</b></v-col
-        ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Reposition }}</v-col></v-row
-      ><v-row align="stretch" no-gutters class="chart--row"
-        ><v-col class="chart--cols" cols="6"><b>Dash</b></v-col
-        ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Dash }}</v-col></v-row
-      ><v-row align="stretch" no-gutters class="chart--row"
         ><v-col class="chart--cols" cols="6"><b>Jump</b></v-col
         ><v-col class="chart--cols chart--cols-right" cols="6">{{ movement.Jump }}</v-col></v-row
       ><v-row align="stretch" no-gutters class="chart--row" v-if="!on_sheet"

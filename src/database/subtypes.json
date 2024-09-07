@@ -3,8 +3,16 @@
     "name": "Blaze",
     "element": "Flame",
     "desc": "Your spirit is formed from burning flames, causing it to resonate flames.",
-    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent space _Blazing_.",
-    "traits": ["Flamewalk", "Flamebody", "_Resistance_ 2 (_Fire_, _Cold_)", "_Warded_ 2 (_Alight_, _Burned_, _Frozen_)"]
+    "manifest_effect": "Roll a d6 then resolve using the below table against a Target at the _Position_ they _Manifested_ at. This roll has _Advantage_ if _Manifested_ at a _Major Source_.",
+    "traits": ["_Naturewalk_ (Fire)", "_Rough Skin_ II (Fire)", "_Elemental Body_ (_Fire_)", "_Resistance_ II (_Fire_, _Cold_)", "_Weakness_ II (_Water_)"],
+    "table": [
+      "No effect.",
+      "Deal 1 [_Fire_] _Damage_ to a creature.",
+      "Deal 2 [_Fire_] _Damage_ to a creature.",
+      "Deal 3 [_Fire_] _Damage_ to a creature.",
+      "Deal 3 [_Fire_] _Damage_ to a creature.",
+      "Deal 4 [_Fire_] _Damage_ to a creature. You may make the _Position_ _Blazing_ or, if it already is _Blazing_, deal 2 _Bonus Damage_."
+    ]
   },
   {
     "name": "Detonation",
@@ -17,22 +25,40 @@
     "name": "Gale",
     "element": "Wind",
     "desc": "Your spirit is formed from roiling, twisting wind, buffeting all nearby with gusts.",
-    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent space _Gusting_.",
-    "traits": ["Windwalk"]
+    "manifest_effect": "Roll a d6 then resolve using the below table against a Target at the _Position_ they _Manifested_ at. This roll has _Advantage_ if _Manifested_ at a _Major Source_.",
+    "defenses": { "reflex": 1 },
+    "traits": ["_Naturewalk_ (Wind)", "_Elemental Body_ (_Wind_)"],
+    "table": [
+      "No effect.",
+      "Deal 1 _Stun_ to a creature.",
+      "Deal 1 _Stun_ to a creature and inflict _Push_ [3 _Grit_].",
+      "Deal 1 _Stun_ to a creature and inflict _Push_ [4 _Grit_].",
+      "Deal 2 _Stun_ to a creature and inflict _Push_ [5 _Grit_].",
+      "Deal 2 _Stun_ to a creature and inflict _Push_ [6 _Grit_]. You may make this _Position_ _Gusting_."
+    ]
   },
   {
     "name": "Land",
     "element": "Earth",
     "desc": "Your spirit is likely made of soil, mud, or another loose form of earth, giving it a malleable form.",
     "manifest_effect": "You may make the space you _Manifest_ in or an adjacent _Earthen_ space _Uneven Earth_.",
-    "traits": ["Earthwalk", "_Resistance_ 2 (_Crush_)"]
+    "traits": ["_Naturewalk_ (Earth)", "_Resistance_ 2 (_Crush_)"]
   },
   {
     "name": "Mountain",
     "element": "Earth",
     "desc": "Your spirit is formed from from solid earth, often stone, providing a powerful defense.",
-    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent _Earthen_ space _Jagged_.",
-    "traits": ["Earthwalk", "_Resistance_ 2 (_Slash_, _Stab_)"]
+    "manifest_effect": "Roll a d6 then resolve using the below table against a Target at the _Position_ they _Manifested_ at. This roll has _Advantage_ if _Manifested_ at a _Major Source_.",
+    "defenses": { "grit": 1 },
+    "table": [
+      "No effect.",
+      "Deal 1 [_Stone_, _Crush_] _Damage_ to a creature.",
+      "Deal 2 [_Stone_, _Crush_] _Damage_ to a creature.",
+      "Deal 2 [_Stone_, _Crush_] _Damage_ to a creature.",
+      "Deal 2 [_Stone_, _Crush_] _Damage_, 1 _Stun_ to a creature.",
+      "Deal 3 [_Stone_, _Crush_] _Damage_, 2 _Stun_ to a creature."
+    ],
+    "traits": ["_Elemental Body_ (Stone)", "_Resistance_ II (_Slash_, _Stab_)", "Sturdy"]
   },
   {
     "name": "Grounding",
@@ -68,7 +94,16 @@
     "desc": "Your spirit is formed from water, constantly dripping and swiftly flowing through water.",
     "special": "Whenever you use a _Manifest_ _Draw_ 1 within Range of the Manifest effect. You may treat all spaces that are not a _Flame_ _Source_ as a _Minor Source_ for the purpose of this _Manifest_.",
     "manifest_effect": "You may make the space you _Manifest_ in or an adjacent space _Wet_.",
-    "traits": ["Aquatic", "_Resistance_ 2 (_Crush_, _Fire_)"]
+    "defenses": { "reflex": 1, "focus": 1 },
+    "table": [
+      "No effect.",
+      "Deal 1 [_Water_, _Crush_] _Damage_ to a creature.",
+      "Deal 1 [_Water_, _Crush_] _Damage_, 1 _Stun_ to a creature.",
+      "Deal 1 [_Water_, _Crush_] _Damage_, 1 _Stun_ to a creature.",
+      "Deal 2 [_Water_, _Crush_] _Damage_, 1 _Stun_ to a creature.",
+      "Deal 2 [_Water_, _Crush_] _Damage_, 2 _Stun_ to a creature. You may inflict _Soaked_ on the Target or _Draw_ 1 to make this _Position_ _Wet_."
+    ],
+    "traits": ["_Naturewalk_ (Water)", "_Elemental Body_ (Water)", "_Resistance_ II (_Fire_, _Crush_)"]
   },
   {
     "name": "Tundra",
