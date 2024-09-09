@@ -1,21 +1,21 @@
 [
   {
     "name": "Prepare",
-    "desc": "",
+    "desc": "You take a moment to ready yourself, preparing for a more powerful effect.",
     "type": "Action",
     "effect": "Gain 2 _Momentum_.",
     "class": "Basic"
   },
   {
     "name": "Sprint",
-    "desc": "",
+    "desc": "You dash forward, covering ground across the battlefield.",
     "type": "Action",
     "move": 2,
     "class": "Basic"
   },
   {
     "name": "Fight",
-    "desc": "",
+    "desc": "You make a quick strike, capitalizing on the smallest of openings.",
     "type": "Action",
     "effect": "Make a _Light_ _Attack_.",
     "boost": "Choose one:\n* 2 _Momentum_: Make a _Balanced_ _Attack_.\n* 4 _Momentum_: Make a _Heavy_ _Attack_.",
@@ -23,14 +23,14 @@
   },
   {
     "name": "Rebalance",
-    "desc": "",
+    "desc": "You catch your breath, pushing through disorienting effects.",
     "type": "Action",
     "effect": "You may either _Recover_, _Refresh_, or change one of your _Stances_.",
     "class": "Basic"
   },
   {
     "name": "Spirit Summon",
-    "desc": "",
+    "desc": "You manifest your spirit from its element or call it back to yourself, working in tandem as a team.",
     "type": "Action",
     "reqs": "Not _Suppressed_.",
     "effect": "Either _Manifest_ your _Spirit_ at a _Minor Source_ within Range or gain 1 _Momentum_ and _Recall_ them.",
@@ -66,6 +66,22 @@
     "effect": "Choose an ally within Range. Grant them a _Free Turn_ where they may make a _Minor Attack_ and _Step_, but must Target a creature within Range 3 of you.",
     "boost": "Choose one:\n* 1 _Momentum_: You ally may instead _Reposition_.\n* 2 _Momentum_: Instead, your ally may make a _Major Attack_ instead of a _Minor Attack_. \n\nThis cost may be paid by you, the Target, or split between the two of you.",
     "class": "Basic"
+  },
+  {
+    "name": "Arcane Mastery",
+    "desc": "You spin your craft expertly, firing another surge from your rod.",
+    "type": "Gambit",
+    "reqs": "_Hit_+ with a Attack using a _Rod_ or an Attack you could spend _Arcana_ on with your _Wielded_ _Rod_.",
+    "effect": "Roll a d6 and resolve the effect using the below table. This Attack may not trigger an additional _Gambit_. You may ignore the _Speed_ of your _Wielded_ _Rod_ for this effect.",
+    "class": "General",
+    "table": [
+      "Make an additional Attack with your _Rod_ at _Disadvantage_ against any Target.",
+      "Make an additional Attack with your _Rod_ against any Target.",
+      "Make an additional Attack with your _Rod_ against any Target.",
+      "Make an additional Attack with your _Rod_ against any Target.",
+      "Make an additional Attack with your _Rod_ against any Target.",
+      "Make an additional Attack with your _Rod_ at _Advantage_ against any Target."
+    ]
   },
   {
     "name": "Arc Lightning",
@@ -211,7 +227,7 @@
     ],
     "cost": "1 _Momentum_",
     "effect": "Create an _Veiled_ space within Range.",
-    "special": "You may choose to target a _Windy_ space or _Obstacle_ with this _Manuever_. If you do, remove the _Windy_ space and instead resolve the Effect in that space and all adjacent ones.",
+    "special": "You may choose to target a _Windy_ space or _Feature_ with this _Manuever_. If you do, remove the _Windy_ space and instead resolve the Effect in that space and all adjacent ones.",
     "boost": "1 _Momentum_: Inflict _Vulnerable_ 1 on any creatures in a space that is made _Veiled_. You may use this _Boost_ any number of times.",
     "class": "Gale",
     "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. Always resolve the Effect as if you removed a _Windy_ space, and you may apply the Boost at no cost. You may choose to _Summon_ you spirit to a space in the _Area_."
@@ -223,8 +239,8 @@
     "type": "Stunt",
     "cost": "[_Effort_]",
     "reqs": "Your _Turn_.",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Deal 8 Damage to an adjacent _Obstacle_.\n* _Destroy_ all _Surface_, _Field_, and _Weather_ _Terrain_ in a Self-Range _Cone_ 2.",
-    "boost": "Choose one:\n* 1 _Momentum_: Instead, deal 8 Damage to an adjacent _Obstacle_.\n* 1 _Momentum_: Instead, _Destroy_ all _Surface_, _Field_, and _Weather_ _Terrain_ in a _Cone_ 3.",
+    "effect": "Gain 1 _Momentum_, then choose:\n* Deal 8 Damage to an adjacent _Feature_.\n* _Destroy_ all _Surface_, _Field_, and _Weather_ _Terrain_ in a Self-Range _Cone_ 2.",
+    "boost": "Choose one:\n* 1 _Momentum_: Instead, deal 8 Damage to an adjacent _Feature_.\n* 1 _Momentum_: Instead, _Destroy_ all _Surface_, _Field_, and _Weather_ _Terrain_ in a _Cone_ 3.",
     "class": "Detonation"
   },
   {
@@ -275,7 +291,7 @@
       }
     ],
     "cost": "1 _AP_",
-    "effect": "Choose one:\n* Gain 1 _Momentum_ then turn a Size 1 _Earthen_ _Obstacle_ within Range into a _Boulder_.\n* Make a _Boulder_ in an _Earthen_ space within Range.",
+    "effect": "Choose one:\n* Gain 1 _Momentum_ then turn a Size 1 _Earthen_ _Feature_ within Range into a _Boulder_.\n* Make a _Boulder_ in an _Earthen_ space within Range.",
     "boost": "1 _Momentum_: Range is instead 4",
     "class": "Mountain",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. Gain 1 _Momentum_."
@@ -333,10 +349,10 @@
     "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "_Flame_ _Attack_.",
-    "effect": "Add [_Siege_]. You may treat this Attack as dealing _Crush_ Damage when determining Damage against _Obstacles_. In addition, _Destroy_ all _Field_ and _Surface_ _Terrain_ in the centermost space this Attack targeted.",
+    "effect": "Add [_Siege_]. You may treat this Attack as dealing _Crush_ Damage when determining Damage against _Features_. In addition, _Destroy_ all _Field_ and _Surface_ _Terrain_ in the centermost space this Attack targeted.",
     "boost": "1 _Momentum_: Destroy all _Field_ and _Surface_ _Terrain_ in an additional 2 spaces targeted by this Attack.  You may use this _Boost_ any number of times.",
     "class": "Detonation",
-    "manifest": "Add [_Manifest_]. The cost is instead None. This Attack deals +2 Damage to _Obstacles_, and you freely use the Boost 2 times."
+    "manifest": "Add [_Manifest_]. The cost is instead None. This Attack deals +2 Damage to _Features_, and you freely use the Boost 2 times."
   },
   {
     "name": "Create Opening",
@@ -568,13 +584,25 @@
     "class": "General"
   },
   {
+    "name": "Raise Fortress",
+    "desc": "You erect stone fortifications, creating defenses for you and your allies.",
+    "keywords": ["Spirit"],
+    "move": 0,
+    "type": "Action",
+    "range": "Melee/Short",
+    "effect": "Create a _Stone Wall_ at a _Position_ or _Path_ within Range.",
+    "special": "You may immediately Occupy any _Feature_ you creature at your _Position_.",
+    "boost": "Choose one:\n* 2 _Momentum_: Instead, create an _Stone Fort_ at a _Position_ within Range.\n* 3 _Momentum_: Instead, create a _Stone Fort_ at a _Path_ within _Range_.",
+    "class": "Mountain"
+  },
+  {
     "name": "Stonebend",
     "desc": "You pull power from the earth, shifting it around you as you do so.",
     "keywords": ["Spirit"],
-    "move": "0/0",
+    "move": 0,
     "type": "Action",
     "range": "Melee/Short",
-    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Inflict _Push_/_Pull_ [6 _Grit_] on an _Earthen_ _Feature_",
+    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Inflict _Push_/_Pull_ [6 _Grit_] on a _Stone_ _Feature_",
     "class": "Mountain"
   },
   {
@@ -636,6 +664,16 @@
     "effect": "Gain 1 _Momentum_, then choose:\n* Make 3 contiguous spaces within Range 6 _Electrified_.\n* Destroy up to 2 adjacent _Electrified_ spaces to gain 1 _Momentum_ for each Destroyed.",
     "class": "Storm"
   },
+  {
+    "name": "Empower Rod",
+    "desc": "You channel energy through your staff, preparing for a greater craft.",
+    "type": "Action",
+    "reqs": "_Wielding_ a _Rod_ and not _Suppressed_.",
+    "effect": "Gain 3 _Arcana_. Gain the _Parry_ effect of your _Rod_ while _Wielding_ it until the end of the _Phase_.",
+    "special": "You may not _Move_ this _Turn_.",
+    "class": "General"
+  },
+
   {
     "name": "Encourage",
     "desc": "You call out to an ally, providing them with joyful words of affirmation.",
@@ -732,7 +770,7 @@
     "keywords": ["Defensive", "Efficient", "Spirit"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "You take _Fire_ Damage, gain _Alight_, or would take Damage or gain Status from _Fire_ _Terrain_/_Obstacle_, a Fire _Weapon_, or a _Blaze_ ability.",
+    "trigger": "You take _Fire_ Damage, gain _Alight_, or would take Damage or gain Status from _Fire_ _Terrain_/_Feature_, a Fire _Weapon_, or a _Blaze_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Alight_) and _Resistance_ 1 (_Fire_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
     "class": "Blaze",
@@ -792,7 +830,7 @@
   },
   {
     "name": "Fracture",
-    "desc": "You connect with an earthen obstacle, shattering it.",
+    "desc": "You connect with an earthen feature, shattering it.",
     "type": "Stunt",
     "range": [
       {
@@ -801,18 +839,18 @@
       }
     ],
     "cost": "2 _Momentum_",
-    "effect": "Pick an _Earthen_ _Obstacle_ within Range. Inflict 10 _Damage_. If this _Destroys_ the _Obstacle_, you may deal 2 _Stab_ _Damage_ [_Avoidable_] in a _Burst_ 1 around it. You are exempt from this Damage.",
+    "effect": "Pick an _Earthen_ _Feature_ within Range. Inflict 10 _Damage_. If this _Destroys_ the _Feature_, you may deal 2 _Stab_ _Damage_ [_Avoidable_] in a _Burst_ 1 around it. You are exempt from this Damage.",
     "boost": "Choose any:\n* 1 _Momentum_: This is instead _Range_ 4.\n* 1 _Momentum_: Increase the Damage dealt by 2.",
     "class": "Mountain",
-    "manifest": "Add [_Manifest_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. If the _Obstacle_ is _Destroyed_, grant your spirit 5 _Health_. You may choose to _Summon_ your spirit to a space the _Obstacle_ occupied."
+    "manifest": "Add [_Manifest_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. If the _Feature_ is _Destroyed_, grant your spirit 5 _Health_. You may choose to _Summon_ your spirit to a space the _Feature_ occupied."
   },
   {
     "name": "Free Run",
-    "desc": "You use an obstacle to accelerate yourself, moving further still.",
+    "desc": "You use an feature to accelerate yourself, moving further still.",
     "keywords": ["Repeatable"],
     "type": "Reaction",
     "cost": "1 _Momentum_ [_Taxing_ 1]",
-    "trigger": "You move adjacent to an Obstacle of Size 1 or greater.",
+    "trigger": "You move adjacent to an Feature of Size 1 or greater.",
     "effect": "You may Move 1 [_Safe_, _Leaping_] then _Step_ [_Safe_, _Breach_].",
     "class": "Basic"
   },
@@ -832,7 +870,7 @@
     "keywords": ["Defensive", "Efficient", "Spirit"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "You take _Cold_ Damage, gain _Frozen_, or would take Damage or gain Status from _Ice_ _Terrain_/_Obstacle_, an Ice _Weapon_, or a _Tundra_ ability.",
+    "trigger": "You take _Cold_ Damage, gain _Frozen_, or would take Damage or gain Status from _Ice_ _Terrain_/_Feature_, an Ice _Weapon_, or a _Tundra_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Frozen_) and _Resistance_ 1 (_Cold_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
     "class": "Tundra",
@@ -989,7 +1027,7 @@
     "desc": "You conceal yourself, limiting enemies' ability to strike you.",
     "type": "Stunt",
     "cost": "1 _Momentum_",
-    "reqs": "Your _Turn_ and must be adjacent to an _Obstacle_ of at least your size or be in a _Veiled_ space.",
+    "reqs": "Your _Turn_ and must be adjacent to an _Feature_ of at least your size or be in a _Veiled_ space.",
     "effect": "Gain _Stealthy_.",
     "class": "General"
   },
@@ -1140,7 +1178,7 @@
     "keywords": ["Defensive", "Efficient", "Spirit"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "You would take Damage or gain Status from _Earthen_ _Terrain_, an _Earthen Obstacle_, or a _Land_ ability.",
+    "trigger": "You would take Damage or gain Status from _Earthen_ _Terrain_, an _Earthen Feature_, or a _Land_ ability.",
     "effect": "Gain 1 _Instant Guard_ and 1 _Temporary_ _Stamina_. Gain _Warded_ 1 (_Prone_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Instant Guard_ and _Temporary_ _Stamina_. You may use this _Boost_ up to twice.",
     "class": "Land",
@@ -1576,11 +1614,11 @@
   },
   {
     "name": "Resonant Quake",
-    "desc": "You cause your quake to resonate with nearby obstacles, potentially shattering them.",
+    "desc": "You cause your quake to resonate with nearby features, potentially shattering them.",
     "type": "Gambit",
     "cost": "2 _Momentum_",
     "reqs": "Must be [_Groundsource_].",
-    "effect": "Deal additional Damage to all _Obstacles_ hit by this Attack equal to 2 + the current _Phase_.",
+    "effect": "Deal additional Damage to all _Features_ hit by this Attack equal to 2 + the current _Phase_.",
     "boost": "1 _Momentum_: Deal +2 Damage. You may use this _Boost_ any number of times.",
     "class": "Land"
   },
@@ -1590,7 +1628,7 @@
     "keywords": ["Repeatable"],
     "type": "Action",
     "cost": "1 AP",
-    "effect": " Choose a Size 1 _Earthen_ Obstacle within _Range_ 2. _Destroy_ it, gain 5 _Vigor_, 1 _Stamina_, and 1 _Momentum_.",
+    "effect": " Choose a Size 1 _Earthen_ Feature within _Range_ 2. _Destroy_ it, gain 5 _Vigor_, 1 _Stamina_, and 1 _Momentum_.",
     "boost": "2 _Momentum_: Restore 1 _Guard_ to your Stone Armor.",
     "class": "Mountain"
   },
@@ -1599,7 +1637,7 @@
     "desc": "You become a behemoth of stone, obstructing and controlling the battlefield.",
     "type": "Action",
     "cost": "1 _AP_",
-    "effect": "Gain _Slowed_ and _Tough_, then _Destroy_ an adjacent _Size_ 1 _Earthen_ Obstacle and become _Guarding_. While _Guarding_:\n* You may not _Move_.\n* Gain _Resistance_ 1 [All but _Crush_].\n* Increase your _Size_ by 1, inflicting _Push_ 1 that may not be Negated on creatures as needed to occupy new spaces. There must be sufficient unoccupied spaces to use this effect.\n* You are treated as an _Obstacle_ when determining _Cover_/_Obscured_ with a _Height_ equal to your Size. If you have _Stone Armor_, instead gain 3 _Vigor_.",
+    "effect": "Gain _Slowed_ and _Tough_, then _Destroy_ an adjacent _Size_ 1 _Earthen_ Feature and become _Guarding_. While _Guarding_:\n* You may not _Move_.\n* Gain _Resistance_ 1 [All but _Crush_].\n* Increase your _Size_ by 1, inflicting _Push_ 1 that may not be Negated on creatures as needed to occupy new spaces. There must be sufficient unoccupied spaces to use this effect.\n* You are treated as an _Feature_ when determining _Cover_/_Obscured_ with a _Height_ equal to your Size. If you have _Stone Armor_, instead gain 3 _Vigor_.",
     "class": "Mountain",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None. _Summon_ your Spirit in or adjacent to an _Earth_ _Source_. Grant them 5 _Vigor_, then resolve the remaining Effect on them. Instead make them as Size 1 or 1 Size larger, whichever is greater."
   },
@@ -1683,6 +1721,15 @@
     "class": "Land"
   },
   {
+    "name": "Sculpt Craft",
+    "desc": "You use your rod to sculpt your assault, shielding allies.",
+    "type": "Reaction",
+    "cost": "1 _Momentum_/_Arcana_",
+    "trigger": "You target an ally with an effect your _Wielded_ _Rod_ could spend _Arcana_ on.",
+    "effect": "Your ally gains _Resistance_ II against the triggering effect.",
+    "class": "General"
+  },
+  {
     "name": "Serpent's Lunge",
     "desc": "You wind up before an attack, granting you additional reach with it.",
     "type": "Gambit",
@@ -1756,12 +1803,12 @@
         "value": 4
       }
     ],
-    "target": "A _Size_ 1 or smaller _Earthen_ _Obstacle_ within Range.",
+    "target": "A _Size_ 1 or smaller _Earthen_ _Feature_ within Range.",
     "cost": "2 _Momentum_",
-    "effect": "_Slide_ 4 [_Earthbend_] the _Obstacle_.",
+    "effect": "_Slide_ 4 [_Earthbend_] the _Feature_.",
     "boost": "Choose any:\n* 1 _Momentum_: Increase the _Slide_ by 2. You may use this option up to 3 times.\n* 1 _Momentum_: Add [_Forceful_].",
     "class": "Mountain",
-    "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to the _Obstacle_ in a space of your choice. You may use 2 _Momentum_ of _Boost_ for no Cost."
+    "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. You may choose to have your _Spirit_ remain _Summoned_ adjacent to the _Feature_ in a space of your choice. You may use 2 _Momentum_ of _Boost_ for no Cost."
   },
   {
     "name": "Sling Stone",
@@ -1773,10 +1820,10 @@
         "value": 1
       }
     ],
-    "target": "A Size 1 _Earthen_ _Obstacle_ within Range.",
+    "target": "A Size 1 _Earthen_ _Feature_ within Range.",
     "cost": "2 _Momentum_",
-    "effect": "_Forceful_ _Push_ 6 [_Earthbend_] the Obstacle.",
-    "boost": "Choose any:\n* 1 _Momentum_: Range is instead 4.\n* 1 _Momentum_: If a _Collision_ occurs and this has [_Manifest_], make an Attack with one of your spirit's _Weapons_ against the Target, originating it from the _Obstacle's_ space, adding [_Avoidable_], and resolving it before the _Collision_. Any effects that trigger based on moving a number of spaces instead use how far the _Obstacle_ has moved.\n* 2 _Momentum_: If a _Collision_ occurs and this lacks [_Manifest_], additionally make an Attack with a _Large Improvised_ Weapon against the Target, originating it from the _Obstacle's_ space, adding [_Avoidable_], and resolving it before the _Collision_.",
+    "effect": "_Forceful_ _Push_ 6 [_Earthbend_] the Feature.",
+    "boost": "Choose any:\n* 1 _Momentum_: Range is instead 4.\n* 1 _Momentum_: If a _Collision_ occurs and this has [_Manifest_], make an Attack with one of your spirit's _Weapons_ against the Target, originating it from the _Feature's_ space, adding [_Avoidable_], and resolving it before the _Collision_. Any effects that trigger based on moving a number of spaces instead use how far the _Feature_ has moved.\n* 2 _Momentum_: If a _Collision_ occurs and this lacks [_Manifest_], additionally make an Attack with a _Large Improvised_ Weapon against the Target, originating it from the _Feature's_ space, adding [_Avoidable_], and resolving it before the _Collision_.",
     "class": "Mountain",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead None."
   },
@@ -1787,7 +1834,7 @@
     "move": "Step",
     "cost": "[_Effort_]",
     "reqs": "Your _Turn_.",
-    "effect": "If you end this Movement adjacent to an Obstacle of at least your size or in a _Veiled_ space, gain _Stealthy_.",
+    "effect": "If you end this Movement adjacent to an Feature of at least your size or in a _Veiled_ space, gain _Stealthy_.",
     "special": "If you are _Stealthy_ at the start of this Movement this Movement is [_Safe_] and cannot lose _Stealthy_ until this Movement is complete.",
     "class": "General"
   },
@@ -1796,7 +1843,7 @@
     "desc": "You find yourself an ideal position, allowing you to better find your targets.",
     "type": "Stunt",
     "cost": "[_Effort_]",
-    "reqs": "Your _Turn_ and must be adjacent to an _Obstacle_ of at least Size 1 or be in a _Fortified_ space.",
+    "reqs": "Your _Turn_ and must be adjacent to an _Feature_ of at least Size 1 or be in a _Fortified_ space.",
     "effect": "Gain _Hobbled_ and 1 _Momentum_. Until you leave your current space, increase the range of your _Ranged_ Attacks by 2. Additionally, you may treat this space as _Fortified_ or, if it is already _Fortified_, it is always at least _Lightly Obscured_.",
     "class": "General"
   },
@@ -1928,7 +1975,7 @@
     "keywords": ["Spirit"],
     "range": "Melee/Short",
     "type": "Action",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Flame_ Terrain within Range.",
+    "effect": "Gain 1 _Momentum_, then choose:\n* Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range.",
     "class": "Blaze"
   },
   {
@@ -1953,7 +2000,7 @@
     "keywords": ["Defensive", "Efficient", "Spirit"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "You would take Damage or gain Status from an _Earthen_ _Obstacle_, _Stone_ Material Attack, or _Mountain_ ability.",
+    "trigger": "You would take Damage or gain Status from an _Earthen_ _Feature_, _Stone_ Material Attack, or _Mountain_ ability.",
     "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect.",
     "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_. You may use this _Boost_ up to twice.",
     "class": "Mountain",
@@ -1983,7 +2030,7 @@
     "keywords": ["Defensive", "Efficient", "Spirit"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "You take _Lightning _ Damage, gain _Shocked_, or would take Damage or gain Status from _Electric_ _Terrain_/_Obstacle_, an Electric _Weapon_, or a _Storm_ ability.",
+    "trigger": "You take _Lightning _ Damage, gain _Shocked_, or would take Damage or gain Status from _Electric_ _Terrain_/_Feature_, an Electric _Weapon_, or a _Storm_ ability.",
     "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect. Gain _Warded_ 1 (_Shocked_) and _Resistance_ 1 (_Lightning_) this _Turn_.",
     "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_, and increase the _Warded_ and _Resistance_ by 1. You may use this _Boost_ up to twice.",
     "class": "Storm",
@@ -2048,7 +2095,7 @@
       }
     ],
     "cost": "1 _Momentum_  [_Taxing_ 1]",
-    "effect": "Place a _Weapon_ within Range. You may not place it adjacent to yourself or an ally. This _Weapon_ is a _Small Improvised_ Weapon, is made of the same Material as the Terrain or an adjacent Obstacle (you choose), and has [_Fragile_, _Opportune_]. Only you and your allies may use this Weapon.",
+    "effect": "Place a _Weapon_ within Range. You may not place it adjacent to yourself or an ally. This _Weapon_ is a _Small Improvised_ Weapon, is made of the same Material as the Terrain or an adjacent Feature (you choose), and has [_Fragile_, _Opportune_]. Only you and your allies may use this Weapon.",
     "class": "Basic"
   },
   {
@@ -2283,13 +2330,13 @@
         "value": 4
       }
     ],
-    "target": "A Size 1 _Earthen_ _Obstacle_ within Range.",
+    "target": "A Size 1 _Earthen_ _Feature_ within Range.",
     "cost": "2 _Momentum_",
-    "effect": "Create a _Burst_ 3 _Hazard_ around the _Obstacle_. If an enemy enters a space within this Area, _Forceful_ _Slide_ 6 [_Earthbend_] the _Obstacle_ into them by the shortest possible route. If the Obstacle moves, move the _Hazard_ with it.",
-    "special": "If the _Obstacle_ is a _Boulder_, reduce the cost by 1.",
+    "effect": "Create a _Burst_ 3 _Hazard_ around the _Feature_. If an enemy enters a space within this Area, _Forceful_ _Slide_ 6 [_Earthbend_] the _Feature_ into them by the shortest possible route. If the Feature moves, move the _Hazard_ with it.",
+    "special": "If the _Feature_ is a _Boulder_, reduce the cost by 1.",
     "boost": "1 _Momentum_: Remove _Enchant_.",
     "class": "Mountain",
-    "manifest": "Add [_Manifest_] and remove [_Enchant_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. Resolve the effect as normal but, after resolving the _Slide_, _Destroy_ the _Obstacle_ and additionally resolve a _Minor Attack_ from your _Spirit_ as if they were adjacent to the Target. You may not use a [_Manifest_] Ability until this effect ends."
+    "manifest": "Add [_Manifest_] and remove [_Enchant_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. Resolve the effect as normal but, after resolving the _Slide_, _Destroy_ the _Feature_ and additionally resolve a _Minor Attack_ from your _Spirit_ as if they were adjacent to the Target. You may not use a [_Manifest_] Ability until this effect ends."
   },
   {
     "name": "Wall of Earth",

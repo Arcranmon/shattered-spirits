@@ -37,11 +37,18 @@ class Weapon extends Attack {
     return this.weight_
   }
   get TraitsHeader() {
-    var traits_string = '**Traits:** ' + this.WeightHeader
+    var traits_string = '**Traits:** '
+    if (this.HasWeight) {
+      traits_string += this.WeightHeader
+      if (this.HasDurability) traits_string += ', '
+    }
     if (this.HasDurability) {
-      traits_string += ', _Durability_ ' + this.durability_
+      traits_string += '_Durability_ ' + this.durability_
     }
     return traits_string
+  }
+  get HasWeight() {
+    return this.Weight > 0
   }
   get WeightHeader() {
     if (this.Category == 'Unarmed') return ''

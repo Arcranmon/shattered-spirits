@@ -146,9 +146,10 @@
   },
   {
     "name": "Grabbed",
-    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* Both creatures become _Engaged_ with one another, and this _Engaged_ may not be removed while the grab persists.\n* The Grabber may expend X spaces of _Movement_ to inflict _Push_/_Pull_ X on the Grabbed creature. Any _Forced Movement_ inflicted in this way is treated as a single effect. The Grabber may Move while inflicting this _Push_/_Pull_ without ending the _Grab_ as long as they end any movement still adjacent to the Grabbed creature.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature's Movement is impacted as follows:\n\t* If the Grabbed creature is the same size or smaller than the Grabber, they may not Move.\n\t* If the Grabbed creature is larger than the Grabber, reduce all their Movement by one tier and the Grabber moves with them.\n\t* If the creature is more than triple the size of the Grabber the Grabbed creature has no penalty to their Movement, but the creature grabbing them moves with them.",
-    "repeat": "If a creature inflicts Grabbed on a creature they are already Grabbing they may instead inflict _Pull_ 3 or _Prone_ with the same cost to negate as the Grabbed.",
-    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them suffer _Forced Movement_ that breaks adjacency or leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Stamina_ to initiate a Grab Check. The grabber rolls 2d6 and adds their _Grit_ and _Size_ (rounded down), while the Grabbed creature rolls 2d6 and adds their _Grit_/_Reflex_ and _Size_ (rounded down). If the Grabbed creature rolls higher than the grabber, the Grab ends. The Grabber gets a +1 _Bonus_ if they are using both _Hands_ (or multiple _Grasping_ Weapons) for the Grab.",
+    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* Both creatures become _Engaged_ with one another, and this _Engaged_ may not be removed while the grab persists.\n* The Grabber may expend additional _Movement_ to move the Grabbed creature with them.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature is _Immobile_.",
+    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them ever leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Stamina_/_Movement_ to reroll their _Negate_ against this Grabbed, ending the effect on a success.",
+    "repeat": "If a Grabbed creature would gain Grabbed they instead gain _Prone_.",
+    "recover": "When a creature _Recovers_ they may attempt to remove _Grabbed_ as above, but have _Advantage_ to _Negate_.",
     "type": "Status Effect"
   },
   { "name": "Grab", "see": "Grabbed" },
@@ -295,7 +296,7 @@
     "name": "Stealthy",
     "desc": "A condition caused when a creature is difficult to see, limiting the ability to strike them.",
     "effect": "All creatures that see a Stealthy creature as _Lightly Obscured_ have _Disadvantage_ on all Attacks against them.",
-    "remove": "If a creature is not adjacent to an _Obstacle_ of at least their size or in a _Veiled_ space they immediately lose Stealthy. Additionally, if a creature makes an Attack they lose Stealthy.",
+    "remove": "If a creature is not adjacent to an _Feature_ of at least their size or in a _Veiled_ space they immediately lose Stealthy. Additionally, if a creature makes an Attack they lose Stealthy.",
     "type": "Status Effect"
   },
   {

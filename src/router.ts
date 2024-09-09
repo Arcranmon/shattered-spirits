@@ -12,7 +12,7 @@ import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
 import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
 
 import Terrain from '@/pages/combat/terrain/index.vue'
-import Obstacles from '@/pages/combat/obstacles/index.vue'
+import Features from '@/pages/combat/features/index.vue'
 
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
@@ -169,11 +169,11 @@ const r = new Router({
       },
     },
     {
-      path: '/obstacles',
-      component: Obstacles,
-      name: 'obstacles',
+      path: '/features',
+      component: Features,
+      name: 'features',
       meta: {
-        title: 'Obstacles',
+        title: 'Features',
       },
     },
     {

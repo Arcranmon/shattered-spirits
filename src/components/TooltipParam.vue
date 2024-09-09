@@ -12,12 +12,12 @@
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
         ><display-tooltip-text :string="this.$store.getters.getGlossaryItem(input)" :level="level + 1" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isObstacle(input)" attach
+    ><span v-else-if="this.$store.getters.isFeature(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <obstacle-card :obstacle="this.$store.getters.getObstacle(input)" :tooltip="true" /></v-menu></span
+        <feature-card :feature="this.$store.getters.getFeature(input)" :tooltip="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isTerrain(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
@@ -81,7 +81,7 @@ import Vue from 'vue'
 import { store } from '@/store'
 import ArmorCard from './cards/ArmorCard.vue'
 import ManeuverCard from './cards/ManeuverCard.vue'
-import ObstacleCard from './cards/ObstacleCard.vue'
+import FeatureCard from './cards/FeatureCard.vue'
 import StanceCard from './cards/StanceCard.vue'
 import StatusCard from './cards/StatusCard.vue'
 import TechCard from './cards/TechCard.vue'
@@ -90,7 +90,7 @@ import TerrainCard from './cards/TerrainCard.vue'
 import AttackCard from './cards/AttackCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ArmorCard, ManeuverCard, ObstacleCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, AttackCard },
+  components: { ArmorCard, ManeuverCard, FeatureCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, AttackCard },
   props: {
     input: {
       type: String,

@@ -75,6 +75,7 @@ declare interface IDefenseData {
   reflex: number
   grit: number
   focus: number
+  hardness: number
 }
 
 interface IDisciplineTierData {
@@ -264,17 +265,19 @@ declare interface ITerrainData extends IBaseData {
   interactions: string[]
 }
 
-declare interface IObstacleData extends IBaseData {
+declare interface IFeatureData extends IBaseData {
   damage_type: string
   destroy: string
   element: string
   forced_movement: string
-  hardness: number
+  defenses: IDefenseData
   height: number
   interact: string
   size: number
   traits: string
   chart: IChartData
+  position_effect: string
+  path_effect: string
 }
 
 declare interface ITraitData extends IBaseData {

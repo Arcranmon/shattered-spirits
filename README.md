@@ -1,6 +1,6 @@
 ## Welcome to the world of Deskar, the land of Shattered Spirits!
 
-For as long as any can remember, humanity and spirits have been as one. They have thrived for generations, forging bonds and conquering obstacles with their shared strength. When the spirits bonded to humanity were not sufficient the ancient primal spirits of the world would assist, pushing aside all obstacles. That is, until the Sundering.
+For as long as any can remember, humanity and spirits have been as one. They have thrived for generations, forging bonds and conquering features with their shared strength. When the spirits bonded to humanity were not sufficient the ancient primal spirits of the world would assist, pushing aside all features. That is, until the Sundering.
 
 25 years ago something very nearly killed the Great Spirit. While She survived, Her essence was sundered into many parts. Just as She was split, so was every spirit across the land, from the minor spirits bound to humanity to the primal spirits in the deep corners of the world. Spirits that had pacts with local tribes flew into a rage, and disasters wracked the world as the full wrath of the spirits was turned against humanity for the first time. While humanity survived they were scattered and weak, surviving only because they maintained their bonds with lesser spirits.
 

@@ -57,12 +57,12 @@
   { "name": "Charged Profile", "see": "Charged Attack" },
   {
     "name": "Climbing",
-    "effect": "When moving to a higher or lower elevation the total Movement expended is equal to twice the Elevation change. For example, it would cost a creature 2 spaces of Movement to Climb up a 1 Height Obstacle. While _Climbing_ a creature has _Disadvantage_ on all Attacks and Attacks against them have _Advantage_."
+    "effect": "When moving to a higher or lower elevation the total Movement expended is equal to twice the Elevation change. For example, it would cost a creature 2 spaces of Movement to Climb up a 1 Height Feature. While _Climbing_ a creature has _Disadvantage_ on all Attacks and Attacks against them have _Advantage_."
   },
   { "name": "Climb", "see": "Climbing" },
   {
     "name": "Collision",
-    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Obstacle or creature, resolve it as follows:\n* **Obstacle Colliding with Obstacle**: Deal Damage to both _Obstacles_ equal to the half the _Forced Movement_ remaining. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_.\n* **Obstacle Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Obstacle_. After resolving this _Push_, the creature gains _Stun_ equal to half the spaces they moved. Continue moving the _Obstacle_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Stun_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Stun_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Obstacle**: Deal Damage to the _Obstacle_ equal to the half the _Forced Movement_ remaining and inflict _Stun_ on the creature equal to the same amount. If the Collided Obstacle is _Destroyed_ and the Colliding _Obstacle_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Obstacle's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Obstacle_ was _Destroyed_, reduce the _Forced Movement_ by the Obstacle's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
+    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Feature or creature, resolve it as follows:\n* **Feature Colliding with Feature**: Deal Damage to both _Features_ equal to the half the _Forced Movement_ remaining. If the Collided Feature is _Destroyed_ and the Colliding _Feature_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Feature's _Durability_ and continue the _Forced Movement_.\n* **Feature Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Feature_. After resolving this _Push_, the creature gains _Stun_ equal to half the spaces they moved. Continue moving the _Feature_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Stun_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Stun_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Feature**: Deal Damage to the _Feature_ equal to the half the _Forced Movement_ remaining and inflict _Stun_ on the creature equal to the same amount. If the Collided Feature is _Destroyed_ and the Colliding _Feature_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Feature's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Feature_ was _Destroyed_, reduce the _Forced Movement_ by the Feature's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
   },
   { "name": "Collide", "see": "Collision" },
   { "name": "Collides", "see": "Collision" },
@@ -118,7 +118,7 @@
   },
   {
     "name": "Elevation",
-    "effect": "The current Height of the _Terrain_ or _Obstacle_ that a character is standing on."
+    "effect": "The current Height of the _Terrain_ or _Feature_ that a character is standing on."
   },
   {
     "name": "Elite",
@@ -205,7 +205,7 @@
   },
   {
     "name": "Interact",
-    "effect": "A special way to make use of an _Obstacle_ that is defined in its stats, typically used with the _Use Environment_ _Maneuver_."
+    "effect": "A special way to make use of an _Feature_ that is defined in its stats, typically used with the _Use Environment_ _Maneuver_."
   },
   {
     "name": "Launching",
@@ -230,15 +230,15 @@
   { "see": "Maneuvers", "name": "Maneuver" },
   {
     "name": "Total Height",
-    "effect": "The _Elevation_ of an _Obstacle_ or Creature plus its Height. Most creatures have a Height of 1."
+    "effect": "The _Elevation_ of an _Feature_ or Creature plus its Height. Most creatures have a Height of 1."
   },
   {
     "name": "Major Source",
-    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Obstacle_ of at least Size 1 that is predominately made of earth, stone, or similar material.\n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Obstacles_ with a value greater than 1.\n* **Wind:** Any _Windy_ or _Electric_ Terrain."
+    "effect": "A significant representation of an element that allows powerful effects.\n* **Earth:** Any _Feature_ of at least Size 1 that is predominately made of earth, stone, or similar material.\n* **Flame:** Any _Blazing_ space or _Alight_ creature.\n* **Water:** _Watersource_ Terrain or _Features_ with a value greater than 1.\n* **Wind:** Any _Windy_ or _Electric_ Terrain."
   },
   {
     "name": "Minor Source",
-    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Obstacles_ with a value of 1, or a creature with _Soaked_.\n* **Wind:** Any space that is not a Major Earth Source."
+    "effect": "A minor representation of an element. _Major Sources_ may always be treated as a Minor Source.\n* **Earth:** Any _Terrain_ that is predominately made of earth, stone, or similar material. Additionally, terrain that is immediately above earth (such as the wooden floor of a house) may count for this.\n* **Flame:** Any space that is not a Water Source.\n* **Water:** _Watersource_ Terrain and _Features_ with a value of 1, or a creature with _Soaked_.\n* **Wind:** Any space that is not a Major Earth Source."
   },
   { "name": "Major Sources", "see": "Major Source" },
   { "name": "Minor Sources", "see": "Minor Source" },
@@ -291,7 +291,7 @@
   },
   {
     "name": "On Miss",
-    "effect": "When an Attack misses, either due to a poor roll, a _Penalty_, or some other effect, resolve the _On Miss_ effect. If the Attack has multiple targets, only gain the On Miss effect if it misses all targets, ignoring _Obstacles_ unless the Attack is only targeting _Obstacles_."
+    "effect": "When an Attack misses, either due to a poor roll, a _Penalty_, or some other effect, resolve the _On Miss_ effect. If the Attack has multiple targets, only gain the On Miss effect if it misses all targets, ignoring _Features_ unless the Attack is only targeting _Features_."
   },
   {
     "name": "Recover",
@@ -350,7 +350,7 @@
   },
   {
     "name": "Shaper",
-    "effect": "Shaper Disciplines heavily manipulate Terrain and Obstacles, either by creating them or removing them and can easily change the layout of the battlefield."
+    "effect": "Shaper Disciplines heavily manipulate Terrain and Features, either by creating them or removing them and can easily change the layout of the battlefield."
   },
   {
     "name": "Secondary Sense",

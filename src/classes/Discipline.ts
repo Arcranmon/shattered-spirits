@@ -71,6 +71,7 @@ class Discipline {
   public get Icon() {
     console.log(this.Name)
     if (this.Type == 'Undefined') return ''
+    if (this.Type == 'Rod') return require('@/assets/weapons/' + this.Type + '.svg')
     if (this.Category == 'Martial') {
       if (this.Type == 'Striker' || this.Type == 'Artillery' || this.Type == 'Shaper') return require('@/assets/disciplines/' + this.Type + '.svg')
       return require('@/assets/weapons/' + this.Type + '.svg')

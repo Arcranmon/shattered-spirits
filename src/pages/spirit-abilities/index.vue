@@ -170,9 +170,9 @@ export default Vue.extend({
   data() {
     return {
       tab: 0,
-      weaponSpeeds: ['Any', 1, 2, 3, 4, 5, 6, 7, 8],
+      weaponSpeeds: ['Any', 1, 2, 3, 4],
       selectedSpeed: 'Any',
-      weaponTypes: ['Any', 'Light', 'Versatile', 'Heavy'],
+      weaponTypes: ['Any', 'Light', 'Balanced', 'Heavy'],
       selectedType: 'Any',
       selectedWeapon: null,
     }

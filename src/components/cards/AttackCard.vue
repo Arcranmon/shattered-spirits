@@ -10,7 +10,7 @@
             <div><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
             <div v-if="attack.HasSpeedOrType"><display-tooltip-text :string="attack.SpeedHeader" :decorate="false" /></div>
             <span v-for="(keyword, index) in attack.Keywords" :key="index" class="keyword--box">
-              <display-tooltip-text :string="keyword" :decorate="false" /></span
+              <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></span
           ></b>
         </div>
       </div>

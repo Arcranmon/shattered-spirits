@@ -74,17 +74,22 @@ def get_status_damage(status_string, glancing):
 
     estimated_damage = 0
     no_save_damage = 0
-    for status in statuses:
+    for status in statuses:        
+        status = status.replace('_', '')
         # Scale the estimated damage based on the DC
         if '[' in status:
-            status = status.replace('_', '')
             final_statuses = status.split('[')
-            estimated_damage += status_multipliers[final_statuses[0].strip()]
+            if '/' in final_statuses[0]:
+                status_options = final_statuses[0].split('/')
+                final_status_damage = max([status_multipliers[status_option.strip()] for status_option in status_options])
+            else:
+                final_status_damage = status_multipliers[final_statuses[0].strip()]
+            estimated_damage += final_status_damage
             multiplier = (int(final_statuses[1][0])-1)/6
             estimated_damage = estimated_damage * multiplier
         # Otherwise, add the effect to the damage
         else:
-            split_status = status.split('_')
+            split_status = status.split(' ')
             if len(split_status) == 1: continue
             if split_status[1] in instant_statuses:
                 if glancing:

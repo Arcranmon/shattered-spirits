@@ -13,7 +13,7 @@ import Statuses from '@/database/glossary/statuses.json'
 import Keywords from '@/database/glossary/keywords.json'
 import Resources from '@/database/glossary/resources.json'
 
-import Obstacles from '@/database/obstacles.json'
+import FeaturesJson from '@/database/features.json'
 import Terrains from '@/database/terrain.json'
 
 import Attacks from '@/database/attacks.json'
@@ -35,7 +35,7 @@ import {
   Maneuver,
   Movement,
   Npc,
-  Obstacle,
+  Feature,
   SpiritForm,
   Subtype,
   Stance,
@@ -71,6 +71,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
     this.Subtypes = SubtypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
     this.Movements = MovementJson.map((x) => Movement.Deserialize(<IMovementData>(<unknown>x)))
+    this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -81,6 +82,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Techniques: Technique[] = []
   private Subtypes: Subtype[] = []
   private Movements: Movement[] = []
+  private Features: Feature[] = []
 
   // ==========================================================
   // MANEUVER TOOLS
@@ -429,7 +431,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // OBSTACLE TOOLS
+  // FEATURE TOOLS
   // ==========================================================
   get getAccessories(): any {
     return () => {
@@ -459,24 +461,24 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // OBSTACLE TOOLS
+  // FEATURE TOOLS
   // ==========================================================
-  get isObstacle(): any {
+  get isFeature(): any {
     return (inword: string) => {
-      return Obstacles.some((x) => x.name == inword.trim())
+      return this.Features.some((x) => x.Name == inword.trim())
     }
   }
 
-  get getObstacle(): any {
+  get getFeature(): any {
     return (inword: string) => {
-      var obstacle = Obstacles.find((x) => x.name.trim() === inword.trim())
-      return Obstacle.Deserialize(<IObstacleData>obstacle)
+      var feature = this.Features.find((x) => x.Name === inword.trim())
+      return feature
     }
   }
 
-  get getObstacles(): any {
+  get getFeatures(): any {
     return () => {
-      return Obstacles.map((x) => Obstacle.Deserialize(<IObstacleData>x))
+      return this.Features
     }
   }
 
@@ -491,8 +493,8 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getTerrain(): any {
     return (inword: string) => {
-      var obstacle = Terrains.find((x) => x.name.trim() === inword.trim())
-      return Terrain.Deserialize(<ITerrainData>obstacle)
+      var feature = Terrains.find((x) => x.name.trim() === inword.trim())
+      return Terrain.Deserialize(<ITerrainData>feature)
     }
   }
 

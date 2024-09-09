@@ -70,8 +70,8 @@
             <div class="card--box" v-if="job == 'Accessory'">
               <accessory-card :accessory="n" />
             </div>
-            <div class="card--box" v-if="job == 'Obstacles'">
-              <obstacle-card :obstacle="n" />
+            <div class="card--box" v-if="job == 'Features'">
+              <feature-card :feature="n" />
             </div>
             <div class="card--box" v-if="job == 'Terrain'">
               <terrain-card :terrain="n" />
@@ -100,7 +100,7 @@ import ArmorCard from './ArmorCard.vue'
 import AccessoryCard from './AccessoryCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
 import MovementCard from './MovementCard.vue'
-import ObstacleCard from './ObstacleCard.vue'
+import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
@@ -176,7 +176,7 @@ export default Vue.extend({
     AccessoryCard,
     ManeuverCard,
     MovementCard,
-    ObstacleCard,
+    FeatureCard,
     StanceCard,
     StatusCard,
     TechCard,
