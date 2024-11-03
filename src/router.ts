@@ -12,14 +12,14 @@ import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
 import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
 
 import Terrain from '@/pages/combat/terrain/index.vue'
-import Obstacles from '@/pages/combat/obstacles/index.vue'
+import Features from '@/pages/combat/features/index.vue'
 
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
-import StyleDisciplines from '@/pages/style-disciplines/index.vue'
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
-import Arts from '@/pages/arts/index.vue'
+import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
+import Talents from '@/pages/talents/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
@@ -78,14 +78,6 @@ const r = new Router({
       name: 'character-creator',
       meta: {
         title: 'Character Creator',
-      },
-    },
-    {
-      path: '/spirit-disciplines',
-      component: SpiritDisciplines,
-      name: 'spirit-disciplines',
-      meta: {
-        title: 'Spirit Disciplines',
       },
     },
     {
@@ -177,27 +169,27 @@ const r = new Router({
       },
     },
     {
-      path: '/obstacles',
-      component: Obstacles,
-      name: 'obstacles',
+      path: '/features',
+      component: Features,
+      name: 'features',
       meta: {
-        title: 'Obstacles',
+        title: 'Features',
       },
     },
     {
-      path: '/style-disciplines',
-      component: StyleDisciplines,
-      name: 'style-disciplines',
+      path: '/spirit-disciplines',
+      component: SpiritDisciplines,
+      name: 'spirit-disciplines',
       meta: {
-        title: 'Style Disciplines',
+        title: 'Spirit Disciplines',
       },
     },
     {
-      path: '/arts',
-      component: Arts,
-      name: 'arts',
+      path: '/martial-disciplines',
+      component: MartialDisciplines,
+      name: 'martial-disciplines',
       meta: {
-        title: 'Arts',
+        title: 'Martial Disciplines',
       },
     },
     {
@@ -214,6 +206,14 @@ const r = new Router({
       name: 'basic-skills',
       meta: {
         title: 'Basic Skills',
+      },
+    },
+    {
+      path: '/talents',
+      component: Talents,
+      name: 'talents',
+      meta: {
+        title: 'Talents',
       },
     },
     {

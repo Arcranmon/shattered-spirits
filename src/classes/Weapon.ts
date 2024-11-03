@@ -15,11 +15,8 @@ class Weapon extends Attack {
   get Durability() {
     return this.durability_
   }
-  get Hardness() {
-    return this.hardness_
-  }
-  get HardnessHeader() {
-    if (this.hardness_ != 0) return 'Hardness ' + this.Hardness
+  get ClassHeader() {
+    return this.HandsPhrase + this.CategoryHeader
   }
   get Hands() {
     return this.hands_
@@ -36,22 +33,22 @@ class Weapon extends Attack {
   get ParryHeader() {
     return '**Parry:** ' + this.parry_
   }
-  get HasMaterial() {
-    return this.chart_.HasMaterial
-  }
-  get MaterialHeader() {
-    if (this.chart_.Material == 'Varying') return '**Material:** ' + this.chart_.Material + ' Material/Durability'
-    return '**Material:** ' + this.chart_.Material + ', _Durability_ ' + this.durability_
-  }
   get Weight() {
     return this.weight_
   }
   get TraitsHeader() {
-    var traits_string = '**Traits:** ' + this.HandsPhrase + this.CategoryHeader + this.WeightHeader
-    if (this.HasKeywords) {
-      traits_string += ' [' + this.KeywordsHeader + ']'
+    var traits_string = '**Traits:** '
+    if (this.HasWeight) {
+      traits_string += this.WeightHeader
+      if (this.HasDurability) traits_string += ', '
+    }
+    if (this.HasDurability) {
+      traits_string += '_Durability_ ' + this.durability_
     }
     return traits_string
+  }
+  get HasWeight() {
+    return this.Weight > 0
   }
   get WeightHeader() {
     if (this.Category == 'Unarmed') return ''
@@ -60,8 +57,7 @@ class Weapon extends Attack {
   }
   public get Icon() {
     if (this.Category == 'Error') return ''
-    if (this.Category == 'Unarmed') return require('@/assets/Unarmed.svg')
-    return require('@/assets/' + this.Category + ' Weapon.svg')
+    return require('@/assets/weapons/' + this.Category + '.svg')
   }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'

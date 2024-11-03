@@ -33,7 +33,8 @@ Vue.component('DisplayTooltipText', {
         }
         if (
           this.$store.getters.existsInAnyGlossary(split_input[index]) ||
-          this.$store.getters.isObstacle(split_input[index]) ||
+          this.$store.getters.isFeature(split_input[index]) ||
+          this.$store.getters.isTalent(split_input[index]) ||
           this.$store.getters.isTerrain(split_input[index]) ||
           this.$store.getters.isManeuver(split_input[index]) ||
           this.$store.getters.isStance(split_input[index]) ||

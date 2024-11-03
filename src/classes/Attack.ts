@@ -4,8 +4,7 @@ import { Chart, Maneuver } from '@/class'
 class Attack extends Maneuver {
   protected chart_: Chart
   protected category_: string
-  protected rank_: string
-  protected charged_effect_: string
+  protected charged_profile_: IChargedEffect
   protected speed_: string
   protected type_: string
 
@@ -13,13 +12,12 @@ class Attack extends Maneuver {
     super(name)
     this.chart_ = new Chart()
     this.type_ = ''
-    this.rank_ = ''
     this.speed_ = ''
   }
 
   get CategoryHeader() {
     if (this.Category == 'Natural' || this.Category == 'Improvised') return this.category_ + ' Weapon'
-    return this.category_ + ' Weapon, '
+    return this.category_ + ' Weapon'
   }
   get Category() {
     return this.category_
@@ -29,9 +27,6 @@ class Attack extends Maneuver {
   }
   get Chart() {
     return this.chart_
-  }
-  get Rank() {
-    return '_' + this.rank_ + '_'
   }
   get HasSpeed() {
     return this.speed_.length > 0 && this.speed_ != 'undefined'
@@ -46,10 +41,16 @@ class Attack extends Maneuver {
     return this.speed_
   }
   get HasChargedEffect() {
-    return this.charged_effect_ && this.charged_effect_.length > 0
+    return this.charged_profile_
   }
   get ChargedEffectHeader() {
-    return '**Charged Effect:** ' + this.charged_effect_
+    return '**_Charged Profile_:**'
+  }
+  get ChargedEffectResolution() {
+    return '<u>Resolution:</u> ' + this.charged_profile_.resolution
+  }
+  get ChargedEffectSetUp() {
+    return '<u>Set-Up:</u> ' + this.charged_profile_.set_up
   }
   get SpeedHeader() {
     var header = ''
@@ -64,7 +65,7 @@ class Attack extends Maneuver {
     return ''
   }
   get ClassHeader() {
-    return '_' + this.class_ + '_ _' + this.rank_
+    return '_' + this.class_ + '_ Attack'
   }
 
   // ==========================================================
@@ -80,8 +81,7 @@ class Attack extends Maneuver {
   public setAttackData(data: IAttackData): void {
     this.setManeuverData(data)
     this.category_ = data.category || 'Attack'
-    this.rank_ = data.rank || ''
-    this.charged_effect_ = data.charged_effect || ''
+    this.charged_profile_ = data.charged_profile || null
     this.speed_ = String(data.speed) || ''
     this.type_ = data.type || ''
     if ('chart' in data && data.chart != null) {

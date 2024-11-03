@@ -14,9 +14,10 @@ import Discipline from './classes/Discipline'
 import Accessory from './classes/Accessory'
 import Movement from './classes/Movement'
 import Npc from './classes/Npc'
-import Obstacle from './classes/Obstacle'
+import Feature from './classes/Feature'
 import Stance from './classes/Stance'
 import Status from './classes/Status'
+import Talent from './classes/Talent'
 import Technique from './classes/Technique'
 import Terrain from './classes/Terrain'
 import Weapon from './classes/Weapon'
@@ -34,12 +35,13 @@ export {
   Maneuver,
   Movement,
   Npc,
-  Obstacle,
+  Feature,
   Spirit,
   SpiritForm,
   Subtype,
   Stance,
   Status,
+  Talent,
   Technique,
   Terrain,
   Weapon,

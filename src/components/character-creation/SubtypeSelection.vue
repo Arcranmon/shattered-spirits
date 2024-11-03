@@ -1,9 +1,9 @@
-<template
-  ><span>
+<template>
+  <span>
     <div class="button-separator">
       <display-tooltip-text :string="spiritSubtypeText" />
       <v-layout justify-center
-        ><v-btn large tile color="success" @click="$emit('chose-subtype')" style="margin-top: 1em;" :disabled="!character.Spirit.HasSubtype" :key="tracker">
+        ><v-btn large tile color="success" @click="$emit('chose-subtype')" style="margin-top: 1em" :disabled="!character.Spirit.HasSubtype" :key="tracker">
           <span v-if="!character.Spirit.HasSubtype">CHOOSE YOUR SPIRIT SUBTYPE</span>
           <span v-else>CHOOSE {{ character.Spirit.Subtype.Name }}</span>
         </v-btn></v-layout
@@ -11,7 +11,7 @@
     </div>
     <div>
       <v-row
-        ><v-col cols="6" class="element-box" v-for="subtype in subtypes">
+        ><v-col cols="6" class="element-box" v-for="subtype in subtypes" :key="subtype.Name">
           <div>
             <i><display-tooltip-text :string="$store.getters.getGlossaryItem(subtype.Name)" /></i>
           </div>
@@ -19,26 +19,26 @@
             v-bind:class="subtype.Name"
             large
             tile
-            :disabled="(character.Spirit.HasSubtype && character.Spirit.Subtype.Name == subtype.Name)"
+            :disabled="character.Spirit.HasSubtype && character.Spirit.Subtype.Name == subtype.Name"
             @click="setSubtype(subtype)"
-            style="margin-top: 1em;"
+            style="margin-top: 1em"
           >
             <img class="image--icon-size image--left" :src="artSymbol(subtype.Name)" />{{ subtype.Name }}
             <img class="image--icon-size image--right" :src="artSymbol(subtype.Name)" /></v-btn></v-col
       ></v-row>
       <div v-if="character.Spirit.HasSubtype" :key="character.Spirit.Subtype.Name">
-        <div class="page--description table--top" style="width: 100%;">
-          <i><display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="art.Flavor" /></i><br />
-          <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="art.TagsHeader" /><br />
-          <display-tooltip-text style="margin-left: 1em; margin-right: 1em;" class="page--description" :string="art.Mechanics" /><br />
+        <div class="page--description table--top" style="width: 100%">
+          <i><display-tooltip-text style="margin-left: 1em; margin-right: 1em" class="page--description" :string="art.Flavor" /></i><br />
+          <display-tooltip-text style="margin-left: 1em; margin-right: 1em" class="page--description" :string="art.TagsHeader" /><br />
+          <display-tooltip-text style="margin-left: 1em; margin-right: 1em" class="page--description" :string="art.Mechanics" /><br />
         </div>
-        <div class="page--description" style="margin-bottom: 1em; margin-top: 2em;">
+        <div class="page--description" style="margin-bottom: 1em; margin-top: 2em">
           If you choose the {{ character.Spirit.Subtype.Name }} Subtype, your spirit gains the following abilities:
         </div>
         <v-row justify="center">
           <v-col :cols="num_cols"><subtype-card :type="character.Spirit.Subtype" /></v-col>
         </v-row>
-        <div class="page--description" style="margin-bottom: 1em; margin-top: 1em;">
+        <div class="page--description" style="margin-bottom: 1em; margin-top: 1em">
           If you choose the {{ character.Spirit.Subtype.Name }} Subtype, you and your spirit gain the following four abilities:
         </div>
         <div class="body">

@@ -1,29 +1,8 @@
 ## To-Do
 
-### Refactors
-
-- Change Statuses to flat tokens so that things go faster there
-- Refactor Stamina/statuses to have some sort of roll
-  - Keep Stamina, but let it be added as a bonus to rolls
-- Rework Actions to use a basic action, with Stunts expanding it
-- Potentially make Stances more impactful
-- Shrink Phases
-- Make Manifests more obvious/easier to use
-- Rework Gambits to use the Stun bar
-
 ### Plan
 
-1. Stamina Refactor
-
-- Stances get a roll bonus
-
-2. Status Refactor
-
-- Stun
-
-3. Phase Shrinkage
-4. Gambits
-5. Action rework
+- Make most Traits and such that enemies have come from a piece of 'Equipment'
 
 POTENTIAL REFACTORS
 
@@ -50,9 +29,6 @@ POTENTIAL REFACTORS
 - Basic stuff to moved out:
   - Hide, Raise Guard, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Sunder, Basic Flourish, Basic Feint
   - Examples:
-    - Way of the Skulker gets Hide and Skulker Stance
-    - Way of the Scoundrel gets Feint and Scoundrel Stance
-    - Way of the Fortress gets Raise Guard and Fortress Stance
   - Most Gambits go to Art stuff
 
 LONG TERM

@@ -8,8 +8,13 @@
     "effect": "Pick a space within Range. Target all spaces as if this was a _Burst_ X, but only target one side of the burst. For example, a _Self_ Range _Arc_ 1 would be the three contiguous spaces adjacent to a Size 1 creature."
   },
   {
+    "name": "Arcane Battery",
+    "effect": "Some Equipment with Arcane Battery will have effects that grant it Arcana. Arcana may be spent as _Momentum_, but only on effects that directly use said Weapon or match the same subtype (Arcana from a Blaze Rod could be used for Blaze Attacks and Actions, for example). Arcana may only be spent while _Wielding_ the _Weapon_ with Arcane Battery."
+  },
+  { "name": "Arcana", "see": "Arcane Battery" },
+  {
     "name": "Arcing",
-    "effect": "Arcing is a special keyword, used when an attack is able to fly high through the sky before hitting its target. Arcing Attacks treat _Full Cover_ as _Heavy Cover_ and _Heavy Cover_ as _Light Cover_ so long as a path exists over _Obstacles_ that can reach the Target."
+    "effect": "Arcing is a special keyword, used when an attack is able to fly high through the sky before hitting its target. Arcing Attacks treat _Full Cover_ as _Heavy Cover_ and _Heavy Cover_ as _Light Cover_ so long as a path exists over _Features_ that can reach the Target."
   },
   {
     "name": "Arsenal",
@@ -17,7 +22,7 @@
   },
   {
     "name": "Avoidable",
-    "effect": "Characters may expend _Stamina_ to reduce Avoidable Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_. Additionally, some effects allow spending _Stamina_ at a more efficient rate against these effects."
+    "effect": "Creatures gain _Ward_ equal to their _Reflex_ against this effect. Additionally, creatures may expend 1 _Movement_ to have _Advantage_ to _Negate_ this effect"
   },
   {
     "name": "Close Range",
@@ -31,8 +36,6 @@
     "name": "Blaze",
     "effect": "Blaze abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on stoking and spreading flames."
   },
-  { "name": "Blocking", "see": "Block" },
-  { "name": "Blocked", "see": "Block" },
   {
     "name": "Body",
     "effect": "Attacks with the _Body_ keyword gain a +1 _Bonus_ if used after moving at least 2 spaces with [_Rush_] Movement."
@@ -47,11 +50,11 @@
   },
   {
     "name": "Brawling",
-    "effect": "When making a _Melee_ _Attack_ against a _Grabbed_ creature add _Pierce_ X, where X is the listed Brawling value."
+    "effect": "Add _Pierce_ X to Attacks against creatures you are _Engaged_ with."
   },
   {
     "name": "Climable",
-    "effect": "_Climbing_ this Obstacle or Terrain costs only the vertical height covered."
+    "effect": "_Climbing_ this Feature or Terrain costs only the vertical height covered."
   },
   {
     "name": "Counter",
@@ -71,7 +74,7 @@
   },
   {
     "name": "Earthbend",
-    "effect": "_Forced Movement_ of this type may move _Earthen_ _Obstacles_ under some conditions."
+    "effect": "_Forced Movement_ of this type halves any _Stable_ that _Earthen_ _Features_ have."
   },
   {
     "name": "Efficient",
@@ -84,12 +87,12 @@
   { "name": "Exhaust (Round)", "see": "Exhaust" },
   { "name": "Exhaust (Combat)", "see": "Exhaust" },
   {
-    "name": "Explosion",
-    "effect": "Explosion abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on sudden and violent bursts of flame."
+    "name": "Detonation",
+    "effect": "Detonation abilities are a subset of _Flame_ _Spirit_ abilities that primarily focus on sudden and violent bursts of flame."
   },
   {
     "name": "Flammable",
-    "effect": "This space becomes _Blazing_ if it or the occupant of this space takes any _Fire_ Damage or gains _Alight_. If a Flammable space becomes _Blazing_ from an effect other than _Fire_ Damage or _Alight_, place another _Blazing_ space in an adjacent space. Spaces placed due to Flammable due not trigger this effect. The Flammable Terrain or Obstacle is destroyed when the space becomes _Blazing_."
+    "effect": "This space becomes _Blazing_ if it or the occupant of this space takes any _Fire_ Damage or gains _Alight_. If a Flammable space becomes _Blazing_ from an effect other than _Fire_ Damage or _Alight_, place another _Blazing_ space in an adjacent space. Spaces placed due to Flammable due not trigger this effect. The Flammable Terrain or Feature is destroyed when the space becomes _Blazing_."
   },
   {
     "name": "Resist",
@@ -101,19 +104,19 @@
   },
   {
     "name": "Derived",
+    "effect": "This Attack will use another Attack. Refer to the Weapon or Attack used for this Attack for all details not defined about this Attack, such as its Speed, Material, whether it is _Spirit_ or _Martial_, and whether it is _Light_, _Balanced_, or _Heavy_. You may select a different Derived Attack when choosing a Derived Attack, so long as the final Attack used fulfills all requirements."
+  },
+  {
+    "name": "Mutable",
     "effect": "This _Terrain_'s _Source_ is the same as whatever the _Terrain_ beneath it is; i.e., if it is created on _Earthen_ Terrain, it is in turn _Earthen_."
   },
   {
     "name": "Earth",
-    "effect": "Earth is one of the most common elements, but is heavily dependant on managing Sources for their Attacks. A _Minor Source_ is required for essentially every Earth Spirit ability, while access to a _Major Source_ will often provide additional bonuses. An Earthbonded will have access to _Minor Sources_ in most battles, but may have to create _Major Sources_ through the use of _Maneuvers_ and _Techniques_. Earth abilities are _Suppressed_ when the user is not within 2 spaces of a _Source_, and _Sealed_ when there is no _Source_ within 5 spaces or the user is _Flying_."
-  },
-  {
-    "name": "Earthen",
-    "effect": "Earthen _Terrain_ or _Obstacles_ are prominent above-ground features created primarily from earth or stone. _Boulders_ and _Earth Pillars_ are obvious examples, but any stone structure can qualify as Earthen. In general, every space on the battlefield is Earthen unless specified otherwise."
+    "effect": "Earth is one of the most common elements, but is heavily dependant on managing Sources for their Attacks. A _Minor Source_ is required for essentially every Earth Spirit ability, while access to a _Major Source_ will often provide additional bonuses. An Earthbonded will have access to _Minor Sources_ in most battles, but may have to create _Major Sources_ through the use of _Maneuvers_ and _Techniques_. Earth abilities are _Suppressed_ when the user has no _Source_ at their _Position_, and _Sealed_ when there is no _Source_ in their _Arena_."
   },
   {
     "name": "Watersource",
-    "effect": "Watersource _Terrain_ or _Obstacles_ are predominately formed out of water. Watersource _Obstacles_ tend to be fleeting and are often only created by abilities, but Watersource _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watersource _Terrain_ and _Obstacles_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
+    "effect": "Watersource _Terrain_ or _Features_ are predominately formed out of water. Watersource _Features_ tend to be fleeting and are often only created by abilities, but Watersource _Terrain_ such as _Wet_ spaces are abundant in most battlefields. Watersource _Terrain_ and _Features_ will always specify a value; this is how many _Sources_ the object in question counts as for the purpose of _Draw_ effects."
   },
   {
     "name": "Enchant",
@@ -138,7 +141,7 @@
   },
   {
     "name": "Fleeting",
-    "effect": "Fleeting Terrain and Obstacles are _Destroyed_ at the end of the current _Round_."
+    "effect": "Fleeting Terrain and Features are _Destroyed_ at the end of the current _Round_."
   },
   {
     "name": "Flourish",
@@ -159,11 +162,11 @@
   },
   {
     "name": "Forceful",
-    "effect": "Forceful can be applied to any kind of _Forced Movement_. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. Forceful has the following effects:\n* When determining Damage to an _Obstacle_ from a _Collision_, deal Damage equal to the _Forced Movement_ remaining, not half.\n* Creatures involved in a _Collision_ take Damage equal to any _Vulnerable_ they gain and gain _Dazed_ 1. \n* _Forceful_ _Forced Movement_ deals double Damage when determining if an _Obstacle_ is _Destroyed_."
+    "effect": "Forceful can be applied to any kind of _Forced Movement_. If an effect gains Forceful, all _Forced Movement_ of the same type gains Forceful. Forceful has the following effects:\n* When determining Damage to an _Feature_ from a _Collision_, deal Damage equal to the _Forced Movement_ remaining, not half.\n* Creatures involved in a _Collision_ take Damage equal to any _Stun_ they gain and gain _Dazed_ 1. \n* _Forceful_ _Forced Movement_ deals double Damage when determining if an _Feature_ is _Destroyed_."
   },
   {
     "name": "Fragile",
-    "effect": "After making an Attack with this Weapon, Destroy it."
+    "effect": "If this piece of Equipment would be _Damaged_ it is instead _Destroyed_."
   },
   {
     "name": "Tundra",
@@ -179,7 +182,7 @@
   },
   {
     "name": "Glancing",
-    "effect": "This effect deals half _Damage_ and, while Negating, any _Stamina_ spent count as twice as much."
+    "effect": "This effect deals half _Damage_, creatures have _Advantage_ on all _Negate_ rolls, and any _Stun_ or instant Status (such as _Push_ or _Dazed_) is halved."
   },
   {
     "name": "Grasping",
@@ -187,11 +190,11 @@
   },
   {
     "name": "Groundsource",
-    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range, and ignore _Cover_ and _Obscurement_. In exchange, both the user and Target of Groundsource _Techniques_ must be used on _Earthen_ Terrain. _Flying_ creatures are immune to all Groundsource effects."
+    "effect": "Groundsource Attacks are always treated as Melee, regardless of their normal Range. In exchange, both the user and Target of Groundsource _Techniques_ must be in an _Earthen_ _Arena_ and not by _Flying_."
   },
   {
     "name": "Guarding",
-    "effect": "While Guarding a creature is focusing on their defense. While Guarding a creature has _Disadvantage_ on all _Attacks_ and reduces all Movement by 1 tier. Guarding lasts until the end of the _Round_, the creature gains _Break_, or the Guarding creature willingly ends the effect, which may be done at any time. Abilities that grant Guarding also typically have additional conditions that can end the effect. If a creature that is already Guarding becomes Guarding, they lose any benefits or effects granted by the initial ability."
+    "effect": "While Guarding a creature is focusing on their defense. While Guarding a creature has _Disadvantage_ on all _Attacks_ and may not _Move_. Guarding lasts until the creature becomes _Stunned_ or the Guarding creature willingly ends the effect, which may be done at any time. Abilities that grant Guarding also typically have additional conditions that can end the effect. If a creature that is already Guarding becomes Guarding, they lose any benefits or effects granted by the initial ability."
   },
   {
     "name": "Hand-and-a-Half",
@@ -203,11 +206,19 @@
   },
   {
     "name": "Ice",
-    "effect": "Ice Terrain and Obstacles may only be _Drawn_ from if the creature has _Snowdraw_."
+    "effect": "Ice Terrain and Features may only be _Drawn_ from if the creature has _Snowdraw_."
+  },
+  {
+    "name": "Limited",
+    "effect": "Abilities with this keyword may only be used more than the listed frequency."
+  },
+  {
+    "name": "Effort",
+    "effect": "Effort is used to use powerful Stunts and Boosts. Any unused Effort is lost at the end of the current _Turn_."
   },
   {
     "name": "Kick",
-    "effect": "Kick Attacks have a -1 _Penalty_ if _Hobbled_, but may be used while _Prone_ at no penalty and gain a +1 _Bonus_ against _Prone_ Targets and creatures smaller than you."
+    "effect": "Kick Attacks have a -1 _Penalty_ if _Hobbled_, but may be used while _Prone_ at no penalty and gain a +1 _Bonus_ against _Prone_ Targets."
   },
   {
     "name": "Land",
@@ -223,22 +234,42 @@
   },
   {
     "name": "Leaping",
-    "effect": "Any Leaping Movement ignores Terrain that does not effect _Flying_ characters. Characters may also go up _Elevation_ equal to the Leaping distance without paying any additional Movement cost."
+    "effect": "Any Leaping Movement ignores Terrain that does not effect _Flying_ characters. Characters may also go up _Elevation_ equal to the Leaping distance without paying any additional Movement cost. Leaping Movement is always [_Rush_]."
   },
   {
-    "name": "Manifest",
-    "effect": "A special keyword that designates an ability that makes use of your spirit in a more concrete way. Only one ability with the Manifest keyword may be used per _Round_. When you use a Manifest ability it does not count as if you used it and as such bypasses normal limitations, such as the number of _Actions_ you may use in a _Phase_ or using the same _Action_ multiple times in the same _Round_."
+    "name": "Mark",
+    "effect": "Characters may only have a single effect with this keyword active at a time. If they use another effect with this keyword, end the previous effect."
   },
   {
     "name": "Melee",
-    "effect": "This may only be used to Attack Targets within your _Reach_."
+    "effect": "This may only target at your _Position_."
+  },
+  {
+    "name": "Reach",
+    "effect": "Attacks with a Range of Reach can Target any creature within their _Arena_."
+  },
+  {
+    "name": "Short",
+    "effect": "This may only target within your _Arena_ and adjacent _Path_s. Attacks with this Range take a -1 _Penalty_ if there is a hostile creature at your _Position_."
+  },
+  {
+    "name": "Medium",
+    "effect": "This may only target within adjacent _Arena_s and _Path_s. Attacks with this Range take a -2 _Penalty_ if there is a hostile creature at your _Position_."
+  },
+  {
+    "name": "Long",
+    "effect": "This may only target that are two _Arena_s away. Attacks with this Range take a -3 _Penalty_ if there is a hostile creature at your _Position_."
   },
   {
     "name": "Mental",
     "effect": "Characters may expend _Stamina_ to reduce Mental Damage by 1 for every 1 _Stamina_ spent and may Negate _Vulnerable_ with 1 _Stamina_. Additionally, some effects allow spending _Stamina_ at a more efficient rate against these effects."
   },
   {
-    "name": "Obstacle",
+    "name": "Mobile",
+    "effect": "This Attack may be used without interrupting or breaking up your Movement."
+  },
+  {
+    "name": "Feature",
     "effect": "Noteworthy terrain on the battlefield that can typically either be used as _Cover_ or be interacted with in some way."
   },
   {
@@ -246,13 +277,8 @@
     "effect": "This Equipment only requires one hand to _Wield_."
   },
   {
-    "name": "Opportune",
-    "effect": "On the _Turn_ that you _Wield_ a Weapon with this keyword, you may make a _Major Attack_ with it as a _Minor Attack_. This ability may only be used once per combat per Weapon."
-  },
-  { "name": "Opportune Weapons", "see": "Opportune Weapon" },
-  {
     "name": "Overwhelming",
-    "effect": "If the Target of the Attack benefits from a _Block_ _Reaction_ inflict your choice of _Push_ 2X/_Vulnerable_ X, where X is the listed Overwhelming value. If they are _Guarding_ you may choose one of the previous options or add _Break_ [X _Stamina_] on a _Hit_+."
+    "effect": "This Attack ignores half of a creature's _Resistance_, and ignores half the _Ward_ created by non-_Resistance_ effects."
   },
   {
     "name": "Ordnance",
@@ -273,15 +299,11 @@
   },
   {
     "name": "Parry",
-    "effect": "When a creature Parries they gain the Parry Effect of a _Wielded_, un-_Sundered_ piece of Equipment against the triggering effect. A creature may pay 1 _Momentum_ to Parry with _Sundered_ Equipment. If, after resolving all effects, the total Damage is greater than the _Durability_ of the _Equipment_ it gains _Sundered_."
+    "effect": "Different abilities may allow a creature to Parry. When a creature Parries, they gain the Parry Effect of a _Wielded_, un-_Sundered_ piece of Equipment against the triggering effect or for a set duration. A creature may pay 1 _Momentum_ to Parry with _Sundered_ Equipment."
   },
   {
     "name": "Priority",
     "effect": "A Priority Action is always resolved at the start of its Phase. It ignores normal turn order and does not count for the alternating turns within a Round. If an ability gains Priority in the middle of a the Phase it would be resolved in instead resolve it immediately, ignoring the normal turn order."
-  },
-  {
-    "name": "Reach",
-    "effect": "Reach is how far away a Melee Attack can be used to attack a creature. Most Melee Attacks have Reach 1 but some, such as Pole Weapons, have a greater Reach."
   },
   {
     "name": "Recharge",
@@ -293,7 +315,7 @@
   },
   {
     "name": "Safe",
-    "effect": "Movement with the Safe keyword does not create an _Opening_. Any _Attack_ made in response to this _Movement_ has _Disadvantage_."
+    "effect": "Increase the cost of all _Punish_ _Reactions_ triggered by an _Opening_ created by this effect."
   },
   {
     "name": "Secure",
@@ -304,12 +326,16 @@
     "effect": "This piece of Equipment is particularly small. If you select this piece of Equipment you gain 2 without increasing the Weight."
   },
   {
+    "name": "Social",
+    "effect": "Attacks with the Social keyword ignore all _Cover_ and _Obscured_ and may always target a creature within Range."
+  },
+  {
     "name": "Scout",
     "effect": "When you Scout a creature you learn their current _Health_, _Stamina_, and _Momentum_."
   },
   {
     "name": "Siege",
-    "effect": "Attacks with Siege deal +2 Damage to _Obstacles_ and have _Advantage_ on Attacks against them. If an Attack gains Siege from multiple sources, increase the Damage by 2 for each successive source."
+    "effect": "Attacks with Siege deal +2 Damage to _Features_ and have _Advantage_ on Attacks against them. If an Attack gains Siege from multiple sources, increase the Damage by 2 for each successive source."
   },
   {
     "name": "Stall",
@@ -336,8 +362,12 @@
     "effect": "A special type of _Gambit_ which only one may be applied to a single Attack."
   },
   {
-    "name": "Remote",
-    "effect": "This _Attack_ ignores _Cover_ and _Lightly Obscured_ and is treated as if it is _Melee_ for all effects."
+    "name": "Point Blank",
+    "effect": "This _Attack_ does not take penalties for using it while adjacent to foes."
+  },
+  {
+    "name": "Ignite",
+    "effect": "Trigger all _Flammable_ effects at the _Position_ where this is used."
   },
   {
     "name": "Repeatable",
@@ -353,15 +383,15 @@
   },
   {
     "name": "Rush",
-    "effect": "Rush _Movement_ must be taken in a straight line and may not _Climb_."
+    "effect": "Rush _Movement_ must be taken in a straight line and may not _Climb_. Additionally, this Movement may not be broken up; if you make an Attack or use an ability that interrupts your Move any remaining Movement is lost."
   },
   {
     "name": "Soft Cover",
-    "effect": "If this is _Terrain_, treat it as an Obstacle of the listed height when determining _Obscured_ and _Cover_. If it is an _Obstacle_ it may be moved through. Regardless of if it is _Terrain_ or _Obstacle_, this may not cause more than _Lightly Obscured_/_Light Cover_."
+    "effect": "If this is _Terrain_, treat it as an Feature of the listed height when determining _Obscured_ and _Cover_. If it is an _Feature_ it may be moved through. Regardless of if it is _Terrain_ or _Feature_, this may not cause more than _Lightly Obscured_/_Light Cover_."
   },
   {
     "name": "Spirit",
-    "effect": "A Spirit ability makes use of the innate magic of your Spirit. These abilities can be Suppressed, and often require specialized terrain features or equipment to be fully utilized. If an ability is simply listed as a Spirit ability, use the subcategory that your spirit aligns with, such as _Mountain_ or _Land_ for an _Earth_ Spirit."
+    "effect": "A Spirit ability makes use of the innate magic of your Spirit. _Suppressed_ and _Sealed_ apply to these abilities, and your spirit may make use of them while _Manifested_."
   },
   {
     "name": "Sundering",
@@ -377,7 +407,7 @@
   },
   {
     "name": "Teleport",
-    "effect": "Teleport Movement ignores _Terrain_, _Obstacles_, and does not count as _Movement_ for the purposes of Triggers."
+    "effect": "Teleport Movement ignores _Terrain_, _Features_, and does not count as _Movement_ for the purposes of Triggers."
   },
   {
     "name": "Temporary",
@@ -385,7 +415,7 @@
   },
   {
     "name": "Thrown",
-    "effect": "Attacks with the Thrown keyword treat _Grazes_as a _Miss_, dealing no damage, and causing no effects. After being thrown, a Thrown weapon is placed in a space of your choice adjacent to the Target and may not be used again until retrieved."
+    "effect": "Attacks with the Thrown keyword treat _Grazes_ as a _Miss_, dealing no damage, and causing no effects. After being thrown, a Thrown weapon is placed at the Target's _Position_ and may not be used again until retrieved."
   },
   {
     "name": "Two-Handed",
@@ -393,15 +423,15 @@
   },
   {
     "name": "Unblockable",
-    "effect": "All _Reactions_ with the _Block_ keyword cost an additional _Momentum_ against this _Technique."
+    "effect": "All _Reactions_ with the _Ward_ keyword cost an additional _Momentum_ against this _Technique."
   },
   {
     "name": "Upkeep",
     "effect": "Techniques with Upkeep must pay the listed cost at _Respite_ or else end the effect."
   },
   {
-    "name": "Versatile",
-    "effect": "Versatile _Attacks_ are built for balanced combat, and can be used for most Attacks, albeit not as well as the more-specialized _Light_ or _Heavy_ _Attacks_. They typically have a minor _Charged Effect_, and can be used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
+    "name": "Balanced",
+    "effect": "Balanced _Attacks_ are built for balanced combat and make up the majority of attacks. They typically have a minor _Charged Effect_, and can be frequently used with _Light_/_Heavy_ exclusive abilities in exchange for an increased _Momentum_ cost."
   },
   {
     "name": "Incoming",
@@ -409,7 +439,7 @@
   },
   {
     "name": "Water",
-    "effect": "Water is an element that relies heavily on its sources, but can easily move them about the battlefield. Water abilities are _Suppressed_ when the user is _Alight_. Water Abilities are _Sealed_ if there is no _Source_ within 10 spaces."
+    "effect": "Water is an element that relies heavily on its sources, but can easily move them about the battlefield. Water abilities are _Suppressed_ when the user is _Alight_ or at a _Blazing_ Position. Water Abilities are _Sealed_ if there is no _Source_ within two _Arenas_."
   },
   { "name": "Weapon Attacks", "see": "Weapon Attack" },
   {

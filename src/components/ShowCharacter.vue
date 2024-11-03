@@ -13,14 +13,6 @@
           <v-row style="margin: 1em">
             <v-col :cols="columnNumbers"> <combat-stats-widget :creature="character" @changed="$emit('changed')" /></v-col
             ><v-col :cols="columnNumbers"><status-widget :creature="character" @changed="$emit('changed')" /></v-col>
-            <v-col :cols="12">
-              <v-row no-gutters align="center" justify="center">
-                <h4>Helpful Keywords</h4>
-              </v-row>
-              <v-row no-gutters align="center" justify="center">
-                <display-tooltip-text :string="'_Major Source_, _Minor Source_, _' + character.Element + '_'" />
-              </v-row>
-            </v-col>
             <v-col :cols="12" style="margin-bottom: 1em">
               <h3 style="text-align: center">Stances</h3>
               <v-row
@@ -51,10 +43,17 @@
                   :inputs="$store.getters.getWeaponsFromList(character.Weapons)"
                   standalone_or_contained="Standalone"
                   :collapse="false"
+                  :cols="2"
                 />
               </v-tab-item>
               <v-tab-item>
-                <show-cards job="Armor" :inputs="[character.EquippedArmor]" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" />
+                <show-cards
+                  job="Armor"
+                  :inputs="$store.getters.getArmorFromList(character.Armor)"
+                  standalone_or_contained="Standalone"
+                  :collapse="false"
+                  v-bind:cols="screenSize"
+                />
               </v-tab-item>
               <v-tab-item><display-tooltip-text class="description-text" string="Not applicable yet!" /></v-tab-item>
               <v-tab-item><display-tooltip-text class="description-text" string="Not applicable yet!" /></v-tab-item>
@@ -66,8 +65,7 @@
           <abilities-widget
             :techniques="character.Techniques"
             :actions="character.ManeuversOfType('Action')"
-            :minor_attacks="character.MinorAttacks"
-            :major_attacks="character.MajorAttacks"
+            :attacks="character.Attacks"
             :gambits="character.ManeuversOfType('Gambit')"
             :stunts="character.ManeuversOfType('Stunt')"
             :reactions="character.ManeuversOfType('Reaction')"
@@ -77,12 +75,27 @@
           <v-col :cols="columnNumbers"><combat-stats-widget :creature="character.Spirit" @changed="$emit('changed')" /> </v-col
           ><v-col :cols="columnNumbers"> <status-widget :creature="character.Spirit" @changed="$emit('changed')" /></v-col
         ></v-row>
-        <traits-and-weapons-widget :creature="character.Spirit" />
+        <h3 style="text-align: center">Equipment</h3>
+        <v-card>
+          <v-tabs v-model="spirit_equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+            <v-tab>
+              <h3>Weapons</h3>
+            </v-tab>
+          </v-tabs>
+          <v-tabs-items v-model="spirit_equipment_tab" class="character-tab-content">
+            <v-tab-item>
+              <show-cards job="Attacks" :inputs="character.Spirit.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+            </v-tab-item>
+          </v-tabs-items>
+        </v-card>
+        <h3 style="text-align: center">Manifest Ability</h3>
+        <div style="text-align: center">
+          <display-tooltip-text :string="character.Spirit.Subtype.ManifestEffectHeader" />
+          <basic-table style="width: 40%; margin: auto" :chart="character.Spirit.Subtype.Table" />
+        </div>
         <abilities-widget
-          :techniques="character.SpiritTechniques"
           :actions="character.SpiritManeuversOfType('Action')"
-          :minor_attacks="character.SpiritMinorAttacks"
-          :major_attacks="character.SpiritMajorAttacks"
+          :attacks="character.SpiritAttacks"
           :gambits="character.SpiritManeuversOfType('Gambit')"
           :stunts="character.SpiritManeuversOfType('Stunt')"
           :reactions="character.SpiritManeuversOfType('Reaction')" /></v-tab-item
@@ -95,13 +108,14 @@ import Vue from 'vue'
 import { Character } from '@/class'
 import StanceCard from '@/components/cards/StanceCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
+import BasicTable from '@/components/BasicTable.vue'
 import AbilitiesWidget from '@/components/AbilitiesWidget.vue'
 import StatusWidget from '@/components/StatusWidget.vue'
 import CombatStatsWidget from '@/components/CombatStatsWidget.vue'
 import TraitsAndWeaponsWidget from '@/components/TraitsAndWeaponsWidget.vue'
 export default Vue.extend({
   name: 'display-character',
-  components: { ShowCards, StanceCard, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
+  components: { BasicTable, ShowCards, StanceCard, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
   props: {
     character: {
       type: Character,
@@ -111,6 +125,7 @@ export default Vue.extend({
   data() {
     return {
       equipment_tab: null,
+      spirit_equipment_tab: null,
       character_or_spirit_tab: null,
       windowWidth: window.innerWidth,
     }

@@ -4,13 +4,13 @@ import { Base } from '@/class'
 class Stance extends Base {
   private class_: string
   private respite_: IRespiteData
-  private stamina_: number
+  private defenses_: IDefenseData
   private traits_: Array<string>
 
   public constructor(name) {
     super(name)
     this.respite_ = null
-    this.stamina_ = 0
+    this.defenses_ = null
     this.traits_ = []
   }
 
@@ -29,11 +29,30 @@ class Stance extends Base {
   }
 
   public get Stamina() {
-    return this.stamina_
+    return this.defenses_.stamina
   }
 
-  public get StaminaHeader() {
-    return '**Stamina:** ' + this.stamina_
+  public get Grit() {
+    if (this.defenses_.grit) return this.defenses_.grit
+    return 0
+  }
+
+  public get Reflex() {
+    if (this.defenses_.reflex) return this.defenses_.reflex
+    return 0
+  }
+
+  public get Focus() {
+    if (this.defenses_.focus) return this.defenses_.focus
+    return 0
+  }
+
+  public get DefenseHeader() {
+    var defense_string = '**Defenses:** \n* ' + this.defenses_.stamina + ' _Stamina_'
+    if (this.defenses_.focus) defense_string += '\n* ' + this.defenses_.focus + ' _Focus_'
+    if (this.defenses_.grit) defense_string += '\n* ' + this.defenses_.grit + ' _Grit_'
+    if (this.defenses_.reflex) defense_string += '\n* ' + this.defenses_.reflex + ' _Reflex_'
+    return defense_string
   }
   public get HasTraits() {
     return this.traits_.length > 0
@@ -61,7 +80,7 @@ class Stance extends Base {
     this.setBaseData(data)
     this.class_ = data.class || ''
     this.respite_ = data.respite || null
-    this.stamina_ = data.stamina || 0
+    this.defenses_ = data.defenses || null
     this.traits_ = data.traits || []
   }
 }

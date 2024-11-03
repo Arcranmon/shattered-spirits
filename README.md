@@ -1,6 +1,6 @@
 ## Welcome to the world of Deskar, the land of Shattered Spirits!
 
-For as long as any can remember, humanity and spirits have been as one. They have thrived for generations, forging bonds and conquering obstacles with their shared strength. When the spirits bonded to humanity were not sufficient the ancient primal spirits of the world would assist, pushing aside all obstacles. That is, until the Sundering.
+For as long as any can remember, humanity and spirits have been as one. They have thrived for generations, forging bonds and conquering features with their shared strength. When the spirits bonded to humanity were not sufficient the ancient primal spirits of the world would assist, pushing aside all features. That is, until the Sundering.
 
 25 years ago something very nearly killed the Great Spirit. While She survived, Her essence was sundered into many parts. Just as She was split, so was every spirit across the land, from the minor spirits bound to humanity to the primal spirits in the deep corners of the world. Spirits that had pacts with local tribes flew into a rage, and disasters wracked the world as the full wrath of the spirits was turned against humanity for the first time. While humanity survived they were scattered and weak, surviving only because they maintained their bonds with lesser spirits.
 
@@ -52,10 +52,12 @@ Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
-Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frigid, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne - Delapouite
+Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frigid, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne, Survivor, Sling, Calm, Helmet - Delapouite
 
-Controller, Courier, Defender, Tundra, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleeding, Vulnerable, Burned, Exposed, Grabbed, Tough, Shred, Stealthy, Studied, Joyful, Shocked, Soaked, Suppressed - Lorc
+Controller, Courier, Defender, Tundra, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleeding, Vulnerable, Burned, Exposed, Grabbed, Tough, Shred, Stealthy, Studied, Joyful, Shocked, Soaked, Suppressed, Frightened, Staff - Lorc
 
 Blinded, Dazed, Break - Skoll
 
 Poised, Prone, Sealed, Electric Terrain - sbed
+
+Wand - Wildabeast

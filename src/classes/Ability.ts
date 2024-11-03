@@ -9,8 +9,8 @@ class Ability extends Base {
   protected boost_: string
   protected cost_: string
   protected class_: string
-  protected move_: string
-  protected range_: Array<IRangeData>
+  protected move_: number
+  protected range_: string
   protected reqs_: string
   protected target_: string
   protected chart_: Chart
@@ -22,9 +22,9 @@ class Ability extends Base {
     this.cost_ = ''
     this.desc_ = ''
     this.effect_ = ''
-    this.move_ = ''
+    this.move_ = 0
     this.name_ = name
-    this.range_ = []
+    this.range_ = ''
     this.reqs_ = ''
     this.special_ = ''
     this.target_ = ''
@@ -78,7 +78,7 @@ class Ability extends Base {
     return '**_Cost_:** ' + this.cost_
   }
   public get HasMove() {
-    return this.move_.length > 0
+    return this.move_ > 0
   }
   public get MoveHeader() {
     return '**_Move_:** _' + this.Move + '_'
@@ -87,18 +87,7 @@ class Ability extends Base {
     return this.range_.length > 0
   }
   get RangeHeader() {
-    var range_string = '**Range:** '
-    for (var range_ele of this.range_) {
-      if (range_ele.category == 'Melee') range_string += '_Melee_, _Reach_ ' + range_ele.value
-      else if (range_ele.category == 'Self') range_string += '_Self_'
-      else if (range_ele.category == 'Ranged') range_string += 'Ranged ' + range_ele.value
-      else range_string += range_ele.category
-      if (range_ele.special != undefined) {
-        range_string += ' (' + range_ele.special + ')'
-      }
-      if (range_ele != this.range_[this.range_.length - 1]) range_string += '/'
-    }
-    return range_string
+    return '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -129,11 +118,11 @@ class Ability extends Base {
     this.boost_ = data.boost || ''
     this.cost_ = data.cost || ''
     this.class_ = data.class || ''
-    this.move_ = data.move || ''
+    this.move_ = data.move || 0
     this.reqs_ = data.reqs || ''
     this.target_ = data.target || ''
     if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
-    this.range_ = data.range || []
+    this.range_ = data.range || ''
   }
 }
 export default Ability

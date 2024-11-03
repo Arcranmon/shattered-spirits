@@ -1,18 +1,28 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="Armor">
-      <div class="card--header card--underline-top">
-        <h4 style="display: inline; font-style: normal;">{{ armor.Name }}</h4>
-        <b>
-          <div class="card--keywords">{{ armor.Category }}</div></b
-        >
+    <div class="card--underline-top Armor">
+      <div class="card--header">
+        <h4 style="display: inline; font-style: normal">{{ armor.Name }}</h4>
+        <div class="card--keywords">
+          <b
+            ><div>{{ armor.Category }}</div>
+            <span v-for="(keyword, index) in armor.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword" :decorate="false"
+            /></span>
+          </b>
+        </div>
       </div>
     </div>
     <div class="card--content">
-      <display-tooltip-text :string="armor.ArmorHeader" /><br />
+      <div v-if="armor.HasGuard"><display-tooltip-text :string="armor.GuardHeader" /></div>
+      <div v-if="armor.HasSoak"><display-tooltip-text :string="armor.SoakHeader" /></div>
       <display-tooltip-text :string="armor.WeightHeader" /><br />
-      <display-tooltip-text v-if="armor.HasSpecial" :string="armor.SpecialHeader" />
+      <display-tooltip-text :string="armor.DurabilityHeader" /><br />
+      <div v-if="armor.HasParry"><display-tooltip-text :string="armor.ParryHeader" /></div>
+      <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>
+      <div v-if="armor.HasSpecial"><display-tooltip-text :string="armor.SpecialHeader" /></div>
     </div>
+    <div class="desc--box" v-if="armor.Desc.length > 0" style="font-style: italic">{{ armor.Desc }}<br /></div>
   </div>
 </template>
 

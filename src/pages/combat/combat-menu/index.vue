@@ -6,7 +6,7 @@
     <br />
     <custom-button to="/afflictions-and-status">Afflictions and Status</custom-button>
     <br />
-    <custom-button to="/obstacles">Obstacles</custom-button>
+    <custom-button to="/features">Features</custom-button>
     <br />
     <custom-button to="/terrain">Terrain</custom-button>
     <br />

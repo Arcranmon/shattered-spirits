@@ -22,7 +22,7 @@
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
                   <v-file-input accept=".json" v-model="importFile" />
-                  <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
+                  <v-btn color="button--template" @click="importCharacter()" :disabled="importFile.length == 0">
                     <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
@@ -65,7 +65,9 @@
       <v-col cols="2" class="sidebar">
         <div v-for="(character, index) in characters" :key="index" class="button--spacing">
           <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)"
-            ><span style="margin: 2px"> {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit</span></v-btn
+            ><span v-if="character.Spirit.Subtype != undefined" style="margin: 2px">
+              {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit</span
+            ></v-btn
           >
         </div> </v-col
       ><v-col cols="10">
@@ -79,7 +81,7 @@
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
                   <v-file-input accept=".json" v-model="importFile" />
-                  <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
+                  <v-btn color="button--template" @click="importCharacter()" :disabled="importFile.length == 0">
                     <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
@@ -187,6 +189,7 @@ export default Vue.extend({
         store.AddCharacter(char)
       }
       reader.readAsText(this.importFile)
+      this.characterImportDialog = false
     },
   },
   computed: {

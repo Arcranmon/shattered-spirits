@@ -4,7 +4,7 @@
       <div class="card--underline-top card--header">
         <img class="image--header-left" :src="terrain.Icon" />
         <img class="image--header-right" :src="terrain.Icon" />
-        <h3 style="display: inline; font-style: normal;">{{ terrain.Name }}</h3>
+        <h3 style="display: inline; font-style: normal">{{ terrain.Name }}</h3>
         <div>
           <b><display-tooltip-text :string="terrain.TerrainDetails" :decorate="false" /></b>
         </div>
@@ -18,7 +18,10 @@
     </div>
     <div class="card--content">
       <div class="card--format">
-        <display-tooltip-text :string="terrain.EffectHeader" />
+        <display-tooltip-text :string="terrain.PositionEffectHeader" />
+      </div>
+      <div class="card--format">
+        <display-tooltip-text :string="terrain.PathEffectHeader" />
       </div>
       <div class="card--format" v-if="terrain.HasSpecial">
         <display-tooltip-text :string="terrain.SpecialHeader" />
@@ -33,7 +36,7 @@
         <display-tooltip-text :string="terrain.InteractionsHeader" />
       </div>
     </div>
-    <div class="desc--box" v-if="(terrain.Desc.length > 0)" style="font-style: italic;">{{ terrain.Desc }}<br /></div>
+    <div class="desc--box" v-if="terrain.Desc.length > 0" style="font-style: italic">{{ terrain.Desc }}<br /></div>
   </div>
 </template>
 

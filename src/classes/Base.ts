@@ -9,6 +9,7 @@ class Base {
   protected effect_: string
   protected keywords_: Array<string>
   protected special_: string
+  protected table_: Array<string>
 
   public constructor(name) {
     this.desc_ = ''
@@ -16,6 +17,7 @@ class Base {
     this.keywords_ = []
     this.name_ = name
     this.special_ = ''
+    this.table_ = []
   }
 
   // ==========================================================
@@ -36,6 +38,9 @@ class Base {
   public get Special() {
     return this.special_
   }
+  public get Table() {
+    return this.table_
+  }
 
   // ==========================================================
   // UTILITY
@@ -55,6 +60,9 @@ class Base {
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
+  public get HasTable() {
+    return this.table_.length > 0
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -72,6 +80,7 @@ class Base {
     this.keywords_ = data.keywords || []
     this.name_ = data.name || ''
     this.special_ = data.special || ''
+    this.table_ = data.table || []
   }
 }
 export default Base

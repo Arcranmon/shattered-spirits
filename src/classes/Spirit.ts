@@ -1,11 +1,12 @@
 import { store } from '@/store'
 import { Combatant, SpiritForm, Subtype } from '@/class'
 
-var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack']
-var kBasicActions = ['Hide', 'Fight', 'Shift', 'Raise Guard', 'Rally', 'Focus']
-var kBasicStunts = ['Disengage', 'Draw/Stow', 'Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
-var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge']
-var kBasicGambits = ['Aim', 'Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Critical Hit', 'Mark']
+var kBasicAttacks = ['Weapon Attack', 'Brawl']
+var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance']
+var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
+var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge']
+var kBasicGambits = ['Lethal Strike', 'Gather Momentum']
+
 class Spirit extends Combatant {
   private name_: string
   private form_: SpiritForm
@@ -47,6 +48,10 @@ class Spirit extends Combatant {
     return store.getters.getMovement(this.Form.Movement)
   }
 
+  override get MaxMovement() {
+    return this.MoveChart.Movement
+  }
+
   override get Traits() {
     var traits = [...this.form_.Traits, ...this.subtype_.Traits]
     return traits
@@ -54,6 +59,16 @@ class Spirit extends Combatant {
 
   override get Weapons() {
     return store.getters.getWeaponsFromList(this.weapons_)
+  }
+
+  get Grit() {
+    return this.Form.Grit + this.Subtype.Grit
+  }
+  get Reflex() {
+    return this.Form.Reflex + this.Subtype.Reflex
+  }
+  get Focus() {
+    return this.Form.Focus + this.Subtype.Focus
   }
 
   // ==========================================================
@@ -115,8 +130,8 @@ class Spirit extends Combatant {
 
   get Attacks() {
     var attacks = store.getters.getAttacksFromList(kBasicAttacks)
-    var form_attacks = store.getters.getAttack(this.form_.BonusAttack)
-    attacks = attacks.concat(form_attacks)
+    // var form_attacks = store.getters.getAttack(this.form_.BonusAttack)
+    // attacks = attacks.concat(form_attacks)
     attacks.sort((a, b) => a.Name.localeCompare(b.Name))
     return attacks
   }

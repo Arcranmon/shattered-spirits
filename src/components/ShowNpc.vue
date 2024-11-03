@@ -4,12 +4,23 @@
       <v-col :cols="columnNumbers"><combat-stats-widget :creature="npc" @changed="$emit('changed')" /> </v-col
       ><v-col :cols="columnNumbers"> <status-widget :creature="npc" @changed="$emit('changed')" /></v-col
     ></v-row>
-    <traits-and-weapons-widget :creature="npc" />
+    <h3 style="text-align: center">Equipment</h3>
+    <v-card>
+      <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+        <v-tab>
+          <h3>Weapons</h3>
+        </v-tab>
+      </v-tabs>
+      <v-tabs-items v-model="equipment_tab" class="character-tab-content">
+        <v-tab-item>
+          <show-cards job="Attacks" :inputs="npc.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
     <abilities-widget
       :techniques="npc.Techniques"
       :actions="npc.Actions"
-      :minor_attacks="npc.MinorAttacks"
-      :major_attacks="npc.MajorAttacks"
+      :attacks="npc.Attacks"
       :gambits="npc.Gambits"
       :stunts="npc.Stunts"
       :reactions="npc.Reactions"
@@ -22,11 +33,12 @@ import Vue from 'vue'
 import { Npc } from '@/class'
 import AbilitiesWidget from '@/components/AbilitiesWidget.vue'
 import StatusWidget from '@/components/StatusWidget.vue'
+import ShowCards from '@/components/cards/ShowCards.vue'
 import CombatStatsWidget from '@/components/CombatStatsWidget.vue'
 import TraitsAndWeaponsWidget from '@/components/TraitsAndWeaponsWidget.vue'
 export default Vue.extend({
   name: 'display-npc',
-  components: { AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
+  components: { ShowCards, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
   props: {
     npc: {
       type: Npc,

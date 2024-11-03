@@ -70,8 +70,8 @@
             <div class="card--box" v-if="job == 'Accessory'">
               <accessory-card :accessory="n" />
             </div>
-            <div class="card--box" v-if="job == 'Obstacles'">
-              <obstacle-card :obstacle="n" />
+            <div class="card--box" v-if="job == 'Features'">
+              <feature-card :feature="n" />
             </div>
             <div class="card--box" v-if="job == 'Terrain'">
               <terrain-card :terrain="n" />
@@ -81,6 +81,12 @@
             </div>
             <div class="card--box" v-if="job == 'Movement'">
               <movement-card :movement="n" />
+            </div>
+            <div class="card--box" v-if="job == 'Spirit Form'">
+              <spirit-form-card :form="n" />
+            </div>
+            <div class="card--box" v-if="job == 'Subtype'">
+              <subtype-card :type="n" />
             </div>
           </v-col>
         </v-row> </v-container
@@ -94,12 +100,14 @@ import ArmorCard from './ArmorCard.vue'
 import AccessoryCard from './AccessoryCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
 import MovementCard from './MovementCard.vue'
-import ObstacleCard from './ObstacleCard.vue'
+import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import AttackCard from './AttackCard.vue'
+import SubtypeCard from './SubtypeCard.vue'
+import SpiritFormCard from './SpiritFormCard.vue'
 
 export default Vue.extend({
   name: 'show-cards',
@@ -168,12 +176,14 @@ export default Vue.extend({
     AccessoryCard,
     ManeuverCard,
     MovementCard,
-    ObstacleCard,
+    FeatureCard,
     StanceCard,
     StatusCard,
     TechCard,
     TerrainCard,
     AttackCard,
+    SubtypeCard,
+    SpiritFormCard,
   },
   methods: {
     clickMethod(variable, index) {

@@ -4,10 +4,10 @@ import { Base } from '@/class'
 class SpiritForm extends Base {
   private size_: string
   private health_: number
+  private defenses_: IDefenseData
   private weapons_: string
   private bonus_attack_: string
   private guard_: number
-  private durability_: number
   private movement_: string
   private traits_: string[]
 
@@ -45,7 +45,27 @@ class SpiritForm extends Base {
     return this.guard_
   }
   public get ArmorHeader() {
-    return '**Armor:** ' + this.guard_ + ' Guard, ' + this.durability_ + ' Durability'
+    return '**Armor:** ' + this.guard_ + ' Guard'
+  }
+  public get HasDefenses() {
+    return this.defenses_
+  }
+  public get DefensesHeader() {
+    var header = ''
+    if (this.defenses_.stamina > 0) header += this.defenses_.stamina + ' _Stamina_'
+    if (this.defenses_.focus > 0) {
+      if (header.length > 0) header += ', '
+      header += this.defenses_.focus + ' _Focus_'
+    }
+    if (this.defenses_.grit > 0) {
+      if (header.length > 0) header += ', '
+      header += this.defenses_.grit + ' _Grit_'
+    }
+    if (this.defenses_.reflex > 0) {
+      if (header.length > 0) header += ', '
+      header += this.defenses_.reflex + ' _Reflex_'
+    }
+    return '**Defenses:** ' + header
   }
   public get Size() {
     return this.size_
@@ -108,6 +128,20 @@ class SpiritForm extends Base {
   public get VersatileHeavyLimit() {
     return this.versatile_heavy_limit_
   }
+  public get Grit() {
+    if (this.defenses_.grit) return this.defenses_.grit
+    return 0
+  }
+
+  public get Reflex() {
+    if (this.defenses_.reflex) return this.defenses_.reflex
+    return 0
+  }
+
+  public get Focus() {
+    if (this.defenses_.focus) return this.defenses_.focus
+    return 0
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -121,11 +155,11 @@ class SpiritForm extends Base {
   private setSpiritFormData(data: ISpiritFormData): void {
     this.setBaseData(data)
     this.size_ = data.size || ''
+    this.defenses_ = data.defenses || null
     this.health_ = data.health || 0
     this.weapons_ = data.weapons || ''
     this.bonus_attack_ = data.bonus_attack || ''
     this.guard_ = data.guard || 0
-    this.durability_ = data.durability || 0
     this.movement_ = data.movement || ''
     this.traits_ = data.traits || []
 

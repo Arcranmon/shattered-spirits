@@ -1,5 +1,5 @@
-<template
-  ><span>
+<template>
+  <span>
     <display-tooltip-text :string="creationText" />
     <br />
     <br />
@@ -16,12 +16,12 @@
       <div v-if="!character.HasStyleDisciplines"><display-tooltip-text :string="'You are missing a Style Discipline!'" /></div>
     </div>
     <v-row>
-      <v-layout style="margin-top: 2em; width: 100%;" justify-center>
+      <v-layout style="margin-top: 2em; width: 100%" justify-center>
         <display-tooltip-text string="You have selected the below starting Disciplines (click to remove):" />
       </v-layout>
     </v-row>
-    <v-row style="margin-top: 1em; margin-bottom: 1em;">
-      <v-layout style="margin-top: 1em; width: 100%;" justify-center>
+    <v-row style="margin-top: 1em; margin-bottom: 1em">
+      <v-layout style="margin-top: 1em; width: 100%" justify-center>
         <div v-for="disc in character.Disciplines" :key="disc.Name" class="selected--item">
           <v-btn @click="removeDiscipline(disc.name)" class="button--style" depressed tile block> {{ disc.name }} II </v-btn>
         </div>
@@ -35,9 +35,9 @@
       <v-tabs-items v-model="disciplineTab">
         <v-tab-item :eager="true" class="builder--body">
           <v-row v-if="character.Spirit.HasSubtype">
-            <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em;">
+            <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em">
               <v-btn-toggle borderless overflow-auto
-                ><div v-for="discipline in spirit_disciplines" style="width: 100%;" v-bind:key="discipline.Name">
+                ><div v-for="discipline in spirit_disciplines" style="width: 100%" v-bind:key="discipline.Name">
                   <v-btn @click="spiritDiscipline = discipline" class="button--style" depressed tile block>
                     <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
                   </v-btn>
@@ -45,7 +45,7 @@
               </v-btn-toggle></v-col
             >
             <v-col>
-              <v-layout style="margin-top: 1em; width: 100%;" justify-center
+              <v-layout style="margin-top: 1em; width: 100%" justify-center
                 ><v-btn
                   large
                   tile
@@ -65,9 +65,9 @@
         </v-tab-item>
         <v-tab-item :eager="true" class="builder--body">
           <v-row>
-            <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em;">
+            <v-col cols="auto" class="sidebar--enclosed" style="margin-top: 2em; margin-bottom: 2em">
               <v-btn-toggle borderless overflow-auto
-                ><div v-for="discipline in style_disciplines" style="width: 100%;" v-bind:key="discipline.Name">
+                ><div v-for="discipline in style_disciplines" style="width: 100%" v-bind:key="discipline.Name">
                   <v-btn @click="styleDiscipline = discipline" class="button--style" depressed tile block>
                     <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
                   </v-btn>
@@ -75,7 +75,7 @@
               </v-btn-toggle></v-col
             >
             <v-col
-              ><v-layout style="margin-top: 1em; width: 100%;" justify-center
+              ><v-layout style="margin-top: 1em; width: 100%" justify-center
                 ><v-btn
                   large
                   tile

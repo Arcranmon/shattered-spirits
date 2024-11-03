@@ -4,7 +4,7 @@
       <img class="image--header-left" :src="status.Icon" />
       <img class="image--header-right" :src="status.Icon" />
       <div class="card--underline-top card--header">
-        <h3 style="display: inline; font-style: normal;">{{ status.Name }}</h3>
+        <h3 style="display: inline; font-style: normal">{{ status.Name }}</h3>
         <div class="card--keywords">
           <b>{{ status.Type }}</b>
         </div>
@@ -14,6 +14,9 @@
       <display-tooltip-text :string="status.EffectHeader" />
       <div class="card--format" v-if="status.HasSpecial">
         <display-tooltip-text :string="status.SpecialHeader" />
+      </div>
+      <div class="card--format" v-if="status.HasRepeat">
+        <display-tooltip-text :string="status.RepeatHeader" />
       </div>
       <div class="card--format" v-if="status.HasNegate">
         <display-tooltip-text :string="status.NegateHeader" />
@@ -28,7 +31,7 @@
         <display-tooltip-text :string="status.RecoveryHeader" />
       </div>
     </div>
-    <div class="desc--box" v-if="(status.Desc.length > 0)" style="font-style: italic;">{{ status.Desc }}<br /></div>
+    <div class="desc--box" v-if="status.Desc.length > 0" style="font-style: italic">{{ status.Desc }}<br /></div>
   </div>
 </template>
 

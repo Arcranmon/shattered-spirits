@@ -5,32 +5,30 @@ var kSpiritDisciplineCategories = ['Earth']
 
 var kBaseHealth = 25
 
-var kBasicTechniques = ['Skirmish', 'Combination Strike', 'Smash']
-var kBasicAttacks = ['Weapon Attack', 'Charged Attack', 'Quickened Attack', 'Swift Manifestation', 'Unarmed Attack', 'Grapple']
-var kBasicActions = ['Hide', 'Fight', 'Shift', 'Raise Guard', 'Rally', 'Focus']
-var kBasicStunts = ['Disengage', 'Draw/Stow', 'Combo', 'Leap', 'Sprint', 'Tumble', 'Use Environment']
-var kBasicReactions = ['Flank', 'Engage', 'Opportunity Attack', 'Active Defense', 'Dodge', 'Spiritual Interdiction', 'Spirit Summon']
-var kBasicGambits = ['Aim', 'Basic Feint', 'Basic Flourish', 'Basic Sunder', 'Critical Hit', 'Mark']
+var kBasicTechniques = ['Shift', 'Rally', 'Improvise', 'Skirmish', 'Combination Strike', 'Smash']
+var kBasicStances = ['Balanced Stance', "Summoner's Stance"]
+var kBasicAttacks = ['Weapon Attack', 'Brawl']
+var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance', 'Spirit Summon']
+var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
+var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge', 'Partnership']
+var kBasicGambits = ['Lethal Strike', 'Gather Momentum']
 
 class Character extends Combatant {
-  // Combat Qualities
-  private used_manifest_: boolean
-
   // Level Up Qualities
   private current_spirit_stance_: Stance
   private current_martial_stance_: Stance
-  private equipped_armor_: Armor
   private disciplines_: Array<ICharDisciplineData>
-  private arts_: Array<ICharDisciplineData>
+  private minor_disciplines_: Array<ICharDisciplineData>
   private name_: string
   private player_character_: Boolean
   private element_: string
   private weapons_: Array<string>
   private accessories_: Array<string>
+  private armor_: Array<string>
 
   private spirit_: Spirit
 
-  kMoveCharts = [
+  kMoveChart = [
     store.getters.getMovement('Unencumbered'),
     store.getters.getMovement('Light Load'),
     store.getters.getMovement('Medium Load'),
@@ -44,10 +42,9 @@ class Character extends Combatant {
     super()
     this.current_spirit_stance_ = store.getters.getStance('No Stance')
     this.current_martial_stance_ = store.getters.getStance('No Stance')
-    this.arts_ = []
+    this.minor_disciplines_ = []
     this.disciplines_ = []
-    this.EquippedArmor = store.getters.getArmor('Basic Clothes')
-    this.used_manifest_ = false
+    this.armor_ = []
     this.spirit_ = new Spirit()
     this.name_ = ''
     this.player_character_ = true
@@ -58,26 +55,50 @@ class Character extends Combatant {
   // ==========================================================
   // COMBATANT OVERRIDES
   // ==========================================================
-  override get MaxAP() {
-    return 2
-  }
-
   override get MaxStamina() {
     return this.CurrentSpiritStance.Stamina + this.CurrentMartialStance.Stamina
-  }
-
-  override get Guard() {
-    return this.EquippedArmor.Guard
   }
 
   override get Size() {
     return '1'
   }
 
+  override get Guard() {
+    var guard = 0
+    for (var armor of this.armor_) {
+      guard += store.getters.getArmor(armor).Guard
+    }
+    return guard
+  }
+
+  override get Soak() {
+    var soak = 0
+    for (var armor of this.armor_) {
+      soak += store.getters.getArmor(armor).Soak
+    }
+    return soak
+  }
+
+  override get MaxMovement() {
+    return this.MoveChart.Movement
+  }
+
+  override get Jump() {
+    return this.MoveChart.Jump
+  }
+
   override get MoveChart() {
-    for (var movement of this.kMoveCharts) {
+    for (var movement of this.kMoveChart) {
       if (this.Weight <= movement.Encumbrance) return movement
     }
+  }
+
+  override get Traits() {
+    var traits = this.MoveChart.Traits
+    for (var armor of this.armor_) {
+      traits = [...traits, ...store.getters.getArmor(armor).Traits]
+    }
+    return traits
   }
 
   // ==========================================================
@@ -94,7 +115,7 @@ class Character extends Combatant {
       for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
       if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
     }
-    for (var art of this.arts_) {
+    for (var art of this.minor_disciplines_) {
       var art_info = store.getters.getArt(art.name)
       for (var maneuver of art_info.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
       if (art.tier > 1) for (var maneuver of art_info.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
@@ -103,36 +124,27 @@ class Character extends Combatant {
     return maneuvers
   }
 
-  get UsedManifest() {
-    return this.used_manifest_
-  }
-
-  public ToggleManifest() {
-    this.used_manifest_ = !this.used_manifest_
-  }
-
   get CurrentSpiritStance() {
     // TODO: This is a hack
     var spirit_disc = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type != 'Style')
-    return store.getters.getDiscipline(spirit_disc[0].name).Tier2Stances[0]
+    return store.getters.getStance("Summoner's Stance")
   }
   get CurrentMartialStance() {
     // TODO: This is a hack
     var style_disc = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type == 'Style')
-    return store.getters.getDiscipline(style_disc[0].name).Tier2Stances[0]
+    return store.getters.getStance('Balanced Stance')
   }
   get Disciplines() {
     return this.disciplines_
   }
 
-  get EquippedArmor() {
-    return this.equipped_armor_
-  }
-
   get Weight() {
-    var weight = this.equipped_armor_.Weight
+    var weight = 0 //this.equipped_armor_.Weight
     for (var weapon of this.weapons_) {
       weight += store.getters.getWeapon(weapon).Weight
+    }
+    for (var armor of this.armor_) {
+      weight += store.getters.getArmor(armor).Weight
     }
     return weight
   }
@@ -235,21 +247,8 @@ class Character extends Combatant {
       attacks = attacks.concat(discipline.Tier1Attacks)
       if (disc.tier > 1) attacks = attacks.concat(discipline.Tier2Attacks)
     }
-    for (var art of this.arts_) {
-      var art_info = store.getters.getArt(art.name)
-      attacks = attacks.concat(art_info.Tier1Attacks)
-      if (art.tier > 1) attacks = attacks.concat(art_info.Tier2Attacks)
-    }
     attacks.sort((a, b) => a.Name.localeCompare(b.Name))
     return attacks
-  }
-
-  get MinorAttacks() {
-    return this.Attacks.filter((x) => x.Rank == '_Minor Attack_')
-  }
-
-  get MajorAttacks() {
-    return this.Attacks.filter((x) => x.Rank == '_Major Attack_')
   }
 
   get SpiritAttacks() {
@@ -263,14 +262,6 @@ class Character extends Combatant {
     return attacks
   }
 
-  get SpiritMinorAttacks() {
-    return this.SpiritAttacks.filter((x) => x.Rank == '_Minor Attack_')
-  }
-
-  get SpiritMajorAttacks() {
-    return this.SpiritAttacks.filter((x) => x.Rank == '_Major Attack_')
-  }
-
   public SpiritManeuversOfType(type: string) {
     if (type == 'Action') var maneuvers = this.Spirit.Actions
     if (type == 'Stunt') var maneuvers = this.Spirit.Stunts
@@ -278,21 +269,27 @@ class Character extends Combatant {
     if (type == 'Gambit') var maneuvers = this.Spirit.Gambits
     for (var disc of this.disciplines_) {
       var discipline = store.getters.getDiscipline(disc.name)
-      if (discipline.Type == 'Style') continue
+      if (discipline.Category != this.Element) continue
       for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
       if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-    }
-    for (var art of this.arts_) {
-      var art_info = store.getters.getArt(art.name)
-      if (discipline.Type == 'Style') continue
-      for (var maneuver of art_info.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-      if (art.tier > 1) for (var maneuver of art_info.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
     }
     maneuvers.sort((a, b) => a.Name.localeCompare(b.Name))
     return maneuvers
   }
   get Weapons() {
     return this.weapons_
+  }
+  get Armor() {
+    return this.armor_
+  }
+  get Grit() {
+    return this.CurrentMartialStance.Grit + this.CurrentSpiritStance.Grit
+  }
+  get Reflex() {
+    return this.CurrentMartialStance.Reflex + this.CurrentSpiritStance.Reflex
+  }
+  get Focus() {
+    return this.CurrentMartialStance.Focus + this.CurrentSpiritStance.Focus
   }
 
   // ==========================================================
@@ -303,10 +300,6 @@ class Character extends Combatant {
   }
   set CurrentMartialStance(martial_stance: Stance) {
     this.current_martial_stance_ = martial_stance
-  }
-
-  set EquippedArmor(armor: Armor) {
-    this.equipped_armor_ = armor
   }
 
   set Name(name: string) {
@@ -329,12 +322,12 @@ class Character extends Combatant {
   }
 
   public AddArt(art: Discipline) {
-    var idx = this.arts_.findIndex((e) => e.name == art.Name)
+    var idx = this.minor_disciplines_.findIndex((e) => e.name == art.Name)
     if (idx == -1) {
       var new_discipline: ICharDisciplineData = { name: art.Name, tier: 1 }
-      this.arts_.push(new_discipline)
+      this.minor_disciplines_.push(new_discipline)
     } else {
-      this.arts_[idx].tier += 1
+      this.minor_disciplines_[idx].tier += 1
     }
   }
 
@@ -359,7 +352,6 @@ class Character extends Combatant {
 
   override ApplyRespite() {
     super.ApplyRespite()
-    this.used_manifest_ = false
     this.spirit_.ApplyRespite()
   }
 
@@ -373,17 +365,13 @@ class Character extends Combatant {
   }
 
   public ClearSpiritAbilities() {
-    this.arts_ = this.arts_.filter((art) => store.getters.getArt(art.name).Type == 'Style')
+    this.minor_disciplines_ = this.minor_disciplines_.filter((art) => store.getters.getArt(art.name).Type == 'Style')
     this.disciplines_ = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type == 'Style')
   }
 
   // ==========================================================
   // CONVENIENCE CHECKS
   // ==========================================================
-  get HasEquippedArmor() {
-    return this.equipped_armor_ != null
-  }
-
   get HasSpirit() {
     return this.element_ != ''
   }
@@ -423,7 +411,7 @@ class Character extends Combatant {
   }
 
   get Complete() {
-    return this.HasSpirit && this.HasEquippedArmor && this.HasNames
+    return this.HasSpirit && this.HasNames
   }
 
   get AnyStanceUnequipped() {
@@ -436,7 +424,7 @@ class Character extends Combatant {
 
   get RecommendedDisciplines() {
     var recs = [this.element_, 'Unarmed']
-    if (this.equipped_armor_ != null) recs.push(this.equipped_armor_.Category)
+    //if (this.equipped_armor_ != null) recs.push(this.equipped_armor_.Category)
     for (var weapon of this.weapons_) {
       var full_weapon = store.getters.getWeapon(weapon)
       if (!recs.includes(full_weapon.Category + ' Weapon')) recs.push(full_weapon.Category + ' Weapon')
@@ -461,17 +449,15 @@ class Character extends Combatant {
     return {
       //Character Save Data
       ...super.Serialize(character),
+      spirit: Spirit.Serialize(character.spirit_),
       current_spirit_stance: character.current_spirit_stance_ ? character.current_spirit_stance_.Name : '',
       current_martial_stance: character.current_martial_stance_ ? character.current_martial_stance_.Name : '',
-      arts: character.arts_,
       disciplines: character.disciplines_,
-      equipped_armor: character.equipped_armor_ ? character.equipped_armor_.Name : '',
+      armor: character.armor_,
       element: character.element_,
       accessories: character.accessories_,
       name: character.name_,
       player_character: character.player_character_,
-      spirit: Spirit.Serialize(character.spirit_),
-      used_manifest: character.used_manifest_,
       weapons: character.weapons_,
     }
   }
@@ -483,19 +469,17 @@ class Character extends Combatant {
   }
 
   private setCharacterData(data: ICharacterData): void {
+    this.spirit_ = Spirit.Deserialize(data.spirit)
     if ('current_spirit_stance' in data) this.current_spirit_stance_ = store.getters.getStance(data.current_spirit_stance)
     if ('current_martial_stance' in data) this.current_martial_stance_ = store.getters.getStance(data.current_martial_stance)
-    if ('equipped_armor' in data) this.equipped_armor_ = store.getters.getArmor(data.equipped_armor)
     this.accessories_ = data.accessories || []
     this.element_ = data.element || ''
     this.name_ = data.name || ''
     this.player_character_ = data.player_character || true
-    this.arts_ = data.arts || []
     this.disciplines_ = data.disciplines || []
-    this.used_manifest_ = data.used_manifest || false
+    this.armor_ = data.armor || []
     this.weapons_ = data.weapons || []
     this.setCombatantData(data)
-    this.spirit_ = Spirit.Deserialize(data.spirit)
   }
 }
 export default Character
