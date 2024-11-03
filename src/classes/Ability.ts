@@ -87,7 +87,7 @@ class Ability extends Base {
     return this.range_.length > 0
   }
   get RangeHeader() {
-    return '**Range:** _' + this.range_.replaceAll('/', '_/_') + '_'
+    return '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
   }
   public get HasReqs() {
     return this.reqs_.length > 0

@@ -2,7 +2,7 @@ import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loade
 
 import Vue from 'vue'
 import router from './router'
-import { CharacterManagementStore, DatabaseJsonStore, store } from './store'
+import { DatabaseJsonStore, CharacterManagementStore, store } from './store'
 import App from './App.vue'
 import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
@@ -58,8 +58,8 @@ new Vue({
   store,
   vuetify,
   async created() {
-    await getModule(CharacterManagementStore, store).loadCharacters()
     await getModule(DatabaseJsonStore, store).loadDatabase()
+    await getModule(CharacterManagementStore, store).loadCharacters()
   },
   render: (h) => h(App),
 }).$mount('#app')

@@ -26,6 +26,7 @@
       <div v-if="attack.HasEffect"><display-tooltip-text :string="attack.EffectHeader" /></div>
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <div v-if="attack.HasBoost"><display-tooltip-text :string="attack.BoostHeader" /></div>
+      <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
       <div v-if="attack.Chart.HasOnMiss"><display-tooltip-text :string="attack.Chart.OnMissHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
       <div v-if="attack.HasChargedEffect">
@@ -37,7 +38,6 @@
           <display-tooltip-text :string="attack.ChargedEffectResolution" />
         </div>
       </div>
-      <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
     </div>
     <div class="desc--box" v-if="attack.Desc.length > 0" style="font-style: italic">{{ attack.Desc }}<br /></div>
   </div>

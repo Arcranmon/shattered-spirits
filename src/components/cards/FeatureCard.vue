@@ -10,7 +10,7 @@
             <div>
               <display-tooltip-text :string="feature.ElementHeader" :decorate="false" />
             </div>
-            <span> {{ feature.SizeHeader }}<br /> </span
+            <span> {{ feature.DetailsHeader }}<br /> </span
             ><span v-for="(keyword, index) in feature.Keywords" :key="index" class="keyword--box">
               <display-tooltip-text :string="keyword" :decorate="false"
             /></span></div
@@ -18,6 +18,12 @@
       </div>
     </div>
     <div class="card--content">
+      <div class="tech--format" v-if="feature.HasDefenses">
+        <display-tooltip-text :string="feature.DefensesHeader" />
+      </div>
+      <div class="tech--format" v-if="feature.HasResistances">
+        <display-tooltip-text :string="feature.ResistancesHeader" />
+      </div>
       <div class="tech--format" v-if="feature.HasTraits">
         <display-tooltip-text :string="feature.TraitsHeader" />
       </div>
@@ -41,6 +47,9 @@
       </div>
       <div class="tech--format" v-if="feature.HasDamageType">
         <display-tooltip-text :string="feature.DamageType" />
+      </div>
+      <div class="tech--format" v-if="feature.HasCollision">
+        <display-tooltip-text :string="feature.CollisionHeader" />
       </div>
       <div class="expand--collapse-box-outlined" v-if="feature.HasChart">
         <v-expansion-panels class="condensed" flat tile>

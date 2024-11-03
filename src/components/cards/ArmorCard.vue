@@ -14,10 +14,12 @@
       </div>
     </div>
     <div class="card--content">
-      <display-tooltip-text :string="armor.ArmorHeader" /><br />
+      <div v-if="armor.HasGuard"><display-tooltip-text :string="armor.GuardHeader" /></div>
+      <div v-if="armor.HasSoak"><display-tooltip-text :string="armor.SoakHeader" /></div>
       <display-tooltip-text :string="armor.WeightHeader" /><br />
-      <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>
+      <display-tooltip-text :string="armor.DurabilityHeader" /><br />
       <div v-if="armor.HasParry"><display-tooltip-text :string="armor.ParryHeader" /></div>
+      <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>
       <div v-if="armor.HasSpecial"><display-tooltip-text :string="armor.SpecialHeader" /></div>
     </div>
     <div class="desc--box" v-if="armor.Desc.length > 0" style="font-style: italic">{{ armor.Desc }}<br /></div>

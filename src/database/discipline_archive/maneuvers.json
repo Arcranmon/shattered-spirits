@@ -26,7 +26,7 @@
     "name": "Armored Shell",
     "desc": "You trust fully in armor, risking damage to better block an attack.",
     "type": "Resist",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "0 _Grit_",
     "reqs": "Must be wearing Light or Heavy Armor that has _Durability_ remaining.",
     "trigger": "You are Attacked.",
@@ -266,7 +266,7 @@
   {
     "name": "Deflect",
     "desc": "You block an attack, either with a weapon or your armor.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "1 _Grit_",
     "trigger": "You take Damage.",
     "effect": "Increase your _Guard_ by 1 against the triggering Damage.",
@@ -330,13 +330,13 @@
   {
     "name": "Earthen Aegis",
     "desc": "You pull forth a wall of stone, defending at the last moment.",
-    "keywords": ["Earth", "Block"],
+    "keywords": ["Earth", "Ward"],
     "cost": "3 _Grit_, 1 _Charge_",
     "range": "3",
     "trigger": "A creature within Range is Attacked.",
-    "effect": "Create an _Earth Block_ adjacent to the Target and within Range. Resolve the Attack as if that Obstacle was there from the start. If the Attack would do more damage than the Obstacle's _Durability_, immediately destroy it and replace it with _Rough_ Terrain. If the Attack came from a creature adjacent to the Target (and the Target is willing) inflict _Push_ 1 on the Target, moving them directly from the Attacker, then resolve the Effect. Resolve the Attack as if they were still adjacent to the foe, just with the benefits of the _Obstacle_ being present.",
-    "special": "At the end of the _Round_ lose all _Charges_ of this _Technique_ and gain an equal amount of _Grit_. If you would gain at least 2 _Grit_ in this way you may gain 2 less to create an _Earth Block_ in an adjacent space.",
-    "boost": "Choose one:\n* 1 _Grit_: Instead, create an _Earth Pillar_.\n* 2 _Momentum_: If the Attacker is within Range 6 of the _Earth Block_ you launch the barricade at them. Remove the _Earth Block_ then make a _Weapon Attack_ against the triggering Attacker with a _Heavy Improvised Weapon_, ignoring all Ranged penalties, then place a space of _Rough Terrain_ adjacent to the Attacker in the direction the Attack came from.",
+    "effect": "Create an _Earth Ward_ adjacent to the Target and within Range. Resolve the Attack as if that Obstacle was there from the start. If the Attack would do more damage than the Obstacle's _Durability_, immediately destroy it and replace it with _Rough_ Terrain. If the Attack came from a creature adjacent to the Target (and the Target is willing) inflict _Push_ 1 on the Target, moving them directly from the Attacker, then resolve the Effect. Resolve the Attack as if they were still adjacent to the foe, just with the benefits of the _Obstacle_ being present.",
+    "special": "At the end of the _Round_ lose all _Charges_ of this _Technique_ and gain an equal amount of _Grit_. If you would gain at least 2 _Grit_ in this way you may gain 2 less to create an _Earth Ward_ in an adjacent space.",
+    "boost": "Choose one:\n* 1 _Grit_: Instead, create an _Earth Pillar_.\n* 2 _Momentum_: If the Attacker is within Range 6 of the _Earth Ward_ you launch the barricade at them. Remove the _Earth Ward_ then make a _Weapon Attack_ against the triggering Attacker with a _Heavy Improvised Weapon_, ignoring all Ranged penalties, then place a space of _Rough Terrain_ adjacent to the Attacker in the direction the Attack came from.",
     "type": "Resist"
   },
   {
@@ -428,7 +428,7 @@
   {
     "name": "Guard Counter",
     "desc": "You attack and defend simultaneously, striking out a foe.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "reqs": "Light Armor Worn.",
     "cost": "3 _Grit_/_Momentum_",
     "trigger": "You are Attacked.",
@@ -482,7 +482,7 @@
   {
     "name": "Heavy Guard",
     "desc": "You raise your guard temporarily, preparing for an assault.",
-    "keywords": ["Earth", "Block"],
+    "keywords": ["Earth", "Ward"],
     "cost": "1 _Grit_",
     "trigger": "You are Attacked.",
     "effect": "Gain _Hobbled_ 1. Increase your _Guard_ by 2 against the triggering Attack and reduce the _Grit_ cost to _Negate_ by 1. If you are _Forcibly Moved_, reduce the distance by 2.",
@@ -560,7 +560,7 @@
   {
     "name": "Lionheart Shield",
     "desc": "You become a shining example of courage, leaping in front of an attack that would harm a friend.",
-    "keywords": ["Earth", "Block"],
+    "keywords": ["Earth", "Ward"],
     "type": "Resist",
     "cost": "2 _Grit_/_Poise_",
     "trigger": "An adjacent ally is Attacked by a creature _Marked_ by you.",
@@ -653,11 +653,11 @@
   {
     "name": "Interposing Shield",
     "desc": "You pluck an attack from the air, causing it to strike your shield.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "2 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "A Ranged Attack passes through a space within your Weapon's _Reach_.",
-    "effect": "You become the target of the Attack. Immediately use _Shield Block_ at no cost against this Attack.",
+    "effect": "You become the target of the Attack. Immediately use _Shield Ward_ at no cost against this Attack.",
     "type": "Resist"
   },
   {
@@ -713,7 +713,7 @@
     "keywords": ["Earth"],
     "type": "Flourish",
     "cost": "1 _Grit_/_Momentum_",
-    "trigger": "You complete a _Weapon Attack_ and the opponent used a _Block_ _Maneuver_.",
+    "trigger": "You complete a _Weapon Attack_ and the opponent used a _Ward_ _Maneuver_.",
     "effect": "Deal 2 Damage, then inflict _Dazed_ 1, _Push_ 3 (1 _Poise_)."
   },
   {
@@ -774,7 +774,7 @@
   {
     "name": "Plate Lock",
     "desc": "You condense the plates of your armor as you're struck, momentarily heightening your defenses.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "2 _Grit_",
     "trigger": "You take Damage while you have _Stone Armor_.",
     "effect": "Gain _Slowed_. Increase your _Guard_ by 2 against the Attack, reduce the _Grit_ cost to _Negate_ by 2, and reduce any _Forced Movement_ by 2. Your _Stone Armor_ takes the full Damage you do instead of half.",
@@ -906,7 +906,7 @@
   {
     "name": "Sacrificial Shield",
     "desc": "You haphazardously throw up your shield, risking your shield to defend.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "1 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You take Damage.",
@@ -943,9 +943,9 @@
     "type": "Gambit"
   },
   {
-    "name": "Shield Block",
+    "name": "Shield Ward",
     "desc": "You block with your shield, providing an unparalled defense.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "2 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You are Attacked.",
@@ -1119,7 +1119,7 @@
     "keywords": ["Earth", "Repeatable"],
     "range": "4",
     "cost": "2 _Grit_ (increase the Cost by 1 for each repeated use in a _Turn_)",
-    "effect": "Create an _Earth Block_ in an unoccupied space within Range.",
+    "effect": "Create an _Earth Ward_ in an unoccupied space within Range.",
     "type": "Stunt"
   },
   {
@@ -1196,7 +1196,7 @@
   {
     "name": "Vigilant Defender",
     "desc": "You cover an aly with your shield, protecting them from harm.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "1 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "An ally within your Weapon's _Reach_ is attacked.",
@@ -1252,11 +1252,11 @@
   {
     "name": "Wide Guard",
     "desc": "Your shield protects all nearby, warding against all harm.",
-    "keywords": ["Block"],
+    "keywords": ["Ward"],
     "cost": "3 _Grit_",
     "weapon": "_Shield_ with _Durability_.",
     "trigger": "You or an adjacent ally are hit with an _Area_ Attack.",
-    "effect": "Use the _Shield Block_ Reaction for no Cost, granting the benefits to you and all adjacent allies. Instead of your Shield taking Damage from each Attack, it instead takes the highest Damage dealt.",
+    "effect": "Use the _Shield Ward_ Reaction for no Cost, granting the benefits to you and all adjacent allies. Instead of your Shield taking Damage from each Attack, it instead takes the highest Damage dealt.",
     "boost": "1 _Grit_: Gain a benefit depending on the Area of the Triggering attack.\n* _Line_: The Attack gains _Glancing_ for all targets in spaces past your own.\n* _Cone_, _Blast_, or _Burst_: This Attack is [_Glancing_] against allies in the adjacent spaces opposite the origin of the Attack.",
     "type": "Resist"
   }

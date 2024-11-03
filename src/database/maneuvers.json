@@ -75,12 +75,12 @@
     "effect": "Roll a d6 and resolve the effect using the below table. This Attack may not trigger an additional _Gambit_. You may ignore the _Speed_ of your _Wielded_ _Rod_ for this effect.",
     "class": "General",
     "table": [
-      "Make an additional Attack with your _Rod_ at _Disadvantage_ against any Target.",
-      "Make an additional Attack with your _Rod_ against any Target.",
-      "Make an additional Attack with your _Rod_ against any Target.",
-      "Make an additional Attack with your _Rod_ against any Target.",
-      "Make an additional Attack with your _Rod_ against any Target.",
-      "Make an additional Attack with your _Rod_ at _Advantage_ against any Target."
+      "Make an additional Attack with your _Rod_ at _Disadvantage_.",
+      "Make an additional Attack with your _Rod_.",
+      "Make an additional Attack with your _Rod_.",
+      "Make an additional Attack with your _Rod_.",
+      "Make an additional Attack with your _Rod_.",
+      "Make an additional Attack with your _Rod_ at _Advantage_."
     ]
   },
   {
@@ -123,7 +123,7 @@
     "keywords": ["Spirit"],
     "type": "Gambit",
     "reqs": "_Graze_+.",
-    "effect": "Roll a d6, add [_Fire_] to the triggering Attack, then resolve using the below table:",
+    "effect": "Roll a d6, add [_Fire_, _Ignite_] to the triggering Attack, then resolve using the below table:",
     "class": "Blaze",
     "table": [
       "Deal 1 _Bonus Damage_.",
@@ -180,7 +180,7 @@
     "keywords": ["Spirit"],
     "type": "Action",
     "move": "0/1",
-    "range": "Melee/Short/Medium",
+    "range": "Medium-",
     "effect": "Gain 1 _Momentum_, then choose:\n* Apply _Gusting_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Windy_ _Terrain_ within _Range_.",
     "class": "Gale"
   },
@@ -214,6 +214,16 @@
     "effect": "Deal 2 Stab Damage [_Avoidable_] in a _Burst_ 1.",
     "special": "If the Guard of your Stone Armor is reduced by the triggering Attack, cost is instead None. If it destroyed your Stone Armor, deal +4 _Bonus Damage_.",
     "class": "Mountain"
+  },
+  {
+    "name": "Changing Tides",
+    "desc": "You change the motions of the tides, controlling the water around you.",
+    "type": "Action",
+    "keywords": ["Spirit", "Water"],
+    "range": "Melee/Short/Medium",
+    "effect": "Choose one:\n* Gain 1 _Momentum_ and add _Churning Water_ to a _Watersource_ within _Range_.\n* _Draw_ I and apply _Wet_ and _Churning Water_ to a _Position_/_Path_ within _Range_.",
+    "special": "After using this _Action_ you may choose whether _Tidal Motion_ is on _Push_ or _Pull_.",
+    "class": "Tide"
   },
   {
     "name": "Churning Wind",
@@ -432,19 +442,19 @@
   {
     "name": "Defend",
     "desc": "You defend yourself, mitigating an incoming blow.",
-    "keywords": ["Defensive", "Block"],
+    "keywords": ["Defensive"],
     "type": "Reaction",
     "cost": "1 _Stamina_",
     "trigger": "You are Attacked, take Damage, or must _Negate_.",
-    "effect": "Roll a d6 and resolve the effect using the below table. You may also gain the _Parry_ bonus from a _Wielded_ piece of Equipment. If you do and the triggering effect inflicts _Sundered_ it is always applied to said piece of Equipment.",
+    "effect": "Roll a d6 and resolve the effect using the below table. You may also gain the _Parry_ bonus from a _Wielded_ piece of Equipment. If you do and the triggering effect inflicts any _Sundered_ it is always first applied to said piece of Equipment.",
     "class": "Basic",
     "table": [
-      "Gain 1 _Block_ OR a +1 _Bonus_ to _Negate_.",
-      "Gain 2 _Block_ OR a +2 _Bonus_ to _Negate_.",
-      "Gain 2 _Block_ OR a +2 _Bonus_ to _Negate_.",
-      "Gain 3 _Block_ OR a +3 _Bonus_ to _Negate_.",
-      "Gain 3 _Block_ OR a +3 _Bonus_ to _Negate_.",
-      "Gain 4 _Block_ OR a +4 _Bonus_ to _Negate_. Gain 1 _Stamina_."
+      "Gain 1 _Ward_ and add [_Block_] OR a +1 _Bonus_ to _Negate_.",
+      "Gain 2 _Ward_ and add [_Block_] OR a +2 _Bonus_ to _Negate_.",
+      "Gain 2 _Ward_ and add [_Block_] OR a +2 _Bonus_ to _Negate_.",
+      "Gain 3 _Ward_ and add [_Block_] OR a +3 _Bonus_ to _Negate_.",
+      "Gain 3 _Ward_ and add [_Block_] OR a +3 _Bonus_ to _Negate_.",
+      "Gain 4 _Ward_ and add [_Block_] OR a +4 _Bonus_ to _Negate_. Gain 1 _Stamina_."
     ]
   },
   {
@@ -478,6 +488,33 @@
     "special": "You may choose to change the original Attack's Damage to _Crush_."
   },
   {
+    "name": "Dust Devil",
+    "desc": "You create a vortex low to the ground, flinging dust and detritus up in an obscuring cloud.",
+    "type": "Action",
+    "keywords": ["Spirit"],
+    "range": "Short/Medium",
+    "effect": "Make a _Position_ within Range _Veiled_. You may inflict _Exposed_ [4 _Grit_] on a single creature at the _Position_.",
+    "special": "If the _Position_ was _Gusting_ you may instead inflict _Blinded_ or increase the cost to _Negate_ by 3.",
+    "class": "Gale"
+  },
+  {
+    "name": "Envenom",
+    "desc": "You punctuate an attack with an explosion, disorienting and launching foes.",
+    "keywords": ["Poison", "Endurable"],
+    "type": "Gambit",
+    "reqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
+    "effect": "Roll a d6, then resolve using the below table:",
+    "class": "General",
+    "table": [
+      "Deal 2 _Bonus Damage_ and add _Poisoned_ I [3 _Grit_].",
+      "Deal 3 _Bonus Damage_ and add _Poisoned_ I [3 _Grit_].",
+      "Deal 3 _Bonus Damage_ and add _Poisoned_ I [4 _Grit_].",
+      "Deal 4 _Bonus Damage_ and add _Poisoned_ II [4 _Grit_].",
+      "Deal 4 _Bonus Damage_ and add _Poisoned_ II [5 _Grit_].",
+      "Deal 5 _Bonus Damage_ and add _Poisoned_ III [6 _Grit_]."
+    ]
+  },
+  {
     "name": "Retreat",
     "desc": "You focus your efforts on moving away from hostile foes.",
     "type": "Stunt",
@@ -501,8 +538,8 @@
     "keywords": ["Defensive", "Evade"],
     "type": "Reaction",
     "cost": "1 _Stamina_",
-    "trigger": "You are Attacked and are not _Prone_ or _Restrained_.",
-    "effect": "Roll on the below table. If you can pay the listed _Movement_ cost, add [_Glancing_] to the triggering Attack. Otherwise, gain _Prone_. You always lose _Guarding_ or _Charging_.",
+    "trigger": "You are Attacked and are not _Immobile_.",
+    "effect": "Roll on the below table. If you can pay the listed _Movement_ cost, add [_Glancing_] to the triggering Attack. Otherwise, lose all remaining _Movement_ and gain _Prone_. You always lose _Guarding_ or _Charging_.",
     "special": "If the triggering Attack was _Avoidable_ you may roll at _Advantage_.",
     "table": [
       "You must pay 3 _Movement_. Gain +1 _Reflex_.",
@@ -540,7 +577,7 @@
     "cost": "1 _Momentum_, or 0 _Momentum_ if the Equipment has the _Quickdraw_ property or is being _Puppeted_ by you.",
     "reqs": "Your _Turn_.",
     "effect": "Choose one:\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ an _Equipped_ piece of _Equipment_.\n* Spend a _Move_. _Equip_/_Wield_ a single unattended piece of _Equipment_ in your _Arena_. If said _Equipment_ is in an _Engagement_, you must enter it.\n* An ally in your _Engagement_ may immediately _Equip_ a piece of _Equipment_ you have _Wielded_/_Equipped_.",
-    "special": "Whenever you would _Equip_/_Wield_ something, you may choose to instead place it unattended in your _Arena_.",
+    "special": "Whenever you would _Equip_/_Wield_ something, you may choose to instead place it unattended at your _Position_.",
     "class": "Basic"
   },
   {
@@ -562,6 +599,36 @@
     "effect": "Become _Guarding_. While _Guarding_:\n* All Attacks by the Target take a -1 _Penalty_ against you.\n* Gain 1 _Guard_ against all Attacks made by the Target. \n* Reduce the cost of _Defensive_ _Reactions_ against the Target by 1.\n* Increase the cost of _Defensive_ _Reactions_ against all others by 1",
     "special": "If you have a creature adjacent to you other than the Target, you do not benefit from the Efect, but remain _Guarding_. Lose this _Guarding_ if you deal Damage to or inflict Status on a creature other than the Target.",
     "class": "Basic"
+  },
+  {
+    "name": "Falling Cinders",
+    "desc": "Your flames erupt and spit, spreading with reckless abandon.",
+    "keywords": ["Spirit"],
+    "type": "Reaction",
+    "trigger": "A _Position_ or _Path_ in _Short_- Range that is already _Blazing_ would become _Blazing_.",
+    "cost": "1 _Momentum",
+    "range": "Melee/Short/Medium",
+    "effect": "Instead, make a different _Position_ or _Path_ within _Range_ _Blazing_ OR add [_Sturdy_] to that _Terrain_.",
+    "class": "Blaze"
+  },
+  {
+    "name": "Ensnaring Vortex",
+    "desc": "You form a defensive vortex, slowing the impact of an attack and potentially redirecting it.",
+    "type": "Reaction",
+    "keywords": ["Spirit", "Defensive", "Ward"],
+    "trigger": "You are Attacked by a _Short_+ Range Attack.",
+    "cost": "1 _Stamina_",
+    "effect": "Roll a d6, then consult the below chart. If you take no _Damage_ or _Stun_ from the triggering Attack and it was Single-Target you may redirect it; you gain no _Status_ from it and an enemy within _Short_- Range instead becomes the Target of the Attack:",
+    "table": [
+      "Gain 1 _Ward_ and +1 _Reflex_.",
+      "Gain 2 _Ward_ and +1 _Reflex_.",
+      "Gain 3 _Ward_ and +2 _Reflex_.",
+      "Gain 4 _Ward_ and +2 _Reflex_.",
+      "Gain 5 _Ward_ and +3 _Reflex_.",
+      "Gain 6 _Ward_ and +3 _Reflex_. Gain 1 _Stamina_."
+    ],
+    "special": "\n* If the triggering Attack has [_Earth_] or [_Stone_] roll at _Disadvantage_.\n* If in a _Gusting_ space roll at _Advantage_.\n* If the triggering Attack was Single-Target and made by an ally you automatically take no _Damage_/_Stun_ and resolve the redirect effect.",
+    "class": "Gale"
   },
   {
     "name": "Duelist's Invitation",
@@ -591,7 +658,7 @@
     "type": "Action",
     "range": "Melee/Short",
     "effect": "Create a _Stone Wall_ at a _Position_ or _Path_ within Range.",
-    "special": "You may immediately Occupy any _Feature_ you creature at your _Position_.",
+    "special": "You may immediately Occupy any _Feature_ you create at your _Position_.",
     "boost": "Choose one:\n* 2 _Momentum_: Instead, create an _Stone Fort_ at a _Position_ within Range.\n* 3 _Momentum_: Instead, create a _Stone Fort_ at a _Path_ within _Range_.",
     "class": "Mountain"
   },
@@ -602,7 +669,7 @@
     "move": 0,
     "type": "Action",
     "range": "Melee/Short",
-    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Inflict _Push_/_Pull_ [6 _Grit_] on a _Stone_ _Feature_",
+    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* _Push_/_Pull_ a [_Stone_] _Feature_ with a _Weight_ of 6 or less.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
     "class": "Mountain"
   },
   {
@@ -638,6 +705,19 @@
     "manifest": "Add [_Manifest_]. The Cost is instead None and Range is instead your spirit's _Reposition_ distance. Instead, resolve the effect in three contiguous _Earthen_ spaces. A single ally or enemy in one of these spaces either regains 1 _Stamina_ or gains _Dazed_ 1."
   },
   {
+    "name": "Earthen Shield",
+    "desc": "You seize a piece of stone, whipping it around to defend yourself.",
+    "keywords": ["Spirit", "Defensive", "Block"],
+    "type": "Reaction",
+    "range": "Melee/Short",
+    "cost": "1 _Stamina_, 1 _Momentum_",
+    "trigger": "You are Attacked, take Damage, or must _Negate_.",
+    "effect": "Choose an _Earth_ _Feature_ within Range with a _Weight_ of 8 or less. Gain _Ward_ equal to half the _Hardness_ of the _Feature_ and +1 _Grit_. After resolving the Attack, immediately _Pull_ the _Feature_ to your _Position_. If the _Damage_ dealt is greater than the _Ward_ provided, immediately _Destroy_ the _Feature_; otherwise, you may immediately _Occupy_ it.",
+    "special": "Apply the _Bonus Damage_ from _Siege_ to the triggering _Attack_.",
+    "boost": "1 _Stamina_: Instead, gain _Ward_ equal to the _Hardness_ of the _Feature_. Gain _Hobbled_.",
+    "class": "Mountain"
+  },
+  {
     "name": "Earthen Implement",
     "desc": "You use your powers to swiftly wield an earthen item.",
     "keywords": ["Spirit"],
@@ -669,7 +749,7 @@
     "desc": "You channel energy through your staff, preparing for a greater craft.",
     "type": "Action",
     "reqs": "_Wielding_ a _Rod_ and not _Suppressed_.",
-    "effect": "Gain 3 _Arcana_. Gain the _Parry_ effect of your _Rod_ while _Wielding_ it until the end of the _Phase_.",
+    "effect": "Gain 3 _Arcana_. _Parry_ with your _Rod_ until the end of the _Phase_.",
     "special": "You may not _Move_ this _Turn_.",
     "class": "General"
   },
@@ -960,12 +1040,12 @@
     "effect": "Roll a d6, add [_Wind_] to the triggering attack, then resolve using the below table:",
     "class": "Gale",
     "table": [
-      "Inflict _Push_ [2 _Grit_] on one Target.",
-      "Inflict _Push_ [3 _Grit_] on one Target.",
-      "Inflict _Push_ [4 _Grit_] on one Target.",
-      "Inflict _Push_, _Airborne_ [4 _Grit_] on one Target.",
-      "Inflict _Push_, _Airborne_ [5 _Grit_] on one Target.",
-      "Inflict _Push_, _Airborne_ [6 _Grit_] on one Target."
+      "Inflict _Push_ 1 [2 _Grit_] on one Target.",
+      "Inflict _Push_ 1 [3 _Grit_] on one Target.",
+      "Inflict _Push_ 1 [4 _Grit_] on one Target.",
+      "Inflict _Push_ 1, _Airborne_ [4 _Grit_] on one Target.",
+      "Inflict _Push_ 1, _Airborne_ [5 _Grit_] on one Target.",
+      "Inflict _Push_ 2, _Airborne_ [6 _Grit_] on one Target."
     ]
   },
   {
@@ -1063,7 +1143,7 @@
     "cost": "2 _Momentum_",
     "effect": "Add _Veiled_ to your current _Position_. You may inflict _Stun_ 1 on all creatures at your _Position_.",
     "special": "On a _Graze_-, the Cost is instead 1. On a _Miss_, the Cost is None.",
-    "class": "General"
+    "class": "Martial"
   },
   {
     "name": "Inspire",
@@ -1088,7 +1168,7 @@
     "type": "Reaction",
     "cost": "1 _Stamina_",
     "trigger": "An adjacent ally is Attacked or an Attack targeting an ally passes through your space or an adjacent one.",
-    "effect": "Use a _Block_ _Reaction_ with a 1 _Stamina_ discount, granting your ally all benefits. You gain any penalties or drawbacks associated with the _Reaction_ rather than your ally.",
+    "effect": "Use a _Ward_ _Reaction_ with a 1 _Stamina_ discount, granting your ally all benefits. You gain any penalties or drawbacks associated with the _Reaction_ rather than your ally.",
     "class": "General"
   },
   {
@@ -1221,7 +1301,7 @@
     "type": "Gambit",
     "reqs": "_Hit_+.",
     "effect": "Roll a d6, then deal X _Bonus Damage_ where X is the die roll.",
-    "special": "You have _Advantage_ on this roll if the target is _Staggered_.",
+    "special": "You have _Advantage_ on this roll if the target is _Stunned_.",
     "class": "Basic"
   },
   {
@@ -1359,17 +1439,17 @@
     "range": "Any",
     "cost": "1 _Momentum_",
     "trigger": "You or an ally attacks a foe with _Studied_.",
-    "effect": "Remove _Studied_ from the Target. Your ally may add [_Pierce_ 2] to the Attack. After resolving the Attack, inflict _Sundered_ [5 _Grit_].",
+    "effect": "Remove _Studied_ from the Target. Your ally may add [_Pierce_ 2] to the Attack. After resolving the Attack, inflict _Sundered_ 2 [5 _Grit_].",
     "class": "General"
   },
   {
     "name": "Mountain Strike",
-    "desc": "You rip the earth towards a target, punctuating an attack with a hail of stone.",
-    "keywords": ["Spirit"],
+    "desc": "You rip the earth and coat your strike in it, granting it heft and power.",
+    "keywords": ["Spirit", "Crush", "Stone"],
     "type": "Gambit",
-    "reqs": "_Graze_+ and Target's _Arena_ has an _Earthen_ _Source_.",
-    "effect": "Roll a d6, add [_Stone_] to the triggering Attack, then resolve using the below table:",
-    "special": "You may choose to remove an original Damage Type and replace it with [_Crush_].",
+    "reqs": "_Graze_+ and your _Arena_ has an _Earthen_ _Source_.",
+    "effect": "Roll a d6, then resolve using the below table:",
+    "special": "You may choose to remove [_Slash_] or [_Stab_] from the original Attack.",
     "class": "Mountain",
     "table": [
       "Deal 1 _Bonus Stun_.",
@@ -1441,7 +1521,7 @@
     "cost": "1 _Momentum_",
     "reqs": "Move this Turn is not None.",
     "effect": "Add [_Breach_] to your current move. Inflict +1 _Damage_ on a _Graze_+ with any _Body_ Attack during this Move.",
-    "special": "You may choose to also add [_Rush_]. If you do, gain 1 _Block_ during this Move.",
+    "special": "You may choose to also add [_Rush_]. If you do, gain 1 _Ward_ during this Move.",
     "boost": "2 _Momentum_: Make a _Light_ [_Body_] _Attack_.",
     "class": "Martial"
   },
@@ -1458,10 +1538,11 @@
   {
     "name": "Partnership",
     "desc": "You and your spirit act in tandem, never granting foes the chance to breath.",
-    "type": "Stunt",
+    "keywords": ["Spirit"],
+    "type": "Reaction",
     "cost": "2 _Momentum_",
-    "reqs": "Have not use this _Stunt_ this _Phase_.",
-    "effect": "If used on your _Turn_, your _Spirit_ may take an _Action_ this _Phase_. If used on your spirit's _Turn_, you may take an _Action_ this _Phase_.",
+    "reqs": "A _Phase_ begins while your _Spirit_ is _Summoned_.",
+    "effect": "This _Phase_ both you and your Spirit may take an _Action_. During these _Actions_, each character must independently resolve all effects. For example, on the character's _Turn_, all Attacks made must originate from them, and vice versa.",
     "class": "Basic"
   },
   {
@@ -1476,7 +1557,7 @@
   {
     "name": "Plate Lock",
     "desc": "You solidify the plates of your armor, sacrificing mobility to become unstoppable.",
-    "keywords": ["Block", "Defensive"],
+    "keywords": ["Ward", "Defensive"],
     "type": "Reaction",
     "cost": "2 _Momentum_",
     "trigger": "You are Attacked, take Damage or gain Status.",
@@ -1562,8 +1643,8 @@
     "type": "Action",
     "move": "0/0",
     "cost": "1 _Stamina_",
-    "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Block_ and reduce the cost of the first _Defensive_ _Reaction_ each _Phase_ by 1.",
-    "class": "General"
+    "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Ward_ and reduce the cost of the first _Defensive_ _Reaction_ each _Phase_ by 1.",
+    "class": "Basic"
   },
   {
     "name": "Raise Blade",
@@ -1571,7 +1652,7 @@
     "type": "Stunt",
     "cost": "[_Effort_]",
     "reqs": "Your _Turn_ and must be _Wielding_ a Blade Weapon.",
-    "effect": "You become _Guarding_ and a _Wielded_ _Blade_ Weapon becomes _Occupied_. The next time you are _Grazed_+ with a damaging Attack remove _Guarding_ and immediately make an Attack with your Weapon, targeting that creature if they are within _Reach_ and ignoring _Speed Penalties_. You may reduce the Damage dealt by this Attack by any amount to gain an equivalent amount of _Block_ against the triggering Attack.",
+    "effect": "You become _Guarding_ and a _Wielded_ _Blade_ Weapon becomes _Occupied_. The next time you are _Grazed_+ with a damaging Attack remove _Guarding_ and immediately make an Attack with your Weapon, targeting that creature if they are within _Reach_ and ignoring _Speed Penalties_. You may reduce the Damage dealt by this Attack by any amount to gain an equivalent amount of _Ward_ against the triggering Attack.",
     "class": "Martial"
   },
   {
@@ -2211,10 +2292,10 @@
     "table": [
       "Inflict _Soaked_ on one Target.",
       "Deal 1 _Bonus Stun_ and inflict _Soaked_ on one Target.",
-      "Deal 1 _Bonus Stun_ and inflict _Tidal Motion_ [2 _Grit_], _Soaked_ on one Target.",
-      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ [3 _Grit_], _Soaked_ on one Target.",
-      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ [4 _Grit_], _Soaked_ on one Target.",
-      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ [5 _Grit_], _Soaked_ on one Target."
+      "Deal 1 _Bonus Stun_ and inflict _Tidal Motion_ 1 [2 _Grit_], _Soaked_ on one Target.",
+      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ 1 [3 _Grit_], _Soaked_ on one Target.",
+      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ 1 [4 _Grit_], _Soaked_ on one Target.",
+      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ 2 [5 _Grit_], _Soaked_ on one Target."
     ]
   },
   {
@@ -2261,6 +2342,17 @@
       "Deal 5 _Cold_ _Bonus Damage_ and inflict _Frozen_ [6 _Grit_] on one Target.",
       "Deal 5 _Cold_ _Bonus Damage_ and inflict _Frozen_ [7 _Grit_] on one Target."
     ]
+  },
+  {
+    "name": "Undertow",
+    "desc": "When you draw water it is a violent act, pulling friends and foes along with it.",
+    "type": "Reaction",
+    "keywords": ["Spirit", "Water"],
+    "cost": "2 _Momentum_",
+    "reqs": "You _Draw_ a _Water_ _Terrain_/_Feature_ or inflict _Forced Movement_ on one.",
+    "effect": "Inflict _Slide_ [6 _Grit_] on a creature in the _Position_ the _Terrain_/_Feature_ was originally in. You must place the creature in the same _Position_ that you resolve the _Draw_ effect or place the _Terrain_/_Feature_ in.",
+    "special": "If you _Draw_ from a _Path_ you may choose any _Target_ in the _Arena_, but must still abide by the _Slide_ limitation.",
+    "class": "Tide"
   },
   {
     "name": "Use Environment",
@@ -2344,7 +2436,7 @@
     "keywords": ["Spirit"],
     "type": "Stunt",
     "cost": "2 _Momentum_",
-    "effect": "Create an _Earth Block_ in two contiguous, adjacent, and unoccupied _Earthen_ spaces.",
+    "effect": "Create an _Earth Ward_ in two contiguous, adjacent, and unoccupied _Earthen_ spaces.",
     "boost": "2 _Momentum_: Instead, create _Earth Pillar_s.",
     "class": "Land"
   },
@@ -2414,7 +2506,7 @@
     "range": "Melee/Short/Medium",
     "move": "0/1",
     "type": "Action",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Apply _Wet_ to a _Position_ or _Path_ within _Range_. You must _Draw_ 1 for this effect.\n* Remove _Soaked_ from an ally within _Range_.",
+    "effect": "Gain 1 _Momentum_, then choose:\n* _Draw_ 1, then apply _Wet_ to a _Position_ or _Path_ within _Range_.\n* Add or remove _Soaked_ from an ally within _Range_.",
     "class": "Tide"
   },
   {

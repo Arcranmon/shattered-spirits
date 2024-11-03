@@ -18,19 +18,13 @@ class Npc extends Combatant {
   // COMBATANT OVERRIDES
   // ==========================================================
   override get MomentumGain() {
-    return this.npc_data_.momentum_gain
-  }
-
-  override get MoveChart() {
-    return store.getters.getMovement(this.npc_data_.movement)
+    if (this.npc_data_.momentum_gain) return this.npc_data_.momentum_gain
+    return 0
   }
 
   override get Guard() {
-    return this.npc_data_.guard
-  }
-
-  override get MaxAP() {
-    return this.npc_data_.ap
+    if (this.npc_data_.guard) return this.npc_data_.guard
+    return 0
   }
 
   override get MaxHealth() {
@@ -38,7 +32,7 @@ class Npc extends Combatant {
   }
 
   override get MaxStamina() {
-    return this.npc_data_.max_stamina
+    return this.npc_data_.defenses.stamina
   }
 
   override get Size() {
@@ -49,8 +43,25 @@ class Npc extends Combatant {
     return this.npc_data_.traits
   }
 
+  override get MaxMovement() {
+    return this.npc_data_.move
+  }
+
   override get Weapons() {
     return store.getters.getWeaponsFromList(this.npc_data_.weapons)
+  }
+
+  get Grit() {
+    if (this.npc_data_.defenses.grit) return this.npc_data_.defenses.grit
+    return 0
+  }
+  get Reflex() {
+    if (this.npc_data_.defenses.reflex) return this.npc_data_.defenses.reflex
+    return 0
+  }
+  get Focus() {
+    if (this.npc_data_.defenses.focus) return this.npc_data_.defenses.focus
+    return 0
   }
 
   // ==========================================================
@@ -64,15 +75,10 @@ class Npc extends Combatant {
     return store.getters.getAttacksFromList(this.npc_data_.attacks)
   }
 
-  public get MinorAttacks() {
-    return this.Attacks.filter((x) => x.Rank == '_Minor Attack_')
-  }
-  public get MajorAttacks() {
-    return this.Attacks.filter((x) => x.Rank == '_Major Attack_')
-  }
   public get Class() {
     return this.npc_data_.class
   }
+
   public get Desc() {
     return this.npc_data_.desc
   }
@@ -137,8 +143,8 @@ class Npc extends Combatant {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  public get ApText() {
-    return '**AP:** ' + this.npc_data_.ap
+  public get MoveText() {
+    return '**Move:** ' + this.npc_data_.move
   }
   public get HealthText() {
     return '**Health:** ' + this.npc_data_.health
@@ -151,7 +157,7 @@ class Npc extends Combatant {
     return '**Size:** ' + this.npc_data_.size
   }
   public get MaxStaminaText() {
-    return '**Max Stamina:** ' + this.npc_data_.max_stamina
+    return '**Max Stamina:** ' + this.MaxStamina
   }
 
   // ==========================================================

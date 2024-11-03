@@ -10,7 +10,7 @@ status_multipliers = {
     "Bleeding": 4,
     "Blinded": 6,
     "Burned": 3,
-    "Dazed": 1,
+    "Dazed": 2,
     "Exposed": 2,
     "Frightened": 3,
     "Frozen": 3,
@@ -26,6 +26,7 @@ status_multipliers = {
     "Taunted": 2,
     "Push": 2,
     "Pull": 2,
+    "Slide": 2.5,
     "Tidal Motion": 1.75
 }
 
@@ -45,6 +46,7 @@ keyword_modifiers = {
     "Social": 0.5,
     "Pierce": 0.5,
     "Remote": 1.0,
+    "Point Blank": 0.5,
     "Siege": 0,
     "Fist": 0,
     "Body": 0,
@@ -68,6 +70,15 @@ attack_range_multiplier = {
 ATTACK = 1
 TECHNIQUE = 2
 
+def get_status_magnitude(status):
+    split_status = status.split(' ')
+    if len(split_status) == 1: 
+        return status_multipliers[split_status[0].strip()]
+    if len(split_status) == 2: 
+        return status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
+    if len(split_status) == 3: # I'm lazy
+        return status_multipliers[split_status[0].strip() + ' ' + split_status[1].strip()] * int(split_status[2].strip())
+
 def get_status_damage(status_string, glancing):
     # Split individual statuses out
     statuses = status_string.split(', ')
@@ -75,29 +86,22 @@ def get_status_damage(status_string, glancing):
     estimated_damage = 0
     no_save_damage = 0
     for status in statuses:        
+        if status == '': continue
         status = status.replace('_', '')
         # Scale the estimated damage based on the DC
         if '[' in status:
             final_statuses = status.split('[')
             if '/' in final_statuses[0]:
                 status_options = final_statuses[0].split('/')
-                final_status_damage = max([status_multipliers[status_option.strip()] for status_option in status_options])
+                final_status_damage = max(get_status_magnitude(status_option.strip()) for status_option in status_options)
             else:
-                final_status_damage = status_multipliers[final_statuses[0].strip()]
+                final_status_damage = get_status_magnitude(final_statuses[0].strip())
             estimated_damage += final_status_damage
             multiplier = (int(final_statuses[1][0])-1)/6
             estimated_damage = estimated_damage * multiplier
         # Otherwise, add the effect to the damage
         else:
-            split_status = status.split(' ')
-            if len(split_status) == 1: continue
-            if split_status[1] in instant_statuses:
-                if glancing:
-                    no_save_damage += int(split_status[2].strip()) * status_multipliers[split_status[1].strip()]/2
-                else:
-                    no_save_damage += int(split_status[2].strip()) * status_multipliers[split_status[1].strip()]
-            else:
-                estimated_damage += status_multipliers[split_status[1]]
+            estimated_damage += get_status_magnitude(status)
 
     return estimated_damage + no_save_damage
 
@@ -227,24 +231,17 @@ def estimate_damage(attack, glancing, print_stats):
 
     keyword_bonus = 0
 
-    if("chart" in attack):
-        for keyword in attack["chart"].get("keywords", []):       
-            keyword = keyword.replace('_', '')
-            split_keywords = keyword.split(' ')
-            if len(split_keywords) > 1:
-                keyword_bonus += keyword_modifiers[split_keywords[0]] * int(split_keywords[1])
-            else:
-                keyword_bonus += keyword_modifiers[split_keywords[0]]
-        for keyword in attack.get("keywords", []):       
-            keyword = keyword.replace('_', '')
-            split_keywords = keyword.split(' ')
-            if not split_keywords[0] in keyword_modifiers:
-                print("WARNING: Keyword " + split_keywords[0] + " does not have a listed cost.")
-                continue
-            if len(split_keywords) > 1:
-                keyword_bonus += keyword_modifiers.get(split_keywords[0], 0) * int(split_keywords[1])
-            else:
-                keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
+
+    for keyword in attack.get("keywords", []):       
+        keyword = keyword.replace('_', '')
+        split_keywords = keyword.split(' ')
+        if not split_keywords[0] in keyword_modifiers:
+            print("WARNING: Keyword " + split_keywords[0] + " does not have a listed cost.")
+            continue
+        if len(split_keywords) > 1:
+            keyword_bonus += keyword_modifiers.get(split_keywords[0], 0) * int(split_keywords[1])
+        else:
+            keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
 
     attack_range = attack["range"].replace('_', '').split('/')[-1]
     if override_range != "":

@@ -13,95 +13,14 @@
     ]
   },
   {
-    "name": "Brambles",
-    "desc": "Sharp, painful thorns that make movement through them difficult.",
-    "keywords": ["Flammable", "Rough", "_Soft Cover_ 1"],
-    "layer": "Field",
-    "element": "Wooden",
-    "effect": "Anytime a creature enters a Brambles space they immediately take 1 Stab Damage. If they end a _Leaping_/_Flying_ effect in this space, they instead take 3 Stab Damage.",
-    "destroy": "_Destroy_ this Terrain if it takes at least 3 _Slash_ Damage."
-  },
-  {
-    "name": "Brush",
-    "desc": "Tall plants that limit both sight and mobility.",
-    "keywords": ["Flammable", "Rough", "_Soft Cover_ 1"],
-    "layer": "Field",
-    "effect": "None.",
-    "element": "Wooden",
-    "destroy": "_Destroy_ this Terrain if it takes at least 3 _Slash_ Damage."
-  },
-  {
-    "name": "Deep Water",
-    "desc": "Terrain that represents still water that a creature must swim in.",
-    "layer": "Base",
+    "name": "Churning Water",
+    "desc": "Water that is choppy and covered in tumultuous waves.",
+    "layer": "Modifier",
     "element": "Water",
-    "keywords": ["Conductive", "_Watersource_ 3"],
-    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 3.  Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount.",
-    "destroy": "Replace this space with _Shallow Water_ at 1 _Elevation_ lower than it was originally."
-  },
-  {
-    "name": "Downdraft",
-    "desc": "A powerful blast of downward wind.",
-    "layer": "Weather",
-    "element": "Windy",
-    "keywords": ["Fleeting"],
-    "effect": "Creatures in this space treat their _Jump_ value as 2 lower and, if they _Fall_ into this space, treat it as if they fell 2 more.",
-    "special": "Creatures greater than Size 1 only suffer this penalty if at least half the spaces they are occupying are Downdraft.",
-    "interactions": [
-      "Downdraft Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
-    ]
-  },
-  {
-    "name": "Soil",
-    "desc": "Loamy soil that can absorb water or easily create plants.",
-    "layer": "Base",
-    "element": "Earth",
-    "effect": "None.",
-    "interactions": ["If this space would become _Wet_ instead make this space _Mud_."]
-  },
-  {
-    "name": "Electrified",
-    "layer": "Field",
-    "element": "Electric",
-    "keywords": ["Fleeting"],
-    "desc": "A space super-charged with electricity.",
-    "effect": "The first time a creature enters an Electrified space on a Turn or ends their Turn in it they take 1 _Lightning_ Damage. If they are in the space at the end of the _Round_ they gain _Shocked_ 1. If a creature occupies multiple Electrified spaces do not resolve this more than their Size times."
-  },
-  {
-    "name": "Fortified",
-    "desc": "A piece of terrain that, while not providing cover, provides some form of defense.",
-    "layer": "Field",
-    "element": "Mutable",
-    "effect": "Creatures have +1 _Guard_ while in a Fortified space. A creature may only benefit from a single Fortified space at a time."
-  },
-  {
-    "name": "Frigid Air",
-    "layer": "Weather",
-    "element": "Elementless",
-    "keywords": ["_Soft Cover_ 3", "Fleeting"],
-    "desc": "Air chilled to painful, frost-inducing cold.",
-    "effect": "The first time a creature enters a Frigid Air space on a _Turn_ or ends their _Turn_ in it they take 1 _Cold_ Damage. If they end the _Round_ in this space, they gain _Frozen_ 1. If a creature occupies multiple Frigid Air spaces do not resolve this more than their Size times."
-  },
-  {
-    "name": "Icy",
-    "desc": "Terrain that has been covered with slick, slippery ice.",
-    "layer": "Surface",
-    "element": "Ice",
-    "keywords": ["_Watersource_ 1", "Rough"],
-    "effect": "While on Icy _Terrain_ a creature suffers the following effects:\n* Increase any _Forced Movement_ inflicted on a creature in this space by 2.\n* Creatures in this space gain _Susceptible_ (_Prone_).\n* A creature that starts their _Turn_ on a Icy space loses 1 space of Movement. A creature may expend 1 _Stamina_ to negate this penalty.",
-    "special": "Ignore _Water_ Base _Terrain_ while a space is Icy.",
-    "destroy": "An _Area_ Attack that deals at least 5 Damage will _Destroy_ this space, as will an _Area_ _Flame_ Attack or any _Flame_ Attack targeting a creature in this space. If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_. If _Destroyed_ by anything other than a _Draw_ effect, replace it with _Frost_."
-  },
-  {
-    "name": "Rimed",
-    "desc": "Terrain covered in ice that is too thin or disjoint to obstruct foes.",
-    "layer": "Surface",
-    "element": "Ice",
-    "keywords": ["_Watersource_ 1"],
-    "interactions": [
-      "If a _Watersource_ space would become Rimed, instead place a Rimed space in an adjacent space or increase its value by 1 if it is below its maximum value."
-    ],
-    "destroy": "If _Destroyed_ by a _Flame_ Attack, replace it with _Wet_."
+    "keywords": ["Conductive", "Fleeting"],
+    "position_effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave.",
+    "path_effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave.",
+    "special": "If there is not a _Watersource_ _Terrain_ effect at the same location as this, end this effect."
   },
   {
     "name": "Gusting",
@@ -114,114 +33,12 @@
     "special": "While an area is _Gusting_ it may not become _Veiled_."
   },
   {
-    "name": "Jagged",
-    "desc": "Sharp spires of earth and stone make traveling through this space painful.",
-    "layer": "Field",
-    "element": "Earth",
-    "effect": "Anytime a creature enters a Jagged space or ends a turn there they immediately take 2 Stab Damage. If they end a _Leaping_/_Flying_ effect in this space, they instead take 4 Stab Damage."
-  },
-  {
-    "name": "Mud",
-    "desc": "Dry soil that has absorbed a great deal of mud.",
-    "layer": "Base",
-    "element": "Earth",
-    "keywords": ["Rough", "_Watersource_ 1"],
-    "effect": "A creature that starts their Turn on a Mud space loses 1 space of Movement. A creature may expend 1 Stamina to negate this penalty.",
-    "destroy": "If _Destroyed_, replace this with _Soil_."
-  },
-  {
-    "name": "Roaring",
-    "desc": "A hungry flame devouring all that draws near.",
-    "keywords": ["Fleeting", "_Soft Cover_ 3"],
-    "layer": "Surface",
-    "element": "Flame",
-    "effect": "The first time a creature enters a Roaring space on a Turn or ends their Turn in it they take 4 _Fire_ Damage. If they are in the space at the end of the _Round_ they gain _Alight_ 2. If a creature occupies multiple Roaring spaces do not resolve this more than their Size times. This space counts as _Blazing_ for all other effects.",
-    "destroy": "When _Destroyed_, replace this with a _Blazing_ space.",
-    "interactions": [
-      "If a _Watersource_ is placed in this space, and has a value of 1, _Destroy_ this space. Otherwise, reduce the _Watersource_'s value by 2 then _Destroy_ this, making it _Veiled_ instead of _Blazing_.",
-      "If placed in a _Watersource_ space, reduce the _Watersource_'s value by 2 and make the space _Veiled_. If the _Watersource_ had a value of 1, instead make the space _Blazing_."
-    ]
-  },
-  {
     "name": "Uneven Earth",
     "desc": "Ground full of unsure footing and low features that makes traveling through it difficult.",
     "layer": "Ground",
     "element": "Earth",
     "position_effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave. Additionally, all creatures on this _Terrain_ take a -1 _Penalty_ to _Reflex_.",
     "path_effect": "It costs an additional _Movement_ to use this _Path_."
-  },
-  {
-    "name": "Ramp",
-    "desc": "A piece of terrain rises in elevation.",
-    "layer": "Base",
-    "element": "Mutable",
-    "effect": "When a Ramp is created, choose a direction. When exiting this space in that direction characters exit one _Elevation_ higher than this space is.",
-    "special": "Retain the original _Base_ _Terrain_ that was in this space."
-  },
-  {
-    "name": "Running Water",
-    "desc": "Terrain that represents a slow-moving body of water.",
-    "layer": "Base",
-    "element": "Water",
-    "keywords": ["Conductive", "_Watersource_ ∞"],
-    "effect": "Characters must _Swim_ through this Terrain. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 3."
-  },
-  {
-    "name": "Rushing Water",
-    "desc": "Terrain that represents a rapids or similarly fast-moving body of water.",
-    "layer": "Base",
-    "element": "Water",
-    "keywords": ["Conductive", "_Watersource_ ∞"],
-    "effect": "Characters must _Swim_ through this Terrain. Running Water has a direction. At the end of each even _Phase_, inflict _Push_ 1 in the direction of the Running Water on all creatures in it. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 3."
-  },
-  {
-    "name": "Shallow Water",
-    "desc": "Terrain that represents water that is deep enough that a creature must wade through it, but not deep enough to swim.",
-    "layer": "Base",
-    "element": "Water",
-    "keywords": ["Conductive", "_Watersource_ 2"],
-    "effect": "Movement through this _Terrain_ costs twice as much. When a creature enters this space or ends their _Turn_ in it, inflict _Soaked_ 1. If a creature becomes _Prone_ in this space they gain _Soaked_ 1. Whenever this space inflicts _Soaked_, reduce the value by an equivalent amount. If _Destroyed_, this space becomes _Wet_."
-  },
-  {
-    "name": "Solid Ground",
-    "desc": "An unremarkable space with no notable features to speak of.",
-    "layer": "Base",
-    "element": "Earth",
-    "keywords": [],
-    "effect": "None."
-  },
-  {
-    "name": "Tall Grass",
-    "desc": "Small plants that, while they are not enough to obstruct movement, can provide some meager defense.",
-    "element": "Wooden",
-    "layer": "Field",
-    "keywords": ["_Soft Cover_ 1", "Flammable"],
-    "effect": "None.",
-    "destroy": "_Destroy_ this Terrain if it takes at least 3 _Slash_ Damage."
-  },
-  {
-    "name": "Twister",
-    "desc": "A vortex of wind that glides across the battlefield.",
-    "element": "Windy",
-    "layer": "Weather",
-    "keywords": ["_Soft Cover_ 5", "Rough", "Fleeting"],
-    "effect": "When this Terrain enters a creatures space or a creature enters this space they gain _Vulnerable_ 1.",
-    "special": "This _Terrain_ affects _Flying_ creatures.",
-    "interactions": [
-      "Twister Destroys any other _Weather_ Terrain effects in this space when it is created, and may not be Destroyed by other Weather effects. _Veiled_ spaces may never be created in this space."
-    ]
-  },
-  {
-    "name": "Updraft",
-    "desc": "A powerful blast of upward wind.",
-    "layer": "Weather",
-    "element": "Windy",
-    "keywords": ["Fleeting"],
-    "effect": "Creatures in this space treat their _Jump_ value as 2 higher and, if they _Fall_ into this space, treat it as if they fell 2 less.",
-    "special": "Creatures greater than Size 1 only gain this bonus if at least half the spaces they are occupying are Updraft.",
-    "interactions": [
-      "Updraft Destroys any other _Weather_ Terrain effects in this space when it is created. _Veiled_ spaces may never be created in this space."
-    ]
   },
   {
     "name": "Veiled",

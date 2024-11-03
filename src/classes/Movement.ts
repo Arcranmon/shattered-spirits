@@ -32,6 +32,9 @@ class Movement {
   get Jump() {
     return this.jump_
   }
+  get Traits() {
+    return this.traits_
+  }
 
   // ==========================================================
   // FORMATTED GETTERS

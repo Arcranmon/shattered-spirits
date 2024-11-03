@@ -1,36 +1,8 @@
 ## To-Do
 
-### Refactors
-
-- Just split into Spirit/Martial Disciplines again
-  - Make Rank 2/3 more niche and specific
-  - Rank 1 just has some generally useful tools
-- Subtype Art grants a Minor Attack and applicable Terrain effect
-- Major Disciplines at Rank 1 grant:
-  - A Technique
-  - Major Attack (if Spirit)
-- Potentially make Stances more impactful
-- Shrink Phases
-- More Arts
-  - ARTILLERY
-    - Way of the Magus for Foci (stretch goal)
-  - WEAPON
-    - Fist Arts
-    - 1-2x for each Weapon Category
-
 ### Plan
 
-1. Stamina Refactor
-
-- Stances get a roll bonus
-
-2. Status Refactor
-
-- Stun
-
-3. Phase Shrinkage
-4. Gambits
-5. Action rework
+- Make most Traits and such that enemies have come from a piece of 'Equipment'
 
 POTENTIAL REFACTORS
 

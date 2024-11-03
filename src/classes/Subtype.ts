@@ -58,6 +58,20 @@ class Subtype extends Base {
   public get TraitsText() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
   }
+  public get Grit() {
+    if (this.defenses_.grit) return this.defenses_.grit
+    return 0
+  }
+
+  public get Reflex() {
+    if (this.defenses_.reflex) return this.defenses_.reflex
+    return 0
+  }
+
+  public get Focus() {
+    if (this.defenses_.focus) return this.defenses_.focus
+    return 0
+  }
 
   // ==========================================================
   // SERIALIZATION

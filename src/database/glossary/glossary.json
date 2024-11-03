@@ -8,6 +8,10 @@
     "effect": "As normal _Push_/_Pull_ but, rather than moving the creature directly away/towards you, move them away/towards and to the right or left (your choice) of you."
   },
   {
+    "name": "Endurable",
+    "effect": "This effect ignores _Guard_ and _Soak_ not provided by _Block_. Additionally, characters gain _Block_ equal to their _Grit_ against this Attack."
+  },
+  {
     "name": "Armor",
     "effect": "Whatever clothing, protective plating, or other garments a character is wearing is referred to as their Armor. A character's Armor determines their _Movement_, their _Guard_, and may have other passive effects."
   },
@@ -43,6 +47,11 @@
     "effect": "When an Attack gains Bonus Damage, distribute the Bonus Damage between targets however you wish. For a Single-Target Attack this is effectively a flat damage increase, but for an Area Attack any Bonus Damage must be split between all eligible Targets. Bonus Damage only applies if the Attack has a listed Damage value (even if it is 0)."
   },
   {
+    "name": "Block",
+    "effect": "This effect relies on stopping a physical attack. Effects with [Unblockable] ignore any _Reactions_ or _Parry_ effects with the Block tag."
+  },
+  { "name": "Unblockable", "see": "Block" },
+  {
     "name": "Bonus Stun",
     "effect": "When an Attack gains Bonus Stun, distribute the Bonus Stun between targets however you wish. For a Single-Target Attack this is effectively a flat damage increase, but for an Area Attack any Bonus Stun must be split between all eligible Targets."
   },
@@ -56,15 +65,22 @@
   },
   { "name": "Charged Profile", "see": "Charged Attack" },
   {
+    "name": "Committed",
+    "effect": "When you use this as a _Charged Attack_ you may only choose to resolve the _Resolution_ effect when you remove _Charging_ naturally."
+  },
+  {
     "name": "Climbing",
     "effect": "When moving to a higher or lower elevation the total Movement expended is equal to twice the Elevation change. For example, it would cost a creature 2 spaces of Movement to Climb up a 1 Height Feature. While _Climbing_ a creature has _Disadvantage_ on all Attacks and Attacks against them have _Advantage_."
   },
   { "name": "Climb", "see": "Climbing" },
   {
-    "name": "Collision",
-    "effect": "Whenever a target suffering _Forced Movement_ is moved into an Feature or creature, resolve it as follows:\n* **Feature Colliding with Feature**: Deal Damage to both _Features_ equal to the half the _Forced Movement_ remaining. If the Collided Feature is _Destroyed_ and the Colliding _Feature_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Feature's _Durability_ and continue the _Forced Movement_.\n* **Feature Colliding with Creature**: Inflict _Push_ X on the creature, where X is the _Forced Movement_ remaining on the _Feature_. After resolving this _Push_, the creature gains _Stun_ equal to half the spaces they moved. Continue moving the _Feature_ so it ends adjacent to the creature.\n* **Creature Colliding with Creature**:  The Collider gains _Stun_ equal to half the _Forced Movement_ remaining. Inflict _Push_ X on the Collided creature, where X is half the remaining _Forced Movement_ minus their _Size_, rounded down. The Collided creature gains _Stun_ equal to half the total spaces they Move. After, inflict _Push_ equal to the total space the Collided creature moved on the _Colliding_ creature in the same direction.\n* **Creature Colliding with Feature**: Deal Damage to the _Feature_ equal to the half the _Forced Movement_ remaining and inflict _Stun_ on the creature equal to the same amount. If the Collided Feature is _Destroyed_ and the Colliding _Feature_ was not _Destroyed_, reduce the _Forced Movement_ by the Collided Feature's _Durability_ and continue the _Forced Movement_. If _Forced Movement_ remains and the _Feature_ was _Destroyed_, reduce the _Forced Movement_ by the Feature's _Durability_ and continue the _Forced Movement_.\n\nIf a secondary Collision occurs during a Collision **and** both parties are adjacent, resolve the secondary Collision effect on both."
+    "name": "Collide",
+    "effect": "Creatures can Collide with any Feature. Whenever a creature Collides with a Feature they resolve the Collision effect of the Feature, multiplying it by the listed Collision number. They creature immediately _Occupies_ the _Feature_, if possible."
   },
-  { "name": "Collide", "see": "Collision" },
+  {
+    "name": "Fall",
+    "effect": "When a creature _Falls_ they gain X _Stun_ and take X [_True_] Damage, where X is listed Fall value."
+  },
   { "name": "Collides", "see": "Collision" },
   {
     "name": "Controller",
@@ -76,7 +92,7 @@
   },
   {
     "name": "Cover",
-    "effect": "When in Cover ranged attacks have difficulty attacking this creature. A creature in Cover gains _Resistance_ I against all _Short_ Range Attacks, _Resistance_ II against all _Medium_ Range, and _Resistance_ III against _Long_ Range."
+    "effect": "When in Cover ranged attacks have difficulty attacking this creature. A creature in Cover gains _Resistance_ I against _Short_ and _Reach_ Range Attacks, _Resistance_ II against all _Medium_ Range, and _Resistance_ III against _Long_ Range."
   },
   {
     "name": "Critical Hit",
@@ -283,12 +299,13 @@
   },
   {
     "name": "Opening",
-    "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ such as _Opportunity Attack_ allow a creature to make an _Attack_ when an Opening is created. Starting a _Move_ always creates an Opening."
+    "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ such as _Opportunity Attack_ allow a creature to make an _Attack_ when an Opening is created."
   },
   {
-    "name": "Occupied",
-    "effect": "While something is Occupied it may not be used for anything other than the listed effects. It still counts as _Wielded_ for the purpose of _Stances_ and the like, but may not be used for _Stunts_, _Techniques_, or to Attack."
+    "name": "Occupy",
+    "effect": "While a creature is Occupying a Feature they gain the listed effects of said Feature. A number of creatures may Occupy a Feature equal to its Size. If a Feature is Forcibly Moved, all creatures Occupying it stop Occupying."
   },
+  { "name": "Occupied", "see": "Occupy" },
   {
     "name": "On Miss",
     "effect": "When an Attack misses, either due to a poor roll, a _Penalty_, or some other effect, resolve the _On Miss_ effect. If the Attack has multiple targets, only gain the On Miss effect if it misses all targets, ignoring _Features_ unless the Attack is only targeting _Features_."
@@ -361,6 +378,10 @@
     "effect": "A creature with Seismic Sense ignores _Obscured_ for all creatures on _Earthen_ spaces and always treats themselves as having _Secondary Sense_ on creatures in those spaces."
   },
   {
+    "name": "AP",
+    "effect": "This effect may not be reduced by _Guard_ or _Soak_."
+  },
+  {
     "name": "Speed",
     "effect": "What _Phase_ a _Technique_ resolves in. This will be  a value from 1-8 or Weapon, which indicates that it uses of the Speed of the Weapon involved."
   },
@@ -371,7 +392,7 @@
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form for the duration of the effect that Summoned them. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player. See their statistics for attacks, movement, and other such effects.\n\nWhile Summoned:\n* Whenever a character would make an Attack their Spirit may instead make an equivalent Attack.\n* Whenever a character uses a _Spirit_ Manuever they may instead have their _Spirit_ use it.\n* _Reactions_ may be triggered by and originate from your _Spirit_'s space.\n* Whenever a character would Move, _Recover_, or _Refresh_ they may instead choose for their Spirit to resolve the effect.\n\nA spirit remains Summoned until the end of the Round. Alternatively, the summoner may end the Summon as a 1 _Momentum_ _Reaction_ triggered at the end of any _Phase_."
+    "effect": "When a spirit is Summoned they take physical form for the duration of the effect that Summoned them. The spirit is placed on the map and participates in the battle as an additional combatant. They are fully under the control of their player. See their statistics for attacks, movement, and other such effects.\n\nWhile Summoned:\n* Whenever a character would make an Attack their Spirit may instead make an equivalent Attack.\n* Whenever a character uses a _Spirit_ _Stunt_ or _Action_ they may instead resolve it as if their Spirit used it. The Spirit must fulfill all prerequisites.\n* _Reactions_ may be triggered by and originate from your _Spirit_'s space.\n* Whenever a character would Move, _Recover_, or _Refresh_ they may instead choose for their Spirit to resolve any portion the effect."
   },
   { "name": "Summoned", "see": "Summon" },
   {
@@ -391,6 +412,10 @@
   {
     "name": "Step",
     "effect": "When you Step you may move the value listed for your Step Movement, as dictated by your Movement Chart."
+  },
+  {
+    "name": "Sturdy",
+    "effect": "If this _Terrain_, _Feature_, or _Equipment_ would be _Damaged_ or _Destroyed_ it instead loses _Sturdy_."
   },
   {
     "name": "Strike",

@@ -147,6 +147,17 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getArmorFromList(): any {
+    return (armor_list: Array<any>) => {
+      if (armor_list == undefined) return []
+      let armors: Array<Armor> = []
+      for (var armor of armor_list) {
+        armors.push(this.getArmor(armor))
+      }
+      return armors
+    }
+  }
+
   // ==========================================================
   // WEAPON GETTERS
   // ==========================================================

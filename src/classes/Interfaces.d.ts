@@ -38,24 +38,22 @@ declare interface IChargedEffect {
 declare interface ICharacterData extends ICombatantData {
   current_spirit_stance: string
   current_martial_stance: string
-  equipped_armor: string
+  armor: string[]
   element: string
   accessories: string[]
   disciplines: ICharDisciplineData[]
-  minor_disciplines: ICharDisciplineData[]
   name: string
   player_character: Boolean
   spirit: ISpiritData
-  used_manifest: boolean
   weapons: string[]
 }
 
 declare interface ICombatantData {
   health: number
   stamina: number
-  ap: number
+  move: number
   momentum: number
-  statuses: IStatusEffect[]
+  statuses?: IStatusEffect[]
   vigor: number
 }
 
@@ -72,10 +70,10 @@ declare interface IChartData {
 
 declare interface IDefenseData {
   stamina: number
-  reflex: number
-  grit: number
-  focus: number
-  hardness: number
+  reflex?: number
+  grit?: number
+  focus?: number
+  hardness?: number
 }
 
 interface IDisciplineTierData {
@@ -119,7 +117,8 @@ declare interface INpcCombatData extends ICombatantData {
 
 declare interface INpcData {
   actions: Array<string>
-  ap: number
+  move: number
+  jump: number
   attacks: Array<string>
   class: string
   desc: string
@@ -127,15 +126,14 @@ declare interface INpcData {
   health: number
   gambits?: Array<string>
   guard?: number
-  momentum_gain: number
-  movement: string
+  momentum_gain?: number
   name: string
   npc_type: string
   reactions: Array<string>
   role: string
   size: string
-  special: string
-  max_stamina: number
+  special?: string
+  defenses: IDefenseData
   stances?: Array<string>
   subtype: string
   stunts: Array<string>
@@ -270,14 +268,16 @@ declare interface IFeatureData extends IBaseData {
   destroy: string
   element: string
   forced_movement: string
-  defenses: IDefenseData
-  height: number
+  hardness: number
+  weight: number
   interact: string
+  resistances: string[]
   size: number
   traits: string
   chart: IChartData
   position_effect: string
   path_effect: string
+  collision: string
 }
 
 declare interface ITraitData extends IBaseData {

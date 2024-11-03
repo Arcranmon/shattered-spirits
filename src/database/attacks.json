@@ -108,7 +108,7 @@
     "speed": "3",
     "cost": "1 _Momentum_",
     "range": "Short/Medium",
-    "special": "If there is an _Earthen_ _Feature_ at your _Position_ this _Attack_ is instead _Speed_ 2 and adds [_Remote_].",
+    "special": "If there is an _Earthen_ _Feature_ at your _Position_ this _Attack_ is instead _Speed_ 2 and adds [_Point Blank_].",
     "boost": "1 _Momentum_: Resolve the Special if there is any _Earthen_ _Feature_ within your _Arena_. Draw Range from one of said _Positions_ and add _Melee_ as a Range option.",
     "chart": {
       "on_miss": "+2 _Momentum_",
@@ -416,7 +416,7 @@
   },
   {
     "name": "Flame Burst",
-    "keywords": ["Spirit", "Fire"],
+    "keywords": ["Spirit", "Fire", "Ignite"],
     "class": "Blaze",
     "desc": "You form and fire a handful of flame, singing and searing foes.",
     "type": "Balanced",
@@ -734,15 +734,15 @@
       "status": [
         "",
         "",
-        "_Push_ [4 _Grit_]",
-        "_Push_ [4 _Grit_]",
-        "_Push_ [5 _Grit_]",
-        "_Push_ [5 _Grit_]",
-        "_Push_ [5 _Grit_]",
-        "_Push_, _Exposed_ [6 _Grit_]",
-        "_Push_, _Exposed_ [6 _Grit_]",
-        "_Push_, _Exposed_ [7 _Grit_]",
-        "_Push_, _Exposed_ [7 _Grit_]"
+        "_Push_ 1 [3 _Grit_]",
+        "_Push_ 1 [3 _Grit_]",
+        "_Push_ 1 [4 _Grit_]",
+        "_Push_ 1 [4 _Grit_]",
+        "_Push_ 1 [4 _Grit_]",
+        "_Push_ 2, _Exposed_ [5 _Grit_]",
+        "_Push_ 2, _Exposed_ [5 _Grit_]",
+        "_Push_ 2, _Exposed_ [6 _Grit_]",
+        "_Push_ 2, _Exposed_ [6 _Grit_]"
       ]
     },
     "analysis_notes": {
@@ -1065,13 +1065,14 @@
     "name": "Pommel Strike",
     "class": "Martial",
     "desc": "You strike with the haft of your weapon, knocking your foe off-balance without compromising your stance.",
+    "keywords": ["Crush"],
     "type": "Light",
     "speed": 2,
     "range": "Melee",
     "reqs": "Must be _Wielding_ a _Heavy_ _Melee_ Weapon.",
-    "special": "After a _Hit_+ with this Attack the next _Heavy_ Attack against the same Target with said _Weapon_ gains a +1 _Bonus_.",
+    "effect": "After a _Hit_+ with this Attack the next _Heavy_ Attack against the same Target with said _Weapon_ gains a +1 _Bonus_.",
+    "special": "Add any Material keywords from the original _Weapon_.",
     "chart": {
-      "damage_type": "Crush",
       "on_miss": "+1 _Momentum_",
       "stun": [0, 0, 1, 1, 1, 1, 1, 2, 2, 3, 3],
       "damage": [0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2],
@@ -1301,7 +1302,7 @@
       ]
     },
     "charged_profile": {
-      "set_up": "Choose an _Engagement_. While _Charging_, gain _Sturdy_ 1 and +1 _Grit_.",
+      "set_up": "Choose an _Engagement_. While _Charging_, gain _Stable_ 1 and +1 _Grit_.",
       "resolution": "Resolve this Attack against all targets in the _Engagement_."
     },
     "analysis_notes": {
@@ -1313,38 +1314,40 @@
     "name": "Scorch",
     "desc": "You create a deadly line of flame, laying waste to all before you.",
     "class": "Blaze",
-    "type": "Heavy",
-    "speed": "6",
+    "type": "Balanced",
+    "speed": "3",
+    "keywords": ["Spirit", "Fire", "Ignite", "Point Blank"],
     "cost": "2 _Momentum_",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 3
-      }
-    ],
-    "effect": "If, after resolving this Attack, the Damage dealt with this Attack plus the target's _Alight_ is greater than or equal to the Durability of the creature's Armor, inflict _Shred_ 1.",
-    "charged_profile": "Instead, this Attack is _Self_-Range _Line_ 4. Add [_Pierce_ 1].",
+    "range": "Melee/Short",
+    "effect": "Attack one Target at each Range. You may make one of the Target's Positions _Blazing_.",
+    "charged_profile": {
+      "set_up": "Choose a Position within _Short_ Range. While _Charging_, gain _Resistance_ I (_Cold_, _Fire_, _Ice_).",
+      "resolution": "Resolve this Attack against the entire Target Position and a Target at _Melee_ Range. You may make both Positions _Blazing_."
+    },
     "chart": {
       "damage_type": "Fire",
       "on_miss": "+3 _Momentum_",
-      "keywords": ["_Pierce_ 1", "Ordnance"],
-      "damage": [0, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8],
+      "damage": [0, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6],
       "roll": ["Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "_Alight_ 2",
-        "_Alight_ 2",
-        "_Alight_ 3",
-        "_Alight_ 3",
-        "_Alight_ 4, _Burned_ 1",
-        "_Alight_ 4, _Burned_ 1",
-        "_Alight_ 5, _Burned_ 1",
-        "_Alight_ 5, _Burned_ 1",
-        "_Alight_ 6, _Burned_ 2",
-        "_Alight_ 6, _Burned_ 2"
-      ]
+      "status": ["", "", "", "", "", "", "", "", "", "_Alight_ [5 _Reflex_]", "_Alight_ [5 _Reflex_]"]
     },
-    "rank": "Major Attack"
+    "analysis_notes": { "expected_targets": 2, "fudge": -0.5 }
+  },
+  {
+    "name": "Shifting Earth",
+    "desc": "You seize a piece of stone, flinging it across the battlefield.",
+    "type": "Balanced",
+    "keywords": ["Spirit", "Avoidable", "Stone", "Crush"],
+    "speed": 1,
+    "class": "Mountain",
+    "range": "Melee/Short",
+    "effect": "Choose a [_Stone_] _Feature_ within _Range_ with a _Weight_ less than or equal to twice the current _Phase_. Choose a _Position_ in the same _Arena_ as the _Feature_. Immediately move the _Feature_ to the _Position_ and stop any creature from _Occupying_ it. Inflict _Collide_ 2 with said _Feature_ on a _Target_ at the _Position_. You may instead allow a Target at that _Position_ to immediately _Occupy_ said _Feature_.",
+    "special": "If the _Feature_ has an effect that resolves when moving to a new _Position_ you must resolve it against the same creature as the _Collide_.",
+    "boost": "2 _Momentum_: _Destroy_ the _Obstacle_ after moving it. Resolve the _Collide_ effect against all creatures at the _Position_ as [_Glancing_].",
+    "charged_profile": {
+      "set_up": "Range is instead _Medium_-. Choose a piece of [_Stone_] _Terrain_ within _Range_ and the target _Position_. Increase the _Weight_ of the _Terrain_ you can Target by 4.",
+      "resolution": "Resolve this Attack against the Target. You may instead _Collide_ 3."
+    }
   },
   {
     "name": "Slam",
@@ -1394,20 +1397,20 @@
     "chart": {
       "on_miss": "+2 _Momentum_.",
       "stun": [0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4],
-      "damage": [0, 0, 0, 1, 1, 2, 2, 2, 2, 3, 3],
+      "damage": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3],
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
         "_Soaked_",
         "_Soaked_",
-        "_Tidal Motion_ [4 _Grit_], _Soaked_",
-        "_Tidal Motion_ [4 _Grit_], _Soaked_",
-        "_Tidal Motion_ [5 _Grit_], _Soaked_",
-        "_Tidal Motion_ [5 _Grit_], _Soaked_",
-        "_Tidal Motion_ [6 _Grit_], _Soaked_",
-        "_Tidal Motion_ [6 _Grit_], _Soaked_",
-        "_Tidal Motion_ [7 _Grit_], _Soaked_",
-        "_Tidal Motion_ [7 _Grit_], _Soaked_"
+        "_Tidal Motion_ 1 [3 _Grit_], _Soaked_",
+        "_Tidal Motion_ 1 [3 _Grit_], _Soaked_",
+        "_Tidal Motion_ 1 [4 _Grit_], _Soaked_",
+        "_Tidal Motion_ 1 [4 _Grit_], _Soaked_",
+        "_Tidal Motion_ 1 [5 _Grit_], _Soaked_",
+        "_Tidal Motion_ 1 [5 _Grit_], _Soaked_",
+        "_Tidal Motion_ 2 [6 _Grit_], _Soaked_",
+        "_Tidal Motion_ 2 [6 _Grit_], _Soaked_"
       ]
     },
     "charged_profile": {
@@ -1481,6 +1484,76 @@
     "rank": "Minor Attack"
   },
   {
+    "name": "Tidal Crash",
+    "desc": "A flood of water like a crashing wave, devastating foes and scattering them.",
+    "class": "Tide",
+    "type": "Heavy",
+    "keywords": ["Spirit", "Water", "Crush"],
+    "speed": 3,
+    "cost": "2 _Momentum_",
+    "effect": "You must _Draw_ as a part of this Attack. Resolve this Attack against all Targets at a _Position_. After resolving this, make the target _Position_ _Wet_.",
+    "range": "Short",
+    "chart": {
+      "on_miss": "+4 _Momentum_.",
+      "stun": [0, 2, 2, 2, 2, 3, 3, 4, 4, 5, 5],
+      "damage": [0, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3],
+      "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Tidal Motion_ [4 _Grit_], _Soaked_",
+        "_Tidal Motion_ [4 _Grit_], _Soaked_",
+        "_Tidal Motion_ [5 _Grit_], _Soaked_",
+        "_Tidal Motion_ [5 _Grit_], _Soaked_",
+        "_Tidal Motion_ [6 _Grit_], _Soaked_",
+        "_Tidal Motion_ [6 _Grit_], _Soaked_",
+        "_Tidal Motion_ [7 _Grit_], _Soaked_",
+        "_Tidal Motion_ [7 _Grit_], _Soaked_",
+        "_Tidal Motion_ [8 _Grit_], _Soaked_",
+        "_Tidal Motion_ [8 _Grit_], _Soaked_"
+      ]
+    },
+    "charged_profile": {
+      "set_up": "Immediately _Draw_ and choose a Position within _Range_. While _Charging_, create a _Wave_ at your _Position_ that you may immediately _Occupy_. If the _Wave_ is _Destroyed_, lose _Charging_.",
+      "resolution": "Remove the _Wave_ without resolving its _Destroy_ Effect. Resolve this Attack against the target Position. Add [_Prone_] and deal +5 _Bonus Stun_."
+    },
+    "analysis_notes": { "fudge": 0.5, "expected_targets": 2 }
+  },
+  {
+    "name": "Twister",
+    "desc": "You seize the wind, twisting and turning it into a vicious spin.",
+    "keywords": ["Spirit", "Wind", "Crush", "Committed"],
+    "class": "Wind",
+    "cost": "2 _Momentum_",
+    "effect": "Resolve this Attack against a whole _Position_. If the _Position_ is _Gusting_, remove _Gusting_ and gain a +1 _Bonus_. For every two Targets at said _Position_, inflict +1 _Bonus Stun_.",
+    "special": "When inflicting _Slide_ you may not place two Targets at the same _Position_ until you have at least placed one creature at all eligible _Positions_ within that _Arena_. You must always choose to move Targets to a new _Position_ when inflicting _Slide_.",
+    "type": "Heavy",
+    "speed": 2,
+    "range": "Short/Medium",
+    "chart": {
+      "on_miss": "+4 _Momentum_.",
+      "stun": [0, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4],
+      "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
+      "status": [
+        "",
+        "_Slide_ 1 [4 _Grit_]",
+        "_Slide_ 1 [4 _Grit_]",
+        "_Slide_ 1 [5 _Grit_]",
+        "_Slide_ 1 [5 _Grit_]",
+        "_Slide_ 1 [6 _Grit_]",
+        "_Slide_ 1 [6 _Grit_]",
+        "_Slide_ 1 [7 _Grit_]",
+        "_Slide_ 1 [7 _Grit_]",
+        "_Slide_ 2 [8 _Grit_]",
+        "_Slide_ 2 [8 _Grit_]"
+      ]
+    },
+    "charged_profile": {
+      "set_up": "Choose a Position within Range. Immediately inflict _Airborne_ [4 _Grit_] on all Targets at the _Position_. Increase the _Negate_ DC by 1 if the _Position_ was already _Gusting_, otherwise it becomes _Gusting_ while _Charging_.",
+      "resolution": "Resolve the Effect against the Target _Position_. On a _Hit_+, inflict +1 _Slide_ on _Airborne_ Targets."
+    },
+    "analysis_notes": { "expected_targets": 2 }
+  },
+  {
     "name": "Thrust",
     "class": "Martial",
     "keywords": ["Derived"],
@@ -1537,8 +1610,7 @@
     "speed": 1,
     "range": "Melee",
     "effect": "Gain 1 _Momentum_.",
-    "boost": "1 _Momentum_ (_Hit_+): Add _Prone_/_Push_ [4 _Grit_].",
-    "special": "Against a _Stunned_ target deal twice the _Stun_ that would be inflicted as _Damage_.",
+    "special": "On a _Hit_+, add the following based on the current _Phase_:\n* Phase 2: _Push_ [3 _Grit_]\n* Phase 3: _Push_ [4 _Grit_]/_Prone_ [3 _Reflex_/_Grit_]\n* Phase 4: _Push_ [5 _Grit_]/_Prone_ [4 _Reflex_/_Grit_]",
     "chart": {
       "on_miss": "+0 _Momentum_",
       "stun": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2],
@@ -1603,23 +1675,17 @@
   },
   {
     "name": "Will-o-Wisp",
-    "desc": "You split an active flame, using it to sear a foe with spreading flames.",
+    "desc": "You animate a flame, searing foes as you redirect it.",
     "type": "Light",
-    "speed": "1",
+    "speed": "4",
     "class": "Blaze",
-    "range": [
-      {
-        "category": "Ranged",
-        "value": 6
-      }
-    ],
-    "effect": "Remove a _Blazing_ space within Range 2 of the Target, then deal 2 _Fire_ Damage and inflict _Alight_ [3 _Reflex_] on the Target.",
-    "boost": "1 _Momentum_: Remove up to  3 _Stun_ from the Target. Increase the _Negate_ value by 1 for each _Stun_ removed.",
-    "rank": "Minor Attack",
+    "keywords": ["Spirit", "Fire", "Ignite", "Avoidable"],
+    "range": "Melee/Short",
+    "effect": "Choose a [_Fire_] Terrain or _Feature_ with Range. _Destroy_ it, then deal 3 Damage and inflict _Alight_ [4 _Reflex_] on a creature within Range.",
     "analysis_notes": {
-      "bonus_damage": [3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33, 3.33],
-      "fudge": 0.6333,
-      "notes": "Blazing space worth 1/3 Momentum, targeting restriction is 0.3."
+      "bonus_damage": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+      "fudge": 0.66,
+      "notes": "Removing Blazing is worth Momentum."
     }
   },
   {

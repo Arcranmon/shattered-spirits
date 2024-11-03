@@ -3,7 +3,7 @@ import { store } from '@/store'
 class Combatant {
   private health_: number
   private stamina_: number
-  private ap_: number
+  private move_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
   private vigor_: number
@@ -12,7 +12,7 @@ class Combatant {
   // CONSTRUCTOR
   // ==========================================================
   public constructor() {
-    this.ap_ = 0
+    this.move_ = 0
     this.stamina_ = 0
     this.health_ = 0
     this.momentum_ = 0
@@ -21,11 +21,15 @@ class Combatant {
   // ==========================================================
   // These should be overwritten by children
   // ==========================================================
-  get MaxAP() {
+  get MaxMovement() {
     return 0
   }
 
   get Guard() {
+    return 0
+  }
+
+  get Soak() {
     return 0
   }
 
@@ -38,6 +42,10 @@ class Combatant {
   }
 
   get MomentumGain() {
+    return 0
+  }
+
+  get Jump() {
     return 0
   }
 
@@ -57,18 +65,38 @@ class Combatant {
     return []
   }
 
+  get BulletedTraits() {
+    return '\n\n_' + this.Traits.join('_\n\n_') + '_'
+  }
+
+  get Defenses() {
+    return this.Grit + ' _Grit_, ' + this.Reflex + ' _Reflex_, ' + this.Focus + ' _Focus_'
+  }
+
+  get Grit() {
+    return 0
+  }
+
+  get Reflex() {
+    return 0
+  }
+
+  get Focus() {
+    return 0
+  }
+
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================
 
   public ApplyRespite() {
-    this.ap_ = this.MaxAP
+    this.move_ = this.MaxMovement
     this.stamina_ = this.MaxStamina
     this.momentum_ += this.MomentumGain
   }
 
   public ResetDefault() {
-    this.ap_ = this.MaxAP
+    this.move_ = this.MaxMovement
     this.health_ = this.MaxHealth
     this.stamina_ = this.MaxStamina
     this.momentum_ = 0
@@ -76,14 +104,14 @@ class Combatant {
     this.statuses_ = []
   }
 
-  get AP() {
-    return this.ap_
+  get Movement() {
+    return this.move_
   }
 
-  set AP(ap: number) {
-    if (ap > this.MaxAP) this.ap_ = this.MaxAP
-    if (ap < 0) this.ap_ = 0
-    this.ap_ = ap
+  set Movement(move: number) {
+    if (move > this.MaxMovement) this.move_ = this.MaxMovement
+    if (move < 0) this.move_ = 0
+    this.move_ = move
   }
 
   public AddStatus(status: string) {
@@ -160,7 +188,7 @@ class Combatant {
   public static Serialize(combatant: Combatant): ICombatantData {
     return {
       health: combatant.health_,
-      ap: combatant.ap_,
+      move: combatant.move_,
       stamina: combatant.stamina_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
@@ -175,7 +203,7 @@ class Combatant {
   }
 
   public setCombatantData(data: ICombatantData): void {
-    this.ap_ = data.ap
+    this.move_ = data.move
     this.stamina_ = data.stamina
     this.health_ = data.health
     this.momentum_ = data.momentum

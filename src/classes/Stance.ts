@@ -32,6 +32,21 @@ class Stance extends Base {
     return this.defenses_.stamina
   }
 
+  public get Grit() {
+    if (this.defenses_.grit) return this.defenses_.grit
+    return 0
+  }
+
+  public get Reflex() {
+    if (this.defenses_.reflex) return this.defenses_.reflex
+    return 0
+  }
+
+  public get Focus() {
+    if (this.defenses_.focus) return this.defenses_.focus
+    return 0
+  }
+
   public get DefenseHeader() {
     var defense_string = '**Defenses:** \n* ' + this.defenses_.stamina + ' _Stamina_'
     if (this.defenses_.focus) defense_string += '\n* ' + this.defenses_.focus + ' _Focus_'
