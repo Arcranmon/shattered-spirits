@@ -22,7 +22,7 @@
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
                   <v-file-input accept=".json" v-model="importFile" />
-                  <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
+                  <v-btn color="button--template" @click="importCharacter()" :disabled="importFile.length == 0">
                     <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
@@ -81,7 +81,7 @@
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
                   <v-file-input accept=".json" v-model="importFile" />
-                  <v-btn color="button--template" @click="importCharacter(), (characterImportDialog = false)">
+                  <v-btn color="button--template" @click="importCharacter()" :disabled="importFile.length == 0">
                     <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
@@ -189,6 +189,7 @@ export default Vue.extend({
         store.AddCharacter(char)
       }
       reader.readAsText(this.importFile)
+      this.characterImportDialog = false
     },
   },
   computed: {

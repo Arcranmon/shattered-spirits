@@ -3,6 +3,7 @@ import { store } from '@/store'
 class Combatant {
   private health_: number
   private stamina_: number
+  private stun_: number
   private move_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
@@ -14,6 +15,7 @@ class Combatant {
   public constructor() {
     this.move_ = 0
     this.stamina_ = 0
+    this.stun_ = 0
     this.health_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
@@ -39,6 +41,10 @@ class Combatant {
 
   get MaxStamina() {
     return 0
+  }
+
+  get MaxStun() {
+    return 10
   }
 
   get MomentumGain() {
@@ -99,6 +105,7 @@ class Combatant {
     this.move_ = this.MaxMovement
     this.health_ = this.MaxHealth
     this.stamina_ = this.MaxStamina
+    this.stun_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
     this.statuses_ = []
@@ -163,6 +170,16 @@ class Combatant {
     this.stamina_ = stamina
   }
 
+  get Stun() {
+    return this.stun_
+  }
+
+  set Stun(stun: number) {
+    if (stun > this.MaxStun) this.move_ = this.MaxStun
+    if (stun < 0) this.stun_ = 0
+    this.stun_ = stun
+  }
+
   get Health() {
     return this.health_
   }
@@ -190,6 +207,7 @@ class Combatant {
       health: combatant.health_,
       move: combatant.move_,
       stamina: combatant.stamina_,
+      stun: combatant.stun_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
       vigor: combatant.vigor_,
@@ -208,6 +226,7 @@ class Combatant {
     this.health_ = data.health
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses
+    this.stun_ = data.stun
     this.vigor_ = data.vigor
   }
 }

@@ -51,6 +51,7 @@ declare interface ICharacterData extends ICombatantData {
 declare interface ICombatantData {
   health: number
   stamina: number
+  stun: number
   move: number
   momentum: number
   statuses?: IStatusEffect[]

@@ -30,6 +30,13 @@
           ><v-btn inline x-small @click=";(creature.Stamina += 1), $emit('changed')" color="green">+</v-btn>
         </v-col>
       </v-row>
+      <v-row no-gutters>
+        <v-col><display-tooltip-text string="**_Stun_:**" /></v-col><v-col>{{ creature.Stun }} / {{ creature.MaxStun }}</v-col
+        ><v-col style="min-width: 6em"
+          ><v-btn inline x-small @click=";(creature.Stun -= 1), $emit('changed')" color="red">-</v-btn
+          ><v-btn inline x-small @click=";(creature.Stun += 1), $emit('changed')" color="green">+</v-btn>
+        </v-col>
+      </v-row>
       <v-row no-gutters v-if="!isSpirit">
         <v-col><display-tooltip-text string="**_Momentum_:**" /></v-col><v-col>{{ creature.Momentum }}</v-col
         ><v-col style="min-width: 6em"

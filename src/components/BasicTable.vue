@@ -7,8 +7,8 @@
       </v-row>
       <div v-for="(item, index) in chart" :key="index">
         <v-row align="stretch" no-gutters class="chart--row" :class="{ OddRow: index % 2 == 1 }">
-          <v-col class="chart--cols justify-center align-center" cols="1">{{ index + 1 }} </v-col>
-          <v-col class="chart--cols chart--cols-right" cols="11"><display-tooltip-text :string="item" /> </v-col>
+          <v-col class="chart--cols justify-center align-center" cols="1">{{ getIndex(item, index) }} </v-col>
+          <v-col class="chart--cols chart--cols-right" cols="11"><display-tooltip-text :string="getItem(item)" /> </v-col>
         </v-row>
       </div>
     </div>
@@ -25,6 +25,16 @@ export default Vue.extend({
     chart: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    getIndex(item, index) {
+      if (typeof item === 'string') return index + 1
+      return item[0]
+    },
+    getItem(item) {
+      if (typeof item === 'string') return item
+      return item[1]
     },
   },
 })
