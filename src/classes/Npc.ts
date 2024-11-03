@@ -47,6 +47,10 @@ class Npc extends Combatant {
     return this.npc_data_.move
   }
 
+  override get MaxStun() {
+    return this.npc_data_.max_stun
+  }
+
   override get Weapons() {
     return store.getters.getWeaponsFromList(this.npc_data_.weapons)
   }
@@ -81,6 +85,10 @@ class Npc extends Combatant {
 
   public get Desc() {
     return this.npc_data_.desc
+  }
+
+  public get Pattern() {
+    return '**' + this.npc_data_.pattern + '**'
   }
 
   public get HasGambits() {

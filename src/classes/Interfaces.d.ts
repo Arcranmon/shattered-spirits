@@ -127,9 +127,11 @@ declare interface INpcData {
   health: number
   gambits?: Array<string>
   guard?: number
+  max_stun: number
   momentum_gain?: number
   name: string
   npc_type: string
+  pattern: string
   reactions: Array<string>
   role: string
   size: string

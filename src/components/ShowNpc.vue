@@ -1,5 +1,8 @@
 <template>
   <div style="margin: 1em" class="npc-tab-content npc-wrapper">
+    <div style="text-align: center">
+      <display-tooltip-text :string="npc.Pattern" />
+    </div>
     <v-row style="margin: 1em">
       <v-col :cols="columnNumbers"><combat-stats-widget :creature="npc" @changed="$emit('changed')" /> </v-col
       ><v-col :cols="columnNumbers"> <status-widget :creature="npc" @changed="$emit('changed')" /></v-col
