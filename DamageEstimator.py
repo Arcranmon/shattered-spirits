@@ -18,6 +18,7 @@ status_multipliers = {
     "Hobbled": 3,
     "Impaired": 2,
     "Prone": 3,
+    "Poisoned": 4,
     "Reeling": 2,
     "Shocked": 3,
     "Soaked": 1,
@@ -201,7 +202,13 @@ def estimate_damage(attack, glancing, print_stats):
     if("analysis_notes" in attack):
         cost = cost + attack["analysis_notes"].get("fudge", 0)
         expected_targets = attack["analysis_notes"].get("expected_targets", 1)
-        bonus_damage = attack["analysis_notes"].get("bonus_damage", [0]*11)
+        if("bonus_damage" in attack["analysis_notes"]):
+            if(isinstance(attack["analysis_notes"]["bonus_damage"], float) or isinstance(attack["analysis_notes"]["bonus_damage"], int)):
+                bonus_damage = [attack["analysis_notes"]["bonus_damage"]]*11
+                print(bonus_damage)
+            else:
+                print("test")
+                bonus_damage = attack["analysis_notes"]["bonus_damage"]
         override_range = attack["analysis_notes"].get("range", "")
         diff_speed = attack["analysis_notes"].get("speed", 0)
         status_damage = get_status_damage(attack["analysis_notes"].get("status", ""), False)

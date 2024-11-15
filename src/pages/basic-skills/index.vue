@@ -41,6 +41,7 @@
           job="Maneuvers"
           :collapse="false"
         />
+        <show-cards :inputs="[$store.getters.getManeuver('Partnership')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
@@ -66,7 +67,6 @@
           job="Maneuvers"
           :collapse="false"
         />
-        <show-cards :inputs="[$store.getters.getManeuver('Partnership')]" job="Maneuvers" :collapse="false" v-bind:class="use_single" :cols="1" />
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards

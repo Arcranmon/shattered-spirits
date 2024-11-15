@@ -7,10 +7,7 @@
     "element": "Flame",
     "position_effect": "The first time a creature enters a Blazing _Position_ on a Turn or ends a _Phase_ in it they take 2 _Fire_ Damage. If they are in the _Position_ at the end of the _Round_ they gain _Alight_ [3 _Reflex_].",
     "path_effect": "If a creature uses this _Path_ they take 4 _Fire_ Damage and gain _Alight_ [4 _Reflex_].",
-    "interactions": [
-      "If a _Watersource_ is placed in this space, reduce the _Watersource_'s value by 1 and make the space _Veiled_.",
-      "If placed in a _Watersource_ space, reduce the _Watersource_'s value by 1 and make the space _Veiled_."
-    ]
+    "interactions": ["Water Terrain: Reduce the _Watersource_ value by 1, remove Blazing, then make this space _Veiled_."]
   },
   {
     "name": "Churning Water",
@@ -31,6 +28,19 @@
     "position_effect": "The creator chooses one:\n* It costs an additional _Movement_ to enter this _Position_ and non-_Melee_ Attacks against creatures in this _Position_ take a -1 _Penalty_.\n* It costs an additional _Movement_ to leave this _Position_ and non-_Melee_ Attacks by creatures in this _Position_ take a -1 _Penalty_.",
     "path_effect": "The creator chooses a direction. Any Attack that goes against this direction takes a -1 _Penalty_, and it costs an additional _Movement_ to use this Path when moving against this direction.",
     "special": "While an area is _Gusting_ it may not become _Veiled_."
+  },
+  {
+    "name": "Toxic Gas",
+    "desc": "Thick toxic gas that chokes the air.",
+    "keywords": ["Fleeting", "Poison", "Endurable", "AP"],
+    "layer": "Weather",
+    "element": "Elementless",
+    "position_effect": "All creatures at this Position see creatures not at this Position as Obscured, and vice-versa. Additionally, the first time a creature enters a Toxic Gas _Position_ on a Turn or ends a _Phase_ in it they gain 3 _Stun_. If they are in the _Position_ at the end of the _Round_ they gain _Poisoned_ [4 _Grit_].",
+    "path_effect": "If a creature uses this _Path_ they take 5 _Stun_ and gain _Poisoned_ [5 _Grit_].",
+    "interactions": [
+      "Windy Terrain: Remove Toxic Gas.",
+      "Fire Damage and Terrain: Remove Toxic Gas. Deal 4 [_Fire_] Damage to all creatures present at the Toxic Gas' location."
+    ]
   },
   {
     "name": "Uneven Earth",

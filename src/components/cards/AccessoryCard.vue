@@ -1,12 +1,15 @@
 <template>
   <div inline class="card--wrapper">
     <div class="card--underline-top">
-      <div class="card--header">
+      <div class="card--header colored-header">
         <h4 style="display: inline; font-style: normal">{{ accessory.Name }}</h4>
         <div class="card--keywords">
           <i
-            ><span v-if="accessory.Desc.length > 0">{{ accessory.Desc }}<br /></span
-          ></i>
+            ><span v-if="accessory.Desc.length > 0">{{ accessory.Desc }}<br /></span></i
+          ><b
+            ><span v-for="(keyword, index) in accessory.Keywords" :key="index" class="keyword--box">
+              <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></span
+          ></b>
         </div>
       </div>
     </div>
@@ -44,6 +47,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.a {
+.colored-header {
+  background-color: rgb(235, 105, 105);
 }
 </style>

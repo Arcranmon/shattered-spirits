@@ -1602,6 +1602,24 @@
     "rank": "Major Attack"
   },
   {
+    "name": "Toxic Spray",
+    "desc": "You spew noxious gas, covering foes.",
+    "type": "Versatile",
+    "speed": "3",
+    "keywords": ["Poison", "AP", "Endurable"],
+    "class": "NPC",
+    "range": "Melee",
+    "effect": "Deal 3 _Stun_ and inflict _Poisoned_ [4 _Grit_] on up to two creatures at the target _Position_.",
+    "analysis_notes": {
+      "bonus_damage": 5.0,
+      "expected_targets": 1.25
+    },
+    "charged_profile": {
+      "set_up": "Add _Toxic Gas_ to your _Position_.",
+      "resolution": "Deal +3 _Bonus Stun_."
+    }
+  },
+  {
     "name": "Brawl",
     "class": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
@@ -1665,6 +1683,16 @@
     "effect": "Make an Attack using a _Wielded_ Weapon."
   },
   {
+    "name": "Assault Orders",
+    "class": "Martial",
+    "discipline": "Basic",
+    "cost": "1 _Momentum_",
+    "speed": 1,
+    "range": "Medium-",
+    "desc": "You direct a foe to strike, seizing an opening.",
+    "effect": "An ally within Range may immediately make an Attack of the same Rank as the one used for this."
+  },
+  {
     "name": "Wild Chop",
     "desc": "You let your axe's weight control your movements, lashing out with a wild, uncontrolled strike.",
     "keywords": ["Derived"],
@@ -1683,7 +1711,7 @@
     "range": "Melee/Short",
     "effect": "Choose a [_Fire_] Terrain or _Feature_ with Range. _Destroy_ it, then deal 3 Damage and inflict _Alight_ [4 _Reflex_] on a creature within Range.",
     "analysis_notes": {
-      "bonus_damage": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+      "bonus_damage": 5,
       "fudge": 0.66,
       "notes": "Removing Blazing is worth Momentum."
     }

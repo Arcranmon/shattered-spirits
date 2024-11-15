@@ -2,7 +2,7 @@
 
 ### Plan
 
-- Make most Traits and such that enemies have come from a piece of 'Equipment'
+- Add some basic Potions
 
 POTENTIAL REFACTORS
 

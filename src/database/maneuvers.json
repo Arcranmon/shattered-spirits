@@ -202,6 +202,14 @@
     "class": "Martial"
   },
   {
+    "name": "Chemical Warfare",
+    "desc": "You spew gas forth, creating a toxic cloud hostile to foes.",
+    "type": "Action",
+    "range": "Melee/Short",
+    "effect": "Add _Toxic Gas_ to a _Position_ or _Path_ within _Range_.",
+    "class": "NPC"
+  },
+  {
     "name": "Chip Damage",
     "desc": "When foes strike your armor vicious bits of shrapnel punish their efforts.",
     "keywords": ["Efficient"],
@@ -439,7 +447,8 @@
     "type": "Reaction",
     "cost": "1 _Stamina_",
     "trigger": "You are Attacked, take Damage, or must _Negate_.",
-    "effect": "Roll a d6 and resolve the effect using the below table. You may also gain the _Parry_ bonus from a _Wielded_ piece of Equipment. If you do and the triggering effect inflicts any _Sundered_ it is always first applied to said piece of Equipment.",
+    "effect": "Roll a d6 and resolve the effect using the below table or _Parry_.",
+    "boost": "1 _Stamina_: Resolve both effects.",
     "class": "Basic",
     "table": [
       ["1", "Gain 1 _Ward_ and add [_Block_] OR a +1 _Bonus_ to _Negate_."],
@@ -626,6 +635,16 @@
     "cost": "1 _AP_",
     "reqs": "Triggering _Attack_ must have inflicted _Marked_ on a single target.",
     "effect": "While the creature is _Marked_ by you, gain 1 _Temporary_ _Momentum_ each _Turn_ that may only be spent against _Marked_ creatures. This effect ends if you use it another enemy, an ally damages or inflicts a condition on this creature, or you end your _Turn_ non-adjacent to the Target.",
+    "class": "Basic"
+  },
+  {
+    "name": "Queen's Cry",
+    "desc": "The queen shrieks, calling an ally towards her.",
+    "type": "Reaction",
+    "cost": "2 _Momentum_",
+    "range": "Medium-",
+    "reqs": "A creature Attacks you.",
+    "effect": "An ally within Medium Range may immediately take the _Sprint_ Action as a _Reaction_.",
     "class": "Basic"
   },
   {
@@ -1527,10 +1546,10 @@
     "name": "Partnership",
     "desc": "You and your spirit act in tandem, never granting foes the chance to breath.",
     "keywords": ["Spirit"],
-    "type": "Reaction",
+    "type": "Action",
     "cost": "2 _Momentum_",
-    "reqs": "A _Phase_ begins while your _Spirit_ is _Summoned_.",
-    "effect": "This _Phase_ both you and your Spirit may take an _Action_. During these _Actions_, each character must independently resolve all effects. For example, on the character's _Turn_, all Attacks made must originate from them, and vice versa.",
+    "reqs": "Spirit is _Summoned_.",
+    "effect": "You and your _Spirit_ may both immediately take a different _Action_, resolving them on the same _Turn_ and ignoring normal _Initiative_. During these _Actions_, each character must independently resolve all effects. For example, all Attacks used by the summoner must originate from the summoner.",
     "class": "Basic"
   },
   {
@@ -1629,9 +1648,8 @@
     "name": "Raise Guard",
     "desc": "You adopt a defensive stance, warding yourself against harm.",
     "type": "Action",
-    "move": "0/0",
     "cost": "1 _Stamina_",
-    "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Ward_ and reduce the cost of the first _Defensive_ _Reaction_ each _Phase_ by 1.",
+    "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Ward_.",
     "class": "Basic"
   },
   {

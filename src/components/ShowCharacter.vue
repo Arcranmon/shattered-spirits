@@ -56,7 +56,14 @@
                 />
               </v-tab-item>
               <v-tab-item><display-tooltip-text class="description-text" string="Not applicable yet!" /></v-tab-item>
-              <v-tab-item><display-tooltip-text class="description-text" string="Not applicable yet!" /></v-tab-item>
+              <v-tab-item
+                ><show-cards
+                  job="Accessory"
+                  :inputs="$store.getters.getAccessoryFromList(['Health Flask'])"
+                  standalone_or_contained="Standalone"
+                  :collapse="false"
+                  v-bind:cols="screenSize"
+              /></v-tab-item>
               <v-tab-item style="margin: 1em"
                 ><div v-for="disc in character.Disciplines" :key="disc.name">{{ disc.name }} <span v-for="n in disc.tier" :key="n">I</span></div>
               </v-tab-item>

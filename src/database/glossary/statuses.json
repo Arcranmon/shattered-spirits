@@ -40,6 +40,14 @@
     "type": "Status Effect"
   },
   {
+    "name": "Charging",
+    "desc": "A status gained while a creature gathers power and focus for a powerful effect.",
+    "effect": "While _Charging_ you may not willingly _Move_ or make _Attacks_.",
+    "remove": "Creatures lose Charging if they gain _Stunned_. If they do, they gain 1 _Momentum_ and immediately resolve the _On-Miss_ effect of whatever _Charged Attack_ they were using.",
+    "special": "A creature may not be both Charging and _Guarding_.",
+    "type": "Status Effect"
+  },
+  {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
     "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. If a creature has 0 _Stamina_ any remaining Dazed is instead applied as _Stun_.",
@@ -62,6 +70,14 @@
     "effect": "The next Attack against an Exposed creature has _Advantage_. After being attacked remove Exposed.",
     "repeat": "If an Exposed creature would gain Exposed they instead gain 1 _Stun_.",
     "recover": "When a creature _Recovers_ they may remove Exposed.",
+    "type": "Status Effect"
+  },
+  {
+    "name": "Guarding",
+    "desc": "A status gained while a creature focuses entirely on defense.",
+    "effect": "While Guarding all _Attacks_ have their cost increased by 2 and all _Movement_ costs increased by 1, but the cost of all _Defensive_ _Reactions_ is reduced by 1. Effects that grant Guarding also typically provide some small additional bonus; if a creature gains Guarding from another source, replace the bonus.",
+    "remove": "Creatures lose Guarding if they gain _Stunned_. Creatures may also willingly end the effect at the end of their _Turn_.",
+    "special": "A creature may not be both _Charging_ and Guarding.",
     "type": "Status Effect"
   },
   {
@@ -165,9 +181,15 @@
   {
     "name": "Stunned",
     "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "When a creature gains Stunned inflict your choice of _Reeling_, _Impaired_, or _Exposed_ and immediately lose _Guarding_ or _Charging_. While Stunned any _Stun_ inflicted on the creature is instead [_AP_] Damage. The Stunned creature additionally loses their next _Action_ or, if they were using a _Technique_, they must replace it with _Improvise_. Refund any cost associated with the _Technique_.",
+    "effect": "When a creature gains Stunned inflict _Skipped_ and the attacker's choice of _Reeling_, _Impaired_, or _Exposed_. The creature immediately loses _Guarding_ or _Charging_. While Stunned any _Stun_ inflicted on the creature is instead [_AP_] Damage.",
     "remove": "Remove Stunned at the end of the _Round_ it was inflicted.",
     "type": "Affliction"
+  },
+  {
+    "name": "Skipped",
+    "desc": "An affliction caused when a creature is unable to act properly.",
+    "effect": "What happens to a creature when they gain Skipped depends on if they have a _Technique_ or _Action_ next in Initiative. If it is an _Action_, the creature does not get to use that _Action_. If it is a _Technique_, the creature must replace their selected _Technique_ with _Improvise_. Refund any cost paid for this _Technique_.",
+    "type": "Instant Effect"
   },
   {
     "name": "Studied",
