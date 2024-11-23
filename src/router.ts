@@ -145,14 +145,6 @@ const r = new Router({
       },
     },
     {
-      path: '/equipment-in-combat',
-      component: EquipmentInCombat,
-      name: 'equipment-in-combat',
-      meta: {
-        title: 'Equipment in Combat',
-      },
-    },
-    {
       path: '/reading-abilities',
       component: ReadingAbilities,
       name: 'reading-abilities',

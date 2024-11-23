@@ -8,7 +8,8 @@ class SpiritForm extends Base {
   private weapons_: string
   private bonus_attack_: string
   private guard_: number
-  private movement_: string
+  private move_: number
+  private jump_: number
   private traits_: string[]
 
   private light_limit_: number
@@ -32,7 +33,10 @@ class SpiritForm extends Base {
   // GETTERS
   // ==========================================================
   public get Movement() {
-    return this.movement_
+    return this.move_
+  }
+  public get Jump() {
+    return this.jump_
   }
 
   // ==========================================================
@@ -75,6 +79,12 @@ class SpiritForm extends Base {
   }
   public get HealthHeader() {
     return '**Health:** ' + this.health_
+  }
+  public get MovementHeader() {
+    return '**Move:** ' + this.move_
+  }
+  public get JumpHeader() {
+    return '**Jump:** ' + this.jump_
   }
   public get Health() {
     return this.health_
@@ -160,7 +170,8 @@ class SpiritForm extends Base {
     this.weapons_ = data.weapons || ''
     this.bonus_attack_ = data.bonus_attack || ''
     this.guard_ = data.guard || 0
-    this.movement_ = data.movement || ''
+    this.move_ = data.move || 0
+    this.jump_ = data.jump || 0
     this.traits_ = data.traits || []
 
     var required_weapons = this.Weapons.replaceAll('_', '').split(', ')

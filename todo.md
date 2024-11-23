@@ -2,8 +2,6 @@
 
 ### Plan
 
-- Add some basic Potions
-
 POTENTIAL REFACTORS
 
 - Buff Dripping Veil/Bastion

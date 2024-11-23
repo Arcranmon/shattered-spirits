@@ -537,14 +537,16 @@
     "desc": "You slip away from an incoming attack, avoiding the brunt of the blow.",
     "keywords": ["Defensive", "Evade"],
     "type": "Reaction",
-    "cost": "1 _Stamina_",
+    "cost": "1 _Stamina_, 1 _Movement_",
     "trigger": "You are Attacked and are not _Immobile_.",
-    "effect": "Roll on the below table. If you can pay the listed _Movement_ cost, add [_Glancing_] to the triggering Attack. Otherwise, lose all remaining _Movement_ and gain _Prone_. You always lose _Guarding_ or _Charging_.",
+    "effect": "Roll on the below table and gain the listed bonus. Additionally, gain _Ward_ equal to your _Reflex_.",
     "special": "If the triggering Attack was _Avoidable_ you may roll at _Advantage_.",
+    "boost": "X _Movement_: Gain +X _Ward_. X has a maximum value of what you rolled.",
     "table": [
-      ["1", "You must pay 3 _Movement_. Gain +1 _Reflex_."],
-      ["2-5", "You must pay 2 _Movement_. Gain +2 _Reflex_."],
-      ["6", "You must pay 1 _Movement_. Gain +3 _Reflex_."]
+      ["1", "None."],
+      ["2-3", "+1 _Reflex_."],
+      ["4-5", "+2 _Reflex_."],
+      ["6", "+3 _Reflex_. Gain 1 _Stamina_."]
     ],
     "class": "Basic"
   },
@@ -571,7 +573,7 @@
     "desc": "You grab an unattended item or change your equipment.",
     "keywords": ["Repeatable", "Armament"],
     "type": "Stunt",
-    "cost": "1 _Momentum_, or 0 _Momentum_ if the Equipment has the _Quickdraw_ property or is being _Puppeted_ by you.",
+    "cost": "1 _Momentum_",
     "reqs": "Your _Turn_.",
     "effect": "Choose one:\n* _Equip_ a _Wielded_ piece of _Equipment_.\n* _Wield_ an _Equipped_ piece of _Equipment_.\n* Spend a _Move_. _Equip_/_Wield_ a single unattended piece of _Equipment_ in your _Arena_. If said _Equipment_ is in an _Engagement_, you must enter it.\n* An ally in your _Engagement_ may immediately _Equip_ a piece of _Equipment_ you have _Wielded_/_Equipped_.",
     "special": "Whenever you would _Equip_/_Wield_ something, you may choose to instead place it unattended at your _Position_.",

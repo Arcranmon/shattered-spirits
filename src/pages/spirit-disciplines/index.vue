@@ -78,13 +78,14 @@ export default Vue.extend({
   components: { DisciplineCard },
   data() {
     return {
-      disciplineCategories: ['Flame', 'Earth', 'Water', 'Wind'],
+      disciplineCategories: ['Flame', 'Earth', 'Metal', 'Water', 'Wind', 'Wood'],
       selectedCategories: [],
       disciplineTypes: {
         Earth: ['Land', 'Mountain'],
         Water: ['Tide', 'Tundra'],
         Flame: ['Blaze', 'Detonation'],
         Wind: ['Gale', 'Storm'],
+        Wood: ['Bloom'],
       },
       selectedTypes: [],
       selectedDiscipline: null,

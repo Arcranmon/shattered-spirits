@@ -2,8 +2,6 @@
   <div style="text-align: center">
     <custom-button to="/combat-primer">Combat Primer</custom-button> <br />
     <custom-button to="/combat-rules">Combat Rules</custom-button> <br />
-    <custom-button to="/equipment-in-combat">Equipment in Combat</custom-button>
-    <br />
     <custom-button to="/afflictions-and-status">Afflictions and Status</custom-button>
     <br />
     <custom-button to="/features">Features</custom-button>

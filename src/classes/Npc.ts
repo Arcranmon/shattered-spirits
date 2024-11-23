@@ -1,5 +1,4 @@
 import { store } from '@/store'
-import Movement from './Movement'
 import Combatant from './Combatant'
 
 class Npc extends Combatant {
@@ -125,7 +124,8 @@ class Npc extends Combatant {
   }
 
   public get SpecialText() {
-    return this.npc_data_.special
+    if (this.npc_data_.special) return this.npc_data_.special
+    return ''
   }
 
   public get Tag() {
@@ -158,8 +158,8 @@ class Npc extends Combatant {
     return '**Health:** ' + this.npc_data_.health
   }
   public get ArmorText() {
-    if (this.npc_data_.guard == 0) return '**Armor:** None'
-    return '**Armor:** ' + this.npc_data_.guard + ' Guard, ' + this.npc_data_.durability + ' Durability'
+    if (this.npc_data_.guard) return '**Armor:** ' + this.npc_data_.guard + ' Guard'
+    else return '**Armor:** None'
   }
   public get SizeText() {
     return '**Size:** ' + this.npc_data_.size

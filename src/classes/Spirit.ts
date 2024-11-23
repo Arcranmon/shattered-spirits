@@ -44,12 +44,12 @@ class Spirit extends Combatant {
     return this.Form.Size
   }
 
-  override get MoveChart() {
-    return store.getters.getMovement(this.Form.Movement)
+  override get MaxMovement() {
+    return this.form_.Movement
   }
 
-  override get MaxMovement() {
-    return this.MoveChart.Movement
+  override get Jump() {
+    return this.form_.Jump
   }
 
   override get Traits() {

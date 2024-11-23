@@ -4,6 +4,7 @@ import { Armor, Combatant, Discipline, Stance, Weapon, Spirit, Technique } from 
 var kSpiritDisciplineCategories = ['Earth']
 
 var kBaseHealth = 25
+var kBaseLoad = 4
 
 var kBasicTechniques = ['Shift', 'Rally', 'Improvise', 'Skirmish', 'Combination Strike', 'Smash']
 var kBasicStances = ['Balanced Stance', "Summoner's Stance"]
@@ -23,17 +24,10 @@ class Character extends Combatant {
   private player_character_: Boolean
   private element_: string
   private weapons_: Array<string>
-  private accessories_: Array<string>
   private armor_: Array<string>
+  private accessories_: Array<string>
 
   private spirit_: Spirit
-
-  kMoveChart = [
-    store.getters.getMovement('Unencumbered'),
-    store.getters.getMovement('Light Load'),
-    store.getters.getMovement('Medium Load'),
-    store.getters.getMovement('Heavy Load'),
-  ]
 
   // ==========================================================
   // CONSTRUCTOR
@@ -80,21 +74,18 @@ class Character extends Combatant {
   }
 
   override get MaxMovement() {
-    return this.MoveChart.Movement
+    if (this.Weight <= this.MaxLoad) return 3
+    if (this.Weight <= this.MaxLoad * 2) return 2
+    if (this.Weight <= this.MaxLoad * 3) return 1
   }
 
   override get Jump() {
-    return this.MoveChart.Jump
-  }
-
-  override get MoveChart() {
-    for (var movement of this.kMoveChart) {
-      if (this.Weight <= movement.Encumbrance) return movement
-    }
+    if (this.Weight <= this.MaxLoad) return 1
+    return 0
   }
 
   override get Traits() {
-    var traits = this.MoveChart.Traits
+    var traits = []
     for (var armor of this.armor_) {
       traits = [...traits, ...store.getters.getArmor(armor).Traits]
     }
@@ -150,11 +141,15 @@ class Character extends Combatant {
   }
 
   override get MaxHealth() {
-    return 25
+    return kBaseHealth
   }
 
   get Name() {
     return this.name_
+  }
+
+  get MaxLoad() {
+    return kBaseLoad
   }
 
   get Spirit() {

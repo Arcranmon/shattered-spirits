@@ -7,10 +7,12 @@
     </div>
     <div class="card--content card--format">
       <display-tooltip-text :string="form.HealthHeader" /><br />
+      <display-tooltip-text :string="form.MovementHeader" /><br />
+      <display-tooltip-text :string="form.JumpHeader" /><br />
       <div v-if="form.HasDefenses"><display-tooltip-text :string="form.DefensesHeader" /></div>
       <display-tooltip-text :string="form.WeaponsHeader" /><br />
       <display-tooltip-text v-if="form.HasTraits" :string="form.TraitsHeader" /><br v-if="form.HasTraits" />
-      <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" /><movement-card :movement="$store.getters.getMovement(form.Movement)" />
+      <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" />
     </div>
     <div class="desc--box" v-if="form.Desc.length > 0" style="font-style: italic">{{ form.Desc }}<br /></div>
   </div>

@@ -7,6 +7,19 @@ declare interface IBaseData {
   special?: string
 }
 
+declare interface IArchetypeData extends IBaseData {
+  manuever: string
+  bonuses: IBonusesData
+  narrative_effect: string
+}
+
+declare interface IBonusesData {
+  grit: number
+  reflex: number
+  move: number
+  load: number
+}
+
 declare interface IArmorData extends IBaseData {
   weight: number
   durability: number
@@ -172,15 +185,6 @@ declare interface ITechData extends IAbilityData {
   weapon?: string
 }
 
-declare interface IMovementData {
-  name: string
-  encumbrance: number
-  movement: number
-  jump: number
-  manifest_range: string
-  traits: string[]
-}
-
 declare interface IRangeData {
   category: string
   value: number
@@ -207,7 +211,8 @@ declare interface ISpiritFormData extends IBaseData {
   weapons: string
   bonus_attack: string
   guard: number
-  movement: string
+  move: number
+  jump: number
   traits: string[]
 }
 

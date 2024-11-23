@@ -14,7 +14,6 @@
     <div class="npc--content">
       <v-row no-gutters>
         <v-col cols="6">
-          <div v-if="npc.Class != 'Minion'" v-html="$marked.parseInline(npc.ApText)" />
           <div v-html="$marked.parseInline(npc.SizeText)" />
           <div v-html="$marked.parseInline(npc.HealthText)" />
           <div v-html="$marked.parseInline(npc.ArmorText)" />
@@ -25,7 +24,6 @@
               :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))"
               :decorate="false"
             /></div></v-col
-        ><v-col cols="6"> <movement-card :movement="npc.MoveChart" :npc="true" /></v-col
       ></v-row>
       <v-row no-gutters></v-row><br />
     </div>

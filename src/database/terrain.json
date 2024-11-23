@@ -30,9 +30,18 @@
     "special": "While an area is _Gusting_ it may not become _Veiled_."
   },
   {
+    "name": "Running Water",
+    "desc": "Terrain that represents a slow-moving body of water.",
+    "layer": "Base",
+    "element": "Water",
+    "keywords": ["Conductive", "_Watersource_ ∞"],
+    "position_effect": "None; this may only be applied to Paths.",
+    "path_effect": "Increase the cost to move through this _Path_ by 1. Additionally, creatures that pass through this _Path_ gain _Soaked_."
+  },
+  {
     "name": "Toxic Gas",
     "desc": "Thick toxic gas that chokes the air.",
-    "keywords": ["Fleeting", "Poison", "Endurable", "AP"],
+    "keywords": ["Fleeting", "Poison", "Endurable", "Unblockable", "AP"],
     "layer": "Weather",
     "element": "Elementless",
     "position_effect": "All creatures at this Position see creatures not at this Position as Obscured, and vice-versa. Additionally, the first time a creature enters a Toxic Gas _Position_ on a Turn or ends a _Phase_ in it they gain 3 _Stun_. If they are in the _Position_ at the end of the _Round_ they gain _Poisoned_ [4 _Grit_].",

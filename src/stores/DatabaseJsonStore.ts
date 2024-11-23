@@ -21,30 +21,12 @@ import Attacks from '@/database/attacks.json'
 import SubtypeJson from '@/database/subtypes.json'
 import SpiritForms from '@/database/spirit_forms.json'
 
-import MovementJson from '@/database/movement.json'
 import ManeuversJson from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import {
-  Armor,
-  Attack,
-  Discipline,
-  Accessory,
-  Maneuver,
-  Movement,
-  Npc,
-  Feature,
-  SpiritForm,
-  Subtype,
-  Stance,
-  Status,
-  Talent,
-  Technique,
-  Terrain,
-  Weapon,
-} from '@/class'
+import { Armor, Attack, Discipline, Accessory, Maneuver, Npc, Feature, SpiritForm, Subtype, Stance, Status, Talent, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -70,7 +52,6 @@ export class DatabaseJsonStore extends VuexModule {
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
     this.Subtypes = SubtypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
-    this.Movements = MovementJson.map((x) => Movement.Deserialize(<IMovementData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
   }
 
@@ -81,7 +62,6 @@ export class DatabaseJsonStore extends VuexModule {
   private Disciplines: Discipline[] = []
   private Techniques: Technique[] = []
   private Subtypes: Subtype[] = []
-  private Movements: Movement[] = []
   private Features: Feature[] = []
 
   // ==========================================================
@@ -333,27 +313,6 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // MOVEMENT TOOLS
-  // ==========================================================
-  get getMovement(): any {
-    return (inword: string) => {
-      return this.Movements.find((x) => x.Name === inword.trim())
-    }
-  }
-
-  get getMovementsFromList(): any {
-    return (move_list: Array<string>) => {
-      if (move_list == undefined) return []
-      let moves: Array<Movement> = []
-      for (var move of move_list) {
-        var temp = this.getMovement(move)
-        if (temp != undefined) moves.push(temp)
-      }
-      return moves
-    }
-  }
-
-  // ==========================================================
   // DISCIPLINE TOOLS
   // ==========================================================
   get getDisciplinesByCategory(): any {
@@ -383,6 +342,8 @@ export class DatabaseJsonStore extends VuexModule {
           x.Category != 'Earth' &&
           x.Category != 'Water' &&
           x.Category != 'Wind' &&
+          x.Category != 'Metal' &&
+          x.Category != 'Wood' &&
           (categories.length == 0 || categories.includes(x.Category.trim())) &&
           (types.length == 0 || types.includes(x.Type.trim())) &&
           (primary_role === 'Any' || primary_role == x.PrimaryRole.trim()) &&
