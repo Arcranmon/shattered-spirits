@@ -241,19 +241,10 @@ declare interface IStatusData extends IBaseData {
   type?: string
 }
 
-declare interface ITalentData {
-  name: string
+declare interface ITalentData extends IBaseData {
   icon: string
-  desc: string
-  rank_0: ITalentRankData
-  rank_1: ITalentRankData
-}
-
-declare interface ITalentRankData {
-  dice?: string
-  feats?: string
-  push?: string
-  other?: string
+  always: string
+  push: string
 }
 
 declare interface ITerrainData extends IBaseData {
@@ -272,7 +263,6 @@ declare interface IFeatureData extends IBaseData {
   element: string
   forced_movement: string
   hardness: number
-  weight: number
   interact: string
   resistances: string[]
   size: number

@@ -1,17 +1,13 @@
 import { store } from '@/store'
+import { Base } from '@/class'
 
-class Talent {
+class Talent extends Base {
   private icon_: string
-  private name_: string
-  private desc_: string
-  private rank_0_: ITalentRankData
-  private rank_1_: ITalentRankData
+  private always_: string
+  private push_: string
 
-  public constructor() {
-    this.name_ = ''
-    this.desc_ = ''
-    this.rank_0_ = null
-    this.rank_1_ = null
+  public constructor(name) {
+    super(name)
   }
 
   // ==========================================================
@@ -32,42 +28,31 @@ class Talent {
   // ==========================================================
   // RANK GETTERS
   // ==========================================================
-  public Rank(index) {
-    if (index == 0) return this.rank_0_
-    if (index == 1) return this.rank_1_
+
+  public get PushHeader() {
+    return '**Push:** ' + this.push_
   }
 
-  public DiceHeader(index) {
-    return '**Dice:** ' + this.Rank(index).dice
-  }
-
-  public FeatsHeader(index) {
-    return '**Feats:** ' + this.Rank(index).feats
-  }
-
-  public PushHeader(index) {
-    return '**Push:** ' + this.Rank(index).push
-  }
-
-  public OtherHeader(index) {
-    return '**Other:** ' + this.Rank(index).other
+  public get AlwaysHeader() {
+    return '**Always:** ' + this.always_
   }
 
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
   public static Deserialize(data: ITalentData): Talent {
-    const t = new Talent()
+    const t = new Talent(data.name)
     t.setTalentData(data)
     return t
   }
 
   public setTalentData(data: ITalentData): void {
+    this.setBaseData(data)
     this.icon_ = data.icon || ''
     this.name_ = data.name || ''
     this.desc_ = data.desc || ''
-    this.rank_0_ = data.rank_0 || null
-    this.rank_1_ = data.rank_1 || null
+    this.always_ = data.always || null
+    this.push_ = data.push || null
   }
 }
 export default Talent

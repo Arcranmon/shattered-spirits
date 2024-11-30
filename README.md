@@ -34,7 +34,7 @@ If you want to run this website locally (as it won't always be hosted), do the f
 
 ## Credits
 
-Some text and mechanics are from Schema and Infected by Levi Kornelsen; used with permission.
+Some text and mechanics are from Schema and Bright Arcana by Levi Kornelsen; used with permission.
 
 Character art done by Josh McKelvey: https://www.etsy.com/shop/JoshMcKelveyArt
 

@@ -71,7 +71,7 @@
     "name": "Arcane Mastery",
     "desc": "You spin your craft expertly, firing another surge from your rod.",
     "type": "Gambit",
-    "reqs": "_Hit_+ with a Attack using a _Rod_ or an Attack you could spend _Arcana_ on with your _Wielded_ _Rod_.",
+    "reqs": "_Hit_+ with a Attack using a _Rod_ or an Attack that matches the Type of your _Wielded_ _Rod_.",
     "effect": "Roll a d6 and resolve the effect using the below table. This Attack may not trigger an additional _Gambit_. You may ignore the _Speed_ of your _Wielded_ _Rod_ for this effect.",
     "class": "General",
     "table": [
@@ -676,7 +676,8 @@
     "move": 0,
     "type": "Action",
     "range": "Melee/Short",
-    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* _Push_/_Pull_ a [_Stone_] _Feature_ with a _Weight_ of 6 or less.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
+    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Move a Size 0 [_Stone_] _Feature_ to a different _Position_ within _Short_- Range.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
+    "boost": "1 _Momentum_: Instead, move a Size 1 [_Stone_] Feature to a different _Position_ within _Short_- Range.",
     "class": "Mountain"
   },
   {
@@ -756,7 +757,7 @@
     "desc": "You channel energy through your staff, preparing for a greater craft.",
     "type": "Action",
     "reqs": "_Wielding_ a _Rod_ and not _Suppressed_.",
-    "effect": "Gain 3 _Arcana_. _Parry_ with your _Rod_ until the end of the _Phase_.",
+    "effect": "Gain 3 _Momentum_ [Rod Type]. _Parry_ with your _Rod_ until the end of the _Phase_.",
     "special": "You may not _Move_ this _Turn_.",
     "class": "General"
   },
@@ -1811,9 +1812,10 @@
     "name": "Sculpt Craft",
     "desc": "You use your rod to sculpt your assault, shielding allies.",
     "type": "Reaction",
-    "cost": "1 _Momentum_/_Arcana_",
-    "trigger": "You target an ally with an effect your _Wielded_ _Rod_ could spend _Arcana_ on.",
+    "cost": "1 _Momentum_",
+    "trigger": "You target an ally with an effect matching the Type of your Rod.",
     "effect": "Your ally gains _Resistance_ II against the triggering effect.",
+    "special": "Add the appropriate Type to this ability, matching the Type of your Rod.",
     "class": "General"
   },
   {
@@ -2062,7 +2064,7 @@
     "keywords": ["Spirit"],
     "range": "Melee/Short",
     "type": "Action",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range.",
+    "effect": "Gain 1 _Momentum_, then choose:\n* Add [_Ignite_].dd _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range, then gain 1 _Momentum_ [_Blaze_].",
     "class": "Blaze"
   },
   {

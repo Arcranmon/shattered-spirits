@@ -17,6 +17,8 @@ import Features from '@/pages/combat/features/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
+import Narrative from '@/pages/narrative/index.vue'
+
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
 import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import Talents from '@/pages/talents/index.vue'
@@ -238,6 +240,14 @@ const r = new Router({
       name: 'character-manager',
       meta: {
         title: 'Character Manager',
+      },
+    },
+    {
+      path: '/narrative',
+      component: Narrative,
+      name: 'narrative',
+      meta: {
+        title: 'Narrative',
       },
     },
     {
