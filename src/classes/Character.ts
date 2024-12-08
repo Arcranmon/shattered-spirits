@@ -26,6 +26,8 @@ class Character extends Combatant {
   private weapons_: Array<string>
   private armor_: Array<string>
   private accessories_: Array<string>
+  private archetypes_: Array<string>
+  private talents_: Array<string>
 
   private spirit_: Spirit
 
@@ -101,6 +103,11 @@ class Character extends Combatant {
     if (type == 'Stunt') var maneuvers = store.getters.getManeuversFromList(kBasicStunts)
     if (type == 'Reaction') var maneuvers = store.getters.getManeuversFromList(kBasicReactions)
     if (type == 'Gambit') var maneuvers = store.getters.getManeuversFromList(kBasicGambits)
+    for (var arch of this.archetypes_) {
+      var archetype = store.getters.getArchetype(arch)
+      var archMan = store.getters.getManeuver(archetype.Manuever)
+      if (archMan.Type == type) maneuvers.push(archMan)
+    }
     for (var disc of this.disciplines_) {
       var discipline = store.getters.getDiscipline(disc.name)
       for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
@@ -270,6 +277,12 @@ class Character extends Combatant {
     }
     maneuvers.sort((a, b) => a.Name.localeCompare(b.Name))
     return maneuvers
+  }
+  get Archetypes() {
+    return this.archetypes_
+  }
+  get Talents() {
+    return this.talents_
   }
   get Weapons() {
     return this.weapons_
@@ -454,6 +467,8 @@ class Character extends Combatant {
       name: character.name_,
       player_character: character.player_character_,
       weapons: character.weapons_,
+      archetypes: character.archetypes_,
+      talents: character.talents_,
     }
   }
 
@@ -474,6 +489,8 @@ class Character extends Combatant {
     this.disciplines_ = data.disciplines || []
     this.armor_ = data.armor || []
     this.weapons_ = data.weapons || []
+    this.archetypes_ = data.archetypes || []
+    this.talents_ = data.talents || []
     this.setCombatantData(data)
   }
 }

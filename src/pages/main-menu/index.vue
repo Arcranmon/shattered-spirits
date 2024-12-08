@@ -2,9 +2,10 @@
   <div style="text-align: center">
     <custom-button to="/world">The World</custom-button>
     <br />
-    <custom-button to="/character-creation">Character Creation Rules</custom-button>
-    <br />
+    <!--<custom-button to="/character-creation">Character Creation Rules</custom-button> 
+    <br /> --->
     <custom-button to="/combat">Combat</custom-button> <br />
+    <custom-button to="/narrative">Narrative Play</custom-button> <br />
     <custom-button to="/character-options">Character Options</custom-button> <br />
     <custom-button to="/equipment">Equipment</custom-button> <br />
     <!-- <custom-button to="/character-creator">Character Creator (WIP)</custom-button> <br /> --->

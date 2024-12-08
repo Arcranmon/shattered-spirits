@@ -5,6 +5,7 @@ import DisciplinesJson from '@/database/disciplines.json'
 import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 import Talents from '@/database/talents.json'
+import ArchetypesJson from '@/database/archetypes.json'
 
 import DamageTypes from '@/database/glossary/damage_types.json'
 import Glossary from '@/database/glossary/glossary.json'
@@ -26,7 +27,24 @@ import ManeuversJson from '@/database/maneuvers.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Armor, Attack, Discipline, Accessory, Maneuver, Npc, Feature, SpiritForm, Subtype, Stance, Status, Talent, Technique, Terrain, Weapon } from '@/class'
+import {
+  Armor,
+  Archetype,
+  Attack,
+  Discipline,
+  Accessory,
+  Maneuver,
+  Npc,
+  Feature,
+  SpiritForm,
+  Subtype,
+  Stance,
+  Status,
+  Talent,
+  Technique,
+  Terrain,
+  Weapon,
+} from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -53,6 +71,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
     this.Subtypes = SubtypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
+    this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -63,6 +82,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Techniques: Technique[] = []
   private Subtypes: Subtype[] = []
   private Features: Feature[] = []
+  private Archetypes: Archetype[] = []
 
   // ==========================================================
   // MANEUVER TOOLS
@@ -443,8 +463,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getFeature(): any {
     return (inword: string) => {
-      var feature = this.Features.find((x) => x.Name === inword.trim())
-      return feature
+      return this.Features.find((x) => x.Name === inword.trim())
     }
   }
 
@@ -533,9 +552,46 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getTalentsFromList(): any {
+    return (talent_list: Array<string>) => {
+      if (talent_list == undefined) return []
+      let talents: Array<Talent> = []
+      for (var talent of talent_list) {
+        talents.push(this.getTalent(talent))
+      }
+      return talents
+    }
+  }
+
   get isTalent(): any {
     return (inword: string) => {
       return Talents.some((x) => x.name == inword.trim())
+    }
+  }
+
+  // ==========================================================
+  // ARCHETYPE GETTERS
+  // ==========================================================
+  get getArchetypes(): any {
+    return () => {
+      return this.Archetypes
+    }
+  }
+
+  get getArchetype(): any {
+    return (inword: string) => {
+      return this.Archetypes.find((x) => x.Name === inword.trim())
+    }
+  }
+
+  get getArchetypesFromList(): any {
+    return (arch_list: Array<string>) => {
+      if (arch_list == undefined) return []
+      let archs: Array<Archetype> = []
+      for (var arch of arch_list) {
+        archs.push(this.getArchetype(arch))
+      }
+      return archs
     }
   }
 

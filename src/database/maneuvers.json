@@ -71,7 +71,7 @@
     "name": "Arcane Mastery",
     "desc": "You spin your craft expertly, firing another surge from your rod.",
     "type": "Gambit",
-    "reqs": "_Hit_+ with a Attack using a _Rod_ or an Attack you could spend _Arcana_ on with your _Wielded_ _Rod_.",
+    "reqs": "_Hit_+ with a Attack using a _Rod_ or an Attack that matches the Type of your _Wielded_ _Rod_.",
     "effect": "Roll a d6 and resolve the effect using the below table. This Attack may not trigger an additional _Gambit_. You may ignore the _Speed_ of your _Wielded_ _Rod_ for this effect.",
     "class": "General",
     "table": [
@@ -242,7 +242,7 @@
     ],
     "cost": "1 _Momentum_",
     "effect": "Create an _Veiled_ space within Range.",
-    "special": "You may choose to target a _Windy_ space or _Feature_ with this _Manuever_. If you do, remove the _Windy_ space and instead resolve the Effect in that space and all adjacent ones.",
+    "special": "You may choose to target a _Windy_ space or _Feature_ with this _Maneuver_. If you do, remove the _Windy_ space and instead resolve the Effect in that space and all adjacent ones.",
     "boost": "1 _Momentum_: Inflict _Vulnerable_ 1 on any creatures in a space that is made _Veiled_. You may use this _Boost_ any number of times.",
     "class": "Gale",
     "manifest": "Add [_Manifest_]. The _Cost_ is now none and Range is instead your spirit's _Reposition_ distance. Always resolve the Effect as if you removed a _Windy_ space, and you may apply the Boost at no cost. You may choose to _Summon_ you spirit to a space in the _Area_."
@@ -678,7 +678,8 @@
     "move": 0,
     "type": "Action",
     "range": "Melee/Short",
-    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* _Push_/_Pull_ a [_Stone_] _Feature_ with a _Weight_ of 6 or less.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
+    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Move a Size 0 [_Stone_] _Feature_ to a different _Position_ within _Short_- Range.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
+    "boost": "1 _Momentum_: Instead, move a Size 1 [_Stone_] Feature to a different _Position_ within _Short_- Range.",
     "class": "Mountain"
   },
   {
@@ -758,7 +759,7 @@
     "desc": "You channel energy through your staff, preparing for a greater craft.",
     "type": "Action",
     "reqs": "_Wielding_ a _Rod_ and not _Suppressed_.",
-    "effect": "Gain 3 _Arcana_. _Parry_ with your _Rod_ until the end of the _Phase_.",
+    "effect": "Gain 3 _Momentum_ [Rod Type]. _Parry_ with your _Rod_ until the end of the _Phase_.",
     "special": "You may not _Move_ this _Turn_.",
     "class": "General"
   },
@@ -838,7 +839,7 @@
       }
     ],
     "cost": "1 _Momentum_",
-    "effect": "Place 3 _Blazing_ spaces within Range. All _Blazing_ spaces placed by this Manuever must be contiguous.",
+    "effect": "Place 3 _Blazing_ spaces within Range. All _Blazing_ spaces placed by this Maneuver must be contiguous.",
     "boost": "1 _Momentum_: Place an additional 2 _Blazing_ spaces. You may use this _Boost_ up to 3 times.",
     "class": "Blaze"
   },
@@ -1489,7 +1490,7 @@
     "class": "Basic"
   },
   {
-    "name": "Outmanuever",
+    "name": "Outmaneuver",
     "desc": "You use your speed to force an opening against a foe.",
     "type": "Gambit",
     "cost": "1 _Momentum_",
@@ -1518,7 +1519,7 @@
       }
     ],
     "cost": "1 _Momentum_",
-    "effect": "Place 3 _Brush_ spaces within Range. All _Brush_ spaces placed by this Manuever must be contiguous.",
+    "effect": "Place 3 _Brush_ spaces within Range. All _Brush_ spaces placed by this Maneuver must be contiguous.",
     "boost": "1 _Momentum_: Create an additional 2 _Brush_ spaces. You may use this Boost up to 3 times.",
     "class": "Growth"
   },
@@ -1813,9 +1814,10 @@
     "name": "Sculpt Craft",
     "desc": "You use your rod to sculpt your assault, shielding allies.",
     "type": "Reaction",
-    "cost": "1 _Momentum_/_Arcana_",
-    "trigger": "You target an ally with an effect your _Wielded_ _Rod_ could spend _Arcana_ on.",
+    "cost": "1 _Momentum_",
+    "trigger": "You target an ally with an effect matching the Type of your Rod.",
     "effect": "Your ally gains _Resistance_ II against the triggering effect.",
+    "special": "Add the appropriate Type to this ability, matching the Type of your Rod.",
     "class": "General"
   },
   {
@@ -1876,7 +1878,7 @@
     ],
     "cost": "2 _Momentum_",
     "trigger": "You or any ally within _Range_ are Attacked, take Damage, or gain Status.",
-    "effect": "_Draw_ 1 within _Range_. If you cannot, this _Manuever_ fails. Grant the target of the Attack 1 _Temporary_ _Stamina_, 1 _Instant Guard_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ 2 [_Fire_] until the end of the _Turn_. After resolving this, create a _Wet_ space adjacent to the Target.",
+    "effect": "_Draw_ 1 within _Range_. If you cannot, this _Maneuver_ fails. Grant the target of the Attack 1 _Temporary_ _Stamina_, 1 _Instant Guard_, and reduce the _Attack Roll_ by 1. Additionally, they gain _Resistance_ 2 [_Fire_] until the end of the _Turn_. After resolving this, create a _Wet_ space adjacent to the Target.",
     "boost": "1 _Momentum_: Instead of a _Wet_ space, create a _Water Veil_ in a space adjacent to the Target after resolving the Effect.",
     "class": "Tide",
     "manifest": "Add [_Manifest_]. Range is instead your spirit's _Reposition_ distance, and Cost is instead 1 _Momentum_. Resolve the above effects and add [_Glancing_]. Resolve the Attack against your Spirit as well."
@@ -2064,7 +2066,7 @@
     "keywords": ["Spirit"],
     "range": "Melee/Short",
     "type": "Action",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range.",
+    "effect": "Gain 1 _Momentum_, then choose:\n* Add [_Ignite_].dd _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range, then gain 1 _Momentum_ [_Blaze_].",
     "class": "Blaze"
   },
   {
@@ -2141,6 +2143,23 @@
     "class": "Basic"
   },
   {
+    "name": "Strong Strike",
+    "desc": "You put your back into a strike, leaving a foe reeling.",
+    "type": "Gambit",
+    "reqs": "_Martial_ Attack",
+    "effect": "\n* If the triggering Attack _Missed_, repeat the Attack against an _Obstacle_ at the same _Position_ as the Target, dealing +3 Damage. This Attack may only Damage the Obstacle and does not trigger Gambits.\n* If the Attack _Grazed_+, roll on the below chart.",
+    "boost": "2 _Momentum_: Apply this Gambit, even if you did not qualify to use a Gambit on this Attack.",
+    "table": [
+      "Add _Push_ 1 [3 _Grit_] on one Target.",
+      "Deal 1 _Bonus Damage_ and add _Push_ 1 [4 _Grit_] on one Target.",
+      "Deal 1 _Bonus Damage_ and add _Push_ 1 [5 _Grit_]/_Prone_ [3 _Grit_/_Reflex_]/_Sundered_ [3 _Reflex_] on one Target.",
+      "Deal 2 _Bonus Damage_ and add _Push_ 1 [5 _Grit_]/_Prone_ [3 _Grit_/_Reflex_]/_Sundered_ [3 _Reflex_] on one Target.",
+      "Deal 2 _Bonus Damage_ and add _Push_ 1 [6 _Grit_]/_Prone_ [4 _Grit_/_Reflex_]/_Sundered_ [4 _Reflex_] on one Target.",
+      "Deal 3 _Bonus Damage_ and add _Push_ 1 [6 _Grit_]/_Prone_ [6 _Grit_/_Reflex_]/_Sundered_ [6 _Reflex_] on one Target."
+    ],
+    "class": "Martial"
+  },
+  {
     "name": "Sudden Updraft",
     "desc": "You imbue an updraft with power, creating a dangerous trap or powerful boon.",
     "type": "Stunt",
@@ -2151,7 +2170,7 @@
       }
     ],
     "cost": "2 _Momentum_",
-    "effect": "Choose an _Updraft_ within Range. The first time a creature enters that space or ends their _Turn_ there remove the _Hazard_ and resolve one of the following effects:\n* The creature may use the _Leap_ Manuever immediately at no _Cost_ and without expending any _Movement_.\n* The creature gains _Exposed_ 2, _Airborne_ [2 _Stamina_]. If they were suffering _Forced Movement_, continue that effect.\n\nAfter resolving either effect, remove the _Updraft_.",
+    "effect": "Choose an _Updraft_ within Range. The first time a creature enters that space or ends their _Turn_ there remove the _Hazard_ and resolve one of the following effects:\n* The creature may use the _Leap_ Maneuver immediately at no _Cost_ and without expending any _Movement_.\n* The creature gains _Exposed_ 2, _Airborne_ [2 _Stamina_]. If they were suffering _Forced Movement_, continue that effect.\n\nAfter resolving either effect, remove the _Updraft_.",
     "class": "Gale"
   },
   {
@@ -2330,7 +2349,7 @@
     "keywords": ["Movement"],
     "reqs": "Move this _Turn_ is not None.",
     "effect": "The next X spaces you Move, where X is up to your _Step_ distance gain [_Safe_, _Breach_, _Rush_]. You take double Damage from and have _Disadvantage_ to _Negate_ any non-Weather _Terrain_ you pass through.",
-    "boost": "1 _Momentum_: Instead of immediately using this Manuever add [_Mobile_] to one Attack this _Turn_. Resolve this Manuever immediately after the Attack, and end your Movement after completing this Manuever.",
+    "boost": "1 _Momentum_: Instead of immediately using this Maneuver add [_Mobile_] to one Attack this _Turn_. Resolve this Maneuver immediately after the Attack, and end your Movement after completing this Maneuver.",
     "class": "General"
   },
   {
@@ -2574,7 +2593,7 @@
     ],
     "cost": "1 _Momentum_",
     "effect": "Choose a _Gusting_ space within Range. You may change the direction of it and any contiguous _Gusting_ spaces so long as their directions remain continuous.",
-    "boost": "1 _Momentum_: As a part of this _Manuever_, you may move 2 target _Gusting_ spaces 1 space. You may choose the same _Gusting_ space twice, but all spaces must remain contiguous. You may use this _Boost_ up to 3 times.",
+    "boost": "1 _Momentum_: As a part of this _Maneuver_, you may move 2 target _Gusting_ spaces 1 space. You may choose the same _Gusting_ space twice, but all spaces must remain contiguous. You may use this _Boost_ up to 3 times.",
     "class": "Gale"
   },
   {

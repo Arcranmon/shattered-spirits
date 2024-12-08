@@ -7,6 +7,7 @@ class Subtype extends Base {
   private summon_effect_: string
   private manifest_effect_: string
   private traits_: string[]
+  private conditions_: string[]
 
   public constructor(name) {
     super(name)
@@ -58,6 +59,12 @@ class Subtype extends Base {
   public get TraitsText() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
   }
+  public get HasConditions() {
+    return this.conditions_.length > 0
+  }
+  public get ConditionsHeader() {
+    return '**Conditions:** \n* _' + this.conditions_.join('_\n* _') + '_'
+  }
   public get Grit() {
     if (this.defenses_.grit) return this.defenses_.grit
     return 0
@@ -89,6 +96,7 @@ class Subtype extends Base {
     this.summon_effect_ = data.summon_effect || ''
     this.manifest_effect_ = data.manifest_effect || ''
     this.traits_ = data.traits || []
+    this.conditions_ = data.conditions || []
   }
 }
 export default Subtype

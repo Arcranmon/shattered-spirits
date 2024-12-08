@@ -6,7 +6,6 @@ class Feature extends Base {
   private damage_type_: string
   private element_: string
   private hardness_: number
-  private weight_: number
   private resistances_: string[]
   private interact_: string
   private traits_: string
@@ -92,7 +91,6 @@ class Feature extends Base {
   }
   public get DetailsHeader() {
     var details = 'Size ' + this.size_ + ', Hardness ' + this.hardness_
-    if (this.weight_ > 0) details += ', Weight ' + this.weight_
     return details
   }
   public get PositionEffectHeader() {
@@ -135,7 +133,6 @@ class Feature extends Base {
     this.destroy_ = data.destroy || ''
     this.element_ = data.element || ''
     this.hardness_ = data.hardness || 0
-    this.weight_ = data.weight || 0
     this.interact_ = data.interact || ''
     this.traits_ = data.traits || ''
     this.resistances_ = data.resistances || []

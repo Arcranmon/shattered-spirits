@@ -8,13 +8,14 @@ declare interface IBaseData {
 }
 
 declare interface IArchetypeData extends IBaseData {
-  manuever: string
+  maneuver: string
   bonuses: IBonusesData
-  narrative_effect: string
 }
 
 declare interface IBonusesData {
+  focus: number
   grit: number
+  health: number
   reflex: number
   move: number
   load: number
@@ -59,10 +60,12 @@ declare interface ICharacterData extends ICombatantData {
   player_character: Boolean
   spirit: ISpiritData
   weapons: string[]
+  archetypes: string[]
+  talents: string[]
 }
 
 declare interface ICombatantData {
-  health: number
+  Health: number
   stamina: number
   stun: number
   move: number
@@ -137,7 +140,7 @@ declare interface INpcData {
   class: string
   desc: string
   durability?: number
-  health: number
+  Health: number
   gambits?: Array<string>
   guard?: number
   max_stun: number
@@ -207,13 +210,14 @@ declare interface ISpiritData extends ICombatantData {
 declare interface ISpiritFormData extends IBaseData {
   size: string
   defenses?: IDefenseData
-  health: number
+  Health: number
   weapons: string
   bonus_attack: string
   guard: number
   move: number
   jump: number
   traits: string[]
+  conditions: string[]
 }
 
 declare interface ISubtypeData extends IBaseData {
@@ -222,6 +226,7 @@ declare interface ISubtypeData extends IBaseData {
   manifest_effect: string
   defenses: IDefenseData
   traits: string[]
+  conditions: string[]
 }
 
 declare interface IStanceData extends IBaseData {
@@ -246,19 +251,11 @@ declare interface IStatusData extends IBaseData {
   type?: string
 }
 
-declare interface ITalentData {
-  name: string
+declare interface ITalentData extends IBaseData {
   icon: string
-  desc: string
-  rank_0: ITalentRankData
-  rank_1: ITalentRankData
-}
-
-declare interface ITalentRankData {
-  dice?: string
-  feats?: string
-  push?: string
-  other?: string
+  always: string
+  push: string
+  prereqs: string
 }
 
 declare interface ITerrainData extends IBaseData {
@@ -277,7 +274,6 @@ declare interface IFeatureData extends IBaseData {
   element: string
   forced_movement: string
   hardness: number
-  weight: number
   interact: string
   resistances: string[]
   size: number

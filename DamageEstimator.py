@@ -14,7 +14,7 @@ status_multipliers = {
     "Exposed": 2,
     "Frightened": 3,
     "Frozen": 3,
-    "Grabbed": 4,
+    "Grabbed": 3,
     "Hobbled": 3,
     "Impaired": 2,
     "Prone": 3,

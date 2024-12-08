@@ -11,7 +11,7 @@
           </div>
         </v-btn-toggle></v-col
       >
-      <v-col> <talent-card v-if="selectedTalent != null" :talent="selectedTalent" :key="selectedTalent.Name" /></v-col>
+      <v-col> <talent-card v-if="selectedTalent != null" :talent="selectedTalent" :key="selectedTalent.Name" style="width: 40em" /></v-col>
     </v-row>
   </div>
 </template>

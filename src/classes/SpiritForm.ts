@@ -3,7 +3,7 @@ import { Base } from '@/class'
 
 class SpiritForm extends Base {
   private size_: string
-  private health_: number
+  private Health_: number
   private defenses_: IDefenseData
   private weapons_: string
   private bonus_attack_: string
@@ -11,6 +11,7 @@ class SpiritForm extends Base {
   private move_: number
   private jump_: number
   private traits_: string[]
+  private conditions_: string[]
 
   private light_limit_: number
   private versatile_limit_: number
@@ -78,7 +79,7 @@ class SpiritForm extends Base {
     return '**Size:** ' + this.size_
   }
   public get HealthHeader() {
-    return '**Health:** ' + this.health_
+    return '**Health:** ' + this.Health_
   }
   public get MovementHeader() {
     return '**Move:** ' + this.move_
@@ -87,7 +88,7 @@ class SpiritForm extends Base {
     return '**Jump:** ' + this.jump_
   }
   public get Health() {
-    return this.health_
+    return this.Health_
   }
   public get Weapons() {
     return this.weapons_
@@ -108,7 +109,13 @@ class SpiritForm extends Base {
     return this.traits_
   }
   public get TraitsHeader() {
-    return '**Traits:** ' + '_' + this.traits_.join('_, _') + '_'
+    return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
+  }
+  public get HasConditions() {
+    return this.conditions_.length > 0
+  }
+  public get ConditionsHeader() {
+    return '**Conditions:** \n* _' + this.conditions_.join('_\n* _') + '_'
   }
 
   public get WeaponLimits() {
@@ -166,13 +173,14 @@ class SpiritForm extends Base {
     this.setBaseData(data)
     this.size_ = data.size || ''
     this.defenses_ = data.defenses || null
-    this.health_ = data.health || 0
+    this.Health_ = data.Health || 0
     this.weapons_ = data.weapons || ''
     this.bonus_attack_ = data.bonus_attack || ''
     this.guard_ = data.guard || 0
     this.move_ = data.move || 0
     this.jump_ = data.jump || 0
     this.traits_ = data.traits || []
+    this.conditions_ = data.conditions || []
 
     var required_weapons = this.Weapons.replaceAll('_', '').split(', ')
     for (var weapon_reqs of required_weapons) {

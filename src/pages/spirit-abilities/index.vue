@@ -9,7 +9,7 @@
     <br />
     <v-tabs v-model="tab" class="spirit-tabs" background-color="#b69e75" color="black" centered
       ><v-tab> <h4>Earth</h4> </v-tab><v-tab> <h4>Flame</h4> </v-tab><v-tab> <h4>Water</h4> </v-tab><v-tab> <h4>Wind</h4> </v-tab
-      ><v-tab> <h4>Combat Traits</h4> </v-tab><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
+      ><!---<v-tab> <h4>Combat Traits</h4> </v-tab>---><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="spirit-tab-content">
       <v-tab-item>
@@ -84,7 +84,8 @@
           :collapse="false"
         />
       </v-tab-item>
-      <v-tab-item> <display-tooltip-text style="margin: 1em" :string="combatTraitText" /><br /><br /></v-tab-item>
+      <!--- <v-tab-item> <display-tooltip-text style="margin: 1em" :string="combatTraitText" /><br /><br /></v-tab-item>
+      --->
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />
 
@@ -162,7 +163,6 @@ import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weap
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritFormCard from '@/components/cards/SpiritFormCard.vue'
 import SubtypeCard from '@/components/cards/SubtypeCard.vue'
-import MovementCard from '@/components/cards/MovementCard.vue'
 import AttackCard from '@/components/cards/AttackCard'
 import { store } from '@/store'
 export default Vue.extend({
@@ -180,7 +180,6 @@ export default Vue.extend({
   components: {
     ShowCards,
     AttackCard,
-    MovementCard,
     SpiritFormCard,
     SubtypeCard,
   },

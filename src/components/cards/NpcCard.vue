@@ -66,14 +66,12 @@
 <script>
 import Vue from 'vue'
 import { Npc } from '@/class'
-import MovementCard from '@/components/cards/MovementCard.vue'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
 
 export default Vue.extend({
   name: 'npc-card',
   components: {
     ShowCards: () => import('@/components/cards/ShowCards.vue'),
-    MovementCard,
   },
   data() {
     return { tab: null }

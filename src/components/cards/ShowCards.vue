@@ -88,6 +88,12 @@
             <div class="card--box" v-if="job == 'Subtype'">
               <subtype-card :type="n" />
             </div>
+            <div class="card--box" v-if="job == 'Archetype'">
+              <archetype-card :archetype="n" />
+            </div>
+            <div class="card--box" v-if="job == 'Talent'">
+              <talent-card :talent="n" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -96,13 +102,14 @@
 
 <script>
 import Vue from 'vue'
+import ArchetypeCard from './ArchetypeCard.vue'
 import ArmorCard from './ArmorCard.vue'
 import AccessoryCard from './AccessoryCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
-import MovementCard from './MovementCard.vue'
 import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
+import TalentCard from './TalentCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import AttackCard from './AttackCard.vue'
@@ -172,10 +179,10 @@ export default Vue.extend({
     },
   },
   components: {
+    ArchetypeCard,
     ArmorCard,
     AccessoryCard,
     ManeuverCard,
-    MovementCard,
     FeatureCard,
     StanceCard,
     StatusCard,
@@ -183,6 +190,7 @@ export default Vue.extend({
     TerrainCard,
     AttackCard,
     SubtypeCard,
+    TalentCard,
     SpiritFormCard,
   },
   methods: {

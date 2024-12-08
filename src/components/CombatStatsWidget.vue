@@ -74,11 +74,9 @@
 
 <script>
 import { Character, Combatant, Spirit } from '@/class'
-import MovementCard from '@/components/cards/MovementCard.vue'
 import Vue from 'vue'
 export default Vue.extend({
   name: 'combat-stats-widget',
-  components: { MovementCard },
   props: {
     creature: { type: Combatant, required: true },
   },

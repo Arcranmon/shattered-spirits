@@ -6,13 +6,22 @@
       </div>
     </div>
     <div class="card--content card--format">
-      <display-tooltip-text :string="form.HealthHeader" /><br />
-      <display-tooltip-text :string="form.MovementHeader" /><br />
-      <display-tooltip-text :string="form.JumpHeader" /><br />
-      <div v-if="form.HasDefenses"><display-tooltip-text :string="form.DefensesHeader" /></div>
+      <v-row no-gutters>
+        <v-col :cols="6">
+          <display-tooltip-text :string="form.HealthHeader" /><br />
+          <div v-if="form.HasDefenses"><display-tooltip-text :string="form.DefensesHeader" /></div>
+          <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" />
+        </v-col>
+        <v-col :cols="6">
+          <display-tooltip-text :string="form.MovementHeader" /><br />
+          <display-tooltip-text :string="form.JumpHeader" /><br />
+        </v-col>
+      </v-row>
+      <v-row no-gutters>
+        <v-col :cols="6">
+          <div v-if="form.HasTraits"><display-tooltip-text :string="form.TraitsHeader" /></div> </v-col
+      ></v-row>
       <display-tooltip-text :string="form.WeaponsHeader" /><br />
-      <display-tooltip-text v-if="form.HasTraits" :string="form.TraitsHeader" /><br v-if="form.HasTraits" />
-      <display-tooltip-text v-if="form.HasArmor" :string="form.ArmorHeader" />
     </div>
     <div class="desc--box" v-if="form.Desc.length > 0" style="font-style: italic">{{ form.Desc }}<br /></div>
   </div>
@@ -21,7 +30,6 @@
 <script>
 import Vue from 'vue'
 import { SpiritForm } from '@/class'
-import MovementCard from '@/components/cards/MovementCard.vue'
 
 export default Vue.extend({
   name: 'spirit-form-card',
@@ -31,7 +39,6 @@ export default Vue.extend({
       required: true,
     },
   },
-  components: { MovementCard },
   methods: {
     getColor(form) {
       var str = form.Name.split(' ')

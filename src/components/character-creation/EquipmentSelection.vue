@@ -105,14 +105,13 @@ import { store } from '@/store'
 import { Character, Weapon } from '@/class'
 import ArmorCard from '@/components/cards/ArmorCard.vue'
 import AttackCard from '@/components/cards/AttackCard.vue'
-import MovementCard from '@/components/cards/MovementCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import ArmorSelectionText from '@/database/text_files/character_creation/choosing_your_armor.txt'
 import EquipmentSelectionText from '@/database/text_files/character_creation/choosing_your_equipment.txt'
 import WeaponSelectionText from '@/database/text_files/character_creation/choosing_your_weapons.txt'
 export default Vue.extend({
   name: 'equipment-selection',
-  components: { AttackCard, ArmorCard, MovementCard, ShowCards },
+  components: { AttackCard, ArmorCard, ShowCards },
   props: {
     character: {
       type: Character,

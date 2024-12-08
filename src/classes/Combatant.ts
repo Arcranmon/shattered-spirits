@@ -1,7 +1,7 @@
 import { store } from '@/store'
 
 class Combatant {
-  private health_: number
+  private Health_: number
   private stamina_: number
   private stun_: number
   private move_: number
@@ -16,7 +16,7 @@ class Combatant {
     this.move_ = 0
     this.stamina_ = 0
     this.stun_ = 0
-    this.health_ = 0
+    this.Health_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
   }
@@ -103,7 +103,7 @@ class Combatant {
 
   public ResetDefault() {
     this.move_ = this.MaxMovement
-    this.health_ = this.MaxHealth
+    this.Health_ = this.MaxHealth
     this.stamina_ = this.MaxStamina
     this.stun_ = 0
     this.momentum_ = 0
@@ -181,13 +181,13 @@ class Combatant {
   }
 
   get Health() {
-    return this.health_
+    return this.Health_
   }
 
-  set Health(health: number) {
-    if (health > this.MaxHealth) this.health_ = this.MaxHealth
-    if (health <= 0) this.health_ = 0
-    this.health_ = health
+  set Health(Health: number) {
+    if (Health > this.MaxHealth) this.Health_ = this.MaxHealth
+    if (Health <= 0) this.Health_ = 0
+    this.Health_ = Health
   }
 
   get Momentum() {
@@ -204,7 +204,7 @@ class Combatant {
   // ==========================================================
   public static Serialize(combatant: Combatant): ICombatantData {
     return {
-      health: combatant.health_,
+      Health: combatant.Health_,
       move: combatant.move_,
       stamina: combatant.stamina_,
       stun: combatant.stun_,
@@ -223,7 +223,7 @@ class Combatant {
   public setCombatantData(data: ICombatantData): void {
     this.move_ = data.move
     this.stamina_ = data.stamina
-    this.health_ = data.health
+    this.Health_ = data.Health
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses
     this.stun_ = data.stun

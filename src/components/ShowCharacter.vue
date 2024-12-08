@@ -20,6 +20,32 @@
                 ><v-col :cols="columnNumbers">
                   <stance-card :stance="character.CurrentMartialStance" :on_sheet="true" style="width: 90%; margin: auto" /></v-col></v-row></v-col
           ></v-row>
+          <h3 style="text-align: center">Skills</h3>
+          <v-card>
+            <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+              <v-tab>
+                <h3>Archetype</h3>
+              </v-tab>
+              <v-tab>
+                <h3>Talents</h3>
+              </v-tab></v-tabs
+            >
+            <v-tabs-items v-model="equipment_tab" class="character-tab-content">
+              <v-tab-item
+                ><show-cards
+                  job="Archetype"
+                  :inputs="$store.getters.getArchetypesFromList(character.Archetypes)"
+                  standalone_or_contained="Standalone"
+                  :collapse="false"
+                  :cols="2" /></v-tab-item
+              ><v-tab-item
+                ><show-cards
+                  job="Talent"
+                  :inputs="$store.getters.getTalentsFromList(character.Talents)"
+                  standalone_or_contained="Standalone"
+                  :collapse="false"
+                  :cols="2" /></v-tab-item></v-tabs-items
+          ></v-card>
           <h3 style="text-align: center">Equipment</h3>
           <v-card>
             <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>

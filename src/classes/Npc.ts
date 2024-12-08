@@ -27,7 +27,7 @@ class Npc extends Combatant {
   }
 
   override get MaxHealth() {
-    return this.npc_data_.health
+    return this.npc_data_.Health
   }
 
   override get MaxStamina() {
@@ -155,7 +155,7 @@ class Npc extends Combatant {
     return '**Move:** ' + this.npc_data_.move
   }
   public get HealthText() {
-    return '**Health:** ' + this.npc_data_.health
+    return '**Health:** ' + this.npc_data_.Health
   }
   public get ArmorText() {
     if (this.npc_data_.guard) return '**Armor:** ' + this.npc_data_.guard + ' Guard'

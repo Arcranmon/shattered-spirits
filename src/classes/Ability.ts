@@ -1,5 +1,5 @@
 /** @format */
-// Parent class for techniques/manuevers.
+// Parent class for techniques/maneuvers.
 
 import { store } from '@/store'
 import { Base, Chart } from '@/class'

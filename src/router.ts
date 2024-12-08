@@ -8,7 +8,6 @@ import CombatMenu from '@/pages/combat/combat-menu/index.vue'
 import CombatRules from '@/pages/combat/combat-rules/index.vue'
 import CombatPrimer from '@/pages/combat/combat-primer/index.vue'
 import AfflictionsAndStatus from '@/pages/combat/afflictions-and-status/index.vue'
-import EquipmentInCombat from '@/pages/combat/equipment-in-combat/index.vue'
 import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
 
 import Terrain from '@/pages/combat/terrain/index.vue'
@@ -17,9 +16,12 @@ import Features from '@/pages/combat/features/index.vue'
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
+import Narrative from '@/pages/narrative/index.vue'
+
 import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
 import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import Talents from '@/pages/talents/index.vue'
+import Archetypes from '@/pages/archetypes/index.vue'
 
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
@@ -209,6 +211,14 @@ const r = new Router({
       },
     },
     {
+      path: '/archetypes',
+      component: Archetypes,
+      name: 'archetypes',
+      meta: {
+        title: 'Archetypes',
+      },
+    },
+    {
       path: '/world',
       component: World,
       name: 'world',
@@ -230,6 +240,14 @@ const r = new Router({
       name: 'character-manager',
       meta: {
         title: 'Character Manager',
+      },
+    },
+    {
+      path: '/narrative',
+      component: Narrative,
+      name: 'narrative',
+      meta: {
+        title: 'Narrative',
       },
     },
     {
