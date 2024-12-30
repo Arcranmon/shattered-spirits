@@ -22,12 +22,13 @@ declare interface IBonusesData {
 }
 
 declare interface IArmorData extends IBaseData {
-  weight: number
   durability: number
   category?: string
   guard: number
   parry: string
   soak: number
+  movement: number
+  sacrifice: string
   traits: string[]
 }
 
@@ -81,7 +82,6 @@ declare interface IChartData {
   status: Array<string>
   damage_type: string
   keywords: Array<string>
-  on_miss: string
   material: string
 }
 
@@ -91,6 +91,8 @@ declare interface IDefenseData {
   grit?: number
   focus?: number
   hardness?: number
+  resistances?: string[]
+  weaknesses?: string[]
 }
 
 interface IDisciplineTierData {
@@ -188,6 +190,13 @@ declare interface ITechData extends IAbilityData {
   weapon?: string
 }
 
+declare interface IParryData {
+  lose: string
+  tie: string
+  win: string
+  always: string
+}
+
 declare interface IRangeData {
   category: string
   value: number
@@ -202,31 +211,20 @@ declare interface IRespiteData {
 
 declare interface ISpiritData extends ICombatantData {
   name: string
-  spirit_form: string
-  subtype: string
+  type: string
   weapons: Array<string>
-}
-
-declare interface ISpiritFormData extends IBaseData {
-  size: string
-  defenses?: IDefenseData
-  Health: number
-  weapons: string
-  bonus_attack: string
-  guard: number
-  move: number
-  jump: number
-  traits: string[]
-  conditions: string[]
 }
 
 declare interface ISubtypeData extends IBaseData {
   element: string
-  summon_effect: string
-  manifest_effect: string
   defenses: IDefenseData
   traits: string[]
   conditions: string[]
+  health: number
+  weapons: number
+  guard: number
+  soak: number
+  move: number
 }
 
 declare interface IStanceData extends IBaseData {

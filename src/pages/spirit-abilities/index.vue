@@ -19,16 +19,7 @@
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <show-cards :inputs="[this.$store.getters.getSubtype('Mountain')]" job="Subtype" v-bind:class="use_single" :cols="1" :collapse="false" />
-        <h4>Earth Spirit Forms</h4>
-        <display-tooltip-text class="description-text" string="Choose one of the below, which represents the physical form your spirit takes when summoned:" />
-        <show-cards
-          :inputs="[this.$store.getters.getSpiritForm('Swift Earth Spirit'), this.$store.getters.getSpiritForm('Heavy Earth Spirit')]"
-          job="Spirit Form"
-          v-bind:class="use_duo"
-          :cols="2"
-          :collapse="false"
-        />
+        <show-cards :inputs="[this.$store.getters.getSpiritType('Mountain')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="flameText" /><br /><br />
@@ -37,16 +28,7 @@
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <show-cards :inputs="[this.$store.getters.getSubtype('Blaze')]" job="Subtype" v-bind:class="use_single" :cols="1" :collapse="false" />
-        <h4>Flame Spirit Forms</h4>
-        <display-tooltip-text class="description-text" string="Choose one of the below, which represents the physical form your spirit takes when summoned:" />
-        <show-cards
-          :inputs="[this.$store.getters.getSpiritForm('Swift Flame Spirit'), this.$store.getters.getSpiritForm('Heavy Flame Spirit')]"
-          job="Spirit Form"
-          v-bind:class="use_duo"
-          :cols="2"
-          :collapse="false"
-        />
+        <show-cards :inputs="[this.$store.getters.getSpiritType('Blaze')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="waterText" /><br /><br />
@@ -55,16 +37,7 @@
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <show-cards :inputs="[this.$store.getters.getSubtype('Tide')]" job="Subtype" v-bind:class="use_single" :cols="1" :collapse="false" />
-        <h4>Water Spirit Forms</h4>
-        <display-tooltip-text class="description-text" string="Choose one of the below, which represents the physical form your spirit takes when summoned:" />
-        <show-cards
-          :inputs="[this.$store.getters.getSpiritForm('Swift Water Spirit'), this.$store.getters.getSpiritForm('Heavy Water Spirit')]"
-          job="Spirit Form"
-          v-bind:class="use_duo"
-          :cols="2"
-          :collapse="false"
-        />
+        <show-cards :inputs="[this.$store.getters.getSpiritType('Tide')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="windText" /><br /><br />
@@ -73,16 +46,7 @@
           class="description-text"
           string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
         />
-        <show-cards :inputs="[this.$store.getters.getSubtype('Gale')]" job="Subtype" v-bind:class="use_single" :cols="1" :collapse="false" />
-        <h4>Wind Spirit Forms</h4>
-        <display-tooltip-text class="description-text" string="Choose one of the below, which represents the physical form your spirit takes when summoned:" />
-        <show-cards
-          :inputs="[this.$store.getters.getSpiritForm('Swift Wind Spirit'), this.$store.getters.getSpiritForm('Heavy Wind Spirit')]"
-          job="Spirit Form"
-          v-bind:class="use_duo"
-          :cols="2"
-          :collapse="false"
-        />
+        <show-cards :inputs="[this.$store.getters.getSpiritType('Gale')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
       </v-tab-item>
       <!--- <v-tab-item> <display-tooltip-text style="margin: 1em" :string="combatTraitText" /><br /><br /></v-tab-item>
       --->
@@ -161,8 +125,7 @@ import WindText from '@/database/text_files/spirit_mechanics/wind.txt'
 import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
-import SpiritFormCard from '@/components/cards/SpiritFormCard.vue'
-import SubtypeCard from '@/components/cards/SubtypeCard.vue'
+import SpiritTypeCard from '@/components/cards/SpiritTypeCard.vue'
 import AttackCard from '@/components/cards/AttackCard'
 import { store } from '@/store'
 export default Vue.extend({
@@ -180,8 +143,7 @@ export default Vue.extend({
   components: {
     ShowCards,
     AttackCard,
-    SpiritFormCard,
-    SubtypeCard,
+    SpiritTypeCard,
   },
   computed: {
     earthText() {

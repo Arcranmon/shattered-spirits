@@ -93,7 +93,8 @@ export default Vue.extend({
   },
   computed: {
     disciplines: function () {
-      return this.$store.getters.getFilteredSpiritDisciplines(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
+      return this.$store.getters.getDisciplinesFromList(['Way of the Blaze', 'Way of the Tide', 'Way of the Gale', 'Way of the Mountain'])
+      // return this.$store.getters.getFilteredSpiritDisciplines(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
     },
     selectableTypes: function () {
       var selectable_types = []

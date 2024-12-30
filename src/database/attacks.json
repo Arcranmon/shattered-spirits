@@ -103,7 +103,7 @@
     "name": "Chip Shot",
     "class": "Mountain",
     "desc": "You fire a fist-size stone at great speed, crushing defenses with each shot.",
-    "keywords": ["Spirit", "Stone", "Crush", "_Pierce_ 1"],
+    "keywords": ["Spirit", "Earth", "Crush", "_Pierce_ 1"],
     "type": "Balanced",
     "speed": "3",
     "cost": "1 _Momentum_",
@@ -111,23 +111,10 @@
     "special": "If there is an _Earthen_ _Feature_ at your _Position_ this _Attack_ is instead _Speed_ 2 and adds [_Point Blank_].",
     "boost": "1 _Momentum_: Resolve the Special if there is any _Earthen_ _Feature_ within your _Arena_. Draw Range from one of said _Positions_ and add _Melee_ as a Range option.",
     "chart": {
-      "on_miss": "+2 _Momentum_",
-      "stun": [0, 0, 0, 0, 1, 1, 2, 2, 2, 3, 3],
-      "damage": [0, 0, 0, 0, 4, 5, 5, 6, 6, 7, 7],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "",
-        "_Exposed_ [3 _Grit_]",
-        "_Exposed_ [3 _Grit_]",
-        "_Exposed_ [4 _Grit_]",
-        "_Exposed_ [4 _Grit_]",
-        "_Exposed_ [4 _Grit_]",
-        "_Exposed_ [5 _Grit_]",
-        "_Exposed_ [5 _Grit_]"
-      ]
+      "stun": [0, 1, 2, 3],
+      "damage": [0, 3, 5, 7],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": ["+2 _Momentum_", "None", "_Exposed_ [4 _Grit_]", "_Exposed_ [5 _Grit_]"]
     },
     "charged_profile": {
       "set_up": "Choose a Target within Range and, if using the Special/Boost, mark the appropriate _Feature_. While _Charging_, gain 1 _Ward_ and +1 _Grit_.",
@@ -262,7 +249,7 @@
     "chart": {
       "damage_type": "Crush",
       "on_miss": "+3 _Momentum_",
-      "material": "Stone",
+      "material": "Earth",
       "keywords": ["_Pierce_ 1", "_Overwhelming_ 2", "Ordnance"],
       "damage": [0, 0, 0, 0, 11, 12, 13, 14, 14, 15, 15],
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -305,7 +292,7 @@
     "chart": {
       "damage_type": "Stab",
       "on_miss": "+4 _Momentum_",
-      "material": "Stone",
+      "material": "Earth",
       "keywords": ["Avoidable"],
       "damage": [0, 0, 6, 7, 8, 9, 10, 11, 11, 13, 13],
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
@@ -348,7 +335,7 @@
     "boost": "1 _Momentum_: Instead, make the Target's space _Jagged_ if it is _Earthen_. If you do, gain a +1 _Bonus_.",
     "chart": {
       "damage_type": "Stab",
-      "material": "Stone",
+      "material": "Earth",
       "damage": [0, 0, 2, 2, 2, 2, 3, 3, 3, 4, 4],
       "keywords": ["Remote", "Avoidable"],
       "on_miss": "+2 _Momentum_",
@@ -424,25 +411,12 @@
     "speed": "2",
     "range": "Short/Medium",
     "chart": {
-      "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 4, 4, 4, 5, 5, 6, 7, 7],
-      "roll": ["Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "",
-        "",
-        "_Alight_ [2 _Reflex_]",
-        "_Alight_ [2 _Reflex_]",
-        "_Alight_ [3 _Reflex_]",
-        "_Alight_ [3 _Reflex_]",
-        "_Alight_ [4 _Reflex_]",
-        "_Alight_ [4 _Reflex_]",
-        "_Alight_ [5 _Reflex_]",
-        "_Alight_ [5 _Reflex_]"
-      ]
+      "damage": [0, 4, 5, 7],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": ["+2 _Momentum_", "_Alight_ [3 _Reflex_]", "_Alight_ [4 _Reflex_]", "_Alight_ [6 _Reflex_]"]
     },
     "charged_profile": {
-      "set_up": "Choose a Target within Range. While _Charging_, gain _Resistance_ I (_Cold_, _Fire_, _Ice_).",
+      "set_up": "Choose a Target within Range. While _Charging_, gain _Resistance_ (_Cold_, _Fire_, _Ice_).",
       "resolution": "Resolve this Attack against the Target and as [_Glancing_] against another creature at their _Position_."
     }
   },
@@ -727,26 +701,9 @@
     "boost": "Choose any:\n* 2 _Momentum_: Increase any _Push_ inflicted by 1.",
     "range": "Melee/Short",
     "chart": {
-      "damage_type": "Crush",
-      "on_miss": "+2 _Momentum_",
-      "roll": ["Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "stun": [0, 0, 2, 2, 3, 3, 3, 4, 4, 5, 5],
-      "status": [
-        "",
-        "",
-        "_Push_ 1 [3 _Grit_]",
-        "_Push_ 1 [3 _Grit_]",
-        "_Push_ 1 [4 _Grit_]",
-        "_Push_ 1 [4 _Grit_]",
-        "_Push_ 1 [4 _Grit_]",
-        "_Push_ 2, _Exposed_ [5 _Grit_]",
-        "_Push_ 2, _Exposed_ [5 _Grit_]",
-        "_Push_ 2, _Exposed_ [6 _Grit_]",
-        "_Push_ 2, _Exposed_ [6 _Grit_]"
-      ]
-    },
-    "analysis_notes": {
-      "fudge": -0.25
+      "roll": ["2-3", "4-5", "5-10", "11-12"],
+      "stun": [0, 2, 4, 5],
+      "status": ["+2 _Momentum_", "_Push_ 1 [3 _Grit_]", "_Push_ 2 [5 _Grit_]", "_Push_ 2, _Exposed_ [6 _Grit_]"]
     },
     "charged_profile": {
       "set_up": "While _Charging_, your _Position_ becomes _Gusting_.",
@@ -1337,15 +1294,15 @@
     "name": "Shifting Earth",
     "desc": "You seize a piece of stone, flinging it across the battlefield.",
     "type": "Balanced",
-    "keywords": ["Spirit", "Avoidable", "Stone", "Crush"],
+    "keywords": ["Spirit", "Avoidable", "Earth", "Crush"],
     "speed": 1,
     "class": "Mountain",
     "range": "Melee/Short",
-    "effect": "Choose a [_Stone_] _Feature_ within _Range_ with a _Weight_ less than or equal to twice the current _Phase_. Choose a _Position_ in the same _Arena_ as the _Feature_. Immediately move the _Feature_ to the _Position_ and stop any creature from _Occupying_ it. Inflict _Collide_ 2 with said _Feature_ on a _Target_ at the _Position_. You may instead allow a Target at that _Position_ to immediately _Occupy_ said _Feature_.",
+    "effect": "Choose a [_Earth_] _Feature_ within _Range_ with a _Weight_ less than or equal to twice the current _Phase_. Choose a _Position_ in the same _Arena_ as the _Feature_. Immediately move the _Feature_ to the _Position_ and stop any creature from _Occupying_ it. Inflict _Collide_ 2 with said _Feature_ on a _Target_ at the _Position_. You may instead allow a Target at that _Position_ to immediately _Occupy_ said _Feature_.",
     "special": "If the _Feature_ has an effect that resolves when moving to a new _Position_ you must resolve it against the same creature as the _Collide_.",
     "boost": "2 _Momentum_: _Destroy_ the _Obstacle_ after moving it. Resolve the _Collide_ effect against all creatures at the _Position_ as [_Glancing_].",
     "charged_profile": {
-      "set_up": "Range is instead _Medium_-. Choose a piece of [_Stone_] _Terrain_ within _Range_ and the target _Position_. Increase the _Weight_ of the _Terrain_ you can Target by 4.",
+      "set_up": "Range is instead _Medium_-. Choose a piece of [_Earth_] _Terrain_ within _Range_ and the target _Position_. Increase the _Weight_ of the _Terrain_ you can Target by 4.",
       "resolution": "Resolve this Attack against the Target. You may instead _Collide_ 3."
     }
   },
@@ -1393,25 +1350,13 @@
     "speed": 2,
     "cost": "1 _Momentum_",
     "range": "Short/Medium",
+    "reqs": "Any _Water_ _Source_ within _Medium_- _Range_.",
     "special": "If these is a _Water_ _Source_ at your current _Position_ you may instead use this at _Melee_ Range.",
     "chart": {
-      "on_miss": "+2 _Momentum_.",
-      "stun": [0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4],
-      "damage": [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3],
-      "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": [
-        "",
-        "_Soaked_",
-        "_Soaked_",
-        "_Tidal Motion_ 1 [3 _Grit_], _Soaked_",
-        "_Tidal Motion_ 1 [3 _Grit_], _Soaked_",
-        "_Tidal Motion_ 1 [4 _Grit_], _Soaked_",
-        "_Tidal Motion_ 1 [4 _Grit_], _Soaked_",
-        "_Tidal Motion_ 1 [5 _Grit_], _Soaked_",
-        "_Tidal Motion_ 1 [5 _Grit_], _Soaked_",
-        "_Tidal Motion_ 2 [6 _Grit_], _Soaked_",
-        "_Tidal Motion_ 2 [6 _Grit_], _Soaked_"
-      ]
+      "stun": [0, 1, 3, 4],
+      "damage": [0, 0, 2, 3],
+      "roll": ["2", "3-4", "5-10", "11-12"],
+      "status": ["+2 _Momentum_", "_Soaked_", "_Tidal Motion_ 1 [4 _Grit_], _Soaked_", "_Tidal Motion_ 2 [6 _Grit_], _Soaked_"]
     },
     "charged_profile": {
       "set_up": "Choose a Target within Range and, if using the Special, mark the appropriate _Source_. While _Charging_ gain _Resistance_ I (_Fire_, _Water_).",
@@ -1624,23 +1569,16 @@
     "class": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
     "type": "Light",
-    "keywords": ["_Fist_/_Body_/_Kick", "Crush", "Natural"],
+    "keywords": ["Crush", "Natural"],
     "speed": 1,
     "range": "Melee",
-    "effect": "Gain 1 _Momentum_.",
     "special": "On a _Hit_+, add the following based on the current _Phase_:\n* Phase 2: _Push_ [3 _Grit_]\n* Phase 3: _Push_ [4 _Grit_]/_Prone_ [3 _Reflex_/_Grit_]/_Grabbed_ [3 _Reflex_/_Grit_]\n* Phase 4: _Push_ [5 _Grit_]/_Prone_ [4 _Reflex_/_Grit_]/_Grabbed_ [4 _Reflex_/_Grit_]",
     "chart": {
-      "on_miss": "+0 _Momentum_",
-      "stun": [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2],
-      "damage": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-      "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "", "", ""]
+      "stun": [0, 0, 1, 1],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": ["+1 _Momentum_", "+1 _Momentum_", "+1 _Momentum_", "+1 _Momentum_"]
     },
-    "rank": "Minor Attack",
-    "analysis_notes": {
-      "fudge": -0.84,
-      "notes": "Gives 1 Momentum, ignores the misses."
-    }
+    "rank": "Minor Attack"
   },
   {
     "name": "Unsettle",

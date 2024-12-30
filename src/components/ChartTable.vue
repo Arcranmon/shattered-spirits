@@ -2,17 +2,21 @@
   <div>
     <div class="chart--wrapper" inline>
       <v-row no-gutters class="chart--row">
-        <v-col class="chart--head" cols="1"><b>Roll</b></v-col>
+        <v-col class="chart--head" cols="2"><b>Roll</b></v-col>
         <v-col class="chart--head chart--head-right" v-if="chart.HasStun" v-bind:cols="stunWidth"><b>Stun</b></v-col
         ><v-col class="chart--head chart--head-right" v-if="chart.HasDamage" v-bind:cols="damageWidth"><b>Damage</b></v-col
-        ><v-col class="chart--head chart--head-right" cols="8"><b>Effect</b></v-col>
+        ><v-col class="chart--head chart--head-right" cols="7"><b>Effect</b></v-col>
       </v-row>
       <div v-for="(item, index) in chart.Roll">
-        <v-row align="stretch" no-gutters class="chart--row" :class="{ OddRow: index % 2 == 1 }">
-          <v-col class="chart--cols justify-center align-center" v-bind:class="item" cols="1">{{ index + 2 }} </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="item" v-if="chart.HasStun" v-bind:cols="stunWidth">{{ chart.Stun(index) }} </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="item" v-if="chart.HasDamage" v-bind:cols="damageWidth">{{ chart.Damage(index) }} </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="item" cols="8"><display-tooltip-text :string="chart.Status(index)" /> </v-col>
+        <v-row align="stretch" no-gutters class="chart--row">
+          <v-col class="chart--cols justify-center align-center" v-bind:class="getClass(index)" cols="2">{{ chart.Roll[index] }} </v-col>
+          <v-col class="chart--cols chart--cols-right" v-bind:class="getClass(index)" v-if="chart.HasStun" v-bind:cols="stunWidth"
+            >{{ chart.Stun(index) }}
+          </v-col>
+          <v-col class="chart--cols chart--cols-right" v-bind:class="getClass(index)" v-if="chart.HasDamage" v-bind:cols="damageWidth"
+            >{{ chart.Damage(index) }}
+          </v-col>
+          <v-col class="chart--cols chart--cols-right" v-bind:class="getClass(index)" cols="7"><display-tooltip-text :string="chart.Status(index)" /> </v-col>
         </v-row>
       </div>
     </div>
@@ -42,6 +46,14 @@ export default Vue.extend({
       if (this.chart.HasStun && this.chart.HasDamage) return 1
       if (this.chart.HasStun) return 3
       return 0
+    },
+  },
+  methods: {
+    getClass(index) {
+      if (index == 0) return 'Miss'
+      if (index == 1) return 'Graze'
+      if (index == 2) return 'Hit'
+      if (index == 3) return 'Crit'
     },
   },
 })

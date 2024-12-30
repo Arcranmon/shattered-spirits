@@ -60,12 +60,6 @@ class Chart {
   get HasStun() {
     return this.stun_.length > 0
   }
-  get HasOnMiss() {
-    return this.on_miss_ != ''
-  }
-  public get OnMissHeader() {
-    return '**_On Miss_:** ' + this.on_miss_
-  }
   public get HasMaterial() {
     return this.material_.length > 0
   }
@@ -89,10 +83,10 @@ class Chart {
     this.roll_ = data.roll || []
     this.stun_ = data.stun || []
     this.damage_ = data.damage || []
-    this.status_ = data.status || []
+    this.status_ = data.status || ['None', 'None', 'None', 'None']
+    while (this.status_.length < 4) this.status_.push('None')
     this.keywords_ = data.keywords || []
     this.damage_type_ = data.damage_type || ''
-    this.on_miss_ = data.on_miss || ''
     this.material_ = data.material || ''
   }
 }

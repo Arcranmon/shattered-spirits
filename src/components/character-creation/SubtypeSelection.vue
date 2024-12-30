@@ -69,10 +69,10 @@ import SpiritSubtypeText from '@/database/text_files/character_creation/choosing
 import ManeuverCard from '@/components/cards/ManeuverCard'
 import TechCard from '@/components/cards/TechCard'
 import AttackCard from '@/components/cards/AttackCard'
-import SubtypeCard from '@/components/cards/SubtypeCard'
+import SpiritTypeCard from '@/components/cards/SpiritTypeCard'
 export default Vue.extend({
   name: 'subtype-selection',
-  components: { ManeuverCard, TechCard, AttackCard, SubtypeCard },
+  components: { ManeuverCard, TechCard, AttackCard, SpiritTypeCard },
   props: {
     character: {
       type: Character,

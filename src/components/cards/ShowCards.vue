@@ -82,11 +82,8 @@
             <div class="card--box" v-if="job == 'Movement'">
               <movement-card :movement="n" />
             </div>
-            <div class="card--box" v-if="job == 'Spirit Form'">
-              <spirit-form-card :form="n" />
-            </div>
-            <div class="card--box" v-if="job == 'Subtype'">
-              <subtype-card :type="n" />
+            <div class="card--box" v-if="job == 'SpiritType'">
+              <spirit-type-card :type="n" />
             </div>
             <div class="card--box" v-if="job == 'Archetype'">
               <archetype-card :archetype="n" />
@@ -113,8 +110,7 @@ import TalentCard from './TalentCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import AttackCard from './AttackCard.vue'
-import SubtypeCard from './SubtypeCard.vue'
-import SpiritFormCard from './SpiritFormCard.vue'
+import SpiritTypeCard from './SpiritTypeCard.vue'
 
 export default Vue.extend({
   name: 'show-cards',
@@ -189,9 +185,8 @@ export default Vue.extend({
     TechCard,
     TerrainCard,
     AttackCard,
-    SubtypeCard,
+    SpiritTypeCard,
     TalentCard,
-    SpiritFormCard,
   },
   methods: {
     clickMethod(variable, index) {

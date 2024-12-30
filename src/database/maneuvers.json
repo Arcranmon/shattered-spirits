@@ -33,7 +33,16 @@
     "desc": "You manifest your spirit from its element or call it back to yourself, working in tandem as a team.",
     "type": "Action",
     "reqs": "Not _Suppressed_.",
-    "effect": "Either _Manifest_ your _Spirit_ at a _Minor Source_ within Range or gain 1 _Momentum_ and _Recall_ them.",
+    "effect": "Either _Summon_ your _Spirit_ at a _Position_ with a _Minor Source_ within Range or gain 1 _Momentum_ and _Recall_ them.",
+    "class": "Basic"
+  },
+  {
+    "name": "Command Spirit",
+    "desc": "You call upon your spirit, causing them to take action.",
+    "type": "Stunt",
+    "reqs": "Spirit is _Summoned_.",
+    "cost": "None",
+    "effect": "For the remainder of this _Turn_:\n* If using a [_Spirit_] Action you may originate it from your Spirit if they meet all prerequisites.\n* Your Spirit may Move using their own _Movement_ or any granted to you this _Turn_.\n* Your Spirit may use _Stunts_.\n* If you would _Refresh_ or _Recover_ you may instead grant your _Spirit_ those benefits.\n* Whenever you would make an Attack, your Spirit may instead make an equivalent Attack.",
     "class": "Basic"
   },
   {
@@ -120,16 +129,8 @@
     "keywords": ["Spirit"],
     "type": "Gambit",
     "reqs": "_Graze_+.",
-    "effect": "Roll a d6, add [_Fire_, _Ignite_] to the triggering Attack, then resolve using the below table:",
-    "class": "Blaze",
-    "table": [
-      "Deal 1 _Bonus Damage_.",
-      "Deal 2 _Bonus Damage_.",
-      "Deal 2 _Bonus Damage_ and add _Alight_ [2 _Reflex_] on one Target.",
-      "Deal 2 _Bonus Damage_ and add _Alight_ [3 _Reflex_] on one Target.",
-      "Deal 3 _Bonus Damage_ and add _Alight_ [4 _Reflex_] on one Target.",
-      "Deal 3 _Bonus Damage_ and add _Alight_ [5 _Reflex_] on one Target."
-    ]
+    "effect": "Add [_Fire_, _Ignite_] to the triggering Attack, deal 2 _Bonus Damage_ and inflict _Alight_ [4 _Reflex_] on a single Target.",
+    "class": "Blaze"
   },
   {
     "name": "Bolting Rain",
@@ -447,18 +448,17 @@
     "type": "Reaction",
     "cost": "1 _Stamina_",
     "trigger": "You are Attacked, take Damage, or must _Negate_.",
-    "effect": "Roll a d6 and resolve the effect using the below table or _Parry_.",
-    "boost": "1 _Stamina_: Resolve both effects.",
-    "class": "Basic",
+    "effect": "_Parry_, either with this _Manuever_ or a _Wielded_ piece of _Equipment_.",
     "table": [
-      ["1", "Gain 1 _Ward_ and add [_Block_] OR a +1 _Bonus_ to _Negate_."],
-      ["2-3", "Gain 2 _Ward_ and add [_Block_] OR a +2 _Bonus_ to _Negate_."],
-      ["4-5", "Gain 3 _Ward_ and add [_Block_] OR a +3 _Bonus_ to _Negate_."],
-      ["6", "Gain 4 _Ward_ and add [_Block_] OR a +4 _Bonus_ to _Negate_. Gain 1 _Stamina_."]
-    ]
+      ["2-3", "Miss"],
+      ["4-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ],
+    "class": "Basic"
   },
   {
-    "name": "Delayed Blast",
+    "name": "Delayed Bla,st",
     "desc": "You focus an explosion, leaving a horrifying mote of flame waiting to detonate.",
     "keywords": ["Enchant"],
     "type": "Gambit",
@@ -537,17 +537,10 @@
     "desc": "You slip away from an incoming attack, avoiding the brunt of the blow.",
     "keywords": ["Defensive", "Evade"],
     "type": "Reaction",
-    "cost": "1 _Stamina_, 1 _Movement_",
+    "cost": "1 _Stamina_, 2 _Movement_",
     "trigger": "You are Attacked and are not _Immobile_.",
-    "effect": "Roll on the below table and gain the listed bonus. Additionally, gain _Ward_ equal to your _Reflex_.",
-    "special": "If the triggering Attack was _Avoidable_ you may roll at _Advantage_.",
-    "boost": "X _Movement_: Gain +X _Ward_. X has a maximum value of what you rolled.",
-    "table": [
-      ["1", "None."],
-      ["2-3", "+1 _Reflex_."],
-      ["4-5", "+2 _Reflex_."],
-      ["6", "+3 _Reflex_. Gain 1 _Stamina_."]
-    ],
+    "effect": "Gain _Resistance_ against the triggering Attack.",
+    "special": "If the triggering Attack was _Avoidable_ this only costs 1 _Movement_.",
     "class": "Basic"
   },
   {
@@ -626,7 +619,7 @@
       "Gain 5 _Ward_ and +3 _Reflex_.",
       "Gain 6 _Ward_ and +3 _Reflex_. Gain 1 _Stamina_."
     ],
-    "special": "\n* If the triggering Attack has [_Earth_] or [_Stone_] roll at _Disadvantage_.\n* If in a _Gusting_ space roll at _Advantage_.\n* If the triggering Attack was Single-Target and made by an ally you automatically take no _Damage_/_Stun_ and resolve the redirect effect.",
+    "special": "\n* If the triggering Attack has [_Earth_] roll at _Disadvantage_.\n* If in a _Gusting_ space roll at _Advantage_.\n* If the triggering Attack was Single-Target and made by an ally you automatically take no _Damage_/_Stun_ and resolve the redirect effect.",
     "class": "Gale"
   },
   {
@@ -678,8 +671,8 @@
     "move": 0,
     "type": "Action",
     "range": "Melee/Short",
-    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Move a Size 0 [_Stone_] _Feature_ to a different _Position_ within _Short_- Range.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
-    "boost": "1 _Momentum_: Instead, move a Size 1 [_Stone_] Feature to a different _Position_ within _Short_- Range.",
+    "effect": "Choose:\n* _Puppet_ an unequipped piece of _Stone_ _Equipment_ within Range until the end of the _Round_. You may add [_Enchant_] to instead _Puppet_ said _Equipment_ as long as the _Enchant_ persists.\n* Move a Size 0 [_Earth_] _Feature_ to a different _Position_ within _Short_- Range.\n* Create a _Large Stone_ _Feature_ at an _Earth_ _Position_ within _Range_.",
+    "boost": "1 _Momentum_: Instead, move a Size 1 [_Earth_] Feature to a different _Position_ within _Short_- Range.",
     "class": "Mountain"
   },
   {
@@ -1047,16 +1040,8 @@
     "keywords": ["Spirit"],
     "type": "Gambit",
     "reqs": "_Graze_+.",
-    "effect": "Roll a d6, add [_Wind_] to the triggering attack, then resolve using the below table:",
-    "class": "Gale",
-    "table": [
-      "Inflict _Push_ 1 [2 _Grit_] on one Target.",
-      "Inflict _Push_ 1 [3 _Grit_] on one Target.",
-      "Inflict _Push_ 1 [4 _Grit_] on one Target.",
-      "Inflict _Push_ 1, _Airborne_ [4 _Grit_] on one Target.",
-      "Inflict _Push_ 1, _Airborne_ [5 _Grit_] on one Target.",
-      "Inflict _Push_ 2, _Airborne_ [6 _Grit_] on one Target."
-    ]
+    "effect": "Add [_Wind_] to the triggering attack, then inflict _Push_ 1, _Airborne_ [5 _Grit_] on one Target.",
+    "class": "Gale"
   },
   {
     "name": "Galeguard",
@@ -1075,7 +1060,7 @@
     "desc": "You quickly regather yourself after a failed attack, anticipating a future assault.",
     "type": "Gambit",
     "reqs": "_Graze_-.",
-    "effect": "Roll a d6, then gain _Momentum_ equal to half the result.",
+    "effect": "Gain 2 _Momentum_.",
     "class": "Basic"
   },
   {
@@ -1279,7 +1264,7 @@
     "desc": "You leap forward, hurdling over hazards and other dangers.",
     "type": "Stunt",
     "cost": "1 _Momentum_",
-    "effect": "You may ignore X pieces of _Terrain_ on your next _Move_, where X is your _Jump_ value.",
+    "effect": "You may ignore 1 piece of non-_Weather_ _Terrain_ on your next _Move_.",
     "class": "Basic"
   },
   {
@@ -1310,8 +1295,8 @@
     "desc": "You exploit a stun to the limit, inflicting grave damage on a foe.",
     "type": "Gambit",
     "reqs": "_Hit_+.",
-    "effect": "Roll a d6, then deal X _Bonus Damage_ where X is the die roll.",
-    "special": "You have _Advantage_ on this roll if the target is _Stunned_.",
+    "effect": "Deal 4 _Bonus Damage_.",
+    "special": "If the target is _Stunned_, instead deal 5 _Bonus Damage_.",
     "class": "Basic"
   },
   {
@@ -1455,20 +1440,12 @@
   {
     "name": "Mountain Strike",
     "desc": "You rip the earth and coat your strike in it, granting it heft and power.",
-    "keywords": ["Spirit", "Crush", "Stone"],
+    "keywords": ["Spirit", "Crush", "Earth"],
     "type": "Gambit",
     "reqs": "_Graze_+ and your _Arena_ has an _Earthen_ _Source_.",
-    "effect": "Roll a d6, then resolve using the below table:",
+    "effect": "Add [_Crush_, _Earth_] to the original Attack and deal +3 _Bonus Damage_ and +1 _Bonus Stun_.",
     "special": "You may choose to remove [_Slash_] or [_Stab_] from the original Attack.",
-    "class": "Mountain",
-    "table": [
-      "Deal 1 _Bonus Stun_.",
-      "Deal 1 _Bonus Damage_ and 1 _Bonus Stun_.",
-      "Deal 1 _Bonus Damage_ and 2 _Bonus Stun_.",
-      "Deal 2 _Bonus Damage_ and 2 _Bonus Stun_.",
-      "Deal 2 _Bonus Damage_ and 3 _Bonus Stun_.",
-      "Deal 3 _Bonus Damage_ and 3 _Bonus Stun_."
-    ]
+    "class": "Mountain"
   },
   {
     "name": "Offhand Strike",
@@ -1552,7 +1529,7 @@
     "type": "Action",
     "cost": "2 _Momentum_",
     "reqs": "Spirit is _Summoned_.",
-    "effect": "You and your _Spirit_ may both immediately take a different _Action_, resolving them on the same _Turn_ and ignoring normal _Initiative_. During these _Actions_, each character must independently resolve all effects. For example, all Attacks used by the summoner must originate from the summoner.",
+    "effect": "You and your _Spirit_ may both immediately take a different _Action_, resolving them on the same _Turn_ and ignoring normal _Initiative_. You may not use _Command Spirit_ on your _Turn_.",
     "class": "Basic"
   },
   {
@@ -2066,7 +2043,7 @@
     "keywords": ["Spirit"],
     "range": "Melee/Short",
     "type": "Action",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Add [_Ignite_].dd _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range, then gain 1 _Momentum_ [_Blaze_].",
+    "effect": "Gain 1 _Momentum_, then choose:\n* Add [_Ignite_]. Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range, then gain 1 _Momentum_ [_Blaze_].",
     "class": "Blaze"
   },
   {
@@ -2091,7 +2068,7 @@
     "keywords": ["Defensive", "Efficient", "Spirit"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "trigger": "You would take Damage or gain Status from an _Earthen_ _Feature_, _Stone_ Material Attack, or _Mountain_ ability.",
+    "trigger": "You would take Damage or gain Status from an _Earthen_ _Feature_, _Earth_ Attack, or _Mountain_ ability.",
     "effect": "Gain 1 _Guard_ and 1 _Temporary_ _Stamina_ against the triggering effect.",
     "boost": "1 _Momentum_: Gain an additional 1 _Guard_ and _Temporary_ _Stamina_. You may use this _Boost_ up to twice.",
     "class": "Mountain",
@@ -2313,17 +2290,9 @@
     "keywords": ["Spirit"],
     "type": "Gambit",
     "reqs": "_Graze_+.",
-    "effect": "Roll a d6, add [_Water_] to the triggering Attack, then resolve using the below table:",
+    "effect": "Add [_Water_] to the original Attack, then deal +3 _Bonus Stun_ and inflict _Tidal Motion_ 1 [4 _Grit_], _Soaked_ on one Target.",
     "special": "You may choose to remove an original Damage Type and replace it with [_Crush_].",
-    "class": "Tide",
-    "table": [
-      "Inflict _Soaked_ on one Target.",
-      "Deal 1 _Bonus Stun_ and inflict _Soaked_ on one Target.",
-      "Deal 1 _Bonus Stun_ and inflict _Tidal Motion_ 1 [2 _Grit_], _Soaked_ on one Target.",
-      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ 1 [3 _Grit_], _Soaked_ on one Target.",
-      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ 1 [4 _Grit_], _Soaked_ on one Target.",
-      "Deal 2 _Bonus Stun_ and inflict _Tidal Motion_ 2 [5 _Grit_], _Soaked_ on one Target."
-    ]
+    "class": "Tide"
   },
   {
     "name": "To Me!",

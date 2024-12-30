@@ -4,7 +4,7 @@
       <div class="card--underline-top card--header">
         <img class="image--header-left" :src="terrain.Icon" />
         <img class="image--header-right" :src="terrain.Icon" />
-        <h3 style="display: inline; font-style: normal">{{ terrain.Name }}</h3>
+        <h4 style="display: inline; font-style: normal">{{ terrain.Name }}</h4>
         <div>
           <b><display-tooltip-text :string="terrain.TerrainDetails" :decorate="false" /></b>
         </div>

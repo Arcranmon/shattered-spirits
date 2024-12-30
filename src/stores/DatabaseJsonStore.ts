@@ -19,8 +19,7 @@ import Terrains from '@/database/terrain.json'
 
 import Attacks from '@/database/attacks.json'
 
-import SubtypeJson from '@/database/subtypes.json'
-import SpiritForms from '@/database/spirit_forms.json'
+import SpiritTypeJson from '@/database/spirit_types.json'
 
 import ManeuversJson from '@/database/maneuvers.json'
 
@@ -36,8 +35,7 @@ import {
   Maneuver,
   Npc,
   Feature,
-  SpiritForm,
-  Subtype,
+  SpiritType,
   Stance,
   Status,
   Talent,
@@ -69,7 +67,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Disciplines = DisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
-    this.Subtypes = SubtypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
+    this.SpiritTypes = SpiritTypeJson.map((x) => SpiritType.Deserialize(<ISubtypeData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
   }
@@ -80,7 +78,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Masteries: Discipline[] = []
   private Disciplines: Discipline[] = []
   private Techniques: Technique[] = []
-  private Subtypes: Subtype[] = []
+  private SpiritTypes: SpiritType[] = []
   private Features: Feature[] = []
   private Archetypes: Archetype[] = []
 
@@ -397,6 +395,17 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getDisciplinesFromList(): any {
+    return (disc_list: Array<any>) => {
+      if (disc_list == undefined) return []
+      let discs: Array<Discipline> = []
+      for (var disc of disc_list) {
+        discs.push(this.getDiscipline(disc))
+      }
+      return discs
+    }
+  }
+
   get getMastery(): any {
     return (inword: string) => {
       var discipline = this.Masteries.find((x) => x.Name.trim() === inword.trim())
@@ -670,34 +679,16 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // SPIRIT TYPE GETTERS
   // ==========================================================
-  get getSubtype(): any {
+  get getSpiritType(): any {
     return (inword: string) => {
-      var type = this.Subtypes.find((x) => x.Name === inword.trim())
+      var type = this.SpiritTypes.find((x) => x.Name === inword.trim())
       return type
     }
   }
 
   get getSpiritTypesByElement(): any {
     return (inword: string) => {
-      return this.Subtypes.filter((x) => x.Element === inword.trim())
-    }
-  }
-
-  // ==========================================================
-  // SPIRIT FORM GETTERS
-  // ==========================================================
-  get getSpiritForm(): any {
-    return (inword: string) => {
-      var form = SpiritForms.find((x) => x.name.trim() === inword.trim())
-      return SpiritForm.Deserialize(<ISpiritFormData>(<unknown>form))
-    }
-  }
-
-  get getTrait(): any {
-    return (inword: string) => {
-      var trait = Traits.find((x) => x.name == inword)
-      if (trait) return trait.effect
-      return 'Trait not found!'
+      return this.SpiritTypes.filter((x) => x.Element === inword.trim())
     }
   }
 }

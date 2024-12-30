@@ -398,10 +398,6 @@ class Character extends Combatant {
     return 16 - this.Weight >= weapon.Weight
   }
 
-  public CanAddArmor(armor: Armor) {
-    return 16 - this.Weight >= armor.Weight
-  }
-
   // TODO: Update when character advancement is a thing.
   get HasSpiritDisciplines() {
     var disciplines_check = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type != 'Style')

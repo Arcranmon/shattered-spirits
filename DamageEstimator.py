@@ -4,6 +4,9 @@ from termcolor import colored
 import argparse
 import OrphanFinder
 
+# Momentum is 'worth' this much
+momentum_value = 2
+
 status_multipliers = {
     "Airborne": 4,
     "Alight": 4,
@@ -82,29 +85,33 @@ def get_status_magnitude(status):
 
 def get_status_damage(status_string, glancing):
     # Split individual statuses out
-    statuses = status_string.split(', ')
+    status_string = status_string.replace('_', '')
+
+    multipliers = status_string.split('[')
+    multiplier = 1
+    if(len(multipliers) > 1):
+        multiplier = (int(multipliers[1][0])-1)/6
+    
+    statuses = multipliers[0].split(', ')
 
     estimated_damage = 0
     no_save_damage = 0
-    for status in statuses:        
-        if status == '': continue
-        status = status.replace('_', '')
-        # Scale the estimated damage based on the DC
-        if '[' in status:
-            final_statuses = status.split('[')
-            if '/' in final_statuses[0]:
-                status_options = final_statuses[0].split('/')
-                final_status_damage = max(get_status_magnitude(status_option.strip()) for status_option in status_options)
-            else:
-                final_status_damage = get_status_magnitude(final_statuses[0].strip())
-            estimated_damage += final_status_damage
-            multiplier = (int(final_statuses[1][0])-1)/6
-            estimated_damage = estimated_damage * multiplier
-        # Otherwise, add the effect to the damage
+    # TODO: Add something about no-save
+    for status in statuses: 
+        if status == 'None': continue        
+        if('+' in status):
+            estimated_damage += int(status[1]) * momentum_value
+        elif '/' in status and 'Grit' not in status:
+            status_options = status.split('/')
+            estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)
         else:
-            estimated_damage += get_status_magnitude(status)
+            if ' ' in status.strip():
+                split_status = status.split(' ')
+                estimated_damage += get_status_magnitude(split_status[0].strip())*int(split_status[1].strip())
+            else:
+                estimated_damage += get_status_magnitude(status.strip())
 
-    return estimated_damage + no_save_damage
+    return estimated_damage * multiplier + no_save_damage
 
 def get_data(database):
     # Open the appropriate database.
@@ -163,12 +170,12 @@ def estimate_damage(attack, glancing, print_stats):
 
     # Useful analysis parameters.
     cost = 0
-    roll_chart = ["Hit"]*11
-    damage_chart = [0]*11
-    stun_chart = [0]*11
-    status_chart = ['']*11
+    roll_chart = 0*4
+    damage_chart = [0]*4
+    stun_chart = [0]*4
+    status_chart = ['']*4
     speed = 1
-    bonus_damage =  [0]*11
+    bonus_damage =  [0]*4
     expected_targets = 1
     lvh = 'none'
     attack_class = ATTACK
@@ -176,18 +183,22 @@ def estimate_damage(attack, glancing, print_stats):
     diff_speed = 0
     status_damage = 0
     
-    expected_damage = [4.0, 5.0, 6.0, 7.0]
+    expected_damage = [5.0, 6.0, 7.0, 8.0]
                 
     if("chart" in attack):
+        roll_chart = attack["chart"]["roll"]
         if(not("damage" in attack["chart"])):
-            damage_chart = [0]*11
+            damage_chart = [0]*4
         else:                        
             damage_chart = attack["chart"]["damage"]
         if(not("stun" in attack["chart"])):
-            stun_chart = [0]*11
+            stun_chart = [0]*4
         else:                        
             stun_chart = attack["chart"]["stun"]
-        status_chart = attack["chart"]["status"]
+        if(not("status" in attack["chart"])):
+            status_chart = ['']*4
+        else:
+            status_chart = attack["chart"]["status"]
         roll_chart = attack["chart"]["roll"]
                     
     if(type(attack["speed"]) is int or len(attack["speed"]) == 1):
@@ -211,10 +222,7 @@ def estimate_damage(attack, glancing, print_stats):
                 bonus_damage = attack["analysis_notes"]["bonus_damage"]
         override_range = attack["analysis_notes"].get("range", "")
         diff_speed = attack["analysis_notes"].get("speed", 0)
-        status_damage = get_status_damage(attack["analysis_notes"].get("status", ""), False)
     
-    # Momentum is 'worth' this much
-    momentum_value = 1.5
         
     if("hands" in attack and attack["hands"] == 2):
         cost += 1
@@ -250,66 +258,68 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
 
-    attack_range = attack["range"].replace('_', '').split('/')[-1]
+    attack_ranges = attack["range"].replace('_', '').split('/')
+    attack_range = attack_ranges[-1]
+    if "Thrown" in attack_range:
+        attack_range = attack_ranges[-2]
     if override_range != "":
         attack_range = override_range
-    thrown = False 
 
     # Parse and range keywords associated with this.
-    if "Thrown" in attack_range:
-        thrown = True
     if "(" in attack_range:
         attack_range = attack_range.split("(")[0].replace(' ', '')
-    straight_damage = [0]*4
-    advantage_damage = [0]*4
-    disadvantage_damage = [0]*4
-
-
-    range_modifier = 0
-    #if "Ordnance" in attack_range.get("special", ""):
-    #    range_modifier += 0.05
+    straight_damage = 0
+    advantage_damage = 0
+    disadvantage_damage = 0
 
     # Adjust for cost.
     range_expected_damage = [x + (cost * momentum_value) for x in expected_damage]
 
-    range_expected_damage = [x * (attack_range_multiplier[attack_range]+range_modifier) for x in range_expected_damage]
+    range_expected_damage = [x * (attack_range_multiplier[attack_range]) for x in range_expected_damage]
         
     # Adjust for expected targets.
     range_expected_damage = [x / expected_targets for x in range_expected_damage]
 
+    expected_damage = 0 
+    if diff_speed == 0:
+        expected_damage = range_expected_damage[speed-1]
+    else:
+        expected_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
+
+    # TODO: Add a roll map check.
+    roll_map = 11 * [0]
+    for i, roll in enumerate(roll_chart):
+        roll_range = roll.split('-')
+        if(len(roll_range) == 1):
+            roll_map[int(roll_range[0])-2] = i
+        else:
+            for j in range(int(roll_range[0]), int(roll_range[1]) + 1):
+                roll_map[j-2] = i
+
     # Calculate the damage for each speed.
     for roll_index in range(10,-1,-1):
-        for speed_index in range(4):
-            if(thrown and roll_chart[roll_index] == "Graze"): 
-                continue
-            index = roll_index
-            # Attacking too early with some weapons will make some rolls automatically miss.
-            if index < 0:
-                continue
-            damage = (damage_chart[index])
-            damage += stun_chart[index]
-            if(glancing): damage = math.ceil(damage/2.0)
+        index = roll_map[roll_index]
+        damage = damage_chart[index]
+        damage += stun_chart[index]
+        if(glancing): damage = math.ceil(damage/2.0)
+        if(index < len(status_chart)):
             damage += get_status_damage(status_chart[index], glancing)
-            damage += status_damage
-            damage += bonus_damage[index]
-            if(roll_chart[index] != "Miss"): 
-                damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
-            straight_damage[speed_index] += straight[index]*damage
-            advantage_damage[speed_index] += advantage[index]*damage
-            disadvantage_damage[speed_index] += disadvantage[index]*damage
+        damage += bonus_damage[index]
+        if(roll_chart[index] != 0): 
+            damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
+        straight_damage += straight[roll_index]*damage
+        advantage_damage += advantage[roll_index]*damage
+        disadvantage_damage += disadvantage[roll_index]*damage
+        
+
     if(print_stats):
-        print(colored(speed_string, 'white'))
-        print(colored("Expected Damage:        " +  '  '.join(["{:.3f}".format(damage) for damage in range_expected_damage]), 'blue'))
-        print(colored("Straight Attack:        " +  '  '.join(["{:.3f}".format(damage) for damage in straight_damage]), 'white'))
-        print(colored("Advantage Attack:       " +  '  '.join(["{:.3f}".format(damage) for damage in advantage_damage]), 'green'))
-        print(colored("Disadvantage Attack:    " +  '  '.join(["{:.3f}".format(damage) for damage in disadvantage_damage]), 'red'))
-    if diff_speed == 0:
-        diff = max(range_expected_damage[speed-1]-straight_damage[speed-1], diff, key=abs)
-    else:
-        diff_speed_expected_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
-        diff = max(diff_speed_expected_damage-straight_damage[speed-1], diff, key=abs)
+        print(colored("Speed:                  " + str(speed), 'white'))
+        print(colored("Expected Damage:        " +  "{:.3f}".format(expected_damage), 'blue'))
+        print(colored("Straight Attack:        " +  "{:.3f}".format(straight_damage), 'white'))
+        print(colored("Advantage Attack:       " +  "{:.3f}".format(advantage_damage), 'green'))
+        print(colored("Disadvantage Attack:    " +  "{:.3f}".format(disadvantage_damage), 'red'))
     if(print_stats):
-        print("\033[1mExpected Damage Difference: " + "{:.3f}".format(-diff) + "\033[0m") 
+        print("\033[1mExpected Damage Difference: " + "{:.3f}".format(straight_damage-expected_damage) + "\033[0m") 
 
     return diff
 

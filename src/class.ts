@@ -1,5 +1,6 @@
 // Store all classes
 import Combatant from './classes/Combatant'
+import Defenses from './classes/Defenses'
 import Base from './classes/Base'
 import Bonuses from './classes/Bonuses'
 import Maneuver from './classes/Maneuvers'
@@ -7,8 +8,7 @@ import Ability from './classes/Ability'
 import Armor from './classes/Armor'
 import Archetype from './classes/Archetype'
 import Attack from './classes/Attack'
-import Subtype from './classes/Subtype'
-import SpiritForm from './classes/SpiritForm'
+import SpiritType from './classes/SpiritType'
 import Spirit from './classes/Spirit'
 import Character from './classes/Character'
 import Chart from './classes/Chart'
@@ -33,14 +33,14 @@ export {
   Character,
   Chart,
   Combatant,
+  Defenses,
   Discipline,
   Accessory,
   Maneuver,
   Npc,
   Feature,
   Spirit,
-  SpiritForm,
-  Subtype,
+  SpiritType,
   Stance,
   Status,
   Talent,

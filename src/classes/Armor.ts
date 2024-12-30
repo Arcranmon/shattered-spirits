@@ -5,8 +5,9 @@ class Armor extends Base {
   private category_: string
   private guard_: number
   private soak_: number
-  private weight_: number
   private parry_: string
+  private sacrifice_: string
+  private movement_: number
   private durability_: number
   private traits_: string[]
 
@@ -27,9 +28,6 @@ class Armor extends Base {
   get Soak() {
     return this.soak_
   }
-  get Weight() {
-    return this.weight_
-  }
   get Traits() {
     return this.traits_
   }
@@ -41,6 +39,9 @@ class Armor extends Base {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
+  get ArmorSummary() {
+    return '**Armor Effect:** ' + this.guard_ + ' _Guard_, ' + this.soak_ + ' _Soak_, ' + this.movement_ + ' _Move_, ' + this.durability_ + ' _Durability_'
+  }
   get HasGuard() {
     return this.guard_ > 0
   }
@@ -56,9 +57,6 @@ class Armor extends Base {
   get DurabilityHeader() {
     return '**Durability:** ' + this.durability_
   }
-  get WeightHeader() {
-    return '**Weight:** ' + this.weight_
-  }
   get HasParry() {
     return this.parry_.length > 0
   }
@@ -70,6 +68,12 @@ class Armor extends Base {
   }
   get TraitsHeader() {
     return '**Traits:** _' + this.traits_.join('_, _') + '_'
+  }
+  get HasSacrifice() {
+    return this.sacrifice_.length > 0
+  }
+  get SacrificeHeader() {
+    return '**_Sacrifice_:** ' + this.sacrifice_
   }
 
   // ==========================================================
@@ -85,11 +89,12 @@ class Armor extends Base {
     this.setBaseData(data)
     this.guard_ = data.guard || 0
     this.soak_ = data.soak || 0
+    this.movement_ = data.movement || 0
     this.durability_ = data.durability || 0
     this.category_ = data.category || ''
-    this.weight_ = data.weight || 0
     this.parry_ = data.parry || ''
     this.traits_ = data.traits || []
+    this.sacrifice_ = data.sacrifice || ''
   }
 }
 export default Armor

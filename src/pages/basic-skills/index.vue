@@ -55,7 +55,7 @@
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
         <show-cards
-          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Retreat'), $store.getters.getManeuver('Leap')]"
+          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Retreat'), $store.getters.getManeuver('Command Spirit')]"
           job="Maneuvers"
           :collapse="false"
         />
