@@ -30,10 +30,6 @@ class Npc extends Combatant {
     return this.npc_data_.Health
   }
 
-  override get MaxStamina() {
-    return this.npc_data_.defenses.stamina
-  }
-
   override get Size() {
     return this.npc_data_.size
   }

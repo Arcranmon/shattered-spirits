@@ -1,7 +1,7 @@
 import { store } from '@/store'
 
 class Defenses {
-  private stamina_: number
+  private stun_: number
   private reflex_: number
   private grit_: number
   private focus_: number
@@ -37,8 +37,8 @@ class Defenses {
     return this.focus_
   }
 
-  public get Stamina() {
-    return this.stamina_
+  public get Stun() {
+    return this.stun_
   }
 
   public get Resistances() {
@@ -74,7 +74,7 @@ class Defenses {
     this.grit_ = data.grit || 0
     this.reflex_ = data.reflex || 0
     this.focus_ = data.focus || 0
-    this.stamina_ = data.stamina || 0
+    this.stun_ = data.stun || 0
     this.resistances_ = data.resistances || []
     this.weaknesses_ = data.weaknesses || []
   }

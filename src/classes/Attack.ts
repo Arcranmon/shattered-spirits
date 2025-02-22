@@ -6,12 +6,12 @@ class Attack extends Maneuver {
   protected category_: string
   protected charged_profile_: IChargedEffect
   protected speed_: string
-  protected type_: string
+  protected tier_: string
 
   public constructor(name) {
     super(name)
     this.chart_ = new Chart()
-    this.type_ = ''
+    this.tier_ = ''
     this.speed_ = ''
   }
 
@@ -31,11 +31,11 @@ class Attack extends Maneuver {
   get HasSpeed() {
     return this.speed_.length > 0 && this.speed_ != 'undefined'
   }
-  get HasType() {
-    return this.type_ != ''
+  get HasTier() {
+    return this.tier_ != ''
   }
-  get HasSpeedOrType() {
-    return this.HasSpeed || this.HasType
+  get HasSpeedOrTier() {
+    return this.HasSpeed || this.HasTier
   }
   get Speed() {
     return this.speed_
@@ -55,13 +55,13 @@ class Attack extends Maneuver {
   get SpeedHeader() {
     var header = ''
     if (this.HasSpeed) header = 'Speed ' + this.speed_
-    if (header.length > 0 && this.HasType) header += ', '
-    header += this.TypeHeader
+    if (header.length > 0 && this.HasTier) header += ', '
+    header += this.TierHeader
 
     return header
   }
-  get TypeHeader() {
-    if (this.type_ != 'Maneuver') return '_' + this.type_ + '_'
+  get TierHeader() {
+    if (this.tier_ != 'Maneuver') return '_' + this.tier_ + '_'
     return ''
   }
   get ClassHeader() {
@@ -83,7 +83,7 @@ class Attack extends Maneuver {
     this.category_ = data.category || 'Attack'
     this.charged_profile_ = data.charged_profile || null
     this.speed_ = String(data.speed) || ''
-    this.type_ = data.type || ''
+    this.tier_ = data.tier || ''
     if ('chart' in data && data.chart != null) {
       this.chart_ = Chart.Deserialize(data.chart)
     }

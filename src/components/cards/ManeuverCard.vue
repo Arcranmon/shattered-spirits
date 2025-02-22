@@ -53,6 +53,9 @@
       <div class="card--format" v-if="maneuver.HasManifest">
         <display-tooltip-text :string="maneuver.ManifestHeader" />
       </div>
+      <div class="card--format" v-if="maneuver.HasDefend">
+        <display-tooltip-text :string="maneuver.Defend.DefendText" />
+      </div>
       <div class="card--format" v-if="maneuver.HasTable">
         <basic-table :chart="maneuver.Table" />
       </div>

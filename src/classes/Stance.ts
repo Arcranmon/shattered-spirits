@@ -28,8 +28,8 @@ class Stance extends Base {
     return respite_string
   }
 
-  public get Stamina() {
-    return this.defenses_.stamina
+  public get Stun() {
+    return this.defenses_.stun
   }
 
   public get Grit() {
@@ -48,7 +48,7 @@ class Stance extends Base {
   }
 
   public get DefenseHeader() {
-    var defense_string = '**Defenses:** \n* ' + this.defenses_.stamina + ' _Stamina_'
+    var defense_string = '**Defenses:** \n* +' + this.defenses_.stun + ' Maximum _Stun_'
     if (this.defenses_.focus) defense_string += '\n* ' + this.defenses_.focus + ' _Focus_'
     if (this.defenses_.grit) defense_string += '\n* ' + this.defenses_.grit + ' _Grit_'
     if (this.defenses_.reflex) defense_string += '\n* ' + this.defenses_.reflex + ' _Reflex_'

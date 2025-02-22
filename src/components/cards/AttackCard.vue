@@ -8,7 +8,7 @@
         <div class="card--keywords">
           <b>
             <div><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
-            <div v-if="attack.HasSpeedOrType"><display-tooltip-text :string="attack.SpeedHeader" :decorate="false" /></div>
+            <div v-if="attack.HasSpeedOrTier"><display-tooltip-text :string="attack.SpeedHeader" :decorate="false" /></div>
             <span v-for="(keyword, index) in attack.Keywords" :key="index" class="keyword--box">
               <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></span
           ></b>
@@ -26,6 +26,7 @@
       <div v-if="attack.HasEffect"><display-tooltip-text :string="attack.EffectHeader" /></div>
       <div v-if="attack.HasSpecial"><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <div v-if="attack.HasBoost"><display-tooltip-text :string="attack.BoostHeader" /></div>
+      <div v-if="isWeapon && attack.HasSacrifice"><display-tooltip-text :string="attack.SacrificeHeader" /></div>
       <div v-if="attack.HasParry"><display-tooltip-text :string="attack.ParryHeader" /></div>
       <div v-if="attack.Chart.HasOnMiss"><display-tooltip-text :string="attack.Chart.OnMissHeader" /></div>
       <chart-table v-if="attack.HasChart" :chart="attack.Chart" />
@@ -38,6 +39,7 @@
           <display-tooltip-text :string="attack.ChargedEffectResolution" />
         </div>
       </div>
+      <div v-if="attack.HasDefend"><display-tooltip-text :string="attack.Defend.DefendText" /></div>
     </div>
     <div class="desc--box" v-if="attack.Desc.length > 0" style="font-style: italic">{{ attack.Desc }}<br /></div>
   </div>
@@ -64,7 +66,7 @@ export default Vue.extend({
   },
   computed: {
     isWeapon: function () {
-      return this.attack.hasOwnProperty('parry_')
+      return this.attack.hasOwnProperty('weight_')
     },
   },
   components: { BasicTable, ChartTable },

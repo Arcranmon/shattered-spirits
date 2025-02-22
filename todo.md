@@ -1,5 +1,16 @@
 ## To-Do
 
+- Move to new setup
+
+  - Techniques
+  - Stances
+  - Arts
+    - Each has 1-3 of Offensive, Defensive, and General effects
+  - Maneuvers (Reactions + Stunts)
+  - Flourish
+
+- Choose a Technique for the Round
+
 ### Plan
 
 POTENTIAL REFACTORS

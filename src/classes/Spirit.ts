@@ -5,7 +5,7 @@ var kBasicAttacks = ['Weapon Attack', 'Brawl']
 var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance']
 var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
 var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge']
-var kBasicGambits = ['Lethal Strike', 'Gather Momentum']
+var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
 
 class Spirit extends Combatant {
   private name_: string

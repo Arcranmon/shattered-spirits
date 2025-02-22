@@ -10,6 +10,7 @@ momentum_value = 2
 status_multipliers = {
     "Airborne": 4,
     "Alight": 4,
+    "Engaged": 2,
     "Bleeding": 4,
     "Blinded": 6,
     "Burned": 3,
@@ -98,9 +99,11 @@ def get_status_damage(status_string, glancing):
     no_save_damage = 0
     # TODO: Add something about no-save
     for status in statuses: 
+        print(status)
         if status == 'None': continue        
         if('+' in status):
-            estimated_damage += int(status[1]) * momentum_value
+            # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
+            no_save_damage += int(status[1]) * momentum_value * 0.9 
         elif '/' in status and 'Grit' not in status:
             status_options = status.split('/')
             estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)
@@ -181,9 +184,9 @@ def estimate_damage(attack, glancing, print_stats):
     attack_class = ATTACK
     override_range = ""
     diff_speed = 0
-    status_damage = 0
+    stun_scale = 0.8 # Stun is worth 80% of a Damage
     
-    expected_damage = [5.0, 6.0, 7.0, 8.0]
+    expected_damage = [7.0, 9.0, 11.0, 13.0]
                 
     if("chart" in attack):
         roll_chart = attack["chart"]["roll"]
@@ -207,8 +210,8 @@ def estimate_damage(attack, glancing, print_stats):
         speed = int(attack["speed"][0])
     if "cost" in attack:
         cost = int(attack["cost"][0])
-    if "type" in attack: 
-        lvh = attack["type"]
+    if "tier" in attack: 
+        lvh = attack["tier"]
 
     if("analysis_notes" in attack):
         cost = cost + attack["analysis_notes"].get("fudge", 0)
@@ -300,7 +303,7 @@ def estimate_damage(attack, glancing, print_stats):
     for roll_index in range(10,-1,-1):
         index = roll_map[roll_index]
         damage = damage_chart[index]
-        damage += stun_chart[index]
+        damage += stun_chart[index] * stun_scale
         if(glancing): damage = math.ceil(damage/2.0)
         if(index < len(status_chart)):
             damage += get_status_damage(status_chart[index], glancing)

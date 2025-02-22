@@ -58,7 +58,7 @@
     "name": "Engaged",
     "desc": "An effect caused when a creature is locked in close combat with another.",
     "effect": "While Engaged a creature may not leave their current _Position_. Additionally, this creature takes a -X _Penalty_ on all Attacks when not targeting a creature they are Engaged with, where X is the total number of creatures they are _Engaged_ with.",
-    "remove": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_, but creates an _Opening_.",
+    "remove": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_, but creates an _Opening_. If a creature is _Forcibly Moved_ to a new _Position_, remove _Engaged_.",
     "recover": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_.",
     "type": "Status Effect"
   },
@@ -75,8 +75,8 @@
   {
     "name": "Guarding",
     "desc": "A status gained while a creature focuses entirely on defense.",
-    "effect": "While Guarding all _Attacks_ have their cost increased by 2 and all _Movement_ costs increased by 1, but the cost of all _Defensive_ _Reactions_ is reduced by 1. Effects that grant Guarding also typically provide some small additional bonus; if a creature gains Guarding from another source, replace the bonus.",
-    "remove": "Creatures lose Guarding if they gain _Stunned_. Creatures may also willingly end the effect at the end of their _Turn_.",
+    "effect": "While Guarding:\n* All _Attacks_ are made at _Disadvantage_.\n* All _Movement_ costs are increased by 1.\n* The cost of all _Defensive_ _Reactions_ is reduced by 1.\n\nEffects that grant Guarding also typically provide some small additional bonus; if a creature gains Guarding from another source, replace the bonus.",
+    "remove": "Creatures lose Guarding if they gain _Stunned_. Creatures may also willingly end the effect at the end of their _Turn_, or when using a _Defensive_ _Reaction_ to gain _Advantage_ on their roll.",
     "special": "A creature may not be both _Charging_ and Guarding.",
     "type": "Status Effect"
   },

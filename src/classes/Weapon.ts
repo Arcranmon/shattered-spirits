@@ -4,10 +4,8 @@ import { Attack } from '@/class'
 class Weapon extends Attack {
   private durability_: number
   private hands_: number
-  private hardness_: number
-  private parry_: string
-  private material_: string
   private weight_: number
+  private sacrifice_: string
 
   get HasDurability() {
     return this.durability_ != 0
@@ -27,14 +25,14 @@ class Weapon extends Attack {
     if (this.hands_ == 1) return '_One-Handed_ '
     else return '_Two-Handed_ '
   }
-  get HasParry() {
-    return this.parry_.length > 0
-  }
-  get ParryHeader() {
-    return '**Parry:** ' + this.parry_
-  }
   get Weight() {
     return this.weight_
+  }
+  get HasSacrifice() {
+    return this.sacrifice_ != ''
+  }
+  get SacrificeHeader() {
+    return '**Sacrifice:** ' + this.sacrifice_
   }
   get TraitsHeader() {
     var traits_string = '**Traits:** '
@@ -76,11 +74,9 @@ class Weapon extends Attack {
   public setWeaponData(data: IWeaponData): void {
     this.setAttackData(data)
     this.durability_ = data.durability || 0
-    this.hardness_ = data.hardness || 0
     this.hands_ = data.hands || 0
-    this.material_ = data.material || ''
-    this.parry_ = data.parry || ''
     this.weight_ = data.weight || 0
+    this.sacrifice_ = data.sacrifice || ''
   }
 }
 export default Weapon

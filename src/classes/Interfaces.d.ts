@@ -25,9 +25,7 @@ declare interface IArmorData extends IBaseData {
   durability: number
   category?: string
   guard: number
-  parry: string
-  soak: number
-  movement: number
+  load: number
   sacrifice: string
   traits: string[]
 }
@@ -36,6 +34,7 @@ declare interface IAttackData extends IManeuverData {
   category?: string
   chart: IChartData
   rank: string
+  tier: string
   charged_profile?: IChargedEffect
   speed: string
 }
@@ -86,7 +85,7 @@ declare interface IChartData {
 }
 
 declare interface IDefenseData {
-  stamina: number
+  stun: number
   reflex?: number
   grit?: number
   focus?: number
@@ -179,8 +178,8 @@ declare interface IAbilityData extends IBaseData {
 declare interface IManeuverData extends IAbilityData {
   manifest?: string
   trigger?: string
-  type: string
-  weapon?: string
+  type?: string
+  defend?: IDefendData
 }
 
 declare interface ITechData extends IAbilityData {
@@ -190,7 +189,7 @@ declare interface ITechData extends IAbilityData {
   weapon?: string
 }
 
-declare interface IParryData {
+declare interface IDefendData {
   lose: string
   tie: string
   win: string
@@ -292,8 +291,6 @@ declare interface IWeaponData extends IAttackData {
   itemtype?: string
   keywords: Array<string>
   hands: number
-  hardness?: number
-  material: string
-  parry: string
   weight: number
+  sacrifice?: string
 }

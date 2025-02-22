@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="card--content">
-      <div><display-tooltip-text :string="armor.ArmorSummary" /></div>
+      <div v-if="armor.Category != 'Layered Armor'"><display-tooltip-text :string="armor.ArmorSummary" /></div>
       <div v-if="armor.HasParry"><display-tooltip-text :string="armor.ParryHeader" /></div>
       <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>
       <div v-if="armor.HasSpecial"><display-tooltip-text :string="armor.SpecialHeader" /></div>

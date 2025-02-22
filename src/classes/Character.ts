@@ -12,7 +12,7 @@ var kBasicAttacks = ['Weapon Attack', 'Brawl']
 var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance', 'Spirit Summon']
 var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
 var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge', 'Partnership']
-var kBasicGambits = ['Lethal Strike', 'Gather Momentum']
+var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
 
 class Character extends Combatant {
   // Level Up Qualities
@@ -52,7 +52,7 @@ class Character extends Combatant {
   // COMBATANT OVERRIDES
   // ==========================================================
   override get MaxStamina() {
-    return this.CurrentSpiritStance.Stamina + this.CurrentMartialStance.Stamina
+    return 0 //this.CurrentSpiritStance.Stamina + this.CurrentMartialStance.Stamina
   }
 
   override get Size() {

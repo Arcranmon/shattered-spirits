@@ -3,11 +3,9 @@ import { Base } from '@/class'
 
 class Armor extends Base {
   private category_: string
+  private load_: number
   private guard_: number
-  private soak_: number
-  private parry_: string
   private sacrifice_: string
-  private movement_: number
   private durability_: number
   private traits_: string[]
 
@@ -25,9 +23,6 @@ class Armor extends Base {
   get Guard() {
     return this.guard_
   }
-  get Soak() {
-    return this.soak_
-  }
   get Traits() {
     return this.traits_
   }
@@ -40,7 +35,7 @@ class Armor extends Base {
   // FORMATTED GETTERS
   // ==========================================================
   get ArmorSummary() {
-    return '**Armor Effect:** ' + this.guard_ + ' _Guard_, ' + this.soak_ + ' _Soak_, ' + this.movement_ + ' _Move_, ' + this.durability_ + ' _Durability_'
+    return '**Armor:** ' + this.guard_ + ' _Guard_, ' + this.durability_ + ' _Durability_, ' + this.load_ + ' _Load_'
   }
   get HasGuard() {
     return this.guard_ > 0
@@ -48,20 +43,8 @@ class Armor extends Base {
   get GuardHeader() {
     return '**_Guard_:** ' + this.guard_
   }
-  get HasSoak() {
-    return this.soak_ > 0
-  }
-  get SoakHeader() {
-    return '**_Soak_:** ' + this.soak_
-  }
   get DurabilityHeader() {
     return '**Durability:** ' + this.durability_
-  }
-  get HasParry() {
-    return this.parry_.length > 0
-  }
-  get ParryHeader() {
-    return '**Parry:** ' + this.parry_
   }
   get HasTraits() {
     return this.traits_.length > 0
@@ -88,11 +71,9 @@ class Armor extends Base {
   public setArmorData(data: IArmorData): void {
     this.setBaseData(data)
     this.guard_ = data.guard || 0
-    this.soak_ = data.soak || 0
-    this.movement_ = data.movement || 0
+    this.load_ = data.load || 0
     this.durability_ = data.durability || 0
     this.category_ = data.category || ''
-    this.parry_ = data.parry || ''
     this.traits_ = data.traits || []
     this.sacrifice_ = data.sacrifice || ''
   }

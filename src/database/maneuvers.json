@@ -22,10 +22,10 @@
     "class": "Basic"
   },
   {
-    "name": "Rebalance",
-    "desc": "You catch your breath, pushing through disorienting effects.",
+    "name": "Gather",
+    "desc": "You catch your breath, pushing through difficulties.",
     "type": "Action",
-    "effect": "You may either _Recover_, _Refresh_, or change one of your _Stances_.",
+    "effect": "Choose one:\n* Reduce your _Stun_ by 5.\n* _Recover_.\n* Change your _Stance_.",
     "class": "Basic"
   },
   {
@@ -442,23 +442,29 @@
     "class": "General"
   },
   {
-    "name": "Defend",
+    "name": "Parry",
     "desc": "You defend yourself, mitigating an incoming blow.",
     "keywords": ["Defensive"],
     "type": "Reaction",
-    "cost": "1 _Stamina_",
+    "cost": "1 _Momentum_",
     "trigger": "You are Attacked, take Damage, or must _Negate_.",
-    "effect": "_Parry_, either with this _Manuever_ or a _Wielded_ piece of _Equipment_.",
+    "special": "You may choose to instead _Defend_ with a _Wielded_ piece of _Equipment_.",
     "table": [
       ["2-3", "Miss"],
       ["4-6", "Graze"],
       ["7-10", "Hit"],
       ["11-12", "Crit"]
     ],
+    "defend": {
+      "always": "Gain +1 to _Negate_.",
+      "lose": "Gain 2 _Block_.",
+      "tie": "Gain 3 _Block_.",
+      "win": "Gain 3 _Block_.\n\t* 0 _Momentum_: [_Counterattack_] _Graze_ with _Brawl_. Do not gain _Momentum_."
+    },
     "class": "Basic"
   },
   {
-    "name": "Delayed Bla,st",
+    "name": "Delayed Blast",
     "desc": "You focus an explosion, leaving a horrifying mote of flame waiting to detonate.",
     "keywords": ["Enchant"],
     "type": "Gambit",
@@ -537,10 +543,20 @@
     "desc": "You slip away from an incoming attack, avoiding the brunt of the blow.",
     "keywords": ["Defensive", "Evade"],
     "type": "Reaction",
-    "cost": "1 _Stamina_, 2 _Movement_",
+    "cost": "1 _Momentum_, 1 _Movement_",
     "trigger": "You are Attacked and are not _Immobile_.",
-    "effect": "Gain _Resistance_ against the triggering Attack.",
-    "special": "If the triggering Attack was _Avoidable_ this only costs 1 _Movement_.",
+    "defend": {
+      "always": "Decrease the Rank of the triggering Attack by 1 and gain +1 _Reflex_.",
+      "lose": "Gain _Prone_.",
+      "tie": "Gain +1 _Reflex_.",
+      "win": "Gain +2 _Reflex_. You may immediately _Move_ 1 without creating an _Opening_."
+    },
+    "table": [
+      ["2-4", "Miss"],
+      ["5-7", "Graze"],
+      ["8-11", "Hit"],
+      ["12", "Crit"]
+    ],
     "class": "Basic"
   },
   {
@@ -607,7 +623,7 @@
     "name": "Ensnaring Vortex",
     "desc": "You form a defensive vortex, slowing the impact of an attack and potentially redirecting it.",
     "type": "Reaction",
-    "keywords": ["Spirit", "Defensive", "Ward"],
+    "keywords": ["Spirit", "Defensive", "Block"],
     "trigger": "You are Attacked by a _Short_+ Range Attack.",
     "cost": "1 _Stamina_",
     "effect": "Roll a d6, then consult the below chart. If you take no _Damage_ or _Stun_ from the triggering Attack and it was Single-Target you may redirect it; you gain no _Status_ from it and an enemy within _Short_- Range instead becomes the Target of the Attack:",
@@ -1056,11 +1072,39 @@
     "manifest": "Add [_Manifest_]. Cost is instead None. In addition to the normal effect, add [_Glancing_] to the triggering effect."
   },
   {
-    "name": "Gather Momentum",
-    "desc": "You quickly regather yourself after a failed attack, anticipating a future assault.",
+    "name": "Seize Momentum",
+    "desc": "You push forward, seizing an opening from the jaws of defeat.",
     "type": "Gambit",
-    "reqs": "_Graze_-.",
+    "keywords": ["Offensive"],
+    "reqs": "_Graze_- and not a _Counterattack_.",
     "effect": "Gain 2 _Momentum_.",
+    "class": "Basic"
+  },
+  {
+    "name": "Grit Teeth",
+    "desc": "You fight through failure, clearing your mind and catching your breath.",
+    "type": "Gambit",
+    "keywords": ["Defensive"],
+    "reqs": "_Graze_-.",
+    "effect": "Reduce your _Stun_ by 5. You may trigger this before or after resolving the triggering effect.",
+    "class": "Basic"
+  },
+  {
+    "name": "Sacrifice Armor",
+    "desc": "You allow an attack to bite deep into your armor, sacrificing its long-term integrity for a defensive boost.",
+    "type": "Reaction",
+    "trigger": "You are Attacked, take Damage, or must _Negate_.",
+    "keywords": ["Defensive", "Efficient"],
+    "effect": "Reduce the _Durability_ of a piece of _Wielded_ _Equipment_ by 1 and gain its _Sacrifice_ effect against the triggering effect. Any effect granted by the _Sacrifice_ is triggered prior to resolving any _Defend_ roll.",
+    "class": "Basic"
+  },
+  {
+    "name": "Perfect Guard",
+    "desc": "You defend yourself perfectly, creating an opening in your foe.",
+    "type": "Gambit",
+    "keywords": ["Defensive"],
+    "reqs": "_Hit_+.",
+    "effect": "Gain an additional 3 _Block_. You may count all _Block_ as _Guard_ this _Turn_.",
     "class": "Basic"
   },
   {
@@ -1294,6 +1338,7 @@
     "name": "Lethal Strike",
     "desc": "You exploit a stun to the limit, inflicting grave damage on a foe.",
     "type": "Gambit",
+    "keywords": ["Offensive"],
     "reqs": "_Hit_+.",
     "effect": "Deal 4 _Bonus Damage_.",
     "special": "If the target is _Stunned_, instead deal 5 _Bonus Damage_.",
@@ -1544,7 +1589,7 @@
   {
     "name": "Plate Lock",
     "desc": "You solidify the plates of your armor, sacrificing mobility to become unstoppable.",
-    "keywords": ["Ward", "Defensive"],
+    "keywords": ["Block", "Defensive"],
     "type": "Reaction",
     "cost": "2 _Momentum_",
     "trigger": "You are Attacked, take Damage or gain Status.",
@@ -1628,8 +1673,7 @@
     "name": "Raise Guard",
     "desc": "You adopt a defensive stance, warding yourself against harm.",
     "type": "Action",
-    "cost": "1 _Stamina_",
-    "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Ward_.",
+    "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Block_.",
     "class": "Basic"
   },
   {
@@ -2042,8 +2086,9 @@
     "desc": "You build power from flames, scorching the landscape as you empower yourself.",
     "keywords": ["Spirit"],
     "range": "Melee/Short",
-    "type": "Action",
-    "effect": "Gain 1 _Momentum_, then choose:\n* Add [_Ignite_]. Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range, then gain 1 _Momentum_ [_Blaze_].",
+    "type": "Stunt",
+    "cost": "1 _Momentum_",
+    "effect": "Choose one:\n* Add [_Ignite_]. Add _Blazing_ to a _Position_ or _Path_ within Range.\n* Remove an instance of _Fire_ Terrain within Range, then gain 1 _Momentum_ [_Blaze_].",
     "class": "Blaze"
   },
   {
@@ -2124,16 +2169,8 @@
     "desc": "You put your back into a strike, leaving a foe reeling.",
     "type": "Gambit",
     "reqs": "_Martial_ Attack",
-    "effect": "\n* If the triggering Attack _Missed_, repeat the Attack against an _Obstacle_ at the same _Position_ as the Target, dealing +3 Damage. This Attack may only Damage the Obstacle and does not trigger Gambits.\n* If the Attack _Grazed_+, roll on the below chart.",
+    "effect": "If the triggering Attack _Missed_, repeat the Attack against an _Obstacle_ at the same _Position_ as the Target, dealing +3 Damage. Otherwise, deal +2 _Bonus Damage_ and inflict _Push_ 1 [6 _Grit_]/_Prone_ [4 _Grit_/_Reflex_]/_Sundered_ [4 _Reflex_] on one Target.",
     "boost": "2 _Momentum_: Apply this Gambit, even if you did not qualify to use a Gambit on this Attack.",
-    "table": [
-      "Add _Push_ 1 [3 _Grit_] on one Target.",
-      "Deal 1 _Bonus Damage_ and add _Push_ 1 [4 _Grit_] on one Target.",
-      "Deal 1 _Bonus Damage_ and add _Push_ 1 [5 _Grit_]/_Prone_ [3 _Grit_/_Reflex_]/_Sundered_ [3 _Reflex_] on one Target.",
-      "Deal 2 _Bonus Damage_ and add _Push_ 1 [5 _Grit_]/_Prone_ [3 _Grit_/_Reflex_]/_Sundered_ [3 _Reflex_] on one Target.",
-      "Deal 2 _Bonus Damage_ and add _Push_ 1 [6 _Grit_]/_Prone_ [4 _Grit_/_Reflex_]/_Sundered_ [4 _Reflex_] on one Target.",
-      "Deal 3 _Bonus Damage_ and add _Push_ 1 [6 _Grit_]/_Prone_ [6 _Grit_/_Reflex_]/_Sundered_ [6 _Reflex_] on one Target."
-    ],
     "class": "Martial"
   },
   {
