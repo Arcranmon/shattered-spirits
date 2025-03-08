@@ -26,7 +26,7 @@
                     <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Attacks'">
-                    <attack-card :attack="n" :character_creation="character_creation" />
+                    <weapon-card :attack="n" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Armor'">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
@@ -62,7 +62,7 @@
               <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Attacks'">
-              <attack-card :attack="n" :color="card_color" :character_creation="character_creation" />
+              <weapon-card :attack="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Armor'">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
@@ -91,6 +91,9 @@
             <div class="card--box" v-if="job == 'Talent'">
               <talent-card :talent="n" />
             </div>
+            <div class="card--box" v-if="job == 'Arts'">
+              <art-card :art="n" style="height: 100%" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -101,6 +104,7 @@
 import Vue from 'vue'
 import ArchetypeCard from './ArchetypeCard.vue'
 import ArmorCard from './ArmorCard.vue'
+import ArtCard from './ArtCard.vue'
 import AccessoryCard from './AccessoryCard.vue'
 import ManeuverCard from './ManeuverCard.vue'
 import FeatureCard from './FeatureCard.vue'
@@ -109,7 +113,7 @@ import StatusCard from './StatusCard.vue'
 import TalentCard from './TalentCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
-import AttackCard from './AttackCard.vue'
+import WeaponCard from './WeaponCard.vue'
 import SpiritTypeCard from './SpiritTypeCard.vue'
 
 export default Vue.extend({
@@ -175,6 +179,7 @@ export default Vue.extend({
     },
   },
   components: {
+    ArtCard,
     ArchetypeCard,
     ArmorCard,
     AccessoryCard,
@@ -184,7 +189,7 @@ export default Vue.extend({
     StatusCard,
     TechCard,
     TerrainCard,
-    AttackCard,
+    WeaponCard,
     SpiritTypeCard,
     TalentCard,
   },

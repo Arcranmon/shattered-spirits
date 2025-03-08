@@ -2,11 +2,11 @@
   <div>
     <h2>Unarmed Weapons</h2>
     <span v-if="isMobile">
-      <v-expansion-panels style="padding: 3px;">
-        <v-expansion-panel style="background-color: inherit;">
+      <v-expansion-panels style="padding: 3px">
+        <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header>Filters</v-expansion-panel-header>
           <v-expansion-panel-content>
-            <v-row align="center" style="margin-left: 0.5em;">
+            <v-row align="center" style="margin-left: 0.5em">
               <v-col cols="12"><v-select v-model="selectedSpeed" :items="weaponSpeeds" attach label="Weapon Speed" filled outlined></v-select></v-col
               ><v-col cols="12"
                 ><v-select v-model="selectedKeyword" :items="weaponKeywords" attach label="Weapon Keywords" filled outlined></v-select></v-col></v-row
@@ -21,26 +21,26 @@
         label="Selected Unarmed Weapon"
         filled
         outlined
-        style="margin-left: 0.5em; margin-right: 0.5em;"
+        style="margin-left: 0.5em; margin-right: 0.5em"
       ></v-select
-      ><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em; margin-left: auto; margin-right: auto;"
+      ><weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em; margin-left: auto; margin-right: auto"
     /></span>
     <span v-else>
-      <v-row align="center" style="margin-left: 0.5em;">
+      <v-row align="center" style="margin-left: 0.5em">
         <v-col cols="2"><v-select v-model="selectedSpeed" :items="weaponSpeeds" attach label="Weapon Speed" filled outlined></v-select></v-col
         ><v-col cols="2"><v-select v-model="selectedKeyword" :items="weaponKeywords" attach label="Weapon Keywords" filled outlined></v-select></v-col
       ></v-row>
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
-            ><div v-for="weapon in weapons" style="width: 100%;" v-bind:key="weapon.Name">
+            ><div v-for="weapon in weapons" style="width: 100%" v-bind:key="weapon.Name">
               <v-btn @click="selectedWeapon = weapon" class="button--style" depressed tile block>
                 <img class="image--icon-size" :src="weapon.Icon" />{{ weapon.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em;" :key="selectedWeapon.Name" /></v-col> </v-row
+        <v-col> <weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -51,11 +51,11 @@ import { getModule } from 'vuex-module-decorators'
 import { CharacterManagementStore } from '@/store'
 import { Character } from '@/class'
 import { Weapon } from '@/class'
-import AttackCard from '@/components/cards/AttackCard'
+import WeaponCard from '@/components/cards/WeaponCard'
 
 export default Vue.extend({
   name: 'unarmed-weapons',
-  components: { AttackCard },
+  components: { WeaponCard },
   data() {
     return {
       selectedWeapons: ['Unarmed'],

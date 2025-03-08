@@ -1,5 +1,6 @@
 declare interface IBaseData {
   name: string
+  category?: string
   table?: Array<string>
   desc: string
   effect: string
@@ -10,6 +11,11 @@ declare interface IBaseData {
 declare interface IArchetypeData extends IBaseData {
   maneuver: string
   bonuses: IBonusesData
+}
+
+declare interface IArtData extends IBaseData {
+  abilities: IAbilityData[]
+  chart?: IChartData
 }
 
 declare interface IBonusesData {
@@ -23,20 +29,10 @@ declare interface IBonusesData {
 
 declare interface IArmorData extends IBaseData {
   durability: number
-  category?: string
   guard: number
   load: number
   sacrifice: string
   traits: string[]
-}
-
-declare interface IAttackData extends IManeuverData {
-  category?: string
-  chart: IChartData
-  rank: string
-  tier: string
-  charged_profile?: IChargedEffect
-  speed: string
 }
 
 declare interface ICharDisciplineData {
@@ -119,7 +115,7 @@ declare interface IDisciplineData {
 }
 
 declare interface IAccessoryData extends IBaseData {
-  weight: number
+  load: number
 }
 
 declare interface IGlossaryData {
@@ -170,21 +166,20 @@ declare interface IAbilityData extends IBaseData {
   move?: number
   range?: string
   reqs?: string
+  type?: string
+  trigger?: string
+  speed?: number
   target?: string
-  chart?: IChartData
   material?: string
 }
 
 declare interface IManeuverData extends IAbilityData {
   manifest?: string
-  trigger?: string
-  type?: string
   defend?: IDefendData
 }
 
 declare interface ITechData extends IAbilityData {
   category: string
-  speed: string
   type: string
   weapon?: string
 }
@@ -286,11 +281,10 @@ declare interface ITraitData extends IBaseData {
   cost: number
 }
 
-declare interface IWeaponData extends IAttackData {
+declare interface IWeaponData extends IArtData {
   durability?: number
-  itemtype?: string
   keywords: Array<string>
   hands: number
-  weight: number
-  sacrifice?: string
+  load: number
+  reqs: string
 }

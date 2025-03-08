@@ -76,13 +76,13 @@ class Character extends Combatant {
   }
 
   override get MaxMovement() {
-    if (this.Weight <= this.MaxLoad) return 3
-    if (this.Weight <= this.MaxLoad * 2) return 2
-    if (this.Weight <= this.MaxLoad * 3) return 1
+    if (this.Load <= this.MaxLoad) return 3
+    if (this.Load <= this.MaxLoad * 2) return 2
+    if (this.Load <= this.MaxLoad * 3) return 1
   }
 
   override get Jump() {
-    if (this.Weight <= this.MaxLoad) return 1
+    if (this.Load <= this.MaxLoad) return 1
     return 0
   }
 
@@ -136,15 +136,15 @@ class Character extends Combatant {
     return this.disciplines_
   }
 
-  get Weight() {
-    var weight = 0 //this.equipped_armor_.Weight
+  get Load() {
+    var load = 0 //this.equipped_armor_.Load
     for (var weapon of this.weapons_) {
-      weight += store.getters.getWeapon(weapon).Weight
+      load += store.getters.getWeapon(weapon).Load
     }
     for (var armor of this.armor_) {
-      weight += store.getters.getArmor(armor).Weight
+      load += store.getters.getArmor(armor).Load
     }
-    return weight
+    return load
   }
 
   override get MaxHealth() {
@@ -395,7 +395,7 @@ class Character extends Combatant {
   }
 
   public CanAddWeapon(weapon: Weapon) {
-    return 16 - this.Weight >= weapon.Weight
+    return 16 - this.Load >= weapon.Load
   }
 
   // TODO: Update when character advancement is a thing.

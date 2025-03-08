@@ -6,10 +6,7 @@
       <br />
     </div>
     <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered
-      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Actions</h4> </v-tab><v-tab> <h4>Attacks</h4> </v-tab
-      ><v-tab> <h4>Stunts</h4> </v-tab><v-tab> <h4>Reactions</h4> </v-tab
-      ><v-tab>
-        <h4>Gambits</h4>
+      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab>
       </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="character-tab-content">
@@ -23,59 +20,26 @@
       </v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stance')" /><show-cards
-          :inputs="this.$store.getters.getStancesFromList(['Aggressive Stance', 'Balanced Stance', 'Defensive Stance'])"
+          :inputs="this.$store.getters.getStancesFromList(['Aggressive Stance', 'Defensive Stance', 'Mobile Stance'])"
           job="Stances"
           :collapse="false"
-        /><show-cards :inputs="[$store.getters.getStance('Mobile Stance')]" job="Stances" :collapse="false" :cols="1" v-bind:class="use_single" />
-      </v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" /><show-cards
-          :inputs="[this.$store.getters.getManeuver('Gather'), this.$store.getters.getManeuver('Fight'), this.$store.getters.getManeuver('Raise Guard')]"
-          job="Maneuvers"
-          :collapse="false"
-        />
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Action')" /><show-cards
-          :inputs="[this.$store.getters.getManeuver('Sprint'), this.$store.getters.getManeuver('Spirit Summon'), $store.getters.getManeuver('Partnership')]"
-          job="Maneuvers"
-          :collapse="false"
-        />
-      </v-tab-item>
+        /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
         <show-cards
-          :inputs="[this.$store.getters.getAttack('Brawl'), $store.getters.getAttack('Weapon Attack')]"
-          job="Attacks"
+          :inputs="[
+            this.$store.getters.getArt('Shift'),
+            this.$store.getters.getArt('Manifest Spirit'),
+            this.$store.getters.getArt('Breather'),
+            this.$store.getters.getArt('Evade'),
+            this.$store.getters.getArt('Seize Opening'),
+            this.$store.getters.getArt('Perfect Guard'),
+            this.$store.getters.getArt('Martial Arts'),
+            this.$store.getters.getArt('Interact'),
+          ]"
+          job="Arts"
           :collapse="false"
-          v-bind:class="use_duo"
-          :cols="2"
-      /></v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stunt')" />
-        <show-cards
-          :inputs="[$store.getters.getManeuver('Draw/Stow'), $store.getters.getManeuver('Retreat'), $store.getters.getManeuver('Command Spirit')]"
-          job="Maneuvers"
-          :collapse="false"
-        />
-      </v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Reaction')" />
-        <show-cards
-          :inputs="[this.$store.getters.getManeuver('Opportunity Attack'), $store.getters.getManeuver('Parry'), $store.getters.getManeuver('Dodge')]"
-          job="Maneuvers"
-          :collapse="false"
-        /><show-cards :inputs="[$store.getters.getManeuver('Sacrifice Armor')]" job="Maneuvers" :collapse="false" :cols="1" v-bind:class="use_single" />
-      </v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Gambit')" /><show-cards
-          :inputs="[$store.getters.getManeuver('Lethal Strike'), $store.getters.getManeuver('Perfect Guard'), $store.getters.getManeuver('Seize Momentum')]"
-          job="Maneuvers"
-          :collapse="false" /><show-cards
-          :inputs="[$store.getters.getManeuver('Grit Teeth')]"
-          job="Maneuvers"
-          :collapse="false"
-          :cols="1"
-          v-bind:class="use_single" /></v-tab-item
-    ></v-tabs-items>
+      /></v-tab-item></v-tabs-items>
   </div>
 </template>
 

@@ -41,7 +41,7 @@
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em"
       ></v-select>
-      <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em" /></div
+      <div><weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em" /></div
     ></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em">
@@ -77,7 +77,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row
+        <v-col> <weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -88,11 +88,11 @@ import { getModule } from 'vuex-module-decorators'
 import { CharacterManagementStore } from '@/store'
 import { Character } from '@/class'
 import { Weapon } from '@/class'
-import AttackCard from '@/components/cards/AttackCard'
+import WeaponCard from '@/components/cards/WeaponCard'
 
 export default Vue.extend({
   name: 'weapon',
-  components: { AttackCard },
+  components: { WeaponCard },
   data() {
     return {
       weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],

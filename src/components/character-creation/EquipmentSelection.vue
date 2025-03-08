@@ -13,7 +13,7 @@
     <div class="centered--formatted">
       <v-row
         ><v-col :cols="4" style="align-items: center; justify-content: center; display: flex"
-          ><display-tooltip-text :string="'With your current Weight of ' + character.Weight + ' your character has the following movement chart:'"
+          ><display-tooltip-text :string="'With your current Load of ' + character.Load + ' your character has the following movement chart:'"
         /></v-col>
         <v-col :cols="8"><movement-card :movement="character.MoveChart" :key="character.MoveChart.Name" /></v-col
       ></v-row>
@@ -92,7 +92,7 @@
                 </v-btn></v-row
               >
               <v-row style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%" justify="center">
-                <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
+                <weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
             ></v-col> </v-row
         ></v-tab-item>
       </v-tabs-items></div
@@ -104,14 +104,14 @@ import Vue from 'vue'
 import { store } from '@/store'
 import { Character, Weapon } from '@/class'
 import ArmorCard from '@/components/cards/ArmorCard.vue'
-import AttackCard from '@/components/cards/AttackCard.vue'
+import WeaponCard from '@/components/cards/WeaponCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import ArmorSelectionText from '@/database/text_files/character_creation/choosing_your_armor.txt'
 import EquipmentSelectionText from '@/database/text_files/character_creation/choosing_your_equipment.txt'
 import WeaponSelectionText from '@/database/text_files/character_creation/choosing_your_weapons.txt'
 export default Vue.extend({
   name: 'equipment-selection',
-  components: { AttackCard, ArmorCard, ShowCards },
+  components: { WeaponCard, ArmorCard, ShowCards },
   props: {
     character: {
       type: Character,

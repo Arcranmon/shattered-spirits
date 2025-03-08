@@ -10,6 +10,7 @@
     <custom-button to="/equipment">Equipment</custom-button> <br />
     <!-- <custom-button to="/character-creator">Character Creator (WIP)</custom-button> <br /> --->
     <custom-button to="/character-manager">Characters (WIP)</custom-button> <br />
+    <custom-button to="/glossary">Glossary</custom-button> <br />
   </div>
 </template>
 

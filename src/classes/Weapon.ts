@@ -1,17 +1,21 @@
 import { store } from '@/store'
-import { Attack } from '@/class'
+import { Art } from '@/class'
 
-class Weapon extends Attack {
+class Weapon extends Art {
   private durability_: number
   private hands_: number
-  private weight_: number
-  private sacrifice_: string
+  private load_: number
+  private reqs_: string
 
   get HasDurability() {
     return this.durability_ != 0
   }
   get Durability() {
     return this.durability_
+  }
+  get CategoryHeader() {
+    if (this.Category == 'Natural' || this.Category == 'Improvised') return this.category_ + ' Weapon'
+    return this.category_ + ' Weapon'
   }
   get ClassHeader() {
     return this.HandsPhrase + this.CategoryHeader
@@ -25,19 +29,13 @@ class Weapon extends Attack {
     if (this.hands_ == 1) return '_One-Handed_ '
     else return '_Two-Handed_ '
   }
-  get Weight() {
-    return this.weight_
-  }
-  get HasSacrifice() {
-    return this.sacrifice_ != ''
-  }
-  get SacrificeHeader() {
-    return '**Sacrifice:** ' + this.sacrifice_
+  get Load() {
+    return this.load_
   }
   get TraitsHeader() {
     var traits_string = '**Traits:** '
-    if (this.HasWeight) {
-      traits_string += this.WeightHeader
+    if (this.HasLoad) {
+      traits_string += this.LoadHeader
       if (this.HasDurability) traits_string += ', '
     }
     if (this.HasDurability) {
@@ -45,13 +43,13 @@ class Weapon extends Attack {
     }
     return traits_string
   }
-  get HasWeight() {
-    return this.Weight > 0
+  get HasLoad() {
+    return this.Load > 0
   }
-  get WeightHeader() {
+  get LoadHeader() {
     if (this.Category == 'Unarmed') return ''
-    if (this.Weight == 0) return ''
-    return 'Weight ' + this.weight_
+    if (this.Load == 0) return ''
+    return 'Load ' + this.load_
   }
   public get Icon() {
     if (this.Category == 'Error') return ''
@@ -59,6 +57,12 @@ class Weapon extends Attack {
   }
   public get KeywordsHeader() {
     return '_' + this.keywords_.join('_, _') + '_'
+  }
+  public get HasReqs() {
+    return this.reqs_ != ''
+  }
+  public get ReqsHeader() {
+    return '**Requirements:** ' + this.reqs_
   }
 
   // ==========================================================
@@ -72,11 +76,11 @@ class Weapon extends Attack {
   }
 
   public setWeaponData(data: IWeaponData): void {
-    this.setAttackData(data)
+    this.setArtData(data)
     this.durability_ = data.durability || 0
     this.hands_ = data.hands || 0
-    this.weight_ = data.weight || 0
-    this.sacrifice_ = data.sacrifice || ''
+    this.load_ = data.load || 0
+    this.reqs_ = data.reqs || ''
   }
 }
 export default Weapon

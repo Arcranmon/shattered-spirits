@@ -27,7 +27,7 @@
       <v-row
         ><v-col :cols="num_cols" v-for="stance in discipline.Tier1Stances" :key="stance.Name"><stance-card :stance="stance" /></v-col>
         <v-col :cols="num_cols" v-for="tech in discipline.Tier1Techniques" :key="tech.Name"><tech-card :tech="tech" /></v-col
-        ><v-col :cols="num_cols" v-for="attack in discipline.Tier1Attacks" :key="attack.Name"><attack-card :attack="attack" /></v-col
+        ><v-col :cols="num_cols" v-for="attack in discipline.Tier1Attacks" :key="attack.Name"><weapon-card :attack="attack" /></v-col
         ><v-col :cols="num_cols" v-for="man in discipline.Tier1Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
       ></v-row>
     </div>
@@ -44,7 +44,7 @@
       </div>
       <v-row
         ><v-col :cols="num_cols" v-for="stance in discipline.Tier2Stances" :key="stance.Name"><stance-card :stance="stance" /></v-col>
-        <v-col :cols="num_cols" v-for="attack in discipline.Tier2Attacks" :key="attack.Name"><attack-card :attack="attack" /></v-col
+        <v-col :cols="num_cols" v-for="attack in discipline.Tier2Attacks" :key="attack.Name"><weapon-card :attack="attack" /></v-col
         ><v-col :cols="num_cols" v-for="tech in discipline.Tier2Techniques" :key="tech.Name"><tech-card :tech="tech" /></v-col
         ><v-col :cols="num_cols" v-for="man in discipline.Tier2Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
       ></v-row>
@@ -59,7 +59,7 @@
 
 <script>
 import Vue from 'vue'
-import AttackCard from '@/components/cards/AttackCard.vue'
+import WeaponCard from '@/components/cards/WeaponCard.vue'
 import ManeuverCard from '@/components/cards/ManeuverCard.vue'
 import TechCard from '@/components/cards/TechCard.vue'
 import StanceCard from '@/components/cards/StanceCard.vue'
@@ -87,7 +87,7 @@ export default Vue.extend({
     ManeuverCard,
     TechCard,
     StanceCard,
-    AttackCard,
+    WeaponCard,
   },
   data() {
     return {

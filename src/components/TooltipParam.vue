@@ -59,13 +59,13 @@
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <attack-card :attack="this.$store.getters.getAttack(input)" :format_text="true" /></v-menu></span
+        <weapon-card :attack="this.$store.getters.getAttack(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isWeapon(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <attack-card :attack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
+        <weapon-card :attack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isTalent(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
@@ -87,10 +87,10 @@ import StatusCard from './cards/StatusCard.vue'
 import TechCard from './cards/TechCard.vue'
 import TalentCard from './cards/TalentCard.vue'
 import TerrainCard from './cards/TerrainCard.vue'
-import AttackCard from './cards/AttackCard.vue'
+import WeaponCard from './cards/WeaponCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ArmorCard, ManeuverCard, FeatureCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, AttackCard },
+  components: { ArmorCard, ManeuverCard, FeatureCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, WeaponCard },
   props: {
     input: {
       type: String,

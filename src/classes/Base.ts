@@ -5,6 +5,7 @@ import { store } from '@/store'
 
 class Base {
   protected name_: string
+  protected category_: string
   protected desc_: string
   protected effect_: string
   protected keywords_: Array<string>
@@ -25,6 +26,9 @@ class Base {
   // ==========================================================
   public get Desc() {
     return this.desc_
+  }
+  get Category() {
+    return this.category_
   }
   public get Effect() {
     return this.effect_
@@ -76,6 +80,7 @@ class Base {
 
   public setBaseData(data: IBaseData): void {
     this.desc_ = data.desc || ''
+    this.category_ = data.category || 'MISSING'
     this.effect_ = data.effect || ''
     this.keywords_ = data.keywords || []
     this.name_ = data.name || ''

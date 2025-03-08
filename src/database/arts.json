@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Shift",
+    "category": "Basic",
+    "desc": "You dash forward, covering ground across the battlefield.",
+    "abilities": [
+      {
+        "class": "Mobility",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_.",
+        "boost": "1 _Momentum_: Repeat the Effect. You may use this _Boost_ twice."
+      },
+      {
+        "class": "Mobility",
+        "type": "Enhancement",
+        "cost": "2 _Momentum_",
+        "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_."
+      }
+    ]
+  },
+  {
+    "name": "Evade",
+    "category": "Basic",
+    "desc": "The best way to survive on the battlefield is to simply avoid where the danger is.",
+    "abilities": [
+      {
+        "class": "Mobility",
+        "type": "Enhancement",
+        "cost": "2 _Movement_",
+        "reqs": "You are in an _Engagement_.",
+        "effect": "Leave your current _Engagement_ without creating an [_Opening_]. If you are _Occupying_ _Terrain_, you must leave it as well."
+      },
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_, 1 _Movement_",
+        "trigger": "You are Attacked and are not _Immobile_.",
+        "effect": "Make a _Defense Roll_, with _Disadvantage_ if the triggering Attack was not _Melee_. Decrease the Rank of the triggering Attack by 1 and gain +1 Reflex, and gain an additional effect based on the result:\n* **Lose**: Gain _Prone_.\n* **Tie:** Gain +1 _Reflex_.\n* **Win:** Gain +2 _Reflex_. You may leave your current _Engagement_ and _Feature_."
+      }
+    ],
+    "table": [
+      ["2-4", "Miss"],
+      ["5-7", "Graze"],
+      ["8-11", "Hit"],
+      ["12", "Crit"]
+    ]
+  },
+  {
+    "name": "Martial Arts",
+    "category": "Basic",
+    "desc": "You utilize unarmed combat, striking and defending with precision.",
+    "keywords": ["Natural", "Crush"],
+    "abilities": [
+      {
+        "class": "Light",
+        "type": "Attack",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "effect": "Attack a Target within Range. If used in a _Phase_ later than this Art's listed _Speed_ choose one additional effect per _Phase_ later:\n* Add +1 _Bonus Stun_. You may select this option multiple times.\n* On a _Hit_+, add _Push_ 1 [4 _Grit_], _Prone_/_Grabbed_ [3 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_.\n* On a _Hit_+, increase the save to _Negate_ by 1. You may select this option multiple times."
+      },
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "You are Attacked.",
+        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_.\n* **Always:** Gain a +1 to _Negate_.\n* **Lose**: Gain 1 _Block_.\n* **Tie:** Gain 2 _Block_.\n* **Win:** Gain 2 _Block_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
+      }
+    ],
+    "chart": {
+      "stun": [0, 1, 3, 4],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": ["+1 _Momentum_", "None", "None", "None"]
+    }
+  },
+  {
+    "name": "Manifest Spirit",
+    "category": "Basic",
+    "desc": "You call forth your spirit, manifesting their physical form to aid you.",
+    "abilities": [
+      {
+        "class": "Utility",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "range": "Spirit's _Summon_ Range.",
+        "effect": "_Summon_ your _Spirit_ within a valid _Arena_ within Range or, if they are already _Summoned_, _Recall_ them."
+      }
+    ]
+  },
+  {
+    "name": "Perfect Guard",
+    "category": "Basic",
+    "desc": "Raised fists or a shield are enough to dampen hits ever so slightly.",
+    "abilities": [
+      {
+        "class": "Defensive",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Block_."
+      },
+      {
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "Hit+ on the _Defense Roll_.",
+        "effect": "Gain an additional 2 _Block_. You may count all _Block_ as _Guard_ this Turn."
+      }
+    ]
+  },
+  {
+    "name": "Breather",
+    "category": "Basic",
+    "desc": "Battle is no place for weakness; you grit your teeth, catch your breath, and push on.",
+    "abilities": [
+      {
+        "class": "Utility",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "effect": "_Recover_ or reduce your _Stun_ by 5."
+      },
+      {
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "Graze- on the _Defense Roll_.",
+        "effect": "Reduce your _Stun_ by 4. You may trigger this before or after resolving the triggering effect."
+      },
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "Graze- on the _Attack Roll_.",
+        "effect": "Gain 2 _Momentum_."
+      }
+    ]
+  },
+  {
+    "name": "Seize Opening",
+    "category": "Basic",
+    "desc": "Anything on the battlefield is a potentially opening, if you are bold enough to seize it.",
+    "abilities": [
+      {
+        "class": "Offensive",
+        "type": "Reaction",
+        "trigger": "A hostile creature creates an _Opening_.",
+        "cost": "None",
+        "effect": "Make a Single-Target Attack against the triggering creature, paying all costs as normal."
+      },
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "Hit+ on the _Attack Roll_.",
+        "effect": "Deal 4 _Bonus_ _Damage_. If the target is _Stunned_, instead deal 5  _Bonus_ _Damage_."
+      }
+    ]
+  },
+  {
+    "name": "Interact",
+    "category": "Basic",
+    "desc": "Sometimes you need to do things more complicated than just sticking enemies with the pointy end of a stick.",
+    "abilities": [
+      {
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "Special",
+        "effect": "Resolve the Interaction effect of the _Terrain_ you are _Occupying_, paying its listed _Cost_."
+      },
+      {
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "0 _Momentum_",
+        "effect": "_Wield_ or _Use_ a piece of _Equipment_ on your _Belt_, or place a _Wielded_ piece of _Equipment_ on your _Belt_. You may use this option at any time, even if it is not your _Turn_."
+      },
+      {
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "1 _Momentum_",
+        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Engagement_.",
+        "boost": "1 _Movement_: If you are not in an _Engagement_ you may instead resolve the Effect with any piece of _Equipment_ not in an _Engagement_ in your _Arena_."
+      },
+      {
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "1 _Momentum_",
+        "effect": "_Wield_ or _Use_ a piece of _Equipped_ _Equipment_, or _Equip_ a _Wielded_ piece of _Equipment_."
+      },
+      {
+        "class": "Utility",
+        "type": "Action",
+        "cost": "2 _Momentum_",
+        "effect": "Create an [_Opening_]. _Wield_ or _Use_ a piece of _Equipment_ in your _Pack_, or place a _Wielded_ piece of _Equipment_ in your _Pack_."
+      }
+    ]
+  }
+]

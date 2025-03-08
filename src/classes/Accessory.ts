@@ -2,7 +2,7 @@ import { store } from '@/store'
 import { Base } from '@/class'
 
 class Accessory extends Base {
-  private weight_: number
+  private load_: number
 
   public constructor(name) {
     super(name)
@@ -11,15 +11,15 @@ class Accessory extends Base {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  get Weight() {
-    return this.weight_
+  get Load() {
+    return this.load_
   }
 
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  get WeightHeader() {
-    if (this.weight_ != 0) return 'Weight ' + this.weight_
+  get LoadHeader() {
+    if (this.load_ != 0) return 'Load ' + this.load_
   }
 
   // ==========================================================
@@ -33,7 +33,7 @@ class Accessory extends Base {
 
   public setAccessoryData(data: IAccessoryData): void {
     this.setBaseData(data)
-    this.weight_ = data.weight || 0
+    this.load_ = data.load || 0
   }
 }
 export default Accessory

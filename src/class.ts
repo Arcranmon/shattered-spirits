@@ -2,12 +2,12 @@
 import Combatant from './classes/Combatant'
 import Defenses from './classes/Defenses'
 import Base from './classes/Base'
+import Art from './classes/Art'
 import Bonuses from './classes/Bonuses'
 import Maneuver from './classes/Maneuvers'
 import Ability from './classes/Ability'
 import Armor from './classes/Armor'
 import Archetype from './classes/Archetype'
-import Attack from './classes/Attack'
 import SpiritType from './classes/SpiritType'
 import Spirit from './classes/Spirit'
 import Character from './classes/Character'
@@ -27,7 +27,6 @@ export {
   Ability,
   Archetype,
   Armor,
-  Attack,
   Base,
   Bonuses,
   Character,
@@ -47,4 +46,5 @@ export {
   Technique,
   Terrain,
   Weapon,
+  Art,
 }

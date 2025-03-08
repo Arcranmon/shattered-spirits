@@ -3,58 +3,80 @@
     "name": "Blaze Rod",
     "category": "Rod",
     "desc": "A staff specialized in creating and controlling crackling flames.",
-    "tier": "Balanced",
     "keywords": ["Fire"],
-    "reqs": "This _Weapon_ may only be used by a creature with _Novice Blazecraft_.",
-    "special": "A creature may only use _Momentum_ [_Blaze_] granted by this Weapon and abilities using this Weapon while _Wielding_ it. To track this, place _Momentum_ gained in this way on this Weapon's card. All effects using this Weapon may be treated as if they have the [_Blaze_] Type.",
-    "charged_profile": {
-      "set_up": "Choose a Target within _Range_ and gain 2 _Momentum_ [_Blaze_]. While _Charging_, gain _Resistance_ (_Fire_, _Ice_).",
-      "resolution": "Resolve this Attack against the _Target_, adding _Alight_ [5 _Reflex_] on a _Hit_ or _Alight_ [6 _Reflex_] on a _Crit_."
-    },
-    "speed": 2,
-    "defend": {
-      "always": "Gain _Resistance_ (_Fire_, _Ice_)",
-      "lose": "Gain 1 _Block_.",
-      "tie": "Gain 2 _Block_.",
-      "win": "Gain 2 _Block_.\n\t* 2 _Momentum_: Deal 2 Damage to all targets at your _Position_, and add [_Ignite_]"
-    },
-    "range": "Short/Medium",
+    "reqs": "A creature must have _Novice Blazecraft_ to use this _Weapon_.",
     "chart": {
-      "damage": [0, 2, 5, 6],
+      "damage": [0, 2, 6, 7],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
-      "status": ["+2 _Momentum_", "+1 _Momentum_ [_Blaze_]", "+1 _Momentum_[_Blaze_]", "+2 _Momentum_ [_Blaze_]"]
+      "status": ["+1 _Momentum_", "None", "None", "None"]
     },
-    "weight": 3,
+    "load": 3,
     "hands": 2,
-    "durability": 1
+    "durability": 1,
+    "abilities": [
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "speed": 2,
+        "cost": "3 _Momentum_",
+        "range": "Short/Medium",
+        "effect": "Attack a Target within Range. Place 1 _Momentum_ on any [_Blaze_] Art or Technique. On a _Crit_, place an additional _Momentum_.",
+        "analysis_notes": { "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3, 3] }
+      },
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "keywords": ["Charged"],
+        "speed": 1,
+        "cost": "3 _Momentum_",
+        "range": "Short/Medium",
+        "effect": "Place 2 _Momentum_ on a _Blaze_ _Art_ or _Technique_ and become _Charging_. While _Charging_, gain _Resistance_ (_Fire_, _Ice_). At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ then Attack the Target, adding _Alight_ [5 _Reflex_] on a _Hit_ or _Alight_ [6 _Reflex_] on a _Crit_."
+      },
+      {
+        "class": "Utility",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "effect": "Place 2 _Momentum_ on a _Blaze_ _Art_ or _Technique_."
+      }
+    ]
   },
   {
     "name": "Iron Dagger",
     "category": "Blade",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Slash_/_Stab", "Metal", "Small", "_Brawling_"],
-    "speed": 1,
-    "range": "Melee/Short_ (_Thrown_)",
+    "keywords": ["Slash_/_Stab", "Metal", "Small"],
     "chart": {
-      "damage": [0, 2, 3, 5],
+      "damage": [0, 3, 4, 6],
       "roll": ["2-3", "4-5", "6-9", "10-12"],
       "status": ["+1 _Momentum_"]
     },
-    "weight": 1,
+    "load": 1,
     "hands": 1,
     "durability": 1,
-    "tier": "Light",
-    "defend": {
-      "always": "+1 _Reflex_, and gain 1 _Block_ if the Attack was _Light_.",
-      "lose": "Gain 1 _Block_,",
-      "tie": "Gain 1 _Block_.\n\t* 1 _Momentum_: [_Counterattack_] If the Attacker is in _Melee_ Range, _Graze_ them.",
-      "win": "Gain 1 _Block_.\n\t* 1 _Momentum_: [_Counterattack_] If the Attacker is in _Melee_ Range, _Hit_ them."
-    },
-    "analysis_notes": {
-      "fudge": -0.222,
-      "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
-      "range": "Melee"
-    }
+    "abilities": [
+      {
+        "class": "Light",
+        "type": "Attack",
+        "speed": 1,
+        "cost": "2 _Momentum_",
+        "range": "Melee_/_Short_ (_Thrown_)",
+        "effect": "Attack a Target within Range.",
+        "analysis_notes": {
+          "fudge": -0.222,
+          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
+          "range": "Melee"
+        }
+      },
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Heavy_ or _Ranged_.\n* **Always:** Gain +1 _Reflex_.\n* **Lose**: None.\n* **Tie:** Gain 1 _Block_.\n* **Win:** Gain 1 _Block_.",
+        "special": "If the trigger Attack was _Light_, gain +1 _Block_.",
+        "boost": "1 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+      }
+    ]
   },
   {
     "name": "Iron Shortsword",
@@ -78,7 +100,7 @@
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [5 _Guard_/_Reflex_]", "_Bleeding_ [5 _Guard_/_Reflex_]", "_Bleeding_ [5 _Guard_/_Reflex_]"]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1,
     "durability": 2,
     "analysis_notes": { "fudge": -1.1667, "notes": "Expanded crit range and gaining Momentum on attack." }
@@ -103,7 +125,7 @@
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [6 _Guard_/_Reflex_]", "_Bleeding_ [6 _Guard_/_Reflex_]", "_Bleeding_ [6 _Guard_/_Reflex_]"]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1,
     "durability": 3,
     "analysis_notes": { "fudge": -0.1667, "notes": "Expanded crit range" },
@@ -141,7 +163,7 @@
         "_Bleeding_, _Exposed_ [7 _Guard_/_Reflex_]"
       ]
     },
-    "weight": 4,
+    "load": 4,
     "hands": 2,
     "durability": 4,
     "tier": "Heavy",
@@ -151,7 +173,7 @@
     "name": "Iron Handaxe",
     "category": "Axe",
     "tier": "Light",
-    "desc": "A lightweight axe that weighs enough to punish a foe's defenses while allowing for swift strikes.",
+    "desc": "A lightload axe that weighs enough to punish a foe's defenses while allowing for swift strikes.",
     "speed": 2,
     "parry": "Gain _Stable_ 1.",
     "range": [
@@ -166,7 +188,7 @@
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "", "", "_Bleeding_, _Exposed_ [4 _Grit_/_Reflex_]", "_Bleeding_, _Exposed_ [4 _Grit_/_Reflex_]"]
     },
-    "weight": 1,
+    "load": 1,
     "hands": 1,
     "durability": 8
   },
@@ -194,7 +216,7 @@
       "tie": "Gain 2 _Block_.",
       "win": "Gain 2 _Block_.\n\t* 2 _Momentum_:  [_Counterattack_] If the Attacker is in _Melee_ Range, _Graze_ them."
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1,
     "durability": 2,
     "analysis_notes": { "fudge": -0.25, "notes": "Bane" }
@@ -220,7 +242,7 @@
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "", "", "_Bleeding_, _Exposed_ [7 _Grit_/_Reflex_]", "_Bleeding_, _Exposed_ [7 _Grit_/_Reflex_]"]
     },
-    "weight": 4,
+    "load": 4,
     "hands": 2,
     "durability": 10,
     "analysis_notes": {
@@ -231,7 +253,7 @@
     "name": "Iron Mace",
     "category": "Blunt",
     "tier": "Balanced",
-    "desc": "A simple weapon with a heavy, weighted head.",
+    "desc": "A simple weapon with a heavy, loaded head.",
     "charged_profile": "Deal +2 Damage on a _Graze_+ and add [_Overwhelming_ 1, _Pierce_ 1].",
     "parry": "Gain the following benefits:\n* Gain 1 _Instant Guard_.\n* Reduce any _Vulnerable_ inflicted by 1.",
     "speed": 4,
@@ -245,7 +267,7 @@
       "roll": ["Miss", "Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "_Reeling_ 1", "_Reeling_ 1", "_Reeling_ 1", "_Reeling_ 1", "_Reeling_ 2", "_Reeling_ 2"]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1,
     "durability": 9
   },
@@ -281,7 +303,7 @@
         "_Push_ 2, _Reeling_ 2"
       ]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1,
     "durability": 10
   },
@@ -309,7 +331,7 @@
       "roll": ["2-4", "5-6", "7-10", "11-12"],
       "status": ["+3 _Momentum_", "None", "_Push_ 1, _Reeling_ [5 _Grit_]", "_Push_ 1, _Reeling_ [6 _Grit_]"]
     },
-    "weight": 3,
+    "load": 3,
     "hands": 2,
     "durability": 2,
     "analysis_notes": { "fudge": 0.25, "notes": "Lower Durability." }
@@ -344,7 +366,7 @@
         "_Push_ 2, _Reeling_ 3"
       ]
     },
-    "weight": 4,
+    "load": 4,
     "hands": 2,
     "durability": 11,
     "analysis_notes": {
@@ -419,7 +441,7 @@
       ]
     },
     "parry": "Gain 1 _Instant Guard_.",
-    "weight": 0,
+    "load": 0,
     "hands": 1,
     "analysis_notes": {
       "fudge": -1
@@ -454,7 +476,7 @@
       ]
     },
     "parry": "Gain 2 _Instant Guard_.",
-    "weight": 0,
+    "load": 0,
     "hands": 2,
     "analysis_notes": {
       "fudge": -1
@@ -493,7 +515,7 @@
         "_Impaired_ [4 _Grit_/_Guard_]"
       ]
     },
-    "weight": 1,
+    "load": 1,
     "hands": 1,
     "durability": 1,
     "analysis_notes": {
@@ -533,7 +555,7 @@
         "_Impaired_ [6 _Grit_/_Guard_]"
       ]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1,
     "durability": 1
   },
@@ -541,7 +563,7 @@
     "name": "Iron Pike",
     "category": "Lance",
     "tier": "Heavy",
-    "desc": "A powerful weapon with unparalleled reach and the weight to deal heavy damage to foes.",
+    "desc": "A powerful weapon with unparalleled reach and the load to deal heavy damage to foes.",
     "speed": 3,
     "charged_profile": "On a _Graze_+, deal +2 Damage. Make this _Attack_ in a _Self_-Range _Line_ 4 and add [_Pierce_ 1].",
     "range": [{ "category": "Melee", "value": 3, "special": "_Close Range_ 1" }],
@@ -566,7 +588,7 @@
         "_Impaired_ [7 _Grit_/_Guard_]"
       ]
     },
-    "weight": 4,
+    "load": 4,
     "hands": 2,
     "durability": 8,
     "analysis_notes": {
@@ -590,7 +612,7 @@
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 2,
     "durability": 6
   },
@@ -611,7 +633,7 @@
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
-    "weight": 4,
+    "load": 4,
     "hands": 2,
     "durability": 8
   },
@@ -633,7 +655,7 @@
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
     },
-    "weight": 5,
+    "load": 5,
     "hands": 2,
     "durability": 9
   },
@@ -642,15 +664,12 @@
     "category": "Sling",
     "desc": "A simple weapon with a windup that pierces through many defenses.",
     "speed": 2,
-    "tier": "Balanced",
     "keywords": ["Crush", "Stone", "Fragile"],
+    "special": "Only the ammunition used for this Attack is _Stone_; the weapon itself is _Organic_.",
     "charged_profile": {
       "set_up": "This Attacks' Range becomes _Medium_/_Long_. Choose a Target within _Range_.",
       "resolution": "Resolve this Attack against the _Target_. Add [_Pierce_ 1] and deal +3 Damage."
     },
-    "effect": "Gain 1 _Momentum_.",
-    "special": "Only the ammunition used for this Attack is _Stone_; the weapon itself is _Organic_.",
-    "boost": "1 _Momentum_: This is instead a _Light_ Attack. Do not resolve the Effect.",
     "defend": {
       "always": "None.",
       "lose": "None.",
@@ -659,15 +678,33 @@
     },
     "range": "Short/Medium",
     "chart": {
-      "stun": [0, 0, 1, 2],
-      "damage": [0, 1, 3, 4],
+      "stun": [0, 1, 3, 5],
+      "damage": [0, 2, 5, 7],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
-      "status": ["+1 _Momentum_", "None", "None", "_Dazed_ 1"]
+      "status": ["+1 _Momentum_", "None", "None", "None"]
     },
-    "weight": 1,
+    "abilities": [
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "speed": 2,
+        "cost": "3 _Momentum_",
+        "range": "Short/Medium",
+        "effect": "Attack a Target within Range."
+      },
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "keywords": ["Charged"],
+        "speed": 1,
+        "cost": "2 _Momentum_",
+        "range": "Medium/Long",
+        "effect": "Choose a Target within _Range_, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack the Target, adding [_Pierce_ 1] and dealing +3 Damage on a _Graze_+."
+      }
+    ],
+    "load": 1,
     "hands": 1,
-    "durability": 1,
-    "analysis_notes": { "fudge": -0.72 }
+    "durability": 1
   },
   {
     "name": "Heavy Sling",
@@ -687,7 +724,7 @@
       "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 1", "_Dazed_ 2", "_Dazed_ 2"]
     },
-    "weight": 1,
+    "load": 1,
     "hands": 1,
     "durability": 5
   },
@@ -710,7 +747,7 @@
       "roll": ["Miss", "Graze", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "_Push_ 1", "_Push_ 1", "_Push_ 1", "_Push_ 1", "_Push_ 1", "_Push_ 1", "_Push_ 1", "_Push_ 1", "_Push_ 2", "_Push_ 2"]
     },
-    "weight": 2,
+    "load": 2,
     "hands": 1
   },
   {
@@ -731,7 +768,7 @@
       "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": ["", "", "", "", "", "", "", "_Push_ [4 _Grit_]", "_Push_ [4 _Grit_]", "_Push_ [5 _Grit_]", "_Push_ [5 _Grit_]"]
     },
-    "weight": 3,
+    "load": 3,
     "hands": 1
   },
   {
@@ -756,7 +793,7 @@
       "roll": ["2", "3-5", "5-10", "11-12"],
       "status": ["+2 _Momentum", "_Engaged_, _Impaired_ [4 _Grit_]", "_Engaged_, _Impaired_ [5 _Grit_]", "_Engaged_, _Impaired_ [6 _Grit_]"]
     },
-    "weight": 3,
+    "load": 3,
     "hands": 1
   },
   {
@@ -790,7 +827,7 @@
         "_Push_ 2, _Impaired_ [6 _Grit_]"
       ]
     },
-    "weight": 6,
+    "load": 6,
     "hands": 1
   },
   {

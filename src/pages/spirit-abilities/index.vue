@@ -93,7 +93,7 @@
             outlined
             style="margin-left: 0.5em; margin-right: 0.5em"
           ></v-select>
-          <div><attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em" /></div
+          <div><weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="margin-left: 2em; margin-right: 2em" /></div
         ></span>
         <span v-else>
           <v-row align="center" style="margin-left: 0.5em; margin-top: 1em">
@@ -110,7 +110,7 @@
                 </div>
               </v-btn-toggle></v-col
             >
-            <v-col> <attack-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row></span
+            <v-col> <weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row></span
       ></v-tab-item>
     </v-tabs-items>
   </div>
@@ -126,7 +126,7 @@ import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritTypeCard from '@/components/cards/SpiritTypeCard.vue'
-import AttackCard from '@/components/cards/AttackCard'
+import WeaponCard from '@/components/cards/WeaponCard'
 import { store } from '@/store'
 export default Vue.extend({
   name: 'spirit-abilities',
@@ -142,7 +142,7 @@ export default Vue.extend({
   },
   components: {
     ShowCards,
-    AttackCard,
+    WeaponCard,
     SpiritTypeCard,
   },
   computed: {

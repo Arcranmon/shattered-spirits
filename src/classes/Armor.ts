@@ -2,7 +2,6 @@ import { store } from '@/store'
 import { Base } from '@/class'
 
 class Armor extends Base {
-  private category_: string
   private load_: number
   private guard_: number
   private sacrifice_: string
@@ -17,9 +16,6 @@ class Armor extends Base {
   // GETTERS
   // ==========================================================
 
-  get Category() {
-    return this.category_
-  }
   get Guard() {
     return this.guard_
   }
@@ -73,7 +69,6 @@ class Armor extends Base {
     this.guard_ = data.guard || 0
     this.load_ = data.load || 0
     this.durability_ = data.durability || 0
-    this.category_ = data.category || ''
     this.traits_ = data.traits || []
     this.sacrifice_ = data.sacrifice || ''
   }

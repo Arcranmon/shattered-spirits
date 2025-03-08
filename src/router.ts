@@ -13,6 +13,8 @@ import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
 import Terrain from '@/pages/combat/terrain/index.vue'
 import Features from '@/pages/combat/features/index.vue'
 
+import Glossary from '@/pages/glossary/index.vue'
+
 import CharacterCreation from '@/pages/character-creation/index.vue'
 import CharacterCreator from '@/pages/character-creator/index.vue'
 
@@ -96,6 +98,14 @@ const r = new Router({
       name: 'armor',
       meta: {
         title: 'Armor',
+      },
+    },
+    {
+      path: '/glossary',
+      component: Glossary,
+      name: 'glossary',
+      meta: {
+        title: 'Glossary',
       },
     },
     {

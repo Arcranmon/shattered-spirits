@@ -99,7 +99,6 @@ def get_status_damage(status_string, glancing):
     no_save_damage = 0
     # TODO: Add something about no-save
     for status in statuses: 
-        print(status)
         if status == 'None': continue        
         if('+' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
@@ -123,7 +122,7 @@ def get_data(database):
     elif(database == "Weapon"):
         f = open('.\src\database\items\weapons.json')
     elif(database == "Attack"):
-        f = open('.\src\database\\attacks.json')
+        f = open('.\src\database\\arts.json')
 
     return json.load(f)
 
@@ -186,7 +185,7 @@ def estimate_damage(attack, glancing, print_stats):
     diff_speed = 0
     stun_scale = 0.8 # Stun is worth 80% of a Damage
     
-    expected_damage = [7.0, 9.0, 11.0, 13.0]
+    expected_damage = [0, 2, 4, 6]
                 
     if("chart" in attack):
         roll_chart = attack["chart"]["roll"]
@@ -203,39 +202,28 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             status_chart = attack["chart"]["status"]
         roll_chart = attack["chart"]["roll"]
-                    
-    if(type(attack["speed"]) is int or len(attack["speed"]) == 1):
-        speed = int(attack["speed"])
-    else:
-        speed = int(attack["speed"][0])
-    if "cost" in attack:
-        cost = int(attack["cost"][0])
-    if "tier" in attack: 
-        lvh = attack["tier"]
 
-    if("analysis_notes" in attack):
-        cost = cost + attack["analysis_notes"].get("fudge", 0)
-        expected_targets = attack["analysis_notes"].get("expected_targets", 1)
-        if("bonus_damage" in attack["analysis_notes"]):
-            if(isinstance(attack["analysis_notes"]["bonus_damage"], float) or isinstance(attack["analysis_notes"]["bonus_damage"], int)):
-                bonus_damage = [attack["analysis_notes"]["bonus_damage"]]*11
+    ability = attack["abilities"][0]           
+    if(type(ability["speed"]) is int or len(ability["speed"]) == 1):
+        speed = int(ability["speed"])
+    else:
+        speed = int(ability["speed"][0])
+    if "cost" in ability:
+        cost = int(ability["cost"][0])
+
+    if("analysis_notes" in ability):
+        analysis_notes = ability["analysis_notes"]
+        cost = cost + analysis_notes.get("fudge", 0)
+        expected_targets = analysis_notes.get("expected_targets", 1)
+        if("bonus_damage" in analysis_notes):
+            if(isinstance(analysis_notes["bonus_damage"], float) or isinstance(analysis_notes["bonus_damage"], int)):
+                bonus_damage = [analysis_notes["bonus_damage"]]*11
                 print(bonus_damage)
             else:
                 print("test")
-                bonus_damage = attack["analysis_notes"]["bonus_damage"]
-        override_range = attack["analysis_notes"].get("range", "")
-        diff_speed = attack["analysis_notes"].get("speed", 0)
-    
-        
-    if("hands" in attack and attack["hands"] == 2):
-        cost += 1
-
-    if lvh == "Light":        
-        expected_damage = [x * 0.5 for x in expected_damage]
-    if lvh == "Heavy":        
-        expected_damage = [x * 1.5 for x in expected_damage]
-    elif attack_class == TECHNIQUE:
-        expected_damage = [x * 1.5 for x in expected_damage]
+                bonus_damage = analysis_notes["bonus_damage"]
+        override_range = analysis_notes.get("range", "")
+        diff_speed = analysis_notes.get("speed", 0)
 
     speed_string = "Speed:                  1      2      3      4   "
     if diff_speed == 0:
@@ -250,7 +238,7 @@ def estimate_damage(attack, glancing, print_stats):
     keyword_bonus = 0
 
 
-    for keyword in attack.get("keywords", []):       
+    for keyword in ability.get("keywords", []):       
         keyword = keyword.replace('_', '')
         split_keywords = keyword.split(' ')
         if not split_keywords[0] in keyword_modifiers:
@@ -261,7 +249,7 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
 
-    attack_ranges = attack["range"].replace('_', '').split('/')
+    attack_ranges = ability["range"].replace('_', '').split('/')
     attack_range = attack_ranges[-1]
     if "Thrown" in attack_range:
         attack_range = attack_ranges[-2]
@@ -283,11 +271,11 @@ def estimate_damage(attack, glancing, print_stats):
     # Adjust for expected targets.
     range_expected_damage = [x / expected_targets for x in range_expected_damage]
 
-    expected_damage = 0 
+    target_damage = 0 
     if diff_speed == 0:
-        expected_damage = range_expected_damage[speed-1]
+        target_damage = range_expected_damage[speed-1]
     else:
-        expected_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
+        target_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
 
     # TODO: Add a roll map check.
     roll_map = 11 * [0]
@@ -317,12 +305,12 @@ def estimate_damage(attack, glancing, print_stats):
 
     if(print_stats):
         print(colored("Speed:                  " + str(speed), 'white'))
-        print(colored("Expected Damage:        " +  "{:.3f}".format(expected_damage), 'blue'))
+        print(colored("Expected Damage:        " +  "{:.3f}".format(target_damage), 'blue'))
         print(colored("Straight Attack:        " +  "{:.3f}".format(straight_damage), 'white'))
         print(colored("Advantage Attack:       " +  "{:.3f}".format(advantage_damage), 'green'))
         print(colored("Disadvantage Attack:    " +  "{:.3f}".format(disadvantage_damage), 'red'))
     if(print_stats):
-        print("\033[1mExpected Damage Difference: " + "{:.3f}".format(straight_damage-expected_damage) + "\033[0m") 
+        print("\033[1mExpected Damage Difference: " + "{:.3f}".format(straight_damage-target_damage) + "\033[0m") 
 
     return diff
 
