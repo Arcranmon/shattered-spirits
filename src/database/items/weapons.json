@@ -6,7 +6,7 @@
     "keywords": ["Fire"],
     "reqs": "A creature must have _Novice Blazecraft_ to use this _Weapon_.",
     "chart": {
-      "damage": [0, 2, 6, 7],
+      "damage": [0, 2, 4, 5],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
       "status": ["+1 _Momentum_", "None", "None", "None"]
     },
@@ -21,7 +21,7 @@
         "cost": "3 _Momentum_",
         "range": "Short/Medium",
         "effect": "Attack a Target within Range. Place 1 _Momentum_ on any [_Blaze_] Art or Technique. On a _Crit_, place an additional _Momentum_.",
-        "analysis_notes": { "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 3, 3] }
+        "analysis_notes": { "bonus_damage": [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2] }
       },
       {
         "class": "Balanced",
@@ -47,7 +47,7 @@
     "desc": "A small blade capable of sudden assaults and being thrown.",
     "keywords": ["Slash_/_Stab", "Metal", "Small"],
     "chart": {
-      "damage": [0, 3, 4, 6],
+      "damage": [0, 1, 3, 4],
       "roll": ["2-3", "4-5", "6-9", "10-12"],
       "status": ["+1 _Momentum_"]
     },
@@ -109,26 +109,43 @@
     "name": "Iron Longsword",
     "category": "Blade",
     "desc": "A sword that can easily be used in one or both hands and grants unparalleled flexibility.",
-    "keywords": ["Hand-and-a-Half"],
-    "speed": 3,
-    "charged_profile": {
-      "set_up": "Choose a Target, making note of any remaining Movement you have. While _Charging_ this Weapon is _Occupied_ and you gain the _Parry_ effect of this weapon.",
-      "resolution": "Move [_Rush_] up to half the Movement you had remaining, then Attack the Target. On a _Graze_+ deal +4 _Damage_."
-    },
-    "parry": "[_Block_] Gain +1 _Reflex_ and 1 _Ward_.",
-    "range": [{ "category": "Melee", "value": 1 }],
+    "keywords": ["Slash_/_Stab", "Metal", "Hand-and-a-Half"],
     "chart": {
-      "damage_tier": "Slash/Stab",
-      "on_miss": "+2 _Momentum_",
-      "material": "Metal",
-      "damage": [0, 0, 4, 4, 5, 5, 6, 7, 8, 8, 8],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [6 _Guard_/_Reflex_]", "_Bleeding_ [6 _Guard_/_Reflex_]", "_Bleeding_ [6 _Guard_/_Reflex_]"]
+      "damage": [0, 6, 8, 11],
+      "roll": ["2-3", "4-5", "6-9", "10-12"],
+      "status": ["+2 _Momentum_", "None", "None", "None"]
     },
+    "abilities": [
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "speed": 3,
+        "cost": "4 _Momentum_",
+        "range": "Melee_",
+        "effect": "Attack a Target within Range.",
+        "analysis_notes": { "fudge": -0.222, "notes": "Expanded crit range" }
+      },
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "keywords": ["Charged"],
+        "speed": 3,
+        "cost": "2 _Momentum_",
+        "range": "Melee_",
+        "effect": "Choose a Target within _Range_, expend up to 2 _Movement_, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_, then expend _Movement_ if you wish, up to the amount you spent when you became _Charging_. If you are within _Range_, Attack the  Target, dealing +4 Damage on a _Graze_+."
+      },
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "2 _Momentum_",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Reflex_ and 1 _Block_.\n* **Lose**: None.\n* **Tie:** Gain 1 _Block_.\n* **Win:** Gain 1 _Block_.",
+        "special": "If the trigger Attack was _Light_, gain +1 _Block_.",
+        "boost": "2 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+      }
+    ],
     "load": 2,
     "hands": 1,
     "durability": 3,
-    "analysis_notes": { "fudge": -0.1667, "notes": "Expanded crit range" },
     "tier": "Balanced"
   },
   {
@@ -668,7 +685,7 @@
     "special": "Only the ammunition used for this Attack is _Stone_; the weapon itself is _Organic_.",
     "charged_profile": {
       "set_up": "This Attacks' Range becomes _Medium_/_Long_. Choose a Target within _Range_.",
-      "resolution": "Resolve this Attack against the _Target_. Add [_Pierce_ 1] and deal +3 Damage."
+      "resolution": "Resolve this Attack against the _Target_ if they are within _Range_. Add [_Pierce_ 1] and deal +3 Damage."
     },
     "defend": {
       "always": "None.",

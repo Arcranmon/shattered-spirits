@@ -6,8 +6,7 @@
       <br />
     </div>
     <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered
-      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab>
-      </v-tab></v-tabs
+      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="character-tab-content">
       <v-tab-item>
@@ -23,7 +22,7 @@
           :inputs="this.$store.getters.getStancesFromList(['Aggressive Stance', 'Defensive Stance', 'Mobile Stance'])"
           job="Stances"
           :collapse="false"
-        /></v-tab-item>
+      /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
         <show-cards
@@ -38,8 +37,8 @@
             this.$store.getters.getArt('Interact'),
           ]"
           job="Arts"
-          :collapse="false"
-      /></v-tab-item></v-tabs-items>
+          :collapse="false" /></v-tab-item
+    ></v-tabs-items>
   </div>
 </template>
 
