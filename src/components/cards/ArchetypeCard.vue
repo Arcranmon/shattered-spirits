@@ -8,7 +8,7 @@
     <div class="card--content">
       <div><display-tooltip-text :string="archetype.EffectHeader" /></div>
       <div v-if="archetype.HasBonuses"><display-tooltip-text :string="archetype.BonusesHeader" /></div>
-      <div><display-tooltip-text :string="archetype.ManeuverHeader" /></div>
+      <div><display-tooltip-text :string="archetype.ArtHeader" /></div>
     </div>
     <br />
     <div class="desc--box" v-if="archetype.Desc.length > 0" style="font-style: italic">{{ archetype.Desc }}<br /></div>

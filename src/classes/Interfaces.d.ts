@@ -9,7 +9,7 @@ declare interface IBaseData {
 }
 
 declare interface IArchetypeData extends IBaseData {
-  maneuver: string
+  art: string
   bonuses: IBonusesData
 }
 
@@ -31,7 +31,7 @@ declare interface IArmorData extends IBaseData {
   durability: number
   guard: number
   load: number
-  sacrifice: string
+  abilities: IAbilityData[]
   traits: string[]
 }
 

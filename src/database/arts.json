@@ -30,7 +30,7 @@
         "type": "Enhancement",
         "cost": "2 _Movement_",
         "reqs": "You are in an _Engagement_.",
-        "effect": "Leave your current _Engagement_ without creating an [_Opening_]. If you are _Occupying_ _Terrain_, you must leave it as well."
+        "effect": "Remove _Engaged_ without creating an [_Opening_]. If you are _Occupying_ _Terrain_, you must leave it as well."
       },
       {
         "class": "Defensive",
@@ -70,7 +70,7 @@
       }
     ],
     "chart": {
-      "stun": [0, 1, 3, 4],
+      "stun": [0, 1, 2, 4],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
       "status": ["+1 _Momentum_", "None", "None", "None"]
     }
@@ -89,6 +89,38 @@
         "effect": "_Summon_ your _Spirit_ within a valid _Arena_ within Range or, if they are already _Summoned_, _Recall_ them."
       }
     ]
+  },
+  {
+    "name": "Overwhelming Strength",
+    "desc": "You unleash your strength, decimating the terrain and flinging creatures away.",
+    "abilities": [
+      {
+        "class": "Light",
+        "type": "Attack",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "effect": "Inflict _Push_ 1 [5 _Grit_] on a Target within Range. This Attack is always treated as a _Hit_.",
+        "boost": "1 _Momentum_: Add an additional Target. You may repeat this _Boost_."
+      },
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Miss_ with a _Martial_ Attack.",
+        "effect": "Repeat the Attack against an _Obstacle_ at the same _Position_ as the Target, dealing +3 Damage.",
+        "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
+      },
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "Noane",
+        "reqs": "_Graze_+ with a _Martial_ Attack.",
+        "effect": "Deal +1 _Bonus Damage_ and inflict _Push_ 1 [6 _Grit_]/_Prone_ [4 _Grit_/_Reflex_]/_Sundered_ [4 _Reflex_] on one Target.",
+        "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
+      }
+    ],
+    "category": "Martial"
   },
   {
     "name": "Perfect Guard",
@@ -181,8 +213,7 @@
         "class": "Utility",
         "type": "Enhancement",
         "cost": "1 _Momentum_",
-        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Engagement_.",
-        "boost": "1 _Movement_: If you are not in an _Engagement_ you may instead resolve the Effect with any piece of _Equipment_ not in an _Engagement_ in your _Arena_."
+        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
       },
       {
         "class": "Utility",

@@ -15,11 +15,10 @@
     </div>
     <div class="card--content">
       <div v-if="armor.Category != 'Layered Armor'"><display-tooltip-text :string="armor.ArmorSummary" /></div>
-      <div v-if="armor.HasParry"><display-tooltip-text :string="armor.ParryHeader" /></div>
       <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>
       <div v-if="armor.HasSpecial"><display-tooltip-text :string="armor.SpecialHeader" /></div>
-      <div v-if="armor.HasSacrifice"><display-tooltip-text :string="armor.SacrificeHeader" /></div>
     </div>
+    <ability-widget v-for="(ability, index) in armor.Abilities" :ability="ability" :useDivider="true" />
     <div class="desc--box" v-if="armor.Desc.length > 0" style="font-style: italic">{{ armor.Desc }}<br /></div>
   </div>
 </template>
@@ -28,9 +27,11 @@
 import Vue from 'vue'
 import { Armor } from '@/class'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
+import AbilityWidget from '@/components/AbilityWidget.vue'
 
 export default Vue.extend({
   name: 'armor-card',
+  components: { AbilityWidget },
   props: {
     armor: {
       type: Armor,

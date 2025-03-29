@@ -20,10 +20,7 @@
           <display-tooltip-text :string="'**Special:** ' + npc.SpecialText" />
           <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
           <div v-for="trait in npc.Traits" :key="trait">
-            <display-tooltip-text
-              :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))"
-              :decorate="false"
-            /></div></v-col
+            <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + '**'" :decorate="false" /></div></v-col
       ></v-row>
       <v-row no-gutters></v-row><br />
     </div>

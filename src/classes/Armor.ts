@@ -1,12 +1,12 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Ability, Base } from '@/class'
 
 class Armor extends Base {
   private load_: number
   private guard_: number
-  private sacrifice_: string
   private durability_: number
   private traits_: string[]
+  protected abilities_: Ability[] = []
 
   public constructor(name) {
     super(name)
@@ -15,6 +15,9 @@ class Armor extends Base {
   // ==========================================================
   // GETTERS
   // ==========================================================
+  get Abilities() {
+    return this.abilities_
+  }
 
   get Guard() {
     return this.guard_
@@ -48,12 +51,6 @@ class Armor extends Base {
   get TraitsHeader() {
     return '**Traits:** _' + this.traits_.join('_, _') + '_'
   }
-  get HasSacrifice() {
-    return this.sacrifice_.length > 0
-  }
-  get SacrificeHeader() {
-    return '**_Sacrifice_:** ' + this.sacrifice_
-  }
 
   // ==========================================================
   // SERIALIZATION
@@ -70,7 +67,11 @@ class Armor extends Base {
     this.load_ = data.load || 0
     this.durability_ = data.durability || 0
     this.traits_ = data.traits || []
-    this.sacrifice_ = data.sacrifice || ''
+    if (data.abilities) {
+      for (var ability of data.abilities) {
+        this.abilities_.push(Ability.Deserialize(ability))
+      }
+    }
   }
 }
 export default Armor

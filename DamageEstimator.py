@@ -5,7 +5,7 @@ import argparse
 import OrphanFinder
 
 # Momentum is 'worth' this much
-momentum_value = 2
+momentum_value = 1.5
 
 status_multipliers = {
     "Airborne": 4,
@@ -185,7 +185,7 @@ def estimate_damage(attack, glancing, print_stats):
     diff_speed = 0
     stun_scale = 0.8 # Stun is worth 80% of a Damage
     
-    expected_damage = [0, 2, 4, 6]
+    expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
                 
     if("chart" in attack):
         roll_chart = attack["chart"]["roll"]

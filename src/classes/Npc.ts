@@ -71,7 +71,7 @@ class Npc extends Combatant {
   }
 
   public get Attacks() {
-    return store.getters.getAttacksFromList(this.npc_data_.attacks)
+    return
   }
 
   public get Class() {

@@ -54,18 +54,18 @@
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <armor-card :armor="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isAttack(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <weapon-card :attack="this.$store.getters.getAttack(input)" :format_text="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isWeapon(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <weapon-card :attack="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
+    ><span v-else-if="this.$store.getters.isArt(input)" attach
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
+        /></template>
+        <art-card :art="this.$store.getters.getArt(input)" /></v-menu></span
     ><span v-else-if="this.$store.getters.isTalent(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
@@ -80,6 +80,7 @@
 import Vue from 'vue'
 import { store } from '@/store'
 import ArmorCard from './cards/ArmorCard.vue'
+import ArtCard from './cards/ArtCard.vue'
 import ManeuverCard from './cards/ManeuverCard.vue'
 import FeatureCard from './cards/FeatureCard.vue'
 import StanceCard from './cards/StanceCard.vue'
@@ -90,7 +91,7 @@ import TerrainCard from './cards/TerrainCard.vue'
 import WeaponCard from './cards/WeaponCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ArmorCard, ManeuverCard, FeatureCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, WeaponCard },
+  components: { ArmorCard, ArtCard, ManeuverCard, FeatureCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, WeaponCard },
   props: {
     input: {
       type: String,

@@ -73,7 +73,7 @@
         "type": "Reaction",
         "cost": "1 _Momentum_",
         "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Heavy_ or _Ranged_.\n* **Always:** Gain +1 _Reflex_.\n* **Lose**: None.\n* **Tie:** Gain 1 _Block_.\n* **Win:** Gain 1 _Block_.",
-        "special": "If the trigger Attack was _Light_, gain +1 _Block_.",
+        "special": "If the triggering Attack was _Light_, gain +1 _Block_.",
         "boost": "1 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
       }
     ]
@@ -110,25 +110,46 @@
     "category": "Blade",
     "desc": "A sword that can easily be used in one or both hands and grants unparalleled flexibility.",
     "keywords": ["Hand-and-a-Half"],
-    "speed": 3,
-    "charged_profile": {
-      "set_up": "Choose a Target, making note of any remaining Movement you have. While _Charging_ this Weapon is _Occupied_ and you gain the _Parry_ effect of this weapon.",
-      "resolution": "Move [_Rush_] up to half the Movement you had remaining, then Attack the Target. On a _Graze_+ deal +4 _Damage_."
-    },
-    "parry": "[_Block_] Gain +1 _Reflex_ and 1 _Ward_.",
     "range": [{ "category": "Melee", "value": 1 }],
     "chart": {
-      "damage_tier": "Slash/Stab",
-      "on_miss": "+2 _Momentum_",
-      "material": "Metal",
-      "damage": [0, 0, 4, 4, 5, 5, 6, 7, 8, 8, 8],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [6 _Guard_/_Reflex_]", "_Bleeding_ [6 _Guard_/_Reflex_]", "_Bleeding_ [6 _Guard_/_Reflex_]"]
+      "damage": [0, 6, 8, 12],
+      "roll": ["2-3", "4-5", "6-9", "10-12"],
+      "status": ["+2 _Momentum_", "None", "None", "None"]
     },
+    "abilities": [
+      {
+        "class": "Light",
+        "type": "Attack",
+        "speed": 3,
+        "cost": "4 _Momentum_",
+        "range": "Melee_",
+        "effect": "Attack a Target within Range.",
+        "analysis_notes": {
+          "fudge": -0.222,
+          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
+          "range": "Melee"
+        }
+      },
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "keywords": ["Charged"],
+        "speed": 2,
+        "cost": "2 _Momentum_",
+        "range": "Melee/Short",
+        "effect": "Choose a Target within Range, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and take a _Turn_, which may only be used to become _Engaged_ with the Target. If you end this _Turn_ _Engaged_ with the Target you may immediately Attack them, dealing +4 _Bonus Damage_ on a _Graze_+."
+      },
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "2 _Momentum_",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Reflex_ and +1 _Block_.\n* **Lose**: None.\n* **Tie:** Gain an additional +1 _Block_.\n* **Win:** Gain an additional +2 _Block_.",
+        "boost": "2 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+      }
+    ],
     "load": 2,
     "hands": 1,
     "durability": 3,
-    "analysis_notes": { "fudge": -0.1667, "notes": "Expanded crit range" },
     "tier": "Balanced"
   },
   {
@@ -834,9 +855,7 @@
     "name": "Fangs",
     "category": "Natural",
     "desc": "A natural weapon for fangs, mandibles, or pincers.",
-    "tier": "Balanced",
     "keywords": ["Natural", "Stab/Crush"],
-    "speed": 3,
     "charged_profile": {
       "set_up": "[_Committed_] Make an Attack against a _Target_, dealing half Damage. If the Target is not _Grabbed_ by this Weapon after this, do not become _Charging_, and _Charging_ immediately ends if the _Grab_ does.",
       "resolution": "Deal Damage again, dealing +3 _Bonus Damage_ and adding [_Pierce_ 1]. Inflict _Sundered_ 1 [6 _Grit_], but you must target the creature's _Armor_."
@@ -848,6 +867,32 @@
       "roll": ["2-4", "5-6", "7-10", "11-12"],
       "status": ["+2 _Momentum_", "_Grabbed_ [3 _Grit_/_Reflex_]", "_Grabbed_ [4 _Grit_/_Reflex_]", "_Grabbed_ [5 _Grit_/_Reflex_]"]
     },
+    "abilities": [
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "speed": 3,
+        "cost": "4 _Momentum_",
+        "range": "Melee_",
+        "effect": "Attack a Target within Range."
+      },
+      {
+        "class": "Balanced",
+        "type": "Attack",
+        "keywords": ["Charged"],
+        "speed": 2,
+        "cost": "2 _Momentum_",
+        "range": "Melee/Short",
+        "effect": "Choose a Target within Range, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and take a _Turn_, which may only be used to become _Engaged_ with the Target. If you end this _Turn_ _Engaged_ with the Target you may immediately Attack them, dealing +4 _Bonus Damage_ on a _Graze_+."
+      },
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "2 _Momentum_",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Reflex_ and +1 _Block_.\n* **Lose**: None.\n* **Tie:** Gain an additional +1 _Block_.\n* **Win:** Gain an additional +2 _Block_.",
+        "boost": "2 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+      }
+    ],
     "hands": 0
   },
   {
