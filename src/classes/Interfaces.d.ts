@@ -9,7 +9,7 @@ declare interface IBaseData {
 }
 
 declare interface IArchetypeData extends IBaseData {
-  maneuver: string
+  art: string
   bonuses: IBonusesData
 }
 
@@ -27,11 +27,16 @@ declare interface IBonusesData {
   load: number
 }
 
-declare interface IArmorData extends IBaseData {
+declare interface IEquipmentData extends IBaseData {
   durability: number
-  guard: number
   load: number
-  sacrifice: string
+  wear: number
+  abilities: IAbilityData[]
+}
+
+declare interface IArmorData extends IEquipmentData {
+  guard: number
+  soak: number
   traits: string[]
 }
 
@@ -130,29 +135,26 @@ declare interface INpcCombatData extends ICombatantData {
 }
 
 declare interface INpcData {
-  actions: Array<string>
+  arts?: Array<string>
+  armor: string
   move: number
   jump: number
-  attacks: Array<string>
   class: string
   desc: string
   durability?: number
   Health: number
-  gambits?: Array<string>
   guard?: number
   max_stun: number
   momentum_gain?: number
   name: string
   npc_type: string
   pattern: string
-  reactions: Array<string>
   role: string
   size: string
   special?: string
   defenses: IDefenseData
   stances?: Array<string>
   subtype: string
-  stunts: Array<string>
   traits?: Array<string>
   techniques: Array<string>
   weapons: Array<string>
@@ -199,6 +201,7 @@ declare interface IRangeData {
 
 declare interface IRespiteData {
   momentum_gain: number
+  stun_clear: number
   conditional_momentum: string
   special: string
 }
@@ -281,10 +284,7 @@ declare interface ITraitData extends IBaseData {
   cost: number
 }
 
-declare interface IWeaponData extends IArtData {
-  durability?: number
-  keywords: Array<string>
+declare interface IWeaponData extends IEquipmentData {
   hands: number
-  load: number
   reqs: string
 }

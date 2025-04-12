@@ -1,11 +1,9 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Ability, Equipment } from '@/class'
 
-class Armor extends Base {
-  private load_: number
+class Armor extends Equipment {
   private guard_: number
-  private sacrifice_: string
-  private durability_: number
+  private soak_: number
   private traits_: string[]
 
   public constructor(name) {
@@ -19,6 +17,9 @@ class Armor extends Base {
   get Guard() {
     return this.guard_
   }
+  get Soak() {
+    return this.soak_
+  }
   get Traits() {
     return this.traits_
   }
@@ -30,29 +31,24 @@ class Armor extends Base {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  get ArmorSummary() {
-    return '**Armor:** ' + this.guard_ + ' _Guard_, ' + this.durability_ + ' _Durability_, ' + this.load_ + ' _Load_'
-  }
+
   get HasGuard() {
     return this.guard_ > 0
   }
   get GuardHeader() {
     return '**_Guard_:** ' + this.guard_
   }
-  get DurabilityHeader() {
-    return '**Durability:** ' + this.durability_
+  get HasSoak() {
+    return this.soak_ > 0
+  }
+  get SoakHeader() {
+    return '**_Soak_:** ' + this.soak_
   }
   get HasTraits() {
     return this.traits_.length > 0
   }
   get TraitsHeader() {
     return '**Traits:** _' + this.traits_.join('_, _') + '_'
-  }
-  get HasSacrifice() {
-    return this.sacrifice_.length > 0
-  }
-  get SacrificeHeader() {
-    return '**_Sacrifice_:** ' + this.sacrifice_
   }
 
   // ==========================================================
@@ -65,12 +61,10 @@ class Armor extends Base {
   }
 
   public setArmorData(data: IArmorData): void {
-    this.setBaseData(data)
+    this.setEquipmentData(data)
     this.guard_ = data.guard || 0
-    this.load_ = data.load || 0
-    this.durability_ = data.durability || 0
+    this.soak_ = data.soak || 0
     this.traits_ = data.traits || []
-    this.sacrifice_ = data.sacrifice || ''
   }
 }
 export default Armor

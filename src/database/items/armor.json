@@ -6,8 +6,19 @@
     "load": 1,
     "keywords": ["Organic"],
     "guard": 1,
-    "sacrifice": "Gain +2 _Guard_.",
-    "desc": "Basic armor, covering only the most vital areas on your body."
+    "soak": 2,
+    "wear": 5,
+    "desc": "Basic armor, covering only the most vital areas on your body.",
+    "abilities": [
+      {
+        "name": "Sacrifice Armor",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "None",
+        "trigger": "You are Attacked.",
+        "effect": "Gain +2 _Guard_. Immediately make a _Wear_ roll for this Armor at _Disadvantage_."
+      }
+    ]
   },
   {
     "name": "Medium Armor",
@@ -16,7 +27,17 @@
     "durability": 2,
     "load": 3,
     "guard": 1,
-    "sacrifice": "Gain +2 _Guard_.",
+    "wear": 6,
+    "abilities": [
+      {
+        "name": "Sacrifice Armor",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "None",
+        "trigger": "You are Attacked.",
+        "effect": "Gain +2 _Guard_. Immediately make a _Wear_ roll for this Armor at _Disadvantage_."
+      }
+    ],
     "desc": "Standard armor, striking a balance between load and durability."
   },
   {
@@ -26,7 +47,17 @@
     "durability": 3,
     "load": 6,
     "guard": 1,
-    "sacrifice": "Gain +2 _Guard_.",
+    "wear": 5,
+    "abilities": [
+      {
+        "name": "Sacrifice Armor",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "None",
+        "trigger": "You are Attacked.",
+        "effect": "Gain +2 _Guard_. Immediately make a _Wear_ roll for this Armor at _Disadvantage_."
+      }
+    ],
     "desc": "Heavy armor, sacrificing mobility for additional effects."
   },
   {
@@ -42,7 +73,16 @@
     "category": "Layered Armor",
     "keywords": ["Metal"],
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Slash_ Damage.",
-    "sacrifice": "Gain _Resistance_ against _Slash_ Damage."
+    "abilities": [
+      {
+        "name": "Sacrifice Armor",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "None",
+        "trigger": "You are Attacked.",
+        "effect": "Gain +2 _Guard_. Immediately make a _Wear_ roll for this Armor at _Disadvantage_."
+      }
+    ]
   },
   {
     "name": "Hardpoints",
@@ -87,5 +127,29 @@
     "durability": 1,
     "load": 2,
     "sacrifice": "Gain +2 _Guard_ and +2 _Block_."
+  },
+  {
+    "name": "Heavy Carapace",
+    "category": "Hide",
+    "keywords": ["Organic"],
+    "durability": 2,
+    "load": 4,
+    "guard": 2,
+    "abilities": [
+      {
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "2 _Momentum_",
+        "trigger": "You are Attacked.",
+        "effect": "_Defend_.\n* **Always:** Gain +2 _Block_.\n* **Tie:** Gain an additional +1 _Block_.\n* **Win:** Gain an additional +2 _Block_."
+      }
+    ],
+    "table": [
+      ["2-4", "Miss"],
+      ["5-7", "Graze"],
+      ["8-11", "Hit"],
+      ["12", "Crit"]
+    ],
+    "desc": "Standard armor, striking a balance between load and durability."
   }
 ]

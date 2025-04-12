@@ -66,12 +66,12 @@ class Npc extends Combatant {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Actions() {
-    return store.getters.getManeuversFromList(this.npc_data_.actions)
+  public get Arts() {
+    return store.getters.getArtsFromList(this.npc_data_.arts)
   }
 
-  public get Attacks() {
-    return store.getters.getAttacksFromList(this.npc_data_.attacks)
+  public get Armor() {
+    return store.getters.getArmor(this.npc_data_.armor)
   }
 
   public get Class() {
@@ -86,15 +86,6 @@ class Npc extends Combatant {
     return '**' + this.npc_data_.pattern + '**'
   }
 
-  public get HasGambits() {
-    if (this.npc_data_.gambits === undefined) return false
-    return this.npc_data_.gambits.length > 0
-  }
-
-  public get Gambits() {
-    return store.getters.getManeuversFromList(this.npc_data_.gambits)
-  }
-
   public get MomentumGainText() {
     return '**_Momentum_ Gain:** ' + this.npc_data_.momentum_gain
   }
@@ -104,19 +95,12 @@ class Npc extends Combatant {
   public get NpcType() {
     return this.npc_data_.npc_type
   }
-  public get Reactions() {
-    return store.getters.getManeuversFromList(this.npc_data_.reactions)
-  }
   public get Role() {
     return this.npc_data_.role
   }
   public get SpiritType() {
     if (this.npc_data_.subtype == 'None') return ''
     return this.npc_data_.subtype
-  }
-
-  public get Stunts() {
-    return store.getters.getManeuversFromList(this.npc_data_.stunts)
   }
 
   public get SpecialText() {

@@ -185,7 +185,7 @@ def estimate_damage(attack, glancing, print_stats):
     diff_speed = 0
     stun_scale = 0.8 # Stun is worth 80% of a Damage
     
-    expected_damage = [0, 1, 2, 3]
+    expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
                 
     if("chart" in attack):
         roll_chart = attack["chart"]["roll"]

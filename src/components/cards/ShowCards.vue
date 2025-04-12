@@ -56,10 +56,10 @@
               <maneuver-card :maneuver="n" :format_text="true" />
             </div>
             <div class="card--box" v-if="job == 'Stances'">
-              <stance-card :stance="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
+              <stance-card :stance="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Techniques'">
-              <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
+              <tech-card :tech="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Attacks'">
               <weapon-card :attack="n" :color="card_color" :character_creation="character_creation" />

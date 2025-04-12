@@ -21,23 +21,46 @@
     ]
   },
   {
+    "name": "Envenom",
+    "desc": "You punctuate an attack with an explosion, disorienting and launching foes.",
+    "keywords": ["Poison", "Endurable"],
+    "type": "Gambit",
+    "category": "Basic",
+    "abilities": [
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
+        "effect": "Deal 3 _Bonus Damage_ and add _Poisoned_ [4 _Grit_]."
+      },
+      {
+        "class": "Utility",
+        "type": "Action",
+        "cost": "1 _Momentum_",
+        "effect": "Automatically apply the Gambit version of this _Art_ to your next _Attack_ without using a _Gambit_."
+      }
+    ]
+  },
+  {
     "name": "Evade",
     "category": "Basic",
     "desc": "The best way to survive on the battlefield is to simply avoid where the danger is.",
     "abilities": [
       {
+        "name": "Dodge",
         "class": "Mobility",
         "type": "Enhancement",
         "cost": "2 _Movement_",
         "reqs": "You are in an _Engagement_.",
-        "effect": "Leave your current _Engagement_ without creating an [_Opening_]. If you are _Occupying_ _Terrain_, you must leave it as well."
+        "effect": "Remove _Engaged_ without creating an [_Opening_]. If you are _Occupying_ _Terrain_, you must leave it as well."
       },
       {
         "class": "Defensive",
         "type": "Reaction",
         "cost": "1 _Momentum_, 1 _Movement_",
         "trigger": "You are Attacked and are not _Immobile_.",
-        "effect": "Make a _Defense Roll_, with _Disadvantage_ if the triggering Attack was not _Melee_. Decrease the Rank of the triggering Attack by 1 and gain +1 Reflex, and gain an additional effect based on the result:\n* **Lose**: Gain _Prone_.\n* **Tie:** Gain +1 _Reflex_.\n* **Win:** Gain +2 _Reflex_. You may leave your current _Engagement_ and _Feature_."
+        "effect": "Make a _Defense Roll_, with _Disadvantage_ if the triggering Attack was not _Melee_. Decrease the Rank of the triggering Attack by 1 and gain +1 Reflex, and gain an additional effect based on the result:\n* **Lose**: Gain _Prone_.\n* **Tie:** Gain +1 _Reflex_.\n* **Win:** Gain +2 _Reflex_. You may _Disengage_ without creating an _Opening_."
       }
     ],
     "table": [
@@ -59,14 +82,15 @@
         "speed": 1,
         "cost": "1 _Momentum_",
         "range": "Melee",
-        "effect": "Attack a Target within Range. If used in a _Phase_ later than this Art's listed _Speed_ choose one additional effect per _Phase_ later:\n* Add +1 _Bonus Stun_. You may select this option multiple times.\n* On a _Hit_+, add _Push_ 1 [4 _Grit_], _Prone_/_Grabbed_ [3 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_.\n* On a _Hit_+, increase the save to _Negate_ by 1. You may select this option multiple times."
+        "effect": "Attack a Target within Range. If used in a _Phase_ later than this Art's listed _Speed_, deal +2 _Bonus Stun_ per _Phase_ later on a _Graze_+.",
+        "boost": "1 _Momentum_: On a _Hit_+, deal +1 _Bonus Stun_ and add _Push_ [4 _Grit_] or _Prone_/_Grabbed_ [3 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_."
       },
       {
         "class": "Defensive",
         "type": "Reaction",
         "cost": "1 _Momentum_",
         "trigger": "You are Attacked.",
-        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_.\n* **Always:** Gain a +1 to _Negate_.\n* **Lose**: Gain 1 _Block_.\n* **Tie:** Gain 2 _Block_.\n* **Win:** Gain 2 _Block_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
+        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_.\n* **Always:** Gain a +1 to _Negate_ and 1 _Block_.\n* **Tie:** Gain an additional +1 _Block_.\n* **Win:** Gain an additional +1 _Block_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
       }
     ],
     "chart": {
@@ -91,6 +115,45 @@
     ]
   },
   {
+    "name": "Overwhelming Strength",
+    "desc": "You unleash your strength, decimating the terrain and flinging creatures away.",
+    "abilities": [
+      {
+        "class": "Light",
+        "type": "Attack",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "effect": "Inflict _Push_ [5 _Grit_] on a Target within Range. This Attack is always treated as a _Hit_.",
+        "boost": "1 _Momentum_: Add an additional Target. You may repeat this _Boost_."
+      },
+      {
+        "class": "Offensive",
+        "type": "Enhancement",
+        "cost": "2 _Momentum_",
+        "trigger": "You inflict _Push_.",
+        "effect": "Instead, inflict _Forceful Push_."
+      },
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Miss_ with a _Martial_ Attack.",
+        "effect": "Repeat the Attack against an _Obstacle_ at the same _Position_ as the Target, dealing +3 Damage.",
+        "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
+      },
+      {
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Graze_+ with a _Martial_ Attack.",
+        "effect": "Deal +1 _Bonus Damage_ and inflict _Push_ [6 _Grit_]/_Prone_ [4 _Grit_/_Reflex_]/_Sundered_ [4 _Reflex_] on one Target.",
+        "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
+      }
+    ],
+    "category": "Martial"
+  },
+  {
     "name": "Perfect Guard",
     "category": "Basic",
     "desc": "Raised fists or a shield are enough to dampen hits ever so slightly.",
@@ -99,8 +162,8 @@
         "class": "Defensive",
         "type": "Action",
         "speed": 1,
-        "cost": "1 _Momentum_",
-        "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Block_."
+        "cost": "None",
+        "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Block_. You may not use _Movement_ this _Turn_."
       },
       {
         "class": "Defensive",
@@ -121,7 +184,7 @@
         "type": "Action",
         "speed": 1,
         "cost": "1 _Momentum_",
-        "effect": "_Recover_ or reduce your _Stun_ by 5."
+        "effect": "_Recover_, reduce your _Stun_ by 5, or gain 1 _Momentum_. You may not spend any _Movement_ this _Turn_."
       },
       {
         "class": "Defensive",
@@ -181,8 +244,7 @@
         "class": "Utility",
         "type": "Enhancement",
         "cost": "1 _Momentum_",
-        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Engagement_.",
-        "boost": "1 _Movement_: If you are not in an _Engagement_ you may instead resolve the Effect with any piece of _Equipment_ not in an _Engagement_ in your _Arena_."
+        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
       },
       {
         "class": "Utility",

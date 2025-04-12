@@ -95,7 +95,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // MANEUVER TOOLS
+  // ART TOOLS
   // ==========================================================
   get getArt(): any {
     return (inword: string) => {
@@ -113,6 +113,12 @@ export class DatabaseJsonStore extends VuexModule {
         arts.push(this.getArt(art))
       }
       return arts
+    }
+  }
+
+  get isArt(): any {
+    return (inword: string) => {
+      return this.Arts.some((x) => x.Name == inword.trim())
     }
   }
 

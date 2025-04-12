@@ -1,9 +1,5 @@
 [
   {
-    "name": "Block",
-    "effect": "Block converts Damage equal to its value to _Stun_. If Block is greater than the inflicted Damage, the defender may then reduce the _Stun_ inflicted by the remainder. Characters may always opt to use less Block than they have available."
-  },
-  {
     "name": "Bonus",
     "effect": "When an Attack gains Bonus Damage or Stun, distribute it between targets however you wish."
   },
@@ -20,6 +16,14 @@
     "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, gain _Momentum_ equal to the difference."
   },
   {
+    "name": "Disengage",
+    "effect": "When a character Disengages you must stop _Occupying_ your current _Terrain_. Additionally, you may choose to remove _Engaged_ (if applicable) and leave your current _Field_ effect (if applicable). If you remove _Engaged_ in this way, create an _Opening_."
+  },
+  {
+    "name": "Efficient",
+    "effect": "Reactions with this keyword do not count against the 1 Reaction per Trigger limitation."
+  },
+  {
     "name": "Engagement",
     "effect": "Engagements represent clusters of characters within an _Arena_ that are all within striking distance of one another. Engagements include all creatures within them, as well as all _Terrains_ any creatures in the Engagement occupied at any point while being part of said Engagement. While within an Engagement characters suffer _Disadvantage_ when making non-_Melee_ Attacks."
   },
@@ -29,11 +33,11 @@
   },
   {
     "name": "Guard",
-    "effect": "Guard may either convert Damage to _Stun_ or reduce any inflicted _Stun_, split however the defender wishes."
+    "effect": "Guard first reduces any _Stun_ inflicted on the creature, then converts Damage to _Stun_ with any remainder."
   },
   {
     "name": "Hand-and-a-Half",
-    "effect": "If this _Equipment_ is _Wielded_ in both _Hands_, decrease the _Speed_ of all its abilities by 1."
+    "effect": "This _Equipment_ may be _Wielded_ in one or both Hands."
   },
   {
     "name": "Melee",
@@ -45,7 +49,7 @@
   },
   {
     "name": "Movement",
-    "effect": "Movement is a resource that characters may spend to move about the battlefield. For no _Movement_ a character may enter an _Engagement_ so long as they are not _Occupying_ _Terrain_ or in an _Engagement_ already. 1 Movement may be spent at any point on your _Turn_ for any of the following effects:\n* If you are not in a _Engagement_, you may enter an adjacent _Arena_.\n* You may _Occupy_ an unoccupied _Terrain_. _If you are in an _Engagement_, said _Terrain_ must also be in your _Engagement_.\n* If you are either _Occupying_ a _Terrain_ or in an _Engagement_ you may leave your current _Terrain_ and/or _Engagement_. If you leave an _Engagement_, create an _Opening_.\n\nCharacters may spend any amount of Movement on these effects in a given _Turn_."
+    "effect": "Movement is a resource that characters may spend to move about the battlefield. 1 Movement may be spent at any point on your _Turn_ for any of the following effects:\n* You may always:\n\t* _Disengage_.\n* If you are not _Engaged_:\n\t* Enter an adjacent _Arena_.\n\t* Become _Engaged_ with a creature.\n\t* _Occupy_ any available _Terrain_.\n* If you are _Engaged_:\n\t* _Occupy_ available _Terrain_ within your _Engagement_.\n\nCharacters may spend any amount of Movement on these effects in a given _Turn_."
   },
   {
     "name": "Opening",
@@ -62,6 +66,10 @@
   {
     "name": "Small",
     "effect": "This piece of Equipment may be equipped in a Belt Slot. If it is, it costs no _Load_."
+  },
+  {
+    "name": "Soak",
+    "effect": "Soak is effectively an extension to a character's _Stun_ meter, typically granted by equipment. Whenever a character takes _Stun_ it first is applied to their _Soak_ until their Soak meter is full. If a character's Soak is reduced any current Soak above the new limit is immediately applied to _Stun_. In all other ways (such as removing _Stun_) Soak behaves identically."
   },
   {
     "name": "Turn",
@@ -86,5 +94,9 @@
     "effect": "When a creature Recovers they may remove one of their Statuses, as outlined by its Recover text."
   },
   { "name": "Recovers", "see": "Recover" },
-  { "name": "Recovering", "see": "Recover" }
+  { "name": "Recovering", "see": "Recover" },
+  {
+    "name": "Wear",
+    "effect": "Wear represents the typical wear and tear on equipment. Most equipment will have a Wear value; when prompted for a Wear roll, you roll 2d6 and compare it to the Wear value of your equipment. If you roll lower, decrease the equipment's _Durability_ by 1."
+  }
 ]

@@ -3,6 +3,7 @@ import Combatant from './classes/Combatant'
 import Defenses from './classes/Defenses'
 import Base from './classes/Base'
 import Art from './classes/Art'
+import Equipment from './classes/Equipment'
 import Bonuses from './classes/Bonuses'
 import Maneuver from './classes/Maneuvers'
 import Ability from './classes/Ability'
@@ -34,6 +35,7 @@ export {
   Combatant,
   Defenses,
   Discipline,
+  Equipment,
   Accessory,
   Maneuver,
   Npc,

@@ -16,42 +16,31 @@
       </div>
     </div>
     <div class="card--content" v-bind:class="useTextFormatting">
-      <div><display-tooltip-text :string="attack.TraitsHeader" /></div>
+      <div class="chart--wrapper" inline>
+        <v-row no-gutters class="chart--row"
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Hands_" :decorate="false" /></b></v-col
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Load_" :decorate="false" /></b></v-col
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b></v-col
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Wear_" :decorate="false" /></b
+          ></v-col>
+        </v-row>
+        <v-row align="stretch" no-gutters class="chart--row">
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Hands }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Load }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Durability }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Wear }}</v-col>
+        </v-row>
+      </div>
       <div class="card--format" v-if="attack.HasReqs">
         <display-tooltip-text :string="attack.ReqsHeader" />
       </div>
+      <div><display-tooltip-text :string="attack.SpecialHeader" /></div>
       <div v-for="(ability, index) in attack.Abilities" :key="index" class="ability-box" style="padding-bottom: 0.25em">
-        <display-tooltip-text :string="ability.Header" style="font-style: italic; font-load: bold" /><span
-          v-for="(keyword, index) in ability.Keywords"
-          :key="index"
-          class="keyword--box"
-          style="margin-left: 0.5em"
-          ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b
-        ></span>
-        <div style="padding-left: 1em">
-          <div class="card--format" v-if="ability.HasArea"><display-tooltip-text :string="ability.AreaHeader" /></div>
-          <div class="card--format" v-if="ability.HasRange">
-            <display-tooltip-text :string="ability.RangeHeader" />
-          </div>
-          <div class="card--format" v-if="ability.HasTrigger">
-            <display-tooltip-text :string="ability.TriggerHeader" />
-          </div>
-          <div class="card--format" v-if="ability.HasTarget">
-            <display-tooltip-text :string="ability.TargetHeader" />
-          </div>
-          <div class="card--format" v-if="ability.HasCost">
-            <display-tooltip-text :string="ability.CostHeader" />
-          </div>
-          <div class="card--format" v-if="ability.HasEffect">
-            <display-tooltip-text :string="ability.EffectHeader" />
-          </div>
-          <div class="card--format" v-if="ability.HasSpecial">
-            <display-tooltip-text :string="ability.SpecialHeader" />
-          </div>
-          <div class="card--format" v-if="ability.HasBoost">
-            <display-tooltip-text :string="ability.BoostHeader" />
-          </div>
-        </div>
+        <ability-widget :ability="ability" />
       </div>
       <div v-if="attack.HasChart || attack.HasTable" class="ability-box">
         <chart-table v-if="attack.Chart" :chart="attack.Chart" />
@@ -65,6 +54,7 @@
 <script>
 import Vue from 'vue'
 import { Attack, Weapon } from '@/class'
+import AbilityWidget from '@/components/AbilityWidget.vue'
 import BasicTable from '@/components/BasicTable.vue'
 import ChartTable from '@/components/ChartTable.vue'
 
@@ -86,7 +76,7 @@ export default Vue.extend({
       return this.attack.hasOwnProperty('load_')
     },
   },
-  components: { BasicTable, ChartTable },
+  components: { AbilityWidget, BasicTable, ChartTable },
 })
 </script>
 

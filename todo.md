@@ -1,5 +1,9 @@
 ## To-Do
 
+- Arenas: Stay unchanged
+- Positioning relative to other characters is just handled with Engaged vs. not Engaged
+- Terrain: Spend a Movement to Occupy. If you become Engaged and leave the Terrain, any other Engaged creature may occupy it at no cost.
+
 - Move to new setup
 
   - Techniques

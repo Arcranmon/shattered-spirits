@@ -42,7 +42,7 @@ class Ability extends Base {
     return this.cost_
   }
   public get Header() {
-    var header = ''
+    var header = this.Name + ' - '
     if (this.HasSpeed) {
       header += 'Speed ' + this.speed_ + ' '
     }

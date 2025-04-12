@@ -20,10 +20,9 @@
           <display-tooltip-text :string="'**Special:** ' + npc.SpecialText" />
           <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
           <div v-for="trait in npc.Traits" :key="trait">
-            <display-tooltip-text
-              :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))"
-              :decorate="false"
-            /></div></v-col
+            <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + '**'" :decorate="false" /></div
+        ></v-col>
+        <v-col cols="6"> <armor-card :armor="npc.Armor" /></v-col
       ></v-row>
       <v-row no-gutters></v-row><br />
     </div>
@@ -33,31 +32,15 @@
           <h3>Techniques</h3>
         </v-tab>
         <v-tab>
-          <h3>Attacks</h3>
+          <h3>Arts</h3>
         </v-tab>
         <v-tab v-if="npc.HasWeapons">
           <h3>Weapons</h3>
-        </v-tab>
-        <v-tab>
-          <h3>Actions</h3>
-        </v-tab>
-        <v-tab>
-          <h3>Stunts</h3>
-        </v-tab>
-        <v-tab>
-          <h3>Reactions</h3>
-        </v-tab>
-        <v-tab v-if="npc.HasGambits">
-          <h3>Gambits</h3>
         </v-tab></v-tabs
       ><v-tabs-items v-model="tab" class="character-tab-content">
         <v-tab-item> <show-cards :inputs="npc.Techniques" job="Techniques" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="npc.Attacks" job="Attacks" :collapse="false" /></v-tab-item
+        ><v-tab-item> <show-cards :inputs="npc.Arts" job="Arts" :collapse="false" /></v-tab-item
         ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="npc.Actions" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="npc.Stunts" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="npc.Reactions" job="Maneuvers" :collapse="false" /></v-tab-item
-        ><v-tab-item v-if="npc.HasGambits"> <show-cards :inputs="npc.Gambits" job="Maneuvers" :collapse="false" /></v-tab-item
       ></v-tabs-items>
     </v-card>
   </div>
@@ -66,12 +49,14 @@
 <script>
 import Vue from 'vue'
 import { Npc } from '@/class'
+import ArmorCard from '@/components/cards/ArmorCard.vue'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
 
 export default Vue.extend({
   name: 'npc-card',
   components: {
     ShowCards: () => import('@/components/cards/ShowCards.vue'),
+    ArmorCard,
   },
   data() {
     return { tab: null }

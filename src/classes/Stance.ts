@@ -24,6 +24,7 @@ class Stance extends Base {
     var respite_string = '**Respite:** At _Respite_, do the following:'
     if (this.respite_.momentum_gain) respite_string += '\n* Gain ' + this.respite_.momentum_gain + ' _Momentum_.'
     if (this.respite_.conditional_momentum) respite_string += '\n* Gain ' + this.respite_.conditional_momentum
+    if (this.respite_.stun_clear) respite_string += '\n* Clear ' + this.respite_.stun_clear + ' _Stun_.'
     if (this.respite_.special) respite_string += '\n* ' + this.respite_.special
     return respite_string
   }
