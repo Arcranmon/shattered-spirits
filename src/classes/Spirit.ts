@@ -103,13 +103,6 @@ class Spirit extends Combatant {
     this.weapons_.splice(idx, 1)
   }
 
-  get Attacks() {
-    var attacks = store.getters.getAttacksFromList(kBasicAttacks)
-    // var spirittype_attacks = store.getters.getAttack(this.spirittype_.BonusAttack)
-    // attacks = attacks.concat(spirittype_attacks)
-    attacks.sort((a, b) => a.Name.localeCompare(b.Name))
-    return attacks
-  }
   get Actions() {
     return store.getters.getManeuversFromList(kBasicActions)
   }
@@ -147,7 +140,7 @@ class Spirit extends Combatant {
     return {
       ...super.Serialize(spirit),
       name: spirit.name_,
-      type: spirit.spirit_type_.Name,
+      type: '', // spirit.spirit_type_.Name,
       weapons: spirit.weapons_,
     }
   }
@@ -159,7 +152,7 @@ class Spirit extends Combatant {
   }
 
   private setSpiritData(data: ISpiritData): void {
-    this.spirit_type_ = store.getters.getSpiritType(data.type)
+    this.spirit_type_ = null // ||store.getters.getSpiritType(data.type)
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
     this.setCombatantData(data)

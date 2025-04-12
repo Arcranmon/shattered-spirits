@@ -49,7 +49,7 @@ class Stance extends Base {
   }
 
   public get DefenseHeader() {
-    var defense_string = '**Defenses:** \n* +' + this.defenses_.stun + ' Maximum _Stun_'
+    var defense_string = '**Defenses:**'
     if (this.defenses_.focus) defense_string += '\n* ' + this.defenses_.focus + ' _Focus_'
     if (this.defenses_.grit) defense_string += '\n* ' + this.defenses_.grit + ' _Grit_'
     if (this.defenses_.reflex) defense_string += '\n* ' + this.defenses_.reflex + ' _Reflex_'

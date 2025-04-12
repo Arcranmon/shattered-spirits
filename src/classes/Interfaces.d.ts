@@ -51,8 +51,7 @@ declare interface IChargedEffect {
 }
 
 declare interface ICharacterData extends ICombatantData {
-  current_spirit_stance: string
-  current_martial_stance: string
+  current_stance: string
   armor: string[]
   element: string
   accessories: string[]
@@ -67,7 +66,7 @@ declare interface ICharacterData extends ICombatantData {
 
 declare interface ICombatantData {
   Health: number
-  stamina: number
+  soak: number
   stun: number
   move: number
   momentum: number
@@ -117,10 +116,6 @@ declare interface IDisciplineData {
   tier_2: IDisciplineTierData
   tier_3: IDisciplineTierData
   type: string
-}
-
-declare interface IAccessoryData extends IBaseData {
-  load: number
 }
 
 declare interface IGlossaryData {
@@ -287,4 +282,5 @@ declare interface ITraitData extends IBaseData {
 declare interface IWeaponData extends IEquipmentData {
   hands: number
   reqs: string
+  chart: IChartData
 }

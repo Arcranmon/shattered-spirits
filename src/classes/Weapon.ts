@@ -1,10 +1,17 @@
 import { store } from '@/store'
-import { Ability, Equipment } from '@/class'
+import { Ability, Chart, Equipment } from '@/class'
 
 class Weapon extends Equipment {
   private hands_: number
   private reqs_: string
+  private chart_: Chart
 
+  public get HasChart() {
+    return this.Chart != null
+  }
+  public get Chart() {
+    return this.chart_
+  }
   get CategoryHeader() {
     if (this.Category == 'Natural' || this.Category == 'Improvised') return this.category_ + ' Weapon'
     return this.category_ + ' Weapon'
@@ -15,27 +22,18 @@ class Weapon extends Equipment {
   get Hands() {
     return this.hands_
   }
+  get HandString() {
+    return String(this.hands_)
+  }
   get HandsPhrase() {
     if (this.category_ == 'Natural') return ''
     if (this.hands_ == 0) return '_No Handed_ '
     if (this.hands_ == 1) return '_One-Handed_ '
     else return '_Two-Handed_ '
   }
-  get HasLoad() {
-    return this.Load > 0
-  }
   public get Icon() {
     if (this.Category == 'Error') return ''
     return require('@/assets/weapons/' + this.Category + '.svg')
-  }
-  public get KeywordsHeader() {
-    return '_' + this.keywords_.join('_, _') + '_'
-  }
-  public get HasReqs() {
-    return this.reqs_ != ''
-  }
-  public get ReqsHeader() {
-    return '**Requirements:** ' + this.reqs_
   }
 
   // ==========================================================
@@ -52,6 +50,7 @@ class Weapon extends Equipment {
     this.setEquipmentData(data)
     this.hands_ = data.hands || 0
     this.reqs_ = data.reqs || ''
+    if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
   }
 }
 export default Weapon

@@ -5,6 +5,7 @@
     "desc": "You dash forward, covering ground across the battlefield.",
     "abilities": [
       {
+        "name": "Run",
         "class": "Mobility",
         "type": "Action",
         "speed": 1,
@@ -13,6 +14,7 @@
         "boost": "1 _Momentum_: Repeat the Effect. You may use this _Boost_ twice."
       },
       {
+        "name": "Dig Deep",
         "class": "Mobility",
         "type": "Enhancement",
         "cost": "2 _Momentum_",
@@ -21,13 +23,36 @@
     ]
   },
   {
-    "name": "Envenom",
-    "desc": "You punctuate an attack with an explosion, disorienting and launching foes.",
-    "keywords": ["Poison", "Endurable"],
-    "type": "Gambit",
+    "name": "Sturdy",
+    "desc": "You are exceptionally tough, pushing through any .",
     "category": "Basic",
     "abilities": [
       {
+        "name": "Push Through",
+        "class": "Utility",
+        "type": "Action",
+        "cost": "1 _Momentum_",
+        "effect": "_Recover_, then reduce your _Stun_ by 7."
+      },
+      {
+        "name": "Endure",
+        "class": "Defensive",
+        "type": "Reaction",
+        "keywords": ["Exhaust"],
+        "cost": "None",
+        "trigger": "You would be _Stunned_.",
+        "effect": "You are instead not _Stunned_, and take no _Stun_ from the triggering effect. Set you _Stun_ to half its maximum value."
+      }
+    ]
+  },
+  {
+    "name": "Envenom",
+    "desc": "You punctuate an attack with an explosion, disorienting and launching foes.",
+    "keywords": ["Poison", "Endurable"],
+    "category": "Basic",
+    "abilities": [
+      {
+        "name": "Injection",
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
@@ -35,6 +60,7 @@
         "effect": "Deal 3 _Bonus Damage_ and add _Poisoned_ [4 _Grit_]."
       },
       {
+        "name": "Coating",
         "class": "Utility",
         "type": "Action",
         "cost": "1 _Momentum_",
@@ -48,19 +74,19 @@
     "desc": "The best way to survive on the battlefield is to simply avoid where the danger is.",
     "abilities": [
       {
-        "name": "Dodge",
+        "name": "Cautious Step",
         "class": "Mobility",
         "type": "Enhancement",
         "cost": "2 _Movement_",
-        "reqs": "You are in an _Engagement_.",
-        "effect": "Remove _Engaged_ without creating an [_Opening_]. If you are _Occupying_ _Terrain_, you must leave it as well."
+        "effect": "Add [_Safe_] to your _Movement_ this _Turn_."
       },
       {
+        "name": "Dodge",
         "class": "Defensive",
         "type": "Reaction",
         "cost": "1 _Momentum_, 1 _Movement_",
         "trigger": "You are Attacked and are not _Immobile_.",
-        "effect": "Make a _Defense Roll_, with _Disadvantage_ if the triggering Attack was not _Melee_. Decrease the Rank of the triggering Attack by 1 and gain +1 Reflex, and gain an additional effect based on the result:\n* **Lose**: Gain _Prone_.\n* **Tie:** Gain +1 _Reflex_.\n* **Win:** Gain +2 _Reflex_. You may _Disengage_ without creating an _Opening_."
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was not _Melee_. After resolving this Reaction, decrease the Rank of the triggering Attack by 1 and gain +1 Reflex.\n* **Lose**: Gain _Prone_.\n* **Tie:** Gain +1 _Reflex_.\n* **Win:** Gain +2 _Reflex_. You may _Disengage_ without creating an _Opening_."
       }
     ],
     "table": [
@@ -77,8 +103,9 @@
     "keywords": ["Natural", "Crush"],
     "abilities": [
       {
-        "class": "Light",
-        "type": "Attack",
+        "name": "Strike",
+        "class": "Light Attack",
+        "type": "Action",
         "speed": 1,
         "cost": "1 _Momentum_",
         "range": "Melee",
@@ -86,6 +113,7 @@
         "boost": "1 _Momentum_: On a _Hit_+, deal +1 _Bonus Stun_ and add _Push_ [4 _Grit_] or _Prone_/_Grabbed_ [3 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_."
       },
       {
+        "name": "Parry",
         "class": "Defensive",
         "type": "Reaction",
         "cost": "1 _Momentum_",
@@ -100,17 +128,36 @@
     }
   },
   {
-    "name": "Manifest Spirit",
+    "name": "Spirit Companion",
     "category": "Basic",
     "desc": "You call forth your spirit, manifesting their physical form to aid you.",
     "abilities": [
       {
+        "name": "Manifest",
         "class": "Utility",
         "type": "Action",
         "speed": 1,
-        "cost": "1 _Momentum_",
+        "cost": "None",
         "range": "Spirit's _Summon_ Range.",
         "effect": "_Summon_ your _Spirit_ within a valid _Arena_ within Range or, if they are already _Summoned_, _Recall_ them."
+      },
+      {
+        "name": "Tag Team",
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Spirit_ is within Range of the original Attack's Target.",
+        "effect": "Your Spirit may immediately use a Single-Target Attack Action against the same Target with a -2 _Discount_.",
+        "boost": "1 _Momentum_: You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately use Manifest, then resolve this Gambit."
+      },
+      {
+        "name": "Interdiction",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Spirit_ is in _Melee_ Range of you.",
+        "effect": "Distribute all effects of the attack (Damage, Stun, and Status) between you and your _Spirit_ however you wish.",
+        "boost": "1 _Momentum_: You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately use Manifest, then resolve this Gambit."
       }
     ]
   },
@@ -119,8 +166,9 @@
     "desc": "You unleash your strength, decimating the terrain and flinging creatures away.",
     "abilities": [
       {
-        "class": "Light",
-        "type": "Attack",
+        "name": "Shove",
+        "class": "Light Attack",
+        "type": "Action",
         "speed": 1,
         "cost": "1 _Momentum_",
         "range": "Melee",
@@ -128,6 +176,7 @@
         "boost": "1 _Momentum_: Add an additional Target. You may repeat this _Boost_."
       },
       {
+        "name": "Fling",
         "class": "Offensive",
         "type": "Enhancement",
         "cost": "2 _Momentum_",
@@ -135,6 +184,7 @@
         "effect": "Instead, inflict _Forceful Push_."
       },
       {
+        "name": "Collateral Damage",
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
@@ -143,6 +193,7 @@
         "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
       },
       {
+        "name": "Overpower",
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
@@ -154,23 +205,27 @@
     "category": "Martial"
   },
   {
-    "name": "Perfect Guard",
+    "name": "Block",
     "category": "Basic",
     "desc": "Raised fists or a shield are enough to dampen hits ever so slightly.",
     "abilities": [
       {
+        "name": "Raise Guard",
         "class": "Defensive",
+        "keywords": ["Rooted"],
         "type": "Action",
         "speed": 1,
         "cost": "None",
-        "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Block_. You may not use _Movement_ this _Turn_."
+        "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Guard_."
       },
       {
+        "name": "Flawless",
         "class": "Defensive",
         "type": "Gambit",
         "cost": "None",
         "reqs": "Hit+ on the _Defense Roll_.",
-        "effect": "Gain an additional 2 _Block_. You may count all _Block_ as _Guard_ this Turn."
+        "effect": "Gain +3 _Guard_.",
+        "special": "If you are _Guarding_, your _Guard_ is instead _Perfect Guard_."
       }
     ]
   },
@@ -180,13 +235,16 @@
     "desc": "Battle is no place for weakness; you grit your teeth, catch your breath, and push on.",
     "abilities": [
       {
+        "name": "Catch Breath",
         "class": "Utility",
+        "keywords": ["Rooted"],
         "type": "Action",
         "speed": 1,
         "cost": "1 _Momentum_",
-        "effect": "_Recover_, reduce your _Stun_ by 5, or gain 1 _Momentum_. You may not spend any _Movement_ this _Turn_."
+        "effect": "_Recover_, reduce your _Stun_ by 5, or gain 1 _Momentum_."
       },
       {
+        "name": "Grit Teeth",
         "class": "Defensive",
         "type": "Gambit",
         "cost": "None",
@@ -194,6 +252,7 @@
         "effect": "Reduce your _Stun_ by 4. You may trigger this before or after resolving the triggering effect."
       },
       {
+        "name": "Press On",
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
@@ -208,18 +267,20 @@
     "desc": "Anything on the battlefield is a potentially opening, if you are bold enough to seize it.",
     "abilities": [
       {
+        "name": "Opportunity Attack",
         "class": "Offensive",
         "type": "Reaction",
         "trigger": "A hostile creature creates an _Opening_.",
         "cost": "None",
-        "effect": "Make a Single-Target Attack against the triggering creature, paying all costs as normal."
+        "effect": "Use a Single-Target Attack Action against the triggering creature, paying all costs as normal."
       },
       {
+        "name": "Lethal Blow",
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
         "reqs": "Hit+ on the _Attack Roll_.",
-        "effect": "Deal 4 _Bonus_ _Damage_. If the target is _Stunned_, instead deal 5  _Bonus_ _Damage_."
+        "effect": "Deal 3 _Bonus_ _Damage_. If the target is _Stunned_, instead deal 5  _Bonus_ _Damage_."
       }
     ]
   },
@@ -229,34 +290,65 @@
     "desc": "Sometimes you need to do things more complicated than just sticking enemies with the pointy end of a stick.",
     "abilities": [
       {
+        "name": "Use Environment",
         "class": "Utility",
         "type": "Enhancement",
         "cost": "Special",
         "effect": "Resolve the Interaction effect of the _Terrain_ you are _Occupying_, paying its listed _Cost_."
       },
       {
+        "name": "Quickdraw",
         "class": "Utility",
         "type": "Enhancement",
         "cost": "0 _Momentum_",
         "effect": "_Wield_ or _Use_ a piece of _Equipment_ on your _Belt_, or place a _Wielded_ piece of _Equipment_ on your _Belt_. You may use this option at any time, even if it is not your _Turn_."
       },
       {
-        "class": "Utility",
-        "type": "Enhancement",
-        "cost": "1 _Momentum_",
-        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
-      },
-      {
+        "name": "Draw",
         "class": "Utility",
         "type": "Enhancement",
         "cost": "1 _Momentum_",
         "effect": "_Wield_ or _Use_ a piece of _Equipped_ _Equipment_, or _Equip_ a _Wielded_ piece of _Equipment_."
       },
       {
+        "name": "Retrieve",
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "1 _Momentum_",
+        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
+      },
+      {
+        "name": "Rummage",
         "class": "Utility",
         "type": "Action",
         "cost": "2 _Momentum_",
         "effect": "Create an [_Opening_]. _Wield_ or _Use_ a piece of _Equipment_ in your _Pack_, or place a _Wielded_ piece of _Equipment_ in your _Pack_."
+      }
+    ]
+  },
+  {
+    "name": "Strategem",
+    "desc": "You use mobility and guile to outmaneuver your foe, forcing openings.",
+    "category": "Basic",
+    "abilities": [
+      {
+        "name": "Feint",
+        "class": "Offensive",
+        "type": "Enhancement",
+        "cost": "1 _Momentum_/_Movement_",
+        "range": "Melee",
+        "effect": "A Target within Range must immediately _Negate_ [5 _Focus_]. If they fail, you gain a +1 _Bonus_ on your next _Attack_ against them this _Turn_.",
+        "special": "If you paid the cost with _Movement_, you may force the Target to _Negate_ with _Reflex_."
+      },
+      {
+        "name": "Flank",
+        "class": "Offensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_/_Movement_",
+        "range": "Melee",
+        "trigger": "A hostile creature within Range is Attacked.",
+        "effect": "The Target must immediately _Negate_ [5 _Focus_]. If they fail, the Attacker gains a +1 _Bonus_.",
+        "special": "If you paid the cost with _Movement_, you may force the Target to _Negate_ with _Reflex_."
       }
     ]
   }

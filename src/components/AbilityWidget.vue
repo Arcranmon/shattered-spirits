@@ -1,10 +1,21 @@
 <template>
   <div v-bind:class="useDivider ? 'ability-box' : ''" style="padding-bottom: 0.25em">
-    <h5><display-tooltip-text :string="ability.Header" /></h5>
-    <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
-      ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b
-    ></span>
+    <h5>
+      <display-tooltip-text :string="ability.Header" /><span
+        v-for="(keyword, index) in ability.Keywords"
+        :key="index"
+        class="keyword--box"
+        style="margin-left: 0.5em"
+        ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b
+      ></span>
+    </h5>
     <div style="padding-left: 1em">
+      <div class="card--format" v-if="ability.HasSpeed">
+        <display-tooltip-text :string="ability.SpeedHeader" />
+      </div>
+      <div class="card--format" v-if="ability.HasCost">
+        <display-tooltip-text :string="ability.CostHeader" />
+      </div>
       <div class="card--format" v-if="ability.HasReqs">
         <display-tooltip-text :string="ability.ReqsHeader" />
       </div>
@@ -17,9 +28,6 @@
       </div>
       <div class="card--format" v-if="ability.HasTarget">
         <display-tooltip-text :string="ability.TargetHeader" />
-      </div>
-      <div class="card--format" v-if="ability.HasCost">
-        <display-tooltip-text :string="ability.CostHeader" />
       </div>
       <div class="card--format" v-if="ability.HasEffect">
         <display-tooltip-text :string="ability.EffectHeader" />

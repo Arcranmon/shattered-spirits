@@ -65,9 +65,7 @@
       <v-col cols="2" class="sidebar">
         <div v-for="(character, index) in characters" :key="index" class="button--spacing">
           <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)"
-            ><span v-if="character.Spirit.Subtype != undefined" style="margin: 2px">
-              {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit</span
-            ></v-btn
+            ><span style="margin: 2px"> {{ character.Name }} and {{ character.Spirit.Name }}</span></v-btn
           >
         </div> </v-col
       ><v-col cols="10">

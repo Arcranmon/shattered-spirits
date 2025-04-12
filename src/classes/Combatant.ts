@@ -4,6 +4,7 @@ class Combatant {
   private Health_: number
   private stamina_: number
   private stun_: number
+  private soak_: number
   private move_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
@@ -16,6 +17,7 @@ class Combatant {
     this.move_ = 0
     this.stamina_ = 0
     this.stun_ = 0
+    this.soak_ = 0
     this.Health_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
@@ -208,6 +210,7 @@ class Combatant {
       move: combatant.move_,
       stamina: combatant.stamina_,
       stun: combatant.stun_,
+      soak: combatant.soak_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
       vigor: combatant.vigor_,

@@ -11,33 +11,19 @@
     <v-tabs-items v-model="tab" class="character-tab-content">
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" /><show-cards
-          :inputs="this.$store.getters.getTechniquesFromList(['Shift', 'Rally', 'Improvise'])"
+          :inputs="this.$store.getters.getTechniquesFromList(this.$store.getters.basicTechniques)"
           job="Techniques"
           :collapse="false"
-        />
-        <show-cards :inputs="this.$store.getters.getTechniquesFromList(['Skirmish', 'Combination Strike', 'Smash'])" job="Techniques" :collapse="false" />
-      </v-tab-item>
+      /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stance')" /><show-cards
-          :inputs="this.$store.getters.getStancesFromList(['Aggressive Stance', 'Defensive Stance', 'Mobile Stance'])"
+          :inputs="this.$store.getters.getStancesFromList(this.$store.getters.basicStances)"
           job="Stances"
           :collapse="false"
       /></v-tab-item>
       <v-tab-item>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Attack')" />
-        <show-cards
-          :inputs="[
-            this.$store.getters.getArt('Shift'),
-            this.$store.getters.getArt('Manifest Spirit'),
-            this.$store.getters.getArt('Breather'),
-            this.$store.getters.getArt('Evade'),
-            this.$store.getters.getArt('Seize Opening'),
-            this.$store.getters.getArt('Perfect Guard'),
-            this.$store.getters.getArt('Martial Arts'),
-            this.$store.getters.getArt('Interact'),
-          ]"
-          job="Arts"
-          :collapse="false" /></v-tab-item
+        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Art')" />
+        <show-cards :inputs="this.$store.getters.getArtsFromList(this.$store.getters.playerArts)" job="Arts" :collapse="false" /></v-tab-item
     ></v-tabs-items>
   </div>
 </template>

@@ -66,6 +66,22 @@ export class DatabaseJsonStore extends VuexModule {
   private Archetypes: Archetype[] = []
   private Arts: Art[] = []
 
+  get basicTechniques() {
+    return ['Dash', 'Rally', 'Improvise', 'Skirmish', 'Combination Strike', 'Smash']
+  }
+
+  get basicStances() {
+    return ['Aggressive Stance', 'Defensive Stance', 'Mobile Stance']
+  }
+
+  get basicArts() {
+    return ['Shift', 'Breather', 'Evade', 'Seize Opening', 'Block', 'Martial Arts', 'Interact', 'Stratagem']
+  }
+
+  get playerArts() {
+    return [...this.basicArts, 'Spirit Companion']
+  }
+
   // ==========================================================
   // MANEUVER TOOLS
   // ==========================================================
@@ -231,6 +247,7 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getStance(): any {
     return (inword: string) => {
+      console.log(inword)
       var stance = Stances.find((x) => x.name.trim() === inword.trim())
       if (stance == undefined) return new Stance(inword)
       return Stance.Deserialize(<IStanceData>(<unknown>stance))
@@ -425,7 +442,7 @@ export class DatabaseJsonStore extends VuexModule {
       if (accessory == undefined) {
         return new Accessory(inword)
       }
-      return Accessory.Deserialize(<IAccessoryData>(<unknown>accessory))
+      return Accessory.Deserialize(<IEquipmentData>(<unknown>accessory))
     }
   }
 

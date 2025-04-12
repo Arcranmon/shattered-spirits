@@ -12,6 +12,7 @@
     "abilities": [
       {
         "name": "Sacrifice Armor",
+        "keywords": ["Efficient"],
         "class": "Defensive",
         "type": "Reaction",
         "cost": "None",
@@ -23,14 +24,16 @@
   {
     "name": "Medium Armor",
     "category": "Base Armor",
-    "keywords": ["Organic", "_Layers_ 1"],
+    "keywords": ["Organic"],
     "durability": 2,
     "load": 3,
     "guard": 1,
     "wear": 6,
+    "special": "Equip one piece of _Layered Armor_ as a part of this.",
     "abilities": [
       {
         "name": "Sacrifice Armor",
+        "keywords": ["Efficient"],
         "class": "Defensive",
         "type": "Reaction",
         "cost": "None",
@@ -43,14 +46,16 @@
   {
     "name": "Heavy Armor",
     "category": "Base Armor",
-    "keywords": ["Organic", "_Layers_ 2"],
+    "keywords": ["Organic"],
     "durability": 3,
     "load": 6,
     "guard": 1,
     "wear": 5,
+    "special": "Equip two pieces of _Layered Armor_ as a part of this.",
     "abilities": [
       {
         "name": "Sacrifice Armor",
+        "keywords": ["Efficient"],
         "class": "Defensive",
         "type": "Reaction",
         "cost": "None",
@@ -65,8 +70,26 @@
     "category": "Layered Armor",
     "keywords": ["Organic"],
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_ Damage.",
-    "sacrifice": "Gain _Resistance_ against _Crush_ Damage.",
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "keywords": ["Efficient"],
+        "trigger": "You are Attacked.",
+        "effect": "Gain _Resistance_ to _Crush_ Damage.",
+        "special": "You may use this at no Cost if you make a _Wear_ roll for your Armor at _Disadvantage_."
+      }
+    ],
     "desc": "Thick, quilted armor specialized in defending against crushing strikes."
+  },
+  {
+    "name": "Reinforcement",
+    "category": "Layered Armor",
+    "keywords": ["Organic"],
+    "soak": 4,
+    "desc": "Additional banding that, while not providing specific defense, generally improves the efficacy of the armor."
   },
   {
     "name": "Chain Shirt",
@@ -75,12 +98,14 @@
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Slash_ Damage.",
     "abilities": [
       {
-        "name": "Sacrifice Armor",
+        "name": "Twist",
         "class": "Defensive",
         "type": "Reaction",
-        "cost": "None",
+        "cost": "1 _Momentum_",
+        "keywords": ["Efficient"],
         "trigger": "You are Attacked.",
-        "effect": "Gain +2 _Guard_. Immediately make a _Wear_ roll for this Armor at _Disadvantage_."
+        "effect": "Gain _Resistance_ to _Slash_ Damage.",
+        "special": "You may use this at no Cost if you make a _Wear_ roll for your Armor at _Disadvantage_."
       }
     ]
   },
@@ -89,7 +114,18 @@
     "category": "Layered Armor",
     "keywords": ["Metal"],
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Stab_ Damage.",
-    "sacrifice": "Gain _Resistance_ against _Stab_ Damage."
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "keywords": ["Efficient"],
+        "trigger": "You are Attacked.",
+        "effect": "Gain _Resistance_ to _Stab_ Damage.",
+        "special": "You may use this at no Cost if you make a _Wear_ roll for your Armor at _Disadvantage_."
+      }
+    ]
   },
   {
     "name": "Light Helmet",
@@ -98,7 +134,18 @@
     "keywords": ["Organic"],
     "durability": 1,
     "load": 1,
-    "sacrifice": "Gain _Resistance_ against a _Crit_."
+    "wear": 5,
+    "abilities": [
+      {
+        "name": "Off the Dome",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "None",
+        "keywords": ["Efficient"],
+        "trigger": "You are _Crit_.",
+        "effect": "Gain _Resistance_, then lose 1 _Durability_."
+      }
+    ]
   },
   {
     "name": "Traveler's Boots",
@@ -107,7 +154,8 @@
     "keywords": ["Organic"],
     "durability": 1,
     "load": 1,
-    "special": "Gain +1 to _Negate_ and 2 _Block_ for all non-_Weather_ Terrain."
+    "wear": 5,
+    "special": "Gain +1 to _Negate_ and 2 _Guard_ for all _Field_ effects without the _Weather_ keyword."
   },
   {
     "name": "Heavy Helmet",
@@ -116,17 +164,40 @@
     "keywords": ["Metal"],
     "durability": 2,
     "load": 2,
-    "sacrifice": "Gain _Resistance_ against a _Crit_."
+    "abilities": [
+      {
+        "name": "Off the Dome",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "None",
+        "keywords": ["Efficient"],
+        "trigger": "You are _Crit_.",
+        "effect": "Gain _Resistance_, then lose 1 _Durability_."
+      }
+    ]
   },
   {
-    "name": "Plate",
+    "name": "Plating",
     "category": "Over Armor",
     "desc": "Metal plating that can be layered for greater and greater protection.",
     "keywords": ["Metal"],
     "guard": 1,
+    "soak": 3,
     "durability": 1,
-    "load": 2,
-    "sacrifice": "Gain +2 _Guard_ and +2 _Block_."
+    "load": 3,
+    "wear": 4,
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "keywords": ["Efficient"],
+        "trigger": "You are Attacked.",
+        "effect": "Gain 3 _Guard_.",
+        "special": "You may use this at no Cost if you make a _Wear_ roll for your Armor at _Disadvantage_."
+      }
+    ]
   },
   {
     "name": "Heavy Carapace",

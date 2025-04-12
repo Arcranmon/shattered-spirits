@@ -43,11 +43,11 @@ class Ability extends Base {
   }
   public get Header() {
     var header = this.Name + ' - '
-    if (this.HasSpeed) {
-      header += 'Speed ' + this.speed_ + ' '
-    }
     header += this.class_ + ' ' + this.type_
     return header
+  }
+  public get SpeedHeader() {
+    return '**Speed ' + this.speed_ + '**'
   }
   public get Move() {
     return this.move_

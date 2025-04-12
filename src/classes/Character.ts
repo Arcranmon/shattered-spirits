@@ -6,18 +6,13 @@ var kSpiritDisciplineCategories = ['Earth']
 var kBaseHealth = 25
 var kBaseLoad = 4
 
-var kBasicTechniques = ['Shift', 'Rally', 'Improvise', 'Skirmish', 'Combination Strike', 'Smash']
-var kBasicStances = ['Balanced Stance', "Summoner's Stance"]
-var kBasicAttacks = ['Weapon Attack', 'Brawl']
-var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance', 'Spirit Summon']
-var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
-var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge', 'Partnership']
-var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
+var kBasicTechniques = ['Dash', 'Rally', 'Improvise', 'Skirmish', 'Combination Strike', 'Smash']
+var kBasicStances = ['Aggressive Stance', 'Defensive Stance', 'Mobile Stance']
+var kBasicArts = ['Weapon Attack', 'Brawl']
 
 class Character extends Combatant {
   // Level Up Qualities
-  private current_spirit_stance_: Stance
-  private current_martial_stance_: Stance
+  private current_stance_: Stance
   private disciplines_: Array<ICharDisciplineData>
   private minor_disciplines_: Array<ICharDisciplineData>
   private name_: string
@@ -36,8 +31,7 @@ class Character extends Combatant {
   // ==========================================================
   public constructor() {
     super()
-    this.current_spirit_stance_ = store.getters.getStance('No Stance')
-    this.current_martial_stance_ = store.getters.getStance('No Stance')
+    this.current_stance_ = null
     this.minor_disciplines_ = []
     this.disciplines_ = []
     this.armor_ = []
@@ -98,39 +92,8 @@ class Character extends Combatant {
   // GETTERS/SETTERS
   // ==========================================================
 
-  public ManeuversOfType(type: string) {
-    if (type == 'Action') var maneuvers = store.getters.getManeuversFromList(kBasicActions)
-    if (type == 'Stunt') var maneuvers = store.getters.getManeuversFromList(kBasicStunts)
-    if (type == 'Reaction') var maneuvers = store.getters.getManeuversFromList(kBasicReactions)
-    if (type == 'Gambit') var maneuvers = store.getters.getManeuversFromList(kBasicGambits)
-    for (var arch of this.archetypes_) {
-      var archetype = store.getters.getArchetype(arch)
-      var archMan = store.getters.getManeuver(archetype.Manuever)
-      if (archMan.Type == type) maneuvers.push(archMan)
-    }
-    for (var disc of this.disciplines_) {
-      var discipline = store.getters.getDiscipline(disc.name)
-      for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-      if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-    }
-    for (var art of this.minor_disciplines_) {
-      var art_info = store.getters.getArt(art.name)
-      for (var maneuver of art_info.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-      if (art.tier > 1) for (var maneuver of art_info.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-    }
-    maneuvers.sort((a, b) => a.Name.localeCompare(b.Name))
-    return maneuvers
-  }
-
-  get CurrentSpiritStance() {
-    // TODO: This is a hack
-    var spirit_disc = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type != 'Style')
-    return store.getters.getStance("Summoner's Stance")
-  }
-  get CurrentMartialStance() {
-    // TODO: This is a hack
-    var style_disc = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type == 'Style')
-    return store.getters.getStance('Balanced Stance')
+  get CurrentStance() {
+    return this.current_stance_
   }
   get Disciplines() {
     return this.disciplines_
@@ -241,43 +204,6 @@ class Character extends Combatant {
     })
     return techniques
   }
-
-  get Attacks() {
-    var attacks = store.getters.getAttacksFromList(kBasicAttacks)
-    for (var disc of this.disciplines_) {
-      var discipline = store.getters.getDiscipline(disc.name)
-      attacks = attacks.concat(discipline.Tier1Attacks)
-      if (disc.tier > 1) attacks = attacks.concat(discipline.Tier2Attacks)
-    }
-    attacks.sort((a, b) => a.Name.localeCompare(b.Name))
-    return attacks
-  }
-
-  get SpiritAttacks() {
-    var attacks = this.Spirit.Attacks
-    for (var disc of this.disciplines_) {
-      var discipline = store.getters.getDiscipline(disc.name)
-      attacks = attacks.concat(discipline.Tier1Attacks)
-      if (disc.tier > 1) attacks = attacks.concat(discipline.Tier2Attacks)
-    }
-    attacks.sort((a, b) => a.Name.localeCompare(b.Name))
-    return attacks
-  }
-
-  public SpiritManeuversOfType(type: string) {
-    if (type == 'Action') var maneuvers = this.Spirit.Actions
-    if (type == 'Stunt') var maneuvers = this.Spirit.Stunts
-    if (type == 'Reaction') var maneuvers = this.Spirit.Reactions
-    if (type == 'Gambit') var maneuvers = this.Spirit.Gambits
-    for (var disc of this.disciplines_) {
-      var discipline = store.getters.getDiscipline(disc.name)
-      if (discipline.Category != this.Element) continue
-      for (var maneuver of discipline.Tier1Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-      if (disc.tier > 1) for (var maneuver of discipline.Tier2Maneuvers) if (maneuver.Type == type) maneuvers.push(maneuver)
-    }
-    maneuvers.sort((a, b) => a.Name.localeCompare(b.Name))
-    return maneuvers
-  }
   get Archetypes() {
     return this.archetypes_
   }
@@ -290,24 +216,24 @@ class Character extends Combatant {
   get Armor() {
     return this.armor_
   }
+  get Accessories() {
+    return this.accessories_
+  }
   get Grit() {
-    return this.CurrentMartialStance.Grit + this.CurrentSpiritStance.Grit
+    return this.CurrentStance.Grit
   }
   get Reflex() {
-    return this.CurrentMartialStance.Reflex + this.CurrentSpiritStance.Reflex
+    return this.CurrentStance.Reflex
   }
   get Focus() {
-    return this.CurrentMartialStance.Focus + this.CurrentSpiritStance.Focus
+    return this.CurrentStance.Focus
   }
 
   // ==========================================================
   // SETTERS
   // ==========================================================
-  set CurrentSpiritStance(spirit_stance: Stance) {
-    this.current_spirit_stance_ = spirit_stance
-  }
-  set CurrentMartialStance(martial_stance: Stance) {
-    this.current_martial_stance_ = martial_stance
+  set CurrentStance(stance: Stance) {
+    this.current_stance_ = stance
   }
 
   set Name(name: string) {
@@ -364,7 +290,7 @@ class Character extends Combatant {
   }
 
   override get MomentumGain() {
-    return this.CurrentMartialStance.MomentumGain + this.CurrentSpiritStance.MomentumGain
+    return this.CurrentStance.MomentumGain + this.CurrentStance.MomentumGain
   }
 
   public ClearSpiritInfo() {
@@ -418,10 +344,6 @@ class Character extends Combatant {
     return this.HasSpirit && this.HasNames
   }
 
-  get AnyStanceUnequipped() {
-    return this.current_spirit_stance_.Name == 'No Stance' || this.current_martial_stance_.Name == 'No Stance'
-  }
-
   get HasNames() {
     return this.Name != ''
   }
@@ -454,8 +376,7 @@ class Character extends Combatant {
       //Character Save Data
       ...super.Serialize(character),
       spirit: Spirit.Serialize(character.spirit_),
-      current_spirit_stance: character.current_spirit_stance_ ? character.current_spirit_stance_.Name : '',
-      current_martial_stance: character.current_martial_stance_ ? character.current_martial_stance_.Name : '',
+      current_stance: character.current_stance_ ? character.current_stance_.Name : '',
       disciplines: character.disciplines_,
       armor: character.armor_,
       element: character.element_,
@@ -476,8 +397,7 @@ class Character extends Combatant {
 
   private setCharacterData(data: ICharacterData): void {
     this.spirit_ = Spirit.Deserialize(data.spirit)
-    if ('current_spirit_stance' in data) this.current_spirit_stance_ = store.getters.getStance(data.current_spirit_stance)
-    if ('current_martial_stance' in data) this.current_martial_stance_ = store.getters.getStance(data.current_martial_stance)
+    if ('current_stance' in data) this.current_stance_ = store.getters.getStance(data.current_stance)
     this.accessories_ = data.accessories || []
     this.element_ = data.element || ''
     this.name_ = data.name || ''

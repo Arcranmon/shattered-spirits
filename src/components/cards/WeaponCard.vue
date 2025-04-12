@@ -1,21 +1,21 @@
 <template>
   <div class="card--wrapper" inline>
-    <div class="card--underline-top Attack">
+    <div class="card--underline-top weapon">
       <div class="card--header">
-        <img v-if="isWeapon" class="image--header-left" :src="attack.Icon" />
-        <img v-if="isWeapon" class="image--header-right" :src="attack.Icon" />
-        <h4 style="display: inline; font-style: normal">{{ attack.Name }}</h4>
+        <img v-if="isWeapon" class="image--header-left" :src="weapon.Icon" />
+        <img v-if="isWeapon" class="image--header-right" :src="weapon.Icon" />
+        <h4 style="display: inline; font-style: normal">{{ weapon.Name }}</h4>
         <div class="card--keywords">
           <b>
-            <div><display-tooltip-text :string="attack.ClassHeader" :decorate="false" /></div>
-            <div v-if="attack.HasSpeedOrTier"><display-tooltip-text :string="attack.SpeedHeader" :decorate="false" /></div>
-            <span v-for="(keyword, index) in attack.Keywords" :key="index" class="keyword--box">
+            <div><display-tooltip-text :string="weapon.ClassHeader" :decorate="false" /></div>
+            <div v-if="weapon.HasSpeedOrTier"><display-tooltip-text :string="weapon.SpeedHeader" :decorate="false" /></div>
+            <span v-for="(keyword, index) in weapon.Keywords" :key="index" class="keyword--box">
               <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></span
           ></b>
         </div>
       </div>
     </div>
-    <div class="card--content" v-bind:class="useTextFormatting">
+    <div class="card--content">
       <div class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row"
           ><v-col class="chart--head" cols="2"
@@ -29,31 +29,31 @@
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Hands }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Load }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Durability }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ attack.Wear }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2"><display-tooltip-text :string="weapon.HandString" /></v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Load }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Durability }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Wear }}</v-col>
         </v-row>
       </div>
-      <div class="card--format" v-if="attack.HasReqs">
-        <display-tooltip-text :string="attack.ReqsHeader" />
+      <div class="card--format" v-if="weapon.HasReqs">
+        <display-tooltip-text :string="weapon.ReqsHeader" />
       </div>
-      <div><display-tooltip-text :string="attack.SpecialHeader" /></div>
-      <div v-for="(ability, index) in attack.Abilities" :key="index" class="ability-box" style="padding-bottom: 0.25em">
+      <div><display-tooltip-text :string="weapon.SpecialHeader" /></div>
+      <div v-for="(ability, index) in weapon.Abilities" :key="index" class="ability-box" style="padding-bottom: 0.25em">
         <ability-widget :ability="ability" />
       </div>
-      <div v-if="attack.HasChart || attack.HasTable" class="ability-box">
-        <chart-table v-if="attack.Chart" :chart="attack.Chart" />
-        <basic-table v-if="attack.HasTable" :chart="attack.Table" />
+      <div v-if="weapon.HasChart || weapon.HasTable" class="ability-box">
+        <chart-table v-if="weapon.Chart" :chart="weapon.Chart" />
+        <basic-table v-if="weapon.HasTable" :chart="weapon.Table" />
       </div>
     </div>
-    <div class="desc--box" v-if="attack.Desc.length > 0" style="font-style: italic">{{ attack.Desc }}<br /></div>
+    <div class="desc--box" v-if="weapon.Desc.length > 0" style="font-style: italic">{{ weapon.Desc }}<br /></div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import { Attack, Weapon } from '@/class'
+import { weapon, Weapon } from '@/class'
 import AbilityWidget from '@/components/AbilityWidget.vue'
 import BasicTable from '@/components/BasicTable.vue'
 import ChartTable from '@/components/ChartTable.vue'
@@ -61,7 +61,7 @@ import ChartTable from '@/components/ChartTable.vue'
 export default Vue.extend({
   name: 'weapon-card',
   props: {
-    attack: {
+    weapon: {
       type: Weapon,
       required: true,
     },
@@ -73,7 +73,7 @@ export default Vue.extend({
   },
   computed: {
     isWeapon: function () {
-      return this.attack.hasOwnProperty('load_')
+      return this.weapon.hasOwnProperty('load_')
     },
   },
   components: { AbilityWidget, BasicTable, ChartTable },
@@ -81,7 +81,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.Attack {
+.weapon {
   background-color: rgb(226, 119, 43);
 }
 .Weapon {

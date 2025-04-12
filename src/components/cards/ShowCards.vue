@@ -25,8 +25,8 @@
                   <div class="card--box" v-if="job == 'Techniques'">
                     <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="job == 'Attacks'">
-                    <weapon-card :attack="n" :character_creation="character_creation" />
+                  <div class="card--box" v-if="job == 'Weapons'">
+                    <weapon-card :weapon="n" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Armor'">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
@@ -61,13 +61,13 @@
             <div class="card--box" v-if="job == 'Techniques'">
               <tech-card :tech="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Attacks'">
-              <weapon-card :attack="n" :color="card_color" :character_creation="character_creation" />
+            <div class="card--box" v-if="job == 'Weapons'">
+              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" />
             </div>
             <div class="card--box" v-if="job == 'Armor'">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Accessory'">
+            <div class="card--box" v-if="job == 'Accessories'">
               <accessory-card :accessory="n" />
             </div>
             <div class="card--box" v-if="job == 'Features'">
