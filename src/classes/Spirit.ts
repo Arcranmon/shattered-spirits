@@ -30,10 +30,6 @@ class Spirit extends Combatant {
   // ==========================================================
   // COMBATANT OVERRIDES
   // ==========================================================
-  override get MaxStamina() {
-    return 2
-  }
-
   override get Guard() {
     return this.SpiritType.Guard
   }

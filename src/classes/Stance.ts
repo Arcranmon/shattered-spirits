@@ -1,11 +1,12 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Ability, Base } from '@/class'
 
 class Stance extends Base {
   private class_: string
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private traits_: Array<string>
+  protected abilities_: Ability[] = []
 
   public constructor(name) {
     super(name)
@@ -30,7 +31,8 @@ class Stance extends Base {
   }
 
   public get Stun() {
-    return this.defenses_.stun
+    if (this.respite_.stun_clear) return this.respite_.stun_clear
+    return 0
   }
 
   public get Grit() {
@@ -45,6 +47,19 @@ class Stance extends Base {
 
   public get Focus() {
     if (this.defenses_.focus) return this.defenses_.focus
+    return 0
+  }
+
+  public get Abilities() {
+    return this.abilities_
+  }
+
+  public get MovementHeader() {
+    return '**Movement:** ' + this.Movement
+  }
+
+  public get Movement() {
+    if (this.respite_.movement) return this.respite_.movement
     return 0
   }
 
@@ -83,6 +98,11 @@ class Stance extends Base {
     this.respite_ = data.respite || null
     this.defenses_ = data.defenses || null
     this.traits_ = data.traits || []
+    if (data.abilities) {
+      for (var ability of data.abilities) {
+        this.abilities_.push(Ability.Deserialize(ability))
+      }
+    }
   }
 }
 export default Stance

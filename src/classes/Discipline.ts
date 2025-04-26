@@ -69,7 +69,6 @@ class Discipline {
     return '**Prerequisites:** _' + this.prereqs_.join('_, _') + '_'
   }
   public get Icon() {
-    console.log(this.Name)
     if (this.Type == 'Undefined') return ''
     if (this.Type == 'Rod') return require('@/assets/weapons/' + this.Type + '.svg')
     if (this.Category == 'Martial') {

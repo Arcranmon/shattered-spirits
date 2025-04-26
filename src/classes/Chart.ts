@@ -3,6 +3,7 @@ import { store } from '@/store'
 class Chart {
   private roll_: Array<string>
   private damage_: Array<number>
+  private negate_: Array<number>
   private stun_: Array<number>
   private damage_type_: string
   private keywords_: Array<string>
@@ -51,6 +52,9 @@ class Chart {
   public get Roll() {
     return this.roll_
   }
+  public Negate(i: number) {
+    return this.negate_[i]
+  }
   public Status(i: number): string {
     return this.status_[i]
   }
@@ -59,6 +63,9 @@ class Chart {
   }
   get HasStun() {
     return this.stun_.length > 0
+  }
+  get HasRoll() {
+    return this.roll_.length > 0
   }
   public get HasMaterial() {
     return this.material_.length > 0
@@ -84,6 +91,7 @@ class Chart {
     this.stun_ = data.stun || []
     this.damage_ = data.damage || []
     this.status_ = data.status || ['None', 'None', 'None', 'None']
+    this.negate_ = data.negate || [2, 3, 4, 5]
     while (this.status_.length < 4) this.status_.push('None')
     this.keywords_ = data.keywords || []
     this.damage_type_ = data.damage_type || ''

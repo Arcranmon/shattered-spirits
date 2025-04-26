@@ -16,7 +16,7 @@
       </v-tabs>
       <v-tabs-items v-model="equipment_tab" class="character-tab-content">
         <v-tab-item>
-          <show-cards job="Attacks" :inputs="npc.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+          <show-cards :inputs="npc.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
         </v-tab-item>
       </v-tabs-items>
     </v-card>

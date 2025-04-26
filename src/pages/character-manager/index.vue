@@ -1,5 +1,5 @@
 <template>
-  <character-manager :characters="characters" />
+  <character-manager />
 </template>
 
 <script>
@@ -9,12 +9,5 @@ import { CharacterManagementStore } from '@/store'
 import CharacterManager from '@/components/CharacterManager.vue'
 export default Vue.extend({
   components: { CharacterManager },
-  computed: {
-    characters() {
-      const store = getModule(CharacterManagementStore, this.$store)
-      store.loadCharacters()
-      return store.AllCharacters
-    },
-  },
 })
 </script>

@@ -75,6 +75,8 @@ attack_range_multiplier = {
 ATTACK = 1
 TECHNIQUE = 2
 
+negate = [2, 3, 4, 5]
+
 def get_status_magnitude(status):
     split_status = status.split(' ')
     if len(split_status) == 1: 
@@ -84,16 +86,13 @@ def get_status_magnitude(status):
     if len(split_status) == 3: # I'm lazy
         return status_multipliers[split_status[0].strip() + ' ' + split_status[1].strip()] * int(split_status[2].strip())
 
-def get_status_damage(status_string, glancing):
+def get_status_damage(status_string, index):
     # Split individual statuses out
     status_string = status_string.replace('_', '')
 
-    multipliers = status_string.split('[')
-    multiplier = 1
-    if(len(multipliers) > 1):
-        multiplier = (int(multipliers[1][0])-1)/6
+    multiplier = (negate[index]-1)/6
     
-    statuses = multipliers[0].split(', ')
+    statuses = status_string.split(', ')
 
     estimated_damage = 0
     no_save_damage = 0
@@ -171,7 +170,7 @@ def estimate_damage(attack, glancing, print_stats):
     disadvantage = [0.0740740740741, 0.125, 0.157407407407, 0.166666666667, 0.157407407407, 0.125, 0.087962962963, 0.0555555555556, 0.0324074074074, 0.0138888888889, 0.00462962962963]
 
     # Useful analysis parameters.
-    cost = 0
+    cost = 1
     roll_chart = 0*4
     damage_chart = [0]*4
     stun_chart = [0]*4
@@ -183,7 +182,7 @@ def estimate_damage(attack, glancing, print_stats):
     attack_class = ATTACK
     override_range = ""
     diff_speed = 0
-    stun_scale = 0.8 # Stun is worth 80% of a Damage
+    stun_scale = 0.75 # Stun is worth less
     
     expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
                 
@@ -202,6 +201,8 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             status_chart = attack["chart"]["status"]
         roll_chart = attack["chart"]["roll"]
+        if("negate" in attack):
+            negate = attack["chart"]["negate"]
 
     ability = attack["abilities"][0]           
     if(type(ability["speed"]) is int or len(ability["speed"]) == 1):
@@ -209,11 +210,11 @@ def estimate_damage(attack, glancing, print_stats):
     else:
         speed = int(ability["speed"][0])
     if "cost" in ability:
-        cost = int(ability["cost"][0])
+        cost += int(ability["cost"][0])
 
     if("analysis_notes" in ability):
         analysis_notes = ability["analysis_notes"]
-        cost = cost + analysis_notes.get("fudge", 0)
+        cost += analysis_notes.get("fudge", 0)
         expected_targets = analysis_notes.get("expected_targets", 1)
         if("bonus_damage" in analysis_notes):
             if(isinstance(analysis_notes["bonus_damage"], float) or isinstance(analysis_notes["bonus_damage"], int)):
@@ -294,7 +295,7 @@ def estimate_damage(attack, glancing, print_stats):
         damage += stun_chart[index] * stun_scale
         if(glancing): damage = math.ceil(damage/2.0)
         if(index < len(status_chart)):
-            damage += get_status_damage(status_chart[index], glancing)
+            damage += get_status_damage(status_chart[index], index)
         damage += bonus_damage[index]
         if(roll_chart[index] != 0): 
             damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum

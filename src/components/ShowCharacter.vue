@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 1em" class="background--color character-wrapper">
-    <v-tabs v-model="character_or_spirit_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+    <v-tabs v-model="character_or_spirit_tab" class="character-tabs" dark color="black" centered>
       <v-tab
         ><h3>{{ character.Name }}</h3></v-tab
       ><v-tab
@@ -14,92 +14,32 @@
             <v-col :cols="columnNumbers"> <combat-stats-widget :creature="character" @changed="$emit('changed')" /></v-col
             ><v-col :cols="columnNumbers"><status-widget :creature="character" @changed="$emit('changed')" /></v-col>
             <v-col :cols="12" style="margin-bottom: 1em">
-              <h3 style="text-align: center">Stances</h3>
-              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="width: 90%; margin: auto" /></v-col
+              <h3 style="text-align: center">Stance</h3>
+              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="width: 50%; margin: auto" /></v-col
           ></v-row>
-          <!--
-          <h3 style="text-align: center">Skills</h3>
+          <h3 style="text-align: center">Abilities and Equipment</h3>
           <v-card>
-            <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
-              <v-tab>
-                <h3>Archetype</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Talents</h3>
-              </v-tab></v-tabs
+            <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
+              ><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab></v-tabs
             >
-            <v-tabs-items v-model="equipment_tab" class="character-tab-content">
+            <v-tabs-items v-model="ability_tab" class="character-tab-content">
+              <v-tab-item><show-cards :inputs="this.$store.getters.getStancesFromList(character.Stances)" :collapse="false" :cols="2" /></v-tab-item>
+              <v-tab-item> <show-cards :inputs="this.$store.getters.getArtsFromList(character.Arts)" :collapse="false" :cols="2" /></v-tab-item
+              ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
               <v-tab-item
-                ><show-cards
-                  job="Archetype"
-                  :inputs="$store.getters.getArchetypesFromList(character.Archetypes)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2" /></v-tab-item
-              ><v-tab-item
-                ><show-cards
-                  job="Talent"
-                  :inputs="$store.getters.getTalentsFromList(character.Talents)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2" /></v-tab-item></v-tabs-items
-          ></v-card>
-            -->
-          <h3 style="text-align: center">Equipment</h3>
-          <v-card>
-            <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
-              <v-tab>
-                <h3>Weapons</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Armor</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Accessories</h3>
-              </v-tab>
-            </v-tabs>
-            <v-tabs-items v-model="equipment_tab" class="character-tab-content">
-              <v-tab-item>
-                <show-cards
-                  job="Weapons"
-                  :inputs="$store.getters.getWeaponsFromList(character.Weapons)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2"
-                />
-              </v-tab-item>
-              <v-tab-item>
-                <show-cards
-                  job="Armor"
-                  :inputs="$store.getters.getArmorFromList(character.Armor)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2"
-                />
-              </v-tab-item>
-              <v-tab-item
-                ><show-cards
-                  job="Accessories"
-                  :inputs="$store.getters.getAccessoryFromList(character.Accessories)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2"
-              /></v-tab-item>
-              <h4>Abilities</h4>
-              <v-tabs v-model="ability_tab" class="character-tabs" background-color="#b69e75" color="black" centered
-                ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab></v-tabs
-              >
-              <v-tabs-items v-model="ability_tab" class="character-tab-content">
-                <v-tab-item
-                  ><show-cards :inputs="this.$store.getters.getTechniquesFromList(this.$store.getters.basicTechniques)" job="Techniques" :collapse="false"
-                /></v-tab-item>
-                <v-tab-item
-                  ><show-cards :inputs="this.$store.getters.getStancesFromList(this.$store.getters.basicStances)" job="Stances" :collapse="false"
-                /></v-tab-item>
-                <v-tab-item>
-                  <show-cards :inputs="this.$store.getters.getArtsFromList(this.$store.getters.playerArts)" job="Arts" :collapse="false" /></v-tab-item
-              ></v-tabs-items>
-            </v-tabs-items>
+                ><v-tabs v-model="equipment_tab" color="black" light centered style="border-radius: 10px">
+                  <v-tab><h5>Equipped</h5></v-tab><v-tab><h5>consumables</h5></v-tab></v-tabs
+                >
+                <v-tabs-items v-model="equipment_tab" class="character-tab-content"
+                  ><v-tab-item
+                    ><b>Load:</b> {{ character.Load
+                    }}<show-cards :inputs="this.$store.getters.getEquipmentFromList(character.Equipped)" :collapse="false" :cols="2" /></v-tab-item
+                  ><v-tab-item
+                    ><show-cards
+                      :inputs="this.$store.getters.getEquipmentFromList(character.Consumables)"
+                      :collapse="false"
+                      :cols="2" /></v-tab-item></v-tabs-items></v-tab-item
+            ></v-tabs-items>
           </v-card></div></v-tab-item
       ><v-tab-item>
         <v-row style="margin: 1em">
@@ -108,14 +48,14 @@
         ></v-row>
         <h3 style="text-align: center">Equipment</h3>
         <v-card>
-          <v-tabs v-model="spirit_equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+          <v-tabs v-model="spirit_equipment_tab" class="character-tabs" light color="black" centered>
             <v-tab>
               <h3>Weapons</h3>
             </v-tab>
           </v-tabs>
           <v-tabs-items v-model="spirit_equipment_tab" class="character-tab-content">
             <v-tab-item>
-              <show-cards job="Attacks" :inputs="character.Spirit.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+              <show-cards :inputs="character.Spirit.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
             </v-tab-item>
           </v-tabs-items> </v-card></v-tab-item
     ></v-tabs-items>
@@ -149,12 +89,6 @@ export default Vue.extend({
       character_or_spirit_tab: null,
       windowWidth: window.innerWidth,
     }
-  },
-  methods: {
-    changeStance: function (variable) {
-      this.character.CurrentStance = variable.card
-      this.$emit('changed')
-    },
   },
   computed: {
     screenSize() {

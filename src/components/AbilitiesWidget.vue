@@ -9,17 +9,17 @@
       </v-tabs>
       <v-tabs-items v-model="ability_tab" class="creature-tab-content">
         <v-tab-item v-if="techniques">
-          <show-cards job="Techniques" :inputs="techniques" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
+          <show-cards :inputs="techniques" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
         ><v-tab-item v-if="actions.length > 0">
-          <show-cards job="Maneuvers" :inputs="actions" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
+          <show-cards :inputs="actions" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
         ><v-tab-item v-if="attacks.length > 0">
-          <show-cards job="Attacks" :inputs="attacks" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
+          <show-cards :inputs="attacks" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
         ><v-tab-item v-if="stunts.length > 0">
-          <show-cards job="Maneuvers" :inputs="stunts" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
+          <show-cards :inputs="stunts" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
         ><v-tab-item v-if="reactions.length > 0">
-          <show-cards job="Maneuvers" :inputs="reactions" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
+          <show-cards :inputs="reactions" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" /> </v-tab-item
         ><v-tab-item v-if="gambits.length > 0">
-          <show-cards job="Maneuvers" :inputs="gambits" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" />
+          <show-cards :inputs="gambits" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize" />
         </v-tab-item> </v-tabs-items
     ></v-card>
   </div>

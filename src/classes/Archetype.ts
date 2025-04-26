@@ -16,6 +16,10 @@ class Archetype extends Base {
     return '**Bonuses:** ' + this.bonuses_.ReadableString
   }
 
+  public get Bonuses() {
+    return this.bonuses_
+  }
+
   public get ArtHeader() {
     return '**Art:** _' + this.art_ + '_'
   }

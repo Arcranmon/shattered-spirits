@@ -28,14 +28,20 @@ declare interface IBonusesData {
 }
 
 declare interface IEquipmentData extends IBaseData {
-  durability: number
+  notches: number
   load: number
-  wear: number
+  durability: number
   abilities: IAbilityData[]
+  chart: IChartData
+}
+
+declare interface IConsumableData extends IEquipmentData {
+  hands: number
 }
 
 declare interface IArmorData extends IEquipmentData {
   guard: number
+  consumable_slots: number
   soak: number
   traits: string[]
 }
@@ -52,20 +58,21 @@ declare interface IChargedEffect {
 
 declare interface ICharacterData extends ICombatantData {
   current_stance: string
-  armor: string[]
   element: string
-  accessories: string[]
   disciplines: ICharDisciplineData[]
   name: string
   player_character: Boolean
   spirit: ISpiritData
-  weapons: string[]
   archetypes: string[]
   talents: string[]
+  wielded: string[]
+  equipped: string[]
+  consumables: string[]
+  pack: string[]
 }
 
 declare interface ICombatantData {
-  Health: number
+  health: number
   soak: number
   stun: number
   move: number
@@ -82,6 +89,7 @@ declare interface IChartData {
   damage_type: string
   keywords: Array<string>
   material: string
+  negate: Array<number>
 }
 
 declare interface IDefenseData {
@@ -136,7 +144,7 @@ declare interface INpcData {
   jump: number
   class: string
   desc: string
-  durability?: number
+  notches?: number
   Health: number
   guard?: number
   max_stun: number
@@ -159,6 +167,7 @@ declare interface IAbilityData extends IBaseData {
   area?: string
   boost?: string
   cost?: string
+  gambit?: string
   class: string
   move?: number
   range?: string
@@ -199,6 +208,7 @@ declare interface IRespiteData {
   stun_clear: number
   conditional_momentum: string
   special: string
+  movement: number
 }
 
 declare interface ISpiritData extends ICombatantData {
@@ -224,6 +234,7 @@ declare interface IStanceData extends IBaseData {
   respite?: IRespiteData
   defenses?: IDefenseData
   traits: string[]
+  abilities: IAbilityData[]
 }
 
 declare interface IStatusEffect {

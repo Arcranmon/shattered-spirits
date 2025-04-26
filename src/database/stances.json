@@ -1,27 +1,129 @@
 [
   {
-    "name": "Aggressive Stance",
-    "class": "Martial",
-    "desc": "A stance focused on overwhelming offense.",
-    "effect": "Once per _Round_, as a _Reaction_ on your _Turn_, you may use an Attack with a -2 _Discount_.",
+    "name": "Novice Stance",
+    "desc": "A balanced, untrained stance that does not specialize in any obvious way.",
+    "respite": { "momentum_gain": 3, "stun_clear": 4, "movement": 1 },
+    "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
+    "effect": "None",
+    "abilities": [
+      {
+        "name": "Spiritbound and Spirit",
+        "class": "General",
+        "type": "Major Action",
+        "cost": "None",
+        "effect": "_Summon_ your Spirit within a valid Arena within Range. You and your spirit may both immediately use an Action [_Discount_ 1], resolving them both this _Turn_."
+      },
+      {
+        "name": "Beginner's Luck",
+        "class": "General",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "You make an Attack or Defense Roll.",
+        "effect": "After determining the final result, reroll one of the dice. This does not change the result, but may allow you to qualify for a _Gambit_."
+      }
+    ]
+  },
+  {
+    "name": "Forceful Stance",
+    "desc": "A stance focused on overwhelming offense and powerful blows that break through a foe's defenses.",
+    "effect": "The first time each _Phase_ you successfully inflict _Break_, gain 1 _Momentum_.",
     "respite": { "momentum_gain": 4 },
-    "defenses": { "focus": 1 }
+    "defenses": { "focus": 2, "grit": 1 },
+    "abilities": [
+      {
+        "name": "Smash",
+        "class": "Offensive",
+        "type": "Major Action",
+        "speed": 1,
+        "cost": "None",
+        "effect": "Use a _Versatile_ or _Heavy_ _Attack_, adding [Pierce 1] and dealing _Bonus Damage_ equal to 1 + the current Phase on a Graze+. On a Hit+, add Break [Focus]."
+      },
+      {
+        "name": "Painful Reminder",
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "trigger": "_Hit_+ with a _Versatile_/_Heavy_ Attack.",
+        "effect": "For the remainder of this _Phase_, add [_Pierce_ 2] to all Attacks against the Target."
+      },
+      {
+        "name": "Wide Open!",
+        "class": "Offensive",
+        "type": "Reaction",
+        "cost": "2 _Momentum_",
+        "trigger": "You inflict _Break_.",
+        "effect": "The Target creates an _Opening_. You may not respond to said _Opening_."
+      }
+    ]
   },
   {
-    "name": "Defensive Stance",
-    "class": "Martial",
+    "name": "Steady Stance",
     "desc": "A stance focused on unbreakable defense.",
-    "effect": "Once per _Round_, as a _Reaction_ you may use any Defensive Action with a -2 _Discount_.",
+    "effect": "While _Guarding_ gain +1 _Guard_ and gain _Advantage_ while _Negating_.",
     "respite": { "momentum_gain": 2, "stun_clear": 5 },
-    "defenses": { "grit": 1 }
+    "defenses": { "grit": 2, "focus": 1 },
+    "abilities": [
+      {
+        "name": "Defensive Posture",
+        "class": "Offensive",
+        "type": "Major Action",
+        "speed": 1,
+        "cost": "None",
+        "effect": "Make an Attack, clear 3 _Stun_, then become _Guarding_."
+      },
+      {
+        "name": "Form Up",
+        "class": "Defensive",
+        "keywords": ["Priority"],
+        "type": "Action",
+        "cost": "1 _Momentum_",
+        "effect": "You or an ally you are _Engaged_ with becomes _Guarding_.",
+        "boost": "1 _Momentum_: You an your ally both become _Guarding_."
+      },
+      {
+        "name": "Flawless",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "You _Tie+_ the _Defense Roll_.",
+        "effect": "All your _Guard_ this _Turn_ is instead _Perfect Guard_."
+      }
+    ]
   },
   {
-    "name": "Mobile Stance",
-    "class": "Martial",
-    "desc": "A stance focused on covering ground across the field.",
-    "effect": "Once per _Round_ on your _Turn_ you may use a _Mobility_ _Enhancement_ with a -2 _Discount_.",
-    "respite": { "momentum_gain": 3, "stun_clear": 2, "special": "Gain +2 _Movement_." },
-    "defenses": { "reflex": 1 }
+    "name": "Swift Stance",
+    "desc": "A stance focused on swift, sudden movements and capitalizing on agility.",
+    "abilities": [
+      {
+        "name": "Skirmish",
+        "class": "Offensive",
+        "type": "Major Action",
+        "speed": 1,
+        "cost": "None",
+        "effect": "Make 3 _Light_ or _Versatile_ Attacks.",
+        "boost": "1 _Momentum_: Gain 1 _Temporary_ _Movement_."
+      },
+      {
+        "name": "Dash",
+        "keywords": ["Priority", "Limited"],
+        "class": "Mobility",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "effect": "Gain 1 _Temporary_ _Movement_. Your _Movement_ this _Turn_ is [_Safe_], but you may only use _Mobility_ _Enhancements_ this _Turn_.",
+        "boost": "1 _Momentum_: Gain 1 _Temporary_ _Movement_."
+      },
+      {
+        "name": "Swift Strike",
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Make a _Light_ _Attack_ at _Advantage_. You may pay the Cost of this Attack with _Movement_ instead of _Momentum_. This Attack may not trigger _Gambits_."
+      }
+    ],
+    "effect": "You may spend up to 2 _Movement_ at _Refresh_ as if it was your _Turn_; this _Movement_ is automatically [_Safe_]. Attacks against you on your _Turn_ have _Disadvantage_.",
+    "respite": { "momentum_gain": 3, "stun_clear": 2, "movement": 2 },
+    "defenses": { "reflex": 2, "focus": 1 }
   },
   {
     "name": "Blaze Stance",

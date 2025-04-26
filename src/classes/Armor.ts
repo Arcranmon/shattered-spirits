@@ -4,6 +4,7 @@ import { Ability, Equipment } from '@/class'
 class Armor extends Equipment {
   private guard_: number
   private soak_: number
+  private consumable_slots_: number
   private traits_: string[]
 
   public constructor(name) {
@@ -20,14 +21,12 @@ class Armor extends Equipment {
   get Soak() {
     return this.soak_
   }
+  get ConsumableSlots() {
+    return this.consumable_slots_
+  }
   get Traits() {
     return this.traits_
   }
-  public get Icon() {
-    if (this.Category == 'Error') return ''
-    return require('@/assets/' + this.Category + '.svg')
-  }
-
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
@@ -64,6 +63,7 @@ class Armor extends Equipment {
     this.setEquipmentData(data)
     this.guard_ = data.guard || 0
     this.soak_ = data.soak || 0
+    this.consumable_slots_ = data.consumable_slots || 0
     this.traits_ = data.traits || []
   }
 }

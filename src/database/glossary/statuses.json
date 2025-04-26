@@ -24,11 +24,18 @@
   {
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleeding they take 2 _True_ Damage at the end of each _Phase_.",
-    "special": "A creature may not gain _Health_ while they have Bleeding. Instead, they remove Bleeding as soon as they gain _Health_ from any source.",
-    "repeat": "If a Bleeding creature would gain Bleeding they instead take 3 _True_ Damage.",
+    "effect": "While a creature has Bleeding they take _True_ Damage at the end of each _Phase_ equal to their _Bleeding_ value.",
+    "special": "A creature may not gain _Health_ while they have Bleeding. Instead, every points of _Health_ healed removes _Bleeding_ 1.",
+    "repeat": "If a _Bleeding_ creatures gains _Bleeding_, increase the value by 1.",
     "remove": "Bleeding is only removed by effects that explicitly remove it.",
     "type": "Affliction"
+  },
+  {
+    "name": "Break",
+    "desc": "You force through a creature's defenses, leaving them reeling and weak.",
+    "effect": "If you inflict Break on a Target that is _Guarding_ or _Charging_ they immediately lose that effect. Additionally, if a creature was at their maximum _Stun_ value prior to the triggering effect, inflict _Stunned_ on them. Finally, a _Minion_ is instantly defeated if they gain Break.",
+    "special": "If a creature is below half of their maximum _Stun_ value, they have _Advantage_ when _Negating_ _Break_. If they are at their maximum _Stun_ value, the creature automatically fails.",
+    "type": "Instant Effect"
   },
   {
     "name": "Blinded",
@@ -42,8 +49,8 @@
   {
     "name": "Charging",
     "desc": "A status gained while a creature gathers power and focus for a powerful effect.",
-    "effect": "While _Charging_ you may not willingly _Move_, make _Attacks_, or take a _Turn_.",
-    "remove": "Creatures lose Charging if they gain _Stunned_. If they do, they gain any _Momentum_ they would have gained if they _Missed_.",
+    "effect": "While _Charging_ the cost of all effects is increased by 1 and you may not willingly _Move_. Additionally, when a creature becomes _Charging_, the only _Action_ they may take in the next phase is the one specified in the ability that granted _Charging_.",
+    "remove": "Creatures lose Charging if they gain _Break_.",
     "special": "A creature may not be both Charging and _Guarding_.",
     "type": "Status Effect"
   },
@@ -65,8 +72,8 @@
   {
     "name": "Guarding",
     "desc": "A status gained while a creature focuses entirely on defense.",
-    "effect": "While Guarding:\n* All _Attacks_ are made at _Disadvantage_.\n* All _Movement_ costs are increased by 1.\n* The cost of all _Defensive_ _Reactions_ is reduced by 1.\n\nEffects that grant Guarding also typically provide some small additional bonus; if a creature gains Guarding from another source, replace the bonus.",
-    "remove": "Creatures lose Guarding if they gain _Stunned_. Creatures may also willingly end the effect at the end of their _Turn_, or when using a _Defensive_ _Reaction_ to gain _Advantage_ on their roll.",
+    "effect": "While Guarding:\n* All _Attacks_ are made at _Disadvantage_.\n* All _Movement_ costs are increased by 1.\n* The cost of all _Defensive_ _Reactions_ is reduced by 1.",
+    "remove": "Creatures lose Guarding if they gain _Break_. Creatures may also willingly end the effect at the end of their _Turn_, or when using a _Defensive_ _Reaction_ to gain _Advantage_ on their roll.",
     "special": "A creature may not be both _Charging_ and Guarding.",
     "type": "Status Effect"
   },
@@ -172,15 +179,9 @@
   {
     "name": "Stunned",
     "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "When a creature gains Stunned inflict _Skipped_ and the attacker's choice of _Reeling_, _Impaired_, or _Exposed_. The creature immediately loses _Guarding_ or _Charging_. While Stunned any _Stun_ inflicted on the creature is instead [_AP_] Damage.",
+    "effect": "When a creature gains _Stunned_ they immediately lose half their _Momentum_ and _Movement_. While Stunned:\n* A creature may not clear any _Stun_.\n* Has _Disadvantage_ when _Negating_\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
     "remove": "Remove Stunned at the end of the _Round_ it was inflicted.",
     "type": "Affliction"
-  },
-  {
-    "name": "Skipped",
-    "desc": "An affliction caused when a creature is unable to act properly.",
-    "effect": "What happens to a creature when they gain Skipped depends on if they have a _Technique_ or _Action_ next in Initiative. If it is an _Action_, the creature does not get to use that _Action_. If it is a _Technique_, the creature must replace their selected _Technique_ with _Improvise_. Refund any cost paid for this _Technique_.",
-    "type": "Instant Effect"
   },
   {
     "name": "Studied",
@@ -209,5 +210,13 @@
     "recover": "When a creature _Recovers_ they may remove _Sealed_ and gain _Suppressed_.",
     "repeat": "If a Sealed creature would gain Sealed they instead gain 4 _Stun_. If a _Suppressed_ creature gains Sealed, remove _Suppressed_ and inflict 2 _Stun_.",
     "type": "Status Effect"
+  },
+  {
+    "name": "Vulnerable",
+    "desc": "A status that represents an erasure of a character's ability to successfully defend themselves.",
+    "effect": "For each instance of Vulnerable a creature has attacks against them gain an equivalent amount of _Pierce_.",
+    "recover": "When a creature _Recovers_ they may remove 2 Vulnerable.",
+    "remove": "When a creature would clear _Stun_ they may remove Vulnerable in place of 2 _Stun_, as many times as they wish.",
+    "type": "Affliction"
   }
 ]

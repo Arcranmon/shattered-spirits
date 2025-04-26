@@ -1,6 +1,6 @@
 import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
-import Accessories from '@/database/items/accessories.json'
+import ConsumablesJson from '@/database/items/consumables.json'
 import DisciplinesJson from '@/database/disciplines.json'
 import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
@@ -24,7 +24,7 @@ import ManeuversJson from '@/database/maneuvers.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Art, Armor, Archetype, Discipline, Accessory, Maneuver, Npc, Feature, SpiritType, Stance, Status, Talent, Technique, Terrain, Weapon } from '@/class'
+import { Art, Armor, Archetype, Discipline, Consumable, Maneuver, Npc, Feature, SpiritType, Stance, Status, Talent, Technique, Terrain, Weapon } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -53,6 +53,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
     this.Arts = ArtsJson.map((x) => Art.Deserialize(<IArtData>(<unknown>x)))
+    this.Consumables = ConsumablesJson.map((x) => Consumable.Deserialize(<IConsumableData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -65,17 +66,14 @@ export class DatabaseJsonStore extends VuexModule {
   private Features: Feature[] = []
   private Archetypes: Archetype[] = []
   private Arts: Art[] = []
-
-  get basicTechniques() {
-    return ['Dash', 'Rally', 'Improvise', 'Skirmish', 'Combination Strike', 'Smash']
-  }
+  private Consumables: Consumable[] = []
 
   get basicStances() {
-    return ['Aggressive Stance', 'Defensive Stance', 'Mobile Stance']
+    return ['Novice Stance', 'Swift Stance', 'Steady Stance', 'Forceful Stance']
   }
 
   get basicArts() {
-    return ['Shift', 'Breather', 'Evade', 'Seize Opening', 'Block', 'Martial Arts', 'Interact', 'Stratagem']
+    return ['Shift', 'Rally', 'Evade', 'Fight', 'Ward', 'Martial Arts', 'Manuever', 'Interact']
   }
 
   get playerArts() {
@@ -135,6 +133,27 @@ export class DatabaseJsonStore extends VuexModule {
   get isArt(): any {
     return (inword: string) => {
       return this.Arts.some((x) => x.Name == inword.trim())
+    }
+  }
+  // ==========================================================
+  // EQUIPMENT GETTERS
+  // ==========================================================
+  get getEquipmentFromList(): any {
+    return (equipment_list: Array<any>) => {
+      if (equipment_list == undefined) return []
+      let equipment: Array<any> = []
+      for (var item of equipment_list) {
+        if (this.isWeapon(item)) {
+          equipment.push(this.getWeapon(item))
+        }
+        if (this.isArmor(item)) {
+          equipment.push(this.getArmor(item))
+        }
+        if (this.isConsumable(item)) {
+          equipment.push(this.getConsumable(item))
+        }
+      }
+      return equipment
     }
   }
 
@@ -247,7 +266,6 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getStance(): any {
     return (inword: string) => {
-      console.log(inword)
       var stance = Stances.find((x) => x.name.trim() === inword.trim())
       if (stance == undefined) return new Stance(inword)
       return Stance.Deserialize(<IStanceData>(<unknown>stance))
@@ -428,32 +446,34 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // FEATURE TOOLS
+  // Consumable TOOLS
   // ==========================================================
-  get getAccessories(): any {
-    return () => {
-      return Accessories.map((x) => Accessory.Deserialize(<IAccessoryData>(<unknown>x)))
-    }
-  }
-
-  get getAccessory(): any {
+  get isConsumable(): any {
     return (inword: string) => {
-      var accessory = Accessories.find((x) => x.name.trim() === inword.trim())
-      if (accessory == undefined) {
-        return new Accessory(inword)
-      }
-      return Accessory.Deserialize(<IEquipmentData>(<unknown>accessory))
+      return this.Consumables.some((x) => x.Name == inword.trim())
     }
   }
 
-  get getAccessoryFromList(): any {
-    return (accessory_list: Array<any>) => {
-      if (accessory_list == undefined) return []
-      let Accessories: Array<Accessory> = []
-      for (var accessory of accessory_list) {
-        Accessories.push(this.getAccessory(accessory))
+  get getConsumables(): any {
+    return () => {
+      return this.Consumables
+    }
+  }
+
+  get getConsumable(): any {
+    return (inword: string) => {
+      return this.Consumables.find((x) => x.Name === inword.trim())
+    }
+  }
+
+  get getConsumableFromList(): any {
+    return (consumable_list: Array<any>) => {
+      if (consumable_list == undefined) return []
+      let consumables: Array<Consumable> = []
+      for (var consumable of consumable_list) {
+        consumables.push(this.getConsumable(consumable))
       }
-      return Accessories
+      return consumables
     }
   }
 

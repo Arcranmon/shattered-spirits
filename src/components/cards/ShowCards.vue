@@ -52,24 +52,22 @@
             v-on:click="clickMethod(n, index)"
             :lg="colWidth"
           >
-            <div class="card--box" v-if="job == 'Maneuvers'">
-              <maneuver-card :maneuver="n" :format_text="true" />
-            </div>
-            <div class="card--box" v-if="job == 'Stances'">
+            <div class="card--box" v-if="isStance(n)">
               <stance-card :stance="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Techniques'">
+            <div class="card--box" v-if="isTechnique(n)">
               <tech-card :tech="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Weapons'">
+            <div class="card--box" v-if="isWeapon(n)">
               <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Armor'">
+            <div class="card--box" v-if="isArmor(n)">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="job == 'Accessories'">
-              <accessory-card :accessory="n" />
+            <div class="card--box" v-if="isConsumable(n)">
+              <consumable-card :consumable="n" />
             </div>
+            <!---
             <div class="card--box" v-if="job == 'Features'">
               <feature-card :feature="n" />
             </div>
@@ -85,13 +83,14 @@
             <div class="card--box" v-if="job == 'SpiritType'">
               <spirit-type-card :type="n" />
             </div>
-            <div class="card--box" v-if="job == 'Archetype'">
+            -->
+            <div class="card--box" v-if="isArchetype(n)">
               <archetype-card :archetype="n" />
             </div>
-            <div class="card--box" v-if="job == 'Talent'">
+            <div class="card--box" v-if="isTalent(n)">
               <talent-card :talent="n" />
             </div>
-            <div class="card--box" v-if="job == 'Arts'">
+            <div class="card--box" v-if="isArt(n)">
               <art-card :art="n" style="height: 100%" />
             </div>
           </v-col>
@@ -105,8 +104,7 @@ import Vue from 'vue'
 import ArchetypeCard from './ArchetypeCard.vue'
 import ArmorCard from './ArmorCard.vue'
 import ArtCard from './ArtCard.vue'
-import AccessoryCard from './AccessoryCard.vue'
-import ManeuverCard from './ManeuverCard.vue'
+import ConsumableCard from './ConsumableCard.vue'
 import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
@@ -115,16 +113,13 @@ import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import WeaponCard from './WeaponCard.vue'
 import SpiritTypeCard from './SpiritTypeCard.vue'
+import { Art, Armor, Consumable, Archetype, Feature, Stance, Status, Talent, Technique, Terrain, Weapon, SpiritType } from '@/class'
 
 export default Vue.extend({
   name: 'show-cards',
   props: {
     inputs: {
       type: Array,
-      required: true,
-    },
-    job: {
-      type: String,
       required: true,
     },
     card_color: {
@@ -182,8 +177,7 @@ export default Vue.extend({
     ArtCard,
     ArchetypeCard,
     ArmorCard,
-    AccessoryCard,
-    ManeuverCard,
+    ConsumableCard,
     FeatureCard,
     StanceCard,
     StatusCard,
@@ -196,6 +190,30 @@ export default Vue.extend({
   methods: {
     clickMethod(variable, index) {
       this.$emit('chose', { card: variable, index: index })
+    },
+    isArt(variable) {
+      return variable instanceof Art
+    },
+    isArchetype(variable) {
+      return variable instanceof Archetype
+    },
+    isArmor(variable) {
+      return variable instanceof Armor
+    },
+    isStance(variable) {
+      return variable instanceof Stance
+    },
+    isTechnique(variable) {
+      return variable instanceof Technique
+    },
+    isConsumable(variable) {
+      return variable instanceof Consumable
+    },
+    isWeapon(variable) {
+      return variable instanceof Weapon
+    },
+    isTalent(variable) {
+      return variable instanceof Talent
     },
   },
   computed: {

@@ -1,5 +1,30 @@
 [
   {
+    "name": "Basic Craft",
+    "category": "Basic",
+    "desc": "You prepare spiritcraft, conducting the hand signs and speaking the words to simplify casting.",
+    "abilities": [
+      {
+        "name": "Swift Preparation",
+        "keywords": ["Spirit"],
+        "class": "Utility",
+        "type": "Action",
+        "speed": 1,
+        "cost": "None",
+        "effect": "Place _Momentum_ on any [_Spirit_] Art or Technique equal to the _Free Hands_ you have.",
+        "boost": "No Cost: Add [_Rooted_]. Place an additional _Momentum_ on the same _Art_."
+      },
+      {
+        "name": "Focused Charge",
+        "keywords": ["Spirit", "Rooted"],
+        "class": "Utility",
+        "type": "Action",
+        "cost": "None",
+        "effect": "Become _Charging_. At the end of the next _Phase_, as a _Slow Action_, place 3 _Momentum_ on any [_Spirit_] Art or Technique plus the _Free Hands_ you have."
+      }
+    ]
+  },
+  {
     "name": "Shift",
     "category": "Basic",
     "desc": "You dash forward, covering ground across the battlefield.",
@@ -11,14 +36,54 @@
         "speed": 1,
         "cost": "1 _Momentum_",
         "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_.",
-        "boost": "1 _Momentum_: Repeat the Effect. You may use this _Boost_ twice."
+        "boost": "1 _Momentum_: Repeat the effect."
       },
       {
         "name": "Dig Deep",
         "class": "Mobility",
         "type": "Enhancement",
         "cost": "2 _Momentum_",
-        "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_."
+        "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_.",
+        "boost": "2 _Momentum_: Repeat the effect."
+      }
+    ]
+  },
+  {
+    "name": "Fight",
+    "category": "Basic",
+    "desc": "You stand strong, unleashing attacks without compromising your position.",
+    "abilities": [
+      {
+        "name": "Basic Combat",
+        "class": "Offensive",
+        "type": "Action",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "effect": "Use an Attack."
+      },
+      {
+        "name": "Opportunity Attack",
+        "class": "Offensive",
+        "type": "Reaction",
+        "trigger": "A hostile creature you are _Engaged_ with creates an _Opening_.",
+        "cost": "None",
+        "effect": "Use a Single-Target Attack against the triggering creature, paying all costs as normal."
+      },
+      {
+        "name": "Lethal Blow",
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "Hit+.",
+        "effect": "Deal 3 _Bonus_ _Damage_."
+      },
+      {
+        "name": "Guard Breaker",
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "Hit+ with a _Versatile_ or _Heavy_ Attack.",
+        "effect": "Add _Break_ [_Focus_] to the triggering Attack or deal +5 _Bonus Stun_."
       }
     ]
   },
@@ -28,11 +93,19 @@
     "category": "Basic",
     "abilities": [
       {
+        "name": "Sheer Grit",
+        "class": "Defensive",
+        "type": "Major Action",
+        "cost": "None",
+        "effect": "Clear all your _Stun_, then _Recover_ twice."
+      },
+      {
         "name": "Push Through",
         "class": "Utility",
         "type": "Action",
+        "keywords": ["Rooted"],
         "cost": "1 _Momentum_",
-        "effect": "_Recover_, then reduce your _Stun_ by 7."
+        "effect": "_Recover_, then reduce your _Stun_ by 4."
       },
       {
         "name": "Endure",
@@ -40,8 +113,8 @@
         "type": "Reaction",
         "keywords": ["Exhaust"],
         "cost": "None",
-        "trigger": "You would be _Stunned_.",
-        "effect": "You are instead not _Stunned_, and take no _Stun_ from the triggering effect. Set you _Stun_ to half its maximum value."
+        "trigger": "You would gain _Break_.",
+        "effect": "You are instead do not gain _Break_. Clear half your maximum _Stun_."
       }
     ]
   },
@@ -86,31 +159,33 @@
         "type": "Reaction",
         "cost": "1 _Momentum_, 1 _Movement_",
         "trigger": "You are Attacked and are not _Immobile_.",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was not _Melee_. After resolving this Reaction, decrease the Rank of the triggering Attack by 1 and gain +1 Reflex.\n* **Lose**: Gain _Prone_.\n* **Tie:** Gain +1 _Reflex_.\n* **Win:** Gain +2 _Reflex_. You may _Disengage_ without creating an _Opening_."
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was not _Melee_. Gain +1 Reflex.\n* **Tie:** Decrease the Attack rank by 1.\n* **Win:** Decrease the Attack rank by 1. You may _Disengage_ without creating an [_Opening_].",
+        "boost": "1 _Movement_: Reroll the _Defense Roll_; if you Lose, gain _Prone_."
       }
     ],
     "table": [
       ["2-4", "Miss"],
-      ["5-7", "Graze"],
-      ["8-11", "Hit"],
-      ["12", "Crit"]
+      ["5-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
     ]
   },
   {
     "name": "Martial Arts",
     "category": "Basic",
     "desc": "You utilize unarmed combat, striking and defending with precision.",
-    "keywords": ["Natural", "Crush"],
     "abilities": [
       {
         "name": "Strike",
-        "class": "Light Attack",
-        "type": "Action",
+        "keywords": ["Crush"],
+        "class": "Light",
+        "type": "Attack",
         "speed": 1,
-        "cost": "1 _Momentum_",
+        "cost": "None",
         "range": "Melee",
+        "target": "Single-Target",
         "effect": "Attack a Target within Range. If used in a _Phase_ later than this Art's listed _Speed_, deal +2 _Bonus Stun_ per _Phase_ later on a _Graze_+.",
-        "boost": "1 _Momentum_: On a _Hit_+, deal +1 _Bonus Stun_ and add _Push_ [4 _Grit_] or _Prone_/_Grabbed_ [3 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_."
+        "gambit": "On a _Graze_+, choose one:\n* Deal +2 _Bonus Stun_ and add _Push_ [_Grit_].\n* Deal +1 _Bonus Stun_ and add _Prone_/_Grabbed_ [_Grit_/_Reflex_]."
       },
       {
         "name": "Parry",
@@ -118,7 +193,7 @@
         "type": "Reaction",
         "cost": "1 _Momentum_",
         "trigger": "You are Attacked.",
-        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_.\n* **Always:** Gain a +1 to _Negate_ and 1 _Block_.\n* **Tie:** Gain an additional +1 _Block_.\n* **Win:** Gain an additional +1 _Block_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
+        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_.\n* **Always:** Gain a +1 to _Negate_ and 1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +1 _Guard_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
       }
     ],
     "chart": {
@@ -134,6 +209,7 @@
     "abilities": [
       {
         "name": "Manifest",
+        "keywords": ["Spirit"],
         "class": "Utility",
         "type": "Action",
         "speed": 1,
@@ -143,15 +219,17 @@
       },
       {
         "name": "Tag Team",
+        "keywords": ["Spirit"],
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
         "reqs": "_Spirit_ is within Range of the original Attack's Target.",
-        "effect": "Your Spirit may immediately use a Single-Target Attack Action against the same Target with a -2 _Discount_.",
+        "effect": "Your Spirit may immediately use a Single-Target Attack Action [_Discount_ 2] against the same Target.",
         "boost": "1 _Momentum_: You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately use Manifest, then resolve this Gambit."
       },
       {
         "name": "Interdiction",
+        "keywords": ["Spirit"],
         "class": "Defensive",
         "type": "Gambit",
         "cost": "None",
@@ -205,7 +283,7 @@
     "category": "Martial"
   },
   {
-    "name": "Block",
+    "name": "Ward",
     "category": "Basic",
     "desc": "Raised fists or a shield are enough to dampen hits ever so slightly.",
     "abilities": [
@@ -215,22 +293,21 @@
         "keywords": ["Rooted"],
         "type": "Action",
         "speed": 1,
-        "cost": "None",
-        "effect": "You become _Guarding_. While _Guarding_ in this way gain 1 _Guard_."
+        "cost": "1 _Momentum_",
+        "effect": "Clear 2 _Stun_. You become _Guarding_."
       },
       {
-        "name": "Flawless",
+        "name": "Perfect Parry",
         "class": "Defensive",
         "type": "Gambit",
         "cost": "None",
         "reqs": "Hit+ on the _Defense Roll_.",
-        "effect": "Gain +3 _Guard_.",
-        "special": "If you are _Guarding_, your _Guard_ is instead _Perfect Guard_."
+        "effect": "Gain +3 _Guard_, +1 if you are _Guarding_."
       }
     ]
   },
   {
-    "name": "Breather",
+    "name": "Rally",
     "category": "Basic",
     "desc": "Battle is no place for weakness; you grit your teeth, catch your breath, and push on.",
     "abilities": [
@@ -240,8 +317,10 @@
         "keywords": ["Rooted"],
         "type": "Action",
         "speed": 1,
-        "cost": "1 _Momentum_",
-        "effect": "_Recover_, reduce your _Stun_ by 5, or gain 1 _Momentum_."
+        "cost": "None",
+        "range": "Self/Melee",
+        "target": "Ally (Optional)",
+        "effect": "Choose one:\n* You or the Target may _Recover_.\n* You and the Target clear 5 _Stun_, distributed however you wish.\n* You gain 1 _Momentum_."
       },
       {
         "name": "Grit Teeth",
@@ -265,24 +344,7 @@
     "name": "Seize Opening",
     "category": "Basic",
     "desc": "Anything on the battlefield is a potentially opening, if you are bold enough to seize it.",
-    "abilities": [
-      {
-        "name": "Opportunity Attack",
-        "class": "Offensive",
-        "type": "Reaction",
-        "trigger": "A hostile creature creates an _Opening_.",
-        "cost": "None",
-        "effect": "Use a Single-Target Attack Action against the triggering creature, paying all costs as normal."
-      },
-      {
-        "name": "Lethal Blow",
-        "class": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "reqs": "Hit+ on the _Attack Roll_.",
-        "effect": "Deal 3 _Bonus_ _Damage_. If the target is _Stunned_, instead deal 5  _Bonus_ _Damage_."
-      }
-    ]
+    "abilities": []
   },
   {
     "name": "Interact",
@@ -297,37 +359,55 @@
         "effect": "Resolve the Interaction effect of the _Terrain_ you are _Occupying_, paying its listed _Cost_."
       },
       {
+        "name": "Drop",
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "0 _Momentum_",
+        "effect": "Drop a piece of _Wielded_ _Equipment_, placing it unused in your _Arena_."
+      },
+      {
         "name": "Quickdraw",
         "class": "Utility",
         "type": "Enhancement",
         "cost": "0 _Momentum_",
-        "effect": "_Wield_ or _Use_ a piece of _Equipment_ on your _Belt_, or place a _Wielded_ piece of _Equipment_ on your _Belt_. You may use this option at any time, even if it is not your _Turn_."
+        "effect": "_Wield_ an _Equipped_ _Consumable_ or _Light_ Item, or _Equip_ a  _Wielded_ _Consumable_ or _Light_ Item. You may use this option at any time, even if it is not your _Turn_."
       },
       {
         "name": "Draw",
         "class": "Utility",
         "type": "Enhancement",
         "cost": "1 _Momentum_",
-        "effect": "_Wield_ or _Use_ a piece of _Equipped_ _Equipment_, or _Equip_ a _Wielded_ piece of _Equipment_."
+        "effect": "_Wield_ a piece of _Equipped_ _Equipment_, or _Equip_ a _Wielded_ piece of _Equipment_."
       },
+
       {
         "name": "Retrieve",
         "class": "Utility",
         "type": "Enhancement",
-        "cost": "1 _Momentum_",
-        "effect": "Create an [_Opening_]. _Wield_, _Use_, or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
+        "cost": "1 _Momentum_/_Movement_",
+        "effect": "Create an [_Opening_]. _Wield_ or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
       },
       {
         "name": "Rummage",
         "class": "Utility",
+        "keywords": ["Rooted"],
         "type": "Action",
         "cost": "2 _Momentum_",
-        "effect": "Create an [_Opening_]. _Wield_ or _Use_ a piece of _Equipment_ in your _Pack_, or place a _Wielded_ piece of _Equipment_ in your _Pack_."
+        "effect": "Create an [_Opening_]. _Wield_ or _Equip_ a piece of _Equipment_ in your _Pack_, or place a _Wielded_ piece of _Equipment_ in your _Pack_.",
+        "boost": "1 _Momentum_: Repeat the effect without creating an additional [_Opening_]. You may repeat this _Boost_."
+      },
+      {
+        "name": "Drop Pack",
+        "class": "Utility",
+        "type": "Action",
+        "keywords": ["Rooted"],
+        "cost": "2 _Momentum_",
+        "effect": "Create an [_Opening_]. Remove your _Pack_, placing it in your current _Arena_."
       }
     ]
   },
   {
-    "name": "Strategem",
+    "name": "Manuever",
     "desc": "You use mobility and guile to outmaneuver your foe, forcing openings.",
     "category": "Basic",
     "abilities": [
@@ -338,7 +418,7 @@
         "cost": "1 _Momentum_/_Movement_",
         "range": "Melee",
         "effect": "A Target within Range must immediately _Negate_ [5 _Focus_]. If they fail, you gain a +1 _Bonus_ on your next _Attack_ against them this _Turn_.",
-        "special": "If you paid the cost with _Movement_, you may force the Target to _Negate_ with _Reflex_."
+        "special": "If you paid the cost with _Movement_, the Target instead _Negates_ with _Reflex_."
       },
       {
         "name": "Flank",
@@ -348,7 +428,7 @@
         "range": "Melee",
         "trigger": "A hostile creature within Range is Attacked.",
         "effect": "The Target must immediately _Negate_ [5 _Focus_]. If they fail, the Attacker gains a +1 _Bonus_.",
-        "special": "If you paid the cost with _Movement_, you may force the Target to _Negate_ with _Reflex_."
+        "special": "If you paid the cost with _Movement_, the Target instead _Negates_ with _Reflex_."
       }
     ]
   }

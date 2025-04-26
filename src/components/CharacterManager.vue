@@ -130,12 +130,6 @@ import ShowCharacter from '@/components/ShowCharacter.vue'
 export default Vue.extend({
   name: 'character-box',
   components: { ShowCharacter },
-  props: {
-    characters: {
-      type: Array[Character],
-      required: true,
-    },
-  },
   data() {
     return {
       importFile: [],
@@ -191,6 +185,11 @@ export default Vue.extend({
     },
   },
   computed: {
+    characters() {
+      const store = getModule(CharacterManagementStore, this.$store)
+      store.loadCharacters()
+      return store.AllCharacters
+    },
     characterSelected: function () {
       return this.selectedCharacter != null
     },

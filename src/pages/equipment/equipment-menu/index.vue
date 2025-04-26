@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div style="text-align: center"><custom-button to="/armor">Armor</custom-button> <br /></div>
+    <div style="text-align: center"><custom-button to="/armor">Armor and Accessories</custom-button> <br /></div>
     <div style="text-align: center"><custom-button to="/weapons">Weapons and Shields</custom-button> <br /></div>
-    <div style="text-align: center"><custom-button to="/accessories">Accessories</custom-button> <br /></div>
+    <div style="text-align: center"><custom-button to="/Consumables">Consumables</custom-button> <br /></div>
     <!---<div style="text-align: center;"><custom-button to="/weapons">Consumables</custom-button> <br /></div>
     --->
   </div>

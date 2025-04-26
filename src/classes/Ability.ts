@@ -9,6 +9,7 @@ class Ability extends Base {
   protected boost_: string
   protected cost_: string
   protected class_: string
+  protected gambit_: string // Only for Attacks
   protected move_: number
   protected range_: string
   protected reqs_: string
@@ -23,6 +24,7 @@ class Ability extends Base {
     this.boost_ = ''
     this.cost_ = ''
     this.desc_ = ''
+    this.gambit_ = ''
     this.effect_ = ''
     this.move_ = 0
     this.name_ = name
@@ -43,6 +45,7 @@ class Ability extends Base {
   }
   public get Header() {
     var header = this.Name + ' - '
+    if (this.HasSpeed) header += 'Speed ' + this.speed_ + ' '
     header += this.class_ + ' ' + this.type_
     return header
   }
@@ -83,6 +86,12 @@ class Ability extends Base {
   public get CostHeader() {
     return '**_Cost_:** ' + this.cost_
   }
+  public get HasGambit() {
+    return this.gambit_.length > 0
+  }
+  public get GambitHeader() {
+    return '**_Gambit_:** ' + this.gambit_
+  }
   public get HasMove() {
     return this.move_ > 0
   }
@@ -93,7 +102,9 @@ class Ability extends Base {
     return this.range_.length > 0
   }
   get RangeHeader() {
-    return '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
+    var header = '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
+    if (this.HasTarget) header += ', ' + this.target_
+    return header
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -140,6 +151,7 @@ class Ability extends Base {
     this.cost_ = data.cost || ''
     this.class_ = data.class || 'MISSING'
     this.type_ = data.type || 'MISSING'
+    this.gambit_ = data.gambit || ''
     this.move_ = data.move || 0
     this.reqs_ = data.reqs || ''
     this.speed_ = data.speed || 0

@@ -1,24 +1,24 @@
 [
   {
     "name": "Blaze Rod",
-    "category": "Rod",
     "desc": "A staff specialized in creating and controlling crackling flames.",
-    "keywords": ["Fire"],
+    "keywords": ["Foci_ (_Blaze_)"],
     "reqs": "A creature must have _Novice Blazecraft_ to use this _Weapon_.",
     "chart": {
-      "damage": [0, 2, 4, 5],
+      "damage": [0, 3, 4, 6],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
       "status": ["+1 _Momentum_", "None", "None", "None"]
     },
     "load": 3,
     "hands": 2,
-    "durability": 1,
-    "wear": 6,
+    "notches": 1,
+    "durability": 6,
     "abilities": [
       {
         "name": "Orb",
         "class": "Balanced Attack",
         "type": "Action",
+        "keywords": ["Fire"],
         "speed": 2,
         "cost": "3 _Momentum_",
         "range": "Short/Medium",
@@ -32,15 +32,7 @@
         "speed": 1,
         "cost": "3 _Momentum_",
         "range": "Short/Medium",
-        "effect": "Place 2 _Momentum_ on a _Blaze_ _Art_ or _Technique_ and become _Charging_. While _Charging_, gain _Resistance_ (_Fire_, _Ice_). At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ then Attack the Target, adding _Alight_ [5 _Reflex_] on a _Hit_ or _Alight_ [6 _Reflex_] on a _Crit_."
-      },
-      {
-        "name": "Arcane Battery",
-        "class": "Utility",
-        "type": "Action",
-        "speed": 1,
-        "cost": "None",
-        "effect": "Place 2 _Momentum_ on a _Blaze_ _Art_ or _Technique_."
+        "effect": "Place 2 _Momentum_ on a _Blaze_ _Art_ or _Technique_ and become _Charging_. While _Charging_, gain _Resistance_ (_Fire_, _Ice_). At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack the Target with Orb, dealing +2 _Bonus Damage_."
       }
     ]
   },
@@ -48,7 +40,7 @@
     "name": "Iron Dagger",
     "category": "Blade",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Slash_/_Stab", "Metal", "Small"],
+    "keywords": ["Slash_/_Stab", "Metal"],
     "chart": {
       "damage": [0, 1, 3, 4],
       "roll": ["2-3", "4-5", "6-9", "10-12"],
@@ -56,17 +48,18 @@
     },
     "load": 1,
     "hands": 1,
-    "durability": 1,
-    "wear": 5,
+    "notches": 1,
+    "durability": 5,
     "abilities": [
       {
         "name": "Strike",
-        "class": "Light Attack",
-        "type": "Action",
+        "class": "Light",
+        "type": "Attack",
         "speed": 1,
-        "cost": "2 _Momentum_",
+        "cost": "1 _Momentum_",
         "range": "Melee_/_Short_ (_Thrown_)",
         "effect": "Attack a Target within Range.",
+        "gambit": "On a Graze+ deal +1 _Bonus Damage_. If the Target takes any Damage, add _Bleeding_ 1.",
         "analysis_notes": {
           "fudge": -0.222,
           "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
@@ -80,7 +73,35 @@
         "cost": "1 _Momentum_",
         "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Heavy_ or _Ranged_.\n* **Always:** Gain +1 _Reflex_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +1 _Guard_.",
         "special": "If the triggering Attack was _Light_, gain +1 _Guard_.",
-        "boost": "1 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+        "boost": "1 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker with Strike if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+      }
+    ]
+  },
+  {
+    "name": "Throwing Knives",
+    "category": "Throwing",
+    "desc": "A small blade capable of sudden assaults and being thrown.",
+    "keywords": ["Stab", "Metal", "Ammunition"],
+    "chart": {
+      "damage": [0, 1, 2, 3],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": []
+    },
+    "load": 1,
+    "hands": 1,
+    "notches": 2,
+    "durability": 6,
+    "abilities": [
+      {
+        "name": "Strike",
+        "class": "Light",
+        "type": "Attack",
+        "speed": 1,
+        "cost": "None",
+        "range": "Melee_/_Short_ (_Thrown_)",
+        "effect": "Attack a Target within Range.",
+        "special": "This Attack has _Disadvantage_ on all _Melee_ Attacks.",
+        "gambit": "On a _Graze_+ with a _Short_-Ranged Attack, _Embed_ this _Weapon_. While this is _Embedded_, the Target takes +1 _Bonus Damage_ from all Attacks. If they end _Embed_, they gain _Bleeding_ 1."
       }
     ]
   },
@@ -108,7 +129,7 @@
     },
     "load": 2,
     "hands": 1,
-    "durability": 2,
+    "notches": 2,
     "analysis_notes": { "fudge": -1.1667, "notes": "Expanded crit range and gaining Momentum on attack." }
   },
   {
@@ -121,16 +142,17 @@
       "roll": ["2-3", "4-5", "6-9", "10-12"],
       "status": ["+2 _Momentum_", "None", "None", "None"]
     },
-    "special": "Deal +1 Damage if _Wielded_ in both Hands.",
     "abilities": [
       {
         "name": "Strike",
-        "class": "Balanced Attack",
-        "type": "Action",
+        "class": "Balanced",
+        "type": "Attack",
         "speed": 3,
-        "cost": "4 _Momentum_",
-        "range": "Melee_",
+        "cost": "3 _Momentum_",
+        "range": "Melee",
         "effect": "Attack a Target within Range.",
+        "gambit": "On a Graze+ deal +1 _Bonus Damage_. If the Target takes any Damage, add _Bleeding_ 1.",
+        "special": "Deal +1 Damage if _Wielded_ in both Hands.",
         "analysis_notes": {
           "fudge": -0.222,
           "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
@@ -139,12 +161,12 @@
       },
       {
         "name": "Charged Strike",
-        "class": "Balanced Attack",
-        "type": "Action",
+        "class": "Balanced",
+        "type": "Attack",
         "speed": 2,
-        "cost": "2 _Momentum_",
+        "cost": "1 _Momentum_",
         "range": "Melee/Short",
-        "effect": "Choose a Target within Range, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and take a _Turn_, which may only be used to become _Engaged_ with the Target. If you end this _Turn_ _Engaged_ with the Target you may immediately Attack them, dealing +4 _Bonus Damage_ on a _Graze_+."
+        "effect": "Choose a Target within Range, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and take a _Turn_, which may only be used to become _Engaged_ with the Target. If you end this _Turn_ _Engaged_ with the Target you may immediately use Strike, dealing +4 _Bonus Damage_ on a _Graze_+."
       },
       {
         "name": "Parry",
@@ -152,13 +174,13 @@
         "type": "Reaction",
         "cost": "2 _Momentum_",
         "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Reflex_ and +2 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
-        "boost": "2 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+        "boost": "2 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker with Strike if they are in _Melee_ Range. If you Win, instead _Hit_ them."
       }
     ],
-    "wear": 4,
+    "durability": 4,
     "load": 2,
     "hands": 1.5,
-    "durability": 3
+    "notches": 3
   },
   {
     "name": "Iron Greatsword",
@@ -194,7 +216,7 @@
     },
     "load": 4,
     "hands": 2,
-    "durability": 4,
+    "notches": 4,
     "tier": "Heavy",
     "analysis_notes": { "fudge": -0.1667, "notes": "Expanded crit range" }
   },
@@ -219,7 +241,7 @@
     },
     "load": 1,
     "hands": 1,
-    "durability": 8
+    "notches": 8
   },
   {
     "name": "Iron Battleaxe",
@@ -247,7 +269,7 @@
     },
     "load": 2,
     "hands": 1,
-    "durability": 2,
+    "notches": 2,
     "analysis_notes": { "fudge": -0.25, "notes": "Bane" }
   },
   {
@@ -273,7 +295,7 @@
     },
     "load": 4,
     "hands": 2,
-    "durability": 10,
+    "notches": 10,
     "analysis_notes": {
       "range": [{ "category": "Melee", "value": 1 }]
     }
@@ -298,7 +320,7 @@
     },
     "load": 2,
     "hands": 1,
-    "durability": 9
+    "notches": 9
   },
   {
     "name": "Iron Warhammer",
@@ -334,7 +356,7 @@
     },
     "load": 2,
     "hands": 1,
-    "durability": 10
+    "notches": 10
   },
   {
     "name": "Stone Maul",
@@ -362,8 +384,8 @@
     },
     "load": 3,
     "hands": 2,
-    "durability": 2,
-    "analysis_notes": { "fudge": 0.25, "notes": "Lower Durability." }
+    "notches": 2,
+    "analysis_notes": { "fudge": 0.25, "notes": "Lower Notches." }
   },
   {
     "name": "Iron Maul",
@@ -397,7 +419,7 @@
     },
     "load": 4,
     "hands": 2,
-    "durability": 11,
+    "notches": 11,
     "analysis_notes": {
       "range": [{ "category": "Melee", "value": 1 }]
     }
@@ -546,7 +568,7 @@
     },
     "load": 1,
     "hands": 1,
-    "durability": 1,
+    "notches": 1,
     "analysis_notes": {
       "range": [
         { "category": "Melee", "value": 1 },
@@ -586,7 +608,7 @@
     },
     "load": 2,
     "hands": 1,
-    "durability": 1
+    "notches": 1
   },
   {
     "name": "Iron Pike",
@@ -619,7 +641,7 @@
     },
     "load": 4,
     "hands": 2,
-    "durability": 8,
+    "notches": 8,
     "analysis_notes": {
       "range": [{ "category": "Long Melee", "value": 1 }],
       "fudge": -0.125
@@ -643,7 +665,7 @@
     },
     "load": 2,
     "hands": 2,
-    "durability": 6
+    "notches": 6
   },
   {
     "name": "Shortbow",
@@ -664,7 +686,7 @@
     },
     "load": 4,
     "hands": 2,
-    "durability": 8
+    "notches": 8
   },
   {
     "name": "Longbow",
@@ -686,7 +708,7 @@
     },
     "load": 5,
     "hands": 2,
-    "durability": 9
+    "notches": 9
   },
   {
     "name": "Sling",
@@ -705,26 +727,26 @@
     "abilities": [
       {
         "name": "Loose",
-        "class": "Balanced Attack",
-        "type": "Action",
+        "class": "Balanced",
+        "type": "Attack",
         "speed": 2,
-        "cost": "3 _Momentum_",
+        "cost": "2 _Momentum_",
         "range": "Short/Medium",
         "effect": "Attack a Target within Range."
       },
       {
         "name": "Whirling Loose",
-        "class": "Balanced Attack",
-        "type": "Action",
+        "class": "Balanced",
+        "type": "Attack",
         "speed": 1,
-        "cost": "2 _Momentum_",
+        "cost": "1 _Momentum_",
         "range": "Medium/Long",
         "effect": "Choose a Target within _Range_, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack the Target, adding [_Pierce_ 1] and dealing +3 Damage on a _Graze_+."
       }
     ],
     "load": 1,
     "hands": 1,
-    "durability": 1
+    "notches": 1
   },
   {
     "name": "Heavy Sling",
@@ -746,13 +768,13 @@
     },
     "load": 1,
     "hands": 1,
-    "durability": 5
+    "notches": 5
   },
   {
     "name": "Iron Buckler",
     "desc": "A small shield specialized for melee combat.",
     "category": "Shield",
-    "durability": 9,
+    "notches": 9,
     "tier": "Light",
     "keywords": ["Secure"],
     "speed": 1,
@@ -773,7 +795,7 @@
   {
     "name": "Round Shield",
     "category": "Shield",
-    "durability": 3,
+    "notches": 3,
     "tier": "Light",
     "speed": 2,
     "parry": "Gain 2 _Ward_, +1 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 2. If the Attack was not Melee, instead gain 4 _Instant Guard_, +2 _Grit_/_Reflex_, and reduce any _Stun_ inflicted by 4.",
@@ -794,7 +816,7 @@
   {
     "name": "Medium Shield",
     "category": "Shield",
-    "durability": 2,
+    "notches": 2,
     "tier": "Balanced",
     "speed": 2,
     "keywords": ["Crush", "Metal", "Wood", "Secure"],
@@ -819,7 +841,7 @@
   {
     "name": "Pavise Shield",
     "category": "Shield",
-    "durability": 14,
+    "notches": 14,
     "tier": "Heavy",
     "speed": 4,
     "keywords": ["Secure"],
@@ -870,9 +892,9 @@
         "effect": "Attack a Target within Range."
       },
       {
-        "class": "Balanced",
-        "type": "Attack",
-        "keywords": ["Charged"],
+        "name": "Clamp Down",
+        "class": "Balanced Attack",
+        "type": "Action",
         "speed": 1,
         "cost": "2 _Momentum_",
         "range": "Melee",
@@ -962,7 +984,7 @@
     },
     "tier": "Light",
     "hands": 0,
-    "durability": 1
+    "notches": 1
   },
   {
     "name": "Claws",
@@ -979,7 +1001,7 @@
     },
     "tier": "Light",
     "hands": 0,
-    "durability": 1
+    "notches": 1
   },
   {
     "name": "Talons",
@@ -1000,7 +1022,7 @@
     },
     "tier": "Balanced",
     "hands": 0,
-    "durability": 2
+    "notches": 2
   },
   {
     "name": "Large Claws",
@@ -1046,7 +1068,7 @@
     },
     "tier": "Balanced",
     "hands": 0,
-    "durability": 1
+    "notches": 1
   },
   {
     "name": "Smasher",
@@ -1069,7 +1091,7 @@
     },
     "tier": "Heavy",
     "hands": 0,
-    "durability": 3
+    "notches": 3
   },
   {
     "name": "Small Horn",
@@ -1177,7 +1199,7 @@
     },
     "tier": "Light",
     "hands": 0,
-    "durability": 1
+    "notches": 1
   },
   {
     "name": "Medium Needles",
@@ -1199,6 +1221,6 @@
     },
     "tier": "Versatile",
     "hands": 0,
-    "durability": 1
+    "notches": 1
   }
 ]

@@ -5,16 +5,10 @@
       <p>The below tabs contain all the Techniques, Attacks, Actions, Stunts, Reactions, and Gambits that all characters have access to by default.</p>
       <br />
     </div>
-    <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered
-      ><v-tab> <h4>Techniques</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab></v-tabs
+    <v-tabs dark v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered
+      ><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="character-tab-content">
-      <v-tab-item>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Technique')" /><show-cards
-          :inputs="this.$store.getters.getTechniquesFromList(this.$store.getters.basicTechniques)"
-          job="Techniques"
-          :collapse="false"
-      /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stance')" /><show-cards
           :inputs="this.$store.getters.getStancesFromList(this.$store.getters.basicStances)"

@@ -60,6 +60,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .header {
-  background-color: #7ac3ff;
+  background-color: $color--general;
 }
 </style>

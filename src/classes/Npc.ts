@@ -144,9 +144,6 @@ class Npc extends Combatant {
   public get SizeText() {
     return '**Size:** ' + this.npc_data_.size
   }
-  public get MaxStaminaText() {
-    return '**Max Stamina:** ' + this.MaxStamina
-  }
 
   // ==========================================================
   // SERIALIZATION

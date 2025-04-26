@@ -1,18 +1,14 @@
 <template>
   <div v-bind:class="useDivider ? 'ability-box' : ''" style="padding-bottom: 0.25em">
-    <h5>
-      <display-tooltip-text :string="ability.Header" /><span
-        v-for="(keyword, index) in ability.Keywords"
-        :key="index"
-        class="keyword--box"
-        style="margin-left: 0.5em"
+    <div>
+      <span v-bind:class="ability.Type" class="ability--head" style="width: 100%">
+        <display-tooltip-text :string="ability.Header" />
+      </span>
+      <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
         ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b
       ></span>
-    </h5>
+    </div>
     <div style="padding-left: 1em">
-      <div class="card--format" v-if="ability.HasSpeed">
-        <display-tooltip-text :string="ability.SpeedHeader" />
-      </div>
       <div class="card--format" v-if="ability.HasCost">
         <display-tooltip-text :string="ability.CostHeader" />
       </div>
@@ -26,9 +22,6 @@
       <div class="card--format" v-if="ability.HasTrigger">
         <display-tooltip-text :string="ability.TriggerHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasTarget">
-        <display-tooltip-text :string="ability.TargetHeader" />
-      </div>
       <div class="card--format" v-if="ability.HasEffect">
         <display-tooltip-text :string="ability.EffectHeader" />
       </div>
@@ -37,6 +30,9 @@
       </div>
       <div class="card--format" v-if="ability.HasBoost">
         <display-tooltip-text :string="ability.BoostHeader" />
+      </div>
+      <div class="card--format" v-if="ability.HasGambit">
+        <display-tooltip-text :string="ability.GambitHeader" />
       </div>
     </div>
   </div>
@@ -62,4 +58,30 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.ability--head {
+  border-top-left-radius: 1em;
+  padding: 0.25em;
+  padding-left: 0.5em;
+  font-size: 1.05em;
+  font-weight: bold;
+}
+.Enhancement {
+  background-color: $color--maneuver;
+}
+.Major {
+  background-color: #6a7177 !important;
+}
+.Action {
+  background-color: #7ac3ff;
+}
+.Reaction {
+  background-color: #bbcc6f;
+}
+.Gambit {
+  background-color: #a776a0;
+}
+.Attack {
+  background-color: rgb(230, 95, 95);
+}
+</style>

@@ -23,22 +23,21 @@
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Load_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b></v-col
+            ><b><display-tooltip-text string="_Notches_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Wear_" :decorate="false" /></b
+            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col class="chart--cols justify-center align-center" cols="2"><display-tooltip-text :string="weapon.HandString" /></v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Load }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Notches }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Durability }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Wear }}</v-col>
         </v-row>
       </div>
       <div class="card--format" v-if="weapon.HasReqs">
         <display-tooltip-text :string="weapon.ReqsHeader" />
       </div>
-      <div><display-tooltip-text :string="weapon.SpecialHeader" /></div>
       <div v-for="(ability, index) in weapon.Abilities" :key="index" class="ability-box" style="padding-bottom: 0.25em">
         <ability-widget :ability="ability" />
       </div>

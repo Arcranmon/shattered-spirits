@@ -23,17 +23,20 @@
           ><v-col class="chart--head" cols="2" v-if="armor.Category != 'Layered Armor'"
             ><b><display-tooltip-text string="_Load_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2" v-if="armor.Category != 'Layered Armor'"
-            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b></v-col
+            ><b><display-tooltip-text string="_Notches_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2" v-if="armor.Category != 'Layered Armor'"
-            ><b><display-tooltip-text string="_Wear_" :decorate="false" /></b
+            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b></v-col
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Slots_" :decorate="false" /></b
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col class="chart--cols justify-center align-center" cols="2">{{ armor.Guard }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ armor.Soak }}</v-col>
           <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Load }}</v-col>
+          <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Notches }}</v-col>
           <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Durability }}</v-col>
-          <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Wear }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ armor.ConsumableSlots }}</v-col>
         </v-row>
       </div>
       <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>

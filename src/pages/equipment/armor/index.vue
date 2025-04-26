@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Armors</h2>
+    <h2>Armor and Accessories</h2>
     <span v-if="isMobile">
       <v-expansion-panels style="padding: 3px">
         <v-expansion-panel style="background-color: inherit">

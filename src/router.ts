@@ -28,7 +28,7 @@ import Archetypes from '@/pages/archetypes/index.vue'
 import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
 import Armor from '@/pages/equipment/armor/index.vue'
 import Weapons from '@/pages/equipment/weapons/index.vue'
-import Accessories from '@/pages/equipment/accessories/index.vue'
+import Consumables from '@/pages/equipment/consumables/index.vue'
 
 import BasicSkills from '@/pages/basic-skills/index.vue'
 import SpiritAbilities from '@/pages/spirit-abilities/index.vue'
@@ -117,11 +117,11 @@ const r = new Router({
       },
     },
     {
-      path: '/accessories',
-      component: Accessories,
-      name: 'accessories',
+      path: '/Consumables',
+      component: Consumables,
+      name: 'Consumables',
       meta: {
-        title: 'Accessories',
+        title: 'Consumables',
       },
     },
     {

@@ -2,12 +2,24 @@ import { store } from '@/store'
 
 // Class to store potential combat bonuses that Archetypes and similar might hold.
 class Bonuses {
-  private focus_: number
-  private grit_: number
-  private health_: number
-  private reflex_: number
-  private move_: number
-  private load_: number
+  public focus_: number
+  public grit_: number
+  public health_: number
+  public reflex_: number
+  public move_: number
+  public load_: number
+
+  // ==========================================================
+  // CONSTRUCTOR
+  // ==========================================================
+  public constructor() {
+    this.focus_ = 0
+    this.grit_ = 0
+    this.health_ = 0
+    this.reflex_ = 0
+    this.move_ = 0
+    this.load_ = 0
+  }
 
   // ==========================================================
   // GETTERS
@@ -22,6 +34,15 @@ class Bonuses {
     if (this.move_ > 0) bonuses.push('+' + String(this.move_) + ' _Move_')
     if (this.load_ > 0) bonuses.push('+' + String(this.load_) + ' _Load_')
     return bonuses.join(', ')
+  }
+
+  public addBonuses(other) {
+    this.focus_ += other.focus_
+    this.grit_ += other.grit_
+    this.health_ += other.health_
+    this.reflex_ += other.reflex_
+    this.move_ += other.move_
+    this.load_ = other.load_
   }
 
   // ==========================================================

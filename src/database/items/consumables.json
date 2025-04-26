@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Health Flask",
+    "category": "Potion",
+    "desc": "A potion that fills you with energy and the will to fight.",
+    "load": 1,
+    "hands": 1,
+    "abilities": [
+      {
+        "name": "Drink",
+        "class": "Utility",
+        "type": "Enhancement",
+        "cost": "None",
+        "effect": "Create an [_Opening_]. Clear all _Stun_, then restore 5 _Health_."
+      }
+    ]
+  },
+  {
+    "name": "Thunderstone",
+    "category": "Grenade",
+    "desc": "A fragile crystal that, when shattered, emits a vicious pulse of energy",
+    "load": 1,
+    "hands": 1,
+    "abilities": [
+      {
+        "name": "Fling",
+        "class": "Light",
+        "keywords": ["Crush"],
+        "type": "Attack",
+        "speed": 2,
+        "cost": "2 _Momentum_",
+        "range": "Short",
+        "target": "Engagement",
+        "effect": "All Targets must immediately _Negate_ [5 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_."
+      }
+    ],
+    "chart": {
+      "damage": [0, 1, 2, 3],
+      "stun": [0, 2, 4, 6],
+      "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_"]
+    }
+  }
+]
