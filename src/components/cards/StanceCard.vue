@@ -7,7 +7,7 @@
     </div>
     <div class="card--content">
       <div class="chart--wrapper" inline>
-        <v-row no-gutters class="chart--row"
+        <v-row align="stretch" no-gutters class="chart--row"
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Movement_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"

@@ -16,8 +16,9 @@
         <v-col cols="6">
           <div v-html="$marked.parseInline(npc.SizeText)" />
           <div v-html="$marked.parseInline(npc.HealthText)" />
-          <div v-html="$marked.parseInline(npc.ArmorText)" />
-          <display-tooltip-text :string="'**Special:** ' + npc.SpecialText" />
+          <div>
+            <display-tooltip-text :string="npc.MomentumGainText" />
+          </div>
           <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
           <div v-for="trait in npc.Traits" :key="trait">
             <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + '**'" :decorate="false" /></div
@@ -29,17 +30,13 @@
     <v-card>
       <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered>
         <v-tab>
-          <h3>Techniques</h3>
-        </v-tab>
-        <v-tab>
           <h3>Arts</h3>
         </v-tab>
         <v-tab v-if="npc.HasWeapons">
           <h3>Weapons</h3>
         </v-tab></v-tabs
       ><v-tabs-items v-model="tab" class="character-tab-content">
-        <v-tab-item> <show-cards :inputs="npc.Techniques" job="Techniques" :collapse="false" /></v-tab-item
-        ><v-tab-item> <show-cards :inputs="npc.Arts" job="Arts" :collapse="false" /></v-tab-item
+        <v-tab-item> <show-cards :inputs="npc.Arts" job="Arts" :collapse="false" /></v-tab-item
         ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" /></v-tab-item
       ></v-tabs-items>
     </v-card>

@@ -46,6 +46,7 @@
       "roll": ["2-3", "4-5", "6-9", "10-12"],
       "status": ["+1 _Momentum_"]
     },
+    "cost": "1 _Momentum_",
     "load": 1,
     "hands": 1,
     "notches": 1,
@@ -880,14 +881,15 @@
     "chart": {
       "damage": [0, 4, 5, 8],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
-      "status": ["+1 _Momentum_", "_Grabbed_ [4 _Grit_/_Reflex_]", "_Grabbed_ [5 _Grit_/_Reflex_]", "_Grabbed_ [6 _Grit_/_Reflex_]"]
+      "status": ["+1 _Momentum_", "_Grabbed_", "_Grabbed_", "_Grabbed_"]
     },
     "abilities": [
       {
+        "name": "Strike",
         "class": "Balanced",
         "type": "Attack",
         "speed": 2,
-        "cost": "3 _Momentum_",
+        "cost": "2 _Momentum_",
         "range": "Melee_",
         "effect": "Attack a Target within Range."
       },
@@ -901,10 +903,11 @@
         "effect": "Make an Attack against a _Target_ within Range, dealing half Damage. If the Target is _Grabbed_ by this, become _Charging_. Next _Phase_, as a _Slow Action_ if the Target is still _Grabbed_, deal Damage again, dealing +3 _Bonus Damage_ and adding [_Pierce_ 1]. Inflict _Sundered_ 1 [6 _Grit_], but you must target the creature's _Armor_."
       },
       {
+        "name": "Deflecting Teeth",
         "class": "Defensive",
         "type": "Reaction",
         "cost": "2 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Grit_ and +1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_. Gain +1 _Grit_ and +1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
         "boost": "2 _Momentum_: [_Counterattack_] If you Win, _Graze_ the Attacker if they are in _Melee_ Range."
       }
     ],
@@ -918,31 +921,35 @@
     "chart": {
       "damage": [3, 6, 7, 11],
       "roll": ["2-3", "4-6", "7-10", "11-12"],
-      "status": ["+2 _Momentum_", "_Grabbed_ [5 _Grit_/_Reflex_]", "_Grabbed_ [6 _Grit_/_Reflex_]", "_Grabbed_ [7 _Grit_/_Reflex_]"]
+      "negate": [3, 4, 5, 6],
+      "status": ["+2 _Momentum_", "_Grabbed_ [_Grit_/_Reflex_]", "_Grabbed_ [_Grit_/_Reflex_]", "_Grabbed_ [_Grit_/_Reflex_]"]
     },
     "abilities": [
       {
+        "name": "Strike",
         "class": "Balanced",
         "type": "Attack",
         "speed": 3,
-        "cost": "4 _Momentum_",
+        "cost": "3 _Momentum_",
         "range": "Melee_",
         "effect": "Attack a Target within Range."
       },
       {
+        "name": "Lunging Strike",
         "class": "Balanced",
         "type": "Attack",
         "keywords": ["Charged"],
-        "speed": 1,
-        "cost": "2 _Momentum_",
+        "speed": 2,
+        "cost": "1 _Momentum_",
         "range": "Melee/Short",
         "effect": "Become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack  any creature within Range, adding _Pull_ 1 and adding 4 _Bonus Stun_. The Target does not become _Grabbed_ unless they are _Pulled_."
       },
       {
+        "name": "Grasping Parry",
         "class": "Defensive",
         "type": "Reaction",
         "cost": "2 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Grit_ and +1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.n* **Always:** Gain +1 _Grit_ and +1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
         "boost": "2 _Momentum_: [_Counterattack_] If you Win, _Graze_ the Attacker if they are in _Melee_ Range. Inflict _Disarm_ instead of _Grabbed_ if the attacker used a _Weapon_; otherwise, inflict _Impaired_. +The Weapon used for the Attack must be chosen if you inflict _Disarmed_."
       }
     ],
@@ -991,6 +998,7 @@
     "category": "Natural",
     "desc": "A small natural weapon suitable for claws and other shredding attacks.",
     "speed": 1,
+    "cost": "1 _Momentum_",
     "keywords": ["Natural", "Slash"],
     "parry": "Gain +1 _Reflex_.",
     "range": "Melee",
@@ -999,7 +1007,27 @@
       "roll": ["2-3", "4-5", "6-10", "11-12"],
       "status": ["+1 _Momentum_", "None", "None", "None"]
     },
-    "tier": "Light",
+    "abilities": [
+      {
+        "name": "Strike",
+        "class": "Light",
+        "type": "Attack",
+        "speed": 1,
+        "cost": "1 _Momentum_",
+        "range": "Melee_",
+        "effect": "Attack a Target within Range.",
+        "gambit": "On a Graze+ deal +1 _Bonus Damage_. If the Target takes any Damage, add _Bleeding_ 1."
+      },
+      {
+        "name": "Parry",
+        "class": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Heavy_ or _Ranged_.\n* **Always:** Gain +1 _Reflex_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +1 _Guard_.",
+        "special": "If the triggering Attack was _Light_, gain +1 _Guard_.",
+        "boost": "1 _Momentum_: [_Counterattack_] If you Tie, _Graze_ the Attacker with Strike if they are in _Melee_ Range. If you Win, instead _Hit_ them."
+      }
+    ],
     "hands": 0,
     "notches": 1
   },
