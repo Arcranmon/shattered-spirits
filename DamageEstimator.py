@@ -99,16 +99,19 @@ def get_status_damage(status_string, index):
     # TODO: Add something about no-save
     for status in statuses: 
         if status == 'None': continue        
-        if('+' in status):
+        if('Momentum' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
             no_save_damage += int(status[1]) * momentum_value * 0.9 
+        elif('Prepare' in status):
+            # Preparing is worth much less
+            no_save_damage += int(status[-1]) * 0.75
         elif '/' in status and 'Grit' not in status:
             status_options = status.split('/')
             estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)
         else:
             if ' ' in status.strip():
                 split_status = status.split(' ')
-                estimated_damage += get_status_magnitude(split_status[0].strip())*int(split_status[1].strip())
+                estimated_damage += get_status_magnitude(split_status[0].strip())
             else:
                 estimated_damage += get_status_magnitude(status.strip())
 
@@ -170,7 +173,7 @@ def estimate_damage(attack, glancing, print_stats):
     disadvantage = [0.0740740740741, 0.125, 0.157407407407, 0.166666666667, 0.157407407407, 0.125, 0.087962962963, 0.0555555555556, 0.0324074074074, 0.0138888888889, 0.00462962962963]
 
     # Useful analysis parameters.
-    cost = 1
+    cost = 0
     roll_chart = 0*4
     damage_chart = [0]*4
     stun_chart = [0]*4
@@ -182,7 +185,7 @@ def estimate_damage(attack, glancing, print_stats):
     attack_class = ATTACK
     override_range = ""
     diff_speed = 0
-    stun_scale = 0.75 # Stun is worth less
+    stun_scale = 0.5 # Stun is worth less
     
     expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
                 
@@ -205,10 +208,6 @@ def estimate_damage(attack, glancing, print_stats):
             negate = attack["chart"]["negate"]
 
     ability = attack["abilities"][0]           
-    if(type(ability["speed"]) is int or len(ability["speed"]) == 1):
-        speed = int(ability["speed"])
-    else:
-        speed = int(ability["speed"][0])
     if "cost" in ability:
         cost += int(ability["cost"][0])
 

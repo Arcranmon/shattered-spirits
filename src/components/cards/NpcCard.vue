@@ -36,8 +36,8 @@
           <h3>Weapons</h3>
         </v-tab></v-tabs
       ><v-tabs-items v-model="tab" class="character-tab-content">
-        <v-tab-item> <show-cards :inputs="npc.Arts" job="Arts" :collapse="false" /></v-tab-item
-        ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" /></v-tab-item
+        <v-tab-item> <show-cards :inputs="npc.Arts" job="Arts" :collapse="false" :cols="2" /></v-tab-item
+        ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" :cols="2" /></v-tab-item
       ></v-tabs-items>
     </v-card>
   </div>

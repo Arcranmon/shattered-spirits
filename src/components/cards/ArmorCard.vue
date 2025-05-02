@@ -2,6 +2,8 @@
   <div class="card--wrapper" inline>
     <div class="card--underline-top Armor">
       <div class="card--header">
+        <img class="image--header-left" :src="armor.Icon" />
+        <img class="image--header-right" :src="armor.Icon" />
         <h4 style="display: inline; font-style: normal">{{ armor.Name }}</h4>
         <div class="card--keywords">
           <b

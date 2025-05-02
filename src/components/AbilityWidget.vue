@@ -28,8 +28,8 @@
       <div class="card--format" v-if="ability.HasSpecial">
         <display-tooltip-text :string="ability.SpecialHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasBoost">
-        <display-tooltip-text :string="ability.BoostHeader" />
+      <div class="card--format" v-if="ability.HasBoosts">
+        <display-tooltip-text :string="ability.BoostsHeader" />
       </div>
       <div class="card--format" v-if="ability.HasGambit">
         <display-tooltip-text :string="ability.GambitHeader" />

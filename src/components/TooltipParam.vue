@@ -4,9 +4,7 @@
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
-        ><display-tooltip-text
-          string="When reading this effect, add the first value on a _Miss_, the second a _Graze_, the third on a _Hit_ and the final on a _Crit_."
-          :level="level + 1" /></v-menu></span
+        ><display-tooltip-text string="Use the first value in _Phase_ 1, the second in _Phase_ 2, and so on." :level="level + 1" /></v-menu></span
     ><span v-else-if="this.$store.getters.existsInAnyGlossary(input)"
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
         ><template v-slot:activator="{ on, attrs }">

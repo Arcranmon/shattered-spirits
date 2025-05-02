@@ -8,6 +8,12 @@ declare interface IBaseData {
   special?: string
 }
 
+declare interface IBoostData {
+  name: string
+  cost: string
+  effect: string
+}
+
 declare interface IArchetypeData extends IBaseData {
   art: string
   bonuses: IBonusesData
@@ -165,9 +171,9 @@ declare interface INpcData {
 
 declare interface IAbilityData extends IBaseData {
   area?: string
-  boost?: string
+  boosts?: IBoostData[]
   cost?: string
-  gambit?: string
+  gambit?: string[]
   class: string
   move?: number
   range?: string

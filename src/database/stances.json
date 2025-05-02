@@ -9,9 +9,9 @@
       {
         "name": "Spiritbound and Spirit",
         "class": "General",
-        "type": "Major Action",
+        "type": "Action",
         "cost": "None",
-        "effect": "_Summon_ your Spirit within a valid Arena within Range. You and your spirit may both immediately use an Action [_Discount_ 1], resolving them both this _Turn_."
+        "effect": "_Summon_ your Spirit within a valid Arena within Range if they are not already _Summoned_. You and your spirit may both immediately use an Action, resolving them both this _Turn_. You resolve your Action is if it is _Phase_ _1/1/2/2_, your _Spirit_ resolves theirs as if it is _Phase_ _0/1/1/2_."
       },
       {
         "name": "Beginner's Luck",
@@ -27,16 +27,15 @@
     "name": "Forceful Stance",
     "desc": "A stance focused on overwhelming offense and powerful blows that break through a foe's defenses.",
     "effect": "The first time each _Phase_ you successfully inflict _Break_, gain 1 _Momentum_.",
-    "respite": { "momentum_gain": 8 },
+    "respite": { "momentum_gain": 4 },
     "defenses": { "focus": 2, "grit": 1 },
     "abilities": [
       {
         "name": "Smash",
         "class": "Offensive",
-        "type": "Major Action",
-        "speed": 1,
-        "cost": "None",
-        "effect": "Use a _Versatile_ or _Heavy_ _Attack_, adding [Pierce 1] and dealing _Bonus Damage_ equal to 1 + the current Phase on a Graze+. On a Hit+, add Break [Focus]."
+        "type": "Action",
+        "cost": "2 _Momentum_",
+        "effect": "Use a _Versatile_ or _Heavy_ _Attack_ [_Discount_ _0/1/2/3_], adding [_Pierce_ 1] and dealing _Bonus Damage_ equal to 1 + the current Phase on a Graze+. On a Hit+, add Break [Focus]."
       },
       {
         "name": "Painful Reminder",
@@ -60,16 +59,15 @@
     "name": "Steady Stance",
     "desc": "A stance focused on unbreakable defense.",
     "effect": "While _Guarding_ gain +1 _Guard_ and gain _Advantage_ while _Negating_.",
-    "respite": { "momentum_gain": 4, "stun_clear": 5 },
+    "respite": { "momentum_gain": 2, "stun_clear": 5 },
     "defenses": { "grit": 2, "focus": 1 },
     "abilities": [
       {
         "name": "Defensive Posture",
         "class": "Offensive",
-        "type": "Major Action",
-        "speed": 1,
+        "type": "Action",
         "cost": "None",
-        "effect": "Make an Attack, clear 3 _Stun_, then become _Guarding_."
+        "effect": "Make an Attack [_Discount_ _0/1/2/3_], then become _Guarding_. On a _Hit+, _Fortify_ 1."
       },
       {
         "name": "Form Up",
@@ -77,8 +75,7 @@
         "keywords": ["Priority"],
         "type": "Action",
         "cost": "None",
-        "effect": "You or an ally you are _Engaged_ with becomes _Guarding_.",
-        "boost": "1 _Momentum_: You an your ally both become _Guarding_."
+        "effect": "Choose one per _Phase_. You may choose the same option multiple times:\n* You become _Guarding_.\n* An ally you are _Engaged_ with becomes _Guarding_.\n* You or an ally you're engaged with _Fortify_ 1."
       },
       {
         "name": "Flawless",
@@ -97,10 +94,9 @@
       {
         "name": "Skirmish",
         "class": "Offensive",
-        "type": "Major Action",
-        "speed": 1,
+        "type": "Action",
         "cost": "None",
-        "effect": "Make 3 _Light_ or _Versatile_ Attacks.",
+        "effect": "Make [_Phase_] _Light_ or _Versatile_ Attacks [_Discount_ 1].",
         "boost": "1 _Momentum_: Gain 1 _Temporary_ _Movement_."
       },
       {
@@ -109,8 +105,8 @@
         "class": "Mobility",
         "type": "Action",
         "speed": 1,
-        "cost": "1 _Momentum_",
-        "effect": "Gain 1 _Temporary_ _Movement_. Your _Movement_ this _Turn_ is [_Safe_], but you may only use _Mobility_ _Enhancements_ this _Turn_.",
+        "cost": "None",
+        "effect": "Gain [1 + _Phase_/2] _Temporary_ _Movement_. Your _Movement_ this _Turn_ is [_Safe_], but you may only use _Mobility_ _Enhancements_ this _Turn_.",
         "boost": "1 _Momentum_: Gain 1 _Temporary_ _Movement_."
       },
       {
@@ -122,7 +118,7 @@
       }
     ],
     "effect": "You may spend up to 2 _Movement_ at _Refresh_ as if it was your _Turn_; this _Movement_ is automatically [_Safe_]. Attacks against you on your _Turn_ have _Disadvantage_.",
-    "respite": { "momentum_gain": 6, "stun_clear": 2, "movement": 2 },
+    "respite": { "momentum_gain": 4, "stun_clear": 2, "movement": 2 },
     "defenses": { "reflex": 2, "focus": 1 }
   },
   {

@@ -6,10 +6,10 @@ import { Base, Chart } from '@/class'
 
 class Ability extends Base {
   protected area_: string
-  protected boost_: string
+  protected boosts_: IBoostData[]
   protected cost_: string
   protected class_: string
-  protected gambit_: string // Only for Attacks
+  protected gambit_: string[] // Only for Attacks
   protected move_: number
   protected range_: string
   protected reqs_: string
@@ -21,10 +21,10 @@ class Ability extends Base {
   public constructor(name) {
     super(name)
     this.area_ = ''
-    this.boost_ = ''
+    this.boosts_ = []
     this.cost_ = ''
     this.desc_ = ''
-    this.gambit_ = ''
+    this.gambit_ = []
     this.effect_ = ''
     this.move_ = 0
     this.name_ = name
@@ -74,11 +74,18 @@ class Ability extends Base {
   public get AreaHeader() {
     return '**_Area_:** ' + this.Area
   }
-  public get HasBoost() {
-    return this.boost_.length > 0
+  public get Boosts() {
+    return this.boosts_
   }
-  public get BoostHeader() {
-    return '**_Boost_:** ' + this.boost_
+  public get HasBoosts() {
+    return this.boosts_.length > 0
+  }
+  public get BoostsHeader() {
+    var text = '**_Boosts_:** '
+    for (var boost of this.boosts_) {
+      text += '\n * **' + boost.name + ' - ' + boost.cost + ':** ' + boost.effect
+    }
+    return text
   }
   public get HasCost() {
     return this.cost_.length > 0
@@ -147,11 +154,11 @@ class Ability extends Base {
   public setAbilityData(data: IAbilityData): void {
     this.setBaseData(data)
     this.area_ = data.area || ''
-    this.boost_ = data.boost || ''
+    this.boosts_ = data.boosts || []
     this.cost_ = data.cost || ''
     this.class_ = data.class || 'MISSING'
     this.type_ = data.type || 'MISSING'
-    this.gambit_ = data.gambit || ''
+    this.gambit_ = data.gambit || []
     this.move_ = data.move || 0
     this.reqs_ = data.reqs || ''
     this.speed_ = data.speed || 0

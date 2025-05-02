@@ -50,6 +50,10 @@ class Combatant {
     return 0
   }
 
+  get StunClear() {
+    return 0
+  }
+
   get Size() {
     return '0'
   }
@@ -93,6 +97,7 @@ class Combatant {
   public ApplyRespite() {
     this.move_ = this.MaxMovement
     this.momentum_ += this.MomentumGain
+    this.ClearStunChunk(this.StunClear)
   }
 
   public ResetDefault() {
@@ -243,6 +248,15 @@ class Combatant {
     if (this.stun_ == 0 && this.soak_ > 0) {
       this.soak_ -= 1
     } else if (this.stun_ > 0) this.stun_ -= 1
+  }
+
+  private ClearStunChunk(toClear: number) {
+    var diff = toClear - this.stun_
+    this.stun_ = Math.max(0, this.stun_ - toClear)
+    toClear = diff
+    if (toClear > 0) {
+      this.soak_ = Math.max(0, this.soak_ - toClear)
+    }
   }
 
   // ==========================================================

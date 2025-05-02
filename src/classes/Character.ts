@@ -66,10 +66,11 @@ class Character extends Combatant {
 
   override get MaxMovement() {
     let maxMovement = 0
-    if (this.Load <= this.MaxLoad) return 3
-    else if (this.Load <= this.MaxLoad * 2) return 2
-    else if (this.Load <= this.MaxLoad * 3) return 1
+    if (this.Load <= this.MaxLoad) maxMovement += 3
+    else if (this.Load <= this.MaxLoad * 2) maxMovement += 2
+    else if (this.Load <= this.MaxLoad * 3) maxMovement += 1
     maxMovement += this.current_stance_.Movement
+    return maxMovement
   }
 
   override get Traits() {
@@ -84,7 +85,7 @@ class Character extends Combatant {
   // GETTERS/SETTERS
   // ==========================================================
 
-  get CurrentStance() {
+  get CurrentStance(): Stance {
     return this.current_stance_
   }
   get Disciplines() {
@@ -106,7 +107,7 @@ class Character extends Combatant {
     var stances = [...store.getters.basicStances]
     // Collect from Disciplines
     // Collect from Archetypes
-    return stances
+    return store.getters.getStancesFromList(stances)
   }
 
   get MaxConsumableSlots() {
@@ -201,8 +202,13 @@ class Character extends Combatant {
   // ==========================================================
   // SETTERS
   // ==========================================================
-  set CurrentStance(stance: Stance) {
-    this.current_stance_ = stance
+  set CurrentStance(stance: Stance | string) {
+    if (stance instanceof Stance) {
+      this.current_stance_ = stance
+    } else {
+      this.current_stance_ = store.getters.getStance(stance)
+    }
+    if (this.Movement > this.MaxMovement) this.Movement = this.MaxMovement
   }
 
   set Name(name: string) {
@@ -233,6 +239,10 @@ class Character extends Combatant {
   override ApplyRespite() {
     super.ApplyRespite()
     this.spirit_.ApplyRespite()
+  }
+
+  override get StunClear() {
+    return this.CurrentStance.Stun
   }
 
   override get MomentumGain() {

@@ -15,17 +15,25 @@
             ><v-col :cols="columnNumbers"><status-widget :creature="character" @changed="$emit('changed')" /></v-col>
             <v-col :cols="12" style="margin-bottom: 1em">
               <h3 style="text-align: center">Stance</h3>
+              <div style="width: 33%; display: flex; justify-content: center; align-items: center; margin: auto">
+                <v-select
+                  v-model="character.CurrentStance"
+                  label="Change Stance"
+                  item-text="Name"
+                  :items="character.Stances"
+                  filled
+                  @changeSelected="$emit('changed')"
+                />
+              </div>
               <stance-card :stance="character.CurrentStance" :on_sheet="true" style="width: 50%; margin: auto" /></v-col
           ></v-row>
           <h3 style="text-align: center">Abilities and Equipment</h3>
           <v-card>
             <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
-              ><v-tab> <h4>Stances</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab></v-tabs
+              ><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
             >
             <v-tabs-items v-model="ability_tab" class="character-tab-content">
-              <v-tab-item><show-cards :inputs="this.$store.getters.getStancesFromList(character.Stances)" :collapse="false" :cols="2" /></v-tab-item>
-              <v-tab-item> <show-cards :inputs="this.$store.getters.getArtsFromList(character.Arts)" :collapse="false" :cols="2" /></v-tab-item
-              ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
+              <v-tab-item> <show-cards :inputs="this.$store.getters.getArtsFromList(character.Arts)" :collapse="false" :cols="2" /></v-tab-item>
               <v-tab-item
                 ><v-tabs v-model="equipment_tab" color="black" light centered style="border-radius: 10px">
                   <v-tab><h5>Equipped</h5></v-tab><v-tab><h5>consumables</h5></v-tab></v-tabs
@@ -39,6 +47,8 @@
                       :inputs="this.$store.getters.getEquipmentFromList(character.Consumables)"
                       :collapse="false"
                       :cols="2" /></v-tab-item></v-tabs-items></v-tab-item
+              ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
+              <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
             ></v-tabs-items>
           </v-card></div></v-tab-item
       ><v-tab-item>

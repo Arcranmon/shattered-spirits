@@ -2,8 +2,8 @@
   <div class="card--wrapper" inline>
     <div class="card--underline-top weapon">
       <div class="card--header">
-        <img v-if="isWeapon" class="image--header-left" :src="weapon.Icon" />
-        <img v-if="isWeapon" class="image--header-right" :src="weapon.Icon" />
+        <img class="image--header-left" :src="weapon.Icon" />
+        <img class="image--header-right" :src="weapon.Icon" />
         <h4 style="display: inline; font-style: normal">{{ weapon.Name }}</h4>
         <div class="card--keywords">
           <b>

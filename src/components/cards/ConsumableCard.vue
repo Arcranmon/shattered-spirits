@@ -2,6 +2,8 @@
   <div class="card--wrapper" inline>
     <div class="card--underline-top colored-header">
       <div class="card--header">
+        <img class="image--header-left" :src="consumable.Icon" />
+        <img class="image--header-right" :src="consumable.Icon" />
         <h4 style="display: inline; font-style: normal">{{ consumable.Name }}</h4>
         <div class="card--keywords">
           <b

@@ -33,10 +33,9 @@
         "name": "Run",
         "class": "Mobility",
         "type": "Action",
-        "speed": 1,
         "cost": "None",
-        "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_.",
-        "boost": "1 _Momentum_: Repeat the effect."
+        "effect": "Gain _1/2/2/3_ _Temporary_ _Movement_ this _Turn_.",
+        "boosts": [{ "name": "Sprint", "cost": "1 _Momentum_", "effect": "Gain +1 _Temporary_ _Movement_." }]
       },
       {
         "name": "Dig Deep",
@@ -44,7 +43,7 @@
         "type": "Enhancement",
         "cost": "2 _Momentum_",
         "effect": "Gain 1 _Temporary_ _Movement_ this _Turn_.",
-        "boost": "2 _Momentum_: Repeat the effect."
+        "boosts": [{ "name": "Dig Deeper", "cost": "2 _Momentum_", "effect": "Repeat the Effect." }]
       }
     ]
   },
@@ -57,9 +56,8 @@
         "name": "Basic Combat",
         "class": "Offensive",
         "type": "Action",
-        "speed": 1,
-        "cost": "1 _Momentum_",
-        "effect": "Use an Attack."
+        "cost": "None",
+        "effect": "Use an Attack [_Discount_ _1/2/3/4_]."
       },
       {
         "name": "Opportunity Attack",
@@ -67,7 +65,7 @@
         "type": "Reaction",
         "trigger": "A hostile creature you are _Engaged_ with creates an _Opening_.",
         "cost": "None",
-        "effect": "Use a Single-Target Attack against the triggering creature, paying all costs as normal."
+        "effect": "Use a Single-Target Attack [_Discount_ 2] against the triggering creature."
       },
       {
         "name": "Lethal Blow",
@@ -130,7 +128,7 @@
         "type": "Gambit",
         "cost": "None",
         "reqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
-        "effect": "Deal 3 _Bonus Damage_ [_Endurable_] and add _Poisoned_."
+        "effect": "Deal 3 _Bonus Damage_ [_Endurable_] and add _Poisoned_ 1."
       }
     ]
   },
@@ -150,10 +148,10 @@
         "name": "Dodge",
         "class": "Defensive",
         "type": "Reaction",
-        "cost": "1 _Momentum_, 1 _Movement_",
+        "cost": "_1/2/2/3_ _Momentum_, 1 _Movement_",
         "trigger": "You are Attacked and are not _Immobile_.",
         "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was not _Melee_. Gain +1 Reflex.\n* **Tie:** Decrease the Attack rank by 1.\n* **Win:** Decrease the Attack rank by 1. You may _Disengage_ without creating an [_Opening_].",
-        "boost": "1 _Movement_: Reroll the _Defense Roll_; if you Lose, gain _Prone_."
+        "boosts": [{ "name": "Dive", "cost": "1 _Momentum_", "effect": "Reroll the _Defense Roll_; if you Lose, gain _Prone_." }]
       }
     ],
     "table": [
@@ -173,12 +171,23 @@
         "keywords": ["Crush"],
         "class": "Light",
         "type": "Attack",
-        "speed": 1,
-        "cost": "None",
+        "cost": "1 _Momentum_",
         "range": "Melee",
         "target": "Single-Target",
-        "effect": "Attack a Target within Range. If used in a _Phase_ later than this Art's listed _Speed_, deal +2 _Bonus Stun_ per _Phase_ later on a _Graze_+.",
-        "gambit": "On a _Graze_+, choose one:\n* Deal +2 _Bonus Stun_ and add _Push_ [_Grit_].\n* Deal +1 _Bonus Stun_ and add _Prone_/_Grabbed_ [_Grit_/_Reflex_]."
+        "effect": "Attack a Target within Range.",
+        "boosts": [
+          {
+            "name": "Flow",
+            "cost": "1 _Momentum_",
+            "effect": "_Prepare_ 1"
+          },
+          {
+            "name": "Match Point",
+            "cost": "2 _Momentum_",
+            "effect": "On a _Graze_+, deal +2 _Bonus Stun_ and add _Push_ [_Grit_] or deal +1 _Bonus Stun_ and add _Prone_/_Grabbed_ [_Grit_/_Reflex_]"
+          }
+        ],
+        "gambit": "Use any 2 _Momentum_ worth of Boosts."
       },
       {
         "name": "Parry",
@@ -186,13 +195,13 @@
         "type": "Reaction",
         "cost": "1 _Momentum_",
         "trigger": "You are Attacked.",
-        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_.\n* **Always:** Gain a +1 to _Negate_ and 1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +1 _Guard_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
+        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_. Gain a +1 to _Negate_ and 1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +1 _Guard_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
       }
     ],
     "chart": {
       "stun": [0, 1, 2, 4],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
-      "status": ["+1 _Momentum_", "None", "None", "None"]
+      "status": ["+1 _Momentum_", "None", "_Prepare_ 1", "_Prepare_ 2"]
     }
   },
   {
@@ -205,10 +214,9 @@
         "keywords": ["Spirit"],
         "class": "Utility",
         "type": "Action",
-        "speed": 1,
         "cost": "None",
         "range": "Spirit's _Summon_ Range.",
-        "effect": "_Summon_ your _Spirit_ within a valid _Arena_ within Range or, if they are already _Summoned_, _Recall_ them."
+        "effect": "Choose one:\n* _Summon_ your _Spirit_ within a valid _Arena_ within Range and _Prepare_ _0/1/2/3_ one of their _Arts_.\n* _Recall_ your _Spirit_ and clear 0/3/6/9 _Stun_."
       },
       {
         "name": "Tag Team",
@@ -218,7 +226,13 @@
         "cost": "None",
         "reqs": "_Spirit_ is within Range of the original Attack's Target.",
         "effect": "Your Spirit may immediately use a Single-Target Attack Action [_Discount_ 2] against the same Target.",
-        "boost": "1 _Momentum_: You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately use Manifest, then resolve this Gambit."
+        "boosts": [
+          {
+            "name": "Swift Manifestation",
+            "cost": "1 _Momentum_",
+            "effect": "You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately _Summon_ your _Spirit_ within a valid _Arena_ within Range, then resolve this Gambit."
+          }
+        ]
       },
       {
         "name": "Interdiction",
@@ -228,7 +242,13 @@
         "cost": "None",
         "reqs": "_Spirit_ is in _Melee_ Range of you.",
         "effect": "Distribute all effects of the attack (Damage, Stun, and Status) between you and your _Spirit_ however you wish.",
-        "boost": "1 _Momentum_: You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately use Manifest, then resolve this Gambit."
+        "boosts": [
+          {
+            "name": "Swift Manifestation",
+            "cost": "1 _Momentum_",
+            "effect": "You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately _Summon_ your _Spirit_ within a valid _Arena_ within Range, then resolve this Gambit."
+          }
+        ]
       }
     ]
   },
@@ -285,9 +305,8 @@
         "class": "Defensive",
         "keywords": ["Rooted"],
         "type": "Action",
-        "speed": 1,
-        "cost": "1 _Momentum_",
-        "effect": "Clear 2 _Stun_. You become _Guarding_."
+        "cost": "None",
+        "effect": "Become _Guarding_, then _Fortify_ 0/1/2/3."
       },
       {
         "name": "Perfect Parry",
@@ -313,7 +332,7 @@
         "cost": "None",
         "range": "Self/Melee",
         "target": "Ally (Optional)",
-        "effect": "Choose one:\n* You or the Target may _Recover_.\n* You and the Target clear 5 _Stun_, distributed however you wish.\n* You gain 1 _Momentum_."
+        "effect": "Choose one per _Phase_:\n* You or the Target may _Recover_.\n* You and the Target clear 3 _Stun_, distributed however you wish.\n* _Prepare_ 1."
       },
       {
         "name": "Grit Teeth",
@@ -321,7 +340,7 @@
         "type": "Gambit",
         "cost": "None",
         "reqs": "Graze- on the _Defense Roll_.",
-        "effect": "Reduce your _Stun_ by 4. You may trigger this before or after resolving the triggering effect."
+        "effect": "Reduce your _Stun_ by 5. You may trigger this before or after resolving the triggering effect."
       },
       {
         "name": "Press On",
@@ -343,6 +362,7 @@
     "name": "Interact",
     "category": "Basic",
     "desc": "Sometimes you need to do things more complicated than just sticking enemies with the pointy end of a stick.",
+    "keywords": ["Preparable"],
     "abilities": [
       {
         "name": "Use Environment",
@@ -357,7 +377,10 @@
         "keywords": ["Armament"],
         "type": "Enhancement",
         "cost": "0 _Momentum_",
-        "effect": "Drop a piece of _Wielded_ _Equipment_, placing it unused in your _Arena_."
+        "effect": "Drop a piece of _Wielded_ _Equipment_, placing it unused in your _Arena_.",
+        "boosts": [
+          { "name": "Drop Pack", "cost": "2 _Momentum_", "effect": "Create an [_Opening_] and instead drop your _Pack_, placing it unused in your _Arena_." }
+        ]
       },
       {
         "name": "Quickdraw",
@@ -389,17 +412,8 @@
         "class": "Utility",
         "keywords": ["Rooted"],
         "type": "Action",
-        "cost": "2 _Momentum_",
-        "effect": "Create an [_Opening_]. _Wield_ or _Equip_ a piece of _Equipment_ in your _Pack_, or place a _Wielded_ piece of _Equipment_ in your _Pack_.",
-        "boost": "1 _Momentum_: Repeat the effect without creating an additional [_Opening_]. You may repeat this _Boost_."
-      },
-      {
-        "name": "Drop Pack",
-        "class": "Utility",
-        "type": "Action",
-        "keywords": ["Rooted"],
-        "cost": "2 _Momentum_",
-        "effect": "Create an [_Opening_]. Remove your _Pack_, placing it in your current _Arena_."
+        "cost": "_1/0/0/0_ _Momentum_",
+        "effect": "Create an [_Opening_]. _Wield_ or _Equip_ a piece of _Equipment_ in your _Pack_, or place a _Wielded_ piece of _Equipment_ in your _Pack_. You may _Wield_ or _Equip_ and additional _0/0/1/2_ pieces of _Equipment_."
       }
     ]
   },
