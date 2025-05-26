@@ -40,9 +40,9 @@
     "name": "Iron Dagger",
     "category": "Blade",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Preparable"],
     "chart": {
       "damage": [0, 1, 3, 4],
+      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
       "roll": ["2-3", "4-5", "6-9", "10-12"],
       "status": ["+1 _Momentum_"]
     },
@@ -77,20 +77,6 @@
           "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
           "range": "Melee"
         }
-      },
-      {
-        "name": "Parry",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Heavy_ or _Ranged_. Gain +1 _Reflex_ and +1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
-        "boosts": [
-          {
-            "name": "Counterattack",
-            "cost": "1 _Momentum_",
-            "effect": "If you Tie, _Graze_ the Attacker with Strike if they are in _Melee_ Range and add [_Counter_]. If you Win, instead _Hit_ them."
-          }
-        ]
       }
     ]
   },
@@ -98,7 +84,6 @@
     "name": "Throwing Knives",
     "category": "Throwing",
     "desc": "A small blade capable of sudden assaults and being thrown.",
-    "keywords": ["Preparable"],
     "chart": {
       "damage": [0, 1, 2, 3],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -113,7 +98,6 @@
         "name": "Fling",
         "class": "Light",
         "type": "Attack",
-        "speed": 1,
         "cost": "1 _Momentum_",
         "range": "Melee_/_Short_ (_Thrown_)",
         "effect": "Attack a Target within Range.",
@@ -165,10 +149,10 @@
     "name": "Iron Longsword",
     "category": "Blade",
     "desc": "A sword that can easily be used in one or both hands and grants unparalleled flexibility.",
-    "keywords": ["Preparable"],
     "chart": {
       "stun": [3, 3, 0, 0],
       "damage": [0, 5, 9, 11],
+      "defend": ["1 _Guard_", "3 _Guard_", "4 _Guard_", "6 _Guard_"],
       "roll": ["2-3", "4-5", "6-9", "10-12"],
       "status": ["+2 _Momentum_", "None", "None", "None"]
     },
@@ -187,7 +171,6 @@
             "effect": "On a Graze+ with a _Melee_ Attack deal +1 _Bonus Damage_. If the Target takes any Damage, add _Bleeding_ 1."
           }
         ],
-        "gambit": "Use Rend at no cost.",
         "special": "Deal +1 Damage if _Wielded_ in both Hands.",
         "analysis_notes": {
           "fudge": -0.222,
@@ -198,23 +181,10 @@
       {
         "name": "Dashing Strike",
         "class": "Balanced",
+        "keywords": ["Priority"],
         "type": "Attack",
-        "cost": "2 _Momentum_",
-        "effect": "You become _Charging_. While _Charging_ in this way gain +1 _Focus_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_, gain 1 _Temporary Movement_ and take a _Turn_, which may only be used to Move. If you end this _Turn_ _Engaged_ with a Target you may immediately use Strike at _Advantage_, dealing _0/0/3/6_ _Bonus Damage_ on a _Graze_+."
-      },
-      {
-        "name": "Parry",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "2 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_.\n* **Always:** Gain +1 _Reflex_ and +4 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
-        "boosts": [
-          {
-            "name": "Counterattack",
-            "cost": "3 _Momentum_",
-            "effect": "If you Tie, _Graze_ the Attacker with Strike if they are in _Melee_ Range and add [_Counter_]. If you Win, instead _Hit_ them."
-          }
-        ]
+        "cost": "3 _Momentum_",
+        "effect": "You become _Charging_. While _Charging_ in this way gain +1 _Focus_. At the end of the _Phase_, as a _Slow Action_, remove _Charging_ and take a _Turn_, which may only be used to Move. If you end this _Turn_ _Engaged_ with a Target you may immediately use <i>Strike</i>, dealing _1/2/3/4_ _Bonus Damage_ on a _Graze_+. If the Target is not _Defending_, this Attack has _Advantage_."
       }
     ],
     "durability": 4,
@@ -917,10 +887,10 @@
     "name": "Fangs",
     "category": "Natural",
     "desc": "A natural weapon for fangs, mandibles, or pincers.",
-    "keywords": ["Preparable"],
     "chart": {
       "stun": [2, 0, 0, 0],
       "damage": [0, 4, 5, 7],
+      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
       "status": ["+1 _Momentum_"]
     },
@@ -956,20 +926,6 @@
         "range": "Melee",
         "target": "A creature _Grabbed_ by this Attack.",
         "effect": "Immediately inflict _Impaired_ [_Grit_] on the Target and inflict _0/0/3/6_ _Stun_. Become _Charging_. Next _Phase_, as a _Slow Action_ if the Target is still _Grabbed_, attack them at _Advantage_, dealing _0/0/2/4_ _Bonus Damage_ and applying <i>Thrash</i> at no cost."
-      },
-      {
-        "name": "Deflecting Teeth",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_. Gain +1 _Grit_ and +1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
-        "boosts": [
-          {
-            "name": "Counterattack",
-            "cost": "2 _Momentum_",
-            "effect": "If you Win, _Graze_ the Attacker with Strike if they are in _Melee_ Range and add [_Counter_]."
-          }
-        ]
       }
     ],
     "hands": 0
@@ -978,10 +934,10 @@
     "name": "Raptorial Leg",
     "category": "Natural",
     "desc": "Praying mantis claw.",
-    "keywords": ["Preparable"],
     "chart": {
       "damage": [3, 6, 7, 11],
       "roll": ["2-3", "4-6", "7-10", "11-12"],
+      "defend": ["1 _Guard_", "3 _Guard_", "4 _Guard_", "6 _Guard_"],
       "negate": [3, 4, 5, 6],
       "status": ["+2 _Momentum_"]
     },
@@ -1014,20 +970,6 @@
         "cost": "1 _Momentum_",
         "range": "Melee/Short",
         "effect": "Become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack  any creature within Range at _Advantage_, adding _Pull_ [_Grit_/_Reflex_] and inflicting _0/1/3/5_ _Bonus Stun_. You may add _Grasp_ at no cost if the creature is _Pulled_."
-      },
-      {
-        "name": "Grasping Parry",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "2 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Ranged_. Gain +1 _Grit_ and +3 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +2 _Guard_.",
-        "boosts": [
-          {
-            "name": "Counterattack",
-            "cost": "2 _Momentum_",
-            "effect": "If you Win, _Graze_ the Attacker with Strike if they are in _Melee_ Range and add [_Counter_]. If the Attack dealt no Damage, add <i>Pry</i> at no cost."
-          }
-        ]
       }
     ],
     "hands": 0
@@ -1059,9 +1001,10 @@
     "category": "Natural",
     "keywords": ["Natural", "Stab"],
     "chart": {
-      "stun": [0, 1, 1, 0],
+      "stun": [0, 1, 2, 0],
       "damage": [0, 1, 2, 4],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
+      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
       "status": ["+1 _Momentum_", "None", "None", "None"]
     },
     "abilities": [
@@ -1073,7 +1016,7 @@
         "range": "Melee",
         "effect": "Attack a Target within Range. If you entered this _Engagement_ this turn, deal +1 _Bonus Damage_.",
         "analysis_notes": {
-          "fudge": -0.3333,
+          "fudge": -0.25,
           "notes": "+1 conditional damage, make that worth a little.",
           "range": "Melee"
         },
@@ -1085,20 +1028,6 @@
           }
         ],
         "gambit": "Use one of this Attack's _Boosts_ at no cost."
-      },
-      {
-        "name": "Stinging Parry",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was _Heavy_ or _Ranged_. Gain +1 _Guard_ then _Graze_ [_Counter_, _Glancing_] the Attacker with <i>Strike</i>.\n* **Tie:** Instead _Hit_ [_Glancing_].\n* **Win:** Instead _Hit_. Gain an additional +1 _Guard_.",
-        "boosts": [
-          {
-            "name": "Perfect Counter",
-            "cost": "1 _Momentum_",
-            "boost": "Remove [_Glancing_] from the _Counterattack_."
-          }
-        ]
       }
     ],
     "tier": "Light",

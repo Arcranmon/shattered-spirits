@@ -1,7 +1,7 @@
 ## To-Do
 
-- Add button to change Stance
-- Get auto-clearing Stun working
+- Make Defending only last for the current Phase
+- Make Charging a Priority action that resolves at the end of the Phase, nerf it slightly as it's PRICEY
 
 ### Plan
 

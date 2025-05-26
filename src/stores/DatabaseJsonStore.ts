@@ -6,6 +6,7 @@ import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 import Talents from '@/database/talents.json'
 import ArchetypesJson from '@/database/archetypes.json'
+import SpiritTraitsJson from '@/database/spirit_traits.json'
 
 import ArtsJson from '@/database/arts.json'
 
@@ -18,13 +19,32 @@ import FeaturesJson from '@/database/features.json'
 import Terrains from '@/database/terrain.json'
 
 import SpiritTypeJson from '@/database/spirit_types.json'
+import SpiritFormsJson from '@/database/spirit_forms.json'
 
 import ManeuversJson from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { Art, Armor, Archetype, Discipline, Consumable, Maneuver, Npc, Feature, SpiritType, Stance, Status, Talent, Technique, Terrain, Weapon } from '@/class'
+import {
+  Art,
+  Armor,
+  Archetype,
+  Discipline,
+  Consumable,
+  Maneuver,
+  Npc,
+  Feature,
+  SpiritForm,
+  Subtype,
+  Stance,
+  Status,
+  Talent,
+  Technique,
+  Terrain,
+  Trait,
+  Weapon,
+} from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -49,11 +69,13 @@ export class DatabaseJsonStore extends VuexModule {
     this.Disciplines = DisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
-    this.SpiritTypes = SpiritTypeJson.map((x) => SpiritType.Deserialize(<ISubtypeData>(<unknown>x)))
+    this.Subtypes = SpiritTypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
+    this.SpiritForms = SpiritFormsJson.map((x) => SpiritForm.Deserialize(<ISpiritFormData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
     this.Arts = ArtsJson.map((x) => Art.Deserialize(<IArtData>(<unknown>x)))
     this.Consumables = ConsumablesJson.map((x) => Consumable.Deserialize(<IConsumableData>(<unknown>x)))
+    this.Traits = SpiritTraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -62,11 +84,13 @@ export class DatabaseJsonStore extends VuexModule {
   private Masteries: Discipline[] = []
   private Disciplines: Discipline[] = []
   private Techniques: Technique[] = []
-  private SpiritTypes: SpiritType[] = []
+  private Subtypes: Subtype[] = []
+  private SpiritForms: SpiritForm[] = []
   private Features: Feature[] = []
   private Archetypes: Archetype[] = []
   private Arts: Art[] = []
   private Consumables: Consumable[] = []
+  private Traits: Trait[] = []
 
   get basicStances() {
     return ['Novice Stance', 'Swift Stance', 'Steady Stance', 'Forceful Stance']
@@ -664,6 +688,12 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getGlossaryItemWithHeader(): any {
+    return (inword: string) => {
+      return '**' + inword + ':** ' + this.getGlossaryItem(inword)
+    }
+  }
+
   // ==========================================================
   // NPC GETTERS
   // ==========================================================
@@ -685,14 +715,56 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getSpiritType(): any {
     return (inword: string) => {
-      var type = this.SpiritTypes.find((x) => x.Name === inword.trim())
+      var type = this.Subtypes.find((x) => x.Name === inword.trim())
       return type
     }
   }
 
   get getSpiritTypesByElement(): any {
     return (inword: string) => {
-      return this.SpiritTypes.filter((x) => x.Element === inword.trim())
+      return this.Subtypes.filter((x) => x.Element === inword.trim())
+    }
+  }
+
+  // ==========================================================
+  // SPIRIT FORM GETTERS
+  // ==========================================================
+  get getSpiritForm(): any {
+    return (inword: string) => {
+      var type = this.SpiritForms.find((x) => x.Name === inword.trim())
+      return type
+    }
+  }
+
+  get getSpiritFormsFromList(): any {
+    return (spirit_forms: Array<string>) => {
+      if (spirit_forms == undefined) return []
+      let forms: Array<SpiritForm> = []
+      for (var form of spirit_forms) {
+        forms.push(this.getSpiritForm(form))
+      }
+      return forms
+    }
+  }
+
+  // ==========================================================
+  // SPIRIT TRAITS GETTERS
+  // ==========================================================
+  get getSpiritTrait(): any {
+    return (inword: string) => {
+      var type = this.Traits.find((x) => x.Name === inword.trim())
+      return type
+    }
+  }
+
+  get getSpiritTraitsFromList(): any {
+    return (spirit_traits: Array<string>) => {
+      if (spirit_traits == undefined) return []
+      let traits: Array<Trait> = []
+      for (var trait of spirit_traits) {
+        traits.push(this.getSpiritTrait(trait))
+      }
+      return traits
     }
   }
 }

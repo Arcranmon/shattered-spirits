@@ -8,48 +8,39 @@
     </p>
     <br />
     <v-tabs v-model="tab" class="spirit-tabs" background-color="#b69e75" color="black" centered
-      ><v-tab> <h4>Earth</h4> </v-tab><v-tab> <h4>Flame</h4> </v-tab><v-tab> <h4>Water</h4> </v-tab><v-tab> <h4>Wind</h4> </v-tab
-      ><!---<v-tab> <h4>Combat Traits</h4> </v-tab>---><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
+      ><v-tab><h4>Spirit Forms</h4> </v-tab><v-tab> <h4>Earth</h4> </v-tab><v-tab> <h4>Flame</h4> </v-tab><v-tab> <h4>Water</h4> </v-tab
+      ><v-tab> <h4>Wind</h4> </v-tab><v-tab> <h4>Wood</h4> </v-tab><v-tab> <h4>Metal</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab
+      ><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="spirit-tab-content">
+      <v-tab-item><show-cards :inputs="this.$store.getters.getSpiritFormsFromList(['Small', 'Medium', 'Large'])" :collapse="false" /> </v-tab-item>
+      <v-tab-item> </v-tab-item>
+      <v-tab-item> </v-tab-item>
+      <v-tab-item> </v-tab-item>
+      <v-tab-item> </v-tab-item>
+      <v-tab-item></v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em" :string="earthText" /><br /><br />
-        <h4>Earth Spirit Types</h4>
-        <display-tooltip-text
-          class="description-text"
-          string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
-        />
-        <show-cards :inputs="[this.$store.getters.getSpiritType('Mountain')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
+        <v-row>
+          <v-col cols="6">
+            <h3>Spirit Customization Rules</h3>
+            <display-tooltip-text string="Metal Spirits must be Small or Medium and have 4 Growth Points." />
+            <h3>Base Traits</h3>
+            <display-tooltip-text
+              string="**Summoning Source:** Any _Metal_ Terrain effect or any _Metal_ _Equipment_ with a _Load_ of 1 if Small or 2 if Medium. All _Equipment_ _Equipped_ by a creature may be used in aggregate to _Summon_." /><br />
+            <display-tooltip-text string="**Summon Range:** 0" /><br />
+            <display-tooltip-text string="**_Damage Immunities_:** _Poison_" /><br />
+            <display-tooltip-text string="**_Status Immunities_:** _Bleeding_, _Poisoned_" /><br /></v-col
+          ><v-col style="padding: 2em"><armor-card :armor="this.$store.getters.getArmor('Metal Spirit')" /></v-col
+        ></v-row>
+        <show-cards display_text="Base Traits" :inputs="this.$store.getters.getSpiritTraitsFromList(['Heat Conduction'])" />
+        <show-cards display_text="Common Traits (1 Point)" :inputs="[]" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Copper Ore'])" />
       </v-tab-item>
       <v-tab-item>
-        <display-tooltip-text style="margin: 1em" :string="flameText" /><br /><br />
-        <h4>Flame Spirit Types</h4>
-        <display-tooltip-text
-          class="description-text"
-          string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
-        />
-        <show-cards :inputs="[this.$store.getters.getSpiritType('Blaze')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
-      </v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text style="margin: 1em" :string="waterText" /><br /><br />
-        <h4>Water Spirit Types</h4>
-        <display-tooltip-text
-          class="description-text"
-          string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
-        />
-        <show-cards :inputs="[this.$store.getters.getSpiritType('Tide')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
-      </v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text style="margin: 1em" :string="windText" /><br /><br />
-        <h4>Wind Spirit Types</h4>
-        <display-tooltip-text
-          class="description-text"
-          string="Your Spirit reflects your expertise in magic. Your spirit gets one of the below, based on your starting Spirit Discipline:"
-        />
-        <show-cards :inputs="[this.$store.getters.getSpiritType('Gale')]" job="SpiritType" v-bind:class="use_single" :cols="1" :collapse="false" />
-      </v-tab-item>
-      <!--- <v-tab-item> <display-tooltip-text style="margin: 1em" :string="combatTraitText" /><br /><br /></v-tab-item>
-      --->
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Swift'])" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Shelled'])" />
+        <show-cards display_text="Rare Traits (3 Points)" :inputs="[]"
+      /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />
 
@@ -126,6 +117,7 @@ import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritTypeCard from '@/components/cards/SpiritTypeCard.vue'
+import ArmorCard from '@/components/cards/ArmorCard'
 import WeaponCard from '@/components/cards/WeaponCard'
 import { store } from '@/store'
 export default Vue.extend({
@@ -140,11 +132,7 @@ export default Vue.extend({
       selectedWeapon: null,
     }
   },
-  components: {
-    ShowCards,
-    WeaponCard,
-    SpiritTypeCard,
-  },
+  components: { ArmorCard, ShowCards, WeaponCard, SpiritTypeCard },
   computed: {
     earthText() {
       return EarthText

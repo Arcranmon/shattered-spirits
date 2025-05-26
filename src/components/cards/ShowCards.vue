@@ -5,7 +5,6 @@
         <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header v-bind:class="contained_header">
             <h3 style="display: flex">{{ dropName }}</h3>
-            <div class="summary--text">{{ summary_text }}</div>
           </v-expansion-panel-header>
           <v-expansion-panel-content v-bind:class="contained_body">
             <v-container fluid>
@@ -28,7 +27,10 @@
                   <div class="card--box" v-if="job == 'Weapons'">
                     <weapon-card :weapon="n" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="job == 'Armor'">
+                  <div class="card--box" v-if="isTrait(n)">
+                    <trait-card :trait="n" :color="card_color" :character_creation="character_creation" />
+                  </div>
+                  <div class="card--box" v-if="isArmor(n)">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="job == 'Maneuvers'">
@@ -93,6 +95,9 @@
             <div class="card--box" v-if="isArt(n)">
               <art-card :art="n" style="height: 100%" />
             </div>
+            <div class="card--box" v-if="isSpiritForm(n)">
+              <spirit-form-card :form="n" style="height: 100%" />
+            </div>
           </v-col>
         </v-row> </v-container
     ></span>
@@ -113,7 +118,9 @@ import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import WeaponCard from './WeaponCard.vue'
 import SpiritTypeCard from './SpiritTypeCard.vue'
-import { Art, Armor, Consumable, Archetype, Feature, Stance, Status, Talent, Technique, Terrain, Weapon, SpiritType } from '@/class'
+import SpiritFormCard from './SpiritFormCard.vue'
+import TraitCard from './TraitCard.vue'
+import { Art, Armor, Consumable, Archetype, Feature, Stance, Status, Talent, Technique, SpiritForm, Trait, Terrain, Weapon, SpiritType } from '@/class'
 
 export default Vue.extend({
   name: 'show-cards',
@@ -184,7 +191,9 @@ export default Vue.extend({
     TechCard,
     TerrainCard,
     WeaponCard,
+    SpiritFormCard,
     SpiritTypeCard,
+    TraitCard,
     TalentCard,
   },
   methods: {
@@ -214,6 +223,12 @@ export default Vue.extend({
     },
     isTalent(variable) {
       return variable instanceof Talent
+    },
+    isSpiritForm(variable) {
+      return variable instanceof SpiritForm
+    },
+    isTrait(variable) {
+      return variable instanceof Trait
     },
   },
   computed: {

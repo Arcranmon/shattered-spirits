@@ -9,7 +9,6 @@ class Ability extends Base {
   protected boosts_: IBoostData[]
   protected cost_: string
   protected class_: string
-  protected gambit_: string[] // Only for Attacks
   protected move_: number
   protected range_: string
   protected reqs_: string
@@ -24,7 +23,6 @@ class Ability extends Base {
     this.boosts_ = []
     this.cost_ = ''
     this.desc_ = ''
-    this.gambit_ = []
     this.effect_ = ''
     this.move_ = 0
     this.name_ = name
@@ -64,6 +62,12 @@ class Ability extends Base {
   public get Type() {
     return this.type_
   }
+  public get Icon() {
+    if (this.class_ === 'Defensive') return require('@/assets/Defensive.svg')
+    if (this.class_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
+    if (this.class_ === 'Mobility') return require('@/assets/Move.svg')
+    return require('@/assets/General.svg')
+  }
 
   // ==========================================================
   // UTILITY
@@ -92,12 +96,6 @@ class Ability extends Base {
   }
   public get CostHeader() {
     return '**_Cost_:** ' + this.cost_
-  }
-  public get HasGambit() {
-    return this.gambit_.length > 0
-  }
-  public get GambitHeader() {
-    return '**_Gambit_:** ' + this.gambit_
   }
   public get HasMove() {
     return this.move_ > 0
@@ -158,7 +156,6 @@ class Ability extends Base {
     this.cost_ = data.cost || ''
     this.class_ = data.class || 'MISSING'
     this.type_ = data.type || 'MISSING'
-    this.gambit_ = data.gambit || []
     this.move_ = data.move || 0
     this.reqs_ = data.reqs || ''
     this.speed_ = data.speed || 0

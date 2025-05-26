@@ -77,7 +77,7 @@
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <weapon-card v-if="selectedWeapon != null" :weapon="selectedWeapon" style="width: 40em" :key="selectedWeapon.Name" /></v-col> </v-row
+        <v-col> <weapon-card v-if="selectedWeapon != null" :weapon="selectedWeapon" style="width: 50em" :key="selectedWeapon.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>

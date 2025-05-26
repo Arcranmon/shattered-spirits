@@ -87,23 +87,24 @@
   },
   {
     "name": "Sturdy",
-    "desc": "You are exceptionally tough, pushing through any .",
+    "desc": "You are exceptionally tough, pushing through any difficulty with determination and grit.",
     "category": "Basic",
     "abilities": [
       {
-        "name": "Sheer Grit",
+        "name": "Power Through",
         "class": "Defensive",
-        "type": "Major Action",
-        "cost": "None",
-        "effect": "Clear all your _Stun_, then _Recover_ twice."
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "You would _Negate_ with _Focus_ or _Grit_.",
+        "effect": "You may instead _Negate_ with _Grit_ or, if already _Negating_ with _Grit_, _Negate_ with _Advantage_. If you succeed, gain 2 _Vigor_."
       },
       {
-        "name": "Push Through",
-        "class": "Utility",
+        "name": "Second Wind",
+        "class": "Defensive",
         "type": "Action",
+        "cost": "None",
         "keywords": ["Rooted"],
-        "cost": "1 _Momentum_",
-        "effect": "_Recover_, then reduce your _Stun_ by 4."
+        "trigger": "_Recover_, then clear _3/6/9/12_ _Stun_."
       },
       {
         "name": "Endure",
@@ -111,8 +112,8 @@
         "type": "Reaction",
         "keywords": ["Exhaust"],
         "cost": "None",
-        "trigger": "You would gain _Break_.",
-        "effect": "You are instead do not gain _Break_. Clear half your maximum _Stun_."
+        "trigger": "You would lose all _Health_ and/or _Break_.",
+        "effect": "Instead, set your _Health_ to 1 and/or do not gain _Break_."
       }
     ]
   },
@@ -145,13 +146,29 @@
         "effect": "Add [_Safe_] to your _Movement_ this _Turn_."
       },
       {
-        "name": "Dodge",
+        "name": "Sidestep",
         "class": "Defensive",
         "type": "Reaction",
-        "cost": "_1/2/2/3_ _Momentum_, 1 _Movement_",
+        "keywords": ["Dodge"],
+        "cost": "_1_ _Momentum_, X _Movement_",
         "trigger": "You are Attacked and are not _Immobile_.",
-        "effect": "_Defend_, with _Disadvantage_ if the triggering Attack was not _Melee_. Gain +1 Reflex.\n* **Tie:** Decrease the Attack rank by 1.\n* **Win:** Decrease the Attack rank by 1. You may _Disengage_ without creating an [_Opening_].",
-        "boosts": [{ "name": "Dive", "cost": "1 _Momentum_", "effect": "Reroll the _Defense Roll_; if you Lose, gain _Prone_." }]
+        "effect": "_Defend_. Gain +1 Reflex. Gain _Guard_ equal to your _Reflex_ plus any _Movement_ spent.\n* _Tie_: Instead gain _Guard_ equal to your _Reflex_ plus twice the _Movement_ spent.\n* _Win_: Instead gain _Guard_ equal to your _Reflex_ plus triple the _Movement_ spent.",
+        "boosts": [
+          {
+            "name": "Roll",
+            "cost": "_0/1/1/2_",
+            "effect": "After resolving this Reaction, reduce the triggering Attack's result by one tier (making a _Hit_ a _Graze_, for example). If the _Defend_ was a _Loss_, gain _Prone_."
+          }
+        ]
+      },
+      {
+        "name": "Quick Step",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None / 1 _Movement_ if triggered from a [_Block_] _Reaction_.",
+        "trigger": "You are not _Immobile_.",
+        "effect": "_Disengage_; choose one enemy; treat yourself as [_Safe_] against their Attack.",
+        "boosts": [{ "name": "Tumble", "cost": "1 _Movement_", "effect": "Instead, this is [_Safe_] against all Targets." }]
       }
     ],
     "table": [
@@ -174,12 +191,12 @@
         "cost": "1 _Momentum_",
         "range": "Melee",
         "target": "Single-Target",
-        "effect": "Attack a Target within Range.",
+        "effect": "Attack a Target within Range. As a part of this Attack you may _Prepare_ up to 1 _Momentum_.",
         "boosts": [
           {
-            "name": "Flow",
+            "name": "Outmaneuver",
             "cost": "1 _Momentum_",
-            "effect": "_Prepare_ 1"
+            "effect": "Deal +1 _Bonus Stun_ and add _Exposed_/_Impaired_ [_Focus_/_Grit_]."
           },
           {
             "name": "Match Point",
@@ -187,21 +204,16 @@
             "effect": "On a _Graze_+, deal +2 _Bonus Stun_ and add _Push_ [_Grit_] or deal +1 _Bonus Stun_ and add _Prone_/_Grabbed_ [_Grit_/_Reflex_]"
           }
         ],
-        "gambit": "Use any 2 _Momentum_ worth of Boosts."
-      },
-      {
-        "name": "Parry",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "trigger": "You are Attacked.",
-        "effect": "_Defend_. You have _Disadvantage_ if this Attack is _Ranged_. Gain a +1 to _Negate_ and 1 _Guard_.\n* **Tie:** Gain an additional +1 _Guard_.\n* **Win:** Gain an additional +1 _Guard_. [_Counterattack_] If the Target is within Melee Range, _Graze_ them."
+        "analysis_notes": {
+          "fudge": -0.25
+        }
       }
     ],
     "chart": {
       "stun": [0, 1, 2, 4],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
-      "status": ["+1 _Momentum_", "None", "_Prepare_ 1", "_Prepare_ 2"]
+      "defend": ["0 _Guard_", "1 _Guard_", "1 _Guard_, +1 _Negate_", "2 _Guard_, +1 _Negate_"],
+      "status": ["+1 _Momentum_", "None", "None", "+1 _Momentum_"]
     }
   },
   {
@@ -213,26 +225,30 @@
         "name": "Manifest",
         "keywords": ["Spirit"],
         "class": "Utility",
-        "type": "Action",
-        "cost": "None",
+        "type": "Enhancement",
+        "cost": "1 _Momentum_",
         "range": "Spirit's _Summon_ Range.",
-        "effect": "Choose one:\n* _Summon_ your _Spirit_ within a valid _Arena_ within Range and _Prepare_ _0/1/2/3_ one of their _Arts_.\n* _Recall_ your _Spirit_ and clear 0/3/6/9 _Stun_."
+        "effect": "Choose one:\n* _Summon_ your _Spirit_ within a valid _Arena_ within Range.\n* _Recall_ your _Spirit_."
       },
       {
         "name": "Tag Team",
+        "keywords": ["Spirit"],
+        "class": "Utility",
+        "type": "Reaction",
+        "cost": "X _Momentum_ (Maximum current _Phase_)",
+        "reqs": "Spirit is _Summoned_",
+        "trigger": "You or your Spirit's _Turn_ begins.",
+        "target": "Whoever's _Turn_ it is.",
+        "effect": "The Target may act as if it is _Phase_ X + Y, where X is the _Momentum_ spent and Y is whatever _Phase_ they would have acted as if it was. This may not allow you to act as if it is later than the current _Phase_."
+      },
+      {
+        "name": "Combination Strike",
         "keywords": ["Spirit"],
         "class": "Offensive",
         "type": "Gambit",
         "cost": "None",
         "reqs": "_Spirit_ is within Range of the original Attack's Target.",
-        "effect": "Your Spirit may immediately use a Single-Target Attack Action [_Discount_ 2] against the same Target.",
-        "boosts": [
-          {
-            "name": "Swift Manifestation",
-            "cost": "1 _Momentum_",
-            "effect": "You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately _Summon_ your _Spirit_ within a valid _Arena_ within Range, then resolve this Gambit."
-          }
-        ]
+        "effect": "Your Spirit may immediately use a Single-Target Attack Action [_Discount_ 2] against the same Target."
       },
       {
         "name": "Interdiction",
@@ -241,14 +257,7 @@
         "type": "Gambit",
         "cost": "None",
         "reqs": "_Spirit_ is in _Melee_ Range of you.",
-        "effect": "Distribute all effects of the attack (Damage, Stun, and Status) between you and your _Spirit_ however you wish.",
-        "boosts": [
-          {
-            "name": "Swift Manifestation",
-            "cost": "1 _Momentum_",
-            "effect": "You may use this Gambit even if your _Spirit_ is not _Summoned_; immediately _Summon_ your _Spirit_ within a valid _Arena_ within Range, then resolve this Gambit."
-          }
-        ]
+        "effect": "Distribute all effects of the attack (Damage, Stun, and Status) between you and your _Spirit_ however you wish."
       }
     ]
   },
@@ -298,23 +307,34 @@
   {
     "name": "Ward",
     "category": "Basic",
-    "desc": "Raised fists or a shield are enough to dampen hits ever so slightly.",
+    "desc": "You defend yourself, using weapons and armor to keep your foes assault at bay.",
     "abilities": [
       {
-        "name": "Raise Guard",
+        "name": "Brace",
         "class": "Defensive",
-        "keywords": ["Rooted"],
-        "type": "Action",
-        "cost": "None",
-        "effect": "Become _Guarding_, then _Fortify_ 0/1/2/3."
+        "type": "Reaction",
+        "keywords": ["Block"],
+        "cost": "Special",
+        "trigger": "You are Attacked.",
+        "effect": "Choose an Attack to _Defend_ with, paying half its _Cost_ (minimum 1).\n* **_Loss_**: Gain half the _Defend_ result.\n* **Tie+:** Gain the Defend result."
       },
       {
-        "name": "Perfect Parry",
+        "name": "Parry",
+        "class": "Defensive",
+        "type": "Reaction",
+        "keywords": ["Block"],
+        "cost": "Special",
+        "trigger": "You are Attacked.",
+        "effect": "Choose a _Defensive_ Attack to _Defend_ with, paying its _Cost_.\n* **_Loss_:** Resolve the _Miss_ effect of the Attack. \n* **_Tie_** Gain half the _Defend_ result.\n* **_Win_:** Gain the Defend effect and resolve the Attack against the Target if possible, adding [_Counter_]. If you resolve the Attack, any _Gambits_ earned may be spent on _Defensive_ or _Offensive_ options."
+      },
+      {
+        "name": "Deflect",
         "class": "Defensive",
         "type": "Gambit",
         "cost": "None",
-        "reqs": "Hit+ on the _Defense Roll_.",
-        "effect": "Gain +3 _Guard_, +1 if you are _Guarding_."
+        "reqs": "Win on the _Defense Roll_.",
+        "effect": "Gain +4 _Guard_.",
+        "boosts": [{ "name": "Heavy Deflect", "cost": "_0/1/2/3_ _Momentum_", "effect": "Instead, the triggering Attack is [_Glancing_]." }]
       }
     ]
   },
@@ -328,11 +348,10 @@
         "class": "Utility",
         "keywords": ["Rooted"],
         "type": "Action",
-        "speed": 1,
         "cost": "None",
         "range": "Self/Melee",
         "target": "Ally (Optional)",
-        "effect": "Choose one per _Phase_:\n* You or the Target may _Recover_.\n* You and the Target clear 3 _Stun_, distributed however you wish.\n* _Prepare_ 1."
+        "effect": "Choose one per _Phase_:\n* You or the Target _Recovers_.\n* You or the Target clears 3 _Stun_.\n* Gain 1 _Momentum_.\n* _Prepare_ 1 _Momentum_.\n* Gain _Guarding_."
       },
       {
         "name": "Grit Teeth",
@@ -362,7 +381,6 @@
     "name": "Interact",
     "category": "Basic",
     "desc": "Sometimes you need to do things more complicated than just sticking enemies with the pointy end of a stick.",
-    "keywords": ["Preparable"],
     "abilities": [
       {
         "name": "Use Environment",
@@ -422,6 +440,20 @@
     "desc": "You use mobility and guile to outmaneuver your foe, forcing openings.",
     "category": "Basic",
     "abilities": [
+      {
+        "name": "Press Advantage",
+        "class": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Use 2 _Momentum_ of _Boosts_ from the original Attack or this _Gambit_.",
+        "boosts": [
+          {
+            "name": "Flowing Combo",
+            "cost": "1 _Momentum_",
+            "effect": "_Prepare_ 1 on the Attack used for this Gambit. You may repeat this _Boost_ up to twice."
+          }
+        ]
+      },
       {
         "name": "Feint",
         "class": "Offensive",

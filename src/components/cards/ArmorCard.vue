@@ -44,8 +44,8 @@
       <div v-if="armor.HasTraits"><display-tooltip-text :string="armor.TraitsHeader" /></div>
       <div v-if="armor.HasSpecial"><display-tooltip-text :string="armor.SpecialHeader" /></div>
       <ability-widget v-for="(ability, index) in armor.Abilities" :ability="ability" :useDivider="true" />
-      <div v-if="armor.HasTable" class="ability-box">
-        <basic-table :chart="armor.Table" />
+      <div v-if="armor.HasChart" class="ability-box">
+        <chart-table :chart="armor.Chart" />
       </div>
     </div>
     <div class="desc--box" v-if="armor.Desc.length > 0" style="font-style: italic">{{ armor.Desc }}<br /></div>
@@ -58,10 +58,11 @@ import { Armor } from '@/class'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
 import AbilityWidget from '@/components/AbilityWidget.vue'
 import BasicTable from '@/components/BasicTable.vue'
+import ChartTable from '@/components/ChartTable.vue'
 
 export default Vue.extend({
   name: 'armor-card',
-  components: { AbilityWidget, BasicTable },
+  components: { AbilityWidget, BasicTable, ChartTable },
   props: {
     armor: {
       type: Armor,

@@ -32,10 +32,11 @@ status_multipliers = {
     "Push": 2,
     "Pull": 2,
     "Slide": 2.5,
-    "Tidal Motion": 1.75
+    "Tidal Motion": 1.75,
+    "Defending": 1.2
 }
 
-instant_statuses = [   "Dazed",   "Slide"]
+instant_statuses = ["Defending"]
 
 keyword_modifiers = {
     "Avoidable": -2,
@@ -101,10 +102,7 @@ def get_status_damage(status_string, index):
         if status == 'None': continue        
         if('Momentum' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
-            no_save_damage += int(status[1]) * momentum_value * 0.9 
-        elif('Prepare' in status):
-            # Preparing is worth much less
-            no_save_damage += int(status[-1]) * 0.75
+            no_save_damage += int(status[1]) * momentum_value * 0.75
         elif '/' in status and 'Grit' not in status:
             status_options = status.split('/')
             estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)

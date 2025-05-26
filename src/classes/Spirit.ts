@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Combatant, SpiritType } from '@/class'
+import { Combatant, Subtype } from '@/class'
 
 var kBasicAttacks = ['Weapon Attack', 'Brawl']
 var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance']
@@ -9,7 +9,7 @@ var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
 
 class Spirit extends Combatant {
   private name_: string
-  private spirit_type_: SpiritType
+  private spirit_type_: Subtype
   private weapons_: Array<string>
 
   private light_weapons_: number

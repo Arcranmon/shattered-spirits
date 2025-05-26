@@ -2,6 +2,7 @@
   <div v-bind:class="useDivider ? 'ability-box' : ''" style="padding-bottom: 0.25em">
     <div>
       <span v-bind:class="ability.Type" class="ability--head" style="width: 100%">
+        <img :src="ability.Icon" style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
         <display-tooltip-text :string="ability.Header" />
       </span>
       <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
@@ -65,6 +66,7 @@ export default Vue.extend({
   padding-left: 0.5em;
   font-size: 1.05em;
   font-weight: bold;
+  align-items: center;
 }
 .Enhancement {
   background-color: $color--maneuver;

@@ -28,6 +28,7 @@ declare interface IBonusesData {
   focus: number
   grit: number
   health: number
+  stun: number
   reflex: number
   move: number
   load: number
@@ -89,6 +90,7 @@ declare interface ICombatantData {
 
 declare interface IChartData {
   roll: Array<string>
+  defend: Array<string>
   damage?: Array<number>
   stun?: Array<number>
   status: Array<string>
@@ -151,7 +153,7 @@ declare interface INpcData {
   class: string
   desc: string
   notches?: number
-  Health: number
+  health: number
   guard?: number
   max_stun: number
   momentum_gain?: number
@@ -173,7 +175,6 @@ declare interface IAbilityData extends IBaseData {
   area?: string
   boosts?: IBoostData[]
   cost?: string
-  gambit?: string[]
   class: string
   move?: number
   range?: string
@@ -221,6 +222,16 @@ declare interface ISpiritData extends ICombatantData {
   name: string
   type: string
   weapons: Array<string>
+}
+
+declare interface ISpiritFormData extends IBaseData {
+  defenses?: IDefenseData
+  health: number
+  weapons: string
+  move: number
+  traits: string[]
+  stun: number
+  range_modifier: string
 }
 
 declare interface ISubtypeData extends IBaseData {
@@ -294,6 +305,8 @@ declare interface IFeatureData extends IBaseData {
 declare interface ITraitData extends IBaseData {
   reqs: string
   cost: number
+  equipment: string[]
+  bonuses: IBonusesData
 }
 
 declare interface IWeaponData extends IEquipmentData {

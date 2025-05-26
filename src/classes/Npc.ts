@@ -27,7 +27,7 @@ class Npc extends Combatant {
   }
 
   override get MaxHealth() {
-    return this.npc_data_.Health
+    return this.npc_data_.health
   }
 
   override get Size() {
@@ -43,7 +43,8 @@ class Npc extends Combatant {
   }
 
   override get MaxStun() {
-    return this.npc_data_.max_stun
+    if (this.npc_data_.defenses.stun) return this.npc_data_.defenses.stun
+    return 0
   }
 
   override get Weapons() {
@@ -88,6 +89,9 @@ class Npc extends Combatant {
 
   public get MomentumGainText() {
     return '**_Momentum_ Gain:** ' + this.npc_data_.momentum_gain
+  }
+  public get StunText() {
+    return '**_Stun_:** ' + this.MaxStun
   }
   public get Name() {
     return this.npc_data_.name
@@ -135,7 +139,7 @@ class Npc extends Combatant {
     return '**Move:** ' + this.npc_data_.move
   }
   public get HealthText() {
-    return '**Health:** ' + this.npc_data_.Health
+    return '**Health:** ' + this.npc_data_.health
   }
   public get ArmorText() {
     if (this.npc_data_.guard) return '**Armor:** ' + this.npc_data_.guard + ' Guard'

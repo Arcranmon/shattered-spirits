@@ -24,7 +24,7 @@ class Equipment extends Base {
     return this.abilities_
   }
   public get Icon() {
-    if (this.Category == 'Error') return ''
+    if (this.Category == 'Error' || this.Category == 'Hide') return ''
     return require('@/assets/' + this.Category + '.svg')
   }
   public get HasChart() {

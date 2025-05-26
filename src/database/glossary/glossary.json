@@ -8,16 +8,20 @@
     "effect": "When an Attack gains Bonus Damage or Stun, distribute it between targets however you wish."
   },
   {
+    "name": "Charged",
+    "effect": "This Ability does some sort of Charged effect. If this is an Attack, it may not be used to Defend."
+  },
+  {
     "name": "Counter",
     "effect": "Effects with Counter may not be triggered in response to one with Counter. Additionally, if you qualified for a _Gambit_ when using this effect, you may choose to use an _Offensive_ _Gambit_ on this Counter rather than a normal _Defensive_ _Gambit_."
   },
   {
     "name": "Defend",
-    "effect": "Different abilities may allow a creature to Defend. When a creature Defends, they roll 2d6, consult the chart associated with the ability, and determine the result. They then compare this result to the result of the incoming attack, and resolve the appropriate Win, Lose, or Tie effect, as appropriate. The Always effect is always resolved. If a character Crits or rolls doubles they may use a _Defensive_ _Gambit_."
+    "effect": "Different abilities may allow a creature to Defend. When a creature Defends, they roll 2d6, consult the chart associated with the Ability, and determine the result (Miss, Graze, Hit, Crit). They then compare this result to the result of the incoming attack and determine if they rolled lower (a Loss), matched the Attacker (Tie), or exceeded the Attacker (Win)."
   },
   {
     "name": "Discount",
-    "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack."
+    "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack or simply gain the difference as _Momentum_."
   },
   {
     "name": "Disengage",
@@ -45,28 +49,25 @@
     "effect": "While _Wielding_ this, whenever you you use an effect that allows you to place _Momentum_ on an Art or Technique and you choose an Art or Technique that matches this Foci's type, place an additional _Momentum_ and treat the Hands used to _Wield_ this as Free."
   },
   {
+    "name": "Gambit",
+    "effect": "Gambits are _Maneuvers_ that allow characters to enhance an Attack or Defense. When making an Attack, characters may use a Gambit if they roll doubles or roll a Critical Hit. If Defending, characters may use a Gambit if they roll doubles or Win. Characters may qualify for more than one Gambit on a single roll, such as when they roll doubles and get a Critical Hit. If a Gambit is triggered by an _Area_ Attack resolve the effects against a single Target per Gambit unless specified otherwise."
+  },
+  { "name": "Gambits", "see": "Gambit" },
+  {
     "name": "Glancing",
-    "effect": "A Glancing effect did not hit as solidly as it should have; halve any inflicted Stun (rounded down), the convert half the Damage to Stun (rounded up)."
+    "effect": "A Glancing effect did not hit as solidly as it should have; _Guard_ reduces Damage and Stun rather than converting Damage to Stun. The Target gains a +1 to _Negate."
   },
   {
     "name": "Guard",
-    "effect": "Guard first reduces any _Stun_ inflicted on the creature, then converts Damage to _Stun_ with any remainder."
+    "effect": "Guard first reduces any _Stun_ inflicted on the creature, then converts Damage to _Stun_, then, if there is any remainder, reduces _Stun_ once more."
   },
   {
     "name": "Limited",
     "effect": "This ability may only be used once per _Round_."
   },
   {
-    "name": "Perfect Guard",
-    "effect": "Perfect Guard reduces _Stun_ and removes Damage equal to its value."
-  },
-  {
     "name": "Prepare",
-    "effect": "When you Prepare, place _Momentum_ on any _Art_ with the _Preparable_ keyword. This _Momentum_ may be used to pay the cost of any of said _Art's_ _Abilities_. Lose half the prepared _Momentum_ on each _Art_ at _Refresh_."
-  },
-  {
-    "name": "Fortify",
-    "effect": "Characters may spend Fortify in place of _Momentum_ for _Defensive Reactions_. Characters may only spend Fortify once per Reaction unless they are _Guarding_. Clear half of all Fortify at the end of the _Round_."
+    "effect": "When you Prepare, place _Momentum_ on any _Art_ or _Equipment_, removing it from your _Momentum_ supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. [This is clunky and needs to be made slightly cleaner]"
   },
   {
     "name": "Hand-and-a-Half",
@@ -124,7 +125,7 @@
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_. The _Spirit_ may take an Action every _Phase_, just like a character."
+    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_. The _Spirit_ may use an _Action_ every _Phase_, just like a character, but, while _Summoned_, the player and Spirit must split the current _Phase_ when resolving _Actions_. For example, in _Phase_ 3, one character may act as normal and the other uses no _Action_ or one may act as if it was _Phase_ 2 and the other may act as if it was _Phase_ 1."
   },
   { "name": "Summoned", "see": "Summon" },
   {
