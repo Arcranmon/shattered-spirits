@@ -2,10 +2,10 @@
   <div style="text-align: center">
     <custom-button to="/archetypes">Archetypes</custom-button> <br />
     <custom-button to="/talents">Talents</custom-button> <br />
-    <custom-button to="/basic-skills">Basic Skills</custom-button> <br />
-    <custom-button to="/spirit-abilities">Spirit Abilities</custom-button> <br />
+    <custom-button to="/basic-skills">Basic Arts and Stances</custom-button> <br />
     <!---<custom-button to="/martial-disciplines">Martial Disciplines</custom-button> <br />--->
-    <custom-button to="/spirit-disciplines">Spirit Disciplines</custom-button> <br />
+    <custom-button to="/spirit-arts">Spirit Arts</custom-button> <br />
+    <custom-button to="/spirit-abilities">Spirit Customization</custom-button> <br />
   </div>
 </template>
 

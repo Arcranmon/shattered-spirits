@@ -27,6 +27,12 @@ class Art extends Base {
   public get Chart() {
     return this.chart_
   }
+  public get Header() {
+    return this.Category + ' Art'
+  }
+  public get Icon() {
+    return require('@/assets/disciplines/' + this.Category + '.svg')
+  }
 
   // ==========================================================
   // SERIALIZATION

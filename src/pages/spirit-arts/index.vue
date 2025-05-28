@@ -1,28 +1,28 @@
 <template>
   <div>
-    <h2>Disciplines</h2>
+    <h2>Arts</h2>
     <span v-if="isMobile">
       <v-expansion-panels style="padding: 3px">
         <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header>Filters </v-expansion-panel-header>
         </v-expansion-panel> </v-expansion-panels
       ><br /><v-select
-        v-model="selectedDiscipline"
-        :items="disciplines"
+        v-model="selectedArt"
+        :items="arts"
         item-text="Name"
         return-object
         attach
-        label="Selected discipline"
+        label="Selected art"
         filled
         outlined
         style="margin-left: 0.5em; margin-right: 0.5em"
       ></v-select
-      ><discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline"
+      ><art-card v-if="selectedArt != null" :art="selectedArt"
     /></span>
     <span v-else>
       <v-row align="center" style="margin-left: 0.5em; margin-right: 0.5em">
         <v-col cols="3"
-          ><v-select v-model="selectedCategories" :items="disciplineCategories" attach label="Discipline Categories" multiple filled outlined
+          ><v-select v-model="selectedCategories" :items="artCategories" attach label="Art Categories" multiple filled outlined
             ><template v-slot:prepend-item>
               <v-list-item ripple @mousedown.prevent @click="selectedCategories = []">
                 <v-list-item-content>
@@ -36,7 +36,7 @@
             </template></v-select
           > </v-col
         ><v-col cols="3"
-          ><v-select v-model="selectedTypes" :items="selectableTypes" attach label="Discipline Types" multiple filled outlined>
+          ><v-select v-model="selectedTypes" :items="selectableTypes" attach label="Art Types" multiple filled outlined>
             <template v-slot:prepend-item>
               <v-list-item ripple @mousedown.prevent @click="selectedTypes = []">
                 <v-list-item-content>
@@ -54,14 +54,14 @@
       <v-row class="page">
         <v-col cols="auto" class="sidebar">
           <v-btn-toggle borderless overflow-auto
-            ><div v-for="discipline in disciplines" style="width: 100%" v-bind:key="discipline.Name">
-              <v-btn @click="selectedDiscipline = discipline" class="button--style" depressed tile block>
-                <img class="image--icon-size" :src="discipline.Icon" />{{ discipline.Name }}
+            ><div v-for="art in arts" style="width: 100%" v-bind:key="art.Name">
+              <v-btn @click="selectedArt = art" class="button--style" depressed tile block>
+                <img class="image--icon-size" :src="art.Icon" />{{ art.Name }}
               </v-btn>
             </div>
           </v-btn-toggle></v-col
         >
-        <v-col> <discipline-card v-if="selectedDiscipline != null" :discipline="selectedDiscipline" :key="selectedDiscipline.Name" /></v-col> </v-row
+        <v-col> <art-card v-if="selectedArt != null" :art="selectedArt" :key="selectedArt.Name" /></v-col> </v-row
     ></span>
   </div>
 </template>
@@ -71,16 +71,16 @@ import Vue from 'vue'
 import { getModule } from 'vuex-module-decorators'
 import { CharacterManagementStore } from '@/store'
 import { Character } from '@/class'
-import DisciplineCard from '@/components/cards/DisciplineCard'
+import ArtCard from '@/components/cards/ArtCard'
 
 export default Vue.extend({
-  name: 'discipline',
-  components: { DisciplineCard },
+  name: 'spirit-arts',
+  components: { ArtCard },
   data() {
     return {
-      disciplineCategories: ['Flame', 'Earth', 'Metal', 'Water', 'Wind', 'Wood'],
+      artCategories: ['Flame', 'Earth', 'Metal', 'Water', 'Wind', 'Wood'],
       selectedCategories: [],
-      disciplineTypes: {
+      artTypes: {
         Earth: ['Land', 'Mountain'],
         Water: ['Tide', 'Tundra'],
         Flame: ['Blaze', 'Detonation'],
@@ -88,18 +88,18 @@ export default Vue.extend({
         Wood: ['Bloom'],
       },
       selectedTypes: [],
-      selectedDiscipline: null,
+      selectedArt: null,
     }
   },
   computed: {
-    disciplines: function () {
-      return this.$store.getters.getDisciplinesFromList(['Way of the Blaze', 'Way of the Tide', 'Way of the Gale', 'Way of the Mountain'])
-      // return this.$store.getters.getFilteredSpiritDisciplines(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
+    arts: function () {
+      return this.$store.getters.getArtsFromList(['Basic Metal'])
+      // return this.$store.getters.getFilteredSpiritArts(this.selectedCategories, this.selectedTypes, 'Any', 'Any')
     },
     selectableTypes: function () {
       var selectable_types = []
       for (var cat of this.selectedCategories) {
-        selectable_types.push(...this.disciplineTypes[cat])
+        selectable_types.push(...this.artTypes[cat])
       }
       return selectable_types
     },

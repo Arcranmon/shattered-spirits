@@ -4,8 +4,10 @@
       <div class="card--header header">
         <h4 style="display: inline">{{ art.Name }}</h4>
         <br />
+
         <div class="card--keywords" v-bind:class="useTextFormatting">
           <b>
+            <display-tooltip-text :string="art.Header" :decorate="false" />
             <span v-for="(keyword, index) in art.Keywords" :key="index" class="keyword--box"> <display-tooltip-text :string="keyword" :decorate="false" /></span
           ></b>
         </div>

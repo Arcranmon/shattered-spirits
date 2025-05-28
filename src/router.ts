@@ -20,7 +20,7 @@ import CharacterCreator from '@/pages/character-creator/index.vue'
 
 import Narrative from '@/pages/narrative/index.vue'
 
-import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
+import SpiritArts from '@/pages/spirit-arts/index.vue'
 import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
 import Talents from '@/pages/talents/index.vue'
 import Archetypes from '@/pages/archetypes/index.vue'
@@ -181,11 +181,11 @@ const r = new Router({
       },
     },
     {
-      path: '/spirit-disciplines',
-      component: SpiritDisciplines,
-      name: 'spirit-disciplines',
+      path: '/spirit-arts',
+      component: SpiritArts,
+      name: 'spirit-arts',
       meta: {
-        title: 'Spirit Disciplines',
+        title: 'Spirit Arts',
       },
     },
     {
