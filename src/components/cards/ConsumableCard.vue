@@ -30,6 +30,7 @@
         </v-row>
       </div>
       <div v-if="consumable.HasTraits"><display-tooltip-text :string="consumable.TraitsHeader" /></div>
+      <div v-if="consumable.HasEffect"><display-tooltip-text :string="consumable.EffectHeader" /></div>
       <div v-if="consumable.HasSpecial"><display-tooltip-text :string="consumable.SpecialHeader" /></div>
       <ability-widget v-for="(ability, index) in consumable.Abilities" :ability="ability" :useDivider="true" />
       <div v-if="consumable.HasChart" class="ability-box">

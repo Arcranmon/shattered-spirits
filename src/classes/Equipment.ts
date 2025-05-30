@@ -25,6 +25,7 @@ class Equipment extends Base {
   }
   public get Icon() {
     if (this.Category == 'Error' || this.Category == 'Hide') return ''
+    if (this.Category == 'Throwing') return require('@/assets/weapons/' + this.Category + '.svg')
     return require('@/assets/' + this.Category + '.svg')
   }
   public get HasChart() {
