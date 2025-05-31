@@ -28,7 +28,32 @@
     "name": "Basic Metal",
     "category": "Metal",
     "desc": "Simple techniques that all with a metal companion can easily accomplish.",
-    "abilities": [{ "name": "Metal Shot" }, { "name": "Bend Metal" }, { "name": "Reinforce Metal" }]
+    "abilities": [
+      {
+        "name": "Metal Shot",
+        "class": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "Metal"],
+        "cost": "1 _Momentum_",
+        "range": "Short/Medium",
+        "effect": "Choose a 0 _Load_ piece of _Metal_ _Equipment_ that you have _Equipped_ or is unattended in your _Arena_. Attack a Target within _Range_ with it, placing the _Equipment_ in an _Engagement_ with the Target.",
+        "boosts": [
+          {
+            "name": "Heavy Shot",
+            "cost": "X _Momentum_ (maximum 2)",
+            "effect": "You may instead use a _Load_ X piece of _Equipment_, where X is the _Momentum_ paid for this _Boost_. Deal +X Damage and +X _Stun_. If you spend 2 _Momentum_, this is instead a _Balanced_ Attack. If you spend 3, it is instead _Heavy_."
+          }
+        ]
+      },
+      { "name": "Bend Metal" },
+      { "name": "Metal Gambit" }
+    ],
+    "chart": {
+      "stun": [0, 1, 1, 1],
+      "damage": [0, 0, 1, 2],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": ["+1 _Momentum_", "None", "None", "None"]
+    }
   },
   {
     "name": "Shift",
@@ -401,9 +426,9 @@
         "keywords": ["Armament"],
         "type": "Enhancement",
         "cost": "0 _Momentum_",
-        "effect": "Drop a piece of _Wielded_ _Equipment_, placing it unused in your _Arena_.",
+        "effect": "Stop _Wielding_ a piece of _Equipment_, placing it unused in your _Arena_.",
         "boosts": [
-          { "name": "Drop Pack", "cost": "2 _Momentum_", "effect": "Create an [_Opening_] and instead drop your _Pack_, placing it unused in your _Arena_." }
+          { "name": "Drop Pack", "cost": "2 _Momentum_", "effect": "Create an [_Opening_] and instead remove your _Pack_, placing it unused in your _Arena_." }
         ]
       },
       {

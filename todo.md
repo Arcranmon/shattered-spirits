@@ -1,7 +1,8 @@
 ## To-Do
 
-- Make Defending only last for the current Phase
-- Make Charging a Priority action that resolves at the end of the Phase, nerf it slightly as it's PRICEY
+- Make Guard only convert Damage->Stun
+- Make Armor give more Soak
+- Add a 'take no Stun this turn' effect
 
 ### Plan
 
