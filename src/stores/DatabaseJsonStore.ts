@@ -767,4 +767,11 @@ export class DatabaseJsonStore extends VuexModule {
       return traits
     }
   }
+
+  get isTrait(): any {
+    return (inword: string) => {
+      console.log(inword)
+      return this.Traits.some((x) => x.Name == inword.trim())
+    }
+  }
 }

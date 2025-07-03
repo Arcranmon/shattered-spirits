@@ -106,6 +106,7 @@ declare interface IDefenseData {
   grit?: number
   focus?: number
   hardness?: number
+  immunities?: string[]
   resistances?: string[]
   weaknesses?: string[]
 }
@@ -244,6 +245,7 @@ declare interface ISubtypeData extends IBaseData {
   guard: number
   soak: number
   move: number
+  range: string
 }
 
 declare interface IStanceData extends IBaseData {
@@ -252,6 +254,7 @@ declare interface IStanceData extends IBaseData {
   defenses?: IDefenseData
   traits: string[]
   abilities: IAbilityData[]
+  effects: string[]
 }
 
 declare interface IStatusEffect {

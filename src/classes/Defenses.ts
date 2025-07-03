@@ -7,6 +7,7 @@ class Defenses {
   private focus_: number
   private resistances_: string[]
   private weaknesses_: string[]
+  private immunities_: string[]
 
   // ==========================================================
   // UTILITY
@@ -39,6 +40,10 @@ class Defenses {
 
   public get Stun() {
     return this.stun_
+  }
+
+  public get Immunities() {
+    return this.immunities_
   }
 
   public get Resistances() {
@@ -75,6 +80,7 @@ class Defenses {
     this.reflex_ = data.reflex || 0
     this.focus_ = data.focus || 0
     this.stun_ = data.stun || 0
+    this.immunities_ = data.immunities || []
     this.resistances_ = data.resistances || []
     this.weaknesses_ = data.weaknesses || []
   }

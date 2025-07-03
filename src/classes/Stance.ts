@@ -3,6 +3,7 @@ import { Ability, Base } from '@/class'
 
 class Stance extends Base {
   private class_: string
+  private effects_: string[]
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private traits_: Array<string>
@@ -48,6 +49,14 @@ class Stance extends Base {
   public get Focus() {
     if (this.defenses_.focus) return this.defenses_.focus
     return 0
+  }
+
+  public get HasEffects() {
+    return this.effects_.length > 0
+  }
+
+  public get Effects() {
+    return this.effects_
   }
 
   public get Abilities() {
@@ -96,6 +105,7 @@ class Stance extends Base {
     this.setBaseData(data)
     this.class_ = data.class || ''
     this.respite_ = data.respite || null
+    this.effects_ = data.effects || []
     this.defenses_ = data.defenses || null
     this.traits_ = data.traits || []
     if (data.abilities) {

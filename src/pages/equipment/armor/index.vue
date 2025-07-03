@@ -60,8 +60,8 @@ export default Vue.extend({
   components: { ArmorCard },
   data() {
     return {
-      armorCategories: ['Base Armor', 'Layered Armor', 'Over Armor', 'Accessory'],
-      selectedArmors: ['Base Armor', 'Layered Armor', 'Over Armor', 'Accessory'],
+      armorCategories: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
+      selectedArmors: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
       selectedArmor: null,
     }
   },

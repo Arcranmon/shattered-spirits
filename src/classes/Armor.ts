@@ -40,6 +40,9 @@ class Armor extends Equipment {
   get HasSoak() {
     return this.soak_ > 0
   }
+  get HasSlots() {
+    return this.consumable_slots_ > 0
+  }
   get SoakHeader() {
     return '**_Soak_:** ' + this.soak_
   }

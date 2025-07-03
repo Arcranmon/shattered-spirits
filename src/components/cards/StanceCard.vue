@@ -34,8 +34,8 @@
       <div v-if="stance.HasTraits">
         <display-tooltip-text :string="stance.TraitsHeader" />
       </div>
-      <div v-if="stance.HasEffect">
-        <display-tooltip-text :string="stance.EffectHeader" />
+      <div v-if="stance.HasEffects">
+        <display-tooltip-text v-for="effect in stance.Effects" :string="effect" />
       </div>
       <div v-if="stance.HasSpecial">
         <display-tooltip-text :string="stance.SpecialHeader" />

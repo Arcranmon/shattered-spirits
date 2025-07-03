@@ -33,20 +33,58 @@
         "name": "Metal Shot",
         "class": "Light",
         "type": "Attack",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit", "Metal", "Crush"],
         "cost": "1 _Momentum_",
         "range": "Short/Medium",
-        "effect": "Choose a 0 _Load_ piece of _Metal_ _Equipment_ that you have _Equipped_ or is unattended in your _Arena_. Attack a Target within _Range_ with it, placing the _Equipment_ in an _Engagement_ with the Target.",
+        "effect": "Choose a 0 _Load_ _Metal_ _Item_ that you have _Equipped_/_Wielded_ or is _Unattended_ in your _Arena_. Attack a Target within _Range_, placing the _Equipment_ _Unattended_ in an _Engagement_ with the Target. If you choose _Unattended_ _Equipment_, add [_Remote_].",
+        "special": "If the Item used for this has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
         "boosts": [
           {
             "name": "Heavy Shot",
-            "cost": "X _Momentum_ (maximum 2)",
+            "cost": "X _Momentum_ (maximum 3)",
             "effect": "You may instead use a _Load_ X piece of _Equipment_, where X is the _Momentum_ paid for this _Boost_. Deal +X Damage and +X _Stun_. If you spend 2 _Momentum_, this is instead a _Balanced_ Attack. If you spend 3, it is instead _Heavy_."
           }
         ]
       },
-      { "name": "Bend Metal" },
-      { "name": "Metal Gambit" }
+      {
+        "name": "Metalbend",
+        "class": "Utility",
+        "type": "Enhancement",
+        "keywords": ["Spirit", "Metal", "Armament"],
+        "cost": "0 + [times used this _Turn_]",
+        "range": "Short-",
+        "effect": "Choose one:\n* Resolve the Interaction effect of a piece of _Metal_ _Terrain_ within Range, paying its listed _Cost_ - 1.\n* Instead, _Wield_ or _Equip_ a _Light_ _Metal_ _Item_ in Range that is _Wielded_/_Equipped_ by a willing target or is _Unattended_. You may instead choose to move it somewhere else within Range, or allow a willing target to _Equip_/_Wield_ the Item.",
+        "boosts": [
+          {
+            "name": "Distant Bending",
+            "cost": "1 _Momentum_",
+            "effect": "Range is instead _Medium_-."
+          },
+          {
+            "name": "Heavy Bending",
+            "cost": "1 _Momentum_",
+            "effect": "You may instead _Wield_ or _Equip_ any _Metal_ _Item_, regardless of _Load_."
+          }
+        ]
+      },
+      {
+        "name": "Second Impact",
+        "class": "Offensive",
+        "type": "Gambit",
+        "keywords": ["Spirit", "Metal"],
+        "cost": "None",
+        "reqs": "_Metal_ Attack.",
+        "effect": "Add [_Pierce_ 1] and deal +2 _Damage_. If this Attack had _Thrown_ or moved a piece of _Equipment_ in some way you may place it anywhere within the original effect's _Range_, including _Wielding_ it."
+      },
+      {
+        "name": "Metal Ward",
+        "class": "Defensive",
+        "type": "Reaction",
+        "keywords": ["Spirit", "Metal", "Efficient"],
+        "cost": "1 _Momentum_",
+        "trigger": "_Tie_- a _Defend_ against a [_Metal_] Attack.",
+        "effect": "Reroll the _Defense Roll_, using the second result."
+      }
     ],
     "chart": {
       "stun": [0, 1, 1, 1],
@@ -94,6 +132,7 @@
         "name": "Opportunity Attack",
         "class": "Offensive",
         "type": "Reaction",
+        "keywords": ["Safe"],
         "trigger": "A hostile creature you are _Engaged_ with creates an _Opening_.",
         "cost": "None",
         "effect": "Use a Single-Target Attack [_Discount_ 2] against the triggering creature."
@@ -181,9 +220,9 @@
         "class": "Defensive",
         "type": "Reaction",
         "keywords": ["Dodge"],
-        "cost": "_1_ _Momentum_, X _Movement_",
+        "cost": "_1_ _Momentum_, X _Movement_ (minimum 1)",
         "trigger": "You are Attacked and are not _Immobile_.",
-        "effect": "_Defend_. Gain +1 Reflex. Gain _Guard_ equal to your _Reflex_ plus any _Movement_ spent.\n* _Tie_: Instead gain _Guard_ equal to your _Reflex_ plus twice the _Movement_ spent.\n* _Win_: Instead gain _Guard_ equal to your _Reflex_ plus triple the _Movement_ spent.",
+        "effect": "_Defend_. Gain +1 Reflex. Reduce the Damage by your _Reflex_ plus any _Movement_ spent.\n* _Tie_: Instead reduce the damage by your _Reflex_ plus twice the _Movement_ spent.\n* _Win_: Instead reduce the damage by your _Reflex_ plus triple the _Movement_ spent.",
         "boosts": [
           {
             "name": "Roll",
@@ -288,7 +327,7 @@
         "type": "Gambit",
         "cost": "None",
         "reqs": "_Spirit_ is in _Melee_ Range of you.",
-        "effect": "Add [_Glancing_] to the triggering Attack, but you and your Spirit are both targeted by it."
+        "effect": "You and your Spirit are both targeted by the triggering effect, but take half Damage/_Stun_ each and _Negate_ with _Advantage_."
       }
     ]
   },
@@ -362,10 +401,9 @@
         "name": "Deflect",
         "class": "Defensive",
         "type": "Gambit",
-        "cost": "None",
-        "reqs": "Win on the _Defense Roll_.",
-        "effect": "Gain +4 _Guard_.",
-        "boosts": [{ "name": "Heavy Deflect", "cost": "_0/1/2/3_ _Momentum_", "effect": "Instead, the triggering Attack is [_Glancing_]." }]
+        "cost": "_0/1/1/2_ _Momentum_",
+        "reqs": "[_Block_] and Win the _Defend_.",
+        "effect": "The triggering Attack is [_Glancing_]."
       }
     ]
   },
@@ -418,7 +456,8 @@
         "class": "Utility",
         "type": "Enhancement",
         "cost": "Special",
-        "effect": "Resolve the Interaction effect of the _Terrain_ you are _Occupying_, paying its listed _Cost_."
+        "range": "Melee",
+        "effect": "Resolve the Interaction effect of a piece of _Terrain_ within Range, paying its listed _Cost_."
       },
       {
         "name": "Drop",
@@ -432,22 +471,23 @@
         ]
       },
       {
-        "name": "Draw",
+        "name": "Draw/Stow",
         "class": "Utility",
         "keywords": ["Armament"],
         "type": "Enhancement",
-        "cost": "None",
-        "effect": "_Wield_ an _Equipped_ _Consumable_ or _Light_ Item, or _Equip_ a  _Wielded_ _Consumable_ or _Light_ Item.",
+        "cost": "1 _Momentum_",
+        "effect": "_Wield_ an _Equipped_ Item, or _Equip_ a  _Wielded_ Item.",
+        "special": "Cost is instead 0 if the item is _Light_.",
         "boosts": [
-          {
-            "name": "Improved Draw",
-            "cost": "1 _Momentum_",
-            "effect": "Instead, _Wield_ a piece _Equipped_ _Equipment_, or _Equip_ a piece _Wielded_ _Equipment_."
-          },
           {
             "name": "Retrieve",
             "cost": "1 _Momentum_/_Movement_",
-            "effect": "Create an [_Opening_]. Instead _Wield_ or _Equip_ an unequipped piece of _Equipment_ in your _Arena_."
+            "effect": "Create an [_Opening_]. Instead _Wield_ or _Equip_ an _Unattended_ piece of _Equipment_ in your _Engagement_ or, if you paid the cost with _Movement_, an _Unattended_ piece of _Equipment_ in your _Arena_ that is not in an _Engagement_."
+          },
+          {
+            "name": "Trade",
+            "cost": "1 _Momentum_",
+            "effect": "Choose an ally in your _Engagement_. They may immediately _Wield_ or _Equip_ an Item you have _Wielded_ or _Equipped_, or vice versa. You may use this at no cost by creating an [_Opening_]."
           }
         ]
       },
@@ -456,12 +496,13 @@
         "class": "Utility",
         "keywords": ["Rooted"],
         "type": "Action",
+        "cost": "None",
         "effect": "Gain _2/3/4/5_ _Temporary_ _Momentum_, which may only be used on [_Armament_] _Enhancements_ and this _Action_.",
         "boosts": [
           {
             "name": "Rummage",
             "cost": "2 _Momentum_",
-            "effect": "Create an [_Opening_]. This _Turn_ you may target _Equipment_ in your _Pack_ with [_Armament_] _Enhancements_."
+            "effect": "Create an [_Opening_]. This _Turn_ you may target _Packed_ _Equipment_ with [_Armament_] _Enhancements_."
           }
         ]
       }

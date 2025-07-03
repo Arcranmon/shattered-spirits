@@ -6,8 +6,9 @@
         <display-tooltip-text :string="ability.Header" />
       </span>
       <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
-        ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b
-      ></span>
+        ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b>
+      </span>
+      <i><display-tooltip-text v-if="from != ''" :string="'**From:** _' + from + '_'" style="padding-left: 2em" /></i>
     </div>
     <div style="padding-left: 1em">
       <div class="card--format" v-if="ability.HasCost">
@@ -50,6 +51,11 @@ export default Vue.extend({
     ability: {
       type: Ability,
       required: true,
+    },
+    from: {
+      type: String,
+      required: false,
+      default: '',
     },
     useDivider: {
       type: Boolean,

@@ -55,11 +55,11 @@
   { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Glancing",
-    "effect": "A Glancing effect did not hit as solidly as it should have; _Guard_ reduces Damage and Stun rather than converting Damage to Stun. The Target gains a +1 to _Negate."
+    "effect": "A Glancing effect did not hit as solidly as it should have; it deals no _Stun_ and inflicts half as much Damage. The Target gains a +1 to _Negate."
   },
   {
     "name": "Guard",
-    "effect": "Guard first reduces any _Stun_ inflicted on the creature, then converts Damage to _Stun_, then, if there is any remainder, reduces _Stun_ once more."
+    "effect": "Guard converts incoming Damage to _Stun_. Characters may always choose to treat their current _Guard_ as less than its current value."
   },
   {
     "name": "Limited",
@@ -67,7 +67,7 @@
   },
   {
     "name": "Prepare",
-    "effect": "When you Prepare, place _Momentum_ on any _Art_ or _Equipment_, removing it from your _Momentum_ supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. [This is clunky and needs to be made slightly cleaner]"
+    "effect": "When you Prepare, place _Momentum_ on any _Art_ or _Equipment_, removing it from your _Momentum_ supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_ but may not be used to pay the cost of associated effects. For example, if you Prepared _Fight_, you could not use Prepared _Momentum_ to pay the cost of the Attack in Basic Combat."
   },
   {
     "name": "Hand-and-a-Half",
@@ -84,7 +84,7 @@
   },
   {
     "name": "Movement",
-    "effect": "Movement is a resource that characters may spend to move about the battlefield. 1 Movement may be spent at any point on your _Turn_ for any of the following effects:\n* You may always:\n\t* _Disengage_.\n* If you are not _Engaged_:\n\t* Enter an adjacent _Arena_.\n\t* Become _Engaged_ with a creature.\n\t* _Occupy_ any available _Terrain_.\n* If you are _Engaged_:\n\t* _Occupy_ available _Terrain_ within your _Engagement_.\n\nCharacters may spend any amount of Movement on these effects in a given _Turn_."
+    "effect": "Movement is a resource that characters may spend to move about the battlefield. 1 Movement may be spent at any point on your _Turn_ for any of the following effects:\n* You may always:\n\t* _Disengage_.\n* If you are not _Engaged_:\n\t* Enter an adjacent _Arena_.\n\t* Become _Engaged_ with a creature or other feature in your current _Arena_.\n\t* _Occupy_ any available _Terrain_.\n* If you are _Engaged_:\n\t* _Occupy_ available _Terrain_ within your _Engagement_.\n\nCharacters may spend any amount of Movement on these effects in a given _Turn_."
   },
   {
     "name": "Opening",
@@ -99,10 +99,14 @@
     "effect": "This Action must be used immediately after a _Phase_ begins and ignores the normal _Initiative_ process."
   },
   {
+    "name": "Remote",
+    "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the attack's origin and the Target."
+  },
+  {
     "name": "Rooted",
     "effect": "You may not use _Movement_ this _Turn_."
   },
-  { "name": "Safe", "effect": "Do not create an _Opening_ when you _Disengage_ this _Turn_." },
+  { "name": "Safe", "effect": "Any Attacks made as a part of a [_Punish_] _Reaction_ are made at _Disadvantage_ against you this _Turn_." },
   {
     "name": "Short",
     "effect": "Short Range effects may target any valid target within your _Arena_."
@@ -130,7 +134,7 @@
   { "name": "Summoned", "see": "Summon" },
   {
     "name": "Turn",
-    "effect": "Once per _Phase_ a character may choose to take their Turn. When a character takes their Turn, they do one of the following:\n* If this _Phase_ is when a character chose to use their _Technique_, they resolve that effect.\n* If this is any other _Phase_, a character may instead use any _Attack_ or _Action_ granted by an _Art_.\n\nAdditionally, on their Turn, characters may use any number of _Enhancement_ effects, as well as expend any amount of _Movement_."
+    "effect": "Once per _Phase_ a character may choose to take their Turn. When a character takes their Turn, they do one of the following:\n* If this _Phase_ is when a character chose to use their _Technique_, they resolve that effect.\n* If this is any other _Phase_, a character may instead use any _Attack_ or _Action_ granted by an _Art_.\n\nAdditionally, on their Turn, characters may use any number of _Enhancement_ effects as well as expend any amount of _Movement_."
   },
   {
     "name": "Technique",

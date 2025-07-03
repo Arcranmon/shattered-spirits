@@ -8,12 +8,10 @@
     </p>
     <br />
     <v-tabs v-model="tab" class="spirit-tabs" background-color="#b69e75" color="black" centered
-      ><v-tab><h4>Spirit Forms</h4> </v-tab><v-tab> <h4>Earth</h4> </v-tab><v-tab> <h4>Flame</h4> </v-tab><v-tab> <h4>Water</h4> </v-tab
-      ><v-tab> <h4>Wind</h4> </v-tab><v-tab> <h4>Wood</h4> </v-tab><v-tab> <h4>Metal</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab
-      ><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
+      ><v-tab> <h4>Earth</h4> </v-tab><v-tab> <h4>Flame</h4> </v-tab><v-tab> <h4>Water</h4> </v-tab><v-tab> <h4>Wind</h4> </v-tab><v-tab> <h4>Wood</h4> </v-tab
+      ><v-tab> <h4>Metal</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="spirit-tab-content">
-      <v-tab-item><show-cards :inputs="this.$store.getters.getSpiritFormsFromList(['Small', 'Medium', 'Large'])" :collapse="false" /> </v-tab-item>
       <v-tab-item> </v-tab-item>
       <v-tab-item> </v-tab-item>
       <v-tab-item> </v-tab-item>
@@ -27,14 +25,12 @@
             <h3>Base Traits</h3>
             <display-tooltip-text
               string="**Summoning Source:** Any _Metal_ Terrain effect or any _Metal_ _Equipment_ with a _Load_ of 1 if Small or 2 if Medium. All _Equipment_ _Equipped_ by a creature may be used in aggregate to _Summon_." /><br />
-            <display-tooltip-text string="**Summon Range:** 0" /><br />
-            <display-tooltip-text string="**_Damage Immunities_:** _Poison_" /><br />
-            <display-tooltip-text string="**_Status Immunities_:** _Bleeding_, _Poisoned_" /><br /></v-col
-          ><v-col style="padding: 2em"><armor-card :armor="this.$store.getters.getArmor('Metal Spirit')" /></v-col
+            <display-tooltip-text string="**Summon Range:** Short" /><br /></v-col
+          ><v-col style="padding: 2em"><spirit-type-card :type="this.$store.getters.getSpiritType('Metal')" /></v-col
         ></v-row>
-        <show-cards display_text="Base Traits" :inputs="this.$store.getters.getSpiritTraitsFromList(['Heat Conduction'])" />
-        <show-cards display_text="Common Traits (1 Point)" :inputs="[]" />
-        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Copper Ore'])" />
+        <show-cards display_text="Base Traits" :inputs="this.$store.getters.getSpiritTraitsFromList(['Metal Spirit', 'Heat Conduction'])" />
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Copper Ore'])" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList([])" />
       </v-tab-item>
       <v-tab-item>
         <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Swift'])" />

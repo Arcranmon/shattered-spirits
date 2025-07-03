@@ -25,7 +25,7 @@
   {
     "name": "Forceful Stance",
     "desc": "A stance focused on overwhelming offense and powerful blows that break through a foe's defenses.",
-    "effect": "The first time each _Phase_ you successfully inflict _Break_, gain 1 _Momentum_.",
+    "effects": ["**Step In:** The first time each _Phase_ you successfully inflict _Break_, gain 1 _Momentum_."],
     "respite": { "momentum_gain": 4 },
     "defenses": { "focus": 2, "grit": 1 },
     "abilities": [
@@ -59,6 +59,10 @@
     "desc": "A stance focused on unbreakable defense.",
     "respite": { "momentum_gain": 2, "stun_clear": 5 },
     "defenses": { "grit": 2, "focus": 1, "guard": 1 },
+    "effects": [
+      "**Unbreakable Guard:** At _Respite_, gain 4 special _Momentum_ that is tracked on this _Stance_. This _Momentum_ may only be spent on [_Block_] _Reactions_ and _Defensive_ _Gambits_. Lose any of this _Momentum_ that is unspent at the end of the _Round_.",
+      "**Swift Guard:** You may add [_Priority_] to all _Defensive_ _Actions_."
+    ],
     "abilities": [
       {
         "name": "Warding Strike",
@@ -70,24 +74,18 @@
       {
         "name": "Form Up",
         "class": "Defensive",
-        "keywords": ["Priority"],
         "type": "Action",
         "cost": "None",
         "effect": "Choose one per _Phase_. You may choose the same option multiple times:\n* You become _Guarding_.\n* An ally you are _Engaged_ with becomes _Guarding_.\n* You or an ally you're engaged with gain 1 _Momentum_. The Target must be _Guarding_ to choose this option."
-      },
-      {
-        "name": "Unbreakable",
-        "class": "Defensive",
-        "type": "Reaction",
-        "cost": "Special",
-        "trigger": "You are _Attacked_.",
-        "effect": "Use a different _Block_ _Reaction_ [_Discount_ X], where X is [2 - the number of times you've used this Reaction this _Round_]. The triggering Attack must fulfill the Trigger for whatever _Block_ _Reaction_ you select."
       }
     ]
   },
   {
     "name": "Swift Stance",
     "desc": "A stance focused on swift, sudden movements and capitalizing on agility.",
+    "effects": [
+      "**Reposition:** You have 2 _Movement_ you may spend at _Refresh_ as if it was your _Turn_; this _Movement_ is automatically [_Safe_]. Attacks against you on your _Turn_ have _Disadvantage_."
+    ],
     "abilities": [
       {
         "name": "Skirmish",
@@ -115,7 +113,6 @@
         "effect": "Make a _Light_ _Attack_ at _Advantage_. You may pay the Cost of this Attack with _Movement_ instead of _Momentum_. This Attack may not trigger _Gambits_."
       }
     ],
-    "effect": "You may spend up to 2 _Movement_ at _Refresh_ as if it was your _Turn_; this _Movement_ is automatically [_Safe_]. Attacks against you on your _Turn_ have _Disadvantage_.",
     "respite": { "momentum_gain": 4, "stun_clear": 2, "movement": 2 },
     "defenses": { "reflex": 2, "focus": 1 }
   },

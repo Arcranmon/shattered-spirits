@@ -18,13 +18,10 @@
                   v-bind:class="{ 'card--button': selectButton }"
                   v-on:click="clickMethod(n, index)"
                 >
-                  <div class="card--box" v-if="job == 'Stances'">
+                  <div class="card--box" v-if="isStance(n)">
                     <stance-card :stance="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="job == 'Techniques'">
-                    <tech-card :tech="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
-                  </div>
-                  <div class="card--box" v-if="job == 'Weapons'">
+                  <div class="card--box" v-if="isWeapon(n)">
                     <weapon-card :weapon="n" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="isTrait(n)">
@@ -32,9 +29,6 @@
                   </div>
                   <div class="card--box" v-if="isArmor(n)">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
-                  </div>
-                  <div class="card--box" v-if="job == 'Maneuvers'">
-                    <maneuver-card :maneuver="n" :format_text="true" :standalone="on_sheet" />
                   </div>
                 </v-col>
               </v-row> </v-container
@@ -57,17 +51,14 @@
             <div class="card--box" v-if="isStance(n)">
               <stance-card :stance="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
             </div>
-            <div class="card--box" v-if="isTechnique(n)">
-              <tech-card :tech="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
-            </div>
             <div class="card--box" v-if="isWeapon(n)">
-              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" />
+              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isArmor(n)">
-              <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
+              <armor-card :armor="n" :color="card_color" :character_creation="character_creation" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isConsumable(n)">
-              <consumable-card :consumable="n" />
+              <consumable-card :consumable="n" style="height: 100%" />
             </div>
             <!---
             <div class="card--box" v-if="job == 'Features'">

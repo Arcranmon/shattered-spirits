@@ -41,6 +41,9 @@ class Ability extends Base {
   public get Cost() {
     return this.cost_
   }
+  public get Class() {
+    return this.class_
+  }
   public get Header() {
     var header = this.Name + ' - '
     if (this.HasSpeed) header += 'Speed ' + this.speed_ + ' '
@@ -74,6 +77,9 @@ class Ability extends Base {
   // ==========================================================
   public get HasArea() {
     return this.Area != ''
+  }
+  public get UsesChart() {
+    return this.Type == 'Attack' || (this.Type == 'Reaction' && (this.keywords_.includes('Block') || this.keywords_.includes('Dodge')))
   }
   public get AreaHeader() {
     return '**_Area_:** ' + this.Area

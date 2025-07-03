@@ -11,11 +11,13 @@
       ><v-tab-item>
         <div v-if="character.Name != ''">
           <v-row style="margin: 1em">
-            <v-col :cols="columnNumbers"> <combat-stats-widget :creature="character" @changed="$emit('changed')" /></v-col
-            ><v-col :cols="columnNumbers"><status-widget :creature="character" @changed="$emit('changed')" /></v-col>
-            <v-col :cols="12" style="margin-bottom: 1em">
-              <h3 style="text-align: center">Stance</h3>
-              <div style="width: 33%; display: flex; justify-content: center; align-items: center; margin: auto">
+            <v-col :cols="columnNumbers">
+              <combat-stats-widget :creature="character" @changed="$emit('changed')" /><status-widget
+                :creature="character"
+                @changed="$emit('changed')" /></v-col
+            ><v-col :cols="columnNumbers">
+              <h4 style="text-align: center">Stance</h4>
+              <div style="width: 50%; display: flex; justify-content: center; align-items: center; margin: auto">
                 <v-select
                   v-model="character.CurrentStance"
                   label="Change Stance"
@@ -25,15 +27,31 @@
                   @changeSelected="$emit('changed')"
                 />
               </div>
-              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="width: 50%; margin: auto" /></v-col
-          ></v-row>
+              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="margin: auto"
+            /></v-col>
+          </v-row>
           <h3 style="text-align: center">Abilities and Equipment</h3>
           <v-card>
             <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
-              ><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
+              ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab
+              ><v-tab> <h4>Stances</h4> </v-tab></v-tabs
             >
             <v-tabs-items v-model="ability_tab" class="character-tab-content">
-              <v-tab-item> <show-cards :inputs="this.$store.getters.getArtsFromList(character.Arts)" :collapse="false" :cols="2" /></v-tab-item>
+              <v-tab-item
+                ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
+                  ><v-tab><h5>Actions</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Enhancements</h5></v-tab><v-tab><h5>Gambits</h5></v-tab
+                  ><v-tab><h5>Reactions</h5></v-tab></v-tabs
+                ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
+                  ><v-tab-item><ability-tab abilityType="Action" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Enhancement" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Reaction" :character="character" /></v-tab-item
+                ></v-tabs-items>
+              </v-tab-item>
+              <v-tab-item>
+                <show-cards :inputs="this.$store.getters.getArtsFromList(character.Arts)" :collapse="false" :cols="2" />
+              </v-tab-item>
               <v-tab-item
                 ><v-tabs v-model="equipment_tab" color="black" light centered style="border-radius: 10px">
                   <v-tab><h5>Equipped</h5></v-tab><v-tab><h5>consumables</h5></v-tab></v-tabs
@@ -41,12 +59,14 @@
                 <v-tabs-items v-model="equipment_tab" class="character-tab-content"
                   ><v-tab-item
                     ><b>Load:</b> {{ character.Load
-                    }}<show-cards :inputs="this.$store.getters.getEquipmentFromList(character.Equipped)" :collapse="false" :cols="2" /></v-tab-item
+                    }}<show-cards :inputs="this.$store.getters.getEquipmentFromList(character.Equipped)" :collapse="false" :cols="2" /> </v-tab-item
                   ><v-tab-item
-                    ><show-cards
+                    ><b>Consumable Slots:</b> {{ character.ConsumableSlotsUsed }} / {{ character.MaxConsumableSlots }}
+                    <show-cards
                       :inputs="this.$store.getters.getEquipmentFromList(character.Consumables)"
                       :collapse="false"
-                      :cols="2" /></v-tab-item></v-tabs-items></v-tab-item
+                      :cols="2"
+                    /> </v-tab-item></v-tabs-items></v-tab-item
               ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
               <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
             ></v-tabs-items>
@@ -77,14 +97,16 @@ import Vue from 'vue'
 import { Character } from '@/class'
 import StanceCard from '@/components/cards/StanceCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
+import ShowAbilities from '@/components/cards/ShowAbilities.vue'
 import BasicTable from '@/components/BasicTable.vue'
+import AbilityTab from '@/components/AbilityTab.vue'
 import AbilitiesWidget from '@/components/AbilitiesWidget.vue'
 import StatusWidget from '@/components/StatusWidget.vue'
 import CombatStatsWidget from '@/components/CombatStatsWidget.vue'
 import TraitsAndWeaponsWidget from '@/components/TraitsAndWeaponsWidget.vue'
 export default Vue.extend({
   name: 'display-character',
-  components: { BasicTable, ShowCards, StanceCard, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
+  components: { AbilityTab, BasicTable, ShowAbilities, ShowCards, StanceCard, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
   props: {
     character: {
       type: Character,
@@ -94,6 +116,7 @@ export default Vue.extend({
   data() {
     return {
       equipment_tab: null,
+      abilitiesAndEquipmentTab: null,
       ability_tab: null,
       spirit_equipment_tab: null,
       character_or_spirit_tab: null,
@@ -105,6 +128,9 @@ export default Vue.extend({
       if (this.windowWidth <= 760) return 1
       if (this.windowWidth <= 1500) return 2
       return 3
+    },
+    switchString() {
+      return this.showArts ? 'Show Arts' : 'Show Abilities'
     },
     columnNumbers() {
       if (this.isMobile) return 12

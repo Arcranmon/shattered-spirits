@@ -85,11 +85,32 @@ class Character extends Combatant {
   // GETTERS/SETTERS
   // ==========================================================
 
+  public AllKeywords(filter = '') {
+    var keywords = []
+    for (var art of this.Arts) {
+      for (var ability of store.getters.getArt(art).Abilities) {
+        if (filter == '' || ability.Type == filter) keywords = keywords.concat(ability.Keywords)
+      }
+    }
+    keywords.sort()
+    keywords.unshift('All')
+    return keywords
+  }
+
   get CurrentStance(): Stance {
     return this.current_stance_
   }
   get Disciplines() {
     return this.disciplines_
+  }
+
+  get AllArts() {
+    var arts = store.getters.getArtsFromList(this.Arts)
+    arts = arts.concat(store.getters.getEquipmentFromList(this.Equipped))
+    arts = arts.concat(store.getters.getEquipmentFromList(this.Consumables))
+    arts = arts.concat(this.CurrentStance)
+
+    return arts
   }
 
   get Arts() {
@@ -99,6 +120,7 @@ class Character extends Combatant {
     for (var archetype of this.archetypes_) {
       arts.push(store.getters.getArchetype(archetype).Art)
     }
+    arts.push('Basic ' + this.element_)
     arts.sort()
     return arts
   }
@@ -116,6 +138,10 @@ class Character extends Combatant {
       slots += armor.ConsumableSlots
     }
     return slots
+  }
+
+  get ConsumableSlotsUsed() {
+    return this.consumables_.length
   }
 
   get Load() {

@@ -8,6 +8,7 @@ class Subtype extends Base {
   private guard_: number
   private soak_: number
   private move_: number
+  private range_: string
   private traits_: string[]
 
   public constructor(name) {
@@ -66,6 +67,9 @@ class Subtype extends Base {
   public get Defenses() {
     return this.defenses_
   }
+  public get RangeHeader() {
+    return '**Manifest Range:** ' + this.range_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -85,6 +89,7 @@ class Subtype extends Base {
     this.move_ = data.move || 0
     this.guard_ = data.guard || 0
     this.soak_ = data.soak || 0
+    this.range_ = data.range || ''
   }
 }
 export default Subtype
