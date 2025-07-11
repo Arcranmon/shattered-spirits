@@ -6,7 +6,7 @@
     "load": 1,
     "durability": 5,
     "notches": 1,
-    "special": "While this is _Equipped_, you may _Equip_ any 3 _Throwing_ Weapons."
+    "special": "While this is _Equipped_, gain 3 _Slots_ that may only be used for _Throwing_ Weapons."
   },
   {
     "name": "Metal Pouch",
@@ -217,6 +217,7 @@
     "durability": 4,
     "load": 0,
     "notches": 2,
+    "traits": ["_Ward_ 2 [_Crush_, _Stab_, _Slash_]"],
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
     "abilities": [
       {
@@ -359,7 +360,54 @@
     "desc": "Standard armor, striking a balance between load and durability."
   },
   {
-    "name": "Natural Armor",
+    "name": "Carapace",
+    "category": "Natural",
+    "durability": 5,
+    "notches": 2,
+    "load": 2,
+    "guard": 1,
+    "soak": 2,
+    "abilities": [
+      {
+        "name": "Armored Shell",
+        "class": "Balanced",
+        "keywords": ["Shielding"],
+        "type": "Attack",
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "effect": "Attack a Target within Range.",
+        "boosts": [
+          {
+            "name": "Hunker",
+            "cost": "1 _Momentum_",
+            "effect": "Gain _Guarding_."
+          },
+          {
+            "name": "Slam",
+            "cost": "2 _Momentum_",
+            "effect": "On a _Graze_+, deal +3 _Bonus Stun_ and add _Push_ [_Grit_]"
+          }
+        ]
+      },
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "effect": "Gain 3 _Guard_, or 4 _Guard_ if this triggered off of <i>Armored Shell</i>.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
+      }
+    ],
+    "chart": {
+      "stun": [0, 1, 2, 3],
+      "damage": [0, 0, 1, 1],
+      "roll": ["2-3", "4-6", "7-10", "11-12"],
+      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
+      "status": ["+1 _Momentum_", "None", "None", "_Guarding_ 1"]
+    },
+    "desc": "Natural armor, whether that be heavy chitin, shells, or natural plating."
+  },
+  {
+    "name": "Shell",
     "category": "Natural",
     "durability": 5,
     "notches": 2,

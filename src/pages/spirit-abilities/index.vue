@@ -17,23 +17,15 @@
       <v-tab-item> </v-tab-item>
       <v-tab-item> </v-tab-item>
       <v-tab-item></v-tab-item>
-      <v-tab-item>
-        <v-row>
-          <v-col cols="6">
-            <h3>Spirit Customization Rules</h3>
-            <display-tooltip-text string="Metal Spirits must be Small or Medium and have 4 Growth Points." />
-            <h3>Base Traits</h3>
-            <display-tooltip-text
-              string="**Summoning Source:** Any _Metal_ Terrain effect or any _Metal_ _Equipment_ with a _Load_ of 1 if Small or 2 if Medium. All _Equipment_ _Equipped_ by a creature may be used in aggregate to _Summon_." /><br />
-            <display-tooltip-text string="**Summon Range:** Short" /><br /></v-col
-          ><v-col style="padding: 2em"><spirit-type-card :type="this.$store.getters.getSpiritType('Metal')" /></v-col
-        ></v-row>
-        <show-cards display_text="Base Traits" :inputs="this.$store.getters.getSpiritTraitsFromList(['Metal Spirit', 'Heat Conduction'])" />
+      <v-tab-item
+        ><div style="padding: 2em; align-self: center; width: 50%; margin: auto">
+          <spirit-type-card :type="this.$store.getters.getSpiritType('Metal Spirit')" />
+        </div>
         <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Copper Ore'])" />
         <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList([])" />
       </v-tab-item>
       <v-tab-item>
-        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Swift'])" />
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Swift', 'Thin Shell'])" />
         <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Shelled'])" />
         <show-cards display_text="Rare Traits (3 Points)" :inputs="[]"
       /></v-tab-item>

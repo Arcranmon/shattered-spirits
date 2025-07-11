@@ -6,10 +6,12 @@ class Subtype extends Base {
   private element_: string
   private health_: number
   private guard_: number
-  private soak_: number
+  private stun_: number
   private move_: number
-  private range_: string
+  private manifest_: string[]
+  private growth_points_: number
   private traits_: string[]
+  private armor_: string
 
   public constructor(name) {
     super(name)
@@ -22,6 +24,14 @@ class Subtype extends Base {
     return this.health_
   }
 
+  public get ArmorHeader() {
+    return '**Armor:** _' + this.armor_ + '_'
+  }
+
+  public get GrowthPoints() {
+    return this.growth_points_
+  }
+
   public get HealthHeader() {
     return '**Health:** ' + this.Health
   }
@@ -30,12 +40,8 @@ class Subtype extends Base {
     return this.guard_
   }
 
-  public get ArmorHeader() {
-    return '**Armor:** ' + this.guard_ + ' _Guard_, ' + this.soak_ + ' _Soak_'
-  }
-
-  public get Soak() {
-    return this.soak_
+  public get Stun() {
+    return this.stun_
   }
 
   public get Movement() {
@@ -61,14 +67,21 @@ class Subtype extends Base {
   public get Traits() {
     return this.traits_
   }
-  public get TraitsText() {
+  public get TraitsHeader() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
   }
   public get Defenses() {
     return this.defenses_
   }
-  public get RangeHeader() {
-    return '**Manifest Range:** ' + this.range_
+  public get ManifestHeader() {
+    var header = '**Manifest:** The requirements to Manifest your spirit depend on its size, as follows.'
+    var labels = ['Tiny', 'Small', 'Medium', 'Large']
+
+    this.manifest_.forEach((value, index) => {
+      header += '\n* **' + labels[index] + ':** ' + value
+    })
+
+    return header
   }
 
   // ==========================================================
@@ -83,13 +96,15 @@ class Subtype extends Base {
   private setSubtypeData(data: ISubtypeData): void {
     this.setBaseData(data)
     this.element_ = data.element || ''
+    this.armor_ = data.armor || ''
     this.defenses_ = data.defenses ? Defenses.Deserialize(data.defenses) : null
     this.traits_ = data.traits || []
     this.health_ = data.health || 0
     this.move_ = data.move || 0
     this.guard_ = data.guard || 0
-    this.soak_ = data.soak || 0
-    this.range_ = data.range || ''
+    this.stun_ = data.stun || 0
+    this.manifest_ = data.manifest || []
+    this.growth_points_ = data.growth_points || 0
   }
 }
 export default Subtype

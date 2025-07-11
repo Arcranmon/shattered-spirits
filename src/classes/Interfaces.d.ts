@@ -102,6 +102,8 @@ declare interface IChartData {
 
 declare interface IDefenseData {
   stun: number
+  soak?: number
+  guard?: number
   reflex?: number
   grit?: number
   focus?: number
@@ -243,9 +245,11 @@ declare interface ISubtypeData extends IBaseData {
   health: number
   weapons: number
   guard: number
-  soak: number
+  stun: number
   move: number
-  range: string
+  manifest: string[]
+  armor: string
+  growth_points: number
 }
 
 declare interface IStanceData extends IBaseData {
