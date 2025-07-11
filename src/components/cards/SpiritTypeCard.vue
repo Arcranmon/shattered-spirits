@@ -4,12 +4,13 @@
       <div class="card--header" v-bind:class="type.Name">
         <div>
           <h4 style="display: inline">{{ type.Name }}</h4>
-        </div>        
+        </div>
       </div>
     </div>
     <div class="card--content">
       <div class="chart--wrapper" inline>
-        <v-row no-gutters class="chart--row"><v-col class="chart--head" cols="2"
+        <v-row no-gutters class="chart--row"
+          ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Growth Points_" :decorate="false" /></b
           ></v-col>
           <v-col class="chart--head" cols="2"
@@ -17,18 +18,19 @@
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Soak_/_Stun_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Guard_" :decorate="false" /></b></v-col
-          >
+            ><b><display-tooltip-text string="_Guard_" :decorate="false" /></b
+          ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col class="chart--cols justify-center align-center" cols="2">{{ type.GrowthPoints }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Health }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{type.Defenses.Soak }} / {{ type.Defenses.Stun }}</v-col>          
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Defenses.Soak }} / {{ type.Defenses.Stun }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Defenses.Guard }}</v-col>
         </v-row>
-        <v-row no-gutters class="chart--row" style="border-top: none"><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Movement_" :decorate="false" /></b></v-col
-          >
+        <v-row no-gutters class="chart--row" style="border-top: none"
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Movement_" :decorate="false" /></b
+          ></v-col>
           <v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Focus_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
@@ -52,7 +54,8 @@
       </div>
       <div v-if="type.Defenses.HasImmunities">
         <display-tooltip-text :string="type.Defenses.ImmunitiesHeader" />
-      </div><display-tooltip-text :string="type.TraitsHeader" /></br>
+      </div>
+      <display-tooltip-text :string="type.TraitsHeader" /><br />
       <display-tooltip-text :string="type.ManifestHeader" /><br />
     </div>
     <div class="desc--box" v-if="type.Desc.length > 0" style="font-style: italic">{{ type.Desc }}<br /></div>
