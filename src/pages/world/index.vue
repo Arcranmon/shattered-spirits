@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 1em;">
+  <div style="padding: 1em">
     <display-tooltip-text :string="worldText" />
   </div>
 </template>

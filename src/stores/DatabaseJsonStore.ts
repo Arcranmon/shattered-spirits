@@ -97,7 +97,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get basicArts() {
-    return ['Shift', 'Rally', 'Evade', 'Fight', 'Ward', 'Martial Arts', 'Manuever', 'Interact']
+    return ['Shift', 'Rally', 'Evade', 'Fight', 'Brace', 'Martial Arts', 'Manuever', 'Interact']
   }
 
   get playerArts() {

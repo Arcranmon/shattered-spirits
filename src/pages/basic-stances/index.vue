@@ -1,9 +1,11 @@
 <template>
   <div class="background">
-    <h2>Basic Arts</h2>
-        <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Art')" />
-        <show-cards :inputs="this.$store.getters.getArtsFromList(this.$store.getters.playerArts)" job="Arts" :collapse="false" /></v-tab-item
-    >
+    <h2>Basic Stances</h2>
+    <display-tooltip-text class="description-text" :string="$store.getters.getGlossaryItem('Stance')" /><show-cards
+      :inputs="this.$store.getters.getStancesFromList(this.$store.getters.basicStances)"
+      job="Stances"
+      :collapse="false"
+    />
   </div>
 </template>
 
@@ -12,7 +14,7 @@ import Vue from 'vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import { store } from '@/store'
 export default Vue.extend({
-  name: 'basic-techniques',
+  name: 'basic-stances',
   data() {
     return { tab: 0 }
   },
