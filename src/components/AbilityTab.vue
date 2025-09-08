@@ -7,8 +7,9 @@
     </v-col>
     <v-col cols="2" />
     <show-abilities
-      :inputs="character.AllArts"
+      :abilities="abilities"
       :type="abilityType"
+      :include_base="true"
       :classFilter="classFilter"
       :keywordFilter="keywordFilter"
       :key="classFilter && keywordFilter"
@@ -17,16 +18,22 @@
 
 <script>
 import Vue from 'vue'
+import Character from '@/class'
 import ShowAbilities from '@/components/cards/ShowAbilities.vue'
 export default Vue.extend({
   name: 'ability-tab',
   components: { ShowAbilities },
   props: {
     character: {
+      type: Character,
       required: true,
     },
     abilityType: {
       required: true,
+    },
+    spirit: {
+      required: false,
+      default: false,
     },
   },
   computed: {
@@ -38,6 +45,12 @@ export default Vue.extend({
       } else {
         return ['All', 'Offensive', 'Defensive', 'Utility', 'Mobility']
       }
+    },
+    abilities() {
+      if (this.spirit) {
+        return this.character.FilteredSpiritAbilities(this.abilityType, this.classFilter, this.keywordFilter)
+      }
+      return this.character.FilteredAbilities(this.abilityType, this.classFilter, this.keywordFilter)
     },
   },
   data() {

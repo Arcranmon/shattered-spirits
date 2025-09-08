@@ -7,7 +7,6 @@
         ><v-col class="chart--head chart--head-right" v-if="chart.HasDamage" v-bind:cols="damageWidth"><b>Damage</b></v-col
         ><v-col class="chart--head chart--head-right" v-bind:cols="effectWidth"><b>Effect</b></v-col>
         <v-col class="chart--head chart--head-right" v-if="chart.HasRoll" v-bind:cols="negateWidth"><b>Negate</b></v-col>
-        <v-col class="chart--head chart--head-right" v-if="chart.HasDefend" v-bind:cols="defendWidth"><b>Defend</b></v-col>
       </v-row>
       <div v-for="(n, index) in 4">
         <v-row align="stretch" no-gutters class="chart--row">
@@ -23,9 +22,6 @@
           </v-col>
           <v-col class="chart--cols chart--cols-right" v-if="chart.HasRoll" v-bind:class="getClass(index)" v-bind:cols="negateWidth"
             >{{ chart.Negate(index) }}
-          </v-col>
-          <v-col class="chart--cols chart--cols-right" v-if="chart.HasDefend" v-bind:class="getClass(index)" v-bind:cols="defendWidth"
-            ><display-tooltip-text :string="chart.Defend(index)" />
           </v-col>
         </v-row>
       </div>

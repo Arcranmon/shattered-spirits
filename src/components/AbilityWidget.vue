@@ -1,6 +1,22 @@
 <template>
   <div v-bind:class="useDivider ? 'ability-box' : ''" style="padding-bottom: 0.25em">
-    <div>
+    <div v-if="cardStyle" v-bind:class="ability.Type" class="card--format">
+      <div class="card--underline-top">
+        <img class="image--header-left" :src="ability.Icon" />
+        <img class="image--header-right" :src="ability.Icon" />
+        <div class="card--header">
+          <h4>{{ ability.Name }}</h4>
+          <div class="card--keywords">
+            <b>
+              <display-tooltip-text :string="ability.Class + ' ' + ability.Type" :decorate="false" /><br />
+              <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box">
+                <display-tooltip-text :string="keyword" :decorate="false" /></span
+            ></b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="!cardStyle">
       <span v-bind:class="ability.Type" class="ability--head" style="width: 100%">
         <img :src="ability.Icon" style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
         <display-tooltip-text :string="ability.Header" />
@@ -8,7 +24,7 @@
       <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
         ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b>
       </span>
-      <i><display-tooltip-text v-if="from != ''" :string="'**From:** _' + from + '_'" style="padding-left: 2em" /></i>
+      <i><display-tooltip-text v-if="ability.Origin" :string="'**From:** _' + ability.Origin.Name + '_'" style="padding-left: 2em" /></i>
     </div>
     <div style="padding-left: 1em">
       <div class="card--format" v-if="ability.HasCost">
@@ -27,6 +43,9 @@
       <div class="card--format" v-if="ability.HasEffect">
         <display-tooltip-text :string="ability.EffectHeader" />
       </div>
+      <div class="card--format" v-if="ability.HasDefend">
+        <display-tooltip-text :string="ability.DefendHeader" />
+      </div>
       <div class="card--format" v-if="ability.HasSpecial">
         <display-tooltip-text :string="ability.SpecialHeader" />
       </div>
@@ -36,12 +55,16 @@
       <div class="card--format" v-if="ability.HasGambit">
         <display-tooltip-text :string="ability.GambitHeader" />
       </div>
+      <div class="card--format" v-if="ability.HasTable">
+        <basic-table :chart="ability.Table" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import BasicTable from '@/components/BasicTable.vue'
 import { Ability } from '@/class'
 import { store } from '@/store'
 
@@ -52,16 +75,16 @@ export default Vue.extend({
       type: Ability,
       required: true,
     },
-    from: {
-      type: String,
-      required: false,
-      default: '',
-    },
     useDivider: {
       type: Boolean,
       default: false,
     },
+    cardStyle: {
+      type: Boolean,
+      default: false,
+    },
   },
+  components: { BasicTable },
 })
 </script>
 
@@ -74,13 +97,7 @@ export default Vue.extend({
   font-weight: bold;
   align-items: center;
 }
-.Enhancement {
-  background-color: $color--maneuver;
-}
-.Major {
-  background-color: #6a7177 !important;
-}
-.Action {
+.Maneuver {
   background-color: #7ac3ff;
 }
 .Reaction {

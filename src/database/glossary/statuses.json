@@ -72,14 +72,14 @@
   {
     "name": "Guarding",
     "desc": "A status gained while a creature focuses entirely on defense.",
-    "effect": "While Guarding:\n* All _Attacks_ are made at _Disadvantage_.\n* All _Movement_ costs are increased by 1.\n* While Guarding, gain _Advantage_ on _Defense Rolls_.",
+    "effect": "While Guarding:\n* All _Attacks_ have their cost increased by 1.\n* While Guarding, gain _Advantage_ on _Defense Rolls_.",
     "remove": "Creatures lose Guarding if they gain _Break_ or at the end of the current _Phase_.",
     "special": "A creature may not be both _Charging_ and Guarding.",
     "type": "Status Effect"
   },
   {
     "name": "Grabbed",
-    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* Both creatures become _Engaged_ with one another, and this _Engaged_ may not be removed while the grab persists.\n* The Grabber may expend additional _Movement_ to move the Grabbed creature with them.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature is _Immobile_ if the Grabber is the same size or Larger; otherwise, the Grabbed creature is _Hobbled_ and always brings the Grabber with them. A creature may only be Grabbing one creature at a time.",
+    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* Both creatures become _Engaged_ with one another, and this _Engaged_ may not be removed while the grab persists.\n* The Grabber may expend additional _Movement_ to move the Grabbed creature with them.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature is _Immobile_ if the Grabber is the same size or larger; otherwise, the Grabbed creature is _Hobbled_ and always brings the Grabber with them, or simply moves with the Grabber if they are at least two Sizes larger. A creature may only be Grabbing one creature at a time.",
     "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them ever leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_/_Movement_ to reroll their _Negate_ against this Grabbed, ending the effect on a success.",
     "repeat": "If a Grabbed creature would gain Grabbed they instead gain _Prone_.",
     "recover": "When a creature _Recovers_ they may attempt to remove _Grabbed_ as above, but have _Advantage_ to _Negate_.",
@@ -179,7 +179,7 @@
   {
     "name": "Stunned",
     "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "When a creature gains _Stunned_ they immediately lose half their _Momentum_ and _Movement_. While Stunned:\n* A creature may not clear any _Stun_.\n* Has _Disadvantage_ when _Negating_\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
+    "effect": "When a creature gains _Stunned_ they immediately lose half their _Momentum_, _Essence_, and _Movement_ (including any that was _Prepared_). While Stunned:\n* A creature may not clear any _Stun_.\n* Has _Disadvantage_ when _Negating_.\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
     "remove": "Remove Stunned at the end of the _Round_ it was inflicted.",
     "type": "Affliction"
   },

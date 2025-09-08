@@ -13,8 +13,11 @@
         </div>
       </div>
     </div>
+    <div class="card--content" v-if="art.HasSpecial">
+      <display-tooltip-text :string="art.SpecialHeader" />
+    </div>
     <div class="card--content" v-bind:class="useTextFormatting">
-      <ability-widget v-for="(ability, index) in art.Abilities" :ability="ability" :use-divider="index != 0" />
+      <ability-widget v-for="(ability, index) in art.Abilities" :ability="ability" :use-divider="index != 0 || art.HasSpecial" />
       <div v-if="art.HasChart || art.HasTable" class="ability-box">
         <chart-table v-if="art.HasChart" :chart="art.Chart" />
         <basic-table v-if="art.HasTable" :chart="art.Table" />

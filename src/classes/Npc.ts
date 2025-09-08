@@ -67,8 +67,8 @@ class Npc extends Combatant {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Arts() {
-    return store.getters.getArtsFromList(this.npc_data_.arts)
+  public get Abilities() {
+    return store.getters.getArtsFromList(this.npc_data_.abilities)
   }
 
   public get Armor() {
@@ -122,10 +122,6 @@ class Npc extends Combatant {
 
   public get Stances() {
     return this.npc_data_.stances
-  }
-
-  public get Techniques() {
-    return store.getters.getTechniquesFromList(this.npc_data_.techniques)
   }
 
   public get HasWeapons() {

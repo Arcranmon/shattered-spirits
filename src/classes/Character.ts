@@ -1,7 +1,8 @@
 import { store } from '@/store'
 import { Armor, Bonuses, Combatant, Discipline, Stance, Weapon, Spirit, Technique } from '@/class'
 
-var kBaseHealth = 25
+var kBaseHealth = 20
+var kBaseStun = 20
 var kBaseLoad = 4
 
 class Character extends Combatant {
@@ -10,6 +11,7 @@ class Character extends Combatant {
   private disciplines_: Array<ICharDisciplineData>
   private minor_disciplines_: Array<ICharDisciplineData>
   private name_: string
+  private arts_: Array<string>
   private player_character_: Boolean
   private element_: string
   private weapons_: Array<Weapon>
@@ -81,6 +83,10 @@ class Character extends Combatant {
     return traits
   }
 
+  override get MaxStun() {
+    return kBaseStun
+  }
+
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================
@@ -95,6 +101,47 @@ class Character extends Combatant {
     keywords.sort()
     keywords.unshift('All')
     return keywords
+  }
+
+  private abilityFilter(iAbilities, abilities, typeFilter, classFilter, keywordFilter, art = null) {
+    for (var ability of abilities) {
+      var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
+      var classMatches = classFilter == 'All' || classFilter == ability.Class
+      var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
+      if (typeMatches && classMatches && keywordMatches) {
+        if (art) {
+          ability.Origin = art
+        }
+        iAbilities.push(ability)
+      }
+    }
+  }
+
+  public FilteredAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
+    var abilities = []
+    var basic_abilities = store.getters.getBasicAbilities()
+    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
+    for (var art of this.AllArts) {
+      this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
+    }
+
+    abilities.sort((a, b) => a.Name.localeCompare(b.Name))
+    abilities = abilities.filter((obj, index, self) => !obj.Origin || index === self.findIndex((o) => o.Origin === obj.Origin))
+    return abilities
+  }
+
+  public FilteredSpiritAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
+    var abilities = []
+    var basic_abilities = store.getters.getBasicAbilities()
+    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
+    abilities = abilities.filter((ability) => ability.Name !== 'Manifest' && ability.Name !== 'Basic Craft')
+    for (var artStr of this.Arts) {
+      var art = store.getters.getArt(artStr)
+      if (art.Category === this.Element) this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
+    }
+
+    abilities.sort((a, b) => a.Name.localeCompare(b.Name))
+    return abilities
   }
 
   get CurrentStance(): Stance {
@@ -115,12 +162,24 @@ class Character extends Combatant {
 
   get Arts() {
     var arts = [...store.getters.playerArts]
+    for (var art of this.arts_) {
+      arts.push(art)
+    }
     // Collect from Disciplines
     // Collect from Archetypes
     for (var archetype of this.archetypes_) {
       arts.push(store.getters.getArchetype(archetype).Art)
     }
-    arts.push('Basic ' + this.element_)
+    arts.push('Basic ' + this.element_ + 'craft')
+    arts.sort()
+    return arts
+  }
+
+  get SpiritArts() {
+    var arts = []
+    for (var art of this.AllArts) {
+      if (art.Category === this.element_) arts.push(art)
+    }
     arts.sort()
     return arts
   }
@@ -268,11 +327,12 @@ class Character extends Combatant {
   }
 
   override get StunClear() {
-    return this.CurrentStance.Stun
+    return 0
   }
 
   override get MomentumGain() {
-    return this.CurrentStance.MomentumGain
+    return 0
+    //return this.CurrentStance.MomentumGain
   }
 
   public ClearSpiritInfo() {
@@ -369,6 +429,7 @@ class Character extends Combatant {
       equipped: character.equipped_,
       consumables: character.consumables_,
       pack: character.pack_,
+      arts: character.arts_,
     }
   }
 
@@ -391,6 +452,7 @@ class Character extends Combatant {
     this.equipped_ = data.equipped || []
     this.consumables_ = data.consumables || []
     this.pack_ = data.pack || []
+    this.arts_ = data.arts || []
     this.setCombatantData(data)
     this.setBonuses()
     this.getArmor()

@@ -2,10 +2,11 @@
 // Parent class for techniques/maneuvers.
 
 import { store } from '@/store'
-import { Base, Chart } from '@/class'
+import { Base, Art, Chart } from '@/class'
 
 class Ability extends Base {
   protected area_: string
+  protected defend_: string
   protected boosts_: IBoostData[]
   protected cost_: string
   protected class_: string
@@ -16,6 +17,7 @@ class Ability extends Base {
   protected speed_: number
   protected type_: string
   protected trigger_: string
+  protected origin_: Art
 
   public constructor(name) {
     super(name)
@@ -30,6 +32,7 @@ class Ability extends Base {
     this.reqs_ = ''
     this.special_ = ''
     this.target_ = ''
+    this.origin_ = null
   }
 
   // ==========================================================
@@ -65,6 +68,12 @@ class Ability extends Base {
   public get Type() {
     return this.type_
   }
+  public get Origin() {
+    return this.origin_
+  }
+  public set Origin(origin: Art) {
+    this.origin_ = origin
+  }
   public get Icon() {
     if (this.class_ === 'Defensive') return require('@/assets/Defensive.svg')
     if (this.class_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
@@ -96,6 +105,15 @@ class Ability extends Base {
       text += '\n * **' + boost.name + ' - ' + boost.cost + ':** ' + boost.effect
     }
     return text
+  }
+  public get HasDefend() {
+    return this.defend_
+  }
+  public get Defend() {
+    return this.defend_
+  }
+  public get DefendHeader() {
+    return '**_Defend_:** ' + this.defend_
   }
   public get HasCost() {
     return this.cost_.length > 0
@@ -159,6 +177,7 @@ class Ability extends Base {
     this.setBaseData(data)
     this.area_ = data.area || ''
     this.boosts_ = data.boosts || []
+    this.defend_ = data.defend || ''
     this.cost_ = data.cost || ''
     this.class_ = data.class || 'MISSING'
     this.type_ = data.type || 'MISSING'

@@ -76,6 +76,12 @@
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <trait-card :trait="this.$store.getters.getSpiritTrait(input)" style="border: 0.5em double black" /></v-menu></span
+    ><span v-else-if="this.$store.getters.isBasicAbility(input)" attach
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
+        /></template>
+        <ability-widget :ability="this.$store.getters.getBasicAbility(input)" :cardStyle="true" style="border: 0.5em double black" /></v-menu></span
     ><span style="white-space: pre-wrap" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>
@@ -94,9 +100,23 @@ import TalentCard from './cards/TalentCard.vue'
 import TerrainCard from './cards/TerrainCard.vue'
 import TraitCard from './cards/TraitCard.vue'
 import WeaponCard from './cards/WeaponCard.vue'
+import AbilityWidget from './AbilityWidget.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { ArmorCard, ArtCard, ManeuverCard, FeatureCard, StanceCard, StatusCard, TalentCard, TechCard, TerrainCard, TraitCard, WeaponCard },
+  components: {
+    ArmorCard,
+    ArtCard,
+    ManeuverCard,
+    FeatureCard,
+    StanceCard,
+    StatusCard,
+    TalentCard,
+    TechCard,
+    TerrainCard,
+    TraitCard,
+    WeaponCard,
+    AbilityWidget,
+  },
   props: {
     input: {
       type: String,

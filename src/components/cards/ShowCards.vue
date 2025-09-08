@@ -73,9 +73,6 @@
             <div class="card--box" v-if="job == 'Movement'">
               <movement-card :movement="n" />
             </div>
-            <div class="card--box" v-if="job == 'SpiritType'">
-              <spirit-type-card :type="n" />
-            </div>
             -->
             <div class="card--box" v-if="isArchetype(n)">
               <archetype-card :archetype="n" />
@@ -88,6 +85,9 @@
             </div>
             <div class="card--box" v-if="isSpiritForm(n)">
               <spirit-form-card :form="n" style="height: 100%" />
+            </div>
+            <div class="card--box" v-if="isTrait(n)">
+              <trait-card :trait="n" />
             </div>
           </v-col>
         </v-row> </v-container

@@ -39,12 +39,10 @@
             <v-tabs-items v-model="ability_tab" class="character-tab-content">
               <v-tab-item
                 ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
-                  ><v-tab><h5>Actions</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Enhancements</h5></v-tab><v-tab><h5>Gambits</h5></v-tab
-                  ><v-tab><h5>Reactions</h5></v-tab></v-tabs
+                  ><v-tab><h5>Maneuvers</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
                 ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
-                  ><v-tab-item><ability-tab abilityType="Action" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" /></v-tab-item
                   ><v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item
-                  ><v-tab-item><ability-tab abilityType="Enhancement" :character="character" /></v-tab-item
                   ><v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item
                   ><v-tab-item><ability-tab abilityType="Reaction" :character="character" /></v-tab-item
                 ></v-tabs-items>
@@ -73,21 +71,38 @@
           </v-card></div></v-tab-item
       ><v-tab-item>
         <v-row style="margin: 1em">
-          <v-col :cols="columnNumbers"><combat-stats-widget :creature="character.Spirit" @changed="$emit('changed')" /> </v-col
-          ><v-col :cols="columnNumbers"> <status-widget :creature="character.Spirit" @changed="$emit('changed')" /></v-col
-        ></v-row>
-        <h3 style="text-align: center">Equipment</h3>
+          <v-col :cols="columnNumbers">
+            <combat-stats-widget :creature="character" @changed="$emit('changed')" /><status-widget
+              :creature="character.Spirit"
+              @changed="$emit('changed')" /></v-col
+          ><v-col :cols="columnNumbers">
+            <h4 style="text-align: center">Spirit Type</h4>
+            <type-card :type="character.Spirit.SpiritType" style="margin: auto"
+          /></v-col>
+        </v-row>
+        <h3 style="text-align: center">Abilities and Equipment</h3>
         <v-card>
-          <v-tabs v-model="spirit_equipment_tab" class="character-tabs" light color="black" centered>
-            <v-tab>
-              <h3>Weapons</h3>
-            </v-tab>
-          </v-tabs>
-          <v-tabs-items v-model="spirit_equipment_tab" class="character-tab-content">
-            <v-tab-item>
-              <show-cards :inputs="character.Spirit.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+          <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
+            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab></v-tabs
+          >
+          <v-tabs-items v-model="ability_tab" class="character-tab-content">
+            <v-tab-item
+              ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
+                ><v-tab><h5>Maneuvers</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
+              ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
+                ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Attack" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Gambit" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Reaction" :character="character" :spirit="true" /></v-tab-item
+              ></v-tabs-items>
             </v-tab-item>
-          </v-tabs-items> </v-card></v-tab-item
+            <v-tab-item>
+              <show-cards :inputs="character.SpiritArts" :collapse="false" :cols="2" />
+            </v-tab-item>
+            <v-tab-item><show-cards :inputs="character.Spirit.Equipment" :collapse="false" :cols="2" /> </v-tab-item
+            ><v-tab-item> <show-cards :inputs="this.$store.getters.getSpiritTraitsFromList(character.Spirit.Traits)" :collapse="false" :cols="2" /></v-tab-item>
+            <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
+          ></v-tabs-items> </v-card></v-tab-item
     ></v-tabs-items>
   </div>
 </template>
@@ -96,6 +111,7 @@
 import Vue from 'vue'
 import { Character } from '@/class'
 import StanceCard from '@/components/cards/StanceCard.vue'
+import TypeCard from '@/components/cards/SpiritTypeCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import ShowAbilities from '@/components/cards/ShowAbilities.vue'
 import BasicTable from '@/components/BasicTable.vue'
@@ -106,7 +122,18 @@ import CombatStatsWidget from '@/components/CombatStatsWidget.vue'
 import TraitsAndWeaponsWidget from '@/components/TraitsAndWeaponsWidget.vue'
 export default Vue.extend({
   name: 'display-character',
-  components: { AbilityTab, BasicTable, ShowAbilities, ShowCards, StanceCard, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
+  components: {
+    AbilityTab,
+    BasicTable,
+    ShowAbilities,
+    ShowCards,
+    StanceCard,
+    TypeCard,
+    AbilitiesWidget,
+    StatusWidget,
+    TraitsAndWeaponsWidget,
+    CombatStatsWidget,
+  },
   props: {
     character: {
       type: Character,

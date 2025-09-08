@@ -96,7 +96,7 @@ class Combatant {
 
   public ApplyRespite() {
     this.move_ = this.MaxMovement
-    this.momentum_ += this.MomentumGain
+    //this.momentum_ += this.MomentumGain
     this.ClearStunChunk(this.StunClear)
   }
 
@@ -125,6 +125,7 @@ class Combatant {
 
   get MoveColor() {
     let colormap = interpolate(['#99CCFF', '#0066CC'])
+    console.log(this.MovePercent)
     return colormap(this.MovePercent / 100)
   }
 

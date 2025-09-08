@@ -1,5 +1,6 @@
 import { store } from '@/store'
 import { Ability, Base } from '@/class'
+import { isStandardBrowserEnv } from 'vue-simple'
 
 class Stance extends Base {
   private class_: string
@@ -7,6 +8,9 @@ class Stance extends Base {
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private traits_: Array<string>
+  private momentum_gain_: Array<number>
+  private essence_gain_: Array<number>
+  private stun_clear_: Array<number>
   protected abilities_: Ability[] = []
 
   public constructor(name) {
@@ -39,6 +43,10 @@ class Stance extends Base {
   public get Grit() {
     if (this.defenses_.grit) return this.defenses_.grit
     return 0
+  }
+
+  public PhaseHeader(index) {
+    return '**Phase ' + (index + 1) + ':** +' + this.momentum_gain_[index] + ' _Momentum_, +' + this.essence_gain_[index] + ' _Essence_'
   }
 
   public get Reflex() {
@@ -88,7 +96,7 @@ class Stance extends Base {
 
   public get MomentumGain() {
     if (this.respite_.momentum_gain) return this.respite_.momentum_gain
-    return 0
+    return []
   }
 
   // ==========================================================
@@ -108,6 +116,8 @@ class Stance extends Base {
     this.effects_ = data.effects || []
     this.defenses_ = data.defenses || null
     this.traits_ = data.traits || []
+    this.momentum_gain_ = data.momentum_gain || [0, 0, 0, 0]
+    this.essence_gain_ = data.essence_gain || [0, 0, 0, 0]
     if (data.abilities) {
       for (var ability of data.abilities) {
         this.abilities_.push(Ability.Deserialize(ability))

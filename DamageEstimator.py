@@ -5,7 +5,7 @@ import argparse
 import OrphanFinder
 
 # Momentum is 'worth' this much
-momentum_value = 1.5
+momentum_value = 2
 
 status_multipliers = {
     "Airborne": 4,
@@ -67,9 +67,9 @@ keyword_modifiers = {
 
 attack_range_multiplier = {
     "Melee": 1,
-    "Short": 0.9,
+    "Close": 0.9,
     "Reach": 0.85,
-    "Medium": 0.8,
+    "Short": 0.8,
     "Long": 0.7
 }
 
@@ -79,6 +79,7 @@ TECHNIQUE = 2
 negate = [2, 3, 4, 5]
 
 def get_status_magnitude(status):
+    if(not status): return 0
     split_status = status.split(' ')
     if len(split_status) == 1: 
         return status_multipliers[split_status[0].strip()]
@@ -183,7 +184,7 @@ def estimate_damage(attack, glancing, print_stats):
     attack_class = ATTACK
     override_range = ""
     diff_speed = 0
-    stun_scale = 0.5 # Stun is worth less
+    stun_scale = 0.75 # Stun is worth less
     
     expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
                 
@@ -205,8 +206,13 @@ def estimate_damage(attack, glancing, print_stats):
         if("negate" in attack):
             negate = attack["chart"]["negate"]
 
-    ability = attack["abilities"][0]           
-    if "cost" in ability:
+    ability = {}
+    for sub_ability in attack["abilities"]:
+        if sub_ability["type"] == 'Attack':
+            ability = sub_ability
+            break
+            
+    if "cost" in ability and not ability["cost"] == 'None':
         cost += int(ability["cost"][0])
 
     if("analysis_notes" in ability):
@@ -249,8 +255,6 @@ def estimate_damage(attack, glancing, print_stats):
 
     attack_ranges = ability["range"].replace('_', '').split('/')
     attack_range = attack_ranges[-1]
-    if "Thrown" in attack_range:
-        attack_range = attack_ranges[-2]
     if override_range != "":
         attack_range = override_range
 

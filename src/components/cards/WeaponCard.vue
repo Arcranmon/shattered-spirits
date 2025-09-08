@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="card--content">
-      <div class="chart--wrapper" inline>
+      <div v-if="weapon.Category != 'Natural'" class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row"
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Hands_" :decorate="false" /></b></v-col
@@ -37,6 +37,9 @@
       </div>
       <div class="card--format" v-if="weapon.HasReqs">
         <display-tooltip-text :string="weapon.ReqsHeader" />
+      </div>
+      <div class="card--format" v-if="weapon.HasSpecial">
+        <display-tooltip-text :string="weapon.SpecialHeader" />
       </div>
       <div v-for="(ability, index) in weapon.Abilities" :key="index" class="ability-box" style="padding-bottom: 0.25em">
         <ability-widget :ability="ability" />

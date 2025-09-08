@@ -7,8 +7,6 @@
         <custom-button to="/combat-rules">Combat Rules</custom-button> <br />
         <custom-button to="/afflictions-and-status">Afflictions and Status</custom-button>
         <br />
-        <custom-button to="/features">Features</custom-button>
-        <br />
         <custom-button to="/terrain">Terrain</custom-button><br />
         <br
       /></v-col>

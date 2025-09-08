@@ -1,9 +1,14 @@
 <template>
   <div>
-    <div v-for="[art, ability] in abilities">
-      <ability-widget :ability="ability" :from="art.Name" :useDivider="true" :key="ability.Name" />
-      <chart-table v-if="art.HasChart && ability.UsesChart" :chart="art.Chart" />
-      <basic-table v-if="art.HasTable && ability.UsesChart" :chart="art.Table" />
+    <div v-for="ability in abilities">
+      <span v-if="ability.Origin">
+        <ability-widget :ability="ability" :useDivider="true" :key="ability.Name" />
+        <chart-table v-if="ability.Origin.HasChart && ability.UsesChart" :chart="ability.Origin.Chart" />
+        <basic-table v-if="ability.Origin.HasTable && ability.UsesChart" :chart="ability.Origin.Table" />
+      </span>
+      <span v-else>
+        <ability-widget :ability="ability" :useDivider="true" :key="ability.Name" />
+      </span>
     </div>
   </div>
 </template>
@@ -17,9 +22,13 @@ import BasicTable from '../BasicTable.vue'
 export default Vue.extend({
   name: 'show-abilities',
   props: {
-    inputs: {
+    abilities: {
       type: Array,
       required: true,
+    },
+    include_base: {
+      type: Boolean,
+      required: false,
     },
     type: {
       type: String,
@@ -33,23 +42,12 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+    spirit: {
+      type: String,
+      required: false,
+    },
   },
   computed: {
-    abilities() {
-      var abilities = []
-      for (var input of this.inputs) {
-        for (var ability of input.Abilities) {
-          var typeMatches = this.type == 'All' || ability.Type == this.type
-          var classMatches = this.classFilter == 'All' || this.classFilter == ability.Class
-          var keywordMatches = this.keywordFilter == 'All' || ability.Keywords.includes(this.keywordFilter)
-          if (typeMatches && classMatches && keywordMatches) {
-            abilities.push([input, ability])
-          }
-        }
-      }
-      abilities.sort((a, b) => a[1].Name.localeCompare(b[1].Name))
-      return abilities
-    },
     columnNumbers() {},
   },
   components: {

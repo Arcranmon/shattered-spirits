@@ -156,7 +156,7 @@
     ]
   },
   {
-    "name": "Light Helmet",
+    "name": "Leather Helmet",
     "category": "Helmet",
     "desc": "A helmet that can be difference between a glancing blow and a lethal strike.",
     "keywords": ["Organic"],
@@ -171,7 +171,7 @@
         "keywords": ["Efficient"],
         "trigger": "You are _Crit_.",
         "cost": "1 _Momentum_",
-        "effect": "For any _Defense Roll_ this _Turn_, you may treat the _Crit_ as a _Hit_.",
+        "effect": "Choose one:\n* Gain 3 _Guard_.\n* While _Defending_, instead treat the _Crit_ as a _Hit_.",
         "special": "You may use this at no Cost if you _Notch_ it."
       }
     ]
@@ -187,7 +187,7 @@
     "special": "Gain +1 to _Negate_ and 2 _Guard_ for all _Field_ effects without the _Weather_ keyword."
   },
   {
-    "name": "Heavy Helmet",
+    "name": "Iron Helmet",
     "category": "Helmet",
     "desc": "A sturdy helmet that can be difference between a glancing blow and a lethal strike.",
     "keywords": ["Metal"],
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "name": "Metal Form",
+    "name": "Metal Body",
     "category": "Natural",
     "desc": "A metal form that is not dominated by any specific metal, though it still provides significant armor.",
     "keywords": ["Metal"],
@@ -217,14 +217,14 @@
     "durability": 4,
     "load": 0,
     "notches": 2,
-    "traits": ["_Ward_ 2 [_Crush_, _Stab_, _Slash_]"],
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
     "abilities": [
       {
         "name": "Twist",
         "class": "Defensive",
         "type": "Gambit",
-        "effect": "Gain _Resistance_ to _Crush_, _Slash_, _Stab_, or _Crush_ Damage.",
+        "trigger": "You take _Crush_, _Slash_, or _Stab_ Damage.",
+        "effect": "Gain _Resistance_ to the Attack.",
         "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
       }
     ]
@@ -249,33 +249,17 @@
     ]
   },
   {
-    "name": "Iron Body",
+    "name": "Metal Body",
     "category": "Natural",
     "desc": "A metal form that is not dominated by any specific metal, though it still provides significant armor.",
     "keywords": ["Metal"],
     "guard": 2,
-    "soak": 5,
+    "soak": 4,
     "durability": 4,
     "load": 0,
     "notches": 2,
-    "special": "While wearing this Armor treat your _Guard_ as 3 higher against _Crush_, _Slash_, and _Stab_ Damage.",
+    "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
     "abilities": [
-      {
-        "name": "Slam",
-        "class": "Balanced",
-        "keywords": ["Shielding"],
-        "type": "Attack",
-        "cost": "1 _Momentum_",
-        "range": "Melee",
-        "effect": "Attack a Target within Range.",
-        "boosts": [
-          {
-            "name": "Heavy Slam",
-            "cost": "2 _Momentum_",
-            "effect": "On a _Graze_+, deal +3 _Bonus Stun_ and add _Impaired_ [_Grit_]"
-          }
-        ]
-      },
       {
         "name": "Twist",
         "class": "Defensive",
@@ -293,71 +277,35 @@
     }
   },
   {
-    "name": "Plating",
+    "name": "Iron Plating",
     "category": "Over Armor",
     "desc": "Metal plating that can be layered for greater and greater protection.",
     "keywords": ["Metal"],
     "guard": 1,
-    "soak": 4,
+    "soak": 5,
     "durability": 1,
     "load": 4,
     "notches": 3,
     "abilities": [
       {
-        "name": "Armored Rebuke",
-        "class": "Balanced",
-        "keywords": ["Shielding", "Crush"],
-        "type": "Attack",
+        "name": "Deflect",
+        "class": "Defensive",
+        "keywords": ["Block"],
+        "type": "Reaction",
         "cost": "1 _Momentum_",
-        "range": "Melee",
-        "effect": "Attack a Target within Range.",
-        "boosts": [
-          {
-            "name": "Hunker",
-            "cost": "1 _Momentum_",
-            "effect": "Gain _Guarding_."
-          },
-          {
-            "name": "Slam",
-            "cost": "2 _Momentum_",
-            "effect": "On a _Graze_+, deal +3 _Bonus Stun_ and add _Push_ [_Grit_]"
-          }
-        ]
+        "effect": "_Defend_.\n* Lose: Gain 2 _Guard_.\n* _Tie_: Gain 4 _Guard_."
       },
       {
         "name": "Twist",
         "class": "Defensive",
         "type": "Gambit",
-        "effect": "Gain 4 _Guard_, or 5 _Guard_ if this triggered off of <i>Armored Rebuke</i>.",
+        "effect": "Gain 4 _Guard_, or 5 _Guard_ if this triggered off of <i>Deflect</i>.",
         "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
       }
     ],
     "chart": {
-      "stun": [0, 1, 2, 3],
-      "damage": [0, 0, 1, 1],
-      "roll": ["2-3", "4-6", "7-10", "11-12"],
-      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
-      "status": ["+1 _Momentum_", "None", "None", "_Guarding_"]
+      "roll": ["2-3", "4-6", "7-10", "11-12"]
     }
-  },
-  {
-    "name": "Light Carapace",
-    "category": "Hide",
-    "keywords": ["Organic"],
-    "durability": 6,
-    "notches": 1,
-    "load": 2,
-    "guard": 0,
-    "soak": 2,
-    "abilities": [
-      {
-        "name": "Twist",
-        "class": "Defensive",
-        "type": "Gambit",
-        "effect": "Gain 3 _Guard_."
-      }
-    ],
-    "desc": "Standard armor, striking a balance between load and durability."
   },
   {
     "name": "Carapace",
@@ -369,42 +317,22 @@
     "soak": 2,
     "abilities": [
       {
-        "name": "Armored Shell",
-        "class": "Balanced",
-        "keywords": ["Shielding"],
-        "type": "Attack",
+        "name": "Deflect",
+        "class": "Defensive",
+        "keywords": ["Block"],
+        "type": "Reaction",
         "cost": "1 _Momentum_",
-        "range": "Melee",
-        "effect": "Attack a Target within Range.",
-        "boosts": [
-          {
-            "name": "Hunker",
-            "cost": "1 _Momentum_",
-            "effect": "Gain _Guarding_."
-          },
-          {
-            "name": "Slam",
-            "cost": "2 _Momentum_",
-            "effect": "On a _Graze_+, deal +3 _Bonus Stun_ and add _Push_ [_Grit_]"
-          }
-        ]
+        "effect": "_Defend_.\n* Lose: Gain 2 _Guard_.\n* _Tie+_: Gain 3 _Guard_."
       },
       {
         "name": "Twist",
         "class": "Defensive",
         "type": "Gambit",
-        "effect": "Gain 3 _Guard_, or 4 _Guard_ if this triggered off of <i>Armored Shell</i>.",
+        "effect": "Gain 2 _Guard_, or 3 _Guard_ if this triggered off of <i>Deflect</i>.",
         "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
       }
     ],
-    "chart": {
-      "stun": [0, 1, 2, 3],
-      "damage": [0, 0, 1, 1],
-      "roll": ["2-3", "4-6", "7-10", "11-12"],
-      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
-      "status": ["+1 _Momentum_", "None", "None", "_Guarding_ 1"]
-    },
-    "desc": "Natural armor, whether that be heavy chitin, shells, or natural plating."
+    "desc": "Natural armor, whether that be chitin, a thin shell, or natural plating."
   },
   {
     "name": "Shell",

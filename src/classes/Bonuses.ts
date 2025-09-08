@@ -45,6 +45,14 @@ class Bonuses {
     this.load_ = other.load_
   }
 
+  public get Reflex() {
+    return this.reflex_
+  }
+
+  public get Movement() {
+    return this.move_
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================

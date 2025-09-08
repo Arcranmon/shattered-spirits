@@ -1,8 +1,21 @@
 ## To-Do
 
-- Make Guard only convert Damage->Stun
-- Make Armor give more Soak
-- Add a 'take no Stun this turn' effect
+- Make Momentum only last for a Phase
+- Also add 'Essence' which is just magic Momentum
+- Stances determine how much of each you get each Phase
+  - May need to bring Speed back as a part of this to allow for high Momentum early, low Momentum late Stances
+- Simplifies down the Stunts vs. Actions logic; you spend as much of your Momentum as you want on your Turn
+- Missing, instead of giving Momentum, instead Prepares on that Art/Equipment.
+- Charging becomes a way to pay Momentum on an ability across Phases
+- Some abilities MUST be the first used on a Turn, some automatically end the Turn
+  - Charging, Defending, effects like that
+- Momentum ability to Prepare Essence
+- Momentum ability to gain Essence (based on your element)
+
+- Novice Stance is like 2/3/4/5 Momentum and 1/2/2/3 Essence
+- Actions/Enhancements to Manuevers
+
+- Rework Basic Arts to instead be Basic Abilities + the Martial Arts Art
 
 ### Plan
 

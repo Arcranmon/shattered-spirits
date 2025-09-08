@@ -24,6 +24,7 @@ Vue.prototype.$strike = require('@/assets/Strike.svg')
 Vue.prototype.$move = require('@/assets/Move.svg')
 Vue.prototype.$support = require('@/assets/Support.svg')
 Vue.prototype.$defend = require('@/assets/Defend.svg')
+Vue.prototype.$map = require('@/assets/MockMap.png')
 
 router.afterEach((to, from) => {
   // Use next tick to handle router history correctly

@@ -21,13 +21,13 @@
         ><div style="padding: 2em; align-self: center; width: 50%; margin: auto">
           <spirit-type-card :type="this.$store.getters.getSpiritType('Metal Spirit')" />
         </div>
-        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Copper Ore'])" />
-        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList([])" />
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('Metal', '1')" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('Metal', '2')" />
       </v-tab-item>
       <v-tab-item>
-        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Swift', 'Thin Shell'])" />
-        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsFromList(['Shelled'])" />
-        <show-cards display_text="Rare Traits (3 Points)" :inputs="[]"
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '1')" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '2')" />
+        <show-cards display_text="Rare Traits (3 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '3')"
       /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />

@@ -10,13 +10,13 @@ Combat in Shattered Spirits is split up into _Rounds_, _Phases_, and _Turns_. A 
 &nbsp;
 A _Round_ is structured as follows:
 **Respite:** The start of each _Round_. This is not a _Phase_, and no Techniques are used. During Respite, resolve the following in the following order:
-* In every Round except the first, lose half of your current _Momentum_.
+* In every Round except the first, lose half of any _Prepared_ _Momentum_ and _Essence_ on Arts and Equipment.
 * You may Wield a piece of Equipped Equipment, or Equip a Wielded piece of Equipment.
-* Reset your Movement to its maximum value, then clear _Stun_ and gain _Momentum_ as dictated by your _Stance_.
+* Reset your Movement to its maximum value, then clear half your current _Stun_.
 * Resolve any other effects that occur during _Respite_, typically from your _Stance_.
 
 &nbsp;
-**Phase 1-4:** These numbered Phases show the passing of time in combat and are when most _Actions_ will take place. _Phases_ are resolved in order, 1-4, with Phase 1 representing the fastest abilities and Phase 4 representing the slowest.
+**Phase 1-4:** These numbered Phases show the passing of time in combat and are when most action will take place. _Phases_ are resolved in order, 1-4, with Phase 1 representing the fastest abilities and Phase 4 representing the slowest. At the start of each _Phase_, gain _Momentum_ and _Essence_ as dictated by your _Stance_, then clear _Stun_, also as dictated by your _Stance_.
 
 &nbsp; 
 **End of Round:** The end of the Round. Many effects resolve in this window.
@@ -67,37 +67,40 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 **Range:** Attacks in Shattered Spirits will have a Range of _Self_, _Melee_, and _Short_, _Medium_, and _Long Range_. 
 * Self-Range effects either only affect the user, or are centered on them. 
 * Melee effects may only target within your Position.
-* Short-Range effects may target within your Arena that are not at your _Position_.
-* Reach effects my target any creature within your Arena.
-* Medium-Range effects may target within an adjacent Arena.
-* Long-Range effects may target within Arenas that are two Paths away.
+* Close-Range effects may within your Arena but not at your _Position_.
+* Short-Range effects may target within an adjacent Arena.
+* Long-Range effects may target two Arenas away.
 
 &nbsp;
+### Resources in Combat
+TODO
+&nbsp;
 
+### Arenas, Positions, and Movement
+Combat in Shattered Spirits doesn't make use of a traditional combat grid; instead, it is abstracted away into Arenas, Positions, and Paths. To help demonstrate these concepts, a complex combat map has been provided as an example (I still need to draw Position icons).
 
-### Movement and the Combat map
-The Combat Map in Shattered Spirits is comprised of _Arenas_, _Paths_, and _Positions_.
+<div style="display: flex; justify-content: center">
+<img :src="$map" style="width: 40em; border: 2px solid black;"/>
+</div>
 
 &nbsp;
-The primary unit of this is the _Arena_, which are distinct locations that combat takes place in. Any number of characters can be in an _Arena_ at the same time.
+Arenas are the basic layout of the combat map, and represent distinct areas in a battlefield, with your typical combat consisting of 6-10 Arenas. Each Arena typically represents a distinct and prominent terrain feature (such as the **Steep Cliffs** or **Underground River** on the above map) or is simply used to demonstrate a large amount of distance (such as splitting the **Cave Entrance** and the **Cave Center**).
+&nbsp;
+Within Arenas, exact positioning is determined using Positions, which represent places of note within an Arena, as well as where individual combatants are. In general, a given Arena can have any number of Positions, a Position may  have any number of creatures present at it. A typical Arena will also have some pre-defined Positions that represent significant Terrain that may provide bonuses or penalties to creatures in said Position.
+&nbsp;
+Characters may spend 1 _Movement_ to move to any other _Position_ within their _Arena_ or 2 _Movement_ to move into an adjacent _Arena_, joining any _Position_ they wish. However, leaving a _Position_ creates an [_Opening_] unless an ability is used to mitigate this effect. Either of these costs can be modified by specific Arenas and Positions.
 
 &nbsp;
-Connecting _Arenas_ are _Paths_, which show the ways that Arenas are connected to one another. These typically list a simple _Move_ cost to go from one to another, but may have more complicated conditions such as Terrain effects.
+ On the above map, the **Cave Entrance**, **Underground River**, **Side Tunnel Entrance**, **Cave Center**, **Steep Cliffs**, **High Ground**, **Egg Storage**, **Narrow Tunnel**, and **Queen's Lair** are the relevant Arenas, each with their own distinct Positions and effects, as outlined below (all WIP and mostly to illustrate how things work).
 
 &nbsp;
-_Positions_ represent where characters are in a given _Arena_. Characters at the same _Position_ are all within Melee range of one another and may _Occupy_ _Features_ at said _Position_.
-
-&nbsp;
-Characters have a number of Moves, which they may spend in combat. When a character uses a Technique or takes their Action they will be given a set number of Moves for that ability but may also spend Moves from their Move Pool. 
-
-&nbsp;
-Characters may always spend Moves to do one of the following:
-* Move to a different Arena, paying the listed Move cost for the Path. This creates an _Opening_.
-* Spend 1 _Move_ to join a _Position_ or establish a new one. If there is an unoccupied _Feature_ at said _Position_, the creature may _Occupy_ it. This creates an _Opening_.
-* Spend 1 _Move_ to _Occupy_ a _Feature_ at your current _Position_.
-
-&nbsp;
-_Techniques_ and Actions may provide their own pool of Movement for the character to use that is lost at the end of the _Turn_. All other _Moves_ a character makes must come from their Move pool, which is 2, but may be adjusted by Stances and Equipment.
+* **Cave Entrance** [Earth, Retreat] - This Arena is uneventful with no significant Positions. The [Earth] keyword denotes that this Arena is primarily made of that material (relevant for spirit abilities) while the Retreat keyword denotes that, if the party wishes to flee, they must all be within this Arena. The **Cave Entrance** is connected to the **Underground River**, **Cave Center**, and **Steep Cliffs**.
+* **Cave Center** [Earth] - Another simple Arena, this one has two Positions with the **Large Stalactite** Terrain.
+    * **Large Stalactite** [Earth] - Creatures at the same Position as this receive [_Cover_].
+* **Underground River** [Water, Swimming, Rushing 2] - This Arena is a rushing river of water, and as such has the [Water] keyword rather than Earth. Because of the [Swimming] keyword, characters must _Swim_ when entering or leaving this Arena; for most creatures, this means that all Movement costs are increased by 1, and they gain the _Soaked_ condition upon doing any Movement here. Finally, the [Rushing 2] keyword designates the flow of the river here; characters that end a _Phase_ in this Arena gain 2 _Stun_. There is one unique _Position_ in this Arena that has the **Bridge** Terrain.
+    * **Bridge** [Earth, Path] - This Terrain has the Path keyword, which means it is exempt from the [Swimming, Rushing 2] keywords of the rest of the Arena. Characters can use this Position to safely cross the **Underground River** without having to swim. This Terrain can be destroyed by dealing sufficient damage to it or with powerful [Earth] abilities. At the end of the Turn this Terrain is Destroyed, all creatures on it fall into a new Position in the **Underground River**.
+* **Side Tunnel Entrance** [Earth] - On the other side of the **Underground River** is the **Side Tunnel Entrance**. This Arena is notable for its **Side Tunnel** Terrain, which is its own Position.
+    * **Side Tunnel** [Earth, Reinforcements] - This piece of Terrain will create new enemies at the start of each _Round_ after the 1st. Similar to the Bridge, it can be destroyed with a powerful attack or [Earth] effect.
 
 &nbsp;
 
@@ -110,6 +113,7 @@ _Techniques_ and Actions may provide their own pool of Movement for the characte
     * [redo]
 * <ins>Spirit Downed</ins> occurs when a character's spirit's _Health_ reaches 0. When a _Spirit_ is _Downed_ that character becomes _Suppressed_ for the remainder of the _Round_ (or _Sealed_ if they are already _Suppressed_). Additionally, the spirit marks one against their _Spirit Track_. At the start of the next_Phase_ the spirit is reset to full _Health_.
 * <ins>Death</ins>: It is extremely rare for a character to be killed in combat in Shattered Spirits. Characters only die when their entire Strain Meter is full of _Wounds_.
+
 &nbsp;  
 
 ### Open and Hidden Information

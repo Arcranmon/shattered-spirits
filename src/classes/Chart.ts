@@ -7,7 +7,6 @@ class Chart {
   private stun_: Array<number>
   private damage_type_: string
   private keywords_: Array<string>
-  private defend_: Array<string>
   private status_: Array<string>
   private on_miss_: string
   private material_: string
@@ -24,9 +23,6 @@ class Chart {
   public Damage(i: number): string {
     if (this.roll_[i] == 'Miss') return '-'
     return this.damage_[i].toString()
-  }
-  public Defend(i: number): string {
-    return this.defend_[i].toString()
   }
   public Stun(i: number): string {
     if (this.roll_[i] == 'Miss') return '-'
@@ -65,9 +61,6 @@ class Chart {
   get HasDamage() {
     return this.damage_.length > 0
   }
-  get HasDefend() {
-    return this.defend_.length > 0
-  }
   get HasStun() {
     return this.stun_.length > 0
   }
@@ -95,7 +88,6 @@ class Chart {
 
   public setChartData(data: IChartData): void {
     this.roll_ = data.roll || []
-    this.defend_ = data.defend || []
     this.stun_ = data.stun || []
     this.damage_ = data.damage || []
     this.status_ = data.status || ['None', 'None', 'None', 'None']

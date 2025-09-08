@@ -11,8 +11,6 @@
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Movement_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Momentum Gain_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Stun Clear_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Grit_" :decorate="false" /></b></v-col
@@ -24,13 +22,16 @@
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Movement }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.MomentumGain }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Stun }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Grit }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Focus }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Reflex }}</v-col>
         </v-row>
       </div>
+      <display-tooltip-text :string="stance.PhaseHeader(0)" /><br />
+      <display-tooltip-text :string="stance.PhaseHeader(1)" /><br />
+      <display-tooltip-text :string="stance.PhaseHeader(2)" /><br />
+      <display-tooltip-text :string="stance.PhaseHeader(3)" /><br />
       <div v-if="stance.HasTraits">
         <display-tooltip-text :string="stance.TraitsHeader" />
       </div>

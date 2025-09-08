@@ -11,6 +11,7 @@ class Base {
   protected keywords_: Array<string>
   protected special_: string
   protected table_: Array<string>
+  protected tags_: Array<string>
 
   public constructor(name) {
     this.desc_ = ''
@@ -44,6 +45,9 @@ class Base {
   }
   public get Table() {
     return this.table_
+  }
+  public get Tags() {
+    return this.tags_
   }
 
   // ==========================================================
@@ -86,6 +90,7 @@ class Base {
     this.name_ = data.name || ''
     this.special_ = data.special || ''
     this.table_ = data.table || []
+    this.tags_ = data.tags || []
   }
 }
 export default Base

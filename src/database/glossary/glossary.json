@@ -1,19 +1,36 @@
 [
   {
+    "name": "Ammunition",
+    "effect": "You have a number of this item equal to its current _Notches_. If it loses a _Notch_, remove the most appropriate instance of this equipment."
+  },
+  {
     "name": "Arena",
     "effect": "Arenas are distinct areas on a battlefield that take some significant effort to traverse between and designate different areas of combat. Generally, characters may spend one Movement to move from an Arena to any connected Arenas, entering at the appropriate _Path_ _Position_ if relevant."
   },
   {
-    "name": "Ammunition",
-    "effect": "You have a number of this item equal to its current _Notches_. If it loses a _Notch_, remove the most appropriate instance of this equipment."
+    "name": "Attack Roll",
+    "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's _Profile_ to determine the effect. On a _Miss_, creatures always gain 1 _Momentum_ plus half of the total cost of the Attack."
+  },
+  { "see": "Attack Rolls", "name": "Attack Roll" },
+  {
+    "name": "Bend",
+    "effect": "Terrain and other effects may special Interacts that list a Bend value; characters can use a Bend effect that matches the element of said Terrain to resolve it."
   },
   {
     "name": "Bonus",
     "effect": "When an Attack gains Bonus Damage or Stun, distribute it between targets however you wish."
   },
   {
+    "name": "Brawling",
+    "effect": "When attacking a _Grabbed_ creature, add _Pierce_ 1 and gain a +1 _Bonus_."
+  },
+  {
     "name": "Charged",
     "effect": "This Ability does some sort of Charged effect. If this is an Attack, it may not be used to Defend."
+  },
+  {
+    "name": "Close",
+    "effect": "Close Range effects may target any valid target within your current _Arena_."
   },
   {
     "name": "Counter",
@@ -41,6 +58,10 @@
     "effect": "Reactions with this keyword do not count against the 1 Reaction per Trigger limitation."
   },
   {
+    "name": "Essence",
+    "effect": "Essence represents your magical potential and energy. Characters can spend Essence to use various Spirit abilities, channeling the elements and creating other strange effects. Additionally, while _Summoned_, a character's Spirit may spend _Essence_ as if it is _Momentum_."
+  },
+  {
     "name": "Exhaust",
     "effect": "After using any Ability with this keyword, the associated Art may not be used for the remainder of the combat."
   },
@@ -66,12 +87,16 @@
     "effect": "Guard converts incoming Damage to _Stun_. Characters may always choose to treat their current _Guard_ as less than its current value."
   },
   {
+    "name": "Kinesis",
+    "effect": "Characters with kinesis for an element gain the following benefits:\n* You may use [_Armament_] Manuevers at the listed Kinesis Range when exclusively targeting items of that Element. If they would normally create an [_Opening_], they instead do not and you may pay the cost with either _Momentum_ or _Essence_.\n* Once one your _Turn_, you may move an item from any unattended _Position_ in your _Arena_ to another _Position_. You may pay 1 _Essence_ to repeat this effect."
+  },
+  {
     "name": "Limited",
-    "effect": "This ability may only be used once per _Round_."
+    "effect": "This ability may only be used once in the listed frequency, typically either _Turn_, _Round_, or _Phase_."
   },
   {
     "name": "Prepare",
-    "effect": "When you Prepare, place _Momentum_ on any _Art_ or _Equipment_, removing it from your _Momentum_ supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_ but may not be used to pay the cost of associated effects. For example, if you Prepared _Fight_, you could not use Prepared _Momentum_ to pay the cost of the Attack in Basic Combat."
+    "effect": "When you Prepare, place _Momentum_ or _Essence_ (as listed by the effect) on any _Art_ or _Equipment_, removing it from your supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. At _Refresh_ or when _Stunned_, lose half the Prepared resources on all Equipment and Arts. When _Wounded_, lose all Prepared resources on all Equipment and Arts. If you stop _Wielding_ a piece of _Equipment_, lose all Prepared resources."
   },
   {
     "name": "Hand-and-a-Half",
@@ -95,6 +120,10 @@
     "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ allow enemies to _Attack_ when an Opening is created."
   },
   {
+    "name": "Parry",
+    "effect": "A Parry is a riskier version of a _Block_ Reaction. For any listed effects of the original _Reaction_, you must succeed by one more rank (e.g. if you would normally get a bonus on a Loss, you instead get it on a Tie). If you _Win_, you may use the additional listed effect at no cost against the Attacker if they are within Range. If said effect is making an Attack, use the same die result as the _Defense Roll_. If the Attack qualified for _Gambits_, you may use either _Offensive_ or _Defensive_ ones, modifying either the attack or the defend as appropriate."
+  },
+  {
     "name": "Pierce",
     "effect": "This effect ignores an amount of the Target's _Guard_ equal to its Pierce value."
   },
@@ -103,8 +132,20 @@
     "effect": "This Action must be used immediately after a _Phase_ begins and ignores the normal _Initiative_ process."
   },
   {
+    "name": "Quickdraw",
+    "effect": "So long as your have a _Free Hand_ you may always treat this piece of Equipment as _Wielded_ while it is _Equipped_."
+  },
+  {
+    "name": "Rank",
+    "effect": "Rank refers to the result of an Attack or Defense Roll and corresponds to Miss, Graze, Hit, and Crit, in that order. Many effects increase or decrease the Rank, which moves it up or down the chart as applicable. An effect may not go below a Miss or above a Crit."
+  },
+  {
     "name": "Remote",
     "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the attack's origin and the Target."
+  },
+  {
+    "name": "Pacifist",
+    "effect": "If you use this Maneuver you may not use any Attacks this _Turn_."
   },
   {
     "name": "Rooted",
@@ -113,7 +154,7 @@
   { "name": "Safe", "effect": "Any Attacks made as a part of a [_Punish_] _Reaction_ are made at _Disadvantage_ against you this _Turn_." },
   {
     "name": "Short",
-    "effect": "Short Range effects may target any valid target within your _Arena_."
+    "effect": "Short Range effects may target any valid target within an adjacent _Arena_."
   },
   {
     "name": "Slow Action",
@@ -150,7 +191,7 @@
   },
   {
     "name": "Thrown",
-    "effect": "After using an effect with this Range, place this _Equipment_ in an _Engagement_ with the Target."
+    "effect": "After using an effect with this Range, place this _Equipment_ at the Target's _Position_."
   },
   {
     "name": "Occupy",

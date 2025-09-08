@@ -9,6 +9,7 @@ import ArchetypesJson from '@/database/archetypes.json'
 import SpiritTraitsJson from '@/database/spirit_traits.json'
 
 import ArtsJson from '@/database/arts.json'
+import BasicAbilitiesJson from '@/database/basic_abilities.json'
 
 import DamageTypes from '@/database/glossary/damage_types.json'
 import Glossary from '@/database/glossary/glossary.json'
@@ -44,6 +45,7 @@ import {
   Terrain,
   Trait,
   Weapon,
+  Ability,
 } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
@@ -76,6 +78,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Arts = ArtsJson.map((x) => Art.Deserialize(<IArtData>(<unknown>x)))
     this.Consumables = ConsumablesJson.map((x) => Consumable.Deserialize(<IConsumableData>(<unknown>x)))
     this.Traits = SpiritTraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
+    this.BasicAbilities = BasicAbilitiesJson.map((x) => Ability.Deserialize(<IAbilityData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -91,17 +94,37 @@ export class DatabaseJsonStore extends VuexModule {
   private Arts: Art[] = []
   private Consumables: Consumable[] = []
   private Traits: Trait[] = []
+  private BasicAbilities: Ability[] = []
 
   get basicStances() {
-    return ['Novice Stance', 'Swift Stance', 'Steady Stance', 'Forceful Stance']
-  }
-
-  get basicArts() {
-    return ['Shift', 'Rally', 'Evade', 'Fight', 'Brace', 'Martial Arts', 'Manuever', 'Interact']
+    return ['Spiritbound Stance']
   }
 
   get playerArts() {
-    return [...this.basicArts, 'Spirit Companion']
+    return ['Martial Arts']
+  }
+
+  // ==========================================================
+  // BASIC ABILITY TOOLS
+  // ==========================================================
+  get getBasicAbilities(): any {
+    return () => {
+      return this.BasicAbilities
+    }
+  }
+
+  get isBasicAbility(): any {
+    return (inword: string) => {
+      return this.BasicAbilities.some((x) => x.Name == inword.trim())
+    }
+  }
+
+  get getBasicAbility(): any {
+    return (inword: string) => {
+      var ability = this.BasicAbilities.find((x) => x.Name.trim() == inword.trim())
+      if (ability == undefined) return new Ability(inword)
+      return ability
+    }
   }
 
   // ==========================================================
@@ -715,6 +738,7 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getSpiritType(): any {
     return (inword: string) => {
+      console.log(inword)
       var type = this.Subtypes.find((x) => x.Name === inword.trim())
       return type
     }
@@ -754,6 +778,12 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var type = this.Traits.find((x) => x.Name === inword.trim())
       return type
+    }
+  }
+
+  get getSpiritTraitsByTagAndCost(): any {
+    return (tag: string, cost: string) => {
+      return this.Traits.filter((x) => x.Tags.includes(tag.trim()) && x.CostHeader.includes(cost.trim()))
     }
   }
 

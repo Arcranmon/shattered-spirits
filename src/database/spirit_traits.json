@@ -4,33 +4,38 @@
     "reqs": "Metal Spirit and no other 'Ore' Traits.",
     "cost": "1 Growth Point",
     "effect": "Your Natural Weapons gain _Bane_ [_Wood_]. Gain the _Copper Body_ Armor, which is Equipped in addition to _Metal Spirit_. A Spirit may only have a single Trait with 'Ore' in its name.",
-    "equipment": ["Copper Body"]
+    "equipment": ["Copper Body"],
+    "tags": ["Metal"]
   },
   {
     "name": "Heat Conduction",
-    "reqs": "Metal Spirit.",
+    "reqs": "Metal Spirit",
     "cost": "None (Base Trait)",
-    "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
+    "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal.",
+    "tags": ["Metal"]
   },
   {
     "name": "Swift",
     "reqs": "None",
     "cost": "1 Growth Point",
     "effect": "This spirit gains +1 _Movement_.",
-    "bonuses": { "move": 1 }
+    "bonuses": { "move": 1 },
+    "tags": ["General"]
   },
   {
-    "name": "Long Range",
+    "name": "Adept Manifestation",
     "reqs": "None",
     "cost": "1 Growth Point",
-    "effect": "Increase the _Range_ that you may _Summon_ this _Spirit_ by 1."
+    "effect": "You may _Manifest_ this Spirit as if it was one size smaller.",
+    "tags": ["General"]
   },
   {
     "name": "Hardy",
     "reqs": "None",
     "cost": "1 Growth Point",
     "effect": "This spirit gains +3 _Health_ and +2 _Stun_.",
-    "bonuses": { "health": 3, "stun": 2 }
+    "bonuses": { "health": 3, "stun": 2 },
+    "tags": ["General"]
   },
   {
     "name": "Thin Shell",
@@ -38,15 +43,17 @@
     "reqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
     "keywords": ["Armored"],
     "effect": "This spirit gains the _Carapace_ Armor.",
-    "equipment": ["Carapace"]
+    "equipment": ["Carapace"],
+    "tags": ["General"]
   },
   {
-    "name": "Tiny Spirit",
-    "cost": "2 Growth Points",
+    "name": "Diminutive",
+    "cost": "3 Growth Points",
     "reqs": "No other [Size] Traits.",
     "keywords": ["Size"],
-    "effect": "Your Spirit becomes _Tiny_.",
-    "equipment": ["Carapace"]
+    "effect": "Your Spirit becomes _Tiny_, gains a +2 to _Reflex_, and +1 _Movement_. Your Spirit may only select [_Light_] Weapons.",
+    "tags": ["General"],
+    "bonuses": { "move": 1, "reflex": 2 }
   },
   {
     "name": "Shelled",
@@ -54,6 +61,14 @@
     "keywords": ["Armored"],
     "reqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
     "effect": "This spirit gains the _Shell_ Armor.",
-    "equipment": ["Shell"]
+    "equipment": ["Shell"],
+    "tags": ["General"]
+  },
+  {
+    "name": "Metalborn",
+    "reqs": "Metal Spirit",
+    "cost": "None (Base Trait)",
+    "effect": "Add [_Metal_] to all Attacks with Natural Weapons. Gain the _Metal Body_ Armor.",
+    "equipment": ["Metal Body"]
   }
 ]

@@ -6,6 +6,7 @@ declare interface IBaseData {
   effect: string
   keywords?: Array<string>
   special?: string
+  tags?: string[]
 }
 
 declare interface IBoostData {
@@ -65,6 +66,7 @@ declare interface IChargedEffect {
 
 declare interface ICharacterData extends ICombatantData {
   current_stance: string
+  arts: string[]
   element: string
   disciplines: ICharDisciplineData[]
   name: string
@@ -90,7 +92,6 @@ declare interface ICombatantData {
 
 declare interface IChartData {
   roll: Array<string>
-  defend: Array<string>
   damage?: Array<number>
   stun?: Array<number>
   status: Array<string>
@@ -149,7 +150,7 @@ declare interface INpcCombatData extends ICombatantData {
 }
 
 declare interface INpcData {
-  arts?: Array<string>
+  abilities?: Array<string>
   armor: string
   move: number
   jump: number
@@ -170,12 +171,12 @@ declare interface INpcData {
   stances?: Array<string>
   subtype: string
   traits?: Array<string>
-  techniques: Array<string>
   weapons: Array<string>
 }
 
 declare interface IAbilityData extends IBaseData {
   area?: string
+  defend?: string
   boosts?: IBoostData[]
   cost?: string
   class: string
@@ -191,7 +192,6 @@ declare interface IAbilityData extends IBaseData {
 
 declare interface IManeuverData extends IAbilityData {
   manifest?: string
-  defend?: IDefendData
 }
 
 declare interface ITechData extends IAbilityData {
@@ -214,8 +214,9 @@ declare interface IRangeData {
 }
 
 declare interface IRespiteData {
-  momentum_gain: number
-  stun_clear: number
+  momentum_gain: number[]
+  essence_gain: number[]
+  stun_clear: number[]
   conditional_momentum: string
   special: string
   movement: number
@@ -225,6 +226,7 @@ declare interface ISpiritData extends ICombatantData {
   name: string
   type: string
   weapons: Array<string>
+  traits: Array<string>
 }
 
 declare interface ISpiritFormData extends IBaseData {
@@ -259,6 +261,9 @@ declare interface IStanceData extends IBaseData {
   traits: string[]
   abilities: IAbilityData[]
   effects: string[]
+  essence_gain: number[]
+  momentum_gain: number[]
+  stun_clear: number[]
 }
 
 declare interface IStatusEffect {

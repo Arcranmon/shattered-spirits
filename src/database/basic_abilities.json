@@ -1,0 +1,206 @@
+[
+  {
+    "name": "Basic Craft",
+    "class": "General",
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "effect": "_Prepare_ 2 _Essence_.",
+    "boosts": [
+      {
+        "name": "Hand Signs",
+        "cost": "None",
+        "effect": "You may only use this _Boost_ if you have a _Free Hand_. Instead, _Prepare_ 3."
+      }
+    ]
+  },
+  {
+    "name": "Run",
+    "class": "Mobility",
+    "type": "Maneuver",
+    "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
+    "effect": "Gain X _Temporary_ _Movement_."
+  },
+  {
+    "name": "Raise Guard",
+    "class": "Defensive",
+    "type": "Maneuver",
+    "keywords": ["Pacifist"],
+    "cost": "1 _Movement_",
+    "effect": "Gain _Guarding_. While _Guarding_ in this way, gain +1 _Guard_."
+  },
+  {
+    "name": "Disengage",
+    "class": "Mobility",
+    "type": "Maneuver",
+    "cost": "2 _Movement_",
+    "effect": "Add [_Safe_] to your _Movement_ this _Turn_."
+  },
+  {
+    "name": "Rally",
+    "class": "Utility",
+    "keywords": ["Pacifist", "Rooted"],
+    "type": "Maneuver",
+    "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
+    "range": "Self/Melee",
+    "target": "Ally (Optional)",
+    "effect": "Choose X. You may repeat the same option:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_.\n* _Prepare_ 2 _Momentum_."
+  },
+  {
+    "name": "Catch Breath",
+    "class": "Utility",
+    "type": "Reaction",
+    "trigger": "A _Phase_ ends.",
+    "cost": "X _Momentum_, Y _Essence_",
+    "effect": "Clear 2X _Stun_. You Spirit may clear 3Y _Stun_."
+  },
+  {
+    "name": "Grit Teeth",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "effect": "Reduce your _Stun_ by 3, or 5 if you _Lost_. You may trigger this before or after resolving the triggering effect."
+  },
+  {
+    "name": "Quick Step",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None / 1 _Movement_ if triggered from a [_Block_] _Reaction_.",
+    "trigger": "You are not _Immobile_.",
+    "effect": "You may move to a new _Position_ within your _Arena_; choose one enemy; they treat this _Movement_ as [_Safe_].",
+    "boosts": [{ "name": "Tumble", "cost": "1 _Movement_", "effect": "Instead, this is [_Safe_] against all Targets." }]
+  },
+  {
+    "name": "Perfect Guard",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "1 _Momentum_",
+    "reqs": "[_Block_] and Win the _Defend_.",
+    "effect": "The triggering Attack is [_Glancing_]."
+  },
+  {
+    "name": "Opportunity Attack",
+    "class": "Offensive",
+    "type": "Reaction",
+    "trigger": "A hostile creature at your _Position_ creates an _Opening_.",
+    "cost": "None",
+    "effect": "Use a Single-Target Attack [_Discount_ 2] against the triggering creature."
+  },
+  {
+    "name": "Lethal Blow",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Hit+.",
+    "effect": "Deal 3 _Bonus_ _Damage_."
+  },
+  {
+    "name": "Guard Breaker",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Hit+ with a _Versatile_ or _Heavy_ Attack.",
+    "effect": "Add _Break_ [_Focus_] to the triggering Attack or deal +5 _Bonus Stun_."
+  },
+  {
+    "name": "Find Advantage",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "effect": "Add _Exposed_/_Impaired_ and 2 _Stun_ to the original Attack, even if it was a _Miss_.",
+    "boosts": [
+      {
+        "name": "Flowing Combo",
+        "cost": "None",
+        "effect": "_Prepare_ 1 on the Attack used for this Gambit. You may repeat this _Boost_ up to twice."
+      }
+    ]
+  },
+  {
+    "name": "Sidestep",
+    "class": "Defensive",
+    "type": "Reaction",
+    "keywords": ["Dodge"],
+    "cost": "_1_ _Momentum_, X _Movement_ (minimum 1)",
+    "trigger": "You are Attacked and are not _Immobile_.",
+    "effect": "_Defend_. Gain +1 Reflex. Reduce the Damage by the _Movement_ spent.\n* _Tie_: Instead reduce the damage by your _Reflex_ plus the _Movement_ spent.\n* _Win_: Instead reduce the damage by your _Reflex_ plus twice the _Movement_ spent.",
+    "boosts": [
+      {
+        "name": "Roll",
+        "cost": "2 _Momentum_/_Movement_",
+        "effect": "After resolving this Reaction, reduce the triggering Attack's result by one tier (making a _Hit_ a _Graze_, for example). If the _Defend_ was a _Loss_, gain _Prone_."
+      }
+    ],
+    "table": [
+      ["2-4", "Miss"],
+      ["5-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ]
+  },
+  {
+    "name": "Use Environment",
+    "class": "Utility",
+    "type": "Maneuver",
+    "cost": "Special",
+    "range": "Melee",
+    "effect": "Resolve the Interaction effect of a piece of _Terrain_ within Range, paying its listed _Cost_."
+  },
+  {
+    "name": "Drop",
+    "class": "Utility",
+    "keywords": ["Armament", "Repeatable"],
+    "type": "Maneuver",
+    "cost": "0 _Momentum_",
+    "effect": "Stop _Wielding_ a piece of _Equipment_, placing it unused in your _Arena_.",
+    "boosts": [
+      { "name": "Drop Belt", "cost": "1 _Momentum_", "effect": "Instead remove an _Equipped_ piece of _Equipment_, placing it unused in your _Arena_." },
+      { "name": "Drop Pack", "cost": "2 _Momentum_", "effect": "Create an [_Opening_] and instead remove your _Pack_, placing it unused in your _Arena_." }
+    ]
+  },
+  {
+    "name": "Draw/Stow",
+    "class": "Utility",
+    "keywords": ["Armament", "Repeatable"],
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "effect": "_Wield_ an _Equipped_ Item, or _Equip_ a  _Wielded_ Item.",
+    "boosts": [
+      {
+        "name": "Retrieve",
+        "cost": "1 _Momentum_/_Movement_",
+        "effect": "Create an [_Opening_]. Instead _Wield_ or _Equip_ an _Unattended_ piece of _Equipment_ within _Melee_ Range."
+      },
+      {
+        "name": "Trade",
+        "cost": "1 _Momentum_",
+        "effect": "Choose an ally within _Melee_ _Range_. They may immediately _Wield_ or _Equip_ an Item you have _Wielded_ or _Equipped_, or vice versa."
+      }
+    ]
+  },
+  {
+    "name": "Manifest",
+    "keywords": ["Spirit"],
+    "class": "Utility",
+    "type": "Maneuver",
+    "cost": "1 _Essence_",
+    "range": "Spirit's _Summon_ Range.",
+    "effect": "Choose one:\n* _Summon_ your _Spirit_ to a valid _Position_ within Range.\n* _Recall_ your _Spirit_."
+  },
+  {
+    "name": "Combination Strike",
+    "keywords": ["Spirit"],
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "effect": "Your Spirit may immediately use a Single-Target Attack [_Discount_ 2] against the same Target."
+  },
+  {
+    "name": "Interdiction",
+    "keywords": ["Spirit"],
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Spirit_ is in _Melee_ Range of you.",
+    "effect": "You and your Spirit are both targeted by the triggering effect, but take half Damage/_Stun_ each and _Negate_ with _Advantage_."
+  }
+]
