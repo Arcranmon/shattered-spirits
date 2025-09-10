@@ -105,22 +105,25 @@ class Character extends Combatant {
 
   private abilityFilter(iAbilities, abilities, typeFilter, classFilter, keywordFilter, art = null) {
     for (var ability of abilities) {
-      var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
-      var classMatches = classFilter == 'All' || classFilter == ability.Class
-      var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
-      if (typeMatches && classMatches && keywordMatches) {
-        if (art) {
-          ability.Origin = art
+      if (ability) {
+        var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
+        var classMatches = classFilter == 'All' || classFilter == ability.Class
+        var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
+        if (typeMatches && classMatches && keywordMatches) {
+          if (art) {
+            ability.Origin = art
+          }
+          iAbilities.push(ability)
         }
-        iAbilities.push(ability)
       }
     }
   }
 
   public FilteredAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
     var abilities = []
-    var basic_abilities = store.getters.getBasicAbilities()
-    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
+    var basic_abilities = store.getters.basicAbilities
+    basic_abilities = basic_abilities.concat(store.getters.playerAbilities)
+    this.abilityFilter(abilities, store.getters.getAbilitiesFromList(basic_abilities), typeFilter, classFilter, keywordFilter)
     for (var art of this.AllArts) {
       this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
     }
@@ -132,9 +135,9 @@ class Character extends Combatant {
 
   public FilteredSpiritAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
     var abilities = []
-    var basic_abilities = store.getters.getBasicAbilities()
-    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
-    abilities = abilities.filter((ability) => ability.Name !== 'Manifest' && ability.Name !== 'Basic Craft')
+    var basic_abilities = store.getters.basicAbilities
+    basic_abilities = basic_abilities.concat(store.getters.spiritAbilities)
+    this.abilityFilter(abilities, store.getters.getAbilitiesFromList(basic_abilities), typeFilter, classFilter, keywordFilter)
     for (var artStr of this.Arts) {
       var art = store.getters.getArt(artStr)
       if (art.Category === this.Element) this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)

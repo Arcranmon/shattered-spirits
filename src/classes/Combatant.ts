@@ -125,7 +125,6 @@ class Combatant {
 
   get MoveColor() {
     let colormap = interpolate(['#99CCFF', '#0066CC'])
-    console.log(this.MovePercent)
     return colormap(this.MovePercent / 100)
   }
 

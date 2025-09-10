@@ -81,7 +81,7 @@
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
-        <ability-widget :ability="this.$store.getters.getBasicAbility(input)" :cardStyle="true" style="border: 0.5em double black" /></v-menu></span
+        <ability-widget :ability="this.$store.getters.getAbility(input)" :cardStyle="true" style="border: 0.5em double black" /></v-menu></span
     ><span style="white-space: pre-wrap" v-else v-html="$marked.parseInline(input)"
   /></span>
 </template>

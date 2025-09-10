@@ -34,7 +34,7 @@ export default Vue.extend({
   },
   computed: {
     maneuvers() {
-      var abilities = this.$store.getters.getBasicAbilities()
+      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
       abilities = abilities.filter((a) => a.Type == 'Maneuver')
       abilities.sort((a, b) => {
         return a.Name.localeCompare(b.Name)
@@ -42,7 +42,7 @@ export default Vue.extend({
       return abilities
     },
     gambits() {
-      var abilities = this.$store.getters.getBasicAbilities()
+      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
       abilities = abilities.filter((a) => a.Type == 'Gambit')
       abilities.sort((a, b) => {
         return a.Name.localeCompare(b.Name)
@@ -50,7 +50,7 @@ export default Vue.extend({
       return abilities
     },
     reactions() {
-      var abilities = this.$store.getters.getBasicAbilities()
+      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
       abilities = abilities.filter((a) => a.Type == 'Reaction')
       abilities.sort((a, b) => {
         return a.Name.localeCompare(b.Name)
@@ -64,7 +64,7 @@ export default Vue.extend({
         { code: 'Gambit', value: 0 },
       ]
       var order = ['Maneuver', 'Reaction', 'Gambit']
-      var abilities = this.$store.getters.getBasicAbilities()
+      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
       abilities.sort((a, b) => {
         if (a.Type == b.Type) return a.Name.localeCompare(b.Name)
         return order.indexOf(a.Type) - order.indexOf(b.Type)
