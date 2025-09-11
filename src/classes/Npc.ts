@@ -64,13 +64,13 @@ class Npc extends Combatant {
     return 0
   }
 
+  override get Abilities() {
+    return store.getters.getAbilitiesFromList(this.npc_data_.abilities)
+  }
+
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Abilities() {
-    return store.getters.getArtsFromList(this.npc_data_.abilities)
-  }
-
   public get Armor() {
     return store.getters.getArmor(this.npc_data_.armor)
   }

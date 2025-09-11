@@ -91,59 +91,6 @@ class Character extends Combatant {
   // GETTERS/SETTERS
   // ==========================================================
 
-  public AllKeywords(filter = '') {
-    var keywords = []
-    for (var art of this.Arts) {
-      for (var ability of store.getters.getArt(art).Abilities) {
-        if (filter == '' || ability.Type == filter) keywords = keywords.concat(ability.Keywords)
-      }
-    }
-    keywords.sort()
-    keywords.unshift('All')
-    return keywords
-  }
-
-  private abilityFilter(iAbilities, abilities, typeFilter, classFilter, keywordFilter, art = null) {
-    for (var ability of abilities) {
-      var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
-      var classMatches = classFilter == 'All' || classFilter == ability.Class
-      var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
-      if (typeMatches && classMatches && keywordMatches) {
-        if (art) {
-          ability.Origin = art
-        }
-        iAbilities.push(ability)
-      }
-    }
-  }
-
-  public FilteredAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
-    var abilities = []
-    var basic_abilities = store.getters.getBasicAbilities()
-    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
-    for (var art of this.AllArts) {
-      this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
-    }
-
-    abilities.sort((a, b) => a.Name.localeCompare(b.Name))
-    abilities = abilities.filter((obj, index, self) => !obj.Origin || index === self.findIndex((o) => o.Origin === obj.Origin))
-    return abilities
-  }
-
-  public FilteredSpiritAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
-    var abilities = []
-    var basic_abilities = store.getters.getBasicAbilities()
-    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
-    abilities = abilities.filter((ability) => ability.Name !== 'Manifest' && ability.Name !== 'Basic Craft')
-    for (var artStr of this.Arts) {
-      var art = store.getters.getArt(artStr)
-      if (art.Category === this.Element) this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
-    }
-
-    abilities.sort((a, b) => a.Name.localeCompare(b.Name))
-    return abilities
-  }
-
   get CurrentStance(): Stance {
     return this.current_stance_
   }
@@ -151,7 +98,7 @@ class Character extends Combatant {
     return this.disciplines_
   }
 
-  get AllArts() {
+  override get AllArts() {
     var arts = store.getters.getArtsFromList(this.Arts)
     arts = arts.concat(store.getters.getEquipmentFromList(this.Equipped))
     arts = arts.concat(store.getters.getEquipmentFromList(this.Consumables))

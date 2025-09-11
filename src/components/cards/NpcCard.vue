@@ -37,7 +37,14 @@
           <h3>Weapons</h3>
         </v-tab></v-tabs
       ><v-tabs-items v-model="tab" class="character-tab-content">
-        <v-tab-item> <show-cards :inputs="npc.Arts" job="Arts" :collapse="false" :cols="2" /></v-tab-item
+        <v-tab-item>
+          <v-tabs v-model="abilitiesTab" color="black" light centered style="border-radius: 10px"
+            ><v-tab><h5>Maneuvers</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
+          ><v-tabs-items v-model="abilitiesTab" class="character-tab-content"
+            ><v-tab-item><ability-tab abilityType="Maneuver" :character="npc" /></v-tab-item
+            ><v-tab-item><ability-tab abilityType="Attack" :character="npc" /></v-tab-item
+            ><v-tab-item><ability-tab abilityType="Gambit" :character="npc" /></v-tab-item
+            ><v-tab-item><ability-tab abilityType="Reaction" :character="npc" /></v-tab-item></v-tabs-items></v-tab-item
         ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" :cols="2" /></v-tab-item
       ></v-tabs-items>
     </v-card>
@@ -48,6 +55,7 @@
 import Vue from 'vue'
 import { Npc } from '@/class'
 import ArmorCard from '@/components/cards/ArmorCard.vue'
+import AbilityTab from '@/components/AbilityTab.vue'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
 
 export default Vue.extend({
@@ -55,9 +63,10 @@ export default Vue.extend({
   components: {
     ShowCards: () => import('@/components/cards/ShowCards.vue'),
     ArmorCard,
+    AbilityTab,
   },
   data() {
-    return { tab: null }
+    return { tab: null, abilitiesTab: 0 }
   },
   props: {
     npc: {
@@ -97,11 +106,10 @@ export default Vue.extend({
 }
 .character-tabs {
   font-family: $font--fancy;
-  font-size: larger;
-  border-top: $border--black-standard;
   border-radius: 0px;
 }
 .character-tab-content {
   background-color: $color--grey-light !important;
+  padding: 1em;
 }
 </style>

@@ -90,6 +90,57 @@ class Combatant {
     return 0
   }
 
+  get Arts() {
+    return []
+  }
+
+  private abilityFilter(iAbilities, abilities, typeFilter, classFilter, keywordFilter, art = null) {
+    for (var ability of abilities) {
+      var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
+      var classMatches = classFilter == 'All' || classFilter == ability.Class
+      var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
+      if (typeMatches && classMatches && keywordMatches) {
+        if (art) {
+          ability.Origin = art
+        }
+        iAbilities.push(ability)
+      }
+    }
+  }
+
+  public AllKeywords(filter = '') {
+    var keywords = []
+    for (var art of this.AllArts) {
+      for (var ability of store.getters.getArt(art).Abilities) {
+        if (filter == '' || ability.Type == filter) keywords = keywords.concat(ability.Keywords)
+      }
+    }
+    keywords.sort()
+    keywords.unshift('All')
+    return keywords
+  }
+
+  public get Abilities() {
+    return []
+  }
+
+  public get AllArts() {
+    return []
+  }
+
+  public FilteredAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
+    var abilities = []
+    var basic_abilities = this.Abilities
+    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
+    for (var art of this.AllArts) {
+      this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
+    }
+
+    abilities.sort((a, b) => a.Name.localeCompare(b.Name))
+    abilities = abilities.filter((obj, index, self) => !obj.Origin || index === self.findIndex((o) => o.Origin === obj.Origin))
+    return abilities
+  }
+
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================
