@@ -72,7 +72,7 @@
       ><v-tab-item>
         <v-row style="margin: 1em">
           <v-col :cols="columnNumbers">
-            <combat-stats-widget :creature="character" @changed="$emit('changed')" /><status-widget
+            <combat-stats-widget :creature="character.Spirit" @changed="$emit('changed')" /><status-widget
               :creature="character.Spirit"
               @changed="$emit('changed')" /></v-col
           ><v-col :cols="columnNumbers">

@@ -268,13 +268,12 @@
         "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
       }
     ],
-    "chart": {
-      "stun": [0, 1, 2, 3],
-      "damage": [0, 0, 1, 1],
-      "roll": ["2-3", "4-6", "7-10", "11-12"],
-      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
-      "status": ["+1 _Momentum_", "None", "None", "None"]
-    }
+    "table": [
+      ["2-3", "Miss"],
+      ["4-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ]
   },
   {
     "name": "Iron Plating",
@@ -293,19 +292,22 @@
         "keywords": ["Block"],
         "type": "Reaction",
         "cost": "1 _Momentum_",
-        "effect": "_Defend_.\n* Lose: Gain 2 _Guard_.\n* _Tie_: Gain 4 _Guard_."
+        "effect": "_Defend_.\n* Lose: Gain 4 _Guard_.\n* _Tie_: Reduce the Damage by 2. Gain 2 _Guard_."
       },
       {
         "name": "Twist",
         "class": "Defensive",
         "type": "Gambit",
-        "effect": "Gain 4 _Guard_, or 5 _Guard_ if this triggered off of <i>Deflect</i>.",
+        "effect": "Gain 4 _Guard_. If this triggered off of <i>Deflect</i>, also reduce the Damage by 1.",
         "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
       }
     ],
-    "chart": {
-      "roll": ["2-3", "4-6", "7-10", "11-12"]
-    }
+    "table": [
+      ["2-3", "Miss"],
+      ["4-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ]
   },
   {
     "name": "Carapace",
@@ -344,41 +346,27 @@
     "soak": 4,
     "abilities": [
       {
-        "name": "Armored Shell",
-        "class": "Balanced",
-        "keywords": ["Shielding"],
-        "type": "Attack",
+        "name": "Deflect",
+        "class": "Defensive",
+        "keywords": ["Block"],
+        "type": "Reaction",
         "cost": "1 _Momentum_",
-        "range": "Melee",
-        "effect": "Attack a Target within Range.",
-        "boosts": [
-          {
-            "name": "Hunker",
-            "cost": "1 _Momentum_",
-            "effect": "Gain _Guarding_."
-          },
-          {
-            "name": "Slam",
-            "cost": "2 _Momentum_",
-            "effect": "On a _Graze_+, deal +3 _Bonus Stun_ and add _Push_ [_Grit_]"
-          }
-        ]
+        "effect": "_Defend_.\n* Lose: Gain 2 _Guard_.\n* _Tie+_: Gain 4 _Guard_."
       },
       {
         "name": "Twist",
         "class": "Defensive",
         "type": "Gambit",
-        "effect": "Gain 4 _Guard_, or 5 _Guard_ if this triggered off of <i>Armored Shell</i>.",
+        "effect": "Gain 3 _Guard_, or 4 _Guard_ if this triggered off of <i>Deflect</i>.",
         "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
       }
     ],
-    "chart": {
-      "stun": [0, 1, 2, 3],
-      "damage": [0, 0, 1, 1],
-      "roll": ["2-3", "4-6", "7-10", "11-12"],
-      "defend": ["0 _Guard_", "1 _Guard_", "2 _Guard_", "3 _Guard_"],
-      "status": ["+1 _Momentum_", "None", "None", "_Guarding_ 1"]
-    },
+    "table": [
+      ["2-3", "Miss"],
+      ["4-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ],
     "desc": "Natural armor, whether that be heavy chitin, shells, or natural plating."
   }
 ]

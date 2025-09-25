@@ -91,6 +91,13 @@ class Character extends Combatant {
   // GETTERS/SETTERS
   // ==========================================================
 
+  public get Abilities() {
+    var abilities = store.getters.basicAbilities
+    abilities = abilities.concat(store.getters.playerAbilities)
+
+    return store.getters.getAbilitiesFromList(abilities)
+  }
+
   get CurrentStance(): Stance {
     return this.current_stance_
   }
@@ -388,6 +395,7 @@ class Character extends Combatant {
 
   private setCharacterData(data: ICharacterData): void {
     this.spirit_ = Spirit.Deserialize(data.spirit)
+    this.spirit_.Character = this
     if ('current_stance' in data) this.current_stance_ = store.getters.getStance(data.current_stance)
     this.element_ = data.element || ''
     this.name_ = data.name || ''

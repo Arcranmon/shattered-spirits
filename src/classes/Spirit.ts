@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Combatant, Subtype } from '@/class'
+import { Combatant, Character, Subtype } from '@/class'
 
 var kBasicAttacks = ['Weapon Attack', 'Brawl']
 var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance']
@@ -12,6 +12,7 @@ class Spirit extends Combatant {
   private traits_: Array<string>
   private spirit_type_: Subtype
   private weapons_: Array<string>
+  private character_: Character
 
   public constructor() {
     super()
@@ -57,6 +58,21 @@ class Spirit extends Combatant {
     return store.getters.getWeaponsFromList(this.weapons_)
   }
 
+  override get Abilities() {
+    var abilities = store.getters.basicAbilities
+    abilities = abilities.concat(store.getters.spiritAbilities)
+
+    return store.getters.getAbilitiesFromList(abilities)
+  }
+
+  override get AllArts() {
+    var arts = store.getters.getArtsFromList(this.Arts)
+    arts = arts.concat(this.Equipment)
+    arts = arts.concat(this.character_.SpiritArts)
+
+    return arts
+  }
+
   get Grit() {
     return this.SpiritType.Defenses.Grit
   }
@@ -81,6 +97,10 @@ class Spirit extends Combatant {
   }
   set Name(name) {
     this.name_ = name
+  }
+
+  set Character(character) {
+    this.character_ = character
   }
 
   override get MaxHealth() {

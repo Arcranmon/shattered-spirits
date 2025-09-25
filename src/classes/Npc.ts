@@ -65,7 +65,13 @@ class Npc extends Combatant {
   }
 
   override get Abilities() {
-    return store.getters.getAbilitiesFromList(this.npc_data_.abilities)
+    var ability_names = store.getters.basicAbilities
+    ability_names = ability_names.concat(this.npc_data_.abilities)
+    return store.getters.getAbilitiesFromList(ability_names)
+  }
+
+  override get AllArts() {
+    return [this.Armor].concat(this.Weapons)
   }
 
   // ==========================================================

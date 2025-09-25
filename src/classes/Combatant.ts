@@ -111,7 +111,7 @@ class Combatant {
   public AllKeywords(filter = '') {
     var keywords = []
     for (var art of this.AllArts) {
-      for (var ability of store.getters.getArt(art).Abilities) {
+      for (var ability of art.Abilities) {
         if (filter == '' || ability.Type == filter) keywords = keywords.concat(ability.Keywords)
       }
     }
@@ -176,7 +176,6 @@ class Combatant {
 
   get MoveColor() {
     let colormap = interpolate(['#99CCFF', '#0066CC'])
-    console.log(this.MovePercent)
     return colormap(this.MovePercent / 100)
   }
 

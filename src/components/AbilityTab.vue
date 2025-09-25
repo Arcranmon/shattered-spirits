@@ -48,7 +48,7 @@ export default Vue.extend({
     },
     abilities() {
       if (this.spirit) {
-        return this.character.FilteredSpiritAbilities(this.abilityType, this.classFilter, this.keywordFilter)
+        return this.character.Spirit.FilteredAbilities(this.abilityType, this.classFilter, this.keywordFilter)
       }
       return this.character.FilteredAbilities(this.abilityType, this.classFilter, this.keywordFilter)
     },

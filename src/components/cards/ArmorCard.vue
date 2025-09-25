@@ -49,6 +49,9 @@
       <div v-if="armor.HasChart" class="ability-box">
         <chart-table :chart="armor.Chart" />
       </div>
+      <div class="card--format" v-if="armor.HasTable">
+        <basic-table :chart="armor.Table" />
+      </div>
     </div>
     <div class="desc--box" v-if="armor.Desc.length > 0" style="font-style: italic">{{ armor.Desc }}<br /></div>
   </div>
