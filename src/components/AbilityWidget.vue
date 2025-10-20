@@ -58,6 +58,9 @@
       <div class="card--format" v-if="ability.HasTable">
         <basic-table :chart="ability.Table" />
       </div>
+      <div class="card--format" v-if="ability.HasChart">
+        <chart-table :chart="ability.Chart" />
+      </div>
     </div>
   </div>
 </template>
@@ -65,6 +68,7 @@
 <script>
 import Vue from 'vue'
 import BasicTable from '@/components/BasicTable.vue'
+import ChartTable from './ChartTable.vue'
 import { Ability } from '@/class'
 import { store } from '@/store'
 
@@ -84,7 +88,7 @@ export default Vue.extend({
       default: false,
     },
   },
-  components: { BasicTable },
+  components: { BasicTable, ChartTable },
 })
 </script>
 

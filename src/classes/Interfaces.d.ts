@@ -188,6 +188,7 @@ declare interface IAbilityData extends IBaseData {
   speed?: number
   target?: string
   material?: string
+  chart?: IChartData
 }
 
 declare interface IManeuverData extends IAbilityData {

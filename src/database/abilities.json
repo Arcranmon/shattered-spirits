@@ -9,7 +9,7 @@
       {
         "name": "Hand Signs",
         "cost": "None",
-        "effect": "You may only use this _Boost_ if you have a _Free Hand_. Instead, _Prepare_ 3."
+        "effect": "You may only use this _Boost_ if you have a _Free Hand_. Instead, _Prepare_ 3, but you may only _Prepare_ _Essence_."
       }
     ]
   },
@@ -26,7 +26,7 @@
     "type": "Maneuver",
     "cost": "None",
     "keywords": ["Final"],
-    "effect": "Choose any _Ability_, paying any portion of its Cost, then become _Charging_. You must take your _Turn_ next _Phase_ as a _Slow Action_. On said _Turn_, you must first remove _Charging_, then pay the remaining cost of the chose _Ability_ and use it, if able."
+    "effect": "Choose any _Ability_, paying any portion of its Cost, then become _Charging_. You must take your _Turn_ next _Phase_ as a _Slow Action_. On said _Turn_, you must first remove _Charging_, then pay the remaining cost of the chose _Ability_ and use it immediately, if able. If you cannot, any paid Cost is lost."
   },
   {
     "name": "Envenom",
@@ -218,5 +218,62 @@
     "cost": "None",
     "reqs": "_Spirit_ is in _Melee_ Range of you.",
     "effect": "You and your Spirit are both targeted by the triggering effect, but take half Damage/_Stun_ each and _Negate_ with _Advantage_."
+  },
+  {
+    "name": "Brawl",
+    "keywords": ["Crush"],
+    "class": "Light",
+    "type": "Attack",
+    "cost": "1 _Momentum_",
+    "range": "Melee",
+    "target": "Single-Target",
+    "effect": "Attack a Target within Range.",
+    "boosts": [
+      {
+        "name": "Overpower",
+        "cost": "1 _Momentum_",
+        "effect": "Do not inflict _Impaired_/_Exposed_, then choose one:\n\t* Deal +2 _Bonus Stun_ and add _Push_ [_Grit_].\n\t* Deal +1 _Stun_ and add _Prone_ [_Grit_/_Reflex_]."
+      }
+    ],
+    "chart": {
+      "stun": [0, 1, 2, 3],
+      "status": ["None", "None", "_Impaired_/_Exposed_ [_Focus_/_Grit_]", "_Impaired_/_Exposed_ [_Focus_/_Grit_]"],
+      "roll": ["2-3", "4-5", "6-10", "11-12"]
+    }
+  },
+  {
+    "name": "Brace",
+    "class": "Defensive",
+    "keywords": ["Block"],
+    "type": "Reaction",
+    "cost": "1 _Momentum_",
+    "effect": "_Defend_, at _Disadvantage_ if the Attack was not _Melee_ or was _Heavy_. Gain +1 to _Negate_. \n* Lose: Reduce any _Stun_ gained by 2.\n* Reduce any _Stun_ gained by 3. Gain 1 _Guard_.",
+    "boosts": [
+      {
+        "name": "Counterstrike",
+        "cost": "None",
+        "effect": "_Parry_. If you _Win_, inflict _Impaired_/_Exposed_ [4 _Focus_]. You must select this Boost prior to making the Defense Roll."
+      }
+    ]
+  },
+  {
+    "name": "Metallic Reconstitution",
+    "class": "Utility",
+    "keywords": ["Metal", "Pacifist", "Rooted"],
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "range": "Melee",
+    "reqs": "Unattended _Metal_ _Equipment_ within range or at _Metal_ _Terrain_.",
+    "effect": "Choose one, then regain 4 _Health_ or gain 6 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+  },
+  {
+    "name": "Earthen Reconstitution",
+    "class": "Utility",
+    "keywords": ["Earth", "Pacifist", "Rooted"],
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "range": "Melee",
+    "reqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
+    "effect": "Choose one, then regain 3 _Health_ or gain 5 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
   }
 ]

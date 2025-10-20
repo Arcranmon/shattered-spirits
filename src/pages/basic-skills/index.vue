@@ -2,7 +2,7 @@
   <div class="background">
     <h2>Basic Skills</h2>
     <v-tabs v-model="tab" class="character-tabs" dark color="black" centered
-      ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
+      ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="character-tab-content">
       <v-tab-item
@@ -10,9 +10,7 @@
           ><v-col cols="4" v-for="ability in basic_abilities"
             ><ability-widget :ability="ability" from="" :cardStyle="true" :key="ability.Name" class="ability-box" /></v-col></v-row
       ></v-tab-item>
-      <v-tab-item>
-        <show-cards :inputs="this.$store.getters.getArtsFromList(['Martial Arts'])" :collapse="false" :cols="2" />
-      </v-tab-item>
+
       <v-tab-item><show-cards :inputs="[this.$store.getters.getStance('Spiritbound Stance')]" :collapse="false" :cols="2" /></v-tab-item
     ></v-tabs-items>
   </div>

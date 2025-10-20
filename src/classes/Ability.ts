@@ -18,12 +18,14 @@ class Ability extends Base {
   protected type_: string
   protected trigger_: string
   protected origin_: Art
+  protected chart_: Chart
 
   public constructor(name) {
     super(name)
     this.area_ = ''
     this.boosts_ = []
     this.cost_ = ''
+    this.chart_ = null
     this.desc_ = ''
     this.effect_ = ''
     this.move_ = 0
@@ -43,6 +45,12 @@ class Ability extends Base {
   }
   public get Cost() {
     return this.cost_
+  }
+  public get HasChart() {
+    return this.chart_ != null
+  }
+  public get Chart() {
+    return this.chart_
   }
   public get Class() {
     return this.class_
@@ -187,6 +195,7 @@ class Ability extends Base {
     this.target_ = data.target || ''
     this.trigger_ = data.trigger || ''
     this.range_ = data.range || ''
+    if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
   }
 }
 export default Ability

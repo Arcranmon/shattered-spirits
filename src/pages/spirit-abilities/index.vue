@@ -12,23 +12,12 @@
       ><v-tab> <h4>Metal</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="spirit-tab-content">
-      <v-tab-item> </v-tab-item>
+      <v-tab-item><spirit-ability-options element="Earth" /> </v-tab-item>
       <v-tab-item> </v-tab-item>
       <v-tab-item> </v-tab-item>
       <v-tab-item> </v-tab-item>
       <v-tab-item></v-tab-item>
-      <v-tab-item
-        ><div style="padding: 2em; align-self: center; width: 50%; margin: auto">
-          <spirit-type-card :type="this.$store.getters.getSpiritType('Metal Spirit')" />
-        </div>
-        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('Metal', '1')" />
-        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('Metal', '2')" />
-      </v-tab-item>
-      <v-tab-item>
-        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '1')" />
-        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '2')" />
-        <show-cards display_text="Rare Traits (3 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '3')"
-      /></v-tab-item>
+      <v-tab-item><spirit-ability-options element="Metal" /></v-tab-item>
       <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />
 
@@ -105,8 +94,9 @@ import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
 import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
 import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritTypeCard from '@/components/cards/SpiritTypeCard.vue'
-import ArmorCard from '@/components/cards/ArmorCard'
-import WeaponCard from '@/components/cards/WeaponCard'
+import ArmorCard from '@/components/cards/ArmorCard.vue'
+import WeaponCard from '@/components/cards/WeaponCard.vue'
+import SpiritAbilityOptions from '@/components/SpiritAbilityOptions.vue'
 import { store } from '@/store'
 export default Vue.extend({
   name: 'spirit-abilities',
@@ -120,7 +110,7 @@ export default Vue.extend({
       selectedWeapon: null,
     }
   },
-  components: { ArmorCard, ShowCards, WeaponCard, SpiritTypeCard },
+  components: { ArmorCard, ShowCards, WeaponCard, SpiritTypeCard, SpiritAbilityOptions },
   computed: {
     earthText() {
       return EarthText

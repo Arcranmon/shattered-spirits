@@ -80,6 +80,7 @@ negate = [2, 3, 4, 5]
 
 def get_status_magnitude(status):
     if(not status): return 0
+    if '[' in status: return 0
     split_status = status.split(' ')
     if len(split_status) == 1: 
         return status_multipliers[split_status[0].strip()]
@@ -94,12 +95,13 @@ def get_status_damage(status_string, index):
 
     multiplier = (negate[index]-1)/6
     
-    statuses = status_string.split(', ')
+    statuses = status_string.split(' ')
 
     estimated_damage = 0
     no_save_damage = 0
     # TODO: Add something about no-save
     for status in statuses: 
+        print(status)
         if status == 'None': continue        
         if('Momentum' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation

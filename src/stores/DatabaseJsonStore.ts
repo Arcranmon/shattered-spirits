@@ -61,6 +61,8 @@ const kSpiritAbilities = ['Interdiction', 'Combination Strike']
 
 const kBasicAbilities = [
   'Run',
+  'Brawl',
+  'Brace',
   'Catch Breath',
   'Charge',
   'Raise Guard',
@@ -122,7 +124,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get playerArts() {
-    return ['Martial Arts']
+    return []
   }
 
   get basicAbilities() {
