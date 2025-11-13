@@ -1,7 +1,7 @@
 [
   {
     "name": "Ammunition",
-    "effect": "You have a number of this item equal to its current _Notches_. If it loses a _Notch_, remove the most appropriate instance of this equipment."
+    "effect": "Many abilities require Ammunition, or a specific item or equipment. These abilities will specify any requirements on the Ammunition (such as an Elemental type or Size) and within what Range it must be. This ability uses said Ammunition to resolve the Attack, placing it unattended in target's _Arena_. To be used as Ammunition, an item must be _Equipped_ by a willing Target or unattended."
   },
   {
     "name": "Arena",
@@ -42,7 +42,7 @@
   },
   {
     "name": "Discount",
-    "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack or simply gain the difference as _Momentum_."
+    "effect": "Reduce the _Momentum_ or _Essence_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack or simply gain the difference as _Momentum_."
   },
   {
     "name": "Disengage",
@@ -80,15 +80,15 @@
   { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Glancing",
-    "effect": "A Glancing effect did not hit as solidly as it should have; it deals no _Stun_ and inflicts half as much Damage. The Target gains a +1 to _Negate."
+    "effect": "A Glancing effect did not hit as solidly as it should have; it deals no _Stun_. The Target gains a +1 to _Negate."
   },
   {
     "name": "Guard",
-    "effect": "Guard converts incoming Damage to _Stun_. Characters may always choose to treat their current _Guard_ as less than its current value."
+    "effect": "Guard reduces Damage."
   },
   {
     "name": "Kinesis",
-    "effect": "Characters with kinesis for an element gain the following benefits:\n* You may use [_Armament_] Manuevers at the listed Kinesis Range when exclusively targeting items of that Element. If they would normally create an [_Opening_], they instead do not and you may pay the cost with either _Momentum_ or _Essence_.\n* Once one your _Turn_, you may move an item from any unattended _Position_ in your _Arena_ to another _Position_. You may pay 1 _Essence_ to repeat this effect."
+    "effect": "Characters with kinesis for an element gain the following benefits when targeting _Ammunition_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_ or the <u>Steal</u> option in _Brawl_) at the listed Kinesis Range. If they would normally create an [_Opening_], they instead do not and you may pay the cost with either _Momentum_ or _Essence_.\n* Once one your _Turn_, you may do one of the following:\n\t* Move an item from an _Arena_ in Range to another adjacent _Arena_ in Range.\n\t* Choose an item within Range. A Target in the same or an adjacent _Arena_ within Range may _Equip_ or _Wield_ said item.\n\nYou may pay 1 _Essence_ to repeat either effect."
   },
   {
     "name": "Limited",
@@ -96,7 +96,7 @@
   },
   {
     "name": "Prepare",
-    "effect": "When you Prepare, place _Momentum_ or _Essence_ (as listed by the effect) on any _Art_ or _Equipment_, removing it from your supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. At _Refresh_ or when _Stunned_, lose half the Prepared resources on all Equipment and Arts. When _Wounded_, lose all Prepared resources on all Equipment and Arts. If you stop _Wielding_ a piece of _Equipment_, lose all Prepared resources."
+    "effect": "When you Prepare, place up to the specified amount of _Momentum_ or _Essence_ (if not specified you may choose either, in any combination) on any _Art_ or _Equipment_, removing it from your supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. At _Refresh_ or when _Stunned_, lose half the Prepared resources on all Equipment and Arts. When _Wounded_, lose all Prepared resources on all Equipment and Arts. If you stop _Wielding_ a piece of _Equipment_, lose all Prepared resources."
   },
   {
     "name": "Hand-and-a-Half",
@@ -121,7 +121,7 @@
   },
   {
     "name": "Parry",
-    "effect": "A Parry is a riskier version of a _Block_ Reaction. For any listed effects of the original _Reaction_, you must succeed by one more rank (e.g. if you would normally get a bonus on a Loss, you instead get it on a Tie). If you _Win_, you may use the additional listed effect at no cost against the Attacker if they are within Range. If said effect is making an Attack, use the same die result as the _Defense Roll_. If the Attack qualified for _Gambits_, you may use either _Offensive_ or _Defensive_ ones, modifying either the attack or the defend as appropriate."
+    "effect": "A Parry is a riskier version of a _Block_ Reaction; a _Graze_ is instead treated as a _Miss_. However, these effects will typically grant a bonus on a _Hit_+."
   },
   {
     "name": "Pierce",
@@ -141,7 +141,7 @@
   },
   {
     "name": "Remote",
-    "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the attack's origin and the Target. Additionally, ignore any penalties due to creatures being at the same _Position_ as the Attacker."
+    "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the attack's origin and the Target."
   },
   {
     "name": "Pacifist",
@@ -157,8 +157,16 @@
     "effect": "Short Range effects may target any valid target within an adjacent _Arena_."
   },
   {
-    "name": "Slow Action",
-    "effect": "A Slow _Action_ happens after all other _Actions_ in a _Phase_."
+    "name": "Medium",
+    "effect": "Medium Range effects may target any valid target in an _Arena_ two away."
+  },
+  {
+    "name": "Long",
+    "effect": "Long Range effects may target any valid target in an _Arena_ three away."
+  },
+  {
+    "name": "Slow Turn",
+    "effect": "A Slow _Turn_ happens after all other _Turn_ in a _Phase_. If there are multiple Slow Turns, resolve them in popcorn Initiative as normal."
   },
   {
     "name": "Small",
@@ -166,7 +174,11 @@
   },
   {
     "name": "Soak",
-    "effect": "Soak is effectively an extension to a character's _Stun_ meter, typically granted by equipment. Whenever a character takes _Stun_ it first is applied to their _Soak_ until their Soak meter is full. If a character's Soak is reduced any current Soak above the new limit is immediately applied to _Stun_. In all other ways (such as removing _Stun_) Soak behaves identically."
+    "effect": "Reduce any _Stun_ inflicted by a character's _Soak_ value."
+  },
+  {
+    "name": "Padding",
+    "effect": "Padding is effectively an extension to a character's _Stun_ meter, typically granted by equipment. Whenever a character takes _Stun_ it first is applied to their _Padding_ until their Padding meter is full. If a character's Padding is reduced any current Padding above the new limit is immediately applied to _Stun_. In all other ways (such as removing _Stun_) Padding behaves identically."
   },
   {
     "name": "Stun",
@@ -174,7 +186,7 @@
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_. The _Spirit_ may take a _Turn_ and use an _Action_ every _Phase_, just like a character, but, while _Summoned_, the player and Spirit must split the value of the current _Phase_ between themselves. For example, in _Phase_ 3, one character may act as normal while the other takes a _Turn_ with no _Action_, or one may act as if it was _Phase_ 2 and the other may act as if it was _Phase_ 1."
+    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own Health, Stun, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_ and _Essence_.\n* Spirits may spend _Essence_ as if is _Momentum_.\n* Spirits act on the same _Turn_ as their companion, and have _Discount_ 1 on a single _Maneuver_ or _Attack_ each _Phase_."
   },
   { "name": "Summoned", "see": "Summon" },
   {
@@ -187,7 +199,7 @@
   },
   {
     "name": "Temporary",
-    "effect": "Temporary bonuses and resources are are lost at the end of the current _Turn_. Temporary bonuses do not count against any caps that a character might have."
+    "effect": "Temporary bonuses and resources are are lost at the end of the current _Phase_. Temporary bonuses do not count against any caps that a character might have."
   },
   {
     "name": "Thrown",

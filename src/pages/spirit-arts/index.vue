@@ -4,19 +4,14 @@
     <v-row class="page">
       <v-col cols="auto" class="sidebar">
         <v-btn-toggle borderless overflow-auto>
-          <div style="width: 100%">
-            <v-btn @click="selectedElement = 'Metal'" class="button--style" depressed tile block>
-              <img class="image--icon-size" src="@/assets/disciplines/Metal.svg" />Metal
-            </v-btn>
-          </div>
-          <div style="width: 100%">
-            <v-btn @click="selectedElement = 'Flame'" class="button--style" depressed tile block>
-              <img class="image--icon-size" src="@/assets/disciplines/Flame.svg" />Flame
+          <div v-for="category in artCategories" style="width: 100%">
+            <v-btn @click="selectedElement = category" class="button--style" depressed tile block>
+              <img class="image--icon-size" :src="require('@/assets/disciplines/' + category + '.svg')" />{{ category }}
             </v-btn>
           </div>
         </v-btn-toggle></v-col
       >
-      <v-col> <skill-tree v-if="selectedElement" :element="selectedElement" /></v-col>
+      <v-col> <skill-tree v-if="selectedElement" :element="selectedElement" :key="selectedElement" /></v-col>
     </v-row>
   </div>
 </template>

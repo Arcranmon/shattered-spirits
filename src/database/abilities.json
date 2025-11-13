@@ -1,23 +1,9 @@
 [
   {
-    "name": "Basic Craft",
-    "class": "General",
-    "type": "Maneuver",
-    "cost": "1 _Momentum_",
-    "effect": "_Prepare_ 2 _Essence_.",
-    "boosts": [
-      {
-        "name": "Hand Signs",
-        "cost": "None",
-        "effect": "You may only use this _Boost_ if you have a _Free Hand_. Instead, _Prepare_ 3, but you may only _Prepare_ _Essence_."
-      }
-    ]
-  },
-  {
     "name": "Run",
     "class": "Mobility",
     "type": "Maneuver",
-    "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
+    "cost": "1 _Momentum_ (maximum [_Current Phase_+1])",
     "effect": "Gain X _Temporary_ _Movement_."
   },
   {
@@ -41,15 +27,18 @@
     "class": "Defensive",
     "type": "Maneuver",
     "keywords": ["Pacifist"],
-    "cost": "1 _Movement_",
-    "effect": "Gain _Guarding_. While _Guarding_ in this way, gain +1 _Guard_."
+    "cost": "1 _Momentum_",
+    "effect": "Gain _Guarding_ 2.",
+    "boosts": [{ "name": "Take Cover", "cost": "None", "effect": "If you have _Cover_, gain 1 _Guard_ against all Attacks while you have any _Guarding_." }]
   },
   {
     "name": "Disengage",
     "class": "Mobility",
-    "type": "Maneuver",
-    "cost": "2 _Movement_",
-    "effect": "Add [_Safe_] to your _Movement_ this _Turn_."
+    "type": "Reaction",
+    "cost": "1 _Movement_",
+    "trigger": "You would create an _Opening_ due to spending _Movement_.",
+    "effect": "Instead, do not create an _Opening_.",
+    "special": "If you are in a Mobility Stance, the first use each _Phase_ has a Cost of None."
   },
   {
     "name": "Rally",
@@ -59,45 +48,45 @@
     "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
     "range": "Self/Melee",
     "target": "Ally (Optional)",
-    "effect": "Choose X. You may repeat the same option:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_.\n* _Prepare_ 2 _Momentum_."
+    "effect": "Choose X. You may repeat the same option:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_."
   },
   {
-    "name": "Catch Breath",
+    "name": "Breather",
     "class": "Utility",
-    "type": "Reaction",
-    "trigger": "A _Phase_ ends.",
-    "cost": "X _Momentum_, Y _Essence_",
-    "effect": "Clear 2X _Stun_. You Spirit may clear 2Y _Stun_."
+    "type": "Maneuver",
+    "cost": "X _Momentum_",
+    "effect": "Clear 2X _Stun_.",
+    "special": "You may use this Action as a Reaction at the end of the _Phase_."
   },
   {
-    "name": "Grit Teeth",
+    "name": "Unbalance",
     "class": "Defensive",
     "type": "Gambit",
     "cost": "None",
-    "effect": "Reduce your _Stun_ by 3, or 5 if you _Lost_. You may trigger this before or after resolving the triggering effect."
+    "reqs": "Attacker is in Melee Range.",
+    "effect": "Inflict _Exposed_ [4 _Focus_] on the Target, as well as 2 _Stun_."
   },
   {
-    "name": "Quick Step",
+    "name": "Counter",
     "class": "Defensive",
     "type": "Gambit",
-    "cost": "None / 1 _Movement_ if triggered from a [_Block_] _Reaction_.",
-    "trigger": "You are not _Immobile_.",
-    "effect": "You may move to a new _Position_ within your _Arena_; choose one enemy; they treat this _Movement_ as [_Safe_].",
-    "boosts": [{ "name": "Tumble", "cost": "1 _Movement_", "effect": "Instead, this is [_Safe_] against all Targets." }]
+    "cost": "None",
+    "effect": "Choose an Attack with a Range of _Melee_, paying its Cost with a _Discount_ of 2. Automatically resolve that Attack as if it was a _Hit_ against the Attacker if they are in Range."
   },
   {
     "name": "Perfect Guard",
     "class": "Defensive",
     "type": "Gambit",
     "cost": "1 _Momentum_",
-    "reqs": "[_Block_] and Win the _Defend_.",
-    "effect": "The triggering Attack is [_Glancing_]."
+    "reqs": "_Block_ _Reaction_.",
+    "effect": "The triggering Attack is [_Glancing_].",
+    "special": "The cost is instead None if you are in a _Defensive_ _Stance_."
   },
   {
     "name": "Opportunity Attack",
     "class": "Offensive",
     "type": "Reaction",
-    "trigger": "A hostile creature at your _Position_ creates an _Opening_.",
+    "trigger": "A creature you are _Engaged_ with creates an _Opening_.",
     "cost": "None",
     "effect": "Use a Single-Target Attack [_Discount_ 2] against the triggering creature."
   },
@@ -122,36 +111,16 @@
     "class": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "effect": "Add _Exposed_/_Impaired_ and 2 _Stun_ to the original Attack, even if it was a _Miss_.",
-    "boosts": [
-      {
-        "name": "Flowing Combo",
-        "cost": "None",
-        "effect": "_Prepare_ 1 on the Attack used for this Gambit. You may repeat this _Boost_ up to twice."
-      }
-    ]
+    "effect": "Add _Impaired_ and 2 _Stun_ to the original Attack, even if it was a _Miss_. In addition, you may _Prepare_ 2 on the Attack used for this Gambit."
   },
   {
-    "name": "Sidestep",
+    "name": "Dodge",
     "class": "Defensive",
     "type": "Reaction",
-    "keywords": ["Dodge"],
-    "cost": "_1_ _Momentum_, X _Movement_ (minimum 1)",
-    "trigger": "You are Attacked and are not _Immobile_.",
-    "effect": "_Defend_. Gain +1 Reflex. Reduce the Damage by the _Movement_ spent.\n* _Tie_: Instead reduce the damage by your _Reflex_ plus the _Movement_ spent.\n* _Win_: Instead reduce the damage by your _Reflex_ plus twice the _Movement_ spent.",
-    "boosts": [
-      {
-        "name": "Roll",
-        "cost": "2 _Momentum_/_Movement_",
-        "effect": "After resolving this Reaction, reduce the triggering Attack's result by one tier (making a _Hit_ a _Graze_, for example). If the _Defend_ was a _Loss_, gain _Prone_."
-      }
-    ],
-    "table": [
-      ["2-4", "Miss"],
-      ["5-6", "Graze"],
-      ["7-10", "Hit"],
-      ["11-12", "Crit"]
-    ]
+    "cost": "1 _Movement_, 1 _Momentum_",
+    "trigger": "You are Attacked.",
+    "effect": "Gain +1 _Reflex_. The triggering Attack deals half Damage and you have _Advantage_ to _Negate_. Roll a d6; on a 5 or less, you may not use any ability with Dodge in its name until next _Round_",
+    "boosts": [{ "name": "Dive", "cost": "1 _Momentum_", "effect": "Instead, decrease the Rank of the triggering Attack by 2. Gain _Prone_." }]
   },
   {
     "name": "Use Environment",
@@ -183,13 +152,13 @@
     "boosts": [
       {
         "name": "Retrieve",
-        "cost": "1 _Momentum_/_Movement_",
-        "effect": "Create an [_Opening_]. Instead _Wield_ or _Equip_ an _Unattended_ piece of _Equipment_ within _Melee_ Range."
+        "cost": "None",
+        "effect": "Create an [_Opening_]. Instead _Wield_ or _Equip_ an _Unattended_ piece of _Equipment_ in your _Arena_."
       },
       {
         "name": "Trade",
         "cost": "1 _Momentum_",
-        "effect": "Choose an ally within _Melee_ _Range_. They may immediately _Wield_ or _Equip_ an Item you have _Wielded_ or _Equipped_, or vice versa."
+        "effect": "Choose an ally within _Melee_ _Range_. They may immediately _Wield_ or _Equip_ an Item you have _Wielded_ or _Equipped_, or vice versa. You may use this at no cost by creating an [_Opening_]."
       }
     ]
   },
@@ -200,7 +169,7 @@
     "type": "Maneuver",
     "cost": "1 _Essence_",
     "range": "Spirit's _Summon_ Range.",
-    "effect": "Choose one:\n* _Summon_ your _Spirit_ to a valid _Position_ within Range.\n* _Recall_ your _Spirit_."
+    "effect": "Choose one:\n* _Summon_ your _Spirit_ to a valid _Arena_ within Range. You may choose to make them _Engaged_ with any valid creature if the _Range_ is _Close_+.\n* _Recall_ your _Spirit_."
   },
   {
     "name": "Combination Strike",
@@ -227,18 +196,24 @@
     "cost": "1 _Momentum_",
     "range": "Melee",
     "target": "Single-Target",
-    "effect": "Attack a Target within Range.",
-    "boosts": [
-      {
-        "name": "Overpower",
-        "cost": "1 _Momentum_",
-        "effect": "Do not inflict _Impaired_/_Exposed_, then choose one:\n\t* Deal +2 _Bonus Stun_ and add _Push_ [_Grit_].\n\t* Deal +1 _Stun_ and add _Prone_ [_Grit_/_Reflex_]."
-      }
-    ],
+    "effect": "Choose one, then Attack a Target within Range:\n* <u>Disorient:</u> Deal _0/1/2/2_ _Damage_ and inflict _Impaired_/_Exposed_.\n* <u>Overpower:</u> Inflict _Push_ [_Grit_], _Prone_ [_Grit_/_Reflex_] or _Grabbed_ [_Grit_/_Reflex_].\n* <u>Steal:</u> Inflict _Disarm_ [_Grit_/_Reflex_]. The Target has _Advantage_ to _Negate_ if they are _Wielding_ the item.",
+    "special": "If you have _Kinesis_ you may add [_Spirit_], pay all cost in _Essence_, and use this at your _Kinesis_ range. You may only target a creature if they have a significant amount of the _Kinesis_ _Element_ and may not choose to inflict _Grabbed_. If you choose the <u>Steal</u> option they instead must only have an Item that matches the _Element_, but you must target that Item.",
     "chart": {
-      "stun": [0, 1, 2, 3],
-      "status": ["None", "None", "_Impaired_/_Exposed_ [_Focus_/_Grit_]", "_Impaired_/_Exposed_ [_Focus_/_Grit_]"],
       "roll": ["2-3", "4-5", "6-10", "11-12"]
+    }
+  },
+  {
+    "name": "Block",
+    "class": "Defensive",
+    "type": "Reaction",
+    "cost": "0 _Momentum_",
+    "trigger": "You would take Damage.",
+    "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. You have _Disadvantage_ on the roll if you are not _Wielding_ a _Versatile_ or _Heavy_ _Weapon_ and the Attack is _Heavy_ or if you are not _Wielding_ a Shield and the Attack is not _Melee_.",
+    "special": "Every time you use a _Reaction_ with Block in its name, increase the Cost of all others with Block in its name by 1 until the end of the _Phase_.",
+    "chart": {
+      "status": ["+1 _Guard_", "+2 _Guard_", "+4 _Guard_", "+6 _Guard_"],
+      "roll": ["2-3", "4-5", "6-10", "11-12"],
+      "defend": "true"
     }
   },
   {
@@ -247,33 +222,53 @@
     "keywords": ["Block"],
     "type": "Reaction",
     "cost": "1 _Momentum_",
-    "effect": "_Defend_, at _Disadvantage_ if the Attack was not _Melee_ or was _Heavy_. Gain +1 to _Negate_. \n* Lose: Reduce any _Stun_ gained by 2.\n* Reduce any _Stun_ gained by 3. Gain 1 _Guard_.",
-    "boosts": [
-      {
-        "name": "Counterstrike",
-        "cost": "None",
-        "effect": "_Parry_. If you _Win_, inflict _Impaired_/_Exposed_ [4 _Focus_]. You must select this Boost prior to making the Defense Roll."
-      }
-    ]
+    "effect": "_Defend_, at _Disadvantage_ if the Attack was not _Melee_ or was _Heavy_. Gain +1 to _Negate_.",
+    "chart": {
+      "status": ["None", "+1 _Guard_", "+2 _Guard_", "+3 _Guard_"],
+      "roll": ["2-3", "4-5", "6-10", "11-12"],
+      "defend": "true"
+    }
+  },
+  {
+    "name": "Elemental Control",
+    "class": "Utility",
+    "keywords": ["Spirit"],
+    "type": "Maneuver",
+    "cost": "1 _Essence_",
+    "range": "Close-",
+    "effect": "_Bend_ 1 of the same Element as this Spirit's Type.",
+    "special": "Add this Spirit's Type to the Keywords."
   },
   {
     "name": "Metallic Reconstitution",
     "class": "Utility",
     "keywords": ["Metal", "Pacifist", "Rooted"],
     "type": "Maneuver",
-    "cost": "1 _Momentum_",
+    "cost": "1 _Essence_",
     "range": "Melee",
     "reqs": "Unattended _Metal_ _Equipment_ within range or at _Metal_ _Terrain_.",
-    "effect": "Choose one, then regain 4 _Health_ or gain 6 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+    "effect": "Gain 4 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
+    "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Essence_", "effect": "Instead, gain 4 _Vigor_ and 3 _Health_." }]
+  },
+  {
+    "name": "Metallic Splintering",
+    "class": "Utility",
+    "keywords": ["Metal"],
+    "type": "Maneuver",
+    "cost": "None",
+    "range": "Melee",
+    "effect": "Take 2 Damage. Create a Size 0 _Metal Shard_.",
+    "boosts": [{ "name": "Heavy Splintering", "cost": "None", "effect": "Take an additioanl Damage." }]
   },
   {
     "name": "Earthen Reconstitution",
     "class": "Utility",
     "keywords": ["Earth", "Pacifist", "Rooted"],
     "type": "Maneuver",
-    "cost": "1 _Momentum_",
+    "cost": "1 _Essence_",
     "range": "Melee",
     "reqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
-    "effect": "Choose one, then regain 3 _Health_ or gain 5 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+    "effect": "Gain 3 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
+    "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Essence_", "effect": "Instead, gain 5 _Vigor_ or 3 _Health_." }]
   }
 ]

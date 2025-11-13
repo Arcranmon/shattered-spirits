@@ -18,7 +18,7 @@ class Armor extends Equipment {
   get Guard() {
     return this.guard_
   }
-  get Soak() {
+  get Padding() {
     return this.soak_
   }
   get ConsumableSlots() {
@@ -37,14 +37,14 @@ class Armor extends Equipment {
   get GuardHeader() {
     return '**_Guard_:** ' + this.guard_
   }
-  get HasSoak() {
+  get HasPadding() {
     return this.soak_ > 0
   }
   get HasSlots() {
     return this.consumable_slots_ > 0
   }
-  get SoakHeader() {
-    return '**_Soak_:** ' + this.soak_
+  get PaddingHeader() {
+    return '**_Padding_:** ' + this.soak_
   }
   get HasTraits() {
     return this.traits_.length > 0

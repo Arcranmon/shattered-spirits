@@ -24,7 +24,7 @@
       <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
         ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b>
       </span>
-      <i><display-tooltip-text v-if="ability.Origin" :string="'**From:** _' + ability.Origin.Name + '_'" style="padding-left: 2em" /></i>
+      <i><display-tooltip-text v-if="ability.Origin && showFrom" :string="'**From:** _' + ability.Origin.Name + '_'" style="padding-left: 2em" /></i>
     </div>
     <div style="padding-left: 1em">
       <div class="card--format" v-if="ability.HasCost">
@@ -58,9 +58,14 @@
       <div class="card--format" v-if="ability.HasTable">
         <basic-table :chart="ability.Table" />
       </div>
-      <div class="card--format" v-if="ability.HasChart">
-        <chart-table :chart="ability.Chart" />
-      </div>
+    </div>
+    <div class="expand--collapse-box-outlined" v-if="ability.HasChart">
+      <v-expansion-panels class="condensed" flat tile>
+        <v-expansion-panel style="background-color: inherit"
+          ><v-expansion-panel-header class="expand--header-chart">Chart</v-expansion-panel-header>
+          <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="ability.Chart" /></v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
     </div>
   </div>
 </template>
@@ -86,6 +91,10 @@ export default Vue.extend({
     cardStyle: {
       type: Boolean,
       default: false,
+    },
+    showFrom: {
+      type: Boolean,
+      default: true,
     },
   },
   components: { BasicTable, ChartTable },

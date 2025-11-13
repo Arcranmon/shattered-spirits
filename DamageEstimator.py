@@ -51,7 +51,7 @@ keyword_modifiers = {
     "Overwhelming": 0.25,
     "Social": 0.5,
     "Pierce": 0.5,
-    "Remote": 1.0,
+    "Remote": 0.5,
     "Point Blank": 0.5,
     "Siege": 0,
     "Fist": 0,
@@ -186,7 +186,7 @@ def estimate_damage(attack, glancing, print_stats):
     attack_class = ATTACK
     override_range = ""
     diff_speed = 0
-    stun_scale = 0.75 # Stun is worth less
+    stun_scale = 0.0 # Stun is worth less (not sure how much)
     
     expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
                 
@@ -255,7 +255,7 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
 
-    attack_ranges = ability["range"].replace('_', '').split('/')
+    attack_ranges = ability["range"].replace('_', '').replace('-', '').split('/')
     attack_range = attack_ranges[-1]
     if override_range != "":
         attack_range = override_range

@@ -214,6 +214,22 @@ const r = new Router({
       },
     },
     {
+      path: '/civilization',
+      component: require('@/pages/civilization/index.vue').default,
+      name: 'civilization',
+      meta: {
+        title: 'Civilization in the Shattered World',
+      },
+    },
+    {
+      path: '/sample-characters',
+      component: require('@/pages/sample-characters/index.vue').default,
+      name: 'Sample Characters',
+      meta: {
+        title: 'Sample Characters',
+      },
+    },
+    {
       path: '/npcs',
       component: require('@/pages/npcs/index.vue').default,
       name: 'npcs',

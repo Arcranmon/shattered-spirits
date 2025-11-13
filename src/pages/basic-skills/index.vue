@@ -11,7 +11,7 @@
             ><ability-widget :ability="ability" from="" :cardStyle="true" :key="ability.Name" class="ability-box" /></v-col></v-row
       ></v-tab-item>
 
-      <v-tab-item><show-cards :inputs="[this.$store.getters.getStance('Spiritbound Stance')]" :collapse="false" :cols="2" /></v-tab-item
+      <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="2" /></v-tab-item
     ></v-tabs-items>
   </div>
 </template>
@@ -31,29 +31,8 @@ export default Vue.extend({
     AbilityWidget,
   },
   computed: {
-    maneuvers() {
-      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
-      abilities = abilities.filter((a) => a.Type == 'Maneuver')
-      abilities.sort((a, b) => {
-        return a.Name.localeCompare(b.Name)
-      })
-      return abilities
-    },
-    gambits() {
-      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
-      abilities = abilities.filter((a) => a.Type == 'Gambit')
-      abilities.sort((a, b) => {
-        return a.Name.localeCompare(b.Name)
-      })
-      return abilities
-    },
-    reactions() {
-      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
-      abilities = abilities.filter((a) => a.Type == 'Reaction')
-      abilities.sort((a, b) => {
-        return a.Name.localeCompare(b.Name)
-      })
-      return abilities
+    basic_stances() {
+      return this.$store.getters.getStancesFromList(this.$store.getters.basicStances)
     },
     basic_abilities() {
       var arr = [
@@ -62,7 +41,10 @@ export default Vue.extend({
         { code: 'Gambit', value: 0 },
       ]
       var order = ['Maneuver', 'Reaction', 'Gambit']
-      var abilities = this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities)
+      var abilities = [
+        ...this.$store.getters.getAbilitiesFromList(this.$store.getters.basicAbilities),
+        ...this.$store.getters.getAbilitiesFromList(this.$store.getters.playerAbilities),
+      ]
       abilities.sort((a, b) => {
         if (a.Type == b.Type) return a.Name.localeCompare(b.Name)
         return order.indexOf(a.Type) - order.indexOf(b.Type)

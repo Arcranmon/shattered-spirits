@@ -1,5 +1,5 @@
-<template
-  ><span>
+<template>
+  <span>
     <div class="button-separator">
       <display-tooltip-text :string="creationText" />
       <br />
@@ -14,19 +14,19 @@
     <div>
       <v-row
         ><v-col cols="3" class="element-box">
-          <v-btn class="earth-button" large tile :disabled="(character.Element == 'Earth')" @click="setSpirit('Earth')"
+          <v-btn class="earth-button" large tile :disabled="character.Element == 'Earth'" @click="setSpirit('Earth')"
             ><img class="image--icon-size image--left" :src="earthSymbol" />EARTH SPIRIT<img class="image--icon-size image--right" :src="earthSymbol"
           /></v-btn> </v-col
         ><v-col cols="3" class="element-box">
-          <v-btn class="flame-button" large tile :disabled="(character.Element == 'Flame')" @click="setSpirit('Flame')"
+          <v-btn class="flame-button" large tile :disabled="character.Element == 'Flame'" @click="setSpirit('Flame')"
             ><img class="image--icon-size image--left" :src="flameSymbol" />FLAME SPIRIT<img class="image--icon-size image--right" :src="flameSymbol"
           /></v-btn> </v-col
         ><v-col cols="3" class="element-box">
-          <v-btn class="water-button" large tile :disabled="(character.Element == 'Water')" @click="setSpirit('Water')"
+          <v-btn class="water-button" large tile :disabled="character.Element == 'Water'" @click="setSpirit('Water')"
             ><img class="image--icon-size image--left" :src="waterSymbol" />WATER SPIRIT<img class="image--icon-size image--right" :src="waterSymbol"
           /></v-btn> </v-col
         ><v-col cols="3" class="element-box">
-          <v-btn class="wind-button" large tile :disabled="(character.Element == 'Wind')" @click="setSpirit('Wind')"
+          <v-btn class="wind-button" large tile :disabled="character.Element == 'Wind'" @click="setSpirit('Wind')"
             ><img class="image--icon-size image--left" :src="windSymbol" />WIND SPIRIT<img class="image--icon-size image--right" :src="windSymbol"
           /></v-btn> </v-col
       ></v-row></div
@@ -61,7 +61,7 @@ export default Vue.extend({
       return SpiritSelectionText
     },
     earthSymbol: function () {
-      return require('@/assets/disciplines/Land.svg')
+      return require('@/assets/disciplines/Earth.svg')
     },
     flameSymbol: function () {
       return require('@/assets/disciplines/Blaze.svg')

@@ -1,5 +1,142 @@
 [
   {
+    "name": "Metal Stance",
+    "class": "Balanced",
+    "desc": "A stance channeling the essence of metal, and the first taught to its practitioners.",
+    "defenses": { "focus": 2, "grit": 2, "reflex": 1 },
+    "momentum_gain": 0,
+    "guard": 1,
+    "essence_gain": 1,
+    "stun_clear": 2,
+    "speed": 11,
+    "effects": ["**Metal Guard:** [_Metal_] Attacks take a -1 _Penalty_ against you."],
+    "abilities": [
+      {
+        "name": "Metallic Essence",
+        "class": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Metal"],
+        "cost": "None",
+        "reqs": "_Wielding_ at least 1 _Load_ of _Metal_ _Equipment_.",
+        "effect": "_Prepare_ 1 on a _Wielded_ piece of _Metal_ _Equipment_ or _Metal_ _Art_."
+      }
+    ]
+  },
+  {
+    "name": "Agile Stance",
+    "class": "Mobility",
+    "desc": "You take on a stance focused on mobility, focusing on covering ground.",
+    "defenses": { "focus": 1, "grit": 0, "reflex": 2 },
+    "speed": 6,
+    "movement": 2,
+    "effects": ["**Nimble:** Attacks made as a part of [_Punish_] _Reactions_ have _Disadvantage_ against you."],
+    "abilities": [
+      {
+        "name": "Dart",
+        "class": "Mobility",
+        "type": "Reaction",
+        "cost": "X _Momentum_/_Movement_ (maximum [_Current Phase_])",
+        "trigger": "A creature's _Turn_ ends.",
+        "effect": "You may immediately _Move_ as if it was your _Turn_.",
+        "boosts": [{ "name": "Nimble", "cost": "1 _Momentum_/_Movement_", "effect": "Add _Safe_ to this _Movement_." }]
+      }
+    ]
+  },
+  {
+    "name": "Resting Stance",
+    "class": "Recovery",
+    "desc": "You adopt a passive stance, focusing on clearing your head and catching your breath.",
+    "defenses": { "focus": 2, "grit": 1, "reflex": 1 },
+    "stun_clear": 6,
+    "guard": 1,
+    "speed": 8,
+    "effects": ["**Pacifist:** You may not Attack."],
+    "abilities": [
+      {
+        "name": "Rally",
+        "class": "Utility",
+        "keywords": ["Rooted"],
+        "type": "Maneuver",
+        "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
+        "range": "Self/Melee",
+        "target": "Ally (Optional)",
+        "effect": "Choose X. You may repeat the same option:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_."
+      }
+    ]
+  },
+  {
+    "name": "Hostile Stance",
+    "class": "Offensive",
+    "desc": "A stance focused on overwhelming offense and unleashing a barrage of attacks.",
+    "defenses": { "focus": 1, "grit": 0, "reflex": 1 },
+    "effects": ["**Hostility:** You may use any number of Attacks this _Turn_.", "**Aggression:** Your first Attack this _Phase_ gains [_Discount_ 1]."],
+    "speed": 9,
+    "abilities": [
+      {
+        "name": "Press",
+        "class": "Offensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "reqs": "You complete an Attack.",
+        "effect": "After resolving all other effects, inflict 2 _Stun_ as a separate effect. If you _Missed_, instead deal 3 _Stun_."
+      }
+    ]
+  },
+  {
+    "name": "Open Stance",
+    "class": "Balanced",
+    "desc": "A perfectly balanced stance, leaving no obvious openings while granting no obvious advantages.",
+    "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
+    "momentum_gain": 1,
+    "guard": 1,
+    "stun_clear": 2,
+    "speed": 10,
+    "abilities": [
+      {
+        "name": "Ready",
+        "class": "Utility",
+        "keywords": ["Efficient"],
+        "type": "Reaction",
+        "cost": "None",
+        "trigger": "A _Phase_ ends.",
+        "effect": "_Prepare_ 1."
+      }
+    ]
+  },
+  {
+    "name": "Focused Stance",
+    "class": "Patient",
+    "desc": "You adopt a patient stance, gathering your energy to unleash a powerful effect.",
+    "defenses": { "focus": 2, "grit": 1, "reflex": 0 },
+    "speed": 18,
+    "guard": 1,
+    "stun_clear": 2,
+    "effects": [
+      "**Charge:** At the start of the _Phase_, choose an Ability and any Target for it, announcing both to the table. On your Turn, you must first use the chosen Ability [_Discount_ 4] against the chosen Target if able.",
+      "**Laser Focus:** Increase the Cost of all Abilities (except the one selected at the start of the _Phase_) by 1.",
+      "**Limited Mobility:** You may not willingly spend Movement until your _Turn_. On your _Turn_, you may not leave your current _Arena_ until the Ability has been used."
+    ]
+  },
+  {
+    "name": "Guarded Stance",
+    "class": "Defensive",
+    "desc": "A stance focused on defense, providing an unparalleled ability to keep yourself safe.",
+    "defenses": { "focus": 1, "grit": 2, "reflex": 1 },
+    "guard": 2,
+    "speed": 13,
+    "stun_clear": 3,
+    "effects": ["**Shielded:** Gain _Guarding_ 2 at the start of the _Phase_.", "**Limited Offense:** Increase the Cost of all Attacks by 1."],
+    "abilities": [
+      {
+        "name": "Unbreakable",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain _Guarding_ 2. If you Lost, instead _Guarding_ 3."
+      }
+    ]
+  },
+  {
     "name": "Spiritbound Stance",
     "desc": "A balanced stance that focuses on your bond with your spirit companion.",
     "respite": { "momentum_gain": 6, "stun_clear": 0, "movement": 1 },
@@ -175,7 +312,7 @@
     "traits": ["Aquatic"],
     "respite": { "momentum_gain": 2 },
     "defenses": { "stamina": 1, "focus": 1 },
-    "effect": "Gain an Aqua Ring, which is a _Watersource_ that shares your space, moves with you, and has a maximum value of 4. Whenever you would create a _Watersource_ you may reduce the value placed by 1 to increase the value of your Aqua Ring by 1. Additionally, if you would inflict _Soaked_ you may choose not to to increase the value of your Aqua Ring by 1.",
+    "effect": "Gain an Aqua Ring, which is a _Watersource_ that shares your space, moves with you, and has a maximum value of 4. Whenever you would create a _Watersource_ you may reduce the value placed by 1 to increase the value of your Aqua Ring by 1. Additionally, if you would inflict _Paddinged_ you may choose not to to increase the value of your Aqua Ring by 1.",
     "special": "Inflict an additional 1 _Stun_ whenever you _Hit_+ a Target if you _Drew_ from your Aqua Ring."
   },
   {

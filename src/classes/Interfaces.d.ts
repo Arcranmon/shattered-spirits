@@ -99,6 +99,7 @@ declare interface IChartData {
   keywords: Array<string>
   material: string
   negate: Array<number>
+  defend?: boolean
 }
 
 declare interface IDefenseData {
@@ -253,6 +254,7 @@ declare interface ISubtypeData extends IBaseData {
   manifest: string[]
   armor: string
   growth_points: number
+  stances: string[]
 }
 
 declare interface IStanceData extends IBaseData {
@@ -262,9 +264,12 @@ declare interface IStanceData extends IBaseData {
   traits: string[]
   abilities: IAbilityData[]
   effects: string[]
-  essence_gain: number[]
-  momentum_gain: number[]
-  stun_clear: number[]
+  essence_gain: number
+  momentum_gain: number
+  stun_clear: number
+  speed: number
+  guard: number
+  movement: number
 }
 
 declare interface IStatusEffect {
@@ -319,6 +324,7 @@ declare interface ITraitData extends IBaseData {
   reqs: string
   cost: number
   equipment: string[]
+  abilities: string[]
   bonuses: IBonusesData
 }
 

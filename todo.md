@@ -1,39 +1,37 @@
 ## To-Do
 
-- Make Momentum only last for a Phase
-- Also add 'Essence' which is just magic Momentum
-- Stances determine how much of each you get each Phase
-  - May need to bring Speed back as a part of this to allow for high Momentum early, low Momentum late Stances
-- Simplifies down the Stunts vs. Actions logic; you spend as much of your Momentum as you want on your Turn
-- Missing, instead of giving Momentum, instead Prepares on that Art/Equipment.
-- Charging becomes a way to pay Momentum on an ability across Phases
-- Some abilities MUST be the first used on a Turn, some automatically end the Turn
-  - Charging, Defending, effects like that
-- Momentum ability to Prepare Essence
-- Momentum ability to gain Essence (based on your element)
+- Rework things so that at the start of each Phase you choose your Stance
+  - Do we make your Stance decide a Speed to remove popcorn?
+  - Rework some of the more general actions into those
+  - Offensive -> Mobility -> Defensive -> Recovery -> Patient -> Offensive, with Balanced in the middle
+  - Stances should all have the following (even if the value is 0):
+    - How much Guard they grant
+    - Their Speed
+    - Their bonuses to Grit/Focus/Reflex
+    - How much Stun you clear at the start of the Phase
+    - Additional Momentum count
+- Remove Positions again
+  - Can create 'Hazards' within an Arena.
 
-- Novice Stance is like 2/3/4/5 Momentum and 1/2/2/3 Essence
-- Actions/Enhancements to Manuevers
+### Brainstorming
 
-- Rework Basic Arts to instead be Basic Abilities + the Martial Arts Art
+- Make Encumbrance instead grant Movement per phase? Instead of an open pool?
+- Can only use a given ability (including a Weapon) once per phase?
+  - How to handle 'juggling'
+- Better grabbing mechanics
+  - Riding vs. Grappling
+  - Binding effects
 
 ### Plan
 
 POTENTIAL REFACTORS
 
-- Buff Dripping Veil/Bastion
-- Generalize Earth terrain effects
-- Rename Ice terrain so Frozen can be a status
 - Add a Glossary that includes most terms
 - Streamline statuses
   - More potent, but no stacks
   - Add a 'Stun' bar as well that can be used by players as juice
     - Essentially replaces Vulnerable/Reeling
     - Gambits will typically clear Stun to inflict additional effects
-- Basic Stances
-  - Balanced Stance everybody gets
-  - In skill trees add Basic Striker/Controller/etc. Stances
-  - Basic Land/Tide/Blaze etc. Stances
 - Up the Guard bonuses from Armor?
   - Piecemeal armor? Shirt/Chest/Greaves/Hands/Feet/Head?
   - Probably a dumb idea...
@@ -49,7 +47,6 @@ POTENTIAL REFACTORS
 LONG TERM
 
 - Cooler buttons.
-- Potentially add 'Free Movement' (a limited pool of movement characters can use to move further)
 - Develop consumable items that characters can choose to take at the start of an expedition and develop some Skill Arts for them.
 - Arts to support Weapons/Unarmed, and more weapon types.
   - Make Charging Ram an Art

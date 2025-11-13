@@ -10,6 +10,7 @@ class Chart {
   private status_: Array<string>
   private on_miss_: string
   private material_: string
+  private defend_: boolean
 
   public constructor() {
     this.roll_ = []
@@ -18,6 +19,10 @@ class Chart {
     this.keywords_ = []
     this.on_miss_ = ''
     this.damage_type_ = ''
+  }
+
+  get IsDefend() {
+    return this.defend_
   }
 
   public Damage(i: number): string {
@@ -96,6 +101,7 @@ class Chart {
     this.keywords_ = data.keywords || []
     this.damage_type_ = data.damage_type || ''
     this.material_ = data.material || ''
+    this.defend_ = data.defend || false
   }
 }
 export default Chart

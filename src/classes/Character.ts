@@ -1,8 +1,8 @@
 import { store } from '@/store'
 import { Armor, Bonuses, Combatant, Discipline, Stance, Weapon, Spirit, Technique } from '@/class'
 
-var kBaseHealth = 20
-var kBaseStun = 20
+var kBaseHealth = 10
+var kBaseStun = 15
 var kBaseLoad = 4
 
 class Character extends Combatant {
@@ -58,10 +58,10 @@ class Character extends Combatant {
     return guard
   }
 
-  override get MaxSoak() {
+  override get MaxPadding() {
     var soak = 0
     for (var armor of this.armor_) {
-      soak += armor.Soak
+      soak += armor.Padding
     }
     return soak
   }
@@ -76,7 +76,7 @@ class Character extends Combatant {
   }
 
   override get Traits() {
-    var traits = []
+    var traits = ['_Kinesis_ (' + this.element_ + ', _Close_-)']
     for (var armor of this.armor_) {
       traits = [...traits, ...armor.Traits]
     }
@@ -140,6 +140,8 @@ class Character extends Combatant {
 
   get Stances() {
     var stances = [...store.getters.basicStances]
+    // TODO(csheff): This is a hack
+    stances.push(this.element_ + ' Stance')
     // Collect from Disciplines
     // Collect from Archetypes
     return store.getters.getStancesFromList(stances)

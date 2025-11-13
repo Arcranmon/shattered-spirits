@@ -48,7 +48,7 @@ class Defenses {
     return this.stun_
   }
 
-  public get Soak() {
+  public get Padding() {
     return this.soak_
   }
 

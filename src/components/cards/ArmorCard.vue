@@ -22,8 +22,8 @@
         <v-row no-gutters class="chart--row">
           <v-col class="chart--head" cols="2" v-if="armor.HasGuard"
             ><b><display-tooltip-text string="_Guard_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2" v-if="armor.HasSoak"
-            ><b><display-tooltip-text string="_Soak_" :decorate="false" /></b></v-col
+          ><v-col class="chart--head" cols="2" v-if="armor.HasPadding"
+            ><b><display-tooltip-text string="_Padding_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2" v-if="armor.Category != 'Layered Armor'"
             ><b><display-tooltip-text string="_Load_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2" v-if="armor.Category != 'Layered Armor'"
@@ -36,7 +36,7 @@
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col v-if="armor.HasGuard" class="chart--cols justify-center align-center" cols="2">{{ armor.Guard }}</v-col>
-          <v-col v-if="armor.HasSoak" class="chart--cols justify-center align-center" cols="2">{{ armor.Soak }}</v-col>
+          <v-col v-if="armor.HasPadding" class="chart--cols justify-center align-center" cols="2">{{ armor.Padding }}</v-col>
           <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Load }}</v-col>
           <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Notches }}</v-col>
           <v-col v-if="armor.Category != 'Layered Armor'" class="chart--cols justify-center align-center" cols="2">{{ armor.Durability }}</v-col>

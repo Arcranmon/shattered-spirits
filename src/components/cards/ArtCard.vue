@@ -17,7 +17,7 @@
       <display-tooltip-text :string="art.SpecialHeader" />
     </div>
     <div class="card--content" v-bind:class="useTextFormatting">
-      <ability-widget v-for="(ability, index) in art.Abilities" :ability="ability" :use-divider="index != 0 || art.HasSpecial" />
+      <ability-widget v-for="(ability, index) in art.Abilities" :ability="ability" :use-divider="index != 0 || art.HasSpecial" :showFrom="false" />
       <div v-if="art.HasChart || art.HasTable" class="ability-box">
         <chart-table v-if="art.HasChart" :chart="art.Chart" />
         <basic-table v-if="art.HasTable" :chart="art.Table" />

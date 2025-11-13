@@ -54,6 +54,7 @@
         <display-tooltip-text :string="type.Defenses.ImmunitiesHeader" />
       </div>
       <display-tooltip-text :string="type.TraitsHeader" /><br />
+      <display-tooltip-text :string="type.StanceHeader" /><br />
       <display-tooltip-text :string="type.ManifestHeader" /><br />
     </div>
     <div class="desc--box" v-if="type.Desc.length > 0" style="font-style: italic">{{ type.Desc }}<br /></div>

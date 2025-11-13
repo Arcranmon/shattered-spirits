@@ -6,7 +6,7 @@
         <v-col class="chart--head chart--head-right" v-if="chart.HasStun" v-bind:cols="stunWidth"><b>Stun</b></v-col
         ><v-col class="chart--head chart--head-right" v-if="chart.HasDamage" v-bind:cols="damageWidth"><b>Damage</b></v-col
         ><v-col class="chart--head chart--head-right" v-bind:cols="effectWidth"><b>Effect</b></v-col>
-        <v-col class="chart--head chart--head-right" v-if="chart.HasRoll" v-bind:cols="negateWidth"><b>Negate</b></v-col>
+        <v-col class="chart--head chart--head-right" v-if="chart.HasRoll && !chart.IsDefend" v-bind:cols="negateWidth"><b>Negate</b></v-col>
       </v-row>
       <div v-for="(n, index) in 4">
         <v-row align="stretch" no-gutters class="chart--row">
@@ -20,7 +20,7 @@
           <v-col class="chart--cols chart--cols-right" v-bind:class="getClass(index)" v-bind:cols="effectWidth"
             ><display-tooltip-text :string="chart.Status(index)" />
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-if="chart.HasRoll" v-bind:class="getClass(index)" v-bind:cols="negateWidth"
+          <v-col class="chart--cols chart--cols-right" v-if="chart.HasRoll && !chart.IsDefend" v-bind:class="getClass(index)" v-bind:cols="negateWidth"
             >{{ chart.Negate(index) }}
           </v-col>
         </v-row>
@@ -48,7 +48,7 @@ export default Vue.extend({
       return 0
     },
     stunWidth() {
-      if (this.chart.HasStun) return 1
+      if (this.chart.HasStun) return 2
       return 0
     },
     negateWidth() {
@@ -60,7 +60,7 @@ export default Vue.extend({
       return 0
     },
     effectWidth() {
-      return 3
+      return 4
     },
   },
   methods: {

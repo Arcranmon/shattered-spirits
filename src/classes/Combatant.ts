@@ -34,7 +34,7 @@ class Combatant {
     return 0
   }
 
-  get MaxSoak() {
+  get MaxPadding() {
     return 0
   }
 
@@ -222,11 +222,11 @@ class Combatant {
     return this.stamina_
   }
 
-  get SoakStunRatio() {
-    return (this.MaxSoak / (this.MaxStun + this.MaxSoak)) * 100
+  get PaddingStunRatio() {
+    return (this.MaxPadding / (this.MaxStun + this.MaxPadding)) * 100
   }
 
-  get Soak() {
+  get Padding() {
     return this.soak_
   }
 
@@ -235,7 +235,7 @@ class Combatant {
   }
 
   set Stun(stun: number) {
-    if (this.soak_ < this.MaxSoak) {
+    if (this.soak_ < this.MaxPadding) {
       this.soak_ += 1
     } else if (stun > this.MaxStun) this.stun_ = this.MaxStun
     else if (stun < 0) this.stun_ = 0
@@ -270,8 +270,8 @@ class Combatant {
     return colormap(this.StunPercent / 100)
   }
 
-  get SoakPercent() {
-    return (this.Soak / this.MaxSoak) * 100
+  get PaddingPercent() {
+    return (this.Padding / this.MaxPadding) * 100
   }
 
   get Momentum() {
@@ -284,7 +284,7 @@ class Combatant {
   }
 
   AddStun() {
-    if (this.soak_ < this.MaxSoak) {
+    if (this.soak_ < this.MaxPadding) {
       this.soak_ += 1
     } else if (this.stun_ == this.MaxStun) return
     else this.stun_ += 1

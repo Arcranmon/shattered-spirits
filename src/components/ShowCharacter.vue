@@ -83,7 +83,7 @@
         <h3 style="text-align: center">Abilities and Equipment</h3>
         <v-card>
           <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
-            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab></v-tabs
+            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab></v-tabs
           >
           <v-tabs-items v-model="ability_tab" class="character-tab-content">
             <v-tab-item
@@ -95,9 +95,6 @@
                 ><v-tab-item><ability-tab abilityType="Gambit" :character="character" :spirit="true" /></v-tab-item
                 ><v-tab-item><ability-tab abilityType="Reaction" :character="character" :spirit="true" /></v-tab-item
               ></v-tabs-items>
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards :inputs="character.SpiritArts" :collapse="false" :cols="2" />
             </v-tab-item>
             <v-tab-item><show-cards :inputs="character.Spirit.Equipment" :collapse="false" :cols="2" /> </v-tab-item
             ><v-tab-item> <show-cards :inputs="this.$store.getters.getSpiritTraitsFromList(character.Spirit.Traits)" :collapse="false" :cols="2" /></v-tab-item>

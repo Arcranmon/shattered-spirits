@@ -8,9 +8,12 @@ class Stance extends Base {
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private traits_: Array<string>
-  private momentum_gain_: Array<number>
-  private essence_gain_: Array<number>
-  private stun_clear_: Array<number>
+  private momentum_gain_: number
+  private essence_gain_: number
+  private guard_: number
+  private stun_clear_: number
+  private speed_: number
+  private movement_: number
   protected abilities_: Ability[] = []
 
   public constructor(name) {
@@ -18,6 +21,7 @@ class Stance extends Base {
     this.respite_ = null
     this.defenses_ = null
     this.traits_ = []
+    this.effects_ = []
   }
 
   // ==========================================================
@@ -35,14 +39,18 @@ class Stance extends Base {
     return respite_string
   }
 
-  public get Stun() {
-    if (this.respite_.stun_clear) return this.respite_.stun_clear
+  public get StunClear() {
+    if (this.stun_clear_) return this.stun_clear_
     return 0
   }
 
   public get Grit() {
-    if (this.defenses_.grit) return this.defenses_.grit
+    if (this.defenses_) return this.defenses_.grit
     return 0
+  }
+
+  public get Speed() {
+    return this.speed_
   }
 
   public PhaseHeader(index) {
@@ -50,17 +58,37 @@ class Stance extends Base {
   }
 
   public get Reflex() {
-    if (this.defenses_.reflex) return this.defenses_.reflex
+    if (this.defenses_) return this.defenses_.reflex
     return 0
   }
 
   public get Focus() {
-    if (this.defenses_.focus) return this.defenses_.focus
+    if (this.defenses_) return this.defenses_.focus
     return 0
+  }
+
+  public get Momentum() {
+    return this.momentum_gain_
+  }
+
+  public get Essence() {
+    return this.essence_gain_
   }
 
   public get HasEffects() {
     return this.effects_.length > 0
+  }
+
+  public get EffectsDisplay() {
+    var effect_string = ''
+    for (var effect of this.effects_) {
+      effect_string += '\n' + effect
+    }
+    return effect_string
+  }
+
+  public get Guard() {
+    return this.guard_
   }
 
   public get Effects() {
@@ -76,15 +104,15 @@ class Stance extends Base {
   }
 
   public get Movement() {
-    if (this.respite_.movement) return this.respite_.movement
+    if (this.movement_) return this.movement_
     return 0
   }
 
   public get DefenseHeader() {
     var defense_string = '**Defenses:**'
-    if (this.defenses_.focus) defense_string += '\n* ' + this.defenses_.focus + ' _Focus_'
-    if (this.defenses_.grit) defense_string += '\n* ' + this.defenses_.grit + ' _Grit_'
-    if (this.defenses_.reflex) defense_string += '\n* ' + this.defenses_.reflex + ' _Reflex_'
+    if (this.defenses_.focus) defense_string += ' ' + this.defenses_.focus + ' _Focus_'
+    if (this.defenses_.grit) defense_string += ', ' + this.defenses_.grit + ' _Grit_'
+    if (this.defenses_.reflex) defense_string += ', ' + this.defenses_.reflex + ' _Reflex_'
     return defense_string
   }
   public get HasTraits() {
@@ -116,8 +144,12 @@ class Stance extends Base {
     this.effects_ = data.effects || []
     this.defenses_ = data.defenses || null
     this.traits_ = data.traits || []
-    this.momentum_gain_ = data.momentum_gain || [0, 0, 0, 0]
-    this.essence_gain_ = data.essence_gain || [0, 0, 0, 0]
+    this.speed_ = data.speed || 0
+    this.momentum_gain_ = data.momentum_gain || 0
+    this.essence_gain_ = data.essence_gain || 0
+    this.stun_clear_ = data.stun_clear || 0
+    this.movement_ = data.movement || 0
+    this.guard_ = data.guard || 0
     if (data.abilities) {
       for (var ability of data.abilities) {
         this.abilities_.push(Ability.Deserialize(ability))

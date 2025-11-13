@@ -12,6 +12,7 @@ class Subtype extends Base {
   private growth_points_: number
   private traits_: string[]
   private armor_: string
+  private stances_: string[]
 
   public constructor(name) {
     super(name)
@@ -42,6 +43,10 @@ class Subtype extends Base {
 
   public get Stun() {
     return this.stun_
+  }
+
+  public get StanceHeader() {
+    return '**Stances:**'
   }
 
   public get Movement() {
@@ -104,6 +109,7 @@ class Subtype extends Base {
     this.guard_ = data.guard || 0
     this.stun_ = data.stun || 0
     this.manifest_ = data.manifest || []
+    this.stances_ = data.stances || []
     this.growth_points_ = data.growth_points || 0
   }
 }

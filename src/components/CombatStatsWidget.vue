@@ -52,7 +52,7 @@
       </v-row>
       <v-row no-gutters>
         <v-col cols="auto">
-          <b>Soak:</b>&nbsp;{{ creature.Soak }} / {{ creature.MaxSoak }}&nbsp;<b>Stun:</b>&nbsp;{{ creature.Stun }} / {{ creature.MaxStun }}</v-col
+          <b>Padding:</b>&nbsp;{{ creature.Padding }} / {{ creature.MaxPadding }}&nbsp;<b>Stun:</b>&nbsp;{{ creature.Stun }} / {{ creature.MaxStun }}</v-col
         ><v-col align="right"> <v-checkbox v-model="apStun" :label="'AP Stun'" dense hide-details style="float: right; display: inline-block" /></v-col>
       </v-row>
       <v-row no-gutters class="bar--area">
@@ -119,7 +119,7 @@ export default Vue.extend({
       return 'width: ' + this.creature.HealthPercent + '%; background-color: ' + this.creature.HealthColor
     },
     soakbar() {
-      return 'width: ' + this.creature.SoakPercent + '%;'
+      return 'width: ' + this.creature.PaddingPercent + '%;'
     },
     stunbar() {
       return 'width: ' + this.creature.StunPercent + '%; background-color: ' + this.creature.StunColor
@@ -128,10 +128,10 @@ export default Vue.extend({
       return 'width: ' + this.creature.MovePercent + '%; background-color: ' + this.creature.MoveColor
     },
     soakWidth() {
-      return 'width: ' + this.creature.SoakStunRatio + '%;'
+      return 'width: ' + this.creature.PaddingStunRatio + '%;'
     },
     stunWidth() {
-      return 'width: ' + (100 - this.creature.SoakStunRatio) + '%;'
+      return 'width: ' + (100 - this.creature.PaddingStunRatio) + '%;'
     },
   },
 })

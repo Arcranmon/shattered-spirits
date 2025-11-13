@@ -46,10 +46,10 @@ class Spirit extends Combatant {
     return traits
   }
 
-  override get MaxSoak() {
+  override get MaxPadding() {
     var soak = 0
     for (var equipment of this.Equipment) {
-      if (store.getters.isArmor(equipment.Name)) soak += equipment.Soak
+      if (store.getters.isArmor(equipment.Name)) soak += equipment.Padding
     }
     return soak
   }
@@ -61,6 +61,9 @@ class Spirit extends Combatant {
   override get Abilities() {
     var abilities = store.getters.basicAbilities
     abilities = abilities.concat(store.getters.spiritAbilities)
+    for (var trait of store.getters.getSpiritTraitsFromList(this.Traits)) {
+      abilities = abilities.concat(trait.Abilities)
+    }
 
     return store.getters.getAbilitiesFromList(abilities)
   }
@@ -68,7 +71,6 @@ class Spirit extends Combatant {
   override get AllArts() {
     var arts = store.getters.getArtsFromList(this.Arts)
     arts = arts.concat(this.Equipment)
-    arts = arts.concat(this.character_.SpiritArts)
 
     return arts
   }

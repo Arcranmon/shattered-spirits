@@ -5,32 +5,38 @@
     "desc": "Simple techniques that all with a metal companion can easily accomplish.",
     "abilities": [
       {
-        "name": "Metallic Essence",
-        "class": "Utility",
-        "type": "Maneuver",
-        "keywords": ["Spirit", "Metal"],
-        "cost": "1 _Momentum_",
-        "effect": "_Prepare_ 2 _Momentum_ on a _Wielded_ piece of _Metal_ _Equipment_, then _Prepare_ 2 _Essence_ on a _Metal_ _Art_."
-      },
-      {
         "name": "Metalbending",
         "class": "Utility",
         "type": "Maneuver",
         "keywords": ["Spirit", "Metal"],
         "cost": "1 _Essence_",
         "range": "Close-",
-        "effect": "Choose one:\n* Resolve the Interaction effect of a piece of _Metal_ _Terrain_ within Range, paying the cost in Essence.\n* _Bend_ [_Metal_] 1.\n* Gain _Kinesis_ [_Metal_] within Range this _Turn_."
+        "effect": "Choose one:\n* Resolve the Interaction effect of a piece of _Metal_ _Terrain_ within Range, paying the cost in Essence.\n* _Bend_ [_Metal_] 1.\n* Extend your _Kinesis_ [_Metal_] Range to _Short_-."
       },
       {
-        "name": "Metal Ward",
-        "class": "Defensive",
-        "type": "Reaction",
-        "keywords": ["Spirit", "Metal", "Efficient"],
+        "name": "Metal Fling",
+        "class": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "Metal", "Crush", "Remote"],
         "cost": "1 _Essence_",
-        "trigger": "_Defend_ against a [_Metal_] Attack.",
-        "effect": "You may roll your _Defend_ twice and take the better result."
+        "range": "_Short_-",
+        "effect": "Pick a 0 _Load_ _Metal_ item within _Close_- Range to use as _Ammunition_, then Attack a target within Range.",
+        "special": "If the Item used for this has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
+        "boosts": [
+          {
+            "name": "Heavy Fling",
+            "cost": "1 _Essence_",
+            "effect": "You instead use a _Load_ 1 item as _Ammunition_. Deal +_0/1/1/1_ _Stun_ and +_0/1/2/2_ Damage."
+          }
+        ]
       }
-    ]
+    ],
+    "chart": {
+      "stun": [0, 1, 1, 1],
+      "damage": [0, 1, 1, 2],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "status": ["None", "None", "None", "None"]
+    }
   },
   {
     "name": "Metal Grasp",
@@ -49,25 +55,25 @@
       },
       {
         "name": "Metal Shot",
-        "class": "Light",
+        "class": "Balanced",
         "type": "Attack",
-        "keywords": ["Spirit", "Metal", "Crush"],
-        "cost": "1 _Essence_",
-        "range": "Close/Short",
-        "effect": "Choose a 0 _Load_ _Metal_ _Item_ that you have _Equipped_/_Wielded_ or is _Unattended_ within _Close_- _Range_. Attack a Target within _Range_, placing the _Equipment_ _Unattended_ at the Target's _Position_. If you choose _Equipment_ not at your _Position_, add [_Remote_]. If you choose _Equipment_ at your _Position_, you may instead convert one _Stun_ to _Damage_.",
+        "keywords": ["Spirit", "Metal", "Crush", "Remote", "_Pierce_ 2"],
+        "cost": "3 _Essence_",
+        "range": "_Short_-",
+        "effect": "Pick a 2 _Load_ _Metal_ _Item_ within _Close_- Range to use as _Ammunition_, then Attack a Target within Range.",
         "special": "If the Item used for this has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
         "boosts": [
           {
-            "name": "Heavy Shot",
-            "cost": "X _Essence_ (maximum 3)",
-            "effect": "You may instead use a _Load_ X piece of _Equipment_. If you spend 2 _Essence_, this is instead a _Balanced_ Attack. If you spend 3, it is instead _Heavy_. Modify the attack as follows:\n* _Graze_: Deal +X Damage and +X _Stun_.\n* _Hit_+: Deal +2X Damage."
+            "name": "Piercing Shot",
+            "cost": "3 _Momentum_",
+            "effect": "Instead, Attack two Targets within Range that are in the same _Arena_. You may also Attack any _Cover_ the Target is benefitting from as a part of this Attack; if it is _Destroyed_, the Target does not benefit from it."
           }
         ]
       }
     ],
     "chart": {
-      "stun": [0, 1, 1, 1],
-      "damage": [0, 1, 1, 2],
+      "stun": [0, 2, 1, 1],
+      "damage": [0, 3, 4, 6],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
       "status": ["None", "None", "None", "None"]
     }

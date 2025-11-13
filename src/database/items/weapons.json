@@ -61,6 +61,7 @@
         "range": "Melee_/_Short_ (_Thrown_)",
         "effect": "Attack a Target within Range.",
         "boosts": [
+          { "name": "Flurry", "cost": "2 _Momentum_", "effect": "Use _Strike_ again. You may not apply this _Boost_." },
           {
             "name": "Rend",
             "cost": "2 _Momentum_",
@@ -93,12 +94,11 @@
   {
     "name": "Iron Throwing Knife",
     "category": "Throwing",
-    "desc": "A small blade capable of sudden assaults and being thrown.",
+    "desc": "A small blade meant for sudden, unexpected throws.",
     "keywords": ["Metal", "Quickdraw"],
     "chart": {
-      "stun": [1, 1, 0, 0],
-      "damage": [0, 1, 2, 3],
-      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "damage": [0, 1, 2, 4],
+      "roll": ["2-4", "5", "6-10", "11-12"],
       "status": []
     },
     "load": 0,
@@ -113,12 +113,12 @@
         "cost": "1 _Momentum_",
         "keywords": ["Stab"],
         "range": "_Close_ (_Thrown_)",
-        "effect": "Attack a Target within Range. If you have already attacked the Target with this type of Weapon this _Turn_, deal +1 Damage on a _Hit_+.",
+        "effect": "Attack a Target within Range.",
         "boosts": [
           {
             "name": "Precise Fling",
             "cost": "1 _Momentum_",
-            "effect": "On a _Graze_+ deal +1 _Bonus Damage_, and on a _Crit_ add [_Embed_ 1]. If the Target takes any Damage, inflict _Impaired_ [_Grit_]. If they fail the save, also inflict _Embed_. You must select this Boost prior to making the Attack Roll."
+            "effect": "On a _Graze_+ deal +1 _Bonus Damage_, and on a _Crit_ add _Embed_. If the Target takes any Damage, inflict _Impaired_ [_Grit_]. If they fail the save, also inflict _Embed_. You must select this Boost prior to making the Attack Roll."
           }
         ]
       }
@@ -156,12 +156,6 @@
     "keywords": ["Metal"],
     "category": "Blade",
     "desc": "A sword that can easily be used in one or both hands and grants unparalleled flexibility.",
-    "chart": {
-      "stun": [3, 1, 0, 0],
-      "damage": [0, 3, 6, 8],
-      "roll": ["2-3", "4-5", "6-9", "10-12"],
-      "status": ["None", "None", "None", "None"]
-    },
     "special": "While _Wielded_ in both Hands this _Weapon_ deals +1 Damage and grants +1 _Guard_ when _Defending_ with it.",
     "abilities": [
       {
@@ -172,7 +166,6 @@
         "cost": "3 _Momentum_",
         "range": "Melee",
         "effect": "Attack a Target within Range.",
-        "special": "While _Charging_ with this Attack, gain +1 _Focus_. You may spend Movement and use Abilities that grant Movement prior to remove _Charging_, but may not leave your current _Arena_.",
         "boosts": [
           {
             "name": "Slashing Strike",
@@ -190,23 +183,13 @@
           "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
           "range": "Melee"
         }
-      },
-      {
-        "name": "Deflect",
-        "class": "Defensive",
-        "keywords": ["Block"],
-        "type": "Reaction",
-        "cost": "2 _Momentum_",
-        "effect": "_Defend_, at _Disadvantage_ if the Attack was not _Melee_.\n* Lose: Gain 4 _Guard_.\n* _Tie_: Reduce the Damage by 2. Gain 2 _Guard_.",
-        "boosts": [
-          {
-            "name": "Counterstrike",
-            "cost": "1 _Momentum_",
-            "effect": "_Parry_, using <i>Strike</i> if you _Win_. You must select this Boost prior to making the Defense Roll."
-          }
-        ]
       }
     ],
+    "chart": {
+      "damage": [0, 4, 6, 9],
+      "roll": ["2-3", "4-5", "6-9", "10-12"],
+      "status": ["None", "None", "None", "None"]
+    },
     "durability": 4,
     "load": 2,
     "hands": 1.5,

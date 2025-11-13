@@ -4,7 +4,7 @@
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
         ><template v-slot:activator="{ on, attrs }">
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
-        ><display-tooltip-text string="Use the first value in _Phase_ 1, the second in _Phase_ 2, and so on." :level="level + 1" /></v-menu></span
+        ><display-tooltip-text string="Use each value for a _Miss_, _Graze_, _Hit_, and _Crit_ respectively." :level="level + 1" /></v-menu></span
     ><span v-else-if="this.$store.getters.existsInAnyGlossary(input)"
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
         ><template v-slot:activator="{ on, attrs }">
@@ -16,6 +16,12 @@
           <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
         /></template>
         <feature-card :feature="this.$store.getters.getFeature(input)" :tooltip="true" /></v-menu></span
+    ><span v-else-if="this.$store.getters.isArchetype(input)" attach
+      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
+        ><template v-slot:activator="{ on, attrs }">
+          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
+        /></template>
+        <archetype-card :archetype="this.$store.getters.getArchetype(input)" :tooltip="true" /></v-menu></span
     ><span v-else-if="this.$store.getters.isTerrain(input)" attach
       ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
         ><template v-slot:activator="{ on, attrs }">
@@ -89,6 +95,7 @@
 <script>
 import Vue from 'vue'
 import { store } from '@/store'
+import ArchetypeCard from './cards/ArchetypeCard.vue'
 import ArmorCard from './cards/ArmorCard.vue'
 import ArtCard from './cards/ArtCard.vue'
 import ManeuverCard from './cards/ManeuverCard.vue'
@@ -105,6 +112,7 @@ export default Vue.extend({
   name: 'tooltip',
   components: {
     ArmorCard,
+    ArchetypeCard,
     ArtCard,
     ManeuverCard,
     FeatureCard,

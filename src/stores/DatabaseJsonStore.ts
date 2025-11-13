@@ -20,7 +20,6 @@ import FeaturesJson from '@/database/features.json'
 import Terrains from '@/database/terrain.json'
 
 import SpiritTypeJson from '@/database/spirit_types.json'
-import SpiritFormsJson from '@/database/spirit_forms.json'
 
 import ManeuversJson from '@/database/maneuvers.json'
 
@@ -55,24 +54,21 @@ let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
 let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Traits]
 
-const kPlayerAbilities = ['Basic Craft', 'Manifest', 'Combination Strike', 'Interdiction', 'Grit Teeth', 'Guard Breaker', 'Find Advantage']
+const kPlayerAbilities = ['Manifest', 'Unbalance', 'Find Advantage']
 
-const kSpiritAbilities = ['Interdiction', 'Combination Strike']
+const kSpiritAbilities = []
 
 const kBasicAbilities = [
   'Run',
   'Brawl',
-  'Brace',
-  'Catch Breath',
-  'Charge',
-  'Raise Guard',
+  'Block',
+  'Breather',
+  'Counter',
   'Disengage',
-  'Rally',
-  'Quick Step',
   'Perfect Guard',
   'Opportunity Attack',
   'Lethal Blow',
-  'Sidestep',
+  'Dodge',
   'Use Environment',
   'Drop',
   'Draw/Stow',
@@ -95,7 +91,6 @@ export class DatabaseJsonStore extends VuexModule {
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
     this.Subtypes = SpiritTypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
-    this.SpiritForms = SpiritFormsJson.map((x) => SpiritForm.Deserialize(<ISpiritFormData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
     this.Arts = ArtsJson.map((x) => Art.Deserialize(<IArtData>(<unknown>x)))
@@ -120,7 +115,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Abilities: Ability[] = []
 
   get basicStances() {
-    return ['Spiritbound Stance']
+    return ['Open Stance', 'Resting Stance', 'Guarded Stance', 'Agile Stance', 'Hostile Stance', 'Focused Stance']
   }
 
   get playerArts() {
@@ -710,6 +705,12 @@ export class DatabaseJsonStore extends VuexModule {
         archs.push(this.getArchetype(arch))
       }
       return archs
+    }
+  }
+
+  get isArchetype(): any {
+    return (inword: string) => {
+      return this.Archetypes.some((x) => x.Name == inword.trim())
     }
   }
 

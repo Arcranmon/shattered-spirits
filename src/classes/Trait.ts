@@ -5,6 +5,7 @@ class Trait extends Base {
   private reqs_: string
   private cost_: number
   private equipment_: string[]
+  private abilities_: string[]
   private bonuses_: Bonuses
 
   public constructor(name) {
@@ -37,6 +38,10 @@ class Trait extends Base {
     return this.equipment_
   }
 
+  get Abilities() {
+    return this.abilities_
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -51,6 +56,7 @@ class Trait extends Base {
     this.reqs_ = data.reqs || ''
     this.cost_ = data.cost || 0
     this.equipment_ = data.equipment || []
+    this.abilities_ = data.abilities || []
     if (data.hasOwnProperty('bonuses')) {
       this.bonuses_ = Bonuses.Deserialize(data.bonuses)
     } else {
