@@ -1,17 +1,16 @@
 ## To-Do
 
 - Rework things so that at the start of each Phase you choose your Stance
-  - Do we make your Stance decide a Speed to remove popcorn?
-  - Rework some of the more general actions into those
-  - Offensive -> Mobility -> Defensive -> Recovery -> Patient -> Offensive, with Balanced in the middle
+  - One action per Round (in each Phase, Players->Enemies)
   - Stances should all have the following (even if the value is 0):
     - How much Guard they grant
     - Their Speed
     - Their bonuses to Grit/Focus/Reflex
     - How much Stun you clear at the start of the Phase
     - Additional Momentum count
-- Remove Positions again
-  - Can create 'Hazards' within an Arena.
+- Make Interacts a more intrinsic part of the system
+  - Roll 1d6 for a single die + tags
+- Add a general support/social interact you can use to buff allies or taunt enemies
 
 ### Brainstorming
 
