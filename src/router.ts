@@ -62,67 +62,11 @@ const r = new Router({
       },
     },
     {
-      path: '/equipment',
-      component: require('@/pages/equipment/equipment-menu/index.vue').default,
-      name: 'equipment-menu',
-      meta: {
-        title: 'Equipment',
-      },
-    },
-    {
-      path: '/armor',
-      component: require('@/pages/equipment/armor/index.vue').default,
-      name: 'armor',
-      meta: {
-        title: 'Armor',
-      },
-    },
-    {
-      path: '/glossary',
-      component: require('@/pages/glossary/index.vue').default,
-      name: 'glossary',
-      meta: {
-        title: 'Glossary',
-      },
-    },
-    {
-      path: '/weapons',
-      component: require('@/pages/equipment/weapons/index.vue').default,
-      name: 'weapons',
-      meta: {
-        title: 'Weapons',
-      },
-    },
-    {
-      path: '/Consumables',
-      component: require('@/pages/equipment/consumables/index.vue').default,
-      name: 'Consumables',
-      meta: {
-        title: 'Consumables',
-      },
-    },
-    {
-      path: '/combat-rules',
-      component: require('@/pages/combat/combat-rules/index.vue').default,
-      name: 'combat-rules',
-      meta: {
-        title: 'Combat',
-      },
-    },
-    {
       path: '/combat-primer',
       component: require('@/pages/combat/combat-primer/index.vue').default,
       name: 'combat-primer',
       meta: {
         title: 'Combat Primer',
-      },
-    },
-    {
-      path: '/afflictions-and-status',
-      component: require('@/pages/combat/afflictions-and-status/index.vue').default,
-      name: 'afflictions-and-status',
-      meta: {
-        title: 'Afflictions and Status',
       },
     },
     {
@@ -134,14 +78,6 @@ const r = new Router({
       },
     },
     {
-      path: '/terrain',
-      component: require('@/pages/combat/terrain/index.vue').default,
-      name: 'terrain',
-      meta: {
-        title: 'Terrain',
-      },
-    },
-    {
       path: '/features',
       component: require('@/pages/combat/features/index.vue').default,
       name: 'features',
@@ -150,83 +86,11 @@ const r = new Router({
       },
     },
     {
-      path: '/spirit-arts',
-      component: require('@/pages/spirit-arts/index.vue').default,
-      name: 'spirit-arts',
-      meta: {
-        title: 'Spirit Arts',
-      },
-    },
-    {
       path: '/martial-disciplines',
       component: require('@/pages/martial-disciplines/index.vue').default,
       name: 'martial-disciplines',
       meta: {
         title: 'Martial Disciplines',
-      },
-    },
-    {
-      path: '/spirit-abilities',
-      component: require('@/pages/spirit-abilities/index.vue').default,
-      name: 'spirit-abilities',
-      meta: {
-        title: 'Spirit Abilities',
-      },
-    },
-    {
-      path: '/basic-stances',
-      component: require('@/pages/basic-stances/index.vue').default,
-      name: 'basic-stances',
-      meta: {
-        title: 'Basic Stances',
-      },
-    },
-    {
-      path: '/basic-skills',
-      component: require('@/pages/basic-skills/index.vue').default,
-      name: 'basic-skills',
-      meta: {
-        title: 'Basic Skills',
-      },
-    },
-    {
-      path: '/talents',
-      component: require('@/pages/talents/index.vue').default,
-      name: 'talents',
-      meta: {
-        title: 'Talents',
-      },
-    },
-    {
-      path: '/archetypes',
-      component: require('@/pages/archetypes/index.vue').default,
-      name: 'archetypes',
-      meta: {
-        title: 'Archetypes',
-      },
-    },
-    {
-      path: '/world',
-      component: require('@/pages/world/index.vue').default,
-      name: 'world',
-      meta: {
-        title: 'The World',
-      },
-    },
-    {
-      path: '/civilization',
-      component: require('@/pages/civilization/index.vue').default,
-      name: 'civilization',
-      meta: {
-        title: 'Civilization in the Shattered World',
-      },
-    },
-    {
-      path: '/sample-characters',
-      component: require('@/pages/sample-characters/index.vue').default,
-      name: 'Sample Characters',
-      meta: {
-        title: 'Sample Characters',
       },
     },
     {

@@ -340,7 +340,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFilteredWeapons(): any {
-    return (categories: Array<string>, speed: any, type: string) => {
+    return (categories: Array<string>, type: string) => {
       return this.Weapons.filter(
         (x) =>
           (x.Abilities.length > 0 && categories.includes(x.Category.trim())) ||

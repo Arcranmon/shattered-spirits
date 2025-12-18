@@ -64,21 +64,18 @@
             <div class="card--box" v-if="job == 'Features'">
               <feature-card :feature="n" />
             </div>
-            <div class="card--box" v-if="job == 'Terrain'">
-              <terrain-card :terrain="n" />
-            </div>
-            <div class="card--box" v-if="job == 'Status'">
-              <status-card :status="n" />
-            </div>
             <div class="card--box" v-if="job == 'Movement'">
               <movement-card :movement="n" />
             </div>
             -->
+            <div class="card--box" v-if="isTerrain(n)">
+              <terrain-card :terrain="n" style="height: 100%" />
+            </div>
             <div class="card--box" v-if="isArchetype(n)">
-              <archetype-card :archetype="n" />
+              <archetype-card :archetype="n" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isTalent(n)">
-              <talent-card :talent="n" />
+              <talent-card :talent="n" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isArt(n)">
               <art-card :art="n" style="height: 100%" />
@@ -87,7 +84,10 @@
               <spirit-form-card :form="n" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isTrait(n)">
-              <trait-card :trait="n" />
+              <trait-card :trait="n" style="height: 100%" />
+            </div>
+            <div class="card--box" v-if="isStatus(n)">
+              <status-card :status="n" style="height: 100%" />
             </div>
           </v-col>
         </v-row> </v-container
@@ -206,6 +206,9 @@ export default Vue.extend({
     isTechnique(variable) {
       return variable instanceof Technique
     },
+    isTerrain(variable) {
+      return variable instanceof Terrain
+    },
     isConsumable(variable) {
       return variable instanceof Consumable
     },
@@ -220,6 +223,9 @@ export default Vue.extend({
     },
     isTrait(variable) {
       return variable instanceof Trait
+    },
+    isStatus(variable) {
+      return variable instanceof Status
     },
   },
   computed: {

@@ -19,6 +19,10 @@
       <v-tab-item></v-tab-item>
       <v-tab-item><spirit-ability-options element="Metal" /></v-tab-item>
       <v-tab-item>
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '1')" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost('General', '2')" />
+      </v-tab-item>
+      <v-tab-item>
         <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />
 
         <span v-if="isMobile">
