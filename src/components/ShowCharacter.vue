@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 1em" class="background--color character-wrapper">
-    <v-tabs v-model="character_or_spirit_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+    <v-tabs v-model="character_or_spirit_tab" class="character-tabs" dark color="black" centered>
       <v-tab
         ><h3>{{ character.Name }}</h3></v-tab
       ><v-tab
@@ -11,127 +11,94 @@
       ><v-tab-item>
         <div v-if="character.Name != ''">
           <v-row style="margin: 1em">
-            <v-col :cols="columnNumbers"> <combat-stats-widget :creature="character" @changed="$emit('changed')" /></v-col
-            ><v-col :cols="columnNumbers"><status-widget :creature="character" @changed="$emit('changed')" /></v-col>
-            <v-col :cols="12" style="margin-bottom: 1em">
-              <h3 style="text-align: center">Stances</h3>
-              <v-row
-                ><v-col :cols="columnNumbers"> <stance-card :stance="character.CurrentSpiritStance" :on_sheet="true" style="width: 90%; margin: auto" /></v-col
-                ><v-col :cols="columnNumbers">
-                  <stance-card :stance="character.CurrentMartialStance" :on_sheet="true" style="width: 90%; margin: auto" /></v-col></v-row></v-col
-          ></v-row>
-          <h3 style="text-align: center">Skills</h3>
+            <v-col :cols="columnNumbers">
+              <combat-stats-widget :creature="character" @changed="$emit('changed')" /><status-widget
+                :creature="character"
+                @changed="$emit('changed')" /></v-col
+            ><v-col :cols="columnNumbers">
+              <h4 style="text-align: center">Stance</h4>
+              <div style="width: 50%; display: flex; justify-content: center; align-items: center; margin: auto">
+                <v-select
+                  v-model="character.CurrentStance"
+                  label="Change Stance"
+                  item-text="Name"
+                  :items="character.Stances"
+                  filled
+                  @changeSelected="$emit('changed')"
+                />
+              </div>
+              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="margin: auto"
+            /></v-col>
+          </v-row>
+          <h3 style="text-align: center">Abilities and Equipment</h3>
           <v-card>
-            <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
-              <v-tab>
-                <h3>Archetype</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Talents</h3>
-              </v-tab></v-tabs
+            <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
+              ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts & Talents</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab
+              ><v-tab> <h4>Stances</h4> </v-tab></v-tabs
             >
-            <v-tabs-items v-model="equipment_tab" class="character-tab-content">
+            <v-tabs-items v-model="ability_tab" class="character-tab-content">
               <v-tab-item
-                ><show-cards
-                  job="Archetype"
-                  :inputs="$store.getters.getArchetypesFromList(character.Archetypes)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2" /></v-tab-item
-              ><v-tab-item
-                ><show-cards
-                  job="Talent"
-                  :inputs="$store.getters.getTalentsFromList(character.Talents)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2" /></v-tab-item></v-tabs-items
-          ></v-card>
-          <h3 style="text-align: center">Equipment</h3>
-          <v-card>
-            <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
-              <v-tab>
-                <h3>Weapons</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Armor</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Accessories</h3>
-              </v-tab>
-              <v-tab>
-                <h3>Consumables</h3>
-              </v-tab>
-            </v-tabs>
-            <v-tabs-items v-model="equipment_tab" class="character-tab-content">
-              <v-tab-item>
-                <show-cards
-                  job="Attacks"
-                  :inputs="$store.getters.getWeaponsFromList(character.Weapons)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  :cols="2"
-                />
+                ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
+                  ><v-tab><h5>Skills</h5></v-tab><v-tab><h5>Powers</h5></v-tab><v-tab><h5>Passives</h5></v-tab><v-tab> <h5>Maneuvers</h5></v-tab
+                  ><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
+                ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
+                  ><v-tab-item><ability-tab abilityType="Skill" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Power" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Passive" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Reaction" :character="character" /></v-tab-item
+                ></v-tabs-items>
               </v-tab-item>
               <v-tab-item>
-                <show-cards
-                  job="Armor"
-                  :inputs="$store.getters.getArmorFromList(character.Armor)"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  v-bind:cols="screenSize"
-                />
+                <show-cards :inputs="this.$store.getters.getAPsFromList(character.Arts)" :collapse="false" :cols="2" />
               </v-tab-item>
-              <v-tab-item><display-tooltip-text class="description-text" string="Not applicable yet!" /></v-tab-item>
               <v-tab-item
-                ><show-cards
-                  job="Accessory"
-                  :inputs="$store.getters.getAccessoryFromList(['Health Flask'])"
-                  standalone_or_contained="Standalone"
-                  :collapse="false"
-                  v-bind:cols="screenSize"
-              /></v-tab-item>
-              <v-tab-item style="margin: 1em"
-                ><div v-for="disc in character.Disciplines" :key="disc.name">{{ disc.name }} <span v-for="n in disc.tier" :key="n">I</span></div>
-              </v-tab-item>
-            </v-tabs-items>
-          </v-card>
-          <abilities-widget
-            :techniques="character.Techniques"
-            :actions="character.ManeuversOfType('Action')"
-            :attacks="character.Attacks"
-            :gambits="character.ManeuversOfType('Gambit')"
-            :stunts="character.ManeuversOfType('Stunt')"
-            :reactions="character.ManeuversOfType('Reaction')"
-          /></div></v-tab-item
+                ><v-tabs v-model="equipment_tab" color="black" light centered style="border-radius: 10px">
+                  <v-tab><h5>Worn</h5></v-tab><v-tab><h5>Packed</h5></v-tab></v-tabs
+                >
+                <v-tabs-items v-model="equipment_tab" class="character-tab-content"
+                  ><v-tab-item><b>Load:</b> {{ character.Load }}<show-cards :inputs="character.SortedWornEquipment" :collapse="false" :cols="2" /> </v-tab-item
+                  ><v-tab-item> </v-tab-item></v-tabs-items></v-tab-item
+              ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
+              <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
+            ></v-tabs-items>
+          </v-card></div></v-tab-item
       ><v-tab-item>
         <v-row style="margin: 1em">
-          <v-col :cols="columnNumbers"><combat-stats-widget :creature="character.Spirit" @changed="$emit('changed')" /> </v-col
-          ><v-col :cols="columnNumbers"> <status-widget :creature="character.Spirit" @changed="$emit('changed')" /></v-col
-        ></v-row>
-        <h3 style="text-align: center">Equipment</h3>
+          <v-col :cols="columnNumbers">
+            <combat-stats-widget :creature="character.Spirit" @changed="$emit('changed')" /><status-widget
+              :creature="character.Spirit"
+              @changed="$emit('changed')" /></v-col
+          ><v-col :cols="columnNumbers">
+            <h4 style="text-align: center">Spirit Type</h4>
+            <type-card :type="character.Spirit.SpiritType" style="margin: auto"
+          /></v-col>
+        </v-row>
+        <h3 style="text-align: center">Abilities and Equipment</h3>
         <v-card>
-          <v-tabs v-model="spirit_equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
-            <v-tab>
-              <h3>Weapons</h3>
-            </v-tab>
-          </v-tabs>
-          <v-tabs-items v-model="spirit_equipment_tab" class="character-tab-content">
-            <v-tab-item>
-              <show-cards job="Attacks" :inputs="character.Spirit.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+          <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
+            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Arts & Traits</h4> </v-tab></v-tabs
+          >
+          <v-tabs-items v-model="ability_tab" class="character-tab-content">
+            <v-tab-item
+              ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
+                ><v-tab><h5>Skill</h5></v-tab><v-tab><h5>Power</h5></v-tab><v-tab><h5>Passive</h5></v-tab><v-tab><h5>Maneuvers</h5></v-tab
+                ><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
+              ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
+                ><v-tab-item><ability-tab abilityType="Skill" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Power" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Passive" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Attack" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Gambit" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Reaction" :character="character" :spirit="true" /></v-tab-item
+              ></v-tabs-items>
             </v-tab-item>
-          </v-tabs-items>
-        </v-card>
-        <h3 style="text-align: center">Manifest Ability</h3>
-        <div style="text-align: center">
-          <display-tooltip-text :string="character.Spirit.Subtype.ManifestEffectHeader" />
-          <basic-table style="width: 40%; margin: auto" :chart="character.Spirit.Subtype.Table" />
-        </div>
-        <abilities-widget
-          :actions="character.SpiritManeuversOfType('Action')"
-          :attacks="character.SpiritAttacks"
-          :gambits="character.SpiritManeuversOfType('Gambit')"
-          :stunts="character.SpiritManeuversOfType('Stunt')"
-          :reactions="character.SpiritManeuversOfType('Reaction')" /></v-tab-item
+            <v-tab-item><show-cards :inputs="character.Spirit.Equipment" :collapse="false" :cols="2" /> </v-tab-item
+            ><v-tab-item> <show-cards :inputs="this.$store.getters.getAPsFromList(character.Spirit.Arts)" :collapse="false" :cols="2" /></v-tab-item
+          ></v-tabs-items> </v-card></v-tab-item
     ></v-tabs-items>
   </div>
 </template>
@@ -140,15 +107,29 @@
 import Vue from 'vue'
 import { Character } from '@/class'
 import StanceCard from '@/components/cards/StanceCard.vue'
+import TypeCard from '@/components/cards/SpiritTypeCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
+import ShowAbilities from '@/components/cards/ShowAbilities.vue'
 import BasicTable from '@/components/BasicTable.vue'
+import AbilityTab from '@/components/AbilityTab.vue'
 import AbilitiesWidget from '@/components/AbilitiesWidget.vue'
 import StatusWidget from '@/components/StatusWidget.vue'
 import CombatStatsWidget from '@/components/CombatStatsWidget.vue'
 import TraitsAndWeaponsWidget from '@/components/TraitsAndWeaponsWidget.vue'
 export default Vue.extend({
   name: 'display-character',
-  components: { BasicTable, ShowCards, StanceCard, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
+  components: {
+    AbilityTab,
+    BasicTable,
+    ShowAbilities,
+    ShowCards,
+    StanceCard,
+    TypeCard,
+    AbilitiesWidget,
+    StatusWidget,
+    TraitsAndWeaponsWidget,
+    CombatStatsWidget,
+  },
   props: {
     character: {
       type: Character,
@@ -158,26 +139,21 @@ export default Vue.extend({
   data() {
     return {
       equipment_tab: null,
+      abilitiesAndEquipmentTab: null,
+      ability_tab: null,
       spirit_equipment_tab: null,
       character_or_spirit_tab: null,
       windowWidth: window.innerWidth,
     }
-  },
-  methods: {
-    changeSpiritStance: function (variable) {
-      this.character.CurrentSpiritStance = variable.card
-      this.$emit('changed')
-    },
-    changeMartialStance: function (variable) {
-      this.character.CurrentMartialStance = variable.card
-      this.$emit('changed')
-    },
   },
   computed: {
     screenSize() {
       if (this.windowWidth <= 760) return 1
       if (this.windowWidth <= 1500) return 2
       return 3
+    },
+    switchString() {
+      return this.showArts ? 'Show Arts' : 'Show Abilities'
     },
     columnNumbers() {
       if (this.isMobile) return 12

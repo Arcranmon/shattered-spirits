@@ -1,30 +1,22 @@
 import { store } from '@/store'
-import { Combatant, SpiritForm, Subtype } from '@/class'
+import { Combatant, Character, Subtype } from '@/class'
 
 var kBasicAttacks = ['Weapon Attack', 'Brawl']
 var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance']
 var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
 var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge']
-var kBasicGambits = ['Lethal Strike', 'Gather Momentum']
+var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
 
 class Spirit extends Combatant {
   private name_: string
-  private form_: SpiritForm
-  private subtype_: Subtype
+  private traits_: Array<string>
+  private spirit_type_: Subtype
   private weapons_: Array<string>
-
-  private light_weapons_: number
-  private heavy_weapons_: number
-  private versatile_weapons_: number
+  private character_: Character
 
   public constructor() {
     super()
-    this.light_weapons_ = 0
-    this.heavy_weapons_ = 0
-    this.versatile_weapons_ = 0
-
-    this.subtype_ = undefined
-    this.form_ = undefined
+    this.spirit_type_ = undefined
     this.weapons_ = []
     this.name_ = ''
   }
@@ -32,43 +24,76 @@ class Spirit extends Combatant {
   // ==========================================================
   // COMBATANT OVERRIDES
   // ==========================================================
-  override get MaxStamina() {
-    return 2
-  }
-
   override get Guard() {
-    return this.Form.Guard
-  }
-
-  override get Size() {
-    return this.Form.Size
+    var guard = 0
+    for (var equipment of this.Equipment) {
+      if (store.getters.isArmor(equipment.Name)) guard += equipment.Guard
+    }
+    return guard
   }
 
   override get MaxMovement() {
-    return this.form_.Movement
-  }
-
-  override get Jump() {
-    return this.form_.Jump
+    var movement = this.spirit_type_.Movement
+    for (var trait of this.Traits) {
+      //movement += store.getters.getSpiritTrait(trait).Bonuses.Movement
+    }
+    return movement
   }
 
   override get Traits() {
-    var traits = [...this.form_.Traits, ...this.subtype_.Traits]
+    var traits = [...this.spirit_type_.Traits]
+    traits = traits.concat(this.traits_)
     return traits
+  }
+
+  override get MaxPadding() {
+    var soak = 0
+    for (var equipment of this.Equipment) {
+      if (store.getters.isArmor(equipment.Name)) soak += equipment.Padding
+    }
+    return soak
   }
 
   override get Weapons() {
     return store.getters.getWeaponsFromList(this.weapons_)
   }
 
+  override get Abilities() {
+    var abilities = store.getters.basicAbilities
+    abilities = abilities.concat(store.getters.spiritAbilities)
+    return store.getters.getAbilitiesFromList(abilities)
+  }
+
+  get Arts() {
+    var arts = this.character_.SpiritArts
+    for (var trait of this.traits_) {
+      arts.push(trait)
+    }
+    arts.sort()
+    return arts
+  }
+
+  override get AllArts() {
+    var arts = store.getters.getAPsFromList([...this.Traits, ...this.character_.SpiritArts, this.character_.Element + 'born'])
+    arts = arts.concat(this.Equipment)
+
+    return arts
+  }
+
   get Grit() {
-    return this.Form.Grit + this.Subtype.Grit
+    return this.SpiritType.Defenses.Grit
   }
+
   get Reflex() {
-    return this.Form.Reflex + this.Subtype.Reflex
+    var reflex = this.SpiritType.Defenses.Reflex
+    for (var trait of this.Traits) {
+      //reflex += store.getters.getSpiritTrait(trait).Bonuses.Reflex
+    }
+    return reflex
   }
+
   get Focus() {
-    return this.Form.Focus + this.Subtype.Focus
+    return this.SpiritType.Defenses.Focus
   }
 
   // ==========================================================
@@ -81,60 +106,32 @@ class Spirit extends Combatant {
     this.name_ = name
   }
 
+  set Character(character) {
+    this.character_ = character
+  }
+
   override get MaxHealth() {
-    return this.Form.Health
+    return this.SpiritType.Health
   }
 
-  get Form() {
-    return this.form_
+  get HasSpiritType() {
+    return this.spirit_type_
   }
 
-  set Form(form) {
-    this.ClearWeapons()
-    this.form_ = form
-    this.Health = this.Form.Health
+  get SpiritType() {
+    return this.spirit_type_
   }
 
-  get HasSubtype() {
-    return this.subtype_
+  set SpiritType(input) {
+    this.spirit_type_ = input
   }
 
-  get Subtype() {
-    return this.subtype_
+  get Equipment() {
+    var equipment = store.getters.getWeaponsFromList(this.weapons_)
+
+    return equipment
   }
 
-  set Subtype(input) {
-    this.subtype_ = input
-  }
-
-  public AddWeapon(variable) {
-    this.weapons_.push(variable)
-    var weapon_stats = store.getters.getWeapon(variable)
-    if (weapon_stats.Type == 'Light') this.light_weapons_++
-    if (weapon_stats.Type == 'Versatile') this.versatile_weapons_++
-    if (weapon_stats.Type == 'Heavy') this.heavy_weapons_++
-  }
-
-  public RemoveWeapon(idx) {
-    var weapon_stats = store.getters.getWeapon(this.weapons_[idx])
-    if (weapon_stats.Type == 'Light') this.light_weapons_--
-    if (weapon_stats.Type == 'Versatile') this.versatile_weapons_--
-    if (weapon_stats.Type == 'Heavy') this.heavy_weapons_--
-    this.weapons_.splice(idx, 1)
-  }
-
-  get PrettyWeaponOptions() {
-    var pretty_weapons = this.Form.Weapons.split(', ')
-    return 'Your spirit may select ' + pretty_weapons[0] + ' Weapon and ' + pretty_weapons[1] + ' Weapon.'
-  }
-
-  get Attacks() {
-    var attacks = store.getters.getAttacksFromList(kBasicAttacks)
-    // var form_attacks = store.getters.getAttack(this.form_.BonusAttack)
-    // attacks = attacks.concat(form_attacks)
-    attacks.sort((a, b) => a.Name.localeCompare(b.Name))
-    return attacks
-  }
   get Actions() {
     return store.getters.getManeuversFromList(kBasicActions)
   }
@@ -151,64 +148,15 @@ class Spirit extends Combatant {
   // ==========================================================
   // HELPERS
   // ==========================================================
-  get HasForm() {
-    return this.form_ != undefined
-  }
 
   get HasWeapons() {
-    if (this.form_ == undefined) return false
-    if (this.weapons_.length != this.form_.WeaponLimits) return false
+    if (this.spirit_type_ == undefined) return false
 
     return true
   }
 
-  get HasFormAndWeapons() {
-    return this.HasForm && this.HasWeapons
-  }
-
-  public CanAddWeapon(weapon) {
-    if (this.weapons_.length >= this.Form.WeaponLimits) return false
-
-    var type = weapon.Type
-    console.log(type)
-
-    if (type == 'Light') {
-      if (this.light_weapons_ < this.Form.LightLimit) return true
-      if (this.light_weapons_ == this.Form.LightLimit && this.light_weapons_ < this.Form.LightLimit + this.Form.LightVersatileLimit) return true
-    }
-
-    if (type == 'Versatile') {
-      if (this.versatile_weapons_ < this.Form.VersatileLimit) return true
-      if (this.versatile_weapons_ == this.Form.VersatileLimit && this.versatile_weapons_ < this.Form.VersatileLimit + this.Form.LightVersatileLimit) return true
-      if (this.versatile_weapons_ == this.Form.VersatileLimit && this.versatile_weapons_ < this.Form.VersatileLimit + this.Form.VersatileHeavyLimit) return true
-    }
-
-    if (type == 'Heavy') {
-      if (this.heavy_weapons_ < this.Form.HeavyLimit) {
-        return true
-      }
-      if (this.heavy_weapons_ == this.Form.HeavyLimit && this.heavy_weapons_ < this.Form.HeavyLimit + this.Form.VersatileHeavyLimit) {
-        return true
-      }
-    }
-
-    if (
-      this.heavy_weapons_ <= this.Form.HeavyLimit &&
-      this.light_weapons_ <= this.Form.LightLimit &&
-      this.versatile_weapons_ <= this.Form.VersatileLimit &&
-      this.Form.AnyLimit > 0
-    ) {
-      return true
-    }
-
-    return false
-  }
-
   private ClearWeapons() {
     this.weapons_ = []
-    this.light_weapons_ = 0
-    this.versatile_weapons_ = 0
-    this.heavy_weapons_ = 0
   }
 
   // ==========================================================
@@ -218,9 +166,9 @@ class Spirit extends Combatant {
     return {
       ...super.Serialize(spirit),
       name: spirit.name_,
-      spirit_form: spirit.form_.Name,
-      subtype: spirit.subtype_.Name,
+      type: spirit.spirit_type_.Name,
       weapons: spirit.weapons_,
+      traits: spirit.traits_,
     }
   }
 
@@ -231,8 +179,8 @@ class Spirit extends Combatant {
   }
 
   private setSpiritData(data: ISpiritData): void {
-    this.form_ = store.getters.getSpiritForm(data.spirit_form)
-    this.subtype_ = store.getters.getSubtype(data.subtype)
+    this.spirit_type_ = store.getters.getSpiritType(data.type)
+    this.traits_ = data.traits || []
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
     this.setCombatantData(data)

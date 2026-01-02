@@ -1,25 +1,22 @@
 import { store } from '@/store'
-import { Attack } from '@/class'
+import { Ability, Chart, Equipment } from '@/class'
 
-class Weapon extends Attack {
-  private durability_: number
+class Weapon extends Equipment {
   private hands_: number
-  private hardness_: number
-  private parry_: string
-  private material_: string
-  private weight_: number
+  private reqs_: string
 
-  get HasDurability() {
-    return this.durability_ != 0
-  }
-  get Durability() {
-    return this.durability_
+  get CategoryHeader() {
+    if (this.Category == 'Natural' || this.Category == 'Improvised') return this.category_ + ' Weapon'
+    return this.category_ + ' Weapon'
   }
   get ClassHeader() {
-    return this.HandsPhrase + this.CategoryHeader
+    return this.CategoryHeader
   }
   get Hands() {
     return this.hands_
+  }
+  get HandString() {
+    return String(this.hands_)
   }
   get HandsPhrase() {
     if (this.category_ == 'Natural') return ''
@@ -27,40 +24,9 @@ class Weapon extends Attack {
     if (this.hands_ == 1) return '_One-Handed_ '
     else return '_Two-Handed_ '
   }
-  get HasParry() {
-    return this.parry_.length > 0
-  }
-  get ParryHeader() {
-    return '**Parry:** ' + this.parry_
-  }
-  get Weight() {
-    return this.weight_
-  }
-  get TraitsHeader() {
-    var traits_string = '**Traits:** '
-    if (this.HasWeight) {
-      traits_string += this.WeightHeader
-      if (this.HasDurability) traits_string += ', '
-    }
-    if (this.HasDurability) {
-      traits_string += '_Durability_ ' + this.durability_
-    }
-    return traits_string
-  }
-  get HasWeight() {
-    return this.Weight > 0
-  }
-  get WeightHeader() {
-    if (this.Category == 'Unarmed') return ''
-    if (this.Weight == 0) return ''
-    return 'Weight ' + this.weight_
-  }
   public get Icon() {
     if (this.Category == 'Error') return ''
     return require('@/assets/weapons/' + this.Category + '.svg')
-  }
-  public get KeywordsHeader() {
-    return '_' + this.keywords_.join('_, _') + '_'
   }
 
   // ==========================================================
@@ -74,13 +40,9 @@ class Weapon extends Attack {
   }
 
   public setWeaponData(data: IWeaponData): void {
-    this.setAttackData(data)
-    this.durability_ = data.durability || 0
-    this.hardness_ = data.hardness || 0
+    this.setEquipmentData(data)
     this.hands_ = data.hands || 0
-    this.material_ = data.material || ''
-    this.parry_ = data.parry || ''
-    this.weight_ = data.weight || 0
+    this.reqs_ = data.reqs || ''
   }
 }
 export default Weapon

@@ -52,12 +52,22 @@ Available on https://game-icons.net.
 
 And a big thank you to the playtesters thus far: Aori, Bowyer, everythingElse, Kuji, MesiDoomstalker, Mystic Witch, Ru, and StarmanTheta! Without your feedback and testing none of this would be possible!
 
-Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frigid, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne, Survivor, Sling, Calm, Helmet, Skip - Delapouite
+Shaper, Striker, Supporter, Artillery, Basic Terrain, Wooden Terrain, Frigid, Hobbled, Agile, Impaired, Marked, Pull, Push, Slide, Accelerate, Enraged, Airborne, Survivor, Sling, Calm, Helmet, Skip, Vitality - Delapouite
 
-Controller, Courier, Defender, Tundra, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleeding, Vulnerable, Burned, Exposed, Grabbed, Tough, Shred, Stealthy, Studied, Joyful, Shocked, Soaked, Suppressed, Frightened, Staff, Charging, Bloom, Anvil - Lorc
+Controller, Courier, Defender, Tundra, Blast, Blaze, Gale, Storm, Flame Terrain, Water Terrain, Earthen Terrain, Ice Terrain, Windy Terrain, Alight, Anguished, Bleeding, Vulnerable, Burned, Exposed, Grabbed, Tough, Shred, Stealthy, Studied, Joyful, Shocked, Soaked, Suppressed, Frightened, Staff, Charging, Bloom, Anvil, Heavy Armor, Potion, Grenade, Boot, Accessory - Lorc
 
-Blinded, Dazed, Break - Skoll
+Blinded, Dazed, Break, Health - Skoll
 
 Poised, Prone, Sealed, Electric Terrain - sbed
 
-Wand - Wildabeast
+Wand, Chainmail - Wildabeast
+
+## Changelog - Version 0.3
+
+- Attacks changed to just be Miss, Graze, Hit, Crit effects
+- Inventory reworked to an Equipment Slot, Belt Slot, Pack Slot system
+- Defense reaction system reworked to be opposed-roll like
+- Now that defenses are an opposed roll, added defensive gambits
+- Reworked terrain and other set damage effects to follow the Miss/Graze/Hit/Crit system
+- Added 'Sacrifice' effects for armor and weapons that reduce Durability but provide a powerful defensive bonus
+- Stamina is gone! Many defensive abilities now convert damage to Stun, and managing a Stun bar is now the main defensive resource

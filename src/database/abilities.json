@@ -1,0 +1,317 @@
+[
+  {
+    "name": "Accelerate",
+    "class": "Mobility",
+    "type": "Maneuver",
+    "keywords": ["Repeatable"],
+    "cost": "2 _Momentum_",
+    "effect": "Gain 1 _Movement_."
+  },
+  {
+    "name": "Charge",
+    "class": "Utility",
+    "type": "Maneuver",
+    "cost": "None",
+    "keywords": ["Final"],
+    "effect": "Choose any _Ability_, paying any portion of its Cost, then become _Charging_. You must take your _Turn_ next _Phase_ as a _Slow Action_. On said _Turn_, you must first remove _Charging_, then pay the remaining cost of the chose _Ability_ and use it immediately, if able. If you cannot, any paid Cost is lost."
+  },
+  {
+    "name": "Envenom",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
+    "effect": "Add _Poisoned_ 2 to the Attack."
+  },
+  {
+    "name": "Raise Guard",
+    "class": "Defensive",
+    "type": "Maneuver",
+    "keywords": ["Pacifist"],
+    "cost": "1 _Momentum_",
+    "effect": "Gain _Guarding_ 2.",
+    "boosts": [{ "name": "Take Cover", "cost": "None", "effect": "If you have _Cover_, gain 1 _Guard_ against all Attacks while you have any _Guarding_." }]
+  },
+  {
+    "name": "Disengage",
+    "class": "Mobility",
+    "type": "Reaction",
+    "cost": "1 _Movement_",
+    "trigger": "You would spend _Movement_.",
+    "effect": "Do not create an [_Opening_] from spending this Movement.",
+    "special": "If you are in a Mobility Stance this may instead have a cost of 1 _Momentum_."
+  },
+  {
+    "name": "Rally",
+    "class": "Utility",
+    "keywords": ["Pacifist", "Rooted"],
+    "type": "Maneuver",
+    "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
+    "range": "Self/Melee",
+    "target": "Ally (Optional)",
+    "effect": "Choose X. You may repeat the same option:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_."
+  },
+  {
+    "name": "Breather",
+    "class": "Utility",
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "keywords": ["Repeatable"],
+    "effect": "Clear 2 _Stun_. You may add [_Pacifist_] to instead clear 3 _Stun_.",
+    "boosts": [{ "name": "Improved Breather", "cost": "1 _Momentum_", "effect": "If you are in a Recovery Stance, you may _Recover_." }]
+  },
+  {
+    "name": "Unbalance",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Attacker is in Melee Range.",
+    "effect": "Inflict _Exposed_ [4 _Focus_] on the Target, as well as 2 _Stun_."
+  },
+  {
+    "name": "Counter",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Must have _Crit_ on the _Block_.",
+    "effect": "Choose an Attack with a Range of _Melee_, adding [_Discount_ 2]. Automatically resolve that Attack as if it was a _Hit_ against the Attacker if they are in Range."
+  },
+  {
+    "name": "Perfect Guard",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Block_ _Reaction_.",
+    "effect": "Gain +5 _Guard_.",
+    "boosts": [
+      {
+        "name": "Deflect",
+        "cost": "1 _Momentum_",
+        "effect": "Instead, the triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
+      }
+    ]
+  },
+  {
+    "name": "Opportunity Attack",
+    "class": "Offensive",
+    "type": "Reaction",
+    "trigger": "A creature you are _Engaged_ with creates an _Opening_.",
+    "cost": "None",
+    "effect": "Use a Single-Target Attack [_Discount_ 2] against the triggering creature."
+  },
+  {
+    "name": "Lethal Strike",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "Hit+.",
+    "effect": "Deal 4 _Bonus_ _Damage_. If this Defeats the Target, gain 1 _Momentum_."
+  },
+  {
+    "name": "Flurry",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Light_/_Versatile_ Attack.",
+    "effect": "Repeat the Attack, adding [_Discount_ 2, _Follow-Up]. If the triggering Attack was _Light_, gain a +1 _Bonus_."
+  },
+  {
+    "name": "Staggering Impact",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Versatile_/_Heavy_ Attack.",
+    "effect": "Choose one:\n* Deal +2 _Stun_ and add _Staggered_ [_Focus_/_Grit_].\n* Add _Sunder_ [_Reflex_]. If the Target _Blocks_, you must Target _Wielded_ Equipment if possible.\n\nIf the triggering Attack was _Heavy_, deal +2 _Stun_."
+  },
+  {
+    "name": "Press Advantage",
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "effect": "Choose one:\n* On a _Graze_+, add _Exposed_ and 2 _Stun_ to the triggering Attack.\n* On a _Graze_-, immediately use _Brawl_ [_Discount_ 2] against the Target. It automatically Hits.\n* On a _Miss_, gain half the Cost of the original Attack or 2 _Momentum_, whichever is greater."
+  },
+  {
+    "name": "Spiritbound",
+    "class": "Narrative",
+    "type": "Skill",
+    "effect": "You are bound to an elemental spirit, the source of your magic and a constant companion from your youth. You can summon it with a thought and a gesture, either at your side or remotely at an object of sufficient size and similar material to your spirit. It must remain relatively close to you (approximately 100 meters), but is capable of independent thought and action. While incapable of speech, you have an empathetic link to it and always know its current mood, status, and approximate location. This empathetic link also extends (to a lesser extent to spirits of the same type and animals similar to your spirit; you have a natural aptitude when interacting with said creatures, and can better read their attitude.\n\nWhenever knowledge of your spirit's elemental type or its animal form would help or when interacting with animals broadly similar to its animal form, gain +1 die."
+  },
+  {
+    "name": "Dodge",
+    "class": "Defensive",
+    "type": "Reaction",
+    "cost": "1 _Movement_",
+    "trigger": "You are Attacked.",
+    "effect": "Gain +1 _Reflex_. Resolve Damage and Effects as if the Attack was a _Graze_, but use the original Roll for _Gambits_ and other effects."
+  },
+  {
+    "name": "Interact",
+    "class": "Utility",
+    "type": "Maneuver",
+    "keywords": ["Repeatable"],
+    "cost": "1 _Momentum_",
+    "range": "Special (typically Melee)",
+    "effect": "Make an _Abbreviated Skill Challenge_ (if required) to resolve an _Interaction_ within Range. Common Interactions are typically with Terrain, an objective on the battlefield, or when attempting to demoralize or persuade the enemy.",
+    "boosts": [{ "name": "High-Effort", "cost": "1 _Momentum_", "effect": "Gain +1 die on your Skill Challenge. You may repeat this _Boost_." }]
+  },
+  {
+    "name": "Drop",
+    "class": "Utility",
+    "keywords": ["Armament", "Repeatable"],
+    "type": "Maneuver",
+    "cost": "0 _Momentum_",
+    "target": "A _Wielded_ item.",
+    "effect": "Place the Target Unused in your _Arena_.",
+    "boosts": [
+      {
+        "name": "Unstrap",
+        "cost": "1 _Momentum_",
+        "effect": "Instead, Target is a _Worn_ piece of _Equipment_. You may choose this _Boost_ in addition to another."
+      },
+      {
+        "name": "Handoff",
+        "cost": "1 _Momentum_",
+        "effect": "Choose a willing ally within _Melee_ _Range_. Instead, they may immediately _Wield_ or _Wear_ the Target."
+      },
+      {
+        "name": "Fling",
+        "cost": "1 _Momentum_",
+        "effect": "Instead, place the Target unused in an adjacent _Arena_."
+      },
+      {
+        "name": "Toss",
+        "cost": "1 _Momentum_",
+        "effect": "The Target must be 1 _Load_ or less. Choose a willing ally within _Close_ _Range_. They may immediately _Wield_ the Target if they have a _Free Hand_."
+      }
+    ]
+  },
+  {
+    "name": "Equip",
+    "class": "Utility",
+    "keywords": ["Armament", "Repeatable"],
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "target": "A _Worn_ or _Wielded_ item.",
+    "effect": "Make the Target _Worn_ or _Wielded_, as applicable.",
+    "boosts": [
+      {
+        "name": "Retrieve",
+        "cost": "None",
+        "effect": "Create an [_Opening_]. Instead, target an _Unattended_ piece of _Equipment_ in your _Arena_ or one _Worn_ or _Wielded_ by a willing Target."
+      },
+      {
+        "name": "Rummage",
+        "cost": "1 _Momentum_",
+        "effect": "Create an [_Opening_]. Instead, target a _Packed_ Item."
+      }
+    ]
+  },
+  {
+    "name": "Swift Recall",
+    "keywords": ["Spirit"],
+    "class": "Utility",
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "effect": "_Recall_ your _Spirit_."
+  },
+  {
+    "name": "Combination Strike",
+    "keywords": ["Spirit"],
+    "class": "Offensive",
+    "type": "Gambit",
+    "cost": "None",
+    "effect": "Your Spirit may immediately use a Single-Target Attack [_Discount_ 2] against the same Target."
+  },
+  {
+    "name": "Interdiction",
+    "keywords": ["Spirit"],
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Spirit_ is in _Melee_ Range of you.",
+    "effect": "You and your Spirit are both targeted by the triggering effect, but take half Damage/_Stun_ each and _Negate_ with _Advantage_."
+  },
+  {
+    "name": "Brawl",
+    "keywords": ["Crush"],
+    "class": "Light",
+    "type": "Attack",
+    "cost": "1 _Momentum_",
+    "range": "Melee",
+    "target": "Single-Target",
+    "effect": "Choose one, then Attack a Target within Range:\n* <u>Slam:</u> Deal _1/2/2/3_ _Damage_.\n* <u>Disorient:</u> Deal _0/0/1/1_ _Damage_ and inflict _Impaired_/_Exposed_.\n* <u>Overpower:</u> Inflict _Push_ [_Grit_], _Prone_ [_Grit_/_Reflex_] or _Grabbed_ [_Grit_/_Reflex_].\n* <u>Steal:</u> Inflict _Disarm_ [_Grit_/_Reflex_]. The Target has _Advantage_ to _Negate_ if they are _Wielding_ the item.",
+    "boosts": [{ "name": "Intensity", "cost": "1 _Momentum_", "effect": "Instead, choose two." }],
+    "chart": {
+      "roll": ["2-3", "4-5", "6-10", "11-12"]
+    }
+  },
+  {
+    "name": "Block",
+    "class": "Defensive",
+    "type": "Reaction",
+    "cost": "1 _Momentum_",
+    "trigger": "You would take Damage.",
+    "effect": "Gain +1 _Grit_. You may choose one piece of _Wielded_ equipment to use for the block, gaining any benefits it provides. Make a _Defense Roll_ and apply the result. You have _Disadvantage_ if:\n* You do not choose a _Versatile_/_Heavy_ _Weapon_ and the Attack is _Heavy_.\n* The chosen Equipment does not have _Shielding_ and the Attack is not _Melee_.\n\nIf the triggering effect triggers _Sunder_, it must target the Equipment chosen for the block.",
+    "chart": {
+      "status": ["+1 _Guard_", "+2 _Guard_", "+3 _Guard_", "+5 _Guard_"],
+      "roll": ["2-3", "4-5", "6-10", "11-12"],
+      "defend": "true"
+    }
+  },
+  {
+    "name": "Elemental Control",
+    "class": "Utility",
+    "keywords": ["Spirit"],
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "range": "Close-",
+    "effect": "_Bend_ 1 of the same Element as this Spirit's Type.",
+    "special": "Add this Spirit's Type to the Keywords."
+  },
+  {
+    "name": "Encourage",
+    "class": "Utility",
+    "type": "Maneuver",
+    "range": "Short-",
+    "cost": "1 _Momentum_",
+    "effect": "You call encouragement out to an ally. They may clear 3 _Stun_.",
+    "boosts": [{ "name": "Focused Encouragement", "cost": "1 _Momentum_", "effect": "In addition, grant your ally _Joyful_, _Courageous_, or _Calm_." }]
+  },
+  {
+    "name": "Adrenaline Rush",
+    "class": "Utility",
+    "type": "Reaction",
+    "trigger": "None. You may use this _Reaction at any time, but only once per _Round_.",
+    "cost": "None.",
+    "effect": "Immediately gain 4 _Momentum_ (in any combination) and 1 _Fatigue_."
+  },
+  {
+    "name": "Sacrifice",
+    "class": "Defensive",
+    "type": "Reaction",
+    "trigger": "You would take a _Wound_.",
+    "cost": "None.",
+    "effect": "Instead of taking a _Wound_, _Sunder_ a piece of _Armor_ and instead take _Fatigue_, or _Drain_ if you are a _Spirit_. If you _Blocked_, you may instead _Sunder_ a _Wielded_ piece of _Equipment_."
+  },
+  {
+    "name": "Metallic Splintering",
+    "class": "Utility",
+    "keywords": ["Metal"],
+    "type": "Maneuver",
+    "cost": "None",
+    "range": "Melee",
+    "effect": "Take 2 Damage. Create a Size 0 _Metal Shard_.",
+    "boosts": [{ "name": "Heavy Splintering", "cost": "None", "effect": "Take an additioanl Damage." }]
+  },
+  {
+    "name": "Earthen Reconstitution",
+    "class": "Utility",
+    "keywords": ["Earth", "Pacifist", "Rooted"],
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "range": "Melee",
+    "reqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
+    "effect": "Gain 3 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
+    "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, gain 5 _Vigor_ or 3 _Health_." }]
+  }
+]

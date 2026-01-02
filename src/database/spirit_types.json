@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Blaze",
+    "element": "Flame",
+    "desc": "Your spirit is formed from burning flames, flickering and shifting with every step.",
+    "defenses": { "reflex": 1, "stamina": 1, "resistances": ["Fire", "Cold"], "weaknesses": ["Water"] },
+    "move": 2,
+    "health": 12,
+    "traits": ["Elemental", "_Naturewalk_ (Fire)", "Hydrophobic"]
+  },
+  {
+    "name": "Detonation",
+    "element": "Flame",
+    "desc": "Your spirit is formed from a mass of barely contained explosions, pulsing with power.",
+    "manifest_effect": "Deal 1 _Fire_ Damage in a _Burst_ 1 around the space you _Manifest_ in.",
+    "traits": ["_Volatile_ 2 (_Fire_)"]
+  },
+  {
+    "name": "Gale",
+    "element": "Wind",
+    "desc": "Your spirit is formed from roiling, twisting wind, buffeting all nearby with gusts.",
+    "manifest_effect": "Roll a d6 then resolve using the below table against a Target at the _Position_ they _Manifested_ at. This roll has _Advantage_ if _Manifested_ at a _Major Source_.",
+    "defenses": { "reflex": 2, "stamina": 1 },
+    "traits": ["Elemental", "_Naturewalk_ (Wind)", "Flier"],
+    "move": 3,
+    "health": 10
+  },
+  {
+    "name": "Land",
+    "element": "Earth",
+    "desc": "Your spirit is likely made of soil, mud, or another loose form of earth, giving it a malleable form.",
+    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent _Earthen_ space _Uneven Earth_.",
+    "traits": ["_Naturewalk_ (Earth)", "_Resistance_ 2 (_Crush_)"]
+  },
+  {
+    "name": "Mountain",
+    "element": "Earth",
+    "desc": "Your spirit is formed from from solid earth, often stone, providing a powerful defense.",
+    "defenses": { "grit": 2, "stamina": 2, "resistances": ["Slash", "Stab"] },
+    "health": 15,
+    "guard": 1,
+    "move": 1,
+    "traits": ["_Elemental_", "Stable", "Sinker"]
+  },
+  {
+    "name": "Grounding",
+    "element": "Hide",
+    "desc": "Your spirit likely takes a more animalistic form, enhancing its strength many times over.",
+    "effect": "Your spirit increases their _Health_ by 3. Your _Spirit_ deals +1 Damage with all _Natural Weapon_ Attacks and adds _Push_ 1."
+  },
+  {
+    "name": "Storm",
+    "element": "Wind",
+    "desc": "Your spirit is formed from crackling electricity, rarely holding a physical form for more than the blink of an eye.",
+    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent space _Electrified_.",
+    "traits": ["Stormwalk", "_Resistance_ 2 (_Lightning_)", "_Warded_ 2 (_Shocked_)"]
+  },
+  {
+    "name": "Valor",
+    "element": "Hide",
+    "desc": "Your spirit glows with a faint green light, rousing the spirits of all that are near.",
+    "effect": "Your _Spirit_ is _Warded_ to _Frightened_",
+    "summon_effect": "Allies within Range 4 of your _Spirit_ reduce the cost to _Negate_ _Frightened_ by 1.",
+    "manifest_effect": "You may grant an ally in Range 4 _Courageous_ 1."
+  },
+  {
+    "name": "Tremorsight",
+    "element": "Hide",
+    "desc": "Your spirit is especially in-tune with the earth, and often takes the form of subterranean creatures.",
+    "effect": "While _Summoned_ you and your _Spirit_ have _Seismic Sense_ on all spaces within Range 2 of it.",
+    "manifest_effect": "You may inflict _Studied_ on a creature in Range 4 on an _Earthen_ space."
+  },
+  {
+    "name": "Tide",
+    "element": "Water",
+    "desc": "Your spirit is formed from water, constantly dripping and swiftly flowing through water.",
+    "special": "Whenever you use a _Manifest_ _Draw_ 1 within Range of the Manifest effect. You may treat all spaces that are not a _Flame_ _Source_ as a _Minor Source_ for the purpose of this _Manifest_.",
+    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent space _Wet_.",
+    "defenses": { "reflex": 1, "focus": 1, "stamina": 2, "resistances": ["Crush", "Fire"] },
+    "traits": ["Elemental", "_Naturewalk_ (Water)"],
+    "health": 15,
+    "move": 2,
+    "soak": 1
+  },
+  {
+    "name": "Tundra",
+    "element": "Water",
+    "desc": "Your spirit is formed from frost and ice, chilling the air around them.",
+    "manifest_effect": "You may make the space you _Manifest_ in or an adjacent space _Icy_.",
+    "special": "Whenever you use a _Manifest_ _Draw_ 1 within Range of the Manifest effect. You may treat all spaces that are not a _Flame_ _Source_ as a _Minor Source_ for the purpose of this _Manifest_.",
+    "traits": ["Frostwalk", "_Resistance_ 2 (_Cold_)", "_Warded_ 2 (_Frozen_)", "_Weakness_ 2 (_Fire_)"]
+  },
+  {
+    "name": "Metal Spirit",
+    "desc": "A spirit made of metal, formed of hard ridges and solid structures.",
+    "defenses": { "grit": 1, "focus": 1, "stun": 10 },
+    "manifest": [
+      "_Metal_ _Terrain_ or non-Trinket Metal _Equipment_ at _Close_- Range.",
+      "_Metal_ _Terrain_ or at least 2 _Load_ of _Metal_ at _Close_- _Range_.",
+      "_Metal_ _Terrain_ or at least 6 _Load_ of _Metal_ at _Melee_ _Range_.",
+      "_Metal_ _Terrain_ or at least 10 _Load_ of _Metal_ at _Melee_ _Range_."
+    ],
+    "health": 10,
+    "move": 2,
+    "growth_points": 5,
+    "speed": 3
+  },
+  {
+    "name": "Earth Spirit",
+    "desc": "A spirit made of earth, formed from stone and soil.",
+    "defenses": { "grit": 2, "resistances": [], "immunities": [], "stun": 10 },
+    "manifest": [
+      "May be _Manifested_ at any _Position_ with _Earthen_ _Terrain_ or at least 1 _Load_ of _Earth_ _Equipment_ at _Close_ Range.",
+      "May be _Manifested_ at any _Position_ with _Earthen_ _Terrain_ or at least 4 _Load_ of _Earth_ at _Close_ _Range_.",
+      "May be _Manifested_ at any _Position_ with _Earthen_ _Terrain_ or at least 8 _Load_ of _Earth_ at _Melee_ _Range_.",
+      "May be _Manifested_ at any _Position_ with _Earthen_ _Terrain_ or at least 12 _Load_ of _Earth_ at _Melee_ _Range_."
+    ],
+    "traits": ["Stoneborn", "Heavy", "Sinker"],
+    "health": 15,
+    "move": 1,
+    "growth_points": 5
+  }
+]

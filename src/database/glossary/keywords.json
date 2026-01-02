@@ -13,7 +13,11 @@
   },
   {
     "name": "Arsenal",
-    "effect": "If you pick a piece of Equipment with the Arsenal keyword you gain X of that item for its listed Weight rather than 1."
+    "effect": "If you pick a piece of Equipment with the Arsenal keyword you gain X of that item for its listed Load rather than 1."
+  },
+  {
+    "name": "Bane",
+    "effect": "When targeting the listed Bane type, Attacks are one step more effective than normal."
   },
   {
     "name": "Avoidable",
@@ -50,10 +54,6 @@
   {
     "name": "Climable",
     "effect": "_Climbing_ this Feature or Terrain costs only the vertical height covered."
-  },
-  {
-    "name": "Counter",
-    "effect": "Counters are a _Resist_ with this keyword based on throwing aside defense to attack. Many Actions and abilities reference Counter _Resists_."
   },
   {
     "name": "Cone",
@@ -128,15 +128,7 @@
   },
   {
     "name": "Flame",
-    "effect": "Flame is an element that is able to easily conjure and creature their own _Sources_. Flamebound act as _Suppressed_ when _Soaked_ or at a _Position_ with _Water_ _Terrain_, and _Sealed_ when _Swimming_ in Water."
-  },
-  {
-    "name": "Temporary",
-    "effect": "Temporary bonuses are are lost at the end of the current _Turn_. Temporary bonuses do not count against any caps that a character might have."
-  },
-  {
-    "name": "Fleeting",
-    "effect": "Fleeting Terrain and Features are _Destroyed_ at the end of the current _Round_."
+    "effect": "Flame is an element that is able to easily conjure and creature their own _Sources_. Flamebound act as _Suppressed_ when _Paddinged_ or at a _Position_ with _Water_ _Terrain_, and _Sealed_ when _Swimming_ in Water."
   },
   {
     "name": "Flourish",
@@ -177,7 +169,7 @@
   },
   {
     "name": "Glancing",
-    "effect": "This effect deals half _Damage_, creatures have _Advantage_ on all _Negate_ rolls, and any _Stun_ or instant Status (such as _Push_ or _Dazed_) is halved."
+    "effect": "You have _Advantage_ to _Negate_ against this Attack. Any _Guard_ you have reduces the Damage instead of converting it to _Stun_."
   },
   {
     "name": "Grasping",
@@ -232,10 +224,6 @@
     "effect": "Characters may only have a single effect with this keyword active at a time. If they use another effect with this keyword, end the previous effect."
   },
   {
-    "name": "Melee",
-    "effect": "This may only target at your _Position_."
-  },
-  {
     "name": "Reach",
     "effect": "Attacks with a Range of Reach can Target any creature within their _Arena_."
   },
@@ -243,9 +231,22 @@
     "name": "Short",
     "effect": "This may only target within your _Arena_ and adjacent _Path_s. Attacks with this Range take a -1 _Penalty_ if there is a hostile creature at your _Position_."
   },
+  { "name": "Medium", "effect": "Medium can refer to _Medium (Range)_ or _Medium (Size)_." },
   {
-    "name": "Medium",
+    "name": "Medium (Range)",
     "effect": "This may only target within adjacent _Arena_s and _Path_s. Attacks with this Range take a -2 _Penalty_ if there is a hostile creature at your _Position_."
+  },
+  {
+    "name": "Medium (Size)",
+    "effect": "The most common size, consisting of creatures that range from a large dog to a human in size. Medium creatures suffer no specific penalties and gain no specific advantages."
+  },
+  {
+    "name": "Small",
+    "effect": "Creatures that are between the size of a cat and a large dog. Small creatures benefit from _Cover_ if there is any _Medium_ or larger _Cover_ at their _Position_, even if they are not _Occupying_ it."
+  },
+  {
+    "name": "Tiny",
+    "effect": "Creatures that are between the size of a rat and a cat. Tiny creatures benefit from _Cover_ if there is any _Small_ or larger _Cover_ at their _Position_, even if they are not _Occupying_ it. They additionally benefit from _Cover_ if there are _Medium_ or larger creatures at their _Position_. Finally, if not specified otherwise, a Tiny creature may only carry 1 _Load_ of _Equipment_."
   },
   {
     "name": "Long",
@@ -269,15 +270,11 @@
   },
   {
     "name": "Overwhelming",
-    "effect": "This Attack ignores half of a creature's _Resistance_, and ignores half the _Ward_ created by non-_Resistance_ effects."
+    "effect": "This Attack ignores _Resistance_, and ignores half the target's _Ward_."
   },
   {
     "name": "Ordnance",
     "effect": "This Attack must be made before any _Movement_ is made this _Turn_."
-  },
-  {
-    "name": "Pierce",
-    "effect": "This Attack ignores an amount of the Target's _Guard_/_Soak_ equal to its Pierce value."
   },
   {
     "name": "Punish",
@@ -289,8 +286,8 @@
     "effect": "You may always treat this weapon as _Wielded_ so long as you have the appropriate _Open Hands_. After using it for any effect, you must _Wield_ it."
   },
   {
-    "name": "Parry",
-    "effect": "Different abilities may allow a creature to Parry. When a creature Parries, they gain the Parry Effect of a _Wielded_, un-_Sundered_ piece of Equipment against the triggering effect or for a set duration. A creature may pay 1 _Momentum_ to Parry with _Sundered_ Equipment."
+    "name": "Layers",
+    "effect": "While wearing Base Armor with this keyword you may equip a number of Layered Armor pieces equal to this Keyword. These have no Load and share Durability with your Base Armor. Additionally, all keywords are shared between Base Armor and Layered Armor."
   },
   {
     "name": "Priority",
@@ -306,15 +303,11 @@
   },
   {
     "name": "Safe",
-    "effect": "Increase the cost of all _Punish_ _Reactions_ triggered by an _Opening_ created by this effect."
+    "effect": "All Punish Reactions add _Glancing_ against you this _Turn_."
   },
   {
     "name": "Secure",
     "effect": "Reduce the cost to negate _Disarmed_ by 1 for this _Equipment_."
-  },
-  {
-    "name": "Small",
-    "effect": "This piece of Equipment is particularly small. If you select this piece of Equipment you gain 2 without increasing the Weight."
   },
   {
     "name": "Social",
@@ -349,10 +342,6 @@
     "effect": "Every time you use this Ability increase its Cost by X, where X is the listed Taxing. Reset the Cost to the initial value at _Respite_."
   },
   {
-    "name": "Edge",
-    "effect": "A special type of _Gambit_ which only one may be applied to a single Attack."
-  },
-  {
     "name": "Point Blank",
     "effect": "This _Attack_ does not take penalties for using it while adjacent to foes."
   },
@@ -371,6 +360,10 @@
   {
     "name": "Rigid",
     "effect": "This _Ability_ must be used at its listed Speed."
+  },
+  {
+    "name": "Resilient",
+    "effect": "When reducing Damage due to _Guard_, this creature gains no _Stun_."
   },
   {
     "name": "Rush",
@@ -402,11 +395,11 @@
   },
   {
     "name": "Temporary",
-    "effect": "Temporary resources are always lost at the end of the."
+    "effect": "Temporary resources are always lost at the end of the current ."
   },
   {
     "name": "Thrown",
-    "effect": "Attacks with the Thrown keyword treat _Grazes_ as a _Miss_, dealing no damage, and causing no effects. After being thrown, a Thrown weapon is placed at the Target's _Position_ and may not be used again until retrieved."
+    "effect": "After attacking at a Range listed with this keyword, a Thrown weapon is placed at the Target's _Position_ and may not be used again until retrieved."
   },
   {
     "name": "Two-Handed",
@@ -414,7 +407,7 @@
   },
   {
     "name": "Unblockable",
-    "effect": "All _Reactions_ with the _Ward_ keyword cost an additional _Momentum_ against this _Technique."
+    "effect": "Opponents may not _Defend_ against this Attack."
   },
   {
     "name": "Upkeep",

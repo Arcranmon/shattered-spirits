@@ -35,7 +35,7 @@ a {
   color: black !important;
   font-family: $font--fancy;
   font-size: 1em;
-  font-weight: 700;
+  font-load: 700;
   letter-spacing: 0.02em;
   line-height: 1;
   text-decoration: none;

@@ -12,8 +12,12 @@
       style="margin: 0.5em" />
     <v-row justify="center" style="display: flex; flex-direction: column">
       <v-col cols="12">
-        <v-row class="topbar"
-          ><v-col cols="4" class="d-flex" style="flex-direction: column">
+        <v-row class="topbar">
+          <v-col cols="3">
+            <v-btn @click="importPremades" class="button--template button--topbar">
+              <span class="btn-content">Import Premades</span>
+            </v-btn> </v-col
+          ><v-col cols="3" class="d-flex" style="flex-direction: column">
             <v-dialog v-model="characterImportDialog" hide-overlay>
               <template v-slot:activator="{}">
                 <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
@@ -29,7 +33,7 @@
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="4" v-if="characterSelected">
+          <v-col cols="3" v-if="characterSelected">
             <v-dialog v-model="deleteDialog" hide-overlay>
               <template v-slot:activator="{}">
                 <v-btn @click="deleteDialog = true" class="button--template button--topbar">
@@ -51,7 +55,7 @@
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="4" v-if="characterSelected">
+          <v-col cols="3" v-if="characterSelected">
             <v-btn @click="exportCharacter" class="button--template button--topbar">
               <span class="btn-content">Export {{ selectedCharacter.Name }}</span>
             </v-btn>
@@ -65,14 +69,16 @@
       <v-col cols="2" class="sidebar">
         <div v-for="(character, index) in characters" :key="index" class="button--spacing">
           <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)"
-            ><span v-if="character.Spirit.Subtype != undefined" style="margin: 2px">
-              {{ character.Name }} and {{ character.Spirit.Name }} the {{ character.Spirit.Subtype.Name }} Spirit</span
-            ></v-btn
+            ><span style="margin: 2px"> {{ character.Name }} and {{ character.Spirit.Name }}</span></v-btn
           >
         </div> </v-col
       ><v-col cols="10">
         <v-row class="topbar"
-          ><v-col cols="4" class="d-flex" style="flex-direction: column">
+          ><v-col cols="3">
+            <v-btn @click="importPremades" class="button--template button--topbar">
+              <span class="btn-content">Import Premades</span>
+            </v-btn> </v-col
+          ><v-col cols="3" class="d-flex" style="flex-direction: column">
             <v-dialog v-model="characterImportDialog" hide-overlay>
               <template v-slot:activator="{}">
                 <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
@@ -88,7 +94,7 @@
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="4" v-if="characterSelected">
+          <v-col cols="3" v-if="characterSelected">
             <v-dialog v-model="deleteDialog" hide-overlay>
               <template v-slot:activator="{}">
                 <v-btn @click="deleteDialog = true" class="button--template button--topbar">
@@ -110,7 +116,7 @@
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="4" v-if="characterSelected">
+          <v-col cols="3" v-if="characterSelected">
             <v-btn @click="exportCharacter" class="button--template button--topbar">
               <span class="btn-content">Export {{ selectedCharacter.Name }}</span>
             </v-btn>
@@ -127,17 +133,12 @@ import Vue from 'vue'
 import { getModule } from 'vuex-module-decorators'
 import { CharacterManagementStore } from '@/store'
 import { Character } from '@/class'
+import John from '@/database/sample_characters/john.json'
 import ShowCharacter from '@/components/ShowCharacter.vue'
 
 export default Vue.extend({
   name: 'character-box',
   components: { ShowCharacter },
-  props: {
-    characters: {
-      type: Array[Character],
-      required: true,
-    },
-  },
   data() {
     return {
       importFile: [],
@@ -176,6 +177,12 @@ export default Vue.extend({
       document.body.removeChild(element)
     },
 
+    importPremades() {
+      const store = getModule(CharacterManagementStore, this.$store)
+      var char = Character.Deserialize(John)
+      store.AddCharacter(char)
+    },
+
     importCharacter() {
       if (this.importFile === null || this.importFile === undefined || this.importFile.length === 0) {
         alert('Please select a file to create a character from!')
@@ -193,6 +200,11 @@ export default Vue.extend({
     },
   },
   computed: {
+    characters() {
+      const store = getModule(CharacterManagementStore, this.$store)
+      store.loadCharacters()
+      return store.AllCharacters
+    },
     characterSelected: function () {
       return this.selectedCharacter != null
     },

@@ -1,26 +1,25 @@
 import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
-import Accessories from '@/database/items/accessories.json'
+import ConsumablesJson from '@/database/items/consumables.json'
 import DisciplinesJson from '@/database/disciplines.json'
 import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 import Talents from '@/database/talents.json'
 import ArchetypesJson from '@/database/archetypes.json'
+import SpiritTraitsJson from '@/database/spirit_traits.json'
+
+import AbilityPackageJson from '@/database/ability_packages.json'
+import AbilitiesJson from '@/database/abilities.json'
 
 import DamageTypes from '@/database/glossary/damage_types.json'
 import Glossary from '@/database/glossary/glossary.json'
 import Traits from '@/database/traits.json'
 import Statuses from '@/database/glossary/statuses.json'
-import Keywords from '@/database/glossary/keywords.json'
-import Resources from '@/database/glossary/resources.json'
 
 import FeaturesJson from '@/database/features.json'
 import Terrains from '@/database/terrain.json'
 
-import Attacks from '@/database/attacks.json'
-
-import SubtypeJson from '@/database/subtypes.json'
-import SpiritForms from '@/database/spirit_forms.json'
+import SpiritTypeJson from '@/database/spirit_types.json'
 
 import ManeuversJson from '@/database/maneuvers.json'
 
@@ -28,11 +27,11 @@ import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
 import {
+  AbilityPackage,
   Armor,
   Archetype,
-  Attack,
   Discipline,
-  Accessory,
+  Consumable,
   Maneuver,
   Npc,
   Feature,
@@ -43,7 +42,9 @@ import {
   Talent,
   Technique,
   Terrain,
+  Trait,
   Weapon,
+  Ability,
 } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
@@ -51,7 +52,29 @@ let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'W
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
-let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Keywords, Traits, Resources]
+let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Traits]
+
+const kPlayerAbilities = ['Adrenaline Rush', 'Sacrifice', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
+
+const kSpiritAbilities = []
+
+const kBasicAbilities = [
+  'Accelerate',
+  'Brawl',
+  'Block',
+  'Breather',
+  'Counter',
+  'Disengage',
+  'Perfect Guard',
+  'Opportunity Attack',
+  'Lethal Strike',
+  'Flurry',
+  'Staggering Impact',
+  'Dodge',
+  'Interact',
+  'Drop',
+  'Equip',
+]
 
 @Module({
   name: 'databaseJson',
@@ -69,9 +92,13 @@ export class DatabaseJsonStore extends VuexModule {
     this.Disciplines = DisciplinesJson.map((x) => Discipline.Deserialize(<IDisciplineData>(<unknown>x))).sort((a, b) => a.Name.localeCompare(b.Name))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Techniques = TechniquesJson.map((x) => Technique.Deserialize(<ITechData>(<unknown>x)))
-    this.Subtypes = SubtypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
+    this.Subtypes = SpiritTypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
+    this.AbilityPackages = AbilityPackageJson.map((x) => AbilityPackage.Deserialize(<IAbilityPackageData>(<unknown>x)))
+    this.Consumables = ConsumablesJson.map((x) => Consumable.Deserialize(<IConsumableData>(<unknown>x)))
+    this.Traits = SpiritTraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
+    this.Abilities = AbilitiesJson.map((x) => Ability.Deserialize(<IAbilityData>(<unknown>x)))
   }
 
   private Maneuvers: Maneuver[] = []
@@ -81,8 +108,67 @@ export class DatabaseJsonStore extends VuexModule {
   private Disciplines: Discipline[] = []
   private Techniques: Technique[] = []
   private Subtypes: Subtype[] = []
+  private SpiritForms: SpiritForm[] = []
   private Features: Feature[] = []
   private Archetypes: Archetype[] = []
+  private AbilityPackages: AbilityPackage[] = []
+  private Consumables: Consumable[] = []
+  private Traits: Trait[] = []
+  private Abilities: Ability[] = []
+
+  get basicStances() {
+    return ['Open Stance', 'Resting Stance', 'Guarded Stance', 'Agile Stance', 'Hostile Stance', 'Focused Stance']
+  }
+
+  get playerArts() {
+    return []
+  }
+
+  get basicAbilities() {
+    return kBasicAbilities
+  }
+
+  get playerAbilities() {
+    return kPlayerAbilities
+  }
+
+  get spiritAbilities() {
+    return kSpiritAbilities
+  }
+
+  // ==========================================================
+  // BASIC ABILITY TOOLS
+  // ==========================================================
+  get getAbilities(): any {
+    return () => {
+      return this.Abilities
+    }
+  }
+
+  get getAbility(): any {
+    return (inword: string) => {
+      var ability = this.Abilities.find((x) => x.Name.trim() == inword.trim())
+      if (ability == undefined) return new Ability(inword)
+      return ability
+    }
+  }
+
+  get getAbilitiesFromList(): any {
+    return (ability_list: Array<any>) => {
+      if (ability_list == undefined) return []
+      let abilities: Array<Ability> = []
+      for (var ability of ability_list) {
+        abilities.push(this.getAbility(ability))
+      }
+      return abilities
+    }
+  }
+
+  get isBasicAbility(): any {
+    return (inword: string) => {
+      return this.Abilities.some((x) => x.Name == inword.trim())
+    }
+  }
 
   // ==========================================================
   // MANEUVER TOOLS
@@ -109,6 +195,85 @@ export class DatabaseJsonStore extends VuexModule {
   get isManeuver(): any {
     return (inword: string) => {
       return this.Maneuvers.some((x) => x.Name == inword.trim())
+    }
+  }
+
+  // ==========================================================
+  // ABILITY PACKAGE TOOLS
+  // ==========================================================
+  get getAP(): any {
+    return (inword: string) => {
+      var art = this.AbilityPackages.find((x) => x.Name.trim() == inword.trim())
+      if (art == undefined) return new AbilityPackage(inword)
+      return art
+    }
+  }
+
+  get getAPsFromList(): any {
+    return (ap_list: Array<any>) => {
+      if (ap_list == undefined) return []
+      let aps: Array<AbilityPackage> = []
+      for (var ap of ap_list) {
+        aps.push(this.getAP(ap))
+      }
+      return aps
+    }
+  }
+
+  get getArts(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Art')
+    }
+  }
+
+  get getTalents(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Talent')
+    }
+  }
+
+  get getSpiritTraits(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Spirit Trait')
+    }
+  }
+
+  get getSpiritTraitsByTagAndCost(): any {
+    return (tag: string, cost: string) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Spirit Trait' && x.Category == tag.trim() && x.CostHeader.includes(cost.trim()))
+    }
+  }
+
+  get getTraitsByTagAndCost(): any {
+    return (tag: string, cost: string) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Trait' && x.Category == tag.trim() && x.CostHeader.includes(cost.trim()))
+    }
+  }
+
+  get isArt(): any {
+    return (inword: string) => {
+      return this.AbilityPackages.some((x) => x.Name == inword.trim())
+    }
+  }
+  // ==========================================================
+  // EQUIPMENT GETTERS
+  // ==========================================================
+  get getEquipmentFromList(): any {
+    return (equipment_list: Array<any>) => {
+      if (equipment_list == undefined) return []
+      let equipment: Array<any> = []
+      for (var item of equipment_list) {
+        if (this.isWeapon(item)) {
+          equipment.push(this.getWeapon(item))
+        }
+        if (this.isArmor(item)) {
+          equipment.push(this.getArmor(item))
+        }
+        if (this.isConsumable(item)) {
+          equipment.push(this.getConsumable(item))
+        }
+      }
+      return equipment
     }
   }
 
@@ -207,45 +372,12 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFilteredWeapons(): any {
-    return (categories: Array<string>, speed: any, type: string) => {
+    return (categories: Array<string>, type: string) => {
       return this.Weapons.filter(
         (x) =>
-          (categories.includes(x.Category.trim()) ||
-            (categories.includes('Throwing') && x.hasOwnProperty('keywords') && x.Keywords.some((y) => y.includes('Thrown')))) &&
-          (speed == 'Any' || speed == x.Speed) &&
-          (type == 'Any' || x.Type == type) &&
-          typeof x.Range == 'string',
+          (x.Abilities.length > 0 && categories.includes(x.Category.trim())) ||
+          (categories.includes('Throwing') && x.hasOwnProperty('keywords') && x.Keywords.some((y) => y.includes('Thrown'))),
       )
-    }
-  }
-
-  // ==========================================================
-  // ATTACK TOOLS
-  // ==========================================================
-  get getAttacksFromList(): any {
-    return (attack_list: Array<any>) => {
-      if (attack_list == undefined) return []
-      let attacks: Array<Attack> = []
-      for (var attack of attack_list) {
-        attacks.push(this.getAttack(attack))
-      }
-      return attacks
-    }
-  }
-
-  get getAttack(): any {
-    return (inword: string) => {
-      var attack = Attacks.find((x) => x.name.trim() === inword.trim())
-      if (attack == undefined) {
-        return new Attack(inword)
-      }
-      return Attack.Deserialize(<IAttackData>attack)
-    }
-  }
-
-  get isAttack(): any {
-    return (inword: string) => {
-      return Attacks.some((x) => x.name == inword.trim())
     }
   }
 
@@ -397,6 +529,17 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getDisciplinesFromList(): any {
+    return (disc_list: Array<any>) => {
+      if (disc_list == undefined) return []
+      let discs: Array<Discipline> = []
+      for (var disc of disc_list) {
+        discs.push(this.getDiscipline(disc))
+      }
+      return discs
+    }
+  }
+
   get getMastery(): any {
     return (inword: string) => {
       var discipline = this.Masteries.find((x) => x.Name.trim() === inword.trim())
@@ -423,32 +566,34 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // FEATURE TOOLS
+  // Consumable TOOLS
   // ==========================================================
-  get getAccessories(): any {
-    return () => {
-      return Accessories.map((x) => Accessory.Deserialize(<IAccessoryData>(<unknown>x)))
-    }
-  }
-
-  get getAccessory(): any {
+  get isConsumable(): any {
     return (inword: string) => {
-      var accessory = Accessories.find((x) => x.name.trim() === inword.trim())
-      if (accessory == undefined) {
-        return new Accessory(inword)
-      }
-      return Accessory.Deserialize(<IAccessoryData>(<unknown>accessory))
+      return this.Consumables.some((x) => x.Name == inword.trim())
     }
   }
 
-  get getAccessoryFromList(): any {
-    return (accessory_list: Array<any>) => {
-      if (accessory_list == undefined) return []
-      let Accessories: Array<Accessory> = []
-      for (var accessory of accessory_list) {
-        Accessories.push(this.getAccessory(accessory))
+  get getConsumables(): any {
+    return () => {
+      return this.Consumables
+    }
+  }
+
+  get getConsumable(): any {
+    return (inword: string) => {
+      return this.Consumables.find((x) => x.Name === inword.trim())
+    }
+  }
+
+  get getConsumableFromList(): any {
+    return (consumable_list: Array<any>) => {
+      if (consumable_list == undefined) return []
+      let consumables: Array<Consumable> = []
+      for (var consumable of consumable_list) {
+        consumables.push(this.getConsumable(consumable))
       }
-      return Accessories
+      return consumables
     }
   }
 
@@ -539,11 +684,6 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // TALENT GETTERS
   // ==========================================================
-  get getTalents(): any {
-    return () => {
-      return Talents.map((x) => Talent.Deserialize(<ITalentData>x))
-    }
-  }
 
   get getTalent(): any {
     return (inword: string) => {
@@ -595,6 +735,12 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get isArchetype(): any {
+    return (inword: string) => {
+      return this.Archetypes.some((x) => x.Name == inword.trim())
+    }
+  }
+
   // ==========================================================
   // BASIC GLOSSARY TOOLS
   // ==========================================================
@@ -629,18 +775,6 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getKeywords(): any {
-    return () => {
-      return Keywords
-    }
-  }
-
-  get getResources(): any {
-    return () => {
-      return Resources
-    }
-  }
-
   get getGlossaryItem(): any {
     return (inword: string) => {
       var effect
@@ -648,6 +782,12 @@ export class DatabaseJsonStore extends VuexModule {
         effect = this.getGlossaryItemFromJson(json, inword)
         if (effect != undefined) return effect
       }
+    }
+  }
+
+  get getGlossaryItemWithHeader(): any {
+    return (inword: string) => {
+      return '**' + inword + ':** ' + this.getGlossaryItem(inword)
     }
   }
 
@@ -670,7 +810,7 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // SPIRIT TYPE GETTERS
   // ==========================================================
-  get getSubtype(): any {
+  get getSpiritType(): any {
     return (inword: string) => {
       var type = this.Subtypes.find((x) => x.Name === inword.trim())
       return type
@@ -688,16 +828,46 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getSpiritForm(): any {
     return (inword: string) => {
-      var form = SpiritForms.find((x) => x.name.trim() === inword.trim())
-      return SpiritForm.Deserialize(<ISpiritFormData>(<unknown>form))
+      var type = this.SpiritForms.find((x) => x.Name === inword.trim())
+      return type
     }
   }
 
-  get getTrait(): any {
+  get getSpiritFormsFromList(): any {
+    return (spirit_forms: Array<string>) => {
+      if (spirit_forms == undefined) return []
+      let forms: Array<SpiritForm> = []
+      for (var form of spirit_forms) {
+        forms.push(this.getSpiritForm(form))
+      }
+      return forms
+    }
+  }
+
+  // ==========================================================
+  // SPIRIT TRAITS GETTERS
+  // ==========================================================
+  get getSpiritTrait(): any {
     return (inword: string) => {
-      var trait = Traits.find((x) => x.name == inword)
-      if (trait) return trait.effect
-      return 'Trait not found!'
+      var type = this.Traits.find((x) => x.Name === inword.trim())
+      return type
+    }
+  }
+
+  get getSpiritTraitsFromList(): any {
+    return (spirit_traits: Array<string>) => {
+      if (spirit_traits == undefined) return []
+      let traits: Array<Trait> = []
+      for (var trait of spirit_traits) {
+        traits.push(this.getSpiritTrait(trait))
+      }
+      return traits
+    }
+  }
+
+  get isTrait(): any {
+    return (inword: string) => {
+      return this.Traits.some((x) => x.Name == inword.trim())
     }
   }
 }

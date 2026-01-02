@@ -87,11 +87,14 @@ $space--xxs: 0.25em;
   font-size: 1.5em;
   font-family: $font--fancy;
 }
+::v-deep h5 {
+  font-size: 1.05em;
+}
 
 ::v-deep p {
   margin-bottom: 0px !important;
   white-space: pre-line;
-  font-family: $font--standard;
+  font-family: inherit;
   line-height: 1.2;
 }
 
@@ -106,7 +109,17 @@ $space--xxs: 0.25em;
 }
 
 .theme--light.v-tabs > .v-tabs-bar {
+  background-color: $color--light-parchment !important;
+  color: black;
+}
+
+.theme--dark.v-tabs > .v-tabs-bar {
   background-color: $color--parchment !important;
+  color: black;
+}
+
+.v-tab {
+  color: black !important;
 }
 
 .v-expansion-panels.condensed .v-expansion-panel-header {
@@ -150,6 +163,7 @@ $space--xxs: 0.25em;
   padding: 0.2em;
   margin-left: 0.1em;
   margin-right: 0.1em;
+  font-size: 1em !important;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -162,6 +176,10 @@ $space--xxs: 0.25em;
   display: flex; /* defines flexbox */
   align-items: flex-end; /* bottom of the box */
 }
+.ability-box {
+  border-top: 1px dashed black;
+  padding-top: $space--xs;
+}
 
 .card--color-header {
   background-color: $color--grey-dark;
@@ -170,7 +188,6 @@ $space--xxs: 0.25em;
   font-family: $font--standard;
   background-color: $color--grey-lighter;
   border: $border--black-standard;
-  height: 100%;
   display: flex; /* defines flexbox */
   flex-direction: column; /* top to bottom */
 }
@@ -249,10 +266,14 @@ $space--xxs: 0.25em;
 }
 .chart--row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 .chart--head {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  justify-content: center;
   border: $border--black-thin;
   background-color: $color--chart-header;
 }
@@ -274,6 +295,12 @@ $space--xxs: 0.25em;
 .dotted {
   border-bottom: 1px dotted #000;
   text-decoration: none;
+}
+.expand--collapse-box-outlined {
+  margin: 0.5em;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 }
 .expand--header-reaction {
   background-image: linear-gradient($color--reaction 0 0);

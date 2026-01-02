@@ -5,11 +5,13 @@ import { store } from '@/store'
 
 class Base {
   protected name_: string
+  protected category_: string
   protected desc_: string
   protected effect_: string
   protected keywords_: Array<string>
   protected special_: string
   protected table_: Array<string>
+  protected tags_: Array<string>
 
   public constructor(name) {
     this.desc_ = ''
@@ -26,6 +28,9 @@ class Base {
   public get Desc() {
     return this.desc_
   }
+  get Category() {
+    return this.category_
+  }
   public get Effect() {
     return this.effect_
   }
@@ -40,6 +45,9 @@ class Base {
   }
   public get Table() {
     return this.table_
+  }
+  public get Tags() {
+    return this.tags_
   }
 
   // ==========================================================
@@ -76,11 +84,13 @@ class Base {
 
   public setBaseData(data: IBaseData): void {
     this.desc_ = data.desc || ''
+    this.category_ = data.category || 'MISSING'
     this.effect_ = data.effect || ''
     this.keywords_ = data.keywords || []
     this.name_ = data.name || ''
     this.special_ = data.special || ''
     this.table_ = data.table || []
+    this.tags_ = data.tags || []
   }
 }
 export default Base

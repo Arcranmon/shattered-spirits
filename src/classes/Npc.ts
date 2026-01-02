@@ -27,11 +27,7 @@ class Npc extends Combatant {
   }
 
   override get MaxHealth() {
-    return this.npc_data_.Health
-  }
-
-  override get MaxStamina() {
-    return this.npc_data_.defenses.stamina
+    return this.npc_data_.health
   }
 
   override get Size() {
@@ -47,7 +43,8 @@ class Npc extends Combatant {
   }
 
   override get MaxStun() {
-    return this.npc_data_.max_stun
+    if (this.npc_data_.defenses.stun) return this.npc_data_.defenses.stun
+    return 0
   }
 
   override get Weapons() {
@@ -67,15 +64,21 @@ class Npc extends Combatant {
     return 0
   }
 
+  override get Abilities() {
+    var ability_names = store.getters.basicAbilities
+    ability_names = ability_names.concat(this.npc_data_.abilities)
+    return store.getters.getAbilitiesFromList(ability_names)
+  }
+
+  override get AllArts() {
+    return [this.Armor].concat(this.Weapons)
+  }
+
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Actions() {
-    return store.getters.getManeuversFromList(this.npc_data_.actions)
-  }
-
-  public get Attacks() {
-    return store.getters.getAttacksFromList(this.npc_data_.attacks)
+  public get Armor() {
+    return store.getters.getArmor(this.npc_data_.armor)
   }
 
   public get Class() {
@@ -90,17 +93,11 @@ class Npc extends Combatant {
     return '**' + this.npc_data_.pattern + '**'
   }
 
-  public get HasGambits() {
-    if (this.npc_data_.gambits === undefined) return false
-    return this.npc_data_.gambits.length > 0
-  }
-
-  public get Gambits() {
-    return store.getters.getManeuversFromList(this.npc_data_.gambits)
-  }
-
   public get MomentumGainText() {
     return '**_Momentum_ Gain:** ' + this.npc_data_.momentum_gain
+  }
+  public get StunText() {
+    return '**_Stun_:** ' + this.MaxStun
   }
   public get Name() {
     return this.npc_data_.name
@@ -108,19 +105,12 @@ class Npc extends Combatant {
   public get NpcType() {
     return this.npc_data_.npc_type
   }
-  public get Reactions() {
-    return store.getters.getManeuversFromList(this.npc_data_.reactions)
-  }
   public get Role() {
     return this.npc_data_.role
   }
   public get SpiritType() {
     if (this.npc_data_.subtype == 'None') return ''
     return this.npc_data_.subtype
-  }
-
-  public get Stunts() {
-    return store.getters.getManeuversFromList(this.npc_data_.stunts)
   }
 
   public get SpecialText() {
@@ -140,10 +130,6 @@ class Npc extends Combatant {
     return this.npc_data_.stances
   }
 
-  public get Techniques() {
-    return store.getters.getTechniquesFromList(this.npc_data_.techniques)
-  }
-
   public get HasWeapons() {
     return this.npc_data_.weapons.length > 0
   }
@@ -155,7 +141,7 @@ class Npc extends Combatant {
     return '**Move:** ' + this.npc_data_.move
   }
   public get HealthText() {
-    return '**Health:** ' + this.npc_data_.Health
+    return '**Health:** ' + this.npc_data_.health
   }
   public get ArmorText() {
     if (this.npc_data_.guard) return '**Armor:** ' + this.npc_data_.guard + ' Guard'
@@ -163,9 +149,6 @@ class Npc extends Combatant {
   }
   public get SizeText() {
     return '**Size:** ' + this.npc_data_.size
-  }
-  public get MaxStaminaText() {
-    return '**Max Stamina:** ' + this.MaxStamina
   }
 
   // ==========================================================

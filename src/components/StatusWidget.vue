@@ -2,11 +2,13 @@
   <div>
     <v-dialog v-model="addStatusDialogue" hide-overlay>
       <template v-slot:activator="{}">
-        <div class="d-flex justify-center align-center">
+        <div class="justify-center align-center">
           <h4>Status Effects</h4>
-          <v-btn @click="addStatusDialogue = true" class="button--template" style="margin-left: 2em">
-            <span class="btn-content">Add Status</span>
-          </v-btn>
+          <div class="d-flex justify-center align-center">
+            <v-btn @click="addStatusDialogue = true" class="button--template">
+              <span class="btn-content">Add Status</span>
+            </v-btn>
+          </div>
         </div>
       </template>
       <v-card height="50vh">

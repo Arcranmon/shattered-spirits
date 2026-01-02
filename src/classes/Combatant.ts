@@ -1,9 +1,11 @@
 import { store } from '@/store'
+const interpolate = require('color-interpolate')
 
 class Combatant {
-  private Health_: number
+  private health_: number
   private stamina_: number
   private stun_: number
+  private soak_: number
   private move_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
@@ -16,7 +18,8 @@ class Combatant {
     this.move_ = 0
     this.stamina_ = 0
     this.stun_ = 0
-    this.Health_ = 0
+    this.soak_ = 0
+    this.health_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
   }
@@ -31,15 +34,11 @@ class Combatant {
     return 0
   }
 
-  get Soak() {
+  get MaxPadding() {
     return 0
   }
 
   get MaxHealth() {
-    return 0
-  }
-
-  get MaxStamina() {
     return 0
   }
 
@@ -51,7 +50,7 @@ class Combatant {
     return 0
   }
 
-  get Jump() {
+  get StunClear() {
     return 0
   }
 
@@ -91,20 +90,69 @@ class Combatant {
     return 0
   }
 
+  get Arts() {
+    return []
+  }
+
+  private abilityFilter(iAbilities, abilities, typeFilter, classFilter, keywordFilter, art = null) {
+    for (var ability of abilities) {
+      var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
+      var classMatches = classFilter == 'All' || classFilter == ability.Class
+      var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
+      if (typeMatches && classMatches && keywordMatches) {
+        if (art) {
+          ability.Origin = art
+        }
+        iAbilities.push(ability)
+      }
+    }
+  }
+
+  public AllKeywords(filter = '') {
+    var keywords = []
+    for (var art of this.AllArts) {
+      for (var ability of art.Abilities) {
+        if (filter == '' || ability.Type == filter) keywords = keywords.concat(ability.Keywords)
+      }
+    }
+    keywords.sort()
+    keywords.unshift('All')
+    return keywords
+  }
+
+  public get Abilities() {
+    return []
+  }
+
+  public get AllArts() {
+    return []
+  }
+
+  public FilteredAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
+    var abilities = []
+    var basic_abilities = this.Abilities
+    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
+    for (var art of this.AllArts) {
+      this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
+    }
+
+    abilities.sort((a, b) => a.Name.localeCompare(b.Name))
+    return abilities
+  }
+
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================
 
   public ApplyRespite() {
     this.move_ = this.MaxMovement
-    this.stamina_ = this.MaxStamina
-    this.momentum_ += this.MomentumGain
+    //this.momentum_ += this.MomentumGain
+    this.ClearStunChunk(this.StunClear)
   }
 
   public ResetDefault() {
     this.move_ = this.MaxMovement
-    this.Health_ = this.MaxHealth
-    this.stamina_ = this.MaxStamina
+    this.health_ = this.MaxHealth
     this.stun_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
@@ -117,8 +165,17 @@ class Combatant {
 
   set Movement(move: number) {
     if (move > this.MaxMovement) this.move_ = this.MaxMovement
-    if (move < 0) this.move_ = 0
-    this.move_ = move
+    else if (move < 0) this.move_ = 0
+    else this.move_ = move
+  }
+
+  get MovePercent() {
+    return (this.Movement / this.MaxMovement) * 100
+  }
+
+  get MoveColor() {
+    let colormap = interpolate(['#99CCFF', '#0066CC'])
+    return colormap(this.MovePercent / 100)
   }
 
   public AddStatus(status: string) {
@@ -164,10 +221,12 @@ class Combatant {
     return this.stamina_
   }
 
-  set Stamina(stamina: number) {
-    if (stamina > this.MaxStamina) this.stamina_ = this.MaxStamina
-    if (stamina <= 0) this.stamina_ = 0
-    this.stamina_ = stamina
+  get PaddingStunRatio() {
+    return (this.MaxPadding / (this.MaxStun + this.MaxPadding)) * 100
+  }
+
+  get Padding() {
+    return this.soak_
   }
 
   get Stun() {
@@ -175,19 +234,43 @@ class Combatant {
   }
 
   set Stun(stun: number) {
-    if (stun > this.MaxStun) this.move_ = this.MaxStun
-    if (stun < 0) this.stun_ = 0
-    this.stun_ = stun
+    if (this.soak_ < this.MaxPadding) {
+      this.soak_ += 1
+    } else if (stun > this.MaxStun) this.stun_ = this.MaxStun
+    else if (stun < 0) this.stun_ = 0
+    else this.stun_ = stun
   }
 
   get Health() {
-    return this.Health_
+    return this.health_
   }
 
   set Health(Health: number) {
-    if (Health > this.MaxHealth) this.Health_ = this.MaxHealth
-    if (Health <= 0) this.Health_ = 0
-    this.Health_ = Health
+    if (Health > this.MaxHealth) this.health_ = this.MaxHealth
+    else if (Health <= 0) this.health_ = 0
+    else this.health_ = Health
+  }
+
+  get HealthPercent() {
+    return (this.Health / this.MaxHealth) * 100
+  }
+
+  get HealthColor() {
+    let colormap = interpolate(['#FF0000', '#FFDE00', '#5bf75b', '#5bf75b'])
+    return colormap(this.HealthPercent / 100)
+  }
+
+  get StunPercent() {
+    return (this.Stun / this.MaxStun) * 100
+  }
+
+  get StunColor() {
+    let colormap = interpolate(['#FFDE00', '#ff9500', '#FF0000'])
+    return colormap(this.StunPercent / 100)
+  }
+
+  get PaddingPercent() {
+    return (this.Padding / this.MaxPadding) * 100
   }
 
   get Momentum() {
@@ -199,15 +282,42 @@ class Combatant {
     this.momentum_ = input
   }
 
+  AddStun() {
+    if (this.soak_ < this.MaxPadding) {
+      this.soak_ += 1
+    } else if (this.stun_ == this.MaxStun) return
+    else this.stun_ += 1
+  }
+
+  AddApStun() {
+    if (this.stun_ == this.MaxStun) return
+    else this.stun_ += 1
+  }
+
+  ClearStun() {
+    if (this.stun_ == 0 && this.soak_ > 0) {
+      this.soak_ -= 1
+    } else if (this.stun_ > 0) this.stun_ -= 1
+  }
+
+  private ClearStunChunk(toClear: number) {
+    var diff = toClear - this.stun_
+    this.stun_ = Math.max(0, this.stun_ - toClear)
+    toClear = diff
+    if (toClear > 0) {
+      this.soak_ = Math.max(0, this.soak_ - toClear)
+    }
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
   public static Serialize(combatant: Combatant): ICombatantData {
     return {
-      Health: combatant.Health_,
+      health: combatant.health_,
       move: combatant.move_,
-      stamina: combatant.stamina_,
       stun: combatant.stun_,
+      soak: combatant.soak_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
       vigor: combatant.vigor_,
@@ -222,11 +332,11 @@ class Combatant {
 
   public setCombatantData(data: ICombatantData): void {
     this.move_ = data.move
-    this.stamina_ = data.stamina
-    this.Health_ = data.Health
+    this.health_ = data.health
     this.momentum_ = data.momentum
-    this.statuses_ = data.statuses
+    this.statuses_ = data.statuses || []
     this.stun_ = data.stun
+    this.soak_ = data.soak
     this.vigor_ = data.vigor
   }
 }

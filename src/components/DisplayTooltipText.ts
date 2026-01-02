@@ -33,6 +33,7 @@ Vue.component('DisplayTooltipText', {
         }
         if (
           this.$store.getters.existsInAnyGlossary(split_input[index]) ||
+          this.$store.getters.isArchetype(split_input[index]) ||
           this.$store.getters.isFeature(split_input[index]) ||
           this.$store.getters.isTalent(split_input[index]) ||
           this.$store.getters.isTerrain(split_input[index]) ||
@@ -43,7 +44,9 @@ Vue.component('DisplayTooltipText', {
           this.$store.getters.isManeuver(split_input[index]) ||
           this.$store.getters.isArmor(split_input[index]) ||
           this.$store.getters.isWeapon(split_input[index]) ||
-          this.$store.getters.isAttack(split_input[index])
+          this.$store.getters.isArt(split_input[index]) ||
+          this.$store.getters.isTrait(split_input[index]) ||
+          this.$store.getters.isBasicAbility(split_input[index])
         ) {
           split_input[index] = '<tooltip input="' + split_input[index] + '" :decorate="' + this.decorate + '"></tooltip>'
         }

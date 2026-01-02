@@ -44,14 +44,14 @@
         <div class="body">
           <v-row justify="center"
             ><v-col :cols="num_cols" v-for="tech in art.Tier1Techniques" :key="tech.Name"><tech-card :tech="tech" /></v-col
-            ><v-col :cols="num_cols" v-for="attack in art.Tier1Attacks" :key="attack.Name"><attack-card :attack="attack" /></v-col
+            ><v-col :cols="num_cols" v-for="attack in art.Tier1Attacks" :key="attack.Name"><weapon-card :attack="attack" /></v-col
             ><v-col :cols="num_cols" v-for="man in art.Tier1Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
           ></v-row>
         </div>
         <div class="body">
           <v-row justify="center"
             ><v-col :cols="num_cols" v-for="stance in art.Tier2Stances" :key="stance.Name"><stance-card :stance="stance" /></v-col>
-            <v-col :cols="num_cols" v-for="attack in art.Tier2Attacks" :key="attack.Name"><attack-card :attack="attack" /></v-col
+            <v-col :cols="num_cols" v-for="attack in art.Tier2Attacks" :key="attack.Name"><weapon-card :attack="attack" /></v-col
             ><v-col :cols="num_cols" v-for="tech in art.Tier2Techniques" :key="tech.Name"><tech-card :tech="tech" /></v-col
             ><v-col :cols="num_cols" v-for="man in art.Tier2Maneuvers" :key="man.Name"><maneuver-card :maneuver="man" :format_text="true" /></v-col
           ></v-row>
@@ -68,11 +68,11 @@ import { Character } from '@/class'
 import SpiritSubtypeText from '@/database/text_files/character_creation/choosing_your_subtype.txt'
 import ManeuverCard from '@/components/cards/ManeuverCard'
 import TechCard from '@/components/cards/TechCard'
-import AttackCard from '@/components/cards/AttackCard'
-import SubtypeCard from '@/components/cards/SubtypeCard'
+import WeaponCard from '@/components/cards/WeaponCard'
+import SpiritTypeCard from '@/components/cards/SpiritTypeCard'
 export default Vue.extend({
   name: 'subtype-selection',
-  components: { ManeuverCard, TechCard, AttackCard, SubtypeCard },
+  components: { ManeuverCard, TechCard, WeaponCard, SpiritTypeCard },
   props: {
     character: {
       type: Character,

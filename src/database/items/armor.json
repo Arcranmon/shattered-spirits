@@ -1,79 +1,306 @@
 [
   {
-    "name": "Light Helmet",
-    "category": "Accessory",
-    "weight": 1,
-    "durability": 1,
-    "keywords": ["Leather"],
-    "soak": 1
-  },
-  {
-    "name": "Heavy Helmet",
-    "category": "Accessory",
-    "weight": 2,
-    "durability": 1,
-    "keywords": ["Metal"],
-    "soak": 2
-  },
-  {
-    "name": "Padded Shirt",
-    "category": "Clothing",
-    "weight": 2,
-    "durability": 1,
+    "name": "Light Armor",
+    "category": "Base Armor",
+    "load": 1,
     "keywords": ["Organic"],
-    "traits": ["_Resistance_ I (_Crush_)"]
+    "guard": 1,
+    "soak": 2,
+    "durability": 1,
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain +3 _Guard_.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+      }
+    ],
+    "desc": "Basic armor, covering only the most vital areas on your body."
+  },
+  {
+    "name": "Medium Armor",
+    "category": "Base Armor",
+    "keywords": ["Organic"],
+    "durability": 2,
+    "load": 3,
+    "guard": 1,
+    "soak": 2,
+    "special": "Equip one piece of _Layered Armor_ as a part of this.",
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain +3 _Guard_.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+      }
+    ],
+    "desc": "Standard armor, striking a balance between load and durability."
+  },
+  {
+    "name": "Heavy Armor",
+    "category": "Base Armor",
+    "keywords": ["Organic"],
+    "durability": 3,
+    "load": 6,
+    "guard": 1,
+    "soak": 2,
+    "special": "Equip two pieces of _Layered Armor_ as a part of this.",
+    "desc": "Heavy armor, sacrificing mobility for additional effects.",
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain +3 _Guard_.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+      }
+    ]
   },
   {
     "name": "Gambeson",
-    "category": "Clothing",
-    "weight": 4,
-    "durability": 2,
+    "category": "Layered Armor",
     "keywords": ["Organic"],
-    "traits": ["_Resistance_ II (_Crush_)"],
-    "special": "Whenever this Armor loses _Durability_, reduce the _Resistance_ it provides by 1."
+    "special": "While wearing this Armor you have +2 _Guard_ against _Crush_ _Damage_.",
+    "soak": 2,
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain _Resistance_ to _Crush_ Damage.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+      }
+    ],
+    "desc": "Thick, quilted armor specialized in defending against crushing strikes."
+  },
+  {
+    "name": "Extra Padding",
+    "category": "Layered Armor",
+    "keywords": ["Organic"],
+    "soak": 5,
+    "desc": "Additional banding that, while not providing specific defense, generally improves the efficacy of the armor."
   },
   {
     "name": "Chain Shirt",
-    "category": "Clothing",
+    "category": "Layered Armor",
     "keywords": ["Metal"],
-    "weight": 4,
-    "durability": 2,
-    "traits": ["_Resistance_ I (_Slash_)", "_Resistance_ I (_Stab_)"],
-    "special": "Whenever this Armor loses _Durability_, reduce a _Resistance_ it provides by 1 (attacker's choice)."
+    "special": "While wearing this Armor you have +2 _Guard_ against _Slash_ _Damage_.",
+    "guard": 1,
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain _Resistance_ to _Slash_ Damage.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+      }
+    ]
   },
   {
-    "name": "Chainmail",
-    "category": "Clothing",
+    "name": "Hardpoints",
+    "category": "Layered Armor",
     "keywords": ["Metal"],
-    "weight": 8,
-    "durability": 4,
-    "traits": ["_Resistance_ II (_Slash_)", "_Resistance_ II (_Stab_)"],
-    "special": "Whenever this Armor loses _Durability_, reduce a _Resistance_ it provides by 1 (attacker's choice)."
+    "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Stab_ Damage.",
+    "guard": 1,
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "cost": "None",
+        "effect": "Gain _Resistance_ to _Stab_ Damage.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+      }
+    ]
   },
   {
-    "name": "Light Plate",
-    "category": "Armor",
-    "weight": 3,
+    "name": "Leather Helmet",
+    "category": "Helmet",
+    "desc": "A helmet that can be difference between a glancing blow and a lethal strike.",
+    "keywords": ["Organic"],
+    "load": 1,
     "durability": 1,
-    "keywords": ["Metal"],
-    "guard": 1
+    "soak": 1
   },
   {
-    "name": "Half Plate",
-    "category": "Armor",
-    "weight": 6,
+    "name": "Traveler's Boots",
+    "category": "Boot",
+    "desc": "Sturdy boots that make it easier to traverse difficult terrain.",
+    "keywords": ["Organic"],
+    "durability": 1,
+    "load": 1,
+    "durability": 5,
+    "special": "Gain +1 to _Negate_ and 2 _Guard_ for all _Field_ effects without the _Weather_ keyword."
+  },
+  {
+    "name": "Iron Helmet",
+    "category": "Helmet",
+    "desc": "A sturdy helmet that can be difference between a glancing blow and a lethal strike.",
+    "keywords": ["Metal"],
+    "durability": 5,
     "durability": 2,
+    "load": 2,
+    "abilities": [
+      {
+        "name": "Off the Dome",
+        "class": "Defensive",
+        "type": "Reaction",
+        "keywords": ["Efficient"],
+        "trigger": "You are _Crit_.",
+        "cost": "1 _Momentum_",
+        "effect": "For any _Defense Roll_ this _Turn_, you may treat the _Crit_ as a _Hit_.",
+        "special": "You may use this at no Cost if you _Notch_ it."
+      }
+    ]
+  },
+  {
+    "name": "Metal Body",
+    "category": "Natural",
+    "desc": "A metal form that is not dominated by any specific metal, though it still provides significant armor.",
     "keywords": ["Metal"],
     "guard": 2,
-    "special": "Whenever this Armor loses _Durability_, reduce the _Guard_ it provides by 1."
+    "soak": 4,
+    "load": 0,
+    "durability": 2,
+    "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "trigger": "You take _Crush_, _Slash_, or _Stab_ Damage.",
+        "effect": "Gain _Resistance_ to the Attack.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
+      }
+    ]
   },
   {
-    "name": "Full Plate",
-    "category": "Armor",
-    "weight": 9,
-    "durability": 3,
+    "name": "Stone Body",
+    "category": "Natural",
+    "desc": "A resilient form made from a mix of various stones and earthen elements.",
+    "keywords": ["Earth"],
+    "guard": 1,
+    "soak": 3,
+    "durability": 5,
+    "load": 0,
+    "durability": 2,
+    "special": "While wearing this Armor treat your _Guard_ as 3 higher against _Slash_ and _Stab_ Damage.",
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "trigger": "You take _Slash_ or _Stab_ Damage.",
+        "effect": "Gain _Resistance_ to the Attack.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
+      }
+    ]
+  },
+  {
+    "name": "Copper Body",
+    "category": "Natural",
+    "desc": "A metal form that is not dominated by any specific metal, though it still provides significant armor.",
     "keywords": ["Metal"],
-    "guard": 3,
-    "special": "Whenever this Armor loses _Durability_, reduce the _Guard_ it provides by 1."
+    "guard": 0,
+    "soak": 0,
+    "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Lightning_ Damage.",
+    "abilities": [
+      {
+        "name": "Conduct",
+        "class": "Defensive",
+        "type": "Gambit",
+        "trigger": "You take _Lighting_ Damage.",
+        "effect": "Gain _Resistance_ to the Attack. All creatures _Engaged_ with you take 2 _Lighting_ Damage.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
+      }
+    ]
+  },
+  {
+    "name": "Metal Body",
+    "category": "Natural",
+    "desc": "A metal form that is not dominated by any specific metal, though it still provides significant armor.",
+    "keywords": ["Metal"],
+    "guard": 2,
+    "soak": 4,
+    "durability": 4,
+    "load": 0,
+    "durability": 2,
+    "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
+    "abilities": [
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "effect": "Gain 4 _Guard_, or 5 _Guard_ if this triggered off of <i>Armored Rebuke</i>.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
+      }
+    ],
+    "table": [
+      ["2-3", "Miss"],
+      ["4-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ]
+  },
+  {
+    "name": "Iron Plating",
+    "category": "Over Armor",
+    "desc": "Metal plating that can be layered for greater and greater protection.",
+    "keywords": ["Metal"],
+    "guard": 2,
+    "soak": 4,
+    "durability": 2,
+    "load": 4,
+    "special": "If you choose this _Equipment_ to _Block_, treat it as _Balanced_ Equipment and gain +1 _Guard_"
+  },
+  {
+    "name": "Carapace",
+    "category": "Natural",
+    "durability": 2,
+    "load": 2,
+    "guard": 1,
+    "soak": 2,
+    "special": "If you choose this _Equipment_ to _Block_, treat it as _Balanced_ Equipment and gain +1 _Guard_",
+    "desc": "Natural armor, whether that be chitin, a thin shell, or natural plating."
+  },
+  {
+    "name": "Shell",
+    "category": "Natural",
+    "durability": 5,
+    "durability": 2,
+    "load": 4,
+    "guard": 2,
+    "soak": 4,
+    "abilities": [
+      {
+        "name": "Deflect",
+        "class": "Defensive",
+        "keywords": ["Block"],
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "effect": "_Defend_.\n* Lose: Gain 2 _Guard_.\n* _Tie+_: Gain 4 _Guard_."
+      },
+      {
+        "name": "Twist",
+        "class": "Defensive",
+        "type": "Gambit",
+        "effect": "Gain 3 _Guard_, or 4 _Guard_ if this triggered off of <i>Deflect</i>.",
+        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
+      }
+    ],
+    "table": [
+      ["2-3", "Miss"],
+      ["4-6", "Graze"],
+      ["7-10", "Hit"],
+      ["11-12", "Crit"]
+    ],
+    "desc": "Natural armor, whether that be heavy chitin, shells, or natural plating."
   }
 ]

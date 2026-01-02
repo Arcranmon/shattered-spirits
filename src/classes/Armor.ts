@@ -1,13 +1,10 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Ability, Equipment } from '@/class'
 
-class Armor extends Base {
-  private category_: string
+class Armor extends Equipment {
   private guard_: number
   private soak_: number
-  private weight_: number
-  private parry_: string
-  private durability_: number
+  private consumable_slots_: number
   private traits_: string[]
 
   public constructor(name) {
@@ -18,52 +15,36 @@ class Armor extends Base {
   // GETTERS
   // ==========================================================
 
-  get Category() {
-    return this.category_
-  }
   get Guard() {
     return this.guard_
   }
-  get Soak() {
+  get Padding() {
     return this.soak_
   }
-  get Weight() {
-    return this.weight_
+  get ConsumableSlots() {
+    return this.consumable_slots_
   }
   get Traits() {
     return this.traits_
   }
-  public get Icon() {
-    if (this.Category == 'Error') return ''
-    return require('@/assets/' + this.Category + '.svg')
-  }
-
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
+
   get HasGuard() {
     return this.guard_ > 0
   }
   get GuardHeader() {
     return '**_Guard_:** ' + this.guard_
   }
-  get HasSoak() {
+  get HasPadding() {
     return this.soak_ > 0
   }
-  get SoakHeader() {
-    return '**_Soak_:** ' + this.soak_
+  get HasSlots() {
+    return this.consumable_slots_ > 0
   }
-  get DurabilityHeader() {
-    return '**Durability:** ' + this.durability_
-  }
-  get WeightHeader() {
-    return '**Weight:** ' + this.weight_
-  }
-  get HasParry() {
-    return this.parry_.length > 0
-  }
-  get ParryHeader() {
-    return '**Parry:** ' + this.parry_
+  get PaddingHeader() {
+    return '**_Padding_:** ' + this.soak_
   }
   get HasTraits() {
     return this.traits_.length > 0
@@ -82,13 +63,10 @@ class Armor extends Base {
   }
 
   public setArmorData(data: IArmorData): void {
-    this.setBaseData(data)
+    this.setEquipmentData(data)
     this.guard_ = data.guard || 0
     this.soak_ = data.soak || 0
-    this.durability_ = data.durability || 0
-    this.category_ = data.category || ''
-    this.weight_ = data.weight || 0
-    this.parry_ = data.parry || ''
+    this.consumable_slots_ = data.consumable_slots || 0
     this.traits_ = data.traits || []
   }
 }

@@ -42,19 +42,20 @@ export default {
 .text--crit {
   color: $color--chart-crit;
 }
-.earth-circle {
+.earth-border {
+  border: thick solid $color--earth;
+}
+.circle {
   height: 30em;
   border-radius: 50%;
   float: left;
   display: block;
-  border: thick solid $color--earth;
   margin-right: 2em;
 }
-.earth-circle-mobile {
+.circle-mobile {
   height: 30em;
   border-radius: 50%;
   display: block;
-  border: thick solid $color--earth;
   margin-right: auto;
   margin-left: auto;
   margin-top: 1em;

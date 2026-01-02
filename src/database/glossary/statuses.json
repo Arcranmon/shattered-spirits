@@ -24,9 +24,9 @@
   {
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleeding they take 2 _True_ Damage at the end of each _Phase_.",
-    "special": "A creature may not gain _Health_ while they have Bleeding. Instead, they remove Bleeding as soon as they gain _Health_ from any source.",
-    "repeat": "If a Bleeding creature would gain Bleeding they instead take 3 _True_ Damage.",
+    "effect": "While a creature has Bleeding they take _True_ Damage at the end of each _Phase_ equal to their Bleeding value.",
+    "special": "A creature may not gain _Health_ while they have Bleeding. Instead, every point of _Health_ healed removes Bleeding 1.",
+    "repeat": "If a Bleeding creatures gains Bleeding, increase the value by 1.",
     "remove": "Bleeding is only removed by effects that explicitly remove it.",
     "type": "Affliction"
   },
@@ -40,12 +40,11 @@
     "type": "Status Effect"
   },
   {
-    "name": "Charging",
-    "desc": "A status gained while a creature gathers power and focus for a powerful effect.",
-    "effect": "While _Charging_ you may not willingly _Move_ or make _Attacks_.",
-    "remove": "Creatures lose Charging if they gain _Stunned_. If they do, they gain 1 _Momentum_ and immediately resolve the _On-Miss_ effect of whatever _Charged Attack_ they were using.",
-    "special": "A creature may not be both Charging and _Guarding_.",
-    "type": "Status Effect"
+    "name": "Disarm",
+    "desc": "An effect where an item is wrenched away from a creature.",
+    "effect": "An Item the Target has _Worn_ or _Wielded_ (chosen when this Status is inflicted) is immediately dropped unattended in the current _Arena_, or is _Wielded_ by the creature that inflict Disarm if they are within Range to use _Draw/Stow_ and they have a _Free Hand_.",
+    "special": "Creatures have _Disadvantage_ to _Negate_ _Disarm_ while _Grabbed_.",
+    "type": "Hide"
   },
   {
     "name": "Dazed",
@@ -56,14 +55,11 @@
   },
   {
     "name": "Engaged",
-    "desc": "An effect caused when a creature is locked in close combat with another.",
-    "effect": "While Engaged a creature may not leave their current _Position_. Additionally, this creature takes a -X _Penalty_ on all Attacks when not targeting a creature they are Engaged with, where X is the total number of creatures they are _Engaged_ with.",
-    "remove": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_, but creates an _Opening_.",
-    "recover": "A creature may spend 1 _Movement_ to remove all instances of _Engaged_.",
+    "desc": "A status showing that two creatures are engaged in close combat with one another.",
+    "effect": "While Engaged spending any _Movement_ creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all Attacks that do not include at least one creature they are _Engaged_ with.",
+    "remove": "Characters may spend 1 _Movement_ to remove all instances of _Engaged_, as well as any _Terrain Bonus_ or _Hazard_.",
     "type": "Status Effect"
   },
-  { "name": "Engagement", "see": "Engaged" },
-  { "name": "Engagements", "see": "Engaged" },
   {
     "name": "Exposed",
     "desc": "An affliction caused when an opening in a creature's defenses has been forced open.",
@@ -75,15 +71,14 @@
   {
     "name": "Guarding",
     "desc": "A status gained while a creature focuses entirely on defense.",
-    "effect": "While Guarding all _Attacks_ have their cost increased by 2 and all _Movement_ costs increased by 1, but the cost of all _Defensive_ _Reactions_ is reduced by 1. Effects that grant Guarding also typically provide some small additional bonus; if a creature gains Guarding from another source, replace the bonus.",
-    "remove": "Creatures lose Guarding if they gain _Stunned_. Creatures may also willingly end the effect at the end of their _Turn_.",
-    "special": "A creature may not be both _Charging_ and Guarding.",
+    "effect": "A creature may reduce their Guarding value to Discount a _Defensive_ _Reaction_ by the same amount.",
+    "remove": "Creatures lose all Guarding if they gain _Stunned_ and automatically lose 1 Guarding at the end of each _Phase_.",
     "type": "Status Effect"
   },
   {
     "name": "Grabbed",
-    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* Both creatures become _Engaged_ with one another, and this _Engaged_ may not be removed while the grab persists.\n* The Grabber may expend additional _Movement_ to move the Grabbed creature with them.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature is _Immobile_ if the Grabber is the same size or Larger; otherwise, the Grabbed creature is _Hobbled_ and always brings the Grabber with them.",
-    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them ever leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Stamina_/_Movement_ to reroll their _Negate_ against this Grabbed, ending the effect on a success.",
+    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* The Grabber may expend additional _Movement_ to move the Grabbed creature with them.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature is _Immobile_ if the Grabber is the same size or larger; otherwise, the Grabbed creature is _Hobbled_ and always brings the Grabber with them, or simply moves with the Grabber if they are at least two Sizes larger. A creature may only be Grabbing one creature at a time.",
+    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them ever leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_/_Movement_ to reroll their _Negate_ against this Grabbed, ending the effect on a success.",
     "repeat": "If a Grabbed creature would gain Grabbed they instead gain _Prone_.",
     "recover": "When a creature _Recovers_ they may attempt to remove _Grabbed_ as above, but have _Advantage_ to _Negate_.",
     "type": "Status Effect"
@@ -92,9 +87,9 @@
   {
     "name": "Hobbled",
     "desc": "An affliction caused when a creature's movement is impaired somehow.",
-    "effect": "A creature's Moves are downgraded by one tier (i.e. a Reposition becomes a Step) while Hobbled.",
+    "effect": "While Hobbled all Movement costs are increased by 1.",
     "recover": "When a creature _Recovers_ they may remove Hobbled.",
-    "type": "Affliction"
+    "type": "Status Effect"
   },
   {
     "name": "Impaired",
@@ -113,9 +108,9 @@
   {
     "name": "Poisoned",
     "desc": "An affliction caused by toxins ravaging you from the inside out.",
-    "effect": "While a creature is Poisoned they gain 2 _Stun_ [_AP_] at the end of every _Phase_.",
-    "special": "A creature may not gain _Health_ while they have Poisoned. Instead, when they gain _Health_ remove Poisoned.",
-    "repeat": "If a Poisoned creature would gain Poisoned they instead take 2 Damage [_Poison_, _Endurable_].",
+    "effect": "While a creature is Poisoned they gain_Stun_ [_AP_] equal to their Poisoned value minus their _Grit_ at the end of every _Phase_.",
+    "special": "A creature may not gain _Health_ while they have Poisoned. Instead, every point of _Health_ healed removes Poisoned 1.",
+    "repeat": "If a Poisoned creatures gains Poisoned, increase the value by 1.",
     "remove": "Poisoned is only removed by effects that explicitly remove it.",
     "type": "Affliction"
   },
@@ -137,13 +132,14 @@
   {
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
-    "effect": "When you inflict Push a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Push 1:  Place the Target in any _Position_ you are not in within their current _Arena_.\n\t* Push 2:  Place them in any _Position_ in an _Arena_ adjacent to them that you are not in. Inflict _Stun_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Push X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
+    "effect": "When you inflict Push, choose one: \n* Push:  Force the target to stop _Occupying_ their current _Terrain_ and (if you wish) leave their current _Engagement_ and _Field_ effect. You may force them to enter a new _Engagement_ of your choice.\n* Push: Trigger the _Collide_ effect of _Terrain_ in their _Engagement_.",
+    "special": "If you inflict Forceful Push, either resolve two of the above options or place the Target in an adjacent _Arena_ you are not in. Inflict 2 _Stun_ for each increased _Movement_ cost to enter said _Arena_.",
     "type": "Status Effect"
   },
   {
     "name": "Slide",
     "desc": "You adroitly move a foe about, placing them where you wish.",
-    "effect": "When you inflict Slide a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Slide 1: Place the Target in any other _Position_ within their _Arena_.\n\t* Slide 2: Place them in any _Position_ in an _Arena_ adjacent to them. Inflict _Stun_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Slide X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
+    "effect": "When you inflict Slide a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Slide 1: You may force the target to stop _Occupying_ their current _Terrain_ and/or place the Target in any other _Engagement_ within their _Arena_.\n\t* Slide 2: Place them in any _Arena_ adjacent to their current one. Inflict _Stun_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Slide X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
     "type": "Status Effect"
   },
   { "name": "Forceful Push", "see": "Push" },
@@ -181,15 +177,9 @@
   {
     "name": "Stunned",
     "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "When a creature gains Stunned inflict _Skipped_ and the attacker's choice of _Reeling_, _Impaired_, or _Exposed_. The creature immediately loses _Guarding_ or _Charging_. While Stunned any _Stun_ inflicted on the creature is instead [_AP_] Damage.",
-    "remove": "Remove Stunned at the end of the _Round_ it was inflicted.",
+    "effect": "When a creature gains _Stunned_ they immediately lose half their _Momentum_ and _Movement_ (including any that was _Prepared_). While Stunned, a creature:\n* Has _Disadvantage_ when _Negating_.\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
+    "remove": "Remove Stunned at the end of the _Round_ it was inflicted, or by effects that specifically remove it.",
     "type": "Affliction"
-  },
-  {
-    "name": "Skipped",
-    "desc": "An affliction caused when a creature is unable to act properly.",
-    "effect": "What happens to a creature when they gain Skipped depends on if they have a _Technique_ or _Action_ next in Initiative. If it is an _Action_, the creature does not get to use that _Action_. If it is a _Technique_, the creature must replace their selected _Technique_ with _Improvise_. Refund any cost paid for this _Technique_.",
-    "type": "Instant Effect"
   },
   {
     "name": "Studied",
@@ -200,7 +190,7 @@
   },
   {
     "name": "Sundered",
-    "effect": "When a creature gains _Sundered_ one piece of their _Equipment_ loses _Durability_ equal to the Sundered value. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Stun_ 2.",
+    "effect": "When a creature gains _Sundered_ one piece of their _Equipment_ chosen by the Attacker loses _Durability_ equal to the Sundered value. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Stun_ 2 for each remaining Sundered.",
     "type": "Instant Effect"
   },
   {
@@ -218,5 +208,13 @@
     "recover": "When a creature _Recovers_ they may remove _Sealed_ and gain _Suppressed_.",
     "repeat": "If a Sealed creature would gain Sealed they instead gain 4 _Stun_. If a _Suppressed_ creature gains Sealed, remove _Suppressed_ and inflict 2 _Stun_.",
     "type": "Status Effect"
+  },
+  {
+    "name": "Vulnerable",
+    "desc": "A status that represents an erasure of a character's ability to successfully defend themselves.",
+    "effect": "For each instance of Vulnerable a creature has attacks against them gain an equivalent amount of _Pierce_.",
+    "recover": "When a creature _Recovers_ they may remove 2 Vulnerable.",
+    "remove": "When a creature would clear _Stun_ they may remove Vulnerable in place of 2 _Stun_, as many times as they wish.",
+    "type": "Affliction"
   }
 ]

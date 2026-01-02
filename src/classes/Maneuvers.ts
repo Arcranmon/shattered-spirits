@@ -2,25 +2,16 @@
 
 import { store } from '@/store'
 import Ability from './Ability'
+import Defend from './Defend'
 
 class Maneuver extends Ability {
   protected manifest_: string
-  protected trigger_: string
   protected weapon_: string
-  protected type_: string
 
   public constructor(name) {
     super(name)
-    this.trigger_ = ''
     this.type_ = ''
     this.weapon_ = ''
-  }
-
-  // ==========================================================
-  // GETTERS
-  // ==========================================================
-  public get Type() {
-    return this.type_
   }
 
   // ==========================================================
@@ -31,12 +22,6 @@ class Maneuver extends Ability {
   }
   public get ManifestHeader() {
     return '**Manifest:** ' + this.manifest_
-  }
-  public get HasTrigger() {
-    return this.trigger_.length > 0
-  }
-  public get TriggerHeader() {
-    return '**Trigger:** ' + this.trigger_
   }
   public get HasWeapon() {
     return this.weapon_.length > 0
@@ -61,9 +46,7 @@ class Maneuver extends Ability {
   public setManeuverData(data: IManeuverData): void {
     this.setAbilityData(data)
     this.manifest_ = data.manifest || ''
-    this.trigger_ = data.trigger || ''
-    this.type_ = data.type || 'Maneuver'
-    this.weapon_ = data.weapon || ''
+    //this.defend_ = data.defend ? Defend.Deserialize(data.defend) : null
   }
 }
 export default Maneuver

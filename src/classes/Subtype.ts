@@ -1,13 +1,18 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Base, Defenses } from '@/class'
 
 class Subtype extends Base {
-  private defenses_: IDefenseData
+  private defenses_: Defenses
   private element_: string
-  private summon_effect_: string
-  private manifest_effect_: string
+  private health_: number
+  private guard_: number
+  private stun_: number
+  private move_: number
+  private manifest_: string[]
+  private growth_points_: number
   private traits_: string[]
-  private conditions_: string[]
+  private armor_: string
+  private speed_: number
 
   public constructor(name) {
     super(name)
@@ -16,39 +21,61 @@ class Subtype extends Base {
   // ==========================================================
   // UTILITY
   // ==========================================================
+  public get Health() {
+    return this.health_
+  }
+
+  public get ArmorHeader() {
+    return '**Armor:** _' + this.armor_ + '_'
+  }
+
+  public get GrowthHeader() {
+    return '**_Growth Points_:** ' + this.growth_points_
+  }
+
+  public get GrowthPoints() {
+    return this.growth_points_
+  }
+
+  public get HealthHeader() {
+    return '**Health:** ' + this.Health
+  }
+
+  public get Guard() {
+    return this.guard_
+  }
+
+  public get Stun() {
+    return this.stun_
+  }
+
+  public get StanceHeader() {
+    return '**Stances:**'
+  }
+
+  public get Movement() {
+    return this.move_
+  }
+
+  public get MovementHeader() {
+    return '**Move:** ' + this.move_
+  }
+  public get Spped() {
+    return this.speed_
+  }
+
+  public get SpeedHeader() {
+    return '**Speed:** ' + this.speed_
+  }
+
   public get Element() {
     return this.element_
   }
-  public get HasSummonEffect() {
-    return this.summon_effect_ != ''
+  public get SpiritType() {
+    return '_' + this.element_ + '_ Spirit'
   }
   public get HasDefenses() {
     return this.defenses_
-  }
-  public get DefensesHeader() {
-    var header = ''
-    if (this.defenses_.focus > 0) header += this.defenses_.focus + ' _Focus_'
-    if (this.defenses_.grit > 0) {
-      if (header.length > 0) header += ', '
-      header += this.defenses_.grit + ' _Grit_'
-    }
-    if (this.defenses_.reflex > 0) {
-      if (header.length > 0) header += ', '
-      header += this.defenses_.reflex + ' _Reflex_'
-    }
-    return '**Defenses:** ' + header
-  }
-  public get SummonEffectHeader() {
-    return '**Summon Effect:** ' + this.summon_effect_
-  }
-  public get HasManifestEffect() {
-    return this.manifest_effect_ != ''
-  }
-  public get ManifestEffect() {
-    return this.manifest_effect_ != ''
-  }
-  public get ManifestEffectHeader() {
-    return '**Manifest Effect:** ' + this.manifest_effect_
   }
   public get HasTraits() {
     return this.traits_.length > 0
@@ -56,28 +83,21 @@ class Subtype extends Base {
   public get Traits() {
     return this.traits_
   }
-  public get TraitsText() {
+  public get TraitsHeader() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
   }
-  public get HasConditions() {
-    return this.conditions_.length > 0
+  public get Defenses() {
+    return this.defenses_
   }
-  public get ConditionsHeader() {
-    return '**Conditions:** \n* _' + this.conditions_.join('_\n* _') + '_'
-  }
-  public get Grit() {
-    if (this.defenses_.grit) return this.defenses_.grit
-    return 0
-  }
+  public get ManifestHeader() {
+    var header = '**Manifest:** The requirements to Manifest your spirit depend on its size, as follows.'
+    var labels = ['Tiny', 'Small', 'Medium', 'Large']
 
-  public get Reflex() {
-    if (this.defenses_.reflex) return this.defenses_.reflex
-    return 0
-  }
+    this.manifest_.forEach((value, index) => {
+      header += '\n* **' + labels[index] + ':** ' + value
+    })
 
-  public get Focus() {
-    if (this.defenses_.focus) return this.defenses_.focus
-    return 0
+    return header
   }
 
   // ==========================================================
@@ -92,11 +112,16 @@ class Subtype extends Base {
   private setSubtypeData(data: ISubtypeData): void {
     this.setBaseData(data)
     this.element_ = data.element || ''
-    this.defenses_ = data.defenses || null
-    this.summon_effect_ = data.summon_effect || ''
-    this.manifest_effect_ = data.manifest_effect || ''
+    this.armor_ = data.armor || ''
+    this.defenses_ = data.defenses ? Defenses.Deserialize(data.defenses) : null
     this.traits_ = data.traits || []
-    this.conditions_ = data.conditions || []
+    this.health_ = data.health || 0
+    this.move_ = data.move || 0
+    this.guard_ = data.guard || 0
+    this.stun_ = data.stun || 0
+    this.manifest_ = data.manifest || []
+    this.speed_ = data.speed || 0
+    this.growth_points_ = data.growth_points || 0
   }
 }
 export default Subtype

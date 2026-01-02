@@ -1,9 +1,10 @@
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import Vue from 'vue'
+import App from './App.vue'
 import router from './router'
 import { DatabaseJsonStore, CharacterManagementStore, store } from './store'
-import App from './App.vue'
+
 import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
 import vuetify from './plugins/vuetify'
@@ -18,11 +19,13 @@ Vue.component('Tooltip', Tooltip)
 
 Vue.prototype.$marked = marked
 Vue.prototype.$jenna = require('@/assets/art/Jenna.png')
+Vue.prototype.$stakes = require('@/assets/Stakes.png')
 Vue.prototype.$general = require('@/assets/General.svg')
 Vue.prototype.$strike = require('@/assets/Strike.svg')
 Vue.prototype.$move = require('@/assets/Move.svg')
 Vue.prototype.$support = require('@/assets/Support.svg')
 Vue.prototype.$defend = require('@/assets/Defend.svg')
+Vue.prototype.$map = require('@/assets/MockMap.png')
 
 router.afterEach((to, from) => {
   // Use next tick to handle router history correctly

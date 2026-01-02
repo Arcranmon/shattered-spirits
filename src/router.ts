@@ -1,43 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import MainMenu from '@/pages/main-menu/index.vue'
-import CharacterOptions from '@/pages/character-options/index.vue'
-
-import CombatMenu from '@/pages/combat/combat-menu/index.vue'
-import CombatRules from '@/pages/combat/combat-rules/index.vue'
-import CombatPrimer from '@/pages/combat/combat-primer/index.vue'
-import AfflictionsAndStatus from '@/pages/combat/afflictions-and-status/index.vue'
-import ReadingAbilities from '@/pages/combat/reading-abilities/index.vue'
-
-import Terrain from '@/pages/combat/terrain/index.vue'
-import Features from '@/pages/combat/features/index.vue'
-
-import CharacterCreation from '@/pages/character-creation/index.vue'
-import CharacterCreator from '@/pages/character-creator/index.vue'
-
-import Narrative from '@/pages/narrative/index.vue'
-
-import SpiritDisciplines from '@/pages/spirit-disciplines/index.vue'
-import MartialDisciplines from '@/pages/martial-disciplines/index.vue'
-import Talents from '@/pages/talents/index.vue'
-import Archetypes from '@/pages/archetypes/index.vue'
-
-import EquipmentMenu from '@/pages/equipment/equipment-menu/index.vue'
-import Armor from '@/pages/equipment/armor/index.vue'
-import Weapons from '@/pages/equipment/weapons/index.vue'
-import Accessories from '@/pages/equipment/accessories/index.vue'
-
-import BasicSkills from '@/pages/basic-skills/index.vue'
-import SpiritAbilities from '@/pages/spirit-abilities/index.vue'
-
-import Npcs from '@/pages/npcs/index.vue'
-
-import CharacterManager from '@/pages/character-manager/index.vue'
-import NpcManager from '@/pages/npc-manager/index.vue'
-
-import World from '@/pages/world/index.vue'
-
 Vue.use(Router)
 
 const r = new Router({
@@ -52,15 +15,31 @@ const r = new Router({
   routes: [
     {
       path: '/',
-      component: MainMenu,
+      component: require('@/pages/main-menu/index.vue').default,
       name: 'main-menu',
       meta: {
         title: 'Shattered Spirits',
       },
     },
     {
+      path: '/world-menu',
+      component: require('@/pages/world-menu/index.vue').default,
+      name: 'world-menu',
+      meta: {
+        title: 'World',
+      },
+    },
+    {
+      path: '/rules-menu',
+      component: require('@/pages/rules-menu/index.vue').default,
+      name: 'rules-menu',
+      meta: {
+        title: 'Rules',
+      },
+    },
+    {
       path: '/character-options',
-      component: CharacterOptions,
+      component: require('@/pages/character-options/index.vue').default,
       name: 'character-options',
       meta: {
         title: 'Character Options',
@@ -68,7 +47,7 @@ const r = new Router({
     },
     {
       path: '/character-creation',
-      component: CharacterCreation,
+      component: require('@/pages/character-creation/index.vue').default,
       name: 'character-creation',
       meta: {
         title: 'Character Creation',
@@ -76,159 +55,47 @@ const r = new Router({
     },
     {
       path: '/character-creator',
-      component: CharacterCreator,
+      component: require('@/pages/character-creator/index.vue').default,
       name: 'character-creator',
       meta: {
         title: 'Character Creator',
       },
     },
     {
-      path: '/equipment',
-      component: EquipmentMenu,
-      name: 'equipment-menu',
-      meta: {
-        title: 'Equipment',
-      },
-    },
-    {
-      path: '/armor',
-      component: Armor,
-      name: 'armor',
-      meta: {
-        title: 'Armor',
-      },
-    },
-    {
-      path: '/weapons',
-      component: Weapons,
-      name: 'weapons',
-      meta: {
-        title: 'Weapons',
-      },
-    },
-    {
-      path: '/accessories',
-      component: Accessories,
-      name: 'accessories',
-      meta: {
-        title: 'Accessories',
-      },
-    },
-    {
-      path: '/combat',
-      component: CombatMenu,
-      name: 'combat',
-      meta: {
-        title: 'Combat',
-      },
-    },
-    {
-      path: '/combat-rules',
-      component: CombatRules,
-      name: 'combat-rules',
-      meta: {
-        title: 'Combat',
-      },
-    },
-    {
       path: '/combat-primer',
-      component: CombatPrimer,
+      component: require('@/pages/combat/combat-primer/index.vue').default,
       name: 'combat-primer',
       meta: {
         title: 'Combat Primer',
       },
     },
     {
-      path: '/afflictions-and-status',
-      component: AfflictionsAndStatus,
-      name: 'afflictions-and-status',
-      meta: {
-        title: 'Afflictions and Status',
-      },
-    },
-    {
       path: '/reading-abilities',
-      component: ReadingAbilities,
+      component: require('@/pages/combat/reading-abilities/index.vue').default,
       name: 'reading-abilities',
       meta: {
         title: 'Reading Abilities',
       },
     },
     {
-      path: '/terrain',
-      component: Terrain,
-      name: 'terrain',
-      meta: {
-        title: 'Terrain',
-      },
-    },
-    {
       path: '/features',
-      component: Features,
+      component: require('@/pages/combat/features/index.vue').default,
       name: 'features',
       meta: {
         title: 'Features',
       },
     },
     {
-      path: '/spirit-disciplines',
-      component: SpiritDisciplines,
-      name: 'spirit-disciplines',
-      meta: {
-        title: 'Spirit Disciplines',
-      },
-    },
-    {
       path: '/martial-disciplines',
-      component: MartialDisciplines,
+      component: require('@/pages/martial-disciplines/index.vue').default,
       name: 'martial-disciplines',
       meta: {
         title: 'Martial Disciplines',
       },
     },
     {
-      path: '/spirit-abilities',
-      component: SpiritAbilities,
-      name: 'spirit-abilities',
-      meta: {
-        title: 'Spirit Abilities',
-      },
-    },
-    {
-      path: '/basic-skills',
-      component: BasicSkills,
-      name: 'basic-skills',
-      meta: {
-        title: 'Basic Skills',
-      },
-    },
-    {
-      path: '/talents',
-      component: Talents,
-      name: 'talents',
-      meta: {
-        title: 'Talents',
-      },
-    },
-    {
-      path: '/archetypes',
-      component: Archetypes,
-      name: 'archetypes',
-      meta: {
-        title: 'Archetypes',
-      },
-    },
-    {
-      path: '/world',
-      component: World,
-      name: 'world',
-      meta: {
-        title: 'The World',
-      },
-    },
-    {
       path: '/npcs',
-      component: Npcs,
+      component: require('@/pages/npcs/index.vue').default,
       name: 'npcs',
       meta: {
         title: 'NPCs',
@@ -236,7 +103,7 @@ const r = new Router({
     },
     {
       path: '/character-manager',
-      component: CharacterManager,
+      component: require('@/pages/character-manager/index.vue').default,
       name: 'character-manager',
       meta: {
         title: 'Character Manager',
@@ -244,7 +111,7 @@ const r = new Router({
     },
     {
       path: '/narrative',
-      component: Narrative,
+      component: require('@/pages/narrative/index.vue').default,
       name: 'narrative',
       meta: {
         title: 'Narrative',
@@ -252,7 +119,7 @@ const r = new Router({
     },
     {
       path: '/npc-manager',
-      component: NpcManager,
+      component: require('@/pages/npc-manager/index.vue').default,
       name: 'npc-manager',
       meta: {
         title: 'NPC Manager',

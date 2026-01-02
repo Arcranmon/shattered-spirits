@@ -5,8 +5,7 @@
     "class": "Basic",
     "type": "Strike",
     "speed": "1-4",
-    "effect": "Make 1 _Balanced_ _Attack_ and 1 _Light_ Attack.",
-    "boost": "2 _Momentum_: Instead, make two _Balanced_ Attacks."
+    "effect": "Use 2 _Attack_ Actions [_Discount_ 4]."
   },
   {
     "name": "Butterfly Road",
@@ -91,7 +90,7 @@
     "type": "Strike",
     "speed": "1-8",
     "move": "Step",
-    "effect": "_Draw_ 3, then use _Roiling Tide_ three times at no Cost and without the need to _Draw_, with the following rules.\n* <u>First Attack:</u> Resolve this Attack as normal. If you use _Roiling Tide_'s _Boost_, choose any _Source_ you initially _Drew_ from.\n* <u>Second Attack:</u> This Attack must inflict the opposite of _Push_/_Pull_ that the previous Attack did and may not target the previous Target. Apply _Roiling Tide_'s _Boost_ at no Cost, but it must originate from the previous Target's space, as if you _Drew_ from it.\n* <u>Final Attack</u>: This Attack follows all the rules of the second Attack. Additionally, it is instead a _Cone_ 2 Area. Create X _Wet_ spaces in the _Area_ after the Attack, where X is (the number of spaces you _Drew_ from)-(the number of targets you inflicted _Soaked_ on).\n\nOnly inflict _Soaked_ with the Final Attack.",
+    "effect": "_Draw_ 3, then use _Roiling Tide_ three times at no Cost and without the need to _Draw_, with the following rules.\n* <u>First Attack:</u> Resolve this Attack as normal. If you use _Roiling Tide_'s _Boost_, choose any _Source_ you initially _Drew_ from.\n* <u>Second Attack:</u> This Attack must inflict the opposite of _Push_/_Pull_ that the previous Attack did and may not target the previous Target. Apply _Roiling Tide_'s _Boost_ at no Cost, but it must originate from the previous Target's space, as if you _Drew_ from it.\n* <u>Final Attack</u>: This Attack follows all the rules of the second Attack. Additionally, it is instead a _Cone_ 2 Area. Create X _Wet_ spaces in the _Area_ after the Attack, where X is (the number of spaces you _Drew_ from)-(the number of targets you inflicted _Paddinged_ on).\n\nOnly inflict _Paddinged_ with the Final Attack.",
     "special": "No Target may be more than 8 spaces from you during this Technique.",
     "boost": "4 _Momentum_: Instead, _Draw_ 6. Prior to making the Final Attack, make another Attack following the same rules as the second. The Final Attack instead has a _Cone_ 3 Area. For every 2 _Phases_ after Phase 3 this Technique is played, reduce the Cost of this _Boost_ by 1."
   },
@@ -204,7 +203,7 @@
     "speed": "1-8",
     "range": [{ "category": "Ranged", "value": 6 }],
     "move": "Reposition",
-    "effect": "Gain 2 _Momentum_, then _Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Soaked_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. While these _Water Veil_s persist you do not need to _Draw_ when using _Shielding Wave_ if the Attack passes through them and reduce the cost by 1. You may not use _Shielding Wave_'s _Boost_ if you use this option.",
+    "effect": "Gain 2 _Momentum_, then _Draw_ up to 4 within _Range_. Choose X contiguous spaces within _Range_, where X is amount you _Drew_. Inflict _Paddinged_ 1, _Slide_ 1 on all creatures in these spaces, then create a _Water Veil_ in each space. You must _Slide_ these creatures into a space that is not targeted by this Technique. While these _Water Veil_s persist you do not need to _Draw_ when using _Shielding Wave_ if the Attack passes through them and reduce the cost by 1. You may not use _Shielding Wave_'s _Boost_ if you use this option.",
     "special": "You may add [_Enchant_]; if you do, remove [_Fleeting_] from these _Water Veil_s. "
   },
   {
@@ -225,9 +224,8 @@
     "desc": "You focus yourself before using a series of complex, high-effort maneuvers.",
     "type": "General",
     "speed": "1-4",
-    "move": "Special",
-    "effect": "Take two _Actions_.",
-    "special": "You may always choose to use this _Technique_ instead of your selected one."
+    "effect": "Use two different _Actions_, each with a -3 _Discount_.",
+    "special": "You may always choose to use this _Technique_ instead of your selected one. If you do, reduce the _Discount_ by 1."
   },
   {
     "name": "Hatch",
@@ -266,9 +264,7 @@
     "desc": "You center yourself, focusing on regaining your composure.",
     "speed": "1-4",
     "type": "General",
-    "move": 0,
-    "effect": "Gain 5 _Health_. You may _Refresh_, then _Recover_ twice.",
-    "special": "When you _Recover_ with this _Technique_ you may instead grant the benefit to an ally at your _Engagement_."
+    "effect": "Clear all your _Stun_ then _Recover_ twice."
   },
   {
     "name": "Roiling Earth",
@@ -364,12 +360,12 @@
     "special": "If an Attack targeting an ally passes through a space adjacent to you may pay 1 _Momentum_. If you do, the ally may use your _Stamina_ against the triggering Attack and you may use the _Intercept_ Reaction (paying its cost as normal) as if your ally was adjacent."
   },
   {
-    "name": "Shift",
+    "name": "Dash",
     "class": "Basic",
     "desc": "You dash forward, covering ground across the battlefield rapidly.",
     "speed": "1-4",
     "type": "Move",
-    "move": 5
+    "effect": "Gain 4 _Temporary_ _Movement_. All _Attacks_ against you this _Turn_ have _Disadvantage_."
   },
   {
     "name": "Scouring Flames",
@@ -462,7 +458,7 @@
     "speed": "1-8",
     "move": "None",
     "reqs": "Size 1 _Earthen_ Feature adjacent to you.",
-    "effect": "_Destroy_ the Feature and gain Stone Armor. While this _Enchant_ persists, gain the following effects:\n* Gain a special Armor with no weight that grants _Resistance_ 2 [All but _Crush_] and has a _Durability_ of 9. You benefit from this Armor and any other Armor you are currently wearing.\n* Treat yourself as one Size larger for all Effects.\n* Gain _Warded_ 2 (_Forced Movement_)\n* Allies may treat you as an Feature with a _Height_ of 1 when determining _Cover_/_Obscured_.\n* You become an _Earth_ Source.\n* Whenever you move add [_Rush_] and you move 1 fewer spaces than you normally would.\n\nIf you lose the _Guard_ provided by the Stone Armor, end this _Enchant_.",
+    "effect": "_Destroy_ the Feature and gain Stone Armor. While this _Enchant_ persists, gain the following effects:\n* Gain a special Armor with no load that grants _Resistance_ 2 [All but _Crush_] and has a _Durability_ of 9. You benefit from this Armor and any other Armor you are currently wearing.\n* Treat yourself as one Size larger for all Effects.\n* Gain _Warded_ 2 (_Forced Movement_)\n* Allies may treat you as an Feature with a _Height_ of 1 when determining _Cover_/_Obscured_.\n* You become an _Earth_ Source.\n* Whenever you move add [_Rush_] and you move 1 fewer spaces than you normally would.\n\nIf you lose the _Guard_ provided by the Stone Armor, end this _Enchant_.",
     "special": "If you repeat this _Technique_ while you have Stone Armor, gain the following effects while you have Stone Armor:\n* You become _Size_ 2, and when applicable are a _Height_ 2 Feature.\n* Reset the _Guard_ provided by your Stone Armor and increase it to 3.\n* Gain _Tough_ and 5 _Vigor_."
   },
   {
@@ -471,7 +467,7 @@
     "desc": "You sacrifice speed for absolute power, unleashing a singular devastating strike.",
     "type": "Strike",
     "speed": "1-4",
-    "effect": "Make a _Heavy_ _Attack_, adding [_Pierce_ 1] and dealing _Bonus Damage_ equal to 1 + the current _Phase_ on a _Graze_+."
+    "effect": "Use a _Versatile_ or _Heavy_ _Attack Action_ [_Discount_ 6], adding [_Pierce_ 1] and dealing _Bonus Damage_ equal to 1 + the current _Phase_ on a _Graze_+. On a _Hit_+, add _Break_ [_Focus_]."
   },
   {
     "name": "Skirmish",
@@ -479,8 +475,7 @@
     "desc": "You move quickly, unleashing a flurry of light attacks as your stride across the field.",
     "type": "Strike",
     "speed": "1-4",
-    "move": 1,
-    "effect": "Make 3 _Light_ _Attacks_."
+    "effect": "Gain 1 _Temporary_ _Movement_. Use  3 _Light_ or _Versatile_ _Attack Actions_ [_Discount_ 2]."
   },
   {
     "name": "Torching Flare",
@@ -604,7 +599,7 @@
     "type": "Defend",
     "speed": "3",
     "move": "Step",
-    "effect": "_Draw_ X (maximum of 7). Create a _Water Veil_ space in  an adjacent spaces with a _Value_ of X, then create a _Line_ X _Hazard_. At the end of every _Phase_, including this one, move the _Water Veil_ along the _Hazard_, placing a _Wet_ space if possible. If the _Water Veil_ enters a creatures space, inflict 6 _Crush_ Damage, _Push_ 2, _Vulnerable_ 2, and _Soaked_ 1. Whenever you place a _Wet_ space or inflict _Soaked_, reduce the value of the _Water Veil_ by 1.",
+    "effect": "_Draw_ X (maximum of 7). Create a _Water Veil_ space in  an adjacent spaces with a _Value_ of X, then create a _Line_ X _Hazard_. At the end of every _Phase_, including this one, move the _Water Veil_ along the _Hazard_, placing a _Wet_ space if possible. If the _Water Veil_ enters a creatures space, inflict 6 _Crush_ Damage, _Push_ 2, _Vulnerable_ 2, and _Paddinged_ 1. Whenever you place a _Wet_ space or inflict _Paddinged_, reduce the value of the _Water Veil_ by 1.",
     "special": "Use the Effect up to 3 times. You must _Draw_ the same amount for each use, and _Water Veils_ placed in this way must be adjacent, as must their _Hazards_."
   },
   {

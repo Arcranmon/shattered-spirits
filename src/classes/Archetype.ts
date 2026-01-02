@@ -2,7 +2,7 @@ import { store } from '@/store'
 import { Base, Bonuses } from '@/class'
 
 class Archetype extends Base {
-  private maneuver_: string
+  private art_: string
   private bonuses_: Bonuses
 
   // ==========================================================
@@ -16,12 +16,16 @@ class Archetype extends Base {
     return '**Bonuses:** ' + this.bonuses_.ReadableString
   }
 
-  public get ManeuverHeader() {
-    return '**Maneuver:** _' + this.maneuver_ + '_'
+  public get Bonuses() {
+    return this.bonuses_
   }
 
-  public get Manuever() {
-    return this.maneuver_
+  public get ArtHeader() {
+    return '**Art:** _' + this.art_ + '_'
+  }
+
+  public get Art() {
+    return this.art_
   }
 
   // ==========================================================
@@ -35,7 +39,7 @@ class Archetype extends Base {
 
   public setArchetypeData(data: IArchetypeData): void {
     this.setBaseData(data)
-    this.maneuver_ = data.maneuver || ''
+    this.art_ = data.art || ''
     this.bonuses_ = Bonuses.Deserialize(data.bonuses) || null
   }
 }

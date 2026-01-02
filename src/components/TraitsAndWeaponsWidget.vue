@@ -25,7 +25,7 @@
           ><v-row><display-tooltip-text :string="creature.ArmorText" /></v-row><v-row><display-tooltip-text :string="creature.SpecialText" /></v-row
         ></v-tab-item>
         <v-tab-item
-          ><show-cards job="Attacks" :inputs="creature.Weapons" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize"
+          ><show-cards :inputs="creature.Weapons" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize"
         /></v-tab-item> </v-tabs-items
     ></v-card>
   </div>
