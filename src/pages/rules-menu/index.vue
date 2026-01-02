@@ -1,23 +1,24 @@
 <template>
   <div>
+    <v-select v-if="isMobile" v-model="selectedTab" :items="tabs" attach filled outlined style="margin: 1em; margin-bottom: -1em" />
     <v-row class="page" style="margin-top: 1em">
-      <v-col cols="auto" class="sidebar" style="height: 100vh">
+      <v-col v-if="!isMobile" cols="auto" class="sidebar" style="height: 100vh">
         <v-btn-toggle borderless overflow-auto>
-          <div v-for="(tab, index) in tabs" style="width: 100%">
-            <v-btn @click="selectedIndex = index" class="button--style" depressed tile block>
+          <div v-for="tab in tabs" style="width: 100%">
+            <v-btn @click="selectedTab = tab" class="button--style" depressed tile block>
               {{ tab }}
             </v-btn>
           </div>
         </v-btn-toggle></v-col
       >
-      <v-col :key="selectedIndex">
-        <h2>{{ tabs[selectedIndex] }}</h2>
-        <div v-if="tabs[selectedIndex] == 'Afflictions and Status'">
+      <v-col :key="selectedTab">
+        <h2>{{ selectedTab }}</h2>
+        <div v-if="selectedTab == 'Afflictions and Status'">
           <v-select v-model="selectedStatuses" :items="statusCategories" attach label="Status Categories" multiple filled outlined></v-select>
           <show-cards :inputs="statuses" :collapse="false" />
         </div>
-        <show-cards v-if="tabs[selectedIndex] == 'Terrain'" :inputs="terrains" :collapse="false" />
-        <div v-if="tabs[selectedIndex] == 'Glossary'">
+        <show-cards v-if="selectedTab == 'Terrain'" :inputs="terrains" :collapse="false" />
+        <div v-if="selectedTab == 'Glossary'">
           <div v-for="key of glossaryItems.keys()">
             <h3>{{ key }}</h3>
             <div v-for="item of glossaryItems.get(key)" style="padding-bottom: 1em">
@@ -25,7 +26,7 @@
             </div>
           </div>
         </div>
-        <display-tooltip-text v-else :string="text[selectedIndex]"
+        <display-tooltip-text v-else :string="text[tabs.indexOf(selectedTab)]"
       /></v-col>
     </v-row>
   </div>
@@ -53,7 +54,7 @@ export default Vue.extend({
 
   data() {
     return {
-      selectedIndex: 0,
+      selectedTab: 'Playing the Game',
       tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Combat', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
       text: [GameModes, NarrativeText, TravelText, EquipmentText, CombatText, '', '', PlayerRolesText],
       statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],

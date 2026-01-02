@@ -1,19 +1,22 @@
 <template>
-  <v-row class="page" style="margin-top: 1em">
-    <v-col cols="auto" class="sidebar" style="height: 100vh">
-      <v-btn-toggle borderless overflow-auto>
-        <div v-for="(tab, index) in tabs" style="width: 100%">
-          <v-btn @click="selectedIndex = index" class="button--style" depressed tile block>
-            {{ tab }}
-          </v-btn>
-        </div>
-      </v-btn-toggle></v-col
-    >
-    <v-col>
-      <h2>{{ tabs[selectedIndex] }}</h2>
-      <display-tooltip-text :string="text[selectedIndex]"
-    /></v-col>
-  </v-row>
+  <div>
+    <v-select v-if="isMobile" v-model="selectedTab" :items="tabs" attach filled outlined style="margin: 1em; margin-bottom: -1em" />
+    <v-row class="page" style="margin-top: 1em">
+      <v-col v-if="!isMobile" cols="auto" class="sidebar" style="height: 100vh">
+        <v-btn-toggle borderless overflow-auto>
+          <div v-for="(tab, index) in tabs" style="width: 100%">
+            <v-btn @click="selectedIndex = index" class="button--style" depressed tile block>
+              {{ tab }}
+            </v-btn>
+          </div>
+        </v-btn-toggle></v-col
+      >
+      <v-col>
+        <h2>{{ selectedTab }}</h2>
+        <display-tooltip-text :string="text[tabs.indexOf(selectedTab)]"
+      /></v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -30,7 +33,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedIndex: 0,
+      selectedTab: 'The World in Brief',
       tabs: ['The World in Brief', 'Civilization Now', 'Greenvale', 'Sample Characters'],
       text: [WorldText, Civilization, Greenvale, SampleCharacters],
     }

@@ -1,7 +1,8 @@
 <template>
   <div>
+    <v-select v-if="isMobile" v-model="selectedTab" :items="tabs" attach filled outlined style="margin: 1em; margin-bottom: -1em" />
     <v-row class="background" style="margin-top: 1em" align="stretch">
-      <v-col cols="auto" class="sidebar" style="height: 100vh">
+      <v-col v-if="!isMobile" cols="auto" class="sidebar" style="height: 100vh">
         <v-btn-toggle borderless overflow-auto>
           <div v-for="(tab, index) in tabs" style="width: 100%">
             <v-btn @click="selectedIndex = index" class="button--style" depressed tile block>
@@ -11,30 +12,30 @@
         </v-btn-toggle></v-col
       >
       <v-col style="padding-left: 0; padding-bottom: 0; margin-bottom: 0; height: 100%" class="background">
-        <h2>{{ tabs[selectedIndex] }}</h2>
-        <div v-if="tabs[selectedIndex] == 'Basic Skills'">
+        <h2>{{ selectedTab }}</h2>
+        <div v-if="selectedTab == 'Basic Skills'">
           <v-tabs v-model="abilityTab" class="character-tabs" dark color="black" centered
             ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
           >
           <v-tabs-items v-model="abilityTab" class="character-tab-content">
             <v-tab-item
               ><v-row
-                ><v-col cols="4" v-for="ability in basic_abilities"
+                ><v-col :cols="12 / columns" v-for="ability in basic_abilities"
                   ><ability-widget :ability="ability" from="" :cardStyle="true" :key="ability.Name" class="ability-box" /></v-col></v-row
             ></v-tab-item>
-            <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="2" /></v-tab-item
+            <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="columns" /></v-tab-item
           ></v-tabs-items>
         </div>
-        <show-cards v-if="tabs[selectedIndex] == 'Arts'" :inputs="arts" :collapse="false" :cols="2" />
-        <show-cards v-if="tabs[selectedIndex] == 'Talents'" :inputs="talents" :collapse="false" :cols="2" />
+        <show-cards v-if="selectedTab == 'Arts'" :inputs="arts" :collapse="false" :cols="columns" />
+        <show-cards v-if="selectedTab == 'Talents'" :inputs="talents" :collapse="false" :cols="columns" />
 
-        <div v-if="tabs[selectedIndex] == 'Armor and Accessories'">
+        <div v-if="selectedTab == 'Armor and Accessories'">
           <v-row align="center" style="margin-left: 0.5em">
             <v-col cols="12"> <v-select v-model="selectedArmors" :items="armorCategories" attach label="Armor Categories" multiple filled outlined /></v-col
           ></v-row>
           <show-cards :inputs="armors" :collapse="false" />
         </div>
-        <div v-if="tabs[selectedIndex] == 'Weapons and Shields'">
+        <div v-if="selectedTab == 'Weapons and Shields'">
           <v-row align="center" style="margin-left: 0.5em">
             <v-col cols="6"
               ><v-select v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple filled outlined
@@ -59,7 +60,7 @@
           ></v-row>
           <show-cards :inputs="weapons" :collapse="false" />
         </div>
-        <div v-if="tabs[selectedIndex] == 'Spirit Arts'">
+        <div v-if="selectedTab == 'Spirit Arts'">
           <v-tabs v-model="abilityTab" class="character-tabs" dark color="black" centered
             ><v-tab v-for="element in elements">
               <h4>{{ element }}</h4>
@@ -69,8 +70,8 @@
             <v-tab-item v-for="element in elements"> <skill-tree :element="element" /></v-tab-item>
           </v-tabs-items>
         </div>
-        <spirit-abilities v-if="tabs[selectedIndex] == 'Spirit Customization'" />
-        <show-cards v-if="tabs[selectedIndex] == 'Consumables'" :inputs="consumables" :collapse="false" />
+        <spirit-abilities v-if="selectedTab == 'Spirit Customization'" />
+        <show-cards v-if="selectedTab == 'Consumables'" :inputs="consumables" :collapse="false" />
       </v-col>
     </v-row>
   </div>
@@ -95,7 +96,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedIndex: 0,
+      selectedTab: 'Basic Skills',
       selectedElement: 'Earth',
       elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
       tabs: ['Basic Skills', 'Arts', 'Talents', 'Spirit Customization', 'Armor and Accessories', 'Weapons and Shields', 'Consumables'],
@@ -110,6 +111,10 @@ export default Vue.extend({
     }
   },
   computed: {
+    columns: function () {
+      if (this.isMobile) return 1
+      return 2
+    },
     arts: function () {
       return this.$store.getters.getArts().sort((a, b) => a.Name.localeCompare(b.Name))
     },

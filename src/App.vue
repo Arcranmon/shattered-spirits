@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     fontType() {
-      if (screen.width <= 760) {
+      if (this.isMobile) {
         return 'mobile--font'
       }
       return ''
@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss">
 .mobile--font {
-  font-size: calc(1px + 2vw);
+  font-size: calc(1px + 3vw);
 }
 .text--miss {
   color: $color--chart-miss;
