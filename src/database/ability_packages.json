@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Metalcraft",
+    "category": "Metal",
+    "desc": "Simple techniques that all with a metal companion can easily accomplish.",
+    "abilities": [
+      {
+        "name": "Basic Metalcraft",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You have a basic, intuitive grasp of metalcraft. You gain the following:\n* **Range**: Your metalcraft has a range of approximately 20 yards.\n* **Metalsense:** You have a rough knowledge of the location of all metal within your metalcraft range.\n* **Lodestone Arts**: You may move and control objects up to 20 pounds, with good precision at low weights and poor precision at higher weights.\n* **Anvil Arts:** You may alter a physical property of metal (such as strength or pliability) up to 5% in either direction.\n\nWhen any of these effects would help, gain +1 die. You may take 1 _Spirit Drain_ to double the effect of any of these abilities temporarily."
+      },
+      {
+        "name": "Metalbending",
+        "class": "Utility",
+        "type": "Passive",
+        "keywords": ["Spirit", "Metal"],
+        "effect": "You have _Kinesis_ [_Metal_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you instead must Target a _Metal_ piece of _Equipment_."
+      },
+      {
+        "name": "Metal Fling",
+        "class": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "Metal", "Crush", "Remote"],
+        "cost": "1 _Momentum_",
+        "range": "_Short_-",
+        "effect": "Pick a 0 _Load_ _Metal_ item within _Close_- Range to use as _Ammunition_, then Attack a target within Range.",
+        "special": "If the Item used for this has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
+        "boosts": [
+          {
+            "name": "Heavy Fling",
+            "cost": "1 _Momentum_",
+            "effect": "You instead use a _Load_ 1 item as _Ammunition_. Deal +_1/1/2/2_ Damage."
+          }
+        ],
+        "chart": {
+          "damage": [0, 1, 2, 3],
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "status": ["None", "None", "None", "None"]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Blacksmith",
+    "desc": "You are skilled at working with metal and, given a forge and time, can create a variety of tools and arms.",
+    "category": "Crafting",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Strength of the Forge",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality. Whenever strength, endurance, or the ability to use blacksmith's tools with precision and technique would help, gain +1 die."
+      },
+      {
+        "name": "Metallurgy",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal equipment, especially those that would have been commonly made in your village's forge. When knowledge of metal or its craftsmanship would help, gain +1 die."
+      },
+      {
+        "name": "Metalworking",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "When you _Mend_ while _Resting_ you only need to use 1 _Scrap_, so long as said _Scrap_ is _Metal_. Additionally, if you have access to a forge, gain the following _Camp Action_:\n* <u>Reforge</u>: Choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend the _Repair_ cost, then restore it to 1 _Durability_."
+      },
+      {
+        "name": "Forge-Trained",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "Given appropriate tools and materials, you may craft Metal equipment. You may craft up to a Novice level, and may work with Common materials (Bronze and Iron)."
+      }
+    ]
+  },
+  {
+    "name": "Metalborn",
+    "reqs": "Metal Spirit",
+    "category": "Metal",
+    "type": "Spirit Trait",
+    "abilities": [
+      {
+        "name": "Metal Form",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness. Whenever your unique anatomy or durability would be of benefit, gain +1 die."
+      },
+      {
+        "name": "Metallic Body",
+        "class": "Defensive",
+        "type": "Passive",
+        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all Attacks.\n* Gain the _Metal Body_ Armor.\n* You are _Immune_ to _Bleeding_."
+      },
+      {
+        "name": "Heat Conduction",
+        "class": "Defensive",
+        "type": "Passive",
+        "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
+      },
+      {
+        "name": "Metallic Reconstitution",
+        "class": "Utility",
+        "keywords": ["Metal", "Pacifist", "Rooted"],
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "reqs": "Unattended _Metal_ _Equipment_ within range or at _Metal_ _Terrain_.",
+        "special": "Your Spirit may use this on your _Turn_ while not _Summoned_. If they do, they must Target _Equipment_ you have _Worn_ or _Packed_.",
+        "effect": "Clear 4 _Stun_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
+        "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, clear 4 _Stun_ and gain 3 _Health_." }]
+      }
+    ]
+  },
+  {
+    "name": "Light Natural Armor",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Points",
+    "reqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
+    "keywords": ["Armored"],
+    "abilities": [{ "name": "Carapace Armor", "class": "Defensive", "type": "Passive", "effect": "This spirit gains the _Carapace_ Armor." }],
+    "equipment": ["Carapace"]
+  },
+  {
+    "name": "Climber",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Natural Climber",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces. Whenever this trait might be of help, gain +1 die."
+      },
+      {
+        "name": "Climbing",
+        "class": "Mobility",
+        "type": "Passive",
+        "effect": "This creature only needs to pay 1 _Movement_ for the [_Cliff_] keyword, rather than the typical 2."
+      }
+    ],
+    "bonuses": { "move": 1, "reflex": 2 }
+  },
+  {
+    "name": "Diminutive",
+    "type": "Trait",
+    "category": "General",
+    "cost": "3 Growth Points",
+    "prereqs": "No other [Size] Traits.",
+    "keywords": ["Size"],
+    "abilities": [
+      {
+        "name": "Tiny Size",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are extremely small, around the size of a rat. This allows you to easily escape notice and find your way into tight spots. Whenever your size would be of help, gain +1 die."
+      },
+      {
+        "name": "Diminutive Agility",
+        "class": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. Your Spirit may only select [_Light_] Weapons. If they already have _Speed_ 1, instead gain an additional +1 _Movement_."
+      }
+    ],
+    "bonuses": { "move": 1, "reflex": 2 }
+  },
+  {
+    "name": "Weaponsmith",
+    "desc": "You specialize in crafting weapons of war, and few are your equal when crafting them.",
+    "category": "Crafting",
+    "type": "Talent",
+    "prereqs": "Carpentry or Blacksmith",
+    "abilities": [
+      {
+        "name": "Weapon Academia",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are well-versed in different types of weapons, as well as how they are made. You intuitively understand the function, craftsmanship, and cultural significance of weapons, and can accurately assess the condition of a weapon at a glance. Additionally, from a weapon, you can gain insight into its maker, the culture it comes from, and skill level of the wielder. Whenever knowledge of weapons or the ability to craft them at higher quality would help, gain +1 die."
+      },
+      {
+        "name": "Functional Repair",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "When you _Mend_ a _Weapon_ while _Resting_ you may instead mark this Power to use to use no _Scrap_, although you still require tools. You may not use this Power again until you recover it using _Efficacy_ during a _Rest Roll_."
+      },
+      {
+        "name": "Higher Quality",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "During Downtime you may work on your allies' weapons, ensuring they are in the best possible shape. Your party's weaponry is noticibly of higher quality and well-maintained, grainting the party the Condition 'High Quality Weapons'.\n\nAdditionally, all party members (including yourself) gain a Weaponsmith's Blessing which, once per adventure, can be used to treat a weapon as if it had either _Durable_ or _Keen_.\n\nFinally, gain the following _Camp Action_:\n* <u>Weapon Maintenance</u>: Choose an ally that does not have a Weaponsmith's Blessing. You take the time to ensure their equipment is in working order, granting them a Weaponsmith's Blessing."
+      },
+      {
+        "name": "Forge Weapon",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "You are extremely capable when crafting Weapons. You may craft Weapons up to a Journeyman rank, although you may only use Common materials unless you have training with that material (i.e., you may only use Bronze and Iron metals unless you have Blacksmith). Choose two Advanced materials of a category you have training with."
+      }
+    ]
+  },
+  {
+    "name": "Tough",
+    "desc": "You are exceptionally tough, pushing through any difficulty with determination and grit.",
+    "category": "Archetype",
+    "abilities": [
+      {
+        "name": "Exceptional Toughness",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. Whenever the ability to endure pain, push through affliction, or otherwise use your exceptional toughness, gain +1 die. This may not be used for Travel Rolls but, at GM discretion, may act as appropriate Equipment for offsetting some hazards."
+      },
+      {
+        "name": "Grin and Bear It",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may instead place that effect on this Ability, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
+      },
+      {
+        "name": "Toughness",
+        "class": "Defensive",
+        "type": "Passive",
+        "effect": "Gain +5 Health. At _Refresh_, reduce any _Stun_ you would gain from Afflictions (such as _Fatigue_) by half."
+      },
+      {
+        "name": "True Grit",
+        "class": "Defensive",
+        "type": "Reaction",
+        "keywords": ["Exhaust"],
+        "cost": "None",
+        "trigger": "You would be reduced to 0 _Health_.",
+        "effect": "The triggering effect cannot reduce you below 1 _Health_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
+      }
+    ]
+  }
+]

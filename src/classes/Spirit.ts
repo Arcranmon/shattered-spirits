@@ -35,7 +35,7 @@ class Spirit extends Combatant {
   override get MaxMovement() {
     var movement = this.spirit_type_.Movement
     for (var trait of this.Traits) {
-      movement += store.getters.getSpiritTrait(trait).Bonuses.Movement
+      //movement += store.getters.getSpiritTrait(trait).Bonuses.Movement
     }
     return movement
   }
@@ -61,15 +61,20 @@ class Spirit extends Combatant {
   override get Abilities() {
     var abilities = store.getters.basicAbilities
     abilities = abilities.concat(store.getters.spiritAbilities)
-    for (var trait of store.getters.getSpiritTraitsFromList(this.Traits)) {
-      abilities = abilities.concat(trait.Abilities)
-    }
-
     return store.getters.getAbilitiesFromList(abilities)
   }
 
+  get Arts() {
+    var arts = this.character_.SpiritArts
+    for (var trait of this.traits_) {
+      arts.push(trait)
+    }
+    arts.sort()
+    return arts
+  }
+
   override get AllArts() {
-    var arts = store.getters.getArtsFromList(this.Arts)
+    var arts = store.getters.getAPsFromList([...this.Traits, ...this.character_.SpiritArts, this.character_.Element + 'born'])
     arts = arts.concat(this.Equipment)
 
     return arts
@@ -82,7 +87,7 @@ class Spirit extends Combatant {
   get Reflex() {
     var reflex = this.SpiritType.Defenses.Reflex
     for (var trait of this.Traits) {
-      reflex += store.getters.getSpiritTrait(trait).Bonuses.Reflex
+      //reflex += store.getters.getSpiritTrait(trait).Bonuses.Reflex
     }
     return reflex
   }
@@ -123,11 +128,6 @@ class Spirit extends Combatant {
 
   get Equipment() {
     var equipment = store.getters.getWeaponsFromList(this.weapons_)
-    for (var trait of store.getters.getSpiritTraitsFromList(this.Traits)) {
-      if (trait.HasEquipment) {
-        equipment = equipment.concat(store.getters.getEquipmentFromList(trait.Equipment))
-      }
-    }
 
     return equipment
   }

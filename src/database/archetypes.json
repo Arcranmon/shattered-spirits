@@ -3,7 +3,49 @@
     "name": "Powerful",
     "desc": "You've always been stronger than most, and what would be a heavy burden for another barely phases you.",
     "bonuses": { "grit": 1, "load": 2 },
-    "art": "Overwhelming Strength",
+    "art": {
+      "name": "Overwhelming Strength",
+      "desc": "You unleash your strength, decimating the terrain and flinging creatures away.",
+      "abilities": [
+        {
+          "name": "Shove",
+          "class": "Light Attack",
+          "type": "Action",
+          "speed": 1,
+          "cost": "1 _Momentum_",
+          "range": "Melee",
+          "effect": "Inflict _Push_ [5 _Grit_] on a Target within Range. This Attack is always treated as a _Hit_.",
+          "boost": "1 _Momentum_: Add an additional Target. You may repeat this _Boost_."
+        },
+        {
+          "name": "Fling",
+          "class": "Offensive",
+          "type": "Enhancement",
+          "cost": "2 _Momentum_",
+          "trigger": "You inflict _Push_.",
+          "effect": "Instead, inflict _Forceful Push_."
+        },
+        {
+          "name": "Collateral Damage",
+          "class": "Offensive",
+          "type": "Gambit",
+          "cost": "None",
+          "reqs": "_Miss_ with a _Martial_ Attack.",
+          "effect": "Repeat the Attack against an _Obstacle_ at the same _Position_ as the Target, dealing +3 Damage.",
+          "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
+        },
+        {
+          "name": "Overpower",
+          "class": "Offensive",
+          "type": "Gambit",
+          "cost": "None",
+          "reqs": "_Graze_+ with a _Martial_ Attack.",
+          "effect": "Deal +1 _Bonus Damage_ and inflict _Push_ [6 _Grit_]/_Prone_ [4 _Grit_/_Reflex_]/_Sundered_ [4 _Reflex_] on one Target.",
+          "boost": "2 _Momentum_: Use this _Gambit_ even if you did not qualify for one."
+        }
+      ],
+      "category": "Martial"
+    },
     "effect": "You are incredibly strong, and can reliably light twice as much as a normal person, allowing you to accomplish all but the most impressive feats of mundane strength without any significant effort. When using brute strength or physical power you may spend one &#9634; as if it were &#8863; or to play *Efficacy* if appropriate."
   },
   {
@@ -25,6 +67,6 @@
     "desc": "You are a hardy creature that can take more punishment than most.",
     "bonuses": { "health": 5 },
     "art": "Sturdy",
-    "effect": "You are a resilient creature that can push through issues that would debilitate a lesser creature. When you would gain Hunger, Thirst, Fatigue, or an appropriate Affliction you may instead place that effect on this Archetype, ignoring its effect. You may recover this effect as normal, refreshing the use of this ability when you do so."
+    "effect": " "
   }
 ]

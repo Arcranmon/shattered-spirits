@@ -8,7 +8,7 @@ import Talents from '@/database/talents.json'
 import ArchetypesJson from '@/database/archetypes.json'
 import SpiritTraitsJson from '@/database/spirit_traits.json'
 
-import ArtsJson from '@/database/arts.json'
+import AbilityPackageJson from '@/database/ability_packages.json'
 import AbilitiesJson from '@/database/abilities.json'
 
 import DamageTypes from '@/database/glossary/damage_types.json'
@@ -27,7 +27,7 @@ import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
 import {
-  Art,
+  AbilityPackage,
   Armor,
   Archetype,
   Discipline,
@@ -54,12 +54,12 @@ let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
 let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Traits]
 
-const kPlayerAbilities = ['Manifest', 'Unbalance', 'Find Advantage']
+const kPlayerAbilities = ['Adrenaline Rush', 'Sacrifice', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
 
 const kSpiritAbilities = []
 
 const kBasicAbilities = [
-  'Run',
+  'Accelerate',
   'Brawl',
   'Block',
   'Breather',
@@ -67,11 +67,13 @@ const kBasicAbilities = [
   'Disengage',
   'Perfect Guard',
   'Opportunity Attack',
-  'Lethal Blow',
+  'Lethal Strike',
+  'Flurry',
+  'Staggering Impact',
   'Dodge',
-  'Use Environment',
+  'Interact',
   'Drop',
-  'Draw/Stow',
+  'Equip',
 ]
 
 @Module({
@@ -93,7 +95,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Subtypes = SpiritTypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
-    this.Arts = ArtsJson.map((x) => Art.Deserialize(<IArtData>(<unknown>x)))
+    this.AbilityPackages = AbilityPackageJson.map((x) => AbilityPackage.Deserialize(<IAbilityPackageData>(<unknown>x)))
     this.Consumables = ConsumablesJson.map((x) => Consumable.Deserialize(<IConsumableData>(<unknown>x)))
     this.Traits = SpiritTraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
     this.Abilities = AbilitiesJson.map((x) => Ability.Deserialize(<IAbilityData>(<unknown>x)))
@@ -109,7 +111,7 @@ export class DatabaseJsonStore extends VuexModule {
   private SpiritForms: SpiritForm[] = []
   private Features: Feature[] = []
   private Archetypes: Archetype[] = []
-  private Arts: Art[] = []
+  private AbilityPackages: AbilityPackage[] = []
   private Consumables: Consumable[] = []
   private Traits: Trait[] = []
   private Abilities: Ability[] = []
@@ -197,30 +199,60 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // ART TOOLS
+  // ABILITY PACKAGE TOOLS
   // ==========================================================
-  get getArt(): any {
+  get getAP(): any {
     return (inword: string) => {
-      var art = this.Arts.find((x) => x.Name.trim() == inword.trim())
-      if (art == undefined) return new Art(inword)
+      var art = this.AbilityPackages.find((x) => x.Name.trim() == inword.trim())
+      if (art == undefined) return new AbilityPackage(inword)
       return art
     }
   }
 
-  get getArtsFromList(): any {
-    return (art_list: Array<any>) => {
-      if (art_list == undefined) return []
-      let arts: Array<Art> = []
-      for (var art of art_list) {
-        arts.push(this.getArt(art))
+  get getAPsFromList(): any {
+    return (ap_list: Array<any>) => {
+      if (ap_list == undefined) return []
+      let aps: Array<AbilityPackage> = []
+      for (var ap of ap_list) {
+        aps.push(this.getAP(ap))
       }
-      return arts
+      return aps
+    }
+  }
+
+  get getArts(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Art')
+    }
+  }
+
+  get getTalents(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Talent')
+    }
+  }
+
+  get getSpiritTraits(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Spirit Trait')
+    }
+  }
+
+  get getSpiritTraitsByTagAndCost(): any {
+    return (tag: string, cost: string) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Spirit Trait' && x.Category == tag.trim() && x.CostHeader.includes(cost.trim()))
+    }
+  }
+
+  get getTraitsByTagAndCost(): any {
+    return (tag: string, cost: string) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Trait' && x.Category == tag.trim() && x.CostHeader.includes(cost.trim()))
     }
   }
 
   get isArt(): any {
     return (inword: string) => {
-      return this.Arts.some((x) => x.Name == inword.trim())
+      return this.AbilityPackages.some((x) => x.Name == inword.trim())
     }
   }
   // ==========================================================
@@ -652,11 +684,6 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // TALENT GETTERS
   // ==========================================================
-  get getTalents(): any {
-    return () => {
-      return Talents.map((x) => Talent.Deserialize(<ITalentData>x))
-    }
-  }
 
   get getTalent(): any {
     return (inword: string) => {
@@ -824,12 +851,6 @@ export class DatabaseJsonStore extends VuexModule {
     return (inword: string) => {
       var type = this.Traits.find((x) => x.Name === inword.trim())
       return type
-    }
-  }
-
-  get getSpiritTraitsByTagAndCost(): any {
-    return (tag: string, cost: string) => {
-      return this.Traits.filter((x) => x.Tags.includes(tag.trim()) && x.CostHeader.includes(cost.trim()))
     }
   }
 

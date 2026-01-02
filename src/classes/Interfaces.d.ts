@@ -20,9 +20,12 @@ declare interface IArchetypeData extends IBaseData {
   bonuses: IBonusesData
 }
 
-declare interface IArtData extends IBaseData {
+declare interface IAbilityPackageData extends IBaseData {
   abilities: IAbilityData[]
   chart?: IChartData
+  type?: string
+  prereqs: string
+  cost: string
 }
 
 declare interface IBonusesData {
@@ -36,9 +39,8 @@ declare interface IBonusesData {
 }
 
 declare interface IEquipmentData extends IBaseData {
-  notches: number
-  load: number
   durability: number
+  load: number
   abilities: IAbilityData[]
   chart: IChartData
 }
@@ -72,12 +74,10 @@ declare interface ICharacterData extends ICombatantData {
   name: string
   player_character: Boolean
   spirit: ISpiritData
-  archetypes: string[]
   talents: string[]
   wielded: string[]
   equipped: string[]
-  consumables: string[]
-  pack: string[]
+  packed: string[]
 }
 
 declare interface ICombatantData {
@@ -157,7 +157,7 @@ declare interface INpcData {
   jump: number
   class: string
   desc: string
-  notches?: number
+  durability?: number
   health: number
   guard?: number
   max_stun: number
@@ -217,7 +217,6 @@ declare interface IRangeData {
 
 declare interface IRespiteData {
   momentum_gain: number[]
-  essence_gain: number[]
   stun_clear: number[]
   conditional_momentum: string
   special: string
@@ -254,7 +253,7 @@ declare interface ISubtypeData extends IBaseData {
   manifest: string[]
   armor: string
   growth_points: number
-  stances: string[]
+  speed: number
 }
 
 declare interface IStanceData extends IBaseData {
@@ -264,8 +263,7 @@ declare interface IStanceData extends IBaseData {
   traits: string[]
   abilities: IAbilityData[]
   effects: string[]
-  essence_gain: number
-  momentum_gain: number
+  momentum: number
   stun_clear: number
   speed: number
   guard: number

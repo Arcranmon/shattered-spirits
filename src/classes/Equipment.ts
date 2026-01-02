@@ -2,7 +2,6 @@ import { store } from '@/store'
 import { Ability, Base, Chart } from '@/class'
 
 class Equipment extends Base {
-  private notches_: number
   private durability_: number
   private load_: number
   protected abilities_: Ability[] = []
@@ -13,9 +12,6 @@ class Equipment extends Base {
   // ==========================================================
   get Load() {
     return this.load_
-  }
-  get Notches() {
-    return this.notches_
   }
   get Durability() {
     return this.durability_
@@ -48,7 +44,6 @@ class Equipment extends Base {
     this.setBaseData(data)
     this.load_ = data.load || 0
     this.durability_ = data.durability || 0
-    this.notches_ = data.notches || 0
     if (data.abilities) {
       for (var ability of data.abilities) {
         this.abilities_.push(Ability.Deserialize(ability))

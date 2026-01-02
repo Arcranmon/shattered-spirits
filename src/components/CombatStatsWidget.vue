@@ -88,9 +88,6 @@
       <v-row no-gutters>
         <v-col><display-tooltip-text string="**_Guard_:**" /></v-col><v-col :cols="8">{{ creature.Guard }}</v-col>
       </v-row>
-      <v-row no-gutters>
-        <v-col><display-tooltip-text string="**_Traits_:**" /></v-col><v-col :cols="8"><display-tooltip-text :string="creature.BulletedTraits" /></v-col>
-      </v-row>
     </div>
   </div>
 </template>

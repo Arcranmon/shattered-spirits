@@ -30,6 +30,9 @@
                   <div class="card--box" v-if="isArmor(n)">
                     <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
                   </div>
+                  <div class="card--box" v-if="isAbilityPackage(n)">
+                    <ap-card :ap="n" style="height: 100%" />
+                  </div>
                 </v-col>
               </v-row> </v-container
           ></v-expansion-panel-content>
@@ -71,20 +74,11 @@
             <div class="card--box" v-if="isTerrain(n)">
               <terrain-card :terrain="n" style="height: 100%" />
             </div>
-            <div class="card--box" v-if="isArchetype(n)">
-              <archetype-card :archetype="n" style="height: 100%" />
-            </div>
-            <div class="card--box" v-if="isTalent(n)">
-              <talent-card :talent="n" style="height: 100%" />
-            </div>
-            <div class="card--box" v-if="isArt(n)">
-              <art-card :art="n" style="height: 100%" />
+            <div class="card--box" v-if="isAbilityPackage(n)">
+              <ap-card :ap="n" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isSpiritForm(n)">
               <spirit-form-card :form="n" style="height: 100%" />
-            </div>
-            <div class="card--box" v-if="isTrait(n)">
-              <trait-card :trait="n" style="height: 100%" />
             </div>
             <div class="card--box" v-if="isStatus(n)">
               <status-card :status="n" style="height: 100%" />
@@ -97,21 +91,34 @@
 
 <script>
 import Vue from 'vue'
-import ArchetypeCard from './ArchetypeCard.vue'
 import ArmorCard from './ArmorCard.vue'
-import ArtCard from './ArtCard.vue'
+import ApCard from './APCard.vue'
 import ConsumableCard from './ConsumableCard.vue'
 import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
-import TalentCard from './TalentCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
 import WeaponCard from './WeaponCard.vue'
 import SpiritTypeCard from './SpiritTypeCard.vue'
 import SpiritFormCard from './SpiritFormCard.vue'
 import TraitCard from './TraitCard.vue'
-import { Art, Armor, Consumable, Archetype, Feature, Stance, Status, Talent, Technique, SpiritForm, Trait, Terrain, Weapon, SpiritType } from '@/class'
+import {
+  AbilityPackage,
+  Armor,
+  Consumable,
+  Archetype,
+  Feature,
+  Stance,
+  Status,
+  Talent,
+  Technique,
+  SpiritForm,
+  Trait,
+  Terrain,
+  Weapon,
+  SpiritType,
+} from '@/class'
 
 export default Vue.extend({
   name: 'show-cards',
@@ -172,8 +179,7 @@ export default Vue.extend({
     },
   },
   components: {
-    ArtCard,
-    ArchetypeCard,
+    ApCard,
     ArmorCard,
     ConsumableCard,
     FeatureCard,
@@ -185,14 +191,13 @@ export default Vue.extend({
     SpiritFormCard,
     SpiritTypeCard,
     TraitCard,
-    TalentCard,
   },
   methods: {
     clickMethod(variable, index) {
       this.$emit('chose', { card: variable, index: index })
     },
-    isArt(variable) {
-      return variable instanceof Art
+    isAbilityPackage(variable) {
+      return variable instanceof AbilityPackage
     },
     isArchetype(variable) {
       return variable instanceof Archetype

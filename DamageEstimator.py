@@ -51,7 +51,7 @@ keyword_modifiers = {
     "Overwhelming": 0.25,
     "Social": 0.5,
     "Pierce": 0.5,
-    "Remote": 0.5,
+    "Remote": 0.25,
     "Point Blank": 0.5,
     "Siege": 0,
     "Fist": 0,
@@ -125,7 +125,7 @@ def get_data(database):
     elif(database == "Weapon"):
         f = open('.\src\database\items\weapons.json')
     elif(database == "Attack"):
-        f = open('.\src\database\\arts.json')
+        f = open('.\src\database\\abiliti.json')
 
     return json.load(f)
 

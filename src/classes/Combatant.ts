@@ -137,7 +137,6 @@ class Combatant {
     }
 
     abilities.sort((a, b) => a.Name.localeCompare(b.Name))
-    abilities = abilities.filter((obj, index, self) => !obj.Origin || index === self.findIndex((o) => o.Origin === obj.Origin))
     return abilities
   }
 

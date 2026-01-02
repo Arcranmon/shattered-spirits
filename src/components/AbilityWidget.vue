@@ -37,6 +37,9 @@
       <div class="card--format" v-if="ability.HasRange">
         <display-tooltip-text :string="ability.RangeHeader" />
       </div>
+      <div class="card--format" v-if="ability.HasTarget">
+        <display-tooltip-text :string="ability.TargetHeader" />
+      </div>
       <div class="card--format" v-if="ability.HasTrigger">
         <display-tooltip-text :string="ability.TriggerHeader" />
       </div>
@@ -109,6 +112,15 @@ export default Vue.extend({
   font-size: 1.05em;
   font-weight: bold;
   align-items: center;
+}
+.Skill {
+  background-color: #d99a07;
+}
+.Power {
+  background-color: #d2d50e;
+}
+.Passive {
+  background-color: #68696a;
 }
 .Maneuver {
   background-color: #7ac3ff;

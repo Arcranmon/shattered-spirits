@@ -11,18 +11,10 @@
     <div class="card--content">
       <div class="chart--wrapper" inline>
         <v-row align="stretch" no-gutters class="chart--row"
-          ><v-col class="chart--head" cols="8"
-            ><b><display-tooltip-text string="_Speed_" :decorate="false" /></b
-          ></v-col>
-        </v-row>
-        <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="8">{{ stance.Speed }}</v-col>
-        </v-row>
-        <v-row align="stretch" no-gutters class="chart--row"
+          ><v-col class="chart--head" cols="2"
+            ><b><display-tooltip-text string="_Speed_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Momentum_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Essence_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Stun Clear_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
@@ -30,8 +22,8 @@
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Speed }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Momentum }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Essence }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.StunClear }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Movement }}</v-col>
         </v-row>

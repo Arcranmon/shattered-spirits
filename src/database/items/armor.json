@@ -1,45 +1,12 @@
 [
   {
-    "name": "Throwing Belt",
-    "category": "Accessory",
-    "desc": "A convenient bandolier that provides easy access to throwing weapons.",
-    "load": 1,
-    "durability": 5,
-    "notches": 1,
-    "special": "While this is _Equipped_, gain 3 _Slots_ that may only be used for _Throwing_ Weapons."
-  },
-  {
-    "name": "Metal Pouch",
-    "category": "Accessory",
-    "load": 1,
-    "keywords": ["Metal", "_Source_ 2"],
-    "durability": 5,
-    "notches": 1,
-    "consumable_slots": 0,
-    "special": "This _Equipment_ is full of various objects, which may be targeted at _Load_ 0 [_Metal_, _Source_ 0] _Equipment_.",
-    "desc": "A bag of metal scraps, none of which are particularly noteworthy."
-  },
-  {
-    "name": "Utility Vest",
-    "category": "Base Armor",
-    "load": 1,
-    "keywords": ["Organic"],
-    "guard": 0,
-    "soak": 0,
-    "durability": 5,
-    "notches": 1,
-    "consumable_slots": 2,
-    "desc": "A simple vest with deep pockets, useful for additional equipment."
-  },
-  {
     "name": "Light Armor",
     "category": "Base Armor",
     "load": 1,
     "keywords": ["Organic"],
     "guard": 1,
     "soak": 2,
-    "durability": 5,
-    "notches": 1,
+    "durability": 1,
     "abilities": [
       {
         "name": "Twist",
@@ -56,11 +23,10 @@
     "name": "Medium Armor",
     "category": "Base Armor",
     "keywords": ["Organic"],
-    "notches": 2,
+    "durability": 2,
     "load": 3,
     "guard": 1,
     "soak": 2,
-    "durability": 5,
     "special": "Equip one piece of _Layered Armor_ as a part of this.",
     "abilities": [
       {
@@ -78,11 +44,10 @@
     "name": "Heavy Armor",
     "category": "Base Armor",
     "keywords": ["Organic"],
-    "notches": 3,
+    "durability": 3,
     "load": 6,
     "guard": 1,
     "soak": 2,
-    "durability": 5,
     "special": "Equip two pieces of _Layered Armor_ as a part of this.",
     "desc": "Heavy armor, sacrificing mobility for additional effects.",
     "abilities": [
@@ -161,27 +126,15 @@
     "desc": "A helmet that can be difference between a glancing blow and a lethal strike.",
     "keywords": ["Organic"],
     "load": 1,
-    "durability": 5,
-    "notches": 1,
-    "abilities": [
-      {
-        "name": "Off the Dome",
-        "class": "Defensive",
-        "type": "Reaction",
-        "keywords": ["Efficient"],
-        "trigger": "You are _Crit_.",
-        "cost": "1 _Momentum_",
-        "effect": "Choose one:\n* Gain 3 _Guard_.\n* While _Defending_, instead treat the _Crit_ as a _Hit_.",
-        "special": "You may use this at no Cost if you _Notch_ it."
-      }
-    ]
+    "durability": 1,
+    "soak": 1
   },
   {
     "name": "Traveler's Boots",
     "category": "Boot",
     "desc": "Sturdy boots that make it easier to traverse difficult terrain.",
     "keywords": ["Organic"],
-    "notches": 1,
+    "durability": 1,
     "load": 1,
     "durability": 5,
     "special": "Gain +1 to _Negate_ and 2 _Guard_ for all _Field_ effects without the _Weather_ keyword."
@@ -192,7 +145,7 @@
     "desc": "A sturdy helmet that can be difference between a glancing blow and a lethal strike.",
     "keywords": ["Metal"],
     "durability": 5,
-    "notches": 2,
+    "durability": 2,
     "load": 2,
     "abilities": [
       {
@@ -214,9 +167,8 @@
     "keywords": ["Metal"],
     "guard": 2,
     "soak": 4,
-    "durability": 4,
     "load": 0,
-    "notches": 2,
+    "durability": 2,
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
     "abilities": [
       {
@@ -238,7 +190,7 @@
     "soak": 3,
     "durability": 5,
     "load": 0,
-    "notches": 2,
+    "durability": 2,
     "special": "While wearing this Armor treat your _Guard_ as 3 higher against _Slash_ and _Stab_ Damage.",
     "abilities": [
       {
@@ -279,7 +231,7 @@
     "soak": 4,
     "durability": 4,
     "load": 0,
-    "notches": 2,
+    "durability": 2,
     "special": "While wearing this Armor treat your _Guard_ as 2 higher against _Crush_, _Slash_, and _Stab_ Damage.",
     "abilities": [
       {
@@ -302,67 +254,27 @@
     "category": "Over Armor",
     "desc": "Metal plating that can be layered for greater and greater protection.",
     "keywords": ["Metal"],
-    "guard": 1,
-    "soak": 5,
-    "durability": 1,
+    "guard": 2,
+    "soak": 4,
+    "durability": 2,
     "load": 4,
-    "notches": 3,
-    "abilities": [
-      {
-        "name": "Deflect",
-        "class": "Defensive",
-        "keywords": ["Block"],
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "effect": "_Defend_.\n* Lose: Gain 4 _Guard_.\n* _Tie_: Reduce the Damage by 2. Gain 2 _Guard_."
-      },
-      {
-        "name": "Twist",
-        "class": "Defensive",
-        "type": "Gambit",
-        "effect": "Gain 4 _Guard_. If this triggered off of <i>Deflect</i>, also reduce the Damage by 1.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
-      }
-    ],
-    "table": [
-      ["2-3", "Miss"],
-      ["4-6", "Graze"],
-      ["7-10", "Hit"],
-      ["11-12", "Crit"]
-    ]
+    "special": "If you choose this _Equipment_ to _Block_, treat it as _Balanced_ Equipment and gain +1 _Guard_"
   },
   {
     "name": "Carapace",
     "category": "Natural",
-    "durability": 5,
-    "notches": 2,
+    "durability": 2,
     "load": 2,
     "guard": 1,
     "soak": 2,
-    "abilities": [
-      {
-        "name": "Deflect",
-        "class": "Defensive",
-        "keywords": ["Block"],
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "effect": "_Defend_.\n* Lose: Gain 2 _Guard_.\n* _Tie+_: Gain 3 _Guard_."
-      },
-      {
-        "name": "Twist",
-        "class": "Defensive",
-        "type": "Gambit",
-        "effect": "Gain 2 _Guard_, or 3 _Guard_ if this triggered off of <i>Deflect</i>.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ this."
-      }
-    ],
+    "special": "If you choose this _Equipment_ to _Block_, treat it as _Balanced_ Equipment and gain +1 _Guard_",
     "desc": "Natural armor, whether that be chitin, a thin shell, or natural plating."
   },
   {
     "name": "Shell",
     "category": "Natural",
     "durability": 5,
-    "notches": 2,
+    "durability": 2,
     "load": 4,
     "guard": 2,
     "soak": 4,

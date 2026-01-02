@@ -21,19 +21,21 @@ A _Turn_ is a specific character's opportunity to act in combat, where they can 
 &nbsp;
 A _Round_ is structured as follows:
 **Respite:** The start of each _Round_. This is not a _Phase_, and no Abilities are used. During Respite, resolve the following in the following order:
-* In every Round except the first, lose half of any _Prepared_ _Momentum_ and _Essence_ on Arts and Equipment.
-* You may Wield a piece of Equipped Equipment, or Equip a Wielded piece of Equipment.
-* Reset your Movement to its maximum value, then clear half your current _Stun_.
+* Change your current _Stance_, if desired.
+* Clear _Stun_ according to your _Stance_.
+* Choose one:
+    * May _Manifest_ your Spirit at an appropriate _Source_ within their _Manifest Range_, or pay 1 _Momentum_ to _Manifest_ them at _Melee_ Range. They become _Engaged_ with any creatures at said _Source_. They gain 2 _Momentum_. You may not choose this option if _Supressed_.
+    * You may _Recall_ or choose to not _Manifest_ your _Spirit_. If you are not _Supressed_, gain 2 _Momentum_.
 * Resolve any other effects that occur during _Respite_, typically field effects or other such abilities.
 
 &nbsp;
-**Phase 1-4:** These numbered Phases show the passing of time in combat and are when most action will take place. With each _Phase_ the intensity of combat increases, with combatants getting access to more and more _Momentum_ and _Essence_. Before each _Phase_ starts, combatants may change their _Stance_ to any they have available. Then, at the start of each _Phase_, gain _Momentum_ and _Essence_ equal to the _Phase_ as well as any additional resources dictated by your _Stance_.
+**Phase 1-6:** These numbered Phases show the passing of time in combat and are when most action will take place. Each character's _Stance_ has a listed Speed, which is the _Phase_ that character takes their _Turn_ in. Any _Summoned_ Spirits also act at their listed _Speed_.
 
 &nbsp; 
 **End of Round:** The end of the Round. Many effects resolve in this window.
 
 &nbsp;
-An individual _Phase_ is divided into _Turns_. Within a _Phase_, players and enemies will alternate who acts, as dictated by the _Speed_ of their current _Stance_. If there is a tie, all player characters will resolve their _Turn_ (in any order), then all enemy characters will go.
+An individual _Phase_ is divided into _Turns_. Within a _Phase_, all players go, then all enemies for that _Phase_.
 
 &nbsp;
 
@@ -41,7 +43,7 @@ An individual _Phase_ is divided into _Turns_. Within a _Phase_, players and ene
 On **their** _Turn_, a character may do the following:
 * Spend any amount of _Movement_.
 * Use any number of _Abilities_. A given _Ability_ may only be used once per _Turn_ unless it has the _Repeatable_ keyword.
-* Make a single _Attack_.
+* Make a single _Attack_. Some _Stances_ remove this limit.
 
 &nbsp;
 Additionally, on **all** _Turns_ (including their own), creatures may do the following:
@@ -75,21 +77,21 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 **Range:** Attacks in Shattered Spirits will have a Range of _Self_, _Melee_, and _Short_, _Medium_, and _Long Range_. 
 * Self-Range effects either only affect the user. 
 * Melee effects may only target creatures you are _Engaged_ with.
-* Close-Range effects may within your Arena.
+* Close-Range effects may target within your Arena.
 * Short-Range effects may target within an adjacent Arena.
 * Long-Range effects may target two Arenas away.
 
 &nbsp;
 ### Resources in Combat
 
-* **Health:**:
-* **Stun:**
-* **Essence and Momentum:** 
+* **Health:**: A representation of a character's health. When this bar is emptied, the character gains a _Wound_.
+* **Stun:** A representation of a character's ability to defend themself. When full, any additional _Stun_ inflicted is convereted to Damage.
+* **Momentum:** 
 * **Movement:** A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:
     * 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.
     * 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.
     * 1 _Movement_: If not _Engaged_, move to an adjacent _Arena_.
-    * 1 _Movement_: Gain a _Hazard_ or _Terrain Bonus_. You automatically become _Engaged_ with any other creatures benefiting from the same bonus.
+    * 1 _Movement_: Gain a _Hazard_ or _Terrain Bonus_. You automatically become _Engaged_ with any other creatures benefiting from the same effect.
     * 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to guard a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you.
 
 &nbsp;
@@ -119,13 +121,12 @@ Arenas are the basic layout of the combat map, and represent distinct areas in a
 &nbsp;
 
 ### Health and Wounds
-* <ins>Health</ins> represents a character's ability to defend themselves. While a character has _Health_ they are taking little damage; they are narrowly avoiding attacks, shrugging off blows, or otherwise taking superficial damage. When a character loses all their _Health_ they roll for _Wounds_, then increment their _Downed_ tracker. Characters typically start combat encounters with full _Health_.
+* <ins>Health</ins> represents a character's ability to defend themselves. While a character has _Health_ they are taking little damage; they are narrowly avoiding attacks, shrugging off blows, or otherwise taking superficial damage. When a character loses all their _Health_ they roll for _Wounds_, reset their health to full, then take any remaining Damage. Characters typically start combat encounters with full _Health_.
 * <ins>Vigor</ins> represents a character's fighting spirit and sudden surges of energy in battle, and is typically only gained in combat. Vigor is always lost before _Health_. _Vigor_ does not stack; if a character would gain _Vigor_ while they already have it they must choose whether to keep their current amount of _Vigor_ or replace it with the value they would gain.
-* <ins>Stun</ins> is a character's mental and physical state, as well as their composure. Characters start at 0 _Stun_. When a character's total _Stun_ is equal to or greater than their maximum _Stun_ amount they immediately become _Stunned_ and reset their _Stun_ to 0.
+* <ins>Stun</ins> is a character's mental and physical state, as well as their composure. Characters start at 0 _Stun_. When a character's total _Stun_ is equal to their maximum _Stun_ any additional inflicted _Stun_ is converted to Damage.
 * <ins>Wounds</ins> occur when a character is _Downed_. 
-* <ins>Downed</ins> occurs when a creature's _Health_ reaches 0. For most NPCs, this means they are immediately _Defeated_. Player characters and more powerful NPCs instead roll for _Wounds_, which is done by rolling a number of d6s based on the number of times they have been _Downed_ prior to this. After gaining _Wounds_ a character is reset to full _Health_.
-    * [redo]
-* <ins>Spirit Downed</ins> occurs when a character's spirit's _Health_ reaches 0. When a _Spirit_ is _Downed_ that character becomes _Suppressed_ for the remainder of the _Round_ (or _Sealed_ if they are already _Suppressed_). Additionally, the spirit marks one against their _Spirit Track_. At the start of the next_Phase_ the spirit is reset to full _Health_.
+* <ins>Downed</ins> occurs when a creature's _Health_ reaches 0. For most NPCs, this means they are immediately _Defeated_. Player characters and more powerful NPCs instead roll for _Wounds_. Characters roll a number of d6s equal to their current number of _Wounds_ (2d6 and keep the lower if 0), then gain a _Wound_ with segments equal to half the result. After gaining _Wounds_ a character is reset to full _Health_, then takes any overflow damage.
+* <ins>Spirit Downed</ins> occurs when a character's spirit's _Health_ reaches 0. When a _Spirit_ is _Downed_ that character becomes _Suppressed_ for the remainder of the _Round_ (or _Sealed_ if they are already _Suppressed_). Additionally, the spirit rolls for _Harm_, using the same rules as a player rolling for _Wounds_. After gainin _Harm_ the _Spirit_ is reset to full _Health_, then takes any overflow damage.
 * <ins>Death</ins>: It is extremely rare for a character to be killed in combat in Shattered Spirits. Characters only die when their entire Strain Meter is full of _Wounds_.
 
 &nbsp;  
@@ -146,17 +147,16 @@ Arenas are the basic layout of the combat map, and represent distinct areas in a
 &nbsp;
 
 **Hidden Information:** Players should not know the following information unless a _Technique_ reveals it and, additionally, the Spirit Master should not know the following information about player characters unless an ability reveals it:
-* What _Techniques_ a creature is using (before the creature resolves said _Techniques_).
 * A creature's exact, current _Health_.
 * The creature's current _Stances_, and what benefits they have.
 
 &nbsp;
 
 ### Equipment in Combat
-In combat, characters' equipment is defined by what they have _Equipped_ and what they have _Wielded_.
+In combat, characters' equipment is defined by what they have _Worn_ and what they have _Wielded_.
 &nbsp;
 
-_Equipped_ items are simply anything that a character is wearing. If it is in their inventory, it is typically considered _Equipped_. A character's _Armor_, any consumable items, and any _Weapons_ stowed on their consumables are common examples of _Equipped_ items.
+_Worn_ items are anything in a character's _Worn_ slots. A character's _Armor_, any consumable items, and any _Weapons_ stowed on their consumables are common examples of _Worn_ items.
 &nbsp;
 
 _Wielded_ items, on the other hand, are items that characters actively are using, typically by holding it in a hand. One-Handed items require a single hand to _Wield_, while Two-Handed items require both.
@@ -169,7 +169,7 @@ If a character does not have an item _Wielded_ in a hand, that hand is considere
 &nbsp;
 
 ### Miscellaneous
-* If the Cost of an ability is reduced to less than 0, any remaining reduction may be used on Boosts.
+* If the Cost of an ability is reduced to less than 0, any remaining reduction may (and should) be used on Boosts.
 * For _Status_:
     * When Statuses react with an effect, ignore all _Weakness_/_Resistance_ and similar from said Status when resolving the reaction.
     * A Statuses reaction may not trigger another of its own Reactions.

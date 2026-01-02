@@ -12,7 +12,7 @@ class Subtype extends Base {
   private growth_points_: number
   private traits_: string[]
   private armor_: string
-  private stances_: string[]
+  private speed_: number
 
   public constructor(name) {
     super(name)
@@ -27,6 +27,10 @@ class Subtype extends Base {
 
   public get ArmorHeader() {
     return '**Armor:** _' + this.armor_ + '_'
+  }
+
+  public get GrowthHeader() {
+    return '**_Growth Points_:** ' + this.growth_points_
   }
 
   public get GrowthPoints() {
@@ -55,6 +59,13 @@ class Subtype extends Base {
 
   public get MovementHeader() {
     return '**Move:** ' + this.move_
+  }
+  public get Spped() {
+    return this.speed_
+  }
+
+  public get SpeedHeader() {
+    return '**Speed:** ' + this.speed_
   }
 
   public get Element() {
@@ -109,7 +120,7 @@ class Subtype extends Base {
     this.guard_ = data.guard || 0
     this.stun_ = data.stun || 0
     this.manifest_ = data.manifest || []
-    this.stances_ = data.stances || []
+    this.speed_ = data.speed || 0
     this.growth_points_ = data.growth_points || 0
   }
 }

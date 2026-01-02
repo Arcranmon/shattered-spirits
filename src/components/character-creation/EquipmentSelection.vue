@@ -40,9 +40,9 @@
                       tile
                       color="success"
                       @click="setArmor(armor)"
-                      :disabled="!character.CanAddArmor(armor) || character.EquippedArmor.Name == armor.Name"
+                      :disabled="!character.CanAddArmor(armor) || character.WornArmor.Name == armor.Name"
                     >
-                      <span v-if="character.EquippedArmor.Name == armor.Name">{{ armor.Name }} already equipped!</span>
+                      <span v-if="character.WornArmor.Name == armor.Name">{{ armor.Name }} already equipped!</span>
                       <span v-else-if="!character.CanAddArmor(armor)">Cannot equip {{ armor.Name }}!</span>
                       <span v-else>CHOOSE {{ armor.Name }}</span>
                     </v-btn></v-layout
@@ -152,7 +152,7 @@ export default Vue.extend({
   },
   methods: {
     setArmor(variable) {
-      this.character.EquippedArmor = variable
+      this.character.WornArmor = variable
     },
   },
 })

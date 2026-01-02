@@ -18,9 +18,7 @@ class Character extends Combatant {
   private armor_: Array<Armor>
   private wielded_: Array<string>
   private equipped_: Array<string>
-  private consumables_: Array<string>
-  private pack_: Array<string>
-  private archetypes_: Array<string>
+  private packed_: Array<string>
   private talents_: Array<string>
 
   private spirit_: Spirit
@@ -106,9 +104,8 @@ class Character extends Combatant {
   }
 
   override get AllArts() {
-    var arts = store.getters.getArtsFromList(this.Arts)
-    arts = arts.concat(store.getters.getEquipmentFromList(this.Equipped))
-    arts = arts.concat(store.getters.getEquipmentFromList(this.Consumables))
+    var arts = store.getters.getAPsFromList(this.Arts)
+    arts = arts.concat(store.getters.getEquipmentFromList(this.Worn))
     arts = arts.concat(this.CurrentStance)
 
     return arts
@@ -119,12 +116,7 @@ class Character extends Combatant {
     for (var art of this.arts_) {
       arts.push(art)
     }
-    // Collect from Disciplines
-    // Collect from Archetypes
-    for (var archetype of this.archetypes_) {
-      arts.push(store.getters.getArchetype(archetype).Art)
-    }
-    arts.push('Basic ' + this.element_ + 'craft')
+    arts.push(this.element_ + 'craft')
     arts.sort()
     return arts
   }
@@ -132,7 +124,7 @@ class Character extends Combatant {
   get SpiritArts() {
     var arts = []
     for (var art of this.AllArts) {
-      if (art.Category === this.element_) arts.push(art)
+      if (art.Category === this.element_) arts.push(art.Name)
     }
     arts.sort()
     return arts
@@ -140,32 +132,38 @@ class Character extends Combatant {
 
   get Stances() {
     var stances = [...store.getters.basicStances]
-    // TODO(csheff): This is a hack
-    stances.push(this.element_ + ' Stance')
     // Collect from Disciplines
     // Collect from Archetypes
     return store.getters.getStancesFromList(stances)
   }
 
-  get MaxConsumableSlots() {
-    var slots = 2
-    for (var armor of this.armor_) {
-      slots += armor.ConsumableSlots
-    }
-    return slots
-  }
+  get SortedWornEquipment() {
+    var equipment = store.getters.getEquipmentFromList(this.Worn)
 
-  get ConsumableSlotsUsed() {
-    return this.consumables_.length
+    equipment.sort((a, b) => {
+      var aRank = a instanceof Weapon ? 1 : a instanceof Armor ? 2 : 3
+      var bRank = b instanceof Weapon ? 1 : b instanceof Armor ? 2 : 3
+      if (aRank > bRank) {
+        return 1
+      } else if (aRank < bRank) {
+        return -1
+      } else {
+        if (a.Name > b.Name) {
+          return 1
+        } else if (a.Name < b.Name) {
+          return -1
+        } else {
+          return 0
+        }
+      }
+    })
+    return equipment
   }
 
   get Load() {
     var load = 0 //this.equipped_armor_.Load
-    for (var weapon of this.weapons_) {
-      load += weapon.Load
-    }
-    for (var armor of this.armor_) {
-      load += armor.Load
+    for (var equipment of store.getters.getEquipmentFromList(this.Worn)) {
+      load += equipment.Load
     }
     return load
   }
@@ -190,11 +188,11 @@ class Character extends Combatant {
     return this.element_
   }
 
-  get Equipped() {
+  get Worn() {
     return this.equipped_
   }
-  get Consumables() {
-    return this.consumables_
+  get Packed() {
+    return this.packed_
   }
 
   get Techniques() {
@@ -216,10 +214,6 @@ class Character extends Combatant {
       }
     })
     return techniques
-  }
-
-  get Archetypes() {
-    return this.archetypes_
   }
   get Talents() {
     return this.talents_
@@ -303,9 +297,6 @@ class Character extends Combatant {
 
   private setBonuses() {
     this.bonuses_ = new Bonuses()
-    for (var archetype of this.archetypes_) {
-      this.bonuses_.addBonuses(store.getters.getArchetype(archetype).Bonuses)
-    }
   }
 
   // ==========================================================
@@ -379,12 +370,10 @@ class Character extends Combatant {
       element: character.element_,
       name: character.name_,
       player_character: character.player_character_,
-      archetypes: character.archetypes_,
       talents: character.talents_,
       wielded: character.wielded_,
       equipped: character.equipped_,
-      consumables: character.consumables_,
-      pack: character.pack_,
+      packed: character.packed_,
       arts: character.arts_,
     }
   }
@@ -403,12 +392,10 @@ class Character extends Combatant {
     this.name_ = data.name || ''
     this.player_character_ = data.player_character || true
     this.disciplines_ = data.disciplines || []
-    this.archetypes_ = data.archetypes || []
     this.talents_ = data.talents || []
     this.wielded_ = data.wielded || []
     this.equipped_ = data.equipped || []
-    this.consumables_ = data.consumables || []
-    this.pack_ = data.pack || []
+    this.packed_ = data.packed || []
     this.arts_ = data.arts || []
     this.setCombatantData(data)
     this.setBonuses()

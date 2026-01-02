@@ -1,7 +1,7 @@
 [
   {
     "name": "Ammunition",
-    "effect": "Many abilities require Ammunition, or a specific item or equipment. These abilities will specify any requirements on the Ammunition (such as an Elemental type or Size) and within what Range it must be. This ability uses said Ammunition to resolve the Attack, placing it unattended in target's _Arena_. To be used as Ammunition, an item must be _Equipped_ by a willing Target or unattended."
+    "effect": "Many abilities require Ammunition, or a specific item or equipment. These abilities will specify any requirements on the Ammunition (such as an Elemental type or Size) and within what Range it must be. This ability uses said Ammunition to resolve the Attack, placing it unattended in target's _Arena_. To be used as Ammunition, an item must be _Worn_ by a willing Target or unattended."
   },
   {
     "name": "Arena",
@@ -42,7 +42,7 @@
   },
   {
     "name": "Discount",
-    "effect": "Reduce the _Momentum_ or _Essence_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack or simply gain the difference as _Momentum_."
+    "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack or simply gain the difference as _Momentum_."
   },
   {
     "name": "Disengage",
@@ -50,7 +50,7 @@
   },
   {
     "name": "Embed",
-    "effect": "When something gets Embedded it counts as an _Equipped_ piece of _Equipment_ for the Target. The Target may end Embed with any effect that would allow them to _Wield_ it. If the triggering _Equipment_ has the _Ammunition_ property, do not add any _Load_ to the Target unless all _Ammunition_ is _Embedded_."
+    "effect": "When something gets Embedded it counts as an _Worn_ piece of _Equipment_ for the Target. The Target may end Embed with any effect that would allow them to _Wield_ it. If the triggering _Equipment_ has the _Ammunition_ property, do not add any _Load_ to the Target unless all _Ammunition_ is _Embedded_."
   },
   { "name": "Embedded", "see": "Embed" },
   {
@@ -58,12 +58,8 @@
     "effect": "Reactions with this keyword do not count against the 1 Reaction per Trigger limitation."
   },
   {
-    "name": "Essence",
-    "effect": "Essence represents your magical potential and energy. Characters can spend Essence to use various Spirit abilities, channeling the elements and creating other strange effects. Additionally, while _Summoned_, a character's Spirit may spend _Essence_ as if it is _Momentum_."
-  },
-  {
     "name": "Exhaust",
-    "effect": "After using any Ability with this keyword, the associated Art may not be used for the remainder of the combat."
+    "effect": "After using any Ability with this keyword, that Ability may not be used for the remainder of the combat."
   },
   {
     "name": "Fleeting",
@@ -88,7 +84,7 @@
   },
   {
     "name": "Kinesis",
-    "effect": "Characters with kinesis for an element gain the following benefits when targeting _Ammunition_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_ or the <u>Steal</u> option in _Brawl_) at the listed Kinesis Range. If they would normally create an [_Opening_], they instead do not and you may pay the cost with either _Momentum_ or _Essence_.\n* Once one your _Turn_, you may do one of the following:\n\t* Move an item from an _Arena_ in Range to another adjacent _Arena_ in Range.\n\t* Choose an item within Range. A Target in the same or an adjacent _Arena_ within Range may _Equip_ or _Wield_ said item.\n\nYou may pay 1 _Essence_ to repeat either effect."
+    "effect": "Characters with kinesis for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_) at the listed Kinesis Range. If they would normally create an [_Opening_], they instead do not."
   },
   {
     "name": "Limited",
@@ -96,7 +92,7 @@
   },
   {
     "name": "Prepare",
-    "effect": "When you Prepare, place up to the specified amount of _Momentum_ or _Essence_ (if not specified you may choose either, in any combination) on any _Art_ or _Equipment_, removing it from your supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. At _Refresh_ or when _Stunned_, lose half the Prepared resources on all Equipment and Arts. When _Wounded_, lose all Prepared resources on all Equipment and Arts. If you stop _Wielding_ a piece of _Equipment_, lose all Prepared resources."
+    "effect": "When you Prepare, place up to the specified amount of _Momentum_ on any _Art_ or _Equipment_, removing it from your supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. At _Refresh_ or when _Stunned_, lose half the Prepared resources on all Equipment and Arts. When _Wounded_, lose all Prepared resources on all Equipment and Arts. If you stop _Wielding_ a piece of _Equipment_, lose all Prepared resources."
   },
   {
     "name": "Hand-and-a-Half",
@@ -133,7 +129,7 @@
   },
   {
     "name": "Quickdraw",
-    "effect": "So long as your have a _Free Hand_ you may always treat this piece of Equipment as _Wielded_ while it is _Equipped_."
+    "effect": "So long as your have a _Free Hand_ you may always treat this piece of Equipment as _Wielded_ while it is _Worn_."
   },
   {
     "name": "Rank",
@@ -165,6 +161,10 @@
     "effect": "Long Range effects may target any valid target in an _Arena_ three away."
   },
   {
+    "name": "Follow-Up",
+    "effect": "Attacks with this Keyword typically are triggered by some other effect and may not qualify for _Gambits_."
+  },
+  {
     "name": "Slow Turn",
     "effect": "A Slow _Turn_ happens after all other _Turn_ in a _Phase_. If there are multiple Slow Turns, resolve them in popcorn Initiative as normal."
   },
@@ -186,7 +186,7 @@
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own Health, Stun, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_ and _Essence_.\n* Spirits may spend _Essence_ as if is _Momentum_.\n* Spirits act on the same _Turn_ as their companion, and have _Discount_ 1 on a single _Maneuver_ or _Attack_ each _Phase_."
+    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own Health, Stun, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_.\n* Spirits act at their listed _Speed_ during the players' phase."
   },
   { "name": "Summoned", "see": "Summon" },
   {

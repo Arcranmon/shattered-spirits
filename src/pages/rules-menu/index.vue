@@ -10,9 +10,8 @@
           </div>
         </v-btn-toggle></v-col
       >
-      <v-col>
+      <v-col :key="selectedIndex">
         <h2>{{ tabs[selectedIndex] }}</h2>
-        <display-tooltip-text v-if="selectedIndex < 4" :string="text[selectedIndex]" />
         <div v-if="tabs[selectedIndex] == 'Afflictions and Status'">
           <v-select v-model="selectedStatuses" :items="statusCategories" attach label="Status Categories" multiple filled outlined></v-select>
           <show-cards :inputs="statuses" :collapse="false" />
@@ -24,8 +23,10 @@
             <div v-for="item of glossaryItems.get(key)" style="padding-bottom: 1em">
               <display-tooltip-text :string="'**' + item.name + ':** ' + item.effect" />
             </div>
-          </div></div
-      ></v-col>
+          </div>
+        </div>
+        <display-tooltip-text v-else :string="text[selectedIndex]"
+      /></v-col>
     </v-row>
   </div>
 </template>
@@ -36,6 +37,7 @@ import CustomButton from '@/components/Button.vue'
 import NarrativeText from '@/database/text_files/narrative.txt'
 import TravelText from '@/database/text_files/travel.txt'
 import EquipmentText from '@/database/text_files/equipment.txt'
+import PlayerRolesText from '@/database/text_files/player_roles.txt'
 import GameModes from '@/database/text_files/game_modes.txt'
 import CombatText from '@/database/text_files/combat_rules/combat.txt'
 import ShowCards from '@/components/cards/ShowCards.vue'
@@ -52,8 +54,8 @@ export default Vue.extend({
   data() {
     return {
       selectedIndex: 0,
-      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Combat', 'Afflictions and Status', 'Terrain', 'Glossary'],
-      text: [GameModes, NarrativeText, TravelText, EquipmentText, CombatText],
+      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Combat', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
+      text: [GameModes, NarrativeText, TravelText, EquipmentText, CombatText, '', '', PlayerRolesText],
       statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
       selectedStatuses: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
       selectedStatus: null,

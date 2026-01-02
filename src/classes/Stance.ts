@@ -8,8 +8,7 @@ class Stance extends Base {
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private traits_: Array<string>
-  private momentum_gain_: number
-  private essence_gain_: number
+  private momentum_: number
   private guard_: number
   private stun_clear_: number
   private speed_: number
@@ -53,10 +52,6 @@ class Stance extends Base {
     return this.speed_
   }
 
-  public PhaseHeader(index) {
-    return '**Phase ' + (index + 1) + ':** +' + this.momentum_gain_[index] + ' _Momentum_, +' + this.essence_gain_[index] + ' _Essence_'
-  }
-
   public get Reflex() {
     if (this.defenses_) return this.defenses_.reflex
     return 0
@@ -68,11 +63,7 @@ class Stance extends Base {
   }
 
   public get Momentum() {
-    return this.momentum_gain_
-  }
-
-  public get Essence() {
-    return this.essence_gain_
+    return this.momentum_
   }
 
   public get HasEffects() {
@@ -145,8 +136,7 @@ class Stance extends Base {
     this.defenses_ = data.defenses || null
     this.traits_ = data.traits || []
     this.speed_ = data.speed || 0
-    this.momentum_gain_ = data.momentum_gain || 0
-    this.essence_gain_ = data.essence_gain || 0
+    this.momentum_ = data.momentum || 0
     this.stun_clear_ = data.stun_clear || 0
     this.movement_ = data.movement || 0
     this.guard_ = data.guard || 0

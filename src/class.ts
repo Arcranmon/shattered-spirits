@@ -2,7 +2,7 @@
 import Combatant from './classes/Combatant'
 import Defenses from './classes/Defenses'
 import Base from './classes/Base'
-import Art from './classes/Art'
+import AbilityPackage from './classes/AbilityPackage'
 import Equipment from './classes/Equipment'
 import Bonuses from './classes/Bonuses'
 import Maneuver from './classes/Maneuvers'
@@ -52,5 +52,5 @@ export {
   Technique,
   Terrain,
   Weapon,
-  Art,
+  AbilityPackage,
 }

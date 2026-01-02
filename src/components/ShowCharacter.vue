@@ -33,14 +33,18 @@
           <h3 style="text-align: center">Abilities and Equipment</h3>
           <v-card>
             <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
-              ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab
+              ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts & Talents</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab
               ><v-tab> <h4>Stances</h4> </v-tab></v-tabs
             >
             <v-tabs-items v-model="ability_tab" class="character-tab-content">
               <v-tab-item
                 ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
-                  ><v-tab><h5>Maneuvers</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
+                  ><v-tab><h5>Skills</h5></v-tab><v-tab><h5>Powers</h5></v-tab><v-tab><h5>Passives</h5></v-tab><v-tab> <h5>Maneuvers</h5></v-tab
+                  ><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
                 ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
+                  ><v-tab-item><ability-tab abilityType="Skill" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Power" :character="character" /></v-tab-item
+                  ><v-tab-item><ability-tab abilityType="Passive" :character="character" /></v-tab-item
                   ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" /></v-tab-item
                   ><v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item
                   ><v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item
@@ -48,23 +52,15 @@
                 ></v-tabs-items>
               </v-tab-item>
               <v-tab-item>
-                <show-cards :inputs="this.$store.getters.getArtsFromList(character.Arts)" :collapse="false" :cols="2" />
+                <show-cards :inputs="this.$store.getters.getAPsFromList(character.Arts)" :collapse="false" :cols="2" />
               </v-tab-item>
               <v-tab-item
                 ><v-tabs v-model="equipment_tab" color="black" light centered style="border-radius: 10px">
-                  <v-tab><h5>Equipped</h5></v-tab><v-tab><h5>consumables</h5></v-tab></v-tabs
+                  <v-tab><h5>Worn</h5></v-tab><v-tab><h5>Packed</h5></v-tab></v-tabs
                 >
                 <v-tabs-items v-model="equipment_tab" class="character-tab-content"
-                  ><v-tab-item
-                    ><b>Load:</b> {{ character.Load
-                    }}<show-cards :inputs="this.$store.getters.getEquipmentFromList(character.Equipped)" :collapse="false" :cols="2" /> </v-tab-item
-                  ><v-tab-item
-                    ><b>Consumable Slots:</b> {{ character.ConsumableSlotsUsed }} / {{ character.MaxConsumableSlots }}
-                    <show-cards
-                      :inputs="this.$store.getters.getEquipmentFromList(character.Consumables)"
-                      :collapse="false"
-                      :cols="2"
-                    /> </v-tab-item></v-tabs-items></v-tab-item
+                  ><v-tab-item><b>Load:</b> {{ character.Load }}<show-cards :inputs="character.SortedWornEquipment" :collapse="false" :cols="2" /> </v-tab-item
+                  ><v-tab-item> </v-tab-item></v-tabs-items></v-tab-item
               ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
               <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
             ></v-tabs-items>
@@ -83,13 +79,17 @@
         <h3 style="text-align: center">Abilities and Equipment</h3>
         <v-card>
           <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
-            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab></v-tabs
+            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Arts & Traits</h4> </v-tab></v-tabs
           >
           <v-tabs-items v-model="ability_tab" class="character-tab-content">
             <v-tab-item
               ><v-tabs v-model="abilitiesAndEquipmentTab" color="black" light centered style="border-radius: 10px"
-                ><v-tab><h5>Maneuvers</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
+                ><v-tab><h5>Skill</h5></v-tab><v-tab><h5>Power</h5></v-tab><v-tab><h5>Passive</h5></v-tab><v-tab><h5>Maneuvers</h5></v-tab
+                ><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
               ><v-tabs-items v-model="abilitiesAndEquipmentTab" class="character-tab-content"
+                ><v-tab-item><ability-tab abilityType="Skill" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Power" :character="character" :spirit="true" /></v-tab-item
+                ><v-tab-item><ability-tab abilityType="Passive" :character="character" :spirit="true" /></v-tab-item
                 ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" :spirit="true" /></v-tab-item
                 ><v-tab-item><ability-tab abilityType="Attack" :character="character" :spirit="true" /></v-tab-item
                 ><v-tab-item><ability-tab abilityType="Gambit" :character="character" :spirit="true" /></v-tab-item
@@ -97,8 +97,7 @@
               ></v-tabs-items>
             </v-tab-item>
             <v-tab-item><show-cards :inputs="character.Spirit.Equipment" :collapse="false" :cols="2" /> </v-tab-item
-            ><v-tab-item> <show-cards :inputs="this.$store.getters.getSpiritTraitsFromList(character.Spirit.Traits)" :collapse="false" :cols="2" /></v-tab-item>
-            <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
+            ><v-tab-item> <show-cards :inputs="this.$store.getters.getAPsFromList(character.Spirit.Arts)" :collapse="false" :cols="2" /></v-tab-item
           ></v-tabs-items> </v-card></v-tab-item
     ></v-tabs-items>
   </div>

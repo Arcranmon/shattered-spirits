@@ -2,7 +2,7 @@
 // Parent class for techniques/maneuvers.
 
 import { store } from '@/store'
-import { Base, Art, Chart } from '@/class'
+import { Base, AbilityPackage, Chart } from '@/class'
 
 class Ability extends Base {
   protected area_: string
@@ -17,7 +17,7 @@ class Ability extends Base {
   protected speed_: number
   protected type_: string
   protected trigger_: string
-  protected origin_: Art
+  protected origin_: AbilityPackage
   protected chart_: Chart
 
   public constructor(name) {
@@ -79,13 +79,15 @@ class Ability extends Base {
   public get Origin() {
     return this.origin_
   }
-  public set Origin(origin: Art) {
+  public set Origin(origin: AbilityPackage) {
     this.origin_ = origin
   }
   public get Icon() {
     if (this.class_ === 'Defensive') return require('@/assets/Defensive.svg')
     if (this.class_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
     if (this.class_ === 'Mobility') return require('@/assets/Move.svg')
+    if (this.type_ === 'Skill') return require('@/assets/Skill.svg')
+    if (this.type_ === 'Power') return require('@/assets/Power.svg')
     return require('@/assets/General.svg')
   }
 
