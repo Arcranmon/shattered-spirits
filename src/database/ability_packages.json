@@ -8,7 +8,7 @@
         "name": "Basic Metalcraft",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You have a basic, intuitive grasp of metalcraft. You gain the following:\n* **Range**: Your metalcraft has a range of approximately 20 yards.\n* **Metalsense:** You have a rough knowledge of the location of all metal within your metalcraft range.\n* **Lodestone Arts**: You may move and control objects up to 20 pounds, with good precision at low weights and poor precision at higher weights.\n* **Anvil Arts:** You may alter a physical property of metal (such as strength or pliability) up to 5% in either direction.\n\nWhen any of these effects would help, gain +1 die. You may take 1 _Spirit Drain_ to double the effect of any of these abilities temporarily."
+        "effect": "You have a basic, intuitive grasp of metalcraft. You gain the following:\n* **Range**: Your metalcraft has a range of approximately 20 yards.\n* **Metalsense:** You have a rough knowledge of the location of all metal within your metalcraft range.\n* **Lodestone Arts**: You may move and control objects up to 20 pounds, with good precision at low weights and poor precision at higher weights.\n* **Anvil Arts:** You may alter a physical property of metal (such as strength or pliability) up to 5% in either direction.\n\nYou may take 1 _Spirit Drain_ to double the effect of any of these abilities temporarily."
       },
       {
         "name": "Metalbending",
@@ -51,13 +51,13 @@
         "name": "Strength of the Forge",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality. Whenever strength, endurance, or the ability to use blacksmith's tools with precision and technique would help, gain +1 die."
+        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality."
       },
       {
         "name": "Metallurgy",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal equipment, especially those that would have been commonly made in your village's forge. When knowledge of metal or its craftsmanship would help, gain +1 die."
+        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal equipment, especially those that would have been commonly made in your village's forge."
       },
       {
         "name": "Metalworking",
@@ -83,13 +83,14 @@
         "name": "Metal Form",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness. Whenever your unique anatomy or durability would be of benefit, gain +1 die."
+        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness."
       },
       {
         "name": "Metallic Body",
         "class": "Defensive",
         "type": "Passive",
-        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all Attacks.\n* Gain the _Metal Body_ Armor.\n* You are _Immune_ to _Bleeding_."
+        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain the _Metal Body_ Armor.\n* You are _Immune_ to _Bleeding_.",
+        "bonuses": { "equipment": ["Metal Body"] }
       },
       {
         "name": "Heat Conduction",
@@ -116,10 +117,54 @@
     "type": "Trait",
     "category": "General",
     "cost": "1 Growth Points",
-    "reqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
+    "prereqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
     "keywords": ["Armored"],
-    "abilities": [{ "name": "Carapace Armor", "class": "Defensive", "type": "Passive", "effect": "This spirit gains the _Carapace_ Armor." }],
-    "equipment": ["Carapace"]
+    "abilities": [
+      {
+        "name": "Carapace Armor",
+        "class": "Defensive",
+        "type": "Passive",
+        "effect": "This spirit gains the _Carapace_ Armor.",
+        "bonuses": { "equipment": ["Carapace"] }
+      }
+    ]
+  },
+  {
+    "name": "Metallic Threads",
+    "type": "Spirit Trait",
+    "category": "Metal",
+    "cost": "3 Growth Points",
+    "prereqs": "Metal Spirit.",
+    "abilities": [
+      {
+        "name": "Threads",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "This creature is capable of creating thin threads made of metal and similar to thick spider silk that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, the creature may be required to rest and recover it as if it was _Drain_."
+      },
+      {
+        "name": "Wire Whip",
+        "class": "Light",
+        "type": "Attack",
+        "range": "_Short_-",
+        "target": "Single-Target",
+        "keywords": ["Slash", "Metal", "Feeble"],
+        "cost": "1 _Momentum_",
+        "effect": "Attack a Target within _Range_. You may deal no Damage to reduce the cost of <u>Entangle</u> by 1, but must choose prior to making the Attack.",
+        "boosts": [
+          { "name": "Entangle", "cost": "2 _Momentum_", "effect": "Add _Entangled_ 1 [_Reflex_] on a _Graze_+, or _Entangled_ 2 [_Reflex_] on a _Crit_." }
+        ],
+        "chart": {
+          "roll": ["2-3", "4-5", "6-9", "10-12"],
+          "damage": [1, 2, 3, 4]
+        },
+        "analysis_notes": {
+          "fudge": -0.222,
+          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
+          "range": "Melee"
+        }
+      }
+    ]
   },
   {
     "name": "Climber",
@@ -132,7 +177,7 @@
         "name": "Natural Climber",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces. Whenever this trait might be of help, gain +1 die."
+        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces."
       },
       {
         "name": "Climbing",
@@ -144,10 +189,26 @@
     "bonuses": { "move": 1, "reflex": 2 }
   },
   {
-    "name": "Diminutive",
-    "type": "Trait",
+    "name": "Swift",
+    "prereqs": "None",
+    "cost": "1 Growth Point",
     "category": "General",
-    "cost": "3 Growth Points",
+    "type": "Trait",
+    "abilities": [
+      {
+        "name": "Swiftness",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are quick on your feet and more nimble than most. In matters of speed, you almost always win."
+      },
+      { "name": "Improved Mobility", "class": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } }
+    ]
+  },
+  {
+    "name": "Tiny Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
     "prereqs": "No other [Size] Traits.",
     "keywords": ["Size"],
     "abilities": [
@@ -155,16 +216,83 @@
         "name": "Tiny Size",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are extremely small, around the size of a rat. This allows you to easily escape notice and find your way into tight spots. Whenever your size would be of help, gain +1 die."
+        "effect": "You are extremely small, somewhere between the size of a rat and a typical cat, granting you greatly improved agility and speed. Depending on the circumstance, your small size and limited weight may be a boon or bane."
       },
       {
         "name": "Diminutive Agility",
         "class": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. Your Spirit may only select [_Light_] Weapons. If they already have _Speed_ 1, instead gain an additional +1 _Movement_."
+        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_.",
+        "bonuses": { "speed": -1, "reflex": 1, "move": 1 }
       }
     ],
-    "bonuses": { "move": 1, "reflex": 2 }
+    "bonuses": { "move": 1, "reflex": 1 }
+  },
+  {
+    "name": "Small Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "abilities": [
+      {
+        "name": "Small Size",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed. Depending on the circumstance, your smaller size may be a boon or bane."
+      },
+      {
+        "name": "Small Profile",
+        "class": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Small_, gains +2 _Health_, +1 _Stun_, and +1 _Reflex_."
+      }
+    ],
+    "bonuses": { "reflex": 1 }
+  },
+  {
+    "name": "Medium Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "abilities": [
+      {
+        "name": "Medium Size",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are somewhere between the size of a typical dog and a human. This size is rarely relevant, but may occasionally may be a boon or bane."
+      },
+      {
+        "name": "Medium Profile",
+        "class": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Medium_, gains +5 _Health_, +3 _Stun_, and +1 _Grit_."
+      }
+    ],
+    "bonuses": { "reflex": 1 }
+  },
+  {
+    "name": "Large Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "abilities": [
+      {
+        "name": "Large Size",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You are somewhere between the size of a human and a horse, granting you increased strength and power. Depending on the circumstance, your large size may be a boon or bane."
+      },
+      {
+        "name": "Large Profile",
+        "class": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Large_, gains +10 _Health_, +6 _Stun_, and +2 _Grit_."
+      }
+    ],
+    "bonuses": { "reflex": 1 }
   },
   {
     "name": "Weaponsmith",
@@ -177,7 +305,7 @@
         "name": "Weapon Academia",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are well-versed in different types of weapons, as well as how they are made. You intuitively understand the function, craftsmanship, and cultural significance of weapons, and can accurately assess the condition of a weapon at a glance. Additionally, from a weapon, you can gain insight into its maker, the culture it comes from, and skill level of the wielder. Whenever knowledge of weapons or the ability to craft them at higher quality would help, gain +1 die."
+        "effect": "You are well-versed in different types of weapons, as well as how they are made. You intuitively understand the function, craftsmanship, and cultural significance of weapons, and can accurately assess the condition of a weapon at a glance. Additionally, from a weapon, you can gain insight into its maker, the culture it comes from, and skill level of the wielder."
       },
       {
         "name": "Functional Repair",
@@ -208,7 +336,7 @@
         "name": "Exceptional Toughness",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. Whenever the ability to endure pain, push through affliction, or otherwise use your exceptional toughness, gain +1 die. This may not be used for Travel Rolls but, at GM discretion, may act as appropriate Equipment for offsetting some hazards."
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are incredibly resistant to pain, toxins, and other afflictions. This does not grant die on _Travel Rolls_, but may be treated as appropriate Equipment in some cases."
       },
       {
         "name": "Grin and Bear It",
@@ -220,7 +348,8 @@
         "name": "Toughness",
         "class": "Defensive",
         "type": "Passive",
-        "effect": "Gain +5 Health. At _Refresh_, reduce any _Stun_ you would gain from Afflictions (such as _Fatigue_) by half."
+        "effect": "Gain +5 Health. At _Refresh_, reduce any _Stun_ you would gain from Afflictions (such as _Fatigue_) by half.",
+        "bonuses": { "health": 5 }
       },
       {
         "name": "True Grit",

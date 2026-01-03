@@ -2,12 +2,15 @@ import { store } from '@/store'
 
 // Class to store potential combat bonuses that Archetypes and similar might hold.
 class Bonuses {
-  public focus_: number
-  public grit_: number
-  public health_: number
-  public reflex_: number
-  public move_: number
-  public load_: number
+  private focus_: number
+  private grit_: number
+  private health_: number
+  private reflex_: number
+  private move_: number
+  private load_: number
+  private speed_: number
+  private stun_: number
+  private equipment_: string[]
 
   // ==========================================================
   // CONSTRUCTOR
@@ -16,9 +19,12 @@ class Bonuses {
     this.focus_ = 0
     this.grit_ = 0
     this.health_ = 0
+    this.stun_ = 0
     this.reflex_ = 0
     this.move_ = 0
     this.load_ = 0
+    this.speed_ = 0
+    this.equipment_ = []
   }
 
   // ==========================================================
@@ -42,7 +48,13 @@ class Bonuses {
     this.health_ += other.health_
     this.reflex_ += other.reflex_
     this.move_ += other.move_
-    this.load_ = other.load_
+    this.load_ += other.load_
+    this.speed_ += other.speed_
+    this.equipment_ = [...this.equipment_, ...other.Equipment]
+  }
+
+  public get Equipment() {
+    return this.equipment_
   }
 
   public get Reflex() {
@@ -51,6 +63,18 @@ class Bonuses {
 
   public get Movement() {
     return this.move_
+  }
+
+  public get Speed() {
+    return this.speed_
+  }
+
+  public get Health() {
+    return this.health_
+  }
+
+  public get Stun() {
+    return this.stun_
   }
 
   // ==========================================================
@@ -69,6 +93,8 @@ class Bonuses {
     this.reflex_ = data.reflex || 0
     this.move_ = data.move || 0
     this.load_ = data.load || 0
+    this.speed_ = data.speed || 0
+    this.equipment_ = data.equipment || []
   }
 }
 export default Bonuses

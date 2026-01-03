@@ -4,6 +4,7 @@ import { Ability, Base, Chart } from '@/class'
 class Equipment extends Base {
   private durability_: number
   private load_: number
+  protected hands_: number
   protected abilities_: Ability[] = []
   protected chart_: Chart
 
@@ -13,6 +14,10 @@ class Equipment extends Base {
   get Load() {
     return this.load_
   }
+  get Hands() {
+    return this.hands_
+  }
+
   get Durability() {
     return this.durability_
   }
@@ -44,6 +49,7 @@ class Equipment extends Base {
     this.setBaseData(data)
     this.load_ = data.load || 0
     this.durability_ = data.durability || 0
+    this.hands_ = data.hands || 0
     if (data.abilities) {
       for (var ability of data.abilities) {
         this.abilities_.push(Ability.Deserialize(ability))

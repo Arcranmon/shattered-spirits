@@ -2,7 +2,7 @@
 // Parent class for techniques/maneuvers.
 
 import { store } from '@/store'
-import { Base, AbilityPackage, Chart } from '@/class'
+import { Base, AbilityPackage, Chart, Bonuses } from '@/class'
 
 class Ability extends Base {
   protected area_: string
@@ -19,6 +19,7 @@ class Ability extends Base {
   protected trigger_: string
   protected origin_: AbilityPackage
   protected chart_: Chart
+  protected bonuses_: Bonuses
 
   public constructor(name) {
     super(name)
@@ -42,6 +43,9 @@ class Ability extends Base {
   // ==========================================================
   public get Area() {
     return this.area_
+  }
+  public get Bonuses() {
+    return this.bonuses_
   }
   public get Cost() {
     return this.cost_
@@ -197,6 +201,7 @@ class Ability extends Base {
     this.target_ = data.target || ''
     this.trigger_ = data.trigger || ''
     this.range_ = data.range || ''
+    this.bonuses_ = 'bonuses' in data ? Bonuses.Deserialize(data.bonuses) : new Bonuses()
     if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
   }
 }

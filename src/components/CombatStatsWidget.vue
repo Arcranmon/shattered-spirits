@@ -82,6 +82,9 @@
     <br />
     <h4>Combat Statistics</h4>
     <div style="max-width: 30em; margin-left: auto; margin-right: auto; margin-top: 1em">
+      <v-row v-if="this.isSpirit" no-gutters>
+        <v-col><display-tooltip-text string="**_Speed_:**" /></v-col><v-col :cols="8">{{ creature.Speed }}</v-col>
+      </v-row>
       <v-row no-gutters>
         <v-col><display-tooltip-text string="**_Defenses_:**" /></v-col><v-col :cols="8"><display-tooltip-text :string="creature.Defenses" /></v-col>
       </v-row>

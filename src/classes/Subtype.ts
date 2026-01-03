@@ -60,7 +60,7 @@ class Subtype extends Base {
   public get MovementHeader() {
     return '**Move:** ' + this.move_
   }
-  public get Spped() {
+  public get Speed() {
     return this.speed_
   }
 

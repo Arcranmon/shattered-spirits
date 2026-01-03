@@ -1,4 +1,5 @@
 import { store } from '@/store'
+import { Bonuses } from '@/class'
 const interpolate = require('color-interpolate')
 
 class Combatant {
@@ -10,6 +11,8 @@ class Combatant {
   private momentum_: number
   private statuses_: IStatusEffect[]
   private vigor_: number
+
+  protected combinedBonuses_: Bonuses
 
   // ==========================================================
   // CONSTRUCTOR
@@ -138,6 +141,14 @@ class Combatant {
 
     abilities.sort((a, b) => a.Name.localeCompare(b.Name))
     return abilities
+  }
+
+  protected setBonuses() {
+    var passives = this.FilteredAbilities('Passive', 'All', 'All')
+    this.combinedBonuses_ = new Bonuses()
+    for (var passive of passives) {
+      this.combinedBonuses_.addBonuses(passive.Bonuses)
+    }
   }
 
   // ==========================================================

@@ -33,10 +33,7 @@ class Spirit extends Combatant {
   }
 
   override get MaxMovement() {
-    var movement = this.spirit_type_.Movement
-    for (var trait of this.Traits) {
-      //movement += store.getters.getSpiritTrait(trait).Bonuses.Movement
-    }
+    var movement = this.spirit_type_.Movement + this.combinedBonuses_.Movement
     return movement
   }
 
@@ -111,7 +108,11 @@ class Spirit extends Combatant {
   }
 
   override get MaxHealth() {
-    return this.SpiritType.Health
+    return this.SpiritType.Health + this.combinedBonuses_.Health
+  }
+
+  override get MaxStun() {
+    return this.SpiritType.Stun + this.combinedBonuses_.Stun
   }
 
   get HasSpiritType() {
@@ -122,12 +123,19 @@ class Spirit extends Combatant {
     return this.spirit_type_
   }
 
+  get Speed() {
+    return this.spirit_type_.Speed + this.combinedBonuses_.Speed
+  }
+
   set SpiritType(input) {
     this.spirit_type_ = input
   }
 
   get Equipment() {
-    var equipment = store.getters.getWeaponsFromList(this.weapons_)
+    var equipment = store.getters.getAnyEquipmentFromList(this.weapons_)
+    if (this.combinedBonuses_ && this.combinedBonuses_.Equipment.length > 0) {
+      equipment = equipment.concat(store.getters.getAnyEquipmentFromList(this.combinedBonuses_.Equipment))
+    }
 
     return equipment
   }
@@ -172,6 +180,13 @@ class Spirit extends Combatant {
     }
   }
 
+  public static CreateFromCharacter(char: Character, data: ISpiritData): Spirit {
+    const c = new Spirit()
+    c.character_ = char
+    c.setSpiritData(data)
+    return c
+  }
+
   public static Deserialize(data: ISpiritData): Spirit {
     const c = new Spirit()
     c.setSpiritData(data)
@@ -184,6 +199,7 @@ class Spirit extends Combatant {
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
     this.setCombatantData(data)
+    this.setBonuses()
   }
 }
 export default Spirit

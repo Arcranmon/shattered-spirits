@@ -49,7 +49,7 @@ class Character extends Combatant {
   }
 
   override get Guard() {
-    var guard = 0
+    var guard = this.current_stance_.Guard
     for (var armor of this.armor_) {
       guard += armor.Guard
     }
@@ -105,7 +105,7 @@ class Character extends Combatant {
 
   override get AllArts() {
     var arts = store.getters.getAPsFromList(this.Arts)
-    arts = arts.concat(store.getters.getEquipmentFromList(this.Worn))
+    arts = arts.concat(store.getters.getAnyEquipmentFromList(this.Worn))
     arts = arts.concat(this.CurrentStance)
 
     return arts
@@ -137,9 +137,16 @@ class Character extends Combatant {
     return store.getters.getStancesFromList(stances)
   }
 
-  get SortedWornEquipment() {
-    var equipment = store.getters.getEquipmentFromList(this.Worn)
+  get SortedPackedEquipment() {
+    return this.SortedEquipment(this.Packed)
+  }
 
+  get SortedWornEquipment() {
+    return this.SortedEquipment(this.Worn)
+  }
+
+  private SortedEquipment(equipment) {
+    equipment = store.getters.getAnyEquipmentFromList(equipment)
     equipment.sort((a, b) => {
       var aRank = a instanceof Weapon ? 1 : a instanceof Armor ? 2 : 3
       var bRank = b instanceof Weapon ? 1 : b instanceof Armor ? 2 : 3
@@ -162,7 +169,15 @@ class Character extends Combatant {
 
   get Load() {
     var load = 0 //this.equipped_armor_.Load
-    for (var equipment of store.getters.getEquipmentFromList(this.Worn)) {
+    for (var equipment of store.getters.getAnyEquipmentFromList(this.Worn)) {
+      load += equipment.Load
+    }
+    return load
+  }
+
+  get PackedLoad() {
+    var load = 0 //this.equipped_armor_.Load
+    for (var equipment of store.getters.getAnyEquipmentFromList(this.Packed)) {
       load += equipment.Load
     }
     return load
@@ -295,10 +310,6 @@ class Character extends Combatant {
     this.disciplines_ = this.disciplines_.filter((discipline) => store.getters.getDiscipline(discipline.name).Type == 'Style')
   }
 
-  private setBonuses() {
-    this.bonuses_ = new Bonuses()
-  }
-
   // ==========================================================
   // CONVENIENCE CHECKS
   // ==========================================================
@@ -385,8 +396,6 @@ class Character extends Combatant {
   }
 
   private setCharacterData(data: ICharacterData): void {
-    this.spirit_ = Spirit.Deserialize(data.spirit)
-    this.spirit_.Character = this
     if ('current_stance' in data) this.current_stance_ = store.getters.getStance(data.current_stance)
     this.element_ = data.element || ''
     this.name_ = data.name || ''
@@ -401,6 +410,7 @@ class Character extends Combatant {
     this.setBonuses()
     this.getArmor()
     this.getWeapons()
+    this.spirit_ = Spirit.CreateFromCharacter(this, data.spirit)
   }
 }
 export default Character

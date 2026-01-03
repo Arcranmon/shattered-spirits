@@ -39,7 +39,7 @@ export class CharacterManagementStore extends VuexModule {
     saveCharacters(this.AllCharacters)
   }
 
-  @Action
+  @Action({ rawError: true })
   public async loadCharacters() {
     var characters = localStorage.getItem('characters.json')
     if (characters) this.LoadCharacters(characters)

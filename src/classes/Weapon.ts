@@ -2,7 +2,6 @@ import { store } from '@/store'
 import { Ability, Chart, Equipment } from '@/class'
 
 class Weapon extends Equipment {
-  private hands_: number
   private reqs_: string
 
   get CategoryHeader() {
@@ -11,9 +10,6 @@ class Weapon extends Equipment {
   }
   get ClassHeader() {
     return this.CategoryHeader
-  }
-  get Hands() {
-    return this.hands_
   }
   get HandString() {
     return String(this.hands_)
@@ -41,7 +37,6 @@ class Weapon extends Equipment {
 
   public setWeaponData(data: IWeaponData): void {
     this.setEquipmentData(data)
-    this.hands_ = data.hands || 0
     this.reqs_ = data.reqs || ''
   }
 }

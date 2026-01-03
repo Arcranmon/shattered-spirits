@@ -29,13 +29,15 @@ declare interface IAbilityPackageData extends IBaseData {
 }
 
 declare interface IBonusesData {
-  focus: number
-  grit: number
-  health: number
-  stun: number
-  reflex: number
-  move: number
-  load: number
+  focus?: number
+  grit?: number
+  health?: number
+  stun?: number
+  reflex?: number
+  move?: number
+  speed?: number
+  load?: number
+  equipment?: string[]
 }
 
 declare interface IEquipmentData extends IBaseData {
@@ -43,9 +45,6 @@ declare interface IEquipmentData extends IBaseData {
   load: number
   abilities: IAbilityData[]
   chart: IChartData
-}
-
-declare interface IConsumableData extends IEquipmentData {
   hands: number
 }
 
@@ -190,6 +189,7 @@ declare interface IAbilityData extends IBaseData {
   target?: string
   material?: string
   chart?: IChartData
+  bonuses: IBonusesData
 }
 
 declare interface IManeuverData extends IAbilityData {
@@ -327,7 +327,6 @@ declare interface ITraitData extends IBaseData {
 }
 
 declare interface IWeaponData extends IEquipmentData {
-  hands: number
   reqs: string
   chart: IChartData
 }

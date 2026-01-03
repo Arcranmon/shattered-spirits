@@ -9,7 +9,7 @@
     <v-tabs v-model="tab" class="spirit-tabs" background-color="#b69e75" color="black" centered>
       <!---<v-tab> <h4>Earth</h4> </v-tab><v-tab> <h4>Flame</h4> </v-tab><v-tab> <h4>Water</h4> </v-tab><v-tab> <h4>Wind</h4> </v-tab><v-tab> <h4>Wood</h4> </v-tab
       >
-      --><v-tab> <h4>Metal</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab><v-tab> <h4>Natural Weapons</h4> </v-tab></v-tabs
+      --><v-tab> <h4>Metal</h4> </v-tab><v-tab> <h4>Traits</h4> </v-tab></v-tabs
     >
     <v-tabs-items v-model="tab" class="spirit-tab-content">
       <!---
@@ -20,19 +20,12 @@
       <v-tab-item></v-tab-item>
       --->
       <v-tab-item><spirit-ability-options element="Metal" /></v-tab-item>
-      <v-tab-item>
-        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getTraitsByTagAndCost('General', '1')" />
-        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getTraitsByTagAndCost('General', '2')" />
-        <show-cards display_text="Rare Traits (3 Points)" :inputs="this.$store.getters.getTraitsByTagAndCost('General', '3')" />
+      <v-tab-item
+        ><show-cards display_text="Size Traits (Free)" :inputs="this.$store.getters.getTraitsByTagAndCost('Size', 'None')" :cols="2" />
+        <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getTraitsByTagAndCost('General', '1')" :cols="2" />
+        <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getTraitsByTagAndCost('General', '2')" :cols="2" />
+        <show-cards display_text="Rare Traits (3 Points)" :inputs="this.$store.getters.getTraitsByTagAndCost('General', '3')" :cols="2" />
       </v-tab-item>
-      <v-tab-item>
-        <display-tooltip-text style="margin: 1em" :string="spiritWeaponText" /><br /><br />
-
-        <v-row align="center" style="margin-left: 0.5em">
-          <v-col cols="12"><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled outlined></v-select></v-col
-        ></v-row>
-        <show-cards :inputs="weapons" :collapse="false"
-      /></v-tab-item>
     </v-tabs-items>
   </div>
 </template>

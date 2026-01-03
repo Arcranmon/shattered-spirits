@@ -60,7 +60,9 @@
                 >
                 <v-tabs-items v-model="equipment_tab" class="character-tab-content"
                   ><v-tab-item><b>Load:</b> {{ character.Load }}<show-cards :inputs="character.SortedWornEquipment" :collapse="false" :cols="2" /> </v-tab-item
-                  ><v-tab-item> </v-tab-item></v-tabs-items></v-tab-item
+                  ><v-tab-item>
+                    <b>Load:</b> {{ character.PackedLoad
+                    }}<show-cards :inputs="character.SortedPackedEquipment" :collapse="false" :cols="2" /> </v-tab-item></v-tabs-items></v-tab-item
               ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
               <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
             ></v-tabs-items>

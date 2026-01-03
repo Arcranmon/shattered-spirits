@@ -1,6 +1,6 @@
 import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
-import ConsumablesJson from '@/database/items/consumables.json'
+import EquipmentJson from '@/database/items/equipment.json'
 import DisciplinesJson from '@/database/disciplines.json'
 import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
@@ -31,7 +31,7 @@ import {
   Armor,
   Archetype,
   Discipline,
-  Consumable,
+  Equipment,
   Maneuver,
   Npc,
   Feature,
@@ -96,7 +96,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
     this.AbilityPackages = AbilityPackageJson.map((x) => AbilityPackage.Deserialize(<IAbilityPackageData>(<unknown>x)))
-    this.Consumables = ConsumablesJson.map((x) => Consumable.Deserialize(<IConsumableData>(<unknown>x)))
+    this.Equipments = EquipmentJson.map((x) => Equipment.Deserialize(<IEquipmentData>(<unknown>x)))
     this.Traits = SpiritTraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
     this.Abilities = AbilitiesJson.map((x) => Ability.Deserialize(<IAbilityData>(<unknown>x)))
   }
@@ -112,7 +112,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Features: Feature[] = []
   private Archetypes: Archetype[] = []
   private AbilityPackages: AbilityPackage[] = []
-  private Consumables: Consumable[] = []
+  private Equipments: Equipment[] = []
   private Traits: Trait[] = []
   private Abilities: Ability[] = []
 
@@ -258,7 +258,7 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // EQUIPMENT GETTERS
   // ==========================================================
-  get getEquipmentFromList(): any {
+  get getAnyEquipmentFromList(): any {
     return (equipment_list: Array<any>) => {
       if (equipment_list == undefined) return []
       let equipment: Array<any> = []
@@ -269,8 +269,8 @@ export class DatabaseJsonStore extends VuexModule {
         if (this.isArmor(item)) {
           equipment.push(this.getArmor(item))
         }
-        if (this.isConsumable(item)) {
-          equipment.push(this.getConsumable(item))
+        if (this.isEquipment(item)) {
+          equipment.push(this.getEquipment(item))
         }
       }
       return equipment
@@ -566,34 +566,34 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
-  // Consumable TOOLS
+  // Equipment TOOLS
   // ==========================================================
-  get isConsumable(): any {
+  get isEquipment(): any {
     return (inword: string) => {
-      return this.Consumables.some((x) => x.Name == inword.trim())
+      return this.Equipments.some((x) => x.Name == inword.trim())
     }
   }
 
-  get getConsumables(): any {
+  get getEquipments(): any {
     return () => {
-      return this.Consumables
+      return this.Equipments
     }
   }
 
-  get getConsumable(): any {
+  get getEquipment(): any {
     return (inword: string) => {
-      return this.Consumables.find((x) => x.Name === inword.trim())
+      return this.Equipments.find((x) => x.Name === inword.trim())
     }
   }
 
-  get getConsumableFromList(): any {
-    return (consumable_list: Array<any>) => {
-      if (consumable_list == undefined) return []
-      let consumables: Array<Consumable> = []
-      for (var consumable of consumable_list) {
-        consumables.push(this.getConsumable(consumable))
+  get getEquipmentFromList(): any {
+    return (equipment_list: Array<any>) => {
+      if (equipment_list == undefined) return []
+      let equipments: Array<Equipment> = []
+      for (var equipment of equipment_list) {
+        equipments.push(this.getEquipment(equipment))
       }
-      return consumables
+      return equipments
     }
   }
 

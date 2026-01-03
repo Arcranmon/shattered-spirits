@@ -4,8 +4,12 @@
       <spirit-type-card :type="this.$store.getters.getSpiritType(element + ' Spirit')" />
     </div>
     <show-cards display_text="Base Traits" :inputs="this.$store.getters.getAPsFromList(basicTraits)" cols="2" />
-    <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '1')" />
-    <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '2')" />
+    <show-cards display_text="Common Traits (1 Point)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '1')" :cols="2" />
+    <show-cards display_text="Uncommon Traits (2 Points)" :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '2')" :cols="2" /><show-cards
+      display_text="Rare Traits (3 Points)"
+      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '3')"
+      :cols="2"
+    />
   </div>
 </template>
 

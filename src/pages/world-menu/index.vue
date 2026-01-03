@@ -5,7 +5,7 @@
       <v-col v-if="!isMobile" cols="auto" class="sidebar" style="height: 100vh">
         <v-btn-toggle borderless overflow-auto>
           <div v-for="(tab, index) in tabs" style="width: 100%">
-            <v-btn @click="selectedIndex = index" class="button--style" depressed tile block>
+            <v-btn @click="selectedTab = tab" class="button--style" depressed tile block>
               {{ tab }}
             </v-btn>
           </div>

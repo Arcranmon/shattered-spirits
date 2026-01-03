@@ -1,0 +1,85 @@
+[
+  {
+    "name": "Health Flask",
+    "category": "Potion",
+    "desc": "A potion that fills you with energy and staunches minor wounds.",
+    "load": 1,
+    "hands": 1,
+    "keywords": ["Quickdraw"],
+    "effect": "This may be used as _Medicine_.",
+    "abilities": [
+      {
+        "name": "Drink",
+        "class": "Utility",
+        "type": "Maneuver",
+        "cost": "None",
+        "effect": "Create an [_Opening_]. Clear all _Stun_, then restore 5 _Health_."
+      }
+    ]
+  },
+  {
+    "name": "Caltrops",
+    "category": "Grenade",
+    "desc": "A satchel full of small triangle spikes of metal.",
+    "load": 1,
+    "hands": 1,
+    "keywords": ["Metal", "Quickdraw"],
+    "abilities": [
+      {
+        "name": "Scatter",
+        "class": "Utility",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "effect": "Scatter caltrops across your current Arena. Creatures in said Arena must spend 1 extra _Movement_ whenever they spend _Movement_ and _Negate_ _Reflex_ with _Disadavantage. A creature may take 2 [_Stab_] Damage to ignore this effect for a single Move or _Negate_."
+      }
+    ]
+  },
+  {
+    "name": "Thunderstone",
+    "category": "Grenade",
+    "desc": "A fragile crystal that, when shattered, emits a vicious blast of light and sound.",
+    "effect": "This stone, when hit with sufficient force, detonates in a concussive blast of light and sound that can destroy objects or act as a signal.",
+    "load": 1,
+    "hands": 1,
+    "keywords": ["Quickdraw"],
+    "abilities": [
+      {
+        "name": "Fling",
+        "class": "Light",
+        "keywords": ["Crush"],
+        "type": "Attack",
+        "cost": "1 _Momentum_",
+        "range": "Close",
+        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [5 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_."
+      }
+    ],
+    "chart": {
+      "damage": [0, 0, 1, 2],
+      "stun": [0, 3, 5, 7],
+      "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_"]
+    }
+  },
+  {
+    "name": "Smith's Tools",
+    "category": "Supply",
+    "load": 2,
+    "effect": "A set of simple metal-working tools that can be used to repair equipment while traveling, or handle simple forging if you have access to a forge. It includes a hammer, tongs, and various files."
+  },
+  {
+    "name": "Bedroll",
+    "category": "Supply",
+    "load": 2,
+    "effect": "A simple bedroll and bedding material that keeps you off the ground and ensures a good nights sleep."
+  },
+  { "name": "Tent", "category": "Supply", "load": 2, "effect": "A tent big enough for two that keeps you out of the weather to ensure a good nights sleep." },
+  { "name": "Poultice", "category": "Supply", "load": 1, "effect": "This may be used as _Medicine_." },
+  { "name": "Rope", "category": "Supply", "load": 1, "effect": "50' of rope. There is absolutely no use for rope on adventures, it has yet to be found." },
+  {
+    "name": "Rations",
+    "category": "Supply",
+    "load": 1,
+    "effect": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving."
+  },
+  { "name": "Iron Scrap", "category": "Supply", "load": 1, "keywords": ["Metal"], "effect": "Scrap metal, typically used for repairing equipment." },
+  { "name": "Waterskin", "category": "Supply", "load": 1, "keywords": ["Water"], "effect": "A water-tight pouch containing a day's worth of water." }
+]

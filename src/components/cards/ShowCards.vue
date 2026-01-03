@@ -60,8 +60,8 @@
             <div class="card--box" v-if="isArmor(n)">
               <armor-card :armor="n" :color="card_color" :character_creation="character_creation" style="height: 100%" />
             </div>
-            <div class="card--box" v-if="isConsumable(n)">
-              <consumable-card :consumable="n" style="height: 100%" />
+            <div class="card--box" v-if="isEquipment(n)">
+              <equipment-card :equipment="n" style="height: 100%" />
             </div>
             <!---
             <div class="card--box" v-if="job == 'Features'">
@@ -93,7 +93,7 @@
 import Vue from 'vue'
 import ArmorCard from './ArmorCard.vue'
 import ApCard from './APCard.vue'
-import ConsumableCard from './ConsumableCard.vue'
+import EquipmentCard from './EquipmentCard.vue'
 import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
@@ -106,7 +106,7 @@ import TraitCard from './TraitCard.vue'
 import {
   AbilityPackage,
   Armor,
-  Consumable,
+  Equipment,
   Archetype,
   Feature,
   Stance,
@@ -181,7 +181,7 @@ export default Vue.extend({
   components: {
     ApCard,
     ArmorCard,
-    ConsumableCard,
+    EquipmentCard,
     FeatureCard,
     StanceCard,
     StatusCard,
@@ -214,8 +214,8 @@ export default Vue.extend({
     isTerrain(variable) {
       return variable instanceof Terrain
     },
-    isConsumable(variable) {
-      return variable instanceof Consumable
+    isEquipment(variable) {
+      return variable instanceof Equipment && !(variable instanceof Armor) && !(variable instanceof Weapon)
     },
     isWeapon(variable) {
       return variable instanceof Weapon

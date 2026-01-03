@@ -15,7 +15,6 @@ import Spirit from './classes/Spirit'
 import Character from './classes/Character'
 import Chart from './classes/Chart'
 import Discipline from './classes/Discipline'
-import Consumable from './classes/Consumable'
 import Npc from './classes/Npc'
 import Feature from './classes/Feature'
 import Stance from './classes/Stance'
@@ -38,7 +37,6 @@ export {
   Defenses,
   Discipline,
   Equipment,
-  Consumable,
   Maneuver,
   Npc,
   Feature,
