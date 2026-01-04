@@ -37,6 +37,7 @@ import Vue from 'vue'
 import CustomButton from '@/components/Button.vue'
 import NarrativeText from '@/database/text_files/narrative.txt'
 import TravelText from '@/database/text_files/travel.txt'
+import TownsText from '@/database/text_files/towns.txt'
 import EquipmentText from '@/database/text_files/equipment.txt'
 import PlayerRolesText from '@/database/text_files/player_roles.txt'
 import GameModes from '@/database/text_files/game_modes.txt'
@@ -55,8 +56,8 @@ export default Vue.extend({
   data() {
     return {
       selectedTab: 'Playing the Game',
-      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Combat', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
-      text: [GameModes, NarrativeText, TravelText, EquipmentText, CombatText, '', '', PlayerRolesText],
+      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Towns', 'Combat', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
+      text: [GameModes, NarrativeText, TravelText, EquipmentText, TownsText, CombatText, '', '', PlayerRolesText],
       statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
       selectedStatuses: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
       selectedStatus: null,
