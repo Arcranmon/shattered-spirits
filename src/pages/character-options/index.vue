@@ -40,11 +40,9 @@
             <v-col cols="6"
               ><v-select v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple filled outlined
                 ><template v-slot:prepend-item>
-                  <v-list-item ripple @mousedown.prevent @click="weaponCategoryToggle"
+                  <v-list-item ripple @mousedown.prevent
                     ><v-list-item-action>
-                      <v-icon :color="selectedWeapons.length > 0 ? 'indigo darken-4' : ''">
-                        {{ icon }}
-                      </v-icon>
+                      <v-icon :color="selectedWeapons.length > 0 ? 'indigo darken-4' : ''"> </v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
                       <v-list-item-title> Select All </v-list-item-title>
@@ -58,7 +56,7 @@
               > </v-col
             ><v-col cols="6"><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled outlined></v-select></v-col
           ></v-row>
-          <show-cards :inputs="weapons" :collapse="false" />
+          <show-cards :inputs="weapons" :collapse="false" :cols="2" />
         </div>
         <div v-if="selectedTab == 'Spirit Arts'">
           <v-tabs v-model="abilityTab" class="character-tabs" dark color="black" centered
@@ -71,7 +69,7 @@
           </v-tabs-items>
         </div>
         <spirit-abilities v-if="selectedTab == 'Spirit Customization'" />
-        <show-cards v-if="selectedTab == 'Consumables'" :inputs="consumables" :collapse="false" />
+        <show-cards v-if="selectedTab == 'Equipment'" :inputs="consumables" :collapse="false" :cols="2" />
       </v-col>
     </v-row>
   </div>
@@ -99,7 +97,7 @@ export default Vue.extend({
       selectedTab: 'Basic Skills',
       selectedElement: 'Earth',
       elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
-      tabs: ['Basic Skills', 'Arts', 'Talents', 'Spirit Customization', 'Armor and Accessories', 'Weapons and Shields', 'Consumables'],
+      tabs: ['Basic Skills', 'Arts', 'Talents', 'Spirit Customization', 'Armor and Accessories', 'Weapons and Shields', 'Equipment'],
       armorCategories: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
       selectedArmors: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
       weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
@@ -128,7 +126,7 @@ export default Vue.extend({
       return this.$store.getters.getFilteredWeapons(this.selectedWeapons, this.selectedType)
     },
     consumables: function () {
-      return this.$store.getters.getConsumables()
+      return this.$store.getters.getEquipments()
     },
     basic_stances() {
       return this.$store.getters.getStancesFromList(this.$store.getters.basicStances)

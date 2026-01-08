@@ -21,12 +21,15 @@
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Hands_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Load_" :decorate="false" /></b
+            ><b><display-tooltip-text string="_Load_" :decorate="false" /></b></v-col
+          ><v-col class="chart--head" cols="3"
+            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col class="chart--cols justify-center align-center" cols="2">{{ equipment.Hands }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ equipment.Load }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="3">{{ equipment.Durability }}</v-col>
         </v-row>
       </div>
       <div v-if="equipment.HasTraits"><display-tooltip-text :string="equipment.TraitsHeader" /></div>

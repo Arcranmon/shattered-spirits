@@ -5,7 +5,8 @@
     "desc": "A potion that fills you with energy and staunches minor wounds.",
     "load": 1,
     "hands": 1,
-    "keywords": ["Quickdraw"],
+    "durability": 1,
+    "keywords": ["Quickdraw", "Consumable", "Fragile"],
     "effect": "This may be used as _Medicine_.",
     "abilities": [
       {
@@ -19,11 +20,13 @@
   },
   {
     "name": "Caltrops",
-    "category": "Grenade",
+    "category": "Supply",
     "desc": "A satchel full of small triangle spikes of metal.",
     "load": 1,
     "hands": 1,
-    "keywords": ["Metal", "Quickdraw"],
+    "durability": 1,
+    "keywords": ["Metal", "Quickdraw", "Consumable"],
+    "effect": "A small bag of metallic caltrops that can be used to deter enemies from entering a space. These are typically lost after use, but characters that have a way to quickly collect them may be able to reuse them.",
     "abilities": [
       {
         "name": "Scatter",
@@ -43,7 +46,8 @@
     "effect": "This stone, when hit with sufficient force, detonates in a concussive blast of light and sound that can destroy objects or act as a signal.",
     "load": 1,
     "hands": 1,
-    "keywords": ["Quickdraw"],
+    "durability": 1,
+    "keywords": ["Quickdraw", "Consumable"],
     "abilities": [
       {
         "name": "Fling",
@@ -65,23 +69,55 @@
     "name": "Smith's Tools",
     "category": "Supply",
     "load": 2,
+    "durability": 1,
     "effect": "A set of simple metal-working tools that can be used to repair equipment while traveling, or handle simple forging if you have access to a forge. It includes a hammer, tongs, and various files."
   },
   {
     "name": "Bedroll",
     "category": "Supply",
+    "keywords": ["Natural"],
     "load": 2,
+    "durability": 1,
     "effect": "A simple bedroll and bedding material that keeps you off the ground and ensures a good nights sleep."
   },
-  { "name": "Tent", "category": "Supply", "load": 2, "effect": "A tent big enough for two that keeps you out of the weather to ensure a good nights sleep." },
-  { "name": "Poultice", "category": "Supply", "load": 1, "effect": "This may be used as _Medicine_." },
-  { "name": "Rope", "category": "Supply", "load": 1, "effect": "50' of rope. There is absolutely no use for rope on adventures, it has yet to be found." },
+  {
+    "name": "Tent",
+    "category": "Supply",
+    "keywords": ["Wood"],
+    "load": 2,
+    "durability": 1,
+    "effect": "A tent big enough for two that keeps you out of the weather to ensure a good nights sleep."
+  },
+  { "name": "Poultice", "keywords": ["Wood"], "category": "Medicine", "load": 1, "durability": 1, "effect": "This may be used as _Medicine_." },
+  {
+    "name": "Rope",
+    "category": "Supply",
+    "keywords": ["Wood"],
+    "load": 1,
+    "durability": 1,
+    "effect": "50' of rope. There is absolutely no use for rope on adventures, it has yet to be found."
+  },
   {
     "name": "Rations",
+    "category": "Food",
+    "keywords": ["Natural"],
+    "load": 1,
+    "effect": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving. This counts as _Poor_ quality food."
+  },
+  {
+    "name": "Iron Scrap",
     "category": "Supply",
     "load": 1,
-    "effect": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving."
+    "durability": 1,
+    "keywords": ["Metal"],
+    "effect": "Scrap metal, typically used for extensive equipment repair."
   },
-  { "name": "Iron Scrap", "category": "Supply", "load": 1, "keywords": ["Metal"], "effect": "Scrap metal, typically used for repairing equipment." },
-  { "name": "Waterskin", "category": "Supply", "load": 1, "keywords": ["Water"], "effect": "A water-tight pouch containing a day's worth of water." }
+  {
+    "name": "Waterskin",
+    "keywords": ["Natural", "Water"],
+    "category": "Supply",
+    "load": 1,
+    "durability": 1,
+    "effect": "A water-tight pouch containing a day's worth of water."
+  }
 ]

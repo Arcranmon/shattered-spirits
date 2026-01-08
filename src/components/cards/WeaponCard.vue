@@ -22,17 +22,14 @@
             ><b><display-tooltip-text string="_Hands_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Load_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
+          ><v-col class="chart--head" cols="3"
             ><b><display-tooltip-text string="_Durability_" :decorate="false" /></b
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
           <v-col class="chart--cols justify-center align-center" cols="2"><display-tooltip-text :string="weapon.HandString" /></v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Load }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Durability }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ weapon.Durability }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="3">{{ weapon.Durability }}</v-col>
         </v-row>
       </div>
       <div class="card--format" v-if="weapon.HasReqs">
