@@ -1,71 +1,52 @@
 [
   {
-    "name": "Metal Stance",
-    "class": "Balanced",
-    "desc": "A stance channeling the essence of metal, and the first taught to its practitioners.",
-    "defenses": { "focus": 2, "grit": 2, "reflex": 1 },
-    "momentum": 0,
-    "guard": 1,
-    "stun_clear": 2,
-    "speed": 11,
-    "effects": ["**Metal Guard:** [_Metal_] Attacks take a -1 _Penalty_ against you."],
-    "abilities": [
-      {
-        "name": "Metallic Essence",
-        "class": "Utility",
-        "type": "Maneuver",
-        "keywords": ["Spirit", "Metal"],
-        "cost": "None",
-        "reqs": "_Wielding_ at least 1 _Load_ of _Metal_ _Equipment_.",
-        "effect": "_Prepare_ 1 on a _Wielded_ piece of _Metal_ _Equipment_ or _Metal_ _Art_."
-      }
-    ]
-  },
-  {
     "name": "Agile Stance",
     "class": "Mobility",
     "desc": "You take on a stance focused on mobility, intent on covering ground quickly.",
-    "defenses": { "focus": 1, "grit": 0, "reflex": 2 },
+    "defenses": { "focus": 0, "grit": 0, "reflex": 2 },
     "speed": 1,
     "movement": 2,
-    "momentum": 4,
-    "effects": [
-      "**Nimble:** Attacks made as a part of [_Punish_] _Reactions_ have _Disadvantage_ against you.",
-      "**Limited Offense:** You may only make [_Light_] Attacks."
-    ],
+    "momentum": 3,
+    "effects": ["**Nimble:** Attacks made as a part of [_Punish_] _Reactions_ have _Disadvantage_ against you."],
     "abilities": [
       {
         "name": "Dart",
         "class": "Mobility",
         "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "trigger": "A creature's _Turn_ ends.",
-        "effect": "You may immediately _Move_ as if it was your _Turn_, and may use any _Mobility_ _Maneuvers_ as if it was your turn."
+        "cost": "None",
+        "trigger": "A _Phase_ begins.",
+        "effect": "You may immediately _Move_ as if it was your _Turn_, and may use _Mobility_ _Maneuvers_ as if it was your turn."
       }
-    ]
+    ],
+    "adjust": 0,
+    "adjust_notes": "Assume Nimble is basically worthless."
   },
   {
-    "name": "Resting Stance",
-    "class": "Recovery",
-    "desc": "You adopt a passive stance, focusing on clearing your head and catching your breath.",
-    "defenses": { "focus": 2, "grit": 1, "reflex": 1 },
-    "stun_clear": 6,
+    "name": "Rallying Stance",
+    "class": "Support",
+    "desc": "You adopt a supportive stance, focusing on helping allies while catching your breath.",
+    "defenses": { "focus": 2, "grit": 1, "reflex": 0 },
     "guard": 1,
-    "speed": 3,
-    "momentum": 6,
-    "effects": ["**Pacifist:** You may not Attack."],
+    "speed": 2,
+    "momentum": 4,
+    "effects": [
+      "**Pacifist:** You may not Attack.",
+      "**Encouragement:** At _Refresh_ you may use up to 2 _Momentum_ of [_Inspiring_] Manuevers as if it was your _Turn_, paying no costs."
+    ],
     "abilities": [
       {
         "name": "Rally",
         "class": "Utility",
-        "keywords": ["Rooted", "Repeatable"],
+        "keywords": ["Repeatable", "Inspiring"],
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "range": "Self/Melee",
         "target": "Ally (Optional)",
-        "effect": "Choose one:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_."
+        "effect": "Choose one:\n* You or the Target _Recovers_.\n* You or the Target clears 5 _Stun_.\n\nIf you target an ally, you may also clear 1 _Stun_."
       }
-    ]
+    ],
+    "adjust": 1,
+    "adjust_notes": "2 free Momentum, minus a bit for Pacifist."
   },
   {
     "name": "Hostile Stance",
@@ -74,7 +55,7 @@
     "defenses": { "focus": 1, "grit": 0, "reflex": 1 },
     "effects": ["**Hostility:** You may use any number of Attacks on your _Turn_.", "**Aggression:** Your first Attack on your _Turn_ gains [_Discount_ 2]."],
     "speed": 3,
-    "momentum": 6,
+    "momentum": 5,
     "guard": 0,
     "movement": 0,
     "abilities": [
@@ -84,20 +65,22 @@
         "type": "Reaction",
         "cost": "1 _Momentum_",
         "reqs": "You complete an Attack.",
-        "effect": "After resolving all other effects, inflict 2 _Stun_ as a separate effect. If you _Missed_, instead deal 3 _Stun_."
+        "effect": "After resolving all other effects, inflict 3 _Stun_ as a separate effect. If you _Missed_, instead deal 4 _Stun_."
       }
-    ]
+    ],
+    "adjust": 3,
+    "adjust_notes": "Gets 2 Momentum for attacks, toss in another 1 for Hostility."
   },
   {
     "name": "Open Stance",
     "class": "Balanced",
     "desc": "A perfectly balanced stance, leaving no obvious openings while granting no obvious advantages.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
-    "momentum": 8,
+    "momentum": 5,
     "movement": 1,
     "guard": 1,
     "stun_clear": 2,
-    "speed": 3
+    "speed": 4
   },
   {
     "name": "Focused Stance",
@@ -107,23 +90,25 @@
     "speed": 6,
     "guard": 1,
     "stun_clear": 2,
-    "momentum": 3,
+    "momentum": 4,
     "effects": [
-      "**Charge:** At the start of the _Phase_, choose an Ability and any Target for it, announcing both to the table. On your Turn, if you use the chosen Ability against the chosen Target add [_Discount_ 6].",
+      "**Charge:** At the start of the _Round_, choose an Ability and any Target for it, announcing both to the table. On your Turn, if you use the chosen Ability against the chosen Target add [_Discount_ 6].",
       "**Limited Mobility:** You may not willingly spend Movement until your _Turn_. On your _Turn_, you may not leave your current _Arena_ until the chosen Ability has been used."
-    ]
+    ],
+    "adjust": 5,
+    "adjust_notes": "Charge is very good, but Limited Mobility is very bad."
   },
   {
     "name": "Guarded Stance",
     "class": "Defensive",
     "desc": "A stance focused on defense, providing an unparalleled ability to keep yourself safe.",
-    "defenses": { "focus": 1, "grit": 2, "reflex": 1 },
+    "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
     "guard": 2,
-    "speed": 4,
-    "stun_clear": 3,
-    "momentum": 4,
+    "speed": 5,
+    "stun_clear": 2,
+    "momentum": 3,
     "effects": [
-      "**Shielded:** One _Defensive_ _Reaction_ you use each _Phase_ gains [_Discount_ 1].",
+      "**Active Defense:** One _Defensive_ _Reaction_ you use each _Phase_ gains [_Discount_ 1].",
       "**Defensive Focus:** Attacks against creatures that have not attacked you this _Round_ have _Disadvantage_."
     ],
     "abilities": [
@@ -135,461 +120,8 @@
         "trigger": "A _Phase_ begins.",
         "effect": "Choose an enemy. You have _Advantage_ on all _Defense Rolls_ against them this _Phase_."
       }
-    ]
-  },
-  {
-    "name": "Forceful Stance",
-    "desc": "A stance focused on overwhelming offense and powerful blows that break through a foe's defenses.",
-    "effects": ["**Step In:** The first time each _Phase_ you successfully inflict _Break_, gain 1 _Momentum_."],
-    "respite": { "momentum": 4 },
-    "defenses": { "focus": 2, "grit": 1 },
-    "abilities": [
-      {
-        "name": "Smash",
-        "class": "Offensive",
-        "type": "Action",
-        "cost": "2 _Momentum_",
-        "effect": "Use a _Versatile_ or _Heavy_ _Attack_ [_Discount_ _0/1/2/3_], adding [_Pierce_ 1] and dealing _Bonus Damage_ equal to 1 + the current Phase on a Graze+. On a Hit+, add Break [Focus]."
-      },
-      {
-        "name": "Painful Reminder",
-        "class": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "trigger": "_Hit_+ with a _Versatile_/_Heavy_ Attack.",
-        "effect": "For the remainder of this _Phase_, add [_Pierce_ 2] to all Attacks against the Target."
-      },
-      {
-        "name": "Wide Open!",
-        "class": "Offensive",
-        "type": "Reaction",
-        "cost": "2 _Momentum_",
-        "trigger": "You inflict _Break_.",
-        "effect": "The Target creates an _Opening_. You may not respond to said _Opening_."
-      }
-    ]
-  },
-  {
-    "name": "Steady Stance",
-    "desc": "A stance focused on unbreakable defense.",
-    "respite": { "momentum": 2, "stun_clear": 5 },
-    "defenses": { "grit": 2, "focus": 1, "guard": 1 },
-    "effects": [
-      "**Unbreakable Guard:** At _Respite_, gain 4 special _Momentum_ that is tracked on this _Stance_. This _Momentum_ may only be spent on [_Block_] _Reactions_ and _Defensive_ _Gambits_. Lose any of this _Momentum_ that is unspent at the end of the _Round_.",
-      "**Swift Guard:** You may add [_Priority_] to all _Defensive_ _Actions_."
     ],
-    "abilities": [
-      {
-        "name": "Warding Strike",
-        "class": "Offensive",
-        "type": "Action",
-        "cost": "None",
-        "effect": "Make an Attack [_Discount_ _0/1/2/3_], then gain _Guarding_."
-      },
-      {
-        "name": "Form Up",
-        "class": "Defensive",
-        "type": "Action",
-        "range": "Melee",
-        "cost": "None",
-        "effect": "Choose one per _Phase_. You may choose the same option multiple times:\n* You become _Guarding_.\n* An ally within Range becomes _Guarding_.\n* You or an ally within Range gain 1 _Momentum_. The Target must be _Guarding_ to choose this option."
-      }
-    ]
-  },
-  {
-    "name": "Swift Stance",
-    "desc": "A stance focused on swift, sudden movements and capitalizing on agility.",
-    "effects": [
-      "**Reposition:** You have 2 _Movement_ you may spend at _Refresh_ as if it was your _Turn_; this _Movement_ is automatically [_Safe_]. Attacks against you on your _Turn_ have _Disadvantage_."
-    ],
-    "abilities": [
-      {
-        "name": "Skirmish",
-        "class": "Offensive",
-        "type": "Action",
-        "cost": "None",
-        "effect": "Make [_Phase_] _Light_ or _Versatile_ Attacks [_Discount_ 1].",
-        "boost": "1 _Momentum_: Gain 1 _Temporary_ _Movement_."
-      },
-      {
-        "name": "Dash",
-        "keywords": ["Priority", "Limited"],
-        "class": "Mobility",
-        "type": "Action",
-        "speed": 1,
-        "cost": "None",
-        "effect": "Gain _1/2/2/3_ _Temporary_ _Movement_. Your _Movement_ this _Turn_ is [_Safe_], but you may only use _Mobility_ _Enhancements_ this _Turn_.",
-        "boost": "1 _Momentum_: Gain 1 _Temporary_ _Movement_."
-      },
-      {
-        "name": "Swift Strike",
-        "class": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "effect": "Make a _Light_ _Attack_ at _Advantage_. You may pay the Cost of this Attack with _Movement_ instead of _Momentum_. This Attack may not trigger _Gambits_."
-      }
-    ],
-    "respite": { "momentum": 4, "stun_clear": 2, "movement": 2 },
-    "defenses": { "reflex": 2, "focus": 1 }
-  },
-  {
-    "name": "Blaze Stance",
-    "class": "Blaze",
-    "desc": "A stance specialized in cultivating and creating flames.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "traits": ["_Resistance_ 2 (_Fire_)", "_Warded_ (_Alight_)"],
-    "effect": "Whenever you would inflict _Alight_ you can choose to to instead create a _Blazing_ space adjacent to the Target. If you do, deal +2 _Fire_ _Bonus_ Damage.",
-    "special": "Once per _Round_ gain 1 _Momentum_ when you start your _Turn_ adjacent to a _Flame_ _Major Source_."
-  },
-  {
-    "name": "Detonation Stance",
-    "class": "Detonation",
-    "desc": "A stance specialized in detonating flames in violent blasts.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you would deal _Fire_ Damage you may instead choose to deal _Crush_ Damage. If you do, remove _Alight_ but add _Stun_ equal to half the _Negate_ DC.",
-    "special": "Whenever you _Hit_+ with an Attack that deals _Fire_ Damage (even if you change it to _Crush_) you may destroy a piece of _Terrain_ adjacent to the Target or in the _Area_."
-  },
-  {
-    "name": "Gale Stance",
-    "class": "Gale",
-    "desc": "A stance specialized in bending and shaping the wind.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1, "reflex": 1 },
-    "traits": ["_Windwalk_"],
-    "effect": "Once per _Turn_ after making a _Gale_ _Attack_ or using a _Gale_ _Gambit_ you may make a space in or adjacent to the effect's _Area_ _Gusting_. If it is a single-target effect, treat the Target's space as the _Area_.",
-    "special": "_Gusting_ spaces adjacent to you are always treated as pointing in the direction of your choice. They return to their original direction when you break adjacency."
-  },
-  {
-    "name": "Land Stance",
-    "class": "Land",
-    "desc": "A stance specialized in shaping the earth as if it was clay.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1, "grit": 1 },
-    "traits": ["_Earthwalk_"],
-    "effect": "Once per _Turn_ after making a _Land_ _Attack_ or using a _Land_ _Gambit_ you may make an _Earthen_ space in or adjacent to the effect's _Area_ _Uneven Earth_. If it is a single-target effect, treat the Target's space as the _Area_.",
-    "special": "Inflict an additional 1 _Stun_ whenever you _Hit_+ a Target on _Uneven Earth_."
-  },
-  {
-    "name": "Mountain Stance",
-    "class": "Mountain",
-    "desc": "A stance specialized in controlling stone with deadly intent.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1, "grit": 1 },
-    "effect": "Once per _Round_ you may make an _Environmental Weapon_ in an _Earthen_ space within Range 4. This _Environmental Weapon_ uses the stats of a _Small Improvised_ Weapon, is made of _Stone_, and has the [_Fragile_] keyword."
-  },
-  {
-    "name": "Storm Stance",
-    "class": "Storm",
-    "desc": "A stance specialized in conjuring and controlling bolts of electricity.",
-    "respite": { "momentum": 2 },
-    "traits": ["_Resistance_ 1 (_Lighting_)", "_Warded_ (_Shocked_)"],
-    "defenses": { "stamina": 1, "reflex": 1 },
-    "effect": "Whenever you deal _Lighting_ Damage to a _Shocked_ creature (before they Negate) you may choose to remove _Shocked_ to deal 3 _Lighting_ Damage in a _Burst_ 1 around the Target and inflict _Stun_ 3 on the Target."
-  },
-  {
-    "name": "Tide Stance",
-    "class": "Tide",
-    "desc": "A stance specialized in controlling water, using it as a vicious weapon.",
-    "traits": ["Aquatic"],
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1, "focus": 1 },
-    "effect": "Gain an Aqua Ring, which is a _Watersource_ that shares your space, moves with you, and has a maximum value of 4. Whenever you would create a _Watersource_ you may reduce the value placed by 1 to increase the value of your Aqua Ring by 1. Additionally, if you would inflict _Paddinged_ you may choose not to to increase the value of your Aqua Ring by 1.",
-    "special": "Inflict an additional 1 _Stun_ whenever you _Hit_+ a Target if you _Drew_ from your Aqua Ring."
-  },
-  {
-    "name": "Tundra Stance",
-    "class": "Tundra",
-    "desc": "A stance specialized in controlling snow and ice with ease.",
-    "traits": ["Snowdraw", "Frostwalk"],
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you would inflict _Frozen_ you can choose to to instead create an _Icy_ space adjacent to the Target. If you do, deal +2 _Cold_ _Bonus_ Damage.",
-    "special": "Once per _Round_ gain 1 _Momentum_ when you start your _Turn_ adjacent to an _Ice_ _Major Source_."
-  },
-  {
-    "name": "Coiled Serpent Stance",
-    "class": "Martial",
-    "desc": "You are constantly wound as tight as a spring, waiting to viciously lunge out at a moment's notice.",
-    "respite": { "momentum": 1 },
-    "defenses": { "stamina": 2 },
-    "special": "Whenever you become _Charging_, gain _Poised_.",
-    "effect": "Whenever you are _Charging_ you may pay 1 _Momentum_ to remove _Charging_ at the end of a creature's _Turn_ rather than the end of the _Phase_, so long as you could remove this _Charging_ at the end of the current _Phase_."
-  },
-  {
-    "name": "Crackling Bolt Stance",
-    "class": "Storm",
-    "desc": "You form and fire bolts of lightning near constantly, drawing all electricity in the environment.",
-    "respite": { "momentum": 2 },
-    "traits": ["_Stormwalk_", "_Warded_ 1 (_Shocked_)", "_Resistance_ 1 (_Lightning_)"],
-    "defenses": { "stamina": 1 },
-    "effect": "Add [_Winding_] to all _Storm_ Attacks that Target a _Shocked_ creature.",
-    "special": "Whenever you deal _Lightning_ Damage you may remove _Shocked_ as if it was _Vulnerable_."
-  },
-  {
-    "name": "Crashing Stone Stance",
-    "class": "Mountain",
-    "desc": "You are a true master of boulder-based combat, flinging them with brutal efficiency.",
-    "respite": { "momentum": 2, "special": "Use _Compress Earth_ at no cost." },
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you would be required to reduce _Forced Movement_ with an _Earth_ ability due to an _Feature's_ property, reduce it by 2 less.",
-    "special": "Add [_Repeatable_] to _Compress Earth_."
-  },
-  {
-    "name": "Creeping Frost Stance",
-    "class": "Tundra",
-    "desc": "You freeze the terrain and foes alike, creating a frigid wasteland around you.",
-    "respite": { "momentum": 2, "special": "If you are on a _Icy_ space, inflict _Frozen_ 1 on a creature within Range 4." },
-    "traits": ["_Snowdraw_", "_Frostwalk_", "_Warded_ 1 (_Frozen_)", "_Resistance_ 1 (_Cold_)"],
-    "defenses": { "stamina": 1 },
-    "effect": "Attacks against creatures with _Frozen_ within Range 4 of you gain [_Pierce_ 1]."
-  },
-  {
-    "name": "Cunning Fox Stance",
-    "class": "Martial",
-    "desc": "You fight with guile and trickery, pushing every possible advantage to better strike down your foes.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "After making a _Light_/_Versatile_ _Attack_ against a creature you may convert up to 3 of their _Exposed_/_Enraged_ to _Reeling_ if you had _Advantage_.",
-    "special": "Deal +1 _Damage_ against creatures with _Enraged_/_Exposed_ when making _Light_/_Versatile_ Attacks."
-  },
-  {
-    "name": "Destructive Blast Stance",
-    "class": "Detonation",
-    "desc": "Your flame attacks are more a wave of concussive force than true explosion, devastating foes.",
-    "traits": ["_Resistance_ 2 (_Fire_)"],
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "The _Explosive Flames_ Gambit has no cost for you.",
-    "special": "Whenever you use _Explosive Flames_ you may pay 1 _Momentum_ to deal _Crush_ Damage rather than _Fire_."
-  },
-  {
-    "name": "Dripping Veil Stance",
-    "class": "Tide",
-    "desc": "The water is a constant shield for you, warding you from all harm.",
-    "respite": { "momentum": 1 },
-    "defenses": { "stamina": 2 },
-    "traits": ["Aquatic"],
-    "effect": "You may treat all _Water_ _Terrain_ as _Fortified_.",
-    "special": "Once per Round you may use _Shielding Wave_ for no Cost and may freely use the Boost."
-  },
-  {
-    "name": "Endless Twister Stance",
-    "class": "Gale",
-    "desc": "Your are a master of pushing and pulling the wind, creating vicious vortices wherever you go.",
-    "respite": { "momentum": 2, "special": "Make up to 2 spaces adjacent to you _Gusting_." },
-    "defenses": { "stamina": 1 },
-    "traits": ["Windwalk"],
-    "effect": "_Gusting_ spaces adjacent to you may be treated as pointing in the direction of your choice and ignore _Fleeting_. Additionally, you treat _Windy_ spaces as if they are _Fortified_."
-  },
-  {
-    "name": "Erupting Flame Stance",
-    "class": "Detonation",
-    "desc": "You are a master of sudden, violent blasts of flame, building to large and larger blasts.",
-    "traits": ["_Warded_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "Gain an Eruption Dice, which is a d6. Every time you make an _Area_ Attack that deals _Fire_ Damage either increase its value by 1 or reset it to 1. If you reset its value, you may add an additional X spaces to the _Area_, where X is the die's value prior to the reset. These additional spaces must be contiguous with the original _Area_. You may always choose the reset option, even if the dice has a value of 1."
-  },
-  {
-    "name": "Floating Butterfly Stance",
-    "class": "Martial",
-    "desc": "You are constantly in motion, shifting across the battlefield with unparalleled grace.",
-    "respite": { "momentum": 1, "special": "_Step_ [_Breach_, _Safe_]." },
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you would [_Safe_] Move you may remove [_Safe_] to gain 1 _Stamina_."
-  },
-  {
-    "name": "Focusing Torch Stance",
-    "class": "Blaze",
-    "desc": "Your flames burn brighter and hotter, searing through defenses.",
-    "traits": ["_Flamewalk_", "_Warded_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "Your Attacks that deal _Fire_ Damage gain [_Pierce_ 1] if you have _Alight_. While _Charging_, you may choose to gain _Alight_ 1 at the end of each _Phase_.",
-    "special": "During _Phases_ you were _Charging_, you instead have _Resistance_ 2 (_Fire_)."
-  },
-  {
-    "name": "Furious Bison Stance",
-    "class": "Martial",
-    "desc": "You dominate the battlefield with wide, sweeping strikes, moving forward with constant rage.",
-    "respite": { "momentum": 1 },
-    "defenses": { "stamina": 1 },
-    "effect": "Once per _Round_, you may remove up to 3 _Enraged_ when you make a _Charged Attack_ to add an equivalent amount of _Bonus Damage_. Regardless, gain +1 _Guard_ while _Enraged_ and _Charging_.",
-    "special": " Whenever you begin _Charging_, you may choose to do so in a reckless fashion. If you do, gain _Tough_ and _Enraged_ 1. Unless you take Damage before resolving the effect, gain a +1 _Bonus_ when resolving the effect or 1 _Momentum_."
-  },
-  {
-    "name": "Guiding Shepard Stance",
-    "class": "Martial",
-    "desc": "You guide friends and foes alike across the battlefield, herding their movements.",
-    "respite": { "momentum": 3, "special": "One adjacent ally may Move 1." },
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you inflict _Forced Movement_ on an ally or grant a _Free Turn_ where they _Move_ you may _Gift_ them 1 _Momentum_.",
-    "special": "_Sheparding Blow_ has no cost when targeting an ally."
-  },
-  {
-    "name": "Greedy Rodent Stance",
-    "class": "Martial",
-    "desc": "You are an armory of the impromptu, finding weapons in the least likely of places.",
-    "respite": { "momentum": 2, "special": "Use _Swift Search_ at no Cost. Ignore [_Taxing_] when used in this way." },
-    "defenses": { "stamina": 1 },
-    "effect": "You do not need the requisite _Open Hands_ to _Wield_ an _Improvised Weapon_, but must make an Attack with it by the end of the current _Turn_ when _Wielded_ in this way.",
-    "special": "Never gain an _Opening_ when using _Draw/Stow_. When you start to _Wield_ an _Opportune_ Weapon, gain 1 _Temporary_ _Momentum_."
-  },
-  {
-    "name": "Infinite Skate Stance",
-    "class": "Tundra",
-    "desc": "You glide across the battlefield with frantic ease, using the ice to propel and protect.",
-    "respite": { "momentum": 2 },
-    "traits": ["_Snowdraw_", "_Frostwalk_", "_Warded_ 1 (Frigid)", "_Resistance_ 1 (_Cold_)"],
-    "defenses": { "stamina": 1 },
-    "effect": "While making [_Rush_] Movement you may always move into _Ice_ spaces, ignoring the normal limitations of [_Rush_]. You must maintain the same straight line for all [_Rush_] Movement that is not on an _Ice_ space.",
-    "special": "The first _Ice_ space you enter each _Turn_ does not count against your Movement."
-  },
-  {
-    "name": "Lifting Wind Stance",
-    "class": "Gale",
-    "desc": "Your wind elevates and accelerates allies, molding the battlefield for their success.",
-    "respite": { "momentum": 2, "special": "Place an _Updraft_ within Range 4." },
-    "defenses": { "stamina": 1 },
-    "traits": ["Windwalk"],
-    "effect": "When an ally directly benefits from _Windy_ Terrain you placed or you target them with a non-Damaging _Gale_ ability you may _Gift_ them 1 _Momentum_.",
-    "special": "_Updraft_ spaces within Range 4 of you ignore _Fleeting_."
-  },
-  {
-    "name": "Lightning Caller Stance",
-    "class": "Storm",
-    "desc": "You look to the skies with your attacks, relying on predictable but powerful attacks.",
-    "respite": { "momentum": 2, "special": "Use _Bolting Rain_ at no cost." },
-    "traits": ["_Stormwalk_", "_Warded_ 1 (_Shocked_)", "_Resistance_ 1 (_Lightning_)"],
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you deal _Lightning_ Damage with a _Hazard_ you may remove an additional 2 _Vulnerable_. If the triggering Effect is not an Attack you may still remove 2 _Vulnerable_ as if it was one."
-  },
-  {
-    "name": "Pack Leader Stance",
-    "class": "Martial",
-    "desc": "You are a cunning commander, creating openings for allies and helping them exploit them.",
-    "respite": { "momentum": 2, "special": "An ally within Range 3 gains 1 _Momentum_." },
-    "defenses": { "stamina": 1 },
-    "effect": "While in this _Stance_, reduce the cost of _Flank_ by 1. Whenever you use _Flank_ inflict _Vulnerable_ 1 before resolving the Attack.",
-    "special": "Allies may remove an additional _Vulnerable_ whenever attacking a creature that is adjacent to you or that you have used _Flank_ or _Pack Punishment_ on this _Turn_."
-  },
-  {
-    "name": "Proud Osprey Stance",
-    "class": "Martial",
-    "desc": "You excel in a one on one battle, keeping your foe locked against you at every turn.",
-    "respite": { "momentum": 2, "special": "Gain 1 _Momentum_ if you are only adjacent to a _Marked_ Target." },
-    "defenses": { "stamina": 2 },
-    "effect": "Deal +1/2 Damage with _Minor_/_Major_ Attacks against creatures you have _Marked_ when no other creatures are adjacent to either of you.",
-    "special": "You may only have a single creature _Marked_ at any given time; if you would inflict _Marked_ when you already have a creature _Marked_ you must either remove _Marked_ from the original creature or inflict nothing."
-  },
-  {
-    "name": "Patient Hunter Stance",
-    "class": "Martial",
-    "desc": "You focus your attention on a singular creature, finding the perfect opening to take them down.",
-    "respite": {
-      "momentum": 1,
-      "special": "Inflict _Studied_ 1 twice within Range 12. You may gain _Hobbled_ 2 to instead inflict _Studied_ 1 four times."
-    },
-    "defenses": { "stamina": 1 },
-    "effect": "You may remove _Studied_ as if it as _Exposed_."
-  },
-  {
-    "name": "Quaking Earth Stance",
-    "class": "Land",
-    "desc": "Your every step shakes the earth, keeping your foes off-balance.",
-    "traits": ["Earthwalk"],
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "You may use Localized Tremor as a _Reaction_ that triggers when a _Phase_ begins, rather than an _Action_. When you do so, it instead has a Cost of 0 _Momentum_ and the effect ends at the end of the current _Phase_. Increase the cost of each subsequent use in this way by 1, and reduce it by 1 (minimum 0) at _Respite_.",
-    "special": "Your _Groundsource_ Attacks always inflict an additional _Vulnerable_ 1 on Targets on _Uneven Earth_."
-  },
-  {
-    "name": "Rising Spire Stance",
-    "class": "Land",
-    "desc": "You make the battlefield a perilous, dangerously sharp field.",
-    "respite": { "momentum": 2, "special": "Make two unoccupied _Earthen_ spaces within Range 3 _Jagged_." },
-    "defenses": { "stamina": 1 },
-    "effect": "All creatures within Range 3 of you take an additional 1 Damage from all sources while they are on a _Jagged_ space."
-  },
-  {
-    "name": "Roaring Lion Stance",
-    "class": "Martial",
-    "desc": "You are a bombastic and inspiring warrior, leading your allies as you fight.",
-    "respite": { "momentum": 1, "special": "Gain _Vigor_ equal to 1+the number of creatures you have _Marked_." },
-    "defenses": { "stamina": 2 },
-    "effect": "Once per _Turn_ when a _Marked_ creature attacks you, you may gain _Courageous_ 1 or grant _Courageous_ 1 to an ally within Range 3."
-  },
-  {
-    "name": "Rousing Songbird Stance",
-    "class": "Martial",
-    "desc": "You are a font of positivity, inspiring allies forward to fight ever harder.",
-    "respite": { "momentum": 2 },
-    "defenses": { "stamina": 1 },
-    "effect": "Allies treat you as adjacent for the purposes of _Joyful_ when they are within Range 3 of you. Allies within this Range may remove 2 _Joyful_ rather than 1 when they end their _Turn_ within this area, gaining the effects of both.",
-    "special": "Allies within _Range_ 3 of you may remove 1 _Courageous_/_Joyful_ at any time to gain 1 _Temporary_ _Stamina_. They may only use this ability once per Turn."
-  },
-  {
-    "name": "Spreading Cinders Stance",
-    "class": "Blaze",
-    "desc": "You bring flames and ruin, scorching the battlefield with every step.",
-    "respite": { "momentum": 2, "special": "Make your space _Blazing_." },
-    "traits": ["_Flamewalk_", "_Warded_ 1 (_Alight_)", "_Resistance_ 1 (_Fire_)"],
-    "defenses": { "stamina": 1 },
-    "effect": "_Blazing_ and _Roaring_ spaces within Range 3 of you do not have _Fleeting_."
-  },
-  {
-    "name": "Stalwart Bastion Stance",
-    "class": "Martial",
-    "desc": "You are an unwavering guard, defending your allies against all slights.",
-    "respite": { "momentum": 1 },
-    "defenses": { "stamina": 3 },
-    "effect": "Once per Round when an adjacent ally is Attacked you may immediately swap spaces with them. You become the target of the Attack. If the Attack had an _Area_ and your ally is no longer in it they are no longer a target; otherwise, add [_Glancing_]. Inflict _Marked_ on the Attacker."
-  },
-  {
-    "name": "Stone Lock Stance",
-    "class": "Mountain",
-    "desc": "You specialize in fighting within an earthen shell, shrugging off blows as you attack.",
-    "respite": { "momentum": 1, "special": "Gain 2 _Vigor_, or 4 _Vigor_ if you have _Stone Armor_." },
-    "defenses": { "stamina": 2 },
-    "special": "While in this _Stance_ and adjacent to an _Earth_ _Minor Source_ your _Vigor_ stacks. If you are ever not adjacent to an _Earth_ _Minor Source_ lose all _Vigor_."
-  },
-  {
-    "name": "Stinging Wasp Stance",
-    "class": "Martial",
-    "desc": "You are exceptional at making swift attacks and sliding away before foes can retaliate.",
-    "respite": { "momentum": 1 },
-    "defenses": { "stamina": 1 },
-    "effect": "Whenever you start a Move, you may inflict _Vulnerable_ 1 on an adjacent Target.",
-    "special": "Up to three times per _Round_, gain 1 _Momentum_ when you Attack a unique foe that hasn't taken a _Turn_ this _Round_."
-  },
-  {
-    "name": "Flowing Sea Stance",
-    "class": "Tide",
-    "desc": "You pull water in and out, pushing and pulling foes like ships on the sea.",
-    "respite": { "momentum": 2 },
-    "traits": ["Aquatic"],
-    "defenses": { "stamina": 1 },
-    "effect": "While in this Stance gain a Tide Dice, which is a d6. After you would _Push_/_Pull_ with a Tide ability, increment the dice by 1. The next time you do the opposite _Push_/_Pull_ with a Tide ability, either increment the dice or gain one of the following bonus:\n* If the triggering effect is a _Pull_, reduce the value of the dice by 1 to add _Vulnerable_ 2.\n* If the triggering effect is a _Push_, reduce the value of the dice by 1 (2 if it is an _Area_ Attack) to add _Forceful_.\n* If it was _Push_ or _Pull_, you may reduce the value of the dice by  to remove 3 additional _Vulnerable_ as a part of the _Attack_.\n\nYou may only increment the dice once per Ability."
-  },
-  {
-    "name": "Watching Owl Stance",
-    "class": "Martial",
-    "desc": "You keep a keen eye on the battlefield, providing opportunities and openings to all allies.",
-    "respite": {
-      "momentum": 1,
-      "special": "Use _Scouting_ at no Cost. Either yourself or an ally within Range 4 may Move 1. Any creature with _Studied_ treats this Movement as [_Safe_]."
-    },
-    "defenses": { "stamina": 1 },
-    "effect": "You may choose to inflict _Studied_ when removing _Vulnerable_. Additionally, if you Attack a creature and leave at least 1 _Studied_ on them, inflict _Vulnerable_ 1."
-  },
-  {
-    "name": "Summoner's Stance",
-    "class": "Spirit",
-    "desc": "A stance centered on effectively manifesting and battling with your spirit.",
-    "respite": { "momentum": 1 },
-    "defenses": { "stamina": 0 },
-    "effect": "You roll your Spirit's _Manifest_ effect at _Advantage_. You may use _Spirit Summon_ at _Respite_ by paying 1 _Momentum_, and may use _Partnership_ once per _Round_ for free."
+    "adjust": 4,
+    "adjust_notes": "Assumes Active Defense triggers every other phase, with a little extra for Raise Guard."
   }
 ]

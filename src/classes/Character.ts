@@ -39,6 +39,7 @@ class Character extends Combatant {
     this.player_character_ = true
     this.element_ = ''
     this.weapons_ = []
+    this.arts_ = []
   }
 
   // ==========================================================
@@ -106,17 +107,21 @@ class Character extends Combatant {
   override get AllArts() {
     var arts = store.getters.getAPsFromList(this.Arts)
     arts = arts.concat(store.getters.getAnyEquipmentFromList(this.Worn))
-    arts = arts.concat(this.CurrentStance)
+    if (this.CurrentStance) {
+      arts = arts.concat(this.CurrentStance)
+    }
 
     return arts
   }
 
   get Arts() {
-    var arts = [...store.getters.playerArts]
+    var arts = [] //= [...store.getters.playerArts]
     for (var art of this.arts_) {
       arts.push(art)
     }
-    arts.push(this.element_ + 'craft')
+    if (this.element_.length > 0) {
+      arts.push(this.element_ + 'craft')
+    }
     arts.sort()
     return arts
   }

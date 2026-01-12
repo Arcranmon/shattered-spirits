@@ -8,61 +8,13 @@ import OrphanFinder
 momentum_value = 2
 
 status_multipliers = {
-    "Airborne": 4,
-    "Alight": 4,
-    "Engaged": 2,
-    "Bleeding": 4,
-    "Blinded": 6,
-    "Burned": 3,
-    "Dazed": 2,
-    "Exposed": 2,
-    "Frightened": 3,
-    "Frozen": 3,
-    "Grabbed": 3,
-    "Hobbled": 3,
-    "Impaired": 2,
-    "Prone": 3,
-    "Poisoned": 4,
-    "Reeling": 2,
-    "Shocked": 3,
-    "Soaked": 1,
-    "Sundered": 3,
-    "Studied": 4,
-    "Taunted": 2,
-    "Push": 2,
-    "Pull": 2,
-    "Slide": 2.5,
-    "Tidal Motion": 1.75,
-    "Defending": 1.2
 }
 
 instant_statuses = ["Defending"]
 
 keyword_modifiers = {
-    "Avoidable": -2,
-    "Draw": -0.25,
-    "Cold": 0.0,
-    "Earth": 0.0,
-    "Fragile": 0.0,
-    "Quickdraw": 0.0,
-    "Groundsource": 0.5,
     "Brawling": 0.15, # Pretty niche
-    "Metal": 0.0,
-    "Overwhelming": 0.25,
-    "Social": 0.5,
-    "Pierce": 0.5,
     "Remote": 0.25,
-    "Point Blank": 0.5,
-    "Siege": 0,
-    "Fist": 0,
-    "Body": 0,
-    "Kick": 0,
-    "Fist/Body/Kick": 0,
-    "Water": 0.0,
-    "Wind": 0.0,
-    "Wood": 0.0,
-    "Secure": 0.0,
-    "Spirit": 0.0
 }
 
 attack_range_multiplier = {
@@ -101,7 +53,6 @@ def get_status_damage(status_string, index):
     no_save_damage = 0
     # TODO: Add something about no-save
     for status in statuses: 
-        print(status)
         if status == 'None': continue        
         if('Momentum' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
@@ -118,35 +69,37 @@ def get_status_damage(status_string, index):
 
     return estimated_damage * multiplier + no_save_damage
 
-def get_data(database):
+def get_databases():
     # Open the appropriate database.
-    if(database == "Technique"):
-        f = open('.\src\database\\techniques.json')
-    elif(database == "Weapon"):
-        f = open('.\src\database\items\weapons.json')
-    elif(database == "Attack"):
-        f = open('.\src\database\\abiliti.json')
-
-    return json.load(f)
+    merged_data = json.load(open('.\src\database\items\weapons.json'))
+    merged_data.extend(json.load(open('.\src\database\\ability_packages.json')))
+    return merged_data
 
 
-def find_attack(database, name):
-    data = get_data(database)
-
-    if(database == "Technique"):
-        for technique in data:
-            if(technique["name"] == name):
-                return technique
+def find_attack(parent, name):
+    data = []
+    target = {}
+    if len(parent) == 0:        
+        f = open('.\src\database\\abilities.json')
+        data = json.load(f)
+        for ability in data:
+            if ability["name"] == name:
+                target = ability
     else:
-        for el in data:
-            if(el["name"] == name):
-                return el
-
-    raise Exception("Attack not found.")
-
+        data = get_databases()
+        for ap in data:
+            if ap["name"] == parent:
+                for ability in ap["abilities"]:
+                    if ability["name"] == name:
+                        target = ability
+                    
+    if len(target.keys()) == 0:        
+        raise Exception("Attack not found.")
+    if not target["type"] == 'Attack':
+        raise Exception("Ability is not an attack.")
+    return target
 
 def estimate_all_damage(database, threshold):
-    data = get_data(database)
     invalid_attacks = {}
 
     orphan_attacks = OrphanFinder.find_orphans(database + 's')
@@ -179,17 +132,15 @@ def estimate_damage(attack, glancing, print_stats):
     damage_chart = [0]*4
     stun_chart = [0]*4
     status_chart = ['']*4
-    speed = 1
     bonus_damage =  [0]*4
     expected_targets = 1
     lvh = 'none'
     attack_class = ATTACK
     override_range = ""
-    diff_speed = 0
     stun_scale = 0.0 # Stun is worth less (not sure how much)
-    
-    expected_damage = [0, momentum_value, momentum_value*2, momentum_value*3]
-                
+
+    cost += int(attack["cost"][0])
+                    
     if("chart" in attack):
         roll_chart = attack["chart"]["roll"]
         if(not("damage" in attack["chart"])):
@@ -207,18 +158,10 @@ def estimate_damage(attack, glancing, print_stats):
         roll_chart = attack["chart"]["roll"]
         if("negate" in attack):
             negate = attack["chart"]["negate"]
-
-    ability = {}
-    for sub_ability in attack["abilities"]:
-        if sub_ability["type"] == 'Attack':
-            ability = sub_ability
-            break
             
-    if "cost" in ability and not ability["cost"] == 'None':
-        cost += int(ability["cost"][0])
 
-    if("analysis_notes" in ability):
-        analysis_notes = ability["analysis_notes"]
+    if("analysis_notes" in attack):
+        analysis_notes = attack["analysis_notes"]
         cost += analysis_notes.get("fudge", 0)
         expected_targets = analysis_notes.get("expected_targets", 1)
         if("bonus_damage" in analysis_notes):
@@ -229,22 +172,10 @@ def estimate_damage(attack, glancing, print_stats):
                 print("test")
                 bonus_damage = analysis_notes["bonus_damage"]
         override_range = analysis_notes.get("range", "")
-        diff_speed = analysis_notes.get("speed", 0)
-
-    speed_string = "Speed:                  1      2      3      4   "
-    if diff_speed == 0:
-        speed_string = speed_string.replace("   " + str(speed) + "   ", "***"+ str(speed) + "***")
-    else:
-        speed_string = speed_string.replace("   " + str(math.floor(diff_speed)) + "   ", "***"+ str(math.floor(diff_speed)) + "***")
-        if math.floor(diff_speed) != math.ceil(diff_speed):
-            speed_string = speed_string.replace("   " + str(math.ceil(diff_speed)) + "   ", "***"+ str(math.ceil(diff_speed)) + "***")
-            
-    diff = 0
 
     keyword_bonus = 0
 
-
-    for keyword in ability.get("keywords", []):       
+    for keyword in attack.get("keywords", []):       
         keyword = keyword.replace('_', '')
         split_keywords = keyword.split(' ')
         if not split_keywords[0] in keyword_modifiers:
@@ -255,7 +186,7 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
 
-    attack_ranges = ability["range"].replace('_', '').replace('-', '').split('/')
+    attack_ranges = attack["range"].replace('_', '').replace('-', '').split('/')
     attack_range = attack_ranges[-1]
     if override_range != "":
         attack_range = override_range
@@ -268,18 +199,10 @@ def estimate_damage(attack, glancing, print_stats):
     disadvantage_damage = 0
 
     # Adjust for cost.
-    range_expected_damage = [x + (cost * momentum_value) for x in expected_damage]
+    target_damage =  (cost * momentum_value)* attack_range_multiplier[attack_range]
 
-    range_expected_damage = [x * (attack_range_multiplier[attack_range]) for x in range_expected_damage]
-        
     # Adjust for expected targets.
-    range_expected_damage = [x / expected_targets for x in range_expected_damage]
-
-    target_damage = 0 
-    if diff_speed == 0:
-        target_damage = range_expected_damage[speed-1]
-    else:
-        target_damage = range_expected_damage[math.floor(diff_speed)-1] + (range_expected_damage[math.floor(diff_speed)]-range_expected_damage[math.floor(diff_speed)-1]) * (diff_speed-math.floor(diff_speed))
+    target_damage = target_damage / expected_targets
 
     # TODO: Add a roll map check.
     roll_map = 11 * [0]
@@ -308,7 +231,19 @@ def estimate_damage(attack, glancing, print_stats):
         
 
     if(print_stats):
-        print(colored("Speed:                  " + str(speed), 'white'))
+        colors = ["red", "yellow", "green", "magenta"]
+        hit_string = colored("|", 'red')
+        damage_string = colored("|", 'red')
+        for index, item in enumerate(roll_chart):            
+            a, b = item.split('-')            
+            a, b = int(a), int(b)
+            for num in range(a, b+1):
+                hit_string += colored("  " + str(num) + "  |", colors[index])
+                pad = "" if num < 10 else " "
+                damage_string += colored("  " + str(damage_chart[index]) + pad + "  |", colors[index])
+
+        print(hit_string)
+        print(damage_string)
         print(colored("Expected Damage:        " +  "{:.3f}".format(target_damage), 'blue'))
         print(colored("Straight Attack:        " +  "{:.3f}".format(straight_damage), 'white'))
         print(colored("Advantage Attack:       " +  "{:.3f}".format(advantage_damage), 'green'))
@@ -316,14 +251,14 @@ def estimate_damage(attack, glancing, print_stats):
     if(print_stats):
         print("\033[1mExpected Damage Difference: " + "{:.3f}".format(straight_damage-target_damage) + "\033[0m") 
 
-    return diff
+    return straight_damage - target_damage
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--analyze_all", help="Analyze everything of that type.", action='store_true')
     parser.add_argument("--threshold", help="How large of a gap between expected and actual damage to flag.", type=float, default=0.1)
-    parser.add_argument("--type", help="What type of ability this is.", type=str)
+    parser.add_argument("--parent", help="What the parent to this ability is.", type=str, default="")
     parser.add_argument("--name", help="Name of the ability.", type=str)
     parser.add_argument("--glancing", help="Whether or not to apply Glancing.", action='store_true')
     args = parser.parse_args()
@@ -331,5 +266,5 @@ if __name__ == "__main__":
     if(args.analyze_all):
         estimate_all_damage(args.type, args.threshold)
     else:        
-        attack = find_attack(args.type, args.name)
+        attack = find_attack(args.parent, args.name)
         estimate_damage(attack, args.glancing, True)

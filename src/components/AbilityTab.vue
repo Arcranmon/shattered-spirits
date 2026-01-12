@@ -13,6 +13,7 @@
       :classFilter="classFilter"
       :keywordFilter="keywordFilter"
       :key="classFilter && keywordFilter"
+      style="width: 100%"
   /></v-row>
 </template>
 
@@ -41,7 +42,7 @@ export default Vue.extend({
       if (this.abilityType == 'Attack') {
         return ['All', 'Light', 'Balanced', 'Heavy']
       } else if (this.abilityType == 'Gambit') {
-        return ['All', 'Offensive', 'Defensive']
+        return ['All', 'General', 'Offensive', 'Defensive']
       } else {
         return ['All', 'Offensive', 'Defensive', 'Utility', 'Mobility']
       }

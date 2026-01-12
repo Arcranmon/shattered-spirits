@@ -54,18 +54,22 @@ let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
 let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Traits]
 
-const kPlayerAbilities = ['Adrenaline Rush', 'Sacrifice', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
+const kPlayerAbilities = ['Adrenaline Rush', 'Off the Armor', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
 
 const kSpiritAbilities = []
 
 const kBasicAbilities = [
   'Accelerate',
+  'Gain Momentum',
   'Brawl',
+  'Flank',
   'Block',
+  'Delay',
   'Breather',
   'Counter',
   'Disengage',
   'Perfect Guard',
+  'Perfect Dodge',
   'Opportunity Attack',
   'Lethal Strike',
   'Flurry',
@@ -117,7 +121,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Abilities: Ability[] = []
 
   get basicStances() {
-    return ['Open Stance', 'Resting Stance', 'Guarded Stance', 'Agile Stance', 'Hostile Stance', 'Focused Stance']
+    return ['Open Stance', 'Rallying Stance', 'Guarded Stance', 'Agile Stance', 'Hostile Stance', 'Focused Stance']
   }
 
   get playerArts() {

@@ -15,14 +15,16 @@
         <h2>{{ selectedTab }}</h2>
         <div v-if="selectedTab == 'Basic Skills'">
           <v-tabs v-model="abilityTab" class="character-tabs" dark color="black" centered
-            ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
+            ><v-tab><h4>Maneuvers</h4></v-tab>
+            <v-tab><h4>Attacks</h4></v-tab>
+            <v-tab><h4>Gambits</h4></v-tab>
+            <v-tab><h4>Reactions</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
           >
-          <v-tabs-items v-model="abilityTab" class="character-tab-content">
-            <v-tab-item
-              ><v-row
-                ><v-col :cols="12 / columns" v-for="ability in basic_abilities"
-                  ><ability-widget :ability="ability" from="" :cardStyle="true" :key="ability.Name" class="ability-box" /></v-col></v-row
-            ></v-tab-item>
+          <v-tabs-items v-model="abilityTab" class="character-tab-content"
+            ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" /></v-tab-item>
+            <v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item>
+            <v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item>
+            <v-tab-item><ability-tab abilityType="Reaction" :character="character" /></v-tab-item>
             <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="columns" /></v-tab-item
           ></v-tabs-items>
         </div>
@@ -77,21 +79,17 @@
 
 <script>
 import Vue from 'vue'
+import { Character } from '@/class'
 import CustomButton from '@/components/Button.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import AbilityWidget from '@/components/AbilityWidget.vue'
+import AbilityTab from '@/components/AbilityTab.vue'
 import SkillTree from '@/components/SkillTree.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
 
 export default Vue.extend({
   name: 'character-options',
-  components: {
-    CustomButton,
-    ShowCards,
-    AbilityWidget,
-    SkillTree,
-    SpiritAbilities,
-  },
+  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SkillTree, SpiritAbilities },
   data() {
     return {
       selectedTab: 'Basic Skills',
@@ -106,6 +104,7 @@ export default Vue.extend({
       selectedType: 'Any',
       abilityTab: 0,
       elementTab: 0,
+      character: new Character(),
     }
   },
   computed: {
@@ -170,7 +169,6 @@ export default Vue.extend({
   border-radius: 0px;
 }
 .character-tab-content {
-  margin: 1em;
   padding: 1em;
   padding-bottom: 0em;
   background-color: $color--background !important;
@@ -183,5 +181,11 @@ export default Vue.extend({
   border: $border--black-standard;
   background-color: $color--grey-light !important;
   height: 100%;
+}
+.character-tab-content {
+  background-color: $color--grey-light !important;
+  padding: 1em;
+  border-bottom: $border--black-standard;
+  border-left: $border--black-standard;
 }
 </style>

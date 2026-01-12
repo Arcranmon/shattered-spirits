@@ -8,7 +8,7 @@
         "name": "Basic Metalcraft",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You have a basic, intuitive grasp of metalcraft. You gain the following:\n* **Range**: Your metalcraft has a range of approximately 20 yards.\n* **Metalsense:** You have a rough knowledge of the location of all metal within your metalcraft range.\n* **Lodestone Arts**: You may move and control objects up to 20 pounds, with good precision at low weights and poor precision at higher weights.\n* **Anvil Arts:** You may alter a physical property of metal (such as strength or pliability) up to 5% in either direction.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities temporarily."
+        "effect": "You have a basic, intuitive grasp of metalcraft. You gain the following:\n* **Range**: Your metalcraft has a range of approximately 20 meters.\n* **Metalsense:** You have a rough knowledge of the location of all metal within your metalcraft range.\n* **Lodestone Arts**: You may move and control metal objects up to 20 pounds, with decent precision at low weights and poor precision at higher weights.\n* **Anvil Arts:** You may alter a physical property of metal (such as strength or pliability) up to 5% in either direction. This change is temporary, and ends if you stop concentrating.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities temporarily."
       },
       {
         "name": "Metalbending",
@@ -18,24 +18,67 @@
         "effect": "You have _Kinesis_ [_Metal_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you instead must Target a _Metal_ piece of _Equipment_."
       },
       {
-        "name": "Metal Fling",
+        "name": "Metal Shot",
         "class": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Metal", "Crush", "Remote"],
-        "cost": "1 _Momentum_",
+        "cost": "2 _Momentum_",
         "range": "_Short_-",
-        "effect": "Pick a 0 _Load_ _Metal_ item within _Close_- Range to use as _Ammunition_, then Attack a target within Range.",
-        "special": "If the Item used for this has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
+        "target": "\n* <u>Missile:</u> Unattended 0 _Load_ or _Trinket_ _Metal_ item or one _Worn by an ally within _Close_- Range.\n* <u>Attack:</u> Single-Target.",
+        "effect": "Choose a _Missile_, then Attack a target within Range with it. If you choose a _Trinket_, add _Feeble_ to this Attack.",
+        "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
         "boosts": [
           {
-            "name": "Heavy Fling",
+            "name": "Heavy Shot",
             "cost": "1 _Momentum_",
-            "effect": "You instead use a _Load_ 1 item as _Ammunition_. Deal +_1/1/2/2_ Damage."
+            "effect": "You instead use a _Load_ 1 item as _Missile_. Deal +_1/1/2/2_ Damage if you do."
           }
         ],
         "chart": {
-          "damage": [0, 1, 2, 3],
+          "damage": [0, 2, 4, 6],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "status": ["None", "None", "None", "None"]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Woodcraft",
+    "category": "Wood",
+    "desc": "Simple techniques that all with a wood companion can easily accomplish.",
+    "abilities": [
+      {
+        "name": "Basic Woodcraft",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You have a basic, intuitive grasp of woodcraft. You gain the following:\n* **Range**: Your woodcraft has a range of approximately 30 meters.\n* **Woodsense:** You have a rough knowledge of the location of all wood within your wood range.\n* **Leaf Arts**: You may move and control wooden objects up to 15 pounds, with good precision at low weights and decent precision at higher weights.\n* **Bark Arts:** You may slightly shape wood, bending or warping it a few centimeters. This change is temporary, and ends if you stop concentrating.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities temporarily."
+      },
+      {
+        "name": "Woodbending",
+        "class": "Utility",
+        "type": "Passive",
+        "keywords": ["Spirit", "Wood"],
+        "effect": "You have _Kinesis_ [_Wood_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range. If you choose the <u>Steal</u> option, you instead must Target a _Wood_ piece of _Equipment_."
+      },
+      {
+        "name": "Wooden Splinter",
+        "class": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "_Wood_", "Stab", "Remote"],
+        "cost": "1 _Momentum_",
+        "range": "_Short_-",
+        "effect": "Pick a 0 _Load_ _Wood_ item within _Close_- Range to use as _Ammunition_, then Attack a target within Range. You may also use this if there is a _Wood_ _Source_ within _Close_- Range, creating a 0 _Load_ Wooden Spike as _Ammunition_.",
+        "special": "If the Item used for this has an Attack with _Crush_ or _Slash_ you may replace _Stab_ with said keyword.",
+        "boosts": [
+          {
+            "name": "Heavy Splinter",
+            "cost": "1 _Momentum_",
+            "effect": "You instead use a _Load_ 1 item as _Ammunition_, or create a 1 _Load_ Wooden Spike as _Ammunition_ from a _Wood_ _Source_ within _Close_- Range. Deal +_1/1/2/2_ Damage."
+          }
+        ],
+        "chart": {
+          "damage": [0, 1, 2, 2],
+          "roll": ["2-3", "4-6", "7-10", "11-12"],
           "status": ["None", "None", "None", "None"]
         }
       }
@@ -99,7 +142,7 @@
         "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
       },
       {
-        "name": "Metallic Reconstitution",
+        "name": "Metallic Resonance",
         "class": "Utility",
         "keywords": ["Metal", "Pacifist", "Rooted"],
         "type": "Maneuver",
@@ -107,8 +150,14 @@
         "range": "Melee",
         "reqs": "Unattended _Metal_ _Equipment_ within range or at _Metal_ _Terrain_.",
         "special": "Your Spirit may use this on your _Turn_ while not _Summoned_. If they do, they must Target _Equipment_ you have _Worn_ or _Packed_.",
-        "effect": "Clear 4 _Stun_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
-        "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, clear 4 _Stun_ and gain 3 _Health_." }]
+        "effect": "Clear 4 _Stun_.",
+        "boosts": [
+          {
+            "name": "Enhanced Healing",
+            "cost": "1 _Momentum_",
+            "effect": "Instead, clear 4 _Stun_ and gain 3 _Health_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+          }
+        ]
       }
     ]
   },
@@ -336,13 +385,13 @@
         "name": "Exceptional Toughness",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are incredibly resistant to pain, toxins, and other afflictions. This does not grant die on _Travel Rolls_, but may be treated as appropriate Equipment in some cases."
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are incredibly resistant to pain, toxins, and other afflictions. This does not grant die on _Travel Rolls_, but may be treated as appropriate Equipment when dealing with travel conditions that exceptional toughness would aid with."
       },
       {
         "name": "Grin and Bear It",
         "class": "Narrative",
         "type": "Power",
-        "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may instead place that effect on this Ability, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
+        "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may place it on this Ability instead of your Strain Bar, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
       },
       {
         "name": "Toughness",

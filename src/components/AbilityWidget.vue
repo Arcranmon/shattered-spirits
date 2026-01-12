@@ -63,7 +63,7 @@
       </div>
     </div>
     <div class="expand--collapse-box-outlined" v-if="ability.HasChart">
-      <v-expansion-panels class="condensed" flat tile>
+      <v-expansion-panels class="condensed" flat tile style="width: 100%">
         <v-expansion-panel style="background-color: inherit"
           ><v-expansion-panel-header class="expand--header-chart">Chart</v-expansion-panel-header>
           <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="ability.Chart" /></v-expansion-panel-content>

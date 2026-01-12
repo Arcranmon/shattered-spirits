@@ -42,54 +42,45 @@
     "special": "If you are in a Mobility Stance this may instead have a cost of 1 _Momentum_."
   },
   {
-    "name": "Rally",
-    "class": "Utility",
-    "keywords": ["Pacifist", "Rooted"],
-    "type": "Maneuver",
-    "cost": "X _Momentum_ (maximum [_Current Phase_+1])",
-    "range": "Self/Melee",
-    "target": "Ally (Optional)",
-    "effect": "Choose X. You may repeat the same option:\n* You or the Target _Recovers_.\n* You or the Target clears 4 _Stun_."
-  },
-  {
     "name": "Breather",
     "class": "Utility",
     "type": "Maneuver",
     "cost": "1 _Momentum_",
     "keywords": ["Repeatable"],
-    "effect": "Clear 2 _Stun_. You may add [_Pacifist_] to instead clear 3 _Stun_.",
-    "boosts": [{ "name": "Improved Breather", "cost": "1 _Momentum_", "effect": "If you are in a Recovery Stance, you may _Recover_." }]
-  },
-  {
-    "name": "Unbalance",
-    "class": "Defensive",
-    "type": "Gambit",
-    "cost": "None",
-    "reqs": "Attacker is in Melee Range.",
-    "effect": "Inflict _Exposed_ [4 _Focus_] on the Target, as well as 2 _Stun_."
+    "effect": "Clear 2 _Stun_. You may add [_Pacifist_] to instead clear 3 _Stun_ or _Recover_.",
+    "boosts": [{ "name": "Focused Recovery", "cost": "1 _Momentum_", "effect": "Instead, you may _Recover_." }]
   },
   {
     "name": "Counter",
     "class": "Defensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "Must have _Crit_ on the _Block_.",
-    "effect": "Choose an Attack with a Range of _Melee_, adding [_Discount_ 2]. Automatically resolve that Attack as if it was a _Hit_ against the Attacker if they are in Range."
+    "reqs": "_Crit_ on the _Defense Roll_.",
+    "effect": "Choose an Attack, adding [_Discount_ 2]. Automatically resolve that Attack as if it was a _Hit_ against the Attacker if they are in Range."
+  },
+  {
+    "name": "Delay",
+    "class": "General",
+    "type": "Reaction",
+    "cost": "1 _Momentum_",
+    "trigger": "You would take your _Turn_.",
+    "effect": "Instead, act next _Phase_. You may not choose this if you already would be taking a _Turn_ next _Phase_ or if it is _Phase_ 6."
   },
   {
     "name": "Perfect Guard",
     "class": "Defensive",
     "type": "Gambit",
-    "cost": "None",
+    "cost": "1 _Momentum_",
     "reqs": "_Block_ _Reaction_.",
-    "effect": "Gain +5 _Guard_.",
-    "boosts": [
-      {
-        "name": "Deflect",
-        "cost": "1 _Momentum_",
-        "effect": "Instead, the triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
-      }
-    ]
+    "effect": "The triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
+  },
+  {
+    "name": "Perfect Dodge",
+    "class": "Defensive",
+    "type": "Gambit",
+    "cost": "None",
+    "reqs": "_Dodge_ _Reaction_.",
+    "effect": "Gain 1 _Movement_ that may only be used for this _Gambit_. Immediately spend _Movement_ as if it was your turn. No _Movement_ spent in this way creates _Openings_."
   },
   {
     "name": "Opportunity Attack",
@@ -124,11 +115,19 @@
     "effect": "Choose one:\n* Deal +2 _Stun_ and add _Staggered_ [_Focus_/_Grit_].\n* Add _Sunder_ [_Reflex_]. If the Target _Blocks_, you must Target _Wielded_ Equipment if possible.\n\nIf the triggering Attack was _Heavy_, deal +2 _Stun_."
   },
   {
-    "name": "Press Advantage",
-    "class": "Offensive",
+    "name": "Gain Momentum",
+    "class": "General",
     "type": "Gambit",
     "cost": "None",
-    "effect": "Choose one:\n* On a _Graze_+, add _Exposed_ and 2 _Stun_ to the triggering Attack.\n* On a _Graze_-, immediately use _Brawl_ [_Discount_ 2] against the Target. It automatically Hits.\n* On a _Miss_, gain half the Cost of the original Attack or 2 _Momentum_, whichever is greater."
+    "effect": "Gain 1 _Momentum_."
+  },
+  {
+    "name": "Flank",
+    "class": "Offensive",
+    "type": "Reaction",
+    "cost": "None",
+    "trigger": "A creature you are _Engaged_ with is Attacked by a creature other than you.",
+    "effect": "If the Attack is _Melee_, grant it a +1 _Bonus_. Regardless, all _Defensive_ _Reactions_ used by the Target have their cost increased by 1 _Momentum_ against this Attack."
   },
   {
     "name": "Spiritbound",
@@ -142,7 +141,12 @@
     "type": "Reaction",
     "cost": "1 _Movement_",
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Reflex_. Resolve Damage and Effects as if the Attack was a _Graze_, but use the original Roll for _Gambits_ and other effects."
+    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect.",
+    "chart": {
+      "status": ["None", "Attack gains -1 Rank", "Attack is a _Graze_ or gains -1 Rank", "Attack is a _Miss_"],
+      "roll": ["2-4", "5-6", "7-10", "11-12"],
+      "defend": "true"
+    }
   },
   {
     "name": "Interact",
@@ -159,7 +163,7 @@
     "class": "Utility",
     "keywords": ["Armament", "Repeatable"],
     "type": "Maneuver",
-    "cost": "0 _Momentum_",
+    "cost": "None",
     "target": "A _Wielded_ item.",
     "effect": "Place the Target Unused in your _Arena_.",
     "boosts": [
@@ -243,7 +247,8 @@
     "boosts": [{ "name": "Intensity", "cost": "1 _Momentum_", "effect": "Instead, choose two." }],
     "chart": {
       "roll": ["2-3", "4-5", "6-10", "11-12"]
-    }
+    },
+    "analysis_notes": { "bonus_damage": [1, 2, 2, 3] }
   },
   {
     "name": "Block",
@@ -251,7 +256,7 @@
     "type": "Reaction",
     "cost": "1 _Momentum_",
     "trigger": "You would take Damage.",
-    "effect": "Gain +1 _Grit_. You may choose one piece of _Wielded_ equipment to use for the block, gaining any benefits it provides. Make a _Defense Roll_ and apply the result. You have _Disadvantage_ if:\n* You do not choose a _Versatile_/_Heavy_ _Weapon_ and the Attack is _Heavy_.\n* The chosen Equipment does not have _Shielding_ and the Attack is not _Melee_.\n\nIf the triggering effect triggers _Sunder_, it must target the Equipment chosen for the block.",
+    "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. You have _Disadvantage_ if no _Wielded_ _Equipment_ has _Shielding_ and the Attack is not _Melee_. If the triggering effect triggers _Sunder_, it must target _Wielded_ _Equipment_.",
     "chart": {
       "status": ["+1 _Guard_", "+2 _Guard_", "+3 _Guard_", "+5 _Guard_"],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
@@ -273,35 +278,26 @@
     "class": "Utility",
     "type": "Maneuver",
     "range": "Short-",
+    "keywords": ["Inspiring"],
     "cost": "1 _Momentum_",
-    "effect": "You call encouragement out to an ally. They may clear 3 _Stun_.",
-    "boosts": [{ "name": "Focused Encouragement", "cost": "1 _Momentum_", "effect": "In addition, grant your ally _Joyful_, _Courageous_, or _Calm_." }]
+    "effect": "You call encouragement out to an ally. They may clear 3 _Stun_, or 4 if you are in a _Support_ _Stance_.",
+    "boosts": [{ "name": "Focused Encouragement", "cost": "1 _Momentum_", "effect": "In addition, that ally gains 1 _Momentum_." }]
   },
   {
     "name": "Adrenaline Rush",
     "class": "Utility",
     "type": "Reaction",
     "trigger": "None. You may use this _Reaction at any time, but only once per _Round_.",
-    "cost": "None.",
+    "cost": "None",
     "effect": "Immediately gain 4 _Momentum_ (in any combination) and 1 _Fatigue_."
   },
   {
-    "name": "Sacrifice",
+    "name": "Off the Armor",
     "class": "Defensive",
     "type": "Reaction",
     "trigger": "You would take a _Wound_.",
-    "cost": "None.",
-    "effect": "Instead of taking a _Wound_, _Sunder_ a piece of _Armor_ and instead take _Fatigue_. If you _Blocked_, you may instead _Sunder_ a _Wielded_ piece of _Equipment_."
-  },
-  {
-    "name": "Metallic Splintering",
-    "class": "Utility",
-    "keywords": ["Metal"],
-    "type": "Maneuver",
     "cost": "None",
-    "range": "Melee",
-    "effect": "Take 2 Damage. Create a Size 0 _Metal Shard_.",
-    "boosts": [{ "name": "Heavy Splintering", "cost": "None", "effect": "Take an additioanl Damage." }]
+    "effect": "Instead of taking a _Wound_, _Sunder_ a piece of _Armor_ and instead take _Fatigue_. If you _Blocked_, you may instead _Sunder_ a _Wielded_ piece of _Equipment_. The cost of this _Reaction_ may not be increased by any means."
   },
   {
     "name": "Earthen Reconstitution",

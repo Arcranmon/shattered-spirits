@@ -27,13 +27,13 @@
                   @changeSelected="$emit('changed')"
                 />
               </div>
-              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="margin: auto"
+              <stance-card :stance="character.CurrentStance" :on_sheet="true" style="margin: auto" :key="character.CurrentStance.Name"
             /></v-col>
           </v-row>
           <h3 style="text-align: center">Abilities and Equipment</h3>
           <v-card>
             <v-tabs v-model="ability_tab" class="character-tabs" dark color="black" centered
-              ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts & Talents</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab><v-tab> <h4>Archetypes</h4> </v-tab
+              ><v-tab> <h4>Abilities</h4> </v-tab><v-tab> <h4>Arts & Talents</h4> </v-tab><v-tab> <h4>Equipment</h4> </v-tab
               ><v-tab> <h4>Stances</h4> </v-tab></v-tabs
             >
             <v-tabs-items v-model="ability_tab" class="character-tab-content">
@@ -62,8 +62,8 @@
                   ><v-tab-item><b>Load:</b> {{ character.Load }}<show-cards :inputs="character.SortedWornEquipment" :collapse="false" :cols="2" /> </v-tab-item
                   ><v-tab-item>
                     <b>Load:</b> {{ character.PackedLoad
-                    }}<show-cards :inputs="character.SortedPackedEquipment" :collapse="false" :cols="2" /> </v-tab-item></v-tabs-items></v-tab-item
-              ><v-tab-item> <show-cards :inputs="this.$store.getters.getArchetypesFromList(character.Archetypes)" :collapse="false" :cols="2" /></v-tab-item>
+                    }}<show-cards :inputs="character.SortedPackedEquipment" :collapse="false" :cols="2" /> </v-tab-item></v-tabs-items
+              ></v-tab-item>
               <v-tab-item><show-cards :inputs="character.Stances" :collapse="false" :cols="2" /></v-tab-item
             ></v-tabs-items>
           </v-card></div></v-tab-item

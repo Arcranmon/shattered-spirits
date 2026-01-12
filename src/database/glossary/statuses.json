@@ -11,8 +11,8 @@
   {
     "name": "Entangled",
     "desc": "A creature that is entangled in some sort of material, whether that be vines, spider silk, or wires.",
-    "effect": "The effect of Entangled depends on the current amount the creature has:\n* 1: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* 2: As Rank 1, but the creature is also _Slowed_.\n* 3: The creature is _Restrained_.\n\n_Small_- creatures treat their Webbed value as twice as high. Creatures larger than _Medium_ treat it as 1 lower per size about _Medium_. This is treated as a _Source_ that the Target is _Wearing_.",
-    "remove": "Creatures may clear Webbed by either _Recovering_ and making a _Grit_ roll [_Negate_ 5] to reduce their Webbed by 1. Alternatively, a creature clears 1 Webbed for every 4 _Slash_ damage they take. A creature may choose to target just the Web when attacking.",
+    "effect": "The effect of Entangled depends on the current amount the creature has:\n* 1: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* 2: As Rank 1, but the creature is also _Slowed_.\n* 3: The creature is _Restrained_.\n\n_Small_- creatures treat their Entangled value as twice as high. Creatures larger than _Medium_ treat it as 1 lower per size about _Medium_. This is treated as a _Source_ that the Target is _Wearing_.",
+    "remove": "Creatures may clear Entangled by either _Recovering_ and making a _Grit_/_Reflex_ roll [_Negate_ 5] to reduce their Entangled by 1. Alternatively, a creature clears 1 Entangled for every 4 _Slash_ damage they take. A creature may choose to target just the Web when attacking.",
     "type": "Status Effect"
   },
   {
@@ -31,7 +31,7 @@
   {
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleeding they take _True_ Damage at the end of each _Phase_ equal to their Bleeding value.",
+    "effect": "While a creature has Bleeding they take Damage at the end of each _Phase_ equal to their Bleeding value. This Damage may not be reduced by _Guard_.",
     "special": "A creature may not gain _Health_ while they have Bleeding. Instead, every point of _Health_ healed removes Bleeding 1.",
     "repeat": "If a Bleeding creatures gains Bleeding, increase the value by 1.",
     "remove": "Bleeding is only removed by effects that explicitly remove it.",
@@ -45,6 +45,30 @@
     "repeat": "If a Blinded creature would gain Blinded they instead extend the Blinded duration by 1 _Phase_.",
     "remove": "Creatures are Blinded until the end of the next _Phase_.",
     "type": "Status Effect"
+  },
+  {
+    "name": "Joyful",
+    "desc": "A mental affliction caused when a creature's heart is full of joy.",
+    "effect": "While Joyful a creature gains +1 _Reflex_. While _Engaged_ with an allied creature a creature may remove Joyful at any time for 2 _Momentum_ or 1 _Movement_.",
+    "repeat": "If a Joyful creature would gain Joyful they instead gain 1 _Momentum_.",
+    "reacts": ["<ins>_Anguished_:</ins> If a creature is _Anguished_ and would gain Joyful, they instead remove _Anguished_."],
+    "type": "Mental Affliction"
+  },
+  {
+    "name": "Courageous",
+    "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
+    "effect": "While Joyful a creature gains +1 _Grit_. While _Engaged_ with a hostile creature a creature may remove Courageous at any time to clear 5 _Stun_ or to _Recover_.",
+    "repeat": "If a Courageous creature would gain Courageous they instead gain 1 _Momentum_.",
+    "reacts": ["<ins>_Frightened_:</ins> If a creature is _Frightened_ and would gain Courageous, they instead remove _Frightened_."],
+    "type": "Mental Affliction"
+  },
+  {
+    "name": "Calm",
+    "desc": "A mental affliction caused when a creature's mind is clear and avoiding violence.",
+    "effect": "While Calm a creature gains +1 _Focus_. If a creature does not make an Attack on their _Turn_ they may remove _Calm_ to gain 3 _Momentum_.",
+    "repeat": "If a Calm creature would gain Calm they gain 1 _Momentum_.",
+    "reacts": ["<ins>_Enraged_:</ins> If a creature is _Enraged_ and would gain Calm, they instead remove _Enraged_."],
+    "type": "Mental Affliction"
   },
   {
     "name": "Disarm",

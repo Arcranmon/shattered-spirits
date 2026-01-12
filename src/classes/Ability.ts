@@ -130,7 +130,7 @@ class Ability extends Base {
     return '**_Defend_:** ' + this.defend_
   }
   public get HasCost() {
-    return this.cost_.length > 0
+    return this.cost_.length > 0 && this.cost_ != 'None'
   }
   public get CostHeader() {
     return '**_Cost_:** ' + this.cost_
@@ -146,7 +146,7 @@ class Ability extends Base {
   }
   get RangeHeader() {
     var header = '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
-    if (this.HasTarget) header += ', ' + this.target_
+    // if (this.HasTarget) header += ', ' + this.target_
     return header
   }
   public get HasReqs() {
