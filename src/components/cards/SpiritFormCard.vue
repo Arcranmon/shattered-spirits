@@ -9,7 +9,7 @@
       <v-row no-gutters>
         <v-col :cols="6">
           <display-tooltip-text :string="form.StunHeader" /><br />
-          <display-tooltip-text :string="form.HealthHeader" /><br />
+          <display-tooltip-text :string="form.HPHeader" /><br />
           <div v-if="form.HasDefenses"><display-tooltip-text :string="form.DefensesHeader" /></div>
         </v-col>
         <v-col :cols="6">

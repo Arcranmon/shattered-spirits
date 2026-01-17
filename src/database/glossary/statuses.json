@@ -32,7 +32,7 @@
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
     "effect": "While a creature has Bleeding they take Damage at the end of each _Phase_ equal to their Bleeding value. This Damage may not be reduced by _Guard_.",
-    "special": "A creature may not gain _Health_ while they have Bleeding. Instead, every point of _Health_ healed removes Bleeding 1.",
+    "special": "A creature may not gain _HP_ while they have Bleeding. Instead, every point of _HP_ healed removes Bleeding 1.",
     "repeat": "If a Bleeding creatures gains Bleeding, increase the value by 1.",
     "remove": "Bleeding is only removed by effects that explicitly remove it.",
     "type": "Affliction"
@@ -140,7 +140,7 @@
     "name": "Poisoned",
     "desc": "An affliction caused by toxins ravaging you from the inside out.",
     "effect": "While a creature is Poisoned they gain_Stun_ [_AP_] equal to their Poisoned value minus their _Grit_ at the end of every _Phase_.",
-    "special": "A creature may not gain _Health_ while they have Poisoned. Instead, every point of _Health_ healed removes Poisoned 1.",
+    "special": "A creature may not gain _HP_ while they have Poisoned. Instead, every point of _HP_ healed removes Poisoned 1.",
     "repeat": "If a Poisoned creatures gains Poisoned, increase the value by 1.",
     "remove": "Poisoned is only removed by effects that explicitly remove it.",
     "type": "Affliction"
@@ -215,7 +215,7 @@
   {
     "name": "Studied",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "When you inflict Studied on a creature learn their exact current Health, their current and maximum _Stamina_, and any _Resistances_/_Weaknesses_/_Wards_/_Susceptibilities_. A creature may remove _Studied_ from a Target to reroll one dice rolled in response to that creature, such as from an _Attack Roll_ or any roll made as a part of a [_Defensive_] _Reaction_.",
+    "effect": "Creatures may remove a hostile creature's _Studied_ for one of the following effects:\n* Clear _Studied_ at any time to learn the target's current and maximum _HP_ and _Stun_ as well as their _Defenses_ and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Defense Roll you may clear Studied to increase a single die roll by 1, treating it as that number for the purpose of _Gambits_ and other effects.",
     "recover": "When a creature _Recovers_ they may remove _Studied_.",
     "type": "Affliction"
   },

@@ -3,7 +3,7 @@ import { Bonuses } from '@/class'
 const interpolate = require('color-interpolate')
 
 class Combatant {
-  private health_: number
+  private hp_: number
   private stamina_: number
   private stun_: number
   private soak_: number
@@ -22,7 +22,7 @@ class Combatant {
     this.stamina_ = 0
     this.stun_ = 0
     this.soak_ = 0
-    this.health_ = 0
+    this.hp_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
   }
@@ -41,7 +41,7 @@ class Combatant {
     return 0
   }
 
-  get MaxHealth() {
+  get MaxHP() {
     return 0
   }
 
@@ -163,7 +163,7 @@ class Combatant {
 
   public ResetDefault() {
     this.move_ = this.MaxMovement
-    this.health_ = this.MaxHealth
+    this.hp_ = this.MaxHP
     this.stun_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
@@ -252,23 +252,23 @@ class Combatant {
     else this.stun_ = stun
   }
 
-  get Health() {
-    return this.health_
+  get HP() {
+    return this.hp_
   }
 
-  set Health(Health: number) {
-    if (Health > this.MaxHealth) this.health_ = this.MaxHealth
-    else if (Health <= 0) this.health_ = 0
-    else this.health_ = Health
+  set HP(HP: number) {
+    if (HP > this.MaxHP) this.hp_ = this.MaxHP
+    else if (HP <= 0) this.hp_ = 0
+    else this.hp_ = HP
   }
 
-  get HealthPercent() {
-    return (this.Health / this.MaxHealth) * 100
+  get HPPercent() {
+    return (this.HP / this.MaxHP) * 100
   }
 
-  get HealthColor() {
+  get HPColor() {
     let colormap = interpolate(['#FF0000', '#FFDE00', '#5bf75b', '#5bf75b'])
-    return colormap(this.HealthPercent / 100)
+    return colormap(this.HPPercent / 100)
   }
 
   get StunPercent() {
@@ -325,7 +325,7 @@ class Combatant {
   // ==========================================================
   public static Serialize(combatant: Combatant): ICombatantData {
     return {
-      health: combatant.health_,
+      hp: combatant.hp_,
       move: combatant.move_,
       stun: combatant.stun_,
       soak: combatant.soak_,
@@ -343,7 +343,7 @@ class Combatant {
 
   public setCombatantData(data: ICombatantData): void {
     this.move_ = data.move
-    this.health_ = data.health
+    this.hp_ = data.hp
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses || []
     this.stun_ = data.stun

@@ -54,7 +54,7 @@ let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
 let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Traits]
 
-const kPlayerAbilities = ['Adrenaline Rush', 'Off the Armor', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
+const kPlayerAbilities = ['Adrenaline Rush', 'Size Up', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
 
 const kSpiritAbilities = []
 

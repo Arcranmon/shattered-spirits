@@ -4,7 +4,7 @@ import { Base, Defenses } from '@/class'
 class Subtype extends Base {
   private defenses_: Defenses
   private element_: string
-  private health_: number
+  private hp_: number
   private guard_: number
   private stun_: number
   private move_: number
@@ -21,8 +21,8 @@ class Subtype extends Base {
   // ==========================================================
   // UTILITY
   // ==========================================================
-  public get Health() {
-    return this.health_
+  public get HP() {
+    return this.hp_
   }
 
   public get ArmorHeader() {
@@ -37,8 +37,8 @@ class Subtype extends Base {
     return this.growth_points_
   }
 
-  public get HealthHeader() {
-    return '**Health:** ' + this.Health
+  public get HPHeader() {
+    return '**HP:** ' + this.HP
   }
 
   public get Guard() {
@@ -115,7 +115,7 @@ class Subtype extends Base {
     this.armor_ = data.armor || ''
     this.defenses_ = data.defenses ? Defenses.Deserialize(data.defenses) : null
     this.traits_ = data.traits || []
-    this.health_ = data.health || 0
+    this.hp_ = data.hp || 0
     this.move_ = data.move || 0
     this.guard_ = data.guard || 0
     this.stun_ = data.stun || 0

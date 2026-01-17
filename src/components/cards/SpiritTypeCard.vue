@@ -13,7 +13,7 @@
       <div class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row">
           <v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Health_" :decorate="false" /></b></v-col
+            ><b><display-tooltip-text string="_HP_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Stun_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
@@ -21,7 +21,7 @@
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row" style="border-top: none">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Health }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ type.HP }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2"> {{ type.Defenses.Stun }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Movement }}</v-col>
         </v-row>

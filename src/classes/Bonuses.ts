@@ -4,7 +4,7 @@ import { store } from '@/store'
 class Bonuses {
   private focus_: number
   private grit_: number
-  private health_: number
+  private hp_: number
   private reflex_: number
   private move_: number
   private load_: number
@@ -18,7 +18,7 @@ class Bonuses {
   public constructor() {
     this.focus_ = 0
     this.grit_ = 0
-    this.health_ = 0
+    this.hp_ = 0
     this.stun_ = 0
     this.reflex_ = 0
     this.move_ = 0
@@ -33,7 +33,7 @@ class Bonuses {
   public get ReadableString() {
     var bonuses = []
 
-    if (this.health_ > 0) bonuses.push('+' + String(this.health_) + ' _Health_')
+    if (this.hp_ > 0) bonuses.push('+' + String(this.hp_) + ' _HP_')
     if (this.focus_ > 0) bonuses.push('+' + String(this.focus_) + ' _Focus_')
     if (this.grit_ > 0) bonuses.push('+' + String(this.grit_) + ' _Grit_')
     if (this.reflex_ > 0) bonuses.push('+' + String(this.reflex_) + ' _Reflex_')
@@ -45,7 +45,7 @@ class Bonuses {
   public addBonuses(other) {
     this.focus_ += other.focus_
     this.grit_ += other.grit_
-    this.health_ += other.health_
+    this.hp_ += other.hp_
     this.reflex_ += other.reflex_
     this.move_ += other.move_
     this.load_ += other.load_
@@ -69,8 +69,8 @@ class Bonuses {
     return this.speed_
   }
 
-  public get Health() {
-    return this.health_
+  public get HP() {
+    return this.hp_
   }
 
   public get Stun() {
@@ -89,7 +89,7 @@ class Bonuses {
   public setBonusesData(data: IBonusesData): void {
     this.focus_ = data.focus || 0
     this.grit_ = data.grit || 0
-    this.health_ = data.health || 0
+    this.hp_ = data.hp || 0
     this.reflex_ = data.reflex || 0
     this.move_ = data.move || 0
     this.load_ = data.load || 0

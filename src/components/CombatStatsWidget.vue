@@ -37,17 +37,17 @@
           <v-btn inline small @click=";(creature.Movement += 1), $emit('changed')" icon class="resource--button"><v-icon color="black">mdi-plus</v-icon></v-btn>
         </v-col>
       </v-row>
-      <v-row no-gutters> <b>Health:</b>&nbsp;{{ creature.Health }} / {{ creature.MaxHealth }} </v-row>
+      <v-row no-gutters> <b>HP:</b>&nbsp;{{ creature.HP }} / {{ creature.MaxHP }} </v-row>
       <v-row no-gutters class="bar--area">
         <v-col cols="auto">
-          <v-btn inline small @click=";(creature.Health -= 1), $emit('changed')" icon class="resource--button"
+          <v-btn inline small @click=";(creature.HP -= 1), $emit('changed')" icon class="resource--button"
             ><v-icon color="black">mdi-minus</v-icon></v-btn
           > </v-col
         ><v-col
           ><div class="hp--exterior">
-            <div class="hp--interior" :style="healthbar" /></div></v-col
+            <div class="hp--interior" :style="hpbar" /></div></v-col
         ><v-col cols="auto">
-          <v-btn inline small @click=";(creature.Health += 1), $emit('changed')" icon class="resource--button"><v-icon color="black">mdi-plus</v-icon></v-btn>
+          <v-btn inline small @click=";(creature.HP += 1), $emit('changed')" icon class="resource--button"><v-icon color="black">mdi-plus</v-icon></v-btn>
         </v-col>
       </v-row>
       <v-row no-gutters>
@@ -115,8 +115,8 @@ export default Vue.extend({
     isSpirit: function () {
       return this.creature instanceof Spirit
     },
-    healthbar() {
-      return 'width: ' + this.creature.HealthPercent + '%; background-color: ' + this.creature.HealthColor
+    hpbar() {
+      return 'width: ' + this.creature.HPPercent + '%; background-color: ' + this.creature.HPColor
     },
     soakbar() {
       return 'width: ' + this.creature.PaddingPercent + '%;'

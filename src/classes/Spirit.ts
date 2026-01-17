@@ -107,8 +107,8 @@ class Spirit extends Combatant {
     this.character_ = character
   }
 
-  override get MaxHealth() {
-    return this.SpiritType.Health + this.combinedBonuses_.Health
+  override get MaxHP() {
+    return this.SpiritType.HP + this.combinedBonuses_.HP
   }
 
   override get MaxStun() {

@@ -1,7 +1,7 @@
 import { store } from '@/store'
 import { Armor, Bonuses, Combatant, Discipline, Stance, Weapon, Spirit, Technique } from '@/class'
 
-var kBaseHealth = 10
+var kBaseHP = 10
 var kBaseStun = 15
 var kBaseLoad = 4
 
@@ -188,8 +188,8 @@ class Character extends Combatant {
     return load
   }
 
-  override get MaxHealth() {
-    return kBaseHealth
+  override get MaxHP() {
+    return kBaseHP + this.combinedBonuses_.HP
   }
 
   get Name() {

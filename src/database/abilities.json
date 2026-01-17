@@ -8,12 +8,14 @@
     "effect": "Gain 1 _Movement_."
   },
   {
-    "name": "Charge",
-    "class": "Utility",
+    "name": "Size Up",
+    "class": "General",
     "type": "Maneuver",
-    "cost": "None",
-    "keywords": ["Final"],
-    "effect": "Choose any _Ability_, paying any portion of its Cost, then become _Charging_. You must take your _Turn_ next _Phase_ as a _Slow Action_. On said _Turn_, you must first remove _Charging_, then pay the remaining cost of the chose _Ability_ and use it immediately, if able. If you cannot, any paid Cost is lost."
+    "cost": "1 _Momentum_",
+    "range": "Short-",
+    "target": "A creature.",
+    "effect": "The Target must _Negate_ [4 _Focus_] or gain _Studied_.",
+    "boosts": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Instead, they must _Negate_ [6 _Focus_]." }]
   },
   {
     "name": "Envenom",
@@ -133,7 +135,7 @@
     "name": "Spiritbound",
     "class": "Narrative",
     "type": "Skill",
-    "effect": "You are bound to an elemental spirit, the source of your magic and a constant companion from your youth. You can summon it with a thought and a gesture, either at your side or remotely at an object of sufficient size and similar material to your spirit. It must remain relatively close to you (approximately 100 meters), but is capable of independent thought and action. While incapable of speech, you have an empathetic link to it and always know its current mood, status, and approximate location. This empathetic link also extends (to a lesser extent to spirits of the same type and animals similar to your spirit; you have a natural aptitude when interacting with said creatures, and can better read their attitude."
+    "effect": "You are bound to an elemental spirit, the source of your magic and a constant companion from your youth. It has a distinct personality and is capable of independent thought and action, with an uncanny intelligence that is not quite human but far more than an animal. You have the following abilities and limitations:\n* You can summon or dismiss your spirit with a thought and a gesture, either at your side or at a nearby object of the same element and at least as large as your spirit, so long as your craft is not suppressed.\n* You and your spirit experience increasing discomfort as you separate, and cannot be separated by more than 100 meters for long without debilitating pain.\n* Your spirit cannot speak, but you have an empathetic link to it and know its current mood, status, and approximate location. Additionally, you have a hazy impression of the last hour of its memories.\n* You have a natural aptitude when interacting with spirits of the element and animals of a similar category to your spirit."
   },
   {
     "name": "Dodge",
@@ -292,14 +294,6 @@
     "effect": "Immediately gain 4 _Momentum_ (in any combination) and 1 _Fatigue_."
   },
   {
-    "name": "Off the Armor",
-    "class": "Defensive",
-    "type": "Reaction",
-    "trigger": "You would take a _Wound_.",
-    "cost": "None",
-    "effect": "Instead of taking a _Wound_, _Sunder_ a piece of _Armor_ and instead take _Fatigue_. If you _Blocked_, you may instead _Sunder_ a _Wielded_ piece of _Equipment_. The cost of this _Reaction_ may not be increased by any means."
-  },
-  {
     "name": "Earthen Reconstitution",
     "class": "Utility",
     "keywords": ["Earth", "Pacifist", "Rooted"],
@@ -308,6 +302,6 @@
     "range": "Melee",
     "reqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
     "effect": "Gain 3 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
-    "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, gain 5 _Vigor_ or 3 _Health_." }]
+    "boosts": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, gain 5 _Vigor_ or 3 _HP_." }]
   }
 ]

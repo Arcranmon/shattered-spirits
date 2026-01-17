@@ -31,7 +31,7 @@ declare interface IAbilityPackageData extends IBaseData {
 declare interface IBonusesData {
   focus?: number
   grit?: number
-  health?: number
+  hp?: number
   stun?: number
   reflex?: number
   move?: number
@@ -80,7 +80,7 @@ declare interface ICharacterData extends ICombatantData {
 }
 
 declare interface ICombatantData {
-  health: number
+  hp: number
   soak: number
   stun: number
   move: number
@@ -157,7 +157,7 @@ declare interface INpcData {
   class: string
   desc: string
   durability?: number
-  health: number
+  hp: number
   guard?: number
   max_stun: number
   momentum_gain?: number
@@ -232,7 +232,7 @@ declare interface ISpiritData extends ICombatantData {
 
 declare interface ISpiritFormData extends IBaseData {
   defenses?: IDefenseData
-  health: number
+  hp: number
   weapons: string
   move: number
   traits: string[]
@@ -245,7 +245,7 @@ declare interface ISubtypeData extends IBaseData {
   defenses: IDefenseData
   traits: string[]
   conditions: string[]
-  health: number
+  hp: number
   weapons: number
   guard: number
   stun: number

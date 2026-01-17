@@ -8,7 +8,7 @@
         "name": "Basic Metalcraft",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You have a basic, intuitive grasp of metalcraft. You gain the following:\n* **Range**: Your metalcraft has a range of approximately 20 meters.\n* **Metalsense:** You have a rough knowledge of the location of all metal within your metalcraft range.\n* **Lodestone Arts**: You may move and control metal objects up to 20 pounds, with decent precision at low weights and poor precision at higher weights.\n* **Anvil Arts:** You may alter a physical property of metal (such as strength or pliability) up to 5% in either direction. This change is temporary, and ends if you stop concentrating.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities temporarily."
+        "effect": "You have a basic, intuitive grasp of metalcraft and can accomplish minor feats using it. You gain the following:\n* **Metalsense:** You have a rough knowledge of the location of all metal within 10 meters.\n* **Lodestone Arts**: You may move and control a single metal object within 10 meters, with a maximum weight of 20 pounds. You have decent control with lighter objects that becomes poor as they get heavier.\n* **Anvil Arts:** You may touch a piece of metal and minorly change a physical property of it (such as strength or pliability). This change is temporary, and ends if you stop touching the metal.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities for a Scene."
       },
       {
         "name": "Metalbending",
@@ -94,13 +94,13 @@
         "name": "Strength of the Forge",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality."
+        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality. This ability works to a lesser extent when you see a piece of their handiwork."
       },
       {
         "name": "Metallurgy",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal equipment, especially those that would have been commonly made in your village's forge."
+        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal craftsmanship, and can easily identify the strongest and weakest point on something made of metal, if they exist."
       },
       {
         "name": "Metalworking",
@@ -112,7 +112,7 @@
         "name": "Forge-Trained",
         "class": "Narrative",
         "type": "Power",
-        "effect": "Given appropriate tools and materials, you may craft Metal equipment. Most basic or rough tools can be crafted in a few hours, with more intricate or complicated tools taking longer. Whenever you <u>Improve</u> the Forge in your town during _Downtime_, mark +1 segment on the clock. Finally, whenever you can craft, add the following <u>Augments</u> to your Smithy:\n* <u>Elegant:</u> Increase the _Supply_ cost of the item by 2. This item is of noticeably higher quality and is very desirable to own.\n* <u>Sturdy:</u> Increase the _Supply_ cost of the item by 1. Increase its _Durability_ by 1 as well.\n* <u>Mass-Produced:</u> Decrease the _Supply_ cost of the item by 1. Decrease its _Durability_ by 1. If it already has 1 _Durability_, instead add _Fragile_."
+        "effect": "Given appropriate tools and materials, you may craft Metal equipment. Most basic or rough tools can be crafted in a few hours, with more intricate or complicated tools taking longer. Whenever you <u>Improve</u> the Forge in your town during _Downtime_, mark +1 segment on the Clock. Finally, whenever you can craft, add the following <u>Augments</u> to your Smithy:\n* <u>Elegant:</u> Increase the _Supply_ cost of the item by 2. This item is of noticeably higher quality and is very desirable to own.\n* <u>Sturdy:</u> Increase the _Supply_ cost of the item by 1. Increase its _Durability_ by 1 as well.\n* <u>Mass-Produced:</u> Decrease the _Supply_ cost of the item by 1. Decrease its _Durability_ by 1. If it already has 1 _Durability_, instead add _Fragile_."
       }
     ]
   },
@@ -155,7 +155,7 @@
           {
             "name": "Enhanced Healing",
             "cost": "1 _Momentum_",
-            "effect": "Instead, clear 4 _Stun_ and gain 3 _Health_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+            "effect": "Instead, clear 4 _Stun_ and gain 3 _HP_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
           }
         ]
       }
@@ -294,7 +294,7 @@
         "name": "Small Profile",
         "class": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Small_, gains +2 _Health_, +1 _Stun_, and +1 _Reflex_."
+        "effect": "Your Spirit becomes _Small_, gains +2 _HP_, +1 _Stun_, and +1 _Reflex_."
       }
     ],
     "bonuses": { "reflex": 1 }
@@ -316,7 +316,7 @@
         "name": "Medium Profile",
         "class": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Medium_, gains +5 _Health_, +3 _Stun_, and +1 _Grit_."
+        "effect": "Your Spirit becomes _Medium_, gains +5 _HP_, +3 _Stun_, and +1 _Grit_."
       }
     ],
     "bonuses": { "reflex": 1 }
@@ -338,7 +338,7 @@
         "name": "Large Profile",
         "class": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Large_, gains +10 _Health_, +6 _Stun_, and +2 _Grit_."
+        "effect": "Your Spirit becomes _Large_, gains +10 _HP_, +6 _Stun_, and +2 _Grit_."
       }
     ],
     "bonuses": { "reflex": 1 }
@@ -360,7 +360,7 @@
         "name": "Higher Quality",
         "class": "Narrative",
         "type": "Power",
-        "effect": "During Downtime you may work on your allies' weapons, ensuring they are in the best possible shape. Your party's weaponry is noticeably of higher quality and well-maintained, granting the party the Condition 'High Quality Weapons'.\n&nbsp;\nAdditionally, all party members (including yourself) gain a Weaponsmith's Blessing at the start of each _Journey_. A character make expend their Weaponsmith's Blessing for one of the two following effects:\n* After making an Attack with a Weapon, you may expend the blessing to use a _Gambit_, even if you didn't qualify for one.\n* When a Weapon would lose _Durability_, you may expend the Weaponsmith's Blessing to instead not lose _Durability_.\n\n&nbsp;\nFinally, gain the following _Camp Action_:\n* <u>Hone</u>: Choose an ally that does not have a Weaponsmith's Blessing. You take the time to ensure their equipment is in working order, granting them a Weaponsmith's Blessing."
+        "effect": "During Downtime you may work on your allies' weapons, making them visibly of higher quality and granting yourself and all party members a Weaponsmith's Blessing at the start of each _Journey_. A character make expend their Weaponsmith's Blessing for one of the following effects:\n* In a Skill Challenge, when the weapon is granting a die, you may gain an additional die.\n* After making an Attack with a Weapon, you may expend the blessing to use a _Gambit_, even if you didn't qualify for one.\n* When a Weapon would lose _Durability_, you may expend the Weaponsmith's Blessing to instead not lose _Durability_.\n\n&nbsp;\nFinally, gain the following _Camp Action_:\n* <u>Hone</u>: Choose an ally that does not have a Weaponsmith's Blessing. You take the time to ensure their equipment is in working order, granting them a Weaponsmith's Blessing."
       },
       {
         "name": "Weapon Maintenance",
@@ -372,7 +372,7 @@
         "name": "Forge Weapon",
         "class": "Narrative",
         "type": "Power",
-        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. Whenever you <u>Improve</u> the Forge in your town during _Downtime_ you may also learn a new weapon <u>Augment</u>. Additionally, when you gain this Talent learn two Augments of your choice. You also may learn to work with Exotic materials."
+        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. Whenever you <u>Improve</u> the Forge in your town during _Downtime_ you may also learn a new weapon <u>Augment</u>. Additionally, when you gain this Talent learn two Augments of your choice. With further training, you may learn to work with Exotic materials."
       }
     ]
   },
@@ -385,20 +385,20 @@
         "name": "Exceptional Toughness",
         "class": "Narrative",
         "type": "Skill",
-        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are incredibly resistant to pain, toxins, and other afflictions. This does not grant die on _Travel Rolls_, but may be treated as appropriate Equipment when dealing with travel conditions that exceptional toughness would aid with."
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina. This does not grant dice on _Travel Rolls_, but may be treated as a piece of appropriate Equipment when dealing with travel conditions that toughness would aid with."
       },
       {
         "name": "Grin and Bear It",
         "class": "Narrative",
         "type": "Power",
-        "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may place it on this Ability instead of your Strain Bar, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
+        "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may place it on this Ability instead of your Health Bar, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
       },
       {
         "name": "Toughness",
         "class": "Defensive",
         "type": "Passive",
-        "effect": "Gain +5 Health. At _Refresh_, reduce any _Stun_ you would gain from Afflictions (such as _Fatigue_) by half.",
-        "bonuses": { "health": 5 }
+        "effect": "Gain +5 HP. At _Refresh_, reduce any _Stun_ you would gain from Afflictions (such as _Fatigue_) by half.",
+        "bonuses": { "hp": 5 }
       },
       {
         "name": "True Grit",
@@ -406,8 +406,40 @@
         "type": "Reaction",
         "keywords": ["Exhaust"],
         "cost": "None",
-        "trigger": "You would be reduced to 0 _Health_.",
-        "effect": "The triggering effect cannot reduce you below 1 _Health_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
+        "trigger": "You would be reduced to 0 _HP_.",
+        "effect": "The triggering effect cannot reduce you below 1 _HP_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
+      }
+    ]
+  },
+  {
+    "name": "Charmer",
+    "desc": "You have an easy smile and an innate charm, making others feel at ease in your presence.",
+    "category": "Archetype",
+    "abilities": [
+      {
+        "name": "Exceptional Charm",
+        "class": "Narrative",
+        "type": "Skill",
+        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, and others are quick to offer you a helping hand. You are adept at working with people, finding help, and any other circumstance where charm may aid you."
+      },
+      {
+        "name": "First Impression",
+        "class": "Narrative",
+        "type": "Power",
+        "effect": "When meeting a new character you may charm them. This causes the character to treat you one step better based on their current relationship to you(Enemy->Hostile->Indifferent->Cordial->Friendly->Close). If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_. You may use this Ability once per day for free, with each successive use costing a _Stress_ to use."
+      },
+      {
+        "name": "Charming Presence",
+        "class": "Support",
+        "type": "Passive",
+        "effect": "Gain +1 _Focus_. All allies within _Short_ Range of you gain a +1 to _Negate_ all [_Social_] Attacks and, at _Refresh_, one ally within _Short_- Range gains 1 _Momentum_."
+      },
+      {
+        "name": "Charm Offensive",
+        "class": "Light",
+        "type": "Attack",
+        "keywords": ["Social"],
+        "effect": ""
       }
     ]
   }

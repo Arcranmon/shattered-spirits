@@ -15,7 +15,7 @@
       <v-row no-gutters>
         <v-col cols="6">
           <div v-html="$marked.parseInline(npc.SizeText)" />
-          <div v-html="$marked.parseInline(npc.HealthText)" />
+          <div v-html="$marked.parseInline(npc.HPText)" />
           <display-tooltip-text :string="npc.StunText" />
           <div>
             <display-tooltip-text :string="npc.MomentumGainText" />

@@ -26,8 +26,8 @@ class Npc extends Combatant {
     return 0
   }
 
-  override get MaxHealth() {
-    return this.npc_data_.health
+  override get MaxHP() {
+    return this.npc_data_.hp
   }
 
   override get Size() {
@@ -140,8 +140,8 @@ class Npc extends Combatant {
   public get MoveText() {
     return '**Move:** ' + this.npc_data_.move
   }
-  public get HealthText() {
-    return '**Health:** ' + this.npc_data_.health
+  public get HPText() {
+    return '**HP:** ' + this.npc_data_.hp
   }
   public get ArmorText() {
     if (this.npc_data_.guard) return '**Armor:** ' + this.npc_data_.guard + ' Guard'
