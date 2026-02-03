@@ -2,8 +2,8 @@ import { store } from '@/store'
 import { Ability, Equipment } from '@/class'
 
 class Armor extends Equipment {
-  private guard_: number
-  private soak_: number
+  private stun_: number
+  private block_: number
   private consumable_slots_: number
   private traits_: string[]
 
@@ -15,36 +15,50 @@ class Armor extends Equipment {
   // GETTERS
   // ==========================================================
 
-  get Guard() {
-    return this.guard_
+  get Block() {
+    return this.block_
   }
-  get Padding() {
-    return this.soak_
+  get Stun() {
+    return this.stun_
   }
-  get ConsumableSlots() {
-    return this.consumable_slots_
+  get Header() {
+    return this.name_ + ' - ' + this.Category
   }
   get Traits() {
     return this.traits_
+  }
+  get Summary() {
+    return (
+      '**_Rarity_:** ' +
+      this.Rarity +
+      '; **_Stun_:** ' +
+      this.Stun +
+      '; **_Block_:** ' +
+      this.Block +
+      '; **_Load_:** ' +
+      this.Load +
+      '; **_Durability_:** ' +
+      this.Durability
+    )
   }
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
 
-  get HasGuard() {
-    return this.guard_ > 0
+  get HasDefense() {
+    return this.stun_ > 0
   }
-  get GuardHeader() {
-    return '**_Guard_:** ' + this.guard_
+  get DefenseHeader() {
+    return '**_Block_:** ' + this.stun_
   }
-  get HasPadding() {
-    return this.soak_ > 0
+  get HasBlock() {
+    return this.block_ > 0
   }
   get HasSlots() {
     return this.consumable_slots_ > 0
   }
-  get PaddingHeader() {
-    return '**_Padding_:** ' + this.soak_
+  get ArmorHeader() {
+    return '**_Block_:** ' + this.block_
   }
   get HasTraits() {
     return this.traits_.length > 0
@@ -52,7 +66,6 @@ class Armor extends Equipment {
   get TraitsHeader() {
     return '**Traits:** _' + this.traits_.join('_, _') + '_'
   }
-
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -64,8 +77,8 @@ class Armor extends Equipment {
 
   public setArmorData(data: IArmorData): void {
     this.setEquipmentData(data)
-    this.guard_ = data.guard || 0
-    this.soak_ = data.soak || 0
+    this.stun_ = data.stun || 0
+    this.block_ = data.block || 0
     this.consumable_slots_ = data.consumable_slots || 0
     this.traits_ = data.traits || []
   }

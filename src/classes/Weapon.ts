@@ -8,8 +8,14 @@ class Weapon extends Equipment {
     if (this.Category == 'Natural' || this.Category == 'Improvised') return this.category_ + ' Weapon'
     return this.category_ + ' Weapon'
   }
-  get ClassHeader() {
-    return this.CategoryHeader
+  public get Header() {
+    var header = this.Name + ' - '
+    header += this.CategoryHeader
+    return header
+  }
+  public get Summary() {
+    var header = '**Rarity:** ' + this.rarity_ + '; **Load:** ' + this.Load + '; **Durability:** ' + this.Durability
+    return header
   }
   get HandString() {
     return String(this.hands_)

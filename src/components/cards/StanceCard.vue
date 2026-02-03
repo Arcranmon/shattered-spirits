@@ -4,7 +4,7 @@
       <div class="card--underline-top card--header">
         <h4 style="display: inline; font-style: normal">{{ stance.Name }}</h4>
         <div class="card--keywords">
-          <b> <display-tooltip-text :string="stance.ClassHeader" :decorate="false" /><br /> </b>
+          <b> <display-tooltip-text :string="stance.categoryHeader" :decorate="false" /><br /> </b>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row"
           ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Guard_" :decorate="false" /></b></v-col
+            ><b><display-tooltip-text string="_Block_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Grit_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
@@ -36,7 +36,7 @@
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Guard }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Block }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Grit }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Focus }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Reflex }}</v-col>

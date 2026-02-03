@@ -1,15 +1,17 @@
 /** @format */
-// Parent class for techniques/maneuvers.
+// Parent category for techniques/maneuvers.
 
 import { store } from '@/store'
 import { Base, AbilityPackage, Chart, Bonuses } from '@/class'
 
 class Ability extends Base {
+  protected missile_: string
   protected area_: string
   protected defend_: string
-  protected boosts_: IBoostData[]
+  protected enhancements_: IEnhanceData[]
+  protected imbues_: IEnhanceData[]
   protected cost_: string
-  protected class_: string
+  protected category_: string
   protected move_: number
   protected range_: string
   protected reqs_: string
@@ -24,7 +26,7 @@ class Ability extends Base {
   public constructor(name) {
     super(name)
     this.area_ = ''
-    this.boosts_ = []
+    this.enhancements_ = []
     this.cost_ = ''
     this.chart_ = null
     this.desc_ = ''
@@ -56,13 +58,13 @@ class Ability extends Base {
   public get Chart() {
     return this.chart_
   }
-  public get Class() {
-    return this.class_
+  public get category() {
+    return this.category_
   }
   public get Header() {
     var header = this.Name + ' - '
     if (this.HasSpeed) header += 'Speed ' + this.speed_ + ' '
-    header += this.class_ + ' ' + this.type_
+    header += this.category_ + ' ' + this.type_
     return header
   }
   public get SpeedHeader() {
@@ -87,9 +89,9 @@ class Ability extends Base {
     this.origin_ = origin
   }
   public get Icon() {
-    if (this.class_ === 'Defensive') return require('@/assets/Defensive.svg')
-    if (this.class_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
-    if (this.class_ === 'Mobility') return require('@/assets/Move.svg')
+    if (this.category_ === 'Defensive') return require('@/assets/Defensive.svg')
+    if (this.category_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
+    if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
     if (this.type_ === 'Skill') return require('@/assets/Skill.svg')
     if (this.type_ === 'Power') return require('@/assets/Power.svg')
     return require('@/assets/General.svg')
@@ -107,16 +109,26 @@ class Ability extends Base {
   public get AreaHeader() {
     return '**_Area_:** ' + this.Area
   }
-  public get Boosts() {
-    return this.boosts_
+  public get Enhancements() {
+    return this.enhancements_
   }
-  public get HasBoosts() {
-    return this.boosts_.length > 0
+  public get HasEnhancements() {
+    return this.enhancements_.length > 0
   }
-  public get BoostsHeader() {
-    var text = '**_Boosts_:** '
-    for (var boost of this.boosts_) {
-      text += '\n * **' + boost.name + ' - ' + boost.cost + ':** ' + boost.effect
+  public get EnhancementsHeader() {
+    var text = '**_Enhancements_:** '
+    for (var enhance of this.enhancements_) {
+      text += '\n * **' + enhance.name + ' - ' + enhance.cost + ':** ' + enhance.effect
+    }
+    return text
+  }
+  public get HasImbues() {
+    return this.imbues_.length > 0
+  }
+  public get ImbuesHeader() {
+    var text = '**_Imbues_:** '
+    for (var imbue of this.imbues_) {
+      text += '\n * **' + imbue.name + ' - ' + imbue.cost + ':** ' + imbue.effect
     }
     return text
   }
@@ -141,13 +153,29 @@ class Ability extends Base {
   public get MoveHeader() {
     return '**_Move_:** _' + this.Move + '_'
   }
+  public get HasRangeOrTarget() {
+    return this.HasRange || this.HasTarget
+  }
   public get HasRange() {
     return this.range_.length > 0
+  }
+  get RangeOrTargetHeader() {
+    var header = ''
+    if (this.HasRange) header += '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
+    if (this.HasRange && this.HasTarget) header += '; '
+    if (this.HasTarget) header += this.TargetHeader
+    return header
   }
   get RangeHeader() {
     var header = '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
     // if (this.HasTarget) header += ', ' + this.target_
     return header
+  }
+  public get HasMissile() {
+    return this.missile_.length > 0
+  }
+  public get MissileHeader() {
+    return '**Missile:** ' + this.missile_
   }
   public get HasReqs() {
     return this.reqs_.length > 0
@@ -189,11 +217,13 @@ class Ability extends Base {
 
   public setAbilityData(data: IAbilityData): void {
     this.setBaseData(data)
+    this.missile_ = data.missile || ''
     this.area_ = data.area || ''
-    this.boosts_ = data.boosts || []
+    this.enhancements_ = data.enhancements || []
+    this.imbues_ = data.imbues || []
     this.defend_ = data.defend || ''
     this.cost_ = data.cost || ''
-    this.class_ = data.class || 'MISSING'
+    this.category_ = data.category || 'MISSING'
     this.type_ = data.type || 'MISSING'
     this.move_ = data.move || 0
     this.reqs_ = data.reqs || ''

@@ -1,19 +1,16 @@
 <template>
-  <div class="card--wrapper" inline>
-    <div class="card--underline-top">
-      <div class="card--header" v-bind:class="type.Name">
-        <div>
-          <h4 style="display: inline">{{ type.Name }}</h4>
-        </div>
-      </div>
+  <div inline>
+    <div class="ability--head" v-bind:class="type.Name" style="width: 100%">
+      <img v-if="type.HasIcon" :src="type.Icon" style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
+      <display-tooltip-text :string="type.Name" />
     </div>
     <div class="card--content">
-      <display-tooltip-text :string="type.GrowthHeader" /><br />
+      <div v-if="type.Desc.length > 0" style="font-style: italic">{{ type.Desc }}<br /></div>
       <display-tooltip-text :string="type.SpeedHeader" />
       <div class="chart--wrapper" inline>
         <v-row no-gutters class="chart--row">
           <v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_HP_" :decorate="false" /></b></v-col
+            ><b><display-tooltip-text string="_Stamina_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
             ><b><display-tooltip-text string="_Stun_" :decorate="false" /></b></v-col
           ><v-col class="chart--head" cols="2"
@@ -21,8 +18,8 @@
           ></v-col>
         </v-row>
         <v-row align="stretch" no-gutters class="chart--row" style="border-top: none">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ type.HP }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2"> {{ type.Defenses.Stun }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Stamina }}</v-col>
+          <v-col class="chart--cols justify-center align-center" cols="2"> {{ type.Stun }}</v-col>
           <v-col class="chart--cols justify-center align-center" cols="2">{{ type.Movement }}</v-col>
         </v-row>
         <v-row no-gutters class="chart--row" style="border-top: none">
@@ -42,7 +39,6 @@
       </div>
       <display-tooltip-text :string="type.ManifestHeader" /><br />
     </div>
-    <div class="desc--box" v-if="type.Desc.length > 0" style="font-style: italic">{{ type.Desc }}<br /></div>
   </div>
 </template>
 

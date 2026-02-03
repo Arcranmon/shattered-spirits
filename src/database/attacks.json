@@ -7,7 +7,7 @@
     "cost": "1 _Momentum_",
     "effect": "Use a Single-Target Damaging Attack against the Target. Gain a +1 _Bonus_, add [_Pierce_ 1], and increase the cost of all _Defensive_ _Reactions_ by 1 against this _Attack_.",
     "special": "Do not lose _Stealthy_ until this Attack is complete. If the Target is _Defeated_, do not lose _Stealthy_.",
-    "class": "General"
+    "category": "General"
   },
   {
     "name": "Amplify Gust",
@@ -15,7 +15,7 @@
     "tier": "Light",
     "cost": "1 _Momentum_",
     "speed": "1",
-    "class": "Gale",
+    "category": "Gale",
     "range": [
       {
         "category": "Ranged",
@@ -24,7 +24,7 @@
     ],
     "target": "A _Gusting_ space.",
     "effect": "Inflict _Slide_ 3/_Vulnerable_ 2 on a creature in, or adjacent to and in-line with the direction of a _Gusting_ space. The _Slide_ must match the direction of the _Gusting_ space.",
-    "boost": "1 _Momentum_: Remove the _Gusting_ space. Inflict both effects.",
+    "enhance": "1 _Momentum_: Remove the _Gusting_ space. Inflict both effects.",
     "rank": "Minor Attack",
     "analysis_notes": {
       "bonus_damage": [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
@@ -32,10 +32,10 @@
   },
   {
     "name": "Assess",
-    "desc": "You scan a foe for weaknesses, attempting to find openings in their defense.",
+    "desc": "You scan a foe for weaknesses, attempting to find openings in their block.",
     "tier": "Light",
     "speed": "2",
-    "class": "General",
+    "category": "General",
     "target": "A creature that is not _Obscured_.",
     "range": "Any",
     "effect": "Inflict _Studied_ [5 _Focus_] on the Target."
@@ -51,7 +51,7 @@
   },
   {
     "name": "Bonechill",
-    "class": "Tundra",
+    "category": "Tundra",
     "desc": "You freeze the air around a foe, rapidly dropping the temperature.",
     "tier": "Balanced",
     "speed": "4",
@@ -77,7 +77,7 @@
   },
   {
     "name": "Issue Challenge",
-    "class": "General",
+    "category": "General",
     "keywords": ["Social"],
     "desc": "You insult the ego of a foe, drawing their attention in an intense way.",
     "tier": "Light",
@@ -88,20 +88,20 @@
         "value": 4
       }
     ],
-    "effect": "Inflict _Taunted_ [6 _Focus_] and 2 _Stun_ on the Target.",
+    "effect": "Inflict _Taunted_ [6 _Focus_] and 2 _Block_ on the Target.",
     "special": "If the Target is _Engaged_ with you or _Enraged_ they have _Disadvantage_ to _Negate_."
   },
   {
     "name": "Team Attack",
-    "class": "General",
+    "category": "General",
     "keywords": ["Derived"],
     "desc": "You coordinate an attack with an ally, forcing gaps in a foe's defenses.",
     "cost": "2 _Momentum_",
-    "effect": "Use a Single-Target Attack. An ally within Range 6 may immediately make a _Light_ _Attack_ against the same Target. If both _Graze_+, inflict _Stun_ 1. If both _Hit_+, additionally inflict _Stun_ 1, _Dazed_ 1."
+    "effect": "Use a Single-Target Attack. An ally within Range 6 may immediately make a _Light_ _Attack_ against the same Target. If both _Graze_+, inflict _Block_ 1. If both _Hit_+, additionally inflict _Block_ 1, _Dazed_ 1."
   },
   {
     "name": "Chip Shot",
-    "class": "Mountain",
+    "category": "Mountain",
     "desc": "You fire a fist-size stone at great speed, crushing defenses with each shot.",
     "keywords": ["Spirit", "Earth", "Crush", "_Pierce_ 1"],
     "tier": "Balanced",
@@ -109,7 +109,7 @@
     "cost": "1 _Momentum_",
     "range": "Short/Medium",
     "special": "If there is an _Earthen_ _Feature_ at your _Position_ this _Attack_ is instead _Speed_ 2 and adds [_Point Blank_].",
-    "boost": "1 _Momentum_: Resolve the Special if there is any _Earthen_ _Feature_ within your _Arena_. Draw Range from one of said _Positions_ and add _Melee_ as a Range option.",
+    "enhance": "1 _Momentum_: Resolve the Special if there is any _Earthen_ _Feature_ within your _Arena_. Draw Range from one of said _Positions_ and add _Melee_ as a Range option.",
     "chart": {
       "stun": [0, 1, 2, 3],
       "damage": [0, 3, 5, 7],
@@ -117,8 +117,8 @@
       "status": ["+2 _Momentum_", "None", "_Exposed_ [4 _Grit_]", "_Exposed_ [5 _Grit_]"]
     },
     "charged_profile": {
-      "set_up": "Choose a Target within Range and, if using the Special/Boost, mark the appropriate _Feature_. While _Charging_, gain 1 _Ward_ and +1 _Grit_.",
-      "resolution": "Resolve this Attack against the Target. Add [_Pierce_ 1] and deal +2 _Bonus_ _Stun_ and _Bonus_ _Damage_. If the _Feature_ used for this Attack was _Destroyed_, the attack automatically fails."
+      "set_up": "Choose a Target within Range and, if using the Special/Enhance, mark the appropriate _Feature_. While _Charging_, gain 1 _Guard_ and +1 _Grit_.",
+      "resolution": "Resolve this Attack against the Target. Add [_Pierce_ 1] and deal +2 _Bonus_ _Block_ and _Bonus_ _Damage_. If the _Feature_ used for this Attack was _Destroyed_, the attack automatically fails."
     },
     "analysis_notes": {
       "speed": 2.5
@@ -126,7 +126,7 @@
   },
   {
     "name": "Conduct Bolt",
-    "class": "Storm",
+    "category": "Storm",
     "desc": "You pull on the charge between two foes, forming a bolt between them.",
     "tier": "Balanced",
     "speed": "4+ [_Rigid_]",
@@ -139,21 +139,21 @@
     ],
     "target": "Two _Shocked_ targets within Range and within Range 4 of one another.",
     "effect": "Deal 4 Damage to the Targets, treating them as both in the _Area_ of this Attack.",
-    "boost": "2 _Momentum_: Draw a _Line_ connecting and including the Targets and make that the new _Area_. Increase the Damage by 3.",
+    "enhance": "2 _Momentum_: Draw a _Line_ connecting and including the Targets and make that the new _Area_. Increase the Damage by 3.",
     "rank": "Minor Attack"
   },
   {
     "name": "Rending Slash",
     "desc": "You make a vicious cut, leaving a foe bleeding after the assault.",
     "keywords": ["Derived"],
-    "class": "Martial",
+    "category": "Martial",
     "cost": "1 _Momentum_",
-    "effect": "Make an Attack using a _Blade_ Weapon, adding _Bleeding_ [4 _Guard_/_Reflex_] on a _Hit_+. If the Attack would already inflict _Bleeding_, instead increase the Negate DC by 2.",
+    "effect": "Make an Attack using a _Blade_ Weapon, adding _Bleeding_ [4 _Block_/_Reflex_] on a _Hit_+. If the Attack would already inflict _Bleeding_, instead increase the Negate DC by 2.",
     "special": "Refer to the Weapon for all details about the specific Attack, such as its _Speed_, _Material_, and whether it is _Light_, _Balanced_, or _Heavy_."
   },
   {
     "name": "Cutting Veil",
-    "class": "Tide",
+    "category": "Tide",
     "desc": "You attack a foe with sudden walls of water, disorienting and obstructing them.",
     "tier": "Balanced",
     "speed": 3,
@@ -164,7 +164,7 @@
         "value": 6
       }
     ],
-    "reqs": "The Target must be in a _Water_ space or _Paddinged_.",
+    "reqs": "The Target must be in a _Water_ space or _Armored_.",
     "effect": "If the Target is in a _Water Veil_ the _Attack_ has _Advantage_.",
     "special": "As a part of this Attack, you may convert up 1 of the Target's _Vulnerable_ to _Bleeding_. This does not count as removing _Vulnerable_.",
     "chart": {
@@ -203,19 +203,19 @@
       "set_up": "Choose Ranged Single-Target Attack, then a Target within Range of your selected Attack. If this is a _Weapon_ Attack, the applicable _Weapon_ is _Occupied_. While _Charging_, gain +1 _Focus_.",
       "resolution": "Make your Attack against the Target at _Advantage_, ignoring _Light Cover_."
     },
-    "boost": "1/2/3 _Momentum_ (_Light_/_Balanced_/_Heavy_): Remove _Charging_ at the end of this _Phase_ rather than the end of next _Phase_."
+    "enhance": "1/2/3 _Momentum_ (_Light_/_Balanced_/_Heavy_): Remove _Charging_ at the end of this _Phase_ rather than the end of next _Phase_."
   },
   {
     "name": "Defensive Slash",
     "desc": "You lash out defensively, positioning your blade to defend against a future assault.",
-    "cost": "1 _Momentum_ / 2 _Stun_",
-    "effect": "Make an Attack using a _Wielded_ Blade Weapon. After resolving the Attack, choose one of the die you rolled. Gain _Guard_ equal to half the result on the next Attack made by the Target.",
-    "special": "If you use this Attack again replace any current _Guard_ it is providing.",
+    "cost": "1 _Momentum_ / 2 _Block_",
+    "effect": "Make an Attack using a _Wielded_ Blade Weapon. After resolving the Attack, choose one of the die you rolled. Gain _Block_ equal to half the result on the next Attack made by the Target.",
+    "special": "If you use this Attack again replace any current _Block_ it is providing.",
     "rank": "Major Attack"
   },
   {
     "name": "Dirty Trick",
-    "class": "General",
+    "category": "General",
     "desc": "You fling detritus at a foe's eyes, seeking to blind them momentarily.",
     "tier": "Light",
     "speed": "1",
@@ -226,13 +226,13 @@
       }
     ],
     "effect": "Inflict _Blinded_ [4 _Grit_/_Reflex_] on the Target.",
-    "boost": "2 _Momentum_: Instead, inflict _Blinded_ [7 _Grit_/_Reflex_] on the Target.",
+    "enhance": "2 _Momentum_: Instead, inflict _Blinded_ [7 _Grit_/_Reflex_] on the Target.",
     "special": "You may only use this Attack on a foe once per _Turn_."
   },
   {
     "name": "Earthen Artillery",
     "desc": "You fling a stone at great speed, knocking enemies off-balance.",
-    "class": "Mountain",
+    "category": "Mountain",
     "tier": "Heavy",
     "speed": "6",
     "cost": "3 _Momentum_",
@@ -244,7 +244,7 @@
       }
     ],
     "special": "If you are adjacent to an _Earthen_ _Feature_ or _Jagged_ space, this _Attack_ is instead _Speed_ 5. Originate the Attack from that space instead of your own and ignore its _Close Range_.",
-    "boost": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Feature_ within Range 3 or, if you choose an adjacent _Feature_, you gain a +1 _Bonus_ to the Attack.",
+    "enhance": "1 _Momentum_: The Special instead applies if there is an _Earthen_ _Feature_ within Range 3 or, if you choose an adjacent _Feature_, you gain a +1 _Bonus_ to the Attack.",
     "charged_profile": "Instead, this Attack is _Self_-Range _Line_ 6, or a _Line_ 6 originating from the relevant Feature, if applicable.",
     "chart": {
       "damage_tier": "Crush",
@@ -275,7 +275,7 @@
   {
     "name": "Earthen Fang",
     "desc": "You pull the earth upwards into a jagged spike, surprising a foe.",
-    "class": "Land",
+    "category": "Land",
     "tier": "Balanced",
     "speed": "5",
     "cost": "4 _Momentum_",
@@ -287,7 +287,7 @@
     ],
     "effect": "Choose a foe within _Range_. Immediately make an unoccupied _Earthen_ space adjacent to them _Jagged_, then resolve this Attack as a _Melee_ Attack originating from that space. If the space was already _Jagged_, instead make it an _Earth Spire_, add [_Pierce_ 1] to the Attack, add _Restrained_ [1 _Stamina_] to a 6-8, and increase the cost to Negate _Restrained_ by 1 on an 8+.",
     "special": "If this Attack inflicts _Restrained_, the effect automatically ends if the _Jagged_ space or _Earth Spire_ is removed. Otherwise, while _Recovering_, the creature may spend 2 _Stamina_ and resolve the effect of ending their Turn in a _Jagged_ space to end the effect.",
-    "boost": "2 _Momentum_: You may instead make an occupied _Earthen_ space _Jagged_. If this would result in it becoming a _Earth Spire_, resolve the _Jagged_ effect against the creature in that space, then _Slide_ 1 that creature if they may not longer occupy this space. They may not Negate.",
+    "enhance": "2 _Momentum_: You may instead make an occupied _Earthen_ space _Jagged_. If this would result in it becoming a _Earth Spire_, resolve the _Jagged_ effect against the creature in that space, then _Slide_ 1 that creature if they may not longer occupy this space. They may not Negate.",
     "charged_profile": "Mark the space the Attack will originate from with a _Hazard_. Create an _Earth Spire_ even if the space is not _Jagged_, and resolve that effect. If the space was already _Jagged_, gain a +1 _Bonus_.",
     "chart": {
       "damage_tier": "Stab",
@@ -318,7 +318,7 @@
   },
   {
     "name": "Earthen Needles",
-    "class": "Land",
+    "category": "Land",
     "desc": "You swiftly form needles from the earth, extending them to pierce a foe.",
     "tier": "Balanced",
     "speed": 4,
@@ -332,7 +332,7 @@
     "target": "A creature adjacent to an _Earthen_ space.",
     "effect": "Make an unoccupied _Earthen_ space adjacent to the Target _Jagged_, then resolve the Attack against the Target.",
     "special": "If there is a _Jagged_ space adjacent to the Target already you may choose to not make a _Jagged_ space. If you do, the Cost is instead 1.",
-    "boost": "1 _Momentum_: Instead, make the Target's space _Jagged_ if it is _Earthen_. If you do, gain a +1 _Bonus_.",
+    "enhance": "1 _Momentum_: Instead, make the Target's space _Jagged_ if it is _Earthen_. If you do, gain a +1 _Bonus_.",
     "chart": {
       "damage_tier": "Stab",
       "material": "Earth",
@@ -362,7 +362,7 @@
   },
   {
     "name": "Earthquake Step",
-    "class": "Land",
+    "category": "Land",
     "desc": "You bring a leg crashing down, causing a shockwave to emanate forth and disrupt foe's footing.",
     "tier": "Balanced",
     "speed": "4",
@@ -374,7 +374,7 @@
     ],
     "area": "_Line_ 3 or _Cone_ 2",
     "special": "Any _Prone_ creatures in the _Area_ take +1 Damage on a _Graze_+.",
-    "boost": "Choose any number:\n* 1 _Momentum_: The Area becomes _Uneven Earth_.",
+    "enhance": "Choose any number:\n* 1 _Momentum_: The Area becomes _Uneven Earth_.",
     "chart": {
       "keywords": ["Groundsource", "Avoidable"],
       "damage_tier": "Crush",
@@ -404,7 +404,7 @@
   {
     "name": "Flame Burst",
     "keywords": ["Spirit", "Fire", "Ignite"],
-    "class": "Blaze",
+    "category": "Blaze",
     "desc": "You form and fire a handful of flame, singing and searing foes.",
     "tier": "Balanced",
     "cost": "1 _Momentum_",
@@ -422,19 +422,19 @@
   },
   {
     "name": "Obstruct",
-    "class": "General",
+    "category": "General",
     "desc": "You move to obstruct a foe, limiting their mobility and forcing them to engage you.",
     "tier": "Light",
     "speed": "1",
     "range": "Melee",
     "effect": "The Target must _Negate_ [6 _Grit_/_Reflex_]. If it is the Target's _Turn_, they lose 1 _Movement_. Otherwise, inflict _Engaged_.",
-    "boost": "1 _Momentum_: Increase the _Negate_ DC by 2.",
+    "enhance": "1 _Momentum_: Increase the _Negate_ DC by 2.",
     "special": "If this Attack would inflict _Engaged_ you may choose to also become _Engaged_ with the Target; if you do, they have _Disadvantage_ to _Negate_. This always applies if you are already _Engaged_ with the Target."
   },
   {
     "name": "Explosive Seeds",
     "desc": "A spray of seeds that explodes into spiny shrapnel.",
-    "class": "Basic",
+    "category": "Basic",
     "tier": "Balanced",
     "speed": "6",
     "range": [
@@ -472,7 +472,7 @@
   },
   {
     "name": "Fire Spin",
-    "class": "Blaze",
+    "category": "Blaze",
     "desc": "You viciously rip flames around a foe, trapping them in a vortex of searing flame.",
     "tier": "Balanced",
     "speed": "4",
@@ -485,7 +485,7 @@
     ],
     "target": "A creature adjacent to a _Blazing_ space.",
     "effect": "Originate the Attack from a _Blazing_ space adjacent to the Target, treating it as _Melee_.",
-    "boost": "3 _Momentum_: As a part of this Attack, remove all _Blazing_ spaces adjacent to the Target. If you remove at least 3, add [_Enchant_]. The creature does not reduce their _Alight_ from the end of _Phase_ effect while this _Enchant_ persists. The _Enchant_ automatically ends if the Target has no _Alight_.",
+    "enhance": "3 _Momentum_: As a part of this Attack, remove all _Blazing_ spaces adjacent to the Target. If you remove at least 3, add [_Enchant_]. The creature does not reduce their _Alight_ from the end of _Phase_ effect while this _Enchant_ persists. The _Enchant_ automatically ends if the Target has no _Alight_.",
     "special": "If all spaces adjacent to the Target are _Blazing_ this Attack has _Advantage_.",
     "charged_profile": "Mark the space the Attack will originate from with a _Hazard_. Add _Alight_ 1, _Burned_ _0/0/1/2_.",
     "chart": {
@@ -516,7 +516,7 @@
   {
     "name": "Fireball",
     "desc": "A blast of concentrated flame, destroying all before it in a flash.",
-    "class": "Detonation",
+    "category": "Detonation",
     "tier": "Balanced",
     "speed": "5",
     "cost": "2 _Momentum_",
@@ -543,7 +543,7 @@
   {
     "name": "Cluster",
     "keywords": ["Spirit"],
-    "class": "Detonation",
+    "category": "Detonation",
     "desc": "You create a series of small explosions, detonating them in a disorienting chain.",
     "tier": "Balanced",
     "speed": "2",
@@ -569,7 +569,7 @@
   {
     "name": "Flame Jet",
     "desc": "A short-range explosion of flames to send foes staggering back.",
-    "class": "Detonation",
+    "category": "Detonation",
     "tier": "Light",
     "speed": "3",
     "cost": "2 _Momentum_",
@@ -594,7 +594,7 @@
   {
     "name": "Flamethrower",
     "desc": "A powerful jet of flames that erupts into a debilitating jet of flames.",
-    "class": "Detonation",
+    "category": "Detonation",
     "tier": "Balanced",
     "speed": "4",
     "cost": "4 _Momentum_",
@@ -604,7 +604,7 @@
       }
     ],
     "special": "Place a _Cone_ 3 anywhere in the _Area_. Its origin must be in the _Area_, and the _Cone_ must point in the same direction as the _Line_. Include creatures within the _Cone_ in the Attack as well.",
-    "boost": "2 _Momentum_: Instead, use a _Cone_ 4 for the special effect.",
+    "enhance": "2 _Momentum_: Instead, use a _Cone_ 4 for the special effect.",
     "area": "_Line_ 5",
     "chart": {
       "damage_tier": "Fire",
@@ -621,7 +621,7 @@
   },
   {
     "name": "Flaming Detonation",
-    "class": "Detonation",
+    "category": "Detonation",
     "desc": "You create a series of small motes of fire, detonating them all simultaneously.",
     "tier": "Light",
     "speed": "4+ [_Rigid_]",
@@ -643,7 +643,7 @@
   },
   {
     "name": "Flashbang",
-    "class": "Detonation",
+    "category": "Detonation",
     "desc": "You make a small explosion intended to blind and disorient rather than harm.",
     "tier": "Light",
     "speed": "2",
@@ -684,21 +684,21 @@
     "reqs": "Weapon _Wielded_ in either _Hand_.",
     "effect": "Make two _Light_ _Attacks_, each of which must use one of your _Wielded_ Weapons. You must make at least one Attack with each of these Weapons.",
     "special": "This _Turn_ you may make a _Balanced_ Attack using a _Wielded_ Weapon a _Light_ _Attack_ instead. When you do, add [_Glancing_], halve the Cost, and halve any On-Miss _Momentum_.",
-    "boost": "2 _Momentum_: Make an additional _Light_ _Attack_ with a _Wielded_ Weapon.",
+    "enhance": "2 _Momentum_: Make an additional _Light_ _Attack_ with a _Wielded_ Weapon.",
     "tier": "Balanced",
-    "class": "Martial",
+    "category": "Martial",
     "keywords": ["Derived"]
   },
   {
     "name": "Air Blast",
-    "class": "Gale",
+    "category": "Gale",
     "desc": "A pocket of powerful air, striking out at a distant foe.",
     "keywords": ["Spirit", "Wind", "Crush"],
     "cost": "1 _Momentum_",
     "tier": "Balanced",
     "speed": "1",
     "effect": "Ignore all _Penalties_ due to _Windy_ _Terrain_ when making this Attack.",
-    "boost": "Choose any:\n* 2 _Momentum_: Increase any _Push_ inflicted by 1.",
+    "enhance": "Choose any:\n* 2 _Momentum_: Increase any _Push_ inflicted by 1.",
     "range": "Melee/Short",
     "chart": {
       "roll": ["2-3", "4-5", "5-10", "11-12"],
@@ -712,7 +712,7 @@
   },
   {
     "name": "Frost Spray",
-    "class": "Tundra",
+    "category": "Tundra",
     "desc": "A short-range spray of slashing frost directed at foes, typically launched by dragging your foot.",
     "tier": "Light",
     "speed": 3,
@@ -739,7 +739,7 @@
   },
   {
     "name": "Grapple",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "You attempt to grab a foe, doing limited damage but limiting their mobility.",
     "tier": "Balanced",
     "speed": 2,
@@ -778,7 +778,7 @@
   },
   {
     "name": "Gripping Frost",
-    "class": "Tundra",
+    "category": "Tundra",
     "desc": "You form ice into manacles, reaching out from the ground to snare a foe.",
     "tier": "Balanced",
     "rank": "Major Attack",
@@ -793,7 +793,7 @@
     "target": "A Size 1- creature on an _Icy_ space within _Range_.",
     "effect": "Immediately deal 3 _Cold_ Damage and inflict _Frozen_ 3, _Hobbled_ 2 on the Target.",
     "special": "You may choose to remove the _Icy_ space as a part of this _Maneuver_. If you do, instead deal 4 _Cold_ Damage and inflict _Frozen_ 3, _Restrained_ [3 _Stamina_]. This _Restrained_ ends after the Target takes any Damage.",
-    "boost": "1 _Momentum_: You may target a Size 2 creature. The majority of their occupied spaces must be _Icy_.",
+    "enhance": "1 _Momentum_: You may target a Size 2 creature. The majority of their occupied spaces must be _Icy_.",
     "charged_profile": "Instead, resolve this in 3 contiguous _Icy_ spaces within Range.",
     "analysis_notes": {
       "bonus_damage": [8.75, 8.75, 8.75, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25, 7.25]
@@ -801,7 +801,7 @@
   },
   {
     "name": "Infuriate",
-    "class": "General",
+    "category": "General",
     "keywords": ["Mobile", "Social"],
     "desc": "You launch scathing insults at a foe, creating openings as they focus on offense.",
     "tier": "Light",
@@ -812,11 +812,11 @@
         "value": 6
       }
     ],
-    "effect": "Inflict _Enraged_ [6 _Focus_] and 2 _Stun_ on the Target."
+    "effect": "Inflict _Enraged_ [6 _Focus_] and 2 _Block_ on the Target."
   },
   {
     "name": "Taunt",
-    "class": "General",
+    "category": "General",
     "keywords": ["Mobile", "Social"],
     "desc": "You insult a foe's capabilities, attempting to taunt them.",
     "tier": "Light",
@@ -832,7 +832,7 @@
   },
   {
     "name": "Icicle Shot",
-    "class": "Tundra",
+    "category": "Tundra",
     "desc": "You form a series of icicles before rapidly firing them at a nearby fow.",
     "tier": "Balanced",
     "speed": 2,
@@ -857,7 +857,7 @@
   },
   {
     "name": "Demoralize",
-    "class": "General",
+    "category": "General",
     "keywords": ["Mobile", "Social"],
     "desc": "You verbally assault a foe, attempting to push them off-balance.",
     "tier": "Light",
@@ -868,11 +868,11 @@
         "value": 6
       }
     ],
-    "effect": "Inflict _Anguished_ [6 _Focus_] and 2 _Stun_ on the Target."
+    "effect": "Inflict _Anguished_ [6 _Focus_] and 2 _Block_ on the Target."
   },
   {
     "name": "Intimidate",
-    "class": "General",
+    "category": "General",
     "keywords": ["Mobile", "Social"],
     "desc": "You verbally assault a foe, attempting to push them off-balance.",
     "tier": "Light",
@@ -888,7 +888,7 @@
   },
   {
     "name": "Jolt",
-    "class": "Storm",
+    "category": "Storm",
     "desc": "You conduct an instantaneous bolt of lightning, striking a nearby foe.",
     "tier": "Balanced",
     "speed": "1",
@@ -924,7 +924,7 @@
   },
   {
     "name": "Lancing Rush",
-    "class": "Martial",
+    "category": "Martial",
     "discipline": "Lance",
     "desc": "You lower your spear before charging a foe, attempting to skewer them.",
     "keywords": ["_Limited_ (1/_Turn_)"],
@@ -936,7 +936,7 @@
   },
   {
     "name": "Lightning Lance",
-    "class": "Storm",
+    "category": "Storm",
     "desc": "You conduct an instantaneous bolt of lightning, striking a nearby foe.",
     "tier": "Balanced",
     "speed": "4",
@@ -980,7 +980,7 @@
   },
   {
     "name": "Open Palm",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "A strike with an open palm to disorient and unbalance a foe.",
     "tier": "Light",
     "speed": 3,
@@ -991,7 +991,7 @@
       }
     ],
     "effect": "Gain 1 _Momentum_.",
-    "boost": "Choose any:\n* 1 _Momentum_ (_Hit_+): Increase the _Negate_ cost by 3.\n* 1 _Momentum_: Add _Dazed_ 1.",
+    "enhance": "Choose any:\n* 1 _Momentum_ (_Hit_+): Increase the _Negate_ cost by 3.\n* 1 _Momentum_: Add _Dazed_ 1.",
     "chart": {
       "damage_tier": "Crush",
       "on_miss": "+0 _Momentum_",
@@ -1020,7 +1020,7 @@
   },
   {
     "name": "Pommel Strike",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "You strike with the haft of your weapon, knocking your foe off-balance without compromising your stance.",
     "keywords": ["Crush"],
     "tier": "Light",
@@ -1040,7 +1040,7 @@
   },
   {
     "name": "Power Attack",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "You make a mighty swing, forgoing the windup for your heavy attack.",
     "keywords": ["Derived"],
     "range": "Melee",
@@ -1054,7 +1054,7 @@
   },
   {
     "name": "Practiced Feint",
-    "class": "General",
+    "category": "General",
     "desc": "You lunge one way, driving a foe off-balance and open to an attack.",
     "tier": "Light",
     "keywords": ["Feint"],
@@ -1065,13 +1065,13 @@
         "value": 3
       }
     ],
-    "effect": "Inflict 3 _Stun_ on the Target. They must also _Negate_ [5 _Focus_]. If they fail, the next _Attack_ against them this _Phase_ has _Advantage_.",
-    "boost": "4 _Stun_: Add _Exposed_ if a creature fails to _Negate_.",
+    "effect": "Inflict 3 _Block_ on the Target. They must also _Negate_ [5 _Focus_]. If they fail, the next _Attack_ against them this _Phase_ has _Advantage_.",
+    "enhance": "4 _Block_: Add _Exposed_ if a creature fails to _Negate_.",
     "rank": "Minor Attack"
   },
   {
     "name": "Ram",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "A forceful attack that powers through enemies using the load of ones' body.",
     "tier": "Light",
     "keywords": ["Mobile"],
@@ -1084,7 +1084,7 @@
     ],
     "effect": "Gain 1 _Momentum_.",
     "special": "Decrease the _Speed_ of this _Technique_ by 1 or increase the Negate target by 2 if used against a creature you are sharing a space with during [_Breach_] Movement.",
-    "boost": "Choose any\n* 1 _Momentum_ (_Graze_+): Add _Push_ 2.\n* 1 _Momentum_ (_Hit_+): Add 2 _Crush_ Damage.",
+    "enhance": "Choose any\n* 1 _Momentum_ (_Graze_+): Add _Push_ 2.\n* 1 _Momentum_ (_Hit_+): Add 2 _Crush_ Damage.",
     "chart": {
       "damage_tier": "Crush",
       "keywords": ["Body"],
@@ -1114,7 +1114,7 @@
   },
   {
     "name": "Reel",
-    "class": "Martial",
+    "category": "Martial",
     "discipline": "Basic",
     "desc": "A simple attack that pulls a creature in towards you",
     "effect": "Inflict _Pull_ 4 on a _Grabbed_ creature. If they end this adjacent to you, inflict _Vulnerable_ 1.",
@@ -1123,7 +1123,7 @@
   {
     "name": "Riptide",
     "desc": "You pull water towards you forcefully, dragging others with it.",
-    "class": "Tide",
+    "category": "Tide",
     "tier": "Balanced",
     "speed": "4",
     "cost": "2 _Momentum_",
@@ -1136,7 +1136,7 @@
     "effect": "_Draw_ up to 3 within _Range_. Resolve the below attack against a single creature between you and each _Drawn_ _Source_, including creatures in those _Sources_. You may _Draw_ multiple times from the same _Source_; if you do, add _Pull_ 1 and deal +1 Damage on the _Attack_ rather than attacking a different creature. You may also do this if the creature is between you and multiple _Drawn_ _Sources_. After resolving the _Attack_, create _Wet_ spaces adjacent to you equal to the amount you _Drew_.",
     "special": "After your foe _Negates_ you may replace any amount of inflicted _Pull_ with _Vulnerable_.",
     "charged_profile": "When _Charged_, mark the _Sources_ you are _Drawing_ from as a _Hazard_. Add _Prone_ [2 _Stamina_] on a 7+.",
-    "boost": "Choose any:\n* 1 _Momentum_: Do not deal Damage to one Target, but automatically roll an 8. You may use this _Boost_ any number of times.\n* 2 _Momentum_: _Draw_ one more. You may use this Boost up to 4 times.",
+    "enhance": "Choose any:\n* 1 _Momentum_: Do not deal Damage to one Target, but automatically roll an 8. You may use this _Enhance_ any number of times.\n* 2 _Momentum_: _Draw_ one more. You may use this Enhance up to 4 times.",
     "chart": {
       "damage_tier": "Crush",
       "damage": [0, 0, 2, 2, 3, 3, 4, 4, 4, 5, 5],
@@ -1155,7 +1155,7 @@
   },
   {
     "name": "Crescent Kick",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "A strong kick that knocks foes off-balance.",
     "tier": "Light",
     "speed": 2,
@@ -1166,7 +1166,7 @@
       }
     ],
     "effect": "Gain 1 _Momentum_.",
-    "boost": "Choose any:\n* 1 _Momentum_ (_Hit_+): Increase the _Negate_ cost by 3.\n* 1 _Momentum_: Add _Push_ 2.",
+    "enhance": "Choose any:\n* 1 _Momentum_ (_Hit_+): Increase the _Negate_ cost by 3.\n* 1 _Momentum_: Add _Push_ 2.",
     "chart": {
       "damage_tier": "Crush",
       "on_miss": "+0 _Momentum_",
@@ -1196,7 +1196,7 @@
   {
     "name": "Roiling Tide",
     "desc": "A surge of water that can push or pull, depending on one's intent.",
-    "class": "Tide",
+    "category": "Tide",
     "tier": "Balanced",
     "speed": 4,
     "cost": "1 _Momentum_",
@@ -1208,7 +1208,7 @@
       }
     ],
     "effect": "You must _Draw_ 1 as a part of this Attack.",
-    "boost": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
+    "enhance": "Choose one:\n* 1 _Momentum_: You may choose to make the Attack originate from the _Drawn_ _Source_ if it is within Range 3. Remove _Close Range_ when used in this way.",
     "chart": {
       "damage_tier": "Crush",
       "on_miss": "+2 _Momentum_ and make a space adjacent to the target _Wet_.",
@@ -1218,15 +1218,15 @@
       "status": [
         "",
         "",
-        "_Paddinged_ 1, _Push_ 1/_Pull_ 1",
-        "_Paddinged_ 1, _Push_ 1/_Pull_ 1",
-        "_Paddinged_ 1, _Push_ 2/_Pull_ 2",
-        "_Paddinged_ 1, _Push_ 2/_Pull_ 2",
-        "_Paddinged_ 1, _Push_ 3/_Pull_ 3",
-        "_Paddinged_ 1, _Push_ 3/_Pull_ 3",
-        "_Paddinged_ 1, _Push_ 3/_Pull_ 3",
-        "_Paddinged_ 1, _Push_ 4/_Pull_ 4",
-        "_Paddinged_ 1, _Push_ 4/_Pull_ 4"
+        "_Armored_ 1, _Push_ 1/_Pull_ 1",
+        "_Armored_ 1, _Push_ 1/_Pull_ 1",
+        "_Armored_ 1, _Push_ 2/_Pull_ 2",
+        "_Armored_ 1, _Push_ 2/_Pull_ 2",
+        "_Armored_ 1, _Push_ 3/_Pull_ 3",
+        "_Armored_ 1, _Push_ 3/_Pull_ 3",
+        "_Armored_ 1, _Push_ 3/_Pull_ 3",
+        "_Armored_ 1, _Push_ 4/_Pull_ 4",
+        "_Armored_ 1, _Push_ 4/_Pull_ 4"
       ]
     },
     "rank": "Minor Attack"
@@ -1237,7 +1237,7 @@
     "tier": "Balanced",
     "keywords": ["Spirit", "Avoidable", "Groundsource"],
     "speed": 2,
-    "class": "Land",
+    "category": "Land",
     "range": "Melee_/_Short",
     "chart": {
       "damage_tier": "Crush",
@@ -1270,7 +1270,7 @@
   {
     "name": "Scorch",
     "desc": "You create a deadly line of flame, laying waste to all before you.",
-    "class": "Blaze",
+    "category": "Blaze",
     "tier": "Balanced",
     "speed": "3",
     "keywords": ["Spirit", "Fire", "Ignite", "Point Blank"],
@@ -1296,11 +1296,11 @@
     "tier": "Balanced",
     "keywords": ["Spirit", "Avoidable", "Earth", "Crush"],
     "speed": 1,
-    "class": "Mountain",
+    "category": "Mountain",
     "range": "Melee/Short",
     "effect": "Choose a [_Earth_] _Feature_ within _Range_ with a _Load_ less than or equal to twice the current _Phase_. Choose a _Position_ in the same _Arena_ as the _Feature_. Immediately move the _Feature_ to the _Position_ and stop any creature from _Occupying_ it. Inflict _Collide_ 2 with said _Feature_ on a _Target_ at the _Position_. You may instead allow a Target at that _Position_ to immediately _Occupy_ said _Feature_.",
     "special": "If the _Feature_ has an effect that resolves when moving to a new _Position_ you must resolve it against the same creature as the _Collide_.",
-    "boost": "2 _Momentum_: _Destroy_ the _Obstacle_ after moving it. Resolve the _Collide_ effect against all creatures at the _Position_ as [_Glancing_].",
+    "enhance": "2 _Momentum_: _Destroy_ the _Obstacle_ after moving it. Resolve the _Collide_ effect against all creatures at the _Position_ as [_Glancing_].",
     "charged_profile": {
       "set_up": "Range is instead _Medium_-. Choose a piece of [_Earth_] _Terrain_ within _Range_ and the target _Position_. Increase the _Load_ of the _Terrain_ you can Target by 4.",
       "resolution": "Resolve this Attack against the Target. You may instead _Collide_ 3."
@@ -1311,14 +1311,14 @@
     "desc": "An untrained strike making use of the body itself to body-slam a foe.",
     "tier": "Balanced",
     "speed": 4,
-    "class": "Martial",
+    "category": "Martial",
     "range": [
       {
         "category": "Melee",
         "value": 1
       }
     ],
-    "boost": "1 _Momentum_: Increase _Push_ inflicted by 1.",
+    "enhance": "1 _Momentum_: Increase _Push_ inflicted by 1.",
     "chart": {
       "keywords": ["Body"],
       "damage_tier": "Crush",
@@ -1344,7 +1344,7 @@
   {
     "name": "Surging Stream",
     "desc": "A concentrated stream of water, drenching and unbalancing.",
-    "class": "Tide",
+    "category": "Tide",
     "tier": "Balanced",
     "keywords": ["Spirit", "Water", "Crush"],
     "speed": 2,
@@ -1356,11 +1356,11 @@
       "stun": [0, 1, 3, 4],
       "damage": [0, 0, 2, 3],
       "roll": ["2", "3-4", "5-10", "11-12"],
-      "status": ["+2 _Momentum_", "_Paddinged_", "_Tidal Motion_ 1 [4 _Grit_], _Paddinged_", "_Tidal Motion_ 2 [6 _Grit_], _Paddinged_"]
+      "status": ["+2 _Momentum_", "_Armored_", "_Tidal Motion_ 1 [4 _Grit_], _Armored_", "_Tidal Motion_ 2 [6 _Grit_], _Armored_"]
     },
     "charged_profile": {
       "set_up": "Choose a Target within Range and, if using the Special, mark the appropriate _Source_. While _Charging_ gain _Resistance_ I (_Fire_, _Water_).",
-      "resolution": "Resolve this Attack against the Target. Increase the cost to _Negate_ by 1, and increase the _Stun_ by 1. If the _Source_ used for this Attack was _Destroyed_, the attack automatically fails."
+      "resolution": "Resolve this Attack against the Target. Increase the cost to _Negate_ by 1, and increase the _Block_ by 1. If the _Source_ used for this Attack was _Destroyed_, the attack automatically fails."
     }
   },
   {
@@ -1373,7 +1373,7 @@
   },
   {
     "name": "Swift Manifestation",
-    "class": "Spirit",
+    "category": "Spirit",
     "desc": "Your spirit briefly conjures a physical form before unleashing a strike.",
     "rank": "Minor Attack",
     "range": [
@@ -1387,14 +1387,14 @@
   },
   {
     "name": "Swipe",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "A swift attack using a natural weapon.",
     "effect": "Make a _Major Attack_ using a _Natural_  Weapon, adding [_Glancing_]. Refer to the Weapon for all details about the specific Attack, such as its _Speed_ and whether it is _Light_, _Balanced_, or _Heavy_.",
     "rank": "Minor Attack"
   },
   {
     "name": "Swirling Vortex",
-    "class": "Gale",
+    "category": "Gale",
     "desc": "You assail a foe with a swirling vortex of wind, disorienting and distracting them.",
     "tier": "Balanced",
     "speed": 2,
@@ -1431,7 +1431,7 @@
   {
     "name": "Tidal Crash",
     "desc": "A flood of water like a crashing wave, devastating foes and scattering them.",
-    "class": "Tide",
+    "category": "Tide",
     "tier": "Heavy",
     "keywords": ["Spirit", "Water", "Crush"],
     "speed": 3,
@@ -1445,21 +1445,21 @@
       "roll": ["Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
       "status": [
         "",
-        "_Tidal Motion_ 1 [3 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [3 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [3 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [3 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [4 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [4 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [5 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 1 [5 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 2 [6 _Grit_], _Paddinged_",
-        "_Tidal Motion_ 2 [6 _Grit_], _Paddinged_"
+        "_Tidal Motion_ 1 [3 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [3 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [3 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [3 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [4 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [4 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [5 _Grit_], _Armored_",
+        "_Tidal Motion_ 1 [5 _Grit_], _Armored_",
+        "_Tidal Motion_ 2 [6 _Grit_], _Armored_",
+        "_Tidal Motion_ 2 [6 _Grit_], _Armored_"
       ]
     },
     "charged_profile": {
       "set_up": "Immediately _Draw_ and choose a Position within _Range_. While _Charging_, create a _Wave_ at your _Position_ that you may immediately _Occupy_. If the _Wave_ is _Destroyed_, lose _Charging_.",
-      "resolution": "Remove the _Wave_ without resolving its _Destroy_ Effect. Resolve this Attack against the target Position. Add [_Prone_] and deal +5 _Bonus Stun_."
+      "resolution": "Remove the _Wave_ without resolving its _Destroy_ Effect. Resolve this Attack against the target Position. Add [_Prone_] and deal +5 _Bonus Block_."
     },
     "analysis_notes": { "fudge": 0.5, "expected_targets": 2 }
   },
@@ -1467,9 +1467,9 @@
     "name": "Twister",
     "desc": "You seize the wind, twisting and turning it into a vicious spin.",
     "keywords": ["Spirit", "Wind", "Crush", "Committed"],
-    "class": "Wind",
+    "category": "Wind",
     "cost": "2 _Momentum_",
-    "effect": "Resolve this Attack against a whole _Position_. If the _Position_ is _Gusting_, remove _Gusting_ and gain a +1 _Bonus_. For every two Targets at said _Position_, inflict +1 _Bonus Stun_.",
+    "effect": "Resolve this Attack against a whole _Position_. If the _Position_ is _Gusting_, remove _Gusting_ and gain a +1 _Bonus_. For every two Targets at said _Position_, inflict +1 _Bonus Block_.",
     "special": "When inflicting _Slide_ you may not place two Targets at the same _Position_ until you have at least placed one creature at all eligible _Positions_ within that _Arena_. You must always choose to move Targets to a new _Position_ when inflicting _Slide_.",
     "tier": "Heavy",
     "speed": 2,
@@ -1500,7 +1500,7 @@
   },
   {
     "name": "Thrust",
-    "class": "Martial",
+    "category": "Martial",
     "keywords": ["Derived"],
     "discipline": "Lance",
     "desc": "A swift thrust with a lance weapon, lacking power but making up for it in speed.",
@@ -1509,7 +1509,7 @@
   {
     "name": "Thunderbolt",
     "desc": "You reach towards the sky, conducting a powerful bolt of lightning towards yourself.",
-    "class": "Storm",
+    "category": "Storm",
     "tier": "Heavy",
     "speed": "5",
     "cost": "2 _Momentum_",
@@ -1523,7 +1523,7 @@
     "effect": "Create an _Area_ _Hazard_ within _Range_. At the end of any _Phase_ after this one you may remove the _Hazard_ to resolve the below Attack in the _Area_.",
     "special": "If you have not removed the _Hazard_ at the end of the _Round_ resolve the On-Miss effect then remove the _Hazard_.",
     "charged_profile": "Create no _Hazard_ while _Charging_. Instead, after _Charging_, create a _Blast_ 1 _Hazard_ within _Range_ and deal +2 _Lightning_ Damage.",
-    "boost": "1 _Momentum_: While there is a _Hazard_ the _Area_ is _Electrified_.",
+    "enhance": "1 _Momentum_: While there is a _Hazard_ the _Area_ is _Electrified_.",
     "chart": {
       "damage_tier": "Lightning",
       "on_miss": "+3 _Momentum_",
@@ -1552,27 +1552,27 @@
     "tier": "Versatile",
     "speed": "3",
     "keywords": ["Poison", "AP", "Endurable", "Unblockable"],
-    "class": "NPC",
+    "category": "NPC",
     "range": "Melee",
-    "effect": "Deal 3 _Stun_ and inflict _Poisoned_ [4 _Grit_] on up to two creatures at the target _Position_.",
+    "effect": "Deal 3 _Block_ and inflict _Poisoned_ [4 _Grit_] on up to two creatures at the target _Position_.",
     "analysis_notes": {
       "bonus_damage": 5.0,
       "expected_targets": 1.25
     },
     "charged_profile": {
       "set_up": "Add _Toxic Gas_ to your _Position_.",
-      "resolution": "Deal +3 _Bonus Stun_."
+      "resolution": "Deal +3 _Bonus Block_."
     }
   },
   {
     "name": "Brawl",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "An untrained yet still effective strike, often used to set up a successive strike.",
     "tier": "Light",
     "keywords": ["Crush", "Natural"],
     "speed": 1,
     "range": "Melee",
-    "special": "If used in a _Phase_ later than this Attack's listed _Speed_, choose one per _Phase_ later:\n* Add +1 _Bonus_ _Stun_. You may choose this option multiple times.\n* On a _Hit_+, increase the _Negate_ cost by 1. You may choose this option multiple times.\n* On a _Hit_+, instead inflict one of _Push_ 1 [3 _Grit_]/_Prone_ [2 _Grit_/_Reflex_]/_Grabbed_ [2 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_.",
+    "special": "If used in a _Phase_ later than this Attack's listed _Speed_, choose one per _Phase_ later:\n* Add +1 _Bonus_ _Block_. You may choose this option multiple times.\n* On a _Hit_+, increase the _Negate_ cost by 1. You may choose this option multiple times.\n* On a _Hit_+, instead inflict one of _Push_ 1 [3 _Grit_]/_Prone_ [2 _Grit_/_Reflex_]/_Grabbed_ [2 _Grit_/_Reflex_]. Increase the cost to _Negate_ by 1 on a _Crit_.",
     "chart": {
       "stun": [0, 1, 2, 3],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -1582,7 +1582,7 @@
   },
   {
     "name": "Unsettle",
-    "class": "General",
+    "category": "General",
     "keywords": ["Mobile", "Social"],
     "desc": "You pick at psychological weaknesses in a foe, breaking down their combat capabilities even more.",
     "tier": "Light",
@@ -1593,12 +1593,12 @@
         "value": 6
       }
     ],
-    "effect": "Inflict _Exposed_ or _Impaired_ [4 _Focus_] on the Target. For every _Emotional Affliction_ they are suffering, increase the _Negate_ DC by 1 and add _Stun_ 1. The target takes half as much _Stun_ if they successfully _Negate_.",
-    "special": "You may choose to remove one of the target's _Emotional Afflictions_ as a part of this Attack. If you do you may instead inflict both of _Exposed_ and _Impaired_. You still count this _Emotional Affliction_ when determining the _Negate_ DC and _Stun_."
+    "effect": "Inflict _Exposed_ or _Impaired_ [4 _Focus_] on the Target. For every _Emotional Affliction_ they are suffering, increase the _Negate_ DC by 1 and add _Block_ 1. The target takes half as much _Block_ if they successfully _Negate_.",
+    "special": "You may choose to remove one of the target's _Emotional Afflictions_ as a part of this Attack. If you do you may instead inflict both of _Exposed_ and _Impaired_. You still count this _Emotional Affliction_ when determining the _Negate_ DC and _Block_."
   },
   {
     "name": "Vine Whip",
-    "class": "Spirit",
+    "category": "Spirit",
     "discipline": "Growth",
     "speed": 3,
     "desc": "Bulbasaur.",
@@ -1615,14 +1615,14 @@
   {
     "name": "Weapon Attack",
     "keywords": ["Derived"],
-    "class": "Martial",
+    "category": "Martial",
     "discipline": "Basic",
     "desc": "A basic, but nonetheless effect, strike with a weapon.",
     "effect": "Make an Attack using a _Wielded_ Weapon."
   },
   {
     "name": "Assault Orders",
-    "class": "Martial",
+    "category": "Martial",
     "discipline": "Basic",
     "cost": "1 _Momentum_",
     "speed": 1,
@@ -1634,9 +1634,9 @@
     "name": "Wild Chop",
     "desc": "You let your axe's load control your movements, lashing out with a wild, uncontrolled strike.",
     "keywords": ["Derived"],
-    "class": "Martial",
+    "category": "Martial",
     "cost": "1 _Momentum_",
-    "effect": "Make an Attack using an _Axe_ Weapon. On a _Miss_, gain _Stun_ 1 and do not resolve the _On-Miss_ effect. You may _Move_ and then reroll the same Attack against another target with a +1 _Bonus_. You may only target a given creature once with this _Attack_, and the _Bonus_ continues to increase until you _Graze_+ with an _Attack_. If you _Miss_ and have no eligible Targets, gain _Exposed_, _Reeling_ and resolve the _On-Miss_ effect.",
+    "effect": "Make an Attack using an _Axe_ Weapon. On a _Miss_, gain _Block_ 1 and do not resolve the _On-Miss_ effect. You may _Move_ and then reroll the same Attack against another target with a +1 _Bonus_. You may only target a given creature once with this _Attack_, and the _Bonus_ continues to increase until you _Graze_+ with an _Attack_. If you _Miss_ and have no eligible Targets, gain _Exposed_, _Reeling_ and resolve the _On-Miss_ effect.",
     "special": "You may choose to treat a _Graze_ as a _Miss_."
   },
   {
@@ -1644,7 +1644,7 @@
     "desc": "You animate a flame, searing foes as you redirect it.",
     "tier": "Light",
     "speed": "4",
-    "class": "Blaze",
+    "category": "Blaze",
     "keywords": ["Spirit", "Fire", "Ignite", "Avoidable"],
     "range": "Melee/Short",
     "effect": "Choose a [_Fire_] Terrain or _Feature_ with Range. _Destroy_ it, then deal 3 Damage and inflict _Alight_ [4 _Reflex_] on a creature within Range.",
@@ -1656,18 +1656,18 @@
   },
   {
     "name": "Wrench",
-    "class": "Martial",
+    "category": "Martial",
     "desc": "You violently wrench a grappled foe, potentially leaving them open for assault.",
     "tier": "Light",
     "speed": 2,
     "target": "A _Grabbed_ creature.",
-    "effect": "Immediately initiate a _Grab Check_, resolving this Attack according to the result:\n* **Defender Higher**: Inflict _Stun_ 2. Do not end the _Grab_.\n* **Tie+**: Inflict _Stun_ 2, _Dazed_ 1, _Exposed_ [5 _Grit_/_Reflex_].\n* **Attacker Wins By 3+:** Inflict _Stun_ 3, _Dazed_ 1, _Exposed_, _Disarmed_ [6 _Grit_/_Reflex_].",
+    "effect": "Immediately initiate a _Grab Check_, resolving this Attack according to the result:\n* **Defender Higher**: Inflict _Block_ 2. Do not end the _Grab_.\n* **Tie+**: Inflict _Block_ 2, _Dazed_ 1, _Exposed_ [5 _Grit_/_Reflex_].\n* **Attacker Wins By 3+:** Inflict _Block_ 3, _Dazed_ 1, _Exposed_, _Disarmed_ [6 _Grit_/_Reflex_].",
     "range": [
       {
         "category": "Melee",
         "value": 1
       }
     ],
-    "boost": "Choose any:\n* 1 _Momentum_: Deal Damage equal to half the difference in rolls, rounded up."
+    "enhance": "Choose any:\n* 1 _Momentum_: Deal Damage equal to half the difference in rolls, rounded up."
   }
 ]

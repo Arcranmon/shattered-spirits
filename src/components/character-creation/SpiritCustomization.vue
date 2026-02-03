@@ -67,7 +67,7 @@
               </v-btn></v-row
             >
             <v-row style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%" justify="center">
-              <weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
+              <weapon-widget v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
           ></v-col>
         </v-row>
       </div>
@@ -87,10 +87,10 @@ import Vue from 'vue'
 import { store } from '@/store'
 import { Character } from '@/class'
 import CustomizationText from '@/database/text_files/character_creation/customizing_your_spirit.txt'
-import WeaponCard from '@/components/cards/WeaponCard.vue'
+import WeaponWidget from '@/components/cards/WeaponWidget.vue'
 export default Vue.extend({
   name: 'spirit-customization',
-  components: { WeaponCard },
+  components: { WeaponWidget },
   props: {
     character: {
       type: Character,

@@ -47,8 +47,8 @@
       <div class="card--format" v-if="maneuver.HasSpecial">
         <display-tooltip-text :string="maneuver.SpecialHeader" />
       </div>
-      <div class="card--format" v-if="maneuver.HasBoost">
-        <display-tooltip-text :string="maneuver.BoostHeader" />
+      <div class="card--format" v-if="maneuver.HasEnhance">
+        <display-tooltip-text :string="maneuver.EnhanceHeader" />
       </div>
       <div class="card--format" v-if="maneuver.HasManifest">
         <display-tooltip-text :string="maneuver.ManifestHeader" />
@@ -97,7 +97,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.Stunt {
+.Blockt {
   background-color: $color--maneuver;
 }
 .Action {

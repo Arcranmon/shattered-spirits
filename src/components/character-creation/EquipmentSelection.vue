@@ -47,7 +47,7 @@
                       <span v-else>CHOOSE {{ armor.Name }}</span>
                     </v-btn></v-layout
                   >
-                  <armor-card :armor="armor" /></div></v-col
+                  <base-widget :ability="armor" /></div></v-col
             ></v-row></div
         ></v-tab-item>
         <v-tab-item :eager="true" class="builder--body" eager>
@@ -92,7 +92,7 @@
                 </v-btn></v-row
               >
               <v-row style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%" justify="center">
-                <weapon-card v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
+                <weapon-widget v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
             ></v-col> </v-row
         ></v-tab-item>
       </v-tabs-items></div
@@ -103,15 +103,14 @@ import Vue from 'vue'
 
 import { store } from '@/store'
 import { Character, Weapon } from '@/class'
-import ArmorCard from '@/components/cards/ArmorCard.vue'
-import WeaponCard from '@/components/cards/WeaponCard.vue'
+import WeaponWidget from '@/components/cards/WeaponWidget.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import ArmorSelectionText from '@/database/text_files/character_creation/choosing_your_armor.txt'
 import EquipmentSelectionText from '@/database/text_files/character_creation/choosing_your_equipment.txt'
 import WeaponSelectionText from '@/database/text_files/character_creation/choosing_your_weapons.txt'
 export default Vue.extend({
   name: 'equipment-selection',
-  components: { WeaponCard, ArmorCard, ShowCards },
+  components: { WeaponWidget, ShowCards },
   props: {
     character: {
       type: Character,

@@ -11,13 +11,16 @@
           </div>
         </v-btn-toggle></v-col
       >
-      <v-col :key="selectedTab">
+      <v-col :key="selectedTab" style="padding-left: 0; padding-bottom: 0">
         <h2>{{ selectedTab }}</h2>
-        <div v-if="selectedTab == 'Afflictions and Status'">
+        <div v-if="selectedTab == 'Afflictions and Status'" class="character-tab-content">
           <v-select v-model="selectedStatuses" :items="statusCategories" attach label="Status Categories" multiple filled outlined></v-select>
-          <show-cards :inputs="statuses" :collapse="false" />
+          <show-cards :inputs="statuses" :collapse="false" :cols="1" />
         </div>
-        <show-cards v-if="selectedTab == 'Terrain'" :inputs="terrains" :collapse="false" />
+        <div v-if="selectedTab == 'Terrain'" class="character-tab-content">
+          <show-cards :inputs="terrains" :collapse="false" :cols="1" />
+        </div>
+
         <div v-if="selectedTab == 'Glossary'">
           <div v-for="key of glossaryItems.keys()">
             <h3>{{ key }}</h3>
@@ -26,7 +29,7 @@
             </div>
           </div>
         </div>
-        <display-tooltip-text v-else :string="text[tabs.indexOf(selectedTab)]"
+        <display-tooltip-text v-else :string="text[tabs.indexOf(selectedTab)]" style="padding-left: 1em"
       /></v-col>
     </v-row>
   </div>

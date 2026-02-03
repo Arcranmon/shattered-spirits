@@ -8,7 +8,7 @@
         <div class="card--keywords" v-bind:class="tech.Type">
           <span v-if="tech.Attack"> </span>
           <div>
-            <b><display-tooltip-text :string="tech.ClassHeader" :decorate="false" /></b>
+            <b><display-tooltip-text :string="tech.categoryHeader" :decorate="false" /></b>
           </div>
           <span> <display-tooltip-text :string="tech.SpeedHeader" /><br /> </span>
           <b
@@ -50,8 +50,8 @@
       <div class="card--format" v-if="tech.HasImbue">
         <display-tooltip-text :string="tech.ImbueHeader" />
       </div>
-      <div class="card--format" v-if="tech.HasBoost">
-        <display-tooltip-text :string="tech.BoostHeader" />
+      <div class="card--format" v-if="tech.HasEnhance">
+        <display-tooltip-text :string="tech.EnhanceHeader" />
       </div>
       <div class="card--format" v-if="tech.HasLinked">
         <display-tooltip-text :string="tech.LinkedHeader" />

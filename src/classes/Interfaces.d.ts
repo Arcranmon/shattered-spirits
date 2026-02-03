@@ -7,9 +7,11 @@ declare interface IBaseData {
   keywords?: Array<string>
   special?: string
   tags?: string[]
+  type?: string
+  prereqs?: string
 }
 
-declare interface IBoostData {
+declare interface IEnhanceData {
   name: string
   cost: string
   effect: string
@@ -22,8 +24,6 @@ declare interface IArchetypeData extends IBaseData {
 
 declare interface IAbilityPackageData extends IBaseData {
   abilities: IAbilityData[]
-  chart?: IChartData
-  type?: string
   prereqs: string
   cost: string
 }
@@ -31,7 +31,7 @@ declare interface IAbilityPackageData extends IBaseData {
 declare interface IBonusesData {
   focus?: number
   grit?: number
-  hp?: number
+  stamina?: number
   stun?: number
   reflex?: number
   move?: number
@@ -40,18 +40,17 @@ declare interface IBonusesData {
   equipment?: string[]
 }
 
-declare interface IEquipmentData extends IBaseData {
+declare interface IEquipmentData extends IAbilityPackageData {
   durability: number
   load: number
-  abilities: IAbilityData[]
-  chart: IChartData
   hands: number
+  rarity: string
 }
 
 declare interface IArmorData extends IEquipmentData {
-  guard: number
+  block: number
   consumable_slots: number
-  soak: number
+  stun: number
   traits: string[]
 }
 
@@ -80,7 +79,7 @@ declare interface ICharacterData extends ICombatantData {
 }
 
 declare interface ICombatantData {
-  hp: number
+  stamina: number
   soak: number
   stun: number
   move: number
@@ -104,7 +103,7 @@ declare interface IChartData {
 declare interface IDefenseData {
   stun: number
   soak?: number
-  guard?: number
+  block?: number
   reflex?: number
   grit?: number
   focus?: number
@@ -154,12 +153,12 @@ declare interface INpcData {
   armor: string
   move: number
   jump: number
-  class: string
+  category?: string
   desc: string
   durability?: number
-  hp: number
-  guard?: number
-  max_stun: number
+  stamina: number
+  block?: number
+  max_block: number
   momentum_gain?: number
   name: string
   npc_type: string
@@ -175,11 +174,13 @@ declare interface INpcData {
 }
 
 declare interface IAbilityData extends IBaseData {
+  missile?: string
   area?: string
   defend?: string
-  boosts?: IBoostData[]
+  imbues?: IEnhanceData[]
+  enhancements?: IEnhanceData[]
   cost?: string
-  class: string
+  category: string
   move?: number
   range?: string
   reqs?: string
@@ -217,7 +218,7 @@ declare interface IRangeData {
 
 declare interface IRespiteData {
   momentum_gain: number[]
-  stun_clear: number[]
+  block_clear: number[]
   conditional_momentum: string
   special: string
   movement: number
@@ -228,11 +229,12 @@ declare interface ISpiritData extends ICombatantData {
   type: string
   weapons: Array<string>
   traits: Array<string>
+  current_stance: string
 }
 
 declare interface ISpiritFormData extends IBaseData {
   defenses?: IDefenseData
-  hp: number
+  stamina: number
   weapons: string
   move: number
   traits: string[]
@@ -245,29 +247,29 @@ declare interface ISubtypeData extends IBaseData {
   defenses: IDefenseData
   traits: string[]
   conditions: string[]
-  hp: number
+  stamina: number
   weapons: number
-  guard: number
+  block: number
   stun: number
   move: number
   manifest: string[]
-  armor: string
+  soak: string
   growth_points: number
   speed: number
 }
 
-declare interface IStanceData extends IBaseData {
-  class: string
+declare interface IStanceData extends IAbilityPackageData {
+  category: string
   respite?: IRespiteData
   defenses?: IDefenseData
   traits: string[]
-  abilities: IAbilityData[]
-  effects: string[]
   momentum: number
-  stun_clear: number
+  block_clear: number
   speed: number
-  guard: number
+  block: number
   movement: number
+  guard: number
+  display_type: string
 }
 
 declare interface IStatusEffect {
@@ -318,11 +320,8 @@ declare interface IFeatureData extends IBaseData {
   collision: string
 }
 
-declare interface ITraitData extends IBaseData {
-  reqs: string
-  cost: number
+declare interface ITraitData extends IAbilityPackageData {
   equipment: string[]
-  abilities: string[]
   bonuses: IBonusesData
 }
 

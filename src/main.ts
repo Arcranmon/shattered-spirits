@@ -46,11 +46,11 @@ Vue.mixin({
     },
   },
   methods: {
-    mobileOrNormal(class_name) {
+    mobileOrNormal(category_name) {
       if (screen.width <= 760) {
-        return class_name + '-mobile'
+        return category_name + '-mobile'
       }
-      return class_name
+      return category_name
     },
   },
 })

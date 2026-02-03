@@ -8,7 +8,7 @@
           <h4>{{ ability.Name }}</h4>
           <div class="card--keywords">
             <b>
-              <display-tooltip-text :string="ability.Class + ' ' + ability.Type" :decorate="false" /><br />
+              <display-tooltip-text :string="ability.category + ' ' + ability.Type" :decorate="false" /><br />
               <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box">
                 <display-tooltip-text :string="keyword" :decorate="false" /></span
             ></b>
@@ -34,11 +34,11 @@
         <display-tooltip-text :string="ability.ReqsHeader" />
       </div>
       <div class="card--format" v-if="ability.HasArea"><display-tooltip-text :string="ability.AreaHeader" /></div>
-      <div class="card--format" v-if="ability.HasRange">
-        <display-tooltip-text :string="ability.RangeHeader" />
+      <div class="card--format" v-if="ability.HasRangeOrTarget">
+        <display-tooltip-text :string="ability.RangeOrTargetHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasTarget">
-        <display-tooltip-text :string="ability.TargetHeader" />
+      <div class="card--format" v-if="ability.HasMissile">
+        <display-tooltip-text :string="ability.MissileHeader" />
       </div>
       <div class="card--format" v-if="ability.HasTrigger">
         <display-tooltip-text :string="ability.TriggerHeader" />
@@ -52,8 +52,11 @@
       <div class="card--format" v-if="ability.HasSpecial">
         <display-tooltip-text :string="ability.SpecialHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasBoosts">
-        <display-tooltip-text :string="ability.BoostsHeader" />
+      <div class="card--format" v-if="ability.HasEnhancements">
+        <display-tooltip-text :string="ability.EnhancementsHeader" />
+      </div>
+      <div class="card--format" v-if="ability.HasImbues">
+        <display-tooltip-text :string="ability.ImbuesHeader" />
       </div>
       <div class="card--format" v-if="ability.HasGambit">
         <display-tooltip-text :string="ability.GambitHeader" />

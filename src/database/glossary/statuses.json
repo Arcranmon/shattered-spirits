@@ -18,12 +18,12 @@
   {
     "name": "Alight",
     "desc": "An elemental affliction caused by being set aflame.",
-    "effect": "At the end of each _Phase_ an Alight creature takes 2 Damage [_Fire_, _AP_]. This Damage ignores _Guard_.",
+    "effect": "At the end of each _Phase_ an Alight creature takes 2 Damage [_Fire_, _AP_]. This Damage ignores _Block_.",
     "special": "While a creature has Alight they have _Resistance_ I (_Cold_).",
     "repeat": "If an Alight creature would gain Alight they instead take 2 [_Fire_, _AP_] Damage.",
     "reacts": [
       "<ins>_Frozen_:</ins> If an Alight creature would gain _Frozen_ they instead remove Alight.",
-      "<ins>_Soaked_:</ins>  If an Alight creature would gain _Soaked_ they instead remove Alight."
+      "<ins>_Armored_:</ins>  If an Alight creature would gain _Armored_ they instead remove Alight."
     ],
     "recover": "When a creature _Recovers_ they may end their turn _Prone_ to remove Alight.",
     "type": "Elemental Affliction"
@@ -31,8 +31,8 @@
   {
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleeding they take Damage at the end of each _Phase_ equal to their Bleeding value. This Damage may not be reduced by _Guard_.",
-    "special": "A creature may not gain _HP_ while they have Bleeding. Instead, every point of _HP_ healed removes Bleeding 1.",
+    "effect": "While a creature has Bleeding they take Damage at the end of each _Phase_ equal to their Bleeding value. This Damage may not be reduced by _Block_.",
+    "special": "A creature may not gain _Stamina_ while they have Bleeding. Instead, every point of _Stamina_ healed removes Bleeding 1.",
     "repeat": "If a Bleeding creatures gains Bleeding, increase the value by 1.",
     "remove": "Bleeding is only removed by effects that explicitly remove it.",
     "type": "Affliction"
@@ -57,7 +57,7 @@
   {
     "name": "Courageous",
     "desc": "A mental affliction caused when a creature's heart is full of bravery. ",
-    "effect": "While Joyful a creature gains +1 _Grit_. While _Engaged_ with a hostile creature a creature may remove Courageous at any time to clear 5 _Stun_ or to _Recover_.",
+    "effect": "While Joyful a creature gains +1 _Grit_. While _Engaged_ with a hostile creature a creature may remove Courageous at any time to clear 5 _Block_ or to _Recover_.",
     "repeat": "If a Courageous creature would gain Courageous they instead gain 1 _Momentum_.",
     "reacts": ["<ins>_Frightened_:</ins> If a creature is _Frightened_ and would gain Courageous, they instead remove _Frightened_."],
     "type": "Mental Affliction"
@@ -80,7 +80,7 @@
   {
     "name": "Dazed",
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
-    "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. If a creature has 0 _Stamina_ any remaining Dazed is instead applied as _Stun_.",
+    "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. If a creature has 0 _Stamina_ any remaining Dazed is instead applied as _Block_.",
     "special": "Dazed is applied before a creature may Negate any other effects.",
     "type": "Instant Effect"
   },
@@ -95,16 +95,16 @@
     "name": "Exposed",
     "desc": "An affliction caused when an opening in a creature's defenses has been forced open.",
     "effect": "The next Attack against an Exposed creature has _Advantage_. After being attacked remove Exposed.",
-    "repeat": "If an Exposed creature would gain Exposed they instead gain 1 _Stun_.",
+    "repeat": "If an Exposed creature would gain Exposed they instead gain 1 _Block_.",
     "recover": "When a creature _Recovers_ they may remove Exposed.",
     "type": "Status Effect"
   },
   {
-    "name": "Guarding",
-    "desc": "A status gained while a creature focuses entirely on defense.",
-    "effect": "A creature may reduce their Guarding value to Discount a _Defensive_ _Reaction_ by the same amount.",
-    "remove": "Creatures lose all Guarding if they gain _Stunned_ and automatically lose 1 Guarding at the end of each _Phase_.",
-    "type": "Status Effect"
+    "name": "Defenseing",
+    "desc": "A status gained while a creature focuses entirely on block.",
+    "effect": "A creature may reduce their Defenseing value to Discount a _Defensive_ _Reaction_ by the same amount.",
+    "remove": "Creatures lose all Defenseing if they gain _Blockned_ and automatically lose 1 Defenseing at the end of each _Phase_.",
+    "type": "Hide"
   },
   {
     "name": "Grabbed",
@@ -126,7 +126,7 @@
     "name": "Impaired",
     "desc": "An affliction caused when a creature's ability to attack is limited.",
     "effect": "The next Attack by an Impaired creature has _Disadvantage_. After this impacts an Attack remove Impaired.",
-    "repeat": "If an Impaired creature would gain Impaired they instead gain 1 _Stun_.",
+    "repeat": "If an Impaired creature would gain Impaired they instead gain 1 _Block_.",
     "recover": "When a creature _Recovers_ they may remove Impaired.",
     "type": "Affliction"
   },
@@ -139,8 +139,8 @@
   {
     "name": "Poisoned",
     "desc": "An affliction caused by toxins ravaging you from the inside out.",
-    "effect": "While a creature is Poisoned they gain_Stun_ [_AP_] equal to their Poisoned value minus their _Grit_ at the end of every _Phase_.",
-    "special": "A creature may not gain _HP_ while they have Poisoned. Instead, every point of _HP_ healed removes Poisoned 1.",
+    "effect": "While a creature is Poisoned they gain_Block_ [_AP_] equal to their Poisoned value minus their _Grit_ at the end of every _Phase_.",
+    "special": "A creature may not gain _Stamina_ while they have Poisoned. Instead, every point of _Stamina_ healed removes Poisoned 1.",
     "repeat": "If a Poisoned creatures gains Poisoned, increase the value by 1.",
     "remove": "Poisoned is only removed by effects that explicitly remove it.",
     "type": "Affliction"
@@ -156,7 +156,7 @@
   {
     "name": "Pull",
     "desc": "You drag a foe closer to you or.",
-    "effect": "When you inflict Pull a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Pull 1:  Place the Target at your _Position_ if they are within your _Arena_, or place them in any _Position_ within their _Arena_ if they are not in your _Arena_.\n\t* Pull 2:  Place them in any _Position_ in an _Arena_ adjacent to them that places them closer to you. Inflict _Stun_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Pull X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_. You may repeat this option.",
+    "effect": "When you inflict Pull a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Pull 1:  Place the Target at your _Position_ if they are within your _Arena_, or place them in any _Position_ within their _Arena_ if they are not in your _Arena_.\n\t* Pull 2:  Place them in any _Position_ in an _Arena_ adjacent to them that places them closer to you. Inflict _Block_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Pull X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_. You may repeat this option.",
     "type": "Instant Effect"
   },
   { "name": "Pulled", "see": "Pull" },
@@ -164,13 +164,13 @@
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
     "effect": "When you inflict Push, choose one: \n* Push:  Force the target to stop _Occupying_ their current _Terrain_ and (if you wish) leave their current _Engagement_ and _Field_ effect. You may force them to enter a new _Engagement_ of your choice.\n* Push: Trigger the _Collide_ effect of _Terrain_ in their _Engagement_.",
-    "special": "If you inflict Forceful Push, either resolve two of the above options or place the Target in an adjacent _Arena_ you are not in. Inflict 2 _Stun_ for each increased _Movement_ cost to enter said _Arena_.",
+    "special": "If you inflict Forceful Push, either resolve two of the above options or place the Target in an adjacent _Arena_ you are not in. Inflict 2 _Block_ for each increased _Movement_ cost to enter said _Arena_.",
     "type": "Status Effect"
   },
   {
     "name": "Slide",
     "desc": "You adroitly move a foe about, placing them where you wish.",
-    "effect": "When you inflict Slide a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Slide 1: You may force the target to stop _Occupying_ their current _Terrain_ and/or place the Target in any other _Engagement_ within their _Arena_.\n\t* Slide 2: Place them in any _Arena_ adjacent to their current one. Inflict _Stun_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Slide X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
+    "effect": "When you inflict Slide a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Slide 1: You may force the target to stop _Occupying_ their current _Terrain_ and/or place the Target in any other _Engagement_ within their _Arena_.\n\t* Slide 2: Place them in any _Arena_ adjacent to their current one. Inflict _Block_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Slide X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
     "type": "Status Effect"
   },
   { "name": "Forceful Push", "see": "Push" },
@@ -178,9 +178,9 @@
   { "name": "Pushes", "see": "Push" },
   {
     "name": "Reeling",
-    "desc": "An affliction caused when a creature cannot maintain their guard.",
+    "desc": "An affliction caused when a creature cannot maintain their block.",
     "effect": "While a creature has Reeling increase the cost of all _Defensive_ _Reactions_ by 1.",
-    "repeat": "If a Reeling creature would gain Reeling they instead gain 1 _Stun_.",
+    "repeat": "If a Reeling creature would gain Reeling they instead gain 1 _Block_.",
     "recover": "When a creature _Recovers_ they may remove Reeling.",
     "type": "Status Effect"
   },
@@ -194,34 +194,34 @@
     "type": "Status Effect"
   },
   {
-    "name": "Soaked",
+    "name": "Armored",
     "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "While a creature has any Soaked, they have _Resistance_ II (_Fire_) and _Weakness_ I (_Cold_, _Lightning_).",
+    "effect": "While a creature has any Armored, they have _Resistance_ II (_Fire_) and _Weakness_ I (_Cold_, _Lightning_).",
     "reacts": [
-      "<ins>_Alight_:</ins> If a Soaked creature would gain _Alight_, instead remove Soaked.",
-      "<ins>_Frozen_:</ins> If a Soaked creature gains _Frozen_ remove Soaked, then deal [_Cold_] Damage equal to half the _Negate_ DC.",
-      "<ins>_Shocked_:</ins> If a Soaked creature gains _Shocked_ remove Soaked, then deal [_Lighting_] Damage equal to half the _Negate_ DC."
+      "<ins>_Alight_:</ins> If a Armored creature would gain _Alight_, instead remove Armored.",
+      "<ins>_Frozen_:</ins> If a Armored creature gains _Frozen_ remove Armored, then deal [_Cold_] Damage equal to half the _Negate_ DC.",
+      "<ins>_Shocked_:</ins> If a Armored creature gains _Shocked_ remove Armored, then deal [_Lighting_] Damage equal to half the _Negate_ DC."
     ],
-    "remove": "After the _Weakness_/_Resistance_ from this _Status_ applies, remove _Soaked_.",
-    "type": "Elemental Affliction"
+    "remove": "After the _Weakness_/_Resistance_ from this _Status_ applies, remove _Armored_.",
+    "type": "Hide"
   },
   {
-    "name": "Stunned",
+    "name": "Blockned",
     "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "When a creature gains _Stunned_ they immediately lose half their _Momentum_ and _Movement_ (including any that was _Prepared_). While Stunned, a creature:\n* Has _Disadvantage_ when _Negating_.\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
-    "remove": "Remove Stunned at the end of the _Round_ it was inflicted, or by effects that specifically remove it.",
-    "type": "Affliction"
+    "effect": "When a creature gains _Blockned_ they immediately lose half their _Momentum_ and _Movement_ (including any that was _Prepared_). While Blockned, a creature:\n* Has _Disadvantage_ when _Negating_.\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
+    "remove": "Remove Blockned at the end of the _Round_ it was inflicted, or by effects that specifically remove it.",
+    "type": "Hide"
   },
   {
     "name": "Studied",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "Creatures may remove a hostile creature's _Studied_ for one of the following effects:\n* Clear _Studied_ at any time to learn the target's current and maximum _HP_ and _Stun_ as well as their _Defenses_ and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Defense Roll you may clear Studied to increase a single die roll by 1, treating it as that number for the purpose of _Gambits_ and other effects.",
+    "effect": "Creatures may remove a hostile creature's _Studied_ for one of the following effects:\n* Clear _Studied_ at any time to learn the target's current and maximum _Stamina_ and _Block_ as well as their _Defenses_ and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Block Roll you may clear Studied to increase a single die roll by 1, treating it as that number for the purpose of _Gambits_ and other effects.",
     "recover": "When a creature _Recovers_ they may remove _Studied_.",
     "type": "Affliction"
   },
   {
     "name": "Sundered",
-    "effect": "When a creature gains _Sundered_ one piece of their _Equipment_ chosen by the Attacker loses _Durability_ equal to the Sundered value. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Stun_ 2 for each remaining Sundered.",
+    "effect": "When a creature gains _Sundered_ one piece of their _Equipment_ chosen by the Attacker loses _Durability_ equal to the Sundered value. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Block_ 2 for each remaining Sundered.",
     "type": "Instant Effect"
   },
   {
@@ -229,7 +229,7 @@
     "desc": "A condition caused when your connection to your spirit is limited.",
     "effect": "While Suppressed all [_Spirit_] abilities cost an additional 2 _Momentum_ to use.",
     "recover": "When a creature _Recovers_ they may remove _Suppressed_.",
-    "repeat": "If a Suppressed or _Sealed_ creature would gain Suppressed they instead gain 2 _Stun_.",
+    "repeat": "If a Suppressed or _Sealed_ creature would gain Suppressed they instead gain 2 _Block_.",
     "type": "Status Effect"
   },
   {
@@ -237,7 +237,7 @@
     "desc": "A condition caused when your connection to your spirit is severed.",
     "effect": "While Sealed [_Spirit_] Abilities may not be utilized.",
     "recover": "When a creature _Recovers_ they may remove _Sealed_ and gain _Suppressed_.",
-    "repeat": "If a Sealed creature would gain Sealed they instead gain 4 _Stun_. If a _Suppressed_ creature gains Sealed, remove _Suppressed_ and inflict 2 _Stun_.",
+    "repeat": "If a Sealed creature would gain Sealed they instead gain 4 _Block_. If a _Suppressed_ creature gains Sealed, remove _Suppressed_ and inflict 2 _Block_.",
     "type": "Status Effect"
   },
   {
@@ -245,7 +245,14 @@
     "desc": "A status that represents an erasure of a character's ability to successfully defend themselves.",
     "effect": "For each instance of Vulnerable a creature has attacks against them gain an equivalent amount of _Pierce_.",
     "recover": "When a creature _Recovers_ they may remove 2 Vulnerable.",
-    "remove": "When a creature would clear _Stun_ they may remove Vulnerable in place of 2 _Stun_, as many times as they wish.",
+    "remove": "When a creature would clear _Block_ they may remove Vulnerable in place of 2 _Block_, as many times as they wish.",
     "type": "Affliction"
+  },
+  {
+    "name": "Concentrating",
+    "desc": "A creature that has a singular focus, granting them an enhanced ability to act.",
+    "effect": "A creature may remove Concentrating to gain _Advantage_ on any Roll.",
+    "remove": "If _Downed_, a creature loses Concentrating.",
+    "type": "Status Effect"
   }
 ]

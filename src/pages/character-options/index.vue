@@ -25,27 +25,35 @@
             <v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item>
             <v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item>
             <v-tab-item><ability-tab abilityType="Reaction" :character="character" /></v-tab-item>
-            <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="columns" /></v-tab-item
+            <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="1" /></v-tab-item
           ></v-tabs-items>
         </div>
-        <show-cards v-if="selectedTab == 'Arts'" :inputs="arts" :collapse="false" :cols="columns" />
-        <show-cards v-if="selectedTab == 'Talents'" :inputs="talents" :collapse="false" :cols="columns" />
+        <div class="character-tab-content" v-if="selectedTab == 'Archetypes'" style="border-top: 2px solid black">
+          <show-cards :inputs="archetypes" :collapse="false" :cols="1" />
+        </div>
+
+        <div class="character-tab-content" v-if="selectedTab == 'Disciplines'" style="border-top: 2px solid black">
+          <show-cards :inputs="disciplines" :collapse="false" :cols="1" />
+        </div>
+        <div class="character-tab-content" v-if="selectedTab == 'Talents'" style="border-top: 2px solid black">
+          <show-cards :inputs="talents" :collapse="false" :cols="1" />
+        </div>
 
         <div v-if="selectedTab == 'Armor and Accessories'">
-          <v-row align="center" style="margin-left: 0.5em">
-            <v-col cols="12"> <v-select v-model="selectedArmors" :items="armorCategories" attach label="Armor Categories" multiple filled outlined /></v-col
+          <v-row class="select-bar" align="center">
+            <v-col cols="12" style="padding-left: 3em; padding-right: 3em">
+              <v-select v-model="selectedArmors" :items="armorCategories" attach label="Armor Categories" multiple filled background-color="#dbd9d9e3" /></v-col
           ></v-row>
-          <show-cards :inputs="armors" :collapse="false" />
+          <div class="character-tab-content" style="border-top: 2px solid black">
+            <show-cards :inputs="armors" :collapse="false" :cols="1" />
+          </div>
         </div>
         <div v-if="selectedTab == 'Weapons and Shields'">
-          <v-row align="center" style="margin-left: 0.5em">
-            <v-col cols="6"
-              ><v-select v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple filled outlined
+          <v-row dark align="center" class="select-bar">
+            <v-col cols="6" style="padding-left: 3em"
+              ><v-select light v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple background-color="#dbd9d9e3" filled
                 ><template v-slot:prepend-item>
-                  <v-list-item ripple @mousedown.prevent
-                    ><v-list-item-action>
-                      <v-icon :color="selectedWeapons.length > 0 ? 'indigo darken-4' : ''"> </v-icon>
-                    </v-list-item-action>
+                  <v-list-item ripple @mousedown.prevent>
                     <v-list-item-content>
                       <v-list-item-title> Select All </v-list-item-title>
                     </v-list-item-content>
@@ -56,22 +64,30 @@
                   <span v-if="index === 1" class="black--text text-caption"> (+{{ selectedWeapons.length - 1 }} others) </span>
                 </template></v-select
               > </v-col
-            ><v-col cols="6"><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled outlined></v-select></v-col
+            ><v-col cols="6" style="padding-right: 3em"
+              ><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled background-color="#dbd9d9e3"></v-select></v-col
           ></v-row>
-          <show-cards :inputs="weapons" :collapse="false" :cols="2" />
-        </div>
-        <div v-if="selectedTab == 'Spirit Arts'">
-          <v-tabs v-model="abilityTab" class="character-tabs" dark color="black" centered
-            ><v-tab v-for="element in elements">
-              <h4>{{ element }}</h4>
-            </v-tab></v-tabs
-          >
-          <v-tabs-items v-model="abilityTab" class="character-tab-content">
-            <v-tab-item v-for="element in elements"> <skill-tree :element="element" /></v-tab-item>
-          </v-tabs-items>
+          <div class="character-tab-content" style="border-top: 2px solid black">
+            <show-cards :inputs="weapons" :collapse="false" :cols="1" />
+          </div>
         </div>
         <spirit-abilities v-if="selectedTab == 'Spirit Customization'" />
-        <show-cards v-if="selectedTab == 'Equipment'" :inputs="consumables" :collapse="false" :cols="2" />
+        <div v-if="selectedTab == 'Equipment'">
+          <v-row class="select-bar" align="center">
+            <v-col cols="12" style="padding-left: 3em; padding-right: 3em">
+              <v-select
+                v-model="selectedConsumables"
+                :items="consumableCategories"
+                attach
+                label="Equipment Categories"
+                multiple
+                filled
+                background-color="#dbd9d9e3" /></v-col
+          ></v-row>
+          <div class="character-tab-content">
+            <show-cards :inputs="consumables" :collapse="false" :cols="1" />
+          </div>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -95,11 +111,13 @@ export default Vue.extend({
       selectedTab: 'Basic Skills',
       selectedElement: 'Earth',
       elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
-      tabs: ['Basic Skills', 'Arts', 'Talents', 'Spirit Customization', 'Armor and Accessories', 'Weapons and Shields', 'Equipment'],
+      tabs: ['Basic Skills', 'Archetypes', 'Disciplines', 'Talents', 'Spirit Customization', 'Armor and Accessories', 'Weapons and Shields', 'Equipment'],
       armorCategories: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
       selectedArmors: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
       weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
       selectedWeapons: ['Blade', 'Lance', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
+      consumableCategories: ['Food', 'Grenade', 'Luxury', 'Medicine', 'Potion', 'Supply'],
+      selectedConsumables: ['Food', 'Grenade', 'Luxury', 'Medicine', 'Potion', 'Supply'],
       weaponTypes: ['Any', 'Light', 'Balanced', 'Heavy'],
       selectedType: 'Any',
       abilityTab: 0,
@@ -115,6 +133,12 @@ export default Vue.extend({
     arts: function () {
       return this.$store.getters.getArts().sort((a, b) => a.Name.localeCompare(b.Name))
     },
+    archetypes: function () {
+      return this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
+    },
+    disciplines: function () {
+      return this.$store.getters.getDisciplines().sort((a, b) => a.Name.localeCompare(b.Name))
+    },
     talents: function () {
       return this.$store.getters.getTalents()
     },
@@ -122,10 +146,10 @@ export default Vue.extend({
       return this.$store.getters.getFilteredArmors(this.selectedArmors)
     },
     weapons: function () {
-      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, this.selectedType)
+      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, 'Any')
     },
     consumables: function () {
-      return this.$store.getters.getEquipments()
+      return this.$store.getters.getFilteredEquipments(this.selectedConsumables)
     },
     basic_stances() {
       return this.$store.getters.getStancesFromList(this.$store.getters.basicStances)
@@ -168,10 +192,10 @@ export default Vue.extend({
   border-top: $border--black-standard;
   border-radius: 0px;
 }
-.character-tab-content {
-  padding: 1em;
-  padding-bottom: 0em;
-  background-color: $color--background !important;
+.select-bar {
+  background: #85704c !important;
+  padding-left: 0em;
+  margin-left: 0em;
 }
 .ability-box {
   margin-top: 0 !important;

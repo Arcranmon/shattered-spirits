@@ -1,8 +1,8 @@
 import { store } from '@/store'
-import { Armor, Bonuses, Combatant, Discipline, Stance, Weapon, Spirit, Technique } from '@/class'
+import { Armor, Bonuses, Combatant, Stance, Weapon, Spirit } from '@/class'
 
-var kBaseHP = 10
-var kBaseStun = 15
+var kBaseStamina = 10
+var kBaseBlock = 15
 var kBaseLoad = 4
 
 class Character extends Combatant {
@@ -49,19 +49,16 @@ class Character extends Combatant {
     return '1'
   }
 
-  override get Guard() {
-    var guard = this.current_stance_.Guard
+  override get Block() {
+    var block = this.current_stance_.Block
     for (var armor of this.armor_) {
-      guard += armor.Guard
+      block += armor.Block
     }
-    return guard
+    return block
   }
 
-  override get MaxPadding() {
+  override get MaxSoak() {
     var soak = 0
-    for (var armor of this.armor_) {
-      soak += armor.Padding
-    }
     return soak
   }
 
@@ -82,8 +79,8 @@ class Character extends Combatant {
     return traits
   }
 
-  override get MaxStun() {
-    return kBaseStun
+  override get MaxBlock() {
+    return kBaseBlock
   }
 
   // ==========================================================
@@ -188,8 +185,8 @@ class Character extends Combatant {
     return load
   }
 
-  override get MaxHP() {
-    return kBaseHP + this.combinedBonuses_.HP
+  override get MaxStamina() {
+    return kBaseStamina + this.combinedBonuses_.Stamina
   }
 
   get Name() {
@@ -241,7 +238,7 @@ class Character extends Combatant {
   get Weapons() {
     return this.weapons_
   }
-  get Armor() {
+  get Armors() {
     return this.armor_
   }
   get Grit() {
@@ -273,16 +270,6 @@ class Character extends Combatant {
     this.element_ = spirit
   }
 
-  public AddDiscipline(discipline: Discipline) {
-    var idx = this.disciplines_.findIndex((e) => e.name == discipline.Name)
-    if (idx == -1) {
-      var new_discipline: ICharDisciplineData = { name: discipline.Name, tier: 1 }
-      this.disciplines_.push(new_discipline)
-    } else {
-      this.disciplines_[idx].tier += 1
-    }
-  }
-
   public RemoveDiscipline(discipline: string) {
     var idx = this.disciplines_.findIndex((e) => e.name == discipline)
     if (idx > -1) {
@@ -296,7 +283,7 @@ class Character extends Combatant {
     this.spirit_.ApplyRespite()
   }
 
-  override get StunClear() {
+  override get BlockClear() {
     return 0
   }
 
@@ -322,13 +309,6 @@ class Character extends Combatant {
     return this.element_ != ''
   }
 
-  public CanAddDiscipline(discipline: Discipline) {
-    var idx = this.disciplines_.findIndex((e) => e.name == discipline.Name)
-    if (idx > -1 && this.disciplines_[idx].tier == 3) return false
-
-    return true
-  }
-
   get Complete() {
     return this.HasSpirit && this.HasNames
   }
@@ -339,10 +319,10 @@ class Character extends Combatant {
 
   get RecommendedDisciplines() {
     var recs = [this.element_, 'Unarmed']
-    //if (this.equipped_armor_ != null) recs.push(this.equipped_armor_.Category)
+    //if (this.equipped_armor_ != null) recs.push(this.equipped_armor_.category)
     for (var weapon of this.weapons_) {
       var full_weapon = store.getters.getWeapon(weapon)
-      if (!recs.includes(full_weapon.Category + ' Weapon')) recs.push(full_weapon.Category + ' Weapon')
+      if (!recs.includes(full_weapon.category + ' Weapon')) recs.push(full_weapon.category + ' Weapon')
       if (full_weapon.Keywords.some((y) => y.includes('Thrown')) && !recs.includes('Throwing Weapons')) recs.push('Throwing Weapon')
     }
 

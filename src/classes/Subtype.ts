@@ -4,14 +4,14 @@ import { Base, Defenses } from '@/class'
 class Subtype extends Base {
   private defenses_: Defenses
   private element_: string
-  private hp_: number
-  private guard_: number
+  private stamina_: number
   private stun_: number
+  private block_: number
   private move_: number
   private manifest_: string[]
   private growth_points_: number
   private traits_: string[]
-  private armor_: string
+  private soak_: string
   private speed_: number
 
   public constructor(name) {
@@ -21,12 +21,12 @@ class Subtype extends Base {
   // ==========================================================
   // UTILITY
   // ==========================================================
-  public get HP() {
-    return this.hp_
+  public get Stamina() {
+    return this.stamina_
   }
 
-  public get ArmorHeader() {
-    return '**Armor:** _' + this.armor_ + '_'
+  public get SoakHeader() {
+    return '**Soak:** _' + this.soak_ + '_'
   }
 
   public get GrowthHeader() {
@@ -37,16 +37,16 @@ class Subtype extends Base {
     return this.growth_points_
   }
 
-  public get HPHeader() {
-    return '**HP:** ' + this.HP
+  public get StaminaHeader() {
+    return '**Stamina:** ' + this.Stamina
   }
 
-  public get Guard() {
-    return this.guard_
+  public get Block() {
+    return this.stun_
   }
 
   public get Stun() {
-    return this.stun_
+    return this.block_
   }
 
   public get StanceHeader() {
@@ -83,6 +83,9 @@ class Subtype extends Base {
   public get Traits() {
     return this.traits_
   }
+  public get Icon() {
+    return require('@/assets/disciplines/' + this.Name.split(' ')[0] + '.svg')
+  }
   public get TraitsHeader() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
   }
@@ -112,13 +115,13 @@ class Subtype extends Base {
   private setSubtypeData(data: ISubtypeData): void {
     this.setBaseData(data)
     this.element_ = data.element || ''
-    this.armor_ = data.armor || ''
+    this.soak_ = data.soak || ''
     this.defenses_ = data.defenses ? Defenses.Deserialize(data.defenses) : null
     this.traits_ = data.traits || []
-    this.hp_ = data.hp || 0
+    this.stamina_ = data.stamina || 0
     this.move_ = data.move || 0
-    this.guard_ = data.guard || 0
-    this.stun_ = data.stun || 0
+    this.stun_ = data.block || 0
+    this.block_ = data.stun || 0
     this.manifest_ = data.manifest || []
     this.speed_ = data.speed || 0
     this.growth_points_ = data.growth_points || 0

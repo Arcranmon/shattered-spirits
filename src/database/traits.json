@@ -1,123 +1,237 @@
 [
   {
+    "name": "Metalborn",
+    "reqs": "Metal Spirit",
+    "category": "Metal",
+    "type": "Spirit Trait",
+    "abilities": [
+      {
+        "name": "Metal Form",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness."
+      },
+      {
+        "name": "Metallic Body",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain the _Metal Body_ Armor.\n* You are _Immune_ to _Bleeding_.",
+        "bonuses": { "equipment": ["Metal Body"] }
+      },
+      {
+        "name": "Heat Conduction",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
+      },
+      {
+        "name": "Metallic Resonance",
+        "category": "Utility",
+        "keywords": ["Metal", "Pacifist", "Rooted"],
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "reqs": "Unattended _Metal_ _Equipment_ within range or at _Metal_ _Terrain_.",
+        "special": "Your Spirit may use this on your _Turn_ while not _Summoned_. If they do, they must Target _Equipment_ you have _Worn_ or _Packed_.",
+        "effect": "Clear 4 _Stun_.",
+        "enhancements": [
+          {
+            "name": "Enhanced Healing",
+            "cost": "1 _Momentum_",
+            "effect": "Instead, clear 4 _Stun_ and gain 3 _Stamina_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Light Natural Armor",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Points",
+    "prereqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
+    "keywords": ["Armored"],
+    "abilities": [
+      {
+        "name": "Carapace Armor",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "This spirit gains the _Carapace_ Armor.",
+        "bonuses": { "equipment": ["Carapace"] }
+      }
+    ]
+  },
+  {
+    "name": "Metallic Threads",
+    "type": "Spirit Trait",
+    "category": "Metal",
+    "cost": "3 Growth Points",
+    "prereqs": "Metal Spirit.",
+    "abilities": [
+      {
+        "name": "Threads",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "This creature is capable of creating thin threads made of metal and similar to thick spider silk that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, the creature may be required to rest and recover it as if it was _Fatigue_."
+      },
+      {
+        "name": "Wire Whip",
+        "category": "Light",
+        "type": "Attack",
+        "range": "_Short_-",
+        "target": "Single-Target",
+        "keywords": ["Slash", "Metal", "Feeble"],
+        "cost": "1 _Momentum_",
+        "effect": "Attack a Target within _Range_. You may deal no Damage to reduce the cost of <u>Entangle</u> by 1, but must choose prior to making the Attack.",
+        "enhancements": [
+          { "name": "Entangle", "cost": "2 _Momentum_", "effect": "Add _Entangled_ 1 [_Reflex_] on a _Graze_+, or _Entangled_ 2 [_Reflex_] on a _Crit_." }
+        ],
+        "chart": {
+          "roll": ["2-3", "4-5", "6-9", "10-12"],
+          "damage": [1, 2, 3, 4]
+        },
+        "analysis_notes": {
+          "fudge": -0.222,
+          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
+          "range": "Melee"
+        }
+      }
+    ]
+  },
+  {
     "name": "Climber",
-    "effect": "This creature halves any _Movement_ cost created due to Climbing, rounded down."
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Natural Climber",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces."
+      },
+      {
+        "name": "Climbing",
+        "category": "Mobility",
+        "type": "Passive",
+        "effect": "This creature only needs to pay 1 _Movement_ for the [_Cliff_] keyword, rather than the typical 2."
+      }
+    ],
+    "bonuses": { "move": 1, "reflex": 2 }
   },
   {
-    "name": "Clumsy",
-    "effect": "This trait bars you from using certain acrobatic abilities such as _Tumble_."
+    "name": "Swift",
+    "prereqs": "None",
+    "cost": "2 Growth Point",
+    "category": "General",
+    "type": "Trait",
+    "abilities": [
+      {
+        "name": "Swiftness",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are quick on your feet and more nimble than most. In matters of speed, you almost always win."
+      },
+      { "name": "Improved Mobility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } },
+      {
+        "name": "Scamper",
+        "category": "Mobility",
+        "type": "Reaction",
+        "cost": "None",
+        "trigger": "Your _Turn_ begins.",
+        "effect": "At the start of your _Turn_, before any using any other abilities, you may _Retreat_, regardless of what your _Stance_ dictates."
+      }
+    ]
   },
   {
-    "name": "Earthguard",
-    "effect": "While adjacent to an _Earthen_ _Feature_, increase this creature's _Guard_ by 1."
+    "name": "Tiny Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "keywords": ["Size"],
+    "abilities": [
+      {
+        "name": "Tiny Size",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are extremely small, somewhere between the size of a rat and a typical cat, granting you greatly improved agility and speed. Depending on the circumstance, your small size and limited weight may be a boon or bane."
+      },
+      {
+        "name": "Diminutive Agility",
+        "category": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_.",
+        "bonuses": { "speed": -1, "reflex": 1, "move": 1 }
+      }
+    ],
+    "bonuses": { "move": 1, "reflex": 1 }
   },
   {
-    "name": "Elemental",
-    "effect": "This creature's body is made of an elemental force. Replace Natural on any Attacks the creature makes with their elemental type."
+    "name": "Small Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "abilities": [
+      {
+        "name": "Small Size",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed. Depending on the circumstance, your smaller size may be a boon or bane."
+      },
+      {
+        "name": "Small Profile",
+        "category": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Small_, gains +2 _Stamina_, +1 _Stun_, and +1 _Reflex_."
+      }
+    ],
+    "bonuses": { "reflex": 1 }
   },
   {
-    "name": "Naturewalk",
-    "effect": "This creature may ignore Terrain with the associated Keyword."
+    "name": "Medium Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "abilities": [
+      {
+        "name": "Medium Size",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are somewhere between the size of a typical dog and a human. This size is rarely relevant, but may occasionally may be a boon or bane."
+      },
+      {
+        "name": "Medium Profile",
+        "category": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Medium_, gains +5 _Stamina_, +3 _Stun_, and +1 _Grit_."
+      }
+    ],
+    "bonuses": { "reflex": 1 }
   },
   {
-    "name": "Flamebody",
-    "effect": "This creature's Natural Weapons deal _Fire_ Damage instead of the normal type. This creature takes an additional 1 _True_ Damage and gains _Vulnerable_ 1 whenever they take Damage from Water. Additionally, this creature cannot gain _Paddinged_; instead, they take 4 _True_ Damage and gain _Dazed_ 1."
-  },
-  {
-    "name": "Flier",
-    "effect": "This creature may be _Flying_ at any point on their _Turn_. They retain their _Flying_ or not _Flying_ state until their next _Turn_."
-  },
-  {
-    "name": "Frostwalk",
-    "effect": "This creature may ignore effects caused by moving into or ending their _Turn_ in  _Ice_ Terrain."
-  },
-  {
-    "name": "Stormwalk",
-    "effect": "This creature may ignore effects caused by moving into or ending their _Turn_ in  _Electric_ Terrain."
-  },
-  {
-    "name": "Nimble",
-    "effect": "Attacks against a creature with this tag have _Disadvantage_ while they have any _Movement_ remaining and are not _Immobile_."
-  },
-  {
-    "name": "Damage Immunity",
-    "effect": "Any Damage a creature has an immunity against inflicts no Damage or Stun."
-  },
-  {
-    "name": "Damage Immunities",
-    "see": "Damage Immunity"
-  },
-  {
-    "name": "Status Immunity",
-    "effect": "Any Status a creature has an immunity against cannot be inflicted on them."
-  },
-  {
-    "name": "Status Immunities",
-    "see": "Status Immunity"
-  },
-  {
-    "name": "Resistance",
-    "effect": "If a creature has Resistance they reduce any effect with the corresponding tag by a tier (turning a Graze into a Miss, for example). If there is no Tier, instead halve any Damage/Stun and gain _Advantage_ to _Negate_. If a creature has multiple Resistances that apply against a single attack they do not stack."
-  },
-  {
-    "name": "Rough Skin",
-    "effect": "Whenever this creature is _Grazed_+ by a _Melee_ Range Attack, deal X Damage with the listed keywords to the Attacker, where X is the listed Rough Skin value."
-  },
-  {
-    "name": "Stable",
-    "effect": "This creature always has Advantage when _Negating_ _Forced Movement_ or _Prone_."
-  },
-  {
-    "name": "Ward",
-    "effect": "Gain X _Guard_ against the listed Damage type, where X is the value of this Trait."
-  },
-  { "name": "Heavy", "effect": "This creature has _Advantage_ to _Negate_ all _Forced Movement_ effects." },
-  {
-    "name": "Strong",
-    "effect": "When this creature attack an _Feature_ with a _Weapon_ or _Martial Arts_ Attack, deal +1 Damage and you may treat any _Forced Movement_ as Damage, converting it at a 1 to 1 rate."
-  },
-  {
-    "name": "Hydrophobic",
-    "effect": "If forced to _Swim_ this character takes 10 Damage."
-  },
-  {
-    "name": "Sinker",
-    "effect": "This character may not use _Swimming_ movement."
-  },
-  {
-    "name": "Swimmer",
-    "effect": "Swimming does not cost this creature any additional _Movement_."
-  },
-  {
-    "name": "Aquatic",
-    "effect": "This creature does not have Disadvantage on Attacks while Swimming and creatures do not have Advantage on Attacks against them. Additionally, this creature may ignore effects caused by moving into or ending their _Turn_ in  _Water_ Terrain."
-  },
-  {
-    "name": "Weakness",
-    "effect": "If a creature has a Weakness they increase any effect with said tag by one tier (turning a Graze into a Hit, for example). If there is no tier present, the target takes 1.5x Damage and has _Disadvantage_ to _Negate_."
-  },
-  { "name": "Weaknesses", "see": "Weakness" },
-  {
-    "name": "Snowdraw",
-    "effect": "This creature may _Draw_ from _Ice_ spaces."
-  },
-  {
-    "name": "Susceptible",
-    "effect": "If a creature is Susceptible to a Status they roll at _Disadvantage_ when _Negating_ if that _Status_ is included."
-  },
-  { "name": "Susceptibilities", "see": "Susceptible" },
-  { "name": "Stable", "effect": "While _Stable_ you have _Advantage_ while _Negating_ any effect that inflicts _Push_ or _Pull_." },
-  {
-    "name": "Woodwalk",
-    "effect": "This creature may ignore effects caused by moving into or ending their _Turn_ in _Wooden_ Terrain."
-  },
-  { "name": "Wards", "see": "Warded" },
-  {
-    "name": "Volatile",
-    "effect": "If a creature is Volatile, deal X of the specified Damage type in a _Burst_ 1 whenever the creature is Damaged."
-  },
-  {
-    "name": "Windwalk",
-    "effect": "This creature may ignore effects caused by moving into or ending their _Turn_ in _Windy_ Terrain."
+    "name": "Large Form",
+    "type": "Trait",
+    "category": "Size",
+    "cost": "None",
+    "prereqs": "No other [Size] Traits.",
+    "abilities": [
+      {
+        "name": "Large Size",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are somewhere between the size of a human and a horse, granting you increased strength and power. Depending on the circumstance, your large size may be a boon or bane."
+      },
+      {
+        "name": "Large Profile",
+        "category": "Mobility",
+        "type": "Passive",
+        "effect": "Your Spirit becomes _Large_, gains +10 _Stamina_, +6 _Stun_, and +2 _Grit_."
+      }
+    ],
+    "bonuses": { "reflex": 1 }
   }
 ]

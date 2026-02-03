@@ -25,6 +25,7 @@ Vue.component('DisplayTooltipText', {
   },
   computed: {
     formattedText() {
+      if (this.string === undefined) return ''
       var split_input = this.string.split('_')
       for (var index in split_input) {
         var partitioned = split_input[index].split('/')
@@ -33,15 +34,10 @@ Vue.component('DisplayTooltipText', {
         }
         if (
           this.$store.getters.existsInAnyGlossary(split_input[index]) ||
-          this.$store.getters.isArchetype(split_input[index]) ||
           this.$store.getters.isFeature(split_input[index]) ||
-          this.$store.getters.isTalent(split_input[index]) ||
           this.$store.getters.isTerrain(split_input[index]) ||
-          this.$store.getters.isManeuver(split_input[index]) ||
           this.$store.getters.isStance(split_input[index]) ||
           this.$store.getters.isStatus(split_input[index]) ||
-          this.$store.getters.isTechnique(split_input[index]) ||
-          this.$store.getters.isManeuver(split_input[index]) ||
           this.$store.getters.isArmor(split_input[index]) ||
           this.$store.getters.isWeapon(split_input[index]) ||
           this.$store.getters.isArt(split_input[index]) ||

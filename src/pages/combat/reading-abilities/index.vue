@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 1em;">
+  <div style="padding: 1em">
     <display-tooltip-text :string="readingDisciplines" />
     <div v-bind:class="skillBox">
       <stance-card :stance="$store.getters.getStance('Example Stance')" />
@@ -13,12 +13,12 @@
     <br />
     <display-tooltip-text :string="readingTechniques" />
     <div v-bind:class="skillBox">
-      <chart-table :chart="$store.getters.getTechnique('Example Technique').Chart" style="font-size: smaller;" />
+      <chart-table :chart="$store.getters.getTechnique('Example Technique').Chart" style="font-size: smaller" />
     </div>
     <br />
     <display-tooltip-text :string="readingAttackProfiles" />
     <div v-bind:class="skillBox">
-      <maneuver-card :maneuver="$store.getters.getManeuver('Example Maneuver')" style="font-size: smaller;" />
+      <maneuver-card :maneuver="$store.getters.getManeuver('Example Maneuver')" style="font-size: smaller" />
     </div>
     <br />
     <display-tooltip-text :string="readingManeuvers" />

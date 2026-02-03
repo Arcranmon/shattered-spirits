@@ -10,17 +10,17 @@
       </v-row>
       <div v-for="(n, index) in 4">
         <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" v-if="chart.HasRoll" v-bind:class="getClass(index)" cols="2">{{ chart.Roll[index] }} </v-col>
-          <v-col class="chart--cols" v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '', getClass(index)]" v-if="chart.HasStun" v-bind:cols="stunWidth"
+          <v-col class="chart--cols justify-center align-center" v-if="chart.HasRoll" v-bind:class="getRank(index)" cols="2">{{ chart.Roll[index] }} </v-col>
+          <v-col class="chart--cols" v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '', getRank(index)]" v-if="chart.HasStun" v-cols="stunWidth"
             >{{ chart.Stun(index) }}
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="getClass(index)" v-if="chart.HasDamage" v-bind:cols="damageWidth"
+          <v-col class="chart--cols chart--cols-right" v-bind:class="getRank(index)" v-if="chart.HasDamage" v-bind:cols="damageWidth"
             >{{ chart.Damage(index) }}
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="getClass(index)" v-bind:cols="effectWidth"
+          <v-col class="chart--cols chart--cols-right" v-bind:class="getRank(index)" v-bind:cols="effectWidth"
             ><display-tooltip-text :string="chart.Status(index)" />
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-if="chart.HasRoll && !chart.IsDefend" v-bind:class="getClass(index)" v-bind:cols="negateWidth"
+          <v-col class="chart--cols chart--cols-right" v-if="chart.HasRoll && !chart.IsDefend" v-bind:class="getRank(index)" v-bind:cols="negateWidth"
             >{{ chart.Negate(index) }}
           </v-col>
         </v-row>
@@ -64,7 +64,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    getClass(index) {
+    getRank(index) {
       if (index == 0) return 'Miss'
       if (index == 1) return 'Graze'
       if (index == 2) return 'Hit'

@@ -21,13 +21,13 @@ class Npc extends Combatant {
     return 0
   }
 
-  override get Guard() {
-    if (this.npc_data_.guard) return this.npc_data_.guard
+  override get Block() {
+    if (this.npc_data_.block) return this.npc_data_.block
     return 0
   }
 
-  override get MaxHP() {
-    return this.npc_data_.hp
+  override get MaxStamina() {
+    return this.npc_data_.stamina
   }
 
   override get Size() {
@@ -42,7 +42,7 @@ class Npc extends Combatant {
     return this.npc_data_.move
   }
 
-  override get MaxStun() {
+  override get MaxBlock() {
     if (this.npc_data_.defenses.stun) return this.npc_data_.defenses.stun
     return 0
   }
@@ -71,18 +71,18 @@ class Npc extends Combatant {
   }
 
   override get AllArts() {
-    return [this.Armor].concat(this.Weapons)
+    return [this.Soak].concat(this.Weapons)
   }
 
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Armor() {
-    return store.getters.getArmor(this.npc_data_.armor)
+  public get Soak() {
+    return 0
   }
 
-  public get Class() {
-    return this.npc_data_.class
+  public get category() {
+    return this.npc_data_.category
   }
 
   public get Desc() {
@@ -96,8 +96,8 @@ class Npc extends Combatant {
   public get MomentumGainText() {
     return '**_Momentum_ Gain:** ' + this.npc_data_.momentum_gain
   }
-  public get StunText() {
-    return '**_Stun_:** ' + this.MaxStun
+  public get BlockText() {
+    return '**_Block_:** ' + this.MaxBlock
   }
   public get Name() {
     return this.npc_data_.name
@@ -140,12 +140,8 @@ class Npc extends Combatant {
   public get MoveText() {
     return '**Move:** ' + this.npc_data_.move
   }
-  public get HPText() {
-    return '**HP:** ' + this.npc_data_.hp
-  }
-  public get ArmorText() {
-    if (this.npc_data_.guard) return '**Armor:** ' + this.npc_data_.guard + ' Guard'
-    else return '**Armor:** None'
+  public get StaminaText() {
+    return '**Stamina:** ' + this.npc_data_.stamina
   }
   public get SizeText() {
     return '**Size:** ' + this.npc_data_.size

@@ -5,8 +5,7 @@
     "keywords": ["Fleeting"],
     "layer": "Surface",
     "element": "Flame",
-    "position_effect": "The first time a creature enters a Blazing _Position_ on a Turn or ends a _Phase_ in it they take 2 _Fire_ Damage. If they are in the _Position_ at the end of the _Round_ they gain _Alight_ [4 _Reflex_].",
-    "path_effect": "If a creature uses this _Path_ they take 4 _Fire_ Damage and gain _Alight_ [4 _Reflex_].",
+    "effect": "The first time a creature enters a Blazing _Position_ on a Turn or ends a _Phase_ in it they take 2 _Fire_ Damage. If they are in the _Position_ at the end of the _Round_ they gain _Alight_ [4 _Reflex_].",
     "interactions": ["Water Terrain: Reduce the _Watersource_ value by 1, remove Blazing, then make this space _Veiled_."]
   },
   {
@@ -15,8 +14,7 @@
     "layer": "Modifier",
     "element": "Water",
     "keywords": ["Conductive", "Fleeting"],
-    "position_effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave.",
-    "path_effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave.",
+    "effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave.",
     "special": "If there is not a _Watersource_ _Terrain_ effect at the same location as this, end this effect."
   },
   {
@@ -25,8 +23,7 @@
     "layer": "Weather",
     "element": "Windy",
     "keywords": ["Fleeting"],
-    "position_effect": "The creator chooses one:\n* It costs an additional _Movement_ to enter this _Position_ and non-_Melee_ Attacks against creatures in this _Position_ take a -1 _Penalty_.\n* It costs an additional _Movement_ to leave this _Position_ and non-_Melee_ Attacks by creatures in this _Position_ take a -1 _Penalty_.",
-    "path_effect": "The creator chooses a direction. Any Attack that goes against this direction takes a -1 _Penalty_, and it costs an additional _Movement_ to use this Path when moving against this direction.",
+    "effect": "The creator chooses one:\n* It costs an additional _Movement_ to enter this _Position_ and non-_Melee_ Attacks against creatures in this _Position_ take a -1 _Penalty_.\n* It costs an additional _Movement_ to leave this _Position_ and non-_Melee_ Attacks by creatures in this _Position_ take a -1 _Penalty_.",
     "special": "While an area is _Gusting_ it may not become _Veiled_."
   },
   {
@@ -35,8 +32,7 @@
     "layer": "Base",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ ∞"],
-    "position_effect": "None; this may only be applied to Paths.",
-    "path_effect": "Increase the cost to move through this _Path_ by 1. Additionally, creatures that pass through this _Path_ gain _Paddinged_."
+    "effect": "None; this may only be applied to Paths."
   },
   {
     "name": "Toxic Gas",
@@ -44,8 +40,7 @@
     "keywords": ["Fleeting", "Poison", "Endurable", "Unblockable", "AP"],
     "layer": "Weather",
     "element": "Elementless",
-    "position_effect": "All creatures at this Position see creatures not at this Position as Obscured, and vice-versa. Additionally, the first time a creature enters a Toxic Gas _Position_ on a Turn or ends a _Phase_ in it they gain 3 _Stun_. If they are in the _Position_ at the end of the _Round_ they gain _Poisoned_ [4 _Grit_].",
-    "path_effect": "If a creature uses this _Path_ they take 5 _Stun_ and gain _Poisoned_ [5 _Grit_].",
+    "effect": "All creatures at this Position see creatures not at this Position as Obscured, and vice-versa. Additionally, the first time a creature enters a Toxic Gas _Position_ on a Turn or ends a _Phase_ in it they gain 3 _Block_. If they are in the _Position_ at the end of the _Round_ they gain _Poisoned_ [4 _Grit_].",
     "interactions": [
       "Windy Terrain: Remove Toxic Gas.",
       "Fire Damage and Terrain: Remove Toxic Gas. Deal 4 [_Fire_] Damage to all creatures present at the Toxic Gas' location."
@@ -56,8 +51,7 @@
     "desc": "Ground full of unsure footing and low features that makes traveling through it difficult.",
     "layer": "Ground",
     "element": "Earth",
-    "position_effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave. Additionally, all creatures on this _Terrain_ take a -1 _Penalty_ to _Reflex_.",
-    "path_effect": "It costs an additional _Movement_ to use this _Path_."
+    "effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave. Additionally, all creatures on this _Terrain_ take a -1 _Penalty_ to _Reflex_."
   },
   {
     "name": "Veiled",
@@ -65,8 +59,7 @@
     "element": "Elementless",
     "keywords": ["Fleeting"],
     "desc": "Terrain filled with dust, smoke, mist, or some other obscuring agent.",
-    "position_effect": "All creatures at this _Position_ see creatures not at this _Position_ as _Obscured_, and vice-versa.",
-    "path_effect": "Creatures on either side of this _Path_ see the other _Arena_ as _Obscured_."
+    "effect": "All creatures at this _Position_ see creatures not at this _Position_ as _Obscured_, and vice-versa."
   },
   {
     "name": "Wet",
@@ -74,7 +67,6 @@
     "layer": "Surface",
     "element": "Water",
     "keywords": ["Conductive", "_Watersource_ 1"],
-    "position_effect": "All creatures on this _Terrain_ take a -1 _Penalty_ to _Negate_ _Prone_ and _Forced Movement_.",
-    "path_effect": "None."
+    "effect": "All creatures on this _Terrain_ take a -1 _Penalty_ to _Negate_ _Prone_ and _Forced Movement_."
   }
 ]

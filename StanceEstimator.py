@@ -4,9 +4,9 @@ from termcolor import colored
 import argparse
 import OrphanFinder
 
-STANCE_VALUE = 12
+STANCE_VALUE = 13
 MOVEMENT_VALUE = 2
-GUARD_VALUE = 1
+BLOCK_VALUE = 1
 SPEED_VALUE = 1
 DEFENSES_VALUE = 2/3
 STUN_VALUE = 0.3
@@ -26,7 +26,8 @@ def estimate_all_stances():
 
     stances = {}
     for stance in data:
-        stances[stance["name"]] = estimate_stance_value(stance, False)
+        if not "Spirit" in stance["name"]:
+            stances[stance["name"]] = estimate_stance_value(stance, False)
 
     for key, value in stances.items():
         print(("    " + key + ": ").ljust(25 + (0 if value > 0 else -1)) + colored("{:.3f}".format(value), 'magenta' if value > 0.5 else 'red' if value < -0.5 else 'green'))
@@ -36,8 +37,9 @@ def estimate_stance_value(stance, print_results):
 
     # Get the basic values.
     stance_value += stance["momentum"]
+    stance_value += stance.get("guard", 0)
     stance_value += stance.get("movement", 0) ** 0.6 * MOVEMENT_VALUE # We root here because Movement reaches a ceiling of usefulness quickly.
-    stance_value += stance.get("guard", 0) * GUARD_VALUE
+    stance_value += stance.get("block", 0) * BLOCK_VALUE
     # stance_value += stance.get("stun_clear", 0) * STUN_VALUE
     stance_value += 6 - stance["speed"] * SPEED_VALUE
     stance_value += stance["defenses"]["grit"] * DEFENSES_VALUE

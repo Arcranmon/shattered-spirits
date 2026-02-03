@@ -135,9 +135,9 @@ def estimate_damage(attack, glancing, print_stats):
     bonus_damage =  [0]*4
     expected_targets = 1
     lvh = 'none'
-    attack_class = ATTACK
+    attack_category = ATTACK
     override_range = ""
-    stun_scale = 0.0 # Stun is worth less (not sure how much)
+    stun_scale = 0.75 # Stun is worth less (not sure how much)
 
     cost += int(attack["cost"][0])
                     
@@ -235,7 +235,7 @@ def estimate_damage(attack, glancing, print_stats):
         hit_string = colored("|", 'red')
         damage_string = colored("|", 'red')
         for index, item in enumerate(roll_chart):            
-            a, b = item.split('-')            
+            a, b = item.split('-') if '-' in item else [item, item ]         
             a, b = int(a), int(b)
             for num in range(a, b+1):
                 hit_string += colored("  " + str(num) + "  |", colors[index])

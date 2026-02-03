@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="2" />
-    <v-col cols="4"> <v-select v-model="classFilter" label="Class Filter" item-text="Name" :items="classOptions" filled /></v-col>
+    <v-col cols="4"> <v-select v-model="categoryFilter" label="Category Filter" item-text="Name" :items="categoryOptions" filled /></v-col>
     <v-col cols="4">
       <v-select v-model="keywordFilter" label="Keyword Filter" item-text="Name" :items="character.AllKeywords(abilityType)" filled />
     </v-col>
@@ -10,9 +10,9 @@
       :abilities="abilities"
       :type="abilityType"
       :include_base="true"
-      :classFilter="classFilter"
+      :categoryFilter="categoryFilter"
       :keywordFilter="keywordFilter"
-      :key="classFilter && keywordFilter"
+      :key="categoryFilter && keywordFilter"
       style="width: 100%"
   /></v-row>
 </template>
@@ -38,7 +38,7 @@ export default Vue.extend({
     },
   },
   computed: {
-    classOptions() {
+    categoryOptions() {
       if (this.abilityType == 'Attack') {
         return ['All', 'Light', 'Balanced', 'Heavy']
       } else if (this.abilityType == 'Gambit') {
@@ -49,14 +49,14 @@ export default Vue.extend({
     },
     abilities() {
       if (this.spirit) {
-        return this.character.Spirit.FilteredAbilities(this.abilityType, this.classFilter, this.keywordFilter)
+        return this.character.Spirit.FilteredAbilities(this.abilityType, this.CategoryFilter, this.keywordFilter)
       }
-      return this.character.FilteredAbilities(this.abilityType, this.classFilter, this.keywordFilter)
+      return this.character.FilteredAbilities(this.abilityType, this.CategoryFilter, this.keywordFilter)
     },
   },
   data() {
     return {
-      classFilter: 'All',
+      categoryFilter: 'All',
       keywordFilter: 'All',
     }
   },

@@ -8,8 +8,8 @@
     <div class="card--content card--format">
       <v-row no-gutters>
         <v-col :cols="6">
-          <display-tooltip-text :string="form.StunHeader" /><br />
-          <display-tooltip-text :string="form.HPHeader" /><br />
+          <display-tooltip-text :string="form.BlockHeader" /><br />
+          <display-tooltip-text :string="form.StaminaHeader" /><br />
           <div v-if="form.HasDefenses"><display-tooltip-text :string="form.DefensesHeader" /></div>
         </v-col>
         <v-col :cols="6">

@@ -23,22 +23,22 @@
     "name": "Anguished",
     "desc": "A mental affliction caused when a creature's heart is full of grief. ",
     "effect": "An Anguished creature takes a -1 _Penalty_ to _Negate_ all effects. Whenever a creature with Anguished ends their _Turn_ non-adjacent to an allied creature they lose 1 _Momentum_.",
-    "repeat": "If an Anguished creature would gain Anguished they instead gain 1 _Stun_.",
+    "repeat": "If an Anguished creature would gain Anguished they instead gain 1 _Block_.",
     "recover": "When a creature _Recovers_ they may remove Anguished if they are adjacent to an ally.",
     "reacts": ["<ins>_Joyful_:</ins> If a creature has _Joyful_ and would gain Anguished, they instead remove _Joyful_."],
     "type": "Mental Affliction"
   },
   {
     "name": "Break",
-    "desc": "You break through a foe's defenses, shattering their guard and disrupting attacks.",
-    "effect": "If the foe is _Guarding_ or _Charging_, end that effect. The target gains none of the normal benefits for ending said effect.",
+    "desc": "You break through a foe's defenses, shattering their block and disrupting attacks.",
+    "effect": "If the foe is _Defenseing_ or _Charging_, end that effect. The target gains none of the normal benefits for ending said effect.",
     "type": "Instant Effect"
   },
   {
     "name": "Burned",
     "desc": "An affliction caused by harsh elemental damage that makes one more susceptible to it.",
     "effect": "While a creature has Burned they gain _Weakness_ 3 (_Cold_, _Fire_, _Lightning_).",
-    "special": "A creature may not gain _HP_ while they have Burned. Instead, they remove _Burned_ as soon as they gain _HP_ from any source.",
+    "special": "A creature may not gain _Stamina_ while they have Burned. Instead, they remove _Burned_ as soon as they gain _Stamina_ from any source.",
     "repeat": "If a Burned creature would gain Burned they instead take 2 _True_ Damage.",
     "remove": "Burned is only removed by effects that explicitly remove it.",
     "recover": "Creatures may not remove Burned while _Recovering_.",
@@ -47,8 +47,8 @@
   {
     "name": "Calm",
     "desc": "A mental affliction caused when a creature's mind is clear and avoiding violence. ",
-    "effect": "A creature with Calm deals -2 Damage on all Attacks and reduces the Negate DC of their Attacks by 1, but has +2 _Guard_. If a creature does not make an Attack on their _Turn_ while Calm they may lose Calm to gain 2 _Momentum_.",
-    "repeat": "If a Calm creature would gain Calm they gain 1 _Momentum_ and 1 _Stun_.",
+    "effect": "A creature with Calm deals -2 Damage on all Attacks and reduces the Negate DC of their Attacks by 1, but has +2 _Block_. If a creature does not make an Attack on their _Turn_ while Calm they may lose Calm to gain 2 _Momentum_.",
+    "repeat": "If a Calm creature would gain Calm they gain 1 _Momentum_ and 1 _Block_.",
     "reacts": ["<ins>_Enraged_:</ins> If a creature is _Enraged_ and would gain Calm, they instead remove _Enraged_."],
     "type": "Mental Affliction"
   },
@@ -64,15 +64,15 @@
     "name": "Enraged",
     "desc": "A mental affliction caused when a creature's heart is full of hate.",
     "effect": "A creature with Enraged deals +2 _Bonus Damage_ on all Attacks, but takes an additional 1 Damage from all Attacks. If a creature does not deal Damage with an Attack on their _Turn_ while Enraged they lose 1 _Momentum_.",
-    "repeat": "If an Enraged creature would gain Enraged they instead gain 1 _Stun_.",
+    "repeat": "If an Enraged creature would gain Enraged they instead gain 1 _Block_.",
     "recover": "When a creature _Recovers_ they may remove Enraged if they have dealt damage to a creature with an Attack this _Round_.",
     "type": "Mental Affliction"
   },
   {
     "name": "Frozen",
     "desc": "An elemental affliction caused by freezing temperatures that limits mobility.",
-    "effect": "While a creature has Frozen they take 2 _Cold_ Damage if they Move (even by _Forced Movement_). This Damage may not not be reduced by _Guard_ that is not provided by _Resistance_ and is only triggered once per _Turn_.",
-    "special": "While a creature has any Frozen, they have _Resistance_ 3 (_Fire_) and _Stun_ 2 (_Cold_). Do not apply this _Stun_ to any Damage dealt due to Frozen.",
+    "effect": "While a creature has Frozen they take 2 _Cold_ Damage if they Move (even by _Forced Movement_). This Damage may not not be reduced by _Block_ that is not provided by _Resistance_ and is only triggered once per _Turn_.",
+    "special": "While a creature has any Frozen, they have _Resistance_ 3 (_Fire_) and _Block_ 2 (_Cold_). Do not apply this _Block_ to any Damage dealt due to Frozen.",
     "reacts": ["<ins>Alight:</ins> If a Frozen creature would gain _Alight_, instead removed Frozen and make their space _Wet_."],
     "remove": "If a creature takes _Fire_ Damage, remove Frozen and make their space _Wet_. Otherwise, Frozen is only removed by effects that specifically remove it. Additionally, _Water_ abilities may _Draw_ from Frozen creatures, removing Frozen to _Draw_ 1. Creatures must have _Snowdraw_ to do this.",
     "repeat": "If a Frozen creature would gain Frozen they instead take 3 _Cold_ Damage.",
@@ -106,7 +106,7 @@
   {
     "name": "Shocked",
     "desc": "An elemental affliction caused by being jolted with electricity, limiting reaction speed.",
-    "effect": "While a creature has Shocked they take 2 _Lighting_ Damage equal if they use a _Defensive_ Reaction.  This Damage may not not be reduced by _Guard_ that is not provided by _Resistance_.",
+    "effect": "While a creature has Shocked they take 2 _Lighting_ Damage equal if they use a _Defensive_ Reaction.  This Damage may not not be reduced by _Block_ that is not provided by _Resistance_.",
     "special": "Add _Stall_ to all abilities used in _Phase_ 1 and 2 while _Shocked_.",
     "repeat": "If a Shocked creature would gain Shocked they instead take 3 _Lightning_ Damage.",
     "recover": "When a creature _Recovers_ they may remove Shocked if they have not taken _Lighting_ Damage this _Phase_.",
@@ -115,7 +115,7 @@
   {
     "name": "Shred",
     "desc": "A status inflicted when a creature's armor is damaged, creating openings.",
-    "effect": "Reduce the _Guard_ provided by the creature's _Armor_ by 1.",
+    "effect": "Reduce the _Block_ provided by the creature's _Armor_ by 1.",
     "remove": "Only abilities that explicitly remove Shred remove Shred. Otherwise, it is removed with [out of combat mechanic].",
     "type": "Instant Effect"
   },
@@ -148,7 +148,7 @@
     "name": "Frightened",
     "desc": "A mental affliction caused when a creature's spirit is rattled.",
     "effect": "A Frightened creature requires an additional space of Movement to enter any space adjacent to a hostile creature but may Move 1 on each of their Turns. Whenever a creature with Frightened ends their _Turn_ adjacent to a hostile creature they lose 1 _Momentum_.",
-    "repeat": "If a Frightened creature would gain Frightened they instead gain 1 _Stun_.",
+    "repeat": "If a Frightened creature would gain Frightened they instead gain 1 _Block_.",
     "reacts": ["<ins>_Courageous_:</ins> If a creature is _Courageous_ and would gain Frightened, they instead remove _Courageous_."],
     "recover": "When a creature _Recovers_ they may remove Frightened if they are not adjacent to a hostile creature.",
     "type": "Mental Affliction"

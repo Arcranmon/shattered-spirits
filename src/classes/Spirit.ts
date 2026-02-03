@@ -1,9 +1,9 @@
 import { store } from '@/store'
-import { Combatant, Character, Subtype } from '@/class'
+import { Combatant, Character, Subtype, Stance } from '@/class'
 
 var kBasicAttacks = ['Weapon Attack', 'Brawl']
-var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Guard', 'Rebalance']
-var kBasicStunts = ['Draw/Stow', 'Retreat', 'Leap']
+var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Block', 'Rebalance']
+var kBasicBlockts = ['Draw/Stow', 'Retreat', 'Leap']
 var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge']
 var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
 
@@ -13,6 +13,7 @@ class Spirit extends Combatant {
   private spirit_type_: Subtype
   private weapons_: Array<string>
   private character_: Character
+  private current_stance_: Stance
 
   public constructor() {
     super()
@@ -24,12 +25,12 @@ class Spirit extends Combatant {
   // ==========================================================
   // COMBATANT OVERRIDES
   // ==========================================================
-  override get Guard() {
-    var guard = 0
+  override get Block() {
+    var block = 0
     for (var equipment of this.Equipment) {
-      if (store.getters.isArmor(equipment.Name)) guard += equipment.Guard
+      if (store.getters.isArmor(equipment.Name)) block += equipment.Block
     }
-    return guard
+    return block
   }
 
   override get MaxMovement() {
@@ -43,10 +44,10 @@ class Spirit extends Combatant {
     return traits
   }
 
-  override get MaxPadding() {
+  override get MaxSoak() {
     var soak = 0
     for (var equipment of this.Equipment) {
-      if (store.getters.isArmor(equipment.Name)) soak += equipment.Padding
+      if (store.getters.isArmor(equipment.Name)) soak += equipment.Soak
     }
     return soak
   }
@@ -75,6 +76,13 @@ class Spirit extends Combatant {
     arts = arts.concat(this.Equipment)
 
     return arts
+  }
+
+  get Stances() {
+    var stances = [...store.getters.basicSpiritStances]
+    // Collect from Disciplines
+    // Collect from Archetypes
+    return store.getters.getStancesFromList(stances)
   }
 
   get Grit() {
@@ -107,11 +115,24 @@ class Spirit extends Combatant {
     this.character_ = character
   }
 
-  override get MaxHP() {
-    return this.SpiritType.HP + this.combinedBonuses_.HP
+  get CurrentStance() {
+    return this.current_stance_
   }
 
-  override get MaxStun() {
+  set CurrentStance(stance: Stance | string) {
+    if (stance instanceof Stance) {
+      this.current_stance_ = stance
+    } else {
+      this.current_stance_ = store.getters.getStance(stance)
+    }
+    if (this.Movement > this.MaxMovement) this.Movement = this.MaxMovement
+  }
+
+  override get MaxStamina() {
+    return this.SpiritType.Stamina + this.combinedBonuses_.Stamina
+  }
+
+  override get MaxBlock() {
     return this.SpiritType.Stun + this.combinedBonuses_.Stun
   }
 
@@ -143,8 +164,8 @@ class Spirit extends Combatant {
   get Actions() {
     return store.getters.getManeuversFromList(kBasicActions)
   }
-  get Stunts() {
-    return store.getters.getManeuversFromList(kBasicStunts)
+  get Blockts() {
+    return store.getters.getManeuversFromList(kBasicBlockts)
   }
   get Reactions() {
     return store.getters.getManeuversFromList(kBasicReactions)
@@ -177,6 +198,7 @@ class Spirit extends Combatant {
       type: spirit.spirit_type_.Name,
       weapons: spirit.weapons_,
       traits: spirit.traits_,
+      current_stance: spirit.current_stance_.Name,
     }
   }
 
@@ -198,6 +220,7 @@ class Spirit extends Combatant {
     this.traits_ = data.traits || []
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
+    if ('current_stance' in data) this.current_stance_ = store.getters.getStance(data.current_stance)
     this.setCombatantData(data)
     this.setBonuses()
   }

@@ -2,13 +2,11 @@
   <div>
     <v-dialog v-model="dialog" hide-overlay>
       <template v-slot:activator="{ on }">
-        <v-btn color="white" v-on="on">
-          About
-        </v-btn>
+        <v-btn color="white" v-on="on"> About </v-btn>
       </template>
 
       <v-card>
-        <v-card-text class="card--wrapper" style="font-size: larger; padding: 1em;">
+        <v-card-text class="card--wrapper" style="font-size: larger; padding: 1em">
           Welcome to the world of Deskar, the land of Shattered Spirits!<br />&nbsp;<br />
           This system is currently a huge WIP and is in the middle of a large revamp of character options. If you don't know where to start, take a glance at
           the Character Creation rules, look at the Character Options, and whenever you're confused about something click on the underlined text to bring up a

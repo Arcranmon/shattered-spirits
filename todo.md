@@ -3,7 +3,7 @@
 - Rework things so that at the start of each Phase you choose your Stance
   - One action per Round (in each Phase, Players->Enemies)
   - Stances should all have the following (even if the value is 0):
-    - How much Guard they grant
+    - How much Block they grant
     - Their Speed
     - Their bonuses to Grit/Focus/Reflex
     - How much Stun you clear at the start of the Phase
@@ -31,7 +31,7 @@ POTENTIAL REFACTORS
   - Add a 'Stun' bar as well that can be used by players as juice
     - Essentially replaces Vulnerable/Reeling
     - Gambits will typically clear Stun to inflict additional effects
-- Up the Guard bonuses from Armor?
+- Up the Block bonuses from Armor?
   - Piecemeal armor? Shirt/Chest/Greaves/Hands/Feet/Head?
   - Probably a dumb idea...
 - Move to a Skill Tree system (maybe)
@@ -39,7 +39,7 @@ POTENTIAL REFACTORS
   - Instead of Arts/Disciplines Major/Minor Disciplines?
 - Stance passives may need to be more impactful to enable stance dancing
 - Basic stuff to moved out:
-  - Hide, Raise Guard, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Sunder, Basic Flourish, Basic Feint
+  - Hide, Raise Block, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Sunder, Basic Flourish, Basic Feint
   - Examples:
   - Most Gambits go to Art stuff
 

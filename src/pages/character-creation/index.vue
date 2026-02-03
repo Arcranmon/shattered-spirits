@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 1em; width: 100%;">
+  <div style="padding: 1em; width: 100%">
     <h2>Character Creation</h2>
     <display-tooltip-text :string="choosingYourSpirit" class="text" />
     <br />

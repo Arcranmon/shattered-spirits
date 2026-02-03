@@ -8,6 +8,10 @@
     "effect": "Arenas are distinct areas on a battlefield that take some significant effort to traverse between and designate different areas of combat. Generally, characters may spend one Movement to move from an Arena to any connected Arenas, entering at the appropriate _Path_ _Position_ if relevant."
   },
   {
+    "name": "Alcohol",
+    "effect": "A character may use this while camping to automatically clear a _Stress_, but cannot remove the <u>Crash</u> Danger from their Rest Roll if they do so."
+  },
+  {
     "name": "Attack Roll",
     "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's _Profile_ to determine the effect. On a _Miss_, creatures gain _Momentum_ equal to half of the total cost of the Attack."
   },
@@ -42,7 +46,7 @@
   },
   {
     "name": "Discount",
-    "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Boosts for the applicable attack. Any remaining _Discount_ is lost."
+    "effect": "Reduce the _Momentum_ Cost of the applicable effect by the listed Discount. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable attack. Any remaining _Discount_ is lost."
   },
   {
     "name": "Disengage",
@@ -71,16 +75,16 @@
   },
   {
     "name": "Gambit",
-    "effect": "Gambits are _Maneuvers_ that allow characters to enhance an Attack or Defense. When making an Attack, characters may use a Gambit if they roll doubles or roll a Critical Hit. If Defending, characters may use a Gambit if they roll doubles or Win. Characters may qualify for more than one Gambit on a single roll, such as when they roll doubles and get a Critical Hit. If a Gambit is triggered by an _Area_ Attack resolve the effects against a single Target per Gambit unless specified otherwise."
+    "effect": "Gambits are _Maneuvers_ that allow characters to enhance an Attack or Defend. When making an Attack, characters may use a Gambit if they roll doubles or roll a Critical Hit. If Defending, characters may use a Gambit if they roll doubles or Win. Characters may qualify for more than one Gambit on a single roll, such as when they roll doubles and get a Critical Hit. If a Gambit is triggered by an _Area_ Attack resolve the effects against a single Target per Gambit unless specified otherwise."
   },
   { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Glancing",
-    "effect": "A Glancing effect did not hit as solidly as it should have; it deals no _Stun_. The Target gains a +1 to _Negate."
+    "effect": "A Glancing effect did not hit as solidly as it should have; characters lose no _Block_ from the effect and has _Advantage_ to _Negate_."
   },
   {
-    "name": "Guard",
-    "effect": "Guard reduces Damage."
+    "name": "Block",
+    "effect": "When a character takes Damage, they may gain _Stun_ rather than _Stamina_ for an amount of Damage equal to their Block."
   },
   {
     "name": "Kinesis",
@@ -92,7 +96,7 @@
   },
   {
     "name": "Prepare",
-    "effect": "When you Prepare, place up to the specified amount of _Momentum_ on any _Art_ or _Equipment_, removing it from your supply. This _Momentum_ may be used to pay the cost of any Ability on said _Art_. At _Refresh_ or when _Stunned_, lose half the Prepared resources on all Equipment and Arts. When _Wounded_, lose all Prepared resources on all Equipment and Arts. If you stop _Wielding_ a piece of _Equipment_, lose all Prepared resources."
+    "effect": "When you Prepare, place up to the specified amount of _Momentum_ on an Ability, which can be used to pay the cost of said Ability. When _Downed_, lose half of all Prepared resources. If you stop _Wielding_ a piece of _Equipment_ that has been Prepared, lose all Prepared resources."
   },
   {
     "name": "Hand-and-a-Half",
@@ -105,23 +109,20 @@
   },
   {
     "name": "Momentum",
-    "effect": "Momentum represents various advantages in combat. It is spent for a myriad of effects, but most commonly increasing the power of abilities using Boosts and paying for _Stunts_.\n\nIf a creature would lose Momentum due to an effect but has no Momentum they instead gain 2 _Stun_ for every Momentum they would lose.\n\nSome effects will refer to placing Momentum on a creature or Art. Momentum placed on a creature may be used by their enemies to purchase any effects that target solely that creature, such as _Reactions_ against their Attacks or _Boosts_ on Single-Target Attacks. Momentum placed on an Art may only be used to use said Art."
+    "effect": "Momentum represents various advantages in combat. It is spent for a myriad of effects, but most commonly increasing the power of abilities using Enhancements and paying for other Abilities.\n\nIf a creature would lose Momentum due to an effect but has no Momentum they instead gain 2 _Stun_Stun for every Momentum they would lose.\n\nSome effects will refer to placing Momentum on a creature or Art. Momentum placed on a creature may be used by their enemies to purchase any effects that target solely that creature, such as _Reactions_ against their Attacks or _Enhancements_ on Single-Target Attacks. Momentum placed on an Art may only be used to use said Art."
   },
+  { "name": "Guard", "effect": "Guard represents a character's ability to actively defend themselves. It is commonly used for _Dodge_ and _Parry_ Reactions." },
   {
     "name": "Movement",
-    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.\n* 1 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: Gain a _Hazard_ or _Terrain Bonus_. You automatically become _Engaged_ with any other creatures benefiting from the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to guard a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
+    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.\n* 1 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: Gain a _Hazard_ or _Terrain Bonus_. You automatically become _Engaged_ with any other creatures benefiting from the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
   },
   {
     "name": "Opening",
     "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ allow enemies to _Attack_ when an Opening is created."
   },
   {
-    "name": "Parry",
-    "effect": "A Parry is a riskier version of a _Block_ Reaction; a _Graze_ is instead treated as a _Miss_. However, these effects will typically grant a bonus on a _Hit_+."
-  },
-  {
     "name": "Pierce",
-    "effect": "Damage equal to the Pierce value cannot be reduced by the Target's _Guard_."
+    "effect": "Attacks with _Pierce_ ignore an amount of the Target's _Block_ equal to their Pierce value."
   },
   {
     "name": "Priority",
@@ -137,7 +138,7 @@
   },
   {
     "name": "Remote",
-    "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the attack's origin and the Target."
+    "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the Missile to the Target."
   },
   {
     "name": "Pacifist",
@@ -166,7 +167,7 @@
   },
   {
     "name": "Feeble",
-    "effect": "Attacks with this keyword treat the Target's _Guard_ as twice its value."
+    "effect": "Attacks with this keyword treat the Target's _Block_ as twice its value."
   },
   {
     "name": "Slow Turn",
@@ -177,20 +178,16 @@
     "effect": "This piece of Equipment may be equipped in a consumables Slot. If it is, it costs no _Load_."
   },
   {
-    "name": "Soak",
-    "effect": "Reduce any _Stun_ inflicted by a character's _Soak_ value."
-  },
-  {
-    "name": "Padding",
-    "effect": "Padding is effectively an extension to a character's _Stun_ meter, typically granted by equipment. Whenever a character takes _Stun_ it first is applied to their _Padding_ until their Padding meter is full. If a character's Padding is reduced any current Padding above the new limit is immediately applied to _Stun_. In all other ways (such as removing _Stun_) Padding behaves identically."
+    "name": "Stack",
+    "effect": "A single Load of this item is comprised of multiple copies, designated by the Stack value. Each individual copy is Load 0."
   },
   {
     "name": "Stun",
-    "effect": "Stun is a special status that creatures accumulate through combat. When a creature reaches their maximum Stun value any additional Stun inflicted is converted to Damage."
+    "effect": "Characters have a Stun gauge in combat, which typically fills as they're attacked. When a character takes Damage, they may reduce an amount equal to their _Block_ to Stun, gaining Stun instead of losing _Stamina_. If an effect inflicts Stun it is always applied before other Damage, but can only be applied to the target's Stun."
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own HP, Stun, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_.\n* Spirits act at their listed _Speed_ during the players' phase."
+    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own Stamina, Stun, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_.\n* Spirits act at their listed _Speed_ during the players' phase."
   },
   { "name": "Summoned", "see": "Summon" },
   {

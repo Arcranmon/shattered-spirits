@@ -1,36 +1,37 @@
 [
   {
-    "name": "HP Flask",
+    "name": "Health Flask",
     "category": "Potion",
     "desc": "A potion that fills you with energy and staunches minor wounds.",
     "load": 1,
     "hands": 1,
     "durability": 1,
-    "keywords": ["Quickdraw", "Consumable", "Fragile"],
-    "effect": "This may be used as _Medicine_.",
+    "rarity": "Common",
+    "keywords": ["Quickdraw", "Consumable", "Fragile", "Medicine"],
     "abilities": [
       {
         "name": "Drink",
-        "class": "Utility",
+        "category": "Utility",
         "type": "Maneuver",
         "cost": "None",
-        "effect": "Create an [_Opening_]. Clear all _Stun_, then restore 5 _HP_."
+        "effect": "Create an [_Opening_]. Clear all _Block_, then restore 5 _Stamina_. If you are _Bleeding_, reduce the value by 2."
       }
     ]
   },
   {
     "name": "Caltrops",
     "category": "Supply",
-    "desc": "A satchel full of small triangle spikes of metal.",
+    "desc": "A satchel full of small triangle spikes of metal that can be scattered to deny an area to foes.",
     "load": 1,
     "hands": 1,
     "durability": 1,
+    "rarity": "Common",
     "keywords": ["Metal", "Quickdraw", "Consumable"],
     "effect": "A small bag of metallic caltrops that can be used to deter enemies from entering a space. These are typically lost after use, but characters that have a way to quickly collect them may be able to reuse them. While _Worn_, this may be treated as an effectively unlimited source for _Trinket_ _Metal_ items. If used as a _Missile_, use _Scatter_ at no cost in the target's _Arena_.",
     "abilities": [
       {
         "name": "Scatter",
-        "class": "Utility",
+        "category": "Utility",
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "range": "Short-",
@@ -47,38 +48,55 @@
     "load": 1,
     "hands": 1,
     "durability": 1,
+    "rarity": "Common",
     "keywords": ["Quickdraw", "Consumable"],
     "abilities": [
       {
         "name": "Fling",
-        "class": "Light",
+        "category": "Light",
         "keywords": ["Crush"],
         "type": "Attack",
         "cost": "1 _Momentum_",
         "range": "Close",
-        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [5 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_."
+        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [5 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.",
+        "chart": {
+          "damage": [0, 0, 1, 2],
+          "stun": [0, 3, 5, 7],
+          "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_"]
+        }
       }
-    ],
-    "chart": {
-      "damage": [0, 0, 1, 2],
-      "stun": [0, 3, 5, 7],
-      "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_"]
-    }
+    ]
   },
   {
     "name": "Smith's Tools",
     "category": "Supply",
     "load": 2,
     "durability": 1,
-    "effect": "A set of simple metal-working tools that can be used to repair equipment while traveling, or handle simple forging if you have access to a forge. It includes a hammer, tongs, and various files."
+    "effect": "A set of simple metal-working tools that can be used to repair Metal equipment while traveling, or handle simple forging if you have access to a forge. It includes a hammer, tongs, and various files.",
+    "desc": "Portable smithing supplies that are excellent for field repairs of equipment."
+  },
+  {
+    "name": "Wine",
+    "category": "Luxury",
+    "desc": "While it's hardly the finest vintage, this fortified wine is excellent for taking the edge off after a hard day of traveling.",
+    "load": 1,
+    "keywords": ["Alcohol", "Consumable"],
+    "durability": 1
+  },
+  {
+    "name": "Polish Kit",
+    "category": "Supply",
+    "desc": "Various rags and oils for keeping metal sparkling and pristine.",
+    "load": 1,
+    "durability": 1,
+    "effect": "Metal Spirits enjoy being Pampered with this item."
   },
   {
     "name": "Bedroll",
     "category": "Supply",
-    "keywords": ["Natural"],
     "load": 2,
     "durability": 1,
-    "effect": "A simple bedroll and bedding material that keeps you off the ground and ensures a good nights sleep."
+    "desc": "A simple bedroll and bedding material that keeps you off the ground and ensures a good nights sleep."
   },
   {
     "name": "Tent",
@@ -86,23 +104,22 @@
     "keywords": ["Wood"],
     "load": 2,
     "durability": 1,
-    "effect": "A tent big enough for two that keeps you out of the weather to ensure a good nights sleep."
+    "desc": "A tent big enough for two that keeps you out of the weather to ensure a good nights sleep."
   },
-  { "name": "Poultice", "keywords": ["Wood"], "category": "Medicine", "load": 1, "durability": 1, "effect": "This may be used as _Medicine_." },
+  { "name": "Poultice", "keywords": ["Medicine"], "category": "Medicine", "load": 1, "durability": 1 },
   {
     "name": "Rope",
     "category": "Supply",
-    "keywords": ["Wood"],
     "load": 1,
     "durability": 1,
-    "effect": "50' of rope. There is absolutely no use for rope on adventures, it has yet to be found."
+    "desc": "15 meters of rope. There is absolutely no use for rope on adventures, it has yet to be found."
   },
   {
     "name": "Rations",
     "category": "Food",
-    "keywords": ["Natural"],
+    "keywords": ["Natural", "Poor Food"],
     "load": 1,
-    "effect": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving. This counts as _Poor_ quality food."
+    "desc": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving."
   },
   {
     "name": "Iron Scrap",
@@ -110,7 +127,8 @@
     "load": 1,
     "durability": 1,
     "keywords": ["Metal"],
-    "effect": "Scrap metal, typically used for extensive equipment repair. While _Worn_, this may be treated as an effectively unlimited source for _Load_ 0 _Metal_ items."
+    "desc": "Assorted random bits of scrap metal, typically used for extensive equipment repair.",
+    "effect": "While _Worn_, this may be treated as an effectively unlimited source for _Load_ 0 _Metal_ items."
   },
   {
     "name": "Waterskin",
@@ -118,6 +136,7 @@
     "category": "Supply",
     "load": 1,
     "durability": 1,
-    "effect": "A water-tight pouch containing a day's worth of water."
+    "desc": "A water-tight pouch containing a day's worth of water.",
+    "effect": "This carries 1 _Load_ worth of _Water_."
   }
 ]

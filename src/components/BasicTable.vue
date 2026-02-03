@@ -7,8 +7,10 @@
       </v-row>
       <div v-for="(item, index) in chart" :key="index">
         <v-row align="stretch" no-gutters class="chart--row" :class="{ OddRow: index % 2 == 1 }">
-          <v-col class="chart--cols justify-center align-center" v-bind:class="useClass(getItem(item))" cols="2">{{ getIndex(item, index) }} </v-col>
-          <v-col class="chart--cols chart--cols-right" cols="4" v-bind:class="useClass(getItem(item))"><display-tooltip-text :string="getItem(item)" /> </v-col>
+          <v-col class="chart--cols justify-center align-center" v-bind:class="usecategory(getItem(item))" cols="2">{{ getIndex(item, index) }} </v-col>
+          <v-col class="chart--cols chart--cols-right" cols="4" v-bind:class="usecategory(getItem(item))"
+            ><display-tooltip-text :string="getItem(item)" />
+          </v-col>
         </v-row>
       </div>
     </div>
@@ -36,7 +38,7 @@ export default Vue.extend({
       if (typeof item === 'string') return item
       return item[1]
     },
-    useClass(item) {
+    usecategory(item) {
       if (item == 'Miss' || item == 'Hit' || item == 'Graze' || item == 'Crit') return item
       return ''
     },

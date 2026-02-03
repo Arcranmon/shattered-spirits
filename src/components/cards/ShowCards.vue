@@ -6,7 +6,7 @@
           <v-expansion-panel-header v-bind:class="contained_header">
             <h3 style="display: flex">{{ dropName }}</h3>
           </v-expansion-panel-header>
-          <v-expansion-panel-content v-bind:class="contained_body">
+          <v-expansion-panel-content v-bind:class="contained_body" class="character-tab-content-panel">
             <v-container fluid>
               <v-row>
                 <v-col
@@ -19,19 +19,13 @@
                   v-on:click="clickMethod(n, index)"
                 >
                   <div class="card--box" v-if="isStance(n)">
-                    <stance-card :stance="n" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
+                    <stance-card :stance="n" :class="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
                   </div>
                   <div class="card--box" v-if="isWeapon(n)">
-                    <weapon-card :weapon="n" :character_creation="character_creation" />
+                    <weapon-widget :weapon="n" :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="isTrait(n)">
-                    <trait-card :trait="n" :color="card_color" :character_creation="character_creation" />
-                  </div>
-                  <div class="card--box" v-if="isArmor(n)">
-                    <armor-card :armor="n" :color="card_color" :character_creation="character_creation" />
-                  </div>
-                  <div class="card--box" v-if="isAbilityPackage(n)">
-                    <ap-card :ap="n" style="height: 100%" />
+                  <div class="card--box" v-if="isAbilityPackage(n)" style="border-bottom: 2px solid black">
+                    <base-widget :ability="n" style="height: 100%" />
                   </div>
                 </v-col>
               </v-row> </v-container
@@ -51,18 +45,6 @@
             v-on:click="clickMethod(n, index)"
             :lg="colWidth"
           >
-            <div class="card--box" v-if="isStance(n)">
-              <stance-card :stance="n" style="height: 100%" :category="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
-            </div>
-            <div class="card--box" v-if="isWeapon(n)">
-              <weapon-card :weapon="n" :color="card_color" :character_creation="character_creation" style="height: 100%" />
-            </div>
-            <div class="card--box" v-if="isArmor(n)">
-              <armor-card :armor="n" :color="card_color" :character_creation="character_creation" style="height: 100%" />
-            </div>
-            <div class="card--box" v-if="isEquipment(n)">
-              <equipment-card :equipment="n" style="height: 100%" />
-            </div>
             <!---
             <div class="card--box" v-if="job == 'Features'">
               <feature-card :feature="n" />
@@ -71,17 +53,11 @@
               <movement-card :movement="n" />
             </div>
             -->
-            <div class="card--box" v-if="isTerrain(n)">
-              <terrain-card :terrain="n" style="height: 100%" />
-            </div>
-            <div class="card--box" v-if="isAbilityPackage(n)">
-              <ap-card :ap="n" style="height: 100%" />
-            </div>
             <div class="card--box" v-if="isSpiritForm(n)">
               <spirit-form-card :form="n" style="height: 100%" />
             </div>
-            <div class="card--box" v-if="isStatus(n)">
-              <status-card :status="n" style="height: 100%" />
+            <div class="card--box">
+              <base-widget :ability="n" style="height: 100%" />
             </div>
           </v-col>
         </v-row> </v-container
@@ -91,15 +67,14 @@
 
 <script>
 import Vue from 'vue'
-import ArmorCard from './ArmorCard.vue'
-import ApCard from './APCard.vue'
-import EquipmentCard from './EquipmentCard.vue'
+import BaseWidget from '../BaseWidget.vue'
+import EquipmentWidget from './EquipmentWidget.vue'
 import FeatureCard from './FeatureCard.vue'
 import StanceCard from './StanceCard.vue'
 import StatusCard from './StatusCard.vue'
 import TechCard from './TechCard.vue'
 import TerrainCard from './TerrainCard.vue'
-import WeaponCard from './WeaponCard.vue'
+import WeaponWidget from './WeaponWidget.vue'
 import SpiritTypeCard from './SpiritTypeCard.vue'
 import SpiritFormCard from './SpiritFormCard.vue'
 import TraitCard from './TraitCard.vue'
@@ -179,15 +154,14 @@ export default Vue.extend({
     },
   },
   components: {
-    ApCard,
-    ArmorCard,
-    EquipmentCard,
+    BaseWidget,
+    EquipmentWidget,
     FeatureCard,
     StanceCard,
     StatusCard,
     TechCard,
     TerrainCard,
-    WeaponCard,
+    WeaponWidget,
     SpiritFormCard,
     SpiritTypeCard,
     TraitCard,
@@ -198,9 +172,6 @@ export default Vue.extend({
     },
     isAbilityPackage(variable) {
       return variable instanceof AbilityPackage
-    },
-    isArchetype(variable) {
-      return variable instanceof Archetype
     },
     isArmor(variable) {
       return variable instanceof Armor
@@ -219,9 +190,6 @@ export default Vue.extend({
     },
     isWeapon(variable) {
       return variable instanceof Weapon
-    },
-    isTalent(variable) {
-      return variable instanceof Talent
     },
     isSpiritForm(variable) {
       return variable instanceof SpiritForm

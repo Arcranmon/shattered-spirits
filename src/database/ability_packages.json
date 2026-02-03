@@ -2,36 +2,39 @@
   {
     "name": "Metalcraft",
     "category": "Metal",
+    "type": "Discipline",
     "desc": "Simple techniques that all with a metal companion can easily accomplish.",
     "abilities": [
       {
         "name": "Basic Metalcraft",
-        "class": "Narrative",
+        "category": "Narrative",
+        "keywords": ["Spirit", "Metal"],
         "type": "Skill",
-        "effect": "You have a basic, intuitive grasp of metalcraft and can accomplish minor feats using it. You gain the following:\n* **Metalsense:** You have a rough knowledge of the location of all metal within 10 meters.\n* **Lodestone Arts**: You may move and control a single metal object within 10 meters, with a maximum weight of 20 pounds. You have decent control with lighter objects that becomes poor as they get heavier.\n* **Anvil Arts:** You may touch a piece of metal and minorly change a physical property of it (such as strength or pliability). This change is temporary, and ends if you stop touching the metal.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities for a Scene."
+        "effect": "You have a basic, intuitive grasp of metalcraft and can accomplish minor feats using it. You gain the following:\n* **Metalsense:** You have a rough knowledge of the location of all nearby metal.\n* **Basic Lodecraft**: You may clumsily move and control a single nearby metal object that you could hold in one hand.\n* **Basic Anvilcraft**: You may touch a piece of metal and affect minor change on it, such as making it stronger, weaker, or slightly changing its shape. This change is temporary, and ends if you stop touching the metal.\n\nYour Spirit may take 1 _Fatigue_ to enhance these abilities for a Scene, allowing you to temporarily exceed these limits."
       },
       {
         "name": "Metalbending",
-        "class": "Utility",
+        "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Metal"],
-        "effect": "You have _Kinesis_ [_Metal_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you instead must Target a _Metal_ piece of _Equipment_."
+        "effect": "You have _Kinesis_ [_Metal_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
       },
       {
         "name": "Metal Shot",
-        "class": "Light",
+        "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Metal", "Crush", "Remote"],
         "cost": "2 _Momentum_",
         "range": "_Short_-",
-        "target": "\n* <u>Missile:</u> Unattended 0 _Load_ or _Trinket_ _Metal_ item or one _Worn by an ally within _Close_- Range.\n* <u>Attack:</u> Single-Target.",
-        "effect": "Choose a _Missile_, then Attack a target within Range with it. If you choose a _Trinket_, add _Feeble_ to this Attack.",
+        "target": "Single-Target",
+        "missile": "An Unattended 0 _Load_/_Trinket_ _Metal_ item or one _Worn by you/an ally within _Close_- Range.",
+        "effect": "Choose a Missile, then Attack a target within Range with it. If you choose a _Trinket_, add _Feeble_ to this Attack. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
         "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
-        "boosts": [
+        "enhancements": [
           {
-            "name": "Heavy Shot",
+            "name": "Power Shot",
             "cost": "1 _Momentum_",
-            "effect": "You instead use a _Load_ 1 item as _Missile_. Deal +_1/1/2/2_ Damage if you do."
+            "effect": "You may instead use a _Load_ 1 item as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
           }
         ],
         "chart": {
@@ -43,33 +46,84 @@
     ]
   },
   {
+    "name": "Novice Anvilcraft",
+    "category": "Metal",
+    "type": "Discipline",
+    "desc": "The fundamentals of anvilcraft, a speciality of metalcraft that focuses on changing the structure of metal to strengthen, weaken, or alter the shape of it.",
+    "abilities": [
+      {
+        "name": "Novice Anvilcraft",
+        "category": "Narrative",
+        "keywords": ["Spirit", "Metal"],
+        "type": "Skill",
+        "effect": "You are studied in the basics of anvilcraft, allowing you to better manipulate metal. You can modify the physical properties of metal to a moderate degree, allowing you to make iron as hard as steel or the opposite. For the full effect you must be touching the metal, but the effect persists for a short time after you stop touching it. You may affect more mild change from a short distance. Finally, you can shape metal with your touch with the same precision and speed as if you had metalworking tools (but not a forge) and you do not need _Smith's Tools_ to repair metal equipment."
+      },
+      {
+        "name": "Fullmetal",
+        "category": "General",
+        "type": "Passive",
+        "keywords": ["Spirit", "Metal"],
+        "effect": "Your equipment is sharper, harder, and otherwise more deadly than others. Gain the following:\n* Whenever your [_Metal_] _Equipment_ would lose _Durability_ (even in narrative play) roll a d6; on a 6, it instead doesn't. Your _Spirit_ may take 1 _Fatigue_ to treat a failed roll as a success.\n* Your Attacks using [_Metal_] Equipment gain [_Pierce_ 1].\n* You gain +1 _Block_ if you _Block_ while _Wielding_ [_Metal_] Equipment or _Wearing_ [_Metal_] _Armor_.",
+        "imbues": [
+          {
+            "name": "Honed Edge",
+            "cost": "1 _Momentum_",
+            "effect": "In addition, deal +1 Damage with Attacks using [_Metal_] Equipment."
+          },
+          {
+            "name": "Hardened Hide",
+            "cost": "1 _Momentum_",
+            "effect": "In addition, gain +1 _Block_ if you're wearing [_Metal_] Armor, +1 if you're wearing at least 4 _Slots_ of it."
+          }
+        ]
+      },
+      {
+        "name": "Perfect Edge",
+        "category": "Offensive",
+        "type": "Gambit",
+        "keywords": ["Spirit", "Metal"],
+        "reqs": "Attack used [_Metal_] _Equipment_.",
+        "effect": "Add [_Pierce_] 2 and _Sunder_ [_Reflex_]. If the Target Blocks, you must Target Wielded Equipment if possible. If you successfully _Sunder_, inflict 1 _Stun_ on all other creatures you are _Engaged_ with."
+      },
+      {
+        "name": "Shatter Spears",
+        "category": "Defensive",
+        "type": "Gambit",
+        "keywords": ["Spirit", "Metal"],
+        "reqs": "_Wielding_ [_Metal_] _Equipment_ or _Wearing_ _Metal_ _Armor_.",
+        "effect": "You have _Advantage_ to _Negate_ against _Sunder_ targeting _Metal_ Equipment this _Turn_ and gain +2 _Block_. If you lose no _Stamina_ from and are not _Sundered_ by the triggering Attack, choose one:\n* _Sunder_ the weapon used for the Attack.\n* Inflict _Exposed_/_Impaired_ [5 _Reflex_] on the Attacker if they are in _Melee_ Range\n* Gain 1 _Block_."
+      }
+    ]
+  },
+  {
     "name": "Woodcraft",
     "category": "Wood",
+    "type": "Discipline",
     "desc": "Simple techniques that all with a wood companion can easily accomplish.",
     "abilities": [
       {
         "name": "Basic Woodcraft",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Skill",
         "effect": "You have a basic, intuitive grasp of woodcraft. You gain the following:\n* **Range**: Your woodcraft has a range of approximately 30 meters.\n* **Woodsense:** You have a rough knowledge of the location of all wood within your wood range.\n* **Leaf Arts**: You may move and control wooden objects up to 15 pounds, with good precision at low weights and decent precision at higher weights.\n* **Bark Arts:** You may slightly shape wood, bending or warping it a few centimeters. This change is temporary, and ends if you stop concentrating.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities temporarily."
       },
       {
         "name": "Woodbending",
-        "class": "Utility",
+        "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Wood"],
         "effect": "You have _Kinesis_ [_Wood_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range. If you choose the <u>Steal</u> option, you instead must Target a _Wood_ piece of _Equipment_."
       },
       {
         "name": "Wooden Splinter",
-        "class": "Light",
+        "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "_Wood_", "Stab", "Remote"],
         "cost": "1 _Momentum_",
         "range": "_Short_-",
         "effect": "Pick a 0 _Load_ _Wood_ item within _Close_- Range to use as _Ammunition_, then Attack a target within Range. You may also use this if there is a _Wood_ _Source_ within _Close_- Range, creating a 0 _Load_ Wooden Spike as _Ammunition_.",
         "special": "If the Item used for this has an Attack with _Crush_ or _Slash_ you may replace _Stab_ with said keyword.",
-        "boosts": [
+        "enhancements": [
           {
             "name": "Heavy Splinter",
             "cost": "1 _Momentum_",
@@ -92,256 +146,29 @@
     "abilities": [
       {
         "name": "Strength of the Forge",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Skill",
         "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality. This ability works to a lesser extent when you see a piece of their handiwork."
       },
       {
         "name": "Metallurgy",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Skill",
         "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal craftsmanship, and can easily identify the strongest and weakest point on something made of metal, if they exist."
       },
       {
         "name": "Metalworking",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
         "effect": "When you _Mend_ while _Resting_ you automatically succeed if the item is _Metal_. Additionally, if you have access to the appropriate tools, gain the following _Camp Action_:\n* <u>Field Repair</u>: Choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 piece of _Scrap_, then restore it to 1 _Durability_."
       },
       {
         "name": "Forge-Trained",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
         "effect": "Given appropriate tools and materials, you may craft Metal equipment. Most basic or rough tools can be crafted in a few hours, with more intricate or complicated tools taking longer. Whenever you <u>Improve</u> the Forge in your town during _Downtime_, mark +1 segment on the Clock. Finally, whenever you can craft, add the following <u>Augments</u> to your Smithy:\n* <u>Elegant:</u> Increase the _Supply_ cost of the item by 2. This item is of noticeably higher quality and is very desirable to own.\n* <u>Sturdy:</u> Increase the _Supply_ cost of the item by 1. Increase its _Durability_ by 1 as well.\n* <u>Mass-Produced:</u> Decrease the _Supply_ cost of the item by 1. Decrease its _Durability_ by 1. If it already has 1 _Durability_, instead add _Fragile_."
       }
     ]
-  },
-  {
-    "name": "Metalborn",
-    "reqs": "Metal Spirit",
-    "category": "Metal",
-    "type": "Spirit Trait",
-    "abilities": [
-      {
-        "name": "Metal Form",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness."
-      },
-      {
-        "name": "Metallic Body",
-        "class": "Defensive",
-        "type": "Passive",
-        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain the _Metal Body_ Armor.\n* You are _Immune_ to _Bleeding_.",
-        "bonuses": { "equipment": ["Metal Body"] }
-      },
-      {
-        "name": "Heat Conduction",
-        "class": "Defensive",
-        "type": "Passive",
-        "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
-      },
-      {
-        "name": "Metallic Resonance",
-        "class": "Utility",
-        "keywords": ["Metal", "Pacifist", "Rooted"],
-        "type": "Maneuver",
-        "cost": "1 _Momentum_",
-        "range": "Melee",
-        "reqs": "Unattended _Metal_ _Equipment_ within range or at _Metal_ _Terrain_.",
-        "special": "Your Spirit may use this on your _Turn_ while not _Summoned_. If they do, they must Target _Equipment_ you have _Worn_ or _Packed_.",
-        "effect": "Clear 4 _Stun_.",
-        "boosts": [
-          {
-            "name": "Enhanced Healing",
-            "cost": "1 _Momentum_",
-            "effect": "Instead, clear 4 _Stun_ and gain 3 _HP_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Light Natural Armor",
-    "type": "Trait",
-    "category": "General",
-    "cost": "1 Growth Points",
-    "prereqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
-    "keywords": ["Armored"],
-    "abilities": [
-      {
-        "name": "Carapace Armor",
-        "class": "Defensive",
-        "type": "Passive",
-        "effect": "This spirit gains the _Carapace_ Armor.",
-        "bonuses": { "equipment": ["Carapace"] }
-      }
-    ]
-  },
-  {
-    "name": "Metallic Threads",
-    "type": "Spirit Trait",
-    "category": "Metal",
-    "cost": "3 Growth Points",
-    "prereqs": "Metal Spirit.",
-    "abilities": [
-      {
-        "name": "Threads",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "This creature is capable of creating thin threads made of metal and similar to thick spider silk that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, the creature may be required to rest and recover it as if it was _Fatigue_."
-      },
-      {
-        "name": "Wire Whip",
-        "class": "Light",
-        "type": "Attack",
-        "range": "_Short_-",
-        "target": "Single-Target",
-        "keywords": ["Slash", "Metal", "Feeble"],
-        "cost": "1 _Momentum_",
-        "effect": "Attack a Target within _Range_. You may deal no Damage to reduce the cost of <u>Entangle</u> by 1, but must choose prior to making the Attack.",
-        "boosts": [
-          { "name": "Entangle", "cost": "2 _Momentum_", "effect": "Add _Entangled_ 1 [_Reflex_] on a _Graze_+, or _Entangled_ 2 [_Reflex_] on a _Crit_." }
-        ],
-        "chart": {
-          "roll": ["2-3", "4-5", "6-9", "10-12"],
-          "damage": [1, 2, 3, 4]
-        },
-        "analysis_notes": {
-          "fudge": -0.222,
-          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
-          "range": "Melee"
-        }
-      }
-    ]
-  },
-  {
-    "name": "Climber",
-    "type": "Trait",
-    "category": "General",
-    "cost": "1 Growth Point",
-    "prereqs": "None.",
-    "abilities": [
-      {
-        "name": "Natural Climber",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces."
-      },
-      {
-        "name": "Climbing",
-        "class": "Mobility",
-        "type": "Passive",
-        "effect": "This creature only needs to pay 1 _Movement_ for the [_Cliff_] keyword, rather than the typical 2."
-      }
-    ],
-    "bonuses": { "move": 1, "reflex": 2 }
-  },
-  {
-    "name": "Swift",
-    "prereqs": "None",
-    "cost": "1 Growth Point",
-    "category": "General",
-    "type": "Trait",
-    "abilities": [
-      {
-        "name": "Swiftness",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "You are quick on your feet and more nimble than most. In matters of speed, you almost always win."
-      },
-      { "name": "Improved Mobility", "class": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } }
-    ]
-  },
-  {
-    "name": "Tiny Form",
-    "type": "Trait",
-    "category": "Size",
-    "cost": "None",
-    "prereqs": "No other [Size] Traits.",
-    "keywords": ["Size"],
-    "abilities": [
-      {
-        "name": "Tiny Size",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "You are extremely small, somewhere between the size of a rat and a typical cat, granting you greatly improved agility and speed. Depending on the circumstance, your small size and limited weight may be a boon or bane."
-      },
-      {
-        "name": "Diminutive Agility",
-        "class": "Mobility",
-        "type": "Passive",
-        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_.",
-        "bonuses": { "speed": -1, "reflex": 1, "move": 1 }
-      }
-    ],
-    "bonuses": { "move": 1, "reflex": 1 }
-  },
-  {
-    "name": "Small Form",
-    "type": "Trait",
-    "category": "Size",
-    "cost": "None",
-    "prereqs": "No other [Size] Traits.",
-    "abilities": [
-      {
-        "name": "Small Size",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed. Depending on the circumstance, your smaller size may be a boon or bane."
-      },
-      {
-        "name": "Small Profile",
-        "class": "Mobility",
-        "type": "Passive",
-        "effect": "Your Spirit becomes _Small_, gains +2 _HP_, +1 _Stun_, and +1 _Reflex_."
-      }
-    ],
-    "bonuses": { "reflex": 1 }
-  },
-  {
-    "name": "Medium Form",
-    "type": "Trait",
-    "category": "Size",
-    "cost": "None",
-    "prereqs": "No other [Size] Traits.",
-    "abilities": [
-      {
-        "name": "Medium Size",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "You are somewhere between the size of a typical dog and a human. This size is rarely relevant, but may occasionally may be a boon or bane."
-      },
-      {
-        "name": "Medium Profile",
-        "class": "Mobility",
-        "type": "Passive",
-        "effect": "Your Spirit becomes _Medium_, gains +5 _HP_, +3 _Stun_, and +1 _Grit_."
-      }
-    ],
-    "bonuses": { "reflex": 1 }
-  },
-  {
-    "name": "Large Form",
-    "type": "Trait",
-    "category": "Size",
-    "cost": "None",
-    "prereqs": "No other [Size] Traits.",
-    "abilities": [
-      {
-        "name": "Large Size",
-        "class": "Narrative",
-        "type": "Skill",
-        "effect": "You are somewhere between the size of a human and a horse, granting you increased strength and power. Depending on the circumstance, your large size may be a boon or bane."
-      },
-      {
-        "name": "Large Profile",
-        "class": "Mobility",
-        "type": "Passive",
-        "effect": "Your Spirit becomes _Large_, gains +10 _HP_, +6 _Stun_, and +2 _Grit_."
-      }
-    ],
-    "bonuses": { "reflex": 1 }
   },
   {
     "name": "Weaponsmith",
@@ -352,25 +179,25 @@
     "abilities": [
       {
         "name": "Weapon Academia",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Skill",
         "effect": "You are well-versed in different types of weapons, as well as how they are made. You intuitively understand the function, craftsmanship, and cultural significance of weapons, and can accurately assess the condition of a weapon at a glance. Additionally, from a weapon, you can gain insight into its maker, the culture it comes from, and skill level of the wielder."
       },
       {
         "name": "Higher Quality",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
         "effect": "During Downtime you may work on your allies' weapons, making them visibly of higher quality and granting yourself and all party members a Weaponsmith's Blessing at the start of each _Journey_. A character make expend their Weaponsmith's Blessing for one of the following effects:\n* In a Skill Challenge, when the weapon is granting a die, you may gain an additional die.\n* After making an Attack with a Weapon, you may expend the blessing to use a _Gambit_, even if you didn't qualify for one.\n* When a Weapon would lose _Durability_, you may expend the Weaponsmith's Blessing to instead not lose _Durability_.\n\n&nbsp;\nFinally, gain the following _Camp Action_:\n* <u>Hone</u>: Choose an ally that does not have a Weaponsmith's Blessing. You take the time to ensure their equipment is in working order, granting them a Weaponsmith's Blessing."
       },
       {
         "name": "Weapon Maintenance",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
         "effect": "When you _Mend_ while _Resting_ you automatically succeed if the item is a weapon. Additionally, whenever you make camp, you may take the <u>Mend</u> or <u>Hone</u> _Camp Action_ without expending your _Camp Action_ for the day. When you do, roll a d6; on a 2-, you cannot use this ability until it is _Recovered_."
       },
       {
         "name": "Forge Weapon",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
         "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. Whenever you <u>Improve</u> the Forge in your town during _Downtime_ you may also learn a new weapon <u>Augment</u>. Additionally, when you gain this Talent learn two Augments of your choice. With further training, you may learn to work with Exotic materials."
       }
@@ -383,63 +210,66 @@
     "abilities": [
       {
         "name": "Exceptional Toughness",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Skill",
         "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina. This does not grant dice on _Travel Rolls_, but may be treated as a piece of appropriate Equipment when dealing with travel conditions that toughness would aid with."
       },
       {
         "name": "Grin and Bear It",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
         "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may place it on this Ability instead of your Health Bar, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
       },
       {
         "name": "Toughness",
-        "class": "Defensive",
+        "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain +5 HP. At _Refresh_, reduce any _Stun_ you would gain from Afflictions (such as _Fatigue_) by half.",
-        "bonuses": { "hp": 5 }
+        "effect": "Gain +5 Stamina. At _Refresh_, lose half as much _Stun_ as you would normally lose to Afflictions (such as _Fatigue_).",
+        "bonuses": { "stamina": 5 }
       },
       {
         "name": "True Grit",
-        "class": "Defensive",
+        "category": "Defensive",
         "type": "Reaction",
         "keywords": ["Exhaust"],
         "cost": "None",
-        "trigger": "You would be reduced to 0 _HP_.",
-        "effect": "The triggering effect cannot reduce you below 1 _HP_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
+        "trigger": "You would be reduced to 0 _Stamina_.",
+        "effect": "The triggering effect cannot reduce you below 1 _Stamina_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
       }
     ]
   },
   {
-    "name": "Charmer",
+    "name": "Charming",
     "desc": "You have an easy smile and an innate charm, making others feel at ease in your presence.",
     "category": "Archetype",
     "abilities": [
       {
         "name": "Exceptional Charm",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Skill",
-        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, and others are quick to offer you a helping hand. You are adept at working with people, finding help, and any other circumstance where charm may aid you."
+        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, are quick to offer a helping hand, and are more likely to share information with you."
       },
       {
         "name": "First Impression",
-        "class": "Narrative",
+        "category": "Narrative",
         "type": "Power",
-        "effect": "When meeting a new character you may charm them. This causes the character to treat you one step better based on their current relationship to you(Enemy->Hostile->Indifferent->Cordial->Friendly->Close). If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_. You may use this Ability once per day for free, with each successive use costing a _Stress_ to use."
+        "effect": "When meeting a new character you may charm them temporarily, causing them to treat you a bit better than they normally would, allowing you to interact neutrally with a character that dislikes you or acting as a friend with a character that you are only acquaintances with. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_. You may use this Ability once per day for free, with each successive use costing a _Stress_ to use."
       },
       {
         "name": "Charming Presence",
-        "class": "Support",
+        "category": "Support",
         "type": "Passive",
-        "effect": "Gain +1 _Focus_. All allies within _Short_ Range of you gain a +1 to _Negate_ all [_Social_] Attacks and, at _Refresh_, one ally within _Short_- Range gains 1 _Momentum_."
+        "effect": "Gain +1 _Focus_. At _Refresh_ one ally within _Short_- Range may gain _Joyful_."
       },
       {
         "name": "Charm Offensive",
-        "class": "Light",
+        "category": "Light",
         "type": "Attack",
         "keywords": ["Social"],
-        "effect": ""
+        "range": "_Short_-",
+        "target": "Single-Target",
+        "cost": "1 _Momentum_",
+        "effect": "The Target gains 1 _Stun_, then must Negate [5 _Focus_]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect."
       }
     ]
   }

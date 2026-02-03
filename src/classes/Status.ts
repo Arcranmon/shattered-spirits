@@ -7,7 +7,6 @@ class Status extends Base {
   private reacts_: string[]
   private repeat_: string
   private remove_: string
-  private type_: string
 
   public constructor(name) {
     super(name)
@@ -15,19 +14,15 @@ class Status extends Base {
     this.reacts_ = []
     this.remove_ = ''
     this.repeat_ = ''
-    this.type_ = ''
-  }
-
-  // ==========================================================
-  // GETTERS
-  // ==========================================================
-  get Type() {
-    return this.type_
   }
 
   // ==========================================================
   // UTILITY
   // ==========================================================
+  get Header() {
+    return this.Name + ' - ' + this.Type
+  }
+
   get HasNegate() {
     return this.negate_ != ''
   }
@@ -87,7 +82,6 @@ class Status extends Base {
     this.reacts_ = data.reacts || []
     this.repeat_ = data.repeat || ''
     this.remove_ = data.remove || ''
-    this.type_ = data.type || ''
   }
 }
 export default Status

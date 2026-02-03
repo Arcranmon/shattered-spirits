@@ -1,15 +1,15 @@
 import { store } from '@/store'
 
-// Class to store potential combat bonuses that Archetypes and similar might hold.
+// class to store potential combat bonuses that Archetypes and similar might hold.
 class Bonuses {
   private focus_: number
   private grit_: number
-  private hp_: number
+  private stamina_: number
   private reflex_: number
   private move_: number
   private load_: number
   private speed_: number
-  private stun_: number
+  private block_: number
   private equipment_: string[]
 
   // ==========================================================
@@ -18,8 +18,8 @@ class Bonuses {
   public constructor() {
     this.focus_ = 0
     this.grit_ = 0
-    this.hp_ = 0
-    this.stun_ = 0
+    this.stamina_ = 0
+    this.block_ = 0
     this.reflex_ = 0
     this.move_ = 0
     this.load_ = 0
@@ -33,7 +33,7 @@ class Bonuses {
   public get ReadableString() {
     var bonuses = []
 
-    if (this.hp_ > 0) bonuses.push('+' + String(this.hp_) + ' _HP_')
+    if (this.stamina_ > 0) bonuses.push('+' + String(this.stamina_) + ' _Stamina_')
     if (this.focus_ > 0) bonuses.push('+' + String(this.focus_) + ' _Focus_')
     if (this.grit_ > 0) bonuses.push('+' + String(this.grit_) + ' _Grit_')
     if (this.reflex_ > 0) bonuses.push('+' + String(this.reflex_) + ' _Reflex_')
@@ -45,7 +45,7 @@ class Bonuses {
   public addBonuses(other) {
     this.focus_ += other.focus_
     this.grit_ += other.grit_
-    this.hp_ += other.hp_
+    this.stamina_ += other.stamina_
     this.reflex_ += other.reflex_
     this.move_ += other.move_
     this.load_ += other.load_
@@ -69,12 +69,12 @@ class Bonuses {
     return this.speed_
   }
 
-  public get HP() {
-    return this.hp_
+  public get Stamina() {
+    return this.stamina_
   }
 
   public get Stun() {
-    return this.stun_
+    return this.block_
   }
 
   // ==========================================================
@@ -89,7 +89,7 @@ class Bonuses {
   public setBonusesData(data: IBonusesData): void {
     this.focus_ = data.focus || 0
     this.grit_ = data.grit || 0
-    this.hp_ = data.hp || 0
+    this.stamina_ = data.stamina || 0
     this.reflex_ = data.reflex || 0
     this.move_ = data.move || 0
     this.load_ = data.load || 0

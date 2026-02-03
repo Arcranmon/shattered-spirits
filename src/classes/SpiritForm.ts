@@ -2,8 +2,8 @@ import { store } from '@/store'
 import { Base } from '@/class'
 
 class SpiritForm extends Base {
-  private hp_: number
-  private stun_: number
+  private stamina_: number
+  private block_: number
   private defenses_: IDefenseData
   private weapons_: string
   private move_: number
@@ -44,17 +44,17 @@ class SpiritForm extends Base {
     }
     return '**Defenses:** ' + header
   }
-  public get HPHeader() {
-    return '**HP:** ' + this.hp_
+  public get StaminaHeader() {
+    return '**Stamina:** ' + this.stamina_
   }
-  public get StunHeader() {
-    return '**Stun:** ' + this.stun_
+  public get BlockHeader() {
+    return '**Stun:** ' + this.block_
   }
   public get MovementHeader() {
     return '**Move:** ' + this.move_
   }
-  public get HP() {
-    return this.hp_
+  public get Stamina() {
+    return this.stamina_
   }
   public get Weapons() {
     return this.weapons_
@@ -100,8 +100,8 @@ class SpiritForm extends Base {
 
   private setSpiritFormData(data: ISpiritFormData): void {
     this.setBaseData(data)
-    this.hp_ = data.hp
-    this.stun_ = data.stun
+    this.stamina_ = data.stamina
+    this.block_ = data.stun
     this.defenses_ = data.defenses || null
     this.weapons_ = data.weapons || ''
     this.move_ = data.move || 0

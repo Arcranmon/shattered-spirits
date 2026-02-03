@@ -2,9 +2,9 @@
   <div class="name--wrapper">
     <h3>Choose a Name for You and Your Spirit!</h3>
     <br />
-    <v-layout style="margin-top: 1em; width: 100%;" justify-center>
-      <v-btn color="success" large tile @click="$emit('chose-names')" :disabled="(character.Name == '' || character.Spirit.Name == '')"
-        ><span v-if="(character.Name == '' || character.Spirit.Name == '')">CHOOSE A NAME FOR YOUR CHARACTER AND SPIRIT</span>
+    <v-layout style="margin-top: 1em; width: 100%" justify-center>
+      <v-btn color="success" large tile @click="$emit('chose-names')" :disabled="character.Name == '' || character.Spirit.Name == ''"
+        ><span v-if="character.Name == '' || character.Spirit.Name == ''">CHOOSE A NAME FOR YOUR CHARACTER AND SPIRIT</span>
         <span v-else>CHOOSE {{ this.character.Name }} AND {{ this.character.Spirit.Name }}</span></v-btn
       >
     </v-layout>

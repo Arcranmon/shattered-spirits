@@ -8,15 +8,15 @@
         <i>{{ npc.Desc }}</i
         ><br /><b>{{ npc.SpiritType }} {{ npc.NpcType }}</b
         ><br /><b>{{ npc.Role }}</b
-        ><br /><b><display-tooltip-text :string="npc.Class" :decorate="false" /></b>
+        ><br /><b><display-tooltip-text :string="npc.category" :decorate="false" /></b>
       </div>
     </div>
     <div class="npc--content">
       <v-row no-gutters>
         <v-col cols="6">
           <div v-html="$marked.parseInline(npc.SizeText)" />
-          <div v-html="$marked.parseInline(npc.HPText)" />
-          <display-tooltip-text :string="npc.StunText" />
+          <div v-html="$marked.parseInline(npc.StaminaText)" />
+          <display-tooltip-text :string="npc.BlockText" />
           <div>
             <display-tooltip-text :string="npc.MomentumGainText" />
           </div>
@@ -24,7 +24,7 @@
           <div v-for="trait in npc.Traits" :key="trait">
             <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + '**'" :decorate="false" /></div
         ></v-col>
-        <v-col cols="6"> <armor-card :armor="npc.Armor" /></v-col
+        <v-col cols="6"> <base-widget :ability="npc.Armor" /></v-col
       ></v-row>
       <v-row no-gutters></v-row><br />
     </div>
@@ -54,7 +54,7 @@
 <script>
 import Vue from 'vue'
 import { Npc } from '@/class'
-import ArmorCard from '@/components/cards/ArmorCard.vue'
+import BaseWidget from '@/components/BaseWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
 import DisplayTooltipText from '@/components/DisplayTooltipText'
 
@@ -62,7 +62,7 @@ export default Vue.extend({
   name: 'npc-card',
   components: {
     ShowCards: () => import('@/components/cards/ShowCards.vue'),
-    ArmorCard,
+    BaseWidget,
     AbilityTab,
   },
   data() {

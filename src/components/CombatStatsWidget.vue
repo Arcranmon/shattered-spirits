@@ -31,44 +31,40 @@
             ><v-icon color="black">mdi-minus</v-icon></v-btn
           > </v-col
         ><v-col
-          ><div class="hp--exterior">
-            <div class="hp--interior" :style="movebar" /></div></v-col
+          ><div class="stamina--exterior">
+            <div class="stamina--interior" :style="movebar" /></div></v-col
         ><v-col cols="auto">
           <v-btn inline small @click=";(creature.Movement += 1), $emit('changed')" icon class="resource--button"><v-icon color="black">mdi-plus</v-icon></v-btn>
         </v-col>
       </v-row>
-      <v-row no-gutters> <b>HP:</b>&nbsp;{{ creature.HP }} / {{ creature.MaxHP }} </v-row>
+      <v-row no-gutters> <b>Stamina:</b>&nbsp;{{ creature.Stamina }} / {{ creature.MaxStamina }} </v-row>
       <v-row no-gutters class="bar--area">
         <v-col cols="auto">
-          <v-btn inline small @click=";(creature.HP -= 1), $emit('changed')" icon class="resource--button"
+          <v-btn inline small @click=";(creature.Stamina -= 1), $emit('changed')" icon class="resource--button"
             ><v-icon color="black">mdi-minus</v-icon></v-btn
           > </v-col
         ><v-col
-          ><div class="hp--exterior">
-            <div class="hp--interior" :style="hpbar" /></div></v-col
+          ><div class="stamina--exterior">
+            <div class="stamina--interior" :style="staminabar" /></div></v-col
         ><v-col cols="auto">
-          <v-btn inline small @click=";(creature.HP += 1), $emit('changed')" icon class="resource--button"><v-icon color="black">mdi-plus</v-icon></v-btn>
+          <v-btn inline small @click=";(creature.Stamina += 1), $emit('changed')" icon class="resource--button"><v-icon color="black">mdi-plus</v-icon></v-btn>
         </v-col>
       </v-row>
       <v-row no-gutters>
-        <v-col cols="auto">
-          <b>Padding:</b>&nbsp;{{ creature.Padding }} / {{ creature.MaxPadding }}&nbsp;<b>Stun:</b>&nbsp;{{ creature.Stun }} / {{ creature.MaxStun }}</v-col
-        ><v-col align="right"> <v-checkbox v-model="apStun" :label="'AP Stun'" dense hide-details style="float: right; display: inline-block" /></v-col>
+        <v-col cols="auto"> <b>Stun:</b>&nbsp;{{ creature.Stun }} / {{ creature.MaxBlock }}</v-col
+        ><v-col align="right"></v-col>
       </v-row>
       <v-row no-gutters class="bar--area">
         <v-col cols="auto">
-          <v-btn inline small @click="creature.ClearStun(), $emit('changed')" icon class="resource--button"
+          <v-btn inline small @click="creature.ClearBlock(), $emit('changed')" icon class="resource--button"
             ><v-icon color="black">mdi-minus</v-icon></v-btn
           > </v-col
         ><v-col>
-          <div class="soak--exterior" :style="soakWidth">
-            <div class="soak--interior" :style="soakbar" />
-          </div>
-          <div class="stun--exterior" :style="stunWidth">
-            <div class="stun--interior" :style="stunbar" />
+          <div class="stun--exterior" :style="blockWidth">
+            <div class="stun--interior" :style="blockbar" />
           </div> </v-col
         ><v-col cols="auto">
-          <v-btn inline small @click="apStun ? creature.AddApStun() : creature.AddStun(), $emit('changed')" icon class="resource--button"
+          <v-btn inline small @click="apBlock ? creature.AddApBlock() : creature.AddBlock(), $emit('changed')" icon class="resource--button"
             ><v-icon color="black">mdi-plus</v-icon></v-btn
           >
         </v-col>
@@ -89,7 +85,7 @@
         <v-col><display-tooltip-text string="**_Defenses_:**" /></v-col><v-col :cols="8"><display-tooltip-text :string="creature.Defenses" /></v-col>
       </v-row>
       <v-row no-gutters>
-        <v-col><display-tooltip-text string="**_Guard_:**" /></v-col><v-col :cols="8">{{ creature.Guard }}</v-col>
+        <v-col><display-tooltip-text string="**_Block_:**" /></v-col><v-col :cols="8">{{ creature.Block }}</v-col>
       </v-row>
     </div>
   </div>
@@ -105,7 +101,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      apStun: false,
+      apBlock: false,
     }
   },
   computed: {
@@ -115,31 +111,31 @@ export default Vue.extend({
     isSpirit: function () {
       return this.creature instanceof Spirit
     },
-    hpbar() {
-      return 'width: ' + this.creature.HPPercent + '%; background-color: ' + this.creature.HPColor
+    staminabar() {
+      return 'width: ' + this.creature.StaminaPercent + '%; background-color: ' + this.creature.StaminaColor
     },
-    soakbar() {
-      return 'width: ' + this.creature.PaddingPercent + '%;'
+    armorbar() {
+      return 'width: ' + this.creature.ArmorPercent + '%;'
     },
-    stunbar() {
-      return 'width: ' + this.creature.StunPercent + '%; background-color: ' + this.creature.StunColor
+    blockbar() {
+      return 'width: ' + this.creature.BlockPercent + '%; background-color: ' + this.creature.BlockColor
     },
     movebar() {
       return 'width: ' + this.creature.MovePercent + '%; background-color: ' + this.creature.MoveColor
     },
-    soakWidth() {
-      return 'width: ' + this.creature.PaddingStunRatio + '%;'
+    armorWidth() {
+      return 'width: ' + this.creature.ArmorBlockRatio + '%;'
     },
-    stunWidth() {
-      return 'width: ' + (100 - this.creature.PaddingStunRatio) + '%;'
+    blockWidth() {
+      return 'width: ' + (100 - this.creature.ArmorBlockRatio) + '%;'
     },
   },
 })
 </script>
 
 <style scoped lang="scss">
-.hp--exterior,
-.soak--exterior,
+.stamina--exterior,
+.armor--exterior,
 .stun--exterior {
   width: 100%;
   border: 1px solid black;
@@ -147,23 +143,23 @@ export default Vue.extend({
   vertical-align: middle;
   display: inline-block;
 }
-.hp--interior,
-.soak--interior,
+.stamina--interior,
+.armor--interior,
 .stun--interior {
   border: 0px solid transparent;
   margin: 0 auto;
   height: 18px;
   float: left;
 }
-.hp--interior {
+.stamina--interior {
   background-color: #a0010f;
 }
-.soak--exterior {
+.armor--exterior {
   display: inline;
   float: left;
   border-right: 2px solid black;
 }
-.soak--interior {
+.armor--interior {
   background-color: #919191;
 }
 .stun--exterior {

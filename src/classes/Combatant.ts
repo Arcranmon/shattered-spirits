@@ -3,9 +3,8 @@ import { Bonuses } from '@/class'
 const interpolate = require('color-interpolate')
 
 class Combatant {
-  private hp_: number
   private stamina_: number
-  private stun_: number
+  private block_: number
   private soak_: number
   private move_: number
   private momentum_: number
@@ -20,9 +19,8 @@ class Combatant {
   public constructor() {
     this.move_ = 0
     this.stamina_ = 0
-    this.stun_ = 0
+    this.block_ = 0
     this.soak_ = 0
-    this.hp_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
   }
@@ -33,19 +31,19 @@ class Combatant {
     return 0
   }
 
-  get Guard() {
+  get Block() {
     return 0
   }
 
-  get MaxPadding() {
+  get MaxSoak() {
     return 0
   }
 
-  get MaxHP() {
+  get MaxStamina() {
     return 0
   }
 
-  get MaxStun() {
+  get MaxBlock() {
     return 10
   }
 
@@ -53,7 +51,7 @@ class Combatant {
     return 0
   }
 
-  get StunClear() {
+  get BlockClear() {
     return 0
   }
 
@@ -97,12 +95,12 @@ class Combatant {
     return []
   }
 
-  private abilityFilter(iAbilities, abilities, typeFilter, classFilter, keywordFilter, art = null) {
+  private abilityFilter(iAbilities, abilities, typeFilter, categoryFilter, keywordFilter, art = null) {
     for (var ability of abilities) {
       var typeMatches = typeFilter == 'All' || ability.Type == typeFilter
-      var classMatches = classFilter == 'All' || classFilter == ability.Class
+      var categoryMatches = categoryFilter == 'All' || categoryFilter == ability.category
       var keywordMatches = keywordFilter == 'All' || ability.Keywords.includes(keywordFilter)
-      if (typeMatches && classMatches && keywordMatches) {
+      if (typeMatches && categoryMatches && keywordMatches) {
         if (art) {
           ability.Origin = art
         }
@@ -131,12 +129,12 @@ class Combatant {
     return []
   }
 
-  public FilteredAbilities(typeFilter = 'All', classFilter = 'All', keywordFilter = 'All') {
+  public FilteredAbilities(typeFilter = 'All', categoryFilter = 'All', keywordFilter = 'All') {
     var abilities = []
     var basic_abilities = this.Abilities
-    this.abilityFilter(abilities, basic_abilities, typeFilter, classFilter, keywordFilter)
+    this.abilityFilter(abilities, basic_abilities, typeFilter, categoryFilter, keywordFilter)
     for (var art of this.AllArts) {
-      this.abilityFilter(abilities, art.Abilities, typeFilter, classFilter, keywordFilter, art)
+      this.abilityFilter(abilities, art.Abilities, typeFilter, categoryFilter, keywordFilter, art)
     }
 
     abilities.sort((a, b) => a.Name.localeCompare(b.Name))
@@ -158,13 +156,13 @@ class Combatant {
   public ApplyRespite() {
     this.move_ = this.MaxMovement
     //this.momentum_ += this.MomentumGain
-    this.ClearStunChunk(this.StunClear)
+    this.ClearBlockChunk(this.BlockClear)
   }
 
   public ResetDefault() {
     this.move_ = this.MaxMovement
-    this.hp_ = this.MaxHP
-    this.stun_ = 0
+    this.stamina_ = this.MaxStamina
+    this.block_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
     this.statuses_ = []
@@ -232,56 +230,52 @@ class Combatant {
     return this.stamina_
   }
 
-  get PaddingStunRatio() {
-    return (this.MaxPadding / (this.MaxStun + this.MaxPadding)) * 100
+  get SoakBlockRatio() {
+    return (this.MaxSoak / (this.MaxBlock + this.MaxSoak)) * 100
   }
 
-  get Padding() {
+  get Soak() {
     return this.soak_
   }
 
   get Stun() {
-    return this.stun_
+    return this.block_
   }
 
   set Stun(stun: number) {
-    if (this.soak_ < this.MaxPadding) {
+    if (this.soak_ < this.MaxSoak) {
       this.soak_ += 1
-    } else if (stun > this.MaxStun) this.stun_ = this.MaxStun
-    else if (stun < 0) this.stun_ = 0
-    else this.stun_ = stun
+    } else if (stun > this.MaxBlock) this.block_ = this.MaxBlock
+    else if (stun < 0) this.block_ = 0
+    else this.block_ = stun
   }
 
-  get HP() {
-    return this.hp_
+  set Stamina(Stamina: number) {
+    if (Stamina > this.MaxStamina) this.stamina_ = this.MaxStamina
+    else if (Stamina <= 0) this.stamina_ = 0
+    else this.stamina_ = Stamina
   }
 
-  set HP(HP: number) {
-    if (HP > this.MaxHP) this.hp_ = this.MaxHP
-    else if (HP <= 0) this.hp_ = 0
-    else this.hp_ = HP
+  get StaminaPercent() {
+    return (this.Stamina / this.MaxStamina) * 100
   }
 
-  get HPPercent() {
-    return (this.HP / this.MaxHP) * 100
-  }
-
-  get HPColor() {
+  get StaminaColor() {
     let colormap = interpolate(['#FF0000', '#FFDE00', '#5bf75b', '#5bf75b'])
-    return colormap(this.HPPercent / 100)
+    return colormap(this.StaminaPercent / 100)
   }
 
-  get StunPercent() {
-    return (this.Stun / this.MaxStun) * 100
+  get BlockPercent() {
+    return (this.Stun / this.MaxBlock) * 100
   }
 
-  get StunColor() {
+  get BlockColor() {
     let colormap = interpolate(['#FFDE00', '#ff9500', '#FF0000'])
-    return colormap(this.StunPercent / 100)
+    return colormap(this.BlockPercent / 100)
   }
 
-  get PaddingPercent() {
-    return (this.Padding / this.MaxPadding) * 100
+  get SoakPercent() {
+    return (this.Soak / this.MaxSoak) * 100
   }
 
   get Momentum() {
@@ -293,27 +287,27 @@ class Combatant {
     this.momentum_ = input
   }
 
-  AddStun() {
-    if (this.soak_ < this.MaxPadding) {
+  AddBlock() {
+    if (this.soak_ < this.MaxSoak) {
       this.soak_ += 1
-    } else if (this.stun_ == this.MaxStun) return
-    else this.stun_ += 1
+    } else if (this.block_ == this.MaxBlock) return
+    else this.block_ += 1
   }
 
-  AddApStun() {
-    if (this.stun_ == this.MaxStun) return
-    else this.stun_ += 1
+  AddApBlock() {
+    if (this.block_ == this.MaxBlock) return
+    else this.block_ += 1
   }
 
-  ClearStun() {
-    if (this.stun_ == 0 && this.soak_ > 0) {
+  ClearBlock() {
+    if (this.block_ == 0 && this.soak_ > 0) {
       this.soak_ -= 1
-    } else if (this.stun_ > 0) this.stun_ -= 1
+    } else if (this.block_ > 0) this.block_ -= 1
   }
 
-  private ClearStunChunk(toClear: number) {
-    var diff = toClear - this.stun_
-    this.stun_ = Math.max(0, this.stun_ - toClear)
+  private ClearBlockChunk(toClear: number) {
+    var diff = toClear - this.block_
+    this.block_ = Math.max(0, this.block_ - toClear)
     toClear = diff
     if (toClear > 0) {
       this.soak_ = Math.max(0, this.soak_ - toClear)
@@ -325,9 +319,9 @@ class Combatant {
   // ==========================================================
   public static Serialize(combatant: Combatant): ICombatantData {
     return {
-      hp: combatant.hp_,
+      stamina: combatant.stamina_,
       move: combatant.move_,
-      stun: combatant.stun_,
+      stun: combatant.block_,
       soak: combatant.soak_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
@@ -343,10 +337,10 @@ class Combatant {
 
   public setCombatantData(data: ICombatantData): void {
     this.move_ = data.move
-    this.hp_ = data.hp
+    this.stamina_ = data.stamina
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses || []
-    this.stun_ = data.stun
+    this.block_ = data.stun
     this.soak_ = data.soak
     this.vigor_ = data.vigor
   }

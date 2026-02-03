@@ -25,7 +25,7 @@
       :actions="npc.Actions"
       :attacks="npc.Attacks"
       :gambits="npc.Gambits"
-      :stunts="npc.Stunts"
+      :blockts="npc.Blockts"
       :reactions="npc.Reactions"
     />
   </div>
@@ -34,14 +34,13 @@
 <script>
 import Vue from 'vue'
 import { Npc } from '@/class'
-import AbilitiesWidget from '@/components/AbilitiesWidget.vue'
 import StatusWidget from '@/components/StatusWidget.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import CombatStatsWidget from '@/components/CombatStatsWidget.vue'
 import TraitsAndWeaponsWidget from '@/components/TraitsAndWeaponsWidget.vue'
 export default Vue.extend({
   name: 'display-npc',
-  components: { ShowCards, AbilitiesWidget, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
+  components: { ShowCards, StatusWidget, TraitsAndWeaponsWidget, CombatStatsWidget },
   props: {
     npc: {
       type: Npc,

@@ -1,6 +1,6 @@
 import { store } from '@/store'
 
-// Class to store potential combat bonuses that Archetypes and similar might hold.
+// class to store potential combat bonuses that Archetypes and similar might hold.
 class Defend {
   private lose_: string
   private tie_: string
