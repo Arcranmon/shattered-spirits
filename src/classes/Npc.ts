@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import Combatant from './Combatant'
+import { Ability, Combatant, Stance } from '@/class'
 
 class Npc extends Combatant {
   private npc_data_: INpcData
@@ -16,10 +16,6 @@ class Npc extends Combatant {
   // ==========================================================
   // COMBATANT OVERRIDES
   // ==========================================================
-  override get MomentumGain() {
-    if (this.npc_data_.momentum_gain) return this.npc_data_.momentum_gain
-    return 0
-  }
 
   override get Block() {
     if (this.npc_data_.block) return this.npc_data_.block
@@ -42,13 +38,13 @@ class Npc extends Combatant {
     return this.npc_data_.move
   }
 
-  override get MaxBlock() {
+  override get MaxStun() {
     if (this.npc_data_.defenses.stun) return this.npc_data_.defenses.stun
     return 0
   }
 
   override get Weapons() {
-    return store.getters.getWeaponsFromList(this.npc_data_.weapons)
+    return [] //store.getters.getWeaponsFromList(this.npc_data_.weapons)
   }
 
   get Grit() {
@@ -66,12 +62,14 @@ class Npc extends Combatant {
 
   override get Abilities() {
     var ability_names = store.getters.basicAbilities
-    ability_names = ability_names.concat(this.npc_data_.abilities)
-    return store.getters.getAbilitiesFromList(ability_names)
+    var abilities = store.getters.getAbilitiesFromList(ability_names)
+    return abilities.concat(this.npc_data_.abilities.map((x) => Ability.Deserialize(<IAbilityData>(<unknown>x))))
   }
 
   override get AllArts() {
-    return [this.Soak].concat(this.Weapons)
+    var arts = store.getters.getTraitsFromList(this.npc_data_.traits)
+    console.log(arts)
+    return arts
   }
 
   // ==========================================================
@@ -81,7 +79,7 @@ class Npc extends Combatant {
     return 0
   }
 
-  public get category() {
+  public get Category() {
     return this.npc_data_.category
   }
 
@@ -89,15 +87,8 @@ class Npc extends Combatant {
     return this.npc_data_.desc
   }
 
-  public get Pattern() {
-    return '**' + this.npc_data_.pattern + '**'
-  }
-
-  public get MomentumGainText() {
-    return '**_Momentum_ Gain:** ' + this.npc_data_.momentum_gain
-  }
   public get BlockText() {
-    return '**_Block_:** ' + this.MaxBlock
+    return '**_Block_:** ' + this.Block
   }
   public get Name() {
     return this.npc_data_.name
@@ -107,15 +98,6 @@ class Npc extends Combatant {
   }
   public get Role() {
     return this.npc_data_.role
-  }
-  public get SpiritType() {
-    if (this.npc_data_.subtype == 'None') return ''
-    return this.npc_data_.subtype
-  }
-
-  public get SpecialText() {
-    if (this.npc_data_.special) return this.npc_data_.special
-    return ''
   }
 
   public get Tag() {
@@ -127,11 +109,11 @@ class Npc extends Combatant {
   }
 
   public get Stances() {
-    return this.npc_data_.stances
+    return this.npc_data_.stances.map((x) => Stance.Deserialize(<IStanceData>(<unknown>x)))
   }
 
   public get HasWeapons() {
-    return this.npc_data_.weapons.length > 0
+    return true //this.npc_data_.weapons.length > 0
   }
 
   // ==========================================================
@@ -142,6 +124,9 @@ class Npc extends Combatant {
   }
   public get StaminaText() {
     return '**Stamina:** ' + this.npc_data_.stamina
+  }
+  public get StunText() {
+    return '**Stun:** ' + this.npc_data_.stun
   }
   public get SizeText() {
     return '**Size:** ' + this.npc_data_.size

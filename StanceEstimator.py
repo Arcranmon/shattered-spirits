@@ -4,12 +4,12 @@ from termcolor import colored
 import argparse
 import OrphanFinder
 
-STANCE_VALUE = 13
+STANCE_VALUE = 14
 MOVEMENT_VALUE = 2
-BLOCK_VALUE = 1
-SPEED_VALUE = 1
+GUARD_VALUE = 1
+SPEED_VALUE = 0.5
 DEFENSES_VALUE = 2/3
-STUN_VALUE = 0.3
+BLOCK_VALUE = 0.3
 
 def find_stance(name):
     f = open('.\src\database\\stances.json')

@@ -1,54 +1,182 @@
 <template>
   <div inline>
-    <div class="ability--head" v-bind:class="getBestColor" style="width: 100%">
-      <img v-if="ability.HasIcon" :src="ability.Icon" style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
+    <div
+      class="ability--head"
+      v-bind:class="getBestColor"
+      style="width: 100%">
+      <img
+        v-if="ability.HasIcon"
+        :src="ability.Icon"
+        style="height: 1.5em" />
       <display-tooltip-text :string="ability.Header" />
+
+      <span
+        v-if="ability.Origin"
+        style="margin-left: auto; order: 2; padding-right: 1em; font-weight: 1">
+        <i>
+          <display-tooltip-text :string="'From: _' + ability.Origin.Name + '_'" />
+        </i>
+      </span>
+    </div>
+    <div
+      class="card--keywords"
+      style="padding-left: 0.5em; padding-top: 0.5em; font-size: smaller"
+      v-if="ability.HasKeywords">
+      <b>
+        <span
+          v-for="(keyword, index) in ability.Keywords"
+          :key="index"
+          class="keyword--box">
+          <display-tooltip-text
+            :string="keyword"
+            :decorate="false" />
+        </span>
+      </b>
     </div>
     <div class="card--content card--format">
-      <div class="card--keywords" v-if="ability.HasKeywords">
-        <b>
-          <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box">
-            <display-tooltip-text :string="keyword" :decorate="false" /></span
-        ></b>
+      <div
+        v-if="ability.Desc.length > 0"
+        style="font-style: italic">
+        {{ ability.Desc }}<br />
       </div>
-      <div v-if="ability.Desc.length > 0" style="font-style: italic">{{ ability.Desc }}<br /></div>
       <div v-if="ability.HasSummary">
         <display-tooltip-text :string="ability.Summary" />
       </div>
-      <div v-if="isStance" class="chart--wrapper" inline>
-        <v-row align="stretch" no-gutters class="chart--row"
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Speed_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" :cols="ability.ColsHelper"
-            ><b><display-tooltip-text string="_Movement_" :decorate="false" /></b></v-col
-          ><v-col v-if="ability.ShowMomentum" class="chart--head" :cols="ability.ColsHelper"
-            ><b><display-tooltip-text string="_Momentum_" :decorate="false" /></b></v-col
-          ><v-col v-if="ability.ShowWard" class="chart--head" :cols="ability.ColsHelper"
-            ><b><display-tooltip-text string="_Guard_" :decorate="false" /></b
-          ></v-col>
+      <div
+        v-if="isStance"
+        class="chart--wrapper"
+        inline>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Speed_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Movement_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Momentum_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Guard_"
+                :decorate="false" />
+            </b>
+          </v-col>
         </v-row>
-        <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ ability.Speed }}</v-col>
-          <v-col class="chart--cols justify-center align-center" :cols="ability.ColsHelper">{{ ability.Movement }}</v-col>
-          <v-col v-if="ability.ShowMomentum" class="chart--cols justify-center align-center" :cols="ability.ColsHelper">{{ ability.Momentum }}</v-col>
-          <v-col v-if="ability.ShowWard" class="chart--cols justify-center align-center" :cols="ability.ColsHelper">{{ ability.Guard }}</v-col>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Speed }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Movement }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Momentum }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Guard }}</v-col
+          >
         </v-row>
-        <v-row align="stretch" no-gutters class="chart--row"
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Block_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Grit_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Focus_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Reflex_" :decorate="false" /></b
-          ></v-col>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Block_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Grit_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Focus_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="3">
+            <b>
+              <display-tooltip-text
+                string="_Reflex_"
+                :decorate="false" />
+            </b>
+          </v-col>
         </v-row>
-        <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ ability.Block }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ ability.Grit }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ ability.Focus }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ ability.Reflex }}</v-col>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Block }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Grit }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Focus }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="3"
+            >{{ ability.Reflex }}</v-col
+          >
         </v-row>
       </div>
       <div v-if="ability.HasPrereqs">
@@ -87,13 +215,19 @@
       <div v-if="ability.HasRecovery">
         <display-tooltip-text :string="ability.RecoveryHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasNegate">
+      <div
+        class="card--format"
+        v-if="ability.HasNegate">
         <display-tooltip-text :string="ability.NegateHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasDestroy">
+      <div
+        class="card--format"
+        v-if="ability.HasDestroy">
         <display-tooltip-text :string="ability.DestroyHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasInteractions">
+      <div
+        class="card--format"
+        v-if="ability.HasInteractions">
         <display-tooltip-text :string="ability.InteractionsHeader" />
       </div>
       <div v-if="ability.HasEnhancements">
@@ -102,16 +236,34 @@
       <div v-if="ability.HasImbues">
         <display-tooltip-text :string="ability.ImbuesHeader" />
       </div>
-      <div v-if="isAbilityPackage" v-bind:class="useTextFormatting" class="ability-box" style="padding-bottom: 0.25em; padding-left: 3em">
-        <base-widget v-for="(ability, index) in ability.Abilities" :ability="ability" />
+      <div
+        v-if="isAbilityPackage"
+        v-bind:class="useTextFormatting"
+        class="ability-box"
+        style="padding-bottom: 0.25em; padding-left: 3em">
+        <base-widget
+          v-for="(ability, index) in ability.Abilities"
+          :ability="ability" />
       </div>
-      <div class="expand--collapse-box-outlined" v-if="ability.HasChart">
-        <v-expansion-panels class="condensed" flat tile style="width: 100%">
-          <v-expansion-panel style="background-color: inherit"
-            ><v-expansion-panel-header class="expand--header-chart">Chart</v-expansion-panel-header>
-            <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="ability.Chart" /></v-expansion-panel-content>
+      <div
+        class="expand--collapse-box-outlined"
+        v-if="ability.HasChart">
+        <v-expansion-panels
+          v-if="!showChart"
+          class="condensed"
+          flat
+          tile
+          style="width: 100%">
+          <v-expansion-panel style="background-color: inherit">
+            <v-expansion-panel-header class="expand--header-chart">Chart</v-expansion-panel-header>
+            <v-expansion-panel-content class="expand--body-chart">
+              <chart-table :chart="ability.Chart" />
+            </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
+        <chart-table
+          v-else
+          :chart="ability.Chart" />
       </div>
     </div>
   </div>
@@ -137,6 +289,10 @@ export default Vue.extend({
       default: false,
     },
     standalone: {
+      type: Boolean,
+      default: false,
+    },
+    showChart: {
       type: Boolean,
       default: false,
     },

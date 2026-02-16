@@ -1,22 +1,47 @@
 <template>
   <div style="margin-top: 1em">
-    <v-row justify="center" class="background--color">
-      <v-col cols="2" class="sidebar">
-        <div v-for="(npc, index) in npcs" :key="index" class="button--spacing">
-          <v-btn fill-height class="button--template" @click=";(selectedNpc = npc), (selectedIndex = index)"
-            ><span style="margin: 2px"> {{ npc.Name }} - {{ npc.Tag }} </span></v-btn
-          >
-        </div> </v-col
-      ><v-col cols="10">
+    <v-row
+      justify="center"
+      class="background--color">
+      <v-col
+        cols="2"
+        class="sidebar">
+        <div
+          v-for="(npc, index) in npcs"
+          :key="index"
+          class="button--spacing">
+          <v-btn
+            fill-height
+            class="button--template"
+            @click=";(selectedNpc = npc), (selectedIndex = index)">
+            <span style="margin: 2px"> {{ npc.Name }} - {{ npc.Tag }} </span>
+          </v-btn>
+        </div>
+      </v-col>
+      <v-col cols="10">
         <v-row class="topbar">
-          <v-btn @click="applyRespiteToAll" class="button--template button--topbar" style="width: 25%">
-            <span class="btn-content">Apply Respite to All</span> </v-btn
-          ><v-btn @click="resetAllToDefault" class="button--template button--topbar" style="width: 25%">
+          <v-btn
+            @click="applyRespiteToAll"
+            class="button--template button--topbar"
+            style="width: 25%">
+            <span class="btn-content">Apply Respite to All</span>
+          </v-btn>
+          <v-btn
+            @click="resetAllToDefault"
+            class="button--template button--topbar"
+            style="width: 25%">
             <span class="btn-content">Reset All to Default</span>
           </v-btn>
-          <v-dialog v-model="addNpcDialog" hide-overlay>
-            <template v-slot:activator="{}"
-              ><v-btn @click="addNpcDialog = true" class="button--template button--topbar" style="width: 25%"> <span class="btn-content">Add NPC</span></v-btn>
+          <v-dialog
+            v-model="addNpcDialog"
+            hide-overlay>
+            <template v-slot:activator="{}">
+              <v-btn
+                @click="addNpcDialog = true"
+                class="button--template button--topbar"
+                style="width: 25%">
+                <span class="btn-content">Add NPC</span>
+              </v-btn>
             </template>
             <v-card height="50vh">
               <v-card-title>Add NPC</v-card-title>
@@ -30,19 +55,30 @@
                   label="Selected NPC"
                   filled
                   outlined
-                  style="margin-left: 0.5em; margin-right: 0.5em"
-                ></v-select>
-                <v-btn color="button--template" @click="addNpc(), (addNpcDialog = false)">
+                  style="margin-left: 0.5em; margin-right: 0.5em">
+                </v-select>
+                <v-btn
+                  color="button--template"
+                  @click="addNpc(), (addNpcDialog = false)">
                   <span style="margin: 2px">Add NPC</span>
                 </v-btn>
               </v-card-text>
-            </v-card> </v-dialog
-          ><v-btn v-if="selectedNpc != null" @click="deleteNpc" class="button--template button--topbar" style="width: 25%">
+            </v-card>
+          </v-dialog>
+          <v-btn
+            v-if="selectedNpc != null"
+            @click="deleteNpc"
+            class="button--template button--topbar"
+            style="width: 25%">
             <span class="btn-content">Delete NPC</span>
-          </v-btn></v-row
-        >
-        <show-npc v-if="npcSelected" :npc="selectedNpc" @changed="saveNpc" :key="selectedNpc.Name"
-      /></v-col>
+          </v-btn>
+        </v-row>
+        <show-npc
+          v-if="npcSelected"
+          :npc="selectedNpc"
+          @changed="saveNpc"
+          :key="selectedNpc.Name" />
+      </v-col>
     </v-row>
   </div>
 </template>

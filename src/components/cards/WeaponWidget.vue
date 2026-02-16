@@ -1,31 +1,58 @@
 <template>
   <div inline>
-    <div class="weapon ability--head" style="width: 100%">
-      <img :src="weapon.Icon" style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
+    <div
+      class="weapon ability--head"
+      style="width: 100%">
+      <img
+        :src="weapon.Icon"
+        style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
       <display-tooltip-text :string="weapon.Header" />
     </div>
     <div style="margin-top: 0.5em">
-      <span v-for="(keyword, index) in weapon.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
-        ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b>
+      <span
+        v-for="(keyword, index) in weapon.Keywords"
+        :key="index"
+        class="keyword--box"
+        style="margin-left: 0.5em">
+        <b>
+          <display-tooltip-text
+            :string="keyword.replace('/', '_/_')"
+            :decorate="false" />
+        </b>
       </span>
     </div>
     <div class="card--content">
-      <span style="font-style: italic">{{ weapon.Desc }}</span
-      ><br />
-      <display-tooltip-text :string="weapon.Statistics" /><br />
+      <span style="font-style: italic">{{ weapon.Desc }}</span>
+      <br />
+      <display-tooltip-text :string="weapon.Statistics" />
+      <br />
       <display-tooltip-text :string="weapon.HandsHeader" />
-      <div class="card--format" v-if="weapon.HasReqs">
+      <div
+        class="card--format"
+        v-if="weapon.HasReqs">
         <display-tooltip-text :string="weapon.ReqsHeader" />
       </div>
-      <div class="card--format" v-if="weapon.HasSpecial">
+      <div
+        class="card--format"
+        v-if="weapon.HasSpecial">
         <display-tooltip-text :string="weapon.SpecialHeader" />
       </div>
-      <div v-for="(ability, index) in weapon.Abilities" :key="index" class="ability-box" style="padding-bottom: 0.25em; padding-left: 3em">
+      <div
+        v-for="(ability, index) in weapon.Abilities"
+        :key="index"
+        class="ability-box"
+        style="padding-bottom: 0.25em; padding-left: 3em">
         <ability-widget :ability="ability" />
       </div>
-      <div v-if="weapon.HasChart || weapon.HasTable" class="ability-box">
-        <chart-table v-if="weapon.Chart" :chart="weapon.Chart" />
-        <basic-table v-if="weapon.HasTable" :chart="weapon.Table" />
+      <div
+        v-if="weapon.HasChart || weapon.HasTable"
+        class="ability-box">
+        <chart-table
+          v-if="weapon.Chart"
+          :chart="weapon.Chart" />
+        <basic-table
+          v-if="weapon.HasTable"
+          :chart="weapon.Table" />
       </div>
     </div>
   </div>

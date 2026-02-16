@@ -2,8 +2,9 @@ import { store } from '@/store'
 import { Armor, Bonuses, Combatant, Stance, Weapon, Spirit } from '@/class'
 
 var kBaseStamina = 10
-var kBaseBlock = 15
-var kBaseLoad = 4
+var kBaseStun = 15
+var kBaseMovement = 2
+var kLoadBands = 5
 
 class Character extends Combatant {
   // Level Up Qualities
@@ -57,17 +58,8 @@ class Character extends Combatant {
     return block
   }
 
-  override get MaxSoak() {
-    var soak = 0
-    return soak
-  }
-
   override get MaxMovement() {
-    let maxMovement = 0
-    if (this.Load <= this.MaxLoad) maxMovement += 3
-    else if (this.Load <= this.MaxLoad * 2) maxMovement += 2
-    else if (this.Load <= this.MaxLoad * 3) maxMovement += 1
-    maxMovement += this.current_stance_.Movement
+    let maxMovement = kBaseMovement + this.combinedBonuses_.Movement + this.current_stance_.Movement
     return maxMovement
   }
 
@@ -79,17 +71,20 @@ class Character extends Combatant {
     return traits
   }
 
-  override get MaxBlock() {
-    return kBaseBlock
-  }
-
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================
 
+  public get LoadAbilities() {
+    if (this.Load <= kLoadBands) return ['Traveling Light', 'Unencumbered']
+    else if (this.Load <= kLoadBands * 2) return []
+    else if (this.Load <= kLoadBands * 3) return ['Traveling Heavy', 'Heavily Encumbered']
+  }
+
   public get Abilities() {
     var abilities = store.getters.basicAbilities
     abilities = abilities.concat(store.getters.playerAbilities)
+    abilities = abilities.concat(this.LoadAbilities)
 
     return store.getters.getAbilitiesFromList(abilities)
   }
@@ -115,9 +110,6 @@ class Character extends Combatant {
     var arts = [] //= [...store.getters.playerArts]
     for (var art of this.arts_) {
       arts.push(art)
-    }
-    if (this.element_.length > 0) {
-      arts.push(this.element_ + 'craft')
     }
     arts.sort()
     return arts
@@ -189,12 +181,16 @@ class Character extends Combatant {
     return kBaseStamina + this.combinedBonuses_.Stamina
   }
 
-  get Name() {
-    return this.name_
+  override get MaxStun() {
+    var maxStun = kBaseStun + this.combinedBonuses_.Stun
+    for (var armor of this.armor_) {
+      maxStun += armor.Stun
+    }
+    return maxStun
   }
 
-  get MaxLoad() {
-    return kBaseLoad
+  get Name() {
+    return this.name_
   }
 
   get Spirit() {

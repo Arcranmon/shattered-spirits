@@ -96,7 +96,7 @@ class Chart {
     this.stun_ = data.stun || []
     this.damage_ = data.damage || []
     this.status_ = data.status || ['None', 'None', 'None', 'None']
-    this.negate_ = data.negate || [2, 3, 4, 5]
+    this.negate_ = data.negate || [4, 6, 7, 9]
     while (this.status_.length < 4) this.status_.push('None')
     this.keywords_ = data.keywords || []
     this.damage_type_ = data.damage_type || ''

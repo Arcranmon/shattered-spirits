@@ -1,11 +1,5 @@
 import { store } from '@/store'
-import { Combatant, Character, Subtype, Stance } from '@/class'
-
-var kBasicAttacks = ['Weapon Attack', 'Brawl']
-var kBasicActions = ['Prepare', 'Fight', 'Sprint', 'Raise Block', 'Rebalance']
-var kBasicBlockts = ['Draw/Stow', 'Retreat', 'Leap']
-var kBasicReactions = ['Opportunity Attack', 'Defend', 'Dodge']
-var kBasicGambits = ['Lethal Strike', 'Seize Momentum']
+import { Combatant, Character, Subtype, Stance, Bonuses } from '@/class'
 
 class Spirit extends Combatant {
   private name_: string
@@ -26,7 +20,7 @@ class Spirit extends Combatant {
   // COMBATANT OVERRIDES
   // ==========================================================
   override get Block() {
-    var block = 0
+    var block = this.current_stance_.Block + this.spirit_type_.Defenses.Block
     for (var equipment of this.Equipment) {
       if (store.getters.isArmor(equipment.Name)) block += equipment.Block
     }
@@ -34,8 +28,13 @@ class Spirit extends Combatant {
   }
 
   override get MaxMovement() {
-    var movement = this.spirit_type_.Movement + this.combinedBonuses_.Movement
+    var movement = this.spirit_type_.Movement + this.combinedBonuses_.Movement + this.current_stance_.Movement
     return movement
+  }
+
+  override get MaxStun() {
+    var stun = this.spirit_type_.Stun + this.combinedBonuses_.Stun
+    return stun
   }
 
   override get Traits() {
@@ -72,7 +71,7 @@ class Spirit extends Combatant {
   }
 
   override get AllArts() {
-    var arts = store.getters.getAPsFromList([...this.Traits, ...this.character_.SpiritArts, this.character_.Element + 'born'])
+    var arts = store.getters.getAPsFromListPreserveType([...this.Traits, ...this.character_.SpiritArts, this.character_.Element + 'born'])
     arts = arts.concat(this.Equipment)
 
     return arts
@@ -86,19 +85,15 @@ class Spirit extends Combatant {
   }
 
   get Grit() {
-    return this.SpiritType.Defenses.Grit
+    return this.SpiritType.Defenses.Grit + this.current_stance_.Grit + this.combinedBonuses_.Grit
   }
 
   get Reflex() {
-    var reflex = this.SpiritType.Defenses.Reflex
-    for (var trait of this.Traits) {
-      //reflex += store.getters.getSpiritTrait(trait).Bonuses.Reflex
-    }
-    return reflex
+    return this.SpiritType.Defenses.Reflex + this.current_stance_.Reflex + this.combinedBonuses_.Reflex
   }
 
   get Focus() {
-    return this.SpiritType.Defenses.Focus
+    return this.SpiritType.Defenses.Focus + this.current_stance_.Focus + this.combinedBonuses_.Focus
   }
 
   // ==========================================================
@@ -132,10 +127,6 @@ class Spirit extends Combatant {
     return this.SpiritType.Stamina + this.combinedBonuses_.Stamina
   }
 
-  override get MaxBlock() {
-    return this.SpiritType.Stun + this.combinedBonuses_.Stun
-  }
-
   get HasSpiritType() {
     return this.spirit_type_
   }
@@ -159,19 +150,6 @@ class Spirit extends Combatant {
     }
 
     return equipment
-  }
-
-  get Actions() {
-    return store.getters.getManeuversFromList(kBasicActions)
-  }
-  get Blockts() {
-    return store.getters.getManeuversFromList(kBasicBlockts)
-  }
-  get Reactions() {
-    return store.getters.getManeuversFromList(kBasicReactions)
-  }
-  get Gambits() {
-    return store.getters.getManeuversFromList(kBasicGambits)
   }
 
   // ==========================================================

@@ -1,5 +1,10 @@
 <template>
-  <router-link class="btn" v-bind:class="width" :to="to"><slot /> </router-link>
+  <router-link
+    class="btn"
+    v-bind:class="width"
+    :to="to">
+    <slot />
+  </router-link>
 </template>
 
 <script>

@@ -1,52 +1,154 @@
 <template>
-  <div class="card--wrapper" inline>
-    <div class="stance--color-header" v-bind:class="category">
+  <div
+    class="card--wrapper"
+    inline>
+    <div
+      class="stance--color-header"
+      v-bind:class="category">
       <div class="card--underline-top card--header">
         <h4 style="display: inline; font-style: normal">{{ stance.Name }}</h4>
         <div class="card--keywords">
-          <b> <display-tooltip-text :string="stance.categoryHeader" :decorate="false" /><br /> </b>
+          <b>
+            <display-tooltip-text
+              :string="stance.categoryHeader"
+              :decorate="false" />
+            <br />
+          </b>
         </div>
       </div>
     </div>
     <div class="card--content">
-      <div class="chart--wrapper" inline>
-        <v-row align="stretch" no-gutters class="chart--row"
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Speed_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="3"
-            ><b><display-tooltip-text string="_Momentum_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="3"
-            ><b><display-tooltip-text string="_Movement" :decorate="false" /></b
-          ></v-col>
+      <div
+        class="chart--wrapper"
+        inline>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Speed_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Momentum_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Movement"
+                :decorate="false" />
+            </b>
+          </v-col>
         </v-row>
-        <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Speed }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="3">{{ stance.Momentum }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="3">{{ stance.Movement }}</v-col>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="2"
+            >{{ stance.Speed }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="3"
+            >{{ stance.Momentum }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="3"
+            >{{ stance.Movement }}</v-col
+          >
         </v-row>
-        <v-row align="stretch" no-gutters class="chart--row"
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Block_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Grit_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Focus_" :decorate="false" /></b></v-col
-          ><v-col class="chart--head" cols="2"
-            ><b><display-tooltip-text string="_Reflex_" :decorate="false" /></b
-          ></v-col>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Block_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Grit_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Focus_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Reflex_"
+                :decorate="false" />
+            </b>
+          </v-col>
         </v-row>
-        <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Block }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Grit }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Focus }}</v-col>
-          <v-col class="chart--cols justify-center align-center" cols="2">{{ stance.Reflex }}</v-col>
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="2"
+            >{{ stance.Block }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="2"
+            >{{ stance.Grit }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="2"
+            >{{ stance.Focus }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            cols="2"
+            >{{ stance.Reflex }}</v-col
+          >
         </v-row>
       </div>
       <!---
-      <display-tooltip-text :string="stance.PhaseHeader(0)" /><br />
-      <display-tooltip-text :string="stance.PhaseHeader(1)" /><br />
-      <display-tooltip-text :string="stance.PhaseHeader(2)" /><br />
-      <display-tooltip-text :string="stance.PhaseHeader(3)" /><br />
+      <display-tooltip-text :string="stance.PhaseHeader(0)" />
+<br />
+      <display-tooltip-text :string="stance.PhaseHeader(1)" />
+<br />
+      <display-tooltip-text :string="stance.PhaseHeader(2)" />
+<br />
+      <display-tooltip-text :string="stance.PhaseHeader(3)" />
+<br />
       --->
       <div v-if="stance.HasTraits">
         <display-tooltip-text :string="stance.TraitsHeader" />
@@ -57,9 +159,18 @@
       <div v-if="stance.HasSpecial">
         <display-tooltip-text :string="stance.SpecialHeader" />
       </div>
-      <ability-widget v-for="(ability, index) in stance.Abilities" :ability="ability" :use-divider="true" :showFrom="false" />
+      <ability-widget
+        v-for="(ability, index) in stance.Abilities"
+        :ability="ability"
+        :use-divider="true"
+        :showFrom="false" />
     </div>
-    <div class="desc--box" v-if="stance.Desc.length > 0" style="font-style: italic">{{ stance.Desc }}<br /></div>
+    <div
+      class="desc--box"
+      v-if="stance.Desc.length > 0"
+      style="font-style: italic">
+      {{ stance.Desc }}<br />
+    </div>
   </div>
 </template>
 

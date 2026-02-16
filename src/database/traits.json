@@ -15,18 +15,17 @@
         "name": "Metallic Body",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain the _Metal Body_ Armor.\n* You are _Immune_ to _Bleeding_.",
-        "bonuses": { "equipment": ["Metal Body"] }
+        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain +2 _Block_ against _Slash_, _Stab_, and _Crush_ effects."
       },
       {
         "name": "Heat Conduction",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "This creature has three states: Heated, Normal, and Chilled. While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
+        "effect": "This creature has three states: Heated, Normal, and Chilled.\n* While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_, and adds _Fire_ to all _Martial_ _Attacks_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
       },
       {
         "name": "Metallic Resonance",
-        "category": "Utility",
+        "category": "Recovery",
         "keywords": ["Metal", "Pacifist", "Rooted"],
         "type": "Maneuver",
         "cost": "1 _Momentum_",
@@ -78,7 +77,7 @@
         "name": "Wire Whip",
         "category": "Light",
         "type": "Attack",
-        "range": "_Short_-",
+        "range": "0",
         "target": "Single-Target",
         "keywords": ["Slash", "Metal", "Feeble"],
         "cost": "1 _Momentum_",
@@ -99,6 +98,21 @@
     ]
   },
   {
+    "name": "Locust Biology",
+    "type": "Trait",
+    "category": "General",
+    "cost": "N/A",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Locust Biology",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "You have _Resistance_ [_Poison_]."
+      }
+    ]
+  },
+  {
     "name": "Climber",
     "type": "Trait",
     "category": "General",
@@ -115,10 +129,9 @@
         "name": "Climbing",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "This creature only needs to pay 1 _Movement_ for the [_Cliff_] keyword, rather than the typical 2."
+        "effect": "This creature can bypass many features (such as _Cliffs_) when moving between _Arenas_."
       }
-    ],
-    "bonuses": { "move": 1, "reflex": 2 }
+    ]
   },
   {
     "name": "Swift",

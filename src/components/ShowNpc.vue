@@ -1,33 +1,46 @@
 <template>
-  <div style="margin: 1em" class="npc-tab-content npc-wrapper">
+  <div
+    style="margin: 1em"
+    class="npc-tab-content npc-wrapper">
     <div style="text-align: center">
       <display-tooltip-text :string="npc.Pattern" />
     </div>
     <v-row style="margin: 1em">
-      <v-col :cols="columnNumbers"><combat-stats-widget :creature="npc" @changed="$emit('changed')" /> </v-col
-      ><v-col :cols="columnNumbers"> <status-widget :creature="npc" @changed="$emit('changed')" /></v-col
-    ></v-row>
+      <v-col :cols="columnNumbers">
+        <combat-stats-widget
+          :creature="npc"
+          @changed="$emit('changed')" />
+      </v-col>
+      <v-col :cols="columnNumbers">
+        <status-widget
+          :creature="npc"
+          @changed="$emit('changed')" />
+      </v-col>
+    </v-row>
     <h3 style="text-align: center">Equipment</h3>
     <v-card>
-      <v-tabs v-model="equipment_tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+      <v-tabs
+        v-model="equipment_tab"
+        class="character-tabs"
+        background-color="#b69e75"
+        color="black"
+        centered>
         <v-tab>
           <h3>Weapons</h3>
         </v-tab>
       </v-tabs>
-      <v-tabs-items v-model="equipment_tab" class="character-tab-content">
+      <v-tabs-items
+        v-model="equipment_tab"
+        class="character-tab-content">
         <v-tab-item>
-          <show-cards :inputs="npc.Weapons" standalone_or_contained="Standalone" :collapse="false" :cols="2" />
+          <show-cards
+            :inputs="npc.Weapons"
+            standalone_or_contained="Standalone"
+            :collapse="false"
+            :cols="2" />
         </v-tab-item>
       </v-tabs-items>
     </v-card>
-    <abilities-widget
-      :techniques="npc.Techniques"
-      :actions="npc.Actions"
-      :attacks="npc.Attacks"
-      :gambits="npc.Gambits"
-      :blockts="npc.Blockts"
-      :reactions="npc.Reactions"
-    />
   </div>
 </template>
 

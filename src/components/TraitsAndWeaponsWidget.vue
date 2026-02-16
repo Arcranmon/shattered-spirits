@@ -2,7 +2,11 @@
   <div>
     <h4>Traits and Weapons</h4>
     <v-card>
-      <v-tabs v-model="trait_tab" background-color="#b69e75" color="black" centered>
+      <v-tabs
+        v-model="trait_tab"
+        background-color="#b69e75"
+        color="black"
+        centered>
         <v-tab>
           <h3>Traits</h3>
         </v-tab>
@@ -13,21 +17,50 @@
           <h3>Weapons</h3>
         </v-tab>
       </v-tabs>
-      <v-tabs-items v-model="trait_tab" class="creature-tab-content">
+      <v-tabs-items
+        v-model="trait_tab"
+        class="creature-tab-content">
         <v-tab-item>
-          <v-row v-if="isSpirit"><display-tooltip-text v-if="creature.Subtype.HasEffect" :string="creature.Subtype.EffectHeader" /></v-row>
-          <v-row v-if="isSpirit"><display-tooltip-text v-if="creature.Subtype.HasManifestEffect" :string="creature.Subtype.ManifestEffectHeader" /></v-row>
-          <v-row v-if="isSpirit"><display-tooltip-text v-if="creature.Subtype.HasSummonEffect" :string="creature.Spirit.Subtype.SummonEffectHeader" /></v-row>
-          <v-row v-for="trait in creature.Traits" :key="trait">
-            <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))" :decorate="false" />
-          </v-row> </v-tab-item
-        ><v-tab-item v-if="isNpc"
-          ><v-row><display-tooltip-text :string="creature.ArmorText" /></v-row><v-row><display-tooltip-text :string="creature.SpecialText" /></v-row
-        ></v-tab-item>
-        <v-tab-item
-          ><show-cards :inputs="creature.Weapons" standalone_or_contained="Standalone" :collapse="false" v-bind:cols="screenSize"
-        /></v-tab-item> </v-tabs-items
-    ></v-card>
+          <v-row v-if="isSpirit">
+            <display-tooltip-text
+              v-if="creature.Subtype.HasEffect"
+              :string="creature.Subtype.EffectHeader" />
+          </v-row>
+          <v-row v-if="isSpirit">
+            <display-tooltip-text
+              v-if="creature.Subtype.HasManifestEffect"
+              :string="creature.Subtype.ManifestEffectHeader" />
+          </v-row>
+          <v-row v-if="isSpirit">
+            <display-tooltip-text
+              v-if="creature.Subtype.HasSummonEffect"
+              :string="creature.Spirit.Subtype.SummonEffectHeader" />
+          </v-row>
+          <v-row
+            v-for="trait in creature.Traits"
+            :key="trait">
+            <display-tooltip-text
+              :string="'* **' + trait.replaceAll('_', '') + ':** ' + $store.getters.getTrait(splitTrait(trait))"
+              :decorate="false" />
+          </v-row>
+        </v-tab-item>
+        <v-tab-item v-if="isNpc">
+          <v-row>
+            <display-tooltip-text :string="creature.ArmorText" />
+          </v-row>
+          <v-row>
+            <display-tooltip-text :string="creature.SpecialText" />
+          </v-row>
+        </v-tab-item>
+        <v-tab-item>
+          <show-cards
+            :inputs="creature.Weapons"
+            standalone_or_contained="Standalone"
+            :collapse="false"
+            v-bind:cols="screenSize" />
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
   </div>
 </template>
 

@@ -1,6 +1,10 @@
 <template>
   <v-container fluid>
-    <v-tabs fixed-tabs v-model="stepper" height="4em" color="black">
+    <v-tabs
+      fixed-tabs
+      v-model="stepper"
+      height="4em"
+      color="black">
       <v-tab>
         <h4>Spirit Type</h4>
       </v-tab>
@@ -24,20 +28,67 @@
       </v-tab>
     </v-tabs>
     <v-tabs-items v-model="stepper">
-      <v-tab-item :eager="true" class="builder--body"><spirit-selection :character="character" @chose-spirit="stepper++" /> </v-tab-item>
-      <v-tab-item :eager="true" class="builder--body"><subtype-selection :character="character" @chose-subtype="stepper++" /> </v-tab-item>
-      <v-tab-item :eager="true" class="builder--body"><spirit-customization :character="character" @customized="stepper++" /> </v-tab-item>
-      <v-tab-item :eager="true" class="builder--body"><discipline-selection :character="character" @chose-discipline="stepper++" /></v-tab-item>
-      <v-tab-item :eager="true" class="builder--body"><equipment-selection :character="character" @chose-equipment="stepper++" /> </v-tab-item>
-      <v-tab-item :eager="true" class="builder--body"
-        ><name-selection :character="character" @chose-names="stepper++, this.character.ResetDefault" /></v-tab-item
-      ><v-tab-item :eager="true" class="builder--body">
-        <v-layout style="margin-top: 1em; width: 100%" justify-center>
-          <v-btn color="success" large tile @click="saveCharacter()" :disabled="!character.Complete">
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <spirit-selection
+          :character="character"
+          @chose-spirit="stepper++" />
+      </v-tab-item>
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <subtype-selection
+          :character="character"
+          @chose-subtype="stepper++" />
+      </v-tab-item>
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <spirit-customization
+          :character="character"
+          @customized="stepper++" />
+      </v-tab-item>
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <discipline-selection
+          :character="character"
+          @chose-discipline="stepper++" />
+      </v-tab-item>
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <equipment-selection
+          :character="character"
+          @chose-equipment="stepper++" />
+      </v-tab-item>
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <name-selection
+          :character="character"
+          @chose-names="stepper++, this.character.ResetDefault" />
+      </v-tab-item>
+      <v-tab-item
+        :eager="true"
+        class="builder--body">
+        <v-layout
+          style="margin-top: 1em; width: 100%"
+          justify-center>
+          <v-btn
+            color="success"
+            large
+            tile
+            @click="saveCharacter()"
+            :disabled="!character.Complete">
             <span v-if="!character.Complete">You must finish making your character!</span>
-            <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span></v-btn
-          ></v-layout
-        ><show-character v-if="character.Complete" :character="character" />
+            <span v-else>SAVE {{ character.Name }} AND {{ character.Spirit.Name }}</span>
+          </v-btn>
+        </v-layout>
+        <show-character
+          v-if="character.Complete"
+          :character="character" />
       </v-tab-item>
     </v-tabs-items>
   </v-container>

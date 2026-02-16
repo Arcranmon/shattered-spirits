@@ -1,10 +1,18 @@
 <template>
   <div class="skill-tree">
-    <div class="node" v-bind:class="element">
+    <div
+      class="node"
+      v-bind:class="element">
       <display-tooltip-text :string="skillTree[element].root.art + '_\n_' + skillTree[element].root.stance" />
     </div>
-    <img class="image--header-left" src="@/assets/Arrow.svg" />
-    <div class="node" v-bind:class="element"><display-tooltip-text :string="skillTree[element].level_one[0].art" /></div>
+    <img
+      class="image--header-left"
+      src="@/assets/Arrow.svg" />
+    <div
+      class="node"
+      v-bind:class="element">
+      <display-tooltip-text :string="skillTree[element].level_one[0].art" />
+    </div>
   </div>
 </template>
 

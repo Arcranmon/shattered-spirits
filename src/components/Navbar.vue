@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="nav--wrapper">
-      <router-link to="/"><span class="nav--text">Shattered Spirits</span></router-link>
+      <router-link to="/">
+        <span class="nav--text">Shattered Spirits</span>
+      </router-link>
       <about class="about d-none d-lg-block" />
     </div>
   </div>

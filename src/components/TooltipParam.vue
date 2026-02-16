@@ -1,71 +1,232 @@
 <template>
-  <span
-    ><span v-if="this.partitioned"
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
-        ><display-tooltip-text string="Use each value for a _Miss_, _Graze_, _Hit_, and _Crit_ respectively." :level="level + 1" /></v-menu></span
-    ><span v-else-if="this.$store.getters.existsInAnyGlossary(input)"
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)" /></template
-        ><display-tooltip-text :string="this.$store.getters.getGlossaryItem(input)" :level="level + 1" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isFeature(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <feature-card :feature="this.$store.getters.getFeature(input)" :tooltip="true" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isTerrain(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <terrain-card :terrain="this.$store.getters.getTerrain(input)" :tooltip="true" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isStatus(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <status-card :status="this.$store.getters.getStatus(input)" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isStance(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <stance-card :stance="this.$store.getters.getStance(input)" :format_text="true" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isArmor(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <base-widget :ability="this.$store.getters.getArmor(input)" :format_text="true" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isWeapon(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <weapon-widget :weapon="this.$store.getters.getWeapon(input)" :format_text="true" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isArt(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <ap-card :ap="this.$store.getters.getAP(input)" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isTrait(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <trait-card :trait="this.$store.getters.getSpiritTrait(input)" style="border: 0.5em double black" /></v-menu></span
-    ><span v-else-if="this.$store.getters.isBasicAbility(input)" attach
-      ><v-menu :close-on-content-click="false" bottom nudge-bottom="20" content-class="object"
-        ><template v-slot:activator="{ on, attrs }">
-          <span style="white-space: pre-wrap" v-bind:class="{ dotted: decorate }" v-bind="attrs" v-on="on" v-html="$marked.parseInline(input)"
-        /></template>
-        <ability-widget :ability="this.$store.getters.getAbility(input)" :cardStyle="true" style="border: 0.5em double black" /></v-menu></span
-    ><span style="white-space: pre-wrap" v-else v-html="$marked.parseInline(input)"
-  /></span>
+  <span>
+    <span v-if="this.partitioned">
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <display-tooltip-text
+          string="Use each value for a _Miss_, _Graze_, _Hit_, and _Crit_ respectively."
+          :level="level + 1" />
+      </v-menu>
+    </span>
+    <span v-else-if="this.$store.getters.existsInAnyGlossary(input)">
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <display-tooltip-text
+          :string="this.$store.getters.getGlossaryItem(input)"
+          :level="level + 1" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isFeature(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <feature-card
+          :feature="this.$store.getters.getFeature(input)"
+          :tooltip="true" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isTerrain(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <terrain-card
+          :terrain="this.$store.getters.getTerrain(input)"
+          :tooltip="true" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isStatus(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <base-widget :ability="this.$store.getters.getStatus(input)" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isStance(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <stance-card
+          :stance="this.$store.getters.getStance(input)"
+          :format_text="true" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isArmor(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <base-widget
+          :ability="this.$store.getters.getArmor(input)"
+          :format_text="true" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isWeapon(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <weapon-widget
+          :weapon="this.$store.getters.getWeapon(input)"
+          :format_text="true" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isArt(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <ap-card :ap="this.$store.getters.getAP(input)" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isTrait(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <trait-card
+          :trait="this.$store.getters.getSpiritTrait(input)"
+          style="border: 0.5em double black" />
+      </v-menu>
+    </span>
+    <span
+      v-else-if="this.$store.getters.isBasicAbility(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <ability-widget
+          :ability="this.$store.getters.getAbility(input)"
+          :cardStyle="true"
+          style="border: 0.5em double black" />
+      </v-menu>
+    </span>
+    <span
+      style="white-space: pre-wrap"
+      v-else
+      v-html="$marked.parseInline(input)" />
+  </span>
 </template>
 
 <script>
@@ -123,6 +284,7 @@ export default Vue.extend({
   border: none;
   width: 40%;
   font-size: $font-size--m;
+  border-top-left-radius: 1em;
 }
 .v-tooltip__content.menuable__content__active {
   opacity: 1 !important;

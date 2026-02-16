@@ -3,28 +3,44 @@
     <display-tooltip-text :string="equipmentText" />
     <br />
     <br />
-    <v-layout justify-center
-      ><div class="button-separator">
-        <v-btn color="success" large tile @click="$emit('chose-equipment')">
+    <v-layout justify-center>
+      <div class="button-separator">
+        <v-btn
+          color="success"
+          large
+          tile
+          @click="$emit('chose-equipment')">
           <span>ACCEPT EQUIPMENT</span>
         </v-btn>
-      </div></v-layout
-    >
+      </div>
+    </v-layout>
     <div class="centered--formatted">
-      <v-row
-        ><v-col :cols="4" style="align-items: center; justify-content: center; display: flex"
-          ><display-tooltip-text :string="'With your current Load of ' + character.Load + ' your character has the following movement chart:'"
-        /></v-col>
-        <v-col :cols="8"><movement-card :movement="character.MoveChart" :key="character.MoveChart.Name" /></v-col
-      ></v-row>
+      <v-row>
+        <v-col
+          :cols="4"
+          style="align-items: center; justify-content: center; display: flex">
+          <display-tooltip-text :string="'With your current Load of ' + character.Load + ' your character has the following movement chart:'" />
+        </v-col>
+        <v-col :cols="8">
+          <movement-card
+            :movement="character.MoveChart"
+            :key="character.MoveChart.Name" />
+        </v-col>
+      </v-row>
     </div>
     <div class="keyword--box">
-      <v-tabs fixed-tabs v-model="equipmentTab" color="black">
-        <v-tab> <h3>Armor</h3></v-tab>
-        <v-tab> <h3>Weapons</h3></v-tab>
+      <v-tabs
+        fixed-tabs
+        v-model="equipmentTab"
+        color="black">
+        <v-tab> <h3>Armor</h3> </v-tab>
+        <v-tab> <h3>Weapons</h3> </v-tab>
       </v-tabs>
       <v-tabs-items v-model="equipmentTab">
-        <v-tab-item :eager="true" class="builder--body" eager>
+        <v-tab-item
+          :eager="true"
+          class="builder--body"
+          eager>
           <div class="button-separator">
             <div>
               <h3>Choosing Your Armor</h3>
@@ -32,71 +48,120 @@
             </div>
             <br />
             <v-row style="margin-top: 1em">
-              <v-col :cols="4" v-for="armor in armors" :key="armor.Name"
-                ><div>
-                  <v-layout justify-center style="margin-bottom: 1em"
-                    ><v-btn
+              <v-col
+                :cols="4"
+                v-for="armor in armors"
+                :key="armor.Name">
+                <div>
+                  <v-layout
+                    justify-center
+                    style="margin-bottom: 1em">
+                    <v-btn
                       large
                       tile
                       color="success"
                       @click="setArmor(armor)"
-                      :disabled="!character.CanAddArmor(armor) || character.WornArmor.Name == armor.Name"
-                    >
+                      :disabled="!character.CanAddArmor(armor) || character.WornArmor.Name == armor.Name">
                       <span v-if="character.WornArmor.Name == armor.Name">{{ armor.Name }} already equipped!</span>
                       <span v-else-if="!character.CanAddArmor(armor)">Cannot equip {{ armor.Name }}!</span>
                       <span v-else>CHOOSE {{ armor.Name }}</span>
-                    </v-btn></v-layout
-                  >
-                  <base-widget :ability="armor" /></div></v-col
-            ></v-row></div
-        ></v-tab-item>
-        <v-tab-item :eager="true" class="builder--body" eager>
+                    </v-btn>
+                  </v-layout>
+                  <base-widget :ability="armor" />
+                </div>
+              </v-col>
+            </v-row>
+          </div>
+        </v-tab-item>
+        <v-tab-item
+          :eager="true"
+          class="builder--body"
+          eager>
           <div>
             <h3>Choosing Your Weapons</h3>
             <display-tooltip-text :string="weaponText" />
           </div>
 
           <v-row style="margin-top: 2em; margin-bottom: 2em">
-            <v-col cols="auto" class="sidebar--enclosed">
-              <v-btn-toggle borderless overflow-auto
-                ><div v-for="weapon in weapons" style="width: 100%" v-bind:key="weapon.Name">
-                  <v-btn @click="selectedWeapon = weapon" class="button--style" depressed tile block>
-                    <img class="image--icon-size" :src="weapon.Icon" />{{ weapon.Name }}
+            <v-col
+              cols="auto"
+              class="sidebar--enclosed">
+              <v-btn-toggle
+                borderless
+                overflow-auto>
+                <div
+                  v-for="weapon in weapons"
+                  style="width: 100%"
+                  v-bind:key="weapon.Name">
+                  <v-btn
+                    @click="selectedWeapon = weapon"
+                    class="button--style"
+                    depressed
+                    tile
+                    block>
+                    <img
+                      class="image--icon-size"
+                      :src="weapon.Icon" />{{ weapon.Name }}
                   </v-btn>
                 </div>
-              </v-btn-toggle></v-col
-            >
+              </v-btn-toggle>
+            </v-col>
             <v-col>
               <v-row>
-                <v-layout style="margin-top: 1em; width: 100%" justify-center>
+                <v-layout
+                  style="margin-top: 1em; width: 100%"
+                  justify-center>
                   <display-tooltip-text string="You have selected the below weapons (click to remove):" />
                 </v-layout>
               </v-row>
               <v-row style="margin-top: 1em; margin-bottom: 1em">
-                <v-layout style="margin-top: 1em; width: 100%" justify-center>
-                  <div v-for="(weapon, index) in character.Weapons" :key="weapon" class="selected--item">
-                    <v-btn @click="character.RemoveWeapon(index)" class="button--style" depressed tile block> {{ weapon }} </v-btn>
+                <v-layout
+                  style="margin-top: 1em; width: 100%"
+                  justify-center>
+                  <div
+                    v-for="(weapon, index) in character.Weapons"
+                    :key="weapon"
+                    class="selected--item">
+                    <v-btn
+                      @click="character.RemoveWeapon(index)"
+                      class="button--style"
+                      depressed
+                      tile
+                      block>
+                      {{ weapon }}
+                    </v-btn>
                   </div>
-                </v-layout> </v-row
-              ><v-row style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%" justify="center"
-                ><v-btn
+                </v-layout>
+              </v-row>
+              <v-row
+                style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%"
+                justify="center">
+                <v-btn
                   large
                   tile
                   color="success"
                   @click="character.AddWeapon(selectedWeapon)"
-                  :disabled="selectedWeapon == null || !character.CanAddWeapon(selectedWeapon)"
-                >
+                  :disabled="selectedWeapon == null || !character.CanAddWeapon(selectedWeapon)">
                   <span v-if="selectedWeapon == null">CHOOSE A WEAPON</span>
                   <span v-else-if="!character.CanAddWeapon(selectedWeapon)">CANNOT ADD {{ selectedWeapon.Name }}</span>
                   <span v-else>CHOOSE {{ selectedWeapon.Name }}</span>
-                </v-btn></v-row
-              >
-              <v-row style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%" justify="center">
-                <weapon-widget v-if="selectedWeapon != null" :attack="selectedWeapon" style="width: 50%" :key="selectedWeapon.Name" /></v-row
-            ></v-col> </v-row
-        ></v-tab-item>
-      </v-tabs-items></div
-  ></span>
+                </v-btn>
+              </v-row>
+              <v-row
+                style="margin-left: 1em; margin-right: 1em; margin-bottom: 1em; width: 100%"
+                justify="center">
+                <weapon-widget
+                  v-if="selectedWeapon != null"
+                  :attack="selectedWeapon"
+                  style="width: 50%"
+                  :key="selectedWeapon.Name" />
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-tab-item>
+      </v-tabs-items>
+    </div>
+  </span>
 </template>
 <script>
 import Vue from 'vue'

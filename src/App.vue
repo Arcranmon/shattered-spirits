@@ -1,6 +1,11 @@
 <template>
-  <v-app id="app" class="background--color" v-bind:class="fontType">
-    <div><Navbar /></div>
+  <v-app
+    id="app"
+    class="background--color"
+    v-bind:class="fontType">
+    <div v-if="!$route.meta.hideHeader">
+      <Navbar />
+    </div>
     <router-view />
   </v-app>
 </template>

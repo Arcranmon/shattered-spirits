@@ -1,8 +1,15 @@
 <template>
   <div class="button-wrapper">
-    <router-link class="btn" v-bind:class="width" :to="to">
-      <img src="@/assets/weapons/BladeRotate.svg" class="blade" />
-      <div class="text"><slot /></div>
+    <router-link
+      class="btn"
+      v-bind:class="width"
+      :to="to">
+      <img
+        src="@/assets/weapons/BladeRotate.svg"
+        class="blade" />
+      <div class="text">
+        <slot />
+      </div>
     </router-link>
   </div>
 </template>

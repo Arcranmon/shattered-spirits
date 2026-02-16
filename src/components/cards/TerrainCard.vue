@@ -1,18 +1,34 @@
 <template>
-  <div class="card--wrapper" inline>
+  <div
+    class="card--wrapper"
+    inline>
     <div v-bind:class="terrain.ColorHeader">
       <div class="card--underline-top card--header">
-        <img class="image--header-left" :src="terrain.Icon" />
-        <img class="image--header-right" :src="terrain.Icon" />
+        <img
+          class="image--header-left"
+          :src="terrain.Icon" />
+        <img
+          class="image--header-right"
+          :src="terrain.Icon" />
         <h4 style="display: inline; font-style: normal">{{ terrain.Name }}</h4>
         <div>
-          <b><display-tooltip-text :string="terrain.TerrainDetails" :decorate="false" /></b>
+          <b>
+            <display-tooltip-text
+              :string="terrain.TerrainDetails"
+              :decorate="false" />
+          </b>
         </div>
         <div class="card--keywords">
-          <b
-            ><span v-for="(keyword, index) in terrain.Keywords" :key="index" class="keyword--box">
-              <display-tooltip-text :string="keyword" :decorate="false" /></span
-          ></b>
+          <b>
+            <span
+              v-for="(keyword, index) in terrain.Keywords"
+              :key="index"
+              class="keyword--box">
+              <display-tooltip-text
+                :string="keyword"
+                :decorate="false" />
+            </span>
+          </b>
         </div>
       </div>
     </div>
@@ -23,20 +39,33 @@
       <div class="card--format">
         <display-tooltip-text :string="terrain.PathEffectHeader" />
       </div>
-      <div class="card--format" v-if="terrain.HasSpecial">
+      <div
+        class="card--format"
+        v-if="terrain.HasSpecial">
         <display-tooltip-text :string="terrain.SpecialHeader" />
       </div>
-      <div class="card--format" v-if="terrain.HasNegate">
+      <div
+        class="card--format"
+        v-if="terrain.HasNegate">
         <display-tooltip-text :string="terrain.NegateHeader" />
       </div>
-      <div class="card--format" v-if="terrain.HasDestroy">
+      <div
+        class="card--format"
+        v-if="terrain.HasDestroy">
         <display-tooltip-text :string="terrain.DestroyHeader" />
       </div>
-      <div class="card--format" v-if="terrain.HasInteractions">
+      <div
+        class="card--format"
+        v-if="terrain.HasInteractions">
         <display-tooltip-text :string="terrain.InteractionsHeader" />
       </div>
     </div>
-    <div class="desc--box" v-if="terrain.Desc.length > 0" style="font-style: italic">{{ terrain.Desc }}<br /></div>
+    <div
+      class="desc--box"
+      v-if="terrain.Desc.length > 0"
+      style="font-style: italic">
+      {{ terrain.Desc }}<br />
+    </div>
   </div>
 </template>
 

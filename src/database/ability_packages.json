@@ -1,23 +1,38 @@
 [
   {
-    "name": "Metalcraft",
+    "name": "Basic Metalsense",
     "category": "Metal",
     "type": "Discipline",
-    "desc": "Simple techniques that all with a metal companion can easily accomplish.",
+    "desc": "All with metalcraft have an innate, intuitive grasp of where nearby metal is.",
     "abilities": [
       {
-        "name": "Basic Metalcraft",
+        "name": "Metalsense",
         "category": "Narrative",
         "keywords": ["Spirit", "Metal"],
         "type": "Skill",
-        "effect": "You have a basic, intuitive grasp of metalcraft and can accomplish minor feats using it. You gain the following:\n* **Metalsense:** You have a rough knowledge of the location of all nearby metal.\n* **Basic Lodecraft**: You may clumsily move and control a single nearby metal object that you could hold in one hand.\n* **Basic Anvilcraft**: You may touch a piece of metal and affect minor change on it, such as making it stronger, weaker, or slightly changing its shape. This change is temporary, and ends if you stop touching the metal.\n\nYour Spirit may take 1 _Fatigue_ to enhance these abilities for a Scene, allowing you to temporarily exceed these limits."
+        "effect": "You can sense the approximate location of nearby metal, although other present elements (especially wood) may disrupt this sense."
+      }
+    ]
+  },
+  {
+    "name": "Basic Lodecraft",
+    "category": "Metal",
+    "type": "Discipline",
+    "desc": "The absolute basics of lodecraft, a speciality of metalcraft that focuses on moving and controlling metal.",
+    "abilities": [
+      {
+        "name": "Lodecraft",
+        "category": "Narrative",
+        "keywords": ["Spirit", "Metal"],
+        "type": "Skill",
+        "effect": "You may clumsily move and control a single nearby metal object that you could hold in one hand."
       },
       {
         "name": "Metalbending",
         "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Metal"],
-        "effect": "You have _Kinesis_ [_Metal_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
+        "effect": "You have _Kinesis_ [_Metal_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
       },
       {
         "name": "Metal Shot",
@@ -25,9 +40,9 @@
         "type": "Attack",
         "keywords": ["Spirit", "Metal", "Crush", "Remote"],
         "cost": "2 _Momentum_",
-        "range": "_Short_-",
+        "range": "1",
         "target": "Single-Target",
-        "missile": "An Unattended 0 _Load_/_Trinket_ _Metal_ item or one _Worn by you/an ally within _Close_- Range.",
+        "missile": "An Unattended 0 _Load_/_Trinket_ _Metal_ item or one _Worn by you/an ally within Range 0.",
         "effect": "Choose a Missile, then Attack a target within Range with it. If you choose a _Trinket_, add _Feeble_ to this Attack. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
         "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
         "enhancements": [
@@ -50,13 +65,14 @@
     "category": "Metal",
     "type": "Discipline",
     "desc": "The fundamentals of anvilcraft, a speciality of metalcraft that focuses on changing the structure of metal to strengthen, weaken, or alter the shape of it.",
+    "effect": "This replaces _Basic Anvilcraft_.",
     "abilities": [
       {
-        "name": "Novice Anvilcraft",
+        "name": "Anvilcraft",
         "category": "Narrative",
         "keywords": ["Spirit", "Metal"],
         "type": "Skill",
-        "effect": "You are studied in the basics of anvilcraft, allowing you to better manipulate metal. You can modify the physical properties of metal to a moderate degree, allowing you to make iron as hard as steel or the reverse. For maximum effect you must be touching the metal. The effect persists for a short time after you stop touching it. You may affect more mild change from a short distance. Finally, you can work metal with your touch with the same precision and speed as if you had metalworking tools (but not a forge) and you do not need _Smith's Tools_ to repair metal equipment."
+        "effect": "You can modify the physical properties of metal to a moderate degree, allowing you to make iron as hard as steel or the reverse. For maximum effect you must be touching the metal. The effect persists for a short time after you stop touching it. You may affect more mild change from a short distance. Finally, you can work metal with your touch with the same precision and speed as if you had metalworking tools (but not a forge) and you do not need _Smith's Tools_ to repair metal equipment."
       },
       {
         "name": "Fullmetal",
@@ -97,7 +113,7 @@
   },
   {
     "name": "Woodcraft",
-    "category": "Wood",
+    "category": "Hide",
     "type": "Discipline",
     "desc": "Simple techniques that all with a wood companion can easily accomplish.",
     "abilities": [
@@ -166,7 +182,7 @@
         "name": "Forge-Trained",
         "category": "Narrative",
         "type": "Power",
-        "effect": "Given appropriate tools and materials, you may craft Metal equipment. Most basic or rough tools can be crafted in a few hours, with more intricate or complicated tools taking longer. Whenever you <u>Improve</u> the Forge in your town during _Downtime_, mark +1 segment on the Clock. Finally, whenever you can craft, add the following <u>Augments</u> to your Smithy:\n* <u>Elegant:</u> Increase the _Supply_ cost of the item by 2. This item is of noticeably higher quality and is very desirable to own.\n* <u>Sturdy:</u> Increase the _Supply_ cost of the item by 1. Increase its _Durability_ by 1 as well.\n* <u>Mass-Produced:</u> Decrease the _Supply_ cost of the item by 1. Decrease its _Durability_ by 1. If it already has 1 _Durability_, instead add _Fragile_."
+        "effect": "Given appropriate tools and materials, you may craft Metal equipment. Most basic or rough tools can be crafted in a few hours, with more intricate or complicated tools taking longer.[Item crafting with extra benefits for metal]"
       }
     ]
   },
@@ -199,7 +215,7 @@
         "name": "Forge Weapon",
         "category": "Narrative",
         "type": "Power",
-        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. Whenever you <u>Improve</u> the Forge in your town during _Downtime_ you may also learn a new weapon <u>Augment</u>. Additionally, when you gain this Talent learn two Augments of your choice. With further training, you may learn to work with Exotic materials."
+        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. [Item crafting with extra benefits for weapons]"
       }
     ]
   },
@@ -259,7 +275,7 @@
         "name": "Charming Presence",
         "category": "Support",
         "type": "Passive",
-        "effect": "Gain +1 _Focus_. At _Refresh_ one ally within _Short_- Range may gain _Joyful_."
+        "effect": "Gain +1 _Focus_. At _Refresh_ one ally within Range 1 may gain _Joyful_."
       },
       {
         "name": "Charm Offensive",

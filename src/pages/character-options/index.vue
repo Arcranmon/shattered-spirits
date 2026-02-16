@@ -1,80 +1,215 @@
 <template>
   <div>
-    <v-select v-if="isMobile" v-model="selectedTab" :items="tabs" attach filled outlined style="margin: 1em; margin-bottom: -1em" />
-    <v-row class="background" style="margin-top: 1em" align="stretch">
-      <v-col v-if="!isMobile" cols="auto" class="sidebar" style="height: 100vh">
-        <v-btn-toggle borderless overflow-auto>
-          <div v-for="tab in tabs" style="width: 100%">
-            <v-btn @click="selectedTab = tab" class="button--style" depressed tile block>
+    <v-select
+      v-if="isMobile"
+      v-model="selectedTab"
+      :items="tabs"
+      attach
+      filled
+      outlined
+      style="margin: 1em; margin-bottom: -1em" />
+    <v-row
+      class="background"
+      style="margin-top: 1em"
+      align="stretch">
+      <v-col
+        v-if="!isMobile"
+        cols="auto"
+        class="sidebar"
+        style="height: 100vh">
+        <v-btn-toggle
+          borderless
+          overflow-auto>
+          <div
+            v-for="tab in tabs"
+            style="width: 100%">
+            <v-btn
+              @click="selectedTab = tab"
+              class="button--style"
+              depressed
+              tile
+              block>
               {{ tab }}
             </v-btn>
           </div>
-        </v-btn-toggle></v-col
-      >
-      <v-col style="padding-left: 0; padding-bottom: 0; margin-bottom: 0; height: 100%" class="background">
+        </v-btn-toggle>
+      </v-col>
+      <v-col
+        style="padding-left: 0; padding-bottom: 0; margin-bottom: 0; height: 100%"
+        class="background">
         <h2>{{ selectedTab }}</h2>
         <div v-if="selectedTab == 'Basic Skills'">
-          <v-tabs v-model="abilityTab" class="character-tabs" dark color="black" centered
-            ><v-tab><h4>Maneuvers</h4></v-tab>
-            <v-tab><h4>Attacks</h4></v-tab>
-            <v-tab><h4>Gambits</h4></v-tab>
-            <v-tab><h4>Reactions</h4> </v-tab><v-tab> <h4>Stances</h4> </v-tab></v-tabs
-          >
-          <v-tabs-items v-model="abilityTab" class="character-tab-content"
-            ><v-tab-item><ability-tab abilityType="Maneuver" :character="character" /></v-tab-item>
-            <v-tab-item><ability-tab abilityType="Attack" :character="character" /></v-tab-item>
-            <v-tab-item><ability-tab abilityType="Gambit" :character="character" /></v-tab-item>
-            <v-tab-item><ability-tab abilityType="Reaction" :character="character" /></v-tab-item>
-            <v-tab-item><show-cards :inputs="basic_stances" :collapse="false" :cols="1" /></v-tab-item
-          ></v-tabs-items>
+          <v-tabs
+            v-model="abilityTab"
+            class="character-tabs"
+            dark
+            color="black"
+            centered>
+            <v-tab>
+              <h4>Maneuvers</h4>
+            </v-tab>
+            <v-tab>
+              <h4>Attacks</h4>
+            </v-tab>
+            <v-tab>
+              <h4>Gambits</h4>
+            </v-tab>
+            <v-tab> <h4>Reactions</h4> </v-tab>
+            <v-tab> <h4>Stances</h4> </v-tab>
+          </v-tabs>
+          <v-tabs-items
+            v-model="abilityTab"
+            class="character-tab-content">
+            <v-tab-item>
+              <ability-tab
+                abilityType="Maneuver"
+                :character="character" />
+            </v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Attack"
+                :character="character" />
+            </v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Gambit"
+                :character="character" />
+            </v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Reaction"
+                :character="character" />
+            </v-tab-item>
+            <v-tab-item>
+              <show-cards
+                :inputs="basic_stances"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+          </v-tabs-items>
         </div>
-        <div class="character-tab-content" v-if="selectedTab == 'Archetypes'" style="border-top: 2px solid black">
-          <show-cards :inputs="archetypes" :collapse="false" :cols="1" />
+        <div
+          class="character-tab-content"
+          v-if="selectedTab == 'Archetypes'"
+          style="border-top: 2px solid black">
+          <show-cards
+            :inputs="archetypes"
+            :collapse="false"
+            :cols="1" />
         </div>
 
-        <div class="character-tab-content" v-if="selectedTab == 'Disciplines'" style="border-top: 2px solid black">
-          <show-cards :inputs="disciplines" :collapse="false" :cols="1" />
+        <div
+          class="character-tab-content"
+          v-if="selectedTab == 'Disciplines'"
+          style="border-top: 2px solid black">
+          <show-cards
+            :inputs="disciplines"
+            :collapse="false"
+            :cols="1" />
         </div>
-        <div class="character-tab-content" v-if="selectedTab == 'Talents'" style="border-top: 2px solid black">
-          <show-cards :inputs="talents" :collapse="false" :cols="1" />
+        <div
+          class="character-tab-content"
+          v-if="selectedTab == 'Talents'"
+          style="border-top: 2px solid black">
+          <show-cards
+            :inputs="talents"
+            :collapse="false"
+            :cols="1" />
         </div>
 
         <div v-if="selectedTab == 'Armor and Accessories'">
-          <v-row class="select-bar" align="center">
-            <v-col cols="12" style="padding-left: 3em; padding-right: 3em">
-              <v-select v-model="selectedArmors" :items="armorCategories" attach label="Armor Categories" multiple filled background-color="#dbd9d9e3" /></v-col
-          ></v-row>
-          <div class="character-tab-content" style="border-top: 2px solid black">
-            <show-cards :inputs="armors" :collapse="false" :cols="1" />
+          <v-row
+            class="select-bar"
+            align="center">
+            <v-col
+              cols="12"
+              style="padding-left: 3em; padding-right: 3em">
+              <v-select
+                v-model="selectedArmors"
+                :items="armorCategories"
+                attach
+                label="Armor Categories"
+                multiple
+                filled
+                background-color="#dbd9d9e3" />
+            </v-col>
+          </v-row>
+          <div
+            class="character-tab-content"
+            style="border-top: 2px solid black">
+            <show-cards
+              :inputs="armors"
+              :collapse="false"
+              :cols="1" />
           </div>
         </div>
         <div v-if="selectedTab == 'Weapons and Shields'">
-          <v-row dark align="center" class="select-bar">
-            <v-col cols="6" style="padding-left: 3em"
-              ><v-select light v-model="selectedWeapons" :items="weaponCategories" attach label="Weapon Categories" multiple background-color="#dbd9d9e3" filled
-                ><template v-slot:prepend-item>
-                  <v-list-item ripple @mousedown.prevent>
+          <v-row
+            dark
+            align="center"
+            class="select-bar">
+            <v-col
+              cols="6"
+              style="padding-left: 3em">
+              <v-select
+                light
+                v-model="selectedWeapons"
+                :items="weaponCategories"
+                attach
+                label="Weapon Categories"
+                multiple
+                background-color="#dbd9d9e3"
+                filled>
+                <template v-slot:prepend-item>
+                  <v-list-item
+                    ripple
+                    @mousedown.prevent>
                     <v-list-item-content>
                       <v-list-item-title> Select All </v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
-                  <v-divider class="mt-2"></v-divider> </template
-                ><template v-slot:selection="{ item, index }">
+                  <v-divider class="mt-2"> </v-divider>
+                </template>
+                <template v-slot:selection="{ item, index }">
                   <span v-if="index === 0">{{ item }} </span>&nbsp;
-                  <span v-if="index === 1" class="black--text text-caption"> (+{{ selectedWeapons.length - 1 }} others) </span>
-                </template></v-select
-              > </v-col
-            ><v-col cols="6" style="padding-right: 3em"
-              ><v-select v-model="selectedType" :items="weaponTypes" attach label="Weapon Type" filled background-color="#dbd9d9e3"></v-select></v-col
-          ></v-row>
-          <div class="character-tab-content" style="border-top: 2px solid black">
-            <show-cards :inputs="weapons" :collapse="false" :cols="1" />
+                  <span
+                    v-if="index === 1"
+                    class="black--text text-caption">
+                    (+{{ selectedWeapons.length - 1 }} others)
+                  </span>
+                </template>
+              </v-select>
+            </v-col>
+            <v-col
+              cols="6"
+              style="padding-right: 3em">
+              <v-select
+                v-model="selectedType"
+                :items="weaponTypes"
+                attach
+                label="Weapon Type"
+                filled
+                background-color="#dbd9d9e3">
+              </v-select>
+            </v-col>
+          </v-row>
+          <div
+            class="character-tab-content"
+            style="border-top: 2px solid black">
+            <show-cards
+              :inputs="weapons"
+              :collapse="false"
+              :cols="1" />
           </div>
         </div>
         <spirit-abilities v-if="selectedTab == 'Spirit Customization'" />
         <div v-if="selectedTab == 'Equipment'">
-          <v-row class="select-bar" align="center">
-            <v-col cols="12" style="padding-left: 3em; padding-right: 3em">
+          <v-row
+            class="select-bar"
+            align="center">
+            <v-col
+              cols="12"
+              style="padding-left: 3em; padding-right: 3em">
               <v-select
                 v-model="selectedConsumables"
                 :items="consumableCategories"
@@ -82,10 +217,14 @@
                 label="Equipment Categories"
                 multiple
                 filled
-                background-color="#dbd9d9e3" /></v-col
-          ></v-row>
+                background-color="#dbd9d9e3" />
+            </v-col>
+          </v-row>
           <div class="character-tab-content">
-            <show-cards :inputs="consumables" :collapse="false" :cols="1" />
+            <show-cards
+              :inputs="consumables"
+              :collapse="false"
+              :cols="1" />
           </div>
         </div>
       </v-col>

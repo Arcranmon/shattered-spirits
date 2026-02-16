@@ -1,165 +1,259 @@
 [
   {
-    "name": "Needler Nymph",
-    "desc": "A young needler covered in piercing spines.",
-    "role": "Artillery",
-    "subtype": "None",
-    "pattern": "Phase 1: Action, Phase 2: Technique",
-    "category": "Minion",
-    "Stamina": 1,
-    "momentum_gain": 1,
-    "size": "0.5",
-    "move": 2,
-    "jump": 2,
-    "defenses": { "reflex": 1, "stamina": 2 },
-    "npc_type": "Insectoid",
-    "traits": ["Climber", "_Resistance_ I [_Poison_]"],
-    "techniques": ["Skirmish", "Shift", "Improvise"],
-    "attacks": ["Weapon Attack", "Brawl"],
-    "weapons": ["Small Jaws", "Small Needles"],
-    "actions": ["Sprint", "Fight"],
-    "blockts": ["Retreat", "Leap"],
-    "gambits": ["Lethal Strike", "Seize Momentum", "Envenom"],
-    "reactions": ["Opportunity Attack"]
-  },
-  {
-    "name": "Lesser Needler",
-    "desc": "A young needler covered in piercing spines.",
-    "role": "Artillery",
-    "pattern": "Phase 1: Action, Phase 2: Technique, Phase 3: Action",
-    "subtype": "None",
-    "category": "Standard",
-    "Stamina": 8,
-    "size": "1",
-    "move": 2,
-    "momentum_gain": 2,
-    "defenses": { "reflex": 1, "stamina": 4 },
-    "npc_type": "Insectoid",
-    "traits": ["Climber", "_Resistance_ I [_Poison_]"],
-    "weapons": ["Small Jaws", "Small Needles", "Medium Needles"],
-    "techniques": ["Skirmish", "Combination Strike", "Shift", "Improvise"],
-    "attacks": ["Weapon Attack", "Brawl"],
-    "actions": ["Sprint", "Fight", "Prepare"],
-    "blockts": ["Retreat", "Leap"],
-    "gambits": ["Lethal Strike", "Seize Momentum", "Envenom"],
-    "reactions": ["Opportunity Attack", "Defend", "Dodge"]
-  },
-  {
-    "name": "Lesser Praetorian",
-    "desc": "A soldier insect covered in heavy plates.",
-    "role": "Striker/Defender",
-    "subtype": "None",
-    "category": "Standard",
-    "stamina": 15,
-    "block": 2,
-    "momentum_gain": "_2/3/4/5_",
-    "defenses": { "grit": 1, "stun": 10 },
-    "size": "1",
-    "move": 1,
-    "jump": 1,
-    "npc_type": "Insectoid",
-    "armor": "Shell",
-    "traits": ["Climber", "Toxin-Proof", "_Resistance_ [_Poison_]"],
-    "ap": 2,
-    "weapons": ["Fangs", "Binding Claw"],
-    "abilities": ["Envenom"]
-  },
-  {
-    "name": "Hoplite Nymph",
-    "desc": "A swift insect in light armor.",
+    "name": "Biter Nymph",
+    "desc": "A young Locust that specializes drawing blood and providing blood samples.",
     "role": "Striker",
-    "subtype": "None",
+    "category": "Minion",
+    "stamina": 6,
+    "stun": 3,
+    "size": "&half;",
+    "block": 1,
+    "defenses": { "reflex": 1 },
+    "npc_type": "Insectoid",
+    "traits": ["Climber", "Locust Biology"],
+    "abilities": [
+      {
+        "name": "Latch",
+        "keywords": ["Natural", "Martial", "Stab"],
+        "category": "Balanced",
+        "type": "Attack",
+        "range": "_Melee_",
+        "target": "Single-Target",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "status": ["None", "Exposed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]"],
+          "damage": [0, 1, 2, 3],
+          "negate": [4, 7, 8, 10]
+        }
+      },
+      {
+        "name": "Drink",
+        "keywords": ["Natural", "Martial", "Stab"],
+        "category": "Balanced",
+        "type": "Attack",
+        "range": "_Melee_",
+        "target": "A creature you are grappling or riding.",
+        "effect": "Attack a Target within Range. Clear all _Stun_ on a _Hit_+. If you _Wound_ them, gain a Blood Sample.",
+        "chart": {
+          "roll": ["2", "3-4", "5-9", "10-12"],
+          "damage": [0, 6, 9, 12]
+        }
+      },
+      {
+        "name": "Envenom",
+        "category": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack and the Target lost any _Stamina_.",
+        "effect": "Add _Poisoned_ 1 to the Attack."
+      }
+    ],
+    "stances": [
+      {
+        "name": "Find Sample",
+        "category": "Offensive",
+        "desc": "You find a target, attempting to latch onto them.",
+        "movement": 4,
+        "guard": 0,
+        "block": 0,
+        "speed": 3,
+        "effect": "_Engage_ with the lowest _Stamina_ creature within Range that you do not have a Blood Sample from. In case of a tie, prioritize the closer. Then, use Latch. If you cannot, instead _Concentrate_."
+      },
+      {
+        "name": "Take Sample",
+        "category": "Offensive",
+        "desc": "You drill deep on a grappled target, attempting to extract a sample of their essence.",
+        "movement": 2,
+        "defenses": { "grit": 1 },
+        "guard": 0,
+        "block": 2,
+        "speed": 5,
+        "effect": "Use Drink on a creature you are _Riding_ or _Grappling_. If you are not _Riding_ or _Grappling_ a creature, gain _Exposed_, attempt to _Engage_ a creature, then _Concentrate_."
+      },
+      {
+        "name": "Return Sample",
+        "category": "Mobility",
+        "desc": "You dash away from an enemy, attempting to get a blood sample to an appropriate ally.",
+        "movement": 5,
+        "guard": 1,
+        "block": 1,
+        "speed": 2,
+        "effect": "_Retreat_, then attempt to _Engage_ with a Chemist. If you do, give them all Blood Samples you have."
+      }
+    ]
+  },
+  {
+    "name": "Needler Nymph",
+    "desc": "A young Locust that specializes in firing pressurized spines.",
+    "role": "Artillery",
     "category": "Minion",
     "stamina": 3,
+    "stun": 2,
+    "size": "&half;",
     "block": 1,
-    "size": "0.5",
-    "move": 3,
-    "jump": 2,
-    "armor": "Light Carapace",
-    "momentum_gain": 2,
+    "defenses": { "reflex": 1 },
     "npc_type": "Insectoid",
-    "defenses": { "reflex": 1, "stun": 2 },
-    "traits": ["Climber", "_Resistance_ I [_Poison_]"],
-    "ap": 1,
-    "weapons": ["Fangs", "Stinger"],
-    "arts": ["Shift", "Brace", "Rally", "Fight", "Envenom"]
-  },
-  {
-    "name": "Lesser Chemist",
-    "desc": "An insect specialized in spraying clouds of toxic fumes.",
-    "role": "Controller",
-    "subtype": "None",
-    "category": "Standard",
-    "pattern": "Phase 1: Action, Phase 3: Technique, Phase 4: Action",
-    "Stamina": 20,
-    "max_block": 8,
-    "block": 0,
-    "size": "1",
-    "move": 1,
-    "defenses": { "focus": 1, "stamina": 2 },
-    "jump": 1,
-    "momentum_gain": 2,
-    "npc_type": "Insectoid",
-    "traits": ["Climber", "_Resistance_ II [_Poison_]", "_Aura_ [_Bloodied_, _Toxic Gas_]"],
-    "weapons": ["Small Jaws", "Small Claws"],
-    "techniques": ["Combination Strike", "Fumigate", "Shift", "Improvise"],
-    "attacks": ["Weapon Attack", "Brawl", "Toxic Spray"],
-    "actions": ["Chemical Warfare", "Sprint", "Fight", "Prepare"],
-    "blockts": ["Leap", "Retreat"],
-    "reactions": ["Opportunity Attack", "Defend"]
-  },
-  {
-    "name": "Matriarch",
-    "desc": "A giant insect with crushing jaws that can cleave through stone.",
-    "pattern": "Phase 1: Technique, Phase 2: Action, Phase 3: Action / Technique (Bloodied), Phase 4: Action",
-    "role": "Striker",
-    "subtype": "None",
-    "category": "Elite",
-    "Stamina": 40,
-    "max_block": 25,
-    "block": 3,
-    "size": "2",
-    "move": 1,
-    "jump": 1,
-    "momentum_gain": 4,
-    "defenses": { "focus": 1, "grit": 1, "stamina": 3 },
-    "npc_type": "Insectoid",
-    "traits": [
-      "Climber",
-      "_Resistance_ I [_Poison_]",
-      "Staminabars (2, Stun decreases by 10 per bar)",
-      "If an Egg is killed gain 2 _Momentum_. If a Larva is killed, immediately use Queen's Cry or Assault Orders at no cost."
+    "traits": ["Climber", "Locust Biology"],
+    "abilities": [
+      {
+        "name": "Needle Shot",
+        "keywords": ["Natural", "Martial", "Stab"],
+        "category": "Balanced",
+        "type": "Attack",
+        "range": "_Medium_-",
+        "target": "Single-Target",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "damage": [0, 2, 4, 5]
+        }
+      },
+      {
+        "name": "Envenom",
+        "category": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
+        "effect": "Add _Poisoned_ 1 to the Attack. If you have an appropriate _Sample_, instead inflict _Poisoned_ 3."
+      }
     ],
-    "weapons": ["Small Claws", "Medium Claws", "Large Jaws"],
-    "techniques": ["Combination Strike", "Smash", "Shift", "Improvise", "Hatch"],
-    "attacks": ["Weapon Attack", "Brawl", "Assault Orders"],
-    "actions": ["Sprint", "Fight", "Prepare", "Rebalance"],
-    "blockts": ["Leap", "Retreat"],
-    "reactions": ["Opportunity Attack", "Defend", "Queen's Cry"]
+    "stances": [
+      {
+        "name": "Needle",
+        "category": "Offensive",
+        "desc": "You take a shot at an enemy, attempting to strike them down from a distance.",
+        "movement": 0,
+        "guard": 0,
+        "block": 0,
+        "speed": 4,
+        "effect": "If you are not _Engaged_, make an Attack with _Needle Shot_ against the most isolated enemy that is not in _Cover_, choosing between equivalent targets the case of a tie. You may then _Retreat_. If you are _Engaged_, instead gain +2 _Movement_ and _Retreat_."
+      },
+      {
+        "name": "Snipe",
+        "category": "Offensive",
+        "desc": "You take careful aim, attempting to shoot down a foe from a distance.",
+        "movement": 0,
+        "guard": 0,
+        "block": 0,
+        "speed": 5,
+        "effect": "At _Respite_, choose a Target, announcing it to the table. On your _Turn_, use _Needle Shot_ against the Target at _Advantage_, dealing +_1/2/3/4_ Damage. You may then _Retreat_. If you are _Engaged_, instead gain +2 _Movement_ and _Retreat_."
+      },
+      {
+        "name": "Relocate",
+        "category": "Mobility",
+        "desc": "You take a shot at an enemy, attempting to strike them down from a distance.",
+        "movement": 3,
+        "guard": 0,
+        "block": 1,
+        "speed": 2,
+        "effect": "_Retreat_, then attempt to move to the highest _Elevation_ possible. You may _Occupy_ _Cover_, if available."
+      }
+    ]
   },
   {
-    "name": "Larva",
-    "desc": "A newborn, fragile insect.",
-    "role": "Striker",
-    "subtype": "None",
-    "category": "Minion",
-    "pattern": "Starts as an Egg with 5 Stamina and nothing else. After rolling a 6 at the end of the round, becomes Larva.\n\nPhase 3: Action, Phase 4: Action (Becomes a Nymph or Needler after 1 Round as a Larva)",
-    "Stamina": 1,
-    "block": 0,
-    "size": "0.5",
-    "move": 1,
-    "jump": 0,
-    "max_block": 1,
-    "momentum_gain": 1,
+    "name": "Guardian Adult",
+    "desc": "A Locust that specializes in defending the warren, blocking paths and restraining foes.",
+    "role": "Defender",
+    "category": "Enemy",
+    "stamina": 10,
+    "stun": 15,
+    "size": "1",
+    "block": 3,
+    "defenses": { "focus": 1, "grit": 1 },
     "npc_type": "Insectoid",
-    "defenses": { "reflex": 1, "stamina": 1 },
-    "traits": ["Climber", "_Resistance_ I [_Poison_]"],
-    "ap": 1,
-    "weapons": ["Small Jaws"],
-    "actions": ["Sprint", "Fight"],
-    "blockts": ["Retreat"],
-    "attacks": ["Weapon Attack", "Brawl"],
-    "gambits": ["Lethal Strike"],
-    "reactions": ["Opportunity Attack"]
+    "traits": ["Climber", "Locust Biology"],
+    "abilities": [
+      {
+        "name": "Grasping Claw",
+        "keywords": ["Natural", "Martial", "Slash"],
+        "category": "Balanced",
+        "type": "Attack",
+        "cost": "2 _Momentum_",
+        "range": "Melee",
+        "target": "Single-Target",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "damage": [0, 3, 5, 6],
+          "negate": [4, 7, 8, 10],
+          "status": ["None", "None", "Grabbed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]"]
+        }
+      },
+      {
+        "name": "Armor Plating",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "You do not have _Disadvantage_ to _Parry_ Ranged Attacks. This may be _Sundered_; if it is, lose 2 _Block_."
+      },
+      {
+        "name": "Envenom",
+        "category": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
+        "effect": "Add _Poisoned_ 1 to the Attack. If you have an appropriate _Sample_, instead inflict _Poisoned_ 3."
+      },
+      {
+        "name": "Perfect Parry",
+        "category": "Defensive",
+        "type": "Gambit",
+        "cost": "1 _Guard_",
+        "prereqs": "Triggered from a _Parry_.",
+        "effect": "The triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
+      }
+    ],
+    "stances": [
+      {
+        "name": "Warden",
+        "category": "Defensive",
+        "desc": "You move to limit mobility through an arena, preparing to pounce.",
+        "movement": 2,
+        "guard": 2,
+        "block": 2,
+        "speed": 2,
+        "effect": "On your _Turn_, you may _Recover_ or clear 4 _Stun_. The next time a creature enters your _Arena_ or stops being _Engaged_ with you you may immediately Move to _Engage_ them then strike them once with Grasping Claw as a _Reaction_."
+      },
+      {
+        "name": "Guardian",
+        "category": "Defensive",
+        "desc": "You move to an ally, defending them against all incoming attacks.",
+        "movement": 3,
+        "guard": 2,
+        "block": 1,
+        "speed": 3,
+        "effect": "On your _Turn_, Move to become _Engaged_ with an ally. While you are _Engaged_ with them all Attacks against them have _Disadvantage_, and you may use your _Defend_ Reactions for them; if you do, distribute the effect between you and the creature you are defending."
+      },
+      {
+        "name": "Charge",
+        "category": "Offensive",
+        "desc": "You dart forward, attempting to engage and restrain a hostile creature.",
+        "movement": 3,
+        "guard": 1,
+        "block": 1,
+        "speed": 4,
+        "effect": "On your _Turn_, Move to become _Engaged_ with the nearest enemy. You may _Brawl_ against them, choosing either <u>Slam</u> or <u>Overpower</u>. You may then become re-_Engaged_ if required, then use _Grasping Claw_."
+      },
+      {
+        "name": "Avenger",
+        "category": "Offensive",
+        "desc": "You focus fire on an enemy that harmed one of your allies.",
+        "movement": 3,
+        "guard": 1,
+        "block": 1,
+        "speed": 3,
+        "effect": "On your _Turn_, Move to become _Engaged_ with the nearest enemy that targeted the beneficiary of your Guardian Stance last turn or _Defeated_ one of your allies this or last _Round_. Make three Grasping Claw Attacks against them."
+      },
+      {
+        "name": "Recover",
+        "category": "Support",
+        "desc": "You catch your breath.",
+        "movement": 2,
+        "guard": 1,
+        "block": 1,
+        "speed": 2,
+        "effect": "On your _Turn_, _Recover_ or clear 4 _Stun_ three times, choosing an effect each time. You may then _Retreat_."
+      }
+    ]
   }
 ]

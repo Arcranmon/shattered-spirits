@@ -1,12 +1,16 @@
 <template>
   <div>
     <span v-if="collapse">
-      <v-expansion-panels flat style="padding: 3px">
+      <v-expansion-panels
+        flat
+        style="padding: 3px">
         <v-expansion-panel style="background-color: inherit">
           <v-expansion-panel-header v-bind:class="contained_header">
             <h3 style="display: flex">{{ dropName }}</h3>
           </v-expansion-panel-header>
-          <v-expansion-panel-content v-bind:class="contained_body" class="character-tab-content-panel">
+          <v-expansion-panel-content
+            v-bind:class="contained_body"
+            class="character-tab-content-panel">
             <v-container fluid>
               <v-row>
                 <v-col
@@ -16,36 +20,41 @@
                   v-bind:key="n.Name"
                   :lg="colWidth"
                   v-bind:class="{ 'card--button': selectButton }"
-                  v-on:click="clickMethod(n, index)"
-                >
-                  <div class="card--box" v-if="isStance(n)">
-                    <stance-card :stance="n" :class="card_color" :on_sheet="on_sheet" :character_creation="character_creation" />
+                  v-on:click="clickMethod(n, index)">
+                  <div
+                    class="card--box"
+                    v-if="isStance(n)">
+                    <stance-card
+                      :stance="n"
+                      :class="card_color"
+                      :on_sheet="on_sheet"
+                      :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="isWeapon(n)">
-                    <weapon-widget :weapon="n" :character_creation="character_creation" />
+                  <div
+                    class="card--box"
+                    v-if="isWeapon(n)">
+                    <weapon-widget
+                      :weapon="n"
+                      :character_creation="character_creation" />
                   </div>
-                  <div class="card--box" v-if="isAbilityPackage(n)" style="border-bottom: 2px solid black">
-                    <base-widget :ability="n" style="height: 100%" />
+                  <div
+                    class="card--box"
+                    v-if="isAbilityPackage(n)"
+                    style="border-bottom: 2px solid black">
+                    <base-widget
+                      :ability="n"
+                      style="height: 100%" />
                   </div>
                 </v-col>
-              </v-row> </v-container
-          ></v-expansion-panel-content>
+              </v-row>
+            </v-container>
+          </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </span>
     <span v-else>
-      <v-container fluid>
-        <v-row>
-          <v-col
-            cols="12"
-            class="d-flex justify-center"
-            v-for="(n, index) in inputs"
-            :key="n.Name"
-            v-bind:class="{ 'card--button': selectButton }"
-            v-on:click="clickMethod(n, index)"
-            :lg="colWidth"
-          >
-            <!---
+      <div v-for="(n, index) in inputs">
+        <!---
             <div class="card--box" v-if="job == 'Features'">
               <feature-card :feature="n" />
             </div>
@@ -53,15 +62,20 @@
               <movement-card :movement="n" />
             </div>
             -->
-            <div class="card--box" v-if="isSpiritForm(n)">
-              <spirit-form-card :form="n" style="height: 100%" />
-            </div>
-            <div class="card--box">
-              <base-widget :ability="n" style="height: 100%" />
-            </div>
-          </v-col>
-        </v-row> </v-container
-    ></span>
+        <div
+          class="card--box"
+          v-if="isSpiritForm(n)">
+          <spirit-form-card
+            :form="n"
+            style="height: 100%" />
+        </div>
+        <div class="card--box">
+          <base-widget
+            :ability="n"
+            style="height: 100%" />
+        </div>
+      </div>
+    </span>
   </div>
 </template>
 

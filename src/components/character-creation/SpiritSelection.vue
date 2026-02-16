@@ -4,33 +4,87 @@
       <display-tooltip-text :string="creationText" />
       <br />
       <br />
-      <v-layout justify-center
-        ><v-btn large tile color="success" @click="$emit('chose-spirit')" :disabled="!character.HasSpirit">
+      <v-layout justify-center>
+        <v-btn
+          large
+          tile
+          color="success"
+          @click="$emit('chose-spirit')"
+          :disabled="!character.HasSpirit">
           <span v-if="!character.HasSpirit">CHOOSE A SPIRIT TYPE</span>
           <span v-else>CHOOSE {{ character.Element }}</span>
-        </v-btn></v-layout
-      >
+        </v-btn>
+      </v-layout>
     </div>
     <div>
-      <v-row
-        ><v-col cols="3" class="element-box">
-          <v-btn class="earth-button" large tile :disabled="character.Element == 'Earth'" @click="setSpirit('Earth')"
-            ><img class="image--icon-size image--left" :src="earthSymbol" />EARTH SPIRIT<img class="image--icon-size image--right" :src="earthSymbol"
-          /></v-btn> </v-col
-        ><v-col cols="3" class="element-box">
-          <v-btn class="flame-button" large tile :disabled="character.Element == 'Flame'" @click="setSpirit('Flame')"
-            ><img class="image--icon-size image--left" :src="flameSymbol" />FLAME SPIRIT<img class="image--icon-size image--right" :src="flameSymbol"
-          /></v-btn> </v-col
-        ><v-col cols="3" class="element-box">
-          <v-btn class="water-button" large tile :disabled="character.Element == 'Water'" @click="setSpirit('Water')"
-            ><img class="image--icon-size image--left" :src="waterSymbol" />WATER SPIRIT<img class="image--icon-size image--right" :src="waterSymbol"
-          /></v-btn> </v-col
-        ><v-col cols="3" class="element-box">
-          <v-btn class="wind-button" large tile :disabled="character.Element == 'Wind'" @click="setSpirit('Wind')"
-            ><img class="image--icon-size image--left" :src="windSymbol" />WIND SPIRIT<img class="image--icon-size image--right" :src="windSymbol"
-          /></v-btn> </v-col
-      ></v-row></div
-  ></span>
+      <v-row>
+        <v-col
+          cols="3"
+          class="element-box">
+          <v-btn
+            class="earth-button"
+            large
+            tile
+            :disabled="character.Element == 'Earth'"
+            @click="setSpirit('Earth')">
+            <img
+              class="image--icon-size image--left"
+              :src="earthSymbol" />EARTH SPIRIT<img
+              class="image--icon-size image--right"
+              :src="earthSymbol" />
+          </v-btn>
+        </v-col>
+        <v-col
+          cols="3"
+          class="element-box">
+          <v-btn
+            class="flame-button"
+            large
+            tile
+            :disabled="character.Element == 'Flame'"
+            @click="setSpirit('Flame')">
+            <img
+              class="image--icon-size image--left"
+              :src="flameSymbol" />FLAME SPIRIT<img
+              class="image--icon-size image--right"
+              :src="flameSymbol" />
+          </v-btn>
+        </v-col>
+        <v-col
+          cols="3"
+          class="element-box">
+          <v-btn
+            class="water-button"
+            large
+            tile
+            :disabled="character.Element == 'Water'"
+            @click="setSpirit('Water')">
+            <img
+              class="image--icon-size image--left"
+              :src="waterSymbol" />WATER SPIRIT<img
+              class="image--icon-size image--right"
+              :src="waterSymbol" />
+          </v-btn>
+        </v-col>
+        <v-col
+          cols="3"
+          class="element-box">
+          <v-btn
+            class="wind-button"
+            large
+            tile
+            :disabled="character.Element == 'Wind'"
+            @click="setSpirit('Wind')">
+            <img
+              class="image--icon-size image--left"
+              :src="windSymbol" />WIND SPIRIT<img
+              class="image--icon-size image--right"
+              :src="windSymbol" />
+          </v-btn>
+        </v-col>
+      </v-row>
+    </div>
+  </span>
 </template>
 <script>
 import Vue from 'vue'

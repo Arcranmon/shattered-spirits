@@ -2,7 +2,7 @@ declare interface IBaseData {
   name: string
   category?: string
   table?: Array<string>
-  desc: string
+  desc?: string
   effect: string
   keywords?: Array<string>
   special?: string
@@ -23,9 +23,8 @@ declare interface IArchetypeData extends IBaseData {
 }
 
 declare interface IAbilityPackageData extends IBaseData {
-  abilities: IAbilityData[]
-  prereqs: string
-  cost: string
+  abilities?: IAbilityData[]
+  cost?: string
 }
 
 declare interface IBonusesData {
@@ -80,34 +79,30 @@ declare interface ICharacterData extends ICombatantData {
 
 declare interface ICombatantData {
   stamina: number
-  soak: number
   stun: number
   move: number
   momentum: number
   statuses?: IStatusEffect[]
-  vigor: number
 }
 
 declare interface IChartData {
   roll: Array<string>
   damage?: Array<number>
   stun?: Array<number>
-  status: Array<string>
-  damage_type: string
-  keywords: Array<string>
-  material: string
-  negate: Array<number>
+  status?: Array<string>
+  damage_type?: string
+  keywords?: Array<string>
+  material?: string
+  negate?: Array<number>
   defend?: boolean
 }
 
 declare interface IDefenseData {
-  stun: number
-  soak?: number
-  block?: number
+  stun?: number
   reflex?: number
   grit?: number
   focus?: number
-  hardness?: number
+  block?: number
   immunities?: string[]
   resistances?: string[]
   weaknesses?: string[]
@@ -149,28 +144,21 @@ declare interface INpcCombatData extends ICombatantData {
 }
 
 declare interface INpcData {
-  abilities?: Array<string>
-  armor: string
+  abilities?: Array<IAbilityData>
+  equipment?: Array<string>
   move: number
-  jump: number
   category?: string
   desc: string
-  durability?: number
   stamina: number
   block?: number
-  max_block: number
-  momentum_gain?: number
+  stun: number
   name: string
   npc_type: string
-  pattern: string
   role: string
   size: string
-  special?: string
   defenses: IDefenseData
-  stances?: Array<string>
-  subtype: string
+  stances?: Array<IStanceData>
   traits?: Array<string>
-  weapons: Array<string>
 }
 
 declare interface IAbilityData extends IBaseData {
@@ -190,7 +178,7 @@ declare interface IAbilityData extends IBaseData {
   target?: string
   material?: string
   chart?: IChartData
-  bonuses: IBonusesData
+  bonuses?: IBonusesData
 }
 
 declare interface IManeuverData extends IAbilityData {
@@ -259,17 +247,13 @@ declare interface ISubtypeData extends IBaseData {
 }
 
 declare interface IStanceData extends IAbilityPackageData {
-  category: string
   respite?: IRespiteData
   defenses?: IDefenseData
-  traits: string[]
-  momentum: number
-  block_clear: number
+  momentum?: string
   speed: number
   block: number
   movement: number
   guard: number
-  display_type: string
 }
 
 declare interface IStatusEffect {

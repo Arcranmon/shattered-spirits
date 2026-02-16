@@ -1,26 +1,78 @@
 <template>
   <div>
-    <div class="chart--wrapper" inline>
-      <v-row no-gutters class="chart--row">
-        <v-col class="chart--head" cols="2" v-if="chart.HasRoll"><b>Roll</b></v-col>
-        <v-col class="chart--head chart--head-right" v-if="chart.HasStun" v-bind:cols="stunWidth"><b>Stun</b></v-col
-        ><v-col class="chart--head chart--head-right" v-if="chart.HasDamage" v-bind:cols="damageWidth"><b>Damage</b></v-col
-        ><v-col class="chart--head chart--head-right" v-bind:cols="effectWidth"><b>Effect</b></v-col>
-        <v-col class="chart--head chart--head-right" v-if="chart.HasRoll && !chart.IsDefend" v-bind:cols="negateWidth"><b>Negate</b></v-col>
+    <div
+      class="chart--wrapper"
+      inline>
+      <v-row
+        no-gutters
+        class="chart--row">
+        <v-col
+          class="chart--head"
+          cols="2"
+          v-if="chart.HasRoll">
+          <b>Roll</b>
+        </v-col>
+        <v-col
+          class="chart--head chart--head-right"
+          v-if="chart.HasStun"
+          v-bind:cols="stunWidth">
+          <b>Stun</b>
+        </v-col>
+        <v-col
+          class="chart--head chart--head-right"
+          v-if="chart.HasDamage"
+          v-bind:cols="damageWidth">
+          <b>Damage</b>
+        </v-col>
+        <v-col
+          class="chart--head chart--head-right"
+          v-bind:cols="effectWidth">
+          <b>Effect</b>
+        </v-col>
+        <v-col
+          class="chart--head chart--head-right"
+          v-if="chart.HasRoll && !chart.IsDefend"
+          v-bind:cols="negateWidth">
+          <b>Negate</b>
+        </v-col>
       </v-row>
       <div v-for="(n, index) in 4">
-        <v-row align="stretch" no-gutters class="chart--row">
-          <v-col class="chart--cols justify-center align-center" v-if="chart.HasRoll" v-bind:class="getRank(index)" cols="2">{{ chart.Roll[index] }} </v-col>
-          <v-col class="chart--cols" v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '', getRank(index)]" v-if="chart.HasStun" v-cols="stunWidth"
+        <v-row
+          align="stretch"
+          no-gutters
+          class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            v-if="chart.HasRoll"
+            v-bind:class="getRank(index)"
+            cols="2"
+            >{{ chart.Roll[index] }}
+          </v-col>
+          <v-col
+            class="chart--cols"
+            v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '', getRank(index)]"
+            v-if="chart.HasStun"
+            v-cols="stunWidth"
             >{{ chart.Stun(index) }}
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="getRank(index)" v-if="chart.HasDamage" v-bind:cols="damageWidth"
+          <v-col
+            class="chart--cols chart--cols-right"
+            v-bind:class="getRank(index)"
+            v-if="chart.HasDamage"
+            v-bind:cols="damageWidth"
             >{{ chart.Damage(index) }}
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-bind:class="getRank(index)" v-bind:cols="effectWidth"
-            ><display-tooltip-text :string="chart.Status(index)" />
+          <v-col
+            class="chart--cols chart--cols-right"
+            v-bind:class="getRank(index)"
+            v-bind:cols="effectWidth">
+            <display-tooltip-text :string="chart.Status(index)" />
           </v-col>
-          <v-col class="chart--cols chart--cols-right" v-if="chart.HasRoll && !chart.IsDefend" v-bind:class="getRank(index)" v-bind:cols="negateWidth"
+          <v-col
+            class="chart--cols chart--cols-right"
+            v-if="chart.HasRoll && !chart.IsDefend"
+            v-bind:class="getRank(index)"
+            v-bind:cols="negateWidth"
             >{{ chart.Negate(index) }}
           </v-col>
         </v-row>

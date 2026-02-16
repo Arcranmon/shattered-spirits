@@ -94,7 +94,7 @@
     "name": "Iron Throwing Knives",
     "category": "Throwing",
     "desc": "Small blades meant for sudden, unexpected throws. They're unsuited for melee combat, but can be thrown with a high degree of accuracy.",
-    "keywords": ["Martial", "Metal", "Quickdraw", "_Stack_ (4)"],
+    "keywords": ["Metal", "Quickdraw", "_Stack_ (4)"],
     "load": 1,
     "hands": 1,
     "durability": 1,
@@ -104,8 +104,8 @@
         "category": "Light",
         "type": "Attack",
         "cost": "1 _Momentum_",
-        "keywords": ["Stab"],
-        "range": "_Close_ (_Thrown_)",
+        "keywords": ["Stab", "Martial"],
+        "range": "1 (_Thrown_)",
         "effect": "Attack a Target within Range.",
         "chart": {
           "damage": [0, 1, 2, 4],
@@ -115,7 +115,7 @@
           {
             "name": "Precise Fling",
             "cost": "1 _Momentum_",
-            "effect": "On a _Graze_+ deal +1 _Bonus Damage_. If the Target takes any Damage, inflict _Impaired_ [_Grit_]. You must select this Enhance prior to making the Attack Roll."
+            "effect": "Make this Attack at _Advantage_. On a _Graze_+, deal +1 _Bonus Damage_."
           }
         ]
       }
@@ -150,14 +150,14 @@
   },
   {
     "name": "Iron Longsword",
-    "keywords": ["Metal", "Martial"],
+    "keywords": ["Metal"],
     "category": "Blade",
     "desc": "A sword that grants the perfect flexibility between damage and speed. It is a favorite of travelers due to its versatility in combat.",
     "rarity": "Uncommon",
     "abilities": [
       {
         "name": "Strike",
-        "keywords": ["Slash"],
+        "keywords": ["Slash", "Martial"],
         "category": "Balanced",
         "type": "Attack",
         "cost": "2 _Momentum_",
@@ -170,20 +170,15 @@
             "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_1/2/2/3_ Damage.  You must select this Enhance prior to making the Attack Roll. You may select this and another _Enhance_."
           },
           {
-            "name": "Slashing Strike",
-            "cost": "1 _Momentum_",
-            "effect": "If the Target takes any Damage from this Attack, add _Bleeding_ 1. You must select this Enhance prior to making the Attack Roll."
-          },
-          {
             "name": "Thrusting Strike",
             "cost": "2 _Momentum_",
             "effect": "Replace [_Slash_] with [_Stab_] and add [_Pierce_ 2]. Deal +_0/2/3/4_ Damage. You must select this Enhance prior to making the Attack Roll."
           }
         ],
         "chart": {
-          "damage": [0, 2, 4, 6],
+          "damage": [0, 2, 4, 5],
           "roll": ["2-3", "4-5", "6-9", "10-12"],
-          "status": ["None", "None", "None", "None"]
+          "status": ["None", "None", "None", "_Bleeding_ 1 [_Grit_]"]
         },
         "analysis_notes": {
           "fudge": -0.222,

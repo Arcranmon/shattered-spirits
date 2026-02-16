@@ -6,12 +6,12 @@
     "repeat": "If an Airborne creature would gain Airborne they instead extend the Airborne duration by a _Phase_.",
     "remove": "Creatures are Airborne until the end of the next _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_ I. Do not remove _Airborne_ until the creature's _Forced Movement_ is complete.",
     "special": "_Flying_ creatures may not become _Airborne_.",
-    "type": "Status Effect"
+    "type": "Hide"
   },
   {
     "name": "Entangled",
     "desc": "A creature that is entangled in some sort of material, whether that be vines, spider silk, or wires.",
-    "effect": "The effect of Entangled depends on the current amount the creature has:\n* 1: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* 2: As Rank 1, but the creature is also _Slowed_.\n* 3: The creature is _Restrained_.\n\n_Small_- creatures treat their Entangled value as twice as high. Creatures larger than _Medium_ treat it as 1 lower per size about _Medium_. This is treated as a _Source_ that the Target is _Wearing_.",
+    "effect": "The effect of Entangled depends on the current amount the creature has relative to their _Size_:\n* [Size-1]: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* [Size]: As Rank 1, but the creature is also _Slowed_.\n* [Size+1]: The creature is _Restrained_.",
     "remove": "Creatures may clear Entangled by either _Recovering_ and making a _Grit_/_Reflex_ roll [_Negate_ 5] to reduce their Entangled by 1. Alternatively, a creature clears 1 Entangled for every 4 _Slash_ damage they take. A creature may choose to target just the Web when attacking.",
     "type": "Status Effect"
   },
@@ -26,15 +26,14 @@
       "<ins>_Armored_:</ins>  If an Alight creature would gain _Armored_ they instead remove Alight."
     ],
     "recover": "When a creature _Recovers_ they may end their turn _Prone_ to remove Alight.",
-    "type": "Elemental Affliction"
+    "type": "Hide"
   },
   {
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleeding they take Damage at the end of each _Phase_ equal to their Bleeding value. This Damage may not be reduced by _Block_.",
-    "special": "A creature may not gain _Stamina_ while they have Bleeding. Instead, every point of _Stamina_ healed removes Bleeding 1.",
+    "effect": "While a creature has Bleeding they lose _Stamina_ equal to their Bleeding value at the end of their _Turn_ and any _Turn_ they take a _Reaction_.",
     "repeat": "If a Bleeding creatures gains Bleeding, increase the value by 1.",
-    "remove": "Bleeding is only removed by effects that explicitly remove it.",
+    "remove": "When a creature _Recovers_ they may _Negate_ with _Grit_ and reduce their _Bleed_ by half the result.",
     "type": "Affliction"
   },
   {
@@ -44,7 +43,7 @@
     "recover": "When a creature _Recovers_ they may remove Blinded.",
     "repeat": "If a Blinded creature would gain Blinded they instead extend the Blinded duration by 1 _Phase_.",
     "remove": "Creatures are Blinded until the end of the next _Phase_.",
-    "type": "Status Effect"
+    "type": "Hide"
   },
   {
     "name": "Joyful",
@@ -52,7 +51,7 @@
     "effect": "While Joyful a creature gains +1 _Reflex_. While _Engaged_ with an allied creature a creature may remove Joyful at any time for 2 _Momentum_ or 1 _Movement_.",
     "repeat": "If a Joyful creature would gain Joyful they instead gain 1 _Momentum_.",
     "reacts": ["<ins>_Anguished_:</ins> If a creature is _Anguished_ and would gain Joyful, they instead remove _Anguished_."],
-    "type": "Mental Affliction"
+    "type": "Hide"
   },
   {
     "name": "Courageous",
@@ -60,7 +59,7 @@
     "effect": "While Joyful a creature gains +1 _Grit_. While _Engaged_ with a hostile creature a creature may remove Courageous at any time to clear 5 _Block_ or to _Recover_.",
     "repeat": "If a Courageous creature would gain Courageous they instead gain 1 _Momentum_.",
     "reacts": ["<ins>_Frightened_:</ins> If a creature is _Frightened_ and would gain Courageous, they instead remove _Frightened_."],
-    "type": "Mental Affliction"
+    "type": "Hide"
   },
   {
     "name": "Calm",
@@ -68,7 +67,7 @@
     "effect": "While Calm a creature gains +1 _Focus_. If a creature does not make an Attack on their _Turn_ they may remove _Calm_ to gain 3 _Momentum_.",
     "repeat": "If a Calm creature would gain Calm they gain 1 _Momentum_.",
     "reacts": ["<ins>_Enraged_:</ins> If a creature is _Enraged_ and would gain Calm, they instead remove _Enraged_."],
-    "type": "Mental Affliction"
+    "type": "Hide"
   },
   {
     "name": "Disarm",
@@ -82,7 +81,16 @@
     "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
     "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. If a creature has 0 _Stamina_ any remaining Dazed is instead applied as _Block_.",
     "special": "Dazed is applied before a creature may Negate any other effects.",
-    "type": "Instant Effect"
+    "type": "Hide"
+  },
+  {
+    "name": "Taunted",
+    "desc": "An affliction caused when a creature is single-mindedly focused on a foe.",
+    "effect": "While a player character is Taunted all Attacks that do not target the creature that inflicted Taunted are made at _Disadvantage_. When any other creature is Taunted, they ignore their normal targeting for Attacks and instead may only target the creature that inflicted Taunt. Additionally, in either case, any _Movement_ that does not bring you closer to the creature that inflicted Taunted has its cost increased by 1.",
+    "repeat": "If a Taunted creature would gain Taunted use the new Taunted inflictor as the target of this Status.",
+    "remove": "If the creature that inflicted Taunted targets another creature with an Attack, you may immediately _Negate_ [_Focus_ 7] to clear Taunted.",
+    "recover": "When a creature _Recovers_ they may remove Taunted.",
+    "type": "Status Effect"
   },
   {
     "name": "Engaged",
@@ -95,26 +103,35 @@
     "name": "Exposed",
     "desc": "An affliction caused when an opening in a creature's defenses has been forced open.",
     "effect": "The next Attack against an Exposed creature has _Advantage_. After being attacked remove Exposed.",
-    "repeat": "If an Exposed creature would gain Exposed they instead gain 1 _Block_.",
+    "repeat": "If an Exposed creature would gain Exposed they instead gain 1 _Stun_.",
     "recover": "When a creature _Recovers_ they may remove Exposed.",
     "type": "Status Effect"
   },
   {
-    "name": "Defenseing",
-    "desc": "A status gained while a creature focuses entirely on block.",
-    "effect": "A creature may reduce their Defenseing value to Discount a _Defensive_ _Reaction_ by the same amount.",
-    "remove": "Creatures lose all Defenseing if they gain _Blockned_ and automatically lose 1 Defenseing at the end of each _Phase_.",
-    "type": "Hide"
-  },
-  {
     "name": "Grabbed",
-    "effect": "Grabbed is a condition that always impacts two creatures; the one that initiated the effect, called the Grabber, and the one that is Grabbed:\n* The Grabber may expend additional _Movement_ to move the Grabbed creature with them.\n* The Grabber may Negate _Forced Movement_ effects for the Grabbed creature.\n* The Grabbed creature is _Immobile_ if the Grabber is the same size or larger; otherwise, the Grabbed creature is _Hobbled_ and always brings the Grabber with them, or simply moves with the Grabber if they are at least two Sizes larger. A creature may only be Grabbing one creature at a time.",
-    "remove": "The Grabber may end Grabbed at any time. A Grabbed creature is freed if they or the creature grabbing them ever leaves the _Reach_ of the grabbing effect. Additionally, at the start of their _Turn_, a Grabbed creature may pay 1 _Momentum_/_Movement_ to reroll their _Negate_ against this Grabbed, ending the effect on a success.",
-    "repeat": "If a Grabbed creature would gain Grabbed they instead gain _Prone_.",
-    "recover": "When a creature _Recovers_ they may attempt to remove _Grabbed_ as above, but have _Advantage_ to _Negate_.",
-    "type": "Status Effect"
+    "desc": "A status caused when creatures are locked in close combat and clinging to one another.",
+    "effect": "When you inflict Grabbed, check the size of both the attacker and defender. If the defender is larger, inflict _Ridden_. If the defender is the same size or smaller, inflict _Grappled_.",
+    "type": "Instant Effect"
   },
   { "name": "Grab", "see": "Grabbed" },
+  {
+    "name": "Ridden",
+    "desc": "A creature is clinging to you, traveling with you as an unwanted passenger.",
+    "effect": "While you are Ridden, the creature that inflicted it on you is always _Engaged_ with you and moves with you. Additionally, you have _Disadvantage_ to attack or _Parry_ any creature riding you and cannot _Dodge_ their Attacks, but creatures riding you may not react to _Openings_ created by you spending _Movement_. Finally, depending on the total Size of creatures riding you, take the following penalties:\n* If the total Size riding you is greater than your Size, you are _Immobilized_.\n* If the total Size riding you is your Size - 1 or your Size, you are instead _Hobbled_.",
+    "repeat": "If a Ridden creature would gain Ridden, the other creature also begins to ride them. If inflicted from a creature already riding you, instead gain _Vulnerable_ 1.",
+    "remove": "On their Turn, creatures may spend 1 _Momentum_ to make a _Grit_ roll opposed by their rider's _Grit_/_Reflex_. If you win, remove Ridden. A creature may do this once per Turn per rider.",
+    "recover": "When a creature _Recovers_ they may attempt to remove Ridden at no cost, and have _Advantage_ on the opposed _Negate_.",
+    "type": "Status Effect"
+  },
+  {
+    "name": "Grappled",
+    "desc": "A creature is grasping you, limiting your mobility greatly.",
+    "effect": "While you are Grappled you are _Immobilized_, the creature that inflicted it on you is always _Engaged_ with you, and you Move with them. When a creature Grappling you spends _Movement_ you may not react to the _Opening_ it creates. Additionally, your _Defense Rolls_ against them have _Disadvantage_. Finally, if you are within one Size of the grappler, they are _Hobbled_.",
+    "repeat": "If a Grappled creature would gain Grappled, the other creature also begins to grapple them. If inflicted from a creature already grappling you, they may instead inflict _Steal_ or _Prone_.",
+    "remove": "On their Turn, creatures may spend 1 _Momentum_ to make a _Grit_/_Reflex_ roll opposed by their grappler's _Grit_. If you win, remove Grappled. A creature may do this once per Turn per grappler. Alternatively, if a creature is the same size as their grappler, they can make an opposed _Grit_ role to instead become the grappler.",
+    "recover": "When a creature _Recovers_ they may attempt to remove Grappled at no cost, and have _Advantage_ on the opposed _Negate_.",
+    "type": "Status Effect"
+  },
   {
     "name": "Hobbled",
     "desc": "An affliction caused when a creature's movement is impaired somehow.",
@@ -126,29 +143,27 @@
     "name": "Impaired",
     "desc": "An affliction caused when a creature's ability to attack is limited.",
     "effect": "The next Attack by an Impaired creature has _Disadvantage_. After this impacts an Attack remove Impaired.",
-    "repeat": "If an Impaired creature would gain Impaired they instead gain 1 _Block_.",
+    "repeat": "If an Impaired creature would gain Impaired they instead gain 1 _Stun_.",
     "recover": "When a creature _Recovers_ they may remove Impaired.",
     "type": "Affliction"
   },
   {
-    "name": "Immobile",
-    "desc": "",
-    "effect": "While Immobile a creature may not spend _Movement_ except to remove a _Status Effect_ causing this condition.",
+    "name": "Immobilized",
+    "desc": "Your movement is restricted to the degree that you may not move.",
+    "effect": "While Immobilized a creature may not spend _Movement_ except to remove a _Status Effect_ causing this condition.",
     "type": "Status Effect"
   },
   {
     "name": "Poisoned",
     "desc": "An affliction caused by toxins ravaging you from the inside out.",
-    "effect": "While a creature is Poisoned they gain_Block_ [_AP_] equal to their Poisoned value minus their _Grit_ at the end of every _Phase_.",
-    "special": "A creature may not gain _Stamina_ while they have Poisoned. Instead, every point of _Stamina_ healed removes Poisoned 1.",
-    "repeat": "If a Poisoned creatures gains Poisoned, increase the value by 1.",
+    "effect": "While a creature is Poisoned they take _Damage_ equal to their Poisoned value at the start of their _Turn_. A creature may reduce this Damage by their _Grit_, instead taking that portion as _Stun_.",
     "remove": "Poisoned is only removed by effects that explicitly remove it.",
     "type": "Affliction"
   },
   {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
-    "effect": "A Prone creature is _Immobile_. While Prone, Melee attacks against the target gain Advantage, but Medium and Long Range attacks have Disadvantage.",
+    "effect": "A Prone creature is _Immobilized_. While Prone, Melee attacks against the target gain Advantage, but Medium and Long Range attacks have Disadvantage.",
     "remove": "A creature may expend one Movement to end Prone. This creates an _Opening_.",
     "recover": "When a creature _Recovers_ they may expend one Movement to remove _Prone_ without creating an _Opening_.",
     "type": "Status Effect"
@@ -157,21 +172,20 @@
     "name": "Pull",
     "desc": "You drag a foe closer to you or.",
     "effect": "When you inflict Pull a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Pull 1:  Place the Target at your _Position_ if they are within your _Arena_, or place them in any _Position_ within their _Arena_ if they are not in your _Arena_.\n\t* Pull 2:  Place them in any _Position_ in an _Arena_ adjacent to them that places them closer to you. Inflict _Block_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Pull X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_. You may repeat this option.",
-    "type": "Instant Effect"
+    "type": "Hide"
   },
   { "name": "Pulled", "see": "Pull" },
   {
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
-    "effect": "When you inflict Push, choose one: \n* Push:  Force the target to stop _Occupying_ their current _Terrain_ and (if you wish) leave their current _Engagement_ and _Field_ effect. You may force them to enter a new _Engagement_ of your choice.\n* Push: Trigger the _Collide_ effect of _Terrain_ in their _Engagement_.",
-    "special": "If you inflict Forceful Push, either resolve two of the above options or place the Target in an adjacent _Arena_ you are not in. Inflict 2 _Block_ for each increased _Movement_ cost to enter said _Arena_.",
-    "type": "Status Effect"
+    "effect": "When you inflict Push, force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you. If it was a Forceful Push, you may instead move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you",
+    "type": "Instant Effect"
   },
   {
     "name": "Slide",
     "desc": "You adroitly move a foe about, placing them where you wish.",
     "effect": "When you inflict Slide a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Slide 1: You may force the target to stop _Occupying_ their current _Terrain_ and/or place the Target in any other _Engagement_ within their _Arena_.\n\t* Slide 2: Place them in any _Arena_ adjacent to their current one. Inflict _Block_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Slide X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
-    "type": "Status Effect"
+    "type": "Hide"
   },
   { "name": "Forceful Push", "see": "Push" },
   { "name": "Pushed", "see": "Push" },
@@ -182,7 +196,7 @@
     "effect": "While a creature has Reeling increase the cost of all _Defensive_ _Reactions_ by 1.",
     "repeat": "If a Reeling creature would gain Reeling they instead gain 1 _Block_.",
     "recover": "When a creature _Recovers_ they may remove Reeling.",
-    "type": "Status Effect"
+    "type": "Hide"
   },
   {
     "name": "Restrained",
@@ -191,38 +205,23 @@
     "remove": "How to end Restrained is typically specified in the ability that inflicts it.",
     "repeat": "If a Restrained creature would gain Restrained they remain Restrained, but must fulfill all Restrained removal constraints to end the condition.",
     "recover": "When a creature _Recovers_ they may remove Restrained if no other removal method is listed.",
-    "type": "Status Effect"
-  },
-  {
-    "name": "Armored",
-    "desc": "An elemental affliction caused by being drenched in water.",
-    "effect": "While a creature has any Armored, they have _Resistance_ II (_Fire_) and _Weakness_ I (_Cold_, _Lightning_).",
-    "reacts": [
-      "<ins>_Alight_:</ins> If a Armored creature would gain _Alight_, instead remove Armored.",
-      "<ins>_Frozen_:</ins> If a Armored creature gains _Frozen_ remove Armored, then deal [_Cold_] Damage equal to half the _Negate_ DC.",
-      "<ins>_Shocked_:</ins> If a Armored creature gains _Shocked_ remove Armored, then deal [_Lighting_] Damage equal to half the _Negate_ DC."
-    ],
-    "remove": "After the _Weakness_/_Resistance_ from this _Status_ applies, remove _Armored_.",
-    "type": "Hide"
-  },
-  {
-    "name": "Blockned",
-    "desc": "An affliction caused when a creature is knocked off-balance and is temporarily dazed.",
-    "effect": "When a creature gains _Blockned_ they immediately lose half their _Momentum_ and _Movement_ (including any that was _Prepared_). While Blockned, a creature:\n* Has _Disadvantage_ when _Negating_.\n* May not use any _Gambits_.\n* All Attacks against them are one step more effective.",
-    "remove": "Remove Blockned at the end of the _Round_ it was inflicted, or by effects that specifically remove it.",
     "type": "Hide"
   },
   {
     "name": "Studied",
     "desc": "An affliction caused when one creature gains knowledge on another.",
-    "effect": "Creatures may remove a hostile creature's _Studied_ for one of the following effects:\n* Clear _Studied_ at any time to learn the target's current and maximum _Stamina_ and _Block_ as well as their _Defenses_ and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Block Roll you may clear Studied to increase a single die roll by 1, treating it as that number for the purpose of _Gambits_ and other effects.",
+    "effect": "Creatures may remove a hostile creature's _Studied_ for one of the following effects:\n* Clear _Studied_ at any time to learn the target's current and maximum _Stamina_ and _Block_, their _Defenses_, and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Defend Roll targeting or in response to the Target you may clear Studied to increase the result of a single die roll by 1.",
     "recover": "When a creature _Recovers_ they may remove _Studied_.",
     "type": "Affliction"
   },
   {
     "name": "Sundered",
-    "effect": "When a creature gains _Sundered_ one piece of their _Equipment_ chosen by the Attacker loses _Durability_ equal to the Sundered value. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Block_ 2 for each remaining Sundered.",
+    "effect": "When a creature gains _Sundered_ a piece of _Worn_ or _Wielded_ _Equipment_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Vulnerable_ 1.",
     "type": "Instant Effect"
+  },
+  {
+    "name": "Sunder",
+    "see": "Sundered"
   },
   {
     "name": "Suppressed",
@@ -243,9 +242,8 @@
   {
     "name": "Vulnerable",
     "desc": "A status that represents an erasure of a character's ability to successfully defend themselves.",
-    "effect": "For each instance of Vulnerable a creature has attacks against them gain an equivalent amount of _Pierce_.",
+    "effect": "Creatures take additional Damage equal to their _Vulnerable_ value.",
     "recover": "When a creature _Recovers_ they may remove 2 Vulnerable.",
-    "remove": "When a creature would clear _Block_ they may remove Vulnerable in place of 2 _Block_, as many times as they wish.",
     "type": "Affliction"
   },
   {

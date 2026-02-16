@@ -21,6 +21,7 @@ class Base {
     this.name_ = name
     this.special_ = ''
     this.type_ = ''
+    this.prereqs_ = ''
   }
 
   // ==========================================================
@@ -78,6 +79,12 @@ class Base {
   public get SpecialHeader() {
     return '**Special:** ' + this.special_
   }
+  public get HasPrereqs() {
+    return this.prereqs_.length > 0
+  }
+  public get PrereqsHeader() {
+    return '**Prerequisites:** ' + this.prereqs_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -98,6 +105,7 @@ class Base {
     this.special_ = data.special || ''
     this.tags_ = data.tags || []
     this.type_ = data.type || ''
+    this.prereqs_ = data.prereqs || ''
   }
 }
 export default Base

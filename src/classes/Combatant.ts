@@ -4,8 +4,7 @@ const interpolate = require('color-interpolate')
 
 class Combatant {
   private stamina_: number
-  private block_: number
-  private soak_: number
+  private stun_: number
   private move_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
@@ -19,8 +18,6 @@ class Combatant {
   public constructor() {
     this.move_ = 0
     this.stamina_ = 0
-    this.block_ = 0
-    this.soak_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
   }
@@ -43,7 +40,7 @@ class Combatant {
     return 0
   }
 
-  get MaxBlock() {
+  get MaxStun() {
     return 10
   }
 
@@ -156,13 +153,12 @@ class Combatant {
   public ApplyRespite() {
     this.move_ = this.MaxMovement
     //this.momentum_ += this.MomentumGain
-    this.ClearBlockChunk(this.BlockClear)
+    //this.ClearBlockChunk(this.BlockClear)
   }
 
   public ResetDefault() {
     this.move_ = this.MaxMovement
     this.stamina_ = this.MaxStamina
-    this.block_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
     this.statuses_ = []
@@ -231,23 +227,11 @@ class Combatant {
   }
 
   get SoakBlockRatio() {
-    return (this.MaxSoak / (this.MaxBlock + this.MaxSoak)) * 100
-  }
-
-  get Soak() {
-    return this.soak_
+    return (this.MaxSoak / (this.MaxStun + this.MaxSoak)) * 100
   }
 
   get Stun() {
-    return this.block_
-  }
-
-  set Stun(stun: number) {
-    if (this.soak_ < this.MaxSoak) {
-      this.soak_ += 1
-    } else if (stun > this.MaxBlock) this.block_ = this.MaxBlock
-    else if (stun < 0) this.block_ = 0
-    else this.block_ = stun
+    return this.stun_
   }
 
   set Stamina(Stamina: number) {
@@ -266,16 +250,12 @@ class Combatant {
   }
 
   get BlockPercent() {
-    return (this.Stun / this.MaxBlock) * 100
+    return (this.Stun / this.MaxStun) * 100
   }
 
   get BlockColor() {
     let colormap = interpolate(['#FFDE00', '#ff9500', '#FF0000'])
     return colormap(this.BlockPercent / 100)
-  }
-
-  get SoakPercent() {
-    return (this.Soak / this.MaxSoak) * 100
   }
 
   get Momentum() {
@@ -287,33 +267,6 @@ class Combatant {
     this.momentum_ = input
   }
 
-  AddBlock() {
-    if (this.soak_ < this.MaxSoak) {
-      this.soak_ += 1
-    } else if (this.block_ == this.MaxBlock) return
-    else this.block_ += 1
-  }
-
-  AddApBlock() {
-    if (this.block_ == this.MaxBlock) return
-    else this.block_ += 1
-  }
-
-  ClearBlock() {
-    if (this.block_ == 0 && this.soak_ > 0) {
-      this.soak_ -= 1
-    } else if (this.block_ > 0) this.block_ -= 1
-  }
-
-  private ClearBlockChunk(toClear: number) {
-    var diff = toClear - this.block_
-    this.block_ = Math.max(0, this.block_ - toClear)
-    toClear = diff
-    if (toClear > 0) {
-      this.soak_ = Math.max(0, this.soak_ - toClear)
-    }
-  }
-
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -321,11 +274,9 @@ class Combatant {
     return {
       stamina: combatant.stamina_,
       move: combatant.move_,
-      stun: combatant.block_,
-      soak: combatant.soak_,
+      stun: combatant.stun_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
-      vigor: combatant.vigor_,
     }
   }
 
@@ -340,9 +291,7 @@ class Combatant {
     this.stamina_ = data.stamina
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses || []
-    this.block_ = data.stun
-    this.soak_ = data.soak
-    this.vigor_ = data.vigor
+    this.stun_ = data.stun
   }
 }
 export default Combatant

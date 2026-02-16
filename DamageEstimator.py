@@ -7,7 +7,10 @@ import OrphanFinder
 # Momentum is 'worth' this much
 momentum_value = 2
 
+# In theory, Advantage is 'worth' ~1/2 Momentum just in terms of the increased likelihood of a Gambit. Actual worth depends heavily on the applicable attack.
+
 status_multipliers = {
+    "Bleeding": 1.5
 }
 
 instant_statuses = ["Defending"]
@@ -19,35 +22,48 @@ keyword_modifiers = {
 
 attack_range_multiplier = {
     "Melee": 1,
-    "Close": 0.9,
-    "Reach": 0.85,
-    "Short": 0.8,
-    "Long": 0.7
+    "0": 0.95,
+    "1": 0.9,
+    "2": 0.85,
+    "3": 0.8
 }
 
 ATTACK = 1
 TECHNIQUE = 2
+AT_LEAST_ODDS = {2:100,
+3:97.22222222222,
+4:91.66666666665999,
+5:83.33333333332999,
+6:72.22222222222999,
+7:58.33333333332999,
+8:41.66666666662999,
+9:27.777777777729995,
+10:16.666666666629993,
+11:8.333333333299993,
+12:2.7777777777399937,}
+STANDARD_NEGATE = [4, 6, 7, 9]
 
-negate = [2, 3, 4, 5]
+def get_negate_adjustment(index):
+    return (100-AT_LEAST_ODDS[STANDARD_NEGATE[index]])/100
+    
 
 def get_status_magnitude(status):
     if(not status): return 0
-    if '[' in status: return 0
     split_status = status.split(' ')
     if len(split_status) == 1: 
         return status_multipliers[split_status[0].strip()]
     if len(split_status) == 2: 
         return status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
     if len(split_status) == 3: # I'm lazy
-        return status_multipliers[split_status[0].strip() + ' ' + split_status[1].strip()] * int(split_status[2].strip())
+        return status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
 
 def get_status_damage(status_string, index):
     # Split individual statuses out
     status_string = status_string.replace('_', '')
 
-    multiplier = (negate[index]-1)/6
+    multiplier = get_negate_adjustment(index)
     
-    statuses = status_string.split(' ')
+    statuses = status_string.split(', ')
 
     estimated_damage = 0
     no_save_damage = 0
@@ -61,11 +77,7 @@ def get_status_damage(status_string, index):
             status_options = status.split('/')
             estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)
         else:
-            if ' ' in status.strip():
-                split_status = status.split(' ')
-                estimated_damage += get_status_magnitude(split_status[0].strip())
-            else:
-                estimated_damage += get_status_magnitude(status.strip())
+            estimated_damage += get_status_magnitude(status.strip())
 
     return estimated_damage * multiplier + no_save_damage
 
@@ -156,8 +168,6 @@ def estimate_damage(attack, glancing, print_stats):
         else:
             status_chart = attack["chart"]["status"]
         roll_chart = attack["chart"]["roll"]
-        if("negate" in attack):
-            negate = attack["chart"]["negate"]
             
 
     if("analysis_notes" in attack):
@@ -215,6 +225,7 @@ def estimate_damage(attack, glancing, print_stats):
                 roll_map[j-2] = i
 
     # Calculate the damage for each speed.
+    est_damage = [0]*12
     for roll_index in range(10,-1,-1):
         index = roll_map[roll_index]
         damage = damage_chart[index]
@@ -228,6 +239,7 @@ def estimate_damage(attack, glancing, print_stats):
         straight_damage += straight[roll_index]*damage
         advantage_damage += advantage[roll_index]*damage
         disadvantage_damage += disadvantage[roll_index]*damage
+        est_damage[index] = damage
         
 
     if(print_stats):
@@ -238,9 +250,9 @@ def estimate_damage(attack, glancing, print_stats):
             a, b = item.split('-') if '-' in item else [item, item ]         
             a, b = int(a), int(b)
             for num in range(a, b+1):
-                hit_string += colored("  " + str(num) + "  |", colors[index])
+                hit_string += colored("   " + str(num) + "  |", colors[index])
                 pad = "" if num < 10 else " "
-                damage_string += colored("  " + str(damage_chart[index]) + pad + "  |", colors[index])
+                damage_string += colored(" " + "{:.2f}".format(est_damage[index]) + pad + " |", colors[index])
 
         print(hit_string)
         print(damage_string)

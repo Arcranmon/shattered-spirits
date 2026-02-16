@@ -1,6 +1,6 @@
 <template>
-  <span v-if="isMobile"
-    ><v-select
+  <span v-if="isMobile">
+    <v-select
       v-model="selectedCharacter"
       :items="characters"
       item-text="Name"
@@ -10,43 +10,71 @@
       filled
       outlined
       style="margin: 0.5em" />
-    <v-row justify="center" style="display: flex; flex-direction: column">
+    <v-row
+      justify="center"
+      style="display: flex; flex-direction: column">
       <v-col cols="12">
         <v-row class="topbar">
-          <v-col cols="3">
-            <v-btn @click="importPremades" class="button--template button--topbar">
+          <v-col cols="2">
+            <v-btn
+              @click="importPremades"
+              class="button--template button--topbar">
               <span class="btn-content">Import Premades</span>
-            </v-btn> </v-col
-          ><v-col cols="3" class="d-flex" style="flex-direction: column">
-            <v-dialog v-model="characterImportDialog" hide-overlay>
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="2"
+            class="d-flex"
+            style="flex-direction: column">
+            <v-dialog
+              v-model="characterImportDialog"
+              hide-overlay>
               <template v-slot:activator="{}">
-                <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
+                <v-btn
+                  @click="characterImportDialog = true"
+                  class="button--template button--topbar">
+                  <span class="btn-content">Import Character</span>
+                </v-btn>
               </template>
               <v-card>
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
-                  <v-file-input accept=".json" v-model="importFile" />
-                  <v-btn color="button--template" @click="importCharacter()" :disabled="importFile.length == 0">
+                  <v-file-input
+                    accept=".json"
+                    v-model="importFile" />
+                  <v-btn
+                    color="button--template"
+                    @click="importCharacter()"
+                    :disabled="importFile.length == 0">
                     <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="3" v-if="characterSelected">
-            <v-dialog v-model="deleteDialog" hide-overlay>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-dialog
+              v-model="deleteDialog"
+              hide-overlay>
               <template v-slot:activator="{}">
-                <v-btn @click="deleteDialog = true" class="button--template button--topbar">
+                <v-btn
+                  @click="deleteDialog = true"
+                  class="button--template button--topbar">
                   <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
                 </v-btn>
               </template>
               <v-card>
                 <v-card-title>Are You Sure?</v-card-title>
                 <v-card-text>
-                  Are you sure you want to delete this character? This cannot be undone! <br /><br />
+                  Are you sure you want to delete this character? This cannot be undone! <br />
+                  <br />
                   <v-flex>
                     <div class="text-xs-center">
-                      <v-btn color="button--template" @click="deleteCharacter()">
+                      <v-btn
+                        color="button--template"
+                        @click="deleteCharacter()">
                         <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
                       </v-btn>
                     </div>
@@ -55,59 +83,124 @@
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="3" v-if="characterSelected">
-            <v-btn @click="exportCharacter" class="button--template button--topbar">
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="exportCharacter"
+              class="button--template button--topbar">
               <span class="btn-content">Export {{ selectedCharacter.Name }}</span>
             </v-btn>
           </v-col>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="printCharacter"
+              class="button--template button--topbar">
+              <span class="btn-content">Print {{ selectedCharacter.Name }}</span>
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="printSpirit"
+              class="button--template button--topbar">
+              <span class="btn-content">Print {{ selectedCharacter.Spirit.Name }}</span>
+            </v-btn>
+          </v-col>
         </v-row>
-        <show-character v-if="characterSelected" :character="selectedCharacter" @changed="saveCharacter"
-      /></v-col> </v-row
-  ></span>
-  <div v-else style="margin-top: 1em">
-    <v-row justify="center" class="background--color">
-      <v-col cols="2" class="sidebar">
-        <div v-for="(character, index) in characters" :key="index" class="button--spacing">
-          <v-btn fill-height class="button--template" @click=";(selectedCharacter = character), (selectedIndex = index)"
-            ><span style="margin: 2px"> {{ character.Name }} and {{ character.Spirit.Name }}</span></v-btn
-          >
-        </div> </v-col
-      ><v-col cols="10">
-        <v-row class="topbar"
-          ><v-col cols="3">
-            <v-btn @click="importPremades" class="button--template button--topbar">
+        <show-character
+          v-if="characterSelected"
+          :character="selectedCharacter"
+          @changed="saveCharacter" />
+      </v-col>
+    </v-row>
+  </span>
+  <div
+    v-else
+    style="margin-top: 1em">
+    <v-row
+      justify="center"
+      class="background--color">
+      <v-col
+        cols="2"
+        class="sidebar">
+        <div
+          v-for="(character, index) in characters"
+          :key="index"
+          class="button--spacing">
+          <v-btn
+            fill-height
+            class="button--template"
+            @click=";(selectedCharacter = character), (selectedIndex = index)">
+            <span style="margin: 2px"> {{ character.Name }} and {{ character.Spirit.Name }}</span>
+          </v-btn>
+        </div>
+      </v-col>
+      <v-col cols="10">
+        <v-row class="topbar">
+          <v-col cols="2">
+            <v-btn
+              @click="importPremades"
+              class="button--template button--topbar">
               <span class="btn-content">Import Premades</span>
-            </v-btn> </v-col
-          ><v-col cols="3" class="d-flex" style="flex-direction: column">
-            <v-dialog v-model="characterImportDialog" hide-overlay>
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="2"
+            class="d-flex"
+            style="flex-direction: column">
+            <v-dialog
+              v-model="characterImportDialog"
+              hide-overlay>
               <template v-slot:activator="{}">
-                <v-btn @click="characterImportDialog = true" class="button--template button--topbar"> <span class="btn-content">Import Character</span></v-btn>
+                <v-btn
+                  @click="characterImportDialog = true"
+                  class="button--template button--topbar">
+                  <span class="btn-content">Import Character</span>
+                </v-btn>
               </template>
               <v-card>
                 <v-card-title>Import Character From File</v-card-title>
                 <v-card-text>
-                  <v-file-input accept=".json" v-model="importFile" />
-                  <v-btn color="button--template" @click="importCharacter()" :disabled="importFile.length == 0">
+                  <v-file-input
+                    accept=".json"
+                    v-model="importFile" />
+                  <v-btn
+                    color="button--template"
+                    @click="importCharacter()"
+                    :disabled="importFile.length == 0">
                     <span style="margin: 2px">Import Character</span>
                   </v-btn>
                 </v-card-text>
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="3" v-if="characterSelected">
-            <v-dialog v-model="deleteDialog" hide-overlay>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-dialog
+              v-model="deleteDialog"
+              hide-overlay>
               <template v-slot:activator="{}">
-                <v-btn @click="deleteDialog = true" class="button--template button--topbar">
+                <v-btn
+                  @click="deleteDialog = true"
+                  class="button--template button--topbar">
                   <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
                 </v-btn>
               </template>
               <v-card>
                 <v-card-title>Are You Sure?</v-card-title>
                 <v-card-text>
-                  Are you sure you want to delete this character? This cannot be undone! <br /><br />
+                  Are you sure you want to delete this character? This cannot be undone! <br />
+                  <br />
                   <v-flex>
                     <div class="text-xs-center">
-                      <v-btn color="button--template" @click="deleteCharacter()">
+                      <v-btn
+                        color="button--template"
+                        @click="deleteCharacter()">
                         <span class="btn-content">Delete {{ selectedCharacter.Name }}</span>
                       </v-btn>
                     </div>
@@ -116,14 +209,40 @@
               </v-card>
             </v-dialog>
           </v-col>
-          <v-col cols="3" v-if="characterSelected">
-            <v-btn @click="exportCharacter" class="button--template button--topbar">
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="exportCharacter"
+              class="button--template button--topbar">
               <span class="btn-content">Export {{ selectedCharacter.Name }}</span>
             </v-btn>
           </v-col>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="printCharacter"
+              class="button--template button--topbar">
+              <span class="btn-content">Print {{ selectedCharacter.Name }}</span>
+            </v-btn>
+          </v-col>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="printSpirit"
+              class="button--template button--topbar">
+              <span class="btn-content">Print {{ selectedCharacter.Spirit.Name }}</span>
+            </v-btn>
+          </v-col>
         </v-row>
-        <show-character v-if="characterSelected" :character="selectedCharacter" @changed="saveCharacter" :key="selectedCharacter.Name"
-      /></v-col>
+        <show-character
+          v-if="characterSelected"
+          :character="selectedCharacter"
+          @changed="saveCharacter"
+          :key="selectedCharacter.Name" />
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -160,6 +279,16 @@ export default Vue.extend({
     saveCharacter() {
       const store = getModule(CharacterManagementStore, this.$store)
       store.SaveCharacters()
+    },
+
+    printCharacter() {
+      // Navigate using a path string
+      this.$router.push({ name: 'print', params: { character: this.selectedCharacter } })
+    },
+
+    printSpirit() {
+      // Navigate using a path string
+      this.$router.push({ name: 'print', params: { character: this.selectedCharacter.Spirit } })
     },
 
     exportCharacter() {

@@ -11,7 +11,6 @@ import TraitsJson from '@/database/traits.json'
 import AbilityPackageJson from '@/database/ability_packages.json'
 import AbilitiesJson from '@/database/abilities.json'
 
-import DamageTypes from '@/database/glossary/damage_types.json'
 import Glossary from '@/database/glossary/glossary.json'
 import Traits from '@/database/traits.json'
 import Statuses from '@/database/glossary/statuses.json'
@@ -33,35 +32,48 @@ let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'W
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
-let AllGlossaryItems: Array<Array<IGlossaryData>> = [DamageTypes, Glossary, Traits]
+let AllGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Traits]
 
-const kPlayerAbilities = ['Adrenaline Rush', 'Spiritcraft', 'Size Up', 'Encourage', 'Swift Recall', 'Unbalance', 'Press Advantage', 'Spiritbound']
-
-const kSpiritAbilities = ['Return']
-
-const kBasicAbilities = [
-  'Accelerate',
+const kPlayerAbilities = [
   'Gain Advantage',
-  'Brawl',
-  'Improvised Attack',
-  'Concentrate',
-  'Flank',
-  'Parry',
-  'Delay',
-  'Breather',
-  'Counter',
-  'Disengage',
-  'Perfect Parry',
-  'Perfect Dodge',
-  'Opportunity Attack',
-  'Lethal Strike',
-  'Flurry',
-  'Staggering Impact',
-  'Dodge',
-  'Interact',
+  'Accelerate',
+  'Adrenaline Rush',
+  'Spiritcraft',
+  'Manipulate',
+  'Size Up',
+  'Encourage',
+  'Swift Recall',
+  'Unbalance',
+  'Press Advantage',
+  'Spiritbound',
+  'Sacrifice Armor',
   'Drop',
   'Equip',
+  'Flurry',
+  'Staggering Impact',
+  'Perfect Parry',
+  'Perfect Dodge',
+  'Counter',
+  'Delay',
+  'Flank',
+  'Concentrate',
 ]
+
+const kSpiritAbilities = [
+  'Return',
+  'Perfect Parry',
+  'Perfect Dodge',
+  'Gain Advantage',
+  'Accelerate',
+  'Adrenaline Rush',
+  'Spiritcraft',
+  'Drop',
+  'Equip',
+  'Spiritbound',
+  'Delay',
+]
+
+const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
 @Module({
   name: 'databaseJson',
@@ -170,6 +182,21 @@ export class DatabaseJsonStore extends VuexModule {
       if (ap_list == undefined) return []
       let aps: Array<AbilityPackage> = []
       for (var ap of ap_list) {
+        aps.push(this.getAP(ap))
+      }
+      return aps
+    }
+  }
+
+  get getAPsFromListPreserveType(): any {
+    return (ap_list: Array<any>) => {
+      if (ap_list == undefined) return []
+      let aps: Array<any> = []
+      for (var ap of ap_list) {
+        if (this.isTrait(ap)) {
+          aps.push(this.getTrait(ap))
+          continue
+        }
         aps.push(this.getAP(ap))
       }
       return aps

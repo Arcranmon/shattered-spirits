@@ -57,6 +57,14 @@ class Bonuses {
     return this.equipment_
   }
 
+  public get Focus() {
+    return this.focus_
+  }
+
+  public get Grit() {
+    return this.grit_
+  }
+
   public get Reflex() {
     return this.reflex_
   }

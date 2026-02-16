@@ -1,5 +1,31 @@
 [
   {
+    "name": "Traveling Light",
+    "category": "Narrative",
+    "type": "Skill",
+    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help."
+  },
+  {
+    "name": "Unencumbered",
+    "category": "Mobility",
+    "type": "Passive",
+    "effect": "Gain +1 _Movement_.",
+    "bonuses": { "move": 1 }
+  },
+  {
+    "name": "Traveling Heavy",
+    "category": "Narrative",
+    "type": "Skill",
+    "effect": "Add an additional <u>Fatigue</u> Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help."
+  },
+  {
+    "name": "Heavily Encumbered",
+    "category": "Mobility",
+    "type": "Passive",
+    "effect": "Gain -1 _Movement_.",
+    "bonuses": { "move": -1 }
+  },
+  {
     "name": "Accelerate",
     "category": "Mobility",
     "type": "Maneuver",
@@ -13,8 +39,8 @@
     "type": "Maneuver",
     "keywords": ["Spirit", "Final"],
     "cost": "X _Momentum_",
-    "reqs": "Not _Suppressed_.",
-    "effect": "_Prepare_ X _Momentum_ on any Spirit Ability. If you are at a Place of Power, instead _Prepare_ X+1."
+    "prereqs": "Not _Suppressed_.",
+    "effect": "_Prepare_ X _Momentum_ on any Spirit Ability. If you are at a Place of Power, instead _Prepare_ X+1. A Spirit may always use this Maneuver, regardless of their current Stance."
   },
   {
     "name": "Concentrate",
@@ -25,21 +51,34 @@
     "effect": "Gain _Concentrating_."
   },
   {
-    "name": "Size Up",
-    "category": "General",
+    "name": "Manipulate",
+    "category": "Offensive",
     "type": "Maneuver",
     "cost": "1 _Momentum_",
-    "range": "Short-",
+    "range": "1",
+    "effect": "You attempt to manipulate a creature with body language, shouts, or basic insults. Choose one:\n* <u>Confuse:</u> The Target must _Negate_ [6 _Focus_] or gain 1 _Stun_ and your choice of _Impaired_/_Exposed_.\n* <u>Taunt:</u> The Target must _Negate_ [6 _Focus_] or gain _Taunted_. If you are _Engaged_, increase the DC by 1.\n* <u>Startle:</u> The Target must _Negate_ [5 _Focus_] or lose 1 _Movement_.",
+    "enhancements": {
+      "name": "Bon Mot",
+      "cost": "1 _Momentum_",
+      "effect": "Increase the Negate DC by 2. If you target a creature that speaks your language and craft an insult, instead increase it by 3."
+    }
+  },
+  {
+    "name": "Size Up",
+    "category": "Offensive",
+    "type": "Maneuver",
+    "cost": "1 _Momentum_",
+    "range": "2",
     "target": "A creature.",
-    "effect": "The Target must _Negate_ [4 _Focus_] or gain _Studied_.",
-    "enhancements": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Instead, they must _Negate_ [6 _Focus_]." }]
+    "effect": "The Target must _Negate_ [6 _Focus_] or gain _Studied_.",
+    "enhancements": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Increase the Negate DC by 3." }]
   },
   {
     "name": "Envenom",
     "category": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
+    "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
     "effect": "Add _Poisoned_ 2 to the Attack."
   },
   {
@@ -53,7 +92,7 @@
   },
   {
     "name": "Breather",
-    "category": "Utility",
+    "category": "Recovery",
     "type": "Maneuver",
     "cost": "1 _Momentum_",
     "keywords": ["Repeatable"],
@@ -65,7 +104,7 @@
     "category": "Defensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "_Crit_ on the _Defense Roll_.",
+    "prereqs": "_Crit_ on the _Defense Roll_.",
     "effect": "Choose an Attack, adding [_Discount_ 2]. Automatically resolve that Attack as if it was a _Hit_ against the Attacker if they are in Range."
   },
   {
@@ -81,7 +120,7 @@
     "category": "Defensive",
     "type": "Gambit",
     "cost": "1 _Guard_",
-    "reqs": "_Parry_ _Reaction_.",
+    "prereqs": "Triggered from a _Parry_.",
     "effect": "The triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
   },
   {
@@ -89,7 +128,7 @@
     "category": "Defensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "_Dodge_ _Reaction_.",
+    "prereqs": "Triggered from a _Dodge_.",
     "effect": "Gain 1 _Movement_ that may only be used for this _Gambit_. Immediately spend _Movement_ as if it was your turn. No _Movement_ spent in this way creates _Openings_."
   },
   {
@@ -105,7 +144,7 @@
     "category": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "Hit+.",
+    "prereqs": "Hit+.",
     "effect": "Deal 4 _Bonus_ _Damage_. If this Defeats the Target, gain 1 _Momentum_."
   },
   {
@@ -113,16 +152,25 @@
     "category": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "_Light_/_Versatile_ Attack.",
-    "effect": "Choose one:\n* Repeat the Attack, adding [_Discount_ 2, _Follow-Up] and gaining a +1 _Bonus_ if it was _Light_.\n* If you triggered this with an Attack from a _Wielded_ _Weapon_ and are _Wielding_ a second _Weapon_, Attack with the secondary Weapon, adding [_Discount_ 2] and gaining a +1 _Bonus_ if it was _Light_."
+    "prereqs": "Triggered from a _Light_/_Versatile_ Attack.",
+    "effect": "Choose one:\n* Repeat the Attack, adding [_Discount_ 2, _Follow-Up_ ] and gaining a +1 _Bonus_ if it was _Light_.\n* If you triggered this with an Attack from a _Wielded_ _Weapon_ and are _Wielding_ a second _Weapon_, Attack with the secondary Weapon, adding [_Discount_ 2] and gaining a +1 _Bonus_ if it was _Light_."
   },
   {
     "name": "Staggering Impact",
     "category": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "_Versatile_/_Heavy_ Attack.",
+    "prereqs": "Triggered from a _Versatile_/_Heavy_ Attack.",
     "effect": "Choose one:\n* Deal +2 _Stun_ and add _Staggered_ [_Focus_/_Grit_].\n* Add _Sunder_ [_Reflex_]. If the Target _Blocks_, you must Target _Wielded_ Equipment if possible.\n\nIf the triggering Attack was _Heavy_, deal +2 _Stun_."
+  },
+  {
+    "name": "Sacrifice Armor",
+    "category": "Defensive",
+    "type": "Reaction",
+    "trigger": "You would gain a _Wound_.",
+    "cost": "None",
+    "effect": "Gain _Fatigue_ and reduce the _Durability_ of a _Worn_ piece of _Armor_ by 1. Reduce the severity of the _Wound_ by 1 (i.e. reduce a _Slash_ II _Wound_ to _Slash_ I). If you used a _Parry_ _Reaction_, you may instead reduce the _Durability_ of a _Wielded_ item. You may use this _Reaction_ multiple times against the same Trigger.",
+    "special": "You may use this ability in narrative play when appropriate."
   },
   {
     "name": "Return",
@@ -153,12 +201,13 @@
     "effect": "You are bound to an elemental spirit, the source of your magic and a constant companion from your youth. It has a distinct personality and is capable of independent thought and action, with an uncanny intelligence that is not quite human but far more than an animal. You have the following abilities and limitations:\n* You can summon or dismiss your spirit with a thought and a gesture, either at your side or at a nearby object of the same element and at least as large as your spirit, so long as your craft is not suppressed.\n* You and your spirit experience increasing discomfort as you separate, with it becoming noticeable when on opposite sides of a town and rapidly increasing in intensity beyond that.\n* Your spirit cannot speak, but you have an empathetic link to it and know its current mood, status, and approximate location. Additionally, you have a hazy impression of the last hour of its memories. Your spirit experiences this same effect with you.\n* When not summoned, your spirit is dispersed into the local elements. While not summoned your spirit shares its awareness with you and you can feel its response to your actions through your empathetic bond.\n* You have a natural aptitude when interacting with spirits of the element and animals of a similar category to your spirit."
   },
   {
-    "name": "Dodge",
+    "name": "Evade",
     "category": "Defensive",
     "type": "Reaction",
     "cost": "1 _Guard_, 1 _Movement_",
+    "keywords": ["Dodge"],
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect. You may only use a single Dodge Reaction per _Phase_.",
+    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect.",
     "chart": {
       "status": ["None", "Attack gains -1 Rank", "Attack is a _Graze_ or gains -1 Rank", "Attack is a _Miss_"],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -172,8 +221,8 @@
     "keywords": ["Repeatable"],
     "cost": "1 _Momentum_",
     "range": "Special (typically Melee)",
-    "effect": "Make an _Abbreviated Skill Challenge_ (if required) to resolve an _Interaction_ within Range. Common Interactions are typically with Terrain, an objective on the battlefield, or when attempting to demoralize or persuade the enemy.",
-    "enhancements": [{ "name": "High-Effort", "cost": "1 _Momentum_", "effect": "Gain +1 die on your Skill Challenge. You may repeat this _Enhance_." }]
+    "effect": "Make an _Abbreviated Skill Challenge_ (if required) to resolve an _Interaction_ within Range. Common Interactions are typically a specific Terrain effect, spiritcraft, an objective on the battlefield, or when attempting to demoralize or persuade the enemy.",
+    "enhancements": [{ "name": "High-Effort", "cost": "1 _Momentum_", "effect": "Gain +1 die on your Skill Challenge. You may repeat this _Enhancement_." }]
   },
   {
     "name": "Drop",
@@ -182,7 +231,7 @@
     "type": "Maneuver",
     "cost": "None",
     "target": "A _Wielded_ item.",
-    "effect": "Place the Target Unused in your _Arena_.",
+    "effect": "Place the Target in your _Arena_.",
     "enhancements": [
       {
         "name": "Unstrap",
@@ -202,7 +251,7 @@
       {
         "name": "Toss",
         "cost": "1 _Momentum_",
-        "effect": "The Target must be 1 _Load_ or less. Choose a willing ally within _Close_ _Range_. They may immediately _Wield_ the Target if they have a _Free Hand_."
+        "effect": "The Target must be 1 _Load_ or less. Choose a willing ally within _Range_ 0. They may immediately _Wield_ the Target if they have a _Free Hand_."
       }
     ]
   },
@@ -249,7 +298,7 @@
     "category": "Defensive",
     "type": "Gambit",
     "cost": "None",
-    "reqs": "_Spirit_ is in _Melee_ Range of you.",
+    "prereqs": "_Spirit_ is in _Melee_ Range of you.",
     "effect": "You and your Spirit are both targeted by the triggering effect, but take half Damage/_Stun_ each and _Negate_ with _Advantage_."
   },
   {
@@ -258,9 +307,9 @@
     "type": "Attack",
     "cost": "1 _Momentum_",
     "keywords": ["Martial"],
-    "range": "Melee/_Close_ (_Thrown_)",
+    "range": "Melee/0 (_Thrown_)",
     "target": "Single-Target",
-    "reqs": "_Wielding_ a 1 _Load_ or less item.",
+    "prereqs": "_Wielding_ a 1 _Load_ or less item.",
     "effect": "Attack a Target within Range, using a _Wielded_ item. Add the most appropriate keywords for damage type  ([_Crush_] if unclear) and material based on the _Wielded_ item. If the item is 0 _Load_, add [_Feeble_].",
     "enhancements": [
       {
@@ -295,12 +344,13 @@
     "analysis_notes": { "bonus_damage": [1, 2, 2, 3] }
   },
   {
-    "name": "Parry",
+    "name": "Deflect",
     "category": "Defensive",
     "type": "Reaction",
     "cost": "1 _Guard_",
+    "keywords": ["Parry"],
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. You have _Disadvantage_ if no _Wielded_ _Equipment_ has _Shielding_ and the Attack is not _Melee_. If the triggering effect triggers _Sunder_, it must target _Wielded_ _Equipment_.",
+    "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. If the triggering effect triggers _Sunder_, you may choose the Target instead of the attacker.",
     "chart": {
       "status": ["+1 _Block_", "+2 _Block_", "+3 _Block_", "+5 _Block_"],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
@@ -308,20 +358,10 @@
     }
   },
   {
-    "name": "Elemental Control",
-    "category": "Utility",
-    "keywords": ["Spirit"],
-    "type": "Maneuver",
-    "cost": "1 _Momentum_",
-    "range": "Close-",
-    "effect": "_Bend_ 1 of the same Element as this Spirit's Type.",
-    "special": "Add this Spirit's Type to the Keywords."
-  },
-  {
     "name": "Encourage",
     "category": "Utility",
     "type": "Maneuver",
-    "range": "Short-",
+    "range": "1",
     "keywords": ["Inspiring"],
     "cost": "1 _Momentum_",
     "effect": "You call encouragement out to an ally. They may clear 3 _Stun_, or 4 if you are in a _Support_ _Stance_.",
@@ -342,7 +382,7 @@
     "type": "Maneuver",
     "cost": "1 _Momentum_",
     "range": "Melee",
-    "reqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
+    "prereqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
     "effect": "Gain 3 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
     "enhancements": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, gain 5 _Vigor_ or 3 _Stamina_." }]
   }

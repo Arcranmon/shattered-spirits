@@ -125,6 +125,16 @@ const r = new Router({
         title: 'NPC Manager',
       },
     },
+    {
+      path: '/print',
+      component: require('@/pages/print/index.vue').default,
+      name: 'print',
+      meta: {
+        title: 'Print',
+        hideHeader: true,
+        props: true,
+      },
+    },
   ],
 })
 

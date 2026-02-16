@@ -21,11 +21,13 @@ A _Turn_ is a specific character's opportunity to act in combat, where they can 
 &nbsp;
 A _Round_ is structured as follows:
 **Respite:** The start of each _Round_. This is not a _Phase_, and no Abilities are used. During Respite, resolve the following in the following order:
+* Lose all your current _Momentum_, clearing 2 _Stun_ for every _Momentum_ lost in this way.
+* Lose all _Guard_ and _Movement_, 
 * Change your current _Stance_, if desired.
 * Choose one:
     * May _Manifest_ your Spirit at an appropriate _Source_ within their _Manifest Range_, or pay 1 _Momentum_ to _Manifest_ them at _Melee_ Range. They become _Engaged_ with any creatures at said _Source_. They gain 2 _Momentum_. You may not choose this option if _Supressed_.
     * You may _Recall_ or choose to not _Manifest_ your _Spirit_. If you are not _Supressed_, gain 2 _Momentum_.
-* Resolve any other effects that occur during _Respite_, typically field effects or other such abilities.
+* Gain _Momentum_, _Movement_, and _Guard_ as outlined by your _Stance_ and other abilities.
 
 &nbsp;
 **Phase 1-6:** These numbered Phases show the passing of time in combat and are when most action will take place. Each character's _Stance_ has a listed Speed, which is the _Phase_ that character takes their _Turn_ in. Any _Summoned_ Spirits also act at their listed _Speed_.
@@ -74,12 +76,10 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 * <ins>If the Attack Roll is below 2:</ins> The Attack Misses.
 
 &nbsp;
-**Range:** Attacks in Shattered Spirits will have a Range of _Self_, _Melee_, and _Short_, _Medium_, and _Long Range_. 
+**Range:** Attacks in Shattered Spirits will have a Range of _Self_, _Melee_, or a number between 0 and 3. 
 * Self-Range effects either only affect the user. 
 * Melee effects may only target creatures you are _Engaged_ with.
-* Close-Range effects may target within your Arena.
-* Short-Range effects may target within an adjacent Arena.
-* Long-Range effects may target two Arenas away.
+* Other effects may target any creature within that many Arenas of you, with 0 Range allowing you to target within your Arena, and 3 allowing you to attack up to 3 Arenas away.
 
 &nbsp;
 ### Resources in Combat
@@ -88,11 +88,11 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 * **Stun:** A representation of a character's ability to defend themself. Characters may choose to lose _Block_ instead of _Stamina_ when they take Damage, up to their _Block_.
 * **Momentum:** 
 * **Movement:** A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:
-    * 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.
-    * 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.
-    * 1 _Movement_: If not _Engaged_, move to an adjacent _Arena_.
-    * 1 _Movement_: Gain a _Hazard_ or _Terrain Bonus_. You automatically become _Engaged_ with any other creatures benefiting from the same effect.
-    * 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you.
+    * 1 _Movement_: If not _Engaged_ with a hostile creature, become _Engaged_ with a creature in your _Arena_.
+    * 1 _Movement_: Remove _Engaged_.
+    * 2 _Movement_: If not _Engaged_ with a hostile creature, move to an adjacent _Arena_. This cost is often modified by features of either _Arena_, and can be higher or lower.
+    * 1 _Movement_: If not _Engaged_ with a hostile creature, _Occupy_ _Terrain_ or a _Hazard_. You automatically become _Engaged_ with any other creatures _Occupying_ the same effect.
+    * 1 _Movement_: If not _Engaged_ with a hostile creature, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you.
 
 &nbsp;
 
@@ -107,7 +107,14 @@ Combat in Shattered Spirits doesn't make use of a traditional combat grid; inste
 Arenas are the basic layout of the combat map, and represent distinct areas in a battlefield, with your typical combat consisting of 6-10 Arenas. Each Arena typically represents a distinct and prominent terrain feature (such as the **Steep Cliffs** or **Underground River** on the above map) or is simply used to demonstrate a large amount of distance (such as splitting the **Cave Entrance** and the **Cave Center**). Characters may spend 1 _Movement_ to move to an adjacent _Arena_.
 
 &nbsp;
- On the above map, the **Cave Entrance**, **Underground River**, **Side Tunnel Entrance**, **Cave Center**, **Steep Cliffs**, **High Ground**, **Egg Storage**, **Narrow Tunnel**, and **Queen's Lair** are the relevant Arenas, each with their own distinct effects, as outlined below (all WIP and mostly to illustrate how things work).
+ On the above map, the **Cave Entrance**, **Underground River**, **Side Tunnel Entrance**, **Cave Center**, **Steep Cliffs**, **High Ground**, **Egg Storage**, **Narrow Tunnel**, and **Queen's Lair** are the relevant Arenas, each with their own distinct effects, as outlined below.
+
+ * The **Cave Entrance** is a simple arena. Characters in this Arena can spend 1 _Movement_ on their _Turn_ to flee the battlefield. Additionally, there are two large Stalagmites that characters can _Occupy_ for _Cover_.
+ * The **Cave Center** is also simple, with two large Stalagmites that characters can _Occupy_ for _Cover_. It also has two Stalactites that can be can attacked as if they were in Arena above the center; if they take at least 10 Damage they fall; all creatures in the Arena must make _Negate_ [_Reflex_ 10] taking 12 Damage on a failure or half on a success. Finally, creatures may pay 1 extra _Movement_ (total of 3) to move from the **Cave Center** to the **Side Tunnel Entrance** without Swimming.
+ * The **Steep Cliffs** is a sheer wall that divides the elevations of the battlefield. It costs an additional _Movement_ (total of 3) to enter and exit this _Arena_, and creatures in this _Arena_ are treated as _Prone_ for all effects. Creatures with the _Climber_ trait ignore these penalties. Finally, creatures attacking from the **High Ground** may ignore the **Steep Cliffs** when determining range.
+ * The **Steep Cliffs** is a sheer wall that divides the elevations of the battlefield. It costs an additional _Movement_ to enter and exit this _Arena_, and requires at least one _Free Hand_. Additionally, while in this _Arena_, characters must use one Hand to maintain their hold, have _Disadvantage_ on all rolls, and Attacks against them have _. Creatures with the _Climber_ trait ignore these penalties. Finally, creatures attacking from the **High Ground** may ignore the **Steep Cliffs** when determining range.
+ * Finally, the **High Ground** is an area of the battlefield that overlooks the rest. Creatures on the **High Ground** have a +1 _Bonus_ to attack creatures in lower Arenas, and attacks from lower Arenas have a -1 _Bonus_ against them. Creatures that are Pushed from the **High Ground** to the **Cave Center** or **Cave Entrance** fall _Prone_ and take 6 - _Reflex_ Damage.
+
 
 &nbsp;
 &nbsp;

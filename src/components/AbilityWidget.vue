@@ -1,75 +1,147 @@
 <template>
-  <div v-bind:class="useDivider ? 'ability-box' : ''" style="padding-bottom: 0.25em">
-    <div v-if="cardStyle" v-bind:class="ability.Type" class="card--format">
+  <div
+    v-bind:class="useDivider ? 'ability-box' : ''"
+    style="padding-bottom: 0.25em">
+    <div
+      v-if="cardStyle"
+      v-bind:class="ability.Type"
+      class="card--format">
       <div class="card--underline-top">
-        <img class="image--header-left" :src="ability.Icon" />
-        <img class="image--header-right" :src="ability.Icon" />
+        <img
+          class="image--header-left"
+          :src="ability.Icon" />
+        <img
+          class="image--header-right"
+          :src="ability.Icon" />
         <div class="card--header">
           <h4>{{ ability.Name }}</h4>
           <div class="card--keywords">
             <b>
-              <display-tooltip-text :string="ability.category + ' ' + ability.Type" :decorate="false" /><br />
-              <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box">
-                <display-tooltip-text :string="keyword" :decorate="false" /></span
-            ></b>
+              <display-tooltip-text
+                :string="ability.category + ' ' + ability.Type"
+                :decorate="false" />
+              <br />
+              <span
+                v-for="(keyword, index) in ability.Keywords"
+                :key="index"
+                class="keyword--box">
+                <display-tooltip-text
+                  :string="keyword"
+                  :decorate="false" />
+              </span>
+            </b>
           </div>
         </div>
       </div>
     </div>
     <div v-if="!cardStyle">
-      <span v-bind:class="ability.Type" class="ability--head" style="width: 100%">
-        <img :src="ability.Icon" style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
+      <span
+        v-bind:class="ability.Type"
+        class="ability--head"
+        style="width: 100%">
+        <img
+          :src="ability.Icon"
+          style="height: 1.5em; padding-right: 0.25em; margin-bottom: -0.25em" />
         <display-tooltip-text :string="ability.Header" />
       </span>
-      <span v-for="(keyword, index) in ability.Keywords" :key="index" class="keyword--box" style="margin-left: 0.5em"
-        ><b> <display-tooltip-text :string="keyword.replace('/', '_/_')" :decorate="false" /></b>
+      <span
+        v-for="(keyword, index) in ability.Keywords"
+        :key="index"
+        class="keyword--box"
+        style="margin-left: 0.5em">
+        <b>
+          <display-tooltip-text
+            :string="keyword.replace('/', '_/_')"
+            :decorate="false" />
+        </b>
       </span>
-      <i><display-tooltip-text v-if="ability.Origin && showFrom" :string="'**From:** _' + ability.Origin.Name + '_'" style="padding-left: 2em" /></i>
+      <i>
+        <display-tooltip-text
+          v-if="ability.Origin && showFrom"
+          :string="'**From:** _' + ability.Origin.Name + '_'"
+          style="padding-left: 2em" />
+      </i>
     </div>
     <div style="padding-left: 1em">
-      <div class="card--format" v-if="ability.HasCost">
+      <div
+        class="card--format"
+        v-if="ability.HasCost">
         <display-tooltip-text :string="ability.CostHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasReqs">
+      <div
+        class="card--format"
+        v-if="ability.HasReqs">
         <display-tooltip-text :string="ability.ReqsHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasArea"><display-tooltip-text :string="ability.AreaHeader" /></div>
-      <div class="card--format" v-if="ability.HasRangeOrTarget">
+      <div
+        class="card--format"
+        v-if="ability.HasArea">
+        <display-tooltip-text :string="ability.AreaHeader" />
+      </div>
+      <div
+        class="card--format"
+        v-if="ability.HasRangeOrTarget">
         <display-tooltip-text :string="ability.RangeOrTargetHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasMissile">
+      <div
+        class="card--format"
+        v-if="ability.HasMissile">
         <display-tooltip-text :string="ability.MissileHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasTrigger">
+      <div
+        class="card--format"
+        v-if="ability.HasTrigger">
         <display-tooltip-text :string="ability.TriggerHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasEffect">
+      <div
+        class="card--format"
+        v-if="ability.HasEffect">
         <display-tooltip-text :string="ability.EffectHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasDefend">
+      <div
+        class="card--format"
+        v-if="ability.HasDefend">
         <display-tooltip-text :string="ability.DefendHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasSpecial">
+      <div
+        class="card--format"
+        v-if="ability.HasSpecial">
         <display-tooltip-text :string="ability.SpecialHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasEnhancements">
+      <div
+        class="card--format"
+        v-if="ability.HasEnhancements">
         <display-tooltip-text :string="ability.EnhancementsHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasImbues">
+      <div
+        class="card--format"
+        v-if="ability.HasImbues">
         <display-tooltip-text :string="ability.ImbuesHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasGambit">
+      <div
+        class="card--format"
+        v-if="ability.HasGambit">
         <display-tooltip-text :string="ability.GambitHeader" />
       </div>
-      <div class="card--format" v-if="ability.HasTable">
+      <div
+        class="card--format"
+        v-if="ability.HasTable">
         <basic-table :chart="ability.Table" />
       </div>
     </div>
-    <div class="expand--collapse-box-outlined" v-if="ability.HasChart">
-      <v-expansion-panels class="condensed" flat tile style="width: 100%">
-        <v-expansion-panel style="background-color: inherit"
-          ><v-expansion-panel-header class="expand--header-chart">Chart</v-expansion-panel-header>
-          <v-expansion-panel-content class="expand--body-chart"><chart-table :chart="ability.Chart" /></v-expansion-panel-content>
+    <div
+      class="expand--collapse-box-outlined"
+      v-if="ability.HasChart">
+      <v-expansion-panels
+        class="condensed"
+        flat
+        tile
+        style="width: 100%">
+        <v-expansion-panel style="background-color: inherit">
+          <v-expansion-panel-header class="expand--header-chart">Chart</v-expansion-panel-header>
+          <v-expansion-panel-content class="expand--body-chart">
+            <chart-table :chart="ability.Chart" />
+          </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>

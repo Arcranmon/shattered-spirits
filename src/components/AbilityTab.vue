@@ -1,9 +1,21 @@
 <template>
   <v-row>
     <v-col cols="2" />
-    <v-col cols="4"> <v-select v-model="categoryFilter" label="Category Filter" item-text="Name" :items="categoryOptions" filled /></v-col>
     <v-col cols="4">
-      <v-select v-model="keywordFilter" label="Keyword Filter" item-text="Name" :items="character.AllKeywords(abilityType)" filled />
+      <v-select
+        v-model="categoryFilter"
+        label="Category Filter"
+        item-text="Name"
+        :items="categoryOptions"
+        filled />
+    </v-col>
+    <v-col cols="4">
+      <v-select
+        v-model="keywordFilter"
+        label="Keyword Filter"
+        item-text="Name"
+        :items="character.AllKeywords(abilityType)"
+        filled />
     </v-col>
     <v-col cols="2" />
     <show-abilities
@@ -13,8 +25,8 @@
       :categoryFilter="categoryFilter"
       :keywordFilter="keywordFilter"
       :key="categoryFilter && keywordFilter"
-      style="width: 100%"
-  /></v-row>
+      style="width: 100%" />
+  </v-row>
 </template>
 
 <script>

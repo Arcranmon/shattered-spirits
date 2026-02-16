@@ -11,10 +11,10 @@
     "abilities": [
       {
         "name": "Drink",
-        "category": "Utility",
+        "category": "Recovery",
         "type": "Maneuver",
         "cost": "None",
-        "effect": "Create an [_Opening_]. Clear all _Block_, then restore 5 _Stamina_. If you are _Bleeding_, reduce the value by 2."
+        "effect": "Create an [_Opening_]. Clear all _Stun_, then restore 5 _Stamina_. If you are _Bleeding_, reduce the value by 5."
       }
     ]
   },
@@ -27,14 +27,14 @@
     "durability": 1,
     "rarity": "Common",
     "keywords": ["Metal", "Quickdraw", "Consumable"],
-    "effect": "A small bag of metallic caltrops that can be used to deter enemies from entering a space. These are typically lost after use, but characters that have a way to quickly collect them may be able to reuse them. While _Worn_, this may be treated as an effectively unlimited source for _Trinket_ _Metal_ items. If used as a _Missile_, use _Scatter_ at no cost in the target's _Arena_.",
+    "effect": "A small bag of metallic caltrops that can be used to deter enemies from entering a space. These are typically lost after use, but characters that have a way to quickly collect them may be able to reuse them. If used as a _Missile_, use _Scatter_ at no cost in the target's _Arena_. While _Worn_, this may be treated as an effectively unlimited source for _Trinket_ _Metal_ items.",
     "abilities": [
       {
         "name": "Scatter",
         "category": "Utility",
         "type": "Maneuver",
         "cost": "1 _Momentum_",
-        "range": "Short-",
+        "range": "1",
         "target": "An _Arena_.",
         "effect": "You scatter metallic caltrops in the Target, creating dangerous terrain. Creatures in the Target must spend 1 extra _Movement_ whenever they spend _Movement_ and _Negate_ _Reflex_ with _Disadavantage. A creature may take 2 [_Stab_] Damage to ignore this effect for a single Move or _Negate_."
       }
@@ -57,7 +57,7 @@
         "keywords": ["Crush"],
         "type": "Attack",
         "cost": "1 _Momentum_",
-        "range": "Close",
+        "range": "1",
         "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [5 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.",
         "chart": {
           "damage": [0, 0, 1, 2],
@@ -117,9 +117,10 @@
   {
     "name": "Rations",
     "category": "Food",
-    "keywords": ["Natural", "Poor Food"],
+    "keywords": ["Natural"],
     "load": 1,
-    "desc": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving."
+    "desc": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving.",
+    "effect": "After eating these rations, roll a d6. On a 1, gain 1 _Stress_."
   },
   {
     "name": "Iron Scrap",

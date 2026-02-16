@@ -1,15 +1,31 @@
 <template>
   <div class="page">
-    <v-row class="background--color" style="margin-top: 1em">
-      <v-col cols="2" class="sidebar">
-        <div v-for="npc in npcs" :key="npc.Name">
-          <v-btn class="button--style" @click="selectedNpc = npc" depressed tile block
-            ><span>{{ npc.Name }}</span></v-btn
-          >
+    <v-row
+      class="background--color"
+      style="margin-top: 1em">
+      <v-col
+        cols="2"
+        class="sidebar">
+        <div
+          v-for="npc in npcs"
+          :key="npc.Name">
+          <v-btn
+            class="button--style"
+            @click="selectedNpc = npc"
+            depressed
+            tile
+            block>
+            <span>{{ npc.Name }}</span>
+          </v-btn>
         </div>
       </v-col>
-      <v-col cols="10"> <npc-card v-if="selectedNpc != null" :npc="selectedNpc" :key="selectedNpc.Name" /></v-col
-    ></v-row>
+      <v-col cols="10">
+        <npc-card
+          v-if="selectedNpc != null"
+          :npc="selectedNpc"
+          :key="selectedNpc.Name" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 

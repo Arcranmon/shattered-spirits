@@ -1,7 +1,11 @@
 <template>
   <div>
     <div v-for="ability in abilities">
-      <base-widget :ability="ability" :useDivider="true" :key="ability.Name" />
+      <base-widget
+        :ability="ability"
+        :useDivider="true"
+        :key="ability.Name"
+        :showChart="true" />
     </div>
   </div>
 </template>

@@ -3,7 +3,6 @@ import { store } from '@/store'
 class Defenses {
   private stun_: number
   private block_: number
-  private soak_: number
   private reflex_: number
   private grit_: number
   private focus_: number
@@ -29,7 +28,7 @@ class Defenses {
   }
 
   public get Block() {
-    return this.stun_
+    return this.block_
   }
 
   public get Grit() {
@@ -45,11 +44,7 @@ class Defenses {
   }
 
   public get Stun() {
-    return this.block_
-  }
-
-  public get Soak() {
-    return this.soak_
+    return this.stun_
   }
 
   public get Immunities() {
@@ -96,9 +91,8 @@ class Defenses {
     this.grit_ = data.grit || 0
     this.reflex_ = data.reflex || 0
     this.focus_ = data.focus || 0
-    this.block_ = data.stun || 0
-    this.soak_ = data.soak || 0
-    this.stun_ = data.block || 0
+    this.block_ = data.block || 0
+    this.stun_ = data.stun || 0
     this.immunities_ = data.immunities || []
     this.resistances_ = data.resistances || []
     this.weaknesses_ = data.weaknesses || []

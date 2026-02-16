@@ -1,8 +1,14 @@
 <template>
-  <div class="card--wrapper" inline>
+  <div
+    class="card--wrapper"
+    inline>
     <div class="card--color-header">
-      <img class="image--header-left" :src="status.Icon" />
-      <img class="image--header-right" :src="status.Icon" />
+      <img
+        class="image--header-left"
+        :src="status.Icon" />
+      <img
+        class="image--header-right"
+        :src="status.Icon" />
       <div class="card--underline-top card--header">
         <h3 style="display: inline; font-style: normal">{{ status.Name }}</h3>
         <div class="card--keywords">
@@ -12,26 +18,43 @@
     </div>
     <div class="card--content">
       <display-tooltip-text :string="status.EffectHeader" />
-      <div class="card--format" v-if="status.HasSpecial">
+      <div
+        class="card--format"
+        v-if="status.HasSpecial">
         <display-tooltip-text :string="status.SpecialHeader" />
       </div>
-      <div class="card--format" v-if="status.HasRepeat">
+      <div
+        class="card--format"
+        v-if="status.HasRepeat">
         <display-tooltip-text :string="status.RepeatHeader" />
       </div>
-      <div class="card--format" v-if="status.HasNegate">
+      <div
+        class="card--format"
+        v-if="status.HasNegate">
         <display-tooltip-text :string="status.NegateHeader" />
       </div>
-      <div class="card--format" v-if="status.HasReacts">
+      <div
+        class="card--format"
+        v-if="status.HasReacts">
         <display-tooltip-text :string="status.ReactsHeader" />
       </div>
-      <div class="card--format" v-if="status.HasRemove">
+      <div
+        class="card--format"
+        v-if="status.HasRemove">
         <display-tooltip-text :string="status.RemoveHeader" />
       </div>
-      <div class="card--format" v-if="status.HasRecovery">
+      <div
+        class="card--format"
+        v-if="status.HasRecovery">
         <display-tooltip-text :string="status.RecoveryHeader" />
       </div>
     </div>
-    <div class="desc--box" v-if="status.Desc.length > 0" style="font-style: italic">{{ status.Desc }}<br /></div>
+    <div
+      class="desc--box"
+      v-if="status.Desc.length > 0"
+      style="font-style: italic">
+      {{ status.Desc }}<br />
+    </div>
   </div>
 </template>
 

@@ -5,7 +5,7 @@
   },
   {
     "name": "Arena",
-    "effect": "Arenas are distinct areas on a battlefield that take some significant effort to traverse between and designate different areas of combat. Generally, characters may spend one Movement to move from an Arena to any connected Arenas, entering at the appropriate _Path_ _Position_ if relevant."
+    "effect": "Arenas are distinct areas on a battlefield that take some significant effort to traverse between and designate different areas of combat. Generally, characters may spend  Movement to move from an Arena to any connected Arenas."
   },
   {
     "name": "Alcohol",
@@ -17,28 +17,28 @@
   },
   { "see": "Attack Rolls", "name": "Attack Roll" },
   {
-    "name": "Bend",
-    "effect": "Terrain and other effects may special Interacts that list a Bend value; characters can use a Bend effect that matches the element of said Terrain to resolve it."
+    "name": "Repeatable",
+    "effect": "This Ability may be used any number of times on a given Turn."
   },
   {
     "name": "Bonus",
     "effect": "When an Attack gains Bonus Damage or Stun, distribute it between targets however you wish."
   },
   {
-    "name": "Brawling",
-    "effect": "When attacking a _Grabbed_ creature, add _Pierce_ 1 and gain a +1 _Bonus_."
+    "name": "Final",
+    "effect": "After using this Ability, end your Turn."
   },
   {
-    "name": "Charged",
-    "effect": "This Ability does some sort of Charged effect. If this is an Attack, it may not be used to Defend."
+    "name": "Armament",
+    "effect": "This designates this as an Ability that typically targets Equipment you have Worn or Equipped."
   },
   {
     "name": "Close",
     "effect": "Close Range effects may target any valid target within your current _Arena_."
   },
   {
-    "name": "Counter",
-    "effect": "Effects with Counter may not be triggered in response to one with Counter. Additionally, if you qualified for a _Gambit_ when using this effect, you may choose to use an _Offensive_ _Gambit_ on this Counter rather than a normal _Defensive_ _Gambit_."
+    "name": "Inspiring",
+    "effect": "This designates this as a support Ability that typically requires calling out to allies."
   },
   {
     "name": "Defend",
@@ -53,13 +53,8 @@
     "effect": "When a character Disengages you must stop _Occupying_ your current _Terrain_. Additionally, you may choose to remove _Engaged_ (if applicable) and leave your current _Field_ effect (if applicable). If you remove _Engaged_ in this way, create an _Opening_."
   },
   {
-    "name": "Embed",
-    "effect": "When something gets Embedded it counts as an _Worn_ piece of _Equipment_ for the Target. The Target may end Embed with any effect that would allow them to _Wield_ it. If the triggering _Equipment_ has the _Ammunition_ property, do not add any _Load_ to the Target unless all _Ammunition_ is _Embedded_."
-  },
-  { "name": "Embedded", "see": "Embed" },
-  {
-    "name": "Efficient",
-    "effect": "Reactions with this keyword do not count against the 1 Reaction per Trigger limitation."
+    "name": "Spirit",
+    "effect": "This Ability makes use of your spiritcraft; the Cost increases by 1 if you are _Suppressed_, and cannot be used if you are _Sealed_."
   },
   {
     "name": "Exhaust",
@@ -87,8 +82,12 @@
     "effect": "When a character takes Damage, they may gain _Stun_ rather than _Stamina_ for an amount of Damage equal to their Block."
   },
   {
+    "name": "Retreat",
+    "effect": "Retreat is a special movement pattern used by NPCs. When a creature Retreats, they first leave their current _Engagement_, and may use any abilities that prevent an _Opening_. They may end their _Movement_ there, or may either:\n* Become _Engaged_ with an ally.\n* _Occupy_ _Terrain_.\n* Move to an _Arena_ with no enemies.\n\nRegardless of what they choose, they may not willingly _Engage_ an enemy under any circumstances."
+  },
+  {
     "name": "Kinesis",
-    "effect": "Characters with kinesis for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_) at the listed Kinesis Range. If they would normally create an [_Opening_], they instead do not."
+    "effect": "Characters with kinesis for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_) at the listed Kinesis Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Kinesis Range when targeting the appropriate material."
   },
   {
     "name": "Limited",
@@ -114,7 +113,7 @@
   { "name": "Guard", "effect": "Guard represents a character's ability to actively defend themselves. It is commonly used for _Dodge_ and _Parry_ Reactions." },
   {
     "name": "Movement",
-    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.\n* 1 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: Gain a _Hazard_ or _Terrain Bonus_. You automatically become _Engaged_ with any other creatures benefiting from the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
+    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.\n* 2 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: _Occupy_ _Terrain_ or a _Hazard_. You automatically become _Engaged_ with any other creatures _Occupying_ the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
   },
   {
     "name": "Opening",
@@ -137,6 +136,18 @@
     "effect": "Rank refers to the result of an Attack or Defense Roll and corresponds to Miss, Graze, Hit, and Crit, in that order. Many effects increase or decrease the Rank, which moves it up or down the chart as applicable. An effect may not go below a Miss or above a Crit."
   },
   {
+    "name": "Parry",
+    "effect": "You defend yourself by attempting to intercept, block, or otherwise deflect an attack. If the Attack is not _Melee_ you have _Disadvantage_ on the _Defense Roll_ if you are not _Wielding_ any [_Shielding_] _Equipment_."
+  },
+  {
+    "name": "Dodge",
+    "effect": "You defend yourself by attempting to get out of the way of an incoming assault.  A creature may only make a single Dodge Reaction each _Phase_."
+  },
+  {
+    "name": "Cover",
+    "effect": "While in Cover:\n* Non-Melee Attacks against you have _Disadvantage_.\n* You reduce the cost of all _Dodge_ _Reactions_ by 1.\n* When Attacked, gain additional _Block_ equal to twice the Range the Attack was made from."
+  },
+  {
     "name": "Remote",
     "effect": "This Attack does not originate from the attacker; when determining _Cover_, use the Range from the Missile to the Target."
   },
@@ -152,6 +163,14 @@
   {
     "name": "Short",
     "effect": "Short Range effects may target any valid target within an adjacent _Arena_."
+  },
+  {
+    "name": "Stab",
+    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_, all Attacks against you gain [_Pierce_ 1].\n* **3-5**: You take a deep stab makes it painful to act. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_, all Attacks against you gain [_Pierce_ 2], and the first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it near impossible for you to fight. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_, all Attacks against you gain [_Pierce_ 3], and the first time you take Damage each _Round_ you gain _Bleeding_ 1. Additionally, gain 1 less _Momentum_ and _Guard_ at _Respite_."
+  },
+  {
+    "name": "Slash",
+    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep cut. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 2 Segment Clock to heal. While you have this _Wound_, the first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **3-5**: One of your limbs takes a deep, debilitating cut. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_, the first time you take Damage each _Round_ you gain _Bleeding_ 1. Additionally, randomly determine if an arm of leg was harmed. If it was an arm, decrease the _Momentum_ gained at _Respite_ by 1. If it was a leg, decrease the _Movement_ gained at _Respite_ by 1. Creatures with additional limbs may suffer more complex effects.\n* **2-**: One of your limbs is cut to the bone, rendering it useless. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_, the first time you take Damage each _Round_ you gain _Bleeding_ 1. Additionally, randomly determine if an arm of leg was harmed. If it was an arm, you cannot use one arm, have _Disadvantage_ on all _Parry_ Rolls. If it was a leg, increase the Movement cost of all abilities by 1. Regardless of which is harmed, increase the cost of [_Spirit_] abilities by 1. Creatures with additional limbs may suffer more complex effects."
   },
   {
     "name": "Medium",
@@ -195,16 +214,28 @@
     "effect": "Once per _Phase_ a character may choose to take their Turn. When a character takes their Turn, they do one of the following:\n* If this _Phase_ is when a character chose to use their _Technique_, they resolve that effect.\n* If this is any other _Phase_, a character may instead use any _Attack_ or _Action_ granted by an _Art_.\n\nAdditionally, on their Turn, characters may use any number of _Enhancement_ effects as well as expend any amount of _Movement_."
   },
   {
-    "name": "Technique",
-    "effect": "Techniques are how creatures interact in combat. These are what allow creatures to attack, influence the environment, and gain the resources to dodge and block attacks. A Technique must be selected while _Plotting_, at which point it is assigned a _Phase_. A creature may not use that Technique until that _Phase_."
+    "name": "Worn",
+    "effect": "Equipment that a character is wearing, whether that be armor that is actively worn or a potion on their belt. Worn items can be easily accessed in combat and other challenges."
   },
   {
     "name": "Temporary",
     "effect": "Temporary bonuses and resources are are lost at the end of the current _Phase_. Temporary bonuses do not count against any caps that a character might have."
   },
   {
+    "name": "Resistance",
+    "effect": "If a creature has Resistance to a Material or damage type, decrease the final Rank of all Attacks by 1."
+  },
+  {
+    "name": "Weakness",
+    "effect": "If a creature has Weakness to a Material or damage type, increase the final Rank of all Attacks by 1."
+  },
+  {
+    "name": "Enhancement",
+    "effect": "When a character uses an Ability they may choose a single Enhancement, which is typically a way for a character to increase the effectiveness of an Enhancement through spending additional resources."
+  },
+  {
     "name": "Thrown",
-    "effect": "After using an effect with this Range, place this _Equipment_ at the Target's _Position_."
+    "effect": "After using an effect with this Range, place this _Equipment_ in the _Arena_."
   },
   {
     "name": "Occupy",
@@ -219,7 +250,7 @@
   { "name": "Recovers", "see": "Recover" },
   { "name": "Recovering", "see": "Recover" },
   {
-    "name": "Wear",
-    "effect": "Wear represents the typical wear and tear on equipment. Most equipment will have a Wear value; when prompted for a Wear roll, you roll 2d6. If you roll the item's Wear value or lower, decrease the equipment's _Durability_ by 1."
+    "name": "Wielded",
+    "effect": "Equipment that is Wielded is actively being held in a character's hands and can be fully utilized. Characters typically have two hands to _Wield_ things with."
   }
 ]

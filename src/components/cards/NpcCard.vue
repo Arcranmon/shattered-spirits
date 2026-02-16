@@ -1,52 +1,102 @@
 <template>
-  <div class="npc--box" style="background-color: DarkGray">
+  <div
+    class="npc--box"
+    style="background-color: DarkGray">
     <h3>
       <center>{{ npc.Name }}</center>
     </h3>
     <div class="npc--header">
       <div v-if="npc.Desc.length > 0">
-        <i>{{ npc.Desc }}</i
-        ><br /><b>{{ npc.SpiritType }} {{ npc.NpcType }}</b
-        ><br /><b>{{ npc.Role }}</b
-        ><br /><b><display-tooltip-text :string="npc.category" :decorate="false" /></b>
+        <i>{{ npc.Desc }}</i>
+        <br />
+        <b>{{ npc.NpcType }} {{ npc.Role }} {{ npc.Category }}</b>
       </div>
     </div>
     <div class="npc--content">
       <v-row no-gutters>
         <v-col cols="6">
-          <div v-html="$marked.parseInline(npc.SizeText)" />
-          <div v-html="$marked.parseInline(npc.StaminaText)" />
-          <display-tooltip-text :string="npc.BlockText" />
-          <div>
-            <display-tooltip-text :string="npc.MomentumGainText" />
-          </div>
-          <div v-if="npc.Traits.length > 0"><b>Traits:</b></div>
-          <div v-for="trait in npc.Traits" :key="trait">
-            <display-tooltip-text :string="'* **' + trait.replaceAll('_', '') + '**'" :decorate="false" /></div
-        ></v-col>
-        <v-col cols="6"> <base-widget :ability="npc.Armor" /></v-col
-      ></v-row>
-      <v-row no-gutters></v-row><br />
+          <display-tooltip-text :string="npc.SizeText + '&nbsp;'" />
+          <display-tooltip-text :string="npc.StunText + '&nbsp;'" />
+          <display-tooltip-text :string="npc.StaminaText + '&nbsp;'" />
+          <display-tooltip-text :string="npc.BlockText + '&nbsp;'" />
+        </v-col>
+      </v-row>
+      <v-row no-gutters> </v-row>
+      <br />
     </div>
     <v-card>
-      <v-tabs v-model="tab" class="character-tabs" background-color="#b69e75" color="black" centered>
+      <v-tabs
+        dark
+        v-model="tab"
+        class="character-tabs"
+        background-color="#b69e75"
+        color="black"
+        centered>
         <v-tab>
-          <h3>Arts</h3>
+          <h3>Abilities</h3>
         </v-tab>
-        <v-tab v-if="npc.HasWeapons">
-          <h3>Weapons</h3>
-        </v-tab></v-tabs
-      ><v-tabs-items v-model="tab" class="character-tab-content">
+        <v-tab>
+          <h3>Stances</h3>
+        </v-tab>
+      </v-tabs>
+      <v-tabs-items v-model="tab">
         <v-tab-item>
-          <v-tabs v-model="abilitiesTab" color="black" light centered style="border-radius: 10px"
-            ><v-tab><h5>Maneuvers</h5></v-tab><v-tab><h5>Attacks</h5></v-tab><v-tab><h5>Gambits</h5></v-tab><v-tab><h5>Reactions</h5></v-tab></v-tabs
-          ><v-tabs-items v-model="abilitiesTab" class="character-tab-content"
-            ><v-tab-item><ability-tab abilityType="Maneuver" :character="npc" /></v-tab-item
-            ><v-tab-item><ability-tab abilityType="Attack" :character="npc" /></v-tab-item
-            ><v-tab-item><ability-tab abilityType="Gambit" :character="npc" /></v-tab-item
-            ><v-tab-item><ability-tab abilityType="Reaction" :character="npc" /></v-tab-item></v-tabs-items></v-tab-item
-        ><v-tab-item v-if="npc.HasWeapons"> <show-cards :inputs="npc.Weapons" job="Attacks" :collapse="false" :cols="2" /></v-tab-item
-      ></v-tabs-items>
+          <v-tabs
+            v-model="abilitiesTab"
+            color="black"
+            light
+            centered>
+            <v-tab>
+              <h5>Passives</h5>
+            </v-tab>
+            <v-tab>
+              <h5>Maneuvers</h5>
+            </v-tab>
+            <v-tab>
+              <h5>Attacks</h5>
+            </v-tab>
+            <v-tab>
+              <h5>Gambits</h5>
+            </v-tab>
+            <v-tab>
+              <h5>Reactions</h5>
+            </v-tab>
+          </v-tabs>
+          <v-tabs-items v-model="abilitiesTab">
+            <v-tab-item class="character-tab-content">
+              <ability-tab
+                abilityType="Passive"
+                :character="npc" />
+            </v-tab-item>
+            <v-tab-item class="character-tab-content">
+              <ability-tab
+                abilityType="Maneuver"
+                :character="npc" />
+            </v-tab-item>
+            <v-tab-item class="character-tab-content">
+              <ability-tab
+                abilityType="Attack"
+                :character="npc" />
+            </v-tab-item>
+            <v-tab-item class="character-tab-content">
+              <ability-tab
+                abilityType="Gambit"
+                :character="npc" />
+            </v-tab-item>
+            <v-tab-item class="character-tab-content">
+              <ability-tab
+                abilityType="Reaction"
+                :character="npc" />
+            </v-tab-item>
+          </v-tabs-items>
+        </v-tab-item>
+        <v-tab-item class="character-tab-content">
+          <show-cards
+            :inputs="npc.Stances"
+            :collapse="false"
+            :cols="1" />
+        </v-tab-item>
+      </v-tabs-items>
     </v-card>
   </div>
 </template>
@@ -72,12 +122,6 @@ export default Vue.extend({
     npc: {
       type: Npc,
       required: true,
-    },
-  },
-  methods: {
-    splitTrait(trait) {
-      if (trait.includes('_')) return trait.split('_')[1]
-      return trait
     },
   },
 })

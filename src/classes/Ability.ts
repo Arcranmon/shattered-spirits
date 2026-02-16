@@ -92,6 +92,7 @@ class Ability extends Base {
     if (this.category_ === 'Defensive') return require('@/assets/Defensive.svg')
     if (this.category_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
     if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
+    if (this.category_ === 'Recovery') return require('@/assets/Recovery.svg')
     if (this.type_ === 'Skill') return require('@/assets/Skill.svg')
     if (this.type_ === 'Power') return require('@/assets/Power.svg')
     return require('@/assets/General.svg')

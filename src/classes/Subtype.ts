@@ -94,7 +94,7 @@ class Subtype extends Base {
   }
   public get ManifestHeader() {
     var header = '**Manifest:** The requirements to Manifest your spirit depend on its size, as follows.'
-    var labels = ['Tiny', 'Small', 'Medium', 'Large']
+    var labels = ['&half;', '1', '2', '3']
 
     this.manifest_.forEach((value, index) => {
       header += '\n* **' + labels[index] + ':** ' + value
