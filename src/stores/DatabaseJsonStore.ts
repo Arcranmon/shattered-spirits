@@ -227,6 +227,12 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
+  get getDisciplinesByType(): any {
+    return (type: String) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Discipline' && x.Category == type)
+    }
+  }
+
   // ==========================================================
   // TRAITS GETTERS
   // ==========================================================

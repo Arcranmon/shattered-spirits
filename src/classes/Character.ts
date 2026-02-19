@@ -64,7 +64,7 @@ class Character extends Combatant {
   }
 
   override get Traits() {
-    var traits = ['_Kinesis_ (' + this.element_ + ', _Close_-)']
+    var traits = ['_Bend_ (' + this.element_ + ', _Close_-)']
     for (var armor of this.armor_) {
       traits = [...traits, ...armor.Traits]
     }

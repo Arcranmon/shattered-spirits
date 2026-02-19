@@ -68,6 +68,9 @@ class Base {
     return this.effect_.length > 0
   }
   public get EffectHeader() {
+    if (this.Type == 'Skill') {
+      return this.effect_
+    }
     return '**_Effect_:** ' + this.effect_
   }
   public get HasKeywords() {

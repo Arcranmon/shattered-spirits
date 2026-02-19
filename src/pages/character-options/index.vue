@@ -98,14 +98,36 @@
             :cols="1" />
         </div>
 
-        <div
-          class="character-tab-content"
-          v-if="selectedTab == 'Disciplines'"
-          style="border-top: 2px solid black">
-          <show-cards
-            :inputs="disciplines"
-            :collapse="false"
-            :cols="1" />
+        <div v-if="selectedTab == 'Disciplines'">
+          <v-tabs
+            v-model="abilityTab"
+            class="character-tabs"
+            dark
+            color="black"
+            centered>
+            <v-tab>
+              <h4>Metal</h4>
+            </v-tab>
+            <v-tab>
+              <h4>Wood</h4>
+            </v-tab>
+          </v-tabs>
+          <v-tabs-items
+            v-model="abilityTab"
+            class="character-tab-content">
+            <v-tab-item>
+              <show-cards
+                :inputs="metalDisciplines"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+            <v-tab-item>
+              <show-cards
+                :inputs="woodDisciplines"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+          </v-tabs-items>
         </div>
         <div
           class="character-tab-content"
@@ -275,8 +297,11 @@ export default Vue.extend({
     archetypes: function () {
       return this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
     },
-    disciplines: function () {
-      return this.$store.getters.getDisciplines().sort((a, b) => a.Name.localeCompare(b.Name))
+    metalDisciplines: function () {
+      return this.$store.getters.getDisciplinesByType('Metal').sort((a, b) => a.Name.localeCompare(b.Name))
+    },
+    woodDisciplines: function () {
+      return this.$store.getters.getDisciplinesByType('Wood').sort((a, b) => a.Name.localeCompare(b.Name))
     },
     talents: function () {
       return this.$store.getters.getTalents()

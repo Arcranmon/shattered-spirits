@@ -62,9 +62,11 @@ class Ability extends Base {
     return this.category_
   }
   public get Header() {
-    var header = this.Name + ' - '
+    var header = this.Name
     if (this.HasSpeed) header += 'Speed ' + this.speed_ + ' '
-    header += this.category_ + ' ' + this.type_
+    if (this.Type != 'Skill') {
+      header += ' - ' + this.category_ + ' ' + this.type_
+    }
     return header
   }
   public get SpeedHeader() {
@@ -94,7 +96,7 @@ class Ability extends Base {
     if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
     if (this.category_ === 'Recovery') return require('@/assets/Recovery.svg')
     if (this.type_ === 'Skill') return require('@/assets/Skill.svg')
-    if (this.type_ === 'Power') return require('@/assets/Power.svg')
+    if (this.type_ === 'Power') return require('@/assets/disciplines/' + this.Category + '.svg')
     return require('@/assets/General.svg')
   }
 
@@ -224,7 +226,7 @@ class Ability extends Base {
     this.imbues_ = data.imbues || []
     this.defend_ = data.defend || ''
     this.cost_ = data.cost || ''
-    this.category_ = data.category || 'MISSING'
+    this.category_ = data.category || ''
     this.type_ = data.type || 'MISSING'
     this.move_ = data.move || 0
     this.reqs_ = data.reqs || ''

@@ -7,10 +7,70 @@
     "abilities": [
       {
         "name": "Metalsense",
-        "category": "Narrative",
         "keywords": ["Spirit", "Metal"],
         "type": "Skill",
-        "effect": "You can sense the approximate location of nearby metal, although other present elements (especially wood) may disrupt this sense."
+        "effect": "You can sense the approximate location of nearby metal, although other present elements (especially wood) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      }
+    ]
+  },
+  {
+    "name": "Basic Woodsense",
+    "category": "Wood",
+    "type": "Discipline",
+    "desc": "All with woodcraft have an innate, intuitive grasp of where nearby wood is.",
+    "abilities": [
+      {
+        "name": "Woodsense",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Skill",
+        "effect": "You can sense the approximate location of nearby wood, although other present elements (especially metal) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      }
+    ]
+  },
+  {
+    "name": "Basic Barkcraft",
+    "category": "Wood",
+    "type": "Discipline",
+    "desc": "The absolute basics of barkcraft, a speciality of woodcraft that focuses on moving, controlling, and enhancing wood.",
+    "abilities": [
+      {
+        "name": "Barkcraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Skill",
+        "effect": "You may clumsily move and control a single nearby wooden object that you could hold in one hand.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      },
+      {
+        "name": "Woodbending",
+        "category": "Utility",
+        "type": "Passive",
+        "keywords": ["Spirit", "Wood"],
+        "effect": "You have _Bend_ [_Wood_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Wood_ piece of _Equipment_."
+      },
+      {
+        "name": "Wooden Splinter",
+        "category": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "Wood", "Stab", "Remote"],
+        "cost": "1 _Momentum_",
+        "range": "1",
+        "target": "Single-Target",
+        "missile": "An Unattended 0 _Load_/_Trinket_ _Wood_ item or one _Worn by you/an ally within Range 0.",
+        "effect": "Choose a Missile, then Attack a target within Range with it. If you choose a _Trinket_, add _Feeble_ to this Attack. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
+        "special": "If the _Missile_ has an Attack with _Slash_ or _Crush_ you may replace _Stab_ with said keyword.",
+        "enhancements": [
+          {
+            "name": "Power Shot",
+            "cost": "1 _Momentum_",
+            "effect": "You may instead use a _Load_ 1 item as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
+          }
+        ],
+        "chart": {
+          "damage": [0, 1, 2, 3],
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "status": ["None", "None", "None", "None"]
+        }
       }
     ]
   },
@@ -22,17 +82,17 @@
     "abilities": [
       {
         "name": "Lodecraft",
-        "category": "Narrative",
+        "category": "Spiritcraft",
         "keywords": ["Spirit", "Metal"],
         "type": "Skill",
-        "effect": "You may clumsily move and control a single nearby metal object that you could hold in one hand."
+        "effect": "You may clumsily move and control a single nearby metal object that you could hold in one hand.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
       {
         "name": "Metalbending",
         "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Metal"],
-        "effect": "You have _Kinesis_ [_Metal_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
+        "effect": "You have _Bend_ [_Metal_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
       },
       {
         "name": "Metal Shot",
@@ -69,10 +129,10 @@
     "abilities": [
       {
         "name": "Anvilcraft",
-        "category": "Narrative",
+        "category": "Spiritcraft",
         "keywords": ["Spirit", "Metal"],
         "type": "Skill",
-        "effect": "You can modify the physical properties of metal to a moderate degree, allowing you to make iron as hard as steel or the reverse. For maximum effect you must be touching the metal. The effect persists for a short time after you stop touching it. You may affect more mild change from a short distance. Finally, you can work metal with your touch with the same precision and speed as if you had metalworking tools (but not a forge) and you do not need _Smith's Tools_ to repair metal equipment."
+        "effect": "You can modify the physical properties of metal to a moderate degree, allowing you to make iron as hard as steel or the reverse. For maximum effect you must be touching the metal. The effect persists for a short time after you stop touching it. You may affect more mild change from a short distance. Finally, you can work metal with your touch with the same precision and speed as if you had metalworking tools (but not a forge) and you do not need _Smith's Tools_ to repair metal equipment.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
       {
         "name": "Fullmetal",
@@ -112,45 +172,104 @@
     ]
   },
   {
-    "name": "Woodcraft",
-    "category": "Hide",
+    "name": "Novice Bloomcraft",
+    "category": "Wood",
     "type": "Discipline",
-    "desc": "Simple techniques that all with a wood companion can easily accomplish.",
+    "desc": "The fundamentals of bloomcraft, a speciality of woodcraft that focuses on manipulating living plant matter, causing it to bloom, grow, and change.",
+    "effect": "This replaces _Basic Bloomcraft_.",
     "abilities": [
       {
-        "name": "Basic Woodcraft",
+        "name": "Bloomcraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Skill",
+        "effect": "You can manipulate living plant matter, encouraging growth and changing its shape. If you do this over an extended period these changes are permanent, and can result in otherwise impossible growth. Rapid forced growth and manipulation tends to stress the plants, and the spirits in the plant will force it to return to its original state after a short time. In general, you can quickly form vine-like structures from grass and other small plantlife and given time can form more intricate and complex flora. You can accomplish this at a short distance, but the effect is enhanced if you are touching the plant.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
+      },
+      {
+        "name": "Ripen",
+        "category": "Travel",
+        "keywords": ["Spirit", "Wood"],
+        "type": "Power",
+        "effect": "Whenever you _Forage_ you may induce growth in nearby plants, forcing some that are near bloom to ripen. Your Spirit gains 1 _Fatigue_, and you gain +1 of whatever you forage, so long as it was a plant. Otherwise, gain a single fruit that acts as _Fresh Food_."
+      },
+      {
+        "name": "Control Growth",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wood"],
+        "target": "An _Overgrown_ Arena or one with grass, moss, or other notable foliage",
+        "range": "1",
+        "cost": "2 _Momentum_",
+        "effect": "The _Arena_ gains or removes _Overgrown_."
+      },
+      {
+        "name": "Ensnare",
+        "category": "Balanced",
+        "type": "Attack",
+        "keywords": ["Spirit", "Wood"],
+        "target": "One creature in Arena with grass, moss, or other notable foliage",
+        "range": "1",
+        "cost": "2 _Momentum_",
+        "effect": "The Target must _Negate_ [_Grit_/_Reflex_ 8] or gain _Entangled_ 1. If the Target is in an _Overgrown_ _Arena_, increase the _Negate_ DC by 2 or decrease the Cost by 1. _Fire_ Damage also causes the Target to clear _Entangled_ as if it was _Slash_ Damage.",
+        "enhancements": [{ "name": "Massive Growth", "cost": "3 _Momentum_", "effect": "Instead, the Target is 'An _Overgrown_ _Arena_." }]
+      }
+    ]
+  },
+  {
+    "name": "Artist",
+    "desc": "You are a skilled artist, allowing you to accurately capture imagery of the natural world and create aesthetic constructions.",
+    "category": "Crafting",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Artistic Fundamentals",
+        "category": "Technical",
+        "type": "Skill",
+        "effect": "You are a skilled artist and, regardless of your specialty, are skilled at drawing and sketching. Given appropriate tools you can faithfully reproduce images of things seen on your adventures, and excel at understanding complex imagery and how a piece of art was made, which could grant additional insight. Additionally, choose a specialty for your art such as painting or sculpture. When working on or analyzing anything that matches your specialty all of these effects are heightened. Finally, you always understand the meaning an artist was attempting to represent when seeing their art, even if that is not how you feel about it.\n&nbsp;\nWhen your background and skills as an artist would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Artistic Analysis",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "While you have a _Sketchbook_ you may, as a _Camp Action_, clear 1 _Stress_ then make an incredibly detailed sketch of something you saw today in your _Sketchbook_. The act of transferring this to your _Sketchbook_ gives you additional information about the target, typically the equivalent of the _Observation_ or _Advantage_ Augment, but may provide additional effects (such as additional Route Mastery when sketching a significant landmark) at GM discretion."
+      },
+      {
+        "name": "Artistic Expression",
+        "category": "Downtime",
+        "type": "Power",
+        "effect": "During Downtime you may create a grand piece of art of your chosen medium that is too large to easily transport but a wonderful gift to your current town. Choose whether this is an object of Fear, Wonder, or Glory:\n* If you choose Fear, you depict a danger you encountered on your adventures.\n* If you choose Wonder, you depict something incredible you saw on your journey.\n* If you choose Glory, you depict you our your allies accomplishing great things on your journey.\n\nOnce per Journey you may treat your piece of art as if it was an Advantage if you're able to lean in to its thematic meaning."
+      }
+    ]
+  },
+  {
+    "name": "Herbalist",
+    "desc": "You are well-studied when it comes to herbs, and can create many basic remedies from them even with limited supplies.",
+    "category": "Crafting",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Herbalism",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You have a basic, intuitive grasp of woodcraft. You gain the following:\n* **Range**: Your woodcraft has a range of approximately 30 meters.\n* **Woodsense:** You have a rough knowledge of the location of all wood within your wood range.\n* **Leaf Arts**: You may move and control wooden objects up to 15 pounds, with good precision at low weights and decent precision at higher weights.\n* **Bark Arts:** You may slightly shape wood, bending or warping it a few centimeters. This change is temporary, and ends if you stop concentrating.\n\nYour Spirit may take 1 _Fatigue_ to double the effect of any of these abilities temporarily."
+        "effect": "You have studied herbs, and can identify most herbs at a glance. For those that you cannot, you at least have a general sense of their properties, and can always tell if an herb would be toxic. In addition to being able to identify herbs, you are well-versed on their properties, where they grow, and other useful details.\n&nbsp;\nWhen your background and skills as an herbalist would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
-        "name": "Woodbending",
-        "category": "Utility",
-        "type": "Passive",
-        "keywords": ["Spirit", "Wood"],
-        "effect": "You have _Kinesis_ [_Wood_] within _Close_- Range. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range. If you choose the <u>Steal</u> option, you instead must Target a _Wood_ piece of _Equipment_."
+        "name": "Gather Herbs",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "When you <u>Forage</u> as a _Camp_ or _Travel_ _Action_ you may choose to roll on a specialized **Herbalist Chart** that offers more and rarer herbs. You may look at this area's **Herbalist Chart** before deciding to roll on it, although the GM may hide the specifics of the rarest option on the table."
       },
       {
-        "name": "Wooden Splinter",
-        "category": "Light",
-        "type": "Attack",
-        "keywords": ["Spirit", "_Wood_", "Stab", "Remote"],
-        "cost": "1 _Momentum_",
-        "range": "_Short_-",
-        "effect": "Pick a 0 _Load_ _Wood_ item within _Close_- Range to use as _Ammunition_, then Attack a target within Range. You may also use this if there is a _Wood_ _Source_ within _Close_- Range, creating a 0 _Load_ Wooden Spike as _Ammunition_.",
-        "special": "If the Item used for this has an Attack with _Crush_ or _Slash_ you may replace _Stab_ with said keyword.",
-        "enhancements": [
-          {
-            "name": "Heavy Splinter",
-            "cost": "1 _Momentum_",
-            "effect": "You instead use a _Load_ 1 item as _Ammunition_, or create a 1 _Load_ Wooden Spike as _Ammunition_ from a _Wood_ _Source_ within _Close_- Range. Deal +_1/1/2/2_ Damage."
-          }
-        ],
-        "chart": {
-          "damage": [0, 1, 2, 2],
-          "roll": ["2-3", "4-6", "7-10", "11-12"],
-          "status": ["None", "None", "None", "None"]
-        }
+        "name": "Field Herbalism",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "As a _Camp Action_, you may choose up to two herbs you have. You may process them and create the more refined versions, such as making a _Poultice_ from _Medicinal Herbs_. This action requires _Herbalism Tools_."
+      },
+      {
+        "name": "Cultivation",
+        "category": "Downtime",
+        "type": "Power",
+        "effect": "When you return to a friendly town or similar location, any Herbs you have can be planted in the town; you may choose to start the _Journey_ with the processed version of those herbs planted in such a way at no Cost, up to one per planted version of the herb. You may collect raw Herbs from towns you pass through where you have planted them."
       }
     ]
   },
@@ -164,23 +283,23 @@
         "name": "Strength of the Forge",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality. This ability works to a lesser extent when you see a piece of their handiwork."
+        "effect": "You are used to long hours working in the forge, which has given you a strong back, endurance, and the ability to use a wide variety of heavy tools. Additionally, when seeing another smith's hands, tools, or forge you can get a sense of their skill level and personality. This ability works to a lesser extent when you see a piece of their handiwork.\n&nbsp;\nWhen your background and skills as an blacksmith would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Metallurgy",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal craftsmanship, and can easily identify the strongest and weakest point on something made of metal."
+        "effect": "You are well-versed in different types of metal, and can easily identify most metals and their properties at a glance. For those that you cannot, you at least have a general sense of their properties. Additionally, you have a deep understanding of metal craftsmanship, and can easily identify the strongest and weakest point on something made of metal.\n&nbsp;\nWhen your knowledge of metal would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Metalworking",
-        "category": "Narrative",
+        "category": "Camp",
         "type": "Power",
-        "effect": "When you _Mend_ while _Resting_ you automatically succeed if the item is _Metal_. Additionally, if you have access to the appropriate tools, gain the following _Camp Action_:\n* <u>Field Repair</u>: Choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 piece of _Scrap_, then restore it to 1 _Durability_."
+        "effect": "When you _Mend_ while _Resting_ you automatically succeed if the item is _Metal_. Additionally, as a _Camp Action_, you may choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 piece of _Scrap_, then restore it to 1 _Durability_. This Action requires appropriate tools."
       },
       {
         "name": "Forge-Trained",
-        "category": "Narrative",
+        "category": "Crafting",
         "type": "Power",
         "effect": "Given appropriate tools and materials, you may craft Metal equipment. Most basic or rough tools can be crafted in a few hours, with more intricate or complicated tools taking longer.[Item crafting with extra benefits for metal]"
       }
@@ -197,25 +316,25 @@
         "name": "Weapon Academia",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are well-versed in different types of weapons, as well as how they are made. You intuitively understand the function, craftsmanship, and cultural significance of weapons, and can accurately assess the condition of a weapon at a glance. Additionally, from a weapon, you can gain insight into its maker, the culture it comes from, and skill level of the wielder."
+        "effect": "You are well-versed in different types of weapons, as well as how they are made. You intuitively understand the function, craftsmanship, and cultural significance of weapons, and can accurately assess the condition of a weapon at a glance. Additionally, from a weapon, you can gain insight into its maker and skill level of the wielder.\n&nbsp;\nWhen your background and skills as a weaponsmith would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
-        "name": "Higher Quality",
-        "category": "Narrative",
+        "name": "Hone",
+        "category": "Camp",
         "type": "Power",
-        "effect": "During Downtime you may work on your allies' weapons, making them visibly of higher quality and granting yourself and all party members a Weaponsmith's Blessing at the start of each _Journey_. A character make expend their Weaponsmith's Blessing for one of the following effects:\n* In a Skill Challenge, when the weapon is granting a die, you may gain an additional die.\n* After making an Attack with a Weapon, you may expend the blessing to use a _Gambit_, even if you didn't qualify for one.\n* When a Weapon would lose _Durability_, you may expend the Weaponsmith's Blessing to instead not lose _Durability_.\n\n&nbsp;Finally, gain the following _Camp Action_:\n* <u>Hone</u>: Choose an ally that does not have a Weaponsmith's Blessing. You take the time to ensure their equipment is in working order, granting them a Weaponsmith's Blessing."
+        "effect": "As a _Camp Action_, choose an ally (including yourself) without a _Weaponsmith's Blessing_. You may take the time to maintain that ally's weaponry, granting them a _Weaponsmith's Blessing_."
       },
       {
         "name": "Weapon Maintenance",
-        "category": "Narrative",
+        "category": "Camp",
         "type": "Power",
-        "effect": "When you _Mend_ while _Resting_ you automatically succeed if the item is a weapon. Additionally, whenever you make camp, you may take the <u>Mend</u> or <u>Hone</u> _Camp Action_ without expending your _Camp Action_ for the day. When you do, roll a d6; on a 2-, you cannot use this ability until it is _Recovered_."
+        "effect": "When you take the _Mend_ _Camp Action_ you automatically succeed if the item is a weapon. Additionally, whenever you make camp, you may take the <u>Mend</u> or <u>Hone</u> _Camp Action_ without expending your _Camp Action_ for the day. When you do, roll a d6; on a 2-, you cannot use this ability until it is _Recovered_."
       },
       {
         "name": "Forge Weapon",
-        "category": "Narrative",
+        "category": "Crafting",
         "type": "Power",
-        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. [Item crafting with extra benefits for weapons]"
+        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. [Item crafting with extra benefits for weapons]\n\nAdditionally, at the start of a _Journey_, grant yourself and all allies a _Weaponsmith's Blessing_."
       }
     ]
   },
@@ -228,11 +347,17 @@
         "name": "Exceptional Toughness",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina. This does not grant dice on _Travel Rolls_, but may be treated as a piece of appropriate Equipment when dealing with travel conditions that toughness would aid with."
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina.\n&nbsp;\nWhen your exceptional toughness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Duration* if appropriate."
+      },
+      {
+        "name": "Toughened Hide",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "When traveling, you may always treat yourself as if you're wearing one piece of relevant equipment in regards to heat, cold, or other environmental effects your enhanced resilience allows you to power through."
       },
       {
         "name": "Grin and Bear It",
-        "category": "Narrative",
+        "category": "Skill",
         "type": "Power",
         "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may place it on this Ability instead of your Health Bar, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
       },
@@ -240,8 +365,8 @@
         "name": "Toughness",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain +5 Stamina. At _Refresh_, lose half as much _Stun_ as you would normally lose to Afflictions (such as _Fatigue_).",
-        "bonuses": { "stamina": 5 }
+        "effect": "Gain +1 _Grit_ and +2 Stamina. At _Respite_, lose half as much _Stun_ as you would normally lose to Afflictions (such as _Fatigue_).",
+        "bonuses": { "stamina": 2, "grit": 1 }
       },
       {
         "name": "True Grit",
@@ -263,29 +388,29 @@
         "name": "Exceptional Charm",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, are quick to offer a helping hand, and are more likely to share information with you."
+        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, are quick to offer a helping hand, and are more likely to share information with you.\n&nbsp;\nWhen your charm and ability to persuade would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Incitement* if appropriate."
       },
       {
         "name": "First Impression",
-        "category": "Narrative",
+        "category": "Skill",
         "type": "Power",
-        "effect": "When meeting a new character you may charm them temporarily, causing them to treat you a bit better than they normally would, allowing you to interact neutrally with a character that dislikes you or acting as a friend with a character that you are only acquaintances with. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_. You may use this Ability once per day for free, with each successive use costing a _Stress_ to use."
+        "effect": "When meeting a new character you may charm them, causing them to treat you in a more friendly fashion. For example, a stranger might treat you as a friend, or a hostile creature may act more neutrally. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_. You may use this Ability once per day for free; take a _Stress_ for each successive use."
       },
       {
         "name": "Charming Presence",
         "category": "Support",
         "type": "Passive",
-        "effect": "Gain +1 _Focus_. At _Refresh_ one ally within Range 1 may gain _Joyful_."
+        "effect": "At _Respite_ you may use _Encourage_ [_Discount_ 2]."
       },
       {
         "name": "Charm Offensive",
-        "category": "Light",
-        "type": "Attack",
+        "category": "Offensive",
+        "type": "Maneuver",
         "keywords": ["Social"],
-        "range": "_Short_-",
+        "range": "1",
         "target": "Single-Target",
         "cost": "1 _Momentum_",
-        "effect": "The Target gains 1 _Stun_, then must Negate [5 _Focus_]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect."
+        "effect": "The Target gains 1 _Stun_, then must Negate [9 _Focus_]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect. If they fail by 3 or more, inflict an additional 2 _Stun_."
       }
     ]
   }

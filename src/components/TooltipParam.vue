@@ -216,10 +216,9 @@
             v-on="on"
             v-html="$marked.parseInline(input)" />
         </template>
-        <ability-widget
+        <base-widget
           :ability="this.$store.getters.getAbility(input)"
-          :cardStyle="true"
-          style="border: 0.5em double black" />
+          :cardStyle="true" />
       </v-menu>
     </span>
     <span

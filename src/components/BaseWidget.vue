@@ -240,7 +240,8 @@
         v-if="isAbilityPackage"
         v-bind:class="useTextFormatting"
         class="ability-box"
-        style="padding-bottom: 0.25em; padding-left: 3em">
+        style="padding-bottom: 0.25em"
+        v-bind:style="isStance ? {} : 'padding-left: 3em'">
         <base-widget
           v-for="(ability, index) in ability.Abilities"
           :ability="ability" />

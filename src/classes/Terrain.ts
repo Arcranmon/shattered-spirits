@@ -54,7 +54,7 @@ class Terrain extends Base {
     return '**Negate:** ' + this.negate_
   }
   public get Header() {
-    return this.Name + ' - _' + this.element_ + '_  Terrain (_' + this.layer_ + '_)'
+    return this.Name + ' - _' + this.element_ + '_  Terrain'
   }
 
   // ==========================================================
