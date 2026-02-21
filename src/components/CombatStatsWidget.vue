@@ -135,7 +135,7 @@
           <v-btn
             inline
             small
-            @click="creature.ClearBlock(), $emit('changed')"
+            @click="creature.Clearstun(), $emit('changed')"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -144,17 +144,17 @@
         <v-col>
           <div
             class="stun--exterior"
-            :style="blockWidth">
+            :style="stunWidth">
             <div
               class="stun--interior"
-              :style="blockbar" />
+              :style="stunbar" />
           </div>
         </v-col>
         <v-col cols="auto">
           <v-btn
             inline
             small
-            @click="apBlock ? creature.AddApBlock() : creature.AddBlock(), $emit('changed')"
+            @click="apstun ? creature.AddApstun() : creature.Addstun(), $emit('changed')"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>
@@ -204,9 +204,9 @@
       </v-row>
       <v-row no-gutters>
         <v-col>
-          <display-tooltip-text string="**_Block_:**" />
+          <display-tooltip-text string="**_stun_:**" />
         </v-col>
-        <v-col :cols="8">{{ creature.Block }}</v-col>
+        <v-col :cols="8">{{ creature.stun }}</v-col>
       </v-row>
     </div>
   </div>
@@ -222,7 +222,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      apBlock: false,
+      apstun: false,
     }
   },
   computed: {
@@ -235,20 +235,11 @@ export default Vue.extend({
     staminabar() {
       return 'width: ' + this.creature.StaminaPercent + '%; background-color: ' + this.creature.StaminaColor
     },
-    armorbar() {
-      return 'width: ' + this.creature.ArmorPercent + '%;'
-    },
-    blockbar() {
-      return 'width: ' + this.creature.BlockPercent + '%; background-color: ' + this.creature.BlockColor
+    stunbar() {
+      return 'width: ' + this.creature.stunPercent + '%; background-color: ' + this.creature.stunColor
     },
     movebar() {
       return 'width: ' + this.creature.MovePercent + '%; background-color: ' + this.creature.MoveColor
-    },
-    armorWidth() {
-      return 'width: ' + this.creature.ArmorBlockRatio + '%;'
-    },
-    blockWidth() {
-      return 'width: ' + (100 - this.creature.ArmorBlockRatio) + '%;'
     },
   },
 })
@@ -256,16 +247,14 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .stamina--exterior,
-.armor--exterior,
 .stun--exterior {
   width: 100%;
   border: 1px solid black;
   height: 20px;
   vertical-align: middle;
-  display: inline-block;
+  display: inline-stun;
 }
 .stamina--interior,
-.armor--interior,
 .stun--interior {
   border: 0px solid transparent;
   margin: 0 auto;
@@ -275,18 +264,9 @@ export default Vue.extend({
 .stamina--interior {
   background-color: #a0010f;
 }
-.armor--exterior {
-  display: inline;
-  float: left;
-  border-right: 2px solid black;
-}
-.armor--interior {
-  background-color: #919191;
-}
 .stun--exterior {
   display: inline;
   float: right;
-  border-left: 2px solid black;
 }
 .bar--area {
   display: flex;

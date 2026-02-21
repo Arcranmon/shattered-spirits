@@ -253,6 +253,7 @@ import { getModule } from 'vuex-module-decorators'
 import { CharacterManagementStore } from '@/store'
 import { Character } from '@/class'
 import John from '@/database/sample_characters/john.json'
+import Erika from '@/database/sample_characters/erika.json'
 import ShowCharacter from '@/components/ShowCharacter.vue'
 
 export default Vue.extend({
@@ -308,8 +309,14 @@ export default Vue.extend({
 
     importPremades() {
       const store = getModule(CharacterManagementStore, this.$store)
-      var char = Character.Deserialize(John)
-      store.AddCharacter(char)
+      if (store.AllCharacters.filter((x) => x.Name == 'John').length == 0) {
+        var char = Character.Deserialize(John)
+        store.AddCharacter(char)
+      }
+      if (store.AllCharacters.filter((x) => x.Name == 'Erika').length == 0) {
+        var char = Character.Deserialize(Erika)
+        store.AddCharacter(char)
+      }
     },
 
     importCharacter() {

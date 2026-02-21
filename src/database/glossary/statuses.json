@@ -78,10 +78,11 @@
   },
   {
     "name": "Dazed",
-    "desc": "An affliction caused when a creature's mind is muddled ad slow, compromising their defenses.",
-    "effect": "The Target loses a total of X _Stamina_, where X is the value of Dazed. If a creature has 0 _Stamina_ any remaining Dazed is instead applied as _Block_.",
-    "special": "Dazed is applied before a creature may Negate any other effects.",
-    "type": "Hide"
+    "desc": "An affliction caused when a creature is rattled and off-balance and unable to defend.",
+    "effect": "Defense Rolls made by a Dazed creature have _Disadvantage_.",
+    "repeat": "If an Exposed creature would gain Exposed they instead gain 2 _Stun_.",
+    "recover": "When a creature _Recovers_ they may remove Dazed.",
+    "type": "Minor Condition"
   },
   {
     "name": "Taunted",
@@ -95,17 +96,17 @@
   {
     "name": "Engaged",
     "desc": "A status showing that two creatures are engaged in close combat with one another.",
-    "effect": "While Engaged spending _Movement_ or using Abilities that cost _Movement_ (even if that cost is reduced to 0) creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all Attacks that do not include at least one creature they are _Engaged_ with.",
+    "effect": "While Engaged spending _Movement_ or using Abilities that cost _Movement_ (even if that cost is reduced to 0) creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all non-_Melee_ Attacks.",
     "remove": "Characters may spend 1 _Movement_ to remove all instances of _Engaged_, as well as any _Terrain Bonus_ or _Hazard_.",
     "type": "Status Effect"
   },
   {
     "name": "Exposed",
     "desc": "An affliction caused when an opening in a creature's defenses has been forced open.",
-    "effect": "The next Attack against an Exposed creature has _Advantage_. After being attacked remove Exposed.",
-    "repeat": "If an Exposed creature would gain Exposed they instead gain 1 _Stun_.",
+    "effect": "Attack against an Exposed creature have _Advantage_.",
+    "repeat": "If an Exposed creature would gain Exposed they instead gain 2 _Stun_.",
     "recover": "When a creature _Recovers_ they may remove Exposed.",
-    "type": "Status Effect"
+    "type": "Minor Condition"
   },
   {
     "name": "Grabbed",
@@ -142,10 +143,10 @@
   {
     "name": "Impaired",
     "desc": "An affliction caused when a creature's ability to attack is limited.",
-    "effect": "The next Attack by an Impaired creature has _Disadvantage_. After this impacts an Attack remove Impaired.",
-    "repeat": "If an Impaired creature would gain Impaired they instead gain 1 _Stun_.",
+    "effect": "Attacks by an Impaired creature have _Disadvantage_.",
+    "repeat": "If an Impaired creature would gain Impaired they instead gain 2 _Stun_.",
     "recover": "When a creature _Recovers_ they may remove Impaired.",
-    "type": "Affliction"
+    "type": "Minor Condition"
   },
   {
     "name": "Immobilized",
@@ -156,7 +157,7 @@
   {
     "name": "Poisoned",
     "desc": "An affliction caused by toxins ravaging you from the inside out.",
-    "effect": "While a creature is Poisoned they take _Damage_ equal to their Poisoned value at the start of their _Turn_. A creature may reduce this Damage by their _Grit_, instead taking that portion as _Stun_.",
+    "effect": "While a creature is Poisoned they take _Poison_ _Damage_ equal to their Poisoned value at the start of their _Turn_. A creature may reduce this Damage by their _Grit_, instead taking that portion as _Stun_. A character that ends combat Poisoned and has no way to clear it automatically gains a single segment _Poison_ _Wound_.",
     "remove": "Poisoned is only removed by effects that explicitly remove it.",
     "type": "Affliction"
   },

@@ -1,5 +1,34 @@
 [
   {
+    "name": "Pipe",
+    "category": "Trinket",
+    "desc": "A small pipe that can be used.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Common",
+    "effect": "You may use this item to relax using _Herbal Remedy_ or other similar items."
+  },
+  {
+    "name": "Sketchbook",
+    "category": "Trinket",
+    "desc": "A small, many-page book for sketching in, coupled with a simple charcoal pencil.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Uncommon"
+  },
+  {
+    "name": "Herbal Remedy",
+    "category": "Herb",
+    "desc": "Herbs that, when smoked, allow you to relax and unwind.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Common",
+    "effect": "When you take the _Vent_ _Camp Action_, if you have a _Pipe_ you can consume this; you and the character you are _Venting_ with clear an additional _Stress_. However, neither of you can remove the <u>Crash</u> Danger from your Rest Roll if you do so.\n&nbsp;\nAlternatively, this may be Refined into _Wood Essence_."
+  },
+  {
     "name": "Health Flask",
     "category": "Potion",
     "desc": "A potion that fills you with energy and staunches minor wounds.",
@@ -8,6 +37,7 @@
     "durability": 1,
     "rarity": "Common",
     "keywords": ["Quickdraw", "Consumable", "Fragile", "Medicine"],
+    "effect": "If used as _Medicine_, the target may mark an additional segment on their _Wound_ clock.",
     "abilities": [
       {
         "name": "Drink",
@@ -20,7 +50,7 @@
   },
   {
     "name": "Caltrops",
-    "category": "Supply",
+    "category": "Grenade",
     "desc": "A satchel full of small triangle spikes of metal that can be scattered to deny an area to foes.",
     "load": 1,
     "hands": 1,
@@ -36,7 +66,29 @@
         "cost": "1 _Momentum_",
         "range": "1",
         "target": "An _Arena_.",
-        "effect": "You scatter metallic caltrops in the Target, creating dangerous terrain. Creatures in the Target must spend 1 extra _Movement_ whenever they spend _Movement_ and _Negate_ _Reflex_ with _Disadavantage. A creature may take 2 [_Stab_] Damage to ignore this effect for a single Move or _Negate_."
+        "effect": "You scatter metallic caltrops in the Target, creating dangerous terrain that makes the _Arena_ _Rough_. A creature may take 2 [_Stab_] Damage to ignore this effect for a single Move or _Negate_."
+      }
+    ]
+  },
+  {
+    "name": "Seed Bomb",
+    "category": "Grenade",
+    "desc": "A collection of seeds wrapped around a core of powerful wood spiritual energy, allowing one to immediately cover an area in verdant green.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Rare",
+    "keywords": ["Wood", "Quickdraw", "Consumable"],
+    "effect": "When imbued with a trace amount of spiritual energy this will violently detonate a short time after, spreading a huge growth of green across the area, regardless of how barren it was before. The plants persist, but after a few hours the magic sustaining their growth fades, causing them to act as normal plants would.",
+    "abilities": [
+      {
+        "name": "Spread Green",
+        "category": "Utility",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "1",
+        "target": "An _Arena_.",
+        "effect": "The target _Arena_ becomes covered in resilient plantlife and gains [_Fertile_]."
       }
     ]
   },
@@ -58,34 +110,43 @@
         "type": "Attack",
         "cost": "1 _Momentum_",
         "range": "1",
-        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [5 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.",
+        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [8 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.",
         "chart": {
           "damage": [0, 0, 1, 2],
           "stun": [0, 3, 5, 7],
-          "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_"]
+          "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_, _Dazed_"]
         }
       }
     ]
   },
   {
     "name": "Smith's Tools",
-    "category": "Supply",
+    "category": "Tool",
     "load": 2,
     "durability": 1,
     "effect": "A set of simple metal-working tools that can be used to repair Metal equipment while traveling, or handle simple forging if you have access to a forge. It includes a hammer, tongs, and various files.",
     "desc": "Portable smithing supplies that are excellent for field repairs of equipment."
   },
   {
+    "name": "Herbalist's Tools",
+    "category": "Tool",
+    "load": 2,
+    "durability": 1,
+    "effect": "A set of simple herbalism tools that can be used to prepare herbs. It includes a mortar and pestle, a few basic alchemical reagents, and tools for harvesting and preserving herbs.",
+    "desc": "Portable herbalism tools that can be used to create basic remedies and tonics."
+  },
+  {
     "name": "Wine",
     "category": "Luxury",
     "desc": "While it's hardly the finest vintage, this fortified wine is excellent for taking the edge off after a hard day of traveling.",
     "load": 1,
-    "keywords": ["Alcohol", "Consumable"],
-    "durability": 1
+    "keywords": ["Alcohol"],
+    "durability": 1,
+    "effect": "You may consume this while resting to automatically clear a _Stress_, but cannot remove the <u>Crash</u> Danger from their Rest Roll if you do so."
   },
   {
     "name": "Polish Kit",
-    "category": "Supply",
+    "category": "Tool",
     "desc": "Various rags and oils for keeping metal sparkling and pristine.",
     "load": 1,
     "durability": 1,
@@ -93,20 +154,37 @@
   },
   {
     "name": "Bedroll",
-    "category": "Supply",
+    "category": "Camp Item",
     "load": 2,
     "durability": 1,
     "desc": "A simple bedroll and bedding material that keeps you off the ground and ensures a good nights sleep."
   },
   {
     "name": "Tent",
-    "category": "Supply",
-    "keywords": ["Wood"],
+    "category": "Camp Item",
     "load": 2,
     "durability": 1,
     "desc": "A tent big enough for two that keeps you out of the weather to ensure a good nights sleep."
   },
   { "name": "Poultice", "keywords": ["Medicine"], "category": "Medicine", "load": 1, "durability": 1 },
+  {
+    "name": "Antidote",
+    "category": "Potion",
+    "keywords": ["Quickdraw", "Consumable", "Fragile"],
+    "load": 1,
+    "durability": 1,
+    "effect": "This may be used as if it was _Medicine_ for a non-Spirit character suffering from a _Poison_ _Wound_; if it is, the character may mark an additional two segments on the Clock.",
+    "abilities": [
+      {
+        "name": "Drink",
+        "category": "Recovery",
+        "type": "Maneuver",
+        "cost": "None",
+        "reqs": "May not be used by Spirits.",
+        "effect": "Create an [_Opening_]. Reduce your _Poisoned_ value by 4."
+      }
+    ]
+  },
   {
     "name": "Rope",
     "category": "Supply",
@@ -117,10 +195,9 @@
   {
     "name": "Rations",
     "category": "Food",
-    "keywords": ["Natural"],
+    "keywords": ["_Food_ (Poor)"],
     "load": 1,
-    "desc": "Dried food such as jerky and hardtack that, while hardly a feast, is enough to keep you moving.",
-    "effect": "After eating these rations, roll a d6. On a 3 or less gain 1 _Stress_."
+    "desc": "Dried food such as tough jerky and hardtack that, while an unpleasant meal, is enough to keep you moving."
   },
   {
     "name": "Iron Scrap",
@@ -133,11 +210,36 @@
   },
   {
     "name": "Waterskin",
-    "keywords": ["Natural", "Water"],
-    "category": "Supply",
+    "keywords": ["Water"],
+    "category": "Camp Item",
     "load": 1,
     "durability": 1,
     "desc": "A water-tight pouch containing a day's worth of water.",
-    "effect": "This carries 1 _Load_ worth of _Water_."
+    "effect": "This carries a day's worth of water, and can be treated as 1 _Load_ of water for Abilities."
+  },
+  {
+    "name": "Medicinal Herbs",
+    "keywords": ["Natural"],
+    "category": "Herb",
+    "load": 1,
+    "durability": 1,
+    "desc": "A cluster of common medicinal herbs with a variety of healing properties.",
+    "effect": "This may be Refined into a _Poultice_ or _Healing Essence_. Additionally, as a _Camp Action_, any character may attempt to create a _Poultice_ from this. Roll a d6; on a 4 or higher, create a _Poultice_. On a failure, the herbs are lost. If they have _Herbalist's Tools_ or similar, they instead always succeed."
+  },
+  {
+    "name": "Healing Essence",
+    "keywords": ["Reagent", "_Stack_ (4)"],
+    "category": "Essence",
+    "load": 1,
+    "durability": 1,
+    "desc": "Refined spiritual essence that lacks a distinct elemental affinity, tends to have a potent healing effect on living creatures. It is unsafe to use in this state."
+  },
+  {
+    "name": "Wood Essence",
+    "keywords": ["Reagent", "_Stack_ (4)"],
+    "category": "Essence",
+    "load": 1,
+    "durability": 1,
+    "desc": "Refined spiritual essence that channels the concentrated power of wood spirits. It is unsafe to use in this state."
   }
 ]

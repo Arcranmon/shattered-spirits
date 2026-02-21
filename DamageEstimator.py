@@ -10,7 +10,9 @@ momentum_value = 2
 # In theory, Advantage is 'worth' ~1/2 Momentum just in terms of the increased likelihood of a Gambit. Actual worth depends heavily on the applicable attack.
 
 status_multipliers = {
-    "Bleeding": 1.5
+    "Bleeding": 1.5,
+    "Dazed": 2,
+    "Pierce": 0.5
 }
 
 instant_statuses = ["Defending"]
@@ -18,6 +20,7 @@ instant_statuses = ["Defending"]
 keyword_modifiers = {
     "Brawling": 0.15, # Pretty niche
     "Remote": 0.25,
+    "Glancing": -1
 }
 
 attack_range_multiplier = {
@@ -52,9 +55,11 @@ def get_status_magnitude(status):
     split_status = status.split(' ')
     if len(split_status) == 1: 
         return status_multipliers[split_status[0].strip()]
-    if len(split_status) == 2: 
+    if len(split_status) == 2 and '[' in split_status[1]: 
+        return status_multipliers[split_status[0].strip()]
+    elif len(split_status) == 2 : 
         return status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
-    if len(split_status) == 3: # I'm lazy
+    elif len(split_status) == 3: # I'm lazy
         return status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
 
 def get_status_damage(status_string, index):
@@ -85,6 +90,7 @@ def get_databases():
     # Open the appropriate database.
     merged_data = json.load(open('.\src\database\items\weapons.json'))
     merged_data.extend(json.load(open('.\src\database\\ability_packages.json')))
+    merged_data.extend(json.load(open('.\src\database\\traits.json')))
     return merged_data
 
 
@@ -149,7 +155,7 @@ def estimate_damage(attack, glancing, print_stats):
     lvh = 'none'
     attack_category = ATTACK
     override_range = ""
-    stun_scale = 0.75 # Stun is worth less (not sure how much)
+    stun_scale = 0.9 # Stun is worth less (not sure how much)
 
     cost += int(attack["cost"][0])
                     

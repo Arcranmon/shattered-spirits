@@ -176,13 +176,13 @@
           }
         ],
         "chart": {
-          "damage": [0, 2, 4, 5],
+          "damage": [0, 2, 4, 6],
           "roll": ["2-3", "4-5", "6-9", "10-12"],
           "status": ["None", "None", "None", "_Bleeding_ 1 [_Grit_]"]
         },
         "analysis_notes": {
-          "fudge": -0.222,
-          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
+          "fudge": -0.111,
+          "notes": "4+6 and 6+4 is two more potential Gambits for 5.55%, x2 for 2 Momentum",
           "range": "Melee"
         }
       }
@@ -190,6 +190,45 @@
     "load": 2,
     "hands": 1.5,
     "durability": 2
+  },
+  {
+    "name": "Quarterstaff",
+    "keywords": ["Wood"],
+    "category": "Staff",
+    "desc": "A thick sturdy staff that is just as useful for battle as it is for traveling.",
+    "rarity": "Common",
+    "abilities": [
+      {
+        "name": "Defensive Weapon",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "While _Wielding_ this _Weapon_ gain +1 _Block_ when you _Parry_."
+      },
+      {
+        "name": "Walking Stick",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "When traveling on uneven or difficult terrain you may remove a single **Affliction** or **Fatigue** Hazard related to said Terrain."
+      },
+      {
+        "name": "Strike",
+        "keywords": ["Crush", "Martial"],
+        "category": "Balanced",
+        "type": "Attack",
+        "cost": "2 _Momentum_",
+        "range": "Melee",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "stun": [0, 1, 3, 3],
+          "damage": [0, 1, 2, 3],
+          "roll": ["2-3", "4-5", "6-9", "11-12"],
+          "status": ["None", "None", "_Dazed_ [_Focus_/_Grit_]", "_Dazed_ [_Focus_/_Grit_]"]
+        }
+      }
+    ],
+    "load": 2,
+    "hands": 2,
+    "durability": 1
   },
   {
     "name": "Iron Greatsword",
@@ -720,43 +759,38 @@
     "durability": 9
   },
   {
-    "name": "Sling",
-    "category": "Hide",
+    "name": "Hunting Sling",
+    "category": "Sling",
     "desc": "A simple weapon with a windup that pierces through many defenses.",
-    "speed": 2,
-    "keywords": ["Crush", "Stone", "Fragile"],
-    "special": "Only the ammunition used for this Attack is _Stone_; the weapon itself is _Organic_.",
-    "range": "Short/Medium",
-    "chart": {
-      "stun": [0, 1, 3, 5],
-      "damage": [0, 2, 5, 7],
-      "roll": ["2-3", "4-5", "6-10", "11-12"],
-      "status": ["+1 _Momentum_", "None", "None", "None"]
-    },
+    "keywords": ["Ammunition"],
+    "effect": "A small pouch of slingstones is included with this weapon. If you ever run out of ammunition, you may always collect more the next time you make Camp as a free action. If you use other ammunition replace _Earth_ with the most appropriate element.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
     "abilities": [
       {
         "name": "Loose",
         "category": "Balanced",
         "type": "Attack",
-        "speed": 2,
+        "keywords": ["Stab", "Earth"],
         "cost": "2 _Momentum_",
-        "range": "Short/Medium",
-        "effect": "Attack a Target within Range."
-      },
-      {
-        "name": "Whirling Loose",
-        "category": "Balanced",
-        "type": "Attack",
-        "speed": 1,
-        "cost": "1 _Momentum_",
-        "range": "Medium/Long",
-        "effect": "Choose a Target within _Range_, then become _Charging_. At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack the Target, adding [_Pierce_ 1] and dealing +3 Damage on a _Graze_+."
+        "range": "2",
+        "effect": "Create an [_Opening_], then Attack a Target within Range.",
+        "chart": {
+          "stun": [0, 1, 1, 2],
+          "damage": [0, 1, 3, 4],
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "status": ["None", "None", "None", "None"]
+        },
+        "enhancements": [
+          {
+            "name": "Whirl",
+            "cost": "1 _Momentum_",
+            "effect": "Add [_Pierce_ 2] to the Attack and, on a _Hit_+, deal +1 Damage. You may only Attack Targets at Range 2 when making the Attack in this way."
+          }
+        ]
       }
-    ],
-    "load": 1,
-    "hands": 1,
-    "durability": 1,
-    "durability": 6
+    ]
   },
   {
     "name": "Heavy Sling",

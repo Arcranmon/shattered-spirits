@@ -35,6 +35,7 @@
         </v-btn-toggle>
       </v-col>
       <v-col
+        :key="selectedTab"
         style="padding-left: 0; padding-bottom: 0; margin-bottom: 0; height: 100%"
         class="background">
         <h2>{{ selectedTab }}</h2>
@@ -139,7 +140,7 @@
             :cols="1" />
         </div>
 
-        <div v-if="selectedTab == 'Armor and Accessories'">
+        <div v-if="selectedTab == 'Armor and Clothing'">
           <v-row
             class="select-bar"
             align="center">
@@ -225,7 +226,7 @@
           </div>
         </div>
         <spirit-abilities v-if="selectedTab == 'Spirit Customization'" />
-        <div v-if="selectedTab == 'Equipment'">
+        <div v-if="selectedTab == 'Consumables'">
           <v-row
             class="select-bar"
             align="center">
@@ -245,6 +246,78 @@
           <div class="character-tab-content">
             <show-cards
               :inputs="consumables"
+              :collapse="false"
+              :cols="1" />
+          </div>
+        </div>
+        <div v-if="selectedTab == 'Travel Items'">
+          <v-row
+            class="select-bar"
+            align="center">
+            <v-col
+              cols="12"
+              style="padding-left: 3em; padding-right: 3em">
+              <v-select
+                v-model="selectedTravelItems"
+                :items="travelItemCategories"
+                attach
+                label="Equipment Categories"
+                multiple
+                filled
+                background-color="#dbd9d9e3" />
+            </v-col>
+          </v-row>
+          <div class="character-tab-content">
+            <show-cards
+              :inputs="travelItems"
+              :collapse="false"
+              :cols="1" />
+          </div>
+        </div>
+        <div v-if="selectedTab == 'Equipment'">
+          <v-row
+            class="select-bar"
+            align="center">
+            <v-col
+              cols="12"
+              style="padding-left: 3em; padding-right: 3em">
+              <v-select
+                v-model="selectedEquipment"
+                :items="equipmentCategories"
+                attach
+                label="Equipment Categories"
+                multiple
+                filled
+                background-color="#dbd9d9e3" />
+            </v-col>
+          </v-row>
+          <div class="character-tab-content">
+            <show-cards
+              :inputs="equipment"
+              :collapse="false"
+              :cols="1" />
+          </div>
+        </div>
+        <div v-if="selectedTab == 'Resources'">
+          <v-row
+            class="select-bar"
+            align="center">
+            <v-col
+              cols="12"
+              style="padding-left: 3em; padding-right: 3em">
+              <v-select
+                v-model="selectedResources"
+                :items="resourcesCategories"
+                attach
+                label="Equipment Categories"
+                multiple
+                filled
+                background-color="#dbd9d9e3" />
+            </v-col>
+          </v-row>
+          <div class="character-tab-content">
+            <show-cards
+              :inputs="resources"
               :collapse="false"
               :cols="1" />
           </div>
@@ -272,13 +345,31 @@ export default Vue.extend({
       selectedTab: 'Basic Skills',
       selectedElement: 'Earth',
       elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
-      tabs: ['Basic Skills', 'Archetypes', 'Disciplines', 'Talents', 'Spirit Customization', 'Armor and Accessories', 'Weapons and Shields', 'Equipment'],
-      armorCategories: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
-      selectedArmors: ['Base Armor', 'Layered Armor', 'Over Armor', 'Helmet', 'Boot', 'Accessory'],
-      weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
-      selectedWeapons: ['Blade', 'Lance', 'Axe', 'Blunt', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
-      consumableCategories: ['Food', 'Grenade', 'Luxury', 'Medicine', 'Potion', 'Supply'],
-      selectedConsumables: ['Food', 'Grenade', 'Luxury', 'Medicine', 'Potion', 'Supply'],
+      tabs: [
+        'Basic Skills',
+        'Archetypes',
+        'Disciplines',
+        'Talents',
+        'Spirit Customization',
+        'Armor and Clothing',
+        'Weapons and Shields',
+        'Consumables',
+        'Travel Items',
+        'Equipment',
+        'Resources',
+      ],
+      armorCategories: ['Base Armor', 'Layered Armor', 'Outer Armor', 'Helmet', 'Boot', 'Cloak'],
+      selectedArmors: ['Base Armor', 'Layered Armor', 'Outer Armor', 'Helmet', 'Boot', 'Cloak'],
+      weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Staff', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
+      selectedWeapons: ['Blade', 'Lance', 'Axe', 'Blunt', 'Staff', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
+      consumableCategories: ['Grenade', 'Potion'],
+      selectedConsumables: ['Grenade', 'Potion'],
+      travelItemCategories: ['Food', 'Luxury', 'Medicine', 'Camp Item'],
+      selectedTravelItems: ['Food', 'Luxury', 'Medicine', 'Camp Item'],
+      equipmentCategories: ['Supply', 'Tool', 'Trinket'],
+      selectedEquipment: ['Supply', 'Tool', 'Trinket'],
+      resourcesCategories: ['Herb', 'Essence'],
+      selectedResources: ['Herb', 'Essence'],
       weaponTypes: ['Any', 'Light', 'Balanced', 'Heavy'],
       selectedType: 'Any',
       abilityTab: 0,
@@ -314,6 +405,15 @@ export default Vue.extend({
     },
     consumables: function () {
       return this.$store.getters.getFilteredEquipments(this.selectedConsumables)
+    },
+    travelItems: function () {
+      return this.$store.getters.getFilteredEquipments(this.selectedTravelItems)
+    },
+    equipment: function () {
+      return this.$store.getters.getFilteredEquipments(this.selectedEquipment)
+    },
+    resources: function () {
+      return this.$store.getters.getFilteredEquipments(this.selectedResources)
     },
     basic_stances() {
       return this.$store.getters.getStancesFromList(this.$store.getters.basicStances)

@@ -8,10 +8,6 @@
     "effect": "Arenas are distinct areas on a battlefield that take some significant effort to traverse between and designate different areas of combat. Generally, characters may spend  Movement to move from an Arena to any connected Arenas."
   },
   {
-    "name": "Alcohol",
-    "effect": "A character may use this while camping to automatically clear a _Stress_, but cannot remove the <u>Crash</u> Danger from their Rest Roll if they do so."
-  },
-  {
     "name": "Attack Roll",
     "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's _Profile_ to determine the effect. On a _Miss_, creatures gain _Momentum_ equal to half of the total cost of the Attack."
   },
@@ -35,6 +31,10 @@
   {
     "name": "Close",
     "effect": "Close Range effects may target any valid target within your current _Arena_."
+  },
+  {
+    "name": "Fertile",
+    "effect": "Any Bloomcraft Techniques that target this _Arena_ or creatures within it have their _Cost_ reduced by 1, to a minimum of 1."
   },
   {
     "name": "Inspiring",
@@ -65,6 +65,10 @@
     "effect": "Fleeting Terrains are _Destroyed_ at the end of the current _Round_."
   },
   {
+    "name": "Rough",
+    "effect": "This designates an area that is difficult to move in, whether due to uneven ground or other limitations. _Movement_ Costs in this _Arena_ are increased by 1 and _Negate_ _Reflex_ with _Disadvantage_. If multiple effects can make an Arena _Rough_ the effects do not stack."
+  },
+  {
     "name": "Foci",
     "effect": "While _Wielding_ this, whenever you you use an effect that allows you to place _Momentum_ on an Art or Technique and you choose an Art or Technique that matches this Foci's type, place an additional _Momentum_ and treat the Hands used to _Wield_ this as Free."
   },
@@ -73,10 +77,6 @@
     "effect": "Gambits are _Maneuvers_ that allow characters to enhance an Attack or Defend. When making an Attack, characters may use a Gambit if they roll doubles or roll a Critical Hit. If Defending, characters may use a Gambit if they roll doubles or Win. Characters may qualify for more than one Gambit on a single roll, such as when they roll doubles and get a Critical Hit. If a Gambit is triggered by an _Area_ Attack resolve the effects against a single Target per Gambit unless specified otherwise."
   },
   { "name": "Gambits", "see": "Gambit" },
-  {
-    "name": "Glancing",
-    "effect": "A Glancing effect did not hit as solidly as it should have; characters lose no _Block_ from the effect and has _Advantage_ to _Negate_."
-  },
   {
     "name": "Block",
     "effect": "When a character takes Damage, they may gain _Stun_ rather than _Stamina_ for an amount of Damage equal to their Block."
@@ -136,12 +136,20 @@
     "effect": "Rank refers to the result of an Attack or Defense Roll and corresponds to Miss, Graze, Hit, and Crit, in that order. Many effects increase or decrease the Rank, which moves it up or down the chart as applicable. An effect may not go below a Miss or above a Crit."
   },
   {
+    "name": "Poison",
+    "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they suffer the below effects:\n* **6-12**: You have a weakened constitution and suffer from constant nausea and dizziness. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_:\n\t* Gain a _Stress_ whenever you eat.\n\t* Gain 1 less _Momentum_ at _Respite_.\n* **3-5**: The poison badly harms you, leaving you in a difficult state. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_ suffer the one-segment effects and the following:\n\t* Gain _Fatigue_ every day if you _Travel_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 2).\n\t* You have _Disadvantage_ to _Negate_ all effects.\n* **2-**: The poison leaves lasting damage, making it near impossible for you to function as normal. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 12 Segment Clock to heal. While you have this _Wound_ suffer the one and two-segment effects and the following:\\n\t* Gain a _Fatigue_ at the start of each day after resolving your _Rest Roll_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 3).\n\t* You have _Disadvantage_ on all rolls."
+  },
+  {
     "name": "Parry",
     "effect": "You defend yourself by attempting to intercept, block, or otherwise deflect an attack. If the Attack is not _Melee_ you have _Disadvantage_ on the _Defense Roll_ if you are not _Wielding_ any [_Shielding_] _Equipment_."
   },
   {
     "name": "Dodge",
     "effect": "You defend yourself by attempting to get out of the way of an incoming assault.  A creature may only make a single Dodge Reaction each _Phase_."
+  },
+  {
+    "name": "Food",
+    "effect": "Characters must eat Food every day or gain _Hunger_. Food has levels of quality, outline below:\n* <u>Nauseating</u>: Characters gain a _Stress_ for eating this.\n* <u>Poor</u>: After eating this, roll a d6. On a 3 or less, gain a _Stress_.\n* <u>Bad</u>: After eating this, roll a d6. On a 1, gain a _Stress_.\n* <u>Passable</u>: Eating this never adds nor removes stress.\n* <u>Basic</u>: After eating this, roll a d6. On a 6, clear a _Stress_.\n* <u>Good</u>: After eating this, roll a d6. On a 4 or higher, clear a _Stress_.\n* <u>Delicious</u>: After eating this, clear a _Stress_."
   },
   {
     "name": "Soft Cover",
@@ -189,8 +197,8 @@
     "effect": "Attacks with this Keyword typically are triggered by some other effect and may not qualify for _Gambits_."
   },
   {
-    "name": "Feeble",
-    "effect": "Attacks with this keyword treat the Target's _Block_ as twice its value."
+    "name": "Glancing",
+    "effect": "Attacks with this keyword treat the Target's _Block_ as twice its value. Apply this after _Pierce_."
   },
   {
     "name": "Slow Turn",

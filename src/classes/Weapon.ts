@@ -14,7 +14,7 @@ class Weapon extends Equipment {
     return header
   }
   public get Summary() {
-    var header = '**Rarity:** ' + this.rarity_ + '; **Load:** ' + this.Load + '; **Durability:** ' + this.Durability
+    var header = '**Rarity:** ' + this.rarity_ + '; **Load:** ' + this.Load + '; **Durability:** ' + this.Durability + '; **Hands:** ' + this.Hands
     return header
   }
   get HandString() {

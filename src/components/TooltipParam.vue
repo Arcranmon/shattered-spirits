@@ -161,6 +161,27 @@
       </v-menu>
     </span>
     <span
+      v-else-if="this.$store.getters.isEquipment(input)"
+      attach>
+      <v-menu
+        :close-on-content-click="false"
+        bottom
+        nudge-bottom="20"
+        content-class="object">
+        <template v-slot:activator="{ on, attrs }">
+          <span
+            style="white-space: pre-wrap"
+            v-bind:class="{ dotted: decorate }"
+            v-bind="attrs"
+            v-on="on"
+            v-html="$marked.parseInline(input)" />
+        </template>
+        <base-widget
+          :ability="this.$store.getters.getEquipment(input)"
+          :format_text="true" />
+      </v-menu>
+    </span>
+    <span
       v-else-if="this.$store.getters.isArt(input)"
       attach>
       <v-menu

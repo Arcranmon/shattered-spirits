@@ -59,19 +59,7 @@ const kPlayerAbilities = [
   'Concentrate',
 ]
 
-const kSpiritAbilities = [
-  'Return',
-  'Perfect Parry',
-  'Perfect Dodge',
-  'Gain Advantage',
-  'Accelerate',
-  'Adrenaline Rush',
-  'Spiritcraft',
-  'Drop',
-  'Equip',
-  'Spiritbound',
-  'Delay',
-]
+const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Accelerate', 'Spiritcraft', 'Drop', 'Equip', 'Spiritbound', 'Delay']
 
 const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
@@ -113,7 +101,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get basicSpiritStances() {
-    return ['Skirmisher Spirit', 'Sniping Spirit', 'Sprinting Spirit', 'Surviving Spirit', 'Questing Spirit', 'Spiritual Essence']
+    return ['Skirmisher Spirit', 'Directed Spirit', 'Sprinting Spirit', 'Surviving Spirit', 'Questing Spirit', 'Spiritual Essence']
   }
 
   get playerArts() {

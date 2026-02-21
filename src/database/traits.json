@@ -7,21 +7,31 @@
     "abilities": [
       {
         "name": "Metal Form",
+        "keywords": ["Metal", "Spirit"],
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness."
+        "effect": "You're made of metal, which makes you immune to many of the normal hazards of the world and grants exceptional toughness.\n&nbsp;\nWhen your metallic form would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Metallic Body",
+        "keywords": ["Metal", "Spirit"],
         "category": "Defensive",
         "type": "Passive",
         "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain +2 _Block_ against _Slash_, _Stab_, and _Crush_ effects."
       },
       {
+        "name": "Metallic Reconstitution",
+        "keywords": ["Metal", "Spirit"],
+        "category": "Camp",
+        "type": "Power",
+        "effect": "As a part of a _Rest Roll_ if you are in a _Place of Power_ or consume at least 1 _Load_ of _Metal_ automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
+      },
+      {
         "name": "Heat Conduction",
+        "keywords": ["Metal", "Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "This creature has three states: Heated, Normal, and Chilled.\n* While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_, and adds _Fire_ to all _Martial_ _Attacks_. While _Chilled_, the creature has _Weakness_ to _Fire_. Whenever the creature takes _Fire_ Damage, move them one step towards Heated. Whenever they take _Cold_ Damage, move them one step towards Chilled. If they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
+        "effect": "This creature has three states: Heated, Normal, and Chilled.\n* While _Heated_, the creature has _Weakness_ to _Cold_ and _Water_, and adds _Fire_ to all _Martial_ _Attacks_.\n* While _Chilled_, the creature has _Weakness_ to _Fire_, and adds _Cold_ to all _Martial_ _Attacks_.\n* Whenever the creature takes _Fire_ Damage, move them one step towards Heated. \n* Whenever they take _Cold_ Damage, move them one step towards Chilled.\n* Whenever they take _Water_ Damage, move them one step towards Chilled but not beyond Normal."
       },
       {
         "name": "Metallic Resonance",
@@ -41,7 +51,56 @@
           }
         ]
       }
-    ]
+    ],
+    "desc": "You're a spirit of metal, cold and unyielding."
+  },
+  {
+    "name": "Woodborn",
+    "reqs": "Wood Spirit",
+    "category": "Wood",
+    "type": "Spirit Trait",
+    "abilities": [
+      {
+        "name": "Wooden Form",
+        "keywords": ["Wood", "Spirit"],
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You're made of wood and plantlife, granting you hardiness and the ability to grow with your environment.\n&nbsp;\nWhen your wooden form would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Wooden Body",
+        "keywords": ["Wood", "Spirit"],
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Your wooden form grants you the following effects:\n* Replace [_Natural_] with [_Wood_] on all your effects.\n* Gain +2 _Block_ against _Stab_ and _Crush_ effects.\n* Gain _Weakness_ to _Fire_."
+      },
+      {
+        "name": "Wooden Reconstitution",
+        "category": "Camp",
+        "type": "Power",
+        "keywords": ["Wood", "Spirit"],
+        "effect": "As a part of a _Rest Roll_ if you are in a _Place of Power_ or consume at least 1 _Load_ of high-quality Wood automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
+      },
+      {
+        "name": "Wooden Resonance",
+        "category": "Recovery",
+        "keywords": ["Wood", "Pacifist", "Rooted"],
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "reqs": "Unattended _Wood_ _Equipment_ within range or at _Wood_ _Terrain_.",
+        "special": "Your Spirit may use this on your _Turn_ while not _Summoned_. If they do, they must Target _Equipment_ you have _Worn_ or _Packed_.",
+        "effect": "Clear 4 _Stun_.",
+        "enhancements": [
+          {
+            "name": "Enhanced Healing",
+            "cost": "1 _Momentum_",
+            "effect": "Instead, clear 4 _Stun_ and gain 3 _Stamina_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1."
+          }
+        ]
+      }
+    ],
+    "desc": "You're a spirit of wood, adaptable and ever-growing."
   },
   {
     "name": "Light Natural Armor",
@@ -58,7 +117,54 @@
         "effect": "This spirit gains the _Carapace_ Armor.",
         "bonuses": { "equipment": ["Carapace"] }
       }
-    ]
+    ],
+    "desc": "You have scales, a thin shell, or some other natural defense mechanism."
+  },
+  {
+    "name": "Sure-Footed",
+    "type": "Trait",
+    "category": "General",
+    "cost": "2 Growth Points",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Perfect Footing",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "This creature has a natural sense of balance and is incredibly stable on their feet, allowing them to fit on surfaces that should be far to small for them.\n&nbsp;\nWhen their balance or stability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Confident Mobility",
+        "category": "Mobility",
+        "type": "Passive",
+        "effect": "Once per _Round_ you may ignore any increased _Movement_ cost or penalties to _Reflex_ due to _Terrain_ at no cost. You may refresh this ability for 1 _Momentum_ at any point. Finally, gain +1 _Reflex_.",
+        "bonuses": { "reflex": 1 }
+      }
+    ],
+    "desc": "You have an impeccable sense of balance, allowing you to move safely and confidently through anything."
+  },
+  {
+    "name": "Flowering",
+    "type": "Spirit Trait",
+    "category": "Wood",
+    "cost": "2 Growth Points",
+    "prereqs": "Wood Spirit.",
+    "abilities": [
+      {
+        "name": "Fruiting",
+        "keywords": ["Wood", "Spirit"],
+        "category": "Travel",
+        "type": "Power",
+        "effect": "While traveling, you may take 1 _Stress_ to create 1 _Food_ (Basic) as some of the flowers bloom into small fruit."
+      },
+      {
+        "name": "Sprouting",
+        "category": "Utility",
+        "type": "Passive",
+        "effect": "Your spirit may be treated as a _Source_ of _Load_ 1 and smaller _Wood_ _Items_ that can be removed without harming them. Additionally, you may always target within their _Engagement_ as if it was _Fertile_ and had significant plantlife."
+      }
+    ],
+    "desc": "You're covered in small, flowering growths that can be encouraged to grow at a moment's notice."
   },
   {
     "name": "Metallic Threads",
@@ -71,7 +177,7 @@
         "name": "Threads",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "This creature is capable of creating thin threads made of metal that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, the creature may be required to rest and recover it as if it was _Fatigue_."
+        "effect": "This creature is capable of creating thin threads made of metal that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, the creature may be required to rest and recover it as if it was _Fatigue_.\n&nbsp;\nWhen your threads would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Wire Whip",
@@ -79,23 +185,27 @@
         "type": "Attack",
         "range": "0",
         "target": "Single-Target",
-        "keywords": ["Slash", "Metal", "Feeble"],
+        "keywords": ["Slash", "Martial ", "Metal", "Glancing"],
         "cost": "1 _Momentum_",
         "effect": "Attack a Target within _Range_. You may deal no Damage to reduce the cost of <u>Entangle</u> by 1, but must choose prior to making the Attack.",
         "enhancements": [
           { "name": "Entangle", "cost": "2 _Momentum_", "effect": "Add _Entangled_ 1 [_Reflex_] on a _Graze_+, or _Entangled_ 2 [_Reflex_] on a _Crit_." }
         ],
         "chart": {
-          "roll": ["2-3", "4-5", "6-9", "10-12"],
-          "damage": [1, 2, 3, 4]
-        },
-        "analysis_notes": {
-          "fudge": -0.222,
-          "notes": "Gambit worth 2 Momentum, 16% chance for a 10, really only 11% matters because two 5s is already a Gambit",
-          "range": "Melee"
+          "roll": ["2-3", "4-5", "6-9", "11-12"],
+          "damage": [1, 2, 3, 3]
         }
+      },
+      {
+        "name": "Web Trap",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Repeatable"],
+        "cost": "1 _Momentum_",
+        "effect": "Create a _Metallic Web_ in _Range_ 0, which is treated as a _Load_ 1 _Metal_ _Object_. When a creature becomes _Engaged_ with _Metallic Web_ they must _Negate_ [_Reflex_ 7] or gain _Entangled_ 1; this is also inflicted if the _Metallic Web_ is used as a _Missile_. You are immune to all _Metallic Webs_ you create. You may use this once per _Turn_ regardless of _Stance_ after completing the Stance's actions."
       }
-    ]
+    ],
+    "desc": "You can emit thin metallic threads, allowing you to move similar to a spider."
   },
   {
     "name": "Locust Biology",
@@ -110,7 +220,55 @@
         "type": "Passive",
         "effect": "You have _Resistance_ [_Poison_]."
       }
-    ]
+    ],
+    "desc": "Locusts are near-impervious to poison due to their heavy reliance on it."
+  },
+  {
+    "name": "Piercing Horns",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Horned Wrath",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Your powerful horns or antlers are mighty weapons, especially when you have room to maneuver. Once per Skill Challenge, if you have room to maneuver, gain an automatic _Efficacy_ stake when your horns would aid in battle."
+      },
+      {
+        "name": "Horns",
+        "category": "Balanced",
+        "type": "Attack",
+        "keywords": ["Natural", "Stab"],
+        "desc": "A natural weapon suitable for sharp horns, antlers, and similar growths.",
+        "range": "Melee",
+        "target": "Single-Target",
+        "cost": "2 _Momentum_",
+        "effect": "Attack a Target within Range. If you became _Engaged_ with the Target this _Turn_, deal +1 Damage, even on a _Miss_.",
+        "enhancements": [
+          {
+            "name": "Driving Ram",
+            "cost": "1 _Movement_",
+            "effect": "Add _Push_. If you successfully _Push_ you may _Move_ with the Target, paying only increased costs due to _Terrain_ and _Status_. Do not create any _Openings_ if you do so. You may select this and another _Enhancement_."
+          },
+          {
+            "name": "Head Down",
+            "cost": "1 _Momentum_",
+            "effect": "You put your head down and charge with reckless abandon. Deal +_1/2/2/3_ Damage Damage. If you Miss, gain 4 _Stun_ and _Exposed_. If you _Graze_, instead gain 2 _Stun_. You must choose this _Enhancement_ prior to making the Attack."
+          }
+        ],
+        "chart": {
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "damage": [0, 3, 4, 5]
+        },
+        "analysis_notes": {
+          "fudge": -0.4,
+          "notes": "1 guaranteed damage, technically situational"
+        }
+      }
+    ],
+    "desc": "You have sharp horns that can pierce deep into foes."
   },
   {
     "name": "Climber",
@@ -123,13 +281,37 @@
         "name": "Natural Climber",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces."
+        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces.\n&nbsp;\nWhen your ability to climb would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Climbing",
         "category": "Mobility",
         "type": "Passive",
         "effect": "This creature can bypass many features (such as _Cliffs_) when moving between _Arenas_."
+      }
+    ],
+    "desc": "You're a natural climber, allowing you to easily scale even the most sheer of surfaces."
+  },
+  {
+    "name": "Sprinter",
+    "prereqs": "None",
+    "cost": "1 Growth Point",
+    "category": "General",
+    "type": "Trait",
+    "abilities": [
+      {
+        "name": "Speedy",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You can channel incredible bursts of speed, allowing you to rapidly cover ground and outspeed nearly every creature.\n&nbsp;\nWhen your raw speed would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      { "name": "Improved Mobility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } },
+      {
+        "name": "Sprint",
+        "category": "Mobility",
+        "type": "Reaction",
+        "triger": "None. You may use this Reaction at any time, but only once per Round.",
+        "effect": "Immediately gain 2 _Movement_ and 1 Fatigue."
       }
     ]
   },
@@ -144,9 +326,9 @@
         "name": "Swiftness",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are quick on your feet and more nimble than most. In matters of speed, you almost always win."
+        "effect": "You are quick on your feet and more nimble than most. In matters of speed and agility, you almost always win.\n&nbsp;\nWhen your speed and agility would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
-      { "name": "Improved Mobility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } },
+      { "name": "Agility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_ and +1 _Reflex_.", "bonuses": { "move": 1, "reflex": 1 } },
       {
         "name": "Scamper",
         "category": "Mobility",
@@ -169,13 +351,13 @@
         "name": "Tiny Size",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are extremely small, somewhere between the size of a rat and a typical cat, granting you greatly improved agility and speed. Depending on the circumstance, your small size and limited weight may be a boon or bane."
+        "effect": "You are extremely small, somewhere between the size of a rat and a typical cat, granting you greatly improved agility and speed.\n&nbsp;\nWhen your tiny size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Diminutive Agility",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_.",
+        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_. Finally, all their [_Martial_] Attacks gain [_Glancing_].",
         "bonuses": { "speed": -1, "reflex": 1, "move": 1 }
       }
     ],
@@ -192,7 +374,7 @@
         "name": "Small Size",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed. Depending on the circumstance, your smaller size may be a boon or bane."
+        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Small Profile",
@@ -214,16 +396,16 @@
         "name": "Medium Size",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are somewhere between the size of a typical dog and a human. This size is rarely relevant, but may occasionally may be a boon or bane."
+        "effect": "You are somewhere between the size of a typical dog and a human\n&nbsp;\nYour size neither harms nor helps Skill Challenges and Interactions."
       },
       {
         "name": "Medium Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Medium_, gains +5 _Stamina_, +3 _Stun_, and +1 _Grit_."
+        "effect": "Your Spirit becomes _Medium_, gains +5 _Stamina_, +3 _Stun_, and +1 _Grit_.",
+        "bonuses": { "stamina": 5, "stun": 3, "grit": 1 }
       }
-    ],
-    "bonuses": { "reflex": 1 }
+    ]
   },
   {
     "name": "Large Form",
@@ -236,7 +418,7 @@
         "name": "Large Size",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are somewhere between the size of a human and a horse, granting you increased strength and power. Depending on the circumstance, your large size may be a boon or bane."
+        "effect": "You are somewhere between the size of a human and a horse, granting you increased strength and power.\n&nbsp;\nWhen your large size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Large Profile",

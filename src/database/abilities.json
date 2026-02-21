@@ -3,7 +3,7 @@
     "name": "Traveling Light",
     "category": "Traveling",
     "type": "Skill",
-    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help."
+    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help. When this would help, gain +1 die on an appropriate Skill Challenge or Interaction."
   },
   {
     "name": "Unencumbered",
@@ -16,7 +16,7 @@
     "name": "Traveling Heavy",
     "category": "Traveling",
     "type": "Skill",
-    "effect": "Add an additional <u>Fatigue</u> Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help."
+    "effect": "Add an additional <u>Fatigue</u> Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help. When this would hurt, lose 1 die on an appropriate Skill Challenge or Interaction."
   },
   {
     "name": "Heavily Encumbered",
@@ -89,7 +89,7 @@
     "type": "Reaction",
     "cost": "1 _Movement_",
     "trigger": "You would spend _Movement_.",
-    "effect": "Do not create an [_Opening_] from spending this Movement.",
+    "effect": "Do not create an [_Opening_] from spending this Movement. This ability cannot have its cost increased.",
     "special": "If you are in a Mobility Stance this may instead have a cost of 1 _Momentum_."
   },
   {
@@ -98,8 +98,8 @@
     "type": "Maneuver",
     "cost": "1 _Momentum_",
     "keywords": ["Repeatable"],
-    "effect": "Clear 2 _Stun_. You may add [_Pacifist_] to instead clear 3 _Stun_ or _Recover_.",
-    "enhancements": [{ "name": "Focused Recovery", "cost": "1 _Momentum_", "effect": "Instead, you may _Recover_." }]
+    "effect": "Clear 2 _Stun_ or _Recover_ from a _Minor Condition_. You may add [_Pacifist_] to additionally clear 1 _Stun_.",
+    "enhancements": [{ "name": "Focused Recovery", "cost": "1 _Momentum_", "effect": "Instead, you may _Recover_ from any effect." }]
   },
   {
     "name": "Counter",
@@ -123,7 +123,7 @@
     "type": "Gambit",
     "cost": "1 _Guard_",
     "prereqs": "Triggered from a _Parry_.",
-    "effect": "The triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
+    "effect": "You take no _Stun_ from the triggering Attack. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
   },
   {
     "name": "Perfect Dodge",
@@ -312,7 +312,7 @@
     "range": "Melee/0 (_Thrown_)",
     "target": "Single-Target",
     "prereqs": "_Wielding_ a 1 _Load_ or less item.",
-    "effect": "Attack a Target within Range, using a _Wielded_ item. Add the most appropriate keywords for damage type  ([_Crush_] if unclear) and material based on the _Wielded_ item. If the item is 0 _Load_, add [_Feeble_].",
+    "effect": "Attack a Target within Range, using a _Wielded_ item. Add the most appropriate keywords for damage type  ([_Crush_] if unclear) and material based on the _Wielded_ item. If the item is 0 _Load_, add [_Glancing_].",
     "enhancements": [
       {
         "name": "Medium Improvised Attack",
@@ -364,10 +364,17 @@
     "category": "Recovery",
     "type": "Maneuver",
     "range": "1",
+    "target": "An ally.",
     "keywords": ["Inspiring"],
     "cost": "1 _Momentum_",
-    "effect": "You call encouragement out to an ally. They may clear 3 _Stun_, or 4 if you are in a _Support_ _Stance_.",
-    "enhancements": [{ "name": "Focused Encouragement", "cost": "1 _Momentum_", "effect": "In addition, that ally gains 1 _Momentum_ or _Guard_." }]
+    "effect": "You call encouragement to the target. Choose one:\n* They may clear 3 _Stun_, or 4 if you are in a _Support_ _Stance_.\n* They gain 1 _Momentum_, or 1 _Guard_ if you are in a _Support_ _Stance_.\n* They may _Recover_ from a _Minor Condition_.",
+    "enhancements": [
+      {
+        "name": "Focused Encouragement",
+        "cost": "1 _Momentum_",
+        "effect": "Instead, choose two. You must choose different effects."
+      }
+    ]
   },
   {
     "name": "Adrenaline Rush",

@@ -39,6 +39,7 @@ Vue.component('DisplayTooltipText', {
           this.$store.getters.isStance(split_input[index]) ||
           this.$store.getters.isStatus(split_input[index]) ||
           this.$store.getters.isArmor(split_input[index]) ||
+          this.$store.getters.isEquipment(split_input[index]) ||
           this.$store.getters.isWeapon(split_input[index]) ||
           this.$store.getters.isArt(split_input[index]) ||
           this.$store.getters.isTrait(split_input[index]) ||

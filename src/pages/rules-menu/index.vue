@@ -108,8 +108,8 @@ export default Vue.extend({
       selectedTab: 'Playing the Game',
       tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Towns', 'Combat', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
       text: [GameModes, NarrativeText, TravelText, EquipmentText, TownsText, CombatText, '', '', PlayerRolesText],
-      statusCategories: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
-      selectedStatuses: ['Status Effect', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
+      statusCategories: ['Minor Condition', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
+      selectedStatuses: ['Minor Condition', 'Affliction', 'Elemental Affliction', 'Mental Affliction', 'Instant Effect'],
       selectedStatus: null,
       selectedTerrain: null,
     }
