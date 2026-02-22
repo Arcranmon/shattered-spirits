@@ -240,7 +240,7 @@ declare interface ISubtypeData extends IBaseData {
   block: number
   stun: number
   move: number
-  manifest: string[]
+  manifest: string
   soak: string
   growth_points: number
   speed: number

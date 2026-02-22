@@ -110,6 +110,9 @@
               <h4>Metal</h4>
             </v-tab>
             <v-tab>
+              <h4>Wind</h4>
+            </v-tab>
+            <v-tab>
               <h4>Wood</h4>
             </v-tab>
           </v-tabs>
@@ -119,6 +122,12 @@
             <v-tab-item>
               <show-cards
                 :inputs="metalDisciplines"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+            <v-tab-item>
+              <show-cards
+                :inputs="windDisciplines"
                 :collapse="false"
                 :cols="1" />
             </v-tab-item>
@@ -390,6 +399,9 @@ export default Vue.extend({
     },
     metalDisciplines: function () {
       return this.$store.getters.getDisciplinesByType('Metal').sort((a, b) => a.Name.localeCompare(b.Name))
+    },
+    windDisciplines: function () {
+      return this.$store.getters.getDisciplinesByType('Wind').sort((a, b) => a.Name.localeCompare(b.Name))
     },
     woodDisciplines: function () {
       return this.$store.getters.getDisciplinesByType('Wood').sort((a, b) => a.Name.localeCompare(b.Name))

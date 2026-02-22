@@ -8,7 +8,7 @@ class Subtype extends Base {
   private stun_: number
   private block_: number
   private move_: number
-  private manifest_: string[]
+  private manifest_: string
   private growth_points_: number
   private traits_: string[]
   private soak_: string
@@ -93,13 +93,7 @@ class Subtype extends Base {
     return this.defenses_
   }
   public get ManifestHeader() {
-    var header = '**Manifest:** The requirements to Manifest your spirit depend on its size, as follows.'
-    var labels = ['&half;', '1', '2', '3']
-
-    this.manifest_.forEach((value, index) => {
-      header += '\n* **' + labels[index] + ':** ' + value
-    })
-
+    var header = '**Manifest Range:** ' + this.manifest_
     return header
   }
 
@@ -122,7 +116,7 @@ class Subtype extends Base {
     this.move_ = data.move || 0
     this.stun_ = data.block || 0
     this.block_ = data.stun || 0
-    this.manifest_ = data.manifest || []
+    this.manifest_ = data.manifest || 'You may Manifest your Spirit within Melee Range.'
     this.speed_ = data.speed || 0
     this.growth_points_ = data.growth_points || 0
   }

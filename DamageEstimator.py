@@ -12,7 +12,7 @@ momentum_value = 2
 status_multipliers = {
     "Bleeding": 1.5,
     "Dazed": 2,
-    "Pierce": 0.5
+    "Push": 2
 }
 
 instant_statuses = ["Defending"]
@@ -20,7 +20,8 @@ instant_statuses = ["Defending"]
 keyword_modifiers = {
     "Brawling": 0.15, # Pretty niche
     "Remote": 0.25,
-    "Glancing": -1
+    "Glancing": -1,
+    "Pierce": 0.25,
 }
 
 attack_range_multiplier = {
