@@ -47,8 +47,8 @@ AT_LEAST_ODDS = {2:100,
 12:2.7777777777399937,}
 STANDARD_NEGATE = [4, 6, 7, 9]
 
-def get_negate_adjustment(index):
-    return (100-AT_LEAST_ODDS[STANDARD_NEGATE[index]])/100
+def get_negate_adjustment(index, negate_dc):
+    return (100-AT_LEAST_ODDS[negate_dc])/100
     
 
 def get_status_magnitude(status):
@@ -63,11 +63,11 @@ def get_status_magnitude(status):
     elif len(split_status) == 3: # I'm lazy
         return status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
 
-def get_status_damage(status_string, index):
+def get_status_damage(status_string, negate_dc, index):
     # Split individual statuses out
     status_string = status_string.replace('_', '')
 
-    multiplier = get_negate_adjustment(index)
+    multiplier = get_negate_adjustment(index,negate_dc)
     
     statuses = status_string.split(', ')
 
@@ -174,6 +174,10 @@ def estimate_damage(attack, glancing, print_stats):
             status_chart = ['']*4
         else:
             status_chart = attack["chart"]["status"]
+        if not("negate" in attack["chart"]):
+            negate = STANDARD_NEGATE
+        else:
+            negate = attack["chart"]["negate"]
         roll_chart = attack["chart"]["roll"]
             
 
@@ -239,7 +243,7 @@ def estimate_damage(attack, glancing, print_stats):
         damage += stun_chart[index] * stun_scale
         if(glancing): damage = math.ceil(damage/2.0)
         if(index < len(status_chart)):
-            damage += get_status_damage(status_chart[index], index)
+            damage += get_status_damage(status_chart[index], negate[index], index)
         damage += bonus_damage[index]
         if(roll_chart[index] != 0): 
             damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
