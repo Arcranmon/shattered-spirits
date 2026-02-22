@@ -38,16 +38,10 @@
   },
   {
     "name": "Iron Dagger",
-    "category": "Hide",
-    "desc": "A small blade capable of sudden assaults and being thrown.",
-    "chart": {
-      "damage": [0, 1, 3, 4],
-      "defend": ["0 _Block_", "1 _Block_", "2 _Block_", "3 _Block_"],
-      "roll": ["2-3", "4-5", "6-9", "10-12"],
-      "status": ["+1 _Momentum_"]
-    },
-    "keywords": ["Metal"],
-    "cost": "2 _Momentum_",
+    "category": "Blade",
+    "desc": "A small, versatile blade that has a myriad of uses.",
+    "keywords": ["_Least Source_ (_Metal_)", "Quickdraw"],
+    "cost": "1 _Momentum_",
     "load": 1,
     "hands": 1,
     "durability": 1,
@@ -56,35 +50,48 @@
         "name": "Strike",
         "category": "Light",
         "type": "Attack",
-        "cost": "2 _Momentum_",
-        "range": "Melee_/_Short_ (_Thrown_)",
+        "cost": "1 _Momentum_",
+        "range": "Melee_",
         "effect": "Attack a Target within Range.",
+        "chart": {
+          "damage": [0, 1, 2, 3],
+          "roll": ["2-3", "4-5", "6-9", "10-12"]
+        },
+        "analysis_notes": {
+          "fudge": -0.111,
+          "notes": "4+6 and 6+4 is two more potential Gambits for 5.55%, x2 for 2 Momentum",
+          "range": "Melee"
+        },
         "enhancements": [
-          { "name": "Flurry", "cost": "2 _Momentum_", "effect": "Use _Strike_ again. You may not apply this _Enhance_." },
+          { "name": "Flurry", "cost": "1 _Momentum_", "effect": "Use _Strike_ again. You may not apply this _Enhancement_ to the secondary attack." },
           {
-            "name": "Rend",
-            "cost": "2 _Momentum_",
-            "effect": "On a Graze+ with a _Melee_ Attack deal +1 _Bonus Damage_. If the Target takes any Damage, add _Bleeding_ 1."
-          },
-          {
-            "name": "Stick",
-            "cost": "2 _Momentum_",
-            "effect": "On a _Graze_+ deal +1 _Bonus Damage_. If the Target takes any Damage, _Embed_ this _Weapon_, _Disarming_ yourself if your Attack was _Melee_. While _Embedded_, the Target takes +1 _Bonus Damage_ from all Attacks. If they end _Embed_, they gain _Bleeding_ 1."
+            "name": "Find The Gap",
+            "cost": "1 _Momentum_",
+            "effect": "You must have _Advantage_ to use this _Enhancement_. Add [_Pierce_ 2]. On a _Hit_+, deal +2 _Damage_."
           }
         ]
       },
       {
-        "name": "Deflect",
-        "category": "Defensive",
-        "keywords": ["Block"],
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "effect": "_Defend_, at _Disadvantage_ if the Attack was _Heavy_ or not _Melee_.\n* Lose: Gain 2 _Block_.\n* _Tie_: Reduce the Damage by 1. Gain 1 _Block_.",
+        "name": "Fling",
+        "category": "Light",
+        "type": "Attack",
+        "cost": "2 _Momentum_",
+        "range": "0 (_Thrown_)",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "damage": [0, 3, 5, 6],
+          "roll": ["2-4", "5-6", "7-9", "10-12"]
+        },
+        "analysis_notes": {
+          "fudge": -0.111,
+          "notes": "4+6 and 6+4 is two more potential Gambits for 5.55%, x2 for 2 Momentum",
+          "range": "Melee"
+        },
         "enhancements": [
           {
-            "name": "Counterstrike",
+            "name": "Precise Fling",
             "cost": "1 _Momentum_",
-            "effect": "_Parry_, using <i>Strike</i> if you _Win_. You must select this Enhance prior to making the Block Roll."
+            "effect": "Make this Attack at _Advantage_. On a _Graze_+, deal +1 _Bonus Damage_."
           }
         ]
       }
@@ -167,12 +174,12 @@
           {
             "name": "Hand-and-a-Half",
             "cost": "1 _Momentum_",
-            "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_1/2/2/3_ Damage.  You must select this Enhance prior to making the Attack Roll. You may select this and another _Enhance_."
+            "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_1/2/2/3_ Damage.  You must select this Enhancement prior to making the Attack Roll."
           },
           {
             "name": "Thrusting Strike",
             "cost": "2 _Momentum_",
-            "effect": "Replace [_Slash_] with [_Stab_] and add [_Pierce_ 2]. Deal +_0/2/3/4_ Damage. You must select this Enhance prior to making the Attack Roll."
+            "effect": "Replace [_Slash_] with [_Stab_] and add [_Pierce_ 2]. Deal +_0/2/3/4_ Damage. You must select this Enhancement prior to making the Attack Roll."
           }
         ],
         "chart": {
@@ -696,69 +703,6 @@
     }
   },
   {
-    "name": "Recurve Bow",
-    "category": "Bow",
-    "desc": "A lighter bow that can be short from a variety of positions, allowing faster shots and close-quarters capabilities.",
-    "tier": "Light",
-    "speed": 3,
-    "parry": "Gain the following benefits if the triggering _Attack_ is _Light_/_Versatile_:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
-    "range": [{ "category": "Ranged", "value": 8, "special": "_Close Range_ 1" }],
-    "chart": {
-      "damage_tier": "Stab",
-      "material": "Wood (Weapon), Wood/Metal (Projectile)",
-      "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 0, 5, 5, 6, 7, 7, 8, 8],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
-    },
-    "load": 2,
-    "hands": 2,
-    "durability": 6
-  },
-  {
-    "name": "Shortbow",
-    "category": "Bow",
-    "desc": "A bow that is equally in place hunting game and on the battlefield.",
-    "tier": "Balanced",
-    "charged_profile": "Add [_Arcing_] and deal +2 Damage on a _Hit_+.",
-    "speed": 5,
-    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
-    "range": [{ "category": "Ranged", "value": 10, "special": "_Ordnance_, _Close Range_ 3" }],
-    "chart": {
-      "damage_tier": "Stab",
-      "material": "Wood (Weapon), Wood/Metal (Projectile)",
-      "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 0, 8, 8, 9, 10, 10, 11, 11],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
-    },
-    "load": 4,
-    "hands": 2,
-    "durability": 8
-  },
-  {
-    "name": "Longbow",
-    "category": "Bow",
-    "desc": "A heavy bow that has unparalleled range and power, allowing deadly strikes from extreme range.",
-    "tier": "Heavy",
-    "charged_profile": "Add [_Arcing_, _Pierce_ 1] and deal +3 Damage on a _Hit_+.",
-    "speed": 7,
-    "parry": "Gain the following benefits:\n* Reduce the _Value_ of _Vulnerable_ inflicted by 1.",
-    "range": [{ "category": "Ranged", "value": 12, "special": "_Ordnance_, _Close Range_ 4" }],
-    "chart": {
-      "keywords": ["_Pierce_ 1"],
-      "damage_tier": "Stab",
-      "material": "Wood (Weapon), Wood/Metal (Projectile)",
-      "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 0, 0, 10, 11, 12, 12, 12, 13, 13],
-      "roll": ["Miss", "Miss", "Miss", "Miss", "Hit", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "_Impaired_ 1", "_Impaired_ 1", "_Impaired_ 2", "_Impaired_ 2"]
-    },
-    "load": 5,
-    "hands": 2,
-    "durability": 9
-  },
-  {
     "name": "Hunting Sling",
     "category": "Sling",
     "desc": "A simple weapon with a windup that pierces through many defenses.",
@@ -787,6 +731,44 @@
             "name": "Whirl",
             "cost": "1 _Momentum_",
             "effect": "Add [_Pierce_ 2] to the Attack and, on a _Hit_+, deal +1 Damage. You may only Attack Targets at Range 2 when making the Attack in this way."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hunting Bow",
+    "category": "Bow",
+    "desc": "A bow excellent for hunting game, but also for taking shots at foes.",
+    "keywords": ["Ammunition", "_Minor Source_ (_Wood_)"],
+    "effect": "You must have a _Quiver_ and arrows to use this Weapon.",
+    "load": 2,
+    "hands": 2,
+    "durability": 1,
+    "abilities": [
+      {
+        "name": "Loose",
+        "category": "Balanced",
+        "type": "Attack",
+        "keywords": ["Stab"],
+        "cost": "3 _Momentum_",
+        "range": "2",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "damage": [0, 4, 6, 7],
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "status": ["None", "None", "None", "None"]
+        },
+        "enhancements": [
+          {
+            "name": "Full Draw",
+            "cost": "2 _Momentum_",
+            "effect": "Create an [_Opening_] when you Attack, and you may not attack Targets closer than Range 2. Deal +_0/2/4/5_ Damage."
+          },
+          {
+            "name": "Arcing Shot",
+            "cost": "1 _Momentum_",
+            "effect": "Range is instead 3, and you take no penalties due to _Cover_. The Target has _Advantage_ to _Dodge_ this Attack."
           }
         ]
       }
