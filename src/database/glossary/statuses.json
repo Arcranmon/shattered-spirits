@@ -9,6 +9,12 @@
     "type": "Hide"
   },
   {
+    "name": "Flying",
+    "desc": "You are propelled by craft or wing, allowing you to easily soar through the arena.",
+    "effect": "While Flying:\n* You ignore all non-_Weather_ _Terrain_ effects.\n* You have _Advantage_ to _Negate_ with _Reflex_.\n* While not _Occupying_ _Terrain_ or _Engaged_ with a non-Flying creature, non-Flying creatures may not become _Engaged_ with you.\n* You have _Disadvantage_ to _Negate_ _Prone_ and _Forced Movement_ and, if you are knocked _Prone_, you immediately _Fall_ 1.\n\nIf a creature _Occupies_ Terrain, they also lose Flying. If a creature loses Flying naturally (either by choice or their effect granting Flying ending), they may safely land and suffer no ill effects.",
+    "type": "Condition"
+  },
+  {
     "name": "Entangled",
     "desc": "A creature that is entangled in some sort of material, whether that be vines, spider silk, or wires.",
     "effect": "The effect of Entangled depends on the current amount the creature has relative to their _Size_:\n* [Size-1]: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* [Size]: As Rank 1, but the creature is also _Slowed_.\n* [Size+1]: The creature is _Restrained_.",
@@ -72,15 +78,14 @@
   {
     "name": "Disarm",
     "desc": "An effect where an item is wrenched away from a creature.",
-    "effect": "An Item the Target has _Worn_ or _Wielded_ (chosen when this Status is inflicted) is immediately dropped unattended in the current _Arena_, or is _Wielded_ by the creature that inflict Disarm if they are within Range to use _Draw/Stow_ and they have a _Free Hand_.",
-    "special": "Creatures have _Disadvantage_ to _Negate_ _Disarm_ while _Grabbed_.",
-    "type": "Hide"
+    "effect": "An item the Target has _Worn_ or _Wielded_ (chosen when this Status is inflicted by the Attacker) is immediately dropped unattended in the current _Arena_. If the Attacker has the appropriate _Free Hands_, they must choose to instead immediately _Wield_ the item.",
+    "type": "Instant Effect"
   },
   {
     "name": "Dazed",
     "desc": "An affliction caused when a creature is rattled and off-balance and unable to defend.",
     "effect": "Defense Rolls made by a Dazed creature have _Disadvantage_.",
-    "repeat": "If an Exposed creature would gain Exposed they instead gain 2 _Stun_.",
+    "repeat": "If a Dazed creature would gain Dazed they instead gain 2 _Stun_.",
     "recover": "When a creature _Recovers_ they may remove Dazed.",
     "type": "Minor Condition"
   },
@@ -96,7 +101,7 @@
   {
     "name": "Engaged",
     "desc": "A status showing that two creatures are engaged in close combat with one another.",
-    "effect": "While Engaged spending _Movement_ or using Abilities that cost _Movement_ (even if that cost is reduced to 0) creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all non-_Melee_ Attacks.",
+    "effect": "While Engaged spending _Movement_ creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all non-_Melee_ Attacks.",
     "remove": "Characters may spend 1 _Movement_ to remove all instances of _Engaged_, as well as any _Terrain Bonus_ or _Hazard_.",
     "type": "Status Effect"
   },

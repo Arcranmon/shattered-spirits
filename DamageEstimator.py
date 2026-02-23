@@ -11,6 +11,7 @@ momentum_value = 2
 
 status_multipliers = {
     "Bleeding": 1.5,
+    "Exposed": 1.5,
     "Dazed": 2,
     "Push": 2
 }

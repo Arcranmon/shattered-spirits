@@ -204,9 +204,9 @@
       </v-row>
       <v-row no-gutters>
         <v-col>
-          <display-tooltip-text string="**_stun_:**" />
+          <display-tooltip-text string="**_Block_:**" />
         </v-col>
-        <v-col :cols="8">{{ creature.stun }}</v-col>
+        <v-col :cols="8">{{ creature.Block }}</v-col>
       </v-row>
     </div>
   </div>

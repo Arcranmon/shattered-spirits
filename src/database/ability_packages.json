@@ -240,16 +240,33 @@
         "effect": "You can effortlessly create powerful bursts of wind, capable of pushing people back and launching small objects. In addition, you can control and manipulate the wind, creating specific drafts and movement of the air, allowing you to clumsily manipulate small objects from a distance or precisely manipulating powdery substances and the like.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
       {
+        "name": "Airbending",
+        "category": "Utility",
+        "type": "Passive",
+        "keywords": ["Spirit", "Wind"],
+        "effect": "You have _Bend_ [_Wind_] within Range 1. Additionally, you may use the <u>Fling</u> and <u>Toss</u> _Enhancements_ of _Drop_ as if you had _Bend_ within the same Range, so long as they are _Load_ 0 or less and end further from you than they started. Finally, you may use _Brawl_ against all Targets made of _Wind_ within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature within your _Bend_ Range, but must Target a _Load_ 0 piece of _Equipment_ and place it unattended in the _Arena_."
+      },
+      {
+        "name": "Control Winds",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Wind"],
+        "target": "An Arena.",
+        "range": "1",
+        "cost": "2 _Momentum_",
+        "effect": "The _Arena_ gains or removes _Gusting_."
+      },
+      {
         "name": "Gust",
         "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Wind", "Crush"],
-        "cost": "2 _Momentum_",
+        "cost": "1 _Momentum_",
         "range": "1",
         "target": "Single-Target",
-        "effect": "Attack a target within Range.",
+        "effect": "Attack a target within Range. This Attack ignores any penalties due to _Gusting_ and instead gains a +1 _Bonus_ when targeting creatures in a _Gusting_ _Arena_.",
         "enhancements": [
-          { "name": "Compressed Air", "cost": "1 _Momentum_", "effect": "Deal +_0/1/2/3_ Damage." },
+          { "name": "Compressed Air", "cost": "2 _Momentum_", "effect": "Deal +_0/2/3/4_ Stun +_0/1/2/3_ Damage." },
           {
             "name": "Forceful Gust",
             "cost": "1 _Momentum_",
@@ -257,8 +274,8 @@
           }
         ],
         "chart": {
-          "stun": [0, 2, 2, 4],
-          "damage": [0, 0, 1, 2],
+          "stun": [0, 0, 1, 1],
+          "damage": [0, 0, 0, 1],
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "negate": [5, 7, 8, 10],
           "status": ["None", "Push", "Push", "Push"]

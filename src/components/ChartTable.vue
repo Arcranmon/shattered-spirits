@@ -52,7 +52,7 @@
             class="chart--cols"
             v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '', getRank(index)]"
             v-if="chart.HasStun"
-            v-cols="stunWidth"
+            v-bind:cols="stunWidth"
             >{{ chart.Stun(index) }}
           </v-col>
           <v-col
@@ -101,14 +101,10 @@ export default Vue.extend({
     },
     stunWidth() {
       if (this.chart.HasStun) return 2
-      return 0
+      return 2
     },
     negateWidth() {
       if (this.chart.HasRoll) return 2
-      return 0
-    },
-    defendWidth() {
-      if (this.chart.HasDefend) return 2
       return 0
     },
     effectWidth() {

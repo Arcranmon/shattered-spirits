@@ -15,10 +15,10 @@
       <!---<v-tab> <h4>Earth</h4> </v-tab>
 <v-tab> <h4>Flame</h4> </v-tab>
 <v-tab> <h4>Water</h4> </v-tab>
-<v-tab> <h4>Wind</h4> </v-tab>
 
       -->
       <v-tab> <h4>Metal</h4> </v-tab>
+      <v-tab> <h4>Wind</h4> </v-tab>
       <v-tab> <h4>Wood</h4> </v-tab>
       <v-tab> <h4>Traits</h4> </v-tab>
       <v-tab> <h4>Stances</h4> </v-tab>
@@ -37,6 +37,9 @@
       --->
       <v-tab-item class="character-tab-content">
         <spirit-ability-options element="Metal" />
+      </v-tab-item>
+      <v-tab-item class="character-tab-content">
+        <spirit-ability-options element="Wind" />
       </v-tab-item>
       <v-tab-item class="character-tab-content">
         <spirit-ability-options element="Wood" />
