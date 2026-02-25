@@ -241,7 +241,8 @@
           v-if="characterSelected"
           :character="selectedCharacter"
           @changed="saveCharacter"
-          :key="selectedCharacter.Name" />
+          :key="selectedCharacter.Name"
+          style="border: 5px double black" />
       </v-col>
     </v-row>
   </div>

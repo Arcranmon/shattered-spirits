@@ -22,6 +22,9 @@ class AbilityPackage extends Base {
   public get HasCost() {
     return this.cost_ != ''
   }
+  public get Cost() {
+    return this.cost_
+  }
   public get CostHeader() {
     return '**Cost:** ' + this.cost_
   }

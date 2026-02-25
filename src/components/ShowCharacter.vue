@@ -1,7 +1,5 @@
 <template>
-  <div
-    style="margin: 1em"
-    class="background--color character-wrapper">
+  <div class="background--color character-wrapper">
     <v-tabs
       v-model="character_or_spirit_tab"
       class="character-tabs"
@@ -295,6 +293,7 @@
               </v-tabs-items>
             </v-tab-item>
             <v-tab-item class="character-tab-content">
+              <b>Growth Points:</b> {{ character.Spirit.GrowthPoints }}
               <show-cards
                 :inputs="this.$store.getters.getAPsFromListPreserveType(character.Spirit.Arts)"
                 :collapse="false"
@@ -391,7 +390,6 @@ export default Vue.extend({
 }
 .character-wrapper {
   font-family: $font--standard;
-  border: 5px double black;
 }
 .character-tabs {
   font-family: $font--fancy;

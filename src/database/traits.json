@@ -151,7 +151,7 @@
     "desc": "You're a spirit of wood, adaptable and ever-growing."
   },
   {
-    "name": "Light Natural Armor",
+    "name": "Lightly Armored",
     "type": "Trait",
     "category": "General",
     "cost": "1 Growth Points",
@@ -159,20 +159,29 @@
     "keywords": ["Armored"],
     "abilities": [
       {
-        "name": "Carapace Armor",
+        "name": "Light Armor",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "This spirit gains the _Carapace_ Armor.",
-        "bonuses": { "equipment": ["Carapace"] }
+        "effect": "This spirit gains the _Light Natural Armor_.",
+        "bonuses": { "equipment": ["Light Natural Armor"] }
+      },
+      {
+        "name": "Sacrifice Armor",
+        "category": "Defensive",
+        "type": "Reaction",
+        "trigger": "You would gain a _Wound_.",
+        "cost": "None",
+        "effect": "Gain _Fatigue_ and reduce the _Durability_ of a _Worn_ piece of _Armor_ by 1. Reduce the severity of the _Wound_ by 1 (i.e. reduce a _Slash_ II _Wound_ to _Slash_ I).",
+        "special": "You may use this ability in narrative play when appropriate."
       }
     ],
-    "desc": "You have scales, a thin shell, or some other natural defense mechanism."
+    "desc": "You have scales, a thin shell, or some other natural defense mechanism that provides some limited defense."
   },
   {
     "name": "Sure-Footed",
     "type": "Trait",
     "category": "General",
-    "cost": "2 Growth Points",
+    "cost": "1 Growth Points",
     "prereqs": "None.",
     "abilities": [
       {
@@ -397,6 +406,42 @@
     "desc": "You're a natural climber, allowing you to easily scale even the most sheer of surfaces."
   },
   {
+    "name": "Skulker",
+    "prereqs": "Not _Large Size_ or _Flame Spirit_.",
+    "cost": "3 Growth Point",
+    "category": "General",
+    "type": "Trait",
+    "abilities": [
+      {
+        "name": "Stealthy",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are naturally stealthy and able to hide your presence with ease. Your steps make no sound and, when you try to, you can move through tall grass or similar without a trace. Creatures without specialized or enhanced senses will always fail to find you when you try to hide.\n&nbsp;\nWhen your stealth would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Subtlety* if appropriate."
+      },
+      {
+        "name": "Watchful Shadow",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "While _Manifested_ for a day of travel, you may choose to sneak along the party, keeping watch from the  shadows. At any point in the day when a party member needs help, even if they are not with the group, you may emerge from stealth to aid them, potentially granting them an _Advantage_ on their _Skill Check_. You may end this at any time, but cannot return to the shadows that day."
+      },
+      {
+        "name": "Low-Profile",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "While you have _Cover_, you cannot be attacked by Attacks originating from outside your _Arena_. You lose this benefit until the next _Round_ if you Attack or force a creature to _Negate_."
+      },
+      {
+        "name": "Sneak",
+        "category": "Mobility",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_, 1 _Movement_",
+        "keywords": ["Pacifist"],
+        "reqs": "Not _Engaged_.",
+        "effect": "For the rest of this _Turn_ enemies may not _Engage_ you, you do not provoke _Reactions_ and, after completing your _Movement_, you have _Soft Cover_ for the remainder of the round, or you Attack, force a creature to _Negate_, or become _Engaged_."
+      }
+    ]
+  },
+  {
     "name": "Sprinter",
     "prereqs": "None",
     "cost": "1 Growth Point",
@@ -407,7 +452,7 @@
         "name": "Speedy",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You can channel incredible bursts of speed, allowing you to rapidly cover ground and outspeed nearly every creature.\n&nbsp;\nWhen your raw speed would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You can channel incredible bursts of speed, allowing you to rapidly cover ground and outrun nearly every creature.\n&nbsp;\nWhen your raw speed would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       { "name": "Improved Mobility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } },
       {
@@ -438,8 +483,8 @@
         "category": "Mobility",
         "type": "Reaction",
         "cost": "None",
-        "trigger": "Your _Turn_ begins.",
-        "effect": "At the start of your _Turn_, before any using any other abilities, you may _Retreat_, regardless of what your _Stance_ dictates."
+        "trigger": "Your _Turn_ begins or ends.",
+        "effect": "You may _Retreat_, regardless of what your _Stance_ dictates."
       }
     ]
   },
@@ -528,9 +573,9 @@
         "name": "Large Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Large_, gains +10 _Stamina_, +6 _Stun_, and +2 _Grit_. You may _Manifest_ your Spirit from a _Major Source_."
+        "effect": "Your Spirit becomes _Large_, gains +10 _Stamina_, +6 _Stun_, and +2 _Grit_. Additionally, its _Speed_ is increased by 1. You may _Manifest_ your Spirit from a _Major Source_."
       }
     ],
-    "bonuses": { "stamina": 10, "stun": 6, "grit": 2 }
+    "bonuses": { "stamina": 10, "stun": 6, "grit": 2, "speed": 1 }
   }
 ]

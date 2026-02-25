@@ -142,9 +142,7 @@
           </v-btn>
         </v-col>
         <v-col>
-          <div
-            class="stun--exterior"
-            :style="stunWidth">
+          <div class="stun--exterior">
             <div
               class="stun--interior"
               :style="stunbar" />

@@ -34,6 +34,12 @@ class Spirit extends Combatant {
 
   override get MaxStun() {
     var stun = this.spirit_type_.Stun + this.combinedBonuses_.Stun
+    console.log(this.combinedBonuses_.Equipment)
+    for (var item of this.combinedBonuses_.Equipment) {
+      if (store.getters.isArmor(item)) {
+        stun += store.getters.getArmor(item).Stun
+      }
+    }
     return stun
   }
 
@@ -104,6 +110,17 @@ class Spirit extends Combatant {
   }
   set Name(name) {
     this.name_ = name
+  }
+
+  get GrowthPoints() {
+    var gp = 0
+    for (var trait of store.getters.getAPsFromListPreserveType(this.Traits)) {
+      if (trait.HasCost && trait.Cost != 'None') {
+        console.log(trait.Cost)
+        gp += Number(trait.Cost[0])
+      }
+    }
+    return gp
   }
 
   set Character(character) {
