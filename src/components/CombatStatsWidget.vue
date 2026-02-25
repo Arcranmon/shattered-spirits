@@ -31,6 +31,7 @@
           </v-btn>
         </v-col>
       </v-row>
+      <!--
       <v-row no-gutters> <b>Vigor:</b>&nbsp;{{ creature.Vigor }} </v-row>
       <v-row no-gutters>
         <v-col cols="auto">
@@ -60,6 +61,7 @@
           </v-btn>
         </v-col>
       </v-row>
+      -->
       <v-row no-gutters> <b>Movement:</b>&nbsp;{{ creature.Movement }} / {{ creature.MaxMovement }} </v-row>
       <v-row
         no-gutters
