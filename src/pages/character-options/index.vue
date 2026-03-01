@@ -107,7 +107,16 @@
             color="black"
             centered>
             <v-tab>
+              <h4>Earth</h4>
+            </v-tab>
+            <v-tab>
+              <h4>Flame</h4>
+            </v-tab>
+            <v-tab>
               <h4>Metal</h4>
+            </v-tab>
+            <v-tab>
+              <h4>Water</h4>
             </v-tab>
             <v-tab>
               <h4>Wind</h4>
@@ -121,7 +130,25 @@
             class="character-tab-content">
             <v-tab-item>
               <show-cards
+                :inputs="earthDisciplines"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+            <v-tab-item>
+              <show-cards
+                :inputs="flameDisciplines"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+            <v-tab-item>
+              <show-cards
                 :inputs="metalDisciplines"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+            <v-tab-item>
+              <show-cards
+                :inputs="waterDisciplines"
                 :collapse="false"
                 :cols="1" />
             </v-tab-item>
@@ -397,8 +424,17 @@ export default Vue.extend({
     archetypes: function () {
       return this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
     },
+    earthDisciplines: function () {
+      return this.$store.getters.getDisciplinesByType('Earth').sort((a, b) => a.Name.localeCompare(b.Name))
+    },
+    flameDisciplines: function () {
+      return this.$store.getters.getDisciplinesByType('Flame').sort((a, b) => a.Name.localeCompare(b.Name))
+    },
     metalDisciplines: function () {
       return this.$store.getters.getDisciplinesByType('Metal').sort((a, b) => a.Name.localeCompare(b.Name))
+    },
+    waterDisciplines: function () {
+      return this.$store.getters.getDisciplinesByType('Water').sort((a, b) => a.Name.localeCompare(b.Name))
     },
     windDisciplines: function () {
       return this.$store.getters.getDisciplinesByType('Wind').sort((a, b) => a.Name.localeCompare(b.Name))

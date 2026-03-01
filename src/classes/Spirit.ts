@@ -34,7 +34,6 @@ class Spirit extends Combatant {
 
   override get MaxStun() {
     var stun = this.spirit_type_.Stun + this.combinedBonuses_.Stun
-    console.log(this.combinedBonuses_.Equipment)
     for (var item of this.combinedBonuses_.Equipment) {
       if (store.getters.isArmor(item)) {
         stun += store.getters.getArmor(item).Stun
@@ -116,7 +115,6 @@ class Spirit extends Combatant {
     var gp = 0
     for (var trait of store.getters.getAPsFromListPreserveType(this.Traits)) {
       if (trait.HasCost && trait.Cost != 'None') {
-        console.log(trait.Cost)
         gp += Number(trait.Cost[0])
       }
     }

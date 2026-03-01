@@ -1,65 +1,32 @@
 [
   {
     "name": "Light Armor",
-    "category": "Hide",
+    "category": "Base Armor",
     "load": 1,
-    "keywords": ["Organic"],
     "block": 1,
     "stun": 2,
     "durability": 1,
-    "abilities": [
-      {
-        "name": "Twist",
-        "category": "Defensive",
-        "type": "Gambit",
-        "cost": "None",
-        "effect": "Gain +3 _Block_.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
-      }
-    ],
     "desc": "Basic armor, covering only the most vital areas on your body."
   },
   {
     "name": "Medium Armor",
-    "category": "Hide",
-    "keywords": ["Organic"],
+    "category": "Base Armor",
     "durability": 2,
     "load": 3,
     "block": 1,
     "stun": 2,
-    "effect": "Equip one piece of _Layered Armor_ as a part of this.",
-    "abilities": [
-      {
-        "name": "Twist",
-        "category": "Defensive",
-        "type": "Gambit",
-        "cost": "None",
-        "effect": "Gain +3 _Block_.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
-      }
-    ],
+    "effect": "Equip one piece of _Layered Armor_ as a part of this. They share _Durability_ and all Keywords with this.",
     "desc": "Standard armor, striking a balance between load and durability."
   },
   {
     "name": "Heavy Armor",
-    "category": "Hide",
-    "keywords": ["Organic"],
+    "category": "Base Armor",
     "durability": 3,
     "load": 6,
     "block": 1,
     "stun": 2,
-    "effect": "Equip two pieces of _Layered Armor_ as a part of this.",
-    "desc": "Heavy armor, sacrificing mobility for additional effects.",
-    "abilities": [
-      {
-        "name": "Twist",
-        "category": "Defensive",
-        "type": "Gambit",
-        "cost": "None",
-        "effect": "Gain +3 _Block_.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
-      }
-    ]
+    "effect": "Equip two pieces of _Layered Armor_ as a part of this. They share _Durability_ and all Keywords with this.",
+    "desc": "Heavy armor, sacrificing mobility for additional effects."
   },
   {
     "name": "Gambeson",
@@ -80,33 +47,50 @@
     "desc": "Thick, quilted armor specialized in defending against crushing strikes."
   },
   {
-    "name": "Extra Armor",
-    "category": "Hide",
+    "name": "Reinforced Armor",
+    "category": "Layered Armor",
     "keywords": ["Organic"],
-    "stun": 5,
-    "desc": "Additional banding that, while not providing specific block, generally improves the efficacy of the armor."
+    "stun": 4,
+    "block": 1,
+    "desc": "Additional padding and reinforcements that, while not providing a specific defense, generally improves the efficacy of the armor."
   },
   {
     "name": "Chain Shirt",
-    "category": "Hide",
+    "category": "Layered Armor",
     "keywords": ["Metal"],
-    "effect": "While wearing this Armor you have +2 _Block_ against _Slash_ _Damage_.",
+    "effect": "While wearing this Armor you have 2 _Ward_ (Slash).",
     "block": 1,
     "abilities": [
       {
-        "name": "Twist",
+        "name": "Armored Deflection",
         "category": "Defensive",
-        "type": "Gambit",
-        "cost": "None",
-        "effect": "Gain _Resistance_ to _Slash_ Damage.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
+        "type": "Reaction",
+        "cost": "1 _Guard_",
+        "keywrods": ["Efficient"],
+        "trigger": "You are hit by a _Slash_ effect.",
+        "effect": "Gain _Resistance_ [_Slash_]. You may choose to use this _Reaction_ at no _Cost_; if you do, roll a d6. On a 3 or lower, lose 1 _Durability_."
+      }
+    ]
+  },
+  {
+    "name": "Traveler's Boots",
+    "category": "Boot",
+    "desc": "Sturdy boots made for traveling the world.",
+    "durability": 1,
+    "load": 1,
+    "abilities": [
+      {
+        "name": "Walking Shoes",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "On each day of Travel, roll a d6. On a 5 or higher you may remove a _Fatigue_ stake, including automatic ones."
       }
     ]
   },
   {
     "name": "Iron Boots",
     "category": "Boot",
-    "desc": "Sturdy boots that make it easier to traverse difficult terrain.",
+    "desc": "Solid boots protect against hostile terrain and make it easier to travel the world.",
     "keywords": ["_Minor Source_ (_Metal_)"],
     "durability": 1,
     "load": 1,
@@ -145,7 +129,7 @@
         "name": "Cloaked Protection",
         "category": "Travel",
         "type": "Power",
-        "effect": "When traveling through harsh weather, roll a d6. On a 3 or less, you may demote a single **Affliction** or **Fatigue** Hazard related to said Weather. On a 4 or higher, instead remove it."
+        "effect": "When traveling through harsh weather, roll a d6. On a 4 or less, you may demote a single _Affliction_ or _Fatigue_ Hazard related to said Weather. On a 5 or higher, instead remove it."
       }
     ]
   },
@@ -261,6 +245,23 @@
     "load": 2,
     "block": 1,
     "stun": 2,
+    "desc": "Natural armor, whether that be chitin, a thin shell, or natural plating.",
+    "abilities": [
+      {
+        "name": "Protection",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Whenever you _Parry_, gain +1 _Block_."
+      }
+    ]
+  },
+  {
+    "name": "Medium Natural Armor",
+    "category": "Natural",
+    "durability": 2,
+    "load": 2,
+    "block": 3,
+    "stun": 5,
     "desc": "Natural armor, whether that be chitin, a thin shell, or natural plating.",
     "abilities": [
       {

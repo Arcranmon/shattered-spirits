@@ -279,13 +279,13 @@ declare interface ITalentData extends IBaseData {
 }
 
 declare interface ITerrainData extends IBaseData {
-  position_effect: string
-  path_effect: string
   element: string
   layer: string
   negate: string
   destroy: string
   interactions: string[]
+  threshold: number
+  hardness: number
 }
 
 declare interface IFeatureData extends IBaseData {

@@ -180,7 +180,7 @@
           <v-col :cols="columnNumbers">
             <combat-stats-widget
               :creature="character.Spirit"
-              @changezd="$emit('changed')" />
+              @changed="$emit('changed')" />
             <status-widget
               :creature="character.Spirit"
               @changed="$emit('changed')" />

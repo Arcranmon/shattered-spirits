@@ -19,7 +19,7 @@
     "desc": "A creature that is entangled in some sort of material, whether that be vines, spider silk, or wires.",
     "effect": "The effect of Entangled depends on the current amount the creature has relative to their _Size_:\n* [Size-1]: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* [Size]: As Rank 1, but the creature is also _Slowed_.\n* [Size+1]: The creature is _Restrained_.",
     "remove": "Creatures may clear Entangled by either _Recovering_ and making a _Grit_/_Reflex_ roll [_Negate_ 9] to reduce their Entangled by 1. Alternatively, a creature clears 1 Entangled for every 4 _Slash_ damage they take. A creature may choose to target just the Web when attacking.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Alight",
@@ -96,14 +96,14 @@
     "repeat": "If a Taunted creature would gain Taunted use the new Taunted inflictor as the target of this Status.",
     "remove": "If the creature that inflicted Taunted targets another creature with an Attack, you may immediately _Negate_ [_Focus_ 7] to clear Taunted.",
     "recover": "When a creature _Recovers_ they may remove Taunted.",
-    "type": "Status Effect"
+    "type": "Minor Condition"
   },
   {
     "name": "Engaged",
     "desc": "A status showing that two creatures are engaged in close combat with one another.",
     "effect": "While Engaged spending _Movement_ creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all non-_Melee_ Attacks.",
     "remove": "Characters may spend 1 _Movement_ to remove all instances of _Engaged_, as well as any _Terrain Bonus_ or _Hazard_.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Exposed",
@@ -127,23 +127,23 @@
     "repeat": "If a Ridden creature would gain Ridden, the other creature also begins to ride them. If inflicted from a creature already riding you, instead gain _Vulnerable_ 1.",
     "remove": "On their Turn, creatures may spend 1 _Momentum_ to make a _Grit_ roll opposed by their rider's _Grit_/_Reflex_. If you win, remove Ridden. A creature may do this once per Turn per rider.",
     "recover": "When a creature _Recovers_ they may attempt to remove Ridden at no cost, and have _Advantage_ on the opposed _Negate_.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Grappled",
     "desc": "A creature is grasping you, limiting your mobility greatly.",
     "effect": "While you are Grappled you are _Immobilized_, the creature that inflicted it on you is always _Engaged_ with you, and you Move with them. When a creature Grappling you spends _Movement_ you may not react to the _Opening_ it creates. Additionally, your _Defense Rolls_ against them have _Disadvantage_. Finally, if you are within one Size of the grappler, they are _Hobbled_.",
-    "repeat": "If a Grappled creature would gain Grappled, the other creature also begins to grapple them. If inflicted from a creature already grappling you, they may instead inflict _Steal_ or _Prone_.",
+    "repeat": "If a Grappled creature would gain Grappled, the other creature also begins to grapple them. If inflicted from a creature already grappling you, they may instead inflict _Grappled_ or _Prone_.",
     "remove": "On their Turn, creatures may spend 1 _Momentum_ to make a _Grit_/_Reflex_ roll opposed by their grappler's _Grit_. If you win, remove Grappled. A creature may do this once per Turn per grappler. Alternatively, if a creature is the same size as their grappler, they can make an opposed _Grit_ role to instead become the grappler.",
     "recover": "When a creature _Recovers_ they may attempt to remove Grappled at no cost, and have _Advantage_ on the opposed _Negate_.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Hobbled",
     "desc": "An affliction caused when a creature's movement is impaired somehow.",
     "effect": "While Hobbled all Movement costs are increased by 1.",
     "recover": "When a creature _Recovers_ they may remove Hobbled.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Impaired",
@@ -157,7 +157,7 @@
     "name": "Immobilized",
     "desc": "Your movement is restricted to the degree that you may not move.",
     "effect": "While Immobilized a creature may not spend _Movement_ except to remove a _Status Effect_ causing this condition.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Poisoned",
@@ -172,7 +172,7 @@
     "effect": "A Prone creature is _Immobilized_. While Prone, Melee attacks against the target gain Advantage, but Medium and Long Range attacks have Disadvantage.",
     "remove": "A creature may expend one Movement to end Prone. This creates an _Opening_.",
     "recover": "When a creature _Recovers_ they may expend one Movement to remove _Prone_ without creating an _Opening_.",
-    "type": "Status Effect"
+    "type": "Condition"
   },
   {
     "name": "Pull",
@@ -222,7 +222,7 @@
   },
   {
     "name": "Sundered",
-    "effect": "When a creature gains _Sundered_ a piece of _Worn_ or _Wielded_ _Equipment_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Vulnerable_ 1.",
+    "effect": "When a creature gains _Sundered_ a piece of _Worn_ or _Wielded_ _Equipment_ or a _Breakable_ _Trait_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Vulnerable_ 1.",
     "type": "Instant Effect"
   },
   {
@@ -234,23 +234,23 @@
     "desc": "A condition caused when your connection to your spirit is limited.",
     "effect": "While Suppressed all [_Spirit_] abilities cost an additional 2 _Momentum_ to use.",
     "recover": "When a creature _Recovers_ they may remove _Suppressed_.",
-    "repeat": "If a Suppressed or _Sealed_ creature would gain Suppressed they instead gain 2 _Block_.",
-    "type": "Status Effect"
+    "repeat": "If a Suppressed or _Sealed_ creature would gain Suppressed they instead lose 1 _Craft Momentum_.",
+    "type": "Condition"
   },
   {
     "name": "Sealed",
     "desc": "A condition caused when your connection to your spirit is severed.",
     "effect": "While Sealed [_Spirit_] Abilities may not be utilized.",
     "recover": "When a creature _Recovers_ they may remove _Sealed_ and gain _Suppressed_.",
-    "repeat": "If a Sealed creature would gain Sealed they instead gain 4 _Block_. If a _Suppressed_ creature gains Sealed, remove _Suppressed_ and inflict 2 _Block_.",
-    "type": "Status Effect"
+    "repeat": "If a Sealed creature would gain Sealed they instead lose 2 _Craft Momentum_.",
+    "type": "Condition"
   },
   {
     "name": "Vulnerable",
     "desc": "A status that represents an erasure of a character's ability to successfully defend themselves.",
     "effect": "Creatures take additional Damage equal to their _Vulnerable_ value.",
     "recover": "When a creature _Recovers_ they may remove 2 Vulnerable.",
-    "type": "Affliction"
+    "type": "Condition"
   },
   {
     "name": "Concentrating",

@@ -13,7 +13,10 @@ status_multipliers = {
     "Bleeding": 1.5,
     "Exposed": 1.5,
     "Dazed": 2,
-    "Push": 2
+    "Push": 2,
+    "Prone": 2,
+    "Sundered": 2,
+    "Grabbed": 2
 }
 
 instant_statuses = ["Defending"]
@@ -93,6 +96,7 @@ def get_databases():
     merged_data = json.load(open('.\src\database\items\weapons.json'))
     merged_data.extend(json.load(open('.\src\database\\ability_packages.json')))
     merged_data.extend(json.load(open('.\src\database\\traits.json')))
+    merged_data.extend(json.load(open('.\src\database\\npcs\\npcs.json')))
     return merged_data
 
 
@@ -159,7 +163,7 @@ def estimate_damage(attack, glancing, print_stats):
     override_range = ""
     stun_scale = 0.9 # Stun is worth less (not sure how much)
 
-    cost += int(attack["cost"][0])
+    cost += int(attack.get("cost", "0")[0])
                     
     if("chart" in attack):
         roll_chart = attack["chart"]["roll"]

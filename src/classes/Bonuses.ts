@@ -57,6 +57,10 @@ class Bonuses {
     return this.equipment_
   }
 
+  public get Load() {
+    return this.load_
+  }
+
   public get Focus() {
     return this.focus_
   }

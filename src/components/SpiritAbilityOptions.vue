@@ -6,22 +6,22 @@
     <show-cards
       v-if="this.$store.getters.getSpiritTraitsByTagAndCost(element, 'None').length > 0"
       display_text="Base Traits"
-      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, 'None')"
+      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, 'None').sort((a, b) => a.Name.localeCompare(b.Name))"
       :cols="1" />
     <show-cards
       v-if="this.$store.getters.getSpiritTraitsByTagAndCost(element, '1').length > 0"
       display_text="Common Traits (1 Point)"
-      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '1')"
+      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '1').sort((a, b) => a.Name.localeCompare(b.Name))"
       :cols="1" />
     <show-cards
       v-if="this.$store.getters.getSpiritTraitsByTagAndCost(element, '2').length > 0"
       display_text="Uncommon Traits (2 Points)"
-      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '2')"
+      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '2').sort((a, b) => a.Name.localeCompare(b.Name))"
       :cols="1" />
     <show-cards
       v-if="this.$store.getters.getSpiritTraitsByTagAndCost(element, '3').length > 0"
       display_text="Rare Traits (3 Points)"
-      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '3')"
+      :inputs="this.$store.getters.getSpiritTraitsByTagAndCost(element, '3').sort((a, b) => a.Name.localeCompare(b.Name))"
       :cols="1" />
   </div>
 </template>

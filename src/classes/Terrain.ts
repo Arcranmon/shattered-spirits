@@ -7,6 +7,8 @@ class Terrain extends Base {
   private negate_: string
   private interactions_: Array<string>
   private destroy_: string
+  private hardness_: number
+  private threshold_: number
 
   public constructor(name) {
     super(name)
@@ -37,6 +39,9 @@ class Terrain extends Base {
   get HasDestroy() {
     return this.destroy_ != ''
   }
+  get HasHardness() {
+    return this.hardness_ != 0
+  }
 
   // ==========================================================
   // FORMATTED GETTERS
@@ -53,8 +58,11 @@ class Terrain extends Base {
   public get NegateHeader() {
     return '**Negate:** ' + this.negate_
   }
+  public get HardnessHeader() {
+    return '**Hardness:** ' + this.hardness_ + '; **Threshold:** ' + this.threshold_
+  }
   public get Header() {
-    return this.Name + ' - _' + this.element_ + '_  Terrain'
+    return this.Name + ' - _' + this.element_ + '_ ' + this.layer_
   }
 
   // ==========================================================
@@ -73,6 +81,8 @@ class Terrain extends Base {
     this.negate_ = data.negate || ''
     this.destroy_ = data.destroy || ''
     this.interactions_ = data.interactions || []
+    this.hardness_ = data.hardness || 0
+    this.threshold_ = data.threshold || 0
   }
 }
 export default Terrain

@@ -17,7 +17,10 @@
 <v-tab> <h4>Water</h4> </v-tab>
 
       -->
+      <v-tab> <h4>Earth</h4> </v-tab>
+      <v-tab> <h4>Flame</h4> </v-tab>
       <v-tab> <h4>Metal</h4> </v-tab>
+      <v-tab> <h4>Water</h4> </v-tab>
       <v-tab> <h4>Wind</h4> </v-tab>
       <v-tab> <h4>Wood</h4> </v-tab>
       <v-tab> <h4>Traits</h4> </v-tab>
@@ -36,7 +39,16 @@
 </v-tab-item>
       --->
       <v-tab-item class="character-tab-content">
+        <spirit-ability-options element="Earth" />
+      </v-tab-item>
+      <v-tab-item class="character-tab-content">
+        <spirit-ability-options element="Flame" />
+      </v-tab-item>
+      <v-tab-item class="character-tab-content">
         <spirit-ability-options element="Metal" />
+      </v-tab-item>
+      <v-tab-item class="character-tab-content">
+        <spirit-ability-options element="Water" />
       </v-tab-item>
       <v-tab-item class="character-tab-content">
         <spirit-ability-options element="Wind" />
@@ -51,22 +63,22 @@
           :cols="1" />
         <show-cards
           display_text="Common Traits (1 Point)"
-          :inputs="this.$store.getters.getTraitsByTagAndCost('General', '1')"
+          :inputs="this.$store.getters.getTraitsByTagAndCost('General', '1').sort((a, b) => a.Name.localeCompare(b.Name))"
           :cols="1" />
         <show-cards
           display_text="Uncommon Traits (2 Points)"
-          :inputs="this.$store.getters.getTraitsByTagAndCost('General', '2')"
+          :inputs="this.$store.getters.getTraitsByTagAndCost('General', '2').sort((a, b) => a.Name.localeCompare(b.Name))"
           :cols="1" />
         <show-cards
           display_text="Rare Traits (3 Points)"
-          :inputs="this.$store.getters.getTraitsByTagAndCost('General', '3')"
+          :inputs="this.$store.getters.getTraitsByTagAndCost('General', '3').sort((a, b) => a.Name.localeCompare(b.Name))"
           :cols="1" />
       </v-tab-item>
       <v-tab-item>
         <show-cards
           class="character-tab-content"
           style="border-top: 2px solid black"
-          :inputs="$store.getters.getStancesFromList($store.getters.basicSpiritStances)"
+          :inputs="$store.getters.getStancesFromList($store.getters.basicSpiritStances).sort((a, b) => a.Name.localeCompare(b.Name))"
           :cols="1"
           :collapse="false" />
       </v-tab-item>

@@ -1,5 +1,133 @@
 [
   {
+    "name": "Basic Earthsense",
+    "category": "Earth",
+    "type": "Discipline",
+    "desc": "All with earthcraft have an innate, intuitive grasp of nearby earth and stone.",
+    "abilities": [
+      {
+        "name": "Earthsense",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Skill",
+        "effect": "You can sense the approximate location of nearby earth and stone, although other elements (especially an airgap) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      }
+    ]
+  },
+  {
+    "name": "Basic Flamesense",
+    "category": "Flame",
+    "type": "Discipline",
+    "desc": "All with flamecraft can easily sense nearby flames, and objects that call for them.",
+    "abilities": [
+      {
+        "name": "Flamesense",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Skill",
+        "effect": "You can sense the approximate location of nearby fire and flammable objects, although other elements (especially water) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      }
+    ]
+  },
+  {
+    "name": "Basic Watersense",
+    "category": "Water",
+    "type": "Discipline",
+    "desc": "All with watercraft sense nearby water, like an innate dowsing rod.",
+    "abilities": [
+      {
+        "name": "Watersense",
+        "keywords": ["Spirit", "Water"],
+        "type": "Skill",
+        "effect": "You can sense the approximate location of nearby water, although other elements (especially extreme heat or fire) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      }
+    ]
+  },
+  {
+    "name": "Basic Landcraft",
+    "category": "Earth",
+    "type": "Discipline",
+    "desc": "Basic manipulation of earth and soil that most earthbound have some competency with.",
+    "abilities": [
+      {
+        "name": "Landcraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Skill",
+        "effect": "You have a basic control of earth and soil that allows you to move earth at a short distance as if you had a small shovel.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      },
+      {
+        "name": "Shape Earth",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Earth"],
+        "cost": "1 _Momentum_",
+        "range": 0,
+        "target": "An Arena that is a _Source_ (_Earth_).",
+        "effect": "Choose one:\n* Create a _Tripping Hazard_ that is made of _Earth_ in the Target.\n* Remove a piece of _Earthen_ _Terrain_ that is a _Minor Source_ or less in the Target."
+      }
+    ]
+  },
+  {
+    "name": "Novice Mountaincraft",
+    "category": "Earth",
+    "type": "Discipline",
+    "desc": "The fundamentals of mountaincraft, which forgoes shaping massive amounts of earth for finer control and manipulation of specific objects.",
+    "abilities": [
+      {
+        "name": "Mountaincraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Earth"],
+        "type": "Skill",
+        "effect": "You may move and control a single nearby earthen object that you could physically lift with good precision. You have finer control and greater range when manipulating lighter objects.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
+      },
+      {
+        "name": "Earthbending",
+        "category": "Utility",
+        "type": "Passive",
+        "keywords": ["Spirit", "Earth"],
+        "effect": "You have _Bend_ [_Earth_] within Range 1. Additionally, you may use _Brawl_ against all Targets made of _Earth_ or wearing _Earth_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target an _Earth_ piece of _Equipment_."
+      },
+      {
+        "name": "Compact",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Earth"],
+        "cost": "1 _Momentum_",
+        "reqs": "In an _Source_ (_Earth_) _Arena_.",
+        "effect": "Create one of the following, placing all unattended in your Arena:\n*  Four fist-sized stones that count as _Least Source_s.\n*  Two larger stones count as _Minor Source_s.\n*  A small boulder that count as a _Moderate Source_."
+      },
+      {
+        "name": "Earthen Fling",
+        "category": "Balanced",
+        "type": "Attack",
+        "keywords": ["Spirit", "Earth", "Crush", "Remote"],
+        "cost": "3 _Momentum_",
+        "range": "1",
+        "target": "Single-Target",
+        "missile": "An Unattended _Least Source_ (_Earth_) or one _Worn by you/an ally within Range.",
+        "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
+        "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
+        "enhancements": [
+          {
+            "name": "Heavy Stone",
+            "cost": "1 _Momentum_",
+            "effect": "You may instead use a _Minor Source_ (_Earth_) as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
+          },
+          {
+            "name": "Heavier Stone",
+            "cost": "2 _Momentum_",
+            "effect": "You may instead use a _Moderate Source_ (_Earth_) as the _Missile_. If you do, deal +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, add [_Siege_] and increase the DC to _Negate_ by 1."
+          }
+        ],
+        "chart": {
+          "stun": [1, 2, 2, 4],
+          "damage": [0, 2, 4, 6],
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "status": ["None", "None", "Dazed [_Grit_]", "Dazed [_Grit_]"]
+        }
+      }
+    ]
+  },
+  {
     "name": "Basic Metalsense",
     "category": "Metal",
     "type": "Discipline",
@@ -47,7 +175,7 @@
     "name": "Basic Stormcraft",
     "category": "Wind",
     "type": "Discipline",
-    "desc": "A more specialized focus on windcraft that, nonetheless, all practitioners of it have some basic skill with.",
+    "desc": "A more specialized focus of windcraft that, nonetheless, all practitioners of it have some basic skill with.",
     "abilities": [
       {
         "name": "Stormcraft",
@@ -110,8 +238,8 @@
         "cost": "1 _Momentum_",
         "range": "1",
         "target": "Single-Target",
-        "missile": "An Unattended _Least Source_ (_Wood_) item or one _Worn by you/an ally within Range 0.",
-        "effect": "Choose a Missile, then Attack a target within Range with it. If you choose a _Trinket_, add _Glancing_ to this Attack. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
+        "missile": "An Unattended _Least Source_ (_Wood_) item or one _Worn by you/an ally within Range.",
+        "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
         "special": "If the _Missile_ has an Attack with _Slash_ or _Crush_ you may replace _Stab_ with said keyword.",
         "enhancements": [
           {
@@ -156,8 +284,8 @@
         "cost": "2 _Momentum_",
         "range": "1",
         "target": "Single-Target",
-        "missile": "An Unattended _Least Source_ (_Metal_) item or one _Worn by you/an ally within Range 0.",
-        "effect": "Choose a Missile, then Attack a target within Range with it. If you choose a _Trinket_, add _Glancing_ to this Attack. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
+        "missile": "An Unattended _Least Source_ (_Metal_) item or one _Worn by you/an ally within Range.",
+        "effect": "Choose a Missile, then Attack a target within Range with it.After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
         "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
         "enhancements": [
           {
@@ -311,8 +439,9 @@
         "keywords": ["Spirit", "Wood"],
         "target": "An _Overgrown_ Arena or one that is a _Source_ (_Plant_).",
         "range": "1",
-        "cost": "2 _Momentum_",
-        "effect": "The _Arena_ gains or removes _Overgrown_."
+        "cost": "1 _Momentum_",
+        "effect": "Choose one:\n* Create a _Tripping Hazard_ that is made of _Wood_.\n* Remove a piece of _Wood_ _Terrain_ that is a _Minor Source_ or less.",
+        "enhancements": [{ "name": "Wild Growth", "cost": "1 _Momentum_", "effect": "The _Arena_ gains or removes _Overgrown_." }]
       },
       {
         "name": "Ensnare",
@@ -386,6 +515,39 @@
     ]
   },
   {
+    "name": "Farmer",
+    "desc": "You've worked on a farm, making you used to hard physical labor and providing you a wide breadth of knowledge.",
+    "category": "Crafting",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Farm Days",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You've worked on a farm, granting you a strong back and endurance. Additionally, you have a broad knowledge of plants, common livestock, what to expect with the seasons, and various other tidbits of knowledge that aid in farming. Other farmers warm to you quickly, and if you speak to them about farming for a short time they'll tend to become friendly.\n&nbsp;\nWhen your background and skills as a farmer would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Hard Labor",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "You may carry 2 more _Load_ in your _Pack_.",
+        "bonuses": { "load": 2 }
+      },
+      {
+        "name": "High-Quality Produce",
+        "category": "Downtime",
+        "type": "Power",
+        "effect": "During downtime you may work your own farm or help other farmers; if you do, start the _Journey_ with 3 _Food_ (Good) as you reap the fruits of your labor or are rewarded for your help. You may purchase additional _Food_ at a discounted rate."
+      },
+      {
+        "name": "Animal Empathy",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Your time working with livestock has given you an innate aptitude with animals; they tend to warm to you quickly, and you are better able to read their body language. When you first interact with an animal, you may ask the GM one of the following questions and they will answer truthfully:\n* What (if anything) is wrong with this animal?\n* What is this animal's role in its pack or herd?\n* What is this animal currently worried about?\n* What can I do to make this animal like me?\n\n&nbsp;These effects are heightened when interacting with domesticated animals; in such situations, you may always roll _Skillfully_."
+      }
+    ]
+  },
+  {
     "name": "Hunter",
     "desc": "You are skilled at tracking game, and can easily supply food for your party while hunting.",
     "category": "Travel",
@@ -410,10 +572,30 @@
         "effect": "Whenever you <u>Hunt</u> and successfully find game, you may choose one:\n* Increase the quality of the food found by one rank.\n* Get an additional _Food_ (Passable, Meat).\n* Increase the quality of any pelt or other material you might gather.\n* Gain an additional, specialized benefit, as outlined by the GM.\n\nYou may take a _Stress_ to instead choose two different options."
       },
       {
-        "name": "Trapper",
+        "name": "Prepared Game",
         "category": "Downtime",
         "type": "Power",
-        "effect": "During downtime, you may set a variety of traps in the wilderness. On the first day of your next _Journey_ you may collect these traps at no cost, gaining 1-3 _Food_ (Good, Meat) and potentially some additional items based on how much wildlife and small game is in the area."
+        "effect": "During downtime, you can stock up on food before the journey. If you do, you may start it with 2 _Food_ (_Good_) as you preserve some select cuts for the next adventure."
+      }
+    ]
+  },
+  {
+    "name": "Wanderer",
+    "desc": "You are an experienced traveler, with a breadth of knowledge of how the roads work and unparalleled traveling endurance.",
+    "category": "Travel",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Roadwise",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are constantly wandering, and have a good sense of the rules of engagement on the road and a broad knowledge of the wider world. You can confidently size up other travelers and get a sense of how far they've gone.\n&nbsp;\nWhen your background and skills as a wanderer would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Adept Traveler",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "Roll +1 die when making your _Travel Roll_."
       }
     ]
   },
@@ -433,13 +615,13 @@
         "name": "Survival Instinct",
         "category": "Travel",
         "type": "Power",
-        "effect": "While traveling, you may spend one &#9634; to offset the _Menace_ Danger. If you do, roll a d6; on a 3 or higher, take 1 _Stress_, otherwise take 1 _Fatigue_."
+        "effect": " The first time you pull from the _Menace Deck_ you may choose to exclude _Mishaps_ put there due to party members. Additionally, while traveling, you may spend one &#9634; to offset the _Menace_ Danger. If you do, roll a d6; on a 3 or higher, take 1 _Stress_, otherwise take 1 _Fatigue_."
       },
       {
         "name": "Multitasking",
         "category": "Travel",
         "type": "Power",
-        "effect": "While traveling, you may select any number of jobs when you play the _Efficacy_ Advantage."
+        "effect": "While traveling, you may select any number of jobs when you play the _Efficacy_ Advantage. Additionally, you may choose a different _Approach_ than the rest of your party."
       },
       {
         "name": "Break Camp",
@@ -535,7 +717,7 @@
         "name": "Grin and Bear It",
         "category": "Skill",
         "type": "Power",
-        "effect": "When you would gain Hunger, Thirst, Fatigue, or a similar Affliction you may place it on this Ability instead of your Health Bar, ignoring its effect. You recover from this effect as normal, and may use this Power once there is no longer an Affliction on it."
+        "effect": "Gain an additional segment on your _Health Bar_."
       },
       {
         "name": "Toughness",
@@ -552,6 +734,47 @@
         "cost": "None",
         "trigger": "You would be reduced to 0 _Stamina_.",
         "effect": "The triggering effect cannot reduce you below 1 _Stamina_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
+      }
+    ]
+  },
+  {
+    "name": "Observant",
+    "desc": "You are adept at reading people, and can pick up on small changes in a character's demeanor.",
+    "category": "Archetype",
+    "abilities": [
+      {
+        "name": "Exceptional Observation",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You have an uncanny knack for reading others. You can see through falsehoods, grasp somebody's true intention, and generally glean insights that others would see as an incredible leap of logic.\n&nbsp;\nWhen your ability to read people would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Observation* if appropriate."
+      },
+      {
+        "name": "Root of the Problem",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Other characters may treat you as a valid target for <u>Vent</u> even if you are taking another _Camp Action_. If they do, they clear _Stress_ as normal, although you do not."
+      },
+      {
+        "name": "Social Observation",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "When interacting with people, you may tap into your observational powers to gain additional insight. Ask one of the following questions, which the GM must answer honestly:\n* What is the general emotional state of the room?\n* Is this person lying or attempting to deceive us?\n* What does this person want right now?\n&nbsp;You may use this Ability once per day for free; take a _Stress_ for each successive use."
+      },
+      {
+        "name": "Sense Intent",
+        "category": "Support",
+        "type": "Passive",
+        "effect": "At _Respite_ choose any enemy. The GM must tell you what category their selected _Stance_ is. If it is not an _Offensive Stance_, inflict _Studied_. If it is an _Offensive Stance_, instead learn how the enemy will select its Target."
+      },
+      {
+        "name": "Uncanny Observation",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "keywords": ["Social"],
+        "range": "1",
+        "target": "Single-Target",
+        "cost": "2 _Momentum_",
+        "effect": "The Target becomes _Studied_. If a character uses a _Social_ effect against them, they may remove _Studied_ to cause them to automatically fail the _Negate_ roll instead of the usual _Studied_ effect."
       }
     ]
   },
@@ -591,6 +814,48 @@
     ]
   },
   {
+    "name": "Strong",
+    "desc": "You possess incredible physical strength, allowing you to accomplish feats that others could not even dream of.",
+    "category": "Archetype",
+    "abilities": [
+      {
+        "name": "Exceptional Strength",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are fantastically strong, approaching the limits of what a human can do unaided by craft. You can overpower creatures twice your size, and .\n&nbsp;\nWhen your physical strength would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Efficacy* if appropriate."
+      },
+      {
+        "name": "Overwhelming Power",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "When rolling _Boldly_ and using your strength you may use this Ability to roll an additional 3 die, but automatically add the _Mayhem_ _Danger_. You may use this Ability once per day for free; take a _Fatigue_ for each successive use."
+      },
+      {
+        "name": "Strong Back",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "You may carry 2 _Load_ without it affecting your _Encumbrance_."
+      },
+      {
+        "name": "Mighty",
+        "category": "Support",
+        "type": "Passive",
+        "effect": "Gain +2 _Grit_. You may, when it would be beneficial, treat yourself as Size 3 instead of Size 2.",
+        "bonuses": { "grit": 1 }
+      },
+      {
+        "name": "Strong Swing",
+        "category": "Offensive",
+        "type": "Reaction",
+        "reqs": "[_Martial_] Attack.",
+        "trigger": "You make a [_Martial_] Attack.",
+        "cost": "1 _Momentum_",
+        "effect": "Choose one:\n* Inflict additional _Stun_ equal to 1 + the_Cost_ of the triggering Attack, even on a _Miss_.\n* The Target must _Negate_ _Grit_ with _Disadvantage_ this _Turn_. Add _Push_ [_Grit_] to the Attack or, if it already inflicted _Forced Movement_, add _Forceful_.",
+        "enhancements": [{ "name": "Stronger Swing", "cost": "1 _Momentum_", "effect": "Choose both." }]
+      }
+    ]
+  },
+  {
     "name": "Swift",
     "desc": "You are fleet of foot and incredibly nimble, allowing you to outrun your peers with ease.",
     "category": "Archetype",
@@ -599,7 +864,7 @@
         "name": "Fleet of Foot",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general manueverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Speed* if appropriate."
+        "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general maneuverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Speed* if appropriate."
       },
       {
         "name": "Quick March",
@@ -612,7 +877,7 @@
         "category": "Mobility",
         "type": "Passive",
         "effect": "Gain +1 _Movement_ and _Reflex_. You have _Advantage_ the first time you _Negate_ with _Reflex_ each _Phase_.",
-        "bonus": { "move": 1, "reflex": 1 }
+        "bonuses": { "move": 1, "reflex": 1 }
       },
       {
         "name": "Swiftest",

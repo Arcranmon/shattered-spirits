@@ -76,9 +76,10 @@ class Character extends Combatant {
   // ==========================================================
 
   public get LoadAbilities() {
-    if (this.Load <= kLoadBands) return ['Traveling Light', 'Unencumbered']
-    else if (this.Load <= kLoadBands * 2) return []
-    else if (this.Load <= kLoadBands * 3) return ['Traveling Heavy', 'Heavily Encumbered']
+    if (this.Load <= kLoadBands + (this.combinedBonuses_ ? this.combinedBonuses_.Load : 0)) return ['Traveling Light', 'Unencumbered']
+    else if (this.Load <= kLoadBands * 2 + (this.combinedBonuses_ ? this.combinedBonuses_.Load : 0)) return []
+    else return ['Traveling Heavy', 'Heavily Encumbered']
+    return ''
   }
 
   public get Abilities() {
@@ -238,13 +239,13 @@ class Character extends Combatant {
     return this.armor_
   }
   get Grit() {
-    return this.CurrentStance.Grit
+    return this.CurrentStance.Grit + this.combinedBonuses_.Grit
   }
   get Reflex() {
-    return this.CurrentStance.Reflex
+    return this.CurrentStance.Reflex + this.combinedBonuses_.Reflex
   }
   get Focus() {
-    return this.CurrentStance.Focus
+    return this.CurrentStance.Focus + this.combinedBonuses_.Focus
   }
 
   // ==========================================================

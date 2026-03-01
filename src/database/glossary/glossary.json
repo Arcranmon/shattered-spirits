@@ -86,6 +86,10 @@
     "effect": "Retreat is a special movement pattern used by NPCs. When a creature Retreats, they first leave their current _Engagement_, and may use any abilities that prevent an _Opening_. They may end their _Movement_ there, or may either:\n* Become _Engaged_ with an ally.\n* _Occupy_ _Terrain_.\n* Move to an _Arena_ with no enemies.\n\nRegardless of what they choose, they may not willingly _Engage_ an enemy under any circumstances."
   },
   {
+    "name": "Blood Loss",
+    "effect": "You've lost a significant amount of blood, making you light-headed an limiting your ability to act. This _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_, take 3 _Stun_ at _Respite_. You may not mark progress on any other _Wound_ until this _Wound_ is healed, but, once per Camp Phase, you may automatically mark a segment on its Clock by eating an additional portion of food."
+  },
+  {
     "name": "Bend",
     "effect": "Characters with bend for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_) at the listed Bend Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Bend Range when targeting the appropriate material."
   },
@@ -100,7 +104,11 @@
   { "name": "1.5", "see": "Hand-and-a-Half" },
   {
     "name": "Melee",
-    "effect": "Melee Attacks may only be used against creatures currently in a _Engagement_ with you."
+    "effect": "Melee effects may only be used against creatures currently in a _Engagement_ with you."
+  },
+  {
+    "name": "Reach",
+    "effect": "Reach effects may target any creature within your _Engagement_, but are treated like a _Melee_ effect otherwise."
   },
   {
     "name": "Craft Momentum",
@@ -114,6 +122,14 @@
   {
     "name": "Movement",
     "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.\n* 2 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: _Occupy_ _Terrain_ or a _Hazard_. You automatically become _Engaged_ with any other creatures _Occupying_ the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
+  },
+  {
+    "name": "Siege",
+    "effect": "Optionally, when making this Attack against a creature _Occupying_ _Terrain_, the _Terrain_ first loses 1 _Hardness_. If this destroys the _Terrain_, the Target does not benefit from any effects it was granting. If you Attack the Obstacle directly it always loses 1 additional _Hardness_ and you treat all _Stun_ inflicted as _Damage_."
+  },
+  {
+    "name": "Unblockable",
+    "effect": "Creatures have _Disadvantage_ on any _Parry_ effect against this Attack, and cannot use _Defensive Gambits_."
   },
   {
     "name": "Opening",
@@ -141,7 +157,7 @@
   },
   {
     "name": "Poison",
-    "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they suffer the below effects:\n* **6-12**: You have a weakened constitution and suffer from constant nausea and dizziness. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_:\n\t* Gain a _Stress_ whenever you eat.\n\t* Gain 1 less _Momentum_ at _Respite_.\n* **3-5**: The poison badly harms you, leaving you in a difficult state. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_ suffer the one-segment effects and the following:\n\t* Gain _Fatigue_ every day if you _Travel_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 2).\n\t* You have _Disadvantage_ to _Negate_ all effects.\n* **2-**: The poison leaves lasting damage, making it near impossible for you to function as normal. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 12 Segment Clock to heal. While you have this _Wound_ suffer the one and two-segment effects and the following:\\n\t* Gain a _Fatigue_ at the start of each day after resolving your _Rest Roll_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 3).\n\t* You have _Disadvantage_ on all rolls."
+    "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they suffer the below effects:\n* **6-12**: You have a weakened constitution and suffer from constant nausea and dizziness. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_:\n\t* Gain a _Stress_ whenever you eat.\n\t* Gain 1 less _Momentum_ at _Respite_.\n* **3-5**: The poison badly harms you, leaving you in a difficult state. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_ suffer the one-segment effects and the following:\n\t* Gain _Fatigue_ every day if you _Travel_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 2).\n\t* You have _Disadvantage_ to _Negate_ all effects.\n* **2-**: The poison leaves lasting damage, making it near impossible for you to function as normal. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 12 Segment Clock to heal. While you have this _Wound_ suffer the one and two-segment effects and the following:\n\t* Gain a _Fatigue_ at the start of each day after resolving your _Rest Roll_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 3).\n\t* You have _Disadvantage_ on all rolls."
   },
   {
     "name": "Parry",
@@ -181,12 +197,28 @@
     "effect": "Short Range effects may target any valid target within an adjacent _Arena_."
   },
   {
+    "name": "Minor Leg Injury",
+    "effect": "One of your legs is injured. Decrease the _Movement_ gained at _Respite_ by 1. Roll one less die whenever your ability to use your legs is important, such as _Travel Rolls_."
+  },
+  {
+    "name": "Major Leg Injury",
+    "effect": "One of your legs is grievously injured. Gain half as much _Movement_ at _Respite_, rounded down, and you may not gain _Movement_ after _Respite_. Additionally, roll two less die whenever your ability to use your legs is important, such as _Travel Rolls_."
+  },
+  {
+    "name": "Minor Arm Injury",
+    "effect": "One of your arms is injured. Decrease the _Momentum_ gained at _Respite_ by 1. Roll one less die whenever your ability to use that arm is important, and take 1 _Stress_ if you do any _Camp_ or _Travel Actions_ that requires your arms."
+  },
+  {
+    "name": "Major Arm Injury",
+    "effect": "One of your arms is grievously injured. You cannot use one arm. Decrease the _Momentum_ gained at _Respite_ by 2. Roll two less die whenever your ability to use your arm is important, and you cannot take any _Camp_ or _Travel Actions_ that requires both your arms."
+  },
+  {
     "name": "Stab",
-    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_, all Attacks against you gain [_Pierce_ 1].\n* **3-5**: You take a deep stab makes it painful to act. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_, all Attacks against you gain [_Pierce_ 2], and the first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it near impossible for you to fight. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_, all Attacks against you gain [_Pierce_ 3], and the first time you take Damage each _Round_ you gain _Bleeding_ 1. Additionally, gain 1 less _Momentum_ and _Guard_ at _Respite_."
+    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Stab Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 1].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: You take a deep stab that makes it painful to act. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 2].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it painful to move. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 3].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ _Injury_.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Gain 1 less _Momentum_ and _Guard_ at _Respite_.\n\t* Gain a Fatigue at the start of each day after resolving your Rest Roll."
   },
   {
     "name": "Slash",
-    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep cut. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 2 Segment Clock to heal. While you have this _Wound_, the first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **3-5**: One of your limbs takes a deep, debilitating cut. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_, the first time you take Damage each _Round_ you gain _Bleeding_ 1. Additionally, randomly determine if an arm of leg was harmed. If it was an arm, decrease the _Momentum_ gained at _Respite_ by 1. If it was a leg, decrease the _Movement_ gained at _Respite_ by 1. Creatures with additional limbs may suffer more complex effects.\n* **2-**: One of your limbs is cut to the bone, rendering it useless. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_, the first time you take Damage each _Round_ you gain _Bleeding_ 1. Additionally, randomly determine if an arm of leg was harmed. If it was an arm, you cannot use one arm, have _Disadvantage_ on all _Parry_ Rolls. If it was a leg, increase the Movement cost of all abilities by 1. Regardless of which is harmed, increase the cost of [_Spirit_] abilities by 1. Creatures with additional limbs may suffer more complex effects."
+    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep cut. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 2 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **3-5**: One of your limbs takes a deep, debilitating cut. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Minor Leg Injury_ or _Minor Arm Injury_ as appropriate.\n* **2-**: One of your limbs is cut to the bone, rendering it useless. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Major Leg Injury_ or _Major Arm Injury_ as appropriate."
   },
   {
     "name": "Medium",

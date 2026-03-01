@@ -84,6 +84,8 @@ import Greenvale from '@/database/text_files/greenvale.txt'
 import Civilization from '@/database/text_files/civilization.txt'
 import JohnText from '@/database/text_files/sample_characters/john.txt'
 import JohnStats from '@/database/sample_characters/john.json'
+import MargaretText from '@/database/text_files/sample_characters/margaret.txt'
+import MargaretStats from '@/database/sample_characters/margaret.json'
 import ErikaText from '@/database/text_files/sample_characters/erika.txt'
 import ErikaStats from '@/database/sample_characters/erika.json'
 import WinonaText from '@/database/text_files/sample_characters/winona.txt'
@@ -101,16 +103,14 @@ export default Vue.extend({
       selectedTab: 'The World in Brief',
       tabs: ['The World in Brief', 'Civilization Now', 'Greenvale', 'Sample Characters', 'Spirits', 'Spiritcraft'],
       text: [WorldText, Civilization, Greenvale, '', Spirits, Spiritcraft],
-    }
-  },
-  computed: {
-    characters() {
-      return [
+      count: 0,
+      characters: [
+        [MargaretText, Character.Deserialize(MargaretStats)],
         [JohnText, Character.Deserialize(JohnStats)],
         [WinonaText, Character.Deserialize(WinonaStats)],
         [ErikaText, Character.Deserialize(ErikaStats)],
-      ]
-    },
+      ],
+    }
   },
 })
 </script>

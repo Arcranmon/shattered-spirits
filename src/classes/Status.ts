@@ -63,6 +63,7 @@ class Status extends Base {
   }
   public get Icon() {
     if (this.Name == 'Error') return ''
+    if (this.Name == 'Grappled') return require('@/assets/statuses/Grabbed.svg')
     return require('@/assets/statuses/' + this.Name + '.svg')
   }
 

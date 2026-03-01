@@ -23,6 +23,7 @@
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "status": ["None", "Exposed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]"],
+          "stun": [0, 1, 2, 3],
           "damage": [0, 1, 2, 3],
           "negate": [4, 7, 8, 10]
         }
@@ -101,12 +102,12 @@
         "keywords": ["Natural", "Martial", "Stab"],
         "category": "Balanced",
         "type": "Attack",
-        "range": "_Medium_-",
+        "range": "2",
         "target": "Single-Target",
         "effect": "Attack a Target within Range.",
         "chart": {
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "damage": [0, 2, 4, 5]
+          "damage": [0, 3, 6, 7]
         }
       },
       {
@@ -152,14 +153,14 @@
     ]
   },
   {
-    "name": "Guardian Adult",
+    "name": "Hive Guardian",
     "desc": "A Locust that specializes in defending the warren, blocking paths and restraining foes.",
     "role": "Defender",
     "category": "Enemy",
     "stamina": 10,
     "stun": 15,
     "size": "1",
-    "block": 3,
+    "block": 4,
     "defenses": { "focus": 1, "grit": 1 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
@@ -183,8 +184,9 @@
       {
         "name": "Armor Plating",
         "category": "Defensive",
+        "keywords": ["Sunderable"],
         "type": "Passive",
-        "effect": "You do not have _Disadvantage_ to _Parry_ Ranged Attacks. This may be _Sundered_; if it is, lose 2 _Block_."
+        "effect": "You do not have _Disadvantage_ to _Parry_ Ranged Attacks. If this is _Sundered_, lose 2 _Block_."
       },
       {
         "name": "Envenom",
@@ -212,7 +214,7 @@
         "guard": 2,
         "block": 2,
         "speed": 2,
-        "effect": "On your _Turn_, you may _Recover_ or clear 4 _Stun_. The next time a creature enters your _Arena_ or stops being _Engaged_ with you you may immediately Move to _Engage_ them then strike them once with Grasping Claw as a _Reaction_."
+        "effect": "On your _Turn_, you may _Recover_ or clear 4 _Stun_. The next time a creature enters your _Arena_ or stops being _Engaged_ with you you may immediately Move to _Engage_ them then strike them twice with Grasping Claw as a _Reaction_."
       },
       {
         "name": "Guardian",
@@ -222,13 +224,13 @@
         "guard": 2,
         "block": 1,
         "speed": 3,
-        "effect": "On your _Turn_, Move to become _Engaged_ with an ally. While you are _Engaged_ with them all Attacks against them have _Disadvantage_, and you may use your _Defend_ Reactions for them; if you do, distribute the effect between you and the creature you are defending."
+        "effect": "On your _Turn_, Move to become _Engaged_ with an ally. While you are _Engaged_ with them all Attacks against them have _Disadvantage_, and you may use your _Defend_ Reactions for them; if you do, distribute the effect equally between you and the creature you are defending."
       },
       {
         "name": "Charge",
         "category": "Offensive",
         "desc": "You dart forward, attempting to engage and restrain a hostile creature.",
-        "movement": 3,
+        "movement": 4,
         "guard": 1,
         "block": 1,
         "speed": 4,

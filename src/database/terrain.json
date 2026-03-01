@@ -1,14 +1,5 @@
 [
   {
-    "name": "Blazing",
-    "desc": "An active flame that will scorch any that draw too near.",
-    "keywords": ["Fleeting"],
-    "layer": "Surface",
-    "element": "Flame",
-    "effect": "The first time a creature enters a Blazing _Position_ on a Turn or ends a _Phase_ in it they take 2 _Fire_ Damage. If they are in the _Position_ at the end of the _Round_ they gain _Alight_ [4 _Reflex_].",
-    "interactions": ["Water Terrain: Reduce the _Watersource_ value by 1, remove Blazing, then make this space _Veiled_."]
-  },
-  {
     "name": "Overgrown",
     "desc": "Thick grass, vines, or other growths cover this arena, making movement far more difficult.",
     "element": "Wood",
@@ -23,15 +14,6 @@
     "effect": "It costs two additional _Movement_ to enter or leave this _Arena_and a creature must have two _Free Hands_ (or equivalent) to climb. Any creature in this _Arena_ has _Disadvantage_ on all rolls, and rolls against them have _Advantage_ as they attempt to cling to the cliff. Creatures with the _Climber_ trait or similar ignore all these penalties."
   },
   {
-    "name": "Churning Water",
-    "desc": "Water that is choppy and covered in tumultuous waves.",
-    "layer": "Modifier",
-    "element": "Water",
-    "keywords": ["Conductive", "Fleeting"],
-    "effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave.",
-    "special": "If there is not a _Watersource_ _Terrain_ effect at the same location as this, end this effect."
-  },
-  {
     "name": "Gusting",
     "desc": "A powerful gust that lasts only a short while.",
     "layer": "Weather",
@@ -40,46 +22,47 @@
     "effect": "When this Terrain is applied, remove any [_Cloud_] _Terrain_. Non-Melee Attacks against a creature in this _Arena_ or that pass through or originate from this _Arena_ automatically decrease their Rank by 1."
   },
   {
-    "name": "Running Water",
-    "desc": "Terrain that represents a slow-moving body of water.",
-    "layer": "Base",
-    "element": "Water",
-    "keywords": ["Conductive", "_Watersource_ ∞"],
-    "effect": "None; this may only be applied to Paths."
-  },
-  {
-    "name": "Toxic Gas",
-    "desc": "Thick toxic gas that chokes the air.",
-    "keywords": ["Fleeting", "Poison", "Endurable", "Unblockable", "AP"],
-    "layer": "Weather",
-    "element": "Elementless",
-    "effect": "All creatures at this Position see creatures not at this Position as Obscured, and vice-versa. Additionally, the first time a creature enters a Toxic Gas _Position_ on a Turn or ends a _Phase_ in it they gain 3 _Block_. If they are in the _Position_ at the end of the _Round_ they gain _Poisoned_ [4 _Grit_].",
-    "interactions": [
-      "Windy Terrain: Remove Toxic Gas.",
-      "Fire Damage and Terrain: Remove Toxic Gas. Deal 4 [_Fire_] Damage to all creatures present at the Toxic Gas' location."
-    ]
-  },
-  {
-    "name": "Uneven Earth",
-    "desc": "Ground full of unsure footing and low features that makes traveling through it difficult.",
-    "layer": "Ground",
-    "element": "Earth",
-    "effect": "The _Position_ where this _Terrain_ is costs an additional _Movement_ to enter or leave. Additionally, all creatures on this _Terrain_ take a -1 _Penalty_ to _Reflex_."
-  },
-  {
     "name": "Veiled",
     "layer": "Weather",
     "element": "Elementless",
     "keywords": ["Fleeting"],
     "desc": "Terrain filled with dust, smoke, mist, or some other obscuring agent.",
-    "effect": "All creatures at this _Position_ see creatures not at this _Position_ as _Obscured_, and vice-versa."
+    "effect": "All creatures in this _Arena_ benefit from _Soft Cover_."
   },
   {
-    "name": "Wet",
-    "desc": "Terrain drenched in water that limits a stable footing.",
-    "layer": "Surface",
-    "element": "Water",
-    "keywords": ["Conductive", "_Watersource_ 1"],
-    "effect": "All creatures on this _Terrain_ take a -1 _Penalty_ to _Negate_ _Prone_ and _Forced Movement_."
+    "name": "Stalagmite",
+    "layer": "Obstacle",
+    "keywords": ["Major Source", "Cover"],
+    "element": "Earth",
+    "desc": "A large rock, log, or some other.",
+    "hardness": 2,
+    "threshold": 10,
+    "destroy": "When destroyed, create four _Moderate Sources_ [_Earth_]."
+  },
+  {
+    "name": "Stalactite",
+    "layer": "Obstacle",
+    "keywords": ["Major Source", "Cover"],
+    "element": "Earth",
+    "desc": "A large rock, log, or some other.",
+    "hardness": 2,
+    "threshold": 10,
+    "effect": "Only [_Flying_] creatures may _Occupy_ this; if they do, they do not lose _Flying_.",
+    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [_Reflex_ 8]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Moderate Sources_ [_Earth_].",
+    "chart": {
+      "chart": {
+        "stun": [2, 2, 3, 4],
+        "damage": [2, 4, 6, 8],
+        "roll": ["2-4", "5-6", "7-10", "11-12"]
+      }
+    }
+  },
+  {
+    "name": "Tripping Hazard",
+    "layer": "Obstacle",
+    "keywords": ["Minor Source"],
+    "element": "Mutable",
+    "desc": "A low protrusion that, most of the time, is easily avoided, but could trip one forced into it.",
+    "effect": "If a creature is made to _Occupy_ this _Terrain_ with _Forced Movement_ they fall _Prone_."
   }
 ]

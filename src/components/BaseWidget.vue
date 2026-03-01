@@ -215,19 +215,16 @@
       <div v-if="ability.HasRecovery">
         <display-tooltip-text :string="ability.RecoveryHeader" />
       </div>
-      <div
-        class="card--format"
-        v-if="ability.HasNegate">
+      <div v-if="ability.HasNegate">
         <display-tooltip-text :string="ability.NegateHeader" />
       </div>
-      <div
-        class="card--format"
-        v-if="ability.HasDestroy">
+      <div v-if="ability.HasHardness">
+        <display-tooltip-text :string="ability.HardnessHeader" />
+      </div>
+      <div v-if="ability.HasDestroy">
         <display-tooltip-text :string="ability.DestroyHeader" />
       </div>
-      <div
-        class="card--format"
-        v-if="ability.HasInteractions">
+      <div v-if="ability.HasInteractions">
         <display-tooltip-text :string="ability.InteractionsHeader" />
       </div>
       <div v-if="ability.HasEnhancements">

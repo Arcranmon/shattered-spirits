@@ -1,5 +1,53 @@
 [
   {
+    "name": "Earthborn",
+    "reqs": "Earth Spirit",
+    "category": "Earth",
+    "type": "Spirit Trait",
+    "abilities": [
+      {
+        "name": "Earth Form",
+        "keywords": ["Earth", "Spirit"],
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You're made of earth and stone, granting you the durability of a stone and resistance against most things.\n&nbsp;\nWhen your earthen form would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Earthen Body",
+        "keywords": ["Earth", "Spirit"],
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Your earthen form grants you the following benefits:\n* Replace [_Natural_] with [_Earth_] on all your effects.\n* Gain _Ward_ 2 (_Slash_, _Stab_) and _Ward_ 1 (_Cold_, _Fire_, _Lightning_).\n* You cannot _Swim_, and immediately start to sink if you enter water."
+      },
+      {
+        "name": "Earthen Reconstitution",
+        "keywords": ["Earth", "Spirit"],
+        "category": "Camp",
+        "type": "Power",
+        "effect": "As a part of a _Rest Roll_, if you are in a _Place of Power_ or consume an appropriately powerful _Source_ automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
+      },
+      {
+        "name": "Earthen Resonance",
+        "category": "Recovery",
+        "keywords": ["Earth", "Spirit", "Pacifist", "Rooted"],
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "reqs": "_Earth_ _Source_ within range.",
+        "special": "You may use this while in the _Spiritual Essence_ _Stance_; if you do, your companion spends the _Momentum_, and draw range from them.",
+        "effect": "Clear 4 _Stun_.",
+        "enhancements": [
+          {
+            "name": "Enhanced Healing",
+            "cost": "1 _Momentum_",
+            "effect": "Instead, clear 4 _Stun_ and gain 3 _Stamina_. If the triggering _Source_ is Equipment it must be _Unattended_ or _Wielded_ by an ally, and reduces the _Durability_ of said _Equipment_ by 1. This reduction may not be prevented by any means."
+          }
+        ]
+      }
+    ],
+    "desc": "You're a spirit of earth, as indomitable and unbreakable as a mountain."
+  },
+  {
     "name": "Metalborn",
     "reqs": "Metal Spirit",
     "category": "Metal",
@@ -17,7 +65,7 @@
         "keywords": ["Metal", "Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain _Ward_ 2 (_Slash_, _Stab_, _Crush_)."
+        "effect": "Your metallic form grants you the following benefits:\n* Replace [_Natural_] with [_Metal_] on all your effects.\n* Gain _Ward_ 2 (_Slash_, _Stab_, _Crush_).\n* You may not _Swim_."
       },
       {
         "name": "Metallic Reconstitution",
@@ -36,7 +84,7 @@
       {
         "name": "Metallic Resonance",
         "category": "Recovery",
-        "keywords": ["Metal", "Pacifist", "Rooted"],
+        "keywords": ["Metal", "Spirit", "Pacifist", "Rooted"],
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "range": "Melee",
@@ -79,12 +127,12 @@
         "keywords": ["Wind", "Spirit"],
         "category": "Camp",
         "type": "Power",
-        "effect": "As a part of a _Rest Roll_, if you are in a _Place of Power_ automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
+        "effect": "As a part of a _Rest Roll_, if you are in a _Place of Power_ or consume an appropriately powerful _Source_ automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
       },
       {
         "name": "Wind Resonance",
         "category": "Recovery",
-        "keywords": ["Wind", "Pacifist", "Rooted"],
+        "keywords": ["Wind", "Spirit", "Pacifist", "Rooted"],
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "range": "Melee",
@@ -127,12 +175,12 @@
         "category": "Camp",
         "type": "Power",
         "keywords": ["Wood", "Spirit"],
-        "effect": "As a part of a _Rest Roll_ if you are in a _Place of Power_ or consume a _Minor Source_ (_Wood_) of high-quality Wood automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
+        "effect": "As a part of a _Rest Roll_ if you are in a _Place of Power_ or consume an appropriately powerful _Source_ automatically gain a single _Efficacy_ stake for the _Rest Roll_ that you must use on yourself. Whenever you would clear _Fatigue_ or mark a segment on a _Wound Clock_ you may instead restore _Durability_ to your _Armor_ (if relevant), even if destroyed."
       },
       {
         "name": "Wooden Resonance",
         "category": "Recovery",
-        "keywords": ["Wood", "Pacifist", "Rooted"],
+        "keywords": ["Wood", "Spirit", "Pacifist", "Rooted"],
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "range": "Melee",
@@ -175,7 +223,34 @@
         "special": "You may use this ability in narrative play when appropriate."
       }
     ],
-    "desc": "You have scales, a thin shell, or some other natural defense mechanism that provides some limited defense."
+    "desc": "You have scales, a thin shell, or some other natural defense mechanism that provides some limited protection."
+  },
+  {
+    "name": "Moderately Armored",
+    "type": "Trait",
+    "category": "General",
+    "cost": "2 Growth Points",
+    "prereqs": "Metal, Earth, Wood, or Ice Spirit, and no other [Armored] Traits.",
+    "keywords": ["Armored"],
+    "abilities": [
+      {
+        "name": "Medium Armor",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "This spirit gains the _Medium Natural Armor_.",
+        "bonuses": { "equipment": ["Medium Natural Armor"] }
+      },
+      {
+        "name": "Sacrifice Armor",
+        "category": "Defensive",
+        "type": "Reaction",
+        "trigger": "You would gain a _Wound_.",
+        "cost": "None",
+        "effect": "Gain _Fatigue_ and reduce the _Durability_ of a _Worn_ piece of _Armor_ by 1. Reduce the severity of the _Wound_ by 1 (i.e. reduce a _Slash_ II _Wound_ to _Slash_ I).",
+        "special": "You may use this ability in narrative play when appropriate."
+      }
+    ],
+    "desc": "You have a shell, thick elemental plating, or some other natural defense mechanism that provides some protection."
   },
   {
     "name": "Sure-Footed",
@@ -264,6 +339,13 @@
     "prereqs": "Wood Spirit.",
     "abilities": [
       {
+        "name": "Natural Bloom",
+        "keywords": ["Wood", "Spirit"],
+        "category": "Skill",
+        "type": "Skill",
+        "effect": "You are covered in small blooms and plant growths, and can sustain some small number of plants no matter the climate. These plants are typically not particularly potent on their own, but plants near you seem to grow faster and healthier than they normally would.\n&nbsp;\nWhen your living plant-like nature would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
         "name": "Fruiting",
         "keywords": ["Wood", "Spirit"],
         "category": "Travel",
@@ -290,7 +372,13 @@
         "name": "Threads",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "This creature is capable of creating thin threads made of metal that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, the creature may be required to rest and recover it as if it was _Fatigue_.\n&nbsp;\nWhen your threads would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You are capable of creating thin threads made of metal that are exceptionally strong and can be fired a short distance. This can be used as rope, thread, or a variety of other potential uses. At GM's discretion, after using too much of this Ability, you may be required to rest and recover it as if it was _Fatigue_.\n&nbsp;\nWhen your threads would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Subtle Web",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "During the _Camp Phase_, you may lay down a web of fine metal wires to help secure the camp. This will make it incredibly easy to track your camp, but automatically counts as somebody taking the _Secure_ _Camp Action_."
       },
       {
         "name": "Wire Whip",
@@ -335,6 +423,61 @@
       }
     ],
     "desc": "Locusts are near-impervious to poison due to their heavy reliance on it."
+  },
+  {
+    "name": "Strong Jaws",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "prereqs": "Not _Tiny_.",
+    "abilities": [
+      {
+        "name": "Crushing Jaws",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Your powerful jaws are mighty weapons, allowing you to grasp onto a foe and control them. Once per Skill Challenge gain an automatic _Vexation_ stake when your jaws would aid in battle."
+      },
+      {
+        "name": "Jaws",
+        "category": "Heavy",
+        "type": "Attack",
+        "keywords": ["Natural", "Crush", "Stab"],
+        "desc": "A natural weapon suitable for mighty jaws and other things that rip and tear.",
+        "range": "Melee",
+        "target": "Single-Target",
+        "cost": "4 _Momentum_",
+        "effect": "Attack a Target within Range. If you already have the _Target_ _Grabbed_ with this, make your Attack with _Advantage_. After inflicting _Grabbed_, whenever a target attempts to escape they take 2 Damage.",
+        "enhancements": [
+          {
+            "name": "Thrash",
+            "cost": "1 _Momentum_",
+            "effect": "You thrash about as you grab the target, throwing them off-balance. Add _Impaired_."
+          },
+          {
+            "name": "Ripping Crush",
+            "cost": "1 _Momentum_",
+            "effect": "You may only choose this _Enhancement_ if you already had the Target _Grabbed_ with this Attack prior to the Attack. Add _Bleeding_ 1 to the Attack."
+          },
+          {
+            "name": "Drag",
+            "cost": "None",
+            "effect": "If you _Grappled_ with this Attack, you may immediately leave your current _Engagement_, paying all _Movement_ costs as normal."
+          }
+        ],
+        "chart": {
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "stun": [2, 1, 1, 1],
+          "damage": [0, 4, 6, 8],
+          "status": ["None", "None", "_Grabbed_ [_Grit_/_Reflex_]", "_Grabbed_ [_Grit_/_Reflex_]"],
+          "negate": [5, 7, 8, 10]
+        },
+        "analysis_notes": {
+          "fudge": -0.4,
+          "notes": "1 guaranteed damage, technically situational"
+        }
+      }
+    ],
+    "desc": "You have powerful jaws that foes have a hard time escaping from."
   },
   {
     "name": "Piercing Horns",
@@ -394,23 +537,91 @@
         "name": "Natural Climber",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "This creature has natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces.\n&nbsp;\nWhen your ability to climb would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You have natural appendages or aptitude for climbing, and can easily climb all but the most sheer or difficult of surfaces effortlessly.\n&nbsp;\nWhen your ability to climb would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Climbing",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "This creature can bypass many features (such as _Cliffs_) when moving between _Arenas_."
+        "effect": "You can bypass many features (such as _Cliffs_) when moving between _Arenas_."
       }
     ],
     "desc": "You're a natural climber, allowing you to easily scale even the most sheer of surfaces."
   },
   {
+    "name": "Pack Animal",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Pack Instinct",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are a creature accustomed to functioning in a pack, and have an innate sense of the natural hierarchy of things, and tend to fit in well in human society.\n&nbsp;\nWhen your nature as a pack animal would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Good Listener",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Party members may include you in the <u>Vent</u> _Camp Action_ as if you were a character; if they do, you clear _Stress_ as normal."
+      },
+      {
+        "name": "Flank",
+        "category": "Offensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_/_Movement_",
+        "trigger": "A creature you are _Engaged_ with is Attacked by a creature other than you.",
+        "effect": "The Attack gains a +1 _Bonus_ if _Melee_. Additionally, the Target has _Disadvantage_ on any _Defense Roll_ made against this Attack."
+      }
+    ],
+    "desc": "You're a pack or herd animal, and fit naturally into the social hierarchy of an adventuring group."
+  },
+  {
+    "name": "Cute",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "prereqs": "None.",
+    "abilities": [
+      {
+        "name": "Cuteness",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are a cute creature, causing others to feel a natural affection towards you and comforted in your presence.\n&nbsp;\nWhen your cuteness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Big Eyes",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "Once per _Journey_, when you are _Pampered_, you may clear a _Stress_ for any present party member."
+      },
+      {
+        "name": "Avenge the Mascot",
+        "category": "Utility",
+        "type": "Passive",
+        "effect": "If you are _Defeated_, the next Attack against the creature that _Defeated_ you by an ally may use an additional _Gambit_."
+      }
+    ],
+    "desc": "You're an adorable creature, and all those that see you find you irresistible."
+  },
+  {
+    "name": "Enduring",
+    "abilities": [
+      {
+        "name": "Roamer",
+        "effect": "While _Manifested_ for a day of travel, you may choose to sneak along the party, keeping watch from the  shadows. At any point in the day when a party member needs help, even if they are not with the group, you may emerge from stealth to aid them, potentially granting them an _Advantage_ on their _Skill Check_. You may end this at any time, but cannot return to the shadows that day."
+      }
+    ]
+  },
+  {
     "name": "Skulker",
     "prereqs": "Not _Large Size_ or _Flame Spirit_.",
-    "cost": "3 Growth Point",
+    "cost": "2 Growth Point",
     "category": "General",
     "type": "Trait",
+    "desc": "You are a shadow, making no sound with your steps and betraying nothing.",
     "abilities": [
       {
         "name": "Stealthy",
@@ -422,7 +633,7 @@
         "name": "Watchful Shadow",
         "category": "Travel",
         "type": "Power",
-        "effect": "While _Manifested_ for a day of travel, you may choose to sneak along the party, keeping watch from the  shadows. At any point in the day when a party member needs help, even if they are not with the group, you may emerge from stealth to aid them, potentially granting them an _Advantage_ on their _Skill Check_. You may end this at any time, but cannot return to the shadows that day."
+        "effect": "While traveling, you may stick close to the party, scouting in the shadows. If you do this, the first time you pull from the _Menace Deck_ you may choose to exclude _Mishaps_ put there due to party members."
       },
       {
         "name": "Low-Profile",
@@ -447,12 +658,13 @@
     "cost": "1 Growth Point",
     "category": "General",
     "type": "Trait",
+    "desc": "When given an open field few can match your speed and acceleration.",
     "abilities": [
       {
         "name": "Speedy",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You can channel incredible bursts of speed, allowing you to rapidly cover ground and outrun nearly every creature.\n&nbsp;\nWhen your raw speed would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You can channel incredible bursts of speed, allowing you to rapidly cover ground and outrun nearly every creature so long as you're moving in a straight line.\n&nbsp;\nWhen your raw speed would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       { "name": "Improved Mobility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_.", "bonuses": { "move": 1 } },
       {
@@ -465,17 +677,60 @@
     ]
   },
   {
+    "name": "Shepherding Instinct",
+    "prereqs": "None",
+    "cost": "2 Growth Point",
+    "category": "General",
+    "type": "Trait",
+    "desc": "You have a natural instinct to shepard and protect those close to you.",
+    "abilities": [
+      {
+        "name": "Protective Instinct",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You have a natural sheparding instinct, causing other animals to trust you and giving you an instinctive protective response to danger.\n&nbsp;\nWhen your protective nature and watchfulness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Watchful Shepherd",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Whenever an ally would suffer an effect due to where they currently are you may rescue them, taking any effect they would have instead."
+      },
+      {
+        "name": "Watchful Protector",
+        "category": "Utility",
+        "type": "Passive",
+        "effect": "Whenever a Stance requires that you Target the nearest enemy, you may instead choose the nearest ally _Engaged_ with an enemy. You may always use <u>Shepherd</u>, even if it would cause you to fail your _Stances_ objectives."
+      },
+      {
+        "name": "Shepherd",
+        "category": "Utility",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "You enter an _Engagement_.",
+        "effect": "An ally in the _Engagement_ may immediately leave it, spending no _Movement_ and creating no _Opening_."
+      }
+    ]
+  },
+  {
     "name": "Swift",
     "prereqs": "None",
     "cost": "2 Growth Point",
     "category": "General",
     "type": "Trait",
+    "desc": "You're uncommonly fast and quick on your feet, able to change direction near-instantly and rapidly cover distances.",
     "abilities": [
       {
         "name": "Swiftness",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are quick on your feet and more nimble than most. In matters of speed and agility, you almost always win.\n&nbsp;\nWhen your speed and agility would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You are quick on your feet and more nimble than most. In matters of speed and agility, you almost always win.\n&nbsp;\nWhen your speed and agility would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Speed* if appropriate."
+      },
+      {
+        "name": "Dart",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Whenever there's a question of where you are in a situation you may choose, so long as you have the appropriate movement (swimming, climbing, etc.) to accomplish it."
       },
       { "name": "Agility", "category": "Mobility", "type": "Passive", "effect": "Gain +1 _Movement_ and +1 _Reflex_.", "bonuses": { "move": 1, "reflex": 1 } },
       {
@@ -571,11 +826,11 @@
       },
       {
         "name": "Large Profile",
-        "category": "Mobility",
+        "category": "Defensive",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Large_, gains +10 _Stamina_, +6 _Stun_, and +2 _Grit_. Additionally, its _Speed_ is increased by 1. You may _Manifest_ your Spirit from a _Major Source_."
+        "effect": "Your Spirit becomes _Large_, gains +10 _Stamina_, +6 _Stun_, and +2 _Grit_. Additionally, its _Speed_ is increased by 1. You may _Manifest_ your Spirit from a _Major Source_.",
+        "bonuses": { "stamina": 10, "stun": 6, "grit": 2, "speed": 1 }
       }
-    ],
-    "bonuses": { "stamina": 10, "stun": 6, "grit": 2, "speed": 1 }
+    ]
   }
 ]
