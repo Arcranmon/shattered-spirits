@@ -53,14 +53,52 @@
               dark
               color="black"
               centered>
-              <v-tab> <h4>Abilities</h4> </v-tab>
               <v-tab> <h4>Arts & Talents</h4> </v-tab>
               <v-tab> <h4>Equipment</h4> </v-tab>
+              <v-tab> <h4>Abilities</h4> </v-tab>
               <v-tab> <h4>Stances</h4> </v-tab>
             </v-tabs>
             <v-tabs-items
               v-model="ability_tab"
               class="character-tab-content-background">
+              <v-tab-item class="character-tab-content">
+                <show-cards
+                  :inputs="this.$store.getters.getAPsFromList(character.Arts)"
+                  :collapse="false"
+                  :cols="2" />
+              </v-tab-item>
+              <v-tab-item>
+                <v-tabs
+                  v-model="equipment_tab"
+                  color="black"
+                  light
+                  centered>
+                  <v-tab>
+                    <h5>Worn</h5>
+                  </v-tab>
+                  <v-tab>
+                    <h5>Packed</h5>
+                  </v-tab>
+                </v-tabs>
+                <v-tabs-items
+                  v-model="equipment_tab"
+                  class="character-tab-content">
+                  <v-tab-item>
+                    <b>Load:</b> {{ character.Load
+                    }}<show-cards
+                      :inputs="character.SortedWornEquipment"
+                      :collapse="false"
+                      :cols="1" />
+                  </v-tab-item>
+                  <v-tab-item>
+                    <b>Load:</b> {{ character.PackedLoad
+                    }}<show-cards
+                      :inputs="character.SortedPackedEquipment"
+                      :collapse="false"
+                      :cols="2" />
+                  </v-tab-item>
+                </v-tabs-items>
+              </v-tab-item>
               <v-tab-item>
                 <v-tabs
                   v-model="abilitiesAndEquipmentTab"
@@ -124,44 +162,6 @@
                     <ability-tab
                       abilityType="Reaction"
                       :character="character" />
-                  </v-tab-item>
-                </v-tabs-items>
-              </v-tab-item>
-              <v-tab-item class="character-tab-content">
-                <show-cards
-                  :inputs="this.$store.getters.getAPsFromList(character.Arts)"
-                  :collapse="false"
-                  :cols="2" />
-              </v-tab-item>
-              <v-tab-item>
-                <v-tabs
-                  v-model="equipment_tab"
-                  color="black"
-                  light
-                  centered>
-                  <v-tab>
-                    <h5>Worn</h5>
-                  </v-tab>
-                  <v-tab>
-                    <h5>Packed</h5>
-                  </v-tab>
-                </v-tabs>
-                <v-tabs-items
-                  v-model="equipment_tab"
-                  class="character-tab-content">
-                  <v-tab-item>
-                    <b>Load:</b> {{ character.Load
-                    }}<show-cards
-                      :inputs="character.SortedWornEquipment"
-                      :collapse="false"
-                      :cols="1" />
-                  </v-tab-item>
-                  <v-tab-item>
-                    <b>Load:</b> {{ character.PackedLoad
-                    }}<show-cards
-                      :inputs="character.SortedPackedEquipment"
-                      :collapse="false"
-                      :cols="2" />
                   </v-tab-item>
                 </v-tabs-items>
               </v-tab-item>
