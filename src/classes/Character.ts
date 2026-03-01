@@ -208,6 +208,9 @@ class Character extends Combatant {
   get Packed() {
     return this.packed_
   }
+  public get Icon() {
+    return require('@/assets/disciplines/' + this.Element + '.svg')
+  }
 
   get Techniques() {
     var techniques = [...store.getters.basicTechniques]

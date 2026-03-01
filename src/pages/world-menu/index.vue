@@ -37,12 +37,6 @@
         <h2>{{ selectedTab }}</h2>
         <div v-if="selectedTab == 'Sample Characters'">
           <div v-for="character in characters">
-            <img
-              class="image--header-left"
-              :src="character[1].Icon" />
-            <img
-              class="image--header-right"
-              :src="character[1].Icon" />
             <display-tooltip-text :string="character[0]" />
             <v-expansion-panels
               v-if="!showChart"
@@ -54,9 +48,9 @@
               <v-expansion-panel>
                 <v-expansion-panel-header
                   class="expand--header-chart"
-                  style="background-color: #85704c !important; background-image: none"
-                  ><h4>Show Character</h4></v-expansion-panel-header
-                >
+                  style="background-color: #85704c !important; background-image: none">
+                  <h4>Show Character</h4>
+                </v-expansion-panel-header>
                 <v-expansion-panel-content
                   class="expand--body-chart"
                   style="margin: 0 !important; padding-bottom: 0 !important">
@@ -91,6 +85,7 @@ import ErikaStats from '@/database/sample_characters/erika.json'
 import WinonaText from '@/database/text_files/sample_characters/winona.txt'
 import WinonaStats from '@/database/sample_characters/winona.json'
 import Spirits from '@/database/text_files/spirits.txt'
+import Threats from '@/database/text_files/threats.txt'
 import Spiritcraft from '@/database/text_files/spiritcraft.txt'
 export default Vue.extend({
   name: 'world-menu',
@@ -101,8 +96,8 @@ export default Vue.extend({
   data() {
     return {
       selectedTab: 'The World in Brief',
-      tabs: ['The World in Brief', 'Civilization Now', 'Greenvale', 'Sample Characters', 'Spirits', 'Spiritcraft'],
-      text: [WorldText, Civilization, Greenvale, '', Spirits, Spiritcraft],
+      tabs: ['The World in Brief', 'Civilization Now', 'Spirits', 'Spiritcraft', 'Dangers of the Shattered World', 'The Greenvale', 'Sample Characters'],
+      text: [WorldText, Civilization, Spirits, Spiritcraft, Threats, Greenvale, ''],
       count: 0,
       characters: [
         [MargaretText, Character.Deserialize(MargaretStats)],
