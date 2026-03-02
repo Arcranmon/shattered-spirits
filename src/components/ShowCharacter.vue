@@ -211,12 +211,25 @@
             dark
             color="black"
             centered>
-            <v-tab> <h4>Abilities</h4> </v-tab>
             <v-tab> <h4>Traits and Arts</h4> </v-tab>
             <v-tab> <h4>Equipment</h4> </v-tab>
+            <v-tab> <h4>Abilities</h4> </v-tab>
             <v-tab> <h4>Stances</h4> </v-tab>
           </v-tabs>
           <v-tabs-items v-model="ability_tab">
+            <v-tab-item class="character-tab-content">
+              <b>Growth Points:</b> {{ character.Spirit.GrowthPoints }}
+              <show-cards
+                :inputs="this.$store.getters.getAPsFromListPreserveType(character.Spirit.Arts)"
+                :collapse="false"
+                :cols="1" />
+            </v-tab-item>
+            <v-tab-item class="character-tab-content">
+              <show-cards
+                :inputs="character.Spirit.Equipment"
+                :collapse="false"
+                :cols="2" />
+            </v-tab-item>
             <v-tab-item>
               <v-tabs
                 v-model="abilitiesAndEquipmentTab"
@@ -291,19 +304,6 @@
                     :spirit="true" />
                 </v-tab-item>
               </v-tabs-items>
-            </v-tab-item>
-            <v-tab-item class="character-tab-content">
-              <b>Growth Points:</b> {{ character.Spirit.GrowthPoints }}
-              <show-cards
-                :inputs="this.$store.getters.getAPsFromListPreserveType(character.Spirit.Arts)"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards
-                :inputs="character.Spirit.Equipment"
-                :collapse="false"
-                :cols="2" />
             </v-tab-item>
             <v-tab-item class="character-tab-content">
               <show-cards
