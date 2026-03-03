@@ -43,7 +43,7 @@ class Defenses {
     return this.focus_
   }
 
-  public get Stun() {
+  public get Guard() {
     return this.stun_
   }
 
@@ -92,7 +92,7 @@ class Defenses {
     this.reflex_ = data.reflex || 0
     this.focus_ = data.focus || 0
     this.block_ = data.block || 0
-    this.stun_ = data.stun || 0
+    this.stun_ = data.guard || 0
     this.immunities_ = data.immunities || []
     this.resistances_ = data.resistances || []
     this.weaknesses_ = data.weaknesses || []

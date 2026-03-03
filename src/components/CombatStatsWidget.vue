@@ -127,7 +127,7 @@
         </v-col>
       </v-row>
       <v-row no-gutters>
-        <v-col cols="auto"> <b>Stun:</b>&nbsp;{{ creature.Stun }} / {{ creature.MaxStun }}</v-col>
+        <v-col cols="auto"> <b>Guard:</b>&nbsp;{{ creature.Guard }} / {{ creature.MaxStun }}</v-col>
         <v-col align="right"> </v-col>
       </v-row>
       <v-row
@@ -144,9 +144,9 @@
           </v-btn>
         </v-col>
         <v-col>
-          <div class="stun--exterior">
+          <div class="guard--exterior">
             <div
-              class="stun--interior"
+              class="guard--interior"
               :style="stunbar" />
           </div>
         </v-col>
@@ -247,15 +247,15 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .stamina--exterior,
-.stun--exterior {
+.guard--exterior {
   width: 100%;
   border: 1px solid black;
   height: 20px;
   vertical-align: middle;
-  display: inline-stun;
+  display: inline-guard;
 }
 .stamina--interior,
-.stun--interior {
+.guard--interior {
   border: 0px solid transparent;
   margin: 0 auto;
   height: 18px;
@@ -264,7 +264,7 @@ export default Vue.extend({
 .stamina--interior {
   background-color: #a0010f;
 }
-.stun--exterior {
+.guard--exterior {
   display: inline;
   float: right;
 }

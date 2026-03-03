@@ -1,7 +1,7 @@
 [
   {
     "name": "Missile",
-    "effect": "Many abilities require a Missile, or a specific item or equipment. These abilities will specify any requirements on the Missile (such as an Elemental type or Size) and within what Range it must be. This ability uses said Missile to resolve the Attack, placing it unattended in target's _Arena_ or, if it _Wounds_ them, is _Impaled_ in the Target. To be used as Missile, an item must be _Worn_ by a willing Target or unattended. An exception is if a creature is _Impaled_ by an item; this counts as a _Worn_ item by the creature but may be targeted as if it was _Unattended_. Any Attacks using an _Impaled_ item against that creature have _Advantage_, ignore _Guard_, and cannot be _Defended_ against."
+    "effect": "Many abilities require a Missile, or a specific item or equipment. These abilities will specify any requirements on the Missile (such as an Elemental type or Size) and within what Range it must be. This ability uses said Missile to resolve the Attack, placing it unattended in target's _Arena_ or, if it _Wounds_ them, is _Impaled_ in the Target. To be used as Missile, an item must be _Worn_ by a willing Target or unattended. An exception is if a creature is _Impaled_ by an item; this counts as a _Worn_ item by the creature but may be targeted as if it was _Unattended_. Any Attacks using an _Impaled_ item against that creature have _Advantage_, ignore _Mettle_, and cannot be _Defended_ against."
   },
   {
     "name": "Arena",
@@ -18,7 +18,7 @@
   },
   {
     "name": "Bonus",
-    "effect": "When an Attack gains Bonus Damage or Stun, distribute it between targets however you wish."
+    "effect": "When an Attack gains Bonus Damage or Guard, distribute it between targets however you wish."
   },
   {
     "name": "Final",
@@ -46,7 +46,7 @@
   },
   {
     "name": "Discount",
-    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Movement_, _Momentum_, or _Guard_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable attack. Any remaining _Discount_ is lost."
+    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Movement_, _Momentum_, or _Mettle_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable attack. Any remaining _Discount_ is lost."
   },
   {
     "name": "Disengage",
@@ -79,7 +79,7 @@
   { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Block",
-    "effect": "When a character takes Damage, they may gain _Stun_ rather than _Stamina_ for an amount of Damage equal to their Block."
+    "effect": "When a character takes Damage, they may gain _Guard_ rather than _Stamina_ for an amount of Damage equal to their Block."
   },
   {
     "name": "Retreat",
@@ -87,7 +87,7 @@
   },
   {
     "name": "Blood Loss",
-    "effect": "You've lost a significant amount of blood, making you light-headed an limiting your ability to act. This _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_, take 3 _Stun_ at _Respite_. You may not mark progress on any other _Wound_ until this _Wound_ is healed, but, once per Camp Phase, you may automatically mark a segment on its Clock by eating an additional portion of food."
+    "effect": "You've lost a significant amount of blood, making you light-headed an limiting your ability to act. This _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_, take 3 _Guard_ at _Respite_. You may not mark progress on any other _Wound_ until this _Wound_ is healed, but, once per Camp Phase, you may automatically mark a segment on its Clock by eating an additional portion of food."
   },
   {
     "name": "Bend",
@@ -116,9 +116,12 @@
   },
   {
     "name": "Momentum",
-    "effect": "Momentum represents your ability to act and fight in combat. It is spent for a myriad of effects, but most commonly increasing the power of abilities using Enhancements and paying for other Abilities. At the start of each Round characters lose all their previous _Momentum_ (clearing 2 _Stun_ for each _Momentum_ lost) then gain _Momentum_ as dictated by their _Stance_.\n\nIf a creature would lose Momentum due to an effect but has no Momentum they instead gain 2 _Stun_ for every Momentum they would lose."
+    "effect": "Momentum represents your ability to act and fight in combat. It is spent for a myriad of effects, but most commonly increasing the power of abilities using Enhancements and paying for other Abilities. At the start of each Round characters lose all their previous _Momentum_ (gaining 2 _Guard_ for each _Momentum_ lost) then gain _Momentum_ as dictated by their _Stance_.\n\nIf a creature would lose Momentum due to an effect but has no Momentum they instead lose 2 _Guard_ for every Momentum they would lose."
   },
-  { "name": "Guard", "effect": "Guard represents a character's ability to actively defend themselves. It is commonly used for _Dodge_ and _Parry_ Reactions." },
+  {
+    "name": "Mettle",
+    "effect": "Mettle represents a character's ability to parry, dodge, and otherwise actively defend against incoming assaults. It is commonly used for _Dodge_ and _Parry_ Reactions."
+  },
   {
     "name": "Movement",
     "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ as well as any _Terrain Bonus_ or _Hazard_ you have.\n* 2 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: _Occupy_ _Terrain_ or a _Hazard_. You automatically become _Engaged_ with any other creatures _Occupying_ the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
@@ -214,7 +217,7 @@
   },
   {
     "name": "Stab",
-    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Stab Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 1].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: You take a deep stab that makes it painful to act. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 2].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it painful to move. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 3].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ _Injury_.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Gain 1 less _Momentum_ and _Guard_ at _Respite_.\n\t* Gain a Fatigue at the start of each day after resolving your Rest Roll."
+    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Stab Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 1].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: You take a deep stab that makes it painful to act. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 2].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it painful to move. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 3].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ _Injury_.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Gain 1 less _Momentum_ and _Mettle_ at _Respite_.\n\t* Gain a Fatigue at the start of each day after resolving your Rest Roll."
   },
   {
     "name": "Slash",
@@ -250,11 +253,15 @@
   },
   {
     "name": "Stun",
-    "effect": "Characters have a Stun gauge in combat, which typically fills as they're attacked. When a character takes Damage, they may reduce an amount equal to their _Block_ to Stun, gaining Stun instead of losing _Stamina_. If an effect inflicts Stun it is always applied before other Damage, but can only be applied to the target's Stun."
+    "effect": "Stun is a specialized type of Damage that is always applied to Guard, never to Stamina. Inflicted Stun it is always applied before other Damage."
+  },
+  {
+    "name": "Guard",
+    "effect": "Characters have Guard, which represents their ability to completely absorb or negate attacks. When a character takes Damage, they may take an amount equal to their _Block_ to Guard, losing Guard instead of _Stamina_."
   },
   {
     "name": "Summon",
-    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own Stamina, Stun, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_.\n* Spirits act at their listed _Speed_ during the players' phase."
+    "effect": "When a spirit is Summoned they take physical form until _Defeated_ or _Recalled_, and use the following rules:\n* Spirits have their own Stamina, Guard, and Movement, and gain their own Status effects.\n* Spirits and their companion share _Momentum_.\n* Spirits act at their listed _Speed_ during the players' phase."
   },
   { "name": "Summoned", "see": "Summon" },
   {

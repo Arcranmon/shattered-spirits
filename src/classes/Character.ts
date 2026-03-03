@@ -183,9 +183,9 @@ class Character extends Combatant {
   }
 
   override get MaxStun() {
-    var maxStun = kBaseStun + this.combinedBonuses_.Stun
+    var maxStun = kBaseStun + this.combinedBonuses_.Guard
     for (var armor of this.armor_) {
-      maxStun += armor.Stun
+      maxStun += armor.Guard
     }
     return maxStun
   }

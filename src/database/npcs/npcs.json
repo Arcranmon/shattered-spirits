@@ -5,7 +5,7 @@
     "role": "Striker",
     "category": "Minion",
     "stamina": 6,
-    "stun": 3,
+    "guard": 3,
     "size": "&half;",
     "block": 1,
     "defenses": { "reflex": 1 },
@@ -35,7 +35,7 @@
         "type": "Attack",
         "range": "_Melee_",
         "target": "A creature you are grappling or riding.",
-        "effect": "Attack a Target within Range. Clear all _Stun_ on a _Hit_+. If you _Wound_ them, gain a Blood Sample.",
+        "effect": "Attack a Target within Range. Restore all _Guard_ on a _Hit_+. If you _Wound_ them, gain a Blood Sample.",
         "chart": {
           "roll": ["2", "3-4", "5-9", "10-12"],
           "damage": [0, 6, 9, 12]
@@ -56,7 +56,7 @@
         "category": "Offensive",
         "desc": "You find a target, attempting to latch onto them.",
         "movement": 4,
-        "guard": 0,
+        "mettle": 0,
         "block": 0,
         "speed": 3,
         "effect": "_Engage_ with the lowest _Stamina_ creature within Range that you do not have a Blood Sample from. In case of a tie, prioritize the closer. Then, use Latch. If you cannot, instead _Concentrate_."
@@ -67,7 +67,7 @@
         "desc": "You drill deep on a grappled target, attempting to extract a sample of their essence.",
         "movement": 2,
         "defenses": { "grit": 1 },
-        "guard": 0,
+        "mettle": 0,
         "block": 2,
         "speed": 5,
         "effect": "Use Drink on a creature you are _Riding_ or _Grappling_. If you are not _Riding_ or _Grappling_ a creature, gain _Exposed_, attempt to _Engage_ a creature, then _Concentrate_."
@@ -77,7 +77,7 @@
         "category": "Mobility",
         "desc": "You dash away from an enemy, attempting to get a blood sample to an appropriate ally.",
         "movement": 5,
-        "guard": 1,
+        "mettle": 1,
         "block": 1,
         "speed": 2,
         "effect": "_Retreat_, then attempt to _Engage_ with a Chemist. If you do, give them all Blood Samples you have."
@@ -90,7 +90,7 @@
     "role": "Artillery",
     "category": "Minion",
     "stamina": 3,
-    "stun": 2,
+    "guard": 2,
     "size": "&half;",
     "block": 1,
     "defenses": { "reflex": 1 },
@@ -125,7 +125,7 @@
         "category": "Offensive",
         "desc": "You take a shot at an enemy, attempting to strike them down from a distance.",
         "movement": 0,
-        "guard": 0,
+        "mettle": 0,
         "block": 0,
         "speed": 4,
         "effect": "If you are not _Engaged_, make an Attack with _Needle Shot_ against the most isolated enemy that is not in _Cover_, choosing between equivalent targets the case of a tie. You may then _Retreat_. If you are _Engaged_, instead gain +2 _Movement_ and _Retreat_."
@@ -135,7 +135,7 @@
         "category": "Offensive",
         "desc": "You take careful aim, attempting to shoot down a foe from a distance.",
         "movement": 0,
-        "guard": 0,
+        "mettle": 0,
         "block": 0,
         "speed": 5,
         "effect": "At _Respite_, choose a Target, announcing it to the table. On your _Turn_, use _Needle Shot_ against the Target at _Advantage_, dealing +_1/2/3/4_ Damage. You may then _Retreat_. If you are _Engaged_, instead gain +2 _Movement_ and _Retreat_."
@@ -145,7 +145,7 @@
         "category": "Mobility",
         "desc": "You take a shot at an enemy, attempting to strike them down from a distance.",
         "movement": 3,
-        "guard": 0,
+        "mettle": 0,
         "block": 1,
         "speed": 2,
         "effect": "_Retreat_, then attempt to move to the highest _Elevation_ possible. You may _Occupy_ _Cover_, if available."
@@ -153,12 +153,12 @@
     ]
   },
   {
-    "name": "Hive Guardian",
+    "name": "Hive Mettleian",
     "desc": "A Locust that specializes in defending the warren, blocking paths and restraining foes.",
     "role": "Defender",
     "category": "Enemy",
     "stamina": 10,
-    "stun": 15,
+    "guard": 15,
     "size": "1",
     "block": 4,
     "defenses": { "focus": 1, "grit": 1 },
@@ -200,7 +200,7 @@
         "name": "Perfect Parry",
         "category": "Defensive",
         "type": "Gambit",
-        "cost": "1 _Guard_",
+        "cost": "1 _Mettle_",
         "prereqs": "Triggered from a _Parry_.",
         "effect": "The triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
       }
@@ -211,17 +211,17 @@
         "category": "Defensive",
         "desc": "You move to limit mobility through an arena, preparing to pounce.",
         "movement": 2,
-        "guard": 2,
+        "mettle": 2,
         "block": 2,
         "speed": 2,
-        "effect": "On your _Turn_, you may _Recover_ or clear 4 _Stun_. The next time a creature enters your _Arena_ or stops being _Engaged_ with you you may immediately Move to _Engage_ them then strike them twice with Grasping Claw as a _Reaction_."
+        "effect": "On your _Turn_, you may _Recover_ or gain 4 _Guard_. The next time a creature enters your _Arena_ or stops being _Engaged_ with you you may immediately Move to _Engage_ them then strike them twice with Grasping Claw as a _Reaction_."
       },
       {
-        "name": "Guardian",
+        "name": "Mettleian",
         "category": "Defensive",
         "desc": "You move to an ally, defending them against all incoming attacks.",
         "movement": 3,
-        "guard": 2,
+        "mettle": 2,
         "block": 1,
         "speed": 3,
         "effect": "On your _Turn_, Move to become _Engaged_ with an ally. While you are _Engaged_ with them all Attacks against them have _Disadvantage_, and you may use your _Defend_ Reactions for them; if you do, distribute the effect equally between you and the creature you are defending."
@@ -231,7 +231,7 @@
         "category": "Offensive",
         "desc": "You dart forward, attempting to engage and restrain a hostile creature.",
         "movement": 4,
-        "guard": 1,
+        "mettle": 1,
         "block": 1,
         "speed": 4,
         "effect": "On your _Turn_, Move to become _Engaged_ with the nearest enemy. You may _Brawl_ against them, choosing either <u>Slam</u> or <u>Overpower</u>. You may then become re-_Engaged_ if required, then use _Grasping Claw_."
@@ -241,20 +241,20 @@
         "category": "Offensive",
         "desc": "You focus fire on an enemy that harmed one of your allies.",
         "movement": 3,
-        "guard": 1,
+        "mettle": 1,
         "block": 1,
         "speed": 3,
-        "effect": "On your _Turn_, Move to become _Engaged_ with the nearest enemy that targeted the beneficiary of your Guardian Stance last turn or _Defeated_ one of your allies this or last _Round_. Make three Grasping Claw Attacks against them."
+        "effect": "On your _Turn_, Move to become _Engaged_ with the nearest enemy that targeted the beneficiary of your Mettleian Stance last turn or _Defeated_ one of your allies this or last _Round_. Make three Grasping Claw Attacks against them."
       },
       {
         "name": "Recover",
         "category": "Support",
         "desc": "You catch your breath.",
         "movement": 2,
-        "guard": 1,
+        "mettle": 1,
         "block": 1,
         "speed": 2,
-        "effect": "On your _Turn_, _Recover_ or clear 4 _Stun_ three times, choosing an effect each time. You may then _Retreat_."
+        "effect": "On your _Turn_, _Recover_ or gain 4 _Guard_ three times, choosing an effect each time. You may then _Retreat_."
       }
     ]
   }

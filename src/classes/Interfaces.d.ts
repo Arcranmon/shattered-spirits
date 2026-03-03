@@ -31,7 +31,7 @@ declare interface IBonusesData {
   focus?: number
   grit?: number
   stamina?: number
-  stun?: number
+  guard?: number
   reflex?: number
   move?: number
   speed?: number
@@ -49,7 +49,7 @@ declare interface IEquipmentData extends IAbilityPackageData {
 declare interface IArmorData extends IEquipmentData {
   block: number
   consumable_slots: number
-  stun: number
+  guard: number
   traits: string[]
 }
 
@@ -79,7 +79,7 @@ declare interface ICharacterData extends ICombatantData {
 
 declare interface ICombatantData {
   stamina: number
-  stun: number
+  guard: number
   move: number
   momentum: number
   statuses?: IStatusEffect[]
@@ -98,7 +98,7 @@ declare interface IChartData {
 }
 
 declare interface IDefenseData {
-  stun?: number
+  guard?: number
   reflex?: number
   grit?: number
   focus?: number
@@ -151,7 +151,7 @@ declare interface INpcData {
   desc: string
   stamina: number
   block?: number
-  stun: number
+  guard: number
   name: string
   npc_type: string
   role: string
@@ -226,7 +226,7 @@ declare interface ISpiritFormData extends IBaseData {
   weapons: string
   move: number
   traits: string[]
-  stun: number
+  guard: number
   range_modifier: string
 }
 
@@ -238,7 +238,7 @@ declare interface ISubtypeData extends IBaseData {
   stamina: number
   weapons: number
   block: number
-  stun: number
+  guard: number
   move: number
   manifest: string
   soak: string
@@ -253,7 +253,7 @@ declare interface IStanceData extends IAbilityPackageData {
   speed: number
   block: number
   movement: number
-  guard: number
+  mettle: number
 }
 
 declare interface IStatusEffect {

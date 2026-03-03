@@ -70,4 +70,4 @@ Wand, Chainmail - Wildabeast
 - Now that defenses are an opposed roll, added defensive gambits
 - Reworked terrain and other set damage effects to follow the Miss/Graze/Hit/Crit system
 - Added 'Sacrifice' effects for armor and weapons that reduce Durability but provide a powerful defensive bonus
-- Stamina is gone! Many defensive abilities now convert damage to Stun, and managing a Stun bar is now the main defensive resource
+- Stamina is gone! Many defensive abilities now convert damage to Guard, and managing a Guard bar is now the main defensive resource

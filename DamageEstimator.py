@@ -161,7 +161,7 @@ def estimate_damage(attack, glancing, print_stats):
     lvh = 'none'
     attack_category = ATTACK
     override_range = ""
-    stun_scale = 0.9 # Stun is worth less (not sure how much)
+    stun_scale = 0.9 # Guard is worth less (not sure how much)
 
     cost += int(attack.get("cost", "0")[0])
                     
@@ -171,10 +171,10 @@ def estimate_damage(attack, glancing, print_stats):
             damage_chart = [0]*4
         else:                        
             damage_chart = attack["chart"]["damage"]
-        if(not("stun" in attack["chart"])):
+        if(not("guard" in attack["chart"])):
             stun_chart = [0]*4
         else:                        
-            stun_chart = attack["chart"]["stun"]
+            stun_chart = attack["chart"]["guard"]
         if(not("status" in attack["chart"])):
             status_chart = ['']*4
         else:

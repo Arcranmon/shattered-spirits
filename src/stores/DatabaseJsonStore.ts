@@ -1,7 +1,6 @@
 import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import EquipmentJson from '@/database/items/equipment.json'
-import DisciplinesJson from '@/database/disciplines.json'
 import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
 import ArchetypesJson from '@/database/archetypes.json'
@@ -15,7 +14,6 @@ import Glossary from '@/database/glossary/glossary.json'
 import Traits from '@/database/traits.json'
 import Statuses from '@/database/glossary/statuses.json'
 
-import FeaturesJson from '@/database/features.json'
 import Terrains from '@/database/terrain.json'
 
 import SpiritTypeJson from '@/database/spirit_types.json'
@@ -77,7 +75,6 @@ export class DatabaseJsonStore extends VuexModule {
     this.Armors = ArmorsJson.map((x) => Armor.Deserialize(<IArmorData>(<unknown>x)))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Subtypes = SpiritTypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
-    this.Features = FeaturesJson.map((x) => Feature.Deserialize(<IFeatureData>(<unknown>x)))
     this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
     this.AbilityPackages = AbilityPackageJson.map((x) => AbilityPackage.Deserialize(<IAbilityPackageData>(<unknown>x)))
     this.Equipments = EquipmentJson.map((x) => Equipment.Deserialize(<IEquipmentData>(<unknown>x)))
@@ -89,7 +86,6 @@ export class DatabaseJsonStore extends VuexModule {
   private Weapons: Weapon[] = []
   private Subtypes: Subtype[] = []
   private SpiritForms: SpiritForm[] = []
-  private Features: Feature[] = []
   private Archetypes: Archetype[] = []
   private AbilityPackages: AbilityPackage[] = []
   private Equipments: Equipment[] = []
@@ -452,27 +448,6 @@ export class DatabaseJsonStore extends VuexModule {
         equipments.push(this.getEquipment(equipment))
       }
       return equipments
-    }
-  }
-
-  // ==========================================================
-  // FEATURE TOOLS
-  // ==========================================================
-  get isFeature(): any {
-    return (inword: string) => {
-      return this.Features.some((x) => x.Name == inword.trim())
-    }
-  }
-
-  get getFeature(): any {
-    return (inword: string) => {
-      return this.Features.find((x) => x.Name === inword.trim())
-    }
-  }
-
-  get getFeatures(): any {
-    return () => {
-      return this.Features
     }
   }
 

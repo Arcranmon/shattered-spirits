@@ -82,7 +82,7 @@
             :cols="3">
             <b>
               <display-tooltip-text
-                string="_Guard_"
+                string="_Mettle_"
                 :decorate="false" />
             </b>
           </v-col>
@@ -109,7 +109,7 @@
           <v-col
             class="chart--cols justify-center align-center"
             :cols="3"
-            >{{ ability.Guard }}</v-col
+            >{{ ability.Mettle }}</v-col
           >
         </v-row>
         <v-row

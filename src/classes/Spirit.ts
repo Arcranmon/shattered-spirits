@@ -33,13 +33,13 @@ class Spirit extends Combatant {
   }
 
   override get MaxStun() {
-    var stun = this.spirit_type_.Stun + this.combinedBonuses_.Stun
+    var guard = this.spirit_type_.Guard + this.combinedBonuses_.Guard
     for (var item of this.combinedBonuses_.Equipment) {
       if (store.getters.isArmor(item)) {
-        stun += store.getters.getArmor(item).Stun
+        guard += store.getters.getArmor(item).Guard
       }
     }
-    return stun
+    return guard
   }
 
   override get Traits() {

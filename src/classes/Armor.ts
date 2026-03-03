@@ -18,7 +18,7 @@ class Armor extends Equipment {
   get Block() {
     return this.block_
   }
-  get Stun() {
+  get Guard() {
     return this.stun_
   }
   get Header() {
@@ -31,8 +31,8 @@ class Armor extends Equipment {
     return (
       '**_Rarity_:** ' +
       this.Rarity +
-      '; **_Stun_:** ' +
-      this.Stun +
+      '; **_Guard_:** ' +
+      this.Guard +
       '; **_Block_:** ' +
       this.Block +
       '; **_Load_:** ' +
@@ -77,7 +77,7 @@ class Armor extends Equipment {
 
   public setArmorData(data: IArmorData): void {
     this.setEquipmentData(data)
-    this.stun_ = data.stun || 0
+    this.stun_ = data.guard || 0
     this.block_ = data.block || 0
     this.consumable_slots_ = data.consumable_slots || 0
     this.traits_ = data.traits || []

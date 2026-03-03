@@ -37,27 +37,6 @@
       </v-menu>
     </span>
     <span
-      v-else-if="this.$store.getters.isFeature(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <feature-card
-          :feature="this.$store.getters.getFeature(input)"
-          :tooltip="true" />
-      </v-menu>
-    </span>
-    <span
       v-else-if="this.$store.getters.isTerrain(input)"
       attach>
       <v-menu

@@ -39,7 +39,7 @@ class Npc extends Combatant {
   }
 
   override get MaxStun() {
-    if (this.npc_data_.defenses.stun) return this.npc_data_.defenses.stun
+    if (this.npc_data_.defenses.guard) return this.npc_data_.defenses.guard
     return 0
   }
 
@@ -126,7 +126,7 @@ class Npc extends Combatant {
     return '**Stamina:** ' + this.npc_data_.stamina
   }
   public get StunText() {
-    return '**Stun:** ' + this.npc_data_.stun
+    return '**Guard:** ' + this.npc_data_.guard
   }
   public get SizeText() {
     return '**Size:** ' + this.npc_data_.size

@@ -40,7 +40,7 @@
             class="chart--head"
             cols="2">
             <display-tooltip-text
-              string="_Stun_"
+              string="_Guard_"
               :decorate="false" />
           </v-col>
           <v-col
@@ -69,7 +69,7 @@
           <v-col
             class="chart--cols justify-center align-center"
             cols="2">
-            {{ type.Stun }}</v-col
+            {{ type.Guard }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"

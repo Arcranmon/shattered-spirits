@@ -85,7 +85,7 @@ class Bonuses {
     return this.stamina_
   }
 
-  public get Stun() {
+  public get Guard() {
     return this.block_
   }
 

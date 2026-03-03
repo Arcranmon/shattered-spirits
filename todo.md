@@ -6,7 +6,7 @@
     - How much Block they grant
     - Their Speed
     - Their bonuses to Grit/Focus/Reflex
-    - How much Stun you clear at the start of the Phase
+    - How much Guard you clear at the start of the Phase
     - Additional Momentum count
 - Make Interacts a more intrinsic part of the system
   - Roll 1d6 for a single die + tags
@@ -28,9 +28,9 @@ POTENTIAL REFACTORS
 - Add a Glossary that includes most terms
 - Streamline statuses
   - More potent, but no stacks
-  - Add a 'Stun' bar as well that can be used by players as juice
+  - Add a 'Guard' bar as well that can be used by players as juice
     - Essentially replaces Vulnerable/Reeling
-    - Gambits will typically clear Stun to inflict additional effects
+    - Gambits will typically clear Guard to inflict additional effects
 - Up the Block bonuses from Armor?
   - Piecemeal armor? Shirt/Chest/Greaves/Hands/Feet/Head?
   - Probably a dumb idea...

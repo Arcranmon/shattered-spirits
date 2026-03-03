@@ -48,7 +48,7 @@ class SpiritForm extends Base {
     return '**Stamina:** ' + this.stamina_
   }
   public get BlockHeader() {
-    return '**Stun:** ' + this.block_
+    return '**Guard:** ' + this.block_
   }
   public get MovementHeader() {
     return '**Move:** ' + this.move_
@@ -101,7 +101,7 @@ class SpiritForm extends Base {
   private setSpiritFormData(data: ISpiritFormData): void {
     this.setBaseData(data)
     this.stamina_ = data.stamina
-    this.block_ = data.stun
+    this.block_ = data.guard
     this.defenses_ = data.defenses || null
     this.weapons_ = data.weapons || ''
     this.move_ = data.move || 0

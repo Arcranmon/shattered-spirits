@@ -230,7 +230,7 @@ class Combatant {
     return (this.MaxSoak / (this.MaxStun + this.MaxSoak)) * 100
   }
 
-  get Stun() {
+  get Guard() {
     return this.stun_
   }
 
@@ -250,7 +250,7 @@ class Combatant {
   }
 
   get BlockPercent() {
-    return (this.Stun / this.MaxStun) * 100
+    return (this.Guard / this.MaxStun) * 100
   }
 
   get BlockColor() {
@@ -274,7 +274,7 @@ class Combatant {
     return {
       stamina: combatant.stamina_,
       move: combatant.move_,
-      stun: combatant.stun_,
+      guard: combatant.stun_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
     }
@@ -291,7 +291,7 @@ class Combatant {
     this.stamina_ = data.stamina
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses || []
-    this.stun_ = data.stun
+    this.stun_ = data.guard
   }
 }
 export default Combatant
