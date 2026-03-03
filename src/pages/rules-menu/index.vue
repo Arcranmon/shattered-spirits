@@ -106,8 +106,9 @@ export default Vue.extend({
   data() {
     return {
       selectedTab: 'Playing the Game',
-      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Towns', 'Combat', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
-      text: [GameModes, NarrativeText, TravelText, EquipmentText, TownsText, CombatText, '', '', PlayerRolesText],
+      // Add Towns, Downtime, and Player Roles back eventually
+      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Combat', 'Afflictions and Status', 'Terrain', 'Glossary'],
+      text: [GameModes, NarrativeText, TravelText, EquipmentText, CombatText, '', ''],
       statusCategories: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       selectedStatuses: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       selectedStatus: null,
