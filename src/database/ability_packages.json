@@ -115,7 +115,7 @@
           {
             "name": "Heavier Stone",
             "cost": "2 _Momentum_",
-            "effect": "You may instead use a _Moderate Source_ (_Earth_) as the _Missile_. If you do, deal +_1/2/4/4_ Damage, +_1/1/2/2_ _Guard_, add [_Siege_] and increase the DC to _Negate_ by 1."
+            "effect": "You may instead use a _Moderate Source_ (_Earth_) as the _Missile_. If you do, deal +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, add [_Siege_] and increase the DC to _Negate_ by 1."
           }
         ],
         "chart": {
@@ -341,7 +341,7 @@
         "type": "Gambit",
         "keywords": ["Spirit", "Metal"],
         "reqs": "Attack used [_Metal_] _Equipment_.",
-        "effect": "Add [_Pierce_] 2 and _Sunder_ [_Reflex_]. If the Target Blocks, you must Target Wielded Equipment if possible. If you successfully _Sunder_, inflict 1 _Guard_ on all other creatures you are _Engaged_ with."
+        "effect": "Add [_Pierce_] 2 and _Sunder_ [_Reflex_]. If the Target Blocks, you must Target Wielded Equipment if possible. If you successfully _Sunder_, deal 1 _Stun_ to all other creatures you are _Engaged_ with."
       },
       {
         "name": "Shatter Spears",
@@ -394,7 +394,7 @@
         "target": "Single-Target",
         "effect": "Attack a target within Range. This Attack ignores any penalties due to _Gusting_ and instead gains a +1 _Bonus_ when targeting creatures in a _Gusting_ _Arena_.",
         "enhancements": [
-          { "name": "Compressed Air", "cost": "2 _Momentum_", "effect": "Deal +_0/2/3/4_ Guard +_0/1/2/3_ Damage." },
+          { "name": "Compressed Air", "cost": "2 _Momentum_", "effect": "Deal +_0/2/3/4_ _Stun_ +_0/1/2/3_ Damage." },
           {
             "name": "Forceful Gust",
             "cost": "1 _Momentum_",
@@ -504,7 +504,7 @@
         "name": "Field Herbalism",
         "category": "Camp",
         "type": "Power",
-        "effect": "As a _Camp Action_, you may choose up to two herbs you have. You may Refine them and create an enhanced version, such as making a _Poultice_ from _Medicinal Herbs_. This action requires _Herbalism Tools_."
+        "effect": "As a _Camp Action_, you may choose up to two _Common_/_Uncommon_ herbs or a single _Rare_ _Herb_ you have. You may Refine them and create an enhanced version, such as making a _Poultice_ from _Medicinal Herbs_. This action requires _Herbalism Tools_."
       },
       {
         "name": "Cultivation",
@@ -543,7 +543,7 @@
         "name": "Animal Empathy",
         "category": "Skill",
         "type": "Power",
-        "effect": "Your time working with livestock has given you an innate aptitude with animals; they tend to warm to you quickly, and you are better able to read their body language. When you first interact with an animal, you may ask the GM one of the following questions and they will answer truthfully:\n* What (if anything) is wrong with this animal?\n* What is this animal's role in its pack or herd?\n* What is this animal currently worried about?\n* What can I do to make this animal like me?\n\n&nbsp;These effects are heightened when interacting with domesticated animals; in such situations, you may always roll _Skillfully_."
+        "effect": "Your time working with livestock has given you an innate aptitude with animals; they tend to warm to you quickly, and you are better able to read their body language. When you interact with an animal, you may ask the GM one of the following questions and they will answer truthfully:\n* What (if anything) is wrong with this animal?\n* What is this animal's role in its pack or herd?\n* What is this animal currently worried about?\n* What can I do to make this animal like me?\n\n&nbsp;These effects are heightened when interacting with domesticated animals; in such situations, you may always roll _Skillfully_."
       }
     ]
   },
@@ -557,25 +557,83 @@
         "name": "Hunter",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are a skilled hunter, and have a deep knowledge of different animals, where they might live, and the best way to hunt them down. You know how to best prepare most animals found in the wild, and have a deep knowledge of the best ways to track various creatures.\n&nbsp;\nWhen your background and skills as a hunter would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You are a skilled hunter, and have a deep knowledge of different animals, where they might live, and the best way to hunt them down. You know how to best prepare most animals found in the wild, can field dress game, and have a deep knowledge of the best ways to track various creatures.\n&nbsp;\nWhen your background and skills as a hunter would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Skilled Hunter",
         "category": "Travel",
         "type": "Power",
-        "effect": "Whenever you <u>Hunt</u> as a _Camp_ or _Travel_ _Action_ treat yourself as having placed an additional die on the _Advantage_. You may always look at your current area's **Hunting Chart** before deciding to roll on it, although the GM may hide the specifics of the rarest option on the table.\n&nbsp;\nAdditionally, when you need to track something while traveling, you may spend &#9634; for that Augment."
-      },
-      {
-        "name": "Efficient Butcher",
-        "category": "Travel",
-        "type": "Power",
-        "effect": "Whenever you <u>Hunt</u> and successfully find game, you may choose one:\n* Increase the quality of the food found by one rank.\n* Get an additional _Food_ (Passable, Meat).\n* Increase the quality of any pelt or other material you might gather.\n* Gain an additional, specialized benefit, as outlined by the GM.\n\nYou may take a _Stress_ to instead choose two different options."
+        "effect": "Whenever you <u>Hunt</u> as a _Camp_ or _Travel_ _Action_ treat yourself as having placed an additional die on the _Advantage_. You may always look at your current area's **Hunting Chart** before deciding to roll on it, although the GM may hide the specifics of the rarest option on the table. If your roll would get you nothing, instead gain 1 _Basic_ _Food_ (_Meat_).\n&nbsp;\nAdditionally, when traveling, you may spend [ ] for any tracking related _Augment_ or to remove _Indiscretion_."
       },
       {
         "name": "Prepared Game",
         "category": "Downtime",
         "type": "Power",
         "effect": "During downtime, you can stock up on food before the journey. If you do, you may start it with 2 _Food_ (_Good_) as you preserve some select cuts for the next adventure."
+      }
+    ]
+  },
+  {
+    "name": "Scholar",
+    "desc": "You are studious and well-read, a rare trait in the Shattered World.",
+    "category": "Skill",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Scholar",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are well read and have absorbed a large amount of knowledge. You understand where best to find most academic knowledge within the Shattered World and (given time) can find most information.\n&nbsp;\nWhen your background as a scholar would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Literacy",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "You are able to read and write at a high level. If you have any other traits that grant literacy, increase your maximum _Living Library Point_s by 1."
+      },
+      {
+        "name": "Living Library",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "You have 3 _Living Library Points_, which may be spent whenever you come across something in the world. If you do, you instantly learn some relevant and helpful knowledge. You regain your Living Library Points whenever you take Downtime within a location with books or other similar material. The information granted will not be as precise as somebody with actual expertise, but always provides immediately helpful information. If there is no helpful information to provide, regain your Living Library Point."
+      },
+      {
+        "name": "Walking Library",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "You have a small collection of books at home. When you leave for a _Journey_ you may bring any number of of books; once for each Load of books you bring, you may, as a _Camp Action_, read the books you have packed. Regain a _Living Library Point_ and clear a _Stress_. You may not use this if you are at your maximum number of Living Library Points."
+      }
+    ]
+  },
+  {
+    "name": "Keeper",
+    "desc": "You are one of your town's keepers, somebody in charge of maintaining the rituals to keep your Guardian satisfied.",
+    "category": "Skill",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Keeper Knowledge",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You are an expert on the rituals and rites for your home's Guardian, which in turns grants you a wide knowledge of other rituals related to spirits, their behavior, and are adept at reading their attitude. You \n&nbsp;\nWhen your background and skills as a keeper would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Spiritual Insight",
+        "category": "Narrative",
+        "type": "Power",
+        "effect": "Your time working with your Guardian has given you the ability to quickly assess information about spirits. When you interact with a spirit, you may ask the GM one of the following questions and they will answer truthfully:\n* Approximately how powerful is this spirit?\n* What can I do to placate this spirit?\n* What does this spirit like?\n* What does this spirit dislike?"
+      },
+      {
+        "name": "Craft Offering",
+        "category": "Crafting",
+        "type": "Power",
+        "effect": "As a _Camp Action_, you may make a single Offering by combining two _Essences_ to make something appealing to the corresponding types of Spirits. "
+      },
+      {
+        "name": "Ritual Offering",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "While traveling as"
       }
     ]
   },
@@ -595,7 +653,7 @@
         "name": "Adept Traveler",
         "category": "Travel",
         "type": "Power",
-        "effect": "Roll +1 die when making your _Travel Roll_."
+        "effect": "Roll +1 die when making your _Travel Roll_. You may choose a different _Approach_ from the rest of the party, and may take 1 _Stress_ to roll _Skillfully_."
       }
     ]
   },
@@ -615,13 +673,13 @@
         "name": "Survival Instinct",
         "category": "Travel",
         "type": "Power",
-        "effect": " The first time you pull from the _Menace Deck_ you may choose to exclude _Mishaps_ put there due to party members. Additionally, while traveling, you may spend one &#9634; to offset the _Menace_ Danger. If you do, roll a d6; on a 3 or higher, take 1 _Stress_, otherwise take 1 _Fatigue_."
+        "effect": " The first time you pull from the _Menace Deck_ you may choose to exclude _Mishaps_ put there due to party members. Additionally, while traveling, you may spend one [ ] to offset the _Menace_ Danger. If you do, roll a d6; on a 3 or higher, take 1 _Stress_, otherwise take 1 _Fatigue_."
       },
       {
         "name": "Multitasking",
         "category": "Travel",
         "type": "Power",
-        "effect": "While traveling, you may select any number of jobs when you play the _Efficacy_ Advantage. Additionally, you may choose a different _Approach_ than the rest of your party."
+        "effect": "While traveling, you may select any number of jobs when you play the _Efficacy_ Advantage. Additionally, you may choose a different _Approach_ than the rest of your party and may remove allies' _Indiscretion_ _Danger_."
       },
       {
         "name": "Break Camp",
@@ -705,7 +763,7 @@
         "name": "Exceptional Toughness",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina.\n&nbsp;\nWhen your exceptional toughness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Duration* if appropriate."
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their track. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina.\n&nbsp;\nWhen your exceptional toughness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or to play *Duration* if appropriate."
       },
       {
         "name": "Toughened Hide",
@@ -723,7 +781,7 @@
         "name": "Toughness",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain +1 _Grit_ and +2 Stamina. At _Respite_, gain half the _Guard_ you would gain from Afflictions.",
+        "effect": "Gain +1 _Grit_ and +2 Stamina. At _Respite_, lose half the _Guard_ you would normally lose from Afflictions.",
         "bonuses": { "stamina": 2, "grit": 1 }
       },
       {
@@ -738,6 +796,41 @@
     ]
   },
   {
+    "name": "Clever",
+    "desc": "You have a keen mind, and can often think your way out of a problem that would ensnare other.",
+    "category": "Archetype",
+    "abilities": [
+      {
+        "name": "Exceptional Mind",
+        "category": "Narrative",
+        "type": "Skill",
+        "effect": "You have a keen mind, and are able to think your way out of many problems. You excel at spotting patterns, and can easily.\n&nbsp;\nWhen your ability to think, analyze things, or plan would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or to play *Advantage* if appropriate."
+      },
+      {
+        "name": "All According to Plan",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "You are constantly creating plans and contingencies, which sometimes come into play. Whenever you would use an *Advantage* Stake related to you planning ahead, you may roll _Skillfully_. Additionally, when faced with an appropriate skill challenge. you may declare that you'd planned for this contingency. Take a _Stress_, then describe your preparations. Gain an additional die as if you were using a previously established *Advantage* Stake."
+      },
+      {
+        "name": "Exceptional Plot",
+        "category": "Support",
+        "type": "Passive",
+        "effect": "At _Respite_, inflict _Studied_ on a creature within Range 2, then choose one of the following plans:\n* **Focus Fire!**: Choose a creature. Every time you or an ally would remove _Studied_ from the target creature, roll a d6. On a 3+, do not remove _Studied_.\n* **Form Up!**: This _Round_ whenever an ally becomes _Engaged_ with another ally, both gain 2 _Guard_, up to once per _Turn_ per pair of allies.\n* **Scatter!**: At the start of _Phase_ 1 you and all allies may spend up to 2 _Movement_ as if it was your _Turn_."
+      },
+      {
+        "name": "Exploit Opening",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "keywords": ["Social"],
+        "range": "1",
+        "target": "A _Studied_ creature within _Range_.",
+        "cost": "1 _Momentum_",
+        "effect": "Remove _Studied_ from the Target. They must immediately _Negate_ [_Focus_ 10]. Regardless of the result, they create an _Opening_. If they fail the _Negate_, add [_Pierce_ 2] to all resulting Attacks. If they succeed, they gain 2 _Block_ against all resulting Attacks."
+      }
+    ]
+  },
+  {
     "name": "Observant",
     "desc": "You are adept at reading people, and can pick up on small changes in a character's demeanor.",
     "category": "Archetype",
@@ -746,13 +839,13 @@
         "name": "Exceptional Observation",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You have an uncanny knack for reading others. You can see through falsehoods, grasp somebody's true intention, and generally glean insights that others would see as an incredible leap of logic.\n&nbsp;\nWhen your ability to read people would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Observation* if appropriate."
+        "effect": "You have an uncanny knack for reading others. You can see through falsehoods, grasp somebody's true intention, and generally glean insights that others would see as an incredible leap of logic.\n&nbsp;\nWhen your ability to read people would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or to play *Observation* if appropriate."
       },
       {
-        "name": "Root of the Problem",
+        "name": "Skilled Listener",
         "category": "Skill",
         "type": "Power",
-        "effect": "Other characters may treat you as a valid target for <u>Vent</u> even if you are taking another _Camp Action_. If they do, they clear _Stress_ as normal, although you do not."
+        "effect": "Other characters may treat you as a valid target for <u>Vent</u> even if you are taking another _Camp Action_. If they do, they clear _Stress_ as normal, although you do not. You still gain a _Bond_."
       },
       {
         "name": "Social Observation",
@@ -787,13 +880,19 @@
         "name": "Exceptional Charm",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, are quick to offer a helping hand, and are more likely to share information with you.\n&nbsp;\nWhen your charm and ability to persuade would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Incitement* if appropriate."
+        "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, are quick to offer a helping hand, and are more likely to share information with you.\n&nbsp;\nWhen your charm and ability to persuade would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or to play *Incitement* if appropriate."
       },
       {
         "name": "First Impression",
         "category": "Skill",
         "type": "Power",
         "effect": "When meeting a new character you may charm them, causing them to treat you in a more friendly fashion. For example, a stranger might treat you as a friend, or a hostile creature may act more neutrally. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_. You may use this Ability once per day for free; take a _Stress_ for each successive use."
+      },
+      {
+        "name": "Fast Friends",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "You start each _Journey_ with a _Bond_ with each of your allies."
       },
       {
         "name": "Charming Presence",
@@ -809,7 +908,7 @@
         "range": "1",
         "target": "Single-Target",
         "cost": "1 _Momentum_",
-        "effect": "The Target gains 1 _Guard_, then must Negate [9 _Focus_]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect. If they fail by 3 or more, inflict an additional 2 _Guard_."
+        "effect": "Deal 1 _Stun_ to the Target, then they must Negate [9 _Focus_]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect. If they fail by 3 or more, inflict an additional 2 _Stun_."
       }
     ]
   },
@@ -822,7 +921,7 @@
         "name": "Exceptional Strength",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are fantastically strong, approaching the limits of what a human can do unaided by craft. You can overpower creatures twice your size, and .\n&nbsp;\nWhen your physical strength would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Efficacy* if appropriate."
+        "effect": "You are fantastically strong, approaching the limits of what a human can do unaided by craft. You can overpower creatures twice your size, and .\n&nbsp;\nWhen your physical strength would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or to play *Efficacy* if appropriate."
       },
       {
         "name": "Overwhelming Power",
@@ -850,7 +949,7 @@
         "reqs": "[_Martial_] Attack.",
         "trigger": "You make a [_Martial_] Attack.",
         "cost": "1 _Momentum_",
-        "effect": "Choose one:\n* Inflict additional _Guard_ equal to 1 + the _Cost_ of the triggering Attack, even on a _Miss_.\n* The Target must _Negate_ _Grit_ with _Disadvantage_ this _Turn_. Add _Push_ [_Grit_] to the Attack or, if it already inflicted _Forced Movement_, add _Forceful_.",
+        "effect": "Choose one:\n* Inflict additional _Stun_ equal to 1 + the _Cost_ of the triggering Attack, even on a _Miss_.\n* The Target must _Negate_ _Grit_ with _Disadvantage_ this _Turn_. Add _Push_ [_Grit_] to the Attack or, if it already inflicted _Forced Movement_, add _Forceful_.",
         "enhancements": [{ "name": "Stronger Swing", "cost": "1 _Momentum_", "effect": "Choose both." }]
       }
     ]
@@ -864,13 +963,13 @@
         "name": "Fleet of Foot",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general maneuverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one &#9634; as if it were &#8863; or to play *Speed* if appropriate."
+        "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general maneuverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or to play *Speed* if appropriate."
       },
       {
         "name": "Quick March",
         "category": "Travel",
         "type": "Power",
-        "effect": "During a _Travel Roll_, you may spend one &#9634; as _Speed_. You may take 1 _Fatigue_ to instead allow an ally to spend one &#9634; as _Speed_ as you help them compensate for their pace."
+        "effect": "During a _Travel Roll_, you may spend one [ ] as _Speed_. You may take 1 _Fatigue_ to instead allow an ally to spend one of their [ ] as _Speed_ as you help them compensate for their pace."
       },
       {
         "name": "Incredible Speed",

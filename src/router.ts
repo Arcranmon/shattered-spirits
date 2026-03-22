@@ -110,14 +110,6 @@ const r = new Router({
       },
     },
     {
-      path: '/narrative',
-      component: require('@/pages/narrative/index.vue').default,
-      name: 'narrative',
-      meta: {
-        title: 'Narrative',
-      },
-    },
-    {
       path: '/npc-manager',
       component: require('@/pages/npc-manager/index.vue').default,
       name: 'npc-manager',

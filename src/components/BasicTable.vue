@@ -8,12 +8,12 @@
         class="chart--row">
         <v-col
           class="chart--head"
-          cols="2">
+          cols="4">
           <b>Roll</b>
         </v-col>
         <v-col
           class="chart--head chart--head-right"
-          cols="4">
+          cols="8">
           <b>Effect</b>
         </v-col>
       </v-row>
@@ -28,12 +28,12 @@
           <v-col
             class="chart--cols justify-center align-center"
             v-bind:class="usecategory(getItem(item))"
-            cols="2"
+            cols="4"
             >{{ getIndex(item, index) }}
           </v-col>
           <v-col
             class="chart--cols chart--cols-right"
-            cols="4"
+            cols="8"
             v-bind:class="usecategory(getItem(item))">
             <display-tooltip-text :string="getItem(item)" />
           </v-col>
@@ -65,7 +65,6 @@ export default Vue.extend({
       return item[1]
     },
     usecategory(item) {
-      if (item == 'Miss' || item == 'Hit' || item == 'Graze' || item == 'Crit') return item
       return ''
     },
   },

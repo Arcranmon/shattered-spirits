@@ -63,7 +63,9 @@
             :cols="1" />
         </div>
 
-        <div v-if="selectedTab == 'Glossary'">
+        <div
+          v-if="selectedTab == 'Glossary'"
+          style="padding-left: 1em">
           <div v-for="key of glossaryItems.keys()">
             <h3>{{ key }}</h3>
             <div
@@ -94,6 +96,7 @@ import GameModes from '@/database/text_files/game_modes.txt'
 import CombatText from '@/database/text_files/combat_rules/combat.txt'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import StatusCard from '@/components/cards/StatusCard.vue'
+import BasicTable from '@/components/BasicTable.vue'
 
 export default Vue.extend({
   name: 'rules-menu',
@@ -101,14 +104,15 @@ export default Vue.extend({
     CustomButton,
     StatusCard,
     ShowCards,
+    BasicTable,
   },
 
   data() {
     return {
       selectedTab: 'Playing the Game',
       // Add Towns, Downtime, and Player Roles back eventually
-      tabs: ['Playing the Game', 'Narrative', 'Travel', 'Equipment', 'Combat', 'Afflictions and Status', 'Terrain', 'Glossary'],
-      text: [GameModes, NarrativeText, TravelText, EquipmentText, CombatText, '', ''],
+      tabs: ['Playing the Game', 'Narrative', 'Journey', 'Combat', 'Equipment', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
+      text: [GameModes, NarrativeText, TravelText, CombatText, EquipmentText, '', '', PlayerRolesText, ''],
       statusCategories: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       selectedStatuses: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       selectedStatus: null,

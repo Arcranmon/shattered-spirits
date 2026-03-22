@@ -3,7 +3,7 @@
     <v-row>
       <v-col :cols="columns">
         <main-menu-button to="/world-menu">The Shattered World</main-menu-button>
-        <main-menu-button to="/rules-menu">Rules</main-menu-button>
+        <main-menu-button to="/rules-menu">Playing the Game</main-menu-button>
         <main-menu-button to="/character-options">Character Options</main-menu-button>
         <!-- 
         <main-menu-button to="/equipment">Equipment</main-menu-button> <br />

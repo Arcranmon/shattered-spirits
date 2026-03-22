@@ -370,12 +370,11 @@ import CustomButton from '@/components/Button.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import AbilityWidget from '@/components/AbilityWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
-import SkillTree from '@/components/SkillTree.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
 
 export default Vue.extend({
   name: 'character-options',
-  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SkillTree, SpiritAbilities },
+  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities },
   data() {
     return {
       selectedTab: 'Basic Skills',
@@ -398,8 +397,8 @@ export default Vue.extend({
       selectedArmors: ['Base Armor', 'Layered Armor', 'Outer Armor', 'Helmet', 'Boot', 'Cloak'],
       weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Staff', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
       selectedWeapons: ['Blade', 'Lance', 'Axe', 'Blunt', 'Staff', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
-      consumableCategories: ['Grenade', 'Potion'],
-      selectedConsumables: ['Grenade', 'Potion'],
+      consumableCategories: ['Grenade', 'Poison', 'Potion'],
+      selectedConsumables: ['Grenade', 'Poison', 'Potion'],
       travelItemCategories: ['Food', 'Luxury', 'Medicine', 'Camp Item'],
       selectedTravelItems: ['Food', 'Luxury', 'Medicine', 'Camp Item'],
       equipmentCategories: ['Accessory', 'Supply', 'Tool', 'Trinket'],
@@ -443,28 +442,28 @@ export default Vue.extend({
       return this.$store.getters.getDisciplinesByType('Wood').sort((a, b) => a.Name.localeCompare(b.Name))
     },
     talents: function () {
-      return this.$store.getters.getTalents()
+      return this.$store.getters.getTalents().sort((a, b) => a.Name.localeCompare(b.Name))
     },
     armors: function () {
-      return this.$store.getters.getFilteredArmors(this.selectedArmors)
+      return this.$store.getters.getFilteredArmors(this.selectedArmors).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     weapons: function () {
-      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, 'Any')
+      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, 'Any').sort((a, b) => a.Name.localeCompare(b.Name))
     },
     consumables: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedConsumables)
+      return this.$store.getters.getFilteredEquipments(this.selectedConsumables).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     travelItems: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedTravelItems)
+      return this.$store.getters.getFilteredEquipments(this.selectedTravelItems).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     equipment: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedEquipment)
+      return this.$store.getters.getFilteredEquipments(this.selectedEquipment).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     resources: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedResources)
+      return this.$store.getters.getFilteredEquipments(this.selectedResources).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     basic_stances() {
-      return this.$store.getters.getStancesFromList(this.$store.getters.basicStances)
+      return this.$store.getters.getStancesFromList(this.$store.getters.basicStances).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     basic_abilities() {
       var arr = [

@@ -60,7 +60,7 @@
     "type": "Maneuver",
     "cost": "1 _Momentum_",
     "range": "1",
-    "effect": "You attempt to manipulate a creature with body language, shouts, or basic insults. Choose one:\n* <u>Confuse:</u> The Target must _Negate_ [7 _Focus_] or gain 1 _Guard_ and your choice of _Impaired_/_Exposed_.\n* <u>Taunt:</u> The Target must _Negate_ [7 _Focus_] or gain _Taunted_. If you are _Engaged_, increase the DC by 1.\n* <u>Startle:</u> The Target must _Negate_ [6 _Focus_] or lose 1 _Movement_.",
+    "effect": "You attempt to manipulate a creature with body language, shouts, or basic insults. Choose one:\n* <u>Confuse:</u> The Target must _Negate_ [7 _Focus_] or take 1 _Stun_ and gain your choice of _Impaired_/_Exposed_.\n* <u>Taunt:</u> The Target must _Negate_ [7 _Focus_] or gain _Taunted_. If you are _Engaged_, increase the DC by 1.\n* <u>Startle:</u> The Target must _Negate_ [6 _Focus_] or lose 1 _Movement_.",
     "enhancements": [
       {
         "name": "Bon Mot",
@@ -98,7 +98,7 @@
     "special": "If you are in a Mobility Stance this may instead have a cost of 1 _Momentum_."
   },
   {
-    "name": "Breather",
+    "name": "Guarder",
     "category": "Recovery",
     "type": "Maneuver",
     "cost": "1 _Momentum_",
@@ -126,9 +126,9 @@
     "name": "Perfect Parry",
     "category": "Defensive",
     "type": "Gambit",
-    "cost": "1 _Mettle_",
+    "cost": "1 _Breath_",
     "prereqs": "Triggered from a _Parry_.",
-    "effect": "You lose _Guard_ from the triggering Attack. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
+    "effect": "You do not lose _Guard_ from the triggering Attack. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
   },
   {
     "name": "Perfect Dodge",
@@ -168,7 +168,7 @@
     "type": "Gambit",
     "cost": "None",
     "prereqs": "Triggered from a _Versatile_/_Heavy_ Attack.",
-    "effect": "Deal +1 Damage and, if the triggering Attack was _Heavy_, deal +2 _Guard_.Additionally, hoose one:\n* Deal +3 _Guard_ and add _Dazed_ [_Focus_/_Grit_].\n* Add _Sunder_ [_Reflex_]. If the Target _Blocks_, you must Target _Wielded_ Equipment if possible."
+    "effect": "Deal +1 Damage and, if the triggering Attack was _Heavy_, deal +2 _Stun_.Additionally, hoose one:\n* Deal +3 _Stun_ and add _Dazed_ [_Focus_/_Grit_].\n* Add _Sunder_ [_Reflex_]. If the Target _Blocks_, you must Target _Wielded_ Equipment if possible."
   },
   {
     "name": "Sacrifice Armor",
@@ -191,7 +191,7 @@
     "category": "General",
     "type": "Gambit",
     "cost": "None",
-    "effect": "Gain 1 _Momentum_ or _Mettle_."
+    "effect": "Choose one. If the triggering _Effect_ was a _Miss_, instead choose both:\n* Gain 1 _Momentum_.\n* Gain 3 _Guard_."
   },
   {
     "name": "Flank",
@@ -211,7 +211,7 @@
     "name": "Evade",
     "category": "Defensive",
     "type": "Reaction",
-    "cost": "2 _Mettle_/_Movement_ (any combination)",
+    "cost": "2 _Guard_/_Movement_ (any combination)",
     "keywords": ["Dodge"],
     "trigger": "You are Attacked.",
     "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect.",
@@ -354,7 +354,7 @@
     "name": "Deflect",
     "category": "Defensive",
     "type": "Reaction",
-    "cost": "1 _Mettle_",
+    "cost": "1 _Breath_",
     "keywords": ["Parry"],
     "trigger": "You are Attacked.",
     "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. If the triggering effect triggers _Sunder_, you may choose the Target instead of the attacker.",
@@ -372,7 +372,7 @@
     "target": "An ally.",
     "keywords": ["Inspiring"],
     "cost": "1 _Momentum_",
-    "effect": "You call encouragement to the target. Choose one:\n* They may gain 3 _Guard_, or 4 if you are in a _Support_ _Stance_.\n* They gain 1 _Momentum_, or 1 _Mettle_ if you are in a _Support_ _Stance_.\n* They may _Recover_ from a _Minor Condition_.",
+    "effect": "You call encouragement to the target. Choose one:\n* They may gain 3 _Guard_, or 4 if you are in a _Support_ _Stance_.\n* They gain 1 _Momentum_. If you are in a _Support_ _Stance_ they may instead gain 1 _Breath_.\n* They may _Recover_ from a _Minor Condition_.",
     "enhancements": [
       {
         "name": "Focused Encouragement",
@@ -387,7 +387,7 @@
     "type": "Reaction",
     "trigger": "None. You may use this _Reaction at any time, but only once per _Round_.",
     "cost": "None",
-    "effect": "Immediately gain 4 _Momentum_ or _Mettle_ (in any combination) and 1 _Fatigue_."
+    "effect": "Immediately gain 4 _Momentum_ or _Guard_ (in any combination) and 1 _Fatigue_."
   },
   {
     "name": "Earthen Reconstitution",

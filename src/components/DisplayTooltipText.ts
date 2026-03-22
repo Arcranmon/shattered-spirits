@@ -26,7 +26,11 @@ Vue.component('DisplayTooltipText', {
   computed: {
     formattedText() {
       if (this.string === undefined) return ''
-      var split_input = this.string.split('_')
+      var text = this.string
+      text = text.replaceAll('[-]', '&#8863;')
+      text = text.replaceAll('[ ]', '&#9634;')
+      text = text.replaceAll('[+]', '&#8862;')
+      var split_input = text.split('_')
       for (var index in split_input) {
         var partitioned = split_input[index].split('/')
         if (partitioned.length == 4) {

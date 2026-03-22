@@ -12,6 +12,7 @@ momentum_value = 2
 status_multipliers = {
     "Bleeding": 1.5,
     "Exposed": 1.5,
+    "Impaired": 1.5,
     "Dazed": 2,
     "Push": 2,
     "Prone": 2,
@@ -94,6 +95,7 @@ def get_status_damage(status_string, negate_dc, index):
 def get_databases():
     # Open the appropriate database.
     merged_data = json.load(open('.\src\database\items\weapons.json'))
+    merged_data.extend(json.load(open('.\src\database\items\equipment.json')))
     merged_data.extend(json.load(open('.\src\database\\ability_packages.json')))
     merged_data.extend(json.load(open('.\src\database\\traits.json')))
     merged_data.extend(json.load(open('.\src\database\\npcs\\npcs.json')))
@@ -166,15 +168,18 @@ def estimate_damage(attack, glancing, print_stats):
     cost += int(attack.get("cost", "0")[0])
                     
     if("chart" in attack):
-        roll_chart = attack["chart"]["roll"]
+        if(not("roll" in attack["chart"])):
+            roll_chart = ["2-3", "4-5", "6-10", "11-12"]
+        else:                        
+            roll_chart = attack["chart"]["roll"]
         if(not("damage" in attack["chart"])):
             damage_chart = [0]*4
         else:                        
             damage_chart = attack["chart"]["damage"]
-        if(not("guard" in attack["chart"])):
+        if(not("stun" in attack["chart"])):
             stun_chart = [0]*4
         else:                        
-            stun_chart = attack["chart"]["guard"]
+            stun_chart = attack["chart"]["stun"]
         if(not("status" in attack["chart"])):
             status_chart = ['']*4
         else:
@@ -183,7 +188,6 @@ def estimate_damage(attack, glancing, print_stats):
             negate = STANDARD_NEGATE
         else:
             negate = attack["chart"]["negate"]
-        roll_chart = attack["chart"]["roll"]
             
 
     if("analysis_notes" in attack):
@@ -255,6 +259,7 @@ def estimate_damage(attack, glancing, print_stats):
         straight_damage += straight[roll_index]*damage
         advantage_damage += advantage[roll_index]*damage
         disadvantage_damage += disadvantage[roll_index]*damage
+        print(damage)
         est_damage[index] = damage
         
 

@@ -52,8 +52,8 @@
             v-on="on"
             v-html="$marked.parseInline(input)" />
         </template>
-        <terrain-card
-          :terrain="this.$store.getters.getTerrain(input)"
+        <base-widget
+          :ability="this.$store.getters.getTerrain(input)"
           :tooltip="true" />
       </v-menu>
     </span>

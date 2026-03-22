@@ -3,7 +3,6 @@ import ArmorsJson from '@/database/items/armor.json'
 import EquipmentJson from '@/database/items/equipment.json'
 import TechniquesJson from '@/database/techniques.json'
 import Stances from '@/database/stances.json'
-import ArchetypesJson from '@/database/archetypes.json'
 import SpiritTraitsJson from '@/database/spirit_traits.json'
 import TraitsJson from '@/database/traits.json'
 
@@ -17,8 +16,6 @@ import Statuses from '@/database/glossary/statuses.json'
 import Terrains from '@/database/terrain.json'
 
 import SpiritTypeJson from '@/database/spirit_types.json'
-
-import ManeuversJson from '@/database/maneuvers.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
@@ -59,7 +56,7 @@ const kPlayerAbilities = [
 
 const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Accelerate', 'Spiritcraft', 'Drop', 'Equip', 'Spiritbound', 'Delay']
 
-const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
+const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Guarder', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
 @Module({
   name: 'databaseJson',
@@ -75,7 +72,6 @@ export class DatabaseJsonStore extends VuexModule {
     this.Armors = ArmorsJson.map((x) => Armor.Deserialize(<IArmorData>(<unknown>x)))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
     this.Subtypes = SpiritTypeJson.map((x) => Subtype.Deserialize(<ISubtypeData>(<unknown>x)))
-    this.Archetypes = ArchetypesJson.map((x) => Archetype.Deserialize(<IArchetypeData>(<unknown>x)))
     this.AbilityPackages = AbilityPackageJson.map((x) => AbilityPackage.Deserialize(<IAbilityPackageData>(<unknown>x)))
     this.Equipments = EquipmentJson.map((x) => Equipment.Deserialize(<IEquipmentData>(<unknown>x)))
     this.Traits = TraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))

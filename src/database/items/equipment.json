@@ -143,7 +143,7 @@
         "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [8 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.",
         "chart": {
           "damage": [0, 0, 1, 2],
-          "stun": [0, 3, 5, 7],
+          "stun": [0, 2, 4, 6],
           "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_, _Dazed_"]
         }
       }
@@ -199,7 +199,7 @@
     "effect": "Some spirits enjoy being Pampered with this item, but it requires sufficient space to use and creates noise."
   },
   {
-    "name": "Forest Shrine Offering",
+    "name": "Forest Offering",
     "category": "Supply",
     "desc": "A collection of herbs and small collections of essence that are pleasing to earth and wood spirits, and encourage them to guide travelers towards shrines.",
     "load": 1,
@@ -234,7 +234,7 @@
         "type": "Maneuver",
         "cost": "None",
         "reqs": "May not be used by Spirits.",
-        "effect": "Create an [_Opening_]. Reduce your _Poisoned_ value by 4."
+        "effect": "Create an [_Opening_]. Reduce your _Poisoned_ value by 4 or you may _Negate_ against an active [_Poisoned_] effect, rolling with _Advantage_."
       }
     ]
   },
@@ -319,12 +319,95 @@
   },
   {
     "name": "Medicinal Herbs",
-    "keywords": ["Natural"],
     "category": "Herb",
     "load": 1,
     "durability": 1,
     "desc": "A cluster of common medicinal herbs with a variety of healing properties.",
     "effect": "This may be Refined into a _Poultice_ or _Healing Essence_. Additionally, as a _Camp Action_, any character may attempt to create a _Poultice_ from this. Roll a d6; on a 4 or higher, create a _Poultice_. On a failure, the herbs are lost. If they have _Herbalist's Tools_ or similar, they instead always succeed."
+  },
+  {
+    "name": "Crownbark",
+    "category": "Herb",
+    "load": 1,
+    "durability": 1,
+    "desc": "A lichen that commonly grows on many trees in a distinct crown-like pattern that is effective against all manner of toxins.",
+    "effect": "This may be Refined into an _Antidote_, _Wood Essence_, or _Healing Essence_. Additionally, it may be used as if it was _Medicine_ for a non-Spirit character suffering from a _Poison_ _Wound_; if it is, the progress must be marked on said _Wounds_ _Clock_.",
+    "abilities": [
+      {
+        "name": "Consume",
+        "category": "Recovery",
+        "type": "Maneuver",
+        "cost": "None",
+        "reqs": "May not be used by Spirits.",
+        "effect": "Create an [_Opening_]. Reduce your _Poisoned_ value by 1."
+      }
+    ]
+  },
+  {
+    "name": "Sleep Toxin",
+    "category": "Poison",
+    "desc": "A poison that makes an opponent drowsy, limiting their movements.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Common",
+    "keywords": ["Quickdraw", "Consumable", "Fragile"],
+    "abilities": [
+      {
+        "name": "Apply",
+        "category": "Utility",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "effect": "Create an [_Opening_] and apply this Poison to a _Wielded_ or _Worn_ Item. The next time you make a creature lose _Stamina_ with a [_Stab_] or [_Slash_] Effect using said Item, they immediately take 4 _Stun_ and must _Negate_ [_Grit_ 10] if they're an animal, human, or other natural creature. This is a [_Poison_] effect. If they fail, they gain <u>Drowsy</u>. <u>Drowsy</u> creatures act one _Phase_ later than they normally would and, at Respite, lose 4 _Guard_ and gain 1 less _Breath_ and _Movement_. If they end the combat with this Poison still afflicted, they gain _Fatigue_."
+      }
+    ]
+  },
+  {
+    "name": "Sleeping Draught",
+    "category": "Potion",
+    "desc": "A potion that allows you to sleep deeply, even in the middle of a storm.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Common",
+    "keywords": ["Consumable", "Fragile"],
+    "effect": "A character that drinks this may roll _Boldly_ on their _Rest Roll_ and gains +1 die, but roll one less die on their Travel Roll the following day."
+  },
+  {
+    "name": "Dreamweed",
+    "category": "Herb",
+    "load": 1,
+    "rarity": "Uncommon",
+    "durability": 1,
+    "desc": "A plant that helps induce sleep. It's also known as rabbitbane, as any small game that goes near it tends to fall asleep and is found by a lucky predator.",
+    "effect": "This may be Refined into a _Sleeping Draught_, _Sleep Toxin_, or _Water Essence_. Alternatively, a creature may consume this with a pipe or similar to gain +1 die on their _Rest Roll_, but roll one less die on their _Travel Roll_ the following day."
+  },
+  {
+    "name": "Heart of the Vine",
+    "category": "Herb",
+    "load": 1,
+    "rarity": "Rare",
+    "durability": 1,
+    "desc": "A vine that is powerfully infused with wood spirits that is constantly moving and twitching like a wriggling tentacle.",
+    "effect": "This may be Refined into a _Living Vine_ or 3 _Wood Essence_."
+  },
+  {
+    "name": "Living Vine",
+    "category": "Potion",
+    "load": 1,
+    "rarity": "Rare",
+    "durability": 1,
+    "desc": "This potion is full of coiling, twisting vines that search eagerly for a place to grow.",
+    "abilities": [
+      {
+        "name": "Drink",
+        "category": "Recovery",
+        "type": "Maneuver",
+        "cost": "None",
+        "reqs": "Must be a natural creature of a _Wood Spirit_.",
+        "effect": "Create an [_Opening_], lose 4 _Guard_, and gain 2 _Momentum_. Two vines immediately sprout from your back, each of which counts as an additional hand. Any _Melee_ effect used with these vines is instead Range 0 [_Reach_]. Additionally, at Respite gain 2 _Momentum_ and 1 _Breath_. This persists for the remainder of the encounter; at the end of the scene the vines wither away, but must be removed; gain 1 _Stress_ from the pain of having them extracted."
+      }
+    ]
   },
   {
     "name": "Healing Essence",
@@ -341,5 +424,13 @@
     "load": 1,
     "durability": 1,
     "desc": "Refined spiritual essence that channels the concentrated power of wood spirits. It is unsafe to use in this state."
+  },
+  {
+    "name": "Water Essence",
+    "keywords": ["Reagent", "_Stack_ (4)"],
+    "category": "Essence",
+    "load": 1,
+    "durability": 1,
+    "desc": "Refined spiritual essence that channels the concentrated power of water spirits. It is unsafe to use in this state."
   }
 ]

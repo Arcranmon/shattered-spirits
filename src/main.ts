@@ -11,11 +11,13 @@ import vuetify from './plugins/vuetify'
 import { marked } from 'marked'
 import { getModule } from 'vuex-module-decorators'
 import Tooltip from '@/components/TooltipParam.vue'
+import ShowGreenvaleCharts from '@/components/ShowGreenvaleCharts.vue'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
 
 Vue.component('Tooltip', Tooltip)
+Vue.component('ShowGreenvaleCharts', ShowGreenvaleCharts)
 
 Vue.prototype.$marked = marked
 Vue.prototype.$jenna = require('@/assets/art/Jenna.png')

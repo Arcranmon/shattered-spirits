@@ -1,7 +1,7 @@
 [
   {
     "name": "Missile",
-    "effect": "Many abilities require a Missile, or a specific item or equipment. These abilities will specify any requirements on the Missile (such as an Elemental type or Size) and within what Range it must be. This ability uses said Missile to resolve the Attack, placing it unattended in target's _Arena_ or, if it _Wounds_ them, is _Impaled_ in the Target. To be used as Missile, an item must be _Worn_ by a willing Target or unattended. An exception is if a creature is _Impaled_ by an item; this counts as a _Worn_ item by the creature but may be targeted as if it was _Unattended_. Any Attacks using an _Impaled_ item against that creature have _Advantage_, ignore _Mettle_, and cannot be _Defended_ against."
+    "effect": "Many abilities require a Missile, or a specific item or equipment. These abilities will specify any requirements on the Missile (such as an Elemental type or Size) and within what Range it must be. This ability uses said Missile to resolve the Attack, placing it unattended in target's _Arena_ or, if it _Wounds_ them, is _Impaled_ in the Target. To be used as Missile, an item must be _Worn_ by a willing Target or unattended. An exception is if a creature is _Impaled_ by an item; this counts as a _Worn_ item by the creature but may be targeted as if it was _Unattended_. Any Attacks using an _Impaled_ item against that creature have _Advantage_, ignore _Guard_, and cannot be _Defended_ against."
   },
   {
     "name": "Arena",
@@ -19,6 +19,46 @@
   {
     "name": "Bonus",
     "effect": "When an Attack gains Bonus Damage or Guard, distribute it between targets however you wish."
+  },
+  {
+    "name": "Fall",
+    "effect": "Fall Damage ignores all _Block_, but characters may reduce the Damage dealt by their _Reflex_. If a character takes at least 4 Damage they fall _Prone_."
+  },
+  {
+    "name": "Bond",
+    "effect": "Characters should track bonds between themselves and other characters; when the other character is present, characters can call in a Bond as a Condition for a bonus on a roll. If the other member of the Bond is a player, they instead may help on a Skill Challenge without taking a _Stress_. After using a Bond, reduce it by one rank."
+  },
+  {
+    "name": "Danger",
+    "see": "Dangers"
+  },
+  {
+    "name": "Dangers",
+    "effect": "The various things that can go wrong or make the situation worse when you make a _Skill Challenge_."
+  },
+  {
+    "name": "Augment",
+    "see": "Augments"
+  },
+  {
+    "name": "Augments",
+    "effect": "The various things that can be used to increase the degree of success or add additional effects to a _Skill Challenge_."
+  },
+  {
+    "name": "Cautiously",
+    "effect": "When a character rolls Cautiously during a Skill Challenge they are focusing on avoiding harm and keeping themselves safe. After initially rolling, a character rerolls all &#8862; and [ ] once."
+  },
+  {
+    "name": "Cautious",
+    "see": "Cautiously"
+  },
+  {
+    "name": "Boldly",
+    "effect": "When a character rolls Boldly during a Skill Challenge they are focusing on succeeding and throwing caution to the wind. After initially rolling, a character rerolls all [-] and [ ] once."
+  },
+  {
+    "name": "Bold",
+    "see": "Boldly"
   },
   {
     "name": "Final",
@@ -46,11 +86,11 @@
   },
   {
     "name": "Discount",
-    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Movement_, _Momentum_, or _Mettle_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable attack. Any remaining _Discount_ is lost."
+    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Movement_, _Momentum_, or _Guard_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable attack. Any remaining _Discount_ is lost."
   },
   {
     "name": "Disengage",
-    "effect": "When a character Disengages you must stop _Occupying_ your current _Terrain_. Additionally, you may choose to remove _Engaged_ (if applicable) and leave your current _Field_ effect (if applicable). If you remove _Engaged_ in this way, create an _Opening_."
+    "effect": "When a character Disengages you must stop _Occupying_ your current _Terrain_. Additionally, you may choose to remove _Engaged_ (if applicable) and leave your current _Field_ effect (if applicable)."
   },
   {
     "name": "Spirit",
@@ -108,7 +148,7 @@
   },
   {
     "name": "Reach",
-    "effect": "Reach effects may target any creature within your _Engagement_, but are treated like a _Melee_ effect otherwise."
+    "effect": "Reach effects are treated like a _Melee_ effect, regardless of Range."
   },
   {
     "name": "Craft Momentum",
@@ -119,8 +159,8 @@
     "effect": "Momentum represents your ability to act and fight in combat. It is spent for a myriad of effects, but most commonly increasing the power of abilities using Enhancements and paying for other Abilities. At the start of each Round characters lose all their previous _Momentum_ (gaining 2 _Guard_ for each _Momentum_ lost) then gain _Momentum_ as dictated by their _Stance_.\n\nIf a creature would lose Momentum due to an effect but has no Momentum they instead lose 2 _Guard_ for every Momentum they would lose."
   },
   {
-    "name": "Mettle",
-    "effect": "Mettle represents a character's ability to parry, dodge, and otherwise actively defend against incoming assaults. It is commonly used for _Dodge_ and _Parry_ Reactions."
+    "name": "Breath",
+    "effect": "Breath represents a character's ability to parry, dodge, and otherwise avoid incoming assaults. It is commonly used for _Dodge_ and _Parry_ Reactions."
   },
   {
     "name": "Movement",
@@ -160,7 +200,7 @@
   },
   {
     "name": "Poison",
-    "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they suffer the below effects:\n* **6-12**: You have a weakened constitution and suffer from constant nausea and dizziness. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_:\n\t* Gain a _Stress_ whenever you eat.\n\t* Gain 1 less _Momentum_ at _Respite_.\n* **3-5**: The poison badly harms you, leaving you in a difficult state. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_ suffer the one-segment effects and the following:\n\t* Gain _Fatigue_ every day if you _Travel_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 2).\n\t* You have _Disadvantage_ to _Negate_ all effects.\n* **2-**: The poison leaves lasting damage, making it near impossible for you to function as normal. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 12 Segment Clock to heal. While you have this _Wound_ suffer the one and two-segment effects and the following:\n\t* Gain a _Fatigue_ at the start of each day after resolving your _Rest Roll_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 3).\n\t* You have _Disadvantage_ on all rolls."
+    "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they may suffer the below _Wounds_:\n* **6-12**: You have a weakened constitution and suffer from constant nausea and dizziness. Mark a single section _Wound_. This _Wound_ has a 4 segment Clock to heal. While you have this _Wound_:\n\t* Gain a _Stress_ whenever you eat.\n\t* Gain 1 less _Momentum_ at _Respite_.\n* **3-5**: The poison badly harms you, leaving you in a difficult state. Mark a two section _Wound_. This _Wound_ has a 5 segment Clock to heal and, when healed, is replaced by the 1 section _Wound_. While you have this _Wound_ suffer the one-section effects and the following:\n\t* Gain _Fatigue_ every day if you _Travel_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 2).\n\t* You have _Disadvantage_ to _Negate_ all effects.\n* **2-**: The poison leaves lasting damage, making it near impossible for you to function as normal. Mark a three section _Wound_. This _Wound_ has a 6 segment Clock to heal and, when healed, is replaced by the two section _Wound_. While you have this _Wound_ suffer the one and two-section effects and the following:\n\t* Gain a _Fatigue_ at the start of each day after resolving your _Rest Roll_.\n\t* Gain 1 less _Momentum_ at _Respite_ (total of 3).\n\t* You have _Disadvantage_ on all rolls."
   },
   {
     "name": "Parry",
@@ -191,6 +231,18 @@
     "effect": "If you use this Maneuver you may not use any Attacks this _Turn_."
   },
   {
+    "name": "Swim",
+    "effect": "When in areas with deep water creatures must swim. Creatures without the _Swimmer_ trait must pay an additional _Movement_ for all effects while Swimming except entering the _Arena_. Additionally, while Swimming a creature immediately becomes _Soaked_."
+  },
+  {
+    "name": "Climb",
+    "effect": "Sheer cliff faces and similar terrain require creatures to climb. While Climbing (including entering an Arena where you must Climb), all Movement costs are increased by 2, and creatures must have two _Free Hands_ (or equivalent) to move. Any other _Movement_ when a creature must _Climb_ has its cost increased by 1. Climbing creatures have _Disadvantage_ on all rolls, and rolls against them have _Advantage_ as they attempt to cling to the surface, and must have at least one _Free Hand_ to maintain their grip. Creatures with the _Climber_ trait or similar ignore all these penalties."
+  },
+  {
+    "name": "Climbing",
+    "see": "Climb"
+  },
+  {
     "name": "Rooted",
     "effect": "You may not use _Movement_ this _Turn_."
   },
@@ -216,12 +268,16 @@
     "effect": "One of your arms is grievously injured. You cannot use one arm. Decrease the _Momentum_ gained at _Respite_ by 2. Roll two less die whenever your ability to use your arm is important, and you cannot take any _Camp_ or _Travel Actions_ that requires both your arms."
   },
   {
+    "name": "Crush",
+    "effect": "[Damage type desc]. If a character is _Downed_ by [DT Name] Damage they suffer the below effects:\n* **6-12**: [Injury desc].  Mark a 1 section _Wound_. This _Wound_ has a [X] Segment Clock to heal. While you have this _Wound_:\n\t* [effects]\n* **3-5**: [Injury desc]. Mark a 2 section _Wound_. This _Wound_ has a [X] Segment Clock to heal and, when healed, is replaced by the 1 section _Wound_. While you have this _Wound_:\n\t* [effects]\n* **2-**: [Injury desc]. Mark a 3 section _Wound_. This _Wound_ has a [X] Segment Clock to heal and, when healed, is replaced by the 2 section _Wound_. While you have this _Wound_:\n\t* [effects]"
+  },
+  {
     "name": "Stab",
-    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Stab Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 1].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: You take a deep stab that makes it painful to act. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 2].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it painful to move. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has an 8 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 3].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ _Injury_.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Gain 1 less _Momentum_ and _Mettle_ at _Respite_.\n\t* Gain a Fatigue at the start of each day after resolving your Rest Roll."
+    "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Stab Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a 1 section _Wound_. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 1].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: You take a deep stab that makes it painful to act. Mark a 2 section _Wound_. This _Wound_ has a 4 Segment Clock to heal and, when healed, is replaced by the 1 section _Wound_. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 2].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it painful to move. Mark a 3 section _Wound_. This _Wound_ has a 5 Segment Clock to heal and, when healed, is replaced by the 2 section _Wound_. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 3].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ _Injury_.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Gain 1 less _Momentum_ and _Breath_ at _Respite_.\n\t* Gain a Fatigue at the start of each day after resolving your Rest Roll."
   },
   {
     "name": "Slash",
-    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep cut. Mark a _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 2 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **3-5**: One of your limbs takes a deep, debilitating cut. Mark a _Wound_ that takes two spaces on your Health Bar. This _Wound_ has a 4 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Minor Leg Injury_ or _Minor Arm Injury_ as appropriate.\n* **2-**: One of your limbs is cut to the bone, rendering it useless. Mark a _Wound_ that takes three spaces on your Health Bar. This _Wound_ has a 6 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Major Leg Injury_ or _Major Arm Injury_ as appropriate."
+    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep cut. Mark a 1 section _Wound_. This _Wound_ has a 2 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **3-5**: One of your limbs takes a deep, debilitating cut. Mark a 2 section _Wound_. This _Wound_ has a 3 Segment Clock to heal and, when healed, is replaced with the 1 section Wound. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Minor Leg Injury_ or _Minor Arm Injury_ as appropriate.\n* **2-**: One of your limbs is cut to the bone, rendering it powerless. Mark a 3 section _Wound_. This _Wound_ has a 4 Segment Clock to heal and, when healed, is replaced with the 2 section Wound. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Major Leg Injury_ or _Major Arm Injury_ as appropriate."
   },
   {
     "name": "Medium",
@@ -253,7 +309,7 @@
   },
   {
     "name": "Stun",
-    "effect": "Stun is a specialized type of Damage that is always applied to Guard, never to Stamina. Inflicted Stun it is always applied before other Damage."
+    "effect": "Stun is a specialized type of Damage that is always applied to breath, never to Stamina. Inflicted Stun it is always applied before other Damage."
   },
   {
     "name": "Guard",
@@ -303,7 +359,7 @@
   { "name": "Greater Source", "see": "Source" },
   {
     "name": "Thrown",
-    "effect": "After using an effect with this Range, place this _Equipment_ in the _Arena_."
+    "effect": "After using an effect with this Range, place this _Equipment_ in the Target's _Arena_."
   },
   {
     "name": "Occupy",
