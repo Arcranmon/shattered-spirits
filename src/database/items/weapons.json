@@ -1,38 +1,43 @@
 [
   {
     "name": "Blaze Rod",
-    "desc": "A staff specialized in creating and controlling crackling flames.",
-    "keywords": ["Foci_ (_Blaze_)"],
+    "desc": "A staff specialized in creating and controlling crackling flames, formed from charred wood and reinforced with flame essence.",
+    "category": "Rod",
+    "keywords": ["_Moderate Source_ (_Flame_)"],
     "reqs": "A creature must have _Novice Blazecraft_ to use this _Weapon_.",
-    "chart": {
-      "damage": [0, 3, 4, 6],
-      "roll": ["2-3", "4-5", "6-10", "11-12"],
-      "status": ["+1 _Momentum_", "None", "None", "None"]
-    },
+    "rarity": "Rare",
     "load": 3,
     "hands": 2,
     "durability": 1,
-    "durability": 6,
+    "effect": "This staff helps focus and refine blazecraft. It has a single charge that may be expended for a variety of effects. Once expended, it may not be used again until the following day, and only if it is placed in fire for an extended period.",
     "abilities": [
       {
-        "name": "Orb",
-        "category": "Balanced Attack",
-        "type": "Action",
-        "keywords": ["Fire"],
-        "speed": 2,
-        "cost": "3 _Momentum_",
-        "range": "Short/Medium",
-        "effect": "Attack a Target within Range. Place 1 _Momentum_ on any [_Blaze_] Art or Technique. On a _Crit_, place an additional _Momentum_.",
-        "analysis_notes": { "bonus_damage": [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2] }
+        "name": "Crafting Focus",
+        "category": "Utility",
+        "type": "Passive",
+        "effect": "Gain an additional _Craft Momentum_ at _Refresh_ while _Wielding_ this. You may expend the _Charge_ to instead gain 4 _Craft Momentum_."
       },
       {
-        "name": "Charged Orb",
-        "category": "Balanced Attack",
-        "type": "Action",
-        "speed": 1,
+        "name": "Enhanced Craft",
+        "category": "Narrative",
+        "type": "Power",
+        "effect": "If your spirit would take a _Stress_ to enhance your _Blazecraft_ you may instead lose the _Charge_ on this staff. Additionally, you have increased precision when using this item to aid in your craft."
+      },
+      {
+        "name": "Fire Orb",
+        "category": "Balanced",
+        "type": "Attack",
+        "keywords": ["Fire"],
         "cost": "3 _Momentum_",
-        "range": "Short/Medium",
-        "effect": "Place 2 _Momentum_ on a _Blaze_ _Art_ or _Technique_ and become _Charging_. While _Charging_, gain _Resistance_ (_Fire_, _Ice_). At the end of the next _Phase_, as a _Slow Action_, remove _Charging_ and Attack the Target with Orb, dealing +2 _Bonus Damage_."
+        "range": "1",
+        "effect": "Attack a Target within Range. Gain 1 _Craft Momentum_, or 2 on a _Crit_.",
+        "chart": {
+          "damage": [0, 2, 4, 5],
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "status": ["None", "None", "None", "None"]
+        },
+
+        "analysis_notes": { "bonus_damage": [2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4] }
       }
     ]
   },

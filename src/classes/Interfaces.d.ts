@@ -253,7 +253,7 @@ declare interface IStanceData extends IAbilityPackageData {
   speed: number
   block: number
   movement: number
-  breath: number
+  posture: number
 }
 
 declare interface IStatusEffect {

@@ -28,6 +28,83 @@
     ]
   },
   {
+    "name": "Basic Furnacecraft",
+    "category": "Flame",
+    "type": "Discipline",
+    "desc": "Basic manipulation of heat that all flamebound have some aptitude for.",
+    "abilities": [
+      {
+        "name": "Furnacecraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Skill",
+        "effect": "You can directly manipulate heat, allowing you to raise the temperature of objects and air by a small amount. This functions easier on objects that conduct heat well.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
+      },
+      {
+        "name": "Heat Shield",
+        "category": "Defensive",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Flame"],
+        "cost": "1 _Momentum_",
+        "range": 0,
+        "target": "Yourself or a creature within Range.",
+        "effect": "For the rest of the _Round_ that creature gains _Ward_ 1 [_Cold_]."
+      }
+    ]
+  },
+  {
+    "name": "Novice Blazecraft",
+    "category": "Flame",
+    "type": "Discipline",
+    "desc": "You have an aptitude for controlling flames and can bend them to your will with a thought.",
+    "abilities": [
+      {
+        "name": "Blazecraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit", "Flame"],
+        "type": "Skill",
+        "effect": "You can control flames within a short radius. You may effortlessly quash anything smaller than a bonfire, and can instantly create a campfire-sized flames. With focus you can move flames or cause them to grow in size, and you can sustain a torch-sized flame without fuel and with with minimal effort.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
+      },
+      {
+        "name": "Ignite",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Flame"],
+        "cost": "1 _Momentum_",
+        "range": 1,
+        "target": "An _Arena_ within Range.",
+        "effect": "Choose one:\n* Choose a _Flammable_ piece of _Terrain_ and immediately make it _Blazing_.\n* Create an _Open Flame_ _Terrain_ in Range.\n* Choose a piece of _Flame_ _Terrain_ within Range. It deals +2 _Fire_ Damage for the remainder of the _Round_."
+      },
+      {
+        "name": "Ember",
+        "category": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "Flame", "Fire"],
+        "cost": "2 _Momentum_",
+        "target": "Single-Target",
+        "range": "1",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "damage": [0, 2, 4, 7],
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "status": ["None", "None", "_Alight_ 1 [_Reflex_]", "_Alight_ 2 [_Reflex_]"]
+        },
+        "enhancements": [
+          {
+            "name": "Erupting Flame",
+            "cost": "3 _Momentum_",
+            "effect": "Instead, resolve the Attack against all creatures in an _Engagement_."
+          },
+          {
+            "name": "Hungry Flame",
+            "cost": "2 _Momentum_",
+            "effect": "Inflict an additional 1 _Alight_ on a _Graze_+. Additionally, on a _Hit_+, if the target has any flammable equipment, you may choose to ignite it as well. The target treats their _Alight_ as 2 higher so long as they are _Wielding_ said equipment. They can remove the effect on the Equipment as if it was _Alight_."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Basic Watersense",
     "category": "Water",
     "type": "Discipline",
@@ -115,7 +192,7 @@
           {
             "name": "Heavier Stone",
             "cost": "2 _Momentum_",
-            "effect": "You may instead use a _Moderate Source_ (_Earth_) as the _Missile_. If you do, deal +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, add [_Siege_] and increase the DC to _Negate_ by 1."
+            "effect": "You may instead use a _Moderate Source_ (_Earth_) as the _Missile_. If you do, this is instead a _Heavy_ Attack and deal +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, add [_Siege_] and increase the DC to _Negate_ by 1."
           }
         ],
         "chart": {
@@ -621,19 +698,19 @@
         "name": "Spiritual Insight",
         "category": "Narrative",
         "type": "Power",
-        "effect": "Your time working with your Guardian has given you the ability to quickly assess information about spirits. When you interact with a spirit, you may ask the GM one of the following questions and they will answer truthfully:\n* Approximately how powerful is this spirit?\n* What can I do to placate this spirit?\n* What does this spirit like?\n* What does this spirit dislike?"
+        "effect": "Your time working with your Guardian has given you the ability to quickly assess information about spirits. When you interact with a spirit, you may ask the GM one of the following questions and they will answer truthfully:\n* Approximately how powerful is this spirit?\n* What can I do to placate this spirit?\n* What does this spirit like?\n* What does this spirit dislike?\n\nAdditionally, you always know what (if any) offering a spirit would be receptive to."
       },
       {
         "name": "Craft Offering",
         "category": "Crafting",
         "type": "Power",
-        "effect": "As a _Camp Action_, you may make a single Offering by combining two _Essences_ to make something appealing to the corresponding types of Spirits. "
+        "effect": "As a _Camp Action_, you may make a single Offering by combining two _Essences_ to make something appealing to the corresponding types of Spirits."
       },
       {
         "name": "Ritual Offering",
         "category": "Travel",
         "type": "Power",
-        "effect": "While traveling as"
+        "effect": "While traveling, you may make give an Offering and conduct one of the following rituals:\n* <u>Ritual of Passage:</u> As a _Camp Action_ or while at a shrine you ask the spirits for safe travel and guidance. You and your party gain +1 die on your _Travel Roll_ tomorrow.\n* <u>Ritual of Healing</u>: You call spirits closer, increasing the elemental power nearby. Spirits of the types associated with the offering you use gain +1 die on their _Rest Roll_.\n* <u>Ritual of Safety:</u>: You ask the spirits for aid in hiding or securing your camp; you gain the benefits of the <u>Cover</u> or <u>Secure</u> _Camp Action_."
       }
     ]
   },

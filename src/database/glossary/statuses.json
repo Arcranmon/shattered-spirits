@@ -23,22 +23,17 @@
   },
   {
     "name": "Alight",
-    "desc": "An elemental affliction caused by being set aflame.",
-    "effect": "At the end of each _Phase_ an Alight creature takes 2 Damage [_Fire_, _AP_]. This Damage ignores _Block_.",
-    "special": "While a creature has Alight they have _Resistance_ I (_Cold_).",
-    "repeat": "If an Alight creature would gain Alight they instead take 2 [_Fire_, _AP_] Damage.",
-    "reacts": [
-      "<ins>_Frozen_:</ins> If an Alight creature would gain _Frozen_ they instead remove Alight.",
-      "<ins>_Armored_:</ins>  If an Alight creature would gain _Armored_ they instead remove Alight."
-    ],
-    "recover": "When a creature _Recovers_ they may end their turn _Prone_ to remove Alight.",
-    "type": "Hide"
+    "desc": "An affliction caused when you are on fire.",
+    "effect": "While a creature has Alight they take _Fire_ Damage equal to their Alight value at the end of their _Turn_ and any _Turn_ they take a _Reaction_. This Damage ignores _Block_. Additionally, the creature can be treated as a _Minor Source_ [_Flame_] and has _Resistance_ [_Cold_].",
+    "repeat": "Alight stacks, and if a creature gains Alight again combine the values.",
+    "remove": "When a creature _Recovers_ they may _Negate_ with _Reflex_ and reduce their Alight by half the result. They may choose to drop _Prone_ as a part of this; if they do, they roll with _Advantage_ and instead reduce their Alight by the full value. Additionally, if a creature gains _Soaked_ they clear all Alight.",
+    "type": "Affliction"
   },
   {
     "name": "Bleeding",
     "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
     "effect": "While a creature has Bleeding they lose _Stamina_ equal to their Bleeding value at the end of their _Turn_ and any _Turn_ they take a _Reaction_.",
-    "repeat": "If a Bleeding creatures gains Bleeding, increase the value by 1.",
+    "repeat": "Bleeding stacks, and if a creature gains Bleeding again combine the values.",
     "remove": "When a creature _Recovers_ they may _Negate_ with _Grit_ and reduce their _Bleed_ by half the result.",
     "type": "Affliction"
   },

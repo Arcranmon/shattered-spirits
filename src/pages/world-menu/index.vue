@@ -76,6 +76,8 @@ import ShowCharacter from '@/components/ShowCharacter.vue'
 import WorldText from '@/database/text_files/world_of_deskar.txt'
 import Greenvale from '@/database/text_files/greenvale.txt'
 import Civilization from '@/database/text_files/civilization.txt'
+import BlaineText from '@/database/text_files/sample_characters/blaine.txt'
+import BlaineStats from '@/database/sample_characters/blaine.json'
 import JohnText from '@/database/text_files/sample_characters/john.txt'
 import JohnStats from '@/database/sample_characters/john.json'
 import MargaretText from '@/database/text_files/sample_characters/margaret.txt'
@@ -87,6 +89,7 @@ import WinonaStats from '@/database/sample_characters/winona.json'
 import Spirits from '@/database/text_files/spirits.txt'
 import Threats from '@/database/text_files/threats.txt'
 import Spiritcraft from '@/database/text_files/spiritcraft.txt'
+import Seasons from '@/database/text_files/seasons.txt'
 export default Vue.extend({
   name: 'world-menu',
   components: {
@@ -96,14 +99,24 @@ export default Vue.extend({
   data() {
     return {
       selectedTab: 'The World in Brief',
-      tabs: ['The World in Brief', 'Civilization Now', 'Spirits', 'Spiritcraft', 'Dangers of the Shattered World', 'The Greenvale', 'Sample Characters'],
-      text: [WorldText, Civilization, Spirits, Spiritcraft, Threats, Greenvale, ''],
+      tabs: [
+        'The World in Brief',
+        'Civilization Now',
+        'Spirits',
+        'Spiritcraft',
+        'Dangers of the Shattered World',
+        'The Seasons',
+        'The Greenvale',
+        'Sample Characters',
+      ],
+      text: [WorldText, Civilization, Spirits, Spiritcraft, Threats, Seasons, Greenvale, ''],
       count: 0,
       characters: [
-        [MargaretText, Character.Deserialize(MargaretStats)],
-        [JohnText, Character.Deserialize(JohnStats)],
-        [WinonaText, Character.Deserialize(WinonaStats)],
+        [BlaineText, Character.Deserialize(BlaineStats)],
         [ErikaText, Character.Deserialize(ErikaStats)],
+        [JohnText, Character.Deserialize(JohnStats)],
+        [MargaretText, Character.Deserialize(MargaretStats)],
+        [WinonaText, Character.Deserialize(WinonaStats)],
       ],
     }
   },

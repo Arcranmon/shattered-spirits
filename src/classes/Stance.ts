@@ -6,7 +6,7 @@ class Stance extends AbilityPackage {
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private momentum_: string
-  private breath_: number
+  private posture_: number
   private stun_: number
   private speed_: number
   private movement_: number
@@ -78,8 +78,8 @@ class Stance extends AbilityPackage {
     return this.momentum_
   }
 
-  public get Breath() {
-    return this.breath_
+  public get Posture() {
+    return this.posture_
   }
 
   public get Block() {
@@ -106,7 +106,7 @@ class Stance extends AbilityPackage {
     return true
   }
 
-  public get ShowBreath() {
+  public get ShowPosture() {
     return true
   }
 
@@ -134,7 +134,7 @@ class Stance extends AbilityPackage {
     this.momentum_ = data.momentum || 'N/A'
     this.movement_ = data.movement || 0
     this.stun_ = data.block || 0
-    this.breath_ = data.breath || 0
+    this.posture_ = data.posture || 0
   }
 }
 export default Stance
