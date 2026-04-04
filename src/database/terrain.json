@@ -3,7 +3,7 @@
     "name": "Overgrown",
     "desc": "Thick grass, vines, or other growths cover this arena, making movement far more difficult.",
     "element": "Wood",
-    "keywords": ["Source (_Plant_)", "Obstacle", "Flammable"],
+    "keywords": ["Source (_Plant_)", "Obstacle"],
     "effect": "This _Arena_ is _Rough_. All Size 1 or less creatures have _Soft Cover_. A creature may Attack the Arena; if they deal at least 3 _Slash_ Damage they may create a piece of _Terrain_ that does not have Overgrown. Any effects that Targets the whole Arena and does at least 8 _Slash_ Damage removes Overgrown."
   },
   {
@@ -19,7 +19,7 @@
     "layer": "Weather",
     "element": "Wind",
     "keywords": ["Fleeting"],
-    "effect": "When this Terrain is applied, remove any [_Cloud_] _Terrain_. Non-Melee Attacks against a creature in this _Arena_ or that pass through or originate from this _Arena_ automatically decrease their Rank by 1."
+    "effect": "When this Terrain is applied, remove any [_Cloud_] _Terrain_. Non-Melee Attacks against a creature in this _Arena_ or that pass through or originate from this _Arena_ automatically decrease their Rank by 1 unless they are [_Wind_] or [_Lightning_]."
   },
   {
     "name": "Veiled",
@@ -58,6 +58,14 @@
     }
   },
   {
+    "name": "Oil",
+    "layer": "Terrain",
+    "element": "Elementless",
+    "keywords": ["Flammable"],
+    "desc": "A slick coat of oil covers this area, making passage difficult.",
+    "effect": "This _Terrain_ is _Rough_. If this _Terrain_ is _Ignited_, it automatically becomes _Roaring_ and rolls all end of round effects twice and takes the higher."
+  },
+  {
     "name": "Tripping Hazard",
     "layer": "Obstacle",
     "keywords": ["Minor Source"],
@@ -71,14 +79,27 @@
     "keywords": ["Moderate Source"],
     "element": "Flame",
     "desc": "A burning piece of terrain that has been ignited.",
-    "effect": "When creatures first _Occupy_ this _Terrain_ or end their _Turn_ here they take 4 _Fire_ Damage and gain _Alight_ 1. All other effects of the Terrain continue to persist, although, depending on the Terrain, it may be destroyed, at which point _Blazing_ is removed. Typically, quick-burning fuels will last for 1-2 Rounds, while larger objects such as trees might persist for an entire battle."
+    "effect": "Blazing is always applied to a piece of _Terrain_ or an _Arena_. When creatures start their _Turn_ in this _Terrain_ or first enter it on their _Turn_ they take 4 _Fire_ Damage and gain _Alight_ 1. All other effects of the Terrain continue to persist, but its _Threshold_ is halved. At the end of each _Round_ roll a d6 for each piece of _Blazing_ _Terrain_, at _Disadvantage_ if not on _Flammable_ _Terrain_:\n* **1-2:** The flames sputter and die; replace _Blazing_ with _Smoldering_ and, if on _Flammable_ _Terrain_, reduce its _Hardness_ by 1.\n* **3-4:** The flames continue and nothing changes with this Terrain.\n* **5-6:** Flames spread. What happens depends on whether an entire _Arena_ or a piece of _Terrain_ is _Blazing_:\n\t* **Terrain:** _Ignite_ a random piece of _Flammable_ _Terrain_ in this _Arena_. If the _Arena_ is _Flammable_ instead _Ignite_ it.\n\t* **Arena:** _Ignite_ a piece of _Flammable_ _Terrain_ in all adjacent _Arenas_.",
+    "interactions": ["If this would become _Wet_, it becomes _Smoldering_ and _Wet_ is not applied."],
+    "special": "Blazing is instead a _Major Source_ if applied to an entire _Arena_. If a _Flammable_ piece of a _Terrain_ is _Destroyed_ any _Terrain_ created as a part of that is also _Blazing_."
   },
   {
-    "name": "Open Flame",
+    "name": "Roaring",
     "layer": "Terrain",
-    "keywords": ["Fleeting", "Moderate Source"],
+    "keywords": ["Major Source"],
+    "element": "Flame",
+    "desc": "A piece of terrain covered in intense, roiling flames.",
+    "effect": "Roaring is always applied to a piece of _Terrain_ or an _Arena_. When creatures start their _Turn_ in this _Terrain_ or first enter it on their _Turn_ they take 6 _Fire_ Damage and gain _Alight_ 2. All other effects of the Terrain continue to persist, but its _Threshold_ is halved. At the end of each _Round_, roll a d6 for each piece of Roaring _Terrain_, at _Disadvantage_ if not on _Flammable_ _Terrain_:\n* **1-2:** The flames die down; replace _Roaring_ with _Blazing_ and, if on _Flammable_ _Terrain_, reduce its _Hardness_ by 1.\n* **3-4:** The flames continue and nothing changes with this Terrain.\n* **5-6:** Flames spread. What happens depends on whether an entire _Arena_ or a piece of _Terrain_ is _Blazing_:\n\t* **Terrain:** _Ignite_ a random piece of _Flammable_ _Terrain_ in this _Arena_. If the _Arena_ is _Flammable_ instead _Ignite_ it.\n\t* **Arena:** _Ignite_ a piece of _Flammable_ _Terrain_ in all adjacent _Arenas_.",
+    "special": "Roaring is instead a _Greater Source_ if applied to an entire _Arena_. If a _Flammable_ piece of a _Terrain_ is _Destroyed_ any _Terrain_ created as a part of that is also _Roaring_.",
+    "interactions": ["If this would become _Wet_, it becomes _Blazing_ and _Wet_ is not applied."]
+  },
+  {
+    "name": "Smoldering",
+    "layer": "Terrain",
+    "keywords": ["Least Source"],
     "element": "Flame",
     "desc": "A burning piece of terrain that has been ignited.",
-    "effect": "When creatures first _Occupy_ this _Terrain_ or end their _Turn_ here they take 4 _Fire_ Damage and gain _Alight_ 1."
+    "effect": "When creatures start their _Turn_ in this _Terrain_ or first enter it on their _Turn_ they take 2 _Fire_ Damage.",
+    "interactions": ["If this would become _Wet_, Smoldering is removed and _Wet_ is not applied. The _Terrain_ becomes _Veiled_."]
   }
 ]

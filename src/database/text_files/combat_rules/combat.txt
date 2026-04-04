@@ -21,11 +21,9 @@ A _Round_ is structured as follows:
 * Lose all _Guard_ and _Movement_.
 * Change your current _Stance_, if desired.
 * You draw energy from your surroundings, powering your spiritcraft:
-    * If the current location is not suppressing your Spiritcraft, gain 1 _Craft Momentum_.
-    * If the current location is particularly well-suited for your Spiritcraft, gain 1 _Craft Momentum_.
-    * If you are at a _Place of Power_, gain 1 _Craft Momentum_.
-    * If your _Spirit_ is at a _Place of Power_, gain 1 _Craft Momentum_.
-* Choose a _Stance_ for your _Spirit_, then, if the Stance is not _Spiritual Essence_, you may _Manifest_ your Spirit at an appropriate _Source_ (as defined by their size) within their _Manifest Range_. You may always _Manifest_ them at _Melee_ Range regardless of _Source_ for 1 _Momentum_. They become _Engaged_ with any creatures at said _Source_.
+    * If the current location is not suppressing your Spiritcraft, gain 1 _Essence_.
+    * If the current location is particularly well-suited for your Spiritcraft, gain 1 _Essence_.
+* Choose a _Stance_ for your _Spirit_, then, if the Stance is not _Spiritual Essence_, you may _Manifest_ your Spirit at an appropriate _Source_ (as defined by their size) within their _Manifest Range_. You may always _Manifest_ them at _Melee_ Range regardless of _Source_ for 1 _Essence_. They become _Engaged_ with any creatures at said _Source_.
 * You and your Spirit gain _Momentum_, _Movement_, and _Guard_ as outlined by your _Stance_s and other abilities.
 * If applicable, you may _Recover_ once.
 * Finally, you may immediately use a single [_Armament_] _Maneuver_, paying all costs as normal.
@@ -56,7 +54,7 @@ Additionally, on **all** _Turns_ (including their own), creatures may do the fol
 Spirit Turns work differently than player ones. A Spirit's _Stance_ will dictate what it is going to do on its turn. For example, _Skirmisher Spirit_ requires that the Spirit attempt to _Engage_ an enemy, then Attack them. In most cases Spirits may use any abilities that make it safer or easier to accomplish this task, but players must, to the best of their abilities, always attempt to fulfill the objective of their Spirit's Stance. For example, if the Stance dictated that a Spirit needs to get to a location and the only way for the Spirit to get there would create an [_Opening_] and they do not have sufficient _Movement_ to prevent it, the Spirit must create said [_Opening_].
 
 &nbsp;
-A Spirit may always use _Guarder_ and _Spiritcraft_, regardless of their current _Stance_. However, they may not use them until completing the normal requirements of their _Stance_.
+A Spirit may always use _Breather_ and _Spiritcraft_, regardless of their current _Stance_. However, they may not use them until completing the normal requirements of their _Stance_.
 
 &nbsp;
 
@@ -96,10 +94,10 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 * **Guard:** A representation of a character's ability to defend themself. Characters may choose to lose _Guard_ instead of _Stamina_ when they take Damage, up to their _Block_ value.
 * **Momentum:** The resource used to fuel most a character's abilities and attacks. This is used for almost all of a character's abilities, and is roughly an approximation of how much they can do on their turn. All Momentum is lost at the start of the _Round_, so characters are encouraged to use it.
 * **Posture:** 
-* **Craft Momentum:** Craft Momentum is almost identical to Momentum, and represents a character's stores of spiritual energy and ability to channel Momentum into craft. Characters can typically convert small amounts of Momentum into Craft Momentum, and also receive some for free based on the environment. However, there are three key differences between the Momentum types:
-    * First, Craft Momentum can be used by either a character or their Spirit.
-    * Second, Craft Momentum may only be used on abilities with the [_Spirit_] keyword.
-    * Finally, Craft Momentum is not lost at the start of a Round.
+* **Essence:** Essence is almost identical to Momentum, and represents a character's stores of spiritual energy and ability to channel Momentum into craft. Characters can typically convert small amounts of Momentum into Essence, and also receive some for free based on the environment. However, there are three key differences between the Momentum types:
+    * First, Essence can be used by either a character or their Spirit.
+    * Second, Essence may only be used on abilities with the [_Spirit_] keyword.
+    * Finally, Essence is not lost at the start of a Round.
 * **Movement:** A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:
     * 1 _Movement_: If not _Engaged_ with a hostile creature, become _Engaged_ with a creature in your _Arena_.
     * 1 _Movement_: Remove _Engaged_.
@@ -138,9 +136,10 @@ Arenas are the basic layout of the combat map, and represent distinct areas in a
 ### Wounds and Health
 Characters have several resources that represent their overall state in combat.
 * <ins>Guard</ins> is a character's first line of defense, and is their ability to absorb or avoid incoming assaults without harm. Characters typically lose Guard by choice; when they take Damage, characters may lose Guard equal to their Block value in place of Stamina. If a character has no Guard remaining they cannot do this, and instead must take all Damage to Stamina. Guard is easily recovered with a variety of abilities, and is constantly being gained and lost.
-* <ins>Stamina</ins> is a character's last line of defense and represents their ability to avoid major injury. When a character loses Stamina they are being pushed back, barely deflecting an attack, or taking superficial damage; they aren't taking true damage, but are also clearly on their back foot. When a character loses all their _Stamina_ they take a _Wound_, reset their Stamina to full, then take any remaining Damage. Characters typically start combat encounters with full _Stamina_.
+* <ins>Stamina</ins> is a character's last line of defense and represents their ability to avoid major injury. When a character loses Stamina they are being pushed back, barely deflecting an attack, or taking superficial damage; they aren't taking true damage, but are also clearly on their back foot. When a character loses all their _Stamina_ they are _Downed_, reset their Stamina to full, then take any remaining Damage. Characters typically start combat encounters with full _Stamina_.
 * <ins>Downed</ins> occurs when a creature's _Stamina_ reaches 0. For most NPCs, this means they are immediately _Defeated_. Player characters and more powerful NPCs instead roll for _Wounds_. Characters roll 2d6 and subtract their current number of Wounds, then gain a _Wound_ as dictated by the damaging effect. After gaining _Wounds_ a character is reset to full _Stamina_, then takes any overflow damage.
 * <ins>Spirit Downed</ins> occurs when a character's spirit's _Stamina_ reaches 0. When a _Spirit_ is _Downed_ that character becomes _Suppressed_ for the remainder of the _Round_ (or _Sealed_ if they are already _Suppressed_). Additionally, the spirit rolls for _Wounds_, using the same rules as a player. After gaining _Wounds_ the _Spirit_ is reset to full _Stamina_, then takes any overflow damage.
+* <ins>Equipment and Wounds:</ins> When a character would gain a _Wound_ and is wearing _Armor_ (even in narrative play), they may choose to downgrade one of the _Wounds_ by 1, gain a _Fatigue_, and lose 1 _Durability_ on a piece of _Worn_ _Armor_. If they used a _Parry_ _Reaction_ (or if appropriate in narrative play) they may instead lose 1 _Durability_ on a piece of _Wielded_ _Equipment_.
 * <ins>Death</ins>: It is extremely rare for a character to be killed in combat in Shattered Spirits. Characters only die when their entire Health Bar is already full of _Wounds_ and they would gain another. If a character would gain a _Wound_ with more segments then they have available on their _Health Bar_ they fill everything they can, but do not die from said _Wound_; instead, the Clock to health is extended.
 
 &nbsp;  

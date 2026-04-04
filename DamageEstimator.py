@@ -10,14 +10,14 @@ momentum_value = 2
 # In theory, Advantage is 'worth' ~1/2 Momentum just in terms of the increased likelihood of a Gambit. Actual worth depends heavily on the applicable attack.
 
 status_multipliers = {
-    "Bleeding": 1.5,
-    "Alight": 1.5,
+    "Bleeding": 2,
+    "Alight": 1,
     "Exposed": 1.5,
     "Impaired": 1.5,
     "Dazed": 2,
     "Push": 2,
     "Prone": 2,
-    "Sundered": 2,
+    "Shatter": 2,
     "Grabbed": 2
 }
 
@@ -73,7 +73,10 @@ def get_status_damage(status_string, negate_dc, index):
     # Split individual statuses out
     status_string = status_string.replace('_', '')
 
-    multiplier = get_negate_adjustment(index,negate_dc)
+    if not 'Reflex' in status_string and not 'Grit' in status_string and not 'Focus' in status_string:
+        multiplier = 1
+    else:
+        multiplier = get_negate_adjustment(index,negate_dc)
     
     statuses = status_string.split(', ')
 

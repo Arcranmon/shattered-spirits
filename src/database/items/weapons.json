@@ -1,43 +1,27 @@
 [
   {
-    "name": "Blaze Rod",
-    "desc": "A staff specialized in creating and controlling crackling flames, formed from charred wood and reinforced with flame essence.",
+    "name": "Flame Rod",
+    "desc": "A staff specialized in creating and controlling crackling flames, formed from brass and charred wood and reinforced with flame essence.",
     "category": "Rod",
-    "keywords": ["_Moderate Source_ (_Flame_)"],
-    "reqs": "A creature must have _Novice Blazecraft_ to use this _Weapon_.",
+    "keywords": ["Metal"],
+    "reqs": "A creature must be flamebound to use this _Weapon_.",
     "rarity": "Rare",
     "load": 3,
     "hands": 2,
     "durability": 1,
-    "effect": "This staff helps focus and refine blazecraft. It has a single charge that may be expended for a variety of effects. Once expended, it may not be used again until the following day, and only if it is placed in fire for an extended period.",
+    "effect": "This staff helps focus and refine flamecraft. It has a single Charge that represents a vast pool of elemental energy that can be tapped. Once the Charge has been used, it may not be used again until the staff has been planted in an open flame for several hours.",
     "abilities": [
       {
-        "name": "Crafting Focus",
+        "name": "Flame Focus",
         "category": "Utility",
         "type": "Passive",
-        "effect": "Gain an additional _Craft Momentum_ at _Refresh_ while _Wielding_ this. You may expend the _Charge_ to instead gain 4 _Craft Momentum_."
+        "effect": "Gain 1 _Essence_ at _Respite_, or 3 if you spend the staffs Charge. At the end of _Respite_ you may spend up to 2 _Momentum_ to gain an equivalent amount of _Essence_."
       },
       {
         "name": "Enhanced Craft",
-        "category": "Narrative",
+        "category": "Skill",
         "type": "Power",
-        "effect": "If your spirit would take a _Stress_ to enhance your _Blazecraft_ you may instead lose the _Charge_ on this staff. Additionally, you have increased precision when using this item to aid in your craft."
-      },
-      {
-        "name": "Fire Orb",
-        "category": "Balanced",
-        "type": "Attack",
-        "keywords": ["Fire"],
-        "cost": "3 _Momentum_",
-        "range": "1",
-        "effect": "Attack a Target within Range. Gain 1 _Craft Momentum_, or 2 on a _Crit_.",
-        "chart": {
-          "damage": [0, 2, 4, 5],
-          "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "None", "None", "None"]
-        },
-
-        "analysis_notes": { "bonus_damage": [2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4] }
+        "effect": "If your spirit would take a _Stress_ to enhance your flamecraft you may instead lose the _Charge_ on this staff. Additionally, you have increased precision when using this item to aid in your craft."
       }
     ]
   },
@@ -312,7 +296,7 @@
     "parry": "[_Block_]  Gain _Stable_ and 1 _Guard_.",
     "charged_profile": {
       "set_up": "Choose a Target within _Range_. While _Charging_, gain _Stable_.",
-      "resolution": "Resolve this Attack against the Target, adding [_Overwhelming_]. Deal +4 Damage on a _Graze_+. On a _Hit_, add _Sundered_ 1 [5 _Grit_/_Reflex_]. On a _Crit_, add _Sundered_ 2 and increase the cost to _Negate_ by 1."
+      "resolution": "Resolve this Attack against the Target, adding [_Overwhelming_]. Deal +4 Damage on a _Graze_+. On a _Hit_, add _Shatter_ 1 [5 _Grit_/_Reflex_]. On a _Crit_, add _Shatter_ 2 and increase the cost to _Negate_ by 1."
     },
     "speed": 3,
     "range": "Melee",
@@ -341,7 +325,7 @@
     "range": [{ "category": "Melee", "value": 2 }],
     "charged_profile": {
       "set_up": "Create a _Self_-Range _Cone_ 3/_Arc_ 2 _Hazard_. While _Charging_ gain the _Parry_ effect of this weapon.",
-      "resolution": "Resolve this Attack in the _Hazard_. Add [_Overwhelming_]. On a _Hit_+, add _Exposed_, _Sundered_ [6 _Grit_/_Reflex_]. On a _Crit_, increase the cost to _Negate_ by 1."
+      "resolution": "Resolve this Attack in the _Hazard_. Add [_Overwhelming_]. On a _Hit_+, add _Exposed_, _Shatter_ [6 _Grit_/_Reflex_]. On a _Crit_, increase the cost to _Negate_ by 1."
     },
     "parry": "Gain _Stable_ 1 and 1 _Guard_.",
     "chart": {
@@ -454,7 +438,7 @@
             "effect": "Add [_Pierce_ 4] and [_Unblockable_]. On a _Hit_+, deal all _Guard_ you would inflict before _Block_ as _Damage_."
           },
           { "name": "Extend", "cost": "1 _Momentum_", "effect": "Range is instead Range 0 [_Reach_]. Deal +2 _Stun_." },
-          { "name": "Slam", "cost": "2 _Momentum_", "effect": "Add _Sundered_ and _Prone_." },
+          { "name": "Slam", "cost": "2 _Momentum_", "effect": "Add _Shatter_ and _Prone_." },
           { "name": "Driving Impact", "cost": "1 _Momentum_", "effect": "Add _Push_." },
           { "name": "Cleave", "cost": "2 _Momentum_", "effect": "Automatically _Graze_ all other valid targets _Engaged_ with the _Target_." }
         ]
@@ -1034,7 +1018,7 @@
     "speed": 4,
     "charged_profile": {
       "set_up": "[_Committed_] Make an Attack against a _Target_, dealing half Damage. If the Target is not _Grabbed_ by this Weapon after this, do not become _Charging_, and _Charging_ immediately ends if the _Grab_ does.",
-      "resolution": "Deal Damage again, dealing +3 _Bonus Damage_ and adding [_Pierce_ 2]. Inflict _Sundered_ 2 [8 _Grit_], but you must target the creature's _Armor_."
+      "resolution": "Deal Damage again, dealing +3 _Bonus Damage_ and adding [_Pierce_ 2]. Inflict _Shatter_ 2 [8 _Grit_], but you must target the creature's _Armor_."
     },
     "parry": "Gain 1 _Guard_ and +1 _Grit_.",
     "range": "Melee",

@@ -1,74 +1,55 @@
 [
   {
-    "name": "Light Armor",
-    "category": "Base Armor",
+    "name": "Light Leather Armor",
+    "category": "Armor",
     "load": 1,
     "block": 1,
     "guard": 2,
     "durability": 1,
-    "desc": "Basic armor, covering only the most vital areas on your body."
-  },
-  {
-    "name": "Medium Armor",
-    "category": "Base Armor",
-    "durability": 2,
-    "load": 3,
-    "block": 1,
-    "guard": 2,
-    "effect": "Equip one piece of _Layered Armor_ as a part of this. They share _Durability_ and all Keywords with this.",
-    "desc": "Standard armor, striking a balance between load and durability."
-  },
-  {
-    "name": "Heavy Armor",
-    "category": "Base Armor",
-    "durability": 3,
-    "load": 6,
-    "block": 1,
-    "guard": 2,
-    "effect": "Equip two pieces of _Layered Armor_ as a part of this. They share _Durability_ and all Keywords with this.",
-    "desc": "Heavy armor, sacrificing mobility for additional effects."
+    "desc": "Leather armor, providing minimal protection for minimal weight."
   },
   {
     "name": "Gambeson",
-    "category": "Hide",
-    "keywords": ["Organic"],
-    "effect": "While wearing this Armor you have +2 _Block_ against _Crush_ _Damage_.",
-    "guard": 2,
-    "abilities": [
-      {
-        "name": "Twist",
-        "category": "Defensive",
-        "type": "Gambit",
-        "cost": "None",
-        "effect": "Gain _Resistance_ to _Crush_ Damage.",
-        "special": "You may use this even if you did not qualify for a _Gambit_ or as an extra _Gambit_ by _Notching_ your _Armor_."
-      }
-    ],
-    "desc": "Thick, quilted armor specialized in defending against crushing strikes."
-  },
-  {
-    "name": "Reinforced Armor",
-    "category": "Layered Armor",
+    "category": "Armor",
     "keywords": ["Organic"],
     "guard": 4,
     "block": 1,
-    "desc": "Additional padding and reinforcements that, while not providing a specific defense, generally improves the efficacy of the armor."
+    "durability": 1,
+    "load": 2,
+    "desc": "Additional padding and reinforcements that, while not providing a specific defense, generally improves the ability of the armor to absorb hits."
+  },
+  {
+    "name": "Flamecraft Robes",
+    "category": "Clothing",
+    "keywords": ["Organic"],
+    "guard": 0,
+    "block": 0,
+    "durability": 1,
+    "load": 2,
+    "desc": "Robes covered in sigils and symbols to enhance their ability to channel flamecraft.",
+    "effect": "While wearing this _Clothing_ you may not wear any other Armor that is not _Organic_, as other elements would disrupt the enchantment.",
+    "abilities": [
+      {
+        "name": "Flame-Proof",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Increase your _Resistance_ to _Flame_ by 1 step. Additionally, if you have flamecraft, gain 1 _Essence_ at _Refresh_."
+      }
+    ]
   },
   {
     "name": "Chain Shirt",
-    "category": "Layered Armor",
+    "category": "Armor",
     "keywords": ["Metal"],
-    "effect": "While wearing this Armor you have 2 _Ward_ (Slash).",
     "block": 1,
+    "durability": 2,
+    "load": 3,
     "abilities": [
       {
-        "name": "Armored Deflection",
+        "name": "Blade-Proof",
         "category": "Defensive",
-        "type": "Reaction",
-        "cost": "1 _Posture_",
-        "keywrods": ["Efficient"],
-        "trigger": "You are hit by a _Slash_ effect.",
-        "effect": "Gain _Resistance_ [_Slash_]. You may choose to use this _Reaction_ at no _Cost_; if you do, roll a d6. On a 3 or lower, lose 1 _Durability_."
+        "type": "Passive",
+        "effect": "Increase your _Resistance_ to _Slash_ and _Stab_ by 1 step."
       }
     ]
   },
@@ -222,8 +203,8 @@
   },
   {
     "name": "Iron Plating",
-    "category": "Outer Armor",
-    "desc": "Heavy plates in strategic places, providing an extra layer of protection.",
+    "category": "Armor",
+    "desc": "Iron plates in strategic places, providing an extra layer of protection against most attacks.",
     "keywords": ["_Moderate Source_ (_Metal_)"],
     "block": 2,
     "guard": 4,

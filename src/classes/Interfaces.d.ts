@@ -145,6 +145,7 @@ declare interface INpcCombatData extends ICombatantData {
 
 declare interface INpcData {
   abilities?: Array<IAbilityData>
+  bars: number
   equipment?: Array<string>
   move: number
   category?: string

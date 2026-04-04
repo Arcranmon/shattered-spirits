@@ -29,6 +29,15 @@
     "effect": "This leather quiver is full of arrows that can be used as _Ammunition_ for a variety of bows. Unless the character has specialized arrows, these are treated as a _Least Source_ (_Metal_, _Wood_)."
   },
   {
+    "name": "Books",
+    "category": "Tool",
+    "desc": "A collection of assorted books that, while not useful to most, scholars can use as reference material.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Uncommon"
+  },
+  {
     "name": "Herbal Remedy",
     "category": "Herb",
     "desc": "Herbs that, when smoked, allow you to relax and unwind.",
@@ -54,7 +63,7 @@
         "category": "Recovery",
         "type": "Maneuver",
         "cost": "None",
-        "effect": "Create an [_Opening_]. If you are an _Earthbound_, this _Round_ you may not be _Suppressed_ and immediately gain 4 _Craft Momentum_. If you are a Windbound, instead gain _Poisoned_ 5. Otherwise, gain _Poisoned_ 1."
+        "effect": "Create an [_Opening_]. If you are an _Earthbound_, this _Round_ you may not be _Suppressed_ and immediately gain 4 _Essence_. If you are a Windbound, instead gain _Poisoned_ 5. Otherwise, gain _Poisoned_ 1."
       }
     ]
   },
@@ -97,6 +106,27 @@
         "range": "1",
         "target": "An _Arena_.",
         "effect": "You scatter metallic caltrops in the Target, creating dangerous terrain that makes the _Arena_ _Rough_. A creature may take 2 [_Stab_] Damage to ignore this effect for a single Move or _Negate_."
+      }
+    ]
+  },
+  {
+    "name": "Flask of Oil",
+    "category": "Grenade",
+    "desc": "A flask of highly flammable oil that can be used to start a fire almost anywhere.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Uncommon",
+    "keywords": ["Quickdraw", "Consumable"],
+    "abilities": [
+      {
+        "name": "Fling",
+        "category": "Utility",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "1",
+        "effect": "Create _Oil_ _Terrain_ somewhere within Range.",
+        "special": "You may attempt to throw this at a specific creature; if you do, Range is instead 0, but the Target must _Negate_ (_Reflex_ 8). If they fail, they increase their _Weakness_ to _Fire_ by 1 step and, the next time they take _Fire_ Damage, they automatically gain _Alight_ 4. If they succeed, instead place _Oil_ in their _Arena_ as normal. Flame Spirits are immune to this effect, and instead gain 5 _Stamina_ or _Guard_ in any combination."
       }
     ]
   },
@@ -166,6 +196,14 @@
     "desc": "Portable smithing supplies that are excellent for field repairs of equipment."
   },
   {
+    "name": "Sewing Tools",
+    "category": "Tool",
+    "load": 1,
+    "durability": 1,
+    "effect": "A set of needles, thread, and assorted scrap that can be used to repair Organic equipment while traveling.",
+    "desc": "Sewing supplies that are excellent for field repairs of equipment."
+  },
+  {
     "name": "Herbalism Tools",
     "category": "Tool",
     "load": 2,
@@ -181,6 +219,16 @@
     "keywords": ["Alcohol"],
     "durability": 1,
     "effect": "You may consume this while resting to automatically clear a _Stress_, but cannot remove the <u>Crash</u> Danger from their Rest Roll if you do so."
+  },
+  {
+    "name": "Burning Ruby",
+    "category": "Charm",
+    "rarity": "Rare",
+    "desc": "A large ruby that contains a flickering flame, providing a powerful source of power to a spirit.",
+    "keywords": ["Quickdraw", "Consumable"],
+    "load": 2,
+    "durability": 1,
+    "effect": "When you would _Manifest_ your spirit at _Respite_, you may choose to _Manifest_ them a _Melee_ _Range_ at no cost. If you do, they have _Advantage_ on all rolls and gain an additional 2 _Momentum_ every _Round_ until they are _Downed_. The Burning Ruby is consumed as a part of this."
   },
   {
     "name": "Polish Kit",
@@ -252,7 +300,18 @@
     "load": 1,
     "durability": 1,
     "desc": "Basic bandages for patching up an injured companion.",
-    "effect": "While not in combat this can be used to remove _Bleeding_."
+    "effect": "While not in combat this can be used to remove _Bleeding_, preventing an injury. Additionally, these may be treated as _Medicine_ for some types of Wounds. After being used for any effect Bandages are unusable but, as a _Camp Action_ when you have fire and water, any number of Bandages can be cleaned.",
+    "abilities": [
+      {
+        "name": "Bandage",
+        "category": "Recovery",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "Melee",
+        "target": "You or an ally within Range.",
+        "effect": "You and the target both create an _Opening_. Reduce their _Bleeding_ by 5."
+      }
+    ]
   },
   {
     "name": "Torch",
@@ -283,7 +342,7 @@
   {
     "name": "Rations",
     "category": "Food",
-    "keywords": ["_Food_ (Poor)"],
+    "keywords": ["_Food_ (Bad)"],
     "load": 1,
     "desc": "Dried food such as tough jerky and hardtack that, while an unpleasant meal, is enough to keep you moving."
   },

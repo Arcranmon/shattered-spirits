@@ -63,6 +63,13 @@ class Status extends Base {
   }
   public get Icon() {
     if (this.Name == 'Error') return ''
+    if (this.Type == 'Minor Wound') return require('@/assets/statuses/Minor Wound.svg')
+    if (this.Type == 'Moderate Wound') return require('@/assets/statuses/Moderate Wound.svg')
+    if (this.Type == 'Major Wound') return require('@/assets/statuses/Major Wound.svg')
+    if (this.Name == 'Exhausted') return require('@/assets/statuses/Fatigue.svg')
+    if (this.Name == 'Starving') return require('@/assets/statuses/Hungry.svg')
+    if (this.Name == 'Dehydrated') return require('@/assets/statuses/Hungry.svg')
+    if (this.Name == 'Extreme Stress') return require('@/assets/statuses/Stress.svg')
     if (this.Name == 'Grappled') return require('@/assets/statuses/Grabbed.svg')
     return require('@/assets/statuses/' + this.Name + '.svg')
   }

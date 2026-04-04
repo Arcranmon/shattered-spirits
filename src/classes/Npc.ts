@@ -75,12 +75,15 @@ class Npc extends Combatant {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Soak() {
-    return 0
-  }
-
   public get Category() {
     return this.npc_data_.category
+  }
+
+  public get HealthBarsText() {
+    return '**_Health Bar Size_:** ' + this.HealthBars
+  }
+  public get HealthBars() {
+    return this.npc_data_.bars || 0
   }
 
   public get Desc() {

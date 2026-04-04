@@ -17,6 +17,7 @@
         <v-col cols="6">
           <display-tooltip-text :string="npc.SizeText + '&nbsp;'" />
           <display-tooltip-text :string="npc.StunText + '&nbsp;'" />
+          <display-tooltip-text :string="npc.HealthBarsText + '&nbsp;'" />
           <display-tooltip-text :string="npc.StaminaText + '&nbsp;'" />
           <display-tooltip-text :string="npc.BlockText + '&nbsp;'" />
         </v-col>

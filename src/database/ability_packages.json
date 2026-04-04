@@ -45,10 +45,10 @@
         "category": "Defensive",
         "type": "Maneuver",
         "keywords": ["Spirit", "Flame"],
-        "cost": "1 _Momentum_",
+        "cost": "1 _Essence_",
         "range": 0,
         "target": "Yourself or a creature within Range.",
-        "effect": "For the rest of the _Round_ that creature gains _Ward_ 1 [_Cold_]."
+        "effect": "Increase the Target's _Resistance_ (_Cold_) by one step for the remainder of the _Round_."
       }
     ]
   },
@@ -66,38 +66,45 @@
         "effect": "You can control flames within a short radius. You may effortlessly quash anything smaller than a bonfire, and can instantly create a campfire-sized flames. With focus you can move flames or cause them to grow in size, and you can sustain a torch-sized flame without fuel and with with minimal effort.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
       {
-        "name": "Ignite",
+        "name": "Spreading Flames",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Flame"],
-        "cost": "1 _Momentum_",
+        "keywords": ["Spirit", "Flame", "Repeatable"],
+        "cost": "1 _Essence_",
         "range": 1,
         "target": "An _Arena_ within Range.",
-        "effect": "Choose one:\n* Choose a _Flammable_ piece of _Terrain_ and immediately make it _Blazing_.\n* Create an _Open Flame_ _Terrain_ in Range.\n* Choose a piece of _Flame_ _Terrain_ within Range. It deals +2 _Fire_ Damage for the remainder of the _Round_."
+        "effect": "Choose one:\n* _Ignite_ a piece of _Flammable_ _Terrain_ within the Target.\n* Choose _Blazing_ _Terrain_ within Range and make it _Roaring_.",
+        "enhancements": [
+          {
+            "name": "Sustaining Blaze",
+            "cost": "1 _Essence_",
+            "effect": "Instead, create a _Blazing_ piece of _Terrain_ within Range. This does not need _Flammable_ _Terrain_."
+          }
+        ]
       },
       {
         "name": "Ember",
         "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Flame", "Fire"],
-        "cost": "2 _Momentum_",
+        "cost": "2 _Essence_",
         "target": "Single-Target",
         "range": "1",
-        "effect": "Attack a Target within Range.",
+        "effect": "Attack a Target within Range. On a _Miss_, _Ignite_ all _Terrain_ the Target is _Occupying_.",
         "chart": {
-          "damage": [0, 2, 4, 7],
+          "damage": [0, 1, 3, 4],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "_Alight_ 1 [_Reflex_]", "_Alight_ 2 [_Reflex_]"]
+          "status": ["None", "_Alight_ 1", "_Alight_ 2", "_Alight_ 3"]
         },
         "enhancements": [
           {
             "name": "Erupting Flame",
-            "cost": "3 _Momentum_",
-            "effect": "Instead, resolve the Attack against all creatures in an _Engagement_."
+            "cost": "3 _Essence_",
+            "effect": "Instead, resolve the Attack against all creatures in an _Engagement_ and _Ignite_ it."
           },
           {
             "name": "Hungry Flame",
-            "cost": "2 _Momentum_",
+            "cost": "2 _Essence_",
             "effect": "Inflict an additional 1 _Alight_ on a _Graze_+. Additionally, on a _Hit_+, if the target has any flammable equipment, you may choose to ignite it as well. The target treats their _Alight_ as 2 higher so long as they are _Wielding_ said equipment. They can remove the effect on the Equipment as if it was _Alight_."
           }
         ]
@@ -136,7 +143,7 @@
         "category": "Utility",
         "type": "Maneuver",
         "keywords": ["Spirit", "Earth"],
-        "cost": "1 _Momentum_",
+        "cost": "1 _Essence_",
         "range": 0,
         "target": "An Arena that is a _Source_ (_Earth_).",
         "effect": "Choose one:\n* Create a _Tripping Hazard_ that is made of _Earth_ in the Target.\n* Remove a piece of _Earthen_ _Terrain_ that is a _Minor Source_ or less in the Target."
@@ -161,14 +168,14 @@
         "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Earth"],
-        "effect": "You have _Bend_ [_Earth_] within Range 1. Additionally, you may use _Brawl_ against all Targets made of _Earth_ or wearing _Earth_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target an _Earth_ piece of _Equipment_."
+        "effect": "You have _Bend_ [_Earth_] within Range 1. Additionally, you may use _Brawl_ against all Targets made of _Earth_ or wearing _Earth_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target an _Earth_ piece of _Equipment_."
       },
       {
         "name": "Compact",
         "category": "Utility",
         "type": "Maneuver",
         "keywords": ["Spirit", "Earth"],
-        "cost": "1 _Momentum_",
+        "cost": "1 _Essence_",
         "reqs": "In an _Source_ (_Earth_) _Arena_.",
         "effect": "Create one of the following, placing all unattended in your Arena:\n*  Four fist-sized stones that count as _Least Source_s.\n*  Two larger stones count as _Minor Source_s.\n*  A small boulder that count as a _Moderate Source_."
       },
@@ -177,7 +184,7 @@
         "category": "Balanced",
         "type": "Attack",
         "keywords": ["Spirit", "Earth", "Crush", "Remote"],
-        "cost": "3 _Momentum_",
+        "cost": "3 _Essence_",
         "range": "1",
         "target": "Single-Target",
         "missile": "An Unattended _Least Source_ (_Earth_) or one _Worn by you/an ally within Range.",
@@ -186,12 +193,12 @@
         "enhancements": [
           {
             "name": "Heavy Stone",
-            "cost": "1 _Momentum_",
+            "cost": "1 _Essence_",
             "effect": "You may instead use a _Minor Source_ (_Earth_) as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
           },
           {
             "name": "Heavier Stone",
-            "cost": "2 _Momentum_",
+            "cost": "2 _Essence_",
             "effect": "You may instead use a _Moderate Source_ (_Earth_) as the _Missile_. If you do, this is instead a _Heavy_ Attack and deal +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, add [_Siege_] and increase the DC to _Negate_ by 1."
           }
         ],
@@ -273,7 +280,7 @@
         "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Lightning", "Wind"],
-        "cost": "2 _Momentum_",
+        "cost": "2 _Essence_",
         "range": "0",
         "target": "Single-Target",
         "effect": "Attack a Target within Range. If the Target is _Wearing_ _Metal_ or is _Wet_, add [_Pierce_ 3].",
@@ -305,14 +312,14 @@
         "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Wood"],
-        "effect": "You have _Bend_ [_Wood_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Wood_ piece of _Equipment_."
+        "effect": "You have _Bend_ [_Wood_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Wood_ piece of _Equipment_."
       },
       {
         "name": "Wooden Splinter",
         "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Wood", "Stab", "Remote"],
-        "cost": "1 _Momentum_",
+        "cost": "1 _Essence_",
         "range": "1",
         "target": "Single-Target",
         "missile": "An Unattended _Least Source_ (_Wood_) item or one _Worn by you/an ally within Range.",
@@ -321,7 +328,7 @@
         "enhancements": [
           {
             "name": "Power Shot",
-            "cost": "1 _Momentum_",
+            "cost": "1 _Essence_",
             "effect": "You may instead use a _Minor Source_ (_Wood_) item as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
           }
         ],
@@ -351,14 +358,14 @@
         "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Metal"],
-        "effect": "You have _Bend_ [_Metal_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
+        "effect": "You have _Bend_ [_Metal_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
       },
       {
         "name": "Metal Shot",
         "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Metal", "Crush", "Remote"],
-        "cost": "2 _Momentum_",
+        "cost": "2 _Essence_",
         "range": "1",
         "target": "Single-Target",
         "missile": "An Unattended _Least Source_ (_Metal_) item or one _Worn by you/an ally within Range.",
@@ -402,12 +409,12 @@
         "imbues": [
           {
             "name": "Honed Edge",
-            "cost": "1 _Momentum_",
+            "cost": "1 _Essence_",
             "effect": "In addition, deal +1 Damage with Attacks using [_Metal_] Equipment."
           },
           {
             "name": "Hardened Hide",
-            "cost": "1 _Momentum_",
+            "cost": "1 _Essence_",
             "effect": "In addition, gain +1 _Block_ if you're wearing [_Metal_] Armor, +1 if you're wearing at least 4 _Slots_ of it."
           }
         ]
@@ -418,7 +425,7 @@
         "type": "Gambit",
         "keywords": ["Spirit", "Metal"],
         "reqs": "Attack used [_Metal_] _Equipment_.",
-        "effect": "Add [_Pierce_] 2 and _Sunder_ [_Reflex_]. If the Target Blocks, you must Target Wielded Equipment if possible. If you successfully _Sunder_, deal 1 _Stun_ to all other creatures you are _Engaged_ with."
+        "effect": "Add [_Pierce_] 2 and _Shatter_ [_Reflex_]. If the Target Blocks, you must Target Wielded Equipment if possible. If you successfully _Shatter_, deal 1 _Stun_ to all other creatures you are _Engaged_ with."
       },
       {
         "name": "Shatter Spears",
@@ -426,7 +433,7 @@
         "type": "Gambit",
         "keywords": ["Spirit", "Metal"],
         "reqs": "_Wielding_ [_Metal_] _Equipment_ or _Wearing_ _Metal_ _Armor_.",
-        "effect": "You have _Advantage_ to _Negate_ against _Sunder_ targeting _Metal_ Equipment this _Turn_ and gain +2 _Block_. If you lose no _Stamina_ from and are not _Sundered_ by the triggering Attack, choose one:\n* _Sunder_ the weapon used for the Attack.\n* Inflict _Exposed_/_Impaired_ [5 _Reflex_] on the Attacker if they are in _Melee_ Range\n* Gain 1 _Block_."
+        "effect": "You have _Advantage_ to _Negate_ against _Shatter_ targeting _Metal_ Equipment this _Turn_ and gain +2 _Block_. If you lose no _Stamina_ from and are not _Shatter_ by the triggering Attack, choose one:\n* _Shatter_ the weapon used for the Attack.\n* Inflict _Exposed_/_Impaired_ [5 _Reflex_] on the Attacker if they are in _Melee_ Range."
       }
     ]
   },
@@ -449,7 +456,7 @@
         "category": "Utility",
         "type": "Passive",
         "keywords": ["Spirit", "Wind"],
-        "effect": "You have _Bend_ [_Wind_] within Range 1. Additionally, you may use the <u>Fling</u> and <u>Toss</u> _Enhancements_ of _Drop_ as if you had _Bend_ within the same Range, so long as they are _Load_ 0 or less and end further from you than they started. Finally, you may use _Brawl_ against all Targets made of _Wind_ within that Range. If you choose the <u>Steal</u> option, you may instead Target any creature within your _Bend_ Range, but must Target a _Load_ 0 piece of _Equipment_ and place it unattended in the _Arena_."
+        "effect": "You have _Bend_ [_Wind_] within Range 1. Additionally, you may use the <u>Fling</u> and <u>Toss</u> _Enhancements_ of _Drop_ as if you had _Bend_ within the same Range, so long as they are _Load_ 0 or less and end further from you than they started. Finally, you may use _Brawl_ against all Targets made of _Wind_ within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature within your _Bend_ Range, but must Target a _Load_ 0 piece of _Equipment_ and place it unattended in the _Arena_."
       },
       {
         "name": "Control Winds",
@@ -458,7 +465,7 @@
         "keywords": ["Spirit", "Wind"],
         "target": "An Arena.",
         "range": "1",
-        "cost": "2 _Momentum_",
+        "cost": "2 _Essence_",
         "effect": "The _Arena_ gains or removes _Gusting_."
       },
       {
@@ -466,15 +473,15 @@
         "category": "Light",
         "type": "Attack",
         "keywords": ["Spirit", "Wind", "Crush"],
-        "cost": "1 _Momentum_",
+        "cost": "1 _Essence_",
         "range": "1",
         "target": "Single-Target",
         "effect": "Attack a target within Range. This Attack ignores any penalties due to _Gusting_ and instead gains a +1 _Bonus_ when targeting creatures in a _Gusting_ _Arena_.",
         "enhancements": [
-          { "name": "Compressed Air", "cost": "2 _Momentum_", "effect": "Deal +_0/2/3/4_ _Stun_ +_0/1/2/3_ Damage." },
+          { "name": "Compressed Air", "cost": "2 _Essence_", "effect": "Deal +_0/2/3/4_ _Stun_ +_0/1/2/3_ Damage." },
           {
             "name": "Forceful Gust",
-            "cost": "1 _Momentum_",
+            "cost": "1 _Essence_",
             "effect": "Instead inflict _Forceful Push_."
           }
         ],
@@ -507,7 +514,7 @@
         "category": "Travel",
         "keywords": ["Spirit", "Wood"],
         "type": "Power",
-        "effect": "Whenever you find interesting plantlife (such as from _Forage_ you may induce growth in nearby plants, forcing some that are near bloom to ripen. Your Spirit gains 1 _Fatigue_, but you gain +1 of whatever you found. If you found no plantlife your GM may still allow you to use this ability to gain a single fruit that counts as _Food_ (Basic)."
+        "effect": "Whenever you find interesting plantlife (such as from _Forage_ you may induce growth in nearby plants, forcing some that are near bloom to ripen. Your Spirit gains 1 _Fatigue_, but you gain +1 of whatever you found. If you found no plantlife your GM may still allow you to use this ability to gain a single fruit that counts as _Food_ (Standard)."
       },
       {
         "name": "Control Growth",
@@ -516,9 +523,9 @@
         "keywords": ["Spirit", "Wood"],
         "target": "An _Overgrown_ Arena or one that is a _Source_ (_Plant_).",
         "range": "1",
-        "cost": "1 _Momentum_",
+        "cost": "1 _Essence_",
         "effect": "Choose one:\n* Create a _Tripping Hazard_ that is made of _Wood_.\n* Remove a piece of _Wood_ _Terrain_ that is a _Minor Source_ or less.",
-        "enhancements": [{ "name": "Wild Growth", "cost": "1 _Momentum_", "effect": "The _Arena_ gains or removes _Overgrown_." }]
+        "enhancements": [{ "name": "Wild Growth", "cost": "1 _Essence_", "effect": "The _Arena_ gains or removes _Overgrown_." }]
       },
       {
         "name": "Ensnare",
@@ -527,9 +534,9 @@
         "keywords": ["Spirit", "Wood"],
         "target": "One creature in a _Source_ (_Plant_).",
         "range": "1",
-        "cost": "2 _Momentum_",
+        "cost": "2 _Essence_",
         "effect": "The Target must _Negate_ [_Grit_/_Reflex_ 8] or gain _Entangled_ 1. If the Target is in an _Overgrown_ _Arena_, increase the _Negate_ DC by 2 or decrease the Cost by 1. _Fire_ Damage also causes the Target to clear _Entangled_ as if it was _Slash_ Damage.",
-        "enhancements": [{ "name": "Massive Growth", "cost": "3 _Momentum_", "effect": "'Instead, the Target is 'All creatures in an _Overgrown_ _Arena_'." }]
+        "enhancements": [{ "name": "Massive Growth", "cost": "3 _Essence_", "effect": "'Instead, the Target is 'All creatures in an _Overgrown_ _Arena_'." }]
       }
     ]
   },
@@ -684,33 +691,39 @@
   },
   {
     "name": "Keeper",
-    "desc": "You are one of your town's keepers, somebody in charge of maintaining the rituals to keep your Guardian satisfied.",
+    "desc": "You are one of your town's keepers, one who is in charge of remembering the tales of those that came before and ensuring they do not fade from memory.",
     "category": "Skill",
     "type": "Talent",
     "abilities": [
       {
-        "name": "Keeper Knowledge",
+        "name": "Keeper Training",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are an expert on the rituals and rites for your home's Guardian, which in turns grants you a wide knowledge of other rituals related to spirits, their behavior, and are adept at reading their attitude. You \n&nbsp;\nWhen your background and skills as a keeper would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You are an expert on the history and significant figures, with an emphasis on your own town. Additionally, you are a skilled orator, and have dozens of engrossing tales you can tell at a moment's notice.\n&nbsp;\nWhen your background and skills as a keeper would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
-        "name": "Spiritual Insight",
-        "category": "Narrative",
+        "name": "Spiritual Insights",
+        "category": "Skill",
         "type": "Power",
-        "effect": "Your time working with your Guardian has given you the ability to quickly assess information about spirits. When you interact with a spirit, you may ask the GM one of the following questions and they will answer truthfully:\n* Approximately how powerful is this spirit?\n* What can I do to placate this spirit?\n* What does this spirit like?\n* What does this spirit dislike?\n\nAdditionally, you always know what (if any) offering a spirit would be receptive to."
+        "effect": "As a keeper, the tales you learn are partially to honor those that came before and partially to ensure the remnant spirits within your town continue to have a tie to it. Due to this, you are adept at assessing spirits, and can easily determine their approximate power level, even if they are attempting to hide it and, if they are a remnant, you can approximate how much longer they have before fully fading away."
       },
       {
-        "name": "Craft Offering",
-        "category": "Crafting",
+        "name": "Memento Mori",
+        "category": "Skill",
         "type": "Power",
-        "effect": "As a _Camp Action_, you may make a single Offering by combining two _Essences_ to make something appealing to the corresponding types of Spirits."
+        "effect": "The remnant spirits within your town treat you in a friendly manner and are inclined to assist you whenever possible. Once per day, while in your hometown, you may gain an _Advantage_ on a _Skill Challenge_ as you call upon a remnan spirit. This power may extend to other towns if you are able to learn a sufficient amount of their history to know the tales of the companions of other remnant spirits."
       },
       {
-        "name": "Ritual Offering",
-        "category": "Travel",
+        "name": "Calligraphy",
+        "category": "Skill",
         "type": "Power",
-        "effect": "While traveling, you may make give an Offering and conduct one of the following rituals:\n* <u>Ritual of Passage:</u> As a _Camp Action_ or while at a shrine you ask the spirits for safe travel and guidance. You and your party gain +1 die on your _Travel Roll_ tomorrow.\n* <u>Ritual of Healing</u>: You call spirits closer, increasing the elemental power nearby. Spirits of the types associated with the offering you use gain +1 die on their _Rest Roll_.\n* <u>Ritual of Safety:</u>: You ask the spirits for aid in hiding or securing your camp; you gain the benefits of the <u>Cover</u> or <u>Secure</u> _Camp Action_."
+        "effect": "You are able to read and write, and specifically have beautiful, easy-to-read handwriting."
+      },
+      {
+        "name": "Campfire Tales",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "At the start of each _Journey_, gain 6 Story Points. As a _Camp Action_, you can tell a tale from your repertoire, choosing one to help your party relax. Spend any number of of your story points; all your human companions may roll a d6 and add the number of Story Points you spent. If they get a 6 or higher, they may clear 1 _Stress_."
       }
     ]
   },

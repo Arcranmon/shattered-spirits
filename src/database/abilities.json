@@ -37,13 +37,16 @@
     "name": "Spiritcraft",
     "category": "Utility",
     "type": "Maneuver",
-    "keywords": ["Spirit", "Final"],
+    "keywords": ["Spirit"],
     "cost": "1 _Momentum_",
-    "prereqs": "Not _Suppressed_.",
-    "effect": "Gain 1 _Craft Momentum_.",
+    "effect": "Gain 1 _Essence_.",
     "enhancements": [
-      { "name": "Hand Signs", "cost": "1 _Momentum_", "effect": "Gain 1 _Craft Momentum_. You must have a _Free Hand_ to use this ability." },
-      { "name": "Focus Energy", "cost": "2 _Momentum_", "effect": "Gain 1 _Craft Momentum_. You may repeat this _Enhancement_." }
+      {
+        "name": "Hand Signs",
+        "cost": "1 _Momentum_",
+        "effect": "Gain 1 _Essence_. You must have a _Free Hand_ to use this ability. Spirits always have a _Free Hand_."
+      },
+      { "name": "Focus Energy", "cost": "2 _Momentum_", "effect": "Gain 1 _Essence_. You may repeat this _Enhancement_." }
     ]
   },
   {
@@ -98,7 +101,7 @@
     "special": "If you are in a Mobility Stance this may instead have a cost of 1 _Momentum_."
   },
   {
-    "name": "Guarder",
+    "name": "Breather",
     "category": "Recovery",
     "type": "Maneuver",
     "cost": "1 _Momentum_",
@@ -168,16 +171,7 @@
     "type": "Gambit",
     "cost": "None",
     "prereqs": "Triggered from a _Versatile_/_Heavy_ Attack.",
-    "effect": "Deal +1 Damage and, if the triggering Attack was _Heavy_, deal +2 _Stun_.Additionally, hoose one:\n* Deal +3 _Stun_ and add _Dazed_ [_Focus_/_Grit_].\n* Add _Sunder_ [_Reflex_]. If the Target _Blocks_, you must Target _Wielded_ Equipment if possible."
-  },
-  {
-    "name": "Sacrifice Armor",
-    "category": "Defensive",
-    "type": "Reaction",
-    "trigger": "You would gain a _Wound_.",
-    "cost": "None",
-    "effect": "Gain _Fatigue_ and reduce the _Durability_ of a _Worn_ piece of _Armor_ by 1. Reduce the severity of the _Wound_ by 1 (i.e. reduce a _Slash_ II _Wound_ to _Slash_ I). If you used a _Parry_ _Reaction_, you may instead reduce the _Durability_ of a _Wielded_ item. You may use this _Reaction_ multiple times against the same Trigger.",
-    "special": "You may use this ability in narrative play when appropriate."
+    "effect": "Deal +1 Damage and, if the triggering Attack was _Heavy_, deal +2 _Stun_. Additionally, choose one:\n* Deal +3 _Stun_ and add _Dazed_ [_Focus_/_Grit_].\n* Add _Shatter_ [_Reflex_]."
   },
   {
     "name": "Return",
@@ -214,7 +208,7 @@
     "cost": "2 _Posture_/_Movement_ (any combination)",
     "keywords": ["Dodge"],
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect.",
+    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect. (Spending any _Movement_ while _Engaged_, including for this ability, creates an [_Opening_])",
     "chart": {
       "status": ["None", "Attack gains -1 Rank", "Attack is a _Graze_ or gains -1 Rank", "Attack is a _Miss_"],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -288,7 +282,7 @@
     "keywords": ["Spirit"],
     "category": "Utility",
     "type": "Maneuver",
-    "cost": "1 _Momentum_",
+    "cost": "1 _Essence_",
     "effect": "_Recall_ your _Spirit_."
   },
   {
@@ -357,7 +351,7 @@
     "cost": "1 _Posture_",
     "keywords": ["Parry"],
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. If the triggering effect triggers _Sunder_, you may choose the Target instead of the attacker.",
+    "effect": "Gain +1 _Grit_. Make a _Defense Roll_ and apply the result. If the triggering effect triggers _Shatter_, you may choose the Target instead of the attacker.",
     "chart": {
       "status": ["+1 _Block_", "+2 _Block_", "+3 _Block_", "+5 _Block_"],
       "roll": ["2-3", "4-5", "6-10", "11-12"],
@@ -387,17 +381,99 @@
     "type": "Reaction",
     "trigger": "None. You may use this _Reaction at any time, but only once per _Round_.",
     "cost": "None",
-    "effect": "Immediately gain 4 _Momentum_ or _Guard_ (in any combination) and 1 _Fatigue_."
+    "effect": "Immediately gain 4 _Momentum_ or _Posture_ (in any combination) and 1 _Fatigue_."
   },
   {
-    "name": "Earthen Reconstitution",
-    "category": "Utility",
-    "keywords": ["Earth", "Pacifist", "Rooted"],
-    "type": "Maneuver",
-    "cost": "1 _Momentum_",
-    "range": "Melee",
-    "prereqs": "Unattended _Earth_ _Equipment_ within range or at _Earth_ _Terrain_.",
-    "effect": "Gain 3 _Vigor_. If triggering this based on _Equipment_, reduce the _Durability_ of said _Equipment_ by 1.",
-    "enhancements": [{ "name": "Enhanced Healing", "cost": "1 _Momentum_", "effect": "Instead, gain 5 _Vigor_ or 3 _Stamina_." }]
+    "name": "Sinker",
+    "category": "General",
+    "type": "Passive",
+    "effect": "You may not _Swim_, and immediately sink if you enter water. You cannot _Drown_, but are _Slowed_. Depending on where you are, you may be able to _Climb_ out of the water."
+  },
+  {
+    "name": "Frost Jack",
+    "category": "General",
+    "type": "Passive",
+    "effect": "If a [_Cold_] effect successfully targets you while _Soaked_ add [_Pierce_ 2] and _Shatter_, _Exposed_ [_Grit_]."
+  },
+  {
+    "name": "Earthen Essence",
+    "category": "General",
+    "type": "Passive",
+    "keywords": ["Earth", "Spirit"],
+    "effect": "If you spend the entire _Round_ within the same _Earthen_ _Arena_ and do not break contact with the ground, gain 1 _Essence_."
+  },
+  {
+    "name": "Aquatic Essence",
+    "category": "General",
+    "type": "Passive",
+    "keywords": ["Water", "Spirit"],
+    "effect": "If you end the _Round_ in an _Arena_ that is a _Major Source_ (_Water_) or in/adjacent to a _Greater Source_ (_Water_), gain 1 _Essence_."
+  },
+  {
+    "name": "Flaming Essence",
+    "category": "General",
+    "type": "Passive",
+    "keywords": ["Flame", "Spirit"],
+    "effect": "If you end the _Round_ in an _Arena_ with _Flame_ _Terrain_ that is at least a _Moderate Source_, gain 1 _Essence_."
+  },
+  {
+    "name": "Flowing Essence",
+    "category": "General",
+    "type": "Passive",
+    "keywords": ["Wind", "Spirit"],
+    "effect": "If you end the _Round_ in an _Arena_ different than the one you started in, gain 1 _Essence_."
+  },
+  {
+    "name": "Metallic Essence",
+    "category": "General",
+    "type": "Passive",
+    "keywords": ["Metal", "Spirit"],
+    "effect": "If you end the _Round_ _Wielding_ at least 2 _Load_ of _Metal_, _Wearing_ at least 6 _Load_ of _Metal_, or in an _Arena_ with a _Major Source_ (_Metal_) gain 1 _Essence_."
+  },
+  {
+    "name": "Wooden Essence",
+    "category": "General",
+    "type": "Passive",
+    "keywords": ["Wood", "Spirit"],
+    "effect": "If you end the _Round_ _Wielding_ at least 2 _Load_ of _Wood_, _Wearing_ at least 6 _Load_ of _Wood_, or in an _Arena_ with a _Major Source_ (_Wood_)  gain 1 _Essence_."
+  },
+  {
+    "name": "Heat Conduction",
+    "keywords": ["Metal", "Spirit"],
+    "category": "Defensive",
+    "type": "Passive",
+    "effect": "You have three states: Heated, Normal, and Chilled.\n* While _Heated_, you are one step _Weaker_ to _Cold_ and _Water_, and adds [_Fire_] to all _Martial_ _Attacks_.\n* While _Chilled_, you are one step _Weaker_  to _Fire_, and adds [_Cold_] to all _Martial_ _Attacks_.\n* Whenever you take _Fire_ Damage, move one step towards Heated. \n* Whenever you take _Cold_ Damage, move one step towards Chilled.\n* Whenever you take _Water_ Damage, move one step towards Chilled but not beyond Normal."
+  },
+  {
+    "name": "Float",
+    "category": "Mobility",
+    "type": "Passive",
+    "effect": "So long as you are not _Restrained_ you may freely become or stop [_Flying_] at the start of the _Round_ and on your _Turn_."
+  },
+  {
+    "name": "Amorphous",
+    "category": "Defensive",
+    "type": "Passive",
+    "effect": "Your body is amorphous, granting you _Advantage_ to _Negate_ or escape _Grappled_, _Entangled_, and _Restrained_."
+  },
+  {
+    "name": "Extra Flammable",
+    "category": "General",
+    "type": "Passive",
+    "effect": "Whenever you take [_Fire_] Damage, gain _Alight_ 1."
+  },
+  {
+    "name": "Regrowth",
+    "category": "Defensive",
+    "keywords": ["Wood", "Spirit"],
+    "type": "Passive",
+    "effect": "Regain 1 _Stamina_ and 2 _Guard_ at _Respite_.",
+    "imbues": [
+      {
+        "name": "Enhanced Growth",
+        "cost": "1 _Essence_",
+        "effect": "Instead, gain 2 _Stamina_ and 5 _Guard_."
+      }
+    ]
   }
 ]

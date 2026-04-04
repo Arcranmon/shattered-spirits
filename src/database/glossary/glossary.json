@@ -12,6 +12,7 @@
     "effect": "When a creature makes an Attack Roll they roll 2d6 and consult the Attack's _Profile_ to determine the effect. On a _Miss_, creatures gain _Momentum_ equal to half of the total cost of the Attack."
   },
   { "see": "Attack Rolls", "name": "Attack Roll" },
+  { "see": "Attack Rolls", "name": "Attack Roll" },
   {
     "name": "Repeatable",
     "effect": "This Ability may be used any number of times on a given Turn."
@@ -20,6 +21,11 @@
     "name": "Bonus",
     "effect": "When an Attack gains Bonus Damage or Guard, distribute it between targets however you wish."
   },
+  {
+    "name": "Ignite",
+    "effect": "Whenever an effect with Ignite targets something with the _Flammable_ keyword it becomes _Blazing_. If an entire _Arena_ is Flammable a single _Engagement_ becomes _Blazing_, but it may spread to the rest of the _Arena_."
+  },
+  { "name": "Ignites", "see": "Ignite" },
   {
     "name": "Fall",
     "effect": "Fall Damage ignores all _Block_, but characters may reduce the Damage dealt by their _Reflex_. If a character takes at least 4 Damage they fall _Prone_."
@@ -102,7 +108,7 @@
   },
   {
     "name": "Fleeting",
-    "effect": "Fleeting Terrains are _Destroyed_ at the end of the current _Round_."
+    "effect": "Fleeting Terrain is _Destroyed_ after _Respite_ at the start of the next _Round_."
   },
   {
     "name": "Rough",
@@ -127,7 +133,7 @@
   },
   {
     "name": "Blood Loss",
-    "effect": "You've lost a significant amount of blood, making you light-headed an limiting your ability to act. This _Wound_ that takes a single space on your Health Bar. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_, take 3 _Guard_ at _Respite_. You may not mark progress on any other _Wound_ until this _Wound_ is healed, but, once per Camp Phase, you may automatically mark a segment on its Clock by eating an additional portion of food."
+    "effect": "You've lost a significant amount of blood, making you light-headed an limiting your ability to act. This _Wound_ 1 sections of your _Health Bar_ and has a 3 Segment Clock to heal. While you have this _Wound_, lose 3 _Guard_ at _Respite_. You may not mark progress on any other _Wound_ until this _Wound_ is healed, but, once per Camp Phase, you may automatically mark a segment on its Clock by eating an additional portion of Food."
   },
   {
     "name": "Bend",
@@ -151,8 +157,8 @@
     "effect": "Reach effects are treated like a _Melee_ effect, regardless of Range."
   },
   {
-    "name": "Craft Momentum",
-    "effect": "Craft Momentum is Momentum that has been channeled into a character's Craft. Unlike normal _Momentum_, Craft Momentum is not lost at _Respite_, and a character and their spirit may both draw from their Craft Momentum. Characters typically gain a small amount of Craft Momentum at _Respite_, but can also gain additional through techniques like _Spiritcraft_."
+    "name": "Essence",
+    "effect": "Essence is used to fuel a character's Craft, and is a representation of their current elemental attunement. Unlike _Momentum_, Essence is not lost at _Respite_, and a character and their spirit share the same pool of Essence. Characters typically gain a small amount of Essence at _Respite_, but can also gain additional through techniques like _Spiritcraft_."
   },
   {
     "name": "Momentum",
@@ -208,11 +214,11 @@
   },
   {
     "name": "Dodge",
-    "effect": "You defend yourself by attempting to get out of the way of an incoming assault.  A creature may only make a single Dodge Reaction each _Phase_."
+    "effect": "You defend yourself by attempting to get out of the way of an incoming assault."
   },
   {
     "name": "Food",
-    "effect": "Characters must eat Food every day or gain _Hunger_. Food has levels of quality, outline below:\n* <u>Nauseating</u>: Characters gain a _Stress_ for eating this.\n* <u>Poor</u>: After eating this, roll a d6. On a 3 or less, gain a _Stress_.\n* <u>Bad</u>: After eating this, roll a d6. On a 1, gain a _Stress_.\n* <u>Passable</u>: Eating this never adds nor removes stress.\n* <u>Basic</u>: After eating this, roll a d6. On a 6, clear a _Stress_.\n* <u>Good</u>: After eating this, roll a d6. On a 4 or higher, clear a _Stress_.\n* <u>Delicious</u>: After eating this, clear a _Stress_."
+    "effect": "Characters must eat Food every day or gain _Hunger_. Food has levels of quality, outline below:\n* <u>Nauseating</u>: Characters gain a _Stress_ for eating this.\n* <u>Bad</u>: After eating this, roll a d6. On a 3 or less, gain a _Stress_.\n* <u>Standard</u>: Eating this never adds nor removes Stress.\n* <u>Good</u>: After eating this, roll a d6. On a 4 or higher, clear a _Stress_.\n* <u>Delicious</u>: After eating this, clear a _Stress_."
   },
   {
     "name": "Soft Cover",
@@ -252,14 +258,6 @@
     "effect": "Short Range effects may target any valid target within an adjacent _Arena_."
   },
   {
-    "name": "Minor Leg Injury",
-    "effect": "One of your legs is injured. Decrease the _Movement_ gained at _Respite_ by 1. Roll one less die whenever your ability to use your legs is important, such as _Travel Rolls_."
-  },
-  {
-    "name": "Major Leg Injury",
-    "effect": "One of your legs is grievously injured. Gain half as much _Movement_ at _Respite_, rounded down, and you may not gain _Movement_ after _Respite_. Additionally, roll two less die whenever your ability to use your legs is important, such as _Travel Rolls_."
-  },
-  {
     "name": "Minor Concussion",
     "effect": "You are concussed, and have a limited ability to react to things. Lose 3 _Guard_ at _Respite_. You may not play the _Observation_ _Augment_, and your GM should provide less information from information granted from Talents than normal."
   },
@@ -269,11 +267,11 @@
   },
   {
     "name": "Minor Arm Injury",
-    "effect": "One of your arms is injured. Decrease the _Momentum_ gained at _Respite_ by 1. Roll one less die whenever your ability to use that arm is important, and take 1 _Stress_ if you do any _Camp_ or _Travel Actions_ that requires your arms."
+    "effect": "One of your arms is injured. This Wound takes up 1 section of your Health Bar and has a 3 segment Clock to heal. While you have this Wound:\n* Decrease the _Momentum_ gained at _Respite_ by 1.\n* Roll one less die whenever your ability to use that arm is important, and take 1 _Stress_ if you do any _Camp_ or _Travel Actions_ that requires both your arms."
   },
   {
     "name": "Major Arm Injury",
-    "effect": "One of your arms is grievously injured. You cannot use one arm. Decrease the _Momentum_ gained at _Respite_ by 2. Roll two less die whenever your ability to use your arm is important, and you cannot take any _Camp_ or _Travel Actions_ that requires both your arms."
+    "effect": "One of your arms is grievously injured. This Wound takes up 2 sections of your Health Bar and has a 5 segment Clock to heal. When healed, replace one section with _Fatigue_ as normal and the other with a _Minor Arm Injury_. While you have this Wound:\n* You cannot use one arm.\n* Decrease the _Momentum_ gained at _Respite_ by 2.\n* Roll two less die whenever your ability to use your arm is important, and you cannot take any _Camp_ or _Travel Actions_ that require both your arms."
   },
   {
     "name": "Fire",
@@ -288,8 +286,12 @@
     "effect": "Damages that pierces, such as arrows, fangs, and spears. If a character is _Downed_ by Stab Damage they suffer the below effects:\n* **6-12**: You take a deep stab that misses vital organs. Mark a 1 section _Wound_. This _Wound_ has a 3 Segment Clock to heal. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 1].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: You take a deep stab that makes it painful to act. Mark a 2 section _Wound_. This _Wound_ has a 4 Segment Clock to heal and, when healed, is replaced by the 1 section _Wound_. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 2].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* **2-**: You take a deep stab makes it painful to move. Mark a 3 section _Wound_. This _Wound_ has a 5 Segment Clock to heal and, when healed, is replaced by the 2 section _Wound_. While you have this _Wound_:\n\t* All Attacks against you gain [_Pierce_ 3].\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ _Injury_.\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Gain 1 less _Momentum_ and _Posture_ at _Respite_.\n\t* Gain a Fatigue at the start of each day after resolving your Rest Roll."
   },
   {
+    "name": "Minor Flesh Wound",
+    "effect": "You have been stabbed or slashed, leaving you with an open wound. This is relatively minor, but can easily open and will almost certainly scar. This _Wound_ takes up 1 section of your _Health Bar_ and has a 3 segment Clock to heal. While you have this _Wound_:\n* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake."
+  },
+  {
     "name": "Slash",
-    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: You take a deep cut. Mark a 1 section _Wound_. This _Wound_ has a 2 Segment Clock to heal. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Whenever undertaking strenuous physical activity, add an automatic _Stress_ stake.\n* **3-5**: One of your limbs takes a deep, debilitating cut. Mark a 2 section _Wound_. This _Wound_ has a 3 Segment Clock to heal and, when healed, is replaced with the 1 section Wound. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Whenever undertaking strenuous physical activity, add an automatic _Fatigue_ stake.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Minor Leg Injury_ or _Minor Arm Injury_ as appropriate.\n* **2-**: One of your limbs is cut to the bone, rendering it powerless. Mark a 3 section _Wound_. This _Wound_ has a 4 Segment Clock to heal and, when healed, is replaced with the 2 section Wound. While you have this _Wound_:\n\t* The first time you take Damage each _Round_ you gain _Bleeding_ 1.\n\t* Whenever undertaking strenuous physical activity, add an automatic _Affliction_ stake that inflicts a single segment of the _Blood Loss_ Injury.\n\t* Determine if an arm, leg, or (if relevant) another limb was injured, suffering a _Major Leg Injury_ or _Major Arm Injury_ as appropriate."
+    "effect": "Damages that rips, slashes, or tears, commonly represented by claws and blades. If a character is _Downed_ by Slash Damage they suffer the below effects:\n* **6-12**: Gain a _Minor Flesh Wound_.\n* **3-5**: Gain a _Minor Flesh Wound_, then randomly determine which of your limbs is damaged, taking a Minor Injury for it (typically a _Minor Leg Injury_ or _Minor Arm Injury_).\n* **2-**:  Gain a _Minor Flesh Wound_, then randomly determine which of your limbs is damaged, taking a Moderate Injury for it (typically a _Moderate Leg Injury_ or _Moderate Arm Injury_)."
   },
   {
     "name": "Medium",
@@ -345,16 +347,40 @@
     "effect": "Temporary bonuses and resources are are lost at the end of the current _Phase_. Temporary bonuses do not count against any caps that a character might have."
   },
   {
+    "name": "Ineffective",
+    "effect": "If an effect is Ineffective, decrease the final roll all Attacks by 1. Additionally, the target gains +2 _Block_ and +1 to _Negate_ against the effect."
+  },
+  {
+    "name": "Repelled",
+    "effect": "If an effect is Repelled, decrease the final Rank of all Attacks by 1. Additionally, the target gains +4 _Block_ and +2 to _Negate_ against the effect."
+  },
+  {
     "name": "Resistance",
-    "effect": "If a creature has Resistance to a Material or damage type, decrease the final Rank of all Attacks by 1."
+    "see": "Weakness and Resistance"
+  },
+  {
+    "name": "Weakness",
+    "see": "Weakness and Resistance"
+  },
+  {
+    "name": "Weaker",
+    "see": "Weakness and Resistance"
+  },
+  {
+    "name": "Weakness and Resistance",
+    "effect": "This represents some resilience or innate resistance to a type or effect. Effects will either be _Super Effective_, _Effective_, _Neutral_, _Ineffective_ or _Repelled_. For each Resistance a creature has, move the effect towards _Repelled_; for each Weakness, move it towards _Super Effective_. Weakness and Resistance cancel each other out at a 1 to 1 rate."
   },
   {
     "name": "Weaponsmith's Blessing",
     "effect": "A Weaponsmith's Blessing reflects gear that has been carefully and dutifully maintained, and can be expended for the following effects:\n* In a Skill Challenge, when the weapon is granting a die, you may gain an additional die.\n* After making an Attack with a Weapon, you may expend the blessing to use a _Gambit_, even if you didn't qualify for one.\n* When a Weapon would lose _Durability_, you may expend the Weaponsmith's Blessing to instead not lose _Durability_."
   },
   {
-    "name": "Weakness",
-    "effect": "If a creature has Weakness to a Material or damage type, increase the final Rank of all Attacks by 1."
+    "name": "Effective",
+    "effect": "If an effect is Effective, increase the final roll of the Attack by 1 and add [_Pierce_ 2]. Additionally, the target gains -1 to _Negate_ against the effect."
+  },
+  {
+    "name": "Super Effective",
+    "effect": "If an effect is Effective, increase the final rank of the Attack by 1 and add [_Pierce_ 4]. Additionally, the target gains -2 to _Negate_ against the effect."
   },
   {
     "name": "Enhancement",

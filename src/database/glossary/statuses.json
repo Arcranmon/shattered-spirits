@@ -1,5 +1,82 @@
 [
   {
+    "name": "Minor Leg Injury",
+    "type": "Minor Wound",
+    "desc": "A minor leg injury that hampers mobility to a small degree, like a rolled ankle.",
+    "effect": "This Wound takes up 1 section of your Health Bar. While you have this Wound:\n* Decrease the _Movement_ gained at _Respite_ by 1.\n* Roll one less die whenever your ability to use your legs is important, such as _Travel Rolls_.",
+    "remove": "This Wound has a 3 segment Clock to heal. When healed, replace it with _Fatigue_."
+  },
+  {
+    "name": "Moderate Leg Injury",
+    "type": "Moderate Wound",
+    "desc": "A leg injury that hampers mobility significantly, typically inflicted from a powerful attack.",
+    "effect": "This Wound takes up 2 sections of your Health Bar. While you have this Wound:\n* Decrease the _Movement_ gained at _Respite_ by 1.\n* You are always _Slowed_, and may not clear it by any means.\n* Take a -1 _Penalty_ to _Reflex_.\n* Add an extra _Fatigue_ stake in _Travel Rolls_.\n* Roll one less die whenever your ability to use your legs is important, such as _Travel Rolls_.",
+    "remove": "This Wound has a 4 segment Clock to heal. When healed, replace this with _Fatigue_ and a _Minor Leg Injury_."
+  },
+  {
+    "name": "Major Leg Injury",
+    "type": "Major Wound",
+    "desc": "One of your legs is grievously injured and barely usable, leaving you limping and immobile.",
+    "effect": " This Wound takes up 3 sections of your Health Bar. While you have this Wound:\n* Decrease the _Movement_ gained at _Respite_ by 2.\n* You are always _Slowed_, and may not clear it by any means.\n* You may not gain _Movement_ after _Respite_.\n* Take a -1 _Penalty_ to _Reflex_, and roll with _Disadvantage_.\n* Add an extra _Fatigue_ stake in _Travel Rolls_.\n* You may not purchase the _Speed_ _Advantage_ except with die granted to you by other characters.\n* Roll two less die whenever your ability to use your legs is important, such as _Travel Rolls_.",
+    "remove": "This Wound has a 5 segment Clock to heal. When healed, replace this with _Fatigue_ and a _Moderate Leg Injury_."
+  },
+  {
+    "name": "Stress",
+    "type": "Affliction",
+    "desc": "The stress and strain of adventuring is taking a toll, impacting your mental state.",
+    "effect": "This Affliction takes up 1 section of your Health Bar, but has no effect on its own.",
+    "remove": "This Affliction may be removed with a variety of items (such as high quality food) and Camp Actions, such as _Vent_."
+  },
+  {
+    "name": "Extreme Stress",
+    "type": "Greater Affliction",
+    "desc": "You are irritable, unfocused, and unable to work as a team.",
+    "effect": "This Affliction takes up none of your Health Bar, and is only inflicted when _Stress_ is replaced. While you have this Affliction:\n* You may not clear _Stress_.\n* You may not aid allies in _Skill Challenges_ and may not aid them.\n* You may not forge _Bonds_.\n* Gain 1 less _Momentum_ at _Respite_.",
+    "remove": "This Affliction has a 3 segment Clock to heal. Any action that would allow you to clear _Stress_ may mark progress on this Clock."
+  },
+  {
+    "name": "Fatigue",
+    "type": "Affliction",
+    "desc": "You are tired, whether from travel, the throes of battle, or just overexerting yourself.",
+    "effect": "This Affliction takes up 1 section of your Health Bar. While you have this Affliction:\n* Lose one _Guard_ at _Respite_.",
+    "remove": "This Affliction may be removed with an _Efficacy_ during a _Rest Roll_."
+  },
+  {
+    "name": "Exhausted",
+    "type": "Greater Affliction",
+    "desc": "You are beyond tired from pushing yourself too hard and struggle to stay awake.",
+    "effect": "This Affliction takes up none of your Health Bar, and is only inflicted when _Fatigue_ is replaced. While you have this Affliction:\n* You may not spend _Efficacy_ from _Rest Rolls_ on anything other than clearing Exhaustion.\n* Lose 2 _Guard_ at _Respite_.",
+    "remove": "This Affliction has a 3 segment Clock to heal. An _Efficacy_ during a _Rest Roll_ fills in a single segment of this Clock."
+  },
+  {
+    "name": "Hungry",
+    "type": "Affliction",
+    "desc": "Your stomach is empty and a constant distraction.",
+    "effect": "This Affliction takes up 1 section of your Health Bar. While you have this Affliction:\n* Lose one _Guard_ at _Respite_.",
+    "remove": "This Affliction may be removed by consuming an extra portion of _Food_ during the _Camp Phase_."
+  },
+  {
+    "name": "Starving",
+    "type": "Greater Affliction",
+    "desc": "You are at the brink of starvation and struggling to stay alive.",
+    "effect": "This Affliction takes up none of your Health Bar, and is only inflicted when _Hungry_ is replaced. While you have this Affliction:\n* Lose two _Guard_ at _Respite_.\n* Eating additional food may not be used for anything other than clearing Starving.",
+    "remove": "This Affliction has a 3 segment Clock to heal. Consuming an extra portion of _Food_ during the _Camp Phase_ clears a segment on this Clock."
+  },
+  {
+    "name": "Thirsty",
+    "type": "Affliction",
+    "desc": "Your mouth is parched, making everything a bit more difficult.",
+    "effect": "This Affliction takes up 1 section of your Health Bar. While you have this Affliction:\n* Lose one _Guard_ at _Respite_.",
+    "remove": "This Affliction may be removed by consuming an extra portion of _Water_ during the _Camp Phase_."
+  },
+  {
+    "name": "Dehydrated",
+    "type": "Greater Affliction",
+    "desc": "You haven't had water long enough that its substantially impacting your health.",
+    "effect": "This Affliction takes up none of your Health Bar, and is only inflicted when _Thirsty_ is replaced. While you have this Affliction:\n* Lose two _Guard_ at _Respite_.\n* Drinking additional water may not be used for anything other than clearing Dehydrated.",
+    "remove": "This Affliction has a 3 segment Clock to heal. Consuming an extra portion of Water during the _Camp Phase_ clears a segment on this Clock."
+  },
+  {
     "name": "Airborne",
     "desc": "A creature knocked into the air and unable to defend themselves.",
     "effect": "An Airborne creature immediately loses their _Position_ and is _Restrained_. Additionally, while Airborne, they gain _Susceptible_ (_Forced Movement_).",
@@ -24,18 +101,19 @@
   {
     "name": "Alight",
     "desc": "An affliction caused when you are on fire.",
-    "effect": "While a creature has Alight they take _Fire_ Damage equal to their Alight value at the end of their _Turn_ and any _Turn_ they take a _Reaction_. This Damage ignores _Block_. Additionally, the creature can be treated as a _Minor Source_ [_Flame_] and has _Resistance_ [_Cold_].",
+    "effect": "While a creature has Alight they take _Fire_ Damage equal to its value at the end of their _Turn_, then increases their Alight value by 1 and _Ignite_ their _Engagement_. This Damage ignores _Block_, unless the target has any level of _Resistance_ to _Fire_. Additionally, the creature can be treated as a _Minor Source_ [_Flame_]. Finally, they increase their [_Cold_] Resistance by 1 step.",
     "repeat": "Alight stacks, and if a creature gains Alight again combine the values.",
     "remove": "When a creature _Recovers_ they may _Negate_ with _Reflex_ and reduce their Alight by half the result. They may choose to drop _Prone_ as a part of this; if they do, they roll with _Advantage_ and instead reduce their Alight by the full value. Additionally, if a creature gains _Soaked_ they clear all Alight.",
-    "type": "Affliction"
+    "special": "Creatures with _Resistance_ (_Fire_) reduces any afflicted Alight by their number of _Resistance_ steps, and automatically clears the same amount of _Alight_ at _Respite_.",
+    "type": "Condition"
   },
   {
     "name": "Bleeding",
-    "desc": "An affliction caused by a generic wound that can cause ongoing damage.",
-    "effect": "While a creature has Bleeding they lose _Stamina_ equal to their Bleeding value at the end of their _Turn_ and any _Turn_ they take a _Reaction_.",
+    "desc": "You are actively bleeding and rapidly losing your ability to fight.",
+    "effect": "While a creature has Bleeding they lose _Stamina_ equal to its value at the end of their _Turn_, and lose _Stamina_ equal to half its value when they take a _Reaction_ on other _Turns_. A character that ends combat Bleeding and has no way to clear it automatically gains a single segment _Blood Loss_ _Wound_.",
     "repeat": "Bleeding stacks, and if a creature gains Bleeding again combine the values.",
-    "remove": "When a creature _Recovers_ they may _Negate_ with _Grit_ and reduce their _Bleed_ by half the result.",
-    "type": "Affliction"
+    "remove": "Only effects that specifically remove Bleeding remove it.",
+    "type": "Condition"
   },
   {
     "name": "Blinded",
@@ -96,8 +174,8 @@
   {
     "name": "Engaged",
     "desc": "A status showing that two creatures are engaged in close combat with one another.",
-    "effect": "While Engaged spending _Movement_ creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all non-_Melee_ Attacks.",
-    "remove": "Characters may spend 1 _Movement_ to remove all instances of _Engaged_, as well as any _Terrain Bonus_ or _Hazard_.",
+    "effect": "While Engaged spending _Movement_ creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all Attacks that do not Target at least one creature they are Engaged with.",
+    "remove": "Characters may spend 1 _Movement_ to remove all instances of Engaged, as well as any _Terrain Bonus_ or _Hazard_.",
     "type": "Condition"
   },
   {
@@ -157,15 +235,15 @@
   {
     "name": "Poisoned",
     "desc": "An affliction caused by toxins ravaging you from the inside out.",
-    "effect": "While a creature is Poisoned they take _Poison_ _Damage_ equal to their Poisoned value at the start of their _Turn_. A creature may reduce this Damage by their _Grit_, instead taking that portion as _Guard_. A character that ends combat Poisoned and has no way to clear it automatically gains a single segment _Poison_ _Wound_.",
+    "effect": "While a creature is Poisoned they take _Poison_ _Damage_ equal to its value at the end of their _Turn_, and take _Poison_ _Damage_ equal to half its value when they take a _Reaction_ on other _Turns_. A creature may reduce this Damage by their _Grit_, instead taking that portion as _Guard_. A character that ends combat Poisoned and has no way to clear it automatically gains a single segment _Poison_ _Wound_.",
     "remove": "Poisoned is only removed by effects that explicitly remove it.",
-    "type": "Affliction"
+    "type": "Condition"
   },
   {
     "name": "Prone",
     "desc": "An effect caused when a foe is knocked flat on their back.",
     "effect": "A Prone creature is _Immobilized_. While Prone, Melee attacks against the target gain Advantage, but Medium and Long Range attacks have Disadvantage.",
-    "remove": "A creature may expend one Movement to end Prone. This creates an _Opening_.",
+    "remove": "A creature may expend one Movement to end Prone.",
     "recover": "When a creature _Recovers_ they may expend one Movement to remove _Prone_ without creating an _Opening_.",
     "type": "Condition"
   },
@@ -179,7 +257,7 @@
   {
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
-    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 3 _Crush_ Damage on them and resolve any collision effect on the Terrain.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you.\n\nIf it was a Forceful Push, you may either choose an above option and inflict 2 _Guard_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you.",
+    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 3 _Crush_ Damage on them and resolve any collision effect on the Terrain.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you.\n\nIf it was a Forceful Push, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you.",
     "type": "Instant Effect"
   },
   {
@@ -191,14 +269,6 @@
   { "name": "Forceful Push", "see": "Push" },
   { "name": "Pushed", "see": "Push" },
   { "name": "Pushes", "see": "Push" },
-  {
-    "name": "Reeling",
-    "desc": "An affliction caused when a creature cannot maintain their block.",
-    "effect": "While a creature has Reeling increase the cost of all _Defensive_ _Reactions_ by 1.",
-    "repeat": "If a Reeling creature would gain Reeling they instead gain 1 _Block_.",
-    "recover": "When a creature _Recovers_ they may remove Reeling.",
-    "type": "Hide"
-  },
   {
     "name": "Restrained",
     "desc": "An effect cause when a creature's ability to move is severely hampered.",
@@ -213,39 +283,12 @@
     "desc": "An affliction caused when one creature gains knowledge on another.",
     "effect": "Creatures may remove a hostile creature's _Studied_ for one of the following effects:\n* Clear _Studied_ at any time to learn the target's current and maximum _Stamina_ and _Block_, their _Defenses_, and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Defend Roll targeting or in response to the Target you may clear Studied to increase the result of a single die roll by 1.",
     "recover": "When a creature _Recovers_ they may remove _Studied_.",
-    "type": "Affliction"
+    "type": "Condition"
   },
   {
-    "name": "Sundered",
-    "effect": "When a creature gains _Sundered_ a piece of _Worn_ or _Wielded_ _Equipment_ or a _Breakable_ _Trait_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Vulnerable_ 1.",
+    "name": "Shatter",
+    "effect": "When a creature gains Shatter a piece of _Worn_ or _Wielded_ _Equipment_ or a _Breakable_ _Trait_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Exposed_ and lose 2 _Guard_.",
     "type": "Instant Effect"
-  },
-  {
-    "name": "Sunder",
-    "see": "Sundered"
-  },
-  {
-    "name": "Suppressed",
-    "desc": "A condition caused when your connection to your spirit is limited.",
-    "effect": "While Suppressed all [_Spirit_] abilities cost an additional 2 _Momentum_ to use.",
-    "recover": "When a creature _Recovers_ they may remove _Suppressed_.",
-    "repeat": "If a Suppressed or _Sealed_ creature would gain Suppressed they instead lose 1 _Craft Momentum_.",
-    "type": "Condition"
-  },
-  {
-    "name": "Sealed",
-    "desc": "A condition caused when your connection to your spirit is severed.",
-    "effect": "While Sealed [_Spirit_] Abilities may not be utilized.",
-    "recover": "When a creature _Recovers_ they may remove _Sealed_ and gain _Suppressed_.",
-    "repeat": "If a Sealed creature would gain Sealed they instead lose 2 _Craft Momentum_.",
-    "type": "Condition"
-  },
-  {
-    "name": "Vulnerable",
-    "desc": "A status that represents an erasure of a character's ability to successfully defend themselves.",
-    "effect": "Creatures take additional Damage equal to their _Vulnerable_ value.",
-    "recover": "When a creature _Recovers_ they may remove 2 Vulnerable.",
-    "type": "Condition"
   },
   {
     "name": "Concentrating",

@@ -38,7 +38,7 @@
         style="padding-left: 0; padding-bottom: 0">
         <h2>{{ selectedTab }}</h2>
         <div
-          v-if="selectedTab == 'Afflictions and Status'"
+          v-if="selectedTab == 'Conditions and Statuses'"
           class="character-tab-content">
           <v-select
             v-model="selectedStatuses"
@@ -51,6 +51,23 @@
           </v-select>
           <show-cards
             :inputs="statuses"
+            :collapse="false"
+            :cols="1" />
+        </div>
+        <div
+          v-if="selectedTab == 'Afflictions and Wounds'"
+          class="character-tab-content">
+          <v-select
+            v-model="selectedAfflictions"
+            :items="afflictionCategories"
+            attach
+            label="Affliction Categories"
+            multiple
+            filled
+            outlined>
+          </v-select>
+          <show-cards
+            :inputs="afflictions"
             :collapse="false"
             :cols="1" />
         </div>
@@ -111,15 +128,31 @@ export default Vue.extend({
     return {
       selectedTab: 'Playing the Game',
       // Add Towns, Downtime, and Player Roles back eventually
-      tabs: ['Playing the Game', 'Narrative', 'Journey', 'Combat', 'Equipment', 'Afflictions and Status', 'Terrain', 'Player Roles', 'Glossary'],
-      text: [GameModes, NarrativeText, TravelText, CombatText, EquipmentText, '', '', PlayerRolesText, ''],
+      tabs: [
+        'Playing the Game',
+        'Narrative',
+        'Journey',
+        'Combat',
+        'Equipment',
+        'Conditions and Statuses',
+        'Afflictions and Wounds',
+        'Terrain',
+        'Player Roles',
+        'Glossary',
+      ],
+      text: [GameModes, NarrativeText, TravelText, CombatText, EquipmentText, '', '', '', PlayerRolesText, ''],
       statusCategories: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       selectedStatuses: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
+      afflictionCategories: ['Affliction', 'Greater Affliction', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
+      selectedAfflictions: ['Affliction', 'Greater Affliction', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
       selectedStatus: null,
       selectedTerrain: null,
     }
   },
   computed: {
+    afflictions: function () {
+      return this.$store.getters.getFilteredStatuses(this.selectedAfflictions).sort((a, b) => (a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0))
+    },
     statuses: function () {
       return this.$store.getters.getFilteredStatuses(this.selectedStatuses).sort((a, b) => (a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0))
     },

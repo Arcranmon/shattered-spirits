@@ -51,7 +51,11 @@ class AbilityPackage extends Base {
     this.setBaseData(data)
     if (data.abilities) {
       for (var ability of data.abilities) {
-        this.abilities_.push(Ability.Deserialize(ability))
+        if (!ability.type && !ability.category) {
+          this.abilities_.push(store.getters.getAbility(ability.name))
+        } else {
+          this.abilities_.push(Ability.Deserialize(ability))
+        }
       }
     }
     this.prereqs_ = data.prereqs || ''

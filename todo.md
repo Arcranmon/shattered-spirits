@@ -1,25 +1,20 @@
+## Elemental Niches
+
+- Earth (Mountain)
+  - Simple high-damage attacks, lots of Stun
+  - Siege
+  - Require bigger rocks for more damage, which they have to make
+- Wind (Gale)
+  - Push, low damage, lots of Stun
+  - Really cheap way to Push at range
+  - Rely on other terrain to really enable them to hit hard, but air is everywhere
+- Fire (Blaze)
+  - Low initial damage, but a lot of their attacks apply Alight
+  - Big DoT class, later abilities will have ways to detonate fire for additional effects
+
 ## To-Do
 
-- Rework things so that at the start of each Phase you choose your Stance
-  - One action per Round (in each Phase, Players->Enemies)
-  - Stances should all have the following (even if the value is 0):
-    - How much Block they grant
-    - Their Speed
-    - Their bonuses to Grit/Focus/Reflex
-    - How much Guard you clear at the start of the Phase
-    - Additional Momentum count
-- Make Interacts a more intrinsic part of the system
-  - Roll 1d6 for a single die + tags
-- Add a general support/social interact you can use to buff allies or taunt enemies
-
-### Brainstorming
-
-- Make Encumbrance instead grant Movement per phase? Instead of an open pool?
-- Can only use a given ability (including a Weapon) once per phase?
-  - How to handle 'juggling'
-- Better grabbing mechanics
-  - Riding vs. Grappling
-  - Binding effects
+-
 
 ### Plan
 
@@ -39,7 +34,7 @@ POTENTIAL REFACTORS
   - Instead of Arts/Disciplines Major/Minor Disciplines?
 - Stance passives may need to be more impactful to enable stance dancing
 - Basic stuff to moved out:
-  - Hide, Raise Block, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Sunder, Basic Flourish, Basic Feint
+  - Hide, Raise Block, Tumble, Flank, Engage, Dodge (?), Aim, Mark, Basic Shatter, Basic Flourish, Basic Feint
   - Examples:
   - Most Gambits go to Art stuff
 

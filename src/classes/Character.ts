@@ -82,10 +82,21 @@ class Character extends Combatant {
     return ''
   }
 
+  public get ElementAbility() {
+    if (this.Element === 'Earth') return 'Earthen Essence'
+    if (this.Element === 'Water') return 'Aquatic Essence'
+    if (this.Element === 'Flame') return 'Flaming Essence'
+    if (this.Element === 'Wind') return 'Flowing Essence'
+    if (this.Element === 'Metal') return 'Metallic Essence'
+    if (this.Element === 'Wood') return 'Wooden Essence'
+    return ''
+  }
+
   public get Abilities() {
     var abilities = store.getters.basicAbilities
     abilities = abilities.concat(store.getters.playerAbilities)
     abilities = abilities.concat(this.LoadAbilities)
+    abilities = abilities.concat(this.ElementAbility)
 
     return store.getters.getAbilitiesFromList(abilities)
   }

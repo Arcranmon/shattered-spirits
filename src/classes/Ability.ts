@@ -43,6 +43,19 @@ class Ability extends Base {
   // ==========================================================
   // GETTERS
   // ==========================================================
+  // This is an approximation, definitely not perfect
+  public get TextLength() {
+    return (
+      this.Effect.length +
+      this.Special.length +
+      this.Trigger.length +
+      this.Enhancements.length +
+      this.Cost.length +
+      this.Range.length +
+      (this.HasChart ? 500 : 0)
+    )
+  }
+
   public get Area() {
     return this.area_
   }
