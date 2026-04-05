@@ -54,7 +54,18 @@ const kPlayerAbilities = [
 
 const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Accelerate', 'Spiritcraft', 'Drop', 'Equip', 'Spiritbound', 'Delay']
 
-const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
+const kBasicAbilities = [
+  'Brawl',
+  'Improvised Attack',
+  'Deflect',
+  'Breather',
+  'Disengage',
+  'Opportunity Attack',
+  'Lethal Strike',
+  'Evade',
+  'Interact',
+  'Empower',
+]
 
 @Module({
   name: 'databaseJson',
