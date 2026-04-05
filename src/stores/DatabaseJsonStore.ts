@@ -2,7 +2,6 @@ import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import EquipmentJson from '@/database/items/equipment.json'
 import Stances from '@/database/stances.json'
-import SpiritTraitsJson from '@/database/spirit_traits.json'
 import TraitsJson from '@/database/traits.json'
 
 import AbilityPackageJson from '@/database/ability_packages.json'
