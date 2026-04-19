@@ -82,6 +82,8 @@ import JohnText from '@/database/text_files/sample_characters/john.txt'
 import JohnStats from '@/database/sample_characters/john.json'
 import MargaretText from '@/database/text_files/sample_characters/margaret.txt'
 import MargaretStats from '@/database/sample_characters/margaret.json'
+import MarlonText from '@/database/text_files/sample_characters/marlon.txt'
+import MarlonStats from '@/database/sample_characters/marlon.json'
 import ErikaText from '@/database/text_files/sample_characters/erika.txt'
 import ErikaStats from '@/database/sample_characters/erika.json'
 import WinonaText from '@/database/text_files/sample_characters/winona.txt'
@@ -116,6 +118,7 @@ export default Vue.extend({
         [ErikaText, Character.Deserialize(ErikaStats)],
         [JohnText, Character.Deserialize(JohnStats)],
         [MargaretText, Character.Deserialize(MargaretStats)],
+        [MarlonText, Character.Deserialize(MarlonStats)],
         [WinonaText, Character.Deserialize(WinonaStats)],
       ],
     }

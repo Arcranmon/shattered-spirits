@@ -15,6 +15,7 @@ declare interface IEnhanceData {
   name: string
   cost: string
   effect: string
+  reactive?: boolean
 }
 
 declare interface IArchetypeData extends IBaseData {
@@ -32,6 +33,7 @@ declare interface IBonusesData {
   grit?: number
   stamina?: number
   guard?: number
+  block?: number
   reflex?: number
   move?: number
   speed?: number
@@ -156,7 +158,7 @@ declare interface INpcData {
   name: string
   npc_type: string
   role: string
-  size: string
+  size: number
   defenses: IDefenseData
   stances?: Array<IStanceData>
   traits?: Array<string>
@@ -178,6 +180,7 @@ declare interface IAbilityData extends IBaseData {
   speed?: number
   target?: string
   material?: string
+  damage_type?: string
   chart?: IChartData
   bonuses?: IBonusesData
 }

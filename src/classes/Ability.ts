@@ -22,6 +22,8 @@ class Ability extends Base {
   protected origin_: AbilityPackage
   protected chart_: Chart
   protected bonuses_: Bonuses
+  protected material_: string
+  protected damage_type_: string
 
   public constructor(name) {
     super(name)
@@ -116,6 +118,7 @@ class Ability extends Base {
   // ==========================================================
   // UTILITY
   // ==========================================================
+
   public get HasArea() {
     return this.Area != ''
   }
@@ -133,8 +136,9 @@ class Ability extends Base {
   }
   public get EnhancementsHeader() {
     var text = '**_Enhancements_:** '
+    var reactiveString = ' _[R]_'
     for (var enhance of this.enhancements_) {
-      text += '\n * **' + enhance.name + ' - ' + enhance.cost + ':** ' + enhance.effect
+      text += '\n * **' + enhance.name + (enhance.reactive ? reactiveString : '') + ' - ' + enhance.cost + ':** ' + enhance.effect
     }
     return text
   }
@@ -170,16 +174,28 @@ class Ability extends Base {
     return '**_Move_:** _' + this.Move + '_'
   }
   public get HasRangeOrTarget() {
-    return this.HasRange || this.HasTarget
+    return this.HasRange || this.HasTarget || this.material_.length > 0 || this.damage_type_.length > 0
   }
   public get HasRange() {
     return this.range_.length > 0
   }
   get RangeOrTargetHeader() {
     var header = ''
+    var hasMaterial = this.material_.length > 0
+    var hasDamageType = this.damage_type_.length > 0
     if (this.HasRange) header += '**Range:** _' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
     if (this.HasRange && this.HasTarget) header += '; '
     if (this.HasTarget) header += this.TargetHeader
+    if (hasMaterial && (this.HasRange || this.HasTarget)) header += '; '
+    if (hasMaterial) {
+      header += '**Material:** _' + this.material_ + '_'
+    }
+    if (hasMaterial && hasDamageType) {
+      header += '; '
+    }
+    if (hasDamageType) {
+      header += '**Damage:** _' + this.damage_type_ + '_'
+    }
     return header
   }
   get RangeHeader() {
@@ -248,6 +264,8 @@ class Ability extends Base {
     this.trigger_ = data.trigger || ''
     this.range_ = data.range || ''
     this.bonuses_ = 'bonuses' in data ? Bonuses.Deserialize(data.bonuses) : new Bonuses()
+    this.material_ = data.material || ''
+    this.damage_type_ = data.damage_type || ''
     if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
   }
 }

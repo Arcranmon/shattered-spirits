@@ -47,7 +47,7 @@ class Character extends Combatant {
   // COMBATANT OVERRIDES
   // ==========================================================
   override get Size() {
-    return '1'
+    return 2
   }
 
   override get Block() {

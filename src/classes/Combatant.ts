@@ -53,7 +53,7 @@ class Combatant {
   }
 
   get Size() {
-    return '0'
+    return 0
   }
 
   get Traits() {

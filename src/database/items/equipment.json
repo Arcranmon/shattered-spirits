@@ -26,7 +26,7 @@
     "hands": 1,
     "durability": 1,
     "rarity": "Common",
-    "effect": "This leather quiver is full of arrows that can be used as _Ammunition_ for a variety of bows. Unless the character has specialized arrows, these are treated as a _Least Source_ (_Metal_, _Wood_)."
+    "effect": "This leather quiver is full of arrows that can be used as _Ammunition_ for a variety of bows. Unless the character has specialized arrows, these are treated as a _Least Source_ (_Metal_, _Wood_) and applicable attacks use _Metal_ as the _Material_."
   },
   {
     "name": "Books",
@@ -166,7 +166,7 @@
       {
         "name": "Fling",
         "category": "Light",
-        "keywords": ["Crush"],
+        "damage_type": "Crush",
         "type": "Attack",
         "cost": "1 _Momentum_",
         "range": "1",
@@ -175,6 +175,32 @@
           "damage": [0, 0, 1, 2],
           "stun": [0, 2, 4, 6],
           "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_, _Dazed_"]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Firestone",
+    "category": "Grenade",
+    "desc": "A fragile crystal that, when shattered, unleashes a powerful, burning explosion.",
+    "effect": "This stone, when hit with sufficient force, detonates violently, burning those nearby and igniting objects.",
+    "load": 1,
+    "hands": 1,
+    "durability": 1,
+    "rarity": "Common",
+    "keywords": ["Quickdraw", "Consumable"],
+    "abilities": [
+      {
+        "name": "Fling",
+        "category": "Light",
+        "damage_type": "Fire",
+        "type": "Attack",
+        "cost": "1 _Momentum_",
+        "range": "1",
+        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [8 _Reflex_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.\n\nAdditionally, _Ignite_ their _Engagement_.",
+        "chart": {
+          "damage": [0, 2, 4, 6],
+          "status": ["None", "None", "_Alight_ 1", "_Alight_ 2"]
         }
       }
     ]
@@ -204,12 +230,35 @@
     "desc": "Sewing supplies that are excellent for field repairs of equipment."
   },
   {
+    "name": "Mechanic Tools",
+    "category": "Tool",
+    "load": 2,
+    "durability": 1,
+    "effect": "A set of picks, small tools, and other equipment useful for working with fine machinery commonly found in the Underworld.",
+    "desc": "Tools used for dealing with the mechanical bits of the Underworld."
+  },
+  {
     "name": "Herbalism Tools",
     "category": "Tool",
     "load": 2,
     "durability": 1,
     "effect": "A set of simple herbalism tools that can be used to prepare herbs. It includes a mortar and pestle, a few basic alchemical reagents, and tools for harvesting and preserving herbs.",
     "desc": "Portable herbalism tools that can be used to create basic remedies and tonics."
+  },
+  {
+    "name": "Fishing Rod",
+    "category": "Camp Item",
+    "desc": "A basic fishing rod useful for rummaging food while traveling.",
+    "load": 2,
+    "durability": 1,
+    "abilities": [
+      {
+        "name": "Fish",
+        "category": "Camp",
+        "type": "Power",
+        "effect": "Whenever you make camp, you may choose to set your fishing line and roll on the applicable **Fishing Chart** at _Disadvantage. If you use your _Camp Action_ you instead have _Advantage_ on this roll."
+      }
+    ]
   },
   {
     "name": "Wine",
@@ -229,6 +278,34 @@
     "load": 2,
     "durability": 1,
     "effect": "When you would _Manifest_ your spirit at _Respite_, you may choose to _Manifest_ them a _Melee_ _Range_ at no cost. If you do, they have _Advantage_ on all rolls and gain an additional 2 _Momentum_ every _Round_ until they are _Downed_. The Burning Ruby is consumed as a part of this."
+  },
+  {
+    "name": "Smokestick",
+    "category": "Grenade",
+    "rarity": "Common",
+    "desc": "A stout stick that, when struck, continues to produce smoke for an extended period of time.",
+    "keywords": ["Quickdraw", "Consumable"],
+    "load": 1,
+    "durability": 1,
+    "effect": "This may be used to create a smokescreen that lasts approximately half an hour, obscuring vision within a short distance.",
+    "abilities": [
+      {
+        "name": "Light",
+        "category": "Utility",
+        "type": "Maneuver",
+        "cost": "1 _Momentum_",
+        "range": "1",
+        "effect": "Choose an _Arena_ within Range, then fling this item there. It immediately becomes _Veiled_, and re-applies _Veiled_ at the start of each _Round_. Stop the effect if the Smokestick becomes wet (either from a _Water_ effect, gaining _Soaked_, or similar) or is damaged by a non-_Fire_ Attack."
+      }
+    ]
+  },
+  {
+    "name": "Grappling Hook",
+    "category": "Tool",
+    "desc": "A metal hook that, when properly secured and with the help of a rope, can be used to climb sheer surfaces.",
+    "load": 1,
+    "durability": 1,
+    "effect": "This may be used to assist in climbing surfaces when coupled with a rope."
   },
   {
     "name": "Polish Kit",
@@ -324,10 +401,10 @@
     "name": "Spices",
     "category": "Luxury",
     "keywords": ["_Stack_ (4)"],
-    "rarity": "Uncommon",
+    "rarity": "Rare",
     "load": 1,
     "desc": "A variety of cooking spices that can be used to improve the quality of food.",
-    "effect": "While taking the <u>Cook</u> _Camp Action_ you can use spices to improve the quality of _Food_ by 1, up to a maximum of Good. One use of this is enough for a day's worth of food."
+    "effect": "While taking the <u>Cook</u> _Camp Action_ you can use spices to improve the quality of _Food_ by 1, up to a maximum of Good. One use of this is enough for a single portion of food."
   },
   {
     "name": "Salt",

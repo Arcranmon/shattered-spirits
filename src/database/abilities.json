@@ -37,7 +37,7 @@
     "name": "Spiritcraft",
     "category": "Utility",
     "type": "Maneuver",
-    "keywords": ["Spirit"],
+    "keywords": ["Spirit", "Instinctive"],
     "cost": "1 _Momentum_",
     "effect": "Gain 1 _Essence_.",
     "enhancements": [
@@ -315,10 +315,12 @@
     "type": "Attack",
     "cost": "1 _Momentum_",
     "keywords": ["Martial"],
+    "material": "Special",
+    "damage_type": "Special",
     "range": "Melee/1 (_Thrown_)",
     "target": "Single-Target",
     "prereqs": "_Wielding_ a 1 _Load_ or less item.",
-    "effect": "Attack a Target within Range, using a _Wielded_ item. Add the most appropriate keywords for damage type  ([_Crush_] if unclear) and material based on the _Wielded_ item. If the item is 0 _Load_, add [_Glancing_].",
+    "effect": "Attack a Target within Range, using a _Wielded_ item. Use the most appropriate  damage type  (_Crush_ if unclear) and material based on the _Wielded_ item. If the item is 0 _Load_, add [_Glancing_].",
     "enhancements": [
       {
         "name": "Medium Improvised Attack",
@@ -338,9 +340,11 @@
   },
   {
     "name": "Brawl",
-    "keywords": ["Martial", "Crush"],
+    "keywords": ["Martial"],
     "category": "Light",
     "type": "Attack",
+    "material": "Natural",
+    "damage_type": "Crush",
     "cost": "1 _Momentum_",
     "range": "Melee",
     "target": "Single-Target",
@@ -470,6 +474,12 @@
     "effect": "Whenever you take [_Fire_] Damage, gain _Alight_ 1."
   },
   {
+    "name": "Freezable",
+    "category": "General",
+    "type": "Passive",
+    "effect": "Whenever you take [_Cold_] Damage, gain _Frost_ 1."
+  },
+  {
     "name": "Regrowth",
     "category": "Defensive",
     "keywords": ["Wood", "Spirit"],
@@ -482,5 +492,11 @@
         "effect": "Instead, gain 2 _Stamina_ and 5 _Guard_."
       }
     ]
+  },
+  {
+    "name": "Swimmer",
+    "category": "Mobility",
+    "type": "Passive",
+    "effect": "You take none of the normal penalties from _Swimming_."
   }
 ]

@@ -194,6 +194,9 @@
       <div v-if="ability.HasMissile">
         <display-tooltip-text :string="ability.MissileHeader" />
       </div>
+      <div v-if="ability.ShouldDisplayMaterialDamageHeader">
+        <display-tooltip-text :string="ability.MaterialDamageTypeHeader" />
+      </div>
       <div v-if="ability.HasEffect">
         <display-tooltip-text :string="ability.EffectHeader" />
       </div>

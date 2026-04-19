@@ -10,6 +10,7 @@ class Bonuses {
   private load_: number
   private speed_: number
   private block_: number
+  private guard_: number
   private equipment_: string[]
 
   // ==========================================================
@@ -24,6 +25,7 @@ class Bonuses {
     this.move_ = 0
     this.load_ = 0
     this.speed_ = 0
+    this.guard_ = 0
     this.equipment_ = []
   }
 
@@ -50,6 +52,8 @@ class Bonuses {
     this.move_ += other.move_
     this.load_ += other.load_
     this.speed_ += other.speed_
+    this.block_ += other.block_
+    this.guard_ += other.guard_
     this.equipment_ = [...this.equipment_, ...other.Equipment]
   }
 
@@ -85,8 +89,12 @@ class Bonuses {
     return this.stamina_
   }
 
-  public get Guard() {
+  public get Block() {
     return this.block_
+  }
+
+  public get Guard() {
+    return this.guard_
   }
 
   // ==========================================================
@@ -102,6 +110,8 @@ class Bonuses {
     this.focus_ = data.focus || 0
     this.grit_ = data.grit || 0
     this.stamina_ = data.stamina || 0
+    this.block_ = data.block || 0
+    this.guard_ = data.guard || 0
     this.reflex_ = data.reflex || 0
     this.move_ = data.move || 0
     this.load_ = data.load || 0

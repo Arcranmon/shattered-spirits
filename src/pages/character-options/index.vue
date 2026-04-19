@@ -99,73 +99,7 @@
             :cols="1" />
         </div>
 
-        <div v-if="selectedTab == 'Disciplines'">
-          <v-tabs
-            v-model="abilityTab"
-            class="character-tabs"
-            dark
-            color="black"
-            centered>
-            <v-tab>
-              <h4>Earth</h4>
-            </v-tab>
-            <v-tab>
-              <h4>Flame</h4>
-            </v-tab>
-            <v-tab>
-              <h4>Metal</h4>
-            </v-tab>
-            <v-tab>
-              <h4>Water</h4>
-            </v-tab>
-            <v-tab>
-              <h4>Wind</h4>
-            </v-tab>
-            <v-tab>
-              <h4>Wood</h4>
-            </v-tab>
-          </v-tabs>
-          <v-tabs-items
-            v-model="abilityTab"
-            class="character-tab-content">
-            <v-tab-item>
-              <show-cards
-                :inputs="earthDisciplines"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards
-                :inputs="flameDisciplines"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards
-                :inputs="metalDisciplines"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards
-                :inputs="waterDisciplines"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards
-                :inputs="windDisciplines"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-            <v-tab-item>
-              <show-cards
-                :inputs="woodDisciplines"
-                :collapse="false"
-                :cols="1" />
-            </v-tab-item>
-          </v-tabs-items>
-        </div>
+        <div v-if="selectedTab == 'Disciplines'"><elemental-disciplines /></div>
         <div
           class="character-tab-content"
           v-if="selectedTab == 'Talents'"
@@ -371,15 +305,14 @@ import ShowCards from '@/components/cards/ShowCards.vue'
 import AbilityWidget from '@/components/AbilityWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
+import ElementalDisciplines from '@/components/ElementalDisciplines.vue'
 
 export default Vue.extend({
   name: 'character-options',
-  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities },
+  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalDisciplines },
   data() {
     return {
       selectedTab: 'Basic Skills',
-      selectedElement: 'Earth',
-      elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
       tabs: [
         'Basic Skills',
         'Archetypes',
@@ -408,7 +341,6 @@ export default Vue.extend({
       weaponTypes: ['Any', 'Light', 'Balanced', 'Heavy'],
       selectedType: 'Any',
       abilityTab: 0,
-      elementTab: 0,
       character: new Character(),
     }
   },
@@ -422,24 +354,6 @@ export default Vue.extend({
     },
     archetypes: function () {
       return this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    earthDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Earth').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    flameDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Flame').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    metalDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Metal').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    waterDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Water').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    windDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Wind').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    woodDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Wood').sort((a, b) => a.Name.localeCompare(b.Name))
     },
     talents: function () {
       return this.$store.getters.getTalents().sort((a, b) => a.Name.localeCompare(b.Name))

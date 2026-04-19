@@ -33,6 +33,7 @@ class Spirit extends Combatant {
   }
 
   override get MaxStun() {
+    console.log(this.name_)
     var guard = this.spirit_type_.Guard + this.combinedBonuses_.Guard
     for (var item of this.combinedBonuses_.Equipment) {
       if (store.getters.isArmor(item)) {
@@ -109,6 +110,10 @@ class Spirit extends Combatant {
   }
   set Name(name) {
     this.name_ = name
+  }
+
+  get Size() {
+    return 1
   }
 
   get GrowthPoints() {
@@ -214,8 +219,8 @@ class Spirit extends Combatant {
     this.name_ = data.name || ''
     this.weapons_ = data.weapons || []
     if ('current_stance' in data) this.current_stance_ = store.getters.getStance(data.current_stance)
-    this.setCombatantData(data)
     this.setBonuses()
+    this.setCombatantData(data)
   }
 }
 export default Spirit

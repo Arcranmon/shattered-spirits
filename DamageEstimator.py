@@ -12,6 +12,7 @@ momentum_value = 2
 status_multipliers = {
     "Bleeding": 2,
     "Alight": 1,
+    "Soaked": 0.5,
     "Exposed": 1.5,
     "Impaired": 1.5,
     "Dazed": 2,
@@ -167,7 +168,7 @@ def estimate_damage(attack, glancing, print_stats):
     lvh = 'none'
     attack_category = ATTACK
     override_range = ""
-    stun_scale = 0.9 # Guard is worth less (not sure how much)
+    stun_scale = 0.75 # Guard is worth less (not sure how much)
 
     cost += int(attack.get("cost", "0")[0])
                     
@@ -201,9 +202,7 @@ def estimate_damage(attack, glancing, print_stats):
         if("bonus_damage" in analysis_notes):
             if(isinstance(analysis_notes["bonus_damage"], float) or isinstance(analysis_notes["bonus_damage"], int)):
                 bonus_damage = [analysis_notes["bonus_damage"]]*11
-                print(bonus_damage)
             else:
-                print("test")
                 bonus_damage = analysis_notes["bonus_damage"]
         override_range = analysis_notes.get("range", "")
 
@@ -263,7 +262,6 @@ def estimate_damage(attack, glancing, print_stats):
         straight_damage += straight[roll_index]*damage
         advantage_damage += advantage[roll_index]*damage
         disadvantage_damage += disadvantage[roll_index]*damage
-        print(damage)
         est_damage[index] = damage
         
 

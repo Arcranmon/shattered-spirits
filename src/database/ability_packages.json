@@ -7,7 +7,7 @@
     "abilities": [
       {
         "name": "Earthsense",
-        "keywords": ["Spirit", "Earth"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can sense the approximate location of nearby earth and stone, although other elements (especially an airgap) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       }
@@ -21,7 +21,7 @@
     "abilities": [
       {
         "name": "Flamesense",
-        "keywords": ["Spirit", "Flame"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can sense the approximate location of nearby fire and flammable objects, although other elements (especially water) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       }
@@ -36,7 +36,7 @@
       {
         "name": "Furnacecraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Flame"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can directly manipulate heat, allowing you to raise the temperature of objects and air by a small amount. This functions easier on objects that conduct heat well.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
@@ -44,7 +44,7 @@
         "name": "Heat Shield",
         "category": "Defensive",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Flame"],
+        "keywords": ["Spirit"],
         "cost": "1 _Essence_",
         "range": 0,
         "target": "Yourself or a creature within Range.",
@@ -61,7 +61,7 @@
       {
         "name": "Blazecraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Flame"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can control flames within a short radius. You may effortlessly quash anything smaller than a bonfire, and can instantly create a campfire-sized flames. With focus you can move flames or cause them to grow in size, and you can sustain a torch-sized flame without fuel and with with minimal effort.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
@@ -69,7 +69,7 @@
         "name": "Spreading Flames",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Flame", "Repeatable"],
+        "keywords": ["Spirit", "Repeatable"],
         "cost": "1 _Essence_",
         "range": 1,
         "target": "An _Arena_ within Range.",
@@ -86,7 +86,8 @@
         "name": "Ember",
         "category": "Light",
         "type": "Attack",
-        "keywords": ["Spirit", "Flame", "Fire"],
+        "keywords": ["Spirit"],
+        "damage_type": "Fire",
         "cost": "2 _Essence_",
         "target": "Single-Target",
         "range": "1",
@@ -119,7 +120,7 @@
     "abilities": [
       {
         "name": "Watersense",
-        "keywords": ["Spirit", "Water"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can sense the approximate location of nearby water, although other elements (especially extreme heat or fire) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       }
@@ -134,7 +135,7 @@
       {
         "name": "Frostcraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Water"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You may clumsily move and control a single nearby ice object that you could hold in one hand. Additionally, you can chill or freeze a small amount of water.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
@@ -142,18 +143,97 @@
         "name": "Icebending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit", "Water"],
+        "keywords": ["Spirit"],
         "effect": "You have _Bend_ [_Ice_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Ice_ or wearing _Ice_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Ice_ piece of _Equipment_."
       },
       {
         "name": "Frozen Sheet",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Water"],
+        "keywords": ["Spirit"],
         "cost": "1 _Essence_",
         "range": 0,
         "target": "_Wet_ _Terrain_.",
         "effect": "Replace a single _Engagement_ of _Wet_ _Terrain_ with _Icy_ _Terrain_."
+      }
+    ]
+  },
+  {
+    "name": "Novice Tidecraft",
+    "category": "Water",
+    "type": "Discipline",
+    "desc": "You have honed your ability to control water, pushing it and pulling it much like the tides do.",
+    "abilities": [
+      {
+        "name": "Tidecraft",
+        "category": "Spiritcraft",
+        "keywords": ["Spirit"],
+        "type": "Skill",
+        "effect": "You can control water. You may control nearby water, and can easily form it into different shapes. You may control approximately a tub's worth of water at a time, although it does not need to all be a single mass.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
+      },
+      {
+        "name": "Friendly Current",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Gain +1 to _Negate_ all effects that use _Water_ as the Material.",
+        "imbues": [
+          {
+            "name": "Carrying Current",
+            "cost": "1 _Essence_",
+            "effect": "Gain _Swimmer_ for the _Round_."
+          }
+        ]
+      },
+      {
+        "name": "Splash",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit", "Repeatable"],
+        "cost": "1 _Essence_",
+        "range": 1,
+        "effect": "Choose one:\n* Remove a _Minor Source_ (_Water_) within Range (including _Soaked_) then add _Wet_ within Range.\n* If there is a _Moderate Source_ (_Water_) or greater, add _Wet_ within Range.",
+        "enhancements": [
+          {
+            "name": "Friendly Splash",
+            "cost": "0 _Essence_",
+            "effect": "When you would add _Wet_ _Terrain_, instead grant an ally within Range _Soaked_."
+          },
+          {
+            "name": "Unfriendly Splash",
+            "cost": "1 _Essence_",
+            "effect": "When you would add _Wet_ _Terrain_, instead inflict _Soaked_ on a creature within _Range_."
+          }
+        ]
+      },
+      {
+        "name": "Violent Stream",
+        "category": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit"],
+        "material": "Water",
+        "damage": "Crush",
+        "cost": "2 _Essence_",
+        "target": "Single-Target",
+        "range": "1",
+        "effect": "Remove a _Minor Source_ (_Water_) within Range, then attack a target within Range. If the Target does not become _Soaked_ their _Engagement_ becomes _Wet_.",
+        "chart": {
+          "stun": [0, 1, 2, 3],
+          "damage": [0, 1, 3, 4],
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "status": ["None", "_Soaked_ [_Reflex_]", "_Soaked_", "_Soaked_"]
+        },
+        "enhancements": [
+          {
+            "name": "Wave Crash",
+            "cost": "2 _Essence_",
+            "effect": "Instead, remove a _Moderate Source_ (_Water_) within Range. Resolve the Attack against all creatures in an _Engagement_, and make their _Engagement_ _Wet_."
+          },
+          {
+            "name": "Driving Stream",
+            "cost": "1 _Essence_",
+            "effect": "Add _Push_ [_Grit_] to the Attack."
+          }
+        ]
       }
     ]
   },
@@ -166,7 +246,7 @@
       {
         "name": "Landcraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Earth"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You have a basic control of earth and soil that allows you to move earth at a short distance as if you had a small shovel.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
@@ -174,7 +254,7 @@
         "name": "Shape Earth",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Earth"],
+        "keywords": ["Spirit"],
         "cost": "1 _Essence_",
         "range": 0,
         "target": "An Arena that is a _Source_ (_Earth_).",
@@ -191,7 +271,7 @@
       {
         "name": "Mountaincraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Earth"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You may move and control a single nearby earthen object that you could physically lift with good precision. You have finer control and greater range when manipulating lighter objects.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
@@ -199,14 +279,14 @@
         "name": "Earthbending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit", "Earth"],
+        "keywords": ["Spirit"],
         "effect": "You have _Bend_ [_Earth_] within Range 1. Additionally, you may use _Brawl_ against all Targets made of _Earth_ or wearing _Earth_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target an _Earth_ piece of _Equipment_."
       },
       {
         "name": "Compact",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Earth"],
+        "keywords": ["Spirit"],
         "cost": "1 _Essence_",
         "reqs": "In an _Source_ (_Earth_) _Arena_.",
         "effect": "Create one of the following, placing all unattended in your Arena:\n*  Four fist-sized stones that count as _Least Source_s.\n*  Two larger stones count as _Minor Source_s.\n*  A small boulder that count as a _Moderate Source_."
@@ -215,7 +295,9 @@
         "name": "Earthen Fling",
         "category": "Balanced",
         "type": "Attack",
-        "keywords": ["Spirit", "Earth", "Crush", "Remote"],
+        "keywords": ["Spirit", "Remote"],
+        "damage_type": "Crush",
+        "material": "Earth",
         "cost": "3 _Essence_",
         "range": "1",
         "target": "Single-Target",
@@ -238,7 +320,7 @@
           "stun": [1, 2, 2, 4],
           "damage": [0, 2, 4, 6],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "Dazed [_Grit_]", "Dazed [_Grit_]"]
+          "status": ["None", "None", "_Dazed_ [_Grit_]", "_Dazed_ [_Grit_]"]
         }
       }
     ]
@@ -251,7 +333,7 @@
     "abilities": [
       {
         "name": "Metalsense",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can sense the approximate location of nearby metal, although other elements (especially wood) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       }
@@ -266,7 +348,7 @@
       {
         "name": "Woodsense",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can sense the approximate location of nearby wood and plants, although other elements (especially metal) may disrupt this sense. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       }
@@ -281,7 +363,7 @@
       {
         "name": "Windsense",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Wind"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can sense how air nearby is moving, and can easily find drafts and odd air movement. This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       }
@@ -296,7 +378,7 @@
       {
         "name": "Stormcraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Wind"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You have a basic control of lightning that allows you to shield yourself from static shocks and create small flashes of lightning.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
@@ -304,18 +386,19 @@
         "name": "Stormbending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit", "Wind"],
+        "keywords": ["Spirit"],
         "effect": "You have _Bend_ [_Lightning_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Lightning_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Lightning_ piece of _Equipment_."
       },
       {
         "name": "Jolt",
         "category": "Light",
         "type": "Attack",
-        "keywords": ["Spirit", "Lightning", "Wind"],
+        "keywords": ["Spirit"],
+        "damage": "Lightning",
         "cost": "2 _Essence_",
         "range": "0",
         "target": "Single-Target",
-        "effect": "Attack a Target within Range. If the Target is _Wearing_ _Metal_ or is _Wet_, add [_Pierce_ 3].",
+        "effect": "Attack a Target within Range. If the Target is _Wearing_ _Metal_, is _Water_, or is _Soaked_, add [_Pierce_ 3].",
         "chart": {
           "damage": [0, 2, 2, 3],
           "roll": ["2", "3-5", "6-10", "11-12"],
@@ -335,7 +418,7 @@
       {
         "name": "Barkcraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You may clumsily move and control a single nearby wooden object that you could hold in one hand.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
@@ -343,20 +426,21 @@
         "name": "Woodbending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "effect": "You have _Bend_ [_Wood_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Wood_ or wearing _Wood_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Wood_ piece of _Equipment_."
       },
       {
         "name": "Wooden Splinter",
         "category": "Light",
         "type": "Attack",
-        "keywords": ["Spirit", "Wood", "Stab", "Remote"],
+        "keywords": ["Spirit", "Remote"],
         "cost": "1 _Essence_",
         "range": "1",
+        "material": "Wood",
+        "damage_type": "Special",
         "target": "Single-Target",
         "missile": "An Unattended _Least Source_ (_Wood_) item or one _Worn by you/an ally within Range.",
-        "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
-        "special": "If the _Missile_ has an Attack with _Slash_ or _Crush_ you may replace _Stab_ with said keyword.",
+        "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_. Use the most appropriate damage type, or _Stab_ if it is unclear.",
         "enhancements": [
           {
             "name": "Power Shot",
@@ -381,7 +465,7 @@
       {
         "name": "Lodecraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You may clumsily move and control a single nearby metal object that you could hold in one hand.\n&nbsp;\nThis does not typically provide die on Skill Challenges or Interactions, but may allow you to attempt things that would otherwise be impossible."
       },
@@ -389,20 +473,21 @@
         "name": "Metalbending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit"],
         "effect": "You have _Bend_ [_Metal_] within Range 0. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_."
       },
       {
         "name": "Metal Shot",
         "category": "Light",
         "type": "Attack",
-        "keywords": ["Spirit", "Metal", "Crush", "Remote"],
+        "keywords": ["Spirit", "Remote"],
         "cost": "2 _Essence_",
+        "material": "Metal",
+        "damage_type": "Special",
         "range": "1",
         "target": "Single-Target",
         "missile": "An Unattended _Least Source_ (_Metal_) item or one _Worn by you/an ally within Range.",
-        "effect": "Choose a Missile, then Attack a target within Range with it.After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
-        "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
+        "effect": "Choose a Missile, then Attack a target within Range with it.After resolving the Attack, place the Missile unattended in the Target's _Arena_. Use the most appropriate damage type, or _Crush_ if it is unclear.",
         "enhancements": [
           {
             "name": "Power Shot",
@@ -428,7 +513,7 @@
       {
         "name": "Anvilcraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can modify the physical properties of metal to a moderate degree, allowing you to make iron as hard as steel or the reverse. For maximum effect you must be touching the metal. The effect persists for a short time after you stop touching it. You may affect more mild change from a short distance. Finally, you can work metal with your touch with the same precision and speed as if you had metalworking tools (but not a forge) and you do not need _Smith's Tools_ to repair metal equipment.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
@@ -436,7 +521,7 @@
         "name": "Fullmetal",
         "category": "General",
         "type": "Passive",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit"],
         "effect": "Your equipment is sharper, harder, and otherwise more deadly than others. Gain the following:\n* Whenever your [_Metal_] _Equipment_ would lose _Durability_ (even in narrative play) roll a d6; on a 6, it instead doesn't. Your _Spirit_ may take 1 _Fatigue_ to treat a failed roll as a success.\n* Your Attacks using [_Metal_] Equipment gain [_Pierce_ 1].\n* You gain +1 _Block_ if you _Block_ while _Wielding_ [_Metal_] Equipment or _Wearing_ [_Metal_] _Armor_.",
         "imbues": [
           {
@@ -455,15 +540,15 @@
         "name": "Perfect Edge",
         "category": "Offensive",
         "type": "Gambit",
-        "keywords": ["Spirit", "Metal"],
-        "reqs": "Attack used [_Metal_] _Equipment_.",
-        "effect": "Add [_Pierce_] 2 and _Shatter_ [_Reflex_]. If the Target Blocks, you must Target Wielded Equipment if possible. If you successfully _Shatter_, deal 1 _Stun_ to all other creatures you are _Engaged_ with."
+        "keywords": ["Spirit"],
+        "reqs": "Attack with _Metal_ _Material_.",
+        "effect": "Add [_Pierce_] 2 and _Shatter_. Deal 1 _Stun_ to all other creatures you are _Engaged_ with if you _Shatter_ a piece of _Equipment_."
       },
       {
         "name": "Shatter Spears",
         "category": "Defensive",
         "type": "Gambit",
-        "keywords": ["Spirit", "Metal"],
+        "keywords": ["Spirit"],
         "reqs": "_Wielding_ [_Metal_] _Equipment_ or _Wearing_ _Metal_ _Armor_.",
         "effect": "You have _Advantage_ to _Negate_ against _Shatter_ targeting _Metal_ Equipment this _Turn_ and gain +2 _Block_. If you lose no _Stamina_ from and are not _Shatter_ by the triggering Attack, choose one:\n* _Shatter_ the weapon used for the Attack.\n* Inflict _Exposed_/_Impaired_ [5 _Reflex_] on the Attacker if they are in _Melee_ Range."
       }
@@ -479,7 +564,7 @@
       {
         "name": "Galecraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Wind"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can effortlessly create powerful bursts of wind, capable of pushing people back and launching small objects. In addition, you can control and manipulate the wind, creating specific drafts and movement of the air, allowing you to clumsily manipulate small objects from a distance or precisely manipulating powdery substances and the like.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
@@ -487,14 +572,14 @@
         "name": "Airbending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit", "Wind"],
+        "keywords": ["Spirit"],
         "effect": "You have _Bend_ [_Wind_] within Range 1. Additionally, you may use the <u>Fling</u> and <u>Toss</u> _Enhancements_ of _Drop_ as if you had _Bend_ within the same Range, so long as they are _Load_ 0 or less and end further from you than they started. Finally, you may use _Brawl_ against all Targets made of _Wind_ within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature within your _Bend_ Range, but must Target a _Load_ 0 piece of _Equipment_ and place it unattended in the _Arena_."
       },
       {
         "name": "Control Winds",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Wind"],
+        "keywords": ["Spirit"],
         "target": "An Arena.",
         "range": "1",
         "cost": "2 _Essence_",
@@ -504,7 +589,9 @@
         "name": "Gust",
         "category": "Light",
         "type": "Attack",
-        "keywords": ["Spirit", "Wind", "Crush"],
+        "keywords": ["Spirit"],
+        "material": "Wind",
+        "damage_type": "Crush",
         "cost": "1 _Essence_",
         "range": "1",
         "target": "Single-Target",
@@ -518,11 +605,11 @@
           }
         ],
         "chart": {
-          "stun": [0, 0, 1, 1],
+          "stun": [0, 0, 1, 2],
           "damage": [0, 0, 0, 1],
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "negate": [5, 7, 8, 10],
-          "status": ["None", "Push", "Push", "Push"]
+          "status": ["None", "_Push_ [_Grit_]", "_Push_ [_Grit_]", "_Push_ [_Grit_]"]
         }
       }
     ]
@@ -537,14 +624,14 @@
       {
         "name": "Bloomcraft",
         "category": "Spiritcraft",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "type": "Skill",
         "effect": "You can manipulate living plant matter, encouraging growth and changing its shape. If you do this over an extended period these changes are permanent, and can result in otherwise impossible growth. Rapid forced growth and manipulation tends to stress the plants, and the spirits in the plant will force it to return to its original state after a short time. In general, you can quickly form vine-like structures from grass and other small plantlife and given time can form more intricate and complex flora. You can accomplish this at a short distance, but the effect is enhanced if you are touching the plant.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges and Interactions."
       },
       {
         "name": "Ripen",
         "category": "Travel",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "type": "Power",
         "effect": "Whenever you find interesting plantlife (such as from _Forage_ you may induce growth in nearby plants, forcing some that are near bloom to ripen. Your Spirit gains 1 _Fatigue_, but you gain +1 of whatever you found. If you found no plantlife your GM may still allow you to use this ability to gain a single fruit that counts as _Food_ (Standard)."
       },
@@ -552,19 +639,20 @@
         "name": "Control Growth",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "target": "An _Overgrown_ Arena or one that is a _Source_ (_Plant_).",
         "range": "1",
         "cost": "1 _Essence_",
         "effect": "Choose one:\n* Create a _Tripping Hazard_ that is made of _Wood_.\n* Remove a piece of _Wood_ _Terrain_ that is a _Minor Source_ or less.",
-        "enhancements": [{ "name": "Wild Growth", "cost": "1 _Essence_", "effect": "The _Arena_ gains or removes _Overgrown_." }]
+        "enhancements": [{ "name": "Wild Growth", "cost": "1 _Essence_", "effect": "Instead, the _Arena_ gains or removes _Overgrown_." }]
       },
       {
         "name": "Ensnare",
         "category": "Balanced",
         "type": "Attack",
-        "keywords": ["Spirit", "Wood"],
+        "keywords": ["Spirit"],
         "target": "One creature in a _Source_ (_Plant_).",
+        "material": "Wood",
         "range": "1",
         "cost": "2 _Essence_",
         "effect": "The Target must _Negate_ [_Grit_/_Reflex_ 8] or gain _Entangled_ 1. If the Target is in an _Overgrown_ _Arena_, increase the _Negate_ DC by 2 or decrease the Cost by 1. _Fire_ Damage also causes the Target to clear _Entangled_ as if it was _Slash_ Damage.",
@@ -595,6 +683,88 @@
         "category": "Downtime",
         "type": "Power",
         "effect": "During Downtime you may create a grand piece of art of your chosen medium that is too large to easily transport but a wonderful gift to your current location. Choose whether this is an object of Fear, Wonder, or Glory:\n* If you choose Fear, you depict a danger you encountered on your adventures.\n* If you choose Wonder, you depict something incredible you saw on your journey.\n* If you choose Glory, you depict you our your allies accomplishing great things on your journey.\n\nWhile in the location that has your artwork you have treat it as an Advantage on checks relating to what it depicts or when leaning into its thematic meaning."
+      }
+    ]
+  },
+  {
+    "name": "Merchant",
+    "desc": "When it comes to bartering and haggling you are the expert; while trade in the Shattered World is complex and unpredictable, you always seem to find the right path forward.",
+    "category": "Skill",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Mercantile",
+        "category": "Technical",
+        "type": "Skill",
+        "effect": "You are a skilled merchant, and are unrivaled when it comes to appraising items, haggling, and bartering. Deals tend to always end up in your favor, and you excel at figuring out what others want.\n&nbsp;\nWhen your background and skills as a merchant would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Supply and Demand",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "Before starting a _Travel Leg_, your GM must tell you what the next town has an abundance of and what they have a shortage of. When trading these items, you may trade what they have a shortage of as if it was one Rarity higher, and what they have an abundance of one Rarity lower."
+      },
+      {
+        "name": "Skilled Haggler",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "When trading, if you trade anything you may also get 1 _Supply_ worth of items for free. You may use this ability once per _Journey_ per trader."
+      },
+      {
+        "name": "Secret Stash",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "Once per _Journey_ you may rummage through your pack and find supplies you have tucked away. You immediately gain 2 _Load_ of _Common_ or _Uncommon_ _Equipment_. You may spend 2 _Supply_ to regain use of this ability when trading, or automatically as a part of _Downtime_."
+      },
+      {
+        "name": "Ledgers",
+        "category": "Skill",
+        "type": "Power",
+        "keywords": ["Knowledge"],
+        "effect": "You are able to read and write, and are near-instant with any math you might have to do as a merchant."
+      }
+    ]
+  },
+  {
+    "name": "Delver",
+    "desc": "The Underworld is a dangerous place, full of archaic machines and deadly traps. Despite this, it's a world of riches, one which you've delved into time and time again.",
+    "category": "Skill",
+    "type": "Talent",
+    "abilities": [
+      {
+        "name": "Delving Expertise",
+        "category": "Technical",
+        "type": "Skill",
+        "effect": "You are a skilled delver, able to read and understand the dangerous Underworld. The labyrinthine tunnels, secret doors, and deadly traps are all routine for you, and you're able to navigate them better than almost anyone.\n&nbsp;\nWhen your background and skills as a delver would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Basic Literacy",
+        "category": "Skill",
+        "keywords": ["Knowledge"],
+        "type": "Power",
+        "effect": "You are able to read and write."
+      },
+      {
+        "name": "Old World Knowledge",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "You can read the Old Script and, while many of the details remain a mystery, you have a better grasp on the history of the Old World than others. You gain increased insights when you encounter ruins and other things from the Old World."
+      },
+      {
+        "name": "Mechanic",
+        "effect": "You have an instinctive understanding of machines and devices from the Old World and, while you can't reproduce them, you can typically determine how to safely operate them and, if damaged, you know what you might need to do to get it in working order. This includes complex machinery, but you are also able to deal with simple devices such as locks given the appropriate tools."
+      },
+      {
+        "name": "Untrappable",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Whenever you encounter a trap, you always act with an _Advantage_ to disarm it and, when subjected to it, you may reduce the severity of an ill-effect by one, once per trap (making a _Wound_ a _Fatigue_, for example)."
+      },
+      {
+        "name": "Underworld Trail",
+        "category": "Travel",
+        "type": "Power",
+        "effect": "Whenever you play the _Observation_ Augment while traveling you may always choose to draw an Underworld related card from the _Exploration Deck_, if available."
       }
     ]
   },
@@ -705,13 +875,14 @@
         "name": "Literacy",
         "category": "Skill",
         "type": "Power",
+        "keywords": ["Knowledge"],
         "effect": "You are able to read and write at a high level. If you have any other traits that grant literacy, increase your maximum _Living Library Point_s by 1."
       },
       {
         "name": "Living Library",
         "category": "Skill",
         "type": "Power",
-        "effect": "You have 3 _Living Library Points_, which may be spent whenever you come across something in the world. If you do, you instantly learn some relevant and helpful knowledge. You regain your Living Library Points whenever you take Downtime within a location with books or other similar material. The information granted will not be as precise as somebody with actual expertise, but always provides immediately helpful information. If there is no helpful information to provide, regain your Living Library Point."
+        "effect": "Gain an additional 3 _Knowledge Points_."
       },
       {
         "name": "Walking Library",

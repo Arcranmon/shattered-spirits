@@ -30,7 +30,7 @@
         "effect": "You may immediately _Move_ as if it was your _Turn_, and may use _Mobility_ _Maneuvers_ as if it was your turn."
       }
     ],
-    "adjust": 0
+    "adjust": 0.5
   },
   {
     "name": "Rallying Stance",
@@ -91,7 +91,7 @@
         "type": "Reaction",
         "cost": "1 _Momentum_",
         "reqs": "You complete an Attack.",
-        "effect": "After resolving all other effects, deal 3 _Stun_ as a separate effect. If you Missed, instead deal 4 _Guard_."
+        "effect": "After resolving all other effects, deal 3 _Stun_ as a separate effect. If you Missed, instead deal 4 _Stun_."
       }
     ],
     "adjust": 4,
@@ -136,7 +136,7 @@
     "block": 2,
     "speed": 5,
     "momentum": 4,
-    "posture": 3,
+    "posture": 4,
     "abilities": [
       {
         "name": "Defensive Focus",
@@ -165,31 +165,32 @@
     "posture": 1,
     "block": 0,
     "speed": "Spirit",
-    "momentum": "2/2/3/3/4/4",
+    "momentum": "3/3/4/4/5/5",
     "effect": "On your Turn, move towards the nearest hostile creature and _Engage_ it if possible. Attack them once or, if you cannot, use _Concentrate_. You may use any Abilities that help accomplish this task."
   },
   {
     "name": "Directed Spirit",
     "category": "Offensive",
     "desc": "You give your spirit a specific order to strike, focusing on a singular enemy.",
-    "defenses": { "focus": 1 },
+    "defenses": { "grit": 1, "focus": 1 },
     "movement": 0,
     "posture": 1,
-    "block": 0,
+    "block": 1,
     "speed": "Spirit+1",
-    "momentum": "3/4/4/5/6/6",
-    "effect": "Upon entering this Stance, choose an Attack and a Target. On your Turn, use that Attack against said Target at the most appropriate Range or, if you cannot, _Concentrate_. You may use any Abilities that help accomplish this task."
+    "momentum": "5/6/6/7/7/8",
+    "effect": "Upon entering this Stance, choose an Attack and a Target. On your Turn, use that Attack against said Target at the most appropriate Range or, if you cannot, _Concentrate_. You may use any Abilities that help accomplish this task.",
+    "adjust": -1
   },
   {
     "name": "Sprinting Spirit",
     "category": "Mobility",
     "desc": "You direct your Spirit to a specific location and they do their best to get there quickly.",
-    "defenses": { "reflex": 1 },
+    "defenses": { "reflex": 2 },
     "movement": 2,
-    "posture": 2,
+    "posture": 1,
     "block": 0,
     "speed": "Spirit-1",
-    "momentum": "1/1/1/2/2/2",
+    "momentum": "1/1/2/2/3/3",
     "effect": "When you choose this Stance, choose a destination. On your _Turn_, move as close to the Destination as possible. Your Spirit may not Attack, but may use any Abilities that help accomplish this task, and may use _Armament_ _Manuevers_ after reaching their destination.",
     "abilities": [
       {
@@ -205,12 +206,12 @@
     "category": "Support",
     "desc": "Your Spirit takes on a quest, doing everything in its power to complete it.",
     "defenses": { "focus": 1 },
-    "movement": 0,
+    "movement": 1,
     "posture": 2,
     "block": 0,
     "speed": "Spirit",
     "momentum": "2/3/3/4/4/5",
-    "effect": "When you choose this Stance, choose a quest; typically, this will be an Ability and a Target. On your _Turn_, attempt to complete the quest to the best of your ability."
+    "effect": "When you choose this Stance, choose a quest; typically, this will be an Ability and a Target. On your _Turn_, attempt to complete the quest to the best of your ability. After attempting the quest to the best of your ability, you may use _Concentrate_ or "
   },
   {
     "name": "Surviving Spirit",
@@ -221,7 +222,7 @@
     "posture": 3,
     "block": 1,
     "speed": "Spirit",
-    "momentum": "2/2/3/3/4/4",
+    "momentum": "1/1/2/2/3/3",
     "effect": "On your _Turn_ you may _Retreat_. Your may not Attack, but may use _Recovery_ or _Defensive_ Abilities on your _Turn_."
   },
   {
@@ -233,6 +234,6 @@
     "block": 0,
     "speed": "N/A",
     "momentum": "N/A",
-    "effect": "Automatically enter this _Stance_ if you are not _Manifested_ at _Respite_. You do not take a _Turn_, but gain 2 _Essence_ at _Respite_. While in this _Stance_ your companion may spend _Essence_ on their Turn to give you _Guard_, granting 3 _Guard_ for every _Essence_ spent."
+    "effect": "Automatically enter this _Stance_ if you are not _Manifested_ at _Respite_.  Gain 4 _Guard_. While in this _Stance_ your companion may spend _Essence_ on their Turn to give you _Guard_, granting 3 _Guard_ for every _Essence_ spent."
   }
 ]

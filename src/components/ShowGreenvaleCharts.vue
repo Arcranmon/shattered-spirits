@@ -1,19 +1,24 @@
 <template>
   <v-row
-    ><v-col :cols="4"
+    ><v-col :cols="6"
       ><h4>Forage Chart</h4>
       <basic-table
         :chart="greenvaleForage"
         style="width: 90%" /></v-col
-    ><v-col :cols="4"
+    ><v-col :cols="6"
       ><h4>Hunting Chart</h4>
       <basic-table
         :chart="greenvaleHunting"
         style="width: 90%" /></v-col
-    ><v-col :cols="4"
+    ><v-col :cols="6"
       ><h4>Herbalism Chart</h4>
       <basic-table
         :chart="greenvaleHerbalism"
+        style="width: 90%" /></v-col
+    ><v-col :cols="6"
+      ><h4>Fishing Chart</h4>
+      <basic-table
+        :chart="greenvaleFishing"
         style="width: 90%" /></v-col
   ></v-row>
 </template>
@@ -49,6 +54,13 @@ export default Vue.extend({
         ['5-7', 'You find any two of _Medicinal Herbs_ and _Crownbark_, in any combination.'],
         ['8-10', 'You find one _Dreamweed_.'],
         ['11-12', 'You find one _Heart of the Vine_.'],
+      ],
+      greenvaleFishing: [
+        ['2', 'You catch nothing.'],
+        ['3-4', 'You catch a small, boney fish; gain 1 _Bad_ _Food_ (_Meat_).'],
+        ['5-6', 'You catch a small fish; gain 1 _Basic_ _Food_ (_Meat_).'],
+        ['7-10', 'You catch some small fish; gain 2 _Basic_ _Food_ (_Meat_).'],
+        ['11-12', 'You catch a large fish; gain 3 _Good_ _Food_ (_Meat_).'],
       ],
     }
   },
