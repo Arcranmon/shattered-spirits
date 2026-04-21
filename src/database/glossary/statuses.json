@@ -14,6 +14,13 @@
     "remove": "This Wound has a 3 segment Clock to heal. When healed, replace it with _Fatigue_."
   },
   {
+    "name": "Hypoxia",
+    "type": "Minor Wound",
+    "desc": "The side effects of being deprived of oxygen for too long.",
+    "effect": "This Wound takes up 1 section of your Health Bar. While you have this Wound:\n* Lose 2 _Guard_ at _Respite_.\n* Lose 1 _Momentum_ at _Respite_.\n* Your counter for _Suffocating_ is one shorter.\n* In _Skill Challenges_ (including _Travel Rolls_) replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.",
+    "remove": "This Wound has a 2 segment Clock to heal. When healed, replace it with _Fatigue_."
+  },
+  {
     "name": "Moderate Concussion",
     "type": "Moderate Wound",
     "desc": "A head wound that makes it very difficult to focus and remain fully lucid.",
@@ -155,6 +162,13 @@
     "type": "Condition"
   },
   {
+    "name": "Suffocating",
+    "desc": "A creature that is unable to breathe and rapidly losing consciousness.",
+    "effect": "When you begin suffocating, start a counter at 6. Decrease the counter by 1 when:\n* You take a Turn.\n* You lose more Stamina than your _Grit_ from a single effect.\n* You make a non-Light Attack.\n* You spend 2 or more _Movement_ in a single Turn.\n\nWhen the counter hits 0, the character immediately gains an _Hypoxia_ _Wound_, then resets the counter. Note that _Hypoxia_ reduces the maximum value of this counter.",
+    "remove": "Typically, Suffocating can only be removed by effects that specifically remove it. If removed, the counter resets the next time the creature is Suffocating.",
+    "type": "Condition"
+  },
+  {
     "name": "Alight",
     "desc": "An affliction caused when you are on fire.",
     "effect": "While a creature has Alight they take _Fire_ Damage equal to its value at the end of their _Turn_, then increases their Alight value by 1 and _Ignite_ their _Engagement_. This Damage ignores _Block_, unless the target has any level of _Resistance_ to _Fire_. Additionally, the creature can be treated as a _Minor Source_ [_Flame_]. Finally, they increase their [_Cold_] Resistance by 1 step.",
@@ -169,6 +183,14 @@
     "effect": "While a creature has Bleeding they lose _Stamina_ equal to its value at the end of their _Turn_, and lose _Stamina_ equal to half its value when they take a _Reaction_ on other _Turns_. A character that ends combat Bleeding and has no way to clear it automatically gains a single segment _Blood Loss_ _Wound_.",
     "repeat": "Bleeding stacks, and if a creature gains Bleeding again combine the values.",
     "remove": "Only effects that specifically remove Bleeding remove it.",
+    "type": "Condition"
+  },
+  {
+    "name": "Soaked",
+    "desc": "You are drenched in water.",
+    "effect": "While a creature is Soaked:\n* Increase their _Resistance_ to _Fire_ by one step.\n* They may not gain _Alight_. If they would gain at least _Alight_ 3 from a single effect, remove Soaked.\n* Increase their weakness to _Cold_ by one step; if they take _Cold_ damage, remove Soaked and automatically inflict _Frost_ 2.\n* Increase their _Weakness_ to _Lightning_ by two steps.",
+    "repeat": "Soaked does not stack.",
+    "remove": "Only effects that specifically remove Soaked remove it.",
     "type": "Condition"
   },
   {
