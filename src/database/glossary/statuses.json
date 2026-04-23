@@ -14,6 +14,13 @@
     "remove": "This Wound has a 3 segment Clock to heal. When healed, replace it with _Fatigue_."
   },
   {
+    "name": "Blood Loss",
+    "type": "Minor Wound",
+    "desc": "You've lost a great deal of blood, leaving you weak and light-headed.",
+    "effect": "This Wound takes up 1 section of your Health Bar. While you have this Wound:\n* Your maximum _Stamina_ is reduced by 2, to a minimum of 1.\n* Lose 1 _Momentum_ at _Respite_.\n* In _Skill Challenges_ (including _Travel Rolls_) replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.",
+    "remove": "This Wound has a 3 segment Clock to heal. When healed, replace it with _Fatigue_. You may automatically mark a segment by consuming an extra portion of _Food_ during the _Camp Phase_."
+  },
+  {
     "name": "Hypoxia",
     "type": "Minor Wound",
     "desc": "The side effects of being deprived of oxygen for too long.",
@@ -180,7 +187,7 @@
   {
     "name": "Bleeding",
     "desc": "You are actively bleeding and rapidly losing your ability to fight.",
-    "effect": "While a creature has Bleeding they lose _Stamina_ equal to its value at the end of their _Turn_, and lose _Stamina_ equal to half its value when they take a _Reaction_ on other _Turns_. A character that ends combat Bleeding and has no way to clear it automatically gains a single segment _Blood Loss_ _Wound_.",
+    "effect": "While a creature has Bleeding they lose _Stamina_ equal to its value at the end of their _Turn_, and lose _Stamina_ equal to half its value when they take a _Reaction_ on other _Turns_. A character that ends combat Bleeding and has no way to clear it automatically gains a _Blood Loss_ _Wound_. If a character would be _Downed_ by Bleeding, suffer the below effects:\n* **6-12**: Gain a _Blood Loss_ _Wound_.\n* **3-5**: Gain two _Blood Loss_ _Wounds_.\n* **2-**: Gain three _Blood Loss_ _Wounds_.",
     "repeat": "Bleeding stacks, and if a creature gains Bleeding again combine the values.",
     "remove": "Only effects that specifically remove Bleeding remove it.",
     "type": "Condition"
