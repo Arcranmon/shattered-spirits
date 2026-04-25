@@ -58,6 +58,6 @@ LONG TERM
 - Non-combat gameplay does not currently exist in any meaningful form and needs to be built once the combat system is in a good place.
 - Combat abilities are governed by Disciplines
   - Travel abilities are governed by Jobs
-  - Narrative abilities are governed by Talents and Knacks
+  - Narrative abilities are governed by Careers and Knacks
 - Create a system for exploration and camping and expeditions that is resource management-lite but rewards players with combat resources.
 - Create a 'home base' sort of system that allows for a town or city to develop over time depending on whether players take a more aggressive approach against the spirits or seek healing and peace.

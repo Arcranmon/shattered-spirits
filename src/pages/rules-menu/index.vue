@@ -111,6 +111,7 @@ import EquipmentText from '@/database/text_files/equipment.txt'
 import PlayerRolesText from '@/database/text_files/player_roles.txt'
 import GameModes from '@/database/text_files/game_modes.txt'
 import CombatText from '@/database/text_files/combat_rules/combat.txt'
+import CharCreationText from '@/database/text_files/character_creation_and_progression.txt'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import StatusCard from '@/components/cards/StatusCard.vue'
 import BasicTable from '@/components/BasicTable.vue'
@@ -133,6 +134,7 @@ export default Vue.extend({
         'Narrative',
         'Journey',
         'Combat',
+        'Character Creation and Progression',
         'Equipment',
         'Conditions and Statuses',
         'Afflictions and Wounds',
@@ -140,7 +142,7 @@ export default Vue.extend({
         'Player Roles',
         'Glossary',
       ],
-      text: [GameModes, NarrativeText, TravelText, CombatText, EquipmentText, '', '', '', PlayerRolesText, ''],
+      text: [GameModes, NarrativeText, TravelText, CombatText, CharCreationText, EquipmentText, '', '', '', PlayerRolesText, ''],
       statusCategories: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       selectedStatuses: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
       afflictionCategories: ['Affliction', 'Greater Affliction', 'Minor Wound', 'Moderate Wound', 'Major Wound'],

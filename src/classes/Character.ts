@@ -20,7 +20,7 @@ class Character extends Combatant {
   private wielded_: Array<string>
   private equipped_: Array<string>
   private packed_: Array<string>
-  private talents_: Array<string>
+  private careers_: Array<string>
 
   private spirit_: Spirit
 
@@ -243,8 +243,8 @@ class Character extends Combatant {
     })
     return techniques
   }
-  get Talents() {
-    return this.talents_
+  get Careers() {
+    return this.careers_
   }
   get Weapons() {
     return this.weapons_
@@ -377,7 +377,7 @@ class Character extends Combatant {
       element: character.element_,
       name: character.name_,
       player_character: character.player_character_,
-      talents: character.talents_,
+      careers: character.careers_,
       wielded: character.wielded_,
       equipped: character.equipped_,
       packed: character.packed_,
@@ -397,7 +397,7 @@ class Character extends Combatant {
     this.name_ = data.name || ''
     this.player_character_ = data.player_character || true
     this.disciplines_ = data.disciplines || []
-    this.talents_ = data.talents || []
+    this.careers_ = data.careers || []
     this.wielded_ = data.wielded || []
     this.equipped_ = data.equipped || []
     this.packed_ = data.packed || []

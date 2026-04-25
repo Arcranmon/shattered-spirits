@@ -352,7 +352,7 @@ export default Vue.extend({
 .Equipment {
   background-color: #a776a0;
 }
-.Talent {
+.Career {
   background-color: rgb(106, 168, 76);
 }
 .Weapon {

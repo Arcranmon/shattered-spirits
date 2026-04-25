@@ -100,12 +100,13 @@
         </div>
 
         <div v-if="selectedTab == 'Disciplines'"><elemental-disciplines /></div>
+        <div v-if="selectedTab == 'Spirit Arts'"><elemental-arts /></div>
         <div
           class="character-tab-content"
-          v-if="selectedTab == 'Talents'"
+          v-if="selectedTab == 'Careers'"
           style="border-top: 2px solid black">
           <show-cards
-            :inputs="talents"
+            :inputs="careers"
             :collapse="false"
             :cols="1" />
         </div>
@@ -306,10 +307,11 @@ import AbilityWidget from '@/components/AbilityWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
 import ElementalDisciplines from '@/components/ElementalDisciplines.vue'
+import ElementalArts from '@/components/ElementalArts.vue'
 
 export default Vue.extend({
   name: 'character-options',
-  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalDisciplines },
+  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
   data() {
     return {
       selectedTab: 'Basic Skills',
@@ -317,7 +319,8 @@ export default Vue.extend({
         'Basic Skills',
         'Archetypes',
         'Disciplines',
-        'Talents',
+        'Spirit Arts',
+        'Careers',
         'Spirit Customization',
         'Armor and Clothing',
         'Weapons and Shields',
@@ -355,8 +358,8 @@ export default Vue.extend({
     archetypes: function () {
       return this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
     },
-    talents: function () {
-      return this.$store.getters.getTalents().sort((a, b) => a.Name.localeCompare(b.Name))
+    careers: function () {
+      return this.$store.getters.getCareers().sort((a, b) => a.Name.localeCompare(b.Name))
     },
     armors: function () {
       return this.$store.getters.getFilteredArmors(this.selectedArmors).sort((a, b) => a.Name.localeCompare(b.Name))

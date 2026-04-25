@@ -100,7 +100,7 @@ import {
   Feature,
   Stance,
   Status,
-  Talent,
+  Career,
   Technique,
   SpiritForm,
   Trait,

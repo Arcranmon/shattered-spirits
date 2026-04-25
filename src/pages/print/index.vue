@@ -16,7 +16,7 @@
 
     <h4>{{ $route.params.character.Name }} Skills</h4>
     <div class="centered-text">
-      Skills represent a character's talents and describe what they are capable of, as well as determining additional die in skill challenges.
+      Skills represent a character's careers and describe what they are capable of, as well as determining additional die in skill challenges.
     </div>
     <v-row>
       <v-col

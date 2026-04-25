@@ -197,9 +197,15 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getTalents(): any {
+  get getSpiritArtsByType(): any {
+    return (type: String) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Spirit Art' && x.Category == type)
+    }
+  }
+
+  get getCareers(): any {
     return () => {
-      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Talent')
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Career')
     }
   }
 

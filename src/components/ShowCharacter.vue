@@ -53,7 +53,7 @@
               dark
               color="black"
               centered>
-              <v-tab> <h4>Arts & Talents</h4> </v-tab>
+              <v-tab> <h4>Arts & Careers</h4> </v-tab>
               <v-tab> <h4>Equipment</h4> </v-tab>
               <v-tab> <h4>Abilities</h4> </v-tab>
               <v-tab> <h4>Stances</h4> </v-tab>

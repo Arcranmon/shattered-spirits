@@ -1,7 +1,7 @@
 import { store } from '@/store'
 import { Base, Chart, Ability } from '@/class'
 
-// Used for Arts, Spirit Traits, and Talents
+// Used for Arts, Spirit Traits, and Careers
 class AbilityPackage extends Base {
   protected abilities_: Ability[] = []
   protected prereqs_: string

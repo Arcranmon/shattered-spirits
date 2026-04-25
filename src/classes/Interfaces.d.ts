@@ -73,7 +73,7 @@ declare interface ICharacterData extends ICombatantData {
   name: string
   player_character: Boolean
   spirit: ISpiritData
-  talents: string[]
+  careers: string[]
   wielded: string[]
   equipped: string[]
   packed: string[]
@@ -275,7 +275,7 @@ declare interface IStatusData extends IBaseData {
   type?: string
 }
 
-declare interface ITalentData extends IBaseData {
+declare interface ICareerData extends IBaseData {
   icon: string
   always: string
   push: string

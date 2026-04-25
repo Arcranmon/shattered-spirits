@@ -37,36 +37,6 @@
               :cols="1" /></v-tab-item
         ></v-tabs-items>
       </v-tab-item>
-      <v-tab-item>
-        <show-cards
-          :inputs="flameDisciplines"
-          :collapse="false"
-          :cols="1" />
-      </v-tab-item>
-      <v-tab-item>
-        <show-cards
-          :inputs="metalDisciplines"
-          :collapse="false"
-          :cols="1" />
-      </v-tab-item>
-      <v-tab-item>
-        <show-cards
-          :inputs="waterDisciplines"
-          :collapse="false"
-          :cols="1" />
-      </v-tab-item>
-      <v-tab-item>
-        <show-cards
-          :inputs="windDisciplines"
-          :collapse="false"
-          :cols="1" />
-      </v-tab-item>
-      <v-tab-item>
-        <show-cards
-          :inputs="woodDisciplines"
-          :collapse="false"
-          :cols="1" />
-      </v-tab-item>
     </v-tabs-items>
   </div>
 </template>
@@ -89,12 +59,12 @@ export default Vue.extend({
       selectedTab: 'Elemental Disciplines',
       elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
       subdisciplines: [
-        ['Earthsense', 'Landcraft', 'Mountaincraft'],
-        ['Flamesense', 'Blazecraft', 'Furnacecraft'],
-        ['Metalsense', 'Lodecraft', 'Anvilcraft'],
-        ['Watersense', 'Tidecraft', 'Frostcraft'],
-        ['Windsense', 'Galecraft', 'Stormcraft'],
-        ['Woodsense', 'Barkcraft', 'Bloomcraft'],
+        ['Landcraft', 'Mountaincraft'],
+        ['Blazecraft', 'Furnacecraft'],
+        ['Lodecraft', 'Anvilcraft'],
+        ['Tidecraft', 'Frostcraft'],
+        ['Galecraft', 'Stormcraft'],
+        ['Barkcraft', 'Bloomcraft'],
       ],
       elementTab: 0,
       disciplineTab: 0,

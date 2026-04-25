@@ -1,7 +1,9 @@
 <template>
   <div style="padding: 1em; width: 100%">
     <h2>Character Creation</h2>
-    <display-tooltip-text :string="choosingYourSpirit" class="text" />
+    <display-tooltip-text
+      :string="choosingYourSpirit"
+      class="text" />
     <br />
     <br />
     <display-tooltip-text :string="choosingYourEquipment" />
@@ -18,7 +20,7 @@
     <display-tooltip-text :string="choosingYourDisciplines" />
     <br />
     <br />
-    <display-tooltip-text :string="choosingYourTalents" />
+    <display-tooltip-text :string="choosingYourCareers" />
     <br />
     <br />
     <display-tooltip-text :string="choosingYourAppearance" />
@@ -39,7 +41,7 @@ import ChoosingYourArmor from '@/database/text_files/character_creation/choosing
 import ChoosingYourWeapons from '@/database/text_files/character_creation/choosing_your_weapons.txt'
 import ChoosingYourArts from '@/database/text_files/character_creation/choosing_your_arts.txt'
 import ChoosingYourDisciplines from '@/database/text_files/character_creation/choosing_your_disciplines.txt'
-import ChoosingYourTalents from '@/database/text_files/character_creation/choosing_your_talents.txt'
+import ChoosingYourCareers from '@/database/text_files/character_creation/choosing_your_careers.txt'
 import ChoosingYourAppearance from '@/database/text_files/character_creation/choosing_your_appearance.txt'
 import CreatingYourBackground from '@/database/text_files/character_creation/creating_your_background.txt'
 import FinalizingYourCharacter from '@/database/text_files/character_creation/finalizing_your_character.txt'
@@ -67,8 +69,8 @@ export default Vue.extend({
     choosingYourDisciplines() {
       return ChoosingYourDisciplines
     },
-    choosingYourTalents() {
-      return ChoosingYourTalents
+    choosingYourCareers() {
+      return ChoosingYourCareers
     },
     choosingYourAppearance() {
       return ChoosingYourAppearance
