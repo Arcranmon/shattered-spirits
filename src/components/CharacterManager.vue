@@ -256,6 +256,9 @@ import { Character } from '@/class'
 import John from '@/database/sample_characters/john.json'
 import Erika from '@/database/sample_characters/erika.json'
 import Winona from '@/database/sample_characters/winona.json'
+import Margaret from '@/database/sample_characters/margaret.json'
+import Blaine from '@/database/sample_characters/blaine.json'
+import Marlon from '@/database/sample_characters/marlon.json'
 import ShowCharacter from '@/components/ShowCharacter.vue'
 
 export default Vue.extend({
@@ -311,12 +314,24 @@ export default Vue.extend({
 
     importPremades() {
       const store = getModule(CharacterManagementStore, this.$store)
-      if (store.AllCharacters.filter((x) => x.Name == 'John').length == 0) {
-        var char = Character.Deserialize(John)
+      if (store.AllCharacters.filter((x) => x.Name == 'Blaine').length == 0) {
+        var char = Character.Deserialize(Blaine)
         store.AddCharacter(char)
       }
       if (store.AllCharacters.filter((x) => x.Name == 'Erika').length == 0) {
         var char = Character.Deserialize(Erika)
+        store.AddCharacter(char)
+      }
+      if (store.AllCharacters.filter((x) => x.Name == 'John').length == 0) {
+        var char = Character.Deserialize(John)
+        store.AddCharacter(char)
+      }
+      if (store.AllCharacters.filter((x) => x.Name == 'Margaret').length == 0) {
+        var char = Character.Deserialize(Margaret)
+        store.AddCharacter(char)
+      }
+      if (store.AllCharacters.filter((x) => x.Name == 'Marlon').length == 0) {
+        var char = Character.Deserialize(Marlon)
         store.AddCharacter(char)
       }
       if (store.AllCharacters.filter((x) => x.Name == 'Winona').length == 0) {

@@ -190,7 +190,7 @@ class Ability extends Base {
     if (hasMaterial) {
       header += '**Material:** _' + this.material_ + '_'
     }
-    if (hasMaterial && hasDamageType) {
+    if ((hasMaterial || this.HasTarget) && hasDamageType) {
       header += '; '
     }
     if (hasDamageType) {
