@@ -127,7 +127,7 @@
         </v-col>
       </v-row>
       <v-row no-gutters>
-        <v-col cols="auto"> <b>Guard:</b>&nbsp;{{ creature.Guard }} / {{ creature.MaxStun }}</v-col>
+        <v-col cols="auto"> <b>Guard:</b>&nbsp;{{ creature.Guard }} / {{ creature.MaxGuard }}</v-col>
         <v-col align="right"> </v-col>
       </v-row>
       <v-row
@@ -137,7 +137,7 @@
           <v-btn
             inline
             small
-            @click="creature.Clearstun(), $emit('changed')"
+            @click="(creature.Guard -= 1), $emit('changed')"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -147,14 +147,14 @@
           <div class="guard--exterior">
             <div
               class="guard--interior"
-              :style="stunbar" />
+              :style="guardbar" />
           </div>
         </v-col>
         <v-col cols="auto">
           <v-btn
             inline
             small
-            @click="apstun ? creature.AddApstun() : creature.Addstun(), $emit('changed')"
+            @click="(creature.Guard += 1), $emit('changed')"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>
@@ -235,8 +235,8 @@ export default Vue.extend({
     staminabar() {
       return 'width: ' + this.creature.StaminaPercent + '%; background-color: ' + this.creature.StaminaColor
     },
-    stunbar() {
-      return 'width: ' + this.creature.stunPercent + '%; background-color: ' + this.creature.stunColor
+    guardbar() {
+      return 'width: ' + this.creature.GuardPercent + '%; background-color: ' + this.creature.GuardColor
     },
     movebar() {
       return 'width: ' + this.creature.MovePercent + '%; background-color: ' + this.creature.MoveColor

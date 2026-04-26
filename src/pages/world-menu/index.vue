@@ -10,6 +10,7 @@
       style="margin: 1em; margin-bottom: -1em" />
     <v-row
       class="page"
+      v-bind:style="mobileMargin"
       style="margin-top: 1em">
       <v-col
         v-if="!isMobile"

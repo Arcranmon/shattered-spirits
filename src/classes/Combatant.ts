@@ -4,7 +4,7 @@ const interpolate = require('color-interpolate')
 
 class Combatant {
   private stamina_: number
-  private stun_: number
+  private guard_: number
   private move_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
@@ -40,7 +40,7 @@ class Combatant {
     return 0
   }
 
-  get MaxStun() {
+  get MaxGuard() {
     return 10
   }
 
@@ -227,11 +227,17 @@ class Combatant {
   }
 
   get SoakBlockRatio() {
-    return (this.MaxSoak / (this.MaxStun + this.MaxSoak)) * 100
+    return (this.MaxSoak / (this.MaxGuard + this.MaxSoak)) * 100
   }
 
   get Guard() {
-    return this.stun_
+    return this.guard_
+  }
+
+  set Guard(Guard: number) {
+    if (Guard > this.MaxGuard) this.guard_ = this.MaxGuard
+    else if (Guard <= 0) this.guard_ = 0
+    else this.guard_ = Guard
   }
 
   set Stamina(Stamina: number) {
@@ -249,13 +255,13 @@ class Combatant {
     return colormap(this.StaminaPercent / 100)
   }
 
-  get BlockPercent() {
-    return (this.Guard / this.MaxStun) * 100
+  get GuardPercent() {
+    return (this.Guard / this.MaxGuard) * 100
   }
 
-  get BlockColor() {
-    let colormap = interpolate(['#FFDE00', '#ff9500', '#FF0000'])
-    return colormap(this.BlockPercent / 100)
+  get GuardColor() {
+    let colormap = interpolate(['#FF0000', '#ff9500', '#FFDE00'])
+    return colormap(this.GuardPercent / 100)
   }
 
   get Momentum() {
@@ -274,7 +280,7 @@ class Combatant {
     return {
       stamina: combatant.stamina_,
       move: combatant.move_,
-      guard: combatant.stun_,
+      guard: combatant.guard_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
     }
@@ -287,11 +293,11 @@ class Combatant {
   }
 
   public setCombatantData(data: ICombatantData): void {
-    this.move_ = data.move
-    this.stamina_ = data.stamina
+    this.move_ = Math.min(data.move, this.MaxMovement)
+    this.stamina_ = Math.min(data.stamina, this.MaxStamina)
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses || []
-    this.stun_ = data.guard
+    this.guard_ = Math.min(data.guard, this.MaxGuard)
   }
 }
 export default Combatant

@@ -1,4 +1,4 @@
-<template>
+<template class="background--color">
   <v-app
     id="app"
     class="background--color"
@@ -6,7 +6,9 @@
     <div v-if="!$route.meta.hideHeader">
       <Navbar />
     </div>
-    <router-view />
+    <div v-bind:style="mobileMargin">
+      <router-view />
+    </div>
   </v-app>
 </template>
 
@@ -21,6 +23,12 @@ export default {
     },
   },
   computed: {
+    mobileMargin() {
+      if (this.isMobile) {
+        return 'margin-left: 1em; margin-right: 1em'
+      }
+      return ''
+    },
     fontType() {
       if (this.isMobile) {
         return 'mobile--font'

@@ -32,7 +32,7 @@ class Spirit extends Combatant {
     return movement
   }
 
-  override get MaxStun() {
+  override get MaxGuard() {
     console.log(this.name_)
     var guard = this.spirit_type_.Guard + this.combinedBonuses_.Guard
     for (var item of this.combinedBonuses_.Equipment) {

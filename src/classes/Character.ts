@@ -193,7 +193,7 @@ class Character extends Combatant {
     return kBaseStamina + this.combinedBonuses_.Stamina
   }
 
-  override get MaxStun() {
+  override get MaxGuard() {
     var maxStun = kBaseStun + this.combinedBonuses_.Guard
     for (var armor of this.armor_) {
       maxStun += armor.Guard
@@ -402,10 +402,10 @@ class Character extends Combatant {
     this.equipped_ = data.equipped || []
     this.packed_ = data.packed || []
     this.arts_ = data.arts || []
-    this.setCombatantData(data)
     this.setBonuses()
     this.getArmor()
     this.getWeapons()
+    this.setCombatantData(data)
     this.spirit_ = Spirit.CreateFromCharacter(this, data.spirit)
   }
 }

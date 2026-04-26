@@ -38,7 +38,7 @@ class Npc extends Combatant {
     return this.npc_data_.move
   }
 
-  override get MaxStun() {
+  override get MaxGuard() {
     if (this.npc_data_.defenses.guard) return this.npc_data_.defenses.guard
     return 0
   }
