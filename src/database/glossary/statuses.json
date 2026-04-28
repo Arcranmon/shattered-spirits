@@ -360,9 +360,9 @@
   },
   {
     "name": "Pull",
-    "desc": "You drag a foe closer to you or.",
-    "effect": "When you inflict Pull a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Pull 1:  Place the Target at your _Position_ if they are within your _Arena_, or place them in any _Position_ within their _Arena_ if they are not in your _Arena_.\n\t* Pull 2:  Place them in any _Position_ in an _Arena_ adjacent to them that places them closer to you. Inflict _Block_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Pull X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_. You may repeat this option.",
-    "type": "Hide"
+    "desc": "You drag a foe closer to you, or simply pull them into a nearby obstacle.",
+    "effect": "When you inflict Pull, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 3 _Crush_ Damage on them and resolve any collision effect on the Terrain.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it brings them closer to you.\n\nIf it was a Forceful Pull, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ closer to you.",
+    "type": "Instant Effect"
   },
   { "name": "Pulled", "see": "Pull" },
   {
@@ -374,8 +374,8 @@
   {
     "name": "Slide",
     "desc": "You adroitly move a foe about, placing them where you wish.",
-    "effect": "When you inflict Slide a numeric value will be present. You may inflict a combination of the below effects equal to said value:\n* Choose one: \n\t* Slide 1: You may force the target to stop _Occupying_ their current _Terrain_ and/or place the Target in any other _Engagement_ within their _Arena_.\n\t* Slide 2: Place them in any _Arena_ adjacent to their current one. Inflict _Block_ equal to any additional _Movement_ cost to enter said _Arena_.\n* Slide X: Cause the _Target_ to _Collide_ X with a _Feature_ at their final _Position_.",
-    "type": "Hide"
+    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 3 _Crush_ Damage on them and resolve any collision effect on the Terrain.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_.\n\nIf it was a Forceful Slide, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_.",
+    "type": "Instant Effect"
   },
   { "name": "Forceful Push", "see": "Push" },
   { "name": "Pushed", "see": "Push" },
@@ -398,7 +398,7 @@
   },
   {
     "name": "Shatter",
-    "effect": "When a creature gains Shatter a piece of _Worn_ or _Wielded_ _Equipment_ or a _Breakable_ _Trait_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ that can be _Damaged_ they instead gain _Exposed_ and lose 2 _Guard_.",
+    "effect": "When a creature gains Shatter a piece of _Worn_ or _Wielded_ _Equipment_ or a _Breakable_ _Trait_ loses 1 _Durability_, chosen by the Attacker. If a creature has no remaining _Equipment_ with _Durability_ they instead gain _Exposed_ and lose 2 _Guard_.",
     "type": "Instant Effect"
   },
   {

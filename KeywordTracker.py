@@ -3,6 +3,33 @@ import os
 from termcolor import colored
 import re
 
+keywordPattern = " _([^_]+)_ "
+
+def getKeywordsFromString(input, foundKeywords):
+    r = re.compile(keywordPattern)
+    keywords = re.findall(keywordPattern, input)
+    for keyword in keywords:
+        foundKeywords.add(keyword)
+
+def getAbilityData(ability, foundKeywords, validKeywords):
+    validKeywords.add(ability["name"])
+    for keyword in ability.get("keywords", []):
+        if '_' in keyword:                    
+            foundKeywords.add(re.search(keywordPattern, keyword))
+        else:
+            foundKeywords.add(keyword)
+    for field in ["effect", "special"]:
+        fieldData = ability.get(field, "")
+        getKeywordsFromString(fieldData, foundKeywords)
+    enhancements = ability.get("enhancements", [])
+    for enhancement in enhancements:                
+        fieldData = enhancement.get("effect", "")
+        getKeywordsFromString(fieldData, foundKeywords)
+    imbues = ability.get("imbues", [])
+    for imbue in imbues:                
+        fieldData = imbue.get("effect", "")
+        getKeywordsFromString(fieldData, foundKeywords)
+
 def findKeywordsAndSeeIfInGlossary():
     # Open the appropriate database.
     foundKeywords = set()
@@ -14,21 +41,18 @@ def findKeywordsAndSeeIfInGlossary():
     abilities = json.load(open('.\src\database\\abilities.json'))
     terrain = json.load(open('.\src\database\\terrain.json'))
     traits = json.load(open('.\src\database\\traits.json'))
+    abilityPackages = json.load(open('.\src\database\\ability_packages.json'))
 
     validKeywords = set()
-    for database in [glossary, statuses, abilities, terrain, traits]:
+    for database in [glossary, statuses, abilities, terrain]:
+        for item in database:
+            getAbilityData(item, foundKeywords, validKeywords)
+
+    for database in [abilityPackages, traits]:
         for item in database:
             validKeywords.add(item["name"])
-            for keyword in item.get("keywords", []):
-                if '_' in keyword:                    
-                    foundKeywords.add(re.search(keywordPattern, keyword))
-                else:
-                    foundKeywords.add(keyword)
-            for field in ["effect", "special"]:
-                fieldData = item.get(field, "")
-                keywords = re.findall(keywordPattern, fieldData)
-                for keyword in keywords:
-                    foundKeywords.add(keyword)
+            for ability in item.get("abilities", []):
+                getAbilityData(ability, foundKeywords, validKeywords)
 
     # Get all text files and read them in as strings
     for root, dirs, files in os.walk('src/database/text_files'):

@@ -69,7 +69,7 @@
   },
   {
     "name": "Attack",
-    "effect": "When a creature makes an Attack they roll 2d6 and consult the Attack's _Profile_ (often called the Attack Roll) to determine the effect. On a _Miss_, creatures gain _Momentum_ equal to half of the total cost of the Attack (rounded down), including any purchased _Enhancements_."
+    "effect": "When a creature makes an Attack they roll 2d6 and consult the Attack's _Profile_ (often called the Attack Roll) to determine the effect. If they roll doubles or a  _Crit_ they may apply an applicable _Gambit_ to the Attack, or two if they rolled doubles and a _Crit_. On a _Miss_, creatures gain _Momentum_ equal to half of the total cost of the Attack (rounded down), including any purchased _Enhancements_."
   },
   {
     "name": "Augment",
@@ -136,12 +136,20 @@
     "see": "Climb"
   },
   {
-    "name": "Close",
-    "effect": "Close Range effects may target any valid target within your current _Arena_."
+    "name": "Clock",
+    "effect": "A Clock is a mechanism for tracking progress on a task. Typically, a Clock will be divided into a number of segments and, as progress is made, said segments will be filled in. When filled, the Clock is complete and players will experience consequences or rewards, depending on what the Clock was tracking."
+  },
+  {
+    "name": "Cost",
+    "effect": "The Cost of an Ability is the listed _Momentum_, _Essence_, _Movement_, or _Posture_. This must be paid to use the ability, but some effects (such as _Discount_) may reduce this Cost."
   },
   {
     "name": "Cover",
     "effect": "While in Cover:\n* Non-Melee Attacks against you have _Disadvantage_.\n* You reduce the cost of all _Dodge_ _Reactions_ by 1.\n* When Attacked, gain additional _Block_ equal to twice the Range the Attack was made from."
+  },
+  {
+    "name": "Crit",
+    "effect": "The highest possible success in an _Attack_ or _Defend_. This corresponds to the last row of the table and is typically colored purple. When characters _Crit_, they may add a _Gambit_ to the effect."
   },
   {
     "name": "Crush",
@@ -156,12 +164,26 @@
     "effect": "The various things that can go wrong or make the situation worse when you make a _Skill Challenge_."
   },
   {
+    "name": "Defeated",
+    "effect": "Once an enemy fills their _Health Bar_ they are Defeated. It is assumed that, even after being Defeated, enemies are still living unless the player specifies they wish to kill them. Players may choose to be Defeated when they become _Downed_; if they do, enemies will not intentionally target them for the remainder of the combat, but the downed character may not participate in the combat any longer and may not interact with the battlefield in any way."
+  },
+  { "name": "Defense Roll", "see": "Defend" },
+  { "name": "Defended", "see": "Defend" },
+  {
     "name": "Defend",
-    "effect": "Different abilities may allow a creature to Defend. When a creature Defends, they roll 2d6, consult the chart associated with the Ability, and determine the result (Miss, Graze, Hit, Crit). They then compare this result to the result of the incoming attack and determine if they rolled lower (a Loss), matched the Attacker (Tie), or exceeded the Attacker (Win)."
+    "effect": "Different abilities may allow a creature to Defend. When a creature Defends, they roll 2d6 (often called the _Defense Roll_) and consult the chart associated with the Ability to determine the effect. If they roll doubles or a  _Crit_ they may apply an applicable _Gambit_ to the Attack, or two if they rolled doubles and a _Crit_."
+  },
+  {
+    "name": "Defensive",
+    "effect": "A category of abilities used to defend oneself, typically by increasing _Block_ or minimizing damage. Defensive Stances and Reactions are the most common example of this, but other Abilities may be Defensive as well."
+  },
+  {
+    "name": "Disadvantage",
+    "effect": "When you roll with Disadvantage, roll an additional die then resolve the result with the lowest die. For example, in an _Attack Roll_, you would roll 3d6, then use the lowest 2 die."
   },
   {
     "name": "Discount",
-    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Movement_, _Momentum_, or _Guard_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable attack. Any remaining _Discount_ is lost."
+    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Movement_, _Momentum_, _Essence_, or _Posture_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable effect. Any remaining _Discount_ is lost."
   },
   {
     "name": "Disengage",
@@ -406,10 +428,6 @@
   {
     "name": "Safe",
     "effect": "Any Attacks made as a part of a [_Punish_] _Reaction_ are made at _Disadvantage_ against you this _Turn_."
-  },
-  {
-    "name": "Short",
-    "effect": "Short Range effects may target any valid target within an adjacent _Arena_."
   },
   {
     "name": "Siege",
