@@ -2,8 +2,10 @@
   <div>
     <v-select
       v-if="isMobile"
-      v-model="$route.params.tab"
+      v-model="selectedTab"
       :items="tabs"
+      :item-text="(item) => prettyTab(item)"
+      @change="updateTab(selectedTab)"
       attach
       filled
       outlined
@@ -132,6 +134,7 @@ export default Vue.extend({
   data() {
     return {
       // Add Towns, Downtime, and Player Roles back eventually
+      selectedTab: 'playing-the-game',
       tabs: [
         'playing-the-game',
         'narrative',

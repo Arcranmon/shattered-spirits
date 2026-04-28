@@ -2,8 +2,10 @@
   <div>
     <v-select
       v-if="isMobile"
-      v-model="$route.params.tab"
+      v-model="selectedTab"
       :items="tabs"
+      :item-text="(item) => prettyTab(item)"
+      @change="updateTab(selectedTab)"
       attach
       filled
       outlined
@@ -103,6 +105,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      selectedTab: 'the-world-in-brief',
       tabs: [
         'the-world-in-brief',
         'civilization-now',
@@ -124,6 +127,16 @@ export default Vue.extend({
         [WinonaText, Character.Deserialize(WinonaStats)],
       ],
     }
+  },
+  methods: {
+    prettyTab(tab) {
+      var newTab = tab.replaceAll('-', ' ')
+      newTab = newTab
+        .split(' ')
+        .map((word) => (word != 'and' && word != 'of' && word != 'the' ? word.charAt(0).toUpperCase() + word.slice(1) : word))
+        .join(' ')
+      return newTab.charAt(0).toUpperCase() + newTab.slice(1)
+    },
   },
 })
 </script>

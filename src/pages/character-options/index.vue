@@ -2,8 +2,10 @@
   <div>
     <v-select
       v-if="isMobile"
-      v-model="$route.params.tab"
+      v-model="selectedTab"
       :items="tabs"
+      :item-text="(item) => prettyTab(item)"
+      @change="updateTab(selectedTab)"
       attach
       filled
       outlined
@@ -315,6 +317,7 @@ export default Vue.extend({
   components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
   data() {
     return {
+      selectedTab: 'basic-skills',
       tabs: [
         'basic-skills',
         'archetypes',
