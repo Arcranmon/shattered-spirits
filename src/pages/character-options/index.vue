@@ -4,12 +4,19 @@
       v-if="isMobile"
       v-model="selectedTab"
       :items="tabs"
-      :item-text="(item) => prettyTab(item)"
+      :item-text="(item) => `${prettyTab(item)}`"
       @change="updateTab(selectedTab)"
       attach
       filled
       outlined
-      style="margin: 1em; margin-bottom: -1em" />
+      style="margin: 1em; margin-bottom: -1em">
+      <template v-slot:selection="{ item }">
+        {{ prettyTab(item) }}
+      </template>
+      <template v-slot:item="{ item }">
+        {{ prettyTab(item) }}
+      </template>
+    </v-select>
     <v-row
       class="background"
       style="margin-top: 1em"
