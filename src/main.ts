@@ -48,6 +48,19 @@ Vue.mixin({
     },
   },
   methods: {
+    prettyTab(tab) {
+      var newTab = tab.replaceAll('-', ' ')
+      newTab = newTab
+        .split(' ')
+        .map((word) => (word != 'and' && word != 'of' && word != 'the' ? word.charAt(0).toUpperCase() + word.slice(1) : word))
+        .join(' ')
+      return newTab.charAt(0).toUpperCase() + newTab.slice(1)
+    },
+    updateTab(newTab) {
+      if (this.$route.params.tab != newTab) {
+        this.$router.push({ params: { tab: newTab } })
+      }
+    },
     mobileOrNormal(category_name) {
       if (screen.width <= 760) {
         return category_name + '-mobile'

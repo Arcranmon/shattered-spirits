@@ -2,7 +2,7 @@
   <div>
     <v-select
       v-if="isMobile"
-      v-model="selectedTab"
+      v-model="$route.params.tab"
       :items="tabs"
       attach
       filled
@@ -22,24 +22,25 @@
           overflow-auto>
           <div
             v-for="tab in tabs"
+            :key="tab"
             style="width: 100%">
             <v-btn
-              @click="selectedTab = tab"
+              @click="updateTab(tab)"
               class="button--style"
               depressed
               tile
               block>
-              {{ tab }}
+              {{ prettyTab(tab) }}
             </v-btn>
           </div>
         </v-btn-toggle>
       </v-col>
       <v-col
-        :key="selectedTab"
+        :key="$route.params.tab"
         style="padding-left: 0; padding-bottom: 0; margin-bottom: 0; height: 100%"
         class="background">
-        <h2>{{ selectedTab }}</h2>
-        <div v-if="selectedTab == 'Basic Skills'">
+        <h2>{{ prettyTab($route.params.tab) }}</h2>
+        <div v-if="$route.params.tab == 'basic-skills'">
           <v-tabs
             v-model="abilityTab"
             class="character-tabs"
@@ -91,7 +92,7 @@
         </div>
         <div
           class="character-tab-content"
-          v-if="selectedTab == 'Archetypes'"
+          v-if="$route.params.tab == 'archetypes'"
           style="border-top: 2px solid black">
           <show-cards
             :inputs="archetypes"
@@ -99,11 +100,11 @@
             :cols="1" />
         </div>
 
-        <div v-if="selectedTab == 'Disciplines'"><elemental-disciplines /></div>
-        <div v-if="selectedTab == 'Spirit Arts'"><elemental-arts /></div>
+        <div v-if="$route.params.tab == 'disciplines'"><elemental-disciplines /></div>
+        <div v-if="$route.params.tab == 'spirit-arts'"><elemental-arts /></div>
         <div
           class="character-tab-content"
-          v-if="selectedTab == 'Careers'"
+          v-if="$route.params.tab == 'careers'"
           style="border-top: 2px solid black">
           <show-cards
             :inputs="careers"
@@ -111,7 +112,7 @@
             :cols="1" />
         </div>
 
-        <div v-if="selectedTab == 'Armor and Clothing'">
+        <div v-if="$route.params.tab == 'armor-and-clothing'">
           <v-row
             class="select-bar"
             align="center">
@@ -137,7 +138,7 @@
               :cols="1" />
           </div>
         </div>
-        <div v-if="selectedTab == 'Weapons and Shields'">
+        <div v-if="$route.params.tab == 'weapons-and-shields'">
           <v-row
             dark
             align="center"
@@ -196,8 +197,8 @@
               :cols="1" />
           </div>
         </div>
-        <spirit-abilities v-if="selectedTab == 'Spirit Customization'" />
-        <div v-if="selectedTab == 'Consumables'">
+        <spirit-abilities v-if="$route.params.tab == 'spirit-customization'" />
+        <div v-if="$route.params.tab == 'consumables'">
           <v-row
             class="select-bar"
             align="center">
@@ -221,7 +222,7 @@
               :cols="1" />
           </div>
         </div>
-        <div v-if="selectedTab == 'Travel Items'">
+        <div v-if="$route.params.tab == 'travel-items'">
           <v-row
             class="select-bar"
             align="center">
@@ -245,7 +246,7 @@
               :cols="1" />
           </div>
         </div>
-        <div v-if="selectedTab == 'Equipment'">
+        <div v-if="$route.params.tab == 'equipment'">
           <v-row
             class="select-bar"
             align="center">
@@ -269,7 +270,7 @@
               :cols="1" />
           </div>
         </div>
-        <div v-if="selectedTab == 'Resources'">
+        <div v-if="$route.params.tab == 'resources'">
           <v-row
             class="select-bar"
             align="center">
@@ -314,20 +315,19 @@ export default Vue.extend({
   components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
   data() {
     return {
-      selectedTab: 'Basic Skills',
       tabs: [
-        'Basic Skills',
-        'Archetypes',
-        'Disciplines',
-        'Spirit Arts',
-        'Careers',
-        'Spirit Customization',
-        'Armor and Clothing',
-        'Weapons and Shields',
-        'Consumables',
-        'Travel Items',
-        'Equipment',
-        'Resources',
+        'basic-skills',
+        'archetypes',
+        'disciplines',
+        'spirit-arts',
+        'careers',
+        'spirit-customization',
+        'armor-and-clothing',
+        'weapons-and-shields',
+        'consumables',
+        'travel-items',
+        'equipment',
+        'resources',
       ],
       armorCategories: ['Armor', 'Clothing', 'Helmet', 'Boot', 'Cloak'],
       selectedArmors: ['Armor', 'Clothing', 'Helmet', 'Boot', 'Cloak'],

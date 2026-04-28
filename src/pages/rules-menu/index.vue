@@ -2,7 +2,7 @@
   <div>
     <v-select
       v-if="isMobile"
-      v-model="selectedTab"
+      v-model="$route.params.tab"
       :items="tabs"
       attach
       filled
@@ -21,24 +21,25 @@
           overflow-auto>
           <div
             v-for="tab in tabs"
+            :key="tab"
             style="width: 100%">
             <v-btn
-              @click="selectedTab = tab"
+              @click="updateTab(tab)"
               class="button--style"
               depressed
               tile
               block>
-              {{ tab }}
+              {{ prettyTab(tab) }}
             </v-btn>
           </div>
         </v-btn-toggle>
       </v-col>
       <v-col
-        :key="selectedTab"
+        :key="$route.params.tab"
         style="padding-left: 0; padding-bottom: 0">
-        <h2>{{ selectedTab }}</h2>
+        <h2>{{ prettyTab($route.params.tab) }}</h2>
         <div
-          v-if="selectedTab == 'Conditions and Statuses'"
+          v-if="$route.params.tab == 'statuses'"
           class="character-tab-content">
           <v-select
             v-model="selectedStatuses"
@@ -55,7 +56,7 @@
             :cols="1" />
         </div>
         <div
-          v-if="selectedTab == 'Afflictions and Wounds'"
+          v-if="$route.params.tab == 'conditions-and-wounds'"
           class="character-tab-content">
           <v-select
             v-model="selectedAfflictions"
@@ -72,7 +73,7 @@
             :cols="1" />
         </div>
         <div
-          v-if="selectedTab == 'Terrain'"
+          v-if="$route.params.tab == 'terrain'"
           class="character-tab-content">
           <show-cards
             :inputs="terrains"
@@ -81,12 +82,15 @@
         </div>
 
         <div
-          v-if="selectedTab == 'Glossary'"
+          v-if="$route.params.tab == 'glossary'"
           style="padding-left: 1em">
-          <div v-for="key of glossaryItems.keys()">
+          <div
+            v-for="key of glossaryItems.keys()"
+            :key="key">
             <h3>{{ key }}</h3>
             <div
               v-for="item of glossaryItems.get(key)"
+              :key="item"
               style="padding-bottom: 1em">
               <display-tooltip-text :string="'**' + item.name + ':** ' + item.effect" />
             </div>
@@ -94,7 +98,7 @@
         </div>
         <display-tooltip-text
           v-else
-          :string="text[tabs.indexOf(selectedTab)]"
+          :string="text[tabs.indexOf($route.params.tab)]"
           style="padding-left: 1em" />
       </v-col>
     </v-row>
@@ -127,26 +131,25 @@ export default Vue.extend({
 
   data() {
     return {
-      selectedTab: 'Playing the Game',
       // Add Towns, Downtime, and Player Roles back eventually
       tabs: [
-        'Playing the Game',
-        'Narrative',
-        'Journey',
-        'Combat',
-        'Character Creation and Progression',
-        'Equipment',
-        'Conditions and Statuses',
-        'Afflictions and Wounds',
-        'Terrain',
-        'Player Roles',
-        'Glossary',
+        'playing-the-game',
+        'narrative',
+        'journey',
+        'combat',
+        'character-creation-and-progression',
+        'equipment',
+        'statuses',
+        'conditions-and-wounds',
+        'terrain',
+        'player-roles',
+        'glossary',
       ],
       text: [GameModes, NarrativeText, TravelText, CombatText, CharCreationText, EquipmentText, '', '', '', PlayerRolesText, ''],
-      statusCategories: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
-      selectedStatuses: ['Minor Condition', 'Status Effect', 'Condition', 'Instant Effect'],
-      afflictionCategories: ['Affliction', 'Greater Affliction', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
-      selectedAfflictions: ['Affliction', 'Greater Affliction', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
+      statusCategories: ['Minor Status', 'Status', 'Instant Effect'],
+      selectedStatuses: ['Minor Status', 'Status', 'Instant Effect'],
+      afflictionCategories: ['Condition', 'Greater Condition', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
+      selectedAfflictions: ['Condition', 'Greater Condition', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
       selectedStatus: null,
       selectedTerrain: null,
     }

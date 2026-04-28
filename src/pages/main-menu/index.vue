@@ -2,11 +2,10 @@
   <div>
     <v-row>
       <v-col :cols="columns">
-        <main-menu-button to="/world-menu">The Shattered World</main-menu-button>
-        <main-menu-button to="/rules-menu">Playing the Game</main-menu-button>
-        <main-menu-button to="/character-options">Character Options</main-menu-button>
+        <main-menu-button to="/world/the-world-in-brief">The Shattered World</main-menu-button>
+        <main-menu-button to="/rules/playing-the-game">Playing the Game</main-menu-button>
+        <main-menu-button to="/character-options/basic-skills">Character Options</main-menu-button>
         <!-- 
-        <main-menu-button to="/equipment">Equipment</main-menu-button> <br />
 <custom-button to="/character-creator">Character Creator (WIP)</custom-button> <br /> --->
         <main-menu-button to="/character-manager">Character Manager (WIP)</main-menu-button>
       </v-col>

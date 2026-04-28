@@ -89,12 +89,6 @@
 <script>
 import Vue from 'vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
-import EarthText from '@/database/text_files/spirit_mechanics/earth.txt'
-import WaterText from '@/database/text_files/spirit_mechanics/water.txt'
-import WindText from '@/database/text_files/spirit_mechanics/wind.txt'
-import FlameText from '@/database/text_files/spirit_mechanics/flame.txt'
-import SpiritWeaponText from '@/database/text_files/spirit_mechanics/spirit_weapons.txt'
-import CombatTraitText from '@/database/text_files/spirit_mechanics/combat_traits.txt'
 import SpiritTypeCard from '@/components/cards/SpiritTypeCard.vue'
 import WeaponWidget from '@/components/cards/WeaponWidget.vue'
 import SpiritAbilityOptions from '@/components/SpiritAbilityOptions.vue'
@@ -110,24 +104,6 @@ export default Vue.extend({
   },
   components: { ShowCards, WeaponWidget, SpiritTypeCard, SpiritAbilityOptions },
   computed: {
-    earthText() {
-      return EarthText
-    },
-    waterText() {
-      return WaterText
-    },
-    windText() {
-      return WindText
-    },
-    flameText() {
-      return FlameText
-    },
-    spiritWeaponText() {
-      return SpiritWeaponText
-    },
-    combatTraitText() {
-      return CombatTraitText
-    },
     weapons: function () {
       return this.$store.getters.getFilteredWeapons('Natural', this.selectedType)
     },

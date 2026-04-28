@@ -2,7 +2,7 @@
   <div>
     <v-select
       v-if="isMobile"
-      v-model="selectedTab"
+      v-model="$route.params.tab"
       :items="tabs"
       attach
       filled
@@ -10,7 +10,6 @@
       style="margin: 1em; margin-bottom: -1em" />
     <v-row
       class="page"
-      v-bind:style="mobileMargin"
       style="margin-top: 1em">
       <v-col
         v-if="!isMobile"
@@ -22,22 +21,25 @@
           overflow-auto>
           <div
             v-for="(tab, index) in tabs"
+            :key="index"
             style="width: 100%">
             <v-btn
-              @click="selectedTab = tab"
+              @click="updateTab(tab)"
               class="button--style"
               depressed
               tile
               block>
-              {{ tab }}
+              {{ prettyTab(tab) }}
             </v-btn>
           </div>
         </v-btn-toggle>
       </v-col>
       <v-col>
-        <h2>{{ selectedTab }}</h2>
-        <div v-if="selectedTab == 'Sample Characters'">
-          <div v-for="character in characters">
+        <h2>{{ prettyTab($route.params.tab) }}</h2>
+        <div v-if="$route.params.tab == 'sample-characters'">
+          <div
+            v-for="character in characters"
+            :key="character.Name">
             <display-tooltip-text :string="character[0]" />
             <v-expansion-panels
               v-if="!showChart"
@@ -62,7 +64,7 @@
           </div>
         </div>
         <div v-else>
-          <display-tooltip-text :string="text[tabs.indexOf(selectedTab)]" />
+          <display-tooltip-text :string="text[tabs.indexOf($route.params.tab)]" />
         </div>
       </v-col>
     </v-row>
@@ -101,16 +103,15 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedTab: 'The World in Brief',
       tabs: [
-        'The World in Brief',
-        'Civilization Now',
-        'Spirits',
-        'Spiritcraft',
-        'Dangers of the Shattered World',
-        'The Seasons',
-        'The Greenvale',
-        'Sample Characters',
+        'the-world-in-brief',
+        'civilization-now',
+        'spirits',
+        'spiritcraft',
+        'dangers-of-the-shattered-world',
+        'the-seasons',
+        'the-greenvale',
+        'sample-characters',
       ],
       text: [WorldText, Civilization, Spirits, Spiritcraft, Threats, Seasons, Greenvale, ''],
       count: 0,

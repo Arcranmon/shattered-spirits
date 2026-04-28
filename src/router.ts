@@ -21,24 +21,27 @@ const r = new Router({
         title: 'Shattered Spirits',
       },
     },
+    { path: '/world', redirect: '/world/the-world-in-brief' },
     {
-      path: '/world-menu',
+      path: '/world/:tab',
       component: require('@/pages/world-menu/index.vue').default,
-      name: 'world-menu',
+      name: 'world',
       meta: {
         title: 'World',
       },
     },
+    { path: '/rules', redirect: '/rules/playing-the-game' },
     {
-      path: '/rules-menu',
+      path: '/rules/:tab',
       component: require('@/pages/rules-menu/index.vue').default,
-      name: 'rules-menu',
+      name: 'rules',
       meta: {
         title: 'Rules',
       },
     },
+    { path: '/character-options', redirect: '/character-options/basic-skills' },
     {
-      path: '/character-options',
+      path: '/character-options/:tab',
       component: require('@/pages/character-options/index.vue').default,
       name: 'character-options',
       meta: {
@@ -59,38 +62,6 @@ const r = new Router({
       name: 'character-creator',
       meta: {
         title: 'Character Creator',
-      },
-    },
-    {
-      path: '/combat-primer',
-      component: require('@/pages/combat/combat-primer/index.vue').default,
-      name: 'combat-primer',
-      meta: {
-        title: 'Combat Primer',
-      },
-    },
-    {
-      path: '/reading-abilities',
-      component: require('@/pages/combat/reading-abilities/index.vue').default,
-      name: 'reading-abilities',
-      meta: {
-        title: 'Reading Abilities',
-      },
-    },
-    {
-      path: '/features',
-      component: require('@/pages/combat/features/index.vue').default,
-      name: 'features',
-      meta: {
-        title: 'Features',
-      },
-    },
-    {
-      path: '/martial-disciplines',
-      component: require('@/pages/martial-disciplines/index.vue').default,
-      name: 'martial-disciplines',
-      meta: {
-        title: 'Martial Disciplines',
       },
     },
     {
