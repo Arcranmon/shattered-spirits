@@ -71,7 +71,7 @@ class Base {
     if (this.Type == 'Skill') {
       return this.effect_
     }
-    return '**_Effect_:** ' + this.effect_
+    return '**Effect:** ' + this.effect_
   }
   public get HasKeywords() {
     return this.keywords_.length > 0

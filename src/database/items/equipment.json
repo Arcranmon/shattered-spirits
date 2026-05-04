@@ -1,15 +1,5 @@
 [
   {
-    "name": "Pipe",
-    "category": "Trinket",
-    "desc": "A small pipe that can be used.",
-    "load": 1,
-    "hands": 1,
-    "durability": 1,
-    "rarity": "Common",
-    "effect": "You may use this item to relax using _Herbal Remedy_ or other similar items."
-  },
-  {
     "name": "Sketchbook",
     "category": "Trinket",
     "desc": "A small, many-page book for sketching in, coupled with a simple charcoal pencil.",
@@ -26,7 +16,7 @@
     "hands": 1,
     "durability": 1,
     "rarity": "Common",
-    "effect": "This leather quiver is full of arrows that can be used as _Ammunition_ for a variety of bows. Unless the character has specialized arrows, these are treated as a _Least Source_ (_Metal_, _Wood_) and applicable attacks use _Metal_ as the _Material_."
+    "effect": "This leather quiver is full of arrows that can be used as _Missiles_ for a variety of bows. Unless the character has specialized arrows, these are treated as a _Least Source_ (_Metal_, _Wood_) and applicable attacks use _Metal_ as the _Material_."
   },
   {
     "name": "Books",
@@ -36,16 +26,6 @@
     "hands": 1,
     "durability": 1,
     "rarity": "Uncommon"
-  },
-  {
-    "name": "Herbal Remedy",
-    "category": "Herb",
-    "desc": "Herbs that, when smoked, allow you to relax and unwind.",
-    "load": 1,
-    "hands": 1,
-    "durability": 1,
-    "rarity": "Common",
-    "effect": "When you take the _Vent_ _Camp Action_, if you have a _Pipe_ you can consume this; you and the character you are _Venting_ with clear an additional _Stress_. However, neither of you can remove the <u>Crash</u> Danger from your Rest Roll if you do so.\n&nbsp;\nAlternatively, this may be Refined into _Wood Essence_."
   },
   {
     "name": "Flask of Earthen Power",
@@ -66,6 +46,15 @@
         "effect": "Create an [_Opening_]. If you are an _Earthbound_, this _Round_ you may not be _Suppressed_ and immediately gain 4 _Essence_. If you are a Windbound, instead gain _Poisoned_ 5. Otherwise, gain _Poisoned_ 1."
       }
     ]
+  },
+  {
+    "name": "Combat Waterflask",
+    "keywords": ["_Minor Source_ (_Water_)"],
+    "category": "Trinket",
+    "load": 2,
+    "durability": 1,
+    "desc": "A water-tight pouch containing a large amount of water with an easy-open lid for convenience.",
+    "effect": "This may also be treated as _Supplies_ for the purpose of water; if it is, it may not be used until refilled with water."
   },
   {
     "name": "Health Flask",
@@ -226,7 +215,7 @@
     "category": "Tool",
     "load": 1,
     "durability": 1,
-    "effect": "A set of needles, thread, and assorted scrap that can be used to repair Organic equipment while traveling.",
+    "effect": "A set of needles, thread, and assorted scrap that can be used to repair appropriate equipment while traveling. This is typically useful for cloth and leather garments.",
     "desc": "Sewing supplies that are excellent for field repairs of equipment."
   },
   {
@@ -259,15 +248,6 @@
         "effect": "Whenever you make camp, you may choose to set your fishing line and roll on the applicable **Fishing Chart** at _Disadvantage. If you use your _Camp Action_, roll normally."
       }
     ]
-  },
-  {
-    "name": "Wine",
-    "category": "Luxury",
-    "desc": "While it's hardly the finest vintage, this fortified wine is excellent for taking the edge off after a hard day of traveling.",
-    "load": 1,
-    "keywords": ["Alcohol"],
-    "durability": 1,
-    "effect": "You may consume this while resting to automatically clear a _Stress_, but cannot remove the <u>Crash</u> Danger from their Rest Roll if you do so."
   },
   {
     "name": "Burning Ruby",
@@ -308,23 +288,33 @@
     "effect": "This may be used to assist in climbing surfaces when coupled with a rope."
   },
   {
-    "name": "Polish Kit",
-    "category": "Tool",
-    "desc": "Various rags and oils for keeping metal sparkling and pristine.",
+    "name": "Relaxation Item",
+    "category": "Camp Item",
+    "desc": "An item useful for relaxation, such as a pipe, tea set, puzzle, or journal.",
     "load": 1,
     "durability": 1,
-    "effect": "Metal Spirits enjoy being Pampered with this item."
+    "effect": "When you take the _Rest_ _Camp Action_ you may use this item to attempt to clear _Stress_. Roll a d6; on a 4+, clear one _Stress_. This item also may be useful in certain situations at your GM's discretion. After failing the roll, you may choose to _Shatter_ this item to automatically succeed.",
+    "special": "You may choose to have a bulkier version of this item that takes an additional 1-2 _Load_; if you do, gain an equivalent bonus to the roll used for this item."
   },
   {
-    "name": "Ball",
-    "category": "Supply",
-    "desc": "A large makeshift ball that is excellent for catch, fetch, and similar games.",
+    "name": "Gaming Set",
+    "category": "Camp Item",
+    "desc": "A deck of cards, portable chess set, or some other item that can be used to unwind.",
     "load": 1,
     "durability": 1,
-    "effect": "Some spirits enjoy being Pampered with this item, but it requires sufficient space to use and creates noise."
+    "effect": "When you take the _Connect_ _Camp Action_ you may use this item to attempt to clear _Stress_. Roll a d6; on a 4+, you win the game and have _Advantage_ on your roll to clear a _Stress_. On a 3-, the other character wins and has _Advantage_ on their roll instead."
   },
   {
-    "name": "Herbalist's Supplies",
+    "name": "Pampering Tool",
+    "category": "Camp Item",
+    "desc": "A set of fireproof combs, a ball that can stand up to an earth spirit's jaws, or some other tool that can be used to entertain or groom your spirit.",
+    "load": 1,
+    "durability": 1,
+    "effect": "When you take the _Pamper_ _Camp Action_ you may use this item to attempt to clear _Stress_. Roll a d6; on a 4+, you or your Spirit may clear an additional _Stress_. This item also may be useful in certain situations at your GM's discretion. After failing the roll, you may choose to _Shatter_ this item to automatically succeed.",
+    "special": "You may choose to have a bulkier version of this item that takes an additional 1-2 _Load_; if you do, gain an equivalent bonus to the roll used for this item."
+  },
+  {
+    "name": "Herbalism Supplies",
     "category": "Supply",
     "desc": "A collection of herbs that only a skilled herbalist knows how to use.",
     "load": 1,
@@ -337,15 +327,7 @@
     "desc": "The many supplies needed for travel such as food, water, medicine, and various expendable bits needed to make camp.",
     "load": 1,
     "durability": 1,
-    "effect": "This item is a rough collection of a variety of supplies needed for travel. While _Making Camp_ you may this for a variety of effects:\n* Gain two _Poor Meals_ or one _Basic Meal_.\n* Gain a day's worth of water.\n* Gain firewood and other resources needed to sustain a fire for the night.\n* Gain alcohol, mild drugs, or some other relaxing substances. You may _Cut Loose_, but roll -1 die on your _Rest Roll_.\n* Gain small elemental trinkets that may be consumed during the _Pamper_ Action with a _Spirit_.\n* Gain basic medicine; it may be used for the _Patch_ _Camp Action_.\n\nMany toolkits and _Careers_ supply additional ways to spend Supplies. Additionally, when traveling in harsh terrain _Supplies_ may be required to make camp or otherwise endure."
-  },
-  {
-    "name": "Forest Offering",
-    "category": "Supply",
-    "desc": "A collection of herbs and small collections of essence that are pleasing to earth and wood spirits, and encourage them to guide travelers towards shrines.",
-    "load": 1,
-    "durability": 1,
-    "effect": "Once per day, a party member may give this offering while traveling in a forest or similar location. If you do, you gain +1 _Affinity_ on the route, or +2 if presented at a shrine or similar location."
+    "effect": "This item is a rough collection of a variety of supplies needed for travel. While _Making Camp_ you may this for a variety of effects:\n* Gain two _Poor Meals_ or one _Basic Meal_.\n* Gain a day's worth of water.\n* Gain firewood and other resources needed to sustain a fire for the night.\n* Gain alcohol, mild drugs, or some other relaxing substances. You may _Cut Loose_, but roll -1 die on your _Rest Roll_.\n* Gain basic medicine; it may be used for the _Patch_ _Camp Action_.\n\nMany toolkits and _Careers_ supply additional ways to spend Supplies. Additionally, when traveling in harsh terrain _Supplies_ may be required to make camp or otherwise endure. Finally, Supplies may be expended without a _Camp Action_ when they would be useful for traveling or in combat, such as to provide torches or similar expendable items."
   },
   {
     "name": "Camping Kit",
@@ -369,7 +351,7 @@
     "keywords": ["Quickdraw", "Consumable", "Fragile"],
     "load": 1,
     "durability": 1,
-    "effect": "This may be used as if it was _Medicine_ for a non-Spirit character suffering from a _Poison_ _Wound_; if it is, the character may mark an additional two segments on the Wound.",
+    "effect": "This may be used as if it was _Medicine_ for a non-Spirit character suffering from an _Envenomed_ _Wound_; if it is, the character may mark an additional two segments on the Wound.",
     "abilities": [
       {
         "name": "Drink",
@@ -389,30 +371,20 @@
     "desc": "15 meters of rope. There is absolutely no use for rope on adventures, it has yet to be found."
   },
   {
-    "name": "Bandages",
-    "category": "Supply",
+    "name": "Lantern",
+    "category": "Tool",
     "load": 1,
     "durability": 1,
-    "desc": "Basic bandages for patching up an injured companion.",
-    "effect": "These may be treated as _Medicine_ for some types of Wounds. After being used for any effect Bandages are unusable but, as a _Camp Action_ when you have the ability to boil them, any number of Bandages can be made usable again.",
-    "abilities": [
-      {
-        "name": "Bandage",
-        "category": "Recovery",
-        "type": "Maneuver",
-        "cost": "1 _Momentum_",
-        "range": "Melee",
-        "target": "You or an ally within Range.",
-        "effect": "You and the target both create an _Opening_. Reduce their _Bleeding_ by 3."
-      }
-    ]
+    "desc": "A small metal lantern that, with appropriate fuel, can provide light for an extended period.",
+    "effect": "Any _Supplies_ used to create light with this have a greatly increased effect and duration."
   },
   {
-    "name": "Torch",
-    "category": "Supply",
+    "name": "Iron Spikes",
+    "category": "Trinket",
     "load": 1,
     "durability": 1,
-    "desc": "A torch that can easily be lit, providing bright light for about an hour."
+    "keywords": ["_Stack_ (4)"],
+    "desc": "Long iron spikes that have a wide variety of uses, such as pitons or as a projectile for those with lodecraft."
   },
   {
     "name": "Spices",
@@ -431,45 +403,7 @@
     "load": 1,
     "durability": 1,
     "desc": "Salt, useful for both harassing air spirits and preserving food.",
-    "effect": "A single use of this may be used to preserve any _Meat_, allowing it to remain good over a _Journey_. Additionally, if used as an _Improvised Weapon_, inflict _Poisoned_ 1 on any _Air Spirit_ it hits for each use. Up to two uses may be thrown at once."
-  },
-  {
-    "name": "Rations",
-    "category": "Food",
-    "keywords": ["_Food_ (Bad)"],
-    "load": 1,
-    "desc": "Dried food such as tough jerky and hardtack that, while an unpleasant meal, is enough to keep you moving."
-  },
-  {
-    "name": "Hard Cheese",
-    "category": "Food",
-    "keywords": ["_Food_ (Good)"],
-    "load": 1,
-    "desc": "Hard cheese that keeps on the road and is still delicious."
-  },
-  {
-    "name": "High Quality Jerky",
-    "category": "Food",
-    "keywords": ["_Food_ (Good)"],
-    "load": 1,
-    "desc": "Excellent jerky made from a good cut of meat and expertly smoked."
-  },
-  {
-    "name": "Iron Scrap",
-    "category": "Supply",
-    "load": 1,
-    "durability": 1,
-    "keywords": ["_Minor Source_ (_Metal_)"],
-    "desc": "Assorted random bits of scrap metal, typically used for extensive equipment repair.",
-    "effect": "While _Worn_, this may be treated as an effectively unlimited source for _Least Source_ (_Metal_) items."
-  },
-  {
-    "name": "Waterskin",
-    "keywords": ["_Minor Source_ (_Water_)"],
-    "category": "Camp Item",
-    "load": 1,
-    "durability": 1,
-    "desc": "A water-tight pouch containing a day's worth of water."
+    "effect": "A single use of this may be used to preserve a _Meal_ that is predominately meat, such as from _Hunting_ or _Fishing_. It becomes a _Ration_, which may be consumed at any point during the journey. Additionally, if used as an _Improvised Weapon_, inflict _Poisoned_ 2 on any Wind spirit it hits for each use. Up to two uses may be thrown at once."
   },
   {
     "name": "Medicinal Herbs",
