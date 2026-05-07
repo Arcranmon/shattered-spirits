@@ -32,10 +32,7 @@ export default Vue.extend({
         ['3-5', 'You find _Supplies_ as well as water for the party and sufficient kindling for camp.'],
         ['6-8', 'You find 2 _Supplies_ as well as water for the party and sufficient kindling for camp.'],
         ['9-11', 'You find 3 _Supplies_ as well as water for the party and sufficient kindling for camp.'],
-        [
-          '12',
-          'You find either 2 _Medicinal Herbs_ or a bounty of perfectly ripe, tasty fruit (4 Good _Food_) as well as water for the party and sufficient kindling for camp.',
-        ],
+        ['12', 'You find either 4 _Supplies_ as well as water for the party and sufficient kindling for camp.'],
       ],
       greenvaleHunting: [
         ['2-3', "You accidentally stumble in a dangerous, territorial spirit's territory and will need to find your way out of this situation."],

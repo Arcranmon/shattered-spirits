@@ -51,7 +51,19 @@ const kPlayerAbilities = [
   'Concentrate',
 ]
 
-const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Accelerate', 'Spiritcraft', 'Drop', 'Equip', 'Spiritbound', 'Delay']
+const kSpiritAbilities = [
+  'Return',
+  'Perfect Parry',
+  'Perfect Dodge',
+  'Gain Advantage',
+  'Accelerate',
+  'Spiritcraft',
+  'Drop',
+  'Equip',
+  'Spiritbound',
+  'Flank',
+  'Delay',
+]
 
 const kBasicAbilities = [
   'Brawl',

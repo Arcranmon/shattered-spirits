@@ -56,7 +56,9 @@ def findKeywordsAndSeeIfInGlossary():
                 getAbilityData(ability, foundKeywords, validKeywords)
 
     # Get all text files and read them in as strings
+    exclude = set(['character_creation'])
     for root, dirs, files in os.walk('src/database/text_files'):
+        dirs[:] = [d for d in dirs if d not in exclude]       
         for filename in files:
             if filename.endswith(".txt"):
                 filepath = os.path.join(root, filename)
