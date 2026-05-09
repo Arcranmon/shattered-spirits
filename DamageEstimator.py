@@ -12,6 +12,7 @@ momentum_value = 2
 status_multipliers = {
     "Bleeding": 2,
     "Alight": 1,
+    "Frosted": 1,
     "Soaked": 0.5,
     "Exposed": 1.5,
     "Impaired": 1.5,

@@ -230,7 +230,16 @@
     "effect": "While a creature has Alight they take _Fire_ Damage equal to its value at the end of their _Turn_, then increases their Alight value by 1 and _Ignite_ their _Engagement_. This Damage ignores _Block_, unless the target has any level of _Resistance_ to _Fire_. Additionally, the creature can be treated as a _Minor Source_ [_Flame_]. Finally, they increase their [_Cold_] Resistance by 1 step.",
     "repeat": "Alight stacks, and if a creature gains Alight again combine the values.",
     "recover": "When a creature _Recovers_ they may _Negate_ with _Reflex_ and reduce their Alight by half the result. They may choose to drop _Prone_ as a part of this; if they do, they roll with _Advantage_ and instead reduce their Alight by the full value. Additionally, if a creature gains _Soaked_ they clear all Alight.",
-    "special": "Creatures with _Resistance_ (_Fire_) reduces any afflicted Alight by their number of _Resistance_ steps, and automatically clears the same amount of _Alight_ at _Respite_.",
+    "special": "Creatures with _Resistance_ (_Fire_) reduces any afflicted Alight by their number of _Resistance_ steps, and automatically clears the same amount of Alight at _Respite_.",
+    "type": "Status"
+  },
+  {
+    "name": "Frozen",
+    "desc": "An condition caused when you are covered by thick ice.",
+    "effect": "While a creature has Frozen they take _Stab_ _Damage_ equal to its value at the end of any _Turn_ that they spend _Movement_. Additionally, the creature can be treated as a _Minor Source_ [_Ice_]. Finally, they increase their [_Fire_] Resistance by 1 step.",
+    "repeat": "Frozen stacks, and if a creature gains Frozen again combine the values.",
+    "recover": "When a creature _Recovers_ they may _Negate_ with _Grit_ and reduce their Frozen by half the result. Additionally, whenever a creature takes _Fire_ Damage they reduce their Frozen by 2, and by 1 when they take _Crush_ Damage.",
+    "special": "Creatures with _Resistance_ (_Cold_) reduces any afflicted Frozen by their number of _Resistance_ steps, and automatically clears the same amount of Frozen at _Respite_. Finally, when a creature inflicts _Shatter_ on a Frozen creature, they can choose to clear any amount of Frozen, inflict additional Damage equal to twice the Frozen removed.",
     "type": "Status"
   },
   {
@@ -244,7 +253,7 @@
   {
     "name": "Soaked",
     "desc": "You are drenched in water.",
-    "effect": "While a creature is Soaked:\n* Increase their _Resistance_ to _Fire_ by one step.\n* They may not gain _Alight_. If they would gain at least _Alight_ 3 from a single effect, remove Soaked.\n* Increase their weakness to _Cold_ by one step; if they take _Cold_ damage, remove Soaked and automatically inflict _Frost_ 2.\n* Increase their _Weakness_ to _Lightning_ by two steps.",
+    "effect": "While a creature is Soaked:\n* Increase their _Resistance_ to _Fire_ by one step.\n* They may not gain _Alight_. If they would gain at least _Alight_ 3 from a single effect, remove Soaked.\n* Increase their weakness to _Cold_ by one step; if they take _Cold_ damage, remove Soaked and automatically inflict _Frosted_ 2.\n* Increase their _Weakness_ to _Lightning_ by two steps.",
     "repeat": "Soaked does not stack.",
     "remove": "Only effects that specifically remove Soaked remove it.",
     "type": "Status"
