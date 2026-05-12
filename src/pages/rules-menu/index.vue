@@ -159,7 +159,7 @@ export default Vue.extend({
       statusCategories: ['Minor Status', 'Emotional Status', 'Status', 'Instant Effect'],
       selectedStatuses: ['Minor Status', 'Emotional Status', 'Status', 'Instant Effect'],
       afflictionCategories: ['Condition', 'Greater Condition', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
-      selectedAfflictions: ['Condition', 'Greater Condition', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
+      selectedAfflictions: ['Condition', 'Minor Wound'],
       selectedStatus: null,
       selectedTerrain: null,
     }
