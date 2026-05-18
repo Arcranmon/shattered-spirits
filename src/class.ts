@@ -3,6 +3,7 @@ import Combatant from './classes/Combatant'
 import Defenses from './classes/Defenses'
 import Base from './classes/Base'
 import AbilityPackage from './classes/AbilityPackage'
+import GlossaryItem from './classes/GlossaryItem'
 import Equipment from './classes/Equipment'
 import Bonuses from './classes/Bonuses'
 import Ability from './classes/Ability'
@@ -32,6 +33,7 @@ export {
   Combatant,
   Defenses,
   Equipment,
+  GlossaryItem,
   Npc,
   Feature,
   Spirit,
