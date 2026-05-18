@@ -83,31 +83,7 @@
 import Vue from 'vue'
 import BaseWidget from '../BaseWidget.vue'
 import EquipmentWidget from './EquipmentWidget.vue'
-import FeatureCard from './FeatureCard.vue'
-import StanceCard from './StanceCard.vue'
-import StatusCard from './StatusCard.vue'
-import TechCard from './TechCard.vue'
-import TerrainCard from './TerrainCard.vue'
-import WeaponWidget from './WeaponWidget.vue'
-import SpiritTypeCard from './SpiritTypeCard.vue'
-import SpiritFormCard from './SpiritFormCard.vue'
-import TraitCard from './TraitCard.vue'
-import {
-  AbilityPackage,
-  Armor,
-  Equipment,
-  Archetype,
-  Feature,
-  Stance,
-  Status,
-  Career,
-  Technique,
-  SpiritForm,
-  Trait,
-  Terrain,
-  Weapon,
-  SpiritType,
-} from '@/class'
+import { AbilityPackage, Armor, Equipment, Stance, Status, Technique, SpiritForm, Trait, Terrain, Weapon } from '@/class'
 
 export default Vue.extend({
   name: 'show-cards',
@@ -170,15 +146,6 @@ export default Vue.extend({
   components: {
     BaseWidget,
     EquipmentWidget,
-    FeatureCard,
-    StanceCard,
-    StatusCard,
-    TechCard,
-    TerrainCard,
-    WeaponWidget,
-    SpiritFormCard,
-    SpiritTypeCard,
-    TraitCard,
   },
   methods: {
     clickMethod(variable, index) {

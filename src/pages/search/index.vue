@@ -1,8 +1,9 @@
 <template>
   <div style="margin: 1em">
+    <h2>Search</h2>
     <v-autocomplete
       v-model="searchItem"
-      label="Search"
+      label="Start typing here to filter options!"
       :filter="nameFilter"
       :items="$store.getters.getEverything()"
       filled>
@@ -15,7 +16,7 @@
     >
     <show-appropriate-card
       :input="searchItem"
-      :key="searchItem" />
+      :key="searchItem.Name" />
   </div>
 </template>
 

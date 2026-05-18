@@ -1,18 +1,22 @@
 <template>
   <div>
-    <span v-if="input instanceof GlossaryItem"> <display-tooltip-text :string="input.DisplayText" /> </span>
-    <span v-if="input instanceof Weapon">
+    <div
+      v-if="input instanceof GlossaryItem"
+      class="object bordered">
+      <display-tooltip-text :string="input.DisplayText" />
+    </div>
+    <div v-else-if="input instanceof Weapon">
       <weapon-widget
         :weapon="input"
         :format_text="true"
         class="object rounded-corner" />
-    </span>
-    <span v-if="input instanceof Ability || input instanceof AbilityPackage">
+    </div>
+    <div v-else-if="input instanceof Ability || input instanceof AbilityPackage || input instanceof Terrain || input instanceof Status">
       <base-widget
         :ability="input"
         :format_text="true"
         class="object rounded-corner" />
-    </span>
+    </div>
   </div>
 </template>
 
@@ -45,6 +49,10 @@ export default Vue.extend({
   border: none;
   font-size: $font-size--m;
   background-color: $color--off-white;
+}
+.bordered {
+  padding: 0.25em;
+  border: $border--black-standard;
 }
 .rounded-corner {
   border-top-left-radius: 1.5em;

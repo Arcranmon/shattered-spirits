@@ -321,7 +321,6 @@
 <script>
 import Vue from 'vue'
 import { Character } from '@/class'
-import StanceCard from '@/components/cards/StanceCard.vue'
 import TypeCard from '@/components/cards/SpiritTypeCard.vue'
 import ShowCards from '@/components/cards/ShowCards.vue'
 import ShowAbilities from '@/components/cards/ShowAbilities.vue'
@@ -339,7 +338,6 @@ export default Vue.extend({
     ShowAbilities,
     ShowCards,
     BaseWidget,
-    StanceCard,
     TypeCard,
     StatusWidget,
     TraitsAndWeaponsWidget,

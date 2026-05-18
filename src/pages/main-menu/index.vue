@@ -7,7 +7,7 @@
         <main-menu-button to="/character-options/basic-skills">Character Options</main-menu-button>
         <!-- 
 <custom-button to="/character-creator">Character Creator (WIP)</custom-button> <br /> --->
-        <main-menu-button to="/character-manager">Character Manager (WIP)</main-menu-button>
+        <main-menu-button to="/search">Search</main-menu-button>
       </v-col>
       <v-col :cols="columns">
         <display-tooltip-text

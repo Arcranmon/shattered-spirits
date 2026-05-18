@@ -49,14 +49,6 @@ const r = new Router({
       },
     },
     {
-      path: '/character-creator',
-      component: require('@/pages/character-creator/index.vue').default,
-      name: 'character-creator',
-      meta: {
-        title: 'Character Creator',
-      },
-    },
-    {
       path: '/npcs',
       component: require('@/pages/npcs/index.vue').default,
       name: 'npcs',

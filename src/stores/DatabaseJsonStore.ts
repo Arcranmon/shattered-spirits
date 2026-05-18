@@ -8,33 +8,16 @@ import AbilityPackageJson from '@/database/ability_packages.json'
 import AbilitiesJson from '@/database/abilities.json'
 
 import Glossary from '@/database/glossary/glossary.json'
-import Traits from '@/database/traits.json'
-import Statuses from '@/database/glossary/statuses.json'
+import StatusJson from '@/database/glossary/statuses.json'
 
-import Terrains from '@/database/terrain.json'
+import TerrainJson from '@/database/terrain.json'
 
 import SpiritTypeJson from '@/database/spirit_types.json'
 
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import {
-  AbilityPackage,
-  Armor,
-  Archetype,
-  Equipment,
-  GlossaryItem,
-  Npc,
-  Feature,
-  SpiritForm,
-  Subtype,
-  Stance,
-  Status,
-  Terrain,
-  Trait,
-  Weapon,
-  Ability,
-} from '@/class'
+import { AbilityPackage, Armor, Equipment, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -114,6 +97,8 @@ export class DatabaseJsonStore extends VuexModule {
     this.Equipments = EquipmentJson.map((x) => Equipment.Deserialize(<IEquipmentData>(<unknown>x)))
     this.Traits = TraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
     this.Stances = StancesJson.map((x) => Stance.Deserialize(<IStanceData>(<unknown>x)))
+    this.Terrains = TerrainJson.map((x) => Terrain.Deserialize(<ITerrainData>(<unknown>x)))
+    this.Statuses = StatusJson.map((x) => Status.Deserialize(<IStatusData>(<unknown>x)))
     this.Everything = this.Everything.concat(
       this.GlossaryItems,
       this.Armors,
@@ -123,6 +108,8 @@ export class DatabaseJsonStore extends VuexModule {
       this.AbilityPackages,
       this.Stances,
       this.Traits,
+      this.Terrains,
+      this.Statuses,
     )
 
     this.Everything.sort((a, b) => a.Name.localeCompare(b.Name))
@@ -134,12 +121,13 @@ export class DatabaseJsonStore extends VuexModule {
   private Weapons: Weapon[] = []
   private Subtypes: Subtype[] = []
   private SpiritForms: SpiritForm[] = []
-  private Archetypes: Archetype[] = []
   private Stances: Stance[] = []
   private AbilityPackages: AbilityPackage[] = []
   private Equipments: Equipment[] = []
   private Traits: Trait[] = []
   private Abilities: Ability[] = []
+  private Terrains: Terrain[] = []
+  private Statuses: Status[] = []
 
   get basicStances() {
     return ['Open Stance', 'Rallying Stance', 'Guarded Stance', 'Agile Stance', 'Hostile Stance', 'Focused Stance']
@@ -528,20 +516,19 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get isTerrain(): any {
     return (inword: string) => {
-      return Terrains.some((x) => x.name == inword.trim())
+      return this.Terrains.some((x) => x.Name == inword.trim())
     }
   }
 
   get getTerrain(): any {
     return (inword: string) => {
-      var feature = Terrains.find((x) => x.name.trim() === inword.trim())
-      return Terrain.Deserialize(<ITerrainData>feature)
+      return this.Terrains.find((x) => x.Name === inword.trim())
     }
   }
 
   get getTerrains(): any {
     return () => {
-      return Terrains.map((x) => Terrain.Deserialize(<ITerrainData>x))
+      return this.Terrains
     }
   }
 
@@ -550,39 +537,37 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get isStatus(): any {
     return (inword: string) => {
-      return Statuses.some((x) => x.name == inword.trim())
+      return this.Statuses.some((x) => x.Name == inword.trim())
     }
   }
 
   get getStatus(): any {
     return (inword: string) => {
-      var status = Statuses.find((x) => x.name.trim() === inword.trim())
-      if (status.hasOwnProperty('see')) return this.getStatus(status.see)
-      return Status.Deserialize(<IStatusData>status)
+      return this.Statuses.find((x) => x.Name === inword.trim())
     }
   }
 
   get getStatuses(): any {
     return () => {
-      return Statuses.map((x) => Status.Deserialize(<IStatusData>x))
+      return this.Statuses
     }
   }
 
   get getFullStatuses(): any {
     return () => {
-      return Statuses.filter((x) => !x.hasOwnProperty('see')).map((x) => Status.Deserialize(<IStatusData>x))
+      return StatusJson.filter((x) => !x.hasOwnProperty('see')).map((x) => Status.Deserialize(<IStatusData>x))
     }
   }
 
   get getStatusesByType(): any {
     return (type: string) => {
-      return Statuses.filter((x) => x.type.trim() === type.trim()).map((x) => Status.Deserialize(<IStatusData>x))
+      return StatusJson.filter((x) => x.type.trim() === type.trim()).map((x) => Status.Deserialize(<IStatusData>x))
     }
   }
 
   get getFilteredStatuses(): any {
     return (types: Array<string>) => {
-      return Statuses.filter((x) => !x.hasOwnProperty('see') && types.includes(x.type.trim())).map((x) => Status.Deserialize(<IStatusData>x))
+      return StatusJson.filter((x) => !x.hasOwnProperty('see') && types.includes(x.type.trim())).map((x) => Status.Deserialize(<IStatusData>x))
     }
   }
 

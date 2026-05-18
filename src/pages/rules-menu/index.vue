@@ -126,14 +126,12 @@ import GameModes from '@/database/text_files/game_modes.txt'
 import CombatText from '@/database/text_files/combat_rules/combat.txt'
 import CharCreationText from '@/database/text_files/character_creation_and_progression.txt'
 import ShowCards from '@/components/cards/ShowCards.vue'
-import StatusCard from '@/components/cards/StatusCard.vue'
 import BasicTable from '@/components/BasicTable.vue'
 
 export default Vue.extend({
   name: 'rules-menu',
   components: {
     CustomButton,
-    StatusCard,
     ShowCards,
     BasicTable,
   },

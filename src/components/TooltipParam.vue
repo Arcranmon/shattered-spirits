@@ -19,27 +19,6 @@
       </v-menu>
     </span>
     <span
-      v-else-if="this.$store.getters.isTerrain(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <base-widget
-          :ability="this.$store.getters.getTerrain(input)"
-          :tooltip="true" />
-      </v-menu>
-    </span>
-    <span
       v-else-if="this.$store.getters.isStatus(input)"
       attach>
       <v-menu
@@ -84,13 +63,6 @@
 import Vue from 'vue'
 import { store } from '@/store'
 import BaseWidget from './BaseWidget.vue'
-import ManeuverCard from './cards/ManeuverCard.vue'
-import FeatureCard from './cards/FeatureCard.vue'
-import StanceCard from './cards/StanceCard.vue'
-import StatusCard from './cards/StatusCard.vue'
-import TechCard from './cards/TechCard.vue'
-import TerrainCard from './cards/TerrainCard.vue'
-import TraitCard from './cards/TraitCard.vue'
 import WeaponWidget from './cards/WeaponWidget.vue'
 import AbilityWidget from './AbilityWidget.vue'
 import ShowAppropriateCard from './ShowAppropriateCard.vue'
@@ -99,13 +71,6 @@ export default Vue.extend({
   components: {
     ShowAppropriateCard,
     BaseWidget,
-    ManeuverCard,
-    FeatureCard,
-    StanceCard,
-    StatusCard,
-    TechCard,
-    TerrainCard,
-    TraitCard,
     WeaponWidget,
     AbilityWidget,
   },

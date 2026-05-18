@@ -37,13 +37,15 @@ router.afterEach((to, from) => {
   })
 })
 
-import { GlossaryItem, Ability, AbilityPackage, Armor, Equipment, Weapon } from '@/class'
+import { GlossaryItem, Ability, AbilityPackage, Armor, Equipment, Weapon, Terrain, Status } from '@/class'
 Vue.prototype.GlossaryItem = GlossaryItem
 Vue.prototype.Ability = Ability
 Vue.prototype.AbilityPackage = AbilityPackage
 Vue.prototype.Armor = Armor
 Vue.prototype.Weapon = Weapon
 Vue.prototype.Equipment = Equipment
+Vue.prototype.Terrain = Terrain
+Vue.prototype.Status = Status
 
 Vue.mixin({
   computed: {

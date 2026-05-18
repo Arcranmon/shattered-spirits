@@ -196,15 +196,6 @@
     "remove": "This Condition has a 3 segment Clock to heal. Consuming an extra portion of Water during the _Camp Phase_ clears a segment on this Clock."
   },
   {
-    "name": "Airborne",
-    "desc": "A creature knocked into the air and unable to defend themselves.",
-    "effect": "An Airborne creature immediately loses their _Position_ and is _Restrained_. Additionally, while Airborne, they gain _Susceptible_ (_Forced Movement_).",
-    "repeat": "If an Airborne creature would gain Airborne they instead extend the Airborne duration by a _Phase_.",
-    "remove": "Creatures are Airborne until the end of the next _Phase_, they suffer _Forced Movement_, or they gain _Flight_. If the creature loses this Airborne by either of the first two means they _Fall_ I. Do not remove _Airborne_ until the creature's _Forced Movement_ is complete.",
-    "special": "_Flying_ creatures may not become _Airborne_.",
-    "type": "Hide"
-  },
-  {
     "name": "Flying",
     "desc": "You are propelled by craft or wing, allowing you to easily soar through the arena.",
     "effect": "While Flying:\n* You ignore all non-_Weather_ _Terrain_ effects.\n* You have _Advantage_ to _Negate_ with _Reflex_.\n* While not _Occupying_ _Terrain_ or _Engaged_ with a non-Flying creature, non-Flying creatures may not become _Engaged_ with you.\n* You have _Disadvantage_ to _Negate_ _Prone_ and _Forced Movement_ and, if you are knocked _Prone_, you immediately _Fall_ 1.\n\nIf a creature _Occupies_ Terrain, they also lose Flying. If a creature loses Flying naturally (either by choice or their effect granting Flying ending), they may safely land and suffer no ill effects.",
@@ -253,19 +244,10 @@
   {
     "name": "Soaked",
     "desc": "You are drenched in water.",
-    "effect": "While a creature is Soaked:\n* Increase their _Resistance_ to _Fire_ by one step.\n* They may not gain _Alight_. If they would gain at least _Alight_ 3 from a single effect, remove Soaked.\n* Increase their weakness to _Cold_ by one step; if they take _Cold_ damage, remove Soaked and automatically inflict _Frosted_ 2.\n* Increase their _Weakness_ to _Lightning_ by two steps.",
+    "effect": "While a creature is Soaked:\n* Increase their _Resistance_ to _Fire_ by one step.\n* They may not gain _Alight_. If they would gain at least _Alight_ 3 from a single effect, remove Soaked.\n* Increase their weakness to _Cold_ by one step; if they take _Cold_ damage, remove Soaked and automatically inflict _Frozen_ 2.\n* Increase their _Weakness_ to _Lightning_ by two steps.",
     "repeat": "Soaked does not stack.",
     "remove": "Only effects that specifically remove Soaked remove it.",
     "type": "Status"
-  },
-  {
-    "name": "Blinded",
-    "desc": "When a creature's eyesight is hindered, rendering them unable to effectively see.",
-    "effect": "A Blinded creature sees all creatures within Range 3 as _Lightly Obscured_ and all creatures beyond that range as _Heavily Obscured_. Additionally, Attacks against a Blinded creature gain a +1 _Bonus_.",
-    "recover": "When a creature _Recovers_ they may remove Blinded.",
-    "repeat": "If a Blinded creature would gain Blinded they instead extend the Blinded duration by 1 _Phase_.",
-    "remove": "Creatures are Blinded until the end of the next _Phase_.",
-    "type": "Hide"
   },
   {
     "name": "Joyful",
@@ -274,22 +256,6 @@
     "repeat": "If a Joyful creature would gain Joyful they either increase their Joyful rank, if possible, or gain 2 _Guard_.",
     "reacts": ["<ins>_Anguished_:</ins> If a creature is _Anguished_ and would gain Joyful, they instead decrease their _Anguished_ rank by 1."],
     "type": "Emotional Status"
-  },
-  {
-    "name": "Courageous",
-    "desc": "A mental condition caused when a creature's heart is full of bravery. ",
-    "effect": "While Joyful a creature gains +1 _Grit_. While _Engaged_ with a hostile creature a creature may remove Courageous at any time to clear 5 _Block_ or to _Recover_.",
-    "repeat": "If a Courageous creature would gain Courageous they instead gain 1 _Momentum_.",
-    "reacts": ["<ins>_Frightened_:</ins> If a creature is _Frightened_ and would gain Courageous, they instead remove _Frightened_."],
-    "type": "Hide"
-  },
-  {
-    "name": "Calm",
-    "desc": "A mental condition caused when a creature's mind is clear and avoiding violence.",
-    "effect": "While Calm a creature gains +1 _Focus_. If a creature does not make an Attack on their _Turn_ they may remove _Calm_ to gain 3 _Momentum_.",
-    "repeat": "If a Calm creature would gain Calm they gain 1 _Momentum_.",
-    "reacts": ["<ins>_Enraged_:</ins> If a creature is _Enraged_ and would gain Calm, they instead remove _Enraged_."],
-    "type": "Hide"
   },
   {
     "name": "Disarm",
@@ -329,7 +295,6 @@
     "recover": "When a creature _Recovers_ they may remove Exposed.",
     "type": "Minor Status"
   },
-  { "name": "Grabbing", "see": "Grabbed" },
   {
     "name": "Grabbed",
     "desc": "A status caused when creatures are locked in close combat and clinging to one another.",
@@ -338,12 +303,19 @@
     "recover": "When a creature _Recovers_ they may attempt to remove Grabbed. If they are larger than the grabber, they roll _Grit_ opposed by the grabbers _Grit_/_Reflex_. If they are smaller than the grabber, they instead make a _Grit_/_Reflex_ roll opposed by their grabbers's _Grit_. On a success, the grab ends. If the grabber is using more than one hand, they gain a +1 _Bonus_ to the Grab roll. A creature may do this once per Turn per grappler. Alternatively, if a creature is _Forcibly Moved_ in such a way that they would lose their _Engagement_ with the creature that is grabbing them, end the effect. If a creature is Recovering in a way that lets them choose any effect, they have _Advantage_ on this roll.",
     "type": "Minor Status"
   },
-  { "name": "Grab", "see": "Grabbed" },
   {
     "name": "Hobbled",
     "desc": "An condition caused when a creature's movement is impaired somehow.",
     "effect": "While Hobbled all Movement costs are increased by 1.",
     "recover": "When a creature _Recovers_ they may remove Hobbled.",
+    "type": "Status"
+  },
+  {
+    "name": "Impaled",
+    "desc": "You have something embedded in you, causing a great deal of pain.",
+    "effect": "Some effects may Impale a creature, leaving an object inside of them. While Impaled, a creature has _Vulnerable_ equal to the _Load_ of the item (minimum 1). In addition, while an item is Impaled it counts as a _Worn_ item by the creature but may be targeted as if it was _Unattended_. Any Attacks using an Impaled item against that creature have _Advantage_, ignore _Block_, and cannot be _Defended_ against.",
+    "repeat": "A creature may be Impaled by multiple effects.",
+    "recover": "When a creature _Recovers_ they may remove Impaled, but take damage equal to the twice the _Load_ of the item.",
     "type": "Status"
   },
   {
@@ -381,7 +353,6 @@
     "effect": "When you inflict Pull, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 3 _Crush_ Damage on them and resolve any collision effect on the Terrain.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it brings them closer to you.\n\nIf it was a Forceful Pull, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ closer to you.",
     "type": "Instant Effect"
   },
-  { "name": "Pulled", "see": "Pull" },
   {
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
@@ -393,18 +364,6 @@
     "desc": "You adroitly move a foe about, placing them where you wish.",
     "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 3 _Crush_ Damage on them and resolve any collision effect on the Terrain.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_.\n\nIf it was a Forceful Slide, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_.",
     "type": "Instant Effect"
-  },
-  { "name": "Forceful Push", "see": "Push" },
-  { "name": "Pushed", "see": "Push" },
-  { "name": "Pushes", "see": "Push" },
-  {
-    "name": "Restrained",
-    "desc": "An effect cause when a creature's ability to move is severely hampered.",
-    "effect": "A Restrained creature's ability to move is severely hampered. While Restrained, a creature cannot Move, makes all Attacks with _Disadvantage_, and all Attacks against them have _Advantage_.",
-    "remove": "How to end Restrained is typically specified in the ability that inflicts it.",
-    "repeat": "If a Restrained creature would gain Restrained they remain Restrained, but must fulfill all Restrained removal constraints to end the status.",
-    "recover": "When a creature _Recovers_ they may remove Restrained if no other removal method is listed.",
-    "type": "Hide"
   },
   {
     "name": "Studied",
