@@ -81,6 +81,14 @@ const r = new Router({
       },
     },
     {
+      path: '/search',
+      component: require('@/pages/search/index.vue').default,
+      name: 'search',
+      meta: {
+        title: 'Search',
+      },
+    },
+    {
       path: '/print',
       component: require('@/pages/print/index.vue').default,
       name: 'print',

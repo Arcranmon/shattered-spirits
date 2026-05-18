@@ -18,24 +18,6 @@
           :level="level + 1" />
       </v-menu>
     </span>
-    <span v-else-if="this.$store.getters.existsInAnyGlossary(input)">
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <display-tooltip-text
-          :string="this.$store.getters.getGlossaryItem(input)"
-          :level="level + 1" />
-      </v-menu>
-    </span>
     <span
       v-else-if="this.$store.getters.isTerrain(input)"
       attach>
@@ -76,149 +58,19 @@
         <base-widget :ability="this.$store.getters.getStatus(input)" />
       </v-menu>
     </span>
-    <span
-      v-else-if="this.$store.getters.isStance(input)"
-      attach>
+    <span v-else-if="inputIfExists">
       <v-menu
         :close-on-content-click="false"
         bottom
-        nudge-bottom="20"
-        content-class="object">
+        nudge-bottom="20">
         <template v-slot:activator="{ on, attrs }">
           <span
             style="white-space: pre-wrap"
             v-bind:class="{ dotted: decorate }"
             v-bind="attrs"
             v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <stance-card
-          :stance="this.$store.getters.getStance(input)"
-          :format_text="true" />
-      </v-menu>
-    </span>
-    <span
-      v-else-if="this.$store.getters.isArmor(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <base-widget
-          :ability="this.$store.getters.getArmor(input)"
-          :format_text="true" />
-      </v-menu>
-    </span>
-    <span
-      v-else-if="this.$store.getters.isWeapon(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <weapon-widget
-          :weapon="this.$store.getters.getWeapon(input)"
-          :format_text="true" />
-      </v-menu>
-    </span>
-    <span
-      v-else-if="this.$store.getters.isEquipment(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <base-widget
-          :ability="this.$store.getters.getEquipment(input)"
-          :format_text="true" />
-      </v-menu>
-    </span>
-    <span
-      v-else-if="this.$store.getters.isArt(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <ap-card :ap="this.$store.getters.getAP(input)" />
-      </v-menu>
-    </span>
-    <span
-      v-else-if="this.$store.getters.isTrait(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <trait-card
-          :trait="this.$store.getters.getSpiritTrait(input)"
-          style="border: 0.5em double black" />
-      </v-menu>
-    </span>
-    <span
-      v-else-if="this.$store.getters.isBasicAbility(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <base-widget
-          :ability="this.$store.getters.getAbility(input)"
-          :cardStyle="true" />
+            v-html="$marked.parseInline(input)" /> </template
+        ><show-appropriate-card :input="inputIfExists" />
       </v-menu>
     </span>
     <span
@@ -241,9 +93,22 @@ import TerrainCard from './cards/TerrainCard.vue'
 import TraitCard from './cards/TraitCard.vue'
 import WeaponWidget from './cards/WeaponWidget.vue'
 import AbilityWidget from './AbilityWidget.vue'
+import ShowAppropriateCard from './ShowAppropriateCard.vue'
 export default Vue.extend({
   name: 'tooltip',
-  components: { BaseWidget, ManeuverCard, FeatureCard, StanceCard, StatusCard, TechCard, TerrainCard, TraitCard, WeaponWidget, AbilityWidget },
+  components: {
+    ShowAppropriateCard,
+    BaseWidget,
+    ManeuverCard,
+    FeatureCard,
+    StanceCard,
+    StatusCard,
+    TechCard,
+    TerrainCard,
+    TraitCard,
+    WeaponWidget,
+    AbilityWidget,
+  },
   props: {
     input: {
       type: String,
@@ -265,19 +130,15 @@ export default Vue.extend({
       default: false,
     },
   },
+  computed: {
+    inputIfExists() {
+      return this.$store.getters.getFromEverything(this.input)
+    },
+  },
 })
 </script>
 
 <style scoped lang="scss">
-.v-menu__content {
-  color: black;
-  font-family: $font--standard;
-  font-size: $font-size--m;
-  background-color: $color--off-white;
-  border: $border--black-standard;
-  max-width: 40%;
-  padding: 0.1em;
-}
 .object {
   padding: 0px;
   border: none;

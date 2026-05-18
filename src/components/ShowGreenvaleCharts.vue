@@ -28,11 +28,11 @@ export default Vue.extend({
   data() {
     return {
       greenvaleForage: [
-        ['2', 'You find only water for the party and sufficient kindling for camp.'],
-        ['3-5', 'You find _Supplies_ as well as water for the party and sufficient kindling for camp.'],
-        ['6-8', 'You find 2 _Supplies_ as well as water for the party and sufficient kindling for camp.'],
-        ['9-11', 'You find 3 _Supplies_ as well as water for the party and sufficient kindling for camp.'],
-        ['12', 'You find either 4 _Supplies_ as well as water for the party and sufficient kindling for camp.'],
+        ['2', 'You find nothing of use.'],
+        ['3-5', 'You find _Supplies_.'],
+        ['6-8', 'You find 2 _Supplies_.'],
+        ['9-11', 'You find 3 _Supplies_.'],
+        ['12', 'You find either 4 _Supplies_.'],
       ],
       greenvaleHunting: [
         ['2-3', "You accidentally stumble in a dangerous, territorial spirit's territory and will need to find your way out of this situation."],

@@ -1,7 +1,7 @@
 import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import EquipmentJson from '@/database/items/equipment.json'
-import Stances from '@/database/stances.json'
+import StancesJson from '@/database/stances.json'
 import TraitsJson from '@/database/traits.json'
 
 import AbilityPackageJson from '@/database/ability_packages.json'
@@ -18,14 +18,30 @@ import SpiritTypeJson from '@/database/spirit_types.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { AbilityPackage, Armor, Archetype, Equipment, Npc, Feature, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
+import {
+  AbilityPackage,
+  Armor,
+  Archetype,
+  Equipment,
+  GlossaryItem,
+  Npc,
+  Feature,
+  SpiritForm,
+  Subtype,
+  Stance,
+  Status,
+  Terrain,
+  Trait,
+  Weapon,
+  Ability,
+} from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
 
 let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
-let AllGlossaryItems: Array<Array<IGlossaryData>> = [Glossary, Traits]
+let AllGlossaryItems: Array<Array<IGlossaryData>> = [Glossary]
 
 const kPlayerAbilities = [
   'Gain Advantage',
@@ -89,6 +105,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   @Mutation
   private LoadDatabase(): void {
+    this.GlossaryItems = Glossary.map((x) => GlossaryItem.Deserialize(<IGlossaryData>(<unknown>x)))
     this.Abilities = AbilitiesJson.map((x) => Ability.Deserialize(<IAbilityData>(<unknown>x)))
     this.Armors = ArmorsJson.map((x) => Armor.Deserialize(<IArmorData>(<unknown>x)))
     this.Weapons = WeaponsJson.map((x) => Weapon.Deserialize(<IWeaponData>(<unknown>x)))
@@ -96,13 +113,29 @@ export class DatabaseJsonStore extends VuexModule {
     this.AbilityPackages = AbilityPackageJson.map((x) => AbilityPackage.Deserialize(<IAbilityPackageData>(<unknown>x)))
     this.Equipments = EquipmentJson.map((x) => Equipment.Deserialize(<IEquipmentData>(<unknown>x)))
     this.Traits = TraitsJson.map((x) => Trait.Deserialize(<ITraitData>(<unknown>x)))
+    this.Stances = StancesJson.map((x) => Stance.Deserialize(<IStanceData>(<unknown>x)))
+    this.Everything = this.Everything.concat(
+      this.GlossaryItems,
+      this.Armors,
+      this.Abilities,
+      this.Weapons,
+      this.Equipments,
+      this.AbilityPackages,
+      this.Stances,
+      this.Traits,
+    )
+
+    this.Everything.sort((a, b) => a.Name.localeCompare(b.Name))
   }
 
+  private Everything: Array<any> = []
+  private GlossaryItems: GlossaryItem[] = []
   private Armors: Armor[] = []
   private Weapons: Weapon[] = []
   private Subtypes: Subtype[] = []
   private SpiritForms: SpiritForm[] = []
   private Archetypes: Archetype[] = []
+  private Stances: Stance[] = []
   private AbilityPackages: AbilityPackage[] = []
   private Equipments: Equipment[] = []
   private Traits: Trait[] = []
@@ -130,6 +163,23 @@ export class DatabaseJsonStore extends VuexModule {
 
   get spiritAbilities() {
     return kSpiritAbilities
+  }
+
+  // ==========================================================
+  // FULL SEARCH TOOLS
+  // ==========================================================
+  get getEverything(): any {
+    return () => {
+      return this.Everything
+    }
+  }
+
+  get getFromEverything(): any {
+    return (inword: string) => {
+      var item = this.Everything.find((x) => x.Name.trim() == inword.trim())
+      if (item == undefined) return false
+      return item
+    }
   }
 
   // ==========================================================
@@ -411,7 +461,7 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   get getStance(): any {
     return (inword: string) => {
-      var stance = Stances.find((x) => x.name.trim() === inword.trim())
+      var stance = StancesJson.find((x) => x.name.trim() === inword.trim())
       if (stance == undefined) return new Stance(inword)
       return Stance.Deserialize(<IStanceData>(<unknown>stance))
     }
@@ -431,7 +481,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get isStance(): any {
     return (inword: string) => {
-      return Stances.some((x) => x.name == inword.trim())
+      return StancesJson.some((x) => x.name == inword.trim())
     }
   }
 
