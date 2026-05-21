@@ -47,6 +47,7 @@ def findKeywordsAndSeeIfInGlossary():
     validKeywords = set()
     for database in [glossary, statuses, abilities, terrain, equipment]:
         for item in database:
+            validKeywords.add(item["name"])
             getAbilityData(item, foundKeywords, validKeywords)
 
     for database in [abilityPackages, traits]:
