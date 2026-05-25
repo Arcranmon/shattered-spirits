@@ -18,25 +18,6 @@
           :level="level + 1" />
       </v-menu>
     </span>
-    <span
-      v-else-if="this.$store.getters.isStatus(input)"
-      attach>
-      <v-menu
-        :close-on-content-click="false"
-        bottom
-        nudge-bottom="20"
-        content-class="object">
-        <template v-slot:activator="{ on, attrs }">
-          <span
-            style="white-space: pre-wrap"
-            v-bind:class="{ dotted: decorate }"
-            v-bind="attrs"
-            v-on="on"
-            v-html="$marked.parseInline(input)" />
-        </template>
-        <base-widget :ability="this.$store.getters.getStatus(input)" />
-      </v-menu>
-    </span>
     <span v-else-if="inputIfExists">
       <v-menu
         :close-on-content-click="false"
