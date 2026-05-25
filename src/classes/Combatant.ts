@@ -73,7 +73,7 @@ class Combatant {
   }
 
   get Defenses() {
-    return this.Grit + ' _Grit_, ' + this.Reflex + ' _Reflex_, ' + this.Focus + ' _Focus_'
+    return this.Focus + ' _Focus_, ' + this.Grit + ' _Grit_, ' + this.Reflex + ' _Reflex_'
   }
 
   get Grit() {

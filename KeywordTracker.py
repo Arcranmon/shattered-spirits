@@ -3,7 +3,7 @@ import os
 from termcolor import colored
 import re
 
-keywordPattern = " _([^_]+)_ "
+keywordPattern = " _([^_]+)_"
 
 def getKeywordsFromString(input, foundKeywords):
     r = re.compile(keywordPattern)

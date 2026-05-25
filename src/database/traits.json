@@ -137,7 +137,7 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your wind form grants you the following benefits:\n* Remove the _Natural_ _Material_ with _Wind_ on all effects.\n* You never suffer ill effects from _Falling_.\n* Increase your _Resistance_ to _Crush_ and _Natural_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps.\n\nWhen determining _Sources_ for _Manifesting_, treat _Wind_ _Terrain_ as a _Major Source_, any open air as a _Moderate Source_, and underground as a _Minor Source_."
+        "effect": "Your wind form grants you the following benefits:\n* Remove the _Natural_ _Material_ with _Wind_ on all effects.\n* You never suffer ill effects from _Falling_.\n* Increase your _Resistance_ to _Crush_ and _Natural_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps.\n\nWhen determining _Sources_ for _Manifesting_, treat _Wind_ _Terrain_ as a _Source_ 3, any open air as a _Source_ 2, and underground as a _Source_ 1."
       },
       { "name": "Float" },
       { "name": "Amorphous" }
@@ -320,7 +320,7 @@
         "keywords": ["Spirit"],
         "category": "Utility",
         "type": "Passive",
-        "effect": "While in _Fertile_ Terrain, gain +1 _Stamina_ and +2 _Guard_ when _Regrowth_ triggers. You may be treated as a _Least_ or _Minor Source_ (_Wood_) as you spontaneously sprout branches and other growths that can be removed without harming you."
+        "effect": "While in _Fertile_ Terrain, gain +1 _Stamina_ and +2 _Guard_ when _Regrowth_ triggers. You may be treated as a _Least_ or _Source_ 1 (_Wood_) as you spontaneously sprout branches and other growths that can be removed without harming you."
       }
     ],
     "desc": "You're covered in small, flowering growths that can be encouraged to grow at a moment's notice."
@@ -369,7 +369,7 @@
         "type": "Maneuver",
         "keywords": ["Repeatable"],
         "cost": "1 _Momentum_",
-        "effect": "Create a Metallic Web in _Range_ 0, which is treated as a _Minor Source_ (_Metal_). When a creature becomes _Engaged_ with Metallic Web they must _Negate_ [_Reflex_ 7] or gain _Entangled_ 1; this is also inflicted if the Metallic Web is used as a _Missile_. You are immune to all Metallic Webs you create. You may use this once on your _Turn_ regardless of _Stance_ after completing all the Stance's actions."
+        "effect": "Create a Metallic Web in _Range_ 0, which is treated as a _Source_ 1 (_Metal_). When a creature becomes _Engaged_ with Metallic Web they must _Negate_ [_Reflex_ 7] or gain _Entangled_ 1; this is also inflicted if the Metallic Web is used as a _Missile_. You are immune to all Metallic Webs you create. You may use this once on your _Turn_ regardless of _Stance_ after completing all the Stance's actions."
       }
     ],
     "desc": "You can emit thin metallic threads, allowing you to move similar to a spider."
@@ -996,7 +996,7 @@
         "name": "Diminutive Agility",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Tiny_, decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_. You may _Manifest_ your Spirit from a _Least Source_. Your spirit is treated as a _Least Source_ of their element, although you may not use them as a _Missile_.",
+        "effect": "Your Spirit becomes Size 1/2 and decreases their _Speed_ by 1, gains a +1 to _Reflex_, and +1 _Movement_. If they already have _Speed_ 1, instead gain an additional +1 _Movement_. You may _Manifest_ your Spirit from a _Source_ 0 and your spirit is treated as a _Source_ 0 for their element",
         "bonuses": { "speed": -1, "reflex": 1, "move": 1 }
       }
     ],
@@ -1013,13 +1013,13 @@
         "name": "Small Size",
         "category": "Narrative",
         "type": "Skill",
-        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction. Your spirit is treated as a _Minor Source_ of their element, although you may not use them as a _Missile_."
+        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction. Your spirit is treated as a _Source_ 1 of their element, although you may not use them as a _Missile_."
       },
       {
         "name": "Small Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Small_, gains +2 _Stamina_, +1 _Guard_, and +1 _Reflex_. You may _Manifest_ your Spirit from a _Minor Source_."
+        "effect": "Your Spirit becomes Size 1 and gains +2 _Stamina_, +1 _Guard_, and +1 _Reflex_. You may _Manifest_ your Spirit from a _Source_ 1, and your spirit is treated as a _Source_ 1 for their element."
       }
     ],
     "bonuses": { "reflex": 1 }
@@ -1041,7 +1041,7 @@
         "name": "Medium Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Medium_, gains +3 _Stamina_, +5 _Guard_, and +1 _Grit_. You may _Manifest_ your Spirit from a _Moderate Source_. Your spirit is treated as a _Moderate Source_ of their element, although you may not use them as a _Missile_.",
+        "effect": "Your Spirit becomes Size 2 and gains +3 _Stamina_, +5 _Guard_, and +1 _Grit_. You may _Manifest_ your Spirit from a _Source_ 2, and your spirit is treated as a _Source_ 2 for their element.",
         "bonuses": { "stamina": 3, "guard": 5, "grit": 1 }
       }
     ]
@@ -1063,7 +1063,7 @@
         "name": "Large Profile",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your Spirit becomes _Large_, gains +6 _Stamina_, +10 _Guard_, and +2 _Grit_. Additionally, its _Speed_ is increased by 1. You may _Manifest_ your Spirit from a _Major Source_. Your spirit is treated as a _Major Source_ of their element, although you may not use them as a _Missile_.",
+        "effect": "Your Spirit becomes Size 3 and gains +6 _Stamina_, +10 _Guard_, and +2 _Grit_. Additionally, its _Speed_ is increased by 1. You may _Manifest_ your Spirit from a _Source_ 3, and your spirit is treated as a _Source_ 3 for their element.",
         "bonuses": { "stamina": 6, "guard": 10, "grit": 2, "speed": 1 }
       }
     ]
