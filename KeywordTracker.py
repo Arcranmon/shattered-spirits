@@ -41,16 +41,18 @@ def findKeywordsAndSeeIfInGlossary():
     abilities = json.load(open('.\src\database\\abilities.json'))
     terrain = json.load(open('.\src\database\\terrain.json'))
     traits = json.load(open('.\src\database\\traits.json'))
+    stances = json.load(open('.\src\database\\stances.json'))
+    armor = json.load(open('.\src\database\\items\\armor.json'))
     equipment = json.load(open('.\src\database\\items\\equipment.json'))
     abilityPackages = json.load(open('.\src\database\\ability_packages.json'))
 
     validKeywords = set()
-    for database in [glossary, statuses, abilities, terrain, equipment]:
+    for database in [glossary, statuses, abilities, terrain,armor, equipment]:
         for item in database:
             validKeywords.add(item["name"])
             getAbilityData(item, foundKeywords, validKeywords)
 
-    for database in [abilityPackages, traits]:
+    for database in [abilityPackages, stances,  traits]:
         for item in database:
             validKeywords.add(item["name"])
             for ability in item.get("abilities", []):

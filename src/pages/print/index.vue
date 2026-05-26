@@ -68,10 +68,10 @@
     </v-row>
     <v-row style="page-break-after: always" />
 
-    <h4>{{ $route.params.character.Name }} Manuevers</h4>
+    <h4>{{ $route.params.character.Name }} Maneuvers</h4>
 
     <div class="centered-text">
-      Manuevers can be used on a character's turn, usually at a Momentum cost. A given Manuever may only be used once per Turn unless it is [Repeatable].
+      Maneuvers can be used on a character's turn, usually at a Momentum cost. A given Maneuver may only be used once per Turn unless it is [Repeatable].
     </div>
     <v-row>
       <v-col

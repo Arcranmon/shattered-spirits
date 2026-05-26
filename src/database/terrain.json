@@ -3,14 +3,14 @@
     "name": "Overgrown",
     "desc": "Thick grass, vines, or other growths cover this arena, making movement far more difficult.",
     "element": "Wood",
-    "keywords": ["Source (_Plant_)", "Obstacle"],
+    "keywords": ["_Source_ 2", "Plant", "Obstacle"],
     "effect": "This _Arena_ is _Rough_. All Size 1 or less creatures have _Soft Cover_. A creature may Attack the Arena; if they deal at least 3 _Slash_ Damage they may create a piece of _Terrain_ that does not have Overgrown. Any effects that Targets the whole Arena and does at least 8 _Slash_ Damage removes Overgrown."
   },
   {
     "name": "Cliff",
     "desc": "This arena is a sheer cliff, difficult to climb with few handholds.",
     "element": "Earth",
-    "keywords": ["_Source_ 4 (_Earth_)"],
+    "keywords": ["_Source_ 4"],
     "effect": "While in this _Arena_ creatures are always _Climbing_."
   },
   {
@@ -39,7 +39,7 @@
   {
     "name": "Stalagmite",
     "layer": "Obstacle",
-    "keywords": ["Major Source", "Cover"],
+    "keywords": ["_Source_ 3", "Cover"],
     "element": "Earth",
     "desc": "A large rock, log, or some other.",
     "hardness": 2,
@@ -49,7 +49,7 @@
   {
     "name": "Stalactite",
     "layer": "Obstacle",
-    "keywords": ["Major Source", "Cover"],
+    "keywords": ["_Source_ 3", "Cover"],
     "element": "Earth",
     "desc": "A large rock, log, or some other.",
     "hardness": 2,
@@ -75,16 +75,16 @@
   {
     "name": "Wet",
     "layer": "Terrain",
-    "keywords": ["Minor Source"],
+    "keywords": ["_Source_ 1"],
     "element": "Water",
     "desc": "A puddle, slick ground, or other small source of water.",
-    "effect": "Creatures _Occupying_ this _Terrain_ have a -1 to _Negate_ against all _Forced Movement_ and _Prone_. Additionally, _Lightning_ Attacks gain a +1 _Bonus_ against creatures here.",
+    "effect": "Creatures _Occupying_ this _Terrain_ have a -1 to _Negate_ against all _Forced Movement_ and _Prone_. Additionally, _Lightning_ Attacks gain a +1 to _Attack Rolls_ against creatures here.",
     "interactions": ["If this would become _Blazing_, instead remove _Wet_ and add _Veiled_."]
   },
   {
     "name": "Icy",
     "layer": "Terrain",
-    "keywords": ["Minor Source", "Ice"],
+    "keywords": ["_Source_ 1", "Ice"],
     "element": "Water",
     "desc": "A slick sheet of ice that makes it difficult to find footing.",
     "effect": "This _Terrain_ is _Rough_; additionally, creatures _Occupying_ this _Terrain_ have _Disadvantage_ to _Negate_ against all _Forced Movement_ and _Prone_.",
@@ -93,7 +93,7 @@
   {
     "name": "Tripping Hazard",
     "layer": "Obstacle",
-    "keywords": ["Minor Source"],
+    "keywords": ["_Source_ 1"],
     "element": "Mutable",
     "desc": "A low protrusion that, most of the time, is easily avoided, but could trip one forced into it.",
     "effect": "If a creature is made to _Occupy_ this _Terrain_ with _Forced Movement_ they fall _Prone_."
@@ -101,15 +101,15 @@
   {
     "name": "Spikes",
     "layer": "Obstacle",
-    "keywords": ["Minor Source"],
+    "keywords": ["_Source_ 1"],
     "element": "Mutable",
     "desc": "Spikes, spines, or other terrain that can easily impale and shred others.",
-    "effect": "When a creature first _Occupies_ this _Terrain_ they take 2 _Stab_ Damage, which may repeated with a _Collision_."
+    "effect": "When a creature first _Occupies_ this _Terrain_ they take 2 _Stab_ Damage."
   },
   {
     "name": "Blazing",
     "layer": "Terrain",
-    "keywords": ["Moderate Source"],
+    "keywords": ["_Source_ 2"],
     "element": "Flame",
     "desc": "A burning piece of terrain that has been ignited.",
     "effect": "Blazing is always applied to a piece of _Terrain_ or an _Arena_. When creatures start their _Turn_ in this _Terrain_ or first enter it on their _Turn_ they take 4 _Fire_ Damage and gain _Alight_ 1. All other effects of the Terrain continue to persist, but its _Threshold_ is halved. At the end of each _Round_ roll a d6 for each piece of _Blazing_ _Terrain_, at _Disadvantage_ if not on _Flammable_ _Terrain_:\n* **1-2:** The flames sputter and die; replace _Blazing_ with _Smoldering_ and, if on _Flammable_ _Terrain_, reduce its _Hardness_ by 1.\n* **3-4:** The flames continue and nothing changes with this Terrain.\n* **5-6:** Flames spread. What happens depends on whether an entire _Arena_ or a piece of _Terrain_ is _Blazing_:\n\t* **Terrain:** _Ignite_ a random piece of _Flammable_ _Terrain_ in this _Arena_. If the _Arena_ is _Flammable_ instead _Ignite_ it.\n\t* **Arena:** _Ignite_ a piece of _Flammable_ _Terrain_ in all adjacent _Arenas_.",
@@ -119,7 +119,7 @@
   {
     "name": "Roaring",
     "layer": "Terrain",
-    "keywords": ["Major Source"],
+    "keywords": ["_Source_ 3"],
     "element": "Flame",
     "desc": "A piece of terrain covered in intense, roiling flames.",
     "effect": "Roaring is always applied to a piece of _Terrain_ or an _Arena_. When creatures start their _Turn_ in this _Terrain_ or first enter it on their _Turn_ they take 6 _Fire_ Damage and gain _Alight_ 2. All other effects of the Terrain continue to persist, but its _Threshold_ is halved. At the end of each _Round_, roll a d6 for each piece of Roaring _Terrain_, at _Disadvantage_ if not on _Flammable_ _Terrain_:\n* **1-2:** The flames die down; replace _Roaring_ with _Blazing_ and, if on _Flammable_ _Terrain_, reduce its _Hardness_ by 1.\n* **3-4:** The flames continue and nothing changes with this Terrain.\n* **5-6:** Flames spread. What happens depends on whether an entire _Arena_ or a piece of _Terrain_ is _Blazing_:\n\t* **Terrain:** _Ignite_ a random piece of _Flammable_ _Terrain_ in this _Arena_. If the _Arena_ is _Flammable_ instead _Ignite_ it.\n\t* **Arena:** _Ignite_ a piece of _Flammable_ _Terrain_ in all adjacent _Arenas_.",
@@ -129,7 +129,7 @@
   {
     "name": "Smoldering",
     "layer": "Terrain",
-    "keywords": ["Least Source"],
+    "keywords": ["_Source_ 0"],
     "element": "Flame",
     "desc": "A burning piece of terrain that has been ignited.",
     "effect": "When creatures start their _Turn_ in this _Terrain_ or first enter it on their _Turn_ they take 2 _Fire_ Damage.",

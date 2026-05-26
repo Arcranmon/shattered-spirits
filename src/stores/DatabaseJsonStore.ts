@@ -52,6 +52,7 @@ const kPlayerAbilities = [
 
 const kSpiritAbilities = [
   'Return',
+  'Channel Elements',
   'Perfect Parry',
   'Perfect Dodge',
   'Gain Advantage',

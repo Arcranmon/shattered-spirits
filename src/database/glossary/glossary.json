@@ -53,7 +53,7 @@
   },
   {
     "name": "Armor",
-    "effect": "Armor is a specific type of _Equipment_ that grants bonuses when _Worn_. Armored plating, high-quality boots, or a traveling cloak are all different types of armor that a character can benefit from."
+    "effect": "Armor is a specific type of _Equipment_ that grants bonuses when _Worn_. Armored plating, chain mail, or leather padding are all different types of armor that a character can benefit from."
   },
   {
     "name": "Armored",
@@ -89,7 +89,7 @@
   },
   {
     "name": "Bend",
-    "effect": "Characters with bend for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Draw/Stow_) at the listed Bend Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Bend Range when targeting the appropriate material."
+    "effect": "Characters with bend for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Equip_) at the listed Bend Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Bend Range when targeting the appropriate material."
   },
   {
     "name": "Block",
@@ -106,12 +106,12 @@
     "effect": "Characters should track bonds between themselves and other characters; when the other character is present, characters can call in a Bond as a Condition for a bonus on a roll. If the other member of the Bond is a player, they instead may help on a Skill Challenge without taking a _Stress_. After using a Bond, reduce it by one rank."
   },
   {
-    "name": "Bonus",
-    "effect": "When an Attack gains Bonus Damage or Guard, distribute it between targets however you wish."
-  },
-  {
     "name": "Breakable",
     "effect": "Traits with this tag may be _Shattered_ as if they were _Equipment_; they have an effective _Durability_ equal to their Breakable value."
+  },
+  {
+    "name": "Bonus Damage",
+    "effect": "Some effects will gain Bonus Damage; this Damage is distributed among all targets of the Attack as evenly as possible."
   },
   {
     "name": "Camp Phase",
@@ -147,9 +147,22 @@
     "effect": "A Clock is a mechanism for tracking progress on a task. Typically, a Clock will be divided into a number of segments and, as progress is made, said segments will be filled in. When filled, the Clock is complete and players will experience consequences or rewards, depending on what the Clock was tracking."
   },
   {
+    "name": "Clothing",
+    "effect": "Clothing is a specific type of _Equipment_ that grants bonuses when _Worn_. Clothing typically helps to enhance a character's craft or is helpful when facing the elements."
+  },
+  {
+    "name": "Collision",
+    "effect": "Some _Forced Movement_ effects create a Collision which will repeat the effect caused by _Occupying_ said _Terrain_."
+  },
+  {
     "name": "Common",
     "effect": "Items and equipment that can be easily found in most towns, and are reliable staples in an adventuring toolkit."
   },
+  {
+    "name": "Comfortable",
+    "effect": "A campsite with this modifier does not require bedrolls or similar equipment to sleep comfortably. Additionally, one character gains +1 die while resting in this site."
+  },
+  { "name": "Interactions", "see": "Interaction" },
   {
     "name": "Uncommon",
     "effect": "Items and equipment that are slightly more difficult to find. While available in most towns, there is typically a limited supply."
@@ -204,11 +217,16 @@
     "name": "Defeated",
     "effect": "Once an enemy fills their _Health Bar_ they are Defeated. It is assumed that, even after being Defeated, enemies are still living unless the player specifies they wish to kill them. Players may choose to be Defeated when they become _Downed_; if they do, enemies will not intentionally target them for the remainder of the combat, but the downed character may not participate in the combat any longer and may not interact with the battlefield in any way."
   },
+  { "name": "Defense Rolls", "see": "Defend" },
   { "name": "Defense Roll", "see": "Defend" },
   { "name": "Defended", "see": "Defend" },
   {
     "name": "Defend",
     "effect": "Different abilities may allow a creature to Defend. When a creature Defends, they roll 2d6 (often called the _Defense Roll_) and consult the chart associated with the Ability to determine the effect. If they roll doubles or a  _Crit_ they may apply an applicable _Gambit_ to the Attack, or two if they rolled doubles and a _Crit_."
+  },
+  {
+    "name": "Defenses",
+    "effect": "A catch-all term that refers to a creatures _Block_, _Focus_, _Grit_, and _Reflex_."
   },
   {
     "name": "Defensive",
@@ -278,6 +296,10 @@
     "effect": "When a character uses an Ability they may choose any number of Enhancements, which are a variety of ways characters can modify how an ability works by expending additional resources. Typically, characters must choose Enhancements before resolving the effect, but _Reactive_ ones (marked with an _[R]_) are able to be selected at any point."
   },
   {
+    "name": "Encumbrance",
+    "effect": "How burdened a character is by their current equipment. Typically, a character _Wearing_ 5 or less _Load_ is _Traveling Light_, 6-10 _Load_ gains no additional ability, and 11-15 _Load_ is _Traveling Heavy_. Characters may not travel with more than 15 _Load_ unless an ability has increased this limit."
+  },
+  {
     "name": "Equipment",
     "effect": "Any of the gear or other items characters bring with them on an adventure. Equipment can either be _Worn_, in which case characters have ready access to it, or _Packed_, which means it is tucked away in a character's pack and will require some work to get to."
   },
@@ -298,12 +320,17 @@
     "name": "Expense",
     "effect": "Expense is a potential _Danger_ in a _Skill Challenge_. If not removed, an item or a resource that you posses or value is broken, lost, or used up in the action."
   },
-  { "name": "Discovery", "see": "Discovery Deck" },
+  {
+    "name": "Damage",
+    "effect": "An effect that chips away at a hostile creature's stamina. When a character takes Damage they first reduce the Damage by their _Block_ and lose an equivalent amount of _Guard_, then take the remainder to _Stamina_. If a creature loses all _Stamina_, they are _Downed_."
+  },
   { "name": "Discovery", "see": "Discovery Deck" },
   {
     "name": "Discovery Deck",
     "effect": "The Discovery Deck represents potential discoveries and encounters travelers might encounter when they venture off the beaten path. The GM will add a few cards to the _Travel Deck_ for the day from this deck."
   },
+  { "name": "Falls", "see": "Fall" },
+  { "name": "Falling", "see": "Fall" },
   {
     "name": "Fall",
     "effect": "Fall Damage ignores all _Block_, but characters may reduce the Damage dealt by their _Reflex_. If a character takes at least 4 Damage they fall _Prone_."
@@ -320,6 +347,15 @@
     "name": "Fire",
     "effect": "Damage dealt by flames, heat, and other similar effects. If a character is _Downed_ by Fire Damage they suffer the below effects:\n* **6-12**: Gain a _Minor Burn_.\n* **3-5**: Gain a _Moderate Burn_.\n* **2-**: Gain a _Major Burn_."
   },
+  { "name": "Fishing", "see": "Fish" },
+  {
+    "name": "Fish",
+    "effect": "A _Camp Action_ that can be taken in an appropriate location and with the appropriate supplies. Roll 2d6 and consult the _Fishing Chart_ for your current _Leg_, gaining that result or any lower than it on the table."
+  },
+  {
+    "name": "Fishing Chart",
+    "effect": "A chart that outlines the _Fishing_ results for a _Leg_. After rolling to _Fish_, characters gain the listed benefit on this chart."
+  },
   {
     "name": "Flame",
     "effect": "One of the spiritual elements, representing the ability to manipulate fire and heat. Besides bending abilities, flame spirits are also known for inciting rage, massively improving physical capabilities, as well as being able to see the future in the flames. This also may refer to _Terrain_ or _Equipment_ made of flames."
@@ -333,8 +369,8 @@
     "effect": "Fleeting Terrain is _Destroyed_ after _Respite_ at the start of the next _Round_."
   },
   {
-    "name": "Foci",
-    "effect": "While _Wielding_ this, whenever you you use an effect that allows you to place _Momentum_ on an Art or Technique and you choose an Art or Technique that matches this Foci's type, place an additional _Momentum_ and treat the Hands used to _Wield_ this as Free."
+    "name": "Focus",
+    "effect": "A defense that represents a character's poise, mental resilience and willpower. Characters add Focus to applicable _Negate_ checks."
   },
   {
     "name": "Follow-Up",
@@ -342,15 +378,20 @@
   },
   {
     "name": "Forage",
-    "effect": "A common Travel or Camp _Action_. Roll 2d6 and consult the _Forage Chart_ for your current _Leg_, gaining that result or any lower than it on the table. For each additional die placed on this roll gain a +1 _Bonus_ on this roll. When taken as a _Camp Action_, take a -1 _Penalty_."
+    "effect": "A common Travel or Camp _Action_. Roll 2d6 and consult the _Forage Chart_ for your current _Leg_, gaining that result or any lower than it on the table. For each additional die placed on this roll gain a +1 to this roll. When taken as a _Camp Action_, take a -1 _Penalty_."
   },
   {
     "name": "Forage Chart",
     "effect": "A chart that outlines the _Forage_ results for a _Leg_. After rolling to _Forage_, characters gain the listed benefit on this chart.."
   },
+  { "name": "Forcibly Moved", "see": "Forced Movement" },
   {
     "name": "Forced Movement",
     "effect": "Any effect that forcibly moves a creature, such as _Push_, _Pull_, or _Slide_. Forced Movement typically does not create _Openings_, but can trigger _Terrain_ effects."
+  },
+  {
+    "name": "Forceful",
+    "effect": "A modifier that may be applied to any _Forced Movement_ effect that significantly heightens the effect."
   },
   {
     "name": "Fortified",
@@ -377,7 +418,7 @@
   { "name": "Delicious Meal", "see": "Meal" },
   {
     "name": "Meal",
-    "effect": "Characters (but not spirits) must eat a Meal every day or gain _Hunger_. Meals have levels of quality, outlined below:\n* <u>Nauseating</u>: Characters gain _Stress_ for eating this.\n* <u>Poor</u>: After eating this, roll a d6. On a 3 or less, gain _Stress_.\n* <u>Basic</u>: Eating this never adds nor removes Stress.\n* <u>Good</u>: After eating this, roll a d6. On a 4 or higher, clear a _Stress_.\n* <u>Delicious</u>: After eating this, clear a _Stress_."
+    "effect": "Characters (but not spirits) must eat a Meal every day or become _Hungry_. Meals have levels of quality, outlined below:\n* <u>Nauseating</u>: Characters gain _Stress_ for eating this.\n* <u>Poor</u>: After eating this, roll a d6. On a 3 or less, gain _Stress_.\n* <u>Basic</u>: Eating this never adds nor removes Stress.\n* <u>Good</u>: After eating this, roll a d6. On a 4 or higher, clear a _Stress_.\n* <u>Delicious</u>: After eating this, clear a _Stress_."
   },
   {
     "name": "Gambit",
@@ -390,6 +431,10 @@
   },
   { "name": "Grab", "see": "Grabbed" },
   { "name": "Grabbing", "see": "Grabbed" },
+  {
+    "name": "Graze",
+    "effect": "A feeble result for an _Attack_ or _Defend_ that has significantly reduced effect. This corresponds to the second row of the table and is typically colored yellow."
+  },
   {
     "name": "Grit",
     "effect": "A defense that represents a character's stamina, physical power, and resilience. Characters add Grit to applicable _Negate_ checks, and is directly relevant in _Statuses_ such as _Grabbed_ or _Poisoned_."
@@ -426,6 +471,7 @@
     "name": "Hidden",
     "effect": "A potential modifier for a camp. This camp is secluded and difficult to find and is typically enough for your camp to not be found, although this may not hold true if you left a trail and have dedicated pursuers."
   },
+  { "name": "Hits", "see": "Hit" },
   {
     "name": "Hit",
     "effect": "The most common result in an _Attack_ or _Defend_. This corresponds to the second to last row of the table and is typically colored green."
@@ -433,7 +479,7 @@
   { "name": "Hunting", "see": "Hunt" },
   {
     "name": "Hunt",
-    "effect": "A common Travel or Camp _Action_. Roll 2d6 and consult the _Hunting Chart_ for your current _Leg_, gaining that result or any lower than it on the table. For each additional die placed on this roll gain a +1 _Bonus_ on this roll. When taken as a _Camp Action_, take a -1 _Penalty_."
+    "effect": "A common Travel or Camp _Action_. Roll 2d6 and consult the _Hunting Chart_ for your current _Leg_, gaining that result or any lower than it on the table. For each additional die placed on this roll gain a +1 to this roll. When taken as a _Camp Action_, take a -1 _Penalty_."
   },
   {
     "name": "Hunting Chart",
@@ -505,15 +551,13 @@
     "name": "Lore",
     "effect": "Lore may be spent whenever you come across something in the world. If you do, you instantly learn some relevant and helpful knowledge. You regain your Lore whenever you take Downtime within a location with books or similar material. The information granted will not be as precise as somebody with actual expertise, but always provides immediately helpful information. If there is no helpful information to provide, do not expend a use."
   },
-  {
-    "name": "Maneuvers",
-    "see": "Maneuver"
-  },
+  { "name": "Maneuvers", "see": "Maneuver" },
   {
     "name": "Maneuver",
     "effect": "Maneuver are the most basic ability, and encompass the various things a character may do on their turn that are not an _Attack_."
   },
   { "name": "Manifested", "see": "Manifest" },
+  { "name": "Manifesting", "see": "Manifest" },
   {
     "name": "Manifest",
     "effect": "Characters may choose to Manifest their spirit, giving it physical form. Outside of combat, characters can freely Manifest their spirit so long as their craft is not actively suppressed by their surroundings. In combat, you may Manifest your Spirit at _Respite_ at an appropriate Source (as defined by their size) within their Manifest Range. You may always Manifest them at _Melee_ Range regardless of _Source_ for 1 _Essence_. They become _Engaged_ with any creatures at said _Source_."
@@ -567,6 +611,10 @@
     "name": "Mishap",
     "effect": "One of the various things that can be in the _Menace Deck_. Mishaps tend to involve setbacks on the road, risk more severe injuries, or otherwise greatly inconvenience the party."
   },
+  {
+    "name": "Miss",
+    "effect": "A failed result for an _Attack_ or _Defend_ that typically does nothing. This corresponds to the first row of the table and is typically colored red. When an effect Misses, regain half the _Cost_, rounded down."
+  },
   { "name": "Missiles", "see": "Missile" },
   {
     "name": "Missile",
@@ -593,10 +641,8 @@
     "name": "Occupy",
     "effect": "While a creature is Occupying Terrain they gain the listed effects of said Terrain. A number of creatures may Occupy a Terrain equal to its Size. If a Terrain is Forcibly Moved, all creatures Occupying it stop Occupying."
   },
-  {
-    "name": "Occupying",
-    "see": "Occupy"
-  },
+  { "name": "Occupying", "see": "Occupy" },
+  { "name": "Openings", "see": "Opening" },
   {
     "name": "Opening",
     "effect": "When a creature creates an Opening they are doing something that compromises their defenses. Many _Punish_ _Reactions_ allow enemies to _Attack_ when an Opening is created."
@@ -755,11 +801,11 @@
   },
   {
     "name": "Unblockable",
-    "effect": "Creatures have _Disadvantage_ on any _Parry_ effect against this Attack, and cannot use _Defensive Gambits_."
+    "effect": "Creatures have _Disadvantage_ on any _Parry_ effect against this Attack, and cannot use _Defensive_ _Gambits_ while attempting to _Block_."
   },
   {
     "name": "Undodgeable",
-    "effect": "Creatures have _Disadvantage_ on any _Dodge_ effect against this Attack, and cannot use _Defensive Gambits_."
+    "effect": "Creatures have _Disadvantage_ on any _Dodge_ effect against this Attack, and cannot use _Defensive_ _Gambits_ while attempting to _Dodge_."
   },
   {
     "name": "Ward",
@@ -769,14 +815,8 @@
     "name": "Waterside",
     "effect": "A potential modifier for a camp. This camp is near a source of water; the party does not need to spend _Supplies_ on water while camping here, and can use tools such as a _Fishing Rod_."
   },
-  {
-    "name": "Weaker",
-    "see": "Weakness and Resistance"
-  },
-  {
-    "name": "Weakness",
-    "see": "Weakness and Resistance"
-  },
+  { "name": "Weaker", "see": "Weakness and Resistance" },
+  { "name": "Weakness", "see": "Weakness and Resistance" },
   {
     "name": "Weakness and Resistance",
     "effect": "This represents some resilience or innate resistance to a type or effect. Effects will either be _Super Effective_, _Effective_, _Neutral_, _Ineffective_ or _Repelled_. For each Resistance a creature has, move the effect towards _Repelled_; for each Weakness, move it towards _Super Effective_. Weakness and Resistance cancel each other out at a 1 to 1 rate."
@@ -785,6 +825,9 @@
     "name": "Weaponsmith's Blessing",
     "effect": "A Weaponsmith's Blessing reflects gear that has been carefully and dutifully maintained, and can be expended for the following effects:\n* In a Skill Challenge, when the weapon is granting a die, you may gain an additional die.\n* After making an Attack with a Weapon, you may expend the blessing to use a _Gambit_, even if you didn't qualify for one.\n* When a Weapon would lose _Durability_, you may expend the Weaponsmith's Blessing to instead not lose _Durability_."
   },
+  { "name": "Wield", "see": "Wielded" },
+  { "name": "Wields", "see": "Wielded" },
+  { "name": "Wielding", "see": "Wielded" },
   {
     "name": "Wielded",
     "effect": "Equipment that is Wielded is actively being held in a character's hands and can be fully utilized. Characters typically have two hands to _Wield_ things with."
@@ -793,6 +836,29 @@
     "name": "Wooded",
     "effect": "A potential modifier for a camp. This camp is situated among trees; the part does not need to spend _Supplies_ to start a fire, and the trees provide some minor protection from the weather."
   },
+  { "name": "Wounds", "see": "Wound" },
+  {
+    "name": "Wound",
+    "effect": "A specific type of _Condition_ that is caused when you take significant injury. These typically have a significant detrimental effect and take an extended period to heal. Wounds are most often gained from becoming _Downed_, but can be inflicted as a part of the _Injury_ _Danger_."
+  },
+  {
+    "name": "Skill Challenge",
+    "effect": "In many situations, dice are not needed to resolve a situation in Shattered Spirits. If a character has the Strong Archetype, they should be able to accomplish many strength-based tasks without consulting the dice. As a general rule of thumb, if there is no time constraint, minimal consequences to failure, and the character can simply retry something as-needed then a character with the appropriate Skills should simply succeed in the task. A character's _Skills_ and magic can accomplish many things without the need to create a skill challenge, and a character's abilities should be respected.\n&nbsp;\nHowever, when the stakes are high or the outcome is unclear characters must make a _Skill Challenge_ using their _Stakes Sheet_.\n&nbsp;\nFirst, a character should describe how they're attempting to solve a problem. Based on that, the GM will determine two things: whether the roll is _Cautious_ or _Bold_ as well as what the _Stakes_ are.\n&nbsp;\nStakes are the how players influence the outcome of a skill challenge. Based on how you roll, you can add _Augments_ and remove _Dangers_. _Augments_ tend to allow your character to accomplish more and increase how successful something is, while _Dangers_ are hazards and pitfalls that can occur along the way. The GM will typically decide at least one automatic stake that cannot be removed, whether that be an _Augment_ or _Danger_. In addition, your GM will list a few potential _Dangers_, as well as what _Augments_ may be relevant.\n&nbsp;\nCharacters will then determine how many dice they roll. Players automatically roll 2 dice, but may gain or lose die ones based on a variety of factors:\n* If a character has appropriate Equipment for the situation, they gain an additional die.\n* If a character has an appropriate Skill or their magic or spirit would be helpful, they gain an additional die, or two if it is an exceptionally good fit. This may trigger multiple times.\n* If a character has appropriate Conditions they may gain bonus die from those.\n* If a character has done work to prepare for a situation or has set up some other advantage, they may gain a die.\n* A character may gain Stress to gain an additional die. In some circumstances the GM may decide that the character must gain Fatigue instead, typically for checks that occur over a long timespan such as _Travel_.\n* A single ally may assist in the roll, providing a bonus die if appropriate. This typically costs a _Stress_.\n* If a character has a Condition that would hinder their ability to succeed, they may lose a die.\n* If a character's _Health Bar_ is full, they roll one less die.\n\nAt this point, a character may gain Stress to swap from _Bold_ to _Cautious_, or vice versa. Additionally, if characters have abilities that allow them to modify the _Stakes_ sheet, they may use them here.\n&nbsp;\nAfter determining the character's die pool, characters roll their d6s. A result of 1-2 is a ⊟, a result of 3-4 is a ▢, and a result of 5-6 is a ⊞. If acting Cautiously, characters reroll ▢ and ⊞, while if they are rolling Boldly they reroll ⊟ and ▢. If a character is rolling Skillfully (usually from some ability), they may reroll dice of their choice. If a character does not wish to reroll, they may gain _Stress_ to use their initial result.\n&nbsp;\nAfter completing rolls, characters assign their available dice to _Augments_ and _Dangers_. The GM then narrates the scene, applies appropriate consequences and conditions, and the scene continues. Sometimes, a single Skill Challenge will be enough to finish a situation but in many cases characters will take turns accomplishing Skill Challenges until they've accomplished their goal or failed trying."
+  },
+  {
+    "name": "Wind",
+    "effect": "One of the spiritual elements, representing the ability to manipulate wind and electricity. Besides bending abilities, wind spirits are also known for creating fear, enhancing ones' quickness, or extending your senses through the wind. This also may refer to _Terrain_ or _Equipment_ made of wood."
+  },
+  {
+    "name": "Wood",
+    "effect": "One of the spiritual elements, representing the ability to manipulate wood and plantlife. Besides bending abilities, wood spirits are also known for inspiring joy, redistributing energy, and reading emotions. This also may refer to _Terrain_ or _Equipment_ made of wood."
+  },
+  {
+    "name": "Work",
+    "effect": "Camps will have modifiers, some of which may make it more difficult to camp. Characters may this _Camp Action_ to attempt to remove a harmful modifier, or add a positive modifier such as _Fortified_ or _Hidden_. Oftentimes this will require _Supplies_ or a specialized skillset to accomplish."
+  },
+  { "name": "Wear", "see": "Worn" },
+  { "name": "Wearing", "see": "Worn" },
   {
     "name": "Worn",
     "effect": "Equipment that a character is wearing, whether that be armor that is actively worn or a potion on their belt. Worn items can be easily accessed in combat and other challenges."
