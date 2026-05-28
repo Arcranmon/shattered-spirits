@@ -16,7 +16,9 @@
 
     <h4>{{ $route.params.character.Name }} Skills</h4>
     <div class="centered-text">
-      Skills represent a character's careers and describe what they are capable of, as well as determining additional die in skill challenges.
+      Skills represent a character's careers and describe what they are capable of, as well as determining additional die in skill challenges. In general,
+      skills are descriptive, not prescriptive; if you think you should be granted an additional die due to your background as a Farmer, make your case to the
+      GM!
     </div>
     <v-row>
       <v-col
@@ -35,7 +37,8 @@
     <h4>{{ $route.params.character.Name }} Powers</h4>
 
     <div class="centered-text">
-      Powers are narrative abilities that characters can use to influence the result of narrative rolls or otherwise automatically accomplish tasks.
+      Powers are narrative abilities that characters can use to influence the result of narrative rolls or otherwise automatically accomplish tasks. They are
+      split into Travel, Camp, and Skill Powers, with the former two used in their appropriate game phases and Skill Powers used at any time.
     </div>
     <v-row>
       <v-col
@@ -53,7 +56,7 @@
 
     <h4>{{ $route.params.character.Name }} Passives</h4>
 
-    <div class="centered-text">Passive abilities are always applied to a character at no cost and are typically relevant only for combat.</div>
+    <div class="centered-text">Passive abilities are always active and are typically relevant only for combat.</div>
     <v-row>
       <v-col
         cols="6"
@@ -139,6 +142,22 @@
       </v-col>
     </v-row>
     <v-row style="page-break-after: always" />
+
+    <h4>{{ $route.params.character.Name }} Equipment</h4>
+    <div class="centered-text">Various items that you have on hand.</div>
+    <v-row>
+      <v-col
+        cols="6"
+        v-for="item in $route.params.character.UniqueEquipment">
+        <base-widget
+          :ability="item"
+          :useDivider="true"
+          :key="item.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row style="page-break-after: always" />
   </div>
 </template>
 
@@ -162,6 +181,10 @@ export default Vue.extend({
 <style scoped lang="scss">
 .print-page {
   font-size: 8pt;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 4em;
+  padding-bottom: 4em;
 }
 .ability-box {
   page-break-inside: avoid;

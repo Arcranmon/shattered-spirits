@@ -173,6 +173,12 @@ class Character extends Combatant {
     return equipment
   }
 
+  public get UniqueEquipment() {
+    var allEquipment = this.SortedEquipment([...this.Packed, ...this.Worn])
+    console.log(allEquipment)
+    return new Set(allEquipment)
+  }
+
   get Load() {
     var load = 0 //this.equipped_armor_.Load
     for (var equipment of store.getters.getAnyEquipmentFromList(this.Worn)) {
