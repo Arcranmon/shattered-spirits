@@ -3,13 +3,14 @@
     <v-row>
       <v-col
         v-for="ability in $store.getters.getStatusesFromList(statuses)"
-        cols="6">
+        cols="4"
+        class="bordered">
         <base-widget
           :ability="ability"
           :useDivider="true"
           :key="ability.Name"
           :showChart="true"
-          class="ability-box" />
+          class="ability-box card-shape" />
       </v-col>
     </v-row>
   </div>
@@ -26,7 +27,32 @@ export default Vue.extend({
   },
   data() {
     return {
-      statuses: ['Fatigue', 'Fatigue', 'Fatigue', 'Fatigue', 'Fatigue', 'Fatigue'],
+      statuses: [
+        'Fatigue',
+        'Fatigue',
+        'Fatigue',
+        'Fatigue',
+        'Fatigue',
+        'Fatigue',
+        'Stress',
+        'Stress',
+        'Stress',
+        'Stress',
+        'Stress',
+        'Stress',
+        'Minor Flesh Wound',
+        'Minor Flesh Wound',
+        'Minor Flesh Wound',
+        'Minor Flesh Wound',
+        'Minor Flesh Wound',
+        'Minor Flesh Wound',
+        'Minor Leg Injury',
+        'Minor Leg Injury',
+        'Minor Leg Injury',
+        'Minor Leg Injury',
+        'Minor Leg Injury',
+        'Minor Leg Injury',
+      ],
     }
   },
   mounted() {
@@ -39,7 +65,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .print-page {
-  font-size: 8pt;
+  font-size: 9pt;
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 4em;
@@ -52,5 +78,10 @@ export default Vue.extend({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media print {
+  .card-shape {
+    width: 2.5in !important;
+  }
 }
 </style>
