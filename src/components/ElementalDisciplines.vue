@@ -61,7 +61,7 @@ export default Vue.extend({
       subdisciplines: [
         ['Stonecraft', 'Landcraft', 'Mightcraft', 'Heartcraft', 'Tremorcraft'],
         ['Blazecraft', 'Furnacecraft', 'Fuelcraft', 'Wrathcraft', 'Flickercraft'],
-        ['Lodecraft', 'Anvilcraft', 'Adamantcraft', 'Griefcraft', 'Mirrorcraft'],
+        ['Lodecraft', 'Anvilcraft', 'Adamantcraft', 'Griefcraft', 'Silvercraft'],
         ['Tidecraft', 'Frostcraft', 'Bloodcraft', 'Serenecraft', 'Ripplecraft'],
         ['Galecraft', 'Stormcraft', 'Nimblecraft', 'Terrorcraft', 'Breezecraft'],
         ['Barkcraft', 'Bloomcraft', 'Leechcraft', 'Joycraft', 'Auracraft'],

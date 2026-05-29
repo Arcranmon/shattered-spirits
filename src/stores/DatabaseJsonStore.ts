@@ -65,18 +65,7 @@ const kSpiritAbilities = [
   'Delay',
 ]
 
-const kBasicAbilities = [
-  'Brawl',
-  'Improvised Attack',
-  'Deflect',
-  'Breather',
-  'Disengage',
-  'Opportunity Attack',
-  'Lethal Strike',
-  'Evade',
-  'Interact',
-  'Empower',
-]
+const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
 @Module({
   name: 'databaseJson',
@@ -545,6 +534,18 @@ export class DatabaseJsonStore extends VuexModule {
   get getStatus(): any {
     return (inword: string) => {
       return this.Statuses.find((x) => x.Name === inword.trim())
+    }
+  }
+
+  get getStatusesFromList(): any {
+    return (status_list: Array<string>) => {
+      if (status_list == undefined) return []
+      let statuses: Array<Status> = []
+      for (var status of status_list) {
+        var temp = this.getStatus(status)
+        if (temp != undefined) statuses.push(temp)
+      }
+      return statuses
     }
   }
 

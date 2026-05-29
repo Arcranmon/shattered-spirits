@@ -90,6 +90,16 @@ const r = new Router({
         props: true,
       },
     },
+    {
+      path: '/print-statuses',
+      component: require('@/pages/print-statuses/index.vue').default,
+      name: 'print',
+      meta: {
+        title: 'Print',
+        hideHeader: true,
+        props: true,
+      },
+    },
   ],
 })
 
