@@ -172,6 +172,10 @@ class Spirit extends Combatant {
     return equipment
   }
 
+  get UniqueEquipment() {
+    return this.Equipment
+  }
+
   // ==========================================================
   // HELPERS
   // ==========================================================
