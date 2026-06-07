@@ -331,8 +331,9 @@ export default Vue.extend({
       if (this.ability instanceof Status) {
         return 'Status'
       }
-      if (this.ability.Type.length > 0) return this.ability.Type
-      return this.ability.Category
+      if (this.ability.Category == 'Camp' || this.ability.Category == 'Travel' || this.ability.Category == 'Skill' || this.ability.Category == 'Downtime')
+        return this.ability.Category
+      return this.ability.Type
     },
   },
   components: { AbilityWidget, BasicTable, ChartTable },
@@ -361,8 +362,14 @@ export default Vue.extend({
 .Skill {
   background-color: #d99a07;
 }
-.Power {
+.Camp {
   background-color: #d2d50e;
+}
+.Downtime {
+  background-color: #0ebed5;
+}
+.Travel {
+  background-color: #5cff69;
 }
 .Passive {
   background-color: #68696a;

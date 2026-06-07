@@ -14,8 +14,10 @@
     "abilities": [
       {
         "name": "Latch",
-        "keywords": ["Natural", "Martial", "Stab"],
+        "keywords": ["Martial"],
         "category": "Balanced",
+        "damage_type": "Stab",
+        "material": "Natural",
         "type": "Attack",
         "range": "_Melee_",
         "target": "Single-Target",
@@ -30,8 +32,10 @@
       },
       {
         "name": "Drink",
-        "keywords": ["Natural", "Martial", "Stab"],
+        "keywords": ["Martial"],
         "category": "Balanced",
+        "damage_type": "Stab",
+        "material": "Natural",
         "type": "Attack",
         "range": "_Melee_",
         "target": "A creature you are grappling or riding.",
@@ -99,7 +103,9 @@
     "abilities": [
       {
         "name": "Needle Shot",
-        "keywords": ["Natural", "Martial", "Stab"],
+        "keywords": ["Martial"],
+        "damage_type": "Stab",
+        "material": "Natural",
         "category": "Balanced",
         "type": "Attack",
         "range": "2",
@@ -161,15 +167,17 @@
     "guard": 15,
     "size": 2,
     "block": 4,
-    "bars": 2,
+    "bars": 3,
     "defenses": { "focus": 1, "grit": 1 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
     "abilities": [
       {
         "name": "Grasping Claw",
-        "keywords": ["Natural", "Martial", "Slash"],
+        "keywords": ["Martial"],
         "category": "Balanced",
+        "damage_type": "Slash",
+        "material": "Natural",
         "type": "Attack",
         "cost": "2 _Momentum_",
         "range": "Melee",
@@ -279,8 +287,8 @@
     "guard": 10,
     "size": 2,
     "block": 1,
-    "bars": 1,
-    "defenses": { "focus": 2 },
+    "bars": 2,
+    "defenses": { "focus": 2, "grit": 1 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
     "abilities": [
@@ -297,18 +305,119 @@
         "cost": "None",
         "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
         "effect": "Add _Poisoned_ 1 to the Attack. If you have an appropriate _Sample_, instead inflict _Poisoned_ 3."
+      },
+      {
+        "name": "Pheromone Spike",
+        "category": "Utility",
+        "type": "Maneuver",
+        "range": 1,
+        "effect": "Choose an ally within Range. They gain 2 _Movement_ that they must immediately spend, gain 4 _Guard_, and immediately _Recover_.",
+        "special": "If you have any Mutations, the target gains them."
+      },
+      {
+        "name": "Pheromone Mark",
+        "category": "Light",
+        "type": "Attack",
+        "range": 1,
+        "effect": "Choose an enemy within Range; they must immediately _Negate_ [_Reflex_ 10]. Inflict _Studied_, and the next Attack against them gains [_Pierce_ 2]. Regardless, they take 1 _Poison_ Damage."
+      },
+      {
+        "name": "Synthesis",
+        "category": "Utility",
+        "type": "Maneuver",
+        "range": 1,
+        "prereqs": "Must have a Blood Sample.",
+        "effect": "Consume the Blood Sample. For the rest of the Scene, whenever you use an effect that would deal _Poison_ Damage to the Target, deal +4 Damage. If you would inflict _Poisoned_, inflict 2 more. You gain this effect at half potency for all creatures of the same creature type (same spirit element, human, etc.). After, use Pheromone Spike on the nearest two allies."
+      },
+      {
+        "name": "Molt",
+        "category": "Defensive",
+        "type": "Maneuver",
+        "effect": "Choose a Damage Type you have used Adaptive Carapace against. Gain a Mutation that increases your _Resistance_ to that Damage by one step. You may not use this ability against that Damage Type again this _Scene_."
+      },
+      {
+        "name": "Adaptive Carapace",
+        "category": "Defensive",
+        "type": "Reaction",
+        "cost": "1 _Posture_",
+        "effect": "Gain +2 _Block_ against the triggering Attack. Note the Damage Type; you may use Molt against that effect."
+      },
+      {
+        "name": "Mutation Cloud",
+        "category": "Utility",
+        "type": "Maneuver",
+        "range": 1,
+        "effect": "Create a Mutation Cloud (Terrain, Weather, Fleeting). Any creature that ends their turn in this takes 2 Poison Damage, but, if they are a Locust, they gain all your Mutations at the time of creating this cloud."
+      },
+      {
+        "name": "Venom Spray",
+        "keywords": ["Martial"],
+        "category": "Balanced",
+        "damage_type": "Poison",
+        "material": "Natural",
+        "type": "Attack",
+        "cost": "4 _Momentum_",
+        "range": "0",
+        "target": "Single-Target",
+        "effect": "Attack a Target within Range.",
+        "chart": {
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "damage": [1, 4, 5, 7],
+          "negate": [4, 7, 8, 10],
+          "status": ["None", "_Poisoned_ 1", "_Poisoned_ 2", "_Poisoned_ 4"]
+        }
       }
     ],
     "stances": [
       {
         "name": "Field Chemist",
         "category": "Utility",
-        "desc": "You use a blood sample to create a new, more potent poison.",
+        "desc": "You adapt your form on the fly, creating a more vicious evolution.",
         "movement": 0,
         "block": 2,
         "speed": 3,
         "posture": 1,
-        "effect": "If you have a Blood Sample, on your _Turn_, you may create a more specialized toxin. For the rest of the Scene, whenever you use an effect would deal _Poison_ Damage to the Target, deal +4 Damage. If you would inflict _Poisoned_, inflict 2 more. You gain this effect at half potency for all creatures of the same creature type (same spirit element, human, etc.). After, use Pheromone Spike on the nearest two allies."
+        "effect": "Use Molt or Synthesis. After, use Pheromone Spike on the nearest two allies or Mutation Cloud."
+      },
+      {
+        "name": "Pheromone Spread",
+        "category": "Utility",
+        "desc": "You spew pheromone markers, enhancing your allies and marking foes for death.",
+        "movement": 2,
+        "block": 2,
+        "speed": 2,
+        "posture": 1,
+        "effect": "Either use Pheromone Spike or Pheromone Mark three times in any combo, or use one all creatures in an _Engagement_. Enemies take 1 _Poison_ Damage from Pheromone Spike, allies take 1 _Poison_ Damage from Pheromone Mark."
+      },
+      {
+        "name": "Recover",
+        "category": "Utility",
+        "desc": "You take a moment to gather yourself, potentially increasing your armor.",
+        "movement": 2,
+        "block": 1,
+        "speed": 2,
+        "posture": 1,
+        "effect": "You may _Recover_ or gain 4 _Guard_, then may either repeat that effect twice or use Molt. You may then _Retreat_."
+      },
+      {
+        "name": "Chemical Warrior",
+        "category": "Utility",
+        "desc": "You spew noxious chemical, attacking nearby foes.",
+        "movement": 2,
+        "block": 1,
+        "speed": 4,
+        "posture": 1,
+        "effect": "On your _Turn_, _Retreat_ then use Venom Spray, prioritizing targets you have a Mutation against, otherwise targeting the nearest."
+      },
+      {
+        "name": "Pursue Mutation",
+        "category": "Mobility",
+        "desc": "You pursue mutation, attempting to add to your arsenal.",
+        "movement": 4,
+        "block": 1,
+        "speed": 2,
+        "posture": 1,
+        "effect": "You may _Retreat_, then attempt to move towards the nearest Mutation Cloud, if available. If you enter it, do not take any Poison Damage and instead gain 4 _Guard_."
       }
     ]
   }
