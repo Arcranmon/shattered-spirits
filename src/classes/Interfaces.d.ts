@@ -167,6 +167,7 @@ declare interface INpcData {
 declare interface IAbilityData extends IBaseData {
   missile?: string
   area?: string
+  frequency?: string
   defend?: string
   imbues?: IEnhanceData[]
   enhancements?: IEnhanceData[]

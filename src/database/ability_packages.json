@@ -77,6 +77,7 @@
         "name": "Flame Reading",
         "category": "Camp",
         "type": "Power",
+        "keywords": ["Camp Action"],
         "effect": "As a _Camp Action_ when you have a campfire you may attempt to peer into what is to come on your next day of travel. Roll a die; on a 4+, the GM places a random _Discovery_, _Menace_, or _Event_ (your choice) in the deck face-up, which treats the card as already revealed when drawn. Along with this, you get a hazy vision of what is to come, the full details of which make sense when confronted with the situation. If you fail the roll, your spirit may gain _Stress_ to instead succeed."
       },
       {
@@ -261,7 +262,7 @@
         "category": "Travel",
         "type": "Power",
         "keywords": ["Spirit"],
-        "effect": "When traveling, your _Spirit_ may gain _Stress_ or you may spend 1 [-] to decrease the rank of a single _Affliction_ (making a _Fatigue_ a _Stress_, for example) caused by extreme heat for any character."
+        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ caused by extreme heat for any character."
       },
       {
         "name": "Icebending",
@@ -363,6 +364,7 @@
         "name": "Friendly Current",
         "category": "Defensive",
         "type": "Passive",
+        "keywords": ["Spirit"],
         "effect": "Gain +1 to _Negate_ all effects that use _Water_ as the Material.",
         "imbues": [
           {
@@ -517,7 +519,7 @@
       {
         "name": "Mighty Back",
         "category": "Travel",
-        "type": "Power",
+        "type": "Talent",
         "effect": "You may carry 1 _Load_ without it affecting your _Encumbrance_. If you spend the majority of the day traveling on something other than earth, lose this benefit.",
         "bonuses": { "load": 1 }
       },
@@ -603,8 +605,8 @@
         "name": "On the Wind",
         "category": "Travel",
         "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "When _Menace_  or _Discovery_ is drawn, you may attempt to glean more info. Your spirit gains _Stress_, but you immediately learn its rank or additional information. You may spend [ ] to reveal this card."
+        "keywords": ["Spirit", "Scouting"],
+        "effect": "When _Menace_  or _Discovery_ is drawn, you may attempt to glean more info. Your spirit gains _Stress_, but you immediately learn additional information, such as the consequences of failure. You may spend [ ] to reveal this card."
       },
       {
         "name": "Goosebumps",
@@ -837,7 +839,7 @@
         "category": "Travel",
         "type": "Power",
         "keywords": ["Spirit"],
-        "effect": "When traveling, your _Spirit_ may gain _Stress_ or you may spend 1 [-] to decrease the rank of a single _Affliction_ (turning _Fatigue_ to _Stress_, for example) caused by lightning strikes or other electricity-based effects  for any character."
+        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ caused by lightning or any electricity-based effects for any character."
       },
       {
         "name": "Jolt",
@@ -1301,7 +1303,8 @@
         "keywords": ["Spirit"],
         "category": "Camp",
         "type": "Power",
-        "effect": "When you do not need to be sublte with your craft you can use it to lift the spirits of your allies. Choose an ally; they may roll a die. On a 5+, they clear _Stress_; if they fail the roll, your spirit may gain _Stress_ to instead allow them to succeed. Additionally, whenever you participate in the _Connect_ _Camp Action_, the other target gains a +1 to their roll to clear _Stress_."
+        "frequency": "1/_Camp_",
+        "effect": "When you do not need to be subtle with your craft you can use it to lift the spirits of your allies. Choose an ally; they may roll a die. On a 5+, they clear _Stress_; if they fail the roll, your spirit may gain _Stress_ to instead allow them to succeed."
       },
       {
         "name": "Inspire Joy",
@@ -1403,6 +1406,12 @@
         "effect": "While you have a _Sketchbook_ you may, as a _Camp Action_, clear a _Stress_ then make an incredibly detailed sketch of something you saw today in your _Sketchbook_. The act of transferring this to your _Sketchbook_ gives you additional information about the target, typically the equivalent of the _Observation_ or _Advantage_ Augment, but may provide additional effects (such as additional _Mastery_ when sketching a significant landmark) at GM discretion."
       },
       {
+        "name": "Artistic Flourish",
+        "category": "Skill",
+        "type": "Boon",
+        "effect": "When you have the opportunity to add artistic flourishes (including when using your craft) you may spend [ ] as the _Style_ _Augment_."
+      },
+      {
         "name": "Artistic Expression",
         "category": "Downtime",
         "type": "Power",
@@ -1425,25 +1434,28 @@
       {
         "name": "Supply and Demand",
         "category": "Travel",
-        "type": "Power",
+        "type": "Talent",
         "effect": "Before starting a _Travel Leg_, your GM must tell you what the next town has an abundance of and what they have a shortage of. When trading these items, you may trade what they have a shortage of as if it was one Rarity higher, and what they have an abundance of one Rarity lower."
       },
       {
         "name": "Skilled Haggler",
         "category": "Travel",
         "type": "Power",
-        "effect": "Whenever you encounter traders or enter a new town you may get _Supplies_ for free (2 if a town or larger) through a series of intricate trades. You may use this ability once per trader/town per _Journey_."
+        "frequency": "1/Trader per _Journey_",
+        "effect": "Whenever you encounter traders or enter a new town you may get _Supplies_ for free (2 if a town or larger) through a series of intricate trades."
       },
       {
         "name": "Secret Stash",
         "category": "Travel",
         "type": "Power",
-        "effect": "Once per _Journey_ you may rummage through your pack and find something you have tucked away. You may trade _Supplies_ for 2 _Load_ of _Common_ items, or 1 _Load_ of _Uncommon_. You may regain use of this ability by trading, or automatically as a part of _Downtime_."
+        "frequency": "1/_Journey_",
+        "effect": "You may rummage through your pack and find something you have tucked away. You may trade _Supplies_ for 2 _Load_ of _Common_ items, or 1 _Load_ of _Uncommon_.",
+        "special": "You may regain a use of this ability by foregoing the free _Supplies_ from Skilled Haggler."
       },
       {
         "name": "Ledgers",
         "category": "Skill",
-        "type": "Power",
+        "type": "Talent",
         "effect": "You are able to read and write, and are near-instant with any math you might have to do as a merchant. Gain 1 _Lore_."
       }
     ]
@@ -1463,30 +1475,33 @@
       {
         "name": "Basic Literacy",
         "category": "Skill",
-        "type": "Power",
+        "type": "Talent",
         "effect": "You are able to read and write. Gain 1 _Lore_."
       },
       {
         "name": "Old World Knowledge",
         "category": "Skill",
-        "type": "Power",
+        "type": "Talent",
         "effect": "You can read the Old Script and, while many of the details remain a mystery, you have a better grasp on the history of the Old World than others. You gain increased insights when you encounter ruins and other things from the Old World."
       },
       {
         "name": "Mechanic",
+        "category": "Skill",
+        "type": "Talent",
         "effect": "You have an instinctive understanding of machines and devices from the Old World and, while you can't reproduce them, you can typically determine how to safely operate them and, if damaged, you know what you might need to do to get it in working order. This includes complex machinery, but you are also able to deal with simple devices such as locks given the appropriate tools."
       },
       {
         "name": "Untrappable",
         "category": "Skill",
-        "type": "Power",
-        "effect": "Whenever you encounter a trap, you always act with an _Advantage_ to disarm it and, when subjected to it, you may reduce the severity of an ill-effect by one, once per trap (making a _Wound_ a _Fatigue_, for example)."
+        "type": "Talent",
+        "effect": "When you encounter a trap you may roll _Skillfully_ to disarm or avoid it. Additionally, you may assist others with said tasks without spending _Stress_."
       },
       {
         "name": "Underworld Trail",
         "category": "Travel",
         "type": "Power",
-        "effect": "Whenever a _Discovery_ is drawn, your GM must inform you if it is connected to the Underworld."
+        "keywords": ["Scouting"],
+        "effect": "When a _Menace_ or _Discovery_ card is drawn from the Travel Deck, you may attempt to glean more info. If it is related to the Underworld, immediately learn additional information, such as the consequences of failure. You may spend [ ] to reveal this card."
       }
     ]
   },
@@ -1505,13 +1520,14 @@
       {
         "name": "Gather Herbs",
         "category": "Travel",
-        "type": "Power",
-        "effect": "When you <u>Forage</u> as a _Camp_ or _Travel_ _Action_ you always gain +1 _Herbalism Supplies_, and may replace any amount of _Supplies_ you would gain with _Herbalism Supplies_. Additionally, you know the _Uncommon_ and _Rare_ Herbs within the area, and may choose to gain 2 less _Supplies_ to gain a single _Uncommon_ Herb in the area, or 3 less to gain a _Rare_ one."
+        "type": "Talent",
+        "effect": "When you _Forage_ as a _Camp_ or _Travel_ _Action_ you always gain +1 _Herbalism Supplies_, and may replace any amount of _Supplies_ you would gain with _Herbalism Supplies_. Additionally, you know the _Uncommon_ and _Rare_ Herbs within the area, and may choose to gain 2 less _Supplies_ to gain a single _Uncommon_ Herb in the area, or 3 less to gain a _Rare_ one."
       },
       {
         "name": "Field Herbalism",
         "category": "Camp",
         "type": "Power",
+        "keywords": ["Camp Action"],
         "effect": "As a _Camp Action_ when you have _Herbalism Tools_ you may create something with herbs you have on hand. Choose one:\n* _Refine_ an _Herb_ in your possession.\n* Expend _Herbalism Supplies_, then gain any two of a _Poultice_ or _Antidote_, in any combination.\n* Expend three _Herbalism Supplies_. Gain a _Health Flask_.\n\nYou may convert a single _Herbalism Supplies_ into a _Poultice_ or _Antidote_ without using a _Camp Action_; if you do, gain _Stress_."
       },
       {
@@ -1525,7 +1541,7 @@
   {
     "name": "Farmer",
     "desc": "You've worked on a farm, making you used to hard physical labor and providing you a wide breadth of knowledge.",
-    "category": "Crafting",
+    "category": "Skill",
     "type": "Career",
     "abilities": [
       {
@@ -1544,7 +1560,9 @@
         "name": "High-Quality Produce",
         "category": "Camp",
         "type": "Power",
-        "effect": "Twice per _Journey_, you may trade _Supplies_ for 2 _Good Meals_ as you enjoy food given to you in exchange for farm labor, which typically takes the form of fruit or vegetable preserves, cheeses, or incredibly high quality jerky. You may refresh one use of this ability by helping at a farm for or similar for a day; otherwise, regain all uses whenever you spend _Downtime_ somewhere with a farm or similar."
+        "frequency": "2/Journey",
+        "effect": "You may trade _Supplies_ for 2 _Good Meals_ as you enjoy food given to you in exchange for farm labor, which typically takes the form of fruit or vegetable preserves, cheeses, or incredibly high quality jerky.",
+        "special": " You may refresh one use of this ability by helping at a farm for or similar facility for a day; otherwise, regain all uses whenever you spend _Downtime_ somewhere with a farm or similar facility."
       },
       {
         "name": "Animal Empathy",
@@ -1569,20 +1587,30 @@
       {
         "name": "Skilled Hunter",
         "category": "Travel",
-        "type": "Power",
-        "effect": "Whenever you <u>Hunt</u> as a _Camp_ or _Travel_ _Action_ treat yourself as having placed an additional die on the _Advantage_. You may always look at your current area's _Hunting Chart_ before deciding to roll on it, although the GM may hide the specifics of the rarest option on the table. If your roll would get you nothing, instead gain 1 _Basic Meal_."
+        "type": "Talent",
+        "effect": "Whenever you _Hunt_ as a _Camp_ or _Travel_ _Action_ gain a +1 to the die roll. You may always look at your current area's _Hunting Chart_ before deciding to roll on it, although the GM may hide the specifics of the rarest option on the table. If your roll would get you nothing, instead gain 1 _Basic Meal_."
       },
       {
         "name": "Tracker",
         "category": "Travel",
+        "type": "Boon",
+        "effect": "When traveling, you may spend one [ ] for any tracking related _Augment_ or to remove _Indiscretion_."
+      },
+      {
+        "name": "Trail Signs",
+        "category": "Travel",
         "type": "Power",
-        "effect": "When traveling, you may spend one [ ] for any tracking related _Augment_ or to remove _Indiscretion_. Additionally, once per day when _Menace_ or _Discovery_ is drawn, you may attempt to glean more info. If your ability to track would aid in detecting this, immediately learn its rank or additional information. You may spend [ ] to reveal this card. If your ability to track is not relevant, do not expend your use of this ability."
+        "frequency": "1/Day",
+        "keywords": ["Scouting"],
+        "effect": "When a _Menace_ or _Discovery_ card is drawn from the Travel Deck, you may attempt to glean more info. If your ability to track would reveal more information, immediately learn additional information, such as the consequences of failure. You may spend [ ] to reveal this card. If you learn no information, do not expend a use.",
+        "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
       },
       {
         "name": "Prepared Game",
-        "category": "Downtime",
+        "category": "Camp",
         "type": "Power",
-        "effect": "During downtime, you can stock up on food before the journey. Once per _Journey_ you may spend _Supplies_ to gain 2 _Good Meals_."
+        "frequency": "1/_Journey_",
+        "effect": "You always have a stack of jerky and other travel-safe meats. You may spend _Supplies_ to gain 2 _Good Meals_."
       }
     ]
   },
@@ -1634,7 +1662,7 @@
         "name": "Memento Mori",
         "category": "Skill",
         "type": "Power",
-        "keywords": ["Daily"],
+        "frequency": "1/Day",
         "effect": "The remnant spirits within your town treat you in a friendly manner and are inclined to assist you whenever possible. While in your hometown you may gain an _Advantage_ on a _Skill Challenge_ as you call upon a remnant spirit. This power may extend to other towns if you are able to learn a sufficient amount of their history to know the tales of the companions of other remnant spirits."
       },
       {
@@ -1693,7 +1721,7 @@
         "name": "Multitasking",
         "category": "Travel",
         "type": "Power",
-        "effect": "While traveling, you may select any number of jobs when you play the _Efficacy_ Advantage. Additionally, you may choose a different _Approach_ than the rest of your party and, when you play _Indiscretion_, you may remove it from any two characters in the party."
+        "effect": "You are an incredibly effective travel and gain the following benefits:\n* You may select any number of jobs when you play the _Efficacy_ Advantage.\n* You may choose a different _Approach_ than the rest of your party.\n* When you play _Indiscretion_, you may remove it from any two characters in the party (including yourself)."
       },
       {
         "name": "Hide All Traces",
@@ -1724,8 +1752,15 @@
       {
         "name": "Metalworking",
         "category": "Camp",
+        "type": "Talent",
+        "effect": "When you _Mend_ while _Resting_ and target _Metal_ _Equipment_ you can either clear a _Stress_ as a part of the _Mend_ _Camp Action_ or use it on two different _Metal_ items."
+      },
+      {
+        "name": "Reforge",
+        "category": "Camp",
         "type": "Power",
-        "effect": "When you _Mend_ while _Resting_ and target _Metal_ _Equipment_ you can either clear a _Stress_ as a part of the _Mend_ _Camp Action_ or use it on two different _Metal_ items. Additionally, as a _Camp Action_, you may choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 _Supplies_, then restore it to 1 _Durability_. This Action requires appropriate tools."
+        "keywords": ["Camp Action"],
+        "effect": "As a _Camp Action_, you may choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 _Supplies_, then restore it to 1 _Durability_. This Action requires appropriate tools."
       },
       {
         "name": "Forge-Trained",
@@ -1752,13 +1787,21 @@
         "name": "Hone",
         "category": "Camp",
         "type": "Power",
+        "keywords": ["Camp Action"],
         "effect": "As a _Camp Action_, choose an ally (including yourself) without a _Weaponsmith's Blessing_. You may take the time to maintain that ally's weaponry, granting them a _Weaponsmith's Blessing_."
       },
       {
         "name": "Weapon Maintenance",
         "category": "Camp",
         "type": "Power",
-        "effect": "Once per _Camp Phase_ you may take the _Mend_ or _Hone_ _Camp Action_ without expending your _Camp Action_ for the day. If you do, you may only target Weapons and gain _Stress_. Additionally, whenever you use _Mend_ a _Weapon_, roll a d6; on a 5+, you do not need to spend _Supplies_."
+        "frequency": "1/_Camp_",
+        "effect": "You may take the _Mend_ or _Hone_ _Camp Action_ without expending your _Camp Action_ for the day. If you do, you may only target Weapons and gain _Stress_."
+      },
+      {
+        "name": "Field Maintenance",
+        "category": "Camp",
+        "type": "Talent",
+        "effect": "Whenever you use _Mend_ on a _Weapon_, roll a d6; on a 5+, you do not need to spend _Supplies_."
       },
       {
         "name": "Forge Weapon",
@@ -1777,18 +1820,24 @@
         "name": "Exceptional Toughness",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their tracks. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina.\n&nbsp;\nWhen your exceptional toughness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or as the _Duration_ Augment, if appropriate."
+        "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their tracks. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina.\n&nbsp;\nWhen your exceptional toughness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Boon of Toughness",
+        "category": "Skill",
+        "type": "Boon",
+        "effect": "When your exceptional resilieince is relevant you may spend one [ ] as [-] or the _Duration_ _Augment_, if appropriate."
       },
       {
         "name": "Toughened Hide",
         "category": "Travel",
-        "type": "Power",
-        "effect": "When traveling in harsh conditions you may remove a single _Affliction_ or _Fatigue_ Hazard related to those conditions. You are naturally resilient and can power through rain, sleet, and heat."
+        "type": "Boon",
+        "effect": "You are naturally resilient and can power through rain, sleet, and heat. You may spend one [ ] to remove a _Danger_ related to extreme weather or other harsh conditions."
       },
       {
         "name": "Grin and Bear It",
         "category": "Skill",
-        "type": "Power",
+        "type": "Talent",
         "effect": "Gain an additional segment on your _Health Bar_."
       },
       {
@@ -1865,19 +1914,30 @@
         "name": "Exceptional Observation",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You have an uncanny knack for reading others. You can see through falsehoods, grasp somebody's true intention, and generally glean insights that others would see as an incredible leap of logic.\n&nbsp;\nWhen your ability to read people would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or for the _Observation_ Augment, if appropriate."
+        "effect": "You have an uncanny knack for reading others. You can see through falsehoods, grasp somebody's true intention, and generally glean insights that others would see as an incredible leap of logic.\n&nbsp;\nWhen your ability to read people would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Boon of Observation",
+        "category": "Skill",
+        "type": "Boon",
+        "effect": "When using your powers of observation you may spend one [ ] as [-] or the _Observation_ Augment, if appropriate."
       },
       {
         "name": "Social Observation",
         "category": "Skill",
         "type": "Power",
-        "effect": "When interacting with people, you may tap into your observational powers to gain additional insight. Ask one of the following questions, which the GM must answer honestly:\n* What is the general emotional state of the room?\n* Is this person lying or attempting to deceive us?\n* What does this person want right now?\n\nYou may use this Ability once per day for free; gain _Stress_ for each successive use."
+        "frequency": "1/Day",
+        "effect": "When interacting with people, you may tap into your observational powers to gain additional insight. Ask one of the following questions, which the GM must answer honestly:\n* What is the general emotional state of the room?\n* Is this person lying or attempting to deceive us?\n* What does this person want right now?",
+        "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
       },
       {
         "name": "Unlicensed Therapist",
         "category": "Travel",
         "type": "Power",
-        "effect": "Once per day when a _Menace_ Card is revealed, you may attempt to glean more info. If the card is related to conflict or inter-party turmoil, immediately learn its rank. You may spend one [ ] as if it was [-] to remove this _Menace_ or, if it is a _Minor Mishap_, may take a _Stress_ to remove it."
+        "keywords": ["Scouting"],
+        "frequency": "1/Day",
+        "effect": "When a _Menace_ Card is revealed, you may attempt to glean more info. If the card is related to conflict or inter-party turmoil immediately learn additional information, such as the consequences of failure. You may spend one [ ] to remove this _Menace_ or, if it is a _Minor Mishap_, may take a _Stress_ to remove it. If you learn no information about the card, do not spend a use.",
+        "special": "You may roll a d6 to regain a use of this _Ability_; on a 3-, take 1 _Stress_."
       },
       {
         "name": "Sense Intent",
@@ -1918,14 +1978,14 @@
         "name": "First Impression",
         "category": "Skill",
         "type": "Power",
-        "keywords": ["Daily"],
+        "frequency": "1/Day",
         "effect": "When meeting a new character you may charm them, causing them to treat you in a more friendly fashion. For example, a stranger might treat you as a friend, or a hostile creature may act more neutrally. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_.",
-        "special": "You may take 1 _Stress_ to regain your use of this _Ability_."
+        "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
       },
       {
         "name": "Fast Friends",
         "category": "Skill",
-        "type": "Power",
+        "type": "Talent",
         "effect": "You start each _Journey_ with a _Bond_ with each of your allies."
       },
       {
@@ -1967,7 +2027,9 @@
         "name": "Overwhelming Power",
         "category": "Skill",
         "type": "Power",
-        "effect": "When rolling _Boldly_ and using your strength you may use this Ability to roll an additional 2 die, but automatically add the _Mayhem_ _Danger_. You may use this Ability once per day for free; take a _Fatigue_ for each successive use."
+        "frequency": "1/Day",
+        "effect": "When rolling _Boldly_ and using your strength you may use this Ability to roll an additional 2 die, but automatically add the _Mayhem_ _Danger_.",
+        "special": "You may take 1 _Stress_ to regain a use of this Ability."
       },
       {
         "name": "Strong Back",
@@ -2001,12 +2063,18 @@
         "name": "Fleet of Foot",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general maneuverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction. Additionally, in these circumstances you may spend one [ ] as if it were [-] or at the _Speed_ Augment, if appropriate."
+        "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general maneuverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Boon of Swiftness",
+        "category": "Skill",
+        "type": "Boon",
+        "effect": "When your exceptional speed is relevant you may spend one [ ] as [-] or the _Speed_ _Augment_, if appropriate."
       },
       {
         "name": "Quick March",
         "category": "Travel",
-        "type": "Power",
+        "type": "Boon",
         "effect": "During a _Travel Roll_, you may spend one [ ] as _Speed_. You may gain _Fatigue_ to instead allow an ally to spend one of their [ ] as _Speed_ as you help them compensate for their pace."
       },
       {

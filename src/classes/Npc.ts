@@ -68,7 +68,6 @@ class Npc extends Combatant {
 
   override get AllArts() {
     var arts = store.getters.getTraitsFromList(this.npc_data_.traits)
-    console.log(arts)
     return arts
   }
 

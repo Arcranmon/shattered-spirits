@@ -175,7 +175,6 @@ class Character extends Combatant {
 
   public get UniqueEquipment() {
     var allEquipment = this.SortedEquipment([...this.Packed, ...this.Worn])
-    console.log(allEquipment)
     return new Set(allEquipment)
   }
 

@@ -7,6 +7,7 @@ import { Base, AbilityPackage, Chart, Bonuses } from '@/class'
 class Ability extends Base {
   protected missile_: string
   protected area_: string
+  protected frequency_: string
   protected defend_: string
   protected enhancements_: IEnhanceData[]
   protected imbues_: IEnhanceData[]
@@ -166,6 +167,12 @@ class Ability extends Base {
   public get CostHeader() {
     return '**_Cost_:** ' + this.cost_
   }
+  public get HasFrequency() {
+    return this.frequency_.length > 0
+  }
+  public get FrequencyHeader() {
+    return '**_Frequency_:** ' + this.frequency_
+  }
   public get HasMove() {
     return this.move_ > 0
   }
@@ -257,6 +264,7 @@ class Ability extends Base {
     this.category_ = data.category || ''
     this.type_ = data.type || 'MISSING'
     this.move_ = data.move || 0
+    this.frequency_ = data.frequency || ''
     this.reqs_ = data.reqs || ''
     this.speed_ = data.speed || 0
     this.target_ = data.target || ''
