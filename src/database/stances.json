@@ -5,7 +5,7 @@
     "desc": "You take on a stance focused on mobility, intent on covering ground quickly.",
     "defenses": { "focus": 0, "grit": 0, "reflex": 2 },
     "speed": 1,
-    "movement": 2,
+    "movement": 3,
     "momentum": 4,
     "posture": 1,
     "abilities": [
@@ -30,16 +30,16 @@
         "effect": "You may immediately _Move_ as if it was your _Turn_, and may use _Mobility_ _Maneuvers_ as if it was your turn."
       }
     ],
-    "adjust": 0.5
+    "adjust": 1
   },
   {
     "name": "Rallying Stance",
     "category": "Support",
-    "desc": "You adopt a supportive stance, focusing on helping allies while catching your posture.",
+    "desc": "You adopt a supportive stance, focusing on helping allies while catching your breath.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 0 },
     "block": 1,
     "speed": 2,
-    "momentum": 4,
+    "momentum": 5,
     "posture": 2,
     "abilities": [
       {
@@ -77,13 +77,17 @@
     "momentum": 4,
     "posture": 1,
     "block": 0,
-    "movement": 0,
+    "movement": 1,
     "abilities": [
       {
         "name": "Aggression",
+        "effect": "The first Attack you use on your _Turn_ gains [_Discount_ 2]."
+      },
+      {
+        "name": "Overwhelming Offense",
         "category": "Offensive",
         "type": "Passive",
-        "effect": "You may use any number of Attacks on your _Turn_. After each _Miss_, decrease the _Momentum_ gained by additional _Misses_ that _Turn_ by 1, to a minimum of 0. Additionally, your first Attack on your _Turn_ gains [_Discount_ 2]."
+        "effect": "You may use any number of Attacks on your _Turn_, and may use any given Attack up to two times. After each _Miss_, decrease the _Momentum_ gained by additional _Misses_ that _Turn_ by 1, to a minimum of 0."
       },
       {
         "name": "Press",
@@ -94,15 +98,15 @@
         "effect": "After resolving all other effects, deal 3 _Stun_ as a separate effect. If you Missed, instead deal 4 _Stun_."
       }
     ],
-    "adjust": 4,
-    "adjust_notes": "Gets 2 Momentum for attacks, toss in another 2 for Hostility."
+    "adjust": 3,
+    "adjust_notes": "Gets 2 Momentum for attacks, toss in another 1 for repeatable attacks."
   },
   {
     "name": "Open Stance",
     "category": "Balanced",
     "desc": "A perfectly balanced stance, leaving no obvious openings while granting no obvious advantages.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
-    "momentum": 5,
+    "momentum": 6,
     "posture": 2,
     "movement": 1,
     "block": 1,
@@ -114,7 +118,7 @@
     "desc": "You adopt a patient stance, gathering your energy to unleash a powerful effect.",
     "defenses": { "focus": 2, "grit": 1, "reflex": 0 },
     "speed": 6,
-    "block": 1,
+    "block": 2,
     "momentum": 4,
     "posture": 2,
     "abilities": [
@@ -133,7 +137,7 @@
     "category": "Defensive",
     "desc": "A stance focused on block, providing an unparalleled ability to keep yourself safe.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
-    "block": 2,
+    "block": 3,
     "speed": 5,
     "momentum": 4,
     "posture": 4,
@@ -188,7 +192,7 @@
     "defenses": { "reflex": 2 },
     "movement": 2,
     "posture": 1,
-    "block": 0,
+    "block": 1,
     "speed": "Spirit-1",
     "momentum": "1/1/2/2/3/3",
     "effect": "When you choose this Stance, choose a destination. On your _Turn_, move as close to the Destination as possible. Your Spirit may not Attack, but may use any Abilities that help accomplish this task, and may use _Armament_ _Maneuvers_ after reaching their destination.",
@@ -220,7 +224,7 @@
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
     "movement": 0,
     "posture": 3,
-    "block": 1,
+    "block": 2,
     "speed": "Spirit",
     "momentum": "1/1/2/2/3/3",
     "effect": "On your _Turn_ you may _Retreat_. Your may not Attack, but may use _Recovery_ or _Defensive_ Abilities on your _Turn_."
@@ -234,6 +238,6 @@
     "block": 0,
     "speed": "N/A",
     "momentum": "N/A",
-    "effect": "Automatically enter this _Stance_ if you are not _Manifested_ at _Respite_.  Gain 4 _Guard_. While in this _Stance_ your companion may spend _Essence_ on their Turn to give you _Guard_, granting 3 _Guard_ for every _Essence_ spent."
+    "effect": "Automatically enter this _Stance_ if you are not _Manifested_ at _Respite_.  Gain 4 _Guard_ and 2 _Essence_. While in this _Stance_ your companion may spend _Essence_ on their Turn to give you _Guard_, granting 3 _Guard_ for every _Essence_ spent."
   }
 ]

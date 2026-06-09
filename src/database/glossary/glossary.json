@@ -89,7 +89,7 @@
   },
   {
     "name": "Bend",
-    "effect": "Characters with bend for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Equip_) at the listed Bend Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Bend Range when targeting the appropriate material."
+    "effect": "Characters with bend for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Equip_) at the listed Bend Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Bend Range when targeting the appropriate material, paying all Costs with _Essence_ instead of _Momentum_."
   },
   {
     "name": "Block",
@@ -154,7 +154,7 @@
   },
   {
     "name": "Collision",
-    "effect": "Some _Forced Movement_ effects create a Collision which will repeat the effect caused by _Occupying_ said _Terrain_."
+    "effect": "Some _Forced Movement_ effects create a Collision which will repeat the effect caused by _Engaging_ said _Terrain_."
   },
   {
     "name": "Common",
@@ -634,21 +634,12 @@
   { "name": "Move", "see": "Movement" },
   {
     "name": "Movement",
-    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature in your _Arena_.\n* 1 _Movement_: Remove _Engaged_ and stop _Occupying_ your current _Terrain_.\n* 2 _Movement_: If not _Engaged_, move to an adjacent _Arena_.\n* 1 _Movement_: _Occupy_ _Terrain_. You automatically become _Engaged_ with any other creatures _Occupying_ the same effect.\n* 1 _Movement_: If not _Engaged_, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
-  },
-  {
-    "name": "Occupied",
-    "see": "Occupy"
+    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:\n* 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature or _Terrain_ in your _Arena_.  You automatically become _Engaged_ with any other creatures _Engaged_ with the same effect.\n* 1 _Movement_: Remove _Engaged_.\n* 2 _Movement_: If not _Engaged_ with a hostile creature, move to an adjacent _Arena_. This cost is often modified by features of either _Arena_, and can be higher or lower.\n* 1 _Movement_: If not _Engaged_ with a hostile creature, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
   },
   {
     "name": "Observation",
     "effect": "Observation is an _Augment_ that can be purchased in a _Skill Challenge_. When you purchase it, you are especially observant in action, learning anything of note that can be learned as you act."
   },
-  {
-    "name": "Occupy",
-    "effect": "While a creature is Occupying Terrain they gain the listed effects of said Terrain. A number of creatures may Occupy a Terrain equal to its Size. If a Terrain is Forcibly Moved, all creatures Occupying it stop Occupying."
-  },
-  { "name": "Occupying", "see": "Occupy" },
   { "name": "Openings", "see": "Opening" },
   {
     "name": "Opening",
@@ -730,7 +721,7 @@
   },
   {
     "name": "Retreat",
-    "effect": "Retreat is a special movement pattern used by NPCs. When a creature Retreats, they first leave their current _Engagement_, and may use any abilities that prevent an _Opening_. They may end their _Movement_ there, or may either:\n* Become _Engaged_ with an ally.\n* _Occupy_ _Terrain_.\n* Move to an _Arena_ with no enemies.\n\nRegardless of what they choose, they may not willingly _Engage_ an enemy under any circumstances."
+    "effect": "Retreat is a special movement pattern used by NPCs. When a creature Retreats, they first leave their current _Engagement_, and may use any abilities that prevent an _Opening_. They may end their _Movement_ there, or may either:\n* Become _Engaged_ with an ally or _Terrain_.\n* Move to an _Arena_ with no enemies.\n\nRegardless of what they choose, they may not willingly _Engage_ an enemy under any circumstances."
   },
   {
     "name": "Rooted",
@@ -746,7 +737,7 @@
   },
   {
     "name": "Siege",
-    "effect": "Optionally, when making this Attack against a creature _Occupying_ _Terrain_, the _Terrain_ first loses 1 _Hardness_. If this destroys the _Terrain_, the Target does not benefit from any effects it was granting. If you Attack the Obstacle directly it always loses 1 additional _Hardness_ and you treat all _Stun_ inflicted as _Damage_."
+    "effect": "Optionally, when making this Attack against a creature _Engaged_ with _Terrain_, the _Terrain_ first loses 1 _Hardness_. If this destroys the _Terrain_, the Target does not benefit from any effects it was granting. If you Attack the Obstacle directly it always loses 1 additional _Hardness_ and you treat all _Stun_ inflicted as _Damage_."
   },
   {
     "name": "Skill Check",

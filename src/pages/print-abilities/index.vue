@@ -2,7 +2,7 @@
   <div class="print-page">
     <v-row>
       <v-col
-        v-for="(ability, index) in $store.getters.getStatusesFromList(statuses)"
+        v-for="n in 8"
         cols="3"
         class="bordered do-not-split">
         <base-widget
@@ -21,40 +21,14 @@ import Vue from 'vue'
 import { Combatant } from '@/class'
 import BaseWidget from '@/components/BaseWidget.vue'
 export default Vue.extend({
-  name: 'print-statuses',
+  name: 'print-abilities',
   components: {
     BaseWidget,
   },
-  data() {
-    return {
-      row: 0,
-      statuses: [
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-      ],
-    }
+  computed: {
+    ability: function () {
+      return this.$store.getters.getFromEverything(this.prettyTab(this.$route.params.ability))
+    },
   },
   mounted() {
     window.onresize = () => {

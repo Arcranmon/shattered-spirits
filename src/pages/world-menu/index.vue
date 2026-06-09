@@ -45,34 +45,7 @@
       </v-col>
       <v-col>
         <h2>{{ prettyTab($route.params.tab) }}</h2>
-        <div v-if="$route.params.tab == 'sample-characters'">
-          <div
-            v-for="character in characters"
-            :key="character.Name">
-            <display-tooltip-text :string="character[0]" />
-            <v-expansion-panels
-              v-if="!showChart"
-              class="condensed"
-              flat
-              tile
-              accordion
-              style="width: 100%">
-              <v-expansion-panel>
-                <v-expansion-panel-header
-                  class="expand--header-chart"
-                  style="background-color: #85704c !important; background-image: none">
-                  <h4>Show Character</h4>
-                </v-expansion-panel-header>
-                <v-expansion-panel-content
-                  class="expand--body-chart"
-                  style="margin: 0 !important; padding-bottom: 0 !important">
-                  <show-character :character="character[1]" />
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels>
-          </div>
-        </div>
-        <div v-else>
+        <div>
           <display-tooltip-text :string="text[tabs.indexOf($route.params.tab)]" />
         </div>
       </v-col>
@@ -84,22 +57,9 @@
 import Vue from 'vue'
 import { Character } from '@/class'
 import CustomButton from '@/components/Button.vue'
-import ShowCharacter from '@/components/ShowCharacter.vue'
 import WorldText from '@/database/text_files/world_of_deskar.txt'
 import Greenvale from '@/database/text_files/greenvale.txt'
 import Civilization from '@/database/text_files/civilization.txt'
-import BlaineText from '@/database/text_files/sample_characters/blaine.txt'
-import BlaineStats from '@/database/sample_characters/blaine.json'
-import JohnText from '@/database/text_files/sample_characters/john.txt'
-import JohnStats from '@/database/sample_characters/john.json'
-import MargaretText from '@/database/text_files/sample_characters/margaret.txt'
-import MargaretStats from '@/database/sample_characters/margaret.json'
-import MarlonText from '@/database/text_files/sample_characters/marlon.txt'
-import MarlonStats from '@/database/sample_characters/marlon.json'
-import ErikaText from '@/database/text_files/sample_characters/erika.txt'
-import ErikaStats from '@/database/sample_characters/erika.json'
-import WinonaText from '@/database/text_files/sample_characters/winona.txt'
-import WinonaStats from '@/database/sample_characters/winona.json'
 import Spirits from '@/database/text_files/spirits.txt'
 import Threats from '@/database/text_files/threats.txt'
 import Spiritcraft from '@/database/text_files/spiritcraft.txt'
@@ -108,31 +68,13 @@ export default Vue.extend({
   name: 'world-menu',
   components: {
     CustomButton,
-    ShowCharacter,
   },
   data() {
     return {
       selectedTab: 'the-world-in-brief',
-      tabs: [
-        'the-world-in-brief',
-        'civilization-now',
-        'spirits',
-        'spiritcraft',
-        'dangers-of-the-shattered-world',
-        'the-seasons',
-        'the-greenvale',
-        'sample-characters',
-      ],
-      text: [WorldText, Civilization, Spirits, Spiritcraft, Threats, Seasons, Greenvale, ''],
+      tabs: ['the-world-in-brief', 'civilization-now', 'spirits', 'spiritcraft', 'dangers-of-the-shattered-world', 'the-seasons', 'the-greenvale'],
+      text: [WorldText, Civilization, Spirits, Spiritcraft, Threats, Seasons, Greenvale],
       count: 0,
-      characters: [
-        [BlaineText, Character.Deserialize(BlaineStats)],
-        [ErikaText, Character.Deserialize(ErikaStats)],
-        [JohnText, Character.Deserialize(JohnStats)],
-        [MargaretText, Character.Deserialize(MargaretStats)],
-        [MarlonText, Character.Deserialize(MarlonStats)],
-        [WinonaText, Character.Deserialize(WinonaStats)],
-      ],
     }
   },
   methods: {

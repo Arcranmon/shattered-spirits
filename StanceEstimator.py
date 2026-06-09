@@ -10,8 +10,8 @@ SPIRIT_STANCE_VALUE = 7 # Assume a rough defensive/movement budget of 4, +3 for 
 MOVEMENT_VALUE = 1.5 # Make it worth less from stance than buying it raw
 POSTURE_VALUE = 1
 SPEED_VALUE = 0.5
-DEFENSES_VALUE = 2/3
-BLOCK_VALUE = 0.3
+DEFENSES_VALUE = .3
+BLOCK_VALUE = 0.5
 
 def find_stance(name):
     f = open('.\src\database\\stances.json')
