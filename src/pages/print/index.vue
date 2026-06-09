@@ -3,7 +3,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="ability in $route.params.character.Stances">
+        v-for="ability in $route.params.character.Stances"
+        :key="ability.Name">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -14,15 +15,72 @@
     </v-row>
     <v-row style="page-break-after: always" />
 
-    <h4>{{ $route.params.character.Name }} Skills</h4>
-    <div class="centered-text">
-      Skills represent a character's careers and describe what they are capable of, as well as determining additional die in skill challenges. In general,
-      skills are descriptive, not prescriptive; if you think you should be granted an additional die due to your background as a Farmer, make your case to the
-      GM!
-    </div>
-    <v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="skillTalents.length > 0">
+      <h4>{{ $route.params.character.Name }} Skill Talents</h4>
+      <div class="centered-text">
+        Skills represent a character's knowledge, capabilities, and other facets of them outside their ability to take part in combat.
+      </div>
+      <div class="centered-text">
+        Talents are passive abilities that describe what a character is capable of. Typically, Talents are used to build your die pool in different Skill
+        Challenges.
+      </div>
+    </v-row>
+    <v-row v-if="skillTalents.length > 0">
       <v-col
-        v-for="ability in $route.params.character.FilteredAbilities('Skill', 'All', 'All')"
+        v-for="ability in skillTalents"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="skillBoons.length > 0">
+      <h4>{{ $route.params.character.Name }} Skill Boons</h4>
+      <div class="centered-text">
+        Skills represent a character's knowledge, capabilities, and other facets of them outside their ability to take part in combat.
+      </div>
+      <div class="centered-text">
+        Boons represent areas where your character truly excels, and allow you to manipulate how you spend die, typically by spending a &#9634; as something
+        else.
+      </div>
+    </v-row>
+    <v-row v-if="skillBoons.length > 0">
+      <v-col
+        v-for="ability in skillBoons"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="skillPowers.length > 0">
+      <h4>{{ $route.params.character.Name }} Skill Powers</h4>
+      <div class="centered-text">
+        Skills represent a character's knowledge, capabilities, and other facets of them outside their ability to take part in combat.
+      </div>
+      <div class="centered-text">
+        Powers are reliable abilities that your character can use that have a set effect. They always work, but typically have limits on how often they can be
+        used.
+      </div>
+    </v-row>
+    <v-row v-if="skillPowers.length > 0">
+      <v-col
+        v-for="ability in skillPowers"
+        :key="ability.Name"
         cols="6">
         <base-widget
           :ability="ability"
@@ -34,16 +92,155 @@
     </v-row>
     <v-row style="page-break-after: always" />
 
-    <h4>{{ $route.params.character.Name }} Powers</h4>
-
-    <div class="centered-text">
-      Powers are narrative abilities that characters can use to influence the result of narrative rolls or otherwise automatically accomplish tasks. They are
-      split into Travel, Camp, and Skill Powers, with the former two used in their appropriate game phases and Skill Powers used at any time.
-    </div>
-    <v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="travelTalents.length > 0">
+      <h4>{{ $route.params.character.Name }} Travel Talents</h4>
+      <div class="centered-text">
+        Travel abilities are used while taking part of a Journey, and typically make it easier for you to avoid dangers or find greater discoveries while
+        traveling.
+      </div>
+      <div class="centered-text">
+        Talents are passive abilities that describe what a character is capable of. Typically, Talents are used to build your die pool in different Skill
+        Challenges.
+      </div>
+    </v-row>
+    <v-row v-if="travelTalents.length > 0">
       <v-col
-        cols="6"
-        v-for="ability in $route.params.character.FilteredAbilities('Power', 'All', 'All')">
+        v-for="ability in travelTalents"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="travelBoons.length > 0">
+      <h4>{{ $route.params.character.Name }} Travel Boons</h4>
+      <div class="centered-text">
+        Travel abilities are used while taking part of a Journey, and typically make it easier for you to avoid dangers or find greater discoveries while
+        traveling.
+      </div>
+      <div class="centered-text">
+        Boons represent areas where your character truly excels, and allow you to manipulate how you spend die, typically by spending a &#9634; as something
+        else.
+      </div>
+    </v-row>
+    <v-row v-if="travelBoons.length > 0">
+      <v-col
+        v-for="ability in travelBoons"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="travelPowers.length > 0">
+      <h4>{{ $route.params.character.Name }} Travel Powers</h4>
+      <div class="centered-text">
+        Travel abilities are used while taking part of a Journey, and typically make it easier for you to avoid dangers or find greater discoveries while
+        traveling.
+      </div>
+      <div class="centered-text">
+        Powers are reliable abilities that your character can use that have a set effect. They always work, but typically have limits on how often they can be
+        used.
+      </div>
+    </v-row>
+    <v-row v-if="travelPowers.length > 0">
+      <v-col
+        v-for="ability in travelPowers"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row style="page-break-after: always" />
+
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="campTalents.length > 0">
+      <h4>{{ $route.params.character.Name }} Camp Talents</h4>
+      <div class="centered-text">
+        Camp abilities happen while you break to make camp, and are often specialized _Camp Actions_ you can take to accomplish additional tasks.
+      </div>
+      <div class="centered-text">
+        Talents are passive abilities that describe what a character is capable of. Typically, Talents are used to build your die pool in different _Skill
+        Challenges_.
+      </div>
+    </v-row>
+    <v-row v-if="campTalents.length > 0">
+      <v-col
+        v-for="ability in campTalents"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="campPowers.length > 0">
+      <h4>{{ $route.params.character.Name }} Camp Powers</h4>
+      <div class="centered-text">
+        Camp abilities happen while you break to make camp, and are often specialized _Camp Actions_ you can take to accomplish additional tasks.
+      </div>
+      <div class="centered-text">
+        Powers are reliable abilities that your character can use that have a set effect. They always work, but typically have limits on how often they can be
+        used.
+      </div>
+    </v-row>
+    <v-row v-if="campPowers.length > 0">
+      <v-col
+        v-for="ability in campPowers"
+        :key="ability.Name"
+        cols="6">
+        <base-widget
+          :ability="ability"
+          :useDivider="true"
+          :key="ability.Name"
+          :showChart="true"
+          class="ability-box" />
+      </v-col>
+    </v-row>
+    <v-row style="page-break-after: always" />
+
+    <v-row
+      class="ability-box d-block ma-0 pa-0"
+      v-if="downtimePowers.length > 0">
+      <h4>{{ $route.params.character.Name }} Downtime Powers</h4>
+      <div class="centered-text">
+        Downtime abilities happen between journeys, and are often related to forging bonds or creating intricate works of craftsmanship.
+      </div>
+      <div class="centered-text">
+        Powers are reliable abilities that your character can use that have a set effect. They always work, but typically have limits on how often they can be
+        used.
+      </div></v-row
+    >
+    <v-row v-if="downtimePowers.length > 0">
+      <v-col
+        v-for="ability in downtimePowers"
+        :key="ability.Name"
+        cols="6">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -60,7 +257,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="ability in $route.params.character.FilteredAbilities('Passive', 'All', 'All')">
+        v-for="ability in $route.params.character.FilteredAbilities('Passive', 'All', 'All')"
+        :key="ability.Name">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -79,7 +277,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="ability in $route.params.character.FilteredAbilities('Maneuver', 'All', 'All')">
+        v-for="ability in $route.params.character.FilteredAbilities('Maneuver', 'All', 'All')"
+        :key="ability.Name">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -98,7 +297,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="ability in $route.params.character.FilteredAbilities('Attack', 'All', 'All')">
+        v-for="ability in $route.params.character.FilteredAbilities('Attack', 'All', 'All')"
+        :key="ability.Name">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -115,7 +315,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="ability in $route.params.character.FilteredAbilities('Gambit', 'All', 'All')">
+        v-for="ability in $route.params.character.FilteredAbilities('Gambit', 'All', 'All')"
+        :key="ability.Name">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -132,7 +333,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="ability in $route.params.character.FilteredAbilities('Reaction', 'All', 'All')">
+        v-for="ability in $route.params.character.FilteredAbilities('Reaction', 'All', 'All')"
+        :key="ability.Name">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -148,7 +350,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="item in $route.params.character.UniqueEquipment">
+        v-for="item in $route.params.character.UniqueEquipment"
+        :key="item.Name">
         <base-widget
           :ability="item"
           :useDivider="true"
@@ -164,7 +367,8 @@
     <v-row>
       <v-col
         cols="6"
-        v-for="item in this.$store.getters.getAPsFromList($route.params.character.Arts)">
+        v-for="item in this.$store.getters.getAPsFromList($route.params.character.Arts)"
+        :key="item.Name">
         <base-widget
           :ability="item"
           :useDivider="true"
@@ -190,6 +394,35 @@ export default Vue.extend({
     window.onresize = () => {
       this.windowWidth = window.innerWidth
     }
+  },
+  computed: {
+    skillTalents: function () {
+      return this.$route.params.character.FilteredAbilities('Talent', 'Skill', 'All')
+    },
+    skillBoons: function () {
+      return this.$route.params.character.FilteredAbilities('Boon', 'Skill', 'All')
+    },
+    skillPowers: function () {
+      return this.$route.params.character.FilteredAbilities('Power', 'Skill', 'All')
+    },
+    travelTalents: function () {
+      return this.$route.params.character.FilteredAbilities('Talent', 'Travel', 'All')
+    },
+    travelBoons: function () {
+      return this.$route.params.character.FilteredAbilities('Boon', 'Travel', 'All')
+    },
+    travelPowers: function () {
+      return this.$route.params.character.FilteredAbilities('Power', 'Travel', 'All')
+    },
+    campTalents: function () {
+      return this.$route.params.character.FilteredAbilities('Talent', 'Camp', 'All')
+    },
+    campPowers: function () {
+      return this.$route.params.character.FilteredAbilities('Power', 'Camp', 'All')
+    },
+    downtimePowers: function () {
+      return this.$route.params.character.FilteredAbilities('Power', 'Downtime', 'All')
+    },
   },
 })
 </script>

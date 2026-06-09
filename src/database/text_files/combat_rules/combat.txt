@@ -66,11 +66,11 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 &nbsp;
 
 **Calculating Damage:** When determining how much damage is dealt to a creature, use the following order:
-1. Modify the result according to any modifiers to the _Attack Roll_ or _Weakness_/_Resistance_.
+1. Adjust the result according to any modifiers to the _Attack Roll_ or _Weakness_/_Resistance_.
 2. Determine the base Damage, as defined by the Attack or other effect.
 3. Add any modifiers from current Status Effects.
-4. Take any inflicted _Stun_.
-5. Apply _Block_.
+4. Lose _Guard_ from any inflicted _Stun_.
+5. You may choose to lose _Guard_ up to your _Block_ value and reduce the Damage by an equivalent amount, if available.
 6. Take any remaining Damage to _Stamina_.
 
 &nbsp;
@@ -89,19 +89,17 @@ Attacks in Shattered Spirits have a chart outlining damage and effects for value
 &nbsp;
 ### Resources in Combat
 
-* **Stamina:** A representation of a character's stamina and vitality. When this bar is emptied, the character gains a _Wound_.
+* **Stamina:** A representation of a character's vitality and energy. When this bar is emptied, the character gains a _Wound_.
 * **Guard:** A representation of a character's ability to defend themself. Characters may choose to lose _Guard_ instead of _Stamina_ when they take Damage, up to their _Block_ value.
-* **Momentum:** The resource used to fuel most a character's abilities and attacks. This is used for almost all of a character's abilities, and is roughly an approximation of how much they can do on their turn. All Momentum is lost at the start of the _Round_, so characters are encouraged to use it.
-* **Posture:** The resource used to fuel powerful defensive abilities. Characters can spend this to use a variety of _Defensive_ _Reactions_.
-* **Essence:** Essence is almost identical to Momentum, and represents a character's stores of spiritual energy and ability to channel Momentum into craft. Characters can typically convert small amounts of Momentum into Essence, and also receive some for free based on the environment. However, there are three key differences between the Momentum types:
-    * First, Essence can be used by either a character or their Spirit.
-    * Second, Essence may only be used on abilities with the [_Spirit_] keyword.
-    * Finally, Essence is not lost at the start of a Round.
+* **Momentum:** The resource used to fuel most a character's abilities and attacks, and is a rough approximation of how much they can do on their turn. All Momentum is lost at the start of the Round, so characters are encouraged to use it. 
+* **Posture:** The resource used to fuel powerful defensive abilities. Abilities such as _Deflect_ and _Evade_ are common uses of this resource.
+* **Essence:** Essence is almost identical to Momentum, and represents a character's stores of spiritual energy and ability to channel Momentum into craft. Characters can typically convert small amounts of Momentum into Essence, and also receive some for free based on the environment. However, there are two key differences between Momentum and Essence:
+    * Essence can be used by either a character or their Spirit.
+    * Essence is not lost at the start of a Round.
 * **Movement:** A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Movement_ in the following ways on their _Turn_:
-    * 1 _Movement_: If not _Engaged_ with a hostile creature, become _Engaged_ with a creature in your _Arena_.
-    * 1 _Movement_: Remove _Engaged_ and stop _Occupying_ your current _Terrain_.
+    * 1 _Movement_: If not _Engaged_, become _Engaged_ with a creature or _Terrain_ in your _Arena_.  You automatically become _Engaged_ with any other creatures _Engaged_ with the same effect.
+    * 1 _Movement_: Remove _Engaged_.
     * 2 _Movement_: If not _Engaged_ with a hostile creature, move to an adjacent _Arena_. This cost is often modified by features of either _Arena_, and can be higher or lower.
-    * 1 _Movement_: If not _Engaged_ with a hostile creature, _Occupy_ _Terrain_. You automatically become _Engaged_ with any other creatures _Occupying_ the same effect.
     * 1 _Movement_: If not _Engaged_ with a hostile creature, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you.
 
 &nbsp;
@@ -119,8 +117,8 @@ Arenas are the basic layout of the combat map, and represent distinct areas in a
 &nbsp;
  On the above map, the **Cave Entrance**, **Underground River**, **Side Tunnel Entrance**, **Cave Center**, **Steep Cliffs**, **High Ground**, **Egg Storage**, **Narrow Tunnel**, and **Queen's Lair** are the relevant Arenas, each with their own distinct effects, as outlined below.
 
- * The **Cave Entrance** is a simple arena. Characters in this Arena can spend 1 _Movement_ on their _Turn_ to flee the battlefield. Additionally, there are two large _Stalagmite_s that characters can _Occupy_ for _Cover_.
- * The **Cave Center** is also simple, with two large _Stalagmite_s that characters can _Occupy_ for _Cover_. It also has two _Stalactite_s that can be can attacked as if they were in Arena above the center; if they take at least 10 Damage they fall; all creatures in the Arena must make _Negate_ [_Reflex_ 10] taking 10 Damage on a failure or half on a success. Finally, creatures may pay 1 extra _Movement_ (total of 3) to move from the **Cave Center** to the **Side Tunnel Entrance** without Swimming or going into the _Underground River_.
+ * The **Cave Entrance** is a simple arena. Characters in this Arena can spend 1 _Movement_ on their _Turn_ to flee the battlefield. Additionally, there are two large _Stalagmite_s that characters can _Engage_ for _Cover_.
+ * The **Cave Center** is also simple, with two large _Stalagmite_s that characters can _Engage_ for _Cover_. It also has two _Stalactite_s that can be can attacked as if they were in Arena above the center; if they take at least 10 Damage they fall; all creatures in the Arena must make _Negate_ [_Reflex_ 10] taking 10 Damage on a failure or half on a success. Finally, creatures may pay 1 extra _Movement_ (total of 3) to move from the **Cave Center** to the **Side Tunnel Entrance** without Swimming or going into the _Underground River_.
  * The **Steep Cliffs** is a sheer wall that divides the elevations of the battlefield and counts as the _Cliff_ Terrain. It costs an additional two _Movement_ to enter and exit this _Arena_, and requires two _Free Hand_s. Additionally, while in this _Arena_, characters must use one Hand to maintain their hold, have _Disadvantage_ on all rolls, and all rolls against them have _Advantage_. Creatures with the _Climber_ trait ignore these penalties.
  * The **High Ground** is an area of the battlefield that overlooks the rest. Creatures on the **High Ground** have a +1 on _Attack Rolls_ against creatures in lower Arenas. Creatures that are Pushed from the **High Ground** to the **Cave Center** or **Cave Entrance** immediately _Fall_ 6.
  * The **Underground River** is a slow-running river that cuts through the battlefield. Creatures must _Swim_ through this _Arena_ but, other than that, it has no other effects.
@@ -168,8 +166,7 @@ Characters have several resources that represent their overall state in combat.
 
 ### Miscellaneous
 * Always round up.
-* You are not your own ally for the purposes of targeting.
+* You are not your own ally for the purposes of targeting, but your spirit is an ally!
+* You do not have to choose to use a Defensive Reaction until you know the final result of the Attack, including rolling to Negate. You know the full impact of an Attack before you choose to spend resources defending against it.
+* When using an Ability, you must choose all Enhancements you wish to apply before resolving any effects such as rolling dice unless said Enhancement has the [R] tag.
 * If the Cost of an ability is reduced to less than 0, any remaining reduction may (and should) be used on Enhancements.
-* For _Status_:
-    * When Statuses react with an effect, ignore all _Weakness_/_Resistance_ and similar from said Status when resolving the reaction.
-    * A Statuses reaction may not trigger another of its own Reactions.

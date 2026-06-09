@@ -303,6 +303,35 @@
               :cols="1" />
           </div>
         </div>
+        <div
+          v-if="$route.params.tab == 'sample-characters'"
+          style="margin-left: 1em; margin-right: 1em">
+          <div
+            v-for="character in characters"
+            :key="character.Name">
+            <display-tooltip-text :string="character[0]" />
+            <v-expansion-panels
+              v-if="!showChart"
+              class="condensed"
+              flat
+              tile
+              accordion
+              style="width: 100%">
+              <v-expansion-panel>
+                <v-expansion-panel-header
+                  class="expand--header-chart"
+                  style="background-color: #85704c !important; background-image: none">
+                  <h4>Show Character</h4>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content
+                  class="expand--body-chart"
+                  style="margin: 0 !important; padding-bottom: 0 !important">
+                  <show-character :character="character[1]" />
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </div>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -316,12 +345,25 @@ import ShowCards from '@/components/cards/ShowCards.vue'
 import AbilityWidget from '@/components/AbilityWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
+import ShowCharacter from '@/components/ShowCharacter.vue'
 import ElementalDisciplines from '@/components/ElementalDisciplines.vue'
 import ElementalArts from '@/components/ElementalArts.vue'
+import BlaineText from '@/database/text_files/sample_characters/blaine.txt'
+import BlaineStats from '@/database/sample_characters/blaine.json'
+import JohnText from '@/database/text_files/sample_characters/john.txt'
+import JohnStats from '@/database/sample_characters/john.json'
+import MargaretText from '@/database/text_files/sample_characters/margaret.txt'
+import MargaretStats from '@/database/sample_characters/margaret.json'
+import MarlonText from '@/database/text_files/sample_characters/marlon.txt'
+import MarlonStats from '@/database/sample_characters/marlon.json'
+import ErikaText from '@/database/text_files/sample_characters/erika.txt'
+import ErikaStats from '@/database/sample_characters/erika.json'
+import WinonaText from '@/database/text_files/sample_characters/winona.txt'
+import WinonaStats from '@/database/sample_characters/winona.json'
 
 export default Vue.extend({
   name: 'character-options',
-  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
+  components: { AbilityTab, CustomButton, ShowCards, ShowCharacter, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
   data() {
     return {
       selectedTab: 'basic-skills',
@@ -338,6 +380,15 @@ export default Vue.extend({
         'travel-items',
         'equipment',
         'resources',
+        'sample-characters',
+      ],
+      characters: [
+        [BlaineText, Character.Deserialize(BlaineStats)],
+        [ErikaText, Character.Deserialize(ErikaStats)],
+        [JohnText, Character.Deserialize(JohnStats)],
+        [MargaretText, Character.Deserialize(MargaretStats)],
+        [MarlonText, Character.Deserialize(MarlonStats)],
+        [WinonaText, Character.Deserialize(WinonaStats)],
       ],
       armorCategories: ['Armor', 'Clothing', 'Helmet', 'Boot', 'Cloak'],
       selectedArmors: ['Armor', 'Clothing', 'Helmet', 'Boot', 'Cloak'],

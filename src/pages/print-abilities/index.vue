@@ -2,15 +2,15 @@
   <div class="print-page">
     <v-row>
       <v-col
-        v-for="ability in $store.getters.getStatusesFromList(statuses)"
-        cols="4"
-        class="bordered">
+        v-for="n in 8"
+        cols="3"
+        class="bordered do-not-split">
         <base-widget
           :ability="ability"
           :useDivider="true"
           :key="ability.Name"
           :showChart="true"
-          class="ability-box card-shape" />
+          class="card-shape" />
       </v-col>
     </v-row>
   </div>
@@ -21,39 +21,14 @@ import Vue from 'vue'
 import { Combatant } from '@/class'
 import BaseWidget from '@/components/BaseWidget.vue'
 export default Vue.extend({
-  name: 'print-statuses',
+  name: 'print-abilities',
   components: {
     BaseWidget,
   },
-  data() {
-    return {
-      statuses: [
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Fatigue',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Stress',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Flesh Wound',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-        'Minor Leg Injury',
-      ],
-    }
+  computed: {
+    ability: function () {
+      return this.$store.getters.getFromEverything(this.prettyTab(this.$route.params.ability))
+    },
   },
   mounted() {
     window.onresize = () => {
@@ -71,8 +46,9 @@ export default Vue.extend({
   padding-top: 4em;
   padding-bottom: 4em;
 }
-.ability-box {
-  page-break-inside: avoid;
+.bordered {
+  border: $border--black-thin;
+  padding: 0.5em;
 }
 .centered-text {
   display: flex;
@@ -80,8 +56,13 @@ export default Vue.extend({
   align-items: center;
 }
 @media print {
+  .do-not-split {
+    display: block !important;
+    break-inside: avoid !important;
+  }
   .card-shape {
     width: 2.5in !important;
+    height: 3.5in !important;
   }
 }
 </style>

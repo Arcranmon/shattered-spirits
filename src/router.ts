@@ -91,8 +91,8 @@ const r = new Router({
       },
     },
     {
-      path: '/print-statuses',
-      component: require('@/pages/print-statuses/index.vue').default,
+      path: '/print-ability/:ability',
+      component: require('@/pages/print-abilities/index.vue').default,
       name: 'print',
       meta: {
         title: 'Print',

@@ -68,7 +68,6 @@ class Npc extends Combatant {
 
   override get AllArts() {
     var arts = store.getters.getTraitsFromList(this.npc_data_.traits)
-    console.log(arts)
     return arts
   }
 
@@ -80,10 +79,10 @@ class Npc extends Combatant {
   }
 
   public get HealthBarsText() {
-    return '**_Health Bar Size_:** ' + this.HealthBars
+    return '**_Health Bar_:** ' + this.HealthBars
   }
   public get HealthBars() {
-    return this.npc_data_.bars || 0
+    return this.npc_data_.bars || 1
   }
 
   public get Desc() {

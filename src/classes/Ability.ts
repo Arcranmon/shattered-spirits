@@ -7,6 +7,7 @@ import { Base, AbilityPackage, Chart, Bonuses } from '@/class'
 class Ability extends Base {
   protected missile_: string
   protected area_: string
+  protected frequency_: string
   protected defend_: string
   protected enhancements_: IEnhanceData[]
   protected imbues_: IEnhanceData[]
@@ -110,8 +111,7 @@ class Ability extends Base {
     if (this.category_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
     if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
     if (this.category_ === 'Recovery') return require('@/assets/Recovery.svg')
-    if (this.type_ === 'Skill') return require('@/assets/Skill.svg')
-    if (this.type_ === 'Power') return require('@/assets/disciplines/' + this.Category + '.svg')
+    if (this.type_ === 'Power' || this.type_ == 'Boon' || this.type_ == 'Talent') return require('@/assets/disciplines/' + this.Category + '.svg')
     return require('@/assets/General.svg')
   }
 
@@ -166,6 +166,12 @@ class Ability extends Base {
   }
   public get CostHeader() {
     return '**_Cost_:** ' + this.cost_
+  }
+  public get HasFrequency() {
+    return this.frequency_.length > 0
+  }
+  public get FrequencyHeader() {
+    return '**_Frequency_:** ' + this.frequency_
   }
   public get HasMove() {
     return this.move_ > 0
@@ -258,6 +264,7 @@ class Ability extends Base {
     this.category_ = data.category || ''
     this.type_ = data.type || 'MISSING'
     this.move_ = data.move || 0
+    this.frequency_ = data.frequency || ''
     this.reqs_ = data.reqs || ''
     this.speed_ = data.speed || 0
     this.target_ = data.target || ''

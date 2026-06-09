@@ -33,7 +33,6 @@ class Spirit extends Combatant {
   }
 
   override get MaxGuard() {
-    console.log(this.name_)
     var guard = this.spirit_type_.Guard + this.combinedBonuses_.Guard
     for (var item of this.combinedBonuses_.Equipment) {
       if (store.getters.isArmor(item)) {

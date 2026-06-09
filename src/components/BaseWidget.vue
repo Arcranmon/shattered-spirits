@@ -185,6 +185,9 @@
       <div v-if="ability.HasCost">
         <display-tooltip-text :string="ability.CostHeader" />
       </div>
+      <div v-if="ability.HasFrequency">
+        <display-tooltip-text :string="ability.FrequencyHeader" />
+      </div>
       <div v-if="ability.HasRangeOrTarget">
         <display-tooltip-text :string="ability.RangeOrTargetHeader" />
       </div>
@@ -331,8 +334,15 @@ export default Vue.extend({
       if (this.ability instanceof Status) {
         return 'Status'
       }
-      if (this.ability.Type.length > 0) return this.ability.Type
-      return this.ability.Category
+      if (
+        this.ability.Category == 'Crafting' ||
+        this.ability.Category == 'Camp' ||
+        this.ability.Category == 'Travel' ||
+        this.ability.Category == 'Skill' ||
+        this.ability.Category == 'Downtime'
+      )
+        return this.ability.Category
+      return this.ability.Type
     },
   },
   components: { AbilityWidget, BasicTable, ChartTable },
@@ -361,8 +371,17 @@ export default Vue.extend({
 .Skill {
   background-color: #d99a07;
 }
-.Power {
+.Camp {
   background-color: #d2d50e;
+}
+.Downtime {
+  background-color: #0ebed5;
+}
+.Travel {
+  background-color: #5cff69;
+}
+.Crafting {
+  background-color: #407647;
 }
 .Passive {
   background-color: #68696a;

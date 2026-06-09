@@ -198,7 +198,7 @@
   {
     "name": "Flying",
     "desc": "You are propelled by craft or wing, allowing you to easily soar through the arena.",
-    "effect": "While Flying:\n* You ignore all non-_Weather_ _Terrain_ effects.\n* You have _Advantage_ to _Negate_ with _Reflex_.\n* While not _Occupying_ _Terrain_ or _Engaged_ with a non-Flying creature, non-Flying creatures may not become _Engaged_ with you.\n* You have _Disadvantage_ to _Negate_ _Prone_ and _Forced Movement_ and, if you are knocked _Prone_, you immediately _Fall_ 1.\n\nIf a creature _Occupies_ Terrain, they also lose Flying. If a creature loses Flying naturally (either by choice or their effect granting Flying ending), they may safely land and suffer no ill effects.",
+    "effect": "While Flying:\n* You ignore all non-_Weather_ _Terrain_ effects.\n* You have _Advantage_ to _Negate_ with _Reflex_.\n* While not _Engaged_ with _Terrain_ or a non-Flying creature, non-Flying creatures may not become _Engaged_ with you.\n* You have _Disadvantage_ to _Negate_ _Prone_ and _Forced Movement_ and, if you are knocked _Prone_, you immediately _Fall_ 1.\n\nIf a creature _Engages_ Terrain, they also lose Flying. If a creature loses Flying naturally (either by choice or their effect granting Flying ending), they may safely land and suffer no ill effects.",
     "type": "Status"
   },
   {
@@ -282,8 +282,8 @@
   },
   {
     "name": "Engaged",
-    "desc": "A status showing that two creatures are engaged in close combat with one another.",
-    "effect": "While Engaged spending _Movement_ creates an _Opening_. Additionally, while _Engaged_, a character has _Disadvantage_ all Attacks that do not Target at least one creature they are Engaged with.",
+    "desc": "A status showing when things are in close proximity.",
+    "effect": "While Engaged with \n* a creature, spending _Movement_ creates an _Opening_ and you have _Disadvantage_ on all Attacks that do not Target at least one creature you are Engaged with.\n* _Terrain_ gain the listed effects of said Terrain.",
     "remove": "Characters may spend 1 _Movement_ to remove all instances of Engaged (see _Movement_).",
     "type": "Status"
   },
@@ -350,19 +350,19 @@
   {
     "name": "Pull",
     "desc": "You drag a foe closer to you, or simply pull them into a nearby obstacle.",
-    "effect": "When you inflict Pull, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it brings them closer to you.\n\nIf it was a Forceful Pull, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ closer to you.",
+    "effect": "When you inflict Pull, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_, so long as it brings them closer to you.\n\nIf it was a Forceful Pull, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ closer to you.",
     "type": "Instant Effect"
   },
   {
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
-    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 1 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you.\n\nIf it was a Forceful Push, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you.",
+    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 1 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you.\n\nIf it was a Forceful Push, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you.",
     "type": "Instant Effect"
   },
   {
     "name": "Slide",
     "desc": "You adroitly move a foe about, placing them where you wish.",
-    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Occupying_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Occupying_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ or _Occupy_ _Terrain_ of your choice within their current _Arena_.\n\nIf it was a Forceful Slide, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_.",
+    "effect": "When you inflict Push, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_.\n\nIf it was a Forceful Slide, you may either choose an above option and inflict 2 _Stun_ or move them to an adjacent _Arena_.",
     "type": "Instant Effect"
   },
   {
