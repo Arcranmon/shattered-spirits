@@ -35,8 +35,8 @@
     </div>
     <div class="card--content card--format">
       <div
-        v-if="ability.Desc.length > 0"
-        style="font-style: italic">
+        v-if="ability.Desc.length > 0 && showDesc"
+        style="font-style: italic; font-size: smaller">
         {{ ability.Desc }}<br />
       </div>
       <div v-if="ability.HasSummary">
@@ -299,6 +299,10 @@ export default Vue.extend({
     showChart: {
       type: Boolean,
       default: false,
+    },
+    showDesc: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {

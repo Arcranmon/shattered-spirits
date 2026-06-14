@@ -14,6 +14,10 @@
 
 ## To-Do
 
+- Clear up frequency wording on Spirit abilities to make it more obvious they are shared
+- Maybe only show combat Spirit abilities on the spirit sheets?
+- Basic abilities at the top with a blurb
+
 ### Plan
 
 POTENTIAL REFACTORS

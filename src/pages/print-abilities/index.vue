@@ -2,7 +2,7 @@
   <div class="print-page">
     <v-row>
       <v-col
-        v-for="n in 8"
+        v-for="ability in abilities"
         cols="3"
         class="bordered do-not-split">
         <base-widget
@@ -10,6 +10,7 @@
           :useDivider="true"
           :key="ability.Name"
           :showChart="true"
+          :showDesc="false"
           class="card-shape" />
       </v-col>
     </v-row>
@@ -26,8 +27,10 @@ export default Vue.extend({
     BaseWidget,
   },
   computed: {
-    ability: function () {
-      return this.$store.getters.getFromEverything(this.prettyTab(this.$route.params.ability))
+    abilities: function () {
+      var abilityList = this.$store.getters.getFromEverythingFromList(['Cramped', 'Cramped', 'Prone', 'Prone', 'Push', 'Push', 'Pull', 'Pull'])
+      if (abilityList.length == 1) return Array(8).fill(abilityList[0])
+      return abilityList
     },
   },
   mounted() {
@@ -40,7 +43,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .print-page {
-  font-size: 9pt;
+  font-size: 8pt;
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 4em;

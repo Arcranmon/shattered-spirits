@@ -19,7 +19,6 @@
           <display-tooltip-text :string="npc.StunText + '&nbsp;'" />
           <display-tooltip-text :string="npc.HealthBarsText + '&nbsp;'" />
           <display-tooltip-text :string="npc.StaminaText + '&nbsp;'" />
-          <display-tooltip-text :string="npc.BlockText + '&nbsp;'" />
         </v-col>
       </v-row>
       <v-row no-gutters> </v-row>

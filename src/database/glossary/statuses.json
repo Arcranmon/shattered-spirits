@@ -250,6 +250,14 @@
     "type": "Status"
   },
   {
+    "name": "Enraged",
+    "desc": "You are filled with a blinding, dangerous fury.",
+    "effect": "Depending on how Enraged a creature is, they gain the following effects:\n* I: Gain +1 to all _Attack Rolls_, but take +1 _Stun_ from all Attacks and a -1 to all _Defense Rolls_..",
+    "repeat": "If an Enraged creature would gain Enraged they either increase their Enraged rank, if possible, or lose 2 _Guard_.",
+    "reacts": ["<ins>_Calm_:</ins> If a creature is _Calm_ and would gain Enraged, they instead decrease their _Calm_ rank by 1."],
+    "type": "Emotional Status"
+  },
+  {
     "name": "Joyful",
     "desc": "You are filled with an energizing, contagious sense of joy.",
     "effect": "Depending on how Joyful a creature is, they gain the following benefits:\n* I: At the end of each of your _Turns_, you and all allies you are _Engaged_ with gain 1 _Guard_.",
@@ -273,10 +281,9 @@
   },
   {
     "name": "Taunted",
-    "desc": "An condition caused when a creature is single-mindedly focused on a foe.",
-    "effect": "While a player character is Taunted all Attacks that do not target the creature that inflicted Taunted are made at _Disadvantage_. When any other creature is Taunted, they ignore their normal targeting for Attacks and instead may only target the creature that inflicted Taunt. Additionally, in either case, any _Movement_ that does not bring you closer to the creature that inflicted Taunted has its cost increased by 1.",
-    "repeat": "If a Taunted creature would gain Taunted use the new Taunted inflictor as the target of this Status.",
-    "remove": "If the creature that inflicted Taunted targets another creature with an Attack, you may immediately _Negate_ [_Focus_ 7] to clear Taunted.",
+    "desc": "You are single-mindedly focused on a foe.",
+    "effect": "While Taunted all Attacks that do not target the taunter are made at _Disadvantage_, and creatures must spend an additional Movement when leaving an _Engagement_ or _Arena_ that includes the taunter. Additionally, when an NPC or Spirit is Taunted, they ignore their normal targeting for Attacks and instead prioritize the taunter; if they cannot Attack the taunter they may use their normal targeting, but should prioritize targets that bring them closer to the taunter.",
+    "repeat": "If a Taunted creature would gain Taunted , lose 1 _Guard_ and treat the second creature as the taunter.",
     "recover": "When a creature _Recovers_ they may remove Taunted.",
     "type": "Minor Status"
   },

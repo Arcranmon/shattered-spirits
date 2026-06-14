@@ -120,7 +120,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Statuses: Status[] = []
 
   get basicStances() {
-    return ['Open Stance', 'Rallying Stance', 'Guarded Stance', 'Agile Stance', 'Hostile Stance', 'Focused Stance']
+    return ['Open Stance', 'Focused Stance', 'Guarded Stance', 'Hostile Stance', 'Rallying Stance', 'Agile Stance']
   }
 
   get basicSpiritStances() {
@@ -157,6 +157,17 @@ export class DatabaseJsonStore extends VuexModule {
       var item = this.Everything.find((x) => x.Name.trim() == inword.trim())
       if (item == undefined) return false
       return item
+    }
+  }
+
+  get getFromEverythingFromList(): any {
+    return (ability_list: Array<any>) => {
+      if (ability_list == undefined) return []
+      let abilities: Array<Ability> = []
+      for (var ability of ability_list) {
+        abilities.push(this.getFromEverything(ability))
+      }
+      return abilities
     }
   }
 

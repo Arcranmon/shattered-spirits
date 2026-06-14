@@ -1,19 +1,28 @@
 <template>
   <div class="print-page">
+    <!---
     <v-row>
-      <v-col
-        cols="6"
-        v-for="ability in $route.params.character.Stances"
-        :key="ability.Name">
+      <v-col cols="6">
         <base-widget
-          :ability="ability"
+          v-for="num in [0, 1, 2]"
+          :ability="$route.params.character.Stances[num]"
           :useDivider="true"
-          :key="ability.Name"
+          :key="$route.params.character.Stances[num].Name"
           :showChart="true"
-          class="ability-box"
+          class="bordered ability-box stance-card"
+      /></v-col>
+      <v-col cols="6">
+        <base-widget
+          v-for="num in [3, 4, 5]"
+          :ability="$route.params.character.Stances[num]"
+          :useDivider="true"
+          :key="$route.params.character.Stances[num].Name"
+          :showChart="true"
+          class="bordered ability-box stance-card"
       /></v-col>
     </v-row>
     <v-row style="page-break-after: always" />
+    --->
 
     <v-row
       class="ability-box d-block ma-0 pa-0"
@@ -31,7 +40,8 @@
       <v-col
         v-for="ability in skillTalents"
         :key="ability.Name"
-        cols="6">
+        cols="6"
+        class="ability-box">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -56,7 +66,8 @@
       <v-col
         v-for="ability in skillBoons"
         :key="ability.Name"
-        cols="6">
+        cols="6"
+        class="ability-box">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -170,18 +181,20 @@
           class="ability-box" />
       </v-col>
     </v-row>
-    <v-row style="page-break-after: always" />
+    <v-row
+      v-if="travelPowers.length > 0 || travelTalents.length > 0 || travelBoons.length > 0"
+      style="page-break-after: always" />
 
     <v-row
       class="ability-box d-block ma-0 pa-0"
       v-if="campTalents.length > 0">
       <h4>{{ $route.params.character.Name }} Camp Talents</h4>
       <div class="centered-text">
-        Camp abilities happen while you break to make camp, and are often specialized _Camp Actions_ you can take to accomplish additional tasks.
+        Camp abilities happen while you break to make camp, and are often specialized Camp Actions you can take to accomplish additional tasks.
       </div>
       <div class="centered-text">
-        Talents are passive abilities that describe what a character is capable of. Typically, Talents are used to build your die pool in different _Skill
-        Challenges_.
+        Talents are passive abilities that describe what a character is capable of. Typically, Talents are used to build your die pool in different Skill
+        Challenges.
       </div>
     </v-row>
     <v-row v-if="campTalents.length > 0">
@@ -202,7 +215,7 @@
       v-if="campPowers.length > 0">
       <h4>{{ $route.params.character.Name }} Camp Powers</h4>
       <div class="centered-text">
-        Camp abilities happen while you break to make camp, and are often specialized _Camp Actions_ you can take to accomplish additional tasks.
+        Camp abilities happen while you break to make camp, and are often specialized Camp Actions you can take to accomplish additional tasks.
       </div>
       <div class="centered-text">
         Powers are reliable abilities that your character can use that have a set effect. They always work, but typically have limits on how often they can be
@@ -222,7 +235,9 @@
           class="ability-box" />
       </v-col>
     </v-row>
-    <v-row style="page-break-after: always" />
+    <v-row
+      v-if="campPowers.length > 0 || campTalents.length > 0"
+      style="page-break-after: always" />
 
     <v-row
       class="ability-box d-block ma-0 pa-0"
@@ -249,7 +264,9 @@
           class="ability-box" />
       </v-col>
     </v-row>
-    <v-row style="page-break-after: always" />
+    <v-row
+      v-if="downtimePowers.length > 0"
+      style="page-break-after: always" />
 
     <h4>{{ $route.params.character.Name }} Passives</h4>
 
@@ -278,7 +295,8 @@
       <v-col
         cols="6"
         v-for="ability in $route.params.character.FilteredAbilities('Maneuver', 'All', 'All')"
-        :key="ability.Name">
+        :key="ability.Name"
+        class="ability-box">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -298,7 +316,8 @@
       <v-col
         cols="6"
         v-for="ability in $route.params.character.FilteredAbilities('Attack', 'All', 'All')"
-        :key="ability.Name">
+        :key="ability.Name"
+        class="ability-box">
         <base-widget
           :ability="ability"
           :useDivider="true"
@@ -343,8 +362,9 @@
           class="ability-box" />
       </v-col>
     </v-row>
-    <v-row style="page-break-after: always" />
 
+    <!--
+    <v-row style="page-break-after: always" />
     <h4>{{ $route.params.character.Name }} Equipment</h4>
     <div class="centered-text">Various items that you have on hand.</div>
     <v-row>
@@ -378,6 +398,7 @@
       </v-col>
     </v-row>
     <v-row style="page-break-after: always" />
+    --->
   </div>
 </template>
 
@@ -434,6 +455,7 @@ export default Vue.extend({
   padding-right: 2em;
   padding-top: 4em;
   padding-bottom: 4em;
+  background-color: $color--grey-light;
 }
 .ability-box {
   page-break-inside: avoid;
@@ -442,5 +464,14 @@ export default Vue.extend({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.bordered {
+  border: $border--black-thin;
+  padding: 0.5em;
+}
+@media print {
+  .stance-card {
+    width: 4.25in !important;
+  }
 }
 </style>

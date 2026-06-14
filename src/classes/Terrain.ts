@@ -62,7 +62,7 @@ class Terrain extends Base {
     return '**Hardness:** ' + this.hardness_ + '; **Threshold:** ' + this.threshold_
   }
   public get Header() {
-    return this.Name + ' - _' + this.element_ + '_ ' + this.layer_
+    return this.Name + ' - _' + this.element_ + '_ ' + ' Terrain'
   }
 
   // ==========================================================
