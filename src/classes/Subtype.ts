@@ -12,7 +12,7 @@ class Subtype extends Base {
   private growth_points_: number
   private traits_: string[]
   private soak_: string
-  private speed_: number
+  private phase_: number
 
   public constructor(name) {
     super(name)
@@ -60,12 +60,12 @@ class Subtype extends Base {
   public get MovementHeader() {
     return '**Move:** ' + this.move_
   }
-  public get Speed() {
-    return this.speed_
+  public get Phase() {
+    return this.phase_
   }
 
-  public get SpeedHeader() {
-    return '**Speed:** ' + this.speed_
+  public get PhaseHeader() {
+    return '**Phase:** ' + this.phase_
   }
 
   public get Element() {
@@ -117,7 +117,7 @@ class Subtype extends Base {
     this.stun_ = data.block || 0
     this.block_ = data.guard || 0
     this.manifest_ = data.manifest || 'You may Manifest your Spirit within Melee Range.'
-    this.speed_ = data.speed || 0
+    this.phase_ = data.phase || 0
     this.growth_points_ = data.growth_points || 0
   }
 }

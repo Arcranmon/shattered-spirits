@@ -249,7 +249,7 @@ def estimate_damage(attack, glancing, print_stats):
             for j in range(int(roll_range[0]), int(roll_range[1]) + 1):
                 roll_map[j-2] = i
 
-    # Calculate the damage for each speed.
+    # Calculate the damage for each Phase.
     est_damage = [0]*12
     for roll_index in range(10,-1,-1):
         index = roll_map[roll_index]

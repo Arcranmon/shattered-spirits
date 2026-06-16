@@ -3,27 +3,31 @@
     "name": "Traveling Light",
     "category": "Travel",
     "type": "Talent",
-    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help. When this would help, gain +1 die on an appropriate Skill Challenge or Interaction."
+    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help. When this would help, gain +1 die on an appropriate Skill Challenge or Interaction.",
+    "summary": "Gain +1 die on _Travel Rolls_, or _Skill Challenges_ where being light helps."
   },
   {
     "name": "Unencumbered",
     "category": "Mobility",
     "type": "Passive",
     "effect": "Gain +1 _Movement_.",
-    "bonuses": { "move": 1 }
+    "bonuses": { "move": 1 },
+    "summary": "Effect"
   },
   {
     "name": "Traveling Heavy",
     "category": "Travel",
     "type": "Talent",
-    "effect": "Add an additional _Affliction_ (_Fatigue_) Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help. When this would hurt, lose 1 die on an appropriate Skill Challenge or Interaction."
+    "effect": "Add an additional _Affliction_ (_Fatigue_) Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help. When this would hurt, lose 1 die on an appropriate Skill Challenge or Interaction.",
+    "summary": "Lose 1 die on _Travel Rolls_, or _Skill Challenges_ where being heavy hurts."
   },
   {
     "name": "Heavily Encumbered",
     "category": "Mobility",
     "type": "Passive",
     "effect": "Gain -1 _Movement_.",
-    "bonuses": { "move": -1 }
+    "bonuses": { "move": -1 },
+    "summary": "Effect"
   },
   {
     "name": "Accelerate",
@@ -31,7 +35,8 @@
     "type": "Maneuver",
     "keywords": ["Repeatable"],
     "cost": "2 _Momentum_",
-    "effect": "Gain 1 _Movement_."
+    "effect": "Gain 1 _Movement_.",
+    "summary": "Spend Momentum to gain Movement."
   },
   {
     "name": "Spiritcraft",
@@ -47,7 +52,8 @@
         "effect": "Gain 1 _Essence_. You must have a _Free Hand_ to use this ability. Spirits always are treated as having a _Free Hand_ for this Ability."
       },
       { "name": "Focus Energy", "cost": "2 _Momentum_", "effect": "Gain 1 _Essence_. You may repeat this _Enhancement_." }
-    ]
+    ],
+    "summary": "Spend Momentum to gain Essence."
   },
   {
     "name": "Concentrate",
@@ -55,7 +61,8 @@
     "type": "Maneuver",
     "keywords": ["Final", "Instinctive"],
     "cost": "2 _Momentum_",
-    "effect": "Gain _Concentrating_."
+    "effect": "Gain _Concentrating_.",
+    "summary": "Gain Concentrating (reroll a d6)"
   },
   {
     "name": "Manipulate",
@@ -70,7 +77,8 @@
         "cost": "1 _Momentum_",
         "effect": "Increase the Negate DC by 2. If you target a creature that speaks your language and craft an insult, instead increase it by 3."
       }
-    ]
+    ],
+    "summary": "Use social skills to inflict various minor statuses on foes."
   },
   {
     "name": "Size Up",
@@ -80,7 +88,8 @@
     "range": "2",
     "target": "A creature.",
     "effect": "The Target must _Negate_ [6 _Focus_] or gain _Studied_.",
-    "enhancements": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Increase the Negate DC by 3." }]
+    "enhancements": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Increase the Negate DC by 3." }],
+    "summary": "Attempt to inflict Studied (increase a die roll by 1)"
   },
   {
     "name": "Channel Elements",
@@ -126,7 +135,7 @@
   },
   {
     "name": "Delay",
-    "category": "General",
+    "category": "Utility",
     "type": "Reaction",
     "cost": "1 _Momentum_",
     "trigger": "You would take your _Turn_.",
@@ -169,7 +178,7 @@
     "category": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "prereqs": "Triggered from a _Light_/_Versatile_ Attack.",
+    "prereqs": "Triggered from a _Light_/_Balanced_ Attack.",
     "effect": "Choose one:\n* Repeat the Attack, adding [_Discount_ 2, _Follow-Up_ ] and gaining a +1 to the _Attack Roll_ if it was _Light_.\n* If you triggered this with an Attack from a _Wielded_ _Weapon_ and are _Wielding_ a second _Weapon_, Attack with the secondary Weapon, adding [_Discount_ 2] and gaining a +1 to the _Attack Roll_ if it was _Light_."
   },
   {
@@ -177,7 +186,7 @@
     "category": "Offensive",
     "type": "Gambit",
     "cost": "None",
-    "prereqs": "Triggered from a _Versatile_/_Heavy_ Attack.",
+    "prereqs": "Triggered from a _Balanced_/_Heavy_ Attack.",
     "effect": "Deal +1 Damage and, if the triggering Attack was _Heavy_, deal +2 _Stun_. Additionally, choose one:\n* Deal +3 _Stun_ and add _Dazed_ [_Focus_/_Grit_].\n* Add _Shatter_ [_Reflex_]."
   },
   {
@@ -217,7 +226,7 @@
     "trigger": "You are Attacked.",
     "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect. (Spending any _Movement_ while _Engaged_, including for this ability, creates an [_Opening_])",
     "chart": {
-      "status": ["None", "Attack gains -1 Rank", "Attack is a _Graze_ or gains -1 Rank", "Attack is a _Miss_"],
+      "status": ["None", "Decrease Attack _Result_ by 1", "Attack is a _Graze_ or decreases _Result_ by 1", "Attack is a _Miss_"],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
       "defend": "true"
     }
@@ -261,7 +270,8 @@
         "cost": "1 _Momentum_",
         "effect": "The Target must be 1 _Load_ or less. Choose a willing ally within _Range_ 0. They may immediately _Wield_ the Target if they have a _Free Hand_."
       }
-    ]
+    ],
+    "summary": "Stop Wielding or Wearing Equipment."
   },
   {
     "name": "Equip",
@@ -282,7 +292,8 @@
         "cost": "1 _Momentum_",
         "effect": "Create an [_Opening_]. Instead, target a _Packed_ Item. Add [_Final_]."
       }
-    ]
+    ],
+    "summary": "Start Wielding Equipment."
   },
   {
     "name": "Swift Recall",
@@ -290,24 +301,8 @@
     "category": "Utility",
     "type": "Maneuver",
     "cost": "1 _Essence_",
-    "effect": "_Recall_ your _Spirit_."
-  },
-  {
-    "name": "Combination Strike",
-    "keywords": ["Spirit"],
-    "category": "Offensive",
-    "type": "Gambit",
-    "cost": "None",
-    "effect": "Your Spirit may immediately use a Single-Target Attack [_Discount_ 2] against the same Target."
-  },
-  {
-    "name": "Interdiction",
-    "keywords": ["Spirit"],
-    "category": "Defensive",
-    "type": "Gambit",
-    "cost": "None",
-    "prereqs": "_Spirit_ is in _Melee_ Range of you.",
-    "effect": "You and your Spirit are both targeted by the triggering effect, but take half Damage/_Guard_ each and _Negate_ with _Advantage_."
+    "effect": "_Recall_ your _Spirit_.",
+    "summary": "Effect"
   },
   {
     "name": "Improvised Attack",
@@ -319,24 +314,26 @@
     "damage_type": "Special",
     "range": "Melee/1 (_Thrown_)",
     "target": "Single-Target",
-    "prereqs": "_Wielding_ a 1 _Load_ or less item.",
+    "prereqs": "_Wielding_ an item.",
     "effect": "Attack a Target within Range, using a _Wielded_ item. Use the most appropriate  damage type  (_Crush_ if unclear) and material based on the _Wielded_ item. If the item is 0 _Load_, add [_Glancing_].",
     "enhancements": [
       {
         "name": "Medium Improvised Attack",
         "cost": "1 _Momentum_",
-        "effect": "Instead, this uses a 2 _Load_ item and is a _Balanced_ Attack. Deal +_1/2/2/3_ Damage. Range is instead _Melee_."
+        "effect": "You must be _Wielding_ a 2 _Load_ _Item_. Instead, this is a _Balanced_ Attack and Range is _Melee_/0 (_Thrown_). Deal +_1/2/2/3_ Damage. You may choose no other Enhancements."
       },
       {
         "name": "Heavy Improvised Attack",
-        "cost": "1 _Momentum_",
-        "effect": "Instead, this uses a 3 _Load_ item and is a _Heavy_ Attack. Deal +_2/4/4/6_ Damage. Range is instead _Melee_."
+        "cost": "2 _Momentum_",
+        "effect": "You must be _Wielding_ a 3 _Load_ _Item_. Instead, this is a _Heavy_ Attack and Range is instead Melee. Deal +_2/4/4/6_ Damage. You may choose no other Enhancements."
       }
     ],
     "chart": {
-      "damage": [1, 1, 2, 3],
+      "stun": [0, 1, 2, 2],
+      "damage": [0, 0, 1, 2],
       "roll": ["2-4", "5-6", "7-10", "11-12"]
-    }
+    },
+    "summary": "Make a clumsy attack with an available item."
   },
   {
     "name": "Brawl",
@@ -353,7 +350,7 @@
     "chart": {
       "roll": ["2-3", "4-5", "6-10", "11-12"]
     },
-    "analysis_notes": { "bonus_damage": [1, 2, 2, 3] }
+    "analysis_notes": { "bonus_damage": [0.75, 0.75, 2.5, 2.5] }
   },
   {
     "name": "Deflect",

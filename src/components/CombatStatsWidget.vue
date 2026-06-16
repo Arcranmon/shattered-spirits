@@ -190,9 +190,9 @@
         v-if="this.isSpirit"
         no-gutters>
         <v-col>
-          <display-tooltip-text string="**_Speed_:**" />
+          <display-tooltip-text string="**_Phase_:**" />
         </v-col>
-        <v-col :cols="8">{{ creature.Speed }}</v-col>
+        <v-col :cols="8">{{ creature.Phase }}</v-col>
       </v-row>
       <v-row no-gutters>
         <v-col>

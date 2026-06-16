@@ -39,7 +39,7 @@
         style="font-style: italic; font-size: smaller">
         {{ ability.Desc }}<br />
       </div>
-      <div v-if="ability.HasSummary">
+      <div v-if="ability.HasHeadline">
         <display-tooltip-text :string="ability.Summary" />
       </div>
       <div
@@ -55,7 +55,7 @@
             :cols="3">
             <b>
               <display-tooltip-text
-                string="_Speed_"
+                string="_Phase_"
                 :decorate="false" />
             </b>
           </v-col>
@@ -94,7 +94,7 @@
           <v-col
             class="chart--cols justify-center align-center"
             :cols="3"
-            >{{ ability.Speed }}</v-col
+            >{{ ability.Phase }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"

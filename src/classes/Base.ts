@@ -7,6 +7,7 @@ class Base {
   protected name_: string
   protected category_: string
   protected desc_: string
+  protected summary_: string
   protected effect_: string
   protected keywords_: Array<string>
   protected special_: string
@@ -16,6 +17,7 @@ class Base {
 
   public constructor(name) {
     this.desc_ = ''
+    this.summary_ = ''
     this.effect_ = ''
     this.keywords_ = []
     this.name_ = name
@@ -39,6 +41,10 @@ class Base {
   public get Keywords() {
     return this.keywords_
   }
+  public get KeywordsList() {
+    if (this.keywords_.length > 0) return this.keywords_.join(', ')
+    return '-'
+  }
   public get Name() {
     return this.name_
   }
@@ -51,7 +57,7 @@ class Base {
   public get Type() {
     return this.type_
   }
-  public get HasSummary() {
+  public get HasHeadline() {
     return false
   }
   public get HasIcon() {
@@ -88,6 +94,10 @@ class Base {
   public get PrereqsHeader() {
     return '**Prerequisites:** ' + this.prereqs_
   }
+  public get Summary() {
+    if (this.summary_ == 'Effect') return this.effect_
+    return this.summary_
+  }
 
   // ==========================================================
   // SERIALIZATION
@@ -109,6 +119,7 @@ class Base {
     this.tags_ = data.tags || []
     this.type_ = data.type || ''
     this.prereqs_ = data.prereqs || ''
+    this.summary_ = data.summary || ''
   }
 }
 export default Base

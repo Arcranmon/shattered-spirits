@@ -8,6 +8,12 @@
         class="chart--row">
         <v-col
           class="chart--head"
+          cols="2">
+          <b>Result</b>
+        </v-col>
+        <v-col
+          class="chart--head"
+          v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '']"
           cols="2"
           v-if="chart.HasRoll">
           <b>Roll</b>
@@ -36,15 +42,23 @@
           <b>Negate</b>
         </v-col>
       </v-row>
-      <div v-for="(n, index) in 4">
+      <div
+        v-for="(n, index) in 4"
+        :key="n">
         <v-row
           align="stretch"
           no-gutters
           class="chart--row">
           <v-col
             class="chart--cols justify-center align-center"
-            v-if="chart.HasRoll"
             v-bind:class="getRank(index)"
+            cols="2"
+            >{{ results[index] }}
+          </v-col>
+          <v-col
+            class="chart--cols justify-center align-center"
+            v-if="chart.HasRoll"
+            v-bind:class="[chart.HasRoll ? 'chart--cols-right' : '', getRank(index)]"
             cols="2"
             >{{ chart.Roll[index] }}
           </v-col>
@@ -94,21 +108,26 @@ export default Vue.extend({
       required: true,
     },
   },
+  data() {
+    return {
+      results: ['Miss', 'Graze', 'Hit', 'Crit'],
+    }
+  },
   computed: {
     damageWidth() {
       if (this.chart.HasDamage) return 2
       return 0
     },
     stunWidth() {
-      if (this.chart.HasStun) return 2
-      return 2
+      if (this.chart.HasStun) return 1
+      return 0
     },
     negateWidth() {
       if (this.chart.HasRoll) return 2
       return 0
     },
     effectWidth() {
-      return 4
+      return 3 + (1 - this.stunWidth) + (2 - this.damageWidth) + (2 - this.HasRoll)
     },
   },
   methods: {

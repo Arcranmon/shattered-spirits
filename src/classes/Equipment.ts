@@ -38,11 +38,11 @@ class Equipment extends AbilityPackage {
   public get Rarity() {
     return this.rarity_
   }
-  get HasSummary() {
+  get HasHeadline() {
     return true
   }
 
-  get Summary() {
+  get Headline() {
     return '**_Rarity_:** ' + this.Rarity + '; **_Load_:** ' + this.Load + '; **_Durability_:** ' + this.Durability
   }
 

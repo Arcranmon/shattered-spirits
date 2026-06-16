@@ -8,7 +8,7 @@ class Stance extends AbilityPackage {
   private momentum_: string
   private posture_: number
   private stun_: number
-  private speed_: number
+  private phase_: number
   private movement_: number
 
   public constructor(name) {
@@ -37,17 +37,17 @@ class Stance extends AbilityPackage {
     return 0
   }
 
-  public get Speed() {
-    return this.speed_
+  public get Phase() {
+    return this.phase_
   }
-  public get HasSummary() {
+  public get HasHeadline() {
     return false
   }
 
   public get Summary() {
     return (
-      '**_Speed_**: ' +
-      this.Speed +
+      '**_phase_**: ' +
+      this.Phase +
       '; **_Momentum_:** ' +
       this.Momentum +
       '; **_Movement_:** ' +
@@ -130,7 +130,7 @@ class Stance extends AbilityPackage {
     this.setAbilityPackageData(data)
     this.respite_ = data.respite || null
     this.defenses_ = data.defenses || null
-    this.speed_ = data.speed || 0
+    this.phase_ = data.phase || 0
     this.momentum_ = data.momentum || 'N/A'
     this.movement_ = data.movement || 0
     this.stun_ = data.block || 0

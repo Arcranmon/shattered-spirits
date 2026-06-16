@@ -232,9 +232,9 @@ class Character extends Combatant {
     var techniques = [...store.getters.basicTechniques]
 
     techniques.sort((a, b) => {
-      if (a.Speed > b.Speed) {
+      if (a.phase > b.phase) {
         return 1
-      } else if (a.Speed < b.Speed) {
+      } else if (a.phase < b.phase) {
         return -1
       } else {
         if (a.Name > b.Name) {

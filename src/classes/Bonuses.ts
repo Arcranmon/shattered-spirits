@@ -8,7 +8,7 @@ class Bonuses {
   private reflex_: number
   private move_: number
   private load_: number
-  private speed_: number
+  private phase_: number
   private block_: number
   private guard_: number
   private equipment_: string[]
@@ -24,7 +24,7 @@ class Bonuses {
     this.reflex_ = 0
     this.move_ = 0
     this.load_ = 0
-    this.speed_ = 0
+    this.phase_ = 0
     this.guard_ = 0
     this.equipment_ = []
   }
@@ -51,7 +51,7 @@ class Bonuses {
     this.reflex_ += other.reflex_
     this.move_ += other.move_
     this.load_ += other.load_
-    this.speed_ += other.speed_
+    this.phase_ += other.phase_
     this.block_ += other.block_
     this.guard_ += other.guard_
     this.equipment_ = [...this.equipment_, ...other.Equipment]
@@ -81,8 +81,8 @@ class Bonuses {
     return this.move_
   }
 
-  public get Speed() {
-    return this.speed_
+  public get Phase() {
+    return this.phase_
   }
 
   public get Stamina() {
@@ -115,7 +115,7 @@ class Bonuses {
     this.reflex_ = data.reflex || 0
     this.move_ = data.move || 0
     this.load_ = data.load || 0
-    this.speed_ = data.speed || 0
+    this.phase_ = data.phase || 0
     this.equipment_ = data.equipment || []
   }
 }

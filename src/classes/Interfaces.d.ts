@@ -3,6 +3,7 @@ declare interface IBaseData {
   category?: string
   table?: Array<string>
   desc?: string
+  summary?: string
   effect: string
   keywords?: Array<string>
   special?: string
@@ -36,7 +37,7 @@ declare interface IBonusesData {
   block?: number
   reflex?: number
   move?: number
-  speed?: number
+  phase?: number
   load?: number
   equipment?: string[]
 }
@@ -178,7 +179,7 @@ declare interface IAbilityData extends IBaseData {
   reqs?: string
   type?: string
   trigger?: string
-  speed?: number
+  phase?: number
   target?: string
   material?: string
   damage_type?: string
@@ -248,14 +249,14 @@ declare interface ISubtypeData extends IBaseData {
   manifest: string
   soak: string
   growth_points: number
-  speed: number
+  phase: number
 }
 
 declare interface IStanceData extends IAbilityPackageData {
   respite?: IRespiteData
   defenses?: IDefenseData
   momentum?: string
-  speed: number
+  phase: number
   block: number
   movement: number
   posture: number

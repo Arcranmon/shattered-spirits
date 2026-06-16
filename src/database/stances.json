@@ -4,7 +4,7 @@
     "category": "Mobility",
     "desc": "You take on a stance focused on mobility, intent on covering ground quickly.",
     "defenses": { "focus": 0, "grit": 0, "reflex": 2 },
-    "speed": 1,
+    "phase": 1,
     "movement": 3,
     "momentum": 4,
     "posture": 1,
@@ -38,7 +38,7 @@
     "desc": "You adopt a supportive stance, focusing on helping allies while catching your breath.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 0 },
     "block": 1,
-    "speed": 2,
+    "phase": 2,
     "momentum": 5,
     "posture": 2,
     "abilities": [
@@ -73,7 +73,7 @@
     "category": "Offensive",
     "desc": "A stance focused on overwhelming offense and unleashing a barrage of attacks.",
     "defenses": { "focus": 1, "grit": 0, "reflex": 1 },
-    "speed": 3,
+    "phase": 3,
     "momentum": 4,
     "posture": 1,
     "block": 0,
@@ -81,6 +81,8 @@
     "abilities": [
       {
         "name": "Aggression",
+        "category": "Offensive",
+        "type": "Passive",
         "effect": "The first Attack you use on your _Turn_ gains [_Discount_ 2]."
       },
       {
@@ -110,14 +112,14 @@
     "posture": 2,
     "movement": 1,
     "block": 1,
-    "speed": 4
+    "phase": 4
   },
   {
     "name": "Focused Stance",
     "category": "Patient",
     "desc": "You adopt a patient stance, gathering your energy to unleash a powerful effect.",
     "defenses": { "focus": 2, "grit": 1, "reflex": 0 },
-    "speed": 6,
+    "phase": 6,
     "block": 2,
     "momentum": 4,
     "posture": 2,
@@ -138,7 +140,7 @@
     "desc": "A stance focused on block, providing an unparalleled ability to keep yourself safe.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
     "block": 3,
-    "speed": 5,
+    "phase": 5,
     "momentum": 4,
     "posture": 4,
     "abilities": [
@@ -168,7 +170,7 @@
     "movement": 1,
     "posture": 1,
     "block": 0,
-    "speed": "Spirit",
+    "phase": "Spirit",
     "momentum": "3/3/4/4/5/5",
     "effect": "On your Turn, move towards the nearest hostile creature and _Engage_ it if possible. Attack them once. You may use any Abilities that help accomplish this task."
   },
@@ -180,7 +182,7 @@
     "movement": 0,
     "posture": 1,
     "block": 1,
-    "speed": "Spirit+1",
+    "phase": "Spirit+1",
     "momentum": "2/3/3/4/4/5",
     "effect": "Upon entering this Stance, choose an Attack and a Target, announcing both to the table. On your Turn, gain 4 _Momentum_ that can only be used to use that Attack against said Target at the most appropriate Range. You may use any Abilities that help accomplish this task.",
     "adjust": 2
@@ -193,7 +195,7 @@
     "movement": 2,
     "posture": 1,
     "block": 1,
-    "speed": "Spirit-1",
+    "phase": "Spirit-1",
     "momentum": "1/1/2/2/3/3",
     "effect": "When you choose this Stance, choose a destination. On your _Turn_, move as close to the Destination as possible. Your Spirit may not Attack, but may use any Abilities that help accomplish this task, and may use _Armament_ _Maneuvers_ after reaching their destination.",
     "abilities": [
@@ -213,7 +215,7 @@
     "movement": 1,
     "posture": 2,
     "block": 0,
-    "speed": "Spirit",
+    "phase": "Spirit",
     "momentum": "2/3/3/4/4/5",
     "effect": "When you choose this Stance, create a quest; often, this will be an Ability and a Target, but may not involve Attacks. On your _Turn_, attempt to complete the quest to the best of your ability."
   },
@@ -225,7 +227,7 @@
     "movement": 0,
     "posture": 3,
     "block": 2,
-    "speed": "Spirit",
+    "phase": "Spirit",
     "momentum": "1/1/2/2/3/3",
     "effect": "On your _Turn_ you may _Retreat_. Your may not Attack, but may use _Recovery_ or _Defensive_ Abilities on your _Turn_."
   },
@@ -236,7 +238,7 @@
     "movement": 0,
     "posture": 0,
     "block": 0,
-    "speed": "N/A",
+    "phase": "N/A",
     "momentum": "N/A",
     "effect": "Automatically enter this _Stance_ if you are not _Manifested_ at _Respite_.  Gain 4 _Guard_ and 3 _Essence_. While in this _Stance_ your companion may spend _Essence_ on their Turn to give you _Guard_, granting 3 _Guard_ for every _Essence_ spent."
   }

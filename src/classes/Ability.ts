@@ -3,6 +3,7 @@
 
 import { store } from '@/store'
 import { Base, AbilityPackage, Chart, Bonuses } from '@/class'
+import { isUndefined } from 'vue-simple'
 
 class Ability extends Base {
   protected missile_: string
@@ -17,7 +18,7 @@ class Ability extends Base {
   protected range_: string
   protected reqs_: string
   protected target_: string
-  protected speed_: number
+  protected phase_: number
   protected type_: string
   protected trigger_: string
   protected origin_: AbilityPackage
@@ -79,20 +80,21 @@ class Ability extends Base {
   }
   public get Header() {
     var header = this.Name
-    if (this.HasSpeed) header += 'Speed ' + this.speed_ + ' '
+    if (this.HasPhase) header += 'Phase ' + this.phase_ + ' '
     if (this.Type != 'Skill') {
       header += ' - ' + this.category_ + ' ' + this.type_
     }
     return header
   }
-  public get SpeedHeader() {
-    return '**Speed ' + this.speed_ + '**'
+  public get PhaseHeader() {
+    return '**Phase ' + this.phase_ + '**'
   }
   public get Move() {
     return this.move_
   }
   public get Range() {
-    return this.range_
+    if (this.range_.length == 0) return '-'
+    return String(this.range_)
   }
   public get Reqs() {
     return this.reqs_
@@ -170,6 +172,14 @@ class Ability extends Base {
   public get HasFrequency() {
     return this.frequency_.length > 0
   }
+  public get From() {
+    if (this.origin_) return this.origin_.Name
+    return '-'
+  }
+  public get Frequency() {
+    if (this.HasFrequency) return this.frequency_
+    return '-'
+  }
   public get FrequencyHeader() {
     return '**_Frequency_:** ' + this.frequency_
   }
@@ -227,11 +237,11 @@ class Ability extends Base {
   public get TargetHeader() {
     return '**Target:** ' + this.target_
   }
-  get HasSpeed() {
-    return this.speed_ != 0
+  get HasPhase() {
+    return this.phase_ != 0
   }
-  public get Speed() {
-    return this.speed_
+  public get Phase() {
+    return this.phase_
   }
   get HasTrigger() {
     return this.trigger_ != ''
@@ -266,7 +276,7 @@ class Ability extends Base {
     this.move_ = data.move || 0
     this.frequency_ = data.frequency || ''
     this.reqs_ = data.reqs || ''
-    this.speed_ = data.speed || 0
+    this.phase_ = data.phase || 0
     this.target_ = data.target || ''
     this.trigger_ = data.trigger || ''
     this.range_ = data.range || ''

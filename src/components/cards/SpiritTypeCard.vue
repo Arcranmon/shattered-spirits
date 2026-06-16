@@ -26,7 +26,7 @@
             class="chart--head"
             cols="2">
             <display-tooltip-text
-              string="_Speed_"
+              string="_Phase_"
               :decorate="false" />
           </v-col>
           <v-col
@@ -59,7 +59,7 @@
           <v-col
             class="chart--cols justify-center align-center"
             cols="2"
-            >{{ type.Speed }}</v-col
+            >{{ type.Phase }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"

@@ -154,8 +154,8 @@ class Spirit extends Combatant {
     return this.spirit_type_
   }
 
-  get Speed() {
-    return this.spirit_type_.Speed + this.combinedBonuses_.Speed
+  get Phase() {
+    return this.spirit_type_.Phase + this.combinedBonuses_.Phase
   }
 
   set SpiritType(input) {
