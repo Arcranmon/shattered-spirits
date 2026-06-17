@@ -1,5 +1,5 @@
 <template>
-  <div class="print-page">
+  <div>
     <print-page :character="$route.params.character" />
     <v-row style="page-break-after: always" />
     <print-page :character="$route.params.character.Spirit" />
@@ -15,12 +15,18 @@ export default Vue.extend({
   components: {
     PrintPage,
   },
-  mounted() {
-    window.onresize = () => {
-      this.windowWidth = window.innerWidth
-    }
-  },
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media print {
+  @page {
+    size: portrait !important;
+    margin: 0.25in !important;
+  }
+}
+.print-page {
+  font-size: 8pt;
+  background-color: $color--grey-light;
+}
+</style>

@@ -492,10 +492,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.print-page {
-  font-size: 8pt;
-  background-color: $color--grey-light;
-}
 .ability-box {
   page-break-inside: avoid;
 }
@@ -511,6 +507,11 @@ export default Vue.extend({
 @media print {
   .stance-card {
     width: 4.25in !important;
+  }
+  @page {
+    size: portrait;
+    page-orientation: upright;
+    margin: 0.25;
   }
 }
 </style>

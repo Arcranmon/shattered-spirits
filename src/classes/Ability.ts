@@ -92,6 +92,42 @@ class Ability extends Base {
   public get Move() {
     return this.move_
   }
+
+  public get MomentumCost() {
+    return this.CostForString('Momentum')
+  }
+  public get SpeedCost() {
+    return this.CostForString('Speed')
+  }
+  public get PostureCost() {
+    return this.CostForString('Posture')
+  }
+  public get EssenceCost() {
+    return this.CostForString('EssenceCost')
+  }
+
+  public get RangeSummary() {
+    if (this.Range.length == 1 || this.Range == 'Melee') return this.Range
+    if (this.Range.includes('Special')) return 'Special'
+    if (this.Range.includes('Thrown')) return this.Range.replace('(_Thrown_)', ' [T]')
+    return '-'
+  }
+
+  private CostForString(costString) {
+    var cost = 0
+    var special = this.Cost.includes('Special')
+
+    for (var cost_string of this.Cost.split(',')) {
+      if (cost_string.includes(costString)) {
+        cost += Number(cost_string[0])
+        if (cost_string.includes('/')) special = true
+      }
+    }
+    if (cost == 0 && !special) return '-'
+    if (cost == 0 && special) return '*'
+    return String(cost) + (special ? '*' : '')
+  }
+
   public get Range() {
     if (this.range_.length == 0) return '-'
     return String(this.range_)

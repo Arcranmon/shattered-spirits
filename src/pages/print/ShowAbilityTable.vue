@@ -8,43 +8,51 @@
       </v-col>
     </v-row>
     <v-row>
+      <v-col class="column-header"> Name </v-col>
+      <v-col class="column-header"> Category </v-col>
       <v-col
         class="column-header"
-        :cols="2">
-        Name
-      </v-col>
-      <v-col
-        class="column-header"
-        :cols="1">
-        Category
-      </v-col>
-      <v-col
-        class="column-header"
-        :cols="1"
         v-if="isNarrative">
         Frequency
       </v-col>
       <v-col
         class="column-header"
-        :cols="2"
-        v-else-if="title != 'Passive'">
-        Cost
+        :cols="1"
+        v-if="!isNarrative">
+        Momentum
       </v-col>
       <v-col
         class="column-header"
         :cols="1"
-        v-if="title == 'Attack' || title == 'Maneuver'">
+        v-if="!isNarrative">
+        Essence
+      </v-col>
+      <v-col
+        class="column-header"
+        :cols="1"
+        v-if="!isNarrative">
+        Speed
+      </v-col>
+      <v-col
+        class="column-header"
+        :cols="1"
+        v-if="!isNarrative">
+        Posture
+      </v-col>
+      <v-col
+        class="column-header"
+        :cols="1"
+        v-if="!isNarrative">
         Range
       </v-col>
       <v-col
         class="column-header"
-        :cols="2">
+        :cols="3">
         Keywords
       </v-col>
-      <v-col class="column-header"> Summary </v-col>
       <v-col
         class="column-header"
-        :cols="2">
+        :cols="1 / 8">
         From
       </v-col>
     </v-row>
@@ -54,47 +62,55 @@
       v-bind:key="ability.Name"
       style="page-break-inside: avoid"
       v-bind:class="index % 2 == 1 ? 'even-table-cell' : ''">
-      <v-col
-        class="table-cell d-flex justify-center align-center"
-        :cols="2">
+      <v-col class="table-cell d-flex justify-center align-center">
         {{ ability.Name }}
       </v-col>
-      <v-col
-        class="table-cell d-flex justify-center align-center"
-        :cols="1">
+      <v-col class="table-cell d-flex justify-center align-center">
         {{ typeOrCategory(ability) }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
-        :cols="1"
         v-if="isNarrative">
         {{ ability.Frequency.replaceAll('_', '') }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
-        :cols="2"
-        v-else-if="title != 'Passive'">
-        {{ ability.Cost.replaceAll('_', '') }}
+        :cols="1"
+        v-if="!isNarrative">
+        {{ ability.MomentumCost }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
         :cols="1"
-        v-if="title == 'Attack' || title == 'Maneuver'">
-        {{ ability.Range.replaceAll('_', '') }}
+        v-if="!isNarrative">
+        {{ ability.EssenceCost }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
-        :cols="2">
+        :cols="1"
+        v-if="!isNarrative">
+        {{ ability.SpeedCost }}
+      </v-col>
+      <v-col
+        class="table-cell d-flex justify-center align-center"
+        :cols="1"
+        v-if="!isNarrative">
+        {{ ability.PostureCost }}
+      </v-col>
+      <v-col
+        class="table-cell d-flex justify-center align-center"
+        :cols="1"
+        v-if="!isNarrative">
+        {{ ability.RangeSummary }}
+      </v-col>
+      <v-col
+        class="table-cell d-flex justify-center align-center"
+        :cols="3">
         {{ ability.KeywordsList }}
       </v-col>
-      <v-col class="table-cell d-flex justify-center align-center"
-        ><display-tooltip-text
-          :string="ability.Summary"
-          :decorate="false"
-      /></v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
-        :cols="2">
+        :cols="1 / 8">
         {{ ability.From }}
       </v-col>
     </v-row>
