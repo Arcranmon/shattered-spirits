@@ -1529,7 +1529,13 @@
         "category": "Camp",
         "type": "Power",
         "keywords": ["Camp Action"],
-        "effect": "As a _Camp Action_ when you have _Herbalism Tools_ you may create something with herbs you have on hand. Choose one:\n* _Refine_ an _Herb_ in your possession.\n* Expend _Herbalism Supplies_, then gain any two of a _Poultice_ or _Antidote_, in any combination.\n* Expend three _Herbalism Supplies_. Gain a _Health Flask_.\n\nYou may convert a single _Herbalism Supplies_ into a _Poultice_ or _Antidote_ without using a _Camp Action_; if you do, gain _Stress_."
+        "effect": "As a _Camp Action_ when you have _Herbalism Tools_ you may create something with herbs you have on hand. Choose one:\n* _Refine_ an _Herb_ in your possession.\n* Expend _Herbalism Supplies_, then gain any two of a _Poultice_ or _Antidote_, in any combination.\n* Expend three _Herbalism Supplies_. Gain a _Health Flask_."
+      },
+      {
+        "name": "Quick Herbalism",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Gain 1 _Stress_; you may immediately use Field Herbalism without using a _Camp Action_."
       },
       {
         "name": "Cultivation",
@@ -1754,7 +1760,14 @@
         "name": "Metalworking",
         "category": "Camp",
         "type": "Talent",
-        "effect": "When you _Mend_ while _Resting_ and target _Metal_ _Equipment_ you can either clear a _Stress_ as a part of the _Mend_ _Camp Action_ or use it on two different _Metal_ items."
+        "frequency": "1/_Camp_",
+        "effect": "When you _Mend_ as a _Camp Action_ and target _Metal_ _Equipment_, clear a _Stress_."
+      },
+      {
+        "name": "Field Repair",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Gain 1 _Stress_; you may immediately _Mend_ a piece of _Metal_ _Equipment_ without using a _Camp Action_."
       },
       {
         "name": "Reforge",
@@ -1793,16 +1806,15 @@
       },
       {
         "name": "Weapon Maintenance",
-        "category": "Camp",
+        "category": "Skill",
         "type": "Power",
-        "frequency": "1/_Camp_",
-        "effect": "You may take the _Mend_ or _Hone_ _Camp Action_ without expending your _Camp Action_ for the day. If you do, you may only target Weapons and gain _Stress_."
+        "effect": "Gain 1 _Stress_; you may _Mend_ or Hone without using a _Camp Action_. You may only target Weapons_."
       },
       {
         "name": "Field Maintenance",
         "category": "Camp",
         "type": "Talent",
-        "effect": "Whenever you use _Mend_ on a _Weapon_, roll a d6; on a 5+, you do not need to spend _Supplies_."
+        "effect": "Whenever you _Mend_ a _Weapon_, roll a d6; on a 5+, you do not need to spend _Supplies_."
       },
       {
         "name": "Forge Weapon",
@@ -1904,7 +1916,7 @@
         "range": "1",
         "target": "A _Studied_ creature within _Range_.",
         "cost": "1 _Momentum_",
-        "effect": "Remove _Studied_ from the Target. They must immediately _Negate_ [_Focus_ 10]. Regardless of the result, they create an _Opening_. If they fail the _Negate_, add [_Pierce_ 2] to all resulting Attacks. If they succeed, they gain 2 _Block_ against all resulting Attacks."
+        "effect": "Remove _Studied_ from the Target. They must immediately _Negate_ [_Focus_ 10]. Regardless of the result, they create an _Opening_. If they successfully _Negate_, they gain 4 _Block_ against all resulting Attacks."
       }
     ]
   },

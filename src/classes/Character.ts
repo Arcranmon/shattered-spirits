@@ -115,9 +115,11 @@ class Character extends Combatant {
   override get AllArts() {
     var arts = store.getters.getAPsFromList(this.Arts)
     arts = arts.concat(store.getters.getAnyEquipmentFromList(this.Worn))
+    arts = arts.concat(store.getters.getAnyEquipmentFromList(this.Packed))
     if (this.CurrentStance) {
       arts = arts.concat(this.CurrentStance)
     }
+    arts = arts.filter((item, index) => arts.indexOf(item) === index)
 
     return arts
   }
