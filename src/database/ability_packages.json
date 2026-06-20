@@ -90,8 +90,8 @@
         "name": "Flickering Futures",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit"],
-        "effect": "Whenever you start the round in an _Arena_ with a _Source_ 2 (_Flames_) you may choose one enemy; the GM will tell you what _Stance_ they are choosing and the specifics of how it works.",
+        "keywords": ["Spirit", "Respite"],
+        "effect": "If you are in an _Arena_ with a _Source_ 2 (_Flames_) at _Respite_, choose one enemy; the GM will tell you what _Stance_ they are choosing and the specifics of how it works.",
         "imbues": [
           {
             "name": "Visions of Flames Past",
@@ -519,6 +519,7 @@
       {
         "name": "Mighty Back",
         "category": "Travel",
+        "keywords": ["Spirit"],
         "type": "Talent",
         "effect": "You may carry 1 _Load_ without it affecting your _Encumbrance_. If you spend the majority of the day traveling on something other than earth, lose this benefit.",
         "bonuses": { "load": 1 }
@@ -526,16 +527,16 @@
       {
         "name": "Strength of the Earth",
         "category": "Support",
+        "keywords": ["Spirit", "Respite"],
         "type": "Passive",
-        "effect": "Gain +1 _Grit_; if you spend the majority of the day traveling on something other than earth, lose this benefit. Additionally, while on solid earth, your [_Martial_] Attacks deal +1 _Stun_.",
-        "imbues": [{ "name": "Improved Resilience", "cost": "1 _Essence_", "effect": "Gain an additional +1 _Grit_ this _Round_." }],
-        "bonuses": { "grit": 1 }
+        "effect": "While on solid earth, your [_Martial_] Attacks deal +1 _Stun_.",
+        "imbues": [{ "name": "Improved Resilience", "cost": "1 _Essence_", "effect": "Increase your _Grit_ by 2 this _Round_." }]
       },
       {
         "name": "Draw Vitality",
         "category": "Utility",
         "type": "Maneuver",
-        "keywords": ["Rooted"],
+        "keywords": ["Rooted", "Spirit", "Respite"],
         "cost": "1 _Essence_",
         "reqs": "Must be on solid earth.",
         "effect": "Choose one:\n* Gain [_Discount_ 1] on the next [_Martial_] Attack you make this _Turn_.\n* Add _Push_ to your next [_Martial_] Attack made this _Turn_.\n* Immediately gain 3 _Guard_ or clear _Poisoned_ 1."
@@ -619,7 +620,7 @@
         "name": "Circle",
         "category": "Defensive",
         "type": "Passive",
-        "keywords": ["Spirit"],
+        "keywords": ["Spirit", "Respite"],
         "effect": "While in _Wind_ _Terrain_, gain +1 to all _Defend_ rolls.",
         "imbues": [
           { "name": "Cling", "cost": "1 _Essence_", "effect": "You have _Perception_ within your current _Arena_." },
@@ -764,7 +765,7 @@
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
-        "effect": "You can sense how air nearby is moving, and can easily find drafts and odd air movement.Additionally, you can sense obvious instances of windcraft within this same area.  This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges , but may allow you to attempt things that would otherwise be impossible."
+        "effect": "You can sense how air nearby is moving, and can easily find drafts and odd air speed.Additionally, you can sense obvious instances of windcraft within this same area.  This effect is heightened if you concentrate.\n&nbsp;\nThis does not typically provide die on Skill Challenges , but may allow you to attempt things that would otherwise be impossible."
       }
     ]
   },
@@ -913,7 +914,7 @@
         "name": "Hardwood",
         "category": "General",
         "type": "Passive",
-        "keywords": ["Spirit"],
+        "keywords": ["Spirit", "Respite"],
         "effect": "By channeling your craft you can temporarily enhance your wooden equipment.",
         "imbues": [
           { "name": "Hardened Point", "cost": "1 _Essence_", "effect": "Your [_Wood_] Attacks gain [_Pierce_ 1]." },
@@ -1049,7 +1050,7 @@
         "name": "Metalbending",
         "category": "Utility",
         "type": "Passive",
-        "keywords": ["Spirit"],
+        "keywords": ["Spirit", "Respite"],
         "effect": "You have _Bend_ [_Metal_] within Range 1. Additionally, you may use _Brawl_ against all Targets made of _Metal_ or wearing _Metal_ Armor within that Range and paying all costs with _Essence_ instead of _Momentum_. If you choose the <u>Steal</u> option, you may instead Target any creature, but must Target a _Metal_ piece of _Equipment_.",
         "imbues": [
           {
@@ -1122,40 +1123,38 @@
       },
       {
         "name": "Fullmetal",
-        "category": "General",
+        "category": "Defensive",
         "type": "Passive",
         "keywords": ["Spirit"],
-        "effect": "Your equipment is sharper, harder, and otherwise more deadly than others'. Gain the following:\n* Whenever your [_Metal_] _Equipment_ would lose _Durability_ (even in narrative play) roll a d6; on a 6, it instead doesn't. Your _Spirit_ may gain _Fatigue_ to treat a failed roll as a success.\n* Your [_Metal_] Attacks gain [_Pierce_ 1].\n* You gain +1 _Block_ if you _Parry_ while _Wielding_ [_Metal_] Equipment or _Wearing_ [_Metal_] _Armor_.",
+        "effect": "Whenever your [_Metal_] _Equipment_ would lose _Durability_ (even in narrative play) roll a d6; on a 6, it instead doesn't. Your _Spirit_ may gain _Fatigue_ to treat a failed roll as a success. "
+      },
+      {
+        "name": "Honed Edge",
+        "category": "Offensive",
+        "type": "Passive",
+        "keywords": ["Spirit", "Respite"],
+        "effect": "Your [_Metal_] Attacks gain [_Pierce_ 1].",
         "imbues": [
           {
-            "name": "Honed Edge",
+            "name": "Perfect Edge",
             "cost": "1 _Essence_",
-            "effect": "In addition, deal +1 Damage with [_Metal_]  Attacks."
-          },
+            "effect": "Deal +1 Damage with [_Metal_]  Attacks."
+          }
+        ]
+      },
+      {
+        "name": "Hardened Hide",
+        "category": "Defensive",
+        "type": "Passive",
+        "keywords": ["Spirit", "Respite"],
+        "effect": "Gain +1 _Block_ when you _Parry_ while _Wielding_ [_Metal_] Equipment or _Wearing_ [_Metal_] _Armor_.",
+        "imbues": [
           {
             "name": "Hardened Hide",
             "cost": "1 _Essence_",
             "effect": "In addition, gain +1 _Block_ if you're wearing [_Metal_] Armor, or +2 if you're wearing at least 4 _Slots_."
           }
         ]
-      },
-      {
-        "name": "Perfect Edge",
-        "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "keywords": ["Spirit"],
-        "reqs": "Attack with _Metal_ _Material_.",
-        "effect": "Add [_Pierce_] 2 and _Shatter_. Deal 1 _Stun_ to all other creatures you are _Engaged_ with if you _Shatter_ a piece of _Equipment_."
-      },
-      {
-        "name": "Shatter Spears",
-        "category": "Defensive",
-        "type": "Gambit",
-        "cost": "None",
-        "keywords": ["Spirit"],
-        "reqs": "_Wielding_ [_Metal_] _Equipment_ or _Wearing_ _Metal_ _Armor_.",
-        "effect": "You have _Advantage_ to _Negate_ against _Shatter_ targeting _Metal_ Equipment this _Turn_ and gain +2 _Block_. If you lose no _Stamina_ from and are not _Shatter_ by the triggering Attack, choose one:\n* _Shatter_ the weapon used for the Attack.\n* Inflict _Exposed_/_Impaired_ [5 _Reflex_] on the Attacker if they are in _Melee_ Range."
       }
     ]
   },
@@ -1186,7 +1185,7 @@
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
-        "effect": "You can effortlessly create powerful bursts of wind, capable of pushing people back and launching objects. In addition, you can control and manipulate the wind to create specific drafts and movement of the air, allowing you to clumsily manipulate small objects from a distance or precisely manipulating powdery substances and the like.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+        "effect": "You can effortlessly create powerful bursts of wind, capable of pushing people back and launching objects. In addition, you can control and manipulate the wind to create specific drafts and speed of the air, allowing you to clumsily manipulate small objects from a distance or precisely manipulating powdery substances and the like.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
         "name": "Airbending",
@@ -1846,6 +1845,7 @@
         "name": "Toughness",
         "category": "Defensive",
         "type": "Passive",
+        "keywords": ["Respite"],
         "effect": "Gain +1 _Grit_ and +2 Stamina. At _Respite_, lose half the _Guard_ you would normally lose from Afflictions.",
         "bonuses": { "stamina": 2, "grit": 1 }
       },
@@ -1875,8 +1875,7 @@
         "name": "Boon of Cleverness",
         "category": "Skill",
         "type": "Boon",
-        "effect": "When using your keen mind you may spend one [ ] as if it were [-] or for the _Advantage_ Augment, if appropriate.",
-        "summary": "When being clever, spend [ ] as [-] or _Advantage_."
+        "effect": "When using your keen mind you may spend one [ ] as if it were [-] or for the _Advantage_ Augment, if appropriate."
       },
       {
         "name": "All According to Plan",
@@ -1894,7 +1893,8 @@
         "name": "Exceptional Plot",
         "category": "Support",
         "type": "Passive",
-        "effect": "At _Respite_, inflict _Studied_ on a creature within Range 2, then choose one of the following plans:\n* **Focus Fire!**: Choose a creature. Every time you or an ally would remove _Studied_ from the target creature, roll a d6. On a 3+, do not remove _Studied_.\n* **Form Up!**: This _Round_ whenever an ally becomes _Engaged_ with another ally, both gain 2 _Guard_, up to once per _Turn_ per pair of allies.\n* **Scatter!**: At the start of _Phase_ 1 you and all allies may spend up to 2 _Movement_ as if it was your _Turn_."
+        "keywords": ["Respite"],
+        "effect": "At _Respite_, inflict _Studied_ on a creature within Range 2, then choose one of the following plans:\n* **Focus Fire!**: Choose a creature. Every time you or an ally would remove _Studied_ from the target creature, roll a d6. On a 3+, do not remove _Studied_.\n* **Form Up!**: This _Round_ whenever an ally becomes _Engaged_ with another ally, both gain 2 _Guard_, up to once per _Turn_ per pair of allies.\n* **Scatter!**: At the start of _Phase_ 1 you and all allies may spend up to 2 _Speed_ as if it was your _Turn_."
       },
       {
         "name": "Exploit Opening",
@@ -2084,23 +2084,23 @@
         "name": "Incredible Phase",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Gain +1 _Movement_ and _Reflex_. You have _Advantage_ the first time you _Negate_ with _Reflex_ each _Phase_.",
-        "bonuses": { "move": 1, "reflex": 1 }
+        "effect": "Gain +1 _Speed_ and _Reflex_. You have _Advantage_ the first time you _Negate_ with _Reflex_ each _Phase_.",
+        "bonuses": { "speed": 1, "reflex": 1 }
       },
       {
         "name": "Swiftest",
         "category": "Mobility",
         "type": "Reaction",
         "trigger": "The _Phase_ before the one you are supposed to take your _Turn_ in begins.",
-        "cost": "1 _Momentum_/_Movement_",
+        "cost": "1 _Momentum_/_Speed_",
         "effect": "Instead, take your turn in this _Phase_."
       },
       {
         "name": "Agility",
         "category": "Mobility",
         "type": "Maneuver",
-        "cost": "1 _Momentum_/_Movement_",
-        "effect": "Ignore any increased _Movement_ costs due to _Terrain_ for a single _Move_ this _Turn_."
+        "cost": "1 _Momentum_/_Speed_",
+        "effect": "Ignore any increased _Speed_ costs due to _Terrain_ for a single _Speed_ this _Turn_."
       }
     ]
   }

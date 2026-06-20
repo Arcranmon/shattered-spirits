@@ -7,7 +7,7 @@ class Subtype extends Base {
   private stamina_: number
   private stun_: number
   private block_: number
-  private move_: number
+  private speed_: number
   private manifest_: string
   private growth_points_: number
   private traits_: string[]
@@ -53,12 +53,12 @@ class Subtype extends Base {
     return '**Stances:**'
   }
 
-  public get Movement() {
-    return this.move_
+  public get Speed() {
+    return this.speed_
   }
 
-  public get MovementHeader() {
-    return '**Move:** ' + this.move_
+  public get SpeedHeader() {
+    return '**Move:** ' + this.speed_
   }
   public get Phase() {
     return this.phase_
@@ -113,7 +113,7 @@ class Subtype extends Base {
     this.defenses_ = data.defenses ? Defenses.Deserialize(data.defenses) : null
     this.traits_ = data.traits || []
     this.stamina_ = data.stamina || 0
-    this.move_ = data.move || 0
+    this.speed_ = data.speed || 0
     this.stun_ = data.block || 0
     this.block_ = data.guard || 0
     this.manifest_ = data.manifest || 'You may Manifest your Spirit within Melee Range.'

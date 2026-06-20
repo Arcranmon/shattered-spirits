@@ -6,7 +6,7 @@ class Bonuses {
   private grit_: number
   private stamina_: number
   private reflex_: number
-  private move_: number
+  private speed_: number
   private load_: number
   private phase_: number
   private block_: number
@@ -22,7 +22,7 @@ class Bonuses {
     this.stamina_ = 0
     this.block_ = 0
     this.reflex_ = 0
-    this.move_ = 0
+    this.speed_ = 0
     this.load_ = 0
     this.phase_ = 0
     this.guard_ = 0
@@ -39,7 +39,7 @@ class Bonuses {
     if (this.focus_ > 0) bonuses.push('+' + String(this.focus_) + ' _Focus_')
     if (this.grit_ > 0) bonuses.push('+' + String(this.grit_) + ' _Grit_')
     if (this.reflex_ > 0) bonuses.push('+' + String(this.reflex_) + ' _Reflex_')
-    if (this.move_ > 0) bonuses.push('+' + String(this.move_) + ' _Move_')
+    if (this.speed_ > 0) bonuses.push('+' + String(this.speed_) + ' _Speed_')
     if (this.load_ > 0) bonuses.push('+' + String(this.load_) + ' _Load_')
     return bonuses.join(', ')
   }
@@ -49,7 +49,7 @@ class Bonuses {
     this.grit_ += other.grit_
     this.stamina_ += other.stamina_
     this.reflex_ += other.reflex_
-    this.move_ += other.move_
+    this.speed_ += other.speed_
     this.load_ += other.load_
     this.phase_ += other.phase_
     this.block_ += other.block_
@@ -77,8 +77,8 @@ class Bonuses {
     return this.reflex_
   }
 
-  public get Movement() {
-    return this.move_
+  public get Speed() {
+    return this.speed_
   }
 
   public get Phase() {
@@ -113,7 +113,7 @@ class Bonuses {
     this.block_ = data.block || 0
     this.guard_ = data.guard || 0
     this.reflex_ = data.reflex || 0
-    this.move_ = data.move || 0
+    this.speed_ = data.speed || 0
     this.load_ = data.load || 0
     this.phase_ = data.phase || 0
     this.equipment_ = data.equipment || []

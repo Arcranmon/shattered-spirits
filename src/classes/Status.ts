@@ -6,13 +6,13 @@ class Status extends Base {
   private recover_: string
   private reacts_: string[]
   private repeat_: string
-  private remove_: string
+  private respeed_: string
 
   public constructor(name) {
     super(name)
     this.recover_ = ''
     this.reacts_ = []
-    this.remove_ = ''
+    this.respeed_ = ''
     this.repeat_ = ''
   }
 
@@ -33,7 +33,7 @@ class Status extends Base {
     return this.reacts_.length > 0
   }
   get HasRemove() {
-    return this.remove_ != ''
+    return this.respeed_ != ''
   }
   get HasRepeat() {
     return this.repeat_ != ''
@@ -56,7 +56,7 @@ class Status extends Base {
     return '**Recovery:** ' + this.recover_
   }
   public get RemoveHeader() {
-    return '**Remove:** ' + this.remove_
+    return '**Remove:** ' + this.respeed_
   }
   public get RepeatHeader() {
     return '**Repeated Application:** ' + this.repeat_
@@ -89,7 +89,7 @@ class Status extends Base {
     this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
     this.repeat_ = data.repeat || ''
-    this.remove_ = data.remove || ''
+    this.respeed_ = data.remove || ''
   }
 }
 export default Status

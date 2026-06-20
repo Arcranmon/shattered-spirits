@@ -5,7 +5,7 @@
     "desc": "You take on a stance focused on mobility, intent on covering ground quickly.",
     "defenses": { "focus": 0, "grit": 0, "reflex": 2 },
     "phase": 1,
-    "movement": 3,
+    "speed": 3,
     "momentum": 4,
     "posture": 1,
     "abilities": [
@@ -19,15 +19,7 @@
         "name": "Nimble",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Attacks made against you on your _Turn_ have _Disadvantage_ against you."
-      },
-      {
-        "name": "Dart",
-        "category": "Mobility",
-        "type": "Reaction",
-        "cost": "None",
-        "trigger": "A _Phase_ begins.",
-        "effect": "You may immediately _Move_ as if it was your _Turn_, and may use _Mobility_ _Maneuvers_ as if it was your turn."
+        "effect": "Attacks made as a part of an [_Opening_] have _Disadvantage_ against you."
       }
     ],
     "adjust": 1
@@ -77,7 +69,7 @@
     "momentum": 4,
     "posture": 1,
     "block": 0,
-    "movement": 1,
+    "speed": 1,
     "abilities": [
       {
         "name": "Aggression",
@@ -90,14 +82,6 @@
         "category": "Offensive",
         "type": "Passive",
         "effect": "You may use any number of Attacks on your _Turn_, and may use any given Attack up to two times. After each _Miss_, decrease the _Momentum_ gained by additional _Misses_ that _Turn_ by 1, to a minimum of 0."
-      },
-      {
-        "name": "Press",
-        "category": "Offensive",
-        "type": "Reaction",
-        "cost": "1 _Momentum_",
-        "reqs": "You complete an Attack.",
-        "effect": "After resolving all other effects, deal 3 _Stun_ as a separate effect. If you Missed, instead deal 4 _Stun_."
       }
     ],
     "adjust": 3,
@@ -110,7 +94,7 @@
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
     "momentum": 6,
     "posture": 2,
-    "movement": 1,
+    "speed": 1,
     "block": 1,
     "phase": 4
   },
@@ -128,7 +112,8 @@
         "name": "Charge",
         "category": "Utility",
         "type": "Passive",
-        "effect": "At the start of the Round, choose an Ability and any Target for it, announcing both. The first time you use that Ability against that _Target_ on your _Turn_, add [_Discount_ 5]. You may not willingly spend Movement until your _Turn_, and may not leave your current _Arena_ until use the chosen Ability.\n\nAdditionally, at _Respite_, gain _Concentrating_."
+        "keywords": ["Respite"],
+        "effect": "At the end of Respite gain _Concentrating_, then choose an Ability and a Target, announcing both. Once, on your _Turn_, when you use that Ability against that _Target_ add [_Discount_ 5]. You may not leave your current _Arena_ until you use the chosen Ability."
       }
     ],
     "adjust": 4,
@@ -151,12 +136,10 @@
         "effect": "Attacks against creatures that have not attacked you this _Round_ have _Disadvantage_."
       },
       {
-        "name": "Raise Guard",
+        "name": "Immaculate Guard",
         "category": "Defensive",
-        "type": "Reaction",
-        "cost": "None",
-        "trigger": "A _Phase_ begins.",
-        "effect": "Choose an enemy. You have _Advantage_ on all _Defense Rolls_ against them this _Phase_."
+        "type": "Passive",
+        "effect": "You have _Advantage_ on your first _Defense Roll_ each _Phase_."
       }
     ],
     "adjust": 1,
@@ -167,7 +150,7 @@
     "category": "Offensive",
     "desc": "You direct your spirit to strike, focusing on mobility and getting close.",
     "defenses": { "reflex": 1 },
-    "movement": 1,
+    "speed": 1,
     "posture": 1,
     "block": 0,
     "phase": "Spirit",
@@ -179,7 +162,7 @@
     "category": "Offensive",
     "desc": "You give your spirit a specific order to strike, focusing on a singular enemy.",
     "defenses": { "grit": 1, "focus": 1 },
-    "movement": 0,
+    "speed": 0,
     "posture": 1,
     "block": 1,
     "phase": "Spirit+1",
@@ -192,7 +175,7 @@
     "category": "Mobility",
     "desc": "You direct your Spirit to a specific location and they do their best to get there quickly.",
     "defenses": { "reflex": 2 },
-    "movement": 2,
+    "speed": 2,
     "posture": 1,
     "block": 1,
     "phase": "Spirit-1",
@@ -212,7 +195,7 @@
     "category": "Support",
     "desc": "Your Spirit takes on a quest, doing everything in its power to complete it.",
     "defenses": { "focus": 1 },
-    "movement": 1,
+    "speed": 1,
     "posture": 2,
     "block": 0,
     "phase": "Spirit",
@@ -224,7 +207,7 @@
     "category": "Defensive",
     "desc": "Your Spirit focuses on survival, focusing almost entirely on defense.",
     "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
-    "movement": 0,
+    "speed": 0,
     "posture": 3,
     "block": 2,
     "phase": "Spirit",
@@ -235,7 +218,7 @@
     "name": "Spiritual Essence",
     "category": "Balanced",
     "desc": "Your Spirit does not take on a corporeal form, instead assisting you with its magical reserves.",
-    "movement": 0,
+    "speed": 0,
     "posture": 0,
     "block": 0,
     "phase": "N/A",

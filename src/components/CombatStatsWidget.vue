@@ -62,7 +62,7 @@
         </v-col>
       </v-row>
       -->
-      <v-row no-gutters> <b>Movement:</b>&nbsp;{{ creature.Movement }} / {{ creature.MaxMovement }} </v-row>
+      <v-row no-gutters> <b>Speed:</b>&nbsp;{{ creature.Speed }} / {{ creature.MaxSpeed }} </v-row>
       <v-row
         no-gutters
         class="bar--area">
@@ -70,7 +70,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Movement -= 1), $emit('changed')"
+            @click=";(creature.Speed -= 1), $emit('changed')"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -87,7 +87,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Movement += 1), $emit('changed')"
+            @click=";(creature.Speed += 1), $emit('changed')"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>

@@ -52,7 +52,7 @@
           class="chart--row">
           <v-col
             class="chart--head"
-            :cols="3">
+            :cols="4">
             <b>
               <display-tooltip-text
                 string="_Phase_"
@@ -61,16 +61,7 @@
           </v-col>
           <v-col
             class="chart--head"
-            :cols="3">
-            <b>
-              <display-tooltip-text
-                string="_Movement_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="3">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Momentum_"
@@ -79,10 +70,19 @@
           </v-col>
           <v-col
             class="chart--head"
-            :cols="3">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Posture_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Essence_"
                 :decorate="false" />
             </b>
           </v-col>
@@ -93,23 +93,23 @@
           class="chart--row">
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
+            :cols="4"
             >{{ ability.Phase }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
-            >{{ ability.Movement }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="3"
+            :cols="2"
             >{{ ability.Momentum }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
+            :cols="2"
             >{{ ability.Posture }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >0</v-col
           >
         </v-row>
         <v-row
@@ -118,7 +118,16 @@
           class="chart--row">
           <v-col
             class="chart--head"
-            :cols="3">
+            :cols="2">
+            <b>
+              <display-tooltip-text
+                string="_Speed_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Block_"
@@ -127,7 +136,7 @@
           </v-col>
           <v-col
             class="chart--head"
-            :cols="3">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Grit_"
@@ -136,7 +145,7 @@
           </v-col>
           <v-col
             class="chart--head"
-            :cols="3">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Focus_"
@@ -145,7 +154,7 @@
           </v-col>
           <v-col
             class="chart--head"
-            :cols="3">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Reflex_"
@@ -159,23 +168,28 @@
           class="chart--row">
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
-            >{{ ability.Block }}</v-col
+            :cols="2"
+            >+{{ ability.Speed }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
-            >{{ ability.Grit }}</v-col
+            :cols="2"
+            >+{{ ability.Block }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
-            >{{ ability.Focus }}</v-col
+            :cols="2"
+            >+{{ ability.Grit }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"
-            :cols="3"
-            >{{ ability.Reflex }}</v-col
+            :cols="2"
+            >+{{ ability.Focus }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >+{{ ability.Reflex }}</v-col
           >
         </v-row>
       </div>
@@ -246,8 +260,9 @@
         style="padding-bottom: 0.25em"
         v-bind:style="isStance ? {} : 'padding-left: 3em'">
         <base-widget
-          v-for="(ability, index) in ability.Abilities"
-          :ability="ability" />
+          v-for="ability in ability.Abilities"
+          :ability="ability"
+          :key="ability.Name" />
       </div>
       <div
         class="expand--collapse-box-outlined"

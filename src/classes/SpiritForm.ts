@@ -6,7 +6,7 @@ class SpiritForm extends Base {
   private block_: number
   private defenses_: IDefenseData
   private weapons_: string
-  private move_: number
+  private speed_: number
   private traits_: string[]
   private range_modifier_: string
 
@@ -17,8 +17,8 @@ class SpiritForm extends Base {
   // ==========================================================
   // GETTERS
   // ==========================================================
-  public get Movement() {
-    return this.move_
+  public get Speed() {
+    return this.speed_
   }
 
   // ==========================================================
@@ -50,8 +50,8 @@ class SpiritForm extends Base {
   public get BlockHeader() {
     return '**Guard:** ' + this.block_
   }
-  public get MovementHeader() {
-    return '**Move:** ' + this.move_
+  public get SpeedHeader() {
+    return '**Move:** ' + this.speed_
   }
   public get Stamina() {
     return this.stamina_
@@ -104,7 +104,7 @@ class SpiritForm extends Base {
     this.block_ = data.guard
     this.defenses_ = data.defenses || null
     this.weapons_ = data.weapons || ''
-    this.move_ = data.move || 0
+    this.speed_ = data.speed || 0
     this.traits_ = data.traits || []
     this.range_modifier_ = data.range_modifier || ''
   }

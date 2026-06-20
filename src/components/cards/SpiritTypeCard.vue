@@ -47,7 +47,7 @@
             class="chart--head"
             cols="2">
             <display-tooltip-text
-              string="_Movement_"
+              string="_Speed_"
               :decorate="false" />
           </v-col>
         </v-row>
@@ -74,7 +74,7 @@
           <v-col
             class="chart--cols justify-center align-center"
             cols="2"
-            >{{ type.Movement }}</v-col
+            >{{ type.Speed }}</v-col
           >
         </v-row>
         <v-row

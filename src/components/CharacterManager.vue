@@ -218,6 +218,15 @@
               <span class="btn-content">Print {{ selectedCharacter.Name }}</span>
             </v-btn>
           </v-col>
+          <v-col
+            cols="2"
+            v-if="characterSelected">
+            <v-btn
+              @click="printTracker"
+              class="button--template button--topbar">
+              <span class="btn-content">Print Tracker</span>
+            </v-btn>
+          </v-col>
         </v-row>
         <show-character
           v-if="characterSelected"
@@ -274,9 +283,9 @@ export default Vue.extend({
       this.$router.push({ name: 'print', params: { character: this.selectedCharacter } })
     },
 
-    printSpirit() {
+    printTracker() {
       // Navigate using a path string
-      this.$router.push({ name: 'print', params: { character: this.selectedCharacter.Spirit } })
+      this.$router.push({ name: 'print-tracker', params: { character: this.selectedCharacter } })
     },
 
     exportCharacter() {

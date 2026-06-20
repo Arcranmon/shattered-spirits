@@ -36,7 +36,7 @@ declare interface IBonusesData {
   guard?: number
   block?: number
   reflex?: number
-  move?: number
+  speed?: number
   phase?: number
   load?: number
   equipment?: string[]
@@ -83,7 +83,7 @@ declare interface ICharacterData extends ICombatantData {
 declare interface ICombatantData {
   stamina: number
   guard: number
-  move: number
+  speed: number
   momentum: number
   statuses?: IStatusEffect[]
 }
@@ -150,7 +150,7 @@ declare interface INpcData {
   abilities?: Array<IAbilityData>
   bars: number
   equipment?: Array<string>
-  move: number
+  speed: number
   category?: string
   desc: string
   stamina: number
@@ -174,7 +174,7 @@ declare interface IAbilityData extends IBaseData {
   enhancements?: IEnhanceData[]
   cost?: string
   category: string
-  move?: number
+  speed?: number
   range?: string
   reqs?: string
   type?: string
@@ -215,7 +215,7 @@ declare interface IRespiteData {
   block_clear: number[]
   conditional_momentum: string
   special: string
-  movement: number
+  speed: number
 }
 
 declare interface ISpiritData extends ICombatantData {
@@ -230,7 +230,7 @@ declare interface ISpiritFormData extends IBaseData {
   defenses?: IDefenseData
   stamina: number
   weapons: string
-  move: number
+  speed: number
   traits: string[]
   guard: number
   range_modifier: string
@@ -245,7 +245,7 @@ declare interface ISubtypeData extends IBaseData {
   weapons: number
   block: number
   guard: number
-  move: number
+  speed: number
   manifest: string
   soak: string
   growth_points: number
@@ -258,7 +258,7 @@ declare interface IStanceData extends IAbilityPackageData {
   momentum?: string
   phase: number
   block: number
-  movement: number
+  speed: number
   posture: number
 }
 
@@ -298,7 +298,6 @@ declare interface IFeatureData extends IBaseData {
   damage_type: string
   destroy: string
   element: string
-  forced_movement: string
   hardness: number
   interact: string
   resistances: string[]

@@ -14,7 +14,7 @@ class Ability extends Base {
   protected imbues_: IEnhanceData[]
   protected cost_: string
   protected category_: string
-  protected move_: number
+  protected speed_: number
   protected range_: string
   protected reqs_: string
   protected target_: string
@@ -35,7 +35,7 @@ class Ability extends Base {
     this.chart_ = null
     this.desc_ = ''
     this.effect_ = ''
-    this.move_ = 0
+    this.speed_ = 0
     this.name_ = name
     this.range_ = ''
     this.reqs_ = ''
@@ -90,7 +90,7 @@ class Ability extends Base {
     return '**Phase ' + this.phase_ + '**'
   }
   public get Move() {
-    return this.move_
+    return this.speed_
   }
 
   public get MomentumCost() {
@@ -220,10 +220,10 @@ class Ability extends Base {
     return '**_Frequency_:** ' + this.frequency_
   }
   public get HasMove() {
-    return this.move_ > 0
+    return this.speed_ > 0
   }
   public get MoveHeader() {
-    return '**_Move_:** _' + this.Move + '_'
+    return '**_Speed_:** _' + this.Move + '_'
   }
   public get HasRangeOrTarget() {
     return this.HasRange || this.HasTarget || this.material_.length > 0 || this.damage_type_.length > 0
@@ -309,7 +309,7 @@ class Ability extends Base {
     this.cost_ = data.cost || ''
     this.category_ = data.category || ''
     this.type_ = data.type || 'MISSING'
-    this.move_ = data.move || 0
+    this.speed_ = data.speed || 0
     this.frequency_ = data.frequency || ''
     this.reqs_ = data.reqs || ''
     this.phase_ = data.phase || 0

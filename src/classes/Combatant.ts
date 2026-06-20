@@ -5,7 +5,7 @@ const interpolate = require('color-interpolate')
 class Combatant {
   private stamina_: number
   private guard_: number
-  private move_: number
+  private speed_: number
   private momentum_: number
   private statuses_: IStatusEffect[]
   private vigor_: number
@@ -16,7 +16,7 @@ class Combatant {
   // CONSTRUCTOR
   // ==========================================================
   public constructor() {
-    this.move_ = 0
+    this.speed_ = 0
     this.stamina_ = 0
     this.momentum_ = 0
     this.vigor_ = 0
@@ -24,7 +24,7 @@ class Combatant {
   // ==========================================================
   // These should be overwritten by children
   // ==========================================================
-  get MaxMovement() {
+  get MaxSpeed() {
     return 0
   }
 
@@ -151,31 +151,32 @@ class Combatant {
   // ==========================================================
 
   public ApplyRespite() {
-    this.move_ = this.MaxMovement
+    this.speed_ = this.MaxSpeed
     //this.momentum_ += this.MomentumGain
     //this.ClearBlockChunk(this.BlockClear)
   }
 
   public ResetDefault() {
-    this.move_ = this.MaxMovement
+    this.speed_ = this.MaxSpeed
     this.stamina_ = this.MaxStamina
     this.momentum_ = 0
     this.vigor_ = 0
     this.statuses_ = []
   }
 
-  get Movement() {
-    return this.move_
+  get Speed() {
+    return this.speed_
   }
 
-  set Movement(move: number) {
-    if (move > this.MaxMovement) this.move_ = this.MaxMovement
-    else if (move < 0) this.move_ = 0
-    else this.move_ = move
+  set Speed(speed: number) {
+    if (speed > this.MaxSpeed) this.speed_ = this.MaxSpeed
+    else if (speed < 0) this.speed_ = 0
+    else this.speed_ = speed
   }
 
   get MovePercent() {
-    return (this.Movement / this.MaxMovement) * 100
+    console.log(this.Speed)
+    return (this.Speed / this.MaxSpeed) * 100
   }
 
   get MoveColor() {
@@ -279,7 +280,7 @@ class Combatant {
   public static Serialize(combatant: Combatant): ICombatantData {
     return {
       stamina: combatant.stamina_,
-      move: combatant.move_,
+      speed: combatant.speed_,
       guard: combatant.guard_,
       momentum: combatant.momentum_,
       statuses: combatant.statuses_,
@@ -293,7 +294,7 @@ class Combatant {
   }
 
   public setCombatantData(data: ICombatantData): void {
-    this.move_ = Math.min(data.move, this.MaxMovement)
+    this.speed_ = Math.min(data.speed, this.MaxSpeed)
     this.stamina_ = Math.min(data.stamina, this.MaxStamina)
     this.momentum_ = data.momentum
     this.statuses_ = data.statuses || []

@@ -21,7 +21,7 @@
           </div>
         </v-col>
         <v-col :cols="6">
-          <display-tooltip-text :string="form.MovementHeader" />
+          <display-tooltip-text :string="form.SpeedHeader" />
           <br />
           <display-tooltip-text :string="form.RangeHeader" />
           <br />

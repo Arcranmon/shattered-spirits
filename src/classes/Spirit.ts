@@ -27,9 +27,9 @@ class Spirit extends Combatant {
     return block
   }
 
-  override get MaxMovement() {
-    var movement = this.spirit_type_.Movement + this.combinedBonuses_.Movement + this.current_stance_.Movement
-    return movement
+  override get MaxSpeed() {
+    var speed = this.spirit_type_.Speed + this.combinedBonuses_.Speed + this.current_stance_.Speed
+    return speed
   }
 
   override get MaxGuard() {
@@ -112,6 +112,10 @@ class Spirit extends Combatant {
   }
 
   get Size() {
+    if (this.Traits.includes('Tiny Form')) return 0.5
+    if (this.Traits.includes('Small Form')) return 1
+    if (this.Traits.includes('Medium Form')) return 2
+    if (this.Traits.includes('Large Form')) return 3
     return 1
   }
 
@@ -139,7 +143,7 @@ class Spirit extends Combatant {
     } else {
       this.current_stance_ = store.getters.getStance(stance)
     }
-    if (this.Movement > this.MaxMovement) this.Movement = this.MaxMovement
+    if (this.Speed > this.MaxSpeed) this.Speed = this.MaxSpeed
   }
 
   override get MaxStamina() {

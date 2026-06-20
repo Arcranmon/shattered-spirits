@@ -34,8 +34,8 @@ class Npc extends Combatant {
     return this.npc_data_.traits
   }
 
-  override get MaxMovement() {
-    return this.npc_data_.move
+  override get MaxSpeed() {
+    return this.npc_data_.speed
   }
 
   override get MaxGuard() {
@@ -122,7 +122,7 @@ class Npc extends Combatant {
   // FORMATTED GETTERS
   // ==========================================================
   public get MoveText() {
-    return '**Move:** ' + this.npc_data_.move
+    return '**Move:** ' + this.npc_data_.speed
   }
   public get StaminaText() {
     return '**Stamina:** ' + this.npc_data_.stamina

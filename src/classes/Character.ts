@@ -3,7 +3,7 @@ import { Armor, Bonuses, Combatant, Stance, Weapon, Spirit } from '@/class'
 
 var kBaseStamina = 10
 var kBaseStun = 15
-var kBaseMovement = 2
+var kBaseSpeed = 2
 var kLoadBands = 5
 
 class Character extends Combatant {
@@ -58,9 +58,9 @@ class Character extends Combatant {
     return block
   }
 
-  override get MaxMovement() {
-    let maxMovement = kBaseMovement + this.combinedBonuses_.Movement + this.current_stance_.Movement
-    return maxMovement
+  override get MaxSpeed() {
+    let maxSpeed = kBaseSpeed + this.combinedBonuses_.Speed + this.current_stance_.Speed
+    return maxSpeed
   }
 
   override get Traits() {
@@ -106,6 +106,10 @@ class Character extends Combatant {
   }
   get Disciplines() {
     return this.disciplines_
+  }
+
+  get Phase() {
+    return 0
   }
 
   override get AllArts() {
@@ -276,7 +280,7 @@ class Character extends Combatant {
     } else {
       this.current_stance_ = store.getters.getStance(stance)
     }
-    if (this.Movement > this.MaxMovement) this.Movement = this.MaxMovement
+    if (this.Speed > this.MaxSpeed) this.Speed = this.MaxSpeed
   }
 
   set Name(name: string) {

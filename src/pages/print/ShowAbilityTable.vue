@@ -47,7 +47,7 @@
       </v-col>
       <v-col
         class="column-header"
-        :cols="3">
+        :cols="2">
         Keywords
       </v-col>
       <v-col
@@ -105,7 +105,7 @@
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
-        :cols="3">
+        :cols="2">
         {{ ability.KeywordsList }}
       </v-col>
       <v-col

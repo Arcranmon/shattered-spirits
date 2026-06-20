@@ -103,9 +103,9 @@ const r = new Router({
     {
       path: '/print-tracker',
       component: require('@/pages/print-tracker/index.vue').default,
-      name: 'print',
+      name: 'print-tracker',
       meta: {
-        title: 'Print',
+        title: 'Print Tracker',
         hideHeader: true,
         props: true,
       },

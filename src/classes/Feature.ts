@@ -9,7 +9,7 @@ class Feature extends Base {
   private resistances_: string[]
   private interact_: string
   private traits_: string
-  private forced_movement_: string
+  private forced_speed_: string
   private size_: number
   private chart_: Chart
   private position_effect_: string
@@ -21,7 +21,7 @@ class Feature extends Base {
     this.element_ = ''
     this.interact_ = ''
     this.traits_ = ''
-    this.forced_movement_ = ''
+    this.forced_speed_ = ''
     this.size_ = 0
     this.chart_ = null
     this.position_effect_ = ''
@@ -64,8 +64,8 @@ class Feature extends Base {
   get HasTraits() {
     return this.traits_ != ''
   }
-  get HasForcedMovement() {
-    return this.forced_movement_ != ''
+  get HasForcedSpeed() {
+    return this.forced_speed_ != ''
   }
 
   // ==========================================================
@@ -86,8 +86,8 @@ class Feature extends Base {
   public get TraitsHeader() {
     return '**Traits:** ' + this.traits_
   }
-  public get ForcedMovementHeader() {
-    return '**Forced Movement:** ' + this.forced_movement_
+  public get ForcedSpeedHeader() {
+    return '**Forced Movement:** ' + this.forced_speed_
   }
   public get DetailsHeader() {
     var details = 'Size ' + this.size_ + ', Hardness ' + this.hardness_
@@ -136,7 +136,6 @@ class Feature extends Base {
     this.interact_ = data.interact || ''
     this.traits_ = data.traits || ''
     this.resistances_ = data.resistances || []
-    this.forced_movement_ = data.forced_movement || ''
     this.size_ = data.size || 0
     this.path_effect_ = data.path_effect || ''
     this.position_effect_ = data.position_effect || ''

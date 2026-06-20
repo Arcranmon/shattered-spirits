@@ -58,8 +58,8 @@
             <div class="card--box" v-if="job == 'Features'">
               <feature-card :feature="n" />
             </div>
-            <div class="card--box" v-if="job == 'Movement'">
-              <movement-card :movement="n" />
+            <div class="card--box" v-if="job == 'Speed'">
+              <speed-card :speed="n" />
             </div>
             -->
         <div

@@ -3,31 +3,27 @@
     "name": "Traveling Light",
     "category": "Travel",
     "type": "Talent",
-    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help. When this would help, gain +1 die on an appropriate Skill Challenge or Interaction.",
-    "summary": "Gain +1 die on _Travel Rolls_, or _Skill Challenges_ where being light helps."
+    "effect": "Roll +1 die during Travel Rolls. You are unencumbered, which may make it easier to climb, swim, or other activities where a lighter load would help. When this would help, gain +1 die on an appropriate Skill Challenge or Interaction."
   },
   {
     "name": "Unencumbered",
     "category": "Mobility",
     "type": "Passive",
-    "effect": "Gain +1 _Movement_.",
-    "bonuses": { "move": 1 },
-    "summary": "Effect"
+    "effect": "Gain +1 _Speed_.",
+    "bonuses": { "speed": 1 }
   },
   {
     "name": "Traveling Heavy",
     "category": "Travel",
     "type": "Talent",
-    "effect": "Add an additional _Affliction_ (_Fatigue_) Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help. When this would hurt, lose 1 die on an appropriate Skill Challenge or Interaction.",
-    "summary": "Lose 1 die on _Travel Rolls_, or _Skill Challenges_ where being heavy hurts."
+    "effect": "Add an additional _Affliction_ (_Fatigue_) Danger while traveling. You are heavily encumbered, which may make it harder to climb, swim, or other activities where a lighter load would help. When this would hurt, lose 1 die on an appropriate Skill Challenge or Interaction."
   },
   {
     "name": "Heavily Encumbered",
     "category": "Mobility",
     "type": "Passive",
-    "effect": "Gain -1 _Movement_.",
-    "bonuses": { "move": -1 },
-    "summary": "Effect"
+    "effect": "Gain -1 _Speed_.",
+    "bonuses": { "speed": -1 }
   },
   {
     "name": "Accelerate",
@@ -35,8 +31,7 @@
     "type": "Maneuver",
     "keywords": ["Repeatable"],
     "cost": "2 _Momentum_",
-    "effect": "Gain 1 _Movement_.",
-    "summary": "Spend Momentum to gain Movement."
+    "effect": "Gain 1 _Speed_."
   },
   {
     "name": "Spiritcraft",
@@ -52,8 +47,7 @@
         "effect": "Gain 1 _Essence_. You must have a _Free Hand_ to use this ability. Spirits always are treated as having a _Free Hand_ for this Ability."
       },
       { "name": "Focus Energy", "cost": "2 _Momentum_", "effect": "Gain 1 _Essence_. You may repeat this _Enhancement_." }
-    ],
-    "summary": "Spend Momentum to gain Essence."
+    ]
   },
   {
     "name": "Concentrate",
@@ -61,8 +55,7 @@
     "type": "Maneuver",
     "keywords": ["Final", "Instinctive"],
     "cost": "2 _Momentum_",
-    "effect": "Gain _Concentrating_.",
-    "summary": "Gain Concentrating (reroll a d6)"
+    "effect": "Gain _Concentrating_."
   },
   {
     "name": "Manipulate",
@@ -70,15 +63,14 @@
     "type": "Maneuver",
     "cost": "1 _Momentum_",
     "range": "1",
-    "effect": "You attempt to manipulate a creature with body language, shouts, or basic insults. Choose one:\n* <u>Confuse:</u> The Target must _Negate_ [7 _Focus_] or take 1 _Stun_ and gain your choice of _Impaired_/_Exposed_.\n* <u>Taunt:</u> The Target must _Negate_ [7 _Focus_] or gain _Taunted_. If you are _Engaged_, increase the DC by 1.\n* <u>Startle:</u> The Target must _Negate_ [6 _Focus_] or lose 1 _Movement_.",
+    "effect": "You attempt to manipulate a creature with body language, shouts, or basic insults. Choose one:\n* <u>Confuse:</u> The Target must _Negate_ [7 _Focus_] or take 1 _Stun_ and gain your choice of _Impaired_/_Exposed_.\n* <u>Taunt:</u> The Target must _Negate_ [7 _Focus_] or gain _Taunted_. If you are _Engaged_, increase the DC by 1.\n* <u>Startle:</u> The Target must _Negate_ [6 _Focus_] or lose 1 _Speed_.",
     "enhancements": [
       {
         "name": "Bon Mot",
         "cost": "1 _Momentum_",
         "effect": "Increase the Negate DC by 2. If you target a creature that speaks your language and craft an insult, instead increase it by 3."
       }
-    ],
-    "summary": "Use social skills to inflict various minor statuses on foes."
+    ]
   },
   {
     "name": "Size Up",
@@ -88,8 +80,7 @@
     "range": "2",
     "target": "A creature.",
     "effect": "The Target must _Negate_ [6 _Focus_] or gain _Studied_.",
-    "enhancements": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Increase the Negate DC by 3." }],
-    "summary": "Attempt to inflict Studied (increase a die roll by 1)"
+    "enhancements": [{ "name": "Focused Study", "cost": "1 _Momentum_", "effect": "Increase the Negate DC by 3." }]
   },
   {
     "name": "Channel Elements",
@@ -110,10 +101,10 @@
     "name": "Disengage",
     "category": "Mobility",
     "type": "Reaction",
-    "cost": "1 _Movement_",
+    "cost": "1 _Speed_",
     "keywords": ["Safe"],
-    "trigger": "You would spend _Movement_.",
-    "effect": "Do not create an [_Opening_] from spending the Movement. This ability cannot have its cost increased.",
+    "trigger": "You would spend _Speed_.",
+    "effect": "Do not create an [_Opening_] from spending the Speed. This ability cannot have its cost increased.",
     "special": "If you are in a Mobility Stance this may instead have a cost of 1 _Momentum_."
   },
   {
@@ -155,7 +146,7 @@
     "type": "Gambit",
     "cost": "None",
     "prereqs": "Triggered from a _Dodge_.",
-    "effect": "Gain 1 _Movement_ that may only be used for this _Gambit_. Immediately spend _Movement_ as if it was your turn. No _Movement_ spent in this way creates _Openings_."
+    "effect": "Gain 1 _Speed_ that may only be used for this _Gambit_. Immediately spend _Speed_ as if it was your turn. No _Speed_ spent in this way creates _Openings_."
   },
   {
     "name": "Opportunity Attack",
@@ -207,7 +198,7 @@
     "name": "Flank",
     "category": "Offensive",
     "type": "Reaction",
-    "cost": "1 _Momentum_/_Movement_",
+    "cost": "1 _Momentum_/_Speed_",
     "trigger": "A creature you are _Engaged_ with is Attacked by a creature other than you.",
     "effect": "The Attack gains a +1 to the _Attack Roll_ if _Melee_. Additionally, the Target has _Disadvantage_ on any _Defense Roll_ made against this Attack."
   },
@@ -221,10 +212,10 @@
     "name": "Evade",
     "category": "Defensive",
     "type": "Reaction",
-    "cost": "2 _Posture_/_Movement_ (any combination)",
+    "cost": "2 _Posture_/_Speed_ (any combination)",
     "keywords": ["Dodge"],
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect. (Spending any _Movement_ while _Engaged_, including for this ability, creates an [_Opening_])",
+    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect. (Spending any _Speed_ while _Engaged_, including for this ability, creates an [_Opening_])",
     "chart": {
       "status": ["None", "Decrease Attack _Result_ by 1", "Attack is a _Graze_ or decreases _Result_ by 1", "Attack is a _Miss_"],
       "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -270,8 +261,7 @@
         "cost": "1 _Momentum_",
         "effect": "The Target must be 1 _Load_ or less. Choose a willing ally within _Range_ 0. They may immediately _Wield_ the Target if they have a _Free Hand_."
       }
-    ],
-    "summary": "Stop Wielding or Wearing Equipment."
+    ]
   },
   {
     "name": "Equip",
@@ -292,8 +282,7 @@
         "cost": "1 _Momentum_",
         "effect": "Create an [_Opening_]. Instead, target a _Packed_ Item. Add [_Final_]."
       }
-    ],
-    "summary": "Start Wielding Equipment."
+    ]
   },
   {
     "name": "Swift Recall",
@@ -301,8 +290,7 @@
     "category": "Utility",
     "type": "Maneuver",
     "cost": "1 _Essence_",
-    "effect": "_Recall_ your _Spirit_.",
-    "summary": "Effect"
+    "effect": "_Recall_ your _Spirit_."
   },
   {
     "name": "Improvised Attack",
@@ -332,8 +320,7 @@
       "stun": [0, 1, 2, 2],
       "damage": [0, 0, 1, 2],
       "roll": ["2-4", "5-6", "7-10", "11-12"]
-    },
-    "summary": "Make a clumsy attack with an available item."
+    }
   },
   {
     "name": "Brawl",
@@ -407,47 +394,46 @@
     "name": "Earthen Essence",
     "category": "General",
     "type": "Passive",
-    "keywords": ["Earth", "Spirit"],
-    "effect": "If you spend the entire _Round_ within the same _Earthen_ _Arena_ and do not break contact with the ground, gain 1 _Essence_."
+    "keywords": ["Spirit", "Respite"],
+    "effect": "If you spent the last _Round_ within the same _Earthen_ _Arena_ and remained on the ground, gain 1 _Essence_ at _Respite_."
   },
   {
     "name": "Aquatic Essence",
     "category": "General",
     "type": "Passive",
-    "keywords": ["Water", "Spirit"],
-    "effect": "If you end the _Round_ in an _Arena_ that is a _Source_ 3 (_Water_) or in/adjacent to a _Source_ 4 (_Water_), gain 1 _Essence_."
+    "keywords": ["Spirit", "Respite"],
+    "effect": "If are in an _Arena_ that is a _Source_ 3 (_Water_) or in/adjacent to a _Source_ 4 (_Water_) at _Respite_, gain 1 _Essence_."
   },
   {
     "name": "Flaming Essence",
     "category": "General",
     "type": "Passive",
-    "keywords": ["Flame", "Spirit"],
-    "effect": "If you end the _Round_ in an _Arena_ with _Flame_ _Terrain_ that is at least a _Source_ 2, gain 1 _Essence_."
+    "keywords": ["Spirit", "Respite"],
+    "effect": "If yare in an _Arena_ with _Flame_ _Terrain_ that is at least a _Source_ 2 at _Respite_, gain 1 _Essence_."
   },
   {
     "name": "Flowing Essence",
     "category": "General",
     "type": "Passive",
-    "keywords": ["Wind", "Spirit"],
-    "effect": "If you end the _Round_ in an _Arena_ different than the one you started in, gain 1 _Essence_."
+    "keywords": ["Spirit", "Respite"],
+    "effect": "If you ended last _Round_ in an _Arena_ different than the one you started in, gain 1 _Essence_ at _Respite_."
   },
   {
     "name": "Metallic Essence",
     "category": "General",
     "type": "Passive",
-    "keywords": ["Metal", "Spirit"],
-    "effect": "If you end the _Round_ _Wielding_ at least 2 _Load_ of _Metal_, _Wearing_ at least 6 _Load_ of _Metal_, or in an _Arena_ with a _Source_ 3 (_Metal_) gain 1 _Essence_."
+    "keywords": ["Spirit", "Respite"],
+    "effect": "If, at _Respite_, you are _Wielding_ at least 2 _Load_ of _Metal_, _Wearing_ at least 6 _Load_ of _Metal_, or in an _Arena_ with a _Source_ 3 (_Metal_) gain 1 _Essence_."
   },
   {
     "name": "Wooden Essence",
     "category": "General",
     "type": "Passive",
-    "keywords": ["Wood", "Spirit"],
-    "effect": "If you end the _Round_ _Wielding_ at least 2 _Load_ of _Wood_, _Wearing_ at least 6 _Load_ of _Wood_, or in an _Arena_ with a _Source_ 3 (_Wood_)  gain 1 _Essence_."
+    "keywords": ["Spirit", "Respite"],
+    "effect": "If, at _Respite_, you are _Wielding_ at least 2 _Load_ of _Wood_, _Wearing_ at least 6 _Load_ of _Wood_, or in an _Arena_ with a _Source_ 3 (_Wood_) gain 1 _Essence_."
   },
   {
     "name": "Heat Conduction",
-    "keywords": ["Metal", "Spirit"],
     "category": "Defensive",
     "type": "Passive",
     "effect": "You have three states: Heated, Normal, and Chilled.\n* While Heated, you are one step _Weaker_ to _Cold_ and _Water_, and adds [_Fire_] to all _Martial_ _Attacks_.\n* While Chilled, you are one step _Weaker_  to _Fire_, and adds [_Cold_] to all _Martial_ _Attacks_.\n* Whenever you take _Fire_ Damage, move one step towards Heated. \n* Whenever you take _Cold_ Damage, move one step towards Chilled.\n* Whenever you take _Water_ Damage, move one step towards Chilled but not beyond Normal."
