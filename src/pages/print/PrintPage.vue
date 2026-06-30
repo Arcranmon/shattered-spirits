@@ -28,12 +28,12 @@
         /></v-col>
       </v-row>
     </div>
-    <v-row style="page-break-after: always" />
 
     <div class="main-abilities">
       <show-ability-table
         title="Skill"
-        :abilities="this.character.FilteredAbilities('All', 'Skill', 'All')" />
+        :abilities="this.character.FilteredAbilities('All', 'Skill', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Travel"
         :abilities="this.character.FilteredAbilities('All', 'Travel', 'All')" />
