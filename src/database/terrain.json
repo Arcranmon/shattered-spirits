@@ -3,85 +3,89 @@
     "name": "Overgrown",
     "desc": "Thick grass, vines, or other growths cover this arena, making speed far more difficult.",
     "element": "Wood",
-    "keywords": ["_Source_ 2", "Plant", "Obstacle"],
-    "effect": "This _Arena_ is _Rough_. All Size 1 or less creatures have _Soft Cover_. A creature may Attack the Arena; if they deal at least 3 _Slash_ Damage they may create a piece of _Terrain_ that does not have Overgrown. Any effects that Targets the whole Arena and does at least 8 _Slash_ Damage removes Overgrown."
+    "keywords": ["Plant"],
+    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "engaged": "_Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_ or _Negate_ with _Reflex_.",
+    "destroy": "A creature may Attack this _Terrain_; if they deal at least 3 _Slash_ Damage they may remove this from an _Engagement_. Any effects that Targets the whole Arena and does at least 8 _Slash_ Damage removes Overgrown from all _Engagements_."
   },
   {
     "name": "Cliff",
     "desc": "This arena is a sheer cliff, difficult to climb with few handholds.",
-    "keywords": ["Arena"],
-    "element": "Earth",
-    "effect": "While in this _Arena_ creatures are always _Climbing_. If you are _Forcibly Moved_ into this _Arena_ from _High Ground_ you immediately _Fall_, the exact value of which depends on the distance."
+    "element": "Arena",
+    "layer": "Modifier",
+    "effect": "While in this _Arena_ creatures may only move by _Climbing_. If you are _Forcibly Moved_ while in or into this _Arena_ from _High Ground_ you immediately _Fall_. Add the _Ledge_ _Terrain_ to whatever _Arena_ you climb into from this."
   },
   {
     "name": "Gusting",
     "desc": "A powerful gust that lasts only a short while.",
     "layer": "Weather",
     "element": "Wind",
-    "keywords": ["Fleeting", "Weather"],
-    "effect": "When this Terrain is applied, remove any [_Cloud_] _Terrain_. Non-Melee Attacks that pass through, originate from this, or target a creature in this _Arena_ automatically decrease their Result by 1 unless they are [_Wind_] or [_Lightning_]."
+    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "effect": "When this Terrain is applied, remove any [_Cloud_] _Terrain_. Non-Melee Attacks that pass through, originate from this, or target a creature in this _Arena_ automatically decrease their Result by 1 unless they are [_Wind_] or [_Lightning_].",
+    "eor": "Remove this _Terrain_."
   },
   {
     "name": "High Ground",
-    "layer": "Field",
-    "element": "Elementless",
-    "keywords": ["Arena"],
+    "layer": "Modifier",
+    "element": "Arena",
     "desc": "Elevated terrain that provides an advantage against other foes.",
     "effect": "You have a +1 on _Attack Rolls_ against creatures in lower Arenas and may treat yourself as 1 Range closer when attacking them."
   },
   {
     "name": "Ledge",
-    "layer": "Field",
+    "layer": "Terrain",
     "element": "Elementless",
     "desc": "The lip of a cliff, right next to a steep drop.",
-    "effect": "While in this _Terrain_, you may be _Forcibly Moved_ to an adjacent _Arena_ even if it is not _Forceful_."
+    "effect": "While in this _Terrain_, you may be _Forcibly Moved_ to an adjacent _Arena_ even if it is not _Forceful_. This _Arena_ is typically specified."
   },
   {
     "name": "Veiled",
-    "layer": "Cloud",
+    "layer": "Weather",
     "element": "Elementless",
-    "keywords": ["Fleeting", "Cloud"],
+    "keywords": ["Cloud"],
     "desc": "Terrain filled with dust, smoke, mist, or some other obscuring agent.",
-    "effect": "All creatures in this _Arena_ benefit from _Soft Cover_."
+    "engaged": "Gain _Soft Cover_.",
+    "eor": "Remove this _Terrain_."
   },
   {
     "name": "Submerged",
     "layer": "Terrain",
     "element": "Water",
     "desc": "An underwater position within the arena, providing great protection and the expense of the ability to breathe.",
-    "effect": "Creatures _Engaged_ with this _Terrain_ benefit from _Cover_ and increase their _Resistance_ to _Fire_ by two steps. However, while here they are always _Swimming_ and are _Suffocating_, and cannot remove it until they are no longer _Engaged_ with this _Terrain_. Additionally, they increase their _Weakness_ to _Lightning_ by two steps."
+    "engaged": "Gain _Cover_ and increase your _Resistance_ to _Fire_ by two steps. However, you are always _Swimming_ and _Suffocating_, and increase your _Weakness_ to _Lightning_ by two steps."
   },
   {
     "name": "Egg Cluster",
     "layer": "Obstacle",
-    "keywords": ["Cover"],
     "element": "Carapace",
     "desc": "A disgusting cluster of Locust Eggs.",
     "hardness": 1,
     "threshold": 6,
-    "destroy": "When destroyed, all Locusts within Range 1 of the Egg Cluster become _Enraged_ and _Taunted_, and treat the character that Destroyed the Egg Cluster as the Taunter.",
-    "special": "When using this Terrain for Cover Locusts will not target you with Ranged Attacks."
+    "engaged": "Gain _Cover_. Locusts will not target you with Ranged Attacks.",
+    "destroy": "When destroyed, all Locusts within Range 1 of the Egg Cluster become _Enraged_ and _Taunted_, and treat the character that Destroyed the Egg Cluster as the Taunter."
   },
   {
     "name": "Stalagmite",
     "layer": "Obstacle",
-    "keywords": ["_Source_ 3", "Cover"],
     "element": "Earth",
-    "desc": "A large rock, log, or some other.",
+    "desc": "A large rock pointing up.",
     "hardness": 2,
     "threshold": 10,
-    "destroy": "When destroyed, create four _Source_ 2 [_Earth_]."
+    "source": "4",
+    "engaged": "Gain _Cover_.",
+    "destroy": "When destroyed, create four _Source_ 3 [_Earth_]."
   },
   {
     "name": "Stalactite",
     "layer": "Obstacle",
-    "keywords": ["_Source_ 3", "Cover"],
     "element": "Earth",
     "desc": "A large rock, log, or some other.",
     "hardness": 2,
     "threshold": 10,
+    "source": "4",
+    "engaged": "Gain _Cover_.",
     "effect": "Only [_Flying_] creatures may _Engage_ this; if they do, they do not lose _Flying_.",
-    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [_Reflex_ 8]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Source_ 2 [_Earth_].",
+    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [_Reflex_ 8]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Source_ 3 [_Earth_].",
     "chart": {
       "chart": {
         "stun": [2, 2, 3, 4],
@@ -96,76 +100,114 @@
     "element": "Elementless",
     "keywords": ["Flammable"],
     "desc": "A slick coat of oil covers this area, making passage difficult.",
-    "effect": "This _Terrain_ is _Rough_. If this _Terrain_ is _Ignited_, it automatically becomes _Roaring_ and rolls all end of round effects at _Advantage_."
+    "engaged": "Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_, _Negate_ with _Reflex_, and _Negate_ _Forced Movement_ or _Prone_.",
+    "interactions": ["If this _Terrain_ is _Ignited_, it automatically becomes _Roaring_ and rolls all end of round effects at _Advantage_."],
+    "enter": "You are automatically _Grazed_.",
+    "collide": "You are automatically _Hit_.",
+    "chart": {
+      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"]
+    }
   },
   {
     "name": "Wet",
     "layer": "Terrain",
-    "keywords": ["_Source_ 1"],
     "element": "Water",
+    "source": "2 (_Engagement_) / 4 (_Arena_)",
     "desc": "A puddle, slick ground, or other small source of water.",
-    "effect": "Creatures _Engaged_ with this _Terrain_ have a -1 to _Negate_ against all _Forced Movement_ and _Prone_. Additionally, _Lightning_ Attacks gain a +1 to _Attack Rolls_ against creatures here.",
+    "engaged": "You have _Disadvantage_ to _Negate_ _Forced Movement_ and _Prone_. Additionally, increase your _Weakness_ to _Lightning_ by one step.",
+    "collide": "You are automatically _Hit_.",
+    "chart": {
+      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"]
+    },
     "interactions": ["If this would become _Blazing_, instead remove _Wet_ and add _Veiled_."]
   },
   {
     "name": "Cramped",
-    "layer": "Terrain",
-    "element": "Elementless",
+    "layer": "Modifier",
+    "element": "Arena",
     "desc": "A tight corridor that is difficult to fight in.",
-    "effect": "\n* All creatures and Terrain in this Arena is always _Engaged_.\n* _Heavy_ Attacks made while in this _Arena_ have _Disadvantage_.\n* Attacks that pass through this _Arena_ have _Disadvantage_."
+    "effect": "\n* All creatures and Obstacles in this Arena are always _Engaged_.\n* _Heavy_ Attacks made while in this _Arena_ have _Disadvantage_.\n* Attacks that pass through this _Arena_ have _Disadvantage_."
   },
   {
     "name": "Icy",
     "layer": "Terrain",
-    "keywords": ["_Source_ 1", "Ice"],
     "element": "Water",
+    "source": "2 (_Engagement_) / 4 (_Arena_)",
     "desc": "A slick sheet of ice that makes it difficult to find footing.",
-    "effect": "This _Terrain_ is _Rough_; additionally, creatures _Engaged_ with this _Terrain_ have _Disadvantage_ to _Negate_ against all _Forced Movement_ and _Prone_.",
+    "enter": "You are automatically _Grazed_. Do not apply _Engaged_ penalties to the _Negate_ roll.",
+    "engaged": "_Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_, _Negate_ with _Reflex_, and _Negate_ _Forced Movement_ or _Prone_.",
+    "collide": "You are automatically _Hit_.",
+    "chart": {
+      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"],
+      "negate": [5, 7, 8, 10]
+    },
     "interactions": ["If this _Engagement_ or a creature in it is targeted by a _Fire_ effect, this becomes _Wet_."]
   },
   {
     "name": "Tripping Hazard",
     "layer": "Obstacle",
-    "keywords": ["_Source_ 1"],
     "element": "Mutable",
+    "source": "2",
     "desc": "A low protrusion that, most of the time, is easily avoided, but could trip one forced into it.",
-    "effect": "When a creature becomes _Engaged_ this _Terrain_ due to _Forced Movement_ they fall _Prone_."
+    "collide": "Gain _Prone_."
   },
   {
     "name": "Spikes",
     "layer": "Obstacle",
-    "keywords": ["_Source_ 1"],
     "element": "Mutable",
+    "source": "2",
     "desc": "Spikes, spines, or other terrain that can easily impale and shred others.",
-    "effect": "When a creature becomes _Engaged_ with this _Terrain_ they take 2 _Stab_ Damage."
+    "collide": "You are automatically _Hit_.",
+    "chart": {
+      "damage": [1, 2, 3, 4]
+    }
   },
   {
     "name": "Blazing",
     "layer": "Terrain",
-    "keywords": ["_Source_ 2"],
     "element": "Flame",
-    "desc": "A burning piece of terrain that has been ignited.",
-    "effect": "When creatures become _Engaged_ with this they take 2 _Fire_ Damage. If they end their _Turn_ _Engaged_, they gain _Alight_ 1. At the end of the _Round_ roll a d6 (_Disadvantage_ if not on _Flammable_ _Terrain_):\n* **1-2:** Replace _Blazing_ with _Smoldering_. Adjacent _Flammable_ _Terrain_ loses 1 _Hardness_.\n* **3-4:** No change.\n* **5-6:** Flames spread. _Ignite_ 1 random _Flammable_ _Terrain_ in Range 0, or the _Arena_ if _Flammable_. If the _Arena_ is Blazing, instead _Ignite_ a random piece of _Flammable_ _Terrain_ in Range 1.",
+    "desc": "A burning fire, eager to spread.",
+    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "enter": "You are automatically _Grazed_.",
+    "collide": "You are automatically _Grazed_.",
+    "engaged": "If you end your _Turn_ _Engaged_, you are automatically _Hit_.",
+    "eor": "All _Engaged_ _Flammable_ _Obstacles_ lose 1 _Hardness_. Roll a d6, at _Disadvantage_ if this was not on _Flammable_ _Terrain_:\n* **1-2:** Replace _Blazing_ with _Smoldering_.\n* **3-4:** No change.\n* **5-6:** _Ignite_ 1 random _Flammable_ _Engagement_ in Range 0, or the _Arena_ if _Flammable_. If the _Arena_ is Blazing, instead _Ignite_ a random _Flammable_ _Engagement_ in Range 1.",
     "interactions": ["If this would become _Wet_, it becomes _Smoldering_ and _Wet_ is not applied."],
-    "special": "Blazing is a _Source_ 3 if applied to an _Arena_. If a _Flammable_ piece of a _Terrain_ is _Destroyed_ any _Terrain_ created is also _Blazing_."
+    "chart": {
+      "damage": [1, 2, 3, 4],
+      "status": ["None", "None", "_Alight_ 1", "_Alight_ 1"]
+    }
   },
   {
     "name": "Roaring",
     "layer": "Terrain",
-    "keywords": ["_Source_ 3"],
+    "source": "3 (_Engagement_) / 5 (_Arena_)",
     "element": "Flame",
     "desc": "A piece of terrain covered in intense, roiling flames.",
-    "effect": "When creatures become _Engaged_ with this they take 4 _Fire_ Damage. If they end their _Turn_ _Engaged_, they gain _Alight_ 2. At the end of the _Round_ roll a d6 (_Disadvantage_ if not on _Flammable_ _Terrain_):\n* **1-2:** Replace _Roaring_ with _Blazing_. If on _Flammable_ _Terrain_, reduce its _Hardness_ by 1.\n* **3-4:** No change.\n* **5-6:** Flames spread. Ignite 1 random Flammable Terrain in Range 0, or the Arena if Flammable. If the Arena is Roaring, instead Ignite a random piece of Flammable Terrain in Range 1.",
-    "special": "Roaring is a _Source_ 4 if applied to an _Arena_. If a _Flammable_ piece of a _Terrain_ is _Destroyed_ any _Terrain_ created as a part of that is also _Roaring_.",
-    "interactions": ["If this would become _Wet_, it becomes _Blazing_ and _Wet_ is not applied."]
+    "enter": "You are automatically _Grazed_.",
+    "collide": "You are automatically _Grazed_.",
+    "engaged": "If you end your _Turn_ _Engaged_, you are automatically _Hit_.",
+    "eor": "All _Engaged_ _Flammable_ _Obstacles_ lose 1 _Hardness_. Roll a d6, at _Disadvantage_ if this was not on _Flammable_ _Terrain_:\n* **1-2:** Replace Roaring with _Blazing_.\n* **3-4:** No change.\n* **5-6:** _Ignite_ 1 random _Flammable_ _Engagement_ in Range 0, or the _Arena_ if _Flammable_. If the _Arena_ is Blazing, instead _Ignite_ a random _Flammable_ _Engagement_ in Range 1.",
+    "interactions": ["If this would become _Wet_, it becomes _Blazing_ and _Wet_ is not applied."],
+    "chart": {
+      "damage": [2, 4, 6, 8],
+      "status": ["None", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2"]
+    }
   },
   {
     "name": "Smoldering",
     "layer": "Terrain",
-    "keywords": ["_Source_ 0"],
+    "keywords": ["Flammable"],
     "element": "Flame",
-    "desc": "A burning piece of terrain that has been ignited.",
-    "effect": "When creatures become _Engaged_ with this they take 1 _Fire_ Damage.",
-    "interactions": ["If this would become _Wet_, Smoldering is removed and _Wet_ is not applied. The _Terrain_ becomes _Veiled_."]
+    "source": "1 (_Engagement_) / 2 (_Arena_)",
+    "desc": "The remains of what was once a fire.",
+    "enter": "You are automatically _Grazed_.",
+    "collide": "You are automatically _Grazed_.",
+    "engaged": "If you end your _Turn_ _Engaged_, you are automatically _Hit_.",
+    "interactions": ["If this would become _Wet_, Smoldering is removed and _Wet_ is not applied. The _Terrain_ becomes _Veiled_."],
+    "chart": {
+      "damage": [0, 1, 2, 3],
+      "status": ["None", "_Alight_ 1", "_Alight_ 2", "_Alight_ 2"]
+    }
   }
 ]

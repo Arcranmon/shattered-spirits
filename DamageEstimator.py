@@ -19,6 +19,8 @@ status_multipliers = {
     "Impaired": 1.5,
     "Dazed": 2,
     "Push": 2,
+    "Disarm": 3,
+    "Pull": 2,
     "Prone": 2,
     "Shatter": 2,
     "Grabbed": 2
@@ -65,7 +67,10 @@ def get_status_magnitude(status):
     split_status = status.split(' ')
     if len(split_status) == 1: 
         return status_multipliers[split_status[0].strip()]
-    if len(split_status) == 2 and '[' in split_status[1]: 
+    elif len(split_status) == 2 and '[' in split_status[1]: 
+        if('/' in split_status[0].strip()):
+            status_options = split_status[0].strip().split('/')
+            return max(status_multipliers[status_options[0]], status_multipliers[status_options[1]])
         return status_multipliers[split_status[0].strip()]
     elif len(split_status) == 2 : 
         return status_multipliers[split_status[0].strip()] * int(split_status[1].strip())

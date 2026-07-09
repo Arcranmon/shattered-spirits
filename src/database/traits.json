@@ -18,7 +18,14 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain the following:\n* Replace the _Natural_ _Material_ with _Earth_ on all effects.\n* Increase your _Resistance_ to _Fire_ and _Cold_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps."
+        "effect": "Gain the following:\n* Replace the _Natural_ _Material_ with _Earth_ on all effects.\n* Increase your _Resistance_ to _Fire_ and _Cold_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Fire", "mod": -1 },
+            { "damage": "Cold", "mod": -1 },
+            { "damage": "Lightning", "mod": -2 }
+          ]
+        }
       },
       {
         "name": "Frost Jack"
@@ -48,7 +55,16 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain the following:\n* Replace the _Natural_ _Material_ with _Water_ on all effects.\n* Increase your _Resistance_ to _Fire_ and _Crush_ by 2 steps\n* Increase your _Resistance_ to _Natural_ by 1 step.\n* Increase your _Weakness_ to _Cold_ and _Lightning_ by 1 step.\n* You cannot gain _Soaked_; when you would gain an equivalent amount of _Stamina_ or _Guard_ in any combination."
+        "effect": "Gain the following:\n* Replace the _Natural_ _Material_ with _Water_ on all effects.\n* Increase your _Resistance_ to _Fire_ and _Crush_ by 2 steps\n* Increase your _Resistance_ to _Natural_ by 1 step.\n* Increase your _Weakness_ to _Cold_ and _Lightning_ by 1 step.\n* You cannot gain _Soaked_; when you would gain 5 _Stamina_ or _Guard_ in any combination.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Fire", "mod": -2 },
+            { "damage": "Crush", "mod": -2 },
+            { "damage": "Natural", "mod": -1 },
+            { "damage": "Cold", "mod": 1 },
+            { "damage": "Lightning", "mod": 1 }
+          ]
+        }
       },
       {
         "name": "Swimmer"
@@ -78,8 +94,17 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain the following:\n* Remove the _Natural_ _Material_ on all effects; add _Fire_ to the Damage Type. Additionally, they inflict _Alight_ 1 on a _Crit_.\n* Increase your _Resistance_ to _Natural_ by 1 step.\n* Increase your _Resistance_ to _Fire_ and _Cold_ by 2 steps.\n* Increase your _Weakness_ to _Water_ by 2 steps.\n* You cannot gain _Alight_; when you would (after applying _Resistance_), gain an equivalent amount of _Stamina_ or _Guard_ in any combination.\n* You cannot gain _Soaked_; when you would, instead take 5 Damage and become _Impaired_ and _Dazed_.\n* If you would become _Swimming_, immediately lose all _Stamina_."
+        "effect": "Gain the following:\n* Remove the _Natural_ _Material_ on all effects; add _Fire_ to the Damage Type.\n* Increase your _Resistance_ to _Natural_ by 1 step.\n* Increase your _Resistance_ to _Fire_ and _Cold_ by 2 steps.\n* Increase your _Weakness_ to _Water_ by 2 steps.\n* You cannot gain _Alight_; when you would (after applying _Resistance_), gain an equivalent amount of _Stamina_ or _Guard_ in any combination.\n* You cannot gain _Soaked_; when you would, instead take 5 Damage and become _Impaired_ and _Dazed_.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Fire", "mod": -2 },
+            { "damage": "Cold", "mod": -2 },
+            { "damage": "Water", "mod": 2 },
+            { "damage": "Natural", "mod": -1 }
+          ]
+        }
       },
+      { "name": "Roaring Fire", "keywords": ["Spirit"], "type": "Gambit", "category": "Offensive", "prereqs": "[_Fire_] Attack.", "effect": "Add _Alight_ 3." },
       {
         "name": "Burning Aura",
         "keywords": ["Spirit"],
@@ -116,7 +141,15 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your metallic form grants you the following benefits:\n* Replace the _Natural_ _Material_ with _Metal_ on all effects.\n* Increase your _Resistance_ to _Stab_, _Crush_, and _Slash_ by 1 step."
+        "effect": "Your metallic form grants you the following benefits:\n* Replace the _Natural_ _Material_ with _Metal_ on all effects.\n* Increase your _Resistance_ to _Stab_, _Crush_, and _Slash_ by 1 step. Increase your _Weakness_ to _Lightning_ by 1 step.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Stab", "mod": -1 },
+            { "damage": "Crush", "mod": -1 },
+            { "damage": "Slash", "mod": -1 },
+            { "damage": "Lightning", "mod": 1 }
+          ]
+        }
       },
       { "name": "Heat Conduction" },
       { "name": "Sinker" }
@@ -141,7 +174,13 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your wind form grants you the following benefits:\n* Remove the _Natural_ _Material_ with _Wind_ on all effects.\n* You never suffer ill effects from _Falling_.\n* Increase your _Resistance_ to _Crush_ and _Natural_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps.\n\nWhen determining _Sources_ for _Manifesting_, treat _Wind_ _Terrain_ as a _Source_ 3, any open air as a _Source_ 2, and underground as a _Source_ 1."
+        "effect": "Your wind form grants you the following benefits:\n* Remove the _Natural_ _Material_ with _Wind_ on all effects.\n* You never suffer ill effects from _Falling_.\n* Increase your _Resistance_ to _Crush_ and _Natural_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps.\n\nWhen determining _Sources_ for _Manifesting_, treat any open air as a _Source_ 3, or a _Source_ 1 while underground.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Crush", "mod": -1 },
+            { "damage": "Natural", "mod": -1 }
+          ]
+        }
       },
       { "name": "Float" },
       { "name": "Amorphous" }
@@ -167,7 +206,14 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your wooden form grants you the following effects:\n* Replace the _Natural_ _Material_ with _Wood_ on all effects.\n* Increase your Resistance to _Crush_ and _Stab_ by 1 step.\n* Increase your Weakness to _Fire_ by 1 step."
+        "effect": "Your wooden form grants you the following effects:\n* Replace the _Natural_ _Material_ with _Wood_ on all effects.\n* Increase your Resistance to _Crush_ and _Stab_ by 1 step.\n* Increase your Weakness to _Fire_ by 2 steps.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Fire", "mod": 2 },
+            { "damage": "Crush", "mod": -1 },
+            { "damage": "Stab", "mod": -1 }
+          ]
+        }
       },
       { "name": "Regrowth" },
       { "name": "Extra Flammable" }
@@ -328,7 +374,7 @@
         "keywords": ["Spirit"],
         "category": "Utility",
         "type": "Passive",
-        "effect": "While in _Fertile_ Terrain, gain +1 _Stamina_ and +2 _Guard_ when _Regrowth_ triggers. You may be treated as a _Least_ or _Source_ 1 (_Wood_) as you spontaneously sprout branches and other growths that can be removed without harming you."
+        "effect": "While in _Fertile_ Terrain, gain +1 _Stamina_ and +2 _Guard_ when _Regrowth_ triggers. You may be treated as a _Least_ or _Source_ 2 (_Wood_) as you spontaneously sprout branches and other growths that can be removed without harming you."
       }
     ],
     "desc": "You're covered in small, flowering growths that can be encouraged to grow at a moment's notice."
@@ -378,7 +424,7 @@
         "type": "Maneuver",
         "keywords": ["Repeatable"],
         "cost": "1 _Momentum_",
-        "effect": "Create a Metallic Web in _Range_ 0, which is treated as a _Source_ 1 (_Metal_). When a creature becomes _Engaged_ with Metallic Web they must _Negate_ [_Reflex_ 7] or gain _Entangled_ 1; this is also inflicted if the Metallic Web is used as a _Missile_. You are immune to all Metallic Webs you create. You may use this once on your _Turn_ regardless of _Stance_ after completing all the Stance's actions."
+        "effect": "Create a Metallic Web in _Range_ 0, which is treated as a _Source_ 2 (_Metal_). When a creature becomes _Engaged_ with Metallic Web they must _Negate_ [_Reflex_ 7] or gain _Entangled_ 1; this is also inflicted if the Metallic Web is used as a _Missile_. You are immune to all Metallic Webs you create. You may use this once on your _Turn_ regardless of _Stance_ after completing all the Stance's actions."
       }
     ],
     "desc": "You can emit thin metallic threads, similar to a spider."
@@ -784,11 +830,21 @@
         "effect": "During the _Camp Phase_, choose another character or spirit. They roll a die; on a 5+, they clear a _Stress_. If you fail this roll, you may gain _Stress_ to allow the target to instead succeed."
       },
       {
-        "name": "Caretaker",
-        "effect": "You may use _Encourage_ regardless of your current Stance, but must first complete as much of your _Stance_ as possible."
-      },
-      {
-        "name": "Encourage"
+        "name": "Friendly Encouragement",
+        "category": "Recovery",
+        "type": "Maneuver",
+        "range": "1",
+        "target": "An ally.",
+        "keywords": ["Inspiring"],
+        "cost": "1 _Momentum_",
+        "effect": "You call encouragement to the target. Choose one:\n* They may gain 3 _Guard_, or 4 if you are in a _Support_ _Stance_.\n* They gain 1 _Momentum_. If you are in a _Support_ _Stance_ they may instead gain 1 _Posture_.\n* They may _Recover_ from a _Minor Status_.",
+        "enhancements": [
+          {
+            "name": "Focused Encouragement",
+            "cost": "1 _Momentum_",
+            "effect": "Instead, choose two. You must choose different effects."
+          }
+        ]
       }
     ],
     "desc": "You're a naturally friendly creature, and are a closer companion than most spirits."
@@ -1019,8 +1075,8 @@
         "name": "Diminutive Agility",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 1/2 and decreases their _Phase_ by 1, gains a +1 to _Reflex_, and +1 _Speed_. If they already have _Phase_ 1, instead gain an additional +1 _Speed_. You may _Manifest_ your Spirit from a _Source_ 0 and your spirit is treated as a _Source_ 0 for their element",
-        "bonuses": { "phase": -1, "reflex": 1, "speed": 1 }
+        "effect": "Your Spirit becomes Size 1/2 and decreases their _Phase_ by 1, gains a +1 to _Reflex_, +1 _Speed_, and +1 _Manifest Range_. If they already have _Phase_ 1, instead gain an additional +1 _Speed_. You may _Manifest_ your Spirit from a _Source_ 1 and your spirit is treated as a _Source_ 1 for their element",
+        "bonuses": { "phase": -1, "reflex": 1, "speed": 1, "manifest_range": 1, "manifest_source": 1 }
       }
     ]
   },
@@ -1035,14 +1091,14 @@
         "name": "Small Size",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction. Your spirit is treated as a _Source_ 1 of their element, although you may not use them as a _Missile_."
+        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction. Your spirit is treated as a _Source_ 2 of their element, although you may not use them as a _Missile_."
       },
       {
         "name": "Small Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 1 and gains +2 _Stamina_, +1 _Guard_, and +1 _Reflex_. You may _Manifest_ your Spirit from a _Source_ 1, and your spirit is treated as a _Source_ 1 for their element.",
-        "bonuses": { "reflex": 1 }
+        "effect": "Your Spirit becomes Size 1 and gains +2 _Stamina_, +1 _Guard_, and +1 _Reflex_. You may _Manifest_ your Spirit from a _Source_ 2, and your spirit is treated as a _Source_ 2 for their element.",
+        "bonuses": { "reflex": 1, "manifest_source": 2 }
       }
     ]
   },
@@ -1063,8 +1119,8 @@
         "name": "Medium Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 2 and gains +3 _Stamina_, +5 _Guard_, and +1 _Grit_. You may _Manifest_ your Spirit from a _Source_ 2, and your spirit is treated as a _Source_ 2 for their element.",
-        "bonuses": { "stamina": 3, "guard": 5, "grit": 1 }
+        "effect": "Your Spirit becomes Size 2 and gains +3 _Stamina_, +5 _Guard_, and +1 _Grit_. You may _Manifest_ your Spirit from a _Source_ 3, and your spirit is treated as a _Source_ 3 for their element.",
+        "bonuses": { "stamina": 3, "guard": 5, "grit": 1, "manifest_source": 3 }
       }
     ]
   },
@@ -1085,8 +1141,8 @@
         "name": "Large Profile",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 3 and gains +6 _Stamina_, +10 _Guard_, and +2 _Grit_. Additionally, its _Phase_ is increased by 1. You may _Manifest_ your Spirit from a _Source_ 3, and your spirit is treated as a _Source_ 3 for their element.",
-        "bonuses": { "stamina": 6, "guard": 10, "grit": 2, "phase": 1 }
+        "effect": "Your Spirit becomes Size 3 and gains +6 _Stamina_, +10 _Guard_, and +2 _Grit_. Additionally, its _Phase_ and _Manifest Range_ are increased by 1. You may _Manifest_ your Spirit from a _Source_ 4, and your spirit is treated as a _Source_ 4 for their element.",
+        "bonuses": { "stamina": 6, "guard": 10, "grit": 2, "phase": 1, "manifest_source": 4, "manifest_range": -1 }
       }
     ]
   }

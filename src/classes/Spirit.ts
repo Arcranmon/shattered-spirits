@@ -75,6 +75,17 @@ class Spirit extends Combatant {
     return arts
   }
 
+  get ManifestRange() {
+    return this.SpiritType.ManifestRange + this.combinedBonuses_.ManifestRange
+  }
+  get ManifestSource() {
+    return this.combinedBonuses_.ManifestSource
+  }
+
+  get ManifestHeader() {
+    return (this.ManifestRange < 0 ? 'Melee' : 'Range ' + this.ManifestRange) + ', Source ' + this.ManifestSource
+  }
+
   override get AllArts() {
     var arts = store.getters.getAPsFromListPreserveType([...this.Traits, ...this.character_.SpiritArts, this.character_.Element + 'born'])
     arts = arts.concat(this.Equipment)

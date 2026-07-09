@@ -107,12 +107,12 @@
         <v-col
           class="chart--cols justify-center align-center"
           :cols="6">
-          WIP
+          {{ $route.params.character.WeaknessesString }}
         </v-col>
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="6"
-          >WIP</v-col
+          :cols="6">
+          {{ $route.params.character.ResistancesString }}</v-col
         >
       </v-row>
       <v-row
@@ -328,7 +328,7 @@
         <v-col
           class="chart--cols justify-center align-center"
           :cols="6"
-          >Melee, Source 1</v-col
+          >{{ $route.params.character.Spirit.ManifestHeader }}</v-col
         >
       </v-row>
       <v-row
@@ -361,12 +361,12 @@
         <v-col
           class="chart--cols justify-center align-center"
           :cols="6">
-          WIP
+          {{ $route.params.character.Spirit.WeaknessesString }}
         </v-col>
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="6"
-          >WIP</v-col
+          :cols="6">
+          {{ $route.params.character.Spirit.ResistancesString }}</v-col
         >
       </v-row>
       <v-row

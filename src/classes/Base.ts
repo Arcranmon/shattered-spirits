@@ -2,6 +2,7 @@
 // Parent category for all other classes, as some fields are universal.
 
 import { store } from '@/store'
+import { Chart } from '@/class'
 
 class Base {
   protected name_: string
@@ -14,6 +15,7 @@ class Base {
   protected tags_: Array<string>
   protected type_: string
   protected prereqs_: string
+  protected chart_: Chart
 
   public constructor(name) {
     this.desc_ = ''
@@ -24,6 +26,7 @@ class Base {
     this.special_ = ''
     this.type_ = ''
     this.prereqs_ = ''
+    this.chart_ = null
   }
 
   // ==========================================================
@@ -34,6 +37,12 @@ class Base {
   }
   get Category() {
     return this.category_
+  }
+  public get HasChart() {
+    return this.chart_ != null
+  }
+  public get Chart() {
+    return this.chart_
   }
   public get Effect() {
     return this.effect_
@@ -72,6 +81,11 @@ class Base {
   // ==========================================================
   public get HasEffect() {
     return this.effect_.length > 0
+  }
+  public get UsesChart() {
+    return (
+      this.Type == 'Attack' || this.Type == 'Terrain' || (this.Type == 'Reaction' && (this.keywords_.includes('Block') || this.keywords_.includes('Dodge')))
+    )
   }
   public get EffectHeader() {
     if (this.Type == 'Skill') {
@@ -120,6 +134,7 @@ class Base {
     this.type_ = data.type || ''
     this.prereqs_ = data.prereqs || ''
     this.summary_ = data.summary || ''
+    if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
   }
 }
 export default Base

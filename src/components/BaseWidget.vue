@@ -214,14 +214,32 @@
       <div v-if="ability.ShouldDisplayMaterialDamageHeader">
         <display-tooltip-text :string="ability.MaterialDamageTypeHeader" />
       </div>
+      <div v-if="ability.HasSource">
+        <display-tooltip-text :string="ability.SourceHeader" />
+      </div>
+      <div v-if="ability.HasHardness">
+        <display-tooltip-text :string="ability.HardnessHeader" />
+      </div>
       <div v-if="ability.HasEffect">
         <display-tooltip-text :string="ability.EffectHeader" />
       </div>
       <div v-if="ability.HasSpecial">
         <display-tooltip-text :string="ability.SpecialHeader" />
       </div>
+      <div v-if="ability.HasEnter">
+        <display-tooltip-text :string="ability.EnterHeader" />
+      </div>
+      <div v-if="ability.HasCollide">
+        <display-tooltip-text :string="ability.CollideHeader" />
+      </div>
+      <div v-if="ability.HasEngaged">
+        <display-tooltip-text :string="ability.EngagedHeader" />
+      </div>
       <div v-if="ability.HasRepeat">
         <display-tooltip-text :string="ability.RepeatHeader" />
+      </div>
+      <div v-if="ability.HasEor">
+        <display-tooltip-text :string="ability.EorHeader" />
       </div>
       <div v-if="ability.HasNegate">
         <display-tooltip-text :string="ability.NegateHeader" />
@@ -237,9 +255,6 @@
       </div>
       <div v-if="ability.HasNegate">
         <display-tooltip-text :string="ability.NegateHeader" />
-      </div>
-      <div v-if="ability.HasHardness">
-        <display-tooltip-text :string="ability.HardnessHeader" />
       </div>
       <div v-if="ability.HasDestroy">
         <display-tooltip-text :string="ability.DestroyHeader" />

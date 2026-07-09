@@ -44,7 +44,10 @@
         "keywords": ["Respite"],
         "type": "Passive",
         "prereqs": "_Wearing_ this Armor.",
-        "effect": "Increase your _Resistance_ to _Flame_ by 1 step. Additionally, if you have flamecraft, gain 1 _Essence_ at _Respite_."
+        "effect": "Increase your _Resistance_ to _Fire_ by 1 step. Additionally, if you have flamecraft, gain 1 _Essence_ at _Respite_.",
+        "bonuses": {
+          "weakness_resistance": [{ "damage": "Fire", "mod": -1 }]
+        }
       }
     ]
   },
@@ -61,7 +64,13 @@
         "category": "Defensive",
         "type": "Passive",
         "prereqs": "_Wearing_ this Armor.",
-        "effect": "Increase your _Resistance_ to _Slash_ and _Stab_ by 1 step."
+        "effect": "Increase your _Resistance_ to _Slash_ and _Stab_ by 1 step.",
+        "bonuses": {
+          "weakness_resistance": [
+            { "damage": "Slash", "mod": -1 },
+            { "damage": "Stab", "mod": -1 }
+          ]
+        }
       }
     ]
   },
@@ -84,7 +93,7 @@
     "name": "Iron Boots",
     "category": "Boot",
     "desc": "Solid boots protect against hostile terrain and make it easier to travel the world.",
-    "keywords": ["_Source_ 1 (_Metal_)"],
+    "keywords": ["_Source_ 2 (_Metal_)"],
     "durability": 1,
     "load": 1,
     "abilities": [
@@ -107,7 +116,7 @@
     "name": "Iron Helmet",
     "category": "Helmet",
     "desc": "A sturdy helmet that can be difference between a glancing blow and a lethal strike.",
-    "keywords": ["_Source_ 1 (_Metal_)"],
+    "keywords": ["_Source_ 2 (_Metal_)"],
     "load": 1,
     "durability": 1,
     "guard": 2
@@ -131,7 +140,7 @@
     "name": "Iron Plating",
     "category": "Armor",
     "desc": "Iron plates in strategic places, providing an extra layer of protection against most attacks.",
-    "keywords": ["_Source_ 2 (_Metal_)"],
+    "keywords": ["_Source_ 3 (_Metal_)"],
     "block": 2,
     "guard": 4,
     "durability": 2,

@@ -37,7 +37,7 @@
         </v-col>
         <v-col
           class="chart--head chart--head-right"
-          v-if="chart.HasRoll && !chart.IsDefend"
+          v-if="chart.HasRoll || !chart.IsDefend"
           v-bind:cols="negateWidth">
           <b>Negate</b>
         </v-col>
@@ -84,7 +84,7 @@
           </v-col>
           <v-col
             class="chart--cols chart--cols-right"
-            v-if="chart.HasRoll && !chart.IsDefend"
+            v-if="chart.HasRoll || !chart.IsDefend"
             v-bind:class="getRank(index)"
             v-bind:cols="negateWidth"
             >{{ chart.Negate(index) }}

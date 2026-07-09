@@ -48,6 +48,8 @@ const kPlayerAbilities = [
   'Delay',
   'Flank',
   'Concentrate',
+  'Overpower',
+  'Steal',
 ]
 
 const kSpiritAbilities = [

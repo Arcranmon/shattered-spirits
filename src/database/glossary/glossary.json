@@ -89,7 +89,7 @@
   },
   {
     "name": "Bend",
-    "effect": "Characters with bend for an element gain the following benefits when targeting _Equipment_ of that type:\n* You may use [_Armament_] Abilities (such as _Equip_) at the listed Bend Range. If they would normally create an [_Opening_], they instead do not.\n* You may use _Interact_ at the listed Bend Range when targeting the appropriate material, paying all Costs with _Essence_ instead of _Momentum_."
+    "effect": "Characters with Bend can manipulate and control a specific element at a distance, which allows alternate ways to use some abilities. To use Bend, characters must be targeting and object or creature that matches the Element listed for Bend."
   },
   {
     "name": "Block",
@@ -275,7 +275,6 @@
     "name": "Earth",
     "effect": "One of the spiritual elements, representing the ability to manipulate stone and soil. Besides bending abilities, earth spirits are also known for enhancing courage and physical strength, as well as extended senses across the earth. This also may refer to _Terrain_ or _Equipment_ made of earth or stone."
   },
-  { "name": "Effective", "see": "Weakness and Resistance" },
   {
     "name": "Efficacy",
     "effect": "Efficacy is an _Augment_ that can be purchased in a _Skill Challenge_. When you purchase it, your action hits harder, produces more progress towards a goal, or is otherwise strengthened."
@@ -631,10 +630,9 @@
     "name": "Momentum",
     "effect": "Momentum represents your ability to act and fight in combat. It is spent for a myriad of effects, but most commonly increasing the power of abilities using Enhancements and paying for other Abilities. At the start of each Round characters lose all their previous _Momentum_ (gaining 2 _Guard_ for each _Momentum_ lost) then gain _Momentum_ as dictated by their _Stance_.\n\nIf a creature would lose Momentum due to an effect but has no Momentum or is an NPC they instead gain _Impaired_."
   },
-  { "name": "Move", "see": "Speed" },
   {
     "name": "Speed",
-    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Speed_ in the following ways on their _Turn_:\n* 1 _Speed_: If not _Engaged_, become _Engaged_ with a creature or _Terrain_ in your _Arena_.  You automatically become _Engaged_ with any other creatures _Engaged_ with the same effect.\n* 1 _Speed_: Remove _Engaged_.\n* 2 _Speed_: If not _Engaged_ with a hostile creature, move to an adjacent _Arena_. This cost is often modified by features of either _Arena_, and can be higher or lower.\n* 1 _Speed_: If not _Engaged_ with a hostile creature, take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
+    "effect": "A resource representing how mobile a character is, and how much they can move about the battlefield. Characters may always spend _Speed_ in the following ways on their _Turn_:\n* 1 _Speed_: Remove _Engaged_, then become _Engaged_ with a creature or _Obstacle_ in your _Arena_.  You automatically become _Engaged_ with any other creatures _Engaged_ with the same effect.\n* 1 _Speed_: Remove _Engaged_.\n* 2 _Speed_: Remove _Engaged_, then move to an adjacent _Arena_. This cost is often modified by features of either _Arena_, and can be higher or lower.\n* 1 _Speed_: Remove _Engaged_, then take a specific position within your _Arena_, the effects of which should be resolved with your GM. For example, you might move to block a piece of unattended Equipment, which would require that any creature that wants to grab it become _Engaged_ with you."
   },
   {
     "name": "Observation",
@@ -714,7 +712,6 @@
     "name": "Repeatable",
     "effect": "This Ability may be used any number of times on a given Turn."
   },
-  { "name": "Repelled", "see": "Weakness and Resistance" },
   {
     "name": "Resistance",
     "see": "Weakness and Resistance"
@@ -729,7 +726,7 @@
   },
   {
     "name": "Rough",
-    "effect": "This designates an area that is difficult to move in, whether due to uneven ground or other limitations. _Speed_ Costs in this _Arena_ are increased by 1 and _Negate_ _Reflex_ with _Disadvantage_. If multiple effects can make an Arena _Rough_ the effects do not stack."
+    "effect": "This designates an area that is difficult to move in, whether due to uneven ground or other limitations. _Speed_ Costs in this _Arena_ are increased by 1, and creatures roll _Reflex_ and _Dodge_ _Defense Rolls_ with _Disadvantage_. If multiple effects can make an Arena _Rough_ the effects do not stack."
   },
   {
     "name": "Safe",
@@ -761,7 +758,7 @@
   },
   {
     "name": "Source",
-    "effect": "Sources are strong concentrations of elemental power or material that can easily be controlled by spiritcraft. Sources are generally categorized as *Least*, *Minor*, *Moderate*, *Major*, and *Greater*, but may just be referred to as a Source when the severity does not matter. Different abilities typically require Sources, either to power their spiritcraft or simply fling with kinetic force. Items and other objects within the world will specify what type and rank of Source they are. Typically, sources are the standard elemental types, but other sources (such as Plant) might be referenced by other abilities."
+    "effect": "Sources are strong concentrations of elemental power or material that can easily be controlled by spiritcraft. Sources are ranked from 1-5, but may just be referred to as a Source when the severity does not matter. Different abilities typically require Sources, either to power their spiritcraft or simply fling with kinetic force. Items and other objects within the world will specify what type and rank of Source they are. Typically, sources are the standard elemental types, but other sources (such as Plant) might be referenced by other abilities."
   },
   {
     "name": "Phase",
@@ -795,7 +792,6 @@
     "name": "Summoned",
     "see": "Summon"
   },
-  { "name": "Super Effective", "see": "Weakness and Resistance" },
   { "name": "Swimming", "see": "Swim" },
   {
     "name": "Swim",
@@ -829,11 +825,10 @@
     "name": "Waterside",
     "effect": "A potential modifier for a camp. This camp is near a source of water; the party does not need to spend _Supplies_ on water while camping here, and can use tools such as a _Fishing Rod_."
   },
-  { "name": "Weaker", "see": "Weakness and Resistance" },
   { "name": "Weakness", "see": "Weakness and Resistance" },
   {
     "name": "Weakness and Resistance",
-    "effect": "This represents some resilience or innate resistance to a type or effect. Effects typically start at Neutral, and are adjusted according to a creature's _Passives_ and some _Defensive_ _Reactions_.\n* Immune: Decrease the final Result of all Attacks by 2. The target gains +6 _Block_, automatically _Negates_, and may not lose _Guard_ from the effect.\n* Repelled: Decrease the final Result of all Attacks by 1. The target gains +4 _Block_ and +2 to _Negate_ against the effect.\n* Decrease the final roll of all Attacks by 1. The target gains +2 _Block_ and +1 to _Negate_ against the effect.\n* Neutral: No additional penalties or bonuses.\n* Effective: Increase the final roll of the Attack by 1 and add [_Pierce_ 2]. The target gains -1 to _Negate_ against the effect.\n* Super Effective: Increase the final Result of the Attack by 1 and add [_Pierce_ 4]. The target gains -2 to _Negate_ against the effect.\n* Massively Effective: Increase the final Result of the Attack by 2 and add [_Pierce_ 6]. The target automatically fails to _Negate_ against the effect.\n\nFor each step of Resistance a creature has, move the effect towards Immune; for each step of Weakness, move it towards Massively Effective. Weakness and Resistance cancel each other out at a 1 to 1 rate."
+    "effect": "This represents some resilience or innate resistance to a type or effect. Effects typically start at Neutral, and are adjusted according to a creature's _Passives_ and some _Defensive_ _Reactions_, with a value that ranges between 0 and 3.\n\nIf a creature is Weak to something, increase the final Result of all Attacks by your Weakness. If a creature is Resistant to something, instead decrease the final Result of all Attacks by your Resistance.\n\nWeakness and Resistance cancel each other out at a 1 to 1 rate."
   },
   {
     "name": "Weaponsmith's Blessing",

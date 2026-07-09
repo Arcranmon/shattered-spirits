@@ -1,10 +1,6 @@
 ## To-Do
 
-- Make Terrain more standardized
 - Make Statuses more streamlined maybe?
-- Make Bend/Armament stuff a bit more obvious
-- Weakness/Resistances as Bonuses so they can show up on sheet
-- Manifest Range/Sources more clear
 - Clear up the different movement types
 
 ### Long-Term Refactors

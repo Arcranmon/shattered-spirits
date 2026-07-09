@@ -2,7 +2,7 @@
 // Parent category for techniques/maneuvers.
 
 import { store } from '@/store'
-import { Base, AbilityPackage, Chart, Bonuses } from '@/class'
+import { Base, AbilityPackage, Bonuses } from '@/class'
 import { isUndefined } from 'vue-simple'
 
 class Ability extends Base {
@@ -22,7 +22,6 @@ class Ability extends Base {
   protected type_: string
   protected trigger_: string
   protected origin_: AbilityPackage
-  protected chart_: Chart
   protected bonuses_: Bonuses
   protected material_: string
   protected damage_type_: string
@@ -32,7 +31,6 @@ class Ability extends Base {
     this.area_ = ''
     this.enhancements_ = []
     this.cost_ = ''
-    this.chart_ = null
     this.desc_ = ''
     this.effect_ = ''
     this.speed_ = 0
@@ -69,12 +67,6 @@ class Ability extends Base {
   public get Cost() {
     return this.cost_
   }
-  public get HasChart() {
-    return this.chart_ != null
-  }
-  public get Chart() {
-    return this.chart_
-  }
   public get category() {
     return this.category_
   }
@@ -103,7 +95,7 @@ class Ability extends Base {
     return this.CostForString('Posture')
   }
   public get EssenceCost() {
-    return this.CostForString('EssenceCost')
+    return this.CostForString('Essence')
   }
 
   public get RangeSummary() {
@@ -159,9 +151,6 @@ class Ability extends Base {
 
   public get HasArea() {
     return this.Area != ''
-  }
-  public get UsesChart() {
-    return this.Type == 'Attack' || (this.Type == 'Reaction' && (this.keywords_.includes('Block') || this.keywords_.includes('Dodge')))
   }
   public get AreaHeader() {
     return '**_Area_:** ' + this.Area
@@ -319,7 +308,6 @@ class Ability extends Base {
     this.bonuses_ = 'bonuses' in data ? Bonuses.Deserialize(data.bonuses) : new Bonuses()
     this.material_ = data.material || ''
     this.damage_type_ = data.damage_type || ''
-    if ('chart' in data) this.chart_ = Chart.Deserialize(data.chart)
   }
 }
 export default Ability

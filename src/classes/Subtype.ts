@@ -8,7 +8,7 @@ class Subtype extends Base {
   private stun_: number
   private block_: number
   private speed_: number
-  private manifest_: string
+  private manifest_: number
   private growth_points_: number
   private traits_: string[]
   private soak_: string
@@ -97,6 +97,10 @@ class Subtype extends Base {
     return header
   }
 
+  public get ManifestRange() {
+    return this.manifest_
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -116,7 +120,7 @@ class Subtype extends Base {
     this.speed_ = data.speed || 0
     this.stun_ = data.block || 0
     this.block_ = data.guard || 0
-    this.manifest_ = data.manifest || 'You may Manifest your Spirit within Melee Range.'
+    this.manifest_ = data.manifest || 0
     this.phase_ = data.phase || 0
     this.growth_points_ = data.growth_points || 0
   }

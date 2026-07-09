@@ -12,6 +12,9 @@ class Bonuses {
   private block_: number
   private guard_: number
   private equipment_: string[]
+  private weakness_resistance_: IWeaknessResistanceData[]
+  private manifest_source_: number
+  private manifest_range_: number
 
   // ==========================================================
   // CONSTRUCTOR
@@ -27,6 +30,9 @@ class Bonuses {
     this.phase_ = 0
     this.guard_ = 0
     this.equipment_ = []
+    this.weakness_resistance_ = []
+    this.manifest_range_ = 0
+    this.manifest_source_ = 0
   }
 
   // ==========================================================
@@ -44,7 +50,15 @@ class Bonuses {
     return bonuses.join(', ')
   }
 
-  public addBonuses(other) {
+  public get Weaknesses() {
+    return this.weakness_resistance_.filter((x) => x.mod < 0)
+  }
+
+  public get Resistances() {
+    return this.weakness_resistance_.filter((x) => x.mod > 0)
+  }
+
+  public addBonuses(other: Bonuses) {
     this.focus_ += other.focus_
     this.grit_ += other.grit_
     this.stamina_ += other.stamina_
@@ -55,6 +69,18 @@ class Bonuses {
     this.block_ += other.block_
     this.guard_ += other.guard_
     this.equipment_ = [...this.equipment_, ...other.Equipment]
+
+    for (var wr of other.WeaknessResistance) {
+      var index = this.weakness_resistance_.findIndex((x) => x.damage == wr.damage)
+      if (index != -1) {
+        this.weakness_resistance_[index].mod += wr.mod
+      } else {
+        this.weakness_resistance_.push(wr)
+      }
+    }
+    this.weakness_resistance_ = this.weakness_resistance_.filter((x) => x.mod != 0)
+    this.manifest_range_ += other.manifest_range_
+    this.manifest_source_ += other.manifest_source_
   }
 
   public get Equipment() {
@@ -97,6 +123,18 @@ class Bonuses {
     return this.guard_
   }
 
+  public get WeaknessResistance() {
+    return this.weakness_resistance_
+  }
+
+  public get ManifestSource() {
+    return this.manifest_source_
+  }
+
+  public get ManifestRange() {
+    return this.manifest_range_
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -117,6 +155,9 @@ class Bonuses {
     this.load_ = data.load || 0
     this.phase_ = data.phase || 0
     this.equipment_ = data.equipment || []
+    this.weakness_resistance_ = data.weakness_resistance || []
+    this.manifest_range_ = data.manifest_range || 0
+    this.manifest_source_ = data.manifest_source || 0
   }
 }
 export default Bonuses

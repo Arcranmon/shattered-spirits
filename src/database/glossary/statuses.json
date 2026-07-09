@@ -198,14 +198,14 @@
   {
     "name": "Flying",
     "desc": "You are propelled by craft or wing, allowing you to easily soar through the arena.",
-    "effect": "While Flying:\n* You ignore all non-_Weather_ _Terrain_ effects.\n* You have _Advantage_ to _Negate_ with _Reflex_.\n* While not _Engaged_ with _Terrain_ or a non-Flying creature, non-Flying creatures may not become _Engaged_ with you.\n* You have _Disadvantage_ to _Negate_ _Prone_ and _Forced Movement_ and, if you are knocked _Prone_, you immediately _Fall_ 1.\n\nIf a creature _Engages_ Terrain, they also lose Flying. If a creature loses Flying naturally (either by choice or their effect granting Flying ending), they may safely land and suffer no ill effects.",
+    "effect": "While Flying:\n* You ignore all non-_Weather_ _Terrain_ effects.\n* You have _Advantage_ to _Negate_ with _Reflex_.\n* While not _Engaged_ with _Terrain_ or a non-Flying creature, non-Flying creatures may not become _Engaged_ with you.\n* You have _Disadvantage_ to _Negate_ _Prone_ and _Forced Movement_ and, if you are knocked _Prone_, you immediately _Fall_ 2.\n\nIf a creature _Engages_ Terrain, they also lose Flying. If a creature loses Flying naturally (either by choice or their effect granting Flying ending), they may safely land and suffer no ill effects.",
     "type": "Status"
   },
   {
     "name": "Entangled",
     "desc": "A creature that is entangled in some sort of material, whether that be vines, spider silk, or wires.",
-    "effect": "The effect of Entangled depends on the current amount the creature has relative to their _Size_:\n* [Size-1]: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* [Size]: As Rank 1, but the creature is also _Slowed_.\n* [Size+1]: The creature is _Restrained_.",
-    "remove": "Creatures may clear Entangled by either _Recovering_ and making a _Grit_/_Reflex_ roll [_Negate_ 9] to reduce their Entangled by 1. Alternatively, a creature clears 1 Entangled for every 4 _Slash_ damage they take. A creature may choose to target just the Web when attacking.",
+    "effect": "The effect of Entangled depends on the current amount the creature has relative to their _Size_:\n* [Size-1]: The creature has _Disadvantage_ on _Attacks_ and _Reflex_ saves.\n* [Size]: As Rank 1, but the creature is also _Hobbled_.\n* [Size+1]: The creature is _Restrained_.",
+    "remove": "Creatures may clear Entangled by either _Recovering_ and making a _Grit_/_Reflex_ roll [_Negate_ 9] to reduce their Entangled by 1. Alternatively, a creature clears 1 Entangled for every 4 _Slash_ damage they take. A creature may choose to target just the Entangling effect when attacking.",
     "type": "Status"
   },
   {
@@ -218,16 +218,16 @@
   {
     "name": "Alight",
     "desc": "An condition caused when you are on fire.",
-    "effect": "While a creature has Alight they take _Fire_ Damage equal to its value at the end of their _Turn_, then increases their Alight value by 1 and _Ignite_ their _Engagement_. This Damage ignores _Block_, unless the target has any level of _Resistance_ to _Fire_. Additionally, the creature can be treated as a _Source_ 1 [_Flame_]. Finally, they increase their [_Cold_] Resistance by 1 step.",
+    "keywords": ["Fire"],
+    "effect": "While a creature has Alight they take _Fire_ Damage equal to its value at the end of their _Turn_, then increases their Alight value by 1 and _Ignite_ their _Engagement_. This Damage ignores _Block_. Additionally, the creature can be treated as a _Source_ 2 [_Flame_]. Finally, they increase their [_Cold_] Resistance by 1 step.",
     "repeat": "Alight stacks, and if a creature gains Alight again combine the values.",
-    "recover": "When a creature _Recovers_ they may _Negate_ with _Reflex_ and reduce their Alight by half the result. They may choose to drop _Prone_ as a part of this; if they do, they roll with _Advantage_ and instead reduce their Alight by the full value. Additionally, if a creature gains _Soaked_ they clear all Alight.",
-    "special": "Creatures with _Resistance_ (_Fire_) reduces any afflicted Alight by their number of _Resistance_ steps, and automatically clears the same amount of Alight at _Respite_.",
+    "recover": "When a creature _Recovers_ they may _Negate_ with _Reflex_ and reduce their Alight by half the result. They may choose to drop _Prone_ and spend 1 _Speed_ as a part of this; if they do, they roll with _Advantage_ and instead reduce their Alight by the full value. If they have any _Resistance_ to _Fire_, they always gain this benefit. Additionally, if a creature gains _Soaked_ they clear all Alight.",
     "type": "Status"
   },
   {
     "name": "Frozen",
     "desc": "An condition caused when you are covered by thick ice.",
-    "effect": "While a creature has Frozen they take _Stab_ _Damage_ equal to its value at the end of any _Turn_ that they spend _Speed_. Additionally, the creature can be treated as a _Source_ 1 [_Ice_]. Finally, they increase their [_Fire_] Resistance by 1 step.",
+    "effect": "While a creature has Frozen they take _Stab_ _Damage_ equal to its value at the end of any _Turn_ that they spend _Speed_. Additionally, the creature can be treated as a _Source_ 2 [_Ice_]. Finally, they increase their [_Fire_] Resistance by 1 step.",
     "repeat": "Frozen stacks, and if a creature gains Frozen again combine the values.",
     "recover": "When a creature _Recovers_ they may _Negate_ with _Grit_ and reduce their Frozen by half the result. Additionally, whenever a creature takes _Fire_ Damage they reduce their Frozen by 2, and by 1 when they take _Crush_ Damage.",
     "special": "Creatures with _Resistance_ (_Cold_) reduces any afflicted Frozen by their number of _Resistance_ steps, and automatically clears the same amount of Frozen at _Respite_. Finally, when a creature inflicts _Shatter_ on a Frozen creature, they can choose to clear any amount of Frozen, inflict additional Damage equal to twice the Frozen removed.",

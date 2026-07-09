@@ -10,6 +10,7 @@ declare interface IBaseData {
   tags?: string[]
   type?: string
   prereqs?: string
+  chart?: IChartData
 }
 
 declare interface IEnhanceData {
@@ -29,6 +30,11 @@ declare interface IAbilityPackageData extends IBaseData {
   cost?: string
 }
 
+declare interface IWeaknessResistanceData {
+  damage: string
+  mod: number
+}
+
 declare interface IBonusesData {
   focus?: number
   grit?: number
@@ -40,6 +46,9 @@ declare interface IBonusesData {
   phase?: number
   load?: number
   equipment?: string[]
+  weakness_resistance?: IWeaknessResistanceData[]
+  manifest_source: number
+  manifest_range: number
 }
 
 declare interface IEquipmentData extends IAbilityPackageData {
@@ -183,7 +192,6 @@ declare interface IAbilityData extends IBaseData {
   target?: string
   material?: string
   damage_type?: string
-  chart?: IChartData
   bonuses?: IBonusesData
 }
 
@@ -246,7 +254,7 @@ declare interface ISubtypeData extends IBaseData {
   block: number
   guard: number
   speed: number
-  manifest: string
+  manifest: number
   soak: string
   growth_points: number
   phase: number
@@ -268,9 +276,7 @@ declare interface IStatusEffect {
 }
 
 declare interface IStatusData extends IBaseData {
-  negate: string
   recover: string
-  remove: string
   repeat: string
   see?: string
   reacts?: Array<string>
@@ -285,6 +291,11 @@ declare interface ICareerData extends IBaseData {
 }
 
 declare interface ITerrainData extends IBaseData {
+  engaged?: string
+  enter?: string
+  collide?: string
+  source?: string
+  eor?: string
   element: string
   layer: string
   negate: string

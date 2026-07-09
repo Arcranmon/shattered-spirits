@@ -2,17 +2,14 @@ import { store } from '@/store'
 import { Base } from '@/class'
 
 class Status extends Base {
-  private negate_: string
   private recover_: string
   private reacts_: string[]
   private repeat_: string
-  private respeed_: string
 
   public constructor(name) {
     super(name)
     this.recover_ = ''
     this.reacts_ = []
-    this.respeed_ = ''
     this.repeat_ = ''
   }
 
@@ -22,18 +19,11 @@ class Status extends Base {
   get Header() {
     return this.Name + ' - ' + this.Type
   }
-
-  get HasNegate() {
-    return this.negate_ != ''
-  }
   get HasRecovery() {
     return this.recover_ != ''
   }
   get HasReacts() {
     return this.reacts_.length > 0
-  }
-  get HasRemove() {
-    return this.respeed_ != ''
   }
   get HasRepeat() {
     return this.repeat_ != ''
@@ -42,9 +32,6 @@ class Status extends Base {
   // ==========================================================
   // FORMATTED GETTERS
   // ==========================================================
-  public get NegateHeader() {
-    return '**Negate:** ' + this.negate_
-  }
   public get ReactsHeader() {
     var interact_header = '**Reacts:** ' + this.name_ + ' reacts with other effects as follows:'
     for (var react of this.reacts_) {
@@ -54,9 +41,6 @@ class Status extends Base {
   }
   public get RecoveryHeader() {
     return '**Recovery:** ' + this.recover_
-  }
-  public get RemoveHeader() {
-    return '**Remove:** ' + this.respeed_
   }
   public get RepeatHeader() {
     return '**Repeated Application:** ' + this.repeat_
@@ -85,11 +69,9 @@ class Status extends Base {
 
   public setStatusData(data: IStatusData): void {
     this.setBaseData(data)
-    this.negate_ = data.negate || ''
     this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
     this.repeat_ = data.repeat || ''
-    this.respeed_ = data.remove || ''
   }
 }
 export default Status

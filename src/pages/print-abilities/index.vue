@@ -28,7 +28,7 @@ export default Vue.extend({
   },
   computed: {
     abilities: function () {
-      var abilityList = this.$store.getters.getFromEverythingFromList(['Cramped', 'Cramped', 'Prone', 'Prone', 'Push', 'Push', 'Pull', 'Pull'])
+      var abilityList = this.$store.getters.getFromEverythingFromList(['Wet', 'Blazing', 'Prone', 'Prone', 'Push', 'Push', 'Pull', 'Pull'])
       if (abilityList.length == 1) return Array(8).fill(abilityList[0])
       return abilityList
     },
@@ -43,7 +43,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .print-page {
-  font-size: 8pt;
+  font-size: 7.5pt;
   padding-left: 2em;
   padding-right: 2em;
   padding-top: 4em;

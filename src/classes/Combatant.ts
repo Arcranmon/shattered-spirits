@@ -168,6 +168,31 @@ class Combatant {
     return this.speed_
   }
 
+  get Weaknesses() {
+    return this.combinedBonuses_.Weaknesses
+  }
+
+  private stringedWeakResHelper(weakRes) {
+    var str = weakRes.length > 0 ? '' : 'None  '
+
+    for (var wr of weakRes) {
+      str += wr.damage + ' ' + String(wr.mod) + ', '
+    }
+    return str.slice(0, -2).replaceAll('-', '')
+  }
+
+  get WeaknessesString() {
+    return this.stringedWeakResHelper(this.Weaknesses.sort((a, b) => b.mod - a.mod || a.damage.localeCompare(b.damage)))
+  }
+
+  get Resistances() {
+    return this.combinedBonuses_.Resistances
+  }
+
+  get ResistancesString() {
+    return this.stringedWeakResHelper(this.Resistances.sort((a, b) => a.mod - b.mod || a.damage.localeCompare(b.damage)))
+  }
+
   set Speed(speed: number) {
     if (speed > this.MaxSpeed) this.speed_ = this.MaxSpeed
     else if (speed < 0) this.speed_ = 0
