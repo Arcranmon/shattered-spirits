@@ -15,7 +15,6 @@ import Spirit from './classes/Spirit'
 import Character from './classes/Character'
 import Chart from './classes/Chart'
 import Npc from './classes/Npc'
-import Feature from './classes/Feature'
 import Stance from './classes/Stance'
 import Status from './classes/Status'
 import Trait from './classes/Trait'
@@ -35,7 +34,6 @@ export {
   Equipment,
   GlossaryItem,
   Npc,
-  Feature,
   Spirit,
   SpiritForm,
   Subtype,
