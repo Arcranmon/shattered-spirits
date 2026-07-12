@@ -101,7 +101,7 @@
     "name": "Disengage",
     "category": "Mobility",
     "type": "Reaction",
-    "cost": "1 _Speed_",
+    "cost": "2 _Speed_ (1 if in a _Mobility_ Stance)",
     "keywords": ["Safe"],
     "trigger": "You would spend _Speed_.",
     "effect": "Do not create an [_Opening_] from spending the Speed. This ability cannot have its cost increased.",
@@ -215,7 +215,8 @@
     "cost": "2 _Posture_/_Speed_ (any combination)",
     "keywords": ["Dodge"],
     "trigger": "You are Attacked.",
-    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect. (Spending any _Speed_ while _Engaged_, including for this ability, creates an [_Opening_])",
+    "effect": "Gain +1 _Reflex_. Make a _Defense Roll_ and apply the result to the triggering Attack, resolving all effects as if that was the Attack's original effect.",
+    "enhancements": [{ "name": "Careful Dodge", "cost": "1 _Speed_", "effect": "Do not create an [_Opening_] from spending Speed on this." }],
     "chart": {
       "status": ["None", "Decrease Attack _Result_ by 1", "Attack is a _Graze_ or decreases _Result_ by 1", "Attack is a _Miss_"],
       "roll": ["2-4", "5-6", "7-10", "11-12"],

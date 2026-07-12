@@ -107,7 +107,7 @@ class Ability extends Base {
 
   private CostForString(costString) {
     var cost = 0
-    var special = this.Cost.includes('Special')
+    var special = this.Cost.includes('Special') || this.Cost.includes('Stance')
 
     for (var cost_string of this.Cost.split(',')) {
       if (cost_string.includes(costString)) {
@@ -115,7 +115,7 @@ class Ability extends Base {
         if (cost_string.includes('/')) special = true
       }
     }
-    if (cost == 0 && !special) return '-'
+    if (cost == 0) return '-'
     if (cost == 0 && special) return '*'
     return String(cost) + (special ? '*' : '')
   }

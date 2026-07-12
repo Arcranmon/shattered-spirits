@@ -13,7 +13,7 @@
     "desc": "This arena is a sheer cliff, difficult to climb with few handholds.",
     "element": "Arena",
     "layer": "Modifier",
-    "effect": "While in this _Arena_ creatures may only move by _Climbing_. If you are _Forcibly Moved_ while in or into this _Arena_ from _High Ground_ you immediately _Fall_. Add the _Ledge_ _Terrain_ to whatever _Arena_ you climb into from this."
+    "effect": "While in this _Arena_ creatures may only move by _Climbing_. If you are _Forcibly Moved_ while in or into this _Arena_ from the upper end you must spend 2 _Speed_ or immediately _Fall_. Add the _Ledge_ _Terrain_ to whatever _Arena_ you climb into from this."
   },
   {
     "name": "Gusting",
@@ -34,7 +34,7 @@
   {
     "name": "Ledge",
     "layer": "Terrain",
-    "element": "Elementless",
+    "element": "Mutable",
     "desc": "The lip of a cliff, right next to a steep drop.",
     "effect": "While in this _Terrain_, you may be _Forcibly Moved_ to an adjacent _Arena_ even if it is not _Forceful_. This _Arena_ is typically specified."
   },
@@ -46,6 +46,13 @@
     "desc": "Terrain filled with dust, smoke, mist, or some other obscuring agent.",
     "engaged": "Gain _Soft Cover_.",
     "eor": "Remove this _Terrain_."
+  },
+  {
+    "name": "Bridge",
+    "layer": "Terrain",
+    "element": "Mutable",
+    "desc": "A passage through an arena that avoids the need to swim, fly, or other odd movement.",
+    "effect": "When a creature enters the _Arena_ this is in from a specific _Arena_, they may choose to automatically become _Engaged_ with this _Terrain_. While _Engaged_ with this _Terrain_, creatures may always use normal movement and ignore non-Weather penalties associated with the rest of the _Arena_."
   },
   {
     "name": "Submerged",
@@ -63,6 +70,21 @@
     "threshold": 6,
     "engaged": "Gain _Cover_. Locusts will not target you with Ranged Attacks.",
     "destroy": "When destroyed, all Locusts within Range 1 of the Egg Cluster become _Enraged_ and _Taunted_, and treat the character that Destroyed the Egg Cluster as the Taunter."
+  },
+  {
+    "name": "Cave",
+    "layer": "Arena",
+    "element": "Earth",
+    "desc": "The floor of a cave, uninteresting and relatively flat.",
+    "source": "_Earth_ 5, _Wind_ 1"
+  },
+  {
+    "name": "Underground River",
+    "layer": "Arena",
+    "element": "Water",
+    "desc": "A slow-moving body of water that is large enough to swim and dive in.",
+    "source": "_Water_ 5, _Wind_ 1",
+    "effect": "While in this _Arena_, characters are always _Swimming_. Characters may _Engage_ with _Submerged_ _Terrain_."
   },
   {
     "name": "Stalagmite",
