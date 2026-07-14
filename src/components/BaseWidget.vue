@@ -277,7 +277,8 @@
         <base-widget
           v-for="ability in ability.Abilities"
           :ability="ability"
-          :key="ability.Name" />
+          :key="ability.Name"
+          :showChart="showChart" />
       </div>
       <div
         class="expand--collapse-box-outlined"

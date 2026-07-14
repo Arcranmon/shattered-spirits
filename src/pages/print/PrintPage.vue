@@ -400,25 +400,25 @@
         </v-col>
       </v-row>
 
-      <!--
-    <v-row style="page-break-after: always" />
-    <h4>{{ character.Name }} Equipment</h4>
-    <div class="centered-text">Various items that you have on hand.</div>
-    <v-row>
-      <v-col
-        cols="6"
-        v-for="item in character.UniqueEquipment"
-        :key="item.Name">
-        <base-widget
-          :ability="item"
-          :useDivider="true"
-          :key="item.Name"
-          :showChart="true"
-          class="ability-box" />
-      </v-col>
-    </v-row>
-    <v-row style="page-break-after: always" />
+      <v-row style="page-break-after: always" />
+      <h4>{{ character.Name }} Equipment</h4>
+      <div class="centered-text">Various items that you have on hand.</div>
+      <v-row>
+        <v-col
+          cols="6"
+          v-for="item in character.UniqueEquipment"
+          :key="item.Name">
+          <base-widget
+            :ability="item"
+            :useDivider="true"
+            :key="item.Name"
+            :showChart="true"
+            class="ability-box" />
+        </v-col>
+      </v-row>
+      <v-row style="page-break-after: always" />
 
+      <!--
     <h4>{{ character.Name }} Arts & Careers</h4>
     <div class="centered-text">The full ability packages granted to you by your arts and careers.</div>
     <v-row>
