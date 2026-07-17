@@ -28,7 +28,7 @@ export default Vue.extend({
   },
   computed: {
     abilities: function () {
-      var abilityList = this.$store.getters.getFromEverythingFromList(['Wet', 'Blazing', 'Prone', 'Prone', 'Push', 'Push', 'Pull', 'Pull'])
+      var abilityList = this.$store.getters.getFromEverythingFromList(['Brawl', 'Spiritbound', 'Prone', 'Prone', 'Push', 'Push', 'Pull', 'Pull'])
       if (abilityList.length == 1) return Array(8).fill(abilityList[0])
       return abilityList
     },

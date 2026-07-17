@@ -52,7 +52,7 @@
 
     <!--- Trackers --->
     <div
-      style="top: 1.5in; left: 2in"
+      style="top: 1.6in; left: 2in"
       class="token-wrapper">
       <div class="token-text">
         <h2>{{ $route.params.character.Name }}</h2>
@@ -268,7 +268,7 @@
 
     <!--- Trackers --->
     <div
-      style="top: 1.5in; right: 2in"
+      style="top: 1.6in; right: 2in"
       class="token-wrapper">
       <div class="token-text">
         <h2>{{ $route.params.character.Spirit.Name }}</h2>
@@ -577,9 +577,10 @@ export default Vue.extend({
 }
 .stance-card-slot {
   width: 4.25in;
-  height: 3in;
+  height: 2.4in;
   justify-content: center;
   border: $border--black-thin;
+  border-bottom: none;
 }
 .status-box {
   width: 10in;

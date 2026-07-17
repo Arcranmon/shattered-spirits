@@ -1,10 +1,11 @@
 <template>
   <div class="print-page">
+    <!---
     <div class="stances">
       <v-row>
         <v-col
-          cols="6"
-          class="justify-center align-center">
+          class="justify-center align-center"
+          style="margin-left: 3em">
           <stance-widget
             v-for="num in [0, 1, 4]"
             :stance="character.Stances[num]"
@@ -14,9 +15,7 @@
             :showChart="true"
             class="stance-card"
         /></v-col>
-        <v-col
-          cols="6"
-          class="justify-center align-center">
+        <v-col class="justify-center align-center">
           <stance-widget
             v-for="num in [3, 2, 5]"
             :stance="character.Stances[num]"
@@ -28,6 +27,7 @@
         /></v-col>
       </v-row>
     </div>
+--->
 
     <div class="main-abilities">
       <show-ability-table
@@ -36,29 +36,37 @@
         style="page-break-inside: avoid" />
       <show-ability-table
         title="Travel"
-        :abilities="this.character.FilteredAbilities('All', 'Travel', 'All')" />
+        :abilities="this.character.FilteredAbilities('All', 'Travel', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Camp"
-        :abilities="this.character.FilteredAbilities('All', 'Camp', 'All')" />
+        :abilities="this.character.FilteredAbilities('All', 'Camp', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Downtime"
-        :abilities="this.character.FilteredAbilities('All', 'Downtime', 'All')" />
+        :abilities="this.character.FilteredAbilities('All', 'Downtime', 'All')"
+        style="page-break-inside: avoid" />
       <v-row style="page-break-after: always" />
       <show-ability-table
         title="Passive"
-        :abilities="this.character.FilteredAbilities('Passive', 'All', 'All')" />
+        :abilities="this.character.FilteredAbilities('Passive', 'All', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Maneuver"
-        :abilities="this.character.FilteredAbilities('Maneuver', 'All', 'All')" />
+        :abilities="this.character.FilteredAbilities('Maneuver', 'All', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Attack"
-        :abilities="this.character.FilteredAbilities('Attack', 'All', 'All')" />
+        :abilities="this.character.FilteredAbilities('Attack', 'All', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Gambit"
-        :abilities="this.character.FilteredAbilities('Gambit', 'All', 'All')" />
+        :abilities="this.character.FilteredAbilities('Gambit', 'All', 'All')"
+        style="page-break-inside: avoid" />
       <show-ability-table
         title="Reaction"
-        :abilities="this.character.FilteredAbilities('Reaction', 'All', 'All')" />
+        :abilities="this.character.FilteredAbilities('Reaction', 'All', 'All')"
+        style="page-break-inside: avoid" />
       <v-row style="page-break-after: always" />
 
       <v-row

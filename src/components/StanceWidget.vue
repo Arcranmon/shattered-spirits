@@ -5,7 +5,7 @@
     <div class="header-sidebar">
       <div style="text-align: center">
         <b>
-          <h2 style="font-size: 15px">{{ stance.Name }}</h2>
+          <h2 style="font-size: 14px">{{ stance.Name }}</h2>
           {{ getPhase }}
           <br />
           {{ stance.Category }}
@@ -61,7 +61,6 @@
         <div class="chart--cols justify-center align-center">+{{ stance.Focus }}</div>
         <div class="chart--cols justify-center align-center">+{{ stance.Reflex }}</div>
       </div>
-      <br />
       <div class="bottom-row-layout">
         <div
           class="chart--head justify-center align-center"
@@ -131,11 +130,12 @@ export default Vue.extend({
   computed: {
     getPhase: function () {
       if (this.character.Phase > 0 && this.stance.Phase != 'N/A') {
-        if (this.stance.Phase == 'Spirit+1') return 'Phase ' + String(Number(this.character.Phase) + 1)
-        if (this.stance.Phase == 'Spirit') return 'Phase ' + this.creaturePhase
-        if (this.stance.Phase == 'Spirit-1') return 'Phase ' + String(Number(this.character.Phase) - 1)
+        console.log(this.stance.Phase)
+        if (this.stance.Phase === 'Spirit+1') return 'Phase ' + String(Number(this.character.Phase) + 1)
+        if (this.stance.Phase === 'Spirit') return 'Phase ' + this.character.Phase
+        if (this.stance.Phase === 'Spirit-1') return 'Phase ' + String(Number(this.character.Phase) - 1)
       }
-      if (this.stance.Phase == 'N/A') return 'Phaseless'
+      if (this.stance.Phase === 'N/A') return 'Phaseless'
       return 'Phase ' + this.stance.Phase
     },
     getMomentum: function () {
