@@ -1,6 +1,5 @@
 <template>
   <div class="print-page">
-    <!---
     <div class="stances">
       <v-row>
         <v-col
@@ -27,8 +26,8 @@
         /></v-col>
       </v-row>
     </div>
---->
 
+    <!---
     <div class="main-abilities">
       <show-ability-table
         title="Skill"
@@ -426,7 +425,6 @@
       </v-row>
       <v-row style="page-break-after: always" />
 
-      <!--
     <h4>{{ character.Name }} Arts & Careers</h4>
     <div class="centered-text">The full ability packages granted to you by your arts and careers.</div>
     <v-row>

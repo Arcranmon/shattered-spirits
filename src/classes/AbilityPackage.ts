@@ -31,6 +31,9 @@ class AbilityPackage extends Base {
   public get Header() {
     return this.Name + ' - ' + this.Category + ' ' + this.type_
   }
+  public get NamelessHeader() {
+    return this.Category + ' ' + this.type_
+  }
   public get HasIcon() {
     return this.Category != 'Trait'
   }

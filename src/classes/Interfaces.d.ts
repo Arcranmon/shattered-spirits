@@ -18,6 +18,12 @@ declare interface IEnhanceData {
   cost: string
   effect: string
   reactive?: boolean
+  exclusive?: boolean
+}
+
+declare interface IEnhancementData {
+  header: string
+  enhances: IEnhanceData[]
 }
 
 declare interface IArchetypeData extends IBaseData {
@@ -180,7 +186,7 @@ declare interface IAbilityData extends IBaseData {
   frequency?: string
   defend?: string
   imbues?: IEnhanceData[]
-  enhancements?: IEnhanceData[]
+  enhancements?: IEnhancementData
   cost?: string
   category: string
   speed?: number

@@ -22,13 +22,17 @@
           class="chart--head chart--head-right"
           v-if="chart.HasStun"
           v-bind:cols="stunWidth">
-          <b>Stun</b>
+          <img
+            :src="require('@/assets/Stun.svg')"
+            style="height: 1.5em" />
         </v-col>
         <v-col
           class="chart--head chart--head-right"
           v-if="chart.HasDamage"
           v-bind:cols="damageWidth">
-          <b>Damage</b>
+          <img
+            :src="require('@/assets/Damage.svg')"
+            style="height: 1.5em" />
         </v-col>
         <v-col
           class="chart--head chart--head-right"
@@ -115,7 +119,7 @@ export default Vue.extend({
   },
   computed: {
     damageWidth() {
-      if (this.chart.HasDamage) return 2
+      if (this.chart.HasDamage) return 1
       return 0
     },
     stunWidth() {

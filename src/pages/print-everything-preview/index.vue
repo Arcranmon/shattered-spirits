@@ -1,13 +1,15 @@
 <template>
   <div class="print-page">
     <v-row
+      no-gutters
       class="printing-margins"
       style="width: 10in; margin: 0.5in">
       <v-col
         v-for="ability in abilities"
+        style="outline: 1px solid black"
         cols="3"
-        class="bordered do-not-split card-shape">
-        <base-widget
+        class="do-not-split card-shape">
+        <printable-base-widget
           :ability="ability"
           :useDivider="true"
           :key="ability.Name"
@@ -20,7 +22,7 @@
 
 <script>
 import Vue from 'vue'
-import { Combatant } from '@/class'
+import { AbilityPackage } from '@/class'
 import BaseWidget from '@/components/BaseWidget.vue'
 import PrintableBaseWidget from '@/components/PrintableBaseWidget.vue'
 export default Vue.extend({
@@ -31,18 +33,21 @@ export default Vue.extend({
   },
   computed: {
     abilities: function () {
-      var abilityList = this.$store.getters.getFromEverythingFromList([
-        'Veiled ',
-        'Veiled ',
-        'Concentrating',
-        'Concentrating',
-        'Concentrating ',
-        'Concentrating ',
-        'Concentrating',
-        'Concentrating',
-      ])
-      if (abilityList.length == 1) return Array(8).fill(abilityList[0])
-      return abilityList
+      var abilityList = this.$store.getters.getAbilities()
+      abilityList = abilityList.concat(this.$store.getters.getAPs())
+      abilityList = abilityList.concat(this.$store.getters.getWeapons())
+      abilityList = abilityList.concat(this.$store.getters.getArmors())
+      abilityList = abilityList.concat(this.$store.getters.getEquipments())
+
+      for (var ability of abilityList) {
+        if (ability instanceof AbilityPackage) {
+          for (var subability of ability.Abilities) {
+            subability.Origin = ability
+          }
+          abilityList = abilityList.concat(ability.Abilities)
+        }
+      }
+      return abilityList.sort((a, b) => a.Name.localeCompare(b.Name))
     },
   },
   mounted() {

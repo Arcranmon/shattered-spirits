@@ -52,7 +52,7 @@ class Base {
   }
   public get KeywordsList() {
     if (this.keywords_.length > 0) return this.keywords_.join(', ')
-    return '-'
+    return '—'
   }
   public get Name() {
     return this.name_

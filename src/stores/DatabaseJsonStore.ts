@@ -62,7 +62,6 @@ const kSpiritAbilities = [
   'Spiritcraft',
   'Drop',
   'Equip',
-  'Spiritbound',
   'Flank',
   'Delay',
 ]
@@ -210,6 +209,12 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // ABILITY PACKAGE TOOLS
   // ==========================================================
+  get getAPs(): any {
+    return () => {
+      return this.AbilityPackages
+    }
+  }
+
   get getAP(): any {
     return (inword: string) => {
       var art = this.AbilityPackages.find((x) => x.Name.trim() == inword.trim())
@@ -350,6 +355,12 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // ARMOR GETTERS
   // ==========================================================
+  get getArmors(): any {
+    return () => {
+      return this.Armors
+    }
+  }
+
   get getPlayerArmors(): any {
     return () => {
       return this.Armors.filter((x) => x.Category.trim() !== 'NPC').map((x) => x)
@@ -396,6 +407,12 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // WEAPON GETTERS
   // ==========================================================
+  get getWeapons(): any {
+    return () => {
+      return this.Weapons
+    }
+  }
+
   get getWeaponsByCategory(): any {
     return (category: string) => {
       return this.Weapons.filter((x) => x.Category.trim() === category.trim()).map((x) => x)

@@ -91,6 +91,16 @@ const r = new Router({
       },
     },
     {
+      path: '/print-everything-preview',
+      component: require('@/pages/print-everything-preview/index.vue').default,
+      name: 'print-everything-preview',
+      meta: {
+        title: 'Print',
+        hideHeader: true,
+        props: true,
+      },
+    },
+    {
       path: '/print-ability',
       component: require('@/pages/print-abilities/index.vue').default,
       name: 'print',

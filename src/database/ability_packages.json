@@ -175,13 +175,15 @@
         "range": 1,
         "target": "An _Arena_ within Range.",
         "effect": "Choose one:\n* _Ignite_ a piece of _Flammable_ _Terrain_ within the Target.\n* Choose _Blazing_ _Terrain_ within Range and make it _Roaring_.",
-        "enhancements": [
-          {
-            "name": "Sustaining Blaze",
-            "cost": "1 _Essence_",
-            "effect": "Instead, create a _Blazing_ _Engagement_ within Range. This does not need _Flammable_ _Terrain_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Sustaining Blaze",
+              "cost": "1 _Essence_",
+              "effect": "Instead, create a _Blazing_ _Engagement_ within Range. This does not need _Flammable_ _Terrain_."
+            }
+          ]
+        }
       },
       {
         "name": "Ember",
@@ -192,24 +194,26 @@
         "cost": "2 _Essence_",
         "target": "Single-Target",
         "range": "1",
-        "effect": "Attack a Target within Range. On a _Miss_, _Ignite_ all _Terrain_ the Target is _Engaged_ with.",
+        "effect": "On a _Miss_, _Ignite_ all _Terrain_ the Target is _Engaged_ with.",
         "chart": {
           "damage": [0, 1, 3, 4],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
           "status": ["None", "_Alight_ 1", "_Alight_ 2", "_Alight_ 3"]
         },
-        "enhancements": [
-          {
-            "name": "Erupting Flame",
-            "cost": "3 _Essence_",
-            "effect": "Instead, resolve the Attack against all creatures in an _Engagement_ and _Ignite_ it."
-          },
-          {
-            "name": "Hungry Flame",
-            "cost": "2 _Essence_",
-            "effect": "Inflict an additional 1 _Alight_ on a _Graze_+. Additionally, on a _Hit_+, if the target has any flammable equipment, you may choose to ignite it as well. The target treats their _Alight_ as 2 higher so long as they are _Wielding_ said equipment. They can remove the effect on the Equipment as if it was _Alight_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Erupting Flame",
+              "cost": "3 _Essence_",
+              "effect": "Instead, Target is an _Engagement_. After resolving the Attack, _Ignite_ it."
+            },
+            {
+              "name": "Hungry Flame",
+              "cost": "2 _Essence_",
+              "effect": "Inflict an additional 1 _Alight_ on a _Graze_+. On a _Hit_+, if the target has any flammable equipment, you may ignite it as well. The target treats their _Alight_ as 2 higher while they are _Wearing_ said equipment. They can remove this as if it was normal _Alight_."
+            }
+          ]
+        }
       }
     ]
   },
@@ -290,15 +294,17 @@
         "range": 0,
         "target": "_Wet_ _Terrain_.",
         "effect": "Replace a single _Engagement_ of _Wet_ _Terrain_ with _Icy_ _Terrain_.",
-        "enhancements": [
-          { "name": "Shaped Ice", "cost": "1 _Essence_", "effect": "Additionally, add a _Tripping Hazard_ or _Spikes_ to the _Engagement_." },
-          { "name": "Condensation", "cost": "1 _Essence_", "effect": "You may target an _Engagement_ that is not _Wet_." },
-          {
-            "name": "Thick Sheet",
-            "cost": "1 _Essence_",
-            "effect": "Instead, create _Terrain_ within a _Water_ _Arena_ where creatures do not have to be _Swimming_. It is still _Icy_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            { "name": "Shaped Ice", "cost": "1 _Essence_", "effect": "Additionally, add a _Tripping Hazard_ or _Spikes_ to the _Engagement_." },
+            { "name": "Condensation", "cost": "1 _Essence_", "effect": "You may target an _Engagement_ that is not _Wet_." },
+            {
+              "name": "Thick Sheet",
+              "cost": "1 _Essence_",
+              "effect": "Instead, create _Terrain_ within a _Water_ _Arena_ where creatures do not have to be _Swimming_. It is still _Icy_."
+            }
+          ]
+        }
       },
       {
         "name": "Icicle Shot",
@@ -311,18 +317,20 @@
         "range": "1",
         "target": "Single-Target",
         "effect": "Remove a _Source_ 2 (_Water_) within Range, then attack a target within Range. After, leave a _Source_ 2 (_Ice_) within the target's _Arena_.",
-        "enhancements": [
-          {
-            "name": "Icicle Barrage",
-            "cost": "1 _Essence_",
-            "effect": "You may instead use a _Source_ 3 (_Water_) as the _Missile_. Deal +_1/1/2/2_ Damage if you do. After, leave three _Source_ 2 (_Ice_) within the target's _Arena_."
-          },
-          {
-            "name": "Superchilled",
-            "cost": "1 _Essence_",
-            "effect": "On a _Graze_, add _Frozen_ 1. On a _Hit_+, add _Frozen_ 2."
-          }
-        ],
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Icicle Barrage",
+              "cost": "1 _Essence_",
+              "effect": "You may instead use a _Source_ 3 (_Water_) as the _Missile_. Deal +_1/1/2/2_ Damage if you do. After, leave three _Source_ 2 (_Ice_) within the target's _Arena_."
+            },
+            {
+              "name": "Superchilled",
+              "cost": "1 _Essence_",
+              "effect": "On a _Graze_, add _Frozen_ 1. On a _Hit_+, add _Frozen_ 2."
+            }
+          ]
+        },
         "chart": {
           "damage": [0, 2, 5, 6],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -382,18 +390,20 @@
         "cost": "1 _Essence_",
         "range": 1,
         "effect": "Remove a _Source_ 2 (_Water_) within Range (including _Soaked_) then add a _Wet_ _Engagement_ within Range. You may use this without removing a _Source_ if there is a larger _Source_ within _Range_.",
-        "enhancements": [
-          {
-            "name": "Friendly Splash",
-            "cost": "0 _Essence_",
-            "effect": "When you would add a _Wet_ _Engagement_, instead grant an ally within Range _Soaked_."
-          },
-          {
-            "name": "Unfriendly Splash",
-            "cost": "1 _Essence_",
-            "effect": "When you would add a _Wet_ _Engagement_, instead inflict _Soaked_ on a creature within _Range_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Friendly Splash",
+              "cost": "0 _Essence_",
+              "effect": "When you would add a _Wet_ _Engagement_, instead grant an ally within Range _Soaked_."
+            },
+            {
+              "name": "Unfriendly Splash",
+              "cost": "1 _Essence_",
+              "effect": "When you would add a _Wet_ _Engagement_, instead inflict _Soaked_ on a creature within _Range_."
+            }
+          ]
+        }
       },
       {
         "name": "Violent Stream",
@@ -412,18 +422,20 @@
           "roll": ["2-4", "5-6", "7-10", "11-12"],
           "status": ["None", "_Soaked_ [_Reflex_]", "_Soaked_", "_Soaked_"]
         },
-        "enhancements": [
-          {
-            "name": "Wave Crash",
-            "cost": "2 _Essence_",
-            "effect": "Instead, remove a _Source_ 3 (_Water_) within Range. Resolve the Attack against all creatures in an _Engagement_, and make their _Engagement_ _Wet_."
-          },
-          {
-            "name": "Driving Stream",
-            "cost": "1 _Essence_",
-            "effect": "Add _Push_ [_Grit_] to the Attack."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Wave Crash",
+              "cost": "2 _Essence_",
+              "effect": "Instead, remove a _Source_ 3 (_Water_) within Range. Resolve the Attack against all creatures in an _Engagement_, and make their _Engagement_ _Wet_."
+            },
+            {
+              "name": "Driving Stream",
+              "cost": "1 _Essence_",
+              "effect": "Add _Push_ [_Grit_] to the Attack."
+            }
+          ]
+        }
       }
     ]
   },
@@ -700,21 +712,22 @@
         "cost": "3 _Essence_",
         "range": "1",
         "target": "Single-Target",
-        "missile": "An Unattended _Source_ 1 (_Earth_) or one _Worn by you/an ally within Range.",
-        "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_.",
-        "special": "If the _Missile_ has an Attack with _Slash_ or _Stab_ you may replace _Crush_ with said keyword.",
-        "enhancements": [
-          {
-            "name": "Heavy Stone",
-            "cost": "1 _Essence_",
-            "effect": "You may instead use a _Source_ 2 (_Earth_) as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
-          },
-          {
-            "name": "Heavier Stone",
-            "cost": "2 _Essence_",
-            "effect": "You may instead use a _Source_ 3 (_Earth_) as the _Missile_. If you do, this is instead a _Heavy_ Attack and deals +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, add [_Siege_] and increase the DC to _Negate_ by 1."
-          }
-        ],
+        "missile": "_Source_ 1 (_Earth_)",
+        "effect": "Replace _Crush_ with _Stab_ or _Slash_ if more appropriate for the Missile.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Heavy Stone",
+              "cost": "1 _Essence_",
+              "effect": "The _Missile_ is instead a _Source_ 2 (_Earth_). Deal +_1/1/2/2_ Damage."
+            },
+            {
+              "name": "Heavier Stone",
+              "cost": "2 _Essence_",
+              "effect": "The _Missile_ is instead a _Source_ 2 (_Earth_). This is a _Heavy_ Attack and deals +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, adds [_Siege_], and increases the DC to _Negate_ by 1."
+            }
+          ]
+        },
         "chart": {
           "stun": [1, 2, 2, 4],
           "damage": [0, 2, 4, 6],
@@ -858,18 +871,20 @@
           "negate": [5, 7, 8, 10],
           "status": ["None", "Dazed [_Grit_]", "Dazed [_Grit_]", "Dazed [_Grit_]"]
         },
-        "enhancements": [
-          {
-            "name": "Arc Lighning",
-            "cost": "2 _Essence_",
-            "effect": "Make the Attack against another Target within Range, drawing it from the original target."
-          },
-          {
-            "name": "Bolt",
-            "cost": "2 _Essence_",
-            "effect": "This Attack is instead _Balanced_. Deal +_2/4/4/5_ additional Damage, and increase the cost to _Negate_ by 1."
-          }
-        ],
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Arc Lighning",
+              "cost": "2 _Essence_",
+              "effect": "Make the Attack against another Target within Range, drawing it from the original target."
+            },
+            {
+              "name": "Bolt",
+              "cost": "2 _Essence_",
+              "effect": "This Attack is instead _Balanced_. Deal +_2/4/4/5_ additional Damage, and increase the cost to _Negate_ by 1."
+            }
+          ]
+        },
         "analysis_notes": { "fudge": -0.35 }
       }
     ]
@@ -936,19 +951,21 @@
         "damage_type": "Special",
         "target": "Single-Target",
         "missile": "An Unattended _Source_ 1 (_Wood_) item or one _Worn by you/an ally within Range.",
-        "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_. Use the most appropriate damage type, or _Stab_ if it is unclear.",
-        "enhancements": [
-          {
-            "name": "Wooden Spine",
-            "cost": "1 _Essence_",
-            "effect": "You may instead use a _Source_ 2 (_Wood_) item as the _Missile_. Deal +_1/1/2/2_ Damage if you do."
-          },
-          {
-            "name": "Wooden Barrage",
-            "cost": "X _Essence_",
-            "effect": "You may use X additional _Sources_ of the same size. For each additional _Source_ you use, gain a +1 to the _Attack Roll_ to the Attack."
-          }
-        ],
+        "effect": "After resolving the Attack, place the Missile unattended in the Target's _Arena_. Use the most appropriate damage type, or _Stab_ if it is unclear.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Wooden Spine",
+              "cost": "1 _Essence_",
+              "effect": "Use a _Source_ 2 (_Wood_) item as the _Missile_. Deal +_1/1/2/2_ Damage."
+            },
+            {
+              "name": "Wooden Barrage",
+              "cost": "X _Essence_",
+              "effect": "Use X additional _Sources_ of the same size. For each additional _Source_, gain a +1 to the _Attack Roll_."
+            }
+          ]
+        },
         "chart": {
           "damage": [0, 1, 2, 3],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -1072,18 +1089,20 @@
         "target": "Single-Target",
         "missile": "An Unattended _Source_ 1 (_Metal_) item or one _Worn by you/an ally within Range.",
         "effect": "Choose a Missile, then Attack a target within Range with it. After resolving the Attack, place the Missile unattended in the Target's _Arena_. Use the most appropriate damage type, or _Crush_ if it is unclear.",
-        "enhancements": [
-          {
-            "name": "Power Shot",
-            "cost": "1 _Essence_",
-            "effect": "You may instead use a _Source_ 2 (_Metal_) item as the _Missile_. If you do, this is instead a _Balanced_ Attack and deals +_0/1/3/4_ Damage."
-          },
-          {
-            "name": "Rail Shot",
-            "cost": "2 _Essence_",
-            "effect": "You may instead use a _Source_ 3 (_Metal_) item as the _Missile_. If you do, this is instead a _Heavy_ Attack and deals +_0/2/6/7_ Damage."
-          }
-        ],
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Power Shot",
+              "cost": "1 _Essence_",
+              "effect": "You may instead use a _Source_ 2 (_Metal_) item as the _Missile_. If you do, this is instead a _Balanced_ Attack and deals +_0/1/3/4_ Damage."
+            },
+            {
+              "name": "Rail Shot",
+              "cost": "2 _Essence_",
+              "effect": "You may instead use a _Source_ 3 (_Metal_) item as the _Missile_. If you do, this is instead a _Heavy_ Attack and deals +_0/2/6/7_ Damage."
+            }
+          ]
+        },
         "chart": {
           "damage": [0, 2, 5, 6],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
@@ -1218,14 +1237,16 @@
         "range": "1",
         "target": "Single-Target",
         "effect": "Attack a target within Range. This Attack ignores any penalties due to _Gusting_ and instead gains a +1 to the _Attack Roll_ when targeting creatures in a _Gusting_ _Arena_.",
-        "enhancements": [
-          { "name": "Compressed Air", "cost": "2 _Essence_", "effect": "Deal +_0/2/3/4_ _Stun_ +_0/1/2/3_ Damage." },
-          {
-            "name": "Forceful Gust",
-            "cost": "1 _Essence_",
-            "effect": "Instead inflict _Forceful Push_."
-          }
-        ],
+        "enhancements": {
+          "enhances": [
+            { "name": "Compressed Air", "cost": "2 _Essence_", "effect": "Deal +_0/2/3/4_ _Stun_ +_0/1/2/3_ Damage." },
+            {
+              "name": "Forceful Gust",
+              "cost": "1 _Essence_",
+              "effect": "Instead inflict _Forceful Push_."
+            }
+          ]
+        },
         "chart": {
           "stun": [0, 0, 1, 2],
           "damage": [0, 0, 0, 1],
@@ -1319,13 +1340,15 @@
         "keywords": ["Spirit", "Inspiring"],
         "cost": "1 _Essence_",
         "effect": "You may inspire a supernatural sense of joy in an ally. Inflict _Joyful_  on the target; this may not increase them beyond _Joyful_ I.",
-        "enhancements": [
-          {
-            "name": "Joyful Aura",
-            "cost": "2 _Essence_",
-            "effect": "Instead, resolve the effect on all allies in your _Arena_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Joyful Aura",
+              "cost": "2 _Essence_",
+              "effect": "Instead, resolve the effect on all allies in your _Arena_."
+            }
+          ]
+        }
       }
     ]
   },
@@ -1370,11 +1393,13 @@
         "category": "Utility",
         "type": "Maneuver",
         "keywords": ["Spirit"],
-        "target": "An _Overgrown_ Arena or one that is a _Source_ (_Plant_).",
+        "target": "A _Source_ (_Plant_) _Arena_",
         "range": "1",
         "cost": "1 _Essence_",
         "effect": "Choose one:\n* Create a _Tripping Hazard_ that is made of _Wood_.\n* Remove a piece of _Wood_ _Terrain_ that is a _Source_ 2 or less.",
-        "enhancements": [{ "name": "Wild Growth", "cost": "1 _Essence_", "effect": "Instead, the _Arena_ gains or removes _Overgrown_." }]
+        "enhancements": {
+          "enhances": [{ "name": "Wild Growth", "cost": "1 _Essence_", "effect": "Instead, the _Arena_ gains or removes _Overgrown_." }]
+        }
       },
       {
         "name": "Ensnare",
@@ -1386,7 +1411,9 @@
         "range": "1",
         "cost": "2 _Essence_",
         "effect": "The Target must _Negate_ [_Grit_/_Reflex_ 8] or gain _Entangled_ 1. If the Target is in an _Overgrown_ _Arena_, increase the _Negate_ DC by 2 or decrease the Cost by 1. _Fire_ Damage also causes the Target to clear _Entangled_ as if it was _Slash_ Damage.",
-        "enhancements": [{ "name": "Massive Growth", "cost": "3 _Essence_", "effect": "'Instead, the Target is 'All creatures in an _Overgrown_ _Arena_'." }]
+        "enhancements": {
+          "enhances": [{ "name": "Massive Growth", "cost": "3 _Essence_", "effect": "'Instead, the Target is 'All creatures in an _Overgrown_ _Arena_'." }]
+        }
       }
     ]
   },
@@ -2117,7 +2144,7 @@
         "category": "Mobility",
         "type": "Maneuver",
         "cost": "1 _Momentum_/_Speed_",
-        "effect": "Ignore any increased _Speed_ costs due to _Terrain_ for a single _Speed_ this _Turn_."
+        "effect": "Ignore any increased _Speed_ costs due to _Terrain_ for a single move this _Turn_."
       }
     ]
   }

@@ -10,7 +10,7 @@ class Ability extends Base {
   protected area_: string
   protected frequency_: string
   protected defend_: string
-  protected enhancements_: IEnhanceData[]
+  protected enhancements_: IEnhancementData
   protected imbues_: IEnhanceData[]
   protected cost_: string
   protected category_: string
@@ -29,7 +29,7 @@ class Ability extends Base {
   public constructor(name) {
     super(name)
     this.area_ = ''
-    this.enhancements_ = []
+    this.enhancements_ = null
     this.cost_ = ''
     this.desc_ = ''
     this.effect_ = ''
@@ -47,15 +47,7 @@ class Ability extends Base {
   // ==========================================================
   // This is an approximation, definitely not perfect
   public get TextLength() {
-    return (
-      this.Effect.length +
-      this.Special.length +
-      this.Trigger.length +
-      this.Enhancements.length +
-      this.Cost.length +
-      this.Range.length +
-      (this.HasChart ? 500 : 0)
-    )
+    return this.Effect.length + this.Special.length + this.Trigger.length + this.Cost.length + this.Range.length + (this.HasChart ? 500 : 0)
   }
 
   public get Area() {
@@ -75,6 +67,14 @@ class Ability extends Base {
     if (this.HasPhase) header += 'Phase ' + this.phase_ + ' '
     if (this.Type != 'Skill') {
       header += ' - ' + this.category_ + ' ' + this.type_
+    }
+    return header
+  }
+  public get NamelessHeader() {
+    var header = ''
+    if (this.HasPhase) header += 'Phase ' + this.phase_ + ' '
+    if (this.Type != 'Skill') {
+      header += this.category_ + ' ' + this.type_
     }
     return header
   }
@@ -130,6 +130,9 @@ class Ability extends Base {
   public get Type() {
     return this.type_
   }
+  public get HasOrigin() {
+    return !(this.origin_ == null)
+  }
   public get Origin() {
     return this.origin_
   }
@@ -159,13 +162,22 @@ class Ability extends Base {
     return this.enhancements_
   }
   public get HasEnhancements() {
-    return this.enhancements_.length > 0
+    return !(this.enhancements_ == null)
   }
   public get EnhancementsHeader() {
-    var text = '**_Enhancements_:** '
+    var text = '**_Enhancements_:** ' + (this.enhancements_.header == undefined ? 'Choose any.' : this.enhancements_.header)
     var reactiveString = ' _[R]_'
-    for (var enhance of this.enhancements_) {
-      text += '\n * **' + enhance.name + (enhance.reactive ? reactiveString : '') + ' - ' + enhance.cost + ':** ' + enhance.effect
+    var exclusiveString = ' _[E]_'
+    for (var enhance of this.enhancements_.enhances) {
+      text +=
+        '\n * **' +
+        enhance.name +
+        (enhance.reactive ? reactiveString : '') +
+        (enhance.exclusive ? exclusiveString : '') +
+        '—' +
+        enhance.cost +
+        ':** ' +
+        enhance.effect
     }
     return text
   }
@@ -199,6 +211,16 @@ class Ability extends Base {
   }
   public get From() {
     if (this.origin_) return this.origin_.Name
+    return '-'
+  }
+  public get FromPlace() {
+    var count
+    var place
+    if (this.origin_) {
+      count = this.origin_.Abilities.length
+      place = this.origin_.Abilities.findIndex((x) => x.Name == this.Name)
+      return 1 + place + '/' + count
+    }
     return '-'
   }
   public get Frequency() {
@@ -244,8 +266,31 @@ class Ability extends Base {
     // if (this.HasTarget) header += ', ' + this.target_
     return header
   }
+  get RangeTargetSummary() {
+    var summary = ''
+    if (this.HasRange) summary += '_' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
+    if (this.HasRange && this.HasTarget) summary += ', '
+    if (this.HasTarget) summary += this.Target
+    return summary
+  }
+  get MaterialDamageSummary() {
+    var summary = ''
+    var hasMaterial = this.material_.length > 0
+    var hasDamageType = this.damage_type_.length > 0
+    if (hasMaterial) {
+      summary += this.material_
+    }
+    if (hasMaterial && hasDamageType) summary += ', '
+    if (hasDamageType) {
+      summary += this.damage_type_
+    }
+    return summary
+  }
   public get HasMissile() {
     return this.missile_.length > 0
+  }
+  public get Missile() {
+    return this.missile_
   }
   public get MissileHeader() {
     return '**Missile:** ' + this.missile_
@@ -258,6 +303,9 @@ class Ability extends Base {
   }
   public get HasTarget() {
     return this.target_.length > 0
+  }
+  public get Target() {
+    return this.target_
   }
   public get TargetHeader() {
     return '**Target:** ' + this.target_
@@ -292,7 +340,7 @@ class Ability extends Base {
     this.setBaseData(data)
     this.missile_ = data.missile || ''
     this.area_ = data.area || ''
-    this.enhancements_ = data.enhancements || []
+    this.enhancements_ = data.enhancements || null
     this.imbues_ = data.imbues || []
     this.defend_ = data.defend || ''
     this.cost_ = data.cost || ''

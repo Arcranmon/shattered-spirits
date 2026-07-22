@@ -1,7 +1,17 @@
 ## To-Do
 
+- Remove 'Missile' as a parameter and bake it into the effect
+  - Maybe rename? Implement?
 - Make Statuses more streamlined maybe?
-- Clear up the different movement types
+- Remove Negate, make Statuses cost Guard to avoid
+  - Find a way to make Grit/Reflex/Poise still a thing
+- No Posture, just Momentum?
+- Spirit Stances are simpler
+  - No spiritual essence stance, just give them an (expensive) teleport
+- No enemy attack rolls, just Defense Rolls?
+- Bundle up the 'Momentum store' effects
+- Maybe 1 Block for free?
+- No tiers of Resistance
 
 ### Long-Term Refactors
 
