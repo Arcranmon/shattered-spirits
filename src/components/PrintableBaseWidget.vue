@@ -86,8 +86,21 @@
           /></v-col>
         </v-row>
       </div>
-      <div style="padding-left: 1em; padding-right: 1em">
-        <div v-if="isAbilityPackage">
+      <div
+        style="padding-left: 1em; padding-right: 1em"
+        :style="{ 'border-color': getBestColor, 'border-bottom': middleBorder }"
+        v-if="
+          isAbilityPackage ||
+          ability.HasPrereqs ||
+          ability.HasFrequency ||
+          ability.SourceHeader ||
+          ability.HardnessHeader ||
+          ability.HasEffect ||
+          ability.HasSpecial ||
+          ability.HasEnter ||
+          ability.HasPrereqs
+        ">
+        <div v-if="isAbilityPackage && ability.HasDesc">
           <display-tooltip-text
             :string="ability.Desc"
             :decorate="false" />
@@ -99,9 +112,6 @@
         </div>
         <div v-if="ability.HasFrequency">
           <display-tooltip-text :string="ability.FrequencyHeader" />
-        </div>
-        <div v-if="ability.ShouldDisplayMaterialDamageHeader">
-          <display-tooltip-text :string="ability.MaterialDamageTypeHeader" />
         </div>
         <div v-if="ability.HasSource">
           <display-tooltip-text :string="ability.SourceHeader" />
@@ -134,9 +144,6 @@
         <div v-if="ability.HasEor">
           <display-tooltip-text :string="ability.EorHeader" />
         </div>
-        <div v-if="ability.HasNegate">
-          <display-tooltip-text :string="ability.NegateHeader" />
-        </div>
         <div v-if="ability.HasReacts">
           <display-tooltip-text :string="ability.ReactsHeader" />
         </div>
@@ -155,10 +162,22 @@
         <div v-if="ability.HasInteractions">
           <display-tooltip-text :string="ability.InteractionsHeader" />
         </div>
+        <div
+          v-if="isAbilityPackage"
+          style="margin-top: 2em">
+          <show-ability-table
+            title="Combat Abilities"
+            :abilities="combatAbilities"
+            :onCard="true" />
+          <show-ability-table
+            title="Narrative Abilities"
+            :abilities="narrativeAbilities"
+            :onCard="true" />
+        </div>
       </div>
       <div
         v-if="ability.HasEnhancements || ability.HasImbues"
-        style="border-top: medium solid; padding-left: 1em; padding-right: 1em"
+        style="padding-left: 1em; padding-right: 1em"
         :style="{ 'border-color': getBestColor }">
         <div v-if="ability.HasEnhancements">
           <display-tooltip-text
@@ -189,6 +208,7 @@ import Vue from 'vue'
 import { AbilityPackage, Armor, Base, Equipment, Weapon, Stance, Status, Terrain } from '@/class'
 import { store } from '@/store'
 import AbilityWidget from '@/components/AbilityWidget.vue'
+import ShowAbilityTable from '@/pages/print/ShowAbilityTable.vue'
 import BasicTable from '@/components/BasicTable.vue'
 import ChartTable from '@/components/ChartTable.vue'
 
@@ -255,6 +275,22 @@ export default Vue.extend({
     isAbilityPackage() {
       return this.ability instanceof AbilityPackage
     },
+    combatAbilities() {
+      if (this.isAbilityPackage)
+        return this.ability.Abilities.filter(
+          (x) => x.Type == 'Maneuver' || x.Type == 'Attack' || x.Type == 'Reaction' || x.Type == 'Gambit' || x.Type == 'Passive',
+        )
+      return []
+    },
+    narrativeAbilities() {
+      if (this.isAbilityPackage)
+        return this.ability.Abilities.filter((x) => x.Category == 'Camp' || x.Category == 'Travel' || x.Category == 'Downtime' || x.Category == 'Skill')
+      return []
+    },
+    middleBorder() {
+      if (this.ability.HasEnhancements || this.ability.HasImbues) return 'medium solid;'
+      return 'none'
+    },
     isStance() {
       return this.ability instanceof Stance
     },
@@ -292,7 +328,7 @@ export default Vue.extend({
       return this.colorMap[this.ability.Type]
     },
   },
-  components: { AbilityWidget, BasicTable, ChartTable },
+  components: { AbilityWidget, BasicTable, ChartTable, ShowAbilityTable },
 })
 </script>
 
@@ -329,5 +365,32 @@ export default Vue.extend({
 ::v-deep .enhancement ul {
   padding-left: 1.5em !important;
   list-style-type: '⇾ ';
+}
+.table-cell {
+  border: $border--black-thin;
+  padding: 0em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  text-align: center;
+}
+.section-header {
+  @extend .table-cell;
+  font-weight: bold;
+  justify-content: center;
+  font-size: larger;
+  color: white;
+  background-color: darkslategray;
+  print-color-adjust: exact;
+}
+.column-header {
+  @extend .table-cell;
+  font-weight: bold;
+  justify-content: center;
+  background-color: darkgrey;
+  print-color-adjust: exact;
+}
+.even-table-cell {
+  background-color: lightgrey;
+  print-color-adjust: exact;
 }
 </style>

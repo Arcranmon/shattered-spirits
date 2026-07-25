@@ -42,12 +42,9 @@ declare interface IWeaknessResistanceData {
 }
 
 declare interface IBonusesData {
-  focus?: number
-  grit?: number
   stamina?: number
   guard?: number
   block?: number
-  reflex?: number
   speed?: number
   phase?: number
   load?: number
@@ -117,9 +114,6 @@ declare interface IChartData {
 
 declare interface IDefenseData {
   guard?: number
-  reflex?: number
-  grit?: number
-  focus?: number
   block?: number
   immunities?: string[]
   resistances?: string[]
@@ -273,7 +267,6 @@ declare interface IStanceData extends IAbilityPackageData {
   phase: number
   block: number
   speed: number
-  posture: number
 }
 
 declare interface IStatusEffect {

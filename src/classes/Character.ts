@@ -83,13 +83,7 @@ class Character extends Combatant {
   }
 
   public get ElementAbility() {
-    if (this.Element === 'Earth') return 'Earthen Essence'
-    if (this.Element === 'Water') return 'Aquatic Essence'
-    if (this.Element === 'Flame') return 'Flaming Essence'
-    if (this.Element === 'Wind') return 'Flowing Essence'
-    if (this.Element === 'Metal') return 'Metallic Essence'
-    if (this.Element === 'Wood') return 'Wooden Essence'
-    return ''
+    return 'Channel ' + this.Element
   }
 
   public get Abilities() {
@@ -262,15 +256,6 @@ class Character extends Combatant {
   }
   get Armors() {
     return this.armor_
-  }
-  get Grit() {
-    return this.CurrentStance.Grit + this.combinedBonuses_.Grit
-  }
-  get Reflex() {
-    return this.CurrentStance.Reflex + this.combinedBonuses_.Reflex
-  }
-  get Focus() {
-    return this.CurrentStance.Focus + this.combinedBonuses_.Focus
   }
 
   // ==========================================================

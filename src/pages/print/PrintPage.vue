@@ -27,7 +27,6 @@
       </v-row>
     </div>
 
-    <!---
     <div class="main-abilities">
       <show-ability-table
         title="Skill"
@@ -425,24 +424,24 @@
       </v-row>
       <v-row style="page-break-after: always" />
 
-    <h4>{{ character.Name }} Arts & Careers</h4>
-    <div class="centered-text">The full ability packages granted to you by your arts and careers.</div>
-    <v-row>
-      <v-col
-        cols="6"
-        v-for="item in this.$store.getters.getAPsFromList(character.Arts)"
-        :key="item.Name">
-        <base-widget
-          :ability="item"
-          :useDivider="true"
-          :key="item.Name"
-          :showChart="true"
-          class="ability-box" />
-      </v-col>
-    </v-row>
-    <v-row style="page-break-after: always" />
-    --->
+      <h4>{{ character.Name }} Arts & Careers</h4>
+      <div class="centered-text">The full ability packages granted to you by your arts and careers.</div>
+      <v-row>
+        <v-col
+          cols="6"
+          v-for="item in this.$store.getters.getAPsFromList(character.Arts)"
+          :key="item.Name">
+          <base-widget
+            :ability="item"
+            :useDivider="true"
+            :key="item.Name"
+            :showChart="true"
+            class="ability-box" />
+        </v-col>
+      </v-row>
+      <v-row style="page-break-after: always" />
     </div>
+    --->
   </div>
 </template>
 

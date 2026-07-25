@@ -5,7 +5,7 @@
     "element": "Wood",
     "keywords": ["Plant"],
     "source": "2 (_Engagement_) / 4 (_Arena_)",
-    "engaged": "_Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_ or _Negate_ with _Reflex_.",
+    "engaged": "_Speed_ Costs are increased by 1.",
     "destroy": "A creature may Attack this _Terrain_; if they deal at least 3 _Slash_ Damage they may remove this from an _Engagement_. Any effects that Targets the whole Arena and does at least 8 _Slash_ Damage removes Overgrown from all _Engagements_."
   },
   {
@@ -121,7 +121,7 @@
     "source": "4",
     "engaged": "Gain _Cover_.",
     "effect": "Only [_Flying_] creatures may _Engage_ this; if they do, they do not lose _Flying_.",
-    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [_Reflex_ 8]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Source_ 3 [_Earth_].",
+    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [5]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Source_ 3 [_Earth_].",
     "chart": {
       "chart": {
         "stun": [2, 2, 3, 4],
@@ -136,12 +136,13 @@
     "element": "Elementless",
     "keywords": ["Flammable"],
     "desc": "A slick coat of oil covers this area, making passage difficult.",
-    "engaged": "Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_, _Negate_ with _Reflex_, and _Negate_ _Forced Movement_ or _Prone_.",
+    "engaged": "Speed_ Costs are increased by 1. Additionally, the Cost to _Negate_ _Forced Movement_ or _Prone_ is increased by 2.",
     "interactions": ["If this _Terrain_ is _Ignited_, it automatically becomes _Roaring_ and rolls all end of round effects at _Advantage_."],
     "enter": "You are automatically _Grazed_.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"]
+      "status": ["_Prone_", "_Prone_", "_Prone_", "_Prone_"],
+      "negate": [2, 3, 4, 5]
     }
   },
   {
@@ -150,10 +151,11 @@
     "element": "Water",
     "source": "2 (_Engagement_) / 4 (_Arena_)",
     "desc": "A puddle, slick ground, or other small source of water.",
-    "engaged": "You have _Disadvantage_ to _Negate_ _Forced Movement_ and _Prone_. Additionally, increase your _Weakness_ to _Lightning_ by one step.",
+    "engaged": "Increase the cost to _Negate_ _Forced Movement_ and _Prone_ by 2. Additionally, _Lightning_ deal +2 _Stun_.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"]
+      "status": ["_Prone_", "_Prone_", "_Prone_", "_Prone_"],
+      "negate": [1, 2, 3, 4]
     },
     "interactions": ["If this would become _Blazing_, instead remove _Wet_ and add _Veiled_."]
   },
@@ -171,11 +173,11 @@
     "source": "2 (_Engagement_) / 4 (_Arena_)",
     "desc": "A slick sheet of ice that makes it difficult to find footing.",
     "enter": "You are automatically _Grazed_. Do not apply _Engaged_ penalties to the _Negate_ roll.",
-    "engaged": "_Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_, _Negate_ with _Reflex_, and _Negate_ _Forced Movement_ or _Prone_.",
+    "engaged": "_Speed_ Costs are increased by 1. Increase the cost to _Negate_ _Forced Movement_ or _Prone_ by 2.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"],
-      "negate": [5, 7, 8, 10]
+      "status": ["_Prone_", "_Prone_", "_Prone_", "_Prone_"],
+      "negate": [2, 3, 4, 5]
     },
     "interactions": ["If this _Engagement_ or a creature in it is targeted by a _Fire_ effect, this becomes _Wet_."]
   },

@@ -144,7 +144,7 @@
     "desc": "The basis of flamecraft, which is controlling and fanning flames ever larger.",
     "abilities": [
       {
-        "name": "Wrathcraft",
+        "name": "Blazecraft",
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
@@ -198,7 +198,8 @@
         "chart": {
           "damage": [0, 1, 3, 4],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "_Alight_ 1", "_Alight_ 2", "_Alight_ 3"]
+          "status": ["None", "_Alight_", "_Alight_", "_Alight_"],
+          "negate": [0, 2, 3, 4]
         },
         "enhancements": {
           "enhances": [
@@ -326,15 +327,16 @@
             },
             {
               "name": "Superchilled",
-              "cost": "1 _Essence_",
-              "effect": "On a _Graze_, add _Frozen_ 1. On a _Hit_+, add _Frozen_ 2."
+              "cost": "2 _Essence_",
+              "effect": "Add _Frozen_ [2] on a _Graze_, _Frozen_ [3] on a _Hit_, and increase the Negate cost by 2 on a _Crit_."
             }
           ]
         },
         "chart": {
-          "damage": [0, 2, 5, 6],
+          "damage": [0, 1, 5, 6],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "None", "_Frozen_ 1 [_Reflex_]"]
+          "status": ["None", "None", "None", "_Frozen_"],
+          "negate": [0, 0, 0, 3]
         }
       }
     ]
@@ -378,7 +380,7 @@
           {
             "name": "Carrying Current",
             "cost": "1 _Essence_",
-            "effect": "This _Round_, while _Swimming:\n* Treat yourself as having two _Open Hands_.\n* You do not have _Disadvantage_ on _Defend_ or _Reflex_ Rolls."
+            "effect": "This _Round_, while _Swimming, treat yourself as having two _Open Hands_ and you do not have _Disadvantage_ on _Defense_ Rolls."
           }
         ]
       },
@@ -420,7 +422,8 @@
           "stun": [0, 1, 2, 3],
           "damage": [0, 1, 3, 4],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "_Soaked_ [_Reflex_]", "_Soaked_", "_Soaked_"]
+          "status": ["None", "_Soaked_", "_Soaked_", "_Soaked_"],
+          "negate": [0, 1, 3, 4]
         },
         "enhancements": {
           "enhances": [
@@ -432,7 +435,7 @@
             {
               "name": "Driving Stream",
               "cost": "1 _Essence_",
-              "effect": "Add _Push_ [_Grit_] to the Attack."
+              "effect": "Add _Push_ [3] to the Attack."
             }
           ]
         }
@@ -542,7 +545,9 @@
         "keywords": ["Spirit", "Respite"],
         "type": "Passive",
         "effect": "While on solid earth, your [_Martial_] Attacks deal +1 _Stun_.",
-        "imbues": [{ "name": "Improved Resilience", "cost": "1 _Essence_", "effect": "Increase your _Grit_ by 2 this _Round_." }]
+        "imbues": [
+          { "name": "Improved Resilience", "cost": "1 _Essence_", "effect": "This _Round_, _Negate_ all _Forced Movement_, _Grab_, and _Poison_ at half cost." }
+        ]
       },
       {
         "name": "Draw Vitality",
@@ -652,8 +657,8 @@
         "range": 2,
         "target": "A creature.",
         "cost": "1 _Essence_",
-        "effect": "You extend your senses towards the Target; they must _Negate_ [7 _Focus_] or gain _Studied_. If they are in _Wind_ _Terrain_, they automatically fail to _Negate_.",
-        "enhancmements": [{ "name": "Heavy Breeze", "costs": "1 _Essence_", "effect": "Increase the Negate DC by 3." }]
+        "effect": "You extend your senses towards the Target; they must _Negate_ [4] or gain _Studied_. If they are in _Wind_ _Terrain_, they automatically fail to _Negate_.",
+        "enhancmements": [{ "name": "Heavy Breeze", "costs": "1 _Essence_", "effect": "Increase the Negate cost by 3." }]
       }
     ]
   },
@@ -724,15 +729,16 @@
             {
               "name": "Heavier Stone",
               "cost": "2 _Essence_",
-              "effect": "The _Missile_ is instead a _Source_ 2 (_Earth_). This is a _Heavy_ Attack and deals +_1/2/4/4_ Damage, +_1/1/2/2_ _Stun_, adds [_Siege_], and increases the DC to _Negate_ by 1."
+              "effect": "The _Missile_ is instead a _Source_ 2 (_Earth_). Add [_Siege_]. This is a _Heavy_ Attack and deals +_1/1/2/2_ _Stun_, +_1/2/4/4_ Damage, and increase the cost to _Negate_ by 1."
             }
           ]
         },
         "chart": {
-          "stun": [1, 2, 2, 4],
-          "damage": [0, 2, 4, 6],
+          "stun": [1, 2, 3, 4],
+          "damage": [0, 2, 4, 7],
+          "negate": [0, 0, 3, 5],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "_Dazed_ [_Grit_]", "_Dazed_ [_Grit_]"]
+          "status": ["None", "None", "_Exposed_", "_Exposed_"]
         }
       }
     ]
@@ -864,12 +870,12 @@
         "cost": "2 _Essence_",
         "range": "0",
         "target": "Single-Target",
-        "effect": "Attack a Target within Range. If the Target is _Wearing_ _Metal_, is _Water_, or is _Soaked_, add [_Pierce_ 3].",
+        "effect": "Attack a Target within Range. If the Target is _Wearing_ _Metal_, is _Water_, or is _Soaked_, add [_Piercing_].",
         "chart": {
-          "damage": [0, 2, 2, 3],
+          "damage": [0, 1, 2, 3],
           "roll": ["2", "3-5", "6-10", "11-12"],
-          "negate": [5, 7, 8, 10],
-          "status": ["None", "Dazed [_Grit_]", "Dazed [_Grit_]", "Dazed [_Grit_]"]
+          "negate": [0, 2, 3, 5],
+          "status": ["None", "_Exposed_", "_Exposed_", "_Exposed_"]
         },
         "enhancements": {
           "enhances": [
@@ -932,11 +938,11 @@
         "keywords": ["Spirit", "Respite"],
         "effect": "By channeling your craft you can temporarily enhance your wooden equipment.",
         "imbues": [
-          { "name": "Hardened Point", "cost": "1 _Essence_", "effect": "Your [_Wood_] Attacks gain [_Pierce_ 1]." },
+          { "name": "Hardened Point", "cost": "1 _Essence_", "effect": "Your [_Wood_] Attacks gain [_Piercing_]." },
           {
             "name": "Hardened Shield",
             "cost": "1 _Essence_",
-            "effect": "You gain +1 _Block_ if you _Parry_ while Wielding [_Wood_] Equipment or Wearing [_Wood_] Armor."
+            "effect": "You gain +1 _Block_ while Wielding [_Wood_] Equipment or Wearing [_Wood_] Armor."
           }
         ]
       },
@@ -948,10 +954,9 @@
         "cost": "1 _Essence_",
         "range": "1",
         "material": "Wood",
-        "damage_type": "Special",
+        "damage_type": "Missile*",
         "target": "Single-Target",
-        "missile": "An Unattended _Source_ 1 (_Wood_) item or one _Worn by you/an ally within Range.",
-        "effect": "After resolving the Attack, place the Missile unattended in the Target's _Arena_. Use the most appropriate damage type, or _Stab_ if it is unclear.",
+        "missile": "_Source_ 1 (_Wood_)",
         "enhancements": {
           "enhances": [
             {
@@ -967,9 +972,8 @@
           ]
         },
         "chart": {
-          "damage": [0, 1, 2, 3],
-          "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "None", "None"]
+          "damage": [0, 1, 2, 4],
+          "roll": ["2-4", "5-6", "7-10", "11-12"]
         }
       }
     ]
@@ -1073,7 +1077,7 @@
           {
             "name": "Projected Ward",
             "cost": "1 _Essence_",
-            "effect": "Increase your _Resistance_ to _Metal_ by 1 step for the remainder of the round."
+            "effect": "Gain +1 to all _Defense Rolls_ against _Metal_ this _Round_."
           }
         ]
       },
@@ -1105,8 +1109,7 @@
         },
         "chart": {
           "damage": [0, 2, 5, 6],
-          "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "None", "None"]
+          "roll": ["2-4", "5-6", "7-10", "11-12"]
         }
       }
     ]
@@ -1152,7 +1155,7 @@
         "category": "Offensive",
         "type": "Passive",
         "keywords": ["Spirit", "Respite"],
-        "effect": "Your [_Metal_] Attacks gain [_Pierce_ 1].",
+        "effect": "Your [_Metal_] Attacks gain [_Piercing_].",
         "imbues": [
           {
             "name": "Perfect Edge",
@@ -1166,12 +1169,12 @@
         "category": "Defensive",
         "type": "Passive",
         "keywords": ["Spirit", "Respite"],
-        "effect": "Gain +1 _Block_ when you _Parry_ while _Wielding_ [_Metal_] Equipment or _Wearing_ [_Metal_] _Armor_.",
+        "effect": "Gain +1 _Block_ while _Wielding_ [_Metal_] Equipment or _Wearing_ [_Metal_] _Armor_.",
         "imbues": [
           {
-            "name": "Hardened Hide",
+            "name": "Harder Hide",
             "cost": "1 _Essence_",
-            "effect": "In addition, gain +1 _Block_ if you're wearing [_Metal_] Armor, or +2 if you're wearing at least 4 _Slots_."
+            "effect": "Gain an additional +1 _Block_ if you're wearing [_Metal_] Armor, or +2 if you're wearing at least 4 _Slots_."
           }
         ]
       }
@@ -1239,7 +1242,7 @@
         "effect": "Attack a target within Range. This Attack ignores any penalties due to _Gusting_ and instead gains a +1 to the _Attack Roll_ when targeting creatures in a _Gusting_ _Arena_.",
         "enhancements": {
           "enhances": [
-            { "name": "Compressed Air", "cost": "2 _Essence_", "effect": "Deal +_0/2/3/4_ _Stun_ +_0/1/2/3_ Damage." },
+            { "name": "Compressed Air", "cost": "2 _Essence_", "effect": "Deal +_0/1/1/1_ _Stun_ and increase the cost to _Negate_ by 2." },
             {
               "name": "Forceful Gust",
               "cost": "1 _Essence_",
@@ -1249,10 +1252,10 @@
         },
         "chart": {
           "stun": [0, 0, 1, 2],
-          "damage": [0, 0, 0, 1],
+          "damage": [0, 0, 0, 0],
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "negate": [5, 7, 8, 10],
-          "status": ["None", "_Push_ [_Grit_]", "_Push_ [_Grit_]", "_Push_ [_Grit_]"]
+          "negate": [0, 1, 3, 4],
+          "status": ["None", "_Push_", "_Push_", "_Push_"]
         }
       }
     ]
@@ -1410,7 +1413,7 @@
         "material": "Wood",
         "range": "1",
         "cost": "2 _Essence_",
-        "effect": "The Target must _Negate_ [_Grit_/_Reflex_ 8] or gain _Entangled_ 1. If the Target is in an _Overgrown_ _Arena_, increase the _Negate_ DC by 2 or decrease the Cost by 1. _Fire_ Damage also causes the Target to clear _Entangled_ as if it was _Slash_ Damage.",
+        "effect": "The Target must _Negate_ [6] or gain _Entangled_ 1. If the Target is in an _Overgrown_ _Arena_, increase the _Negate_ cost by 2 or decrease the Cost by 1. _Fire_ Damage also causes the Target to clear _Entangled_ as if it was _Slash_ Damage.",
         "enhancements": {
           "enhances": [{ "name": "Massive Growth", "cost": "3 _Essence_", "effect": "'Instead, the Target is 'All creatures in an _Overgrown_ _Arena_'." }]
         }
@@ -1888,8 +1891,8 @@
         "category": "Defensive",
         "type": "Passive",
         "keywords": ["Respite"],
-        "effect": "Gain +1 _Grit_ and +2 Stamina. At _Respite_, lose half the _Guard_ you would normally lose from Afflictions.",
-        "bonuses": { "stamina": 2, "grit": 1 }
+        "effect": "Gain +2 Stamina and Guard.",
+        "bonuses": { "stamina": 2, "guard": 2 }
       },
       {
         "name": "True Grit",
@@ -1898,7 +1901,7 @@
         "keywords": ["Exhaust"],
         "cost": "None",
         "trigger": "You would be reduced to 0 _Stamina_.",
-        "effect": "The triggering effect cannot reduce you below 1 _Stamina_. Automatically succeed any roll to _Negate_ with _Grit_/_Focus_ on the triggering Attack."
+        "effect": "The triggering effect cannot reduce you below 1 _Stamina_. You automatically _Negate_ at no Cost."
       }
     ]
   },
@@ -1946,7 +1949,7 @@
         "range": "1",
         "target": "A _Studied_ creature within _Range_.",
         "cost": "1 _Momentum_",
-        "effect": "Remove _Studied_ from the Target. They must immediately _Negate_ [_Focus_ 10]. Regardless of the result, they create an _Opening_. If they successfully _Negate_, they gain 4 _Block_ against all resulting Attacks."
+        "effect": "Remove _Studied_ from the Target. They must immediately _Negate_ [6]. Regardless of the result, they create an _Opening_. If they successfully _Negate_, they gain 4 _Block_ against all resulting Attacks."
       }
     ]
   },
@@ -2047,7 +2050,7 @@
         "range": "1",
         "target": "Single-Target",
         "cost": "1 _Momentum_",
-        "effect": "Deal 1 _Stun_ to the Target, then they must Negate [9 _Focus_]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect. If they fail by 3 or more, deal an additional 2 _Stun_."
+        "effect": "Deal 1 _Stun_ to the Target, then they must Negate [5]. On a failure, they have _Disadvantage_ to attack you until you make a hostile action against them, or they become afflicted with a similar effect."
       }
     ]
   },
@@ -2087,8 +2090,7 @@
         "name": "Mighty",
         "category": "Support",
         "type": "Passive",
-        "effect": "Gain +2 _Grit_. You may, when it would be beneficial, treat yourself as Size 3 instead of Size 2.",
-        "bonuses": { "grit": 2 }
+        "effect": "You may, when it would be beneficial, treat yourself as Size 3 instead of Size 2. Decrease the Cost to _Negate_ _Grabbed_ and _Forced Movement_ by 1."
       },
       {
         "name": "Strong Swing",
@@ -2096,7 +2098,7 @@
         "category": "Offensive",
         "keywords": ["Reliable"],
         "prereqs": "[_Martial_] Attack.",
-        "effect": "Inflict additional _Stun_ equal to 1 + (the _Cost_ of the triggering Attack), even on a _Miss_. The Target must _Negate_ _Grit_ with _Disadvantage_ this _Turn_. Add _Push_ [_Grit_] to the Attack or, if it already inflicted _Forced Movement_, add _Forceful_.",
+        "effect": "Inflict additional _Stun_ equal to 1 + (the _Cost_ of the triggering Attack), even on a _Miss_. Add _Push_ [4] to the Attack or, if it already inflicted _Forced Movement_, add _Forceful_.",
         "special": "If you are not using any other _Gambit_, you may pay 2 _Momentum_ to use this _Gambit_."
       }
     ]
@@ -2125,11 +2127,11 @@
         "effect": "During a _Travel Roll_, you may spend one [ ] as _Phase_. You may gain _Fatigue_ to instead allow an ally to spend one of their [ ] as _Phase_ as you help them compensate for their pace."
       },
       {
-        "name": "Incredible Phase",
+        "name": "Incredible Speed",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Gain +1 _Speed_ and _Reflex_. You have _Advantage_ the first time you _Negate_ with _Reflex_ each _Phase_.",
-        "bonuses": { "speed": 1, "reflex": 1 }
+        "effect": "Gain +1 _Speed_.",
+        "bonuses": { "speed": 1 }
       },
       {
         "name": "Swiftest",

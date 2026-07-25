@@ -91,9 +91,6 @@ class Ability extends Base {
   public get SpeedCost() {
     return this.CostForString('Speed')
   }
-  public get PostureCost() {
-    return this.CostForString('Posture')
-  }
   public get EssenceCost() {
     return this.CostForString('Essence')
   }
@@ -110,6 +107,7 @@ class Ability extends Base {
     var special = this.Cost.includes('Special') || this.Cost.includes('Stance')
 
     for (var cost_string of this.Cost.split(',')) {
+      cost_string = cost_string.trim()
       if (cost_string.includes(costString)) {
         cost += Number(cost_string[0])
         if (cost_string.includes('/')) special = true

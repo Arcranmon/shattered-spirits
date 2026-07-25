@@ -130,7 +130,7 @@
         </v-col>
         <v-col
           class="chart--head"
-          :cols="2">
+          :cols="5">
           <b>
             <display-tooltip-text
               string="_Speed_"
@@ -139,37 +139,10 @@
         </v-col>
         <v-col
           class="chart--head"
-          :cols="2">
+          :cols="5">
           <b>
             <display-tooltip-text
               string="_Block_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="2">
-          <b>
-            <display-tooltip-text
-              string="_Grit_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="2">
-          <b>
-            <display-tooltip-text
-              string="_Focus_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="2">
-          <b>
-            <display-tooltip-text
-              string="_Reflex_"
               :decorate="false" />
           </b>
         </v-col>
@@ -185,28 +158,13 @@
         >
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="2"
+          :cols="5"
           >{{ $route.params.character.Speed - $route.params.character.CurrentStance.Speed }}</v-col
         >
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="2"
+          :cols="5"
           >{{ $route.params.character.Block - $route.params.character.CurrentStance.Block }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="2"
-          >{{ $route.params.character.Grit - $route.params.character.CurrentStance.Grit }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="2"
-          >{{ $route.params.character.Focus - $route.params.character.CurrentStance.Focus }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="2"
-          >{{ $route.params.character.Reflex - $route.params.character.CurrentStance.Reflex }}</v-col
         >
       </v-row>
       <v-row
@@ -384,7 +342,7 @@
         </v-col>
         <v-col
           class="chart--head"
-          :cols="2">
+          :cols="5">
           <b>
             <display-tooltip-text
               string="_Speed_"
@@ -393,37 +351,10 @@
         </v-col>
         <v-col
           class="chart--head"
-          :cols="2">
+          :cols="5">
           <b>
             <display-tooltip-text
               string="_Block_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="2">
-          <b>
-            <display-tooltip-text
-              string="_Grit_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="2">
-          <b>
-            <display-tooltip-text
-              string="_Focus_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="2">
-          <b>
-            <display-tooltip-text
-              string="_Reflex_"
               :decorate="false" />
           </b>
         </v-col>
@@ -439,28 +370,13 @@
         >
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="2"
+          :cols="5"
           >{{ $route.params.character.Spirit.Speed }}</v-col
         >
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="2"
+          :cols="5"
           >{{ $route.params.character.Spirit.Block }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="2"
-          >{{ $route.params.character.Spirit.Grit }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="2"
-          >{{ $route.params.character.Spirit.Focus }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="2"
-          >{{ $route.params.character.Spirit.Reflex }}</v-col
         >
       </v-row>
       <v-row

@@ -6,7 +6,6 @@ class Stance extends AbilityPackage {
   private respite_: IRespiteData
   private defenses_: IDefenseData
   private momentum_: string
-  private posture_: number
   private stun_: number
   private phase_: number
   private speed_: number
@@ -32,11 +31,6 @@ class Stance extends AbilityPackage {
     return respite_string
   }
 
-  public get Grit() {
-    if (this.defenses_ && this.defenses_.grit) return this.defenses_.grit
-    return 0
-  }
-
   public get Phase() {
     return this.phase_
   }
@@ -45,41 +39,11 @@ class Stance extends AbilityPackage {
   }
 
   public get Summary() {
-    return (
-      '**_phase_**: ' +
-      this.Phase +
-      '; **_Momentum_:** ' +
-      this.Momentum +
-      '; **_Speed_:** ' +
-      this.Speed +
-      '\n\n' +
-      '**_Block_:** ' +
-      this.Block +
-      '; **_Focus_:** ' +
-      this.Focus +
-      '; **_Grit_:** ' +
-      this.Grit +
-      '; **_Reflex_:** ' +
-      this.Reflex
-    )
-  }
-
-  public get Reflex() {
-    if (this.defenses_ && this.defenses_.reflex) return this.defenses_.reflex
-    return 0
-  }
-
-  public get Focus() {
-    if (this.defenses_ && this.defenses_.focus) return this.defenses_.focus
-    return 0
+    return '**_phase_**: ' + this.Phase + '; **_Momentum_:** ' + this.Momentum + '; **_Speed_:** ' + this.Speed + '\n\n' + '**_Block_:** ' + this.Block + ';'
   }
 
   public get Momentum() {
     return this.momentum_
-  }
-
-  public get Posture() {
-    return this.posture_
   }
 
   public get Block() {
@@ -97,16 +61,9 @@ class Stance extends AbilityPackage {
 
   public get DefenseHeader() {
     var defense_string = '**Defenses:**'
-    if (this.defenses_.focus) defense_string += ' ' + this.defenses_.focus + ' _Focus_'
-    if (this.defenses_.grit) defense_string += ', ' + this.defenses_.grit + ' _Grit_'
-    if (this.defenses_.reflex) defense_string += ', ' + this.defenses_.reflex + ' _Reflex_'
     return defense_string
   }
   public get HasIcon() {
-    return true
-  }
-
-  public get ShowPosture() {
     return true
   }
 
@@ -134,7 +91,6 @@ class Stance extends AbilityPackage {
     this.momentum_ = data.momentum || 'N/A'
     this.speed_ = data.speed || 0
     this.stun_ = data.block || 0
-    this.posture_ = data.posture || 0
   }
 }
 export default Stance

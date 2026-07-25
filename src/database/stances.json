@@ -3,11 +3,9 @@
     "name": "Agile Stance",
     "category": "Mobility",
     "desc": "You take on a stance focused on mobility, intent on covering ground quickly.",
-    "defenses": { "focus": 0, "grit": 0, "reflex": 2 },
     "phase": 1,
     "speed": 3,
-    "momentum": 4,
-    "posture": 1,
+    "momentum": 5,
     "abilities": [
       {
         "name": "Mobility Focus",
@@ -19,56 +17,49 @@
         "name": "Nimble",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Attacks made as a part of an [_Opening_] have _Disadvantage_ against you."
+        "effect": "You have _Advantage_ on _Defense Rolls_ on your _Turn_."
       }
     ],
-    "adjust": 1
+    "adjust": 0.5,
+    "adjust_notes": "Bonuses should just about balance out"
   },
   {
     "name": "Rallying Stance",
     "category": "Support",
     "desc": "You adopt a supportive stance, focusing on helping allies while catching your breath.",
-    "defenses": { "focus": 1, "grit": 1, "reflex": 0 },
     "block": 1,
     "phase": 2,
-    "momentum": 5,
-    "posture": 2,
+    "momentum": 6,
     "abilities": [
       {
         "name": "Pacifist",
         "category": "Utility",
         "type": "Passive",
-        "effect": " You may not Attack."
+        "effect": "You may not Attack."
       },
       {
         "name": "Encouragement",
         "category": "Support",
         "type": "Passive",
         "keywords": ["Respite"],
-        "effect": "At _Respite_ you may use up to 2 _Momentum_ of [_Inspiring_] Maneuvers as if it was your _Turn_, paying no costs."
+        "effect": "At _Respite_ grant 6 _Guard_, distributed however you wish between yourself and allies in Range 1."
       },
       {
-        "name": "Rally",
-        "category": "Recovery",
-        "keywords": ["Repeatable", "Inspiring"],
-        "type": "Maneuver",
-        "cost": "1 _Momentum_",
-        "range": "Self/Melee",
-        "target": "Ally (Optional)",
-        "effect": "Choose one. If you target an ally, you may also gain 1 _Guard_:\n* You or the Target gains 1 _Posture_.\n* You or the Target _Recovers_.\n* You or the Target gains 5 _Guard_."
+        "name": "Skilled Encouragement",
+        "category": "Support",
+        "type": "Passive",
+        "effect": "Whenever you use a _Manuever_ or _Reaction_ that grants _Guard_ to yourself or an ally, grant an additional _Guard_."
       }
     ],
-    "adjust": 2,
-    "adjust_notes": "2 free Momentum, minus a bit for Pacifist, but Rally is really good."
+    "adjust": 2.5,
+    "adjust_notes": "2 free Momentum, minus a bit for Pacifist, but Encouragement is really good."
   },
   {
     "name": "Hostile Stance",
     "category": "Offensive",
     "desc": "A stance focused on overwhelming offense and unleashing a barrage of attacks.",
-    "defenses": { "focus": 1, "grit": 0, "reflex": 1 },
     "phase": 3,
-    "momentum": 4,
-    "posture": 1,
+    "momentum": 5,
     "block": 0,
     "speed": 1,
     "abilities": [
@@ -92,9 +83,7 @@
     "name": "Open Stance",
     "category": "Balanced",
     "desc": "A perfectly balanced stance, leaving no obvious openings while granting no obvious advantages.",
-    "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
-    "momentum": 6,
-    "posture": 2,
+    "momentum": 8,
     "speed": 1,
     "block": 1,
     "phase": 4
@@ -103,11 +92,9 @@
     "name": "Focused Stance",
     "category": "Patient",
     "desc": "You adopt a patient stance, gathering your energy to unleash a powerful effect.",
-    "defenses": { "focus": 2, "grit": 1, "reflex": 0 },
     "phase": 6,
     "block": 2,
-    "momentum": 4,
-    "posture": 2,
+    "momentum": 6,
     "abilities": [
       {
         "name": "Charge",
@@ -124,11 +111,9 @@
     "name": "Guarded Stance",
     "category": "Defensive",
     "desc": "A stance focused on block, providing an unparalleled ability to keep yourself safe.",
-    "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
-    "block": 3,
+    "block": 4,
     "phase": 5,
-    "momentum": 4,
-    "posture": 4,
+    "momentum": 8,
     "abilities": [
       {
         "name": "Defensive Focus",
@@ -140,49 +125,44 @@
         "name": "Immaculate Guard",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "You have _Advantage_ on your first _Defense Roll_ each _Phase_."
+        "effect": "Gain +1 to all _Defense Rolls_."
       }
     ],
-    "adjust": 1,
-    "adjust_notes": "Assumes Active Block triggers every other phase, with a little extra for Raise Block."
+    "adjust": 1
   },
   {
     "name": "Skirmisher Spirit",
     "category": "Offensive",
     "desc": "You direct your spirit to strike, focusing on mobility and getting close.",
-    "defenses": { "reflex": 1 },
     "speed": 1,
-    "posture": 1,
     "block": 0,
     "phase": "Spirit",
-    "momentum": "3/3/4/4/5/5",
-    "effect": "On your Turn, move towards the nearest hostile creature and _Engage_ it if possible. Attack them once. You may use any Abilities that help accomplish this task."
-  },
-  {
-    "name": "Directed Spirit",
-    "category": "Offensive",
-    "desc": "You give your spirit a specific order to strike, focusing on a singular enemy.",
-    "defenses": { "grit": 1, "focus": 1 },
-    "speed": 0,
-    "posture": 1,
-    "block": 1,
-    "phase": "Spirit+1",
-    "momentum": "2/3/3/4/4/5",
-    "effect": "Upon entering this Stance, choose an Attack and a Target, announcing both to the table. On your Turn, attempt to use that Attack against said Target at the most appropriate Range, adding [_Discount_ 4]. You may use any Abilities that help accomplish this task.",
+    "momentum": "4/4/5/5/6/6",
+    "abilities": [
+      {
+        "name": "Overwhelming Offense",
+        "category": "Offensive",
+        "type": "Passive",
+        "effect": "You may use any number of Attacks on your _Turn_, and may use any given Attack up to two times. After each _Miss_ on an Attack not used through another Ability, decrease the Resource gained by additional _Misses_ that _Turn_ by 1, to a minimum of 0."
+      }
+    ],
     "adjust": 2
   },
   {
     "name": "Sprinting Spirit",
     "category": "Mobility",
-    "desc": "You direct your Spirit to a specific location and they do their best to get there quickly.",
-    "defenses": { "reflex": 2 },
-    "speed": 2,
-    "posture": 1,
+    "desc": "You focus on mobility and movement, darting about the battlefield.",
+    "speed": 3,
     "block": 1,
     "phase": "Spirit-1",
-    "momentum": "1/1/2/2/3/3",
-    "effect": "When you choose this Stance, choose a destination. On your _Turn_, move as close to the Destination as possible. Your Spirit may not Attack, but may use any Abilities that help accomplish this task, and may use _Armament_ _Maneuvers_ after reaching their destination.",
+    "momentum": "3/3/4/4/5/5",
     "abilities": [
+      {
+        "name": "Mobility Focus",
+        "category": "Utility",
+        "type": "Passive",
+        "effect": "You may not use _Heavy_ Attacks."
+      },
       {
         "name": "Nimble",
         "category": "Mobility",
@@ -192,38 +172,35 @@
     ]
   },
   {
-    "name": "Questing Spirit",
-    "category": "Support",
-    "desc": "Your Spirit takes on a quest, doing everything in its power to complete it.",
-    "defenses": { "focus": 1 },
-    "speed": 1,
-    "posture": 2,
-    "block": 0,
-    "phase": "Spirit",
-    "momentum": "2/3/3/4/4/5",
-    "effect": "When you choose this Stance, create a quest; often, this will be an Ability and a Target, but may not involve Attacks. On your _Turn_, attempt to complete the quest to the best of your ability."
-  },
-  {
-    "name": "Surviving Spirit",
+    "name": "Enduring Spirit",
     "category": "Defensive",
-    "desc": "Your Spirit focuses on survival, focusing almost entirely on defense.",
-    "defenses": { "focus": 1, "grit": 1, "reflex": 1 },
+    "desc": "Your Spirit focuses almost entirely on defense and catching its breath.",
     "speed": 0,
-    "posture": 3,
-    "block": 2,
-    "phase": "Spirit",
-    "momentum": "1/1/2/2/3/3",
-    "effect": "On your _Turn_ you may _Retreat_. Your may not Attack, but may use _Recovery_ or _Defensive_ Abilities on your _Turn_."
-  },
-  {
-    "name": "Spiritual Essence",
-    "category": "Balanced",
-    "desc": "Your Spirit does not take on a corporeal form, instead assisting you with its magical reserves.",
-    "speed": 0,
-    "posture": 0,
-    "block": 0,
-    "phase": "N/A",
-    "momentum": "N/A",
-    "effect": "Automatically enter this _Stance_ if you are not _Manifested_ at _Respite_.  Gain 4 _Guard_ and 3 _Essence_. While in this _Stance_ your companion may spend _Essence_ on their Turn to give you _Guard_, granting 3 _Guard_ for every _Essence_ spent."
+    "block": 3,
+    "phase": "Spirit+1",
+    "momentum": "4/4/5/5/6/6",
+    "abilities": [
+      {
+        "name": "Defensive Focus",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Attacks against creatures that have not attacked you this _Round_ have _Disadvantage_."
+      },
+      {
+        "name": "Catch Breath",
+        "category": "Defensive",
+        "type": "Passive",
+        "keywords": ["Respite"],
+        "effect": "Whenever you use a _Manuever_ or _Reaction_ that grants _Guard_ to yourself, gain an additional _Guard_.",
+        "imbues": [{ "name": "Channel Essence", "cost": "1 _Essence_", "effect": "Gain 3 _Guard_. You may repeat this _Imbue_." }]
+      },
+      {
+        "name": "Immaculate Guard",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Gain +1 to all _Defense Rolls_."
+      }
+    ],
+    "adjust": 2
   }
 ]

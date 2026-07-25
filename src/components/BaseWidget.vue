@@ -52,7 +52,7 @@
           class="chart--row">
           <v-col
             class="chart--head"
-            :cols="4">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Phase_"
@@ -73,49 +73,10 @@
             :cols="2">
             <b>
               <display-tooltip-text
-                string="_Posture_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
                 string="_Essence_"
                 :decorate="false" />
             </b>
           </v-col>
-        </v-row>
-        <v-row
-          align="stretch"
-          no-gutters
-          class="chart--row">
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="4"
-            >{{ ability.Phase }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >{{ ability.Momentum }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >{{ ability.Posture }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >0</v-col
-          >
-        </v-row>
-        <v-row
-          align="stretch"
-          no-gutters
-          class="chart--row">
           <v-col
             class="chart--head"
             :cols="2">
@@ -134,38 +95,26 @@
                 :decorate="false" />
             </b>
           </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
-                string="_Grit_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
-                string="_Focus_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
-                string="_Reflex_"
-                :decorate="false" />
-            </b>
-          </v-col>
         </v-row>
         <v-row
           align="stretch"
           no-gutters
           class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >{{ ability.Phase }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >{{ ability.Momentum }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >0</v-col
+          >
           <v-col
             class="chart--cols justify-center align-center"
             :cols="2"
@@ -175,21 +124,6 @@
             class="chart--cols justify-center align-center"
             :cols="2"
             >+{{ ability.Block }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >+{{ ability.Grit }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >+{{ ability.Focus }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >+{{ ability.Reflex }}</v-col
           >
         </v-row>
       </div>

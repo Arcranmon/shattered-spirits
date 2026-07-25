@@ -100,18 +100,6 @@ class Spirit extends Combatant {
     return store.getters.getStancesFromList(stances)
   }
 
-  get Grit() {
-    return this.SpiritType.Defenses.Grit + this.current_stance_.Grit + this.combinedBonuses_.Grit
-  }
-
-  get Reflex() {
-    return this.SpiritType.Defenses.Reflex + this.current_stance_.Reflex + this.combinedBonuses_.Reflex
-  }
-
-  get Focus() {
-    return this.SpiritType.Defenses.Focus + this.current_stance_.Focus + this.combinedBonuses_.Focus
-  }
-
   // ==========================================================
   // GETTERS/SETTERS
   // ==========================================================

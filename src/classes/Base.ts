@@ -32,6 +32,9 @@ class Base {
   // ==========================================================
   // GETTERS
   // ==========================================================
+  public get HasDesc() {
+    return this.desc_.length > 0
+  }
   public get Desc() {
     return this.desc_
   }

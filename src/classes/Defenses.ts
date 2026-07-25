@@ -3,9 +3,6 @@ import { store } from '@/store'
 class Defenses {
   private stun_: number
   private block_: number
-  private reflex_: number
-  private grit_: number
-  private focus_: number
   private resistances_: string[]
   private weaknesses_: string[]
   private immunities_: string[]
@@ -15,32 +12,11 @@ class Defenses {
   // ==========================================================
   public get DefensesHeader() {
     var header = ''
-    if (this.focus_ > 0) header += this.focus_ + ' _Focus_'
-    if (this.grit_ > 0) {
-      if (header.length > 0) header += ', '
-      header += this.grit_ + ' _Grit_'
-    }
-    if (this.reflex_ > 0) {
-      if (header.length > 0) header += ', '
-      header += this.reflex_ + ' _Reflex_'
-    }
     return '**Defenses:** ' + header
   }
 
   public get Block() {
     return this.block_
-  }
-
-  public get Grit() {
-    return this.grit_
-  }
-
-  public get Reflex() {
-    return this.reflex_
-  }
-
-  public get Focus() {
-    return this.focus_
   }
 
   public get Guard() {
@@ -88,9 +64,6 @@ class Defenses {
   }
 
   private setDefensesData(data: IDefenseData): void {
-    this.grit_ = data.grit || 0
-    this.reflex_ = data.reflex || 0
-    this.focus_ = data.focus || 0
     this.block_ = data.block || 0
     this.stun_ = data.guard || 0
     this.immunities_ = data.immunities || []

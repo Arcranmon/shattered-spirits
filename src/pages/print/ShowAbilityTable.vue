@@ -7,50 +7,46 @@
         >{{ displayTitle }}
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="!onCard">
       <v-col class="column-header"> Name </v-col>
       <v-col class="column-header"> Category </v-col>
       <v-col
         class="column-header"
-        v-if="isNarrative">
+        v-if="isNarrative && !onCard">
         Frequency
       </v-col>
       <v-col
         class="column-header"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         Momentum
       </v-col>
       <v-col
         class="column-header"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         Essence
       </v-col>
       <v-col
         class="column-header"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         Speed
       </v-col>
       <v-col
         class="column-header"
         :cols="1"
-        v-if="!isNarrative">
-        Posture
-      </v-col>
-      <v-col
-        class="column-header"
-        :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         Range
       </v-col>
       <v-col
+        v-if="!onCard"
         class="column-header"
         :cols="2">
         Keywords
       </v-col>
       <v-col
+        v-if="!onCard"
         class="column-header"
         :cols="1 / 8">
         From
@@ -70,46 +66,48 @@
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
-        v-if="isNarrative">
+        v-if="isNarrative && !onCard">
         {{ ability.Frequency.replaceAll('_', '') }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         {{ ability.MomentumCost }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         {{ ability.EssenceCost }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         {{ ability.SpeedCost }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         {{ ability.PostureCost }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
         :cols="1"
-        v-if="!isNarrative">
+        v-if="!isNarrative && !onCard">
         {{ ability.RangeSummary }}
       </v-col>
       <v-col
+        v-if="!onCard"
         class="table-cell d-flex justify-center align-center"
         :cols="2">
         {{ ability.KeywordsList }}
       </v-col>
       <v-col
         class="table-cell d-flex justify-center align-center"
+        v-if="!onCard"
         :cols="1 / 8">
         {{ ability.From }}
       </v-col>
@@ -132,7 +130,12 @@ export default Vue.extend({
     abilities: {
       required: true,
     },
+    onCard: {
+      required: false,
+      default: false,
+    },
   },
+  components: {},
   computed: {
     isNarrative() {
       return this.title.includes('Skill') || this.title.includes('Travel') || this.title.includes('Downtime') || this.title.includes('Camp')
@@ -156,7 +159,11 @@ export default Vue.extend({
   },
   methods: {
     typeOrCategory(ability) {
-      if (this.isNarrative) return ability.Type
+      if (this.isNarrative) {
+        if (this.onCard) return ability.Type + ' ' + ability.Category
+        return ability.Type
+      }
+      if (this.onCard) return ability.Category + ' ' + ability.Type
       return ability.Category
     },
   },

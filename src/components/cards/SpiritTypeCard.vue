@@ -50,6 +50,13 @@
               string="_Speed_"
               :decorate="false" />
           </v-col>
+          <v-col
+            class="chart--head"
+            cols="2">
+            <display-tooltip-text
+              string="_Block_"
+              :decorate="false" />
+          </v-col>
         </v-row>
         <v-row
           align="stretch"
@@ -76,63 +83,10 @@
             cols="2"
             >{{ type.Speed }}</v-col
           >
-        </v-row>
-        <v-row
-          no-gutters
-          class="chart--row"
-          style="border-top: none">
-          <v-col
-            class="chart--head"
-            cols="2">
-            <display-tooltip-text
-              string="_Block_"
-              :decorate="false" />
-          </v-col>
-          <v-col
-            class="chart--head"
-            cols="2">
-            <display-tooltip-text
-              string="_Focus_"
-              :decorate="false" />
-          </v-col>
-          <v-col
-            class="chart--head"
-            cols="2">
-            <display-tooltip-text
-              string="_Grit_"
-              :decorate="false" />
-          </v-col>
-          <v-col
-            class="chart--head"
-            cols="2">
-            <display-tooltip-text
-              string="_Reflex_"
-              :decorate="false" />
-          </v-col>
-        </v-row>
-        <v-row
-          align="stretch"
-          no-gutters
-          class="chart--row">
           <v-col
             class="chart--cols justify-center align-center"
             cols="2"
             >{{ type.Defenses.Block }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            cols="2"
-            >{{ type.Defenses.Focus }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            cols="2"
-            >{{ type.Defenses.Grit }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            cols="2"
-            >{{ type.Defenses.Reflex }}</v-col
           >
         </v-row>
       </div>

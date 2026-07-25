@@ -30,18 +30,6 @@ class SpiritForm extends Base {
   }
   public get DefensesHeader() {
     var header = ''
-    if (this.defenses_.focus > 0) {
-      if (header.length > 0) header += ', '
-      header += this.defenses_.focus + ' _Focus_'
-    }
-    if (this.defenses_.grit > 0) {
-      if (header.length > 0) header += ', '
-      header += this.defenses_.grit + ' _Grit_'
-    }
-    if (this.defenses_.reflex > 0) {
-      if (header.length > 0) header += ', '
-      header += this.defenses_.reflex + ' _Reflex_'
-    }
     return '**Defenses:** ' + header
   }
   public get StaminaHeader() {
@@ -73,20 +61,6 @@ class SpiritForm extends Base {
   }
   public get TraitsHeader() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
-  }
-  public get Grit() {
-    if (this.defenses_.grit) return this.defenses_.grit
-    return 0
-  }
-
-  public get Reflex() {
-    if (this.defenses_.reflex) return this.defenses_.reflex
-    return 0
-  }
-
-  public get Focus() {
-    if (this.defenses_.focus) return this.defenses_.focus
-    return 0
   }
 
   // ==========================================================

@@ -28,13 +28,10 @@ let AllGlossaryItems: Array<Array<IGlossaryData>> = [Glossary]
 
 const kPlayerAbilities = [
   'Gain Advantage',
-  'Accelerate',
   'Adrenaline Rush',
-  'Spiritcraft',
+  'Effort',
   'Manipulate',
-  'Size Up',
   'Encourage',
-  'Swift Recall',
   'Unbalance',
   'Press Advantage',
   'Spiritbound',
@@ -52,21 +49,9 @@ const kPlayerAbilities = [
   'Steal',
 ]
 
-const kSpiritAbilities = [
-  'Return',
-  'Channel Elements',
-  'Perfect Parry',
-  'Perfect Dodge',
-  'Gain Advantage',
-  'Accelerate',
-  'Spiritcraft',
-  'Drop',
-  'Equip',
-  'Flank',
-  'Delay',
-]
+const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Accelerate', 'Spiritcraft', 'Drop', 'Equip', 'Flank', 'Delay']
 
-const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
+const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
 @Module({
   name: 'databaseJson',
@@ -125,7 +110,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get basicSpiritStances() {
-    return ['Skirmisher Spirit', 'Directed Spirit', 'Sprinting Spirit', 'Surviving Spirit', 'Questing Spirit', 'Spiritual Essence']
+    return ['Skirmisher Spirit', 'Sprinting Spirit', 'Enduring Spirit']
   }
 
   get playerArts() {

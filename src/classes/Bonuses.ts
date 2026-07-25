@@ -2,10 +2,7 @@ import { store } from '@/store'
 
 // class to store potential combat bonuses that Archetypes and similar might hold.
 class Bonuses {
-  private focus_: number
-  private grit_: number
   private stamina_: number
-  private reflex_: number
   private speed_: number
   private load_: number
   private phase_: number
@@ -20,11 +17,8 @@ class Bonuses {
   // CONSTRUCTOR
   // ==========================================================
   public constructor() {
-    this.focus_ = 0
-    this.grit_ = 0
     this.stamina_ = 0
     this.block_ = 0
-    this.reflex_ = 0
     this.speed_ = 0
     this.load_ = 0
     this.phase_ = 0
@@ -42,9 +36,6 @@ class Bonuses {
     var bonuses = []
 
     if (this.stamina_ > 0) bonuses.push('+' + String(this.stamina_) + ' _Stamina_')
-    if (this.focus_ > 0) bonuses.push('+' + String(this.focus_) + ' _Focus_')
-    if (this.grit_ > 0) bonuses.push('+' + String(this.grit_) + ' _Grit_')
-    if (this.reflex_ > 0) bonuses.push('+' + String(this.reflex_) + ' _Reflex_')
     if (this.speed_ > 0) bonuses.push('+' + String(this.speed_) + ' _Speed_')
     if (this.load_ > 0) bonuses.push('+' + String(this.load_) + ' _Load_')
     return bonuses.join(', ')
@@ -59,10 +50,7 @@ class Bonuses {
   }
 
   public addBonuses(other: Bonuses) {
-    this.focus_ += other.focus_
-    this.grit_ += other.grit_
     this.stamina_ += other.stamina_
-    this.reflex_ += other.reflex_
     this.speed_ += other.speed_
     this.load_ += other.load_
     this.phase_ += other.phase_
@@ -90,19 +78,6 @@ class Bonuses {
   public get Load() {
     return this.load_
   }
-
-  public get Focus() {
-    return this.focus_
-  }
-
-  public get Grit() {
-    return this.grit_
-  }
-
-  public get Reflex() {
-    return this.reflex_
-  }
-
   public get Speed() {
     return this.speed_
   }
@@ -145,12 +120,9 @@ class Bonuses {
   }
 
   public setBonusesData(data: IBonusesData): void {
-    this.focus_ = data.focus || 0
-    this.grit_ = data.grit || 0
     this.stamina_ = data.stamina || 0
     this.block_ = data.block || 0
     this.guard_ = data.guard || 0
-    this.reflex_ = data.reflex || 0
     this.speed_ = data.speed || 0
     this.load_ = data.load || 0
     this.phase_ = data.phase || 0
