@@ -141,7 +141,7 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your metallic form grants you the following benefits:\n* Replace the _Natural_ _Material_ with _Metal_ on all effects.\n* Increase your _Resistance_ to _Stab_, _Crush_, and _Slash_ by 1 step. Increase your _Weakness_ to _Lightning_ by 1 step.",
+        "effect": "Your metallic form grants you the following benefits:\n* Replace the _Natural_ _Material_ with _Metal_ on all effects.\n* You have _Resistance_ to _Stab_, _Crush_, and _Slash_.\n* You have a _Weakness_ to _Lightning_.",
         "bonuses": {
           "weakness_resistance": [
             { "damage": "Stab", "mod": -1 },
@@ -174,7 +174,7 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your wind form grants you the following benefits:\n* Remove the _Natural_ _Material_ with _Wind_ on all effects.\n* You never suffer ill effects from _Falling_.\n* Increase your _Resistance_ to _Crush_ and _Natural_ by 1 step.\n* Increase your _Resistance_ to _Lightning_ by 2 steps.\n\nWhen determining _Sources_ for _Manifesting_, treat any open air as a _Source_ 3, or a _Source_ 1 while underground.",
+        "effect": "Your wind form grants you the following benefits:\n* Replace the _Natural_ _Material_ with _Wind_ on all effects.\n* You never suffer ill effects from _Falling_.\n* You have _Resistance_ to _Crush_, _Natural_, and _Lightning_.",
         "bonuses": {
           "weakness_resistance": [
             { "damage": "Crush", "mod": -1 },
@@ -206,10 +206,10 @@
         "keywords": ["Spirit"],
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your wooden form grants you the following effects:\n* Replace the _Natural_ _Material_ with _Wood_ on all effects.\n* Increase your Resistance to _Crush_ and _Stab_ by 1 step.\n* Increase your Weakness to _Fire_ by 2 steps.",
+        "effect": "Your wooden form grants you the following effects:\n* Replace the _Natural_ _Material_ with _Wood_ on all effects.\n* You have _Resistance_ to _Crush_ and _Stab_.\n* You have a _Weakness_ to _Fire_.",
         "bonuses": {
           "weakness_resistance": [
-            { "damage": "Fire", "mod": 2 },
+            { "damage": "Fire", "mod": 1 },
             { "damage": "Crush", "mod": -1 },
             { "damage": "Stab", "mod": -1 }
           ]
@@ -306,8 +306,7 @@
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "stun": [0, 2, 3, 4],
-          "status": ["None", "_Exposed_", "_Exposed_", "_Exposed_"],
-          "negate": [0, 3, 4, 5]
+          "status": ["None", "_Exposed_ [3]", "_Exposed_ [4]", "_Exposed_ [5]"]
         },
         "analysis_notes": {
           "fudge": 0.4,
@@ -344,7 +343,7 @@
     "type": "Spirit Trait",
     "category": "Wood",
     "cost": "2 Growth Points",
-    "prereqs": "Wood Spirit.",
+    "prereqs": "Wood Spirit and at least _Novice Bloomcraft_.",
     "abilities": [
       {
         "name": "Natural Bloom",
@@ -362,20 +361,42 @@
         "effect": "Some of your flowers bloom into small fruit and other useful plants. Gain _Supplies_, and 1 _Stress_."
       },
       {
-        "name": "Fertile Bloom",
-        "keywords": ["Spirit"],
-        "category": "Utility",
-        "type": "Reaction",
-        "trigger": "Respite ends.",
-        "cost": "1 _Essence_",
-        "effect": "Your _Engagement_ is treated as _Fertile_ for the rest of the _Round_."
-      },
-      {
         "name": "Sprouting",
-        "keywords": ["Spirit"],
+        "keywords": ["Spirit", "Respite"],
         "category": "Utility",
         "type": "Passive",
-        "effect": "While in _Fertile_ Terrain, gain +1 _Stamina_ and +2 _Guard_ when _Regrowth_ triggers. You may be treated as a _Least_ or _Source_ 2 (_Wood_) as you spontaneously sprout branches and other growths that can be removed without harming you."
+        "effect": "While in _Fertile_ Terrain, gain +1 _Stamina_ and +2 _Guard_ at _Respite_. You are an infinite source of _Small_ _Wood_ objects that can be removed without harming you."
+      }
+    ],
+    "stances": [
+      {
+        "name": "Blooming Spirit",
+        "category": "Support",
+        "type": "Stance",
+        "desc": "You send down roots, spreading bloom across your arena.",
+        "speed": 0,
+        "essence": 2,
+        "block": 2,
+        "phase": "Spirit",
+        "momentum": "2/2/3/3/4/4",
+        "prereqs": "You may only enter this _Stance_ if it is possible for plantlife to grow in your _Arena_.",
+        "abilities": [
+          {
+            "name": "Ingrained",
+            "category": "Utility",
+            "type": "Passive",
+            "effect": "You may not spend _Speed_, but your _Arena_ is _Fertile_ this _Round_."
+          },
+          {
+            "name": "Rapid Growth",
+            "category": "Utility",
+            "type": "Passive",
+            "keywords": ["Respite"],
+            "effect": "At _Respite_, you may choose to make your _Arena_ _Overgrown_. End this effect when you leave this _Stance_."
+          }
+        ],
+        "adjust": 2,
+        "adjust_notes": "Free Fertile and free Overgrown, but can't move"
       }
     ],
     "desc": "You're covered in small, flowering growths that can be encouraged to grow at a moment's notice."
@@ -398,7 +419,7 @@
         "name": "Subtle Web",
         "category": "Camp",
         "type": "Power",
-        "effect": "You may lay down a web of fine metal wires to help secure the camp. Take a _Stress_ unless your companion spends their _Camp Action_ on this. Add the _Webbed_ modifier, which makes it more difficult to approach your camp and allows you to start with 6 Web Traps (see the Web Trap Ability from this Trait) if combat occurs."
+        "effect": "You may lay down a web of fine metal wires to help secure the camp. When your companion takes the _Work_ _Camp Action_ or by taking a _Fatigue_ you may add _Webbed_ to your camp, which makes it more difficult to approach your camp and allows you to start with 6 Web Traps (see the Web Trap Ability from this Trait) if combat occurs."
       },
       {
         "name": "Wire Whip",
@@ -425,7 +446,7 @@
         "type": "Maneuver",
         "keywords": ["Repeatable"],
         "cost": "1 _Momentum_",
-        "effect": "Create a Metallic Web in _Range_ 0, which is treated as a _Source_ 2 (_Metal_). When a creature becomes _Engaged_ with Metallic Web they must _Negate_ [4] or gain _Entangled_; this is also inflicted if the Metallic Web is used as a _Missile_. You are immune to all Metallic Webs you create. You may use this once on your _Turn_ regardless of _Stance_ after completing all the Stance's actions."
+        "effect": "Create a Metallic Web in _Range_ 0, which is a _Medium_ _Metal_ object. When a creature becomes _Engaged_ with Metallic Web they must _Negate_ [4] or gain _Entangled_; this is also inflicted if the Metallic Web is used for an Attack. You are immune to all Metallic Webs you create."
       }
     ],
     "desc": "You can emit thin metallic threads, similar to a spider."
@@ -441,7 +462,7 @@
         "name": "Locust Biology",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Increase your _Resistance_ to _Poison_ by 2 steps."
+        "effect": "Gain _Resistance_ to _Poison_."
       }
     ],
     "desc": "Locusts are near-impervious to poison due to their heavy reliance on it."
@@ -468,23 +489,18 @@
         "range": "Melee",
         "target": "Single-Target",
         "cost": "4 _Momentum_",
-        "effect": "Attack a Target within Range. You may choose to treat your Size as one higher for the purpose of this Grab. If you already have the _Target_ _Grabbed_ with this, make your Attack with _Advantage_. After inflicting _Grabbed_, whenever a target attempts to escape they take 2 Damage.",
+        "effect": "You may treat your Size as one higher for the Grab. If the _Target_ is already _Grabbed_, make your Attack with _Advantage_. After inflicting _Grabbed_, whenever a target attempts to escape they take 2 Damage.",
         "enhancements": {
           "enhances": [
             {
               "name": "Thrash",
               "cost": "1 _Momentum_",
-              "effect": "You thrash about as you grab the target, throwing them off-balance. Add _Impaired_."
+              "effect": "Add _Impaired_ [4]."
             },
             {
               "name": "Ripping Crush",
               "cost": "1 _Momentum_",
-              "effect": "You may only choose this _Enhancement_ if you already had the Target _Grabbed_ with this Attack prior to the Attack. Add _Bleeding_ 1 to the Attack."
-            },
-            {
-              "name": "Drag",
-              "cost": "None",
-              "effect": "If you _Grabbed_ with this Attack, you may immediately leave your current _Engagement_, paying all _Speed_ costs as normal and ignoring your Stance requirements."
+              "effect": "You may only choose this _Enhancement_ if you have the Target _Grabbed_. Add _Bleeding_ [5] to the Attack."
             }
           ]
         },
@@ -492,8 +508,7 @@
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "stun": [1, 1, 1, 1],
           "damage": [0, 4, 6, 8],
-          "status": ["None", "None", "_Grabbed_", "_Grabbed_"],
-          "negate": [0, 0, 4, 6]
+          "status": ["None", "None", "_Grabbed_ [4]", "_Grabbed_ [6]"]
         },
         "analysis_notes": {
           "fudge": -0.4,
@@ -526,18 +541,18 @@
         "damage": "Stab",
         "target": "Single-Target",
         "cost": "2 _Momentum_",
-        "effect": "Attack a Target within Range. If you became _Engaged_ with the Target this _Turn_, deal +1 Damage, even on a _Miss_.",
+        "effect": "If you became _Engaged_ with the Target this _Turn_, deal +1 Damage, even on a _Miss_.",
         "enhancements": {
           "enhances": [
             {
               "name": "Driving Ram",
               "cost": "1 _Speed_",
-              "effect": "Add _Push_ [4]. If you successfully _Push_ you may _Speed_ with the Target, paying only increased costs due to _Terrain_ and _Status_. Do not create any _Openings_ if you do so."
+              "effect": "Add _Push_ [2/4]. If you _Push_, you may move with the Target, reducing any _Speed_ costs by 1 and adding [_Safe_]."
             },
             {
               "name": "Head Down",
               "cost": "1 _Momentum_",
-              "effect": "You put your head down and charge with reckless abandon. Deal +_1/2/2/3_ Damage. If you Miss, lose 4 _Guard_ and gain _Exposed_. If you _Graze_, lose 2 _Guard_."
+              "effect": "Deal +_1/2/2/3_ Damage. If you Miss, lose 4 _Guard_ and gain _Exposed_. If you _Graze_, lose 2 _Guard_."
             }
           ]
         },
@@ -594,8 +609,7 @@
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "10-12"],
           "damage": [0, 1, 3, 3],
-          "status": ["None", "_Impaired_", "_Impaired_", "_Impaired_"],
-          "negate": [0, 2, 3, 5]
+          "status": ["None", "_Impaired_ [2]", "_Impaired_ [3]", "_Impaired_ [5]"]
         },
         "analysis_notes": {
           "fudge": -0.111,
@@ -627,19 +641,20 @@
         "range": "Melee",
         "target": "Single-Target",
         "cost": "2 _Momentum_",
-        "effect": "Make two Attacks. You may _Speed_ between these Attacks. If you _Hit_+ the same Target twice in a _Turn_ add _Bleeding_ 1.",
+        "effect": "Make two Attacks that you may move between. For every two times you _Hit_+ a Target in a _Turn_, inflict _Bleeding_ [4].",
         "enhancements": {
           "enhances": [
             {
               "name": "Furious Assault",
               "cost": "1 _Momentum_",
               "reactive": true,
-              "effect": "You may _Speed_ and Attack again at a -1 _Penalty_. You may repeat this _Enhancement_, but take an additional -1 _Penalty_ each time."
+              "effect": "Attack the same Target again at a -1 _Penalty_. You may repeat this _Enhancement_, but take an additional -1 _Penalty_ each time."
             },
             {
               "name": "Rend",
               "cost": "1 _Momentum_",
-              "effect": "You may purchase this _Enhancement_ after a _Hit_+ on a Target. Add [_Piercing_] and a +1 to the _Attack Roll_ to all subsequent <u>Claw</u> Attacks against the Target this _Turn_. You may purchase this _Enhancement_ any number of times in a _Turn_ and the effects stack."
+              "reactive": true,
+              "effect": "You must _Hit_+ before you can use this. Add [_Piercing_] and a +1 to the _Attack Roll_ to all subsequent <u>Claw</u> Attacks against the Target this _Turn_."
             }
           ]
         },
@@ -674,7 +689,7 @@
         "range": "0 (_Reach_)",
         "target": "Single-Target",
         "cost": "3 _Momentum_",
-        "effect": "Attack a Target within Range. When a creature in your _Arena_ creates an _Opening_, you may pay 1 _Momentum_ to treat yourself as _Engaged_ with the Target.",
+        "effect": "Attack a Target within Range.",
         "enhancements": {
           "enhances": [
             {
@@ -693,8 +708,7 @@
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "damage": [2, 3, 5, 7],
-          "negate": [0, 0, 3, 4],
-          "status": ["None", "None", "_Impaired_", "_Impaired_"]
+          "status": ["None", "None", "_Impaired_ [3]", "_Impaired_ [4]"]
         }
       }
     ],
@@ -717,7 +731,7 @@
         "name": "Skilled Climber",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "You do not require a _Free Hand_ to remain _Climbing_, ignore all _Movement_ penalties, and do not have _Disadvantage_ on rolls due to _Climbing_."
+        "effect": "While _Climbing_ you are always treated as if you had _Free Hands_ and do not have _Disadvantage_ on rolls due to _Climbing_. Additionally, you may spend _Momentum_ as _Speed_ when paying the increased Cost due to _Climbing_."
       }
     ],
     "desc": "You're a natural climber, allowing you to easily scale even the most sheer of surfaces."
@@ -775,13 +789,36 @@
         "name": "Scent of Blood",
         "category": "Offensive",
         "type": "Passive",
-        "effect": "You always know the creature within Range 1 with the least current Stamina. Whenever a _Stance_ would have you target the nearest creature, you may instead choose that creature."
+        "effect": "You always know the creature within Range 1 with the least current Stamina."
       },
       {
         "name": "Finisher",
         "category": "Offensive",
         "type": "Passive",
-        "effect": "When attacking creatures with half their _Stamina_ or less gain a +1 to the _Attack Roll_. Additionally, the first Attack each _Round_ against such a creature gains [_Discount_ 1]."
+        "effect": "When attacking creatures with less than or equal to half their _Stamina_ or _Health Bar_, gain a +1 to the _Attack Roll_. Additionally, the first Attack each _Round_ against such a creature gains [_Discount_ 1]."
+      }
+    ],
+    "stances": [
+      {
+        "name": "Hunting Spirit",
+        "category": "Offensive",
+        "type": "Stance",
+        "desc": "You choose prey, then viciously strike them.",
+        "speed": 2,
+        "essence": 0,
+        "block": 0,
+        "phase": "Spirit",
+        "momentum": "3/3/4/4/5/5",
+        "abilities": [
+          {
+            "name": "Mark Prey",
+            "category": "Offensive",
+            "type": "Passive",
+            "keywords": ["Respite"],
+            "effect": "At _Respite_, choose a hostile creature and inflict _Studied_. This _Round_, you may use any number of Attacks so long as they are targeting that creature, and all Attacks automatically add _Stun_ equal to their Cost. Gain 2 _Momentum_ if you defeat that creature. All Attacks against other creature have _Disadvantage_."
+          }
+        ],
+        "adjust": 2
       }
     ],
     "desc": "You're a natural killer, and excel at hunting and eliminating other creatures."
@@ -816,7 +853,35 @@
         "name": "Combat Mount",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "You may ignore any penalties due to size associated with a single smaller creature _Grabbing_ you. At any point, as a _Reaction_, a smaller ally that is _Engaged_ with you may spend 1 _Speed_ or you may spend 1 _Momentum_ to allow them to immediately _Grab_ you. While grabbed by an ally they may spend your _Speed_ for speed and use your _Mobility_ _Maneuvers_ on their _Turn_, but may not use it to pay for their own abilities. Additionally, while _Grabbed_ by an ally, on your turn they may choose exactly where you move, but you must otherwise obey your _Stance_."
+        "effect": "You may ignore any penalties due to size associated with a single smaller creature _Grabbing_ you. At any point, as a _Reaction_, a smaller ally that is _Engaged_ with you may spend 1 _Speed_ or you may spend 1 _Momentum_ to allow them to immediately _Grab_ you. While grabbed by an ally they may spend your _Speed_ and use your _Mobility_ _Maneuvers_ on their _Turn_, but may not use it to pay for their own abilities."
+      }
+    ],
+    "stances": [
+      {
+        "name": "Noble Steed",
+        "category": "Mobility",
+        "type": "Stance",
+        "desc": "You focus on transporting an ally, putting your powerful speed to use.",
+        "speed": 4,
+        "essence": 0,
+        "block": 2,
+        "phase": "Spirit-1",
+        "momentum": "2/2/3/3/4/4",
+        "abilities": [
+          {
+            "name": "Pickup",
+            "category": "Utility",
+            "type": "Passive",
+            "keywords": ["Respite"],
+            "effect": "You may spend _Speed_ to become _Engaged_ with an ally. They may then _Grab_ you at no _Cost_."
+          },
+          {
+            "name": "Dedicated Mount",
+            "category": "Utility",
+            "type": "Passive",
+            "effect": "This _Round_ you may only make _Light_ _Attacks_. You and your rider have _Advantage_ on all _Defense Rolls_ on either of your Turns. Your rider reduces the cost to _Negate_ all _Forced Movement_ effects by 2."
+          }
+        ]
       }
     ],
     "desc": "You're a natural killer, and excel at hunting and eliminating other creatures."
@@ -879,7 +944,7 @@
         "name": "Big Eyes",
         "category": "Camp",
         "type": "Power",
-        "effect": "Once per _Journey_, when you are the target of the _Pamper_ _Camp Action_, you may clear a _Stress_ for any present party member."
+        "effect": "Once per _Leg_, when you are the target of the _Pamper_ _Camp Action_, you may clear a _Stress_ for any present party member."
       },
       {
         "name": "Avenge the Mascot",
@@ -995,7 +1060,8 @@
         "name": "Resilience",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Gain +2 _Stamina_ and +2 _Guard_.",
+        "keywords": ["Respite"],
+        "effect": "Gain +2 _Stamina_ and +2 _Guard_. At _Respite_, gain 3 _Guard_.",
         "bonuses": { "stamina": 2, "guard": 2 }
       }
     ]
@@ -1022,18 +1088,41 @@
         "effect": "Whenever an ally would suffer an effect they could avoid by being moved you may rescue them, taking the effect in their place."
       },
       {
-        "name": "Watchful Protector",
-        "category": "Utility",
-        "type": "Passive",
-        "effect": "Whenever a Stance requires that you Target the nearest enemy, you may instead choose the nearest enemy _Engaged_ with an ally."
-      },
-      {
         "name": "Shepherd",
         "category": "Utility",
         "keywords": ["Instinctive"],
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "effect": "An ally in the _Engagement_ may immediately leave it, spending no _Speed_ and creating no _Opening_."
+      }
+    ],
+    "stances": [
+      {
+        "name": "Shepherding Spirit",
+        "category": "Support",
+        "type": "Stance",
+        "desc": "You focus on transporting an ally, putting your powerful speed to use.",
+        "speed": 2,
+        "essence": 0,
+        "block": 3,
+        "phase": "Spirit-1",
+        "momentum": "2/2/3/3/4/4",
+        "abilities": [
+          {
+            "name": "Protective",
+            "category": "Utility",
+            "type": "Passive",
+            "effect": "Increase the _Block_ of all _Engaged_ allies by 2. When you become _Engaged_ with an ally, they gain 2 _Guard_."
+          },
+          {
+            "name": "Corral",
+            "category": "Defensive",
+            "type": "Reaction",
+            "cost": "None",
+            "trigger": "An enemy _Engages_ an ally.",
+            "effect": "You may immediately move as if it were your _Turn_, spending _Speed_ as normal and using any _Mobility_ _Maneuvers_ that you wish. Move to _Engage_ the triggering ally. You may then use _Shepherd_ on them."
+          }
+        ]
       }
     ]
   },
@@ -1082,14 +1171,14 @@
 
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are extremely small, somewhere between the size of a rat and a typical house cat, granting you greatly improved agility and speed.\n&nbsp;\nWhen your tiny size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You are extremely small, somewhere between the size of a rat and a typical house cat, granting you greatly improved agility and speed. Additionally, you can be Manifested a short distance away from your companion, so long as there is the appropriate element.\n&nbsp;\nWhen your tiny size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Diminutive Agility",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 1/2 and decreases their _Phase_ by 1, gains +1 _Speed_ and +1 _Manifest Range_. If they are already _Phase_ 1, instead gain an additional +1 _Speed_. You may _Manifest_ your Spirit from a _Source_ 1 and your spirit is treated as a _Source_ 1 for their element",
-        "bonuses": { "phase": -1, "speed": 1, "manifest_range": 1, "manifest_source": 1 }
+        "effect": "Your Spirit becomes Size 1/2 and decreases their _Phase_ by 1 and gains +1 _Speed_. If they are already _Phase_ 1, instead gain an additional +1 _Speed_. Additionally, whenever you would be _Manifested_ adjacent to your companion, you may instead _Manifest_ in any adjacent _Arena_ so long as it has an appropriate _Source_ or at least 1 _Load_ of the appropriate _Element_.",
+        "bonuses": { "phase": -1, "speed": 1 }
       }
     ]
   },
@@ -1104,14 +1193,14 @@
         "name": "Small Size",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction. Your spirit is treated as a _Source_ 2 of their element, although you may not use them as a _Missile_."
+        "effect": "You are small, somewhere between the size of a cat and typical dog, granting you increased agility and speed. Additionally, you can be Manifested a very short distance away from your companion, so long as there is the appropriate element.\n&nbsp;\nWhen your small size would aid or harm a situation, gain or lose +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Small Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 1 and gains +2 _Stamina_ and +1 _Guard_. You may _Manifest_ your Spirit from a _Source_ 2, and your spirit is treated as a _Source_ 2 for their element.",
-        "bonuses": { "manifest_source": 2 }
+        "effect": "Your Spirit becomes Size 1 and gains +2 _Stamina_ and +1 _Guard_. Additionally, whenever you would be _Manifested_ adjacent to your companion, you may instead _Manifest_ anywhere in the same _Arena_ so long as it has an appropriate _Source_ or at least 2 _Load_ of the appropriate _Element_.",
+        "bonuses": { "stamina": 2, "guard": 1 }
       }
     ]
   },
@@ -1132,8 +1221,8 @@
         "name": "Medium Profile",
         "category": "Mobility",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 2 and gains +3 _Stamina_ and +5 _Guard_. You may _Manifest_ your Spirit from a _Source_ 3, and your spirit is treated as a _Source_ 3 for their element.",
-        "bonuses": { "stamina": 3, "guard": 5, "manifest_source": 3 }
+        "effect": "Your Spirit becomes Size 2 and gains +3 _Stamina_ and +5 _Guard_.",
+        "bonuses": { "stamina": 3, "guard": 5 }
       }
     ]
   },
@@ -1154,8 +1243,8 @@
         "name": "Large Profile",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Your Spirit becomes Size 3 and gains +6 _Stamina_ and +10 _Guard_. Additionally, its _Phase_ and _Manifest Range_ are increased by 1. You may _Manifest_ your Spirit from a _Source_ 4, and your spirit is treated as a _Source_ 4 for their element.",
-        "bonuses": { "stamina": 6, "guard": 10, "phase": 1, "manifest_source": 4, "manifest_range": -1 }
+        "effect": "Your Spirit becomes Size 3 and gains +6 _Stamina_ and +10 _Guard_. Additionally, its _Phase_ and _Manifest Range_ are increased by 1.",
+        "bonuses": { "stamina": 6, "guard": 10, "phase": 1 }
       }
     ]
   }

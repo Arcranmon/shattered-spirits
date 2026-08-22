@@ -5,6 +5,8 @@
         <main-menu-button to="/world/the-world-in-brief">The Shattered World</main-menu-button>
         <main-menu-button to="/rules/playing-the-game">Playing the Game</main-menu-button>
         <main-menu-button to="/character-options/basic-skills">Character Options</main-menu-button>
+        <main-menu-button to="/equipment">Equipment</main-menu-button>
+        <main-menu-button to="/sample-characters">Sample Characters</main-menu-button>
         <!-- 
 <custom-button to="/character-creator">Character Creator (WIP)</custom-button> <br /> --->
         <main-menu-button to="/search">Search</main-menu-button>

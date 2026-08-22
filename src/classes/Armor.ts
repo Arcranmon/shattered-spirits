@@ -54,11 +54,14 @@ class Armor extends Equipment {
   get HasBlock() {
     return this.block_ > 0
   }
+  get HasGuard() {
+    return this.Guard > 0
+  }
   get HasSlots() {
     return this.consumable_slots_ > 0
   }
-  get ArmorHeader() {
-    return '**_Block_:** ' + this.block_
+  get ArmorSummary() {
+    return '**_Block_:** ' + this.block_ + '; **_Guard_:** ' + this.Guard
   }
   get HasTraits() {
     return this.traits_.length > 0

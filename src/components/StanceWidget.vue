@@ -61,6 +61,9 @@
       </div>
       <br />
       <div style="padding-left: 1em">
+        <div v-if="stance.HasPrereqs">
+          <display-tooltip-text :string="stance.PrereqsHeader" />
+        </div>
         <div v-if="stance.HasEffect">
           <display-tooltip-text :string="stance.EffectHeader" />
         </div>
@@ -127,8 +130,8 @@ export default Vue.extend({
   grid-template-columns: 1fr 5fr;
 }
 .top-row-layout {
-  display: grid;
   grid-template-columns: 1fr 1fr;
+  display: grid;
   font-size: 12px;
 }
 .bottom-row-layout {

@@ -86,11 +86,10 @@
           <v-col
             class="chart--cols justify-center align-center"
             cols="2"
-            >{{ type.Defenses.Block }}</v-col
+            >{{ type.Block }}</v-col
           >
         </v-row>
       </div>
-      <display-tooltip-text :string="type.ManifestHeader" />
       <br />
     </div>
   </div>

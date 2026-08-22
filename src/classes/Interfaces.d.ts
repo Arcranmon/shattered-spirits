@@ -33,6 +33,7 @@ declare interface IArchetypeData extends IBaseData {
 
 declare interface IAbilityPackageData extends IBaseData {
   abilities?: IAbilityData[]
+  stances?: IStanceData[]
   cost?: string
 }
 
@@ -50,8 +51,6 @@ declare interface IBonusesData {
   load?: number
   equipment?: string[]
   weakness_resistance?: IWeaknessResistanceData[]
-  manifest_source: number
-  manifest_range: number
 }
 
 declare interface IEquipmentData extends IAbilityPackageData {
@@ -182,11 +181,9 @@ declare interface IAbilityData extends IBaseData {
   imbues?: IEnhanceData[]
   enhancements?: IEnhancementData
   cost?: string
-  category: string
   speed?: number
   range?: string
   reqs?: string
-  type?: string
   trigger?: string
   phase?: number
   target?: string
@@ -246,16 +243,11 @@ declare interface ISpiritFormData extends IBaseData {
 
 declare interface ISubtypeData extends IBaseData {
   element: string
-  defenses: IDefenseData
-  traits: string[]
-  conditions: string[]
   stamina: number
   weapons: number
   block: number
   guard: number
   speed: number
-  manifest: number
-  soak: string
   growth_points: number
   phase: number
 }
@@ -280,6 +272,9 @@ declare interface IStatusData extends IBaseData {
   see?: string
   reacts?: Array<string>
   type?: string
+  segments?: number
+  clock?: number
+  remove?: string
 }
 
 declare interface ICareerData extends IBaseData {

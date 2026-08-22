@@ -20,6 +20,10 @@
     "effect": "When you roll with Advantage, roll an additional die then choose which die or dice to resolve the result with. For example, in an _Attack Roll_, you would roll 3d6, then choose which 2 dice to use."
   },
   {
+    "name": "Ammunition",
+    "effect": "Equipment with this tag has a limited pool of usable ammunition before it can no longer be used. Whenever narratively appropriate or you roll a 2 or less on an Attack, lose 1 Ammunition. Other abilities may allow you to spend or restore Ammunition."
+  },
+  {
     "name": "Advantage (Skill Challenge)",
     "effect": "Advantage is an _Augment_ that can be purchased in a _Skill Challenge_. When you purchase it, you set things up to aid yourself or another in the future, creating a condition or augmented opportunity."
   },
@@ -97,7 +101,7 @@
   },
   {
     "name": "Bending Maneuver",
-    "effect": "When a creature makes a Bending Maneuver they reach out and directly manipulate an element on a target. A Bending Strike makes the following changes:\n* Replace [_Martial_] with [_Spirit_] and remove [_Unarmed_].\n* Use your _Bend_ _Range_ as the effect Range.\n* If the Ability targets a creature, it may only Target ones made of or _Wearing_ at least _Source_ 2 of the _Bend_ _Element_.\n* If the Ability targets an item, it may only Target ones made of the _Bend_ _Element_. If the effect inflicts _Disarm_ or _Sunder_ limit your targeting based on this rather than the creature."
+    "effect": "When a creature makes a Bending Maneuver they reach out and directly manipulate an element on a target. A Bending Strike makes the following changes:\n* Replace [_Martial_] with [_Spirit_] and remove [_Unarmed_].\n* Use your _Bend_ _Range_ as the effect Range.\n* If the Ability targets a creature, it may only Target ones made of or _Wearing_ at least 3 _Load_ of the _Bend_ _Element_.\n* If the Ability targets an item, it may only Target ones made of the _Bend_ _Element_. If the effect inflicts _Disarm_ or _Sunder_ limit your targeting based on this rather than the creature."
   },
   {
     "name": "Block",
@@ -363,6 +367,10 @@
     "effect": "One of the spiritual elements, representing the ability to manipulate fire and heat. Besides bending abilities, flame spirits are also known for inciting rage, massively improving physical capabilities, as well as being able to see the future in the flames. This also may refer to _Terrain_ or _Equipment_ made of flames."
   },
   {
+    "name": "Flames Flicker",
+    "effect": "Many Flame Terrain have a Flames Flicker effect. When this happens, roll a d6. On a 1-2, decrease the size of the fire (Roaring->Blazing->Smoldering). On a 3-4, do nothing. On a 5-6, _Ignite_ a random piece of _Flammable_ Terrain within Range 0. If the entire _Arena_ is already Flame Terrain, instead _Ignite_ a random piece of _Flammable_ Terrain within Range 1."
+  },
+  {
     "name": "Flammable",
     "effect": "Terrain with this keyword can be _Ignited_ by a variety of _Flame_ abilities."
   },
@@ -390,10 +398,6 @@
   {
     "name": "Forced Movement",
     "effect": "Any effect that forcibly moves a creature, such as _Push_, _Pull_, or _Slide_. Forced Movement typically does not create _Openings_, but can trigger _Terrain_ effects."
-  },
-  {
-    "name": "Forceful",
-    "effect": "A modifier that may be applied to any _Forced Movement_ effect that significantly heightens the effect."
   },
   {
     "name": "Fortified",
@@ -514,10 +518,6 @@
     "effect": "The longest unit of time relevant to adventurers; a Journey consists of all travel and conflicts in between periods of _Downtime_."
   },
   {
-    "name": "Least",
-    "see": "Source"
-  },
-  {
     "name": "Leg",
     "effect": "A unit of time used to measure the travel through a relatively similar biome and that uses a single _Clock_ to track progress."
   },
@@ -554,7 +554,7 @@
   { "name": "Manifesting", "see": "Manifest" },
   {
     "name": "Manifest",
-    "effect": "Characters may choose to Manifest their spirit, giving it physical form. Outside of combat, characters can freely Manifest their spirit so long as their craft is not actively suppressed by their surroundings. In combat, you may Manifest your Spirit at _Respite_ at an appropriate Source (as defined by their size) within their Manifest Range. You may always Manifest them at _Melee_ Range regardless of _Source_ for 1 _Essence_. They become _Engaged_ with any creatures at said _Source_."
+    "effect": "Characters may choose to Manifest their spirit, giving it physical form. Outside of combat, characters can freely Manifest their spirit so long as their craft is not actively suppressed by their surroundings. In combat, you may Manifest your Spirit at _Melee_ _Range_."
   },
   {
     "name": "Martial",
@@ -665,7 +665,6 @@
     "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they may suffer the below _Wounds_:\n* **6-12**: Gain _Envenomed_.\n* **3-5**: Gain _Envenomed_ twice.\n* **2-**: Gain _Envenomed_ thrice."
   },
   { "name": "Pulled", "see": "Pull" },
-  { "name": "Forceful Push", "see": "Push" },
   { "name": "Pushed", "see": "Push" },
   { "name": "Pushes", "see": "Push" },
   {
@@ -754,7 +753,19 @@
   },
   {
     "name": "Source",
-    "effect": "Sources are strong concentrations of elemental power or material that can easily be controlled by spiritcraft. Sources are ranked from 1-5, but may just be referred to as a Source when the severity does not matter. Different abilities typically require Sources, either to power their spiritcraft or simply fling with kinetic force. Items and other objects within the world will specify what type and rank of Source they are. Typically, sources are the standard elemental types, but other sources (such as Plant) might be referenced by other abilities."
+    "effect": "Sources are strong concentrations of elemental power or material that can easily be controlled by spiritcraft. Typically, sources are the standard elemental types, but other sources (such as Ice) might be referenced by other abilities. Most Equipment _Load_ 1 or greater can be treated as a _Minor Source_. A _Minor_ _Source_ can be used for most abilities, but is destroyed in the process, except for Equipment; it is instead _Damaged_."
+  },
+  {
+    "name": "Missile",
+    "effect": "Missiles are used for minor attacks, and represent an amount of an element equal to an arrow or similar. Many items grant Missiles, and it is common for battlefields to have some Missiles available."
+  },
+  {
+    "name": "Safely",
+    "effect": "When a _Minor Source_ is used Safely it is not destroyed."
+  },
+  {
+    "name": "Fling",
+    "effect": "When you Fling something, place it in the Target's _Engagement_. If it is a Spirit effect, the object you Fling must also be in Range; otherwise, you must be Wielding it."
   },
   {
     "name": "Phase",

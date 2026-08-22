@@ -40,12 +40,6 @@
           v-bind:cols="effectWidth">
           <b>Effect</b>
         </v-col>
-        <v-col
-          class="chart--head chart--head-right"
-          v-if="chart.HasNegate"
-          v-bind:cols="negateWidth">
-          <b>Negate</b>
-        </v-col>
       </v-row>
       <div
         v-for="(n, index) in 4"
@@ -88,13 +82,6 @@
             v-bind:cols="effectWidth">
             <display-tooltip-text :string="chart.Status(index)" />
           </v-col>
-          <v-col
-            class="chart--cols chart--cols-right"
-            v-if="chart.HasNegate"
-            v-bind:class="getRank(index)"
-            v-bind:cols="negateWidth"
-            >{{ chart.Negate(index) }}
-          </v-col>
         </v-row>
       </div>
     </div>
@@ -121,15 +108,11 @@ export default Vue.extend({
   },
   computed: {
     damageWidth() {
-      if (this.chart.HasDamage) return 1
+      if (this.chart.HasDamage) return 2
       return 0
     },
     stunWidth() {
-      if (this.chart.HasStun) return 1
-      return 0
-    },
-    negateWidth() {
-      if (this.chart.HasRoll) return 2
+      if (this.chart.HasStun) return 2
       return 0
     },
     effectWidth() {

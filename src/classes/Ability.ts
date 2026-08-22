@@ -13,13 +13,11 @@ class Ability extends Base {
   protected enhancements_: IEnhancementData
   protected imbues_: IEnhanceData[]
   protected cost_: string
-  protected category_: string
   protected speed_: number
   protected range_: string
   protected reqs_: string
   protected target_: string
   protected phase_: number
-  protected type_: string
   protected trigger_: string
   protected origin_: AbilityPackage
   protected bonuses_: Bonuses
@@ -138,6 +136,12 @@ class Ability extends Base {
     this.origin_ = origin
   }
   public get Icon() {
+    if (this.name_ === 'Minor Flamecraft') return require('@/assets/disciplines/Flame.svg')
+    if (this.name_ === 'Minor Earthcraft') return require('@/assets/disciplines/Earth.svg')
+    if (this.name_ === 'Minor Metalcraft') return require('@/assets/disciplines/Metal.svg')
+    if (this.name_ === 'Minor Windcraft') return require('@/assets/disciplines/Wind.svg')
+    if (this.name_ === 'Minor Watercraft') return require('@/assets/disciplines/Water.svg')
+    if (this.name_ === 'Minor Woodcraft') return require('@/assets/disciplines/Wood.svg')
     if (this.category_ === 'Defensive') return require('@/assets/Defensive.svg')
     if (this.category_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
     if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
@@ -178,6 +182,38 @@ class Ability extends Base {
         enhance.effect
     }
     return text
+  }
+  public get EnhancementsByHeader() {
+    const groupedByRole = Map.groupBy(this.enhancements_.enhances, (key) => key.cost)
+    var reactiveString = ' _[R]_'
+    var exclusiveString = ' _[E]_'
+    var headersAndEffects = new Map<string, string[]>()
+    for (var [key, enhances] of groupedByRole) {
+      var text = []
+      for (var enhance of enhances) {
+        text.push('**' + enhance.name + '**' + (enhance.reactive ? reactiveString : '') + (enhance.exclusive ? exclusiveString : '') + ': ' + enhance.effect)
+      }
+      if (key == 'None') key = 'No Cost'
+      headersAndEffects.set(key + ' Enhancements', text)
+    }
+    headersAndEffects = new Map([...headersAndEffects.entries()].sort((a, b) => (a[0] == 'None' ? -1 : b[0] == 'None' ? 1 : a[0].localeCompare(b[0]))))
+    return headersAndEffects
+  }
+  public get ImbuesByHeader() {
+    const groupedByRole = Map.groupBy(this.imbues_, (key) => key.cost)
+    var reactiveString = ' _[R]_'
+    var exclusiveString = ' _[E]_'
+    var headersAndEffects = new Map<string, string[]>()
+    for (var [key, enhances] of groupedByRole) {
+      var text = []
+      for (var enhance of enhances) {
+        text.push('**' + enhance.name + '**' + (enhance.reactive ? reactiveString : '') + (enhance.exclusive ? exclusiveString : '') + ': ' + enhance.effect)
+      }
+      if (key == 'None') key = 'No Cost'
+      headersAndEffects.set(key + ' Imbues', text)
+    }
+    headersAndEffects = new Map([...headersAndEffects.entries()].sort((a, b) => (a[0] == 'None' ? -1 : b[0] == 'None' ? 1 : a[0].localeCompare(b[0]))))
+    return headersAndEffects
   }
   public get HasImbues() {
     return this.imbues_.length > 0
@@ -342,8 +378,6 @@ class Ability extends Base {
     this.imbues_ = data.imbues || []
     this.defend_ = data.defend || ''
     this.cost_ = data.cost || ''
-    this.category_ = data.category || ''
-    this.type_ = data.type || 'MISSING'
     this.speed_ = data.speed || 0
     this.frequency_ = data.frequency || ''
     this.reqs_ = data.reqs || ''

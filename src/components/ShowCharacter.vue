@@ -109,9 +109,6 @@
                     <h5>Skills</h5>
                   </v-tab>
                   <v-tab>
-                    <h5>Powers</h5>
-                  </v-tab>
-                  <v-tab>
                     <h5>Passives</h5>
                   </v-tab>
                   <v-tab> <h5>Maneuvers</h5> </v-tab>
@@ -131,11 +128,6 @@
                   <v-tab-item>
                     <ability-tab
                       abilityType="Skill"
-                      :character="character" />
-                  </v-tab-item>
-                  <v-tab-item>
-                    <ability-tab
-                      abilityType="Power"
                       :character="character" />
                   </v-tab-item>
                   <v-tab-item>

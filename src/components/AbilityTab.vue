@@ -55,15 +55,30 @@ export default Vue.extend({
         return ['All', 'Light', 'Balanced', 'Heavy']
       } else if (this.abilityType == 'Gambit') {
         return ['All', 'General', 'Offensive', 'Defensive']
+      } else if (this.abilityType == 'Skill') {
+        return ['All', 'Camp', 'Downtime', 'Skill', 'Travel']
       } else {
         return ['All', 'Offensive', 'Defensive', 'Utility', 'Mobility']
       }
     },
     abilities() {
-      if (this.spirit) {
-        return this.character.Spirit.FilteredAbilities(this.abilityType, this.CategoryFilter, this.keywordFilter)
+      if (this.abilityType == 'Skill') {
+        if (this.spirit) {
+          var skills = this.character.Spirit.FilteredAbilities('Talent', this.categoryFilter, 'All')
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Power', this.categoryFilter, 'All'))
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Boon', this.categoryFilter, 'All'))
+          return skills
+        }
+        return [
+          ...this.character.FilteredAbilities('Talent', this.categoryFilter, 'All'),
+          ...this.character.FilteredAbilities('Power', this.categoryFilter, 'All'),
+          ...this.character.FilteredAbilities('Boon', this.categoryFilter, 'All'),
+        ]
       }
-      return this.character.FilteredAbilities(this.abilityType, this.CategoryFilter, this.keywordFilter)
+      if (this.spirit) {
+        return this.character.Spirit.FilteredAbilities(this.abilityType, this.categoryFilter, this.keywordFilter)
+      }
+      return this.character.FilteredAbilities(this.abilityType, this.categoryFilter, this.keywordFilter)
     },
   },
   data() {

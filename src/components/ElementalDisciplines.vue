@@ -25,7 +25,8 @@
           class="character-tab-content-background">
           <v-tab-item
             class="character-tab-content"
-            v-for="subdiscipline in subdisciplines[elementTab]">
+            v-for="subdiscipline in subdisciplines[elementTab]"
+            :key="subdiscipline.Name">
             <show-cards
               :inputs="
                 $store.getters

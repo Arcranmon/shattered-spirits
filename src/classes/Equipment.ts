@@ -13,6 +13,13 @@ class Equipment extends AbilityPackage {
   get Load() {
     return this.load_
   }
+  get Size() {
+    var sizes = ['Tiny', 'Small', 'Medium', 'Large']
+    return sizes[this.load_]
+  }
+  get IsEquipment() {
+    return true
+  }
   get Hands() {
     return this.hands_
   }
@@ -43,7 +50,7 @@ class Equipment extends AbilityPackage {
   }
 
   get Headline() {
-    return '**_Rarity_:** ' + this.Rarity + '; **_Load_:** ' + this.Load + '; **_Durability_:** ' + this.Durability
+    return '**_Rarity_:** ' + this.Rarity + '; **_Load_:** ' + this.Load + '; **_Durability_:** ' + (this.Durability > 0 ? this.Durability : 'NA')
   }
 
   // ==========================================================

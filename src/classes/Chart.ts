@@ -3,7 +3,6 @@ import { store } from '@/store'
 class Chart {
   private roll_: Array<string>
   private damage_: Array<number>
-  private negate_: Array<number>
   private stun_: Array<number>
   private status_: Array<string>
 
@@ -24,10 +23,6 @@ class Chart {
   public get Roll() {
     return this.roll_
   }
-  public Negate(i: number) {
-    if (this.negate_[i] == 0) return '—'
-    return this.negate_[i]
-  }
   public Status(i: number): string {
     if (this.status_[i] == 'None') return '—'
     return this.status_[i]
@@ -40,9 +35,6 @@ class Chart {
   }
   get HasRoll() {
     return this.roll_.length > 0
-  }
-  get HasNegate() {
-    return this.negate_.length > 0
   }
   get HasEffect() {
     return this.status_.length > 0
@@ -62,7 +54,6 @@ class Chart {
     this.stun_ = data.stun || []
     this.damage_ = data.damage || []
     this.status_ = data.status || []
-    this.negate_ = data.negate || []
   }
 }
 export default Chart

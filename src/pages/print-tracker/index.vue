@@ -5,7 +5,7 @@
     <!--- Character side of sheet --->
     <!--- Tokens --->
     <div
-      style="top: -0.5in; left: 0.25in"
+      style="top: -0.5in; left: 0.75in"
       class="token-wrapper">
       <div class="token-circle">
         <img
@@ -20,22 +20,7 @@
       </div>
     </div>
     <div
-      style="top: -0.5in; left: 2in"
-      class="token-wrapper">
-      <div class="token-circle">
-        <img
-          :src="require('@/assets/Defend.svg')"
-          style="height: 5em; margin-top: 3em" />
-      </div>
-      <div class="token-text"><b>Posture</b></div>
-      <div
-        class="token-text"
-        style="font-style: italic">
-        Lost at Respite, gain 2 Guard per Posture lost.
-      </div>
-    </div>
-    <div
-      style="top: -0.5in; left: 3.75in"
+      style="top: -0.5in; left: 3.25in"
       class="token-wrapper">
       <div class="token-circle">
         <img
@@ -179,7 +164,7 @@
     <!--- Spirit side of sheet --->
     <!--- Tokens --->
     <div
-      style="top: -0.5in; right: 3.75in"
+      style="top: -0.5in; right: 3.25in"
       class="token-wrapper">
       <div class="token-circle">
         <img
@@ -194,22 +179,7 @@
       </div>
     </div>
     <div
-      style="top: -0.5in; right: 2in"
-      class="token-wrapper">
-      <div class="token-circle">
-        <img
-          :src="require('@/assets/Defend.svg')"
-          style="height: 5em; margin-top: 3em" />
-      </div>
-      <div class="token-text"><b>Posture</b></div>
-      <div
-        class="token-text"
-        style="font-style: italic">
-        Lost at Respite, gain 2 Guard per Posture lost.
-      </div>
-    </div>
-    <div
-      style="top: -0.5in; right: 0.25in"
+      style="top: -0.5in; right: 0.75in"
       class="token-wrapper">
       <div class="token-circle">
         <img
@@ -226,7 +196,7 @@
 
     <!--- Trackers --->
     <div
-      style="top: 1.6in; right: 2in"
+      style="top: 1.6in; right: 2.5in"
       class="token-wrapper">
       <div class="token-text">
         <h2>{{ $route.params.character.Spirit.Name }}</h2>
@@ -257,19 +227,10 @@
         class="chart--row">
         <v-col
           class="chart--head"
-          :cols="6">
+          :cols="12">
           <b>
             <display-tooltip-text
               string="_Phase_"
-              :decorate="false" />
-          </b>
-        </v-col>
-        <v-col
-          class="chart--head"
-          :cols="6">
-          <b>
-            <display-tooltip-text
-              string="_Manifest_"
               :decorate="false" />
           </b>
         </v-col>
@@ -280,13 +241,8 @@
         class="chart--row">
         <v-col
           class="chart--cols justify-center align-center"
-          :cols="6"
+          :cols="12"
           >{{ $route.params.character.Spirit.Phase }}</v-col
-        >
-        <v-col
-          class="chart--cols justify-center align-center"
-          :cols="6"
-          >{{ $route.params.character.Spirit.ManifestHeader }}</v-col
         >
       </v-row>
       <v-row

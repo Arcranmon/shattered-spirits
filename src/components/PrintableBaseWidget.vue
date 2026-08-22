@@ -1,29 +1,43 @@
 <template>
   <div
+    v-if="ability"
     class="card-shape"
     :style="{ 'background-color': getBestColor }">
-    <div class="body">
+    <div
+      v-if="back"
+      class="body back-body">
+      <div
+        class="back-outline back-body"
+        :style="{ 'border-color': getBestColor, color: getBestColor }">
+        <inline-svg
+          :src="ability.Icon"
+          style="height: 1.5in; width: auto" />
+      </div>
+    </div>
+    <div
+      v-else
+      class="body">
       <div
         class="card-header"
-        :style="{ 'border-color': getBestColor }"
+        :style="{ 'outline-color': getBestColor, 'border-color': getBestColor }"
         style="position: relative">
-        <div
-          v-if="ability.HasOrigin"
-          style="position: absolute; bottom: 0; left: 5px; font-style: italic; font-size: 5pt">
-          {{ ability.From }} {{ ability.FromPlace }}
-        </div>
         <h4>{{ ability.Name }}</h4>
         <div style="text-align: center">
           <b>{{ ability.NamelessHeader }}</b>
         </div>
+        <div
+          v-if="ability.HasOrigin"
+          style="font-style: italic; font-size: 5pt; text-align: center; margin-top: -2pt">
+          {{ ability.From }} {{ ability.FromPlace }}
+        </div>
       </div>
-      <div style="padding-bottom: 2px">
+      <div>
         <v-row no-gutters>
           <v-col
             v-if="ability.HasCost"
             class="left-col"
-            :cols="6"
-            :style="{ 'border-color': getBestColor }"
+            :style="{ 'border-bottom': ability.Type == 'Attack' || ability.Type == 'Maneuver' ? 'thin solid' : '', 'border-color': getBestColor }"
+            :cols="ability.Type == 'Attack' || ability.Type == 'Maneuver' ? 6 : ''"
             style="text-align: center"
             ><div class="box-header">Cost</div>
             <display-tooltip-text
@@ -42,155 +56,306 @@
               id="rangeTargetSummary"
               :string="ability.RangeTargetSummary"
               :style="{ 'font-size': getFittingText(ability.RangeTargetSummary) }"
-              :decorate="false"
-          /></v-col>
-          <v-col
-            v-if="ability.HasKeywords"
-            v-bind:class="ability.Type == 'Attack' ? 'left-col' : ''"
-            :style="{ 'border-color': getBestColor }"
-            style="text-align: center; border-bottom: medium solid"
-            ><div class="box-header">Keywords</div>
-            <display-tooltip-text
-              :string="ability.KeywordsList"
               :decorate="false" /></v-col
           ><v-col
             v-if="ability.Type == 'Attack'"
             :cols="6"
-            class="right-col"
+            class="left-col"
             :style="{ 'border-color': getBestColor }"
-            style="text-align: center"
+            style="text-align: center; border-bottom: none"
             ><div class="box-header">Material and Damage</div>
             <display-tooltip-text
               :string="ability.MaterialDamageSummary"
               :decorate="false" /></v-col
           ><v-col
-            v-if="ability.HasTrigger"
-            class="right-col"
-            :style="{ 'border-color': getBestColor }"
+            v-if="ability.IsEquipment"
+            :style="{ 'border-bottom': ability.HasKeywords || ability.HasBlock || ability.HasGuard ? 'thin solid' : '', 'border-color': getBestColor }"
             style="text-align: center"
-            cols="12"
-            ><div class="box-header">Trigger</div>
+            cols="3"
+            ><div class="box-header">Size</div>
             <display-tooltip-text
-              :string="ability.Trigger"
+              :string="ability.Size"
               :decorate="false" /></v-col
           ><v-col
-            v-if="ability.HasMissile"
-            class="right-col"
-            :style="{ 'border-color': getBestColor }"
-            style="text-align: center"
-            cols="12"
-            ><div class="box-header">Missile</div>
+            v-if="ability.IsEquipment"
+            :style="{ 'border-bottom': ability.HasKeywords || ability.HasBlock || ability.HasGuard ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="text-align: center; border-left: thin solid"
+            cols="3"
+            ><div class="box-header">Durability</div>
+            {{ ability.Durability }}</v-col
+          ><v-col
+            v-if="ability.IsEquipment"
+            :style="{ 'border-bottom': ability.HasKeywords || ability.HasBlock || ability.HasGuard ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="text-align: center; border-left: thin solid"
+            cols="3"
+            ><div class="box-header">Hands</div>
+            {{ ability.Hands }}</v-col
+          ><v-col
+            v-if="ability.IsEquipment"
+            :style="{ 'border-bottom': ability.HasKeywords || ability.HasBlock || ability.HasGuard ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="text-align: center; border-left: thin solid"
+            cols="3"
+            ><div class="box-header">Rarity</div>
             <display-tooltip-text
-              :string="ability.Missile"
-              :decorate="false"
-          /></v-col>
+              :string="ability.Rarity"
+              :decorate="false" /></v-col
+          ><v-col
+            v-if="ability.HasBlock || ability.HasGuard"
+            :style="{ 'border-bottom': ability.HasKeywords ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="text-align: center"
+            cols="6"
+            ><div class="box-header">Block</div>
+            {{ ability.Block }}</v-col
+          ><v-col
+            v-if="ability.HasBlock || ability.HasGuard"
+            :style="{ 'border-bottom': ability.HasKeywords ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="text-align: center; border-left: thin solid"
+            cols="6"
+            ><div class="box-header">Guard</div>
+            {{ ability.Guard }}</v-col
+          ><v-col
+            v-if="ability.ShowClockOrSegment"
+            :style="{ 'border-bottom': ability.HasKeywords ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="text-align: center"
+            cols="6"
+            ><div class="box-header">Health Segments</div>
+
+            {{ dashOrNumber(ability.Segments) }}</v-col
+          ><v-col
+            v-if="ability.ShowClockOrSegment"
+            :style="{ 'border-bottom': ability.HasKeywords ? 'thin solid' : '', 'border-color': getBestColor }"
+            style="border-left: thin solid; text-align: center"
+            cols="6"
+            ><div class="box-header">Clock Size</div>
+            {{ dashOrNumber(ability.Clock) }}
+          </v-col>
+          <v-col
+            v-if="ability.HasFrequency"
+            :cols="6"
+            style="text-align: center"
+            :style="{ 'border-color': getBestColor }">
+            <div class="box-header">Frequency</div>
+            <display-tooltip-text :string="ability.Frequency" />
+          </v-col>
+          <v-col
+            v-if="ability.HasSource"
+            style="text-align: center"
+            :style="{ 'border-color': getBestColor }">
+            <div class="box-header">Source</div>
+            <display-tooltip-text
+              :string="ability.Source"
+              :decorate="false" />
+          </v-col>
+          <v-col
+            v-if="ability.HasHardness"
+            style="text-align: center"
+            :style="{ 'border-color': getBestColor }">
+            <div class="box-header">Hardness</div>
+            <display-tooltip-text :string="ability.Hardness" />
+          </v-col>
+          <v-col
+            v-if="ability.HasKeywords"
+            v-bind:class="ability.Type == 'Attack' || ability.HasFrequency || ability.HasTrigger ? 'right-col' : ''"
+            :style="{ 'border-color': getBestColor }"
+            style="text-align: center; border-bottom: none">
+            <div class="box-header">Keywords</div>
+            <display-tooltip-text
+              :string="ability.KeywordsList"
+              :decorate="false" />
+          </v-col>
         </v-row>
       </div>
       <div
-        style="padding-left: 1em; padding-right: 1em"
-        :style="{ 'border-color': getBestColor, 'border-bottom': middleBorder }"
-        v-if="
-          isAbilityPackage ||
-          ability.HasPrereqs ||
-          ability.HasFrequency ||
-          ability.SourceHeader ||
-          ability.HardnessHeader ||
-          ability.HasEffect ||
-          ability.HasSpecial ||
-          ability.HasEnter ||
-          ability.HasPrereqs
-        ">
-        <div v-if="isAbilityPackage && ability.HasDesc">
-          <display-tooltip-text
-            :string="ability.Desc"
-            :decorate="false" />
-        </div>
-        <div v-if="ability.HasPrereqs">
-          <display-tooltip-text
-            :string="ability.PrereqsHeader"
-            :decorate="false" />
-        </div>
-        <div v-if="ability.HasFrequency">
-          <display-tooltip-text :string="ability.FrequencyHeader" />
-        </div>
-        <div v-if="ability.HasSource">
-          <display-tooltip-text :string="ability.SourceHeader" />
-        </div>
-        <div v-if="ability.HasHardness">
-          <display-tooltip-text :string="ability.HardnessHeader" />
-        </div>
-        <div v-if="ability.HasEffect">
-          <display-tooltip-text
-            :string="ability.Effect"
-            :decorate="false" />
-        </div>
-        <div v-if="ability.HasSpecial">
-          <display-tooltip-text
-            :string="ability.Special"
-            :decorate="false" />
-        </div>
-        <div v-if="ability.HasEnter">
-          <display-tooltip-text :string="ability.EnterHeader" />
-        </div>
-        <div v-if="ability.HasCollide">
-          <display-tooltip-text :string="ability.CollideHeader" />
-        </div>
-        <div v-if="ability.HasEngaged">
-          <display-tooltip-text :string="ability.EngagedHeader" />
-        </div>
-        <div v-if="ability.HasRepeat">
-          <display-tooltip-text :string="ability.RepeatHeader" />
-        </div>
-        <div v-if="ability.HasEor">
-          <display-tooltip-text :string="ability.EorHeader" />
-        </div>
-        <div v-if="ability.HasReacts">
-          <display-tooltip-text :string="ability.ReactsHeader" />
-        </div>
-        <div v-if="ability.HasRemove">
-          <display-tooltip-text :string="ability.RemoveHeader" />
-        </div>
-        <div v-if="ability.HasRecovery">
-          <display-tooltip-text :string="ability.RecoveryHeader" />
-        </div>
-        <div v-if="ability.HasNegate">
-          <display-tooltip-text :string="ability.NegateHeader" />
-        </div>
-        <div v-if="ability.HasDestroy">
-          <display-tooltip-text :string="ability.DestroyHeader" />
-        </div>
-        <div v-if="ability.HasInteractions">
-          <display-tooltip-text :string="ability.InteractionsHeader" />
+        v-if="ability.HasTrigger"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }"
+        style="text-align: center; border-top: thin solid"
+        cols="12">
+        <div class="box-header">Trigger</div>
+        <display-tooltip-text
+          :string="ability.Trigger"
+          :decorate="false" />
+      </div>
+      <div
+        v-if="ability.HasPrereqs"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }"
+        style="text-align: center; border-top: thin solid"
+        cols="12">
+        <div class="box-header">Prerequisite</div>
+        <display-tooltip-text
+          :string="ability.Prereqs"
+          :decorate="false" />
+      </div>
+      <div
+        v-if="isAbilityPackage && ability.HasDesc"
+        class="card-cell"
+        style="padding-top: 0.25em"
+        :style="{ 'border-color': getBestColor }">
+        <display-tooltip-text
+          :string="ability.Desc"
+          :decorate="false"
+          style="font-style: italic" />
+      </div>
+      <div
+        v-if="ability.HasEffect"
+        class="card-cell effect"
+        :style="{ 'border-top': ability.HasDesc && isAbilityPackage ? 'none' : 'thin solid', 'border-color': getBestColor }">
+        <div class="box-header">Effect</div>
+        <display-tooltip-text
+          :string="ability.Effect"
+          :decorate="false" />
+      </div>
+      <div
+        v-if="ability.HasSpecial"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Special</div>
+        <display-tooltip-text
+          :string="ability.Special"
+          :decorate="false" />
+      </div>
+      <div
+        v-if="ability.HasEnter && ability.Collide != ability.Enter"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Enter</div>
+        <display-tooltip-text :string="ability.Enter" />
+      </div>
+      <div
+        v-if="ability.HasCollide"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div
+          class="box-header"
+          v-if="ability.Collide == ability.Enter">
+          Collide/Enter
         </div>
         <div
-          v-if="isAbilityPackage"
-          style="margin-top: 2em">
-          <show-ability-table
-            title="Combat Abilities"
-            :abilities="combatAbilities"
-            :onCard="true" />
-          <show-ability-table
-            title="Narrative Abilities"
-            :abilities="narrativeAbilities"
-            :onCard="true" />
+          class="box-header"
+          v-else>
+          Collide
         </div>
+        <display-tooltip-text :string="ability.Collide" />
+      </div>
+      <div
+        v-if="ability.HasEngaged"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Engaged</div>
+        <display-tooltip-text :string="ability.Engaged" />
+      </div>
+      <div
+        v-if="ability.HasEor"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">End of Round</div>
+        <display-tooltip-text :string="ability.Eor" />
+      </div>
+      <div
+        v-if="ability.HasReacts"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Reacts</div>
+        <display-tooltip-text
+          :string="ability.ReactsList"
+          class="enhancement"
+          :decorate="false" />
+      </div>
+      <div v-if="ability.HasNegate">
+        <display-tooltip-text :string="ability.NegateHeader" />
+      </div>
+      <div
+        v-if="ability.HasDestroy"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Destroy</div>
+        <display-tooltip-text :string="ability.Destroy" />
+      </div>
+      <div
+        v-if="ability.HasInteractions"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Interactions</div>
+        <display-tooltip-text :string="ability.InteractionsList" />
+      </div>
+      <div
+        v-if="isAbilityPackage"
+        style="margin-left: 1em; margin-right: 1em; margin-top: 0.5em">
+        <show-ability-table
+          title="Combat Abilities"
+          :abilities="combatAbilities"
+          :onCard="true" />
+        <show-ability-table
+          title="Narrative Abilities"
+          :abilities="narrativeAbilities"
+          :onCard="true" />
       </div>
       <div
         v-if="ability.HasEnhancements || ability.HasImbues"
-        style="padding-left: 1em; padding-right: 1em"
+        class="card-cell"
         :style="{ 'border-color': getBestColor }">
         <div v-if="ability.HasEnhancements">
-          <display-tooltip-text
-            :string="ability.EnhancementsHeader"
-            class="enhancement"
-            :decorate="false" />
+          <div
+            v-for="costEffectPair in ability.EnhancementsByHeader"
+            v-bind:key="costEffectPair[0]">
+            <div class="box-header">
+              <display-tooltip-text
+                :string="costEffectPair[0]"
+                :decorate="false" />
+            </div>
+            <display-tooltip-text
+              v-for="effect in costEffectPair[1]"
+              v-bind:key="effect"
+              :string="effect"
+              class="enhancement"
+              :decorate="false" />
+          </div>
         </div>
         <div v-if="ability.HasImbues">
-          <display-tooltip-text
-            :string="ability.ImbuesHeader"
-            class="enhancement"
-            :decorate="false" />
+          <div
+            v-for="costEffectPair in ability.ImbuesByHeader"
+            v-bind:key="costEffectPair[0]">
+            <div class="box-header">
+              <display-tooltip-text
+                :string="costEffectPair[0]"
+                :decorate="false" />
+            </div>
+            <display-tooltip-text
+              v-for="effect in costEffectPair[1]"
+              v-bind:key="effect"
+              :string="effect"
+              class="enhancement"
+              :decorate="false" />
+          </div>
         </div>
+      </div>
+      <div
+        v-if="ability.HasRepeat"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Repeat</div>
+        <display-tooltip-text
+          :string="ability.Repeat"
+          :decorate="false" />
+      </div>
+      <div
+        v-if="ability.HasRecovery"
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }">
+        <div class="box-header">Recovery</div>
+        <display-tooltip-text
+          :string="ability.Recovery"
+          :decorate="false" />
+      </div>
+      <div
+        class="card-cell"
+        :style="{ 'border-color': getBestColor }"
+        v-if="ability.HasRemove">
+        <div class="box-header">Remove</div>
+        <display-tooltip-text
+          :string="ability.Remove"
+          :decorate="false" />
       </div>
       <div
         style="margin-left: 1em; margin-right: 1em; margin-top: 0.5em"
@@ -205,6 +370,7 @@
 
 <script>
 import Vue from 'vue'
+import InlineSvg from 'vue-inline-svg'
 import { AbilityPackage, Armor, Base, Equipment, Weapon, Stance, Status, Terrain } from '@/class'
 import { store } from '@/store'
 import AbilityWidget from '@/components/AbilityWidget.vue'
@@ -219,17 +385,10 @@ export default Vue.extend({
       type: Base,
       required: true,
     },
-    format_text: {
+    back: {
       type: Boolean,
+      required: false,
       default: false,
-    },
-    standalone: {
-      type: Boolean,
-      default: false,
-    },
-    showDesc: {
-      type: Boolean,
-      default: true,
     },
   },
   data() {
@@ -249,6 +408,7 @@ export default Vue.extend({
         Reaction: '#bbcc6f',
         Skill: '#d99a07',
         Status: 'rgb(90, 90, 143)',
+        Wound: 'rgb(146, 5, 5)',
         Trait: 'rgb(106, 168, 76)',
         Travel: '#5cff69',
         Weapon: 'rgb(226, 119, 43)',
@@ -258,6 +418,9 @@ export default Vue.extend({
         Water: '#6890f0',
         Wind: '#a890f0',
         Wood: '#6a5003',
+        Mutable: '#68696a',
+        Elementless: '#68696a',
+        Arena: '#68696a',
       },
     }
   },
@@ -267,11 +430,12 @@ export default Vue.extend({
       var fontSize = Math.min(Math.floor(boxWidth / textString.length), 7)
       return fontSize + 'pt'
     },
+    dashOrNumber: function (val) {
+      if (val > 0) return val
+      return '—'
+    },
   },
   computed: {
-    useTextFormatting: function () {
-      if (this.format_text) return 'card--text-format'
-    },
     isAbilityPackage() {
       return this.ability instanceof AbilityPackage
     },
@@ -288,7 +452,8 @@ export default Vue.extend({
       return []
     },
     middleBorder() {
-      if (this.ability.HasEnhancements || this.ability.HasImbues) return 'medium solid;'
+      if (this.ability.HasEnhancements || this.ability.HasImbues || this.ability.HasRemove || this.ability.HasRecovery || this.ability.HasRepeat)
+        return 'thin solid'
       return 'none'
     },
     isStance() {
@@ -296,11 +461,14 @@ export default Vue.extend({
     },
     getBestColor: function () {
       var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood', 'Archetype']
-      if (overrideColors.includes(this.ability.Category)) {
-        return this.colorMap[this.ability.Category]
+      if (!this.ability) {
+        return 'black'
       }
       if (this.ability instanceof Terrain) {
-        return this.colorMap[this.ability.ColorHeader]
+        return this.colorMap[this.ability.Element]
+      }
+      if (overrideColors.includes(this.ability.Category)) {
+        return this.colorMap[this.ability.Category]
       }
       if (this.ability instanceof Weapon) {
         return this.colorMap['Weapon']
@@ -315,6 +483,7 @@ export default Vue.extend({
         return this.colorMap['Stance']
       }
       if (this.ability instanceof Status) {
+        if (this.ability.Type.includes('Wound') || this.ability.Type.includes('Condition')) return this.colorMap['Wound']
         return this.colorMap['Status']
       }
       if (
@@ -328,7 +497,7 @@ export default Vue.extend({
       return this.colorMap[this.ability.Type]
     },
   },
-  components: { AbilityWidget, BasicTable, ChartTable, ShowAbilityTable },
+  components: { AbilityWidget, BasicTable, ChartTable, ShowAbilityTable, InlineSvg },
 })
 </script>
 
@@ -343,17 +512,22 @@ export default Vue.extend({
 }
 .box-header {
   text-align: center;
-  font-size: smaller;
+  font-size: 5pt;
+}
+.back-outline {
+  border: double 8px;
+  border-radius: 1em;
+  height: 3.2in !important;
+  width: 2.2in !important;
 }
 .card-header {
-  border-bottom: thick solid;
+  border-bottom: medium solid;
 }
 .left-col {
-  border-bottom: medium solid;
-  border-right: medium solid;
 }
 .right-col {
-  border-bottom: medium solid;
+  border-left: thin solid;
+  border-bottom: thin solid;
 }
 .body {
   background-color: white;
@@ -361,6 +535,14 @@ export default Vue.extend({
   width: 2.4in !important;
   margin: 0.05in;
   border-radius: 1em;
+}
+.back-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+::v-deep .effect ul {
+  padding-left: 1.5em !important;
 }
 ::v-deep .enhancement ul {
   padding-left: 1.5em !important;
@@ -392,5 +574,10 @@ export default Vue.extend({
 .even-table-cell {
   background-color: lightgrey;
   print-color-adjust: exact;
+}
+.card-cell {
+  border-top: thin solid;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 </style>

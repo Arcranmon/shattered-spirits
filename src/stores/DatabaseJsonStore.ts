@@ -32,8 +32,6 @@ const kPlayerAbilities = [
   'Effort',
   'Manipulate',
   'Encourage',
-  'Unbalance',
-  'Press Advantage',
   'Spiritbound',
   'Drop',
   'Equip',
@@ -49,7 +47,7 @@ const kPlayerAbilities = [
   'Steal',
 ]
 
-const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Accelerate', 'Spiritcraft', 'Drop', 'Equip', 'Flank', 'Delay']
+const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Drop', 'Equip', 'Flank', 'Delay']
 
 const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
@@ -106,7 +104,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Statuses: Status[] = []
 
   get basicStances() {
-    return ['Open Stance', 'Focused Stance', 'Guarded Stance', 'Hostile Stance', 'Rallying Stance', 'Agile Stance']
+    return ['Open Stance', 'Rallying Stance', 'Guarded Stance', 'Hostile Stance', 'Focused Stance', 'Agile Stance']
   }
 
   get basicSpiritStances() {
@@ -273,9 +271,9 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // TRAITS GETTERS
   // ==========================================================
-  get getSpiritTraits(): any {
+  get getTraits(): any {
     return () => {
-      return this.Traits.filter((x) => x.Type.trim() === 'Spirit Trait')
+      return this.Traits
     }
   }
 

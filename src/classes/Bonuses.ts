@@ -10,8 +10,6 @@ class Bonuses {
   private guard_: number
   private equipment_: string[]
   private weakness_resistance_: IWeaknessResistanceData[]
-  private manifest_source_: number
-  private manifest_range_: number
 
   // ==========================================================
   // CONSTRUCTOR
@@ -25,8 +23,6 @@ class Bonuses {
     this.guard_ = 0
     this.equipment_ = []
     this.weakness_resistance_ = []
-    this.manifest_range_ = 0
-    this.manifest_source_ = 0
   }
 
   // ==========================================================
@@ -67,8 +63,6 @@ class Bonuses {
       }
     }
     this.weakness_resistance_ = this.weakness_resistance_.filter((x) => x.mod != 0)
-    this.manifest_range_ += other.manifest_range_
-    this.manifest_source_ += other.manifest_source_
   }
 
   public get Equipment() {
@@ -102,14 +96,6 @@ class Bonuses {
     return this.weakness_resistance_
   }
 
-  public get ManifestSource() {
-    return this.manifest_source_
-  }
-
-  public get ManifestRange() {
-    return this.manifest_range_
-  }
-
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -128,8 +114,6 @@ class Bonuses {
     this.phase_ = data.phase || 0
     this.equipment_ = data.equipment || []
     this.weakness_resistance_ = data.weakness_resistance || []
-    this.manifest_range_ = data.manifest_range || 0
-    this.manifest_source_ = data.manifest_source || 0
   }
 }
 export default Bonuses

@@ -108,6 +108,9 @@ class Base {
   public get HasPrereqs() {
     return this.prereqs_.length > 0
   }
+  public get Prereqs() {
+    return this.prereqs_
+  }
   public get PrereqsHeader() {
     return '**Prerequisites:** ' + this.prereqs_
   }

@@ -2,6 +2,7 @@
 
 - Make Statuses more streamlined maybe?
 - Teleport for Spirits
+  - Just a 'disappear from map and return to companion'
 - Maybe 1 Block for free?
 - Armor/weapon/equipment cards need better headers
 

@@ -59,9 +59,11 @@
       style="page-break-inside: avoid"
       v-bind:class="index % 2 == 1 ? 'even-table-cell' : ''">
       <v-col class="table-cell d-flex justify-center align-center">
-        {{ ability.Name }}
+        {{ ability.Name }} <span v-if="onCard">&nbsp;-&nbsp;{{ typeOrCategory(ability) }}</span>
       </v-col>
-      <v-col class="table-cell d-flex justify-center align-center">
+      <v-col
+        v-if="!onCard"
+        class="table-cell d-flex justify-center align-center">
         {{ typeOrCategory(ability) }}
       </v-col>
       <v-col

@@ -40,7 +40,10 @@
         {{ ability.Desc }}<br />
       </div>
       <div v-if="ability.HasHeadline">
-        <display-tooltip-text :string="ability.Summary" />
+        <display-tooltip-text :string="ability.Headline" />
+      </div>
+      <div v-if="ability.HasBlock || ability.HasGuard">
+        <display-tooltip-text :string="ability.ArmorSummary" />
       </div>
       <div
         v-if="isStance"
@@ -212,6 +215,11 @@
           v-for="ability in ability.Abilities"
           :ability="ability"
           :key="ability.Name"
+          :showChart="showChart" />
+        <base-widget
+          v-for="stance in ability.Stances"
+          :ability="stance"
+          :key="stance.Name"
           :showChart="showChart" />
       </div>
       <div

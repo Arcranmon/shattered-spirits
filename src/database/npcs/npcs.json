@@ -71,10 +71,9 @@
         "effect": "Attack a Target within Range.",
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "Exposed", "Grabbed", "Grabbed"],
+          "status": ["None", "Exposed [2]", "Grabbed [4]", "Grabbed [5]"],
           "stun": [0, 1, 1, 3],
-          "damage": [0, 1, 2, 3],
-          "negate": [0, 2, 4, 5]
+          "damage": [0, 1, 2, 3]
         }
       },
       {
@@ -266,8 +265,7 @@
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
           "damage": [0, 2, 3, 5],
-          "negate": [0, 0, 3, 4],
-          "status": ["None", "None", "Grabbed", "Grabbed"]
+          "status": ["None", "None", "Grabbed [3]", "Grabbed [4]"]
         }
       },
       {
@@ -421,9 +419,14 @@
         "effect": "Attack a Target within Range.",
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "damage": [1, 4, 5, 7],
-          "negate": [4, 7, 8, 10],
-          "status": ["None", "_Poisoned_ 1", "_Poisoned_ 2", "_Poisoned_ 4"]
+          "stun": [1, 2, 3, 3],
+          "damage": [2, 3, 4, 7],
+          "status": [
+            "_Poisoned_ [3]",
+            "_Poisoned_ [3], _Poisoned_ [3]",
+            "_Poisoned_ [3], _Poisoned_ [3], _Poisoned_ [3]",
+            "_Poisoned_ [3], _Poisoned_ [3], _Poisoned_ [3], _Poisoned_ [3]"
+          ]
         }
       }
     ],

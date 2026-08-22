@@ -2,16 +2,13 @@ import { store } from '@/store'
 import { Base, Defenses } from '@/class'
 
 class Subtype extends Base {
-  private defenses_: Defenses
   private element_: string
   private stamina_: number
-  private stun_: number
+  private guard_: number
   private block_: number
   private speed_: number
-  private manifest_: number
   private growth_points_: number
   private traits_: string[]
-  private soak_: string
   private phase_: number
 
   public constructor(name) {
@@ -23,10 +20,6 @@ class Subtype extends Base {
   // ==========================================================
   public get Stamina() {
     return this.stamina_
-  }
-
-  public get SoakHeader() {
-    return '**Soak:** _' + this.soak_ + '_'
   }
 
   public get GrowthHeader() {
@@ -42,11 +35,11 @@ class Subtype extends Base {
   }
 
   public get Block() {
-    return this.stun_
+    return this.block_
   }
 
   public get Guard() {
-    return this.block_
+    return this.guard_
   }
 
   public get StanceHeader() {
@@ -74,9 +67,6 @@ class Subtype extends Base {
   public get SpiritType() {
     return '_' + this.element_ + '_ Spirit'
   }
-  public get HasDefenses() {
-    return this.defenses_
-  }
   public get HasTraits() {
     return this.traits_.length > 0
   }
@@ -88,17 +78,6 @@ class Subtype extends Base {
   }
   public get TraitsHeader() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
-  }
-  public get Defenses() {
-    return this.defenses_
-  }
-  public get ManifestHeader() {
-    var header = '**Manifest Range:** ' + this.manifest_
-    return header
-  }
-
-  public get ManifestRange() {
-    return this.manifest_
   }
 
   // ==========================================================
@@ -113,14 +92,10 @@ class Subtype extends Base {
   private setSubtypeData(data: ISubtypeData): void {
     this.setBaseData(data)
     this.element_ = data.element || ''
-    this.soak_ = data.soak || ''
-    this.defenses_ = data.defenses ? Defenses.Deserialize(data.defenses) : null
-    this.traits_ = data.traits || []
     this.stamina_ = data.stamina || 0
     this.speed_ = data.speed || 0
-    this.stun_ = data.block || 0
-    this.block_ = data.guard || 0
-    this.manifest_ = data.manifest || 0
+    this.guard_ = data.guard || 0
+    this.block_ = data.block || 0
     this.phase_ = data.phase || 0
     this.growth_points_ = data.growth_points || 0
   }

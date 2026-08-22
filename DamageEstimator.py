@@ -2,6 +2,7 @@ import json
 import math
 from termcolor import colored
 import argparse
+import re
 import OrphanFinder
 
 # Momentum is 'worth' this much
@@ -52,26 +53,37 @@ STANDARD_NEGATE = [0, 0, 0, 0]
 
 def get_status_magnitude(status):
     if(not status): return 0
+    magnitude = 0
     split_status = status.split(' ')
     if len(split_status) == 1: 
-        return status_multipliers[split_status[0].strip()]
+        magnitude  = status_multipliers[split_status[0].strip()]
     elif len(split_status) == 2 and '[' in split_status[1]: 
         if('/' in split_status[0].strip()):
             status_options = split_status[0].strip().split('/')
-            return max(status_multipliers[status_options[0]], status_multipliers[status_options[1]])
-        return status_multipliers[split_status[0].strip()]
+            magnitude = max(status_multipliers[status_options[0]], status_multipliers[status_options[1]])
+        else:
+            magnitude = status_multipliers[split_status[0].strip()]
     elif len(split_status) == 2 : 
-        return status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
+        magnitude = status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
     elif len(split_status) == 3: # I'm lazy
-        return status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
+        magnitude = status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
+
+    negate_dc = re.search(r"\[([^\]]+)\]", split_status[1])
+    if negate_dc:
+        if '/' in negate_dc.group(1):
+            negate = int(negate_dc.group(1).split('/')[1]) * stun_scale
+        else:
+            negate = int(negate_dc.group(1)) * stun_scale
+    else:
+        negate = 0
+
+    if negate == 0 or magnitude == 0:
+        return 0
+    return (negate + negate + magnitude) / 3  if negate < magnitude else (negate + magnitude)/2 
     
-def get_status_damage(status_string, negate_dc, index):
+def get_status_damage(status_string,  index):
     # Split individual statuses out
     status_string = status_string.replace('_', '')
-
-    if not isinstance(negate_dc, (int, float)):
-        negate_dc = 0
-    negate = negate_dc * stun_scale
     
     statuses = status_string.split(', ')
 
@@ -83,16 +95,10 @@ def get_status_damage(status_string, negate_dc, index):
         if('Momentum' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
             no_save_damage += int(status[1]) * momentum_value * 0.75
-        elif '/' in status:
-            status_options = status.split('/')
-            estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)
         else:
             estimated_damage += get_status_magnitude(status.strip())
 
-    if negate == 0 or estimated_damage == 0:
-        negate = 0
-        estimated_damage = 0
-    return  (negate + negate + estimated_damage) / 3  if negate < estimated_damage else (negate + estimated_damage)/2 
+    return  estimated_damage
 
 def get_databases():
     # Open the appropriate database.
@@ -203,10 +209,6 @@ def estimate_damage(attack, glancing, print_stats):
             status_chart = ['']*4
         else:
             status_chart = attack["chart"]["status"]
-        if not("negate" in attack["chart"]):
-            negate = STANDARD_NEGATE
-        else:
-            negate = attack["chart"]["negate"]
             
 
     if("analysis_notes" in attack):
@@ -269,7 +271,7 @@ def estimate_damage(attack, glancing, print_stats):
         damage += stun_chart[index] * stun_scale
         if(glancing): damage = math.ceil(damage/2.0)
         if(index < len(status_chart)):
-            damage += get_status_damage(status_chart[index], negate[index], index)
+            damage += get_status_damage(status_chart[index], index)
         damage += bonus_damage[index]
         if(roll_chart[index] != 0): 
             damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum

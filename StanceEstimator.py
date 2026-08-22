@@ -29,9 +29,18 @@ def estimate_all_stances():
     for stance in data:
         if not "Spirit" in stance["name"]:
             stances[stance["name"]] = estimate_stance_value(stance, False)
-        elif stance["name"] != "Spiritual Essence":
+        else:
                 # We do it at phase 3 as that's the most 'real' phase for a lot spirits
                 stances[stance["name"] + '(' + str(3) + ')'] = estimate_spirit_stance_value(stance, 2, False)
+
+
+    f = open('.\src\database\\traits.json')
+    data = json.load(f)    
+    for trait in data:
+        for trait_stance in trait.get("stances", []):
+            # We do it at phase 3 as that's the most 'real' phase for a lot spirits
+            stances[trait_stance["name"] + '(' + str(3) + ')'] = estimate_spirit_stance_value(trait_stance, 2, False)
+
 
     for key, value in stances.items():
         print(("    " + key + ": ").ljust(25 + (0 if value > 0 else -1)) + colored("{:.3f}".format(value), 'magenta' if value > 0.5 else 'red' if value < -0.5 else 'green'))
@@ -41,6 +50,7 @@ def estimate_spirit_stance_value(stance, phase, print_results):
 
     # Get the basic values.
     stance_value += int(stance["momentum"].split('/')[phase])
+    stance_value += int(stance.get("essence", 0))
     stance_value += stance.get("speed", 0) ** 0.6 * SPEED_VALUE # We root here because Speed reaches a ceiling of usefulness quickly.
     stance_value += stance.get("block", 0) * BLOCK_VALUE
     # stance_value += stance.get("stun_clear", 0) * STUN_VALUE
