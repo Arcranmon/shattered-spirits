@@ -136,9 +136,9 @@ class Ability extends Base {
     this.origin_ = origin
   }
   public get Icon() {
-    if (this.Type == 'Bold') return require('@/assets/Augment.svg')
-    if (this.Type == 'Cautious') return require('@/assets/Danger.svg')
-    if (this.Type == 'Neutral') return require('@/assets/Neutral.svg')
+    if (this.Category == 'Travel' && this.Type == 'Action' && this.Cost.includes('[+]')) return require('@/assets/Augment.svg')
+    if (this.Category == 'Travel' && this.Type == 'Action' && this.Cost.includes('[-]')) return require('@/assets/Danger.svg')
+    if (this.Category == 'Travel' && this.Type == 'Action') return require('@/assets/Neutral.svg')
     if (this.name_ === 'Minor Flamecraft') return require('@/assets/disciplines/Flame.svg')
     if (this.name_ === 'Minor Earthcraft') return require('@/assets/disciplines/Earth.svg')
     if (this.name_ === 'Minor Metalcraft') return require('@/assets/disciplines/Metal.svg')

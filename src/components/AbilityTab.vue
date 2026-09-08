@@ -44,6 +44,9 @@ export default Vue.extend({
     abilityType: {
       required: true,
     },
+    basic: {
+      required: false,
+    },
     spirit: {
       required: false,
       default: false,
@@ -62,17 +65,21 @@ export default Vue.extend({
       }
     },
     abilities() {
-      if (this.abilityType == 'Skill') {
+      if (this.abilityType == 'Skill' || 'Camp' || 'Travel') {
+        var categories = [this.abilityType]
         if (this.spirit) {
-          var skills = this.character.Spirit.FilteredAbilities('Talent', this.categoryFilter, 'All')
-          skills = skills.concat(this.character.Spirit.FilteredAbilities('Power', this.categoryFilter, 'All'))
-          skills = skills.concat(this.character.Spirit.FilteredAbilities('Boon', this.categoryFilter, 'All'))
+          var skills = this.character.Spirit.FilteredAbilities('Talent', categories, 'All')
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Power', categories, 'All'))
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Boon', categories, 'All'))
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Action', categories, 'All'))
           return skills
         }
+        if (this.basic) return this.character.FilteredAbilities('Action', categories, 'All')
         return [
-          ...this.character.FilteredAbilities('Talent', this.categoryFilter, 'All'),
-          ...this.character.FilteredAbilities('Power', this.categoryFilter, 'All'),
-          ...this.character.FilteredAbilities('Boon', this.categoryFilter, 'All'),
+          ...this.character.FilteredAbilities('Talent', categories, 'All'),
+          ...this.character.FilteredAbilities('Power', categories, 'All'),
+          ...this.character.FilteredAbilities('Boon', categories, 'All'),
+          ...this.character.FilteredAbilities('Action', categories, 'All'),
         ]
       }
       if (this.spirit) {

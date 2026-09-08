@@ -97,18 +97,19 @@
               <show-cards
                 :inputs="basic_stances"
                 :collapse="false"
-                :cols="1" /></v-tab-item>
-              <v-tab-item>
-                <ability-tab
-                  abilityType="Travel Action"
-                  :character="character"
-              /></v-tab-item>
-              <v-tab-item>
-                <ability-tab
-                  abilityType="Camp Action"
-                  :character="character"
-              /></v-tab-item>
-            </v-tab-item>
+                :cols="1"
+            /></v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Travel"
+                :character="character"
+                :basic="true"
+            /></v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Camp"
+                :character="character"
+            /></v-tab-item>
           </v-tabs-items>
         </div>
         <div
