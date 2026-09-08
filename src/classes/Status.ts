@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Base, ColorMap } from '@/class'
 
 class Status extends Base {
   private recover_: string
@@ -96,6 +96,10 @@ class Status extends Base {
     if (this.Name == 'Extreme Stress') return require('@/assets/statuses/Stress.svg')
     if (this.Name == 'Grappled') return require('@/assets/statuses/Grabbed.svg')
     return require('@/assets/statuses/' + this.Name + '.svg')
+  }
+  public get Color() {
+    if (this.Type.includes('Wound') || this.Type.includes('Condition')) return ColorMap.get('Wound')
+    return ColorMap.get('Status')
   }
 
   // ==========================================================

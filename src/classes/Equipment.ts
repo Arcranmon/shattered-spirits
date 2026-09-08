@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Ability, AbilityPackage, Chart } from '@/class'
+import { AbilityPackage, ColorMap } from '@/class'
 
 class Equipment extends AbilityPackage {
   private durability_: number
@@ -51,6 +51,10 @@ class Equipment extends AbilityPackage {
 
   get Headline() {
     return '**_Rarity_:** ' + this.Rarity + '; **_Load_:** ' + this.Load + '; **_Durability_:** ' + (this.Durability > 0 ? this.Durability : 'NA')
+  }
+
+  public get Color() {
+    return ColorMap.get('Equipment')
   }
 
   // ==========================================================

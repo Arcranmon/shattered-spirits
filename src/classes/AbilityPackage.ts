@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Base, Chart, Ability, Stance } from '@/class'
+import { Base, ColorMap, Ability, Stance } from '@/class'
 
 // Used for Arts, Spirit Traits, and Careers
 class AbilityPackage extends Base {
@@ -42,6 +42,10 @@ class AbilityPackage extends Base {
   }
   public get Icon() {
     return require('@/assets/disciplines/' + this.Category + '.svg')
+  }
+  public get Color() {
+    if (this.Category == 'Archetype') return ColorMap.get('Archetype')
+    return super.Color
   }
 
   // ==========================================================

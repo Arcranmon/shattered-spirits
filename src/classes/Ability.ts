@@ -2,7 +2,7 @@
 // Parent category for techniques/maneuvers.
 
 import { store } from '@/store'
-import { Base, AbilityPackage, Bonuses } from '@/class'
+import { Base, AbilityPackage, Bonuses, ColorMap } from '@/class'
 import { isUndefined } from 'vue-simple'
 
 class Ability extends Base {
@@ -136,6 +136,9 @@ class Ability extends Base {
     this.origin_ = origin
   }
   public get Icon() {
+    if (this.Type == 'Bold') return require('@/assets/Augment.svg')
+    if (this.Type == 'Cautious') return require('@/assets/Danger.svg')
+    if (this.Type == 'Neutral') return require('@/assets/Neutral.svg')
     if (this.name_ === 'Minor Flamecraft') return require('@/assets/disciplines/Flame.svg')
     if (this.name_ === 'Minor Earthcraft') return require('@/assets/disciplines/Earth.svg')
     if (this.name_ === 'Minor Metalcraft') return require('@/assets/disciplines/Metal.svg')
@@ -148,6 +151,17 @@ class Ability extends Base {
     if (this.category_ === 'Recovery') return require('@/assets/Recovery.svg')
     if (this.type_ === 'Power' || this.type_ == 'Boon' || this.type_ == 'Talent') return require('@/assets/disciplines/' + this.Category + '.svg')
     return require('@/assets/General.svg')
+  }
+
+  public get Color() {
+    var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
+    if (overrideColors.includes(this.Category)) {
+      return ColorMap[this.Category]
+    }
+    if (this.Category == 'Bold') return ColorMap.get('Augment')
+    if (this.Category == 'Cautious') return ColorMap.get('Danger')
+    if (this.Category == 'Neutral' || this.Type == 'Camp Action') return ColorMap.get('Neutral')
+    return super.Color
   }
 
   // ==========================================================

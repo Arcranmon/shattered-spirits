@@ -257,6 +257,34 @@
     "desc": "You have a shell, thick elemental plating, or some other natural defense mechanism that provides some protection."
   },
   {
+    "name": "Multiple Heads",
+    "type": "Trait",
+    "category": "General",
+    "cost": "1 Growth Point",
+    "abilities": [
+      {
+        "name": "Split Perception",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You have multiple heads and, as such, have redundant senses. You can focus on multiple things at the same time, and are almost impossible to surprise when you are alert.\n&nbsp;\nWhen your ability to look multiple directions would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Sleep Shifting",
+        "category": "Camp",
+        "type": "Boon",
+        "effect": "You can strategically sleep in such a way that one head is always awake and watchful. While making a _Camp Roll_, you may spend [ ] to remove the _Crash_ _Affliction_. Additionally, you may remove this _Danger_ even if you would normally be unable to remove it."
+      },
+      {
+        "name": "Two Minds",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Gain +3 _Guard_. Once per _Round_, you may _Negate_ an _Emotional Status_, _Blinded_, _Impaired_, _Exposed_, or _Vulnerable_ at half cost.",
+        "bonuses": { "guard": 2 }
+      }
+    ],
+    "desc": "You have multiple heads, allowing you to look in multiple directions at the same time and bicker with yourself in a cute fashion."
+  },
+  {
     "name": "Sure-Footed",
     "type": "Trait",
     "category": "General",
@@ -1001,13 +1029,20 @@
     "desc": "You have and extended reach, whether from a serpentine body, long limbs, or some other effect.",
     "abilities": [
       {
-        "name": "Long Limbs",
-
+        "name": "Long",
         "category": "Skill",
         "type": "Talent",
         "effect": "You have an extended reach, and can easily reach things beyond your normal range. Things that others would have to maneuver or jump for are well within your normal reach.\n&nbsp;\nWhen your extended reach would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
-      { "name": "Reacher", "category": "Utility", "type": "Passive", "effect": "You may use all _Melee_ abilities as if they were Range 0 (_Reach_)." }
+      { "name": "Reacher", "category": "Utility", "type": "Passive", "effect": "You may use all _Melee_ abilities as if they were Range 0 (_Reach_)." },
+      {
+        "name": "Extended Reach",
+        "category": "Offensive",
+        "type": "Reaction",
+        "trigger": "A creature within _Range_ 0 creates an _Opening_.",
+        "cost": "None",
+        "effect": "Use a Single-Target _Reach_ Attack [_Discount_ 1] against the triggering creature."
+      }
     ]
   },
   {
@@ -1122,7 +1157,9 @@
             "trigger": "An enemy _Engages_ an ally.",
             "effect": "You may immediately move as if it were your _Turn_, spending _Speed_ as normal and using any _Mobility_ _Maneuvers_ that you wish. Move to _Engage_ the triggering ally. You may then use _Shepherd_ on them."
           }
-        ]
+        ],
+        "adjust": 1,
+        "adjust_notes": "Might be low honestly, but defensive stuff should get some juice"
       }
     ]
   },

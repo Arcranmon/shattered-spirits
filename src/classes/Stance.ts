@@ -1,9 +1,8 @@
 import { store } from '@/store'
-import { Ability, AbilityPackage, Base } from '@/class'
+import { AbilityPackage, ColorMap } from '@/class'
 import { isStandardBrowserEnv } from 'vue-simple'
 
 class Stance extends AbilityPackage {
-  private respite_: IRespiteData
   private defenses_: IDefenseData
   private momentum_: string
   private stun_: number
@@ -12,7 +11,6 @@ class Stance extends AbilityPackage {
 
   public constructor(name) {
     super(name)
-    this.respite_ = null
     this.defenses_ = null
   }
 
@@ -21,14 +19,6 @@ class Stance extends AbilityPackage {
   // ==========================================================
   public get Header() {
     return this.Name + ' - _' + this.category_ + '_ _Stance_'
-  }
-  public get RespiteHeader() {
-    var respite_string = '**Respite:** At _Respite_, do the following:'
-    if (this.respite_.momentum_gain) respite_string += '\n* Gain ' + this.respite_.momentum_gain + ' _Momentum_.'
-    if (this.respite_.conditional_momentum) respite_string += '\n* Gain ' + this.respite_.conditional_momentum
-    if (this.respite_.block_clear) respite_string += '\n* Clear ' + this.respite_.block_clear + ' _Block_.'
-    if (this.respite_.special) respite_string += '\n* ' + this.respite_.special
-    return respite_string
   }
 
   public get Phase() {
@@ -73,6 +63,10 @@ class Stance extends AbilityPackage {
     return require('@/assets/' + this.Category + '.svg')
   }
 
+  public get Color() {
+    return ColorMap.get('Stance')
+  }
+
   // ==========================================================
   // SERIALIZATION
   // ==========================================================
@@ -85,7 +79,6 @@ class Stance extends AbilityPackage {
 
   public setStanceData(data: IStanceData): void {
     this.setAbilityPackageData(data)
-    this.respite_ = data.respite || null
     this.defenses_ = data.defenses || null
     this.phase_ = data.phase || 0
     this.momentum_ = data.momentum || 'N/A'

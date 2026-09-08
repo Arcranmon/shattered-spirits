@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Base, ColorMap } from '@/class'
 
 class Terrain extends Base {
   private element_: string
@@ -88,6 +88,9 @@ class Terrain extends Base {
   }
   public get Source() {
     return this.source_
+  }
+  public get Color() {
+    return ColorMap.get(this.Element)
   }
 
   // ==========================================================

@@ -119,6 +119,246 @@
     ]
   },
   {
+    "name": "Novice Field Medic",
+    "category": "Supporter",
+    "type": "Discipline",
+    "desc": "You can quickly stabilize allies in the field, and have the instincts required to keep them standing just a little longer.",
+    "prereqs": "_Physician_",
+    "abilities": [
+      {
+        "name": "Field Medicine",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You may remove a single _Danger_ related to doing medical work under extreme danger and duress."
+      },
+      {
+        "name": "Emergency Medicine",
+        "category": "Support",
+        "type": "Reaction",
+        "trigger": "An ally is _Downed_.",
+        "prereqs": "_Wearing_ _Physician's Tools_ with at least 1 use remaining.",
+        "cost": "None",
+        "effect": "Immediately Move towards the ally by the most direct route possible, paying all costs as normal. If you end this _Movement_ _Engaged_ with them, spend a use of _Physician's Tools_. They may roll twice for their _Wound_ and take the better result."
+      },
+      {
+        "name": "Triage",
+        "category": "Support",
+        "type": "Maneuver",
+        "cost": "X _Momentum_",
+        "prereqs": "_Wearing_ _Physician's Tools_ with at least 1 use remaining.",
+        "target": "Self/One-Target",
+        "range": "1",
+        "effect": "Expend X uses from your _Physician's Tools_, then choose X of the following. You may choose the same option multiple times:\n* The Target may immediately _Recover_, gaining a +2 _Bonus_ to the roll. They may not use this to _Recover_ from _Prone_, _Grappled_, _Restrained_, or similar effects.\n* Make a _Recovery Roll_, then reduce the target's _Bleeding_ or _Poisoned_ value by the result plus 2.\n* Restore 3 _Stamina_ to the Target.\n* Restore 8 _Guard_ to the Target.",
+        "special": "You may add [_Discount_ 2] by creating an _Opening_ as a part of this effect."
+      }
+    ]
+  },
+  {
+    "name": "Novice Martial Artist",
+    "category": "Striker",
+    "type": "Discipline",
+    "desc": "You excel in unarmed combat, allowing you to fight with whatever is on hand as well as a weapon.",
+    "abilities": [
+      {
+        "name": "Martial Artist",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "In close combat, you always gain a die in combat skill challenges for having the right equipment, even if you are unarmed."
+      },
+      {
+        "name": "Combo Meter",
+        "category": "Offensive",
+        "type": "Passive",
+        "effect": "Gain a Combo Die, which is tracked with d6 and starts at 0. Whenever you _Hit_ with an _Unarmed_ Attack, increment it by 1. You may decrement the die by 2 to gain [_Discount_ 1] on your next _Unarmed_ Attack."
+      },
+      {
+        "name": "Flowing Strikes",
+        "keywords": ["Martial", "Unarmed"],
+        "category": "Light",
+        "type": "Attack",
+        "material": "Natural",
+        "damage_type": "Crush",
+        "cost": "2 _Momentum_",
+        "range": "Melee",
+        "target": "Single-Target",
+        "effect": "On a _Hit_+, choose one. If your Combo Die was at 3+ before this Attack you may choose an additional effect even on a _Miss_:\n* This does not count against your Attack limit for the _Turn_.\n* For the rest of the _Turn_ the Target may not respond to any _Opening_ you create.\n* Add _Impaired_ [4].",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Chain",
+              "reactive": true,
+              "cost": "1 _Momentum_",
+              "effect": "Use a different Attack. Add [_Follow-Up_]. Additionally add [_Discount_ 1] if it is [_Unarmed_]."
+            }
+          ]
+        },
+        "chart": {
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "damage": [0, 1, 2, 3],
+          "stun": [1, 2, 3, 4]
+        },
+        "analysis_notes": { "fudge": -0.5 }
+      }
+    ]
+  },
+  {
+    "name": "Novice Dual Wielder",
+    "category": "Striker",
+    "type": "Discipline",
+    "desc": "You fight with a weapon in either hand, weaving an elegant web as you launch unpredictable strikes.",
+    "abilities": [
+      {
+        "name": "Whirling Dervish",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Scene",
+        "effect": "In narrative combat if you are dual-wielding weapons you may play _Scope_ for free."
+      },
+      {
+        "name": "Twinned Defense",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "While _Wielding_ a non-Shield _Weapon_ in either _Hand_ increase your _Block_ by 1."
+      },
+      {
+        "name": "Flurry",
+        "category": "Special",
+        "type": "Attack",
+        "cost": "1 _Momentum_",
+        "prereqs": "_Wielding_ a non-_Shield_ _Weapon_ in either _Hand_.",
+        "effect": "_Attack_ with both _Weapons_, paying all costs as normal. Instead of making a normal _Attack Roll_, instead roll 3d6. Choose one die to be shared by both Attacks, then assign the others to the Attacks however you desire, using the results as the _Attack Roll_ for either."
+      }
+    ]
+  },
+  {
+    "name": "Novice Sniper",
+    "category": "Artillery",
+    "type": "Discipline",
+    "desc": "You specialize in long-range combat, waiting for the opportune moment to make an attack before unleashing it.",
+    "abilities": [
+      {
+        "name": "Sniper's Shot",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Scene",
+        "effect": "In narrative combat if you don't have an enemy near you and have a ranged attack, you may play _Efficacy_ once for free."
+      },
+      {
+        "name": "Sniper's Perch",
+        "category": "Offensive",
+        "type": "Passive",
+        "effect": "At the start of your _Turn_ if you are not already _Immobilized_ you may choose to become _Immobilized_ for the remainder of your _Turn_. If you do, gain a +1 _Bonus_ to the next Single-Target Range 1+ Attack you make before moving in any way, including _Forced Movement_."
+      },
+      {
+        "name": "Held Shot",
+        "category": "Offensive",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "You would make a Single-Target Range 1+ Attack.",
+        "effect": "Do not immediately make the Attack. Add [_Final_] to the Attack, and choose a Target. Gain _Concentrating_. Use this Attack as a _Reaction_ at any point after this _Phase_ before the end of the _Round_. It must be used against the selected Target. If you choose to use it as a part of an _Opening_, gain a +1 _Bonus_."
+      }
+    ]
+  },
+  {
+    "name": "Novice Warrior",
+    "category": "Defender",
+    "type": "Discipline",
+    "desc": "You are the front line of every encounter, drawing the attention of enemies and creating a frontline, regardless of the situation.",
+    "abilities": [
+      {
+        "name": "Warrior's Shield",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Scene",
+        "effect": "When in narrative combat, you may spend one [ ] to take any Danger from an ally and put it on your stakes sheet. If you are rolling _Boldly_, you may do this once for free."
+      },
+      {
+        "name": "Warrior's Spirit",
+        "category": "Offensive",
+        "type": "Passive",
+        "effect": "Gain a Warrior Die, which is tracked with d6 and starts at 0. Whenever an ally within Range 1 is Attacked, increment the die. You may decrease the value of the die by 2 to gain 1 _Speed_, but must end the current _Turn_ _Engaged_ with an enemy. You may also decrement the die to pay any Costs associated with Warrior's Rush at a 1 to 1 rate."
+      },
+      {
+        "name": "Warrior's Rush",
+        "category": "Mobility",
+        "type": "Reaction",
+        "cost": "1 _Momentum_",
+        "trigger": "An enemy enters your _Arena_.",
+        "effect": "You may immediately move to _Engage_ the enemy, paying all costs as normal. If you successfully _Engage_ them, inflict _Taunted_ [6].",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Improved Rush",
+              "cost": "1 _Momentum_",
+              "effect": "Make a single _Melee_ Attack against the target after _Engaging_ them, paying all costs as normal."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Novice Commander",
+    "category": "Supporter",
+    "type": "Discipline",
+    "desc": "You are adept at commanding others, finding the openings on the battlefield that others miss and allowing your allies to seize the opportunity.",
+    "abilities": [
+      {
+        "name": "Commander's Voice",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "2/Scene",
+        "effect": "When in narrative combat, you may spend one [ ] to reroll it and give the resulting die to an ally."
+      },
+      {
+        "name": "Commander's Presence",
+        "category": "Support",
+        "type": "Passive",
+        "range": "1",
+        "effect": "Gain a Commander Die, which is tracked with a d6 and starts at 0. Whenever you use an [_Inspiring_] ability, increment the die. You may decrement the die whenever an ally within range makes an _Attack_ or _Defense Roll_ to give them 4 _Guard_."
+      },
+      {
+        "name": "Commander's Orders",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "cost": "2 _Momentum_",
+        "target": "An ally.",
+        "range": "1",
+        "effect": "Choose one:\n* The target may immediately make an Attack, adding [_Discount_ 1].\n* The target may make a single move, adding [_Safe_].\n* The target may immediately _Recover_ and gains 5 _Guard_."
+      }
+    ]
+  },
+  {
+    "name": "Novice Blademaster",
+    "category": "Striker",
+    "type": "Discipline",
+    "desc": "You have studied the blade and have rare skill with it, making you incredibly dangerous and flexible in close combat.",
+    "abilities": [
+      {
+        "name": "Blademaster",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Scene",
+        "effect": "When in narrative combat, if you have a sword you may play _Efficacy_ once without using a die."
+      },
+      {
+        "name": "Blade Versatility",
+        "category": "Offensive",
+        "type": "Passive",
+        "keywords": ["Respite"],
+        "effect": "At _Respite_, choose one:\n* Gain [_Discount_ 1] on the first _Blade_ _Attack_ you make this _Round_.\n* Gain [_Discount_ 1] on the first _Parry_ _Reaction_ you make this _Round_ while _Wielding_ a _Blade_."
+      },
+      {
+        "name": "Cross Slash",
+        "category": "Offensive",
+        "type": "Gambit",
+        "cost": "None",
+        "reqs": "_Blade_ Attack.",
+        "effect": "Increase the Result of the triggering Attack, resolving the Attack with the new Result. If the Attack was already a _Crit_, instead add the _Graze_ effect to the Attack as well, combining all effects."
+      }
+    ]
+  },
+  {
     "name": "Novice Frostcraft",
     "category": "Water",
     "type": "Discipline",
@@ -429,7 +669,7 @@
         "keywords": ["Spirit"],
         "cost": "1 _Essence_",
         "range": 0,
-        "effect": "Use any _Source_ (_Earth_), then create one of the following, placing all in an Arena:\n*  _Plenty_ of _Tiny_ _Earth_ objects.\n*  Two _Small_ _Earth_ objects.\n* A _Medium_ _Earth_ object.\n\nIf used to Attack, these objects deal _Crush_ Damage.",
+        "effect": "Use any _Source_ (_Earth_), then create one of the following, placing all in an Arena:\n*  _Plenty_ of _Tiny_ _Earth_ objects.\n*  Two _Small_ _Earth_ objects.\n* A _Medium_ _Earth_ object.\n* Add _Spikes_ (_Earth_) to an _Engagement_.\n\nIf used to Attack, these objects deal _Crush_ Damage.",
         "enhancements": {
           "enhances": [
             {
@@ -437,8 +677,7 @@
               "exclusive": true,
               "cost": "1 _Essence_",
               "effect": "Instead, created objects deal _Stab_ or _Slash_ Damage when used to _Attack_."
-            },
-            { "name": "Slab", "exclusive": true, "cost": "1 _Essence_", "effect": "Instead, create a _Stone Wall_." }
+            }
           ]
         }
       },
@@ -477,6 +716,84 @@
         },
         "analysis_notes": {
           "bonus_damage": [0, 0, 0, 0]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Novice Landcraft",
+    "category": "Earth",
+    "type": "Discipline",
+    "desc": "A specialty of earthcraft that shapes the earth like clay, creating great constructs and causing quakes with equal measure.",
+    "abilities": [
+      {
+        "name": "Landcraft",
+        "keywords": ["Spirit"],
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You can manipulate nearby earth and soil easily, and can simultaneously move a wheelbarrow's worth of earth. You can shape this earth readily and, while you maintain your focus, you can keep it any shape.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+      },
+      {
+        "name": "Smooth Road",
+        "category": "Travel",
+        "type": "Power",
+        "keywords": ["Spirit"],
+        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to control and shape soil could mitigate."
+      },
+      {
+        "name": "Shape Earth",
+        "category": "Utility",
+        "type": "Maneuver",
+        "keywords": ["Spirit"],
+        "cost": "1 _Essence_",
+        "range": 0,
+        "target": "An _Earthen_ _Arena_.",
+        "effect": "Within the Target, choose one:\n* Add a _Tripping Hazard_ (_Earth_).\n* Make an _Engagement_ _Rough_ (_Earth_).\n* Remove _Earth_ _Terrain_ from an _Engagement_.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Earth Vein",
+              "cost": "1 _Essence_",
+              "effect": "Instead, Range is 1."
+            },
+            {
+              "name": "Earthen Wall",
+              "cost": "1 _Essence_",
+              "exclusive": true,
+              "effect": "Add a _Wall of Earth_ to an _Engagement_."
+            },
+            {
+              "name": "Earth Mover",
+              "cost": "2 _Essence_",
+              "exclusive": true,
+              "effect": "If you choose an effect that would target an _Engagement_, instead effect the entire _Arena_."
+            }
+          ]
+        }
+      },
+      {
+        "name": "Quake",
+        "category": "Light",
+        "type": "Attack",
+        "keywords": ["Spirit", "Remote"],
+        "damage_type": "None",
+        "material": "Earth",
+        "cost": "2 _Essence_",
+        "range": "1",
+        "target": "A creature on an _Earthen_ surface.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Wide Quake",
+              "cost": "2 _Essence_",
+              "effect": "Instead, Target is an _Engagement_. After resolving the Attack, add _Rough_ (_Earth_)."
+            }
+          ]
+        },
+        "chart": {
+          "stun": [1, 2, 2, 3],
+          "roll": ["2-3", "4-5", "6-10", "11-12"],
+          "status": ["None", "_Exposed_ [2]", "_Exposed_ [3], _Prone_ [3]", "_Exposed_ [4], _Prone_ [4]"]
         }
       }
     ]
@@ -1090,6 +1407,38 @@
     ]
   },
   {
+    "name": "Physician",
+    "desc": "You know the basics of medicine, allowing you to better treat the wounds of your allies and keep everybody in top form.",
+    "category": "Camp",
+    "type": "Career",
+    "abilities": [
+      {
+        "name": "Medical Knowledge",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You are schooled in medicine, and can determine the best of course of action for most injuries, illnesses, and other maladies. You have specific knowledge about medicines, wounds, disease, and other common medical topics.\n&nbsp;\nWhen your background and skills as a physician would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Field Clinic",
+        "category": "Camp",
+        "type": "Talent",
+        "effect": "Whenever you _Patch_ as a _Camp Action_ you may pay an additional _Supply_ to target an additional creature or instead mark two segments on a _Wound_ clock. If at the end of the _Camp Roll_ an ally you targeted with _Patch_ has removed a _Wound_, clear 1 _Stress_."
+      },
+      {
+        "name": "Tools of the Trade",
+        "category": "Travel",
+        "type": "Talent",
+        "effect": "You can use _Physician's Tools_."
+      },
+      {
+        "name": "Medical Neutrality",
+        "category": "Skill",
+        "type": "Power",
+        "effect": "Skilled physicians are rare and prized; when not bearing weapons and demonstrating you are a physician (usually by simply showing your supplies) most other humans will allow you to approach and will typically treat you kindly or, at worst, with skeptical neutrality."
+      }
+    ]
+  },
+  {
     "name": "Hunter",
     "desc": "You are skilled at tracking game, and can easily supply food for your party while hunting.",
     "category": "Travel",
@@ -1102,16 +1451,17 @@
         "effect": "You are a skilled hunter, and have a deep knowledge of different animals, where they might live, and the best way to hunt them down. You know how to best prepare most animals found in the wild, can field dress game, and have a deep knowledge of the best ways to track various creatures.\n&nbsp;\nWhen your background and skills as a hunter would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
-        "name": "Skilled Hunter",
-        "category": "Travel",
-        "type": "Talent",
-        "effect": "Whenever you _Hunt_ as a _Camp_ or _Travel_ _Action_ gain a +1 to the die roll. You may always look at your current area's _Hunting Chart_ before deciding to roll on it, although the GM may hide the specifics of the rarest option on the table. If your roll would get you nothing, instead gain 1 _Basic Meal_."
-      },
-      {
         "name": "Tracker",
         "category": "Travel",
+        "type": "Talent",
+        "effect": "Gain a +1 to the die roll for _Hunt_ and _Track_. You may always look at your current area's _Hunting Chart_, although the GM may hide the specifics of the rarest option on the table. If the result of your _Hunt_ would get you nothing, instead gain 1 _Basic Meal_."
+      },
+      {
+        "name": "Skilled Hunter",
+        "category": "Travel",
         "type": "Boon",
-        "effect": "When traveling, you may spend one [ ] for any tracking related _Augment_ or to remove _Indiscretion_."
+        "frequency": "1/Day",
+        "effect": "You may take the _Hunt_ or _Track_ _Travel Action_ without spending any die. You may regain a use of this ability by spending one [ ]."
       },
       {
         "name": "Trail Signs",
@@ -1119,15 +1469,8 @@
         "type": "Power",
         "frequency": "1/Day",
         "keywords": ["Scouting"],
-        "effect": "When a _Menace_ or _Discovery_ card is drawn from the Travel Deck, you may attempt to glean more info. If your ability to track would reveal more information, immediately learn additional information, such as the consequences of failure. You may spend [ ] to reveal this card. If you learn no information, do not expend a use.",
+        "effect": "When a _Menace_ is drawn from the Travel Deck, you may attempt to glean more info. If your hunter's knowledge would assist, you may treat this _Menace_ as if it was _Scouted_.",
         "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
-      },
-      {
-        "name": "Prepared Game",
-        "category": "Camp",
-        "type": "Power",
-        "frequency": "1/_Journey_",
-        "effect": "You always have a stack of jerky and other travel-safe meats. You may spend _Supplies_ to gain 2 _Good Meals_."
       }
     ]
   },
@@ -1532,6 +1875,70 @@
     ]
   },
   {
+    "name": "Tricky",
+    "desc": "You are an adept lier and can convince almost anybody about anything.",
+    "category": "Archetype",
+    "abilities": [
+      {
+        "name": "Exceptional Guile",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You have a silver tongue and the lies you spin are often more believable than the truth. You can plant the seeds of a truth or a thought throughout a conversation and watch your mark come to the conclusion you want all on their own.\n&nbsp;\nWhen your guile would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Boon of Guile",
+        "category": "Skill",
+        "type": "Boon",
+        "effect": "When using your guile to deceive or steer or a conversation you may spend one [ ] as [-] or the _Subtlety_ Augment, if appropriate."
+      },
+      {
+        "name": "White Lie",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Person/Journey",
+        "effect": "When you lie, you may use this power to ensure the other person believes it, if only for a few moments. If the lie is believable, the listener believes it until proven wrong. If it is questionable, they believe it for the rest of the day. If it is unbelievable, they believe it for the rest of the conversation. If it is obviously false, they believe it for a few moments."
+      },
+      {
+        "name": "Silver-Tongued Recovery",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Day",
+        "effect": "Even with all your skill, you sometimes say the wrong thing. You may use this Power to immediately walk back something you said, causing the conversation to go back uninterrupted, effectively causing the person you are talking with to forget you ever mentioned that."
+      },
+      {
+        "name": "Shifty",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "Whenever your GM asks a question to determine how an NPC behaves, you may lie about your current status such as your current _Guard_, _Stamina_, number of _Wounds_, _Statuses_ you are affected by or other personal attributes. You may only lie about stats on your character sheet, and may not lie about information obvious on the battle map, such as whether you are the closest character to an enemy. You may only lie when its relevant for NPC targeting; abilities that deal additional effects based on your current _Stamina_ or similar still trigger as normal, and Status effects affect you as normal."
+      },
+      {
+        "name": "Unflappable",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "It costs half as much to _Negate_ the first _Emotional Status_ you're inflicted with each _Round_."
+      },
+      {
+        "name": "Beguile",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "keywords": ["Social"],
+        "range": "1",
+        "target": "Single-Target",
+        "cost": "1 _Momentum_",
+        "effect": "Deal 1 _Stun_ to the Target, then inflict your choice of _Impaired_ [4] or _Exposed_ [4].",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Improved Beguilement",
+              "cost": "1 _Momentum_",
+              "effect": "Instead, deal 3 _Stun_ to the Target, then inflict _Taunted_ [6]. You may choose any ally to be treated as the taunter."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
     "name": "Strong",
     "desc": "You possess incredible physical strength, allowing you to accomplish feats that others could not even dream of.",
     "category": "Archetype",
@@ -1540,7 +1947,7 @@
         "name": "Exceptional Strength",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are fantastically strong, approaching the limits of what a human can do unaided by craft. You can overpower creatures twice your size, and .\n&nbsp;\nWhen your physical strength would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You are fantastically strong, approaching the limits of what a human can do unaided by craft. You can overpower creatures twice your size, and lift far beyond your weight.\n&nbsp;\nWhen your physical strength would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Boon of Strength",
@@ -1570,13 +1977,10 @@
         "effect": "You may, when it would be beneficial, treat yourself as Size 3 instead of Size 2. Decrease the Cost to _Negate_ _Grabbed_ and _Forced Movement_ by 1."
       },
       {
-        "name": "Strong Swing",
-        "type": "Gambit",
+        "name": "Strong Strike",
+        "type": "Passive",
         "category": "Offensive",
-        "keywords": ["Reliable"],
-        "prereqs": "[_Martial_] Attack.",
-        "effect": "Inflict additional _Stun_ equal to 1 + (the _Cost_ of the triggering Attack), even on a _Miss_. Add _Push_ [2/4] to the Attack.",
-        "special": "If you are not using any other _Gambit_, you may pay 2 _Momentum_ to use this _Gambit_."
+        "effect": "Whenever you make a _Martial Attack_, choose one:\n* Deal +1 _Stun_.\n* Convert 1 Damage to _Stun_.\n\nRepeat this effect X times, where X is the base Cost of the original Attack."
       }
     ]
   },
@@ -1595,13 +1999,13 @@
         "name": "Boon of Swiftness",
         "category": "Skill",
         "type": "Boon",
-        "effect": "When your exceptional speed is relevant you may spend one [ ] as [-] or the _Phase_ _Augment_, if appropriate."
+        "effect": "When your exceptional speed is relevant you may spend one [ ] as [-] or the _Speed_ _Augment_, if appropriate."
       },
       {
         "name": "Quick March",
         "category": "Travel",
         "type": "Boon",
-        "effect": "During a _Travel Roll_, you may spend one [ ] as _Phase_. You may gain _Fatigue_ to instead allow an ally to spend one of their [ ] as _Phase_ as you help them compensate for their pace."
+        "effect": "During _Travel_, you may spend one [ ] as [+] for a _Speed_ _Augment_. You may gain _Fatigue_ to instead allow an ally to spend one of their [ ] as [+] as you help them compensate for their pace."
       },
       {
         "name": "Incredible Speed",
@@ -1611,19 +2015,13 @@
         "bonuses": { "speed": 1 }
       },
       {
-        "name": "Swiftest",
-        "category": "Mobility",
-        "type": "Reaction",
-        "trigger": "The _Phase_ before the one you are supposed to take your _Turn_ in begins.",
-        "cost": "1 _Momentum_/_Speed_",
-        "effect": "Instead, take your turn in this _Phase_."
-      },
-      {
         "name": "Agility",
         "category": "Mobility",
-        "type": "Maneuver",
-        "cost": "1 _Momentum_/_Speed_",
-        "effect": "Ignore any increased _Speed_ costs due to _Terrain_ for a single move this _Turn_."
+        "type": "Reaction",
+        "trigger": "A _Phase_ begins.",
+        "cost": "None",
+        "effect": "Take a _Turn_ this _Phase_. You may only use _Mobility_ abilities and _Move_.",
+        "special": "Increase the _Cost_ of this by 1 _Momentum_ each time you use it in a _Round_."
       }
     ]
   }

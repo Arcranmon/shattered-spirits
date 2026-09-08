@@ -2,12 +2,13 @@
   <div inline>
     <div
       class="ability--head"
-      v-bind:class="getBestColor"
+      :style="{ 'background-color': ability.Color }"
       style="width: 100%">
       <img
         v-if="ability.HasIcon"
         :src="ability.Icon"
         style="height: 1.5em" />
+      <span v-if="ability.HasIcon">&nbsp;</span>
       <display-tooltip-text :string="ability.Header" />
 
       <span
@@ -288,94 +289,9 @@ export default Vue.extend({
     isStance() {
       return this.ability instanceof Stance
     },
-    getBestColor: function () {
-      var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood', 'Archetype']
-      if (overrideColors.includes(this.ability.Category)) {
-        return this.ability.Category
-      }
-      if (this.ability instanceof Terrain) {
-        return this.ability.ColorHeader
-      }
-      if (this.ability instanceof Weapon) {
-        return 'Weapon'
-      }
-      if (this.ability instanceof Armor) {
-        return 'Armor'
-      }
-      if (this.ability instanceof Equipment) {
-        return 'Equipment'
-      }
-      if (this.ability instanceof Stance) {
-        return 'Stance'
-      }
-      if (this.ability instanceof Status) {
-        return 'Status'
-      }
-      if (
-        this.ability.Category == 'Crafting' ||
-        this.ability.Category == 'Camp' ||
-        this.ability.Category == 'Travel' ||
-        this.ability.Category == 'Skill' ||
-        this.ability.Category == 'Downtime'
-      )
-        return this.ability.Category
-      return this.ability.Type
-    },
   },
   components: { AbilityWidget, BasicTable, ChartTable },
 })
 </script>
 
-<style scoped lang="scss">
-.Archetype {
-  background-color: rgb(106, 168, 76);
-}
-.Trait {
-  background-color: rgb(106, 168, 76);
-}
-.Status {
-  background-color: $color--general;
-}
-.Equipment {
-  background-color: #a776a0;
-}
-.Career {
-  background-color: rgb(106, 168, 76);
-}
-.Weapon {
-  background-color: rgb(226, 119, 43);
-}
-.Skill {
-  background-color: #d99a07;
-}
-.Camp {
-  background-color: #d2d50e;
-}
-.Downtime {
-  background-color: #0ebed5;
-}
-.Travel {
-  background-color: #5cff69;
-}
-.Crafting {
-  background-color: #407647;
-}
-.Passive {
-  background-color: #68696a;
-}
-.Maneuver {
-  background-color: #7ac3ff;
-}
-.Reaction {
-  background-color: #bbcc6f;
-}
-.Gambit {
-  background-color: #a776a0;
-}
-.Attack {
-  background-color: rgb(230, 95, 95);
-}
-.Stance {
-  background-color: thistle;
-}
-</style>
+<style scoped lang="scss"></style>

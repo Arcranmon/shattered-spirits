@@ -2,7 +2,7 @@
 // Parent category for all other classes, as some fields are universal.
 
 import { store } from '@/store'
-import { Chart } from '@/class'
+import { Chart, ColorMap } from '@/class'
 
 class Base {
   protected name_: string
@@ -75,8 +75,10 @@ class Base {
   public get HasIcon() {
     return true
   }
-  public get ColorName() {
-    return 'derived'
+  public get Color() {
+    if (this.Category == 'Crafting' || this.Category == 'Camp' || this.Category == 'Travel' || this.Category == 'Skill' || this.Category == 'Downtime')
+      return ColorMap.get(this.Category)
+    return ColorMap.get(this.Type)
   }
 
   // ==========================================================

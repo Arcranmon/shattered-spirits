@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Ability, Equipment } from '@/class'
+import { Equipment, ColorMap } from '@/class'
 
 class Armor extends Equipment {
   private stun_: number
@@ -68,6 +68,9 @@ class Armor extends Equipment {
   }
   get TraitsHeader() {
     return '**Traits:** _' + this.traits_.join('_, _') + '_'
+  }
+  public get Color() {
+    return ColorMap.get('Armor')
   }
   // ==========================================================
   // SERIALIZATION

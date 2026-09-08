@@ -2,6 +2,7 @@ import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import EquipmentJson from '@/database/items/equipment.json'
 import StancesJson from '@/database/stances.json'
+import EventsJson from '@/database/events.json'
 import TraitsJson from '@/database/traits.json'
 
 import AbilityPackageJson from '@/database/ability_packages.json'
@@ -17,7 +18,7 @@ import SpiritTypeJson from '@/database/spirit_types.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { AbilityPackage, Armor, Equipment, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
+import { AbilityPackage, Armor, Equipment, Event, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -45,6 +46,19 @@ const kPlayerAbilities = [
   'Concentrate',
   'Overpower',
   'Steal',
+  'Discover',
+  'Scout',
+  'Focused Travel',
+  'Aid',
+  'Hunt',
+  'Forage',
+  'Navigate',
+  'Forced March',
+  'Hide Tracks',
+  'Find Camp',
+  'Rest',
+  'Connect',
+  'Patch',
 ]
 
 const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Drop', 'Equip', 'Flank', 'Delay']
@@ -73,6 +87,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Stances = StancesJson.map((x) => Stance.Deserialize(<IStanceData>(<unknown>x)))
     this.Terrains = TerrainJson.map((x) => Terrain.Deserialize(<ITerrainData>(<unknown>x)))
     this.Statuses = StatusJson.map((x) => Status.Deserialize(<IStatusData>(<unknown>x)))
+    this.Events = EventsJson.map((x) => Event.Deserialize(<IEventData>(<unknown>x)))
     this.Everything = this.Everything.concat(
       this.GlossaryItems,
       this.Armors,
@@ -102,6 +117,7 @@ export class DatabaseJsonStore extends VuexModule {
   private Abilities: Ability[] = []
   private Terrains: Terrain[] = []
   private Statuses: Status[] = []
+  private Events: Event[] = []
 
   get basicStances() {
     return ['Open Stance', 'Rallying Stance', 'Guarded Stance', 'Hostile Stance', 'Focused Stance', 'Agile Stance']
@@ -152,6 +168,15 @@ export class DatabaseJsonStore extends VuexModule {
         abilities.push(this.getFromEverything(ability))
       }
       return abilities
+    }
+  }
+
+  // ==========================================================
+  // EVENT TOOLS
+  // ==========================================================
+  get getEvents(): any {
+    return () => {
+      return this.Events
     }
   }
 

@@ -6,7 +6,7 @@ import OrphanFinder
 
 STANCE_VALUE = 14
 SPIRIT_STANCE_VALUE = 8 # Assume a rough defensive/speed budget of 4, +3 for Momentum
-# Should be a little bit better than Spiritual Essence, but not horrifically so
+# Should be a little bit better than Skirmisher Spirit, but not horrifically so
 SPEED_VALUE = 1.5 # Make it worth less from stance than buying it raw
 PHASE_VALUE = 0.5
 DEFENSES_VALUE = .3

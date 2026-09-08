@@ -67,6 +67,8 @@
             </v-tab>
             <v-tab> <h4>Reactions</h4> </v-tab>
             <v-tab> <h4>Stances</h4> </v-tab>
+            <v-tab> <h4>Travel</h4> </v-tab>
+            <v-tab> <h4>Camp</h4> </v-tab>
           </v-tabs>
           <v-tabs-items
             v-model="abilityTab"
@@ -95,7 +97,17 @@
               <show-cards
                 :inputs="basic_stances"
                 :collapse="false"
-                :cols="1" />
+                :cols="1" /></v-tab-item>
+              <v-tab-item>
+                <ability-tab
+                  abilityType="Travel Action"
+                  :character="character"
+              /></v-tab-item>
+              <v-tab-item>
+                <ability-tab
+                  abilityType="Camp Action"
+                  :character="character"
+              /></v-tab-item>
             </v-tab-item>
           </v-tabs-items>
         </div>
@@ -109,7 +121,16 @@
             :cols="1" />
         </div>
 
-        <div v-if="$route.params.tab == 'disciplines'"><elemental-disciplines /></div>
+        <div v-if="$route.params.tab == 'spirit-disciplines'"><elemental-disciplines /></div>
+        <div
+          class="character-tab-content"
+          style="border-top: 2px solid black"
+          v-if="$route.params.tab == 'martial-disciplines'">
+          <show-cards
+            :inputs="martial_disciplines"
+            :collapse="false"
+            :cols="1" />
+        </div>
         <div v-if="$route.params.tab == 'spirit-arts'"><elemental-arts /></div>
         <div
           class="character-tab-content"
@@ -167,7 +188,7 @@ export default Vue.extend({
   data() {
     return {
       selectedTab: 'basic-skills',
-      tabs: ['basic-skills', 'archetypes', 'disciplines', 'careers', 'spirit-customization'],
+      tabs: ['basic-skills', 'archetypes', 'spirit-disciplines', 'martial-disciplines', 'careers', 'spirit-customization'],
       abilityTab: 0,
       character: new Character(),
     }
@@ -176,6 +197,13 @@ export default Vue.extend({
     columns: function () {
       if (this.isMobile) return 1
       return 2
+    },
+    martial_disciplines: function () {
+      var martialDiscs = this.$store.getters.getDisciplinesByType('Defender')
+      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Supporter'))
+      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Striker'))
+      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Artillery'))
+      return martialDiscs.sort((a, b) => a.Name.localeCompare(b.Name))
     },
     arts: function () {
       return this.$store.getters.getArts().sort((a, b) => a.Name.localeCompare(b.Name))
