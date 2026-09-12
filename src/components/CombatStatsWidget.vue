@@ -8,7 +8,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Momentum -= 1), $emit('changed')"
+            @click=";((creature.Momentum -= 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -24,7 +24,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Momentum += 1), $emit('changed')"
+            @click=";((creature.Momentum += 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>
@@ -70,7 +70,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Speed -= 1), $emit('changed')"
+            @click=";((creature.Speed -= 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -87,7 +87,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Speed += 1), $emit('changed')"
+            @click=";((creature.Speed += 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>
@@ -102,7 +102,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Stamina -= 1), $emit('changed')"
+            @click=";((creature.Stamina -= 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -119,7 +119,7 @@
           <v-btn
             inline
             small
-            @click=";(creature.Stamina += 1), $emit('changed')"
+            @click=";((creature.Stamina += 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>
@@ -137,7 +137,7 @@
           <v-btn
             inline
             small
-            @click="(creature.Guard -= 1), $emit('changed')"
+            @click="((creature.Guard -= 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-minus</v-icon>
@@ -154,7 +154,7 @@
           <v-btn
             inline
             small
-            @click="(creature.Guard += 1), $emit('changed')"
+            @click="((creature.Guard += 1), $emit('changed'))"
             icon
             class="resource--button">
             <v-icon color="black">mdi-plus</v-icon>
@@ -170,14 +170,14 @@
           class="d-flex justify-center align-center">
           <v-btn
             inline
-            @click="creature.ApplyRespite(), $emit('changed')"
+            @click="(creature.ApplyRespite(), $emit('changed'))"
             >Apply Respite</v-btn
           >
         </v-col>
         <v-col class="d-flex justify-center align-center">
           <v-btn
             inline
-            @click="creature.ResetDefault(), $emit('changed')"
+            @click="(creature.ResetDefault(), $emit('changed'))"
             >Reset Default</v-btn
           >
         </v-col>
@@ -193,14 +193,6 @@
           <display-tooltip-text string="**_Phase_:**" />
         </v-col>
         <v-col :cols="8">{{ creature.Phase }}</v-col>
-      </v-row>
-      <v-row no-gutters>
-        <v-col>
-          <display-tooltip-text string="**_Defenses_:**" />
-        </v-col>
-        <v-col :cols="8">
-          <display-tooltip-text :string="creature.Defenses" />
-        </v-col>
       </v-row>
       <v-row no-gutters>
         <v-col>

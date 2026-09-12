@@ -16,7 +16,7 @@
     "hands": 1,
     "durability": 1,
     "rarity": "Common",
-    "effect": "This leather quiver is full of arrows that can be used as _Missiles_ for a variety of bows. Unless you have specialized arrows, these are treated as a _Source_ 1 (_Metal_, _Wood_) and applicable attacks use _Metal_ as the _Material_."
+    "effect": "This leather quiver is full of arrows that can be used as _Missiles_ for a variety of bows. Unless you have specialized arrows, these use _Wood_ as the _Material_ for Attacks."
   },
   {
     "name": "Books",
@@ -43,18 +43,18 @@
         "category": "Recovery",
         "type": "Maneuver",
         "cost": "None",
-        "effect": "Create an [_Opening_]. If you are an _Earthbound_, this _Round_ you may not be _Suppressed_ and immediately gain 4 _Essence_. If you are a Windbound, instead gain _Poisoned_ 5. Otherwise, gain _Poisoned_ 1."
+        "effect": "Create an [_Opening_]. If you are an _Earthbound_, this _Round_ you may not be _Suppressed_ and immediately gain 4 _Essence_. If you are a Windbound, instead gain _Poisoned_ 5 times. Otherwise, gain _Poisoned_ once."
       }
     ]
   },
   {
     "name": "Combat Waterflask",
-    "keywords": ["_Source_ 2 (_Water_)"],
+    "keywords": ["Water"],
     "category": "Trinket",
     "load": 2,
     "durability": 1,
     "desc": "A water-tight pouch containing a large amount of water with an easy-open lid for convenience.",
-    "effect": "This may also be treated as _Supplies_ for the purpose of water; if it is, it may not be used until refilled with water."
+    "effect": "This may also be treated as _Supplies_ for the purpose of water; if it is, it may not be used until refilled with water. It also contains a _Minor_ _Source_ (_Water_) when filled."
   },
   {
     "name": "Health Flask",
@@ -84,8 +84,8 @@
     "hands": 1,
     "durability": 1,
     "rarity": "Common",
-    "keywords": ["_Source_ 2 (_Metal_)", "Quickdraw", "Consumable"],
-    "effect": "A small bag of metallic caltrops that can be used to deter enemies from entering a space. These are typically lost after use, but characters that have a way to quickly collect them may be able to reuse them. If used as a _Missile_, use _Scatter_ at no cost in the target's _Arena_. While _Worn_, this may be treated as an effectively unlimited source of _Source_ 1 (_Metal_) items.",
+    "keywords": ["Metal", "Quickdraw", "Consumable"],
+    "effect": "This item contains _Plenty_ of _Tiny_ _Metal_ objects.",
     "abilities": [
       {
         "name": "Scatter",
@@ -94,7 +94,7 @@
         "cost": "1 _Momentum_",
         "range": "1",
         "target": "An _Arena_.",
-        "effect": "You scatter metallic caltrops in the Target, making it _Dangerous_ [_Metal_, _Stab_]. While this _Terrain_ persists, it has unlimited _Source_ 1 [_Metal_]."
+        "effect": "You scatter metallic caltrops in the Target, making it _Dangerous_ [_Metal_, _Stab_]. While this _Terrain_ persists, it contains _Plenty_ of _Tiny_ _Metal_."
       }
     ]
   },
@@ -109,13 +109,13 @@
     "keywords": ["Quickdraw", "Consumable"],
     "abilities": [
       {
-        "name": "Fling",
+        "name": "Lob",
         "category": "Utility",
         "type": "Maneuver",
         "cost": "1 _Momentum_",
         "range": "1",
         "effect": "Create _Oil_ _Terrain_ somewhere within Range.",
-        "special": "You may attempt to throw this at a specific creature; if you do, Range is instead 0, but the Target must _Negate_ (_Reflex_ 8). If they fail, they increase their _Weakness_ to _Fire_ by 1 step and, the next time they take _Fire_ Damage, they automatically gain _Alight_ 4. If they succeed, instead place _Oil_ in their _Arena_ as normal. Flame Spirits are immune to this effect, and instead gain 5 _Stamina_ or _Guard_ in any combination."
+        "special": "You may attempt to throw this at a specific creature; if you do, Range is instead 0, but the Target must _Negate_ (4). If they fail, they gain _Weakness_ (_Fire_) and, the next time they take _Fire_ Damage, they automatically gain _Alight_. If they succeed, instead place _Oil_ in their _Arena_ as normal. Flame Spirits are immune to this effect, and instead gain 5 _Stamina_ or _Guard_ in any combination."
       }
     ]
   },
@@ -127,7 +127,7 @@
     "hands": 1,
     "durability": 1,
     "rarity": "Rare",
-    "keywords": ["_Source_ 2 (_Wood_)", "Quickdraw", "Consumable"],
+    "keywords": ["Wood", "Quickdraw", "Consumable"],
     "effect": "When imbued with a trace amount of spiritual energy this will violently detonate a short time after, spreading a huge growth of green across the area, regardless of how barren it was before. The plants persist, but after a few hours the magic sustaining their growth fades, causing them to act as normal plants would.",
     "abilities": [
       {
@@ -153,17 +153,21 @@
     "keywords": ["Quickdraw", "Consumable"],
     "abilities": [
       {
-        "name": "Fling",
+        "name": "Lob",
         "category": "Light",
         "damage_type": "Crush",
         "type": "Attack",
         "cost": "1 _Momentum_",
         "range": "1",
-        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [8 _Grit_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.",
+        "effect": "All creatures in an _Engagement_ within Range are automatically _Hit_.",
         "chart": {
-          "damage": [0, 0, 1, 2],
-          "stun": [0, 2, 4, 6],
-          "status": ["None", "None", "_Impaired_, _Exposed_", "_Impaired_, _Exposed_, _Dazed_"]
+          "damage": [0, 1, 2, 4],
+          "stun": [0, 3, 4, 6],
+          "status": ["None", "None", "_Impaired_ [2], _Exposed_ [2]", "_Impaired_ [3], _Exposed_ [3]"]
+        },
+        "analysis_notes": {
+          "fudge": 2,
+          "analysis_notes": "Grenade"
         }
       }
     ]
@@ -180,16 +184,20 @@
     "keywords": ["Quickdraw", "Consumable"],
     "abilities": [
       {
-        "name": "Fling",
+        "name": "Lob",
         "category": "Light",
         "damage_type": "Fire",
         "type": "Attack",
         "cost": "1 _Momentum_",
         "range": "1",
-        "effect": "All creatures in an _Engagement_ within Range must immediately _Negate_ [8 _Reflex_].\n* On a success, they are _Grazed_.\n* On a failure, they are _Hit_.\n\nAdditionally, _Ignite_ their _Engagement_.",
+        "effect": "All creatures in an _Engagement_ within Range are automatically _Hit_. _Ignite_ the _Engagement_.",
         "chart": {
-          "damage": [0, 2, 4, 6],
-          "status": ["None", "None", "_Alight_ 1", "_Alight_ 2"]
+          "damage": [0, 3, 4, 6],
+          "status": ["None", "None", "_Alight_ [4]", "_Alight_ [6]"]
+        },
+        "analysis_notes": {
+          "fudge": 2,
+          "analysis_notes": "Grenade"
         }
       }
     ]
@@ -257,7 +265,7 @@
     "keywords": ["Quickdraw", "Consumable"],
     "load": 2,
     "durability": 1,
-    "effect": "When you would _Manifest_ your spirit at _Respite_, you may choose to _Manifest_ them a _Melee_ _Range_ at no cost. If you do, they have _Advantage_ on all rolls and gain an additional 2 _Momentum_ every _Round_ until they are _Downed_. The Burning Ruby is consumed as a part of this."
+    "effect": "When you would _Manifest_ your spirit at _Respite_, you may destroy this item. If you do, they have _Advantage_ on all rolls and gain an additional 2 _Momentum_ every _Round_ until they are _Downed_."
   },
   {
     "name": "Smokestick",
@@ -345,12 +353,20 @@
     "effect": "This item is a collection of herbs with no clear use, but can be combined in a variety of ways:\n* Gain tea, mild drugs, or some other relaxing substances. You may _Cut Loose_, but roll -1 die on your _Rest Roll_.\n* Gain basic medicine; it may be used for the _Patch_ _Camp Action_.\n\n_Herbalist_s have many additional ways to use these."
   },
   {
+    "name": "Physician's Tools",
+    "category": "Camp Item",
+    "desc": "Bandages, common medicines, and all the tools needed to treat wounds, whether it be a burn or an arrow through the gut.",
+    "load": 2,
+    "durability": 1,
+    "effect": "These tools have 6 uses when fully stocked. Whenever you would spend _Supplies_ for the _Patch_ _Camp Action_ you may roll a d6. If you roll less than or equal to the number of uses remaining, spend one use instead of _Supplies_. Otherwise, you must spend _Supplies_ as normal for _Patch_.\n&nbsp;\nCharacters capable of using these Tools or another appropriate one (such as _Herbalism Tools_) can, as a _Camp Action_, restore 2 uses for the cost of appropriate _Supplies_. In a town, characters can typically replenish all uses for the price of a single Supply.\n&nbsp;\nWhen characters without the appropriate training use Physician's Tools they instead spend 3 uses after successfully replacing _Supplies_."
+  },
+  {
     "name": "Supplies",
     "category": "Supply",
     "desc": "The many supplies needed for travel such as food, water, medicine, and various expendable bits needed to make camp.",
     "load": 1,
     "durability": 1,
-    "effect": "This item is a rough collection of a variety of supplies needed for travel. During the _Camp Phase_ you may this for a variety of effects:\n* Gain two _Poor Meals_ or one _Basic Meal_.\n* Gain a day's worth of water.\n* Gain firewood and other resources needed to sustain a fire for the night.\n* Gain alcohol, mild drugs, or some other relaxing substances. You may _Cut Loose_, but roll -1 die on your _Rest Roll_.\n* Gain basic medicine; it may be used for the _Patch_ _Camp Action_.\n\nMany toolkits and _Careers_ supply additional ways to spend Supplies. Additionally, when traveling in harsh terrain _Supplies_ may be required to make camp or otherwise endure. Finally, Supplies may be expended without a _Camp Action_ when they would be useful for traveling or in combat, such as to provide torches or similar expendable items."
+    "effect": "This item is a rough collection of a variety of supplies needed for travel. Supplies may be spent to gain:\n* Gain two _Poor Meals_ or one _Basic Meal_.\n* Gain a day's worth of water.\n* Gain alcohol, mild drugs, or some other relaxing substances. You may _Cut Loose_, but roll -1 die on your _Rest Roll_.\n* Gain basic medicine; it may be used for the _Patch_ _Camp Action_.\n* Gain a common consumable item, such as torches, firewood, or other common consumables.\n\nMany tools and _Careers_ supply additional ways to spend Supplies."
   },
   {
     "name": "Camping Kit",
@@ -382,6 +398,7 @@
     "keywords": ["Quickdraw", "Consumable", "Fragile"],
     "load": 1,
     "durability": 1,
+    "hands": 1,
     "effect": "This may be used as if it was _Medicine_ for a non-Spirit character suffering from an _Envenomed_ _Wound_; if it is, the target may mark an additional two segments on the Wound.",
     "abilities": [
       {
@@ -451,7 +468,7 @@
         "category": "Utility",
         "type": "Maneuver",
         "cost": "1 _Momentum_",
-        "effect": "Create an [_Opening_] and apply this Poison to a _Wielded_ or _Worn_ Item. The next time you make a creature lose _Stamina_ with a [_Stab_] or [_Slash_] Effect using said Item, they immediately take 4 _Stun_ and must _Negate_ [_Grit_ 10] if they're an animal, human, or other natural creature. This is a [_Poison_] effect. If they fail, they gain <u>Drowsy</u>. <u>Drowsy</u> creatures act one _Phase_ later than they normally would and, at Respite, lose 4 _Guard_ and gain 1 less _Posture_ and _Speed_. If they end the combat with this Poison still afflicted, they gain _Fatigue_."
+        "effect": "Create an [_Opening_] and apply this Poison to a _Wielded_ or _Worn_ Item. The next time you make a creature lose _Stamina_ with a [_Stab_] or [_Slash_] Effect using said Item, they immediately take 4 _Stun_ and must _Negate_ [5] if they're an animal, human, or other natural creature. This is a [_Poison_] effect. If they fail, they gain <u>Drowsy</u>. <u>Drowsy</u> creatures act one _Phase_ later than they normally would and, at Respite, lose 4 _Guard_ and gain 1 less _Posture_ and _Speed_. If they end the combat with this Poison still afflicted, they gain _Fatigue_."
       }
     ]
   },

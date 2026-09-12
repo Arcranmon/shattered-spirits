@@ -82,7 +82,6 @@
 <script>
 import Vue from 'vue'
 import BaseWidget from '../BaseWidget.vue'
-import EquipmentWidget from './EquipmentWidget.vue'
 import { AbilityPackage, Armor, Equipment, Stance, Status, Technique, SpiritForm, Trait, Terrain, Weapon } from '@/class'
 
 export default Vue.extend({
@@ -145,7 +144,6 @@ export default Vue.extend({
   },
   components: {
     BaseWidget,
-    EquipmentWidget,
   },
   methods: {
     clickMethod(variable, index) {

@@ -4,9 +4,16 @@
     "desc": "Thick grass, vines, or other growths cover this arena, making speed far more difficult.",
     "element": "Wood",
     "keywords": ["Plant"],
-    "source": "2 (_Engagement_) / 4 (_Arena_)",
-    "engaged": "_Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_ or _Negate_ with _Reflex_.",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
+    "engaged": "_Speed_ Costs are increased by 1.",
     "destroy": "A creature may Attack this _Terrain_; if they deal at least 3 _Slash_ Damage they may remove this from an _Engagement_. Any effects that Targets the whole Arena and does at least 8 _Slash_ Damage removes Overgrown from all _Engagements_."
+  },
+  {
+    "name": "Rough",
+    "desc": "Uneven footing makes it difficult to move across this terrain.",
+    "element": "Mutable",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
+    "engaged": "_Speed_ Costs are increased by 1."
   },
   {
     "name": "Cliff",
@@ -20,7 +27,7 @@
     "desc": "A powerful gust that lasts only a short while.",
     "layer": "Weather",
     "element": "Wind",
-    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
     "effect": "When this Terrain is applied, remove any [_Cloud_] _Terrain_. Non-Melee Attacks that pass through, originate from this, or target a creature in this _Arena_ automatically decrease their Result by 1 unless they are [_Wind_] or [_Lightning_].",
     "eor": "Remove this _Terrain_."
   },
@@ -28,14 +35,13 @@
     "name": "Dangerous",
     "layer": "Terrain",
     "element": "Mutable",
-    "source": "1 (Unlimited)",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
     "desc": "Terrain covered in low hazards such as caltrops, small spikes, or other mobility-limiting effects.",
+    "effect": "This provides _Plenty_ of _Tiny_ Objects of the appropriate element.",
     "engaged": "Speed_ Costs are increased by 1, including entering this _Terrain_. A creature may be _Grazed_ by this to ignore this increased cost once, any number of times in a turn.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "chart": {
-        "damage": [1, 2, 3, 5]
-      }
+      "damage": [1, 2, 3, 5]
     }
   },
   {
@@ -44,13 +50,6 @@
     "element": "Arena",
     "desc": "Elevated terrain that provides an advantage against other foes.",
     "effect": "You have a +1 on _Attack Rolls_ against creatures in lower Arenas and may treat yourself as 1 Range closer when attacking them."
-  },
-  {
-    "name": "Ledge",
-    "layer": "Terrain",
-    "element": "Mutable",
-    "desc": "The lip of a cliff, right next to a steep drop.",
-    "effect": "While in this _Terrain_, you may be _Forcibly Moved_ to an adjacent _Arena_ even if it is not _Forceful_. This _Arena_ is typically specified."
   },
   {
     "name": "Veiled",
@@ -90,14 +89,14 @@
     "layer": "Arena",
     "element": "Earth",
     "desc": "The floor of a cave, uninteresting and relatively flat.",
-    "source": "_Earth_ 5, _Wind_ 1"
+    "source": "_Source_"
   },
   {
     "name": "Underground River",
     "layer": "Arena",
     "element": "Water",
     "desc": "A slow-moving body of water that is large enough to swim and dive in.",
-    "source": "_Water_ 5, _Wind_ 1",
+    "source": "_Source_",
     "effect": "While in this _Arena_, characters are always _Swimming_. Characters may _Engage_ with _Submerged_ _Terrain_."
   },
   {
@@ -107,9 +106,9 @@
     "desc": "A large rock pointing up.",
     "hardness": 2,
     "threshold": 10,
-    "source": "4",
+    "source": "_Source_",
     "engaged": "Gain _Cover_.",
-    "destroy": "When destroyed, create four _Source_ 3 [_Earth_]."
+    "destroy": "When destroyed, create four _Load_ 3 _Earth_ _Objects_."
   },
   {
     "name": "Stalactite",
@@ -118,10 +117,10 @@
     "desc": "A large rock, log, or some other.",
     "hardness": 2,
     "threshold": 10,
-    "source": "4",
+    "source": "_Source_",
     "engaged": "Gain _Cover_.",
     "effect": "Only [_Flying_] creatures may _Engage_ this; if they do, they do not lose _Flying_.",
-    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [_Reflex_ 8]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Source_ 3 [_Earth_].",
+    "destroy": "When destroyed, this falls to the ground. Creatures in the _Arena_ must _Negate_ [5]; on a failure they are _Hit_, on a success they are instead _Grazed_. This is a [_Stab_, _Earth_] effect. Create four _Load_ 3 _Earth_ _Objects_.",
     "chart": {
       "chart": {
         "stun": [2, 2, 3, 4],
@@ -136,24 +135,24 @@
     "element": "Elementless",
     "keywords": ["Flammable"],
     "desc": "A slick coat of oil covers this area, making passage difficult.",
-    "engaged": "Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_, _Negate_ with _Reflex_, and _Negate_ _Forced Movement_ or _Prone_.",
+    "engaged": "Speed_ Costs are increased by 1. Additionally, the Cost to _Negate_ _Forced Movement_ or _Prone_ is increased by 2.",
     "interactions": ["If this _Terrain_ is _Ignited_, it automatically becomes _Roaring_ and rolls all end of round effects at _Advantage_."],
     "enter": "You are automatically _Grazed_.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"]
+      "status": ["_Prone_ [2]", "_Prone_ [3]", "_Prone_ [4]", "_Prone_ [5]"]
     }
   },
   {
     "name": "Wet",
     "layer": "Terrain",
     "element": "Water",
-    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
     "desc": "A puddle, slick ground, or other small source of water.",
-    "engaged": "You have _Disadvantage_ to _Negate_ _Forced Movement_ and _Prone_. Additionally, increase your _Weakness_ to _Lightning_ by one step.",
+    "engaged": "Increase the cost to _Negate_ _Forced Movement_ and _Prone_ by 2. Additionally, _Lightning_ deal +2 _Stun_.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"]
+      "status": ["_Prone_ [1]", "_Prone_ [2]", "_Prone_ [3]", "_Prone_ [4]"]
     },
     "interactions": ["If this would become _Blazing_, instead remove _Wet_ and add _Veiled_."]
   },
@@ -168,14 +167,13 @@
     "name": "Icy",
     "layer": "Terrain",
     "element": "Water",
-    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
     "desc": "A slick sheet of ice that makes it difficult to find footing.",
     "enter": "You are automatically _Grazed_. Do not apply _Engaged_ penalties to the _Negate_ roll.",
-    "engaged": "_Speed_ Costs are increased by 1. Additionally, you have _Disadvantage_ to _Dodge_, _Negate_ with _Reflex_, and _Negate_ _Forced Movement_ or _Prone_.",
+    "engaged": "_Speed_ Costs are increased by 1. Increase the cost to _Negate_ _Forced Movement_ or _Prone_ by 2.",
     "collide": "You are automatically _Hit_.",
     "chart": {
-      "status": ["_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]", "_Prone_ [_Reflex_]"],
-      "negate": [5, 7, 8, 10]
+      "status": ["_Prone_ [2]", "_Prone_ [3]", "_Prone_ [4]", "_Prone_ [5]"]
     },
     "interactions": ["If this _Engagement_ or a creature in it is targeted by a _Fire_ effect, this becomes _Wet_."]
   },
@@ -203,11 +201,11 @@
     "layer": "Terrain",
     "element": "Flame",
     "desc": "A burning fire, eager to spread.",
-    "source": "2 (_Engagement_) / 4 (_Arena_)",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
     "enter": "You are automatically _Grazed_.",
     "collide": "You are automatically _Grazed_.",
-    "engaged": "If you end your _Turn_ _Engaged_, you are automatically _Hit_.",
-    "eor": "All _Engaged_ _Flammable_ _Obstacles_ lose 1 _Hardness_. Roll a d6, at _Disadvantage_ if this was not on _Flammable_ _Terrain_:\n* **1-2:** Replace _Blazing_ with _Smoldering_.\n* **3-4:** No change.\n* **5-6:** _Ignite_ 1 random _Flammable_ _Engagement_ in Range 0, or the _Arena_ if _Flammable_. If the _Arena_ is Blazing, instead _Ignite_ a random _Flammable_ _Engagement_ in Range 1.",
+    "engaged": "At the end of your _Turn_ you are automatically _Hit_.",
+    "eor": "All _Engaged_ _Flammable_ _Obstacles_ lose 1 _Hardness_, then _Flames Flicker_.",
     "interactions": ["If this would become _Wet_, it becomes _Smoldering_ and _Wet_ is not applied."],
     "chart": {
       "damage": [1, 2, 3, 4],
@@ -217,13 +215,13 @@
   {
     "name": "Roaring",
     "layer": "Terrain",
-    "source": "3 (_Engagement_) / 5 (_Arena_)",
+    "source": "_Minor Source_ (_Engagement_) / _Source_ (_Arena_)",
     "element": "Flame",
     "desc": "A piece of terrain covered in intense, roiling flames.",
     "enter": "You are automatically _Grazed_.",
     "collide": "You are automatically _Grazed_.",
-    "engaged": "If you end your _Turn_ _Engaged_, you are automatically _Hit_.",
-    "eor": "All _Engaged_ _Flammable_ _Obstacles_ lose 1 _Hardness_. Roll a d6, at _Disadvantage_ if this was not on _Flammable_ _Terrain_:\n* **1-2:** Replace Roaring with _Blazing_.\n* **3-4:** No change.\n* **5-6:** _Ignite_ 1 random _Flammable_ _Engagement_ in Range 0, or the _Arena_ if _Flammable_. If the _Arena_ is Blazing, instead _Ignite_ a random _Flammable_ _Engagement_ in Range 1.",
+    "engaged": "At the end of your _Turn_ you are automatically _Hit_.",
+    "eor": "All _Engaged_ _Flammable_ _Obstacles_ lose 1 _Hardness_, then Flames Flicker.",
     "interactions": ["If this would become _Wet_, it becomes _Blazing_ and _Wet_ is not applied."],
     "chart": {
       "damage": [2, 4, 6, 8],
@@ -235,7 +233,7 @@
     "layer": "Terrain",
     "keywords": ["Flammable"],
     "element": "Flame",
-    "source": "1 (_Engagement_) / 2 (_Arena_)",
+    "source": "_Minor Source_ (_Arena_)",
     "desc": "The remains of what was once a fire.",
     "enter": "You are automatically _Grazed_.",
     "collide": "You are automatically _Grazed_.",

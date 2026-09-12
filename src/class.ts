@@ -8,7 +8,7 @@ import Equipment from './classes/Equipment'
 import Bonuses from './classes/Bonuses'
 import Ability from './classes/Ability'
 import Armor from './classes/Armor'
-import Archetype from './classes/Archetype'
+import Event from './classes/Event'
 import SpiritForm from './classes/SpiritForm'
 import Subtype from './classes/Subtype'
 import Spirit from './classes/Spirit'
@@ -20,10 +20,11 @@ import Status from './classes/Status'
 import Trait from './classes/Trait'
 import Terrain from './classes/Terrain'
 import Weapon from './classes/Weapon'
+import { ColorMap } from './classes/ColorMap'
 
 export {
+  ColorMap,
   Ability,
-  Archetype,
   Armor,
   Base,
   Bonuses,
@@ -32,6 +33,7 @@ export {
   Combatant,
   Defenses,
   Equipment,
+  Event,
   GlossaryItem,
   Npc,
   Spirit,

@@ -2,6 +2,7 @@ import WeaponsJson from '@/database/items/weapons.json'
 import ArmorsJson from '@/database/items/armor.json'
 import EquipmentJson from '@/database/items/equipment.json'
 import StancesJson from '@/database/stances.json'
+import EventsJson from '@/database/events.json'
 import TraitsJson from '@/database/traits.json'
 
 import AbilityPackageJson from '@/database/ability_packages.json'
@@ -17,7 +18,7 @@ import SpiritTypeJson from '@/database/spirit_types.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { AbilityPackage, Armor, Equipment, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
+import { AbilityPackage, Armor, Equipment, Event, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
 let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
@@ -28,15 +29,10 @@ let AllGlossaryItems: Array<Array<IGlossaryData>> = [Glossary]
 
 const kPlayerAbilities = [
   'Gain Advantage',
-  'Accelerate',
   'Adrenaline Rush',
-  'Spiritcraft',
+  'Effort',
   'Manipulate',
-  'Size Up',
   'Encourage',
-  'Swift Recall',
-  'Unbalance',
-  'Press Advantage',
   'Spiritbound',
   'Drop',
   'Equip',
@@ -50,24 +46,24 @@ const kPlayerAbilities = [
   'Concentrate',
   'Overpower',
   'Steal',
+  'Discover',
+  'Scout',
+  'Focused Travel',
+  'Aid',
+  'Hunt',
+  'Forage',
+  'Navigate',
+  'Forced March',
+  'Hide Tracks',
+  'Find Camp',
+  'Rest',
+  'Connect',
+  'Patch',
 ]
 
-const kSpiritAbilities = [
-  'Return',
-  'Channel Elements',
-  'Perfect Parry',
-  'Perfect Dodge',
-  'Gain Advantage',
-  'Accelerate',
-  'Spiritcraft',
-  'Drop',
-  'Equip',
-  'Spiritbound',
-  'Flank',
-  'Delay',
-]
+const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Drop', 'Equip', 'Flank', 'Delay']
 
-const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Breather', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
+const kBasicAbilities = ['Brawl', 'Improvised Attack', 'Deflect', 'Disengage', 'Opportunity Attack', 'Lethal Strike', 'Evade', 'Interact']
 
 @Module({
   name: 'databaseJson',
@@ -91,6 +87,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Stances = StancesJson.map((x) => Stance.Deserialize(<IStanceData>(<unknown>x)))
     this.Terrains = TerrainJson.map((x) => Terrain.Deserialize(<ITerrainData>(<unknown>x)))
     this.Statuses = StatusJson.map((x) => Status.Deserialize(<IStatusData>(<unknown>x)))
+    this.Events = EventsJson.map((x) => Event.Deserialize(<IEventData>(<unknown>x)))
     this.Everything = this.Everything.concat(
       this.GlossaryItems,
       this.Armors,
@@ -120,13 +117,14 @@ export class DatabaseJsonStore extends VuexModule {
   private Abilities: Ability[] = []
   private Terrains: Terrain[] = []
   private Statuses: Status[] = []
+  private Events: Event[] = []
 
   get basicStances() {
-    return ['Open Stance', 'Focused Stance', 'Guarded Stance', 'Hostile Stance', 'Rallying Stance', 'Agile Stance']
+    return ['Open Stance', 'Rallying Stance', 'Guarded Stance', 'Hostile Stance', 'Focused Stance', 'Agile Stance']
   }
 
   get basicSpiritStances() {
-    return ['Skirmisher Spirit', 'Directed Spirit', 'Sprinting Spirit', 'Surviving Spirit', 'Questing Spirit', 'Spiritual Essence']
+    return ['Skirmisher Spirit', 'Sprinting Spirit', 'Enduring Spirit']
   }
 
   get playerArts() {
@@ -174,6 +172,15 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   // ==========================================================
+  // EVENT TOOLS
+  // ==========================================================
+  get getEvents(): any {
+    return () => {
+      return this.Events
+    }
+  }
+
+  // ==========================================================
   // BASIC ABILITY TOOLS
   // ==========================================================
   get getAbilities(): any {
@@ -210,6 +217,12 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // ABILITY PACKAGE TOOLS
   // ==========================================================
+  get getAPs(): any {
+    return () => {
+      return this.AbilityPackages
+    }
+  }
+
   get getAP(): any {
     return (inword: string) => {
       var art = this.AbilityPackages.find((x) => x.Name.trim() == inword.trim())
@@ -283,9 +296,9 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // TRAITS GETTERS
   // ==========================================================
-  get getSpiritTraits(): any {
+  get getTraits(): any {
     return () => {
-      return this.Traits.filter((x) => x.Type.trim() === 'Spirit Trait')
+      return this.Traits
     }
   }
 
@@ -350,6 +363,12 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // ARMOR GETTERS
   // ==========================================================
+  get getArmors(): any {
+    return () => {
+      return this.Armors
+    }
+  }
+
   get getPlayerArmors(): any {
     return () => {
       return this.Armors.filter((x) => x.Category.trim() !== 'NPC').map((x) => x)
@@ -396,6 +415,12 @@ export class DatabaseJsonStore extends VuexModule {
   // ==========================================================
   // WEAPON GETTERS
   // ==========================================================
+  get getWeapons(): any {
+    return () => {
+      return this.Weapons
+    }
+  }
+
   get getWeaponsByCategory(): any {
     return (category: string) => {
       return this.Weapons.filter((x) => x.Category.trim() === category.trim()).map((x) => x)

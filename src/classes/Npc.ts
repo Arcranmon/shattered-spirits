@@ -47,19 +47,6 @@ class Npc extends Combatant {
     return [] //store.getters.getWeaponsFromList(this.npc_data_.weapons)
   }
 
-  get Grit() {
-    if (this.npc_data_.defenses.grit) return this.npc_data_.defenses.grit
-    return 0
-  }
-  get Reflex() {
-    if (this.npc_data_.defenses.reflex) return this.npc_data_.defenses.reflex
-    return 0
-  }
-  get Focus() {
-    if (this.npc_data_.defenses.focus) return this.npc_data_.defenses.focus
-    return 0
-  }
-
   override get Abilities() {
     var ability_names = store.getters.basicAbilities
     var abilities = store.getters.getAbilitiesFromList(ability_names)

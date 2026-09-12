@@ -2,12 +2,13 @@
   <div inline>
     <div
       class="ability--head"
-      v-bind:class="getBestColor"
+      :style="{ 'background-color': ability.Color }"
       style="width: 100%">
       <img
         v-if="ability.HasIcon"
         :src="ability.Icon"
         style="height: 1.5em" />
+      <span v-if="ability.HasIcon">&nbsp;</span>
       <display-tooltip-text :string="ability.Header" />
 
       <span
@@ -40,7 +41,10 @@
         {{ ability.Desc }}<br />
       </div>
       <div v-if="ability.HasHeadline">
-        <display-tooltip-text :string="ability.Summary" />
+        <display-tooltip-text :string="ability.Headline" />
+      </div>
+      <div v-if="ability.HasBlock || ability.HasGuard">
+        <display-tooltip-text :string="ability.ArmorSummary" />
       </div>
       <div
         v-if="isStance"
@@ -52,7 +56,7 @@
           class="chart--row">
           <v-col
             class="chart--head"
-            :cols="4">
+            :cols="2">
             <b>
               <display-tooltip-text
                 string="_Phase_"
@@ -73,49 +77,10 @@
             :cols="2">
             <b>
               <display-tooltip-text
-                string="_Posture_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
                 string="_Essence_"
                 :decorate="false" />
             </b>
           </v-col>
-        </v-row>
-        <v-row
-          align="stretch"
-          no-gutters
-          class="chart--row">
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="4"
-            >{{ ability.Phase }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >{{ ability.Momentum }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >{{ ability.Posture }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >0</v-col
-          >
-        </v-row>
-        <v-row
-          align="stretch"
-          no-gutters
-          class="chart--row">
           <v-col
             class="chart--head"
             :cols="2">
@@ -134,38 +99,26 @@
                 :decorate="false" />
             </b>
           </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
-                string="_Grit_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
-                string="_Focus_"
-                :decorate="false" />
-            </b>
-          </v-col>
-          <v-col
-            class="chart--head"
-            :cols="2">
-            <b>
-              <display-tooltip-text
-                string="_Reflex_"
-                :decorate="false" />
-            </b>
-          </v-col>
         </v-row>
         <v-row
           align="stretch"
           no-gutters
           class="chart--row">
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >{{ ability.Phase }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >{{ ability.Momentum }}</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >0</v-col
+          >
           <v-col
             class="chart--cols justify-center align-center"
             :cols="2"
@@ -175,21 +128,6 @@
             class="chart--cols justify-center align-center"
             :cols="2"
             >+{{ ability.Block }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >+{{ ability.Grit }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >+{{ ability.Focus }}</v-col
-          >
-          <v-col
-            class="chart--cols justify-center align-center"
-            :cols="2"
-            >+{{ ability.Reflex }}</v-col
           >
         </v-row>
       </div>
@@ -279,6 +217,11 @@
           :ability="ability"
           :key="ability.Name"
           :showChart="showChart" />
+        <base-widget
+          v-for="stance in ability.Stances"
+          :ability="stance"
+          :key="stance.Name"
+          :showChart="showChart" />
       </div>
       <div
         class="expand--collapse-box-outlined"
@@ -346,94 +289,9 @@ export default Vue.extend({
     isStance() {
       return this.ability instanceof Stance
     },
-    getBestColor: function () {
-      var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood', 'Archetype']
-      if (overrideColors.includes(this.ability.Category)) {
-        return this.ability.Category
-      }
-      if (this.ability instanceof Terrain) {
-        return this.ability.ColorHeader
-      }
-      if (this.ability instanceof Weapon) {
-        return 'Weapon'
-      }
-      if (this.ability instanceof Armor) {
-        return 'Armor'
-      }
-      if (this.ability instanceof Equipment) {
-        return 'Equipment'
-      }
-      if (this.ability instanceof Stance) {
-        return 'Stance'
-      }
-      if (this.ability instanceof Status) {
-        return 'Status'
-      }
-      if (
-        this.ability.Category == 'Crafting' ||
-        this.ability.Category == 'Camp' ||
-        this.ability.Category == 'Travel' ||
-        this.ability.Category == 'Skill' ||
-        this.ability.Category == 'Downtime'
-      )
-        return this.ability.Category
-      return this.ability.Type
-    },
   },
   components: { AbilityWidget, BasicTable, ChartTable },
 })
 </script>
 
-<style scoped lang="scss">
-.Archetype {
-  background-color: rgb(106, 168, 76);
-}
-.Trait {
-  background-color: rgb(106, 168, 76);
-}
-.Status {
-  background-color: $color--general;
-}
-.Equipment {
-  background-color: #a776a0;
-}
-.Career {
-  background-color: rgb(106, 168, 76);
-}
-.Weapon {
-  background-color: rgb(226, 119, 43);
-}
-.Skill {
-  background-color: #d99a07;
-}
-.Camp {
-  background-color: #d2d50e;
-}
-.Downtime {
-  background-color: #0ebed5;
-}
-.Travel {
-  background-color: #5cff69;
-}
-.Crafting {
-  background-color: #407647;
-}
-.Passive {
-  background-color: #68696a;
-}
-.Maneuver {
-  background-color: #7ac3ff;
-}
-.Reaction {
-  background-color: #bbcc6f;
-}
-.Gambit {
-  background-color: #a776a0;
-}
-.Attack {
-  background-color: rgb(230, 95, 95);
-}
-.Stance {
-  background-color: thistle;
-}
-</style>
+<style scoped lang="scss"></style>

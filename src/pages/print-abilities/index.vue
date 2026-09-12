@@ -1,17 +1,18 @@
 <template>
   <div class="print-page">
-    <v-row>
+    <v-row
+      class="printing-margins"
+      style="width: 10in; margin: 0.5in">
       <v-col
         v-for="ability in abilities"
         cols="3"
-        class="bordered do-not-split">
+        class="bordered do-not-split card-shape">
         <base-widget
           :ability="ability"
           :useDivider="true"
           :key="ability.Name"
           :showChart="true"
-          :showDesc="false"
-          class="card-shape" />
+          :showDesc="false" />
       </v-col>
     </v-row>
   </div>
@@ -21,14 +22,25 @@
 import Vue from 'vue'
 import { Combatant } from '@/class'
 import BaseWidget from '@/components/BaseWidget.vue'
+import PrintableBaseWidget from '@/components/PrintableBaseWidget.vue'
 export default Vue.extend({
   name: 'print-abilities',
   components: {
     BaseWidget,
+    PrintableBaseWidget,
   },
   computed: {
     abilities: function () {
-      var abilityList = this.$store.getters.getFromEverythingFromList(['Brawl', 'Spiritbound', 'Prone', 'Prone', 'Push', 'Push', 'Pull', 'Pull'])
+      var abilityList = this.$store.getters.getFromEverythingFromList([
+        'Veiled ',
+        'Veiled ',
+        'Concentrating',
+        'Concentrating',
+        'Concentrating ',
+        'Concentrating ',
+        'Concentrating',
+        'Concentrating',
+      ])
       if (abilityList.length == 1) return Array(8).fill(abilityList[0])
       return abilityList
     },
@@ -44,14 +56,15 @@ export default Vue.extend({
 <style scoped lang="scss">
 .print-page {
   font-size: 7.5pt;
-  padding-left: 2em;
-  padding-right: 2em;
-  padding-top: 4em;
-  padding-bottom: 4em;
+  background-color: white;
+  align-content: center;
+  margin: auto;
+}
+.printing-margins {
 }
 .bordered {
   border: $border--black-thin;
-  padding: 0.5em;
+  padding: 0em;
 }
 .centered-text {
   display: flex;
@@ -65,7 +78,9 @@ export default Vue.extend({
   }
   .card-shape {
     width: 2.5in !important;
+    max-width: 2.5in !important;
     height: 3.5in !important;
+    max-height: 3.5in !important;
   }
 }
 </style>

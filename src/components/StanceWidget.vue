@@ -32,34 +32,10 @@
               :decorate="false" />
           </b>
         </div>
-        <div class="chart--head justify-center align-center">
-          <b>
-            <display-tooltip-text
-              string="_Grit_"
-              :decorate="false" />
-          </b>
-        </div>
-        <div class="chart--head justify-center align-center">
-          <b>
-            <display-tooltip-text
-              string="_Focus_"
-              :decorate="false" />
-          </b>
-        </div>
-        <div class="chart--head justify-center align-center">
-          <b>
-            <display-tooltip-text
-              string="_Reflex_"
-              :decorate="false" />
-          </b>
-        </div>
       </div>
       <div class="top-row-layout">
         <div class="chart--cols justify-center align-center">+{{ stance.Speed }}</div>
         <div class="chart--cols justify-center align-center">+{{ stance.Block }}</div>
-        <div class="chart--cols justify-center align-center">+{{ stance.Grit }}</div>
-        <div class="chart--cols justify-center align-center">+{{ stance.Focus }}</div>
-        <div class="chart--cols justify-center align-center">+{{ stance.Reflex }}</div>
       </div>
       <div class="bottom-row-layout">
         <div
@@ -74,13 +50,6 @@
         <div class="chart--head justify-center align-center">
           <b>
             <display-tooltip-text
-              string="_Posture_"
-              :decorate="false" />
-          </b>
-        </div>
-        <div class="chart--head justify-center align-center">
-          <b>
-            <display-tooltip-text
               string="_Essence_"
               :decorate="false" />
           </b>
@@ -88,11 +57,13 @@
       </div>
       <div class="bottom-row-layout">
         <div class="chart--cols justify-center align-center">{{ getMomentum }}</div>
-        <div class="chart--cols justify-center align-center">{{ stance.Posture }}</div>
         <div class="chart--cols justify-center align-center">0</div>
       </div>
       <br />
       <div style="padding-left: 1em">
+        <div v-if="stance.HasPrereqs">
+          <display-tooltip-text :string="stance.PrereqsHeader" />
+        </div>
         <div v-if="stance.HasEffect">
           <display-tooltip-text :string="stance.EffectHeader" />
         </div>
@@ -159,13 +130,13 @@ export default Vue.extend({
   grid-template-columns: 1fr 5fr;
 }
 .top-row-layout {
+  grid-template-columns: 1fr 1fr;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   font-size: 12px;
 }
 .bottom-row-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   font-size: 12px;
 }
 .header-sidebar {

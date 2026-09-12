@@ -30,7 +30,7 @@
     "name": "Iron Dagger",
     "category": "Blade",
     "desc": "A small, versatile blade that has a myriad of uses.",
-    "keywords": ["_Source_ 1 (_Metal_)", "Quickdraw"],
+    "keywords": ["Metal", "Quickdraw"],
     "load": 1,
     "hands": 1,
     "durability": 1,
@@ -53,19 +53,21 @@
           "notes": "4+6 and 6+4 is two more potential Gambits for 5.55%, x2 for 2 Momentum",
           "range": "Melee"
         },
-        "enhancements": [
-          {
-            "name": "Flurry",
-            "cost": "1 _Momentum_",
-            "reactive": true,
-            "effect": "Use _Strike_ again. You may not apply this _Enhancement_ to the secondary attack."
-          },
-          {
-            "name": "Find The Gap",
-            "cost": "1 _Momentum_",
-            "effect": "You must have _Advantage_ to use this _Enhancement_. Add [_Pierce_ 2]. On a _Hit_+, deal +2 _Damage_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Flurry",
+              "cost": "1 _Momentum_",
+              "reactive": true,
+              "effect": "Use _Strike_ again. You may not apply this _Enhancement_ to the secondary attack."
+            },
+            {
+              "name": "Find The Gap",
+              "cost": "1 _Momentum_",
+              "effect": "You must have _Advantage_ to use this _Enhancement_. Add [_Piercing_]. On a _Hit_+, deal +2 _Damage_."
+            }
+          ]
+        }
       },
       {
         "name": "Fling",
@@ -80,21 +82,23 @@
           "damage": [0, 3, 5, 6],
           "roll": ["2-4", "5-6", "7-10", "11-12"]
         },
-        "enhancements": [
-          {
-            "name": "Precise Fling",
-            "cost": "1 _Momentum_",
-            "effect": "Make this Attack at _Advantage_. On a _Graze_+, deal +1 _Bonus Damage_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Precise Fling",
+              "cost": "1 _Momentum_",
+              "effect": "Make this Attack at _Advantage_. On a _Graze_+, deal +1 _Bonus Damage_."
+            }
+          ]
+        }
       }
     ]
   },
   {
     "name": "Iron Javelin",
     "category": "Lance",
-    "desc": "A small, versatile blade that has a myriad of uses.",
-    "keywords": ["_Source_ 1 (_Metal_)"],
+    "desc": "A light lance that can be easily flung or used in melee.",
+    "keywords": ["Metal"],
     "load": 2,
     "hands": 1.5,
     "durability": 1,
@@ -111,16 +115,18 @@
         "chart": {
           "damage": [0, 1, 2, 3],
           "roll": ["2", "3-4", "5-10", "11-12"],
-          "status": ["None", "None", "None", "_Impaired_ [_Grit_]"]
+          "status": ["None", "None", "None", "_Impaired_ [3]"]
         },
-        "enhancements": [
-          { "name": "Lunge", "cost": "1 _Momentum_", "effect": "Range is instead 0. Deal +_0/1/1/2_ Damage." },
-          {
-            "name": "Hand-and-a-Half",
-            "cost": "1 _Momentum_",
-            "effect": "If you are _Wielding_ this Weapon two-handed, deal +_0/1/2/3_ Damage."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            { "name": "Lunge", "cost": "1 _Momentum_", "effect": "Range is instead 0. Deal +_0/1/1/2_ Damage." },
+            {
+              "name": "Hand-and-a-Half",
+              "cost": "1 _Momentum_",
+              "effect": "If you are _Wielding_ this Weapon two-handed, deal +_0/1/2/3_ Damage."
+            }
+          ]
+        }
       },
       {
         "name": "Fling",
@@ -135,13 +141,15 @@
           "damage": [0, 5, 7, 8],
           "roll": ["2-4", "5-6", "7-10", "11-12"]
         },
-        "enhancements": [
-          {
-            "name": "Hop Step",
-            "cost": "1 _Momentum_",
-            "effect": "Create an [_Opening_] when you Attack, and you may not attack Targets closer than Range 1. Range is instead 2, and you deal +_0/1/2/3_ Damage."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Hop Step",
+              "cost": "1 _Momentum_",
+              "effect": "Create an [_Opening_] when you Attack, and you may not attack Targets closer than Range 1. Range is instead 2, and you deal +_0/1/2/3_ Damage."
+            }
+          ]
+        }
       }
     ]
   },
@@ -149,10 +157,11 @@
     "name": "Iron Throwing Knives",
     "category": "Throwing",
     "desc": "Small blades meant for sudden, unexpected throws. They're unsuited for melee combat, but can be thrown with a high degree of accuracy.",
-    "keywords": ["_Source_ 1 (_Metal_)", "Quickdraw", "_Stack_ (4)"],
+    "keywords": ["Metal", "Quickdraw", "_Ammunition_ (3)"],
     "load": 1,
     "hands": 1,
-    "durability": 1,
+    "durability": 0,
+    "effect": "While _Wielding_ this you have any number of _Missiles_ (_Metal_) on your person. When you use these _Missiles_, the effect deals _Stab_ _Damage_ instead of its usual type. You may treat this as a _Minor Source_ (_Metal_) by losing one _Ammunition_.",
     "abilities": [
       {
         "name": "Fling",
@@ -163,51 +172,26 @@
         "cost": "1 _Momentum_",
         "keywords": ["Martial"],
         "range": "1 (_Thrown_)",
-        "effect": "Attack a Target within Range.",
+        "effect": "Place a _Metal_ _Missile_ at the _Target_.",
         "chart": {
           "damage": [0, 1, 2, 4],
           "roll": ["2-3", "4-5", "6-10", "11-12"]
         },
-        "enhancements": [
-          {
-            "name": "Precise Fling",
-            "cost": "1 _Momentum_",
-            "effect": "Make this Attack at _Advantage_. On a _Graze_+, deal +1 _Bonus Damage_."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Precise Fling",
+              "cost": "1 _Momentum_",
+              "effect": "Make this Attack at _Advantage_. On a _Graze_+, deal +1 _Bonus Damage_."
+            }
+          ]
+        }
       }
     ]
   },
   {
-    "name": "Iron Shortsword",
-    "category": "Blade",
-    "desc": "A light blade that offers a balance between power and speed.",
-    "tier": "Balanced",
-    "phase": 2,
-    "effect": "Gain 1 _Momentum_.",
-    "special": "You may pay 1 _Momentum_ to use this _Weapon_ as a _Light_ Attack. If you do, do not resolve the Effect.",
-    "parry": "[_Block_] Gain +1 _Reflex_. If the triggering Attack is _Light_/_Versatile_, gain 1 _Guard_.",
-    "charged_profile": {
-      "set_up": "Choose a Target, making note of any remaining Speed you have. While _Charging_ gain the _Parry_ effect of this weapon.",
-      "resolution": "Move [_Rush_] up to half the Speed you had remaining, then Attack the Target. On a _Graze_+ deal +2 _Damage_."
-    },
-    "range": {},
-    "chart": {
-      "damage_tier": "Slash/Stab",
-      "material": "Metal",
-      "on_miss": "+2 _Momentum_",
-      "damage": [0, 0, 2, 2, 3, 3, 4, 5, 6, 6, 6],
-      "roll": ["Miss", "Miss", "Graze", "Graze", "Hit", "Hit", "Hit", "Hit", "Crit", "Crit", "Crit"],
-      "status": ["", "", "", "", "", "", "", "", "_Bleeding_ [5 _Block_/_Reflex_]", "_Bleeding_ [5 _Block_/_Reflex_]", "_Bleeding_ [5 _Block_/_Reflex_]"]
-    },
-    "load": 2,
-    "hands": 1,
-    "durability": 2,
-    "analysis_notes": { "fudge": -1.1667, "notes": "Expanded crit range and gaining Momentum on attack." }
-  },
-  {
     "name": "Iron Longsword",
-    "keywords": ["_Source_ 2 (_Metal_)"],
+    "keywords": ["Metal"],
     "category": "Blade",
     "desc": "A sword that grants the perfect flexibility between damage and speed. It is a favorite of travelers due to its versatility in combat.",
     "rarity": "Uncommon",
@@ -222,22 +206,24 @@
         "cost": "2 _Momentum_",
         "range": "Melee",
         "effect": "Attack a Target within Range.",
-        "enhancements": [
-          {
-            "name": "Hand-and-a-Half",
-            "cost": "1 _Momentum_",
-            "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_1/2/2/3_ Damage."
-          },
-          {
-            "name": "Thrusting Strike",
-            "cost": "2 _Momentum_",
-            "effect": "Damage type is instead _Stab_. Add [_Pierce_ 2]. Deal +_0/2/3/4_ Damage."
-          }
-        ],
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Hand-and-a-Half",
+              "cost": "1 _Momentum_",
+              "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_1/2/2/3_ Damage."
+            },
+            {
+              "name": "Thrusting Strike",
+              "cost": "2 _Momentum_",
+              "effect": "Damage type is instead _Stab_. Add [_Piercing_]. Deal +_0/2/3/4_ Damage."
+            }
+          ]
+        },
         "chart": {
-          "damage": [0, 2, 4, 6],
+          "damage": [0, 2, 4, 5],
           "roll": ["2-3", "4-5", "6-9", "10-12"],
-          "status": ["None", "None", "None", "_Bleeding_ 1 [_Grit_]"]
+          "status": ["None", "None", "None", "_Bleeding_ [4]"]
         },
         "analysis_notes": {
           "fudge": -0.111,
@@ -252,7 +238,7 @@
   },
   {
     "name": "Round Shield",
-    "keywords": ["_Source_ 2 (_Wood_)"],
+    "keywords": ["Wood"],
     "desc": "A round shield made largely of wood capable of absorbing a large number of attacks.",
     "category": "Shield",
     "load": 3,
@@ -265,7 +251,7 @@
         "category": "Defensive",
         "type": "Passive",
         "prereqs": "_Wielding_ this Weapon.",
-        "effect": "Gain +2 _Block_. You do not have _Disadvantage_ to _Parry_ _Ranged_ Attacks. When _Parrying_, Attacks take a -1 _Penalty_ and you gain additional _Block_ equal to (1 + the Range the Attack was made from). These benefits stack with _Cover_."
+        "effect": "Gain +2 _Block_. You gain +1 to _Defense Rolls_ against _Ranged_ Attacks. These benefits stack with _Cover_."
       },
       {
         "name": "Bash",
@@ -276,58 +262,59 @@
         "damage_type": "Crush",
         "keywords": ["Martial"],
         "range": "Melee",
-        "effect": "Attack a Target within Range.",
         "chart": {
           "stun": [0, 2, 2, 4],
           "damage": [0, 1, 2, 2],
-          "negate": [5, 7, 8, 10],
-          "status": ["None", "_Impaired_ [_Grit_]", "_Impaired_ [_Grit_]", "_Impaired_ [_Grit_]"],
+          "status": ["None", "_Impaired_ [2]", "_Impaired_ [3]", "_Impaired_ [4]"],
           "roll": ["2-3", "4-5", "6-10", "11-12"]
         },
-        "enhancements": [
-          {
-            "name": "Heavy Slam",
-            "cost": "1 _Momentum_",
-            "effect": "Add +_0/0/1/2_ Damage and _Push_ [_Grit_]."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Heavy Slam",
+              "cost": "1 _Momentum_",
+              "effect": "Add +_0/0/1/2_ Damage and _Push_ [1/3]."
+            }
+          ]
+        }
       }
     ]
   },
   {
     "name": "Iron Battleaxe",
-    "keywords": ["_Source_ 2 (_Metal_)"],
+    "keywords": ["Metal"],
     "category": "Axe",
     "desc": "A solid, hefty axe useful for hacking through a foes' defenses.",
     "rarity": "Uncommon",
     "abilities": [
       {
         "name": "Strike",
-        "keywords": ["Martial", "_Pierce_ 1"],
+        "keywords": ["Martial"],
         "category": "Balanced",
         "material": "Metal",
         "damage_type": "Slash",
         "type": "Attack",
         "cost": "3 _Momentum_",
         "range": "Melee",
-        "effect": "Attack a Target within Range.",
-        "enhancements": [
-          {
-            "name": "Hand-and-a-Half",
-            "cost": "1 _Momentum_",
-            "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_1/2/2/3_ Damage."
-          },
-          { "name": "Cleave", "cost": "None", "effect": "Do not make an _Attack Roll_. Instead, automatically _Graze_ all creatures in your _Engagement_." },
-          {
-            "name": "Hack",
-            "cost": "1 _Momentum_",
-            "effect": "You unleash an attack intended to hack through defenses and wood. Add _Exposed_ [_Grit_] to the Attack. If the target is:\n\t* A _Wood_ creature, gain a +1 to the _Attack Roll_ and add [_Pierce_ 2].\n\t* _Wielding_ _Wood_ _Equipment_, add _Shatter_, but you must target said Equipment.\n\t* _Wood_ _Terrain_, add [_Siege_]."
-          }
-        ],
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Hand-and-a-Half",
+              "cost": "1 _Momentum_",
+              "effect": "Deal +_0/1/2/2_ Damage. If you are _Wielding_ this Weapon two-handed, also add [_Piercing_]."
+            },
+            { "name": "Cleave", "cost": "None", "effect": "Do not make an _Attack Roll_. Instead, automatically _Graze_ all creatures in your _Engagement_." },
+            {
+              "name": "Hack",
+              "cost": "1 _Momentum_",
+              "effect": "Add _Exposed_ [3] to the Attack. Add [_Bane_ (_Wood_)]"
+            }
+          ]
+        },
         "chart": {
-          "damage": [0, 3, 5, 9],
+          "damage": [0, 3, 6, 9],
           "roll": ["2-3", "4-5", "6-9", "10-12"],
-          "status": ["None", "None", "_Exposed_ [_Grit_]", "_Exposed_, _Bleeding_ 1 [_Grit_]"]
+          "status": ["None", "None", "None", "_Bleeding_ [4]"]
         },
         "analysis_notes": {
           "fudge": -0.111,
@@ -342,7 +329,7 @@
   },
   {
     "name": "Quarterstaff",
-    "keywords": ["_Source_ 2 (_Wood_)"],
+    "keywords": ["Wood"],
     "category": "Staff",
     "desc": "A thick sturdy staff that is just as useful for battle as it is for traveling.",
     "rarity": "Common",
@@ -352,7 +339,7 @@
         "category": "Defensive",
         "type": "Passive",
         "prereqs": "_Wielding_ this Weapon.",
-        "effect": "Gain +1 _Block_ when you _Parry_."
+        "effect": "Gain +1 _Block_."
       },
       {
         "name": "Walking Stick",
@@ -371,18 +358,20 @@
         "range": "Melee",
         "effect": "Attack a Target within Range.",
         "chart": {
-          "stun": [0, 1, 2, 3],
+          "stun": [1, 2, 2, 3],
           "damage": [0, 1, 2, 3],
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "None", "_Dazed_ [_Focus_/_Grit_]", "_Dazed_ [_Focus_/_Grit_]"]
+          "status": ["None", "None", "_Impaired_ [4]", "_Impaired_ [5]"]
         },
-        "enhancements": [
-          {
-            "name": "Hand-and-a-Half",
-            "cost": "1 _Momentum_",
-            "effect": "Deal +_0/1/1/2_ Stun and +_0/1/1/1_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_0/2/3/3_ Stun and +_0/1/1/2_ Damage."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Hand-and-a-Half",
+              "cost": "1 _Momentum_",
+              "effect": "Deal +_0/1/1/2_ Stun and +_0/1/1/1_ Damage. If you are _Wielding_ this Weapon two-handed, instead deal +_0/2/3/3_ Stun and +_0/1/1/2_ Damage."
+            }
+          ]
+        }
       }
     ],
     "load": 2,
@@ -391,7 +380,7 @@
   },
   {
     "name": "Stone Maul",
-    "keywords": ["_Source_ 2 (_Earth_)"],
+    "keywords": ["Earth"],
     "category": "Blunt",
     "desc": "A crude maul made with a heavy stone that is far heavier than its metallic counterparts.",
     "rarity": "Uncommon",
@@ -403,44 +392,59 @@
         "type": "Maneuver",
         "cost": "2 _Momentum_",
         "prereqs": "Not _Engaged_ with any creatures.",
-        "effect": "You begin to whirl your weapon, creating a dangerous area of denial. You become _Hobbled_, but it costs an additional _Speed_ to become _Engaged_ with you and creatures that spend _Speed_ or are forcibly moved within your _Arena_ must spend 1 additional _Speed_ or are are automatically _Grazed_ with <u>Strike</u>. If a creature your size or larger ends a _Turn_ _Engaged_ with you automatically _Graze_ them, then end this effect if they are not _Downed_. Also end this effect if you are _Downed_, knocked _Prone_, or _Disarmed_ of this weapon. While using this effect, you may not use this weapon for anything else.",
-        "enhancements": [
-          {
-            "name": "Powerful Finish",
-            "cost": "2 _Momentum_",
-            "effect": "Pay this if a creature your size or larger ends a _Turn_ _Engaged_ with. Instead, use <u>Strike</u> against the Target [_Discount_ 4] with a +1 to the _Attack Roll_. If this does not _Defeat_ the Target, end this effect as normal."
-          }
-        ]
+        "effect": "You begin to whirl your weapon. Whenever any creature spends _Speed_ within your _Arena_ or enters it they must spend an additional _Speed_ or you immediately use _Strike_ from _Stone Maul_ against them [_Discount_ 2, _Follow-Up_]. If a creature is attempting to _Engage_ you, you have _Advantage_ on this Attack. End this effect if a creature becomes _Engaged_ with you, you are knocked _Prone_, or you are no longer _Wielding_ this _Weapon_. This _Occupies_ the _Stone Maul_.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Restraint",
+              "cost": "1 _Momentum_",
+              "effect": "You may use this at any time to not make an Attack."
+            }
+          ]
+        }
       },
       {
         "name": "Strike",
-        "keywords": ["Martial", "Siege"],
+        "keywords": ["Martial", "Siege", "Piercing"],
         "category": "Heavy",
         "type": "Attack",
         "cost": "4 _Momentum_",
         "material": "Earth",
         "damage_type": "Crush",
         "range": "Melee",
-        "effect": "Attack a Target within Range.",
         "chart": {
-          "stun": [1, 2, 3, 4],
-          "damage": [0, 2, 7, 12],
+          "stun": [1, 3, 5, 6],
+          "damage": [0, 2, 6, 12],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "negate": [5, 7, 8, 10],
-          "status": ["None", "None", "_Dazed_ [_Grit_]", "_Dazed_ [_Grit_]"]
+          "status": ["None", "None", "_Exposed_ [4]", "_Exposed_ [5]"]
         },
-        "enhancements": [
-          {
-            "name": "Smash",
-            "cost": "3 _Momentum_",
-            "effect": "Add [_Pierce_ 4] and [_Unblockable_]. On a _Hit_+, all _Stun_ is instead _Damage_."
-          },
-          { "name": "Extend", "cost": "1 _Momentum_", "effect": "Range is instead Range 0 [_Reach_]. Deal +2 _Stun_." },
-          { "name": "Slam", "cost": "2 _Momentum_", "effect": "Add _Shatter_ and _Prone_ [_Grit_]." },
-          { "name": "Driving Impact", "cost": "1 _Momentum_", "effect": "Add _Push_ [_Grit_]." },
-          { "name": "Cleave", "cost": "None", "effect": "Do not make an _Attack Roll_. Instead, automatically _Graze_ all creatures in your _Engagement_." },
-          { "name": "Greater Cleave", "cost": "2 _Momentum_", "effect": "Automatically _Graze_ all other valid targets _Engaged_ with the _Target_." }
-        ]
+        "enhancements": {
+          "enhances": [
+            { "name": "Extend", "cost": "1 _Momentum_", "effect": "Range is 0 [_Reach_]. Deal +2 _Stun_." },
+            {
+              "name": "Slam",
+              "cost": "1 _Momentum_",
+              "effect": "Add _Shatter_ [4], _Push_ [2/4], or _Prone_ [4]. You may repeat this _Enhancement_, choosing a different option each time."
+            },
+            {
+              "name": "Smash",
+              "cost": "2 _Momentum_",
+              "effect": "All _Stun_ is _Damage_."
+            },
+            {
+              "name": "Cleave",
+              "exclusive": true,
+              "cost": "None",
+              "effect": "Automatically _Graze_ all creatures in your _Engagement_ instead of Attacking."
+            },
+            {
+              "name": "Greater Cleave",
+              "exclusive": true,
+              "cost": "2 _Momentum_",
+              "effect": "After resolving the Attack, _Graze_ all other creatures in your _Engagement_."
+            }
+          ]
+        }
       }
     ],
     "load": 3,
@@ -452,7 +456,7 @@
     "category": "Sling",
     "desc": "A simple weapon with a windup that pierces through many defenses.",
     "keywords": ["Ammunition"],
-    "effect": "A small pouch of slingstones is included with this weapon that is comprised of _Source_ 1 (_Earth_) stones to be used as Missiles. If you ever run out of ammunition, you may always collect more the next time you make Camp as a free action.",
+    "effect": "A small pouch of slingstones is included with this weapon that is comprised of _Earth_ _Missiles_. If you ever run out of ammunition, you may always collect more the next time you make Camp without using an action.",
     "load": 1,
     "hands": 1,
     "durability": 1,
@@ -467,18 +471,19 @@
         "range": "2",
         "effect": "Create an [_Opening_], then Attack a Target within Range.",
         "chart": {
-          "stun": [0, 1, 1, 2],
-          "damage": [0, 1, 3, 4],
-          "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "None", "None", "None"]
+          "stun": [0, 1, 2, 2],
+          "damage": [0, 1, 3, 5],
+          "roll": ["2-3", "4-5", "6-10", "11-12"]
         },
-        "enhancements": [
-          {
-            "name": "Whirl",
-            "cost": "1 _Momentum_",
-            "effect": "Add [_Pierce_ 2] to the Attack and, on a _Hit_+, deal +1 Damage. You may only Attack Targets at Range 2 when making the Attack in this way."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Whirl",
+              "cost": "1 _Momentum_",
+              "effect": "Add [_Piercing_] to the Attack and, on a _Hit_+, deal +1 Damage. You may only Attack Targets at Range 2 when making the Attack in this way."
+            }
+          ]
+        }
       }
     ]
   },
@@ -486,7 +491,7 @@
     "name": "Hunting Bow",
     "category": "Bow",
     "desc": "A bow excellent for hunting game, but also for taking shots at foes.",
-    "keywords": ["Ammunition", "_Source_ 2 (_Wood_)"],
+    "keywords": ["Ammunition", "Wood"],
     "effect": "You must have a _Quiver_ and arrows to use this Weapon.",
     "load": 2,
     "hands": 2,
@@ -500,24 +505,25 @@
         "range": "2",
         "effect": "Attack a Target within Range.",
         "damage_type": "Stab",
-        "material": "Same as Ammunition",
+        "material": "Ammunition*",
         "chart": {
           "damage": [0, 4, 6, 7],
-          "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "None", "None", "None"]
+          "roll": ["2-3", "4-5", "6-10", "11-12"]
         },
-        "enhancements": [
-          {
-            "name": "Full Draw",
-            "cost": "2 _Momentum_",
-            "effect": "Create an [_Opening_] when you Attack, and you may not attack Targets closer than Range 2. Deal +_0/2/4/5_ Damage."
-          },
-          {
-            "name": "Arcing Shot",
-            "cost": "1 _Momentum_",
-            "effect": "Range is instead 3, and you take no penalties due to _Cover_. The Target has _Advantage_ to _Dodge_ this Attack."
-          }
-        ]
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Full Draw",
+              "cost": "2 _Momentum_",
+              "effect": "Create an [_Opening_] when you Attack, and you may not attack Targets closer than Range 2. Deal +_0/2/4/5_ Damage."
+            },
+            {
+              "name": "Arcing Shot",
+              "cost": "1 _Momentum_",
+              "effect": "Range is instead 3, and you take no penalties due to _Cover_. If the Target has already taken a _Turn_ this _Round_, this Attack has _Disadvantage_."
+            }
+          ]
+        }
       }
     ]
   }

@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Base, ColorMap } from '@/class'
 
 class Terrain extends Base {
   private element_: string
@@ -67,6 +67,31 @@ class Terrain extends Base {
   get HasEor() {
     return this.eor_ != ''
   }
+  get Eor() {
+    return this.eor_
+  }
+  public get Element() {
+    return this.element_
+  }
+  public get Collide() {
+    return this.collide_
+  }
+
+  public get Enter() {
+    return this.enter_
+  }
+  public get Engaged() {
+    return this.engaged_
+  }
+  public get InteractionsList() {
+    return this.interactions_.join('_\n* _')
+  }
+  public get Source() {
+    return this.source_
+  }
+  public get Color() {
+    return ColorMap.get(this.Element)
+  }
 
   // ==========================================================
   // FORMATTED GETTERS
@@ -103,8 +128,17 @@ class Terrain extends Base {
   public get HardnessHeader() {
     return '**Hardness:** ' + this.hardness_ + '; **Threshold:** ' + this.threshold_
   }
+  public get Destroy() {
+    return this.destroy_
+  }
+  public get Hardness() {
+    return this.hardness_ + '/' + this.threshold_
+  }
   public get Header() {
     return this.Name + ' - _' + this.element_ + '_ ' + this.layer_
+  }
+  public get NamelessHeader() {
+    return this.element_ + ' ' + this.layer_
   }
 
   // ==========================================================

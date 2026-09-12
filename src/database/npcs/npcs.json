@@ -8,7 +8,6 @@
     "guard": 4,
     "size": 1,
     "block": 0,
-    "defenses": { "reflex": 1 },
     "npc_type": "Insectoid",
     "traits": ["Locust Biology"],
     "abilities": [
@@ -31,10 +30,8 @@
       {
         "name": "Envenom",
         "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack and the Target lost any _Stamina_.",
-        "effect": "Add _Poisoned_ 1 to the Attack."
+        "type": "Passive",
+        "effect": "Your [_Natural_] _Crits_ inflict _Poisoned_ [5]."
       }
     ],
     "stances": [
@@ -58,7 +55,6 @@
     "stamina": 4,
     "guard": 6,
     "size": 1,
-    "defenses": { "reflex": 1, "grit": 1 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
     "abilities": [
@@ -75,15 +71,14 @@
         "effect": "Attack a Target within Range.",
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "Exposed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]"],
-          "stun": [0, 1, 2, 3],
-          "damage": [0, 1, 2, 3],
-          "negate": [4, 7, 8, 10]
+          "status": ["None", "Exposed [2]", "Grabbed [4]", "Grabbed [5]"],
+          "stun": [0, 1, 1, 3],
+          "damage": [0, 1, 2, 3]
         }
       },
       {
         "name": "Drink",
-        "keywords": ["Martial", "_Pierce_ 2"],
+        "keywords": ["Martial", "_Piercing_"],
         "category": "Balanced",
         "damage_type": "Stab",
         "material": "Natural",
@@ -100,10 +95,8 @@
       {
         "name": "Envenom",
         "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack and the Target lost any _Stamina_.",
-        "effect": "Add _Poisoned_ 1 to the Attack."
+        "type": "Passive",
+        "effect": "Your [_Natural_] _Crits_ inflict _Poisoned_ [5]."
       }
     ],
     "stances": [
@@ -122,7 +115,6 @@
         "category": "Offensive",
         "desc": "You drill deep on a grappled target, attempting to extract a sample of their essence.",
         "speed": 2,
-        "defenses": { "grit": 1 },
         "posture": 0,
         "block": 3,
         "phase": 5,
@@ -168,7 +160,6 @@
     "stamina": 3,
     "guard": 4,
     "size": 0.5,
-    "defenses": { "reflex": 1, "focus": 1 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
     "abilities": [
@@ -191,10 +182,8 @@
       {
         "name": "Envenom",
         "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
-        "effect": "Add _Poisoned_ 1 to the Attack."
+        "type": "Passive",
+        "effect": "Your [_Natural_] _Crits_ inflict _Poisoned_ [5]."
       }
     ],
     "stances": [
@@ -259,7 +248,6 @@
     "guard": 12,
     "size": 2,
     "bars": 3,
-    "defenses": { "focus": 1, "grit": 2 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
     "abilities": [
@@ -276,9 +264,8 @@
         "effect": "Attack a Target within Range.",
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "damage": [0, 3, 5, 6],
-          "negate": [4, 7, 8, 10],
-          "status": ["None", "None", "Grabbed [_Grit_/_Reflex_]", "Grabbed [_Grit_/_Reflex_]"]
+          "damage": [0, 2, 3, 5],
+          "status": ["None", "None", "Grabbed [3]", "Grabbed [4]"]
         }
       },
       {
@@ -294,27 +281,10 @@
         "effect": "When you start your turn _Grabbing_ a creature, deal 3 _Slash_ Damage to them."
       },
       {
-        "name": "Armor Plating",
-        "category": "Defensive",
-        "keywords": ["Shatterable"],
-        "type": "Passive",
-        "effect": "You do not have _Disadvantage_ to _Parry_ Ranged Attacks. If this is _Shattered_, add [_Pierce_ 2] to all Attacks against you."
-      },
-      {
         "name": "Envenom",
         "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
-        "effect": "Add _Poisoned_ 1 to the Attack."
-      },
-      {
-        "name": "Perfect Parry",
-        "category": "Defensive",
-        "type": "Gambit",
-        "cost": "1 _Posture_",
-        "prereqs": "Triggered from a _Parry_.",
-        "effect": "The triggering Attack is _Glancing_. If you are in a _Defensive_ _Stance_ _Cost_ is instead None."
+        "type": "Passive",
+        "effect": "Your [_Natural_] _Crits_ inflict _Poisoned_ [5]."
       }
     ],
     "stances": [
@@ -378,7 +348,6 @@
     "guard": 10,
     "size": 2,
     "bars": 2,
-    "defenses": { "focus": 2, "grit": 1 },
     "npc_type": "Insectoid",
     "traits": ["Climber", "Locust Biology"],
     "abilities": [
@@ -386,15 +355,13 @@
         "name": "Gas Sack",
         "category": "Defensive",
         "type": "Passive",
-        "effect": "Whenever you take Damage from a _Slash_, _Stab_, or _Crush_ effect all creatures _Engaged_ with you take 2 _Poison_ _Damage_. This Damage ignores _Block_ and instead treats _Grit_ as _Block_. If _Downed_, instead inflict _Poisoned_ 2."
+        "effect": "Whenever you take Damage from a _Slash_, _Stab_, or _Crush_ effect all creatures _Engaged_ with you take 2 _Poison_ _Damage_. If _Downed_, instead inflict _Poisoned_ 2."
       },
       {
         "name": "Envenom",
         "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack dealt at least 1 Damage.",
-        "effect": "Add _Poisoned_ 1 to the Attack."
+        "type": "Passive",
+        "effect": "Your [_Natural_] _Crits_ inflict _Poisoned_ [5]."
       },
       {
         "name": "Pheromone Spike",
@@ -409,7 +376,7 @@
         "category": "Light",
         "type": "Attack",
         "range": 1,
-        "effect": "Choose an enemy within Range; they must immediately _Negate_ [_Reflex_ 10]. Inflict _Studied_, and the next Attack against them gains [_Pierce_ 2]. Regardless, they take 1 _Poison_ Damage."
+        "effect": "Choose an enemy within Range; they must immediately _Negate_ [6]. Inflict _Studied_, and the next Attack against them gains [_Piercing_]. Regardless, they take 1 _Poison_ [_Unblockable_] Damage."
       },
       {
         "name": "Synthesis",
@@ -452,9 +419,14 @@
         "effect": "Attack a Target within Range.",
         "chart": {
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "damage": [1, 4, 5, 7],
-          "negate": [4, 7, 8, 10],
-          "status": ["None", "_Poisoned_ 1", "_Poisoned_ 2", "_Poisoned_ 4"]
+          "stun": [1, 2, 3, 3],
+          "damage": [2, 3, 4, 7],
+          "status": [
+            "_Poisoned_ [3]",
+            "_Poisoned_ [3], _Poisoned_ [3]",
+            "_Poisoned_ [3], _Poisoned_ [3], _Poisoned_ [3]",
+            "_Poisoned_ [3], _Poisoned_ [3], _Poisoned_ [3], _Poisoned_ [3]"
+          ]
         }
       }
     ],
@@ -520,7 +492,6 @@
     "guard": 20,
     "size": 3,
     "bars": 4,
-    "defenses": { "reflex": 1 },
     "npc_type": "Insectoid",
     "traits": ["Locust Biology"],
     "abilities": [
@@ -535,7 +506,7 @@
         "category": "Defensive",
         "keywords": ["Shatterable"],
         "type": "Passive",
-        "effect": "You do not have _Disadvantage_ to _Parry_ Ranged Attacks. If this is _Shattered_, add [_Pierce_ 2] to all Attacks against you."
+        "effect": "You do not have _Disadvantage_ to _Parry_ Ranged Attacks."
       },
       {
         "name": "Spawn",
@@ -560,10 +531,8 @@
       {
         "name": "Envenom",
         "category": "Offensive",
-        "type": "Gambit",
-        "cost": "None",
-        "prereqs": "_Graze_+ with a _Natural_ Weapon and the Attack and the Target lost any _Stamina_.",
-        "effect": "Add _Poisoned_ 1 to the Attack."
+        "type": "Passive",
+        "effect": "Your [_Natural_] _Crits_ inflict _Poisoned_ [5]."
       },
       {
         "name": "Scything Claw",

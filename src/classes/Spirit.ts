@@ -20,7 +20,7 @@ class Spirit extends Combatant {
   // COMBATANT OVERRIDES
   // ==========================================================
   override get Block() {
-    var block = this.current_stance_.Block + this.spirit_type_.Defenses.Block
+    var block = this.current_stance_.Block + this.spirit_type_.Block
     for (var equipment of this.Equipment) {
       if (store.getters.isArmor(equipment.Name)) block += equipment.Block
     }
@@ -43,9 +43,7 @@ class Spirit extends Combatant {
   }
 
   override get Traits() {
-    var traits = [...this.spirit_type_.Traits]
-    traits = traits.concat(this.traits_)
-    return traits
+    return this.traits_
   }
 
   override get MaxSoak() {
@@ -75,17 +73,6 @@ class Spirit extends Combatant {
     return arts
   }
 
-  get ManifestRange() {
-    return this.SpiritType.ManifestRange + this.combinedBonuses_.ManifestRange
-  }
-  get ManifestSource() {
-    return this.combinedBonuses_.ManifestSource
-  }
-
-  get ManifestHeader() {
-    return (this.ManifestRange < 0 ? 'Melee' : 'Range ' + this.ManifestRange) + ', Source ' + this.ManifestSource
-  }
-
   override get AllArts() {
     var arts = store.getters.getAPsFromListPreserveType([...this.Traits, ...this.character_.SpiritArts, this.character_.Element + 'born'])
     arts = arts.concat(this.Equipment)
@@ -97,19 +84,11 @@ class Spirit extends Combatant {
     var stances = [...store.getters.basicSpiritStances]
     // Collect from Disciplines
     // Collect from Archetypes
-    return store.getters.getStancesFromList(stances)
-  }
-
-  get Grit() {
-    return this.SpiritType.Defenses.Grit + this.current_stance_.Grit + this.combinedBonuses_.Grit
-  }
-
-  get Reflex() {
-    return this.SpiritType.Defenses.Reflex + this.current_stance_.Reflex + this.combinedBonuses_.Reflex
-  }
-
-  get Focus() {
-    return this.SpiritType.Defenses.Focus + this.current_stance_.Focus + this.combinedBonuses_.Focus
+    stances = store.getters.getStancesFromList(stances)
+    for (var trait of store.getters.getAPsFromListPreserveType(this.traits_)) {
+      if (trait.Stances.length > 0) stances = stances.concat(trait.Stances)
+    }
+    return stances
   }
 
   // ==========================================================

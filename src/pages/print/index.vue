@@ -26,5 +26,6 @@ export default Vue.extend({
 <style scoped lang="scss">
 .print-page {
   font-size: 8pt;
+  background-color: white;
 }
 </style>

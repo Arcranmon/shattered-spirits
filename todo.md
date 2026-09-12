@@ -1,7 +1,10 @@
 ## To-Do
 
 - Make Statuses more streamlined maybe?
-- Clear up the different movement types
+- Teleport for Spirits
+  - Just a 'disappear from map and return to companion'
+- Maybe 1 Block for free?
+- Armor/weapon/equipment cards need better headers
 
 ### Long-Term Refactors
 

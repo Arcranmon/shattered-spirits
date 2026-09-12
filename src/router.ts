@@ -48,6 +48,24 @@ const r = new Router({
         title: 'Character Options',
       },
     },
+    { path: '/equipment', redirect: '/equipment/armor-and-clothing' },
+    {
+      path: '/equipment/:tab',
+      component: require('@/pages/equipment/index.vue').default,
+      name: 'equipment',
+      meta: {
+        title: 'Equipment',
+      },
+    },
+    { path: '/sample-characters', redirect: '/sample-characters/blaine' },
+    {
+      path: '/sample-characters/:tab',
+      component: require('@/pages/sample-characters/index.vue').default,
+      name: 'sample-characters',
+      meta: {
+        title: 'Sample Characters',
+      },
+    },
     {
       path: '/npcs',
       component: require('@/pages/npcs/index.vue').default,
@@ -84,6 +102,16 @@ const r = new Router({
       path: '/print',
       component: require('@/pages/print/index.vue').default,
       name: 'print',
+      meta: {
+        title: 'Print',
+        hideHeader: true,
+        props: true,
+      },
+    },
+    {
+      path: '/print-everything-preview',
+      component: require('@/pages/print-everything-preview/index.vue').default,
+      name: 'print-everything-preview',
       meta: {
         title: 'Print',
         hideHeader: true,

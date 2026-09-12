@@ -20,6 +20,10 @@
     "effect": "When you roll with Advantage, roll an additional die then choose which die or dice to resolve the result with. For example, in an _Attack Roll_, you would roll 3d6, then choose which 2 dice to use."
   },
   {
+    "name": "Ammunition",
+    "effect": "Equipment with this tag has a limited pool of usable ammunition before it can no longer be used. Whenever narratively appropriate or you roll a 2 or less on an Attack, lose 1 Ammunition. Other abilities may allow you to spend or restore Ammunition."
+  },
+  {
     "name": "Advantage (Skill Challenge)",
     "effect": "Advantage is an _Augment_ that can be purchased in a _Skill Challenge_. When you purchase it, you set things up to aid yourself or another in the future, creating a condition or augmented opportunity."
   },
@@ -88,8 +92,16 @@
     "effect": "A Balanced Attack strikes a middle ground between a _Heavy_ and a _Light_ one. They are rarely restricted by your current _Stance_, and often can gain the benefits of a _Heavy_ or _Light_ Attack at reduced effect."
   },
   {
+    "name": "Bane",
+    "effect": "Bane Attacks are especially good against a certain type of creature. If the Bane applies, add the following depending on the Target:\n\t* A creature, gain a +1 to the _Attack Roll_ and add [_Piercing_].\n\t* _Wielding_ _Equipment_ the Bane applies to, add _Shatter_, but you must target said Equipment.\n\t* _Terrain_, add [_Siege_]."
+  },
+  {
     "name": "Bend",
     "effect": "Characters with Bend can manipulate and control a specific element at a distance, which allows alternate ways to use some abilities. To use Bend, characters must be targeting and object or creature that matches the Element listed for Bend."
+  },
+  {
+    "name": "Bending Maneuver",
+    "effect": "When a creature makes a Bending Maneuver they reach out and directly manipulate an element on a target. A Bending Strike makes the following changes:\n* Replace [_Martial_] with [_Spirit_] and remove [_Unarmed_].\n* Use your _Bend_ _Range_ as the effect Range.\n* If the Ability targets a creature, it may only Target ones made of or _Wearing_ at least 3 _Load_ of the _Bend_ _Element_.\n* If the Ability targets an item, it may only Target ones made of the _Bend_ _Element_. If the effect inflicts _Disarm_ or _Sunder_ limit your targeting based on this rather than the creature."
   },
   {
     "name": "Block",
@@ -141,7 +153,7 @@
   },
   {
     "name": "Climb",
-    "effect": "Sheer cliff faces and similar terrain require creatures to climb. While Climbing:\n* All Speed costs (including entering an Arena where you must use this movement) are increased by 2, or 1 if the creature has two _Free Hands_ (or equivalent) to climb with.\n* Creatures have _Disadvantage_ on _Attack_, _Defend_, and _Reflex_ Rolls.\n* Creatures must have at least one _Free Hand_ or they immediately _Fall_.\n* When a creature is subjected to _Forced Movement_, the inflictor may choose to make them _Fall_ instead of the usual effects."
+    "effect": "Sheer cliff faces and similar terrain require creatures to climb. While Climbing:\n* All Speed costs (including entering an Arena where you must use this movement) are increased by 2, or 1 if the creature has two _Free Hands_ (or equivalent) to climb with.\n* Creatures have _Disadvantage_ on _Attack_ and _Defense_ Rolls.\n* Creatures must have at least one _Free Hand_ or they immediately _Fall_.\n* When a creature is subjected to _Forced Movement_, the inflictor may choose to make them _Fall_ instead of the usual effects."
   },
   { "name": "Climbing", "see": "Climb" },
   {
@@ -188,11 +200,11 @@
   },
   {
     "name": "Cost",
-    "effect": "The Cost of an Ability is the listed _Momentum_, _Essence_, _Speed_, or _Posture_. This must be paid to use the ability, but some effects (such as _Discount_) may reduce this Cost."
+    "effect": "The Cost of an Ability is the listed _Momentum_, _Essence_, or _Speed_. This must be paid to use the ability, but some effects (such as _Discount_) may reduce this Cost."
   },
   {
     "name": "Cover",
-    "effect": "While in Cover:\n* Non-Melee Attacks against you have _Disadvantage_.\n* You reduce the cost of all _Dodge_ _Reactions_ by 1.\n* When Attacked, gain additional _Block_ equal to twice the Range the Attack was made from."
+    "effect": "While in Cover:\n* You have _Advantage_ on your _Defense Roll_ against non-Melee Attacks.\n* When Attacked, gain additional _Block_ equal to twice the Range the Attack was made from."
   },
   {
     "name": "Crash",
@@ -227,10 +239,6 @@
     "effect": "Different abilities may allow a creature to Defend. When a creature Defends, they roll 2d6 (often called the _Defense Roll_) and consult the chart associated with the Ability to determine the effect. If they roll doubles or a  _Crit_ they may apply an applicable _Gambit_ to the Attack, or two if they rolled doubles and a _Crit_."
   },
   {
-    "name": "Defenses",
-    "effect": "A catch-all term that refers to a creatures _Block_, _Focus_, _Grit_, and _Reflex_."
-  },
-  {
     "name": "Defensive",
     "effect": "A category of abilities used to defend oneself, typically by increasing _Block_ or minimizing damage. Defensive Stances and Reactions are the most common example of this, but other Abilities may be Defensive as well."
   },
@@ -248,7 +256,7 @@
   },
   {
     "name": "Discount",
-    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Speed_, _Momentum_, _Essence_, or _Posture_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable effect. Any remaining _Discount_ is lost."
+    "effect": "Reduce the Cost of the applicable effect by the listed Discount; this may apply to _Speed_, _Momentum_, or _Essence_. If this reduces the Cost below 0, you may spend any remainder on Enhancements for the applicable effect. Any remaining _Discount_ is lost."
   },
   {
     "name": "Dodge",
@@ -331,7 +339,7 @@
   { "name": "Falling", "see": "Fall" },
   {
     "name": "Fall",
-    "effect": "Fall Damage ignores all _Block_, but characters may reduce the Damage dealt by their _Reflex_. If a character takes at least 4 Damage they fall _Prone_."
+    "effect": "When characters Fall they take [_Unblockable_] Damage equal to the Fall value. If a character takes at least 4 Damage they fall _Prone_."
   },
   {
     "name": "Fertile",
@@ -359,6 +367,10 @@
     "effect": "One of the spiritual elements, representing the ability to manipulate fire and heat. Besides bending abilities, flame spirits are also known for inciting rage, massively improving physical capabilities, as well as being able to see the future in the flames. This also may refer to _Terrain_ or _Equipment_ made of flames."
   },
   {
+    "name": "Flames Flicker",
+    "effect": "Many Flame Terrain have a Flames Flicker effect. When this happens, roll a d6. On a 1-2, decrease the size of the fire (Roaring->Blazing->Smoldering). On a 3-4, do nothing. On a 5-6, _Ignite_ a random piece of _Flammable_ Terrain within Range 0. If the entire _Arena_ is already Flame Terrain, instead _Ignite_ a random piece of _Flammable_ Terrain within Range 1."
+  },
+  {
     "name": "Flammable",
     "effect": "Terrain with this keyword can be _Ignited_ by a variety of _Flame_ abilities."
   },
@@ -367,12 +379,8 @@
     "effect": "Fleeting Terrain is _Destroyed_ after _Respite_ at the start of the next _Round_."
   },
   {
-    "name": "Focus",
-    "effect": "A defense that represents a character's poise, mental resilience and willpower. Characters add Focus to applicable _Negate_ checks."
-  },
-  {
     "name": "Follow-Up",
-    "effect": "Attacks with this Keyword typically are triggered by some other effect and may not qualify for _Gambits_."
+    "effect": "Attacks with this Keyword typically are triggered by some other effect and may not qualify for _Gambits_ or use any _Enhancements_ that allow making additional Attacks."
   },
   {
     "name": "Forage",
@@ -390,10 +398,6 @@
   {
     "name": "Forced Movement",
     "effect": "Any effect that forcibly moves a creature, such as _Push_, _Pull_, or _Slide_. Forced Movement typically does not create _Openings_, but can trigger _Terrain_ effects."
-  },
-  {
-    "name": "Forceful",
-    "effect": "A modifier that may be applied to any _Forced Movement_ effect that significantly heightens the effect."
   },
   {
     "name": "Fortified",
@@ -429,17 +433,13 @@
   { "name": "Gambits", "see": "Gambit" },
   {
     "name": "Glancing",
-    "effect": "Attacks with this keyword treat the Target's _Block_ as twice its value. Apply this after _Pierce_."
+    "effect": "Attacks with this keyword treat the Target's _Block_ as twice its value, and the Target may _Negate_ at half cost."
   },
   { "name": "Grab", "see": "Grabbed" },
   { "name": "Grabbing", "see": "Grabbed" },
   {
     "name": "Graze",
     "effect": "A feeble result for an _Attack_ or _Defend_ that has significantly reduced effect. This corresponds to the second row of the table and is typically colored yellow."
-  },
-  {
-    "name": "Grit",
-    "effect": "A defense that represents a character's stamina, physical power, and resilience. Characters add Grit to applicable _Negate_ checks, and is directly relevant in _Statuses_ such as _Grabbed_ or _Poisoned_."
   },
   {
     "name": "Guard",
@@ -518,10 +518,6 @@
     "effect": "The longest unit of time relevant to adventurers; a Journey consists of all travel and conflicts in between periods of _Downtime_."
   },
   {
-    "name": "Least",
-    "see": "Source"
-  },
-  {
     "name": "Leg",
     "effect": "A unit of time used to measure the travel through a relatively similar biome and that uses a single _Clock_ to track progress."
   },
@@ -558,7 +554,7 @@
   { "name": "Manifesting", "see": "Manifest" },
   {
     "name": "Manifest",
-    "effect": "Characters may choose to Manifest their spirit, giving it physical form. Outside of combat, characters can freely Manifest their spirit so long as their craft is not actively suppressed by their surroundings. In combat, you may Manifest your Spirit at _Respite_ at an appropriate Source (as defined by their size) within their Manifest Range. You may always Manifest them at _Melee_ Range regardless of _Source_ for 1 _Essence_. They become _Engaged_ with any creatures at said _Source_."
+    "effect": "Characters may choose to Manifest their spirit, giving it physical form. Outside of combat, characters can freely Manifest their spirit so long as their craft is not actively suppressed by their surroundings. In combat, you may Manifest your Spirit at _Melee_ _Range_."
   },
   {
     "name": "Martial",
@@ -620,7 +616,7 @@
   { "name": "Missiles", "see": "Missile" },
   {
     "name": "Missile",
-    "effect": "Many abilities require a Missile, or a specific item or equipment. These abilities will specify any requirements on the Missile (such as an Elemental type or Size) and within what Range it must be. This ability uses said Missile to resolve the Attack, placing it unattended in target's _Arena_ or, if it _Wounds_ them, is _Impaled_ in the Target. To be used as Missile, an item must be _Worn_ by a willing Target or unattended. An exception is if a creature is _Impaled_ by an item; this counts as a _Worn_ item by the creature but may be targeted as if it was _Unattended_. Any Attacks using an _Impaled_ item against that creature have _Advantage_, ignore _Guard_, and cannot be _Defended_ against."
+    "effect": "Many abilities require a Missile, or a specific item or equipment. These abilities will specify any requirements on the Missile (such as an Elemental type or Size). Additionally, the Missile must be within Range of the effect. This ability uses said Missile to resolve the Attack, placing it unattended in target's _Arena_ if it was _Ranged_. To be used as Missile (unless otherwise specified) an item must be _Worn_ by a willing Target or unattended."
   },
   {
     "name": "Mobility",
@@ -657,23 +653,18 @@
     "effect": "A _Camp Action_. You spend time with your spirit and take care of it, whether that be playing with it, styling it, or something similar. Afterwards, you or your spirit clears a _Stress_."
   },
   {
-    "name": "Parry",
-    "effect": "You defend yourself by attempting to intercept, block, or otherwise deflect an attack. If the Attack is not _Melee_ you have _Disadvantage_ on the _Defense Roll_."
+    "name": "Piercing",
+    "effect": "Attacks with Piercing ignore half the target's _Block_."
   },
   {
-    "name": "Pierce",
-    "effect": "Attacks with _Pierce_ ignore an amount of the Target's _Block_ equal to their Pierce value."
+    "name": "Unblockable",
+    "effect": "Unblockable Attacks ignore all _Block_."
   },
   {
     "name": "Poison",
     "effect": "Attacks that inflict toxins or other noxious substances on a character. Typically this is biological warfare, but poisons can be formulated that affect spirits using their weaknesses to other elements. If a character is _Downed_ by Poison Damage they may suffer the below _Wounds_:\n* **6-12**: Gain _Envenomed_.\n* **3-5**: Gain _Envenomed_ twice.\n* **2-**: Gain _Envenomed_ thrice."
   },
-  {
-    "name": "Posture",
-    "effect": "Posture represents a character's ability to parry, dodge, and otherwise avoid incoming assaults. It is commonly used for _Dodge_ and _Parry_ Reactions."
-  },
   { "name": "Pulled", "see": "Pull" },
-  { "name": "Forceful Push", "see": "Push" },
   { "name": "Pushed", "see": "Push" },
   { "name": "Pushes", "see": "Push" },
   {
@@ -691,6 +682,14 @@
   {
     "name": "Reactive",
     "effect": "This Enhancement may be selected at any point in an effect, even after dice have been rolled."
+  },
+  {
+    "name": "Exclusive",
+    "effect": "This Enhancement may not be selected if any other with this tag have been selected."
+  },
+  {
+    "name": "[E]",
+    "see": "Exclusive"
   },
   {
     "name": "Recover",
@@ -725,10 +724,6 @@
     "effect": "You may not use _Speed_ this _Turn_."
   },
   {
-    "name": "Rough",
-    "effect": "This designates an area that is difficult to move in, whether due to uneven ground or other limitations. _Speed_ Costs in this _Arena_ are increased by 1, and creatures roll _Reflex_ and _Dodge_ _Defense Rolls_ with _Disadvantage_. If multiple effects can make an Arena _Rough_ the effects do not stack."
-  },
-  {
     "name": "Safe",
     "effect": "The _Speed_ cost of this Ability never creates an _Opening_."
   },
@@ -758,7 +753,19 @@
   },
   {
     "name": "Source",
-    "effect": "Sources are strong concentrations of elemental power or material that can easily be controlled by spiritcraft. Sources are ranked from 1-5, but may just be referred to as a Source when the severity does not matter. Different abilities typically require Sources, either to power their spiritcraft or simply fling with kinetic force. Items and other objects within the world will specify what type and rank of Source they are. Typically, sources are the standard elemental types, but other sources (such as Plant) might be referenced by other abilities."
+    "effect": "Sources are strong concentrations of elemental power or material that can easily be controlled by spiritcraft. Typically, sources are the standard elemental types, but other sources (such as Ice) might be referenced by other abilities. Most Equipment _Load_ 1 or greater can be treated as a _Minor Source_. A _Minor_ _Source_ can be used for most abilities, but is destroyed in the process, except for Equipment; it is instead _Damaged_."
+  },
+  {
+    "name": "Missile",
+    "effect": "Missiles are used for minor attacks, and represent an amount of an element equal to an arrow or similar. Many items grant Missiles, and it is common for battlefields to have some Missiles available."
+  },
+  {
+    "name": "Safely",
+    "effect": "When a _Minor Source_ is used Safely it is not destroyed."
+  },
+  {
+    "name": "Fling",
+    "effect": "When you Fling something, place it in the Target's _Engagement_. If it is a Spirit effect, the object you Fling must also be in Range; otherwise, you must be Wielding it."
   },
   {
     "name": "Phase",
@@ -795,7 +802,7 @@
   { "name": "Swimming", "see": "Swim" },
   {
     "name": "Swim",
-    "effect": "While Swimming:\n* All Speed costs (including entering an Arena where you must use this movement)  are increased by 2, or 1 if the creature has two _Free Hands_ (or equivalent) to swim with.\n* Creatures have _Disadvantage_ on _Defend_ and _Reflex_ Rolls.\n* The creature automatically becomes _Soaked_."
+    "effect": "While Swimming:\n* All Speed costs (including entering an Arena where you must use this movement)  are increased by 2, or 1 if the creature has two _Free Hands_ (or equivalent) to swim with.\n* Creatures have _Disadvantage_ on _Defense_ Rolls.\n* The creature automatically becomes _Soaked_."
   },
   {
     "name": "Temporary",
@@ -803,15 +810,7 @@
   },
   {
     "name": "Thrown",
-    "effect": "After using an effect with this Range, place this _Equipment_ in the Target's _Arena_."
-  },
-  {
-    "name": "Unblockable",
-    "effect": "Creatures have _Disadvantage_ on any _Parry_ effect against this Attack, and cannot use _Defensive_ _Gambits_ while attempting to _Block_."
-  },
-  {
-    "name": "Undodgeable",
-    "effect": "Creatures have _Disadvantage_ on any _Dodge_ effect against this Attack, and cannot use _Defensive_ _Gambits_ while attempting to _Dodge_."
+    "effect": "If you use this Effect at any Range other than Melee, place the _Equipment_ used for it in the Target's _Arena_."
   },
   {
     "name": "Vexation",
@@ -828,7 +827,7 @@
   { "name": "Weakness", "see": "Weakness and Resistance" },
   {
     "name": "Weakness and Resistance",
-    "effect": "This represents some resilience or innate resistance to a type or effect. Effects typically start at Neutral, and are adjusted according to a creature's _Passives_ and some _Defensive_ _Reactions_, with a value that ranges between 0 and 3.\n\nIf a creature is Weak to something, increase the final Result of all Attacks by your Weakness. If a creature is Resistant to something, instead decrease the final Result of all Attacks by your Resistance. In the case of Damage dealt due to Status effects that have no _Chart_, instead increase/decrease the Damage by their Weakness/Resistance.\n\nWeakness and Resistance cancel each other out at a 1 to 1 rate."
+    "effect": "This represents some resilience or innate resistance to a type or effect. Effects typically start at Neutral, and are adjusted according to a creature's _Passives_ and some _Defensive_ _Reactions_.\n\nIf a creature is Weak to something, increase the final Result of all Attacks by 1. If a creature is Resistant to something, instead decrease the final Result of all Attacks by 1.\n\nWeakness and Resistance cancel each other out at a 1 to 1 rate."
   },
   {
     "name": "Weaponsmith's Blessing",

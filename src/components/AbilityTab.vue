@@ -44,6 +44,9 @@ export default Vue.extend({
     abilityType: {
       required: true,
     },
+    basic: {
+      required: false,
+    },
     spirit: {
       required: false,
       default: false,
@@ -55,15 +58,34 @@ export default Vue.extend({
         return ['All', 'Light', 'Balanced', 'Heavy']
       } else if (this.abilityType == 'Gambit') {
         return ['All', 'General', 'Offensive', 'Defensive']
+      } else if (this.abilityType == 'Skill') {
+        return ['All', 'Camp', 'Downtime', 'Skill', 'Travel']
       } else {
         return ['All', 'Offensive', 'Defensive', 'Utility', 'Mobility']
       }
     },
     abilities() {
-      if (this.spirit) {
-        return this.character.Spirit.FilteredAbilities(this.abilityType, this.CategoryFilter, this.keywordFilter)
+      if (this.abilityType == 'Skill' || 'Camp' || 'Travel') {
+        var categories = [this.abilityType]
+        if (this.spirit) {
+          var skills = this.character.Spirit.FilteredAbilities('Talent', categories, 'All')
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Power', categories, 'All'))
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Boon', categories, 'All'))
+          skills = skills.concat(this.character.Spirit.FilteredAbilities('Action', categories, 'All'))
+          return skills
+        }
+        if (this.basic) return this.character.FilteredAbilities('Action', categories, 'All')
+        return [
+          ...this.character.FilteredAbilities('Talent', categories, 'All'),
+          ...this.character.FilteredAbilities('Power', categories, 'All'),
+          ...this.character.FilteredAbilities('Boon', categories, 'All'),
+          ...this.character.FilteredAbilities('Action', categories, 'All'),
+        ]
       }
-      return this.character.FilteredAbilities(this.abilityType, this.CategoryFilter, this.keywordFilter)
+      if (this.spirit) {
+        return this.character.Spirit.FilteredAbilities(this.abilityType, this.categoryFilter, this.keywordFilter)
+      }
+      return this.character.FilteredAbilities(this.abilityType, this.categoryFilter, this.keywordFilter)
     },
   },
   data() {

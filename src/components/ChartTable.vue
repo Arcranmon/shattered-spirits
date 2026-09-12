@@ -22,24 +22,23 @@
           class="chart--head chart--head-right"
           v-if="chart.HasStun"
           v-bind:cols="stunWidth">
-          <b>Stun</b>
+          <img
+            :src="require('@/assets/Stun.svg')"
+            style="height: 1.5em" />
         </v-col>
         <v-col
           class="chart--head chart--head-right"
           v-if="chart.HasDamage"
           v-bind:cols="damageWidth">
-          <b>Damage</b>
+          <img
+            :src="require('@/assets/Damage.svg')"
+            style="height: 1.5em" />
         </v-col>
         <v-col
           class="chart--head chart--head-right"
+          v-if="chart.HasEffect"
           v-bind:cols="effectWidth">
           <b>Effect</b>
-        </v-col>
-        <v-col
-          class="chart--head chart--head-right"
-          v-if="chart.HasRoll || !chart.IsDefend"
-          v-bind:cols="negateWidth">
-          <b>Negate</b>
         </v-col>
       </v-row>
       <div
@@ -79,15 +78,9 @@
           <v-col
             class="chart--cols chart--cols-right"
             v-bind:class="getRank(index)"
+            v-if="chart.HasEffect"
             v-bind:cols="effectWidth">
             <display-tooltip-text :string="chart.Status(index)" />
-          </v-col>
-          <v-col
-            class="chart--cols chart--cols-right"
-            v-if="chart.HasRoll || !chart.IsDefend"
-            v-bind:class="getRank(index)"
-            v-bind:cols="negateWidth"
-            >{{ chart.Negate(index) }}
           </v-col>
         </v-row>
       </div>
@@ -119,11 +112,7 @@ export default Vue.extend({
       return 0
     },
     stunWidth() {
-      if (this.chart.HasStun) return 1
-      return 0
-    },
-    negateWidth() {
-      if (this.chart.HasRoll) return 2
+      if (this.chart.HasStun) return 2
       return 0
     },
     effectWidth() {

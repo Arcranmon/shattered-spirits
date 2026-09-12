@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Ability, Chart, Equipment } from '@/class'
+import { ColorMap, Equipment } from '@/class'
 
 class Weapon extends Equipment {
   private reqs_: string
@@ -29,6 +29,10 @@ class Weapon extends Equipment {
   public get Icon() {
     if (this.Category == 'Error') return ''
     return require('@/assets/weapons/' + this.Category + '.svg')
+  }
+
+  public get Color() {
+    return ColorMap.get('Weapon')
   }
 
   // ==========================================================

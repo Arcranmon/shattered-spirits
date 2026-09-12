@@ -89,6 +89,14 @@
             :collapse="false"
             :cols="1" />
         </div>
+        <div
+          v-if="$route.params.tab == 'events'"
+          class="character-tab-content">
+          <show-cards
+            :inputs="events"
+            :collapse="false"
+            :cols="1" />
+        </div>
 
         <div
           v-if="$route.params.tab == 'glossary'"
@@ -152,10 +160,11 @@ export default Vue.extend({
         'terrain',
         'player-roles',
         'glossary',
+        'events',
       ],
       text: [GameModes, NarrativeText, TravelText, CombatText, CharCreationText, EquipmentText, '', '', '', PlayerRolesText, ''],
-      statusCategories: ['Minor Status', 'Emotional Status', 'Status', 'Instant Effect'],
-      selectedStatuses: ['Minor Status', 'Emotional Status', 'Status', 'Instant Effect'],
+      statusCategories: ['Emotional Status', 'Status', 'Instant Effect'],
+      selectedStatuses: ['Emotional Status', 'Status', 'Instant Effect'],
       afflictionCategories: ['Condition', 'Greater Condition', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
       selectedAfflictions: ['Condition', 'Minor Wound'],
       selectedStatus: null,
@@ -171,6 +180,9 @@ export default Vue.extend({
     },
     terrains: function () {
       return this.$store.getters.getTerrains().sort((a, b) => (a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0))
+    },
+    events: function () {
+      return this.$store.getters.getEvents().sort((a, b) => (a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0))
     },
     glossaryItems() {
       var glossary = this.$store.getters.getGlossary()

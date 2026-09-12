@@ -72,22 +72,6 @@ class Combatant {
     return '\n\n_' + this.Traits.join('_\n\n_') + '_'
   }
 
-  get Defenses() {
-    return this.Focus + ' _Focus_, ' + this.Grit + ' _Grit_, ' + this.Reflex + ' _Reflex_'
-  }
-
-  get Grit() {
-    return 0
-  }
-
-  get Reflex() {
-    return 0
-  }
-
-  get Focus() {
-    return 0
-  }
-
   get Arts() {
     return []
   }
@@ -176,7 +160,7 @@ class Combatant {
     var str = weakRes.length > 0 ? '' : 'None  '
 
     for (var wr of weakRes) {
-      str += wr.damage + ' ' + String(wr.mod) + ', '
+      str += wr.damage + ', '
     }
     return str.slice(0, -2).replaceAll('-', '')
   }

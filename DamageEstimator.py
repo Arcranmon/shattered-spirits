@@ -2,28 +2,30 @@ import json
 import math
 from termcolor import colored
 import argparse
+import re
 import OrphanFinder
 
 # Momentum is 'worth' this much
 momentum_value = 2
+stun_scale = 0.5 # Guard is worth less (not sure how much)
 
 # In theory, Advantage is 'worth' ~1/2 Momentum just in terms of the increased likelihood of a Gambit. Actual worth depends heavily on the applicable attack.
 
 status_multipliers = {
     "Bleeding": 2,
     "Poisoned": 1.5,
-    "Alight": 1,
-    "Frosted": 1,
+    "Alight": 3,
+    "Entangled": 3,
+    "Frozen": 3,
     "Soaked": 0.5,
     "Exposed": 1.5,
     "Impaired": 1.5,
-    "Dazed": 2,
     "Push": 2,
-    "Disarm": 3,
+    "Disarm": 2,
     "Pull": 2,
     "Prone": 2,
     "Shatter": 2,
-    "Grabbed": 2
+    "Grabbed": 2,
 }
 
 instant_statuses = ["Defending"]
@@ -32,7 +34,10 @@ keyword_modifiers = {
     "Brawling": 0.15, # Pretty niche
     "Remote": 0.25,
     "Glancing": -1,
-    "Pierce": 0.25,
+    "Piercing": 1,
+    "Natural": 0,
+    "Martial": 0,
+    "Unarmed": 0,
 }
 
 attack_range_multiplier = {
@@ -43,48 +48,42 @@ attack_range_multiplier = {
     "3": 0.8
 }
 
-ATTACK = 1
-TECHNIQUE = 2
-AT_LEAST_ODDS = {2:100,
-3:97.22222222222,
-4:91.66666666665999,
-5:83.33333333332999,
-6:72.22222222222999,
-7:58.33333333332999,
-8:41.66666666662999,
-9:27.777777777729995,
-10:16.666666666629993,
-11:8.333333333299993,
-12:2.7777777777399937,}
-STANDARD_NEGATE = [4, 6, 7, 9]
+STANDARD_NEGATE = [0, 0, 0, 0]
 
-def get_negate_adjustment(index, negate_dc):
-    return (100-AT_LEAST_ODDS[negate_dc])/100
-    
 
 def get_status_magnitude(status):
     if(not status): return 0
+    magnitude = 0
     split_status = status.split(' ')
     if len(split_status) == 1: 
-        return status_multipliers[split_status[0].strip()]
+        magnitude  = status_multipliers[split_status[0].strip()]
     elif len(split_status) == 2 and '[' in split_status[1]: 
         if('/' in split_status[0].strip()):
             status_options = split_status[0].strip().split('/')
-            return max(status_multipliers[status_options[0]], status_multipliers[status_options[1]])
-        return status_multipliers[split_status[0].strip()]
+            magnitude = max(status_multipliers[status_options[0]], status_multipliers[status_options[1]])
+        else:
+            magnitude = status_multipliers[split_status[0].strip()]
     elif len(split_status) == 2 : 
-        return status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
+        magnitude = status_multipliers[split_status[0].strip()] * int(split_status[1].strip())
     elif len(split_status) == 3: # I'm lazy
-        return status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
+        magnitude = status_multipliers[split_status[0].strip() ] * int(split_status[1].strip()) 
 
-def get_status_damage(status_string, negate_dc, index):
+    negate_dc = re.search(r"\[([^\]]+)\]", split_status[1])
+    if negate_dc:
+        if '/' in negate_dc.group(1):
+            negate = int(negate_dc.group(1).split('/')[1]) * stun_scale
+        else:
+            negate = int(negate_dc.group(1)) * stun_scale
+    else:
+        negate = 0
+
+    if negate == 0 or magnitude == 0:
+        return 0
+    return (negate + negate + magnitude) / 3  if negate < magnitude else (negate + magnitude)/2 
+    
+def get_status_damage(status_string,  index):
     # Split individual statuses out
     status_string = status_string.replace('_', '')
-
-    if not 'Reflex' in status_string and not 'Grit' in status_string and not 'Focus' in status_string:
-        multiplier = 1
-    else:
-        multiplier = get_negate_adjustment(index,negate_dc)
     
     statuses = status_string.split(', ')
 
@@ -96,13 +95,10 @@ def get_status_damage(status_string, negate_dc, index):
         if('Momentum' in status):
             # Gaining Momentum should be worth a little less; if gaining momentum if worth the same as spending, there's no escalation
             no_save_damage += int(status[1]) * momentum_value * 0.75
-        elif '/' in status and 'Grit' not in status:
-            status_options = status.split('/')
-            estimated_damage += max(get_status_magnitude(status_option.strip()) for status_option in status_options)
         else:
             estimated_damage += get_status_magnitude(status.strip())
 
-    return estimated_damage * multiplier + no_save_damage
+    return  estimated_damage
 
 def get_databases():
     # Open the appropriate database.
@@ -137,25 +133,45 @@ def find_attack(parent, name):
         raise Exception("Ability is not an attack.")
     return target
 
-def estimate_all_damage(database, threshold):
+def estimate_all_damage(threshold):
     invalid_attacks = {}
 
-    orphan_attacks = OrphanFinder.find_orphans(database + 's')
+    abilities = json.load(open('.\src\database\\abilities.json'))
+    traits = json.load(open('.\src\database\\traits.json'))
+    equipment = json.load(open('.\src\database\\items\\equipment.json'))
+    weapons = json.load(open('.\src\database\\items\\weapons.json'))
+    abilityPackages = json.load(open('.\src\database\\ability_packages.json'))
 
-    for el in data:
-        if el["name"] not in orphan_attacks:
-            if "chart" in el:
-                diff = estimate_damage(el, False, False)
-                if(abs(diff) > threshold):
-                    invalid_attacks[el["name"]] = diff
-            elif "analysis_notes" in el:
-                if "status" in el["analysis_notes"]:
+    for database in [abilityPackages, traits, equipment, weapons]:
+        for item in database:            
+            for el in item.get("abilities", []):
+                if el.get("type", "") == 'Attack':
+                    key = el["name"]+ "(" + item["name"] + ")"
+                    if  "chart" in el:
+                        diff = estimate_damage(el, False, False)
+                        if(abs(diff) > threshold):
+                            invalid_attacks[key] = diff
+                    elif "analysis_notes" in el:
+                        if "status" in el["analysis_notes"]:
+                            diff = estimate_damage(el, False, False)
+                            if(abs(diff) > threshold):
+                                invalid_attacks[key] = diff
+
+    for database in [abilities]:
+        for el in database:
+            if el.get("type", "") == 'Attack':
+                if "chart" in el:
                     diff = estimate_damage(el, False, False)
                     if(abs(diff) > threshold):
                         invalid_attacks[el["name"]] = diff
+                elif "analysis_notes" in el:
+                    if "status" in el["analysis_notes"]:
+                        diff = estimate_damage(el, False, False)
+                        if(abs(diff) > threshold):
+                            invalid_attacks[el["name"]] = diff
 
     for key in invalid_attacks:
-        print("    " + key + ": " + str(-invalid_attacks[key]))
+        print("    " + key + ": " + str(invalid_attacks[key]))
 
 
 def estimate_damage(attack, glancing, print_stats):
@@ -172,10 +188,7 @@ def estimate_damage(attack, glancing, print_stats):
     status_chart = ['']*4
     bonus_damage =  [0]*4
     expected_targets = 1
-    lvh = 'none'
-    attack_category = ATTACK
     override_range = ""
-    stun_scale = 0.75 # Guard is worth less (not sure how much)
 
     cost += int(attack.get("cost", "0")[0])
                     
@@ -196,10 +209,6 @@ def estimate_damage(attack, glancing, print_stats):
             status_chart = ['']*4
         else:
             status_chart = attack["chart"]["status"]
-        if not("negate" in attack["chart"]):
-            negate = STANDARD_NEGATE
-        else:
-            negate = attack["chart"]["negate"]
             
 
     if("analysis_notes" in attack):
@@ -262,7 +271,7 @@ def estimate_damage(attack, glancing, print_stats):
         damage += stun_chart[index] * stun_scale
         if(glancing): damage = math.ceil(damage/2.0)
         if(index < len(status_chart)):
-            damage += get_status_damage(status_chart[index], negate[index], index)
+            damage += get_status_damage(status_chart[index], index)
         damage += bonus_damage[index]
         if(roll_chart[index] != 0): 
             damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
@@ -306,7 +315,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if(args.analyze_all):
-        estimate_all_damage(args.type, args.threshold)
+        estimate_all_damage(args.threshold)
     else:        
         attack = find_attack(args.parent, args.name)
         estimate_damage(attack, args.glancing, True)

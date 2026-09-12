@@ -4,18 +4,18 @@ module.exports = {
       {
         test: /\.s(c|a)ss$/,
         use: [
-          "vue-style-loader",
-          "css-loader",
+          'vue-style-loader',
+          { loader: 'css-loader', options: { url: false } },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             // Requires sass-loader@^7.0.0
             options: {
-              implementation: require("sass"),
+              implementation: require('sass'),
               indentedSyntax: true, // optional
             },
             // Requires >= sass-loader@^8.0.0
             options: {
-              implementation: require("sass"),
+              implementation: require('sass'),
               sassOptions: {
                 indentedSyntax: true, // optional
               },
@@ -25,4 +25,4 @@ module.exports = {
       },
     ],
   },
-};
+}

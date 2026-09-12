@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Ability, Equipment } from '@/class'
+import { Equipment, ColorMap } from '@/class'
 
 class Armor extends Equipment {
   private stun_: number
@@ -54,17 +54,23 @@ class Armor extends Equipment {
   get HasBlock() {
     return this.block_ > 0
   }
+  get HasGuard() {
+    return this.Guard > 0
+  }
   get HasSlots() {
     return this.consumable_slots_ > 0
   }
-  get ArmorHeader() {
-    return '**_Block_:** ' + this.block_
+  get ArmorSummary() {
+    return '**_Block_:** ' + this.block_ + '; **_Guard_:** ' + this.Guard
   }
   get HasTraits() {
     return this.traits_.length > 0
   }
   get TraitsHeader() {
     return '**Traits:** _' + this.traits_.join('_, _') + '_'
+  }
+  public get Color() {
+    return ColorMap.get('Armor')
   }
   // ==========================================================
   // SERIALIZATION

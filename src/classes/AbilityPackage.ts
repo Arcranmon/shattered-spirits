@@ -1,10 +1,10 @@
 import { store } from '@/store'
-import { Base, Chart, Ability } from '@/class'
+import { Base, ColorMap, Ability, Stance } from '@/class'
 
 // Used for Arts, Spirit Traits, and Careers
 class AbilityPackage extends Base {
   protected abilities_: Ability[] = []
-  protected prereqs_: string
+  protected stances_: Stance[] = []
   protected cost_: string
 
   // ==========================================================
@@ -12,6 +12,9 @@ class AbilityPackage extends Base {
   // ==========================================================
   get Abilities() {
     return this.abilities_
+  }
+  get Stances() {
+    return this.stances_
   }
   public get HasPrereqs() {
     return this.prereqs_ != ''
@@ -31,11 +34,18 @@ class AbilityPackage extends Base {
   public get Header() {
     return this.Name + ' - ' + this.Category + ' ' + this.type_
   }
+  public get NamelessHeader() {
+    return this.Category + ' ' + this.type_
+  }
   public get HasIcon() {
     return this.Category != 'Trait'
   }
   public get Icon() {
     return require('@/assets/disciplines/' + this.Category + '.svg')
+  }
+  public get Color() {
+    if (this.Category == 'Archetype') return ColorMap.get('Archetype')
+    return super.Color
   }
 
   // ==========================================================
@@ -58,7 +68,11 @@ class AbilityPackage extends Base {
         }
       }
     }
-    this.prereqs_ = data.prereqs || ''
+    if (data.stances) {
+      for (var stance of data.stances) {
+        this.stances_.push(Stance.Deserialize(stance))
+      }
+    }
     this.cost_ = data.cost || ''
   }
 }

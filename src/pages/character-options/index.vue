@@ -67,6 +67,8 @@
             </v-tab>
             <v-tab> <h4>Reactions</h4> </v-tab>
             <v-tab> <h4>Stances</h4> </v-tab>
+            <v-tab> <h4>Travel</h4> </v-tab>
+            <v-tab> <h4>Camp</h4> </v-tab>
           </v-tabs>
           <v-tabs-items
             v-model="abilityTab"
@@ -95,8 +97,19 @@
               <show-cards
                 :inputs="basic_stances"
                 :collapse="false"
-                :cols="1" />
-            </v-tab-item>
+                :cols="1"
+            /></v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Travel"
+                :character="character"
+                :basic="true"
+            /></v-tab-item>
+            <v-tab-item>
+              <ability-tab
+                abilityType="Camp"
+                :character="character"
+            /></v-tab-item>
           </v-tabs-items>
         </div>
         <div
@@ -109,7 +122,16 @@
             :cols="1" />
         </div>
 
-        <div v-if="$route.params.tab == 'disciplines'"><elemental-disciplines /></div>
+        <div v-if="$route.params.tab == 'spirit-disciplines'"><elemental-disciplines /></div>
+        <div
+          class="character-tab-content"
+          style="border-top: 2px solid black"
+          v-if="$route.params.tab == 'martial-disciplines'">
+          <show-cards
+            :inputs="martial_disciplines"
+            :collapse="false"
+            :cols="1" />
+        </div>
         <div v-if="$route.params.tab == 'spirit-arts'"><elemental-arts /></div>
         <div
           class="character-tab-content"
@@ -119,92 +141,6 @@
             :inputs="careers"
             :collapse="false"
             :cols="1" />
-        </div>
-
-        <div v-if="$route.params.tab == 'armor-and-clothing'">
-          <v-row
-            class="select-bar"
-            align="center">
-            <v-col
-              cols="12"
-              style="padding-left: 3em; padding-right: 3em">
-              <v-select
-                v-model="selectedArmors"
-                :items="armorCategories"
-                attach
-                label="Armor Categories"
-                multiple
-                filled
-                background-color="#dbd9d9e3" />
-            </v-col>
-          </v-row>
-          <div
-            class="character-tab-content"
-            style="border-top: 2px solid black">
-            <show-cards
-              :inputs="armors"
-              :collapse="false"
-              :cols="1" />
-          </div>
-        </div>
-        <div v-if="$route.params.tab == 'weapons-and-shields'">
-          <v-row
-            dark
-            align="center"
-            class="select-bar">
-            <v-col
-              cols="6"
-              style="padding-left: 3em">
-              <v-select
-                light
-                v-model="selectedWeapons"
-                :items="weaponCategories"
-                attach
-                label="Weapon Categories"
-                multiple
-                background-color="#dbd9d9e3"
-                filled>
-                <template v-slot:prepend-item>
-                  <v-list-item
-                    ripple
-                    @mousedown.prevent>
-                    <v-list-item-content>
-                      <v-list-item-title> Select All </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                  <v-divider class="mt-2"> </v-divider>
-                </template>
-                <template v-slot:selection="{ item, index }">
-                  <span v-if="index === 0">{{ item }} </span>&nbsp;
-                  <span
-                    v-if="index === 1"
-                    class="black--text text-caption">
-                    (+{{ selectedWeapons.length - 1 }} others)
-                  </span>
-                </template>
-              </v-select>
-            </v-col>
-            <v-col
-              cols="6"
-              style="padding-right: 3em">
-              <v-select
-                v-model="selectedType"
-                :items="weaponTypes"
-                attach
-                label="Weapon Type"
-                filled
-                background-color="#dbd9d9e3">
-              </v-select>
-            </v-col>
-          </v-row>
-          <div
-            class="character-tab-content"
-            style="border-top: 2px solid black">
-            <show-cards
-              :inputs="weapons"
-              :collapse="false"
-              :cols="1" />
-          </div>
         </div>
         <spirit-abilities v-if="$route.params.tab == 'spirit-customization'" />
         <div v-if="$route.params.tab == 'consumables'">
@@ -231,107 +167,6 @@
               :cols="1" />
           </div>
         </div>
-        <div v-if="$route.params.tab == 'travel-items'">
-          <v-row
-            class="select-bar"
-            align="center">
-            <v-col
-              cols="12"
-              style="padding-left: 3em; padding-right: 3em">
-              <v-select
-                v-model="selectedTravelItems"
-                :items="travelItemCategories"
-                attach
-                label="Equipment Categories"
-                multiple
-                filled
-                background-color="#dbd9d9e3" />
-            </v-col>
-          </v-row>
-          <div class="character-tab-content">
-            <show-cards
-              :inputs="travelItems"
-              :collapse="false"
-              :cols="1" />
-          </div>
-        </div>
-        <div v-if="$route.params.tab == 'equipment'">
-          <v-row
-            class="select-bar"
-            align="center">
-            <v-col
-              cols="12"
-              style="padding-left: 3em; padding-right: 3em">
-              <v-select
-                v-model="selectedEquipment"
-                :items="equipmentCategories"
-                attach
-                label="Equipment Categories"
-                multiple
-                filled
-                background-color="#dbd9d9e3" />
-            </v-col>
-          </v-row>
-          <div class="character-tab-content">
-            <show-cards
-              :inputs="equipment"
-              :collapse="false"
-              :cols="1" />
-          </div>
-        </div>
-        <div v-if="$route.params.tab == 'resources'">
-          <v-row
-            class="select-bar"
-            align="center">
-            <v-col
-              cols="12"
-              style="padding-left: 3em; padding-right: 3em">
-              <v-select
-                v-model="selectedResources"
-                :items="resourcesCategories"
-                attach
-                label="Equipment Categories"
-                multiple
-                filled
-                background-color="#dbd9d9e3" />
-            </v-col>
-          </v-row>
-          <div class="character-tab-content">
-            <show-cards
-              :inputs="resources"
-              :collapse="false"
-              :cols="1" />
-          </div>
-        </div>
-        <div
-          v-if="$route.params.tab == 'sample-characters'"
-          style="margin-left: 1em; margin-right: 1em">
-          <div
-            v-for="character in characters"
-            :key="character.Name">
-            <display-tooltip-text :string="character[0]" />
-            <v-expansion-panels
-              v-if="!showChart"
-              class="condensed"
-              flat
-              tile
-              accordion
-              style="width: 100%">
-              <v-expansion-panel>
-                <v-expansion-panel-header
-                  class="expand--header-chart"
-                  style="background-color: #85704c !important; background-image: none">
-                  <h4>Show Character</h4>
-                </v-expansion-panel-header>
-                <v-expansion-panel-content
-                  class="expand--body-chart"
-                  style="margin: 0 !important; padding-bottom: 0 !important">
-                  <show-character :character="character[1]" />
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels>
-          </div>
-        </div>
       </v-col>
     </v-row>
   </div>
@@ -345,65 +180,16 @@ import ShowCards from '@/components/cards/ShowCards.vue'
 import AbilityWidget from '@/components/AbilityWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
-import ShowCharacter from '@/components/ShowCharacter.vue'
 import ElementalDisciplines from '@/components/ElementalDisciplines.vue'
 import ElementalArts from '@/components/ElementalArts.vue'
-import BlaineText from '@/database/text_files/sample_characters/blaine.txt'
-import BlaineStats from '@/database/sample_characters/blaine.json'
-import JohnText from '@/database/text_files/sample_characters/john.txt'
-import JohnStats from '@/database/sample_characters/john.json'
-import MargaretText from '@/database/text_files/sample_characters/margaret.txt'
-import MargaretStats from '@/database/sample_characters/margaret.json'
-import MarlonText from '@/database/text_files/sample_characters/marlon.txt'
-import MarlonStats from '@/database/sample_characters/marlon.json'
-import ErikaText from '@/database/text_files/sample_characters/erika.txt'
-import ErikaStats from '@/database/sample_characters/erika.json'
-import WinonaText from '@/database/text_files/sample_characters/winona.txt'
-import WinonaStats from '@/database/sample_characters/winona.json'
 
 export default Vue.extend({
   name: 'character-options',
-  components: { AbilityTab, CustomButton, ShowCards, ShowCharacter, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
+  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
   data() {
     return {
       selectedTab: 'basic-skills',
-      tabs: [
-        'basic-skills',
-        'archetypes',
-        'disciplines',
-        'spirit-arts',
-        'careers',
-        'spirit-customization',
-        'armor-and-clothing',
-        'weapons-and-shields',
-        'consumables',
-        'travel-items',
-        'equipment',
-        'resources',
-        'sample-characters',
-      ],
-      characters: [
-        [BlaineText, Character.Deserialize(BlaineStats)],
-        [ErikaText, Character.Deserialize(ErikaStats)],
-        [JohnText, Character.Deserialize(JohnStats)],
-        [MargaretText, Character.Deserialize(MargaretStats)],
-        [MarlonText, Character.Deserialize(MarlonStats)],
-        [WinonaText, Character.Deserialize(WinonaStats)],
-      ],
-      armorCategories: ['Armor', 'Clothing', 'Helmet', 'Boot', 'Cloak'],
-      selectedArmors: ['Armor', 'Clothing', 'Helmet', 'Boot', 'Cloak'],
-      weaponCategories: ['Blade', 'Lance', 'Axe', 'Blunt', 'Staff', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
-      selectedWeapons: ['Blade', 'Lance', 'Axe', 'Blunt', 'Staff', 'Throwing', 'Bow', 'Rod', 'Sling', 'Shield', 'Improvised'],
-      consumableCategories: ['Grenade', 'Poison', 'Potion'],
-      selectedConsumables: ['Grenade', 'Poison', 'Potion'],
-      travelItemCategories: ['Food', 'Luxury', 'Medicine', 'Camp Item'],
-      selectedTravelItems: ['Food', 'Luxury', 'Medicine', 'Camp Item'],
-      equipmentCategories: ['Accessory', 'Supply', 'Tool', 'Trinket'],
-      selectedEquipment: ['Accessory', 'Supply', 'Tool', 'Trinket'],
-      resourcesCategories: ['Herb', 'Essence'],
-      selectedResources: ['Herb', 'Essence'],
-      weaponTypes: ['Any', 'Light', 'Balanced', 'Heavy'],
-      selectedType: 'Any',
+      tabs: ['basic-skills', 'archetypes', 'spirit-disciplines', 'martial-disciplines', 'careers', 'spirit-customization'],
       abilityTab: 0,
       character: new Character(),
     }
@@ -413,6 +199,13 @@ export default Vue.extend({
       if (this.isMobile) return 1
       return 2
     },
+    martial_disciplines: function () {
+      var martialDiscs = this.$store.getters.getDisciplinesByType('Defender')
+      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Supporter'))
+      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Striker'))
+      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Artillery'))
+      return martialDiscs.sort((a, b) => a.Name.localeCompare(b.Name))
+    },
     arts: function () {
       return this.$store.getters.getArts().sort((a, b) => a.Name.localeCompare(b.Name))
     },
@@ -421,24 +214,6 @@ export default Vue.extend({
     },
     careers: function () {
       return this.$store.getters.getCareers().sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    armors: function () {
-      return this.$store.getters.getFilteredArmors(this.selectedArmors).sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    weapons: function () {
-      return this.$store.getters.getFilteredWeapons(this.selectedWeapons, 'Any').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    consumables: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedConsumables).sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    travelItems: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedTravelItems).sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    equipment: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedEquipment).sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    resources: function () {
-      return this.$store.getters.getFilteredEquipments(this.selectedResources).sort((a, b) => a.Name.localeCompare(b.Name))
     },
     basic_stances() {
       return this.$store.getters.getStancesFromList(this.$store.getters.basicStances).sort((a, b) => a.Name.localeCompare(b.Name))

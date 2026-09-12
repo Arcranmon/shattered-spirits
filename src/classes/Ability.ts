@@ -2,7 +2,7 @@
 // Parent category for techniques/maneuvers.
 
 import { store } from '@/store'
-import { Base, AbilityPackage, Bonuses } from '@/class'
+import { Base, AbilityPackage, Bonuses, ColorMap } from '@/class'
 import { isUndefined } from 'vue-simple'
 
 class Ability extends Base {
@@ -10,16 +10,14 @@ class Ability extends Base {
   protected area_: string
   protected frequency_: string
   protected defend_: string
-  protected enhancements_: IEnhanceData[]
+  protected enhancements_: IEnhancementData
   protected imbues_: IEnhanceData[]
   protected cost_: string
-  protected category_: string
   protected speed_: number
   protected range_: string
   protected reqs_: string
   protected target_: string
   protected phase_: number
-  protected type_: string
   protected trigger_: string
   protected origin_: AbilityPackage
   protected bonuses_: Bonuses
@@ -29,7 +27,7 @@ class Ability extends Base {
   public constructor(name) {
     super(name)
     this.area_ = ''
-    this.enhancements_ = []
+    this.enhancements_ = null
     this.cost_ = ''
     this.desc_ = ''
     this.effect_ = ''
@@ -47,15 +45,7 @@ class Ability extends Base {
   // ==========================================================
   // This is an approximation, definitely not perfect
   public get TextLength() {
-    return (
-      this.Effect.length +
-      this.Special.length +
-      this.Trigger.length +
-      this.Enhancements.length +
-      this.Cost.length +
-      this.Range.length +
-      (this.HasChart ? 500 : 0)
-    )
+    return this.Effect.length + this.Special.length + this.Trigger.length + this.Cost.length + this.Range.length + (this.HasChart ? 500 : 0)
   }
 
   public get Area() {
@@ -78,6 +68,14 @@ class Ability extends Base {
     }
     return header
   }
+  public get NamelessHeader() {
+    var header = ''
+    if (this.HasPhase) header += 'Phase ' + this.phase_ + ' '
+    if (this.Type != 'Skill') {
+      header += this.category_ + ' ' + this.type_
+    }
+    return header
+  }
   public get PhaseHeader() {
     return '**Phase ' + this.phase_ + '**'
   }
@@ -90,9 +88,6 @@ class Ability extends Base {
   }
   public get SpeedCost() {
     return this.CostForString('Speed')
-  }
-  public get PostureCost() {
-    return this.CostForString('Posture')
   }
   public get EssenceCost() {
     return this.CostForString('Essence')
@@ -110,6 +105,7 @@ class Ability extends Base {
     var special = this.Cost.includes('Special') || this.Cost.includes('Stance')
 
     for (var cost_string of this.Cost.split(',')) {
+      cost_string = cost_string.trim()
       if (cost_string.includes(costString)) {
         cost += Number(cost_string[0])
         if (cost_string.includes('/')) special = true
@@ -130,6 +126,9 @@ class Ability extends Base {
   public get Type() {
     return this.type_
   }
+  public get HasOrigin() {
+    return !(this.origin_ == null)
+  }
   public get Origin() {
     return this.origin_
   }
@@ -137,12 +136,32 @@ class Ability extends Base {
     this.origin_ = origin
   }
   public get Icon() {
+    if (this.Category == 'Travel' && this.Type == 'Action' && this.Cost.includes('[+]')) return require('@/assets/Augment.svg')
+    if (this.Category == 'Travel' && this.Type == 'Action' && this.Cost.includes('[-]')) return require('@/assets/Danger.svg')
+    if (this.Category == 'Travel' && this.Type == 'Action') return require('@/assets/Neutral.svg')
+    if (this.name_ === 'Minor Flamecraft') return require('@/assets/disciplines/Flame.svg')
+    if (this.name_ === 'Minor Earthcraft') return require('@/assets/disciplines/Earth.svg')
+    if (this.name_ === 'Minor Metalcraft') return require('@/assets/disciplines/Metal.svg')
+    if (this.name_ === 'Minor Windcraft') return require('@/assets/disciplines/Wind.svg')
+    if (this.name_ === 'Minor Watercraft') return require('@/assets/disciplines/Water.svg')
+    if (this.name_ === 'Minor Woodcraft') return require('@/assets/disciplines/Wood.svg')
     if (this.category_ === 'Defensive') return require('@/assets/Defensive.svg')
     if (this.category_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
     if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
     if (this.category_ === 'Recovery') return require('@/assets/Recovery.svg')
     if (this.type_ === 'Power' || this.type_ == 'Boon' || this.type_ == 'Talent') return require('@/assets/disciplines/' + this.Category + '.svg')
     return require('@/assets/General.svg')
+  }
+
+  public get Color() {
+    var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
+    if (overrideColors.includes(this.Category)) {
+      return ColorMap[this.Category]
+    }
+    if (this.Category == 'Bold') return ColorMap.get('Augment')
+    if (this.Category == 'Cautious') return ColorMap.get('Danger')
+    if (this.Category == 'Neutral' || this.Type == 'Camp Action') return ColorMap.get('Neutral')
+    return super.Color
   }
 
   // ==========================================================
@@ -159,15 +178,56 @@ class Ability extends Base {
     return this.enhancements_
   }
   public get HasEnhancements() {
-    return this.enhancements_.length > 0
+    return !(this.enhancements_ == null)
   }
   public get EnhancementsHeader() {
-    var text = '**_Enhancements_:** '
+    var text = '**_Enhancements_:** ' + (this.enhancements_.header == undefined ? 'Choose any.' : this.enhancements_.header)
     var reactiveString = ' _[R]_'
-    for (var enhance of this.enhancements_) {
-      text += '\n * **' + enhance.name + (enhance.reactive ? reactiveString : '') + ' - ' + enhance.cost + ':** ' + enhance.effect
+    var exclusiveString = ' _[E]_'
+    for (var enhance of this.enhancements_.enhances) {
+      text +=
+        '\n * **' +
+        enhance.name +
+        (enhance.reactive ? reactiveString : '') +
+        (enhance.exclusive ? exclusiveString : '') +
+        '—' +
+        enhance.cost +
+        ':** ' +
+        enhance.effect
     }
     return text
+  }
+  public get EnhancementsByHeader() {
+    const groupedByRole = Map.groupBy(this.enhancements_.enhances, (key) => key.cost)
+    var reactiveString = ' _[R]_'
+    var exclusiveString = ' _[E]_'
+    var headersAndEffects = new Map<string, string[]>()
+    for (var [key, enhances] of groupedByRole) {
+      var text = []
+      for (var enhance of enhances) {
+        text.push('**' + enhance.name + '**' + (enhance.reactive ? reactiveString : '') + (enhance.exclusive ? exclusiveString : '') + ': ' + enhance.effect)
+      }
+      if (key == 'None') key = 'No Cost'
+      headersAndEffects.set(key + ' Enhancements', text)
+    }
+    headersAndEffects = new Map([...headersAndEffects.entries()].sort((a, b) => (a[0] == 'None' ? -1 : b[0] == 'None' ? 1 : a[0].localeCompare(b[0]))))
+    return headersAndEffects
+  }
+  public get ImbuesByHeader() {
+    const groupedByRole = Map.groupBy(this.imbues_, (key) => key.cost)
+    var reactiveString = ' _[R]_'
+    var exclusiveString = ' _[E]_'
+    var headersAndEffects = new Map<string, string[]>()
+    for (var [key, enhances] of groupedByRole) {
+      var text = []
+      for (var enhance of enhances) {
+        text.push('**' + enhance.name + '**' + (enhance.reactive ? reactiveString : '') + (enhance.exclusive ? exclusiveString : '') + ': ' + enhance.effect)
+      }
+      if (key == 'None') key = 'No Cost'
+      headersAndEffects.set(key + ' Imbues', text)
+    }
+    headersAndEffects = new Map([...headersAndEffects.entries()].sort((a, b) => (a[0] == 'None' ? -1 : b[0] == 'None' ? 1 : a[0].localeCompare(b[0]))))
+    return headersAndEffects
   }
   public get HasImbues() {
     return this.imbues_.length > 0
@@ -199,6 +259,16 @@ class Ability extends Base {
   }
   public get From() {
     if (this.origin_) return this.origin_.Name
+    return '-'
+  }
+  public get FromPlace() {
+    var count
+    var place
+    if (this.origin_) {
+      count = this.origin_.Abilities.length
+      place = this.origin_.Abilities.findIndex((x) => x.Name == this.Name)
+      return 1 + place + '/' + count
+    }
     return '-'
   }
   public get Frequency() {
@@ -244,8 +314,31 @@ class Ability extends Base {
     // if (this.HasTarget) header += ', ' + this.target_
     return header
   }
+  get RangeTargetSummary() {
+    var summary = ''
+    if (this.HasRange) summary += '_' + this.range_.replaceAll('/', '_/_').replaceAll('-', '_-_') + '_'
+    if (this.HasRange && this.HasTarget) summary += ', '
+    if (this.HasTarget) summary += this.Target
+    return summary
+  }
+  get MaterialDamageSummary() {
+    var summary = ''
+    var hasMaterial = this.material_.length > 0
+    var hasDamageType = this.damage_type_.length > 0
+    if (hasMaterial) {
+      summary += this.material_
+    }
+    if (hasMaterial && hasDamageType) summary += ', '
+    if (hasDamageType) {
+      summary += this.damage_type_
+    }
+    return summary
+  }
   public get HasMissile() {
     return this.missile_.length > 0
+  }
+  public get Missile() {
+    return this.missile_
   }
   public get MissileHeader() {
     return '**Missile:** ' + this.missile_
@@ -258,6 +351,9 @@ class Ability extends Base {
   }
   public get HasTarget() {
     return this.target_.length > 0
+  }
+  public get Target() {
+    return this.target_
   }
   public get TargetHeader() {
     return '**Target:** ' + this.target_
@@ -292,12 +388,10 @@ class Ability extends Base {
     this.setBaseData(data)
     this.missile_ = data.missile || ''
     this.area_ = data.area || ''
-    this.enhancements_ = data.enhancements || []
+    this.enhancements_ = data.enhancements || null
     this.imbues_ = data.imbues || []
     this.defend_ = data.defend || ''
     this.cost_ = data.cost || ''
-    this.category_ = data.category || ''
-    this.type_ = data.type || 'MISSING'
     this.speed_ = data.speed || 0
     this.frequency_ = data.frequency || ''
     this.reqs_ = data.reqs || ''
