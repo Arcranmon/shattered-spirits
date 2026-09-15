@@ -18,14 +18,14 @@ import SpiritTypeJson from '@/database/spirit_types.json'
 import NPCs from '@/database/npcs/npcs.json'
 
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators'
-import { AbilityPackage, Armor, Equipment, Event, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
+import { AbilityPackage, Armor, Base, Equipment, Event, GlossaryItem, Npc, SpiritForm, Subtype, Stance, Status, Terrain, Trait, Weapon, Ability } from '@/class'
 import { Dictionary } from 'vue-router/types/router'
 
-let spiritTypes: Array<string> = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
+let spiritTypes: string[] = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
 
-let skillTypes: Array<string> = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
+let skillTypes: string[] = ['Armor', 'Weapon', 'Martial Form', 'Stratagem']
 
-let AllGlossaryItems: Array<Array<IGlossaryData>> = [Glossary]
+let AllGlossaryItems = [Glossary]
 
 const kPlayerAbilities = [
   'Gain Advantage',
@@ -59,6 +59,10 @@ const kPlayerAbilities = [
   'Rest',
   'Connect',
   'Patch',
+  'Cook',
+  'Explore',
+  'Mend',
+  'Pamper',
 ]
 
 const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Drop', 'Equip', 'Flank', 'Delay']
@@ -104,7 +108,7 @@ export class DatabaseJsonStore extends VuexModule {
     this.Everything.sort((a, b) => a.Name.localeCompare(b.Name))
   }
 
-  private Everything: Array<any> = []
+  private Everything = []
   private GlossaryItems: GlossaryItem[] = []
   private Armors: Armor[] = []
   private Weapons: Weapon[] = []
@@ -161,9 +165,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFromEverythingFromList(): any {
-    return (ability_list: Array<any>) => {
+    return (ability_list: string[]) => {
       if (ability_list == undefined) return []
-      let abilities: Array<Ability> = []
+      let abilities = []
       for (var ability of ability_list) {
         abilities.push(this.getFromEverything(ability))
       }
@@ -198,9 +202,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getAbilitiesFromList(): any {
-    return (ability_list: Array<any>) => {
+    return (ability_list: string[]) => {
       if (ability_list == undefined) return []
-      let abilities: Array<Ability> = []
+      let abilities = []
       for (var ability of ability_list) {
         abilities.push(this.getAbility(ability))
       }
@@ -232,9 +236,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getAPsFromList(): any {
-    return (ap_list: Array<any>) => {
+    return (ap_list: string[]) => {
       if (ap_list == undefined) return []
-      let aps: Array<AbilityPackage> = []
+      let aps = []
       for (var ap of ap_list) {
         aps.push(this.getAP(ap))
       }
@@ -243,9 +247,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getAPsFromListPreserveType(): any {
-    return (ap_list: Array<any>) => {
+    return (ap_list: string[]) => {
       if (ap_list == undefined) return []
-      let aps: Array<any> = []
+      let aps = []
       for (var ap of ap_list) {
         if (this.isTrait(ap)) {
           aps.push(this.getTrait(ap))
@@ -311,9 +315,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getTraitsFromList(): any {
-    return (trait_list: Array<any>) => {
+    return (trait_list: string[]) => {
       if (trait_list == undefined) return []
-      let traits: Array<Trait> = []
+      let traits = []
       for (var trait of trait_list) {
         traits.push(this.getTrait(trait))
       }
@@ -323,7 +327,7 @@ export class DatabaseJsonStore extends VuexModule {
 
   get getSpiritTraitsByTagAndCost(): any {
     return (tag: string, cost: string) => {
-      return <Array<Trait>>this.Traits.filter((x) => x.Type.trim() === 'Spirit Trait' && x.Category == tag.trim() && x.CostHeader.includes(cost.trim()))
+      return this.Traits.filter((x) => x.Type.trim() === 'Spirit Trait' && x.Category == tag.trim() && x.CostHeader.includes(cost.trim()))
     }
   }
 
@@ -342,9 +346,9 @@ export class DatabaseJsonStore extends VuexModule {
   // EQUIPMENT GETTERS
   // ==========================================================
   get getAnyEquipmentFromList(): any {
-    return (equipment_list: Array<any>) => {
+    return (equipment_list: string[]) => {
       if (equipment_list == undefined) return []
-      let equipment: Array<any> = []
+      let equipment = []
       for (var item of equipment_list) {
         if (this.isWeapon(item)) {
           equipment.push(this.getWeapon(item))
@@ -390,7 +394,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFilteredArmors(): any {
-    return (categories: Array<string>) => {
+    return (categories: string[]) => {
       return this.Armors.filter((x) => categories.includes(x.Category.trim())).map((x) => x)
     }
   }
@@ -402,9 +406,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getArmorFromList(): any {
-    return (armor_list: Array<any>) => {
+    return (armor_list: string[]) => {
       if (armor_list == undefined) return []
-      let armors: Array<Armor> = []
+      let armors = []
       for (var armor of armor_list) {
         armors.push(this.getArmor(armor))
       }
@@ -450,9 +454,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getWeaponsFromList(): any {
-    return (weapon_list: Array<any>) => {
+    return (weapon_list: string[]) => {
       if (weapon_list == undefined) return []
-      let weapons: Array<Weapon> = []
+      let weapons = []
       for (var weapon of weapon_list) {
         weapons.push(this.getWeapon(weapon))
       }
@@ -467,7 +471,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFilteredWeapons(): any {
-    return (categories: Array<string>, type: string) => {
+    return (categories: string[], type: string) => {
       return this.Weapons.filter((x) => x.Abilities.length > 0 && categories.includes(x.Category.trim()))
     }
   }
@@ -484,9 +488,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getStancesFromList(): any {
-    return (stance_list: Array<string>) => {
+    return (stance_list: string[]) => {
       if (stance_list == undefined) return []
-      let stances: Array<Stance> = []
+      let stances = []
       for (var stance of stance_list) {
         var temp = this.getStance(stance)
         if (temp != undefined) stances.push(temp)
@@ -523,15 +527,15 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFilteredEquipments(): any {
-    return (categories: Array<string>) => {
+    return (categories: string[]) => {
       return this.Equipments.filter((x) => categories.length == 0 || categories.includes(x.Category.trim()))
     }
   }
 
   get getEquipmentFromList(): any {
-    return (equipment_list: Array<any>) => {
+    return (equipment_list: string[]) => {
       if (equipment_list == undefined) return []
-      let equipments: Array<Equipment> = []
+      let equipments: string[] = []
       for (var equipment of equipment_list) {
         equipments.push(this.getEquipment(equipment))
       }
@@ -576,9 +580,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getStatusesFromList(): any {
-    return (status_list: Array<string>) => {
+    return (status_list: string[]) => {
       if (status_list == undefined) return []
-      let statuses: Array<Status> = []
+      let statuses = []
       for (var status of status_list) {
         var temp = this.getStatus(status)
         if (temp != undefined) statuses.push(temp)
@@ -606,7 +610,7 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getFilteredStatuses(): any {
-    return (types: Array<string>) => {
+    return (types: string[]) => {
       return StatusJson.filter((x) => !x.hasOwnProperty('see') && types.includes(x.type.trim())).map((x) => Status.Deserialize(<IStatusData>x))
     }
   }
@@ -615,13 +619,13 @@ export class DatabaseJsonStore extends VuexModule {
   // BASIC GLOSSARY TOOLS
   // ==========================================================
   get glossaryHasItem(): any {
-    return (source: Array<IGlossaryData>, inword: string) => {
+    return (source: IGlossaryData[], inword: string) => {
       return source.some((x) => x.name === inword)
     }
   }
 
   get getGlossaryItemFromJson(): any {
-    return (source: Array<IGlossaryData>, inword: string) => {
+    return (source: IGlossaryData[], inword: string) => {
       var name = source.find((x) => x.name.trim() === inword.trim())
       if (name == undefined) return undefined
       if (name.hasOwnProperty('see')) return this.getGlossaryItemFromJson(source, name.see)
@@ -704,9 +708,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getSpiritFormsFromList(): any {
-    return (spirit_forms: Array<string>) => {
+    return (spirit_forms: string[]) => {
       if (spirit_forms == undefined) return []
-      let forms: Array<SpiritForm> = []
+      let forms = []
       for (var form of spirit_forms) {
         forms.push(this.getSpiritForm(form))
       }
@@ -725,9 +729,9 @@ export class DatabaseJsonStore extends VuexModule {
   }
 
   get getSpiritTraitsFromList(): any {
-    return (spirit_traits: Array<string>) => {
+    return (spirit_traits: string[]) => {
       if (spirit_traits == undefined) return []
-      let traits: Array<Trait> = []
+      let traits = []
       for (var trait of spirit_traits) {
         traits.push(this.getSpiritTrait(trait))
       }

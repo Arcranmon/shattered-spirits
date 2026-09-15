@@ -28,30 +28,29 @@ export default Vue.extend({
   data() {
     return {
       greenvaleForage: [
-        ['2', 'You find nothing of use.'],
-        ['3-5', 'You find _Supplies_.'],
-        ['6-8', 'You find 2 _Supplies_.'],
-        ['9-11', 'You find 3 _Supplies_.'],
-        ['12', 'You find either 4 _Supplies_.'],
+        ['2-5', 'You find nothing of use.'],
+        ['6-9', 'You find _Supplies_.'],
+        ['10-11', 'You find 2 _Supplies_.'],
+        ['12', 'You find 3 _Supplies_.'],
       ],
       greenvaleHunting: [
         ['2-3', "You accidentally stumble in a dangerous, territorial spirit's territory and will need to find your way out of this situation."],
-        ['4-5', 'You find nothing, although you do not put yourself in danger either.'],
-        ['6-7', 'You find small game; if somebody cooks, two characters may have a _Basic Meal_. Additionally, gain a small animal pelt (1 _Load_ _Trophy_).'],
+        ['4-7', 'You find nothing, although you do not put yourself in danger either.'],
+        ['8-10', 'You find small game; if somebody cooks, two characters may have a _Basic Meal_. Additionally, gain a small animal pelt (1 _Load_ _Trophy_).'],
         [
-          '8-10',
+          '11',
           'You find some large birds and are very successful; if somebody cooks, four characters may have a _Basic Meal_. Additionally, gain some high quality feathers (1 _Load_ _Trophy_).',
         ],
         [
-          '11-12',
+          '12',
           'You find large game; if somebody cooks, up to 10 characters may have a _Good Meal_. Additionally, gain a large animal pelt (1 _Load_ _Trophy_) and some other appropriate trophy, such as antlers (2 _Load_ _Trophy_).',
         ],
       ],
       greenvaleFishing: [
-        ['2', 'You catch nothing.'],
-        ['3-4', 'You catch a small, boney fish; if somebody cooks, a single character can have a _Poor Meal_.'],
-        ['5-6', 'You catch a small fish; ; if somebody cooks, a single character can have a _Basic Meal_.'],
-        ['7-10', 'You catch some small fish; if somebody cooks, two characters can have a _Basic Meal_.'],
+        ['2-4', 'You catch nothing.'],
+        ['5-6', 'You catch a small, boney fish; if somebody cooks, a single character can have a _Poor Meal_.'],
+        ['7-8', 'You catch a small fish; ; if somebody cooks, a single character can have a _Basic Meal_.'],
+        ['9-10', 'You catch some small fish; if somebody cooks, two characters can have a _Basic Meal_.'],
         ['11-12', 'You catch a large fish; if somebody cooks, three characters can have a _Good Meal_.'],
       ],
     }

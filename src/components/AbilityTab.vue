@@ -46,6 +46,7 @@ export default Vue.extend({
     },
     basic: {
       required: false,
+      default: false,
     },
     spirit: {
       required: false,
@@ -65,7 +66,7 @@ export default Vue.extend({
       }
     },
     abilities() {
-      if (this.abilityType == 'Skill' || 'Camp' || 'Travel') {
+      if (this.abilityType == 'Skill' || this.abilityType == 'Camp' || this.abilityType == 'Travel') {
         var categories = [this.abilityType]
         if (this.spirit) {
           var skills = this.character.Spirit.FilteredAbilities('Talent', categories, 'All')
