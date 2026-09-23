@@ -149,14 +149,15 @@ class Ability extends Base {
     if (this.category_ === 'Offensive' || this.type_ === 'Attack') return require('@/assets/Offensive.svg')
     if (this.category_ === 'Mobility') return require('@/assets/Move.svg')
     if (this.category_ === 'Recovery') return require('@/assets/Recovery.svg')
-    if (this.type_ === 'Power' || this.type_ == 'Boon' || this.type_ == 'Talent') return require('@/assets/disciplines/' + this.Category + '.svg')
+    if (this.type_ === 'Action' || this.type_ === 'Power' || this.type_ == 'Boon' || this.type_ == 'Talent')
+      return require('@/assets/disciplines/' + this.Category + '.svg')
     return require('@/assets/General.svg')
   }
 
   public get Color() {
     var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
     if (overrideColors.includes(this.Category)) {
-      return ColorMap[this.Category]
+      return ColorMap.get(this.Category)
     }
     if (this.Category == 'Bold') return ColorMap.get('Augment')
     if (this.Category == 'Cautious') return ColorMap.get('Danger')

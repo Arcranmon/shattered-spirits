@@ -44,6 +44,10 @@ class AbilityPackage extends Base {
     return require('@/assets/disciplines/' + this.Category + '.svg')
   }
   public get Color() {
+    var overrideColors = ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood']
+    if (overrideColors.includes(this.Category)) {
+      return ColorMap.get(this.Category)
+    }
     if (this.Category == 'Archetype') return ColorMap.get('Archetype')
     return super.Color
   }

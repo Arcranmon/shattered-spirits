@@ -1229,9 +1229,9 @@
       {
         "name": "Artistic Analysis",
         "category": "Camp",
-        "type": "Power",
-        "keywords": ["Camp Action"],
-        "effect": "While you have a _Sketchbook_ you may, as a _Camp Action_, clear a _Stress_ then make an incredibly detailed sketch of something you saw today in your _Sketchbook_. The act of transferring this to your _Sketchbook_ gives you additional information about the target, typically the equivalent of the _Observation_ or _Advantage_ Augment, but may provide additional effects (such as additional _Mastery_ when sketching a significant landmark) at GM discretion."
+        "type": "Action",
+        "prereqs": "Have a _Sketchbook_.",
+        "effect": "Clear a _Stress_ then make an incredibly detailed sketch of something you saw today in your _Sketchbook_. The act of transferring this to your _Sketchbook_ gives you additional information about the target, typically the equivalent of the _Discover_ _Camp Action_, but may provide additional effects (such as additional _Mastery_ when sketching a significant landmark) at GM discretion."
       },
       {
         "name": "Artistic Flourish",
@@ -1329,7 +1329,7 @@
         "category": "Travel",
         "type": "Power",
         "keywords": ["Scouting"],
-        "effect": "When a _Menace_ or _Discovery_ card is drawn from the Travel Deck, you may attempt to glean more info. If it is related to the Underworld, immediately learn additional information, such as the consequences of failure. You may spend [ ] to reveal this card."
+        "effect": "When you use the _Discover_ _Action_, you may ask your GM is options adjacent to what you rolled on the table are related to the Underworld. If they are and have not been fully discovered, you may find that instead of the discovery you would have."
       }
     ]
   },
@@ -1349,14 +1349,14 @@
         "name": "Gather Herbs",
         "category": "Travel",
         "type": "Talent",
-        "effect": "When you _Forage_ as a _Camp_ or _Travel_ _Action_ you always gain +1 _Herbalism Supplies_, and may replace any amount of _Supplies_ you would gain with _Herbalism Supplies_. Additionally, you know the _Uncommon_ and _Rare_ Herbs within the area, and may choose to gain 2 less _Supplies_ to gain a single _Uncommon_ Herb in the area, or 3 less to gain a _Rare_ one."
+        "effect": "When you _Forage_ you always gain +1 _Herbalism Supplies_, and may replace any amount of _Supplies_ you would gain with _Herbalism Supplies_. Additionally, you know the _Uncommon_ and _Rare_ Herbs within the area, and may choose to gain 2 less _Supplies_ to gain a single _Uncommon_ Herb in the area, or 3 less to gain a _Rare_ one."
       },
       {
         "name": "Field Herbalism",
         "category": "Camp",
-        "type": "Power",
-        "keywords": ["Camp Action"],
-        "effect": "As a _Camp Action_ when you have _Herbalism Tools_ you may create something with herbs you have on hand. Choose one:\n* _Refine_ an _Herb_ in your possession.\n* Expend _Herbalism Supplies_, then gain any two of a _Poultice_ or _Antidote_, in any combination.\n* Expend three _Herbalism Supplies_. Gain a _Health Flask_."
+        "type": "Action",
+        "prereqs": "Have _Herbalism Tools_.",
+        "effect": "You may create something with herbs you have on hand. Choose one:\n* _Refine_ an _Herb_ in your possession.\n* Expend _Herbalism Supplies_, then gain any two of a _Poultice_ or _Antidote_, in any combination.\n* Expend three _Herbalism Supplies_. Gain a _Health Flask_."
       },
       {
         "name": "Quick Herbalism",
@@ -1395,7 +1395,8 @@
         "category": "Camp",
         "type": "Power",
         "frequency": "2/Journey",
-        "effect": "You may trade _Supplies_ for 2 _Good Meals_ as you enjoy food given to you in exchange for farm labor, which typically takes the form of fruit or vegetable preserves, cheeses, or incredibly high quality jerky.",
+        "cost": "1 _Supplies_",
+        "effect": "Gain 2 _Good Meals_ as you enjoy food given to you in exchange for farm labor, which typically takes the form of fruit or vegetable preserves, cheeses, or incredibly high quality jerky.",
         "special": " You may refresh one use of this ability by helping at a farm for or similar facility for a day; otherwise, regain all uses whenever you spend _Downtime_ somewhere with a farm or similar facility."
       },
       {
@@ -1575,19 +1576,19 @@
         "name": "Survival Instinct",
         "category": "Travel",
         "type": "Power",
-        "effect": " The first time you pull from the _Menace Deck_ you may choose to exclude _Mishaps_ put there due to party members. Additionally, while traveling, you may spend one [ ] to offset the _Menace_ Danger. If you do, roll a d6; on a 3 or higher, gain _Stress_, otherwise gain _Fatigue_."
+        "effect": "While traveling, you may spend [ ] for the _Scout_ _Travel Action_. If you do, roll a d6; on a 3 or higher, gain _Stress_, otherwise gain _Fatigue_."
       },
       {
         "name": "Multitasking",
         "category": "Travel",
         "type": "Power",
-        "effect": "You are an incredibly effective travel and gain the following benefits:\n* You may select any number of jobs when you play the _Efficacy_ Advantage.\n* You may choose a different _Approach_ than the rest of your party.\n* When you play _Indiscretion_, you may remove it from any two characters in the party (including yourself)."
+        "effect": "You are an incredibly effective travel and gain the following benefits:\n* You may choose a different _Approach_ than the rest of your party.\n* When you take the _Hide Tracks_ _Travel Action_, repeat the effect.\n* Once per day, you may take two _Travel Actions_ in a single time segment."
       },
       {
         "name": "Hide All Traces",
         "category": "Camp",
         "type": "Power",
-        "effect": "You may, without spending a _Camp Action_, add _Hidden_ to your _Camp_. If you do, roll a d6; on a 3-, take a _Stress_."
+        "effect": "You may, without using a _Camp Action_, add _Hidden_ to your _Camp_. If you do, roll a d6; on a 3-, take a _Stress_."
       }
     ]
   },
@@ -1617,17 +1618,17 @@
         "effect": "When you _Mend_ as a _Camp Action_ and target _Metal_ _Equipment_, clear a _Stress_."
       },
       {
+        "name": "Reforge",
+        "category": "Camp",
+        "type": "Action",
+        "prereqs": "Appropriate Tools.",
+        "effect": "Choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 _Supplies_, then restore it to 1 _Durability_."
+      },
+      {
         "name": "Field Repair",
         "category": "Skill",
         "type": "Power",
-        "effect": "Gain 1 _Stress_; you may immediately _Mend_ a piece of _Metal_ _Equipment_ without using a _Camp Action_."
-      },
-      {
-        "name": "Reforge",
-        "category": "Camp",
-        "type": "Power",
-        "keywords": ["Camp Action"],
-        "effect": "As a _Camp Action_, you may choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 _Supplies_, then restore it to 1 _Durability_. This Action requires appropriate tools."
+        "effect": "Gain 1 _Stress_; you may _Mend_ or _Reforge_ without using a _Camp Action_. You may only target _Metal_ _Equipment_."
       },
       {
         "name": "Forge-Trained",
@@ -1653,9 +1654,8 @@
       {
         "name": "Hone",
         "category": "Camp",
-        "type": "Power",
-        "keywords": ["Camp Action"],
-        "effect": "As a _Camp Action_, choose an ally (including yourself) without a _Weaponsmith's Blessing_. You may take the time to maintain that ally's weaponry, granting them a _Weaponsmith's Blessing_."
+        "type": "Action",
+        "effect": "Choose an ally (including yourself) without a _Weaponsmith's Blessing_. You may take the time to maintain that ally's weaponry, granting them a _Weaponsmith's Blessing_."
       },
       {
         "name": "Weapon Maintenance",

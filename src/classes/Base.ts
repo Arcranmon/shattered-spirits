@@ -78,7 +78,7 @@ class Base {
   public get Color() {
     if (this.Category == 'Crafting' || this.Category == 'Camp' || this.Category == 'Travel' || this.Category == 'Skill' || this.Category == 'Downtime')
       return ColorMap.get(this.Category)
-    return ColorMap.get(this.Type)
+    return ColorMap.get(this.Type) ?? ColorMap.get('Mutable')
   }
 
   // ==========================================================
