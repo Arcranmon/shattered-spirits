@@ -30,4 +30,5 @@ export const ColorMap = new Map<string, string>([
   ['Danger', '#a50000'],
   ['Augment', '#455dad'],
   ['Encounter', '#703d92'],
+  ['Stance', 'thistle'],
 ])

@@ -780,16 +780,17 @@
       {
         "name": "Boon of Scent",
         "category": "Travel",
-        "type": "Boon",
-        "effect": "When traveling, your companion may always play [ ] to track a target or follow a trail."
+        "type": "Talent",
+        "prereqs": "Must be _Manifested_.",
+        "effect": "When traveling, your allies gain a +1 _Bonus_ to any rolls related to the _Track_ _Travel Action_."
       },
       {
         "name": "Scent Trail",
         "category": "Travel",
-        "type": "Power",
-        "keywords": ["Scouting"],
+        "type": "Boon",
         "frequency": "1/Day",
-        "effect": "When _Menace_ or _Discovery_ is drawn, you may attempt to glean more info. If your sense of smell would aid in detecting this, immediately learn additional information, such as the consequences of failure. You may spend [ ] to reveal this card. If your sense of smell is not relevant, do not expend a use."
+        "effect": "Your ally may take the _Track_ or _Scout_ _Travel Action_ at no cost and without spending any die.",
+        "special": "You may spend any die to regain a use of this ability."
       }
     ],
     "desc": "You have a keen sense of smell, allowing you track others with ease."
@@ -811,7 +812,9 @@
         "name": "Skilled Hunter",
         "category": "Travel",
         "type": "Power",
-        "effect": "While you are manifested while traveling, your companion may spend a single [ ] as if it was _Efficacy_ to do the _Hunt_ _Travel Action_. This does not require that they choose _Hunt_ if they play _Efficacy_ through another means. Additionally, when your companion takes the _Hunt_ _Travel Action_ during the _Camp Phase_, you may assist them and grant them an additional die."
+        "frequency": "1/Day",
+        "prereqs": "Must be _Manifested_.",
+        "effect": "Choose one:\n* Take the _Hunt_ _Travel Action_ without using a _Travel Action_ or spending any die.\n* An ally taking the _Hunt_ or _Track_ _Travel Action_ gains a +2 _Bonus_."
       },
       {
         "name": "Scent of Blood",
@@ -843,7 +846,7 @@
             "category": "Offensive",
             "type": "Passive",
             "keywords": ["Respite"],
-            "effect": "At _Respite_, choose a hostile creature and inflict _Studied_. This _Round_, you may use any number of Attacks so long as they are targeting that creature, and all Attacks automatically add _Stun_ equal to their Cost. Gain 2 _Momentum_ if you defeat that creature. All Attacks against other creature have _Disadvantage_."
+            "effect": "At _Respite_, choose a hostile creature and inflict _Marked_. This _Round_, you may use any number of Attacks so long as they are targeting that creature, and all Attacks automatically add _Stun_ equal to their Cost. Gain 2 _Momentum_ if you defeat that creature. All Attacks against other creature have _Disadvantage_."
           }
         ],
         "adjust": 2
@@ -868,7 +871,7 @@
         "name": "Riding Spirit",
         "category": "Travel",
         "type": "Power",
-        "effect": "While manifested while traveling, you may choose to carry one of your allies. When doing this, they ignore a single penalty die and you make take a single _Fatigue_ stake for them. Additionally, you may gain _Stress_ to allow them to spend a single [ ] as _Phase_."
+        "effect": "While manifested while traveling, you may choose to carry one of your allies. While riding you, you may allow that ally to spend your die for _Forced March_, and may gain _Stress_ to allow them to spend a single [ ] as [+] for _Forced March_. Additionally, if you carry the same ally all day, you may take a _Fatigue_ stake in place of them."
       },
       {
         "name": "Trot",
@@ -929,9 +932,9 @@
       },
       {
         "name": "Service Animal",
-        "category": "Skill",
+        "category": "Camp",
         "type": "Power",
-        "effect": "During the _Camp Phase_, choose another character or spirit. They roll a die; on a 5+, they clear a _Stress_. If you fail this roll, you may gain _Stress_ to allow the target to instead succeed."
+        "effect": "Choose another character or spirit. They roll a die; on a 5+, they clear a _Stress_. If you fail this roll, you may gain _Stress_ to allow the target to instead succeed."
       },
       {
         "name": "Friendly Encouragement",
@@ -1001,7 +1004,9 @@
         "name": "Watchful Shadow",
         "category": "Travel",
         "type": "Power",
-        "effect": "While traveling, you may stick close to the party, scouting in the shadows. If you do this, the first time you reveal a card from the _Menace Deck_ (by removing the _Menace_ _Danger_) you may choose to exclude _Mishaps_ put there due to party members."
+        "prereqs": "Must be _Manifested_.",
+        "frequency": "1/Day",
+        "effect": "You keep a close watch on the party, concealing your presence and sneaking ahead. If an _Encounter_ _Menace_ is drawn from the _Travel Deck_, you may treat it as if it was _Scouted_."
       },
       {
         "name": "Low-Profile",
@@ -1120,7 +1125,7 @@
         "name": "Watchful Shepherd",
         "category": "Skill",
         "type": "Power",
-        "effect": "Whenever an ally would suffer an effect they could avoid by being moved you may rescue them, taking the effect in their place."
+        "effect": "Whenever an ally would suffer an effect they could avoid by being moved a short distance you may rescue them, taking the effect in their place."
       },
       {
         "name": "Shepherd",

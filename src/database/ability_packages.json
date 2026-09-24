@@ -40,7 +40,7 @@
           {
             "name": "Clarity",
             "cost": "1 _Essence_",
-            "effect": "Additionally, inflict _Studied_ on the target."
+            "effect": "Additionally, inflict _Marked_ on the target."
           }
         ]
       }
@@ -332,7 +332,7 @@
     "name": "Novice Blademaster",
     "category": "Striker",
     "type": "Discipline",
-    "desc": "You have studied the blade and have rare skill with it, making you incredibly dangerous and flexible in close combat.",
+    "desc": "You have Marked the blade and have rare skill with it, making you incredibly dangerous and flexible in close combat.",
     "abilities": [
       {
         "name": "Blademaster",
@@ -630,7 +630,7 @@
         "range": 2,
         "target": "A creature.",
         "cost": "1 _Essence_",
-        "effect": "You extend your senses towards the Target; they must _Negate_ [4] or gain _Studied_. If they are in _Wind_ _Terrain_, they automatically fail to _Negate_.",
+        "effect": "You extend your senses towards the Target; they must _Negate_ [4] or gain _Marked_. If they are in _Wind_ _Terrain_, they automatically fail to _Negate_.",
         "enhancmements": [{ "name": "Heavy Breeze", "costs": "1 _Essence_", "effect": "Increase the Negate cost by 3." }]
       }
     ]
@@ -1127,14 +1127,14 @@
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
-        "effect": "You can enhance the sense of joy in others nearby, putting them at ease and lifting their spirits a great amount.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+        "effect": "You can enhance the sense of joy in others nearby, putting them at ease and lifting their spirits a great amount. You can use this to induce strong feelings of joy that make others remember you fondly, or to project a mild aura of joy that makes makes others enjoy simply being near you.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
         "name": "Joyweaving",
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Power",
-        "effect": "You can subtly weave joycraft into your conversations, slightly influencing others with a general sense of ease and sense of joy while around you. If in an extended conversation with somebody else you may choose yourself or something you talked about; until the end of your next _Downtime_ the target will regard it more favorably. Your _Matchmaker_ should mark this as a _Condition_ so it can be leveraged at a later date. When used in this way your craft is undetectable except by other craft."
+        "effect": "You can subtly weave joycraft into your conversations, slightly influencing others with a general sense of ease and sense of joy while around you. If in an extended conversation with somebody else you may choose yourself or something you talked about; until the end of your next _Downtime_ the target will feel a mild feeling of joy in relation to it. Your _Matchmaker_ should mark this as a _Condition_ so it can be leveraged at a later date. When used in this way your craft is undetectable except by other craft."
       },
       {
         "name": "Joyful Presence",
@@ -1149,19 +1149,83 @@
         "category": "Support",
         "type": "Maneuver",
         "range": "1",
-        "target": "An ally that is not _Anguished_ II or more.",
         "keywords": ["Spirit", "Inspiring"],
         "cost": "1 _Essence_",
-        "effect": "You may inspire a supernatural sense of joy in an ally. Inflict _Joyful_  on the target; this may not increase them beyond _Joyful_ I.",
+        "effect": "You may inspire a supernatural sense of joy in an ally. Inflict _Joyful_ I on a target within Range, then repeat this effect.",
         "enhancements": {
           "enhances": [
             {
               "name": "Joyful Aura",
               "cost": "2 _Essence_",
-              "effect": "Instead, resolve the effect on all allies in your _Arena_."
+              "effect": "Instead, resolve the effect on all creatures of your choice in an _Arena_ within Range."
             }
           ]
         }
+      },
+      {
+        "name": "Push Joy",
+        "category": "Support",
+        "type": "Maneuver",
+        "range": "1",
+        "target": "A _Joyful_ creature.",
+        "keywords": ["Spirit", "Inspiring"],
+        "cost": "3 _Essence_",
+        "effect": "The Target gains 1 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_. If they are attempting to end this _Move_ next to an ally, add [_Safe_].",
+        "special": "You may decrease the Target's _Joyful_ by X to add [_Discount_ X]."
+      }
+    ]
+  },
+  {
+    "name": "Novice Griefcraft",
+    "category": "Metal",
+    "type": "Discipline",
+    "desc": "Metal is a cold, harsh element that influences the expression of grief, amplifying feelings of it in others.",
+    "abilities": [
+      {
+        "name": "Griefcraft",
+        "keywords": ["Spirit"],
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You can enhance the sense of grief in others nearby, amplifying negative emotions and causing a general sense of malaise. You can use this to induce strong feelings of grief that may reveal guilt or regret, or to project a mild aura of grief that makes it unpleasant to be near you.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+      },
+      {
+        "name": "Grief-forging",
+        "keywords": ["Spirit"],
+        "category": "Skill",
+        "type": "Power",
+        "effect": "You can subtly weave griefcraft into your conversations, amplifying a sense of sorrow and putting a damper on the interaction. If in an extended conversation with somebody else you may choose yourself or something you talked about; until the end of your next _Downtime_ the target will feel a mild sense of grief in relation to it. Your _Matchmaker_ should mark this as a _Condition_ so it can be leveraged at a later date. When used in this way your craft is undetectable except by other craft."
+      },
+      {
+        "name": "Inspire Anguish",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "range": "1",
+        "keywords": ["Spirit"],
+        "cost": "1 _Essence_",
+        "effect": "You may inspire a supernatural sense of grief in another. Inflict _Anguished_ I [4] on a target within Range, then repeat this effect.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Anguishing Aura",
+              "cost": "2 _Essence_",
+              "effect": "Instead, resolve the effect on all creatures of your choice in an _Arena_ within Range."
+            }
+          ]
+        }
+      },
+      {
+        "name": "Push Anguish",
+        "category": "Light",
+        "type": "Attack",
+        "range": "1",
+        "target": "An _Anguished_ creature.",
+        "keywords": ["Spirit"],
+        "cost": "2 _Essence_",
+        "effect": "The Target must _Negate_ [6]. If they do not, they must become _Engaged_ with an ally on their next _Turn_ before attempting their normal actions. If they fail to do this or have no remaining allies, they become _Impaired_ and _Slowed_.",
+        "enhancements": {
+          "enhances": [{ "name": "Heavy Push", "cost": "1 _Essence_", "effect": "Increase the cost to _Negate_ by 2. You may repeat this _Enhancement_." }]
+        },
+        "special": "You may decrease the Target's _Anguished_ by X to add [_Discount_ X]."
       }
     ]
   },
@@ -1335,7 +1399,7 @@
   },
   {
     "name": "Herbalist",
-    "desc": "You are well-studied when it comes to herbs, and can create many basic remedies from them even with limited supplies.",
+    "desc": "You are well-Marked when it comes to herbs, and can create many basic remedies from them even with limited supplies.",
     "category": "Crafting",
     "type": "Career",
     "abilities": [
@@ -1343,7 +1407,7 @@
         "name": "Herbalism",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You have studied herbs, and can identify most herbs at a glance. For those that you cannot, you at least have a general sense of their properties, and can always tell if an herb would be toxic. In addition to being able to identify herbs, you are well-versed on their properties, where they grow, and other useful details.\n&nbsp;\nWhen your background and skills as an herbalist would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+        "effect": "You have Marked herbs, and can identify most herbs at a glance. For those that you cannot, you at least have a general sense of their properties, and can always tell if an herb would be toxic. In addition to being able to identify herbs, you are well-versed on their properties, where they grow, and other useful details.\n&nbsp;\nWhen your background and skills as an herbalist would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Gather Herbs",
@@ -1575,14 +1639,15 @@
       {
         "name": "Survival Instinct",
         "category": "Travel",
-        "type": "Power",
-        "effect": "While traveling, you may spend [ ] for the _Scout_ _Travel Action_. If you do, roll a d6; on a 3 or higher, gain _Stress_, otherwise gain _Fatigue_."
+        "type": "Boon",
+        "frequency": "1/Day",
+        "effect": "You may take the _Scout_, _Hide Tracks_, or _Navigate_ _Travel Action_ without spending any die. You may regain a use of this ability by spending one [ ]."
       },
       {
         "name": "Multitasking",
         "category": "Travel",
         "type": "Power",
-        "effect": "You are an incredibly effective travel and gain the following benefits:\n* You may choose a different _Approach_ than the rest of your party.\n* When you take the _Hide Tracks_ _Travel Action_, repeat the effect.\n* Once per day, you may take two _Travel Actions_ in a single time segment."
+        "effect": "You are an effective traveler and gain the following benefits:\n* You may choose a different _Approach_ than the rest of your party.\n* When you take the _Hide Tracks_ _Travel Action_, repeat the effect.\n* Once per day, you may take two _Travel Actions_ in a single time segment."
       },
       {
         "name": "Hide All Traces",
@@ -1759,7 +1824,7 @@
         "category": "Support",
         "type": "Passive",
         "keywords": ["Respite"],
-        "effect": "At _Respite_, inflict _Studied_ on a creature within Range 2, then choose one of the following plans:\n* **Focus Fire!**: Choose a creature. Every time you or an ally would remove _Studied_ from the target creature, roll a d6. On a 3+, do not remove _Studied_.\n* **Form Up!**: This _Round_ whenever an ally becomes _Engaged_ with another ally, both gain 2 _Guard_, up to once per _Turn_ per pair of allies.\n* **Scatter!**: At the start of _Phase_ 1 you and all allies may spend up to 2 _Speed_ as if it was your _Turn_."
+        "effect": "At _Respite_, inflict _Marked_ on a creature within Range 2, then choose one of the following plans:\n* **Focus Fire!**: Choose a creature. Every time you or an ally would remove _Marked_ from the target creature, roll a d6. On a 3+, do not remove _Marked_.\n* **Form Up!**: This _Round_ whenever an ally becomes _Engaged_ with another ally, both gain 2 _Guard_, up to once per _Turn_ per pair of allies.\n* **Scatter!**: At the start of _Phase_ 1 you and all allies may spend up to 2 _Speed_ as if it was your _Turn_."
       },
       {
         "name": "Exploit Opening",
@@ -1767,9 +1832,9 @@
         "type": "Maneuver",
         "keywords": ["Social"],
         "range": "1",
-        "target": "A _Studied_ creature within _Range_.",
+        "target": "A _Marked_ creature within _Range_.",
         "cost": "1 _Momentum_",
-        "effect": "Remove _Studied_ from the Target. They must immediately _Negate_ [6]. Regardless of the result, they create an _Opening_. If they successfully _Negate_, they gain 4 _Block_ against all resulting Attacks."
+        "effect": "Remove _Marked_ from the Target. They must immediately _Negate_ [6]. Regardless of the result, they create an _Opening_. If they successfully _Negate_, they gain 4 _Block_ against all resulting Attacks."
       }
     ]
   },
@@ -1804,14 +1869,14 @@
         "type": "Power",
         "keywords": ["Scouting"],
         "frequency": "1/Day",
-        "effect": "When a _Menace_ Card is revealed, you may attempt to glean more info. If the card is related to conflict or inter-party turmoil immediately learn additional information, such as the consequences of failure. You may spend one [ ] to remove this _Menace_ or, if it is a _Minor Mishap_, may take a _Stress_ to remove it. If you learn no information about the card, do not spend a use.",
+        "effect": "When a _Menace_ is drawn from the Travel Deck you may attempt to glean more info. If it is related to conflict or inter-party turmoil immediately learn additional information.  You may spend one [ ] or take _Stress_ to treat this Menace as if it was Scouted. If you learn no information about the card, do not spend a use.",
         "special": "You may roll a d6 to regain a use of this _Ability_; on a 3-, take 1 _Stress_."
       },
       {
         "name": "Sense Intent",
         "category": "Support",
         "type": "Passive",
-        "effect": "At _Respite_ choose any enemy. The GM must tell you what category their selected _Stance_ is. If it is not an _Offensive_ _Stance_, inflict _Studied_. If it is an _Offensive_ _Stance_, instead learn how the enemy will select its Target."
+        "effect": "At _Respite_ choose any enemy. The GM must tell you what category their selected _Stance_ is. If it is not an _Offensive_ _Stance_, inflict _Marked_. If it is an _Offensive_ _Stance_, instead learn how the enemy will select its Target."
       },
       {
         "name": "Uncanny Observation",
@@ -1821,7 +1886,7 @@
         "range": "1",
         "target": "Single-Target",
         "cost": "2 _Momentum_",
-        "effect": "The Target becomes _Studied_. If a character uses a _Social_ effect against them, they may remove _Studied_ to cause them to automatically fail the _Negate_ roll instead of the usual _Studied_ effect."
+        "effect": "The Target becomes _Marked_. If a character uses a _Social_ effect against them, they may remove _Marked_ to cause them to automatically fail the _Negate_ roll instead of the usual _Marked_ effect."
       }
     ]
   },
