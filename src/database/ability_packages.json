@@ -353,7 +353,7 @@
         "category": "Offensive",
         "type": "Gambit",
         "cost": "None",
-        "reqs": "_Blade_ Attack.",
+        "prereqs": "_Blade_ Attack.",
         "effect": "Increase the Result of the triggering Attack, resolving the Attack with the new Result. If the Attack was already a _Crit_, instead add the _Graze_ effect to the Attack as well, combining all effects."
       }
     ]
@@ -623,15 +623,24 @@
         ]
       },
       {
-        "name": "Brushing Breeze",
+        "name": "Sense Breeze",
         "category": "Utility",
-        "type": "Maneuver",
-        "keywords": ["Spirit"],
+        "type": "Reaction",
+        "keywords": ["Spirit", "Respite"],
         "range": 2,
-        "target": "A creature.",
+        "target": "An _Arena_",
         "cost": "1 _Essence_",
-        "effect": "You extend your senses towards the Target; they must _Negate_ [4] or gain _Marked_. If they are in _Wind_ _Terrain_, they automatically fail to _Negate_.",
-        "enhancmements": [{ "name": "Heavy Breeze", "costs": "1 _Essence_", "effect": "Increase the Negate cost by 3." }]
+        "trigger": "_Respite_ ends.",
+        "effect": "For the rest of the _Round_ you have _Perception_ on all creatures currently in the Target.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Brushing Breeze",
+              "cost": "2 _Essence_",
+              "effect": "Additionally, creatures of your choice that move within the Target gain _Marked_ [4]. If the _Arena_ is _Windy_, they instead gain _Marked_ [6]."
+            }
+          ]
+        }
       }
     ]
   },
@@ -1117,6 +1126,65 @@
     ]
   },
   {
+    "name": "Novice Heartcraft",
+    "category": "Earth",
+    "type": "Discipline",
+    "desc": "You can make the hearts of others sturdy and unshakeable like stone, allowing them to charge into the face of danger without fear.",
+    "abilities": [
+      {
+        "name": "Heartcraft",
+        "keywords": ["Spirit"],
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You can enhance the sense of courage in others nearby, drowning out any feelings of fear or worry and giving them reckless confidence. You can use this to induce strong feelings of courage that make it easier to rally a crowd against a threat, or simply blunt the constant fear the Shattered World inspires.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+      },
+      {
+        "name": "Heartcraft",
+        "keywords": ["Spirit"],
+        "category": "Skill",
+        "type": "Power",
+        "effect": "You can subtly weave heartcraft into your conversations, enhancing feelings of bravery and courage. If in an extended conversation with somebody else you may choose yourself or something you talked about; until the end of your next _Downtime_ the target will not feel any fear in relation to it. Your _Matchmaker_ should mark this as a _Condition_ so it can be leveraged at a later date. When used in this way your craft is undetectable except by other craft."
+      },
+      {
+        "name": "Courageous Presence",
+        "keywords": ["Spirit"],
+        "category": "Travel",
+        "type": "Power",
+        "frequency": "1/_Camp_",
+        "effect": "When you do not need to be subtle with your craft you can use it to inspire your allies. When an ally would gain _Stress_, roll a d6. On a 5+, they instead do not gain _Stress_; if they fail the roll, your spirit may gain _Stress_ to instead allow them to succeed."
+      },
+      {
+        "name": "Inspire Courage",
+        "category": "Support",
+        "type": "Maneuver",
+        "range": "1",
+        "keywords": ["Spirit", "Inspiring"],
+        "cost": "1 _Essence_",
+        "effect": "You may inspire a supernatural sense of joy in an ally. Inflict _Courageous_ I [4] on a target within Range, then repeat this effect.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Courageous Aura",
+              "cost": "1 _Essence_",
+              "effect": "Instead, inflict _Courageous_ I on all creatures of your choice in an _Arena_ within Range."
+            }
+          ]
+        }
+      },
+      {
+        "name": "Push Joy",
+        "category": "Support",
+        "type": "Maneuver",
+        "range": "1",
+        "target": "A _Courageous_ creature.",
+        "keywords": ["Spirit", "Inspiring"],
+        "cost": "3 _Essence_",
+        "effect": "The Target gains 2 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_. They must move towards the nearest enemy by the shortest possible route.",
+        "special": "You may decrease the Target's _Courageous_ by X to add [_Discount_ X]."
+      }
+    ]
+  },
+  {
     "name": "Novice Joycraft",
     "category": "Wood",
     "type": "Discipline",
@@ -1151,13 +1219,13 @@
         "range": "1",
         "keywords": ["Spirit", "Inspiring"],
         "cost": "1 _Essence_",
-        "effect": "You may inspire a supernatural sense of joy in an ally. Inflict _Joyful_ I on a target within Range, then repeat this effect.",
+        "effect": "You may inspire a supernatural sense of joy in an ally. Inflict _Joyful_ I [4] on a target within Range, then repeat this effect.",
         "enhancements": {
           "enhances": [
             {
               "name": "Joyful Aura",
-              "cost": "2 _Essence_",
-              "effect": "Instead, resolve the effect on all creatures of your choice in an _Arena_ within Range."
+              "cost": "1 _Essence_",
+              "effect": "Instead, inflict _Joyful_ I on all creatures of your choice in an _Arena_ within Range."
             }
           ]
         }
@@ -1170,7 +1238,7 @@
         "target": "A _Joyful_ creature.",
         "keywords": ["Spirit", "Inspiring"],
         "cost": "3 _Essence_",
-        "effect": "The Target gains 1 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_. If they are attempting to end this _Move_ next to an ally, add [_Safe_].",
+        "effect": "The Target gains 1 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_, adding [_Safe_]. They must move towards the nearest ally by the shortest possible route.",
         "special": "You may decrease the Target's _Joyful_ by X to add [_Discount_ X]."
       }
     ]
@@ -1208,7 +1276,7 @@
             {
               "name": "Anguishing Aura",
               "cost": "2 _Essence_",
-              "effect": "Instead, resolve the effect on all creatures of your choice in an _Arena_ within Range."
+              "effect": "Instead, inflict _Anguished_ I [4] on all creatures of your choice in an _Arena_ within Range."
             }
           ]
         }

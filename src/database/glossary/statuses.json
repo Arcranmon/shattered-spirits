@@ -318,11 +318,19 @@
     "type": "Emotional Status"
   },
   {
+    "name": "Courageous",
+    "desc": "Your heart is full of courage, allowing you to stave off the woes of battle.",
+    "effect": "Courageous is tracked with a d6, which starts at 1. While Courageous, at the end of each of your _Turns_ when you are _Engaged_ with an enemy gain _Guard_ equal to the die value.",
+    "repeat": "Increment the die. If you cannot, gain 2 _Guard_.",
+    "reacts": ["<ins>_Anguished_:</ins> If a creature is _Frightened_ and would gain Courageous, they first decrement their _Frightened_."],
+    "type": "Emotional Status"
+  },
+  {
     "name": "Joyful",
     "desc": "You are filled with an energizing, contagious sense of joy.",
     "effect": "Joyful is tracked with a d6, which starts at 1. While Joyful, at the end of each of your _Turns_ you and all allies you are _Engaged_ with gain _Guard_ equal to half the die value.",
     "repeat": "Increment the die. If you cannot, gain 2 _Guard_.",
-    "reacts": ["<ins>_Anguished_:</ins> If a creature is _Anguished_ and would gain Joyful, they instead decrement their _Anguished_."],
+    "reacts": ["<ins>_Anguished_:</ins> If a creature is _Anguished_ and would gain Joyful, they first decrement their _Anguished_."],
     "type": "Emotional Status"
   },
   {
@@ -330,7 +338,7 @@
     "desc": "You are filled with an energizing, contagious sense of joy.",
     "effect": "Anguished is tracked with a d6, which starts at 1. While Anguished, at the end of each of your _Turns_ you suffer _Stun_ equal to the die value unless you are _Engaged_ with an ally.",
     "repeat": "Increment the die. If you cannot, gain 2 _Guard_.",
-    "reacts": ["<ins>_Joyful_:</ins> If a creature is _Joyful_ and would gain Anguished, they instead decrement their _Joyful_."],
+    "reacts": ["<ins>_Joyful_:</ins> If a creature is _Joyful_ and would gain Anguished, they first decrement their _Joyful_."],
     "type": "Emotional Status"
   },
   {
@@ -454,6 +462,12 @@
     "desc": "An condition caused when one creature gains knowledge on another.",
     "effect": "Creatures may remove a hostile creature's Marked for one of the following effects:\n* Clear Marked at any time to learn the target's current and maximum _Stamina_ and _Block_, applicable _Defensive_ _Passives_, and any _Weaknesses_/_Resistances_/_Immunities_ they have.\n* When making an Attack or Defend Roll in response to the Target, you may clear Marked to increase the result of a single die roll by 1.",
     "recover": "Make a _Recovery Roll_; on a 4+, remove Marked.",
+    "type": "Status"
+  },
+  {
+    "name": "Shrouded",
+    "effect": "Non-Melee Attacks against you have _Disadvantage_ unless the attacker has _Perception_ on you.",
+    "remove": "Remove this effect if you make an Attack, force a creature to _Negate_, or become _Engaged_.",
     "type": "Status"
   },
   {
