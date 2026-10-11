@@ -1172,7 +1172,7 @@
         }
       },
       {
-        "name": "Push Joy",
+        "name": "Push Courage",
         "category": "Support",
         "type": "Maneuver",
         "range": "1",
@@ -1180,6 +1180,15 @@
         "keywords": ["Spirit", "Inspiring"],
         "cost": "3 _Essence_",
         "effect": "The Target gains 2 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_. They must move towards the nearest enemy by the shortest possible route.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Reckless Courage",
+              "cost": "1 _Essence_",
+              "effect": "At the end of the move the Target may make a single Melee Attack."
+            }
+          ]
+        },
         "special": "You may decrease the Target's _Courageous_ by X to add [_Discount_ X]."
       }
     ]
@@ -1238,7 +1247,16 @@
         "target": "A _Joyful_ creature.",
         "keywords": ["Spirit", "Inspiring"],
         "cost": "3 _Essence_",
-        "effect": "The Target gains 1 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_, adding [_Safe_]. They must move towards the nearest ally by the shortest possible route.",
+        "effect": "The Target gains 1 _Speed_ that they lose at the end of the _Turn_, then may immediately _Move_ as if it was their _Turn_, adding [_Safe_]. They must end this move _Engaged_ to an ally.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Mirthful Skip",
+              "cost": "2 _Essence_",
+              "effect": "The Target gains an additional _Speed_. At the end of their move, all allies they are _Engaged_ with gain 2 _Guard_."
+            }
+          ]
+        },
         "special": "You may decrease the Target's _Joyful_ by X to add [_Discount_ X]."
       }
     ]
@@ -1257,11 +1275,11 @@
         "effect": "You can enhance the sense of grief in others nearby, amplifying negative emotions and causing a general sense of malaise. You can use this to induce strong feelings of grief that may reveal guilt or regret, or to project a mild aura of grief that makes it unpleasant to be near you.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
-        "name": "Grief-forging",
+        "name": "Griefweaving",
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Power",
-        "effect": "You can subtly weave griefcraft into your conversations, amplifying a sense of sorrow and putting a damper on the interaction. If in an extended conversation with somebody else you may choose yourself or something you talked about; until the end of your next _Downtime_ the target will feel a mild sense of grief in relation to it. Your _Matchmaker_ should mark this as a _Condition_ so it can be leveraged at a later date. When used in this way your craft is undetectable except by other craft."
+        "effect": "You can subtly weave griefcraft into your conversations, amplifying a sense of sorrow and putting a damper on the interaction. If in an extended conversation with somebody else you may choose yourself or something you talked about; until the end of your next _Downtime_ the target will feel a sense of grief or sorrow in relation to it. Your _Matchmaker_ should mark this as a _Condition_ so it can be leveraged at a later date. When used in this way your craft is undetectable except by other craft."
       },
       {
         "name": "Inspire Anguish",
@@ -1288,10 +1306,17 @@
         "range": "1",
         "target": "An _Anguished_ creature.",
         "keywords": ["Spirit"],
-        "cost": "2 _Essence_",
-        "effect": "The Target must _Negate_ [6]. If they do not, they must become _Engaged_ with an ally on their next _Turn_ before attempting their normal actions. If they fail to do this or have no remaining allies, they become _Impaired_ and _Slowed_.",
+        "cost": "1 _Essence_",
+        "effect": "The Target must _Negate_ [5]. If they do not, they may not become _Engaged_ with an ally on their next Turn. If they become _Engaged_ with an ally at any point this _Round_ they become _Impaired_ and _Exposed_.",
         "enhancements": {
-          "enhances": [{ "name": "Heavy Push", "cost": "1 _Essence_", "effect": "Increase the cost to _Negate_ by 2. You may repeat this _Enhancement_." }]
+          "enhances": [
+            { "name": "Heavy Push", "cost": "1 _Essence_", "effect": "Increase the cost to _Negate_ by 2. You may repeat this _Enhancement_." },
+            {
+              "name": "Forced Isolation",
+              "cost": "2 _Essence_",
+              "effect": "In addition, if the Target fails to _Negate_ they may immediately move as if it were their _Turn_. They must attempt to move to an _Arena_ with no allies or, if that is not possible, end this move not _Engaged_ with any allies."
+            }
+          ]
         },
         "special": "You may decrease the Target's _Anguished_ by X to add [_Discount_ X]."
       }
