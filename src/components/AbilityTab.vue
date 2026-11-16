@@ -1,7 +1,9 @@
 <template>
   <v-row>
     <v-col cols="2" />
-    <v-col cols="4">
+    <v-col
+      cols="4"
+      v-if="!isNonCombat">
       <v-select
         v-model="categoryFilter"
         label="Category Filter"
@@ -9,7 +11,9 @@
         :items="categoryOptions"
         filled />
     </v-col>
-    <v-col cols="4">
+    <v-col
+      cols="4"
+      v-if="!isNonCombat">
       <v-select
         v-model="keywordFilter"
         label="Keyword Filter"
@@ -54,6 +58,9 @@ export default Vue.extend({
     },
   },
   computed: {
+    isNonCombat() {
+      return this.abilityType == 'Skill' || this.abilityType == 'Camp' || this.abilityType == 'Travel'
+    },
     categoryOptions() {
       if (this.abilityType == 'Attack') {
         return ['All', 'Light', 'Balanced', 'Heavy']
@@ -66,7 +73,7 @@ export default Vue.extend({
       }
     },
     abilities() {
-      if (this.abilityType == 'Skill' || this.abilityType == 'Camp' || this.abilityType == 'Travel') {
+      if (this.isNonCombat) {
         var categories = [this.abilityType]
         if (this.spirit) {
           var skills = this.character.Spirit.FilteredAbilities('Talent', categories, 'All')
@@ -75,7 +82,8 @@ export default Vue.extend({
           skills = skills.concat(this.character.Spirit.FilteredAbilities('Action', categories, 'All'))
           return skills
         }
-        if (this.basic) return this.character.FilteredAbilities('Action', categories, 'All')
+        if (this.basic)
+          return [...this.character.FilteredAbilities('Action', categories, 'All'), ...this.character.FilteredAbilities('Power', categories, 'All')]
         return [
           ...this.character.FilteredAbilities('Talent', categories, 'All'),
           ...this.character.FilteredAbilities('Power', categories, 'All'),

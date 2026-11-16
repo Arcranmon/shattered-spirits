@@ -1,75 +1,35 @@
 [
   {
     "name": "Infection",
-    "type": "Minor Wound",
+    "type": "Wound",
     "desc": "A wound has festered, becoming a far greater issue for you.",
-    "effect": "While you have this Wound:\n* Lose 2 _Guard_ at _Respite_.\n* During your _Travel Roll_, replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.\n* Whenever you make a _Rest Roll_ add losing a segment on this _Clock_ as an automatic _Stake_. If the Clock is empty, instead gain an additional _Infection_. This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.",
-    "clock": 3,
-    "segments": 1,
-    "remove": "When healed, replace this with _Fatigue_."
+    "effect": "While you have this Wound:\n* You may not place progress on any other _Wound_ unless this _Clock_ is full.\n* During your _Travel Roll_, replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.\n* Whenever you rest, this _Festers_ once.\n\nAs a _Mortal Wound_, this is a Clock 6 and all effects are doubled.",
+    "clock": 4,
+    "remove": "At the end of a _Rest_ when the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_ or, if it is already a _Wound_, clear it."
   },
   {
     "name": "Envenomed",
-    "type": "Minor Wound",
+    "type": "Wound",
     "desc": "The after-effects of poison still lingering in your system, ravaging you from the inside and inflicting nausea and dizziness.",
-    "effect": "While you have this Wound:\n* Gain 1 less Momentum at Respite.\n* Take a -1 _Penalty_ on all rolls, including _Recovery_ rolls.\n* During your _Travel Roll_, replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.\n* Whenever you make a _Rest Roll_ add losing a segment on this _Clock_as an automatic _Stake_. If the Clock is empty, instead gain an additional _Envenomed_. This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.",
+    "effect": "While you have this Wound:\n* Gain 1 less Momentum at Respite.\n* Take a -1 _Penalty_ on all rolls, including _Recovery_ rolls.\n* During your _Travel Roll_, replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.\n* Whenever you make a _Rest Roll_ add losing a segment on this _Clock_as an automatic _Stake_. If the Clock is empty, instead gain an additional _Envenomed_. This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.\n\nAs a _Mortal Wound_, this is a Clock 6 and all effects are doubled.",
     "clock": 4,
-    "segments": 1,
-    "remove": "When healed, replace this with _Fatigue_. _Antidote_ and similar items can be used as _Medicine_ for this _Wound_."
+    "remove": "At the end of a _Rest_ when the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_ or, if it is already a _Wound_, clear it."
   },
   {
-    "name": "Minor Burn",
-    "type": "Minor Wound",
+    "name": "Burn",
+    "type": "Wound",
     "desc": "A mild burn, caused by fire, acid, cold, or any variety of effects.",
-    "effect": "While you have this Wound:\n* Increase your _Weakness_ to _Fire_, _Lightning_, and _Cold_ by 1 step.\n* Whenever undertaking strenuous physical activity, add _Stress_ as a stake.",
+    "effect": "While you have this Wound:\n* You are _Weak_ to _Fire_, _Lightning_, and _Cold_.\n* Whenever you take Damage, lose 1 _Guard_.\n* Whenever you rest, this _Festers_ once.\n* Whenever undertaking strenuous physical activity, replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.\n* Replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake when traveling in extreme heat or cold.\n\nAs a _Mortal Wound_, this is a Clock 6 and all effects are doubled.",
     "clock": 4,
-    "segments": 1,
-    "remove": "When healed, replace this with _Fatigue_."
+    "remove": "At the end of a _Rest_ when the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_ or, if it is already a _Wound_, clear it."
   },
   {
-    "name": "Moderate Burn",
-    "type": "Moderate Wound",
-    "desc": "A serious burn, caused by fire, acid, cold, or any variety of effects.",
-    "effect": "While you have this Wound:\n* You are _Weak_ to _Fire_, _Lightning_, and _Cold_.\n* Whenever you take Damage, lose 1 _Guard_.\n* Whenever you make a _Rest Roll_ add losing a segment on this _Clock_ as an automatic _Stake_. If the Clock is empty, instead gain an _Infection_. This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.\n* Whenever undertaking strenuous physical activity, replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.\n* Add an additional _Stress_ stake when traveling in extreme heat or cold.",
-    "clock": 5,
-    "segments": 2,
-    "remove": "When healed, replace this with a _Minor Burn_ and _Fatigue_."
-  },
-  {
-    "name": "Major Burn",
-    "type": "Major Wound",
-    "desc": "A severe, life-threatening burn, caused by fire, acid, cold, or any variety of effects.",
-    "effect": "While you have this Wound:\n* Increase your _Weakness_ to _Fire_, _Lightning_, and _Cold_ by 2 steps.\n* Whenever you take Damage, lose 2 _Guard_.\n* Whenever you make a _Rest Roll_ add losing a segment on this _Clock_ as an automatic _Stake_ twice. If the Clock is empty, instead gain an _Infection_.  This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.\n* Whenever undertaking strenuous physical activity, add a _Fatigue_ stake.\n* Add an additional _Stress_ and _Fatigue_ stake when traveling in extreme heat or cold.",
-    "clock": 6,
-    "segments": 3,
-    "remove": "When healed, replace this with a _Moderate Burn_ and _Fatigue_."
-  },
-  {
-    "name": "Minor Flesh Wound",
-    "type": "Minor Wound",
-    "desc": "A deep cut or stab that, while not life threatening, makes normal function far more difficult.",
-    "effect": "While you have this Wound:\n* The first time you take Damage each Round you gain _Bleeding_ [6].\n* Whenever undertaking strenuous physical activity in a _Skill Challenge_ add _Stress_ as a stake.",
-    "segments": 1,
-    "clock": 3,
-    "remove": "When healed, replace this with _Fatigue_."
-  },
-  {
-    "name": "Moderate Flesh Wound",
-    "type": "Moderate Wound",
+    "name": "Flesh Wound",
+    "type": "Wound",
     "desc": "A deep cut or stab that poses a high risk of dangerous infection.",
-    "effect": "While you have this Wound:\n* The first time you take Damage each Round you gain _Bleeding_ 1.\n* Attacks against you gain [_Piercing_].\n* Whenever you make a _Rest Roll_ add losing a segment on this _Clock_ as an automatic _Stake_. If the Clock is empty, instead gain an _Infection_. This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.\n* Whenever undertaking strenuous physical activity add a _Fatigue_ stake.",
+    "effect": "While you have this Wound:\n* The first time you take Damage each Round you gain _Bleeding_ 1 [4].\n* Attacks against you gain [_Piercing_].\n* When you rest, this _Festers_ once.\n* Whenever undertaking strenuous physical activity add a _Stress_ stake.\n\nAs a _Mortal Wound_, this is a Clock 6 and has the following effects:\n* The first time you take Damage each Round you gain _Bleeding_ 1 [6] twice.\n* Attacks against you gain [_Piercing_].\n* Lose 1 _Momentum_ at _Respite_.\n* When you rest, this _Festers_ twice.\n* Whenever undertaking strenuous physical activity add _Blood Loss_ as a stake.",
     "clock": 4,
-    "segments": 2,
     "remove": "When healed, replace this with a _Minor Flesh Wound_ and _Fatigue_."
-  },
-  {
-    "name": "Major Flesh Wound",
-    "type": "Major Wound",
-    "desc": "A deep cut or stab that barely missed vital organs and make it difficult to move.",
-    "effect": "While you have this Wound:\n* The first time you take Damage each Round you gain _Bleeding_ 2.\n* Attacks against you gain [_Piercing_].\n* Gain 1 less _Momentum_ and _Posture_ at _Respite_.\n* Whenever you make a _Rest Roll_ add add losing a segment on this _Clock_ as an automatic _Stake_ twice. If the Clock is empty, instead gain an _Infection_. This stake may be removed with _Medicine_, but _Medicine_ used as a part of the _Patch_ _Camp Action_ does not count for this.\n* Whenever undertaking strenuous physical activity add a _Blood Loss_ stake.",
-    "clock": 5,
-    "segments": 3,
-    "remove": "When healed, replace this with a _Moderate Flesh Wound_ and _Fatigue_."
   },
   {
     "name": "Minor Concussion",
@@ -77,7 +37,6 @@
     "desc": "A minor head wound that makes it difficult to focus and remain fully lucid.",
     "effect": "While you have this Wound:\n* Lose 3 _Guard_ at _Respite_.\n* You may not play the Observation Augment.\n* Whenever a Career would grant information, roll a d6; on a 2-, you cannot remember anything except vague details. Any resources spent to gain this information are still lost.",
     "clock": 3,
-    "segments": 1,
     "remove": "When healed, replace this with _Fatigue_."
   },
   {
@@ -86,7 +45,6 @@
     "desc": "You've lost a great deal of blood, leaving you weak and light-headed.",
     "effect": "While you have this Wound:\n* Your maximum _Stamina_ is reduced by 2, to a minimum of 1.\n* Lose 1 _Momentum_ at _Respite_.\n* In _Skill Challenges_ (including _Travel Rolls_) replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.",
     "clock": 3,
-    "segments": 1,
     "remove": "When healed, replace this with _Fatigue_. You may automatically mark a segment by consuming an extra _Meal_ during the _Camp Phase_."
   },
   {
@@ -95,7 +53,6 @@
     "desc": "The side effects of being deprived of oxygen for too long.",
     "effect": "While you have this Wound:\n* Lose 2 _Guard_ at _Respite_.\n* Lose 1 _Momentum_ at _Respite_.\n* Your counter for _Suffocating_ starts one higher than it normally would.\n* In _Skill Challenges_ (including _Travel Rolls_) replace a _Stress_ stake with _Fatigue_ or add a _Stress_ stake, as appropriate.",
     "clock": 2,
-    "segments": 1,
     "remove": "When healed, replace this with _Fatigue_."
   },
   {
@@ -104,7 +61,6 @@
     "desc": "A head wound that makes it very difficult to focus and remain fully lucid.",
     "effect": "While you have this Wound:\n* Lose 3 _Guard_ at _Respite_.\n* You always have the _Dazed_ Status.\n* You may not play the Observation Augment.\n* Whenever undertaking strenuous mental activity, add _Stress_ as a stake.\n* Whenever a Career would grant information, roll a d6; on a 4-, you cannot remember anything except vague details. Any resources spent to gain this information are still lost.",
     "clock": 4,
-    "segments": 2,
     "remove": "When healed, replace this with a _Minor Concussion_ and _Fatigue_."
   },
   {
@@ -113,7 +69,6 @@
     "desc": "A minor leg injury that hampers mobility to a small degree, like a rolled ankle.",
     "effect": "While you have this Wound:\n*Gain 1 less _Speed_ at _Respite_.\n* Roll one less die whenever your ability to use your legs is important, such as _Travel Rolls_.",
     "clock": 3,
-    "segments": 1,
     "remove": "When healed, replace this with _Fatigue_."
   },
   {
@@ -122,7 +77,6 @@
     "desc": "A leg injury that hampers mobility significantly, typically inflicted from a powerful attack.",
     "effect": "While you have this Wound:\n* Decrease the _Speed_ gained at _Respite_ by 1.\n* You are always _Slowed_, and may not clear it by any means.\n* Add an extra _Fatigue_ stake in _Travel Rolls_.\n* Roll one less die whenever your ability to use your legs is important, such as _Travel Rolls_.",
     "clock": 4,
-    "segments": 2,
     "remove": "When healed, replace this with _Fatigue_ and a _Minor Leg Injury_."
   },
   {
@@ -131,7 +85,6 @@
     "desc": "One of your legs is grievously injured and barely usable, leaving you limping and immobile.",
     "effect": "While you have this Wound:\n* Decrease the _Speed_ gained at _Respite_ by 2.\n* You are always _Slowed_, and may not clear it by any means.\n* You may not gain _Speed_ after _Respite_.\n* Add an extra _Fatigue_ stake in _Travel Rolls_.\n* You may not purchase the _Phase_ _Advantage_ except with die granted to you by other characters.\n* Roll two less die whenever your ability to use your legs is important, such as _Travel Rolls_.",
     "clock": 5,
-    "segments": 3,
     "remove": "When healed, replace this with _Fatigue_ and a _Moderate Leg Injury_."
   },
   {
@@ -140,7 +93,6 @@
     "desc": "A minor arm injury that hampers its use to a small degree, like a sprained wrist.",
     "effect": "While you have this Wound:\n* Decrease the Momentum gained at Respite by 1.\n* Roll one less die whenever your ability to use your arm is important, and take 1 Stress if you do any Camp or Travel Actions that requires both your arms.",
     "clock": 3,
-    "segments": 1,
     "remove": "When healed, replace this with _Fatigue_."
   },
   {
@@ -149,7 +101,6 @@
     "desc": "A moderate arm injury that makes it difficult to use an arm without completely limiting its use.",
     "effect": "While you have this Wound:\n* Decrease the Momentum gained at Respite by 2.\n* You are always _Impaired_, and cannot clear it by any means.\n* Roll one less die whenever your ability to use your arm is important, and you cannot take any _Camp_ or _Travel Actions_ that require both your arms.",
     "clock": 4,
-    "segments": 2,
     "remove": "When healed, replace this with _Fatigue_ and a _Minor Arm Injury_."
   },
   {
@@ -158,7 +109,6 @@
     "desc": "A major arm injury that makes an arm all but unusable.",
     "effect": "While you have this Wound:\n* Decrease the Momentum gained at Respite by 3.\n* You cannot use one arm in any way.\n* You are always _Impaired_, and cannot clear it by any means.\n* Gain an automatic _Stress_ each morning.\n* Roll two less die whenever your ability to use your arm is important, and you cannot take any _Camp_ or _Travel Actions_ that require both your arms.",
     "clock": 5,
-    "segments": 3,
     "remove": "When healed, replace this with _Fatigue_ and a _Moderate Arm Injury_."
   },
   {
@@ -167,7 +117,6 @@
     "desc": "A heavy impact that doesn't break the skin, but leaves minor internal damage.",
     "effect": "While you have this Wound:\n* Lose an additional _Guard_ whenever you take Damage.\n* Whenever undertaking strenuous physical activity, add _Stress_ as a stake.",
     "clock": 3,
-    "segments": 1,
     "remove": "When healed, replace this with _Fatigue_."
   },
   {
@@ -176,76 +125,44 @@
     "desc": "A heavy impact that doesn't break the skin, but leaves internal damage that makes normal function difficult.",
     "effect": "While you have this Wound:\n* Lose an additional 2 _Guard_ whenever you take Damage.\n* Whenever undertaking strenuous physical activity, add _Fatigue_ as a stake.\n* Automatically gain _Stress_ at the start of each day.",
     "clock": 4,
-    "segments": 2,
     "remove": "When healed, replace this with _Fatigue_ and a _Minor Contusion_."
   },
   {
     "name": "Stress",
     "type": "Condition",
+    "keywords": ["Untreatable"],
     "desc": "The stress and strain of adventuring is taking a toll, impacting your mental state.",
-    "effect": "This has no effect on its own.",
+    "special": "As a _Condition_, _Wound_, or _Mortal Wound_, add:\n* You may not aid or be aided in _Skill Challenges_.\n* You may not forge _Bonds_.\n\nAs a _Wound_, this is a Clock 3 and adds:\n* Randomly gain _Anguished_ I, _Frightened_ I, or _Enraged_ I at _Respite_.\n* [_Inspiring_] Abilities used by or targeting you cost 1 extra.\n\nAs a _Mortal Wound_, this is a Clock 5 and adds:\n* Gain _Anguished_ I, _Frightened_ I, and _Enraged_ I at _Respite_.\n* [_Inspiring_] Abilities used by or targeting you cost 2 extra.\n* At the end of a rest, each companion rolls 1d6. On 2-, they gain _Stress_.",
     "clock": 1,
-    "segments": 1,
-    "remove": "Many _Camp Actions_ and items mark a segment on this Clock."
-  },
-  {
-    "name": "Extreme Stress",
-    "type": "Greater Condition",
-    "desc": "You are irritable, unfocused, and unable to work as a team.",
-    "effect": "This is inflicted when _Stress_ is replaced. While you have this Condition:\n* You may not aid allies in _Skill Challenges_ and may not aid them.\n* You may not forge _Bonds_.\n* Gain 1 less _Momentum_ at _Respite_.\n* Any progress towards clearing _Stress_ is instead placed on this Condition.",
-    "clock": 3,
-    "segments": 0
+    "remove": "Many _Camp Actions_ and items mark a segment on this Clock, see the resting rules for more details. When the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_. If it was on the _Stress_ Track, clear it."
   },
   {
     "name": "Fatigue",
     "type": "Condition",
+    "keywords": ["Untreatable"],
     "desc": "You are tired, whether from travel, the throes of battle, or just overexerting yourself.",
-    "effect": "While you have this Condition:\n* Lose one _Guard_ at _Respite_.",
     "clock": 1,
-    "segments": 1,
-    "remove": "You may mark a segment on this _Clock_ with _Efficacy_ during a _Rest Roll_."
-  },
-  {
-    "name": "Exhausted",
-    "type": "Greater Condition",
-    "desc": "You are beyond tired from pushing yourself too hard and struggle to stay awake.",
-    "effect": "This is inflicted when _Fatigue_ is replaced. While you have this Condition:\n* Lose 2 _Guard_ at _Respite_.\n* Any progress towards clearing _Fatigue_ is instead placed on this Condition.",
-    "clock": 3,
-    "segments": 0
+    "special": "As a _Wound_, this is a Clock 3 and adds:\n* Gain 1 less _Momentum_ at _Respite_.\n* Gain _Stress_ if you take any _Camp Action_ other than _Rest_.\n\nAs a _Mortal Wound_, this is a Clock 5 and adds:\n* Gain 2 less _Momentum_ at _Respite_.\n* Gain _Impaired_ [3] and _Exposed_ [3] at _Respite_.\n* Gain _Stress_ if you take any _Camp Action_ other than _Rest_.\n* If you go a night without sleeping, you die.",
+    "remove": "Once per _Camp_ you can consume an additional portion of water to mark a segment on this Clock. At the end of a _Rest_ when the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_ or, if it is already a _Condition_, clear it."
   },
   {
     "name": "Hungry",
     "type": "Condition",
+    "keywords": ["Untreatable"],
+    "clock": 1,
     "desc": "Your stomach is empty and a constant distraction.",
     "effect": "While you have this Condition:\n* Lose one _Guard_ at _Respite_.",
-    "segments": 1,
-    "clock": 1,
-    "remove": "Consuming an extra _Meal_ during the _Camp Phase_ marks a segment on this Clock."
-  },
-  {
-    "name": "Starving",
-    "type": "Greater Condition",
-    "desc": "You are at the brink of starvation and struggling to stay alive.",
-    "effect": "Gain this Condition when _Hungry_ is replaced on your _Health Bar_. While you have this Condition:\n* Lose two _Guard_ at _Respite_.\n* Any progress towards clearing _Hungry_ is instead placed on this Condition.",
-    "segments": 0,
-    "clock": 3
+    "special": "As a _Wound_, this is a Clock 3 and adds:\n* Gain 1 less _Momentum_ at _Respite_.\n* Gain _Stress_ if you take any _Camp Action_ other than _Rest_.\n\nAs a _Mortal Wound_, this is a Clock 5 and adds:\n* Gain 2 less _Momentum_ at _Respite_.\n* Gain _Impaired_ [3] and _Exposed_ [3] at _Respite_.\n* Gain _Stress_ if you take any _Camp Action_ other than _Rest_.\n* If you go a day without eating, you die.",
+    "remove": "Once per _Camp_ you can consume an additional portion of water to mark a segment on this Clock. At the end of a _Rest_ when the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_ or, if it is already a _Condition_, clear it."
   },
   {
     "name": "Thirsty",
     "type": "Condition",
+    "keywords": ["Untreatable"],
     "desc": "Your mouth is parched, making everything a bit more difficult.",
-    "effect": "While you have this Condition:\n* Lose one _Guard_ at _Respite_.",
-    "segments": 1,
+    "special": "As a _Wound_, this is a Clock 3 and adds:\n* Gain 1 less _Momentum_ at _Respite_.\n* Gain _Stress_ if you take any _Camp Action_ other than _Rest_.\n\nAs a _Mortal Wound_, this is a Clock 5 and adds:\n* Gain 2 less _Momentum_ at _Respite_.\n* Gain _Impaired_ [3] and _Exposed_ [3] at _Respite_.\n* Gain _Stress_ if you take any _Camp Action_ other than _Rest_.\n* If you go a day without drinking, you die.",
     "clock": 1,
-    "remove": "Consuming an extra portion of water during the _Camp Phase_ marks a segment on this Clock."
-  },
-  {
-    "name": "Dehydrated",
-    "type": "Greater Condition",
-    "desc": "You haven't had water long enough that its substantially impacting your health.",
-    "effect": "This Condition is inflicted when _Thirsty_ is replaced. While you have this Condition:\n* Lose two _Guard_ at _Respite_.\n* Any progress towards clearing _Thirsty_ is instead placed on this Condition.",
-    "clock": 3,
-    "segments": 0
+    "remove": "Once per _Camp_ you can consume an additional portion of water to mark a segment on this Clock. At the end of a _Rest_ when the Clock is filled, move this to the next lowest Track if there is space and reset the _Clock_ or, if it is already a _Condition_, clear it."
   },
   {
     "name": "Flying",

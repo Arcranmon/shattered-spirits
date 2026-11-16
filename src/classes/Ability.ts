@@ -193,13 +193,14 @@ class Ability extends Base {
         (enhance.exclusive ? exclusiveString : '') +
         '—' +
         enhance.cost +
+        (enhance.prereq ? ' (' + enhance.prereq + ')' : '') +
         ':** ' +
         enhance.effect
     }
     return text
   }
   public get EnhancementsByHeader() {
-    const groupedByRole = Map.groupBy(this.enhancements_.enhances, (key) => key.cost)
+    const groupedByRole = Map.groupBy(this.enhancements_.enhances, (key) => key.cost + (key.prereq ? ' (' + key.prereq + ')' : ''))
     var reactiveString = ' _[R]_'
     var exclusiveString = ' _[E]_'
     var headersAndEffects = new Map<string, string[]>()
@@ -211,7 +212,6 @@ class Ability extends Base {
       if (key == 'None') key = 'No Cost'
       headersAndEffects.set(key + ' Enhancements', text)
     }
-    headersAndEffects = new Map([...headersAndEffects.entries()].sort((a, b) => (a[0] == 'None' ? -1 : b[0] == 'None' ? 1 : a[0].localeCompare(b[0]))))
     return headersAndEffects
   }
   public get ImbuesByHeader() {

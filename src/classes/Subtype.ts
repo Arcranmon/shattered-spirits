@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Base, Defenses } from '@/class'
+import { Base, ColorMap } from '@/class'
 
 class Subtype extends Base {
   private element_: string
@@ -78,6 +78,9 @@ class Subtype extends Base {
   }
   public get TraitsHeader() {
     return '**Traits:** \n* _' + this.traits_.join('_\n* _') + '_'
+  }
+  public get Color() {
+    return ColorMap.get(this.Element)
   }
 
   // ==========================================================

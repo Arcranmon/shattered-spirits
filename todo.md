@@ -1,10 +1,16 @@
 ## To-Do
 
-- Make Statuses more streamlined maybe?
-- Teleport for Spirits
-  - Just a 'disappear from map and return to companion'
-- Maybe 1 Block for free?
-- Armor/weapon/equipment cards need better headers
+- Break abilities out into Disciplines, Careers, and Talents
+  - Talents are like a specialization within a Discipline/Career or a minor ability set
+  - These are gained frequently as mini-level ups
+  - Make things like Weaponsmith a Talent
+- Edit camping rules
+  - Make managing your camp's Comfort, Security, and Concealment
+  - Comfort aids in quality of rest
+  - Security makes the camp easier to defend and makes it possible to notice threats early
+  - Concealment may preclude the need for threats
+- Tweak the 'Scout' action
+  - GM looks through the current chunk of the deck and flips the first Encounter right-side-up
 
 ### Long-Term Refactors
 

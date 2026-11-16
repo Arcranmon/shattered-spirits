@@ -114,17 +114,9 @@
             ><div class="box-header">Guard</div>
             {{ ability.Guard }}</v-col
           ><v-col
-            v-if="ability.ShowClockOrSegment"
-            :style="{ 'border-bottom': ability.HasKeywords ? 'thin solid' : '', 'border-color': ability.Color }"
-            style="text-align: center"
-            cols="6"
-            ><div class="box-header">Health Segments</div>
-
-            {{ dashOrNumber(ability.Segments) }}</v-col
-          ><v-col
-            v-if="ability.ShowClockOrSegment"
-            :style="{ 'border-bottom': ability.HasKeywords ? 'thin solid' : '', 'border-color': ability.Color }"
-            style="border-left: thin solid; text-align: center"
+            v-if="ability.ShowClock"
+            :style="{ 'border-color': ability.Color }"
+            style="border-right: thin solid; text-align: center"
             cols="6"
             ><div class="box-header">Clock Size</div>
             {{ dashOrNumber(ability.Clock) }}
@@ -156,7 +148,10 @@
             v-if="ability.HasKeywords"
             v-bind:class="ability.Type == 'Attack' || (ability.HasCost + ability.HasRangeOrTarget + ability.HasTrigger) % 2 == 1 ? 'right-col' : ''"
             :style="{
-              'border-top': ability.Type == 'Attack' || (ability.HasCost + ability.HasRangeOrTarget + ability.HasTrigger) % 2 == 1 ? 'none' : 'thin solid',
+              'border-top':
+                ability.Type == 'Attack' || ability.ShowClock || (ability.HasCost + ability.HasRangeOrTarget + ability.HasTrigger) % 2 == 1
+                  ? 'none'
+                  : 'thin solid',
               'border-color': ability.Color,
             }"
             style="text-align: center; border-bottom: none">
@@ -294,6 +289,15 @@
           :onCard="true" />
       </div>
       <div
+        style="padding-top: 0.5em; padding-bottom: 0.5em"
+        class="card-cell"
+        :style="{ 'border-color': ability.Color }"
+        v-if="ability.HasChart">
+        <chart-table
+          :chart="ability.Chart"
+          style="font-size: smaller" />
+      </div>
+      <div
         v-if="ability.HasEnhancements || ability.HasImbues"
         class="card-cell"
         :style="{ 'border-color': ability.Color }">
@@ -358,13 +362,6 @@
         <display-tooltip-text
           :string="ability.Remove"
           :decorate="false" />
-      </div>
-      <div
-        style="margin-left: 1em; margin-right: 1em; margin-top: 0.5em"
-        v-if="ability.HasChart">
-        <chart-table
-          :chart="ability.Chart"
-          style="font-size: smaller" />
       </div>
     </div>
   </div>

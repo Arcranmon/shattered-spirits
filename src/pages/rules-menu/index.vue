@@ -89,14 +89,6 @@
             :collapse="false"
             :cols="1" />
         </div>
-        <div
-          v-if="$route.params.tab == 'events'"
-          class="character-tab-content">
-          <show-cards
-            :inputs="events"
-            :collapse="false"
-            :cols="1" />
-        </div>
 
         <div
           v-if="$route.params.tab == 'glossary'"
@@ -127,6 +119,7 @@ import Vue from 'vue'
 import CustomButton from '@/components/Button.vue'
 import NarrativeText from '@/database/text_files/narrative.txt'
 import TravelText from '@/database/text_files/travel.txt'
+import CampText from '@/database/text_files/camp.txt'
 import TownsText from '@/database/text_files/towns.txt'
 import EquipmentText from '@/database/text_files/equipment.txt'
 import PlayerRolesText from '@/database/text_files/player_roles.txt'
@@ -152,6 +145,7 @@ export default Vue.extend({
         'playing-the-game',
         'narrative',
         'journey',
+        'camp',
         'combat',
         'character-creation-and-progression',
         'equipment',
@@ -160,13 +154,12 @@ export default Vue.extend({
         'terrain',
         'player-roles',
         'glossary',
-        'events',
       ],
-      text: [GameModes, NarrativeText, TravelText, CombatText, CharCreationText, EquipmentText, '', '', '', PlayerRolesText, ''],
+      text: [GameModes, NarrativeText, TravelText, CampText, CombatText, CharCreationText, EquipmentText, '', '', '', PlayerRolesText, ''],
       statusCategories: ['Emotional Status', 'Status', 'Instant Effect'],
       selectedStatuses: ['Emotional Status', 'Status', 'Instant Effect'],
-      afflictionCategories: ['Condition', 'Greater Condition', 'Minor Wound', 'Moderate Wound', 'Major Wound'],
-      selectedAfflictions: ['Condition', 'Minor Wound'],
+      afflictionCategories: ['Stress', 'Condition', 'Wound'],
+      selectedAfflictions: ['Stress', 'Condition', 'Wound'],
       selectedStatus: null,
       selectedTerrain: null,
     }

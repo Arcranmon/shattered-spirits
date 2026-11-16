@@ -2,7 +2,7 @@
   <div inline>
     <div
       class="ability--head"
-      v-bind:class="type.Name"
+      :style="{ 'background-color': type.Color }"
       style="width: 100%">
       <img
         v-if="type.HasIcon"

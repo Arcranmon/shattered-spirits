@@ -17,13 +17,14 @@
         "category": "Camp",
         "type": "Power",
         "keywords": ["Camp Action"],
-        "effect": "As a _Camp Action_ when you have a campfire you may attempt to peer into what is to come on your next day of travel. Roll a die; on a 4+, the GM places a random _Discovery_, _Menace_, or _Event_ (your choice) in the deck face-up, which treats the card as already revealed when drawn. Along with this, you get a hazy vision of what is to come, the full details of which make sense when confronted with the situation. If you fail the roll, your spirit may gain _Stress_ to instead succeed."
+        "effect": "As a _Camp Action_ when you have a campfire you may attempt to peer into what is to come on your next day of travel. Roll a die; on a 4+, the GM places a random _Discovery_, _Menace_, or _Event_ (your choice) in the deck face-up, which treats the card as already revealed when drawn. Along with this, you get a hazy vision of what is to come, the full details of which make sense when confronted with the situation. If you fail the roll, you may spend 1 _Craft_ to instead succeed."
       },
       {
         "name": "Burning Augury",
         "category": "Skill",
         "type": "Power",
-        "effect": "You can look into a flame and attempt to chart potential futures, guiding your course of action. You and your spirit may both gain _Stress_ to ask your GM what the outcome of a specific action you take will be. Depending on how far reaching the consequences will be, you may need a campfire (for something as immediate as 'what would happen if I pull this lever') up to a razing inferno, for something that may take a season or more to occur ('what will happen if we plant crops in this field'). If you do not have a sufficient flame for an adequate answer, do not gain _Stress_."
+        "cost": "2 _Craft_",
+        "effect": "You can look into a flame and attempt to chart potential futures, guiding your course of action. Ask your GM what the outcome of a specific action you take will be. Depending on how far reaching the consequences will be, you may need a campfire (for something as immediate as 'what would happen if I pull this lever') up to a razing inferno, for something that may take a season or more to occur ('what will happen if we plant crops in this field'). If you do not have a sufficient flame for an adequate answer, regain all _Craft_ spent."
       },
       {
         "name": "Flickering Futures",
@@ -58,13 +59,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You can control flames within a short radius. You may effortlessly quash anything smaller than a bonfire, and can instantly create a campfire-sized flames. With focus you can move flames or cause them to grow in size, and you can sustain a torch-sized flame without fuel and with with minimal effort.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
-      },
-      {
-        "name": "Everburning",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to create and control fire could mitigate."
       },
       {
         "name": "Spreading Flames",
@@ -119,9 +113,23 @@
     ]
   },
   {
-    "name": "Novice Field Medic",
-    "category": "Supporter",
-    "type": "Discipline",
+    "name": "Literacy",
+    "category": "Skill",
+    "type": "Art",
+    "desc": "You can read, and know more than most.",
+    "abilities": [
+      {
+        "name": "Basic Literacy",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You are able to read and write. Gain 1 _Lore_, or 2 _Lore_ if you were already able to read."
+      }
+    ]
+  },
+  {
+    "name": "Field Medic I",
+    "category": "Technical",
+    "type": "Art",
     "desc": "You can quickly stabilize allies in the field, and have the instincts required to keep them standing just a little longer.",
     "prereqs": "_Physician_",
     "abilities": [
@@ -130,15 +138,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You may remove a single _Danger_ related to doing medical work under extreme danger and duress."
-      },
-      {
-        "name": "Emergency Medicine",
-        "category": "Support",
-        "type": "Reaction",
-        "trigger": "An ally is _Downed_.",
-        "prereqs": "_Wearing_ _Physician's Tools_ with at least 1 use remaining.",
-        "cost": "None",
-        "effect": "Immediately Move towards the ally by the most direct route possible, paying all costs as normal. If you end this _Movement_ _Engaged_ with them, spend a use of _Physician's Tools_. They may roll twice for their _Wound_ and take the better result."
       },
       {
         "name": "Triage",
@@ -154,22 +153,67 @@
     ]
   },
   {
-    "name": "Novice Martial Artist",
-    "category": "Striker",
-    "type": "Discipline",
+    "name": "Cutting Wind I",
+    "category": "Wind",
+    "type": "Art",
+    "desc": "You can compress the wind to a thin edge, allowing it to cut like a blade.",
+    "abilities": [
+      {
+        "name": "Cutting Wind",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You can compress air, allowing it to cut similar to a blade. You can cut at a short distance as if you were striking with a dull blade, allowing you to readily draw blood or cut substances such as cloth or rope."
+      },
+      {
+        "name": "Razor Wind",
+        "keywords": ["Spirit", "Glancing"],
+        "category": "Light",
+        "type": "Attack",
+        "material": "Wind",
+        "damage_type": "Slash",
+        "cost": "2 _Essence_",
+        "range": "1",
+        "target": "Single-Target",
+        "effect": "This Attack ignores any penalties due to Gusting and instead gains a +1 to the Attack Roll when targeting creatures in a Gusting Arena.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Sharpen",
+              "cost": "1 _Essence_",
+              "effect": "Deal +_0/1/2/2_ Damage."
+            },
+            {
+              "name": "Whirling Blades",
+              "prereq": "Cutting Wind II",
+              "cost": "2 _Essence_",
+              "effect": "Instead, Target is an _Engagement_."
+            },
+            {
+              "name": "True Blades",
+              "prereq": "Cutting Wind IV",
+              "cost": "1 _Essence_",
+              "effect": "Remove _Glancing_ and add _Bleeding_ [4] on a _Hit_, and _Bleeding_ [6] on a _Crit_."
+            }
+          ]
+        },
+        "chart": {
+          "roll": ["2-3", "4-6", "7-10", "11-12"],
+          "damage": [1, 3, 5, 7]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Martial Artist I",
+    "category": "Martial",
+    "type": "Art",
     "desc": "You excel in unarmed combat, allowing you to fight with whatever is on hand as well as a weapon.",
     "abilities": [
       {
         "name": "Martial Artist",
         "category": "Skill",
         "type": "Talent",
-        "effect": "In close combat, you always gain a die in combat skill challenges for having the right equipment, even if you are unarmed."
-      },
-      {
-        "name": "Combo Meter",
-        "category": "Offensive",
-        "type": "Passive",
-        "effect": "Gain a Combo Die, which is tracked with d6 and starts at 0. Whenever you _Hit_ with an _Unarmed_ Attack, increment it by 1. You may decrement the die by 2 to gain [_Discount_ 1] on your next _Unarmed_ Attack."
+        "effect": "In close combat, you always gain a die in combat skill challenges as if you had the right equipment, even if you are unarmed."
       },
       {
         "name": "Flowing Strikes",
@@ -181,7 +225,7 @@
         "cost": "2 _Momentum_",
         "range": "Melee",
         "target": "Single-Target",
-        "effect": "On a _Hit_+, choose one. If your Combo Die was at 3+ before this Attack you may choose an additional effect even on a _Miss_:\n* This does not count against your Attack limit for the _Turn_.\n* For the rest of the _Turn_ the Target may not respond to any _Opening_ you create.\n* Add _Impaired_ [4].",
+        "effect": "On a _Hit_+, choose one. If you already Hit with an _Unarmed_ Attack this _Turn_, choose an additional one, even on a _Miss_:\n* This does not count against your Attack limit for the _Turn_.\n* For the rest of the _Turn_ the Target may not respond to any _Opening_ you create.\n* Add _Impaired_ [4].",
         "enhancements": {
           "enhances": [
             {
@@ -202,9 +246,9 @@
     ]
   },
   {
-    "name": "Novice Dual Wielder",
-    "category": "Striker",
-    "type": "Discipline",
+    "name": "Dual Wielder I",
+    "category": "Martial",
+    "type": "Art",
     "desc": "You fight with a weapon in either hand, weaving an elegant web as you launch unpredictable strikes.",
     "abilities": [
       {
@@ -231,9 +275,9 @@
     ]
   },
   {
-    "name": "Novice Sniper",
-    "category": "Artillery",
-    "type": "Discipline",
+    "name": "Sniper I",
+    "category": "Martial",
+    "type": "Art",
     "desc": "You specialize in long-range combat, waiting for the opportune moment to make an attack before unleashing it.",
     "abilities": [
       {
@@ -260,9 +304,9 @@
     ]
   },
   {
-    "name": "Novice Warrior",
-    "category": "Defender",
-    "type": "Discipline",
+    "name": "Warrior I",
+    "category": "Martial",
+    "type": "Art",
     "desc": "You are the front line of every encounter, drawing the attention of enemies and creating a frontline, regardless of the situation.",
     "abilities": [
       {
@@ -271,12 +315,6 @@
         "type": "Power",
         "frequency": "1/Scene",
         "effect": "When in narrative combat, you may spend one [ ] to take any Danger from an ally and put it on your stakes sheet. If you are rolling _Boldly_, you may do this once for free."
-      },
-      {
-        "name": "Warrior's Spirit",
-        "category": "Offensive",
-        "type": "Passive",
-        "effect": "Gain a Warrior Die, which is tracked with d6 and starts at 0. Whenever an ally within Range 1 is Attacked, increment the die. You may decrease the value of the die by 2 to gain 1 _Speed_, but must end the current _Turn_ _Engaged_ with an enemy. You may also decrement the die to pay any Costs associated with Warrior's Rush at a 1 to 1 rate."
       },
       {
         "name": "Warrior's Rush",
@@ -298,9 +336,9 @@
     ]
   },
   {
-    "name": "Novice Commander",
-    "category": "Supporter",
-    "type": "Discipline",
+    "name": "Commander I",
+    "category": "Martial",
+    "type": "Art",
     "desc": "You are adept at commanding others, finding the openings on the battlefield that others miss and allowing your allies to seize the opportunity.",
     "abilities": [
       {
@@ -309,13 +347,6 @@
         "type": "Power",
         "frequency": "2/Scene",
         "effect": "When in narrative combat, you may spend one [ ] to reroll it and give the resulting die to an ally."
-      },
-      {
-        "name": "Commander's Presence",
-        "category": "Support",
-        "type": "Passive",
-        "range": "1",
-        "effect": "Gain a Commander Die, which is tracked with a d6 and starts at 0. Whenever you use an [_Inspiring_] ability, increment the die. You may decrement the die whenever an ally within range makes an _Attack_ or _Defense Roll_ to give them 4 _Guard_."
       },
       {
         "name": "Commander's Orders",
@@ -329,9 +360,9 @@
     ]
   },
   {
-    "name": "Novice Blademaster",
-    "category": "Striker",
-    "type": "Discipline",
+    "name": "Blademaster I",
+    "category": "Weapon",
+    "type": "Art",
     "desc": "You have Marked the blade and have rare skill with it, making you incredibly dangerous and flexible in close combat.",
     "abilities": [
       {
@@ -340,13 +371,6 @@
         "type": "Power",
         "frequency": "1/Scene",
         "effect": "When in narrative combat, if you have a sword you may play _Efficacy_ once without using a die."
-      },
-      {
-        "name": "Blade Versatility",
-        "category": "Offensive",
-        "type": "Passive",
-        "keywords": ["Respite"],
-        "effect": "At _Respite_, choose one:\n* Gain [_Discount_ 1] on the first _Blade_ _Attack_ you make this _Round_.\n* Gain [_Discount_ 1] on the first _Parry_ _Reaction_ you make this _Round_ while _Wielding_ a _Blade_."
       },
       {
         "name": "Cross Slash",
@@ -370,13 +394,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You may move and control a single nearby earthen object that you could physically lift with good precision. You have finer control and greater range when manipulating lighter objects. Additionally, you can easily chill or freeze a small amount of water.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on _Skill Challenges_."
-      },
-      {
-        "name": "Chilly Disposition",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to create and control ice could mitigate."
       },
       {
         "name": "Icebending",
@@ -458,13 +475,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You can control water. You may control nearby water, and can easily form it into different shapes. You may control approximately a tub's worth of water at a time, although it does not need to all be a single mass.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
-      },
-      {
-        "name": "Water Shaping",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to shape and control water could mitigate."
       },
       {
         "name": "Friendly Current",
@@ -604,7 +614,9 @@
         "category": "Skill",
         "type": "Power",
         "keywords": ["Spirit"],
-        "effect": "When something surprising, unexpected, or dangerous would happen that could be felt through the air, your spirit may immediately gain _Stress_. You detected this with your breezecraft before it happened, and are able to act as if you were not surprised or otherwise caught off-guard."
+        "cost": "1 _Craft_",
+        "trigger": "Something surprising, unexpected, or dangerous happens that you could feel through the air.",
+        "effect": "You detected this with your breezecraft before it happened, and are able to act as if you were not surprised or otherwise caught off-guard."
       },
       {
         "name": "Circle",
@@ -656,13 +668,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You may move and control a single nearby earthen object that you could physically lift with good precision. You have finer control and greater range when manipulating lighter objects.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
-      },
-      {
-        "name": "Stepping Stones",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to control and shape stone could mitigate."
       },
       {
         "name": "Earthbending",
@@ -743,13 +748,6 @@
         "effect": "You can manipulate nearby earth and soil easily, and can simultaneously move a wheelbarrow's worth of earth. You can shape this earth readily and, while you maintain your focus, you can keep it any shape.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
-        "name": "Smooth Road",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to control and shape soil could mitigate."
-      },
-      {
         "name": "Shape Earth",
         "category": "Utility",
         "type": "Maneuver",
@@ -821,13 +819,6 @@
         "effect": "You can control lighting and, while your control is not absolute, you can readily bend it away from others.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on _Skill Challenges_."
       },
       {
-        "name": "Lightningrod",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to create and control lightning could mitigate."
-      },
-      {
         "name": "Stormbending",
         "category": "Utility",
         "type": "Passive",
@@ -886,13 +877,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You may move and control a single nearby wooden object that you could physically lift with good precision. You have finer control and greater range when manipulating lighter objects.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
-      },
-      {
-        "name": "Friendly Bark",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to control and shape wood could mitigate."
       },
       {
         "name": "Woodbending",
@@ -960,13 +944,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You may move and control a single nearby metallic object that you could physically lift with good precision. You have finer control and greater range when manipulating lighter objects.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
-      },
-      {
-        "name": "Metallic Path",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to control and shape metal could mitigate."
       },
       {
         "name": "Metalbending",
@@ -1076,13 +1053,6 @@
         "effect": "You can effortlessly create powerful bursts of wind, capable of pushing people back and launching objects. In addition, you can control and manipulate the wind to create specific drafts and speed of the air, allowing you to clumsily manipulate small objects from a distance or precisely manipulating powdery substances and the like.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
-        "name": "Tailwind",
-        "category": "Travel",
-        "type": "Power",
-        "keywords": ["Spirit"],
-        "effect": "Your _Spirit_ may gain _Stress_ or you may spend 1 [-] to remove a _Danger_ for yourself or an ally that your ability to control and shape wind could mitigate."
-      },
-      {
         "name": "Airbending",
         "category": "Utility",
         "type": "Passive",
@@ -1112,7 +1082,7 @@
         "cost": "1 _Essence_",
         "range": "1",
         "target": "Single-Target",
-        "effect": "Attack a target within Range. This Attack ignores any penalties due to _Gusting_ and instead gains a +1 to the _Attack Roll_ when targeting creatures in a _Gusting_ _Arena_.",
+        "effect": "This Attack ignores any penalties due to _Gusting_ and instead gains a +1 to the _Attack Roll_ when targeting creatures in a _Gusting_ _Arena_.",
         "enhancements": {
           "enhances": [{ "name": "Compressed Air", "cost": "2 _Essence_", "effect": "Deal +_0/1/1/1_ _Stun_ and increase the cost to _Negate_ by 2." }]
         },
@@ -1136,7 +1106,7 @@
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
-        "effect": "You can enhance the sense of courage in others nearby, drowning out any feelings of fear or worry and giving them reckless confidence. You can use this to induce strong feelings of courage that make it easier to rally a crowd against a threat, or simply blunt the constant fear the Shattered World inspires.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+        "effect": "You can enhance the sense of courage in others. You can use this to induce strong feelings of courage in a nearby individual, filling them with reckless pride and confidence, or rouse a small crowd, making it easier to rally them against a threat.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
         "name": "Heartcraft",
@@ -1151,7 +1121,7 @@
         "category": "Travel",
         "type": "Power",
         "frequency": "1/_Camp_",
-        "effect": "When you do not need to be subtle with your craft you can use it to inspire your allies. When an ally would gain _Stress_, roll a d6. On a 5+, they instead do not gain _Stress_; if they fail the roll, your spirit may gain _Stress_ to instead allow them to succeed."
+        "effect": "When you do not need to be subtle with your craft you can use it to inspire your allies. When an ally would gain _Stress_, roll a d6. On a 5+, they instead do not gain _Stress_; if they fail the roll, you may spend 1 _Craft_ to instead allow them to succeed."
       },
       {
         "name": "Inspire Courage",
@@ -1204,7 +1174,7 @@
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
-        "effect": "You can enhance the sense of joy in others nearby, putting them at ease and lifting their spirits a great amount. You can use this to induce strong feelings of joy that make others remember you fondly, or to project a mild aura of joy that makes makes others enjoy simply being near you.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+        "effect": "You can enhance the sense of joy in others. You can use this to induce strong feelings of joy in a nearby individual that makes it easier to interact with them or to project a mild aura of joy that makes you enjoyable to be near and lifts the spirits of others.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
         "name": "Joyweaving",
@@ -1219,7 +1189,7 @@
         "category": "Camp",
         "type": "Power",
         "frequency": "1/_Camp_",
-        "effect": "When you do not need to be subtle with your craft you can use it to lift the spirits of your allies. Choose an ally; they may roll a die. On a 5+, they clear _Stress_; if they fail the roll, your spirit may gain _Stress_ to instead allow them to succeed."
+        "effect": "When you do not need to be subtle with your craft you can use it to lift the spirits of your allies. Choose an ally; they may roll a die. On a 5+, they clear _Stress_; if they fail the roll, you may spend 1 _Craft_ to instead allow them to succeed."
       },
       {
         "name": "Inspire Joy",
@@ -1272,7 +1242,7 @@
         "keywords": ["Spirit"],
         "category": "Skill",
         "type": "Talent",
-        "effect": "You can enhance the sense of grief in others nearby, amplifying negative emotions and causing a general sense of malaise. You can use this to induce strong feelings of grief that may reveal guilt or regret, or to project a mild aura of grief that makes it unpleasant to be near you.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
+        "effect": "You can enhance the sense of grief in others. You can use this to induce strong feelings of grief in a nearby individual that may reveal guilt or regret, or to create a general sense of grief that unsettles a small crowd.\n&nbsp;\nWhen using this aspect of your craft, gain +1 die on Skill Challenges ."
       },
       {
         "name": "Griefweaving",
@@ -1321,7 +1291,7 @@
             {
               "name": "Forced Isolation",
               "cost": "2 _Essence_",
-              "effect": "In addition, if the Target fails to _Negate_ they may immediately move as if it were their _Turn_. They must attempt to move to an _Arena_ with no allies or, if that is not possible, end this move not _Engaged_ with any allies."
+              "effect": "In addition, if the Target fails to _Negate_ they must immediately move as if it were their _Turn_. They must attempt to move to an _Arena_ with no allies or, if that is not possible, end this move not _Engaged_ with any allies."
             }
           ]
         },
@@ -1380,7 +1350,7 @@
   },
   {
     "name": "Artist",
-    "desc": "You are a skilled artist, allowing you to accurately capture imagery of the natural world and create aesthetic constructions.",
+    "desc": "You are a skilled artist in some form of physical medium, allowing you to accurately capture imagery of the natural world and create aesthetic constructions.",
     "category": "Crafting",
     "type": "Career",
     "abilities": [
@@ -1388,20 +1358,21 @@
         "name": "Artistic Fundamentals",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You are a skilled artist and, regardless of your specialty, are skilled at drawing and sketching. Given appropriate tools you can faithfully reproduce images of things seen on your adventures, and excel at understanding complex imagery and how a piece of art was made, which could grant additional insight. Additionally, choose a specialty for your art such as painting or sculpture. When working on or analyzing anything that matches your specialty all of these effects are heightened. Finally, you always understand the meaning an artist was attempting to represent when seeing their art, even if that is not how you feel about it.\n&nbsp;\nWhen your background and skills as an artist would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
-      },
-      {
-        "name": "Artistic Analysis",
-        "category": "Camp",
-        "type": "Action",
-        "prereqs": "Have a _Sketchbook_.",
-        "effect": "Clear a _Stress_ then make an incredibly detailed sketch of something you saw today in your _Sketchbook_. The act of transferring this to your _Sketchbook_ gives you additional information about the target, typically the equivalent of the _Discover_ _Camp Action_, but may provide additional effects (such as additional _Mastery_ when sketching a significant landmark) at GM discretion."
+        "effect": "You are a skilled artist and, regardless of your specialty, are skilled at drawing and sketching. Given appropriate tools you can faithfully reproduce images of things seen on your adventures, and excel at understanding complex imagery and how a piece of art was made, which could grant additional insight. Finally, you always understand the meaning an artist was attempting to represent when seeing their art, even if that is not how you feel about it.\n&nbsp;\nWhen your background and skills as an artist would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
         "name": "Artistic Flourish",
         "category": "Skill",
         "type": "Boon",
         "effect": "When you have the opportunity to add artistic flourishes (including when using your craft) you may spend [ ] as the _Style_ _Augment_."
+      },
+      {
+        "name": "Artistic Analysis",
+        "category": "Camp",
+        "type": "Action",
+        "frequency": "1/_Camp_",
+        "prereqs": "Have _Artists Tools_.",
+        "effect": "Make an incredibly detailed recreation of something you saw today. The act of creating this gives you additional information about the target, typically the equivalent of an _Observation_ stake or, in some cases, the effect of the _Discover_ _Travel Action_, such as when recreating a significant landmark."
       },
       {
         "name": "Artistic Expression",
@@ -1780,20 +1751,21 @@
         "category": "Camp",
         "type": "Talent",
         "frequency": "1/_Camp_",
-        "effect": "When you _Mend_ as a _Camp Action_ and target _Metal_ _Equipment_, clear a _Stress_."
+        "effect": "When you use a _Crafting_ _Camp Action_ and target _Metal_ _Equipment_, roll a d6. On a 4+, clear a _Stress_."
       },
       {
         "name": "Reforge",
         "category": "Camp",
         "type": "Action",
         "prereqs": "Appropriate Tools.",
+        "keywords": ["Crafting"],
         "effect": "Choose a _Destroyed_ piece of _Metal_ _Equipment_. Spend 1 _Supplies_, then restore it to 1 _Durability_."
       },
       {
         "name": "Field Repair",
         "category": "Skill",
         "type": "Power",
-        "effect": "Gain 1 _Stress_; you may _Mend_ or _Reforge_ without using a _Camp Action_. You may only target _Metal_ _Equipment_."
+        "effect": "Gain 1 _Stress_; you may use a _Crafting_ _Camp Action_ without spending any time. This _Camp Action_ may only target _Metal_ _Equipment_."
       },
       {
         "name": "Forge-Trained",
@@ -1807,8 +1779,8 @@
     "name": "Weaponsmith",
     "desc": "You specialize in crafting weapons of war, and few are your equal when crafting them.",
     "category": "Crafting",
-    "type": "Career",
-    "prereqs": "Carpentry or Blacksmith",
+    "type": "Art",
+    "prereqs": "Carpenter or Blacksmith",
     "abilities": [
       {
         "name": "Weapon Academia",
@@ -1820,30 +1792,18 @@
         "name": "Hone",
         "category": "Camp",
         "type": "Action",
-        "effect": "Choose an ally (including yourself) without a _Weaponsmith's Blessing_. You may take the time to maintain that ally's weaponry, granting them a _Weaponsmith's Blessing_."
-      },
-      {
-        "name": "Weapon Maintenance",
-        "category": "Skill",
-        "type": "Power",
-        "effect": "Gain 1 _Stress_; you may _Mend_ or Hone without using a _Camp Action_. You may only target Weapons_."
-      },
-      {
-        "name": "Field Maintenance",
-        "category": "Camp",
-        "type": "Talent",
-        "effect": "Whenever you _Mend_ a _Weapon_, roll a d6; on a 5+, you do not need to spend _Supplies_."
+        "effect": "Choose a weapon to work on and give it the Keen Condition if they do not already have it. <i>(When a creature makes an Attack with a Weapon, they may expend the Keen Condition to increment a die used in the Attack, then may repeat the effect. They may choose to do this after seeing the result of the Attack Roll.)</i> Only weapons you can work with (Metal for Blacksmith, Wood for Carpenter, etc.) may benefit from this."
       },
       {
         "name": "Forge Weapon",
         "category": "Crafting",
         "type": "Power",
-        "effect": "Given appropriate tools and materials, you may craft Weapons. All but the most crude of weapons take some time to craft. [Item crafting with extra benefits for weapons]\n\nAdditionally, at the start of a _Journey_, grant yourself and all allies a _Weaponsmith's Blessing_."
+        "effect": "Given appropriate tools and materials, you may craft Weapons using exotic materials, so long as you can work with said material. All but the most crude of weapons take some time to craft. [Item crafting with extra benefits for weapons]\n\nAdditionally, at the start of a _Journey_, grant yourself and all allies the Keen Weapons Condition."
       }
     ]
   },
   {
-    "name": "Tough",
+    "name": "Tough I",
     "desc": "You are exceptionally tough, pushing through any difficulty with determination and grit.",
     "category": "Archetype",
     "abilities": [
@@ -1853,6 +1813,22 @@
         "type": "Talent",
         "effect": "You are resilient against punishment and can push through effects that would stop lesser creatures in their tracks. You are resistant to pain, toxins, and other afflictions to a frightening degree and seem to have a never-ending pool of stamina.\n&nbsp;\nWhen your exceptional toughness would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
+      {
+        "name": "Toughness",
+        "category": "Defensive",
+        "type": "Passive",
+        "keywords": ["Respite"],
+        "effect": "Gain +1 Stamina and Guard.",
+        "bonuses": { "stamina": 1, "guard": 1 }
+      }
+    ]
+  },
+  {
+    "name": "Tough II",
+    "desc": "You are exceptionally tough, pushing through any difficulty with determination and grit.",
+    "category": "Archetype",
+    "prereqs": "Tough I",
+    "abilities": [
       {
         "name": "Boon of Toughness",
         "category": "Skill",
@@ -1866,18 +1842,26 @@
         "effect": "You are naturally resilient and can power through rain, sleet, and heat. You may spend one [ ] to remove a _Danger_ related to extreme weather or other harsh conditions."
       },
       {
-        "name": "Grin and Bear It",
-        "category": "Skill",
-        "type": "Talent",
-        "effect": "Gain an additional segment on your _Health Bar_."
-      },
-      {
-        "name": "Toughness",
+        "name": "Greater Toughness",
         "category": "Defensive",
         "type": "Passive",
         "keywords": ["Respite"],
-        "effect": "Gain +2 Stamina and Guard.",
-        "bonuses": { "stamina": 2, "guard": 2 }
+        "effect": "Gain an additioanl +1 Stamina and Guard.",
+        "bonuses": { "stamina": 1, "guard": 1 }
+      }
+    ]
+  },
+  {
+    "name": "Tough III",
+    "desc": "You are exceptionally tough, pushing through any difficulty with determination and grit.",
+    "category": "Archetype",
+    "prereqs": "Tough I",
+    "abilities": [
+      {
+        "name": "Grin and Bear It",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "Gain an additional segment on your _Condition Bar_."
       },
       {
         "name": "True Grit",
@@ -1891,7 +1875,7 @@
     ]
   },
   {
-    "name": "Clever",
+    "name": "Clever I",
     "desc": "You have a keen mind, and can often think your way out of a problem that would ensnare other.",
     "category": "Archetype",
     "abilities": [
@@ -1901,6 +1885,21 @@
         "type": "Talent",
         "effect": "You have a keen mind, and are able to think your way out of many problems. You excel at spotting patterns, and have an incredible memory.\n&nbsp;\nWhen your ability to think, analyze things, or plan would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
+      {
+        "name": "Schemer",
+        "category": "Support",
+        "type": "Passive",
+        "keywords": ["Respite"],
+        "effect": "Whenever you would inflict _Marked_, increase the cost to _Negate_ by 1. At _Respite_, you may inflict _Marked_ [4] on a creature within Range 1."
+      }
+    ]
+  },
+  {
+    "name": "Clever II",
+    "desc": "You have a keen mind, and can often think your way out of a problem that would ensnare other.",
+    "category": "Archetype",
+    "prereqs": "Clever I",
+    "abilities": [
       {
         "name": "Boon of Cleverness",
         "category": "Skill",
@@ -1912,7 +1911,15 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You are constantly creating plans and contingencies, which sometimes come into play. Whenever you have a bonus die related to preparation, you may roll _Skillfully_."
-      },
+      }
+    ]
+  },
+  {
+    "name": "Clever III",
+    "desc": "You have a keen mind, and can often think your way out of a problem that would ensnare other.",
+    "category": "Archetype",
+    "prereqs": "Clever II",
+    "abilities": [
       {
         "name": "Always Prepared",
         "category": "Skill",
@@ -1920,26 +1927,20 @@
         "effect": "When faced with a _Skill Challenge_ you may declare that you'd planned for this contingency. Take a _Stress_, then describe your preparations. Gain an additional die as if you had prepared."
       },
       {
-        "name": "Exceptional Plot",
+        "name": "Impromptu Scheme",
         "category": "Support",
-        "type": "Passive",
+        "type": "Reaction",
         "keywords": ["Respite"],
-        "effect": "At _Respite_, inflict _Marked_ on a creature within Range 2, then choose one of the following plans:\n* **Focus Fire!**: Choose a creature. Every time you or an ally would remove _Marked_ from the target creature, roll a d6. On a 3+, do not remove _Marked_.\n* **Form Up!**: This _Round_ whenever an ally becomes _Engaged_ with another ally, both gain 2 _Guard_, up to once per _Turn_ per pair of allies.\n* **Scatter!**: At the start of _Phase_ 1 you and all allies may spend up to 2 _Speed_ as if it was your _Turn_."
-      },
-      {
-        "name": "Exploit Opening",
-        "category": "Offensive",
-        "type": "Maneuver",
-        "keywords": ["Social"],
+        "trigger": "An ally removes _Marked_ from an enemy.",
+        "target": "Triggering ally.",
         "range": "1",
-        "target": "A _Marked_ creature within _Range_.",
         "cost": "1 _Momentum_",
-        "effect": "Remove _Marked_ from the Target. They must immediately _Negate_ [6]. Regardless of the result, they create an _Opening_. If they successfully _Negate_, they gain 4 _Block_ against all resulting Attacks."
+        "effect": "In addition to the normal effect of removing _Marked_, your ally chooses one:\n* The target enemy may not make _Reactions_ this _Turn_.\n* Target regains 3 _Guard_.\n* Inflict _Marked_ [4] on the enemy."
       }
     ]
   },
   {
-    "name": "Observant",
+    "name": "Observant I",
     "desc": "You are adept at reading people, and can pick up on small changes in a character's demeanor.",
     "category": "Archetype",
     "abilities": [
@@ -1949,6 +1950,24 @@
         "type": "Talent",
         "effect": "You have an uncanny knack for reading others. You can see through falsehoods, grasp somebody's true intention, and generally glean insights that others would see as an incredible leap of logic.\n&nbsp;\nWhen your ability to read people would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
+      {
+        "name": "Uncanny Observation",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "keywords": ["Social"],
+        "range": "1",
+        "target": "Single-Target",
+        "cost": "1 _Momentum_",
+        "effect": "Inflict _Marked_ [4]. If a character uses a _Social_ effect against them, they may remove _Marked_ to cause them to increase the _Negate_ cost by 4 instead of the usual _Marked_ effect."
+      }
+    ]
+  },
+  {
+    "name": "Observant II",
+    "desc": "You are adept at reading people, and can pick up on small changes in a character's demeanor.",
+    "category": "Archetype",
+    "prereqs": "Observant I",
+    "abilities": [
       {
         "name": "Boon of Observation",
         "category": "Skill",
@@ -1962,36 +1981,34 @@
         "frequency": "1/Day",
         "effect": "When interacting with people, you may tap into your observational powers to gain additional insight. Ask one of the following questions, which the GM must answer honestly:\n* What is the general emotional state of the room?\n* Is this person lying or attempting to deceive us?\n* What does this person want right now?",
         "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
-      },
+      }
+    ]
+  },
+  {
+    "name": "Observant III",
+    "desc": "You are adept at reading people, and can pick up on small changes in a character's demeanor.",
+    "category": "Archetype",
+    "prereqs": "Observant II",
+    "abilities": [
       {
         "name": "Unlicensed Therapist",
         "category": "Travel",
         "type": "Power",
         "keywords": ["Scouting"],
         "frequency": "1/Day",
-        "effect": "When a _Menace_ is drawn from the Travel Deck you may attempt to glean more info. If it is related to conflict or inter-party turmoil immediately learn additional information.  You may spend one [ ] or take _Stress_ to treat this Menace as if it was Scouted. If you learn no information about the card, do not spend a use.",
-        "special": "You may roll a d6 to regain a use of this _Ability_; on a 3-, take 1 _Stress_."
+        "effect": "When an _Encounter_ related to stress, emotional state, or some other interpersonal event is drawn, you may intervene before it escalates. Treat the event as if it was _Scouted_ or prevent 1 _Stress_ that it would inflict.",
+        "special": " You may spend one [ ] or take _Stress_ to regain a use of this ability."
       },
       {
         "name": "Sense Intent",
         "category": "Support",
         "type": "Passive",
         "effect": "At _Respite_ choose any enemy. The GM must tell you what category their selected _Stance_ is. If it is not an _Offensive_ _Stance_, inflict _Marked_. If it is an _Offensive_ _Stance_, instead learn how the enemy will select its Target."
-      },
-      {
-        "name": "Uncanny Observation",
-        "category": "Offensive",
-        "type": "Maneuver",
-        "keywords": ["Social"],
-        "range": "1",
-        "target": "Single-Target",
-        "cost": "2 _Momentum_",
-        "effect": "The Target becomes _Marked_. If a character uses a _Social_ effect against them, they may remove _Marked_ to cause them to automatically fail the _Negate_ roll instead of the usual _Marked_ effect."
       }
     ]
   },
   {
-    "name": "Charming",
+    "name": "Charming I",
     "desc": "You have an easy smile and an innate charm, making others feel at ease in your presence.",
     "category": "Archetype",
     "abilities": [
@@ -2000,32 +2017,6 @@
         "category": "Skill",
         "type": "Talent",
         "effect": "You have an innate quality about you that puts people at ease in your presence. Strangers warm to you quickly, are quick to offer a helping hand, and are more likely to share information with you.\n&nbsp;\nWhen your charm and ability to persuade would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
-      },
-      {
-        "name": "Boon of Charm",
-        "category": "Skill",
-        "type": "Boon",
-        "effect": "When using your natural charm you may spend one [ ] as [-] or the _Incitement_ Augment, if appropriate."
-      },
-      {
-        "name": "First Impression",
-        "category": "Skill",
-        "type": "Power",
-        "frequency": "1/Day",
-        "effect": "When meeting a new character you may charm them, causing them to treat you in a more friendly fashion. For example, a stranger might treat you as a friend, or a hostile creature may act more neutrally. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_.",
-        "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
-      },
-      {
-        "name": "Fast Friends",
-        "category": "Skill",
-        "type": "Talent",
-        "effect": "You start each _Journey_ with a _Bond_ with each of your allies."
-      },
-      {
-        "name": "Charming Presence",
-        "category": "Support",
-        "type": "Passive",
-        "effect": "At _Respite_ either target two allies with _Encourage_ [_Discount_ 1] or a single ally [_Discount_ 2]."
       },
       {
         "name": "Charm Offensive",
@@ -2040,7 +2031,49 @@
     ]
   },
   {
-    "name": "Tricky",
+    "name": "Charming II",
+    "desc": "You have an easy smile and an innate charm, making others feel at ease in your presence.",
+    "category": "Archetype",
+    "prereqs": "Charming I",
+    "abilities": [
+      {
+        "name": "Boon of Charm",
+        "category": "Skill",
+        "type": "Boon",
+        "effect": "When using your natural charm you may spend one [ ] as [-] or the _Incitement_ Augment, if appropriate."
+      },
+      {
+        "name": "First Impression",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Day",
+        "effect": "When meeting a new character you may charm them, causing them to treat you in a more friendly fashion. For example, a stranger might treat you as a friend, or a hostile creature may act more neutrally. If you attempt a _Skill Challenge_ against this character in the same _Scene_, you may roll _Skillfully_.",
+        "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
+      }
+    ]
+  },
+  {
+    "name": "Charming III",
+    "desc": "You have an easy smile and an innate charm, making others feel at ease in your presence.",
+    "category": "Archetype",
+    "prereqs": "Charming II",
+    "abilities": [
+      {
+        "name": "Fast Friends",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You start each _Journey_ with a _Bond_ with each of your allies."
+      },
+      {
+        "name": "Charming Presence",
+        "category": "Support",
+        "type": "Passive",
+        "effect": "At _Respite_ either target two allies with _Encourage_ [_Discount_ 1] or a single ally [_Discount_ 2]."
+      }
+    ]
+  },
+  {
+    "name": "Tricky I",
     "desc": "You are an adept lier and can convince almost anybody about anything.",
     "category": "Archetype",
     "abilities": [
@@ -2050,6 +2083,33 @@
         "type": "Talent",
         "effect": "You have a silver tongue and the lies you spin are often more believable than the truth. You can plant the seeds of a truth or a thought throughout a conversation and watch your mark come to the conclusion you want all on their own.\n&nbsp;\nWhen your guile would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
+      {
+        "name": "Beguile",
+        "category": "Offensive",
+        "type": "Maneuver",
+        "keywords": ["Social"],
+        "range": "1",
+        "target": "Single-Target",
+        "cost": "1 _Momentum_",
+        "effect": "Deal 1 _Stun_ to the Target, then inflict your choice of _Impaired_ [4] or _Exposed_ [4]. If you target a creature that speaks your language and craft an insult, increase the cost to Negate by 1.",
+        "enhancements": {
+          "enhances": [
+            {
+              "name": "Targeted Beguilement",
+              "cost": "1 _Momentum_",
+              "effect": "Instead, deal 3 _Stun_ to the Target, then inflict _Taunted_ [6]. You may choose any ally to be treated as the taunter. If you target a creature that speaks your language and craft an insult, increase the cost to Negate by 1."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "Tricky II",
+    "desc": "You are an adept lier and can convince almost anybody about anything.",
+    "category": "Archetype",
+    "prereqs": "Tricky I",
+    "abilities": [
       {
         "name": "Boon of Guile",
         "category": "Skill",
@@ -2062,7 +2122,15 @@
         "type": "Power",
         "frequency": "1/Person/Journey",
         "effect": "When you lie, you may use this power to ensure the other person believes it, if only for a few moments. If the lie is believable, the listener believes it until proven wrong. If it is questionable, they believe it for the rest of the day. If it is unbelievable, they believe it for the rest of the conversation. If it is obviously false, they believe it for a few moments."
-      },
+      }
+    ]
+  },
+  {
+    "name": "Tricky III",
+    "desc": "You are an adept lier and can convince almost anybody about anything.",
+    "category": "Archetype",
+    "prereqs": "Tricky II",
+    "abilities": [
       {
         "name": "Silver-Tongued Recovery",
         "category": "Skill",
@@ -2075,36 +2143,11 @@
         "category": "Defensive",
         "type": "Passive",
         "effect": "Whenever your GM asks a question to determine how an NPC behaves, you may lie about your current status such as your current _Guard_, _Stamina_, number of _Wounds_, _Statuses_ you are affected by or other personal attributes. You may only lie about stats on your character sheet, and may not lie about information obvious on the battle map, such as whether you are the closest character to an enemy. You may only lie when its relevant for NPC targeting; abilities that deal additional effects based on your current _Stamina_ or similar still trigger as normal, and Status effects affect you as normal."
-      },
-      {
-        "name": "Unflappable",
-        "category": "Defensive",
-        "type": "Passive",
-        "effect": "It costs half as much to _Negate_ the first _Emotional Status_ you're inflicted with each _Round_."
-      },
-      {
-        "name": "Beguile",
-        "category": "Offensive",
-        "type": "Maneuver",
-        "keywords": ["Social"],
-        "range": "1",
-        "target": "Single-Target",
-        "cost": "1 _Momentum_",
-        "effect": "Deal 1 _Stun_ to the Target, then inflict your choice of _Impaired_ [4] or _Exposed_ [4].",
-        "enhancements": {
-          "enhances": [
-            {
-              "name": "Improved Beguilement",
-              "cost": "1 _Momentum_",
-              "effect": "Instead, deal 3 _Stun_ to the Target, then inflict _Taunted_ [6]. You may choose any ally to be treated as the taunter."
-            }
-          ]
-        }
       }
     ]
   },
   {
-    "name": "Strong",
+    "name": "Strong I",
     "desc": "You possess incredible physical strength, allowing you to accomplish feats that others could not even dream of.",
     "category": "Archetype",
     "abilities": [
@@ -2115,11 +2158,40 @@
         "effect": "You are fantastically strong, approaching the limits of what a human can do unaided by craft. You can overpower creatures twice your size, and lift far beyond your weight.\n&nbsp;\nWhen your physical strength would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
+        "name": "Strong Strike",
+        "type": "Passive",
+        "category": "Offensive",
+        "effect": "Whenever you make a _Martial Attack_, choose one:\n* Deal +1 _Stun_.\n* Convert 1 Damage to _Stun_.\n\nRepeat this effect X times, where X is the base Cost of the original Attack."
+      }
+    ]
+  },
+  {
+    "name": "Strong II",
+    "desc": "You possess incredible physical strength, allowing you to accomplish feats that others could not even dream of.",
+    "category": "Archetype",
+    "prereqs": "Strong I",
+    "abilities": [
+      {
         "name": "Boon of Strength",
         "category": "Skill",
         "type": "Boon",
         "effect": "When using your tremendous strength you may spend one [ ] as [-] or the _Efficacy_ Augment, if appropriate."
       },
+      {
+        "name": "Strong Back",
+        "category": "Travel",
+        "type": "Talent",
+        "effect": "You may carry 2 _Load_ without it affecting your _Encumbrance_.",
+        "bonuses": { "load": 2 }
+      }
+    ]
+  },
+  {
+    "name": "Strong III",
+    "desc": "You possess incredible physical strength, allowing you to accomplish feats that others could not even dream of.",
+    "category": "Archetype",
+    "prereqs": "Strong II",
+    "abilities": [
       {
         "name": "Overwhelming Power",
         "category": "Skill",
@@ -2129,28 +2201,15 @@
         "special": "You may take 1 _Stress_ to regain a use of this Ability."
       },
       {
-        "name": "Strong Back",
-        "category": "Travel",
-        "type": "Talent",
-        "effect": "You may carry 2 _Load_ without it affecting your _Encumbrance_.",
-        "bonuses": { "load": 2 }
-      },
-      {
         "name": "Mighty",
         "category": "Support",
         "type": "Passive",
         "effect": "You may, when it would be beneficial, treat yourself as Size 3 instead of Size 2. Decrease the Cost to _Negate_ _Grabbed_ and _Forced Movement_ by 1."
-      },
-      {
-        "name": "Strong Strike",
-        "type": "Passive",
-        "category": "Offensive",
-        "effect": "Whenever you make a _Martial Attack_, choose one:\n* Deal +1 _Stun_.\n* Convert 1 Damage to _Stun_.\n\nRepeat this effect X times, where X is the base Cost of the original Attack."
       }
     ]
   },
   {
-    "name": "Swift",
+    "name": "Swift I",
     "desc": "You are fleet of foot and incredibly nimble, allowing you to outrun your peers with ease.",
     "category": "Archetype",
     "abilities": [
@@ -2161,6 +2220,23 @@
         "effect": "You are fast and able to easily navigate the world around you. When their is a question of who gets somewhere first it is nearly always you, and you can easily navigate even difficult terrain.\n&nbsp;\nWhen your speed, agility, and general maneuverability would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
       },
       {
+        "name": "Agility",
+        "category": "Mobility",
+        "type": "Reaction",
+        "trigger": "A _Phase_ begins.",
+        "cost": "None",
+        "effect": "Take a _Turn_ this _Phase_. You may only use _Mobility_ abilities and _Move_.",
+        "special": "Increase the _Cost_ of this by 1 _Momentum_ each time you use it in a _Round_."
+      }
+    ]
+  },
+  {
+    "name": "Swift II",
+    "desc": "You are fleet of foot and incredibly nimble, allowing you to outrun your peers with ease.",
+    "category": "Archetype",
+    "prereqs": "Swift I",
+    "abilities": [
+      {
         "name": "Boon of Swiftness",
         "category": "Skill",
         "type": "Boon",
@@ -2170,7 +2246,23 @@
         "name": "Quick March",
         "category": "Travel",
         "type": "Boon",
-        "effect": "During _Travel_, you may spend one [ ] as [+] for a _Speed_ _Augment_. You may gain _Fatigue_ to instead allow an ally to spend one of their [ ] as [+] as you help them compensate for their pace."
+        "effect": "During _Travel_, you may spend one [ ] as [+] for a _Speed_ _Augment_. You may gain _Stress_ to instead allow an ally to spend one of their [ ] as [+] as you help them compensate for their pace, or _Fatigue_ to allow 2 allies to do so."
+      }
+    ]
+  },
+  {
+    "name": "Swift III",
+    "desc": "You are fleet of foot and incredibly nimble, allowing you to outrun your peers with ease.",
+    "category": "Archetype",
+    "prereqs": "Swift II",
+    "abilities": [
+      {
+        "name": "Sudden Burst",
+        "category": "Skill",
+        "type": "Power",
+        "frequency": "1/Day",
+        "effect": "At any point in a scene you may choose a location. If there is a clear path to that spot or you have the means to make it to that location, you are there with no ill-effect faster than any other character can respond.",
+        "special": "You may take 1 _Stress_ to regain a use of this _Ability_."
       },
       {
         "name": "Incredible Speed",
@@ -2178,15 +2270,6 @@
         "type": "Passive",
         "effect": "Gain +1 _Speed_.",
         "bonuses": { "speed": 1 }
-      },
-      {
-        "name": "Agility",
-        "category": "Mobility",
-        "type": "Reaction",
-        "trigger": "A _Phase_ begins.",
-        "cost": "None",
-        "effect": "Take a _Turn_ this _Phase_. You may only use _Mobility_ abilities and _Move_.",
-        "special": "Increase the _Cost_ of this by 1 _Momentum_ each time you use it in a _Round_."
       }
     ]
   }

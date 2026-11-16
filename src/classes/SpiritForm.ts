@@ -1,5 +1,5 @@
 import { store } from '@/store'
-import { Base } from '@/class'
+import { Base, ColorMap } from '@/class'
 
 class SpiritForm extends Base {
   private stamina_: number

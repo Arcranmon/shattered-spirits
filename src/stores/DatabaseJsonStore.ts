@@ -47,7 +47,7 @@ const kPlayerAbilities = [
   'Overpower',
   'Steal',
   'Discover',
-  'Scout',
+  'Patrol',
   'Focused Travel',
   'Aid',
   'Hunt',
@@ -63,6 +63,10 @@ const kPlayerAbilities = [
   'Explore',
   'Mend',
   'Pamper',
+  'Warding Craft',
+  'Push Craft',
+  'Prepare Camp',
+  'Keep Watch',
 ]
 
 const kSpiritAbilities = ['Return', 'Perfect Parry', 'Perfect Dodge', 'Gain Advantage', 'Drop', 'Equip', 'Flank', 'Delay']
@@ -261,12 +265,6 @@ export class DatabaseJsonStore extends VuexModule {
     }
   }
 
-  get getArts(): any {
-    return () => {
-      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Art')
-    }
-  }
-
   get getSpiritArtsByType(): any {
     return (type: String) => {
       return this.AbilityPackages.filter((x) => x.Type.trim() === 'Spirit Art' && x.Category == type)
@@ -294,6 +292,18 @@ export class DatabaseJsonStore extends VuexModule {
   get getDisciplinesByType(): any {
     return (type: String) => {
       return this.AbilityPackages.filter((x) => x.Type.trim() === 'Discipline' && x.Category == type)
+    }
+  }
+
+  get getArts(): any {
+    return () => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Art')
+    }
+  }
+
+  get getArtsByType(): any {
+    return (type: String) => {
+      return this.AbilityPackages.filter((x) => x.Type.trim() === 'Art' && x.Category == type)
     }
   }
 

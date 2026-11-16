@@ -67,6 +67,7 @@
             </v-tab>
             <v-tab> <h4>Reactions</h4> </v-tab>
             <v-tab> <h4>Stances</h4> </v-tab>
+            <v-tab> <h4>Skill</h4> </v-tab>
             <v-tab> <h4>Travel</h4> </v-tab>
             <v-tab> <h4>Camp</h4> </v-tab>
           </v-tabs>
@@ -101,6 +102,12 @@
             /></v-tab-item>
             <v-tab-item>
               <ability-tab
+                abilityType="Skill"
+                :character="character"
+                :basic="true"
+            /></v-tab-item>
+            <v-tab-item>
+              <ability-tab
                 abilityType="Travel"
                 :character="character"
                 :basic="true"
@@ -113,26 +120,32 @@
           </v-tabs-items>
         </div>
         <div
-          class="character-tab-content"
           v-if="$route.params.tab == 'archetypes'"
           style="border-top: 2px solid black">
+          <v-row
+            class="select-bar"
+            align="center">
+            <v-col cols="12">
+              <v-select
+                v-model="selectedArchetypes"
+                :items="archetypeRanks"
+                attach
+                label="Rank Filter"
+                multiple
+                filled
+                background-color="#dbd9d9e3" />
+            </v-col>
+          </v-row>
           <show-cards
+            class="character-tab-content"
             :inputs="archetypes"
             :collapse="false"
-            :cols="1" />
+            :cols="1"
+            style="border-top: 2px solid black" />
         </div>
 
-        <div v-if="$route.params.tab == 'spirit-disciplines'"><elemental-disciplines /></div>
-        <div
-          class="character-tab-content"
-          style="border-top: 2px solid black"
-          v-if="$route.params.tab == 'martial-disciplines'">
-          <show-cards
-            :inputs="martial_disciplines"
-            :collapse="false"
-            :cols="1" />
-        </div>
-        <div v-if="$route.params.tab == 'spirit-arts'"><elemental-arts /></div>
+        <div v-if="$route.params.tab == 'disciplines'"><elemental-disciplines /></div>
+        <div v-if="$route.params.tab == 'arts'"><arts /></div>
         <div
           class="character-tab-content"
           v-if="$route.params.tab == 'careers'"
@@ -181,17 +194,19 @@ import AbilityWidget from '@/components/AbilityWidget.vue'
 import AbilityTab from '@/components/AbilityTab.vue'
 import SpiritAbilities from '@/components/SpiritAbilities.vue'
 import ElementalDisciplines from '@/components/ElementalDisciplines.vue'
-import ElementalArts from '@/components/ElementalArts.vue'
+import Arts from '@/components/Art.vue'
 
 export default Vue.extend({
   name: 'character-options',
-  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, ElementalArts, ElementalDisciplines },
+  components: { AbilityTab, CustomButton, ShowCards, AbilityWidget, SpiritAbilities, Arts, ElementalDisciplines },
   data() {
     return {
       selectedTab: 'basic-skills',
-      tabs: ['basic-skills', 'archetypes', 'spirit-disciplines', 'martial-disciplines', 'careers', 'spirit-customization'],
+      tabs: ['basic-skills', 'archetypes', 'disciplines', 'careers', 'arts', 'spirit-customization'],
       abilityTab: 0,
       character: new Character(),
+      selectedArchetypes: ['I', 'II', 'III'],
+      archetypeRanks: ['I', 'II', 'III'],
     }
   },
   computed: {
@@ -199,18 +214,12 @@ export default Vue.extend({
       if (this.isMobile) return 1
       return 2
     },
-    martial_disciplines: function () {
-      var martialDiscs = this.$store.getters.getDisciplinesByType('Defender')
-      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Supporter'))
-      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Striker'))
-      martialDiscs = martialDiscs.concat(this.$store.getters.getDisciplinesByType('Artillery'))
-      return martialDiscs.sort((a, b) => a.Name.localeCompare(b.Name))
-    },
     arts: function () {
       return this.$store.getters.getArts().sort((a, b) => a.Name.localeCompare(b.Name))
     },
     archetypes: function () {
-      return this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
+      var items = this.$store.getters.getArchetypes().sort((a, b) => a.Name.localeCompare(b.Name))
+      return items.filter((a) => this.selectedArchetypes.includes(a.Name.split(' ').at(-1)))
     },
     careers: function () {
       return this.$store.getters.getCareers().sort((a, b) => a.Name.localeCompare(b.Name))
@@ -258,8 +267,8 @@ export default Vue.extend({
 }
 .select-bar {
   background: #85704c !important;
-  padding-left: 0em;
-  margin-left: 0em;
+  padding: 0em;
+  margin: 0em;
 }
 .ability-box {
   margin-top: 0 !important;

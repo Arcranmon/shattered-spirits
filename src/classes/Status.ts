@@ -6,7 +6,6 @@ class Status extends Base {
   private reacts_: string[]
   private repeat_: string
   private remove_: string
-  private segments_: number
   private clock_: number
 
   public constructor(name) {
@@ -15,7 +14,6 @@ class Status extends Base {
     this.remove_ = ''
     this.reacts_ = []
     this.repeat_ = ''
-    this.segments_ = 0
     this.clock_ = 0
   }
 
@@ -49,11 +47,8 @@ class Status extends Base {
   get Repeat() {
     return this.repeat_
   }
-  get ShowClockOrSegment() {
-    return this.segments_ + this.clock_ > 0
-  }
-  get Segments() {
-    return this.segments_
+  get ShowClock() {
+    return this.clock_ > 0
   }
   get Clock() {
     return this.clock_
@@ -87,14 +82,14 @@ class Status extends Base {
   }
   public get Icon() {
     if (this.Name == 'Error') return ''
-    if (this.Type == 'Minor Wound') return require('@/assets/statuses/Minor Wound.svg')
-    if (this.Type == 'Moderate Wound') return require('@/assets/statuses/Moderate Wound.svg')
-    if (this.Type == 'Major Wound') return require('@/assets/statuses/Major Wound.svg')
-    if (this.Name == 'Exhausted') return require('@/assets/statuses/Fatigue.svg')
+    if (this.Name == 'Exhaustion') return require('@/assets/statuses/Fatigue.svg')
+    if (this.Name == 'Mortal Exhaustion') return require('@/assets/statuses/Fatigue.svg')
     if (this.Name == 'Starving') return require('@/assets/statuses/Hungry.svg')
     if (this.Name == 'Dehydrated') return require('@/assets/statuses/Hungry.svg')
     if (this.Name == 'Extreme Stress') return require('@/assets/statuses/Stress.svg')
     if (this.Name == 'Grappled') return require('@/assets/statuses/Grabbed.svg')
+    if (this.Type == 'Wound') return require('@/assets/statuses/Moderate Wound.svg')
+    if (this.Type == 'Mortal Wound') return require('@/assets/statuses/Major Wound.svg')
     return require('@/assets/statuses/' + this.Name + '.svg')
   }
   public get Color() {
@@ -116,7 +111,6 @@ class Status extends Base {
     this.recover_ = data.recover || ''
     this.reacts_ = data.reacts || []
     this.repeat_ = data.repeat || ''
-    this.segments_ = data.segments || 0
     this.clock_ = data.clock || 0
     this.remove_ = data.remove || ''
   }

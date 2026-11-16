@@ -57,7 +57,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      selectedTab: 'Elemental Disciplines',
       elements: ['Earth', 'Flame', 'Metal', 'Water', 'Wind', 'Wood'],
       subdisciplines: [
         ['Stonecraft', 'Landcraft', 'Mightcraft', 'Heartcraft', 'Tremorcraft'],
@@ -70,23 +69,6 @@ export default Vue.extend({
       elementTab: 0,
       disciplineTab: 0,
     }
-  },
-  computed: {
-    flameDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Flame').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    metalDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Metal').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    waterDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Water').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    windDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Wind').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
-    woodDisciplines: function () {
-      return this.$store.getters.getDisciplinesByType('Wood').sort((a, b) => a.Name.localeCompare(b.Name))
-    },
   },
 })
 </script>

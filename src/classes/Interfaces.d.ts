@@ -17,6 +17,7 @@ declare interface IEnhanceData {
   name: string
   cost: string
   effect: string
+  prereq: string
   reactive?: boolean
   exclusive?: boolean
 }
@@ -213,7 +214,6 @@ declare interface IStatusData extends IBaseData {
   see?: string
   reacts?: Array<string>
   type?: string
-  segments?: number
   clock?: number
   remove?: string
 }

@@ -14,12 +14,14 @@ import { marked } from 'marked'
 import { getModule } from 'vuex-module-decorators'
 import Tooltip from '@/components/TooltipParam.vue'
 import ShowGreenvaleCharts from '@/components/ShowGreenvaleCharts.vue'
+import MarkdownTable from '@/components/MarkdownTable.vue'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
 
 Vue.component('Tooltip', Tooltip)
 Vue.component('ShowGreenvaleCharts', ShowGreenvaleCharts)
+Vue.component('MarkdownTable', MarkdownTable)
 
 Vue.prototype.$marked = marked
 Vue.prototype.$jenna = require('@/assets/art/Jenna.png')

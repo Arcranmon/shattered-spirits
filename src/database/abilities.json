@@ -13,11 +13,29 @@
     "effect": "Roll 2d6 and consult the Discovery Chart for this region. If you get an option you have already fully discovered, instead mark one _Route Mastery_."
   },
   {
-    "name": "Scout",
+    "name": "Push Craft",
+    "type": "Power",
+    "category": "Skill",
+    "cost": "1 _Craft_",
+    "effect": "For the remainder of the scene, double the efficacy of one aspect of one type of your Craft. For example, you might double the range you could use your Galecraft at, or double the heat created by your Furnacecraft."
+  },
+  {
+    "name": "Warding Craft",
     "type": "Action",
     "category": "Travel",
     "cost": "[-]",
-    "effect": "Until _Time Passes_, you automatically know the type of all Encounters drawn from the _Travel Deck_. Once before _Time Passes_ you may declare you have scouted an Encounter after learning its type, providing you advanced notice or some other benefit."
+    "target": "Self or an ally.",
+    "effect": "Remove a _Danger_ for the Target that your Craft would allow you to influence.",
+    "enhancements": {
+      "enhances": [{ "name": "Enhanced Craft", "cost": "1 _Craft_", "effect": "Remove said _Danger_ for another two Targets." }]
+    }
+  },
+  {
+    "name": "Patrol",
+    "type": "Action",
+    "category": "Travel",
+    "cost": "[-]",
+    "effect": "_Scout_ the next set of Encounters. If there is no _Encounter_ before _Time Passes_, gain [ ]."
   },
   {
     "name": "Focused Travel",
@@ -98,7 +116,20 @@
     "name": "Connect",
     "type": "Action",
     "category": "Camp",
-    "effect": "Choose another character to spend time talking and bonding with. You must both take this _Camp Action_. The two of you roleplay a quick scene. If you don't have a _Bond_, gain a _Bond_ and both roll a d6; on a 4+, clear a _Stress_. If you already have a _Bond_, instead both clear a _Stress_."
+    "effect": "Choose another character to spend time talking and bonding with. You must both take this _Camp Action_. The two of you roleplay a quick scene, then gain a _Bond_ and each clear a _Stress_."
+  },
+  {
+    "name": "Prepare Camp",
+    "type": "Action",
+    "category": "Camp",
+    "effect": "Increase the _Security_ or _Concealment_ of your camp by 1. Any number of characters may take this _Camp Action_, but only benefit from the first two instances. If there are not appropriate resources available to fortify or hide your traces this may cost _Supplies_."
+  },
+  {
+    "name": "Keep Watch",
+    "type": "Action",
+    "keywords": ["Rest Action"],
+    "category": "Camp",
+    "effect": "You take extra watches through the night. Gain a _Stress_ and roll 1 less die on your _Rest Roll_, but increase the _Security_ of your camp by 1. Any number of characters may take this _Camp Action_, but only benefit from the first two instances."
   },
   {
     "name": "Patch",
@@ -118,6 +149,7 @@
     "name": "Mend",
     "type": "Action",
     "category": "Camp",
+    "keywords": ["Crafting"],
     "cost": "Supplies",
     "prereqs": "Appropriate Tools.",
     "effect": "Choose a piece of Equipment that is missing _Durability_ but not _Destroyed_. If you have the appropriate tools, restore 1 _Durability_."
@@ -132,14 +164,14 @@
     "name": "Pamper",
     "type": "Action",
     "category": "Camp",
-    "effect": "You spend time with your spirit and take care of it, whether that be playing with it, styling it, or something similar. Afterwards, you or your spirit clears a _Stress_."
+    "effect": "You spend time with your spirit and take care of it, whether that be playing with it, styling it, or something similar. Afterwards, your spirit marks one segment on a _Stress_ clock."
   },
   {
     "name": "Cut Loose",
     "type": "Action",
     "category": "Camp",
     "cost": "1 _Supplies_",
-    "effect": "You automatically clear a Stress, but cannot remove the _Crash_ _Danger_ from your _Rest Roll_. You may do this in addition to another _Camp Action_. Each successive use of _Cut Loose_ in a day removes a single die from your _Rest Roll_."
+    "effect": "You automatically clear a Stress, but cannot remove the _Crash_ _Danger_ from your _Rest Roll_."
   },
   {
     "name": "Unencumbered",
@@ -159,7 +191,7 @@
     "category": "Skill",
     "keywords": ["Spirit"],
     "type": "Talent",
-    "effect": "You have basic skill with all Flamecraft disciplines:\n* **Flamesense**: You can sense the rough location of nearby fire, flammable objects, and detect obvious flamecraft.\n* **Flamecraft**: You can control and quench small flames and create a small candle fire without fuel.\n* **Furnacecraft**: You can slowly heat objects you are touching and the air around you.\n* **Flickercraft**: When looking into a large flame you can get vague, hazy flickers of the future.\n* **Fuelcraft**: You can modestly enhance your physical capabilities in brief flashes.\n* **Wrathcraft**: You incite minor feelings of rage in others.\n\nYou are clumsy with this craft, and struggle to use it quickly or under pressure and does not typically provide die on Skill Challenges. Your _Spirit_ may take a _Stress_ to grant you enhanced effect with a single specialization for the rest of the scene."
+    "effect": "You have basic skill with all Flamecraft disciplines:\n* **Flamesense**: You can sense the rough location of nearby fire, flammable objects, and detect obvious flamecraft.\n* **Flamecraft**: You can control and quench small flames and create a small candle fire without fuel.\n* **Furnacecraft**: You can slowly heat objects you are touching and the air around you.\n* **Flickercraft**: When looking into a large flame you can get vague, hazy flickers of the future.\n* **Fuelcraft**: You can modestly enhance your physical capabilities in brief flashes.\n* **Wrathcraft**: You incite minor feelings of rage in others.\n\nYou are clumsy with this craft, and struggle to use it quickly or under pressure and does not typically provide die on Skill Challenges."
   },
   {
     "name": "Basic Windcraft",
@@ -655,6 +687,14 @@
     "trigger": "None. You may use this _Reaction at any time, but only once per _Round_.",
     "cost": "None",
     "effect": "Immediately gain 4 _Momentum_, then gain _Fatigue_."
+  },
+  {
+    "name": "Overcraft",
+    "category": "Utility",
+    "type": "Reaction",
+    "trigger": "None. You may use this _Reaction at any time, but only once per _Round_.",
+    "cost": "1 _Craft_",
+    "effect": "Immediately gain 4 _Essence_."
   },
   {
     "name": "Sinker",
