@@ -211,8 +211,8 @@
   {
     "name": "Bleeding",
     "desc": "You are actively bleeding and rapidly losing your ability to fight.",
-    "effect": "Bleeding is tracked with a d6, which starts at 1. While you are Bleeding lose _Stamina_ equal to the die value at the start of your _Turn_. If you would ever increment the die while already at 6, gain the _Blood Loss_ _Wound_ then reset the die to 1. If you end combat Bleeding you must spend _Supplies_ or gain a _Blood Loss_ _Wound_. If you would be _Downed_ by Bleeding, suffer the below effects:\n* **6-12**: Gain a _Blood Loss_ _Wound_.\n* **3-5**: Gain two _Blood Loss_ _Wounds_.\n* **2-**: Gain three _Blood Loss_ _Wounds_.",
-    "repeat": "Increment the die.",
+    "effect": "Bleeding is tracked with a d6, which starts at 1. While you are Bleeding lose _Stamina_ equal to the die value at the start of your _Turn_. If you would ever increment the die while already at 6, instead lose 1 _Stamina_. If you end combat Bleeding you must spend _Supplies_ or gain a _Blood Loss_ _Wound_. If you would be _Downed_ by Bleeding, suffer the below effects:\n* **6-12**: Gain a _Blood Loss_ _Wound_.\n* **3-5**: Gain two _Blood Loss_ _Wounds_.\n* **2-**: Gain three _Blood Loss_ _Wounds_.",
+    "repeat": "Increment the die. If you cannot, lose 1 _Stamina_.",
     "recover": "Create an _Opening_ and spend a _Wielded_ _Supplies_, then make a _Recovery Roll_. Reduce your _Bleeding_ die by the result.",
     "remove": "Only effects that specifically remove Bleeding remove it.",
     "type": "Status"
@@ -359,19 +359,19 @@
   {
     "name": "Pull",
     "desc": "You drag a foe closer to you, or simply pull them into a nearby obstacle.",
-    "effect": "Pull lists two Negate costs. If the Target does not pay the higher of the _Negate_ costs, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_, so long as it brings them closer to you.\n\n If the target did not _Negate_, you may instead move them to an adjacent _Arena_, so long as this moves them to an _Arena_ closer to you.",
+    "effect": "Choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_, so long as it brings them closer to you.\n\n If the target has no _Guard_, you may instead move them to an adjacent _Arena_, so long as this moves them to an _Arena_ closer to you.",
     "type": "Instant Effect"
   },
   {
     "name": "Push",
     "desc": "You launch a creature away from you, creating space and sending them away.",
-    "effect": "Push lists two Negate costs. If the Target does not pay the higher of the _Negate_ costs, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you.\n\n If the target did not _Negate_, you may instead move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you.",
+    "effect": "Choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_, so long as it does not make them _Engaged_ with you.\n\n If the target has no _Guard_, you may instead move them to an adjacent _Arena_, so long as this moves them to an _Arena_ further from you.",
     "type": "Instant Effect"
   },
   {
     "name": "Slide",
     "desc": "You adroitly move a foe about, placing them where you wish.",
-    "effect": "Slide lists two Negate costs. If the Target does not pay the higher of the _Negate_ costs, choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_.\n\n If the target did not _Negate_, you may instead move them to an adjacent _Arena_.",
+    "effect": "Choose one:\n* If they are _Engaged_ with another creature, immediately inflict 2 _Crush_ Damage on both.\n* If they are _Engaging_ Terrain they could slam into, inflict 2 _Crush_ Damage on them and create a _Collision_.\n* Force the target to stop _Engaging_ their current _Terrain_ and leave their current _Engagement_. You may then force them to enter a new _Engagement_ of your choice within their current _Arena_.\n\n If the target has no _Guard_, you may instead move them to an adjacent _Arena_.",
     "type": "Instant Effect"
   },
   {
@@ -383,7 +383,7 @@
   },
   {
     "name": "Shrouded",
-    "effect": "Non-Melee Attacks against you have _Disadvantage_ unless the attacker has _Perception_ on you.",
+    "effect": "Attacks against you have _Disadvantage_ unless the attacker has some alternate way to _Perceive_ you.",
     "remove": "Remove this effect if you make an Attack, force a creature to _Negate_, or become _Engaged_.",
     "type": "Status"
   },

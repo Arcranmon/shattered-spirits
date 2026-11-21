@@ -86,6 +86,15 @@
             :cols="2">
             <b>
               <display-tooltip-text
+                string="_Attack Limit_"
+                :decorate="false" />
+            </b>
+          </v-col>
+          <v-col
+            class="chart--head"
+            :cols="2">
+            <b>
+              <display-tooltip-text
                 string="_Speed_"
                 :decorate="false" />
             </b>
@@ -118,6 +127,11 @@
             class="chart--cols justify-center align-center"
             :cols="2"
             >0</v-col
+          >
+          <v-col
+            class="chart--cols justify-center align-center"
+            :cols="2"
+            >{{ ability.AttackLimit }}</v-col
           >
           <v-col
             class="chart--cols justify-center align-center"

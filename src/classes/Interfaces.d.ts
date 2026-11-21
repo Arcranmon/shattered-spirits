@@ -201,6 +201,7 @@ declare interface IStanceData extends IAbilityPackageData {
   phase: number
   block: number
   speed: number
+  attack_limit: number
 }
 
 declare interface IStatusEffect {

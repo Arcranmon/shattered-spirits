@@ -3,16 +3,26 @@ import math
 from termcolor import colored
 import argparse
 import re
-import OrphanFinder
+import tkinter as tk
+from tkinter import ttk, scrolledtext
+from ttkthemes import ThemedTk
+import sys
 
 # Momentum is 'worth' this much
-momentum_value = 2
+momentum_value = 1
 stun_scale = 0.5 # Guard is worth less (not sure how much)
+gambit_worth = 2*momentum_value*(1/6 + 1/18)
+
+
+# Statistics for a given roll based on dis/advantage.
+straight = [0.0277777777778, 0.0555555555556, 0.0833333333333, 0.111111111111, 0.138888888889, 0.146666666667, 0.138888888889, 0.111111111111, 0.0833333333333, 0.0555555555556, 0.0277777777778]
+advantage = [0.00462962962963, 0.0138888888889, 0.0324074074074, 0.0555555555556, 0.087962962963, 0.125, 0.157407407407, 0.146666666667, 0.157407407407, 0.125, 0.0740740740741]
+disadvantage = [0.0740740740741, 0.125, 0.157407407407, 0.146666666667, 0.157407407407, 0.125, 0.087962962963, 0.0555555555556, 0.0324074074074, 0.0138888888889, 0.00462962962963]
 
 # In theory, Advantage is 'worth' ~1/2 Momentum just in terms of the increased likelihood of a Gambit. Actual worth depends heavily on the applicable attack.
 
 status_multipliers = {
-    "Bleeding": 2,
+    "Bleeding": 3,
     "Poisoned": 1.5,
     "Alight": 3,
     "Entangled": 3,
@@ -30,6 +40,7 @@ status_multipliers = {
 
 instant_statuses = ["Defending"]
 
+# How much 'damage' these are worth
 keyword_modifiers = {
     "Brawling": 0.15, # Pretty niche
     "Remote": 0.25,
@@ -38,9 +49,16 @@ keyword_modifiers = {
     "Natural": 0,
     "Martial": 0,
     "Unarmed": 0,
+    "Spirit": 0,
+    "Safe": 0, # Attacks with Safe just have it so you can spend Speed to use 'em
+    "Siege": 0.25,
+    "Stab": 0,
+    "Slash": 0,
+    "Crush": 0
 }
 
 attack_range_multiplier = {
+    "Special": 0,
     "Melee": 1,
     "0": 0.95,
     "1": 0.9,
@@ -109,6 +127,116 @@ def get_databases():
     merged_data.extend(json.load(open('.\src\database\\npcs\\npcs.json')))
     return merged_data
 
+class Attack:
+    name: str = ""
+    cost: int = 0
+    roll_chart = [0]*4
+    damage_chart = [0]*4
+    stun_chart = [0]*4
+    status_chart = ['']*4
+    bonus_damage =  [0]*4
+    keywords = []
+    keyword_bonus = 0
+    expected_targets = 1
+    range = 'Melee'
+    override_range = ""
+    cost_adjust = 0
+    target_damage = 0
+    straight_damage = 0
+    advantage_damage = 0
+    disadvantage_damage = 0
+    damage_diff = 0
+    estimated_damage_chart = [0]*11
+    full_damage = [0]*11
+    full_stun = [0]*11
+    full_status = [0]*11
+    enhancement_ev = [0]*10
+
+    def rangeMultiplier(self):
+        if len(self.override_range) > 0: return attack_range_multiplier[self.override_range]
+        return attack_range_multiplier[self.range]
+
+    def hasRollChart(self):
+        return self.roll_chart[0] == self.roll_chart[1]
+
+
+    def __init__(self, jsonAttack):
+    # Set up better parsing of cost
+        self.name = jsonAttack.get("name", "NA")
+        self.cost = int(jsonAttack.get("cost", [0])[0])
+        if "chart" in jsonAttack:
+            chart = jsonAttack.get("chart")
+            self.roll_chart = chart.get("roll", [0]*4)
+            self.damage_chart = chart.get("damage", [0]*4)
+            self.stun_chart = chart.get("stun", [0]*4)
+            self.status_chart = chart.get("status", ['']*4)                
+        if("analysis_notes" in jsonAttack):
+            analysis_notes = jsonAttack["analysis_notes"]
+            self.cost_adjust = analysis_notes.get("fudge", 0)
+            self.cost += self.cost_adjust
+            self.expected_targets = analysis_notes.get("expected_targets", 1)
+            if("bonus_damage" in analysis_notes):
+                bonus_damage = analysis_notes.get("bonus_damage", 0)
+                if(isinstance(bonus_damage, float) or isinstance(bonus_damage, int)):
+                    self.bonus_damage = [bonus_damage]*11
+                else:
+                    self.bonus_damage = bonus_damage
+            self.override_range = analysis_notes.get("range", "")       
+        for keyword in jsonAttack.get("keywords", []):       
+            keyword = keyword.replace('_', '')
+            self.keywords.append(keyword)
+            split_keywords = keyword.split(' ')
+            if not split_keywords[0] in keyword_modifiers:
+                print("WARNING: Keyword " + split_keywords[0] + " does not have a listed cost.")
+                continue
+            if len(split_keywords) > 1:
+                self.keyword_bonus += keyword_modifiers.get(split_keywords[0], 0) * int(split_keywords[1])
+            else:
+                self.keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
+
+        attack_ranges = jsonAttack.get("range", "Special").replace('_', '').replace('-', '').split('/')
+        self.range = attack_ranges[-1]    
+        if "(" in  self.range :
+             self.range  =  self.range .split("(")[0].replace(' ', '')
+
+        self.target_damage =  (self.cost * (pow(self.cost, 1/3))) * self.rangeMultiplier()
+        if(not self.hasRollChart()):
+            self.target_damage += gambit_worth/2 # Give back half the damage of a gambit
+        
+        roll_map = 11 * [0]
+        for i, roll in enumerate(self.roll_chart):
+            if roll == 0:
+                continue
+            roll_range = roll.split('-')
+            if(len(roll_range) == 1):
+                roll_map[int(roll_range[0])-2] = i
+            else:
+                for j in range(int(roll_range[0]), int(roll_range[1]) + 1):
+                    roll_map[j-2] = i
+
+        for roll_index in range(10,-1,-1):
+            index = roll_map[roll_index]
+            damage = self.damage_chart[index]
+            damage += self.stun_chart[index] * stun_scale
+            damage += get_status_damage(self.status_chart[index], index)
+            damage += self.bonus_damage[index]
+            if(damage != 0): 
+                damage += self.keyword_bonus 
+            self.straight_damage += straight[roll_index]*damage
+            self.advantage_damage += advantage[roll_index]*damage
+            self.disadvantage_damage += disadvantage[roll_index]*damage
+            self.estimated_damage_chart[roll_index] = damage
+            self.full_damage[roll_index] = self.damage_chart[index]
+            self.full_stun[roll_index] = self.stun_chart[index]
+            self.full_status[roll_index] = self.status_chart[index].replace('_', '')
+
+        self.damage_diff = self.straight_damage - self.target_damage
+        
+        expected_damage_no_fudge =  ((self.cost - self.cost_adjust) * (pow(self.cost - self.cost_adjust, 1/3))) * self.rangeMultiplier()
+        for num in range(1,11):
+            expected_damage_higher_cost = ((self.cost + num) * (pow(self.cost+ num, 1/3))) * self.rangeMultiplier()
+            self.enhancement_ev[num-1] = expected_damage_higher_cost - expected_damage_no_fudge
+
 
 def find_attack(parent, name):
     data = []
@@ -131,7 +259,8 @@ def find_attack(parent, name):
         raise Exception("Attack not found.")
     if not target["type"] == 'Attack':
         raise Exception("Ability is not an attack.")
-    return target
+    
+    return Attack(target)
 
 def estimate_all_damage(threshold):
     invalid_attacks = {}
@@ -146,14 +275,14 @@ def estimate_all_damage(threshold):
         for item in database:            
             for el in item.get("abilities", []):
                 if el.get("type", "") == 'Attack':
-                    key = el["name"]+ "(" + item["name"] + ")"
+                    key = el["name"]+ " (" + item["name"] + ")"
                     if  "chart" in el:
-                        diff = estimate_damage(el, False, False)
+                        diff = attack.target_damage
                         if(abs(diff) > threshold):
                             invalid_attacks[key] = diff
                     elif "analysis_notes" in el:
                         if "status" in el["analysis_notes"]:
-                            diff = estimate_damage(el, False, False)
+                            diff = attack.target_damage
                             if(abs(diff) > threshold):
                                 invalid_attacks[key] = diff
 
@@ -161,148 +290,212 @@ def estimate_all_damage(threshold):
         for el in database:
             if el.get("type", "") == 'Attack':
                 if "chart" in el:
-                    diff = estimate_damage(el, False, False)
+                    diff = attack.target_damage
                     if(abs(diff) > threshold):
                         invalid_attacks[el["name"]] = diff
                 elif "analysis_notes" in el:
                     if "status" in el["analysis_notes"]:
-                        diff = estimate_damage(el, False, False)
+                        diff = attack.target_damage
                         if(abs(diff) > threshold):
                             invalid_attacks[el["name"]] = diff
 
-    for key in invalid_attacks:
-        print("    " + key + ": " + str(invalid_attacks[key]))
+
+    for key in dict(sorted(invalid_attacks.items())):
+        value = invalid_attacks[key]
+        print(("    " + key + ": ").ljust(50 + (0 if value > 0 else -1)) + colored("{:.3f}".format(value), 'magenta' if value > threshold else 'red' if value < -threshold else 'green'))
+
+def print_attack(attack):     
+    colors = ["red", "yellow", "green", "magenta"]
+    hit_string = colored("|", 'red')
+    damage_string = colored("|", 'red')
+    for index, item in enumerate(attack.roll_chart):            
+        a, b = item.split('-') if '-' in item else [item, item ]         
+        a, b = int(a), int(b)
+        for num in range(a, b+1):
+            hit_string += colored("   " + str(num) + "  |", colors[index])
+            pad = "" if num < 10 else " "
+            damage_string += colored(" " + "{:.2f}".format(attack.estimated_damage_chart[index]) + pad + " |", colors[index])
+    print(hit_string)
+    print(damage_string)
+    print(colored("Expected Damage:        " +  "{:.3f}".format(attack.target_damage), 'blue'))
+    print(colored("Straight Attack:        " +  "{:.3f}".format(attack.straight_damage), 'white'))
+    print(colored("Advantage Attack:       " +  "{:.3f}".format(attack.advantage_damage), 'green'))
+    print(colored("Disadvantage Attack:    " +  "{:.3f}".format(attack.disadvantage_damage), 'red'))
+    print()
+    print("Expected Damage Difference: " + "{:.3f}".format(attack.damage_diff) + "") 
+    print()
+    print("ENHANCEMENT EXPECTED VALUE") 
+    for i, item in enumerate(attack.enhancement_ev):
+        print("+" + str(i) +  ": {:.3f}".format(item))
+
+class RedirectText:
+    def __init__(self, text_widget):
+        self.text_widget = text_widget
+
+    def write(self, string):
+        self.text_widget.insert(tk.END, string)
+        self.text_widget.see(tk.END)  # Scroll to the end
+
+    def flush(self):
+        pass  # No operation needed for flush
+
+# Should expand this to show keywords, fudge, and bonus damage
+def launch_gui ():    
+    root = tk.Tk()
+
+    # root window title and dimension
+    root.title("Shattered Spirits Damage Estimator")
+    root.geometry('1400x800')
+
+    attacks = []    
+    # Maybe break this chunk out into its own thing
+    abilities = json.load(open('.\src\database\\abilities.json'))
+    traits = json.load(open('.\src\database\\traits.json'))
+    equipment = json.load(open('.\src\database\\items\\equipment.json'))
+    weapons = json.load(open('.\src\database\\items\\weapons.json'))
+    abilityPackages = json.load(open('.\src\database\\ability_packages.json'))
+    for database in [abilityPackages, traits, equipment, weapons]:
+        for item in database:            
+            for el in item.get("abilities", []):
+                if el.get("type", "") == 'Attack':
+                    attacks.append((el["name"], item["name"]))
+    for el in abilities:
+        if el.get("type", "") == 'Attack':
+            attacks.append((el["name"], ""))
+    
+    listbox = tk.Listbox(
+        root,
+        listvariable=tk.Variable(value=sorted(attacks)),
+        height=40, font=('Arial', 12)
+    )
+    listbox.grid(column=0, row=0, padx=10, ipadx=40, sticky="n", rowspan=100 )
+
+    name_lbl = tk.Label(root, text="NA", font=('Arial', 24, 'bold'))
+    name_lbl.grid(column=1, row=0, columnspan=6 )
+
+    expectedHeader = tk.Label(root, text="Expected Damage", font=('Arial', 12, 'bold'))
+    expectedHeader.grid(column=1, row=1, padx=10, ipadx=40 )
+    straightHeader = tk.Label(root, text="Straight Damage", font=('Arial', 12, 'bold'))
+    straightHeader.grid(column=1, row=2, padx=10, ipadx=40 )
+    diffHeader = tk.Label(root, text="Delta", font=('Arial', 12, 'bold'))
+    diffHeader.grid(column=1, row=3, padx=10, ipadx=40, pady=10 )
+    advantageHeader = tk.Label(root, text="Advantage", font=('Arial', 12, 'bold'))
+    advantageHeader.grid(column=1, row=4, padx=10, ipadx=40 )
+    disadvantageHeader = tk.Label(root, text="Disadvantage", font=('Arial', 12, 'bold'))
+    disadvantageHeader.grid(column=1, row=5, padx=10, ipadx=40 )
+
+    enhancementHeader = tk.Label(root, text="Enhancement Targets", font=('Arial', 12, 'bold'))
+    enhancementHeader.grid(column=4, row=1, padx=10, ipadx=40, columnspan=3 )
+    
+    rollHeader = tk.Label(root, text="Roll", font=('Arial', 14, 'bold'))
+    rollHeader.grid(column=1, row=6, padx=10, ipadx=40, pady=10 )
+    stunHeader = tk.Label(root, text="Stun", font=('Arial', 14, 'bold'))
+    stunHeader.grid(column=2, row=6, padx=10, ipadx=40, pady=10 )
+    damageHeader = tk.Label(root, text="Damage", font=('Arial', 14, 'bold'))
+    damageHeader.grid(column=3, row=6, padx=10, ipadx=40, pady=10 )
+    statusHeader = tk.Label(root, text="Status", font=('Arial', 14, 'bold'))
+    statusHeader.grid(column=4, row=6, padx=10, ipadx=40, pady=10 )
+    evHeader = tk.Label(root, text="Value", font=('Arial', 14, 'bold'))
+    evHeader.grid(column=5, row=6, padx=10, ipadx=40, pady=10 )
+    weightHeader = tk.Label(root, text="Normalized", font=('Arial', 14, 'bold'))
+    weightHeader.grid(column=6, row=6, padx=10, ipadx=40, pady=10 )
+
+    quickAdjustHeader = tk.Label(root, text="Quick Adjust", font=('Arial', 14, 'bold')) 
+    quickAdjustHeader.grid(column=1, row=19, padx=10, ipadx=40, columnspan=6)
+    damageAddedHeader = tk.Label(root, text="Damage Adjustment", font=('Arial', 14, 'bold')) 
+    damageAddedHeader.grid(column=1, row=20, padx=10, ipadx=40)
+    missHeader = tk.Label(root, text="Miss", font=('Arial', 14, 'bold')) 
+    missHeader.grid(column=2, row=20, padx=10, ipadx=40)
+    grazeHeader = tk.Label(root, text="Graze", font=('Arial', 14, 'bold')) 
+    grazeHeader.grid(column=3, row=20, padx=10, ipadx=40)
+    hitHeader = tk.Label(root, text="Hit", font=('Arial', 14, 'bold')) 
+    hitHeader.grid(column=4, row=20, padx=10, ipadx=40)
+    critHeader = tk.Label(root, text="Crit", font=('Arial', 14, 'bold')) 
+    critHeader.grid(column=5, row=20, padx=10, ipadx=40)
+    allHeader = tk.Label(root, text="All", font=('Arial', 14, 'bold')) 
+    allHeader.grid(column=6, row=20, padx=10, ipadx=40)
 
 
-def estimate_damage(attack, glancing, print_stats):
-    # Statistics for a given roll based on dis/advantage.
-    straight = [0.0277777777778, 0.0555555555556, 0.0833333333333, 0.111111111111, 0.138888888889, 0.166666666667, 0.138888888889, 0.111111111111, 0.0833333333333, 0.0555555555556, 0.0277777777778]
-    advantage = [0.00462962962963, 0.0138888888889, 0.0324074074074, 0.0555555555556, 0.087962962963, 0.125, 0.157407407407, 0.166666666667, 0.157407407407, 0.125, 0.0740740740741]
-    disadvantage = [0.0740740740741, 0.125, 0.157407407407, 0.166666666667, 0.157407407407, 0.125, 0.087962962963, 0.0555555555556, 0.0324074074074, 0.0138888888889, 0.00462962962963]
-
-    # Useful analysis parameters.
-    cost = 0
-    roll_chart = 0*4
-    damage_chart = [0]*4
-    stun_chart = [0]*4
-    status_chart = ['']*4
-    bonus_damage =  [0]*4
-    expected_targets = 1
-    override_range = ""
-
-    cost += int(attack.get("cost", "0")[0])
-                    
-    if("chart" in attack):
-        if(not("roll" in attack["chart"])):
-            roll_chart = ["2-3", "4-5", "6-10", "11-12"]
-        else:                        
-            roll_chart = attack["chart"]["roll"]
-        if(not("damage" in attack["chart"])):
-            damage_chart = [0]*4
-        else:                        
-            damage_chart = attack["chart"]["damage"]
-        if(not("stun" in attack["chart"])):
-            stun_chart = [0]*4
-        else:                        
-            stun_chart = attack["chart"]["stun"]
-        if(not("status" in attack["chart"])):
-            status_chart = ['']*4
-        else:
-            status_chart = attack["chart"]["status"]
-            
-
-    if("analysis_notes" in attack):
-        analysis_notes = attack["analysis_notes"]
-        cost += analysis_notes.get("fudge", 0)
-        expected_targets = analysis_notes.get("expected_targets", 1)
-        if("bonus_damage" in analysis_notes):
-            if(isinstance(analysis_notes["bonus_damage"], float) or isinstance(analysis_notes["bonus_damage"], int)):
-                bonus_damage = [analysis_notes["bonus_damage"]]*11
-            else:
-                bonus_damage = analysis_notes["bonus_damage"]
-        override_range = analysis_notes.get("range", "")
-
-    keyword_bonus = 0
-
-    for keyword in attack.get("keywords", []):       
-        keyword = keyword.replace('_', '')
-        split_keywords = keyword.split(' ')
-        if not split_keywords[0] in keyword_modifiers:
-            print("WARNING: Keyword " + split_keywords[0] + " does not have a listed cost.")
-            continue
-        if len(split_keywords) > 1:
-            keyword_bonus += keyword_modifiers.get(split_keywords[0], 0) * int(split_keywords[1])
-        else:
-            keyword_bonus += keyword_modifiers.get(split_keywords[0], 0)
-
-    attack_ranges = attack["range"].replace('_', '').replace('-', '').split('/')
-    attack_range = attack_ranges[-1]
-    if override_range != "":
-        attack_range = override_range
-
-    # Parse and range keywords associated with this.
-    if "(" in attack_range:
-        attack_range = attack_range.split("(")[0].replace(' ', '')
-    straight_damage = 0
-    advantage_damage = 0
-    disadvantage_damage = 0
-
-    # Adjust for cost.
-    target_damage =  (cost * momentum_value)* attack_range_multiplier[attack_range]
-
-    # Adjust for expected targets.
-    target_damage = target_damage / expected_targets
-
-    # TODO: Add a roll map check.
-    roll_map = 11 * [0]
-    for i, roll in enumerate(roll_chart):
-        roll_range = roll.split('-')
-        if(len(roll_range) == 1):
-            roll_map[int(roll_range[0])-2] = i
-        else:
-            for j in range(int(roll_range[0]), int(roll_range[1]) + 1):
-                roll_map[j-2] = i
-
-    # Calculate the damage for each Phase.
-    est_damage = [0]*12
-    for roll_index in range(10,-1,-1):
-        index = roll_map[roll_index]
-        damage = damage_chart[index]
-        damage += stun_chart[index] * stun_scale
-        if(glancing): damage = math.ceil(damage/2.0)
-        if(index < len(status_chart)):
-            damage += get_status_damage(status_chart[index], index)
-        damage += bonus_damage[index]
-        if(roll_chart[index] != 0): 
-            damage += keyword_bonus / 2 # Keywords are priced as Momentum, 2 Damage per Momentum
-        straight_damage += straight[roll_index]*damage
-        advantage_damage += advantage[roll_index]*damage
-        disadvantage_damage += disadvantage[roll_index]*damage
-        est_damage[index] = damage
+    def selectAttack(event):
+        for i, item in enumerate(listbox.get(0,tk.END)):
+            temp_attack = find_attack(item[1], item[0])
+            if abs(temp_attack.damage_diff) > 0.1:
+                listbox.itemconfig(i, bg = "red")
+            else:                
+                listbox.itemconfig(i, bg = "white")
+        selected = listbox.get(listbox.curselection())
+        attack = find_attack(selected[1], selected[0])
+        name_lbl.configure(text=attack.name)
+        expectedText = tk.Label(root, text=str(f'{attack.target_damage:.4f}'))
+        expectedText.grid(column=2, row=1, padx=10, ipadx=40, pady=10 )
+        straightText = tk.Label(root, text=str(f'{attack.straight_damage:.4f}'))
+        straightText.grid(column=2, row=2, padx=10, ipadx=40, pady=10 )
+        diffText = tk.Label(root, text=str(f'{attack.damage_diff:.4f}'), fg="green" if attack.damage_diff >= 0.1 else"red" if attack.damage_diff <= -0.1 else "black") 
+        diffText.grid(column=2, row=3, padx=10, ipadx=40, pady=10 )
+        advantageText = tk.Label(root, text=str(f'{attack.advantage_damage:.4f}'))
+        advantageText.grid(column=2, row=4, padx=10, ipadx=40, pady=10 )
+        disadvantageText = tk.Label(root, text=str(f'{attack.disadvantage_damage:.4f}'))
+        disadvantageText.grid(column=2, row=5, padx=10, ipadx=40, pady=10 )
+        for i in range(10):   
+            enhancementText = tk.Label(root, text=str(i+1) + ": " + str(f'{attack.enhancement_ev[i]:.3f}'), width=14, height=1)
+            enhancementText.grid(row=2+(i%4),column=4+int(i/4), sticky="w")       
+        for i in range(11):   
+            rowOffset = 7       
+            rollText = tk.Label(root, text=str(i+2), width=14, height=1)
+            rollText.grid(row=rowOffset+i,column=1)
+            stunText = tk.Label(root, text=str(attack.full_stun[i]), width=14, height=1)
+            stunText.grid(row=rowOffset+i,column=2)
+            damageText = tk.Label(root, text=str(attack.full_damage[i]), width=14, height=1)
+            damageText.grid(row=rowOffset+i,column=3)
+            statusText = tk.Label(root, text=str(attack.full_status[i] if len(attack.full_status[i]) > 0 else '-'), width=14, height=1)
+            statusText.grid(row=rowOffset+i,column=4)
+            evText = tk.Label(root, text=str(f'{attack.estimated_damage_chart[i]:.4f}'), width=14, height=1)
+            evText.grid(row=rowOffset+i,column=5)
+            weightText = tk.Label(root, text=str(f'{attack.estimated_damage_chart[i]*straight[i]:.4f}'), width=14, height=1)
+            weightText.grid(row=rowOffset+i,column=6)
         
+  
 
-    if(print_stats):
-        colors = ["red", "yellow", "green", "magenta"]
-        hit_string = colored("|", 'red')
-        damage_string = colored("|", 'red')
-        for index, item in enumerate(roll_chart):            
-            a, b = item.split('-') if '-' in item else [item, item ]         
-            a, b = int(a), int(b)
-            for num in range(a, b+1):
-                hit_string += colored("   " + str(num) + "  |", colors[index])
-                pad = "" if num < 10 else " "
-                damage_string += colored(" " + "{:.2f}".format(est_damage[index]) + pad + " |", colors[index])
+        for i in range(11):   
+            rowOffset = 21      
+            if i == 5: continue 
+            mod = (i-5)/2            
+            adjusts = [0,0,0,0]
+            for j in range(4):
+                roll_range = attack.roll_chart[j].split('-')
+                if(len(roll_range) == 1):
+                    roll = int(roll_range[0])-2
+                    if mod < 0 and abs(mod) > attack.estimated_damage_chart[roll]:
+                         adjusts[j] += -attack.estimated_damage_chart[roll]*straight[roll] 
+                    else:
+                        adjusts[j] += mod*straight[roll]
+                else:
+                    for k in range(int(roll_range[0]), int(roll_range[1]) + 1):
+                        roll = int(k)-2
+                        if mod < 0 and abs(mod) > attack.estimated_damage_chart[roll]:
+                             adjusts[j] += -attack.estimated_damage_chart[roll]*straight[roll] 
+                        else:
+                            adjusts[j] += mod*straight[roll]
 
-        print(hit_string)
-        print(damage_string)
-        print(colored("Expected Damage:        " +  "{:.3f}".format(target_damage), 'blue'))
-        print(colored("Straight Attack:        " +  "{:.3f}".format(straight_damage), 'white'))
-        print(colored("Advantage Attack:       " +  "{:.3f}".format(advantage_damage), 'green'))
-        print(colored("Disadvantage Attack:    " +  "{:.3f}".format(disadvantage_damage), 'red'))
-    if(print_stats):
-        print("\033[1mExpected Damage Difference: " + "{:.3f}".format(straight_damage-target_damage) + "\033[0m") 
+            damageAddText = tk.Label(root, text=str(f'{mod:.4f}'), width=14, height=1)
+            damageAddText.grid(row=rowOffset+i,column=1)
+            missText = tk.Label(root, text=str(f'{adjusts[0]:.4f}'), width=14, height=1)
+            missText.grid(row=rowOffset+i,column=2)
+            grazeText = tk.Label(root, text=str(f'{adjusts[1]:.4f}'), width=14, height=1)
+            grazeText.grid(row=rowOffset+i,column=3)
+            hitText = tk.Label(root, text=str(f'{adjusts[2]:.4f}'), width=14, height=1)
+            hitText.grid(row=rowOffset+i,column=4)
+            critText = tk.Label(root, text=str(f'{adjusts[3]:.4f}'), width=14, height=1)
+            critText.grid(row=rowOffset+i,column=5)
+            allText = tk.Label(root, text=str(f'{sum(adjusts):.4f}'), width=14, height=1)
+            allText.grid(row=rowOffset+i,column=6)
 
-    return straight_damage - target_damage
+
+    listbox.bind('<<ListboxSelect>>', selectAttack)
+    listbox.selection_set(0)  
+    listbox.event_generate("<<ListboxSelect>>")
+
+    root.mainloop()
 
 
 if __name__ == "__main__":
@@ -311,11 +504,13 @@ if __name__ == "__main__":
     parser.add_argument("--threshold", help="How large of a gap between expected and actual damage to flag.", type=float, default=0.1)
     parser.add_argument("--parent", help="What the parent to this ability is.", type=str, default="")
     parser.add_argument("--name", help="Name of the ability.", type=str)
-    parser.add_argument("--glancing", help="Whether or not to apply Glancing.", action='store_true')
+    parser.add_argument("--gui", action='store_true' )
     args = parser.parse_args()
 
-    if(args.analyze_all):
+    if args.analyze_all:
         estimate_all_damage(args.threshold)
+    elif args.gui:
+        launch_gui()
     else:        
         attack = find_attack(args.parent, args.name)
-        estimate_damage(attack, args.glancing, True)
+        print_attack(attack)

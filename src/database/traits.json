@@ -332,13 +332,12 @@
         "cost": "1 _Momentum_, 1 _Speed_",
         "effect": "Attack a Target within Range. The Target may not Attack you this _Turn_.",
         "chart": {
-          "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "stun": [0, 2, 3, 4],
-          "status": ["None", "_Exposed_ [3]", "_Exposed_ [4]", "_Exposed_ [5]"]
+          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "stun": [0, 1, 2, 3],
+          "status": ["None", "None", "_Exposed_ [1]", "_Exposed_ [2]"]
         },
         "analysis_notes": {
-          "fudge": 0.4,
-          "analysis_notes": "Speed cost, minus the (partial) free Disengage"
+          "analysis_notes": "Speed cost is ~1.5 Momentum, Disengage is normally 2 Speed, so call it a wash"
         },
         "enhancements": {
           "enhances": [
@@ -575,7 +574,7 @@
             {
               "name": "Driving Ram",
               "cost": "1 _Speed_",
-              "effect": "Add _Push_ [2/4]. If you _Push_, you may move with the Target, reducing any _Speed_ costs by 1 and adding [_Safe_]."
+              "effect": "Add _Push_ [4]. If you _Push_, you may move with the Target, reducing any _Speed_ costs by 1 and adding [_Safe_]."
             },
             {
               "name": "Head Down",
@@ -658,7 +657,7 @@
         "name": "Rending Claws",
         "category": "Skill",
         "type": "Power",
-        "effect": "Your claws are incredibly deadly and are an incredibly lethal opening assault. On the very first round of a _Skill Challenge_, gain an automatic _Efficacy_ stake when your claws would aid in battle."
+        "effect": "Your claws are incredibly deadly and are a lethal opening assault. On the very first round of a _Skill Challenge_, gain an automatic _Efficacy_ stake when your claws would aid in battle."
       },
       {
         "name": "Claw",
@@ -668,29 +667,33 @@
         "desc": "A natural weapon suitable for claws, talons, and all similar appendages.",
         "range": "Melee",
         "target": "Single-Target",
-        "cost": "2 _Momentum_",
-        "effect": "Make two Attacks that you may move between. For every two times you _Hit_+ a Target in a _Turn_, inflict _Bleeding_ [4].",
+        "cost": "3 _Momentum_",
+        "effect": "Make two Attacks against the same target. If both _Hit_+, the second Attack deals +1 Damage.",
         "enhancements": {
           "enhances": [
             {
-              "name": "Furious Assault",
+              "name": "Maul",
               "cost": "1 _Momentum_",
               "reactive": true,
-              "effect": "Attack the same Target again at a -1 _Penalty_. You may repeat this _Enhancement_, but take an additional -1 _Penalty_ each time."
+              "effect": "Attack the same Target an additional time, adding [_Follow-Up_]."
             },
             {
               "name": "Rend",
               "cost": "1 _Momentum_",
               "reactive": true,
-              "effect": "You must _Hit_+ before you can use this. Add [_Piercing_] and a +1 to the _Attack Roll_ to all subsequent <u>Claw</u> Attacks against the Target this _Turn_."
+              "effect": "If after resolving the attack the Target has no _Guard_, inflict _Bleeding_."
             }
           ]
         },
         "chart": {
-          "roll": ["2-4", "5-6", "7-10", "11-12"],
+          "roll": ["2-4", "5-6", "6-9", "10-12"],
           "damage": [0, 1, 2, 3]
         },
-        "analysis_notes": { "fudge": -0.5, "bonus_damage": [0, 1, 2, 3], "notes": "Attacking twice is good; fudge is for Gambit value inherent to an attack." }
+        "analysis_notes": {
+          "fudge": -0.44,
+          "bonus_damage": [0, 1, 2.5, 3.5],
+          "notes": "-0.111 for expanded crit, -0.3333 for second attack gambit"
+        }
       }
     ],
     "desc": "You have sharp claws useful for attacking foes."

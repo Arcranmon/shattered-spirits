@@ -153,6 +153,33 @@
     ]
   },
   {
+    "name": "Earthsense I",
+    "category": "Earth",
+    "type": "Art",
+    "desc": "You can feel nearby earth, detecting sources of it and noting its shape.",
+    "abilities": [
+      {
+        "name": "Earthsense",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You are able to sense nearby earth and have a sense of its qualities such as its makeup, structure, or durability. Additionally, you can tell if earth has been crafted recently, and can detect earthcraft near you."
+      },
+      {
+        "name": "Combat Earthsense",
+        "category": "Defensive",
+        "type": "Passive",
+        "effect": "You may always _Perceive_ creatures made of or _Wearing_ at least a _Medium_ item made of _Earth_ within Range 1.",
+        "imbues": [
+          {
+            "name": "Focused Senses",
+            "cost": "1 _Essence_",
+            "effect": "Gain +1 on all _Defense Rolls_ against _Earth_ this _Round_."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "Cutting Wind I",
     "category": "Wind",
     "type": "Art",
@@ -266,11 +293,12 @@
       },
       {
         "name": "Flurry",
+        "range": "Special",
         "category": "Special",
         "type": "Attack",
         "cost": "1 _Momentum_",
         "prereqs": "_Wielding_ a non-_Shield_ _Weapon_ in either _Hand_.",
-        "effect": "_Attack_ with both _Weapons_, paying all costs as normal. Instead of making a normal _Attack Roll_, instead roll 3d6. Choose one die to be shared by both Attacks, then assign the others to the Attacks however you desire, using the results as the _Attack Roll_ for either."
+        "effect": "_Attack_ with both _Weapons_, paying all costs as normal. Instead of making a normal _Attack Roll_, instead roll 3d6. Choose one die to be shared by both Attacks, then assign each of the remaining die to one of the attacks."
       }
     ]
   },
@@ -539,7 +567,7 @@
             {
               "name": "Driving Stream",
               "cost": "1 _Essence_",
-              "effect": "Add _Push_ [1/3] to the Attack."
+              "effect": "Add _Push_ [3] to the Attack."
             }
           ]
         },
@@ -712,7 +740,7 @@
               "name": "Power",
               "cost": "2 _Essence_",
               "exclusive": true,
-              "effect": "_Fling_ a _Small_ _Earth_ _Object_. This is a _Balanced_ Attack and deals  +3 _Stun_ and +_2/2/3/3_ Damage."
+              "effect": "_Fling_ a _Small_ _Earth_ _Object_. This deals  +3 _Stun_ and +_2/2/3/3_ Damage."
             },
             {
               "name": "Power+",
@@ -723,10 +751,10 @@
           ]
         },
         "chart": {
-          "stun": [1, 2, 2, 3],
-          "damage": [0, 1, 2, 4],
+          "stun": [1, 1, 1, 2],
+          "damage": [0, 1, 1, 2],
           "roll": ["2-4", "5-6", "7-10", "11-12"],
-          "status": ["None", "None", "_Exposed_ [3]", "_Exposed_ [5]"]
+          "status": ["None", "None", "_Exposed_ [2]", "_Exposed_ [4]"]
         },
         "analysis_notes": {
           "bonus_damage": [0, 0, 0, 0]
@@ -1090,7 +1118,7 @@
           "stun": [0, 0, 1, 2],
           "damage": [0, 0, 0, 0],
           "roll": ["2-3", "4-5", "6-10", "11-12"],
-          "status": ["None", "_Push_ [0/1]", "_Push_ [1/3]", "_Push_ [2/4]"]
+          "status": ["None", "_Push_ [1]", "_Push_ [3]", "_Push_ [4]"]
         }
       }
     ]
@@ -1118,9 +1146,9 @@
       {
         "name": "Courageous Presence",
         "keywords": ["Spirit"],
-        "category": "Travel",
+        "category": "Skill",
         "type": "Power",
-        "frequency": "1/_Camp_",
+        "frequency": "1/Day",
         "effect": "When you do not need to be subtle with your craft you can use it to inspire your allies. When an ally would gain _Stress_, roll a d6. On a 5+, they instead do not gain _Stress_; if they fail the roll, you may spend 1 _Craft_ to instead allow them to succeed."
       },
       {
@@ -1424,10 +1452,38 @@
     ]
   },
   {
+    "name": "Trapper I",
+    "desc": "You are an expert when it comes to traps, and are able to interact with them far more efficiently than others.",
+    "category": "Technical",
+    "type": "Art",
+    "prereqs": "_Hunter_ or _Tinkerer_",
+    "abilities": [
+      {
+        "name": "Trapper Knowledge",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "You are well-versed in traps, and can easily identify the trigger or mechanism. You can improvise traps quite easily and, when you lay a trap, it is far more difficult to detect.\n\nWhen your background and skills as a trapper would aid in a situation, gain +1 die on an appropriate Skill Challenge or Interaction."
+      },
+      {
+        "name": "Trap Master",
+        "category": "Skill",
+        "type": "Talent",
+        "effect": "When you encounter a trap you may roll _Skillfully_ to disarm or avoid it. Additionally, you may assist others in avoiding a trap without spending _Stress_."
+      },
+      {
+        "name": "Lay Traps",
+        "category": "Camp",
+        "type": "Action",
+        "effect": "You take the time to lay traps around the camp, either for food or security. Choose one:\n* Gain +1 _Security_, or +2 if you have more advanced traps or a particularly defensible location.\n* Make a _Hunting Roll_ at _Advantage_, then gain half the result in the morning."
+      }
+    ]
+  },
+  {
     "name": "Delver",
     "desc": "The Underworld is a dangerous place, full of archaic machines and deadly traps. Despite this, it's a world of riches, one which you've delved into time and time again.",
     "category": "Skill",
     "type": "Career",
+    "prereqs": "_Tinkerer_",
     "abilities": [
       {
         "name": "Delving Expertise",
@@ -1451,13 +1507,7 @@
         "name": "Mechanic",
         "category": "Skill",
         "type": "Talent",
-        "effect": "You have an instinctive understanding of machines and devices from the Old World and, while you can't reproduce them, you can typically determine how to safely operate them and, if damaged, you know what you might need to do to get it in working order. This includes complex machinery, but you are also able to deal with simple devices such as locks given the appropriate tools."
-      },
-      {
-        "name": "Untrappable",
-        "category": "Skill",
-        "type": "Talent",
-        "effect": "When you encounter a trap you may roll _Skillfully_ to disarm or avoid it. Additionally, you may assist others with said tasks without spending _Stress_."
+        "effect": "You have an instinctive understanding of machines and devices from the Old World and, while you can't reproduce them, you can typically determine how to safely operate them. If they are damaged, you know what you might need to do to get it in working order."
       },
       {
         "name": "Underworld Trail",
@@ -2060,9 +2110,10 @@
     "abilities": [
       {
         "name": "Fast Friends",
-        "category": "Skill",
-        "type": "Talent",
-        "effect": "You start each _Journey_ with a _Bond_ with each of your allies."
+        "category": "Camp",
+        "type": "Power",
+        "frequency": "1/Day",
+        "effect": "During the _Camp Phase_, choose an ally. Gain a _Bond_ with them."
       },
       {
         "name": "Charming Presence",
@@ -2161,7 +2212,7 @@
         "name": "Strong Strike",
         "type": "Passive",
         "category": "Offensive",
-        "effect": "Whenever you make a _Martial Attack_, choose one:\n* Deal +1 _Stun_.\n* Convert 1 Damage to _Stun_.\n\nRepeat this effect X times, where X is the base Cost of the original Attack."
+        "effect": "Whenever you make a _Martial Attack_, choose one:\n* Deal +1 _Stun_.\n* Convert 1 Stun to Damage.\n\nRepeat this effect X times, where X is the base Cost of the original Attack."
       }
     ]
   },

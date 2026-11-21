@@ -8,6 +8,7 @@ class Stance extends AbilityPackage {
   private stun_: number
   private phase_: number
   private speed_: number
+  private attack_limit_: number
 
   public constructor(name) {
     super(name)
@@ -49,6 +50,11 @@ class Stance extends AbilityPackage {
     return 0
   }
 
+  public get AttackLimit() {
+    if (this.attack_limit_) return this.attack_limit_
+    return 0
+  }
+
   public get DefenseHeader() {
     var defense_string = '**Defenses:**'
     return defense_string
@@ -84,6 +90,7 @@ class Stance extends AbilityPackage {
     this.momentum_ = data.momentum || 'N/A'
     this.speed_ = data.speed || 0
     this.stun_ = data.block || 0
+    this.attack_limit_ = data.attack_limit || 0
   }
 }
 export default Stance
