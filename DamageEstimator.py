@@ -11,7 +11,7 @@ import sys
 # Momentum is 'worth' this much
 momentum_value = 1
 stun_scale = 0.5 # Guard is worth less (not sure how much)
-gambit_worth = 2*momentum_value*(1/6 + 1/18)
+gambit_worth = 2*momentum_value*(1/6 + 1/12)
 
 
 # Statistics for a given roll based on dis/advantage.
@@ -130,11 +130,12 @@ def get_databases():
 class Attack:
     name: str = ""
     cost: int = 0
-    roll_chart = [0]*4
+    roll_chart = ['0']*4
     damage_chart = [0]*4
     stun_chart = [0]*4
     status_chart = ['']*4
     bonus_damage =  [0]*4
+    multi_attack =  1
     keywords = []
     keyword_bonus = 0
     expected_targets = 1
@@ -155,6 +156,14 @@ class Attack:
     def rangeMultiplier(self):
         if len(self.override_range) > 0: return attack_range_multiplier[self.override_range]
         return attack_range_multiplier[self.range]
+    
+    def gambitAdjust(self):
+        adjust = 0
+        if self.roll_chart[3].split('-')[0] == '10':
+            adjust = 1/9 #4+6 and 6+4 is two more potential Gambits, x2 for 2 Momentum
+        if self.multi_attack > 1:
+            adjust = adjust * self.multi_attack + gambit_worth*(self.multi_attack-1)
+        return adjust
 
     def hasRollChart(self):
         return self.roll_chart[0] == self.roll_chart[1]
@@ -166,7 +175,7 @@ class Attack:
         self.cost = int(jsonAttack.get("cost", [0])[0])
         if "chart" in jsonAttack:
             chart = jsonAttack.get("chart")
-            self.roll_chart = chart.get("roll", [0]*4)
+            self.roll_chart = chart.get("roll", ['0']*4)
             self.damage_chart = chart.get("damage", [0]*4)
             self.stun_chart = chart.get("stun", [0]*4)
             self.status_chart = chart.get("status", ['']*4)                
@@ -175,6 +184,7 @@ class Attack:
             self.cost_adjust = analysis_notes.get("fudge", 0)
             self.cost += self.cost_adjust
             self.expected_targets = analysis_notes.get("expected_targets", 1)
+            self.multi_attack = analysis_notes.get("multi_attack", 1)
             if("bonus_damage" in analysis_notes):
                 bonus_damage = analysis_notes.get("bonus_damage", 0)
                 if(isinstance(bonus_damage, float) or isinstance(bonus_damage, int)):
@@ -199,7 +209,7 @@ class Attack:
         if "(" in  self.range :
              self.range  =  self.range .split("(")[0].replace(' ', '')
 
-        self.target_damage =  (self.cost * (pow(self.cost, 1/3))) * self.rangeMultiplier()
+        self.target_damage =  (self.cost * (pow(self.cost, 1/3))) / self.multi_attack * self.rangeMultiplier() - self.gambitAdjust()
         if(not self.hasRollChart()):
             self.target_damage += gambit_worth/2 # Give back half the damage of a gambit
         
@@ -232,9 +242,9 @@ class Attack:
 
         self.damage_diff = self.straight_damage - self.target_damage
         
-        expected_damage_no_fudge =  ((self.cost - self.cost_adjust) * (pow(self.cost - self.cost_adjust, 1/3))) * self.rangeMultiplier()
+        expected_damage_no_fudge =  ((self.cost - self.cost_adjust) * (pow(self.cost - self.cost_adjust, 1/3))) * self.rangeMultiplier() - self.gambitAdjust()
         for num in range(1,11):
-            expected_damage_higher_cost = ((self.cost + num) * (pow(self.cost+ num, 1/3))) * self.rangeMultiplier()
+            expected_damage_higher_cost = ((self.cost + num) * (pow(self.cost+ num, 1/3))) * self.rangeMultiplier()- self.gambitAdjust()
             self.enhancement_ev[num-1] = expected_damage_higher_cost - expected_damage_no_fudge
 
 
@@ -417,14 +427,16 @@ def launch_gui ():
 
 
     def selectAttack(event):
-        for i, item in enumerate(listbox.get(0,tk.END)):
-            temp_attack = find_attack(item[1], item[0])
-            if abs(temp_attack.damage_diff) > 0.1:
-                listbox.itemconfig(i, bg = "red")
-            else:                
-                listbox.itemconfig(i, bg = "white")
         selected = listbox.get(listbox.curselection())
         attack = find_attack(selected[1], selected[0])
+        
+        if attack.damage_diff < -0.1:
+            listbox.itemconfig(listbox.curselection(), bg = "red")
+        elif attack.damage_diff > 0.1:
+            listbox.itemconfig(listbox.curselection(), bg = "green")
+        else:                
+            listbox.itemconfig(listbox.curselection(), bg = "white")
+
         name_lbl.configure(text=attack.name)
         expectedText = tk.Label(root, text=str(f'{attack.target_damage:.4f}'))
         expectedText.grid(column=2, row=1, padx=10, ipadx=40, pady=10 )
@@ -494,6 +506,16 @@ def launch_gui ():
     listbox.bind('<<ListboxSelect>>', selectAttack)
     listbox.selection_set(0)  
     listbox.event_generate("<<ListboxSelect>>")
+
+    
+    for i, item in enumerate(listbox.get(0,tk.END)):
+        temp_attack = find_attack(item[1], item[0])
+        if temp_attack.damage_diff < -0.1:
+            listbox.itemconfig(i, bg = "red")
+        elif temp_attack.damage_diff > 0.1:
+            listbox.itemconfig(i, bg = "green")
+        else:                
+            listbox.itemconfig(i, bg = "white")
 
     root.mainloop()
 
